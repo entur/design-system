@@ -1,5 +1,4 @@
 import { createRequire } from 'module';
-import path from 'path';
 const require = createRequire(import.meta.url);
 
 export default {
@@ -40,6 +39,7 @@ export default {
               include: [
                 /design-system[\\/]apps[\\/]code-playground[\\/]/,
                 /design-system[\\/]packages[\\/][^\\/]+[\\/]dist[\\/]/,
+                /design-system[\\/]packages[\\/][^\\/]+[\\/]src[\\/]/,
               ],
               use: [
                 'style-loader',

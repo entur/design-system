@@ -1,0 +1,324 @@
+{
+  "tags": {},
+  "description": "",
+  "displayName": "BaseForm",
+  "methods": [],
+  "props": {
+    "children": {
+      "defaultValue": null,
+      "description": "The form field content",
+      "name": "children",
+      "parent": {
+        "fileName": "design-system/packages/form/src/beta/BaseForm/BaseForm.tsx",
+        "name": "BaseFormProps"
+      },
+      "declarations": [
+        {
+          "fileName": "design-system/packages/form/src/beta/BaseForm/BaseForm.tsx",
+          "name": "BaseFormProps"
+        }
+      ],
+      "required": true,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "id": {
+      "defaultValue": null,
+      "description": "Unique identifier for the field",
+      "name": "id",
+      "parent": {
+        "fileName": "design-system/packages/form/src/beta/BaseForm/BaseForm.tsx",
+        "name": "BaseFormProps"
+      },
+      "declarations": [
+        {
+          "fileName": "design-system/packages/form/src/beta/BaseForm/BaseForm.tsx",
+          "name": "BaseFormProps"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "label": {
+      "defaultValue": null,
+      "description": "Label for the field",
+      "name": "label",
+      "parent": {
+        "fileName": "design-system/packages/form/src/beta/BaseForm/BaseForm.tsx",
+        "name": "BaseFormProps"
+      },
+      "declarations": [
+        {
+          "fileName": "design-system/packages/form/src/beta/BaseForm/BaseForm.tsx",
+          "name": "BaseFormProps"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "labelIcon": {
+      "defaultValue": null,
+      "description": "Icon to display next to the label",
+      "name": "labelIcon",
+      "parent": {
+        "fileName": "design-system/packages/form/src/beta/BaseForm/BaseForm.tsx",
+        "name": "BaseFormProps"
+      },
+      "declarations": [
+        {
+          "fileName": "design-system/packages/form/src/beta/BaseForm/BaseForm.tsx",
+          "name": "BaseFormProps"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "description": {
+      "defaultValue": null,
+      "description": "Description text below the label",
+      "name": "description",
+      "parent": {
+        "fileName": "design-system/packages/form/src/beta/BaseForm/BaseForm.tsx",
+        "name": "BaseFormProps"
+      },
+      "declarations": [
+        {
+          "fileName": "design-system/packages/form/src/beta/BaseForm/BaseForm.tsx",
+          "name": "BaseFormProps"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "feedback": {
+      "defaultValue": null,
+      "description": "Feedback message (error, success, etc.)",
+      "name": "feedback",
+      "parent": {
+        "fileName": "design-system/packages/form/src/beta/BaseForm/BaseForm.tsx",
+        "name": "BaseFormProps"
+      },
+      "declarations": [
+        {
+          "fileName": "design-system/packages/form/src/beta/BaseForm/BaseForm.tsx",
+          "name": "BaseFormProps"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "variant": {
+      "defaultValue": {
+        "value": "default"
+      },
+      "description": "Field variant state",
+      "name": "variant",
+      "parent": {
+        "fileName": "design-system/packages/form/src/beta/BaseForm/BaseForm.tsx",
+        "name": "BaseFormProps"
+      },
+      "declarations": [
+        {
+          "fileName": "design-system/packages/form/src/beta/BaseForm/BaseForm.tsx",
+          "name": "BaseFormProps"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "\"default\" | \"success\" | \"warning\" | \"error\" | \"info\" | undefined"
+      }
+    },
+    "disabled": {
+      "defaultValue": {
+        "value": false
+      },
+      "description": "Whether the field is disabled",
+      "name": "disabled",
+      "parent": {
+        "fileName": "design-system/packages/form/src/beta/BaseForm/BaseForm.tsx",
+        "name": "BaseFormProps"
+      },
+      "declarations": [
+        {
+          "fileName": "design-system/packages/form/src/beta/BaseForm/BaseForm.tsx",
+          "name": "BaseFormProps"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "boolean | undefined"
+      }
+    },
+    "readOnly": {
+      "defaultValue": {
+        "value": false
+      },
+      "description": "Whether the field is read-only",
+      "name": "readOnly",
+      "parent": {
+        "fileName": "design-system/packages/form/src/beta/BaseForm/BaseForm.tsx",
+        "name": "BaseFormProps"
+      },
+      "declarations": [
+        {
+          "fileName": "design-system/packages/form/src/beta/BaseForm/BaseForm.tsx",
+          "name": "BaseFormProps"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "boolean | undefined"
+      }
+    },
+    "required": {
+      "defaultValue": {
+        "value": false
+      },
+      "description": "Whether the field is required",
+      "name": "required",
+      "parent": {
+        "fileName": "design-system/packages/form/src/beta/BaseForm/BaseForm.tsx",
+        "name": "BaseFormProps"
+      },
+      "declarations": [
+        {
+          "fileName": "design-system/packages/form/src/beta/BaseForm/BaseForm.tsx",
+          "name": "BaseFormProps"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "boolean | undefined"
+      }
+    },
+    "size": {
+      "defaultValue": {
+        "value": "medium"
+      },
+      "description": "Field size",
+      "name": "size",
+      "parent": {
+        "fileName": "design-system/packages/form/src/beta/BaseForm/BaseForm.tsx",
+        "name": "BaseFormProps"
+      },
+      "declarations": [
+        {
+          "fileName": "design-system/packages/form/src/beta/BaseForm/BaseForm.tsx",
+          "name": "BaseFormProps"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "\"small\" | \"medium\" | \"large\" | undefined"
+      }
+    },
+    "prepend": {
+      "defaultValue": null,
+      "description": "Content to prepend to the field",
+      "name": "prepend",
+      "parent": {
+        "fileName": "design-system/packages/form/src/beta/BaseForm/BaseForm.tsx",
+        "name": "BaseFormProps"
+      },
+      "declarations": [
+        {
+          "fileName": "design-system/packages/form/src/beta/BaseForm/BaseForm.tsx",
+          "name": "BaseFormProps"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "append": {
+      "defaultValue": null,
+      "description": "Content to append to the field",
+      "name": "append",
+      "parent": {
+        "fileName": "design-system/packages/form/src/beta/BaseForm/BaseForm.tsx",
+        "name": "BaseFormProps"
+      },
+      "declarations": [
+        {
+          "fileName": "design-system/packages/form/src/beta/BaseForm/BaseForm.tsx",
+          "name": "BaseFormProps"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "className": {
+      "defaultValue": null,
+      "description": "Custom className",
+      "name": "className",
+      "parent": {
+        "fileName": "design-system/packages/form/src/beta/BaseForm/BaseForm.tsx",
+        "name": "BaseFormProps"
+      },
+      "declarations": [
+        {
+          "fileName": "design-system/packages/form/src/beta/BaseForm/BaseForm.tsx",
+          "name": "BaseFormProps"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "style": {
+      "defaultValue": null,
+      "description": "Custom styles",
+      "name": "style",
+      "parent": {
+        "fileName": "design-system/packages/form/src/beta/BaseForm/BaseForm.tsx",
+        "name": "BaseFormProps"
+      },
+      "declarations": [
+        {
+          "fileName": "design-system/packages/form/src/beta/BaseForm/BaseForm.tsx",
+          "name": "BaseFormProps"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "CSSProperties | undefined"
+      }
+    },
+    "ariaAlertOnFeedback": {
+      "defaultValue": {
+        "value": false
+      },
+      "description": "Whether to show feedback as alert for screen readers",
+      "name": "ariaAlertOnFeedback",
+      "parent": {
+        "fileName": "design-system/packages/form/src/beta/BaseForm/BaseForm.tsx",
+        "name": "BaseFormProps"
+      },
+      "declarations": [
+        {
+          "fileName": "design-system/packages/form/src/beta/BaseForm/BaseForm.tsx",
+          "name": "BaseFormProps"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "boolean | undefined"
+      }
+    }
+  }
+}

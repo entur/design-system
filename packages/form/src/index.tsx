@@ -1,6 +1,10 @@
 import { warnAboutMissingStyles } from '@entur/utils';
 import './index.scss';
 
+// Import beta component styles
+import './beta/BaseForm/BaseForm.scss';
+import './beta/TextField/TextField.scss';
+
 warnAboutMissingStyles('form', 'icons', 'typography');
 
 export * from './BaseFormControl';

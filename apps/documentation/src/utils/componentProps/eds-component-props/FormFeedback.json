@@ -1,0 +1,84 @@
+{
+  "tags": {},
+  "description": "",
+  "displayName": "FormFeedback",
+  "methods": [],
+  "props": {
+    "children": {
+      "defaultValue": null,
+      "description": "Feedback message content",
+      "name": "children",
+      "parent": {
+        "fileName": "design-system/packages/form/src/beta/BaseForm/FormFeedback.tsx",
+        "name": "FormFeedbackProps"
+      },
+      "declarations": [
+        {
+          "fileName": "design-system/packages/form/src/beta/BaseForm/FormFeedback.tsx",
+          "name": "FormFeedbackProps"
+        }
+      ],
+      "required": true,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "variant": {
+      "defaultValue": null,
+      "description": "Feedback variant",
+      "name": "variant",
+      "parent": {
+        "fileName": "design-system/packages/form/src/beta/BaseForm/FormFeedback.tsx",
+        "name": "FormFeedbackProps"
+      },
+      "declarations": [
+        {
+          "fileName": "design-system/packages/form/src/beta/BaseForm/FormFeedback.tsx",
+          "name": "FormFeedbackProps"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "FormFieldVariant | undefined"
+      }
+    },
+    "role": {
+      "defaultValue": null,
+      "description": "Whether to show as alert for screen readers",
+      "name": "role",
+      "parent": {
+        "fileName": "design-system/packages/form/src/beta/BaseForm/FormFeedback.tsx",
+        "name": "FormFeedbackProps"
+      },
+      "declarations": [
+        {
+          "fileName": "design-system/packages/form/src/beta/BaseForm/FormFeedback.tsx",
+          "name": "FormFeedbackProps"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "\"alert\" | \"status\" | undefined"
+      }
+    },
+    "className": {
+      "defaultValue": null,
+      "description": "Custom className",
+      "name": "className",
+      "parent": {
+        "fileName": "design-system/packages/form/src/beta/BaseForm/FormFeedback.tsx",
+        "name": "FormFeedbackProps"
+      },
+      "declarations": [
+        {
+          "fileName": "design-system/packages/form/src/beta/BaseForm/FormFeedback.tsx",
+          "name": "FormFeedbackProps"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    }
+  }
+}

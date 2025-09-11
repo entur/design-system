@@ -25,6 +25,7 @@ export * from '@entur/typography';
 export * as Beta from '@entur/typography/beta';
 
 export { TestBench } from './TestBench';
+export { BetaFormExample } from './BetaFormExample';
 
 // Exports to make code examples from linje.entur.no work
 

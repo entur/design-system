@@ -1,0 +1,252 @@
+@use '../componentColors.scss';
+@use '../componentSizeSpacing.scss';
+
+// Visually hide content but keep it accessible to screen readers
+// Based on: https://github.com/reach/reach-ui/blob/master/packages/visually-hidden/src/index.js
+.eds-visually-hidden {
+  display: block;
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  position: absolute;
+}
+
+.eds-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--form-base-form-gap-vertrical-medium);
+  width: 100%;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  // Horizontal layout with label on the left
+  &--label-left {
+    --form-label-width: 150px; // Default label width, can be overridden
+
+    .eds-form-field__container {
+      flex-direction: row;
+      align-items: flex-start;
+      gap: var(--form-base-form-gap-horizontal-large);
+    }
+
+    .eds-form-field__label {
+      flex-shrink: 0;
+      width: var(--form-label-width);
+      margin-bottom: 0;
+      padding-top: 12px;
+      text-align: right;
+    }
+
+    .eds-form-field__input-wrapper {
+      flex: 1;
+      min-width: 0; // Allow input to shrink
+    }
+
+    // Size-specific alignment adjustments
+    &.eds-form-field--size-small .eds-form-field__label {
+      padding-top: 8px;
+    }
+
+    &.eds-form-field--size-large .eds-form-field__label {
+      padding-top: 16px;
+    }
+  }
+
+  &__input-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__label {
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--form-base-form-gap-vertrical-small);
+
+    // First child should not have margin-top
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &-content {
+      display: flex;
+      align-items: center;
+      gap: var(--form-base-form-gap-horizontal-medium);
+    }
+
+    &-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--components-form-baseform-contrast-icon-beta);
+
+      svg {
+        width: var(--form-base-form-icon-medium);
+        height: var(--form-base-form-icon-medium);
+      }
+    }
+
+    &-text {
+      display: flex;
+      align-items: center;
+      gap: var(--feedback-text-gap-small);
+    }
+
+    &-tooltip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+
+      &-icon {
+        width: var(--form-base-form-icon-medium);
+        height: var(--form-base-form-icon-medium);
+      }
+    }
+  }
+
+  &__description {
+    color: var(--components-form-baseform-standard-text-label);
+    .eds-contrast & {
+      color: var(--components-form-baseform-contrast-text-labelbeta);
+    }
+  }
+
+  &__feedback {
+    display: flex;
+    align-items: center;
+    gap: var(--feedback-text-gap-medium);
+    margin-top: var(--form-base-form-gap-vertrical-medium);
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &--info,
+    &--information {
+      padding-left: calc(var(--feedback-text-gap-medium) + 1px);
+    }
+
+    &-text {
+      color: var(--components-form-baseform-standard-text-feedback);
+
+      .eds-contrast & {
+        color: var(--components-form-baseform-contrast-text-feedback);
+      }
+    }
+
+    &--success &-text {
+      color: var(--components-form-feedbacktext-success-standard-text);
+
+      .eds-contrast & {
+        color: var(--components-form-feedbacktext-success-contrast-text);
+      }
+    }
+
+    &--warning &-text {
+      color: var(--components-form-feedbacktext-warning-standard-text);
+
+      .eds-contrast & {
+        color: var(--components-form-feedbacktext-warning-contrast-text);
+      }
+    }
+
+    &--negative &-text {
+      color: var(--components-form-feedbacktext-negative-standard-text);
+
+      .eds-contrast & {
+        color: var(--components-form-feedbacktext-negative-contrast-text);
+      }
+    }
+
+    &--info &-text,
+    &--information &-text {
+      color: var(--components-form-feedbacktext-information-standard-text);
+
+      .eds-contrast & {
+        color: var(--components-form-feedbacktext-information-contrast-text);
+      }
+    }
+  }
+
+  &__feedback-icon {
+    height: var(--feedback-text-icon-medium);
+    width: var(--feedback-text-icon-medium);
+    position: relative;
+
+    &--success {
+      color: var(--components-form-feedbacktext-success-standard-icon-fill);
+      circle {
+        fill: var(--components-form-feedbacktext-success-standard-icon-symbol);
+      }
+      .eds-contrast & {
+        color: var(--components-form-feedbacktext-success-contrast-icon-fill);
+        circle {
+          fill: var(--components-form-feedbacktext-success-contrast-icon-symbol);
+        }
+      }
+    }
+
+    &--negative {
+      color: var(--components-form-feedbacktext-negative-standard-icon-fill);
+      circle {
+        fill: var(--components-form-feedbacktext-negative-standard-icon-symbol);
+      }
+      .eds-contrast & {
+        color: var(--components-form-feedbacktext-negative-contrast-icon-fill);
+        circle {
+          fill: var(--components-form-feedbacktext-negative-contrast-icon-symbol);
+        }
+      }
+    }
+
+    &--info,
+    &--information {
+      color: var(--components-form-feedbacktext-information-standard-icon-fill);
+      circle {
+        fill: var(--components-form-feedbacktext-information-standard-icon-symbol);
+      }
+      .eds-contrast & {
+        color: var(--components-form-feedbacktext-information-contrast-icon-fill);
+        circle {
+          fill: var(--components-form-feedbacktext-information-contrast-icon-symbol);
+        }
+      }
+    }
+
+    &--warning {
+      color: var(--components-form-feedbacktext-warning-standard-icon-fill);
+      .svg-exclamation {
+        fill: var(--components-form-feedbacktext-warning-standard-icon-symbol);
+      }
+      .eds-contrast & {
+        color: var(--components-form-feedbacktext-warning-contrast-icon-fill);
+        circle {
+          fill: var(--components-form-feedbacktext-warning-contrast-icon-symbol);
+        }
+      }
+    }
+  }
+
+  // State variants for all text color
+  &--disabled {
+    // Target all text elements within the form field (labels, descriptions, feedback)
+    .eds-form-field__label-text,
+    .eds-form-field__label-icon,
+    .eds-form-field__description,
+    .eds-form-field__feedback-text,
+    .eds-form-field__feedback-icon {
+      color: var(--components-form-baseform-standard-text-disabled);
+      .eds-contrast & {
+        color: var(--components-form-baseform-contrast-text-disabledbeta);
+      }
+    }
+  }
+}

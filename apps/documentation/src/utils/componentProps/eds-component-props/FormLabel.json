@@ -1,0 +1,164 @@
+{
+  "tags": {},
+  "description": "",
+  "displayName": "FormLabel",
+  "methods": [],
+  "props": {
+    "children": {
+      "defaultValue": null,
+      "description": "Label content",
+      "name": "children",
+      "parent": {
+        "fileName": "design-system/packages/form/src/beta/BaseForm/FormLabel.tsx",
+        "name": "FormLabelProps"
+      },
+      "declarations": [
+        {
+          "fileName": "design-system/packages/form/src/beta/BaseForm/FormLabel.tsx",
+          "name": "FormLabelProps"
+        }
+      ],
+      "required": true,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "icon": {
+      "defaultValue": null,
+      "description": "Icon to display next to the label text",
+      "name": "icon",
+      "parent": {
+        "fileName": "design-system/packages/form/src/beta/BaseForm/FormLabel.tsx",
+        "name": "FormLabelProps"
+      },
+      "declarations": [
+        {
+          "fileName": "design-system/packages/form/src/beta/BaseForm/FormLabel.tsx",
+          "name": "FormLabelProps"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "tooltip": {
+      "defaultValue": null,
+      "description": "Tooltip content for additional help",
+      "name": "tooltip",
+      "parent": {
+        "fileName": "design-system/packages/form/src/beta/BaseForm/FormLabel.tsx",
+        "name": "FormLabelProps"
+      },
+      "declarations": [
+        {
+          "fileName": "design-system/packages/form/src/beta/BaseForm/FormLabel.tsx",
+          "name": "FormLabelProps"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "tooltipPlacement": {
+      "defaultValue": {
+        "value": "top"
+      },
+      "description": "Tooltip placement",
+      "name": "tooltipPlacement",
+      "parent": {
+        "fileName": "design-system/packages/form/src/beta/BaseForm/FormLabel.tsx",
+        "name": "FormLabelProps"
+      },
+      "declarations": [
+        {
+          "fileName": "design-system/packages/form/src/beta/BaseForm/FormLabel.tsx",
+          "name": "FormLabelProps"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "Placement | undefined"
+      }
+    },
+    "tooltipAriaLabel": {
+      "defaultValue": null,
+      "description": "Aria label for tooltip button",
+      "name": "tooltipAriaLabel",
+      "parent": {
+        "fileName": "design-system/packages/form/src/beta/BaseForm/FormLabel.tsx",
+        "name": "FormLabelProps"
+      },
+      "declarations": [
+        {
+          "fileName": "design-system/packages/form/src/beta/BaseForm/FormLabel.tsx",
+          "name": "FormLabelProps"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "required": {
+      "defaultValue": null,
+      "description": "Whether the field is required",
+      "name": "required",
+      "parent": {
+        "fileName": "design-system/packages/form/src/beta/BaseForm/FormLabel.tsx",
+        "name": "FormLabelProps"
+      },
+      "declarations": [
+        {
+          "fileName": "design-system/packages/form/src/beta/BaseForm/FormLabel.tsx",
+          "name": "FormLabelProps"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "boolean | undefined"
+      }
+    },
+    "disableAnimation": {
+      "defaultValue": {
+        "value": false
+      },
+      "description": "Whether to disable label animation",
+      "name": "disableAnimation",
+      "parent": {
+        "fileName": "design-system/packages/form/src/beta/BaseForm/FormLabel.tsx",
+        "name": "FormLabelProps"
+      },
+      "declarations": [
+        {
+          "fileName": "design-system/packages/form/src/beta/BaseForm/FormLabel.tsx",
+          "name": "FormLabelProps"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "boolean | undefined"
+      }
+    },
+    "className": {
+      "defaultValue": null,
+      "description": "Custom className",
+      "name": "className",
+      "parent": {
+        "fileName": "design-system/packages/form/src/beta/BaseForm/FormLabel.tsx",
+        "name": "FormLabelProps"
+      },
+      "declarations": [
+        {
+          "fileName": "design-system/packages/form/src/beta/BaseForm/FormLabel.tsx",
+          "name": "FormLabelProps"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    }
+  }
+}

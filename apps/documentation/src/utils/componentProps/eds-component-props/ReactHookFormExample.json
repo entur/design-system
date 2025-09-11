@@ -1,0 +1,7 @@
+{
+  "tags": {},
+  "description": "Examples showing how to integrate beta form components with popular validation libraries\n\nNote: These are examples only - you would need to install the respective libraries",
+  "displayName": "ReactHookFormExample",
+  "methods": [],
+  "props": {}
+}

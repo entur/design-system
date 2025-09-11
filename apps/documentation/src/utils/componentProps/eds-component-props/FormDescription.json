@@ -1,0 +1,46 @@
+{
+  "tags": {},
+  "description": "",
+  "displayName": "FormDescription",
+  "methods": [],
+  "props": {
+    "children": {
+      "defaultValue": null,
+      "description": "Description content",
+      "name": "children",
+      "parent": {
+        "fileName": "design-system/packages/form/src/beta/BaseForm/FormDescription.tsx",
+        "name": "FormDescriptionProps"
+      },
+      "declarations": [
+        {
+          "fileName": "design-system/packages/form/src/beta/BaseForm/FormDescription.tsx",
+          "name": "FormDescriptionProps"
+        }
+      ],
+      "required": true,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "className": {
+      "defaultValue": null,
+      "description": "Custom className",
+      "name": "className",
+      "parent": {
+        "fileName": "design-system/packages/form/src/beta/BaseForm/FormDescription.tsx",
+        "name": "FormDescriptionProps"
+      },
+      "declarations": [
+        {
+          "fileName": "design-system/packages/form/src/beta/BaseForm/FormDescription.tsx",
+          "name": "FormDescriptionProps"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    }
+  }
+}

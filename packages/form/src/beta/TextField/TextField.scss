@@ -1,0 +1,328 @@
+@use '../componentColors.scss';
+@use '../componentSizeSpacing.scss';
+
+.eds-textfield {
+  &__input-wrapper {
+    flex: 1;
+    min-width: 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  &__input-container {
+    margin-top: var(--form-base-form-gap-vertrical-medium);
+    position: relative;
+    display: flex;
+    align-items: center;
+    border: var(--form-base-form-border-medium) solid var(--components-form-baseform-standard-border-default);
+    border-radius: var(--form-base-form-radius-medium);
+    background-color: var(--components-form-baseform-standard-fill-default);
+    min-width: 0;
+  }
+
+  &__input {
+    flex: 1;
+    min-width: 80px;
+    height: var(--form-base-form-height-medium);
+    padding: 0.25rem var(--form-base-form-inline-padding-default-medium);
+    border: none;
+    background-color: transparent;
+    outline: none;
+    color: var(--components-form-baseform-standard-text-content);
+
+    .eds-contrast & {
+      color: var(--components-form-baseform-contrast-text-content);
+    }
+
+    &:read-only:not(:disabled) {
+      cursor: default;
+      color: var(--components-form-baseform-standard-text-content-readonly);
+      .eds-contrast & {
+        color: var(--components-form-baseform-contrast-text-content-readonly);
+      }
+    }
+
+    &:disabled {
+      color: var(--components-form-baseform-standard-text-disabled);
+      cursor: not-allowed;
+      .eds-contrast & {
+        color: var(--components-form-baseform-contrast-text-disabled);
+      }
+    }
+
+    &__clear-button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: none;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      flex-shrink: 0;
+      color: var(--components-form-baseform-standard-text-content);
+      margin-right: var(--form-base-form-gap-horizontal-medium);
+
+      // Default size (medium)
+      height: var(--button-height-horizontal-medium);
+      max-width: var(--button-height-horizontal-medium);
+      min-height: var(--button-height-horizontal-medium);
+      max-height: var(--button-height-horizontal-medium);
+      padding: var(--size-7) var(--button-inline-padding-medium);
+
+      svg {
+        width: var(--button-icon-medium);
+        height: var(--button-icon-medium);
+      }
+
+      &:hover {
+        background-color: var(--components-form-basepanel-standard-fill-hover);
+      }
+
+      &:focus {
+        outline: 2px solid var(--components-form-baseform-standard-border-interactive);
+        outline-offset: 1px;
+      }
+
+      .eds-textfield--size-small & {
+        width: var(--form-base-form-icon-small);
+        height: var(--form-base-form-icon-small);
+      }
+
+      .eds-textfield--size-large & {
+        width: var(--form-base-form-icon-large);
+        height: var(--form-base-form-icon-large);
+      }
+      .eds-contrast & {
+        color: var(--components-form-baseform-contrast-text-content);
+      }
+    }
+
+    // Modifiers for input
+    // Size variants
+    &--size-small {
+      height: var(--form-base-form-height-small);
+      padding: 0 var(--feedback-text-gap-small);
+      font-size: var(--feedback-text-size-small);
+    }
+
+    &--size-large {
+      height: var(--form-base-form-height-large);
+      padding: 0 var(--feedback-text-gap-large);
+      font-size: var(--feedback-text-size-medium);
+    }
+
+    // Remove default input styles
+    // Hide native search clear button (we use our own clearable)
+    &[type='search']::-webkit-search-cancel-button {
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    // Hide native password reveal button (some browsers add this)
+    &[type='password']::-ms-reveal,
+    &[type='password']::-ms-clear {
+      display: none;
+    }
+
+    // Remove default number input spinners if we add type="number" in the future
+    &[type='number']::-webkit-inner-spin-button,
+    &[type='number']::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+
+  &__prepend {
+    display: flex;
+    align-items: center;
+    padding: var(--size-3) var(--form-base-form-inline-padding-default-medium);
+    background-color: transparent;
+    border: none;
+    color: var(--components-form-baseform-standard-text-label);
+    white-space: nowrap;
+    flex-shrink: 0;
+    gap: var(--form-base-form-gap-horizontal-medium);
+    .eds-contrast & {
+      color: var(--components-form-baseform-contrast-text-label);
+    }
+  }
+
+  &__append {
+    display: flex;
+    align-items: center;
+    padding: var(--size-3) var(--form-base-form-inline-padding-default-medium);
+    background-color: transparent;
+    border: none;
+    color: var(--components-form-baseform-standard-text-label);
+    white-space: nowrap;
+    flex-shrink: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    .eds-contrast & {
+      color: var(--components-form-baseform-contrast-text-label);
+    }
+  }
+}
+
+// Default states
+.eds-form-field:not(.eds-form-field--success):not(.eds-form-field--negative):not(.eds-form-field--warning):not(.eds-form-field--info) {
+  .eds-textfield__input-container {
+    // Hover state
+    &:hover:not(:has(input:disabled)):not(:has(input:read-only)) {
+      border-color: var(--components-form-baseform-standard-border-interactive);
+    }
+
+    &:focus-within:not(:has(input:disabled)):not(:has(input:read-only)) {
+      border-color: var(--components-form-baseform-standard-border-interactive);
+      outline: 2px solid var(--components-form-baseform-standard-border-interactive);
+      .eds-contrast & {
+        border-color: var(--components-form-baseform-contrast-border-interactive);
+        outline-color: var(--components-form-baseform-contrast-border-interactive);
+      }
+    }
+  }
+}
+
+// Success variant
+.eds-form-field--success .eds-textfield__input-container {
+  border-color: var(--components-form-baseform-standard-border-success);
+
+  .eds-contrast & {
+    border-color: var(--components-form-baseform-contrast-border-success);
+  }
+  &:hover:not(:has(input:disabled)):not(:has(input:read-only)) {
+    border-color: var(--components-form-baseform-standard-border-success);
+  }
+
+  &:focus-within:not(:has(input:disabled)):not(:has(input:read-only)) {
+    border-color: var(--components-form-baseform-standard-border-success);
+    outline: 2px solid var(--components-form-baseform-standard-border-success);
+    .eds-contrast & {
+      border-color: var(--components-form-baseform-contrast-border-success);
+      outline-color: var(--components-form-baseform-contrast-border-success);
+    }
+  }
+}
+
+// Error variant
+.eds-form-field--negative .eds-textfield__input-container {
+  border-color: var(--components-form-baseform-standard-border-negative);
+
+  .eds-contrast & {
+    border-color: var(--components-form-baseform-contrast-border-negative);
+  }
+  &:hover:not(:has(input:disabled)):not(:has(input:read-only)) {
+    border-color: var(--components-form-baseform-standard-border-negative);
+  }
+
+  &:focus-within:not(:has(input:disabled)):not(:has(input:read-only)) {
+    border-color: var(--components-form-baseform-standard-border-negative);
+    outline: 2px solid var(--components-form-baseform-standard-border-negative);
+    .eds-contrast & {
+      border-color: var(--components-form-baseform-contrast-border-negative);
+      outline-color: var(--components-form-baseform-contrast-border-negative);
+    }
+  }
+}
+
+// Warning variant
+.eds-form-field--warning .eds-textfield__input-container {
+  border-color: var(--components-form-baseform-standard-border-default);
+
+  &:hover:not(:has(input:disabled)):not(:has(input:read-only)) {
+    border-color: var(--components-form-baseform-standard-border-interactive);
+  }
+
+  &:focus-within:not(:has(input:disabled)):not(:has(input:read-only)) {
+    border-color: var(--components-form-baseform-standard-border-interactive);
+    outline: 2px solid var(--components-form-baseform-standard-border-interactive);
+    .eds-contrast & {
+      border-color: var(--components-form-baseform-contrast-border-interactive);
+      outline-color: var(--components-form-baseform-contrast-border-interactive);
+    }
+  }
+}
+
+// Info variant
+.eds-form-field--info .eds-textfield__input-container {
+  border-color: var(--components-form-baseform-standard-border-default);
+
+  &:hover:not(:has(input:disabled)):not(:has(input:read-only)) {
+    border-color: var(--components-form-baseform-standard-border-interactive);
+  }
+
+  &:focus-within:not(:has(input:disabled)):not(:has(input:read-only)) {
+    border-color: var(--components-form-baseform-standard-border-interactive);
+    outline: 2px solid var(--components-form-baseform-standard-border-interactive);
+    .eds-contrast & {
+      border-color: var(--components-form-baseform-contrast-border-interactive);
+      outline-color: var(--components-form-baseform-contrast-border-interactive);
+    }
+  }
+}
+
+// Size variants for prepend/append
+.eds-form-field--size-small {
+  .eds-textfield__prepend,
+  .eds-textfield__append {
+    height: var(--form-base-form-height-small);
+    padding: 0.25rem var(--form-base-form-inline-padding-default-small);
+  }
+}
+
+.eds-form-field--size-medium {
+  .eds-textfield__prepend,
+  .eds-textfield__append {
+    height: var(--form-base-form-height-medium);
+    padding: 0.25rem var(--form-base-form-inline-padding-default-medium);
+  }
+}
+
+.eds-form-field--size-large {
+  .eds-textfield__prepend,
+  .eds-textfield__append {
+    height: var(--form-base-form-height-large);
+    padding: 0.25rem var(--form-base-form-inline-padding-default-large);
+  }
+}
+
+// Disabled state
+.eds-form-field--disabled .eds-textfield__input-container {
+  border-color: var(--components-form-baseform-standard-border-default);
+  background-color: var(--components-form-baseform-standard-fill-disabled);
+}
+
+.eds-form-field--disabled {
+  .eds-textfield__prepend,
+  .eds-textfield__append,
+  .eds-textfield__input {
+    color: var(--components-form-baseform-standard-text-disabled);
+    .eds-contrast & {
+      color: var(--components-form-baseform-contrast-text-disabled);
+    }
+  }
+}
+
+// Readonly state
+.eds-form-field--readonly .eds-textfield__input-container {
+  border-color: var(--components-form-baseform-standard-border-default);
+  background-color: var(--components-form-baseform-standard-fill-readonly);
+  border: var(--form-base-form-border-medium) dashed var(--components-form-baseform-standard-border-default);
+
+  .eds-contrast & {
+    border-color: var(--components-form-baseform-contrast-border-default);
+    background-color: var(--components-form-baseform-contrast-fill-readonly);
+    border: var(--form-base-form-border-medium) dashed var(--components-form-baseform-contrast-border-default);
+  }
+}
+
+.eds-form-field--readonly {
+  .eds-textfield__prepend,
+  .eds-textfield__append {
+    color: var(--components-form-baseform-standard-text-content-readonly);
+    .eds-contrast & {
+      color: var(--components-form-baseform-contrast-text-content-readonly);
+    }
+  }
+}

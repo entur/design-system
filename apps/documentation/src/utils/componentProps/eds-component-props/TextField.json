@@ -1,289 +1,487 @@
-[
-  {
-    "tags": {},
-    "description": "",
-    "displayName": "TextField",
-    "methods": [],
-    "props": {
-      "prepend": {
-        "defaultValue": null,
-        "description": "Tekst eller ikon som kommer før inputfeltet",
-        "name": "prepend",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/form/src/TextField.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "ReactNode"
-        }
+{
+  "tags": {},
+  "description": "",
+  "displayName": "TextField",
+  "methods": [],
+  "props": {
+    "id": {
+      "defaultValue": null,
+      "description": "Unique identifier for the field",
+      "name": "id",
+      "parent": {
+        "fileName": "design-system/packages/form/src/beta/TextField/TextField.tsx",
+        "name": "TextFieldProps"
       },
-      "append": {
-        "defaultValue": null,
-        "description": "Tekst eller ikon som kommer etter inputfeltet",
-        "name": "append",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/form/src/TextField.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "ReactNode"
+      "declarations": [
+        {
+          "fileName": "design-system/packages/form/src/beta/TextField/TextField.tsx",
+          "name": "TextFieldProps"
         }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "label": {
+      "defaultValue": null,
+      "description": "Label for the field",
+      "name": "label",
+      "parent": {
+        "fileName": "design-system/packages/form/src/beta/TextField/TextField.tsx",
+        "name": "TextFieldProps"
       },
-      "className": {
-        "defaultValue": null,
-        "description": "Ekstra klassenavn",
-        "name": "className",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/form/src/TextField.tsx",
-            "name": "TypeLiteral"
-          },
-          {
-            "fileName": "design-system/node_modules/@types/react/index.d.ts",
-            "name": "HTMLAttributes"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "string | undefined"
+      "declarations": [
+        {
+          "fileName": "design-system/packages/form/src/beta/TextField/TextField.tsx",
+          "name": "TextFieldProps"
         }
+      ],
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "labelIcon": {
+      "defaultValue": null,
+      "description": "Icon to display next to the label",
+      "name": "labelIcon",
+      "parent": {
+        "fileName": "design-system/packages/form/src/beta/TextField/TextField.tsx",
+        "name": "TextFieldProps"
       },
-      "label": {
-        "defaultValue": null,
-        "description": "Label over TextField",
-        "name": "label",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/form/src/TextField.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": true,
-        "type": {
-          "name": "ReactNode"
+      "declarations": [
+        {
+          "fileName": "design-system/packages/form/src/beta/TextField/TextField.tsx",
+          "name": "TextFieldProps"
         }
+      ],
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "description": {
+      "defaultValue": null,
+      "description": "Description text below the label",
+      "name": "description",
+      "parent": {
+        "fileName": "design-system/packages/form/src/beta/TextField/TextField.tsx",
+        "name": "TextFieldProps"
       },
-      "labelTooltip": {
-        "defaultValue": null,
-        "description": "En tooltip som forklarer labelen til inputfeltet",
-        "name": "labelTooltip",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/form/src/TextField.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "ReactNode"
+      "declarations": [
+        {
+          "fileName": "design-system/packages/form/src/beta/TextField/TextField.tsx",
+          "name": "TextFieldProps"
         }
+      ],
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "feedback": {
+      "defaultValue": null,
+      "description": "Feedback message (error, success, etc.)",
+      "name": "feedback",
+      "parent": {
+        "fileName": "design-system/packages/form/src/beta/TextField/TextField.tsx",
+        "name": "TextFieldProps"
       },
-      "labelTooltipButtonAriaLabel": {
-        "defaultValue": null,
-        "description": "Forklarende tekst for knappen som åpner labelTooltip",
-        "name": "labelTooltipButtonAriaLabel",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/form/src/TextField.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "string | undefined"
+      "declarations": [
+        {
+          "fileName": "design-system/packages/form/src/beta/TextField/TextField.tsx",
+          "name": "TextFieldProps"
         }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "variant": {
+      "defaultValue": null,
+      "description": "Field variant state",
+      "name": "variant",
+      "parent": {
+        "fileName": "design-system/packages/form/src/beta/TextField/TextField.tsx",
+        "name": "TextFieldProps"
       },
-      "labelTooltipPlacement": {
-        "defaultValue": null,
-        "description": "Plasseringen til tooltip-en relativt til spørsmålstegn-knappen",
-        "name": "labelTooltipPlacement",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/form/src/TextField.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "Placement | undefined"
+      "declarations": [
+        {
+          "fileName": "design-system/packages/form/src/beta/TextField/TextField.tsx",
+          "name": "TextFieldProps"
         }
+      ],
+      "required": false,
+      "type": {
+        "name": "FormFieldVariant | undefined"
+      }
+    },
+    "disabled": {
+      "defaultValue": null,
+      "description": "Whether the field is disabled",
+      "name": "disabled",
+      "parent": {
+        "fileName": "design-system/packages/form/src/beta/TextField/TextField.tsx",
+        "name": "TextFieldProps"
       },
-      "feedback": {
-        "defaultValue": null,
-        "description": "Varselmelding, som vil komme under TextField",
-        "name": "feedback",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/form/src/TextField.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "string | undefined"
+      "declarations": [
+        {
+          "fileName": "design-system/packages/form/src/beta/TextField/TextField.tsx",
+          "name": "TextFieldProps"
         }
+      ],
+      "required": false,
+      "type": {
+        "name": "boolean | undefined"
+      }
+    },
+    "readOnly": {
+      "defaultValue": null,
+      "description": "Whether the field is read-only",
+      "name": "readOnly",
+      "parent": {
+        "fileName": "design-system/packages/form/src/beta/TextField/TextField.tsx",
+        "name": "TextFieldProps"
       },
-      "variant": {
-        "defaultValue": null,
-        "description": "Hvilken valideringsfarge som vises",
-        "name": "variant",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/form/src/TextField.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "VariantType | \"error\" | \"info\" | undefined"
+      "declarations": [
+        {
+          "fileName": "design-system/packages/form/src/beta/TextField/TextField.tsx",
+          "name": "TextFieldProps"
         }
+      ],
+      "required": false,
+      "type": {
+        "name": "boolean | undefined"
+      }
+    },
+    "required": {
+      "defaultValue": null,
+      "description": "Whether the field is required",
+      "name": "required",
+      "parent": {
+        "fileName": "design-system/packages/form/src/beta/TextField/TextField.tsx",
+        "name": "TextFieldProps"
       },
-      "disabled": {
-        "defaultValue": {
-          "value": false
-        },
-        "description": "Deaktiver inputfeltet",
-        "name": "disabled",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/form/src/TextField.tsx",
-            "name": "TypeLiteral"
-          },
-          {
-            "fileName": "design-system/node_modules/@types/react/index.d.ts",
-            "name": "InputHTMLAttributes"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "boolean | undefined"
+      "declarations": [
+        {
+          "fileName": "design-system/packages/form/src/beta/TextField/TextField.tsx",
+          "name": "TextFieldProps"
         }
+      ],
+      "required": false,
+      "type": {
+        "name": "boolean | undefined"
+      }
+    },
+    "size": {
+      "defaultValue": null,
+      "description": "Field size",
+      "name": "size",
+      "parent": {
+        "fileName": "design-system/packages/form/src/beta/TextField/TextField.tsx",
+        "name": "TextFieldProps"
       },
-      "readOnly": {
-        "defaultValue": {
-          "value": false
-        },
-        "description": "Setter inputfeltet i read-only modus",
-        "name": "readOnly",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/form/src/TextField.tsx",
-            "name": "TypeLiteral"
-          },
-          {
-            "fileName": "design-system/node_modules/@types/react/index.d.ts",
-            "name": "InputHTMLAttributes"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "boolean | undefined"
+      "declarations": [
+        {
+          "fileName": "design-system/packages/form/src/beta/TextField/TextField.tsx",
+          "name": "TextFieldProps"
         }
+      ],
+      "required": false,
+      "type": {
+        "name": "\"small\" | \"medium\" | \"large\" | undefined"
+      }
+    },
+    "prepend": {
+      "defaultValue": null,
+      "description": "Content to prepend to the field",
+      "name": "prepend",
+      "parent": {
+        "fileName": "design-system/packages/form/src/beta/TextField/TextField.tsx",
+        "name": "TextFieldProps"
       },
-      "size": {
-        "defaultValue": {
-          "value": "medium"
-        },
-        "description": "Størrelsen på TextField",
-        "name": "size",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/form/src/TextField.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "\"medium\" | \"large\" | undefined"
+      "declarations": [
+        {
+          "fileName": "design-system/packages/form/src/beta/TextField/TextField.tsx",
+          "name": "TextFieldProps"
         }
+      ],
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "append": {
+      "defaultValue": null,
+      "description": "Content to append to the field",
+      "name": "append",
+      "parent": {
+        "fileName": "design-system/packages/form/src/beta/TextField/TextField.tsx",
+        "name": "TextFieldProps"
       },
-      "disableLabelAnimation": {
-        "defaultValue": {
-          "value": "false"
-        },
-        "description": "Plasserer labelen statisk på toppen av inputfeltet",
-        "name": "disableLabelAnimation",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/form/src/TextField.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "boolean | undefined"
+      "declarations": [
+        {
+          "fileName": "design-system/packages/form/src/beta/TextField/TextField.tsx",
+          "name": "TextFieldProps"
         }
+      ],
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "className": {
+      "defaultValue": null,
+      "description": "Custom className",
+      "name": "className",
+      "parent": {
+        "fileName": "design-system/packages/form/src/beta/TextField/TextField.tsx",
+        "name": "TextFieldProps"
       },
-      "labelProps": {
-        "defaultValue": null,
-        "description": "Ekstra props som sendes til label-elementet",
-        "name": "labelProps",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/form/src/TextField.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "DetailedHTMLProps<LabelHTMLAttributes<HTMLLabelElement>, HTMLLabelElement> | undefined"
+      "declarations": [
+        {
+          "fileName": "design-system/packages/form/src/beta/TextField/TextField.tsx",
+          "name": "TextFieldProps"
         }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "style": {
+      "defaultValue": null,
+      "description": "Custom styles",
+      "name": "style",
+      "parent": {
+        "fileName": "design-system/packages/form/src/beta/TextField/TextField.tsx",
+        "name": "TextFieldProps"
       },
-      "clearable": {
-        "defaultValue": {
-          "value": false
-        },
-        "description": "Om man skal ha muliget for å nullstille TextField. Viser lukkekryss hvis feltet er fylt.",
-        "name": "clearable",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/form/src/TextField.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "boolean | undefined"
+      "declarations": [
+        {
+          "fileName": "design-system/packages/form/src/beta/TextField/TextField.tsx",
+          "name": "TextFieldProps"
         }
+      ],
+      "required": false,
+      "type": {
+        "name": "CSSProperties | undefined"
+      }
+    },
+    "ariaAlertOnFeedback": {
+      "defaultValue": null,
+      "description": "Whether to show feedback as alert for screen readers",
+      "name": "ariaAlertOnFeedback",
+      "parent": {
+        "fileName": "design-system/packages/form/src/beta/TextField/TextField.tsx",
+        "name": "TextFieldProps"
       },
-      "onClear": {
-        "defaultValue": null,
-        "description": "Callback for clearable",
-        "name": "onClear",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/form/src/TextField.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "(() => void) | undefined"
+      "declarations": [
+        {
+          "fileName": "design-system/packages/form/src/beta/TextField/TextField.tsx",
+          "name": "TextFieldProps"
         }
+      ],
+      "required": false,
+      "type": {
+        "name": "boolean | undefined"
+      }
+    },
+    "value": {
+      "defaultValue": null,
+      "description": "Input value",
+      "name": "value",
+      "parent": {
+        "fileName": "design-system/packages/form/src/beta/TextField/TextField.tsx",
+        "name": "TextFieldProps"
       },
-      "ariaAlertOnFeedback": {
-        "defaultValue": {
-          "value": false
-        },
-        "description": "",
-        "name": "ariaAlertOnFeedback",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/form/src/TextField.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "boolean | undefined"
+      "declarations": [
+        {
+          "fileName": "design-system/packages/form/src/beta/TextField/TextField.tsx",
+          "name": "TextFieldProps"
         }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "defaultValue": {
+      "defaultValue": null,
+      "description": "Default value for uncontrolled input",
+      "name": "defaultValue",
+      "parent": {
+        "fileName": "design-system/packages/form/src/beta/TextField/TextField.tsx",
+        "name": "TextFieldProps"
+      },
+      "declarations": [
+        {
+          "fileName": "design-system/packages/form/src/beta/TextField/TextField.tsx",
+          "name": "TextFieldProps"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "placeholder": {
+      "defaultValue": null,
+      "description": "Placeholder text",
+      "name": "placeholder",
+      "parent": {
+        "fileName": "design-system/packages/form/src/beta/TextField/TextField.tsx",
+        "name": "TextFieldProps"
+      },
+      "declarations": [
+        {
+          "fileName": "design-system/packages/form/src/beta/TextField/TextField.tsx",
+          "name": "TextFieldProps"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "type": {
+      "defaultValue": {
+        "value": "text"
+      },
+      "description": "Input type",
+      "name": "type",
+      "parent": {
+        "fileName": "design-system/packages/form/src/beta/TextField/TextField.tsx",
+        "name": "TextFieldProps"
+      },
+      "declarations": [
+        {
+          "fileName": "design-system/packages/form/src/beta/TextField/TextField.tsx",
+          "name": "TextFieldProps"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "\"text\" | \"email\" | \"password\" | \"tel\" | \"url\" | \"search\" | undefined"
+      }
+    },
+    "clearable": {
+      "defaultValue": {
+        "value": false
+      },
+      "description": "Whether the field is clearable",
+      "name": "clearable",
+      "parent": {
+        "fileName": "design-system/packages/form/src/beta/TextField/TextField.tsx",
+        "name": "TextFieldProps"
+      },
+      "declarations": [
+        {
+          "fileName": "design-system/packages/form/src/beta/TextField/TextField.tsx",
+          "name": "TextFieldProps"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "boolean | undefined"
+      }
+    },
+    "onClear": {
+      "defaultValue": null,
+      "description": "Callback when clear button is clicked",
+      "name": "onClear",
+      "parent": {
+        "fileName": "design-system/packages/form/src/beta/TextField/TextField.tsx",
+        "name": "TextFieldProps"
+      },
+      "declarations": [
+        {
+          "fileName": "design-system/packages/form/src/beta/TextField/TextField.tsx",
+          "name": "TextFieldProps"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "(() => void) | undefined"
+      }
+    },
+    "onChange": {
+      "defaultValue": null,
+      "description": "Callback when input value changes",
+      "name": "onChange",
+      "parent": {
+        "fileName": "design-system/packages/form/src/beta/TextField/TextField.tsx",
+        "name": "TextFieldProps"
+      },
+      "declarations": [
+        {
+          "fileName": "design-system/packages/form/src/beta/TextField/TextField.tsx",
+          "name": "TextFieldProps"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "((event: ChangeEvent<HTMLInputElement>) => void) | undefined"
+      }
+    },
+    "onFocus": {
+      "defaultValue": null,
+      "description": "Callback when input is focused",
+      "name": "onFocus",
+      "parent": {
+        "fileName": "design-system/packages/form/src/beta/TextField/TextField.tsx",
+        "name": "TextFieldProps"
+      },
+      "declarations": [
+        {
+          "fileName": "design-system/packages/form/src/beta/TextField/TextField.tsx",
+          "name": "TextFieldProps"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "((event: FocusEvent<HTMLInputElement, Element>) => void) | undefined"
+      }
+    },
+    "onBlur": {
+      "defaultValue": null,
+      "description": "Callback when input loses focus",
+      "name": "onBlur",
+      "parent": {
+        "fileName": "design-system/packages/form/src/beta/TextField/TextField.tsx",
+        "name": "TextFieldProps"
+      },
+      "declarations": [
+        {
+          "fileName": "design-system/packages/form/src/beta/TextField/TextField.tsx",
+          "name": "TextFieldProps"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "((event: FocusEvent<HTMLInputElement, Element>) => void) | undefined"
+      }
+    },
+    "inputProps": {
+      "defaultValue": null,
+      "description": "Additional input props",
+      "name": "inputProps",
+      "parent": {
+        "fileName": "design-system/packages/form/src/beta/TextField/TextField.tsx",
+        "name": "TextFieldProps"
+      },
+      "declarations": [
+        {
+          "fileName": "design-system/packages/form/src/beta/TextField/TextField.tsx",
+          "name": "TextFieldProps"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "InputHTMLAttributes<HTMLInputElement> | undefined"
       }
     }
   }
-]
+}

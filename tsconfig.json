@@ -8,6 +8,7 @@
   ],
   "compilerOptions": {
     "baseUrl": ".",
+    "moduleResolution": "bundler",
     "paths": {
       "@entur/*": ["packages/*/dist"],
       "~*": ["src/*"],

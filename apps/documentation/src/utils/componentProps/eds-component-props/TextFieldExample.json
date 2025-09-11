@@ -1,0 +1,7 @@
+{
+  "tags": {},
+  "description": "Example usage of the beta TextField component\nThis demonstrates all the key features and props\n\nNote: This example shows manual validation for demonstration.\nIn real applications, you would use validation libraries like:\n- react-hook-form\n- formik\n- yup\n- zod",
+  "displayName": "TextFieldExample",
+  "methods": [],
+  "props": {}
+}
