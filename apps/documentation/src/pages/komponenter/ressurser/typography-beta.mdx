@@ -8,7 +8,7 @@ npmPackage: typography
 tags: avsnitt, tekst, typo, overskrift, heading, ingress, lead, fet, kursiv, link, sitat, blockquote
 ---
 
-import { Heading, Text, LinkBeta, BlockquoteBeta, BlockquoteFooterBeta, UnorderedListBeta, NumberedListBeta, ListItemBeta } from "@entur/typography";
+import { Heading, Text, Link, Blockquote, BlockquoteFooter, UnorderedList, NumberedList, ListItem } from "@entur/typography/beta";
 import { BannerAlertBox } from "@entur/alert";
 
 <PageHeader />
@@ -215,14 +215,14 @@ Baseklasser har **ingen margin som standard** (`margin: 0`), men `variant` tar s
 ### Blockquote med footer
 
 ````jsx
-<BlockquoteBeta> Entur gjør det enklere å reise kollektivt  <BlockquoteFooterBeta>Ola Nordmann, Entur</BlockquoteFooterBeta></BlockquoteBeta>
+<Blockquote> Entur gjør det enklere å reise kollektivt  <BlockquoteFooter>Ola Nordmann, Entur</BlockquoteFooter></Blockquote>
 ````
 
 ### Link
 
 ````jsx
-<LinkBeta href="https://entur.no/">Reiseplanleggeren til Entur</LinkBeta>
-<LinkBeta href="https://entur.no/" external>Reiseplanleggeren til Entur</LinkBeta>
+<Link href="https://entur.no/">Reiseplanleggeren til Entur</Link>
+<Link href="https://entur.no/" external>Reiseplanleggeren til Entur</Link>
 ````
 
 ### Lists
@@ -230,31 +230,31 @@ Baseklasser har **ingen margin som standard** (`margin: 0`), men `variant` tar s
 #### Unordered List
 
 ````jsx
-<UnorderedListBeta spacing="md">
-  <ListItemBeta>First item</ListItemBeta>
-  <ListItemBeta>Second item</ListItemBeta>
-  <ListItemBeta>Third item</ListItemBeta>
-</UnorderedListBeta>
+<UnorderedList spacing="md">
+  <ListItem>First item</ListItem>
+  <ListItem>Second item</ListItem>
+  <ListItem>Third item</ListItem>
+</UnorderedList>
 ````
 
 #### Numbered List
 
 ````jsx
-<NumberedListBeta type="A" spacing="lg">
-  <ListItemBeta>Step 1</ListItemBeta>
-  <ListItemBeta>Step 2</ListItemBeta>
-  <ListItemBeta>Step 3</ListItemBeta>
-</NumberedListBeta>
+<NumberedList type="A" spacing="lg">
+  <ListItem>Step 1</ListItem>
+  <ListItem>Step 2</ListItem>
+  <ListItem>Step 3</ListItem>
+</NumberedList>
 ````
 
 #### List Items with Titles
 
 ````jsx
-<UnorderedListBeta>
-  <ListItemBeta title="Important">This is an important item</ListItemBeta>
-  <ListItemBeta title="Note">This is a note item</ListItemBeta>
-  <ListItemBeta>Regular item without title</ListItemBeta>
-</UnorderedListBeta>
+<UnorderedList>
+  <ListItem title="Important">This is an important item</ListItem>
+  <ListItem title="Note">This is a note item</ListItem>
+  <ListItem>Regular item without title</ListItem>
+</UnorderedList>
 ````
 
 #### List Types
@@ -263,39 +263,39 @@ Numbered lists support different numbering styles:
 
 ````jsx
 // Decimal (1, 2, 3)
-<NumberedListBeta type="1">
-  <ListItemBeta>First item</ListItemBeta>
-  <ListItemBeta>Second item</ListItemBeta>
-  <ListItemBeta>Third item</ListItemBeta>
-</NumberedListBeta>
+<NumberedList type="1">
+  <ListItem>First item</ListItem>
+  <ListItem>Second item</ListItem>
+  <ListItem>Third item</ListItem>
+</NumberedList>
 
 // Upper Alpha (A, B, C)
-<NumberedListBeta type="A">
-  <ListItemBeta>First item</ListItemBeta>
-  <ListItemBeta>Second item</ListItemBeta>
-  <ListItemBeta>Third item</ListItemBeta>
-</NumberedListBeta>
+<NumberedList type="A">
+  <ListItem>First item</ListItem>
+  <ListItem>Second item</ListItem>
+  <ListItem>Third item</ListItem>
+</NumberedList>
 
 // Lower Alpha (a, b, c)
-<NumberedListBeta type="a">
-  <ListItemBeta>First item</ListItemBeta>
-  <ListItemBeta>Second item</ListItemBeta>
-  <ListItemBeta>Third item</ListItemBeta>
-</NumberedListBeta>
+<NumberedList type="a">
+  <ListItem>First item</ListItem>
+  <ListItem>Second item</ListItem>
+  <ListItem>Third item</ListItem>
+</NumberedList>
 
 // Upper Roman (I, II, III)
-<NumberedListBeta type="I">
-  <ListItemBeta>First item</ListItemBeta>
-  <ListItemBeta>Second item</ListItemBeta>
-  <ListItemBeta>Third item</ListItemBeta>
-</NumberedListBeta>
+<NumberedList type="I">
+  <ListItem>First item</ListItem>
+  <ListItem>Second item</ListItem>
+  <ListItem>Third item</ListItem>
+</NumberedList>
 
 // Lower Roman (i, ii, iii)
-<NumberedListBeta type="i">
-  <ListItemBeta>First item</ListItemBeta>
-  <ListItemBeta>Second item</ListItemBeta>
-  <ListItemBeta>Third item</ListItemBeta>
-</NumberedListBeta>
+<NumberedList type="i">
+  <ListItem>First item</ListItem>
+  <ListItem>Second item</ListItem>
+  <ListItem>Third item</ListItem>
+</NumberedList>
 ````
 
 
@@ -414,14 +414,14 @@ SubParagraph → <Text as="p" variant="subparagraph">
 
 <Props componentName="Text" />
 
-### LinkBeta
+### Link
 
-<Props componentName="LinkBeta" />
+<Props componentName="Link" />
 
-### BlockquoteBeta
+### Blockquote
 
-<Props componentName="BlockquoteBeta" />
+<Props componentName="Blockquote" />
 
-### BlockquoteFooterBeta
+### BlockquoteFooter
 
-<Props componentName="BlockquoteFooterBeta" />
+<Props componentName="BlockquoteFooter" />
