@@ -4,28 +4,13 @@
   "displayName": "Text",
   "methods": [],
   "props": {
-    "as": {
-      "defaultValue": null,
-      "description": "HTML-element eller React-komponent som rendres",
-      "name": "as",
-      "declarations": [
-        {
-          "fileName": "design-system/packages/typography/src/beta/Text.tsx",
-          "name": "TypeLiteral"
-        }
-      ],
-      "required": false,
-      "type": {
-        "name": "\"symbol\" | \"object\" | \"a\" | \"abbr\" | \"address\" | \"area\" | \"article\" | \"aside\" | \"audio\" | \"b\" | \"base\" | \"bdi\" | \"bdo\" | \"big\" | \"blockquote\" | \"body\" | \"br\" | \"button\" | \"canvas\" | ... 161 more ... | undefined"
-      }
-    },
     "size": {
       "defaultValue": null,
       "description": "Visuell tekststørrelse (typografi-token)",
       "name": "size",
       "declarations": [
         {
-          "fileName": "design-system/packages/typography/src/beta/Text.tsx",
+          "fileName": "design-system/packages/typography/src/beta/components/Text.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -42,7 +27,7 @@
       "name": "weight",
       "declarations": [
         {
-          "fileName": "design-system/packages/typography/src/beta/Text.tsx",
+          "fileName": "design-system/packages/typography/src/beta/components/Text.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -57,7 +42,7 @@
       "name": "variant",
       "declarations": [
         {
-          "fileName": "design-system/packages/typography/src/beta/Text.tsx",
+          "fileName": "design-system/packages/typography/src/beta/components/Text.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -72,28 +57,22 @@
       "name": "children",
       "declarations": [
         {
-          "fileName": "design-system/packages/typography/src/beta/Text.tsx",
+          "fileName": "design-system/packages/typography/src/beta/components/Text.tsx",
           "name": "TypeLiteral"
-        },
-        {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
-          "name": "DOMAttributes"
         }
       ],
-      "required": false,
+      "required": true,
       "type": {
         "name": "ReactNode"
       }
     },
     "spacing": {
-      "defaultValue": {
-        "value": "md"
-      },
+      "defaultValue": null,
       "description": "Spacing around the component",
       "name": "spacing",
       "declarations": [
         {
-          "fileName": "design-system/packages/typography/src/beta/Text.tsx",
+          "fileName": "design-system/packages/typography/src/beta/components/Text.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -108,17 +87,28 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "design-system/packages/typography/src/beta/Text.tsx",
+          "fileName": "design-system/packages/typography/src/beta/components/Text.tsx",
           "name": "TypeLiteral"
-        },
-        {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
-          "name": "HTMLAttributes"
         }
       ],
       "required": false,
       "type": {
         "name": "string | undefined"
+      }
+    },
+    "as": {
+      "defaultValue": null,
+      "description": "An override of the default HTML tag.\nCan also be another React component.",
+      "name": "as",
+      "declarations": [
+        {
+          "fileName": "design-system/node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "ElementType<any> | undefined"
       }
     }
   }

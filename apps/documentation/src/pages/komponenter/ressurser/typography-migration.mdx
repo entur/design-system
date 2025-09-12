@@ -20,7 +20,7 @@ Migreringsscriptet er laget basert på frontend-repoer vi forvalter, derfor vil 
 - **Konsekvenser**:
   - `<Heading1 className="ditt-klassenavn">` blir `<Heading className="ditt-klassenavn" as="h1" variant="title-1">`
   - `<Paragraph>` blir `<Text variant="paragraph">`
-  - `<Link>` blir `<LinkBeta>`
+  - `<Link>` blir `<Link>` (fra @entur/typography/beta)
   - Dine props og CSS-klasser blir med videre, derfor er det viktig å sjekke hva du overstyrer.
 - **Når bruke denne**: Når du vil migrere til det nye systemet umiddelbart
 - **⚠️ Viktig**: Test grundig etter migrering!
@@ -213,27 +213,27 @@ function MyComponent() {
   <TableBody>
     <TableRow>
       <DataCell><CodeText>Link</CodeText></DataCell>
-      <DataCell><CodeText>LinkBeta</CodeText></DataCell>
+      <DataCell><CodeText>Link</CodeText></DataCell>
     </TableRow>
     <TableRow>
       <DataCell><CodeText>Blockquote</CodeText></DataCell>
-      <DataCell><CodeText>BlockquoteBeta</CodeText></DataCell>
+      <DataCell><CodeText>Blockquote</CodeText></DataCell>
     </TableRow>
     <TableRow>
       <DataCell><CodeText>BlockquoteFooter</CodeText></DataCell>
-      <DataCell><CodeText>BlockquoteFooterBeta</CodeText></DataCell>
+      <DataCell><CodeText>BlockquoteFooter</CodeText></DataCell>
     </TableRow>
     <TableRow>
       <DataCell><CodeText>UnorderedList</CodeText></DataCell>
-      <DataCell><CodeText>UnorderedListBeta</CodeText></DataCell>
+      <DataCell><CodeText>UnorderedList</CodeText></DataCell>
     </TableRow>
     <TableRow>
       <DataCell><CodeText>NumberedList</CodeText></DataCell>
-      <DataCell><CodeText>NumberedListBeta</CodeText></DataCell>
+      <DataCell><CodeText>NumberedList</CodeText></DataCell>
     </TableRow>
     <TableRow>
       <DataCell><CodeText>ListItem</CodeText></DataCell>
-      <DataCell><CodeText>ListItemBeta</CodeText></DataCell>
+      <DataCell><CodeText>ListItem</CodeText></DataCell>
     </TableRow>
   </TableBody>
 </Table>

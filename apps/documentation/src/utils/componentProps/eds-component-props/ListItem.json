@@ -1,59 +1,85 @@
-[
-  {
-    "tags": {},
-    "description": "",
-    "displayName": "ListItem",
-    "methods": [],
-    "props": {
-      "className": {
-        "defaultValue": null,
-        "description": "Ekstra klassenavn",
-        "name": "className",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/typography/src/ListItem.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "string | undefined"
+{
+  "tags": {
+    "beta": "Experimental component - may have breaking changes in future releases"
+  },
+  "description": "",
+  "displayName": "ListItem",
+  "methods": [],
+  "props": {
+    "className": {
+      "defaultValue": null,
+      "description": "Ekstra klassenavn",
+      "name": "className",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/typography/src/beta/components/ListItem.tsx",
+          "name": "TypeLiteral"
         }
-      },
-      "children": {
-        "defaultValue": null,
-        "description": "Innholdet",
-        "name": "children",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/typography/src/ListItem.tsx",
-            "name": "TypeLiteral"
-          },
-          {
-            "fileName": "design-system/node_modules/@types/react/index.d.ts",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "ReactNode"
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "children": {
+      "defaultValue": null,
+      "description": "Innholdet",
+      "name": "children",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/typography/src/beta/components/ListItem.tsx",
+          "name": "TypeLiteral"
         }
-      },
-      "title": {
-        "defaultValue": null,
-        "description": "Tittel",
-        "name": "title",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/typography/src/ListItem.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "ReactNode"
+      ],
+      "required": true,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "title": {
+      "defaultValue": null,
+      "description": "Tittel",
+      "name": "title",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/typography/src/beta/components/ListItem.tsx",
+          "name": "TypeLiteral"
         }
+      ],
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "spacing": {
+      "defaultValue": null,
+      "description": "Spacing around the component (same as Text and Heading components)",
+      "name": "spacing",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/typography/src/beta/components/ListItem.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "TypographySpacing | undefined"
+      }
+    },
+    "as": {
+      "defaultValue": null,
+      "description": "An override of the default HTML tag.\nCan also be another React component.",
+      "name": "as",
+      "declarations": [
+        {
+          "fileName": "design-system/node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "ElementType<any> | undefined"
       }
     }
   }
-]
+}
