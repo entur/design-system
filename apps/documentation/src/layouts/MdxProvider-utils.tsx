@@ -19,11 +19,11 @@ import {
 import {
   Heading,
   Text,
-  LinkBeta,
-  UnorderedListBeta,
-  NumberedListBeta,
-  ListItemBeta,
-} from '@entur/typography';
+  Link,
+  UnorderedList,
+  NumberedList,
+  ListItem,
+} from '@entur/typography/beta';
 import {
   Table,
   TableHead,
@@ -94,23 +94,23 @@ const components = {
   h5: (props: any) => <Heading as="h5" variant="section-1" {...props} />,
   h6: (props: any) => <Heading as="h6" variant="section-2" {...props} />,
   p: (props: any) => <Text variant="paragraph" {...props} />,
-  a: (props: any) => <LinkBeta {...props} />,
+  a: (props: any) => <Link {...props} />,
   strong: (props: any) => (
     <Text as="strong" variant="emphasized" weight="semibold" {...props} />
   ),
   inlineCode: (props: any) => <Text as="code" variant="code" {...props} />,
-  ul: (props: any) => <UnorderedListBeta {...props} />,
-  li: (props: any) => <ListItemBeta {...props} />,
-  ol: (props: any) => <NumberedListBeta {...props} />,
+  ul: (props: any) => <UnorderedList {...props} />,
+  li: (props: any) => <ListItem {...props} />,
+  ol: (props: any) => <NumberedList {...props} />,
   // Individual component mappings
   Paragraph: (props: any) => <Text variant="paragraph" {...props} />,
   StrongText: (props: any) => (
     <Text as="strong" variant="emphasized" weight="semibold" {...props} />
   ),
   EmphasizedText: (props: any) => <Text variant="emphasized" {...props} />,
-  UnorderedList: (props: any) => <UnorderedListBeta {...props} />,
-  ListItem: (props: any) => <ListItemBeta {...props} />,
-  NumberedList: (props: any) => <NumberedListBeta {...props} />,
+  UnorderedList: (props: any) => <UnorderedList {...props} />,
+  ListItem: (props: any) => <ListItem {...props} />,
+  NumberedList: (props: any) => <NumberedList {...props} />,
   GridContainer,
   GridItem,
   Heading1: (props: any) => <Heading as="h1" variant="title-1" {...props} />,
@@ -119,7 +119,7 @@ const components = {
   Heading4: (props: any) => <Heading as="h4" variant="subtitle-2" {...props} />,
   Heading5: (props: any) => <Heading as="h5" variant="section-1" {...props} />,
   Heading6: (props: any) => <Heading as="h6" variant="section-2" {...props} />,
-  LinkText: (props: any) => <LinkBeta {...props} />,
+  LinkText: (props: any) => <Link {...props} />,
   LeadParagraph: (props: any) => <Text variant="lead" {...props} />,
   SubParagraph: (props: any) => <Text variant="small" {...props} />,
   BannerAlertBox,

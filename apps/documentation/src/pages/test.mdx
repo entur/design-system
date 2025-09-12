@@ -7,7 +7,7 @@ menu: test
 npmPackage: typography
 ---
 
-import { Heading, Text, LinkBeta, BlockquoteBeta, BlockquoteFooterBeta, UnorderedListBeta, NumberedListBeta, ListItemBeta } from "@entur/typography";
+import { Heading, Text, Link, Blockquote, BlockquoteFooter, UnorderedList, NumberedList, ListItem } from "@entur/typography/beta";
 
 <>
 <Heading as="h1" variant="title-1" >Fremtiden for Bærekraftig Transport</Heading>
@@ -30,7 +30,7 @@ import { Heading, Text, LinkBeta, BlockquoteBeta, BlockquoteFooterBeta, Unordere
 
 <Text variant="paragraph" >
   Transportsektoren står for en betydelig del av de globale utslippene, og det er 
-  derfor avgjørende at vi finner innovative løsninger. <LinkBeta href="https://entur.no">Entur</LinkBeta> 
+  derfor avgjørende at vi finner innovative løsninger. <Link href="https://entur.no">Entur</Link> 
   jobber aktivt med å utvikle bærekraftige transportalternativer som kan redusere 
   miljøpåvirkningen betydelig.
 </Text>
@@ -44,12 +44,12 @@ import { Heading, Text, LinkBeta, BlockquoteBeta, BlockquoteFooterBeta, Unordere
   bærekraftig transportsystem:
 </Text>
 
-<UnorderedListBeta >
-  <ListItemBeta title="Karbonutslipp">Transportsektoren står for over 20% av globale CO₂-utslipp</ListItemBeta>
-  <ListItemBeta title="Luftkvalitet">Byer over hele verden sliter med dårlig luftkvalitet</ListItemBeta>
-  <ListItemBeta title="Trafikksituasjon">Køer og trafikkork skaper ineffektivitet og frustrasjon</ListItemBeta>
-  <ListItemBeta title="Infrastruktur">Eksisterende infrastruktur er ikke tilpasset fremtidens behov</ListItemBeta>
-</UnorderedListBeta>
+<UnorderedList >
+  <ListItem title="Karbonutslipp">Transportsektoren står for over 20% av globale CO₂-utslipp</ListItem>
+  <ListItem title="Luftkvalitet">Byer over hele verden sliter med dårlig luftkvalitet</ListItem>
+  <ListItem title="Trafikksituasjon">Køer og trafikkork skaper ineffektivitet og frustrasjon</ListItem>
+  <ListItem title="Infrastruktur">Eksisterende infrastruktur er ikke tilpasset fremtidens behov</ListItem>
+</UnorderedList>
 
 <Heading as="h2" variant="title-2" >Løsningsforslag</Heading>
 
@@ -70,12 +70,12 @@ import { Heading, Text, LinkBeta, BlockquoteBeta, BlockquoteFooterBeta, Unordere
   og teknologien forbedres stadig.
 </Text>
 
-<NumberedListBeta type="1" >
-  <ListItemBeta>Utvikling av mer effektive batterier med lengre rekkevidde</ListItemBeta>
-  <ListItemBeta>Raskere ladeløsninger som reduserer ventetid</ListItemBeta>
-  <ListItemBeta>Integrasjon med fornybar energi for å sikre grønn strøm</ListItemBeta>
-  <ListItemBeta>Smart ladestasjoner som kan balansere energibehovet</ListItemBeta>
-</NumberedListBeta>
+<NumberedList type="1" >
+  <ListItem>Utvikling av mer effektive batterier med lengre rekkevidde</ListItem>
+  <ListItem>Raskere ladeløsninger som reduserer ventetid</ListItem>
+  <ListItem>Integrasjon med fornybar energi for å sikre grønn strøm</ListItem>
+  <ListItem>Smart ladestasjoner som kan balansere energibehovet</ListItem>
+</NumberedList>
 
 <Heading as="h4" variant="title-4" >Kollektivtransport 2.0</Heading>
 
@@ -85,15 +85,15 @@ import { Heading, Text, LinkBeta, BlockquoteBeta, BlockquoteFooterBeta, Unordere
   hvordan vi tenker på offentlig transport.
 </Text>
 
-<BlockquoteBeta >
+<Blockquote >
   <Text variant="paragraph">
     "Fremtidens transport handler ikke om å eie kjøretøy, men om å ha tilgang 
     til mobilitet når du trenger det."
   </Text>
-  <BlockquoteFooterBeta>
+  <BlockquoteFooter>
     — Transportforsker, NTNU
-  </BlockquoteFooterBeta>
-</BlockquoteBeta>
+  </BlockquoteFooter>
+</Blockquote>
 
 <Heading as="h2" variant="title-2" >Teknologiske gjennombrudd</Heading>
 
@@ -106,12 +106,12 @@ import { Heading, Text, LinkBeta, BlockquoteBeta, BlockquoteFooterBeta, Unordere
   transportteknologi. Disse systemene kan potensielt:
 </Text>
 
-<UnorderedListBeta >
-  <ListItemBeta>Redusere ulykker betydelig gjennom avansert sensorsystemer</ListItemBeta>
-  <ListItemBeta>Optimalisere trafikkflyt og redusere køer</ListItemBeta>
-  <ListItemBeta>Gjøre transport mer tilgjengelig for eldre og funksjonshemmede</ListItemBeta>
-  <ListItemBeta>Eliminere behovet for parkeringsplasser i bykjerner</ListItemBeta>
-</UnorderedListBeta>
+<UnorderedList >
+  <ListItem>Redusere ulykker betydelig gjennom avansert sensorsystemer</ListItem>
+  <ListItem>Optimalisere trafikkflyt og redusere køer</ListItem>
+  <ListItem>Gjøre transport mer tilgjengelig for eldre og funksjonshemmede</ListItem>
+  <ListItem>Eliminere behovet for parkeringsplasser i bykjerner</ListItem>
+</UnorderedList>
 
 <Heading as="h4" variant="title-4" >Smart infrastruktur</Heading>
 
@@ -120,12 +120,12 @@ import { Heading, Text, LinkBeta, BlockquoteBeta, BlockquoteFooterBeta, Unordere
   kjøretøyene og optimalisere trafikkflyten i sanntid.
 </Text>
 
-<NumberedListBeta type="A" >
-  <ListItemBeta>IoT-sensorer som overvåker trafikk og miljøforhold</ListItemBeta>
-  <ListItemBeta>AI-systemer som predikerer og forhindrer trafikkork</ListItemBeta>
-  <ListItemBeta>Dynamiske trafikklys som tilpasser seg reelle forhold</ListItemBeta>
-  <ListItemBeta>Integrerte betalingsløsninger for sømløs brukeropplevelse</ListItemBeta>
-</NumberedListBeta>
+<NumberedList type="A" >
+  <ListItem>IoT-sensorer som overvåker trafikk og miljøforhold</ListItem>
+  <ListItem>AI-systemer som predikerer og forhindrer trafikkork</ListItem>
+  <ListItem>Dynamiske trafikklys som tilpasser seg reelle forhold</ListItem>
+  <ListItem>Integrerte betalingsløsninger for sømløs brukeropplevelse</ListItem>
+</NumberedList>
 
 <Heading as="h2" variant="title-2" >Implementeringsstrategier</Heading>
 
@@ -143,12 +143,12 @@ import { Heading, Text, LinkBeta, BlockquoteBeta, BlockquoteFooterBeta, Unordere
   støtte fremtidens transportløsninger.
 </Text>
 
-<NumberedListBeta type="i" >
-  <ListItemBeta>Utbygging av ladestasjoner for elektriske kjøretøy</ListItemBeta>
-  <ListItemBeta>Modernisering av eksisterende kollektivtransport</ListItemBeta>
-  <ListItemBeta>Implementering av smarte trafikksystemer</ListItemBeta>
-  <ListItemBeta>Utvikling av integrerte betalingsløsninger</ListItemBeta>
-</NumberedListBeta>
+<NumberedList type="i" >
+  <ListItem>Utbygging av ladestasjoner for elektriske kjøretøy</ListItem>
+  <ListItem>Modernisering av eksisterende kollektivtransport</ListItem>
+  <ListItem>Implementering av smarte trafikksystemer</ListItem>
+  <ListItem>Utvikling av integrerte betalingsløsninger</ListItem>
+</NumberedList>
 
 <Heading as="h4" variant="title-4" >Fase 2: Teknologiintegrasjon</Heading>
 
@@ -173,26 +173,26 @@ import { Heading, Text, LinkBeta, BlockquoteBeta, BlockquoteFooterBeta, Unordere
   store økonomiske gevinster på lang sikt.
 </Text>
 
-<BlockquoteBeta >
+<Blockquote >
   <Text variant="paragraph">
     "Hver krone investert i bærekraftig transport kan spare samfunnet for 
     flere kroner i reduserte helsekostnader og miljøskader."
   </Text>
-  <BlockquoteFooterBeta>
+  <BlockquoteFooter>
     — Økonomisk analyse, Transportøkonomisk institutt
-  </BlockquoteFooterBeta>
-</BlockquoteBeta>
+  </BlockquoteFooter>
+</Blockquote>
 
 <Text variant="paragraph" >
   Investeringer i bærekraftig transport kan gi avkastning gjennom:
 </Text>
 
-<UnorderedListBeta >
-  <ListItemBeta title="Reduserte helsekostnader">Bedre luftkvalitet reduserer respiratoriske sykdommer</ListItemBeta>
-  <ListItemBeta title="Økt produktivitet">Mindre køer og raskere transport øker arbeidsproduktiviteten</ListItemBeta>
-  <ListItemBeta title="Nye arbeidsplasser">Grønn transport skaper nye jobber innen teknologi og service</ListItemBeta>
-  <ListItemBeta title="Turisme og næringsliv">Bedre transporttilbud tiltrekker seg bedrifter og turister</ListItemBeta>
-</UnorderedListBeta>
+<UnorderedList >
+  <ListItem title="Reduserte helsekostnader">Bedre luftkvalitet reduserer respiratoriske sykdommer</ListItem>
+  <ListItem title="Økt produktivitet">Mindre køer og raskere transport øker arbeidsproduktiviteten</ListItem>
+  <ListItem title="Nye arbeidsplasser">Grønn transport skaper nye jobber innen teknologi og service</ListItem>
+  <ListItem title="Turisme og næringsliv">Bedre transporttilbud tiltrekker seg bedrifter og turister</ListItem>
+</UnorderedList>
 
 <Heading as="h2" variant="title-2" >Konklusjon</Heading>
 
@@ -206,7 +206,7 @@ import { Heading, Text, LinkBeta, BlockquoteBeta, BlockquoteFooterBeta, Unordere
 </Text>
 
 <Text variant="paragraph" >
-  <LinkBeta href="/transport-fremtiden">Les mer om våre transportvisjoner</LinkBeta> 
+  <Link href="/transport-fremtiden">Les mer om våre transportvisjoner</Link> 
   og hvordan vi jobber for å realisere dem. Tiden for handling er nå, og 
   sammen kan vi skape en bedre fremtid for alle.
 </Text>
