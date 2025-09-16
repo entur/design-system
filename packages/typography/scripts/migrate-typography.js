@@ -632,7 +632,23 @@ function propsToString(props, originalSyntax = {}) {
         if (originalSyntax[key] === 'string') {
           return `${key}="${value}"`;
         } else if (originalSyntax[key] === 'jsx') {
-          return `${key}={${value}}`;
+          // Check if the JSX expression is actually a string literal (e.g., 'a' or "a")
+          if (
+            typeof value === 'string' &&
+            ((value.startsWith("'") &&
+              value.endsWith("'") &&
+              value.length > 1) ||
+              (value.startsWith('"') &&
+                value.endsWith('"') &&
+                value.length > 1))
+          ) {
+            // It's a string literal in JSX, convert to string prop
+            const stringValue = value.slice(1, -1); // Remove quotes
+            return `${key}="${stringValue}"`;
+          } else {
+            // It's a real JSX expression, keep as is
+            return `${key}={${value}}`;
+          }
         } else if (originalSyntax[key] === 'boolean') {
           return value ? key : '';
         } else {
@@ -679,9 +695,14 @@ function updateImports(content) {
       .filter(comp => comp);
 
     // Check if any of the imported components need migration
-    const needsMigration = components.some(comp =>
-      Object.keys(COMPONENT_MAPPING).includes(comp),
-    );
+    // Need to check both the full import (e.g., "Link as Li") and just the component name (e.g., "Link")
+    const needsMigration = components.some(comp => {
+      // Extract the actual component name from aliased imports
+      const componentName = comp.includes(' as ')
+        ? comp.split(' as ')[0].trim()
+        : comp;
+      return Object.keys(COMPONENT_MAPPING).includes(componentName);
+    });
 
     if (!needsMigration) {
       // No migration needed, keep the import as is
@@ -691,15 +712,22 @@ function updateImports(content) {
     let updatedImportList = importList;
     let hasChanges = false;
     const uniqueComponents = new Set();
+    const processedComponents = new Set(); // Track which components we've already processed
 
     // First, collect all existing components that should be preserved
     const existingComponents = components.filter(comp => {
+      // Extract the actual component name from aliased imports
+      const componentName = comp.includes(' as ')
+        ? comp.split(' as ')[0].trim()
+        : comp;
+
       // Keep components that are:
       // 1. Not in the migration mapping (old components), OR
       // 2. Are the target components (new beta components)
-      const isOldComponent = Object.keys(COMPONENT_MAPPING).includes(comp);
+      const isOldComponent =
+        Object.keys(COMPONENT_MAPPING).includes(componentName);
       const isTargetComponent = Object.values(COMPONENT_MAPPING).some(
-        mapping => mapping.component === comp,
+        mapping => mapping.component === componentName,
       );
 
       return !isOldComponent || isTargetComponent;
@@ -707,14 +735,38 @@ function updateImports(content) {
 
     // Then, update components that need migration
     Object.entries(COMPONENT_MAPPING).forEach(([oldComponent, mapping]) => {
-      const componentRegex = new RegExp(`\\b${oldComponent}\\b`, 'g');
-      if (componentRegex.test(updatedImportList)) {
-        updatedImportList = updatedImportList.replace(
-          componentRegex,
-          mapping.component,
-        );
-        uniqueComponents.add(mapping.component);
-        hasChanges = true;
+      // Check if this old component exists in any form (aliased or not)
+      const hasComponent = components.some(comp => {
+        const componentName = comp.includes(' as ')
+          ? comp.split(' as ')[0].trim()
+          : comp;
+        return componentName === oldComponent;
+      });
+
+      if (hasComponent && !processedComponents.has(oldComponent)) {
+        // Replace the old component with the new one, preserving aliases
+        const componentRegex = new RegExp(`\\b${oldComponent}\\b`, 'g');
+        if (componentRegex.test(updatedImportList)) {
+          updatedImportList = updatedImportList.replace(
+            componentRegex,
+            mapping.component,
+          );
+
+          // Only add to uniqueComponents if the component isn't already present in aliased form
+          const componentAlreadyPresent = components.some(comp => {
+            const componentName = comp.includes(' as ')
+              ? comp.split(' as ')[0].trim()
+              : comp;
+            return componentName === mapping.component;
+          });
+
+          if (!componentAlreadyPresent) {
+            uniqueComponents.add(mapping.component);
+          }
+
+          processedComponents.add(oldComponent);
+          hasChanges = true;
+        }
       }
     });
 
@@ -791,18 +843,27 @@ function updateComponents(content) {
           delete newProps.as;
           delete newProps.variant;
 
-          // Ensure mapping props come first
-          const orderedProps = {};
-          if (newProps.spacing) {
-            orderedProps.spacing = newProps.spacing;
-            delete newProps.spacing;
-          }
-          Object.assign(orderedProps, newProps);
+          // Create props object with as and variant, preserving original syntax
+          const headingProps = {
+            as: asValue,
+            variant: variantValue,
+            ...newProps,
+          };
 
-          const propsString = propsToString(orderedProps, originalSyntax);
+          // Create original syntax object for as and variant
+          const headingOriginalSyntax = {
+            as: originalSyntax.as || 'string',
+            variant: originalSyntax.variant || 'string',
+            ...originalSyntax,
+          };
+
+          const propsString = propsToString(
+            headingProps,
+            headingOriginalSyntax,
+          );
           const spreadPropsString =
             spreadProps.length > 0 ? ` {...${spreadProps.join(', ...')}}` : '';
-          return `<Heading as="${asValue}" variant="${variantValue}"${propsString}${spreadPropsString}>`;
+          return `<Heading${propsString}${spreadPropsString}>`;
         }
 
         // Handle Label components with special case for htmlFor prop
@@ -1383,4 +1444,6 @@ export {
   generateMigrationReport,
   COMPONENT_MAPPING,
   PROPS_MAPPING,
+  parseJSXProps,
+  propsToString,
 };
