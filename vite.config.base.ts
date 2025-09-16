@@ -33,6 +33,7 @@ export const createBaseConfig = (): UserConfig =>
     },
     css: {
       modules: false,
+      postcss: './postcss.config.mjs',
       preprocessorOptions: {
         scss: {
           loadPaths: [
