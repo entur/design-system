@@ -3,6 +3,48 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.1](https://github.com/entur/design-system/compare/@entur/typography@1.9.14...@entur/typography@2.0.0-beta.1) (2025-09-22)
+
+### Bug Fixes
+
+- **code-playground:** add correct wrapper to snippets ([ef51e92](https://github.com/entur/design-system/commit/ef51e9285bc57f9a75bb9f0b146fb5227218123c))
+- **repo:** typos ([38cd65c](https://github.com/entur/design-system/commit/38cd65c489f3476379eeb3015ebeb1a43d024146))
+- **typography beta:** fix migration issues for aliased imports ([30d2825](https://github.com/entur/design-system/commit/30d28250013a149192038f6a983e8706e09cd921))
+- **typography-beta:** add new styles in new betastructure ([f41098a](https://github.com/entur/design-system/commit/f41098a385b5b4f18dfc7064155b9509a5800b68))
+- **typography:** beta add spacing utils ([071fb1c](https://github.com/entur/design-system/commit/071fb1caac8c8f704f7621360df31b629e3e5ec7))
+- **typography:** beta fixes after review ([88ba11e](https://github.com/entur/design-system/commit/88ba11ec991adb98a1955881091605bb73917fa4))
+- **typography:** beta spacing ([73d68c8](https://github.com/entur/design-system/commit/73d68c8ad4eeddd4b8aad6a11a146ed7d8f183f0))
+- **typography:** fix migration ([3903602](https://github.com/entur/design-system/commit/3903602dc3906573f1f89eb36bf5158101de9605))
+- **typography:** fix migration ([5c7f2dd](https://github.com/entur/design-system/commit/5c7f2dd7d978ca8cda5e6ab7667297fb70becb22))
+- **typography:** migrate jsx props correctly ([af7f23a](https://github.com/entur/design-system/commit/af7f23a225bbcb9ab04610c07578a33846d8c0c7))
+- **typography:** migration script should not replace props ([6052ae2](https://github.com/entur/design-system/commit/6052ae2f9e5e9162a67d931d7cbeb5a615faaf0a))
+- **typography:** small css tweek on code-text ([e64a066](https://github.com/entur/design-system/commit/e64a0664242472a2918d3a908c5ef0899ea912fd))
+- **typography:** small fixes to beta typography ([8cbf71e](https://github.com/entur/design-system/commit/8cbf71e38dfc367178214344b3411a802456de7b))
+- **typography:** styling lists ([f05abd5](https://github.com/entur/design-system/commit/f05abd57acc475e5b3bad4dcb17bce777cb6f00b))
+- **typography:** tweek migration script and guide ([3d05df5](https://github.com/entur/design-system/commit/3d05df52041acb838cc713e103dcecb5be0b7b08))
+- **typography:** tweek migration script and guide ([57520ff](https://github.com/entur/design-system/commit/57520ffeda83e0bbb8058b0644f8cc291672566b))
+- **typography:** tweek migration script and guide ([e75734a](https://github.com/entur/design-system/commit/e75734a1f800bcd7e8c393cdc5f237744e6d47f4))
+- **typography:** tweek migration script and guide ([b8f40bb](https://github.com/entur/design-system/commit/b8f40bb1f970748e1a32904ff028414055870fea))
+- **typography:** tweek migration script and guide ([c1a30f0](https://github.com/entur/design-system/commit/c1a30f05040ed120ed770afdc9c0a48837c1793c))
+- **typography:** tweek migration script and guide ([087a8f6](https://github.com/entur/design-system/commit/087a8f6883110e25ef737e2c243f572140f4745a))
+
+### Code Refactoring
+
+- **typography:** use modern exports and restructure beta build output ([aaa8571](https://github.com/entur/design-system/commit/aaa8571bfd95e2a693ad74812b7984cc13aa1019))
+
+### Features
+
+- **typography beta:** automatically load needed css in js files ([b1e96c2](https://github.com/entur/design-system/commit/b1e96c2e912118ebabe885bead98e7e9b650ccfb))
+- **typography:** add list beta components ([b9d2fea](https://github.com/entur/design-system/commit/b9d2fea6bdf8c7e4e8429efb48a68300df5ff305))
+- **typography:** add tests for beta typography ([41bb552](https://github.com/entur/design-system/commit/41bb5524f0f09df8f938aabb1438d9f3dd3db1cb))
+- **typography:** beta display mode ([cc62d0b](https://github.com/entur/design-system/commit/cc62d0b6b1300770a7b55e45de3d62e391dfc613))
+- **typography:** initial beta typography setup ([d504d64](https://github.com/entur/design-system/commit/d504d642f120700ca14a6ec4f50288185f2535ef))
+
+### BREAKING CHANGES
+
+- **typography:** This change aims to avoid breaking changes, but due to major changes to
+  the build process, breaking changes should be expected.
+
 # [2.0.0-beta.0](https://github.com/entur/design-system/compare/@entur/typography@1.9.14...@entur/typography@2.0.0-beta.0) (2025-09-22)
 
 ### Bug Fixes
