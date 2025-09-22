@@ -38,6 +38,19 @@ Migreringsscriptet er laget basert på frontend-repoer vi forvalter, derfor vil 
   @import '@entur/typography/dist/styles.css';
 ```
 
+### Forutsetninger for migreringsscriptet
+
+Migreringsscriptet krever at du har `glob` pakken installert. Dette er en peer dependency som ikke installeres automatisk.
+
+```bash
+# Installer glob pakken
+npm install glob
+# eller
+yarn add glob
+# eller
+pnpm add glob
+```
+
 ### Migrering
 
 ```bash

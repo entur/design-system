@@ -75,12 +75,19 @@ try {
     '❌ Error: The "glob" package is required to run this migration script.',
   );
   console.error('');
-  console.error('Please install it:');
+  console.error('Please install it first:');
   console.error('  npm install glob');
   console.error('  yarn add glob');
+  console.error('  pnpm add glob');
   console.error('');
-  console.error('Or use npx which will handle dependencies automatically:');
+  console.error('Then run the migration:');
   console.error('  npx @entur/typography@latest migrate');
+  console.error('  yarn dlx @entur/typography@latest migrate');
+  console.error('');
+  console.error('📚 For more information, see:');
+  console.error(
+    '  https://linje.entur.no/komponenter/ressurser/typography-migration',
+  );
   console.error('');
   process.exit(1);
 }
@@ -1296,6 +1303,12 @@ async function main() {
     console.log('');
     console.log('  # Local development');
     console.log('  npm run migrate');
+    console.log('');
+    console.log('📋 Prerequisites:');
+    console.log('  - Install glob package: npm install glob');
+    console.log(
+      '  - Or use npx/yarn dlx which handles dependencies automatically',
+    );
     console.log('');
     console.log('Options:');
     console.log(
