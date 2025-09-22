@@ -19,6 +19,7 @@ import * as tokens from '@entur/tokens';
 import * as tooltip from '@entur/tooltip';
 import * as travel from '@entur/travel';
 import * as typography from '@entur/typography';
+import * as typographyBeta from '@entur/typography/beta';
 import * as utils from '@entur/utils';
 
 export const packages = {
@@ -43,5 +44,6 @@ export const packages = {
   ...tooltip,
   ...travel,
   ...typography,
+  ...typographyBeta,
   ...utils,
 };

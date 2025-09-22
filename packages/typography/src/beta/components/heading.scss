@@ -4,171 +4,151 @@
 @use '@entur/tokens/dist/styles.scss' as t;
 @use '@entur/tokens/dist/base.scss' as *;
 @use '@entur/utils/dist/breakpoints.scss' as *;
+@forward '../typography-tokens.scss';
+@use '../typography-tokens.scss' as *;
 
-// Beta Typography Heading Base Classes
 .eds-heading {
   color: var(--primary-text-color);
-  font-weight: t.$font-weights-heading;
+  font-weight: var(--font-weight-heading);
   -webkit-font-smoothing: antialiased;
   margin: 0;
 
-  // Variant styles
-  &--title-1 {
-    font-size: t.$font-sizes-extra-large2;
-    line-height: t.$line-heights-extra-large5;
-
-    @include for-desktop {
-      font-size: t.$font-sizes-extra-large5;
-      line-height: t.$line-heights-extra-large7;
-    }
-  }
-
-  &--title-2 {
-    font-size: t.$font-sizes-extra-large;
-    line-height: t.$line-heights-extra-large4;
-
-    @include for-desktop {
-      font-size: t.$font-sizes-extra-large4;
-      line-height: t.$line-heights-extra-large6;
-    }
-  }
-
-  &--subtitle-1 {
-    font-size: t.$font-sizes-large;
-    line-height: t.$line-heights-extra-large;
-
-    @include for-desktop {
-      font-size: t.$font-sizes-extra-large2;
-      line-height: t.$line-heights-extra-large4;
-    }
-  }
-
-  &--subtitle-2 {
-    font-size: t.$font-sizes-medium;
-    line-height: t.$line-heights-large;
-
-    @include for-desktop {
-      font-size: t.$font-sizes-extra-large;
-      line-height: t.$line-heights-extra-large3;
-    }
-  }
-
-  &--section-1 {
-    font-size: t.$font-sizes-small;
-    line-height: t.$line-heights-medium;
-
-    @include for-desktop {
-      font-size: t.$font-sizes-large;
-      line-height: t.$line-heights-extra-large;
-    }
-  }
-
-  &--section-2 {
-    font-size: t.$font-sizes-small;
-    line-height: t.$line-heights-medium;
-
-    @include for-desktop {
-      font-size: t.$font-sizes-medium;
-      line-height: t.$line-heights-large;
-    }
-  }
-
-  &--label {
-    font-size: t.$font-sizes-medium;
-    line-height: t.$line-heights-medium;
-    color: var(--primary-label-color);
-
-    @include for-desktop {
-      line-height: t.$line-heights-large;
-    }
-  }
-
-  &--sublabel {
-    font-size: t.$font-sizes-small;
-    line-height: t.$line-heights-small;
-    color: var(--primary-label-color);
-
-    @include for-desktop {
-      line-height: t.$line-heights-medium;
-    }
-  }
-
-  // Size overrides
-  &--xs {
-    font-size: t.$font-sizes-extra-small;
-  }
-  &--s {
-    font-size: t.$font-sizes-small;
-  }
-  &--m {
-    font-size: t.$font-sizes-medium;
-  }
-  &--lg {
-    font-size: t.$font-sizes-large;
+  // Sizes
+  &--2xl {
+    font-size: var(--font-size-heading-2xl);
+    line-height: var(--font-line-height-heading-2xl);
   }
   &--xl {
-    font-size: t.$font-sizes-extra-large;
+    font-size: var(--font-size-heading-xl);
+    line-height: var(--font-line-height-heading-xl);
   }
-  &--2xl {
-    font-size: t.$font-sizes-extra-large2;
+  &--lg {
+    font-size: var(--font-size-heading-lg);
+    line-height: var(--font-line-height-heading-lg);
+  }
+  &--m {
+    font-size: var(--font-size-heading-m);
+    line-height: var(--font-line-height-heading-m);
+  }
+  &--s {
+    font-size: var(--font-size-heading-s);
+    line-height: var(--font-line-height-heading-s);
+  }
+  &--xs {
+    font-size: var(--font-size-heading-xs);
+    line-height: var(--font-line-height-heading-xs);
   }
 
-  // Spacing classes
+  // Variants - No margin-top, extra margin-bottom when following text
+  &--title-1 {
+    font-size: var(--font-size-heading-2xl);
+    line-height: var(--font-line-height-heading-2xl);
+    margin-bottom: var(--font-paragraph-spacing-heading-lg);
+  }
+  &--title-2 {
+    font-size: var(--font-size-heading-xl);
+    line-height: var(--font-line-height-heading-xl);
+    margin-bottom: var(--font-paragraph-spacing-heading-xl);
+  }
+  &--subtitle-1 {
+    font-size: var(--font-size-heading-lg);
+    line-height: var(--font-line-height-heading-lg);
+    margin-bottom: var(--font-paragraph-spacing-heading-lg);
+  }
+  &--subtitle-2 {
+    font-size: var(--font-size-heading-m);
+    line-height: var(--font-line-height-heading-m);
+    margin-bottom: var(--font-paragraph-spacing-heading-m);
+  }
+  &--section-1 {
+    font-size: var(--font-size-heading-s);
+    line-height: var(--font-line-height-heading-s);
+    margin-bottom: var(--font-paragraph-spacing-heading-s);
+  }
+  &--section-2 {
+    font-size: var(--font-size-heading-s);
+    line-height: var(--font-line-height-heading-s);
+    margin-bottom: var(--font-paragraph-spacing-heading-xs);
+  }
+
+  // Note: CSS cannot target previous siblings, so extra spacing must be added
+  // to text components or handled with CSS Grid container
+
+  // Spacing modifiers
   &--spacing-none {
-    margin: 0;
+    margin-top: 0;
+    margin-bottom: 0;
   }
   &--spacing-xs2 {
-    margin: t.$space-extra-small2;
+    margin-top: t.$space-extra-small2;
+    margin-bottom: t.$space-extra-small2;
   }
   &--spacing-xs2-top {
     margin-top: t.$space-extra-small2;
+    margin-bottom: 0;
   }
   &--spacing-xs2-bottom {
+    margin-top: 0;
     margin-bottom: t.$space-extra-small2;
   }
   &--spacing-xs {
-    margin: t.$space-extra-small;
+    margin-top: t.$space-extra-small;
+    margin-bottom: t.$space-extra-small;
   }
   &--spacing-xs-top {
     margin-top: t.$space-extra-small;
+    margin-bottom: 0;
   }
   &--spacing-xs-bottom {
+    margin-top: 0;
     margin-bottom: t.$space-extra-small;
   }
   &--spacing-sm {
-    margin: t.$space-small;
+    margin-top: t.$space-small;
+    margin-bottom: t.$space-small;
   }
   &--spacing-sm-top {
     margin-top: t.$space-small;
+    margin-bottom: 0;
   }
   &--spacing-sm-bottom {
+    margin-top: 0;
     margin-bottom: t.$space-small;
   }
   &--spacing-md {
-    margin: t.$space-default;
+    margin-top: t.$space-medium;
+    margin-bottom: t.$space-medium;
   }
   &--spacing-md-top {
-    margin-top: t.$space-default;
+    margin-top: t.$space-medium;
+    margin-bottom: 0;
   }
   &--spacing-md-bottom {
-    margin-bottom: t.$space-default;
+    margin-top: 0;
+    margin-bottom: t.$space-medium;
   }
   &--spacing-lg {
-    margin: t.$space-large;
+    margin-top: t.$space-large;
+    margin-bottom: t.$space-large;
   }
   &--spacing-lg-top {
     margin-top: t.$space-large;
+    margin-bottom: 0;
   }
   &--spacing-lg-bottom {
+    margin-top: 0;
     margin-bottom: t.$space-large;
   }
   &--spacing-xl {
-    margin: t.$space-extra-large;
+    margin-top: t.$space-extra-large;
+    margin-bottom: t.$space-extra-large;
   }
   &--spacing-xl-top {
     margin-top: t.$space-extra-large;
+    margin-bottom: 0;
   }
   &--spacing-xl-bottom {
+    margin-top: 0;
     margin-bottom: t.$space-extra-large;
   }
 }
