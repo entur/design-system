@@ -251,6 +251,12 @@
   &--blockquote:has(+ .eds-heading) {
     margin-bottom: calc(var(--font-line-height-body-lg) + 1rem);
   }
+  &--preformatted-text:has(+ .eds-heading) {
+    margin-bottom: calc(var(--font-line-height-body-lg) + 1rem);
+  }
+  &--code-text:has(+ .eds-heading) {
+    margin-bottom: calc(var(--font-line-height-body-lg) + 1rem);
+  }
 
   // Variants
   &--leading {
@@ -325,6 +331,7 @@
     padding: 1rem;
     white-space: pre-wrap;
     word-break: keep-all;
+    margin-bottom: calc(var(--font-line-height-body-lg) + 1rem);
   }
   &--code-text {
     display: inline-block;
