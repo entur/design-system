@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.3.2-beta.1](https://github.com/entur/design-system/compare/@entur/code-playground@2.3.1...@entur/code-playground@2.3.2-beta.1) (2025-09-22)
+
+### Bug Fixes
+
+- **repo:** typos ([38cd65c](https://github.com/entur/design-system/commit/38cd65c489f3476379eeb3015ebeb1a43d024146))
+
 ## [2.3.2-beta.0](https://github.com/entur/design-system/compare/@entur/code-playground@2.3.1...@entur/code-playground@2.3.2-beta.0) (2025-09-22)
 
 ### Bug Fixes
