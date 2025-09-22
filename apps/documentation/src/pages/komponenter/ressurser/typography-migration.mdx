@@ -43,12 +43,15 @@ Migreringsscriptet er laget basert på frontend-repoer vi forvalter, derfor vil 
 
 ```bash
 # Vis hjelp og alternativer
+yarn dlx @entur/typography@next migrate --help
 npx @entur/typography@latest migrate --help
 
 # Se hva som ville blitt endret (trygt)
+ yarn dlx @entur/typography@next migrate --dry-run
 npx @entur/typography@latest migrate --dry-run
 
 # Komplett migrering: oppdater alt til beta-komponenter
+yarn dlx @entur/typography@next migrate
 npx @entur/typography@latest migrate
 
 
