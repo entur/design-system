@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.2.3-beta.0](https://github.com/entur/design-system/compare/@entur/menu@5.2.2...@entur/menu@5.2.3-beta.0) (2025-09-22)
+
+### Bug Fixes
+
+- **repo:** typos ([38cd65c](https://github.com/entur/design-system/commit/38cd65c489f3476379eeb3015ebeb1a43d024146))
+
 ## [5.2.1](https://github.com/entur/design-system/compare/@entur/menu@5.2.0...@entur/menu@5.2.1) (2025-08-29)
 
 ### Bug Fixes

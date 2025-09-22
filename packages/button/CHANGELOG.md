@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.3.15-beta.0](https://github.com/entur/design-system/compare/@entur/button@3.3.14...@entur/button@3.3.15-beta.0) (2025-09-22)
+
+### Bug Fixes
+
+- **repo:** typos ([38cd65c](https://github.com/entur/design-system/commit/38cd65c489f3476379eeb3015ebeb1a43d024146))
+
 ## [3.3.13](https://github.com/entur/design-system/compare/@entur/button@3.3.12...@entur/button@3.3.13) (2025-08-29)
 
 ### Bug Fixes
