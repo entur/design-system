@@ -1,10 +1,13 @@
 {
   "name": "@entur/typography",
-  "version": "1.9.14",
+  "version": "1.10.0-beta.0",
   "license": "SEE LICENSE IN README.md",
   "main": "dist/typography.cjs.js",
   "module": "dist/typography.esm.js",
   "types": "dist/index.d.ts",
+  "bin": {
+    "migrate": "scripts/migrate-typography.js"
+  },
   "files": [
     "dist",
     "scripts"
