@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.2](https://github.com/entur/design-system/compare/@entur/typography@2.0.0-beta.1...@entur/typography@2.0.0-beta.2) (2025-09-22)
+
+### Bug Fixes
+
+- **typography-beta:** add glob as dependency ([6c53e9b](https://github.com/entur/design-system/commit/6c53e9b5cd28dc4e13983dd06dfd3f153a16fc2e))
+
 # [2.0.0-beta.1](https://github.com/entur/design-system/compare/@entur/typography@1.9.14...@entur/typography@2.0.0-beta.1) (2025-09-22)
 
 ### Bug Fixes

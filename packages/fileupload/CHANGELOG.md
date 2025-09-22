@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.15-beta.3](https://github.com/entur/design-system/compare/@entur/fileupload@0.4.15-beta.2...@entur/fileupload@0.4.15-beta.3) (2025-09-22)
+
+**Note:** Version bump only for package @entur/fileupload
+
 ## [0.4.15-beta.2](https://github.com/entur/design-system/compare/@entur/fileupload@0.4.14...@entur/fileupload@0.4.15-beta.2) (2025-09-22)
 
 ### Bug Fixes

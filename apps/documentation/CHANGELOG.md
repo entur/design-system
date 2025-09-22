@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.11.0-beta.3](https://github.com/entur/design-system/compare/@entur/documentation@6.11.0-beta.2...@entur/documentation@6.11.0-beta.3) (2025-09-22)
+
+### Bug Fixes
+
+- **typography-beta:** add glob as dependency ([6c53e9b](https://github.com/entur/design-system/commit/6c53e9b5cd28dc4e13983dd06dfd3f153a16fc2e))
+
 # [6.11.0-beta.2](https://github.com/entur/design-system/compare/@entur/documentation@6.10.2...@entur/documentation@6.11.0-beta.2) (2025-09-22)
 
 ### Bug Fixes
