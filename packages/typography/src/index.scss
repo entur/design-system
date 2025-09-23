@@ -1,11 +1,11 @@
+@use 'modern-normalize';
+
 @use '@entur/tokens/dist/styles.scss' as t;
 @use '@entur/tokens/dist/base.scss' as *;
 @use '@entur/utils/dist/breakpoints.scss' as *;
 
 @use './componentColors.scss';
 @use './fonts.scss';
-
-@use 'normalize-scss' as *;
 
 [data-color-mode='light'],
 [data-color-mode='dark'],

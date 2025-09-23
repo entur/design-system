@@ -1,11 +1,10 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import dts from 'vite-plugin-dts';
+import { libInjectCss } from 'vite-plugin-lib-inject-css';
 import { resolve } from 'path';
 import pkg from './package.json';
 
-// Main config for backward-compatible src build
-// This maintains the old structure with individual component files
 export default defineConfig({
   plugins: [
     react({
@@ -13,22 +12,23 @@ export default defineConfig({
     }),
     dts({
       insertTypesEntry: true,
-      rollupTypes: false,
-      // Stop aliasing @entur to ../../packages
+      outDir: 'dist/beta/types',
+      entryRoot: 'src/beta',
+      // Stop aliasing @entur to ../../../packages
       pathsToAliases: false,
     }),
+    libInjectCss(),
   ],
   build: {
     lib: {
-      entry: {
-        typography: resolve(__dirname, 'src/index.tsx'),
-      },
+      entry: resolve(__dirname, 'src/beta/index.tsx'),
       formats: ['es', 'cjs'],
       fileName: (format, entryName) => {
-        // Match old structure: typography.cjs.js and typography.esm.js
-        return `typography.${format === 'es' ? 'esm.js' : 'cjs.js'}`;
+        const _format = format === 'es' ? 'esm' : format;
+        return `${_format}/${entryName}.${format === 'es' ? 'mjs' : 'cjs'}`;
       },
     },
+    cssCodeSplit: true,
     rollupOptions: {
       external: [
         ...Object.keys(pkg.dependencies || {}),
@@ -39,18 +39,20 @@ export default defineConfig({
         'react/jsx-dev-runtime',
       ],
       output: {
+        preserveModules: true,
         assetFileNames: assetInfo => {
-          if (assetInfo.names?.find(name => name.endsWith('.css'))) {
-            return 'styles.css';
+          if (assetInfo.names[0].endsWith('.css')) {
+            return 'styles/[name][extname]';
           }
-          return assetInfo.names?.[0] || 'asset';
+          // Default for other assets (images, fonts, etc.)
+          return 'assets/[name]-[hash][extname]';
         },
       },
     },
     sourcemap: true,
     minify: false,
-    outDir: 'dist',
-    emptyOutDir: true, // Don't empty - we'll build beta separately
+    outDir: 'dist/beta',
+    emptyOutDir: true, // Clean beta directory on each build
   },
   css: {
     modules: false,

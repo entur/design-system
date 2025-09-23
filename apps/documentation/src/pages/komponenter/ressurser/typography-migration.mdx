@@ -1,0 +1,375 @@
+---
+title: Typography migration
+description: Komplett guide for migrering til ny typografi
+route: /komponenter/ressurser/typography-migration
+parent: Komponenter
+menu: Ressurser
+npmPackage: typography
+---
+
+import { Table, TableRow, TableHead, TableBody, DataCell, HeaderCell } from '@entur/table';
+import { CodeText } from '@entur/typography';
+
+## Typografi migreringsguide
+
+Denne guiden hjelper deg med å migrere fra de gamle typografi-komponentene til det nye beta typografi-systemet.
+Migreringsscriptet er laget basert på frontend-repoer vi forvalter, derfor vil ikke all migrering være 100%, det er derfor viktig å teste alle endringer selv.
+
+## Komplett migrering
+- **Hva det gjør**: Oppdaterer både imports og komponentbruk til beta-komponenter
+- **Konsekvenser**:
+  - `<Heading1 className="ditt-klassenavn">` blir `<Heading className="ditt-klassenavn" as="h1" variant="title-1">`
+  - `<Paragraph>` blir `<Text variant="paragraph">`
+  - `<Link>` blir `<Link>` (fra @entur/typography/beta)
+  - Dine props og CSS-klasser blir med videre, derfor er det viktig å sjekke hva du overstyrer.
+- **Når bruke denne**: Når du vil migrere til det nye systemet umiddelbart
+- **⚠️ Viktig**: Test grundig etter migrering!
+
+## Kom i gang - Migrering
+
+### Avhengigheter
+
+Migreringsskriptet bruker en hybrid tilnærming for å finne filer i prosjektet ditt:
+
+Skriptet prøver først å bruke [glob](https://github.com/isaacs/node-glob#readme) for avansert mønstermatching, og faller tilbake til Node.js innebygde moduler hvis `glob` ikke er tilgjengelig.
+
+```bash
+# Med glob (anbefalt) - bedre mønstermatching
+📦 Using glob package for pattern matching
+
+# Uten glob - bruker Node.js innebygde moduler
+📁 Using Node.js built-ins for file discovery
+```
+
+### Bruk scriptet
+
+**Alternativ 1: Med glob (anbefalt)**
+
+Bruker glob når tilgjengelig for bedre mønstermatching
+
+```bash
+# Installer glob
+npm i glob
+
+# Vis hjelp og alternativer
+npx @entur/typography@latest migrate --help
+yarn dlx @entur/typography@latest migrate --help
+
+# Se hva som ville blitt endret (trygt)
+npx @entur/typography@latest migrate --dry-run
+yarn dlx @entur/typography@latest migrate --dry-run
+
+# Komplett migrering: oppdater alt til beta-komponenter
+npx @entur/typography@latest migrate
+yarn dlx @entur/typography@latest migrate
+```
+
+**Alternativ 2: Uten glob**
+
+```bash
+# Vis hjelp og alternativer
+npx @entur/typography@latest migrate --help
+yarn dlx @entur/typography@latest migrate --help
+
+# Se hva som ville blitt endret (trygt)
+npx @entur/typography@latest migrate --dry-run
+yarn dlx @entur/typography@latest migrate --dry-run
+
+# Komplett migrering: oppdater alt til beta-komponenter
+npx @entur/typography@latest migrate
+yarn dlx @entur/typography@latest migrate
+```
+
+`migrate` vil automatisk:
+- Oppdatere alle imports
+- Erstatte gamle komponenter med beta-komponenter
+- Konvertere props til det nye formatet
+
+```typescript
+// Før migrering
+import { Heading1, Paragraph } from '@entur/typography';
+
+function MyComponent() {
+  return (
+    <div>
+      <Heading1>Min tittel</Heading1>
+      <Paragraph>Mitt innhold</Paragraph>
+    </div>
+  );
+}
+```
+
+```typescript
+// Etter komplett migrering
+import { Heading, Text } from '@entur/typography/beta';
+
+function MyComponent() {
+  return (
+    <div>
+      <Heading as="h1" variant="title-1">
+        Min tittel
+      </Heading>
+      <Text variant="paragraph">Mitt innhold</Text>
+    </div>
+  );
+}
+```
+
+### Heading komponenter
+
+<Table>
+  <TableHead>
+    <TableRow>
+      <HeaderCell>Gammel komponent</HeaderCell>
+      <HeaderCell>Ny beta-komponent</HeaderCell>
+    </TableRow>
+  </TableHead>
+  <TableBody>
+    <TableRow>
+      <DataCell><CodeText>Heading1</CodeText></DataCell>
+      <DataCell><CodeText>Heading as="h1" variant="title-1"</CodeText></DataCell>
+    </TableRow>
+    <TableRow>
+      <DataCell><CodeText>Heading2</CodeText></DataCell>
+      <DataCell><CodeText>Heading as="h2" variant="title-2"</CodeText></DataCell>
+    </TableRow>
+    <TableRow>
+      <DataCell><CodeText>Heading3</CodeText></DataCell>
+      <DataCell><CodeText>Heading as="h3" variant="subtitle-1"</CodeText></DataCell>
+    </TableRow>
+    <TableRow>
+      <DataCell><CodeText>Heading4</CodeText></DataCell>
+      <DataCell><CodeText>Heading as="h4" variant="subtitle-2"</CodeText></DataCell>
+    </TableRow>
+    <TableRow>
+      <DataCell><CodeText>Heading5</CodeText></DataCell>
+      <DataCell><CodeText>Heading as="h5" variant="section-1"</CodeText></DataCell>
+    </TableRow>
+    <TableRow>
+      <DataCell><CodeText>Heading6</CodeText></DataCell>
+      <DataCell><CodeText>Heading as="h6" variant="section-2"</CodeText></DataCell>
+    </TableRow>
+  </TableBody>
+</Table>
+
+### Text komponenter
+
+<Table>
+  <TableHead>
+    <TableRow>
+      <HeaderCell>Gammel komponent</HeaderCell>
+      <HeaderCell>Ny beta-komponent</HeaderCell>
+    </TableRow>
+  </TableHead>
+  <TableBody>
+    <TableRow>
+      <DataCell><CodeText>Paragraph</CodeText></DataCell>
+      <DataCell><CodeText>Text variant="paragraph"</CodeText></DataCell>
+    </TableRow>
+    <TableRow>
+      <DataCell><CodeText>LeadParagraph</CodeText></DataCell>
+      <DataCell><CodeText>Text variant="leading"</CodeText></DataCell>
+    </TableRow>
+    <TableRow>
+      <DataCell><CodeText>SmallText</CodeText></DataCell>
+      <DataCell><CodeText>Text variant="subparagraph" size="s"</CodeText></DataCell>
+    </TableRow>
+    <TableRow>
+      <DataCell><CodeText>StrongText</CodeText></DataCell>
+      <DataCell><CodeText>Text variant="emphasized" weight="semibold"</CodeText></DataCell>
+    </TableRow>
+    <TableRow>
+      <DataCell><CodeText>SubLabel</CodeText></DataCell>
+      <DataCell><CodeText>Text variant="sublabel" size="xs"</CodeText></DataCell>
+    </TableRow>
+    <TableRow>
+      <DataCell><CodeText>SubParagraph</CodeText></DataCell>
+      <DataCell><CodeText>Text variant="subparagraph"</CodeText></DataCell>
+    </TableRow>
+    <TableRow>
+      <DataCell><CodeText>Label</CodeText></DataCell>
+      <DataCell><CodeText>Text variant="label"</CodeText></DataCell>
+    </TableRow>
+    <TableRow>
+      <DataCell><CodeText>EmphasizedText</CodeText></DataCell>
+      <DataCell><CodeText>Text variant="emphasized"</CodeText></DataCell>
+    </TableRow>
+    <TableRow>
+      <DataCell><CodeText>CodeText</CodeText></DataCell>
+      <DataCell><CodeText>Text variant="code-text"</CodeText></DataCell>
+    </TableRow>
+  </TableBody>
+</Table>
+
+### Andre komponenter
+
+<Table>
+  <TableHead>
+    <TableRow>
+      <HeaderCell>Gammel komponent</HeaderCell>
+      <HeaderCell>Ny beta-komponent</HeaderCell>
+    </TableRow>
+  </TableHead>
+  <TableBody>
+    <TableRow>
+      <DataCell><CodeText>Link</CodeText></DataCell>
+      <DataCell><CodeText>Link</CodeText></DataCell>
+    </TableRow>
+    <TableRow>
+      <DataCell><CodeText>Blockquote</CodeText></DataCell>
+      <DataCell><CodeText>Blockquote</CodeText></DataCell>
+    </TableRow>
+    <TableRow>
+      <DataCell><CodeText>BlockquoteFooter</CodeText></DataCell>
+      <DataCell><CodeText>BlockquoteFooter</CodeText></DataCell>
+    </TableRow>
+    <TableRow>
+      <DataCell><CodeText>UnorderedList</CodeText></DataCell>
+      <DataCell><CodeText>UnorderedList</CodeText></DataCell>
+    </TableRow>
+    <TableRow>
+      <DataCell><CodeText>NumberedList</CodeText></DataCell>
+      <DataCell><CodeText>NumberedList</CodeText></DataCell>
+    </TableRow>
+    <TableRow>
+      <DataCell><CodeText>ListItem</CodeText></DataCell>
+      <DataCell><CodeText>ListItem</CodeText></DataCell>
+    </TableRow>
+  </TableBody>
+</Table>
+
+
+## Sikkerhetsfunksjoner
+
+Migreringsskriptet inkluderer flere sikkerhetsfunksjoner for å beskytte prosjektet ditt:
+
+- **Tillatte mapper**: Skanner kun `src/**`, `app/**`, `components/**`, etc.
+- **Blokkerte mapper**: Skanner aldri `node_modules`, `dist`, `.git`, etc.
+- **Dry-run modus**: Test endringer uten å modifisere filer ved å bruke `--dry-run`
+- **Tilpassbare stier**: Overstyr mapper med `TYPOGRAPHY_MIGRATION_DIRS` miljøvariabel
+- **Standardmapper**: Skanner automatisk `src/**`, `app/**`, `apps/**`, `components/**`, `pages/**`, `lib/**`, `utils/**`, `styles/**`, `css/**`, `scss/**`
+- **Filtypefiltrering**: Prosesserer kun TypeScript, JavaScript og SCSS/CSS filer
+
+## Tilpassing av scriptet
+
+### Default mapper som blir scannet
+
+Migreringsskriptet skanner automatisk disse mappene:
+
+- `src/**` - Kildekode
+- `app/**` - Applikasjonsmapper
+- `apps/**` - Flere applikasjoner
+- `components/**` - Komponenter
+- `pages/**` - Sider
+- `lib/**` - Biblioteker
+- `utils/**` - Hjelpefunksjoner
+- `styles/**` - Stilfiler
+- `css/**` - CSS-filer
+- `scss/**` - SCSS-filer
+
+Du kan overstyre standardmappene med miljøvariabelen `TYPOGRAPHY_MIGRATION_DIRS`:
+
+#### Alternativ 1: Miljøvariabel
+
+```bash
+# Sett miljøvariabel
+export TYPOGRAPHY_MIGRATION_DIRS="src/**,app/**,components/**"
+```
+
+#### Alternativ 2: Inline miljøvariabel
+
+```bash
+# Kjør med inline miljøvariabel
+TYPOGRAPHY_MIGRATION_DIRS="src/**,app/**" npx @entur/typography@latest migrate
+# eller
+TYPOGRAPHY_MIGRATION_DIRS="src/**,app/**" yarn dlx @entur/typography@latest migrate
+```
+
+### Viktige sikkerhetsregler
+
+- **Kun relative stier**: Ikke bruk absolutte stier som `/home/user/project`
+- **Ingen parent-mapper**: Ikke bruk `../parent/directory`
+- **Ingen home-mapper**: Ikke bruk `~/home/directory`
+- **Glob-mønstre**: Bruk `**` for å skanne undermapper (f.eks. `src/**`)
+
+### Eksempler på gyldige mapper
+
+✅ **Gyldige:**
+```bash
+TYPOGRAPHY_MIGRATION_DIRS="src/**,app/**,components/**"
+TYPOGRAPHY_MIGRATION_DIRS="packages/my-app/**,lib/**"
+TYPOGRAPHY_MIGRATION_DIRS="frontend/**,backend/**"
+```
+
+❌ **Ugyldige:**
+```bash
+TYPOGRAPHY_MIGRATION_DIRS="/absolute/path"      # Absolutt sti
+TYPOGRAPHY_MIGRATION_DIRS="../parent/directory" # Parent-mappe
+TYPOGRAPHY_MIGRATION_DIRS="~/home/directory"    # Home-mappe
+```
+
+## Viktig: Ny margin-oppførsel
+
+### Standard margin-oppførsel
+
+Beta-komponenter har **ingen margin som standard** (`margin: 0`) på base-klassene, men **mange varianter legger til egne margins**:
+
+**Før migrering:**
+```jsx
+<Heading1>Denne hadde automatisk margin</Heading1>
+<Paragraph>Denne hadde også margin</Paragraph>
+```
+
+**Etter migrering:**
+```jsx
+// Med variant som har spacing
+<Heading as="h1" variant="title-1">Denne har margin fra variant</Heading>
+<Text variant="paragraph">Denne har margin fra variant</Text>
+
+// Uten variant (kun base-klasse)
+<Heading as="h1">Denne har ingen margin</Heading>
+<Text>Denne har ingen margin</Text>
+```
+
+### Hvordan spacing fungerer
+
+```jsx
+// Variant med spacing (default med spacing)
+<Heading as="h1" variant="title-1">Tittel med margin fra variant</Heading>
+<Text variant="paragraph">Tekst med margin fra variant</Text>
+
+// Eksplisitt spacing (overstyrer variant)
+<Heading as="h1" variant="title-1" spacing="lg">Tittel med large spacing</Heading>
+<Text variant="paragraph" spacing="md">Tekst med medium spacing</Text>
+
+// Uten spacing (kun base-klasse)
+<Heading as="h1">Tittel uten margin</Heading>
+<Text>Tekst uten margin</Text>
+
+// Fjern spacing fra variant
+<Heading as="h1" variant="title-1" spacing="none">Tittel uten margin</Heading>
+<Text variant="paragraph" spacing="none">Tekst uten margin</Text>
+```
+
+### Margin til spacing migrering
+
+Migreringsskriptet oppdaterer automatisk `margin` props til `spacing`:
+
+```jsx
+// Før migrering
+<Heading1 margin="bottom">Tittel</Heading1>
+<Paragraph margin="none">Tekst</Paragraph>
+
+// Etter migrering
+<Heading as="h1" variant="title-1" spacing="md-bottom">Tittel</Heading>
+<Text variant="paragraph" spacing="none">Tekst</Text>
+```
+
+## Hjelp
+
+Hvis du støter på problemer under migrering:
+
+1. Sjekk denne migreringsguiden
+2. Gjennomgå [Typografi Beta Dokumentasjon](/komponenter/ressurser/typography-beta)
+3. Åpne et issue i design system repository
+4. Kontakt design system-teamet

@@ -1,50 +1,63 @@
 {
-  "tags": {
-    "beta": "Experimental component - may have breaking changes in future releases"
-  },
+  "tags": {},
   "description": "",
-  "displayName": "Link",
+  "displayName": "Text",
   "methods": [],
   "props": {
-    "external": {
-      "defaultValue": {
-        "value": false
-      },
-      "description": "",
-      "name": "external",
+    "size": {
+      "defaultValue": null,
+      "description": "Visuell tekststørrelse (typografi-token)",
+      "name": "size",
       "declarations": [
         {
-          "fileName": "design-system/packages/typography/src/beta/components/Link.tsx",
+          "fileName": "design-system/packages/typography/src/beta/components/Text.tsx",
           "name": "TypeLiteral"
         }
       ],
       "required": false,
       "type": {
-        "name": "boolean | undefined"
+        "name": "TypographySize | undefined"
       }
     },
-    "className": {
-      "defaultValue": null,
-      "description": "Ekstra klassenavn",
-      "name": "className",
+    "weight": {
+      "defaultValue": {
+        "value": "medium"
+      },
+      "description": "Fontvekt",
+      "name": "weight",
       "declarations": [
         {
-          "fileName": "design-system/packages/typography/src/beta/components/Link.tsx",
+          "fileName": "design-system/packages/typography/src/beta/components/Text.tsx",
           "name": "TypeLiteral"
         }
       ],
       "required": false,
       "type": {
-        "name": "string | undefined"
+        "name": "TypographyWeight | undefined"
+      }
+    },
+    "variant": {
+      "defaultValue": null,
+      "description": "Variant (kan brukes til spesielle typer tekst som for eksempel caption)",
+      "name": "variant",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/typography/src/beta/components/Text.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "TypographyTextVariant | undefined"
       }
     },
     "children": {
       "defaultValue": null,
-      "description": "Innholdet",
+      "description": "Innhold",
       "name": "children",
       "declarations": [
         {
-          "fileName": "design-system/packages/typography/src/beta/components/Link.tsx",
+          "fileName": "design-system/packages/typography/src/beta/components/Text.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -55,11 +68,11 @@
     },
     "spacing": {
       "defaultValue": null,
-      "description": "Spacing around the component (same as Text and Heading components)",
+      "description": "Spacing around the component",
       "name": "spacing",
       "declarations": [
         {
-          "fileName": "design-system/packages/typography/src/beta/components/Link.tsx",
+          "fileName": "design-system/packages/typography/src/beta/components/Text.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -68,15 +81,13 @@
         "name": "TypographySpacing | undefined"
       }
     },
-    "ariaLabelExternalIcon": {
-      "defaultValue": {
-        "value": "(ekstern lenke)"
-      },
-      "description": "",
-      "name": "ariaLabelExternalIcon",
+    "className": {
+      "defaultValue": null,
+      "description": "Ekstra klassenavn",
+      "name": "className",
       "declarations": [
         {
-          "fileName": "design-system/packages/typography/src/beta/components/Link.tsx",
+          "fileName": "design-system/packages/typography/src/beta/components/Text.tsx",
           "name": "TypeLiteral"
         }
       ],

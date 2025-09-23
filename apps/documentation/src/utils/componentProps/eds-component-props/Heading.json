@@ -1,0 +1,113 @@
+{
+  "tags": {},
+  "description": "",
+  "displayName": "Heading",
+  "methods": [],
+  "props": {
+    "variant": {
+      "defaultValue": null,
+      "description": "Visuell variant som bestemmer styling (anbefalt over size)",
+      "name": "variant",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/typography/src/beta/components/Heading.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "TypographyHeadingVariant | undefined"
+      }
+    },
+    "size": {
+      "defaultValue": null,
+      "description": "Visuell tekststørrelse som overstyrer variant-styling",
+      "name": "size",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/typography/src/beta/components/Heading.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "TypographySize | undefined"
+      }
+    },
+    "children": {
+      "defaultValue": null,
+      "description": "Innholdet som skal vises",
+      "name": "children",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/typography/src/beta/components/Heading.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": true,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "className": {
+      "defaultValue": null,
+      "description": "Ekstra klassenavn for tilpasset styling",
+      "name": "className",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/typography/src/beta/components/Heading.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "style": {
+      "defaultValue": null,
+      "description": "Inline CSS-stiler",
+      "name": "style",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/typography/src/beta/components/Heading.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "CSSProperties | undefined"
+      }
+    },
+    "spacing": {
+      "defaultValue": null,
+      "description": "Spacing around the component",
+      "name": "spacing",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/typography/src/beta/components/Heading.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "TypographySpacing | undefined"
+      }
+    },
+    "as": {
+      "defaultValue": null,
+      "description": "An override of the default HTML tag.\nCan also be another React component.",
+      "name": "as",
+      "declarations": [
+        {
+          "fileName": "design-system/node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "ElementType<any> | undefined"
+      }
+    }
+  }
+}

@@ -17,25 +17,13 @@ import {
   SegmentedControl,
 } from '@entur/form';
 import {
-  Heading1,
-  Heading2,
-  Heading3,
-  Heading4,
-  Heading5,
-  Heading6,
-  LeadParagraph,
-  SubParagraph,
-  Paragraph,
-  PreformattedText,
-  StrongText,
-  CodeText,
+  Heading,
+  Text,
+  Link,
   UnorderedList,
-  ListItem,
   NumberedList,
-  EmphasizedText,
-  Label,
-  Link as LinkText,
-} from '@entur/typography';
+  ListItem,
+} from '@entur/typography/beta';
 import {
   Table,
   TableHead,
@@ -67,7 +55,7 @@ import {
 } from '@entur/layout';
 import { Tabs, TabList, Tab, TabPanels, TabPanel } from '@entur/tab';
 
-const preToCodeBlock = preProps => {
+const preToCodeBlock = (preProps: any) => {
   if (
     preProps.children &&
     typeof preProps.children === 'object' &&
@@ -98,37 +86,42 @@ const preToCodeBlock = preProps => {
 // Mapping styles and global import components for MDX-files
 // components are used in the MDXProvider in the DocLayout file.
 const components = {
-  // DS components
-  h1: Heading1,
-  h2: Heading2,
-  h3: Heading3,
-  h4: Heading4,
-  h5: Heading5,
-  h6: Heading6,
-  p: Paragraph,
-  a: LinkText,
-  strong: StrongText,
-  inlineCode: CodeText,
-  ul: UnorderedList,
-  li: ListItem,
-  ol: NumberedList,
-  Paragraph,
-  StrongText,
-  EmphasizedText,
-  UnorderedList,
-  ListItem,
-  NumberedList,
+  // DS components - using new beta components
+  h1: (props: any) => <Heading as="h1" variant="title-1" {...props} />,
+  h2: (props: any) => <Heading as="h2" variant="title-2" {...props} />,
+  h3: (props: any) => <Heading as="h3" variant="subtitle-1" {...props} />,
+  h4: (props: any) => <Heading as="h4" variant="subtitle-2" {...props} />,
+  h5: (props: any) => <Heading as="h5" variant="section-1" {...props} />,
+  h6: (props: any) => <Heading as="h6" variant="section-2" {...props} />,
+  p: (props: any) => <Text variant="paragraph" {...props} />,
+  a: (props: any) => <Link {...props} />,
+  strong: (props: any) => (
+    <Text as="strong" variant="emphasized" weight="semibold" {...props} />
+  ),
+  inlineCode: (props: any) => <Text as="code" variant="code" {...props} />,
+  ul: (props: any) => <UnorderedList {...props} />,
+  li: (props: any) => <ListItem {...props} />,
+  ol: (props: any) => <NumberedList {...props} />,
+  // Individual component mappings
+  Paragraph: (props: any) => <Text variant="paragraph" {...props} />,
+  StrongText: (props: any) => (
+    <Text as="strong" variant="emphasized" weight="semibold" {...props} />
+  ),
+  EmphasizedText: (props: any) => <Text variant="emphasized" {...props} />,
+  UnorderedList: (props: any) => <UnorderedList {...props} />,
+  ListItem: (props: any) => <ListItem {...props} />,
+  NumberedList: (props: any) => <NumberedList {...props} />,
   GridContainer,
   GridItem,
-  Heading1,
-  Heading2,
-  Heading3,
-  Heading4,
-  Heading5,
-  Heading6,
-  LinkText,
-  LeadParagraph,
-  SubParagraph,
+  Heading1: (props: any) => <Heading as="h1" variant="title-1" {...props} />,
+  Heading2: (props: any) => <Heading as="h2" variant="title-2" {...props} />,
+  Heading3: (props: any) => <Heading as="h3" variant="subtitle-1" {...props} />,
+  Heading4: (props: any) => <Heading as="h4" variant="subtitle-2" {...props} />,
+  Heading5: (props: any) => <Heading as="h5" variant="section-1" {...props} />,
+  Heading6: (props: any) => <Heading as="h6" variant="section-2" {...props} />,
+  LinkText: (props: any) => <Link {...props} />,
+  LeadParagraph: (props: any) => <Text variant="lead" {...props} />,
+  SubParagraph: (props: any) => <Text variant="small" {...props} />,
   BannerAlertBox,
   ExpandablePanel,
   VisuallyHidden,
@@ -142,7 +135,7 @@ const components = {
   EditableCell,
   ExpandableRow,
   ExpandRowButton,
-  Label,
+  Label: (props: any) => <Text variant="label" {...props} />,
   ToastAlertBox,
   ToastProvider,
   SmallAlertBox,
@@ -161,7 +154,7 @@ const components = {
   TextField,
   TextArea,
   CopyableText,
-  CodeText,
+  CodeText: (props: any) => <Text as="code" variant="code-text" {...props} />,
   // Custom components
   Playground,
   Props,
@@ -177,23 +170,23 @@ const components = {
   SegmentedControl,
   IconButton,
   ImportStatement,
-  pre: preProps => {
+  pre: (preProps: any) => {
     const props = preToCodeBlock(preProps);
     if (props) {
       if (props.language === 'jsx') {
         return <Playground code={props.codeString} language={props.language} />;
       } else {
-        return <PreformattedText {...preProps} />;
+        return <Text as="pre" variant="preformatted-text" {...preProps} />;
       }
     }
-    return <PreformattedText {...preProps} />;
+    return <Text as="pre" variant="preformatted-text" {...preProps} />;
   },
-  code: props => {
+  code: (props: any) => {
     const { className } = props;
     if (className) {
       return <code {...props} />;
     }
-    return <CodeText {...props} />;
+    return <Text as="code" variant="code-text" {...props} />;
   },
 };
 

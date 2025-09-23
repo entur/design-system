@@ -3,15 +3,16 @@ import { render, cleanup } from '@testing-library/react';
 import * as components from '.';
 import {
   Heading1,
+  Heading2,
   Label,
   ListItem,
   NumberedList,
   Paragraph,
   UnorderedList,
+  Blockquote,
 } from '.';
 import { SmallText } from './SmallText';
 import { axe, toHaveNoViolations } from 'jest-axe';
-import { Blockquote, Heading2, LeadParagraph } from '@entur/typography';
 import { StrongText } from './StrongText';
 import { EmphasizedText } from './EmphasizedText';
 import { Link } from './Link';
@@ -75,7 +76,7 @@ test('Typography elements should not have basic accessibility issues', async () 
   const { container } = render(
     <>
       <Heading1>Heading1</Heading1>
-      <LeadParagraph>Some text for the lead paragraph</LeadParagraph>
+      <Paragraph>Some text for the lead paragraph</Paragraph>
       <Heading2>Heading2</Heading2>
       <UnorderedList>
         <ListItem>Item1</ListItem>
@@ -86,8 +87,8 @@ test('Typography elements should not have basic accessibility issues', async () 
         <ListItem title="TitleItem2">NumberItem2</ListItem>
       </NumberedList>
       <Paragraph>
-        Paragraph with <StrongText>strong text</StrongText>
-        <EmphasizedText>emphasized text</EmphasizedText> and a
+        Paragraph with <StrongText>strong text</StrongText>{' '}
+        <EmphasizedText>emphasized text</EmphasizedText> and a{' '}
         <Link href="#">link</Link>.
       </Paragraph>
       <label>A label</label>

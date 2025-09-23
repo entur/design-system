@@ -1,12 +1,43 @@
 {
   "name": "@entur/typography",
-  "version": "1.9.14",
+  "version": "2.0.0-beta.3",
   "license": "SEE LICENSE IN README.md",
-  "main": "dist/typography.cjs.js",
-  "module": "dist/typography.esm.js",
-  "types": "dist/index.d.ts",
+  "type": "module",
+  "main": "./dist/typography.cjs.js",
+  "module": "./dist/typography.esm.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "migrate": "scripts/migrate-typography.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/typography.esm.js",
+      "require": "./dist/typography.cjs.js",
+      "default": "./dist/typography.esm.js"
+    },
+    "./beta": {
+      "types": "./dist/beta/types/index.d.ts",
+      "import": "./dist/beta/esm/index.mjs",
+      "require": "./dist/beta/cjs/index.cjs",
+      "default": "./dist/beta/esm/index.mjs"
+    },
+    "./styles": "./dist/styles.css",
+    "./beta/styles": "./dist/beta/typography.css",
+    "./fonts/*": "./fonts/*",
+    "./scripts/*": "./scripts/*",
+    "./package.json": "./package.json",
+    "./dist/*": "./dist/*",
+    "./dist/beta": null,
+    "./dist/beta/*": null
+  },
+  "sideEffects": [
+    "./dist/**/*.css"
+  ],
   "files": [
-    "dist"
+    "dist",
+    "scripts",
+    "fonts"
   ],
   "repository": {
     "type": "git",
@@ -17,10 +48,14 @@
     "access": "public"
   },
   "scripts": {
-    "build": "vite build && cp -r fonts dist/",
+    "build": "yarn build:main && yarn build:beta && cp -r fonts dist/",
+    "build:main": "vite build",
+    "build:beta": "vite build --config vite.config.beta.ts",
     "test": "jest",
     "lint": "eslint src",
-    "start": "vite build --watch"
+    "start": "vite build --config vite.config.main.ts --watch",
+    "start:beta": "vite build --config vite.config.beta.ts --watch",
+    "migrate": "./scripts/migrate-typography.js"
   },
   "peerDependencies": {
     "react": ">=16.8.0",
@@ -31,7 +66,10 @@
     "@entur/tokens": "workspace:^",
     "@entur/utils": "workspace:^",
     "classnames": "^2.5.1",
-    "normalize-scss": "^8.0.0"
+    "modern-normalize": "^3.0.1"
+  },
+  "optionalDependencies": {
+    "glob": "^11.0.3"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.17.0",
