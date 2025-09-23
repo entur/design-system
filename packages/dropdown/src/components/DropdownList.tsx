@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { MutableRefObject } from 'react';
 import classNames from 'classnames';
 import { UseComboboxPropGetters, UseSelectPropGetters } from 'downshift';
 
@@ -12,9 +12,6 @@ import './DropdownList.scss';
 type DropdownListProps<ValueType> = {
   ariaLabelChosenSingular?: string;
   ariaLabelSelectedItem?: string;
-  getMenuProps:
-    | UseComboboxPropGetters<ValueType>['getMenuProps']
-    | UseSelectPropGetters<ValueType>['getMenuProps'];
   getItemProps:
     | UseComboboxPropGetters<ValueType>['getItemProps']
     | UseSelectPropGetters<ValueType>['getItemProps'];
@@ -22,11 +19,13 @@ type DropdownListProps<ValueType> = {
   isOpen: boolean;
   listItems: NormalizedDropdownItemType<ValueType | string>[];
   floatingStyles: { [key: string]: any } | undefined;
-  setListRef: (node: HTMLElement | null) => void;
+  innerRef?:
+    | MutableRefObject<HTMLUListElement>
+    | ((node: HTMLElement | null) => void);
   loading?: boolean;
   loadingText?: string;
   noMatchesText?: string;
-  selectAllCheckboxState?: () => boolean | 'indeterminate';
+  selectAllCheckboxState?: boolean | 'indeterminate';
   selectAllItem?: NormalizedDropdownItemType<string>;
   selectedItems: NormalizedDropdownItemType<ValueType>[];
   style?: React.CSSProperties;
@@ -37,19 +36,19 @@ export const DropdownList = <ValueType extends NonNullable<any>>({
   ariaLabelChosenSingular = 'valgt',
   ariaLabelSelectedItem = ', valgt element, trykk for å fjerne',
   getItemProps,
-  getMenuProps,
   isOpen,
   highlightedIndex,
   listItems,
   floatingStyles,
-  setListRef,
+  innerRef,
   loading = false,
   loadingText = 'Laster inn …',
   noMatchesText = 'Ingen treff for søket',
+  readOnly = false,
   selectAllCheckboxState,
   selectAllItem,
   selectedItems,
-  readOnly = false,
+  style,
   ...rest
 }: DropdownListProps<ValueType>) => {
   const isMultiselect = selectAllItem !== undefined;
@@ -76,7 +75,7 @@ export const DropdownList = <ValueType extends NonNullable<any>>({
     });
 
   const ariaValuesSelectAll = () => {
-    switch (selectAllCheckboxState?.()) {
+    switch (selectAllCheckboxState) {
       case 'indeterminate': {
         return {
           label: `${selectAllItem?.label}, delvis valgt`,
@@ -99,7 +98,7 @@ export const DropdownList = <ValueType extends NonNullable<any>>({
     <>
       <Checkbox
         aria-hidden="true"
-        checked={selectAllCheckboxState?.()}
+        checked={selectAllCheckboxState}
         className="eds-dropdown__list__item__checkbox"
         tabIndex={-1}
         onChange={() => undefined}
@@ -160,23 +159,18 @@ export const DropdownList = <ValueType extends NonNullable<any>>({
   };
 
   return (
-    // use popover from @entur/tooltip when that package upgrades to floating-ui
     <ul
-      {...getMenuProps({
-        'aria-multiselectable': isMultiselect,
-        ref: setListRef,
-        className: 'eds-dropdown__list',
-        style: {
-          ...floatingStyles,
-          display: isOpen && !readOnly ? undefined : 'none',
-          ...rest.style,
-        },
-      })}
+      className="eds-dropdown__list"
+      ref={innerRef}
+      style={{
+        display: isOpen && !readOnly ? undefined : 'none',
+        ...floatingStyles,
+        ...style,
+      }}
+      {...rest}
     >
       {(() => {
-        if (!isOpen || readOnly) {
-          return null;
-        }
+        if (!isOpen || readOnly) return null;
 
         if (loading) {
           return (

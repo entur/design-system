@@ -1,6 +1,7 @@
 @use '@entur/tokens/dist/styles.scss' as t;
 
 .eds-dropdown {
+  position: relative;
   cursor: pointer;
 
   &:has(.eds-form-control-wrapper--readonly) {
