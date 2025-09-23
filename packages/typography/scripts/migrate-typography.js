@@ -65,24 +65,23 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Check if glob is available
+// Try to use glob if available, fallback to Node.js built-ins
 let glob;
-try {
-  const globModule = await import('glob');
-  glob = globModule.default || globModule;
-} catch (error) {
-  console.error(
-    '❌ Error: The "glob" package is required to run this migration script.',
-  );
-  console.error('');
-  console.error('Please install it:');
-  console.error('  npm install glob');
-  console.error('  yarn add glob');
-  console.error('');
-  console.error('Or use npx which will handle dependencies automatically:');
-  console.error('  npx @entur/typography@latest migrate');
-  console.error('');
-  process.exit(1);
+let useGlob = false;
+
+// Initialize glob detection
+async function initializeGlob() {
+  try {
+    const globModule = await import('glob');
+    glob = globModule.default || globModule;
+    useGlob = true;
+    console.log('📦 Using glob package for pattern matching');
+  } catch (error) {
+    console.log('📁 Using Node.js built-ins for file discovery');
+    console.log(
+      '   (Install glob for better pattern matching: npm install glob or yarn add glob)',
+    );
+  }
 }
 
 // Configuration
@@ -937,15 +936,23 @@ function updateComponents(content) {
 /**
  * Find files matching the given pattern in allowed directories
  *
- * This function uses efficient glob patterns and data structures:
- * - Single glob call with brace expansion instead of multiple calls
- * - Set-based extension filtering for O(1) lookups
- * - No array concatenation in loops
+ * Uses glob if available for better pattern matching, falls back to Node.js built-ins
  *
- * @param {string} pattern - Glob pattern to match (e.g., '*.{ts,tsx,js,jsx}')
+ * @param {string} pattern - File pattern to match (e.g., '*.{ts,tsx,js,jsx}')
  * @returns {string[]} Array of matching file paths
  */
 function findFiles(pattern) {
+  if (useGlob) {
+    return findFilesWithGlob(pattern);
+  } else {
+    return findFilesWithNode(pattern);
+  }
+}
+
+/**
+ * Find files using glob package (preferred method)
+ */
+function findFilesWithGlob(pattern) {
   const allFiles = [];
 
   // Process directory patterns
@@ -991,6 +998,88 @@ function findFiles(pattern) {
   });
 
   return uniqueFiles;
+}
+
+/**
+ * Find files using Node.js built-ins (fallback method)
+ */
+function findFilesWithNode(pattern) {
+  const allFiles = [];
+
+  // Parse the pattern to extract extensions
+  const extensions = pattern.match(/\*\.\{([^}]+)\}/);
+  const fileExtensions = extensions
+    ? extensions[1].split(',').map(ext => `.${ext.trim()}`)
+    : ['.ts', '.tsx', '.js', '.jsx', '.scss', '.css'];
+
+  const extensionSet = new Set(fileExtensions);
+
+  // Helper function to check if a path should be ignored
+  function shouldIgnore(filePath) {
+    return BLOCKED_DIRECTORIES.some(blockedPattern => {
+      // Simple pattern matching for common blocked directories
+      if (blockedPattern.includes('**')) {
+        const basePattern = blockedPattern.replace('/**', '');
+        return filePath.includes(basePattern);
+      }
+      return filePath.includes(blockedPattern);
+    });
+  }
+
+  // Helper function to recursively find files
+  function findFilesRecursive(dir, relativePath = '') {
+    try {
+      const items = fs.readdirSync(dir, { withFileTypes: true });
+
+      for (const item of items) {
+        const itemPath = path.join(dir, item.name);
+        const relativeItemPath = path.join(relativePath, item.name);
+
+        // Skip if this path should be ignored
+        if (shouldIgnore(relativeItemPath)) {
+          continue;
+        }
+
+        if (item.isDirectory()) {
+          // Recursively search subdirectories
+          findFilesRecursive(itemPath, relativeItemPath);
+        } else if (item.isFile()) {
+          // Check if file has matching extension
+          const ext = path.extname(item.name).toLowerCase();
+          if (extensionSet.has(ext)) {
+            allFiles.push(relativeItemPath);
+          }
+        }
+      }
+    } catch (error) {
+      // Skip directories that can't be read (permissions, etc.)
+      console.warn(
+        `Warning: Could not read directory ${dir}: ${error.message}`,
+      );
+    }
+  }
+
+  // Process each allowed directory
+  for (const allowedDir of ALLOWED_DIRECTORIES) {
+    if (allowedDir.includes('**')) {
+      // Directory pattern (e.g., src/**)
+      const baseDir = allowedDir.replace('/**', '');
+      const fullPath = path.resolve(baseDir);
+
+      if (fs.existsSync(fullPath) && fs.statSync(fullPath).isDirectory()) {
+        findFilesRecursive(fullPath, baseDir);
+      }
+    } else {
+      // File pattern (e.g., *.jsx) - not supported in this implementation
+      // as it would require more complex pattern matching
+      console.warn(
+        `Warning: File pattern "${allowedDir}" not supported in Node.js-only mode. Use directory patterns like "src/**" instead.`,
+      );
+    }
+  }
+
+  // Remove duplicates and return
+  return [...new Set(allFiles)];
 }
 
 function updateImportsAndComponents(content) {
@@ -1281,6 +1370,9 @@ function showNextSteps() {
 }
 
 async function main() {
+  // Initialize glob detection
+  await initializeGlob();
+
   // Show help if requested
   if (process.argv.includes('--help') || process.argv.includes('-h')) {
     console.log('🎨 Typography Migration Script');
@@ -1291,7 +1383,7 @@ async function main() {
     console.log('  npx @entur/typography@latest migrate [options]');
     console.log('  yarn dlx @entur/typography@latest migrate [options]');
     console.log('');
-    console.log('  # Direct execution (requires glob package)');
+    console.log('  # Direct execution (uses Node.js built-ins, glob optional)');
     console.log('  node scripts/migrate-typography.js [options]');
     console.log('');
     console.log('  # Local development');

@@ -66,8 +66,10 @@
     "@entur/tokens": "workspace:^",
     "@entur/utils": "workspace:^",
     "classnames": "^2.5.1",
-    "glob": "^11.0.0",
     "modern-normalize": "^3.0.1"
+  },
+  "optionalDependencies": {
+    "glob": "^11.0.3"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.17.0",

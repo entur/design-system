@@ -13,7 +13,7 @@ import { CodeText } from '@entur/typography';
 ## Typografi migreringsguide
 
 Denne guiden hjelper deg med å migrere fra de gamle typografi-komponentene til det nye beta typografi-systemet.
-Migreringsscriptet er laget basert på frontend-repoer vi forvalter, derfor vil ikke all migrering være 100%, det er derfor viktig å teste alle endringer selv også.
+Migreringsscriptet er laget basert på frontend-repoer vi forvalter, derfor vil ikke all migrering være 100%, det er derfor viktig å teste alle endringer selv.
 
 ## Komplett migrering
 - **Hva det gjør**: Oppdaterer både imports og komponentbruk til beta-komponenter
@@ -25,36 +25,59 @@ Migreringsscriptet er laget basert på frontend-repoer vi forvalter, derfor vil 
 - **Når bruke denne**: Når du vil migrere til det nye systemet umiddelbart
 - **⚠️ Viktig**: Test grundig etter migrering!
 
-## Kom i gang
+## Kom i gang - Migrering
 
-### Installer typografipakken (eller oppdater til siste verjson)
+### Avhengigheter
+
+Migreringsskriptet bruker en hybrid tilnærming for å finne filer i prosjektet ditt:
+
+Skriptet prøver først å bruke [glob](https://github.com/isaacs/node-glob#readme) for avansert mønstermatching, og faller tilbake til Node.js innebygde moduler hvis `glob` ikke er tilgjengelig.
 
 ```bash
-  npm install @entur/typography
+# Med glob (anbefalt) - bedre mønstermatching
+📦 Using glob package for pattern matching
+
+# Uten glob - bruker Node.js innebygde moduler
+📁 Using Node.js built-ins for file discovery
 ```
 
-```scss
-// Importer styles
-  @import '@entur/typography/dist/styles.css';
+### Bruk scriptet
+
+**Alternativ 1: Med glob (anbefalt)**
+
+Bruker glob når tilgjengelig for bedre mønstermatching
+
+```bash
+# Installer glob
+npm i glob
+
+# Vis hjelp og alternativer
+npx @entur/typography@latest migrate --help
+yarn dlx @entur/typography@latest migrate --help
+
+# Se hva som ville blitt endret (trygt)
+npx @entur/typography@latest migrate --dry-run
+yarn dlx @entur/typography@latest migrate --dry-run
+
+# Komplett migrering: oppdater alt til beta-komponenter
+npx @entur/typography@latest migrate
+yarn dlx @entur/typography@latest migrate
 ```
 
-
-### Migrering
+**Alternativ 2: Uten glob**
 
 ```bash
 # Vis hjelp og alternativer
-yarn dlx @entur/typography@next migrate --help
 npx @entur/typography@latest migrate --help
+yarn dlx @entur/typography@latest migrate --help
 
 # Se hva som ville blitt endret (trygt)
- yarn dlx @entur/typography@next migrate --dry-run
 npx @entur/typography@latest migrate --dry-run
+yarn dlx @entur/typography@latest migrate --dry-run
 
 # Komplett migrering: oppdater alt til beta-komponenter
-yarn dlx @entur/typography@next migrate
 npx @entur/typography@latest migrate
-
-
+yarn dlx @entur/typography@latest migrate
 ```
 
 `migrate` vil automatisk:
@@ -251,9 +274,6 @@ Du kan overstyre standardmappene med miljøvariabelen `TYPOGRAPHY_MIGRATION_DIRS
 ```bash
 # Sett miljøvariabel
 export TYPOGRAPHY_MIGRATION_DIRS="src/**,app/**,components/**"
-
-# Kjør migrering
-npx @entur/typography@latest migrate
 ```
 
 #### Alternativ 2: Inline miljøvariabel
@@ -261,6 +281,8 @@ npx @entur/typography@latest migrate
 ```bash
 # Kjør med inline miljøvariabel
 TYPOGRAPHY_MIGRATION_DIRS="src/**,app/**" npx @entur/typography@latest migrate
+# eller
+TYPOGRAPHY_MIGRATION_DIRS="src/**,app/**" yarn dlx @entur/typography@latest migrate
 ```
 
 ### Viktige sikkerhetsregler
