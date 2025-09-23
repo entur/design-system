@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { UseComboboxState } from 'downshift';
 import { NormalizedDropdownItemType } from './types';
 
@@ -132,11 +133,11 @@ export const useMultiselectUtils = <ValueType>({
       ),
     );
 
-  const selectAllCheckboxState = () => {
+  const selectAllCheckboxState: boolean | 'indeterminate' = useMemo(() => {
     if (allListItemsAreSelected) return true;
     if (someListItemsAreSelected) return 'indeterminate';
     return false;
-  };
+  }, [allListItemsAreSelected, someListItemsAreSelected]);
 
   const selectAllUnselectedItemsInListItems = (
     onChange: (value: NormalizedDropdownItemType<ValueType>[]) => void,
