@@ -1,12 +1,16 @@
 {
   "name": "@entur/typography",
-  "version": "1.9.14",
+  "version": "2.0.0-beta.3",
   "license": "SEE LICENSE IN README.md",
   "main": "dist/typography.cjs.js",
   "module": "dist/typography.esm.js",
   "types": "dist/index.d.ts",
+  "bin": {
+    "migrate": "scripts/migrate-typography.js"
+  },
   "files": [
-    "dist"
+    "dist",
+    "scripts"
   ],
   "repository": {
     "type": "git",
@@ -20,7 +24,8 @@
     "build": "vite build && cp -r fonts dist/",
     "test": "jest",
     "lint": "eslint src",
-    "start": "vite build --watch"
+    "start": "vite build --watch",
+    "migrate": "node scripts/migrate-typography.js"
   },
   "peerDependencies": {
     "react": ">=16.8.0",
@@ -32,6 +37,9 @@
     "@entur/utils": "workspace:^",
     "classnames": "^2.5.1",
     "modern-normalize": "^3.0.1"
+  },
+  "optionalDependencies": {
+    "glob": "^11.0.3"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.17.0",
