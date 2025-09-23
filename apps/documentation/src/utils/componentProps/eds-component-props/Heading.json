@@ -1,0 +1,141 @@
+{
+  "tags": {},
+  "description": "",
+  "displayName": "Heading",
+  "methods": [],
+  "props": {
+    "as": {
+      "defaultValue": null,
+      "description": "HTML-element eller React-komponent som rendres (f.eks. 'h1', 'h2', 'h3', etc.)",
+      "name": "as",
+      "parent": {
+        "fileName": "design-system/packages/typography/src/beta/Heading.tsx",
+        "name": "HeadingProps"
+      },
+      "declarations": [
+        {
+          "fileName": "design-system/packages/typography/src/beta/Heading.tsx",
+          "name": "HeadingProps"
+        }
+      ],
+      "required": true,
+      "type": {
+        "name": "string | ComponentClass<any, any> | FunctionComponent<any>"
+      }
+    },
+    "variant": {
+      "defaultValue": null,
+      "description": "Visuell variant som bestemmer styling (anbefalt over size)",
+      "name": "variant",
+      "parent": {
+        "fileName": "design-system/packages/typography/src/beta/Heading.tsx",
+        "name": "HeadingProps"
+      },
+      "declarations": [
+        {
+          "fileName": "design-system/packages/typography/src/beta/Heading.tsx",
+          "name": "HeadingProps"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "TypographyHeadingVariant | undefined"
+      }
+    },
+    "size": {
+      "defaultValue": null,
+      "description": "Visuell tekststørrelse som overstyrer variant-styling",
+      "name": "size",
+      "parent": {
+        "fileName": "design-system/packages/typography/src/beta/Heading.tsx",
+        "name": "HeadingProps"
+      },
+      "declarations": [
+        {
+          "fileName": "design-system/packages/typography/src/beta/Heading.tsx",
+          "name": "HeadingProps"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "TypographySize | undefined"
+      }
+    },
+    "children": {
+      "defaultValue": null,
+      "description": "Innholdet som skal vises",
+      "name": "children",
+      "parent": {
+        "fileName": "design-system/packages/typography/src/beta/Heading.tsx",
+        "name": "HeadingProps"
+      },
+      "declarations": [
+        {
+          "fileName": "design-system/packages/typography/src/beta/Heading.tsx",
+          "name": "HeadingProps"
+        }
+      ],
+      "required": true,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "className": {
+      "defaultValue": null,
+      "description": "Ekstra klassenavn for tilpasset styling",
+      "name": "className",
+      "parent": {
+        "fileName": "design-system/packages/typography/src/beta/Heading.tsx",
+        "name": "HeadingProps"
+      },
+      "declarations": [
+        {
+          "fileName": "design-system/packages/typography/src/beta/Heading.tsx",
+          "name": "HeadingProps"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "style": {
+      "defaultValue": null,
+      "description": "Inline CSS-stiler",
+      "name": "style",
+      "parent": {
+        "fileName": "design-system/packages/typography/src/beta/Heading.tsx",
+        "name": "HeadingProps"
+      },
+      "declarations": [
+        {
+          "fileName": "design-system/packages/typography/src/beta/Heading.tsx",
+          "name": "HeadingProps"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "CSSProperties | undefined"
+      }
+    },
+    "spacing": {
+      "defaultValue": null,
+      "description": "Spacing around the component",
+      "name": "spacing",
+      "parent": {
+        "fileName": "design-system/packages/typography/src/beta/Heading.tsx",
+        "name": "HeadingProps"
+      },
+      "declarations": [
+        {
+          "fileName": "design-system/packages/typography/src/beta/Heading.tsx",
+          "name": "HeadingProps"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "TypographySpacing | undefined"
+      }
+    }
+  }
+}
