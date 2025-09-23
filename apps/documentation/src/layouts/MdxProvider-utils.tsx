@@ -183,17 +183,17 @@ const components = {
       if (props.language === 'jsx') {
         return <Playground code={props.codeString} language={props.language} />;
       } else {
-        return <PreformattedText {...preProps} />;
+        return <Text as="pre" variant="preformatted-text" {...preProps} />;
       }
     }
-    return <PreformattedText {...preProps} />;
+    return <Text as="pre" variant="preformatted-text" {...preProps} />;
   },
   code: props => {
     const { className } = props;
     if (className) {
       return <code {...props} />;
     }
-    return <CodeText {...props} />;
+    return <Text as="code" variant="code-text" {...props} />;
   },
 };
 
