@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.11.0-beta.4](https://github.com/entur/design-system/compare/@entur/documentation@6.11.0-beta.3...@entur/documentation@6.11.0-beta.4) (2025-09-23)
+
+**Note:** Version bump only for package @entur/documentation
+
 # [6.11.0-beta.3](https://github.com/entur/design-system/compare/@entur/documentation@6.11.0-beta.2...@entur/documentation@6.11.0-beta.3) (2025-09-22)
 
 ### Bug Fixes
