@@ -53,6 +53,12 @@
   --components-layout-badge-success-standard-fill: #{$fill-success-muted};
   --components-layout-badge-success-standard-text: #{$text-accent};
   --components-layout-badge-success-standard-text-bullet: #{$text-accent};
+  --components-layout-badge-tag-contrast-fill: #{$fill-background-contrast-lightalt};
+  --components-layout-badge-tag-contrast-icon: #{$shape-light};
+  --components-layout-badge-tag-contrast-text: #{$text-light};
+  --components-layout-badge-tag-standard-fill: #{$fill-background-tint-neutral};
+  --components-layout-badge-tag-standard-icon: #{$shape-accent};
+  --components-layout-badge-tag-standard-text: #{$text-accent};
   --components-layout-badge-warning-contrast-border: #{$stroke-colorless};
   --components-layout-badge-warning-contrast-bullet: #{$fill-warning-contrast};
   --components-layout-badge-warning-contrast-fill: #{$fill-warning-contrast};
@@ -138,6 +144,12 @@
   --components-layout-badge-success-standard-fill: #{$fill-success-tint};
   --components-layout-badge-success-standard-text: #{$text-dark};
   --components-layout-badge-success-standard-text-bullet: #{$text-lightalt};
+  --components-layout-badge-tag-contrast-fill: #{$fill-background-subdued-dark};
+  --components-layout-badge-tag-contrast-icon: #{$shape-lightalt};
+  --components-layout-badge-tag-contrast-text: #{$text-lightalt};
+  --components-layout-badge-tag-standard-fill: #{$fill-background-subdued-dark};
+  --components-layout-badge-tag-standard-icon: #{$shape-lightalt};
+  --components-layout-badge-tag-standard-text: #{$text-lightalt};
   --components-layout-badge-warning-contrast-border: #{$stroke-colorless};
   --components-layout-badge-warning-contrast-bullet: #{$fill-warning-tint};
   --components-layout-badge-warning-contrast-fill: #{$fill-warning-tint};

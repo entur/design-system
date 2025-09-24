@@ -382,7 +382,7 @@
           },
           {
             "name": "Standard/Bicycle",
-            "value": "#388f76",
+            "value": "#33826b",
             "var": "",
             "rootAlias": ""
           },
@@ -424,7 +424,7 @@
           },
           {
             "name": "Standard/Citybike",
-            "value": "#388f76",
+            "value": "#33826b",
             "var": "",
             "rootAlias": ""
           },
@@ -478,7 +478,7 @@
           },
           {
             "name": "Standard/Mobility",
-            "value": "#388f76",
+            "value": "#33826b",
             "var": "",
             "rootAlias": ""
           },
