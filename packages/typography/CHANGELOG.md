@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/entur/design-system/compare/@entur/typography@1.9.14...@entur/typography@2.0.0) (2025-09-24)
+
+### Bug Fixes
+
+- **typography beta:** replace display-mode names ([e5f0deb](https://github.com/entur/design-system/commit/e5f0deb77c72bb9bd453c6aebf0c1113fc1e31b7))
+- **typography-beta:** add new styles in new betastructure ([640d462](https://github.com/entur/design-system/commit/640d4623aa0ce4337489836b2868654a84becbdf))
+
+### Code Refactoring
+
+- **typography:** use modern exports and restructure beta build output ([46b365c](https://github.com/entur/design-system/commit/46b365cfffed531bea7d36e7be138dc5445f050c))
+
+### Features
+
+- **typography beta:** add migration script ([114601d](https://github.com/entur/design-system/commit/114601d592491cacb2fdb88745a07f054f54223f))
+- **typography beta:** add new Heading component ([11890a9](https://github.com/entur/design-system/commit/11890a9344271bc391343af105f7c79659a6fef9))
+- **typography beta:** add new special typography components ([8579d0b](https://github.com/entur/design-system/commit/8579d0be41026763cbfc4c19f3afa5b5f780b708))
+- **typography beta:** add new Text component ([dc859c0](https://github.com/entur/design-system/commit/dc859c090036bcb6df64b1874aa1954b6e6c8dd7))
+- **typography beta:** automatically load needed css in js files ([7f2cc06](https://github.com/entur/design-system/commit/7f2cc06a0fd88fafcfd6ccb2ddfac69eb204e493))
+- **typography:** replace normalize.scss with modern-normalize.css ([c84d804](https://github.com/entur/design-system/commit/c84d804d836035be96dd31d9dcd3b2fbeff188ef))
+
+### BREAKING CHANGES
+
+- **typography:** This change aims to avoid breaking changes, but due to major changes to
+  the build process, breaking changes should be expected.
+
 ## [1.9.13](https://github.com/entur/design-system/compare/@entur/typography@1.9.12...@entur/typography@1.9.13) (2025-08-29)
 
 ### Bug Fixes

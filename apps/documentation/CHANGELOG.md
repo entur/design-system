@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.11.0](https://github.com/entur/design-system/compare/@entur/documentation@6.10.2...@entur/documentation@6.11.0) (2025-09-24)
+
+### Bug Fixes
+
+- **typography beta:** replace display-mode names ([e5f0deb](https://github.com/entur/design-system/commit/e5f0deb77c72bb9bd453c6aebf0c1113fc1e31b7))
+- **typography-beta:** add new styles in new betastructure ([640d462](https://github.com/entur/design-system/commit/640d4623aa0ce4337489836b2868654a84becbdf))
+- **website:** refactore to use new names for beta typography components ([e90afaf](https://github.com/entur/design-system/commit/e90afaf9e3567c5c838671e55b7396f51171ebab))
+
+### Features
+
+- **website:** use new typography in mdxProvider ([9a4f2e0](https://github.com/entur/design-system/commit/9a4f2e0a56fa8e63ccf9b14857136b81fc0c21f4))
+
 ## [6.10.2](https://github.com/entur/design-system/compare/@entur/documentation@6.10.1...@entur/documentation@6.10.2) (2025-09-08)
 
 **Note:** Version bump only for package @entur/documentation

@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.3.4](https://github.com/entur/design-system/compare/@entur/form@8.3.3...@entur/form@8.3.4) (2025-09-24)
+
+**Note:** Version bump only for package @entur/form
+
 ## [8.3.2](https://github.com/entur/design-system/compare/@entur/form@8.3.1...@entur/form@8.3.2) (2025-08-29)
 
 ### Bug Fixes
