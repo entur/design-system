@@ -3,20 +3,19 @@
 /*
  * Typography Display Modes
  * 
- * This system allows you to control typography scaling based on display size.
- * Use the display-mode attribute to switch between different typography scales:
+ * This system allows you to control typography scaling based on view size.
+ * Use the vie-mode attribute to switch between different typography scales:
  * 
- * - Default/Mobile: [display-mode='mobile'] or no attribute (responsive)
- * - Large Display: [display-mode='large'] for big screens, kiosks, etc.
+ * - Compact: [view-mode='compact'] or no attribute (responsive)
+ * - Display: [view-mode='display'] for big screens, kiosks, etc.
  * 
  * Usage:
- * <html display-mode="large"> or <div display-mode="large">
+ * <html view-mode="display"> or <div view-mode="display">
  * 
  * The system automatically handles responsive behavior within each mode.
  */
 /* Primitive size */
 :root {
-  /* Mode 1 */
   /* number */
   --size-0: 0rem;
   --size-1: 0.0625rem;
@@ -53,8 +52,8 @@
 }
 
 :root,
-[display-mode='mobile'] {
-  /* Mobile/Default mode - number */
+[view-mode='standard'] {
+  /* Standard - number */
   --font-line-height-body-xs: var(--size-7);
   --font-line-height-body-s: var(--size-8);
   --font-line-height-body-lg: var(--size-9);
@@ -94,8 +93,6 @@
   --font-weight-heading: 600;
 
   @include for-desktop {
-    /* Desktop override for mobile mode - number */
-    /* number */
     --font-line-height-body-xs: var(--size-7);
     --font-line-height-body-s: var(--size-8);
     --font-line-height-body-m: var(--size-9);
@@ -136,8 +133,49 @@
   }
 }
 
-[display-mode='large'] {
-  /* number */
+[view-mode='compact'] {
+  /* Compact - number */
+  --font-line-height-body-xs: var(--size-7);
+  --font-line-height-body-s: var(--size-8);
+  --font-line-height-body-lg: var(--size-9);
+  --font-line-height-body-m: var(--size-9);
+  --font-line-height-body-xl: var(--size-10);
+  --font-line-height-heading-s: var(--size-7);
+  --font-line-height-heading-xs: var(--size-7);
+  --font-line-height-heading-m: var(--size-8);
+  --font-line-height-heading-lg: var(--size-9);
+  --font-line-height-heading-xl: var(--size-10);
+  --font-line-height-heading-2xl: var(--size-11);
+  --font-paragraph-spacing-body-xs: var(--size-4);
+  --font-paragraph-spacing-body-s: var(--size-5);
+  --font-paragraph-spacing-body-m: var(--size-7);
+  --font-paragraph-spacing-body-lg: var(--size-8);
+  --font-paragraph-spacing-body-xl: var(--size-8);
+  --font-paragraph-spacing-heading-s: var(--size-4);
+  --font-paragraph-spacing-heading-xs: var(--size-4);
+  --font-paragraph-spacing-heading-lg: var(--size-5);
+  --font-paragraph-spacing-heading-m: var(--size-5);
+  --font-paragraph-spacing-heading-2xl: var(--size-7);
+  --font-paragraph-spacing-heading-xl: var(--size-7);
+  --font-size-body-xs: var(--size-5);
+  --font-size-body-s: var(--size-6);
+  --font-size-body-lg: var(--size-7);
+  --font-size-body-m: var(--size-7);
+  --font-size-body-xl: var(--size-8);
+  --font-size-heading-xs: var(--size-5);
+  --font-size-heading-s: var(--size-6);
+  --font-size-heading-m: var(--size-7);
+  --font-size-heading-lg: var(--size-8);
+  --font-size-heading-xl: var(--size-9);
+  --font-size-heading-2xl: var(--size-10);
+  /* string */
+  --font-family-nationale: Nationale;
+  --font-weight-body: 500;
+  --font-weight-heading: 600;
+}
+
+[view-mode='display'] {
+  /* Display - number */
   --font-line-height-body-xs: var(--size-10);
   --font-line-height-body-s: var(--size-11);
   --font-line-height-body-m: var(--size-14);

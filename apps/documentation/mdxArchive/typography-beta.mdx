@@ -304,23 +304,23 @@ Numbered lists support different numbering styles:
 ````
 
 
-## Display Mode
+## View mode
 
 TypographyBeta støtter forskjellige visninger for å tilpasse typografien til ulike skjermstørrelser og bruksområder. Denne løsninger er foreløpig designet med tanke på automater. Men vil passe flere bruksområder.
 
 ### Hvordan det fungerer
 
-Systemet bruker `display-mode` attributtet for å kontrollere typografi-skalering:
+Systemet bruker `view-mode` attributtet for å kontrollere typografi-skalering:
 
-- **Default/Mobile**: Responsiv typografi som tilpasser seg skjermstørrelse
-- **Large**: Forstørret typografi for store skjermer, kiosker, eller tilgjengelighet
+- **Compact**: Responsiv typografi som tilpasser seg skjermstørrelse
+- **Display**: Forstørret typografi for store skjermer, kiosker, eller tilgjengelighet
 
-### Bruk av display-mode
+### Bruk av view-mode
 
 #### HTML-nivå (anbefalt for hele siden)
 
 ```html
-<html display-mode="large">
+<html view-mode="display">
   <!-- Alt innhold får large typografi -->
 </html>
 ```
@@ -328,7 +328,7 @@ Systemet bruker `display-mode` attributtet for å kontrollere typografi-skalerin
 #### Komponent-nivå (for spesifikke seksjoner)
 
 ```html
-<div display-mode="large">
+<div view-mode="display">
   <Heading as="h1">Stor tittel for store skjermer</Heading>
   <Text variant="paragraph">Større tekst som er lettere å lese</Text>
 </div>
@@ -338,40 +338,41 @@ Systemet bruker `display-mode` attributtet for å kontrollere typografi-skalerin
 
 ```javascript
 // Sett display mode for hele siden
-document.documentElement.setAttribute('display-mode', 'large');
+document.documentElement.setAttribute('view-mode', 'display');
 
 // Fjern display mode (tilbake til default)
-document.documentElement.removeAttribute('display-mode');
+document.documentElement.removeAttribute('view-mode');
 
 // Sjekk nåværende mode
-const currentMode = document.documentElement.getAttribute('display-mode');
+const currentMode = document.documentElement.getAttribute('view-mode');
 ```
 
 ### Responsiv oppførsel
 
-Hver display-mode har innebygd responsiv oppførsel:
+Hver view-mode har innebygd responsiv oppførsel:
 
-- **Mobile mode**: Automatisk større typografi på desktop
-- **Large mode**: Konsistent stor typografi på alle skjermstørrelser
+- **Standard mode/default**: Automatisk større typografi på desktop
+- **Compact mode**: Når det er behov for små størrelser, uansett skjermstørrelse
+- **Display mode**: Konsistent stor typografi på alle skjermstørrelser
 
 ### Eksempel
 
 ```jsx
-// Default/Mobile mode (ingen display-mode attributt)
+// Default/Mobile mode (ingen view-mode attributt)
 <Heading as="h1">Normal tittel</Heading>
 <Text variant="paragraph">Normal tekst</Text>
 
 // Large mode
-<div display-mode="large">
+<div view-mode="large">
   <Heading as="h1">Stor tittel</Heading>
   <Text variant="paragraph">Stor tekst</Text>
 </div>
 ```
 
 ### Når skal du bruke det?
-
-- **Default**: Standard responsive typografi for de fleste bruksområder
-- **Large**:
+- **Standard/Default**: Standard responsive typografi for de fleste bruksområder (Responsive fra mobil til desktop)
+- **Compact**: Om du bare trenger tokens for små størrelser, oftest ved B2B-behov med store og mange informasjonsbehov. (Tabeller, admingrensesnitt etc.)
+- **Display**:
   - Automater og informasjonsskjermer
   - Tilgjengelighet for brukere med synsproblemer
   - Presentasjoner og store skjermer
