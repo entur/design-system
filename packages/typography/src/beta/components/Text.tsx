@@ -38,34 +38,43 @@ export type TextProps<C extends React.ElementType> = PolymorphicComponentProps<
   TextBaseProps
 >;
 
-const TypographyText = <C extends React.ElementType = 'p'>({
-  children,
-  as,
-  size,
-  variant,
-  weight = 'medium',
-  spacing,
-  className,
-  ...rest
-}: TextProps<C>) => {
-  const BodyElement = as || getSemanticTypeFromTextVariant(variant);
+const TypographyText = React.forwardRef<
+  HTMLElement,
+  TextProps<React.ElementType>
+>(
+  (
+    {
+      children,
+      as,
+      size,
+      variant,
+      weight = 'medium',
+      spacing,
+      className,
+      ...rest
+    },
+    ref,
+  ) => {
+    const BodyElement = as || getSemanticTypeFromTextVariant(variant);
 
-  return (
-    <BodyElement
-      className={classNames(
-        'eds-text',
-        variant && `eds-text--${variant}`,
-        size && `eds-text--${size}`,
-        weight && `eds-text--weight-${weight}`,
-        getSpacingClasses(spacing, 'eds-text'),
-        className,
-      )}
-      {...rest}
-    >
-      {children}
-    </BodyElement>
-  );
-};
+    return (
+      <BodyElement
+        ref={ref}
+        className={classNames(
+          'eds-text',
+          variant && `eds-text--${variant}`,
+          size && `eds-text--${size}`,
+          weight && `eds-text--weight-${weight}`,
+          getSpacingClasses(spacing, 'eds-text'),
+          className,
+        )}
+        {...rest}
+      >
+        {children}
+      </BodyElement>
+    );
+  },
+);
 
 // Export as Text to avoid DOM conflicts
 export const Text = TypographyText;
