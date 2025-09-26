@@ -9,16 +9,17 @@
   }
   &__live-preview-and-props-wrapper {
     display: flex;
+    margin-bottom: tokens.$space-extra-large;
 
     @media screen and (max-width: map.get(variables.$breakpoints, 'mobile')) {
       flex-direction: column;
     }
-
-    &:has(+ .ReactCollapse--collapse) .playground__live-preview-container {
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-      margin-bottom: 0rem;
-    }
+  }
+  &__live-preview-and-props-wrapper:has(+ .ReactCollapse--collapse),
+  &__live-preview-container:has(+ .ReactCollapse--collapse) {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    margin-bottom: 0rem;
   }
   &__live-preview {
     padding: 1rem;
@@ -115,7 +116,10 @@
   }
 
   &__expandable {
-    margin-bottom: 2rem;
+    margin-bottom: tokens.$space-extra-large;
+    overflow: hidden;
+    border-bottom-left-radius: tokens.$border-radiuses-medium;
+    border-bottom-right-radius: tokens.$border-radiuses-medium;
 
     $editor-background: #1e1e1e;
     &__editor {
@@ -180,5 +184,9 @@
         }
       }
     }
+  }
+
+  .ReactCollapse--collapse {
+    margin-bottom: tokens.$space-extra-large;
   }
 }

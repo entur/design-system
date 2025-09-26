@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { CodeText, Heading2, Paragraph } from '@entur/typography';
+import { CodeText, Paragraph } from '@entur/typography';
 import {
   Table,
   TableHead,
@@ -8,10 +8,10 @@ import {
   HeaderCell,
   DataCell,
 } from '@entur/table';
-import { ExpandableText } from '@entur/expand';
+
 import { useSettings } from '@providers/SettingsContext';
-import './Props.scss';
 import { ImportStatement } from '@components/Common/ImportStatement';
+import './Props.scss';
 
 // Utility functions for formatting prop types
 // TODO removeDeprecatedVariantType only removes deprecated variant types that have VariantType. And it does not check if it removes from the correct component. It should be more specific.

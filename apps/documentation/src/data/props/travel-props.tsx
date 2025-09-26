@@ -98,9 +98,15 @@ export const travelleg = [
 export const traveltag = [
   {
     name: 'children',
-    defaultValue: '32',
+    defaultValue: 'R12',
     type: 'string',
     label: 'Content',
+  },
+  {
+    name: 'details',
+    defaultValue: '#527',
+    type: 'string',
+    label: 'Details',
   },
   {
     name: 'alert',
@@ -110,7 +116,7 @@ export const traveltag = [
   },
   {
     name: 'transport',
-    defaultValue: 'bus',
+    defaultValue: 'train',
     options: [
       'none',
       'metro',
@@ -137,7 +143,7 @@ export const traveltag = [
   },
   {
     name: 'label',
-    default: '',
+    defaultValue: 'Kongsberg',
     type: 'string',
     label: 'Label',
   },
