@@ -157,10 +157,11 @@
     border: none;
     border-radius: 50%;
     cursor: pointer;
-    margin: 0 0 0 t.$space-small;
+    margin: 0 -0.25rem 0 0.25rem;
     padding: 0;
     height: t.$space-large;
     width: t.$space-large;
+    font-size: t.$font-sizes-large;
     .eds-icon {
       color: var(--text-color);
       font-size: t.$font-sizes-medium;
