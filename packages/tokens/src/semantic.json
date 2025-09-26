@@ -621,6 +621,12 @@
             "rootAlias": "Ebony/100"
           },
           {
+            "name": "Stroke/High contrast",
+            "value": "#11143c",
+            "var": "Lavender/100",
+            "rootAlias": "Lavender/100"
+          },
+          {
             "name": "Stroke/Highlight",
             "value": "#ff5959",
             "var": "Coral/40",

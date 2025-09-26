@@ -1,6 +1,8 @@
 @use '@entur/tokens/dist/styles.scss' as tokens;
 
 .code-block {
+  margin-bottom: tokens.$space-extra-large;
+
   .eds-expandable-panel {
     position: relative;
     &__content {

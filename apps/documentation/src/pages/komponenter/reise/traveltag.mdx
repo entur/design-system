@@ -8,7 +8,9 @@ npmPackage: travel
 tags: tag, reisetag
 ---
 
+import { CodeBlock } from '@components/Codeblock/CodeBlock';
 import { SEO } from '@components/seo/SEO';
+
 import { BusIcon, BicycleIcon } from '@entur/icons';
 import { TravelTag } from '@entur/travel';
 import { traveltag } from '@data/props/travel-props';
@@ -20,13 +22,28 @@ export const Head = ( props ) => {
 
 <PageHeader />
 
-<Playground props={traveltag} code={`<TravelTag transport="bus">32</TravelTag>`} />
+<Playground props={traveltag} code={`<TravelTag transport="train" details=""></TravelTag>`} />
 
-## Props
+### Ekstra innhold (details)
 
-### TravelTag
+TravelTag støtter ekstra innhold via prop-en `details`, som vises i en separat boks til høyre for innholdet. 
+Details brukes ofte for å vise et tog/avgangsnummer.
 
+#### Eksempel:
+<TravelTag transport="bus" details="#45">32</TravelTag>
+
+<CodeBlock hideLineNumbers wrapLongLines={false} language="jsx">
+{`<TravelTag transport="bus" details="#45">32</TravelTag>`}
+</CodeBlock>
+
+### Lukke TravelTag
 Om du ønsker at man skal kunne lukke / fjerne en TravelTag, kan du sende inn en onClose-callback funksjon.
 
-<ImportStatement imports="TravelTag" packageName={props.pageContext.frontmatter.npmPackage} />
-<Props componentName="TravelTag" />
+<TravelTag transport="bus" onClose={() => console.log('close')}>32</TravelTag>
+
+<CodeBlock hideLineNumbers wrapLongLines={false} language="jsx">
+{`<TravelTag transport="bus" onClose={() => console.log('close')}>32</TravelTag>`}
+</CodeBlock>
+
+## Props
+<Props componentName="TravelTag" npmPackage={props.pageContext.frontmatter.npmPackage} />

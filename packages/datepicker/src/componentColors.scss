@@ -6,6 +6,7 @@
 [data-color-mode='light'],
 :root {
   --components-datepicker-calendar-background: #{$fill-background-standard-light};
+  --components-datepicker-calendar-background-overflow: #{$fill-background-tint-light};
   --components-datepicker-calendar-border: #{$stroke-neutral};
   --components-datepicker-calendar-dateborder: #{$stroke-neutral};
   --components-datepicker-calendar-datefill-hover: #{$fill-secondary-hover-light};
@@ -19,6 +20,7 @@
 
 [data-color-mode='dark'] {
   --components-datepicker-calendar-background: #{$fill-background-overlay-solid};
+  --components-datepicker-calendar-background-overflow: #{$fill-background-overlay-transparent};
   --components-datepicker-calendar-border: #{$stroke-colorless};
   --components-datepicker-calendar-dateborder: #{$stroke-darkalt};
   --components-datepicker-calendar-datefill-hover: #{$fill-selected-hover-dark};

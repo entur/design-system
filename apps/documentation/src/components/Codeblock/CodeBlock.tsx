@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { Language } from 'prism-react-renderer';
 import { ExpandablePanel } from '@entur/expand';
@@ -17,6 +17,7 @@ export type codeBlockProps = {
   asExpandable?: boolean;
   expandableLabel?: string;
   defaultOpen: boolean;
+  style?: CSSProperties;
 };
 
 export const CodeBlock = ({
@@ -33,7 +34,7 @@ export const CodeBlock = ({
     condition ? wrapper(children) : <>{children}</>;
 
   return (
-    <div className="code-block">
+    <div className="code-block" style={rest.style}>
       <ConditionalWrapper
         condition={asExpandable}
         wrapper={(wrapChildren: React.ReactNode) => (

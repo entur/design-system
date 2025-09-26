@@ -1,8 +1,8 @@
 @use '@entur/tokens/dist/styles.scss' as t;
 
 .eds-travel-tag {
-  --background-color: var(--components-travel-traveltag-standard-tagfill-walk); //Default
-  --text-color: var(--components-travel-traveltag-standard-text-line);
+  --background-color: var(--components-travel-traveltag-standard-fill-walk); //Default
+  --text-color: var(--components-travel-traveltag-standard-text-default);
 
   display: inline-flex;
   position: relative;
@@ -17,8 +17,8 @@
   color: var(--text-color);
 
   .eds-contrast & {
-    --background-color: var(--components-travel-traveltag-contrast-tagfill-walk); //Default
-    --text-color: var(--components-travel-traveltag-contrast-text-line);
+    --background-color: var(--components-travel-traveltag-contrast-fill-walk); //Default
+    --text-color: var(--components-travel-traveltag-contrast-text-default);
   }
 
   &--alert {
@@ -111,16 +111,57 @@
     }
   }
 
+  &__details {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: t.$space-large;
+    height: calc(100% + 2 * t.$space-extra-small2);
+
+    margin-block: -1 * t.$space-extra-small2;
+    margin-left: t.$space-extra-small;
+    margin-right: -1 * t.$space-small;
+    padding-inline: t.$space-extra-small;
+
+    background-color: var(--components-travel-traveltag-standard-fill-details);
+    color: var(--components-travel-traveltag-standard-text-details);
+    border: t.$border-widths-small solid var(--components-travel-traveltag-standard-stroke-details);
+    border-left: none;
+    border-radius: 0 t.$border-radiuses-medium t.$border-radiuses-medium 0;
+    font-weight: t.$font-weights-body;
+    font-size: t.$font-sizes-medium;
+    line-height: t.$space-large;
+
+    .eds-contrast & {
+      background-color: var(--components-travel-traveltag-contrast-fill-details);
+      color: var(--components-travel-traveltag-contrast-text-details);
+      border-color: var(--components-travel-traveltag-contrast-stroke-details);
+    }
+
+    .eds-travel-tag--alert--error & {
+      border-color: var(--components-travel-traveltag-standard-stroke-details-cancelled);
+      background-color: var(--components-travel-traveltag-standard-fill-details-cancelled);
+      color: var(--components-travel-traveltag-standard-text-details-cancelled);
+
+      .eds-contrast & {
+        border-color: var(--components-travel-traveltag-contrast-stroke-details-cancelled);
+        background-color: var(--components-travel-traveltag-contrast-fill-details-cancelled);
+        color: var(--components-travel-traveltag-contrast-text-details-cancelled);
+      }
+    }
+  }
+
   &__close-button {
     appearance: none;
     background: none;
     border: none;
     border-radius: 50%;
     cursor: pointer;
-    margin: 0 0 0 t.$space-small;
+    margin: 0 -0.25rem 0 0.25rem;
     padding: 0;
     height: t.$space-large;
     width: t.$space-large;
+    font-size: t.$font-sizes-large;
     .eds-icon {
       color: var(--text-color);
       font-size: t.$font-sizes-medium;

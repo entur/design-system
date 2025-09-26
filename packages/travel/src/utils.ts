@@ -41,6 +41,8 @@ export type Transport =
   | 'air'
   | 'none';
 
+export type CSSVars = { [key: `--${string}`]: string | number };
+
 type transportStyleResult = {
   Icon: React.FC<IconProps>;
   backgroundColor?: string;

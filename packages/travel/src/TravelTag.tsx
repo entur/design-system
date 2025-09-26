@@ -1,4 +1,4 @@
-import React, { cloneElement, useEffect, useRef } from 'react';
+import React, { cloneElement } from 'react';
 import classNames from 'classnames';
 import {
   CloseSmallIcon,
@@ -10,7 +10,7 @@ import { useContrast } from '@entur/layout';
 
 import { getTransportStyle } from './utils';
 
-import type { Transport } from './utils';
+import type { CSSVars, Transport } from './utils';
 
 import './TravelTag.scss';
 
@@ -35,6 +35,10 @@ export type TravelTagProps = {
    * @default "right"
    */
   labelPlacement?: 'bottom' | 'right';
+  /** Ekstrainnhold for tilleggsvisning i en separat boks.
+   * @example Brukes ofte for å vise et tog/avgangsnummer
+   */
+  details?: React.ReactNode;
 } & React.DetailedHTMLProps<
   React.HTMLAttributes<HTMLDivElement>,
   HTMLDivElement
@@ -48,76 +52,35 @@ export const TravelTag: React.FC<TravelTagProps> = ({
   label,
   labelPlacement = 'right',
   onClose = undefined,
+  details,
+  style,
   ...rest
 }) => {
   const isContrast = useContrast();
-  const isClosable = onClose ? true : false;
+  const isClosable = Boolean(onClose);
   const transportIsSet = transport !== 'none';
   const alertIsSet = alert !== 'none';
-  const tagRef = useRef<HTMLDivElement>(null);
+  const hasDetails = details !== undefined;
   const numberOfChildren = React.Children.count(children);
   const { Icon, ariaLabel: ariaLabelForTranportIcon } =
     getTransportStyle(transport);
-  const deCapitalizeTransport = transport.toLowerCase();
+  const transportLower = transport.toLowerCase();
   const IconWithAriaHidden = cloneElement(<Icon />, { 'aria-hidden': 'true' });
 
-  const backgroundColor =
-    'var(--components-travel-traveltag-standard-tagfill-' +
-    deCapitalizeTransport +
-    ')';
-  const contrastBackgroundColor =
-    'var(--components-travel-traveltag-contrast-tagfill-' +
-    deCapitalizeTransport +
-    ')';
-  // Error colors
-  const errorBackgroundColor =
-    'var(--components-travel-traveltag-standard-tagfill-' +
-    deCapitalizeTransport +
-    '-cancled)';
-  const errorContrastBackgroundColor =
-    'var(--components-travel-traveltag-contrast-tagfill-' +
-    deCapitalizeTransport +
-    '-cancled)';
-  const errorContrastTextColor =
-    'var(--components-travel-traveltag-contrast-text-line-' +
-    deCapitalizeTransport +
-    '-cancled)';
-  const errorTextColor =
-    'var(--components-travel-traveltag-standard-text-line-' +
-    deCapitalizeTransport +
-    '-cancled)';
+  const colorTheme = isContrast ? 'contrast' : 'standard';
+  const colorModifier = alert === 'error' ? 'cancelled' : undefined;
+  const shouldModifyTextColor = alert === 'error' || transport === 'walk';
 
-  useEffect(() => {
-    if (transportIsSet) {
-      let colorToSet;
-      let textColorToSet;
-      // Walk has another icon/text color then the other transports
-      if (transport === 'walk') {
-        tagRef.current?.style.setProperty(
-          '--text-color',
-          'var(--components-travel-traveltag-standard-icon-walk)',
-        );
-      }
-      // Error
-      if (alert === 'error') {
-        colorToSet = isContrast
-          ? errorContrastBackgroundColor
-          : errorBackgroundColor;
-        textColorToSet = isContrast ? errorContrastTextColor : errorTextColor;
-        tagRef.current?.style.setProperty('--text-color', `${textColorToSet}`);
-      } else {
-        colorToSet = isContrast ? contrastBackgroundColor : backgroundColor;
-      }
-      tagRef.current?.style.setProperty('--background-color', `${colorToSet}`);
-    }
-  }, [
-    transportIsSet,
-    isContrast,
-    backgroundColor,
-    contrastBackgroundColor,
-    errorBackgroundColor,
-    alert,
-  ]);
+  const dynamicCssVars: React.CSSProperties & CSSVars = {
+    '--background-color': `var(--components-travel-traveltag-${colorTheme}-fill-${transportLower}${
+      colorModifier ? `-${colorModifier}` : ''
+    })`,
+    ...(shouldModifyTextColor && {
+      '--text-color': `var(--components-travel-traveltag-${colorTheme}-text-line-${transportLower}${
+        colorModifier ? `-${colorModifier}` : ''
+      })`,
+    }),
+  };
 
   const TravelTagWithoutLabel: JSX.Element = (
     <div
@@ -130,10 +93,10 @@ export const TravelTag: React.FC<TravelTagProps> = ({
           numberOfChildren > 1 || (transportIsSet && numberOfChildren > 0),
         className,
       })}
-      ref={tagRef}
-      aria-label={`${ariaLabelForTranportIcon} ${children} ${
-        alertIsSet ? alert : ''
-      }`}
+      style={{ ...dynamicCssVars, ...style }}
+      aria-label={[ariaLabelForTranportIcon, children, alertIsSet ? alert : '']
+        .filter(Boolean)
+        .join(' ')}
       role="img"
       {...rest}
     >
@@ -148,6 +111,7 @@ export const TravelTag: React.FC<TravelTagProps> = ({
           <CloseSmallIcon inline />
         </button>
       )}
+      {hasDetails && <div className="eds-travel-tag__details">{details}</div>}
       {alertIsSet && (
         <span className="eds-travel-tag__alert">
           {alert === 'info' && (
