@@ -99,18 +99,18 @@ const config: GatsbyConfig = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name: 'icons',
-        path: './icons/',
+        name: 'changelog',
+        path: './dist/changelogs/',
       },
-      __key: 'icons',
+      __key: 'changelog',
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name: 'changelog',
-        path: './changelogs/',
+        name: 'icons',
+        path: './dist/icons/',
       },
-      __key: 'changelog',
+      __key: 'icons',
     },
     {
       resolve: 'gatsby-plugin-local-search',

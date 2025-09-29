@@ -25,9 +25,11 @@ import {
   UnorderedList,
 } from '@entur/typography';
 
+import { useURLSearchParams } from './IconList.utils';
 import { useGetIcons } from './useGetIcons';
 
 import './IconList.scss';
+
 type IconListProps = {
   icons: {
     [key: string]: React.Component<any, any>;
@@ -37,9 +39,11 @@ type IconListItem = {
   category: string;
   rootCategory?: string;
   name: string;
-  component: {
-    [key: string]: React.Component<any, any, any>;
-  };
+  component:
+    | React.ComponentType<any>
+    | {
+        [key: string]: React.Component<any, any, any>;
+      };
   downloadUrl: string;
 };
 
@@ -78,13 +82,23 @@ const unique = (value: string, index: number, listWithItems: string[]) => {
 const IconList: React.FC<IconListProps> = ({ icons: allIconComponents }) => {
   const { addToast } = useToast();
   const iconsQuery = useGetIcons();
+
+  // URL search params management
+  const { initialParams, debouncedUpdateURL, clearURLParams } =
+    useURLSearchParams();
+
   const [isContrast, setContrast] = React.useState(false);
-  const [searchString, setSearchString] = React.useState('');
+  const [searchString, setSearchString] = React.useState(initialParams.search);
   const [iconSize, setIconSize] = React.useState<NormalizedDropdownItemType>(
     ICON_SIZES[ICON_SIZES.length - 1],
   );
   const [selectedCategory, setSelectedCategory] =
-    React.useState<NormalizedDropdownItemType | null>(null);
+    React.useState<NormalizedDropdownItemType | null>(initialParams.category);
+
+  // Update URL when search string or category changes
+  React.useEffect(() => {
+    debouncedUpdateURL(searchString, selectedCategory?.value || null);
+  }, [searchString, selectedCategory, debouncedUpdateURL]);
 
   const allIcons = React.useMemo(() => {
     const filteredIcons = iconsQuery.filter(icon => {
@@ -104,7 +118,7 @@ const IconList: React.FC<IconListProps> = ({ icons: allIconComponents }) => {
         const category =
           icon.node.absolutePath.match(/icons\/(.*?)\/[^/]+\.svg/)?.[1] ??
           'None';
-        const rootCategory = category.split('/')[1];
+        const rootCategory = category.split('/')[0];
 
         if (!iconComponent) {
           // Log missing icon
@@ -150,9 +164,17 @@ const IconList: React.FC<IconListProps> = ({ icons: allIconComponents }) => {
       return searcherAllIcons.search(searchString);
     }
 
-    const iconsInSelectedCategory = allIcons.filter(
-      icon => icon.category === selectedCategory.value,
-    );
+    const iconsInSelectedCategory = allIcons.filter(icon => {
+      // If selected category is a main category (no slash), show all icons in that category and its subcategories
+      if (!selectedCategory.value.includes('/')) {
+        return (
+          icon.category === selectedCategory.value ||
+          icon.category.startsWith(selectedCategory.value + '/')
+        );
+      }
+      // If selected category is a subcategory, show only icons in that exact subcategory
+      return icon.category === selectedCategory.value;
+    });
 
     if (searchString === '') return iconsInSelectedCategory;
 
@@ -168,14 +190,15 @@ const IconList: React.FC<IconListProps> = ({ icons: allIconComponents }) => {
   const categories = allIcons
     .map(icon => icon.category)
     .filter(unique)
-    .sort();
+    .sort((a, b) => a.localeCompare(b));
 
   const noResults = displayedIcons.length === 0;
   const numberOfResultsString = `${displayedIcons.length}\u00A0ikon${
     displayedIcons.length === 1 ? '' : 'er'
   }`;
-  const partnerCategoryIsSelected =
-    selectedCategory?.value.toLowerCase() === 'partner';
+  const partnerCategoryIsSelected = selectedCategory?.value
+    ?.toLowerCase()
+    .startsWith('partner');
 
   const handleIconClick = (iconName: string) => () => {
     copy(iconName);
@@ -188,6 +211,7 @@ const IconList: React.FC<IconListProps> = ({ icons: allIconComponents }) => {
   const resetFilter = () => {
     setSearchString('');
     setSelectedCategory(null);
+    clearURLParams();
   };
 
   return (
@@ -274,12 +298,18 @@ const IconList: React.FC<IconListProps> = ({ icons: allIconComponents }) => {
           </div>
           <ul className="icon-list">
             {displayedIcons.map(
-              ({ name: iconName, component: Icon, downloadUrl }) => (
+              ({
+                name: iconName,
+                component: IconComponent,
+                downloadUrl,
+                category,
+              }) => (
                 <li
                   className={classNames('icon-list__item', {
                     'eds-contrast': partnerCategoryIsSelected || isContrast,
                   })}
                   key={iconName}
+                  data-category={category}
                 >
                   <SubLabel
                     as="button"
@@ -289,7 +319,7 @@ const IconList: React.FC<IconListProps> = ({ icons: allIconComponents }) => {
                     <span>{iconName}</span>
                     <CopyIcon aria-label=", trykk for å kopiere til utklippstavlen" />
                   </SubLabel>
-                  <Icon
+                  <IconComponent
                     style={{
                       width: iconSize?.value,
                       height: iconSize?.value,
