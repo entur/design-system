@@ -253,7 +253,6 @@ async function createSvgrConfig({
     .toLowerCase();
   let className = `{"eds-icon " + (props.className || "") + (props.inline ? " eds-icon--inline" : "")}`;
   let color = `{(props.color || "currentColor")}`;
-
   const isOutlier =
     categories.some((category: string) =>
       OUTLIER_CATEGORIES.includes(category),
