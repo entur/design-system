@@ -45,16 +45,20 @@ const packages = [
 ];
 
 exports.onPreBootstrap = () => {
-  fs.ensureDirSync(`${__dirname}/changelogs/`);
-  fs.ensureDirSync(`${__dirname}/icons/`);
+  fs.ensureDirSync(`${__dirname}/dist/changelogs/`);
+  fs.ensureDirSync(`${__dirname}/dist/icons/`);
+
   for (let changelogPackage in packages) {
     fs.copyFileSync(
       path.resolve(`../../packages/${packages[changelogPackage]}/CHANGELOG.md`),
-      `${__dirname}/changelogs/${packages[changelogPackage]}.md`,
+      `${__dirname}/dist/changelogs/${packages[changelogPackage]}.md`,
     );
   }
-  fs.copySync('../../packages/icons/src/svgs', `${__dirname}/icons/`);
+
+  // Copy icons to dist/icons directory for Gatsby source filesystem
+  fs.copySync('../../packages/icons/src/svgs', `${__dirname}/dist/icons/`);
 };
+
 async function createDocumentationPagesFromSanity(graphql, actions, reporter) {
   const { createPage } = actions;
   const result = await graphql(`
