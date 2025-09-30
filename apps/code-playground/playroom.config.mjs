@@ -1,4 +1,8 @@
-module.exports = {
+import { createRequire } from 'module';
+import path from 'path';
+const require = createRequire(import.meta.url);
+
+export default {
   components: './src/components.ts',
   outputPath: './public/playroom',
 
@@ -32,10 +36,17 @@ module.exports = {
               exclude: /node_modules\/(?!playroom)/,
             },
             {
-              test: /\.scss$/,
+              test: /\.s?css$/,
+              include: [
+                /design-system[\\/]apps[\\/]code-playground[\\/]/,
+                /design-system[\\/]packages[\\/][^\\/]+[\\/]dist[\\/]/,
+              ],
               use: [
                 'style-loader',
-                'css-loader',
+                {
+                  loader: 'css-loader',
+                  options: { importLoaders: 1 },
+                },
                 {
                   loader: 'sass-loader',
                   options: {
@@ -63,28 +74,18 @@ module.exports = {
     },
     resolve: {
       alias: {
-        // Ensure React is properly deduplicated
         react: require.resolve('react'),
         'react-dom': require.resolve('react-dom'),
         'react/jsx-runtime': require.resolve('react/jsx-runtime'),
         'react/jsx-dev-runtime': require.resolve('react/jsx-dev-runtime'),
         'react-dom/client': require.resolve('react-dom/client'),
       },
+      extensions: ['.mjs', '.tsx', '.ts', '.jsx', '.js', '.json'],
+      fullySpecified: false,
       fallback: {
         'react/jsx-runtime': require.resolve('react/jsx-runtime'),
         'react/jsx-dev-runtime': require.resolve('react/jsx-dev-runtime'),
         'react-dom/client': require.resolve('react-dom/client'),
-      },
-    },
-    optimization: {
-      splitChunks: {
-        cacheGroups: {
-          vendor: {
-            test: /[\\/]node_modules[\\/]/,
-            name: 'vendors',
-            chunks: 'all',
-          },
-        },
       },
     },
   }),

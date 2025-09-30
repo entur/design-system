@@ -22,6 +22,7 @@ export * from '@entur/tokens';
 export * from '@entur/tooltip';
 export * from '@entur/travel';
 export * from '@entur/typography';
+export * as Beta from '@entur/typography/beta';
 
 export { TestBench } from './TestBench';
 

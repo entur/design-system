@@ -16,7 +16,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": false,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "traceResolution": false,
     "jsx": "react",
     "esModuleInterop": true,
