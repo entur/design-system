@@ -2,7 +2,6 @@
   "name": "@entur/typography",
   "version": "2.0.0",
   "license": "SEE LICENSE IN README.md",
-  "type": "module",
   "main": "./dist/typography.cjs.js",
   "module": "./dist/typography.esm.js",
   "types": "./dist/index.d.ts",
