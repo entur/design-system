@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.3.0](https://github.com/entur/design-system/compare/@entur/datepicker@11.2.3...@entur/datepicker@11.3.0) (2025-09-30)
+
+### Features
+
+- **add travel:** add detail section to TravelTag ([0185c7a](https://github.com/entur/design-system/commit/0185c7aa2c1e5961435d9d92c7a7020c24a27c4b))
+
 ## [11.2.3](https://github.com/entur/design-system/compare/@entur/datepicker@11.2.2...@entur/datepicker@11.2.3) (2025-09-24)
 
 **Note:** Version bump only for package @entur/datepicker

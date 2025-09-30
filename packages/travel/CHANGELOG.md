@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.4.0](https://github.com/entur/design-system/compare/@entur/travel@6.3.16...@entur/travel@6.4.0) (2025-09-30)
+
+### Features
+
+- **add travel:** add detail section to TravelTag ([0185c7a](https://github.com/entur/design-system/commit/0185c7aa2c1e5961435d9d92c7a7020c24a27c4b))
+
 ## [6.3.16](https://github.com/entur/design-system/compare/@entur/travel@6.3.15...@entur/travel@6.3.16) (2025-09-24)
 
 **Note:** Version bump only for package @entur/travel

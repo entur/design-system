@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.2.0](https://github.com/entur/design-system/compare/@entur/layout@3.1.11...@entur/layout@3.2.0) (2025-09-30)
+
+### Features
+
+- **add travel:** add detail section to TravelTag ([0185c7a](https://github.com/entur/design-system/commit/0185c7aa2c1e5961435d9d92c7a7020c24a27c4b))
+
 ## [3.1.11](https://github.com/entur/design-system/compare/@entur/layout@3.1.10...@entur/layout@3.1.11) (2025-09-24)
 
 **Note:** Version bump only for package @entur/layout

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.11.1](https://github.com/entur/design-system/compare/@entur/documentation@6.11.0...@entur/documentation@6.11.1) (2025-09-30)
+
+### Bug Fixes
+
+- **website:** remove console.log from propstableresolver ([6a388fa](https://github.com/entur/design-system/commit/6a388fa5853fe611a086bc68f632436d6d04331a))
+
 # [6.11.0](https://github.com/entur/design-system/compare/@entur/documentation@6.10.2...@entur/documentation@6.11.0) (2025-09-24)
 
 ### Bug Fixes

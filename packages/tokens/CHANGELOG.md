@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.20.0](https://github.com/entur/design-system/compare/@entur/tokens@3.19.3...@entur/tokens@3.20.0) (2025-09-30)
+
+### Features
+
+- **add travel:** add detail section to TravelTag ([0185c7a](https://github.com/entur/design-system/commit/0185c7aa2c1e5961435d9d92c7a7020c24a27c4b))
+
 ## [3.19.2](https://github.com/entur/design-system/compare/@entur/tokens@3.19.1...@entur/tokens@3.19.2) (2025-08-29)
 
 ### Bug Fixes

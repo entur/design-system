@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.3.8](https://github.com/entur/design-system/compare/@entur/dropdown@7.3.7...@entur/dropdown@7.3.8) (2025-09-30)
+
+### Bug Fixes
+
+- **dropdownlist:** allow predefined items without matching labels ([eb84efa](https://github.com/entur/design-system/commit/eb84efa571352104ac15bec98266acf1d5e820da))
+
 ## [7.3.7](https://github.com/entur/design-system/compare/@entur/dropdown@7.3.6...@entur/dropdown@7.3.7) (2025-09-24)
 
 **Note:** Version bump only for package @entur/dropdown

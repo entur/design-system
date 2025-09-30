@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.3.3](https://github.com/entur/design-system/compare/@entur/code-playground@2.3.2...@entur/code-playground@2.3.3) (2025-09-30)
+
+### Bug Fixes
+
+- **code-playground:** make webpack config work with new beta typography ([1bc49b7](https://github.com/entur/design-system/commit/1bc49b70232c7e4d3d53784041b6e174a3758666))
+
 ## [2.3.2](https://github.com/entur/design-system/compare/@entur/code-playground@2.3.1...@entur/code-playground@2.3.2) (2025-09-24)
 
 **Note:** Version bump only for package @entur/code-playground

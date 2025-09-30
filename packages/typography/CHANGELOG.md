@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.1](https://github.com/entur/design-system/compare/@entur/typography@2.0.0...@entur/typography@2.0.1) (2025-09-30)
+
+### Bug Fixes
+
+- **typography beta:** change migration script to explicitly be esm with .mjs file ending ([dd24f38](https://github.com/entur/design-system/commit/dd24f38ba7410e5574c9cb2a52c21db7a78b64ea))
+- **typography beta:** remove medium weight as default in text component ([e37adb1](https://github.com/entur/design-system/commit/e37adb173664232fa422edbb2241955af469158a))
+- **typography:** remove type module from package.json ([44e27d3](https://github.com/entur/design-system/commit/44e27d3a23dfbba7f4189b5e7f4041cc8eb8904c))
+
 # [2.0.0](https://github.com/entur/design-system/compare/@entur/typography@1.9.14...@entur/typography@2.0.0) (2025-09-24)
 
 ### Bug Fixes

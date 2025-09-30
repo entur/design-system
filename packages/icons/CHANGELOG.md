@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.1.0](https://github.com/entur/design-system/compare/@entur/icons@8.0.2...@entur/icons@8.1.0) (2025-09-30)
+
+### Features
+
+- **icons:** add new mobility icons ([62dcac9](https://github.com/entur/design-system/commit/62dcac9e089fecaf865fa55a717abddf73c0704a))
+
 ## [8.0.1](https://github.com/entur/design-system/compare/@entur/icons@8.0.0...@entur/icons@8.0.1) (2025-08-29)
 
 ### Bug Fixes
