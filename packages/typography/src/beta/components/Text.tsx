@@ -43,7 +43,7 @@ const TypographyText = <C extends React.ElementType = 'p'>({
   as,
   size,
   variant,
-  weight = 'medium',
+  weight,
   spacing,
   className,
   ...rest
