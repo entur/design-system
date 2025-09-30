@@ -72,9 +72,11 @@ describe('Text Component', () => {
     expect(getByText('Custom text')).toHaveClass('custom-class');
   });
 
-  test('Text with no variant, size, or weight uses default weight', () => {
+  test('Text with no variant, size, or weight has no weight class', () => {
     const { getByText } = render(<Text>Default text</Text>);
-    expect(getByText('Default text')).toHaveClass('eds-text--weight-medium');
+    expect(getByText('Default text')).not.toHaveClass(
+      'eds-text--weight-medium',
+    );
   });
 
   test('Components handle empty children', () => {
