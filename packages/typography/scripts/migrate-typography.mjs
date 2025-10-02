@@ -799,13 +799,19 @@ function updateComponents(content) {
   let warnings = [];
 
   Object.entries(COMPONENT_MAPPING).forEach(([oldComponent, mapping]) => {
-    // More robust regex to handle complex JSX
-    const componentRegex = new RegExp(`<${oldComponent}(\\s+[^>]*?)?>`, 'g');
+    // More robust regex to handle complex JSX including self-closing tags
+    const componentRegex = new RegExp(
+      `<${oldComponent}(\\s+[^>]*?)?(?:/>|>)`,
+      'g',
+    );
 
     updatedContent = updatedContent.replace(
       componentRegex,
       (match, propsString) => {
         changes++;
+
+        // Check if this is a self-closing tag
+        const isSelfClosing = match.endsWith('/>');
 
         // Parse existing props
         const {
@@ -862,7 +868,8 @@ function updateComponents(content) {
           );
           const spreadPropsString =
             spreadProps.length > 0 ? ` {...${spreadProps.join(', ...')}}` : '';
-          return `<Heading${propsString}${spreadPropsString}>`;
+          const closingTag = isSelfClosing ? '/>' : '>';
+          return `<Heading${propsString}${spreadPropsString}${closingTag}`;
         }
 
         // Handle Label components with special case for htmlFor prop
@@ -892,7 +899,8 @@ function updateComponents(content) {
 
           // Only add as prop if it has a value
           const asProp = asValue ? ` as="${asValue}"` : '';
-          return `<Text${asProp} variant="${variantValue}"${propsString}${spreadPropsString}>`;
+          const closingTag = isSelfClosing ? '/>' : '>';
+          return `<Text${asProp} variant="${variantValue}"${propsString}${spreadPropsString}${closingTag}`;
         }
 
         // Handle other components
@@ -917,11 +925,12 @@ function updateComponents(content) {
         const otherPropsString = propsToString(finalProps, originalSyntax);
         const spreadPropsString =
           spreadProps.length > 0 ? ` {...${spreadProps.join(', ...')}}` : '';
-        return `<${componentName}${otherPropsString}${spreadPropsString}>`;
+        const closingTag = isSelfClosing ? '/>' : '>';
+        return `<${componentName}${otherPropsString}${spreadPropsString}${closingTag}`;
       },
     );
 
-    // Update closing tags
+    // Update closing tags (only for non-self-closing tags)
     const closingTagRegex = new RegExp(`</${oldComponent}>`, 'g');
     const componentName = mapping.component;
     updatedContent = updatedContent.replace(
