@@ -4,14 +4,19 @@
 @use '@entur/tokens/dist/styles.scss' as t;
 @use '@entur/tokens/dist/base.scss' as *;
 @use '@entur/utils/dist/breakpoints.scss' as *;
+@use '../componentColors.scss' as *;
 @forward '../typography-tokens.scss';
 @use '../typography-tokens.scss' as *;
 
 .eds-heading {
-  color: var(--primary-text-color);
+  color: var(--components-typography-basetext-standard-text-accent);
   font-weight: var(--font-weight-heading);
   -webkit-font-smoothing: antialiased;
   margin: 0;
+
+  .eds-contrast {
+    color: var(--components-typography-basetext-contrast-text-accent);
+  }
 
   // Sizes
   &--2xl {

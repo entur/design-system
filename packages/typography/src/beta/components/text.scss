@@ -93,7 +93,7 @@
     margin-bottom: var(--font-line-height-body-m);
   }
 
-  &--sub-paragraph {
+  &--subparagraph {
     font-size: var(--font-size-body-s);
     line-height: var(--font-line-height-body-s);
     margin-bottom: var(--font-line-height-body-s);
@@ -107,7 +107,7 @@
 
   &--label {
     font-size: var(--font-size-body-m);
-    line-height: var(--font-line-height-body-m);
+    line-height: var(--font-line-height-heading-xs);
     margin-bottom: var(--font-paragraph-spacing-body-xs);
     font-weight: 600;
   }
