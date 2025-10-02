@@ -332,7 +332,7 @@ Både `DatePicker` og `Calendar` har støtte for prop-en `classNameForDate`. `cl
 
 Hvis stylingen som legges til er meningsbærende bør du også bruke `ariaLabelForDate` til å beskrive stylingens mening for skjermlesere o.l.
 
-<Playground hideContrastOption  scope={now}
+<Playground hideContrastOption
 code={`() => {
     const [date, setDate] = React.useState(now('Europe/Oslo'));
     return (
@@ -347,6 +347,25 @@ code={`() => {
     );
   }`}
 scope={{now , isWeekend}} />
+
+#### Vise datoer utenfor måneden
+
+Hvis du ønsker å vise og gjøre det mulig å velge datoer fra forrige og neste måned i kalenderen, kan du bruke prop-en `showOutsideMonth`. Støttes i både `DatePicker` og `Calendar`.
+
+<Playground hideContrastOption
+code={`() => {
+    const [date, setDate] = React.useState(now('Europe/Oslo'));
+    return (
+      <Calendar
+        label="Dato"
+        selectedDate={date}
+        onChange={date => setDate(date)}
+        locale="nb-NO"
+        showOutsideMonth
+      />
+    );
+  }`}
+scope={{now}} />
 
 #### Vise ukenummer
 
