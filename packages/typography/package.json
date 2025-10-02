@@ -6,7 +6,7 @@
   "module": "./dist/typography.esm.js",
   "types": "./dist/index.d.ts",
   "bin": {
-    "migrate": "scripts/migrate-typography.js"
+    "migrate": "scripts/migrate-typography.mjs"
   },
   "exports": {
     ".": {
