@@ -1,7 +1,8 @@
 import React from 'react';
 import classNames from 'classnames';
-import { useSegmentedContext } from './SegmentedContext';
-import { PolymorphicComponentProps } from '@entur/utils';
+import { useSegmentedContext } from './SegmentedControl';
+import { PolymorphicComponentPropsWithRef, PolymorphicRef } from '@entur/utils';
+
 import './SegmentedChoice.scss';
 
 export type SegmentedChoiceOwnProps = {
@@ -11,136 +12,82 @@ export type SegmentedChoiceOwnProps = {
   children: React.ReactNode;
   /** Ekstra klassenavn */
   className?: string;
-  /** Callback som kalles når komponenten endres */
+  /** Callback for når valget endres */
   onChange?: (value: string) => void;
 };
 
 export type SegmentedChoiceProps<T extends React.ElementType> =
-  PolymorphicComponentProps<T, SegmentedChoiceOwnProps>;
+  PolymorphicComponentPropsWithRef<T, SegmentedChoiceOwnProps>;
+
+export type SegmentedChoiceComponent = <
+  T extends React.ElementType = typeof defaultElement,
+>(
+  props: SegmentedChoiceProps<T>,
+) => React.ReactElement | null;
 
 const defaultElement = 'button';
 
-export const SegmentedChoice = <
-  E extends React.ElementType = typeof defaultElement,
->({
-  children,
-  className,
-  style,
-  value,
-  as,
-  onChange,
-  ...rest
-}: SegmentedChoiceProps<E>): JSX.Element => {
+export const SegmentedChoice: SegmentedChoiceComponent = React.forwardRef<
+  HTMLElement,
+  SegmentedChoiceProps<React.ElementType>
+>(function SegmentedChoice<E extends React.ElementType = typeof defaultElement>(
+  {
+    children,
+    className,
+    style,
+    value,
+    as,
+    onChange,
+    'data-first-child': isFirstChild,
+    ...rest
+  }: SegmentedChoiceProps<E>,
+  ref?: PolymorphicRef<E>,
+): React.ReactElement | null {
+  const Element: React.ElementType = as || defaultElement;
+
   const {
-    selectedValue,
-    onChange: commonOnChange,
-    multiple,
+    value: selectedValue,
+    onChange: contextOnChange,
     size,
     focusedValue,
     setFocusedValue,
   } = useSegmentedContext();
 
-  const isChecked = multiple ? selectedValue[value] : selectedValue === value;
+  const isChecked = selectedValue === value;
   const isFocused = focusedValue === value;
 
-  // Use custom element if provided, otherwise use default button
-  const Element: React.ElementType = as || defaultElement;
+  const tabIndex = React.useMemo(() => {
+    if (selectedValue !== null) return isChecked ? 0 : -1;
+    return isFirstChild ? 0 : -1;
+  }, [isChecked, selectedValue, isFirstChild]);
 
-  // Calculate tabIndex for roving tabindex pattern
-  const getTabIndex = () => {
-    if (multiple) {
-      // In multiple mode, make the first selected item tabbable, or first item if none selected
-      const hasSelected = Object.values(selectedValue).some(Boolean);
-      if (hasSelected) {
-        return isChecked ? 0 : -1;
-      } else {
-        // If no items selected, make the first item tabbable
-        // We'll determine this in the JSX using a ref
-        return -1; // Will be overridden by ref logic
-      }
-    } else {
-      // In single mode, make the selected item tabbable, or first item if none selected
-      if (selectedValue) {
-        return isChecked ? 0 : -1;
-      } else {
-        // If no item selected, make the first item tabbable
-        // We'll determine this in the JSX using a ref
-        return -1; // Will be overridden by ref logic
-      }
-    }
-  };
-
-  // Ref to check if this is the first element
-  const elementRef = React.useRef<HTMLElement>(null);
-  const [isFirstElement, setIsFirstElement] = React.useState(false);
-
-  // Check if this is the first element after DOM updates
-  React.useEffect(() => {
-    if (!elementRef.current) return;
-
-    const parent = elementRef.current.parentElement;
-    if (!parent) return;
-
-    const allChoices = Array.from(parent.children).filter(child =>
-      child.classList.contains('eds-segmented-choice'),
-    );
-
-    const isFirst = allChoices[0] === elementRef.current;
-    setIsFirstElement(isFirst);
-  }, []);
-
-  // Calculate final tabIndex
-  const finalTabIndex = React.useMemo(() => {
-    // If there's a selection, make the selected item tabbable
-    if (multiple) {
-      const hasSelected = Object.values(selectedValue).some(Boolean);
-      if (hasSelected) {
-        return isChecked ? 0 : -1;
-      }
-    } else {
-      if (selectedValue) {
-        return isChecked ? 0 : -1;
-      }
-    }
-
-    // If no selection, make the first element tabbable
-    return isFirstElement ? 0 : -1;
-  }, [multiple, selectedValue, isChecked, isFirstElement]);
-
-  const handleClick = () => {
-    if (multiple) {
-      commonOnChange({
-        ...selectedValue,
-        [value]: !selectedValue[value],
-      } as any);
-    } else {
-      commonOnChange(value as any);
-    }
+  const handleSelection = () => {
+    contextOnChange(value);
     onChange?.(value);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     switch (e.key) {
       case 'ArrowLeft':
-      case 'ArrowUp':
+      case 'ArrowUp': {
         e.preventDefault();
-        // Find previous sibling and focus it
         const prevSibling = e.currentTarget.previousElementSibling;
         if (prevSibling && prevSibling instanceof HTMLElement) {
           prevSibling.focus();
           setFocusedValue(prevSibling.getAttribute('data-value') || null);
         }
         break;
+      }
       case 'ArrowRight':
-      case 'ArrowDown':
+      case 'ArrowDown': {
         e.preventDefault();
-        // Find next sibling and focus it
         const nextSibling = e.currentTarget.nextElementSibling;
         if (nextSibling && nextSibling instanceof HTMLElement) {
           nextSibling.focus();
           setFocusedValue(nextSibling.getAttribute('data-value') || null);
         }
         break;
+      }
       case 'Home': {
         e.preventDefault();
         const firstSibling = e.currentTarget.parentElement?.firstElementChild;
@@ -162,21 +109,20 @@ export const SegmentedChoice = <
       case ' ':
         e.preventDefault();
         if (as === 'a') {
-          handleClick();
+          handleSelection();
           const linkElement = e.currentTarget as HTMLAnchorElement;
           if (linkElement.href) {
-            // Delay click untill next tick
-            setTimeout(() => {
+            // Delay click until state update is complete
+            queueMicrotask(() => {
               linkElement.click();
-            }, 0);
+            });
           }
         } else {
-          // For buttons, just handle the click normally
-          handleClick();
+          handleSelection();
         }
         break;
       case 'Enter':
-        handleClick();
+        handleSelection();
         break;
       case 'Escape':
         e.preventDefault();
@@ -185,17 +131,16 @@ export const SegmentedChoice = <
     }
   };
 
-  const handleFocus = () => {
+  const onFocus = React.useCallback(() => {
     setFocusedValue(value);
-  };
+  }, [setFocusedValue, value]);
 
-  const handleBlur = () => {
+  const onBlur = React.useCallback(() => {
     if (focusedValue === value) {
       setFocusedValue(null);
     }
-  };
+  }, [focusedValue, value, setFocusedValue]);
 
-  // Prepare props based on element type
   const elementProps = {
     className: classNames(
       'eds-segmented-choice',
@@ -209,17 +154,18 @@ export const SegmentedChoice = <
     style: style,
     'aria-checked': isChecked,
     'data-value': value,
-    ref: elementRef,
-    tabIndex: finalTabIndex,
-    onClick: handleClick,
+    ref: ref,
+    tabIndex: tabIndex,
+    onClick: handleSelection,
     onKeyDown: handleKeyDown,
-    onFocus: handleFocus,
-    onBlur: handleBlur,
+    onFocus: onFocus,
+    onBlur: onBlur,
     role: 'radio',
 
+    // For defaultElement button we override type submit
     ...(as === undefined && { type: 'button' }),
     ...rest,
   };
 
   return <Element {...elementProps}>{children}</Element>;
-};
+});
