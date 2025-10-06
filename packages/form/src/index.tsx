@@ -18,5 +18,4 @@ export * from './TextField';
 export * from './VariantProvider';
 export * from './variants';
 export * from './utils';
-export * from './segmented-control/SegmentedChoice';
-export * from './segmented-control/SegmentedControl';
+export * from './segmentedControl';

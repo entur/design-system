@@ -1,4 +1,5 @@
 @use '@entur/tokens/dist/styles.scss' as t;
+
 .eds-segmented-control {
   .eds-label {
     font-weight: t.$font-weights-heading;
@@ -12,10 +13,6 @@
 
     .eds-contrast & {
       background: var(--components-form-segmentedcontrol-contrast-background);
-    }
-
-    &:not(&--multiple) .eds-segmented-choice[aria-checked='true'] {
-      pointer-events: none;
     }
   }
 }

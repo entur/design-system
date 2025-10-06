@@ -74,6 +74,7 @@ export const SegmentedControl = React.forwardRef<
       defaultValue,
       size = 'medium',
       className,
+      selectedValue: deprecatedValue,
       ...rest
     },
     ref,
@@ -84,11 +85,10 @@ export const SegmentedControl = React.forwardRef<
     const [focusedValue, setFocusedValue] = React.useState<string | null>(null);
     const id = useRandomId('eds-segmented-control');
 
-    const isControlled =
-      rest.selectedValue !== undefined || value !== undefined;
+    const isControlled = deprecatedValue !== undefined || value !== undefined;
     const currentValue =
-      rest.selectedValue !== undefined
-        ? rest.selectedValue
+      deprecatedValue !== undefined
+        ? deprecatedValue
         : value !== undefined
         ? value
         : internalValue;
@@ -113,7 +113,7 @@ export const SegmentedControl = React.forwardRef<
         focusedValue,
         setFocusedValue,
       }),
-      [id, name, handleChange, currentValue, size, focusedValue],
+      [id, name, handleChange, currentValue, size, focusedValue, label],
     );
 
     const labelId = `${id}-label`;

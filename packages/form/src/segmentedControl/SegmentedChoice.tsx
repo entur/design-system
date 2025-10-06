@@ -54,7 +54,6 @@ export const SegmentedChoice: SegmentedChoiceComponent = React.forwardRef<
   } = useSegmentedContext();
 
   const isChecked = selectedValue === value;
-  const isFocused = focusedValue === value;
 
   const tabIndex = React.useMemo(() => {
     if (selectedValue !== null) return isChecked ? 0 : -1;
@@ -144,10 +143,8 @@ export const SegmentedChoice: SegmentedChoiceComponent = React.forwardRef<
   const elementProps = {
     className: classNames(
       'eds-segmented-choice',
-      'eds-base-segmented',
       {
-        'eds-base-segmented--large': size === 'large',
-        'eds-base-segmented--focused': isFocused,
+        'eds-segmented-choice--large': size === 'large',
       },
       className,
     ),

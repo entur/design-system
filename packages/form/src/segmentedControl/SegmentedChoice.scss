@@ -1,14 +1,5 @@
 @use '@entur/tokens/dist/styles.scss' as t;
 
-/// Create inset focus
-/// @access public
-/// @param {Color} $color-focus - focus color
-/// @param {Color} $color-bg - background color
-/// @return {Box-shadow}
-@function inset-focus($color-focus, $color-bg) {
-  @return inset 0 0 0 t.$border-widths-small $color-bg, inset 0 0 0 calc(#{t.$border-widths-medium} + #{t.$border-widths-small}) $color-focus;
-}
-
 .eds-segmented-choice {
   all: unset;
   display: flex;
@@ -77,21 +68,5 @@
     .eds-contrast & {
       outline-color: var(--basecolors-stroke-focus-contrast);
     }
-  }
-
-  // Focused state (when focused via arrow keys)
-  &.eds-base-segmented--focused {
-    outline: t.$outlines-focus;
-    outline-color: var(--basecolors-stroke-focus-standard);
-    outline-offset: t.$outline-offsets-focus;
-
-    .eds-contrast & {
-      outline-color: var(--basecolors-stroke-focus-contrast);
-    }
-  }
-
-  // Remove old input-based styles
-  input {
-    display: none;
   }
 }
