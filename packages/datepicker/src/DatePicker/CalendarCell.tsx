@@ -14,6 +14,7 @@ type CalendarCellProps = {
   state: CalendarState;
   date: CalendarDate;
   weekNumberString: string;
+  showOutsideMonth?: boolean;
   onSelectedCellClick?: () => void;
   onCellClick?: () => void;
   classNameForDate?: (date: CalendarDate) => string;
@@ -23,6 +24,7 @@ type CalendarCellProps = {
 export const CalendarCell = ({
   state,
   date,
+  showOutsideMonth = false,
   onSelectedCellClick = () => {
     return;
   },
@@ -50,27 +52,47 @@ export const CalendarCell = ({
     ariaLabelForDate?.(date) ?? ''
   }`;
 
-  const cellCanBeSelected = !(
-    isOutsideVisibleRange ||
-    isDisabled ||
-    isUnavailable
-  );
+  const cellCanBeSelected = showOutsideMonth
+    ? !(isDisabled || isUnavailable)
+    : !(isOutsideVisibleRange || isDisabled || isUnavailable);
+
+  const shouldHideDate = !showOutsideMonth && isOutsideVisibleRange;
+
+  // Override button props when showOutsideMonth is true and date is outside visible range
+  const extendedButtonProps = {
+    ...buttonProps,
+    ...(showOutsideMonth &&
+      isOutsideVisibleRange && {
+        onClick: () => {
+          state.selectDate(date);
+          onCellClick();
+        },
+        onKeyUp: (e: React.KeyboardEvent) => {
+          if (e.key === 'Enter') {
+            state.selectDate(date);
+            onCellClick();
+          }
+        },
+      }),
+  };
 
   return (
     <td {...cellProps} className="eds-datepicker__calendar__grid__cell__td">
       <div
-        {...buttonProps}
+        {...extendedButtonProps}
         aria-label={ariaLabel}
-        aria-hidden={isOutsideVisibleRange}
+        aria-hidden={shouldHideDate}
         ref={cellRef}
-        hidden={isOutsideVisibleRange}
+        hidden={shouldHideDate}
         className={classNames('eds-datepicker__calendar__grid__cell', {
-          [classNameForDate?.(date) ?? '']: !isOutsideVisibleRange,
+          [classNameForDate?.(date) ?? '']: !shouldHideDate,
           'eds-datepicker__calendar__grid__cell--selected': isSelected,
           'eds-datepicker__calendar__grid__cell--disabled':
             isDisabled || isUnavailable,
           'eds-datepicker__calendar__grid__cell--outside-month':
-            isOutsideVisibleRange,
+            isOutsideVisibleRange && !showOutsideMonth,
+          'eds-datepicker__calendar__grid__cell--outside-month--visible':
+            isOutsideVisibleRange && showOutsideMonth,
           'eds-datepicker__calendar__grid__cell--today': isEqualDay(
             date,
             now(state.timeZone ?? getLocalTimeZone()),
@@ -78,13 +100,13 @@ export const CalendarCell = ({
         })}
         {...rest}
         onClick={e => {
-          buttonProps.onClick && buttonProps.onClick(e);
+          extendedButtonProps?.onClick?.(e);
           // Used to force close calendar on select
           isSelected && onSelectedCellClick();
           cellCanBeSelected && onCellClick();
         }}
         onKeyUp={e => {
-          buttonProps.onKeyUp && buttonProps.onKeyUp(e);
+          extendedButtonProps?.onKeyUp?.(e);
           if (e.key === 'Enter') {
             // Used to force close calendar on select
             isSelected && onSelectedCellClick();

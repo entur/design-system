@@ -6,7 +6,7 @@
   padding: t.$space-large;
   padding-top: t.$space-small;
   background-color: var(--components-datepicker-calendar-background);
-  color: var(--components-datepicker-calendar-text-subdued);
+  color: var(--components-datepicker-calendar-text-accent);
   border-radius: 4px;
   box-shadow: t.$shadows-box-shadow;
 
@@ -73,6 +73,10 @@
         padding: 0;
         border: 1px solid var(--components-datepicker-calendar-dateborder);
 
+        &:has(.eds-datepicker__calendar__grid__cell--outside-month--visible) {
+          border-style: dashed;
+        }
+
         &:focus-within {
           z-index: 2;
         }
@@ -124,6 +128,31 @@
           background-color: transparent;
           color: transparent;
           cursor: default;
+        }
+
+        &--visible {
+          background-color: var(--components-datepicker-calendar-background-overflow);
+          color: var(--components-datepicker-calendar-text-subdued);
+          opacity: 1;
+
+          &:hover {
+            background-color: var(--components-datepicker-calendar-datefill-hover);
+            color: var(--components-datepicker-calendar-text-accent);
+            opacity: 0.8;
+            cursor: default;
+          }
+
+          &:active {
+            background-color: var(--components-datepicker-calendar-datefill-selected);
+            color: var(--components-datepicker-calendar-text-accent);
+            opacity: 1;
+          }
+
+          &:focus-visible {
+            outline: t.$outlines-focus;
+            outline-color: var(--basecolors-stroke-focus-standard);
+            outline-offset: t.$outline-offsets-focus;
+          }
         }
       }
 

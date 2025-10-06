@@ -35,7 +35,7 @@ import {
 } from './DateField';
 import { Calendar, CalendarProps } from './Calendar';
 import { CalendarButton } from '../shared/CalendarButton';
-import { handleOnChange, lastMillisecondOfDay } from '../shared/utils';
+import { getAdjustedMaxDate, handleOnChange } from '../shared/utils';
 
 import './DatePicker.scss';
 
@@ -47,6 +47,10 @@ type BaseDatePickerProps = {
   /** Overskrift som vises for ukenummer-kolonnen. Vises kun hvis 'showWeekNumbers' er true.
    * @default '#' */
   weekNumberHeader?: string;
+  /** Vis datoer som ligger utenfor den viste måneden.
+   * @example Hvis uken starter på onsdag vises de to siste datoene i forrige måned i ruten til mandagen og tirsdagen før.
+   * @default false */
+  showOutsideMonth?: boolean;
   /** Hvis true vil kalenderen alltid vises i en popover når den åpnes
    *  @default false
    */
@@ -103,6 +107,7 @@ export const DatePicker = <DateType extends DateValue>({
   validationFeedback,
   showWeekNumbers,
   weekNumberHeader,
+  showOutsideMonth = false,
   disableModal = false,
   labelTooltip,
   navigationDescription,
@@ -132,12 +137,7 @@ export const DatePicker = <DateType extends DateValue>({
       }),
     minValue: minDate,
     // this weird logic makes sure the entire day is included if no time is provided in maxDate
-    maxValue:
-      'hour' in (maxDate ?? {})
-        ? maxDate
-        : maxDate !== undefined
-        ? lastMillisecondOfDay(maxDate)
-        : undefined,
+    maxValue: getAdjustedMaxDate(maxDate),
     value: selectedDate,
     granularity,
     isDisabled: disabled || readOnly,
@@ -189,6 +189,7 @@ export const DatePicker = <DateType extends DateValue>({
     ariaLabelForDate,
     showWeekNumbers,
     weekNumberHeader,
+    showOutsideMonth,
   };
 
   const isModal =

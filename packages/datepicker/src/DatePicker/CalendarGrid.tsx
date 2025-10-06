@@ -16,6 +16,7 @@ type CalendarGridProps = {
   navigationDescription?: string;
   showWeekNumbers: boolean;
   weekNumberHeader: string;
+  showOutsideMonth?: boolean;
   onSelectedCellClick?: () => void;
   onCellClick?: () => void;
   classNameForDate?: (date: CalendarDate) => string;
@@ -33,6 +34,7 @@ export const CalendarGrid = ({
   },
   showWeekNumbers,
   weekNumberHeader,
+  showOutsideMonth = false,
   classNameForDate,
   ariaLabelForDate,
   ...rest
@@ -92,7 +94,7 @@ export const CalendarGrid = ({
               <tr key={weekIndex}>
                 {showWeekNumbers && (
                   <th
-                    aria-hidden
+                    aria-label={`${weekNumberHeader} ${weekNumber}`}
                     className="eds-datepicker__calendar__grid__weeknumber"
                   >
                     {weekNumber}
@@ -116,6 +118,7 @@ export const CalendarGrid = ({
                         onCellClick={onCellClick}
                         classNameForDate={classNameForDate}
                         ariaLabelForDate={ariaLabelForDate}
+                        showOutsideMonth={showOutsideMonth}
                       />
                     ) : (
                       <td key={i} />
