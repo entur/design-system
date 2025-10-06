@@ -96,18 +96,14 @@ const components = {
   h6: (props: any) => <Heading as="h6" variant="section-2" {...props} />,
   p: (props: any) => <Text variant="paragraph" {...props} />,
   a: (props: any) => <Link {...props} />,
-  strong: (props: any) => (
-    <Text as="strong" variant="emphasized" weight="semibold" {...props} />
-  ),
+  strong: (props: any) => <Text as="strong" weight="semibold" {...props} />,
   inlineCode: (props: any) => <Text as="code" variant="code" {...props} />,
   ul: (props: any) => <UnorderedList {...props} />,
   li: (props: any) => <ListItem {...props} />,
   ol: (props: any) => <NumberedList {...props} />,
   // Individual component mappings
   Paragraph: (props: any) => <Text variant="paragraph" {...props} />,
-  StrongText: (props: any) => (
-    <Text as="strong" variant="emphasized" weight="semibold" {...props} />
-  ),
+  StrongText: (props: any) => <Text as="strong" weight="semibold" {...props} />,
   EmphasizedText: (props: any) => <Text variant="emphasized" {...props} />,
   UnorderedList: (props: any) => <UnorderedList {...props} />,
   ListItem: (props: any) => <ListItem {...props} />,
@@ -123,7 +119,9 @@ const components = {
   LinkText: (props: any) => <Link {...props} />,
   LeadParagraph: (props: any) => <Text variant="lead" {...props} />,
   SubParagraph: (props: any) => <Text variant="small" {...props} />,
-  BannerAlertBox,
+  BannerAlertBox: (props: any) => (
+    <BannerAlertBox style={{ marginBlock: '2rem' }} {...props} />
+  ),
   ExpandablePanel,
   VisuallyHidden,
   Table,
@@ -139,7 +137,9 @@ const components = {
   Label: (props: any) => <Text variant="label" {...props} />,
   ToastAlertBox,
   ToastProvider,
-  SmallAlertBox,
+  SmallAlertBox: (props: any) => (
+    <SmallAlertBox style={{ marginBlock: '2rem' }} {...props} />
+  ),
   SmallExpandableAlertBox,
   PrimaryButton,
   SecondaryButton,

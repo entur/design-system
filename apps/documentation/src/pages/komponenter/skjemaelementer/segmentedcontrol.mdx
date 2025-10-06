@@ -1,24 +1,19 @@
 ---
 title: SegmentedControl
-description: Segmented Controls tilbyr nært beslektede valg som påvirker et objekt, en tilstand eller en visning. De består av et sett med to eller flere knappsegmenter, der alle segmentene innen en gruppe har lik bredde.
+description: SegmentedControl lar brukeren velge mellom nært beslektede alternativer som påvirker innhold eller visning. Den består av en gruppe knapper hvor nøyaktig ett alternativ kan være valgt om gangen.
 route: /komponenter/skjemaelementer/segmentedcontrol
 parent: Komponenter
 menu: Skjemaelementer
 npmPackage: form
-tags: radio, checkbox
+tags: valg, filtrering, visningsbytte, togglegroup, toggle
 ---
 
 import { now } from '@internationalized/date';
-import {
-  SegmentedControl,
-  MultipleSegmentedControl,
-  SegmentedChoice,
-  TextField,
-} from '@entur/form';
+import { SegmentedControl, SegmentedChoice, TextField } from '@entur/form';
 import { DatePicker, TimePicker } from '@entur/datepicker';
 import { Dropdown } from '@entur/dropdown';
-import { BoldIcon, ItalicIcon, UnderlineIcon } from '@entur/icons';
-
+import { AlignLeftIcon, AlignCenterIcon, AlignRightIcon } from '@entur/icons';
+import { Tooltip } from '@entur/tooltip';
 import { SEO } from '@components/seo/SEO';
 
 export const Head = ( props ) => {
@@ -28,83 +23,56 @@ export const Head = ( props ) => {
 <PageHeader />
 
 ```jsx
-  () => {
-    const [traveltime, setTraveltime] = React.useState(null);
-    return (
-      <div style={{width:"55%", margin:"0 auto"}}>
-        <div style={{ marginBottom: '1rem' }}>
-          <SegmentedControl
-            label="Velg reisetidspunkt"
-            onChange={selectedValue => setTraveltime(selectedValue)}
-            selectedValue={traveltime}
-          >
-            <SegmentedChoice value="na">Nå</SegmentedChoice>
-            <SegmentedChoice value="avreise">Avreise</SegmentedChoice>
-            <SegmentedChoice value="ankomst">Ankomst</SegmentedChoice>
-          </SegmentedControl>
-          </div>
-      </div>
-    );
+() => {
+  const [travelTime, setTravelTime] = React.useState("na");
+  return (
+    <div style={{ width: '55%', margin: '1rem auto' }}>
+      <SegmentedControl
+        label="Velg reisetidspunkt"
+        value={travelTime}
+        onChange={setTravelTime}
+      >
+        <SegmentedControl.Item value="na">Nå</SegmentedControl.Item>
+        <SegmentedControl.Item value="avreise">Avreise</SegmentedControl.Item>
+        <SegmentedControl.Item value="ankomst">Ankomst</SegmentedControl.Item>
+      </SegmentedControl>
+    </div>
+  );
 }
 ```
 
-
-## Varianter
+## Oversikt
 
 ### SegmentedControl
 
-`SegmentedControl` wrapper to eller flere `SegmentedChoice`-komponenter, og lar brukeren velge mellom forskjellige valg. For å kunne velge flere valg, bruk `MultipleSegmentedControl`.
+`SegmentedControl` grupperer to eller flere valg og lar brukeren velge ett alternativ. Den kan brukes kontrollert med `value` eller ukontrollert med `defaultValue`.
 
-### SegmentedChoice
+### SegmentedControl.Item og SegmentedChoice
 
-`SegmentedChoice` wrapper et valg inni en `SegmentedControl` eller `MultipleSegmentedControl`. Send inn en unik `value` som identifiserer valget, og send inn hva du vil (typisk en tekst eller et ikon) som `children`.
+Hvert valg angis med `SegmentedControl.Item` (foretrukket) eller `SegmentedChoice`. Send inn en unik `value` som identifiserer valget, og bruk tekst og/eller ikon som innhold.
 
-<BannerAlertBox variant="information" title="Husk beskrivelser for skjermlesere">
-  Om du sender inn ikoner eller tekster som krever en visuell kontekst, er det
-  viktig at du sender inn en <CodeText>aria-label</CodeText> prop, eller bruker{' '}
-  <CodeText>VisuallyHidden</CodeText>
-  (fra <CodeText>@entur/a11y</CodeText>) for å gi valget en god beskrivelse.
-</BannerAlertBox>
 
-### MultipleSegmentedControl
-
-`MultipleSegmentedControl` er lik som `SegmentedControl`, men tillater brukeren å velge flere valg på en gang. Dette gjør at `selectedValue`-propen må være et objekt, der nøklene korresponderer til `value`-verdien i de nøstede `SegmentedChoice`-komponentene. `onChange` vil også bli kalt med samme objektet.
-
-Et eksempel kan være:
-
-```js
-<MultipleSegmentedControl
-  selectedValue={{ italics: true, bold: false }}
-  onChange={{ italics, bold } => changeFormatting({ italics, bold })}
->
-  <SegmentedChoice value="italics"><em>Italics</em></SegmentedChoice>
-  <SegmentedChoice value="bold"><strong>Bold</strong></SegmentedChoice>
-</MultipleSegmentedControl>
-```
+<SmallAlertBox variant="warning" title="Endring i API">
+  `selectedValue` er avviklet. Bruk `value` (kontrollert) eller `defaultValue` (ukontrollert) i stedet.
+</SmallAlertBox>
 
 ## Retningslinjer
 
-Segmented Control benyttes fremst til å velge en setting. De tilbyr et kontekstuelt valg, som er knyttet 1:1 til andre
-objekter eller skjemagrupper. Valgt segment definerer ‘regler’ for verdiene i tilknyttede felter.
-Segmented controls benyttes altså ofte som velgere/settings for andre felter, f.eks. om verdien som angis skal
-i prosent eller kroner, eller om tidspunkt skal gjelde for avreise eller ankomst. De plasseres gjerne ovenfor/før
-feltet de styrer over, eller under/etter i tilfelle konteksten tillater dette.
+- **Egnet til**: filtrering av innhold og veksling mellom visninger/innstillinger. Passer godt for valg som påvirker nærliggende innhold (f.eks. "Avreise" vs. "Ankomst").
+- **Uegnet til**: navigasjon mellom paneler/sider (bruk `Tabs`), og som erstatning for `RadioGroup` i skjema med innsending.
+- **Plassering**: plasser komponenten nær innholdet den styrer. Bruk `aria-controls` hvis den styrer innhold lenger nede på siden.
+- **Antall og bredde**: hold antall valg lavt (≤ 5). Sørg for at alle valg er synlige på skjermen. Hold tekstene korte og konsistente.
+- **Ikoner**: kun ikoner kan brukes for ekspertbrukere. Gi alltid en skjermleser-tekst med `aria-label` når innholdet ikke er selvdokumenterende.
+- **Label**: bruk `label` for å beskrive hva valget styrer for å gjøre det lettere for brukeren å forstå der det er nødvendig.
 
-Segmented control har samme funksjon som en radiobutton, det vil si at én av verdiene er forhåndsvalgt, og den predefinerte
-verdien kan byttes ut med en annen i samme rekke. Kun én av verdiene innen en segmented control kan velges.
-
-For å oppnå best mulig brukervennlighet, bør en Segmented Control ikke ha fler enn fem segmenter. Alle segmenter bør ha samme bredde.
-Det er lettere for brukeren å “tappe” bredere segmenter.
-
-Bruk kun en Segmented Control når alternativene er forhåndsdefinerte. Hold segmentinnholdet kort og konsistent.
-Segmented Controls skal benyttes med kun tekst eller tegn, ikke ikon + tekst.
+Anbefalingene er inspirert av bruksmønstre i ToggleGroup i [Aksel](https://aksel.nav.no/komponenter/core/toggle-group) og [Designsystemet](https://storybook.designsystemet.no/?path=/docs/komponenter-togglegroup--docs).
 
 ## Eksempler
 
-### Eksempel 1
+### Endret visning avhengig av valg
 
 <Playground code={`() => {
-    const [type, setType] = React.useState(null);
+    const [type, setType] = React.useState("avreise");
     const [dateTime, setDateTime] = React.useState(now('Europe/Oslo'));
     return (
       <GridContainer
@@ -114,109 +82,90 @@ Segmented Controls skal benyttes med kun tekst eller tegn, ikke ikon + tekst.
         <GridItem small={12}>
           <SegmentedControl
             label="Velg reisetidspunkt"
-            onChange={selectedValue => setType(selectedValue)}
-            selectedValue={type}
+            value={type}
+            onChange={setType}
           >
-            <SegmentedChoice value="nå">Nå</SegmentedChoice>
-            <SegmentedChoice value="avreise">Avreise</SegmentedChoice>
-            <SegmentedChoice value="ankomst">Ankomst</SegmentedChoice>
+            <SegmentedControl.Item value="nå">Nå</SegmentedControl.Item>
+            <SegmentedControl.Item value="avreise">Avreise</SegmentedControl.Item>
+            <SegmentedControl.Item value="ankomst">Ankomst</SegmentedControl.Item>
           </SegmentedControl>
         </GridItem>
-        <GridItem small={12} large={6}>
-          <DatePicker
-            label="Reisedato"
-            selectedDate={dateTime}
-            onChange={date => setDateTime(date)}
-          />
-        </GridItem>
-        <GridItem small={12} large={6}>
-          <TimePicker
-            label="Klokkeslett"
-            selectedTime={dateTime}
-            onChange={time => setDateTime(time)}
-          />
-        </GridItem>
+        {type !== "nå" && 
+          <GridItem small={12} style={{ display: 'flex', gap: '1rem' }}>
+            <DatePicker
+              label={type === "avreise" ? "Avreisedato" : "Ankomstdato"}
+              selectedDate={dateTime}
+              onChange={date => setDateTime(date)}
+            />
+            <TimePicker
+              label="Tidspunkt"
+              selectedTime={dateTime}
+              onChange={time => setDateTime(time)}
+            />
+          </GridItem> 
+        }
       </GridContainer>
     );
   }`} scope={{now}} />
 
-### Eksempel 2
+### Ukontrollert med defaultValue
 
 ```jsx
-  () => {
-    const [type, setType] = React.useState(null);
-    return (
-      <GridContainer
-        spacing="medium"
-        style={{ marginBottom: '1rem', width: '50%' }}
-      >
-        <GridItem small={12}>
-          <SegmentedControl
-            label="Velg påslag eller avlslag"
-            onChange={selectedValue => setType(selectedValue)}
-            selectedValue={type}
-          >
-            <SegmentedChoice value="percent">%</SegmentedChoice>
-            <SegmentedChoice value="kroner">Kr</SegmentedChoice>
-          </SegmentedControl>
-        </GridItem>
-        <GridItem small={12}>
-          <TextField label="Pris" />
-        </GridItem>
-      </GridContainer>
-    );
-  }
+() => (
+  <SegmentedControl label="Visning" defaultValue="liste">
+    <SegmentedControl.Item value="liste">Liste</SegmentedControl.Item>
+    <SegmentedControl.Item value="graf">Graf</SegmentedControl.Item>
+    <SegmentedControl.Item value="tabell">Tabell</SegmentedControl.Item>
+  </SegmentedControl>
+)
 ```
 
-### Eksempel 3
+### Kun ikoner med skjermleser-tekst
 
 ```jsx
-  () => {
-    const [type, setType] = React.useState(null);
-    const [provider, setProvider] = React.useState(null);
-    const items = ['Entur', 'Vy'];
-    return (
-      <GridContainer
-        spacing="medium"
-        style={{ marginBottom: '1rem', width: '50%' }}
-      >
-        <GridItem small={12}>
-          <SegmentedControl
-            label="Velg billettype"
-            onChange={setType}
-            selectedValue={type}
-          >
-            <SegmentedChoice value="sone">Sone</SegmentedChoice>
-            <SegmentedChoice value="strekning">Strekning</SegmentedChoice>
-          </SegmentedControl>
-        </GridItem>
-        <GridItem small={12}>
-          <Dropdown
-            label="Reisetilbyder"
-            placeholder="Velg selskap"
-            items={items}
-            selectedItem={provider}
-            onChange={setProvider}
-          />
-        </GridItem>
-      </GridContainer>
-    );
-  }
+() => (
+  <SegmentedControl label="Tekstjustering" defaultValue="left">
+    <Tooltip content="Venstrejuster">
+      <SegmentedControl.Item value="left" aria-label="Venstrejuster">
+        <AlignLeftIcon aria-hidden />
+      </SegmentedControl.Item>
+    </Tooltip>
+    <Tooltip content="Midtstill">
+      <SegmentedControl.Item value="center" aria-label="Midtstill">
+        <AlignCenterIcon aria-hidden />
+      </SegmentedControl.Item>
+    </Tooltip>
+    <Tooltip content="Høyrejuster">
+      <SegmentedControl.Item value="right" aria-label="Høyrejuster">
+        <AlignRightIcon aria-hidden />
+      </SegmentedControl.Item>
+    </Tooltip>
+  </SegmentedControl>
+)
 ```
+
+## Tilgjengelighet
+
+- `SegmentedControl` har `role="radiogroup"` og hvert valg har `role="radio"` med `aria-checked` for valgt tilstand.
+- Roving tabindex: piltaster flytter fokus mellom valg. `Space`/`Enter` velger, `Escape` fjerner fokus.
+- Bruk `label` for å beskrive hva valgene styrer, og `aria-label` på valg som kun har ikon.
+- Knytt gjerne komponenten til innholdet den styrer med `aria-controls` på `SegmentedControl` når relevant.
+
+<BannerAlertBox variant="information" title="Husk beskrivelser for skjermlesere">
+  Om du sender inn ikoner eller tekster som krever en visuell kontekst, er det
+  viktig at du sender inn en <CodeText>aria-label</CodeText> prop, eller bruker{' '}
+  <CodeText>VisuallyHidden</CodeText>
+  (fra <CodeText>@entur/a11y</CodeText>) for å gi valget en god beskrivelse.
+</BannerAlertBox>
+
 
 ## Props
 
 ### SegmentedControl
 
-<ImportStatement imports="SegmentedControl" packageName={props.pageContext.frontmatter.npmPackage} />
-<Props componentName="SegmentedControl" />
+<Props componentName="SegmentedControl" npmPackage={props.pageContext.frontmatter.npmPackage}/>
 
 ### SegmentedChoice
 
-<ImportStatement imports="SegmentedChoice" packageName={props.pageContext.frontmatter.npmPackage} />
-<Props componentName="SegmentedChoice" />
+<Props componentName="SegmentedChoice" npmPackage={props.pageContext.frontmatter.npmPackage}/>
 
-### MultipleSegmentedControl
-
-<ImportStatement imports="MultipleSegmentedControl" packageName={props.pageContext.frontmatter.npmPackage} />
-<Props componentName="MultipleSegmentedControl" />

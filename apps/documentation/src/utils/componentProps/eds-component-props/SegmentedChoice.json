@@ -1,88 +1,98 @@
-[
-  {
-    "tags": {},
-    "description": "",
-    "displayName": "SegmentedChoice",
-    "methods": [],
-    "props": {
-      "children": {
-        "defaultValue": null,
-        "description": "Innhold som beskriver valget",
-        "name": "children",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/form/src/segmented-control/SegmentedChoice.tsx",
-            "name": "TypeLiteral"
-          },
-          {
-            "fileName": "design-system/node_modules/@types/react/index.d.ts",
-            "name": "DOMAttributes"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "ReactNode"
+{
+  "tags": {},
+  "description": "",
+  "displayName": "SegmentedChoice",
+  "methods": [],
+  "props": {
+    "value": {
+      "defaultValue": null,
+      "description": "Verdien til valget",
+      "name": "value",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/form/src/segmentedControl/SegmentedChoice.tsx",
+          "name": "TypeLiteral"
         }
-      },
-      "className": {
-        "defaultValue": null,
-        "description": "Ekstra klassenavn",
-        "name": "className",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/form/src/segmented-control/SegmentedChoice.tsx",
-            "name": "TypeLiteral"
-          },
-          {
-            "fileName": "design-system/node_modules/@types/react/index.d.ts",
-            "name": "HTMLAttributes"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "string | undefined"
+      ],
+      "required": true,
+      "type": {
+        "name": "string"
+      }
+    },
+    "children": {
+      "defaultValue": null,
+      "description": "Innhold som beskriver valget",
+      "name": "children",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/form/src/segmentedControl/SegmentedChoice.tsx",
+          "name": "TypeLiteral"
         }
-      },
-      "value": {
-        "defaultValue": null,
-        "description": "Verdien til valget",
-        "name": "value",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/form/src/segmented-control/SegmentedChoice.tsx",
-            "name": "TypeLiteral"
-          },
-          {
-            "fileName": "design-system/node_modules/@types/react/index.d.ts",
-            "name": "InputHTMLAttributes"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "string | (string & readonly string[])"
+      ],
+      "required": true,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "className": {
+      "defaultValue": null,
+      "description": "Ekstra klassenavn",
+      "name": "className",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/form/src/segmentedControl/SegmentedChoice.tsx",
+          "name": "TypeLiteral"
         }
-      },
-      "onChange": {
-        "defaultValue": {
-          "value": "() => undefined"
-        },
-        "description": "Callback som kalles når komponenten endres",
-        "name": "onChange",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/form/src/segmented-control/SegmentedChoice.tsx",
-            "name": "TypeLiteral"
-          },
-          {
-            "fileName": "design-system/node_modules/@types/react/index.d.ts",
-            "name": "InputHTMLAttributes"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "(((e: ChangeEvent<HTMLInputElement>) => void) & ChangeEventHandler<HTMLInputElement>) | undefined"
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "onChange": {
+      "defaultValue": null,
+      "description": "Callback for når valget endres",
+      "name": "onChange",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/form/src/segmentedControl/SegmentedChoice.tsx",
+          "name": "TypeLiteral"
         }
+      ],
+      "required": false,
+      "type": {
+        "name": "((value: string) => void) | undefined"
+      }
+    },
+    "as": {
+      "defaultValue": null,
+      "description": "An override of the default HTML tag.\nCan also be another React component.",
+      "name": "as",
+      "declarations": [
+        {
+          "fileName": "design-system/node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "ElementType<any> | undefined"
+      }
+    },
+    "ref": {
+      "defaultValue": null,
+      "description": "",
+      "name": "ref",
+      "declarations": [
+        {
+          "fileName": "design-system/node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "any"
       }
     }
   }
-]
+}

@@ -95,7 +95,12 @@ const Props: React.FC<PropsProps> = ({
 
   return (
     <>
-      <ImportStatement imports={componentName} packageName={npmPackage || ''} />
+      {npmPackage && (
+        <ImportStatement
+          imports={componentName}
+          packageName={npmPackage || ''}
+        />
+      )}
       {Object.keys(componentProps).length > 0 ? (
         <Table fixed spacing="middle">
           <TableHead>
