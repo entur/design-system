@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.4.0-beta.0](https://github.com/entur/design-system/compare/@entur/datepicker@11.3.0...@entur/datepicker@11.4.0-beta.0) (2025-10-07)
+
+### Features
+
+- **datepicker:** add showOutsideMonth prop to DatePicker and Calendar ([3a2d2a7](https://github.com/entur/design-system/commit/3a2d2a7e869315c203bcc0dd8b99802fd52c6c6b))
+
 # [11.3.0](https://github.com/entur/design-system/compare/@entur/datepicker@11.2.3...@entur/datepicker@11.3.0) (2025-09-30)
 
 ### Features

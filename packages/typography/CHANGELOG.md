@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.2-beta.0](https://github.com/entur/design-system/compare/@entur/typography@2.0.1...@entur/typography@2.0.2-beta.0) (2025-10-07)
+
+### Bug Fixes
+
+- **typography beta:** fix incorrect file ending for migration script via bin ([ef2f340](https://github.com/entur/design-system/commit/ef2f3408fdb1769a9292ef21224391668c916a30))
+- **typography beta:** migration script incorrectly migrates self closing tags without props ([cfc4199](https://github.com/entur/design-system/commit/cfc41998d9c7e48928574e4ae2be02de5c525c14))
+
 ## [2.0.1](https://github.com/entur/design-system/compare/@entur/typography@2.0.0...@entur/typography@2.0.1) (2025-09-30)
 
 ### Bug Fixes

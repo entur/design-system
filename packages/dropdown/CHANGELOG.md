@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.3.9-beta.0](https://github.com/entur/design-system/compare/@entur/dropdown@7.3.8...@entur/dropdown@7.3.9-beta.0) (2025-10-07)
+
+### Bug Fixes
+
+- **dropdown/searchabledropdown:** fix selectOnTab bug ([8a77921](https://github.com/entur/design-system/commit/8a77921e2647ec4fac45777d81db2ca1d47d6641))
+- **dropdown:** fix maximum update depth bug in MultiSelect ([65b081f](https://github.com/entur/design-system/commit/65b081fb9395ab6acc9f2e0937a1d6986885e182))
+
 ## [7.3.8](https://github.com/entur/design-system/compare/@entur/dropdown@7.3.7...@entur/dropdown@7.3.8) (2025-09-30)
 
 ### Bug Fixes
