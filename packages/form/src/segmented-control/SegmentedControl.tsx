@@ -1,8 +1,9 @@
 import React from 'react';
 import { SegmentedProvider, SelectedValue } from './SegmentedContext';
-import { Fieldset } from '../Fieldset';
 import classNames from 'classnames';
 import './SegmentedControl.scss';
+import { Label } from '@entur/typography';
+import { useRandomId } from '@entur/utils';
 
 export type SegmentedControlProps = {
   /** Navn på input-elementene */
@@ -32,6 +33,7 @@ export const SegmentedControl: React.FC<SegmentedControlProps> = ({
   className,
   ...rest
 }) => {
+  const id = useRandomId('eds-segmented-control');
   return (
     <SegmentedProvider
       name={name}
@@ -40,14 +42,20 @@ export const SegmentedControl: React.FC<SegmentedControlProps> = ({
       multiple={false}
       size={size}
     >
-      <Fieldset label={label}>
-        <div
-          className={classNames('eds-segmented-control', className)}
-          {...rest}
-        >
-          {children}
-        </div>
-      </Fieldset>
+      <div
+        className={classNames('eds-segmented-control', className)}
+        role="radiogroup"
+        {...rest}
+      >
+        {label !== undefined && <Label htmlFor={id}>{label}</Label>}
+        <input
+          name={rest.name ?? 'segmented-control'}
+          value={selectedValue ?? undefined}
+          type="hidden"
+          id={id}
+        />
+        <div className="eds-segmented-control__choices">{children}</div>
+      </div>
     </SegmentedProvider>
   );
 };

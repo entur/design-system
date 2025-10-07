@@ -10,6 +10,8 @@ export type SegmentedContextProps =
       selectedValue: SelectedValues;
       multiple: true;
       size: 'medium' | 'large';
+      focusedValue: string | null;
+      setFocusedValue: (value: string | null) => void;
     }
   | {
       name: string;
@@ -17,6 +19,8 @@ export type SegmentedContextProps =
       selectedValue: SelectedValue;
       multiple: false;
       size: 'medium' | 'large';
+      focusedValue: string | null;
+      setFocusedValue: (value: string | null) => void;
     };
 
 const SegmentedContext = React.createContext<SegmentedContextProps | null>(
@@ -48,6 +52,8 @@ export const SegmentedProvider: React.FC<SegmentedProviderProps> = ({
   ...rest
 }) => {
   const generatedName = useRandomId('eds-segmented-control');
+  const [focusedValue, setFocusedValue] = React.useState<string | null>(null);
+
   const contextValue = React.useMemo(
     () => ({
       name: name || generatedName,
@@ -55,9 +61,21 @@ export const SegmentedProvider: React.FC<SegmentedProviderProps> = ({
       multiple,
       selectedValue,
       size,
+      focusedValue,
+      setFocusedValue,
     }),
-    [generatedName, multiple, name, onChange, selectedValue, size],
+    [
+      generatedName,
+      multiple,
+      name,
+      onChange,
+      selectedValue,
+      size,
+      focusedValue,
+      setFocusedValue,
+    ],
   ) as SegmentedContextProps;
+
   return <SegmentedContext.Provider value={contextValue} {...rest} />;
 };
 
