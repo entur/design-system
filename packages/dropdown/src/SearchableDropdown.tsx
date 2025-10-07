@@ -140,7 +140,6 @@ export const SearchableDropdown = React.forwardRef(
     }: {
       changes: Partial<UseComboboxState<NormalizedDropdownItemType<ValueType>>>;
     }) => {
-      updateListItems({ inputValue: EMPTY_INPUT });
       return {
         ...changes,
         inputValue: EMPTY_INPUT,
@@ -184,11 +183,13 @@ export const SearchableDropdown = React.forwardRef(
           // empty input to show selected item and reset dropdown list on item selection
           case useCombobox.stateChangeTypes.ItemClick:
           case useCombobox.stateChangeTypes.InputKeyDownEnter:
-          case useCombobox.stateChangeTypes.InputBlur:
             return resetInputState({ changes });
+          case useCombobox.stateChangeTypes.InputBlur:
+            // We dont want to change selection on blur so we keep previous selectedItem
+            return resetInputState({
+              changes: { ...changes, selectedItem: value },
+            });
           case useCombobox.stateChangeTypes.ControlledPropUpdatedSelectedItem:
-            if (changes.selectedItem !== null && !inputHasFocus)
-              setShowSelectedItem(true);
             return resetInputState({ changes });
           // remove leading whitespace, select element with spacebar on empty input
           case useCombobox.stateChangeTypes.InputChange: {
@@ -372,13 +373,9 @@ export const SearchableDropdown = React.forwardRef(
             onKeyDown(e: React.KeyboardEvent) {
               if (isOpen && e.key === 'Tab') {
                 const highlitedItem = listItems[highlightedIndex];
-                // we don't want to clear selection with tab
-                if (
-                  (selectOnTab || selectOnBlur) &&
-                  highlitedItem &&
-                  highlitedItem !== selectedItem
-                ) {
+                if ((selectOnTab || selectOnBlur) && highlitedItem) {
                   selectItem(highlitedItem);
+                  setShowSelectedItem(true);
                 }
               }
             },
