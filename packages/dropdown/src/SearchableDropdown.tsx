@@ -38,6 +38,7 @@ import {
   itemToString,
   lowerCaseFilterTest,
   noFilter,
+  resetInputState,
 } from './utils';
 
 import { NormalizedDropdownItemType } from './types';
@@ -155,11 +156,10 @@ export const SearchableDropdown = React.forwardRef(
           // empty input to show selected item and reset dropdown list on item selection
           case useCombobox.stateChangeTypes.ItemClick:
           case useCombobox.stateChangeTypes.InputKeyDownEnter:
-            return resetInputState(changes);
+            return resetInputState<ValueType>(changes);
           case useCombobox.stateChangeTypes.InputBlur:
-            console.log(value, state.selectedItem);
             // We dont want to change selection on blur so we keep previous selectedItem
-            return resetInputState({
+            return resetInputState<ValueType>({
               ...changes,
               selectedItem: state.selectedItem,
             });
@@ -191,12 +191,14 @@ export const SearchableDropdown = React.forwardRef(
                 inputValue: sanitizedInputValue,
                 selectedItem: listItems[i],
               };
+
+            return { ...changes, inputValue: sanitizedInputValue };
           }
           default:
             return changes;
         }
       },
-      [value, listItems, EMPTY_INPUT, resetInputState],
+      [listItems, EMPTY_INPUT],
     );
 
     const {
@@ -241,6 +243,11 @@ export const SearchableDropdown = React.forwardRef(
       }
     }, [value]);
 
+    const handleOnClear = () => {
+      inputRef.current?.focus();
+      reset();
+    };
+
     // calculations for floating-UI popover position
     const { refs, floatingStyles, update } = useFloating({
       open: isOpen,
@@ -274,10 +281,6 @@ export const SearchableDropdown = React.forwardRef(
       }
     }, [isOpen, refs.reference, refs.floating, update]);
 
-    const handleOnClear = () => {
-      inputRef.current?.focus();
-      reset();
-    };
     const labelProps = getLabelProps();
     const toggleButtonProps = getToggleButtonProps({
       'aria-busy': !(loading ?? resolvedItemsLoading) ? undefined : 'true',
@@ -325,11 +328,11 @@ export const SearchableDropdown = React.forwardRef(
         feedback={feedback}
         isFilled={selectedItem !== null || inputValue !== EMPTY_INPUT}
         label={label}
-        labelId={getLabelProps().id}
-        labelProps={getLabelProps()}
+        labelId={labelProps.id}
+        labelProps={labelProps}
         labelTooltip={labelTooltip}
         onClick={(e: React.MouseEvent<HTMLElement>) => {
-          if (e.target === e.currentTarget) getInputProps()?.onClick?.(e);
+          if (e.target === e.currentTarget) inputProps?.onClick?.(e);
           onClick?.(e);
         }}
         onKeyDown={onKeyDown}
@@ -353,11 +356,7 @@ export const SearchableDropdown = React.forwardRef(
             noMatchesText={noMatchesText}
             selectedItems={selectedItem !== null ? [selectedItem] : []}
             readOnly={readOnly}
-            {...getMenuProps({
-              refKey: 'innerRef',
-              ref: refs.setFloating,
-              style: listStyle,
-            })}
+            {...menuProps}
           />
         }
         {...rest}
@@ -372,7 +371,7 @@ export const SearchableDropdown = React.forwardRef(
           onClick={event => {
             if (!disabled && !readOnly) {
               inputRef.current?.focus();
-              getInputProps()?.onClick?.(event);
+              inputProps?.onClick?.(event);
             }
           }}
           tabIndex={readOnly ? 0 : -1}
@@ -383,38 +382,10 @@ export const SearchableDropdown = React.forwardRef(
           className={classNames('eds-dropdown__input eds-form-control', {
             'eds-dropdown__input--hidden': showSelectedItem,
           })}
-          {...getInputProps({
-            onKeyDown(e: React.KeyboardEvent) {
-              if (isOpen && e.key === 'Tab') {
-                const highlitedItem = listItems[highlightedIndex];
-                if ((selectOnTab || selectOnBlur) && highlitedItem) {
-                  selectItem(highlitedItem);
-                  setShowSelectedItem(true);
-                }
-              }
-            },
-            onBlur(e) {
-              if (selectedItem !== null) setShowSelectedItem(true);
-              onBlur?.(e);
-            },
-            onFocus() {
-              if (!readOnly) {
-                setShowSelectedItem(false);
-              }
-            },
-            disabled: disabled,
-            readOnly: readOnly,
-            placeholder: selectedItem?.label ?? placeholder,
-            tabIndex: disabled || readOnly ? -1 : undefined,
-            ref: mergeRefs(inputRef, ref),
-          })}
+          {...inputProps}
         />
         <DropdownFieldAppendix
-          {...getToggleButtonProps({
-            'aria-busy': !(loading ?? resolvedItemsLoading)
-              ? undefined
-              : 'true',
-          })}
+          {...toggleButtonProps}
           ariaLabelCloseList={ariaLabelCloseList}
           ariaLabelOpenList={ariaLabelOpenList}
           clearable={clearable}
