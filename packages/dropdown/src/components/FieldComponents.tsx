@@ -38,6 +38,8 @@ export const SelectedItemTag = <ValueType extends NonNullable<any>>({
   removeSelectedItem: (item: NormalizedDropdownItemType<ValueType>) => void;
   selectedItem: NormalizedDropdownItemType<ValueType>;
 }) => {
+  if (!selectedItem) return null;
+
   const { tabIndex: _, ...selectedItemProps } =
     getSelectedItemProps?.({
       selectedItem,

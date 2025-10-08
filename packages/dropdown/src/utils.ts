@@ -48,6 +48,13 @@ export const isFunctionWithQueryArgument = (object: any) =>
 export const clamp = (val: number, min = 1, max = 10) =>
   Math.min(Math.max(val, min), max);
 
+export const resetInputState = <ValueType>(
+  changes: Partial<UseComboboxState<NormalizedDropdownItemType<ValueType>>>,
+) => ({
+  ...changes,
+  inputValue: EMPTY_INPUT,
+});
+
 /* end general utils */
 /* start multiselect utils */
 

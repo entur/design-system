@@ -34,7 +34,7 @@ type DropdownListProps<ValueType> = {
 
 export const DropdownList = <ValueType extends NonNullable<any>>({
   ariaLabelChosenSingular = 'valgt',
-  ariaLabelSelectedItem = ', valgt element, trykk for å fjerne',
+  ariaLabelSelectedItem = ', valgt element',
   getItemProps,
   isOpen,
   highlightedIndex,
