@@ -1,5 +1,5 @@
 apiVersion: orchestrator.entur.io/github/v1
-kind: GitHubManifest
+kind: GitHubActions
 metadata:
   id: design-system
   trigger: 1755844529
