@@ -1,0 +1,8 @@
+apiVersion: orchestrator.entur.io/github/v1
+kind: GitHubActions
+metadata:
+  id: design-system
+  trigger: 1755844529
+spec:
+  environments:
+  - prd
