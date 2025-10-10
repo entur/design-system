@@ -115,7 +115,7 @@ export const Dropdown = React.forwardRef(
       ariaLabelOpenList = 'Åpne liste med valg',
       ariaLabelSelectedItem,
       className,
-      clearable = false,
+      clearable,
       disabled = false,
       disableLabelAnimation,
       feedback,
@@ -233,6 +233,8 @@ export const Dropdown = React.forwardRef(
           if (selectOnTab && highlitedItem && highlitedItem !== selectedItem) {
             selectItem(highlitedItem);
           }
+        } else if (!isOpen && e.key === 'Escape' && clearable) {
+          reset();
         }
       },
     });
