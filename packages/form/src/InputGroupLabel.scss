@@ -65,11 +65,11 @@ $label-top-large: 0.5rem;
 }
 
 .eds-form-control-wrapper {
-  &:focus-within .eds-input-group__label {
+  &:focus-within :not(.eds-input-group-label-wrapper--controlled-label-position) .eds-input-group__label {
     @include labelPositionTop;
   }
   &--size-large:focus-within {
-    & .eds-input-group__label {
+    & :not(.eds-input-group-label-wrapper--controlled-label-position) .eds-input-group__label {
       @include labelPositionTopLarge;
     }
   }
