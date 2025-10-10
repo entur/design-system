@@ -23,7 +23,7 @@
     },
     "ariaLabelSelectedItem": {
       "defaultValue": {
-        "value": ", valgt element, trykk for å fjerne"
+        "value": ", valgt element"
       },
       "description": "",
       "name": "ariaLabelSelectedItem",
@@ -36,21 +36,6 @@
       "required": false,
       "type": {
         "name": "string | undefined"
-      }
-    },
-    "getMenuProps": {
-      "defaultValue": null,
-      "description": "",
-      "name": "getMenuProps",
-      "declarations": [
-        {
-          "fileName": "design-system/packages/dropdown/src/components/DropdownList.tsx",
-          "name": "TypeLiteral"
-        }
-      ],
-      "required": true,
-      "type": {
-        "name": "(<Options>(options?: (UseComboboxGetMenuPropsOptions & Options) | undefined, otherOptions?: GetPropsCommonOptions | undefined) => Overwrite<...>) | (<Options>(options?: (UseSelectGetMenuPropsOptions & Options) | undefined, otherOptions?: GetPropsCommonOptions | undefined) => Overwrite<...>)"
       }
     },
     "getItemProps": {
@@ -128,19 +113,19 @@
         "name": "{ [key: string]: any; } | undefined"
       }
     },
-    "setListRef": {
+    "innerRef": {
       "defaultValue": null,
       "description": "",
-      "name": "setListRef",
+      "name": "innerRef",
       "declarations": [
         {
           "fileName": "design-system/packages/dropdown/src/components/DropdownList.tsx",
           "name": "TypeLiteral"
         }
       ],
-      "required": true,
+      "required": false,
       "type": {
-        "name": "(node: HTMLElement | null) => void"
+        "name": "MutableRefObject<HTMLUListElement> | ((node: HTMLElement | null) => void) | undefined"
       }
     },
     "loading": {
@@ -206,7 +191,7 @@
       ],
       "required": false,
       "type": {
-        "name": "(() => boolean | \"indeterminate\") | undefined"
+        "name": "boolean | \"indeterminate\" | undefined"
       }
     },
     "selectAllItem": {
