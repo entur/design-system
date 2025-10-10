@@ -50,14 +50,8 @@ export type DropdownProps<ValueType> = {
    * @default false
    */
   clearable?: boolean;
-  /** Lar brukeren velge ved å "tab-e" seg ut av komponenten */
+  /** Velg det markerte elementet når brukeren "tab-er" seg vekk fra komponenten/input-feltet */
   selectOnTab?: boolean;
-  /**
-   * @deprecated
-   * Bruk selectOnTab i stedet
-   *
-   * Lar brukeren velge ved å "tab-e" seg ut av komponenten */
-  selectOnBlur?: boolean;
   /** Deaktiver dropdown-en */
   disabled?: boolean;
   /** Setter dropdown-en i read-only modus */
@@ -138,7 +132,6 @@ export const Dropdown = React.forwardRef(
       prepend,
       readOnly = false,
       selectedItem,
-      selectOnBlur = false,
       selectOnTab = false,
       style,
       variant = 'information',
@@ -162,7 +155,7 @@ export const Dropdown = React.forwardRef(
       items: normalizedItems,
       defaultHighlightedIndex: selectedItem ? undefined : 0,
       selectedItem,
-      stateReducer(_, { changes, type }) {
+      stateReducer(state, { changes, type }) {
         const toggleButtonIsFocused =
           typeof document !== 'undefined' &&
           document.activeElement === refs.reference.current;
@@ -171,16 +164,14 @@ export const Dropdown = React.forwardRef(
           case useSelect.stateChangeTypes.ToggleButtonKeyDownArrowDown:
           case useSelect.stateChangeTypes.ToggleButtonKeyDownArrowUp:
             if (!toggleButtonIsFocused) return { ...changes, isOpen: false };
+            break;
+          case useSelect.stateChangeTypes.ToggleButtonBlur:
+            return { ...changes, selectedItem: state.selectedItem };
         }
         return changes;
       },
-      onStateChange({ type, selectedItem: newSelectedItem }) {
-        switch (type) {
-          case useSelect.stateChangeTypes.ToggleButtonBlur:
-            if (!selectOnBlur) return;
-        }
-        if (newSelectedItem === undefined) return;
-        onChange?.(newSelectedItem ?? null);
+      onSelectedItemChange({ selectedItem: newSelectedItem }) {
+        onChange?.(newSelectedItem);
       },
       itemToString,
     });
@@ -219,9 +210,37 @@ export const Dropdown = React.forwardRef(
     }, [isOpen, refs.reference, refs.floating, update]);
 
     const handleOnClear = () => {
-      reset();
       refs.reference.current?.focus();
+      reset();
     };
+
+    const labelProps = getLabelProps({
+      isFilled,
+    });
+    const toggleButtonProps = getToggleButtonProps({
+      ref: mergeRefs(ref, refs.setReference),
+      'aria-disabled': disabled,
+      'aria-label': disabled ? 'Disabled dropdown' : '',
+      disabled: disabled,
+      readOnly: readOnly,
+      label: label,
+      labelId: labelProps?.id,
+      tabIndex: disabled || readOnly ? -1 : 0,
+      onKeyDown(e) {
+        if (isOpen && e.key === 'Tab') {
+          const highlitedItem = normalizedItems[highlightedIndex];
+          // we don't want to clear selection with tab
+          if (selectOnTab && highlitedItem && highlitedItem !== selectedItem) {
+            selectItem(highlitedItem);
+          }
+        }
+      },
+    });
+    const menuProps = getMenuProps({
+      refKey: 'innerRef',
+      ref: refs.setFloating,
+      style: listStyle,
+    });
 
     return (
       <BaseFormControl
@@ -230,36 +249,12 @@ export const Dropdown = React.forwardRef(
         })}
         disableLabelAnimation={disableLabelAnimation}
         feedback={feedback}
-        isFilled={isFilled}
-        labelProps={getLabelProps()}
+        labelProps={labelProps}
         labelTooltip={labelTooltip}
         prepend={prepend}
         style={style}
         variant={variant}
-        {...getToggleButtonProps({
-          ref: mergeRefs(ref, refs.setReference),
-          'aria-disabled': disabled,
-          'aria-label': disabled ? 'Disabled dropdown' : '',
-          disabled: disabled,
-          readOnly: readOnly,
-          label: label,
-          labelId: getLabelProps()?.id,
-          children: undefined,
-          tabIndex: disabled || readOnly ? -1 : 0,
-          onKeyDown(e) {
-            if (isOpen && e.key === 'Tab') {
-              const highlitedItem = normalizedItems[highlightedIndex];
-              // we don't want to clear selection with tab
-              if (
-                (selectOnTab || selectOnBlur) &&
-                highlitedItem &&
-                highlitedItem !== selectedItem
-              ) {
-                selectItem(highlitedItem);
-              }
-            }
-          },
-        })}
+        {...toggleButtonProps}
         after={
           <DropdownList
             ariaLabelChosenSingular={ariaLabelChosenSingular}
@@ -274,11 +269,7 @@ export const Dropdown = React.forwardRef(
             noMatchesText={noMatchesText}
             selectedItems={selectedItem !== null ? [selectedItem] : []}
             readOnly={readOnly}
-            {...getMenuProps({
-              refKey: 'innerRef',
-              ref: refs.setFloating,
-              style: listStyle,
-            })}
+            {...menuProps}
           />
         }
         {...rest}
