@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.0.0-beta.0](https://github.com/entur/design-system/compare/@entur/dropdown@7.3.9-beta.0...@entur/dropdown@8.0.0-beta.0) (2025-10-10)
+
+### Bug Fixes
+
+- **dropdown/dropdown:** improve internal dropdown state management ([db4c9b5](https://github.com/entur/design-system/commit/db4c9b52196abc5c518d989f49e7a44baf477012))
+- **dropdown/multiselect:** improve internal multiselect state managment ([b4c36a2](https://github.com/entur/design-system/commit/b4c36a2ecfae6e5a4bfd6b5becf79c3e81ded9f9))
+- **dropdown/searchable dropdown:** improve internal serachable dropdown state management ([fb41b20](https://github.com/entur/design-system/commit/fb41b2005db1164f93b67abb1d75c8d851684f2c))
+
+### BREAKING CHANGES
+
+- **dropdown/dropdown:** has been removed
+- **dropdown/multiselect:** `selectOnBlur` has been removed
+- **dropdown/searchable dropdown:** `selectOnBlur` has been removed
+
 ## [7.3.9-beta.0](https://github.com/entur/design-system/compare/@entur/dropdown@7.3.8...@entur/dropdown@7.3.9-beta.0) (2025-10-07)
 
 ### Bug Fixes
