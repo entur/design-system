@@ -1,23 +1,19 @@
 @use '@entur/tokens/dist/styles.scss' as t;
+@use './badge-tokens.scss' as *;
 
 .eds-badge {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: inherit;
-  font-weight: t.$font-weights-body;
-  font-size: t.$font-sizes-small;
   min-width: 1.5rem;
-  height: 1.5rem;
+  height: var(--layout-badge-status-height-medium);
   width: fit-content;
-  line-height: 1rem;
-  padding: 2px 8px;
-  border-radius: 0.75rem;
+  padding: var(--size-2) 0.5rem;
+  border-radius: var(--layout-badge-status-radius-medium);
   top: 0;
   right: 0;
   opacity: 1;
   visibility: visible;
-  color: var(--components-layout-badge-primary-standard-text);
   transition: opacity t.$timings-medium ease-in-out, visibility 0s linear;
 
   &--hide {
@@ -26,12 +22,35 @@
     transition: opacity t.$timings-medium ease-in-out, visibility 0s linear 0.3s;
   }
 
+  .eds-icon {
+    position: relative;
+  }
+
+  &--leading-icon {
+    .eds-icon:first-child {
+      //margin: 0.22247rem 0.22247rem 0.18747rem 0.22247rem; // Total: 1rem x 1rem
+    }
+  }
+
   &--variant-primary {
     background-color: var(--components-layout-badge-primary-standard-fill);
-    color: var(--components-layout-badge-primary-standard-text);
+    .eds-text {
+      color: var(--components-layout-badge-primary-standard-text);
+      .eds-contrast & {
+        color: var(--components-layout-badge-primary-contrast-text);
+      }
+    }
+
+    &.eds-badge--leading-icon {
+      .eds-icon {
+        color: var(--components-layout-badge-primary-standard-text);
+        .eds-contrast & {
+          color: var(--components-layout-badge-primary-contrast-text);
+        }
+      }
+    }
 
     .eds-contrast & {
-      color: var(--components-layout-badge-primary-contrast-text);
       background-color: var(--components-layout-badge-primary-contrast-fill);
     }
 
@@ -44,10 +63,24 @@
   }
   &--variant-success {
     background-color: var(--components-layout-badge-success-standard-fill);
-    color: var(--components-layout-badge-success-standard-text);
+    .eds-text {
+      color: var(--components-layout-badge-success-standard-text);
+      .eds-contrast & {
+        color: var(--components-layout-badge-success-contrast-text);
+      }
+    }
+
+    &.eds-badge--leading-icon {
+      .eds-icon {
+        color: var(--components-layout-badge-success-standard-text);
+        .eds-contrast & {
+          color: var(--components-layout-badge-success-contrast-text);
+        }
+      }
+    }
+
     .eds-contrast & {
       background-color: var(--components-layout-badge-success-contrast-fill);
-      color: var(--components-layout-badge-success-contrast-text);
     }
 
     &.eds-badge--type-status,
@@ -66,10 +99,24 @@
   }
   &--variant-warning {
     background-color: var(--components-layout-badge-warning-standard-fill);
-    color: var(--components-layout-badge-warning-standard-text);
+    .eds-text {
+      color: var(--components-layout-badge-warning-standard-text);
+      .eds-contrast & {
+        color: var(--components-layout-badge-warning-contrast-text);
+      }
+    }
+
+    &.eds-badge--leading-icon {
+      .eds-icon {
+        color: var(--components-layout-badge-warning-standard-text);
+        .eds-contrast & {
+          color: var(--components-layout-badge-warning-contrast-text);
+        }
+      }
+    }
+
     .eds-contrast & {
       background-color: var(--components-layout-badge-warning-contrast-fill);
-      color: var(--components-layout-badge-warning-contrast-text);
     }
     &.eds-badge--type-status,
     &.eds-badge--type-notification {
@@ -88,7 +135,21 @@
   &--variant-danger,
   &--variant-negative {
     background-color: var(--components-layout-badge-negative-standard-fill);
-    color: var(--components-layout-badge-negative-standard-text);
+    .eds-text {
+      color: var(--components-layout-badge-negative-standard-text);
+      .eds-contrast & {
+        color: var(--components-layout-badge-negative-contrast-text);
+      }
+    }
+
+    &.eds-badge--leading-icon {
+      .eds-icon {
+        color: var(--components-layout-badge-negative-standard-text);
+        .eds-contrast & {
+          color: var(--components-layout-badge-negative-contrast-text);
+        }
+      }
+    }
 
     .eds-contrast & {
       background-color: var(--components-layout-badge-negative-contrast-fill);
@@ -111,7 +172,21 @@
   &--variant-info,
   &--variant-information {
     background-color: var(--components-layout-badge-information-standard-fill);
-    color: var(--components-layout-badge-information-standard-text);
+    .eds-text {
+      color: var(--components-layout-badge-information-standard-text);
+      .eds-contrast & {
+        color: var(--components-layout-badge-information-contrast-text);
+      }
+    }
+
+    &.eds-badge--leading-icon {
+      .eds-icon {
+        color: var(--components-layout-badge-information-standard-text);
+        .eds-contrast & {
+          color: var(--components-layout-badge-information-contrast-text);
+        }
+      }
+    }
 
     .eds-contrast & {
       background-color: var(--components-layout-badge-information-contrast-fill);
@@ -134,11 +209,24 @@
   }
   &--variant-neutral {
     background-color: var(--components-layout-badge-neutral-standard-fill);
-    color: var(--components-layout-badge-neutral-standard-text);
+    .eds-text {
+      color: var(--components-layout-badge-neutral-standard-text);
+      .eds-contrast & {
+        color: var(--components-layout-badge-neutral-contrast-text);
+      }
+    }
+
+    &.eds-badge--leading-icon {
+      .eds-icon {
+        color: var(--components-layout-badge-neutral-standard-text);
+        .eds-contrast & {
+          color: var(--components-layout-badge-neutral-contrast-text);
+        }
+      }
+    }
 
     .eds-contrast & {
       background-color: var(--components-layout-badge-neutral-contrast-fill);
-      color: var(--components-layout-badge-neutral-contrast-text);
     }
 
     &.eds-badge--type-status,
@@ -158,48 +246,160 @@
 
   &--type {
     &-status {
-      display: block;
-      text-transform: uppercase;
-      border-radius: t.$border-radiuses-medium;
-      line-height: t.$line-heights-medium;
-      padding: 0 t.$space-extra-small;
-      height: 1.25rem;
-      border: t.$border-widths-small solid transparent;
+      border-radius: var(--layout-badge-status-radius-medium);
+      padding: 0 var(--layout-badge-status-inline-padding-medium);
+      height: var(--layout-badge-status-height-medium);
+      border: var(--layout-badge-status-border-medium) solid transparent;
       border-color: transparent;
     }
 
     &-notification {
-      line-height: t.$line-heights-extra-large;
-      height: t.$space-large;
-      min-width: t.$space-large;
-      padding: 0 t.$space-extra-small2;
-      border: t.$border-widths-small solid transparent;
+      width: var(--layout-badge-notification-height-medium);
+      height: var(--layout-badge-notification-height-medium);
+      min-width: var(--layout-badge-notification-height-medium);
+      max-width: var(--layout-badge-notification-height-medium);
+      min-height: var(--layout-badge-notification-height-medium);
+      max-height: var(--layout-badge-notification-height-medium);
+      padding: var(--layout-badge-notification-inline-padding-padding);
+      border: var(--layout-badge-notification-border-medium) solid transparent;
+      border-radius: var(--layout-badge-notification-radius-round);
+      border-color: transparent;
       .eds-contrast & {
         border-color: transparent;
       }
     }
     &-bullet {
       background: none;
-      font-size: t.$font-sizes-large;
+      font-size: var(--layout-badge-bullet-font-size-large);
       line-height: t.$line-heights-extra-large;
-      color: var(--components-layout-badge-primary-standard-text-bullet);
       border: none;
       position: relative;
-      padding-left: 0.625rem + t.$space-small;
+      padding-left: calc(var(--layout-badge-bullet-bullet-medium) + var(--layout-badge-bullet-gap-medium));
       .eds-contrast & {
         color: var(--components-layout-badge-primary-contrast-text-bullet);
         background: none;
       }
+      .eds-text {
+        color: var(--components-layout-badge-primary-standard-text-bullet);
+        .eds-contrast & {
+          color: var(--components-layout-badge-primary-contrast-text-bullet);
+        }
+      }
       &::before {
         background: var(--components-layout-badge-primary-standard-fill);
         left: 0;
-        // Vertical padding + half height of circle
         content: '';
         position: absolute;
-        top: calc(0.625rem / 2);
-        height: 0.625rem; //10px
-        width: 0.625rem;
+        top: 50%;
+        transform: translateY(-50%);
+        height: var(--layout-badge-bullet-bullet-medium);
+        width: var(--layout-badge-bullet-bullet-medium);
         border-radius: 50%;
+      }
+    }
+  }
+
+  // Size modifiers
+  &--size {
+    &-small {
+      &.eds-badge--type-status {
+        height: var(--layout-badge-status-height-small);
+        padding: 0 var(--layout-badge-status-inline-padding-small);
+        border-radius: var(--layout-badge-status-radius-small);
+        border-width: var(--layout-badge-status-border-small);
+      }
+
+      &.eds-badge--type-notification {
+        width: var(--layout-badge-notification-height-small);
+        height: var(--layout-badge-notification-height-small);
+        min-width: var(--layout-badge-notification-height-small);
+        max-width: var(--layout-badge-notification-height-small);
+        min-height: var(--layout-badge-notification-height-small);
+        max-height: var(--layout-badge-notification-height-small);
+        border-width: var(--layout-badge-notification-border-small);
+      }
+
+      &.eds-badge--type-bullet {
+        padding-left: calc(var(--layout-badge-bullet-bullet-small) + var(--layout-badge-bullet-gap-small));
+        &::before {
+          height: var(--layout-badge-bullet-bullet-small);
+          width: var(--layout-badge-bullet-bullet-small);
+        }
+      }
+
+      &.eds-badge--leading-icon {
+        .eds-icon {
+          width: var(--layout-badge-status-icon-small);
+          height: var(--layout-badge-status-icon-small);
+        }
+      }
+    }
+
+    &-medium {
+      &.eds-badge--type-status {
+        height: var(--layout-badge-status-height-medium);
+        padding: 0 var(--layout-badge-status-inline-padding-medium);
+        border-radius: var(--layout-badge-status-radius-medium);
+        border-width: var(--layout-badge-status-border-medium);
+      }
+
+      &.eds-badge--type-notification {
+        width: var(--layout-badge-notification-height-medium);
+        height: var(--layout-badge-notification-height-medium);
+        min-width: var(--layout-badge-notification-height-medium);
+        max-width: var(--layout-badge-notification-height-medium);
+        min-height: var(--layout-badge-notification-height-medium);
+        max-height: var(--layout-badge-notification-height-medium);
+        border-width: var(--layout-badge-notification-border-medium);
+      }
+
+      &.eds-badge--type-bullet {
+        padding-left: calc(var(--layout-badge-bullet-bullet-medium) + var(--layout-badge-bullet-gap-medium));
+        &::before {
+          height: var(--layout-badge-bullet-bullet-medium);
+          width: var(--layout-badge-bullet-bullet-medium);
+        }
+      }
+
+      &.eds-badge--leading-icon {
+        .eds-icon {
+          width: var(--layout-badge-status-icon-medium);
+          height: var(--layout-badge-status-icon-medium);
+        }
+      }
+    }
+
+    &-large {
+      &.eds-badge--type-status {
+        height: var(--layout-badge-status-height-large);
+        padding: 0 var(--layout-badge-status-inline-padding-large);
+        border-radius: var(--layout-badge-status-radius-large);
+        border-width: var(--layout-badge-status-border-large);
+      }
+
+      &.eds-badge--type-notification {
+        width: var(--layout-badge-notification-height-large);
+        height: var(--layout-badge-notification-height-large);
+        min-width: var(--layout-badge-notification-height-large);
+        max-width: var(--layout-badge-notification-height-large);
+        min-height: var(--layout-badge-notification-height-large);
+        max-height: var(--layout-badge-notification-height-large);
+        border-width: var(--layout-badge-notification-border-large);
+      }
+
+      &.eds-badge--type-bullet {
+        padding-left: calc(var(--layout-badge-bullet-bullet-large) + var(--layout-badge-bullet-gap-large));
+        &::before {
+          height: var(--layout-badge-bullet-bullet-large);
+          width: var(--layout-badge-bullet-bullet-large);
+        }
+      }
+
+      &.eds-badge--leading-icon {
+        .eds-icon {
+          width: var(--layout-badge-status-icon-large);
+          height: var(--layout-badge-status-icon-large);
+        }
       }
     }
   }
