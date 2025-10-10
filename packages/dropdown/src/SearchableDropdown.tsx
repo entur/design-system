@@ -155,16 +155,26 @@ export const SearchableDropdown = React.forwardRef(
         switch (type) {
           // empty input to show selected item and reset dropdown list on item selection
           case useCombobox.stateChangeTypes.ItemClick:
-          case useCombobox.stateChangeTypes.InputKeyDownEnter:
+          case useCombobox.stateChangeTypes.InputKeyDownEnter: {
             return resetInputState<ValueType>(changes);
-          case useCombobox.stateChangeTypes.InputBlur:
+          }
+          case useCombobox.stateChangeTypes.InputBlur: {
             // We dont want to change selection on blur so we keep previous selectedItem
             return resetInputState<ValueType>({
               ...changes,
               selectedItem: state.selectedItem,
             });
-          case useCombobox.stateChangeTypes.ControlledPropUpdatedSelectedItem:
+          }
+          case useCombobox.stateChangeTypes.InputKeyDownEscape: {
+            return {
+              ...changes,
+              selectedItem:
+                clearable && !state.isOpen ? null : state.selectedItem,
+            };
+          }
+          case useCombobox.stateChangeTypes.ControlledPropUpdatedSelectedItem: {
             return { ...changes, inputValue: state.inputValue };
+          }
           // remove leading whitespace, select element with spacebar on empty input
           case useCombobox.stateChangeTypes.InputChange: {
             const isSpacePressedOnEmptyInput = changes.inputValue === ' ';
@@ -198,7 +208,7 @@ export const SearchableDropdown = React.forwardRef(
             return changes;
         }
       },
-      [listItems, EMPTY_INPUT],
+      [listItems, EMPTY_INPUT, clearable],
     );
 
     const {
