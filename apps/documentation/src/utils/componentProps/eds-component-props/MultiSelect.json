@@ -70,25 +70,8 @@
       "defaultValue": {
         "value": false
       },
-      "description": "Lar brukeren velge ved å \"tab-e\" seg ut av komponenten",
+      "description": "Velg det markerte elementet når brukeren \"tab-er\" seg vekk fra komponenten/input-feltet",
       "name": "selectOnTab",
-      "declarations": [
-        {
-          "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
-          "name": "TypeLiteral"
-        }
-      ],
-      "required": false,
-      "type": {
-        "name": "boolean | undefined"
-      }
-    },
-    "selectOnBlur": {
-      "defaultValue": {
-        "value": false
-      },
-      "description": "@deprecated Bruk selectOnTab i stedet\n\nLar brukeren velge ved å \"tab-e\" seg ut av komponenten",
-      "name": "selectOnBlur",
       "declarations": [
         {
           "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
@@ -640,7 +623,7 @@
       ],
       "required": false,
       "type": {
-        "name": "((event: MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined"
+        "name": "((event: MouseEvent<HTMLElement, MouseEvent>) => void) | undefined"
       }
     },
     "onKeyDown": {
@@ -660,7 +643,7 @@
     },
     "onFocus": {
       "defaultValue": null,
-      "description": "Callback når komponenten får fokus",
+      "description": "Callback når input-feltet får fokus",
       "name": "onFocus",
       "declarations": [
         {
