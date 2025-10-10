@@ -6,14 +6,19 @@
 @use '@entur/utils/dist/breakpoints.scss' as *;
 @forward '../typography-tokens.scss';
 @use '../typography-tokens.scss' as *;
+@use '../componentColors.scss' as *;
 
 @import 'modern-normalize/modern-normalize.css';
 
 // Beta Typography Text Base Classes
 .eds-text {
-  color: var(--primary-text-color);
+  color: var(--components-typography-basetext-standard-text-accent);
   font-weight: var(--font-weight-body);
   margin: 0;
+
+  .eds-contrast & {
+    color: var(--components-typography-basetext-contrast-text-accent);
+  }
 
   // Sizes
   &--xs {
@@ -141,6 +146,11 @@
     color: var(--components-typography-codetext-standard-text);
     font-family: 'Monaco', monospace;
     font-size: t.$font-sizes-medium;
+    .eds-contrast & {
+      background-color: var(--components-typography-codetext-contrast-fill);
+      border: t.$border-widths-small solid var(--components-typography-codetext-contrast-border);
+      color: var(--components-typography-codetext-contrast-text);
+    }
   }
 
   &--preformatted-text {
@@ -254,7 +264,10 @@
 
   // Komponenter
   &--link {
-    color: var(--primary-text-color);
+    color: var(--components-typography-basetext-standard-text-accent);
+    .eds-contrast & {
+      color: var(--components-typography-basetext-contrast-text-accent);
+    }
 
     &,
     &:link,
@@ -263,10 +276,22 @@
       text-decoration: none;
       position: relative;
 
-      background-image: linear-gradient(120deg, var(--primary-text-color) 0%, var(--primary-text-color) 100%);
+      background-image: linear-gradient(
+        120deg,
+        var(--components-typography-basetext-standard-text-accent) 0%,
+        var(--components-typography-basetext-standard-text-accent) 100%
+      );
       background-repeat: no-repeat;
       background-size: 100% 0.125rem;
       background-position: 0 100%;
+
+      .eds-contrast & {
+        background-image: linear-gradient(
+          120deg,
+          var(--components-typography-basetext-contrast-text-accent) 0%,
+          var(--components-typography-basetext-contrast-text-accent) 100%
+        );
+      }
     }
     &:hover {
       animation: eds-link-underline 0.3s ease-in;
@@ -314,6 +339,10 @@
     font-size: var(--font-size-body-lg);
     line-height: var(--font-line-height-body-lg);
     margin-bottom: var(--font-line-height-body-lg);
+    color: var(--components-typography-blockquote-standard-text-accent);
+    .eds-contrast & {
+      color: var(--components-typography-blockquote-contrast-text-accent);
+    }
 
     &__footer {
       font-size: var(--font-size-body-s);
@@ -321,6 +350,10 @@
       letter-spacing: 1px;
       margin-top: t.$space-large;
       text-transform: uppercase;
+      color: var(--components-typography-blockquote-standard-text-accent);
+      .eds-contrast & {
+        color: var(--components-typography-blockquote-contrast-text-accent);
+      }
     }
   }
 
@@ -328,7 +361,10 @@
   &--unordered-list {
     list-style: none;
     margin-bottom: var(--font-line-height-body-lg);
-
+    color: var(--components-typography-list-standard-text-accent);
+    .eds-contrast & {
+      color: var(--components-typography-list-contrast-text-accent);
+    }
     .eds-text--list-item {
       &::before {
         content: '';
@@ -347,6 +383,10 @@
     counter-reset: eds-numbered-list-counter;
     list-style: none;
     margin-bottom: var(--font-line-height-body-lg);
+    color: var(--components-typography-list-standard-text-accent);
+    .eds-contrast & {
+      color: var(--components-typography-list-contrast-text-accent);
+    }
 
     &--type-a {
       & > .eds-text--list-item {
@@ -393,7 +433,10 @@
     counter-increment: eds-numbered-list-counter;
     margin-bottom: var(--font-paragraph-spacing-body-m);
     position: relative;
-
+    color: var(--components-typography-list-standard-text-accent);
+    .eds-contrast & {
+      color: var(--components-typography-list-contrast-text-accent);
+    }
     &::before {
       color: var(--primary-text-color);
       position: absolute;
@@ -407,6 +450,9 @@
       align-items: center;
       justify-content: center;
       top: -0.25rem;
+      .eds-contrast & {
+        border: t.$border-widths-medium solid var(--components-typography-list-contrast-border);
+      }
     }
   }
 
