@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.2](https://github.com/entur/design-system/compare/@entur/typography@2.0.1...@entur/typography@2.0.2) (2025-10-17)
+
+### Bug Fixes
+
+- **typography beta:** fix contrast colorvariables ([ce0340a](https://github.com/entur/design-system/commit/ce0340a519c32a5fab4f1c2ac3357105af812287))
+- **typography beta:** fix incorrect file ending for migration script via bin ([ef2f340](https://github.com/entur/design-system/commit/ef2f3408fdb1769a9292ef21224391668c916a30))
+- **typography beta:** fix typography beta variablebugs ([8848847](https://github.com/entur/design-system/commit/884884773f24b95ed09095e207cf2d25e913892f))
+- **typography beta:** migration script incorrectly migrates self closing tags without props ([cfc4199](https://github.com/entur/design-system/commit/cfc41998d9c7e48928574e4ae2be02de5c525c14))
+- **typography-beta:** add default top spacing on heading if its not first ([9565e7f](https://github.com/entur/design-system/commit/9565e7ffce62de1403b7a158b28b3aa3fb93a73d))
+
 ## [2.0.1](https://github.com/entur/design-system/compare/@entur/typography@2.0.0...@entur/typography@2.0.1) (2025-09-30)
 
 ### Bug Fixes
