@@ -52,7 +52,7 @@
     "build:beta": "vite build --config vite.config.beta.ts",
     "test": "jest",
     "lint": "eslint src",
-    "start": "vite build --config vite.config.main.ts --watch",
+    "start": "vite build --watch",
     "start:beta": "vite build --config vite.config.beta.ts --watch",
     "migrate": "./scripts/migrate-typography.mjs"
   },
