@@ -44,40 +44,64 @@
     line-height: var(--font-line-height-heading-xs);
   }
 
-  // Variants - No margin-top, extra margin-bottom when following text
+  // Variants
   &--title-1 {
     font-size: var(--font-size-heading-2xl);
     line-height: var(--font-line-height-heading-2xl);
     margin-bottom: var(--font-paragraph-spacing-heading-lg);
+
+    &:not(:first-child) {
+      margin-top: var(--font-paragraph-spacing-heading-lg);
+    }
   }
   &--title-2 {
     font-size: var(--font-size-heading-xl);
     line-height: var(--font-line-height-heading-xl);
     margin-bottom: var(--font-paragraph-spacing-heading-xl);
+
+    &:not(:first-child) {
+      margin-top: var(--font-paragraph-spacing-heading-xl);
+    }
   }
   &--subtitle-1 {
     font-size: var(--font-size-heading-lg);
     line-height: var(--font-line-height-heading-lg);
     margin-bottom: var(--font-paragraph-spacing-heading-lg);
+
+    &:not(:first-child) {
+      margin-top: var(--font-paragraph-spacing-heading-lg);
+    }
   }
   &--subtitle-2 {
     font-size: var(--font-size-heading-m);
     line-height: var(--font-line-height-heading-m);
     margin-bottom: var(--font-paragraph-spacing-heading-m);
+
+    &:not(:first-child) {
+      margin-top: var(--font-paragraph-spacing-heading-m);
+    }
   }
   &--section-1 {
     font-size: var(--font-size-heading-s);
     line-height: var(--font-line-height-heading-s);
     margin-bottom: var(--font-paragraph-spacing-heading-s);
+
+    &:not(:first-child) {
+      margin-top: var(--font-paragraph-spacing-heading-s);
+    }
   }
   &--section-2 {
     font-size: var(--font-size-heading-s);
     line-height: var(--font-line-height-heading-s);
     margin-bottom: var(--font-paragraph-spacing-heading-xs);
+
+    &:not(:first-child) {
+      margin-top: var(--font-paragraph-spacing-heading-xs);
+    }
   }
 
-  // Note: CSS cannot target previous siblings, so extra spacing must be added
-  // to text components or handled with CSS Grid container
+  // Note: Default top spacing is added when heading is not first child
+  // Text components with :has(+ .eds-heading) will add extra bottom margin when applicable
 
   // Spacing modifiers
   &--spacing-none {
