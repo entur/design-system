@@ -84,14 +84,13 @@ export const TravelTag: React.FC<TravelTagProps> = ({
 
   const TravelTagWithoutLabel: JSX.Element = (
     <div
-      className={classNames('eds-travel-tag', {
+      className={classNames(className, 'eds-travel-tag', {
         'eds-travel-tag--closable': isClosable,
         'eds-travel-tag--alert': alertIsSet,
         'eds-travel-tag--alert--error': alert === 'error',
         'eds-travel-tag--transport': transportIsSet,
         'eds-travel-tag--icon-and-text':
           numberOfChildren > 1 || (transportIsSet && numberOfChildren > 0),
-        className,
       })}
       style={{ ...dynamicCssVars, ...style }}
       aria-label={[ariaLabelForTranportIcon, children, alertIsSet ? alert : '']
