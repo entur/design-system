@@ -278,3 +278,36 @@ export function getAdjustedMaxDate(maxDate?: DateValue) {
   if (maxDate !== undefined) return lastMillisecondOfDay(maxDate);
   return undefined;
 }
+
+/**
+ * Determines which ARIA role should be applied to feedback text based on the variant.
+ * - Critical errors get role="alert" (aria-live="assertive") for immediate announcement
+ * - Warnings get role="status" (aria-live="polite") for non-interrupting announcement
+ * - Info and success messages get no role (visual only)
+ * @param variant The variant type
+ * @returns 'alert', 'status', or false (no role)
+ */
+export function shouldUseAriaAlert(
+  variant?:
+    | 'negative'
+    | 'warning'
+    | 'success'
+    | 'information'
+    | 'info'
+    | 'error',
+): 'alert' | 'status' | false {
+  if (!variant) return false;
+
+  // Critical errors: interrupt immediately
+  if (variant === 'negative' || variant === 'error') {
+    return 'alert';
+  }
+
+  // Warnings: announce politely when user is idle
+  if (variant === 'warning') {
+    return 'status';
+  }
+
+  // Info and success: no automatic announcement
+  return false;
+}

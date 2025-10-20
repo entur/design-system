@@ -17,7 +17,12 @@ import { useRandomId, VariantType } from '@entur/utils';
 
 import { FieldSegment } from '../shared/FieldSegment';
 import { TimePickerArrowButton } from './TimePickerArrowButton';
-import { convertValueToType, focusSegment, modulo } from '../shared/utils';
+import {
+  convertValueToType,
+  focusSegment,
+  modulo,
+  shouldUseAriaAlert,
+} from '../shared/utils';
 
 import './TimePicker.scss';
 
@@ -219,7 +224,7 @@ export const TimePicker = <TimeType extends TimeValue>({
             />
           </div>
         }
-        ariaAlertOnFeedback
+        ariaAlertOnFeedback={shouldUseAriaAlert(variant)}
         aria-describedby={timePickerId + 'description'}
         className={classNames('eds-timepicker', className, {
           'eds-timepicker--disabled': disabled,
