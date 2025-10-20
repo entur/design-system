@@ -5,6 +5,8 @@ import { GridContainer, GridItem } from '@entur/grid';
 import { GroupType } from '../types';
 import { CodeText } from '@entur/typography';
 
+import './Group.scss';
+
 type Props = {
   value: GroupType;
 };
@@ -16,7 +18,7 @@ export const GroupResolver = ({ value }: Props) => {
 
   if (content.length <= 2)
     return (
-      <GridContainer spacing="medium" rowSpacing="none">
+      <GridContainer spacing="medium" rowSpacing="none" className="page__group">
         {content.map((block, index) => (
           <GridItem
             key={(block as any)._key || `block-${index}`}
@@ -30,7 +32,7 @@ export const GroupResolver = ({ value }: Props) => {
     );
   if (content.length >= 3)
     return (
-      <GridContainer spacing="medium" rowSpacing="none">
+      <GridContainer spacing="medium" rowSpacing="none" className="page__group">
         {content.map((block, index) => (
           <GridItem
             key={(block as any)._key || `block-${index}`}
@@ -51,6 +53,7 @@ export const GroupFragment = graphql`
     _key
     _type
     content {
+      ...MediaFragment
       ...ImageAndTextFragment
       ...TextBlockFragment
       ...LinkFragment

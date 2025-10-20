@@ -21,6 +21,7 @@ const config: GatsbyConfig = {
         projectId: 'npa0lfls',
         dataset: 'production',
         watchMode: process.env.NODE_ENV === 'development',
+        tag: process.env.NODE_ENV === 'development' ? 'development' : undefined,
       },
     },
     'gatsby-plugin-image',

@@ -22,6 +22,7 @@ import {
 import * as icons from '@entur/icons';
 
 import { ImageAndTextResolver } from './image/ImageAndTextResolver';
+import { MediaResolver } from './media/MediaResolver';
 import { TextBlocksResolver } from './text/TextBlocksResolver';
 import { LinkResolver } from './text/LinkResolver';
 import { GroupResolver } from './layout/GroupResolver';
@@ -74,7 +75,10 @@ const createComponents = (
           switch (url.host) {
             case 'om.entur.no':
               return (
-                <Link as={GatsbyLink} to={url.pathname + url.search + url.hash}>
+                <Link
+                  as={GatsbyLink as any}
+                  to={url.pathname + url.search + url.hash}
+                >
                   {children}
                 </Link>
               );
@@ -95,6 +99,7 @@ const createComponents = (
   },
   types: {
     imageAndText: ImageAndTextResolver,
+    media: MediaResolver,
     textBlocks: ({ value }) => (
       <TextBlocksResolver value={value} npmPackage={npmPackage} />
     ),

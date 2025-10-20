@@ -1,9 +1,10 @@
-export {imageAndText} from './imageAndText'
-export {textBlocksType} from './textBlocks'
-export {LinkType} from './link'
-export {GroupType} from './group'
-export {codeExample} from './codeExample'
-export {doDontGroup} from './doDontGroup'
-export {doDontCard} from './doDontCard'
-export {propsTable} from './propsTable'
-export {copyableText} from './copyableText'
+export { imageAndText } from './imageAndText';
+export { textBlocksType } from './textBlocks';
+export { LinkType } from './link';
+export { GroupType } from './group';
+export { codeExample } from './codeExample';
+export { doDontGroup } from './doDontGroup';
+export { doDontCard } from './doDontCard';
+export { propsTable } from './propsTable';
+export { copyableText } from './copyableText';
+export { media } from './media';

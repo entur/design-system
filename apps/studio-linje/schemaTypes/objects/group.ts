@@ -1,5 +1,5 @@
-import {GridViewIcon} from '@entur/icons'
-import {defineType, defineField, defineArrayMember} from 'sanity'
+import { GridViewIcon } from '@entur/icons';
+import { defineType, defineField, defineArrayMember } from 'sanity';
 
 export const GroupType = defineType({
   name: 'group',
@@ -12,9 +12,10 @@ export const GroupType = defineType({
       title: 'Innhold',
       type: 'array',
       of: [
-        defineArrayMember({type: 'imageAndText'}),
-        defineArrayMember({type: 'textBlocks'}),
-        defineArrayMember({type: 'link'}),
+        defineArrayMember({ type: 'media', title: 'Tekst' }),
+        defineArrayMember({ type: 'textBlocks' }),
+        defineArrayMember({ type: 'link' }),
+        defineArrayMember({ type: 'imageAndText' }),
       ],
     }),
   ],
@@ -22,10 +23,31 @@ export const GroupType = defineType({
     select: {
       content: 'content',
     },
-    prepare({content}) {
+    prepare({ content }) {
+      const items = Array.isArray(content) ? content : [];
+      const titles = items
+        .map((item: any) => {
+          switch (item?._type) {
+            case 'textBlocks':
+              return item?.title || 'Tekstboks';
+            case 'link':
+              return item?.linkText || 'Lenke';
+            case 'imageAndText':
+              return item?.guidelineTitle || 'Bilde og tekst';
+            case 'media':
+              if (item?.mediaType === 'video') return item?.title || 'Video';
+              if (item?.mediaType === 'image')
+                return item?.imageDescription || 'Bilde';
+              return 'Media';
+            default:
+              return item?._type;
+          }
+        })
+        .filter(Boolean);
+
       return {
-        title: `Gruppe med: ${content.map((content) => content._type + ' ')}`,
-      }
+        title: titles.length > 0 ? `Gruppe: ${titles.join(', ')}` : 'Gruppe',
+      };
     },
   },
-})
+});

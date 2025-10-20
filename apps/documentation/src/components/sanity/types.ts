@@ -116,3 +116,30 @@ export type PageType = {
   isCategoryLandingPage?: boolean;
   content: PortableTextProps['value'];
 };
+
+export type MediaType =
+  | ({
+      _type: 'media';
+      mediaType: 'image';
+      image: SanityImageType | Parameters<typeof getGatsbyImageData>[0];
+      imageDescription?: string;
+      hideFromScreenreaders?: boolean;
+      showDownload?: boolean;
+      extraDownloadFiles?: DownloadFileType[];
+      imageDisplayPreset?:
+        | 'default'
+        | 'full-width-image'
+        | 'contain-logo-display'
+        | 'centered-image'
+        | 'contain-full-width';
+    } & Record<string, unknown>)
+  | ({
+      _type: 'media';
+      mediaType: 'video';
+      sourceType?: 'upload' | 'external';
+      file?: { asset?: { url?: string; mimeType?: string } };
+      externalUrl?: string;
+      poster?: { asset?: { url?: string } };
+      title?: string;
+      alt?: string;
+    } & Record<string, unknown>);
