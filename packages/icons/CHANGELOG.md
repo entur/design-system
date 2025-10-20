@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.2.0](https://github.com/entur/design-system/compare/@entur/icons@8.1.0...@entur/icons@8.2.0) (2025-10-20)
+
+### Features
+
+- **icons:** add googlepay icon ([4cda7d5](https://github.com/entur/design-system/commit/4cda7d50ad1fa04805f5b9af0a89525cb4e4a97a))
+
 # [8.1.0](https://github.com/entur/design-system/compare/@entur/icons@8.0.2...@entur/icons@8.1.0) (2025-09-30)
 
 ### Features

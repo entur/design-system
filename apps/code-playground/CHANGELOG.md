@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.3.5](https://github.com/entur/design-system/compare/@entur/code-playground@2.3.4...@entur/code-playground@2.3.5) (2025-10-20)
+
+**Note:** Version bump only for package @entur/code-playground
+
 ## [2.3.4](https://github.com/entur/design-system/compare/@entur/code-playground@2.3.3...@entur/code-playground@2.3.4) (2025-10-17)
 
 **Note:** Version bump only for package @entur/code-playground
