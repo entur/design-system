@@ -1,11 +1,14 @@
-import {AdditionalIcon, RowHeightMiddleIcon} from '@entur/icons'
-import {defineField, defineType} from 'sanity'
+import {
+  RowHeightMiddleIcon,
+  ValidationExclamationCircleIcon,
+} from '@entur/icons';
+import { defineField, defineType } from 'sanity';
 
 export const imageAndText = defineType({
   name: 'imageAndText',
-  title: 'Bilde og tekst',
+  title: '[Deprecated] Bilde og tekst',
   type: 'object',
-  icon: AdditionalIcon,
+  icon: ValidationExclamationCircleIcon,
   fields: [
     defineField({
       name: 'variant',
@@ -13,9 +16,9 @@ export const imageAndText = defineType({
       type: 'string',
       options: {
         list: [
-          {title: 'Standard', value: 'standard'},
-          {title: 'Fremhevet', value: 'contrast'},
-          {title: 'Retningslinje-kort', value: 'guideline'},
+          { title: 'Standard', value: 'standard' },
+          { title: 'Fremhevet', value: 'contrast' },
+          { title: 'Retningslinje-kort', value: 'guideline' },
         ],
         layout: 'radio',
         direction: 'horizontal',
@@ -28,14 +31,14 @@ export const imageAndText = defineType({
       type: 'string',
       options: {
         list: [
-          {title: 'Bilde først', value: 'image-first'},
-          {title: 'Tekst først', value: 'text-first'},
+          { title: 'Bilde først', value: 'image-first' },
+          { title: 'Tekst først', value: 'text-first' },
         ],
         layout: 'radio',
         direction: 'horizontal',
       },
       initialValue: 'image-first',
-      hidden: ({parent}) => parent?.variant === 'guideline',
+      hidden: ({ parent }) => parent?.variant === 'guideline',
     }),
     defineField({
       name: 'image',
@@ -46,7 +49,7 @@ export const imageAndText = defineType({
       name: 'imageDescription',
       title: 'Hva viser bildet?',
       type: 'string',
-      hidden: ({parent}) => parent?.hideFromScreenreaders,
+      hidden: ({ parent }) => parent?.hideFromScreenreaders,
     }),
     defineField({
       name: 'hideFromScreenreaders',
@@ -59,20 +62,20 @@ export const imageAndText = defineType({
       title: 'Vis mulighet for å laste ned bildet',
       type: 'boolean',
       initialValue: false,
-      hidden: ({parent}) => parent?.variant === 'guideline',
+      hidden: ({ parent }) => parent?.variant === 'guideline',
     }),
     defineField({
       name: 'extraDownloadFiles',
       title: 'Ekstra filer for nedlasting',
       type: 'array',
-      of: [{type: 'downloadFile'}],
-      hidden: ({parent}) => parent?.variant === 'guideline',
+      of: [{ type: 'downloadFile' }],
+      hidden: ({ parent }) => parent?.variant === 'guideline',
     }),
     defineField({
       name: 'guidelineTitle',
       title: 'Tittel',
       type: 'string',
-      hidden: ({parent}) => parent?.variant !== 'guideline',
+      hidden: ({ parent }) => parent?.variant !== 'guideline',
     }),
     defineField({
       name: 'text',
@@ -83,12 +86,12 @@ export const imageAndText = defineType({
         {
           type: 'block',
           styles: [
-            {title: 'Normal', value: 'normal'},
-            {title: 'H2', value: 'h2'},
-            {title: 'H3', value: 'h3'},
-            {title: 'H4', value: 'h4'},
-            {title: 'H5', value: 'h5'},
-            {title: 'Code', value: 'code'},
+            { title: 'Normal', value: 'normal' },
+            { title: 'H2', value: 'h2' },
+            { title: 'H3', value: 'h3' },
+            { title: 'H4', value: 'h4' },
+            { title: 'H5', value: 'h5' },
+            { title: 'Code', value: 'code' },
           ],
         },
       ],
@@ -99,17 +102,17 @@ export const imageAndText = defineType({
       type: 'string',
       options: {
         list: [
-          {title: 'Suksess (Do)', value: 'success'},
-          {title: 'Informasjon', value: 'information'},
-          {title: 'Advarsel', value: 'warning'},
-          {title: 'Feil (Dont)', value: 'negative'},
-          {title: 'Ingen ikon', value: 'none'},
+          { title: 'Suksess (Do)', value: 'success' },
+          { title: 'Informasjon', value: 'information' },
+          { title: 'Advarsel', value: 'warning' },
+          { title: 'Feil (Dont)', value: 'negative' },
+          { title: 'Ingen ikon', value: 'none' },
         ],
         layout: 'radio',
         direction: 'horizontal',
       },
       initialValue: 'success',
-      hidden: ({parent}) => parent?.variant !== 'guideline',
+      hidden: ({ parent }) => parent?.variant !== 'guideline',
     }),
     defineField({
       name: 'imageDisplayPreset',
@@ -117,31 +120,31 @@ export const imageAndText = defineType({
       type: 'string',
       options: {
         list: [
-          {title: 'Standard', value: 'default'},
-          {title: 'Full bredde', value: 'full-width-image'},
-          {title: 'Logo display', value: 'contain-logo-display'},
-          {title: 'Senteret bilde', value: 'centered-image'},
-          {title: 'Contain full bredde', value: 'contain-full-width'},
+          { title: 'Standard', value: 'default' },
+          { title: 'Full bredde', value: 'full-width-image' },
+          { title: 'Logo display', value: 'contain-logo-display' },
+          { title: 'Senteret bilde', value: 'centered-image' },
+          { title: 'Contain full bredde', value: 'contain-full-width' },
         ],
         layout: 'radio',
         direction: 'horizontal',
       },
       initialValue: 'default',
-      hidden: ({parent}) => parent?.variant === 'guideline',
+      hidden: ({ parent }) => parent?.variant === 'guideline',
     }),
     defineField({
       name: 'noPadding',
       title: 'Ingen padding på bildet',
       type: 'boolean',
       initialValue: false,
-      hidden: ({parent}) => parent?.variant !== 'guideline',
+      hidden: ({ parent }) => parent?.variant !== 'guideline',
     }),
     defineField({
       name: 'textInBox',
       title: 'Tekst i bilde-boks',
       type: 'boolean',
       initialValue: false,
-      hidden: ({parent}) => parent?.variant !== 'guideline',
+      hidden: ({ parent }) => parent?.variant !== 'guideline',
     }),
   ],
   preview: {
@@ -152,18 +155,20 @@ export const imageAndText = defineType({
       text: 'text',
       image: 'image',
     },
-    prepare({variant, dodontVariant, order, text, image}) {
+    prepare({ variant, dodontVariant, order, text, image }) {
       if (variant === 'dodont') {
         return {
           title: `Do/Dont kort (${dodontVariant || 'success'})`,
           media: image,
-        }
+        };
       }
       return {
         title:
-          order === 'image-first' ? 'Tekst og bilde (bilde først)' : 'Bilde og tekst (tekst først)',
+          order === 'image-first'
+            ? 'Tekst og bilde (bilde først)'
+            : 'Bilde og tekst (tekst først)',
         media: image,
-      }
+      };
     },
   },
-})
+});

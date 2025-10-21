@@ -1,24 +1,24 @@
-import * as icons from '@entur/icons'
-import {defineField, defineType} from 'sanity'
-import {isEnturIcon} from '../../utils'
+import * as icons from '@entur/icons';
+import { defineField, defineType } from 'sanity';
+import { isEnturIcon } from '../../utils';
 
 export const VARIANT_TYPES = [
-  {title: 'Standard', value: 'normal'},
-  {title: 'Informasjon', value: 'information'},
-  {title: 'Fremhevet', value: 'contrast'},
-  {title: 'Varselmelding', value: 'alert'},
-]
+  { title: 'Standard', value: 'normal' },
+  { title: 'Informasjon', value: 'information' },
+  { title: 'Fremhevet', value: 'contrast' },
+  { title: 'Varselmelding', value: 'alert' },
+];
 
 export const ALERT_VARIANTS = [
-  {title: 'Suksess', value: 'success'},
-  {title: 'Informasjon', value: 'information'},
-  {title: 'Advarsel', value: 'warning'},
-  {title: 'Feil', value: 'negative'},
-]
+  { title: 'Suksess', value: 'success' },
+  { title: 'Informasjon', value: 'information' },
+  { title: 'Advarsel', value: 'warning' },
+  { title: 'Feil', value: 'negative' },
+];
 
 export const textBlocksType = defineType({
   name: 'textBlocks',
-  title: 'Tekstboks',
+  title: 'Seksjon',
   type: 'object',
   icon: icons.RowHeightMiddleIcon,
   fields: [
@@ -31,13 +31,13 @@ export const textBlocksType = defineType({
         layout: 'dropdown',
       },
       initialValue: 'normal',
-      hidden: ({parent}) => parent !== undefined && !('_key' in parent),
+      hidden: ({ parent }) => parent !== undefined && !('_key' in parent),
     }),
     defineField({
       name: 'title',
       title: 'Tittel',
       type: 'string',
-      hidden: ({parent}) => !['alert'].includes(parent?.variant || ''),
+      hidden: ({ parent }) => !['alert'].includes(parent?.variant || ''),
     }),
     defineField({
       name: 'alertType',
@@ -48,7 +48,7 @@ export const textBlocksType = defineType({
         layout: 'dropdown',
       },
       initialValue: 'information',
-      hidden: ({parent}) => parent?.variant !== 'alert',
+      hidden: ({ parent }) => parent?.variant !== 'alert',
     }),
     defineField({
       name: 'items',
@@ -58,17 +58,17 @@ export const textBlocksType = defineType({
         {
           type: 'block',
           styles: [
-            {title: 'Normal', value: 'normal'},
-            {title: 'H2', value: 'h2'},
-            {title: 'H3', value: 'h3'},
-            {title: 'H4', value: 'h4'},
-            {title: 'H5', value: 'h5'},
+            { title: 'Normal', value: 'normal' },
+            { title: 'H2', value: 'h2' },
+            { title: 'H3', value: 'h3' },
+            { title: 'H4', value: 'h4' },
+            { title: 'H5', value: 'h5' },
           ],
           marks: {
             decorators: [
-              {title: 'Strong', value: 'strong'},
-              {title: 'Emphasis', value: 'em'},
-              {title: 'Code', value: 'code'},
+              { title: 'Strong', value: 'strong' },
+              { title: 'Emphasis', value: 'em' },
+              { title: 'Code', value: 'code' },
             ],
           },
           of: [
@@ -76,30 +76,38 @@ export const textBlocksType = defineType({
               name: 'inlineIcon',
               type: 'inlineIcon',
               components: {
-                inlineBlock: (props) => {
+                inlineBlock: props => {
                   return props.renderDefault({
                     ...props,
-                    renderPreview: ({value}: {value: {iconName: string}}) => {
-                      if (value.iconName === undefined || !isEnturIcon(value.iconName))
-                        return 'Velg ikon'
+                    renderPreview: ({
+                      value,
+                    }: {
+                      value: { iconName: string };
+                    }) => {
+                      if (
+                        value.iconName === undefined ||
+                        !isEnturIcon(value.iconName)
+                      )
+                        return 'Velg ikon';
 
-                      const Icon = icons[value.iconName]
-                      return <Icon style={{marginInline: '0.1rem'}} inline />
+                      const Icon = icons[value.iconName];
+                      return <Icon style={{ marginInline: '0.1rem' }} inline />;
                     },
-                  })
+                  });
                 },
               },
             },
           ],
         },
-        {type: 'imageAndText'},
-        {type: 'textBlocks'},
-        {type: 'link'},
-        {type: 'group'},
-        {type: 'codeExample'},
-        {type: 'doDontGroup'},
-        {type: 'propsTable'},
-        {type: 'copyableText'},
+        { type: 'media' },
+        { type: 'textBlocks' },
+        { type: 'link' },
+        { type: 'group' },
+        { type: 'codeExample' },
+        { type: 'doDontGroup' },
+        { type: 'propsTable' },
+        { type: 'copyableText' },
+        { type: 'imageAndText' },
       ],
     }),
   ],
@@ -110,25 +118,30 @@ export const textBlocksType = defineType({
       title: 'title',
       items: 'items',
     },
-    prepare: ({variant, alertType, title, items}) => {
-      const textBlockVariantTitle = VARIANT_TYPES.find((v) => v.value === variant)?.title || variant
+    prepare: ({ variant, alertType, title, items }) => {
+      const textBlockVariantTitle =
+        VARIANT_TYPES.find(v => v.value === variant)?.title || variant;
 
       const alertTypeTitle = alertType
-        ? ALERT_VARIANTS.find((a) => a.value === alertType)?.title
-        : null
+        ? ALERT_VARIANTS.find(a => a.value === alertType)?.title
+        : null;
 
       const textContent =
         items
           ?.map((item: any) => {
             if (item._type === 'block') {
-              return item.children?.map((child: any) => child.text).join('') || ''
+              return (
+                item.children?.map((child: any) => child.text).join('') || ''
+              );
             }
-            return item._type || ''
+            return item._type || '';
           })
-          .join(' ') || ''
+          .join(' ') || '';
 
       const truncatedText =
-        textContent.length > 50 ? textContent.substring(0, 50) + '...' : textContent
+        textContent.length > 50
+          ? textContent.substring(0, 50) + '...'
+          : textContent;
 
       const previewTitle = buildPreviewTitle({
         variant,
@@ -136,11 +149,13 @@ export const textBlocksType = defineType({
         alertTypeTitle,
         title,
         truncatedText,
-      })
+      });
 
-      const itemCount = items?.length || 0
+      const itemCount = items?.length || 0;
       const subtitle =
-        itemCount > 0 ? `${itemCount} element${itemCount === 1 ? '' : 'er'}` : 'Ingen innhold'
+        itemCount > 0
+          ? `${itemCount} element${itemCount === 1 ? '' : 'er'}`
+          : 'Ingen innhold';
 
       return {
         title: previewTitle,
@@ -151,10 +166,10 @@ export const textBlocksType = defineType({
             : variant === 'information'
             ? icons.ValidationInfoIcon
             : icons.RowHeightMiddleIcon,
-      }
+      };
     },
   },
-})
+});
 
 function buildPreviewTitle({
   variant,
@@ -163,25 +178,25 @@ function buildPreviewTitle({
   title,
   truncatedText,
 }: {
-  variant: string
-  textBlockVariantTitle: string
-  alertTypeTitle: string | null | undefined
-  title: string | null | undefined
-  truncatedText: string
+  variant: string;
+  textBlockVariantTitle: string;
+  alertTypeTitle: string | null | undefined;
+  title: string | null | undefined;
+  truncatedText: string;
 }) {
-  let previewTitle = `${textBlockVariantTitle}`
+  let previewTitle = `${textBlockVariantTitle}`;
 
   if (variant === 'alert') {
     if (title) {
-      previewTitle += `: ${title}`
+      previewTitle += `: ${title}`;
     } else if (alertTypeTitle) {
-      previewTitle += ` (${alertTypeTitle})`
+      previewTitle += ` (${alertTypeTitle})`;
     }
   }
 
   if (truncatedText) {
-    previewTitle += ` - ${truncatedText}`
+    previewTitle += ` - ${truncatedText}`;
   }
 
-  return previewTitle
+  return previewTitle;
 }
