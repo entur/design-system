@@ -1,27 +1,36 @@
 import React from 'react';
-import { Heading5, SubLabel } from '@entur/typography';
-import { useGetNpmVersion } from './useGetNpmVersion';
-
-import './NpmTag.scss';
+import { graphql, useStaticQuery } from 'gatsby';
 import { ActionChip } from '@entur/chip';
 import { SourceCodeIcon } from '@entur/icons';
 
-export const NpmTag: React.FC<{ packageName: string }> = ({ packageName }) => {
-  const query = useGetNpmVersion();
+import './NpmTag.scss';
 
-  const npmInfo = query.allNpmPackage.edges.filter(
-    (item: { node: { name: string; version: string } }) =>
-      item.node.name === packageName,
-  )[0].node;
+export const NpmTag: React.FC<{ packageName: string }> = ({ packageName }) => {
+  const packageVersions = useStaticQuery(graphql`
+    query {
+      allNpmPackageVersion {
+        nodes {
+          version
+          name
+        }
+      }
+    }
+  `)?.allNpmPackageVersion?.nodes as Array<{ name: string; version: string }>;
+
+  const currentPackage = packageVersions.find(
+    item =>
+      item.name === packageName ||
+      item.name === packageName.split('@entur/')?.[1],
+  );
 
   return (
     <a
       className="ds-npm-tag"
-      href={`https://www.npmjs.com/package/@entur/${npmInfo.name}`}
+      href={`https://www.npmjs.com/package/@entur/${currentPackage?.name}`}
     >
       <ActionChip>
         <SourceCodeIcon />
-        npm v{npmInfo.version}
+        npm v{currentPackage?.version}
       </ActionChip>
     </a>
   );

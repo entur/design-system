@@ -1,8 +1,10 @@
-import {defineField, defineType} from 'sanity'
+import { RowHeightDefaultIcon } from '@entur/icons';
+import { defineField, defineType } from 'sanity';
 
 export const propsTable = defineType({
   name: 'propsTable',
-  title: 'Props tabell',
+  title: 'Props-tabell',
+  icon: RowHeightDefaultIcon,
   type: 'object',
   fields: [
     defineField({
@@ -11,18 +13,19 @@ export const propsTable = defineType({
       type: 'string',
       description:
         'Navn på komponenten som props skal vises for (f.eks. "ActionChip, ChoiceChip, etc.")',
-      validation: (Rule) => Rule.required().error('Komponentnavn er et påkrevd felt'),
+      validation: Rule =>
+        Rule.required().error('Komponentnavn er et påkrevd felt'),
     }),
   ],
   preview: {
     select: {
       componentName: 'componentName',
     },
-    prepare({componentName}) {
+    prepare({ componentName }) {
       return {
-        title: 'Props tabell',
+        title: 'Props-tabell',
         subtitle: componentName,
-      }
+      };
     },
   },
-})
+});

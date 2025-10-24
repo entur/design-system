@@ -195,7 +195,7 @@ exports.sourceNodes = async ({ createNodeId, actions: { createNode } }) => {
         id: createNodeId(thePackage),
         version: result['dist-tags'].latest,
         internal: {
-          type: 'NpmPackage',
+          type: 'NpmPackageVersion',
           contentDigest: crypto
             .createHash('md5')
             .update(result['dist-tags'].latest)

@@ -11,7 +11,10 @@ export const PackageChangelog = ({ packageName }: { packageName: string }) => {
   const [modalTitle, setModalTitle] = useState('');
   const query = useGetChangelog();
   const changelog = query.allFile.nodes.filter(node => {
-    return node.name == packageName;
+    return (
+      node.name === packageName ||
+      node.name === packageName.split('@entur/')?.[1]
+    );
   });
   const changelogbody = changelog[0].children[0].body;
   return (

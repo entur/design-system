@@ -27,7 +27,7 @@ import { TextBlocksResolver } from './text/TextBlocksResolver';
 import { LinkResolver } from './text/LinkResolver';
 import { GroupResolver } from './layout/GroupResolver';
 import { CodeExampleResolver } from './CodeExampleResolver';
-import { DoDontResolver } from './DoDontResolver';
+import { GuidelineResolver } from './GuidelineResolver';
 import { PropsTableResolver } from './PropsTableResolver';
 import { CopyableTextResolver } from './CopyableTextResolver';
 import { InlineIcon } from './types';
@@ -106,7 +106,7 @@ const createComponents = (
     link: LinkResolver,
     group: GroupResolver,
     codeExample: CodeExampleResolver,
-    doDontGroup: DoDontResolver,
+    guideline: GuidelineResolver,
     propsTable: ({ value }) => (
       <PropsTableResolver value={value} npmPackage={npmPackage} />
     ),

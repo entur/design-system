@@ -329,7 +329,7 @@ const ListElement = (props: {
       </div>
       {result.npmPackage && (
         <Tag className="searchmodal__list__item__tag">
-          @entur/{result.npmPackage}
+          @entur/{result.npmPackage.split('@entur/')?.at(-1)}
         </Tag>
       )}
     </ListItem>
