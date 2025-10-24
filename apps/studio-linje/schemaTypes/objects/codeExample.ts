@@ -85,7 +85,7 @@ export const codeExample = defineType({
 
       const content = rawContent || fallbackContent;
       return {
-        title: title || `${displayType} eksempel`,
+        title: title || `${displayType}-eksempel`,
         subtitle: content.substring(0, 50) + (content.length > 50 ? '...' : ''),
       };
     },

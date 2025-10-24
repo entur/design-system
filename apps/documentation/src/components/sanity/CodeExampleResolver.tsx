@@ -3,6 +3,7 @@ import { CopyableText } from '@entur/alert';
 import { Heading3 } from '@entur/typography';
 import { CodeBlock } from '@components/Codeblock/CodeBlock';
 import Playground from '@components/Playground/Playground';
+import { InitialAdvancedProp } from '@components/Playground/playground-utils';
 
 // Import all props files dynamically
 import * as buttonProps from '@data/props/button-props';
@@ -24,10 +25,23 @@ type CodeContentField =
     }
   | string;
 
+type SanityPlaygroundProp = {
+  name: string;
+  type: 'icon' | 'boolean' | 'segmented' | 'string' | 'dropdown' | 'children';
+  label?: string;
+  defaultValue?: string;
+  options?: string[];
+};
+
 type CodeExampleType = {
   title?: string;
   codeDisplayType: 'playground' | 'plain' | 'copyable';
-  playgroundCode?: CodeContentField;
+  playgroundCode?: {
+    code?: string;
+    componentName?: string;
+    props: SanityPlaygroundProp[];
+    playgroundProps?: string;
+  };
   playgroundProps?: string;
   plainCode?: CodeContentField;
   codeLanguage?: string;
@@ -52,11 +66,34 @@ const propsMapping: Record<string, any> = {
   travelheader: travelProps.travelheader,
 };
 
-type Props = {
+const convertSanityPropsToPlayground = (
+  sanityProps: SanityPlaygroundProp[],
+): InitialAdvancedProp[] => {
+  return sanityProps.map(prop => {
+    const getDefaultValue = () => {
+      if (prop.type === 'boolean') {
+        if (prop.defaultValue === 'false') return false;
+        if (prop.defaultValue === 'true') return true;
+      }
+
+      return prop.defaultValue ?? '';
+    };
+
+    return {
+      name: prop.name,
+      type: prop.type,
+      defaultValue: getDefaultValue(),
+      label: prop.label,
+      options: prop.options,
+    };
+  });
+};
+
+type CodeExampleProps = {
   value: CodeExampleType;
 };
 
-export const CodeExampleResolver = ({ value }: Props) => {
+export const CodeExampleResolver = ({ value }: CodeExampleProps) => {
   const {
     title,
     codeDisplayType,
@@ -68,12 +105,19 @@ export const CodeExampleResolver = ({ value }: Props) => {
     copyableText,
   } = value;
 
-  // Get the correct props based on playgroundProps field
-  // If playgroundProps is empty string or undefined, pass undefined (no props)
-  const selectedProps =
-    playgroundProps && playgroundProps !== ''
-      ? propsMapping[playgroundProps]
-      : undefined;
+  // Determine which props to use: Sanity props take precedence over legacy props
+  let selectedProps: InitialAdvancedProp[] | undefined;
+
+  if (playgroundCode?.props && playgroundCode?.props?.length > 0) {
+    selectedProps = convertSanityPropsToPlayground(playgroundCode.props);
+  } else if (
+    playgroundCode?.playgroundProps &&
+    playgroundCode.playgroundProps !== ''
+  ) {
+    selectedProps = propsMapping[playgroundCode.playgroundProps];
+  } else if (playgroundProps && playgroundProps !== '') {
+    selectedProps = propsMapping[playgroundProps];
+  }
 
   const fallbackSnippet = `<${componentName}></${componentName}>`;
 
@@ -97,10 +141,7 @@ export const CodeExampleResolver = ({ value }: Props) => {
       {title && <Heading3>{title}</Heading3>}
 
       {codeDisplayType === 'playground' ? (
-        <Playground
-          props={selectedProps as any}
-          code={resolvedPlaygroundCode}
-        />
+        <Playground props={selectedProps} code={resolvedPlaygroundCode} />
       ) : codeDisplayType === 'copyable' && copyableText ? (
         <CopyableText
           textToCopy={copyableText.text}
