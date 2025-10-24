@@ -1,0 +1,18 @@
+@use '@entur/tokens/dist/styles.scss' as t;
+
+.eds-segmented-control {
+  .eds-label {
+    font-weight: t.$font-weights-heading;
+  }
+  .eds-segmented-control__choices {
+    position: relative;
+    display: flex;
+    margin-top: t.$space-extra-small2;
+    background: var(--components-form-segmentedcontrol-standard-background);
+    border-radius: t.$border-radiuses-large;
+
+    .eds-contrast & {
+      background: var(--components-form-segmentedcontrol-contrast-background);
+    }
+  }
+}

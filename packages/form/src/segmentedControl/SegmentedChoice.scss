@@ -1,0 +1,72 @@
+@use '@entur/tokens/dist/styles.scss' as t;
+
+.eds-segmented-choice {
+  all: unset;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 0px;
+
+  --background-color: var(--components-form-segmentedcontrol-standard-fill-unselected);
+
+  background-color: var(--background-color);
+  border-radius: t.$border-widths-large;
+  color: var(--components-form-segmentedcontrol-standard-text-unselected);
+  cursor: pointer;
+  font-size: t.$font-sizes-medium;
+  height: t.$space-large;
+  line-height: t.$line-heights-medium;
+  margin: t.$space-extra-small2;
+  outline-color: transparent;
+  padding: calc(#{t.$space-extra-small2}/ 2) t.$space-small;
+  text-align: center;
+  user-select: none;
+  transition: background-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+  vertical-align: middle;
+  text-decoration: none;
+
+  &--large {
+    font-size: t.$font-sizes-large;
+    height: t.$space-extra-large2;
+    line-height: t.$line-heights-extra-large;
+    padding: t.$space-extra-small t.$space-small;
+  }
+
+  .eds-contrast & {
+    --background-color: var(--components-form-segmentedcontrol-contrast-background);
+    color: var(--components-form-segmentedcontrol-contrast-text-unselected);
+  }
+
+  // Hover states
+  &:hover {
+    --background-color: var(--components-form-segmentedcontrol-standard-fill-hover);
+
+    .eds-contrast & {
+      --background-color: var(--components-form-segmentedcontrol-contrast-fill-hover);
+    }
+  }
+
+  // Selected state (when aria-checked="true")
+  &[aria-checked='true'] {
+    --background-color: var(--components-form-segmentedcontrol-standard-fill-selected);
+    color: var(--components-form-segmentedcontrol-standard-text-selected);
+    box-shadow: t.$shadows-box-shadow;
+
+    .eds-contrast & {
+      --background-color: var(--components-form-segmentedcontrol-contrast-fill-selected);
+      box-shadow: t.$shadows-box-shadow-contrast;
+      color: var(--components-form-segmentedcontrol-contrast-text-selected);
+    }
+  }
+
+  // Focus state (when focused via keyboard)
+  &:focus-visible {
+    outline: t.$outlines-focus;
+    outline-color: var(--basecolors-stroke-focus-standard);
+    outline-offset: t.$outline-offsets-focus;
+
+    .eds-contrast & {
+      outline-color: var(--basecolors-stroke-focus-contrast);
+    }
+  }
+}

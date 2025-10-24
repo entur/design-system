@@ -20,9 +20,7 @@
       }
     },
     "weight": {
-      "defaultValue": {
-        "value": "medium"
-      },
+      "defaultValue": null,
       "description": "Fontvekt",
       "name": "weight",
       "declarations": [
