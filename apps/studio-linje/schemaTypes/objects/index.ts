@@ -5,5 +5,4 @@ export { GroupType } from './group';
 export { codeExample } from './codeExample';
 export { guideline } from './guideline';
 export { propsTable } from './propsTable';
-export { copyableText } from './copyableText';
 export { media } from './media';

@@ -29,7 +29,6 @@ import { GroupResolver } from './layout/GroupResolver';
 import { CodeExampleResolver } from './CodeExampleResolver';
 import { GuidelineResolver } from './GuidelineResolver';
 import { PropsTableResolver } from './PropsTableResolver';
-import { CopyableTextResolver } from './CopyableTextResolver';
 import { InlineIcon } from './types';
 import { isEnturIcon } from 'src/utils/utils';
 
@@ -110,7 +109,6 @@ const createComponents = (
     propsTable: ({ value }) => (
       <PropsTableResolver value={value} npmPackage={npmPackage} />
     ),
-    copyableText: CopyableTextResolver,
     inlineIcon: ({ value }: { value: InlineIcon }) => {
       if (value.iconName === undefined || !isEnturIcon(value.iconName))
         return null;

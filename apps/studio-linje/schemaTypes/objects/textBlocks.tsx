@@ -106,7 +106,6 @@ export const textBlocksType = defineType({
         { type: 'guideline' },
         { type: 'codeExample' },
         { type: 'propsTable' },
-        { type: 'copyableText' },
         { type: 'imageAndText' },
       ],
     }),

@@ -1,5 +1,7 @@
 import React from 'react';
-import { Heading3, PreformattedText } from '@entur/typography';
+import { CopyableText } from '@entur/alert';
+import { Heading3 } from '@entur/typography';
+import { CodeBlock } from '@components/Codeblock/CodeBlock';
 import Playground from '@components/Playground/Playground';
 
 // Import all props files dynamically
@@ -10,14 +12,27 @@ import * as navigationProps from '@data/props/navigation-props';
 import * as skjemaProps from '@data/props/skjema-props';
 import * as travelProps from '@data/props/travel-props';
 
+type CopyableTextField = {
+  text: string;
+  successMessage?: string;
+};
+
+type CodeContentField =
+  | {
+      code: string;
+      language?: string;
+    }
+  | string;
+
 type CodeExampleType = {
   title?: string;
-  codeDisplayType: 'playground' | 'plain';
-  playgroundCode?: string;
+  codeDisplayType: 'playground' | 'plain' | 'copyable';
+  playgroundCode?: CodeContentField;
   playgroundProps?: string;
-  plainCode?: string;
+  plainCode?: CodeContentField;
   codeLanguage?: string;
   componentName?: string;
+  copyableText?: CopyableTextField;
 };
 
 // Props mapping object
@@ -48,8 +63,9 @@ export const CodeExampleResolver = ({ value }: Props) => {
     playgroundCode,
     playgroundProps,
     plainCode,
-    codeLanguage = 'jsx',
+    codeLanguage,
     componentName = 'Component',
+    copyableText,
   } = value;
 
   // Get the correct props based on playgroundProps field
@@ -59,6 +75,23 @@ export const CodeExampleResolver = ({ value }: Props) => {
       ? propsMapping[playgroundProps]
       : undefined;
 
+  const fallbackSnippet = `<${componentName}></${componentName}>`;
+
+  const resolvedPlaygroundCode =
+    typeof playgroundCode === 'string'
+      ? playgroundCode || fallbackSnippet
+      : playgroundCode?.code || fallbackSnippet;
+
+  const resolvedPlainCode =
+    typeof plainCode === 'string'
+      ? plainCode || fallbackSnippet
+      : plainCode?.code || fallbackSnippet;
+
+  const resolvedLanguage =
+    typeof plainCode === 'string'
+      ? codeLanguage || 'jsx'
+      : plainCode?.language || codeLanguage || 'jsx';
+
   return (
     <div style={{ margin: '2rem 0' }}>
       {title && <Heading3>{title}</Heading3>}
@@ -66,12 +99,19 @@ export const CodeExampleResolver = ({ value }: Props) => {
       {codeDisplayType === 'playground' ? (
         <Playground
           props={selectedProps as any}
-          code={playgroundCode ?? `<${componentName}></${componentName}>`}
+          code={resolvedPlaygroundCode}
         />
+      ) : codeDisplayType === 'copyable' && copyableText ? (
+        <CopyableText
+          textToCopy={copyableText.text}
+          successMessage={copyableText.successMessage}
+        >
+          {copyableText.text}
+        </CopyableText>
       ) : (
-        <PreformattedText>
-          {plainCode || `<${componentName}></${componentName}>`}
-        </PreformattedText>
+        <CodeBlock language={resolvedLanguage} wrapLongLines>
+          {resolvedPlainCode}
+        </CodeBlock>
       )}
     </div>
   );

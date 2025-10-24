@@ -2,6 +2,7 @@
 
 .code-block {
   margin-bottom: tokens.$space-extra-large;
+  overflow: hidden;
 
   .eds-expandable-panel {
     position: relative;
@@ -16,6 +17,42 @@
       margin-top: tokens.$space-default;
       margin-bottom: 0;
       z-index: 1;
+    }
+  }
+  pre {
+    border-radius: tokens.$border-radiuses-large;
+    // Styling to keep the scrollbar consistent across browsers, including Safari.
+    --scrollbar-thumb-color: lightgrey;
+    --scrollbar-thumb-hover-color: grey;
+    scrollbar-color: var(--scrollbar-thumb-color) transparent;
+
+    &:hover {
+      --scrollbar-thumb-color: var(--scrollbar-thumb-hover-color);
+      scrollbar-color: var(--scrollbar-thumb-hover-color) transparent;
+    }
+
+    &::-webkit-scrollbar {
+      width: 1rem;
+      height: 1rem;
+      background-color: transparent;
+    }
+
+    &::-webkit-scrollbar-track {
+      margin-inline: tokens.$space-extra-small2;
+      background-color: transparent;
+      border-radius: 1rem;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--scrollbar-thumb-color);
+      border-radius: 0.5rem;
+      border: tokens.$space-extra-small solid transparent;
+      background-clip: content-box;
+    }
+
+    &:hover::-webkit-scrollbar-thumb,
+    &::-webkit-scrollbar-thumb:hover {
+      background-color: var(--scrollbar-thumb-hover-color);
     }
   }
   code {

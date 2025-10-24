@@ -16,7 +16,7 @@ export type codeBlockProps = {
   hideLineNumbers?: boolean;
   asExpandable?: boolean;
   expandableLabel?: string;
-  defaultOpen: boolean;
+  defaultOpen?: boolean;
   style?: CSSProperties;
 };
 
@@ -58,6 +58,7 @@ export const CodeBlock = ({
           customStyle={{
             marginTop: 0,
             zIndex: 0,
+            paddingBlockEnd: 8,
           }}
           {...rest}
         >
