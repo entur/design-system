@@ -2,6 +2,14 @@ import path from 'path';
 import { GatsbyConfig, graphql } from 'gatsby';
 import { getSanitizedPath } from './src/utils/utils';
 
+const isGitHubPullRequest =
+  process.env.GITHUB_EVENT_NAME === 'pull_request' ||
+  Boolean(process.env.GITHUB_HEAD_REF) ||
+  (process.env.GITHUB_REF ?? '').startsWith('refs/pull/');
+
+const shouldUseDevelopmentGraphqlTag =
+  process.env.NODE_ENV === 'development' || isGitHubPullRequest;
+
 const config: GatsbyConfig = {
   graphqlTypegen: {
     typesOutputPath: 'src/utils/gatsby/gatsby-types.d.ts',
@@ -21,7 +29,7 @@ const config: GatsbyConfig = {
         projectId: 'npa0lfls',
         dataset: 'production',
         watchMode: process.env.NODE_ENV === 'development',
-        tag: process.env.NODE_ENV === 'development' ? 'development' : undefined,
+        graphqlTag: shouldUseDevelopmentGraphqlTag ? 'development' : undefined,
       },
     },
     'gatsby-plugin-image',
