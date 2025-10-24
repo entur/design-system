@@ -77,7 +77,7 @@
       }
     }
 
-    &:hover(:not(:has(input:disabled))) {
+    &:hover:not(:has(input:disabled)) {
       input + .eds-checkbox__icon {
         border-color: var(--components-form-checkbox-standard-border);
         background-color: var(--components-form-checkbox-standard-fill-hover);
@@ -98,7 +98,7 @@
         }
       }
     }
-    &:active(:not(:has(input:disabled))) {
+    &:active:not(:has(input:disabled)) {
       input:checked + .eds-checkbox__icon,
       input:indeterminate + .eds-checkbox__icon {
         background-color: var(--components-form-checkbox-standard-fill-selected);
