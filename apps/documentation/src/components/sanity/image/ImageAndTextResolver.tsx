@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import { ImageDisplay } from '@components/Media/ImageDisplay';
 import { DoDontCard } from '@components/Cards/DoDont';
 import { PortableText } from '../PortableText';
+import { SANITY_PROJECT } from 'src/utils/constants';
 import { ImageAndTextType } from '../types';
 
 import './ImageAndText.scss';
@@ -41,7 +42,7 @@ export const ImageAndTextResolver = ({ value }: Props) => {
           // We therefore need to create a GatsbyImage from the resolved data.
           image,
           {},
-          { projectId: 'npa0lfls', dataset: 'production' },
+          SANITY_PROJECT,
         );
   if (imageData === null) return null;
 

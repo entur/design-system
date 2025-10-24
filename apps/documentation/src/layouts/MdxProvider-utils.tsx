@@ -54,6 +54,7 @@ import {
   BulletBadge,
 } from '@entur/layout';
 import { Tabs, TabList, Tab, TabPanels, TabPanel } from '@entur/tab';
+import { CodeBlock } from '@components/Codeblock/CodeBlock';
 
 const preToCodeBlock = (preProps: any) => {
   if (
@@ -188,6 +189,7 @@ const components = {
     }
     return <Text as="code" variant="code-text" {...props} />;
   },
+  CodeBlock,
 };
 
 export default components;

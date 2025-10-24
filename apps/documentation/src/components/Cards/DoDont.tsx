@@ -40,10 +40,10 @@ type DoDontCardProps = {
   className?: string;
   title?: string;
   src?: string;
-  imgSource?: IGatsbyImageData;
-  variant: VariantType | 'none';
-  noPadding: boolean;
-  textInBox: boolean;
+  imgSource?: IGatsbyImageData | null;
+  variant?: VariantType | 'none';
+  noPadding?: boolean;
+  textInBox?: boolean;
   'aria-hidden'?: boolean;
 };
 
@@ -77,6 +77,8 @@ export const DoDontCard = ({
     </div>
   );
 
+  const hasImage = src !== undefined || !!imgSource;
+
   return (
     <article
       className={classNames(
@@ -93,7 +95,7 @@ export const DoDontCard = ({
         {src !== undefined && (
           <img src={src} alt={alt} className="do-dont-card__box__image" />
         )}
-        {imgSource !== undefined && (
+        {imgSource && (
           <GatsbyImage
             image={imgSource}
             alt={alt}
@@ -101,7 +103,7 @@ export const DoDontCard = ({
             aria-hidden={ariaHidden}
           />
         )}
-        {!src && !imgSource && textInBox && textContent}
+        {!hasImage && textInBox && textContent}
       </div>
       {!textInBox && textContent}
     </article>

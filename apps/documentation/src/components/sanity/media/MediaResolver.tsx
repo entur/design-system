@@ -3,6 +3,7 @@ import { graphql } from 'gatsby';
 import { getGatsbyImageData } from 'gatsby-source-sanity';
 import { ImageDisplay } from '@components/Media/ImageDisplay';
 import { MediaType } from '../types';
+import { SANITY_PROJECT } from 'src/utils/constants';
 
 type Props = {
   value: MediaType;
@@ -29,7 +30,7 @@ export const MediaResolver = ({ value }: Props) => {
             // @ts-expect-error Images inserted inline from Sanity do not contain gatsbyImageData when deeply resolved
             image,
             {},
-            { projectId: 'npa0lfls', dataset: 'production' },
+            SANITY_PROJECT,
           );
     if (imageData === null) return null;
 

@@ -1,4 +1,4 @@
-import {defineField, defineType} from 'sanity'
+import { defineField, defineType } from 'sanity';
 
 export const copyableText = defineType({
   name: 'copyableText',
@@ -11,7 +11,6 @@ export const copyableText = defineType({
       type: 'text',
       rows: 3,
       description: 'Teksten som skal være kopierbar',
-      validation: (Rule) => Rule.required().error('Tekst er et påkrevd felt'),
     }),
     defineField({
       name: 'successMessage',
@@ -25,11 +24,11 @@ export const copyableText = defineType({
     select: {
       text: 'text',
     },
-    prepare({text}) {
-      const displayText = text?.substring(0, 50) || 'Ingen tekst'
+    prepare({ text }) {
+      const displayText = text?.substring(0, 50) || 'Ingen tekst';
       return {
         subtitle: `${displayText}${text?.length > 50 ? '...' : ''}`,
-      }
+      };
     },
   },
-})
+});

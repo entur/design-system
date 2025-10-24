@@ -57,6 +57,7 @@ export const GroupFragment = graphql`
       ...ImageAndTextFragment
       ...TextBlockFragment
       ...LinkFragment
+      ...GuidelineFragment
     }
   }
 `;

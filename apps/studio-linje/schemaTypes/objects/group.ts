@@ -12,9 +12,10 @@ export const GroupType = defineType({
       title: 'Innhold',
       type: 'array',
       of: [
-        defineArrayMember({ type: 'media', title: 'Tekst' }),
-        defineArrayMember({ type: 'textBlocks' }),
+        defineArrayMember({ type: 'media' }),
+        defineArrayMember({ type: 'textBlocks', title: 'Tekstboks' }),
         defineArrayMember({ type: 'link' }),
+        defineArrayMember({ type: 'guideline' }),
         defineArrayMember({ type: 'imageAndText' }),
       ],
     }),
@@ -34,6 +35,8 @@ export const GroupType = defineType({
               return item?.linkText || 'Lenke';
             case 'imageAndText':
               return item?.guidelineTitle || 'Bilde og tekst';
+            case 'guideline':
+              return item?.title || 'Retningslinje';
             case 'media':
               if (item?.mediaType === 'video') return item?.title || 'Video';
               if (item?.mediaType === 'image')
