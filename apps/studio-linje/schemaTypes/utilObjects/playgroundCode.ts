@@ -13,11 +13,18 @@ export const playgroundCode = defineType({
       description: 'Kode som vises i demoen (JSX)',
     }),
     defineField({
+      name: 'props',
+      title: 'Props',
+      type: 'array',
+      of: [{ type: 'playgroundProp' }],
+      description: 'Konfigurer props som skal være tilgjengelige i playground',
+    }),
+    defineField({
       name: 'playgroundProps',
-      title: 'Playground‑props',
+      title: 'Legacy Playground‑props',
       type: 'string',
       description:
-        'Velg hvilke props som skal være tilgjengelige i playground (valgfritt)',
+        'Legacy: Velg hvilke props som skal være tilgjengelige i playground (valgfritt)',
       options: {
         list: [
           { title: 'Ingen props (kun kode)', value: '' },
@@ -36,6 +43,8 @@ export const playgroundCode = defineType({
           { title: 'Travel header', value: 'travelheader' },
         ],
       },
+      initialValue: '',
+      hidden: ({ parent }) => parent?.props && parent.props.length > 0,
     }),
     defineField({
       name: 'componentName',
