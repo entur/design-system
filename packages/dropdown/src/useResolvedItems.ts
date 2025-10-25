@@ -23,26 +23,28 @@ export const useResolvedItems = <ValueType extends NonNullable<any>>(
 } => {
   const itemsIsAFunction = typeof itemsOrItemsResolver === 'function';
 
-  const [items, setItems] = React.useState<DropdownItemType<ValueType>[]>(
-    itemsIsAFunction ? [] : itemsOrItemsResolver,
-  );
+  // Only maintain state for function-based items - static items are used directly
+  const [resolvedItems, setResolvedItems] = React.useState<
+    DropdownItemType<ValueType>[]
+  >([]);
   const [loading, setLoading] = React.useState(false);
 
   const abortControllerRef = React.useRef<AbortController>(
     new AbortController(),
   );
 
-  // We normalize the itemsResolver argument to an async function, so we
-  // can use it without thinking about the differences later
+  // Only create resolver for function-based items
   const itemsResolver = React.useMemo(() => {
-    if (itemsIsAFunction)
+    if (itemsIsAFunction) {
       return itemsOrItemsResolver as AsyncDropdownItemType<ValueType>;
-    return () =>
-      Promise.resolve(itemsOrItemsResolver as DropdownItemType<ValueType>[]);
+    }
+    return null;
   }, [itemsOrItemsResolver, itemsIsAFunction]);
 
-  // This should be called whenever the input value changes
+  // This should be called whenever the input value changes (only for function-based items)
   const updateItems = async (inputValue?: string) => {
+    if (!itemsResolver) return; // Only works with function-based items
+
     // The abortController handles cleanup of the previous request and unmounting
     if (abortControllerRef?.current) abortControllerRef?.current?.abort();
     const abortController = new AbortController();
@@ -51,7 +53,7 @@ export const useResolvedItems = <ValueType extends NonNullable<any>>(
     setLoading(true);
 
     try {
-      const resolvedItems = await itemsResolver(
+      const fetchedItems = await itemsResolver(
         inputValue ?? '',
         abortControllerRef,
       );
@@ -67,8 +69,7 @@ export const useResolvedItems = <ValueType extends NonNullable<any>>(
         return;
       }
 
-      setLoading(false);
-      setItems(resolvedItems);
+      setResolvedItems(fetchedItems);
     } catch (error) {
       if (
         error &&
@@ -83,10 +84,17 @@ export const useResolvedItems = <ValueType extends NonNullable<any>>(
         'The following error was received but not handled inside Entur Designsystems useResolvedItems hook:',
       );
       throw error;
+    } finally {
+      setLoading(false);
     }
   };
 
   const debouncedFetchItems = useDebounce(updateItems, debounceTimeout);
+
+  // Use static items directly or resolved items from state
+  const items = itemsIsAFunction
+    ? resolvedItems
+    : (itemsOrItemsResolver as DropdownItemType<ValueType>[]);
   const normalizedItems = useNormalizedItems(items);
 
   React.useEffect(() => {
