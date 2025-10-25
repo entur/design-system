@@ -241,6 +241,21 @@
         "name": "VariantType | \"error\" | \"info\" | undefined"
       }
     },
+    "onValidate": {
+      "defaultValue": null,
+      "description": "Callback-funksjon for når valideringen til datovelgeren endrer seg",
+      "name": "onValidate",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/datepicker/src/DatePicker/DateField.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "((isValid?: boolean | undefined) => void) | undefined"
+      }
+    },
     "disabled": {
       "defaultValue": null,
       "description": "",
@@ -333,6 +348,23 @@
       "required": false,
       "type": {
         "name": "string | undefined"
+      }
+    },
+    "showOutsideMonth": {
+      "defaultValue": {
+        "value": false
+      },
+      "description": "Vis datoer som ligger utenfor den viste måneden.\n@example Hvis uken starter på onsdag vises de to siste datoene i forrige måned i ruten til mandagen og tirsdagen før.",
+      "name": "showOutsideMonth",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/datepicker/src/DatePicker/DatePicker.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "boolean | undefined"
       }
     },
     "disableModal": {

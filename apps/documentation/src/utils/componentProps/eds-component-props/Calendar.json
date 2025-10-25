@@ -177,6 +177,23 @@
         "name": "string | undefined"
       }
     },
+    "showOutsideMonth": {
+      "defaultValue": {
+        "value": false
+      },
+      "description": "Vis datoer som ligger utenfor den viste måneden.\n@example Hvis uken starter på onsdag vises de to siste datoene i forrige måned i ruten til mandagen og tirsdagen før.",
+      "name": "showOutsideMonth",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/datepicker/src/DatePicker/Calendar.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "boolean | undefined"
+      }
+    },
     "classNameForDate": {
       "defaultValue": {
         "value": "undefined"

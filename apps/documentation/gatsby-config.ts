@@ -29,7 +29,7 @@ const config: GatsbyConfig = {
         projectId: 'npa0lfls',
         dataset: 'production',
         watchMode: process.env.NODE_ENV === 'development',
-        graphqlTag: shouldUseDevelopmentGraphqlTag ? 'development' : undefined,
+        graphqlTag: shouldUseDevelopmentGraphqlTag ? 'development' : 'default',
       },
     },
     'gatsby-plugin-image',
