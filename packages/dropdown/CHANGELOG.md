@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.0.0](https://github.com/entur/design-system/compare/@entur/dropdown@7.3.11...@entur/dropdown@8.0.0) (2025-10-27)
+
+### Bug Fixes
+
+- **dropdown/dropdown:** dont clear selection on escape when clearable is set to false ([1d76295](https://github.com/entur/design-system/commit/1d76295a473a008a3934b4b126853d1ec1fbe9ab))
+- **dropdown/dropdown:** improve internal dropdown state management ([21f0fce](https://github.com/entur/design-system/commit/21f0fce199b3a492b6c065a20d71cdd09cc2279b))
+- **dropdown/multiselect:** improve internal multiselect state managment ([9bd3f07](https://github.com/entur/design-system/commit/9bd3f07c226f54b72d5b6a094b7bd77b37cbcbea))
+- **dropdown/searchable dropdown:** dont clear selection on escape when clearable is set to false ([01b2708](https://github.com/entur/design-system/commit/01b27088c1fe6538b93811e43589eb28f67f815a))
+- **dropdown/searchable dropdown:** improve internal serachable dropdown state management ([a009122](https://github.com/entur/design-system/commit/a0091220fb6759829c9ab7c35c770304b6b50189))
+- **dropdown/searchabledropdown:** fix selectOnTab bug ([15e6052](https://github.com/entur/design-system/commit/15e6052966ba92fe929c1c4c4c0e9fd331257c7a))
+- **dropdown:** fix list not updating when `items` prop is updated ([052ddf3](https://github.com/entur/design-system/commit/052ddf32c8590423ae3b07bf0e498e64f20e6b5e))
+- **dropdown:** fix maximum update depth bug in MultiSelect ([86c8dbf](https://github.com/entur/design-system/commit/86c8dbf8192c955cd6ff616e6c2ace6177bd5412))
+
+### BREAKING CHANGES
+
+- **dropdown/dropdown:** `selectOnBlur` has been removed
+- **dropdown/multiselect:** `selectOnBlur` has been removed
+- **dropdown/searchable dropdown:** `selectOnBlur` has been removed
+
 ## [7.3.11](https://github.com/entur/design-system/compare/@entur/dropdown@7.3.10...@entur/dropdown@7.3.11) (2025-10-27)
 
 **Note:** Version bump only for package @entur/dropdown
