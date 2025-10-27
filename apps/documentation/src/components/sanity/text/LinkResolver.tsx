@@ -19,7 +19,7 @@ export const LinkResolver = ({ value }: Props) => {
     iconName,
     downloadFile,
   } = value;
-  const Icon = getIconByName(iconName);
+  const IconComponent = getIconByName(iconName);
 
   // Determine the href based on linkAddressType
   const href =
@@ -41,7 +41,7 @@ export const LinkResolver = ({ value }: Props) => {
         <NavigationCard
           compact
           title={linkText ?? ''}
-          titleIcon={Icon ? <Icon /> : undefined}
+          titleIcon={IconComponent ? <IconComponent /> : undefined}
           style={{ maxWidth: '22.5rem' }}
           {...linkProps}
         ></NavigationCard>
@@ -54,7 +54,7 @@ export const LinkResolver = ({ value }: Props) => {
           style={{ marginBlockEnd: '2rem ' }}
         >
           {linkText}
-          {Icon ? <Icon /> : undefined}
+          {IconComponent ? <IconComponent /> : undefined}
         </PrimaryButton>
       );
     case 'button-secondary':
@@ -65,7 +65,7 @@ export const LinkResolver = ({ value }: Props) => {
           style={{ marginBlockEnd: '2rem ' }}
         >
           {linkText}
-          {Icon ? <Icon /> : undefined}
+          {IconComponent ? <IconComponent /> : undefined}
         </SecondaryButton>
       );
     case 'button-secondary-small':
@@ -77,14 +77,14 @@ export const LinkResolver = ({ value }: Props) => {
           style={{ marginBlockEnd: '2rem ' }}
         >
           {linkText}
-          {Icon ? <Icon /> : undefined}
+          {IconComponent ? <IconComponent /> : undefined}
         </SecondaryButton>
       );
     default:
       return (
         <LinkText {...linkProps}>
           {linkText}
-          {Icon ? <Icon /> : undefined}
+          {IconComponent ? <IconComponent /> : undefined}
         </LinkText>
       );
   }

@@ -118,9 +118,11 @@ const createComponents = (
       if (value.iconName === undefined || !isEnturIcon(value.iconName))
         return null;
 
-      const Icon = icons[value.iconName];
+      const IconComponent = icons[value.iconName as keyof typeof icons];
+      if (!IconComponent) return null;
+
       return (
-        <Icon
+        <IconComponent
           inline
           aria-hidden={value.hideFromScreenreaders}
           aria-label={value.iconDescription}
