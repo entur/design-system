@@ -5,6 +5,7 @@
   box-sizing: border-box;
   max-height: 20rem;
   overflow-y: auto;
+  z-index: t.$z-indexes-popover;
   padding: 0;
   margin: 0;
   list-style: none;
@@ -12,7 +13,9 @@
   border-radius: t.$border-radiuses-medium;
   box-shadow: t.$shadows-box-shadow;
   cursor: default;
-  z-index: t.$z-indexes-popover;
+  // The list should not be wider than the viewport
+  width: min(95dvw, 100%);
+  max-height: var(--list-max-height, 15rem);
 
   &:focus {
     outline: none;

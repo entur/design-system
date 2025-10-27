@@ -1,5 +1,11 @@
 /* eslint-disable  no-warning-comments */
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from 'react';
 import {
   UseComboboxState,
   UseComboboxStateChangeOptions,
@@ -57,7 +63,7 @@ export type SearchableDropdownProps<ValueType> = DropdownProps<ValueType> & {
   /** Callback som kalles når brukeren går ut av input-feltet */
   onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
   /** Callback når komponenten klikkes */
-  onClick?: (event: React.MouseEvent<HTMLDivElement>) => void;
+  onClick?: (event: React.MouseEvent<HTMLElement>) => void;
   /** Callback når en tast trykkes */
   onKeyDown?: (event: React.KeyboardEvent<HTMLDivElement>) => void;
   /** Callback når komponenten får fokus */
@@ -260,13 +266,11 @@ export const SearchableDropdown = React.forwardRef(
         offset(space.extraSmall2),
         shift({ padding: space.extraSmall }),
         size({
-          apply({ rects, elements, availableHeight }) {
-            Object.assign(elements.floating.style, {
-              width: `${rects.reference.width}px`,
-              // Floating will flip when smaller than 10*16 px
-              // and never exceed 20*16 px.
-              maxHeight: `${clamp(10 * 16, availableHeight, 20 * 16)}px`,
-            });
+          apply({ elements, availableHeight }) {
+            elements.floating.style.setProperty(
+              '--list-max-height',
+              `${clamp(10 * 16, availableHeight, 20 * 16)}px`,
+            );
           },
         }),
         flip({ fallbackStrategy: 'initialPlacement' }),
@@ -276,8 +280,8 @@ export const SearchableDropdown = React.forwardRef(
     // Update floating-ui position on scroll etc. Floating-ui's autoupdate is usually used inside
     // the useFloating hook but this requires the floating element to be conditionally rendered.
     // Downshift doesn't work correctly when conditionally rendered since props and refs aren't correctly
-    // spread to the component. We therefor use this useEffect to update position. See https://floating-ui.com/docs/autoupdate#usage
-    useEffect(() => {
+    // spread to the component. We therefor use this useLayoutEffect to update position. See https://floating-ui.com/docs/autoupdate#usage
+    useLayoutEffect(() => {
       if (isOpen && refs.reference.current && refs.floating.current) {
         return autoUpdate(
           refs.reference.current,
@@ -308,10 +312,8 @@ export const SearchableDropdown = React.forwardRef(
         labelId={getLabelProps().id}
         labelProps={getLabelProps()}
         labelTooltip={labelTooltip}
-        onClick={(e: React.MouseEvent) => {
-          if (e.target === e.currentTarget) {
-            getInputProps()?.onClick?.(e);
-          }
+        onClick={(e: React.MouseEvent<HTMLElement>) => {
+          if (e.target === e.currentTarget) getInputProps()?.onClick?.(e);
           onClick?.(e);
         }}
         onKeyDown={onKeyDown}
@@ -328,17 +330,19 @@ export const SearchableDropdown = React.forwardRef(
             ariaLabelSelectedItem={ariaLabelSelectedItem}
             floatingStyles={floatingStyles}
             getItemProps={getItemProps}
-            getMenuProps={getMenuProps}
             highlightedIndex={highlightedIndex}
             isOpen={isOpen}
             listItems={listItems}
-            style={listStyle}
-            setListRef={refs.setFloating}
             loading={loading ?? resolvedItemsLoading}
             loadingText={loadingText}
             noMatchesText={noMatchesText}
             selectedItems={selectedItem !== null ? [selectedItem] : []}
             readOnly={readOnly}
+            {...getMenuProps({
+              refKey: 'innerRef',
+              ref: refs.setFloating,
+              style: listStyle,
+            })}
           />
         }
         {...rest}
