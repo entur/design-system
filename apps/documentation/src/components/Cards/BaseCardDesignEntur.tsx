@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import { PolymorphicComponentProps } from '@entur/utils';
-import { Heading5, SmallText } from '@entur/typography';
+import { Heading, Text } from '@entur/typography/beta';
 import { DownwardIcon } from '@entur/icons';
 
 import './BaseCardDesignEntur.scss';
@@ -46,18 +46,25 @@ const BaseCardDesignEntur = <
     <Element className={classList} {...rest}>
       <div className="designentur-base-card__content">
         {title && (
-          <Heading5 as={headingLevel} className="designentur-base-card__title">
+          <Heading
+            as="headingLevel"
+            variant="section-1"
+            className="designentur-base-card__title"
+          >
             {title}
-          </Heading5>
+          </Heading>
         )}
 
         {children && (
           <div className="designentur-base-card__children">{children}</div>
         )}
         {subText && (
-          <SmallText className="designentur-base-card__subtext">
+          <Text
+            variant="subparagraph"
+            className="designentur-base-card__subtext"
+          >
             {subText}
-          </SmallText>
+          </Text>
         )}
       </div>
       {arrow && (

@@ -21,7 +21,7 @@ import {
   SwitchIcon,
   ValidTicketIcon,
 } from '@entur/icons';
-import { Heading4, CodeText } from '@entur/typography';
+import { Heading, Text } from '@entur/typography/beta';
 import { CopyButton } from './CopyButton';
 import './ContrastChecker.scss';
 
@@ -180,7 +180,9 @@ function ContrastChecker(): React.ReactNode {
       </Table>
       <div aria-hidden="true" className="contrast-preview__container">
         <div>
-          <Heading4 as="h3">Normal tekst</Heading4>
+          <Heading as="h3" variant="subtitle-2">
+            Normal tekst
+          </Heading>
           <div
             className="contrast-preview__small-text"
             style={{
@@ -190,7 +192,9 @@ function ContrastChecker(): React.ReactNode {
           >
             Vi samler kollektiv-Norge
           </div>
-          <Heading4 as="h3">Stor tekst</Heading4>
+          <Heading as="h3" variant="subtitle-2">
+            Stor tekst
+          </Heading>
           <div
             className="contrast-preview__large-text"
             style={{
@@ -202,7 +206,9 @@ function ContrastChecker(): React.ReactNode {
           </div>
         </div>
         <div>
-          <Heading4 as="h3">Grafisk objekt</Heading4>
+          <Heading as="h3" variant="subtitle-2">
+            Grafisk objekt
+          </Heading>
           <div
             className="contrast-preview__graphics-object"
             style={{
@@ -231,7 +237,7 @@ const ColorValues: React.FC<{ color: string; hex: string }> = ({
       </div>
 
       <div className="color-values__values">
-        <CodeText>{hex}</CodeText>
+        <Text variant="code-text">{hex}</Text>
         <div>
           <CopyButton textToCopy={`@colors.${color}`}>{color}</CopyButton>
         </div>

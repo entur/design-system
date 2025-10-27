@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { useLocation } from '@reach/router';
 import classNames from 'classnames';
-import { Heading4 } from '@entur/typography';
+import { Heading } from '@entur/typography/beta';
 import { handleHashLinkClick } from '../../../utils/scrollUtils';
 
 import './TableOfContent.scss';
@@ -119,9 +119,9 @@ const SanityTableOfContent: React.FC<SanityTableOfContentProps> = ({
 
   return (
     <nav className="table-of-content-container">
-      <Heading4 as="h2" style={{ margin: 0 }}>
+      <Heading as="h2" variant="subtitle-2" spacing="none">
         Innhold
-      </Heading4>
+      </Heading>
       <ul className="table-of-content">
         {filteredHeadings.map(heading => {
           return (

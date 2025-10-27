@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLocation } from '@reach/router';
 import { useStaticQuery, graphql } from 'gatsby';
-import { Heading1, Label, LeadParagraph } from '@entur/typography';
+import { Heading, Text } from '@entur/typography/beta';
 import { useSettings } from '@providers/SettingsContext';
 import { PackageChangelog } from './PackageChangelog';
 import './PageHeader.scss';
@@ -61,12 +61,13 @@ const PageHeader: React.FC<Props> = ({
     <header>
       {categoryToShow && (
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-          <Label
+          <Text
+            variant="label"
             as="div"
             style={{ letterSpacing: '1px', marginBottom: '0.5rem' }}
           >
             {categoryToShow.toUpperCase()}
-          </Label>
+          </Text>
           {npmPackage && userType === 'developer' && (
             <span style={{ float: 'right' }}>
               <PackageChangelog packageName={npmPackage} />
@@ -75,14 +76,14 @@ const PageHeader: React.FC<Props> = ({
         </div>
       )}
       <div style={{ display: 'flex', alignItems: 'center' }}>
-        <Heading1 margin="none" style={{ marginRight: '1rem' }}>
+        <Heading as="h1" variant="title-1" style={{ marginRight: '1rem' }}>
           {titleToShow}
-        </Heading1>
+        </Heading>
         {npmPackage && userType === 'developer' && (
           <NpmTag packageName={npmPackage} />
         )}
       </div>
-      {leadText && <LeadParagraph>{leadText}</LeadParagraph>}
+      {leadText && <Text variant="leading">{leadText}</Text>}
       {npmPackage && userType === 'developer' && (
         <div className="page-header__import-wrapper">
           <CopyableText

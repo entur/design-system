@@ -8,7 +8,7 @@ import {
   LinkedinIcon,
   TwitterIcon,
 } from '@entur/icons';
-import { Heading3, LeadParagraph, Link as DSLink } from '@entur/typography';
+import { Heading, Text, Link as LinkText } from '@entur/typography/beta';
 import { colors, space } from '@entur/tokens';
 
 import { Logo } from '@components/Logo/Logo';
@@ -29,12 +29,14 @@ const Footer = ({
     <div ref={footerRef} className="footer">
       <GridContainer spacing="extraLarge" className="footer__grid-container">
         <GridItem small={12} medium={6} large={4}>
-          <LeadParagraph margin="none" className="footer__lead">
+          <Text variant="leading" className="footer__lead" spacing="none">
             Entur leverer digitale tjenester til Norges kollektivtransport.
-          </LeadParagraph>
+          </Text>
         </GridItem>
         <GridItem small={12} medium={6} large={4}>
-          <Heading3 margin="bottom">Sidestruktur</Heading3>
+          <Heading as="h3" variant="subtitle-1" spacing="md-bottom">
+            Sidestruktur
+          </Heading>
           <LinkWrapper to="/kom-i-gang" className="footer__link">
             Kom i gang
           </LinkWrapper>
@@ -58,7 +60,9 @@ const Footer = ({
           </LinkWrapper>
         </GridItem>
         <GridItem small={12} medium={6} large={4}>
-          <Heading3 margin="bottom">Informasjon</Heading3>
+          <Heading as="h3" variant="subtitle-1" spacing="md-bottom">
+            Informasjon
+          </Heading>
           <div className="footer__link">
             <LinkWrapper
               external
@@ -102,9 +106,9 @@ const Footer = ({
 const SocialMediaLinks = ({ style }: { style?: React.CSSProperties }) => {
   return (
     <>
-      <Heading3 style={style} margin="bottom">
+      <Heading as="h3" variant="subtitle-1" spacing="md-bottom">
         Følg oss på
-      </Heading3>
+      </Heading>
       <div style={{ display: 'flex' }}>
         <IconButton
           as="a"
@@ -145,9 +149,9 @@ const SocialMediaLinks = ({ style }: { style?: React.CSSProperties }) => {
 
 function LinkWrapper(props: any) {
   return (
-    <DSLink as={Link} {...props}>
+    <LinkText as={Link} {...props}>
       {props.children}
-    </DSLink>
+    </LinkText>
   );
 }
 

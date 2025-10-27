@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Heading5, SmallText, StrongText, SubLabel } from '@entur/typography';
+import { Heading, Text } from '@entur/typography/beta';
 
 import './TypographyDisplay.scss';
 
@@ -31,9 +31,9 @@ export function TypographyDisplay({
   }
   return (
     <>
-      <Heading5 as="h4">
+      <Heading as="h4" variant="section-1">
         {fontFamily} {FontName()}
-      </Heading5>
+      </Heading>
       <div className="typography-display">
         <div className="typography-display__visualiser">
           <TypographyAlphabet weight={weight} fontFamily={fontFamily} />
@@ -45,29 +45,29 @@ export function TypographyDisplay({
         </div>
         <div className="typography-display__information">
           <div className="typography-display__information__text">
-            <StrongText>
+            <Text as="strong" weight="bold">
               {fontFamily} {FontName()}
-            </StrongText>
+            </Text>
             <div>
-              <SubLabel>Vekt: </SubLabel>
-              <SmallText>{weight}</SmallText>
+              <Text variant="sublabel">Vekt: </Text>
+              <Text variant="subparagraph">{weight}</Text>
             </div>
             <div>
-              <SubLabel>Stil: </SubLabel>
-              <SmallText>normal</SmallText>
+              <Text variant="sublabel">Stil: </Text>
+              <Text variant="subparagraph">normal</Text>
             </div>
           </div>
           <div className="typography-display__information__text">
-            <StrongText>
+            <Text as="strong" weight="bold">
               {fontFamily} {FontName()} Italic
-            </StrongText>
+            </Text>
             <div>
-              <SubLabel>Vekt: </SubLabel>
-              <SmallText>{weight}</SmallText>
+              <Text variant="sublabel">Vekt: </Text>
+              <Text variant="subparagraph">{weight}</Text>
             </div>
             <div>
-              <SubLabel>Stil: </SubLabel>
-              <SmallText>kursiv</SmallText>
+              <Text variant="sublabel">Stil: </Text>
+              <Text variant="subparagraph">kursiv</Text>
             </div>
           </div>
         </div>

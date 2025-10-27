@@ -17,13 +17,12 @@ import { VisuallyHidden } from '@entur/a11y';
 import { Tooltip } from '@entur/tooltip';
 import { GridContainer, GridItem } from '@entur/grid';
 import {
-  Heading2,
-  Heading4,
-  Link,
-  ListItem,
-  SubLabel,
+  Heading,
+  Text,
+  Link as LinkText,
   UnorderedList,
-} from '@entur/typography';
+  ListItem,
+} from '@entur/typography/beta';
 
 import { useURLSearchParams } from './IconList.utils';
 import { useGetIcons } from './useGetIcons';
@@ -247,9 +246,9 @@ const IconList: React.FC<IconListProps> = ({ icons: allIconComponents }) => {
       </GridContainer>
       {noResults ? (
         <div className="icon-list__no-results">
-          <Heading2 as="h3" aria-live="polite">
+          <Heading as="h3" variant="title-2" aria-live="polite">
             Finner ingen ikoner
-          </Heading2>
+          </Heading>
           <SecondaryButton
             className="icon-list__no-results__reset-filter"
             size="small"
@@ -257,7 +256,9 @@ const IconList: React.FC<IconListProps> = ({ icons: allIconComponents }) => {
           >
             Nullstill søk
           </SecondaryButton>
-          <Heading4>Her er noen forslag til hva du kan gjøre:</Heading4>
+          <Heading as="h4" variant="subtitle-2">
+            Her er noen forslag til hva du kan gjøre:
+          </Heading>
           <UnorderedList>
             {selectedCategory !== null && (
               <ListItem>
@@ -273,9 +274,13 @@ const IconList: React.FC<IconListProps> = ({ icons: allIconComponents }) => {
             <ListItem>Søk på engelsk</ListItem>
             <ListItem>
               Hvis ikonet ikke eksisterer, meld det inn til oss på{' '}
-              <Link href="https://entur.slack.com/archives/C899QSPB7">
+              <LinkText
+                href="https://entur.slack.com/archives/C899QSPB7"
+                external
+                ariaLabelExternalIcon="Ekstern lenke"
+              >
                 #talk-designsystem
-              </Link>
+              </LinkText>
               , så hjelper vi deg!
             </ListItem>
           </UnorderedList>
@@ -311,15 +316,16 @@ const IconList: React.FC<IconListProps> = ({ icons: allIconComponents }) => {
                   key={iconName}
                   data-category={category}
                 >
-                  <SubLabel
+                  <Text
+                    variant="sublabel"
                     as="button"
                     className="icon-list__item-name"
-                    onClick={handleIconClick(iconName + 'Icon')}
+                    onClick="handleIconClick(iconName + 'Icon')"
                   >
                     <span>{iconName}</span>
                     <CopyIcon aria-label=", trykk for å kopiere til utklippstavlen" />
-                  </SubLabel>
-                  <IconComponent
+                  </Text>
+                  <Icon
                     style={{
                       width: iconSize?.value,
                       height: iconSize?.value,

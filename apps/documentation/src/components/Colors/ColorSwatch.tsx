@@ -3,7 +3,7 @@ import { colors, space } from '@entur/tokens';
 import hexrgb from 'hex-rgb';
 import { BaseCard } from '@entur/layout';
 import { GridItem } from '@entur/grid';
-import { Heading4 } from '@entur/typography';
+import { Heading } from '@entur/typography/beta';
 import { formatVariable } from '../../utils/formatVariable';
 import { useSettings } from '@providers/SettingsContext';
 import { useColorContext } from '@providers/ColorProvider';
@@ -67,13 +67,14 @@ const ColorSwatch: React.FC<Props> = ({
           style={{ backgroundColor: backgroundColor, ...style }}
         />
         <div className="color-description">
-          <Heading4
+          <Heading
             as="h3"
-            margin="none"
+            variant="subtitle-2"
+            spacing="none"
             style={{ textTransform: 'capitalize' }}
           >
             {title}
-          </Heading4>
+          </Heading>
           <div style={{ textTransform: 'uppercase' }}>{backgroundColor}</div>
         </div>
       </BaseCard>

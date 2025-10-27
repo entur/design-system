@@ -1,7 +1,7 @@
 import React from 'react';
 import { CopyableText } from '@entur/alert';
-import { Heading3 } from '@entur/typography';
 import { CodeBlock } from '@components/Codeblock/CodeBlock';
+import { Heading } from '@entur/typography/beta';
 import Playground from '@components/Playground/Playground';
 import { InitialAdvancedProp } from '@components/Playground/playground-utils';
 
@@ -138,7 +138,7 @@ export const CodeExampleResolver = ({ value }: CodeExampleProps) => {
 
   return (
     <div style={{ margin: '2rem 0' }}>
-      {title && <Heading3>{title}</Heading3>}
+      {title && <Heading as="h3">{title}</Heading>}
 
       {codeDisplayType === 'playground' ? (
         <Playground props={selectedProps} code={resolvedPlaygroundCode} />

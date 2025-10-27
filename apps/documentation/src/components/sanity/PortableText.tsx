@@ -6,19 +6,13 @@ import type {
   PortableTextReactComponents,
 } from '@portabletext/react';
 import {
-  CodeText,
-  EmphasizedText,
-  Heading2,
-  Heading3,
-  Heading4,
-  Heading5,
-  Link,
-  ListItem,
-  NumberedList,
-  Paragraph,
-  StrongText,
+  Heading,
+  Text,
+  Link as LinkText,
   UnorderedList,
-} from '@entur/typography';
+  NumberedList,
+  ListItem,
+} from '@entur/typography/beta';
 import * as icons from '@entur/icons';
 
 import { ImageAndTextResolver } from './image/ImageAndTextResolver';
@@ -41,18 +35,26 @@ const createComponents = (
 ): Partial<PortableTextReactComponents> => ({
   block: {
     h2: ({ children, value }) => (
-      <Heading2 id={value._key}>{children}</Heading2>
+      <Heading as="h2" variant="title-2" id={value._key}>
+        {children}
+      </Heading>
     ),
     h3: ({ children, value }) => (
-      <Heading3 id={value._key}>{children}</Heading3>
+      <Heading as="h3" variant="subtitle-1" id={value._key}>
+        {children}
+      </Heading>
     ),
     h4: ({ children, value }) => (
-      <Heading4 id={value._key}>{children}</Heading4>
+      <Heading as="h4" variant="subtitle-2" id={value._key}>
+        {children}
+      </Heading>
     ),
     h5: ({ children, value }) => (
-      <Heading5 id={value._key}>{children}</Heading5>
+      <Heading as="h5" variant="section-1" id={value._key}>
+        {children}
+      </Heading>
     ),
-    normal: ({ children }) => <Paragraph>{children}</Paragraph>,
+    normal: ({ children }) => <Text variant="paragraph">{children}</Text>,
   },
   list: {
     bullet: ({ children }) => <UnorderedList>{children}</UnorderedList>,
@@ -60,8 +62,12 @@ const createComponents = (
   },
   listItem: ({ children }) => <ListItem>{children}</ListItem>,
   marks: {
-    strong: ({ children }) => <StrongText>{children}</StrongText>,
-    em: ({ children }) => <EmphasizedText>{children}</EmphasizedText>,
+    strong: ({ children }) => (
+      <Text as="strong" weight="bold">
+        {children}
+      </Text>
+    ),
+    em: ({ children }) => <Text variant="emphasized">{children}</Text>,
     link: ({ value, children }) => {
       const { href } = value;
       if (href === undefined) return null;
@@ -70,25 +76,30 @@ const createComponents = (
         const url = new URL(href);
         const internalHosts = ['linje.entur.no'];
         if (internalHosts.includes(url.host)) {
-          return (
-            <Link
-              as={GatsbyLink as any}
-              to={url.pathname + url.search + url.hash}
-            >
-              {children}
-            </Link>
-          );
+          switch (url.host) {
+            case 'om.entur.no':
+              return (
+                <LinkText
+                  as={GatsbyLink as any}
+                  to={url.pathname + url.search + url.hash}
+                >
+                  {children}
+                </LinkText>
+              );
+            case 'entur.no':
+              return <LinkText href={href}>{children}</LinkText>;
+          }
         }
       } catch (e) {
         console.error('Invalid URL:', href, e);
       }
       return (
-        <Link external href={href} target="_blank">
+        <LinkText external href={href} target="_blank">
           {children}
-        </Link>
+        </LinkText>
       );
     },
-    code: ({ children }) => <CodeText>{children}</CodeText>,
+    code: ({ children }) => <Text variant="code-text">{children}</Text>,
   },
   types: {
     imageAndText: ImageAndTextResolver,

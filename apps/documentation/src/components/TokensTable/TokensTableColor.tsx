@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import { GridContainer } from '@entur/grid';
 import * as allTokens from '@entur/tokens';
-import { CodeText } from '@entur/typography';
+import { Text } from '@entur/typography/beta';
 import { useSettings } from '@providers/SettingsContext';
 
 import { flatten } from '../../utils/flatten';
@@ -63,13 +63,13 @@ export const TokensTableColor: React.FC<AllTokensTableProps> = ({
     <>
       {tokenKey !== 'base' ? (
         <p>
-          Du viser nå <CodeText>{variableFormat}</CodeText>, du kan endre format
-          i innstillinger.
+          Du viser nå <Text variant="code-text">{variableFormat}</Text>, du kan
+          endre format i innstillinger.
         </p>
       ) : (
         <p>
           For å støtte flere fargemoduser er base kun tilgjengelig i{' '}
-          <CodeText>css</CodeText>.
+          <Text variant="code-text">css</Text>.
         </p>
       )}
       <GridContainer className="token-table__grid">

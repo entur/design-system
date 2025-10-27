@@ -1,5 +1,5 @@
 import { GridItem } from '@entur/grid';
-import { Heading3, Paragraph } from '@entur/typography';
+import { Heading, Text } from '@entur/typography/beta';
 import React from 'react';
 import './DesignPrinciple.scss';
 
@@ -29,15 +29,12 @@ export const DesignPrinciple: React.FC<DesignPrincipleProps> = ({
       <div aria-hidden="true" className="design-principle__icon">
         {icon}
       </div>
-      <Heading3
-        aria-label={`${number}. ${title}`}
-        className="design-principle__title"
-      >
+      <Heading as="h3" variant="subtitle-1" aria-label={`${number}. ${title}`}>
         {title}
-      </Heading3>
-      <Paragraph className="design-principle__description">
+      </Heading>
+      <Text variant="paragraph" className="design-principle__description">
         {description}{' '}
-      </Paragraph>
+      </Text>
     </GridItem>
   );
 };

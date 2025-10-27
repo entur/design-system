@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import { NavigationCard } from '@entur/layout';
-import { Link } from '@entur/typography';
+import { Link as LinkText } from '@entur/typography/beta';
 import { PrimaryButton, SecondaryButton } from '@entur/button';
 import { getIconByName } from 'src/utils/utils';
 import { LinkType } from '../types';
@@ -82,10 +82,10 @@ export const LinkResolver = ({ value }: Props) => {
       );
     default:
       return (
-        <Link {...linkProps}>
+        <LinkText {...linkProps}>
           {linkText}
           {Icon ? <Icon /> : undefined}
-        </Link>
+        </LinkText>
       );
   }
 };

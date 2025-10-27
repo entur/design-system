@@ -39,12 +39,12 @@ const MobileTopNavigation: React.FC<MobileTopNavigationProps> = ({
       {...rest}
     >
       <div className="mobile-topnav__menu">
-        <Link to="/" className="mobile-topnav__logo">
+        <LinkBeta to="/" className="mobile-topnav__logo">
           <img
             src={colorMode === 'dark' || isContrast ? logoDark : logo}
             alt="Entur logo – Linje starside"
           />
-        </Link>
+        </LinkBeta>
         <Search />
         <Tooltip content="Entur Linje på GitHub">
           <IconButton

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import { useLocation } from '@reach/router';
 import classNames from 'classnames';
-import { Heading4 } from '@entur/typography';
+import { Heading } from '@entur/typography/beta';
 import { removeTrailingSlash } from '../SideNavigation/utils';
 import { handleHashLinkClick } from '../../../utils/scrollUtils';
 
@@ -135,9 +135,9 @@ const TableOfContent = () => {
   }
   return (
     <nav className="table-of-content-container">
-      <Heading4 as="h2" style={{ margin: 0 }}>
+      <Heading as="h2" variant="subtitle-2" spacing="none">
         Innhold
-      </Heading4>
+      </Heading>
       <ul className="table-of-content">
         {filteredHeadings.map((heading: any) => {
           const headingId = heading.url?.replace('#', '');

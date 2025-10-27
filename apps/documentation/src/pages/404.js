@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Link } from 'gatsby';
 import { graphql } from 'gatsby';
 
-import { Paragraph, Heading2, Link as TextLink } from '@entur/typography';
+import { Link as TypographyLink, Heading, Text } from '@entur/typography/beta';
 import { PrimaryButton } from '@entur/button';
 import { ImageDisplay } from '@components/Media/ImageDisplay';
 import { useSettings } from '@providers/SettingsContext';
@@ -49,16 +49,18 @@ const NotFoundPage = ({ data }) => {
           alt="Bomstasjon som sperrer veien videre. Tegning"
         />
       )}
-      <Heading2>Bomtur</Heading2>
+      <Heading as="h2" variant="title-2">
+        Bomtur
+      </Heading>
 
-      <Paragraph>
+      <Text variant="paragraph">
         Adressen du forsøkte å gå til finnes ikke
         <br />
         Eller så har siden blitt flyttet til et annet sted.
-      </Paragraph>
-      <TextLink as={Link} to="/">
+      </Text>
+      <TypographyLink as={Link} to="/">
         <PrimaryButton>Gå til forsiden</PrimaryButton>
-      </TextLink>
+      </TypographyLink>
     </div>
   );
 };

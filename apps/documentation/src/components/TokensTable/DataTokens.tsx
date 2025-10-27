@@ -6,7 +6,7 @@ import {
   sliceTokenKey,
 } from '../../utils/formatVariable';
 import { GridItem } from '@entur/grid';
-import { Heading3, Heading4 } from '@entur/typography';
+import { Heading } from '@entur/typography/beta';
 import { useSettings } from '@providers/SettingsContext';
 import ColorToken from './ColorToken';
 
@@ -60,7 +60,9 @@ const DataTokenList: React.FC<TokensTableProps> = ({ tokens }) => {
     <>
       {Object.entries(categorizedTokens).map(([categoryKey, subCategories]) => (
         <React.Fragment key={categoryKey}>
-          <Heading3>{categoryKey}</Heading3>
+          <Heading as="h3" variant="subtitle-1">
+            {categoryKey}
+          </Heading>
           {Object.entries(subCategories)
             .sort(([keyA], [keyB]) => {
               if (keyA === 'standard') return -1;
@@ -74,7 +76,9 @@ const DataTokenList: React.FC<TokensTableProps> = ({ tokens }) => {
               return (
                 <React.Fragment key={subCategoryKey}>
                   <GridItem small={12} medium={12} large={12}>
-                    <Heading4>{subCategoryKey}</Heading4>
+                    <Heading as="h4" variant="subtitle-2">
+                      {subCategoryKey}
+                    </Heading>
                     <div
                       className={`token-table-content ${bgColorClass}`}
                       data-color-mode={dataMode}

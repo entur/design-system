@@ -1,14 +1,12 @@
 import React from 'react';
 import ReactMarkdown from 'markdown-to-jsx';
 import {
-  Heading3,
-  Heading4,
-  Heading6,
-  Link,
+  Heading,
+  Text,
+  Link as LinkText,
   UnorderedList,
   ListItem,
-  StrongText,
-} from '@entur/typography';
+} from '@entur/typography/beta';
 import { Tag } from '@entur/layout';
 import { NewIcon, BugIcon } from '@entur/icons';
 
@@ -54,22 +52,30 @@ export const MarkdownParser: React.FC<{ children: any }> = ({ children }) => {
         },
         overrides: {
           h1: {
-            component: Heading3,
+            component: (props: any) => (
+              <Heading as="h1" variant="title-1" {...props} />
+            ),
           },
           h2: {
-            component: Heading4,
+            component: (props: any) => (
+              <Heading as="h2" variant="title-2" {...props} />
+            ),
           },
           h3: {
             component: ChangelogTag,
           },
           h4: {
-            component: Heading6,
+            component: (props: any) => (
+              <Heading as="h4" variant="subtitle-2" {...props} />
+            ),
           },
           h5: {
-            component: Heading6,
+            component: (props: any) => (
+              <Heading as="h5" variant="section-1" {...props} />
+            ),
           },
           a: {
-            component: Link,
+            component: LinkText,
           },
           ul: {
             component: UnorderedList,
@@ -78,7 +84,14 @@ export const MarkdownParser: React.FC<{ children: any }> = ({ children }) => {
             component: ListItem,
           },
           strong: {
-            component: StrongText,
+            component: (props: any) => (
+              <Text
+                as="strong"
+                variant="emphasized"
+                weight="semibold"
+                {...props}
+              />
+            ),
           },
         },
       }}
@@ -89,6 +102,17 @@ export const MarkdownParser: React.FC<{ children: any }> = ({ children }) => {
   );
 };
 
-export const ChangelogTag = props => {
-  return <Tag style={{ margin: '1rem 0 0' }}>{props.children}</Tag>;
+export const ChangelogTag = (props: any) => {
+  return (
+    <Tag
+      style={{
+        marginTop: '1rem',
+        marginBottom: '0',
+        marginLeft: '0',
+        marginRight: '0',
+      }}
+    >
+      {props.children}
+    </Tag>
+  );
 };

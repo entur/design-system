@@ -6,11 +6,13 @@
 @use '@entur/tokens/dist/styles.scss' as eds;
 @use '@entur/utils/dist/breakpoints.scss' as *;
 
+// Import old typography for legacy components (e.g. typography.mdx page)
+@import '@entur/typography/dist/styles.css';
+
 @import '@entur/a11y/dist/styles.css';
 @import '@entur/grid/dist/styles.css';
 @import '@entur/icons/dist/styles.css';
 @import '@entur/tab/dist/styles.css';
-@import '@entur/typography/dist/styles.css';
 @import '@entur/layout/dist/styles.css';
 @import '@entur/loader/dist/styles.css';
 @import '@entur/expand/dist/styles.css';

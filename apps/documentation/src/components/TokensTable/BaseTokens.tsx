@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heading4, Heading3 } from '@entur/typography';
+import { Heading } from '@entur/typography/beta';
 import { GridItem } from '@entur/grid';
 import {
   formatDotToVariable,
@@ -56,10 +56,14 @@ const BaseTokenList: React.FC<TokensTableProps> = ({ tokens }) => {
         const dataMode = categoryKey === 'dark' ? 'dark' : 'light';
         return (
           <React.Fragment key={categoryKey}>
-            <Heading3>{categoryKey}</Heading3>
+            <Heading as="h3" variant="subtitle-1">
+              {categoryKey}
+            </Heading>
             {Object.entries(subCategories).map(([subCategoryKey, tokens]) => (
               <GridItem small={12} medium={12} large={12} key={subCategoryKey}>
-                <Heading4>{subCategoryKey}</Heading4>
+                <Heading as="h4" variant="subtitle-2">
+                  {subCategoryKey}
+                </Heading>
                 <div className="token-table-content">
                   <div
                     className="token-table-content--multi-columns"

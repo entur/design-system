@@ -7,7 +7,7 @@ const fetch = require('node-fetch');
 // eslint-disable-next-line @typescript-eslint/no-var-requires -- disabled when we turned on linting for all files in the project
 const crypto = require('crypto');
 
-exports.onCreateWebpackConfig = ({ actions, getConfig }) => {
+exports.onCreateWebpackConfig = ({ actions, getConfig, stage }) => {
   const oldConfig = getConfig();
   const editedConfig = getConfig();
 
@@ -15,6 +15,44 @@ exports.onCreateWebpackConfig = ({ actions, getConfig }) => {
     ...editedConfig.resolve.alias,
     '~': path.resolve(__dirname, '../src/'),
   };
+
+  // Suppress CSS order warnings from mini-css-extract-plugin,
+  // The warnings are unavoidable with this architecture - we have beta components auto-importing CSS + custom SCSS + code-splitting = webpack can't determine a consistent order
+  if (
+    stage === 'develop' ||
+    stage === 'build-javascript' ||
+    stage === 'build-html'
+  ) {
+    editedConfig.plugins = [
+      ...(editedConfig.plugins || []),
+      {
+        apply: compiler => {
+          compiler.hooks.done.tap('SuppressCSSOrderWarnings', stats => {
+            if (stats.compilation.warnings) {
+              stats.compilation.warnings = stats.compilation.warnings.filter(
+                warning => {
+                  const msg = warning.message || warning.toString();
+                  return !(
+                    msg.includes('mini-css-extract-plugin') &&
+                    msg.includes('Conflicting order')
+                  );
+                },
+              );
+            }
+          });
+        },
+      },
+    ];
+
+    // Also use webpack 5's native ignoreWarnings
+    editedConfig.ignoreWarnings = [
+      ...(editedConfig.ignoreWarnings || []),
+      {
+        module: /mini-css-extract-plugin/,
+        message: /Conflicting order/,
+      },
+    ];
+  }
 
   actions.replaceWebpackConfig({ ...oldConfig, ...editedConfig });
 };

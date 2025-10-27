@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heading5 } from '@entur/typography';
+import { Heading } from '@entur/typography/beta';
 import { GridItem } from '@entur/grid';
 import {
   formatVariablePrimitive,
@@ -71,7 +71,9 @@ const PrimitiveTokenList: React.FC<TokensTableProps> = ({
         .map(([categoryKey, tokens]) => (
           <GridItem small={12} medium={12} large={6} key={categoryKey}>
             <div className="token-table-content">
-              <Heading5 as="h3">{categoryKey}</Heading5>
+              <Heading as="h3" variant="section-1">
+                {categoryKey}
+              </Heading>
               {tokens}
             </div>
           </GridItem>

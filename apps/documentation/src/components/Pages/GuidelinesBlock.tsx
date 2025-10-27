@@ -1,13 +1,13 @@
 import React from 'react';
 import { SecondaryButton, ButtonGroup } from '@entur/button';
 import { DownloadIcon } from '@entur/icons';
-import { Heading2 } from '@entur/typography';
+import { Heading } from '@entur/typography/beta';
 import './GuidelinesBlock.scss';
 
 type GuidelinesBlockProps = {
   title: string;
   children: React.ReactNode;
-  downloadSourceButton?: String;
+  downloadSourceButton?: string;
 };
 
 export const GuidelinesBlock: React.FC<GuidelinesBlockProps> = ({
@@ -18,7 +18,9 @@ export const GuidelinesBlock: React.FC<GuidelinesBlockProps> = ({
   return (
     <div className="guidelines-block__container">
       <div className="guidelines-block__header">
-        <Heading2 className="guidelines-block__title">{title}</Heading2>
+        <Heading as="h2" variant="title-2" className="guidelines-block__title">
+          {title}
+        </Heading>
         {downloadSourceButton && (
           <div className="guidelines-block__download">
             <ButtonGroup>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { CodeText, Paragraph } from '@entur/typography';
+import { Text } from '@entur/typography/beta';
 import {
   Table,
   TableHead,
@@ -84,7 +84,7 @@ const Props: React.FC<PropsProps> = ({
   }, [componentName]);
 
   if (!componentProps) {
-    return <Paragraph>Denne komponenten har ingen props</Paragraph>;
+    return <Text variant="paragraph">Denne komponenten har ingen props</Text>;
   }
 
   const hasAnyDefaultValues = Object.values(componentProps).some(
@@ -116,23 +116,23 @@ const Props: React.FC<PropsProps> = ({
               ([propName, details]: [string, any]) => (
                 <TableRow key={propName}>
                   <DataCell>
-                    <CodeText>{`${propName}${
+                    <Text variant="code-text">{`${propName}${
                       details.required ? '' : '?'
-                    }`}</CodeText>
+                    }`}</Text>
                   </DataCell>
                   <DataCell>
-                    <CodeText className="props-table__type">
+                    <Text variant="code-text" className="props-table__type">
                       {propName === 'as'
                         ? 'string | React.ElementType'
                         : formatPropType(details.type.name)}
-                    </CodeText>
+                    </Text>
                   </DataCell>
                   {hasAnyDefaultValues && (
                     <DataCell>
                       {details.defaultValue ? (
-                        <CodeText>
+                        <Text variant="code-text">
                           {String(details.defaultValue.value)}
-                        </CodeText>
+                        </Text>
                       ) : null}
                     </DataCell>
                   )}
@@ -145,7 +145,7 @@ const Props: React.FC<PropsProps> = ({
           </TableBody>
         </Table>
       ) : (
-        <Paragraph>Denne komponenten har ingen props</Paragraph>
+        <Text variant="paragraph">Denne komponenten har ingen props</Text>
       )}
     </>
   );

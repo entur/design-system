@@ -14,13 +14,7 @@ import {
   TableRow,
 } from '@entur/table';
 import { colors } from '@entur/tokens';
-import {
-  Heading3,
-  Heading4,
-  Label,
-  Link as LinkText,
-  Paragraph,
-} from '@entur/typography';
+import { Heading, Text, Link as TypographyLink } from '@entur/typography/beta';
 import './Colors.scss';
 
 import ColorSwatch from './ColorSwatch';
@@ -77,7 +71,9 @@ const Colors: React.FC<{
 
       {colorType === 'validation' && (
         <>
-          <Heading3>Infomelding farger</Heading3>
+          <Heading as="h3" variant="subtitle-1">
+            Infomelding farger
+          </Heading>
           <GridContainer
             spacing="large"
             style={{ marginBottom: '3rem' }}
@@ -93,7 +89,9 @@ const Colors: React.FC<{
               path="validation.skyTint"
             ></ColorSwatch>
           </GridContainer>
-          <Heading3>Suksessmelding farger</Heading3>
+          <Heading as="h3" variant="subtitle-1">
+            Suksessmelding farger
+          </Heading>
           <GridContainer
             spacing="large"
             className="eds-colors-group__small-space"
@@ -108,7 +106,9 @@ const Colors: React.FC<{
               path="validation.mintTint"
             ></ColorSwatch>
           </GridContainer>
-          <Heading3>Feilmelding farger</Heading3>
+          <Heading as="h3" variant="subtitle-1">
+            Feilmelding farger
+          </Heading>
           <GridContainer
             spacing="large"
             className="eds-colors-group__small-space"
@@ -123,9 +123,13 @@ const Colors: React.FC<{
               path="validation.lavaTint"
             ></ColorSwatch>
           </GridContainer>
-          <Heading3 className="eds-color-list__normal-margin-h3">
+          <Heading
+            as="h3"
+            variant="subtitle-1"
+            className="eds-color-list__normal-margin-h3"
+          >
             Advarsel- og avviksmelding farge
-          </Heading3>
+          </Heading>
           <GridContainer
             spacing="large"
             className="eds-colors-group__large-space"
@@ -188,15 +192,17 @@ export const ColorDrawer: React.FC<{
         style={{ background: color.hex, width: '100%', height: '160px' }}
       ></div>
       {description && <div style={{ marginTop: '1.5rem' }}>{description}</div>}
-      <Heading4>Fargerverdier</Heading4>
-      <Label>Variabel</Label>
+      <Heading as="h4" variant="subtitle-2">
+        Fargerverdier
+      </Heading>
+      <Text variant="label">Variabel</Text>
       <CopyableText
         className="eds-colors-group__copy-color-button"
         successMessage={`Kopiert til utklippstavle`}
       >
         {color.variable}
       </CopyableText>
-      <Label>Hex</Label>
+      <Text variant="label">Hex</Text>
       <CopyableText
         className="eds-colors-group__copy-color-button"
         textToCopy={color.hex.replace('#', '')}
@@ -204,7 +210,7 @@ export const ColorDrawer: React.FC<{
       >
         {color.hex}
       </CopyableText>
-      <Label>RGB</Label>
+      <Text variant="label">RGB</Text>
       <CopyableText
         className="eds-colors-group__copy-color-button"
         successMessage={'Kopiert til utklippstavle'}
@@ -213,7 +219,7 @@ export const ColorDrawer: React.FC<{
       </CopyableText>
       {color.cmyk && (
         <>
-          <Label>CMYK</Label>
+          <Text variant="label">CMYK</Text>
           <CopyableText
             className="eds-colors-group__copy-color-button"
             successMessage={'Kopiert til utklippstavle'}
@@ -223,13 +229,15 @@ export const ColorDrawer: React.FC<{
         </>
       )}
 
-      <Heading4>Kontrast</Heading4>
-      <Paragraph>
+      <Heading as="h4" variant="subtitle-2">
+        Kontrast
+      </Heading>
+      <Text variant="paragraph">
         Lær mer om{' '}
-        <LinkText as={Link} to="/universell-utforming/kontrastsjekker">
+        <TypographyLink as={Link} to="/universell-utforming/kontrastsjekker">
           kontrastkrav for farger.
-        </LinkText>
-      </Paragraph>
+        </TypographyLink>
+      </Text>
       <Table className="eds-colors-group__contrast-table">
         <TableHead>
           <TableRow>

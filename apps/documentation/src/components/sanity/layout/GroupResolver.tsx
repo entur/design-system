@@ -3,7 +3,7 @@ import { graphql } from 'gatsby';
 import { PortableText } from '../PortableText';
 import { GridContainer, GridItem } from '@entur/grid';
 import { GroupType } from '../types';
-import { CodeText } from '@entur/typography';
+import { Text } from '@entur/typography/beta';
 
 import './Group.scss';
 
@@ -45,7 +45,7 @@ export const GroupResolver = ({ value }: Props) => {
       </GridContainer>
     );
 
-  return <CodeText>ERROR IN SANITY GROUP COMPONENT</CodeText>;
+  return <Text variant="code-text">ERROR IN SANITY GROUP COMPONENT</Text>;
 };
 
 export const GroupFragment = graphql`

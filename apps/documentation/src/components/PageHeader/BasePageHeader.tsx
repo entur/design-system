@@ -1,13 +1,10 @@
 import React from 'react';
-import { Heading1, Label, LeadParagraph } from '@entur/typography';
+import { Heading, Text } from '@entur/typography/beta';
 import { CopyableText } from '@entur/alert';
 import { useSettings } from '@providers/SettingsContext';
 import { PackageChangelog } from './PackageChangelog';
 import { NpmTag } from './NpmTag';
 import './PageHeader.scss';
-import { ComponentIcon } from '@entur/icons';
-import { ActionChip } from '@entur/chip';
-import { Heading2, Paragraph } from '@entur/typography';
 
 export type BasePageHeaderProps = {
   title: string;
@@ -22,44 +19,60 @@ export type BasePageHeaderProps = {
 export const BasePageHeader: React.FC<BasePageHeaderProps> = ({
   title,
   category,
-  subcategory,
   description,
   npmPackage,
-  figmaLink,
 }) => {
   const { packageManager, userType } = useSettings();
+
+  const categoryToShow = category || '';
+  const installText =
+    packageManager === 'yarn'
+      ? `yarn add @entur/${npmPackage}`
+      : `npm install @entur/${npmPackage}`;
+  const cssImport = `@import '@entur/${npmPackage}/dist/styles.css';`;
+
   return (
-    <header className="page-header">
-      {subcategory && (
-        <div className="page-header__subcategory-wrapper">
-          <Label as="div" className="page-header__subcategory-label">
-            {subcategory.toUpperCase()}
-          </Label>
+    <header>
+      {categoryToShow && (
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+          <Text
+            variant="label"
+            as="div"
+            style={{ letterSpacing: '1px', marginBottom: '0.5rem' }}
+          >
+            {categoryToShow.toUpperCase()}
+          </Text>
+          {npmPackage && userType === 'developer' && (
+            <span style={{ float: 'right' }}>
+              <PackageChangelog packageName={npmPackage} />
+            </span>
+          )}
         </div>
       )}
-      <div className="page-header__title-row">
-        <Heading1 margin="none" className="page-header__heading">
+      <div style={{ display: 'flex', alignItems: 'center' }}>
+        <Heading as="h1" variant="title-1" style={{ marginRight: '1rem' }}>
           {title}
-        </Heading1>
-        <div className="page-header__actions">
-          {npmPackage && userType === 'developer' && (
-            <NpmTag packageName={npmPackage} />
-          )}
-          {npmPackage && userType === 'developer' && (
-            <PackageChangelog packageName={npmPackage} />
-          )}
-          {figmaLink && (
-            <ActionChip>
-              <ComponentIcon />
-              Figma
-            </ActionChip>
-          )}
-        </div>
+        </Heading>
+        {npmPackage && userType === 'developer' && (
+          <NpmTag packageName={npmPackage} />
+        )}
       </div>
-      {description && (
-        <LeadParagraph className="page-header__description">
-          {description}
-        </LeadParagraph>
+      {description && <Text variant="leading">{description}</Text>}
+      {npmPackage && userType === 'developer' && (
+        <div className="page-header__import-wrapper">
+          <CopyableText
+            successMessage="Innstalleringstekst ble kopiert til utklippstavla."
+            className="page-header__import-wrapper__copy-button"
+          >
+            {installText}
+          </CopyableText>
+          <CopyableText
+            successMessage="CSS-importen ble kopiert til utklippstavla."
+            className="page-header__import-wrapper__copy-button"
+          >
+            {cssImport}
+          </CopyableText>
+        </div>
       )}
     </header>
   );

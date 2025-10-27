@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 
 import { CookieIcon, NightIcon, SettingsIcon, SunIcon } from '@entur/icons';
-import { Heading5 } from '@entur/typography';
+import { Heading } from '@entur/typography/beta';
 import { PrimaryButton, SecondaryButton, IconButton } from '@entur/button';
 import { Dropdown } from '@entur/dropdown';
 import { SegmentedChoice, SegmentedControl, TextField } from '@entur/form';
@@ -143,7 +143,9 @@ const SettingsPanel = () => {
             Lagre
           </PrimaryButton>
         </form>
-        <Heading5 as="h3">Informasjonskapsler</Heading5>
+        <Heading as="h3" variant="section-1">
+          Informasjonskapsler
+        </Heading>
         <SecondaryButton
           size="small"
           style={{ marginTop: '0.5rem' }}

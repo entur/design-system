@@ -6,7 +6,7 @@ import {
   sliceTokenKey,
 } from '../../utils/formatVariable';
 import { GridItem } from '@entur/grid';
-import { Heading3, Heading5 } from '@entur/typography';
+import { Heading } from '@entur/typography/beta';
 import { useSettings, VariableFormat } from '@providers/SettingsContext';
 import ColorToken from './ColorToken';
 
@@ -73,7 +73,9 @@ const TransportTokenList: React.FC<TokensTableProps> = ({ tokens }) => {
 
           return (
             <React.Fragment key={categoryKey}>
-              <Heading3>{categoryKey}</Heading3>
+              <Heading as="h3" variant="subtitle-1">
+                {categoryKey}
+              </Heading>
               {Object.entries(subCategories).map(([subCategoryKey, tokens]) => (
                 <GridItem
                   small={12}
@@ -82,7 +84,9 @@ const TransportTokenList: React.FC<TokensTableProps> = ({ tokens }) => {
                   key={subCategoryKey}
                 >
                   {subCategoryKey === 'transparent' && (
-                    <Heading5 as="h4">{subCategoryKey}</Heading5>
+                    <Heading as="h4" variant="section-1">
+                      {subCategoryKey}
+                    </Heading>
                   )}
                   <div
                     className={`token-table-content ${bgColorClass}`}

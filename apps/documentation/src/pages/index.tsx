@@ -14,7 +14,7 @@ import {
 } from '@entur/icons';
 import { Contrast, NavigationCard } from '@entur/layout';
 import { colors } from '@entur/tokens';
-import { Heading1, Paragraph, Heading2 } from '@entur/typography';
+import { Heading, Text } from '@entur/typography/beta';
 import { useWindowDimensions } from '@entur/utils';
 
 import Footer from '@components/Footer/Footer';
@@ -115,18 +115,26 @@ const Index = () => {
           <main ref={mainRef} className="frontpage__main">
             <div className="frontpage__main__hero">
               <div className="frontpage__main__hero__content">
-                <Heading1 className="frontpage__main__hero__content__main-heading">
+                <Heading
+                  as="h1"
+                  variant="title-1"
+                  className="frontpage__main__hero__content__main-heading"
+                >
                   <span className="frontpage__main__hero__content__main-heading__start">
                     Linje
                   </span>
                   <ShiftingHeader />
-                </Heading1>
+                </Heading>
                 <PrimaryButton as={Link} to="/kom-i-gang">
                   Kom i gang
                 </PrimaryButton>
-                <Heading2 className="frontpage__main__hero__content__secondary-heading">
+                <Heading
+                  as="h2"
+                  variant="title-2"
+                  className="frontpage__main__hero__content__secondary-heading"
+                >
                   Alt du trenger i ett system
-                </Heading2>
+                </Heading>
                 {NAVIGATION_CARDS.map(card => {
                   return (
                     <NavigationCard
@@ -149,17 +157,19 @@ const Index = () => {
                 '--section-color': 'var(--basecolors-frame-contrastalt-2)',
               }}
             >
-              <Heading2>Vil du bidra?</Heading2>
-              <Paragraph>
+              <Heading as="h2" variant="title-2">
+                Vil du bidra?
+              </Heading>
+              <Text variant="paragraph">
                 Entur Linje er et levende produkt som oppdateres og
                 vedlikeholdes kontinuerlig. Designsystem-teamet er ansvarlig for
                 forvalting og support, men eierskapet deles mellom alle i Entur.
-              </Paragraph>
-              <Paragraph>
+              </Text>
+              <Text variant="paragraph">
                 Alle med interesse for å påvirke utvikling og eller innhold,
                 eller ønsker å gi tilbakemeldinger er hjertelig velkomne. Ta en
                 titt på vår bidra side for hvordan du går frem.
-              </Paragraph>
+              </Text>
               <SecondaryButton
                 as={Link}
                 to="/kom-i-gang/for-utviklere/bidra-med-kode"

@@ -9,7 +9,7 @@ import { SegmentedChoice, SegmentedControl } from '@entur/form';
 import { SourceCodeIcon } from '@entur/icons';
 import { Contrast } from '@entur/layout';
 import { componentColors } from '@entur/tokens';
-import { Heading5 } from '@entur/typography';
+import { Heading } from '@entur/typography/beta';
 import { ConditionalWrapper } from '@entur/utils';
 
 import {
@@ -127,16 +127,17 @@ const Playground: React.FC<PlaygroundProps> = ({
         </Element>
         {propsState !== undefined && (
           <div className="playground__props-selector">
-            <Heading5
+            <Heading
               as="h2"
-              margin="bottom"
+              variant="section-1"
+              spacing="md-bottom"
               style={{
                 height: '2rem',
                 whiteSpace: 'nowrap',
               }}
             >
               {`${componentName}-props`}
-            </Heading5>
+            </Heading>
             <PropsList
               propsState={propsState}
               updatePropState={updatePropState}

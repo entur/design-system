@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { GridContainer, GridItem } from '@entur/grid';
 import { Modal } from '@entur/modal';
-import { Link as LinkText } from '@entur/typography';
+import { Link as LinkText } from '@entur/typography/beta';
 
 import { MarkdownParser } from '../PageHeader/MarkdownParser';
 import { useGetChangelog } from '../PageHeader/useGetChangelog';

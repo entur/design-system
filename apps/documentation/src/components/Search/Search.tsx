@@ -18,14 +18,7 @@ import {
   UserIcon,
 } from '@entur/icons';
 import { Badge, Tag } from '@entur/layout';
-import {
-  UnorderedList,
-  ListItem,
-  Heading5,
-  SmallText,
-  Heading2,
-  Paragraph,
-} from '@entur/typography';
+import { Heading, Text, UnorderedList, ListItem } from '@entur/typography/beta';
 import { useSearch } from './SearchContext';
 
 import './Search.scss';
@@ -39,7 +32,7 @@ type StoreResult = {
   icon?: any;
 };
 
-let LIST_ITEM_ICON_PROPS = {
+const LIST_ITEM_ICON_PROPS = {
   inline: true,
   size: '1.25rem',
   'aria-hidden': true,
@@ -212,11 +205,11 @@ export const Search = () => {
         />
         <UnorderedList className="searchmodal__list">
           {results.length === 0 && searchQuery !== '' && (
-            <Paragraph>
+            <Text variant="paragraph">
               {
                 'Fant ingen sider som passet med søket ditt 😔 \nHer er noen foreslåtte sider:'
               }
-            </Paragraph>
+            </Text>
           )}
           {(searchQuery === '' ||
             (searchQuery !== '' && results.length === 0)) && (
@@ -284,7 +277,9 @@ const ListSection = (props: {
   if (group.length === 0) return <></>;
   return (
     <>
-      <Heading5 as={Heading2}>{title}</Heading5>
+      <Heading as="h2" variant="section-1">
+        {title}
+      </Heading>
       {group.map((result, index) => (
         <ListElement
           key={result.id}
@@ -325,7 +320,7 @@ const ListElement = (props: {
         >
           {result.title}
         </GatsbyLink>
-        <SmallText>{result.description}</SmallText>
+        <Text variant="subparagraph">{result.description}</Text>
       </div>
       {result.npmPackage && (
         <Tag className="searchmodal__list__item__tag">
