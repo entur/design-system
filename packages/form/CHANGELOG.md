@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.0.0](https://github.com/entur/design-system/compare/@entur/form@8.4.2...@entur/form@9.0.0) (2025-10-27)
+
+### Bug Fixes
+
+- **form/checkbox:** fix invalid css selectors ([99ae2c8](https://github.com/entur/design-system/commit/99ae2c828581f4acde7a3f7becb3026fb4b8a024))
+
+### Features
+
+- **form/segmented control:** add polymorphic `as` prop to SegmentedChoice ([1c77768](https://github.com/entur/design-system/commit/1c77768bcb78abb401e23a5c19af6d20e94140c9))
+- **form/segmented control:** add support for uncontrolled behavior ([00671b0](https://github.com/entur/design-system/commit/00671b09c797ea511c16dc7e212484300d0cece5))
+- **segmented control:** add support for new subcomponent API with SegmentedControl.Item ([caae72a](https://github.com/entur/design-system/commit/caae72a570d052e8f5848ea7ea6f79d91194860f))
+
+### BREAKING CHANGES
+
+- **segmented control:** Structural and API changes in this release might be breaking.
+
 ## [8.4.2](https://github.com/entur/design-system/compare/@entur/form@8.4.1...@entur/form@8.4.2) (2025-10-20)
 
 **Note:** Version bump only for package @entur/form

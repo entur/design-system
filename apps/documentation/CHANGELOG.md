@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.12.0](https://github.com/entur/design-system/compare/@entur/documentation@6.11.3...@entur/documentation@6.12.0) (2025-10-27)
+
+### Bug Fixes
+
+- **website:** use development graphql tag in gatsby when running dev server ([4c10391](https://github.com/entur/design-system/commit/4c10391c91d7ef785c0d7fbf6d8507b91697a59f))
+
+### Features
+
+- **website/page builder:** add props to playground via Sanity ([7d0510d](https://github.com/entur/design-system/commit/7d0510d824fc575371b9fa40591e21f44151193f))
+- **website/page builder:** add support for video with new Media object ([0241985](https://github.com/entur/design-system/commit/0241985a29e90e7874d1370f4ba2119640853a16))
+- **website/page builder:** move copyable text under code example ([7fefe2d](https://github.com/entur/design-system/commit/7fefe2df13d90a9909920330593fbff0a187d1d9))
+- **website/page builder:** remove doDontGroup and add guideline ([47c645a](https://github.com/entur/design-system/commit/47c645aec35d8feda267c18a851f3a82d74bf504))
+
 ## [6.11.3](https://github.com/entur/design-system/compare/@entur/documentation@6.11.2...@entur/documentation@6.11.3) (2025-10-20)
 
 **Note:** Version bump only for package @entur/documentation
