@@ -8,6 +8,7 @@ export type InputGroupLabelProps = {
   required?: boolean;
   labelTooltip?: string;
   labelId: string;
+  isFilled?: boolean;
   staticAnimation?: boolean;
 } & React.DetailedHTMLProps<
   React.LabelHTMLAttributes<HTMLLabelElement>,
@@ -19,14 +20,18 @@ export const InputGroupLabel: React.FC<InputGroupLabelProps> = ({
   required,
   labelId,
   staticAnimation = false,
+  className,
+  isFilled: forceIsFilled,
   ...rest
 }) => {
   const { isFilled } = useInputGroupContext();
-  const filler = staticAnimation || isFilled;
+  const filler = staticAnimation || (forceIsFilled ?? isFilled);
   return (
     <label
-      className={classNames(rest.className, {
+      className={classNames(className, {
         'eds-input-group-label-wrapper--filled': filler,
+        'eds-input-group-label-wrapper--controlled-label-position':
+          forceIsFilled !== undefined,
       })}
       id={labelId}
       {...rest}
