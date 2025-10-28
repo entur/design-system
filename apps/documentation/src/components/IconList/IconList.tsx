@@ -325,7 +325,7 @@ const IconList: React.FC<IconListProps> = ({ icons: allIconComponents }) => {
                     <span>{iconName}</span>
                     <CopyIcon aria-label=", trykk for å kopiere til utklippstavlen" />
                   </Text>
-                  <Icon
+                  <IconComponent
                     style={{
                       width: iconSize?.value,
                       height: iconSize?.value,
