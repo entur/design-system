@@ -1,6 +1,5 @@
 @use '@entur/tokens/dist/styles.scss' as t;
 @use 'sass:math';
-@use '@entur/button/dist/styles.css';
 
 $tooltip-arrow-size: t.$space-extra-small;
 $tooltip-arrow-half-height: calc(math.hypot($tooltip-arrow-size, $tooltip-arrow-size) / 2 - 0.125rem);
