@@ -5486,8 +5486,6 @@ __metadata:
   dependenciesMeta:
     glob:
       optional: true
-  bin:
-    migrate: scripts/migrate-typography.mjs
   languageName: unknown
   linkType: soft
 
