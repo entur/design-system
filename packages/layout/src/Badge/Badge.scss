@@ -26,12 +26,6 @@
     position: relative;
   }
 
-  &--leading-icon {
-    .eds-icon:first-child {
-      margin: 0.22247rem 0.22247rem 0.18747rem 0.22247rem; // Total: 1rem x 1rem
-    }
-  }
-
   &--variant-primary {
     background-color: var(--components-layout-badge-primary-standard-fill);
     .eds-text {
@@ -329,8 +323,9 @@
 
       &.eds-badge--leading-icon {
         .eds-icon {
-          width: var(--layout-badge-status-icon-small);
-          height: var(--layout-badge-status-icon-small);
+          width: 0.41631rem;
+          height: 0.46881rem;
+          margin: 0.17rem 0.17rem 0.14rem 0.17rem;
         }
       }
     }
@@ -363,8 +358,9 @@
 
       &.eds-badge--leading-icon {
         .eds-icon {
-          width: var(--layout-badge-status-icon-medium);
-          height: var(--layout-badge-status-icon-medium);
+          width: 0.55506rem;
+          height: 0.62506rem;
+          margin: 0.22rem 0.22rem 0.19rem 0.22rem;
         }
       }
     }
@@ -397,8 +393,9 @@
 
       &.eds-badge--leading-icon {
         .eds-icon {
-          width: var(--layout-badge-status-icon-large);
-          height: var(--layout-badge-status-icon-large);
+          margin: 0.22247rem 0.22247rem 0.18747rem 0.22247rem;
+          width: 0.69381rem;
+          height: 0.78131rem;
         }
       }
     }
