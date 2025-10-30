@@ -264,8 +264,6 @@
     }
     &-bullet {
       background: none;
-      font-size: var(--layout-badge-bullet-font-size-large);
-      line-height: t.$line-heights-extra-large;
       border: none;
       position: relative;
       padding-left: calc(var(--layout-badge-bullet-bullet-medium) + var(--layout-badge-bullet-gap-medium));
