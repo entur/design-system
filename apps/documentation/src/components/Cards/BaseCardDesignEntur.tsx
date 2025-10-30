@@ -47,7 +47,7 @@ const BaseCardDesignEntur = <
       <div className="designentur-base-card__content">
         {title && (
           <Heading
-            as="headingLevel"
+            as={headingLevel}
             variant="section-1"
             className="designentur-base-card__title"
           >

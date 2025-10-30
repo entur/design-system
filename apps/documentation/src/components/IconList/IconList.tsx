@@ -320,7 +320,7 @@ const IconList: React.FC<IconListProps> = ({ icons: allIconComponents }) => {
                     variant="sublabel"
                     as="button"
                     className="icon-list__item-name"
-                    onClick="handleIconClick(iconName + 'Icon')"
+                    onClick={() => handleIconClick(iconName + 'Icon')}
                   >
                     <span>{iconName}</span>
                     <CopyIcon aria-label=", trykk for å kopiere til utklippstavlen" />
