@@ -7,7 +7,7 @@ const fetch = require('node-fetch');
 // eslint-disable-next-line @typescript-eslint/no-var-requires -- disabled when we turned on linting for all files in the project
 const crypto = require('crypto');
 
-exports.onCreateWebpackConfig = ({ actions, getConfig, stage }) => {
+exports.onCreateWebpackConfig = ({ actions, getConfig }) => {
   const oldConfig = getConfig();
   const editedConfig = getConfig();
 
@@ -16,42 +16,13 @@ exports.onCreateWebpackConfig = ({ actions, getConfig, stage }) => {
     '~': path.resolve(__dirname, '../src/'),
   };
 
-  // Suppress CSS order warnings from mini-css-extract-plugin,
-  // The warnings are unavoidable with this architecture - we have beta components auto-importing CSS + custom SCSS + code-splitting = webpack can't determine a consistent order
-  if (
-    stage === 'develop' ||
-    stage === 'build-javascript' ||
-    stage === 'build-html'
-  ) {
-    editedConfig.plugins = [
-      ...(editedConfig.plugins || []),
-      {
-        apply: compiler => {
-          compiler.hooks.done.tap('SuppressCSSOrderWarnings', stats => {
-            if (stats.compilation.warnings) {
-              stats.compilation.warnings = stats.compilation.warnings.filter(
-                warning => {
-                  const msg = warning.message || warning.toString();
-                  return !(
-                    msg.includes('mini-css-extract-plugin') &&
-                    msg.includes('Conflicting order')
-                  );
-                },
-              );
-            }
-          });
-        },
-      },
-    ];
-
-    // Also use webpack 5's native ignoreWarnings
-    editedConfig.ignoreWarnings = [
-      ...(editedConfig.ignoreWarnings || []),
-      {
-        module: /mini-css-extract-plugin/,
-        message: /Conflicting order/,
-      },
-    ];
+  // Suppress CSS order warnings from mini-css-extract-plugin.
+  // Since @entur/typography/beta auto-imports CSS, we can't guarantee a consistent ordering.
+  const miniCssExtractPlugin = (editedConfig.plugins || []).find(
+    plugin => plugin?.constructor?.name === 'MiniCssExtractPlugin',
+  );
+  if (miniCssExtractPlugin?.options) {
+    miniCssExtractPlugin.options.ignoreOrder = true;
   }
 
   actions.replaceWebpackConfig({ ...oldConfig, ...editedConfig });
