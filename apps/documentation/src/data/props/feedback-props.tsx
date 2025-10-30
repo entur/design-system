@@ -51,4 +51,10 @@ export const badgeprops = [
     defaultValue: 'status',
     type: 'dropdown',
   },
+  {
+    name: 'size',
+    options: ['small', 'medium', 'large'],
+    defaultValue: 'medium',
+    type: 'dropdown',
+  },
 ];

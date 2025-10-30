@@ -1,13 +1,33 @@
 @use '@entur/tokens/dist/styles.scss' as t;
+@use './Badge/Badge.scss';
 
 .eds-tag {
-  background: t.$colors-greys-grey70;
-  color: t.$colors-brand-blue;
+  // Use same styling as Badge neutral
+  background-color: var(--components-layout-badge-neutral-standard-fill);
+  border-radius: var(--layout-badge-status-radius-medium);
+  border: var(--layout-badge-status-border-small) solid var(--components-layout-badge-neutral-standard-border);
+  color: var(--components-layout-badge-neutral-standard-text);
   display: inline-block;
   min-width: t.$space-extra-large;
   padding: t.$space-extra-small2 t.$space-small;
   font-size: t.$font-sizes-medium;
   line-height: t.$line-heights-large;
+
+  // Icon color matches text color (like Badge neutral)
+  .eds-icon {
+    color: var(--components-layout-badge-neutral-standard-text);
+  }
+
+  // Contrast mode support (like Badge neutral)
+  .eds-contrast & {
+    background-color: var(--components-layout-badge-neutral-contrast-fill);
+    color: var(--components-layout-badge-neutral-contrast-text);
+    border: var(--layout-badge-status-border-small) solid var(--components-layout-badge-neutral-contrast-border);
+    .eds-icon {
+      color: var(--components-layout-badge-neutral-contrast-text);
+    }
+  }
+
   &--leading-icon .eds-icon {
     margin-right: t.$space-extra-small;
   }

@@ -8,9 +8,10 @@ npmPackage: layout
 tags: tag, knagg,
 ---
 
-import { Tag } from '@entur/layout';
+import { Tag, Badge } from '@entur/layout';
 import { ClockIcon } from '@entur/icons';
 import { SEO } from '@components/seo/SEO';
+import { BannerAlertBox } from '@entur/alert';
 
 export const Head = ( props ) => {
   return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
@@ -34,6 +35,9 @@ export const Head = ( props ) => {
     );
   }
 ```
+
+<BannerAlertBox variant="warning" title="Deprecated">Tag er avviklet og vil bli fjernet i en fremtidig versjon. 
+Bruk Badge med variant="neutral" i stedet.</BannerAlertBox>
 
 ## Retningslinjer for bruk
 

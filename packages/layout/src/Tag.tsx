@@ -3,6 +3,10 @@ import classNames from 'classnames';
 import './Tag.scss';
 import { PolymorphicComponentProps } from '@entur/utils';
 
+/**
+ * @deprecated Tag is deprecated. Use Badge with variant="neutral" instead.
+ * @see Badge from '@entur/layout'
+ */
 export type TagOwnProps = {
   /** HTML-elementet eller React-komponenten som rendres
    * @default 'div'
@@ -17,11 +21,31 @@ export type TagOwnProps = {
   children: React.ReactNode;
 };
 
+/**
+ * @deprecated Tag is deprecated. Use Badge with variant="neutral" instead.
+ * @see Badge from '@entur/layout'
+ */
 export type TagProps<T extends React.ElementType = typeof defaultElement> =
   PolymorphicComponentProps<T, TagOwnProps>;
 
 const defaultElement = 'div';
 
+/**
+ * @deprecated Tag is deprecated. Use Badge with variant="neutral" instead.
+ *
+ * Migration guide:
+ * ```tsx
+ * // Old
+ * <Tag>Content</Tag>
+ * <Tag compact>Content</Tag>
+ *
+ * // New
+ * <Badge variant="neutral" type="status">Content</Badge>
+ * <Badge variant="neutral" type="status" size="small">Content</Badge>
+ * ```
+ *
+ * @see Badge from '@entur/layout'
+ */
 export const Tag = <E extends React.ElementType = typeof defaultElement>({
   className,
   children,
