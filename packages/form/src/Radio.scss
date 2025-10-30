@@ -99,7 +99,7 @@
         }
 
         &:checked ~ .eds-form-component--radio__radio .eds-form-component--radio__circle {
-          background-color: var(--components-form-radio-standard-icon);
+          background-color: var(--components-form-radio-standard-fill-selected);
           border-color: var(--components-form-radio-standard-border-readonly);
         }
       }

@@ -25,6 +25,10 @@ export type RadioPanelProps = {
    * @default false
    */
   disabled?: boolean;
+  /** Om radio-panelet er skrivebeskyttet (readonly) eller ikke
+   * @default false
+   */
+  readOnly?: boolean;
   /** */
   style?: React.CSSProperties;
 } & Omit<
@@ -48,6 +52,7 @@ export const RadioPanel = React.forwardRef<HTMLInputElement, RadioPanelProps>(
       style,
       id,
       disabled = false,
+      readOnly = false,
       ...rest
     },
     ref: React.Ref<HTMLInputElement>,
@@ -69,6 +74,7 @@ export const RadioPanel = React.forwardRef<HTMLInputElement, RadioPanelProps>(
         style={style}
         id={id}
         disabled={disabled}
+        readOnly={readOnly}
         {...rest}
         ref={ref}
       >

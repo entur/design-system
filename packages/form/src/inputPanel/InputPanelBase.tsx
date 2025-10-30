@@ -33,6 +33,10 @@ export type InputPanelProps = {
    * @default false
    */
   disabled?: boolean;
+  /** Om input-panelet er skrivebeskyttet (readonly) eller ikke
+   * @default false
+   */
+  readOnly?: boolean;
   /** */
   style?: React.CSSProperties;
 } & Omit<
@@ -59,6 +63,7 @@ export const InputPanelBase = React.forwardRef<
       style,
       id,
       disabled = false,
+      readOnly = false,
       type = 'radio',
       onChange,
       checked,
@@ -67,7 +72,12 @@ export const InputPanelBase = React.forwardRef<
     },
     ref: React.Ref<HTMLInputElement>,
   ) => {
-    const classList = classNames(
+    const classList = classNames('eds-input-panel', {
+      'eds-input-panel--readonly': readOnly,
+      'eds-input-panel--disabled': disabled,
+    });
+
+    const panelClassList = classNames(
       className,
       'eds-input-panel__container',
       `eds-input-panel--${size}`,
@@ -80,12 +90,34 @@ export const InputPanelBase = React.forwardRef<
     const forceUpdate = useForceUpdate();
 
     const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      if (onChange === undefined) forceUpdate();
+      if (readOnly) {
+        e.preventDefault();
+        return;
+      }
+
+      if (onChange === undefined) {
+        forceUpdate();
+      }
+
       onChange?.(e);
     };
 
+    const handleOnClick = (e: React.MouseEvent<HTMLInputElement>) => {
+      if (readOnly) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    };
+
+    const handleOnKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+      if (readOnly && (e.key === ' ' || e.key === 'Enter')) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    };
+
     return (
-      <label className="eds-input-panel" htmlFor={inputPanelId}>
+      <label className={classList} htmlFor={inputPanelId}>
         <input
           type={type}
           name={name}
@@ -93,17 +125,20 @@ export const InputPanelBase = React.forwardRef<
           value={value}
           checked={checked}
           onChange={handleOnChange}
+          onClick={handleOnClick}
+          onKeyDown={handleOnKeyDown}
           id={inputPanelId}
           disabled={disabled}
+          readOnly={readOnly}
           {...rest}
         />
-        <div className={classList} style={style}>
+        <div className={panelClassList} style={style}>
           <div className="eds-input-panel__title-wrapper">
             <div className="eds-input-panel__title">{title}</div>
             <div className="eds-input-panel__secondary-label-and-icon-wrapper">
               {secondaryLabel !== undefined && <>{secondaryLabel}</>}
               <span style={{ pointerEvents: 'none' }}>
-                {!(disabled || hideSelectionIndicator) &&
+                {!hideSelectionIndicator &&
                   (type === 'radio' ? (
                     <Radio
                       name=""
@@ -112,6 +147,8 @@ export const InputPanelBase = React.forwardRef<
                       onChange={() => {
                         return;
                       }}
+                      disabled={disabled}
+                      readOnly={readOnly}
                       aria-hidden="true"
                       tabIndex={-1}
                     />
@@ -119,6 +156,8 @@ export const InputPanelBase = React.forwardRef<
                     <Checkbox
                       checked={checked ?? inputRef.current?.checked ?? false}
                       onChange={() => null}
+                      disabled={disabled}
+                      readOnly={readOnly}
                       aria-hidden="true"
                       tabIndex={-1}
                     />

@@ -22,8 +22,8 @@
     height: 0;
     width: 0;
 
-    &:checked {
-      + .eds-input-panel__container {
+    &:checked:not(:disabled) {
+      + .eds-input-panel__container:not(.eds-input-panel__container--readonly) {
         border-color: var(--components-form-basepanel-standard-border-selected);
         background: var(--components-form-basepanel-standard-fill-selected);
 
@@ -41,7 +41,7 @@
           }
         }
 
-        &:hover {
+        &:hover:not(:has(input:disabled)):not(:has(.eds-input-panel__container--readonly)) {
           background-color: var(--components-form-basepanel-standard-fill-hover);
 
           .eds-contrast & {
@@ -65,6 +65,67 @@
 
             .eds-contrast & {
               background-color: var(--components-form-checkbox-contrast-fill-selectedhover);
+            }
+          }
+        }
+      }
+
+      + .eds-input-panel__container--readonly {
+        border-style: dashed;
+        border-color: var(--components-form-checkbox-standard-border-readonly);
+        background: var(--components-form-basepanel-standard-fill-selected);
+
+        .eds-contrast & {
+          border-color: var(--components-form-checkbox-contrast-border-readonly);
+          background: var(--components-form-basepanel-contrast-fill-selected);
+        }
+
+        .eds-form-component--radio__circle {
+          width: 0.75rem;
+          height: 0.75rem;
+          background-color: var(--components-form-radio-standard-icon-readonly);
+
+          .eds-contrast & {
+            background-color: var(--components-form-radio-contrast-icon-readonly);
+          }
+        }
+
+        .eds-form-component--radio__radio {
+          background: var(--components-form-radio-standard-fill-disabled);
+          border-style: dashed;
+          border-color: var(--components-form-radio-standard-border-readonly);
+
+          .eds-contrast & {
+            background: var(--components-form-radio-contrast-fill-disabled);
+            border-color: var(--components-form-radio-contrast-border-readonly);
+          }
+        }
+
+        .eds-checkbox__icon {
+          border-style: dashed;
+          border-color: var(--components-form-checkbox-standard-border-readonly);
+          background-color: var(--components-form-checkbox-standard-fill-disabled);
+
+          .eds-contrast & {
+            border-color: var(--components-form-checkbox-contrast-border-readonly);
+            background-color: var(--components-form-checkbox-contrast-fill-disabled);
+          }
+
+          .eds-checkbox-icon path {
+            stroke: var(--components-form-checkbox-standard-border-readonly);
+          }
+
+          .eds-checkbox-icon rect {
+            fill: var(--components-form-checkbox-standard-border-readonly);
+          }
+
+          .eds-contrast & {
+            .eds-checkbox-icon path {
+              stroke: var(--components-form-checkbox-contrast-border-readonly);
+            }
+
+            .eds-checkbox-icon rect {
+              fill: var(--components-form-checkbox-contrast-border-readonly);
             }
           }
         }
@@ -93,36 +154,64 @@
       color: var(--components-form-basepanel-contrast-text-accent);
     }
 
-    &:hover {
+    &:hover:not(:has(input:disabled)):not(.eds-input-panel__container--readonly) {
       background-color: var(--components-form-basepanel-standard-fill-hover);
 
       .eds-contrast & {
         background-color: var(--components-form-basepanel-contrast-fill-hover);
       }
+    }
 
-      /* The following styling is needed to sync the inner checkbox/radiobutton's
-      hover state styling with the inputPanel container */
-      .eds-checkbox__icon,
-      .eds-form-component--radio__radio {
-        background-color: var(--components-form-basepanel-standard-fill-hover);
-        border-color: var(--components-form-basepanel-standard-border-selected);
+    &--readonly {
+      background: var(--components-form-basepanel-standard-fill-default);
+      border-style: dashed;
+      border-color: var(--components-form-checkbox-standard-border-readonly);
+      color: var(--components-form-basepanel-standard-text-accent);
+      cursor: default;
+
+      .eds-contrast & {
+        background: var(--components-form-basepanel-contrast-fill-default);
+        border-color: var(--components-form-checkbox-contrast-border-readonly);
+        color: var(--components-form-basepanel-contrast-text-accent);
+      }
+
+      &:hover {
+        background-color: var(--components-form-basepanel-standard-fill-default);
 
         .eds-contrast & {
-          background-color: var(--components-form-basepanel-contrast-fill-hover);
-          border-color: var(--components-form-basepanel-contrast-border-selected);
+          background-color: var(--components-form-basepanel-contrast-fill-default);
+        }
+      }
+
+      .eds-form-component--radio__radio {
+        background: var(--components-form-radio-standard-fill-disabled);
+        border-style: dashed;
+        border-color: var(--components-form-radio-standard-border-readonly);
+
+        .eds-contrast & {
+          background: var(--components-form-radio-contrast-fill-disabled);
+          border-color: var(--components-form-radio-contrast-border-readonly);
+        }
+      }
+
+      .eds-checkbox__icon {
+        border-style: dashed;
+        border-color: var(--components-form-checkbox-standard-border-readonly);
+
+        .eds-contrast & {
+          border-color: var(--components-form-checkbox-contrast-border-readonly);
         }
       }
     }
 
     input:disabled + & {
-      background: var(--components-form-basepanel-standard-fill-disabled);
+      background: var(--components-form-basepanel-standard-fill-default);
       border-color: var(--components-form-basepanel-standard-border-disabled);
       color: var(--components-form-basepanel-standard-text-disabled);
       cursor: not-allowed;
 
       .eds-contrast & {
-        background: var(--components-form-basepanel-contrast-fill-disabled);
-        border-style: dashed;
+        background: var(--components-form-basepanel-contrast-fill-default);
         border-color: var(--components-form-basepanel-contrast-border-disabled);
         color: var(--components-form-basepanel-contrast-text-disabled);
       }
