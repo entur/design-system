@@ -1,7 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
 import { RightArrowIcon } from '@entur/icons';
-import './BreadcrumbNavigation.scss';
 import { PolymorphicComponentProps } from '@entur/utils';
 
 export type BreadcrumbItemOwnProps = {
@@ -13,7 +12,9 @@ export type BreadcrumbItemOwnProps = {
   children: React.ReactNode;
   /** Ekstra klassenavn */
   className?: string;
-  /** True om sist i listen. Settes automatisk av BreadcrumbNavigation-komponenten */
+  /** @internal
+   * Markerer aktivt element, i.e. siste element.
+   * Settes automatisk av BreadcrumbNavigation og kan ikke overskrives */
   isCurrent?: boolean;
 };
 
@@ -31,18 +32,17 @@ export const BreadcrumbItem = <
   as,
   ...rest
 }: BreadcrumbItemProps<E>): JSX.Element => {
-  const Element: React.ElementType = as || defaultElement;
+  const Element: React.ElementType =
+    as || (isCurrent ? 'span' : defaultElement);
   return (
-    <>
-      <li className={classNames('eds-breadcrumbs__item', className)}>
-        <Element
-          aria-current={isCurrent ? 'page' : undefined}
-          className={classNames('eds-breadcrumbs__link', {
-            'eds-breadcrumbs__link--current': isCurrent,
-          })}
-          {...rest}
-        />
-      </li>
+    <li className={classNames('eds-breadcrumbs__item', className)}>
+      <Element
+        aria-current={isCurrent ? 'page' : undefined}
+        className={classNames('eds-breadcrumbs__item__link', {
+          'eds-breadcrumbs__item__link--current': isCurrent,
+        })}
+        {...rest}
+      />
       {!isCurrent && (
         <RightArrowIcon
           className="eds-breadcrumbs__separator"
@@ -50,6 +50,6 @@ export const BreadcrumbItem = <
           role="presentation"
         />
       )}
-    </>
+    </li>
   );
 };
