@@ -34,18 +34,18 @@ export const BreadcrumbItem = <
   const Element: React.ElementType = as || defaultElement;
   return (
     <>
-      <li className={classNames('eds-breadcrumb__item', className)}>
+      <li className={classNames('eds-breadcrumbs__item', className)}>
         <Element
           aria-current={isCurrent ? 'page' : undefined}
-          className={classNames('eds-breadcrumb__link', {
-            'eds-breadcrumb__link--current': isCurrent,
+          className={classNames('eds-breadcrumbs__link', {
+            'eds-breadcrumbs__link--current': isCurrent,
           })}
           {...rest}
         />
       </li>
       {!isCurrent && (
         <RightArrowIcon
-          className="eds-breadcrumb__separator"
+          className="eds-breadcrumbs__separator"
           inline
           role="presentation"
         />
