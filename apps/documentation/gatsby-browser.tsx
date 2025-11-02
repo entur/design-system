@@ -55,18 +55,22 @@ export const shouldUpdateScroll: GatsbyBrowser['shouldUpdateScroll'] = ({
     prevRouterProps?.location.pathname.split('/')?.[1];
   const pathCategory = routerProps?.location.pathname.split('/')?.[1];
 
-  // If the pathname doesn't have a hash, reset the scroll position to the top
-  if (routerProps.location.hash === '') {
-    // Otherwise, scroll to the top of the page
+  const hasHash = routerProps.location.hash !== '';
+
+  if (!hasHash) {
+    window.scrollTo({ top: 0, left: 0 });
+
     const page = document.getElementsByClassName('page')?.[0];
-    if (page) page.scrollTo(0, 0);
-  }
-  // If the path does have a hash, scroll to that hash element
-  else {
+    if (page instanceof HTMLElement) {
+      page.scrollTo({ top: 0, left: 0 });
+    }
+
+    document.scrollingElement?.scrollTo({ top: 0, left: 0 });
+  } else {
     const hashElement = document.getElementById(
       routerProps.location.hash?.slice(1),
     );
-    if (hashElement) hashElement.scrollIntoView();
+    if (hashElement) hashElement.scrollIntoView({ block: 'start' });
   }
 
   // If we move to a new category, i.e. 'komponenter' -> 'identitet', reset side menu scroll
