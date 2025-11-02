@@ -64,26 +64,20 @@ const createComponents = (
     em: ({ children }) => <EmphasizedText>{children}</EmphasizedText>,
     link: ({ value, children }) => {
       const { href } = value;
-      if (href === undefined) {
-        return null;
-      }
+      if (href === undefined) return null;
+
       try {
         const url = new URL(href);
-        const allowedHosts = ['om.entur.no', 'entur.no'];
-        if (allowedHosts.includes(url.host)) {
-          switch (url.host) {
-            case 'om.entur.no':
-              return (
-                <Link
-                  as={GatsbyLink as any}
-                  to={url.pathname + url.search + url.hash}
-                >
-                  {children}
-                </Link>
-              );
-            case 'entur.no':
-              return <Link href={href}>{children}</Link>;
-          }
+        const internalHosts = ['linje.entur.no'];
+        if (internalHosts.includes(url.host)) {
+          return (
+            <Link
+              as={GatsbyLink as any}
+              to={url.pathname + url.search + url.hash}
+            >
+              {children}
+            </Link>
+          );
         }
       } catch (e) {
         console.error('Invalid URL:', href, e);
