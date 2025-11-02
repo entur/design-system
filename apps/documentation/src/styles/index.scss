@@ -56,7 +56,7 @@ body {
 
   @media screen and (min-width: map.get(variables.$breakpoints, 'tablet')) {
     left: calc(variables.$side-navigation-width--desktop + eds.$space-extra-large);
-    width: calc(100% - #{variables.$side-navigation-width--desktop});
+    width: calc(100% - #{variables.$side-navigation-width--desktop} - #{variables.$site-content-right-margin} - #{variables.$site-content-left-margin});
   }
 
   .site-content {
