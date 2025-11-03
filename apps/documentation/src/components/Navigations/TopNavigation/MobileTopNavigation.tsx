@@ -1,17 +1,18 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import { Link as GatsbyLink } from 'gatsby';
 import classNames from 'classnames';
 import { Location } from '@reach/router';
 
-import { Contrast, useContrast } from '@entur/layout';
+import { useContrast } from '@entur/layout';
 import { IconButton } from '@entur/button';
 import { GithubIcon } from '@entur/icons';
 import { Tooltip } from '@entur/tooltip';
+import { Link } from '@entur/typography';
 
 import SettingsPanel from '../SettingsPanel';
 import { useSettings } from '@providers/SettingsContext';
 import { Search } from '@components/Search/Search';
-import SideNavigationLayout from 'src/layouts/SideNavigationLayout';
+
 import logo from '../../../media/logo/logo.svg';
 import logoDark from '../../../media/logo/logoDark.svg';
 
@@ -39,14 +40,14 @@ const MobileTopNavigation: React.FC<MobileTopNavigationProps> = ({
       {...rest}
     >
       <div className="mobile-topnav__menu">
-        <LinkBeta to="/" className="mobile-topnav__logo">
+        <Link as={GatsbyLink} to="/" className="mobile-topnav__logo">
           <img
             src={colorMode === 'dark' || isContrast ? logoDark : logo}
             alt="Entur logo – Linje starside"
           />
-        </LinkBeta>
+        </Link>
         <Search />
-        <Tooltip content="Entur Linje på GitHub">
+        <Tooltip content="Entur Linje på GitHub" placement="bottom">
           <IconButton
             className="top-navigation__github"
             aria-label="Entur Linje på Github"

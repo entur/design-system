@@ -9,7 +9,7 @@
   --background-height: 200rem;
   $background-width: 400rem;
   $parallax-translate-x: -40rem;
-  --parallax-translate-y: -59rem;
+  --parallax-translate-y: -62rem;
   $top-parallax-transform: translateZ(-4px) translateX($parallax-translate-x) translateY(var(--parallax-translate-y)) scale(1.8);
   $bottom-parallax-transform: translateZ(-5px) translateX($parallax-translate-x) translateY(var(--parallax-translate-y)) scale(2);
   $disabled-parallax-transform: translateX(-110rem) translateY(-55rem) scale(1) !important;
@@ -182,7 +182,7 @@
           &__end {
             display: block;
             position: relative;
-            top: 0.5rem;
+            top: 1.5rem;
             font-size: eds.$font-sizes-extra-large5;
             color: var(--basecolors-text-highlight);
           }

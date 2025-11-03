@@ -132,6 +132,7 @@ const Index = () => {
                   as="h2"
                   variant="title-2"
                   className="frontpage__main__hero__content__secondary-heading"
+                  spacing="xl-top"
                 >
                   Alt du trenger i ett system
                 </Heading>
