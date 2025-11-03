@@ -10,7 +10,8 @@
       "{workspaceRoot}/tsconfig*.json",
       "{workspaceRoot}/package.json",
       "{workspaceRoot}/.eslintrc",
-      "{workspaceRoot}/jest.config.js"
+      "{workspaceRoot}/jest.config.js",
+      "{workspaceRoot}/postcss.config.mjs"
     ],
     "production": ["default"]
   },

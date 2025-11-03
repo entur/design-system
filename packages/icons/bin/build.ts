@@ -2,6 +2,8 @@ import toCase from 'case';
 import fs from 'fs-extra';
 import path from 'path';
 import sass from 'sass';
+import postcss from 'postcss';
+import postcssPresetEnv from 'postcss-preset-env';
 import { loadConfig } from 'svgo';
 import { Config, transform } from '@svgr/core';
 import { colors, transport } from '@entur/tokens';
@@ -39,7 +41,7 @@ const SPECIAL_OUTLIERS = [
 
 buildIconComponents();
 
-function buildIconComponents() {
+async function buildIconComponents() {
   const components = traverse('src/svgs').map((svgPath: string) => {
     // Check for .DS_Store to clarify confusing error message
     if (svgPath.endsWith('.DS_Store')) {
@@ -77,7 +79,8 @@ function buildIconComponents() {
 
   createIndexFiles(components);
   createTypeDeclaration(components);
-  createStyleFiles();
+  createWebIndex();
+  await createStyleFiles();
 }
 
 async function outputComponentCode({
@@ -161,20 +164,29 @@ function createIndexFiles(components: Component[]) {
   fs.outputFileSync('./tmp/index.js', 'export * from "./web";\n');
 }
 
-function createStyleFiles() {
+function createWebIndex() {
+  // Create a temporary web index that rollup will consume (styles are compiled separately)
+  fs.ensureDirSync('./tmp/web');
+  // nothing else needed; rollup uses tmp/web/index.js created above
+}
+
+async function createStyleFiles() {
   fs.ensureDirSync('./dist');
-  // finally, let's copy over the static assets if you need those directly
   try {
     const result = sass.compile('./src/index.scss', {
       loadPaths: ['../../node_modules'],
     });
-    fs.outputFileSync('./dist/styles.css', result.css);
+    const processed = await postcss([postcssPresetEnv({})]).process(
+      result.css,
+      { from: undefined },
+    );
+    fs.outputFileSync('./dist/styles.css', processed.css);
   } catch (e) {
     console.error(
-      '\u001b[31mERROR: Icon build failed.\n------------------\u001b[0m\n',
+      '\u001b[31mERROR: Icon style build failed.\n------------------\u001b[0m\n',
       e,
     );
-    throw '@entur/icons failed!';
+    throw '@entur/icons styles failed!';
   }
 }
 
