@@ -1,0 +1,20 @@
+@use '@entur/utils/dist/layers.scss';
+
+/* App-level overrides should always win over DS */
+@layer app {
+  .demo-layer {
+    /* Typography heading override */
+    .eds-heading--title-2 {
+      /* Intentionally different to prove layer win */
+      font-size: clamp(1.125rem, 1.5vw, 1.75rem);
+      color: rebeccapurple;
+    }
+
+    /* Link override */
+    .eds-text--link {
+      /* Thicker underline and different color */
+      background-image: linear-gradient(120deg, rebeccapurple 0%, rebeccapurple 100%);
+      background-size: 100% 0.2rem;
+    }
+  }
+}

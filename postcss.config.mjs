@@ -6,6 +6,7 @@ export default {
     postcssPresetEnv({
       features: {
         'logical-properties-and-values': false,
+        'cascade-layers': false,
       },
     }),
     discardComments({

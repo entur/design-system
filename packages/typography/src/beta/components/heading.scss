@@ -1,6 +1,8 @@
 // Beta typography heading styles - experimental features
 // These styles may have breaking changes in future releases
 
+@use '@entur/utils/dist/layers.scss';
+
 @use '@entur/tokens/dist/styles.scss' as t;
 @use '@entur/tokens/dist/base.scss' as *;
 @use '@entur/utils/dist/breakpoints.scss' as *;
@@ -8,175 +10,177 @@
 @forward '../typography-tokens.scss';
 @use '../typography-tokens.scss' as *;
 
-.eds-heading {
-  color: var(--components-typography-basetext-standard-text-accent);
-  font-weight: var(--font-weight-heading);
-  margin: 0;
+@layer components.primitives {
+  .eds-heading {
+    color: var(--components-typography-basetext-standard-text-accent);
+    font-weight: var(--font-weight-heading);
+    margin: 0;
 
-  .eds-contrast & {
-    color: var(--components-typography-basetext-contrast-text-accent);
-  }
-
-  // Sizes
-  &--2xl {
-    font-size: var(--font-size-heading-2xl);
-    line-height: var(--font-line-height-heading-2xl);
-  }
-  &--xl {
-    font-size: var(--font-size-heading-xl);
-    line-height: var(--font-line-height-heading-xl);
-  }
-  &--lg {
-    font-size: var(--font-size-heading-lg);
-    line-height: var(--font-line-height-heading-lg);
-  }
-  &--m {
-    font-size: var(--font-size-heading-m);
-    line-height: var(--font-line-height-heading-m);
-  }
-  &--s {
-    font-size: var(--font-size-heading-s);
-    line-height: var(--font-line-height-heading-s);
-  }
-  &--xs {
-    font-size: var(--font-size-heading-xs);
-    line-height: var(--font-line-height-heading-xs);
-  }
-
-  // Variants
-  &--title-1 {
-    font-size: var(--font-size-heading-2xl);
-    line-height: var(--font-line-height-heading-2xl);
-    margin-bottom: var(--font-paragraph-spacing-heading-lg);
-
-    &:not(:first-child) {
-      margin-top: var(--font-paragraph-spacing-heading-lg);
+    :where(.eds-contrast) & {
+      color: var(--components-typography-basetext-contrast-text-accent);
     }
-  }
-  &--title-2 {
-    font-size: var(--font-size-heading-xl);
-    line-height: var(--font-line-height-heading-xl);
-    margin-bottom: var(--font-paragraph-spacing-heading-xl);
 
-    &:not(:first-child) {
-      margin-top: var(--font-paragraph-spacing-heading-xl);
+    // Sizes
+    &--2xl {
+      font-size: var(--font-size-heading-2xl);
+      line-height: var(--font-line-height-heading-2xl);
     }
-  }
-  &--subtitle-1 {
-    font-size: var(--font-size-heading-lg);
-    line-height: var(--font-line-height-heading-lg);
-    margin-bottom: var(--font-paragraph-spacing-heading-lg);
-
-    &:not(:first-child) {
-      margin-top: var(--font-paragraph-spacing-heading-lg);
+    &--xl {
+      font-size: var(--font-size-heading-xl);
+      line-height: var(--font-line-height-heading-xl);
     }
-  }
-  &--subtitle-2 {
-    font-size: var(--font-size-heading-m);
-    line-height: var(--font-line-height-heading-m);
-    margin-bottom: var(--font-paragraph-spacing-heading-m);
-
-    &:not(:first-child) {
-      margin-top: var(--font-paragraph-spacing-heading-m);
+    &--lg {
+      font-size: var(--font-size-heading-lg);
+      line-height: var(--font-line-height-heading-lg);
     }
-  }
-  &--section-1 {
-    font-size: var(--font-size-heading-s);
-    line-height: var(--font-line-height-heading-s);
-    margin-bottom: var(--font-paragraph-spacing-heading-s);
-
-    &:not(:first-child) {
-      margin-top: var(--font-paragraph-spacing-heading-s);
+    &--m {
+      font-size: var(--font-size-heading-m);
+      line-height: var(--font-line-height-heading-m);
     }
-  }
-  &--section-2 {
-    font-size: var(--font-size-heading-s);
-    line-height: var(--font-line-height-heading-s);
-    margin-bottom: var(--font-paragraph-spacing-heading-xs);
-
-    &:not(:first-child) {
-      margin-top: var(--font-paragraph-spacing-heading-xs);
+    &--s {
+      font-size: var(--font-size-heading-s);
+      line-height: var(--font-line-height-heading-s);
     }
-  }
+    &--xs {
+      font-size: var(--font-size-heading-xs);
+      line-height: var(--font-line-height-heading-xs);
+    }
 
-  // Note: Default top spacing is added when heading is not first child
-  // Text components with :has(+ .eds-heading) will add extra bottom margin when applicable
+    // Variants
+    &--title-1 {
+      font-size: var(--font-size-heading-2xl);
+      line-height: var(--font-line-height-heading-2xl);
+      margin-bottom: var(--font-paragraph-spacing-heading-lg);
 
-  // Spacing modifiers
-  &--spacing-none {
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-  &--spacing-xs2 {
-    margin-top: t.$space-extra-small2;
-    margin-bottom: t.$space-extra-small2;
-  }
-  &--spacing-xs2-top {
-    margin-top: t.$space-extra-small2;
-    margin-bottom: 0;
-  }
-  &--spacing-xs2-bottom {
-    margin-top: 0;
-    margin-bottom: t.$space-extra-small2;
-  }
-  &--spacing-xs {
-    margin-top: t.$space-extra-small;
-    margin-bottom: t.$space-extra-small;
-  }
-  &--spacing-xs-top {
-    margin-top: t.$space-extra-small;
-    margin-bottom: 0;
-  }
-  &--spacing-xs-bottom {
-    margin-top: 0;
-    margin-bottom: t.$space-extra-small;
-  }
-  &--spacing-sm {
-    margin-top: t.$space-small;
-    margin-bottom: t.$space-small;
-  }
-  &--spacing-sm-top {
-    margin-top: t.$space-small;
-    margin-bottom: 0;
-  }
-  &--spacing-sm-bottom {
-    margin-top: 0;
-    margin-bottom: t.$space-small;
-  }
-  &--spacing-md {
-    margin-top: t.$space-medium;
-    margin-bottom: t.$space-medium;
-  }
-  &--spacing-md-top {
-    margin-top: t.$space-medium;
-    margin-bottom: 0;
-  }
-  &--spacing-md-bottom {
-    margin-top: 0;
-    margin-bottom: t.$space-medium;
-  }
-  &--spacing-lg {
-    margin-top: t.$space-large;
-    margin-bottom: t.$space-large;
-  }
-  &--spacing-lg-top {
-    margin-top: t.$space-large;
-    margin-bottom: 0;
-  }
-  &--spacing-lg-bottom {
-    margin-top: 0;
-    margin-bottom: t.$space-large;
-  }
-  &--spacing-xl {
-    margin-top: t.$space-extra-large;
-    margin-bottom: t.$space-extra-large;
-  }
-  &--spacing-xl-top {
-    margin-top: t.$space-extra-large;
-    margin-bottom: 0;
-  }
-  &--spacing-xl-bottom {
-    margin-top: 0;
-    margin-bottom: t.$space-extra-large;
+      &:where(:not(:first-child)) {
+        margin-top: var(--font-paragraph-spacing-heading-lg);
+      }
+    }
+    &--title-2 {
+      font-size: var(--font-size-heading-xl);
+      line-height: var(--font-line-height-heading-xl);
+      margin-bottom: var(--font-paragraph-spacing-heading-xl);
+
+      &:where(:not(:first-child)) {
+        margin-top: var(--font-paragraph-spacing-heading-xl);
+      }
+    }
+    &--subtitle-1 {
+      font-size: var(--font-size-heading-lg);
+      line-height: var(--font-line-height-heading-lg);
+      margin-bottom: var(--font-paragraph-spacing-heading-lg);
+
+      &:where(:not(:first-child)) {
+        margin-top: var(--font-paragraph-spacing-heading-lg);
+      }
+    }
+    &--subtitle-2 {
+      font-size: var(--font-size-heading-m);
+      line-height: var(--font-line-height-heading-m);
+      margin-bottom: var(--font-paragraph-spacing-heading-m);
+
+      &:where(:not(:first-child)) {
+        margin-top: var(--font-paragraph-spacing-heading-m);
+      }
+    }
+    &--section-1 {
+      font-size: var(--font-size-heading-s);
+      line-height: var(--font-line-height-heading-s);
+      margin-bottom: var(--font-paragraph-spacing-heading-s);
+
+      &:where(:not(:first-child)) {
+        margin-top: var(--font-paragraph-spacing-heading-s);
+      }
+    }
+    &--section-2 {
+      font-size: var(--font-size-heading-s);
+      line-height: var(--font-line-height-heading-s);
+      margin-bottom: var(--font-paragraph-spacing-heading-xs);
+
+      &:where(:not(:first-child)) {
+        margin-top: var(--font-paragraph-spacing-heading-xs);
+      }
+    }
+
+    // Note: Default top spacing is added when heading is not first child
+    // Text components with :has(+ .eds-heading) will add extra bottom margin when applicable
+
+    // Spacing modifiers
+    &--spacing-none {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+    &--spacing-xs2 {
+      margin-top: t.$space-extra-small2;
+      margin-bottom: t.$space-extra-small2;
+    }
+    &--spacing-xs2-top {
+      margin-top: t.$space-extra-small2;
+      margin-bottom: 0;
+    }
+    &--spacing-xs2-bottom {
+      margin-top: 0;
+      margin-bottom: t.$space-extra-small2;
+    }
+    &--spacing-xs {
+      margin-top: t.$space-extra-small;
+      margin-bottom: t.$space-extra-small;
+    }
+    &--spacing-xs-top {
+      margin-top: t.$space-extra-small;
+      margin-bottom: 0;
+    }
+    &--spacing-xs-bottom {
+      margin-top: 0;
+      margin-bottom: t.$space-extra-small;
+    }
+    &--spacing-sm {
+      margin-top: t.$space-small;
+      margin-bottom: t.$space-small;
+    }
+    &--spacing-sm-top {
+      margin-top: t.$space-small;
+      margin-bottom: 0;
+    }
+    &--spacing-sm-bottom {
+      margin-top: 0;
+      margin-bottom: t.$space-small;
+    }
+    &--spacing-md {
+      margin-top: t.$space-medium;
+      margin-bottom: t.$space-medium;
+    }
+    &--spacing-md-top {
+      margin-top: t.$space-medium;
+      margin-bottom: 0;
+    }
+    &--spacing-md-bottom {
+      margin-top: 0;
+      margin-bottom: t.$space-medium;
+    }
+    &--spacing-lg {
+      margin-top: t.$space-large;
+      margin-bottom: t.$space-large;
+    }
+    &--spacing-lg-top {
+      margin-top: t.$space-large;
+      margin-bottom: 0;
+    }
+    &--spacing-lg-bottom {
+      margin-top: 0;
+      margin-bottom: t.$space-large;
+    }
+    &--spacing-xl {
+      margin-top: t.$space-extra-large;
+      margin-bottom: t.$space-extra-large;
+    }
+    &--spacing-xl-top {
+      margin-top: t.$space-extra-large;
+      margin-bottom: 0;
+    }
+    &--spacing-xl-bottom {
+      margin-top: 0;
+      margin-bottom: t.$space-extra-large;
+    }
   }
 }
