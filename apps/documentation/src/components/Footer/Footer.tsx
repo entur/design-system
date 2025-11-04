@@ -85,18 +85,23 @@ const Footer = ({
       <div className="footer__entur-banner">
         <Logo colorMode={forceColorMode || colorMode} />
         <div style={{ float: 'right', position: 'relative', top: '0.9rem' }}>
-          <span
-            className="eds-label"
+          <Text
+            as="span"
+            variant="paragraph"
             style={{
               borderRight: `1px solid ${colors.greys.grey70}`,
               paddingRight: space.small,
             }}
           >
             Entur.no
-          </span>
-          <span className="eds-label" style={{ paddingLeft: space.small }}>
+          </Text>
+          <Text
+            as="span"
+            variant="paragraph"
+            style={{ paddingLeft: space.small }}
+          >
             © {year.getFullYear()} Entur AS
-          </span>
+          </Text>
         </div>
       </div>
     </div>

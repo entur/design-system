@@ -3,7 +3,7 @@ import { colors, space } from '@entur/tokens';
 import hexrgb from 'hex-rgb';
 import { BaseCard } from '@entur/layout';
 import { GridItem } from '@entur/grid';
-import { Heading } from '@entur/typography/beta';
+import { Heading, Text } from '@entur/typography/beta';
 import { formatVariable } from '../../utils/formatVariable';
 import { useSettings } from '@providers/SettingsContext';
 import { useColorContext } from '@providers/ColorProvider';
@@ -45,7 +45,11 @@ const ColorSwatch: React.FC<Props> = ({
   const { setChosenColor } = useColorContext();
   return (
     <GridItem small={6} medium={4}>
-      {topLabel && <div className="eds-label">{topLabel}</div>}
+      {topLabel && (
+        <Text as="span" variant="label">
+          {topLabel}
+        </Text>
+      )}
       <BaseCard
         className="color-swatch"
         as="button"
