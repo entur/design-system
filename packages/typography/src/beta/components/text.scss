@@ -1,19 +1,12 @@
 // Beta typography text styles - experimental features
 // These styles may have breaking changes in future releases
+@use '../index';
 
-@use '@entur/utils/dist/layers.scss';
-
-@use '@entur/tokens/dist/styles.scss' as t;
-@use '@entur/tokens/dist/base.scss' as *;
-@use '@entur/utils/dist/breakpoints.scss' as *;
-@forward '../typography-tokens.scss';
-@use '../typography-tokens.scss' as *;
-@use '../componentColors.scss' as *;
-
-@import 'modern-normalize/modern-normalize.css';
+@use '@entur/tokens/dist/styles' as t;
+@use '@entur/tokens/dist/base' as *;
+@use '@entur/utils/dist/breakpoints' as *;
 
 @layer components.primitives {
-  // Beta Typography Text Base Classes
   .eds-text {
     color: var(--components-typography-basetext-standard-text-accent);
     font-weight: var(--font-weight-body);

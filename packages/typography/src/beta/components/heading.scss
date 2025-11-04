@@ -1,14 +1,10 @@
 // Beta typography heading styles - experimental features
 // These styles may have breaking changes in future releases
+@use '../index';
 
-@use '@entur/utils/dist/layers.scss';
-
-@use '@entur/tokens/dist/styles.scss' as t;
-@use '@entur/tokens/dist/base.scss' as *;
-@use '@entur/utils/dist/breakpoints.scss' as *;
-@use '../componentColors.scss' as *;
-@forward '../typography-tokens.scss';
-@use '../typography-tokens.scss' as *;
+@use '@entur/tokens/dist/styles' as t;
+@use '@entur/tokens/dist/base' as *;
+@use '@entur/utils/dist/breakpoints' as *;
 
 @layer components.primitives {
   .eds-heading {
