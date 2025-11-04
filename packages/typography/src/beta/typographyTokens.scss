@@ -1,4 +1,4 @@
-@use '@entur/utils/dist/breakpoints' as *;
+@use '@entur/utils/dist/breakpoints' as breakpoints;
 
 /*
  * Typography Display Modes
@@ -6,16 +6,16 @@
  * This system allows you to control typography scaling based on view size.
  * Use the vie-mode attribute to switch between different typography scales:
  * 
- * - Compact: [view-mode='compact'] or no attribute (responsive)
- * - Display: [view-mode='display'] for big screens, kiosks, etc.
+ * - Compact: [data-view-mode='compact'] or no attribute (responsive)
+ * - Display: [data-view-mode='display'] for big screens, kiosks, etc.
  * 
  * Usage:
- * <html view-mode="display"> or <div view-mode="display">
+ * <html data-view-mode="display"> or <div data-view-mode="display">
  * 
  * The system automatically handles responsive behavior within each mode.
  */
 :root,
-[view-mode='standard'] {
+[data-view-mode='standard'] {
   /* number */
   --font-line-height-body-xs: var(--size-8);
   --font-line-height-body-s: var(--size-9);
@@ -51,11 +51,11 @@
   --font-size-heading-xl: var(--size-10);
   --font-size-heading-2xl: var(--size-11);
   /* string */
-  --font-family-nationale: Nationale;
+  --font-family-nationale: nationale;
   --font-weight-body: 500;
   --font-weight-heading: 600;
 
-  @include for-desktop {
+  @include breakpoints.for-desktop {
     --font-line-height-body-xs: var(--size-8);
     --font-line-height-body-s: var(--size-9);
     --font-line-height-body-m: var(--size-10);
@@ -90,12 +90,12 @@
     --font-size-heading-xl: var(--size-12);
     --font-size-heading-2xl: var(--size-14);
     /* string */
-    --font-family-nationale: Nationale;
+    --font-family-nationale: nationale;
     --font-weight-body: 500;
     --font-weight-heading: 600;
   }
 }
-[view-mode='compact'] {
+[data-view-mode='compact'] {
   /* number */
   --font-line-height-body-xs: var(--size-8);
   --font-line-height-body-s: var(--size-9);
@@ -131,11 +131,11 @@
   --font-size-heading-xl: var(--size-10);
   --font-size-heading-2xl: var(--size-11);
   /* string */
-  --font-family-nationale: Nationale;
+  --font-family-nationale: nationale;
   --font-weight-body: 500;
   --font-weight-heading: 600;
 }
-[view-mode='display'] {
+[data-view-mode='display'] {
   /* number */
   --font-line-height-body-xs: var(--size-11);
   --font-line-height-body-s: var(--size-12);
@@ -171,7 +171,7 @@
   --font-size-heading-xl: var(--size-19);
   --font-size-heading-2xl: var(--size-20);
   /* string */
-  --font-family-nationale: Nationale;
+  --font-family-nationale: nationale;
   --font-weight-body: 500;
   --font-weight-heading: 600;
 }
