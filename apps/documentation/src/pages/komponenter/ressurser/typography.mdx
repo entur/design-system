@@ -17,6 +17,8 @@ import {
 import { Link } from 'gatsby';
 import { SEO } from '@components/seo/SEO';
 
+import "@entur/typography/dist/styles.css";
+
 export const Head = ( props ) => {
   return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
 }
