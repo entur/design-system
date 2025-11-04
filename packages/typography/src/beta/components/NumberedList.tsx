@@ -39,6 +39,7 @@ export const NumberedList = <C extends React.ElementType = 'ol'>({
   return (
     <ListElement
       className={classNames(
+        'eds-text',
         'eds-text--numbered-list',
         { [`eds-text--numbered-list--type-${type}`]: type },
         getSpacingClasses(spacing, 'eds-text--numbered-list'),

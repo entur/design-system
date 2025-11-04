@@ -9,6 +9,7 @@
 @layer components.primitives {
   .eds-heading {
     color: var(--components-typography-basetext-standard-text-accent);
+    font-family: var(--font-family-nationale);
     font-weight: var(--font-weight-heading);
     margin: 0;
 

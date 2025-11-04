@@ -14,7 +14,7 @@ export type BlockquoteProps = {
 export const Blockquote = ({ className, ...rest }: BlockquoteProps) => {
   return (
     <blockquote
-      className={classNames('eds-text--blockquote', className)}
+      className={classNames('eds-text', 'eds-text--blockquote', className)}
       {...rest}
     />
   );
@@ -31,7 +31,11 @@ export const BlockquoteFooter = ({
 }: BlockquoteFooterProps) => {
   return (
     <footer
-      className={classNames('eds-text--blockquote__footer', className)}
+      className={classNames(
+        'eds-text',
+        'eds-text--blockquote__footer',
+        className,
+      )}
       {...rest}
     />
   );

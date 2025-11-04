@@ -36,6 +36,7 @@ export const UnorderedList = <C extends React.ElementType = 'ul'>({
   return (
     <ListElement
       className={classNames(
+        'eds-text',
         'eds-text--unordered-list',
         getSpacingClasses(spacing, 'eds-text--unordered-list'),
         className,

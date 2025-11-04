@@ -9,6 +9,7 @@
 @layer components.primitives {
   .eds-text {
     color: var(--components-typography-basetext-standard-text-accent);
+    font-family: var(--font-family-nationale);
     font-weight: var(--font-weight-body);
     margin: 0;
 
@@ -328,7 +329,6 @@
     }
     &--blockquote {
       border-left: t.$border-widths-large solid var(--components-typography-blockquote-standard-stroke);
-      font-family: inherit;
       margin: 0;
       padding: t.$space-extra-small;
       padding-left: t.$space-extra-large;
