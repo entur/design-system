@@ -18,7 +18,7 @@
   },
   "scripts": {
     "start": "vite build --watch",
-    "build": "vite build && cp src/*.scss dist",
+    "build": "vite build && cp src/*.scss dist && sass src/normalize.scss dist/normalize.css --no-source-map --load-path=../../node_modules --load-path=../../packages && sass src/setup-linje.scss dist/setup-linje.css --no-source-map --load-path=../../node_modules --load-path=../../packages",
     "test": "jest",
     "lint": "eslint src"
   },

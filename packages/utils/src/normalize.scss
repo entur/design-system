@@ -1,0 +1,59 @@
+// Linje Normalize - Opt-in global defaults for Entur Design System
+// Import this stylesheet to automatically set global defaults like font-family, color, etc.
+// This is optional - consumers can choose to use this or set their own defaults
+
+@use './layers.scss' as *;
+@use '@entur/tokens/dist/base.scss' as *;
+
+@layer core.base {
+  // Global box-sizing (safe default)
+  :root {
+    box-sizing: border-box;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+
+  // Global font family (Nationale)
+  :root {
+    font-family: var(
+      --font-family-nationale,
+      'Nationale',
+      Arial,
+      'Gotham Rounded',
+      -apple-system,
+      BlinkMacSystemFont,
+      'Segoe UI',
+      Roboto,
+      Oxygen-Sans,
+      Ubuntu,
+      Cantarell,
+      'Helvetica Neue',
+      sans-serif
+    );
+  }
+
+  // Global text color and background (opt-in, can be overridden)
+  [data-color-mode='light'],
+  [data-color-mode='dark'],
+  :root {
+    color: var(--components-typography-basetext-standard-text-accent, var(--basecolors-text-accent));
+    background-color: var(--basecolors-frame-default);
+  }
+
+  // Global font weight and size defaults
+  :root {
+    font-weight: var(--font-weight-body, 500);
+    font-size: var(--font-size-body-m, 1rem);
+    line-height: var(--font-line-height-body-m, 1.25rem);
+  }
+
+  // Contrast mode overrides
+  .eds-contrast {
+    color: var(--components-typography-basetext-contrast-text-accent, var(--basecolors-text-light));
+    background-color: var(--basecolors-frame-contrast);
+  }
+}
