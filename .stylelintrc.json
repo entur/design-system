@@ -1,0 +1,9 @@
+{
+  "extends": ["stylelint-config-standard-scss"],
+  "rules": {
+    "selector-max-specificity": "0,1,0",
+    "selector-max-id": 0,
+    "selector-max-compound-selectors": 1,
+    "selector-no-qualifying-type": [true, { "ignore": ["attribute"] }]
+  }
+}
