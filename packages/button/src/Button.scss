@@ -1,16 +1,6 @@
 @use '@entur/tokens/dist/styles.scss' as t;
 @use '@entur/utils/dist/color-utils.scss' as util;
 
-a.eds-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  .eds-icon {
-    position: unset;
-  }
-}
-
 .eds-button {
   min-width: var(--size-30);
   width: max-content;
@@ -237,6 +227,16 @@ a.eds-button {
       background-color: var(--components-button-disabled-contrast-fill);
       color: var(--components-button-disabled-contrast-text-disabled);
       border-color: transparent;
+    }
+  }
+
+  &:where(a) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    :where(.eds-icon) {
+      position: unset;
     }
   }
 }
