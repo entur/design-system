@@ -1,16 +1,6 @@
 @use '@entur/tokens/dist/styles.scss' as t;
 @use '@entur/utils/dist/color-utils.scss' as util;
 
-a.eds-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  .eds-icon {
-    position: unset;
-  }
-}
-
 .eds-button {
   min-width: var(--components-button-height-horizontalcontent-medium);
   width: max-content;
@@ -23,7 +13,6 @@ a.eds-button {
   overflow-x: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-
   padding-inline: var(--components-button-inlinepadding-medium);
   font-size: var(--font-size-body-m, var(--size-8));
   line-height: var(--font-line-height-body-m, var(--size-10));
@@ -32,34 +21,38 @@ a.eds-button {
   font-family: inherit;
   position: relative;
   vertical-align: middle;
-
   background-color: var(--eds-button-background);
   border: var(--components-button-border-medium) solid var(--eds-button-border);
   color: var(--eds-button-text);
 
-  &:hover {
+  &:where(:hover) {
     background-color: var(--eds-button-background-hover);
   }
-  &:active {
+
+  &:where(:active) {
     background-color: var(--eds-button-background-active);
     border-color: var(--eds-button-border-active);
     color: var(--eds-button-text-active);
   }
-  &:focus-visible {
+
+  &:where(:focus-visible) {
     outline: t.$outlines-focus;
     outline-color: var(--basecolors-stroke-focus-standard);
     outline-offset: t.$outline-offsets-focus;
-    .eds-contrast & {
+
+    :where(.eds-contrast) & {
       outline-color: var(--basecolors-stroke-focus-contrast);
     }
   }
 
-  > .eds-button__loading-dots {
+  > :where(.eds-button__loading-dots) {
     width: 100%;
-    .eds-loading-dots__dot {
+
+    :where(.eds-loading-dots__dot) {
       background: var(--eds-button-text);
     }
   }
+
   :where(.eds-icon) {
     vertical-align: middle;
     margin-bottom: 0.1em;
@@ -70,11 +63,11 @@ a.eds-button {
       margin-left: var(--components-button-gap-medium);
     }
 
-    &:where(.eds-button--size-small .eds-icon:last-child) {
+    &:where(.eds-button--size-small) :where(.eds-icon:last-child) {
       margin-left: var(--components-button-gap-small);
     }
 
-    &:where(.eds-button--size-large .eds-icon:last-child) {
+    &:where(.eds-button--size-large) :where(.eds-icon:last-child) {
       margin-left: var(--components-button-gap-large);
     }
   }
@@ -84,11 +77,11 @@ a.eds-button {
       margin-right: var(--components-button-gap-medium);
     }
 
-    &:where(.eds-button--size-small .eds-icon:first-child) {
+    &:where(.eds-button--size-small) :where(.eds-icon:first-child) {
       margin-right: var(--components-button-gap-small);
     }
 
-    &:where(.eds-button--size-large .eds-icon:first-child) {
+    &:where(.eds-button--size-large) :where(.eds-icon:first-child) {
       margin-right: var(--components-button-gap-large);
     }
   }
@@ -101,6 +94,7 @@ a.eds-button {
     line-height: var(--font-line-height-body-s, var(--size-9));
     border: var(--components-button-border-small) solid var(--eds-button-border);
   }
+
   &--size-large {
     height: var(--components-button-height-horizontalcontent-large);
     border-radius: var(--components-button-radius-large);
@@ -123,7 +117,7 @@ a.eds-button {
     --eds-button-border: transparent;
     --eds-button-border-active: transparent;
 
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       --eds-button-background: var(--components-button-primary-contrast-default);
       --eds-button-text: var(--components-button-primary-contrast-text);
       --eds-button-text-active: var(--components-button-primary-contrast-text);
@@ -143,7 +137,7 @@ a.eds-button {
     --eds-button-border: var(--components-button-secondary-standard-border);
     --eds-button-border-active: var(--components-button-secondary-standard-border-active);
 
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       --eds-button-background: var(--components-button-secondary-contrast-default);
       --eds-button-text: var(--components-button-secondary-contrast-text);
       --eds-button-text-active: var(--components-button-secondary-contrast-text-active);
@@ -163,7 +157,7 @@ a.eds-button {
     --eds-button-border: var(--components-button-success-standard-border);
     --eds-button-border-active: var(--components-button-success-standard-border);
 
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       --eds-button-background: var(--components-button-success-contrast-default);
       --eds-button-text: var(--components-button-success-contrast-text);
       --eds-button-text-active: var(--components-button-success-contrast-text);
@@ -183,7 +177,7 @@ a.eds-button {
     --eds-button-border: var(--components-button-negative-standard-border);
     --eds-button-border-active: var(--components-button-negative-standard-border);
 
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       --eds-button-background: var(--components-button-negative-contrast-default);
       --eds-button-text: var(--components-button-negative-contrast-text);
       --eds-button-text-active: var(--components-button-negative-contrast-text-active);
@@ -204,50 +198,65 @@ a.eds-button {
     height: 2rem;
     padding: 0 t.$space-small;
     min-width: 6rem;
-    &:hover {
+
+    &:where(:hover) {
       background-color: util.tint(t.$colors-brand-lavender, 40%);
     }
-    &:active {
+
+    &:where(:active) {
       background-color: t.$colors-brand-lavender;
     }
 
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       background-color: transparent;
       color: t.$colors-brand-white;
       border-color: t.$colors-brand-lavender;
 
-      > .eds-button__loading-dots .eds-loading-dots__dot {
+      > :where(.eds-button__loading-dots) :where(.eds-loading-dots__dot) {
         background: t.$colors-brand-white;
       }
-      &:hover {
+
+      &:where(:hover) {
         background-color: rgba(t.$colors-brand-lavender, 0.2);
       }
-      &:active {
+
+      &:where(:active) {
         background: t.$colors-brand-lavender;
         color: t.$colors-brand-blue;
-        > .eds-button__loading-dots .eds-loading-dots__dot {
+
+        > :where(.eds-button__loading-dots) :where(.eds-loading-dots__dot) {
           background: t.$colors-brand-blue;
         }
       }
     }
   }
 
-  &[disabled] {
-    &.eds-button--loading {
+  &:where([disabled]) {
+    &:where(.eds-button--loading) {
       pointer-events: none;
     }
   }
 
-  &[disabled]:not(.eds-button--loading) {
+  &:where([disabled]):where(:not(.eds-button--loading)) {
     background: var(--components-button-disabled-standard-fill);
     color: var(--components-button-disabled-standard-text-disabled);
     border-color: transparent;
     cursor: not-allowed;
 
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       background-color: var(--components-button-disabled-contrast-fill);
       color: var(--components-button-disabled-contrast-text-disabled);
       border-color: transparent;
+    }
+  }
+
+  &:where(a) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    :where(.eds-icon) {
+      position: unset;
     }
   }
 }
