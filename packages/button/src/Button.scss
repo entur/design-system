@@ -4,8 +4,6 @@
 .eds-button {
   min-width: var(--size-30);
   width: max-content;
-  min-height: var(--button-height-horizontal-medium);
-  max-height: var(--button-height-horizontal-medium);
   height: var(--button-height-horizontal-medium);
   border-radius: var(--button-radius-medium);
   cursor: pointer;
@@ -62,8 +60,6 @@
 
   // Size
   &--size-small {
-    min-height: var(--button-height-horizontal-small);
-    max-height: var(--button-height-horizontal-small);
     height: var(--button-height-horizontal-small);
     border-radius: var(--button-radius-small);
     padding: var(--size-3) var(--button-inline-padding-small);
@@ -72,8 +68,6 @@
     border: var(--button-border-small) solid var(--eds-button-border);
   }
   &--size-large {
-    min-height: var(--button-height-horizontal-large);
-    max-height: var(--button-height-horizontal-large);
     height: var(--button-height-horizontal-large);
     border-radius: var(--button-radius-large);
     padding: var(--size-9) var(--button-inline-padding-large);
