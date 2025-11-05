@@ -10,7 +10,11 @@
   display: inline-block;
   appearance: none;
   text-decoration: none;
-  padding: var(--size-6) var(--button-inline-padding-medium);
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  padding-inline: var(--button-inline-padding-medium);
   font-size: var(--font-size-body-m);
   line-height: var(--font-line-height-body-m);
   font-weight: var(--font-weight-body);
@@ -46,23 +50,44 @@
       background: var(--eds-button-text);
     }
   }
-  .eds-icon {
+  :where(.eds-icon) {
     position: relative;
     top: 0.2em;
   }
 
-  &--leading-icon .eds-icon {
-    margin-right: var(--button-gap-medium); // hvordan få disse til å ha small og large også?
+  &--trailing-icon {
+    :where(.eds-icon:last-child) {
+      margin-left: var(--button-gap-medium);
+    }
+
+    &:where(.eds-button--size-small .eds-icon:last-child) {
+      margin-left: var(--button-gap-small);
+    }
+
+    &:where(.eds-button--size-large .eds-icon:last-child) {
+      margin-left: var(--button-gap-large);
+    }
   }
-  &--trailing-icon .eds-icon {
-    margin-left: var(--button-gap-medium);
+
+  &--leading-icon {
+    :where(.eds-icon:first-child) {
+      margin-right: var(--button-gap-medium);
+    }
+
+    &:where(.eds-button--size-small .eds-icon:first-child) {
+      margin-right: var(--button-gap-small);
+    }
+
+    &:where(.eds-button--size-large .eds-icon:first-child) {
+      margin-right: var(--button-gap-large);
+    }
   }
 
   // Size
   &--size-small {
     height: var(--button-height-horizontal-small);
     border-radius: var(--button-radius-small);
-    padding: var(--size-3) var(--button-inline-padding-small);
+    padding-inline: var(--button-inline-padding-small);
     font-size: var(--font-size-body-s);
     line-height: var(--font-line-height-body-s);
     border: var(--button-border-small) solid var(--eds-button-border);
@@ -70,7 +95,7 @@
   &--size-large {
     height: var(--button-height-horizontal-large);
     border-radius: var(--button-radius-large);
-    padding: var(--size-9) var(--button-inline-padding-large);
+    padding-inline: var(--button-inline-padding-large);
     font-size: var(--font-size-body-xl);
     line-height: var(--font-line-height-body-xl);
     border: var(--button-border-large) solid var(--eds-button-border);
@@ -178,12 +203,6 @@
       background-color: t.$colors-brand-lavender;
     }
 
-    &.eds-button--leading-icon .eds-icon {
-      margin-right: t.$space-extra-small;
-    }
-    &.eds-button--trailing-icon .eds-icon {
-      margin-left: t.$space-extra-small;
-    }
     .eds-contrast & {
       background-color: transparent;
       color: t.$colors-brand-white;
