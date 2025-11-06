@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.4.0-beta.0](https://github.com/entur/design-system/compare/@entur/button@3.3.18...@entur/button@3.4.0-beta.0) (2025-11-06)
+
+### Features
+
+- **button:** add manual component size file for buttons ([ae10ecf](https://github.com/entur/design-system/commit/ae10ecf56dac3bc8c68b6efcdb44d76f3a97a9bc))
+
 ## [3.3.18](https://github.com/entur/design-system/compare/@entur/button@3.3.17...@entur/button@3.3.18) (2025-10-20)
 
 **Note:** Version bump only for package @entur/button
