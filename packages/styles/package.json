@@ -38,6 +38,31 @@
     "lint": "eslint src"
   },
   "dependencies": {
+    "@entur/tokens": "workspace:^",
+    "@entur/typography": "workspace:^",
+    "@entur/utils": "workspace:^"
+  },
+  "peerDependencies": {
+    "@entur/alert": "*",
+    "@entur/button": "*",
+    "@entur/chip": "*",
+    "@entur/datepicker": "*",
+    "@entur/dropdown": "*",
+    "@entur/expand": "*",
+    "@entur/fileupload": "*",
+    "@entur/form": "*",
+    "@entur/grid": "*",
+    "@entur/icons": "*",
+    "@entur/layout": "*",
+    "@entur/loader": "*",
+    "@entur/menu": "*",
+    "@entur/modal": "*",
+    "@entur/tab": "*",
+    "@entur/table": "*",
+    "@entur/tooltip": "*",
+    "@entur/travel": "*"
+  },
+  "devDependencies": {
     "@entur/alert": "workspace:^",
     "@entur/button": "workspace:^",
     "@entur/chip": "workspace:^",
@@ -54,13 +79,8 @@
     "@entur/modal": "workspace:^",
     "@entur/tab": "workspace:^",
     "@entur/table": "workspace:^",
-    "@entur/tokens": "workspace:^",
     "@entur/tooltip": "workspace:^",
     "@entur/travel": "workspace:^",
-    "@entur/typography": "workspace:^",
-    "@entur/utils": "workspace:^"
-  },
-  "devDependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^10.4.9",
     "@testing-library/user-event": "14.6.1",
