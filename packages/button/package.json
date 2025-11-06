@@ -29,6 +29,7 @@
   "dependencies": {
     "@entur/loader": "workspace:^",
     "@entur/tokens": "workspace:^",
+    "@entur/typography": "workspace:^",
     "@entur/utils": "workspace:^",
     "classnames": "^2.5.1"
   },
