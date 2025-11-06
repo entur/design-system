@@ -85,6 +85,7 @@
 
   // Size
   &--size-small {
+    // add min width
     height: var(--button-height-horizontal-small);
     border-radius: var(--button-radius-small);
     padding-inline: var(--button-inline-padding-small);
@@ -93,6 +94,7 @@
     border: var(--button-border-small) solid var(--eds-button-border);
   }
   &--size-large {
+    // add min width
     height: var(--button-height-horizontal-large);
     border-radius: var(--button-radius-large);
     padding-inline: var(--button-inline-padding-large);
