@@ -4812,6 +4812,7 @@ __metadata:
   dependencies:
     "@entur/loader": "workspace:^"
     "@entur/tokens": "workspace:^"
+    "@entur/typography": "workspace:^"
     "@entur/utils": "workspace:^"
     "@testing-library/jest-dom": "npm:^5.17.0"
     "@testing-library/react": "npm:^10.4.9"
