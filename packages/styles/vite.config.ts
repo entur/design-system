@@ -1,5 +1,4 @@
 import { defineConfig, mergeConfig } from 'vite';
-import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
 import { createBaseConfig } from '../../vite.config.base';
 import { getPackageName, createFileNameFunction } from '../../vite.utils';
@@ -9,11 +8,6 @@ export default defineConfig(() => {
   const packageName = getPackageName(__dirname);
 
   const packageConfig = {
-    plugins: [
-      react({
-        jsxRuntime: 'automatic',
-      }),
-    ],
     build: {
       rollupOptions: {
         external: [
@@ -21,12 +15,13 @@ export default defineConfig(() => {
           ...Object.keys((pkg as any).peerDependencies || {}),
         ],
         output: {
-          assetFileNames: assetInfo => {
-            if (assetInfo.names[0].endsWith('.css')) {
-              return 'styles/[name][extname]';
+          assetFileNames: asset => {
+            switch (asset.name.split('.').pop()) {
+              case 'css':
+                return 'css/' + `[name]` + '.min.css';
+              default:
+                return 'other/' + `[name]` + `[extname]`;
             }
-            // Default for other assets (images, fonts, etc.)
-            return 'assets/[name]-[hash][extname]';
           },
         },
       },
@@ -38,6 +33,14 @@ export default defineConfig(() => {
     },
     css: {
       modules: false,
+      preprocessorOptions: {
+        scss: {
+          // Silence deprecation warnings for @import (we use it for CSS files)
+          // Sass naturally preserves @import statements for .css files as plain CSS imports
+          // This allows CSS layer() syntax to work properly in the browser
+          silenceDeprecations: ['import'],
+        },
+      },
     },
   };
 

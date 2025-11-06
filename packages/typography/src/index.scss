@@ -1,5 +1,4 @@
-@use 'sass:meta';
-@use '@entur/utils/dist/layers.scss';
+@use 'modern-normalize';
 
 @use '@entur/tokens/dist/styles.scss' as t;
 @use '@entur/tokens/dist/base.scss' as *;
@@ -7,17 +6,6 @@
 
 @use './componentColors.scss';
 @use './fonts.scss';
-
-@layer core.reset {
-  @include meta.load-css('modern-normalize/modern-normalize.css');
-
-  *,
-  *::before,
-  *::after {
-    box-sizing: inherit;
-    font-weight: inherit;
-  }
-}
 
 [data-color-mode='light'],
 [data-color-mode='dark'],
@@ -53,6 +41,11 @@
     font-size: t.$font-sizes-large;
     line-height: t.$line-heights-extra-large;
   }
+}
+
+:where(*, *::before, *::after) {
+  box-sizing: inherit;
+  font-weight: inherit;
 }
 
 // Headings

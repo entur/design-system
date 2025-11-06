@@ -1,22 +1,21 @@
 // Linje Normalize - Opt-in global defaults for Entur Design System
 // Import this stylesheet to automatically set global defaults like font-family, color, etc.
 // This is optional - consumers can choose to use this or set their own defaults
+//
+// Note: If using this standalone, make sure to import layers and tokens first:
+//   @use '@entur/styles/dist/styles/scss/layers.scss' as *;
+//   @use '@entur/tokens/dist/base.scss' as *;
+//   @use '@entur/styles/dist/styles/scss/normalize.scss';
 
-@use './layers.scss' as *;
-@use '@entur/tokens/dist/base.scss' as *;
+@use 'sass:meta';
 
+// Modern normalize provides comprehensive browser reset
+@layer core.reset {
+  @include meta.load-css('modern-normalize/modern-normalize.css');
+}
+
+// Global defaults (box-sizing, font-family, colors, etc.)
 @layer core.base {
-  // Global box-sizing (safe default)
-  :root {
-    box-sizing: border-box;
-  }
-
-  *,
-  *::before,
-  *::after {
-    box-sizing: inherit;
-  }
-
   // Global font family (Nationale)
   :root {
     font-family: var(

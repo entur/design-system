@@ -11,3 +11,8 @@ export * from './ConditionalWrapper';
 export * from './warnAboutMissingStyles';
 export * from './types/variants';
 export * from './getNodeText';
+
+// Export style utilities used by packages
+import './breakpoints.scss';
+import './color-utils.scss';
+import './layers.scss';

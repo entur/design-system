@@ -1,5 +1,5 @@
 @use 'sass:meta';
-@use '@entur/utils/dist/layers';
+@use '@entur/utils/dist/layers.scss' as *;
 @use './fonts';
 @forward './componentColors';
 @forward './typographyTokens';

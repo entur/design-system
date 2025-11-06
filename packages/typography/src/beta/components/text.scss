@@ -1,6 +1,9 @@
 // Beta typography text styles - experimental features
 // These styles may have breaking changes in future releases
-@use '../index';
+// Note: Fonts should be imported separately via @entur/typography/beta/styles
+@use '../componentColors';
+@use '../typographyTokens';
+@use '@entur/utils/dist/layers';
 
 @use '@entur/tokens/dist/styles' as t;
 @use '@entur/tokens/dist/base' as *;

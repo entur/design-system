@@ -6,29 +6,7 @@
 @use '@entur/tokens/dist/styles.scss' as eds;
 @use '@entur/utils/dist/breakpoints.scss' as *;
 
-@use '@entur/utils/dist/setup-linje.scss';
-
-// // Import old typography for legacy components (e.g. typography.mdx page)
-// @import '@entur/typography/dist/styles.css';
-// @import '@entur/a11y/dist/styles.css';
-// @import '@entur/grid/dist/styles.css';
-// @import '@entur/icons/dist/styles.css';
-// @import '@entur/tab/dist/styles.css';
-// @import '@entur/layout/dist/styles.css';
-// @import '@entur/loader/dist/styles.css';
-// @import '@entur/expand/dist/styles.css';
-// @import '@entur/button/dist/styles.css';
-// @import '@entur/alert/dist/styles.css';
-// @import '@entur/menu/dist/styles.css';
-// @import '@entur/fileupload/dist/styles.css';
-// @import '@entur/modal/dist/styles.css';
-// @import '@entur/tooltip/dist/styles.css';
-// @import '@entur/form/dist/styles.css';
-// @import '@entur/chip/dist/styles.css';
-// @import '@entur/datepicker/dist/styles.css';
-// @import '@entur/travel/dist/styles.css';
-// @import '@entur/table/dist/styles.css';
-// @import '@entur/dropdown/dist/styles.css';
+@use '@entur/styles/dist/scss/index.scss';
 
 :root {
   color-scheme: light dark;

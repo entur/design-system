@@ -8,73 +8,56 @@ This package contains the different utils shared across the Entur Linje packages
 
 This package will probably change with lots of breaking changes as we move along. It's meant for internal consumption only, so please excuse our mess. It will only be documented via its code.
 
-## Linje Normalize (Opt-in global defaults)
+## Style Utilities
 
-For consumers who want automatic global defaults (font-family, color, background-color, etc.), you can optionally import the normalize stylesheet:
+This package includes utility stylesheets that are used by other packages (to avoid cyclic dependencies):
 
-**SCSS:**
+### Breakpoints
 
-```scss
-// In your main stylesheet
-@use '@entur/utils/dist/normalize.scss';
-// or
-@import '@entur/utils/dist/normalize.scss';
-```
-
-**CSS:**
-
-```css
-/* In your main stylesheet */
-@import '@entur/utils/dist/normalize.css';
-```
-
-**JavaScript/TypeScript:**
-
-```ts
-import '@entur/utils/dist/normalize.scss'; // or .css
-```
-
-This will automatically set:
-
-- Global `box-sizing: border-box`
-- Global `font-family` (Nationale)
-- Global `color` and `background-color` based on design tokens
-- Global `font-size`, `line-height`, and `font-weight` defaults
-
-**Note:** This is optional. If you prefer to set your own defaults, simply don't import this file. All styles are wrapped in `@layer core.base` so they can be overridden in `@layer app` if needed.
-
-## Linje Setup (Complete setup)
-
-For consumers who want to import everything at once (normalize + all component styles), use the setup stylesheet:
-
-**SCSS:**
+Media query mixins for responsive design:
 
 ```scss
-// In your main stylesheet
-@use '@entur/utils/dist/setup-linje.scss';
-// or
-@import '@entur/utils/dist/setup-linje.scss';
+@use '@entur/utils/dist/breakpoints.scss' as *;
+
+.my-component {
+  @include for-desktop {
+    // Desktop styles
+  }
+
+  @include for-large-desktop {
+    // Large desktop styles
+  }
+}
 ```
 
-**CSS:**
+### Color Utilities
 
-```css
-/* In your main stylesheet */
-@import '@entur/utils/dist/setup-linje.css';
+SCSS functions for color manipulation:
+
+```scss
+@use '@entur/utils/dist/color-utils.scss' as *;
+
+.my-component {
+  color: tint(#ff0000, 20%);
+  background-color: shade(#ff0000, 20%);
+}
 ```
 
-**JavaScript/TypeScript:**
+### CSS Layers
 
-```ts
-import '@entur/utils/dist/setup-linje.scss'; // or .css
+Layer definitions for organizing CSS cascade:
+
+```scss
+@use '@entur/utils/dist/layers.scss' as *;
 ```
 
-This will automatically:
+This sets up the following layer structure:
 
-1. Import normalize (global defaults)
-2. Import all component stylesheets (a11y, grid, icons, typography, buttons, forms, etc.)
-
-**Note:** This is the easiest way to get started, but gives you less control. If you need to customize which components to include or the order they're loaded, import components individually instead.
+- `core` - Foundation styles (reset, tokens, base)
+- `third-party` - Vendor CSS
+- `components` - Component styles (primitives, composites, overrides)
+- `utilities` - Utility classes
+- `app` - Application-specific styles
 
 ## Installation
 

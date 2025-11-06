@@ -1,0 +1,31 @@
+// Linje Setup - One-stop import for all Entur Design System styles
+// This imports normalize (global defaults), fonts, and all stable component stylesheets
+// Use this if you want everything set up automatically
+//
+// Structure:
+// 1. CSS layers definition
+// 2. Design tokens (CSS variables)
+// 3. Normalize (includes modern-normalize reset + global defaults)
+// 4. Fonts (Nationale font-face declarations)
+// 5. Component styles (stable components only)
+//
+// Note: Beta component styles (e.g., @entur/typography/beta) are loaded dynamically
+// by their respective components to allow selective opt-in usage.
+
+// 1. CSS layers definition (must come first)
+@use '@entur/utils/dist/layers.scss' as *;
+
+// 2. Design tokens (CSS variables) - must come before normalize uses them
+@use '@entur/tokens/dist/base.scss' as *;
+
+// 3. Normalize (includes modern-normalize reset + global defaults)
+@use './normalize.scss';
+
+// 4. Fonts (Nationale - shared by stable and beta typography)
+// Fonts should not be in a layer.
+@use '@entur/typography/src/fonts.scss';
+
+// 5. Component stylesheets (stable components only, imported in recommended order)
+// Using native CSS @import with layer() function for better browser support
+// Import from SCSS file (copied as CSS in build to preserve @import statements)
+@use './component-imports.scss';

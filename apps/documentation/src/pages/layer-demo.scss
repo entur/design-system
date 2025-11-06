@@ -1,4 +1,4 @@
-@use '@entur/utils/dist/layers.scss';
+@use '@entur/utils/dist/layers.scss' as *;
 
 /* App-level overrides should always win over DS */
 @layer app {
