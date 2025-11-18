@@ -1,5 +1,20 @@
 @use '@entur/tokens/dist/styles.scss' as t;
-@use '@entur/utils/dist/color-utils.scss' as util;
+
+@mixin panel-surface($border, $background, $contrast-border, $contrast-background, $text: null, $contrast-text: null) {
+  border-color: $border;
+  background: $background;
+  @if $text {
+    color: $text;
+  }
+
+  .eds-contrast & {
+    border-color: $contrast-border;
+    background: $contrast-background;
+    @if $contrast-text {
+      color: $contrast-text;
+    }
+  }
+}
 
 .eds-input-panel {
   &:has(:focus-visible) {
@@ -21,118 +36,9 @@
     cursor: pointer;
     height: 0;
     width: 0;
-
-    &:checked:not(:disabled) {
-      + .eds-input-panel__container:not(.eds-input-panel__container--readonly) {
-        border-color: var(--components-form-basepanel-standard-border-selected);
-        background: var(--components-form-basepanel-standard-fill-selected);
-
-        .eds-contrast & {
-          border-color: var(--components-form-basepanel-contrast-border-selected);
-          background: var(--components-form-basepanel-contrast-fill-selected);
-        }
-
-        .eds-form-component--radio__circle {
-          width: 0.75rem;
-          height: 0.75rem;
-
-          .eds-contrast & {
-            background-color: var(--components-form-radio-contrast-icon);
-          }
-        }
-
-        &:hover:not(:has(input:disabled)):not(:has(.eds-input-panel__container--readonly)) {
-          background-color: var(--components-form-basepanel-standard-fill-hover);
-
-          .eds-contrast & {
-            background-color: var(--components-form-basepanel-contrast-fill-hover);
-          }
-
-          /* The following styling is needed to sync the inner checkbox/radiobutton's
-               hover state styling with the inputPanel container */
-          .eds-form-component--radio__radio {
-            background-color: var(--components-form-basepanel-standard-fill-hover);
-            border-color: var(--components-form-basepanel-standard-border-selected);
-
-            .eds-contrast & {
-              background-color: var(--components-form-basepanel-contrast-fill-hover);
-              border-color: var(--components-form-basepanel-contrast-border-selected);
-            }
-          }
-
-          .eds-checkbox__icon {
-            border-color: transparent;
-
-            .eds-contrast & {
-              background-color: var(--components-form-checkbox-contrast-fill-selectedhover);
-            }
-          }
-        }
-      }
-
-      + .eds-input-panel__container--readonly {
-        border-style: dashed;
-        border-color: var(--components-form-checkbox-standard-border-readonly);
-        background: var(--components-form-basepanel-standard-fill-selected);
-
-        .eds-contrast & {
-          border-color: var(--components-form-checkbox-contrast-border-readonly);
-          background: var(--components-form-basepanel-contrast-fill-selected);
-        }
-
-        .eds-form-component--radio__circle {
-          width: 0.75rem;
-          height: 0.75rem;
-          background-color: var(--components-form-radio-standard-icon-readonly);
-
-          .eds-contrast & {
-            background-color: var(--components-form-radio-contrast-icon-readonly);
-          }
-        }
-
-        .eds-form-component--radio__radio {
-          background: var(--components-form-radio-standard-fill-disabled);
-          border-style: dashed;
-          border-color: var(--components-form-radio-standard-border-readonly);
-
-          .eds-contrast & {
-            background: var(--components-form-radio-contrast-fill-disabled);
-            border-color: var(--components-form-radio-contrast-border-readonly);
-          }
-        }
-
-        .eds-checkbox__icon {
-          border-style: dashed;
-          border-color: var(--components-form-checkbox-standard-border-readonly);
-          background-color: var(--components-form-checkbox-standard-fill-disabled);
-
-          .eds-contrast & {
-            border-color: var(--components-form-checkbox-contrast-border-readonly);
-            background-color: var(--components-form-checkbox-contrast-fill-disabled);
-          }
-
-          .eds-checkbox-icon path {
-            stroke: var(--components-form-checkbox-standard-border-readonly);
-          }
-
-          .eds-checkbox-icon rect {
-            fill: var(--components-form-checkbox-standard-border-readonly);
-          }
-
-          .eds-contrast & {
-            .eds-checkbox-icon path {
-              stroke: var(--components-form-checkbox-contrast-border-readonly);
-            }
-
-            .eds-checkbox-icon rect {
-              fill: var(--components-form-checkbox-contrast-border-readonly);
-            }
-          }
-        }
-      }
-    }
   }
 
+  // Default unchecked state
   &__container {
     background: var(--components-form-basepanel-standard-fill-default);
     border: t.$border-widths-medium solid var(--components-form-basepanel-standard-border-default);
@@ -148,13 +54,7 @@
     width: fit-content;
     transition: background ease-in-out t.$timings-fast, border-color ease-in-out t.$timings-fast;
 
-    .eds-contrast & {
-      background-color: var(--components-form-basepanel-contrast-fill-default);
-      border-color: var(--components-form-basepanel-contrast-border-default);
-      color: var(--components-form-basepanel-contrast-text-accent);
-    }
-
-    &:hover:not(:has(input:disabled)):not(.eds-input-panel__container--readonly) {
+    &:hover {
       background-color: var(--components-form-basepanel-standard-fill-hover);
 
       .eds-contrast & {
@@ -162,59 +62,10 @@
       }
     }
 
-    &--readonly {
-      background: var(--components-form-basepanel-standard-fill-default);
-      border-style: dashed;
-      border-color: var(--components-form-checkbox-standard-border-readonly);
-      color: var(--components-form-basepanel-standard-text-accent);
-      cursor: default;
-
-      .eds-contrast & {
-        background: var(--components-form-basepanel-contrast-fill-default);
-        border-color: var(--components-form-checkbox-contrast-border-readonly);
-        color: var(--components-form-basepanel-contrast-text-accent);
-      }
-
-      &:hover {
-        background-color: var(--components-form-basepanel-standard-fill-default);
-
-        .eds-contrast & {
-          background-color: var(--components-form-basepanel-contrast-fill-default);
-        }
-      }
-
-      .eds-form-component--radio__radio {
-        background: var(--components-form-radio-standard-fill-disabled);
-        border-style: dashed;
-        border-color: var(--components-form-radio-standard-border-readonly);
-
-        .eds-contrast & {
-          background: var(--components-form-radio-contrast-fill-disabled);
-          border-color: var(--components-form-radio-contrast-border-readonly);
-        }
-      }
-
-      .eds-checkbox__icon {
-        border-style: dashed;
-        border-color: var(--components-form-checkbox-standard-border-readonly);
-
-        .eds-contrast & {
-          border-color: var(--components-form-checkbox-contrast-border-readonly);
-        }
-      }
-    }
-
-    input:disabled + & {
-      background: var(--components-form-basepanel-standard-fill-default);
-      border-color: var(--components-form-basepanel-standard-border-disabled);
-      color: var(--components-form-basepanel-standard-text-disabled);
-      cursor: not-allowed;
-
-      .eds-contrast & {
-        background: var(--components-form-basepanel-contrast-fill-default);
-        border-color: var(--components-form-basepanel-contrast-border-disabled);
-        color: var(--components-form-basepanel-contrast-text-disabled);
-      }
+    .eds-contrast & {
+      background-color: var(--components-form-basepanel-contrast-fill-default);
+      border-color: var(--components-form-basepanel-contrast-border-default);
+      color: var(--components-form-basepanel-contrast-text-accent);
     }
 
     .eds-checkbox__icon,
@@ -223,6 +74,90 @@
       width: 1.5rem;
       height: 1.5rem;
       margin-right: 0;
+    }
+  }
+
+  // Checked state
+  :where(input:checked) + .eds-input-panel__container {
+    @include panel-surface(
+      var(--components-form-basepanel-standard-border-selected),
+      var(--components-form-basepanel-standard-fill-selected),
+      var(--components-form-basepanel-contrast-border-selected),
+      var(--components-form-basepanel-contrast-fill-selected)
+    );
+
+    &:hover {
+      background-color: var(--components-form-basepanel-standard-fill-hover);
+
+      .eds-contrast & {
+        background-color: var(--components-form-basepanel-contrast-fill-hover);
+      }
+    }
+  }
+
+  // Readonly checked and unchecked state
+  &--readonly {
+    .eds-input-panel__container {
+      border-style: dashed;
+      cursor: default;
+      @include panel-surface(
+        var(--components-form-checkbox-standard-border-readonly),
+        var(--components-form-basepanel-standard-fill-default),
+        var(--components-form-checkbox-contrast-border-readonly),
+        var(--components-form-basepanel-contrast-fill-default),
+        var(--components-form-basepanel-standard-text-accent),
+        var(--components-form-basepanel-contrast-text-accent)
+      );
+
+      &:hover {
+        background-color: var(--components-form-basepanel-standard-fill-default);
+
+        .eds-contrast & {
+          background-color: var(--components-form-basepanel-contrast-fill-default);
+        }
+      }
+    }
+
+    :where(input:checked) + .eds-input-panel__container {
+      border-style: dashed;
+      @include panel-surface(
+        var(--components-form-checkbox-standard-border-readonly),
+        var(--components-form-basepanel-standard-fill-default),
+        var(--components-form-checkbox-contrast-border-readonly),
+        var(--components-form-basepanel-contrast-fill-default)
+      );
+    }
+  }
+
+  // Disabled checked and unchecked state
+  &--disabled {
+    .eds-input-panel__container {
+      cursor: not-allowed;
+      @include panel-surface(
+        var(--components-form-basepanel-standard-border-disabled),
+        var(--components-form-basepanel-standard-fill-disabled),
+        var(--components-form-basepanel-contrast-border-disabled),
+        var(--components-form-basepanel-contrast-fill-disabled),
+        var(--components-form-basepanel-standard-text-disabled),
+        var(--components-form-basepanel-contrast-text-disabled)
+      );
+
+      &:hover {
+        background-color: var(--components-form-basepanel-standard-fill-disabled);
+
+        .eds-contrast & {
+          background-color: var(--components-form-basepanel-contrast-fill-disabled);
+        }
+      }
+    }
+
+    :where(input:checked) + .eds-input-panel__container {
+      @include panel-surface(
+        var(--components-form-basepanel-standard-border-disabled),
+        var(--components-form-basepanel-standard-fill-disabled),
+        var(--components-form-basepanel-contrast-border-disabled),
+        var(--components-form-basepanel-contrast-fill-disabled)
+      );
     }
   }
 
@@ -238,13 +173,13 @@
   }
 
   &--large {
-    &.eds-input-panel__container {
-      min-height: 6rem;
-    }
     .eds-input-panel__title {
       font-size: t.$font-sizes-extra-large;
       font-weight: t.$font-weights-body;
       line-height: t.$line-heights-extra-large3;
+    }
+    &.eds-input-panel__container {
+      min-height: 6rem;
     }
   }
 
