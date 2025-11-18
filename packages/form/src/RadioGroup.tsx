@@ -16,6 +16,8 @@ export type RadioGroupProps = {
   [key: string]: any;
   /** Sett radiogruppen i readonly-modus */
   readOnly?: boolean;
+  /** Sett radiogruppen i disabled-modus */
+  disabled?: boolean;
 };
 
 export const RadioGroup: React.FC<RadioGroupProps> = ({
@@ -25,11 +27,12 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
   onChange,
   label,
   readOnly = false,
+  disabled = false,
   ...rest
 }) => {
   const contextValue = React.useMemo(
-    () => ({ name, value, onChange, readOnly }),
-    [name, value, onChange, readOnly],
+    () => ({ name, value, onChange, readOnly, disabled }),
+    [name, value, onChange, readOnly, disabled],
   );
   return (
     <RadioGroupContextProvider value={contextValue}>

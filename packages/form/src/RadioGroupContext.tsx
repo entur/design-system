@@ -5,6 +5,7 @@ type RadioGroupContextProps = {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   value: string | null;
   readOnly?: boolean;
+  disabled?: boolean;
 };
 
 const RadioGroupContext = React.createContext<RadioGroupContextProps | null>(

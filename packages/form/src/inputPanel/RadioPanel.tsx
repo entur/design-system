@@ -51,13 +51,19 @@ export const RadioPanel = React.forwardRef<HTMLInputElement, RadioPanelProps>(
       hideRadioButton = false,
       style,
       id,
-      disabled = false,
-      readOnly = false,
+      disabled,
+      readOnly,
       ...rest
     },
     ref: React.Ref<HTMLInputElement>,
   ) => {
-    const { name, value: selected, onChange } = useRadioGroupContext();
+    const {
+      name,
+      value: selected,
+      onChange,
+      readOnly: groupReadOnly,
+      disabled: groupDisabled,
+    } = useRadioGroupContext();
 
     return (
       <InputPanelBase
@@ -73,8 +79,8 @@ export const RadioPanel = React.forwardRef<HTMLInputElement, RadioPanelProps>(
         hideSelectionIndicator={hideRadioButton}
         style={style}
         id={id}
-        disabled={disabled}
-        readOnly={readOnly}
+        disabled={disabled ?? groupDisabled}
+        readOnly={readOnly ?? groupReadOnly}
         {...rest}
         ref={ref}
       >
