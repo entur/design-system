@@ -127,14 +127,15 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
         variant={variant}
         prepend={prepend}
         append={
-          clearable ? (
-            <ClearButton
-              onClear={handleClear}
-              ariaLabel={clearButtonAriaLabel}
-            />
-          ) : (
-            append
-          )
+          <div className="eds-textfield__append">
+            {append}
+            {clearable && (
+              <ClearButton
+                onClear={handleClear}
+                ariaLabel={clearButtonAriaLabel}
+              />
+            )}
+          </div>
         }
         className={classNames(className, 'eds-textfield__wrapper')}
         style={style}

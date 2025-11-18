@@ -1,46 +1,43 @@
 @use '@entur/tokens/dist/styles.scss' as t;
 
-.eds-textfield__clear-button {
-  background: none;
-  border: none;
-  border-radius: t.$border-radiuses-medium;
-  color: inherit;
-  cursor: pointer;
-  display: flex;
-  font: inherit;
-  font-size: 1rem;
-  line-height: 1rem;
-  padding: t.$space-extra-small;
-  margin-right: -(t.$space-small);
-  margin-left: t.$space-extra-small2;
-
-  &:hover {
-    background: var(--components-form-basepanel-standard-fill-hover);
+.eds-textfield {
+  &__wrapper {
+    cursor: text;
   }
 
-  &:focus-visible {
-    outline: t.$outlines-focus;
-    outline-color: var(--basecolors-stroke-focus-standard);
-  }
-
-  &-wrapper {
+  &__append {
     display: flex;
+    flex-direction: row;
     align-items: center;
+
+    &:has(.eds-textfield__clear-button) {
+      margin-right: -(t.$space-medium);
+    }
   }
-}
-.eds-textfield__divider {
-  content: '';
-  display: block;
-  background-color: var(--components-form-baseform-standard-icon);
-  height: 1.5rem;
-  width: 1px;
-  .eds-form-control-wrapper--disabled & {
-    .eds-contrast & {
+
+  &__clear-button {
+    margin-inline: t.$space-extra-small2;
+
+    &:hover {
+      background: var(--components-button-iconbutton-standard-hover);
+    }
+
+    &:focus-visible {
+      outline: t.$outlines-focus;
+      outline-color: var(--basecolors-stroke-focus-standard);
+    }
+  }
+
+  &__divider {
+    content: '';
+    margin-inline-start: t.$space-small;
+    display: block;
+    background-color: var(--components-form-baseform-standard-icon);
+    height: 1.5rem;
+    width: 1px;
+
+    .eds-contrast .eds-form-control-wrapper--disabled & {
       background-color: var(--components-form-baseform-contrast-icon);
     }
   }
-}
-
-.eds-textfield__wrapper {
-  cursor: text;
 }
