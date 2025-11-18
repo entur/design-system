@@ -1,15 +1,16 @@
 import React from 'react';
 import classNames from 'classnames';
 
+import { IconButton } from '@entur/button';
 import { CloseSmallIcon } from '@entur/icons';
-import { useRandomId, useOnMount, mergeRefs, VariantType } from '@entur/utils';
+import { Placement } from '@entur/tooltip';
+import { useRandomId, mergeRefs, VariantType } from '@entur/utils';
 
 import { BaseFormControl } from './BaseFormControl';
 import { useInputGroupContext } from './InputGroupContext';
 import { isFilled } from './utils';
 import { useVariant } from './VariantProvider';
 import './TextField.scss';
-import { Placement } from '@entur/tooltip';
 
 /** @deprecated use variant="information" instead */
 const info = 'info';
@@ -58,6 +59,10 @@ export type TextFieldProps = {
   clearable?: boolean;
   /** Callback for clearable */
   onClear?: () => void;
+  /** Aria-label for clear button
+   * @default "Tøm felt"
+   */
+  clearButtonAriaLabel?: string;
   ariaAlertOnFeedback?: boolean;
 } & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'label'>;
 
@@ -83,6 +88,7 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
       labelProps,
       clearable = false,
       onClear,
+      clearButtonAriaLabel = 'Tøm felt',
       value,
       ariaAlertOnFeedback = false,
       ...rest
@@ -92,6 +98,28 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
     const randomId = useRandomId('eds-textfield');
     const textFieldId = labelProps && labelProps.id ? labelProps.id : randomId;
     const textFieldRef = React.useRef<HTMLInputElement>(null);
+    const { setFilled } = useInputGroupContext();
+
+    const handleClear = () => {
+      const inputElement = textFieldRef.current;
+      // Trigger an input event with target value "" to
+      // both reset uncontrolled value and send an onChange event
+      // for controlled value
+      if (inputElement) {
+        const setNativeInputValue = Object.getOwnPropertyDescriptor(
+          window.HTMLInputElement.prototype,
+          'value',
+        )?.set;
+        setNativeInputValue?.call(inputElement, '');
+
+        const inputEvent = new Event('input', { bubbles: true });
+        inputElement.dispatchEvent(inputEvent);
+        inputElement.focus();
+        setFilled(false);
+      }
+      onClear?.();
+    };
+
     return (
       <BaseFormControl
         disabled={disabled}
@@ -99,7 +127,14 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
         variant={variant}
         prepend={prepend}
         append={
-          clearable && onClear ? <ClearButton onClear={onClear} /> : append
+          clearable ? (
+            <ClearButton
+              onClear={handleClear}
+              ariaLabel={clearButtonAriaLabel}
+            />
+          ) : (
+            append
+          )
         }
         className={classNames(className, 'eds-textfield__wrapper')}
         style={style}
@@ -153,23 +188,23 @@ const TextFieldBase = React.forwardRef<HTMLInputElement, TextFieldBaseProps>(
     const currentVariant = variant || contextVariant;
     const { isFilled: isInputFilled, setFilled: setFiller } =
       useInputGroupContext();
+    const inputRef = React.useRef<HTMLInputElement>(null);
 
-    useOnMount(() => {
-      if (value?.toString() || rest.defaultValue) {
-        setFiller && !isInputFilled && setFiller(true);
-      }
-    });
     React.useEffect(() => {
-      if (value?.toString() && setFiller && !isInputFilled) {
-        setFiller(true);
+      if (setFiller) {
+        const filled = isFilled({ value }) || isFilled(inputRef.current, true);
+        if (filled !== isInputFilled) {
+          setFiller(filled);
+        }
       }
     }, [value, setFiller, isInputFilled]);
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-      if (isFilled(event.target)) {
-        setFiller && !isInputFilled && setFiller(true);
-      } else {
-        setFiller && isInputFilled && setFiller(false);
+      if (setFiller && value === undefined) {
+        const filled = isFilled(event.target);
+        if (filled !== isInputFilled) {
+          setFiller(filled);
+        }
       }
       if (onChange) {
         onChange(event);
@@ -182,7 +217,7 @@ const TextFieldBase = React.forwardRef<HTMLInputElement, TextFieldBaseProps>(
         className="eds-form-control"
         disabled={disabled}
         readOnly={readOnly}
-        ref={forwardRef}
+        ref={mergeRefs(forwardRef, inputRef)}
         placeholder={placeholder}
         onChange={handleChange}
         value={value}
@@ -194,26 +229,23 @@ const TextFieldBase = React.forwardRef<HTMLInputElement, TextFieldBaseProps>(
 
 const ClearButton: React.FC<{
   onClear: () => void;
-  [key: string]: any;
-}> = ({ onClear, ...props }) => {
-  const { isFilled: hasValue, setFilled } = useInputGroupContext();
-  return (
-    <div className="eds-textfield__clear-button-wrapper">
-      {hasValue && <div className="eds-textfield__divider"></div>}
-      {hasValue && (
-        <button
+  ariaLabel: string;
+}> = ({ onClear, ariaLabel }) => {
+  const { isFilled } = useInputGroupContext();
+  if (isFilled) {
+    return (
+      <>
+        <div className="eds-textfield__divider" />
+        <IconButton
           className="eds-textfield__clear-button"
           type="button"
-          tabIndex={-1}
-          onClick={() => {
-            setFilled(false);
-            onClear();
-          }}
-          {...props}
+          aria-label={ariaLabel}
+          onClick={onClear}
         >
           <CloseSmallIcon />
-        </button>
-      )}
-    </div>
-  );
+        </IconButton>
+      </>
+    );
+  }
+  return null;
 };
