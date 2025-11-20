@@ -32,7 +32,7 @@ The monorepo needs the following tools to run properly:
 
 Node.js is available on [Node's website](https://nodejs.org/en/download). If you want to easily switch between different versions of Node.js (different repos might use different versions) then [nvm](https://github.com/nvm-sh/nvm) is a good alternative.
 
-Yarn can easily be installed with e.g. [npm](https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable) or [brew](https://formulae.brew.sh/formula/yarn#default).
+Yarn can easily be installed with e.g. [npm](https://yarnpkg.com/getting-started/install).
 
 ## First time setup
 
