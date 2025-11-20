@@ -26,6 +26,10 @@ export type CheckboxPanelProps = {
    * @default false
    */
   disabled?: boolean;
+  /** Om CheckboxPanel er skrivebeskyttet (readonly) eller ikke
+   * @default false
+   */
+  readOnly?: boolean;
   /** */
   style?: React.CSSProperties;
 } & Omit<
@@ -55,6 +59,7 @@ export const CheckboxPanel = React.forwardRef<
       style,
       id,
       disabled = false,
+      readOnly = false,
       ...rest
     },
     ref: React.Ref<HTMLInputElement>,
@@ -74,6 +79,7 @@ export const CheckboxPanel = React.forwardRef<
         style={style}
         id={id}
         disabled={disabled}
+        readOnly={readOnly}
         {...rest}
         ref={ref}
       >

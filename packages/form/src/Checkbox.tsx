@@ -62,7 +62,7 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
 
     return (
       <label
-        className={cx('eds-checkbox__container', className, {
+        className={cx('eds-checkbox', 'eds-checkbox__container', className, {
           'eds-checkbox--disabled': disabled,
           'eds-checkbox--readonly': readOnly,
           'eds-checkbox__container--reduced-click-area': reduceClickArea,

@@ -25,6 +25,10 @@ export type RadioPanelProps = {
    * @default false
    */
   disabled?: boolean;
+  /** Om radio-panelet er skrivebeskyttet (readonly) eller ikke
+   * @default false
+   */
+  readOnly?: boolean;
   /** */
   style?: React.CSSProperties;
 } & Omit<
@@ -47,12 +51,19 @@ export const RadioPanel = React.forwardRef<HTMLInputElement, RadioPanelProps>(
       hideRadioButton = false,
       style,
       id,
-      disabled = false,
+      disabled,
+      readOnly,
       ...rest
     },
     ref: React.Ref<HTMLInputElement>,
   ) => {
-    const { name, value: selected, onChange } = useRadioGroupContext();
+    const {
+      name,
+      value: selected,
+      onChange,
+      readOnly: groupReadOnly,
+      disabled: groupDisabled,
+    } = useRadioGroupContext();
 
     return (
       <InputPanelBase
@@ -68,7 +79,8 @@ export const RadioPanel = React.forwardRef<HTMLInputElement, RadioPanelProps>(
         hideSelectionIndicator={hideRadioButton}
         style={style}
         id={id}
-        disabled={disabled}
+        disabled={disabled ?? groupDisabled}
+        readOnly={readOnly ?? groupReadOnly}
         {...rest}
         ref={ref}
       >
