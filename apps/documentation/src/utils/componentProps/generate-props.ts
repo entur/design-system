@@ -12,8 +12,11 @@ const tsConfigPath = path.join(__dirname, '../../../tsconfig.json');
 // Initialize react-docgen-typescript with TypeScript config
 const parser = withCustomConfig(tsConfigPath, {
   propFilter: (prop: any) => {
-    if (prop.parent) {
-      return !prop.parent.fileName.includes('node_modules');
+    if (
+      prop?.parent?.fileName?.includes('node_modules') ||
+      prop.description?.includes('@internal')
+    ) {
+      return false;
     }
     return true;
   },

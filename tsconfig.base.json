@@ -5,6 +5,7 @@
     "lib": ["dom", "esnext"],
     "importHelpers": true,
     "declaration": true,
+    "stripInternal": true,
     "sourceMap": true,
     "strict": true,
     "noImplicitAny": true,
