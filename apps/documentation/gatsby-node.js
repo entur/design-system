@@ -224,5 +224,12 @@ exports.sourceNodes = async ({ createNodeId, actions: { createNode } }) => {
 };
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
+  const { createRedirect } = actions;
+
+  createRedirect({
+    fromPath: '/komponenter/navigasjon/breadcrumbs',
+    toPath: '/komponenter/navigasjon/breadcrumbnavigation',
+  });
+
   await createDocumentationPagesFromSanity(graphql, actions, reporter);
 };
