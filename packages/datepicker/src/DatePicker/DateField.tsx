@@ -29,6 +29,7 @@ import {
   ForcedReturnType,
   handleOnChange,
   getAdjustedMaxDate,
+  shouldUseAriaAlert,
 } from '../shared/utils';
 
 import './DateField.scss';
@@ -210,7 +211,9 @@ export const DateField = <DateType extends DateValue>({
     >
       <BaseFormControl
         append={append}
-        ariaAlertOnFeedback
+        ariaAlertOnFeedback={shouldUseAriaAlert(
+          variant ?? (state.isInvalid ? validationVariant : undefined),
+        )}
         className={classNames('eds-datefield', className, {
           'eds-datefield--has-tooltip': labelTooltip !== undefined,
         })}

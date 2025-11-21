@@ -58,9 +58,13 @@ export type BaseFormControlProps = React.HTMLAttributes<HTMLDivElement> & {
   style?: React.CSSProperties;
   /** Plasserer labelen statisk på toppen av inputfeltet */
   disableLabelAnimation?: boolean;
-  /** Setter feedbackText sin rolle til "alert" */
+  /** Setter feedback-tekstens rolle for skjermlesere.
+   * 'alert' = aria-live="assertive" (avbryter umiddelbart)
+   * 'status' = aria-live="polite" (venter til bruker er ferdig)
+   * undefined/false = ingen automatisk annonsering
+   */
   onClick?: (event: React.MouseEvent<HTMLElement>) => void;
-  ariaAlertOnFeedback?: boolean;
+  ariaAlertOnFeedback?: boolean | 'alert' | 'status';
   /** Legg til et element etter feltet */
   after?: React.ReactNode;
   /** Legg til et element før feltet */
@@ -180,7 +184,13 @@ export const BaseFormControl = React.forwardRef<
           {feedback && currentVariant && (
             <FeedbackText
               variant={currentVariant}
-              role={ariaAlertOnFeedback ? 'alert' : undefined}
+              role={
+                ariaAlertOnFeedback === true || ariaAlertOnFeedback === 'alert'
+                  ? 'alert'
+                  : ariaAlertOnFeedback === 'status'
+                  ? 'status'
+                  : undefined
+              }
             >
               {feedback}
             </FeedbackText>
