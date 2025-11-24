@@ -125,23 +125,24 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
       onClear?.();
     };
 
+    const _append = React.useMemo((): React.ReactElement | null => {
+      if (!clearable) return (append as React.ReactElement) ?? null;
+
+      return (
+        <div className="eds-textfield__append">
+          {append}
+          <ClearButton onClear={handleClear} ariaLabel={clearButtonAriaLabel} />
+        </div>
+      );
+    }, [append, clearable]);
+
     return (
       <BaseFormControl
         disabled={disabled}
         readOnly={readOnly}
         variant={variant}
         prepend={prepend}
-        append={
-          <div className="eds-textfield__append">
-            {append}
-            {clearable && (
-              <ClearButton
-                onClear={handleClear}
-                ariaLabel={clearButtonAriaLabel}
-              />
-            )}
-          </div>
-        }
+        append={_append}
         className={classNames(className, 'eds-textfield__wrapper')}
         style={style}
         size={size}
@@ -248,7 +249,7 @@ const ClearButton: React.FC<{
           aria-label={ariaLabel}
           onClick={onClear}
         >
-          <CloseSmallIcon />
+          <CloseSmallIcon aria-hidden />
         </IconButton>
       </>
     );

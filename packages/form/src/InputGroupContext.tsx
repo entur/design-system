@@ -14,14 +14,18 @@ export const InputGroupContextProvider: React.FC<{
   children: React.ReactNode;
 }> = ({ children }) => {
   const [filled, setFilled] = React.useState(false);
+
+  const value = React.useMemo(
+    () => ({ isFilled: filled, setFilled }),
+    [filled, setFilled],
+  );
+
   return (
-    <InputGroupContext.Provider
-      value={{ isFilled: filled, setFilled: setFilled }}
-    >
+    <InputGroupContext.Provider value={value}>
       {children}
     </InputGroupContext.Provider>
   );
 };
 
-export const useInputGroupContext: () => InputGroupContextType = () =>
+export const useInputGroupContext = (): InputGroupContextType =>
   React.useContext(InputGroupContext);
