@@ -16,7 +16,7 @@ jobs:
     name: Build packages
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       - name: Install and Cache Yarn Dependencies
         uses: ./.github/actions/install-and-cache-dependencies
@@ -40,7 +40,7 @@ jobs:
     runs-on:
       group: 'grp-ubuntu-22.04-4core-x64'
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       - name: Install and Cache Yarn Dependencies
         uses: ./.github/actions/install-and-cache-dependencies
@@ -83,7 +83,7 @@ jobs:
     needs: build-packages
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       - name: Install and Cache Yarn Dependencies
         uses: ./.github/actions/install-and-cache-dependencies
@@ -106,7 +106,7 @@ jobs:
     needs: build-packages
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       - name: Install and Cache Yarn Dependencies
         uses: ./.github/actions/install-and-cache-dependencies
