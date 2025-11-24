@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.4](https://github.com/entur/design-system/compare/@entur/typography@2.0.3...@entur/typography@2.0.4) (2025-11-24)
+
+### Bug Fixes
+
+- remove unneccesary vendor prefixes from source scss files ([14fe64e](https://github.com/entur/design-system/commit/14fe64eac51ae7756ea096cdc2c3b1e8bc1cb921))
+- **typography/beta:** remove "bin" from package.json ([c385cf1](https://github.com/entur/design-system/commit/c385cf1dcb9e550aa2f95e59d1126d8f6491bea7))
+
 ## [2.0.3](https://github.com/entur/design-system/compare/@entur/typography@2.0.2...@entur/typography@2.0.3) (2025-10-20)
 
 **Note:** Version bump only for package @entur/typography

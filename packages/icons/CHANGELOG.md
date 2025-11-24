@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.3.0](https://github.com/entur/design-system/compare/@entur/icons@8.2.0...@entur/icons@8.3.0) (2025-11-24)
+
+### Features
+
+- apply postcss-preset-env to all package styles.css bundles ([853183b](https://github.com/entur/design-system/commit/853183b8e5d8bc3ecc39a75c16feddd994b73f32))
+
 # [8.2.0](https://github.com/entur/design-system/compare/@entur/icons@8.1.0...@entur/icons@8.2.0) (2025-10-20)
 
 ### Features

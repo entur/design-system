@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.9.21](https://github.com/entur/design-system/compare/@entur/table@4.9.20...@entur/table@4.9.21) (2025-11-24)
+
+**Note:** Version bump only for package @entur/table
+
 ## [4.9.20](https://github.com/entur/design-system/compare/@entur/table@4.9.19...@entur/table@4.9.20) (2025-10-27)
 
 **Note:** Version bump only for package @entur/table

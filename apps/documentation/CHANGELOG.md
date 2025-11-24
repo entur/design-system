@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.12.2](https://github.com/entur/design-system/compare/@entur/documentation@6.12.1...@entur/documentation@6.12.2) (2025-11-24)
+
+### Bug Fixes
+
+- **website/page builder:** fix incorrect internal host for link resolver ([fd7f1bb](https://github.com/entur/design-system/commit/fd7f1bbab84a3b5494b642b8e5fd82f062e70419))
+- **website:** fix horizontal site content overflow ([d18cbd3](https://github.com/entur/design-system/commit/d18cbd321c04680c3598d828ab3a7623c48429b9))
+- **website:** scroll reset not always triggering ([b6a64ef](https://github.com/entur/design-system/commit/b6a64efee64c64669f1affc6a6e53b857a593468))
+
 ## [6.12.1](https://github.com/entur/design-system/compare/@entur/documentation@6.12.0...@entur/documentation@6.12.1) (2025-10-27)
 
 **Note:** Version bump only for package @entur/documentation

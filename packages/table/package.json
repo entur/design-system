@@ -1,6 +1,6 @@
 {
   "name": "@entur/table",
-  "version": "4.9.20",
+  "version": "4.9.21",
   "license": "EUPL-1.2",
   "main": "dist/table.cjs.js",
   "module": "dist/table.esm.js",

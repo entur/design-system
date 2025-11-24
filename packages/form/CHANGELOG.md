@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.1.0](https://github.com/entur/design-system/compare/@entur/form@9.0.1...@entur/form@9.1.0) (2025-11-24)
+
+### Bug Fixes
+
+- **datepicker:** use aria-alert only on negative and warning variants ([352c6f6](https://github.com/entur/design-system/commit/352c6f6469661c681b89faf6fa8d993ecdd9db63))
+- **form/text field:** only add extra wrapper around append elements when clearable is true ([22ef49d](https://github.com/entur/design-system/commit/22ef49d0fd594854c7f5466413cc36091abbeacc))
+- **form/textfield:** clearable prop not working for uncontrolled input ([b1eba6d](https://github.com/entur/design-system/commit/b1eba6d2056a6b63f11edc5540b2d489c9b36375))
+- **form/textfield:** use icon button component for clear button ([0a402a6](https://github.com/entur/design-system/commit/0a402a65ed23e77c721e41445acef801c29af4af))
+
+### Features
+
+- **form/checkboxpanel,form/radiopanel:** add support for readOnly prop ([688db72](https://github.com/entur/design-system/commit/688db7243999ff768a283a88c09afef0bd39dbe9))
+- **form/radio group:** add disabled prop to radio group ([b8fe500](https://github.com/entur/design-system/commit/b8fe50050e0a3d04fbffe541fd14ee6a8db0f74e))
+
 ## [9.0.1](https://github.com/entur/design-system/compare/@entur/form@9.0.0...@entur/form@9.0.1) (2025-10-27)
 
 **Note:** Version bump only for package @entur/form

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.36](https://github.com/entur/design-system/compare/@entur/loader@0.5.35...@entur/loader@0.5.36) (2025-11-24)
+
+### Bug Fixes
+
+- remove unneccesary vendor prefixes from source scss files ([14fe64e](https://github.com/entur/design-system/commit/14fe64eac51ae7756ea096cdc2c3b1e8bc1cb921))
+
 ## [0.5.35](https://github.com/entur/design-system/compare/@entur/loader@0.5.34...@entur/loader@0.5.35) (2025-10-20)
 
 **Note:** Version bump only for package @entur/loader

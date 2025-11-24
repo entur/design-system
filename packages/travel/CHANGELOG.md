@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.4.5](https://github.com/entur/design-system/compare/@entur/travel@6.4.4...@entur/travel@6.4.5) (2025-11-24)
+
+### Bug Fixes
+
+- remove unneccesary vendor prefixes from source scss files ([14fe64e](https://github.com/entur/design-system/commit/14fe64eac51ae7756ea096cdc2c3b1e8bc1cb921))
+- **travel/travel tag:** fix className not being applied to travel tag ([74e87c6](https://github.com/entur/design-system/commit/74e87c6173912d4553be06c32ae4c7339f00a89a))
+
 ## [6.4.4](https://github.com/entur/design-system/compare/@entur/travel@6.4.3...@entur/travel@6.4.4) (2025-10-27)
 
 **Note:** Version bump only for package @entur/travel

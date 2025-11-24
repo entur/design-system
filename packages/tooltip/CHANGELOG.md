@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.2.18](https://github.com/entur/design-system/compare/@entur/tooltip@5.2.17...@entur/tooltip@5.2.18) (2025-11-24)
+
+### Bug Fixes
+
+- **tooltip/tooltip:** remove unneccesary import of button styles ([3fb7c13](https://github.com/entur/design-system/commit/3fb7c13c4117c9620ccf04741a2bbf9dd8372b87))
+
 ## [5.2.17](https://github.com/entur/design-system/compare/@entur/tooltip@5.2.16...@entur/tooltip@5.2.17) (2025-10-20)
 
 **Note:** Version bump only for package @entur/tooltip

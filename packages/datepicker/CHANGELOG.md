@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.4.4](https://github.com/entur/design-system/compare/@entur/datepicker@11.4.3...@entur/datepicker@11.4.4) (2025-11-24)
+
+### Bug Fixes
+
+- **datepicker:** use aria-alert only on negative and warning variants ([352c6f6](https://github.com/entur/design-system/commit/352c6f6469661c681b89faf6fa8d993ecdd9db63))
+
 ## [11.4.3](https://github.com/entur/design-system/compare/@entur/datepicker@11.4.2...@entur/datepicker@11.4.3) (2025-10-27)
 
 **Note:** Version bump only for package @entur/datepicker
