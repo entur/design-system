@@ -27,6 +27,12 @@
             "rootAlias": "Sky/30"
           },
           {
+            "name": "Components/Layout/Badge/Information/Contrast/Icon",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
             "name": "Components/Layout/Badge/Information/Contrast/Text",
             "value": "#181c56",
             "var": "Text/Accent",
@@ -55,6 +61,12 @@
             "value": "#e1eff8",
             "var": "Fill/Information/Muted",
             "rootAlias": "Sky/10"
+          },
+          {
+            "name": "Components/Layout/Badge/Information/Standard/Icon",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
           },
           {
             "name": "Components/Layout/Badge/Information/Standard/Text",
@@ -87,6 +99,12 @@
             "rootAlias": "Coral/30"
           },
           {
+            "name": "Components/Layout/Badge/Negative/Contrast/Icon",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
             "name": "Components/Layout/Badge/Negative/Contrast/Text",
             "value": "#181c56",
             "var": "Text/Accent",
@@ -115,6 +133,12 @@
             "value": "#ffcece",
             "var": "Fill/Negative/Muted",
             "rootAlias": "Coral/20"
+          },
+          {
+            "name": "Components/Layout/Badge/Negative/Standard/Icon",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
           },
           {
             "name": "Components/Layout/Badge/Negative/Standard/Text",
@@ -147,6 +171,12 @@
             "rootAlias": "Blue/80"
           },
           {
+            "name": "Components/Layout/Badge/Neutral/Contrast/Icon",
+            "value": "#ffffff",
+            "var": "Shape/Light",
+            "rootAlias": "White/Alpha-100"
+          },
+          {
             "name": "Components/Layout/Badge/Neutral/Contrast/Text",
             "value": "#ffffff",
             "var": "Text/Light",
@@ -177,6 +207,12 @@
             "rootAlias": "Blue/10"
           },
           {
+            "name": "Components/Layout/Badge/Neutral/Standard/Icon",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
             "name": "Components/Layout/Badge/Neutral/Standard/Text",
             "value": "#181c56",
             "var": "Text/Accent",
@@ -201,6 +237,12 @@
             "rootAlias": "Lavender/40"
           },
           {
+            "name": "Components/Layout/Badge/Primary/Contrast/Icon",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
             "name": "Components/Layout/Badge/Primary/Contrast/Text",
             "value": "#181c56",
             "var": "Text/Accent",
@@ -223,6 +265,12 @@
             "value": "#181c56",
             "var": "Fill/Primary/Default/Light",
             "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/Layout/Badge/Primary/Standard/Icon",
+            "value": "#ffffff",
+            "var": "Shape/Light",
+            "rootAlias": "White/Alpha-100"
           },
           {
             "name": "Components/Layout/Badge/Primary/Standard/Text",
@@ -255,6 +303,12 @@
             "rootAlias": "Mint/40"
           },
           {
+            "name": "Components/Layout/Badge/Success/Contrast/Icon",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
             "name": "Components/Layout/Badge/Success/Contrast/Text",
             "value": "#181c56",
             "var": "Text/Accent",
@@ -283,6 +337,12 @@
             "value": "#d0f1e3",
             "var": "Fill/Success/Muted",
             "rootAlias": "Mint/20"
+          },
+          {
+            "name": "Components/Layout/Badge/Success/Standard/Icon",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
           },
           {
             "name": "Components/Layout/Badge/Success/Standard/Text",
@@ -351,6 +411,12 @@
             "rootAlias": "Canary/40"
           },
           {
+            "name": "Components/Layout/Badge/Warning/Contrast/Icon",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
             "name": "Components/Layout/Badge/Warning/Contrast/Text",
             "value": "#181c56",
             "var": "Text/Accent",
@@ -379,6 +445,12 @@
             "value": "#fff4cd",
             "var": "Fill/Warning/Muted",
             "rootAlias": "Canary/20"
+          },
+          {
+            "name": "Components/Layout/Badge/Warning/Standard/Icon",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
           },
           {
             "name": "Components/Layout/Badge/Warning/Standard/Text",
@@ -2601,7 +2673,7 @@
             "rootAlias": "Lavender/90"
           },
           {
-            "name": "Components/form/Feedback Text/Warning/Contrast/Icon",
+            "name": "Components/form/Feedback Text/Warning/Contrast/Icon-Fill",
             "value": "#ffe082",
             "var": "Shape/WarningAlt",
             "rootAlias": "Canary/40"
@@ -3531,6 +3603,102 @@
             "rootAlias": "Grey/50"
           },
           {
+            "name": "Components/menu/Side Navigation/Contrast beta/Background-Child",
+            "value": "#9ea0bd1a",
+            "var": "Fill/Background/Tint/Transparent",
+            "rootAlias": "Transparent/Blue-Alpha10"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Contrast beta/Divider",
+            "value": "#54568c66",
+            "var": "Stroke/Transparent",
+            "rootAlias": "Transparent/Blue-Alpha40"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Contrast beta/Fill-Active",
+            "value": "#393d79",
+            "var": "Fill/Selected/Default/Contrast",
+            "rootAlias": "Blue/90"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Contrast beta/Fill-Click",
+            "value": "#8794d4",
+            "var": "Fill/Primary/Active/Contrast",
+            "rootAlias": "Lavender/50"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Contrast beta/Fill-Default",
+            "value": "#ffffff00",
+            "var": "Fill/Background/Standard/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Contrast beta/Fill-Disabled",
+            "value": "#ffffff00",
+            "var": "Fill/Background/Standard/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Contrast beta/Fill-Hover",
+            "value": "#626493",
+            "var": "Fill/Secondary/Hover/Contrast",
+            "rootAlias": "Blue/70"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Contrast beta/Icon",
+            "value": "#ffffff",
+            "var": "Shape/Light",
+            "rootAlias": "White/Alpha-100"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Contrast beta/Icon-Disabled",
+            "value": "#b6b8ba",
+            "var": "Shape/NeutralAlt",
+            "rootAlias": "Grey/50"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Contrast beta/Icon-Subdued",
+            "value": "#aeb7e2",
+            "var": "Shape/Contrast",
+            "rootAlias": "Lavender/40"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Contrast beta/Stroke-Dev",
+            "value": "#5ac39a",
+            "var": "Fill/Success/Contrast",
+            "rootAlias": "Mint/40"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Contrast beta/Stroke-Prod",
+            "value": "#ff5959",
+            "var": "Stroke/Highlight",
+            "rootAlias": "Coral/40"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Contrast beta/Stroke-Staging",
+            "value": "#ffe082",
+            "var": "Fill/Warning/Contrast",
+            "rootAlias": "Canary/40"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Contrast beta/Text",
+            "value": "#ffffff",
+            "var": "Text/Light",
+            "rootAlias": "White/Alpha-100"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Contrast beta/Text-Disabled",
+            "value": "#b6b8ba",
+            "var": "Text/NeutralAlt",
+            "rootAlias": "Grey/50"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Contrast beta/Text-Group",
+            "value": "#d9dae8",
+            "var": "Text/SubduedAlt",
+            "rootAlias": "Blue/30"
+          },
+          {
             "name": "Components/menu/Side Navigation/Standard/Avatar",
             "value": "#ffffff",
             "var": "Fill/Background/Standard/Light",
@@ -3607,6 +3775,102 @@
             "value": "#6e6f73",
             "var": "Text/Neutral",
             "rootAlias": "Grey/70"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Standard beta/Background-Child",
+            "value": "#e5e5e926",
+            "var": "Fill/Background/Overlay/Transparent",
+            "rootAlias": "Transparent/Ebony-Alpha15"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Standard beta/Divider",
+            "value": "#e5e5e9",
+            "var": "Stroke/LightAlt",
+            "rootAlias": "Ebony/10"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Standard beta/Fill-Active",
+            "value": "#9ea0bd1a",
+            "var": "Fill/Background/Tint/Transparent",
+            "rootAlias": "Transparent/Blue-Alpha10"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Standard beta/Fill-Click",
+            "value": "#aeb7e2",
+            "var": "Fill/Secondary/Active/Light",
+            "rootAlias": "Lavender/40"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Standard beta/Fill-Default",
+            "value": "#ffffff00",
+            "var": "Fill/Background/Standard/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Standard beta/Fill-Disabled",
+            "value": "#ffffff00",
+            "var": "Fill/Background/Standard/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Standard beta/Fill-Hover",
+            "value": "#d9dae8",
+            "var": "Fill/Background/Subdued/Light",
+            "rootAlias": "Blue/30"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Standard beta/Icon",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Standard beta/Icon-Disabled",
+            "value": "#6e6f73",
+            "var": "Shape/Neutral",
+            "rootAlias": "Grey/70"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Standard beta/Icon-Subdued",
+            "value": "#626493",
+            "var": "Shape/Subdued",
+            "rootAlias": "Blue/70"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Standard beta/Stroke-Dev",
+            "value": "#37ab83",
+            "var": "Fill/Success/Subdued",
+            "rootAlias": "Mint/50"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Standard beta/Stroke-Prod",
+            "value": "#ff5959",
+            "var": "Stroke/Highlight",
+            "rootAlias": "Coral/40"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Standard beta/Stroke-Staging",
+            "value": "#ffca28",
+            "var": "Fill/Warning/Deep",
+            "rootAlias": "Canary/60"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Standard beta/Text",
+            "value": "#181c56",
+            "var": "Text/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Standard beta/Text-Disabled",
+            "value": "#6e6f73",
+            "var": "Text/Neutral",
+            "rootAlias": "Grey/70"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Standard beta/Text-Group",
+            "value": "#626493",
+            "var": "Text/Subdued",
+            "rootAlias": "Blue/70"
           },
           {
             "name": "Components/menu/Stepper/Contrast/Background",
@@ -4198,7 +4462,7 @@
           },
           {
             "name": "Components/travel/Travel Leg/Contrast/Bicycle",
-            "value": "#00db9b",
+            "value": "#00dbb6",
             "var": "Contrast/Bicycle",
             "rootAlias": "Contrast/Bicycle"
           },
@@ -4215,6 +4479,12 @@
             "rootAlias": "Contrast/Bus"
           },
           {
+            "name": "Components/travel/Travel Leg/Contrast/Bus-regional",
+            "value": "#b8db48",
+            "var": "Contrast/Bus-regional",
+            "rootAlias": "Contrast/Bus-regional"
+          },
+          {
             "name": "Components/travel/Travel Leg/Contrast/Cableway",
             "value": "#b482fb",
             "var": "Contrast/Cableway",
@@ -4228,7 +4498,7 @@
           },
           {
             "name": "Components/travel/Travel Leg/Contrast/Citybike",
-            "value": "#00db9b",
+            "value": "#00dbb6",
             "var": "Contrast/Citybike",
             "rootAlias": "Contrast/Citybike"
           },
@@ -4258,7 +4528,7 @@
           },
           {
             "name": "Components/travel/Travel Leg/Contrast/Mobility",
-            "value": "#00db9b",
+            "value": "#00dbb6",
             "var": "Contrast/Mobility",
             "rootAlias": "Contrast/Mobility"
           },
@@ -4324,7 +4594,7 @@
           },
           {
             "name": "Components/travel/Travel Leg/Standard/Bicycle",
-            "value": "#33826b",
+            "value": "#0d827e",
             "var": "Standard/Bicycle",
             "rootAlias": "Standard/Bicycle"
           },
@@ -4341,6 +4611,12 @@
             "rootAlias": "Standard/Bus"
           },
           {
+            "name": "Components/travel/Travel Leg/Standard/Bus-regional",
+            "value": "#427500",
+            "var": "Standard/Bus-regional",
+            "rootAlias": "Standard/Bus-regional"
+          },
+          {
             "name": "Components/travel/Travel Leg/Standard/Cableway",
             "value": "#78469a",
             "var": "Standard/Cableway",
@@ -4354,7 +4630,7 @@
           },
           {
             "name": "Components/travel/Travel Leg/Standard/Citybike",
-            "value": "#33826b",
+            "value": "#0d827e",
             "var": "Standard/Citybike",
             "rootAlias": "Standard/Citybike"
           },
@@ -4384,7 +4660,7 @@
           },
           {
             "name": "Components/travel/Travel Leg/Standard/Mobility",
-            "value": "#33826b",
+            "value": "#0d827e",
             "var": "Standard/Mobility",
             "rootAlias": "Standard/Mobility"
           },
@@ -4444,7 +4720,7 @@
           },
           {
             "name": "Components/travel/Travel Switch/Contrast/BackgroundTrue-Bicycle",
-            "value": "#00db9b",
+            "value": "#00dbb6",
             "var": "Contrast/Bicycle",
             "rootAlias": "Contrast/Bicycle"
           },
@@ -4468,7 +4744,7 @@
           },
           {
             "name": "Components/travel/Travel Switch/Contrast/BackgroundTrue-Citybike",
-            "value": "#00db9b",
+            "value": "#00dbb6",
             "var": "Contrast/Citybike",
             "rootAlias": "Contrast/Citybike"
           },
@@ -4498,7 +4774,7 @@
           },
           {
             "name": "Components/travel/Travel Switch/Contrast/BackgroundTrue-Mobility",
-            "value": "#00db9b",
+            "value": "#00dbb6",
             "var": "Contrast/Mobility",
             "rootAlias": "Contrast/Mobility"
           },
@@ -4513,6 +4789,12 @@
             "value": "#42a5f5",
             "var": "Contrast/Train",
             "rootAlias": "Contrast/Train"
+          },
+          {
+            "name": "Components/travel/Travel Switch/Contrast/BackgroundTrue-Regional-Bus",
+            "value": "#b8db48",
+            "var": "Contrast/Bus-regional",
+            "rootAlias": "Contrast/Bus-regional"
           },
           {
             "name": "Components/travel/Travel Switch/Contrast/BackgroundTrue-Taxi",
@@ -4564,7 +4846,7 @@
           },
           {
             "name": "Components/travel/Travel Switch/Contrast/IconTrue-Bicycle",
-            "value": "#33826b",
+            "value": "#0d827e",
             "var": "Standard/Bicycle",
             "rootAlias": "Standard/Bicycle"
           },
@@ -4573,6 +4855,12 @@
             "value": "#c5044e",
             "var": "Standard/Bus",
             "rootAlias": "Standard/Bus"
+          },
+          {
+            "name": "Components/travel/Travel Switch/Contrast/IconTrue-Bus-regional",
+            "value": "#427500",
+            "var": "Standard/Bus-regional",
+            "rootAlias": "Standard/Bus-regional"
           },
           {
             "name": "Components/travel/Travel Switch/Contrast/IconTrue-Cableway",
@@ -4588,7 +4876,7 @@
           },
           {
             "name": "Components/travel/Travel Switch/Contrast/IconTrue-Citybike",
-            "value": "#33826b",
+            "value": "#0d827e",
             "var": "Standard/Citybike",
             "rootAlias": "Standard/Citybike"
           },
@@ -4618,7 +4906,7 @@
           },
           {
             "name": "Components/travel/Travel Switch/Contrast/IconTrue-Mobility",
-            "value": "#33826b",
+            "value": "#0d827e",
             "var": "Standard/Mobility",
             "rootAlias": "Standard/Mobility"
           },
@@ -4696,7 +4984,7 @@
           },
           {
             "name": "Components/travel/Travel Switch/Standard/BackgroundTrue-Bicycle",
-            "value": "#33826b",
+            "value": "#0d827e",
             "var": "Standard/Bicycle",
             "rootAlias": "Standard/Bicycle"
           },
@@ -4705,6 +4993,12 @@
             "value": "#c5044e",
             "var": "Standard/Bus",
             "rootAlias": "Standard/Bus"
+          },
+          {
+            "name": "Components/travel/Travel Switch/Standard/BackgroundTrue-Bus-regional",
+            "value": "#427500",
+            "var": "Standard/Bus-regional",
+            "rootAlias": "Standard/Bus-regional"
           },
           {
             "name": "Components/travel/Travel Switch/Standard/BackgroundTrue-Cableway",
@@ -4720,7 +5014,7 @@
           },
           {
             "name": "Components/travel/Travel Switch/Standard/BackgroundTrue-Citybike",
-            "value": "#33826b",
+            "value": "#0d827e",
             "var": "Standard/Citybike",
             "rootAlias": "Standard/Citybike"
           },
@@ -4750,7 +5044,7 @@
           },
           {
             "name": "Components/travel/Travel Switch/Standard/BackgroundTrue-Mobility",
-            "value": "#33826b",
+            "value": "#0d827e",
             "var": "Standard/Mobility",
             "rootAlias": "Standard/Mobility"
           },
@@ -4816,7 +5110,7 @@
           },
           {
             "name": "Components/travel/Travel Switch/Standard/IconTrue-Bicycle",
-            "value": "#33826b",
+            "value": "#0d827e",
             "var": "Standard/Bicycle",
             "rootAlias": "Standard/Bicycle"
           },
@@ -4840,7 +5134,7 @@
           },
           {
             "name": "Components/travel/Travel Switch/Standard/IconTrue-Citybike",
-            "value": "#33826b",
+            "value": "#0d827e",
             "var": "Standard/Citybike",
             "rootAlias": "Standard/Citybike"
           },
@@ -4885,6 +5179,12 @@
             "value": "#00367f",
             "var": "Standard/Train",
             "rootAlias": "Standard/Train"
+          },
+          {
+            "name": "Components/travel/Travel Switch/Standard/IconTrue-Regional-Bus",
+            "value": "#427500",
+            "var": "Standard/Bus-regional",
+            "rootAlias": "Standard/Bus-regional"
           },
           {
             "name": "Components/travel/Travel Switch/Standard/IconTrue-Taxi",
@@ -4966,7 +5266,7 @@
           },
           {
             "name": "Components/travel/Travel Tag/Contrast/Fill/Bicycle",
-            "value": "#00db9b",
+            "value": "#00dbb6",
             "var": "Contrast/Bicycle",
             "rootAlias": "Contrast/Bicycle"
           },
@@ -4978,9 +5278,21 @@
           },
           {
             "name": "Components/travel/Travel Tag/Contrast/Fill/Bus-Cancelled",
-            "value": "#c5044e26",
-            "var": "Standard/Bus-transparent",
-            "rootAlias": "Standard/Bus-transparent"
+            "value": "#ff639226",
+            "var": "Contrast/Bus-transparent",
+            "rootAlias": "Contrast/Bus-transparent"
+          },
+          {
+            "name": "Components/travel/Travel Tag/Contrast/Fill/Bus-regional",
+            "value": "#b8db48",
+            "var": "Contrast/Bus-regional",
+            "rootAlias": "Contrast/Bus-regional"
+          },
+          {
+            "name": "Components/travel/Travel Tag/Contrast/Fill/Bus-regional-Cancelled",
+            "value": "#b8db4826",
+            "var": "Contrast/Bus-regional-transparent",
+            "rootAlias": "Contrast/Bus-regional-transparent"
           },
           {
             "name": "Components/travel/Travel Tag/Contrast/Fill/Cableway",
@@ -5008,7 +5320,7 @@
           },
           {
             "name": "Components/travel/Travel Tag/Contrast/Fill/Citybike",
-            "value": "#00db9b",
+            "value": "#00dbb6",
             "var": "Contrast/Citybike",
             "rootAlias": "Contrast/Citybike"
           },
@@ -5068,7 +5380,7 @@
           },
           {
             "name": "Components/travel/Travel Tag/Contrast/Fill/Mobility",
-            "value": "#00db9b",
+            "value": "#00dbb6",
             "var": "Contrast/Mobility",
             "rootAlias": "Contrast/Mobility"
           },
@@ -5199,6 +5511,12 @@
             "rootAlias": "Contrast/Bus"
           },
           {
+            "name": "Components/travel/Travel Tag/Contrast/Icon/Bus-regional-Cancelled",
+            "value": "#b8db48",
+            "var": "Contrast/Bus-regional",
+            "rootAlias": "Contrast/Bus-regional"
+          },
+          {
             "name": "Components/travel/Travel Tag/Contrast/Icon/Cableway-Cancelled",
             "value": "#b482fb",
             "var": "Contrast/Cableway",
@@ -5317,6 +5635,12 @@
             "value": "#ff6392",
             "var": "Contrast/Bus",
             "rootAlias": "Contrast/Bus"
+          },
+          {
+            "name": "Components/travel/Travel Tag/Contrast/Text/Line-Bus-regional-Cancelled",
+            "value": "#b8db48",
+            "var": "Contrast/Bus-regional",
+            "rootAlias": "Contrast/Bus-regional"
           },
           {
             "name": "Components/travel/Travel Tag/Contrast/Text/Line-Cableway-Cancelled",
@@ -5440,7 +5764,7 @@
           },
           {
             "name": "Components/travel/Travel Tag/Standard/Fill/Bicycle",
-            "value": "#33826b",
+            "value": "#0d827e",
             "var": "Standard/Bicycle",
             "rootAlias": "Standard/Bicycle"
           },
@@ -5455,6 +5779,18 @@
             "value": "#c5044e26",
             "var": "Standard/Bus-transparent",
             "rootAlias": "Standard/Bus-transparent"
+          },
+          {
+            "name": "Components/travel/Travel Tag/Standard/Fill/Bus-regional",
+            "value": "#427500",
+            "var": "Standard/Bus-regional",
+            "rootAlias": "Standard/Bus-regional"
+          },
+          {
+            "name": "Components/travel/Travel Tag/Standard/Fill/Bus-regional-Cancelled",
+            "value": "#42750026",
+            "var": "Standard/Bus-regional-transparent",
+            "rootAlias": "Standard/Bus-regional-transparent"
           },
           {
             "name": "Components/travel/Travel Tag/Standard/Fill/Cableway",
@@ -5482,7 +5818,7 @@
           },
           {
             "name": "Components/travel/Travel Tag/Standard/Fill/Citybike",
-            "value": "#33826b",
+            "value": "#0d827e",
             "var": "Standard/Citybike",
             "rootAlias": "Standard/Citybike"
           },
@@ -5548,7 +5884,7 @@
           },
           {
             "name": "Components/travel/Travel Tag/Standard/Fill/Mobility",
-            "value": "#33826b",
+            "value": "#0d827e",
             "var": "Standard/Mobility",
             "rootAlias": "Standard/Mobility"
           },
@@ -5647,6 +5983,12 @@
             "value": "#c5044e",
             "var": "Standard/Bus",
             "rootAlias": "Standard/Bus"
+          },
+          {
+            "name": "Components/travel/Travel Tag/Standard/Icon/Bus-regional-Cancelled",
+            "value": "#427500",
+            "var": "Standard/Bus-regional",
+            "rootAlias": "Standard/Bus-regional"
           },
           {
             "name": "Components/travel/Travel Tag/Standard/Icon/Cableway-Cancelled",
@@ -5845,6 +6187,12 @@
             "value": "#800664",
             "var": "Standard/airportLinkRail",
             "rootAlias": "Standard/airportLinkRail"
+          },
+          {
+            "name": "Components/travel/Travel Tag/Standard/Text/Line-regional-Bus-Cancelled",
+            "value": "#427500",
+            "var": "Standard/Bus-regional",
+            "rootAlias": "Standard/Bus-regional"
           },
           {
             "name": "Components/travel/Travel Tag/Standard/Text/NewTime",
@@ -6271,6 +6619,12 @@
             "rootAlias": "Sky/20"
           },
           {
+            "name": "Components/Layout/Badge/Information/Contrast/Icon",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
             "name": "Components/Layout/Badge/Information/Contrast/Text",
             "value": "#08091c",
             "var": "Text/Dark",
@@ -6299,6 +6653,12 @@
             "value": "#acd7f1",
             "var": "Fill/Information/Tint",
             "rootAlias": "Sky/20"
+          },
+          {
+            "name": "Components/Layout/Badge/Information/Standard/Icon",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
           },
           {
             "name": "Components/Layout/Badge/Information/Standard/Text",
@@ -6331,6 +6691,12 @@
             "rootAlias": "Coral/20"
           },
           {
+            "name": "Components/Layout/Badge/Negative/Contrast/Icon",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
             "name": "Components/Layout/Badge/Negative/Contrast/Text",
             "value": "#08091c",
             "var": "Text/Dark",
@@ -6359,6 +6725,12 @@
             "value": "#ffcece",
             "var": "Fill/Negative/Muted",
             "rootAlias": "Coral/20"
+          },
+          {
+            "name": "Components/Layout/Badge/Negative/Standard/Icon",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
           },
           {
             "name": "Components/Layout/Badge/Negative/Standard/Text",
@@ -6391,6 +6763,12 @@
             "rootAlias": "Transparent/Ebony-Alpha35"
           },
           {
+            "name": "Components/Layout/Badge/Neutral/Contrast/Icon",
+            "value": "#e5e5e9",
+            "var": "Shape/LightAlt",
+            "rootAlias": "Ebony/10"
+          },
+          {
             "name": "Components/Layout/Badge/Neutral/Contrast/Text",
             "value": "#e5e5e9",
             "var": "Text/LightAlt",
@@ -6421,6 +6799,12 @@
             "rootAlias": "Transparent/Ebony-Alpha35"
           },
           {
+            "name": "Components/Layout/Badge/Neutral/Standard/Icon",
+            "value": "#e5e5e9",
+            "var": "Shape/LightAlt",
+            "rootAlias": "Ebony/10"
+          },
+          {
             "name": "Components/Layout/Badge/Neutral/Standard/Text",
             "value": "#e5e5e9",
             "var": "Text/LightAlt",
@@ -6445,6 +6829,12 @@
             "rootAlias": "Lavender/40"
           },
           {
+            "name": "Components/Layout/Badge/Primary/Contrast/Icon",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
             "name": "Components/Layout/Badge/Primary/Contrast/Text",
             "value": "#08091c",
             "var": "Text/Dark",
@@ -6467,6 +6857,12 @@
             "value": "#aeb7e2",
             "var": "Fill/Primary/Default/Contrast",
             "rootAlias": "Lavender/40"
+          },
+          {
+            "name": "Components/Layout/Badge/Primary/Standard/Icon",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
           },
           {
             "name": "Components/Layout/Badge/Primary/Standard/Text",
@@ -6499,6 +6895,12 @@
             "rootAlias": "Mint/30"
           },
           {
+            "name": "Components/Layout/Badge/Success/Contrast/Icon",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
             "name": "Components/Layout/Badge/Success/Contrast/Text",
             "value": "#08091c",
             "var": "Text/Dark",
@@ -6527,6 +6929,12 @@
             "value": "#9cd9c2",
             "var": "Fill/Success/Tint",
             "rootAlias": "Mint/30"
+          },
+          {
+            "name": "Components/Layout/Badge/Success/Standard/Icon",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
           },
           {
             "name": "Components/Layout/Badge/Success/Standard/Text",
@@ -6595,6 +7003,12 @@
             "rootAlias": "Canary/30"
           },
           {
+            "name": "Components/Layout/Badge/Warning/Contrast/Icon",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
             "name": "Components/Layout/Badge/Warning/Contrast/Text",
             "value": "#08091c",
             "var": "Text/Dark",
@@ -6623,6 +7037,12 @@
             "value": "#ffeeb3",
             "var": "Fill/Warning/Tint",
             "rootAlias": "Canary/30"
+          },
+          {
+            "name": "Components/Layout/Badge/Warning/Standard/Icon",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
           },
           {
             "name": "Components/Layout/Badge/Warning/Standard/Text",
@@ -8845,7 +9265,7 @@
             "rootAlias": "Ebony/10"
           },
           {
-            "name": "Components/form/Feedback Text/Warning/Contrast/Icon",
+            "name": "Components/form/Feedback Text/Warning/Contrast/Icon-Fill",
             "value": "#ffe082",
             "var": "Shape/WarningAlt",
             "rootAlias": "Canary/40"
@@ -9775,6 +10195,102 @@
             "rootAlias": "Grey/60"
           },
           {
+            "name": "Components/menu/Side Navigation/Contrast beta/Background-Child",
+            "value": "#141527",
+            "var": "Fill/Background/Tint/Dark",
+            "rootAlias": "Ebony/95"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Contrast beta/Divider",
+            "value": "#2d2e3e",
+            "var": "Fill/Background/Subdued/Dark",
+            "rootAlias": "Ebony/85"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Contrast beta/Fill-Active",
+            "value": "#212233",
+            "var": "Fill/Background/Contrast/Dark",
+            "rootAlias": "Ebony/90"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Contrast beta/Fill-Click",
+            "value": "#e5e5e926",
+            "var": "Fill/Background/Overlay/Transparent",
+            "rootAlias": "Transparent/Ebony-Alpha15"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Contrast beta/Fill-Default",
+            "value": "#ffffff00",
+            "var": "Fill/Background/Standard/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Contrast beta/Fill-Disabled",
+            "value": "#ffffff00",
+            "var": "Fill/Background/Standard/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Contrast beta/Fill-Hover",
+            "value": "#e5e5e926",
+            "var": "Fill/Background/Overlay/Transparent",
+            "rootAlias": "Transparent/Ebony-Alpha15"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Contrast beta/Icon",
+            "value": "#e5e5e9",
+            "var": "Shape/LightAlt",
+            "rootAlias": "Ebony/10"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Contrast beta/Icon-Disabled",
+            "value": "#949699",
+            "var": "Shape/NeutralAlt2",
+            "rootAlias": "Grey/60"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Contrast beta/Icon-Subdued",
+            "value": "#e5e5e9",
+            "var": "Shape/LightAlt",
+            "rootAlias": "Ebony/10"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Contrast beta/Stroke-Dev",
+            "value": "#9cd9c2",
+            "var": "Fill/Success/Tint",
+            "rootAlias": "Mint/30"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Contrast beta/Stroke-Prod",
+            "value": "#ff9494",
+            "var": "Stroke/HighlightAlt",
+            "rootAlias": "Coral/30"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Contrast beta/Stroke-Staging",
+            "value": "#ffeeb3",
+            "var": "Fill/Warning/Tint",
+            "rootAlias": "Canary/30"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Contrast beta/Text",
+            "value": "#e5e5e9",
+            "var": "Text/LightAlt",
+            "rootAlias": "Ebony/10"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Contrast beta/Text-Disabled",
+            "value": "#949699",
+            "var": "Text/NeutralAlt2",
+            "rootAlias": "Grey/60"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Contrast beta/Text-Group",
+            "value": "#b3b4bd",
+            "var": "Text/DarkAlt",
+            "rootAlias": "Ebony/30"
+          },
+          {
             "name": "Components/menu/Side Navigation/Standard/Avatar",
             "value": "#e5e5e926",
             "var": "Fill/Background/Overlay/Transparent",
@@ -9851,6 +10367,102 @@
             "value": "#949699",
             "var": "Text/NeutralAlt2",
             "rootAlias": "Grey/60"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Standard beta/Background-Child",
+            "value": "#141527",
+            "var": "Fill/Background/Tint/Dark",
+            "rootAlias": "Ebony/95"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Standard beta/Divider",
+            "value": "#2d2e3e",
+            "var": "Fill/Background/Subdued/Dark",
+            "rootAlias": "Ebony/85"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Standard beta/Fill-Active",
+            "value": "#212233",
+            "var": "Fill/Background/Contrast/Dark",
+            "rootAlias": "Ebony/90"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Standard beta/Fill-Click",
+            "value": "#e5e5e926",
+            "var": "Fill/Background/Overlay/Transparent",
+            "rootAlias": "Transparent/Ebony-Alpha15"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Standard beta/Fill-Default",
+            "value": "#ffffff00",
+            "var": "Fill/Background/Standard/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Standard beta/Fill-Disabled",
+            "value": "#ffffff00",
+            "var": "Fill/Background/Standard/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Standard beta/Fill-Hover",
+            "value": "#e5e5e926",
+            "var": "Fill/Background/Overlay/Transparent",
+            "rootAlias": "Transparent/Ebony-Alpha15"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Standard beta/Icon",
+            "value": "#e5e5e9",
+            "var": "Shape/LightAlt",
+            "rootAlias": "Ebony/10"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Standard beta/Icon-Disabled",
+            "value": "#949699",
+            "var": "Shape/NeutralAlt2",
+            "rootAlias": "Grey/60"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Standard beta/Icon-Subdued",
+            "value": "#e5e5e9",
+            "var": "Shape/LightAlt",
+            "rootAlias": "Ebony/10"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Standard beta/Stroke-Dev",
+            "value": "#9cd9c2",
+            "var": "Fill/Success/Tint",
+            "rootAlias": "Mint/30"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Standard beta/Stroke-Prod",
+            "value": "#ff9494",
+            "var": "Stroke/HighlightAlt",
+            "rootAlias": "Coral/30"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Standard beta/Stroke-Staging",
+            "value": "#ffeeb3",
+            "var": "Fill/Warning/Tint",
+            "rootAlias": "Canary/30"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Standard beta/Text",
+            "value": "#e5e5e9",
+            "var": "Text/LightAlt",
+            "rootAlias": "Ebony/10"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Standard beta/Text-Disabled",
+            "value": "#949699",
+            "var": "Text/NeutralAlt2",
+            "rootAlias": "Grey/60"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Standard beta/Text-Group",
+            "value": "#b3b4bd",
+            "var": "Text/DarkAlt",
+            "rootAlias": "Ebony/30"
           },
           {
             "name": "Components/menu/Stepper/Contrast/Background",
@@ -10442,7 +11054,7 @@
           },
           {
             "name": "Components/travel/Travel Leg/Contrast/Bicycle",
-            "value": "#4db295",
+            "value": "#4db2a1",
             "var": "Dark/Bicycle",
             "rootAlias": "Dark/Bicycle"
           },
@@ -10459,6 +11071,12 @@
             "rootAlias": "Dark/Bus"
           },
           {
+            "name": "Components/travel/Travel Leg/Contrast/Bus-regional",
+            "value": "#a4bf4d",
+            "var": "Dark/Bus-regional",
+            "rootAlias": "Dark/Bus-regional"
+          },
+          {
             "name": "Components/travel/Travel Leg/Contrast/Cableway",
             "value": "#b898e5",
             "var": "Dark/Cableway",
@@ -10472,7 +11090,7 @@
           },
           {
             "name": "Components/travel/Travel Leg/Contrast/Citybike",
-            "value": "#4db295",
+            "value": "#4db2a1",
             "var": "Dark/Citybike",
             "rootAlias": "Dark/Citybike"
           },
@@ -10502,7 +11120,7 @@
           },
           {
             "name": "Components/travel/Travel Leg/Contrast/Mobility",
-            "value": "#4db295",
+            "value": "#4db2a1",
             "var": "Dark/Mobility",
             "rootAlias": "Dark/Mobility"
           },
@@ -10568,7 +11186,7 @@
           },
           {
             "name": "Components/travel/Travel Leg/Standard/Bicycle",
-            "value": "#4db295",
+            "value": "#4db2a1",
             "var": "Dark/Bicycle",
             "rootAlias": "Dark/Bicycle"
           },
@@ -10585,6 +11203,12 @@
             "rootAlias": "Dark/Bus"
           },
           {
+            "name": "Components/travel/Travel Leg/Standard/Bus-regional",
+            "value": "#a4bf4d",
+            "var": "Dark/Bus-regional",
+            "rootAlias": "Dark/Bus-regional"
+          },
+          {
             "name": "Components/travel/Travel Leg/Standard/Cableway",
             "value": "#b898e5",
             "var": "Dark/Cableway",
@@ -10598,7 +11222,7 @@
           },
           {
             "name": "Components/travel/Travel Leg/Standard/Citybike",
-            "value": "#4db295",
+            "value": "#4db2a1",
             "var": "Dark/Citybike",
             "rootAlias": "Dark/Citybike"
           },
@@ -10628,7 +11252,7 @@
           },
           {
             "name": "Components/travel/Travel Leg/Standard/Mobility",
-            "value": "#4db295",
+            "value": "#4db2a1",
             "var": "Dark/Mobility",
             "rootAlias": "Dark/Mobility"
           },
@@ -10688,7 +11312,7 @@
           },
           {
             "name": "Components/travel/Travel Switch/Contrast/BackgroundTrue-Bicycle",
-            "value": "#4db295",
+            "value": "#4db2a1",
             "var": "Dark/Bicycle",
             "rootAlias": "Dark/Bicycle"
           },
@@ -10712,7 +11336,7 @@
           },
           {
             "name": "Components/travel/Travel Switch/Contrast/BackgroundTrue-Citybike",
-            "value": "#4db295",
+            "value": "#4db2a1",
             "var": "Dark/Citybike",
             "rootAlias": "Dark/Citybike"
           },
@@ -10742,7 +11366,7 @@
           },
           {
             "name": "Components/travel/Travel Switch/Contrast/BackgroundTrue-Mobility",
-            "value": "#4db295",
+            "value": "#4db2a1",
             "var": "Dark/Mobility",
             "rootAlias": "Dark/Mobility"
           },
@@ -10757,6 +11381,12 @@
             "value": "#60a2d7",
             "var": "Dark/Train",
             "rootAlias": "Dark/Train"
+          },
+          {
+            "name": "Components/travel/Travel Switch/Contrast/BackgroundTrue-Regional-Bus",
+            "value": "#a4bf4d",
+            "var": "Dark/Bus-regional",
+            "rootAlias": "Dark/Bus-regional"
           },
           {
             "name": "Components/travel/Travel Switch/Contrast/BackgroundTrue-Taxi",
@@ -10808,7 +11438,7 @@
           },
           {
             "name": "Components/travel/Travel Switch/Contrast/IconTrue-Bicycle",
-            "value": "#4db295",
+            "value": "#4db2a1",
             "var": "Dark/Bicycle",
             "rootAlias": "Dark/Bicycle"
           },
@@ -10817,6 +11447,12 @@
             "value": "#ef7398",
             "var": "Dark/Bus",
             "rootAlias": "Dark/Bus"
+          },
+          {
+            "name": "Components/travel/Travel Switch/Contrast/IconTrue-Bus-regional",
+            "value": "#a4bf4d",
+            "var": "Dark/Bus-regional",
+            "rootAlias": "Dark/Bus-regional"
           },
           {
             "name": "Components/travel/Travel Switch/Contrast/IconTrue-Cableway",
@@ -10832,7 +11468,7 @@
           },
           {
             "name": "Components/travel/Travel Switch/Contrast/IconTrue-Citybike",
-            "value": "#4db295",
+            "value": "#4db2a1",
             "var": "Dark/Citybike",
             "rootAlias": "Dark/Citybike"
           },
@@ -10862,7 +11498,7 @@
           },
           {
             "name": "Components/travel/Travel Switch/Contrast/IconTrue-Mobility",
-            "value": "#4db295",
+            "value": "#4db2a1",
             "var": "Dark/Mobility",
             "rootAlias": "Dark/Mobility"
           },
@@ -10940,7 +11576,7 @@
           },
           {
             "name": "Components/travel/Travel Switch/Standard/BackgroundTrue-Bicycle",
-            "value": "#4db295",
+            "value": "#4db2a1",
             "var": "Dark/Bicycle",
             "rootAlias": "Dark/Bicycle"
           },
@@ -10949,6 +11585,12 @@
             "value": "#ef7398",
             "var": "Dark/Bus",
             "rootAlias": "Dark/Bus"
+          },
+          {
+            "name": "Components/travel/Travel Switch/Standard/BackgroundTrue-Bus-regional",
+            "value": "#a4bf4d",
+            "var": "Dark/Bus-regional",
+            "rootAlias": "Dark/Bus-regional"
           },
           {
             "name": "Components/travel/Travel Switch/Standard/BackgroundTrue-Cableway",
@@ -10964,7 +11606,7 @@
           },
           {
             "name": "Components/travel/Travel Switch/Standard/BackgroundTrue-Citybike",
-            "value": "#4db295",
+            "value": "#4db2a1",
             "var": "Dark/Citybike",
             "rootAlias": "Dark/Citybike"
           },
@@ -10994,7 +11636,7 @@
           },
           {
             "name": "Components/travel/Travel Switch/Standard/BackgroundTrue-Mobility",
-            "value": "#4db295",
+            "value": "#4db2a1",
             "var": "Dark/Mobility",
             "rootAlias": "Dark/Mobility"
           },
@@ -11060,7 +11702,7 @@
           },
           {
             "name": "Components/travel/Travel Switch/Standard/IconTrue-Bicycle",
-            "value": "#00db9b",
+            "value": "#00dbb6",
             "var": "Contrast/Bicycle",
             "rootAlias": "Contrast/Bicycle"
           },
@@ -11084,7 +11726,7 @@
           },
           {
             "name": "Components/travel/Travel Switch/Standard/IconTrue-Citybike",
-            "value": "#00db9b",
+            "value": "#00dbb6",
             "var": "Contrast/Citybike",
             "rootAlias": "Contrast/Citybike"
           },
@@ -11114,7 +11756,7 @@
           },
           {
             "name": "Components/travel/Travel Switch/Standard/IconTrue-Mobility",
-            "value": "#00db9b",
+            "value": "#00dbb6",
             "var": "Contrast/Mobility",
             "rootAlias": "Contrast/Mobility"
           },
@@ -11129,6 +11771,12 @@
             "value": "#60a2d7",
             "var": "Dark/Train",
             "rootAlias": "Dark/Train"
+          },
+          {
+            "name": "Components/travel/Travel Switch/Standard/IconTrue-Regional-Bus",
+            "value": "#a4bf4d",
+            "var": "Dark/Bus-regional",
+            "rootAlias": "Dark/Bus-regional"
           },
           {
             "name": "Components/travel/Travel Switch/Standard/IconTrue-Taxi",
@@ -11210,7 +11858,7 @@
           },
           {
             "name": "Components/travel/Travel Tag/Contrast/Fill/Bicycle",
-            "value": "#4db295",
+            "value": "#4db2a1",
             "var": "Dark/Bicycle",
             "rootAlias": "Dark/Bicycle"
           },
@@ -11225,6 +11873,18 @@
             "value": "#ef739826",
             "var": "Dark/Bus-transparent",
             "rootAlias": "Dark/Bus-transparent"
+          },
+          {
+            "name": "Components/travel/Travel Tag/Contrast/Fill/Bus-regional",
+            "value": "#a4bf4d",
+            "var": "Dark/Bus-regional",
+            "rootAlias": "Dark/Bus-regional"
+          },
+          {
+            "name": "Components/travel/Travel Tag/Contrast/Fill/Bus-regional-Cancelled",
+            "value": "#a4bf4d26",
+            "var": "Dark/Bus-regional-transparent",
+            "rootAlias": "Dark/Bus-regional-transparent"
           },
           {
             "name": "Components/travel/Travel Tag/Contrast/Fill/Cableway",
@@ -11252,7 +11912,7 @@
           },
           {
             "name": "Components/travel/Travel Tag/Contrast/Fill/Citybike",
-            "value": "#4db295",
+            "value": "#4db2a1",
             "var": "Dark/Citybike",
             "rootAlias": "Dark/Citybike"
           },
@@ -11312,7 +11972,7 @@
           },
           {
             "name": "Components/travel/Travel Tag/Contrast/Fill/Mobility",
-            "value": "#4db295",
+            "value": "#4db2a1",
             "var": "Dark/Mobility",
             "rootAlias": "Dark/Mobility"
           },
@@ -11443,6 +12103,12 @@
             "rootAlias": "Dark/Bus"
           },
           {
+            "name": "Components/travel/Travel Tag/Contrast/Icon/Bus-regional-Cancelled",
+            "value": "#a4bf4d",
+            "var": "Dark/Bus-regional",
+            "rootAlias": "Dark/Bus-regional"
+          },
+          {
             "name": "Components/travel/Travel Tag/Contrast/Icon/Cableway-Cancelled",
             "value": "#b898e5",
             "var": "Dark/Cableway",
@@ -11561,6 +12227,12 @@
             "value": "#ef7398",
             "var": "Dark/Bus",
             "rootAlias": "Dark/Bus"
+          },
+          {
+            "name": "Components/travel/Travel Tag/Contrast/Text/Line-Bus-regional-Cancelled",
+            "value": "#a4bf4d",
+            "var": "Dark/Bus-regional",
+            "rootAlias": "Dark/Bus-regional"
           },
           {
             "name": "Components/travel/Travel Tag/Contrast/Text/Line-Cableway-Cancelled",
@@ -11684,7 +12356,7 @@
           },
           {
             "name": "Components/travel/Travel Tag/Standard/Fill/Bicycle",
-            "value": "#4db295",
+            "value": "#4db2a1",
             "var": "Dark/Bicycle",
             "rootAlias": "Dark/Bicycle"
           },
@@ -11699,6 +12371,18 @@
             "value": "#ef739826",
             "var": "Dark/Bus-transparent",
             "rootAlias": "Dark/Bus-transparent"
+          },
+          {
+            "name": "Components/travel/Travel Tag/Standard/Fill/Bus-regional",
+            "value": "#a4bf4d",
+            "var": "Dark/Bus-regional",
+            "rootAlias": "Dark/Bus-regional"
+          },
+          {
+            "name": "Components/travel/Travel Tag/Standard/Fill/Bus-regional-Cancelled",
+            "value": "#a4bf4d26",
+            "var": "Dark/Bus-regional-transparent",
+            "rootAlias": "Dark/Bus-regional-transparent"
           },
           {
             "name": "Components/travel/Travel Tag/Standard/Fill/Cableway",
@@ -11726,7 +12410,7 @@
           },
           {
             "name": "Components/travel/Travel Tag/Standard/Fill/Citybike",
-            "value": "#4db295",
+            "value": "#4db2a1",
             "var": "Dark/Citybike",
             "rootAlias": "Dark/Citybike"
           },
@@ -11792,7 +12476,7 @@
           },
           {
             "name": "Components/travel/Travel Tag/Standard/Fill/Mobility",
-            "value": "#4db295",
+            "value": "#4db2a1",
             "var": "Dark/Mobility",
             "rootAlias": "Dark/Mobility"
           },
@@ -11891,6 +12575,12 @@
             "value": "#ef7398",
             "var": "Dark/Bus",
             "rootAlias": "Dark/Bus"
+          },
+          {
+            "name": "Components/travel/Travel Tag/Standard/Icon/Bus-regional-Cancelled",
+            "value": "#a4bf4d",
+            "var": "Dark/Bus-regional",
+            "rootAlias": "Dark/Bus-regional"
           },
           {
             "name": "Components/travel/Travel Tag/Standard/Icon/Cableway-Cancelled",
@@ -12089,6 +12779,12 @@
             "value": "#f2b8e5",
             "var": "Dark/airportLinkRail",
             "rootAlias": "Dark/airportLinkRail"
+          },
+          {
+            "name": "Components/travel/Travel Tag/Standard/Text/Line-regional-Bus-Cancelled",
+            "value": "#a4bf4d",
+            "var": "Dark/Bus-regional",
+            "rootAlias": "Dark/Bus-regional"
           },
           {
             "name": "Components/travel/Travel Tag/Standard/Text/NewTime",
@@ -12488,6 +13184,2111 @@
           }
         ],
         "number": [],
+        "string": []
+      }
+    ]
+  },
+  {
+    "name": "Component size",
+    "values": [
+      {
+        "mode": {
+          "name": "Standard",
+          "id": "6155:1"
+        },
+        "color": [],
+        "number": [
+          {
+            "name": "button/border/Large",
+            "value": "0.125rem",
+            "var": "size-2",
+            "rootAlias": "size-2"
+          },
+          {
+            "name": "button/border/Medium",
+            "value": "0.125rem",
+            "var": "size-2",
+            "rootAlias": "size-2"
+          },
+          {
+            "name": "button/border/Small",
+            "value": "0.125rem",
+            "var": "size-2",
+            "rootAlias": "size-2"
+          },
+          {
+            "name": "button/gap/Small",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "button/gap/Large",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "button/gap/Medium",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "button/height/horizontal content/Small",
+            "value": "2rem",
+            "var": "size-12",
+            "rootAlias": "size-12"
+          },
+          {
+            "name": "button/height/horizontal content/Medium",
+            "value": "3rem",
+            "var": "size-16",
+            "rootAlias": "size-16"
+          },
+          {
+            "name": "button/height/horizontal content/Large",
+            "value": "4rem",
+            "var": "size-19",
+            "rootAlias": "size-19"
+          },
+          {
+            "name": "button/height/vertical content/Small",
+            "value": "3rem",
+            "var": "size-16",
+            "rootAlias": "size-16"
+          },
+          {
+            "name": "button/height/vertical content/Medium",
+            "value": "3.5rem",
+            "var": "size-18",
+            "rootAlias": "size-18"
+          },
+          {
+            "name": "button/height/vertical content/Large",
+            "value": "4.5rem",
+            "var": "size-20",
+            "rootAlias": "size-20"
+          },
+          {
+            "name": "button/icon/Small",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "button/icon/Medium",
+            "value": "1.25rem",
+            "var": "size-9",
+            "rootAlias": "size-9"
+          },
+          {
+            "name": "button/icon/Large",
+            "value": "1.5rem",
+            "var": "size-10",
+            "rootAlias": "size-10"
+          },
+          {
+            "name": "button/inlinePadding/Small",
+            "value": "0.75rem",
+            "var": "size-6",
+            "rootAlias": "size-6"
+          },
+          {
+            "name": "button/inlinePadding/Medium",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "button/inlinePadding/Large",
+            "value": "1.5rem",
+            "var": "size-10",
+            "rootAlias": "size-10"
+          },
+          {
+            "name": "button/radius/Small",
+            "value": "0.375rem",
+            "var": "size-4",
+            "rootAlias": "size-4"
+          },
+          {
+            "name": "button/radius/Large",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "button/radius/Medium",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "button/radius/Round",
+            "value": "6rem",
+            "var": "size-23",
+            "rootAlias": "size-23"
+          },
+          {
+            "name": "chip/border/Large",
+            "value": "0.0625rem",
+            "var": "size-1",
+            "rootAlias": "size-1"
+          },
+          {
+            "name": "chip/border/Medium",
+            "value": "0.0625rem",
+            "var": "size-1",
+            "rootAlias": "size-1"
+          },
+          {
+            "name": "chip/border/Small",
+            "value": "0.0625rem",
+            "var": "size-1",
+            "rootAlias": "size-1"
+          },
+          {
+            "name": "chip/gap/Medium",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "chip/gap/Small",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "chip/gap/Large",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "chip/height/Small",
+            "value": "1.5rem",
+            "var": "size-10",
+            "rootAlias": "size-10"
+          },
+          {
+            "name": "chip/height/Medium",
+            "value": "2rem",
+            "var": "size-12",
+            "rootAlias": "size-12"
+          },
+          {
+            "name": "chip/height/Large",
+            "value": "3rem",
+            "var": "size-16",
+            "rootAlias": "size-16"
+          },
+          {
+            "name": "chip/icon/default/Medium",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "chip/icon/default/Small",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "chip/icon/default/Large",
+            "value": "1.25rem",
+            "var": "size-9",
+            "rootAlias": "size-9"
+          },
+          {
+            "name": "chip/icon/tagchip/Small",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "chip/icon/tagchip/Medium",
+            "value": "1.5rem",
+            "var": "size-10",
+            "rootAlias": "size-10"
+          },
+          {
+            "name": "chip/icon/tagchip/Large",
+            "value": "2rem",
+            "var": "size-12",
+            "rootAlias": "size-12"
+          },
+          {
+            "name": "chip/inlinePadding/default/Small",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "chip/inlinePadding/default/Medium",
+            "value": "0.75rem",
+            "var": "size-6",
+            "rootAlias": "size-6"
+          },
+          {
+            "name": "chip/inlinePadding/default/Large",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "chip/inlinePadding/tagchip/Medium",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "chip/inlinePadding/tagchip/Small",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "chip/inlinePadding/tagchip/Large",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "chip/radius/Round",
+            "value": "6rem",
+            "var": "size-23",
+            "rootAlias": "size-23"
+          },
+          {
+            "name": "form/base form/border/Large",
+            "value": "0.125rem",
+            "var": "size-2",
+            "rootAlias": "size-2"
+          },
+          {
+            "name": "form/base form/border/Medium",
+            "value": "0.125rem",
+            "var": "size-2",
+            "rootAlias": "size-2"
+          },
+          {
+            "name": "form/base form/border/Small",
+            "value": "0.125rem",
+            "var": "size-2",
+            "rootAlias": "size-2"
+          },
+          {
+            "name": "form/base form/gap/horizontal/Small",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "form/base form/gap/horizontal/Large",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "form/base form/gap/horizontal/Medium",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "form/base form/gap/vertical/Small",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "form/base form/gap/vertical/Medium",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "form/base form/gap/vertical/Large",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "form/base form/height/Default/Small",
+            "value": "2rem",
+            "var": "size-12",
+            "rootAlias": "size-12"
+          },
+          {
+            "name": "form/base form/height/Default/Medium",
+            "value": "3rem",
+            "var": "size-16",
+            "rootAlias": "size-16"
+          },
+          {
+            "name": "form/base form/height/Default/Large",
+            "value": "4rem",
+            "var": "size-19",
+            "rootAlias": "size-19"
+          },
+          {
+            "name": "form/base form/height/Textarea/Small",
+            "value": "4.5rem",
+            "var": "size-20",
+            "rootAlias": "size-20"
+          },
+          {
+            "name": "form/base form/height/Textarea/Medium",
+            "value": "6rem",
+            "var": "size-23",
+            "rootAlias": "size-23"
+          },
+          {
+            "name": "form/base form/height/Textarea/Large",
+            "value": "7.5rem",
+            "var": "size-26",
+            "rootAlias": "size-26"
+          },
+          {
+            "name": "form/base form/icon/Small",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "form/base form/icon/Mediun",
+            "value": "1.25rem",
+            "var": "size-9",
+            "rootAlias": "size-9"
+          },
+          {
+            "name": "form/base form/icon/Large",
+            "value": "1.5rem",
+            "var": "size-10",
+            "rootAlias": "size-10"
+          },
+          {
+            "name": "form/base form/inlinePadding/default/Small",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "form/base form/inlinePadding/default/Medium",
+            "value": "0.75rem",
+            "var": "size-6",
+            "rootAlias": "size-6"
+          },
+          {
+            "name": "form/base form/inlinePadding/default/Large",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "form/base form/inlinePadding/tagchip/Medium",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "form/base form/inlinePadding/tagchip/Small",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "form/base form/inlinePadding/tagchip/Large",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "form/base form/radius/Small",
+            "value": "0.375rem",
+            "var": "size-4",
+            "rootAlias": "size-4"
+          },
+          {
+            "name": "form/base form/radius/Large",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "form/base form/radius/Medium",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "form/feedback text/gap/Small",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "form/feedback text/gap/Large",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "form/feedback text/gap/Medium",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "form/feedback text/icon/Small",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "form/feedback text/icon/Medium",
+            "value": "1.25rem",
+            "var": "size-9",
+            "rootAlias": "size-9"
+          },
+          {
+            "name": "form/feedback text/icon/Large",
+            "value": "1.75rem",
+            "var": "size-11",
+            "rootAlias": "size-11"
+          },
+          {
+            "name": "layout/badge/bullet/bullet/Small",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "layout/badge/bullet/bullet/Medium",
+            "value": "0.75rem",
+            "var": "size-6",
+            "rootAlias": "size-6"
+          },
+          {
+            "name": "layout/badge/bullet/bullet/Large",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "layout/badge/bullet/gap/Small",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "layout/badge/bullet/gap/Medium",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "layout/badge/bullet/gap/Large",
+            "value": "0.75rem",
+            "var": "size-6",
+            "rootAlias": "size-6"
+          },
+          {
+            "name": "layout/badge/notification/border/Large",
+            "value": "0.0625rem",
+            "var": "size-1",
+            "rootAlias": "size-1"
+          },
+          {
+            "name": "layout/badge/notification/border/Medium",
+            "value": "0.0625rem",
+            "var": "size-1",
+            "rootAlias": "size-1"
+          },
+          {
+            "name": "layout/badge/notification/border/Small",
+            "value": "0.0625rem",
+            "var": "size-1",
+            "rootAlias": "size-1"
+          },
+          {
+            "name": "layout/badge/notification/height/Small",
+            "value": "1.25rem",
+            "var": "size-9",
+            "rootAlias": "size-9"
+          },
+          {
+            "name": "layout/badge/notification/height/Medium",
+            "value": "1.5rem",
+            "var": "size-10",
+            "rootAlias": "size-10"
+          },
+          {
+            "name": "layout/badge/notification/height/Large",
+            "value": "1.75rem",
+            "var": "size-11",
+            "rootAlias": "size-11"
+          },
+          {
+            "name": "layout/badge/notification/inlinePadding/padding",
+            "value": "0rem",
+            "var": "size-0",
+            "rootAlias": "size-0"
+          },
+          {
+            "name": "layout/badge/notification/radius/Round",
+            "value": "6rem",
+            "var": "size-23",
+            "rootAlias": "size-23"
+          },
+          {
+            "name": "layout/badge/status/border/Large",
+            "value": "0.0625rem",
+            "var": "size-1",
+            "rootAlias": "size-1"
+          },
+          {
+            "name": "layout/badge/status/border/Medium",
+            "value": "0.0625rem",
+            "var": "size-1",
+            "rootAlias": "size-1"
+          },
+          {
+            "name": "layout/badge/status/border/Small",
+            "value": "0.0625rem",
+            "var": "size-1",
+            "rootAlias": "size-1"
+          },
+          {
+            "name": "layout/badge/status/gap/Medium",
+            "value": "0.125rem",
+            "var": "size-2",
+            "rootAlias": "size-2"
+          },
+          {
+            "name": "layout/badge/status/gap/Small",
+            "value": "0.125rem",
+            "var": "size-2",
+            "rootAlias": "size-2"
+          },
+          {
+            "name": "layout/badge/status/gap/Large",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "layout/badge/status/height/Small",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "layout/badge/status/height/Medium",
+            "value": "1.25rem",
+            "var": "size-9",
+            "rootAlias": "size-9"
+          },
+          {
+            "name": "layout/badge/status/height/Large",
+            "value": "1.75rem",
+            "var": "size-11",
+            "rootAlias": "size-11"
+          },
+          {
+            "name": "layout/badge/status/icon/Medium",
+            "value": "0.75rem",
+            "var": "size-6",
+            "rootAlias": "size-6"
+          },
+          {
+            "name": "layout/badge/status/icon/Small",
+            "value": "0.75rem",
+            "var": "size-6",
+            "rootAlias": "size-6"
+          },
+          {
+            "name": "layout/badge/status/icon/Large",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "layout/badge/status/inlinePadding/Medium",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "layout/badge/status/inlinePadding/Small",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "layout/badge/status/inlinePadding/Large",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "layout/badge/status/radius/Large",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "layout/badge/status/radius/Medium",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "layout/badge/status/radius/Small",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "modal/border/default",
+            "value": "0.0625rem",
+            "var": "size-1",
+            "rootAlias": "size-1"
+          },
+          {
+            "name": "modal/gap/default",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "modal/icon/default",
+            "value": "1.25rem",
+            "var": "size-9",
+            "rootAlias": "size-9"
+          },
+          {
+            "name": "modal/inlinepadding/Default",
+            "value": "2rem",
+            "var": "size-12",
+            "rootAlias": "size-12"
+          },
+          {
+            "name": "modal/radius/default",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "modal/width/Default",
+            "value": "35rem",
+            "var": "",
+            "rootAlias": ""
+          }
+        ],
+        "string": []
+      },
+      {
+        "mode": {
+          "name": "Compact",
+          "id": "6155:0"
+        },
+        "color": [],
+        "number": [
+          {
+            "name": "button/border/Large",
+            "value": "0.125rem",
+            "var": "size-2",
+            "rootAlias": "size-2"
+          },
+          {
+            "name": "button/border/Medium",
+            "value": "0.125rem",
+            "var": "size-2",
+            "rootAlias": "size-2"
+          },
+          {
+            "name": "button/border/Small",
+            "value": "0.125rem",
+            "var": "size-2",
+            "rootAlias": "size-2"
+          },
+          {
+            "name": "button/gap/Medium",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "button/gap/Small",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "button/gap/Large",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "button/height/horizontal content/Small",
+            "value": "1.75rem",
+            "var": "size-11",
+            "rootAlias": "size-11"
+          },
+          {
+            "name": "button/height/horizontal content/Medium",
+            "value": "2.5rem",
+            "var": "size-14",
+            "rootAlias": "size-14"
+          },
+          {
+            "name": "button/height/horizontal content/Large",
+            "value": "3.5rem",
+            "var": "size-18",
+            "rootAlias": "size-18"
+          },
+          {
+            "name": "button/height/vertical content/Small",
+            "value": "2.5rem",
+            "var": "size-14",
+            "rootAlias": "size-14"
+          },
+          {
+            "name": "button/height/vertical content/Medium",
+            "value": "3rem",
+            "var": "size-16",
+            "rootAlias": "size-16"
+          },
+          {
+            "name": "button/height/vertical content/Large",
+            "value": "3.5rem",
+            "var": "size-18",
+            "rootAlias": "size-18"
+          },
+          {
+            "name": "button/icon/Medium",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "button/icon/Small",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "button/icon/Large",
+            "value": "1.25rem",
+            "var": "size-9",
+            "rootAlias": "size-9"
+          },
+          {
+            "name": "button/inlinePadding/Small",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "button/inlinePadding/Medium",
+            "value": "0.75rem",
+            "var": "size-6",
+            "rootAlias": "size-6"
+          },
+          {
+            "name": "button/inlinePadding/Large",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "button/radius/Small",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "button/radius/Large",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "button/radius/Medium",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "button/radius/Round",
+            "value": "6rem",
+            "var": "size-23",
+            "rootAlias": "size-23"
+          },
+          {
+            "name": "chip/border/Large",
+            "value": "0.0625rem",
+            "var": "size-1",
+            "rootAlias": "size-1"
+          },
+          {
+            "name": "chip/border/Medium",
+            "value": "0.0625rem",
+            "var": "size-1",
+            "rootAlias": "size-1"
+          },
+          {
+            "name": "chip/border/Small",
+            "value": "0.0625rem",
+            "var": "size-1",
+            "rootAlias": "size-1"
+          },
+          {
+            "name": "chip/gap/Medium",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "chip/gap/Small",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "chip/gap/Large",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "chip/height/Small",
+            "value": "1.5rem",
+            "var": "size-10",
+            "rootAlias": "size-10"
+          },
+          {
+            "name": "chip/height/Medium",
+            "value": "1.75rem",
+            "var": "size-11",
+            "rootAlias": "size-11"
+          },
+          {
+            "name": "chip/height/Large",
+            "value": "2.5rem",
+            "var": "size-14",
+            "rootAlias": "size-14"
+          },
+          {
+            "name": "chip/icon/default/Large",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "chip/icon/default/Medium",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "chip/icon/default/Small",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "chip/icon/tagchip/Small",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "chip/icon/tagchip/Medium",
+            "value": "1.25rem",
+            "var": "size-9",
+            "rootAlias": "size-9"
+          },
+          {
+            "name": "chip/icon/tagchip/Large",
+            "value": "1.75rem",
+            "var": "size-11",
+            "rootAlias": "size-11"
+          },
+          {
+            "name": "chip/inlinePadding/default/Medium",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "chip/inlinePadding/default/Small",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "chip/inlinePadding/default/Large",
+            "value": "0.875rem",
+            "var": "size-7",
+            "rootAlias": "size-7"
+          },
+          {
+            "name": "chip/inlinePadding/tagchip/Medium",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "chip/inlinePadding/tagchip/Small",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "chip/inlinePadding/tagchip/Large",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "chip/radius/Round",
+            "value": "6rem",
+            "var": "size-23",
+            "rootAlias": "size-23"
+          },
+          {
+            "name": "form/base form/border/Large",
+            "value": "0.125rem",
+            "var": "size-2",
+            "rootAlias": "size-2"
+          },
+          {
+            "name": "form/base form/border/Medium",
+            "value": "0.125rem",
+            "var": "size-2",
+            "rootAlias": "size-2"
+          },
+          {
+            "name": "form/base form/border/Small",
+            "value": "0.125rem",
+            "var": "size-2",
+            "rootAlias": "size-2"
+          },
+          {
+            "name": "form/base form/gap/horizontal/Medium",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "form/base form/gap/horizontal/Small",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "form/base form/gap/horizontal/Large",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "form/base form/gap/vertical/Small",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "form/base form/gap/vertical/Medium",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "form/base form/gap/vertical/Large",
+            "value": "0.75rem",
+            "var": "size-6",
+            "rootAlias": "size-6"
+          },
+          {
+            "name": "form/base form/height/Default/Small",
+            "value": "1.75rem",
+            "var": "size-11",
+            "rootAlias": "size-11"
+          },
+          {
+            "name": "form/base form/height/Default/Medium",
+            "value": "2.5rem",
+            "var": "size-14",
+            "rootAlias": "size-14"
+          },
+          {
+            "name": "form/base form/height/Default/Large",
+            "value": "3.5rem",
+            "var": "size-18",
+            "rootAlias": "size-18"
+          },
+          {
+            "name": "form/base form/height/Textarea/Small",
+            "value": "4rem",
+            "var": "size-19",
+            "rootAlias": "size-19"
+          },
+          {
+            "name": "form/base form/height/Textarea/Medium",
+            "value": "5rem",
+            "var": "size-21",
+            "rootAlias": "size-21"
+          },
+          {
+            "name": "form/base form/height/Textarea/Large",
+            "value": "6.5rem",
+            "var": "size-24",
+            "rootAlias": "size-24"
+          },
+          {
+            "name": "form/base form/icon/Mediun",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "form/base form/icon/Small",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "form/base form/icon/Large",
+            "value": "1.25rem",
+            "var": "size-9",
+            "rootAlias": "size-9"
+          },
+          {
+            "name": "form/base form/inlinePadding/default/Medium",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "form/base form/inlinePadding/default/Small",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "form/base form/inlinePadding/default/Large",
+            "value": "0.875rem",
+            "var": "size-7",
+            "rootAlias": "size-7"
+          },
+          {
+            "name": "form/base form/inlinePadding/tagchip/Medium",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "form/base form/inlinePadding/tagchip/Small",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "form/base form/inlinePadding/tagchip/Large",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "form/base form/radius/Small",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "form/base form/radius/Large",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "form/base form/radius/Medium",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "form/feedback text/gap/Medium",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "form/feedback text/gap/Small",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "form/feedback text/gap/Large",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "form/feedback text/icon/Small",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "form/feedback text/icon/Medium",
+            "value": "1.25rem",
+            "var": "size-9",
+            "rootAlias": "size-9"
+          },
+          {
+            "name": "form/feedback text/icon/Large",
+            "value": "1.5rem",
+            "var": "size-10",
+            "rootAlias": "size-10"
+          },
+          {
+            "name": "layout/badge/bullet/bullet/Small",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "layout/badge/bullet/bullet/Large",
+            "value": "0.75rem",
+            "var": "size-6",
+            "rootAlias": "size-6"
+          },
+          {
+            "name": "layout/badge/bullet/bullet/Medium",
+            "value": "0.75rem",
+            "var": "size-6",
+            "rootAlias": "size-6"
+          },
+          {
+            "name": "layout/badge/bullet/gap/Medium",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "layout/badge/bullet/gap/Small",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "layout/badge/bullet/gap/Large",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "layout/badge/notification/border/Large",
+            "value": "0.0625rem",
+            "var": "size-1",
+            "rootAlias": "size-1"
+          },
+          {
+            "name": "layout/badge/notification/border/Medium",
+            "value": "0.0625rem",
+            "var": "size-1",
+            "rootAlias": "size-1"
+          },
+          {
+            "name": "layout/badge/notification/border/Small",
+            "value": "0.0625rem",
+            "var": "size-1",
+            "rootAlias": "size-1"
+          },
+          {
+            "name": "layout/badge/notification/height/Medium",
+            "value": "1.25rem",
+            "var": "size-9",
+            "rootAlias": "size-9"
+          },
+          {
+            "name": "layout/badge/notification/height/Small",
+            "value": "1.25rem",
+            "var": "size-9",
+            "rootAlias": "size-9"
+          },
+          {
+            "name": "layout/badge/notification/height/Large",
+            "value": "1.5rem",
+            "var": "size-10",
+            "rootAlias": "size-10"
+          },
+          {
+            "name": "layout/badge/notification/inlinePadding/padding",
+            "value": "0rem",
+            "var": "size-0",
+            "rootAlias": "size-0"
+          },
+          {
+            "name": "layout/badge/notification/radius/Round",
+            "value": "6rem",
+            "var": "size-23",
+            "rootAlias": "size-23"
+          },
+          {
+            "name": "layout/badge/status/border/Large",
+            "value": "0.0625rem",
+            "var": "size-1",
+            "rootAlias": "size-1"
+          },
+          {
+            "name": "layout/badge/status/border/Medium",
+            "value": "0.0625rem",
+            "var": "size-1",
+            "rootAlias": "size-1"
+          },
+          {
+            "name": "layout/badge/status/border/Small",
+            "value": "0.0625rem",
+            "var": "size-1",
+            "rootAlias": "size-1"
+          },
+          {
+            "name": "layout/badge/status/gap/Medium",
+            "value": "0.125rem",
+            "var": "size-2",
+            "rootAlias": "size-2"
+          },
+          {
+            "name": "layout/badge/status/gap/Small",
+            "value": "0.125rem",
+            "var": "size-2",
+            "rootAlias": "size-2"
+          },
+          {
+            "name": "layout/badge/status/gap/Large",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "layout/badge/status/height/Medium",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "layout/badge/status/height/Small",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "layout/badge/status/height/Large",
+            "value": "1.5rem",
+            "var": "size-10",
+            "rootAlias": "size-10"
+          },
+          {
+            "name": "layout/badge/status/icon/Medium",
+            "value": "0.75rem",
+            "var": "size-6",
+            "rootAlias": "size-6"
+          },
+          {
+            "name": "layout/badge/status/icon/Small",
+            "value": "0.75rem",
+            "var": "size-6",
+            "rootAlias": "size-6"
+          },
+          {
+            "name": "layout/badge/status/icon/Large",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "layout/badge/status/inlinePadding/Large",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "layout/badge/status/inlinePadding/Medium",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "layout/badge/status/inlinePadding/Small",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "layout/badge/status/radius/Large",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "layout/badge/status/radius/Medium",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "layout/badge/status/radius/Small",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "modal/border/default",
+            "value": "0.0625rem",
+            "var": "size-1",
+            "rootAlias": "size-1"
+          },
+          {
+            "name": "modal/gap/default",
+            "value": "0.75rem",
+            "var": "size-6",
+            "rootAlias": "size-6"
+          },
+          {
+            "name": "modal/icon/default",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "modal/inlinepadding/Default",
+            "value": "1.5rem",
+            "var": "size-10",
+            "rootAlias": "size-10"
+          },
+          {
+            "name": "modal/radius/default",
+            "value": "0.75rem",
+            "var": "size-6",
+            "rootAlias": "size-6"
+          },
+          {
+            "name": "modal/width/Default",
+            "value": "20rem",
+            "var": "",
+            "rootAlias": ""
+          }
+        ],
+        "string": []
+      },
+      {
+        "mode": {
+          "name": "Display",
+          "id": "6155:2"
+        },
+        "color": [],
+        "number": [
+          {
+            "name": "button/border/Small",
+            "value": "0.125rem",
+            "var": "size-2",
+            "rootAlias": "size-2"
+          },
+          {
+            "name": "button/border/Large",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "button/border/Medium",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "button/gap/Small",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "button/gap/Medium",
+            "value": "0.75rem",
+            "var": "size-6",
+            "rootAlias": "size-6"
+          },
+          {
+            "name": "button/gap/Large",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "button/height/horizontal content/Small",
+            "value": "4rem",
+            "var": "size-19",
+            "rootAlias": "size-19"
+          },
+          {
+            "name": "button/height/horizontal content/Medium",
+            "value": "6rem",
+            "var": "size-23",
+            "rootAlias": "size-23"
+          },
+          {
+            "name": "button/height/horizontal content/Large",
+            "value": "7.5rem",
+            "var": "size-26",
+            "rootAlias": "size-26"
+          },
+          {
+            "name": "button/height/vertical content/Small",
+            "value": "5rem",
+            "var": "size-21",
+            "rootAlias": "size-21"
+          },
+          {
+            "name": "button/height/vertical content/Medium",
+            "value": "6.5rem",
+            "var": "size-24",
+            "rootAlias": "size-24"
+          },
+          {
+            "name": "button/height/vertical content/Large",
+            "value": "8.5rem",
+            "var": "size-28",
+            "rootAlias": "size-28"
+          },
+          {
+            "name": "button/icon/Small",
+            "value": "1.5rem",
+            "var": "size-10",
+            "rootAlias": "size-10"
+          },
+          {
+            "name": "button/icon/Medium",
+            "value": "2rem",
+            "var": "size-12",
+            "rootAlias": "size-12"
+          },
+          {
+            "name": "button/icon/Large",
+            "value": "3rem",
+            "var": "size-16",
+            "rootAlias": "size-16"
+          },
+          {
+            "name": "button/inlinePadding/Small",
+            "value": "1.5rem",
+            "var": "size-10",
+            "rootAlias": "size-10"
+          },
+          {
+            "name": "button/inlinePadding/Medium",
+            "value": "2rem",
+            "var": "size-12",
+            "rootAlias": "size-12"
+          },
+          {
+            "name": "button/inlinePadding/Large",
+            "value": "2.5rem",
+            "var": "size-14",
+            "rootAlias": "size-14"
+          },
+          {
+            "name": "button/radius/Small",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "button/radius/Large",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "button/radius/Medium",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "button/radius/Round",
+            "value": "6rem",
+            "var": "size-23",
+            "rootAlias": "size-23"
+          },
+          {
+            "name": "chip/border/Large",
+            "value": "0.125rem",
+            "var": "size-2",
+            "rootAlias": "size-2"
+          },
+          {
+            "name": "chip/border/Medium",
+            "value": "0.125rem",
+            "var": "size-2",
+            "rootAlias": "size-2"
+          },
+          {
+            "name": "chip/border/Small",
+            "value": "0.125rem",
+            "var": "size-2",
+            "rootAlias": "size-2"
+          },
+          {
+            "name": "chip/gap/Small",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "chip/gap/Medium",
+            "value": "0.75rem",
+            "var": "size-6",
+            "rootAlias": "size-6"
+          },
+          {
+            "name": "chip/gap/Large",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "chip/height/Small",
+            "value": "3.25rem",
+            "var": "size-17",
+            "rootAlias": "size-17"
+          },
+          {
+            "name": "chip/height/Medium",
+            "value": "4rem",
+            "var": "size-19",
+            "rootAlias": "size-19"
+          },
+          {
+            "name": "chip/height/Large",
+            "value": "6rem",
+            "var": "size-23",
+            "rootAlias": "size-23"
+          },
+          {
+            "name": "chip/icon/default/Small",
+            "value": "1.25rem",
+            "var": "size-9",
+            "rootAlias": "size-9"
+          },
+          {
+            "name": "chip/icon/default/Medium",
+            "value": "1.5rem",
+            "var": "size-10",
+            "rootAlias": "size-10"
+          },
+          {
+            "name": "chip/icon/default/Large",
+            "value": "2rem",
+            "var": "size-12",
+            "rootAlias": "size-12"
+          },
+          {
+            "name": "chip/icon/tagchip/Small",
+            "value": "2.25rem",
+            "var": "size-13",
+            "rootAlias": "size-13"
+          },
+          {
+            "name": "chip/icon/tagchip/Medium",
+            "value": "3rem",
+            "var": "size-16",
+            "rootAlias": "size-16"
+          },
+          {
+            "name": "chip/icon/tagchip/Large",
+            "value": "4rem",
+            "var": "size-19",
+            "rootAlias": "size-19"
+          },
+          {
+            "name": "chip/inlinePadding/default/Small",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "chip/inlinePadding/default/Medium",
+            "value": "1.25rem",
+            "var": "size-9",
+            "rootAlias": "size-9"
+          },
+          {
+            "name": "chip/inlinePadding/default/Large",
+            "value": "2rem",
+            "var": "size-12",
+            "rootAlias": "size-12"
+          },
+          {
+            "name": "chip/inlinePadding/tagchip/Medium",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "chip/inlinePadding/tagchip/Small",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "chip/inlinePadding/tagchip/Large",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "chip/radius/Round",
+            "value": "6rem",
+            "var": "size-23",
+            "rootAlias": "size-23"
+          },
+          {
+            "name": "form/base form/border/Small",
+            "value": "0.125rem",
+            "var": "size-2",
+            "rootAlias": "size-2"
+          },
+          {
+            "name": "form/base form/border/Large",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "form/base form/border/Medium",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "form/base form/gap/horizontal/Small",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "form/base form/gap/horizontal/Medium",
+            "value": "0.75rem",
+            "var": "size-6",
+            "rootAlias": "size-6"
+          },
+          {
+            "name": "form/base form/gap/horizontal/Large",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "form/base form/gap/vertical/Small",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "form/base form/gap/vertical/Medium",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "form/base form/gap/vertical/Large",
+            "value": "1.5rem",
+            "var": "size-10",
+            "rootAlias": "size-10"
+          },
+          {
+            "name": "form/base form/height/Default/Small",
+            "value": "4rem",
+            "var": "size-19",
+            "rootAlias": "size-19"
+          },
+          {
+            "name": "form/base form/height/Default/Medium",
+            "value": "6rem",
+            "var": "size-23",
+            "rootAlias": "size-23"
+          },
+          {
+            "name": "form/base form/height/Default/Large",
+            "value": "7.5rem",
+            "var": "size-26",
+            "rootAlias": "size-26"
+          },
+          {
+            "name": "form/base form/height/Textarea/Small",
+            "value": "7rem",
+            "var": "size-25",
+            "rootAlias": "size-25"
+          },
+          {
+            "name": "form/base form/height/Textarea/Medium",
+            "value": "8.5rem",
+            "var": "size-28",
+            "rootAlias": "size-28"
+          },
+          {
+            "name": "form/base form/height/Textarea/Large",
+            "value": "10rem",
+            "var": "size-31",
+            "rootAlias": "size-31"
+          },
+          {
+            "name": "form/base form/icon/Small",
+            "value": "1.5rem",
+            "var": "size-10",
+            "rootAlias": "size-10"
+          },
+          {
+            "name": "form/base form/icon/Mediun",
+            "value": "2rem",
+            "var": "size-12",
+            "rootAlias": "size-12"
+          },
+          {
+            "name": "form/base form/icon/Large",
+            "value": "3rem",
+            "var": "size-16",
+            "rootAlias": "size-16"
+          },
+          {
+            "name": "form/base form/inlinePadding/default/Small",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "form/base form/inlinePadding/default/Medium",
+            "value": "1.25rem",
+            "var": "size-9",
+            "rootAlias": "size-9"
+          },
+          {
+            "name": "form/base form/inlinePadding/default/Large",
+            "value": "2rem",
+            "var": "size-12",
+            "rootAlias": "size-12"
+          },
+          {
+            "name": "form/base form/inlinePadding/tagchip/Medium",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "form/base form/inlinePadding/tagchip/Small",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "form/base form/inlinePadding/tagchip/Large",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "form/base form/radius/Small",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "form/base form/radius/Large",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "form/base form/radius/Medium",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "form/feedback text/gap/Small",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "form/feedback text/gap/Medium",
+            "value": "0.75rem",
+            "var": "size-6",
+            "rootAlias": "size-6"
+          },
+          {
+            "name": "form/feedback text/gap/Large",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "form/feedback text/icon/Small",
+            "value": "1.75rem",
+            "var": "size-11",
+            "rootAlias": "size-11"
+          },
+          {
+            "name": "form/feedback text/icon/Medium",
+            "value": "2rem",
+            "var": "size-12",
+            "rootAlias": "size-12"
+          },
+          {
+            "name": "form/feedback text/icon/Large",
+            "value": "3.5rem",
+            "var": "size-18",
+            "rootAlias": "size-18"
+          },
+          {
+            "name": "layout/badge/bullet/bullet/Small",
+            "value": "0.75rem",
+            "var": "size-6",
+            "rootAlias": "size-6"
+          },
+          {
+            "name": "layout/badge/bullet/bullet/Medium",
+            "value": "1.25rem",
+            "var": "size-9",
+            "rootAlias": "size-9"
+          },
+          {
+            "name": "layout/badge/bullet/bullet/Large",
+            "value": "1.5rem",
+            "var": "size-10",
+            "rootAlias": "size-10"
+          },
+          {
+            "name": "layout/badge/bullet/gap/Small",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "layout/badge/bullet/gap/Medium",
+            "value": "0.75rem",
+            "var": "size-6",
+            "rootAlias": "size-6"
+          },
+          {
+            "name": "layout/badge/bullet/gap/Large",
+            "value": "1.25rem",
+            "var": "size-9",
+            "rootAlias": "size-9"
+          },
+          {
+            "name": "layout/badge/notification/border/Large",
+            "value": "0.125rem",
+            "var": "size-2",
+            "rootAlias": "size-2"
+          },
+          {
+            "name": "layout/badge/notification/border/Medium",
+            "value": "0.125rem",
+            "var": "size-2",
+            "rootAlias": "size-2"
+          },
+          {
+            "name": "layout/badge/notification/border/Small",
+            "value": "0.125rem",
+            "var": "size-2",
+            "rootAlias": "size-2"
+          },
+          {
+            "name": "layout/badge/notification/height/Small",
+            "value": "1.75rem",
+            "var": "size-11",
+            "rootAlias": "size-11"
+          },
+          {
+            "name": "layout/badge/notification/height/Medium",
+            "value": "2.25rem",
+            "var": "size-13",
+            "rootAlias": "size-13"
+          },
+          {
+            "name": "layout/badge/notification/height/Large",
+            "value": "3.5rem",
+            "var": "size-18",
+            "rootAlias": "size-18"
+          },
+          {
+            "name": "layout/badge/notification/inlinePadding/padding",
+            "value": "0rem",
+            "var": "size-0",
+            "rootAlias": "size-0"
+          },
+          {
+            "name": "layout/badge/notification/radius/Round",
+            "value": "6rem",
+            "var": "size-23",
+            "rootAlias": "size-23"
+          },
+          {
+            "name": "layout/badge/status/border/Large",
+            "value": "0.125rem",
+            "var": "size-2",
+            "rootAlias": "size-2"
+          },
+          {
+            "name": "layout/badge/status/border/Medium",
+            "value": "0.125rem",
+            "var": "size-2",
+            "rootAlias": "size-2"
+          },
+          {
+            "name": "layout/badge/status/border/Small",
+            "value": "0.125rem",
+            "var": "size-2",
+            "rootAlias": "size-2"
+          },
+          {
+            "name": "layout/badge/status/gap/Medium",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "layout/badge/status/gap/Small",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "layout/badge/status/gap/Large",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "layout/badge/status/height/Small",
+            "value": "1.75rem",
+            "var": "size-11",
+            "rootAlias": "size-11"
+          },
+          {
+            "name": "layout/badge/status/height/Medium",
+            "value": "2.25rem",
+            "var": "size-13",
+            "rootAlias": "size-13"
+          },
+          {
+            "name": "layout/badge/status/height/Large",
+            "value": "3.5rem",
+            "var": "size-18",
+            "rootAlias": "size-18"
+          },
+          {
+            "name": "layout/badge/status/icon/Small",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "layout/badge/status/icon/Medium",
+            "value": "1.25rem",
+            "var": "size-9",
+            "rootAlias": "size-9"
+          },
+          {
+            "name": "layout/badge/status/icon/Large",
+            "value": "1.75rem",
+            "var": "size-11",
+            "rootAlias": "size-11"
+          },
+          {
+            "name": "layout/badge/status/inlinePadding/Medium",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "layout/badge/status/inlinePadding/Small",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "layout/badge/status/inlinePadding/Large",
+            "value": "0.75rem",
+            "var": "size-6",
+            "rootAlias": "size-6"
+          },
+          {
+            "name": "layout/badge/status/radius/Medium",
+            "value": "0.375rem",
+            "var": "size-4",
+            "rootAlias": "size-4"
+          },
+          {
+            "name": "layout/badge/status/radius/Small",
+            "value": "0.375rem",
+            "var": "size-4",
+            "rootAlias": "size-4"
+          },
+          {
+            "name": "layout/badge/status/radius/Large",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "modal/border/default",
+            "value": "0.125rem",
+            "var": "size-2",
+            "rootAlias": "size-2"
+          },
+          {
+            "name": "modal/gap/default",
+            "value": "1.5rem",
+            "var": "size-10",
+            "rootAlias": "size-10"
+          },
+          {
+            "name": "modal/icon/default",
+            "value": "2rem",
+            "var": "size-12",
+            "rootAlias": "size-12"
+          },
+          {
+            "name": "modal/inlinepadding/Default",
+            "value": "3rem",
+            "var": "size-16",
+            "rootAlias": "size-16"
+          },
+          {
+            "name": "modal/radius/default",
+            "value": "1.5rem",
+            "var": "size-10",
+            "rootAlias": "size-10"
+          },
+          {
+            "name": "modal/width/Default",
+            "value": "60rem",
+            "var": "",
+            "rootAlias": ""
+          }
+        ],
         "string": []
       }
     ]

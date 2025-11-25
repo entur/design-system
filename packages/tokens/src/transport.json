@@ -10,13 +10,25 @@
         "color": [
           {
             "name": "Contrast/Bicycle",
-            "value": "#00db9b",
+            "value": "#00dbb6",
             "var": "",
             "rootAlias": ""
           },
           {
             "name": "Contrast/Bus",
             "value": "#ff6392",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Contrast/Bus-regional",
+            "value": "#b8db48",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Contrast/Bus-regional-transparent",
+            "value": "#b8db4826",
             "var": "",
             "rootAlias": ""
           },
@@ -52,7 +64,7 @@
           },
           {
             "name": "Contrast/Citybike",
-            "value": "#00db9b",
+            "value": "#00dbb6",
             "var": "",
             "rootAlias": ""
           },
@@ -106,7 +118,7 @@
           },
           {
             "name": "Contrast/Mobility",
-            "value": "#00db9b",
+            "value": "#00dbb6",
             "var": "",
             "rootAlias": ""
           },
@@ -196,13 +208,25 @@
           },
           {
             "name": "Dark/Bicycle",
-            "value": "#4db295",
+            "value": "#4db2a1",
             "var": "",
             "rootAlias": ""
           },
           {
             "name": "Dark/Bus",
             "value": "#ef7398",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Dark/Bus-regional",
+            "value": "#a4bf4d",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Dark/Bus-regional-transparent",
+            "value": "#a4bf4d26",
             "var": "",
             "rootAlias": ""
           },
@@ -238,7 +262,7 @@
           },
           {
             "name": "Dark/Citybike",
-            "value": "#4db295",
+            "value": "#4db2a1",
             "var": "",
             "rootAlias": ""
           },
@@ -292,7 +316,7 @@
           },
           {
             "name": "Dark/Mobility",
-            "value": "#4db295",
+            "value": "#4db2a1",
             "var": "",
             "rootAlias": ""
           },
@@ -382,13 +406,25 @@
           },
           {
             "name": "Standard/Bicycle",
-            "value": "#33826b",
+            "value": "#0d827e",
             "var": "",
             "rootAlias": ""
           },
           {
             "name": "Standard/Bus",
             "value": "#c5044e",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Standard/Bus-regional",
+            "value": "#427500",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Standard/Bus-regional-transparent",
+            "value": "#42750026",
             "var": "",
             "rootAlias": ""
           },
@@ -424,7 +460,7 @@
           },
           {
             "name": "Standard/Citybike",
-            "value": "#33826b",
+            "value": "#0d827e",
             "var": "",
             "rootAlias": ""
           },
@@ -478,7 +514,7 @@
           },
           {
             "name": "Standard/Mobility",
-            "value": "#33826b",
+            "value": "#0d827e",
             "var": "",
             "rootAlias": ""
           },
