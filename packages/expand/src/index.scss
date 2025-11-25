@@ -1,5 +1,5 @@
 // Used to register the styles as loaded!
-@use "./componentColors.scss";
+@use './componentVariables.scss';
 @use '@entur/tokens/dist/base.scss' as *;
 :root {
   --eds-expand: 1;

@@ -13199,691 +13199,691 @@
         "color": [],
         "number": [
           {
-            "name": "button/border/Large",
+            "name": "Components/button/border/Large",
             "value": "0.125rem",
             "var": "size-2",
             "rootAlias": "size-2"
           },
           {
-            "name": "button/border/Medium",
+            "name": "Components/button/border/Medium",
             "value": "0.125rem",
             "var": "size-2",
             "rootAlias": "size-2"
           },
           {
-            "name": "button/border/Small",
+            "name": "Components/button/border/Small",
             "value": "0.125rem",
             "var": "size-2",
             "rootAlias": "size-2"
           },
           {
-            "name": "button/gap/Small",
+            "name": "Components/button/gap/Small",
             "value": "0.25rem",
             "var": "size-3",
             "rootAlias": "size-3"
           },
           {
-            "name": "button/gap/Large",
+            "name": "Components/button/gap/Large",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "button/gap/Medium",
+            "name": "Components/button/gap/Medium",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "button/height/horizontal content/Small",
+            "name": "Components/button/height/horizontal content/Small",
             "value": "2rem",
             "var": "size-12",
             "rootAlias": "size-12"
           },
           {
-            "name": "button/height/horizontal content/Medium",
+            "name": "Components/button/height/horizontal content/Medium",
             "value": "3rem",
             "var": "size-16",
             "rootAlias": "size-16"
           },
           {
-            "name": "button/height/horizontal content/Large",
+            "name": "Components/button/height/horizontal content/Large",
             "value": "4rem",
             "var": "size-19",
             "rootAlias": "size-19"
           },
           {
-            "name": "button/height/vertical content/Small",
+            "name": "Components/button/height/vertical content/Small",
             "value": "3rem",
             "var": "size-16",
             "rootAlias": "size-16"
           },
           {
-            "name": "button/height/vertical content/Medium",
+            "name": "Components/button/height/vertical content/Medium",
             "value": "3.5rem",
             "var": "size-18",
             "rootAlias": "size-18"
           },
           {
-            "name": "button/height/vertical content/Large",
+            "name": "Components/button/height/vertical content/Large",
             "value": "4.5rem",
             "var": "size-20",
             "rootAlias": "size-20"
           },
           {
-            "name": "button/icon/Small",
+            "name": "Components/button/icon/Small",
             "value": "1rem",
             "var": "size-8",
             "rootAlias": "size-8"
           },
           {
-            "name": "button/icon/Medium",
+            "name": "Components/button/icon/Medium",
             "value": "1.25rem",
             "var": "size-9",
             "rootAlias": "size-9"
           },
           {
-            "name": "button/icon/Large",
+            "name": "Components/button/icon/Large",
             "value": "1.5rem",
             "var": "size-10",
             "rootAlias": "size-10"
           },
           {
-            "name": "button/inlinePadding/Small",
+            "name": "Components/button/inlinePadding/Small",
             "value": "0.75rem",
             "var": "size-6",
             "rootAlias": "size-6"
           },
           {
-            "name": "button/inlinePadding/Medium",
+            "name": "Components/button/inlinePadding/Medium",
             "value": "1rem",
             "var": "size-8",
             "rootAlias": "size-8"
           },
           {
-            "name": "button/inlinePadding/Large",
+            "name": "Components/button/inlinePadding/Large",
             "value": "1.5rem",
             "var": "size-10",
             "rootAlias": "size-10"
           },
           {
-            "name": "button/radius/Small",
+            "name": "Components/button/radius/Small",
             "value": "0.375rem",
             "var": "size-4",
             "rootAlias": "size-4"
           },
           {
-            "name": "button/radius/Large",
+            "name": "Components/button/radius/Large",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "button/radius/Medium",
+            "name": "Components/button/radius/Medium",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "button/radius/Round",
+            "name": "Components/button/radius/Round",
             "value": "6rem",
             "var": "size-23",
             "rootAlias": "size-23"
           },
           {
-            "name": "chip/border/Large",
+            "name": "Components/chip/border/Large",
             "value": "0.0625rem",
             "var": "size-1",
             "rootAlias": "size-1"
           },
           {
-            "name": "chip/border/Medium",
+            "name": "Components/chip/border/Medium",
             "value": "0.0625rem",
             "var": "size-1",
             "rootAlias": "size-1"
           },
           {
-            "name": "chip/border/Small",
+            "name": "Components/chip/border/Small",
             "value": "0.0625rem",
             "var": "size-1",
             "rootAlias": "size-1"
           },
           {
-            "name": "chip/gap/Medium",
+            "name": "Components/chip/gap/Medium",
             "value": "0.25rem",
             "var": "size-3",
             "rootAlias": "size-3"
           },
           {
-            "name": "chip/gap/Small",
+            "name": "Components/chip/gap/Small",
             "value": "0.25rem",
             "var": "size-3",
             "rootAlias": "size-3"
           },
           {
-            "name": "chip/gap/Large",
+            "name": "Components/chip/gap/Large",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "chip/height/Small",
+            "name": "Components/chip/height/Small",
             "value": "1.5rem",
             "var": "size-10",
             "rootAlias": "size-10"
           },
           {
-            "name": "chip/height/Medium",
+            "name": "Components/chip/height/Medium",
             "value": "2rem",
             "var": "size-12",
             "rootAlias": "size-12"
           },
           {
-            "name": "chip/height/Large",
+            "name": "Components/chip/height/Large",
             "value": "3rem",
             "var": "size-16",
             "rootAlias": "size-16"
           },
           {
-            "name": "chip/icon/default/Medium",
+            "name": "Components/chip/icon/default/Medium",
             "value": "1rem",
             "var": "size-8",
             "rootAlias": "size-8"
           },
           {
-            "name": "chip/icon/default/Small",
+            "name": "Components/chip/icon/default/Small",
             "value": "1rem",
             "var": "size-8",
             "rootAlias": "size-8"
           },
           {
-            "name": "chip/icon/default/Large",
+            "name": "Components/chip/icon/default/Large",
             "value": "1.25rem",
             "var": "size-9",
             "rootAlias": "size-9"
           },
           {
-            "name": "chip/icon/tagchip/Small",
+            "name": "Components/chip/icon/tagchip/Small",
             "value": "1rem",
             "var": "size-8",
             "rootAlias": "size-8"
           },
           {
-            "name": "chip/icon/tagchip/Medium",
+            "name": "Components/chip/icon/tagchip/Medium",
             "value": "1.5rem",
             "var": "size-10",
             "rootAlias": "size-10"
           },
           {
-            "name": "chip/icon/tagchip/Large",
+            "name": "Components/chip/icon/tagchip/Large",
             "value": "2rem",
             "var": "size-12",
             "rootAlias": "size-12"
           },
           {
-            "name": "chip/inlinePadding/default/Small",
+            "name": "Components/chip/inlinePadding/default/Small",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "chip/inlinePadding/default/Medium",
+            "name": "Components/chip/inlinePadding/default/Medium",
             "value": "0.75rem",
             "var": "size-6",
             "rootAlias": "size-6"
           },
           {
-            "name": "chip/inlinePadding/default/Large",
+            "name": "Components/chip/inlinePadding/default/Large",
             "value": "1rem",
             "var": "size-8",
             "rootAlias": "size-8"
           },
           {
-            "name": "chip/inlinePadding/tagchip/Medium",
+            "name": "Components/chip/inlinePadding/tagchip/Medium",
             "value": "0.25rem",
             "var": "size-3",
             "rootAlias": "size-3"
           },
           {
-            "name": "chip/inlinePadding/tagchip/Small",
+            "name": "Components/chip/inlinePadding/tagchip/Small",
             "value": "0.25rem",
             "var": "size-3",
             "rootAlias": "size-3"
           },
           {
-            "name": "chip/inlinePadding/tagchip/Large",
+            "name": "Components/chip/inlinePadding/tagchip/Large",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "chip/radius/Round",
+            "name": "Components/chip/radius/Round",
             "value": "6rem",
             "var": "size-23",
             "rootAlias": "size-23"
           },
           {
-            "name": "form/base form/border/Large",
+            "name": "Components/form/base form/border/Large",
             "value": "0.125rem",
             "var": "size-2",
             "rootAlias": "size-2"
           },
           {
-            "name": "form/base form/border/Medium",
+            "name": "Components/form/base form/border/Medium",
             "value": "0.125rem",
             "var": "size-2",
             "rootAlias": "size-2"
           },
           {
-            "name": "form/base form/border/Small",
+            "name": "Components/form/base form/border/Small",
             "value": "0.125rem",
             "var": "size-2",
             "rootAlias": "size-2"
           },
           {
-            "name": "form/base form/gap/horizontal/Small",
+            "name": "Components/form/base form/gap/horizontal/Small",
             "value": "0.25rem",
             "var": "size-3",
             "rootAlias": "size-3"
           },
           {
-            "name": "form/base form/gap/horizontal/Large",
+            "name": "Components/form/base form/gap/horizontal/Large",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "form/base form/gap/horizontal/Medium",
+            "name": "Components/form/base form/gap/horizontal/Medium",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "form/base form/gap/vertical/Small",
+            "name": "Components/form/base form/gap/vertical/Small",
             "value": "0.25rem",
             "var": "size-3",
             "rootAlias": "size-3"
           },
           {
-            "name": "form/base form/gap/vertical/Medium",
+            "name": "Components/form/base form/gap/vertical/Medium",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "form/base form/gap/vertical/Large",
+            "name": "Components/form/base form/gap/vertical/Large",
             "value": "1rem",
             "var": "size-8",
             "rootAlias": "size-8"
           },
           {
-            "name": "form/base form/height/Default/Small",
+            "name": "Components/form/base form/height/Default/Small",
             "value": "2rem",
             "var": "size-12",
             "rootAlias": "size-12"
           },
           {
-            "name": "form/base form/height/Default/Medium",
+            "name": "Components/form/base form/height/Default/Medium",
             "value": "3rem",
             "var": "size-16",
             "rootAlias": "size-16"
           },
           {
-            "name": "form/base form/height/Default/Large",
+            "name": "Components/form/base form/height/Default/Large",
             "value": "4rem",
             "var": "size-19",
             "rootAlias": "size-19"
           },
           {
-            "name": "form/base form/height/Textarea/Small",
+            "name": "Components/form/base form/height/Textarea/Small",
             "value": "4.5rem",
             "var": "size-20",
             "rootAlias": "size-20"
           },
           {
-            "name": "form/base form/height/Textarea/Medium",
+            "name": "Components/form/base form/height/Textarea/Medium",
             "value": "6rem",
             "var": "size-23",
             "rootAlias": "size-23"
           },
           {
-            "name": "form/base form/height/Textarea/Large",
+            "name": "Components/form/base form/height/Textarea/Large",
             "value": "7.5rem",
             "var": "size-26",
             "rootAlias": "size-26"
           },
           {
-            "name": "form/base form/icon/Small",
+            "name": "Components/form/base form/icon/Small",
             "value": "1rem",
             "var": "size-8",
             "rootAlias": "size-8"
           },
           {
-            "name": "form/base form/icon/Mediun",
+            "name": "Components/form/base form/icon/Mediun",
             "value": "1.25rem",
             "var": "size-9",
             "rootAlias": "size-9"
           },
           {
-            "name": "form/base form/icon/Large",
+            "name": "Components/form/base form/icon/Large",
             "value": "1.5rem",
             "var": "size-10",
             "rootAlias": "size-10"
           },
           {
-            "name": "form/base form/inlinePadding/default/Small",
+            "name": "Components/form/base form/inlinePadding/default/Small",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "form/base form/inlinePadding/default/Medium",
+            "name": "Components/form/base form/inlinePadding/default/Medium",
             "value": "0.75rem",
             "var": "size-6",
             "rootAlias": "size-6"
           },
           {
-            "name": "form/base form/inlinePadding/default/Large",
+            "name": "Components/form/base form/inlinePadding/default/Large",
             "value": "1rem",
             "var": "size-8",
             "rootAlias": "size-8"
           },
           {
-            "name": "form/base form/inlinePadding/tagchip/Medium",
+            "name": "Components/form/base form/inlinePadding/tagchip/Medium",
             "value": "0.25rem",
             "var": "size-3",
             "rootAlias": "size-3"
           },
           {
-            "name": "form/base form/inlinePadding/tagchip/Small",
+            "name": "Components/form/base form/inlinePadding/tagchip/Small",
             "value": "0.25rem",
             "var": "size-3",
             "rootAlias": "size-3"
           },
           {
-            "name": "form/base form/inlinePadding/tagchip/Large",
+            "name": "Components/form/base form/inlinePadding/tagchip/Large",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "form/base form/radius/Small",
+            "name": "Components/form/base form/radius/Small",
             "value": "0.375rem",
             "var": "size-4",
             "rootAlias": "size-4"
           },
           {
-            "name": "form/base form/radius/Large",
+            "name": "Components/form/base form/radius/Large",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "form/base form/radius/Medium",
+            "name": "Components/form/base form/radius/Medium",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "form/feedback text/gap/Small",
+            "name": "Components/form/feedback text/gap/Small",
             "value": "0.25rem",
             "var": "size-3",
             "rootAlias": "size-3"
           },
           {
-            "name": "form/feedback text/gap/Large",
+            "name": "Components/form/feedback text/gap/Large",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "form/feedback text/gap/Medium",
+            "name": "Components/form/feedback text/gap/Medium",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "form/feedback text/icon/Small",
+            "name": "Components/form/feedback text/icon/Small",
             "value": "1rem",
             "var": "size-8",
             "rootAlias": "size-8"
           },
           {
-            "name": "form/feedback text/icon/Medium",
+            "name": "Components/form/feedback text/icon/Medium",
             "value": "1.25rem",
             "var": "size-9",
             "rootAlias": "size-9"
           },
           {
-            "name": "form/feedback text/icon/Large",
+            "name": "Components/form/feedback text/icon/Large",
             "value": "1.75rem",
             "var": "size-11",
             "rootAlias": "size-11"
           },
           {
-            "name": "layout/badge/bullet/bullet/Small",
+            "name": "Components/layout/badge/bullet/bullet/Small",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "layout/badge/bullet/bullet/Medium",
+            "name": "Components/layout/badge/bullet/bullet/Medium",
             "value": "0.75rem",
             "var": "size-6",
             "rootAlias": "size-6"
           },
           {
-            "name": "layout/badge/bullet/bullet/Large",
+            "name": "Components/layout/badge/bullet/bullet/Large",
             "value": "1rem",
             "var": "size-8",
             "rootAlias": "size-8"
           },
           {
-            "name": "layout/badge/bullet/gap/Small",
+            "name": "Components/layout/badge/bullet/gap/Small",
             "value": "0.25rem",
             "var": "size-3",
             "rootAlias": "size-3"
           },
           {
-            "name": "layout/badge/bullet/gap/Medium",
+            "name": "Components/layout/badge/bullet/gap/Medium",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "layout/badge/bullet/gap/Large",
+            "name": "Components/layout/badge/bullet/gap/Large",
             "value": "0.75rem",
             "var": "size-6",
             "rootAlias": "size-6"
           },
           {
-            "name": "layout/badge/notification/border/Large",
+            "name": "Components/layout/badge/notification/border/Large",
             "value": "0.0625rem",
             "var": "size-1",
             "rootAlias": "size-1"
           },
           {
-            "name": "layout/badge/notification/border/Medium",
+            "name": "Components/layout/badge/notification/border/Medium",
             "value": "0.0625rem",
             "var": "size-1",
             "rootAlias": "size-1"
           },
           {
-            "name": "layout/badge/notification/border/Small",
+            "name": "Components/layout/badge/notification/border/Small",
             "value": "0.0625rem",
             "var": "size-1",
             "rootAlias": "size-1"
           },
           {
-            "name": "layout/badge/notification/height/Small",
+            "name": "Components/layout/badge/notification/height/Small",
             "value": "1.25rem",
             "var": "size-9",
             "rootAlias": "size-9"
           },
           {
-            "name": "layout/badge/notification/height/Medium",
+            "name": "Components/layout/badge/notification/height/Medium",
             "value": "1.5rem",
             "var": "size-10",
             "rootAlias": "size-10"
           },
           {
-            "name": "layout/badge/notification/height/Large",
+            "name": "Components/layout/badge/notification/height/Large",
             "value": "1.75rem",
             "var": "size-11",
             "rootAlias": "size-11"
           },
           {
-            "name": "layout/badge/notification/inlinePadding/padding",
+            "name": "Components/layout/badge/notification/inlinePadding/padding",
             "value": "0rem",
             "var": "size-0",
             "rootAlias": "size-0"
           },
           {
-            "name": "layout/badge/notification/radius/Round",
+            "name": "Components/layout/badge/notification/radius/Round",
             "value": "6rem",
             "var": "size-23",
             "rootAlias": "size-23"
           },
           {
-            "name": "layout/badge/status/border/Large",
+            "name": "Components/layout/badge/status/border/Large",
             "value": "0.0625rem",
             "var": "size-1",
             "rootAlias": "size-1"
           },
           {
-            "name": "layout/badge/status/border/Medium",
+            "name": "Components/layout/badge/status/border/Medium",
             "value": "0.0625rem",
             "var": "size-1",
             "rootAlias": "size-1"
           },
           {
-            "name": "layout/badge/status/border/Small",
+            "name": "Components/layout/badge/status/border/Small",
             "value": "0.0625rem",
             "var": "size-1",
             "rootAlias": "size-1"
           },
           {
-            "name": "layout/badge/status/gap/Medium",
+            "name": "Components/layout/badge/status/gap/Medium",
             "value": "0.125rem",
             "var": "size-2",
             "rootAlias": "size-2"
           },
           {
-            "name": "layout/badge/status/gap/Small",
+            "name": "Components/layout/badge/status/gap/Small",
             "value": "0.125rem",
             "var": "size-2",
             "rootAlias": "size-2"
           },
           {
-            "name": "layout/badge/status/gap/Large",
+            "name": "Components/layout/badge/status/gap/Large",
             "value": "0.25rem",
             "var": "size-3",
             "rootAlias": "size-3"
           },
           {
-            "name": "layout/badge/status/height/Small",
+            "name": "Components/layout/badge/status/height/Small",
             "value": "1rem",
             "var": "size-8",
             "rootAlias": "size-8"
           },
           {
-            "name": "layout/badge/status/height/Medium",
+            "name": "Components/layout/badge/status/height/Medium",
             "value": "1.25rem",
             "var": "size-9",
             "rootAlias": "size-9"
           },
           {
-            "name": "layout/badge/status/height/Large",
+            "name": "Components/layout/badge/status/height/Large",
             "value": "1.75rem",
             "var": "size-11",
             "rootAlias": "size-11"
           },
           {
-            "name": "layout/badge/status/icon/Medium",
+            "name": "Components/layout/badge/status/icon/Medium",
             "value": "0.75rem",
             "var": "size-6",
             "rootAlias": "size-6"
           },
           {
-            "name": "layout/badge/status/icon/Small",
+            "name": "Components/layout/badge/status/icon/Small",
             "value": "0.75rem",
             "var": "size-6",
             "rootAlias": "size-6"
           },
           {
-            "name": "layout/badge/status/icon/Large",
+            "name": "Components/layout/badge/status/icon/Large",
             "value": "1rem",
             "var": "size-8",
             "rootAlias": "size-8"
           },
           {
-            "name": "layout/badge/status/inlinePadding/Medium",
+            "name": "Components/layout/badge/status/inlinePadding/Medium",
             "value": "0.25rem",
             "var": "size-3",
             "rootAlias": "size-3"
           },
           {
-            "name": "layout/badge/status/inlinePadding/Small",
+            "name": "Components/layout/badge/status/inlinePadding/Small",
             "value": "0.25rem",
             "var": "size-3",
             "rootAlias": "size-3"
           },
           {
-            "name": "layout/badge/status/inlinePadding/Large",
+            "name": "Components/layout/badge/status/inlinePadding/Large",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "layout/badge/status/radius/Large",
+            "name": "Components/layout/badge/status/radius/Large",
             "value": "0.25rem",
             "var": "size-3",
             "rootAlias": "size-3"
           },
           {
-            "name": "layout/badge/status/radius/Medium",
+            "name": "Components/layout/badge/status/radius/Medium",
             "value": "0.25rem",
             "var": "size-3",
             "rootAlias": "size-3"
           },
           {
-            "name": "layout/badge/status/radius/Small",
+            "name": "Components/layout/badge/status/radius/Small",
             "value": "0.25rem",
             "var": "size-3",
             "rootAlias": "size-3"
           },
           {
-            "name": "modal/border/default",
+            "name": "Components/modal/border/default",
             "value": "0.0625rem",
             "var": "size-1",
             "rootAlias": "size-1"
           },
           {
-            "name": "modal/gap/default",
+            "name": "Components/modal/gap/default",
             "value": "1rem",
             "var": "size-8",
             "rootAlias": "size-8"
           },
           {
-            "name": "modal/icon/default",
+            "name": "Components/modal/icon/default",
             "value": "1.25rem",
             "var": "size-9",
             "rootAlias": "size-9"
           },
           {
-            "name": "modal/inlinepadding/Default",
+            "name": "Components/modal/inlinepadding/Default",
             "value": "2rem",
             "var": "size-12",
             "rootAlias": "size-12"
           },
           {
-            "name": "modal/radius/default",
+            "name": "Components/modal/radius/default",
             "value": "1rem",
             "var": "size-8",
             "rootAlias": "size-8"
           },
           {
-            "name": "modal/width/Default",
+            "name": "Components/modal/width/Default",
             "value": "35rem",
             "var": "",
             "rootAlias": ""
@@ -13899,691 +13899,691 @@
         "color": [],
         "number": [
           {
-            "name": "button/border/Large",
+            "name": "Components/button/border/Large",
             "value": "0.125rem",
             "var": "size-2",
             "rootAlias": "size-2"
           },
           {
-            "name": "button/border/Medium",
+            "name": "Components/button/border/Medium",
             "value": "0.125rem",
             "var": "size-2",
             "rootAlias": "size-2"
           },
           {
-            "name": "button/border/Small",
+            "name": "Components/button/border/Small",
             "value": "0.125rem",
             "var": "size-2",
             "rootAlias": "size-2"
           },
           {
-            "name": "button/gap/Medium",
+            "name": "Components/button/gap/Medium",
             "value": "0.25rem",
             "var": "size-3",
             "rootAlias": "size-3"
           },
           {
-            "name": "button/gap/Small",
+            "name": "Components/button/gap/Small",
             "value": "0.25rem",
             "var": "size-3",
             "rootAlias": "size-3"
           },
           {
-            "name": "button/gap/Large",
+            "name": "Components/button/gap/Large",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "button/height/horizontal content/Small",
+            "name": "Components/button/height/horizontal content/Small",
             "value": "1.75rem",
             "var": "size-11",
             "rootAlias": "size-11"
           },
           {
-            "name": "button/height/horizontal content/Medium",
+            "name": "Components/button/height/horizontal content/Medium",
             "value": "2.5rem",
             "var": "size-14",
             "rootAlias": "size-14"
           },
           {
-            "name": "button/height/horizontal content/Large",
+            "name": "Components/button/height/horizontal content/Large",
             "value": "3.5rem",
             "var": "size-18",
             "rootAlias": "size-18"
           },
           {
-            "name": "button/height/vertical content/Small",
+            "name": "Components/button/height/vertical content/Small",
             "value": "2.5rem",
             "var": "size-14",
             "rootAlias": "size-14"
           },
           {
-            "name": "button/height/vertical content/Medium",
+            "name": "Components/button/height/vertical content/Medium",
             "value": "3rem",
             "var": "size-16",
             "rootAlias": "size-16"
           },
           {
-            "name": "button/height/vertical content/Large",
+            "name": "Components/button/height/vertical content/Large",
             "value": "3.5rem",
             "var": "size-18",
             "rootAlias": "size-18"
           },
           {
-            "name": "button/icon/Medium",
+            "name": "Components/button/icon/Medium",
             "value": "1rem",
             "var": "size-8",
             "rootAlias": "size-8"
           },
           {
-            "name": "button/icon/Small",
+            "name": "Components/button/icon/Small",
             "value": "1rem",
             "var": "size-8",
             "rootAlias": "size-8"
           },
           {
-            "name": "button/icon/Large",
+            "name": "Components/button/icon/Large",
             "value": "1.25rem",
             "var": "size-9",
             "rootAlias": "size-9"
           },
           {
-            "name": "button/inlinePadding/Small",
+            "name": "Components/button/inlinePadding/Small",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "button/inlinePadding/Medium",
+            "name": "Components/button/inlinePadding/Medium",
             "value": "0.75rem",
             "var": "size-6",
             "rootAlias": "size-6"
           },
           {
-            "name": "button/inlinePadding/Large",
+            "name": "Components/button/inlinePadding/Large",
             "value": "1rem",
             "var": "size-8",
             "rootAlias": "size-8"
           },
           {
-            "name": "button/radius/Small",
+            "name": "Components/button/radius/Small",
             "value": "0.25rem",
             "var": "size-3",
             "rootAlias": "size-3"
           },
           {
-            "name": "button/radius/Large",
+            "name": "Components/button/radius/Large",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "button/radius/Medium",
+            "name": "Components/button/radius/Medium",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "button/radius/Round",
+            "name": "Components/button/radius/Round",
             "value": "6rem",
             "var": "size-23",
             "rootAlias": "size-23"
           },
           {
-            "name": "chip/border/Large",
+            "name": "Components/chip/border/Large",
             "value": "0.0625rem",
             "var": "size-1",
             "rootAlias": "size-1"
           },
           {
-            "name": "chip/border/Medium",
+            "name": "Components/chip/border/Medium",
             "value": "0.0625rem",
             "var": "size-1",
             "rootAlias": "size-1"
           },
           {
-            "name": "chip/border/Small",
+            "name": "Components/chip/border/Small",
             "value": "0.0625rem",
             "var": "size-1",
             "rootAlias": "size-1"
           },
           {
-            "name": "chip/gap/Medium",
+            "name": "Components/chip/gap/Medium",
             "value": "0.25rem",
             "var": "size-3",
             "rootAlias": "size-3"
           },
           {
-            "name": "chip/gap/Small",
+            "name": "Components/chip/gap/Small",
             "value": "0.25rem",
             "var": "size-3",
             "rootAlias": "size-3"
           },
           {
-            "name": "chip/gap/Large",
+            "name": "Components/chip/gap/Large",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "chip/height/Small",
+            "name": "Components/chip/height/Small",
             "value": "1.5rem",
             "var": "size-10",
             "rootAlias": "size-10"
           },
           {
-            "name": "chip/height/Medium",
+            "name": "Components/chip/height/Medium",
             "value": "1.75rem",
             "var": "size-11",
             "rootAlias": "size-11"
           },
           {
-            "name": "chip/height/Large",
+            "name": "Components/chip/height/Large",
             "value": "2.5rem",
             "var": "size-14",
             "rootAlias": "size-14"
           },
           {
-            "name": "chip/icon/default/Large",
+            "name": "Components/chip/icon/default/Large",
             "value": "1rem",
             "var": "size-8",
             "rootAlias": "size-8"
           },
           {
-            "name": "chip/icon/default/Medium",
+            "name": "Components/chip/icon/default/Medium",
             "value": "1rem",
             "var": "size-8",
             "rootAlias": "size-8"
           },
           {
-            "name": "chip/icon/default/Small",
+            "name": "Components/chip/icon/default/Small",
             "value": "1rem",
             "var": "size-8",
             "rootAlias": "size-8"
           },
           {
-            "name": "chip/icon/tagchip/Small",
+            "name": "Components/chip/icon/tagchip/Small",
             "value": "1rem",
             "var": "size-8",
             "rootAlias": "size-8"
           },
           {
-            "name": "chip/icon/tagchip/Medium",
+            "name": "Components/chip/icon/tagchip/Medium",
             "value": "1.25rem",
             "var": "size-9",
             "rootAlias": "size-9"
           },
           {
-            "name": "chip/icon/tagchip/Large",
+            "name": "Components/chip/icon/tagchip/Large",
             "value": "1.75rem",
             "var": "size-11",
             "rootAlias": "size-11"
           },
           {
-            "name": "chip/inlinePadding/default/Medium",
+            "name": "Components/chip/inlinePadding/default/Medium",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "chip/inlinePadding/default/Small",
+            "name": "Components/chip/inlinePadding/default/Small",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "chip/inlinePadding/default/Large",
+            "name": "Components/chip/inlinePadding/default/Large",
             "value": "0.875rem",
             "var": "size-7",
             "rootAlias": "size-7"
           },
           {
-            "name": "chip/inlinePadding/tagchip/Medium",
+            "name": "Components/chip/inlinePadding/tagchip/Medium",
             "value": "0.25rem",
             "var": "size-3",
             "rootAlias": "size-3"
           },
           {
-            "name": "chip/inlinePadding/tagchip/Small",
+            "name": "Components/chip/inlinePadding/tagchip/Small",
             "value": "0.25rem",
             "var": "size-3",
             "rootAlias": "size-3"
           },
           {
-            "name": "chip/inlinePadding/tagchip/Large",
+            "name": "Components/chip/inlinePadding/tagchip/Large",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "chip/radius/Round",
+            "name": "Components/chip/radius/Round",
             "value": "6rem",
             "var": "size-23",
             "rootAlias": "size-23"
           },
           {
-            "name": "form/base form/border/Large",
+            "name": "Components/form/base form/border/Large",
             "value": "0.125rem",
             "var": "size-2",
             "rootAlias": "size-2"
           },
           {
-            "name": "form/base form/border/Medium",
+            "name": "Components/form/base form/border/Medium",
             "value": "0.125rem",
             "var": "size-2",
             "rootAlias": "size-2"
           },
           {
-            "name": "form/base form/border/Small",
+            "name": "Components/form/base form/border/Small",
             "value": "0.125rem",
             "var": "size-2",
             "rootAlias": "size-2"
           },
           {
-            "name": "form/base form/gap/horizontal/Medium",
+            "name": "Components/form/base form/gap/horizontal/Medium",
             "value": "0.25rem",
             "var": "size-3",
             "rootAlias": "size-3"
           },
           {
-            "name": "form/base form/gap/horizontal/Small",
+            "name": "Components/form/base form/gap/horizontal/Small",
             "value": "0.25rem",
             "var": "size-3",
             "rootAlias": "size-3"
           },
           {
-            "name": "form/base form/gap/horizontal/Large",
+            "name": "Components/form/base form/gap/horizontal/Large",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "form/base form/gap/vertical/Small",
+            "name": "Components/form/base form/gap/vertical/Small",
             "value": "0.25rem",
             "var": "size-3",
             "rootAlias": "size-3"
           },
           {
-            "name": "form/base form/gap/vertical/Medium",
+            "name": "Components/form/base form/gap/vertical/Medium",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "form/base form/gap/vertical/Large",
+            "name": "Components/form/base form/gap/vertical/Large",
             "value": "0.75rem",
             "var": "size-6",
             "rootAlias": "size-6"
           },
           {
-            "name": "form/base form/height/Default/Small",
+            "name": "Components/form/base form/height/Default/Small",
             "value": "1.75rem",
             "var": "size-11",
             "rootAlias": "size-11"
           },
           {
-            "name": "form/base form/height/Default/Medium",
+            "name": "Components/form/base form/height/Default/Medium",
             "value": "2.5rem",
             "var": "size-14",
             "rootAlias": "size-14"
           },
           {
-            "name": "form/base form/height/Default/Large",
+            "name": "Components/form/base form/height/Default/Large",
             "value": "3.5rem",
             "var": "size-18",
             "rootAlias": "size-18"
           },
           {
-            "name": "form/base form/height/Textarea/Small",
+            "name": "Components/form/base form/height/Textarea/Small",
             "value": "4rem",
             "var": "size-19",
             "rootAlias": "size-19"
           },
           {
-            "name": "form/base form/height/Textarea/Medium",
+            "name": "Components/form/base form/height/Textarea/Medium",
             "value": "5rem",
             "var": "size-21",
             "rootAlias": "size-21"
           },
           {
-            "name": "form/base form/height/Textarea/Large",
+            "name": "Components/form/base form/height/Textarea/Large",
             "value": "6.5rem",
             "var": "size-24",
             "rootAlias": "size-24"
           },
           {
-            "name": "form/base form/icon/Mediun",
+            "name": "Components/form/base form/icon/Mediun",
             "value": "1rem",
             "var": "size-8",
             "rootAlias": "size-8"
           },
           {
-            "name": "form/base form/icon/Small",
+            "name": "Components/form/base form/icon/Small",
             "value": "1rem",
             "var": "size-8",
             "rootAlias": "size-8"
           },
           {
-            "name": "form/base form/icon/Large",
+            "name": "Components/form/base form/icon/Large",
             "value": "1.25rem",
             "var": "size-9",
             "rootAlias": "size-9"
           },
           {
-            "name": "form/base form/inlinePadding/default/Medium",
+            "name": "Components/form/base form/inlinePadding/default/Medium",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "form/base form/inlinePadding/default/Small",
+            "name": "Components/form/base form/inlinePadding/default/Small",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "form/base form/inlinePadding/default/Large",
+            "name": "Components/form/base form/inlinePadding/default/Large",
             "value": "0.875rem",
             "var": "size-7",
             "rootAlias": "size-7"
           },
           {
-            "name": "form/base form/inlinePadding/tagchip/Medium",
+            "name": "Components/form/base form/inlinePadding/tagchip/Medium",
             "value": "0.25rem",
             "var": "size-3",
             "rootAlias": "size-3"
           },
           {
-            "name": "form/base form/inlinePadding/tagchip/Small",
+            "name": "Components/form/base form/inlinePadding/tagchip/Small",
             "value": "0.25rem",
             "var": "size-3",
             "rootAlias": "size-3"
           },
           {
-            "name": "form/base form/inlinePadding/tagchip/Large",
+            "name": "Components/form/base form/inlinePadding/tagchip/Large",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "form/base form/radius/Small",
+            "name": "Components/form/base form/radius/Small",
             "value": "0.25rem",
             "var": "size-3",
             "rootAlias": "size-3"
           },
           {
-            "name": "form/base form/radius/Large",
+            "name": "Components/form/base form/radius/Large",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "form/base form/radius/Medium",
+            "name": "Components/form/base form/radius/Medium",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "form/feedback text/gap/Medium",
+            "name": "Components/form/feedback text/gap/Medium",
             "value": "0.25rem",
             "var": "size-3",
             "rootAlias": "size-3"
           },
           {
-            "name": "form/feedback text/gap/Small",
+            "name": "Components/form/feedback text/gap/Small",
             "value": "0.25rem",
             "var": "size-3",
             "rootAlias": "size-3"
           },
           {
-            "name": "form/feedback text/gap/Large",
+            "name": "Components/form/feedback text/gap/Large",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "form/feedback text/icon/Small",
+            "name": "Components/form/feedback text/icon/Small",
             "value": "1rem",
             "var": "size-8",
             "rootAlias": "size-8"
           },
           {
-            "name": "form/feedback text/icon/Medium",
+            "name": "Components/form/feedback text/icon/Medium",
             "value": "1.25rem",
             "var": "size-9",
             "rootAlias": "size-9"
           },
           {
-            "name": "form/feedback text/icon/Large",
+            "name": "Components/form/feedback text/icon/Large",
             "value": "1.5rem",
             "var": "size-10",
             "rootAlias": "size-10"
           },
           {
-            "name": "layout/badge/bullet/bullet/Small",
+            "name": "Components/layout/badge/bullet/bullet/Small",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "layout/badge/bullet/bullet/Large",
+            "name": "Components/layout/badge/bullet/bullet/Large",
             "value": "0.75rem",
             "var": "size-6",
             "rootAlias": "size-6"
           },
           {
-            "name": "layout/badge/bullet/bullet/Medium",
+            "name": "Components/layout/badge/bullet/bullet/Medium",
             "value": "0.75rem",
             "var": "size-6",
             "rootAlias": "size-6"
           },
           {
-            "name": "layout/badge/bullet/gap/Medium",
+            "name": "Components/layout/badge/bullet/gap/Medium",
             "value": "0.25rem",
             "var": "size-3",
             "rootAlias": "size-3"
           },
           {
-            "name": "layout/badge/bullet/gap/Small",
+            "name": "Components/layout/badge/bullet/gap/Small",
             "value": "0.25rem",
             "var": "size-3",
             "rootAlias": "size-3"
           },
           {
-            "name": "layout/badge/bullet/gap/Large",
+            "name": "Components/layout/badge/bullet/gap/Large",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "layout/badge/notification/border/Large",
+            "name": "Components/layout/badge/notification/border/Large",
             "value": "0.0625rem",
             "var": "size-1",
             "rootAlias": "size-1"
           },
           {
-            "name": "layout/badge/notification/border/Medium",
+            "name": "Components/layout/badge/notification/border/Medium",
             "value": "0.0625rem",
             "var": "size-1",
             "rootAlias": "size-1"
           },
           {
-            "name": "layout/badge/notification/border/Small",
+            "name": "Components/layout/badge/notification/border/Small",
             "value": "0.0625rem",
             "var": "size-1",
             "rootAlias": "size-1"
           },
           {
-            "name": "layout/badge/notification/height/Medium",
+            "name": "Components/layout/badge/notification/height/Medium",
             "value": "1.25rem",
             "var": "size-9",
             "rootAlias": "size-9"
           },
           {
-            "name": "layout/badge/notification/height/Small",
+            "name": "Components/layout/badge/notification/height/Small",
             "value": "1.25rem",
             "var": "size-9",
             "rootAlias": "size-9"
           },
           {
-            "name": "layout/badge/notification/height/Large",
+            "name": "Components/layout/badge/notification/height/Large",
             "value": "1.5rem",
             "var": "size-10",
             "rootAlias": "size-10"
           },
           {
-            "name": "layout/badge/notification/inlinePadding/padding",
+            "name": "Components/layout/badge/notification/inlinePadding/padding",
             "value": "0rem",
             "var": "size-0",
             "rootAlias": "size-0"
           },
           {
-            "name": "layout/badge/notification/radius/Round",
+            "name": "Components/layout/badge/notification/radius/Round",
             "value": "6rem",
             "var": "size-23",
             "rootAlias": "size-23"
           },
           {
-            "name": "layout/badge/status/border/Large",
+            "name": "Components/layout/badge/status/border/Large",
             "value": "0.0625rem",
             "var": "size-1",
             "rootAlias": "size-1"
           },
           {
-            "name": "layout/badge/status/border/Medium",
+            "name": "Components/layout/badge/status/border/Medium",
             "value": "0.0625rem",
             "var": "size-1",
             "rootAlias": "size-1"
           },
           {
-            "name": "layout/badge/status/border/Small",
+            "name": "Components/layout/badge/status/border/Small",
             "value": "0.0625rem",
             "var": "size-1",
             "rootAlias": "size-1"
           },
           {
-            "name": "layout/badge/status/gap/Medium",
+            "name": "Components/layout/badge/status/gap/Medium",
             "value": "0.125rem",
             "var": "size-2",
             "rootAlias": "size-2"
           },
           {
-            "name": "layout/badge/status/gap/Small",
+            "name": "Components/layout/badge/status/gap/Small",
             "value": "0.125rem",
             "var": "size-2",
             "rootAlias": "size-2"
           },
           {
-            "name": "layout/badge/status/gap/Large",
+            "name": "Components/layout/badge/status/gap/Large",
             "value": "0.25rem",
             "var": "size-3",
             "rootAlias": "size-3"
           },
           {
-            "name": "layout/badge/status/height/Medium",
+            "name": "Components/layout/badge/status/height/Medium",
             "value": "1rem",
             "var": "size-8",
             "rootAlias": "size-8"
           },
           {
-            "name": "layout/badge/status/height/Small",
+            "name": "Components/layout/badge/status/height/Small",
             "value": "1rem",
             "var": "size-8",
             "rootAlias": "size-8"
           },
           {
-            "name": "layout/badge/status/height/Large",
+            "name": "Components/layout/badge/status/height/Large",
             "value": "1.5rem",
             "var": "size-10",
             "rootAlias": "size-10"
           },
           {
-            "name": "layout/badge/status/icon/Medium",
+            "name": "Components/layout/badge/status/icon/Medium",
             "value": "0.75rem",
             "var": "size-6",
             "rootAlias": "size-6"
           },
           {
-            "name": "layout/badge/status/icon/Small",
+            "name": "Components/layout/badge/status/icon/Small",
             "value": "0.75rem",
             "var": "size-6",
             "rootAlias": "size-6"
           },
           {
-            "name": "layout/badge/status/icon/Large",
+            "name": "Components/layout/badge/status/icon/Large",
             "value": "1rem",
             "var": "size-8",
             "rootAlias": "size-8"
           },
           {
-            "name": "layout/badge/status/inlinePadding/Large",
+            "name": "Components/layout/badge/status/inlinePadding/Large",
             "value": "0.25rem",
             "var": "size-3",
             "rootAlias": "size-3"
           },
           {
-            "name": "layout/badge/status/inlinePadding/Medium",
+            "name": "Components/layout/badge/status/inlinePadding/Medium",
             "value": "0.25rem",
             "var": "size-3",
             "rootAlias": "size-3"
           },
           {
-            "name": "layout/badge/status/inlinePadding/Small",
+            "name": "Components/layout/badge/status/inlinePadding/Small",
             "value": "0.25rem",
             "var": "size-3",
             "rootAlias": "size-3"
           },
           {
-            "name": "layout/badge/status/radius/Large",
+            "name": "Components/layout/badge/status/radius/Large",
             "value": "0.25rem",
             "var": "size-3",
             "rootAlias": "size-3"
           },
           {
-            "name": "layout/badge/status/radius/Medium",
+            "name": "Components/layout/badge/status/radius/Medium",
             "value": "0.25rem",
             "var": "size-3",
             "rootAlias": "size-3"
           },
           {
-            "name": "layout/badge/status/radius/Small",
+            "name": "Components/layout/badge/status/radius/Small",
             "value": "0.25rem",
             "var": "size-3",
             "rootAlias": "size-3"
           },
           {
-            "name": "modal/border/default",
+            "name": "Components/modal/border/default",
             "value": "0.0625rem",
             "var": "size-1",
             "rootAlias": "size-1"
           },
           {
-            "name": "modal/gap/default",
+            "name": "Components/modal/gap/default",
             "value": "0.75rem",
             "var": "size-6",
             "rootAlias": "size-6"
           },
           {
-            "name": "modal/icon/default",
+            "name": "Components/modal/icon/default",
             "value": "1rem",
             "var": "size-8",
             "rootAlias": "size-8"
           },
           {
-            "name": "modal/inlinepadding/Default",
+            "name": "Components/modal/inlinepadding/Default",
             "value": "1.5rem",
             "var": "size-10",
             "rootAlias": "size-10"
           },
           {
-            "name": "modal/radius/default",
+            "name": "Components/modal/radius/default",
             "value": "0.75rem",
             "var": "size-6",
             "rootAlias": "size-6"
           },
           {
-            "name": "modal/width/Default",
+            "name": "Components/modal/width/Default",
             "value": "20rem",
             "var": "",
             "rootAlias": ""
@@ -14599,691 +14599,691 @@
         "color": [],
         "number": [
           {
-            "name": "button/border/Small",
+            "name": "Components/button/border/Small",
             "value": "0.125rem",
             "var": "size-2",
             "rootAlias": "size-2"
           },
           {
-            "name": "button/border/Large",
+            "name": "Components/button/border/Large",
             "value": "0.25rem",
             "var": "size-3",
             "rootAlias": "size-3"
           },
           {
-            "name": "button/border/Medium",
+            "name": "Components/button/border/Medium",
             "value": "0.25rem",
             "var": "size-3",
             "rootAlias": "size-3"
           },
           {
-            "name": "button/gap/Small",
+            "name": "Components/button/gap/Small",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "button/gap/Medium",
+            "name": "Components/button/gap/Medium",
             "value": "0.75rem",
             "var": "size-6",
             "rootAlias": "size-6"
           },
           {
-            "name": "button/gap/Large",
+            "name": "Components/button/gap/Large",
             "value": "1rem",
             "var": "size-8",
             "rootAlias": "size-8"
           },
           {
-            "name": "button/height/horizontal content/Small",
+            "name": "Components/button/height/horizontal content/Small",
             "value": "4rem",
             "var": "size-19",
             "rootAlias": "size-19"
           },
           {
-            "name": "button/height/horizontal content/Medium",
+            "name": "Components/button/height/horizontal content/Medium",
             "value": "6rem",
             "var": "size-23",
             "rootAlias": "size-23"
           },
           {
-            "name": "button/height/horizontal content/Large",
+            "name": "Components/button/height/horizontal content/Large",
             "value": "7.5rem",
             "var": "size-26",
             "rootAlias": "size-26"
           },
           {
-            "name": "button/height/vertical content/Small",
+            "name": "Components/button/height/vertical content/Small",
             "value": "5rem",
             "var": "size-21",
             "rootAlias": "size-21"
           },
           {
-            "name": "button/height/vertical content/Medium",
+            "name": "Components/button/height/vertical content/Medium",
             "value": "6.5rem",
             "var": "size-24",
             "rootAlias": "size-24"
           },
           {
-            "name": "button/height/vertical content/Large",
+            "name": "Components/button/height/vertical content/Large",
             "value": "8.5rem",
             "var": "size-28",
             "rootAlias": "size-28"
           },
           {
-            "name": "button/icon/Small",
+            "name": "Components/button/icon/Small",
             "value": "1.5rem",
             "var": "size-10",
             "rootAlias": "size-10"
           },
           {
-            "name": "button/icon/Medium",
+            "name": "Components/button/icon/Medium",
             "value": "2rem",
             "var": "size-12",
             "rootAlias": "size-12"
           },
           {
-            "name": "button/icon/Large",
+            "name": "Components/button/icon/Large",
             "value": "3rem",
             "var": "size-16",
             "rootAlias": "size-16"
           },
           {
-            "name": "button/inlinePadding/Small",
+            "name": "Components/button/inlinePadding/Small",
             "value": "1.5rem",
             "var": "size-10",
             "rootAlias": "size-10"
           },
           {
-            "name": "button/inlinePadding/Medium",
+            "name": "Components/button/inlinePadding/Medium",
             "value": "2rem",
             "var": "size-12",
             "rootAlias": "size-12"
           },
           {
-            "name": "button/inlinePadding/Large",
+            "name": "Components/button/inlinePadding/Large",
             "value": "2.5rem",
             "var": "size-14",
             "rootAlias": "size-14"
           },
           {
-            "name": "button/radius/Small",
+            "name": "Components/button/radius/Small",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "button/radius/Large",
+            "name": "Components/button/radius/Large",
             "value": "1rem",
             "var": "size-8",
             "rootAlias": "size-8"
           },
           {
-            "name": "button/radius/Medium",
+            "name": "Components/button/radius/Medium",
             "value": "1rem",
             "var": "size-8",
             "rootAlias": "size-8"
           },
           {
-            "name": "button/radius/Round",
+            "name": "Components/button/radius/Round",
             "value": "6rem",
             "var": "size-23",
             "rootAlias": "size-23"
           },
           {
-            "name": "chip/border/Large",
+            "name": "Components/chip/border/Large",
             "value": "0.125rem",
             "var": "size-2",
             "rootAlias": "size-2"
           },
           {
-            "name": "chip/border/Medium",
+            "name": "Components/chip/border/Medium",
             "value": "0.125rem",
             "var": "size-2",
             "rootAlias": "size-2"
           },
           {
-            "name": "chip/border/Small",
+            "name": "Components/chip/border/Small",
             "value": "0.125rem",
             "var": "size-2",
             "rootAlias": "size-2"
           },
           {
-            "name": "chip/gap/Small",
+            "name": "Components/chip/gap/Small",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "chip/gap/Medium",
+            "name": "Components/chip/gap/Medium",
             "value": "0.75rem",
             "var": "size-6",
             "rootAlias": "size-6"
           },
           {
-            "name": "chip/gap/Large",
+            "name": "Components/chip/gap/Large",
             "value": "1rem",
             "var": "size-8",
             "rootAlias": "size-8"
           },
           {
-            "name": "chip/height/Small",
+            "name": "Components/chip/height/Small",
             "value": "3.25rem",
             "var": "size-17",
             "rootAlias": "size-17"
           },
           {
-            "name": "chip/height/Medium",
+            "name": "Components/chip/height/Medium",
             "value": "4rem",
             "var": "size-19",
             "rootAlias": "size-19"
           },
           {
-            "name": "chip/height/Large",
+            "name": "Components/chip/height/Large",
             "value": "6rem",
             "var": "size-23",
             "rootAlias": "size-23"
           },
           {
-            "name": "chip/icon/default/Small",
+            "name": "Components/chip/icon/default/Small",
             "value": "1.25rem",
             "var": "size-9",
             "rootAlias": "size-9"
           },
           {
-            "name": "chip/icon/default/Medium",
+            "name": "Components/chip/icon/default/Medium",
             "value": "1.5rem",
             "var": "size-10",
             "rootAlias": "size-10"
           },
           {
-            "name": "chip/icon/default/Large",
+            "name": "Components/chip/icon/default/Large",
             "value": "2rem",
             "var": "size-12",
             "rootAlias": "size-12"
           },
           {
-            "name": "chip/icon/tagchip/Small",
+            "name": "Components/chip/icon/tagchip/Small",
             "value": "2.25rem",
             "var": "size-13",
             "rootAlias": "size-13"
           },
           {
-            "name": "chip/icon/tagchip/Medium",
+            "name": "Components/chip/icon/tagchip/Medium",
             "value": "3rem",
             "var": "size-16",
             "rootAlias": "size-16"
           },
           {
-            "name": "chip/icon/tagchip/Large",
+            "name": "Components/chip/icon/tagchip/Large",
             "value": "4rem",
             "var": "size-19",
             "rootAlias": "size-19"
           },
           {
-            "name": "chip/inlinePadding/default/Small",
+            "name": "Components/chip/inlinePadding/default/Small",
             "value": "1rem",
             "var": "size-8",
             "rootAlias": "size-8"
           },
           {
-            "name": "chip/inlinePadding/default/Medium",
+            "name": "Components/chip/inlinePadding/default/Medium",
             "value": "1.25rem",
             "var": "size-9",
             "rootAlias": "size-9"
           },
           {
-            "name": "chip/inlinePadding/default/Large",
+            "name": "Components/chip/inlinePadding/default/Large",
             "value": "2rem",
             "var": "size-12",
             "rootAlias": "size-12"
           },
           {
-            "name": "chip/inlinePadding/tagchip/Medium",
+            "name": "Components/chip/inlinePadding/tagchip/Medium",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "chip/inlinePadding/tagchip/Small",
+            "name": "Components/chip/inlinePadding/tagchip/Small",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "chip/inlinePadding/tagchip/Large",
+            "name": "Components/chip/inlinePadding/tagchip/Large",
             "value": "1rem",
             "var": "size-8",
             "rootAlias": "size-8"
           },
           {
-            "name": "chip/radius/Round",
+            "name": "Components/chip/radius/Round",
             "value": "6rem",
             "var": "size-23",
             "rootAlias": "size-23"
           },
           {
-            "name": "form/base form/border/Small",
+            "name": "Components/form/base form/border/Small",
             "value": "0.125rem",
             "var": "size-2",
             "rootAlias": "size-2"
           },
           {
-            "name": "form/base form/border/Large",
+            "name": "Components/form/base form/border/Large",
             "value": "0.25rem",
             "var": "size-3",
             "rootAlias": "size-3"
           },
           {
-            "name": "form/base form/border/Medium",
+            "name": "Components/form/base form/border/Medium",
             "value": "0.25rem",
             "var": "size-3",
             "rootAlias": "size-3"
           },
           {
-            "name": "form/base form/gap/horizontal/Small",
+            "name": "Components/form/base form/gap/horizontal/Small",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "form/base form/gap/horizontal/Medium",
+            "name": "Components/form/base form/gap/horizontal/Medium",
             "value": "0.75rem",
             "var": "size-6",
             "rootAlias": "size-6"
           },
           {
-            "name": "form/base form/gap/horizontal/Large",
+            "name": "Components/form/base form/gap/horizontal/Large",
             "value": "1rem",
             "var": "size-8",
             "rootAlias": "size-8"
           },
           {
-            "name": "form/base form/gap/vertical/Small",
+            "name": "Components/form/base form/gap/vertical/Small",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "form/base form/gap/vertical/Medium",
+            "name": "Components/form/base form/gap/vertical/Medium",
             "value": "1rem",
             "var": "size-8",
             "rootAlias": "size-8"
           },
           {
-            "name": "form/base form/gap/vertical/Large",
+            "name": "Components/form/base form/gap/vertical/Large",
             "value": "1.5rem",
             "var": "size-10",
             "rootAlias": "size-10"
           },
           {
-            "name": "form/base form/height/Default/Small",
+            "name": "Components/form/base form/height/Default/Small",
             "value": "4rem",
             "var": "size-19",
             "rootAlias": "size-19"
           },
           {
-            "name": "form/base form/height/Default/Medium",
+            "name": "Components/form/base form/height/Default/Medium",
             "value": "6rem",
             "var": "size-23",
             "rootAlias": "size-23"
           },
           {
-            "name": "form/base form/height/Default/Large",
+            "name": "Components/form/base form/height/Default/Large",
             "value": "7.5rem",
             "var": "size-26",
             "rootAlias": "size-26"
           },
           {
-            "name": "form/base form/height/Textarea/Small",
+            "name": "Components/form/base form/height/Textarea/Small",
             "value": "7rem",
             "var": "size-25",
             "rootAlias": "size-25"
           },
           {
-            "name": "form/base form/height/Textarea/Medium",
+            "name": "Components/form/base form/height/Textarea/Medium",
             "value": "8.5rem",
             "var": "size-28",
             "rootAlias": "size-28"
           },
           {
-            "name": "form/base form/height/Textarea/Large",
+            "name": "Components/form/base form/height/Textarea/Large",
             "value": "10rem",
             "var": "size-31",
             "rootAlias": "size-31"
           },
           {
-            "name": "form/base form/icon/Small",
+            "name": "Components/form/base form/icon/Small",
             "value": "1.5rem",
             "var": "size-10",
             "rootAlias": "size-10"
           },
           {
-            "name": "form/base form/icon/Mediun",
+            "name": "Components/form/base form/icon/Mediun",
             "value": "2rem",
             "var": "size-12",
             "rootAlias": "size-12"
           },
           {
-            "name": "form/base form/icon/Large",
+            "name": "Components/form/base form/icon/Large",
             "value": "3rem",
             "var": "size-16",
             "rootAlias": "size-16"
           },
           {
-            "name": "form/base form/inlinePadding/default/Small",
+            "name": "Components/form/base form/inlinePadding/default/Small",
             "value": "1rem",
             "var": "size-8",
             "rootAlias": "size-8"
           },
           {
-            "name": "form/base form/inlinePadding/default/Medium",
+            "name": "Components/form/base form/inlinePadding/default/Medium",
             "value": "1.25rem",
             "var": "size-9",
             "rootAlias": "size-9"
           },
           {
-            "name": "form/base form/inlinePadding/default/Large",
+            "name": "Components/form/base form/inlinePadding/default/Large",
             "value": "2rem",
             "var": "size-12",
             "rootAlias": "size-12"
           },
           {
-            "name": "form/base form/inlinePadding/tagchip/Medium",
+            "name": "Components/form/base form/inlinePadding/tagchip/Medium",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "form/base form/inlinePadding/tagchip/Small",
+            "name": "Components/form/base form/inlinePadding/tagchip/Small",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "form/base form/inlinePadding/tagchip/Large",
+            "name": "Components/form/base form/inlinePadding/tagchip/Large",
             "value": "1rem",
             "var": "size-8",
             "rootAlias": "size-8"
           },
           {
-            "name": "form/base form/radius/Small",
+            "name": "Components/form/base form/radius/Small",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "form/base form/radius/Large",
+            "name": "Components/form/base form/radius/Large",
             "value": "1rem",
             "var": "size-8",
             "rootAlias": "size-8"
           },
           {
-            "name": "form/base form/radius/Medium",
+            "name": "Components/form/base form/radius/Medium",
             "value": "1rem",
             "var": "size-8",
             "rootAlias": "size-8"
           },
           {
-            "name": "form/feedback text/gap/Small",
+            "name": "Components/form/feedback text/gap/Small",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "form/feedback text/gap/Medium",
+            "name": "Components/form/feedback text/gap/Medium",
             "value": "0.75rem",
             "var": "size-6",
             "rootAlias": "size-6"
           },
           {
-            "name": "form/feedback text/gap/Large",
+            "name": "Components/form/feedback text/gap/Large",
             "value": "1rem",
             "var": "size-8",
             "rootAlias": "size-8"
           },
           {
-            "name": "form/feedback text/icon/Small",
+            "name": "Components/form/feedback text/icon/Small",
             "value": "1.75rem",
             "var": "size-11",
             "rootAlias": "size-11"
           },
           {
-            "name": "form/feedback text/icon/Medium",
+            "name": "Components/form/feedback text/icon/Medium",
             "value": "2rem",
             "var": "size-12",
             "rootAlias": "size-12"
           },
           {
-            "name": "form/feedback text/icon/Large",
+            "name": "Components/form/feedback text/icon/Large",
             "value": "3.5rem",
             "var": "size-18",
             "rootAlias": "size-18"
           },
           {
-            "name": "layout/badge/bullet/bullet/Small",
+            "name": "Components/layout/badge/bullet/bullet/Small",
             "value": "0.75rem",
             "var": "size-6",
             "rootAlias": "size-6"
           },
           {
-            "name": "layout/badge/bullet/bullet/Medium",
+            "name": "Components/layout/badge/bullet/bullet/Medium",
             "value": "1.25rem",
             "var": "size-9",
             "rootAlias": "size-9"
           },
           {
-            "name": "layout/badge/bullet/bullet/Large",
+            "name": "Components/layout/badge/bullet/bullet/Large",
             "value": "1.5rem",
             "var": "size-10",
             "rootAlias": "size-10"
           },
           {
-            "name": "layout/badge/bullet/gap/Small",
+            "name": "Components/layout/badge/bullet/gap/Small",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "layout/badge/bullet/gap/Medium",
+            "name": "Components/layout/badge/bullet/gap/Medium",
             "value": "0.75rem",
             "var": "size-6",
             "rootAlias": "size-6"
           },
           {
-            "name": "layout/badge/bullet/gap/Large",
+            "name": "Components/layout/badge/bullet/gap/Large",
             "value": "1.25rem",
             "var": "size-9",
             "rootAlias": "size-9"
           },
           {
-            "name": "layout/badge/notification/border/Large",
+            "name": "Components/layout/badge/notification/border/Large",
             "value": "0.125rem",
             "var": "size-2",
             "rootAlias": "size-2"
           },
           {
-            "name": "layout/badge/notification/border/Medium",
+            "name": "Components/layout/badge/notification/border/Medium",
             "value": "0.125rem",
             "var": "size-2",
             "rootAlias": "size-2"
           },
           {
-            "name": "layout/badge/notification/border/Small",
+            "name": "Components/layout/badge/notification/border/Small",
             "value": "0.125rem",
             "var": "size-2",
             "rootAlias": "size-2"
           },
           {
-            "name": "layout/badge/notification/height/Small",
+            "name": "Components/layout/badge/notification/height/Small",
             "value": "1.75rem",
             "var": "size-11",
             "rootAlias": "size-11"
           },
           {
-            "name": "layout/badge/notification/height/Medium",
+            "name": "Components/layout/badge/notification/height/Medium",
             "value": "2.25rem",
             "var": "size-13",
             "rootAlias": "size-13"
           },
           {
-            "name": "layout/badge/notification/height/Large",
+            "name": "Components/layout/badge/notification/height/Large",
             "value": "3.5rem",
             "var": "size-18",
             "rootAlias": "size-18"
           },
           {
-            "name": "layout/badge/notification/inlinePadding/padding",
+            "name": "Components/layout/badge/notification/inlinePadding/padding",
             "value": "0rem",
             "var": "size-0",
             "rootAlias": "size-0"
           },
           {
-            "name": "layout/badge/notification/radius/Round",
+            "name": "Components/layout/badge/notification/radius/Round",
             "value": "6rem",
             "var": "size-23",
             "rootAlias": "size-23"
           },
           {
-            "name": "layout/badge/status/border/Large",
+            "name": "Components/layout/badge/status/border/Large",
             "value": "0.125rem",
             "var": "size-2",
             "rootAlias": "size-2"
           },
           {
-            "name": "layout/badge/status/border/Medium",
+            "name": "Components/layout/badge/status/border/Medium",
             "value": "0.125rem",
             "var": "size-2",
             "rootAlias": "size-2"
           },
           {
-            "name": "layout/badge/status/border/Small",
+            "name": "Components/layout/badge/status/border/Small",
             "value": "0.125rem",
             "var": "size-2",
             "rootAlias": "size-2"
           },
           {
-            "name": "layout/badge/status/gap/Medium",
+            "name": "Components/layout/badge/status/gap/Medium",
             "value": "0.25rem",
             "var": "size-3",
             "rootAlias": "size-3"
           },
           {
-            "name": "layout/badge/status/gap/Small",
+            "name": "Components/layout/badge/status/gap/Small",
             "value": "0.25rem",
             "var": "size-3",
             "rootAlias": "size-3"
           },
           {
-            "name": "layout/badge/status/gap/Large",
+            "name": "Components/layout/badge/status/gap/Large",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "layout/badge/status/height/Small",
+            "name": "Components/layout/badge/status/height/Small",
             "value": "1.75rem",
             "var": "size-11",
             "rootAlias": "size-11"
           },
           {
-            "name": "layout/badge/status/height/Medium",
+            "name": "Components/layout/badge/status/height/Medium",
             "value": "2.25rem",
             "var": "size-13",
             "rootAlias": "size-13"
           },
           {
-            "name": "layout/badge/status/height/Large",
+            "name": "Components/layout/badge/status/height/Large",
             "value": "3.5rem",
             "var": "size-18",
             "rootAlias": "size-18"
           },
           {
-            "name": "layout/badge/status/icon/Small",
+            "name": "Components/layout/badge/status/icon/Small",
             "value": "1rem",
             "var": "size-8",
             "rootAlias": "size-8"
           },
           {
-            "name": "layout/badge/status/icon/Medium",
+            "name": "Components/layout/badge/status/icon/Medium",
             "value": "1.25rem",
             "var": "size-9",
             "rootAlias": "size-9"
           },
           {
-            "name": "layout/badge/status/icon/Large",
+            "name": "Components/layout/badge/status/icon/Large",
             "value": "1.75rem",
             "var": "size-11",
             "rootAlias": "size-11"
           },
           {
-            "name": "layout/badge/status/inlinePadding/Medium",
+            "name": "Components/layout/badge/status/inlinePadding/Medium",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "layout/badge/status/inlinePadding/Small",
+            "name": "Components/layout/badge/status/inlinePadding/Small",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "layout/badge/status/inlinePadding/Large",
+            "name": "Components/layout/badge/status/inlinePadding/Large",
             "value": "0.75rem",
             "var": "size-6",
             "rootAlias": "size-6"
           },
           {
-            "name": "layout/badge/status/radius/Medium",
+            "name": "Components/layout/badge/status/radius/Medium",
             "value": "0.375rem",
             "var": "size-4",
             "rootAlias": "size-4"
           },
           {
-            "name": "layout/badge/status/radius/Small",
+            "name": "Components/layout/badge/status/radius/Small",
             "value": "0.375rem",
             "var": "size-4",
             "rootAlias": "size-4"
           },
           {
-            "name": "layout/badge/status/radius/Large",
+            "name": "Components/layout/badge/status/radius/Large",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "modal/border/default",
+            "name": "Components/modal/border/default",
             "value": "0.125rem",
             "var": "size-2",
             "rootAlias": "size-2"
           },
           {
-            "name": "modal/gap/default",
+            "name": "Components/modal/gap/default",
             "value": "1.5rem",
             "var": "size-10",
             "rootAlias": "size-10"
           },
           {
-            "name": "modal/icon/default",
+            "name": "Components/modal/icon/default",
             "value": "2rem",
             "var": "size-12",
             "rootAlias": "size-12"
           },
           {
-            "name": "modal/inlinepadding/Default",
+            "name": "Components/modal/inlinepadding/Default",
             "value": "3rem",
             "var": "size-16",
             "rootAlias": "size-16"
           },
           {
-            "name": "modal/radius/default",
+            "name": "Components/modal/radius/default",
             "value": "1.5rem",
             "var": "size-10",
             "rootAlias": "size-10"
           },
           {
-            "name": "modal/width/Default",
+            "name": "Components/modal/width/Default",
             "value": "60rem",
             "var": "",
             "rootAlias": ""

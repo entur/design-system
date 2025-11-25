@@ -4,7 +4,7 @@
 @use '@entur/tokens/dist/base.scss' as *;
 @use '@entur/utils/dist/breakpoints.scss' as *;
 
-@use './componentColors.scss';
+@use './componentVariables.scss';
 @use './fonts.scss';
 
 [data-color-mode='light'],
