@@ -2,7 +2,6 @@ import React from 'react';
 import classNames from 'classnames';
 import { PolymorphicComponentPropsWithRef, PolymorphicRef } from '@entur/utils';
 import { VariantType } from '@entur/utils';
-import { Text } from '@entur/typography/beta';
 import './Badge.scss';
 
 /** @deprecated use variant="information" instead */
@@ -86,30 +85,9 @@ export const Badge: BadgeComponent = React.forwardRef(
     let content;
 
     if (typeof children === 'number') {
-      const displayValue = children > max ? `${max}+` : children;
-      content = (
-        <Text as="span" variant="caption" spacing="none">
-          {displayValue}
-        </Text>
-      );
-    } else if (hasLeadingIcon) {
-      // When we have a leading icon, wrap text portions in Text component
-      content = childrenArray.map((child, index) => {
-        if (typeof child === 'string' || typeof child === 'number') {
-          return (
-            <Text key={index} as="span" variant="caption" spacing="none">
-              {child}
-            </Text>
-          );
-        }
-        return child;
-      });
+      content = children > max ? `${max}+` : children;
     } else {
-      content = (
-        <Text as="span" variant="caption" spacing="none">
-          {children}
-        </Text>
-      );
+      content = children;
     }
 
     const classList = classNames(
