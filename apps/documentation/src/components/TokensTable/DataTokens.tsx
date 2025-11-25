@@ -19,8 +19,7 @@ const DataTokenList: React.FC<TokensTableProps> = ({ tokens }) => {
   });
 
   const categorizedTokens = formatTokens.reduce(
-    (categories, [key, value, original]) => {
-      const formattedVariable = formatDotToVariable(key);
+    (categories, [formattedVariable, value, original]) => {
       const parts = formattedVariable.split('-');
       const mainCategory = parts[0];
       const subCategory = parts[1];

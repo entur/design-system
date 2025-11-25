@@ -1,5 +1,9 @@
 import path from 'path';
-import { createColorSet, createColorsFileData } from '../src/buildVariables';
+import {
+  createColorsFileData,
+  createVariableSet,
+  createVariablesFileData,
+} from '../src/buildVariables';
 import {
   baseFileData,
   componentFileData,
@@ -7,6 +11,7 @@ import {
   getAllPackageNames,
   outputFileData,
   primitiveFileData,
+  primitiveSizesFileData,
   semanticFileData,
   transportFileData,
 } from './utils';
@@ -18,14 +23,39 @@ const outputExtensions: Array<'css' | 'scss' | 'less'> = [
 ];
 
 try {
+  // Merge primitive colors and sizes
+  const primitiveColors = createVariableSet(primitiveFileData, 'color');
+  const primitiveSizes = createVariableSet(primitiveSizesFileData, 'number');
+  const combinedPrimitiveTokens = [...primitiveColors, ...primitiveSizes];
+
   const colorFiles = [
-    { colorData: createColorSet(primitiveFileData), name: 'primitive' },
-    { colorData: createColorSet(transportFileData), name: 'transport' },
-    { colorData: createColorSet(semanticFileData), name: 'semantic' },
-    { colorData: createColorSet(dataFileData), name: 'data' },
-    { colorData: createColorSet(baseFileData), name: 'base' },
+    { colorData: combinedPrimitiveTokens, name: 'primitive' },
+    {
+      colorData: createVariableSet(transportFileData, 'color'),
+      name: 'transport',
+    },
+    {
+      colorData: createVariableSet(semanticFileData, 'color'),
+      name: 'semantic',
+    },
+    { colorData: createVariableSet(dataFileData, 'color'), name: 'data' },
+    { colorData: createVariableSet(baseFileData, 'color'), name: 'base' },
   ];
-  const componentColors = createColorSet(componentFileData);
+  // Extract specific categories from component.json
+  const componentData = JSON.parse(componentFileData);
+  const componentColorsCategory = componentData.find(
+    (category: any) => category.name === 'Component colors',
+  );
+  const componentSizesCategory = componentData.find(
+    (category: any) => category.name === 'Component size',
+  );
+
+  const componentColors = componentColorsCategory
+    ? createVariableSet(JSON.stringify([componentColorsCategory]), 'color')
+    : [];
+  const componentSizes = componentSizesCategory
+    ? createVariableSet(JSON.stringify([componentSizesCategory]), 'number')
+    : [];
 
   colorFiles.forEach(colorFile => {
     outputExtensions.forEach(extension => {
@@ -47,33 +77,37 @@ try {
   console.info('🎉 Created stylesheets for', colorFiles.length, 'color sets!');
 
   const allPackages = getAllPackageNames();
-  const componentColorData = createColorsFileData({
-    colorSet: componentColors,
+
+  // Combine colors and sizes into a single componentVariables.scss file
+  const combinedVariables = [...componentColors, ...componentSizes];
+  const componentVariablesData = createVariablesFileData({
+    variableSet: combinedVariables,
     keyType: 'css',
     valueType: 'scss',
-    name: 'componentColors',
+    name: 'componentVariables',
     outputToPackages: allPackages,
   });
+
   allPackages.forEach(packageName => {
-    const colorData = componentColorData.find(
+    const variableData = componentVariablesData.find(
       data => data.packageName === packageName,
     );
-    if (colorData?.packageName === undefined) return;
+    if (variableData?.packageName === undefined) return;
 
     outputFileData({
-      fileData: colorData.outputString,
-      outputFileName: colorData.outputFileName,
+      fileData: variableData.outputString,
+      outputFileName: variableData.outputFileName,
       outputPath: path.resolve(
         __dirname,
         '..',
         '..',
-        colorData.packageName,
+        variableData.packageName,
         'src/',
       ),
     });
   });
   console.info(
-    '🎉 Created componentColors for',
+    '🎉 Created componentVariables for',
     allPackages.length,
     'packages – Enjoy! 👨🏻‍🍳',
   );

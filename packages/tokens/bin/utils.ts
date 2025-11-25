@@ -25,6 +25,10 @@ export const componentFileData = fs.readFileSync(
   path.resolve(__dirname, '../src/component.json'),
   'utf-8',
 );
+export const primitiveSizesFileData = fs.readFileSync(
+  path.resolve(__dirname, '../src/primitiveSize.json'),
+  'utf-8',
+);
 
 export function getAllPackageNames() {
   const packageNames = fs

@@ -10,25 +10,50 @@ import {
   dataFileData,
   outputFileData,
   primitiveFileData,
+  primitiveSizesFileData,
   semanticFileData,
   transportFileData,
 } from './utils';
-import { createColorSet, createJSColorFileData } from '../src/buildVariables';
+import {
+  createJSColorFileData,
+  createVariableSet,
+} from '../src/buildVariables';
 
 try {
-  const primitive = createColorSet(primitiveFileData);
-  const transport = createColorSet(transportFileData);
-  const semantic = createColorSet(semanticFileData);
-  const base = createColorSet(baseFileData);
-  const data = createColorSet(dataFileData);
-  const componentColors = createColorSet(componentFileData);
+  // Merge primitive colors and sizes
+  const primitiveColors = createVariableSet(primitiveFileData, 'color');
+  const primitiveSizes = createVariableSet(primitiveSizesFileData, 'number');
+  const combinedPrimitiveTokens = [...primitiveColors, ...primitiveSizes];
+
+  const transport = createVariableSet(transportFileData, 'color');
+  const semantic = createVariableSet(semanticFileData, 'color');
+  const base = createVariableSet(baseFileData, 'color');
+  const data = createVariableSet(dataFileData, 'color');
+
+  // Extract specific categories from component.json
+  const componentData = JSON.parse(componentFileData);
+  const componentColorsCategory = componentData.find(
+    (category: any) => category.name === 'Component colors',
+  );
+  const componentSizesCategory = componentData.find(
+    (category: any) => category.name === 'Component size',
+  );
+
+  const componentColors = componentColorsCategory
+    ? createVariableSet(JSON.stringify([componentColorsCategory]), 'color')
+    : [];
+  const componentSizes = componentSizesCategory
+    ? createVariableSet(JSON.stringify([componentSizesCategory]), 'number')
+    : [];
+  const combinedComponentVariables = [...componentColors, ...componentSizes];
+
   const colorFiles = [
-    { colorData: primitive, name: 'primitive' },
+    { colorData: combinedPrimitiveTokens, name: 'primitive' },
     { colorData: semantic, name: 'semantic' },
     { colorData: base, name: 'base' },
     { colorData: data, name: 'data' },
     { colorData: transport, name: 'transport' },
-    { colorData: componentColors, name: 'componentColors' },
+    { colorData: combinedComponentVariables, name: 'componentVariables' },
   ];
 
   colorFiles.forEach(colorFile => {
@@ -39,7 +64,7 @@ try {
     outputFileData({
       fileData: fileData.outputString,
       outputFileName: fileData.outputFileName,
-      outputPath: path.resolve(__dirname, '../src/'),
+      outputPath: path.resolve(__dirname, '../src/generated-js-objects'),
     });
   });
   console.info('🎉 Created JS-tokens for', colorFiles.length, 'color sets!');
