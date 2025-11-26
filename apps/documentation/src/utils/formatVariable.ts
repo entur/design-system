@@ -68,6 +68,8 @@ export const formatVariableByType = (
   formattedVariable: string,
   /** The original key (for JS format) */
   originalKey?: string,
+  /** The namespace to include in the formatted js variable */
+  includeNamespace?: string,
 ) => {
   switch (variableFormat) {
     case 'scss':
@@ -77,6 +79,9 @@ export const formatVariableByType = (
     case 'css':
       return `var(--${formattedVariable})`;
     case 'js':
+      if (includeNamespace) {
+        return `${includeNamespace}.${originalKey || formattedVariable}`;
+      }
       return originalKey || formattedVariable;
   }
 };

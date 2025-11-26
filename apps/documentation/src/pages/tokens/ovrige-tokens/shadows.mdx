@@ -7,7 +7,7 @@ menu: Øvrige tokens
 order: 8
 ---
 
-import { TokenTable } from '@components/TokensTable/TokenTable';
+import { LegacyTokenTable } from '@components/TokensTable/LegacyTokenTable';
 import { colors, borderWidths, space } from '@entur/tokens';
 import { SEO } from '@components/seo/SEO';
 
@@ -28,7 +28,7 @@ export const Head = ( props ) => {
 
 ## Shadows
 
-<TokenTable
+<LegacyTokenTable
   tokenKey="shadows"
   example={({ value }) => (
     <div

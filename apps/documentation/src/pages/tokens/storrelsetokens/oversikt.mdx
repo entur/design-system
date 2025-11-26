@@ -1,0 +1,26 @@
+---
+title: Oversikt
+description: Oversikt over Entur Linje sine størrelsetokens
+route: /tokens/storrelsetokens/oversikt
+parent: Tokens
+menu: Størrelsetokens
+order: 2
+---
+
+import { TokenTable } from '@components/TokensTable/TokenTable';
+import { SEO } from '@components/seo/SEO';
+
+export const Head = ( props ) => {
+  if (!props?.pageContext?.frontmatter) return null;
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+<PageHeader/>
+
+## Primitive
+«Primitive» er grunnleggende størrelsesverdier som brukes til å bygge spacing, dimensjoner og andre størrelsesrelaterte tokens på semantisk og komponentnivå. 
+Disse verdiene danner fundamentet for konsistent størrelseshåndtering i designsystemet.
+
+<TokenTable
+  tokenKey="primitiveSize"
+/>

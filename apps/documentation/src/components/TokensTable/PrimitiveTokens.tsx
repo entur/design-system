@@ -17,6 +17,7 @@ const PrimitiveTokenList: React.FC<TokensTableProps> = ({
   const dontShowCategory = ['white'];
 
   const formatAndSortTokens = Object.entries(tokens)
+    .filter(([key]) => !key.startsWith('size')) // Filter out size tokens
     .map(([key, value]) => {
       const formattedVariable = formatVariablePrimitive(key);
       return [formattedVariable, value, key] as [string, string, string];

@@ -16,6 +16,23 @@ exports.onCreateWebpackConfig = ({ actions, getConfig }) => {
     '~': path.resolve(__dirname, '../src/'),
   };
 
+  // Our MDX-plugin makes it hard to maintain CSS order,
+  // we therefore turn on ignoreOrder for mini-css-extract-plugin.
+  if (Array.isArray(editedConfig.plugins)) {
+    editedConfig.plugins.forEach(plugin => {
+      if (
+        plugin &&
+        plugin.constructor &&
+        plugin.constructor.name === 'MiniCssExtractPlugin'
+      ) {
+        plugin.options = {
+          ...plugin.options,
+          ignoreOrder: true,
+        };
+      }
+    });
+  }
+
   actions.replaceWebpackConfig({ ...oldConfig, ...editedConfig });
 };
 
