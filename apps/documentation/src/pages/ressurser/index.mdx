@@ -47,7 +47,20 @@ Metodene er hentet og tilpasset på fra ulike kilder innen digital produktutvikl
     to="/ressurser/workshopmaler/aktorkart"
   >
   <ImageDisplay
-    imgSource={props.data.imagefiles.images.find(image => image.name === "aktorkartIndex").childImageSharp.gatsbyImageData}
+    imgSource={props.data.imagefiles.images.find(image => image.name === "aktorkartIndex")?.childImageSharp?.gatsbyImageData}
+    alt=""
+    preset="full-width-image"
+  />
+  </ComponentPreview>
+
+  <ComponentPreview
+    title="Brukerhistoriekart"
+    category="Maler"
+    description="En metode for å planlegge leveranser og prioritere funksjoner basert på brukerverdi."
+    to="/ressurser/workshopmaler/brukerhistoriekart"
+  >
+  <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "brukerreiseIndex")?.childImageSharp?.gatsbyImageData}
     alt=""
     preset="full-width-image"
   />
@@ -60,7 +73,7 @@ Metodene er hentet og tilpasset på fra ulike kilder innen digital produktutvikl
     to="/ressurser/workshopmaler/forretningsmodell"
   >
   <ImageDisplay
-    imgSource={props.data.imagefiles.images.find(image => image.name === "forretningsmodellIndex").childImageSharp.gatsbyImageData}
+    imgSource={props.data.imagefiles.images.find(image => image.name === "forretningsmodellIndex")?.childImageSharp?.gatsbyImageData}
     alt=""
     preset="full-width-image"
   />
@@ -70,10 +83,10 @@ Metodene er hentet og tilpasset på fra ulike kilder innen digital produktutvikl
     title="MoSCoW-analyse"
     category="Maler"
     description="En metode for å prioritere oppgaver og krav i et prosjekt"
-    to="/ressurser/workshopmaler/moscow"
+    to="/ressurser/workshopmaler/moscow-analyse"
   >
   <ImageDisplay
-    imgSource={props.data.imagefiles.images.find(image => image.name === "moscowIndex").childImageSharp.gatsbyImageData}
+    imgSource={props.data.imagefiles.images.find(image => image.name === "moscowIndex")?.childImageSharp?.gatsbyImageData}
     alt=""
     preset="full-width-image"
   />
@@ -86,7 +99,7 @@ Metodene er hentet og tilpasset på fra ulike kilder innen digital produktutvikl
     to="/ressurser/workshopmaler/verdiforslag"
   >
   <ImageDisplay
-    imgSource={props.data.imagefiles.images.find(image => image.name === "verdiforslagIndex").childImageSharp.gatsbyImageData}
+    imgSource={props.data.imagefiles.images.find(image => image.name === "verdiforslagIndex")?.childImageSharp?.gatsbyImageData}
     alt=""
     preset="full-width-image"
   />
@@ -99,7 +112,7 @@ Metodene er hentet og tilpasset på fra ulike kilder innen digital produktutvikl
     to="/ressurser/workshopmaler/intervjukort"
   >
   <ImageDisplay
-    imgSource={props.data.imagefiles.images.find(image => image.name === "intervjukortIndex").childImageSharp.gatsbyImageData}
+    imgSource={props.data.imagefiles.images.find(image => image.name === "intervjukortIndex")?.childImageSharp?.gatsbyImageData}
     alt=""
     preset="full-width-image"
   />
@@ -109,10 +122,10 @@ Metodene er hentet og tilpasset på fra ulike kilder innen digital produktutvikl
     title="OODA-loop"
     category="Maler"
     description="En modell for å ta raske og informerte beslutninger i komplekse situasjoner."
-    to="/ressurser/workshopmaler/oodaloop"
+    to="/ressurser/workshopmaler/ooda-loop"
   >
   <ImageDisplay
-    imgSource={props.data.imagefiles.images.find(image => image.name === "oodaloopIndex").childImageSharp.gatsbyImageData}
+    imgSource={props.data.imagefiles.images.find(image => image.name === "oodaloopIndex")?.childImageSharp?.gatsbyImageData}
     alt=""
     preset="full-width-image"
   />
@@ -125,7 +138,7 @@ Metodene er hentet og tilpasset på fra ulike kilder innen digital produktutvikl
     to="/ressurser/workshopmaler/hypotesekort"
   >
   <ImageDisplay
-    imgSource={props.data.imagefiles.images.find(image => image.name === "hypotesekortIndex").childImageSharp.gatsbyImageData}
+    imgSource={props.data.imagefiles.images.find(image => image.name === "hypotesekortIndex")?.childImageSharp?.gatsbyImageData}
     alt=""
     preset="full-width-image"
   />
@@ -138,7 +151,7 @@ Metodene er hentet og tilpasset på fra ulike kilder innen digital produktutvikl
     to="/ressurser/workshopmaler/tjenestekart"
   >
   <ImageDisplay
-    imgSource={props.data.imagefiles.images.find(image => image.name === "tjenestekartIndex").childImageSharp.gatsbyImageData}
+    imgSource={props.data.imagefiles.images.find(image => image.name === "tjenestekartIndex")?.childImageSharp?.gatsbyImageData}
     alt=""
     preset="full-width-image"
   />
@@ -151,7 +164,20 @@ Metodene er hentet og tilpasset på fra ulike kilder innen digital produktutvikl
     to="/ressurser/workshopmaler/brukerreisekart"
   >
   <ImageDisplay
-    imgSource={props.data.imagefiles.images.find(image => image.name === "brukerreisekartIndex").childImageSharp.gatsbyImageData}
+    imgSource={props.data.imagefiles.images.find(image => image.name === "brukerreisekartIndex")?.childImageSharp?.gatsbyImageData}
+    alt=""
+    preset="full-width-image"
+  />
+  </ComponentPreview>
+
+  <ComponentPreview
+    title="Pre-mortem"
+    category="Metode"
+    description="Et verktøy for å oppdage og håndtere risiko før man leverer et initiativ."
+    to="/ressurser/workshopmaler/pre-mortem"
+  >
+  <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "premortemIndex")?.childImageSharp?.gatsbyImageData}
     alt=""
     preset="full-width-image"
   />
@@ -166,10 +192,10 @@ Metodene er hentet og tilpasset på fra ulike kilder innen digital produktutvikl
     title="Team Canvas"
     category="Maler"
     description="En metode for å støtte et team i å snakke om samarbeid og sette et felles mål."
-    to="/ressurser/workshopmaler/teamcanvas"
+    to="/ressurser/workshopmaler/team-canvas"
   >
   <ImageDisplay
-    imgSource={props.data.imagefiles.images.find(image => image.name === "teamCanvasIndex").childImageSharp.gatsbyImageData}
+    imgSource={props.data.imagefiles.images.find(image => image.name === "teamCanvasIndex")?.childImageSharp?.gatsbyImageData}
     alt=""
     preset="full-width-image"
   />
@@ -182,7 +208,38 @@ Metodene er hentet og tilpasset på fra ulike kilder innen digital produktutvikl
     to="/ressurser/workshopmaler/retro"
   >
   <ImageDisplay
-    imgSource={props.data.imagefiles.images.find(image => image.name === "retroIndex").childImageSharp.gatsbyImageData}
+    imgSource={props.data.imagefiles.images.find(image => image.name === "retroIndex")?.childImageSharp?.gatsbyImageData}
+    alt=""
+    preset="full-width-image"
+  />
+  </ComponentPreview>
+
+</GridContainer>
+
+## Metoder
+
+<GridContainer spacing="large">
+  <ComponentPreview
+    title="Hvordan kan vi?"
+    category="Metode"
+    description="En metode for å omformulere problemer til inspirerende spørsmål og muligheter."
+    to="/ressurser/metoder/hvordan-kan-vi"
+  >
+  <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "hvordanKanViIndex")?.childImageSharp?.gatsbyImageData}
+    alt=""
+    preset="full-width-image"
+  />
+  </ComponentPreview>
+
+  <ComponentPreview
+    title="Relasjonssortering"
+    category="Metode"
+    description="En metode for å organisere ideer og informasjon i grupper."
+    to="/ressurser/metoder/relasjonssortering"
+  >
+  <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "relasjonssorteringIndex")?.childImageSharp?.gatsbyImageData}
     alt=""
     preset="full-width-image"
   />
