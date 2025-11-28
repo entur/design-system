@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0-beta.0](https://github.com/entur/design-system/compare/@entur/typography@2.0.4...@entur/typography@3.0.0-beta.0) (2025-11-28)
+
+### Bug Fixes
+
+- **typography/beta:** change to correct variables for label, subparagraph, title-1 ([ee223b4](https://github.com/entur/design-system/commit/ee223b4a69b1de6faca68aa93b34b7201351e16c))
+- **typography/beta:** change view-mode to data-view-mode to better comply with html standard ([3226dad](https://github.com/entur/design-system/commit/3226dad6b67cdf63691fe99968862d79ff6c69ae))
+
+### Features
+
+- **typography/beta:** change from dynamic css import to main entry styles file ([d768d27](https://github.com/entur/design-system/commit/d768d272822ab4dc83fa36914cfc7d4ff54861ba))
+- **typography/beta:** update typography variables ([3f160c7](https://github.com/entur/design-system/commit/3f160c7bd9b3fbd0c7f49810f44c4d95503870d3))
+
+### BREAKING CHANGES
+
+- **typography/beta:** You must now add "@import '@entur/typography/beta/styles'" in you styles entry to
+  get styling
+- **typography/beta:** Attribute name change breaks existing implementations
+
 ## [2.0.4](https://github.com/entur/design-system/compare/@entur/typography@2.0.3...@entur/typography@2.0.4) (2025-11-24)
 
 ### Bug Fixes
