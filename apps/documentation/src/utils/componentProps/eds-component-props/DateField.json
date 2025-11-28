@@ -493,7 +493,7 @@
       ],
       "required": false,
       "type": {
-        "name": "boolean | undefined"
+        "name": "boolean | \"alert\" | \"status\" | undefined"
       }
     },
     "after": {

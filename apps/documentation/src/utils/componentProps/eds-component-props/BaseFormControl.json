@@ -80,7 +80,7 @@
       ],
       "required": false,
       "type": {
-        "name": "any"
+        "name": "VariantType | \"error\" | \"info\" | undefined"
       }
     },
     "size": {
@@ -270,7 +270,7 @@
       ],
       "required": false,
       "type": {
-        "name": "boolean | undefined"
+        "name": "boolean | \"alert\" | \"status\" | undefined"
       }
     },
     "after": {
