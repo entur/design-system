@@ -1,8 +1,8 @@
 @use 'sass:meta';
-@use '@entur/utils/dist/layers';
+@use '@entur/utils/styles/layers';
 @use './fonts';
-@forward './componentColors';
-@forward './typographyTokens';
+@use './componentColors';
+@use './typographyTokens';
 
 @layer core.reset {
   @include meta.load-css('modern-normalize/modern-normalize.css');

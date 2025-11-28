@@ -19,7 +19,7 @@
       "default": "./dist/beta/esm/index.mjs"
     },
     "./styles": "./dist/styles.css",
-    "./beta/styles": "./dist/beta/typography.css",
+    "./beta/styles": "./dist/beta/styles/index.css",
     "./fonts/*": "./fonts/*",
     "./scripts/*": "./scripts/*",
     "./package.json": "./package.json",
