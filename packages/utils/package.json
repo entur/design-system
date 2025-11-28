@@ -5,6 +5,20 @@
   "main": "dist/utils.cjs.js",
   "module": "dist/utils.esm.js",
   "typings": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/utils.esm.js",
+      "require": "./dist/utils.cjs.js",
+      "default": "./dist/utils.esm.js"
+    },
+    "./styles/layers": "./dist/layers.scss",
+    "./package.json": "./package.json",
+    "./dist/*": "./dist/*"
+  },
+  "sideEffects": [
+    "./dist/**/*.css"
+  ],
   "files": [
     "dist"
   ],
