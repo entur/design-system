@@ -19,81 +19,47 @@
   /* number */
   --font-line-height-body-xs: var(--size-8);
   --font-line-height-body-s: var(--size-9);
-  --font-line-height-body-lg: var(--size-10);
   --font-line-height-body-m: var(--size-10);
-  --font-line-height-body-xl: var(--size-11);
-  --font-line-height-heading-s: var(--size-8);
+  --font-line-height-body-lg: var(--size-11);
+  --font-line-height-body-xl: var(--size-12);
   --font-line-height-heading-xs: var(--size-8);
-  --font-line-height-heading-m: var(--size-9);
-  --font-line-height-heading-lg: var(--size-10);
-  --font-line-height-heading-xl: var(--size-11);
-  --font-line-height-heading-2xl: var(--size-12);
+  --font-line-height-heading-s: var(--size-9);
+  --font-line-height-heading-m: var(--size-10);
+  --font-line-height-heading-lg: var(--size-11);
+  --font-line-height-heading-xl: var(--size-13);
+  --font-line-height-heading-2xl: var(--size-15);
+  --font-line-height-label-s: var(--size-8);
+  --font-line-height-label-m: var(--size-9);
+  --font-line-height-label-lg: var(--size-10);
   --font-paragraph-spacing-body-xs: var(--size-5);
   --font-paragraph-spacing-body-s: var(--size-6);
   --font-paragraph-spacing-body-m: var(--size-8);
-  --font-paragraph-spacing-body-lg: var(--size-9);
-  --font-paragraph-spacing-body-xl: var(--size-9);
-  --font-paragraph-spacing-heading-s: var(--size-5);
+  --font-paragraph-spacing-body-lg: var(--size-10);
+  --font-paragraph-spacing-body-xl: var(--size-10);
   --font-paragraph-spacing-heading-xs: var(--size-5);
-  --font-paragraph-spacing-heading-lg: var(--size-6);
   --font-paragraph-spacing-heading-m: var(--size-6);
-  --font-paragraph-spacing-heading-2xl: var(--size-8);
-  --font-paragraph-spacing-heading-xl: var(--size-8);
+  --font-paragraph-spacing-heading-s: var(--size-6);
+  --font-paragraph-spacing-heading-lg: var(--size-8);
+  --font-paragraph-spacing-heading-xl: var(--size-9);
+  --font-paragraph-spacing-heading-2xl: var(--size-10);
   --font-size-body-xs: var(--size-6);
   --font-size-body-s: var(--size-7);
-  --font-size-body-lg: var(--size-8);
   --font-size-body-m: var(--size-8);
-  --font-size-body-xl: var(--size-9);
-  --font-size-heading-xs: var(--size-6);
-  --font-size-heading-s: var(--size-7);
-  --font-size-heading-m: var(--size-8);
-  --font-size-heading-lg: var(--size-9);
-  --font-size-heading-xl: var(--size-10);
-  --font-size-heading-2xl: var(--size-11);
+  --font-size-body-lg: var(--size-9);
+  --font-size-body-xl: var(--size-10);
+  --font-size-heading-xs: var(--size-7);
+  --font-size-heading-s: var(--size-8);
+  --font-size-heading-m: var(--size-9);
+  --font-size-heading-lg: var(--size-10);
+  --font-size-heading-xl: var(--size-12);
+  --font-size-heading-2xl: var(--size-14);
+  --font-size-label-s: var(--size-7);
+  --font-size-label-m: var(--size-8);
+  --font-size-label-lg: var(--size-9);
   /* string */
   --font-family-nationale: nationale;
   --font-weight-body: 500;
   --font-weight-heading: 600;
-
-  @include breakpoints.for-desktop {
-    --font-line-height-body-xs: var(--size-8);
-    --font-line-height-body-s: var(--size-9);
-    --font-line-height-body-m: var(--size-10);
-    --font-line-height-body-lg: var(--size-11);
-    --font-line-height-body-xl: var(--size-12);
-    --font-line-height-heading-xs: var(--size-8);
-    --font-line-height-heading-s: var(--size-9);
-    --font-line-height-heading-m: var(--size-10);
-    --font-line-height-heading-lg: var(--size-11);
-    --font-line-height-heading-xl: var(--size-13);
-    --font-line-height-heading-2xl: var(--size-15);
-    --font-paragraph-spacing-body-xs: var(--size-5);
-    --font-paragraph-spacing-body-s: var(--size-6);
-    --font-paragraph-spacing-body-m: var(--size-8);
-    --font-paragraph-spacing-body-lg: var(--size-10);
-    --font-paragraph-spacing-body-xl: var(--size-10);
-    --font-paragraph-spacing-heading-xs: var(--size-5);
-    --font-paragraph-spacing-heading-m: var(--size-6);
-    --font-paragraph-spacing-heading-s: var(--size-6);
-    --font-paragraph-spacing-heading-lg: var(--size-8);
-    --font-paragraph-spacing-heading-xl: var(--size-9);
-    --font-paragraph-spacing-heading-2xl: var(--size-10);
-    --font-size-body-xs: var(--size-6);
-    --font-size-body-s: var(--size-7);
-    --font-size-body-m: var(--size-8);
-    --font-size-body-lg: var(--size-9);
-    --font-size-body-xl: var(--size-10);
-    --font-size-heading-xs: var(--size-7);
-    --font-size-heading-s: var(--size-8);
-    --font-size-heading-m: var(--size-9);
-    --font-size-heading-lg: var(--size-10);
-    --font-size-heading-xl: var(--size-12);
-    --font-size-heading-2xl: var(--size-14);
-    /* string */
-    --font-family-nationale: nationale;
-    --font-weight-body: 500;
-    --font-weight-heading: 600;
-  }
 }
 [data-view-mode='compact'] {
   /* number */
@@ -108,6 +74,9 @@
   --font-line-height-heading-lg: var(--size-10);
   --font-line-height-heading-xl: var(--size-11);
   --font-line-height-heading-2xl: var(--size-12);
+  --font-line-height-label-m: var(--size-8);
+  --font-line-height-label-s: var(--size-8);
+  --font-line-height-label-lg: var(--size-9);
   --font-paragraph-spacing-body-xs: var(--size-5);
   --font-paragraph-spacing-body-s: var(--size-6);
   --font-paragraph-spacing-body-m: var(--size-8);
@@ -130,6 +99,9 @@
   --font-size-heading-lg: var(--size-9);
   --font-size-heading-xl: var(--size-10);
   --font-size-heading-2xl: var(--size-11);
+  --font-size-label-s: var(--size-7);
+  --font-size-label-m: var(--size-8);
+  --font-size-label-lg: var(--size-9);
   /* string */
   --font-family-nationale: nationale;
   --font-weight-body: 500;
@@ -148,6 +120,9 @@
   --font-line-height-heading-lg: var(--size-18);
   --font-line-height-heading-xl: var(--size-20);
   --font-line-height-heading-2xl: var(--size-21);
+  --font-line-height-label-s: var(--size-11);
+  --font-line-height-label-m: var(--size-13);
+  --font-line-height-label-lg: var(--size-15);
   --font-paragraph-spacing-body-xs: var(--size-9);
   --font-paragraph-spacing-body-s: var(--size-10);
   --font-paragraph-spacing-body-m: var(--size-12);
@@ -170,6 +145,9 @@
   --font-size-heading-lg: var(--size-16);
   --font-size-heading-xl: var(--size-19);
   --font-size-heading-2xl: var(--size-20);
+  --font-size-label-s: var(--size-10);
+  --font-size-label-m: var(--size-12);
+  --font-size-label-lg: var(--size-14);
   /* string */
   --font-family-nationale: nationale;
   --font-weight-body: 500;
