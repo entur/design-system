@@ -1,10 +1,8 @@
 // Beta typography text styles - experimental features
 // These styles may have breaking changes in future releases
-@use '../index';
 
 @use '@entur/tokens/dist/styles' as t;
-@use '@entur/tokens/dist/base' as *;
-@use '@entur/utils/dist/breakpoints' as *;
+@use '@entur/utils/dist/breakpoints' as breakpoints;
 
 @layer components.primitives {
   .eds-text {
@@ -41,7 +39,7 @@
     &--paragraph:where(:has(+ .eds-heading)) {
       margin-bottom: calc(var(--font-line-height-body-m) + 1rem);
     }
-    &--sub-paragraph:where(:has(+ .eds-heading)) {
+    &--subparagraph:where(:has(+ .eds-heading)) {
       margin-bottom: calc(var(--font-line-height-body-s) + 1rem);
     }
     &--leading:where(:has(+ .eds-heading)) {
@@ -107,15 +105,15 @@
     }
 
     &--label {
-      font-size: var(--font-size-body-m);
-      line-height: var(--font-line-height-heading-xs);
+      font-size: var(--font-size-label-lg);
+      line-height: var(--font-line-height-label-lg);
       margin-bottom: var(--font-paragraph-spacing-body-xs);
       font-weight: 600;
     }
 
     &--sublabel {
-      font-size: var(--font-size-body-s);
-      line-height: var(--font-line-height-body-s);
+      font-size: var(--font-size-label-s);
+      line-height: var(--font-line-height-label-s);
       margin-bottom: var(--font-paragraph-spacing-body-xs);
       font-weight: 600;
     }
@@ -313,7 +311,7 @@
         }
       }
 
-      @include for-desktop {
+      @include breakpoints.for-desktop {
         font-size: t.$font-sizes-large;
         line-height: t.$line-heights-extra-large;
       }
