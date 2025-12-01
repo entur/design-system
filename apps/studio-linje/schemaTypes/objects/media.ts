@@ -151,6 +151,12 @@ export const media = defineType({
       description: 'Brukes for tilgjengelighet (skjermlesere)',
       hidden: ({ parent }) => parent?.mediaType !== 'video',
     }),
+    defineField({
+      name: 'caption',
+      title: 'Bildetekst',
+      type: 'string',
+      description: 'Tekst som vises under bildet eller videoen',
+    }),
   ],
   preview: {
     select: {
