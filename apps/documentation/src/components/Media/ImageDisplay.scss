@@ -1,32 +1,29 @@
-@use "sass:map";
+@use 'sass:map';
 @use '@entur/tokens/dist/semantic.scss' as *;
-@use '@entur/tokens/dist/styles.scss' as t;
+@use '@entur/tokens/dist/styles.scss' as eds;
 @use '../../styles/variables' as variables;
 
 .border-wrapper {
-  border: t.$border-widths-small solid var(--basecolors-stroke-subduedalt);
-  border-radius: t.$border-widths-large;
+  border: eds.$border-widths-small solid var(--basecolors-stroke-subduedalt);
+  border-radius: eds.$border-widths-large;
   display: grid;
-  gap: t.$space-default;
+  gap: eds.$space-default;
 }
 
 .image-display {
-  height: 100%;
   flex: 0;
   position: relative;
 
   img {
-    height: 100%;
     width: 100%;
     object-fit: contain;
-    border-radius: t.$border-radiuses-large;
+    border-radius: eds.$border-radiuses-large;
 
     -webkit-user-drag: none;
   }
   .gatsby-image-wrapper {
-    height: 100%;
     width: 100%;
-    border-radius: t.$border-radiuses-large;
+    border-radius: eds.$border-radiuses-large;
   }
 
   .image-display__download {
@@ -44,11 +41,11 @@
 
   &__download {
     position: absolute;
-    bottom: t.$space-small;
-    right: t.$space-small;
+    bottom: eds.$space-small;
+    right: eds.$space-small;
 
     display: flex;
-    gap: t.$space-default;
+    gap: eds.$space-default;
 
     [data-reach-menu-popover] {
       right: 0;
@@ -71,7 +68,7 @@
       padding-inline: 30%;
       padding-block: 18%;
       background: var(--basecolors-frame-tint);
-      border-radius: t.$border-radiuses-large;
+      border-radius: eds.$border-radiuses-large;
 
       &.eds-contrast,
       &[data-color-mode='contrast'] {
@@ -85,11 +82,11 @@
 
     &--full-width-image {
       height: fit-content;
-      border-radius: t.$border-radiuses-large;
+      border-radius: eds.$border-radiuses-large;
     }
 
     &--contain {
-      border-radius: t.$border-radiuses-large;
+      border-radius: eds.$border-radiuses-large;
 
       &-full-width {
         width: 100%;
@@ -99,7 +96,7 @@
       background: var(--basecolors-frame-tint);
       margin: 0 auto;
       padding: 4rem;
-      border-radius: t.$border-radiuses-large;
+      border-radius: eds.$border-radiuses-large;
       max-width: 100%;
       height: auto;
 

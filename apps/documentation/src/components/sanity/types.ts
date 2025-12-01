@@ -132,6 +132,7 @@ export type MediaType =
         | 'contain-logo-display'
         | 'centered-image'
         | 'contain-full-width';
+      caption?: string;
     } & Record<string, unknown>)
   | ({
       _type: 'media';
@@ -142,4 +143,5 @@ export type MediaType =
       poster?: { asset?: { url?: string } };
       title?: string;
       alt?: string;
+      caption?: string;
     } & Record<string, unknown>);
