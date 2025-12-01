@@ -34,7 +34,9 @@ const SemanticTokenList: React.FC<TokensTableProps> = ({ tokens }) => {
         variableFormat,
         formattedVariable,
         original,
+        'semantic',
       );
+
       const showValue =
         mainCategory === 'fill'
           ? sliceTokenKey(formattedVariable, 2)

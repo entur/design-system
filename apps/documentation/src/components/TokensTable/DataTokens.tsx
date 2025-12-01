@@ -36,6 +36,7 @@ const DataTokenList: React.FC<TokensTableProps> = ({ tokens }) => {
         variableFormat,
         sliceTokenKey(formattedVariable, 1),
         original,
+        'data',
       );
       const copyValue = formatVariableBySettingsType;
       const showValue = sliceTokenKey(formattedVariable, 2);

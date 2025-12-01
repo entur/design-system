@@ -42,6 +42,7 @@ const PrimitiveTokenList: React.FC<TokensTableProps> = ({
         variableFormat,
         formattedVariable,
         original,
+        'primitive',
       );
       categories[mainCategory].push(
         <ColorToken

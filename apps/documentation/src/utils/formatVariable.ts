@@ -73,6 +73,9 @@ export const formatVariableByType = (
 ) => {
   switch (variableFormat) {
     case 'scss':
+      if (includeNamespace) {
+        return `${includeNamespace}.$${formattedVariable}`;
+      }
       return `$${formattedVariable}`;
     case 'less':
       return `@${formattedVariable}`;

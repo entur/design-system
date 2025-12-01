@@ -9,11 +9,14 @@ import {
 
 import { TokensTableProps } from './types';
 import ColorToken from './ColorToken';
+import { useSettings } from '@providers/SettingsContext';
 
 const BaseTokenList: React.FC<TokensTableProps> = ({ tokens }) => {
+  const { variableFormat } = useSettings();
+
   const formatTokens = Object.entries(tokens).map(([key, value]) => {
     const formattedVariable = formatDotToVariable(key);
-    return [formattedVariable, value] as [string, string];
+    return [formattedVariable, value, key] as [string, string, string];
   });
 
   const categorizedTokens = formatTokens.reduce(
@@ -30,8 +33,10 @@ const BaseTokenList: React.FC<TokensTableProps> = ({ tokens }) => {
       }
 
       const formatVariableBySettingsType = formatVariableByType(
-        'css', // Base tokens are always CSS
-        sliceTokenKey(formattedVariable, 1),
+        variableFormat === 'js' ? 'js' : 'css',
+        formattedVariable,
+        original,
+        'base',
       );
 
       const copyValue = formatVariableBySettingsType;

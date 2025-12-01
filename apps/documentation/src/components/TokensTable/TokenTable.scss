@@ -149,24 +149,28 @@
     margin-bottom: tokens.$space-extra-large;
   }
 
-  &__format-menu {
-    cursor: pointer;
+  &__format {
+    width: fit-content;
 
-    .eds-code-text {
-      transition: color 0.15s ease;
-    }
+    &-menu {
+      cursor: pointer;
 
-    &:hover,
-    &:focus-visible {
       .eds-code-text {
-        background-color: var(--components-button-iconbutton-standard-hover);
+        transition: color 0.15s ease;
+      }
+
+      &:hover,
+      &:focus-visible {
+        .eds-code-text {
+          background-color: var(--components-button-iconbutton-standard-hover);
+        }
+      }
+
+      &-button {
+        display: inline-flex;
+        align-items: center;
       }
     }
-  }
-
-  &__format-menu-button {
-    display: inline-flex;
-    align-items: center;
   }
 }
 
