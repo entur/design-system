@@ -10,10 +10,10 @@
   font-size: t.$font-sizes-small;
   line-height: 1rem;
   min-width: 1.5rem;
-  height: var(--layout-badge-status-height-medium);
+  height: var(--components-layout-badge-status-height-medium);
   width: fit-content;
   padding: var(--size-2) 0.5rem;
-  border-radius: var(--layout-badge-status-radius-medium);
+  border-radius: var(--components-layout-badge-status-radius-medium);
   top: 0;
   right: 0;
   opacity: 1;
@@ -188,23 +188,23 @@
 
   &--type {
     &-status {
-      border-radius: var(--layout-badge-status-radius-medium);
-      padding: 0 var(--layout-badge-status-inline-padding-medium);
-      height: var(--layout-badge-status-height-medium);
-      border: var(--layout-badge-status-border-medium) solid transparent;
+      border-radius: var(--components-layout-badge-status-radius-medium);
+      padding: 0 var(--components-layout-badge-status-inline-padding-medium);
+      height: var(--components-layout-badge-status-height-medium);
+      border: var(--components-layout-badge-status-border-medium) solid transparent;
       border-color: transparent;
     }
 
     &-notification {
-      width: var(--layout-badge-notification-height-medium);
-      height: var(--layout-badge-notification-height-medium);
-      min-width: var(--layout-badge-notification-height-medium);
-      max-width: var(--layout-badge-notification-height-medium);
-      min-height: var(--layout-badge-notification-height-medium);
-      max-height: var(--layout-badge-notification-height-medium);
-      padding: var(--layout-badge-notification-inline-padding-padding);
-      border: var(--layout-badge-notification-border-medium) solid transparent;
-      border-radius: var(--layout-badge-notification-radius-round);
+      width: var(--components-layout-badge-notification-height-medium);
+      height: var(--components-layout-badge-notification-height-medium);
+      min-width: var(--components-layout-badge-notification-height-medium);
+      max-width: var(--components-layout-badge-notification-height-medium);
+      min-height: var(--components-layout-badge-notification-height-medium);
+      max-height: var(--components-layout-badge-notification-height-medium);
+      padding: var(--components-layout-badge-notification-inline-padding-padding);
+      border: var(--components-layout-badge-notification-border-medium) solid transparent;
+      border-radius: var(--components-layout-badge-notification-radius-round);
       border-color: transparent;
       .eds-contrast & {
         border-color: transparent;
@@ -214,7 +214,7 @@
       background: none;
       border: none;
       position: relative;
-      padding-left: calc(var(--layout-badge-bullet-bullet-medium) + var(--layout-badge-bullet-gap-medium));
+      padding-left: calc(var(--components-layout-badge-bullet-bullet-medium) + var(--components-layout-badge-bullet-gap-medium));
       color: var(--components-layout-badge-primary-standard-text-bullet);
 
       .eds-contrast & {
@@ -228,8 +228,8 @@
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
-        height: var(--layout-badge-bullet-bullet-medium);
-        width: var(--layout-badge-bullet-bullet-medium);
+        height: var(--components-layout-badge-bullet-bullet-medium);
+        width: var(--components-layout-badge-bullet-bullet-medium);
         border-radius: 50%;
       }
     }
@@ -239,102 +239,102 @@
   &--size {
     &-small {
       &.eds-badge--type-status {
-        height: var(--layout-badge-status-height-small);
-        padding: 0 var(--layout-badge-status-inline-padding-small);
-        border-radius: var(--layout-badge-status-radius-small);
-        border-width: var(--layout-badge-status-border-small);
+        height: var(--components-layout-badge-status-height-small);
+        padding: 0 var(--components-layout-badge-status-inline-padding-small);
+        border-radius: var(--components-layout-badge-status-radius-small);
+        border-width: var(--components-layout-badge-status-border-small);
       }
 
       &.eds-badge--type-notification {
-        width: var(--layout-badge-notification-height-small);
-        height: var(--layout-badge-notification-height-small);
-        min-width: var(--layout-badge-notification-height-small);
-        max-width: var(--layout-badge-notification-height-small);
-        min-height: var(--layout-badge-notification-height-small);
-        max-height: var(--layout-badge-notification-height-small);
-        border-width: var(--layout-badge-notification-border-small);
+        width: var(--components-layout-badge-notification-height-small);
+        height: var(--components-layout-badge-notification-height-small);
+        min-width: var(--components-layout-badge-notification-height-small);
+        max-width: var(--components-layout-badge-notification-height-small);
+        min-height: var(--components-layout-badge-notification-height-small);
+        max-height: var(--components-layout-badge-notification-height-small);
+        border-width: var(--components-layout-badge-notification-border-small);
       }
 
       &.eds-badge--type-bullet {
-        padding-left: calc(var(--layout-badge-bullet-bullet-small) + var(--layout-badge-bullet-gap-small));
+        padding-left: calc(var(--components-layout-badge-bullet-bullet-small) + var(--components-layout-badge-bullet-gap-small));
         &::before {
-          height: var(--layout-badge-bullet-bullet-small);
-          width: var(--layout-badge-bullet-bullet-small);
+          height: var(--components-layout-badge-bullet-bullet-small);
+          width: var(--components-layout-badge-bullet-bullet-small);
         }
       }
 
       &.eds-badge--leading-icon {
         .eds-icon {
-          width: var(--layout-badge-status-icon-small);
-          height: var(--layout-badge-status-icon-small);
+          width: var(--components-layout-badge-status-icon-small);
+          height: var(--components-layout-badge-status-icon-small);
         }
       }
     }
 
     &-medium {
       &.eds-badge--type-status {
-        height: var(--layout-badge-status-height-medium);
-        padding: 0 var(--layout-badge-status-inline-padding-medium);
-        border-radius: var(--layout-badge-status-radius-medium);
-        border-width: var(--layout-badge-status-border-medium);
+        height: var(--components-layout-badge-status-height-medium);
+        padding: 0 var(--components-layout-badge-status-inline-padding-medium);
+        border-radius: var(--components-layout-badge-status-radius-medium);
+        border-width: var(--components-layout-badge-status-border-medium);
       }
 
       &.eds-badge--type-notification {
-        width: var(--layout-badge-notification-height-medium);
-        height: var(--layout-badge-notification-height-medium);
-        min-width: var(--layout-badge-notification-height-medium);
-        max-width: var(--layout-badge-notification-height-medium);
-        min-height: var(--layout-badge-notification-height-medium);
-        max-height: var(--layout-badge-notification-height-medium);
-        border-width: var(--layout-badge-notification-border-medium);
+        width: var(--components-layout-badge-notification-height-medium);
+        height: var(--components-layout-badge-notification-height-medium);
+        min-width: var(--components-layout-badge-notification-height-medium);
+        max-width: var(--components-layout-badge-notification-height-medium);
+        min-height: var(--components-layout-badge-notification-height-medium);
+        max-height: var(--components-layout-badge-notification-height-medium);
+        border-width: var(--components-layout-badge-notification-border-medium);
       }
 
       &.eds-badge--type-bullet {
-        padding-left: calc(var(--layout-badge-bullet-bullet-medium) + var(--layout-badge-bullet-gap-medium));
+        padding-left: calc(var(--components-layout-badge-bullet-bullet-medium) + var(--components-layout-badge-bullet-gap-medium));
         &::before {
-          height: var(--layout-badge-bullet-bullet-medium);
-          width: var(--layout-badge-bullet-bullet-medium);
+          height: var(--components-layout-badge-bullet-bullet-medium);
+          width: var(--components-layout-badge-bullet-bullet-medium);
         }
       }
 
       &.eds-badge--leading-icon {
         .eds-icon {
-          width: var(--layout-badge-status-icon-medium);
-          height: var(--layout-badge-status-icon-medium);
+          width: var(--components-layout-badge-status-icon-medium);
+          height: var(--components-layout-badge-status-icon-medium);
         }
       }
     }
 
     &-large {
       &.eds-badge--type-status {
-        height: var(--layout-badge-status-height-large);
-        padding: 0 var(--layout-badge-status-inline-padding-large);
-        border-radius: var(--layout-badge-status-radius-large);
-        border-width: var(--layout-badge-status-border-large);
+        height: var(--components-layout-badge-status-height-large);
+        padding: 0 var(--components-layout-badge-status-inline-padding-large);
+        border-radius: var(--components-layout-badge-status-radius-large);
+        border-width: var(--components-layout-badge-status-border-large);
       }
 
       &.eds-badge--type-notification {
-        width: var(--layout-badge-notification-height-large);
-        height: var(--layout-badge-notification-height-large);
-        min-width: var(--layout-badge-notification-height-large);
-        max-width: var(--layout-badge-notification-height-large);
-        min-height: var(--layout-badge-notification-height-large);
-        max-height: var(--layout-badge-notification-height-large);
-        border-width: var(--layout-badge-notification-border-large);
+        width: var(--components-layout-badge-notification-height-large);
+        height: var(--components-layout-badge-notification-height-large);
+        min-width: var(--components-layout-badge-notification-height-large);
+        max-width: var(--components-layout-badge-notification-height-large);
+        min-height: var(--components-layout-badge-notification-height-large);
+        max-height: var(--components-layout-badge-notification-height-large);
+        border-width: var(--components-layout-badge-notification-border-large);
       }
 
       &.eds-badge--type-bullet {
-        padding-left: calc(var(--layout-badge-bullet-bullet-large) + var(--layout-badge-bullet-gap-large));
+        padding-left: calc(var(--components-layout-badge-bullet-bullet-large) + var(--components-layout-badge-bullet-gap-large));
         &::before {
-          height: var(--layout-badge-bullet-bullet-large);
-          width: var(--layout-badge-bullet-bullet-large);
+          height: var(--components-layout-badge-bullet-bullet-large);
+          width: var(--components-layout-badge-bullet-bullet-large);
         }
       }
 
       &.eds-badge--leading-icon {
         .eds-icon {
-          width: var(--layout-badge-status-icon-large);
-          height: var(--layout-badge-status-icon-large);
+          width: var(--components-layout-badge-status-icon-large);
+          height: var(--components-layout-badge-status-icon-large);
         }
       }
     }

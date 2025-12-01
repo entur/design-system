@@ -1,41 +1,5 @@
 @use '@entur/utils/dist/breakpoints.scss' as *;
 
-:root {
-  /* number */
-  --size-0: 0rem;
-  --size-1: 0.0625rem;
-  --size-2: 0.125rem;
-  --size-3: 0.25rem;
-  --size-4: 0.375rem;
-  --size-5: 0.5rem;
-  --size-6: 0.75rem;
-  --size-7: 0.875rem;
-  --size-8: 1rem;
-  --size-9: 1.25rem;
-  --size-10: 1.5rem;
-  --size-11: 1.75rem;
-  --size-12: 2rem;
-  --size-13: 2.25rem;
-  --size-14: 2.5rem;
-  --size-15: 2.75rem;
-  --size-16: 3rem;
-  --size-17: 3.25rem;
-  --size-18: 3.5rem;
-  --size-19: 4rem;
-  --size-20: 4.5rem;
-  --size-21: 5rem;
-  --size-22: 5.5rem;
-  --size-23: 6rem;
-  --size-24: 6.5rem;
-  --size-25: 7rem;
-  --size-26: 7.5rem;
-  --size-27: 8rem;
-  --size-28: 8.5rem;
-  --size-29: 9rem;
-  --size-30: 9.5rem;
-  --size-31: 10rem;
-}
-
 /* Default values (standard mode) */
 :root {
   --layout-badge-bullet-bullet-small: var(--size-5);

@@ -3,8 +3,8 @@
 .eds-tag {
   // Use same styling as Badge neutral
   background-color: var(--components-layout-badge-neutral-standard-fill);
-  border-radius: var(--layout-badge-status-radius-medium);
-  border: var(--layout-badge-status-border-small) solid var(--components-layout-badge-neutral-standard-border);
+  border-radius: var(--components-layout-badge-status-radius-medium);
+  border: var(--components-layout-badge-status-border-small) solid var(--components-layout-badge-neutral-standard-border);
   color: var(--components-layout-badge-neutral-standard-text);
   display: inline-block;
   min-width: t.$space-extra-large;
@@ -21,7 +21,7 @@
   .eds-contrast & {
     background-color: var(--components-layout-badge-neutral-contrast-fill);
     color: var(--components-layout-badge-neutral-contrast-text);
-    border: var(--layout-badge-status-border-small) solid var(--components-layout-badge-neutral-contrast-border);
+    border: var(--components-layout-badge-status-border-small) solid var(--components-layout-badge-neutral-contrast-border);
     .eds-icon {
       color: var(--components-layout-badge-neutral-contrast-text);
     }
