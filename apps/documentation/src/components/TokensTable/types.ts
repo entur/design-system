@@ -19,6 +19,6 @@ export type TokensTableProps = {
 };
 
 export type AllTokensTableProps = {
-  tokenKey: keyof typeof allTokens;
+  tokenKey: keyof typeof allTokens | 'primitiveSize';
   example?: React.ComponentType<{ value: string; className?: string }>;
 };

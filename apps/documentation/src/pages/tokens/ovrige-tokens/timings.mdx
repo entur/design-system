@@ -8,7 +8,7 @@ order: 7
 ---
 
 import { colors, borderWidths, space } from '@entur/tokens';
-import { TokenTable } from '@components/TokensTable/TokenTable';
+import { LegacyTokenTable } from '@components/TokensTable/LegacyTokenTable';
 import { SEO } from '@components/seo/SEO';
 
 export const Head = ( props ) => {
@@ -28,7 +28,7 @@ export const Head = ( props ) => {
 }
 ```
 
-<TokenTable
+<LegacyTokenTable
   tokenKey="timings"
   example={({ value }) => {
     let [currBg, setCurrBg] = React.useState(colors.brand.white);

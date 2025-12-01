@@ -1,7 +1,6 @@
-@use "sass:map";
-@use "@entur/tokens/dist/styles.scss" as t;
-@use "@entur/form/src/componentColors.scss";
-@use "@entur/tokens/dist/base.scss";
+@use 'sass:map';
+@use '@entur/tokens/dist/styles.scss' as t;
+@use '@entur/tokens/dist/base.scss';
 
 @use '../../styles/variables' as variables;
 

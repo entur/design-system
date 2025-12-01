@@ -32,6 +32,7 @@ const categorizedTokens = (
       variableFormat,
       formattedVariable,
       original,
+      'transport',
     );
     const showValue = sliceTokenKey(formattedVariable, 1);
     const iconCategory = 'transport';

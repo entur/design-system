@@ -18,8 +18,7 @@ const SemanticTokenList: React.FC<TokensTableProps> = ({ tokens }) => {
   });
 
   const categorizedTokens = formatTokens.reduce(
-    (categories, [key, token, original]) => {
-      const formattedVariable = formatDotToVariable(key);
+    (categories, [formattedVariable, token, original]) => {
       const parts = formattedVariable.split('-');
       const mainCategory = parts[0];
       const subCategory = parts[1];
@@ -35,7 +34,9 @@ const SemanticTokenList: React.FC<TokensTableProps> = ({ tokens }) => {
         variableFormat,
         formattedVariable,
         original,
+        'semantic',
       );
+
       const showValue =
         mainCategory === 'fill'
           ? sliceTokenKey(formattedVariable, 2)

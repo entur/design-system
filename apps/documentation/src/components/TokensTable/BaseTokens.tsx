@@ -9,46 +9,53 @@ import {
 
 import { TokensTableProps } from './types';
 import ColorToken from './ColorToken';
+import { useSettings } from '@providers/SettingsContext';
 
 const BaseTokenList: React.FC<TokensTableProps> = ({ tokens }) => {
+  const { variableFormat } = useSettings();
+
   const formatTokens = Object.entries(tokens).map(([key, value]) => {
     const formattedVariable = formatDotToVariable(key);
-    return [formattedVariable, value] as [string, string];
+    return [formattedVariable, value, key] as [string, string, string];
   });
 
-  const categorizedTokens = formatTokens.reduce((categories, [key, value]) => {
-    const formattedVariable = formatDotToVariable(key);
-    const parts = formattedVariable.split('-');
-    const mainCategory = parts[0];
-    const subCategory = parts[2];
+  const categorizedTokens = formatTokens.reduce(
+    (categories, [formattedVariable, value, original]) => {
+      const parts = formattedVariable.split('-');
+      const mainCategory = parts[0];
+      const subCategory = parts[2];
 
-    if (!categories[mainCategory]) {
-      categories[mainCategory] = {};
-    }
-    if (!categories[mainCategory][subCategory]) {
-      categories[mainCategory][subCategory] = [];
-    }
+      if (!categories[mainCategory]) {
+        categories[mainCategory] = {};
+      }
+      if (!categories[mainCategory][subCategory]) {
+        categories[mainCategory][subCategory] = [];
+      }
 
-    const formatVariableBySettingsType = formatVariableByType(
-      'css', // Base tokens are always CSS
-      sliceTokenKey(formattedVariable, 1),
-    );
+      const formatVariableBySettingsType = formatVariableByType(
+        variableFormat === 'js' ? 'js' : 'css',
+        formattedVariable,
+        original,
+        'base',
+      );
 
-    const copyValue = formatVariableBySettingsType;
-    const showValue = sliceTokenKey(formattedVariable, 3);
+      const copyValue = formatVariableBySettingsType;
+      const showValue = sliceTokenKey(formattedVariable, 3);
 
-    categories[mainCategory][subCategory].push(
-      <ColorToken
-        key={formattedVariable}
-        iconCategory={subCategory}
-        showValue={showValue}
-        hexValue={value}
-        copyValue={copyValue}
-      />,
-    );
+      categories[mainCategory][subCategory].push(
+        <ColorToken
+          key={formattedVariable}
+          iconCategory={subCategory}
+          showValue={showValue}
+          hexValue={value}
+          copyValue={copyValue}
+        />,
+      );
 
-    return categories;
-  }, {} as Record<string, any>);
+      return categories;
+    },
+    {} as Record<string, Record<string, React.ReactElement[]>>,
+  );
 
   return (
     <>

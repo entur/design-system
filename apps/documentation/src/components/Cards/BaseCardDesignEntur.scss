@@ -2,22 +2,24 @@
 @use '@entur/utils/dist/breakpoints.scss' as *;
 
 .designentur-base-card {
-  appearance: none;
-  text-decoration: none;
-  margin-bottom: eds.$space-extra-large3;
+  :where(&) {
+    appearance: none;
+    text-decoration: none;
+    margin-bottom: eds.$space-extra-large3;
+  }
 
-  &:has(&__arrow) {
+  &:has(:where(&__arrow)) {
     margin-bottom: 0;
   }
 
-  &__arrow {
+  :where(&__arrow) {
     text-align: center;
     color: var(--basecolors-stroke-subdued);
     height: 2rem;
     margin-top: eds.$space-extra-small;
   }
 
-  &__content {
+  :where(&__content) {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
@@ -33,7 +35,7 @@
     }
   }
 
-  &__subtext {
+  :where(&__subtext) {
     margin-top: auto;
   }
 
@@ -41,7 +43,7 @@
     margin: 0;
   }
 
-  &__children {
+  :where(&__children) {
     width: 100%;
   }
 
@@ -49,7 +51,7 @@
     width: 100%;
     height: auto;
 
-    &--medium {
+    :where(&--medium) {
       width: 100%;
       height: auto;
 
@@ -59,7 +61,7 @@
         margin: 0 auto;
       }
     }
-    &--small {
+    :where(&--small) {
       width: 100%;
       height: auto;
       @include for-large-desktop {
@@ -72,7 +74,7 @@
 }
 
 // If the cards is in a grid, this css makes the card equal height
-.eds-grid__container .designentur-base-card {
+:where(.eds-grid__container .designentur-base-card) {
   appearance: none;
   text-decoration: none;
   height: 100%;
@@ -81,7 +83,7 @@
   margin-bottom: 0;
 }
 
-.eds-grid__container .designentur-base-card__content {
+:where(.eds-grid__container .designentur-base-card__content) {
   flex-grow: 1;
   display: flex;
   flex-direction: column;

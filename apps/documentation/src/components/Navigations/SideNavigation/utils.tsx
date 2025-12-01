@@ -98,7 +98,8 @@ export const ressurserMenuSortOrder = {
 export const tokensMenuSortOrder = {
   Introduksjon: 1,
   Fargetokens: 2,
-  'Øvrige tokens': 3,
+  Størrelsetokens: 3,
+  'Øvrige tokens': 4,
 } as any;
 
 export const sortSubCategoriesForCategory = (

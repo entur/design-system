@@ -7,8 +7,11 @@ menu: Fargetokens
 order: 2
 ---
 
-import { TokensTableColor } from '@components/TokensTable/TokensTableColor';
+import { TokenTable } from '@components/TokensTable/TokenTable';
+import { TokenFormatInfo } from '@components/TokensTable/TokenFormatInfo';
+import { TokenImportInstructions } from '@components/TokensTable/TokenImportInstructions';
 import { SEO } from '@components/seo/SEO';
+import { Heading3 } from '@entur/typography';
 
 export const Head = ( props ) => {
   return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
@@ -16,41 +19,62 @@ export const Head = ( props ) => {
 
 <PageHeader/>
 
-## Primitive
-«Primitive tokens» representerer fargepaletten til Entur. Disse brukes til å bygge de andre tokensettene.
-<TokensTableColor
-  tokenKey="primitive"
-/>
 
+## Base
+«Base tokens» er basert på [«semantic tokens»](#semantic) men har støtte for fargemoduser. Det er disse tokens-ene vi anbefaler at du bruker. 
+Les mer om [hvordan ta i bruk base-tokens](/tokens/fargetokens/generelt-om-fargetokens#hvilken-tokens-skal-jeg-bruke).
+<TokenFormatInfo tokenKey="base" />
+
+<Heading3 style={{ marginTop: '2rem' }}>Hvordan importere</Heading3>
+<TokenImportInstructions tokenKey="base" />
+
+<TokenTable
+  tokenKey="base"
+/>
 
 
 ## Semantic
-«Semantic tokens» er laget for å definere hva den brukes til. De er farger som skal brukes til bakgrunn, tekst, stroke og shape til grafiske elementer (for eksempel ikon, illustrasjoner). «Base colors» er bygget på disse, forskjellen på semantiske og base-tokens er at base-tokens tilbyr dark-mode.
+«Semantic tokens» har navn som beskriver hva de brukes til. De er farger som skal brukes til bakgrunn, tekst, stroke og shape til grafiske elementer (for eksempel ikon, illustrasjoner). [«Base colors»](#base) er bygget på disse, forskjellen på semantiske og base-tokens er at base-tokens støtter fargemoduser.
 
-<TokensTableColor
+<TokenFormatInfo tokenKey="semantic" />
+
+<Heading3 style={{ marginTop: '2rem' }}>Hvordan importere</Heading3>
+<TokenImportInstructions tokenKey="semantic" />
+
+<TokenTable
   tokenKey="semantic"
-/>
-
-## Base
-«Base tokens» er basert på «Semantic tokens» men har støtte for dark-mode. Det er disse vi ønsker du tar i bruk. 
-Les mer om [hvordan ta i bruk base-tokens](/tokens/fargetokens/generelt-om-fargetokens#hvilken-tokens-skal-jeg-bruke).
-<TokensTableColor
-  tokenKey="base"
 />
 
 ## Datavisualisering
 Data-tokens er Entur sin egen palett for farger som skal benyttes til visualisering av data. Les mer om [datavisualisering](/identitet/verktoykassen/datavisualisering).
 
-<TokensTableColor
+<TokenFormatInfo tokenKey="data" />
+<TokenTable
   tokenKey="data"
 />
 
 ## Transport
 Transport-tokens er Entur sine farger på transportmidler. Transparent-variantene brukes i dag for å vise disabled state, disse har svak kontrast og må brukes med omhu.
 
-<TokensTableColor
+<TokenFormatInfo tokenKey="transport" />
+<TokenTable
   tokenKey="transport"
 />
 
 
+## Primitive
+«Primitive tokens» representerer alle tilgjengelige farger i fargepaletten til Entur. Disse brukes som byggeklosser for mer sofistikerte token-sett.
 
+<SmallAlertBox variant="warning">
+  Disse skal helst ikke brukes direkte! Se heller på [«base tokens»](#base) eller [«semantic tokens»](#semantic) og 
+  snakk med designsystem-teamet hvis disse ikke møter dine behov.
+</SmallAlertBox>
+
+<TokenFormatInfo tokenKey="primitive" />  
+
+<Heading3 style={{ marginTop: '2rem' }}>Hvordan importere</Heading3>
+<TokenImportInstructions tokenKey="primitive" />
+
+<TokenTable
+  tokenKey="primitive"
+/>

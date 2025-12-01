@@ -6,7 +6,7 @@
 @use '@entur/utils/dist/breakpoints.scss' as *;
 @forward '../typography-tokens.scss';
 @use '../typography-tokens.scss' as *;
-@use '../componentColors.scss' as *;
+@use '../../componentVariables.scss' as *;
 
 @import 'modern-normalize/modern-normalize.css';
 
