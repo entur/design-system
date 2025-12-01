@@ -189,7 +189,7 @@
   &--type {
     &-status {
       border-radius: var(--components-layout-badge-status-radius-medium);
-      padding: 0 var(--components-layout-badge-status-inline-padding-medium);
+      padding: 0 var(--components-layout-badge-status-inlinepadding-medium);
       height: var(--components-layout-badge-status-height-medium);
       border: var(--components-layout-badge-status-border-medium) solid transparent;
       border-color: transparent;
@@ -202,7 +202,7 @@
       max-width: var(--components-layout-badge-notification-height-medium);
       min-height: var(--components-layout-badge-notification-height-medium);
       max-height: var(--components-layout-badge-notification-height-medium);
-      padding: var(--components-layout-badge-notification-inline-padding-padding);
+      padding: var(--components-layout-badge-notification-inlinepadding-padding);
       border: var(--components-layout-badge-notification-border-medium) solid transparent;
       border-radius: var(--components-layout-badge-notification-radius-round);
       border-color: transparent;
@@ -240,7 +240,7 @@
     &-small {
       &.eds-badge--type-status {
         height: var(--components-layout-badge-status-height-small);
-        padding: 0 var(--components-layout-badge-status-inline-padding-small);
+        padding: 0 var(--components-layout-badge-status-inlinepadding-small);
         border-radius: var(--components-layout-badge-status-radius-small);
         border-width: var(--components-layout-badge-status-border-small);
       }
@@ -274,7 +274,7 @@
     &-medium {
       &.eds-badge--type-status {
         height: var(--components-layout-badge-status-height-medium);
-        padding: 0 var(--components-layout-badge-status-inline-padding-medium);
+        padding: 0 var(--components-layout-badge-status-inlinepadding-medium);
         border-radius: var(--components-layout-badge-status-radius-medium);
         border-width: var(--components-layout-badge-status-border-medium);
       }
@@ -308,7 +308,7 @@
     &-large {
       &.eds-badge--type-status {
         height: var(--components-layout-badge-status-height-large);
-        padding: 0 var(--components-layout-badge-status-inline-padding-large);
+        padding: 0 var(--components-layout-badge-status-inlinepadding-large);
         border-radius: var(--components-layout-badge-status-radius-large);
         border-width: var(--components-layout-badge-status-border-large);
       }
