@@ -19,8 +19,6 @@
       border-radius: t.$border-radiuses-large;
 
       &__label {
-        position: absolute;
-
         // Add extra space above image to compansate for absolute positioned label
         & + .illustration-list__display-grid__image-box__image.image-display {
           .gatsby-image-wrapper {
@@ -36,22 +34,28 @@
       grid-template-columns: 1fr 1fr 1fr;
 
       .illustration-list__display-grid__image-box {
-        aspect-ratio: 1 / 1;
         padding: 5%;
 
+        .image-display {
+          aspect-ratio: 1;
+        }
+
         .image-display__download {
-          bottom: t.$space-none;
-          right: t.$space-none;
+          bottom: t.$space-extra-small;
+          right: t.$space-extra-small;
         }
       }
     }
 
     // override inline styling auto applied from gatsby-image
     .image-display {
+      position: unset;
+
       .gatsby-image-wrapper {
         width: 100%;
         height: 100%;
         img {
+          height: 100%;
           object-fit: contain !important;
         }
       }

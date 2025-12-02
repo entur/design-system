@@ -43,7 +43,7 @@ export const MediaResolver = ({ value }: Props) => {
     return (
       <>
         <ImageDisplay
-          className={classNames({
+          className={classNames('media', {
             'media--has-caption': caption !== undefined,
           })}
           imgSource={imageData}

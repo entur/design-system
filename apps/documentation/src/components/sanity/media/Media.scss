@@ -1,5 +1,5 @@
 @use '@entur/tokens/dist/styles.scss' as eds;
 
-.image-display:not(.media--has-caption) {
+.media:not(.media--has-caption) {
   margin-bottom: eds.$space-default;
 }

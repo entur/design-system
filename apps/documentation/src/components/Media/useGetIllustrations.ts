@@ -16,7 +16,7 @@ export const useGetIllustrations = () => {
           publicURL
           extension
           childImageSharp {
-            gatsbyImageData(layout: CONSTRAINED)
+            gatsbyImageData
           }
         }
       }
