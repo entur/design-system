@@ -1,193 +1,39 @@
 @use '@entur/tokens/dist/styles.scss' as t;
-@use './badge-tokens.scss' as *;
 
 .eds-badge {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: inherit;
-  font-weight: t.$font-weights-body;
-  font-size: t.$font-sizes-small;
-  line-height: 1rem;
-  min-width: 1.5rem;
-  height: var(--components-layout-badge-status-height-medium);
-  width: fit-content;
-  padding: var(--size-2) 0.5rem;
-  border-radius: var(--components-layout-badge-status-radius-medium);
-  top: 0;
-  right: 0;
-  opacity: 1;
-  visibility: visible;
-  transition: opacity t.$timings-medium ease-in-out, visibility 0s linear;
+  :where(&) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: inherit;
+    font-weight: t.$font-weights-body;
+    font-size: t.$font-sizes-small;
+    line-height: 1rem;
+    min-width: 1.5rem;
+    height: var(--components-layout-badge-status-height-medium);
+    width: fit-content;
+    padding: var(--size-2) 0.5rem;
+    border-radius: var(--components-layout-badge-status-radius-medium);
+    top: 0;
+    right: 0;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity t.$timings-medium ease-in-out, visibility 0s linear;
 
-  &--hide {
+    .eds-icon {
+      position: relative;
+      color: inherit;
+    }
+  }
+
+  :where(&--hide) {
     opacity: 0;
     visibility: hidden;
     transition: opacity t.$timings-medium ease-in-out, visibility 0s linear 0.3s;
   }
 
-  .eds-icon {
-    position: relative;
-  }
-
-  &--variant-primary {
-    background-color: var(--components-layout-badge-primary-standard-fill);
-    color: var(--components-layout-badge-primary-standard-text);
-
-    .eds-icon {
-      color: inherit;
-    }
-
-    .eds-contrast & {
-      background-color: var(--components-layout-badge-primary-contrast-fill);
-      color: var(--components-layout-badge-primary-contrast-text);
-    }
-
-    &.eds-badge--type-bullet::before {
-      background-color: var(--components-layout-badge-primary-standard-bullet);
-      .eds-contrast & {
-        background-color: var(--components-layout-badge-primary-contrast-bullet);
-      }
-    }
-  }
-  &--variant-success {
-    background-color: var(--components-layout-badge-success-standard-fill);
-    color: var(--components-layout-badge-success-standard-text);
-
-    .eds-icon {
-      color: inherit;
-    }
-
-    .eds-contrast & {
-      background-color: var(--components-layout-badge-success-contrast-fill);
-      color: var(--components-layout-badge-success-contrast-text);
-    }
-
-    &.eds-badge--type-status,
-    &.eds-badge--type-notification {
-      border-color: var(--components-layout-badge-success-standard-border);
-      .eds-contrast & {
-        border-color: var(--components-layout-badge-success-contrast-border);
-      }
-    }
-    &.eds-badge--type-bullet::before {
-      background-color: var(--components-layout-badge-success-standard-bullet);
-      .eds-contrast & {
-        background-color: var(--components-layout-badge-success-contrast-bullet);
-      }
-    }
-  }
-  &--variant-warning {
-    background-color: var(--components-layout-badge-warning-standard-fill);
-    color: var(--components-layout-badge-warning-standard-text);
-
-    .eds-icon {
-      color: inherit;
-    }
-
-    .eds-contrast & {
-      background-color: var(--components-layout-badge-warning-contrast-fill);
-      color: var(--components-layout-badge-warning-contrast-text);
-    }
-    &.eds-badge--type-status,
-    &.eds-badge--type-notification {
-      border-color: var(--components-layout-badge-warning-standard-border);
-      .eds-contrast & {
-        border-color: var(--components-layout-badge-warning-contrast-border);
-      }
-    }
-    &.eds-badge--type-bullet::before {
-      background-color: var(--components-layout-badge-warning-standard-bullet);
-      .eds-contrast & {
-        background-color: var(--components-layout-badge-warning-contrast-bullet);
-      }
-    }
-  }
-  &--variant-danger,
-  &--variant-negative {
-    background-color: var(--components-layout-badge-negative-standard-fill);
-    color: var(--components-layout-badge-negative-standard-text);
-
-    .eds-icon {
-      color: inherit;
-    }
-
-    .eds-contrast & {
-      background-color: var(--components-layout-badge-negative-contrast-fill);
-      color: var(--components-layout-badge-negative-contrast-text);
-    }
-    &.eds-badge--type-status,
-    &.eds-badge--type-notification {
-      border-color: var(--components-layout-badge-negative-standard-border);
-      .eds-contrast & {
-        border-color: var(--components-layout-badge-negative-contrast-border);
-      }
-    }
-    &.eds-badge--type-bullet::before {
-      background-color: var(--components-layout-badge-negative-standard-bullet);
-      .eds-contrast & {
-        background-color: var(--components-layout-badge-negative-contrast-bullet);
-      }
-    }
-  }
-  &--variant-info,
-  &--variant-information {
-    background-color: var(--components-layout-badge-information-standard-fill);
-    color: var(--components-layout-badge-information-standard-text);
-
-    .eds-icon {
-      color: inherit;
-    }
-
-    .eds-contrast & {
-      background-color: var(--components-layout-badge-information-contrast-fill);
-      color: var(--components-layout-badge-information-contrast-text);
-    }
-
-    &.eds-badge--type-status,
-    &.eds-badge--type-notification {
-      border-color: var(--components-layout-badge-information-standard-border);
-      .eds-contrast & {
-        border-color: var(--components-layout-badge-information-contrast-border);
-      }
-    }
-    &.eds-badge--type-bullet::before {
-      background-color: var(--components-layout-badge-information-standard-bullet);
-      .eds-contrast & {
-        background-color: var(--components-layout-badge-information-contrast-bullet);
-      }
-    }
-  }
-  &--variant-neutral {
-    background-color: var(--components-layout-badge-neutral-standard-fill);
-    color: var(--components-layout-badge-neutral-standard-text);
-
-    .eds-icon {
-      color: inherit;
-    }
-
-    .eds-contrast & {
-      background-color: var(--components-layout-badge-neutral-contrast-fill);
-      color: var(--components-layout-badge-neutral-contrast-text);
-    }
-
-    &.eds-badge--type-status,
-    &.eds-badge--type-notification {
-      border-color: var(--components-layout-badge-neutral-standard-border);
-      .eds-contrast & {
-        border-color: var(--components-layout-badge-neutral-contrast-border);
-      }
-    }
-    &.eds-badge--type-bullet::before {
-      background-color: var(--components-layout-badge-neutral-standard-bullet);
-      .eds-contrast & {
-        background-color: var(--components-layout-badge-neutral-contrast-bullet);
-      }
-    }
-  }
-
   &--type {
-    &-status {
+    :where(&-status) {
       border-radius: var(--components-layout-badge-status-radius-medium);
       padding: 0 var(--components-layout-badge-status-inlinepadding-medium);
       height: var(--components-layout-badge-status-height-medium);
@@ -195,7 +41,7 @@
       border-color: transparent;
     }
 
-    &-notification {
+    :where(&-notification) {
       width: var(--components-layout-badge-notification-height-medium);
       height: var(--components-layout-badge-notification-height-medium);
       min-width: var(--components-layout-badge-notification-height-medium);
@@ -211,17 +57,19 @@
       }
     }
     &-bullet {
-      background: none;
-      border: none;
-      position: relative;
-      padding-left: calc(var(--components-layout-badge-bullet-bullet-medium) + var(--components-layout-badge-bullet-gap-medium));
-      color: var(--components-layout-badge-primary-standard-text-bullet);
+      :where(&) {
+        background: none;
+        border: none;
+        position: relative;
+        padding-left: calc(var(--components-layout-badge-bullet-bullet-medium) + var(--components-layout-badge-bullet-gap-medium));
+        color: var(--components-layout-badge-primary-standard-text-bullet);
+      }
 
-      .eds-contrast & {
+      .eds-contrast :where(&) {
         color: var(--components-layout-badge-primary-contrast-text-bullet);
         background: none;
       }
-      &::before {
+      :where(&::before) {
         background: var(--components-layout-badge-primary-standard-fill);
         left: 0;
         content: '';
@@ -235,17 +83,156 @@
     }
   }
 
+  &--variant-primary {
+    :where(&) {
+      background-color: var(--components-layout-badge-primary-standard-fill);
+      color: var(--components-layout-badge-primary-standard-text);
+    }
+
+    .eds-contrast :where(&) {
+      background-color: var(--components-layout-badge-primary-contrast-fill);
+      color: var(--components-layout-badge-primary-contrast-text);
+    }
+
+    :where(&.eds-badge--type-bullet::before) {
+      background-color: var(--components-layout-badge-primary-standard-bullet);
+      .eds-contrast & {
+        background-color: var(--components-layout-badge-primary-contrast-bullet);
+      }
+    }
+  }
+  &--variant-success {
+    :where(&) {
+      background-color: var(--components-layout-badge-success-standard-fill);
+      color: var(--components-layout-badge-success-standard-text);
+    }
+
+    .eds-contrast :where(&) {
+      background-color: var(--components-layout-badge-success-contrast-fill);
+      color: var(--components-layout-badge-success-contrast-text);
+    }
+
+    :where(&.eds-badge--type-status, &.eds-badge--type-notification) {
+      border-color: var(--components-layout-badge-success-standard-border);
+      .eds-contrast & {
+        border-color: var(--components-layout-badge-success-contrast-border);
+      }
+    }
+    :where(&.eds-badge--type-bullet::before) {
+      background-color: var(--components-layout-badge-success-standard-bullet);
+      .eds-contrast & {
+        background-color: var(--components-layout-badge-success-contrast-bullet);
+      }
+    }
+  }
+  &--variant-warning {
+    :where(&) {
+      background-color: var(--components-layout-badge-warning-standard-fill);
+      color: var(--components-layout-badge-warning-standard-text);
+    }
+
+    .eds-contrast :where(&) {
+      background-color: var(--components-layout-badge-warning-contrast-fill);
+      color: var(--components-layout-badge-warning-contrast-text);
+    }
+    :where(&.eds-badge--type-status, &.eds-badge--type-notification) {
+      border-color: var(--components-layout-badge-warning-standard-border);
+      .eds-contrast & {
+        border-color: var(--components-layout-badge-warning-contrast-border);
+      }
+    }
+    :where(&.eds-badge--type-bullet::before) {
+      background-color: var(--components-layout-badge-warning-standard-bullet);
+      .eds-contrast & {
+        background-color: var(--components-layout-badge-warning-contrast-bullet);
+      }
+    }
+  }
+  &--variant-danger,
+  &--variant-negative {
+    :where(&) {
+      background-color: var(--components-layout-badge-negative-standard-fill);
+      color: var(--components-layout-badge-negative-standard-text);
+    }
+
+    .eds-contrast :where(&) {
+      background-color: var(--components-layout-badge-negative-contrast-fill);
+      color: var(--components-layout-badge-negative-contrast-text);
+    }
+    :where(&.eds-badge--type-status, &.eds-badge--type-notification) {
+      border-color: var(--components-layout-badge-negative-standard-border);
+      .eds-contrast & {
+        border-color: var(--components-layout-badge-negative-contrast-border);
+      }
+    }
+    :where(&.eds-badge--type-bullet::before) {
+      background-color: var(--components-layout-badge-negative-standard-bullet);
+      .eds-contrast & {
+        background-color: var(--components-layout-badge-negative-contrast-bullet);
+      }
+    }
+  }
+  &--variant-info,
+  &--variant-information {
+    :where(&) {
+      background-color: var(--components-layout-badge-information-standard-fill);
+      color: var(--components-layout-badge-information-standard-text);
+    }
+
+    .eds-contrast :where(&) {
+      background-color: var(--components-layout-badge-information-contrast-fill);
+      color: var(--components-layout-badge-information-contrast-text);
+    }
+
+    :where(&.eds-badge--type-status, &.eds-badge--type-notification) {
+      border-color: var(--components-layout-badge-information-standard-border);
+      .eds-contrast & {
+        border-color: var(--components-layout-badge-information-contrast-border);
+      }
+    }
+    :where(&.eds-badge--type-bullet::before) {
+      background-color: var(--components-layout-badge-information-standard-bullet);
+      .eds-contrast & {
+        background-color: var(--components-layout-badge-information-contrast-bullet);
+      }
+    }
+  }
+  &--variant-neutral {
+    :where(&) {
+      background-color: var(--components-layout-badge-neutral-standard-fill);
+      color: var(--components-layout-badge-neutral-standard-text);
+    }
+
+    .eds-contrast :where(&) {
+      background-color: var(--components-layout-badge-neutral-contrast-fill);
+      color: var(--components-layout-badge-neutral-contrast-text);
+    }
+
+    :where(&.eds-badge--type-status, &.eds-badge--type-notification) {
+      border-color: var(--components-layout-badge-neutral-standard-border);
+      .eds-contrast & {
+        border-color: var(--components-layout-badge-neutral-contrast-border);
+      }
+    }
+    :where(&.eds-badge--type-bullet::before) {
+      background-color: var(--components-layout-badge-neutral-standard-bullet);
+      .eds-contrast & {
+        background-color: var(--components-layout-badge-neutral-contrast-bullet);
+      }
+    }
+  }
+
   // Size modifiers
   &--size {
     &-small {
-      &.eds-badge--type-status {
+      :where(&.eds-badge--type-status) {
         height: var(--components-layout-badge-status-height-small);
         padding: 0 var(--components-layout-badge-status-inlinepadding-small);
         border-radius: var(--components-layout-badge-status-radius-small);
         border-width: var(--components-layout-badge-status-border-small);
       }
 
-      &.eds-badge--type-notification {
+      :where(&.eds-badge--type-notification) {
         width: var(--components-layout-badge-notification-height-small);
         height: var(--components-layout-badge-notification-height-small);
         min-width: var(--components-layout-badge-notification-height-small);
@@ -255,7 +242,7 @@
         border-width: var(--components-layout-badge-notification-border-small);
       }
 
-      &.eds-badge--type-bullet {
+      :where(&.eds-badge--type-bullet) {
         padding-left: calc(var(--components-layout-badge-bullet-bullet-small) + var(--components-layout-badge-bullet-gap-small));
         &::before {
           height: var(--components-layout-badge-bullet-bullet-small);
@@ -263,23 +250,25 @@
         }
       }
 
-      &.eds-badge--leading-icon {
-        .eds-icon {
-          width: var(--components-layout-badge-status-icon-small);
-          height: var(--components-layout-badge-status-icon-small);
-        }
+      :where(&) .eds-icon {
+        width: var(--components-layout-badge-status-icon-small);
+        height: var(--components-layout-badge-status-icon-small);
+      }
+
+      :where(&.eds-badge--leading-icon) .eds-icon {
+        margin-right: var(--components-layout-badge-status-gap-small);
       }
     }
 
     &-medium {
-      &.eds-badge--type-status {
+      :where(&.eds-badge--type-status) {
         height: var(--components-layout-badge-status-height-medium);
         padding: 0 var(--components-layout-badge-status-inlinepadding-medium);
         border-radius: var(--components-layout-badge-status-radius-medium);
         border-width: var(--components-layout-badge-status-border-medium);
       }
 
-      &.eds-badge--type-notification {
+      :where(&.eds-badge--type-notification) {
         width: var(--components-layout-badge-notification-height-medium);
         height: var(--components-layout-badge-notification-height-medium);
         min-width: var(--components-layout-badge-notification-height-medium);
@@ -289,7 +278,7 @@
         border-width: var(--components-layout-badge-notification-border-medium);
       }
 
-      &.eds-badge--type-bullet {
+      :where(&.eds-badge--type-bullet) {
         padding-left: calc(var(--components-layout-badge-bullet-bullet-medium) + var(--components-layout-badge-bullet-gap-medium));
         &::before {
           height: var(--components-layout-badge-bullet-bullet-medium);
@@ -297,23 +286,25 @@
         }
       }
 
-      &.eds-badge--leading-icon {
-        .eds-icon {
-          width: var(--components-layout-badge-status-icon-medium);
-          height: var(--components-layout-badge-status-icon-medium);
-        }
+      :where(&) .eds-icon {
+        width: var(--components-layout-badge-status-icon-medium);
+        height: var(--components-layout-badge-status-icon-medium);
+      }
+
+      :where(&.eds-badge--leading-icon) .eds-icon {
+        margin-right: var(--components-layout-badge-status-gap-medium);
       }
     }
 
     &-large {
-      &.eds-badge--type-status {
+      :where(&.eds-badge--type-status) {
         height: var(--components-layout-badge-status-height-large);
         padding: 0 var(--components-layout-badge-status-inlinepadding-large);
         border-radius: var(--components-layout-badge-status-radius-large);
         border-width: var(--components-layout-badge-status-border-large);
       }
 
-      &.eds-badge--type-notification {
+      :where(&.eds-badge--type-notification) {
         width: var(--components-layout-badge-notification-height-large);
         height: var(--components-layout-badge-notification-height-large);
         min-width: var(--components-layout-badge-notification-height-large);
@@ -323,7 +314,7 @@
         border-width: var(--components-layout-badge-notification-border-large);
       }
 
-      &.eds-badge--type-bullet {
+      :where(&.eds-badge--type-bullet) {
         padding-left: calc(var(--components-layout-badge-bullet-bullet-large) + var(--components-layout-badge-bullet-gap-large));
         &::before {
           height: var(--components-layout-badge-bullet-bullet-large);
@@ -331,11 +322,13 @@
         }
       }
 
-      &.eds-badge--leading-icon {
-        .eds-icon {
-          width: var(--components-layout-badge-status-icon-large);
-          height: var(--components-layout-badge-status-icon-large);
-        }
+      :where(&) .eds-icon {
+        width: var(--components-layout-badge-status-icon-large);
+        height: var(--components-layout-badge-status-icon-large);
+      }
+
+      :where(&.eds-badge--leading-icon) .eds-icon {
+        margin-right: var(--components-layout-badge-status-gap-large);
       }
     }
   }
