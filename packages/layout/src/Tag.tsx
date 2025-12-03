@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
-import './Tag.scss';
 import { PolymorphicComponentProps } from '@entur/utils';
+import './Tag.scss';
 
 /**
  * @deprecated Tag is deprecated. Use Badge with variant="neutral" instead.
@@ -40,8 +40,8 @@ const defaultElement = 'div';
  * <Tag compact>Content</Tag>
  *
  * // New
- * <Badge variant="neutral" type="status">Content</Badge>
- * <Badge variant="neutral" type="status" size="small">Content</Badge>
+ * <Badge type="status">Content</Badge>
+ * <Badge type="status" size="small">Content</Badge>
  * ```
  *
  * @see Badge from '@entur/layout'

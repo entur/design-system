@@ -29,6 +29,7 @@ export type BadgeOwnProps = {
    */
   /** Velg størrelse på badge */
   size?: 'small' | 'medium' | 'large';
+  /** Skal notifikasjonen vises når innholdet er 0? */
   showZero?: boolean;
   /** Hva som er høyeste tallet før det legges på "+"
    * @default ++
