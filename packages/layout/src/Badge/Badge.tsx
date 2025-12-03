@@ -20,7 +20,9 @@ export type BadgeOwnProps = {
   className?: string;
   /** Elementet som badge vil legges relativt til */
   children: React.ReactNode;
-  /** Hvilken variant badge man vil ha */
+  /** Hvilken variant badge man vil ha
+   * @default "neutral"
+   */
   variant: 'primary' | 'neutral' | VariantType | typeof danger | typeof info;
   /** Om 0 skal vises
    * @default false
@@ -57,7 +59,7 @@ export const Badge: BadgeComponent = React.forwardRef(
       children,
       className,
       max = 99,
-      variant,
+      variant = 'neutral',
       size = 'medium',
       showZero = false,
       invisible: invisibleProp = false,
