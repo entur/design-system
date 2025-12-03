@@ -18,7 +18,7 @@
   },
   "scripts": {
     "start": "vite build --watch",
-    "build": "vite build && cp src/*.scss dist",
+    "build": "vite build && cp src/**/*.scss dist",
     "test": "jest",
     "lint": "eslint src"
   },
