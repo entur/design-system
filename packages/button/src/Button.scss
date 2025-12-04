@@ -50,10 +50,6 @@
       background: var(--eds-button-text);
     }
   }
-  :where(.eds-icon) {
-    position: relative;
-    top: 0.2em;
-  }
 
   &--trailing-icon {
     :where(.eds-icon:last-child) {
