@@ -14,6 +14,7 @@ import {
   FunicularIcon,
   CablewayIcon,
   TaxiIcon,
+  SnowCoachIcon,
   WalkIcon,
 } from '@entur/icons';
 
@@ -36,6 +37,7 @@ export type Transport =
   | 'mobility'
   | 'airportLinkBus'
   | 'airportLinkRail'
+  | 'snowcoach'
   | 'rail'
   | 'water'
   | 'air'
@@ -106,6 +108,12 @@ export const getTransportStyle = (mode: string): transportStyleResult => {
         Icon: TaxiIcon,
         pattern: 'dashed',
         ariaLabel: 'Taxi',
+      };
+    case 'snowcoach':
+      return {
+        Icon: SnowCoachIcon,
+        pattern: 'line',
+        ariaLabel: 'Beltebil',
       };
     case 'bicycle':
     case 'citybike':

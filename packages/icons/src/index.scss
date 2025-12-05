@@ -65,7 +65,9 @@ p .eds-icon {
       color: var(--basecolors-shape-cableway-contrast);
     }
   }
-  &__taxi {
+  &__car,
+  &__taxi,
+  &__snowcoach {
     color: var(--basecolors-shape-taxi-default);
     .eds-contrast & {
       color: var(--basecolors-shape-taxi-contrast);
@@ -77,7 +79,10 @@ p .eds-icon {
       color: var(--basecolors-shape-bicycle-contrast);
     }
   }
-  &__walk {
+  &__standing,
+  &__walk,
+  &__strolling,
+  &__running {
     color: var(--basecolors-shape-walk-default);
     .eds-contrast & {
       color: var(--basecolors-shape-walk-contrast);
@@ -89,16 +94,11 @@ p .eds-icon {
       color: var(--basecolors-shape-train-contrast);
     }
   }
-  &__ferry {
+  &__ferry,
+  &__carferry {
     color: var(--basecolors-shape-ferry-default);
     .eds-contrast & {
       color: var(--basecolors-shape-ferry-contrast);
-    }
-  }
-  &__carferry {
-    color: var(--basecolors-shape-carferry-default);
-    .eds-contrast & {
-      color: var(--basecolors-shape-carferry-contrast);
     }
   }
   &__mobility,
