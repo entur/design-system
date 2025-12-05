@@ -1,0 +1,10 @@
+@use 'sass:meta';
+@use '@entur/utils/styles/layers';
+@use './fonts';
+@use '../componentVariables';
+@use './typographyTokens';
+@forward '../componentVariables';
+
+@layer core.reset {
+  @include meta.load-css('modern-normalize/modern-normalize.css');
+}

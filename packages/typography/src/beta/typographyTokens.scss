@@ -1,4 +1,4 @@
-@use '@entur/utils/dist/breakpoints.scss' as *;
+@use '@entur/utils/dist/breakpoints' as breakpoints;
 
 /*
  * Typography Display Modes
@@ -6,53 +6,62 @@
  * This system allows you to control typography scaling based on view size.
  * Use the vie-mode attribute to switch between different typography scales:
  * 
- * - Compact: [view-mode='compact'] or no attribute (responsive)
- * - Display: [view-mode='display'] for big screens, kiosks, etc.
+ * - Compact: [data-view-mode='compact'] or no attribute (responsive)
+ * - Display: [data-view-mode='display'] for big screens, kiosks, etc.
  * 
  * Usage:
- * <html view-mode="display"> or <div view-mode="display">
+ * <html data-view-mode="display"> or <div data-view-mode="display">
  * 
  * The system automatically handles responsive behavior within each mode.
  */
-/* Primitive size */
-:root {
-  /* number */
-  --size-0: 0rem;
-  --size-1: 0.0625rem;
-  --size-2: 0.125rem;
-  --size-3: 0.25rem;
-  --size-4: 0.375rem;
-  --size-5: 0.5rem;
-  --size-6: 0.75rem;
-  --size-7: 0.875rem;
-  --size-8: 1rem;
-  --size-9: 1.25rem;
-  --size-10: 1.5rem;
-  --size-11: 1.75rem;
-  --size-12: 2rem;
-  --size-13: 2.25rem;
-  --size-14: 2.5rem;
-  --size-15: 2.75rem;
-  --size-16: 3rem;
-  --size-17: 3.25rem;
-  --size-18: 3.5rem;
-  --size-19: 4rem;
-  --size-20: 4.5rem;
-  --size-21: 5rem;
-  --size-22: 5.5rem;
-  --size-23: 6rem;
-  --size-24: 6.5rem;
-  --size-25: 7rem;
-  --size-26: 7.5rem;
-  --size-27: 8rem;
-  --size-28: 8.5rem;
-  --size-29: 9rem;
-  --size-30: 9.5rem;
-  --size-31: 10rem;
-}
-
 :root,
-[view-mode='standard'] {
+[data-view-mode='standard'] {
+  /* number */
+  --font-line-height-body-xs: var(--size-8);
+  --font-line-height-body-s: var(--size-9);
+  --font-line-height-body-m: var(--size-10);
+  --font-line-height-body-lg: var(--size-11);
+  --font-line-height-body-xl: var(--size-12);
+  --font-line-height-heading-xs: var(--size-8);
+  --font-line-height-heading-s: var(--size-9);
+  --font-line-height-heading-m: var(--size-10);
+  --font-line-height-heading-lg: var(--size-11);
+  --font-line-height-heading-xl: var(--size-13);
+  --font-line-height-heading-2xl: var(--size-15);
+  --font-line-height-label-s: var(--size-8);
+  --font-line-height-label-m: var(--size-9);
+  --font-line-height-label-lg: var(--size-10);
+  --font-paragraph-spacing-body-xs: var(--size-5);
+  --font-paragraph-spacing-body-s: var(--size-6);
+  --font-paragraph-spacing-body-m: var(--size-8);
+  --font-paragraph-spacing-body-lg: var(--size-10);
+  --font-paragraph-spacing-body-xl: var(--size-10);
+  --font-paragraph-spacing-heading-xs: var(--size-5);
+  --font-paragraph-spacing-heading-m: var(--size-6);
+  --font-paragraph-spacing-heading-s: var(--size-6);
+  --font-paragraph-spacing-heading-lg: var(--size-8);
+  --font-paragraph-spacing-heading-xl: var(--size-9);
+  --font-paragraph-spacing-heading-2xl: var(--size-10);
+  --font-size-body-xs: var(--size-6);
+  --font-size-body-s: var(--size-7);
+  --font-size-body-m: var(--size-8);
+  --font-size-body-lg: var(--size-9);
+  --font-size-body-xl: var(--size-10);
+  --font-size-heading-xs: var(--size-7);
+  --font-size-heading-s: var(--size-8);
+  --font-size-heading-m: var(--size-9);
+  --font-size-heading-lg: var(--size-10);
+  --font-size-heading-xl: var(--size-12);
+  --font-size-heading-2xl: var(--size-14);
+  --font-size-label-s: var(--size-7);
+  --font-size-label-m: var(--size-8);
+  --font-size-label-lg: var(--size-9);
+  /* string */
+  --font-family-nationale: nationale;
+  --font-weight-body: 500;
+  --font-weight-heading: 600;
+}
+[data-view-mode='compact'] {
   /* number */
   --font-line-height-body-xs: var(--size-8);
   --font-line-height-body-s: var(--size-9);
@@ -65,6 +74,9 @@
   --font-line-height-heading-lg: var(--size-10);
   --font-line-height-heading-xl: var(--size-11);
   --font-line-height-heading-2xl: var(--size-12);
+  --font-line-height-label-m: var(--size-8);
+  --font-line-height-label-s: var(--size-8);
+  --font-line-height-label-lg: var(--size-9);
   --font-paragraph-spacing-body-xs: var(--size-5);
   --font-paragraph-spacing-body-s: var(--size-6);
   --font-paragraph-spacing-body-m: var(--size-8);
@@ -87,92 +99,15 @@
   --font-size-heading-lg: var(--size-9);
   --font-size-heading-xl: var(--size-10);
   --font-size-heading-2xl: var(--size-11);
+  --font-size-label-s: var(--size-7);
+  --font-size-label-m: var(--size-8);
+  --font-size-label-lg: var(--size-9);
   /* string */
-  --font-family-nationale: Nationale;
-  --font-weight-body: 500;
-  --font-weight-heading: 600;
-
-  @include for-desktop {
-    --font-line-height-body-xs: var(--size-8);
-    --font-line-height-body-s: var(--size-9);
-    --font-line-height-body-m: var(--size-10);
-    --font-line-height-body-lg: var(--size-11);
-    --font-line-height-body-xl: var(--size-12);
-    --font-line-height-heading-xs: var(--size-8);
-    --font-line-height-heading-s: var(--size-9);
-    --font-line-height-heading-m: var(--size-10);
-    --font-line-height-heading-lg: var(--size-11);
-    --font-line-height-heading-xl: var(--size-13);
-    --font-line-height-heading-2xl: var(--size-15);
-    --font-paragraph-spacing-body-xs: var(--size-5);
-    --font-paragraph-spacing-body-s: var(--size-6);
-    --font-paragraph-spacing-body-m: var(--size-8);
-    --font-paragraph-spacing-body-lg: var(--size-10);
-    --font-paragraph-spacing-body-xl: var(--size-10);
-    --font-paragraph-spacing-heading-xs: var(--size-5);
-    --font-paragraph-spacing-heading-m: var(--size-6);
-    --font-paragraph-spacing-heading-s: var(--size-6);
-    --font-paragraph-spacing-heading-lg: var(--size-8);
-    --font-paragraph-spacing-heading-xl: var(--size-9);
-    --font-paragraph-spacing-heading-2xl: var(--size-10);
-    --font-size-body-xs: var(--size-6);
-    --font-size-body-s: var(--size-7);
-    --font-size-body-m: var(--size-8);
-    --font-size-body-lg: var(--size-9);
-    --font-size-body-xl: var(--size-10);
-    --font-size-heading-xs: var(--size-7);
-    --font-size-heading-s: var(--size-8);
-    --font-size-heading-m: var(--size-9);
-    --font-size-heading-lg: var(--size-10);
-    --font-size-heading-xl: var(--size-12);
-    --font-size-heading-2xl: var(--size-14);
-    /* string */
-    --font-family-nationale: Nationale;
-    --font-weight-body: 500;
-    --font-weight-heading: 600;
-  }
-}
-[view-mode='compact'] {
-  /* number */
-  --font-line-height-body-xs: var(--size-8);
-  --font-line-height-body-s: var(--size-9);
-  --font-line-height-body-lg: var(--size-10);
-  --font-line-height-body-m: var(--size-10);
-  --font-line-height-body-xl: var(--size-11);
-  --font-line-height-heading-s: var(--size-8);
-  --font-line-height-heading-xs: var(--size-8);
-  --font-line-height-heading-m: var(--size-9);
-  --font-line-height-heading-lg: var(--size-10);
-  --font-line-height-heading-xl: var(--size-11);
-  --font-line-height-heading-2xl: var(--size-12);
-  --font-paragraph-spacing-body-xs: var(--size-5);
-  --font-paragraph-spacing-body-s: var(--size-6);
-  --font-paragraph-spacing-body-m: var(--size-8);
-  --font-paragraph-spacing-body-lg: var(--size-9);
-  --font-paragraph-spacing-body-xl: var(--size-9);
-  --font-paragraph-spacing-heading-s: var(--size-5);
-  --font-paragraph-spacing-heading-xs: var(--size-5);
-  --font-paragraph-spacing-heading-lg: var(--size-6);
-  --font-paragraph-spacing-heading-m: var(--size-6);
-  --font-paragraph-spacing-heading-2xl: var(--size-8);
-  --font-paragraph-spacing-heading-xl: var(--size-8);
-  --font-size-body-xs: var(--size-6);
-  --font-size-body-s: var(--size-7);
-  --font-size-body-lg: var(--size-8);
-  --font-size-body-m: var(--size-8);
-  --font-size-body-xl: var(--size-9);
-  --font-size-heading-xs: var(--size-6);
-  --font-size-heading-s: var(--size-7);
-  --font-size-heading-m: var(--size-8);
-  --font-size-heading-lg: var(--size-9);
-  --font-size-heading-xl: var(--size-10);
-  --font-size-heading-2xl: var(--size-11);
-  /* string */
-  --font-family-nationale: Nationale;
+  --font-family-nationale: nationale;
   --font-weight-body: 500;
   --font-weight-heading: 600;
 }
-[view-mode='display'] {
+[data-view-mode='display'] {
   /* number */
   --font-line-height-body-xs: var(--size-11);
   --font-line-height-body-s: var(--size-12);
@@ -185,6 +120,9 @@
   --font-line-height-heading-lg: var(--size-18);
   --font-line-height-heading-xl: var(--size-20);
   --font-line-height-heading-2xl: var(--size-21);
+  --font-line-height-label-s: var(--size-11);
+  --font-line-height-label-m: var(--size-13);
+  --font-line-height-label-lg: var(--size-15);
   --font-paragraph-spacing-body-xs: var(--size-9);
   --font-paragraph-spacing-body-s: var(--size-10);
   --font-paragraph-spacing-body-m: var(--size-12);
@@ -207,8 +145,11 @@
   --font-size-heading-lg: var(--size-16);
   --font-size-heading-xl: var(--size-19);
   --font-size-heading-2xl: var(--size-20);
+  --font-size-label-s: var(--size-10);
+  --font-size-label-m: var(--size-12);
+  --font-size-label-lg: var(--size-14);
   /* string */
-  --font-family-nationale: Nationale;
+  --font-family-nationale: nationale;
   --font-weight-body: 500;
   --font-weight-heading: 600;
 }

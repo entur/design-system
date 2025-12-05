@@ -19,7 +19,7 @@
       "default": "./dist/beta/esm/index.mjs"
     },
     "./styles": "./dist/styles.css",
-    "./beta/styles": "./dist/beta/typography.css",
+    "./beta/styles": "./dist/beta/styles/index.css",
     "./fonts/*": "./fonts/*",
     "./scripts/*": "./scripts/*",
     "./package.json": "./package.json",
@@ -49,6 +49,7 @@
     "build:beta": "vite build --config vite.config.beta.ts",
     "test": "jest",
     "lint": "eslint src",
+    "lint:styles": "stylelint 'src/beta**/*.{css,scss}'  --ignore-path ../../.gitignore",
     "start": "vite build --watch",
     "start:beta": "vite build --config vite.config.beta.ts --watch",
     "migrate": "./scripts/migrate-typography.mjs"

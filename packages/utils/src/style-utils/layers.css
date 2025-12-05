@@ -1,0 +1,4 @@
+@layer core, third-party, components, utilities, app;
+@layer core.reset, core.tokens, core.base;
+@layer third-party.imports, third-party.overrides;
+@layer components.primitives, components.composites, components.overrides;

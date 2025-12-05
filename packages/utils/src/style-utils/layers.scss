@@ -1,0 +1,11 @@
+// Top-level layer order (lowest to highest precedence)
+@layer core, third-party, components, utilities, app;
+
+// Foundation: resets, design tokens (CSS variables), and base element styles
+@layer core.reset, core.tokens, core.base;
+
+// Third-party: vendor CSS imports, then DS overrides to tame them
+@layer third-party.imports, third-party.overrides;
+
+// Components: primitives (buttons, icons), composites (datepicker, dropdown), then cross-component overrides
+@layer components.primitives, components.composites, components.overrides;

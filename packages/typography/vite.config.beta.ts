@@ -1,7 +1,6 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import dts from 'vite-plugin-dts';
-import { libInjectCss } from 'vite-plugin-lib-inject-css';
 import { resolve } from 'path';
 import pkg from './package.json';
 
@@ -17,7 +16,6 @@ export default defineConfig({
       // Stop aliasing @entur to ../../../packages
       pathsToAliases: false,
     }),
-    libInjectCss(),
   ],
   build: {
     lib: {
@@ -28,7 +26,6 @@ export default defineConfig({
         return `${_format}/${entryName}.${format === 'es' ? 'mjs' : 'cjs'}`;
       },
     },
-    cssCodeSplit: true,
     rollupOptions: {
       external: [
         ...Object.keys(pkg.dependencies || {}),
@@ -42,7 +39,7 @@ export default defineConfig({
         preserveModules: true,
         assetFileNames: assetInfo => {
           if (assetInfo.names[0].endsWith('.css')) {
-            return 'styles/[name][extname]';
+            return 'styles/index.css';
           }
           // Default for other assets (images, fonts, etc.)
           return 'assets/[name]-[hash][extname]';
