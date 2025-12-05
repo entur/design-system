@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://github.com/entur/design-system/compare/@entur/typography@2.0.4...@entur/typography@3.0.0) (2025-12-05)
+
+### Features
+
+- add new component size css variables to all relevant packages ([aceafa8](https://github.com/entur/design-system/commit/aceafa85c8da121ad0654fb08caad22257c16bc9))
+
+### \[BETA\] Bug Fixes
+
+- **typography/beta:** change attribute view-mode to data-view-mode ([31a3531](https://github.com/entur/design-system/commit/31a35314456f90647cedefa0c6d02745b546c38e))
+- **typography/beta:** change to correct variables for label, subparagraph, title-1 ([973f35f](https://github.com/entur/design-system/commit/973f35fda0890ab8f3beae3a80cfcdd8146fbf6a))
+
+### \[BETA\] Features
+
+- **typography/beta:** change from dynamic css import to main entry styles file ([4fe9374](https://github.com/entur/design-system/commit/4fe9374367d533cb6a76f368984083c163aac327))
+- **typography/beta:** update typography beta tokens ([65c82b7](https://github.com/entur/design-system/commit/65c82b7f6e4fb07283dfd871f959b174ffe2d6b1))
+- **typography/beta:** update typography variables ([bf90ebf](https://github.com/entur/design-system/commit/bf90ebf80656ee9e9725e2dd2bbb1675941813b3))
+- **typography/beta:** use css layers and :where to reduce specificity ([c66e58f](https://github.com/entur/design-system/commit/c66e58f39c8944ab530ec307a40d65411f28aebd))
+
+### \[BETA\] BREAKING CHANGES
+
+- **typography/beta:** You must now add "@import '@entur/typography/beta/styles'" in you styles entry to
+  get styling
+- **typography/beta:** Attribute name change breaks existing implementations
+- **typography/beta:** Specificity for classes have changes. Also, if your users use outdated browsers,
+  you should apply a polyfill for css layers.
+
 ## [2.0.4](https://github.com/entur/design-system/compare/@entur/typography@2.0.3...@entur/typography@2.0.4) (2025-11-24)
 
 ### Bug Fixes

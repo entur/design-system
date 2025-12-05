@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.7.0](https://github.com/entur/design-system/compare/@entur/expand@3.6.19...@entur/expand@3.7.0) (2025-12-05)
+
+### Features
+
+- add new component size css variables to all relevant packages ([aceafa8](https://github.com/entur/design-system/commit/aceafa85c8da121ad0654fb08caad22257c16bc9))
+
 ## [3.6.19](https://github.com/entur/design-system/compare/@entur/expand@3.6.18...@entur/expand@3.6.19) (2025-11-24)
 
 **Note:** Version bump only for package @entur/expand

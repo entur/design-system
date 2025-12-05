@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.13.0](https://github.com/entur/design-system/compare/@entur/utils@0.12.5...@entur/utils@0.13.0) (2025-12-05)
+
+### Features
+
+- **utils:** add style util for css layers ([a3a04fc](https://github.com/entur/design-system/commit/a3a04fc636eaab2cc1727328b347ffecd49d8bb7))
+
 ## [0.12.4](https://github.com/entur/design-system/compare/@entur/utils@0.12.3...@entur/utils@0.12.4) (2025-08-29)
 
 ### Bug Fixes
