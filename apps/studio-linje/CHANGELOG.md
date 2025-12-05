@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.8.0](https://github.com/entur/design-system/compare/studio-linje@1.7.0...studio-linje@1.8.0) (2025-12-05)
+
+### Features
+
+- **documentation/page-builder:** add caption to media component ([6f5924d](https://github.com/entur/design-system/commit/6f5924dc639e586e4fd8ce17b937f58a7af7b06b))
+
 # [1.7.0](https://github.com/entur/design-system/compare/studio-linje@1.6.0...studio-linje@1.7.0) (2025-10-27)
 
 ### Bug Fixes

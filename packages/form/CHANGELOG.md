@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.2.0](https://github.com/entur/design-system/compare/@entur/form@9.1.0...@entur/form@9.2.0) (2025-12-05)
+
+### Features
+
+- add new component size css variables to all relevant packages ([aceafa8](https://github.com/entur/design-system/commit/aceafa85c8da121ad0654fb08caad22257c16bc9))
+
 # [9.1.0](https://github.com/entur/design-system/compare/@entur/form@9.0.1...@entur/form@9.1.0) (2025-11-24)
 
 ### Bug Fixes
