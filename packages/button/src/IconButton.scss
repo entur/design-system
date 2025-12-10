@@ -1,27 +1,27 @@
 @use '@entur/tokens/dist/styles.scss' as t;
 
 .eds-icon-button {
-  border: t.$border-widths-default solid transparent;
-  border-radius: t.$border-radiuses-medium;
+  align-items: center;
   background: none;
+  border-radius: var(--components-button-radius-medium);
+  border: var(--components-button-border-medium) solid transparent;
   color: var(--components-button-iconbutton-standard-text);
   cursor: pointer;
-  display: flex;
+  display: inline-flex;
+  font-size: var(--font-size-body-m);
+  font-weight: var(--font-weight-body);
+  gap: var(--components-button-gap-medium);
+  height: var(--components-button-height-horizontalcontent-medium);
   justify-content: center;
-  align-items: center;
-  font-size: t.$font-sizes-large;
-  padding: t.$space-extra-small;
+  line-height: var(--font-line-height-body-m);
+  padding-inline: var(--components-button-inlinepadding-medium);
+
   .eds-contrast & {
     color: var(--components-button-iconbutton-contrast-text);
 
     > .eds-loading-dots .eds-loading-dots__dot {
       background-color: var(--components-button-iconbutton-contrast-icon);
     }
-  }
-  &--size-small {
-    height: 1.5rem;
-    width: 1.5rem;
-    padding: 0;
   }
   &:hover {
     background-color: var(--components-button-iconbutton-standard-hover);
@@ -54,4 +54,23 @@
       width: fit-content;
     }
   }
+
+   // Size
+  &--size-small {
+    border-radius: var(--components-button-radius-small);
+    border: var(--components-button-border-small) solid var(--eds-button-border);
+    font-size: var(--font-size-body-s);
+    height: var(--components-button-height-horizontalcontent-small);
+    line-height: var(--font-line-height-body-s);
+    padding-inline: var(--components-button-inlinepadding-small);
+  }
+  &--size-large {
+    border-radius: var(--components-button-radius-large);
+    border: var(--components-button-border-large) solid var(--eds-button-border);
+    font-size: var(--font-size-body-xl);
+    height: var(--components-button-height-horizontalcontent-large);
+    line-height: var(--font-line-height-body-xl);
+    padding-inline: var(--components-button-inlinepadding-large);
+  }
 }
+
