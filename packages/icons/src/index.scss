@@ -4,25 +4,19 @@
   --eds-icons: 1;
 }
 
-.eds-icon.eds-icon--inline,
-p .eds-icon {
-  position: relative;
-  top: 0.2em;
-}
-
-.eds-icon :where(g, path) {
-  fill: currentColor;
-}
-
-.svg-exclamation {
-  fill: var(--basecolors-frame-default);
-
-  .eds-contrast & {
-    fill: var(--basecolors-frame-contrast);
-  }
-}
-
 .eds-icon {
+  display: inline;
+
+  &--inline,
+  p & {
+    position: relative;
+    top: 0.2em;
+  }
+
+  :where(g, path) {
+    fill: currentColor;
+  }
+
   &__metro {
     color: var(--basecolors-shape-metro-default);
     .eds-contrast & {
@@ -107,6 +101,14 @@ p .eds-icon {
     color: var(--basecolors-shape-mobility-default);
     .eds-contrast & {
       color: var(--basecolors-shape-mobility-contrast);
+    }
+  }
+
+  :where(.svg-exclamation) {
+    fill: var(--basecolors-frame-default);
+
+    .eds-contrast & {
+      fill: var(--basecolors-frame-contrast);
     }
   }
 }
