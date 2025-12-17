@@ -12,7 +12,7 @@ a.eds-button {
 }
 
 .eds-button {
-  min-width: var(--size-30);
+  min-width: var(--components-button-height-horizontalcontent-medium);
   width: max-content;
   height: var(--components-button-height-horizontalcontent-medium);
   border-radius: var(--components-button-radius-medium);
@@ -93,7 +93,6 @@ a.eds-button {
     }
   }
 
-  // Size
   &--size-small {
     height: var(--components-button-height-horizontalcontent-small);
     border-radius: var(--components-button-radius-small);
@@ -115,7 +114,6 @@ a.eds-button {
     width: 100%;
   }
 
-  //Variant
   &--variant-primary {
     --eds-button-background: var(--components-button-primary-standard-default);
     --eds-button-text: var(--components-button-primary-standard-text);
