@@ -22,7 +22,7 @@ export type IconButtonBaseProps = {
   /**Størrelsen på knappen
    * @default 'medium'
    */
-  size?: 'small' | 'medium';
+  size?: 'small' | 'medium' | 'large';
   /** Om knappen er opptatt, f.eks. med å lagre eller å kjøpe
    * @default false
    */
