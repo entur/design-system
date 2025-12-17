@@ -1,6 +1,6 @@
 {
   "name": "@entur/utils",
-  "version": "0.12.5",
+  "version": "0.12.6-beta-automat.0",
   "license": "EUPL-1.2",
   "main": "dist/utils.cjs.js",
   "module": "dist/utils.esm.js",
