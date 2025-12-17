@@ -5720,7 +5720,17 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@entur/tokens@npm:^3.19.1, @entur/tokens@workspace:^, @entur/tokens@workspace:packages/tokens":
+"@entur/tokens@npm:^3.19.1":
+  version: 3.21.1
+  resolution: "@entur/tokens@npm:3.21.1"
+  dependencies:
+    flat: "npm:^5.0.2"
+    hex-rgb: "npm:^4.3.0"
+  checksum: 10c0/9c29e971fb72de320a4962f45a389f852248c860f379b354a66d2e2fd7e71209678c47f67856f7b1752180723620f43113c9c02d4e7fcb857b3254601a79accf
+  languageName: node
+  linkType: hard
+
+"@entur/tokens@workspace:^, @entur/tokens@workspace:packages/tokens":
   version: 0.0.0-use.local
   resolution: "@entur/tokens@workspace:packages/tokens"
   dependencies:

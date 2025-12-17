@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.3.0-beta.0](https://github.com/entur/design-system/compare/@entur/layout@3.2.3...@entur/layout@3.3.0-beta.0) (2025-12-17)
+
+### Features
+
+- add new component size css variables to all relevant packages ([aceafa8](https://github.com/entur/design-system/commit/aceafa85c8da121ad0654fb08caad22257c16bc9))
+
 ## [3.2.3](https://github.com/entur/design-system/compare/@entur/layout@3.2.2...@entur/layout@3.2.3) (2025-11-24)
 
 **Note:** Version bump only for package @entur/layout

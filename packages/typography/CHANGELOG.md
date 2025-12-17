@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0-beta.0](https://github.com/entur/design-system/compare/@entur/typography@2.0.4...@entur/typography@2.1.0-beta.0) (2025-12-17)
+
+### Features
+
+- add new component size css variables to all relevant packages ([aceafa8](https://github.com/entur/design-system/commit/aceafa85c8da121ad0654fb08caad22257c16bc9))
+
 ## [2.0.4](https://github.com/entur/design-system/compare/@entur/typography@2.0.3...@entur/typography@2.0.4) (2025-11-24)
 
 ### Bug Fixes

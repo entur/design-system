@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0-beta.0](https://github.com/entur/design-system/compare/@entur/loader@0.5.36...@entur/loader@0.6.0-beta.0) (2025-12-17)
+
+### Features
+
+- add new component size css variables to all relevant packages ([aceafa8](https://github.com/entur/design-system/commit/aceafa85c8da121ad0654fb08caad22257c16bc9))
+
 ## [0.5.36](https://github.com/entur/design-system/compare/@entur/loader@0.5.35...@entur/loader@0.5.36) (2025-11-24)
 
 ### Bug Fixes

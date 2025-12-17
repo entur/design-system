@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.13.0-beta.0](https://github.com/entur/design-system/compare/@entur/documentation@6.12.2...@entur/documentation@6.13.0-beta.0) (2025-12-17)
+
+### Bug Fixes
+
+- **webiste:** remove unneccessary scss import ([e22eaf4](https://github.com/entur/design-system/commit/e22eaf4a323a2da19d7ed151d11fa1aebf72c879))
+- **website:** styling issues for illustration list ([3a58f46](https://github.com/entur/design-system/commit/3a58f462404364368dbd1b25a9cb9abb204740b6))
+
+### Features
+
+- **documentation/page-builder:** add caption to media component ([6f5924d](https://github.com/entur/design-system/commit/6f5924dc639e586e4fd8ce17b937f58a7af7b06b))
+
 ## [6.12.2](https://github.com/entur/design-system/compare/@entur/documentation@6.12.1...@entur/documentation@6.12.2) (2025-11-24)
 
 ### Bug Fixes
