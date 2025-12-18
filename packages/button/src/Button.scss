@@ -25,9 +25,9 @@ a.eds-button {
   white-space: nowrap;
 
   padding-inline: var(--components-button-inlinepadding-medium);
-  font-size: var(--font-size-body-m);
-  line-height: var(--font-line-height-body-m);
-  font-weight: var(--font-weight-body);
+  font-size: var(--font-size-body-m, var(--size-8));
+  line-height: var(--font-line-height-body-m, var(--size-10));
+  font-weight: var(--font-weight-body, 500);
   text-align: center;
   font-family: inherit;
   position: relative;
@@ -97,16 +97,16 @@ a.eds-button {
     height: var(--components-button-height-horizontalcontent-small);
     border-radius: var(--components-button-radius-small);
     padding-inline: var(--components-button-inlinepadding-small);
-    font-size: var(--font-size-body-s);
-    line-height: var(--font-line-height-body-s);
+    font-size: var(--font-size-body-s, var(--size-7));
+    line-height: var(--font-line-height-body-s, var(--size-9));
     border: var(--components-button-border-small) solid var(--eds-button-border);
   }
   &--size-large {
     height: var(--components-button-height-horizontalcontent-large);
     border-radius: var(--components-button-radius-large);
     padding-inline: var(--components-button-inlinepadding-large);
-    font-size: var(--font-size-body-xl);
-    line-height: var(--font-line-height-body-xl);
+    font-size: var(--font-size-body-xl, var(--size-10));
+    line-height: var(--font-line-height-body-xl, var(--size-12));
     border: var(--components-button-border-large) solid var(--eds-button-border);
   }
 
