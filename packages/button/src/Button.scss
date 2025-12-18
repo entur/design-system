@@ -20,6 +20,9 @@ a.eds-button {
   display: inline-block;
   appearance: none;
   text-decoration: none;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 
   padding-inline: var(--components-button-inlinepadding-medium);
   font-size: var(--font-size-body-m);
