@@ -1,5 +1,7 @@
 @use './componentVariables.scss';
 @use '@entur/tokens/dist/base.scss' as *;
+// Manually import typography tokens (to support dynamic text sizes) until these are out of beta
+@use '@entur/typography/src/beta/typographyTokens.scss' as *;
 
 // Used to register the styles as loaded!
 :root {
