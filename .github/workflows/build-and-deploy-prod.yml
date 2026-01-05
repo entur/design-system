@@ -29,7 +29,7 @@ jobs:
       - run: NX_REJECT_UNKNOWN_LOCAL_CACHE=0 yarn build:packages
 
       - name: upload artifact
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: package-artifacts
           path: 'packages/**/dist'
@@ -53,7 +53,7 @@ jobs:
         run: yarn workspace @entur/icons build
 
       - name: Upload icons artifacts
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: icons-artifacts
           path: |
@@ -122,7 +122,7 @@ jobs:
         run: yarn build:documentation:skip-packages-dependency
 
       - name: Upload build artifact
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: documentation-site-artifact
           path: |
