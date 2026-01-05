@@ -104,36 +104,46 @@ const IllustrationList = ({
           'illustration-list__display-grid--square': squareIllustrations,
         })}
       >
-        {filteredIllustrations.map(illustration => (
-          <div
-            className={classNames(
-              'illustration-list__display-grid__image-box',
-              { 'eds-contrast': colorMode === 'contrast' },
-            )}
-            data-color-mode={mapColorMode(colorMode)}
-            style={{
-              border:
-                colorMode === 'standard'
-                  ? `solid 2px ${base.light.baseColors.stroke.subduedalt}`
-                  : '',
-            }}
-            key={illustration.name + illustration.extension}
-          >
-            {showIllustrationName && (
-              <div className="eds-label illustration-list__display-grid__image-box__label">
-                {illustration.sanitizedName}
-              </div>
-            )}
-            <ImageDisplay
-              imgSource={illustration.imgSource}
-              name={illustration.name}
-              downloadSources={illustration.publicUrls}
-              className="illustration-list__display-grid__image-box__image"
-              alwaysShowDownload
-              preset="contain"
-            />
-          </div>
-        ))}
+        {filteredIllustrations.map(illustration => {
+          const displayName = illustration.name
+            .replace(/\s+|-|_/g, ' ')
+            .replace('contrast', '')
+            .replace('darkmode', '')
+            .replace('default', '')
+            .replace('circle', '')
+            .replace('dark', '');
+
+          return (
+            <div
+              className={classNames(
+                'illustration-list__display-grid__image-box',
+                { 'eds-contrast': colorMode === 'contrast' },
+              )}
+              data-color-mode={mapColorMode(colorMode)}
+              style={{
+                border:
+                  colorMode === 'standard'
+                    ? `solid 2px ${base.light.baseColors.stroke.subduedalt}`
+                    : '',
+              }}
+              key={illustration.name + illustration.extension}
+            >
+              {showIllustrationName && (
+                <div className="eds-label illustration-list__display-grid__image-box__label">
+                  {displayName}
+                </div>
+              )}
+              <ImageDisplay
+                imgSource={illustration.imgSource}
+                name={illustration.name}
+                downloadSources={illustration.publicUrls}
+                className="illustration-list__display-grid__image-box__image"
+                alwaysShowDownload
+                preset="contain"
+              />
+            </div>
+          );
+        })}
       </div>
     </div>
   );
