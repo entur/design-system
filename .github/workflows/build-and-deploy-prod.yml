@@ -34,8 +34,35 @@ jobs:
           name: package-artifacts
           path: 'packages/**/dist'
 
+  build-icons:
+    name: Build icons package
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Install and Cache Yarn Dependencies
+        uses: ./.github/actions/install-and-cache-dependencies
+        with:
+          cache-key: yarn-icons-${{ hashFiles('**/yarn.lock') }}
+          only-for-workspace: '@entur/tokens @entur/icons'
+
+      - name: Build tokens
+        run: yarn workspace @entur/tokens build
+
+      - name: Build icons
+        run: yarn workspace @entur/icons build
+
+      - name: Upload icons artifacts
+        uses: actions/upload-artifact@v5
+        with:
+          name: icons-artifacts
+          path: |
+            packages/icons/dist
+            packages/tokens/dist
+
   deploy-sanity-graphql:
     name: Deploy Sanity GraphQL API
+    needs: [build-icons]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -45,6 +72,12 @@ jobs:
         with:
           cache-key: yarn-sanity-${{ hashFiles('**/yarn.lock') }}
           only-for-workspace: 'studio-linje'
+
+      - name: Download icons artifacts
+        uses: actions/download-artifact@v5
+        with:
+          name: icons-artifacts
+          path: 'packages'
 
       - name: Deploy Sanity GraphQL API
         working-directory: apps/studio-linje
@@ -109,7 +142,7 @@ jobs:
 
   deploy-sanity-studio:
     name: Deploy Sanity Studio
-    needs: build-documentation
+    needs: [build-icons]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -119,6 +152,12 @@ jobs:
         with:
           cache-key: yarn-sanity-${{ hashFiles('**/yarn.lock') }}
           only-for-workspace: 'studio-linje'
+
+      - name: Download icons artifacts
+        uses: actions/download-artifact@v5
+        with:
+          name: icons-artifacts
+          path: 'packages'
 
       - name: Deploy Sanity Studio
         working-directory: apps/studio-linje
