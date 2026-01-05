@@ -48,6 +48,8 @@
     "fs-extra": "^11.3.1",
     "jest": "^29.0.0",
     "jest-environment-jsdom": "^29.0.0",
+    "postcss": "^8.5.6",
+    "postcss-preset-env": "^10.3.1",
     "rimraf": "6.0.1",
     "rollup": "^4.48.1",
     "sass": "^1.90.0",
