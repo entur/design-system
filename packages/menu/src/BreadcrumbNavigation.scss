@@ -10,12 +10,12 @@
   &__item {
     display: inline-block;
     color: var(--components-menu-breadcrumb-standard-text);
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       color: var(--components-menu-breadcrumb-contrast-text);
     }
 
     &__link {
-      &:not(&--current) {
+      &:not(:where(&--current)) {
         text-decoration: none;
         color: var(--components-menu-breadcrumb-standard-text);
         background-image: linear-gradient(120deg, var(--components-menu-breadcrumb-standard-text) 0%, var(--components-menu-breadcrumb-standard-text) 100%);
@@ -23,21 +23,21 @@
         background-size: 100% 0.125rem;
         background-position: 0 100%;
 
-        .eds-contrast & {
+        :where(.eds-contrast) & {
           color: var(--components-menu-breadcrumb-contrast-text);
           background-image: linear-gradient(120deg, var(--components-menu-breadcrumb-contrast-text) 0%, var(--components-menu-breadcrumb-contrast-text) 100%);
         }
 
-        &:hover {
+        &:where(:hover) {
           animation: eds-breadcrumbs-underline 0.3s ease-in;
           cursor: pointer;
         }
 
-        &:focus-visible {
+        &:where(:focus-visible) {
           outline: t.$outlines-focus;
           outline-color: var(--basecolors-stroke-focus-standard);
           outline-offset: t.$outline-offsets-focus;
-          .eds-contrast & {
+          :where(.eds-contrast) & {
             outline-color: var(--basecolors-stroke-focus-contrast);
           }
         }
