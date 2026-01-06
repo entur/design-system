@@ -70,7 +70,7 @@
           },
           {
             "name": "Base colors/Shape/Bicycle-Default",
-            "value": "#388f76",
+            "value": "#33826b",
             "var": "Standard/Bicycle",
             "rootAlias": "Standard/Bicycle"
           },
@@ -190,7 +190,7 @@
           },
           {
             "name": "Base colors/Shape/Mobility-Default",
-            "value": "#388f76",
+            "value": "#33826b",
             "var": "Standard/Mobility",
             "rootAlias": "Standard/Mobility"
           },
@@ -367,6 +367,12 @@
             "value": "#ff5959",
             "var": "Stroke/Highlight",
             "rootAlias": "Coral/40"
+          },
+          {
+            "name": "Base colors/Text/HighlightAlt",
+            "value": "#ffbf9e",
+            "var": "Text/HighlightAlt",
+            "rootAlias": "Peach/40"
           },
           {
             "name": "Base colors/Text/Light",
@@ -755,6 +761,12 @@
             "value": "#ff9494",
             "var": "Stroke/HighlightAlt",
             "rootAlias": "Coral/30"
+          },
+          {
+            "name": "Base colors/Text/HighlightAlt",
+            "value": "#ffbf9e",
+            "var": "Text/HighlightAlt",
+            "rootAlias": "Peach/40"
           },
           {
             "name": "Base colors/Text/Light",
