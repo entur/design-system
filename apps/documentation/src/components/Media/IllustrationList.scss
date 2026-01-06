@@ -19,14 +19,7 @@
       border-radius: t.$border-radiuses-large;
 
       &__label {
-        // Add extra space above image to compansate for absolute positioned label
-        & + .illustration-list__display-grid__image-box__image.image-display {
-          .gatsby-image-wrapper {
-            img {
-              margin-top: 1rem;
-            }
-          }
-        }
+        margin-bottom: t.$space-extra-small;
       }
     }
 
@@ -35,6 +28,7 @@
 
       .illustration-list__display-grid__image-box {
         padding: 5%;
+        padding-top: 4%;
 
         .image-display {
           aspect-ratio: 1;

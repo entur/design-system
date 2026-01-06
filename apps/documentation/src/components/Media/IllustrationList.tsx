@@ -36,7 +36,7 @@ const IllustrationList = ({
   categoryFilter,
   excludeListFile,
   includeListFile,
-  showIllustrationName = false,
+  showIllustrationName = true,
   disableBackgroundSwitch = false,
   disableColorModeSelector = false,
   squareIllustrations = true,
@@ -104,36 +104,48 @@ const IllustrationList = ({
           'illustration-list__display-grid--square': squareIllustrations,
         })}
       >
-        {filteredIllustrations.map(illustration => (
-          <div
-            className={classNames(
-              'illustration-list__display-grid__image-box',
-              { 'eds-contrast': colorMode === 'contrast' },
-            )}
-            data-color-mode={mapColorMode(colorMode)}
-            style={{
-              border:
-                colorMode === 'standard'
-                  ? `solid 2px ${base.light.baseColors.stroke.subduedalt}`
-                  : '',
-            }}
-            key={illustration.name + illustration.extension}
-          >
-            {showIllustrationName && (
-              <div className="eds-label illustration-list__display-grid__image-box__label">
-                {illustration.sanitizedName}
-              </div>
-            )}
-            <ImageDisplay
-              imgSource={illustration.imgSource}
-              name={illustration.name}
-              downloadSources={illustration.publicUrls}
-              className="illustration-list__display-grid__image-box__image"
-              alwaysShowDownload
-              preset="contain"
-            />
-          </div>
-        ))}
+        {filteredIllustrations.map(illustration => {
+          const displayName = illustration.name
+            .replace(/[-_]/g, ' ')
+            .replace(
+              /\b(contrast|darkmode|dark|default|circle|background)\b/gi,
+              '',
+            )
+            .replace(/\s+/g, ' ')
+            .trim()
+            .replace(/^./, c => c.toUpperCase());
+
+          return (
+            <div
+              className={classNames(
+                'illustration-list__display-grid__image-box',
+                { 'eds-contrast': colorMode === 'contrast' },
+              )}
+              data-color-mode={mapColorMode(colorMode)}
+              style={{
+                border:
+                  colorMode === 'standard'
+                    ? `solid 2px ${base.light.baseColors.stroke.subduedalt}`
+                    : '',
+              }}
+              key={illustration.name + illustration.extension}
+            >
+              {showIllustrationName && (
+                <div className="eds-label illustration-list__display-grid__image-box__label">
+                  {displayName}
+                </div>
+              )}
+              <ImageDisplay
+                imgSource={illustration.imgSource}
+                name={illustration.name}
+                downloadSources={illustration.publicUrls}
+                className="illustration-list__display-grid__image-box__image"
+                alwaysShowDownload
+                preset="contain"
+              />
+            </div>
+          );
+        })}
       </div>
     </div>
   );
