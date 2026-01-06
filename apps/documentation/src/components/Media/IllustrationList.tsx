@@ -36,7 +36,7 @@ const IllustrationList = ({
   categoryFilter,
   excludeListFile,
   includeListFile,
-  showIllustrationName = false,
+  showIllustrationName = true,
   disableBackgroundSwitch = false,
   disableColorModeSelector = false,
   squareIllustrations = true,
@@ -106,12 +106,14 @@ const IllustrationList = ({
       >
         {filteredIllustrations.map(illustration => {
           const displayName = illustration.name
-            .replace(/\s+|-|_/g, ' ')
-            .replace('contrast', '')
-            .replace('darkmode', '')
-            .replace('default', '')
-            .replace('circle', '')
-            .replace('dark', '');
+            .replace(/[-_]/g, ' ')
+            .replace(
+              /\b(contrast|darkmode|dark|default|circle|background)\b/gi,
+              '',
+            )
+            .replace(/\s+/g, ' ')
+            .trim()
+            .replace(/^./, c => c.toUpperCase());
 
           return (
             <div
