@@ -177,7 +177,15 @@ const components = {
       if (props.language === 'jsx') {
         return <Playground code={props.codeString} language={props.language} />;
       } else {
-        return <Text as="pre" variant="preformatted-text" {...preProps} />;
+        return (
+          <CodeBlock
+            language={props.language ?? 'js'}
+            hideLineNumbers
+            wrapLongLines={false}
+          >
+            {props.codeString}
+          </CodeBlock>
+        );
       }
     }
     return <Text as="pre" variant="preformatted-text" {...preProps} />;
