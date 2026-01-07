@@ -9,8 +9,12 @@ export type SquareButtonBaseProps = {
   children: React.ReactNode;
   /** Ekstra klassenavn */
   className?: string;
-  /** En type knapp */
+  /** Knappens uttrykk */
   variant?: 'success' | 'secondary' | 'tertiary';
+  /** Størrelsen på knappen
+   * @default 'medium'
+   */
+  size?: 'small' | 'medium' | 'large';
   /** Deaktivering av knappen
    * @default false
    */
@@ -43,6 +47,7 @@ export const SquareButton: SquareButtonComponent = React.forwardRef(
       disabled = false,
       loading = false,
       variant = 'secondary',
+      size = 'medium',
       ...rest
     }: SquareButtonProps<T>,
     ref: PolymorphicRef<T>,
@@ -53,6 +58,7 @@ export const SquareButton: SquareButtonComponent = React.forwardRef(
         className={classNames(
           'eds-square-button',
           `eds-square-button--${variant}`,
+          `eds-square-button--size-${size}`,
           {
             'eds-square-button--loading': loading,
           },
