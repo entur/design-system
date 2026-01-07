@@ -4,13 +4,16 @@ import { PolymorphicComponentPropsWithRef, PolymorphicRef } from '@entur/utils';
 import { LoadingDots } from '@entur/loader';
 import './SquareButton.scss';
 
+/** @deprecated use variant="secondary" with size="small" instead */
+const tertiary = 'tertiary';
+
 export type SquareButtonBaseProps = {
   /** Tekst og ikon */
   children: React.ReactNode;
   /** Ekstra klassenavn */
   className?: string;
   /** Knappens uttrykk */
-  variant?: 'success' | 'secondary' | 'tertiary';
+  variant?: 'success' | 'secondary' | typeof tertiary;
   /** Størrelsen på knappen
    * @default 'medium'
    */
@@ -58,9 +61,10 @@ export const SquareButton: SquareButtonComponent = React.forwardRef(
         className={classNames(
           'eds-square-button',
           `eds-square-button--${variant}`,
-          `eds-square-button--size-${size}`,
           {
             'eds-square-button--loading': loading,
+            // Untill TertiarySquareButton is deleted we need to exclude it manually
+            [`eds-square-button--size-${size}`]: variant !== 'tertiary',
           },
           className,
         )}

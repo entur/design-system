@@ -5,7 +5,6 @@
   appearance: none;
   background: transparent;
   border: 0;
-  border-radius: var(--components-button-radius-medium);
   cursor: pointer;
   font-size: var(--font-size-body-m);
   display: inline-flex;
@@ -51,7 +50,6 @@
     align-items: center;
     background-color: var(--button-background);
     border: var(--components-button-border-medium) solid var(--border-color);
-    border-radius: var(--components-button-radius-medium);
     color: var(--icon-color);
     display: inline-flex;
     height: var(--components-button-height-horizontalcontent-medium);
@@ -180,6 +178,7 @@
     }
   }
 
+  // @deprecated TertiarySquareButton is deprecated. Use variant="secondary" with size="small" instead
   &--tertiary {
     --button-background: var(--components-button-squaresecondary-standard-default);
     --border-color: var(--components-button-squaresecondary-standard-border);
@@ -223,6 +222,7 @@
       height: t.$space-extra-large;
       width: t.$space-extra-large;
       border-width: t.$border-widths-small;
+      border-radius: t.$border-radiuses-medium;
     }
   }
 }
