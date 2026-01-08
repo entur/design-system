@@ -7,6 +7,10 @@ type SuccessSquareButtonBaseProps = {
   children: React.ReactNode;
   /** Ekstra klassenavn */
   className?: string;
+  /** Størrelsen på knappen
+   * @default 'medium'
+   */
+  size?: 'small' | 'medium' | 'large';
   /** Deaktivering av knappen
    * @default false
    */
