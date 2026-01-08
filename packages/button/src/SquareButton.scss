@@ -14,36 +14,140 @@
   padding: 0;
   text-decoration: none;
 
-  &:focus-visible {
+  &--size-small {
+    font-size: var(--font-size-body-s);
+
+    :where(.eds-square-button__button) {
+      height: var(--components-button-height-horizontalcontent-small);
+      width: var(--components-button-height-horizontalcontent-small);
+      border-width: var(--components-button-border-small);
+      border-radius: var(--components-button-radius-small);
+    }
+
+    :where(.eds-square-button__label) + :where(.eds-square-button__button),
+    :where(.eds-square-button__button) + :where(.eds-square-button__label) {
+      margin-left: var(--components-button-gap-small);
+    }
+  }
+
+  &--size-medium {
+    :where(.eds-square-button__button) {
+      height: var(--components-button-height-horizontalcontent-medium);
+      width: var(--components-button-height-horizontalcontent-medium);
+      border-width: var(--components-button-border-medium);
+      border-radius: var(--components-button-radius-medium);
+    }
+  }
+
+  &--size-large {
+    font-size: var(--font-size-body-xl);
+
+    :where(.eds-square-button__button) {
+      height: var(--components-button-height-horizontalcontent-large);
+      width: var(--components-button-height-horizontalcontent-large);
+      border-width: var(--components-button-border-large);
+      border-radius: var(--components-button-radius-large);
+    }
+
+    :where(.eds-square-button__label) + :where(.eds-square-button__button),
+    :where(.eds-square-button__button) + :where(.eds-square-button__label) {
+      margin-left: var(--components-button-gap-large);
+    }
+  }
+
+  &--secondary {
+    --button-background: var(--components-button-squaresecondary-standard-default);
+    --border-color: var(--components-button-squaresecondary-standard-border);
+    --icon-color: var(--components-button-squaresecondary-standard-icon);
+    --label-color: var(--components-button-squaresecondary-standard-text);
+
+    &:where(:hover) {
+      --button-background: var(--components-button-squaresecondary-standard-hover);
+    }
+    &:where(:active) {
+      --button-background: var(--components-button-squaresecondary-standard-active);
+      --border-color: var(--components-button-squaresecondary-standard-border-active);
+      --icon-color: var(--components-button-squaresecondary-standard-icon-active);
+    }
+
+    :where(.eds-contrast) & {
+      --button-background: var(--components-button-squaresecondary-contrast-default);
+      --border-color: var(--components-button-squaresecondary-contrast-border);
+      --icon-color: var(--components-button-squaresecondary-contrast-icon-default);
+      --label-color: var(--components-button-squaresecondary-contrast-label);
+
+      &:where(:hover) {
+        --button-background: var(--components-button-squaresecondary-contrast-hover);
+        --icon-color: var(--components-button-squaresecondary-contrast-icon-hover);
+      }
+      &:where(:active) {
+        --button-background: var(--components-button-squaresecondary-contrast-active);
+        --border-color: var(--components-button-squaresecondary-contrast-border-active);
+        --icon-color: var(--components-button-squaresecondary-contrast-icon-active);
+      }
+    }
+  }
+
+  &--success {
+    --button-background: var(--components-button-squaresuccess-standard-default);
+    --border-color: var(--components-button-squaresuccess-standard-border);
+    --icon-color: var(--components-button-squaresuccess-standard-icon);
+    --label-color: var(--components-button-squaresuccess-standard-label);
+
+    &:where(:hover) {
+      --button-background: var(--components-button-squaresuccess-standard-hover);
+    }
+    &:where(:active) {
+      --button-background: var(--components-button-squaresuccess-standard-active);
+    }
+
+    :where(.eds-contrast) & {
+      --button-background: var(--components-button-squaresuccess-contrast-default);
+      --border-color: var(--components-button-squaresuccess-contrast-border);
+      --icon-color: var(--components-button-squaresuccess-contrast-icon);
+      --label-color: var(--components-button-squaresuccess-contrast-label);
+
+      &:where(:hover) {
+        --button-background: var(--components-button-squaresuccess-contrast-hover);
+      }
+      &:where(:active) {
+        --button-background: var(--components-button-squaresuccess-contrast-active);
+      }
+    }
+  }
+
+  &--loading {
+    opacity: 1;
+  }
+
+  // Shared focus style for all square buttons
+  &:where(:focus-visible) {
     outline: none;
-    .eds-square-button__button {
+    :where(.eds-square-button__button) {
       outline: t.$outlines-focus;
       outline-color: var(--basecolors-stroke-focus-standard);
       outline-offset: t.$outline-offsets-focus;
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         outline-color: var(--basecolors-stroke-focus-contrast);
       }
     }
   }
 
-  &[disabled]:not(.eds-square-button--loading) {
+  // Shared disabled style for all square buttons
+  &:where([disabled]):where(:not(.eds-square-button--loading)) {
     cursor: not-allowed;
 
-    .eds-square-button__button,
-    .eds-square-button__button:hover {
+    :where(.eds-square-button__button),
+    :where(.eds-square-button__button:hover) {
       border-color: var(--basecolors-stroke-disabled);
       border-style: dashed;
       background-color: transparent;
       color: var(--basecolors-text-disabled);
     }
-    .eds-square-button__label,
-    .eds-square-button__label:hover {
+    :where(.eds-square-button__label),
+    :where(.eds-square-button__label:hover) {
       color: var(--basecolors-text-disabled);
     }
-  }
-
-  &.eds-square-button--loading {
-    opacity: 1;
   }
 
   &__button {
@@ -67,115 +171,13 @@
     color: var(--label-color);
   }
 
-  &__label + &__button,
-  &__button + &__label {
+  &__label + :where(&__button),
+  &__button + :where(&__label) {
     margin-left: var(--components-button-gap-medium);
   }
 
-  .eds-square-button__loading-dots .eds-loading-dots__dot {
+  &__loading-dots :where(.eds-loading-dots__dot) {
     background: var(--icon-color);
-  }
-
-  &--size-small {
-    font-size: var(--font-size-body-s);
-
-    .eds-square-button__button {
-      height: var(--components-button-height-horizontalcontent-small);
-      width: var(--components-button-height-horizontalcontent-small);
-      border-width: var(--components-button-border-small);
-      border-radius: var(--components-button-radius-small);
-    }
-
-    .eds-square-button__label + .eds-square-button__button,
-    .eds-square-button__button + .eds-square-button__label {
-      margin-left: var(--components-button-gap-small);
-    }
-  }
-
-  &--size-medium {
-    .eds-square-button__button {
-      height: var(--components-button-height-horizontalcontent-medium);
-      width: var(--components-button-height-horizontalcontent-medium);
-      border-width: var(--components-button-border-medium);
-      border-radius: var(--components-button-radius-medium);
-    }
-  }
-
-  &--size-large {
-    font-size: var(--font-size-body-xl);
-
-    .eds-square-button__button {
-      height: var(--components-button-height-horizontalcontent-large);
-      width: var(--components-button-height-horizontalcontent-large);
-      border-width: var(--components-button-border-large);
-      border-radius: var(--components-button-radius-large);
-    }
-
-    .eds-square-button__label + .eds-square-button__button,
-    .eds-square-button__button + .eds-square-button__label {
-      margin-left: var(--components-button-gap-large);
-    }
-  }
-
-  &--secondary {
-    --button-background: var(--components-button-squaresecondary-standard-default);
-    --border-color: var(--components-button-squaresecondary-standard-border);
-    --icon-color: var(--components-button-squaresecondary-standard-icon);
-    --label-color: var(--components-button-squaresecondary-standard-text);
-
-    &:hover {
-      --button-background: var(--components-button-squaresecondary-standard-hover);
-    }
-    &:active {
-      --button-background: var(--components-button-squaresecondary-standard-active);
-      --border-color: var(--components-button-squaresecondary-standard-border-active);
-      --icon-color: var(--components-button-squaresecondary-standard-icon-active);
-    }
-
-    .eds-contrast & {
-      --button-background: var(--components-button-squaresecondary-contrast-default);
-      --border-color: var(--components-button-squaresecondary-contrast-border);
-      --icon-color: var(--components-button-squaresecondary-contrast-icon-default);
-      --label-color: var(--components-button-squaresecondary-contrast-label);
-
-      &:hover {
-        --button-background: var(--components-button-squaresecondary-contrast-hover);
-        --icon-color: var(--components-button-squaresecondary-contrast-icon-hover);
-      }
-      &:active {
-        --button-background: var(--components-button-squaresecondary-contrast-active);
-        --border-color: var(--components-button-squaresecondary-contrast-border-active);
-        --icon-color: var(--components-button-squaresecondary-contrast-icon-active);
-      }
-    }
-  }
-
-  &--success {
-    --button-background: var(--components-button-squaresuccess-standard-default);
-    --border-color: var(--components-button-squaresuccess-standard-border);
-    --icon-color: var(--components-button-squaresuccess-standard-icon);
-    --label-color: var(--components-button-squaresuccess-standard-label);
-
-    &:hover {
-      --button-background: var(--components-button-squaresuccess-standard-hover);
-    }
-    &:active {
-      --button-background: var(--components-button-squaresuccess-standard-active);
-    }
-
-    .eds-contrast & {
-      --button-background: var(--components-button-squaresuccess-contrast-default);
-      --border-color: var(--components-button-squaresuccess-contrast-border);
-      --icon-color: var(--components-button-squaresuccess-contrast-icon);
-      --label-color: var(--components-button-squaresuccess-contrast-label);
-
-      &:hover {
-        --button-background: var(--components-button-squaresuccess-contrast-hover);
-      }
-      &:active {
-        --button-background: var(--components-button-squaresuccess-contrast-active);
-      }
-    }
   }
 
   // @deprecated TertiarySquareButton is deprecated. Use variant="secondary" with size="small" instead
