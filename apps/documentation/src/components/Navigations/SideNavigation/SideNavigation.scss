@@ -71,23 +71,9 @@
     margin-left: 2rem;
     margin-top: 1rem;
 
-    .eds-icon {
-      margin-right: 0.5rem;
-      margin-left: 0rem;
-      position: relative;
-      bottom: 0.1rem;
-      top: 0;
-    }
-
-    span {
-      flex: 1;
-      text-align: left;
-      position: relative;
-      top: 0.1rem;
-    }
     kbd {
-      position: relative;
-      bottom: 0.2rem;
+      display: inline-block;
+      margin-left: auto;
     }
   }
 

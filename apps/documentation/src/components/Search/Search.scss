@@ -9,8 +9,6 @@
   padding-top: t.$space-extra-large;
 
   &__button {
-    display: flex;
-    padding-top: 0.25rem;
     padding-inline: 0.25rem;
     margin-left: t.$space-default;
     white-space: nowrap;
@@ -24,11 +22,9 @@
     }
 
     kbd {
-      padding-inline: 0.2rem;
-      padding-top: 0.1rem;
+      display: inline-block;
       margin-left: 0.75rem;
-      display: flex;
-      align-items: center;
+      padding-inline: 0.2rem;
 
       @media screen and (max-width: map.get(variables.$breakpoints, 'mobile')) {
         display: none;
