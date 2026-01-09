@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.8.2-beta-automat.0](https://github.com/entur/design-system/compare/studio-linje@1.8.1...studio-linje@1.8.2-beta-automat.0) (2026-01-09)
+
+### Bug Fixes
+
+- make studio-linje use local version of icons to avoid crash in CI ([cfcc7c5](https://github.com/entur/design-system/commit/cfcc7c501d6cbb0f59a95912b81bec58b211debd))
+
 # [1.8.0](https://github.com/entur/design-system/compare/studio-linje@1.7.0...studio-linje@1.8.0) (2025-12-05)
 
 ### Features

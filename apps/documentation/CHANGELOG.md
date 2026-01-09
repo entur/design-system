@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.14.0-beta-automat.0](https://github.com/entur/design-system/compare/@entur/documentation@6.13.1...@entur/documentation@6.14.0-beta-automat.0) (2026-01-09)
+
+### Bug Fixes
+
+- **website:** fix visual issues with search buttons after button update ([f8a798a](https://github.com/entur/design-system/commit/f8a798a2175ce44500a9c600d88104036994d550))
+
+### Features
+
+- **website:** change component used to display code snippets ([fc7be89](https://github.com/entur/design-system/commit/fc7be8902e8058f99764fda1cfb4147644c069a0))
+
 # [6.13.0](https://github.com/entur/design-system/compare/@entur/documentation@6.12.2...@entur/documentation@6.13.0) (2025-12-05)
 
 ### Bug Fixes

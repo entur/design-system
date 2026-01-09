@@ -1,6 +1,6 @@
 {
   "name": "@entur/datepicker",
-  "version": "11.5.1",
+  "version": "11.5.2-beta-automat.0",
   "license": "EUPL-1.2",
   "main": "dist/datepicker.cjs.js",
   "module": "dist/datepicker.esm.js",

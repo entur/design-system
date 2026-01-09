@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.8.2-beta-automat.0](https://github.com/entur/design-system/compare/@entur/modal@1.8.1...@entur/modal@1.8.2-beta-automat.0) (2026-01-09)
+
+**Note:** Version bump only for package @entur/modal
+
 # [1.8.0](https://github.com/entur/design-system/compare/@entur/modal@1.7.79...@entur/modal@1.8.0) (2025-12-05)
 
 ### Features

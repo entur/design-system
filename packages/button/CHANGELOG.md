@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.0.0-beta-automat.0](https://github.com/entur/design-system/compare/@entur/button@3.4.1...@entur/button@4.0.0-beta-automat.0) (2026-01-09)
+
+### Bug Fixes
+
+- **button/button:** button overflow now results in elipsis instead of visual overflow ([822ace8](https://github.com/entur/design-system/commit/822ace8c70422d7bebd3d6685c4626e0f4196003))
+
+### Code Refactoring
+
+- **button/square button:** reduce specificity for all square button classes to 0,1,0 ([c9e5379](https://github.com/entur/design-system/commit/c9e5379bd2e7042827fa81729b4cdbdfe42d4630))
+
+### Features
+
+- **button/button:** add support for dynamic typography size ([1a34907](https://github.com/entur/design-system/commit/1a349073268e5ca162cfa827a37abdb92389eca0))
+- **button/button:** add support for view mode in button ([910ffa0](https://github.com/entur/design-system/commit/910ffa0fd85065098219b2c9dd6eaa23aa23976b))
+- **button/button:** change minimum width for button to the same as button height ([8197702](https://github.com/entur/design-system/commit/8197702f7da08cb1d8307747b4cd76b067cfad51))
+- **button/button:** reduce css specificity for all button classes to 0,1,0 ([0735123](https://github.com/entur/design-system/commit/07351235396cd3541dbf2799715f34c9aaf5503c))
+- **button/square button:** add size prop to square button components ([e36e4fb](https://github.com/entur/design-system/commit/e36e4fb2cad588317b8a7a1337dca16ddbc367d6))
+- **button/square button:** add support for view-mode in square button ([5777718](https://github.com/entur/design-system/commit/5777718553cc7a2e18f76d390609ff5d1ed718e3))
+- **button/tertiary square button:** deprecate TertiarySquareButton ([0a7c3ff](https://github.com/entur/design-system/commit/0a7c3ff989f42299ab68362bba83fd76541edef1))
+
+### BREAKING CHANGES
+
+- **button/square button:** New class specificities could lead to visual changes if you override these classes.
+- **button/button:** New specificity for classes could lead to visual changes if you have overridden
+  button classes
+- **button/button:** Buttons with short text are likely to shrink in size. Set `min-width: 9.5rem;` to
+  preserve old behaviour.
+- **button/button:** The new architecture could include small visual changes.
+
 # [3.4.0](https://github.com/entur/design-system/compare/@entur/button@3.3.19...@entur/button@3.4.0) (2025-12-05)
 
 ### Features
