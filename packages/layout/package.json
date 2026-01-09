@@ -5,6 +5,27 @@
   "main": "dist/layout.cjs.js",
   "module": "dist/layout.esm.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/layout.esm.js",
+      "require": "./dist/layout.cjs.js",
+      "default": "./dist/layout.esm.js"
+    },
+    "./beta": {
+      "types": "./dist/beta/types/index.d.ts",
+      "import": "./dist/beta/esm/index.mjs",
+      "require": "./dist/beta/cjs/index.cjs",
+      "default": "./dist/beta/esm/index.mjs"
+    },
+    "./beta/styles": "./dist/beta/styles/index.css",
+    "./dist/*": "./dist/*",
+    "./dist/beta": null,
+    "./dist/beta/*": null
+  },
+  "sideEffects": [
+    "./dist/**/*.css"
+  ],
   "files": [
     "dist"
   ],
@@ -18,7 +39,10 @@
   },
   "scripts": {
     "start": "vite build --watch",
-    "build": "vite build",
+    "start:beta": "vite build --config vite.config.beta.ts --watch",
+    "build": "yarn build:main && yarn build:beta",
+    "build:main": "vite build",
+    "build:beta": "vite build --config vite.config.beta.ts",
     "test": "jest",
     "lint": "eslint src"
   },

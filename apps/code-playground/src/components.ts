@@ -10,7 +10,7 @@ export * from '@entur/dropdown';
 export * from '@entur/expand';
 export * from '@entur/fileupload';
 export * from '@entur/form';
-export * from '@entur/grid';
+// export * from '@entur/grid';
 export * from '@entur/icons';
 export * from '@entur/layout';
 export * from '@entur/loader';
