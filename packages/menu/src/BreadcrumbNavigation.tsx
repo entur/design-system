@@ -1,12 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
-import { BreadcrumbItem } from './BreadcrumbItem';
-import './BreadcrumbNavigation.scss';
 
-type ElementOf<T extends React.JSXElementConstructor<any>> = React.ReactElement<
-  React.ComponentProps<T>,
-  T
->;
+import './BreadcrumbNavigation.scss';
 
 export type BreadcrumbNavigationProps = React.HTMLAttributes<HTMLElement> & {
   /** Label for brødsmulestien.
@@ -14,7 +9,7 @@ export type BreadcrumbNavigationProps = React.HTMLAttributes<HTMLElement> & {
    */
   'aria-label'?: string;
   /** En liste med BreadcrumbItem-er */
-  children: ElementOf<typeof BreadcrumbItem>;
+  children: React.ReactNode;
 };
 
 export const BreadcrumbNavigation: React.FC<BreadcrumbNavigationProps> = ({
