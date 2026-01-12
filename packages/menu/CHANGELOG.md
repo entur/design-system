@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0-beta.1](https://github.com/entur/design-system/compare/@entur/menu@5.3.1...@entur/menu@6.0.0-beta.1) (2026-01-12)
+
+### Bug Fixes
+
+- **menu/breadcrumb navigation:** change to consistent class names with eds-breadcrumbs prefix ([fcda3ac](https://github.com/entur/design-system/commit/fcda3ac895c037e683e317637a142f72b47f1ae5))
+- **menu/breadcrumb navigation:** improve breadcrumb navigation and item structure ([1ad590d](https://github.com/entur/design-system/commit/1ad590d91eb424604be0fa36e590b6922d6909d5))
+
+### Features
+
+- **menu/breadcrumb navigation:** change CSS specificity for all breadcrumb classes to 0,1,0 ([5d837c4](https://github.com/entur/design-system/commit/5d837c4b5f558cdf6d853c2566d6a5a4685efaa4))
+
+### BREAKING CHANGES
+
+- **menu/breadcrumb navigation:** CSS specificity changes could lead to visual breaking changes if you override these
+  classes
+- **menu/breadcrumb navigation:** May lead to breaking changes if you have overriden classes in breadcrumb navgation
+
 # [6.0.0-beta.0](https://github.com/entur/design-system/compare/@entur/menu@5.3.1...@entur/menu@6.0.0-beta.0) (2026-01-05)
 
 ### Bug Fixes
