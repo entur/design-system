@@ -43,18 +43,52 @@ Det er litt mer arbeid å komme i gang med nye prosjekter, men vedlikeholdet av 
 
 ## Inkluder CSS
 
-Du kan inkludere CSSen i hver pakke i prosjektet ditt på den måten som passer best for deg.
+For at komponentene skal se riktige ut, må du inkludere CSS-filene fra pakkene du bruker. Dette bør gjøres på et globalt nivå i applikasjonen din (f.eks. i `App.tsx`, `index.js`, eller en global `.scss`-fil) for å sikre at stilene er tilgjengelige i hele prosjektet.
 
-Du kan importere CSS-filen i en `.scss` eller `.less` fil med et `@use` statement:
+### Hvordan importere
 
-```scss
-@use '@entur/button/dist/styles.css' as tokens;
-```
-
-Om du bruker `webpack`, kan du bruke en loader ([her er en fin artikkel](https://medium.com/a-beginners-guide-for-webpack-2/webpack-loaders-css-and-sass-2cc0079b5b3a) som guider deg gjennom dette) til å importere det rett i JavaScripten din.
+Du kan importere CSS direkte i JavaScript eller TypeScript (anbefalt for moderne prosjekter):
 
 ```js
 import '@entur/button/dist/styles.css';
+...
+```
+
+Eller i en CSS/SCSS-fil:
+
+```css
+@import '@entur/button/dist/styles.css';
+```
+```scss
+@use '@entur/button/dist/styles.css' as *;
+```
+
+### Riktig rekkefølge
+
+For å unngå uventede stilkonflikter er det viktig å importere pakkene i riktig rekkefølge. Her er den anbefalte rekkefølgen for alle pakkene:
+
+```css
+@import '@entur/a11y/dist/styles.css';
+@import '@entur/grid/dist/styles.css';
+@import '@entur/icons/dist/styles.css';
+@import '@entur/tab/dist/styles.css';
+@import '@entur/typography/dist/styles.css';
+@import '@entur/typography/beta/styles';
+@import '@entur/layout/dist/styles.css';
+@import '@entur/loader/dist/styles.css';
+@import '@entur/expand/dist/styles.css';
+@import '@entur/button/dist/styles.css';
+@import '@entur/alert/dist/styles.css';
+@import '@entur/menu/dist/styles.css';
+@import '@entur/fileupload/dist/styles.css';
+@import '@entur/modal/dist/styles.css';
+@import '@entur/tooltip/dist/styles.css';
+@import '@entur/form/dist/styles.css';
+@import '@entur/chip/dist/styles.css';
+@import '@entur/datepicker/dist/styles.css';
+@import '@entur/travel/dist/styles.css';
+@import '@entur/table/dist/styles.css';
+@import '@entur/dropdown/dist/styles.css';
 ```
 
 ## React-komponenter
