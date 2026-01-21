@@ -53,6 +53,11 @@
       transition: opacity 0.5s ease-in-out;
       overflow: visible;
 
+      // Just Safari things ¯\_(ツ)_/¯
+      // Parallax scaling is broken in Safari
+      @supports (-webkit-touch-callout: none) {
+        transform: $disabled-parallax-transform;
+      }
       @media (prefers-reduced-motion) {
         transform: $disabled-parallax-transform;
       }
