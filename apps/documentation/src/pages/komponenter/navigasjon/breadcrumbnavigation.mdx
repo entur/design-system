@@ -1,0 +1,103 @@
+---
+title: BreadcrumbNavigation
+description: Brødsmulesti (breadcrumbs) er et navigasjonselement som viser hvor man er i navigasjonshierarkiet, og hvordan man navigerer seg tilbake.
+route: /komponenter/navigasjon/breadcrumbnavigation
+parent: Komponenter
+menu: Navigasjon
+npmPackage: menu
+tags: brødsmuler, sidenavigasjon, steg, brødsmulesti
+---
+
+import { BreadcrumbNavigation, BreadcrumbItem } from '@entur/menu';
+import { SEO } from '@components/seo/SEO';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+<PageHeader />
+
+```jsx
+<div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', justifyContent: 'center' }}>
+  <BreadcrumbNavigation>
+    <BreadcrumbItem href="/">
+      Hjem
+    </BreadcrumbItem>
+    <BreadcrumbItem href="/komponenter">
+      Komponenter
+    </BreadcrumbItem>
+    <BreadcrumbItem>
+      Breadcrumbs
+    </BreadcrumbItem>
+  </BreadcrumbNavigation>
+    <BreadcrumbNavigation>
+    <BreadcrumbItem as={Link} to="/">
+      Hjem
+    </BreadcrumbItem>
+    <BreadcrumbItem as={Link} to="/komponenter">
+      Komponenter
+    </BreadcrumbItem>
+    <BreadcrumbItem>
+      Breadcrumbs
+    </BreadcrumbItem>
+  </BreadcrumbNavigation>
+</div>
+```
+
+## Bruk
+
+Brødsmulesti er et navigasjonselement som viser hvor brukeren befinner seg i navigasjonshierarkiet og gjør det mulig å hoppe raskt tilbake til tidligere nivåer.
+Komponentens hovedoppgave er å hjelpe brukerne å forstå hvor de befinner seg og å navigere effektivt mellom nivåene.
+
+## Komponenter
+
+### BreadcrumbNavigation
+
+`<BreadcrumbNavigation />` er en wrapper-komponent som brukes rundt `<BreadcrumbItem />`-komponenter for å lage en komplett brødsmulesti.
+
+Merk at du kun kan sende inn `<BreadcrumbItem />`-komponenter som `children` til denne komponenten for at den skal fungere som forventet.
+
+### BreadcrumbItem
+
+`<BreadcrumbItem />` lager en lenke i brødsmulestien. Du sender inn navnet på siden som `children`, og lenken som `href`. 
+Det er også mulig å bruke spesiallenker som `Link` fra `react-router-dom` gjennom `as={Link}`. 
+
+Det siste elementet i listen blir automatisk markert som aktivt (`aria-current="page"`) og rendres som en `span` i stedet for en lenke. 
+For å fungere som forventet må komponentene plasseres inne i en `<BreadcrumbNavigation />`-komponent.
+
+## Retningslinjer
+
+### Passer til:
+
+- nettsteder med tre eller flere navigasjonsnivåer
+- sider der brukeren kan ha lyst til å gå tilbake til et tidligere nivå
+- å hjelpe brukeren å forstå hvor i nettstedet de befinner seg
+
+### Passer ikke til:
+
+- lineær navigasjon, slik som skjemaer eller brukerreiser med flere steg. Her beveger man seg ikke nedover i hierarkiet, vi anbefaler da heller [`Stepper`-komponenten](/komponenter/navigasjon/stepper).
+
+### Plassering
+
+Breadcrumbs skal ligge øverst til venstre på siden. De plasseres under menyen og hovednavigasjonen, men over sidetittelen.
+
+### Tekst
+
+Bruk korte og tydelige navn som gjør det enkelt å forstå hvert nivå. Teksten bør samsvare med overskrifter og navigasjonsstrukturen slik at nivåene er lette å kjenne igjen.
+
+## Tilgjengelighet
+
+Breadcrumbs kan inneholde flere interaktive elementer og må være navigerbare med tastatur. Sørg for at [`SkipToContent`](/komponenter/ressurser/tilgjengelighet#skiptocontent) hopper over brødsmulestien.
+Det siste nivået skal representere gjeldende side. Det vises som vanlig tekst, men kodes som en lenke med `aria-current="page"` for at skjermlesere skal gi korrekt informasjon uten at det fremstår som klikkbart for vanlige brukere.
+
+## Props
+
+### BreadcrumbNavigation
+
+<ImportStatement imports="BreadcrumbNavigation" packageName={props.pageContext.frontmatter.npmPackage}/>
+<Props componentName="BreadcrumbNavigation" />
+
+### BreadcrumbItem
+
+<ImportStatement imports="BreadcrumbItem" packageName={props.pageContext.frontmatter.npmPackage}/>
+<Props componentName="BreadcrumbItem" />
