@@ -30,6 +30,7 @@ export type TertiarySquareButtonComponent = <
 
 const defaultElement = 'button';
 
+/** @deprecated use SecondarySquareButton with size="small" instead */
 export const TertiarySquareButton: TertiarySquareButtonComponent =
   React.forwardRef(
     <T extends React.ElementType = typeof defaultElement>(

@@ -5,9 +5,8 @@
   appearance: none;
   background: transparent;
   border: 0;
-  border-radius: t.$border-radiuses-medium;
   cursor: pointer;
-  font-size: t.$font-sizes-large;
+  font-size: var(--font-size-body-m);
   display: inline-flex;
   font-family: inherit;
   font-weight: t.$font-weights-body;
@@ -15,67 +14,45 @@
   padding: 0;
   text-decoration: none;
 
-  &:focus-visible {
-    outline: none;
-    .eds-square-button__button {
-      outline: t.$outlines-focus;
-      outline-color: var(--basecolors-stroke-focus-standard);
-      outline-offset: t.$outline-offsets-focus;
-      .eds-contrast & {
-        outline-color: var(--basecolors-stroke-focus-contrast);
-      }
+  &--size-small {
+    font-size: var(--font-size-body-s);
+
+    :where(.eds-square-button__button) {
+      height: var(--components-button-height-horizontalcontent-small);
+      width: var(--components-button-height-horizontalcontent-small);
+      border-width: var(--components-button-border-small);
+      border-radius: var(--components-button-radius-small);
+    }
+
+    :where(.eds-square-button__label) + :where(.eds-square-button__button),
+    :where(.eds-square-button__button) + :where(.eds-square-button__label) {
+      margin-left: var(--components-button-gap-small);
     }
   }
 
-  &[disabled]:not(.eds-square-button--loading) {
-    cursor: not-allowed;
-
-    .eds-square-button__button,
-    .eds-square-button__button:hover {
-      border-color: var(--basecolors-stroke-disabled);
-      border-style: dashed;
-      background-color: transparent;
-      color: var(--basecolors-text-disabled);
-    }
-    .eds-square-button__label,
-    .eds-square-button__label:hover {
-      color: var(--basecolors-text-disabled);
+  &--size-medium {
+    :where(.eds-square-button__button) {
+      height: var(--components-button-height-horizontalcontent-medium);
+      width: var(--components-button-height-horizontalcontent-medium);
+      border-width: var(--components-button-border-medium);
+      border-radius: var(--components-button-radius-medium);
     }
   }
 
-  &.eds-square-button--loading {
-    opacity: 1;
-  }
+  &--size-large {
+    font-size: var(--font-size-body-xl);
 
-  &__button {
-    align-items: center;
-    background-color: var(--button-background);
-    border: t.$border-widths-default solid var(--border-color);
-    border-radius: t.$border-radiuses-medium;
-    color: var(--icon-color);
-    display: inline-flex;
-    height: t.$space-extra-large3;
-    justify-content: center;
-    line-height: t.$line-heights-extra-large;
-    padding: 0;
-    text-align: center;
-    text-decoration: none;
-    vertical-align: top;
-    position: relative;
-    width: t.$space-extra-large3;
-  }
+    :where(.eds-square-button__button) {
+      height: var(--components-button-height-horizontalcontent-large);
+      width: var(--components-button-height-horizontalcontent-large);
+      border-width: var(--components-button-border-large);
+      border-radius: var(--components-button-radius-large);
+    }
 
-  &__label {
-    color: var(--label-color);
-  }
-
-  &__label + &__button,
-  &__button + &__label {
-    margin-left: t.$space-default;
-  }
-
-  .eds-square-button__loading-dots .eds-loading-dots__dot {
-    background: var(--icon-color);
+    :where(.eds-square-button__label) + :where(.eds-square-button__button),
+    :where(.eds-square-button__button) + :where(.eds-square-button__label) {
+      margin-left: var(--components-button-gap-large);
+    }
   }
 
   &--secondary {
@@ -84,26 +61,26 @@
     --icon-color: var(--components-button-squaresecondary-standard-icon);
     --label-color: var(--components-button-squaresecondary-standard-text);
 
-    &:hover {
+    &:where(:hover) {
       --button-background: var(--components-button-squaresecondary-standard-hover);
     }
-    &:active {
+    &:where(:active) {
       --button-background: var(--components-button-squaresecondary-standard-active);
       --border-color: var(--components-button-squaresecondary-standard-border-active);
       --icon-color: var(--components-button-squaresecondary-standard-icon-active);
     }
 
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       --button-background: var(--components-button-squaresecondary-contrast-default);
       --border-color: var(--components-button-squaresecondary-contrast-border);
       --icon-color: var(--components-button-squaresecondary-contrast-icon-default);
       --label-color: var(--components-button-squaresecondary-contrast-label);
 
-      &:hover {
+      &:where(:hover) {
         --button-background: var(--components-button-squaresecondary-contrast-hover);
         --icon-color: var(--components-button-squaresecondary-contrast-icon-hover);
       }
-      &:active {
+      &:where(:active) {
         --button-background: var(--components-button-squaresecondary-contrast-active);
         --border-color: var(--components-button-squaresecondary-contrast-border-active);
         --icon-color: var(--components-button-squaresecondary-contrast-icon-active);
@@ -117,28 +94,93 @@
     --icon-color: var(--components-button-squaresuccess-standard-icon);
     --label-color: var(--components-button-squaresuccess-standard-label);
 
-    &:hover {
+    &:where(:hover) {
       --button-background: var(--components-button-squaresuccess-standard-hover);
     }
-    &:active {
+    &:where(:active) {
       --button-background: var(--components-button-squaresuccess-standard-active);
     }
 
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       --button-background: var(--components-button-squaresuccess-contrast-default);
       --border-color: var(--components-button-squaresuccess-contrast-border);
       --icon-color: var(--components-button-squaresuccess-contrast-icon);
       --label-color: var(--components-button-squaresuccess-contrast-label);
 
-      &:hover {
+      &:where(:hover) {
         --button-background: var(--components-button-squaresuccess-contrast-hover);
       }
-      &:active {
+      &:where(:active) {
         --button-background: var(--components-button-squaresuccess-contrast-active);
       }
     }
   }
 
+  &--loading {
+    opacity: 1;
+  }
+
+  // Shared focus style for all square buttons
+  &:where(:focus-visible) {
+    outline: none;
+    :where(.eds-square-button__button) {
+      outline: t.$outlines-focus;
+      outline-color: var(--basecolors-stroke-focus-standard);
+      outline-offset: t.$outline-offsets-focus;
+      :where(.eds-contrast) & {
+        outline-color: var(--basecolors-stroke-focus-contrast);
+      }
+    }
+  }
+
+  // Shared disabled style for all square buttons
+  &:where([disabled]):where(:not(.eds-square-button--loading)) {
+    cursor: not-allowed;
+
+    :where(.eds-square-button__button),
+    :where(.eds-square-button__button:hover) {
+      border-color: var(--basecolors-stroke-disabled);
+      border-style: dashed;
+      background-color: transparent;
+      color: var(--basecolors-text-disabled);
+    }
+    :where(.eds-square-button__label),
+    :where(.eds-square-button__label:hover) {
+      color: var(--basecolors-text-disabled);
+    }
+  }
+
+  &__button {
+    align-items: center;
+    background-color: var(--button-background);
+    border: var(--components-button-border-medium) solid var(--border-color);
+    color: var(--icon-color);
+    display: inline-flex;
+    height: var(--components-button-height-horizontalcontent-medium);
+    justify-content: center;
+    line-height: t.$line-heights-extra-large;
+    padding: 0;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: top;
+    position: relative;
+    width: var(--components-button-height-horizontalcontent-medium);
+  }
+
+  &__label {
+    color: var(--label-color);
+  }
+
+  &__label + :where(&__button),
+  &__button + :where(&__label) {
+    margin-left: var(--components-button-gap-medium);
+  }
+
+  &__loading-dots :where(.eds-loading-dots__dot) {
+    background: var(--icon-color);
+  }
+
+  // @deprecated TertiarySquareButton is deprecated. Use variant="secondary" with size="small" instead
   &--tertiary {
     --button-background: var(--components-button-squaresecondary-standard-default);
     --border-color: var(--components-button-squaresecondary-standard-border);
@@ -182,6 +224,7 @@
       height: t.$space-extra-large;
       width: t.$space-extra-large;
       border-width: t.$border-widths-small;
+      border-radius: t.$border-radiuses-medium;
     }
   }
 }
