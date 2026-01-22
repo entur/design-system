@@ -39,6 +39,7 @@
 
   &__modal.eds-modal__content {
     overflow: visible;
+    overflow-y: auto;
   }
   &__container {
     display: none;

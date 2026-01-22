@@ -4,7 +4,7 @@ import { CookieIcon, NightIcon, SettingsIcon, SunIcon } from '@entur/icons';
 import { Heading5 } from '@entur/typography';
 import { PrimaryButton, SecondaryButton, IconButton } from '@entur/button';
 import { Dropdown } from '@entur/dropdown';
-import { SegmentedChoice, SegmentedControl, TextField } from '@entur/form';
+import { SegmentedChoice, SegmentedControl } from '@entur/form';
 import { Modal } from '@entur/modal';
 
 import {
@@ -12,7 +12,6 @@ import {
   UserType,
   VariableFormat,
   PackageManager,
-  usePersistedState,
 } from '@providers/SettingsContext';
 
 import './SettingsPanel.scss';
@@ -87,10 +86,10 @@ const SettingsPanel = () => {
             selectedValue={colorMode ?? 'light'}
           >
             <SegmentedChoice value="light">
-              Lys <SunIcon inline />
+              Lys <SunIcon style={{ marginLeft: '0.25rem' }} />
             </SegmentedChoice>
             <SegmentedChoice value="dark">
-              Mørk <NightIcon inline />
+              Mørk <NightIcon style={{ marginLeft: '0.25rem' }} />
             </SegmentedChoice>
             <SegmentedChoice value="system">System</SegmentedChoice>
           </SegmentedControl>
