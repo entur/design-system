@@ -1,58 +1,67 @@
 @use '@entur/tokens/dist/styles.scss' as t;
 
-.eds-breadcrumb {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.eds-breadcrumb__item {
-  display: inline-block;
-  color: var(--components-menu-breadcrumb-standard-text);
-  .eds-contrast & {
-    color: var(--components-menu-breadcrumb-contrast-text);
-  }
-}
-
-.eds-breadcrumb__separator {
-  margin: 0 t.$space-extra-small2 0 t.$space-extra-small2;
-}
-
-.eds-breadcrumb__link {
-  text-decoration: none;
-  color: var(--components-menu-breadcrumb-standard-text);
-  background-image: linear-gradient(120deg, var(--components-menu-breadcrumb-standard-text) 0%, var(--components-menu-breadcrumb-standard-text) 100%);
-  background-repeat: no-repeat;
-  background-size: 100% 0.125rem;
-  background-position: 0 100%;
-  .eds-contrast & {
-    color: var(--components-menu-breadcrumb-contrast-text);
-    background-image: linear-gradient(120deg, var(--components-menu-breadcrumb-contrast-text) 0%, var(--components-menu-breadcrumb-contrast-text) 100%);
+.eds-breadcrumbs {
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
   }
 
-  &:hover {
-    animation: eds-breadcrumb-underline 0.3s ease-in;
-  }
+  &__item {
+    display: inline-block;
+    color: var(--components-menu-breadcrumb-standard-text);
+    :where(.eds-contrast) & {
+      color: var(--components-menu-breadcrumb-contrast-text);
+    }
 
-  &:focus-visible {
-    outline: t.$outlines-focus;
-    outline-color: var(--basecolors-stroke-focus-standard);
-    outline-offset: t.$outline-offsets-focus;
-    .eds-contrast & {
-      outline-color: var(--basecolors-stroke-focus-contrast);
+    &__link {
+      color: var(--components-menu-breadcrumb-standard-text);
+
+      &:where(:focus-visible) {
+        outline: t.$outlines-focus;
+        outline-color: var(--basecolors-stroke-focus-standard);
+        outline-offset: t.$outline-offsets-focus;
+
+        :where(.eds-contrast) & {
+          outline-color: var(--basecolors-stroke-focus-contrast);
+        }
+      }
+
+      &:not(:where(&--current)) {
+        text-decoration: none;
+        background-image: linear-gradient(120deg, var(--components-menu-breadcrumb-standard-text) 0%, var(--components-menu-breadcrumb-standard-text) 100%);
+        background-repeat: no-repeat;
+        background-size: 100% 0.125rem;
+        background-position: 0 100%;
+
+        :where(.eds-contrast) & {
+          color: var(--components-menu-breadcrumb-contrast-text);
+          background-image: linear-gradient(120deg, var(--components-menu-breadcrumb-contrast-text) 0%, var(--components-menu-breadcrumb-contrast-text) 100%);
+        }
+
+        &:where(:hover) {
+          animation: eds-breadcrumbs-underline 0.3s ease-in;
+          cursor: pointer;
+        }
+
+        @keyframes eds-breadcrumbs-underline {
+          from {
+            background-size: 0% t.$border-widths-default;
+          }
+          to {
+            background-size: 100% t.$border-widths-default;
+          }
+        }
+      }
+
+      &--current {
+        font-weight: t.$font-weights-heading;
+        cursor: default;
+      }
     }
   }
 
-  @keyframes eds-breadcrumb-underline {
-    from {
-      background-size: 0% t.$border-widths-default;
-    }
-    to {
-      background-size: 100% t.$border-widths-default;
-    }
-  }
-
-  &--current {
-    font-weight: t.$font-weights-heading;
+  &__separator {
+    margin: 0 t.$space-extra-small2 0 t.$space-extra-small2;
   }
 }
