@@ -51,13 +51,15 @@ const isValidSpacingValue = (value: unknown): value is GridSpacingValue => {
 
 export const getSpacingValue = (
   spacing: GridSpacingValue | undefined,
+  componentName = 'Grid',
 ): string | undefined => {
-  if (!spacing || spacing === 'none') return undefined;
+  if (!spacing) return undefined;
+  if (spacing === 'none') return '0';
 
   if (!isValidSpacingValue(spacing)) {
     if (process.env.NODE_ENV !== 'production') {
       console.warn(
-        `Invalid Grid spacing value: "${spacing}". Valid values are: ${VALID_SPACING_VALUES.join(
+        `Invalid ${componentName} spacing value: "${spacing}". Valid values are: ${VALID_SPACING_VALUES.join(
           ', ',
         )}. Falling back to undefined.`,
       );

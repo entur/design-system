@@ -13,6 +13,7 @@ export * from '@entur/form';
 // export * from '@entur/grid';
 export * from '@entur/icons';
 export * from '@entur/layout';
+export * from '@entur/layout/beta';
 export * from '@entur/loader';
 export * from '@entur/menu';
 export * from '@entur/modal';

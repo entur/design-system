@@ -4,6 +4,7 @@
 import './index.scss';
 
 export { Grid, GridItem, LayoutWrapper, useLayoutValues } from './Grid';
+export { Flex, FlexSpacer } from './Flex';
 export type {
   GridProps,
   GridOwnProps,
@@ -12,3 +13,10 @@ export type {
   GridSpacingValue,
   ResponsiveValue,
 } from './Grid';
+export type {
+  FlexProps,
+  FlexOwnProps,
+  FlexSpacingValue,
+  FlexSpacerProps,
+  FlexSpacerOwnProps,
+} from './Flex';
