@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.1](https://github.com/entur/design-system/compare/@entur/button@4.0.0...@entur/button@4.0.1) (2026-01-23)
+
+### Bug Fixes
+
+- **button/square button:** size and disabled styles were not applied correctly ([563a5e6](https://github.com/entur/design-system/commit/563a5e66c4c862ec457700e83d04608c37694b3b))
+
 # [4.0.0](https://github.com/entur/design-system/compare/@entur/button@3.4.1...@entur/button@4.0.0) (2026-01-23)
 
 ### Bug Fixes
