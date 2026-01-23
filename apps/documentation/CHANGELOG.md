@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.14.0](https://github.com/entur/design-system/compare/@entur/documentation@6.13.1...@entur/documentation@6.14.0) (2026-01-23)
+
+### Bug Fixes
+
+- **website:** add scroll on overflow to settings panel ([de74e7f](https://github.com/entur/design-system/commit/de74e7f20996cccd055434cf761195e60aa94005))
+- **website:** broken parallax frontpage in Safari ([c99ccbe](https://github.com/entur/design-system/commit/c99ccbe742d2183d8111df107503f352e29b5023))
+- **website:** fix visual issues with search buttons after button update ([9288084](https://github.com/entur/design-system/commit/9288084e6cb858990ab953fdf82de042ac788bc0))
+
+### Features
+
+- **website:** change component used to display code snippets ([fc7be89](https://github.com/entur/design-system/commit/fc7be8902e8058f99764fda1cfb4147644c069a0))
+
 # [6.13.0](https://github.com/entur/design-system/compare/@entur/documentation@6.12.2...@entur/documentation@6.13.0) (2025-12-05)
 
 ### Bug Fixes

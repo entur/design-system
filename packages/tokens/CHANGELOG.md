@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.22.0](https://github.com/entur/design-system/compare/@entur/tokens@3.21.1...@entur/tokens@3.22.0) (2026-01-23)
+
+### Features
+
+- **tokens/base:** add highlight-alt color to base ([6e48e5e](https://github.com/entur/design-system/commit/6e48e5eeaabe3faaff098089410421b785afcc56))
+
 # [3.21.0](https://github.com/entur/design-system/compare/@entur/tokens@3.20.0...@entur/tokens@3.21.0) (2025-12-05)
 
 ### Features

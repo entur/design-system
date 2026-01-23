@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.4.1](https://github.com/entur/design-system/compare/@entur/icons@8.4.0...@entur/icons@8.4.1) (2026-01-23)
+
+### Bug Fixes
+
+- **icons:** add explicit inline diplay for design system icons ([6ff3ba7](https://github.com/entur/design-system/commit/6ff3ba7a95134bbcddafd0cc3d5ebeeea6b2a212))
+
 ## [8.3.1](https://github.com/entur/design-system/compare/@entur/icons@8.3.0...@entur/icons@8.3.1) (2025-12-05)
 
 **Note:** Version bump only for package @entur/icons
