@@ -46,9 +46,17 @@ const getIconComponent = (
   }
 
   if (iconCategory === 'transport') {
-    const iconNameWords = showValue.split('-');
-    const { Icon } = getTransportStyle(iconNameWords[0]);
-    return Icon;
+    const transportMode = getTransportMode(showValue);
+    if (!transportMode) {
+      return undefined;
+    }
+
+    try {
+      const { Icon } = getTransportStyle(transportMode);
+      return Icon;
+    } catch {
+      return undefined;
+    }
   }
 
   return categoryIcons[iconCategory as keyof typeof categoryIcons];
@@ -97,6 +105,34 @@ const ColorToken: React.FC<TokenProps> = ({
 };
 
 export default ColorToken;
+
+const getTransportMode = (showValue: string) => {
+  const normalized = showValue.toLowerCase();
+  const cleaned = normalized
+    .replace(/^(contrast|standard|dark|light)-/, '')
+    .replace(/-transparent$/, '');
+
+  if (cleaned.includes('airport-link-bus')) return 'airportlinkbus';
+  if (cleaned.includes('airport-link-rail')) return 'airportlinkrail';
+  if (cleaned.includes('citybike')) return 'citybike';
+  if (cleaned.includes('snowcoach')) return 'snowcoach';
+  if (cleaned.includes('carferry')) return 'carferry';
+  if (cleaned.includes('ferry')) return 'ferry';
+  if (cleaned.includes('cableway')) return 'cableway';
+  if (cleaned.includes('funicular')) return 'funicular';
+  if (cleaned.includes('helicopter')) return 'helicopter';
+  if (cleaned.includes('mobility')) return 'mobility';
+  if (cleaned.includes('metro')) return 'metro';
+  if (cleaned.includes('tram')) return 'tram';
+  if (cleaned.includes('train') || cleaned.includes('rail')) return 'train';
+  if (cleaned.includes('taxi')) return 'taxi';
+  if (cleaned.includes('bicycle')) return 'bicycle';
+  if (cleaned.includes('walk')) return 'walk';
+  if (cleaned.includes('plane') || cleaned.includes('air')) return 'plane';
+  if (cleaned.includes('bus')) return 'bus';
+
+  return undefined;
+};
 
 // Util copied from @entur/travel
 
