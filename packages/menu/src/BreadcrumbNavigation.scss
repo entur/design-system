@@ -17,6 +17,10 @@
     &__link {
       color: var(--components-menu-breadcrumb-standard-text);
 
+      :where(.eds-contrast) & {
+        color: var(--components-menu-breadcrumb-contrast-text);
+      }
+
       &:where(:focus-visible) {
         outline: t.$outlines-focus;
         outline-color: var(--basecolors-stroke-focus-standard);
@@ -35,7 +39,6 @@
         background-position: 0 100%;
 
         :where(.eds-contrast) & {
-          color: var(--components-menu-breadcrumb-contrast-text);
           background-image: linear-gradient(120deg, var(--components-menu-breadcrumb-contrast-text) 0%, var(--components-menu-breadcrumb-contrast-text) 100%);
         }
 
