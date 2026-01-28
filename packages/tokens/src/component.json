@@ -4564,7 +4564,7 @@
           },
           {
             "name": "Components/travel/Travel Leg/Contrast/Walk",
-            "value": "#8284ab",
+            "value": "#9ea0bd",
             "var": "Contrast/Walk",
             "rootAlias": "Contrast/Walk"
           },
@@ -4816,7 +4816,7 @@
           },
           {
             "name": "Components/travel/Travel Switch/Contrast/BackgroundTrue-Walk",
-            "value": "#8284ab",
+            "value": "#9ea0bd",
             "var": "Contrast/Walk",
             "rootAlias": "Contrast/Walk"
           },
@@ -4936,7 +4936,7 @@
           },
           {
             "name": "Components/travel/Travel Switch/Contrast/IconTrue-Walk",
-            "value": "#8284ab",
+            "value": "#9ea0bd",
             "var": "Contrast/Walk",
             "rootAlias": "Contrast/Walk"
           },
@@ -5452,7 +5452,7 @@
           },
           {
             "name": "Components/travel/Travel Tag/Contrast/Fill/Walk",
-            "value": "#8284ab",
+            "value": "#9ea0bd",
             "var": "Contrast/Walk",
             "rootAlias": "Contrast/Walk"
           },
@@ -6142,9 +6142,9 @@
           },
           {
             "name": "Components/travel/Travel Tag/Standard/Text/Line-Metro-Cancelled",
-            "value": "#bf5826",
-            "var": "Standard/Metro",
-            "rootAlias": "Standard/Metro"
+            "value": "#a2532f",
+            "var": "Standard/MetroAlt",
+            "rootAlias": "Standard/MetroAlt"
           },
           {
             "name": "Components/travel/Travel Tag/Standard/Text/Line-Plane-Cancelled",
