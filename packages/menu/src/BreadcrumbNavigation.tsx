@@ -3,7 +3,10 @@ import classNames from 'classnames';
 
 import './BreadcrumbNavigation.scss';
 
-export type BreadcrumbNavigationProps = React.HTMLAttributes<HTMLElement> & {
+export type BreadcrumbNavigationProps = Omit<
+  React.HTMLAttributes<HTMLElement>,
+  'aria-label' | 'children'
+> & {
   /** Label for brødsmulestien.
    * @default 'Brødsmulesti'
    */
