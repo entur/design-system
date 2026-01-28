@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.0.6](https://github.com/entur/design-system/compare/@entur/dropdown@8.0.5...@entur/dropdown@8.0.6) (2026-01-28)
+
+**Note:** Version bump only for package @entur/dropdown
+
 ## [8.0.5](https://github.com/entur/design-system/compare/@entur/dropdown@8.0.4...@entur/dropdown@8.0.5) (2026-01-23)
 
 **Note:** Version bump only for package @entur/dropdown

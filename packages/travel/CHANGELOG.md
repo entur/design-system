@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.5.4](https://github.com/entur/design-system/compare/@entur/travel@6.5.3...@entur/travel@6.5.4) (2026-01-28)
+
+### Bug Fixes
+
+- **travel/travel tag:** fix incorrect color for warning contrast icon and cancelled contrast text ([b53f5e7](https://github.com/entur/design-system/commit/b53f5e7fc1c13f6df64caeb947299d48370f15fc))
+- **travel/traveltag:** update metro color to improve contrast ratio ([afdce1d](https://github.com/entur/design-system/commit/afdce1dbab20ec290d1c8baa30bba92bbd27aaa0))
+
 ## [6.5.3](https://github.com/entur/design-system/compare/@entur/travel@6.5.2...@entur/travel@6.5.3) (2026-01-23)
 
 **Note:** Version bump only for package @entur/travel

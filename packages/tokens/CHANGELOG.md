@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.22.1](https://github.com/entur/design-system/compare/@entur/tokens@3.22.0...@entur/tokens@3.22.1) (2026-01-28)
+
+### Bug Fixes
+
+- **tokens:** update walk-contrast and metro color to improve contrast ratio ([a361318](https://github.com/entur/design-system/commit/a36131842580a4e8014eaa90b53e3f523f359970))
+
 # [3.22.0](https://github.com/entur/design-system/compare/@entur/tokens@3.21.1...@entur/tokens@3.22.0) (2026-01-23)
 
 ### Features

@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.2](https://github.com/entur/design-system/compare/@entur/menu@6.0.1...@entur/menu@6.0.2) (2026-01-28)
+
+### Bug Fixes
+
+- **menu/breadcrumb navigation:** fix incorrect color for current item in contrast ([bad96e9](https://github.com/entur/design-system/commit/bad96e920c3c478fae366140509d8cecb9b6ab10))
+- **menu/breadcrumb navigation:** fix type declaration ([ceb2e01](https://github.com/entur/design-system/commit/ceb2e01309c53787bc51e554c4252bb755487527))
+
 ## [6.0.1](https://github.com/entur/design-system/compare/@entur/menu@6.0.0...@entur/menu@6.0.1) (2026-01-23)
 
 **Note:** Version bump only for package @entur/menu
