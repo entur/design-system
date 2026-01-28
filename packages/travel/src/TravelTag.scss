@@ -63,7 +63,7 @@
         fill: var(--components-form-feedbacktext-warning-standard-icon-symbol);
       }
       .eds-contrast & {
-        color: var(--components-form-feedbacktext-warning-contrast-icon);
+        color: var(--components-form-feedbacktext-warning-contrast-icon-fill);
       }
     }
     &-error-icon {
@@ -141,12 +141,12 @@
     .eds-travel-tag--alert--error & {
       border-color: var(--components-travel-traveltag-standard-stroke-details-cancelled);
       background-color: var(--components-travel-traveltag-standard-fill-details-cancelled);
-      color: var(--components-travel-traveltag-standard-text-details-cancelled);
+      color: var(--components-travel-traveltag-standard-text-cancelled);
 
       .eds-contrast & {
         border-color: var(--components-travel-traveltag-contrast-stroke-details-cancelled);
         background-color: var(--components-travel-traveltag-contrast-fill-details-cancelled);
-        color: var(--components-travel-traveltag-contrast-text-details-cancelled);
+        color: var(--components-travel-traveltag-contrast-text-cancelled);
       }
     }
   }
