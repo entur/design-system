@@ -178,7 +178,7 @@
           },
           {
             "name": "Contrast/Walk",
-            "value": "#8284ab",
+            "value": "#9ea0bd",
             "var": "",
             "rootAlias": ""
           },
@@ -509,6 +509,12 @@
           {
             "name": "Standard/Metro-transparent",
             "value": "#bf582626",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Standard/MetroAlt",
+            "value": "#a2532f",
             "var": "",
             "rootAlias": ""
           },
