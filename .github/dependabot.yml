@@ -22,6 +22,13 @@ updates:
     commit-message:
       prefix: 'chore(root/deps)'
     groups:
+      dev-deps:
+        applies-to: version-updates
+        dependency-type: development
+        update-types:
+          - 'minor'
+          - 'patch'
+          - 'major'
       minor-and-patch:
         applies-to: version-updates
         update-types:
@@ -39,6 +46,7 @@ updates:
     allow:
       - dependency-type: direct
       - dependency-type: production
+      - dependency-type: development
   - package-ecosystem: 'npm'
     directories:
       - '/packages/**/*'
@@ -47,14 +55,12 @@ updates:
     commit-message:
       prefix: 'chore(packages/deps)'
     groups:
-      minor-and-patch:
-        applies-to: security-updates
+      dev-deps:
+        applies-to: version-updates
+        dependency-type: development
         update-types:
           - 'minor'
           - 'patch'
-      major-updates:
-        applies-to: security-updates
-        update-types:
           - 'major'
     schedule:
       interval: 'monthly'
@@ -64,6 +70,7 @@ updates:
     allow:
       - dependency-type: direct
       - dependency-type: production
+      - dependency-type: development
   - package-ecosystem: 'npm'
     directories:
       - '/apps/**/*'
