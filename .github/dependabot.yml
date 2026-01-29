@@ -8,6 +8,8 @@ registries:
 updates:
   - package-ecosystem: 'github-actions'
     directory: '/'
+    commit-message:
+      prefix: 'chore(gha/deps)'
     schedule:
       interval: 'weekly'
       time: '09:00'
@@ -17,6 +19,8 @@ updates:
     directory: '/'
     registries:
       - jfrog-artifactory
+    commit-message:
+      prefix: 'chore(root/deps)'
     groups:
       minor-and-patch:
         applies-to: version-updates
@@ -31,7 +35,7 @@ updates:
       interval: 'monthly'
     cooldown:
       default-days: 7
-    open-pull-requests-limit: 2
+    open-pull-requests-limit: 1
     allow:
       - dependency-type: direct
       - dependency-type: production
@@ -40,21 +44,23 @@ updates:
       - '/packages/**/*'
     registries:
       - jfrog-artifactory
+    commit-message:
+      prefix: 'chore(packages/deps)'
     groups:
       minor-and-patch:
-        applies-to: version-updates
+        applies-to: security-updates
         update-types:
           - 'minor'
           - 'patch'
       major-updates:
-        applies-to: version-updates
+        applies-to: security-updates
         update-types:
           - 'major'
     schedule:
       interval: 'monthly'
     cooldown:
       default-days: 7
-    open-pull-requests-limit: 2
+    open-pull-requests-limit: 1
     allow:
       - dependency-type: direct
       - dependency-type: production
@@ -63,6 +69,8 @@ updates:
       - '/apps/**/*'
     registries:
       - jfrog-artifactory
+    commit-message:
+      prefix: 'chore(apps/deps)'
     groups:
       minor-and-patch:
         applies-to: version-updates
@@ -77,7 +85,7 @@ updates:
       interval: 'monthly'
     cooldown:
       default-days: 7
-    open-pull-requests-limit: 2
+    open-pull-requests-limit: 1
     allow:
       - dependency-type: direct
       - dependency-type: production
