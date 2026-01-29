@@ -55,12 +55,16 @@ updates:
     commit-message:
       prefix: 'chore(packages/deps)'
     groups:
-      dev-deps:
+      dev-deps-minor-patch:
         applies-to: version-updates
         dependency-type: development
         update-types:
           - 'minor'
           - 'patch'
+      dev-deps-major:
+        applies-to: version-updates
+        dependency-type: development
+        update-types:
           - 'major'
     schedule:
       interval: 'monthly'
