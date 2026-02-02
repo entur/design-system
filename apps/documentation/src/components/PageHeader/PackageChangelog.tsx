@@ -10,11 +10,10 @@ export const PackageChangelog = ({ packageName }: { packageName: string }) => {
   const [packageChangelog, setPackageChangelog] = useState('');
   const [modalTitle, setModalTitle] = useState('');
   const query = useGetChangelog();
+  const normalizedPackageName = packageName.replace(/\/beta$/, '');
+  const packageKey = normalizedPackageName.split('@entur/')?.[1];
   const changelog = query.allFile.nodes.filter(node => {
-    return (
-      node.name === packageName ||
-      node.name === packageName.split('@entur/')?.[1]
-    );
+    return node.name === normalizedPackageName || node.name === packageKey;
   });
   const changelogbody = changelog[0].children[0].body;
   return (
