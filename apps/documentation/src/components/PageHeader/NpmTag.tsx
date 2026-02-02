@@ -6,6 +6,8 @@ import { SourceCodeIcon } from '@entur/icons';
 import './NpmTag.scss';
 
 export const NpmTag: React.FC<{ packageName: string }> = ({ packageName }) => {
+  const normalizedPackageName = packageName.replace(/\/beta$/, '');
+  const packageKey = normalizedPackageName.split('@entur/')?.[1];
   const packageVersions = useStaticQuery(graphql`
     query {
       allNpmPackageVersion {
@@ -18,9 +20,7 @@ export const NpmTag: React.FC<{ packageName: string }> = ({ packageName }) => {
   `)?.allNpmPackageVersion?.nodes as Array<{ name: string; version: string }>;
 
   const currentPackage = packageVersions.find(
-    item =>
-      item.name === packageName ||
-      item.name === packageName.split('@entur/')?.[1],
+    item => item.name === normalizedPackageName || item.name === packageKey,
   );
 
   return (

@@ -1,0 +1,19 @@
+.eds-layout-template-sidebar {
+  padding: var(--eds-sidebar-padding, 1rem);
+  height: 100%;
+  width: var(--eds-sidebar-width, 20rem);
+}
+
+.eds-layout-template-sidebar--plain {
+  background-color: var(--components-menu-sidenavigation-standard-background);
+}
+
+.eds-layout-template-sidebar__navigation {
+  flex: 1 1 auto;
+  margin-left: calc(-1 * var(--eds-sidebar-padding, 1rem));
+  margin-right: calc(-1 * var(--eds-sidebar-padding, 1rem));
+}
+
+.eds-layout-template-sidebar__footer {
+  margin-top: auto;
+}

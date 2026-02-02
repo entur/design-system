@@ -1,0 +1,29 @@
+.eds-layout-flex {
+  :where(&) {
+    display: var(--flex-display, flex);
+    flex-direction: var(--flex-direction, row);
+    flex-wrap: var(--flex-wrap, nowrap);
+    align-items: var(--flex-align-items);
+    justify-content: var(--flex-justify-content);
+    align-content: var(--flex-align-content);
+    gap: var(--flex-gap);
+    row-gap: var(--flex-row-gap, var(--flex-gap));
+    column-gap: var(--flex-column-gap, var(--flex-gap));
+    -webkit-column-gap: var(--flex-column-gap, var(--flex-gap));
+    -moz-column-gap: var(--flex-column-gap, var(--flex-gap));
+    flex: var(--flex);
+    flex-grow: var(--flex-grow);
+    flex-shrink: var(--flex-shrink);
+    flex-basis: var(--flex-basis);
+    width: var(--flex-width);
+    height: var(--flex-height);
+    min-width: var(--flex-min-width);
+    min-height: var(--flex-min-height);
+    max-width: var(--flex-max-width);
+    max-height: var(--flex-max-height);
+  }
+}
+
+.eds-layout-flex-spacer {
+  flex: 1 1 0%;
+}

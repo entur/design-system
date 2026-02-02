@@ -4,9 +4,9 @@ import { useStaticQuery, graphql } from 'gatsby';
 import { Heading1, Label, LeadParagraph } from '@entur/typography';
 import { useSettings } from '@providers/SettingsContext';
 import { PackageChangelog } from './PackageChangelog';
-import './PageHeader.scss';
 import { NpmTag } from './NpmTag';
 import { CopyableText } from '@entur/alert';
+import './PageHeader.scss';
 
 type Props = {
   category?: string;

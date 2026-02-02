@@ -10,6 +10,7 @@ import * as form from '@entur/form';
 import * as grid from '@entur/grid';
 import * as icons from '@entur/icons';
 import * as layout from '@entur/layout';
+import * as layoutBeta from '@entur/layout/beta';
 import * as loader from '@entur/loader';
 import * as menu from '@entur/menu';
 import * as modal from '@entur/modal';
@@ -35,6 +36,7 @@ export const packages = {
   ...grid,
   ...icons,
   ...layout,
+  ...layoutBeta,
   ...loader,
   ...menu,
   ...modal,

@@ -31,7 +31,6 @@
     "@entur/button": "workspace:^",
     "@entur/expand": "workspace:^",
     "@entur/icons": "workspace:^",
-    "@entur/layout": "workspace:^",
     "@entur/tokens": "workspace:^",
     "@entur/tooltip": "workspace:^",
     "@entur/typography": "workspace:^",
