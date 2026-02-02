@@ -1,7 +1,7 @@
 import React from 'react';
 import { PolymorphicComponentProps } from '@entur/utils';
-import { useResponsiveValue } from './useResponsiveValue';
-import type { ResponsiveValue } from './utils';
+import { useResponsiveValue } from '../LayoutWrapper/useResponsiveValue';
+import type { ResponsiveValue } from '../LayoutWrapper/utils';
 import classNames from 'classnames';
 
 import './GridItem.scss';

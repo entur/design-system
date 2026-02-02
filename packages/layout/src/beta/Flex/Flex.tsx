@@ -1,9 +1,9 @@
 import React from 'react';
 import { PolymorphicComponentProps } from '@entur/utils';
 import classNames from 'classnames';
-import { getSpacingValue } from '../Grid/utils';
-import type { GridSpacingValue, ResponsiveValue } from '../Grid/utils';
-import { useResponsiveValue } from '../Grid/useResponsiveValue';
+import { getSpacingValue } from '../LayoutWrapper/utils';
+import type { GridSpacingValue, ResponsiveValue } from '../LayoutWrapper/utils';
+import { useResponsiveValue } from '../LayoutWrapper/useResponsiveValue';
 
 import './Flex.scss';
 

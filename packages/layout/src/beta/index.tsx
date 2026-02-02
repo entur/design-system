@@ -3,7 +3,8 @@
 
 import './index.scss';
 
-export { Grid, GridItem, LayoutWrapper, useLayoutValues } from './Grid';
+export { Grid, GridItem } from './Grid';
+export { LayoutWrapper, useLayoutValues } from './LayoutWrapper';
 export { Flex, FlexSpacer } from './Flex';
 export { Template } from './templates';
 export type {
