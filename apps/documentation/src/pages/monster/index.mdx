@@ -33,7 +33,7 @@ query komigang {
 
 <PageHeader/>
 
-<GridContainer spacing="large">
+<GridContainer spacing="large" style={{ marginBottom: "var(--size-18)"}}>
   <ComponentPreview
     title="Statusbeskjeder"
     description="Statusbeskjeder gir brukeren informasjon om tilstand eller resultat av en handling, som suksess, feil eller pågående prosess."
@@ -41,6 +41,22 @@ query komigang {
   >
   <ImageDisplay
     imgSource={props.data.imagefiles.images.find(image => image.name === "Sheep").childImageSharp.gatsbyImageData}
+    alt=""
+    preset="full-width-image"
+  />
+  </ComponentPreview>
+</GridContainer>
+
+## Maler
+
+<GridContainer spacing="large">
+  <ComponentPreview
+    title="B2B-portal"
+    description="Mal for B2B-portaler med sidefelt og hovedinnhold."
+    to="/monster/maler/b2b-portal"
+  >
+  <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "template-portal-thumbnail").childImageSharp.gatsbyImageData}
     alt=""
     preset="full-width-image"
   />

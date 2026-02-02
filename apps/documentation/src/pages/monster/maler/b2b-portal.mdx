@@ -1,0 +1,59 @@
+---
+title: B2B-portal
+description: Mal for B2B-portaler med sidefelt og hovedinnhold.
+route: /monster/maler/b2b-portal
+parent: monster
+menu: Maler
+npmPackage: layout/beta
+order: 1
+---
+
+import { SEO } from '@components/seo/SEO';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+<PageHeader />
+
+<Playground style={{ display: "block" }} code={`
+  <Template.Portal className="portal">
+    <Template.Portal.Sidebar>
+      <Template.Portal.Sidebar.Logo>ENTUR</Template.Portal.Sidebar.Logo>
+
+      <Template.Portal.Sidebar.User>Nåværende bruker</Template.Portal.Sidebar.User>
+
+      <Template.Portal.Sidebar.Data>Datasett, miljøvelger, etc.</Template.Portal.Sidebar.Data>
+
+      <Template.Portal.Sidebar.Navigation>
+        <SideNavigation>
+          <SideNavigationItem href="#a">Menypunkt A</SideNavigationItem>
+          <SideNavigationItem href="#b">Menypunkt B</SideNavigationItem>
+          <SideNavigationItem href="#c">Menypunkt C</SideNavigationItem>
+        </SideNavigation>
+      </Template.Portal.Sidebar.Navigation>
+      <Template.Portal.Sidebar.Footer>Footer</Template.Portal.Sidebar.Footer>
+    </Template.Portal.Sidebar>
+
+    <Template.Portal.Main>
+      Hovedinnhold
+    </Template.Portal.Main>
+  </Template.Portal>
+`} />
+
+## Oppbygning
+- `Template.Portal` lager grid med to kolonner og full høyde.
+- `Template.Portal.Sidebar` og `Template.Portal.Main` brukes som direkte barn av `Template.Portal`.
+- `Template.Portal.Sidebar` er `aside` i kontrast; seksjonene `Template.Portal.Sidebar.Logo`, `Template.Portal.Sidebar.User`, `Template.Portal.Sidebar.Data`, `Template.Portal.Sidebar.Navigation` og `Template.Portal.Sidebar.Footer` er valgfrie.
+- `Template.Portal.Main` er `main` med standard padding for innhold.
+
+## Tilpasning
+- Bredde på sidefeltet kan overstyres med CSS-variabelen `--eds-sidebar-width` (standard `20rem`).
+- Padding på hovedinnholdet kan overstyres med CSS-variabelen `--eds-portal-main-padding` (standard `1rem`).
+
+```css
+.portal {
+  --eds-sidebar-width: 20rem;
+  --eds-portal-main-padding: 1rem;
+}
+```
