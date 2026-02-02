@@ -37,6 +37,7 @@ export default defineConfig({
       ],
       output: {
         preserveModules: true,
+        preserveModulesRoot: resolve(__dirname, 'src/beta'),
         assetFileNames: assetInfo => {
           if (assetInfo.names[0].endsWith('.css')) {
             return 'styles/index.css';

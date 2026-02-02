@@ -5,6 +5,7 @@ import './index.scss';
 
 export { Grid, GridItem, LayoutWrapper, useLayoutValues } from './Grid';
 export { Flex, FlexSpacer } from './Flex';
+export { Template } from './templates';
 export type {
   GridProps,
   GridOwnProps,
@@ -20,3 +21,12 @@ export type {
   FlexSpacerProps,
   FlexSpacerOwnProps,
 } from './Flex';
+export type {
+  PortalComponent,
+  PortalMainProps,
+  PortalProps,
+  SidebarComponent,
+  SidebarProps,
+  SidebarSectionProps,
+  TemplateComponent,
+} from './templates';
