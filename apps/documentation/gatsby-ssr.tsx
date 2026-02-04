@@ -39,7 +39,12 @@ export const wrapPageElement: GatsbySSR['wrapPageElement'] = ({
   if (props.location.pathname === '/') return <>{children}</>;
   if (props.location.pathname === '/stand') return <>{children}</>;
 
-  return <DocLayout {...props}>{children}</DocLayout>;
+  const disableToc = Boolean(props.pageContext?.isComponentDoc);
+  return (
+    <DocLayout {...props} disableToc={disableToc}>
+      {children}
+    </DocLayout>
+  );
 };
 
 export const onRenderBody: GatsbySSR['onRenderBody'] = ({

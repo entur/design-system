@@ -31,7 +31,9 @@ export const textBlocksType = defineType({
         layout: 'dropdown',
       },
       initialValue: 'normal',
-      hidden: ({ parent }) => parent !== undefined && !('_key' in parent),
+      hidden: ({ parent, document }) =>
+        (parent !== undefined && !('_key' in parent)) ||
+        document?.intro === parent,
     }),
     defineField({
       name: 'title',

@@ -84,7 +84,7 @@ function useCurrentActiveHeading(headings: Heading[]) {
   return activeHeading;
 }
 
-const TableOfContent = () => {
+const MdxTableOfContent = () => {
   const { pathname } = useLocation();
 
   const data: TableOfContentQuery = useStaticQuery(graphql`
@@ -168,4 +168,4 @@ const TableOfContent = () => {
   );
 };
 
-export default TableOfContent;
+export default MdxTableOfContent;

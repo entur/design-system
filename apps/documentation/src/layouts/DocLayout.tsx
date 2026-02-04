@@ -5,12 +5,16 @@ import { MDXComponents } from 'mdx/types';
 import { SkipToContent } from '@entur/a11y';
 import SiteFooter from '@components/Footer/SiteFooter';
 import TopNavigationLayout from './TopNavigationLayout';
-import components from './MdxProvider-utils';
+import components from '../utils/MdxProvider-utils';
 import SideNavigationLayout from './SideNavigationLayout';
 import TableOfContentLayout from './TableOfContentLayout';
 import { scrollToHashOnLoad } from '../utils/scrollUtils';
 
-const DocLayout = ({ children, location }: PageProps) => {
+const DocLayout = ({
+  children,
+  location,
+  disableToc = false,
+}: PageProps & { disableToc?: boolean }) => {
   // Handle hash scrolling on page load
   useEffect(() => {
     scrollToHashOnLoad();
@@ -29,7 +33,7 @@ const DocLayout = ({ children, location }: PageProps) => {
               {children}
             </MDXProvider>
           </main>
-          <TableOfContentLayout />
+          {!disableToc && <TableOfContentLayout />}
           <SiteFooter />
         </div>
       </div>

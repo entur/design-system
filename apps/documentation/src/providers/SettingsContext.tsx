@@ -31,6 +31,7 @@ export type VariableFormat = 'scss' | 'less' | 'css' | 'js';
 export type UserType = 'developer' | 'designer';
 export type PackageManager = 'yarn' | 'npm';
 export type Theme = 'light' | 'dark' | 'system' | 'contrast';
+export type ResolvedColorMode = 'light' | 'dark';
 type SettingsContextType = {
   variableFormat: VariableFormat;
   setVariableFormat: React.Dispatch<React.SetStateAction<VariableFormat>>;
@@ -40,6 +41,7 @@ type SettingsContextType = {
   setPackageManager: React.Dispatch<React.SetStateAction<PackageManager>>;
   colorMode: Theme;
   setColorMode: React.Dispatch<React.SetStateAction<Theme>>;
+  resolvedColorMode: ResolvedColorMode;
 };
 
 const SettingsContext = React.createContext<SettingsContextType | null>(null);
@@ -63,6 +65,8 @@ export const SettingsProvider = (props: { children?: ReactNode }) => {
     'color-mode',
     'light',
   );
+  const [resolvedColorMode, setResolvedColorMode] =
+    React.useState<ResolvedColorMode>(colorMode === 'dark' ? 'dark' : 'light');
 
   // Handle custom color mode preference
   React.useEffect(() => {
@@ -71,6 +75,7 @@ export const SettingsProvider = (props: { children?: ReactNode }) => {
       'data-color-mode',
       colorMode ?? 'light',
     );
+    setResolvedColorMode(colorMode === 'dark' ? 'dark' : 'light');
   }, [colorMode]);
 
   // Handle color mode === system
@@ -82,6 +87,7 @@ export const SettingsProvider = (props: { children?: ReactNode }) => {
           'data-color-mode',
           systemPreference,
         );
+        setResolvedColorMode(systemPreference);
       }
     }
 
@@ -93,6 +99,7 @@ export const SettingsProvider = (props: { children?: ReactNode }) => {
         'data-color-mode',
         currentSystemPreference,
       );
+      setResolvedColorMode(currentSystemPreference);
     }
 
     const colorModeWatcher = window.matchMedia('(prefers-color-scheme: dark)');
@@ -120,6 +127,7 @@ export const SettingsProvider = (props: { children?: ReactNode }) => {
       setPackageManager,
       colorMode,
       setColorMode,
+      resolvedColorMode,
     }),
     [
       variableFormat,
@@ -130,6 +138,7 @@ export const SettingsProvider = (props: { children?: ReactNode }) => {
       setPackageManager,
       colorMode,
       setColorMode,
+      resolvedColorMode,
     ],
   );
 

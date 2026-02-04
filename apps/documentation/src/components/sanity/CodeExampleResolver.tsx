@@ -41,9 +41,11 @@ type CodeExampleType = {
     componentName?: string;
     props: SanityPlaygroundProp[];
     playgroundProps?: string;
+    hideCode?: boolean;
   };
   playgroundProps?: string;
   plainCode?: CodeContentField;
+  plainCodeCopyable?: boolean;
   codeLanguage?: string;
   componentName?: string;
   copyableText?: CopyableTextField;
@@ -100,6 +102,7 @@ export const CodeExampleResolver = ({ value }: CodeExampleProps) => {
     playgroundCode,
     playgroundProps,
     plainCode,
+    plainCodeCopyable,
     codeLanguage,
     componentName = 'Component',
     copyableText,
@@ -138,10 +141,18 @@ export const CodeExampleResolver = ({ value }: CodeExampleProps) => {
 
   return (
     <div style={{ margin: '2rem 0' }}>
-      {title && <Heading3>{title}</Heading3>}
+      {title && codeDisplayType !== 'playground' && (
+        <Heading3>{title}</Heading3>
+      )}
 
       {codeDisplayType === 'playground' ? (
-        <Playground props={selectedProps} code={resolvedPlaygroundCode} />
+        <Playground
+          props={selectedProps}
+          code={resolvedPlaygroundCode}
+          hideCode={playgroundCode?.hideCode}
+          hideColorModeOption={(selectedProps?.length ?? 0) == 0}
+          title={title}
+        />
       ) : codeDisplayType === 'copyable' && copyableText ? (
         <CopyableText
           textToCopy={copyableText.text}
@@ -150,7 +161,11 @@ export const CodeExampleResolver = ({ value }: CodeExampleProps) => {
           {copyableText.text}
         </CopyableText>
       ) : (
-        <CodeBlock language={resolvedLanguage} wrapLongLines>
+        <CodeBlock
+          language={resolvedLanguage}
+          wrapLongLines
+          copyable={plainCodeCopyable}
+        >
           {resolvedPlainCode}
         </CodeBlock>
       )}

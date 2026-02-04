@@ -1,7 +1,7 @@
 import React from 'react';
 import { useWindowDimensions } from '@entur/utils';
 import { pxToRem } from 'src/utils/utils';
-import TableOfContent from '@components/Navigations/TableOfContent/TableOfContent';
+import MdxTableOfContent from '@components/Navigations/TableOfContent/MdxTableOfContent';
 
 const TableOfContentLayout = () => {
   const { width } = useWindowDimensions();
@@ -11,7 +11,7 @@ const TableOfContentLayout = () => {
   if (isLargeScreen) {
     return (
       <div>
-        <TableOfContent />
+        <MdxTableOfContent />
       </div>
     );
   }

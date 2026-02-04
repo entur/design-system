@@ -6,6 +6,8 @@ const fs = require('fs-extra');
 const fetch = require('node-fetch');
 // eslint-disable-next-line @typescript-eslint/no-var-requires -- disabled when we turned on linting for all files in the project
 const crypto = require('crypto');
+// eslint-disable-next-line @typescript-eslint/no-var-requires -- disabled when we turned on linting for all files in the project
+const { getSanitizedPath } = require('./src/utils/getSanitizedPath');
 
 exports.onCreateWebpackConfig = ({ actions, getConfig }) => {
   const oldConfig = getConfig();
@@ -95,26 +97,8 @@ async function createDocumentationPagesFromSanity(graphql, actions, reporter) {
           title
           category
           subcategory
-          description
           npmPackage
-          figmaLink
-          componentName
-          beskrivelse {
-            _key
-            _type
-            variant
-            alertType
-            title
-            _rawItems(resolveReferences: { maxDepth: 10 })
-          }
-          utvikling {
-            _key
-            _type
-            variant
-            alertType
-            title
-            _rawItems(resolveReferences: { maxDepth: 10 })
-          }
+          isBeta
         }
       }
     }
@@ -148,6 +132,7 @@ async function createDocumentationPagesFromSanity(graphql, actions, reporter) {
       title: doc.title,
       category: doc.category,
       subcategory: doc.subcategory,
+      isBeta: doc.isBeta,
     });
 
     createPage({
@@ -159,42 +144,6 @@ async function createDocumentationPagesFromSanity(graphql, actions, reporter) {
   reporter.info(
     `[create page] Created ${componentDocs.length} component documentation pages`,
   );
-}
-
-function getSanitizedPath({
-  category,
-  subcategory,
-  title,
-  categoryIndex,
-  isCategoryLandingPage,
-}) {
-  function sanitizeText(text) {
-    if (!text) return undefined;
-    return text
-      .toLowerCase()
-      .replaceAll('æ', 'ae')
-      .replaceAll('ø', 'o')
-      .replaceAll('å', 'a')
-      .replaceAll('&', 'og')
-      .replace(/\?$/, '')
-      .replace(/ +/g, '-')
-      .replace(/[^a-zA-Z0-9\-]+\-/g, '');
-  }
-
-  const sanitizedCategory = sanitizeText(category);
-
-  // If this is a category landing page, return just the category path
-  if (isCategoryLandingPage) {
-    return `/${sanitizedCategory}`;
-  }
-
-  if (categoryIndex) return `/${sanitizedCategory}`;
-
-  const sanitizedTitle = sanitizeText(title);
-  if (!subcategory) return `/${sanitizedCategory}/${sanitizedTitle}`;
-
-  const sanitizedSubcategory = sanitizeText(subcategory);
-  return `/${sanitizedCategory}/${sanitizedSubcategory}/${sanitizedTitle}`;
 }
 
 exports.sourceNodes = async ({ createNodeId, actions: { createNode } }) => {

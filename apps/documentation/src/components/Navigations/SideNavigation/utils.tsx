@@ -1,3 +1,15 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const { getSanitizedPath } = require('../../../utils/getSanitizedPath') as {
+  getSanitizedPath: (input: {
+    category?: string;
+    subcategory?: string;
+    title?: string;
+    categoryIndex?: number;
+    isCategoryLandingPage?: boolean;
+    isBeta?: boolean;
+  }) => string | undefined;
+};
+
 export interface MenuItem {
   id: string;
   title: string;
@@ -5,6 +17,7 @@ export interface MenuItem {
   subcategory?: string;
   categoryIndex?: number;
   isCategoryLandingPage?: boolean;
+  isBeta?: boolean;
   path?: string;
   order?: number;
 }
@@ -28,7 +41,13 @@ export function removeLeadingAndTrailingSlash(str?: string) {
 
 export const normalizeString = (string?: string): string => {
   if (string === undefined) return '';
-  return string.replace(/\//g, '').replace(/-/g, ' ').toLowerCase();
+  return string
+    .replace(/\//g, '')
+    .replace(/-/g, ' ')
+    .replace(/[æÆ]/g, 'ae')
+    .replace(/[øØ]/g, 'o')
+    .replace(/[åÅ]/g, 'a')
+    .toLowerCase();
 };
 
 export function menuItemComparator(a: MenuItem, b: MenuItem) {
@@ -63,43 +82,43 @@ export function menuItemComparator(a: MenuItem, b: MenuItem) {
 
 // Menu-items sort orders
 export const componentsMenuSortOrder = {
-  Oversikt: 1,
-  Ressurser: 2,
-  Knapper: 3,
-  Skjemaelementer: 4,
-  Navigasjon: 5,
-  'Layout & Flater': 6,
-  Feedback: 7,
-  Reise: 8,
+  oversikt: 1,
+  ressurser: 2,
+  knapper: 3,
+  skjemaelementer: 4,
+  navigasjon: 5,
+  'layout & flater': 6,
+  feedback: 7,
+  reise: 8,
 } as any;
 
 export const komIGangMenuSortOrder = {
-  Introduksjon: 1,
-  'For designere': 2,
-  'For utviklere': 3,
+  introduksjon: 1,
+  'for designere': 2,
+  'for utviklere': 3,
 } as any;
 
 export const visuellIdentitetMenuSortOrder = {
-  Introduksjon: 1,
-  Verktøykassen: 2,
-  Maler: 3,
+  introduksjon: 1,
+  verktoykassen: 2,
+  maler: 3,
 } as any;
 
 export const monsterMenuSortOrder = {
-  Oversikt: 1,
-  Mønster: 2,
+  oversikt: 1,
+  monster: 2,
 } as any;
 
 export const ressurserMenuSortOrder = {
-  Oversikt: 1,
-  Workshopmaler: 2,
+  oversikt: 1,
+  workshopmaler: 2,
 } as any;
 
 export const tokensMenuSortOrder = {
-  Introduksjon: 1,
-  Fargetokens: 2,
-  Størrelsetokens: 3,
-  'Øvrige tokens': 4,
+  introduksjon: 1,
+  fargetokens: 2,
+  storrelsetokens: 3,
+  'ovrige tokens': 4,
 } as any;
 
 export const sortSubCategoriesForCategory = (
@@ -107,8 +126,14 @@ export const sortSubCategoriesForCategory = (
   subcategoryB: string,
   category: string,
 ) => {
-  const aSortOrder = sorters[category]?.[subcategoryA] || 10;
-  const bSortOrder = sorters[category]?.[subcategoryB] || 10;
+  const normalizedCategory = normalizeString(category);
+  const normalizedSubcategoryA = normalizeString(subcategoryA);
+  const normalizedSubcategoryB = normalizeString(subcategoryB);
+
+  const aSortOrder =
+    sorters[normalizedCategory]?.[normalizedSubcategoryA] || 10;
+  const bSortOrder =
+    sorters[normalizedCategory]?.[normalizedSubcategoryB] || 10;
   return aSortOrder - bSortOrder;
 };
 
@@ -121,47 +146,4 @@ export const sorters: { [key: string]: any } = {
   ressurser: ressurserMenuSortOrder,
 };
 
-export function getSanitizedPath({
-  category,
-  subcategory,
-  title,
-  categoryIndex,
-  isCategoryLandingPage,
-}: Pick<
-  MenuItem,
-  | 'category'
-  | 'subcategory'
-  | 'title'
-  | 'categoryIndex'
-  | 'isCategoryLandingPage'
->) {
-  function sanitizeText(text?: string) {
-    if (!text) return undefined;
-    return text
-      .toLowerCase()
-      .replaceAll('æ', 'ae')
-      .replaceAll('ø', 'o')
-      .replaceAll('å', 'a')
-      .replaceAll('&', 'og')
-      .replace(/\?$/, '')
-      .replace(/ +/g, '-')
-      .replace(/[^a-zA-Z0-9\-]+\-/g, '');
-  }
-
-  const sanitizedCategory = sanitizeText(category);
-
-  // If this is a category landing page, return just the category path
-  if (isCategoryLandingPage) {
-    return `/${sanitizedCategory}`;
-  }
-
-  if (categoryIndex) {
-    return `/${sanitizedCategory}`;
-  }
-
-  const sanitizedTitle = sanitizeText(title);
-  if (!subcategory) return `/${sanitizedCategory}/${sanitizedTitle}`;
-
-  const sanitizedSubcategory = sanitizeText(subcategory);
-  return `/${sanitizedCategory}/${sanitizedSubcategory}/${sanitizedTitle}`;
-}
+export { getSanitizedPath };

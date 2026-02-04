@@ -32,13 +32,9 @@ import { PropsTableResolver } from './PropsTableResolver';
 import { InlineIcon } from './types';
 import { isEnturIcon } from 'src/utils/utils';
 
-type ExtendedPortableTextProps = PortableTextProps & {
+const createComponents = (context?: {
   npmPackage?: string;
-};
-
-const createComponents = (
-  npmPackage?: string,
-): Partial<PortableTextReactComponents> => ({
+}): Partial<PortableTextReactComponents> => ({
   block: {
     h2: ({ children, value }) => (
       <Heading2 id={value._key}>{children}</Heading2>
@@ -94,14 +90,14 @@ const createComponents = (
     imageAndText: ImageAndTextResolver,
     media: MediaResolver,
     textBlocks: ({ value }) => (
-      <TextBlocksResolver value={value} npmPackage={npmPackage} />
+      <TextBlocksResolver value={value} npmPackage={context?.npmPackage} />
     ),
     link: LinkResolver,
     group: GroupResolver,
     codeExample: CodeExampleResolver,
     guideline: GuidelineResolver,
     propsTable: ({ value }) => (
-      <PropsTableResolver value={value} npmPackage={npmPackage} />
+      <PropsTableResolver value={value} npmPackage={context?.npmPackage} />
     ),
     inlineIcon: ({ value }: { value: InlineIcon }) => {
       if (value.iconName === undefined || !isEnturIcon(value.iconName))
@@ -121,14 +117,14 @@ const createComponents = (
   unknownType: ({ value }) => <p>Unknown type: {value._type}</p>,
 });
 
-export const PortableText = ({
-  value,
-  npmPackage,
-}: ExtendedPortableTextProps) => {
+type ExtendedPortableTextProps = PortableTextProps & {
+  context?: {
+    npmPackage?: string;
+  };
+};
+
+export const PortableText = ({ value, context }: ExtendedPortableTextProps) => {
   return (
-    <PortableTextReact
-      components={createComponents(npmPackage)}
-      value={value}
-    />
+    <PortableTextReact components={createComponents(context)} value={value} />
   );
 };

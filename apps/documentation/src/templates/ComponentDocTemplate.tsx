@@ -1,8 +1,13 @@
-import React from 'react';
-import { graphql, HeadProps } from 'gatsby';
-import ComponentLayout from '@layouts/ComponentLayout';
+import React, { useState } from 'react';
+import { graphql, HeadProps, PageProps } from 'gatsby';
 import { SEO } from '@components/seo/SEO';
 import { getSanitizedPath } from '@components/Navigations/SideNavigation/utils';
+import SanityTableOfContent from '@components/Navigations/TableOfContent/SanityTableOfContent';
+import { BasePageHeader } from '@components/PageHeader/BasePageHeader';
+import { Tabs, TabList, Tab, TabPanels, TabPanel } from '@entur/tab';
+import { PortableText } from '@components/sanity/PortableText';
+import { useWindowDimensions } from '@entur/utils';
+import { pxToRem } from 'src/utils/utils';
 
 type ComponentDoc = {
   title: string;
@@ -11,17 +16,23 @@ type ComponentDoc = {
   description?: string;
   npmPackage?: string;
   figmaLink?: string;
-  componentName: string;
+  isBeta?: boolean;
+  intro?: any;
   beskrivelse?: any;
   utvikling?: any;
+  tabs?: Array<{
+    title?: string;
+    _rawContent?: any;
+  }>;
 };
 
 export default function ComponentDocTemplate({
   data,
-}: {
-  data: { sanityComponentDoc: ComponentDoc };
+}: PageProps & {
+  data: {
+    sanityComponentDoc: ComponentDoc;
+  };
 }) {
-  const { sanityComponentDoc: componentDoc } = data;
   const {
     title,
     category,
@@ -29,25 +40,84 @@ export default function ComponentDocTemplate({
     description,
     npmPackage,
     figmaLink,
-    componentName,
+    intro,
+    isBeta,
     beskrivelse,
     utvikling,
-  } = componentDoc;
+    tabs,
+  } = data.sanityComponentDoc;
+
+  const tabsBackwardsCompatible =
+    tabs && tabs.length > 0
+      ? tabs
+      : [
+          { title: 'Beskrivelse', _rawContent: beskrivelse },
+          { title: 'Utvikling', _rawContent: utvikling },
+        ];
+
+  const headerProps = {
+    title,
+    category,
+    subcategory,
+    description,
+    npmPackage,
+    figmaLink,
+    isBeta,
+  };
 
   return (
-    <ComponentLayout
-      title={title}
-      category={category}
-      subcategory={subcategory}
-      description={description}
-      npmPackage={npmPackage}
-      figmaLink={figmaLink}
-      componentName={componentName}
-      beskrivelse={beskrivelse}
-      utvikling={utvikling}
-    />
+    <>
+      <BasePageHeader {...headerProps} />
+      {renderContent({ value: intro, context: { npmPackage } })}
+      <TabsSection tabs={tabsBackwardsCompatible} context={{ npmPackage }} />
+    </>
   );
 }
+
+const TabsSection = React.memo(function TabsSection({
+  tabs,
+  context,
+}: {
+  tabs: Array<{ title?: string; _rawContent?: any }>;
+  context: { npmPackage?: string };
+}) {
+  const { width: viewportWidth } = useWindowDimensions();
+  const [activeTab, setActiveTab] = React.useState(0);
+
+  const activeTabItem = tabs[activeTab];
+  const shouldRenderAsTabs = tabs.length > 1;
+  const isLargeScreen = (pxToRem(viewportWidth) ?? 0) >= 60;
+
+  return (
+    <>
+      {shouldRenderAsTabs ? (
+        <Tabs style={{ marginRight: 'auto' }} onChange={setActiveTab}>
+          <TabList width="fluid">
+            {tabs.map(tab => (
+              <Tab key={`${tab.title}`}>{tab.title}</Tab>
+            ))}
+          </TabList>
+          <TabPanels>
+            {tabs.map(tab => (
+              <TabPanel key={`${tab.title}`}>
+                {renderContent({ value: tab._rawContent, context })}
+              </TabPanel>
+            ))}
+          </TabPanels>
+        </Tabs>
+      ) : (
+        renderContent({ value: tabs[0]?._rawContent, context })
+      )}
+      {isLargeScreen && activeTabItem?._rawContent && (
+        <SanityTableOfContent content={activeTabItem._rawContent} />
+      )}
+    </>
+  );
+});
+
+const renderContent = ({ value, context }: { value: any; context?: any }) => {
+  return value && <PortableText value={value} context={context} />;
+};
 
 export const Head = (
   props: HeadProps & {
@@ -84,7 +154,14 @@ export const query = graphql`
       description
       npmPackage
       figmaLink
-      componentName
+      isBeta
+      intro {
+        ...TextBlockFragment
+      }
+      tabs {
+        title
+        _rawContent(resolveReferences: { maxDepth: 10 })
+      }
       beskrivelse {
         ...TextBlockFragment
       }

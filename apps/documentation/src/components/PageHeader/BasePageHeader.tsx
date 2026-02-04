@@ -1,13 +1,13 @@
 import React from 'react';
 import { Heading1, Label, LeadParagraph } from '@entur/typography';
-import { CopyableText } from '@entur/alert';
-import { useSettings } from '@providers/SettingsContext';
 import { PackageChangelog } from './PackageChangelog';
+import { ComponentIcon, GithubIcon, SourceCodeIcon } from '@entur/icons';
+import { ActionChip } from '@entur/chip';
+import { Flex, Grid } from '@entur/layout/beta';
+import { Badge } from '@entur/layout';
+import { sanitizeEnturPackageName } from 'src/utils/utils';
 import { NpmTag } from './NpmTag';
 import './PageHeader.scss';
-import { ComponentIcon } from '@entur/icons';
-import { ActionChip } from '@entur/chip';
-import { Heading2, Paragraph } from '@entur/typography';
 
 export type BasePageHeaderProps = {
   title: string;
@@ -17,17 +17,17 @@ export type BasePageHeaderProps = {
   npmPackage?: string;
   isCategoryLandingPage?: boolean;
   figmaLink?: string;
+  isBeta?: boolean;
 };
 
 export const BasePageHeader: React.FC<BasePageHeaderProps> = ({
   title,
-  category,
   subcategory,
   description,
   npmPackage,
   figmaLink,
+  isBeta,
 }) => {
-  const { packageManager, userType } = useSettings();
   return (
     <header className="page-header">
       {subcategory && (
@@ -37,25 +37,66 @@ export const BasePageHeader: React.FC<BasePageHeaderProps> = ({
           </Label>
         </div>
       )}
-      <div className="page-header__title-row">
-        <Heading1 margin="none" className="page-header__heading">
-          {title}
-        </Heading1>
-        <div className="page-header__actions">
-          {npmPackage && userType === 'developer' && (
-            <NpmTag packageName={npmPackage} />
+      <Grid
+        templateColumns="auto auto"
+        templateRows="auto auto"
+        gap="none"
+        rowGap="s"
+        style={{ justifyContent: 'space-between', alignItems: 'end' }}
+      >
+        <Grid.Item as={Flex} colSpan="1 / 2" rowSpan="1 / 2" align="baseline">
+          <Heading1 margin="none" className="page-header__heading">
+            {title}
+          </Heading1>
+          {isBeta && (
+            <Badge variant="warning" type="status">
+              beta
+            </Badge>
           )}
-          {npmPackage && userType === 'developer' && (
-            <PackageChangelog packageName={npmPackage} />
-          )}
-          {figmaLink && (
-            <ActionChip>
-              <ComponentIcon />
-              Figma
-            </ActionChip>
-          )}
-        </div>
-      </div>
+        </Grid.Item>
+        <Grid.Item colSpan="1 / 2" rowSpan="2 / -1">
+          {npmPackage && <NpmTag packageName={npmPackage} isBeta={isBeta} />}
+        </Grid.Item>
+        <Grid.Item colSpan="2 / -1" rowSpan="1 / -1">
+          <Flex direction="column" align="end" gap="xs">
+            {npmPackage && <PackageChangelog packageName={npmPackage} />}
+            <Flex direction="row" gap="2xs" wrap="wrap" justify="end">
+              {npmPackage && (
+                <a
+                  className="ds-npm-tag"
+                  href={`https://www.npmjs.com/package/@entur/${sanitizeEnturPackageName(
+                    npmPackage,
+                  )}`}
+                >
+                  <ActionChip>
+                    Npm <SourceCodeIcon aria-hidden="true" />
+                  </ActionChip>
+                </a>
+              )}
+              {figmaLink && (
+                <a className="ds-npm-tag" href={figmaLink}>
+                  <ActionChip>
+                    Figma
+                    <ComponentIcon aria-hidden="true" />
+                  </ActionChip>
+                </a>
+              )}
+              {npmPackage && (
+                <a
+                  className="ds-npm-tag"
+                  href={`https://github.com/entur/design-system/tree/main/packages/${sanitizeEnturPackageName(
+                    npmPackage,
+                  )}${isBeta ? '/src/beta' : ''}`}
+                >
+                  <ActionChip>
+                    Github <GithubIcon aria-hidden="true" />
+                  </ActionChip>
+                </a>
+              )}
+            </Flex>
+          </Flex>
+        </Grid.Item>
+      </Grid>
       {description && (
         <LeadParagraph className="page-header__description">
           {description}

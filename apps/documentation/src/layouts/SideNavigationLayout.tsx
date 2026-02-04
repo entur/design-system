@@ -52,6 +52,7 @@ const SideNavigationLayout = ({
           subcategory
           category
           title
+          isBeta
         }
       }
     }
@@ -90,6 +91,7 @@ function mergeMdxAndSanityPageData(mdxPageData: any[], sanityPageData: any[]) {
         order: page.frontmatter.order,
         categoryIndex: page.frontmatter.categoryIndex,
         isCategoryLandingPage: false, // MDX pages don't have this field
+        isBeta: false,
       } as MenuItem;
     });
   const sanityPages = sanityPageData.map(page => {
@@ -102,6 +104,7 @@ function mergeMdxAndSanityPageData(mdxPageData: any[], sanityPageData: any[]) {
       order: page.order ?? null,
       categoryIndex: page.categoryIndex ?? null,
       isCategoryLandingPage: page.isCategoryLandingPage ?? false,
+      isBeta: page.isBeta ?? false,
     } as MenuItem;
   });
   // Add custom menu items

@@ -4,6 +4,13 @@ export const playgroundCode = defineType({
   name: 'playgroundCode',
   title: 'Playground-kode',
   type: 'object',
+  fieldsets: [
+    {
+      name: 'options',
+      title: 'Valg',
+      options: { collapsible: true, collapsed: false },
+    },
+  ],
   fields: [
     defineField({
       name: 'code',
@@ -11,6 +18,12 @@ export const playgroundCode = defineType({
       type: 'text',
       rows: 4,
       description: 'Kode som vises i demoen (JSX)',
+    }),
+    defineField({
+      name: 'componentName',
+      title: 'Komponentnavn',
+      type: 'string',
+      description: 'Komponentnavn for playground (f.eks. Button, ButtonGroup)',
     }),
     defineField({
       name: 'props',
@@ -47,10 +60,12 @@ export const playgroundCode = defineType({
       hidden: ({ parent }) => parent?.props && parent.props.length > 0,
     }),
     defineField({
-      name: 'componentName',
-      title: 'Komponentnavn',
-      type: 'string',
-      description: 'Komponentnavn for playground (f.eks. Button, ButtonGroup)',
+      name: 'hideCode',
+      title: 'Skjul kode',
+      type: 'boolean',
+      description: 'Skjuler kodevisningen i playground.',
+      initialValue: false,
+      fieldset: 'options',
     }),
   ],
   preview: {

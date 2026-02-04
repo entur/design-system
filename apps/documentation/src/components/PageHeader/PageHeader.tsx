@@ -4,7 +4,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 import { Heading1, Label, LeadParagraph } from '@entur/typography';
 import { useSettings } from '@providers/SettingsContext';
 import { PackageChangelog } from './PackageChangelog';
-import { NpmTag } from './NpmTag';
+import { NpmChip } from './NpmChip';
 import { CopyableText } from '@entur/alert';
 import './PageHeader.scss';
 
@@ -79,7 +79,7 @@ const PageHeader: React.FC<Props> = ({
           {titleToShow}
         </Heading1>
         {npmPackage && userType === 'developer' && (
-          <NpmTag packageName={npmPackage} />
+          <NpmChip packageName={npmPackage} />
         )}
       </div>
       {leadText && <LeadParagraph>{leadText}</LeadParagraph>}

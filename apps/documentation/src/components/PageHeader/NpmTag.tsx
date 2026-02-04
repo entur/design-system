@@ -1,13 +1,17 @@
 import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
-import { ActionChip } from '@entur/chip';
-import { SourceCodeIcon } from '@entur/icons';
+import { Tag } from '@entur/layout';
+import { Flex } from '@entur/layout/beta';
+import { sanitizeEnturPackageName } from 'src/utils/utils';
 
 import './NpmTag.scss';
 
-export const NpmTag: React.FC<{ packageName: string }> = ({ packageName }) => {
-  const normalizedPackageName = packageName.replace(/\/beta$/, '');
-  const packageKey = normalizedPackageName.split('@entur/')?.[1];
+export const NpmTag: React.FC<{ packageName: string; isBeta?: boolean }> = ({
+  packageName,
+  isBeta,
+}) => {
+  const packageKey = sanitizeEnturPackageName(packageName);
+  const fullPackageName = `@entur/${packageKey}`;
   const packageVersions = useStaticQuery(graphql`
     query {
       allNpmPackageVersion {
@@ -20,18 +24,16 @@ export const NpmTag: React.FC<{ packageName: string }> = ({ packageName }) => {
   `)?.allNpmPackageVersion?.nodes as Array<{ name: string; version: string }>;
 
   const currentPackage = packageVersions.find(
-    item => item.name === normalizedPackageName || item.name === packageKey,
+    item => item.name === fullPackageName || item.name === packageKey,
   );
 
   return (
-    <a
-      className="ds-npm-tag"
-      href={`https://www.npmjs.com/package/@entur/${currentPackage?.name}`}
-    >
-      <ActionChip>
-        <SourceCodeIcon />
-        npm v{currentPackage?.version}
-      </ActionChip>
-    </a>
+    <Flex gap="s">
+      <Tag>
+        {fullPackageName}
+        {isBeta ? '/beta' : ''}
+      </Tag>
+      <Tag>v{currentPackage?.version}</Tag>
+    </Flex>
   );
 };

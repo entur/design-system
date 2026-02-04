@@ -16,7 +16,6 @@ import {
 } from './src/providers';
 import { SearchProvider } from './src/components/Search/SearchContext';
 import DocLayout from './src/layouts/DocLayout';
-import ComponentLayout from './src/layouts/ComponentLayout';
 
 export const wrapRootElement: GatsbyBrowser['wrapRootElement'] = ({
   element,
@@ -43,7 +42,12 @@ export const wrapPageElement: GatsbyBrowser['wrapPageElement'] = ({
   const children = <ConsentProvider>{element}</ConsentProvider>;
   if (props.location.pathname === '/') return <>{children}</>;
   if (props.location.pathname === '/stand') return <>{children}</>;
-  return <DocLayout {...props}>{children}</DocLayout>;
+  const disableToc = Boolean(props.pageContext?.isComponentDoc);
+  return (
+    <DocLayout {...props} disableToc={disableToc}>
+      {children}
+    </DocLayout>
+  );
 };
 
 // Since Gatsby does automatic scroll restoration on navigation,

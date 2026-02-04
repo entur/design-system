@@ -24,6 +24,7 @@ import {
 import { useSearch } from '../../Search/SearchContext';
 
 import './SideNavigation.scss';
+import { Flex } from '@entur/layout/beta';
 
 type SideNavigationProps = {
   mobile?: boolean;
@@ -55,9 +56,11 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
       .filter(item => normalizeString(item.category) === currentCategory)
       .forEach(item => {
         const { subcategory } = item;
-        if (subcategory) {
-          if (!grouped[subcategory]) grouped[subcategory] = [];
-          grouped[subcategory].push(item);
+        const subcategoryLowercase = subcategory?.toLowerCase();
+        if (subcategoryLowercase) {
+          if (!grouped[subcategoryLowercase])
+            grouped[subcategoryLowercase] = [];
+          grouped[subcategoryLowercase].push(item);
         } else {
           ungrouped.push(item);
         }
@@ -90,7 +93,14 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
         active={isActive(path, currentLocation)}
         onClick={onClickMenuItem}
       >
-        {item.title}
+        <Flex justify="space-between">
+          {item.title}{' '}
+          {item.isBeta && (
+            <Badge type="status" variant="warning">
+              beta
+            </Badge>
+          )}
+        </Flex>
       </SideNavigationItem>
     );
   };

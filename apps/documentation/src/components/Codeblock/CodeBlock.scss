@@ -3,6 +3,14 @@
 .code-block {
   margin-bottom: tokens.$space-extra-large;
   overflow: hidden;
+  position: relative;
+
+  &__copy {
+    position: absolute;
+    top: tokens.$space-extra-small;
+    right: tokens.$space-extra-small;
+    z-index: 1;
+  }
 
   .eds-expandable-panel {
     position: relative;

@@ -1,8 +1,11 @@
 import React, { CSSProperties } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { Language } from 'prism-react-renderer';
+import { useToast } from '@entur/alert';
+import { ActionChip } from '@entur/chip';
 import { ExpandablePanel } from '@entur/expand';
-import { SourceCodeIcon } from '@entur/icons';
+import { CopyIcon, SourceCodeIcon } from '@entur/icons';
+import copy from 'copy-text-to-clipboard';
 
 // @ts-expect-error mangler typer for theme-fil
 import theme from './themeForCodeBlock';
@@ -18,6 +21,7 @@ export type codeBlockProps = {
   expandableLabel?: string;
   defaultOpen?: boolean;
   style?: CSSProperties;
+  copyable?: boolean;
 };
 
 export const CodeBlock = ({
@@ -28,8 +32,11 @@ export const CodeBlock = ({
   asExpandable = false,
   expandableLabel = '!!Mangler tittel!!',
   defaultOpen = false,
+  copyable = false,
   ...rest
 }: codeBlockProps) => {
+  const { addToast } = useToast();
+
   const ConditionalWrapper = ({ condition, wrapper, children }: any) =>
     condition ? wrapper(children) : <>{children}</>;
 
@@ -50,6 +57,23 @@ export const CodeBlock = ({
           </ExpandablePanel>
         )}
       >
+        {copyable && (
+          <ActionChip
+            data-color-mode="dark"
+            className="code-block__copy"
+            size="small"
+            type="button"
+            onClick={() => {
+              copy(children);
+              addToast({
+                title: 'Innhold kopiert!',
+                content: '',
+              });
+            }}
+          >
+            Kopier <CopyIcon aria-hidden />
+          </ActionChip>
+        )}
         <SyntaxHighlighter
           language={language}
           style={theme}
@@ -58,7 +82,7 @@ export const CodeBlock = ({
           customStyle={{
             marginTop: 0,
             zIndex: 0,
-            paddingBlockEnd: 8,
+            paddingBlock: 8,
           }}
           {...rest}
         >

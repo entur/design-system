@@ -1,35 +1,42 @@
-import React from 'react'
-import {defineField, defineType} from 'sanity'
-import {AutocompletePageFieldInput} from '../../components/AutocompletePageFieldInput'
+import React from 'react';
+import { defineArrayMember, defineField, defineType } from 'sanity';
+import { AutocompletePageFieldInput } from '../../components/AutocompletePageFieldInput';
 
-import {StringInputProps} from 'sanity'
+import { StringInputProps } from 'sanity';
 
 const DynamicCategoryInput = (props: StringInputProps) => {
-  return <AutocompletePageFieldInput {...props} fieldType="category" />
-}
+  return <AutocompletePageFieldInput {...props} fieldType="category" />;
+};
 
 const DynamicSubcategoryInput = (props: StringInputProps) => {
-  return <AutocompletePageFieldInput {...props} fieldType="subcategory" />
-}
+  return <AutocompletePageFieldInput {...props} fieldType="subcategory" />;
+};
 
 export const componentDoc = defineType({
   name: 'componentDoc',
   title: 'Komponentdokumentasjon',
   type: 'document',
+  fieldsets: [
+    {
+      name: 'legacyTabs',
+      title: 'Legacy faner',
+      options: { collapsible: true, collapsed: true },
+    },
+  ],
   orderings: [
     {
       title: 'Category, Subcategory, Title',
       name: 'categorySubcategoryTitle',
       by: [
-        {field: 'category', direction: 'asc'},
-        {field: 'subcategory', direction: 'asc'},
-        {field: 'title', direction: 'asc'},
+        { field: 'category', direction: 'asc' },
+        { field: 'subcategory', direction: 'asc' },
+        { field: 'title', direction: 'asc' },
       ],
     },
     {
       title: 'Title',
       name: 'titleAsc',
-      by: [{field: 'title', direction: 'asc'}],
+      by: [{ field: 'title', direction: 'asc' }],
     },
   ],
   fields: [
@@ -37,7 +44,7 @@ export const componentDoc = defineType({
       name: 'title',
       title: 'Tittel',
       type: 'string',
-      validation: (Rule) => Rule.required().error('Tittel er et påkrevd felt'),
+      validation: Rule => Rule.required().error('Tittel er et påkrevd felt'),
     }),
     defineField({
       name: 'description',
@@ -51,7 +58,8 @@ export const componentDoc = defineType({
       components: {
         input: DynamicCategoryInput,
       },
-      validation: (Rule) => Rule.required().error('Hovedkategori er et påkrevd felt'),
+      validation: Rule =>
+        Rule.required().error('Hovedkategori er et påkrevd felt'),
     }),
     defineField({
       name: 'subcategory',
@@ -73,11 +81,25 @@ export const componentDoc = defineType({
       type: 'url',
     }),
     defineField({
-      name: 'componentName',
-      title: 'Komponentnavn',
-      type: 'string',
-      description: 'Eksakt React komponentnavn som Props‑tab skal vise (f.eks. Button)',
-      validation: (Rule) => Rule.required().error('Komponentnavn er et påkrevd felt'),
+      name: 'isBeta',
+      title: 'Beta',
+      type: 'boolean',
+      description: 'Markerer komponentdokumentasjonen som beta.',
+      initialValue: false,
+    }),
+    defineField({
+      name: 'intro',
+      title: 'Intro',
+      type: 'textBlocks',
+      description: 'Valgfritt innhold som vises over fanene.',
+    }),
+    defineField({
+      name: 'tabs',
+      title: 'Faner',
+      type: 'array',
+      of: [defineArrayMember({ type: 'componentDocTab' })],
+      description:
+        'Faner som vises i komponentdokumentasjonen. Legg til én eller flere faner.',
     }),
     defineField({
       name: 'beskrivelse',
@@ -85,6 +107,13 @@ export const componentDoc = defineType({
       type: 'textBlocks',
       description:
         'Innhold som vises i Beskrivelse-tabben (følg vår dokumentasjonsmal for standardisering av innholdet)',
+      deprecated: {
+        reason:
+          'Bruk «Faner» i stedet. Dette feltet vil bli fjernet etter migrering.',
+      },
+      hidden: ({ value }) => value === undefined,
+      fieldset: 'legacyTabs',
+      initialValue: undefined,
     }),
     defineField({
       name: 'utvikling',
@@ -92,6 +121,13 @@ export const componentDoc = defineType({
       type: 'textBlocks',
       description:
         'Innhold som vises i Utvikling-tabben (følg vår dokumentasjonsmal for standardisering av innholdet)',
+      deprecated: {
+        reason:
+          'Bruk «Faner» i stedet. Dette feltet vil bli fjernet etter migrering.',
+      },
+      hidden: ({ value }) => value === undefined,
+      fieldset: 'legacyTabs',
+      initialValue: undefined,
     }),
   ],
   preview: {
@@ -100,11 +136,11 @@ export const componentDoc = defineType({
       category: 'category',
       subcategory: 'subcategory',
     },
-    prepare({title, category, subcategory}) {
+    prepare({ title, category, subcategory }) {
       return {
         title: title || 'Ingen tittel',
         subtitle: subcategory ? `${category} > ${subcategory}` : category,
-      }
+      };
     },
   },
-})
+});

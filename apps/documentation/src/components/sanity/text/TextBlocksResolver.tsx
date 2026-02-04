@@ -22,7 +22,7 @@ export const TextBlocksResolver = ({ value, npmPackage }: Props) => {
     <VariantWrapper variant={textBlocksVariant} value={value}>
       <PortableText
         value={value._rawItems ?? value.items}
-        npmPackage={npmPackage}
+        context={{ npmPackage }}
       />
     </VariantWrapper>
   );

@@ -8,12 +8,14 @@ import { BaseExpand } from '@entur/expand';
 import { SegmentedChoice, SegmentedControl } from '@entur/form';
 import { SourceCodeIcon } from '@entur/icons';
 import { Contrast } from '@entur/layout';
+import { Flex } from '@entur/layout/beta';
 import { componentColors } from '@entur/tokens';
 import { Heading5 } from '@entur/typography';
+import { Heading } from '@entur/typography/beta';
 import { ConditionalWrapper } from '@entur/utils';
+import { useSettings } from '@providers/SettingsContext';
 
 import {
-  AdvancedProps,
   InitialAdvancedProp,
   useAdvancedPlaygroundCode,
   wrapCodeInFragmentIfNecessary,
@@ -21,6 +23,7 @@ import {
 import PropsList from './PropsList';
 import theme from './themeForPlayground';
 import { packages } from './packages-scope';
+import { documentationComponents } from './documentation-scope';
 
 import './Playground.scss';
 
@@ -29,10 +32,12 @@ type PlaygroundProps = {
   language?: Language;
   props?: InitialAdvancedProp[];
   style?: React.CSSProperties;
+  title?: string;
   defaultContrast?: boolean;
   defaultDarkMode?: boolean;
   defaultShowEditor?: boolean;
   hideColorModeOption?: boolean;
+  hideCode?: boolean;
   code: string;
   scope?: Record<string, any>;
 };
@@ -42,13 +47,21 @@ const Playground: React.FC<PlaygroundProps> = ({
   language = 'jsx',
   props,
   style,
+  title,
   defaultContrast = false,
   defaultDarkMode = false,
   defaultShowEditor = false,
   hideColorModeOption = false,
+  hideCode = false,
 }) => {
+  const { resolvedColorMode } = useSettings();
+  const initialColorMode = defaultContrast
+    ? 'contrast'
+    : defaultDarkMode
+    ? 'dark'
+    : resolvedColorMode;
   const [colorMode, setColorMode] = useState<'light' | 'dark' | 'contrast'>(
-    defaultContrast ? 'contrast' : defaultDarkMode ? 'dark' : 'light',
+    initialColorMode,
   );
   const [isShowingEditor, setShowingEditor] = useState(defaultShowEditor);
 
@@ -62,7 +75,7 @@ const Playground: React.FC<PlaygroundProps> = ({
 
   const Element = colorMode === 'contrast' ? Contrast : 'div';
 
-  const finalScope = { ...packages, ...scope };
+  const finalScope = { ...packages, ...documentationComponents, ...scope };
 
   return (
     <LiveProvider
@@ -73,22 +86,29 @@ const Playground: React.FC<PlaygroundProps> = ({
       theme={theme}
     >
       <div className="playground__header">
-        {!hideColorModeOption && (
-          <div className="playground__color-mode-select">
-            <SegmentedControl
-              label="Fargemodus"
-              onChange={selectedValue =>
-                setColorMode(selectedValue as 'light' | 'dark' | 'contrast')
-              }
-              selectedValue={colorMode}
-            >
-              <SegmentedChoice value="light">Standard</SegmentedChoice>
-              <SegmentedChoice value="dark">Mørk</SegmentedChoice>
-              <SegmentedChoice value="contrast">Kontrast</SegmentedChoice>
-            </SegmentedControl>
-          </div>
-        )}
-        {!defaultShowEditor && (
+        <Flex direction="column" gap="none" justify="center">
+          {title && (
+            <Heading as="h3" size="lg" spacing="none">
+              {title}
+            </Heading>
+          )}
+          {!hideColorModeOption && (
+            <div className="playground__color-mode-select">
+              <SegmentedControl
+                label="Fargemodus"
+                onChange={selectedValue =>
+                  setColorMode(selectedValue as 'light' | 'dark' | 'contrast')
+                }
+                selectedValue={colorMode}
+              >
+                <SegmentedChoice value="light">Standard</SegmentedChoice>
+                <SegmentedChoice value="dark">Mørk</SegmentedChoice>
+                <SegmentedChoice value="contrast">Kontrast</SegmentedChoice>
+              </SegmentedControl>
+            </div>
+          )}
+        </Flex>
+        {!hideCode && !defaultShowEditor && (
           <IconButton
             className="playground__code-button"
             onClick={() => setShowingEditor(prev => !prev)}
@@ -109,15 +129,25 @@ const Playground: React.FC<PlaygroundProps> = ({
           className={classNames('playground__live-preview-container', {
             'playground__live-preview-container--code-closed': !isShowingEditor,
           })}
-          style={{
-            background:
-              colorMode === 'dark'
-                ? componentColors.dark.designentur.playground.background
-                : colorMode === 'light'
-                ? componentColors.light.designentur.playground.background
-                : 'revert-layer',
-          }}
-          data-color-mode={colorMode === 'dark' ? 'dark' : 'light'}
+          style={
+            hideColorModeOption
+              ? undefined
+              : {
+                  background:
+                    colorMode === 'dark'
+                      ? componentColors.dark.designentur.playground.background
+                      : colorMode === 'light'
+                      ? componentColors.light.designentur.playground.background
+                      : 'revert-layer',
+                }
+          }
+          data-color-mode={
+            hideColorModeOption
+              ? undefined
+              : colorMode === 'dark'
+              ? 'dark'
+              : 'light'
+          }
         >
           <LivePreview
             className="playground__live-preview"

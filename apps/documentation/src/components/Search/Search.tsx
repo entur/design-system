@@ -18,6 +18,7 @@ import {
   UserIcon,
 } from '@entur/icons';
 import { Badge, Tag } from '@entur/layout';
+import { Flex } from '@entur/layout/beta';
 import {
   UnorderedList,
   ListItem,
@@ -36,6 +37,7 @@ type StoreResult = {
   title: string | null;
   description: string | null;
   npmPackage?: string | null;
+  isBeta?: boolean;
   icon?: any;
 };
 
@@ -323,7 +325,14 @@ const ListElement = (props: {
           onClick={handleDismiss}
           onFocus={onSelect}
         >
-          {result.title}
+          <Flex gap="s">
+            {result.title}
+            {result.isBeta && (
+              <Badge type="status" variant="warning">
+                beta
+              </Badge>
+            )}
+          </Flex>
         </GatsbyLink>
         <SmallText>{result.description}</SmallText>
       </div>

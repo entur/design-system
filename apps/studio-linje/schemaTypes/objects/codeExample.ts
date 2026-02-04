@@ -44,6 +44,13 @@ export const codeExample = defineType({
       hidden: ({ parent }) => parent?.codeDisplayType !== 'plain',
     }),
     defineField({
+      name: 'plainCodeCopyable',
+      title: 'Kan kopieres',
+      type: 'boolean',
+      initialValue: false,
+      hidden: ({ parent }) => parent?.codeDisplayType !== 'plain',
+    }),
+    defineField({
       name: 'copyableText',
       title: 'Kopierbar tekst',
       type: 'copyableText',

@@ -16,10 +16,10 @@ export const structure = (S: any) =>
                     .apiVersion('2025-02-10')
                     .title('Alle komponentdokumenter')
                     .defaultOrdering([
-                      {field: 'category', direction: 'asc'},
-                      {field: 'subcategory', direction: 'asc'},
-                      {field: 'title', direction: 'asc'},
-                    ])
+                      { field: 'category', direction: 'asc' },
+                      { field: 'subcategory', direction: 'asc' },
+                      { field: 'title', direction: 'asc' },
+                    ]),
                 ),
               S.listItem()
                 .title('Komponenter')
@@ -35,9 +35,9 @@ export const structure = (S: any) =>
                             .title('Komponenter-dokumenter')
                             .filter('category == "Komponenter"')
                             .defaultOrdering([
-                              {field: 'subcategory', direction: 'asc'},
-                              {field: 'title', direction: 'asc'},
-                            ])
+                              { field: 'subcategory', direction: 'asc' },
+                              { field: 'title', direction: 'asc' },
+                            ]),
                         ),
                       S.listItem()
                         .title('Knapper')
@@ -45,8 +45,12 @@ export const structure = (S: any) =>
                           S.documentTypeList('componentDoc')
                             .apiVersion('2025-02-10')
                             .title('Knapper-dokumenter')
-                            .filter('category == "Komponenter" && subcategory == "Knapper"')
-                            .defaultOrdering([{field: 'title', direction: 'asc'}])
+                            .filter(
+                              'category == "Komponenter" && subcategory == "Knapper"',
+                            )
+                            .defaultOrdering([
+                              { field: 'title', direction: 'asc' },
+                            ]),
                         ),
                       S.listItem()
                         .title('Feedback')
@@ -54,8 +58,12 @@ export const structure = (S: any) =>
                           S.documentTypeList('componentDoc')
                             .apiVersion('2025-02-10')
                             .title('Feedback-dokumenter')
-                            .filter('category == "Komponenter" && subcategory == "Feedback"')
-                            .defaultOrdering([{field: 'title', direction: 'asc'}])
+                            .filter(
+                              'category == "Komponenter" && subcategory == "Feedback"',
+                            )
+                            .defaultOrdering([
+                              { field: 'title', direction: 'asc' },
+                            ]),
                         ),
                       S.listItem()
                         .title('Layout og flater')
@@ -64,9 +72,11 @@ export const structure = (S: any) =>
                             .apiVersion('2025-02-10')
                             .title('Layout og flater-dokumenter')
                             .filter(
-                              'category == "Komponenter" && subcategory == "Layout og flater"'
+                              'category == "Komponenter" && subcategory == "Layout og flater"',
                             )
-                            .defaultOrdering([{field: 'title', direction: 'asc'}])
+                            .defaultOrdering([
+                              { field: 'title', direction: 'asc' },
+                            ]),
                         ),
                       S.listItem()
                         .title('Navigasjon')
@@ -74,8 +84,12 @@ export const structure = (S: any) =>
                           S.documentTypeList('componentDoc')
                             .apiVersion('2025-02-10')
                             .title('Navigasjon-dokumenter')
-                            .filter('category == "Komponenter" && subcategory == "Navigasjon"')
-                            .defaultOrdering([{field: 'title', direction: 'asc'}])
+                            .filter(
+                              'category == "Komponenter" && subcategory == "Navigasjon"',
+                            )
+                            .defaultOrdering([
+                              { field: 'title', direction: 'asc' },
+                            ]),
                         ),
                       S.listItem()
                         .title('Reise')
@@ -83,8 +97,12 @@ export const structure = (S: any) =>
                           S.documentTypeList('componentDoc')
                             .apiVersion('2025-02-10')
                             .title('Reise-dokumenter')
-                            .filter('category == "Komponenter" && subcategory == "Reise"')
-                            .defaultOrdering([{field: 'title', direction: 'asc'}])
+                            .filter(
+                              'category == "Komponenter" && subcategory == "Reise"',
+                            )
+                            .defaultOrdering([
+                              { field: 'title', direction: 'asc' },
+                            ]),
                         ),
                       S.listItem()
                         .title('Ressurser')
@@ -92,8 +110,12 @@ export const structure = (S: any) =>
                           S.documentTypeList('componentDoc')
                             .apiVersion('2025-02-10')
                             .title('Ressurser-dokumenter')
-                            .filter('category == "Komponenter" && subcategory == "Ressurser"')
-                            .defaultOrdering([{field: 'title', direction: 'asc'}])
+                            .filter(
+                              'category == "Komponenter" && subcategory == "Ressurser"',
+                            )
+                            .defaultOrdering([
+                              { field: 'title', direction: 'asc' },
+                            ]),
                         ),
                       S.listItem()
                         .title('Skjemaelementer')
@@ -101,12 +123,16 @@ export const structure = (S: any) =>
                           S.documentTypeList('componentDoc')
                             .apiVersion('2025-02-10')
                             .title('Skjemaelementer-dokumenter')
-                            .filter('category == "Komponenter" && subcategory == "Skjemaelementer"')
-                            .defaultOrdering([{field: 'title', direction: 'asc'}])
+                            .filter(
+                              'category == "Komponenter" && subcategory == "Skjemaelementer"',
+                            )
+                            .defaultOrdering([
+                              { field: 'title', direction: 'asc' },
+                            ]),
                         ),
-                    ])
+                    ]),
                 ),
-            ])
+            ]),
         ),
 
       // Pages organized in fully dynamic folder structure
@@ -125,10 +151,10 @@ export const structure = (S: any) =>
                     .title('Alle sider')
                     .apiVersion('2025-02-10')
                     .defaultOrdering([
-                      {field: 'category', direction: 'asc'},
-                      {field: 'subcategory', direction: 'asc'},
-                      {field: 'title', direction: 'asc'},
-                    ])
+                      { field: 'category', direction: 'asc' },
+                      { field: 'subcategory', direction: 'asc' },
+                      { field: 'title', direction: 'asc' },
+                    ]),
                 ),
 
               // Dynamic category folders using GROQ queries
@@ -154,9 +180,12 @@ export const structure = (S: any) =>
                                     .apiVersion('2025-02-10')
                                     .filter('category == "Komponenter"')
                                     .defaultOrdering([
-                                      {field: 'subcategory', direction: 'asc'},
-                                      {field: 'title', direction: 'asc'},
-                                    ])
+                                      {
+                                        field: 'subcategory',
+                                        direction: 'asc',
+                                      },
+                                      { field: 'title', direction: 'asc' },
+                                    ]),
                                 ),
                               // Dynamic subcategories for Komponenter
                               S.listItem()
@@ -166,8 +195,12 @@ export const structure = (S: any) =>
                                     .apiVersion('2025-02-10')
                                     .title('Knapper-sider')
                                     .apiVersion('2025-02-10')
-                                    .filter('category == "Komponenter" && subcategory == "Knapper"')
-                                    .defaultOrdering([{field: 'title', direction: 'asc'}])
+                                    .filter(
+                                      'category == "Komponenter" && subcategory == "Knapper"',
+                                    )
+                                    .defaultOrdering([
+                                      { field: 'title', direction: 'asc' },
+                                    ]),
                                 ),
                               S.listItem()
                                 .title('Feedback')
@@ -177,9 +210,11 @@ export const structure = (S: any) =>
                                     .title('Feedback-sider')
                                     .apiVersion('2025-02-10')
                                     .filter(
-                                      'category == "Komponenter" && subcategory == "Feedback"'
+                                      'category == "Komponenter" && subcategory == "Feedback"',
                                     )
-                                    .defaultOrdering([{field: 'title', direction: 'asc'}])
+                                    .defaultOrdering([
+                                      { field: 'title', direction: 'asc' },
+                                    ]),
                                 ),
                               S.listItem()
                                 .title('Layout og flater')
@@ -188,9 +223,11 @@ export const structure = (S: any) =>
                                     .apiVersion('2025-02-10')
                                     .title('Layout og flater-sider')
                                     .filter(
-                                      'category == "Komponenter" && subcategory == "Layout og flater"'
+                                      'category == "Komponenter" && subcategory == "Layout og flater"',
                                     )
-                                    .defaultOrdering([{field: 'title', direction: 'asc'}])
+                                    .defaultOrdering([
+                                      { field: 'title', direction: 'asc' },
+                                    ]),
                                 ),
                               S.listItem()
                                 .title('Navigasjon')
@@ -199,9 +236,11 @@ export const structure = (S: any) =>
                                     .apiVersion('2025-02-10')
                                     .title('Navigasjon-sider')
                                     .filter(
-                                      'category == "Komponenter" && subcategory == "Navigasjon"'
+                                      'category == "Komponenter" && subcategory == "Navigasjon"',
                                     )
-                                    .defaultOrdering([{field: 'title', direction: 'asc'}])
+                                    .defaultOrdering([
+                                      { field: 'title', direction: 'asc' },
+                                    ]),
                                 ),
                               S.listItem()
                                 .title('Reise')
@@ -209,8 +248,12 @@ export const structure = (S: any) =>
                                   S.documentTypeList('page')
                                     .apiVersion('2025-02-10')
                                     .title('Reise-sider')
-                                    .filter('category == "Komponenter" && subcategory == "Reise"')
-                                    .defaultOrdering([{field: 'title', direction: 'asc'}])
+                                    .filter(
+                                      'category == "Komponenter" && subcategory == "Reise"',
+                                    )
+                                    .defaultOrdering([
+                                      { field: 'title', direction: 'asc' },
+                                    ]),
                                 ),
                               S.listItem()
                                 .title('Ressurser')
@@ -219,9 +262,11 @@ export const structure = (S: any) =>
                                     .apiVersion('2025-02-10')
                                     .title('Ressurser-sider')
                                     .filter(
-                                      'category == "Komponenter" && subcategory == "Ressurser"'
+                                      'category == "Komponenter" && subcategory == "Ressurser"',
                                     )
-                                    .defaultOrdering([{field: 'title', direction: 'asc'}])
+                                    .defaultOrdering([
+                                      { field: 'title', direction: 'asc' },
+                                    ]),
                                 ),
                               S.listItem()
                                 .title('Skjemaelementer')
@@ -230,11 +275,13 @@ export const structure = (S: any) =>
                                     .apiVersion('2025-02-10')
                                     .title('Skjemaelementer-sider')
                                     .filter(
-                                      'category == "Komponenter" && subcategory == "Skjemaelementer"'
+                                      'category == "Komponenter" && subcategory == "Skjemaelementer"',
                                     )
-                                    .defaultOrdering([{field: 'title', direction: 'asc'}])
+                                    .defaultOrdering([
+                                      { field: 'title', direction: 'asc' },
+                                    ]),
                                 ),
-                            ])
+                            ]),
                         ),
 
                       // Dynamic category discovery for other categories
@@ -252,9 +299,12 @@ export const structure = (S: any) =>
                                     .title('Identitet-sider')
                                     .filter('category == "Identitet"')
                                     .defaultOrdering([
-                                      {field: 'subcategory', direction: 'asc'},
-                                      {field: 'title', direction: 'asc'},
-                                    ])
+                                      {
+                                        field: 'subcategory',
+                                        direction: 'asc',
+                                      },
+                                      { field: 'title', direction: 'asc' },
+                                    ]),
                                 ),
                               S.listItem()
                                 .title('Introduksjon')
@@ -263,9 +313,11 @@ export const structure = (S: any) =>
                                     .apiVersion('2025-02-10')
                                     .title('Introduksjon-sider')
                                     .filter(
-                                      'category == "Identitet" && subcategory == "Introduksjon"'
+                                      'category == "Identitet" && subcategory == "Introduksjon"',
                                     )
-                                    .defaultOrdering([{field: 'title', direction: 'asc'}])
+                                    .defaultOrdering([
+                                      { field: 'title', direction: 'asc' },
+                                    ]),
                                 ),
                               S.listItem()
                                 .title('Maler')
@@ -273,8 +325,12 @@ export const structure = (S: any) =>
                                   S.documentTypeList('page')
                                     .apiVersion('2025-02-10')
                                     .title('Maler-sider')
-                                    .filter('category == "Identitet" && subcategory == "Maler"')
-                                    .defaultOrdering([{field: 'title', direction: 'asc'}])
+                                    .filter(
+                                      'category == "Identitet" && subcategory == "Maler"',
+                                    )
+                                    .defaultOrdering([
+                                      { field: 'title', direction: 'asc' },
+                                    ]),
                                 ),
                               S.listItem()
                                 .title('Verktøykassen')
@@ -283,11 +339,13 @@ export const structure = (S: any) =>
                                     .apiVersion('2025-02-10')
                                     .title('Verktøykassen-sider')
                                     .filter(
-                                      'category == "Identitet" && subcategory == "Verktøykassen"'
+                                      'category == "Identitet" && subcategory == "Verktøykassen"',
                                     )
-                                    .defaultOrdering([{field: 'title', direction: 'asc'}])
+                                    .defaultOrdering([
+                                      { field: 'title', direction: 'asc' },
+                                    ]),
                                 ),
-                            ])
+                            ]),
                         ),
 
                       S.listItem()
@@ -304,9 +362,12 @@ export const structure = (S: any) =>
                                     .title('Kom i gang-sider')
                                     .filter('category == "Kom i gang"')
                                     .defaultOrdering([
-                                      {field: 'subcategory', direction: 'asc'},
-                                      {field: 'title', direction: 'asc'},
-                                    ])
+                                      {
+                                        field: 'subcategory',
+                                        direction: 'asc',
+                                      },
+                                      { field: 'title', direction: 'asc' },
+                                    ]),
                                 ),
                               S.listItem()
                                 .title('For designere')
@@ -315,9 +376,11 @@ export const structure = (S: any) =>
                                     .apiVersion('2025-02-10')
                                     .title('For designere-sider')
                                     .filter(
-                                      'category == "Kom i gang" && subcategory == "For designere"'
+                                      'category == "Kom i gang" && subcategory == "For designere"',
                                     )
-                                    .defaultOrdering([{field: 'title', direction: 'asc'}])
+                                    .defaultOrdering([
+                                      { field: 'title', direction: 'asc' },
+                                    ]),
                                 ),
                               S.listItem()
                                 .title('For utviklere')
@@ -326,9 +389,11 @@ export const structure = (S: any) =>
                                     .apiVersion('2025-02-10')
                                     .title('For utviklere-sider')
                                     .filter(
-                                      'category == "Kom i gang" && subcategory == "For utviklere"'
+                                      'category == "Kom i gang" && subcategory == "For utviklere"',
                                     )
-                                    .defaultOrdering([{field: 'title', direction: 'asc'}])
+                                    .defaultOrdering([
+                                      { field: 'title', direction: 'asc' },
+                                    ]),
                                 ),
                               S.listItem()
                                 .title('Introduksjon')
@@ -337,11 +402,13 @@ export const structure = (S: any) =>
                                     .apiVersion('2025-02-10')
                                     .title('Introduksjon-sider')
                                     .filter(
-                                      'category == "Kom i gang" && subcategory == "Introduksjon"'
+                                      'category == "Kom i gang" && subcategory == "Introduksjon"',
                                     )
-                                    .defaultOrdering([{field: 'title', direction: 'asc'}])
+                                    .defaultOrdering([
+                                      { field: 'title', direction: 'asc' },
+                                    ]),
                                 ),
-                            ])
+                            ]),
                         ),
 
                       S.listItem()
@@ -356,11 +423,16 @@ export const structure = (S: any) =>
                                   S.documentTypeList('page')
                                     .apiVersion('2025-02-10')
                                     .title('Mønster-sider')
-                                    .filter('category == "Mønster"')
+                                    .filter(
+                                      'category == "Mønster" || category == "Monster"',
+                                    )
                                     .defaultOrdering([
-                                      {field: 'subcategory', direction: 'asc'},
-                                      {field: 'title', direction: 'asc'},
-                                    ])
+                                      {
+                                        field: 'subcategory',
+                                        direction: 'asc',
+                                      },
+                                      { field: 'title', direction: 'asc' },
+                                    ]),
                                 ),
                               S.listItem()
                                 .title('Mønster')
@@ -368,10 +440,14 @@ export const structure = (S: any) =>
                                   S.documentTypeList('page')
                                     .apiVersion('2025-02-10')
                                     .title('Mønster-sider')
-                                    .filter('category == "Monster" && subcategory == "Monster"')
-                                    .defaultOrdering([{field: 'title', direction: 'asc'}])
+                                    .filter(
+                                      '(category == "Mønster" || category == "Monster") && (subcategory == "Mønster" || subcategory == "Monster")',
+                                    )
+                                    .defaultOrdering([
+                                      { field: 'title', direction: 'asc' },
+                                    ]),
                                 ),
-                            ])
+                            ]),
                         ),
 
                       S.listItem()
@@ -388,9 +464,12 @@ export const structure = (S: any) =>
                                     .title('Ressurser-sider')
                                     .filter('category == "Ressurser"')
                                     .defaultOrdering([
-                                      {field: 'subcategory', direction: 'asc'},
-                                      {field: 'title', direction: 'asc'},
-                                    ])
+                                      {
+                                        field: 'subcategory',
+                                        direction: 'asc',
+                                      },
+                                      { field: 'title', direction: 'asc' },
+                                    ]),
                                 ),
                               S.listItem()
                                 .title('Workshopmaler')
@@ -399,11 +478,13 @@ export const structure = (S: any) =>
                                     .apiVersion('2025-02-10')
                                     .title('Workshopmaler-sider')
                                     .filter(
-                                      'category == "Ressurser" && subcategory == "Workshopmaler"'
+                                      'category == "Ressurser" && subcategory == "Workshopmaler"',
                                     )
-                                    .defaultOrdering([{field: 'title', direction: 'asc'}])
+                                    .defaultOrdering([
+                                      { field: 'title', direction: 'asc' },
+                                    ]),
                                 ),
-                            ])
+                            ]),
                         ),
 
                       S.listItem()
@@ -420,9 +501,12 @@ export const structure = (S: any) =>
                                     .title('Tokens-sider')
                                     .filter('category == "Tokens"')
                                     .defaultOrdering([
-                                      {field: 'subcategory', direction: 'asc'},
-                                      {field: 'title', direction: 'asc'},
-                                    ])
+                                      {
+                                        field: 'subcategory',
+                                        direction: 'asc',
+                                      },
+                                      { field: 'title', direction: 'asc' },
+                                    ]),
                                 ),
                               S.listItem()
                                 .title('Fargetokens')
@@ -430,8 +514,12 @@ export const structure = (S: any) =>
                                   S.documentTypeList('page')
                                     .apiVersion('2025-02-10')
                                     .title('Fargetokens-sider')
-                                    .filter('category == "Tokens" && subcategory == "Fargetokens"')
-                                    .defaultOrdering([{field: 'title', direction: 'asc'}])
+                                    .filter(
+                                      'category == "Tokens" && subcategory == "Fargetokens"',
+                                    )
+                                    .defaultOrdering([
+                                      { field: 'title', direction: 'asc' },
+                                    ]),
                                 ),
                               S.listItem()
                                 .title('Øvrige tokens')
@@ -440,11 +528,13 @@ export const structure = (S: any) =>
                                     .apiVersion('2025-02-10')
                                     .title('Øvrige tokens-sider')
                                     .filter(
-                                      'category == "Tokens" && subcategory == "Øvrige tokens"'
+                                      'category == "Tokens" && subcategory == "Øvrige tokens"',
                                     )
-                                    .defaultOrdering([{field: 'title', direction: 'asc'}])
+                                    .defaultOrdering([
+                                      { field: 'title', direction: 'asc' },
+                                    ]),
                                 ),
-                            ])
+                            ]),
                         ),
 
                       S.listItem()
@@ -454,10 +544,12 @@ export const structure = (S: any) =>
                             .apiVersion('2025-02-10')
                             .title('Universell utforming-sider')
                             .filter('category == "Universell utforming"')
-                            .defaultOrdering([{field: 'title', direction: 'asc'}])
+                            .defaultOrdering([
+                              { field: 'title', direction: 'asc' },
+                            ]),
                         ),
-                    ])
+                    ]),
                 ),
-            ])
+            ]),
         ),
-    ])
+    ]);

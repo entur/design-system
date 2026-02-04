@@ -29,6 +29,7 @@ import {
 } from '@media/images/frontpage/BackgroundElements';
 
 import './index.scss';
+import { Flex } from '@entur/layout/beta';
 
 const Index = () => {
   const { width } = useWindowDimensions();

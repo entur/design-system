@@ -1,0 +1,333 @@
+{
+  "tags": {},
+  "description": "",
+  "displayName": "Flex",
+  "methods": [],
+  "props": {
+    "direction": {
+      "defaultValue": {
+        "value": "\"row\""
+      },
+      "description": "CSS flex-direction value (supports responsive objects)",
+      "name": "direction",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/layout/src/beta/Flex/Flex.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "\"-moz-initial\" | \"inherit\" | \"initial\" | \"revert\" | \"revert-layer\" | \"unset\" | \"column\" | \"column-reverse\" | \"row\" | \"row-reverse\" | { sm?: FlexDirection | undefined; md?: FlexDirection | undefined; lg?: FlexDirection | undefined; } | undefined"
+      }
+    },
+    "wrap": {
+      "defaultValue": {
+        "value": "\"nowrap\""
+      },
+      "description": "CSS flex-wrap value (supports responsive objects)",
+      "name": "wrap",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/layout/src/beta/Flex/Flex.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "\"wrap\" | \"-moz-initial\" | \"inherit\" | \"initial\" | \"revert\" | \"revert-layer\" | \"unset\" | \"nowrap\" | \"wrap-reverse\" | { sm?: FlexWrap | undefined; md?: FlexWrap | undefined; lg?: FlexWrap | undefined; } | undefined"
+      }
+    },
+    "align": {
+      "defaultValue": null,
+      "description": "CSS align-items value (supports responsive objects)",
+      "name": "align",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/layout/src/beta/Flex/Flex.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "\"center\" | (string & {}) | \"-moz-initial\" | \"inherit\" | \"initial\" | \"revert\" | \"revert-layer\" | \"unset\" | \"end\" | \"flex-end\" | \"flex-start\" | \"self-end\" | \"self-start\" | \"start\" | ... 4 more ... | undefined"
+      }
+    },
+    "justify": {
+      "defaultValue": null,
+      "description": "CSS justify-content value (supports responsive objects)",
+      "name": "justify",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/layout/src/beta/Flex/Flex.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "\"center\" | (string & {}) | \"-moz-initial\" | \"inherit\" | \"initial\" | \"revert\" | \"revert-layer\" | \"unset\" | \"end\" | \"flex-end\" | \"flex-start\" | \"start\" | \"normal\" | \"stretch\" | \"space-around\" | ... 5 more ... | undefined"
+      }
+    },
+    "alignContent": {
+      "defaultValue": null,
+      "description": "CSS align-content value (supports responsive objects)",
+      "name": "alignContent",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/layout/src/beta/Flex/Flex.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "\"center\" | (string & {}) | \"-moz-initial\" | \"inherit\" | \"initial\" | \"revert\" | \"revert-layer\" | \"unset\" | \"end\" | \"flex-end\" | \"flex-start\" | \"start\" | \"baseline\" | \"normal\" | ... 5 more ... | undefined"
+      }
+    },
+    "gap": {
+      "defaultValue": null,
+      "description": "Spacing between flex items (supports responsive objects)",
+      "name": "gap",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/layout/src/beta/Flex/Flex.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "ResponsiveValue<\"s\" | \"2xs\" | \"xs\" | \"s-m\" | \"m\" | \"m-l\" | \"l\" | \"xl\" | \"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"6xl\" | \"7xl\" | \"8xl\" | \"9xl\" | \"10xl\" | \"11xl\" | \"none\"> | undefined"
+      }
+    },
+    "rowGap": {
+      "defaultValue": null,
+      "description": "Vertical spacing between rows (supports responsive objects)",
+      "name": "rowGap",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/layout/src/beta/Flex/Flex.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "ResponsiveValue<\"s\" | \"2xs\" | \"xs\" | \"s-m\" | \"m\" | \"m-l\" | \"l\" | \"xl\" | \"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"6xl\" | \"7xl\" | \"8xl\" | \"9xl\" | \"10xl\" | \"11xl\" | \"none\"> | undefined"
+      }
+    },
+    "columnGap": {
+      "defaultValue": null,
+      "description": "Horizontal spacing between columns (supports responsive objects)",
+      "name": "columnGap",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/layout/src/beta/Flex/Flex.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "ResponsiveValue<\"s\" | \"2xs\" | \"xs\" | \"s-m\" | \"m\" | \"m-l\" | \"l\" | \"xl\" | \"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"6xl\" | \"7xl\" | \"8xl\" | \"9xl\" | \"10xl\" | \"11xl\" | \"none\"> | undefined"
+      }
+    },
+    "flex": {
+      "defaultValue": null,
+      "description": "CSS flex shorthand value",
+      "name": "flex",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/layout/src/beta/Flex/Flex.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "Flex<string | number> | undefined"
+      }
+    },
+    "grow": {
+      "defaultValue": null,
+      "description": "CSS flex-grow value",
+      "name": "grow",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/layout/src/beta/Flex/Flex.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "number | undefined"
+      }
+    },
+    "shrink": {
+      "defaultValue": null,
+      "description": "CSS flex-shrink value",
+      "name": "shrink",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/layout/src/beta/Flex/Flex.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "number | undefined"
+      }
+    },
+    "basis": {
+      "defaultValue": null,
+      "description": "CSS flex-basis value",
+      "name": "basis",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/layout/src/beta/Flex/Flex.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "FlexBasis<string | number> | undefined"
+      }
+    },
+    "width": {
+      "defaultValue": null,
+      "description": "CSS width value",
+      "name": "width",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/layout/src/beta/Flex/Flex.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "height": {
+      "defaultValue": null,
+      "description": "CSS height value",
+      "name": "height",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/layout/src/beta/Flex/Flex.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "minWidth": {
+      "defaultValue": null,
+      "description": "CSS min-width value",
+      "name": "minWidth",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/layout/src/beta/Flex/Flex.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "minHeight": {
+      "defaultValue": null,
+      "description": "CSS min-height value",
+      "name": "minHeight",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/layout/src/beta/Flex/Flex.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "maxWidth": {
+      "defaultValue": null,
+      "description": "CSS max-width value",
+      "name": "maxWidth",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/layout/src/beta/Flex/Flex.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "maxHeight": {
+      "defaultValue": null,
+      "description": "CSS max-height value",
+      "name": "maxHeight",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/layout/src/beta/Flex/Flex.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "as": {
+      "defaultValue": {
+        "value": "\"div\""
+      },
+      "description": "HTML element or React component used to render the Flex container\nAn override of the default HTML tag.\nCan also be another React component.",
+      "name": "as",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/layout/src/beta/Flex/Flex.tsx",
+          "name": "TypeLiteral"
+        },
+        {
+          "fileName": "design-system/node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "(string & ElementType<any>) | (ComponentClass<any, any> & ElementType<any>) | (FunctionComponent<any> & ElementType<...>) | undefined"
+      }
+    },
+    "className": {
+      "defaultValue": null,
+      "description": "Additional class names",
+      "name": "className",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/layout/src/beta/Flex/Flex.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "children": {
+      "defaultValue": null,
+      "description": "Content of the Flex container",
+      "name": "children",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/layout/src/beta/Flex/Flex.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    }
+  }
+}

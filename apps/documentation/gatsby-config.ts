@@ -1,6 +1,6 @@
 import path from 'path';
 import { GatsbyConfig, graphql } from 'gatsby';
-import { getSanitizedPath } from './src/utils/utils';
+import { getSanitizedPath } from './src/utils/getSanitizedPath';
 
 const isGitHubPullRequest =
   process.env.GITHUB_EVENT_NAME === 'pull_request' ||
@@ -29,7 +29,9 @@ const config: GatsbyConfig = {
         projectId: 'npa0lfls',
         dataset: 'production',
         watchMode: process.env.NODE_ENV === 'development',
-        graphqlTag: shouldUseDevelopmentGraphqlTag ? 'development' : 'default',
+        graphqlTag:
+          process.env.SANITY_GRAPHQL_TAG ||
+          (shouldUseDevelopmentGraphqlTag ? 'development' : 'default'),
       },
     },
     'gatsby-plugin-image',
@@ -58,6 +60,7 @@ const config: GatsbyConfig = {
         '@data': path.join(__dirname, 'src', 'data'),
         '@media': path.join(__dirname, 'src', 'media'),
         '@providers': path.join(__dirname, 'src', 'providers'),
+        '@utils': path.join(__dirname, 'src', 'utils'),
       },
     },
     {
@@ -186,21 +189,66 @@ const config: GatsbyConfig = {
           'title',
           'description',
           'npmPackage',
+          'isBeta',
           'category',
           'subcategory',
         ],
         normalizer: ({ data }) => {
-          const mdxNodes = data.allMdx.nodes.map(node => ({
-            id: node.id,
-            path: node.frontmatter.route,
-            title: node.frontmatter.title,
-            tags: node.frontmatter.tags,
-            description: node.frontmatter.description,
-            npmPackage: node.frontmatter.npmPackage,
-            body: node.body,
-            category: null,
-            subcategory: null,
-          }));
+          const mdxStandaloneNodes = (data.allMdx?.nodes ?? []).filter(
+            (node: { parent?: { sourceInstanceName?: string } }) =>
+              node.parent?.sourceInstanceName === 'pages',
+          );
+          const tabsMdxNodes = (data.allFile?.nodes ?? [])
+            .filter(
+              (file: { sourceInstanceName?: string; childMdx?: unknown }) =>
+                file.sourceInstanceName === 'tabs' && file.childMdx,
+            )
+            .map(
+              (file: {
+                childMdx: {
+                  body: string;
+                  frontmatter?: { route?: string };
+                };
+              }) => file.childMdx,
+            );
+
+          const mdxNodes = mdxStandaloneNodes.map(
+            (node: {
+              id: string;
+              frontmatter?: {
+                route?: string;
+                title?: string;
+                tags?: string[];
+                description?: string;
+                npmPackage?: string;
+              };
+              body: string;
+            }) => ({
+              id: node.id,
+              path: node.frontmatter?.route,
+              title: node.frontmatter?.title,
+              tags: node.frontmatter?.tags,
+              description: node.frontmatter?.description,
+              npmPackage: node.frontmatter?.npmPackage,
+              isBeta: false,
+              body: node.body,
+              category: null,
+              subcategory: null,
+            }),
+          );
+
+          const mergedMdxByRoute = tabsMdxNodes.reduce(
+            (
+              acc: Record<string, string>,
+              node: { frontmatter?: { route?: string }; body: string },
+            ) => {
+              const route = node.frontmatter?.route;
+              if (!route) return acc;
+              acc[route] = `${acc[route] || ''} ${node.body}`.trim();
+              return acc;
+            },
+            {},
+          );
 
           const sanityNodes = data.allSanityPage.nodes.map(node => {
             const path = getSanitizedPath({
@@ -217,6 +265,7 @@ const config: GatsbyConfig = {
               tags: [],
               description: node.description,
               npmPackage: null,
+              isBeta: false,
               body: node.content?._rawItems
                 ? JSON.stringify(node.content._rawItems)
                 : '',
@@ -231,17 +280,34 @@ const config: GatsbyConfig = {
                 title: node.title,
                 category: node.category,
                 subcategory: node.subcategory,
+                isBeta: node.isBeta,
               });
 
-              // Combine beskrivelse and utvikling content for search
+              const tabsContent =
+                node.tabs && node.tabs.length > 0
+                  ? node.tabs
+                      .map(tab =>
+                        tab.content?._rawItems
+                          ? JSON.stringify(tab.content._rawItems)
+                          : '',
+                      )
+                      .join(' ')
+                  : '';
+
               const beskrivelseContent = node.beskrivelse?._rawItems
                 ? JSON.stringify(node.beskrivelse._rawItems)
                 : '';
               const utviklingContent = node.utvikling?._rawItems
                 ? JSON.stringify(node.utvikling._rawItems)
                 : '';
+
+              const sanityContent = tabsContent
+                ? tabsContent
+                : `${beskrivelseContent} ${utviklingContent}`.trim();
+
+              const mergedMdxContent = mergedMdxByRoute[path] || '';
               const combinedContent =
-                `${beskrivelseContent} ${utviklingContent}`.trim();
+                `${sanityContent} ${mergedMdxContent}`.trim();
 
               return {
                 id: node.id,
@@ -250,6 +316,7 @@ const config: GatsbyConfig = {
                 tags: [],
                 description: node.description,
                 npmPackage: node.npmPackage ?? null,
+                isBeta: node.isBeta,
                 body: combinedContent,
                 category: node.category,
                 subcategory: node.subcategory,
@@ -268,12 +335,28 @@ const config: GatsbyConfig = {
               nodes {
                 body
                 id
+                parent {
+                  ... on File {
+                    sourceInstanceName
+                  }
+                }
                 frontmatter {
                   route
                   description
                   npmPackage
                   title
                   tags
+                }
+              }
+            }
+            allFile(filter: { sourceInstanceName: { eq: "tabs" }, extension: { in: ["mdx", "md"] } }) {
+              nodes {
+                sourceInstanceName
+                childMdx {
+                  body
+                  frontmatter {
+                    route
+                  }
                 }
               }
             }
@@ -298,6 +381,7 @@ const config: GatsbyConfig = {
                 category
                 subcategory
                 npmPackage
+                isBeta
                 beskrivelse {
                   _rawItems
                 }

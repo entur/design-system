@@ -1,5 +1,6 @@
 import React from 'react';
 import { CopyableText } from '@entur/alert';
+import { CodeBlock } from '@components/Codeblock/CodeBlock';
 
 type Props = {
   imports: string;
@@ -9,8 +10,8 @@ type Props = {
 export const ImportStatement: React.FC<Props> = ({ imports, packageName }) => {
   const importText = `import { ${imports} } from '@entur/${packageName}';`;
   return (
-    <CopyableText successMessage="Import-statementet ble kopiert til utklippstavla.">
+    <CodeBlock language="jsx" hideLineNumbers copyable>
       {importText}
-    </CopyableText>
+    </CodeBlock>
   );
 };

@@ -71,3 +71,9 @@ export function getSanitizedPath({
   const sanitizedSubcategory = sanitizeText(subcategory);
   return `/${sanitizedCategory}/${sanitizedSubcategory}/${sanitizedTitle}`;
 }
+
+export function sanitizeEnturPackageName(packageName: string) {
+  const normalizedPackageName = packageName.replace(/\/beta$/, '');
+  const packageKey = normalizedPackageName.split('@entur/')?.at(-1);
+  return packageKey;
+}
