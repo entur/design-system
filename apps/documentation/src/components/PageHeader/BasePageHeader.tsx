@@ -42,7 +42,8 @@ export const BasePageHeader: React.FC<BasePageHeaderProps> = ({
         templateRows="auto auto"
         gap="none"
         rowGap="s"
-        style={{ justifyContent: 'space-between', alignItems: 'end' }}
+        justify="space-between"
+        align="end"
       >
         <Grid.Item as={Flex} colSpan="1 / 2" rowSpan="1 / 2" align="baseline">
           <Heading1 margin="none" className="page-header__heading">
