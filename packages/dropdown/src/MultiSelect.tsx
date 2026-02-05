@@ -123,7 +123,10 @@ export type MultiSelectProps<ValueType> = Omit<
 
 export const MultiSelect = React.forwardRef(
   <ValueType extends NonNullable<any>>(
-    {
+    props: MultiSelectProps<ValueType>,
+    ref: React.ForwardedRef<HTMLInputElement>,
+  ) => {
+    const {
       className,
       clearable = true,
       clearInputOnSelect = false,
@@ -165,9 +168,8 @@ export const MultiSelect = React.forwardRef(
       onKeyDown,
       onFocus,
       ...rest
-    }: MultiSelectProps<ValueType>,
-    ref: React.ForwardedRef<HTMLInputElement>,
-  ) => {
+    } = props;
+
     const [lastHighlightedIndex, setLastHighlightedIndex] = React.useState(0);
     const inputRef = useRef<HTMLInputElement>(null);
 

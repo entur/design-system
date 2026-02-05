@@ -26,7 +26,8 @@
     ],
     "react/prop-types": "off",
     "react/display-name": "off",
-    "@typescript-eslint/no-explicit-any": "off"
+    "@typescript-eslint/no-explicit-any": "off",
+    "prefer-const": ["error", { "ignoreReadBeforeAssign": true }]
   },
   "settings": { "react": { "version": "detect" } },
   "overrides": [

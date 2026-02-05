@@ -73,7 +73,10 @@ export type SearchableDropdownProps<ValueType> = DropdownProps<ValueType> & {
 
 export const SearchableDropdown = React.forwardRef(
   <ValueType extends NonNullable<any>>(
-    {
+    props: SearchableDropdownProps<ValueType>,
+    ref: React.ForwardedRef<HTMLInputElement>,
+  ) => {
+    const {
       ariaLabelChosenSingular,
       ariaLabelCloseList = 'Lukk liste med valg',
       ariaLabelOpenList = 'Åpne liste med valg',
@@ -108,9 +111,7 @@ export const SearchableDropdown = React.forwardRef(
       onKeyDown,
       onFocus,
       ...rest
-    }: SearchableDropdownProps<ValueType>,
-    ref: React.ForwardedRef<HTMLInputElement>,
-  ) => {
+    } = props;
     const [showSelectedItem, setShowSelectedItem] = useState(value !== null);
     const [lastHighlightedIndex, setLastHighlightedIndex] = useState(0);
     const inputRef = useRef<HTMLInputElement>(null);
