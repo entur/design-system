@@ -161,7 +161,7 @@ export const BaseFormControl = React.forwardRef<
                 showCloseButton={false}
                 disableFocusListener={true}
                 disableHoverListener={true}
-                disableClickListner={false}
+                disableClickListener={false}
                 disableKeyboardListener={false}
               >
                 <IconButton
