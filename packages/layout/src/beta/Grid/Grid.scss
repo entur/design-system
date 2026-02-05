@@ -4,6 +4,9 @@
     grid-template-columns: var(--grid-template-columns, repeat(12, 1fr));
     grid-template-rows: var(--grid-template-rows);
     grid-auto-flow: var(--grid-auto-flow, row);
+    align-items: var(--grid-align-items);
+    justify-content: var(--grid-justify-content);
+    align-content: var(--grid-align-content);
     gap: var(--grid-gap);
     row-gap: var(--grid-row-gap, var(--grid-gap));
     column-gap: var(--grid-column-gap, var(--grid-gap));

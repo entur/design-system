@@ -7,6 +7,10 @@ import classNames from 'classnames';
 
 import './Grid.scss';
 
+type AlignItems = React.CSSProperties['alignItems'];
+type JustifyContent = React.CSSProperties['justifyContent'];
+type AlignContent = React.CSSProperties['alignContent'];
+
 export type GridOwnProps = {
   /** CSS grid-template-columns value (supports responsive objects)
    * @default "repeat(12, 1fr)"
@@ -34,6 +38,12 @@ export type GridOwnProps = {
     | ResponsiveValue<
         'row' | 'column' | 'dense' | 'row dense' | 'column dense'
       >;
+  /** CSS align-items value (supports responsive objects) */
+  align?: AlignItems | ResponsiveValue<AlignItems>;
+  /** CSS justify-content value (supports responsive objects) */
+  justify?: JustifyContent | ResponsiveValue<JustifyContent>;
+  /** CSS align-content value (supports responsive objects) */
+  alignContent?: AlignContent | ResponsiveValue<AlignContent>;
   /** The height of the grid container */
   height?: string;
   /** HTML element or React component used to render the Grid
@@ -58,6 +68,9 @@ export const Grid = <E extends React.ElementType = typeof defaultElement>({
   rowGap,
   columnGap,
   autoFlow = 'row',
+  align,
+  justify,
+  alignContent,
   height,
   as,
   className,
@@ -74,6 +87,9 @@ export const Grid = <E extends React.ElementType = typeof defaultElement>({
   const resolvedRowGap = useResponsiveValue(rowGap);
   const resolvedColumnGap = useResponsiveValue(columnGap);
   const resolvedAutoFlow = useResponsiveValue(autoFlow) ?? 'row';
+  const resolvedAlign = useResponsiveValue(align);
+  const resolvedJustify = useResponsiveValue(justify);
+  const resolvedAlignContent = useResponsiveValue(alignContent);
 
   const gridStyle: React.CSSProperties = {
     ...(resolvedTemplateColumns && {
@@ -84,6 +100,15 @@ export const Grid = <E extends React.ElementType = typeof defaultElement>({
     }),
     ...(resolvedAutoFlow && {
       '--grid-auto-flow': resolvedAutoFlow,
+    }),
+    ...(resolvedAlign && {
+      '--grid-align-items': resolvedAlign,
+    }),
+    ...(resolvedJustify && {
+      '--grid-justify-content': resolvedJustify,
+    }),
+    ...(resolvedAlignContent && {
+      '--grid-align-content': resolvedAlignContent,
     }),
     ...(resolvedGap && {
       '--grid-gap': getSpacingValue(resolvedGap),

@@ -24,6 +24,24 @@ test('Grid sets CSS variables from props', () => {
   expect(grid.style.getPropertyValue('--grid-height')).toBe('100%');
 });
 
+test('Grid sets align and justify CSS variables from props', () => {
+  const { getByTestId } = render(
+    <Grid
+      data-testid="grid"
+      align="center"
+      justify="space-between"
+      alignContent="end"
+    />,
+  );
+
+  const grid = getByTestId('grid');
+  expect(grid.style.getPropertyValue('--grid-align-items')).toBe('center');
+  expect(grid.style.getPropertyValue('--grid-justify-content')).toBe(
+    'space-between',
+  );
+  expect(grid.style.getPropertyValue('--grid-align-content')).toBe('end');
+});
+
 test('GridItem formats colSpan and rowSpan values', () => {
   const { getByTestId } = render(
     <GridItem data-testid="item" colSpan={3} rowSpan="2 / 3" />,
