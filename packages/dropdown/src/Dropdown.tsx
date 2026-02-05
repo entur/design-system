@@ -142,6 +142,13 @@ export const Dropdown = React.forwardRef(
     const { items: normalizedItems, loading: resolvedItemsLoading } =
       useResolvedItems(initialItems);
     const isFilled = selectedItem !== null || placeholder !== undefined;
+
+    // Downshift may call stateReducer before useFloating refs are initialized, so we store them in a separate holder to avoid access before initialization
+    // eslint-disable-next-line prefer-const
+    let floatingRefs:
+      | ReturnType<typeof useFloating<HTMLDivElement>>['refs']
+      | undefined;
+
     const {
       isOpen,
       getItemProps,
@@ -158,7 +165,7 @@ export const Dropdown = React.forwardRef(
       stateReducer(state, { changes, type }) {
         const toggleButtonIsFocused =
           typeof document !== 'undefined' &&
-          document.activeElement === refs.reference.current;
+          document.activeElement === floatingRefs?.reference.current;
 
         switch (type) {
           case useSelect.stateChangeTypes.ToggleButtonKeyDownArrowDown:
@@ -194,6 +201,9 @@ export const Dropdown = React.forwardRef(
         flip({ fallbackStrategy: 'initialPlacement' }),
       ],
     });
+
+    // Update to use latest refs from floating-ui
+    floatingRefs = refs;
 
     // Update floating-ui position on scroll etc. Floating-ui's autoupdate is usually used inside
     // the useFloating hook but this requires the floating element to be conditionally rendered.
