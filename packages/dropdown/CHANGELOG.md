@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.0.7](https://github.com/entur/design-system/compare/@entur/dropdown@8.0.6...@entur/dropdown@8.0.7) (2026-02-05)
+
+### Bug Fixes
+
+- **dropdown/dropdown:** fix `Cannot access 'refs' before initialization` issue ([b14ba98](https://github.com/entur/design-system/commit/b14ba98b2035395e13836d21d219fd04efe58f61))
+
 ## [8.0.6](https://github.com/entur/design-system/compare/@entur/dropdown@8.0.5...@entur/dropdown@8.0.6) (2026-01-28)
 
 **Note:** Version bump only for package @entur/dropdown

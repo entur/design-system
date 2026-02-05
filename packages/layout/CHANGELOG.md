@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.4.0](https://github.com/entur/design-system/compare/@entur/layout@3.3.3...@entur/layout@3.4.0) (2026-02-05)
+
+### Bug Fixes
+
+- **layout/beta/template:** make portal template 100% width ([fa8b580](https://github.com/entur/design-system/commit/fa8b5808a0876eb8744a44323a6ba0bce7b3ae28))
+
+### Features
+
+- **layout/beta/flex:** add Flex beta component ([c265cb9](https://github.com/entur/design-system/commit/c265cb976894e71470bc744347eb99453ffa7fac))
+- **layout/beta/grid:** add justify and align props to Grid ([9eda387](https://github.com/entur/design-system/commit/9eda387bfcd099571d1f848cab1b75310cffa4f1))
+- **layout/beta/grid:** add new Grid and Grid.Item beta components ([3f950a1](https://github.com/entur/design-system/commit/3f950a18b003742b4ab15661320cac17b8ca8214))
+- **layout/beta/layout wrapper:** add optional LayoutWrapper component ([68e0c02](https://github.com/entur/design-system/commit/68e0c0223eba6a36b433bae4e8961bf0c07b67f1))
+- **layout/beta/template:** add template beta component for B2B portal applications ([ea4fe34](https://github.com/entur/design-system/commit/ea4fe34b9b0d46eae0dc9eb99240f5117424eb0d))
+
 ## [3.3.3](https://github.com/entur/design-system/compare/@entur/layout@3.3.2...@entur/layout@3.3.3) (2026-01-28)
 
 **Note:** Version bump only for package @entur/layout

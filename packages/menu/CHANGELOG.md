@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.1.0](https://github.com/entur/design-system/compare/@entur/menu@6.0.2...@entur/menu@6.1.0) (2026-02-05)
+
+### Features
+
+- **layout/beta/template:** add template beta component for B2B portal applications ([ea4fe34](https://github.com/entur/design-system/commit/ea4fe34b9b0d46eae0dc9eb99240f5117424eb0d))
+
 ## [6.0.2](https://github.com/entur/design-system/compare/@entur/menu@6.0.1...@entur/menu@6.0.2) (2026-01-28)
 
 ### Bug Fixes

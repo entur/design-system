@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.4.0](https://github.com/entur/design-system/compare/@entur/code-playground@2.3.13...@entur/code-playground@2.4.0) (2026-02-05)
+
+### Features
+
+- **layout/beta/flex:** add Flex beta component ([c265cb9](https://github.com/entur/design-system/commit/c265cb976894e71470bc744347eb99453ffa7fac))
+- **layout/beta/grid:** add new Grid and Grid.Item beta components ([3f950a1](https://github.com/entur/design-system/commit/3f950a18b003742b4ab15661320cac17b8ca8214))
+
 ## [2.3.13](https://github.com/entur/design-system/compare/@entur/code-playground@2.3.12...@entur/code-playground@2.3.13) (2026-01-28)
 
 **Note:** Version bump only for package @entur/code-playground

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.2.5](https://github.com/entur/design-system/compare/@entur/form@9.2.4...@entur/form@9.2.5) (2026-02-05)
+
+### Bug Fixes
+
+- **tooltip:** fix typo. `disableClickListner` --> `disableClickListener` ([a996613](https://github.com/entur/design-system/commit/a996613f6fb2324037228c65dc90b298451b048f))
+
 ## [9.2.4](https://github.com/entur/design-system/compare/@entur/form@9.2.3...@entur/form@9.2.4) (2026-01-28)
 
 **Note:** Version bump only for package @entur/form
