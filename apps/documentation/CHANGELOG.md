@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.16.0-beta.0](https://github.com/entur/design-system/compare/@entur/documentation@6.15.0...@entur/documentation@6.16.0-beta.0) (2026-02-05)
+
+### Bug Fixes
+
+- **website:** make PageHeader support /beta packages ([2ff12e7](https://github.com/entur/design-system/commit/2ff12e798afe9ec2d55579493bf6e390c078be97))
+
+### Features
+
+- **website:** add layout/beta to playground scope ([02a3450](https://github.com/entur/design-system/commit/02a3450a109c9c6127a8d82a4403b97b48614b4f))
+- **website:** bunch of improvements to component documentation generated from Sanity ([9f8fc08](https://github.com/entur/design-system/commit/9f8fc083cd4debb8bcdb50f56aceb60af3788ae4))
+
 # [6.15.0](https://github.com/entur/design-system/compare/@entur/documentation@6.14.1...@entur/documentation@6.15.0) (2026-01-28)
 
 ### Bug Fixes

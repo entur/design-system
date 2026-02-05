@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.0.7-beta.0](https://github.com/entur/design-system/compare/@entur/dropdown@8.0.6...@entur/dropdown@8.0.7-beta.0) (2026-02-05)
+
+### Bug Fixes
+
+- **dropdown:** fix `ref` related issues in dropdown components ([30e0577](https://github.com/entur/design-system/commit/30e057749d05ef274051be83c88bb0a1fb3ea96b))
+
 ## [8.0.6](https://github.com/entur/design-system/compare/@entur/dropdown@8.0.5...@entur/dropdown@8.0.6) (2026-01-28)
 
 **Note:** Version bump only for package @entur/dropdown

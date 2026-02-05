@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.9.0-beta.0](https://github.com/entur/design-system/compare/studio-linje@1.8.3...studio-linje@1.9.0-beta.0) (2026-02-05)
+
+### Features
+
+- **website:** bunch of improvements to component documentation generated from Sanity ([9f8fc08](https://github.com/entur/design-system/commit/9f8fc083cd4debb8bcdb50f56aceb60af3788ae4))
+
 ## [1.8.3](https://github.com/entur/design-system/compare/studio-linje@1.8.2...studio-linje@1.8.3) (2026-01-28)
 
 **Note:** Version bump only for package studio-linje
