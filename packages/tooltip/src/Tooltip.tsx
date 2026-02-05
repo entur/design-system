@@ -68,7 +68,7 @@ export type TooltipProps = {
    */
   disableFocusListener?: boolean;
   disableKeyboardListener?: boolean;
-  disableClickListner?: boolean;
+  disableClickListener?: boolean;
   /** Viser en lukkeknapp om man kontrollerer åpningen av Tooltip vha `isOpen`
    * @default true
    */
@@ -101,7 +101,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
   disableHoverListener = false,
   disableFocusListener = false,
   disableKeyboardListener = true,
-  disableClickListner = true,
+  disableClickListener = true,
   showCloseButton = true,
   variant,
   hoverDelay,
@@ -198,7 +198,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
         },
       }),
     // clickListner
-    ...(!disableClickListner &&
+    ...(!disableClickListener &&
       !isControlled && {
         onClick: () => setShowTooltip(!showTooltip),
       }),

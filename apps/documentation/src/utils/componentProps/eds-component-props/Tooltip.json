@@ -152,12 +152,12 @@
           "name": "boolean | undefined"
         }
       },
-      "disableClickListner": {
+      "disableClickListener": {
         "defaultValue": {
           "value": true
         },
         "description": "",
-        "name": "disableClickListner",
+        "name": "disableClickListener",
         "declarations": [
           {
             "fileName": "design-system/packages/tooltip/src/Tooltip.tsx",
