@@ -2,6 +2,12 @@ import React from 'react';
 import classNames from 'classnames';
 import { useSegmentedContext } from './SegmentedControl';
 import { PolymorphicComponentPropsWithRef, PolymorphicRef } from '@entur/utils';
+import {
+  getFirstWithDataValue,
+  getLastWithDataValue,
+  getNextWithDataValue,
+  getPrevWithDataValue,
+} from './utils';
 
 import './SegmentedChoice.scss';
 
@@ -66,43 +72,37 @@ export const SegmentedChoice: SegmentedChoiceComponent = React.forwardRef<
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
+    const current = e.currentTarget as HTMLElement;
+
+    const focusChoice = (el: HTMLElement | null) => {
+      if (!el) return;
+      el.focus();
+      setFocusedValue(el.getAttribute('data-value') || null);
+    };
+
     switch (e.key) {
       case 'ArrowLeft':
       case 'ArrowUp': {
         e.preventDefault();
-        const prevSibling = e.currentTarget.previousElementSibling;
-        if (prevSibling && prevSibling instanceof HTMLElement) {
-          prevSibling.focus();
-          setFocusedValue(prevSibling.getAttribute('data-value') || null);
-        }
+        focusChoice(getPrevWithDataValue(current));
         break;
       }
       case 'ArrowRight':
       case 'ArrowDown': {
         e.preventDefault();
-        const nextSibling = e.currentTarget.nextElementSibling;
-        if (nextSibling && nextSibling instanceof HTMLElement) {
-          nextSibling.focus();
-          setFocusedValue(nextSibling.getAttribute('data-value') || null);
-        }
+        focusChoice(getNextWithDataValue(current));
         break;
       }
       case 'Home': {
         e.preventDefault();
-        const firstSibling = e.currentTarget.parentElement?.firstElementChild;
-        if (firstSibling && firstSibling instanceof HTMLElement) {
-          firstSibling.focus();
-          setFocusedValue(firstSibling.getAttribute('data-value') || null);
-        }
+        const parent = current.parentElement as HTMLElement | null;
+        focusChoice(getFirstWithDataValue(parent));
         break;
       }
       case 'End': {
         e.preventDefault();
-        const lastSibling = e.currentTarget.parentElement?.lastElementChild;
-        if (lastSibling && lastSibling instanceof HTMLElement) {
-          lastSibling.focus();
-          setFocusedValue(lastSibling.getAttribute('data-value') || null);
-        }
+        const parent = current.parentElement as HTMLElement | null;
+        focusChoice(getLastWithDataValue(parent));
         break;
       }
       case ' ':
