@@ -38,7 +38,7 @@
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^10.4.9",
+    "@testing-library/react": "^15.0.7",
     "@testing-library/user-event": "14.6.1",
     "@vitejs/plugin-react": "^5.0.1",
     "eslint": "^7.32.0",
