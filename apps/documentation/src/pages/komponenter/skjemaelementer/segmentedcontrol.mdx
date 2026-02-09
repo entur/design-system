@@ -71,15 +71,12 @@ Anbefalingene er inspirert av bruksmønstre i ToggleGroup i [Aksel](https://akse
 
 ### Endret visning avhengig av valg
 
-<Playground code={`() => {
+<Playground style={{ gap: '1rem' }} 
+code={`() => {
     const [type, setType] = React.useState("avreise");
     const [dateTime, setDateTime] = React.useState(now('Europe/Oslo'));
     return (
-      <GridContainer
-        spacing="medium"
-        style={{ marginBottom: '1rem', width: '65%' }}
-      >
-        <GridItem small={12}>
+      <>
           <SegmentedControl
             label="Velg reisetidspunkt"
             value={type}
@@ -89,9 +86,8 @@ Anbefalingene er inspirert av bruksmønstre i ToggleGroup i [Aksel](https://akse
             <SegmentedControl.Item value="avreise">Avreise</SegmentedControl.Item>
             <SegmentedControl.Item value="ankomst">Ankomst</SegmentedControl.Item>
           </SegmentedControl>
-        </GridItem>
         {type !== "nå" && 
-          <GridItem small={12} style={{ display: 'flex', gap: '1rem' }}>
+          <Flex gap="s">
             <DatePicker
               label={type === "avreise" ? "Avreisedato" : "Ankomstdato"}
               selectedDate={dateTime}
@@ -102,9 +98,9 @@ Anbefalingene er inspirert av bruksmønstre i ToggleGroup i [Aksel](https://akse
               selectedTime={dateTime}
               onChange={time => setDateTime(time)}
             />
-          </GridItem> 
+          </Flex> 
         }
-      </GridContainer>
+      </>
     );
   }`} scope={{now}} />
 
