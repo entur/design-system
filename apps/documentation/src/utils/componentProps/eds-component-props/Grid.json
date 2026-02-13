@@ -100,6 +100,51 @@
         "name": "ResponsiveValue<\"row\" | \"column\" | \"dense\" | \"row dense\" | \"column dense\"> | undefined"
       }
     },
+    "align": {
+      "defaultValue": null,
+      "description": "CSS align-items value (supports responsive objects)",
+      "name": "align",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/layout/src/beta/Grid/Grid.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "\"center\" | (string & {}) | \"-moz-initial\" | \"inherit\" | \"initial\" | \"revert\" | \"revert-layer\" | \"unset\" | \"end\" | \"flex-end\" | \"flex-start\" | \"self-end\" | \"self-start\" | \"start\" | ... 4 more ... | undefined"
+      }
+    },
+    "justify": {
+      "defaultValue": null,
+      "description": "CSS justify-content value (supports responsive objects)",
+      "name": "justify",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/layout/src/beta/Grid/Grid.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "\"center\" | (string & {}) | \"-moz-initial\" | \"inherit\" | \"initial\" | \"revert\" | \"revert-layer\" | \"unset\" | \"end\" | \"flex-end\" | \"flex-start\" | \"start\" | \"normal\" | \"stretch\" | \"space-around\" | ... 5 more ... | undefined"
+      }
+    },
+    "alignContent": {
+      "defaultValue": null,
+      "description": "CSS align-content value (supports responsive objects)",
+      "name": "alignContent",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/layout/src/beta/Grid/Grid.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "\"center\" | (string & {}) | \"-moz-initial\" | \"inherit\" | \"initial\" | \"revert\" | \"revert-layer\" | \"unset\" | \"end\" | \"flex-end\" | \"flex-start\" | \"start\" | \"baseline\" | \"normal\" | ... 5 more ... | undefined"
+      }
+    },
     "height": {
       "defaultValue": null,
       "description": "The height of the grid container",
