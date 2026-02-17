@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { now, Time, ZonedDateTime } from '@internationalized/date';
+import { now, parseAbsolute, Time } from '@internationalized/date';
 import { toHaveNoViolations, axe } from 'jest-axe';
 import { SimpleTimePicker, TimePicker } from '../TimePicker';
 
@@ -39,9 +39,11 @@ describe('TimePicker', () => {
 
   test('applies time zone correctly', () => {
     const spy = jest.fn();
-    const currentTime =
-      // should be 04:35 in Los Angeles
-      new ZonedDateTime(2022, 8, 25, 'America/Los_Angeles', -28800, 11, 35);
+    // UTC 11:35 → 04:35 in Los Angeles (PDT, UTC-7)
+    const currentTime = parseAbsolute(
+      '2022-08-25T11:35:00Z',
+      'America/Los_Angeles',
+    );
 
     const { getByRole } = render(
       <TimePicker
