@@ -23,11 +23,14 @@
       border: solid t.$border-widths-small var(--components-menu-pagination-contrast-border-unselected);
       margin: 0 t.$space-extra-small;
 
-      &__arrow {
-        margin-left: 0.5rem;
+      &__content {
+        display: flex;
+        align-items: center;
+        gap: t.$space-extra-small;
       }
+
       &[aria-expanded='true'] {
-        .eds-pagination__results__change-number-of-results__arrow {
+        .eds-pagination__results__change-number-of-results__content__arrow {
           transform: rotate(180deg);
         }
       }
