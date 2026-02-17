@@ -6,6 +6,7 @@
 
   display: inline-flex;
   position: relative;
+  white-space: nowrap;
   padding: t.$space-extra-small2 t.$space-extra-small;
   height: t.$space-extra-large;
   min-width: t.$space-extra-large;
@@ -115,6 +116,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    white-space: nowrap;
     min-width: t.$space-large;
     height: calc(100% + 2 * t.$space-extra-small2);
 
