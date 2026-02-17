@@ -4545,6 +4545,12 @@
             "rootAlias": "Contrast/Train"
           },
           {
+            "name": "Components/travel/Travel Leg/Contrast/SnowCoach",
+            "value": "#ffe082",
+            "var": "Contrast/Taxi",
+            "rootAlias": "Contrast/Taxi"
+          },
+          {
             "name": "Components/travel/Travel Leg/Contrast/Taxi",
             "value": "#ffe082",
             "var": "Contrast/Taxi",
@@ -4677,6 +4683,12 @@
             "rootAlias": "Standard/Train"
           },
           {
+            "name": "Components/travel/Travel Leg/Standard/SnowCoach",
+            "value": "#3d3e40",
+            "var": "Standard/Taxi",
+            "rootAlias": "Standard/Taxi"
+          },
+          {
             "name": "Components/travel/Travel Leg/Standard/Taxi",
             "value": "#3d3e40",
             "var": "Standard/Taxi",
@@ -4797,6 +4809,12 @@
             "rootAlias": "Contrast/Bus-regional"
           },
           {
+            "name": "Components/travel/Travel Switch/Contrast/BackgroundTrue-SnowCoach",
+            "value": "#ffe082",
+            "var": "Contrast/Taxi",
+            "rootAlias": "Contrast/Taxi"
+          },
+          {
             "name": "Components/travel/Travel Switch/Contrast/BackgroundTrue-Taxi",
             "value": "#ffe082",
             "var": "Contrast/Taxi",
@@ -4915,6 +4933,12 @@
             "value": "#800664",
             "var": "Standard/Plane",
             "rootAlias": "Standard/Plane"
+          },
+          {
+            "name": "Components/travel/Travel Switch/Contrast/IconTrue-SnowCoach",
+            "value": "#3d3e40",
+            "var": "Standard/Taxi",
+            "rootAlias": "Standard/Taxi"
           },
           {
             "name": "Components/travel/Travel Switch/Contrast/IconTrue-Taxi",
@@ -5061,6 +5085,12 @@
             "rootAlias": "Standard/Train"
           },
           {
+            "name": "Components/travel/Travel Switch/Standard/BackgroundTrue-SnowCoach",
+            "value": "#3d3e40",
+            "var": "Standard/Taxi",
+            "rootAlias": "Standard/Taxi"
+          },
+          {
             "name": "Components/travel/Travel Switch/Standard/BackgroundTrue-Taxi",
             "value": "#3d3e40",
             "var": "Standard/Taxi",
@@ -5185,6 +5215,12 @@
             "value": "#427500",
             "var": "Standard/Bus-regional",
             "rootAlias": "Standard/Bus-regional"
+          },
+          {
+            "name": "Components/travel/Travel Switch/Standard/IconTrue-SnowCoach",
+            "value": "#3d3e40",
+            "var": "Standard/Taxi",
+            "rootAlias": "Standard/Taxi"
           },
           {
             "name": "Components/travel/Travel Switch/Standard/IconTrue-Taxi",
@@ -5409,6 +5445,18 @@
             "rootAlias": "Contrast/Train-transparent"
           },
           {
+            "name": "Components/travel/Travel Tag/Contrast/Fill/SnowCoach",
+            "value": "#ffe082",
+            "var": "Contrast/Taxi",
+            "rootAlias": "Contrast/Taxi"
+          },
+          {
+            "name": "Components/travel/Travel Tag/Contrast/Fill/SnowCoach-Cancelled",
+            "value": "#ffe08226",
+            "var": "Contrast/Taxi-transparent",
+            "rootAlias": "Contrast/Taxi-transparent"
+          },
+          {
             "name": "Components/travel/Travel Tag/Contrast/Fill/Tag-Funicular-Cancelled",
             "value": "#b482fb26",
             "var": "Contrast/Funicular-transparent",
@@ -5565,6 +5613,12 @@
             "rootAlias": "Contrast/Plane"
           },
           {
+            "name": "Components/travel/Travel Tag/Contrast/Icon/SnowCoach-Cancelled",
+            "value": "#ffe082",
+            "var": "Contrast/Taxi",
+            "rootAlias": "Contrast/Taxi"
+          },
+          {
             "name": "Components/travel/Travel Tag/Contrast/Icon/Taxi-Cancelled",
             "value": "#ffe082",
             "var": "Contrast/Taxi",
@@ -5683,6 +5737,12 @@
             "value": "#fbafea",
             "var": "Contrast/Plane",
             "rootAlias": "Contrast/Plane"
+          },
+          {
+            "name": "Components/travel/Travel Tag/Contrast/Text/Line-SnowCoach-Cancelled",
+            "value": "#ffe082",
+            "var": "Contrast/Taxi",
+            "rootAlias": "Contrast/Taxi"
           },
           {
             "name": "Components/travel/Travel Tag/Contrast/Text/Line-Taxi-Cancelled",
@@ -5913,6 +5973,18 @@
             "rootAlias": "Standard/Train-transparent"
           },
           {
+            "name": "Components/travel/Travel Tag/Standard/Fill/SnowCoach",
+            "value": "#3d3e40",
+            "var": "Standard/Taxi",
+            "rootAlias": "Standard/Taxi"
+          },
+          {
+            "name": "Components/travel/Travel Tag/Standard/Fill/SnowCoach-Cancelled",
+            "value": "#3d3e4026",
+            "var": "Standard/Taxi-transparent",
+            "rootAlias": "Standard/Taxi-transparent"
+          },
+          {
             "name": "Components/travel/Travel Tag/Standard/Fill/Taxi",
             "value": "#3d3e40",
             "var": "Standard/Taxi",
@@ -6039,6 +6111,12 @@
             "rootAlias": "Standard/Plane"
           },
           {
+            "name": "Components/travel/Travel Tag/Standard/Icon/SnowCoach-Cancelled",
+            "value": "#3d3e40",
+            "var": "Standard/Taxi",
+            "rootAlias": "Standard/Taxi"
+          },
+          {
             "name": "Components/travel/Travel Tag/Standard/Icon/Taxi-Cancelled",
             "value": "#3d3e40",
             "var": "Standard/Taxi",
@@ -6151,6 +6229,12 @@
             "value": "#800664",
             "var": "Standard/Plane",
             "rootAlias": "Standard/Plane"
+          },
+          {
+            "name": "Components/travel/Travel Tag/Standard/Text/Line-SnowCoach-Cancelled",
+            "value": "#3d3e40",
+            "var": "Standard/Taxi",
+            "rootAlias": "Standard/Taxi"
           },
           {
             "name": "Components/travel/Travel Tag/Standard/Text/Line-Taxi-Cancelled",
@@ -11137,6 +11221,12 @@
             "rootAlias": "Dark/Train"
           },
           {
+            "name": "Components/travel/Travel Leg/Contrast/SnowCoach",
+            "value": "#ffe082",
+            "var": "Dark/Taxi",
+            "rootAlias": "Dark/Taxi"
+          },
+          {
             "name": "Components/travel/Travel Leg/Contrast/Taxi",
             "value": "#ffe082",
             "var": "Dark/Taxi",
@@ -11269,6 +11359,12 @@
             "rootAlias": "Dark/Train"
           },
           {
+            "name": "Components/travel/Travel Leg/Standard/SnowCoach",
+            "value": "#ffe082",
+            "var": "Dark/Taxi",
+            "rootAlias": "Dark/Taxi"
+          },
+          {
             "name": "Components/travel/Travel Leg/Standard/Taxi",
             "value": "#ffe082",
             "var": "Dark/Taxi",
@@ -11389,6 +11485,12 @@
             "rootAlias": "Dark/Bus-regional"
           },
           {
+            "name": "Components/travel/Travel Switch/Contrast/BackgroundTrue-SnowCoach",
+            "value": "#ffe082",
+            "var": "Dark/Taxi",
+            "rootAlias": "Dark/Taxi"
+          },
+          {
             "name": "Components/travel/Travel Switch/Contrast/BackgroundTrue-Taxi",
             "value": "#ffe082",
             "var": "Dark/Taxi",
@@ -11507,6 +11609,12 @@
             "value": "#f2b8e5",
             "var": "Dark/Plane",
             "rootAlias": "Dark/Plane"
+          },
+          {
+            "name": "Components/travel/Travel Switch/Contrast/IconTrue-SnowCoach",
+            "value": "#ffe082",
+            "var": "Dark/Taxi",
+            "rootAlias": "Dark/Taxi"
           },
           {
             "name": "Components/travel/Travel Switch/Contrast/IconTrue-Taxi",
@@ -11653,6 +11761,12 @@
             "rootAlias": "Dark/Train"
           },
           {
+            "name": "Components/travel/Travel Switch/Standard/BackgroundTrue-SnowCoach",
+            "value": "#ffe082",
+            "var": "Dark/Taxi",
+            "rootAlias": "Dark/Taxi"
+          },
+          {
             "name": "Components/travel/Travel Switch/Standard/BackgroundTrue-Taxi",
             "value": "#ffe082",
             "var": "Dark/Taxi",
@@ -11777,6 +11891,12 @@
             "value": "#a4bf4d",
             "var": "Dark/Bus-regional",
             "rootAlias": "Dark/Bus-regional"
+          },
+          {
+            "name": "Components/travel/Travel Switch/Standard/IconTrue-SnowCoach",
+            "value": "#ffe082",
+            "var": "Dark/Taxi",
+            "rootAlias": "Dark/Taxi"
           },
           {
             "name": "Components/travel/Travel Switch/Standard/IconTrue-Taxi",
@@ -12001,6 +12121,18 @@
             "rootAlias": "Dark/Train-transparent"
           },
           {
+            "name": "Components/travel/Travel Tag/Contrast/Fill/SnowCoach",
+            "value": "#ffe082",
+            "var": "Dark/Taxi",
+            "rootAlias": "Dark/Taxi"
+          },
+          {
+            "name": "Components/travel/Travel Tag/Contrast/Fill/SnowCoach-Cancelled",
+            "value": "#ffe08226",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
             "name": "Components/travel/Travel Tag/Contrast/Fill/Tag-Funicular-Cancelled",
             "value": "#b898e526",
             "var": "Dark/Funicular-transparent",
@@ -12157,6 +12289,12 @@
             "rootAlias": "Dark/Plane"
           },
           {
+            "name": "Components/travel/Travel Tag/Contrast/Icon/SnowCoach-Cancelled",
+            "value": "#ffe082",
+            "var": "Dark/Taxi",
+            "rootAlias": "Dark/Taxi"
+          },
+          {
             "name": "Components/travel/Travel Tag/Contrast/Icon/Taxi-Cancelled",
             "value": "#ffe082",
             "var": "Dark/Taxi",
@@ -12275,6 +12413,12 @@
             "value": "#f2b8e5",
             "var": "Dark/Plane",
             "rootAlias": "Dark/Plane"
+          },
+          {
+            "name": "Components/travel/Travel Tag/Contrast/Text/Line-SnowCoach-Cancelled",
+            "value": "#ffe082",
+            "var": "Dark/Taxi",
+            "rootAlias": "Dark/Taxi"
           },
           {
             "name": "Components/travel/Travel Tag/Contrast/Text/Line-Taxi-Cancelled",
@@ -12505,6 +12649,18 @@
             "rootAlias": "Dark/Train-transparent"
           },
           {
+            "name": "Components/travel/Travel Tag/Standard/Fill/SnowCoach",
+            "value": "#ffe082",
+            "var": "Dark/Taxi",
+            "rootAlias": "Dark/Taxi"
+          },
+          {
+            "name": "Components/travel/Travel Tag/Standard/Fill/SnowCoach-Cancelled",
+            "value": "#ffe08226",
+            "var": "Dark/Taxi-transparent",
+            "rootAlias": "Dark/Taxi-transparent"
+          },
+          {
             "name": "Components/travel/Travel Tag/Standard/Fill/Taxi",
             "value": "#ffe082",
             "var": "Dark/Taxi",
@@ -12631,6 +12787,12 @@
             "rootAlias": "Dark/Plane"
           },
           {
+            "name": "Components/travel/Travel Tag/Standard/Icon/SnowCoach-Cancelled",
+            "value": "#ffe082",
+            "var": "Dark/Taxi",
+            "rootAlias": "Dark/Taxi"
+          },
+          {
             "name": "Components/travel/Travel Tag/Standard/Icon/Taxi-Cancelled",
             "value": "#ffe082",
             "var": "Dark/Taxi",
@@ -12743,6 +12905,12 @@
             "value": "#f2b8e5",
             "var": "Dark/Plane",
             "rootAlias": "Dark/Plane"
+          },
+          {
+            "name": "Components/travel/Travel Tag/Standard/Text/Line-SnowCoach-Cancelled",
+            "value": "#ffe082",
+            "var": "Dark/Taxi",
+            "rootAlias": "Dark/Taxi"
           },
           {
             "name": "Components/travel/Travel Tag/Standard/Text/Line-Taxi-Cancelled",
