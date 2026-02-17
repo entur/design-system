@@ -92,7 +92,21 @@ package.json
 
 ## Commit Conventions
 
-Uses conventional-commits. Commit type drives version bumps: `fix` → patch, `feat` → minor, `BREAKING CHANGE` → major. Scope should be the affected package name in lowercase (e.g. `fix(button): ...`). Use `yarn gc:format` for the interactive formatter.
+Uses conventional-commits enforced by Commitizen + commitlint (Husky lints on push).
+
+**`yarn gc:format`** is the standard way to commit (interactive Commitizen prompt). Claude Code cannot use it since it requires interactive input — instead, manually craft commit messages following this format:
+
+```
+type(scope): short description in imperative form
+
+optional longer description
+
+optional breaking changes
+```
+
+- **type**: `fix`, `feat`, `chore`, `docs`, `refactor`, etc. Drives version bumps: `fix` → patch, `feat` → minor, `BREAKING CHANGE` → major.
+- **scope**: `package/component` format in lowercase. Single component: `travel/travel tag`. Entire package: `travel`. Entire repo: `root`. Documentation site: `website`. Multiple: `travel/travel tag, travel/travel header`.
+- **short description**: one sentence, imperative form (e.g. "add new variant", not "added new variant").
 
 Branch naming: start with Jira issue ID, e.g. `ETU-38373-branch-name`.
 
