@@ -44,7 +44,7 @@
     "@entur/travel": "workspace:^",
     "@entur/typography": "workspace:^",
     "@entur/utils": "workspace:^",
-    "@internationalized/date": "3.8.2",
+    "@internationalized/date": "3.11.0",
     "@mdx-js/react": "3.1.0",
     "@portabletext/react": "3.2.4",
     "classnames": "2.5.1",
