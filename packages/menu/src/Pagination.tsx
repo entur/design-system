@@ -179,13 +179,13 @@ export const Pagination: React.FC<PaginationProps> = ({
               <OverflowMenu
                 className="eds-pagination__results__change-number-of-results"
                 buttonIcon={
-                  <>
+                  <span className="eds-pagination__results__change-number-of-results__content">
                     {resultsPerPage}{' '}
                     <DownArrowIcon
-                      className="eds-pagination__results__change-number-of-results__arrow"
+                      className="eds-pagination__results__change-number-of-results__content__arrow"
                       aria-hidden="true"
                     />
-                  </>
+                  </span>
                 }
                 aria-label={changeNumberOfResultsLabelForScreenreader}
                 placement="bottom-end"
