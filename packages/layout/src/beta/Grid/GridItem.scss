@@ -1,4 +1,7 @@
 .eds-layout-grid-item {
+  --grid-item-column: initial;
+  --grid-item-row: initial;
+
   grid-column: var(--grid-item-column);
   grid-row: var(--grid-item-row);
 }
