@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.4.1-next.1](https://github.com/entur/design-system/compare/@entur/layout@3.4.1-next.0...@entur/layout@3.4.1-next.1) (2026-02-19)
+
+### Bug Fixes
+
+- **layout/beta/grid:** remove auto subgrid and prevent CSS variable inheritance leaking ([5183095](https://github.com/entur/design-system/commit/51830954d129f1cce119d9f222dc2a40bf29cf54))
+
 # [3.4.0](https://github.com/entur/design-system/compare/@entur/layout@3.3.3...@entur/layout@3.4.0) (2026-02-05)
 
 ### Bug Fixes
