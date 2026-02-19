@@ -1,5 +1,10 @@
 import { Portal } from './portal';
-import type { PortalComponent, PortalMainProps, PortalProps } from './portal';
+import type {
+  PortalComponent,
+  PortalMainProps,
+  PortalProps,
+  PortalStatusBarProps,
+} from './portal';
 import type {
   SidebarComponent,
   SidebarProps,
@@ -18,6 +23,7 @@ export type {
   PortalComponent,
   PortalMainProps,
   PortalProps,
+  PortalStatusBarProps,
   SidebarComponent,
   SidebarProps,
   SidebarSectionProps,

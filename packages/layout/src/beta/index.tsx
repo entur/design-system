@@ -26,6 +26,7 @@ export type {
   PortalComponent,
   PortalMainProps,
   PortalProps,
+  PortalStatusBarProps,
   SidebarComponent,
   SidebarProps,
   SidebarSectionProps,

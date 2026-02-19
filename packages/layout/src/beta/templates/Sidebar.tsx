@@ -128,7 +128,7 @@ const SidebarRoot = React.forwardRef(
   ) => {
     const WrapperElement = contrast ? Contrast : 'div';
     return (
-      <Grid.Item as={WrapperElement} colSpan="1 / 2" rowSpan="1 / 2">
+      <Grid.Item as={WrapperElement} colSpan="1 / 2">
         <Flex
           ref={ref}
           as={as || defaultSidebarElement}

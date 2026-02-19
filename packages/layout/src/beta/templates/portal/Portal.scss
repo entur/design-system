@@ -1,6 +1,24 @@
 .eds-layout-template-portal {
   min-height: 100vh;
   width: 100%;
+
+  &:has(> .eds-layout-template-portal__status-bar) {
+    --grid-template-rows: auto 1fr;
+
+    > .eds-layout-template-portal__status-bar {
+      --grid-item-column: 1 / -1;
+      --grid-item-row: 1;
+    }
+
+    // Override Sidebar's rowSpan to row 2 when StatusBar is present
+    > .eds-layout-grid-item:has(.eds-layout-template-sidebar) {
+      --grid-item-row: 2;
+    }
+
+    > .eds-layout-template-portal__main {
+      --grid-item-row: 2;
+    }
+  }
 }
 
 .eds-layout-template-portal__main {

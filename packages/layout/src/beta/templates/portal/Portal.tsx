@@ -11,16 +11,27 @@ type PortalOwnProps = {
   children?: React.ReactNode;
 };
 
+type PortalStatusBarOwnProps = {
+  className?: string;
+  style?: React.CSSProperties;
+  children?: React.ReactNode;
+};
+
 type PortalMainOwnProps = {
   className?: string;
   style?: React.CSSProperties;
   children?: React.ReactNode;
 };
 
+const defaultStatusBarElement = 'div';
 const defaultPortalMainElement = 'main';
 
 export type PortalProps<T extends React.ElementType = typeof Grid> =
   PolymorphicComponentProps<T, PortalOwnProps>;
+
+export type PortalStatusBarProps<
+  T extends React.ElementType = typeof defaultStatusBarElement,
+> = PolymorphicComponentProps<T, PortalStatusBarOwnProps>;
 
 export type PortalMainProps<
   T extends React.ElementType = typeof defaultPortalMainElement,
@@ -36,13 +47,35 @@ const PortalRoot = React.forwardRef(
         ref={ref}
         as={as}
         templateColumns="var(--eds-sidebar-width, min-content) minmax(0, 1fr)"
-        gap="m"
+        gap="none"
+        columnGap="m"
         className={classNames('eds-layout-template-portal', className)}
         style={style}
         {...rest}
       >
         {children}
       </Grid>
+    );
+  },
+);
+
+const PortalStatusBar = React.forwardRef(
+  <E extends React.ElementType = typeof defaultStatusBarElement>(
+    { children, className, as, ...rest }: PortalStatusBarProps<E>,
+    ref?: React.Ref<Element>,
+  ) => {
+    return (
+      <Grid.Item
+        ref={ref}
+        as={as || defaultStatusBarElement}
+        className={classNames(
+          'eds-layout-template-portal__status-bar',
+          className,
+        )}
+        {...rest}
+      >
+        {children}
+      </Grid.Item>
     );
   },
 );
@@ -68,14 +101,17 @@ const PortalMain = React.forwardRef(
 );
 
 export type PortalComponent = typeof PortalRoot & {
+  StatusBar: typeof PortalStatusBar;
   Sidebar: SidebarComponent;
   Main: typeof PortalMain;
 };
 
 export const Portal: PortalComponent = Object.assign(PortalRoot, {
+  StatusBar: PortalStatusBar,
   Sidebar,
   Main: PortalMain,
 });
 
 Portal.displayName = 'Template.Portal';
+Portal.StatusBar.displayName = 'Template.Portal.StatusBar';
 Portal.Main.displayName = 'Template.Portal.Main';
