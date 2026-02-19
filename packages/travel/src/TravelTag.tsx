@@ -71,14 +71,17 @@ export const TravelTag: React.FC<TravelTagProps> = ({
   const colorModifier = alert === 'error' ? 'cancelled' : undefined;
   const shouldModifyTextColor = alert === 'error' || transport === 'walk';
 
+  const defaultBackground = `var(--basecolors-shape-disabled)`;
+  const defaultTextColor = `var(--basecolors-shape-disabled)`;
+
   const dynamicCssVars: React.CSSProperties & CSSVars = {
     '--background-color': `var(--components-travel-traveltag-${colorTheme}-fill-${transportLower}${
       colorModifier ? `-${colorModifier}` : ''
-    })`,
+    }, ${defaultBackground})`,
     ...(shouldModifyTextColor && {
       '--text-color': `var(--components-travel-traveltag-${colorTheme}-text-line-${transportLower}${
         colorModifier ? `-${colorModifier}` : ''
-      })`,
+      }, ${defaultTextColor})`,
     }),
   };
 
