@@ -262,9 +262,12 @@ export function handleOnChange<DateType extends DateValue>({
         value,
         type: forcedReturnType ?? 'ZonedDateTime',
         timezone:
-          value !== null && 'timezone' in value
-            ? (value.timezone as string)
-            : undefined,
+          (value !== null && 'timeZone' in value
+            ? (value.timeZone as string)
+            : undefined) ??
+          (selectedDate !== null && 'timeZone' in selectedDate
+            ? (selectedDate.timeZone as string)
+            : undefined),
       }) as MappedDateValue<typeof forcedReturnType> | null,
     );
   }

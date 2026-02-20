@@ -142,8 +142,8 @@ export const TimePicker = <TimeType extends TimeValue>({
 
   const timeZone =
     forcedTimeZone ??
-    (selectedTime !== null && 'timezone' in selectedTime
-      ? (selectedTime.timezone as string)
+    (selectedTime !== null && 'timeZone' in selectedTime
+      ? (selectedTime.timeZone as string)
       : 'Europe/Oslo');
 
   const handleOnChange = (value: MappedTimeValue<TimeType> | null) => {
