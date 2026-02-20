@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.0.8](https://github.com/entur/design-system/compare/@entur/dropdown@8.0.7...@entur/dropdown@8.0.8) (2026-02-20)
+
+### Bug Fixes
+
+- **dropdown/multi select:** clear search text when pressing Escape ([c085358](https://github.com/entur/design-system/commit/c0853589f34aa3728868660cd7eeff83fadfb271))
+- **dropdown/multi select:** fix double Enter required after re-entering MultiSelect ([5c58cba](https://github.com/entur/design-system/commit/5c58cbadf1be3e52be760fe18f94745d6c76a203))
+
 ## [8.0.7](https://github.com/entur/design-system/compare/@entur/dropdown@8.0.6...@entur/dropdown@8.0.7) (2026-02-05)
 
 ### Bug Fixes

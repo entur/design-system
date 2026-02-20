@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.9.1](https://github.com/entur/design-system/compare/studio-linje@1.9.0...studio-linje@1.9.1) (2026-02-20)
+
+**Note:** Version bump only for package studio-linje
+
 # [1.9.0](https://github.com/entur/design-system/compare/studio-linje@1.8.3...studio-linje@1.9.0) (2026-02-05)
 
 ### Features

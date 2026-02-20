@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.2.6](https://github.com/entur/design-system/compare/@entur/form@9.2.5...@entur/form@9.2.6) (2026-02-20)
+
+### Bug Fixes
+
+- **form/segmented control:** fix keyboad navigation not working when using tooltip wrapper ([79b32de](https://github.com/entur/design-system/commit/79b32de394edc3bfe44c7b02d2d62cdecb35bb8d))
+
 ## [9.2.5](https://github.com/entur/design-system/compare/@entur/form@9.2.4...@entur/form@9.2.5) (2026-02-05)
 
 ### Bug Fixes

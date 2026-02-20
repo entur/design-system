@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.1.1](https://github.com/entur/design-system/compare/@entur/menu@6.1.0...@entur/menu@6.1.1) (2026-02-20)
+
+### Bug Fixes
+
+- **menu/pagination:** replace fragment with span to fix aria-hidden console error ([3ce2a72](https://github.com/entur/design-system/commit/3ce2a727539d8a8bc74fe0a18d427cc09ceda307))
+
 # [6.1.0](https://github.com/entur/design-system/compare/@entur/menu@6.0.2...@entur/menu@6.1.0) (2026-02-05)
 
 ### Features

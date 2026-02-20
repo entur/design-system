@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.22.2](https://github.com/entur/design-system/compare/@entur/tokens@3.22.1...@entur/tokens@3.22.2) (2026-02-20)
+
+### Bug Fixes
+
+- **travel:** add missing snowcoach transport tokens and CSS variable fallback ([6bb1406](https://github.com/entur/design-system/commit/6bb14065418cede6ebd2c0b3435a7e866829b753))
+
 ## [3.22.1](https://github.com/entur/design-system/compare/@entur/tokens@3.22.0...@entur/tokens@3.22.1) (2026-01-28)
 
 ### Bug Fixes

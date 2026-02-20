@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.5.6](https://github.com/entur/design-system/compare/@entur/travel@6.5.5...@entur/travel@6.5.6) (2026-02-20)
+
+### Bug Fixes
+
+- **travel/travel tag:** prevent text wrapping in TravelTag and details section ([8ae6bc2](https://github.com/entur/design-system/commit/8ae6bc2ff65c00802c0d6af63e5232498892125f))
+- **travel:** add missing snowcoach transport tokens and CSS variable fallback ([6bb1406](https://github.com/entur/design-system/commit/6bb14065418cede6ebd2c0b3435a7e866829b753))
+
 ## [6.5.5](https://github.com/entur/design-system/compare/@entur/travel@6.5.4...@entur/travel@6.5.5) (2026-02-05)
 
 **Note:** Version bump only for package @entur/travel
