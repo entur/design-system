@@ -294,6 +294,10 @@ export const MultiSelect = React.forwardRef(
               inputValue: clearInputOnSelect ? EMPTY_INPUT : state.inputValue,
             };
           }
+          // reset input value when closing dropdown with Escape
+          case useCombobox.stateChangeTypes.InputKeyDownEscape: {
+            return resetInputState<ValueType | string>(changes);
+          }
           // reset input value when leaving input field
           case useCombobox.stateChangeTypes.InputBlur: {
             const { selectedItem: _, ...otherChanges } = changes;

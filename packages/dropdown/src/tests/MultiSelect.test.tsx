@@ -634,6 +634,21 @@ describe('MultiSelect', () => {
     expect(listItems).toHaveLength(testItems.length + 1); // '+ 1' to account for 'select all' option
   }, 1500);
 
+  test('input is cleared when Escape is pressed', async () => {
+    const user = userEvent.setup();
+    render(
+      <MultiSelect label="test label" items={testItems} selectedItems={[]} />,
+    );
+
+    const inputField = screen.getByRole('combobox', { name: 'test label' });
+    inputField.focus();
+    await user.keyboard('{b}{e}{r}');
+    expect(inputField).toHaveValue('ber');
+
+    await user.keyboard('{Escape}');
+    expect(inputField).toHaveValue('');
+  });
+
   test('input is cleared when clearInputOnSelect is true', async () => {
     const user = userEvent.setup();
     render(
