@@ -649,6 +649,39 @@ describe('MultiSelect', () => {
     expect(inputField).toHaveValue('');
   });
 
+  test('can select element with single Enter after clicking away and back', async () => {
+    const user = userEvent.setup();
+    const onChange = jest.fn();
+    render(
+      <MultiSelect
+        label="test label"
+        items={testItems}
+        selectedItems={[]}
+        onChange={onChange}
+      />,
+    );
+
+    const inputField = screen.getByRole('combobox', { name: 'test label' });
+    const dropdownList = screen.getByRole('listbox', { hidden: true });
+
+    // Open dropdown
+    await user.click(inputField);
+    expect(dropdownList).toBeVisible();
+
+    // Click away to blur
+    await user.click(document.body);
+    expect(dropdownList).not.toBeVisible();
+
+    // Click back on input
+    await user.click(inputField);
+    expect(dropdownList).toBeVisible();
+
+    // Single ArrowDown + Enter should select an item without needing a second Enter
+    await user.keyboard('{ArrowDown}{Enter}');
+
+    expect(onChange).toHaveBeenCalled();
+  });
+
   test('input is cleared when clearInputOnSelect is true', async () => {
     const user = userEvent.setup();
     render(
