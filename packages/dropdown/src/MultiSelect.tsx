@@ -298,10 +298,13 @@ export const MultiSelect = React.forwardRef(
           case useCombobox.stateChangeTypes.InputKeyDownEscape: {
             return resetInputState<ValueType | string>(changes);
           }
-          // reset input value when leaving input field
+          // reset input value on blur, and preserve current selection
+          // to prevent downshift's default blur behavior from changing it
           case useCombobox.stateChangeTypes.InputBlur: {
-            const { selectedItem: _, ...otherChanges } = changes;
-            return resetInputState<ValueType | string>(otherChanges);
+            return resetInputState<ValueType | string>({
+              ...changes,
+              selectedItem: state.selectedItem,
+            });
           }
           // edit input value when selected items is updated outside component
           case useCombobox.stateChangeTypes.ControlledPropUpdatedSelectedItem: {
