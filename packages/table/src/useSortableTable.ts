@@ -1,6 +1,7 @@
 import {
   ButtonHTMLAttributes,
   DetailedHTMLProps,
+  useEffect,
   useMemo,
   useState,
 } from 'react';
@@ -29,6 +30,10 @@ export function useSortableData<T>(
 } {
   const [sortConfig, setSortConfig] = useState(externalSortConfig);
 
+  useEffect(() => {
+    setSortConfig(externalSortConfig);
+  }, [externalSortConfig.key, externalSortConfig.order]);
+
   const onSortRequested = (key: string) => {
     const sortingNewColumn = key !== sortConfig.key;
     if (sortingNewColumn || sortConfig.order === 'none')
@@ -39,21 +44,19 @@ export function useSortableData<T>(
       return setSortConfig({ key, order: 'none' });
   };
 
-  const tableSortedAscending = useMemo(
-    () =>
-      [...tableData].sort((a: any, b: any) => {
-        const valueOfA: string = get(a, sortConfig.key, a)?.toString() ?? '';
-        const valueOfB: string = get(b, sortConfig.key, b)?.toString() ?? '';
+  const tableSortedAscending = useMemo(() => {
+    const collator = new Intl.Collator(['no', 'en'], {
+      numeric: true,
+      sensitivity: 'base',
+    });
 
-        const stringComparator = new Intl.Collator(['no', 'en'], {
-          numeric: true,
-          sensitivity: 'base',
-        });
+    return [...tableData].sort((a: any, b: any) => {
+      const valueOfA: string = get(a, sortConfig.key, a)?.toString() ?? '';
+      const valueOfB: string = get(b, sortConfig.key, b)?.toString() ?? '';
 
-        return stringComparator.compare(valueOfA, valueOfB);
-      }),
-    [tableData, sortConfig.key],
-  );
+      return collator.compare(valueOfA, valueOfB);
+    });
+  }, [tableData, sortConfig.key]);
 
   const sortedData = useMemo(() => {
     switch (sortConfig.order) {
