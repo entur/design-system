@@ -96,7 +96,6 @@ export function useSortableData<T>(
   }: SortableTableProps = {}): SortableTableReturnProps => {
     return {
       sortable,
-      sortConfig: sortConfig,
       ...props,
     };
   };
@@ -137,6 +136,5 @@ export type SortableTableProps = {
 export type SortableTableReturnProps = {
   /** @default true */
   sortable?: boolean;
-  sortConfig: ExternalSortConfig;
   [key: string]: any;
 };
