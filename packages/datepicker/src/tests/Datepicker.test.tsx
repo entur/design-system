@@ -660,6 +660,29 @@ test.each([
   },
 );
 
+test('preserves non-default timezone when forcedReturnType is ZonedDateTime', async () => {
+  const user = userEvent.setup();
+  const spy = jest.fn();
+  const helsinkiDate = parseAbsolute('2024-06-15T12:00:00Z', 'Europe/Helsinki');
+
+  render(
+    <DatePicker
+      label="test"
+      selectedDate={helsinkiDate}
+      onChange={spy}
+      locale="en-GB"
+      forcedReturnType={'ZonedDateTime' as ForcedReturnType}
+    />,
+  );
+
+  const dateFields = screen.getAllByRole('spinbutton');
+  dateFields[0].focus();
+  await user.keyboard('{ArrowUp}');
+
+  const emittedValue = spy.mock.calls[0][0];
+  expect(emittedValue).toHaveProperty('timeZone', 'Europe/Helsinki');
+});
+
 test('onValidate fires on invalid date', async () => {
   const spy = jest.fn();
   const currentDate = new CalendarDate(1997, 7, 10);
