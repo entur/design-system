@@ -8,10 +8,9 @@ npmPackage: layout
 tags: tag, knagg,
 ---
 
-import { Tag, Badge } from '@entur/layout';
+import { Tag } from '@entur/layout';
 import { ClockIcon } from '@entur/icons';
 import { SEO } from '@components/seo/SEO';
-import { BannerAlertBox } from '@entur/alert';
 
 export const Head = ( props ) => {
   return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
@@ -36,8 +35,32 @@ export const Head = ( props ) => {
   }
 ```
 
-<BannerAlertBox variant="warning" title="Deprecated">Tag er avviklet og vil bli fjernet i en fremtidig versjon. 
-Bruk Badge med variant="neutral" i stedet.</BannerAlertBox>
+## Varianter
+
+Tag kommer i seks varianter: `primary`, `neutral` (standard), `success`, `warning`, `negative` og `information`.
+
+```jsx
+<div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+  <Tag variant="primary">Primary</Tag>
+  <Tag variant="neutral">Neutral</Tag>
+  <Tag variant="success">Success</Tag>
+  <Tag variant="warning">Warning</Tag>
+  <Tag variant="negative">Negative</Tag>
+  <Tag variant="information">Information</Tag>
+</div>
+```
+
+## Størrelser
+
+Tag finnes i tre størrelser: `small`, `medium` (standard) og `large`.
+
+```jsx
+<div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+  <Tag size="small">Small</Tag>
+  <Tag size="medium">Medium</Tag>
+  <Tag size="large">Large</Tag>
+</div>
+```
 
 ## Retningslinjer for bruk
 

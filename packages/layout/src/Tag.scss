@@ -1,48 +1,184 @@
 @use '@entur/tokens/dist/styles.scss' as t;
 
 .eds-tag {
-  // Use same styling as Badge neutral
-  background-color: var(--components-layout-badge-neutral-standard-fill);
-  border-radius: var(--components-layout-badge-status-radius-medium);
-  border: var(--components-layout-badge-status-border-small) solid var(--components-layout-badge-neutral-standard-border);
-  color: var(--components-layout-badge-neutral-standard-text);
-  display: inline-block;
-  min-width: t.$space-extra-large;
-  padding: t.$space-extra-small2 t.$space-small;
-  font-size: t.$font-sizes-medium;
-  line-height: t.$line-heights-large;
-
-  // Icon color matches text color (like Badge neutral)
-  .eds-icon {
-    color: var(--components-layout-badge-neutral-standard-text);
-  }
-
-  // Contrast mode support (like Badge neutral)
-  .eds-contrast & {
-    background-color: var(--components-layout-badge-neutral-contrast-fill);
-    color: var(--components-layout-badge-neutral-contrast-text);
-    border: var(--components-layout-badge-status-border-small) solid var(--components-layout-badge-neutral-contrast-border);
-    .eds-icon {
-      color: var(--components-layout-badge-neutral-contrast-text);
-    }
-  }
-
-  &--leading-icon .eds-icon {
-    margin-right: t.$space-extra-small;
-  }
-  &--trailing-icon .eds-icon {
-    margin-left: t.$space-extra-small;
-  }
-  &--compact {
+  :where(&) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: inherit;
+    font-weight: t.$font-weights-body;
     font-size: t.$font-sizes-small;
-    padding: calc(t.$space-extra-small2 / 2) t.$space-extra-small;
-    line-height: t.$line-heights-medium;
-    height: 1.5rem;
-    &.eds-tag--leading-icon .eds-icon {
-      margin-right: t.$space-extra-small2;
+    line-height: 1rem;
+    width: fit-content;
+    height: var(--components-layout-badge-status-height-medium);
+    padding: 0 var(--components-layout-badge-status-inlinepadding-medium);
+    border-radius: var(--components-layout-badge-status-radius-medium);
+    border: var(--components-layout-badge-status-border-medium) solid transparent;
+
+    .eds-icon {
+      position: relative;
+      color: inherit;
     }
-    &.eds-tag--trailing-icon .eds-icon {
-      margin-left: t.$space-extra-small2;
+  }
+
+  // Variant: primary
+  &--variant-primary {
+    :where(&) {
+      background-color: var(--components-layout-badge-primary-standard-fill);
+      color: var(--components-layout-badge-primary-standard-text);
+      border-color: var(--components-layout-badge-primary-standard-border);
+    }
+
+    .eds-contrast :where(&) {
+      background-color: var(--components-layout-badge-primary-contrast-fill);
+      color: var(--components-layout-badge-primary-contrast-text);
+      border-color: var(--components-layout-badge-primary-contrast-border);
+    }
+  }
+
+  // Variant: success
+  &--variant-success {
+    :where(&) {
+      background-color: var(--components-layout-badge-success-standard-fill);
+      color: var(--components-layout-badge-success-standard-text);
+      border-color: var(--components-layout-badge-success-standard-border);
+    }
+
+    .eds-contrast :where(&) {
+      background-color: var(--components-layout-badge-success-contrast-fill);
+      color: var(--components-layout-badge-success-contrast-text);
+      border-color: var(--components-layout-badge-success-contrast-border);
+    }
+  }
+
+  // Variant: warning
+  &--variant-warning {
+    :where(&) {
+      background-color: var(--components-layout-badge-warning-standard-fill);
+      color: var(--components-layout-badge-warning-standard-text);
+      border-color: var(--components-layout-badge-warning-standard-border);
+    }
+
+    .eds-contrast :where(&) {
+      background-color: var(--components-layout-badge-warning-contrast-fill);
+      color: var(--components-layout-badge-warning-contrast-text);
+      border-color: var(--components-layout-badge-warning-contrast-border);
+    }
+  }
+
+  // Variant: danger / negative
+  &--variant-danger,
+  &--variant-negative {
+    :where(&) {
+      background-color: var(--components-layout-badge-negative-standard-fill);
+      color: var(--components-layout-badge-negative-standard-text);
+      border-color: var(--components-layout-badge-negative-standard-border);
+    }
+
+    .eds-contrast :where(&) {
+      background-color: var(--components-layout-badge-negative-contrast-fill);
+      color: var(--components-layout-badge-negative-contrast-text);
+      border-color: var(--components-layout-badge-negative-contrast-border);
+    }
+  }
+
+  // Variant: info / information
+  &--variant-info,
+  &--variant-information {
+    :where(&) {
+      background-color: var(--components-layout-badge-information-standard-fill);
+      color: var(--components-layout-badge-information-standard-text);
+      border-color: var(--components-layout-badge-information-standard-border);
+    }
+
+    .eds-contrast :where(&) {
+      background-color: var(--components-layout-badge-information-contrast-fill);
+      color: var(--components-layout-badge-information-contrast-text);
+      border-color: var(--components-layout-badge-information-contrast-border);
+    }
+  }
+
+  // Variant: neutral
+  &--variant-neutral {
+    :where(&) {
+      background-color: var(--components-layout-badge-neutral-standard-fill);
+      color: var(--components-layout-badge-neutral-standard-text);
+      border-color: var(--components-layout-badge-neutral-standard-border);
+    }
+
+    .eds-contrast :where(&) {
+      background-color: var(--components-layout-badge-neutral-contrast-fill);
+      color: var(--components-layout-badge-neutral-contrast-text);
+      border-color: var(--components-layout-badge-neutral-contrast-border);
+    }
+  }
+
+  // Size: small
+  &--size-small {
+    :where(&) {
+      height: var(--components-layout-badge-status-height-small);
+      padding: 0 var(--components-layout-badge-status-inlinepadding-small);
+      border-radius: var(--components-layout-badge-status-radius-small);
+      border-width: var(--components-layout-badge-status-border-small);
+    }
+
+    :where(&) .eds-icon {
+      width: var(--components-layout-badge-status-icon-small);
+      height: var(--components-layout-badge-status-icon-small);
+    }
+
+    :where(&.eds-tag--leading-icon) .eds-icon {
+      margin-right: var(--components-layout-badge-status-gap-small);
+    }
+
+    :where(&.eds-tag--trailing-icon) .eds-icon {
+      margin-left: var(--components-layout-badge-status-gap-small);
+    }
+  }
+
+  // Size: medium
+  &--size-medium {
+    :where(&) {
+      height: var(--components-layout-badge-status-height-medium);
+      padding: 0 var(--components-layout-badge-status-inlinepadding-medium);
+      border-radius: var(--components-layout-badge-status-radius-medium);
+      border-width: var(--components-layout-badge-status-border-medium);
+    }
+
+    :where(&) .eds-icon {
+      width: var(--components-layout-badge-status-icon-medium);
+      height: var(--components-layout-badge-status-icon-medium);
+    }
+
+    :where(&.eds-tag--leading-icon) .eds-icon {
+      margin-right: var(--components-layout-badge-status-gap-medium);
+    }
+
+    :where(&.eds-tag--trailing-icon) .eds-icon {
+      margin-left: var(--components-layout-badge-status-gap-medium);
+    }
+  }
+
+  // Size: large
+  &--size-large {
+    :where(&) {
+      height: var(--components-layout-badge-status-height-large);
+      padding: 0 var(--components-layout-badge-status-inlinepadding-large);
+      border-radius: var(--components-layout-badge-status-radius-large);
+      border-width: var(--components-layout-badge-status-border-large);
+    }
+
+    :where(&) .eds-icon {
+      width: var(--components-layout-badge-status-icon-large);
+      height: var(--components-layout-badge-status-icon-large);
+    }
+
+    :where(&.eds-tag--leading-icon) .eds-icon {
+      margin-right: var(--components-layout-badge-status-gap-large);
+    }
+
+    :where(&.eds-tag--trailing-icon) .eds-icon {
+      margin-left: var(--components-layout-badge-status-gap-large);
     }
   }
 }

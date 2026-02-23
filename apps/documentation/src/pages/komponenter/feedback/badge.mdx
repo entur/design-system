@@ -11,6 +11,7 @@ tags: hjelpetekst, tooltip, verktøyhjelp, popover
 import { SubtractIcon } from '@entur/icons';
 import { badgeprops } from '@data/props/feedback-props';
 import { SEO } from '@components/seo/SEO';
+import { BannerAlertBox } from '@entur/alert';
 
 export const Head = ( props ) => {
   return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
@@ -30,6 +31,8 @@ Badge inneholder varslene `StatusBadge`, `BulletBadge` og `NotificationBadge`. T
 - Neutral
 
 ### Status badge
+
+<BannerAlertBox variant="warning" title="Deprecated">`StatusBadge` og `Badge` med `type="status"` er avviklet. Bruk `Tag` fra `@entur/layout` i stedet.</BannerAlertBox>
 
 `StatusBadge` er en visuell indikator som brukes til å vise statusen til et element.
 Komponenten tilbys i ulike farger for å indikere hvilke status et element har.

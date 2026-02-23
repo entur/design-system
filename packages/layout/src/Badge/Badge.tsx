@@ -2,6 +2,8 @@ import React from 'react';
 import classNames from 'classnames';
 import { PolymorphicComponentPropsWithRef, PolymorphicRef } from '@entur/utils';
 import { VariantType } from '@entur/utils';
+import { Tag } from '../Tag';
+import { warnOnce } from '../warnOnce';
 import './Badge.scss';
 
 /** @deprecated use variant="information" instead */
@@ -56,7 +58,10 @@ const defaultElement = 'span';
 
 export const Badge: BadgeComponent = React.forwardRef(
   <T extends React.ElementType = typeof defaultElement>(
-    {
+    props: BadgeProps<T>,
+    ref: PolymorphicRef<T>,
+  ) => {
+    const {
       children,
       className,
       max = 99,
@@ -68,9 +73,38 @@ export const Badge: BadgeComponent = React.forwardRef(
       as,
       type = 'status',
       ...rest
-    }: BadgeProps<T>,
-    ref: PolymorphicRef<T>,
-  ) => {
+    } = props;
+
+    const typeWasExplicit = 'type' in props;
+
+    if (type === 'status') {
+      if (typeWasExplicit) {
+        warnOnce(
+          'Badge-type-status',
+          '[Entur Linje] Badge type="status" is deprecated. Use <Tag> instead for status/categorization labels.',
+        );
+      } else {
+        warnOnce(
+          'Badge-default-type',
+          '[Entur Linje] Badge currently defaults to type="status", which will change to type="notification" in the next major version. Use <Tag> for status labels, or pass type="notification" explicitly.',
+        );
+      }
+
+      const TagAny = Tag as React.ElementType;
+      return (
+        <TagAny
+          as={as || defaultElement}
+          variant={variant}
+          size={size}
+          className={className}
+          ref={ref}
+          {...rest}
+        >
+          {children}
+        </TagAny>
+      );
+    }
+
     const Element: React.ElementType = as || defaultElement;
 
     const computedHide =
