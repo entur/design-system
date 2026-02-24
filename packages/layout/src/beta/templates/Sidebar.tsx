@@ -1,91 +1,155 @@
 import React from 'react';
+import type { PolymorphicComponentProps } from '@entur/utils';
 import classNames from 'classnames';
 import { Contrast } from '../../Contrast';
 import { Flex } from '../Flex';
 import { Grid } from '../Grid';
 import './Sidebar.scss';
 
-export type SidebarProps = React.HTMLAttributes<HTMLElement> & {
+type SidebarOwnProps = {
   /** Toggle contrast styling for the sidebar */
   contrast?: boolean;
+  className?: string;
+  style?: React.CSSProperties;
+  children?: React.ReactNode;
 };
 
-export type SidebarSectionProps = React.HTMLAttributes<HTMLElement>;
-
-const SidebarLogo: React.FC<SidebarSectionProps> = ({ children, ...rest }) => {
-  return <div {...rest}>{children}</div>;
+type SidebarSectionOwnProps = {
+  className?: string;
+  style?: React.CSSProperties;
+  children?: React.ReactNode;
 };
 
-const SidebarUser: React.FC<SidebarSectionProps> = ({ children, ...rest }) => {
-  return <div {...rest}>{children}</div>;
-};
+const defaultSidebarElement = 'aside';
+const defaultSectionElement = 'div';
+const defaultNavigationElement = 'nav';
+const defaultFooterElement = 'footer';
 
-const SidebarData: React.FC<SidebarSectionProps> = ({ children, ...rest }) => {
-  return <div {...rest}>{children}</div>;
-};
+export type SidebarProps<
+  T extends React.ElementType = typeof defaultSidebarElement,
+> = PolymorphicComponentProps<T, SidebarOwnProps>;
 
-const SidebarNavigation: React.FC<SidebarSectionProps> = ({
-  children,
-  className,
-  ...rest
-}) => {
-  return (
-    <nav
-      className={classNames(
-        'eds-layout-template-sidebar__navigation',
-        className,
-      )}
-      {...rest}
-    >
-      {children}
-    </nav>
-  );
-};
+export type SidebarSectionProps<
+  T extends React.ElementType = typeof defaultSectionElement,
+> = PolymorphicComponentProps<T, SidebarSectionOwnProps>;
 
-const SidebarFooter: React.FC<SidebarSectionProps> = ({
-  children,
-  className,
-  ...rest
-}) => {
-  return (
-    <footer
-      className={classNames('eds-layout-template-sidebar__footer', className)}
-      {...rest}
-    >
-      {children}
-    </footer>
-  );
-};
+const SidebarLogo = React.forwardRef(
+  <E extends React.ElementType = typeof defaultSectionElement>(
+    { children, as, ...rest }: SidebarSectionProps<E>,
+    ref?: React.Ref<Element>,
+  ) => {
+    const Element: React.ElementType = as || defaultSectionElement;
+    return (
+      <Element ref={ref} {...rest}>
+        {children}
+      </Element>
+    );
+  },
+);
 
-const SidebarRoot: React.FC<SidebarProps> = ({
-  children,
-  className,
-  style,
-  contrast = true,
-  ...rest
-}) => {
-  const WrapperElement = contrast ? Contrast : 'div';
-  return (
-    <Grid.Item as={WrapperElement} colSpan="1 / 2" rowSpan="1 / 2">
-      <Flex
-        as="aside"
-        direction="column"
-        gap="m"
+const SidebarUser = React.forwardRef(
+  <E extends React.ElementType = typeof defaultSectionElement>(
+    { children, as, ...rest }: SidebarSectionProps<E>,
+    ref?: React.Ref<Element>,
+  ) => {
+    const Element: React.ElementType = as || defaultSectionElement;
+    return (
+      <Element ref={ref} {...rest}>
+        {children}
+      </Element>
+    );
+  },
+);
+
+const SidebarData = React.forwardRef(
+  <E extends React.ElementType = typeof defaultSectionElement>(
+    { children, as, ...rest }: SidebarSectionProps<E>,
+    ref?: React.Ref<Element>,
+  ) => {
+    const Element: React.ElementType = as || defaultSectionElement;
+    return (
+      <Element ref={ref} {...rest}>
+        {children}
+      </Element>
+    );
+  },
+);
+
+const SidebarNavigation = React.forwardRef(
+  <E extends React.ElementType = typeof defaultNavigationElement>(
+    { children, className, as, ...rest }: SidebarSectionProps<E>,
+    ref?: React.Ref<Element>,
+  ) => {
+    const Element: React.ElementType = as || defaultNavigationElement;
+    return (
+      <Element
+        ref={ref}
         className={classNames(
-          'eds-layout-template-sidebar',
-          {
-            'eds-layout-template-sidebar--plain': !contrast,
-          },
+          'eds-layout-template-sidebar__navigation',
           className,
         )}
-        style={style}
         {...rest}
       >
         {children}
-      </Flex>
-    </Grid.Item>
-  );
-};
+      </Element>
+    );
+  },
+);
+
+const SidebarFooter = React.forwardRef(
+  <E extends React.ElementType = typeof defaultFooterElement>(
+    { children, className, as, ...rest }: SidebarSectionProps<E>,
+    ref?: React.Ref<Element>,
+  ) => {
+    const Element: React.ElementType = as || defaultFooterElement;
+    return (
+      <Element
+        ref={ref}
+        className={classNames('eds-layout-template-sidebar__footer', className)}
+        {...rest}
+      >
+        {children}
+      </Element>
+    );
+  },
+);
+
+const SidebarRoot = React.forwardRef(
+  <E extends React.ElementType = typeof defaultSidebarElement>(
+    {
+      children,
+      className,
+      style,
+      contrast = true,
+      as,
+      ...rest
+    }: SidebarProps<E>,
+    ref?: React.Ref<Element>,
+  ) => {
+    const WrapperElement = contrast ? Contrast : 'div';
+    return (
+      <Grid.Item as={WrapperElement} colSpan="1 / 2">
+        <Flex
+          ref={ref}
+          as={as || defaultSidebarElement}
+          direction="column"
+          gap="m"
+          className={classNames(
+            'eds-layout-template-sidebar',
+            {
+              'eds-layout-template-sidebar--plain': !contrast,
+            },
+            className,
+          )}
+          style={style}
+          {...rest}
+        >
+          {children}
+        </Flex>
+      </Grid.Item>
+    );
+  },
+);
 
 export type SidebarComponent = typeof SidebarRoot & {
   Logo: typeof SidebarLogo;

@@ -61,77 +61,83 @@ export type GridProps<T extends React.ElementType = typeof defaultElement> =
 
 const defaultElement = 'div';
 
-export const Grid = <E extends React.ElementType = typeof defaultElement>({
-  templateColumns,
-  templateRows,
-  gap = 'm',
-  rowGap,
-  columnGap,
-  autoFlow = 'row',
-  align,
-  justify,
-  alignContent,
-  height,
-  as,
-  className,
-  children,
-  style,
-  ...rest
-}: GridProps<E>): JSX.Element => {
-  const Element: React.ElementType = as || defaultElement;
+export const Grid = React.forwardRef(
+  <E extends React.ElementType = typeof defaultElement>(
+    {
+      templateColumns,
+      templateRows,
+      gap = 'm',
+      rowGap,
+      columnGap,
+      autoFlow = 'row',
+      align,
+      justify,
+      alignContent,
+      height,
+      as,
+      className,
+      children,
+      style,
+      ...rest
+    }: GridProps<E>,
+    ref?: React.Ref<Element>,
+  ): JSX.Element => {
+    const Element: React.ElementType = as || defaultElement;
 
-  const resolvedTemplateColumns =
-    useResponsiveValue(templateColumns) ?? 'repeat(12, 1fr)';
-  const resolvedTemplateRows = useResponsiveValue(templateRows);
-  const resolvedGap = useResponsiveValue(gap);
-  const resolvedRowGap = useResponsiveValue(rowGap);
-  const resolvedColumnGap = useResponsiveValue(columnGap);
-  const resolvedAutoFlow = useResponsiveValue(autoFlow) ?? 'row';
-  const resolvedAlign = useResponsiveValue(align);
-  const resolvedJustify = useResponsiveValue(justify);
-  const resolvedAlignContent = useResponsiveValue(alignContent);
+    const resolvedTemplateColumns =
+      useResponsiveValue(templateColumns) ?? 'repeat(12, 1fr)';
+    const resolvedTemplateRows = useResponsiveValue(templateRows);
+    const resolvedGap = useResponsiveValue(gap);
+    const resolvedRowGap = useResponsiveValue(rowGap);
+    const resolvedColumnGap = useResponsiveValue(columnGap);
+    const resolvedAutoFlow = useResponsiveValue(autoFlow) ?? 'row';
+    const resolvedAlign = useResponsiveValue(align);
+    const resolvedJustify = useResponsiveValue(justify);
+    const resolvedAlignContent = useResponsiveValue(alignContent);
 
-  const gridStyle: React.CSSProperties = {
-    ...(resolvedTemplateColumns && {
-      '--grid-template-columns': resolvedTemplateColumns,
-    }),
-    ...(resolvedTemplateRows && {
-      '--grid-template-rows': resolvedTemplateRows,
-    }),
-    ...(resolvedAutoFlow && {
-      '--grid-auto-flow': resolvedAutoFlow,
-    }),
-    ...(resolvedAlign && {
-      '--grid-align-items': resolvedAlign,
-    }),
-    ...(resolvedJustify && {
-      '--grid-justify-content': resolvedJustify,
-    }),
-    ...(resolvedAlignContent && {
-      '--grid-align-content': resolvedAlignContent,
-    }),
-    ...(resolvedGap && {
-      '--grid-gap': getSpacingValue(resolvedGap),
-    }),
-    ...(resolvedRowGap && {
-      '--grid-row-gap': getSpacingValue(resolvedRowGap),
-    }),
-    ...(resolvedColumnGap && {
-      '--grid-column-gap': getSpacingValue(resolvedColumnGap),
-    }),
-    ...(height && {
-      '--grid-height': height,
-    }),
-    ...style,
-  } as React.CSSProperties;
+    const gridStyle: React.CSSProperties = {
+      ...(resolvedTemplateColumns && {
+        '--grid-template-columns': resolvedTemplateColumns,
+      }),
+      ...(resolvedTemplateRows && {
+        '--grid-template-rows': resolvedTemplateRows,
+      }),
+      ...(resolvedAutoFlow && {
+        '--grid-auto-flow': resolvedAutoFlow,
+      }),
+      ...(resolvedAlign && {
+        '--grid-align-items': resolvedAlign,
+      }),
+      ...(resolvedJustify && {
+        '--grid-justify-content': resolvedJustify,
+      }),
+      ...(resolvedAlignContent && {
+        '--grid-align-content': resolvedAlignContent,
+      }),
+      ...(resolvedGap && {
+        '--grid-gap': getSpacingValue(resolvedGap),
+      }),
+      ...(resolvedRowGap && {
+        '--grid-row-gap': getSpacingValue(resolvedRowGap),
+      }),
+      ...(resolvedColumnGap && {
+        '--grid-column-gap': getSpacingValue(resolvedColumnGap),
+      }),
+      ...(height && {
+        '--grid-height': height,
+      }),
+      ...style,
+    } as React.CSSProperties;
 
-  return (
-    <Element
-      className={classNames('eds-layout-grid', className)}
-      style={gridStyle}
-      {...rest}
-    >
-      {children}
-    </Element>
-  );
-};
+    return (
+      <Element
+        ref={ref}
+        className={classNames('eds-layout-grid', className)}
+        style={gridStyle}
+        {...rest}
+      >
+        {children}
+      </Element>
+    );
+  },
+);

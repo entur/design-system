@@ -73,107 +73,113 @@ export type FlexProps<T extends React.ElementType = typeof defaultElement> =
 
 const defaultElement = 'div';
 
-export const Flex = <E extends React.ElementType = typeof defaultElement>({
-  direction,
-  wrap,
-  align,
-  justify,
-  alignContent,
-  gap,
-  rowGap,
-  columnGap,
-  flex,
-  grow,
-  shrink,
-  basis,
-  width,
-  height,
-  minWidth,
-  minHeight,
-  maxWidth,
-  maxHeight,
-  as,
-  className,
-  children,
-  style,
-  ...rest
-}: FlexProps<E>): JSX.Element => {
-  const Element: React.ElementType = as || defaultElement;
+export const Flex = React.forwardRef(
+  <E extends React.ElementType = typeof defaultElement>(
+    {
+      direction,
+      wrap,
+      align,
+      justify,
+      alignContent,
+      gap,
+      rowGap,
+      columnGap,
+      flex,
+      grow,
+      shrink,
+      basis,
+      width,
+      height,
+      minWidth,
+      minHeight,
+      maxWidth,
+      maxHeight,
+      as,
+      className,
+      children,
+      style,
+      ...rest
+    }: FlexProps<E>,
+    ref?: React.Ref<Element>,
+  ): JSX.Element => {
+    const Element: React.ElementType = as || defaultElement;
 
-  const resolvedDirection = useResponsiveValue(direction);
-  const resolvedWrap = useResponsiveValue(wrap);
-  const resolvedAlign = useResponsiveValue(align);
-  const resolvedJustify = useResponsiveValue(justify);
-  const resolvedAlignContent = useResponsiveValue(alignContent);
-  const resolvedGap = useResponsiveValue(gap);
-  const resolvedRowGap = useResponsiveValue(rowGap);
-  const resolvedColumnGap = useResponsiveValue(columnGap);
+    const resolvedDirection = useResponsiveValue(direction);
+    const resolvedWrap = useResponsiveValue(wrap);
+    const resolvedAlign = useResponsiveValue(align);
+    const resolvedJustify = useResponsiveValue(justify);
+    const resolvedAlignContent = useResponsiveValue(alignContent);
+    const resolvedGap = useResponsiveValue(gap);
+    const resolvedRowGap = useResponsiveValue(rowGap);
+    const resolvedColumnGap = useResponsiveValue(columnGap);
 
-  const flexStyle: React.CSSProperties = {
-    ...(resolvedDirection && {
-      '--flex-direction': resolvedDirection,
-    }),
-    ...(resolvedWrap && {
-      '--flex-wrap': resolvedWrap,
-    }),
-    ...(resolvedAlign && {
-      '--flex-align-items': resolvedAlign,
-    }),
-    ...(resolvedJustify && {
-      '--flex-justify-content': resolvedJustify,
-    }),
-    ...(resolvedAlignContent && {
-      '--flex-align-content': resolvedAlignContent,
-    }),
-    ...(resolvedGap && {
-      '--flex-gap': getSpacingValue(resolvedGap, 'Flex'),
-    }),
-    ...(resolvedRowGap && {
-      '--flex-row-gap': getSpacingValue(resolvedRowGap, 'Flex'),
-    }),
-    ...(resolvedColumnGap && {
-      '--flex-column-gap': getSpacingValue(resolvedColumnGap, 'Flex'),
-    }),
-    ...(flex !== undefined && {
-      '--flex': flex,
-    }),
-    ...(grow !== undefined && {
-      '--flex-grow': grow,
-    }),
-    ...(shrink !== undefined && {
-      '--flex-shrink': shrink,
-    }),
-    ...(basis !== undefined && {
-      '--flex-basis': basis,
-    }),
-    ...(width && {
-      '--flex-width': width,
-    }),
-    ...(height && {
-      '--flex-height': height,
-    }),
-    ...(minWidth && {
-      '--flex-min-width': minWidth,
-    }),
-    ...(minHeight && {
-      '--flex-min-height': minHeight,
-    }),
-    ...(maxWidth && {
-      '--flex-max-width': maxWidth,
-    }),
-    ...(maxHeight && {
-      '--flex-max-height': maxHeight,
-    }),
-    ...style,
-  } as React.CSSProperties;
+    const flexStyle: React.CSSProperties = {
+      ...(resolvedDirection && {
+        '--flex-direction': resolvedDirection,
+      }),
+      ...(resolvedWrap && {
+        '--flex-wrap': resolvedWrap,
+      }),
+      ...(resolvedAlign && {
+        '--flex-align-items': resolvedAlign,
+      }),
+      ...(resolvedJustify && {
+        '--flex-justify-content': resolvedJustify,
+      }),
+      ...(resolvedAlignContent && {
+        '--flex-align-content': resolvedAlignContent,
+      }),
+      ...(resolvedGap && {
+        '--flex-gap': getSpacingValue(resolvedGap, 'Flex'),
+      }),
+      ...(resolvedRowGap && {
+        '--flex-row-gap': getSpacingValue(resolvedRowGap, 'Flex'),
+      }),
+      ...(resolvedColumnGap && {
+        '--flex-column-gap': getSpacingValue(resolvedColumnGap, 'Flex'),
+      }),
+      ...(flex !== undefined && {
+        '--flex': flex,
+      }),
+      ...(grow !== undefined && {
+        '--flex-grow': grow,
+      }),
+      ...(shrink !== undefined && {
+        '--flex-shrink': shrink,
+      }),
+      ...(basis !== undefined && {
+        '--flex-basis': basis,
+      }),
+      ...(width && {
+        '--flex-width': width,
+      }),
+      ...(height && {
+        '--flex-height': height,
+      }),
+      ...(minWidth && {
+        '--flex-min-width': minWidth,
+      }),
+      ...(minHeight && {
+        '--flex-min-height': minHeight,
+      }),
+      ...(maxWidth && {
+        '--flex-max-width': maxWidth,
+      }),
+      ...(maxHeight && {
+        '--flex-max-height': maxHeight,
+      }),
+      ...style,
+    } as React.CSSProperties;
 
-  return (
-    <Element
-      className={classNames('eds-layout-flex', className)}
-      style={flexStyle}
-      {...rest}
-    >
-      {children}
-    </Element>
-  );
-};
+    return (
+      <Element
+        ref={ref}
+        className={classNames('eds-layout-flex', className)}
+        style={flexStyle}
+        {...rest}
+      >
+        {children}
+      </Element>
+    );
+  },
+);

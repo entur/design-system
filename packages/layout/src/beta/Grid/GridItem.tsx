@@ -47,37 +47,43 @@ const formatGridSpan = (
   return value;
 };
 
-export const GridItem = <E extends React.ElementType = typeof defaultElement>({
-  colSpan,
-  rowSpan = 1,
-  as,
-  className,
-  children,
-  style,
-  ...rest
-}: GridItemProps<E>): JSX.Element => {
-  const Element: React.ElementType = as || defaultElement;
+export const GridItem = React.forwardRef(
+  <E extends React.ElementType = typeof defaultElement>(
+    {
+      colSpan,
+      rowSpan = 1,
+      as,
+      className,
+      children,
+      style,
+      ...rest
+    }: GridItemProps<E>,
+    ref?: React.Ref<Element>,
+  ): JSX.Element => {
+    const Element: React.ElementType = as || defaultElement;
 
-  const resolvedColSpan = useResponsiveValue(colSpan);
-  const resolvedRowSpan = useResponsiveValue(rowSpan);
+    const resolvedColSpan = useResponsiveValue(colSpan);
+    const resolvedRowSpan = useResponsiveValue(rowSpan);
 
-  const itemStyle: React.CSSProperties = {
-    ...(resolvedColSpan !== undefined && {
-      '--grid-item-column': formatGridSpan(resolvedColSpan),
-    }),
-    ...(resolvedRowSpan !== undefined && {
-      '--grid-item-row': formatGridSpan(resolvedRowSpan),
-    }),
-    ...style,
-  } as React.CSSProperties;
+    const itemStyle: React.CSSProperties = {
+      ...(resolvedColSpan !== undefined && {
+        '--grid-item-column': formatGridSpan(resolvedColSpan),
+      }),
+      ...(resolvedRowSpan !== undefined && {
+        '--grid-item-row': formatGridSpan(resolvedRowSpan),
+      }),
+      ...style,
+    } as React.CSSProperties;
 
-  return (
-    <Element
-      className={classNames('eds-layout-grid-item', className)}
-      style={itemStyle}
-      {...rest}
-    >
-      {children}
-    </Element>
-  );
-};
+    return (
+      <Element
+        ref={ref}
+        className={classNames('eds-layout-grid-item', className)}
+        style={itemStyle}
+        {...rest}
+      >
+        {children}
+      </Element>
+    );
+  },
+);

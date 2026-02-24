@@ -24,7 +24,8 @@ test('Template.Portal renders expected regions and forwards props', () => {
   expect(portal.style.getPropertyValue('--grid-template-columns')).toBe(
     'var(--eds-sidebar-width, min-content) minmax(0, 1fr)',
   );
-  expect(portal.style.getPropertyValue('--grid-gap')).toBe('var(--m)');
+  expect(portal.style.getPropertyValue('--grid-gap')).toBe('0');
+  expect(portal.style.getPropertyValue('--grid-column-gap')).toBe('var(--m)');
 
   const sidebar = getByTestId('sidebar');
   expect(sidebar.tagName).toBe('ASIDE');
@@ -44,4 +45,23 @@ test('Template.Portal renders expected regions and forwards props', () => {
   const main = getByTestId('main');
   expect(main.tagName).toBe('MAIN');
   expect(main).toHaveClass('main-class');
+});
+
+test('Template.Portal.StatusBar renders and spans full width', () => {
+  const { getByTestId } = render(
+    <Template.Portal data-testid="portal">
+      <Template.Portal.StatusBar data-testid="status-bar" className="custom">
+        Environment indicator
+      </Template.Portal.StatusBar>
+      <Template.Portal.Sidebar />
+      <Template.Portal.Main />
+    </Template.Portal>,
+  );
+
+  const statusBar = getByTestId('status-bar');
+  expect(statusBar.tagName).toBe('DIV');
+  expect(statusBar).toHaveClass(
+    'eds-layout-template-portal__status-bar',
+    'custom',
+  );
 });
