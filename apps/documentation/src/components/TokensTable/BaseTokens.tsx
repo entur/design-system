@@ -1,6 +1,7 @@
-import React from 'react';
-import { Heading4, Heading3 } from '@entur/typography';
+import React, { useState } from 'react';
+import { Heading4 } from '@entur/typography';
 import { GridItem } from '@entur/grid';
+import { SegmentedChoice, SegmentedControl } from '@entur/form';
 import {
   formatDotToVariable,
   formatVariableByType,
@@ -13,28 +14,31 @@ import { useSettings } from '@providers/SettingsContext';
 
 const BaseTokenList: React.FC<TokensTableProps> = ({ tokens }) => {
   const { variableFormat } = useSettings();
+  const [colorMode, setColorMode] = useState<'light' | 'dark'>('light');
 
   const formatTokens = Object.entries(tokens).map(([key, value]) => {
     const formattedVariable = formatDotToVariable(key);
     return [formattedVariable, value, key] as [string, string, string];
   });
 
-  const categorizedTokens = formatTokens.reduce(
-    (categories, [formattedVariable, value, original]) => {
-      const parts = formattedVariable.split('-');
-      const mainCategory = parts[0];
-      const subCategory = parts[2];
+  const categorizedTokens = formatTokens
+    .filter(([formattedVariable]) => {
+      const mode = formattedVariable.split('-')[0];
+      return mode === colorMode;
+    })
+    .reduce((categories, [formattedVariable, value, original]) => {
+      const subCategory = formattedVariable.split('-')[2];
 
-      if (!categories[mainCategory]) {
-        categories[mainCategory] = {};
+      if (!categories[subCategory]) {
+        categories[subCategory] = [];
       }
-      if (!categories[mainCategory][subCategory]) {
-        categories[mainCategory][subCategory] = [];
-      }
+
+      // Strip light/dark mode prefix — base CSS variables don't include the mode
+      const cssFormattedVariable = sliceTokenKey(formattedVariable, 1);
 
       const formatVariableBySettingsType = formatVariableByType(
         variableFormat === 'js' ? 'js' : 'css',
-        formattedVariable,
+        cssFormattedVariable,
         original,
         'base',
       );
@@ -42,7 +46,7 @@ const BaseTokenList: React.FC<TokensTableProps> = ({ tokens }) => {
       const copyValue = formatVariableBySettingsType;
       const showValue = sliceTokenKey(formattedVariable, 3);
 
-      categories[mainCategory][subCategory].push(
+      categories[subCategory].push(
         <ColorToken
           key={formattedVariable}
           iconCategory={subCategory}
@@ -53,33 +57,31 @@ const BaseTokenList: React.FC<TokensTableProps> = ({ tokens }) => {
       );
 
       return categories;
-    },
-    {} as Record<string, Record<string, React.ReactElement[]>>,
-  );
+    }, {} as Record<string, React.ReactElement[]>);
 
   return (
     <>
-      {Object.entries(categorizedTokens).map(([categoryKey, subCategories]) => {
-        const dataMode = categoryKey === 'dark' ? 'dark' : 'light';
-        return (
-          <React.Fragment key={categoryKey}>
-            <Heading3>{categoryKey}</Heading3>
-            {Object.entries(subCategories).map(([subCategoryKey, tokens]) => (
-              <GridItem small={12} medium={12} large={12} key={subCategoryKey}>
-                <Heading4>{subCategoryKey}</Heading4>
-                <div className="token-table-content">
-                  <div
-                    className="token-table-content--multi-columns"
-                    data-color-mode={dataMode}
-                  >
-                    {tokens}
-                  </div>
-                </div>
-              </GridItem>
-            ))}
-          </React.Fragment>
-        );
-      })}
+      <GridItem small={12} medium={12} large={12}>
+        <SegmentedControl
+          label="Fargemodus"
+          selectedValue={colorMode}
+          onChange={value => setColorMode(value as 'light' | 'dark')}
+          style={{ width: '12rem' }}
+        >
+          <SegmentedChoice value="light">Standard</SegmentedChoice>
+          <SegmentedChoice value="dark">Mørk</SegmentedChoice>
+        </SegmentedControl>
+      </GridItem>
+      <div className="base-token-frame" data-color-mode={colorMode}>
+        {Object.entries(categorizedTokens).map(([subCategoryKey, tokens]) => (
+          <GridItem small={12} medium={12} large={12} key={subCategoryKey}>
+            <Heading4>{subCategoryKey}</Heading4>
+            <div className="token-table-content">
+              <div className="token-table-content--multi-columns">{tokens}</div>
+            </div>
+          </GridItem>
+        ))}
+      </div>
     </>
   );
 };

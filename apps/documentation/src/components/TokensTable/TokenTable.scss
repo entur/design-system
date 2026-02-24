@@ -126,18 +126,15 @@
     }
     &--multi-columns {
       display: grid;
+      grid-template-columns: 1fr 1fr;
       gap: tokens.$space-medium;
       margin-bottom: tokens.$space-medium;
       padding: tokens.$space-medium;
 
-      @media screen and (max-width: map.get(variables.$breakpoints, 'tablet')) {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        margin-bottom: 2rem;
-        gap: tokens.$space-large;
+      @media screen and (max-width: map.get(variables.$breakpoints, 'mobile')) {
+        grid-template-columns: 1fr;
       }
       @include for-large-desktop {
-        display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         margin-bottom: tokens.$space-extra-large;
         gap: tokens.$space-large;
@@ -172,6 +169,14 @@
       }
     }
   }
+}
+
+.base-token-frame {
+  grid-column: 1 / -1;
+  border: tokens.$border-widths-small solid var(--basecolors-stroke-subdued);
+  border-radius: tokens.$border-radiuses-medium;
+  padding: tokens.$space-medium;
+  margin-top: tokens.$space-medium;
 }
 
 .primitive-size-token {
