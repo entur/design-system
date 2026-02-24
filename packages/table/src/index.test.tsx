@@ -1,6 +1,14 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { Table, TableHead, TableBody, TableRow, DataCell, HeaderCell } from '.';
+import {
+  Table,
+  TableHead,
+  TableBody,
+  TableRow,
+  DataCell,
+  HeaderCell,
+  useSortableData,
+} from '.';
 
 test('creates a nice looking table', () => {
   const { container } = render(
@@ -26,4 +34,34 @@ test('creates a nice looking table', () => {
   expect(
     container.querySelector('.eds-table__header-cell'),
   ).toBeInTheDocument();
+});
+
+function SortableTable() {
+  const { sortedData, getSortableHeaderProps, getSortableTableProps } =
+    useSortableData([{ name: 'B' }, { name: 'A' }]);
+  return (
+    <Table {...getSortableTableProps()}>
+      <TableHead>
+        <TableRow>
+          <HeaderCell {...getSortableHeaderProps({ name: 'name' })}>
+            Name
+          </HeaderCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        {sortedData.map(item => (
+          <TableRow key={item.name}>
+            <DataCell>{item.name}</DataCell>
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
+  );
+}
+
+test('does not spread sortConfig onto the DOM element', () => {
+  const { container } = render(<SortableTable />);
+  const tableElement = container.querySelector('table');
+  expect(tableElement).not.toHaveAttribute('sortConfig');
+  expect(tableElement).not.toHaveAttribute('sortconfig');
 });
