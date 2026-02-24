@@ -32,9 +32,12 @@ const BaseTokenList: React.FC<TokensTableProps> = ({ tokens }) => {
         categories[mainCategory][subCategory] = [];
       }
 
+      // Strip light/dark mode prefix — base CSS variables don't include the mode
+      const cssFormattedVariable = sliceTokenKey(formattedVariable, 1);
+
       const formatVariableBySettingsType = formatVariableByType(
         variableFormat === 'js' ? 'js' : 'css',
-        formattedVariable,
+        cssFormattedVariable,
         original,
         'base',
       );
