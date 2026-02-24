@@ -1,554 +1,240 @@
-export const structure = (S: any) =>
+import { map } from 'rxjs/operators';
+import { HomeIcon } from '@entur/icons';
+
+const API_VERSION = '2025-02-10';
+
+// ——— Sorting presets ———
+
+const byTitle = [{ field: 'title', direction: 'asc' as const }];
+
+const byLandingPageThenSubcategory = [
+  { field: 'isCategoryLandingPage', direction: 'desc' as const },
+  { field: 'subcategory', direction: 'asc' as const },
+  { field: 'title', direction: 'asc' as const },
+];
+
+const byCategoryThenSubcategory = [
+  { field: 'category', direction: 'asc' as const },
+  ...byLandingPageThenSubcategory,
+];
+
+// ——— Helpers ———
+
+/**
+ * A subcategory entry. Either a plain name like `"Knapper"` or an object
+ * with a custom GROQ filter for edge cases (e.g. Mønster/Monster).
+ */
+type SubcategoryEntry = string | { title: string; filter: string };
+
+type SortOrder = { field: string; direction: 'asc' | 'desc' }[];
+
+/**
+ * Creates a page/document list filtered by a GROQ expression.
+ * Accepts a single document type or an array of types.
+ *
+ * Example: `createFilteredList(S, 'page', 'Knapper-sider', 'category == "Komponenter"')`
+ * Example: `createFilteredList(S, ['page', 'componentDoc'], 'Alle', 'category == "Komponenter"')`
+ */
+function createFilteredList(
+  S: any,
+  documentType: string | string[],
+  title: string,
+  filter?: string,
+  ordering: SortOrder = byTitle,
+) {
+  if (Array.isArray(documentType)) {
+    const typeFilter = `_type in [${documentType
+      .map(t => `"${t}"`)
+      .join(', ')}]`;
+    const fullFilter = filter ? `${typeFilter} && ${filter}` : typeFilter;
+    return S.documentList()
+      .apiVersion(API_VERSION)
+      .title(title)
+      .filter(fullFilter)
+      .defaultOrdering(ordering);
+  }
+
+  const list = S.documentTypeList(documentType)
+    .apiVersion(API_VERSION)
+    .title(title)
+    .defaultOrdering(ordering);
+  return filter ? list.filter(filter) : list;
+}
+
+/**
+ * Builds a category section for the sidebar with:
+ * 1. An "Alle sider under {category}" list (landing pages sorted first)
+ * 2. One list per subcategory, sorted alphabetically by title
+ *
+ * Pass `categoryFilter` to override the default `category == "X"` GROQ filter.
+ */
+function createCategorySection(
+  S: any,
+  documentStore: any,
+  documentType: string | string[],
+  category: string,
+  subcategories: SubcategoryEntry[],
+  categoryFilter?: string,
+) {
+  const filter = categoryFilter ?? `category == "${category}"`;
+  const types = Array.isArray(documentType) ? documentType : [documentType];
+  const typeGroq = types.map(t => `"${t}"`).join(', ');
+
+  const allDocsList = S.listItem()
+    .title(`Alle sider under ${category}`)
+    .child(
+      createFilteredList(
+        S,
+        documentType,
+        `${category}-sider`,
+        filter,
+        byLandingPageThenSubcategory,
+      ),
+    );
+
+  const subcategoryLists = subcategories.map(entry => {
+    const title = typeof entry === 'string' ? entry : entry.title;
+    const subFilter =
+      typeof entry === 'string'
+        ? `category == "${category}" && subcategory == "${entry}"`
+        : entry.filter;
+
+    return S.listItem()
+      .title(title)
+      .child(createFilteredList(S, documentType, `${title}-sider`, subFilter));
+  });
+
+  return S.listItem()
+    .title(category)
+    .child(() =>
+      documentStore
+        .listenQuery(
+          `*[_type in [${typeGroq}] && ${filter} && isCategoryLandingPage == true][0]{ _id, _type, title }`,
+          {},
+          { apiVersion: API_VERSION },
+        )
+        .pipe(
+          map(
+            (result: { _id: string; _type: string; title: string } | null) => {
+              const landingPageItem = result
+                ? [
+                    S.documentListItem()
+                      .id(result._id)
+                      .schemaType(result._type)
+                      .title(`${result.title} (landingsside)`)
+                      .icon(HomeIcon),
+                  ]
+                : [];
+
+              return S.list()
+                .title(`${category} underkategorier`)
+                .items([allDocsList, ...landingPageItem, ...subcategoryLists]);
+            },
+          ),
+        ),
+    );
+}
+
+// ——— Desk structure ———
+
+export const structure = (S: any, { documentStore }: any) =>
   S.list()
     .title('Content')
     .items([
-      // Component Documentation
+      // ——— Alle sider (pages + component docs merged) ———
       S.listItem()
-        .title('Komponentdokumentasjon (TEST)')
+        .title('Innhold')
         .child(
           S.list()
-            .title('Komponentdokumentasjon(TEST)')
+            .title('Innhold')
             .items([
-              S.listItem()
-                .title('Alle komponentdokumenter')
-                .child(
-                  S.documentTypeList('componentDoc')
-                    .apiVersion('2025-02-10')
-                    .title('Alle komponentdokumenter')
-                    .defaultOrdering([
-                      { field: 'category', direction: 'asc' },
-                      { field: 'subcategory', direction: 'asc' },
-                      { field: 'title', direction: 'asc' },
-                    ]),
-                ),
-              S.listItem()
-                .title('Komponenter')
-                .child(
-                  S.list()
-                    .title('Komponenter underkategorier')
-                    .items([
-                      S.listItem()
-                        .title('Alle komponentdokumenter under Komponenter')
-                        .child(
-                          S.documentTypeList('componentDoc')
-                            .apiVersion('2025-02-10')
-                            .title('Komponenter-dokumenter')
-                            .filter('category == "Komponenter"')
-                            .defaultOrdering([
-                              { field: 'subcategory', direction: 'asc' },
-                              { field: 'title', direction: 'asc' },
-                            ]),
-                        ),
-                      S.listItem()
-                        .title('Knapper')
-                        .child(
-                          S.documentTypeList('componentDoc')
-                            .apiVersion('2025-02-10')
-                            .title('Knapper-dokumenter')
-                            .filter(
-                              'category == "Komponenter" && subcategory == "Knapper"',
-                            )
-                            .defaultOrdering([
-                              { field: 'title', direction: 'asc' },
-                            ]),
-                        ),
-                      S.listItem()
-                        .title('Feedback')
-                        .child(
-                          S.documentTypeList('componentDoc')
-                            .apiVersion('2025-02-10')
-                            .title('Feedback-dokumenter')
-                            .filter(
-                              'category == "Komponenter" && subcategory == "Feedback"',
-                            )
-                            .defaultOrdering([
-                              { field: 'title', direction: 'asc' },
-                            ]),
-                        ),
-                      S.listItem()
-                        .title('Layout og flater')
-                        .child(
-                          S.documentTypeList('componentDoc')
-                            .apiVersion('2025-02-10')
-                            .title('Layout og flater-dokumenter')
-                            .filter(
-                              'category == "Komponenter" && subcategory == "Layout og flater"',
-                            )
-                            .defaultOrdering([
-                              { field: 'title', direction: 'asc' },
-                            ]),
-                        ),
-                      S.listItem()
-                        .title('Navigasjon')
-                        .child(
-                          S.documentTypeList('componentDoc')
-                            .apiVersion('2025-02-10')
-                            .title('Navigasjon-dokumenter')
-                            .filter(
-                              'category == "Komponenter" && subcategory == "Navigasjon"',
-                            )
-                            .defaultOrdering([
-                              { field: 'title', direction: 'asc' },
-                            ]),
-                        ),
-                      S.listItem()
-                        .title('Reise')
-                        .child(
-                          S.documentTypeList('componentDoc')
-                            .apiVersion('2025-02-10')
-                            .title('Reise-dokumenter')
-                            .filter(
-                              'category == "Komponenter" && subcategory == "Reise"',
-                            )
-                            .defaultOrdering([
-                              { field: 'title', direction: 'asc' },
-                            ]),
-                        ),
-                      S.listItem()
-                        .title('Ressurser')
-                        .child(
-                          S.documentTypeList('componentDoc')
-                            .apiVersion('2025-02-10')
-                            .title('Ressurser-dokumenter')
-                            .filter(
-                              'category == "Komponenter" && subcategory == "Ressurser"',
-                            )
-                            .defaultOrdering([
-                              { field: 'title', direction: 'asc' },
-                            ]),
-                        ),
-                      S.listItem()
-                        .title('Skjemaelementer')
-                        .child(
-                          S.documentTypeList('componentDoc')
-                            .apiVersion('2025-02-10')
-                            .title('Skjemaelementer-dokumenter')
-                            .filter(
-                              'category == "Komponenter" && subcategory == "Skjemaelementer"',
-                            )
-                            .defaultOrdering([
-                              { field: 'title', direction: 'asc' },
-                            ]),
-                        ),
-                    ]),
-                ),
-            ]),
-        ),
-
-      // Pages organized in fully dynamic folder structure
-      S.listItem()
-        .title('Pages')
-        .child(
-          S.list()
-            .title('Pages by Category')
-            .items([
-              // Alle sider under Pages view
               S.listItem()
                 .title('Alle sider')
                 .child(
-                  S.documentTypeList('page')
-                    .apiVersion('2025-02-10')
-                    .title('Alle sider')
-                    .apiVersion('2025-02-10')
-                    .defaultOrdering([
-                      { field: 'category', direction: 'asc' },
-                      { field: 'subcategory', direction: 'asc' },
-                      { field: 'title', direction: 'asc' },
-                    ]),
+                  createFilteredList(
+                    S,
+                    ['page', 'componentDoc'],
+                    'Alle sider',
+                    undefined,
+                    byCategoryThenSubcategory,
+                  ),
                 ),
 
-              // Dynamic category folders using GROQ queries
+              createCategorySection(
+                S,
+                documentStore,
+                ['page', 'componentDoc'],
+                'Komponenter',
+                [
+                  'Knapper',
+                  'Feedback',
+                  'Layout og flater',
+                  'Navigasjon',
+                  'Reise',
+                  'Ressurser',
+                  'Skjemaelementer',
+                ],
+              ),
+
+              createCategorySection(
+                S,
+                documentStore,
+                ['page', 'componentDoc'],
+                'Identitet',
+                ['Introduksjon', 'Maler', 'Verktøykassen'],
+              ),
+
+              createCategorySection(
+                S,
+                documentStore,
+                ['page', 'componentDoc'],
+                'Kom i gang',
+                ['For designere', 'For utviklere', 'Introduksjon'],
+              ),
+
+              // Mønster needs custom filters because some documents
+              // were created with "Monster" (without ø)
+              createCategorySection(
+                S,
+                documentStore,
+                ['page', 'componentDoc'],
+                'Mønster',
+                [
+                  {
+                    title: 'Mønster',
+                    filter:
+                      '(category == "Mønster" || category == "Monster") && (subcategory == "Mønster" || subcategory == "Monster")',
+                  },
+                ],
+                'category == "Mønster" || category == "Monster"',
+              ),
+
+              createCategorySection(
+                S,
+                documentStore,
+                ['page', 'componentDoc'],
+                'Ressurser',
+                ['Workshopmaler'],
+              ),
+
+              createCategorySection(
+                S,
+                documentStore,
+                ['page', 'componentDoc'],
+                'Tokens',
+                ['Fargetokens', 'Øvrige tokens'],
+              ),
+
+              // Universell utforming has no subcategories
               S.listItem()
-                .title('Kategorier')
+                .title('Universell utforming')
                 .child(
-                  S.list()
-                    .title('Alle kategorier')
-                    .items([
-                      // Dynamic category discovery
-                      S.listItem()
-                        .title('Komponenter')
-                        .child(
-                          S.list()
-                            .title('Komponenter underkategorier')
-                            .items([
-                              S.listItem()
-                                .title('Alle sider under Komponenter')
-                                .child(
-                                  S.documentTypeList('page')
-                                    .apiVersion('2025-02-10')
-                                    .title('Komponenter-sider')
-                                    .apiVersion('2025-02-10')
-                                    .filter('category == "Komponenter"')
-                                    .defaultOrdering([
-                                      {
-                                        field: 'subcategory',
-                                        direction: 'asc',
-                                      },
-                                      { field: 'title', direction: 'asc' },
-                                    ]),
-                                ),
-                              // Dynamic subcategories for Komponenter
-                              S.listItem()
-                                .title('Knapper')
-                                .child(
-                                  S.documentTypeList('page')
-                                    .apiVersion('2025-02-10')
-                                    .title('Knapper-sider')
-                                    .apiVersion('2025-02-10')
-                                    .filter(
-                                      'category == "Komponenter" && subcategory == "Knapper"',
-                                    )
-                                    .defaultOrdering([
-                                      { field: 'title', direction: 'asc' },
-                                    ]),
-                                ),
-                              S.listItem()
-                                .title('Feedback')
-                                .child(
-                                  S.documentTypeList('page')
-                                    .apiVersion('2025-02-10')
-                                    .title('Feedback-sider')
-                                    .apiVersion('2025-02-10')
-                                    .filter(
-                                      'category == "Komponenter" && subcategory == "Feedback"',
-                                    )
-                                    .defaultOrdering([
-                                      { field: 'title', direction: 'asc' },
-                                    ]),
-                                ),
-                              S.listItem()
-                                .title('Layout og flater')
-                                .child(
-                                  S.documentTypeList('page')
-                                    .apiVersion('2025-02-10')
-                                    .title('Layout og flater-sider')
-                                    .filter(
-                                      'category == "Komponenter" && subcategory == "Layout og flater"',
-                                    )
-                                    .defaultOrdering([
-                                      { field: 'title', direction: 'asc' },
-                                    ]),
-                                ),
-                              S.listItem()
-                                .title('Navigasjon')
-                                .child(
-                                  S.documentTypeList('page')
-                                    .apiVersion('2025-02-10')
-                                    .title('Navigasjon-sider')
-                                    .filter(
-                                      'category == "Komponenter" && subcategory == "Navigasjon"',
-                                    )
-                                    .defaultOrdering([
-                                      { field: 'title', direction: 'asc' },
-                                    ]),
-                                ),
-                              S.listItem()
-                                .title('Reise')
-                                .child(
-                                  S.documentTypeList('page')
-                                    .apiVersion('2025-02-10')
-                                    .title('Reise-sider')
-                                    .filter(
-                                      'category == "Komponenter" && subcategory == "Reise"',
-                                    )
-                                    .defaultOrdering([
-                                      { field: 'title', direction: 'asc' },
-                                    ]),
-                                ),
-                              S.listItem()
-                                .title('Ressurser')
-                                .child(
-                                  S.documentTypeList('page')
-                                    .apiVersion('2025-02-10')
-                                    .title('Ressurser-sider')
-                                    .filter(
-                                      'category == "Komponenter" && subcategory == "Ressurser"',
-                                    )
-                                    .defaultOrdering([
-                                      { field: 'title', direction: 'asc' },
-                                    ]),
-                                ),
-                              S.listItem()
-                                .title('Skjemaelementer')
-                                .child(
-                                  S.documentTypeList('page')
-                                    .apiVersion('2025-02-10')
-                                    .title('Skjemaelementer-sider')
-                                    .filter(
-                                      'category == "Komponenter" && subcategory == "Skjemaelementer"',
-                                    )
-                                    .defaultOrdering([
-                                      { field: 'title', direction: 'asc' },
-                                    ]),
-                                ),
-                            ]),
-                        ),
-
-                      // Dynamic category discovery for other categories
-                      S.listItem()
-                        .title('Identitet')
-                        .child(
-                          S.list()
-                            .title('Identitet underkategorier')
-                            .items([
-                              S.listItem()
-                                .title('Alle sider under Identitet')
-                                .child(
-                                  S.documentTypeList('page')
-                                    .apiVersion('2025-02-10')
-                                    .title('Identitet-sider')
-                                    .filter('category == "Identitet"')
-                                    .defaultOrdering([
-                                      {
-                                        field: 'subcategory',
-                                        direction: 'asc',
-                                      },
-                                      { field: 'title', direction: 'asc' },
-                                    ]),
-                                ),
-                              S.listItem()
-                                .title('Introduksjon')
-                                .child(
-                                  S.documentTypeList('page')
-                                    .apiVersion('2025-02-10')
-                                    .title('Introduksjon-sider')
-                                    .filter(
-                                      'category == "Identitet" && subcategory == "Introduksjon"',
-                                    )
-                                    .defaultOrdering([
-                                      { field: 'title', direction: 'asc' },
-                                    ]),
-                                ),
-                              S.listItem()
-                                .title('Maler')
-                                .child(
-                                  S.documentTypeList('page')
-                                    .apiVersion('2025-02-10')
-                                    .title('Maler-sider')
-                                    .filter(
-                                      'category == "Identitet" && subcategory == "Maler"',
-                                    )
-                                    .defaultOrdering([
-                                      { field: 'title', direction: 'asc' },
-                                    ]),
-                                ),
-                              S.listItem()
-                                .title('Verktøykassen')
-                                .child(
-                                  S.documentTypeList('page')
-                                    .apiVersion('2025-02-10')
-                                    .title('Verktøykassen-sider')
-                                    .filter(
-                                      'category == "Identitet" && subcategory == "Verktøykassen"',
-                                    )
-                                    .defaultOrdering([
-                                      { field: 'title', direction: 'asc' },
-                                    ]),
-                                ),
-                            ]),
-                        ),
-
-                      S.listItem()
-                        .title('Kom i gang')
-                        .child(
-                          S.list()
-                            .title('Kom i gang underkategorier')
-                            .items([
-                              S.listItem()
-                                .title('Alle sider under Kom i gang')
-                                .child(
-                                  S.documentTypeList('page')
-                                    .apiVersion('2025-02-10')
-                                    .title('Kom i gang-sider')
-                                    .filter('category == "Kom i gang"')
-                                    .defaultOrdering([
-                                      {
-                                        field: 'subcategory',
-                                        direction: 'asc',
-                                      },
-                                      { field: 'title', direction: 'asc' },
-                                    ]),
-                                ),
-                              S.listItem()
-                                .title('For designere')
-                                .child(
-                                  S.documentTypeList('page')
-                                    .apiVersion('2025-02-10')
-                                    .title('For designere-sider')
-                                    .filter(
-                                      'category == "Kom i gang" && subcategory == "For designere"',
-                                    )
-                                    .defaultOrdering([
-                                      { field: 'title', direction: 'asc' },
-                                    ]),
-                                ),
-                              S.listItem()
-                                .title('For utviklere')
-                                .child(
-                                  S.documentTypeList('page')
-                                    .apiVersion('2025-02-10')
-                                    .title('For utviklere-sider')
-                                    .filter(
-                                      'category == "Kom i gang" && subcategory == "For utviklere"',
-                                    )
-                                    .defaultOrdering([
-                                      { field: 'title', direction: 'asc' },
-                                    ]),
-                                ),
-                              S.listItem()
-                                .title('Introduksjon')
-                                .child(
-                                  S.documentTypeList('page')
-                                    .apiVersion('2025-02-10')
-                                    .title('Introduksjon-sider')
-                                    .filter(
-                                      'category == "Kom i gang" && subcategory == "Introduksjon"',
-                                    )
-                                    .defaultOrdering([
-                                      { field: 'title', direction: 'asc' },
-                                    ]),
-                                ),
-                            ]),
-                        ),
-
-                      S.listItem()
-                        .title('Mønster')
-                        .child(
-                          S.list()
-                            .title('Mønster underkategorier')
-                            .items([
-                              S.listItem()
-                                .title('Alle sider under Mønster')
-                                .child(
-                                  S.documentTypeList('page')
-                                    .apiVersion('2025-02-10')
-                                    .title('Mønster-sider')
-                                    .filter(
-                                      'category == "Mønster" || category == "Monster"',
-                                    )
-                                    .defaultOrdering([
-                                      {
-                                        field: 'subcategory',
-                                        direction: 'asc',
-                                      },
-                                      { field: 'title', direction: 'asc' },
-                                    ]),
-                                ),
-                              S.listItem()
-                                .title('Mønster')
-                                .child(
-                                  S.documentTypeList('page')
-                                    .apiVersion('2025-02-10')
-                                    .title('Mønster-sider')
-                                    .filter(
-                                      '(category == "Mønster" || category == "Monster") && (subcategory == "Mønster" || subcategory == "Monster")',
-                                    )
-                                    .defaultOrdering([
-                                      { field: 'title', direction: 'asc' },
-                                    ]),
-                                ),
-                            ]),
-                        ),
-
-                      S.listItem()
-                        .title('Ressurser')
-                        .child(
-                          S.list()
-                            .title('Ressurser underkategorier')
-                            .items([
-                              S.listItem()
-                                .title('Alle sider under Ressurser')
-                                .child(
-                                  S.documentTypeList('page')
-                                    .apiVersion('2025-02-10')
-                                    .title('Ressurser-sider')
-                                    .filter('category == "Ressurser"')
-                                    .defaultOrdering([
-                                      {
-                                        field: 'subcategory',
-                                        direction: 'asc',
-                                      },
-                                      { field: 'title', direction: 'asc' },
-                                    ]),
-                                ),
-                              S.listItem()
-                                .title('Workshopmaler')
-                                .child(
-                                  S.documentTypeList('page')
-                                    .apiVersion('2025-02-10')
-                                    .title('Workshopmaler-sider')
-                                    .filter(
-                                      'category == "Ressurser" && subcategory == "Workshopmaler"',
-                                    )
-                                    .defaultOrdering([
-                                      { field: 'title', direction: 'asc' },
-                                    ]),
-                                ),
-                            ]),
-                        ),
-
-                      S.listItem()
-                        .title('Tokens')
-                        .child(
-                          S.list()
-                            .title('Tokens underkategorier')
-                            .items([
-                              S.listItem()
-                                .title('Alle sider under Tokens')
-                                .child(
-                                  S.documentTypeList('page')
-                                    .apiVersion('2025-02-10')
-                                    .title('Tokens-sider')
-                                    .filter('category == "Tokens"')
-                                    .defaultOrdering([
-                                      {
-                                        field: 'subcategory',
-                                        direction: 'asc',
-                                      },
-                                      { field: 'title', direction: 'asc' },
-                                    ]),
-                                ),
-                              S.listItem()
-                                .title('Fargetokens')
-                                .child(
-                                  S.documentTypeList('page')
-                                    .apiVersion('2025-02-10')
-                                    .title('Fargetokens-sider')
-                                    .filter(
-                                      'category == "Tokens" && subcategory == "Fargetokens"',
-                                    )
-                                    .defaultOrdering([
-                                      { field: 'title', direction: 'asc' },
-                                    ]),
-                                ),
-                              S.listItem()
-                                .title('Øvrige tokens')
-                                .child(
-                                  S.documentTypeList('page')
-                                    .apiVersion('2025-02-10')
-                                    .title('Øvrige tokens-sider')
-                                    .filter(
-                                      'category == "Tokens" && subcategory == "Øvrige tokens"',
-                                    )
-                                    .defaultOrdering([
-                                      { field: 'title', direction: 'asc' },
-                                    ]),
-                                ),
-                            ]),
-                        ),
-
-                      S.listItem()
-                        .title('Universell utforming')
-                        .child(
-                          S.documentTypeList('page')
-                            .apiVersion('2025-02-10')
-                            .title('Universell utforming-sider')
-                            .filter('category == "Universell utforming"')
-                            .defaultOrdering([
-                              { field: 'title', direction: 'asc' },
-                            ]),
-                        ),
-                    ]),
+                  createFilteredList(
+                    S,
+                    ['page', 'componentDoc'],
+                    'Universell utforming-sider',
+                    'category == "Universell utforming"',
+                  ),
                 ),
             ]),
         ),
