@@ -9,6 +9,8 @@ import { ImageDisplay } from '@components/Media/ImageDisplay';
 import { SANITY_PROJECT } from 'src/utils/constants';
 import { LinkType } from '../types';
 
+import './LinkResolver.scss';
+
 type Props = {
   value: LinkType;
 };
@@ -71,20 +73,18 @@ export const LinkResolver = ({ value }: Props) => {
           to={href ?? ''}
           title={linkText ?? ''}
           description={linkDescription ?? ''}
-          className="component-preview"
+          className="sanity-media-card"
           headingLevel="h3"
           hideArrow
           category={linkCategory}
         >
-          <div className="component-preview__image-wrapper">
-            {imageData && (
-              <ImageDisplay
-                imgSource={imageData}
-                alt=""
-                preset="full-width-image"
-              />
-            )}
-          </div>
+          {imageData && (
+            <ImageDisplay
+              imgSource={imageData}
+              alt=""
+              preset="full-width-image"
+            />
+          )}
         </MediaCard>
       );
     }

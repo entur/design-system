@@ -16,36 +16,27 @@ export const GroupResolver = ({ value }: Props) => {
 
   if (!content || content?.length == 0) return null;
 
-  if (content.length <= 2)
-    return (
-      <GridContainer spacing="medium" rowSpacing="none" className="page__group">
-        {content.map((block, index) => (
-          <GridItem
-            key={(block as any)._key || `block-${index}`}
-            small={12}
-            medium={6}
-          >
-            <PortableText value={block} />
-          </GridItem>
-        ))}
-      </GridContainer>
-    );
-  if (content.length >= 3)
-    return (
-      <GridContainer spacing="medium" rowSpacing="none" className="page__group">
-        {content.map((block, index) => (
-          <GridItem
-            key={(block as any)._key || `block-${index}`}
-            small={12}
-            medium={4}
-          >
-            <PortableText value={block} />
-          </GridItem>
-        ))}
-      </GridContainer>
-    );
+  const allMediaCards = content.every(
+    block =>
+      (block as any)._type === 'link' &&
+      (block as any).linkType === 'mediacard',
+  );
 
-  return <CodeText>ERROR IN SANITY GROUP COMPONENT</CodeText>;
+  const mediumSize = allMediaCards ? 6 : content.length <= 2 ? 6 : 4;
+
+  return (
+    <GridContainer spacing="medium" rowSpacing="none" className="page__group">
+      {content.map((block, index) => (
+        <GridItem
+          key={(block as any)._key || `block-${index}`}
+          small={12}
+          medium={mediumSize}
+        >
+          <PortableText value={block} />
+        </GridItem>
+      ))}
+    </GridContainer>
+  );
 };
 
 export const GroupFragment = graphql`

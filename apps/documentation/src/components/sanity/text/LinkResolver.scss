@@ -1,0 +1,15 @@
+@use 'sass:map';
+@use '../../../styles/variables' as variables;
+
+.sanity-media-card {
+  height: 100%;
+
+  @media screen and (max-width: map.get(variables.$breakpoints, 'tablet')) {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .eds-media-card__media {
+    background-color: var(--basecolors-frame-tint);
+  }
+}
