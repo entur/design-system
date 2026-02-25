@@ -52,7 +52,15 @@ const createComponents = (context?: {
   },
   list: {
     bullet: ({ children }) => <UnorderedList>{children}</UnorderedList>,
-    number: ({ children }) => <NumberedList>{children}</NumberedList>,
+    number: ({ children, value }) => {
+      const typeByLevel: Record<number, '1' | 'a' | 'i'> = {
+        1: '1',
+        2: 'a',
+        3: 'i',
+      };
+      const type = typeByLevel[value.level] ?? '1';
+      return <NumberedList type={type}>{children}</NumberedList>;
+    },
   },
   listItem: ({ children }) => <ListItem>{children}</ListItem>,
   marks: {

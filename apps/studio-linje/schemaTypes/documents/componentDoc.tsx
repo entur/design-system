@@ -14,7 +14,7 @@ const DynamicSubcategoryInput = (props: StringInputProps) => {
 
 export const componentDoc = defineType({
   name: 'componentDoc',
-  title: 'Komponentdokumentasjon',
+  title: 'Komponent',
   type: 'document',
   fieldsets: [
     {
@@ -79,6 +79,14 @@ export const componentDoc = defineType({
       name: 'figmaLink',
       title: 'Figma‑lenke',
       type: 'url',
+    }),
+    defineField({
+      name: 'isCategoryLandingPage',
+      title: 'Er kategorilandingsside',
+      type: 'boolean',
+      initialValue: false,
+      hidden: true,
+      readOnly: true,
     }),
     defineField({
       name: 'isBeta',

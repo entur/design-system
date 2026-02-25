@@ -14,7 +14,7 @@ const DynamicSubcategoryInput = (props: StringInputProps) => {
 
 export const page = defineType({
   name: 'page',
-  title: 'Dokumentasjonsside',
+  title: 'Artikkel',
   type: 'document',
   orderings: [
     {
@@ -22,6 +22,7 @@ export const page = defineType({
       name: 'categorySubcategoryTitle',
       by: [
         { field: 'category', direction: 'asc' },
+        { field: 'isCategoryLandingPage', direction: 'desc' },
         { field: 'subcategory', direction: 'asc' },
         { field: 'title', direction: 'asc' },
       ],

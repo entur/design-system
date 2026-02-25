@@ -1,10 +1,15 @@
 import React from 'react';
-import { graphql } from 'gatsby';
-import { NavigationCard } from '@entur/layout';
+import { graphql, Link as GatsbyLink } from 'gatsby';
+import { getGatsbyImageData } from 'gatsby-source-sanity';
+import { NavigationCard, MediaCard } from '@entur/layout';
 import { Link } from '@entur/typography';
 import { PrimaryButton, SecondaryButton } from '@entur/button';
 import { getIconByName } from 'src/utils/utils';
+import { ImageDisplay } from '@components/Media/ImageDisplay';
+import { SANITY_PROJECT } from 'src/utils/constants';
 import { LinkType } from '../types';
+
+import './LinkResolver.scss';
 
 type Props = {
   value: LinkType;
@@ -18,6 +23,9 @@ export const LinkResolver = ({ value }: Props) => {
     linkAddressType,
     iconName,
     downloadFile,
+    linkDescription,
+    linkCategory,
+    image,
   } = value;
   const Icon = getIconByName(iconName);
 
@@ -46,6 +54,40 @@ export const LinkResolver = ({ value }: Props) => {
           {...linkProps}
         ></NavigationCard>
       );
+    case 'mediacard': {
+      const imageData =
+        image?.asset && 'gatsbyImageData' in image.asset
+          ? image.asset.gatsbyImageData
+          : image
+          ? getGatsbyImageData(
+              // @ts-expect-error Images inserted inline from Sanity do not contain gatsbyImageData when deeply resolved
+              image,
+              {},
+              SANITY_PROJECT,
+            )
+          : null;
+
+      return (
+        <MediaCard
+          as={GatsbyLink}
+          to={href ?? ''}
+          title={linkText ?? ''}
+          description={linkDescription ?? ''}
+          className="sanity-media-card"
+          headingLevel="h3"
+          hideArrow
+          category={linkCategory}
+        >
+          {imageData && (
+            <ImageDisplay
+              imgSource={imageData}
+              alt=""
+              preset="full-width-image"
+            />
+          )}
+        </MediaCard>
+      );
+    }
     case 'button':
       return (
         <PrimaryButton
@@ -104,6 +146,13 @@ export const LinkFragment = graphql`
         _id
         url
         originalFilename
+      }
+    }
+    linkDescription
+    linkCategory
+    image {
+      asset {
+        gatsbyImageData
       }
     }
   }

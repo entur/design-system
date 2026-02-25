@@ -71,6 +71,7 @@ export type LinkType = {
   linkType?:
     | 'text'
     | 'navigationcard'
+    | 'mediacard'
     | 'button'
     | 'button-secondary'
     | 'button-secondary-small';
@@ -83,6 +84,9 @@ export type LinkType = {
       originalFilename?: string;
     };
   };
+  linkDescription?: string;
+  linkCategory?: string;
+  image?: SanityImageType;
 };
 
 export type InlineIcon = {

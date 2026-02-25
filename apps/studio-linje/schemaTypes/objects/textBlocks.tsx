@@ -66,6 +66,10 @@ export const textBlocksType = defineType({
             { title: 'H4', value: 'h4' },
             { title: 'H5', value: 'h5' },
           ],
+          lists: [
+            { title: 'Punktliste', value: 'bullet' },
+            { title: 'Nummerert', value: 'number' },
+          ],
           marks: {
             decorators: [
               { title: 'Strong', value: 'strong' },

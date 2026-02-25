@@ -1,0 +1,11 @@
+.sanity-media-card {
+  height: 100%;
+
+  .eds-media-card__media {
+    background-color: var(--basecolors-frame-tint);
+  }
+
+  .image-display {
+    flex: 1;
+  }
+}

@@ -1,19 +1,20 @@
-import {defineField, defineType} from 'sanity'
-import * as icons from '@entur/icons'
-import IconInput from '../../components/IconInput'
+import { defineField, defineType } from 'sanity';
+import * as icons from '@entur/icons';
+import IconInput from '../../components/IconInput';
 
 const LINK_TYPES = [
-  {title: 'Tekst', value: 'text'},
-  {title: 'Kort', value: 'navigationcard'},
-  {title: 'Primærknapp', value: 'button'},
-  {title: 'Sekundærknapp', value: 'button-secondary'},
-  {title: 'Sekundærknapp liten', value: 'button-secondary-small'},
-]
+  { title: 'Tekst', value: 'text' },
+  { title: 'Kort', value: 'navigationcard' },
+  { title: 'Primærknapp', value: 'button' },
+  { title: 'Sekundærknapp', value: 'button-secondary' },
+  { title: 'Sekundærknapp liten', value: 'button-secondary-small' },
+  { title: 'Oversiktskort', value: 'mediacard' },
+];
 
 const LINK_ADDRESS_TYPES = [
-  {title: 'URL', value: 'url'},
-  {title: 'Fil', value: 'file'},
-]
+  { title: 'URL', value: 'url' },
+  { title: 'Fil', value: 'file' },
+];
 
 export const LinkType = defineType({
   name: 'link',
@@ -54,23 +55,64 @@ export const LinkType = defineType({
       type: 'string',
       title: 'URL',
       description: 'Nettadressen lenken skal peke til',
-      hidden: ({parent}) => parent?.linkAddressType !== 'url',
+      hidden: ({ parent }) => parent?.linkAddressType !== 'url',
     }),
     defineField({
       name: 'downloadFile',
       type: 'file',
       title: 'Fil for nedlasting',
       description: 'Velg en fil som skal lastes ned',
-      hidden: ({parent}) => parent?.linkAddressType !== 'file',
+      hidden: ({ parent }) => parent?.linkAddressType !== 'file',
       options: {
-        accept: '.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt,.zip,.rar,.jpg,.jpeg,.png,.gif,.svg',
+        accept:
+          '.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt,.zip,.rar,.jpg,.jpeg,.png,.gif,.svg',
       },
+    }),
+    defineField({
+      name: 'linkDescription',
+      type: 'string',
+      title: 'Beskrivelse',
+      description: 'Beskrivende tekst som vises på kortet',
+      hidden: ({ parent }) => parent?.linkType !== 'mediacard',
+      validation: Rule =>
+        Rule.custom((value, context) => {
+          const parent = context.parent as { linkType?: string } | undefined;
+          if (parent?.linkType === 'mediacard' && !value) {
+            return 'Beskrivelse er påkrevd for oversiktskort.';
+          }
+          return true;
+        }),
+    }),
+    defineField({
+      name: 'linkCategory',
+      type: 'string',
+      title: 'Kategori',
+      description: 'Valgfri kategorietikett som vises på kortet',
+      hidden: ({ parent }) => parent?.linkType !== 'mediacard',
+    }),
+    defineField({
+      name: 'image',
+      type: 'image',
+      title: 'Bilde',
+      description: 'Forhåndsvisningsbilde for kortet',
+      options: {
+        hotspot: true,
+      },
+      hidden: ({ parent }) => parent?.linkType !== 'mediacard',
+      validation: Rule =>
+        Rule.custom((value, context) => {
+          const parent = context.parent as { linkType?: string } | undefined;
+          if (parent?.linkType === 'mediacard' && !value) {
+            return 'Bilde er påkrevd for oversiktskort.';
+          }
+          return true;
+        }),
     }),
     defineField({
       name: 'iconName',
       type: 'string',
       options: {
-        list: Object.keys(icons).map((icon) => ({
+        list: Object.keys(icons).map(icon => ({
           title: icon,
           value: icon,
         })),
@@ -78,6 +120,7 @@ export const LinkType = defineType({
       components: {
         input: IconInput,
       },
+      hidden: ({ parent }) => parent?.linkType === 'mediacard',
     }),
   ],
   preview: {
@@ -87,17 +130,17 @@ export const LinkType = defineType({
       linkAddressType: 'linkAddressType',
       downloadFile: 'downloadFile',
     },
-    prepare({linkText, linkType, linkAddressType, downloadFile}) {
+    prepare({ linkText, linkType, linkAddressType, downloadFile }) {
       if (linkAddressType === 'file' && downloadFile) {
         return {
           title: linkText
             ? `Fil: ${linkText}`
             : `Fil: ${downloadFile.asset?.originalFilename || 'Fil'}`,
-        }
+        };
       }
       return {
         title: linkText ? 'Link til: ' + linkText : 'Link',
-      }
+      };
     },
   },
-})
+});
