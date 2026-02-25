@@ -14,7 +14,7 @@ type Props = {
 export const GroupResolver = ({ value }: Props) => {
   const { content } = value;
 
-  if (!content || content?.length == 0) return null;
+  if (!content || content?.length === 0) return null;
 
   const allMediaCards = content.every(
     block =>

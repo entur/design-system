@@ -74,6 +74,14 @@ export const LinkType = defineType({
       title: 'Beskrivelse',
       description: 'Beskrivende tekst som vises på kortet',
       hidden: ({ parent }) => parent?.linkType !== 'mediacard',
+      validation: Rule =>
+        Rule.custom((value, context) => {
+          const parent = context.parent as { linkType?: string } | undefined;
+          if (parent?.linkType === 'mediacard' && !value) {
+            return 'Beskrivelse er påkrevd for oversiktskort.';
+          }
+          return true;
+        }),
     }),
     defineField({
       name: 'linkCategory',
@@ -91,6 +99,14 @@ export const LinkType = defineType({
         hotspot: true,
       },
       hidden: ({ parent }) => parent?.linkType !== 'mediacard',
+      validation: Rule =>
+        Rule.custom((value, context) => {
+          const parent = context.parent as { linkType?: string } | undefined;
+          if (parent?.linkType === 'mediacard' && !value) {
+            return 'Bilde er påkrevd for oversiktskort.';
+          }
+          return true;
+        }),
     }),
     defineField({
       name: 'iconName',
