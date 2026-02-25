@@ -126,7 +126,8 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
     };
 
     const _append = React.useMemo((): React.ReactElement | null => {
-      if (!clearable) return (append as React.ReactElement) ?? null;
+      if (!clearable || disabled || readOnly)
+        return (append as React.ReactElement) ?? null;
 
       return (
         <div className="eds-textfield__append">
@@ -134,7 +135,7 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
           <ClearButton onClear={handleClear} ariaLabel={clearButtonAriaLabel} />
         </div>
       );
-    }, [append, clearable]);
+    }, [append, clearable, disabled, readOnly]);
 
     return (
       <BaseFormControl
