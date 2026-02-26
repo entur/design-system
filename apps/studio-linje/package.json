@@ -1,7 +1,7 @@
 {
   "name": "studio-linje",
   "private": true,
-  "version": "1.9.1",
+  "version": "1.9.2",
   "main": "package.json",
   "license": "UNLICENSED",
   "scripts": {
