@@ -3,5 +3,23 @@
   "description": "",
   "displayName": "Template.Portal.Sidebar",
   "methods": [],
-  "props": {}
+  "props": {
+    "contrast": {
+      "defaultValue": {
+        "value": true
+      },
+      "description": "Toggle contrast styling for the sidebar",
+      "name": "contrast",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/layout/src/beta/templates/Sidebar.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "boolean | undefined"
+      }
+    }
+  }
 }
