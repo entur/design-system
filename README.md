@@ -28,7 +28,7 @@ The monorepo needs the following tools to run properly:
 - NodeJS 24.14.0
 - yarn 4.13.0
 - npm (for publishing)
-- MacOS???
+- React 18 or higher (all packages require React >=18.0.0)
 
 Node.js is available on [Node's website](https://nodejs.org/en/download). If you want to easily switch between different versions of Node.js (different repos might use different versions) then [nvm](https://github.com/nvm-sh/nvm) is a good alternative.
 
