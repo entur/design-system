@@ -1,6 +1,8 @@
-import React, { useCallback } from 'react';
+import React, { useRef, useMemo } from 'react';
 import classNames from 'classnames';
-import * as Dialog from '@radix-ui/react-dialog';
+import { useModalOverlay, OverlayContainer } from '@react-aria/overlays';
+import { FocusScope } from '@react-aria/focus';
+import type { OverlayTriggerState } from '@react-stately/overlays';
 
 import { ModalContext } from './ModalContext';
 
@@ -26,26 +28,42 @@ export const ModalOverlay: React.FC<ModalOverlayProps> = ({
   children,
   ...rest
 }) => {
-  const handleOpenChange = useCallback(
-    (isOpen: boolean) => {
-      if (!isOpen && onDismiss) {
-        onDismiss();
-      }
-    },
-    [onDismiss],
+  const overlayRef = useRef<HTMLDivElement>(null);
+
+  const state = useMemo<OverlayTriggerState>(
+    () => ({
+      isOpen: !!open,
+      close: () => onDismiss?.(),
+      open: () => {},
+      toggle: () => {},
+      setOpen: () => {},
+    }),
+    [open, onDismiss],
   );
 
+  const { modalProps, underlayProps } = useModalOverlay(
+    { isDismissable: !!onDismiss },
+    state,
+    overlayRef,
+  );
+
+  if (!open) return null;
+
   return (
-    <Dialog.Root open={open} onOpenChange={handleOpenChange}>
-      <Dialog.Portal>
-        <Dialog.Overlay
-          className={classNames('eds-modal__overlay', className)}
-          {...rest}
-        />
-        <ModalContext.Provider value={{ initialFocusRef }}>
-          {children}
-        </ModalContext.Provider>
-      </Dialog.Portal>
-    </Dialog.Root>
+    <OverlayContainer>
+      <div
+        className={classNames('eds-modal__overlay', className)}
+        {...underlayProps}
+        {...rest}
+      >
+        <FocusScope contain restoreFocus autoFocus={!initialFocusRef}>
+          <div {...modalProps} ref={overlayRef}>
+            <ModalContext.Provider value={{ initialFocusRef }}>
+              {children}
+            </ModalContext.Provider>
+          </div>
+        </FocusScope>
+      </div>
+    </OverlayContainer>
   );
 };

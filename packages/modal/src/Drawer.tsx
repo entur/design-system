@@ -6,7 +6,6 @@ import { CloseIcon } from '@entur/icons';
 import { Heading3 } from '@entur/typography';
 import { useRandomId } from '@entur/utils';
 import { IconButton } from '@entur/button';
-import * as Dialog from '@radix-ui/react-dialog';
 
 import './Drawer.scss';
 import { ModalOverlay } from './ModalOverlay';
@@ -63,7 +62,6 @@ export const Drawer: React.FC<DrawerProps> = ({
   };
 
   const Wrapper = contrast ? Contrast : React.Fragment;
-  const ContentContainer = overlay ? Dialog.Content : 'div';
   return (
     <ConditionalWrapper
       condition={overlay}
@@ -74,7 +72,8 @@ export const Drawer: React.FC<DrawerProps> = ({
       )}
     >
       <Wrapper>
-        <ContentContainer
+        <div
+          role={overlay ? 'dialog' : undefined}
           aria-labelledby={titleId}
           className={classNames('eds-drawer', className)}
           onKeyDown={handleKeyDown}
@@ -96,7 +95,7 @@ export const Drawer: React.FC<DrawerProps> = ({
               {children}
             </div>
           </MoveFocusInside>
-        </ContentContainer>
+        </div>
       </Wrapper>
     </ConditionalWrapper>
   );
