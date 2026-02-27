@@ -62,7 +62,7 @@ All packages now require:
 
 ### @entur/modal
 
-The internal implementation of `@entur/modal` has been migrated from `@reach/dialog` (deprecated, unmaintained) to `@radix-ui/react-dialog` (actively maintained, React 18 compatible).
+The internal implementation of `@entur/modal` has been migrated from `@reach/dialog` (deprecated, unmaintained) to `@react-aria/dialog` + `@react-aria/overlays` (actively maintained, React 18 compatible). See [Provider Choice Analysis](#provider-choice-analysis) for reasoning.
 
 **What changed:**
 
@@ -75,14 +75,14 @@ The internal implementation of `@entur/modal` has been migrated from `@reach/dia
 
 ### @entur/tab
 
-The internal implementation of `@entur/tab` has been migrated from `@reach/tabs` (deprecated, unmaintained) to `@radix-ui/react-tabs` (actively maintained, React 18 compatible).
+The internal implementation of `@entur/tab` has been migrated from `@reach/tabs` (deprecated, unmaintained) to a native ARIA tab implementation with no third-party dependency. See [Provider Choice Analysis](#provider-choice-analysis) for reasoning.
 
 **What changed:**
 
 - The public API (`Tabs`, `TabList`, `Tab`, `TabPanel`, `TabPanels`) remains the same
 - Props (`index`, `defaultIndex`, `onChange`, `disabled`, `width`, etc.) are unchanged
 - The `as` prop on Tab components is no longer supported. If you were using it, please use standard composition patterns instead
-- Keyboard navigation and ARIA attributes work the same way
+- Keyboard navigation (Arrow Left/Right, Home, End) and ARIA attributes work the same way
 
 **What consumers need to do:** No changes required if you are using the documented API.
 
@@ -107,14 +107,76 @@ React 18's `<StrictMode>` now simulates component mounting, unmounting, and re-m
 
 If you see double renders in development, this is expected behavior when using `<StrictMode>`.
 
+## Provider Choice Analysis
+
+### Why Not @radix-ui?
+
+Initially, the migration from `@reach/*` considered `@radix-ui` as a replacement. While Radix UI is an excellent library, introducing it would have added a **new third-party UI provider** to the project. After analysis, we chose to use existing providers instead:
+
+| Criterion | @radix-ui (rejected) | @react-aria (chosen for modal) | Native ARIA (chosen for tabs) |
+|---|---|---|---|
+| **Already in project?** | ❌ New provider | ✅ Used by @entur/datepicker | ✅ No dependency needed |
+| **Packages added** | 21 new packages | 3 new packages (shared infrastructure) | 0 new packages |
+| **API approach** | Component-based | Hook-based (consistent with datepicker) | Standard HTML + ARIA |
+| **Control** | Moderate | High (hooks give full control) | Full control |
+| **Maintenance burden** | New provider to track | Already tracked | None |
+
+### Why @react-aria for Modal?
+
+The `@entur/datepicker` package already depends on `@react-aria/*` (6 packages: button, calendar, datepicker, i18n + stately). Using `@react-aria/dialog` and `@react-aria/overlays` for the modal:
+
+1. **Reuses existing provider** — `@react-aria` is already a trusted, maintained dependency
+2. **Shares infrastructure** — `@react-aria/utils`, `@react-aria/focus`, `@react-aria/ssr` are already transitive dependencies. Adding dialog/overlays only adds 3 new packages
+3. **Consistent architecture** — Hook-based approach matches how the datepicker uses @react-aria
+4. **Full accessibility** — `useDialog`, `useModalOverlay`, and `FocusScope` provide complete dialog accessibility (ARIA roles, focus trapping, Escape key, click-outside dismissal)
+
+### Why Native ARIA for Tabs?
+
+Instead of using `@react-aria/tabs`, tabs are implemented with native ARIA attributes:
+
+1. **@react-aria/tabs uses Collections API** — Its `useTabListState` requires `Item` components from `@react-stately/collections`, which is fundamentally incompatible with the existing consumer API pattern (`<Tab>`, `<TabPanel>` children). Adapting it would require complex adapter code that's harder to maintain
+2. **Tabs are simple** — The ARIA tab pattern is well-defined (WAI-ARIA Authoring Practices) and straightforward to implement: `role="tablist"`, `role="tab"`, `role="tabpanel"`, `aria-selected`, `aria-controls`, `aria-labelledby`, and keyboard navigation
+3. **No new dependencies** — Zero additional packages needed
+4. **Full control** — We control the exact DOM output, keyboard behavior, and styling hooks
+
+### What About @floating-ui?
+
+`@floating-ui` (already used by @entur/tooltip, @entur/dropdown, @entur/menu, @entur/datepicker) is a **positioning library**. It handles where floating elements appear relative to their reference elements. It is not suitable for modals or tabs because:
+
+- Modals need focus trapping, scroll prevention, overlay management — not positioning
+- Tabs need selection state management and keyboard navigation — not positioning
+
+`@floating-ui` remains the correct choice for tooltips, dropdowns, menus, and popovers.
+
+### Provider Summary
+
+After the migration, the design system uses **3 UI providers**, each for its strengths:
+
+| Provider | Used in | Purpose |
+|---|---|---|
+| **@react-aria** | datepicker, modal | Accessible form components, dialog/overlay management |
+| **@floating-ui** | tooltip, dropdown, menu, datepicker | Floating element positioning |
+| **downshift** | dropdown | Combobox/select state management |
+
+### @reach Package Audit
+
+All `@reach/*` packages have been migrated:
+
+| @reach package | Migrated to | When |
+|---|---|---|
+| `@reach/dialog` | `@react-aria/dialog` + `@react-aria/overlays` | This migration |
+| `@reach/tabs` | Native ARIA implementation | This migration |
+| `@reach/menu` | `@floating-ui/react` | Previously migrated |
+| `@reach/router` | N/A — Gatsby's internal dependency (`@gatsbyjs/reach-router`) | Not ours to migrate |
+
 ## Third-Party Dependencies
 
 ### Updated Dependencies
 
 | Package | Previous | New | Notes |
 | --- | --- | --- | --- |
-| `@reach/dialog` | 0.16.2 | Removed | Replaced by `@radix-ui/react-dialog` 1.1.15 |
-| `@reach/tabs` | 0.15.3 | Removed | Replaced by `@radix-ui/react-tabs` 1.1.13 |
+| `@reach/dialog` | 0.16.2 | Removed | Replaced by `@react-aria/dialog` + `@react-aria/overlays` |
+| `@reach/tabs` | 0.15.3 | Removed | Replaced by native ARIA implementation |
 | `@testing-library/react` | 10.4.9 | 16.3.0 | React 18 support |
 | `@testing-library/dom` | — | 10.4.1 | New peer dependency |
 
@@ -150,5 +212,5 @@ npm install --save-dev @testing-library/react@^16 @testing-library/dom@^10
 
 - **Performance**: Automatic batching reduces unnecessary re-renders
 - **Concurrent Features**: Enables future use of `useTransition`, `useDeferredValue`, and Suspense for data fetching
-- **Maintained Dependencies**: Allows use of actively maintained libraries (Radix UI) instead of deprecated ones (Reach UI)
+- **Maintained Dependencies**: Allows use of actively maintained libraries instead of deprecated ones (Reach UI)
 - **Ecosystem Alignment**: Most React libraries now require or recommend React 18+
