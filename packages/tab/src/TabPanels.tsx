@@ -19,7 +19,7 @@ export const TabPanels: React.FC<TabPanelsProps> = ({
     <div className={classNames('eds-tab-panels', className)} {...rest}>
       {React.Children.map(children, (child, idx) =>
         React.isValidElement(child)
-          ? React.cloneElement(child as React.ReactElement, {
+          ? React.cloneElement(child, {
               _tabValue: String(idx),
             })
           : child,
