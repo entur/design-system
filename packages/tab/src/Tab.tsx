@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tab as ReachTab } from '@reach/tabs';
+import * as RadixTabs from '@radix-ui/react-tabs';
 import classNames from 'classnames';
 
 export type TabProps = {
@@ -10,21 +10,26 @@ export type TabProps = {
   /** HTML-elementet eller React-komponenten som lager komponenten */
   as?: keyof JSX.IntrinsicElements | any;
   removeActiveLine?: boolean;
+  /** @internal Injected by TabList */
+  _tabValue?: string;
   [key: string]: any;
 };
 
 export const Tab: React.FC<TabProps> = ({
   className,
   removeActiveLine = false,
+  as: _as,
+  _tabValue = '0',
   ...rest
 }) => {
   return (
-    <ReachTab
+    <RadixTabs.Trigger
       className={classNames(
         'eds-tab',
         { 'eds-tab--remove-active-line': removeActiveLine },
         className,
       )}
+      value={_tabValue}
       {...rest}
     />
   );

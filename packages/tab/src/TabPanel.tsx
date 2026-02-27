@@ -1,5 +1,5 @@
 import React from 'react';
-import { TabPanel as ReachTabPanel } from '@reach/tabs';
+import * as RadixTabs from '@radix-ui/react-tabs';
 import classNames from 'classnames';
 
 export type TabPanelProps = {
@@ -7,15 +7,23 @@ export type TabPanelProps = {
   children: React.ReactNode;
   /** HTML-elementet eller React-komponenten som lager komponenten */
   as?: keyof JSX.IntrinsicElements | any;
+  /** @internal Injected by TabPanels */
+  _tabValue?: string;
   [key: string]: any;
 };
 
-export const TabPanel: React.FC<TabPanelProps> = ({ className, ...rest }) => {
+export const TabPanel: React.FC<TabPanelProps> = ({
+  className,
+  as: _as,
+  _tabValue = '0',
+  ...rest
+}) => {
   return (
-    <ReachTabPanel
+    <RadixTabs.Content
       className={classNames('eds-tab-panel', className)}
-      {...rest}
+      value={_tabValue}
       tabIndex={undefined}
+      {...rest}
     />
   );
 };

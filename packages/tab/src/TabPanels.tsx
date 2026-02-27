@@ -1,5 +1,4 @@
 import React from 'react';
-import { TabPanels as ReachTabPanels } from '@reach/tabs';
 import classNames from 'classnames';
 
 export type TabPanelsProps = {
@@ -10,11 +9,21 @@ export type TabPanelsProps = {
   [key: string]: any;
 };
 
-export const TabPanels: React.FC<TabPanelsProps> = ({ className, ...rest }) => {
+export const TabPanels: React.FC<TabPanelsProps> = ({
+  className,
+  as: _as,
+  children,
+  ...rest
+}) => {
   return (
-    <ReachTabPanels
-      className={classNames('eds-tab-panels', className)}
-      {...rest}
-    />
+    <div className={classNames('eds-tab-panels', className)} {...rest}>
+      {React.Children.map(children, (child, idx) =>
+        React.isValidElement(child)
+          ? React.cloneElement(child as React.ReactElement, {
+              _tabValue: String(idx),
+            })
+          : child,
+      )}
+    </div>
   );
 };

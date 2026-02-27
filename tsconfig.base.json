@@ -19,7 +19,7 @@
     "noImplicitReturns": false,
     "moduleResolution": "bundler",
     "traceResolution": false,
-    "jsx": "react",
+    "jsx": "react-jsx",
     "esModuleInterop": true,
     "preserveSymlinks": true,
     "skipLibCheck": true,

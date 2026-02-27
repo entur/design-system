@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import classNames from 'classnames';
-import { DialogOverlay } from '@reach/dialog';
+import * as Dialog from '@radix-ui/react-dialog';
+
+import { ModalContext } from './ModalContext';
 
 export type ModalOverlayProps = {
   /** Flagg som sier om modalen er åpen */
@@ -19,11 +21,31 @@ export type ModalOverlayProps = {
 export const ModalOverlay: React.FC<ModalOverlayProps> = ({
   className,
   open,
+  onDismiss,
+  initialFocusRef,
+  children,
   ...rest
-}) => (
-  <DialogOverlay
-    className={classNames('eds-modal__overlay', className)}
-    isOpen={open}
-    {...rest}
-  />
-);
+}) => {
+  const handleOpenChange = useCallback(
+    (isOpen: boolean) => {
+      if (!isOpen && onDismiss) {
+        onDismiss();
+      }
+    },
+    [onDismiss],
+  );
+
+  return (
+    <Dialog.Root open={open} onOpenChange={handleOpenChange}>
+      <Dialog.Portal>
+        <Dialog.Overlay
+          className={classNames('eds-modal__overlay', className)}
+          {...rest}
+        />
+        <ModalContext.Provider value={{ initialFocusRef }}>
+          {children}
+        </ModalContext.Provider>
+      </Dialog.Portal>
+    </Dialog.Root>
+  );
+};

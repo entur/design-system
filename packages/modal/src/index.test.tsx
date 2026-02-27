@@ -2,12 +2,6 @@ import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 import { Modal } from '.';
 
-// Needed to silence Reach's styling warning
-jest.mock('@reach/utils', () => ({
-  ...(jest.requireActual('@reach/utils') as object),
-  checkStyles: jest.fn(),
-}));
-
 test('renders a nice looking modal', () => {
   const spy = jest.fn();
   const { getByTestId } = render(

@@ -1,5 +1,5 @@
 import React from 'react';
-import { TabList as ReachTabList } from '@reach/tabs';
+import * as RadixTabs from '@radix-ui/react-tabs';
 import classNames from 'classnames';
 
 export type TabListProps = {
@@ -14,14 +14,24 @@ export type TabListProps = {
 export const TabList: React.FC<TabListProps> = ({
   className,
   width,
+  as: _as,
+  children,
   ...rest
 }) => {
   return (
-    <ReachTabList
+    <RadixTabs.List
       className={classNames('eds-tab-list', className, {
         'eds-tab-list--width-fluid': width === 'fluid',
       })}
       {...rest}
-    />
+    >
+      {React.Children.map(children, (child, idx) =>
+        React.isValidElement(child)
+          ? React.cloneElement(child as React.ReactElement, {
+              _tabValue: String(idx),
+            })
+          : child,
+      )}
+    </RadixTabs.List>
   );
 };
