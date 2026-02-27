@@ -143,10 +143,11 @@ export const componentDoc = defineType({
       title: 'title',
       category: 'category',
       subcategory: 'subcategory',
+      isBeta: 'isBeta',
     },
-    prepare({ title, category, subcategory }) {
+    prepare({ title, category, subcategory, isBeta }) {
       return {
-        title: title || 'Ingen tittel',
+        title: `${title || 'Ingen tittel'}${isBeta ? ' (beta)' : ''}`,
         subtitle: subcategory ? `${category} > ${subcategory}` : category,
       };
     },

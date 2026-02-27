@@ -199,13 +199,7 @@ export const structure = (S: any, { documentStore }: any) =>
                 documentStore,
                 ['page', 'componentDoc'],
                 'Mønster',
-                [
-                  {
-                    title: 'Mønster',
-                    filter:
-                      '(category == "Mønster" || category == "Monster") && (subcategory == "Mønster" || subcategory == "Monster")',
-                  },
-                ],
+                ['Mønster', 'Maler'],
                 'category == "Mønster" || category == "Monster"',
               ),
 

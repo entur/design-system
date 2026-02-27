@@ -1,0 +1,7 @@
+.code-example {
+  margin: 2rem 0;
+
+  :where(h2, h3, h4, h5) + & {
+    margin-top: eds.$space-none;
+  }
+}

@@ -1,4 +1,5 @@
 import { defineField, defineType } from 'sanity';
+import CodeInput from '../../components/CodeInput';
 
 export const playgroundCode = defineType({
   name: 'playgroundCode',
@@ -16,8 +17,9 @@ export const playgroundCode = defineType({
       name: 'code',
       title: 'Kode',
       type: 'text',
-      rows: 4,
       description: 'Kode som vises i demoen (JSX)',
+      components: { input: CodeInput },
+      options: { language: 'jsx' } as any,
     }),
     defineField({
       name: 'componentName',
