@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import classNames from 'classnames';
+
+import { TabsContext } from './TabsContext';
 
 export type TabPanelsProps = {
   /** Tab-panelene */
@@ -15,12 +17,16 @@ export const TabPanels: React.FC<TabPanelsProps> = ({
   children,
   ...rest
 }) => {
+  const { tabsId } = useContext(TabsContext);
+
   return (
     <div className={classNames('eds-tab-panels', className)} {...rest}>
       {React.Children.map(children, (child, idx) =>
         React.isValidElement(child)
           ? React.cloneElement(child, {
-              _tabValue: String(idx),
+              _tabIndex: idx,
+              _tabId: `${tabsId}-tab-${idx}`,
+              _panelId: `${tabsId}-panel-${idx}`,
             })
           : child,
       )}

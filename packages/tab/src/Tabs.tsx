@@ -1,6 +1,8 @@
-import React from 'react';
-import * as RadixTabs from '@radix-ui/react-tabs';
+import React, { useState, useCallback } from 'react';
 import classNames from 'classnames';
+import { useRandomId } from '@entur/utils';
+
+import { TabsContext } from './TabsContext';
 
 export type TabsProps = {
   /** Overskriften til taben */
@@ -23,22 +25,29 @@ export const Tabs: React.FC<TabsProps> = ({
   defaultIndex,
   onChange,
   as: _as,
+  children,
   ...rest
 }) => {
-  const value = index !== undefined ? String(index) : undefined;
-  const defaultValue =
-    defaultIndex !== undefined ? String(defaultIndex) : '0';
-  const onValueChange = onChange
-    ? (val: string) => onChange(Number(val))
-    : undefined;
+  const [internalIndex, setInternalIndex] = useState(defaultIndex ?? 0);
+  const isControlled = index !== undefined;
+  const selectedIndex = isControlled ? index : internalIndex;
+  const tabsId = useRandomId('eds-tabs');
+
+  const onSelect = useCallback(
+    (i: number) => {
+      if (!isControlled) {
+        setInternalIndex(i);
+      }
+      onChange?.(i);
+    },
+    [isControlled, onChange],
+  );
 
   return (
-    <RadixTabs.Root
-      className={classNames('eds-tabs', className)}
-      value={value}
-      defaultValue={value === undefined ? defaultValue : undefined}
-      onValueChange={onValueChange}
-      {...rest}
-    />
+    <TabsContext.Provider value={{ selectedIndex, onSelect, tabsId }}>
+      <div className={classNames('eds-tabs', className)} {...rest}>
+        {children}
+      </div>
+    </TabsContext.Provider>
   );
 };

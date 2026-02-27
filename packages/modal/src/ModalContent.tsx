@@ -1,6 +1,6 @@
-import React, { useCallback, useContext } from 'react';
+import React, { useRef, useEffect, useContext } from 'react';
 import classNames from 'classnames';
-import * as Dialog from '@radix-ui/react-dialog';
+import { useDialog } from '@react-aria/dialog';
 import { Heading4, Heading3, Heading2 } from '@entur/typography';
 import { useRandomId } from '@entur/utils';
 
@@ -40,37 +40,38 @@ export const ModalContent: React.FC<ModalContentProps> = ({
 }) => {
   const Heading: React.ElementType = headingsMap[size] || Heading2;
   const randomId = useRandomId('eds-modal');
+  const dialogRef = useRef<HTMLDivElement>(null);
   const { initialFocusRef } = useContext(ModalContext);
 
-  const handleOpenAutoFocus = useCallback(
-    (event: Event) => {
-      if (initialFocusRef?.current) {
-        event.preventDefault();
-        initialFocusRef.current.focus();
-      }
-    },
-    [initialFocusRef],
+  const { dialogProps, titleProps } = useDialog(
+    { 'aria-labelledby': randomId },
+    dialogRef,
   );
 
+  useEffect(() => {
+    if (initialFocusRef?.current) {
+      initialFocusRef.current.focus();
+    }
+  }, [initialFocusRef]);
+
   return (
-    <Dialog.Content
+    <div
+      {...dialogProps}
+      ref={dialogRef}
       className={classNames(
         'eds-modal__content',
         `eds-modal__content--size-${size}`,
         `eds-modal__content--align-${align}`,
         className,
       )}
-      aria-labelledby={randomId}
-      aria-describedby={undefined}
-      onOpenAutoFocus={handleOpenAutoFocus}
       {...rest}
     >
       {title && (
-        <Heading margin="bottom" as="h2" id={randomId}>
+        <Heading margin="bottom" as="h2" id={randomId} {...titleProps}>
           {title}
         </Heading>
       )}
       {children}
-    </Dialog.Content>
+    </div>
   );
 };
