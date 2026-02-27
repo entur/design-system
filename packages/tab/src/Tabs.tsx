@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tabs as ReachTabs } from '@reach/tabs';
+import * as RadixTabs from '@radix-ui/react-tabs';
 import classNames from 'classnames';
 
 export type TabsProps = {
@@ -17,6 +17,28 @@ export type TabsProps = {
   [key: string]: any;
 };
 
-export const Tabs: React.FC<TabsProps> = ({ className, ...rest }) => {
-  return <ReachTabs className={classNames('eds-tabs', className)} {...rest} />;
+export const Tabs: React.FC<TabsProps> = ({
+  className,
+  index,
+  defaultIndex,
+  onChange,
+  as: _as,
+  ...rest
+}) => {
+  const value = index !== undefined ? String(index) : undefined;
+  const defaultValue =
+    defaultIndex !== undefined ? String(defaultIndex) : '0';
+  const onValueChange = onChange
+    ? (val: string) => onChange(Number(val))
+    : undefined;
+
+  return (
+    <RadixTabs.Root
+      className={classNames('eds-tabs', className)}
+      value={value}
+      defaultValue={value === undefined ? defaultValue : undefined}
+      onValueChange={onValueChange}
+      {...rest}
+    />
+  );
 };

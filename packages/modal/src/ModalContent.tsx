@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useCallback, useContext } from 'react';
 import classNames from 'classnames';
-import { DialogContent } from '@reach/dialog';
+import * as Dialog from '@radix-ui/react-dialog';
 import { Heading4, Heading3, Heading2 } from '@entur/typography';
 import { useRandomId } from '@entur/utils';
+
+import { ModalContext } from './ModalContext';
 
 export type ModalContentProps = {
   /** Innholdet i modalen */
@@ -38,8 +40,20 @@ export const ModalContent: React.FC<ModalContentProps> = ({
 }) => {
   const Heading: React.ElementType = headingsMap[size] || Heading2;
   const randomId = useRandomId('eds-modal');
+  const { initialFocusRef } = useContext(ModalContext);
+
+  const handleOpenAutoFocus = useCallback(
+    (event: Event) => {
+      if (initialFocusRef?.current) {
+        event.preventDefault();
+        initialFocusRef.current.focus();
+      }
+    },
+    [initialFocusRef],
+  );
+
   return (
-    <DialogContent
+    <Dialog.Content
       className={classNames(
         'eds-modal__content',
         `eds-modal__content--size-${size}`,
@@ -47,6 +61,8 @@ export const ModalContent: React.FC<ModalContentProps> = ({
         className,
       )}
       aria-labelledby={randomId}
+      aria-describedby={undefined}
+      onOpenAutoFocus={handleOpenAutoFocus}
       {...rest}
     >
       {title && (
@@ -55,6 +71,6 @@ export const ModalContent: React.FC<ModalContentProps> = ({
         </Heading>
       )}
       {children}
-    </DialogContent>
+    </Dialog.Content>
   );
 };
