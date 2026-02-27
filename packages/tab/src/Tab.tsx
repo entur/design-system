@@ -48,11 +48,7 @@ export const Tab: React.FC<TabProps> = ({
         { 'eds-tab--remove-active-line': removeActiveLine },
         className,
       )}
-      onClick={() => {
-        if (!disabled) {
-          onSelect(_tabIndex);
-        }
-      }}
+      onClick={() => onSelect(_tabIndex)}
       {...rest}
     >
       {children}

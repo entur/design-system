@@ -30,6 +30,8 @@ export const ModalOverlay: React.FC<ModalOverlayProps> = ({
 }) => {
   const overlayRef = useRef<HTMLDivElement>(null);
 
+  // OverlayTriggerState interface requires open/toggle/setOpen methods,
+  // but we only need close() since open state is controlled externally
   const state = useMemo<OverlayTriggerState>(
     () => ({
       isOpen: !!open,
