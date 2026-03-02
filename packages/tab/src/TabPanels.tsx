@@ -13,14 +13,16 @@ export type TabPanelsProps = {
 
 export const TabPanels: React.FC<TabPanelsProps> = ({
   className,
-  as: _as,
+  as,
   children,
   ...rest
 }) => {
   const { tabsId } = useContext(TabsContext);
 
+  const Element: React.ElementType = as || 'div';
+
   return (
-    <div className={classNames('eds-tab-panels', className)} {...rest}>
+    <Element className={classNames('eds-tab-panels', className)} {...rest}>
       {React.Children.map(children, (child, idx) =>
         React.isValidElement(child)
           ? React.cloneElement(child, {
@@ -30,6 +32,6 @@ export const TabPanels: React.FC<TabPanelsProps> = ({
             })
           : child,
       )}
-    </div>
+    </Element>
   );
 };

@@ -19,7 +19,7 @@ export type TabPanelProps = {
 
 export const TabPanel: React.FC<TabPanelProps> = ({
   className,
-  as: _as,
+  as,
   _tabIndex = 0,
   _tabId,
   _panelId,
@@ -31,8 +31,10 @@ export const TabPanel: React.FC<TabPanelProps> = ({
 
   if (!isSelected) return null;
 
+  const Element: React.ElementType = as || 'div';
+
   return (
-    <div
+    <Element
       role="tabpanel"
       id={_panelId}
       aria-labelledby={_tabId}
@@ -40,6 +42,6 @@ export const TabPanel: React.FC<TabPanelProps> = ({
       {...rest}
     >
       {children}
-    </div>
+    </Element>
   );
 };
