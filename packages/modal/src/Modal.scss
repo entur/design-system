@@ -1,10 +1,5 @@
 @use '@entur/tokens/dist/styles.scss' as t;
 
-:root {
-  // Tell Reach that we're doing the styling ourselves
-  --reach-dialog: 1;
-}
-
 $modal-animation-duration: t.$timings-medium;
 
 .eds-modal {
