@@ -196,3 +196,65 @@ test('End key moves focus to last tab', () => {
   fireEvent.keyDown(getByRole('tablist'), { key: 'End' });
   expect(document.activeElement).toBe(tabs[2]);
 });
+
+test('Tabs supports as prop', () => {
+  const { container } = render(
+    <Tabs as="section">
+      <TabList>
+        <Tab>Tab 1</Tab>
+      </TabList>
+      <TabPanels>
+        <TabPanel>Panel 1</TabPanel>
+      </TabPanels>
+    </Tabs>,
+  );
+
+  expect(container.querySelector('section')).toBeInTheDocument();
+});
+
+test('TabList supports as prop', () => {
+  const { container } = render(
+    <Tabs>
+      <TabList as="nav">
+        <Tab>Tab 1</Tab>
+      </TabList>
+      <TabPanels>
+        <TabPanel>Panel 1</TabPanel>
+      </TabPanels>
+    </Tabs>,
+  );
+
+  expect(container.querySelector('nav[role="tablist"]')).toBeInTheDocument();
+});
+
+test('TabPanel supports as prop', () => {
+  const { container } = render(
+    <Tabs>
+      <TabList>
+        <Tab>Tab 1</Tab>
+      </TabList>
+      <TabPanels>
+        <TabPanel as="section">Panel 1</TabPanel>
+      </TabPanels>
+    </Tabs>,
+  );
+
+  expect(
+    container.querySelector('section[role="tabpanel"]'),
+  ).toBeInTheDocument();
+});
+
+test('TabPanels supports as prop', () => {
+  const { container } = render(
+    <Tabs>
+      <TabList>
+        <Tab>Tab 1</Tab>
+      </TabList>
+      <TabPanels as="section">
+        <TabPanel>Panel 1</TabPanel>
+      </TabPanels>
+    </Tabs>,
+  );
+
+  expect(container.querySelector('section.eds-tab-panels')).toBeInTheDocument();
+});

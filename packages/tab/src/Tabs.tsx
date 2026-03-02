@@ -24,7 +24,7 @@ export const Tabs: React.FC<TabsProps> = ({
   index,
   defaultIndex,
   onChange,
-  as: _as,
+  as,
   children,
   ...rest
 }) => {
@@ -43,11 +43,13 @@ export const Tabs: React.FC<TabsProps> = ({
     [isControlled, onChange],
   );
 
+  const Element: React.ElementType = as || 'div';
+
   return (
     <TabsContext.Provider value={{ selectedIndex, onSelect, tabsId }}>
-      <div className={classNames('eds-tabs', className)} {...rest}>
+      <Element className={classNames('eds-tabs', className)} {...rest}>
         {children}
-      </div>
+      </Element>
     </TabsContext.Provider>
   );
 };
