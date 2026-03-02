@@ -70,7 +70,7 @@ export const TabList: React.FC<TabListProps> = ({
     >
       {React.Children.map(children, (child, idx) =>
         React.isValidElement(child)
-          ? React.cloneElement(child, {
+          ? React.cloneElement(child as React.ReactElement<any>, {
               _tabIndex: idx,
               _tabId: `${tabsId}-tab-${idx}`,
               _panelId: `${tabsId}-panel-${idx}`,
