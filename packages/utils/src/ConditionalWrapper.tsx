@@ -8,4 +8,4 @@ export const ConditionalWrapper = ({
   condition,
   wrapper,
   children,
-}: ConditionalWrapperType) => (condition ? wrapper(children) : <>{children}</>);
+}: ConditionalWrapperType) => (condition ? wrapper(children) : children);

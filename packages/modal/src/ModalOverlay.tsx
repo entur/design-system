@@ -36,9 +36,9 @@ export const ModalOverlay: React.FC<ModalOverlayProps> = ({
     () => ({
       isOpen: !!open,
       close: () => onDismiss?.(),
-      open: () => {},
-      toggle: () => {},
-      setOpen: () => {},
+      open: () => undefined,
+      toggle: () => undefined,
+      setOpen: () => undefined,
     }),
     [open, onDismiss],
   );

@@ -10,6 +10,6 @@ export type TabsContextValue = {
 // though in practice Tab/TabPanel are always rendered inside Tabs.
 export const TabsContext = React.createContext<TabsContextValue>({
   selectedIndex: 0,
-  onSelect: () => {},
+  onSelect: () => undefined,
   tabsId: '',
 });
