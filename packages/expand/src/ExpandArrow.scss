@@ -2,8 +2,7 @@
 
 .eds-expandable-arrow {
   color: var(--components-expand-expandablepanel-standard-icon);
-  transition: (t.$timings-fast + t.$timings-fast) transform ease-out;
-
+  transition: t.$timings-medium transform ease-out;
   &--open {
     transform: rotate(-180deg);
   }
