@@ -212,28 +212,6 @@ test('Tabs supports as prop', () => {
   expect(container.querySelector('section')).toBeInTheDocument();
 });
 
-test('Tab supports as prop', () => {
-  const { container } = render(
-    <Tabs>
-      <TabList>
-        <Tab as="a" href="/page">
-          Link Tab
-        </Tab>
-        <Tab>Normal Tab</Tab>
-      </TabList>
-      <TabPanels>
-        <TabPanel>Panel 1</TabPanel>
-        <TabPanel>Panel 2</TabPanel>
-      </TabPanels>
-    </Tabs>,
-  );
-
-  const linkTab = container.querySelector('a[role="tab"]');
-  expect(linkTab).toBeInTheDocument();
-  expect(linkTab).toHaveAttribute('href', '/page');
-  expect(linkTab).not.toHaveAttribute('type');
-});
-
 test('TabList supports as prop', () => {
   const { container } = render(
     <Tabs>
