@@ -148,6 +148,79 @@ Instead of using `@react-aria/tabs`, tabs are implemented with native ARIA attri
 
 `@floating-ui` remains the correct choice for tooltips, dropdowns, menus, and popovers.
 
+### What About @digdir/designsystemet-react (Designsystemet.no)?
+
+[Designsystemet.no](https://designsystemet.no) is Norway's national design system from DigDir (Digitaliseringsdirektoratet). It provides React components via `@digdir/designsystemet-react`, including both [Tabs](https://designsystemet.no/no/components/docs/tabs/overview) and [Dialog](https://designsystemet.no/no/components/docs/dialog/overview) components. Here is an evaluation of using these as replacements for our current implementations:
+
+#### Bundle Size Impact
+
+Using `@digdir/designsystemet-react` would bring in these **hard dependencies** (not peer deps):
+
+| Dependency | Size concern | Overlap with Entur? |
+|---|---|---|
+| `@digdir/designsystemet-web` | Custom element definitions for tabs, dialog, etc. | ❌ None |
+| `@digdir/designsystemet-types` | Type definitions | ❌ None |
+| `@navikt/aksel-icons` | NAV's entire icon set | ❌ Entur uses `@entur/icons` |
+| `@radix-ui/react-slot` | Re-introduces Radix UI | ❌ Just removed |
+| `@tanstack/react-virtual` | Virtualization library | ❌ Not currently used |
+| `@floating-ui/react` + `@floating-ui/dom` | Positioning library | ✅ Already used |
+| `clsx` | Class names utility | ❌ Entur uses `classnames` |
+
+Even with tree-shaking, the hard dependencies are all installed. Using just 2 components from `@digdir/designsystemet-react` would pull in NAV's icon library, re-introduce `@radix-ui`, and add a virtualization library — none of which Entur needs.
+
+Additionally, Designsystemet requires global CSS imports:
+```js
+import '@digdir/designsystemet-css';
+import '@digdir/designsystemet-css/theme';
+```
+
+These would conflict with Entur's existing `eds-*` BEM styling system and design tokens from `@entur/tokens`.
+
+#### Technical Conflicts
+
+**CSS/Design language clash**: Designsystemet has its own design tokens, color palette, typography, and spacing system. Entur has its own brand identity with distinct tokens. Running two design systems side-by-side would create visual inconsistency and CSS specificity conflicts.
+
+**Web components in Tabs**: Designsystemet's Tabs uses custom elements (`<ds-tabs>`, `<ds-tab>`, `<ds-tablist>`, `<ds-tabpanel>`) from `@digdir/designsystemet-web`. This introduces:
+- Custom element registration side-effects on import
+- `suppressHydrationWarning` requirements (SSR complexity)
+- Non-standard DOM output that doesn't match Entur's testing patterns
+- Potential conflicts with other custom element registrations
+
+**Dialog uses native `<dialog>`**: Their Dialog wraps the native HTML `<dialog>` element, which is good for standards but has a different mental model than our overlay-based approach. Their Dialog also uses `@radix-ui/react-slot` for the `asChild` pattern.
+
+#### API Mismatch
+
+| Feature | Entur (current) | Designsystemet |
+|---|---|---|
+| **Tab selection** | Index-based (`index={0}`) | Value-based (`value="tab1"`) |
+| **Tab onChange** | `onChange(index: number)` | `onChange(value: string)` |
+| **Modal open/close** | `open` + `onDismiss` props | `open` prop + `ref.close()` or `command` pattern |
+| **Focus management** | `initialFocusRef` prop | `autofocus` attribute |
+| **Tab keyboard nav** | Handled internally | Handled by custom element |
+| **Tab panel wrapper** | `<TabPanels>` component | No wrapper needed |
+| **Modal sizes** | `size="small|medium|large|..."` | `data-placement` attribute |
+
+Adopting Designsystemet's API would require breaking changes to all consumer code for both `@entur/modal` and `@entur/tab`.
+
+#### Maintenance Considerations
+
+- **Two design systems to track**: Entur would need to follow Designsystemet releases, test for regressions, and handle breaking changes from an external team with different release cadences
+- **Not a headless library**: Unlike `@react-aria` (which provides behavior without styling), Designsystemet is a full design system with opinionated visuals. Using individual components from it treats it as a utility library, which is not its intended use
+- **Rapid iteration**: Designsystemet is actively evolving (v1.12.1 as of early 2026). The Tabs component recently moved from React-only to custom elements, showing significant architectural changes between versions
+
+#### Verdict: Not Recommended
+
+`@digdir/designsystemet-react` is excellent for projects that adopt Designsystemet as their **primary** design system (e.g., Norwegian public sector services). However, for Entur's design system:
+
+1. ❌ **Bundle overhead**: Pulls in 7 hard dependencies including NAV icons and @radix-ui
+2. ❌ **CSS conflicts**: Two competing design systems with different tokens and styling approaches
+3. ❌ **API breaking changes**: Different prop patterns would break all consumer code
+4. ❌ **Re-introduces @radix-ui**: Which was just removed to reduce the provider footprint
+5. ❌ **Not a headless library**: It's a complete design system, not a utility to cherry-pick from
+6. ❌ **Web component complexity**: Custom elements add SSR/hydration/testing concerns
+
+The current approach ([@react-aria for Modal](#why-react-aria-for-modal), [native ARIA for Tabs](#why-native-aria-for-tabs)) is better suited because it provides accessible behavior primitives without imposing external design opinions or unnecessary dependencies.
+
 ### Provider Summary
 
 After the migration, the design system uses **3 UI providers**, each for its strengths:
