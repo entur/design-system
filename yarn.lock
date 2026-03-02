@@ -4516,7 +4516,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@codemirror/language@npm:6.11.0, @codemirror/language@npm:^6.0.0, @codemirror/language@npm:^6.6.0":
+"@codemirror/language@npm:6.12.1":
+  version: 6.12.1
+  resolution: "@codemirror/language@npm:6.12.1"
+  dependencies:
+    "@codemirror/state": "npm:^6.0.0"
+    "@codemirror/view": "npm:^6.23.0"
+    "@lezer/common": "npm:^1.5.0"
+    "@lezer/highlight": "npm:^1.0.0"
+    "@lezer/lr": "npm:^1.0.0"
+    style-mod: "npm:^4.0.0"
+  checksum: 10c0/d37e526a839f571f767372c49e28649c4e79a539c73845a74117ee408ad31c29d60a32b5e1bad439637b1456d18154d672eb225e9b4482d3e00eca150461bc6a
+  languageName: node
+  linkType: hard
+
+"@codemirror/language@npm:^6.0.0, @codemirror/language@npm:^6.6.0":
   version: 6.11.0
   resolution: "@codemirror/language@npm:6.11.0"
   dependencies:
@@ -4589,7 +4603,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@codemirror/state@npm:6.5.2, @codemirror/state@npm:^6.0.0, @codemirror/state@npm:^6.1.1, @codemirror/state@npm:^6.4.0, @codemirror/state@npm:^6.5.0, @codemirror/state@npm:^6.5.2":
+"@codemirror/state@npm:6.5.4":
+  version: 6.5.4
+  resolution: "@codemirror/state@npm:6.5.4"
+  dependencies:
+    "@marijn/find-cluster-break": "npm:^1.0.0"
+  checksum: 10c0/8f40e1a22b84752fc44637e586cb3d804f775c0cf9c8083a79eed5cb18fbdfb30b83c112d8b6d819046526d1f9e49bf1198bdca4c4c3427bdf2c657a96df7adf
+  languageName: node
+  linkType: hard
+
+"@codemirror/state@npm:^6.0.0, @codemirror/state@npm:^6.1.1, @codemirror/state@npm:^6.4.0, @codemirror/state@npm:^6.5.0, @codemirror/state@npm:^6.5.2":
   version: 6.5.2
   resolution: "@codemirror/state@npm:6.5.2"
   dependencies:
@@ -4610,7 +4633,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@codemirror/view@npm:6.36.8, @codemirror/view@npm:^6.0.0, @codemirror/view@npm:^6.17.0, @codemirror/view@npm:^6.23.0, @codemirror/view@npm:^6.27.0, @codemirror/view@npm:^6.35.0":
+"@codemirror/view@npm:6.39.15":
+  version: 6.39.15
+  resolution: "@codemirror/view@npm:6.39.15"
+  dependencies:
+    "@codemirror/state": "npm:^6.5.0"
+    crelt: "npm:^1.0.6"
+    style-mod: "npm:^4.1.0"
+    w3c-keyname: "npm:^2.2.4"
+  checksum: 10c0/bdcae5b2c6b86cd20c4aad6dbacb8876c83c3e4976414596477fbd185714ee3649c06b4549804495635d9427aa02316fee7eb085ee188b8a60e0aa67d09b3553
+  languageName: node
+  linkType: hard
+
+"@codemirror/view@npm:^6.0.0, @codemirror/view@npm:^6.17.0, @codemirror/view@npm:^6.23.0, @codemirror/view@npm:^6.27.0, @codemirror/view@npm:^6.35.0":
   version: 6.36.8
   resolution: "@codemirror/view@npm:6.36.8"
   dependencies:
@@ -6125,7 +6160,7 @@ __metadata:
     "@entur/utils": "workspace:^"
     "@internationalized/date": "npm:3.11.0"
     babel-loader: "npm:9.2.1"
-    css-loader: "npm:7.1.3"
+    css-loader: "npm:7.1.4"
     gray-matter: "npm:4.0.3"
     playroom: "npm:0.44.2"
     react: "npm:18.3.1"
@@ -6237,7 +6272,7 @@ __metadata:
     gatsby-transformer-sharp: "npm:5.16.0"
     hex-rgb: "npm:4.3.0"
     markdown-to-jsx: "npm:7.7.13"
-    posthog-js: "npm:1.347.1"
+    posthog-js: "npm:1.352.1"
     react: "npm:18.3.1"
     react-confetti: "npm:6.4.0"
     react-docgen-typescript: "npm:2.4.0"
@@ -10779,19 +10814,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@posthog/core@npm:1.22.0":
-  version: 1.22.0
-  resolution: "@posthog/core@npm:1.22.0"
+"@posthog/core@npm:1.23.1":
+  version: 1.23.1
+  resolution: "@posthog/core@npm:1.23.1"
   dependencies:
     cross-spawn: "npm:^7.0.6"
-  checksum: 10c0/deb4ffefb02801917522466cfe5077ea3cd721734a4166e23e3dc16274e9ca121a40541c905dedd36e880d36057b6cb01f33cde818658f05b6819807b1363aaf
+  checksum: 10c0/ceca5e0e01ef6902da45bc2f4d1d7b68bda48d575bbb8696014785c45a6db940e2cc6dd09e896a0101e98fe1acefcba71cb89b46e57c4956147799c631ccaace
   languageName: node
   linkType: hard
 
-"@posthog/types@npm:1.347.1":
-  version: 1.347.1
-  resolution: "@posthog/types@npm:1.347.1"
-  checksum: 10c0/d62466f4e0eb0fdbafff0d031be2dd13dfc457177415d1a246de64630a7474b584cda2187b7656192117da94233b98110f49be350a3a2b7f05390cf8b9647a95
+"@posthog/types@npm:1.352.1":
+  version: 1.352.1
+  resolution: "@posthog/types@npm:1.352.1"
+  checksum: 10c0/4c2ffe4239b398bc2a33ee41519dbe10f307db2296597464b697c4f23b29a084a311f646220fe64e4497c411e0b6747d95fe5ce2ad2d4c295ab722c5f32ea26f
   languageName: node
   linkType: hard
 
@@ -18962,9 +18997,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"css-loader@npm:7.1.3":
-  version: 7.1.3
-  resolution: "css-loader@npm:7.1.3"
+"css-loader@npm:7.1.4":
+  version: 7.1.4
+  resolution: "css-loader@npm:7.1.4"
   dependencies:
     icss-utils: "npm:^5.1.0"
     postcss: "npm:^8.4.40"
@@ -18975,14 +19010,14 @@ __metadata:
     postcss-value-parser: "npm:^4.2.0"
     semver: "npm:^7.6.3"
   peerDependencies:
-    "@rspack/core": 0.x || 1.x
+    "@rspack/core": 0.x || ^1.0.0 || ^2.0.0-0
     webpack: ^5.27.0
   peerDependenciesMeta:
     "@rspack/core":
       optional: true
     webpack:
       optional: true
-  checksum: 10c0/8743a8f1a0beff371d0fbeae7dbae7b079e546c734e3c936f0c5dc4603a716a576200e9261c934565584cf0e090cca444efb613efa4282ee3fcab81db4c73c7e
+  checksum: 10c0/a3a3a6b564d4fcf978961be8bc6ca06fb3836fc8fbd729ddae4b0b94166a0f5ccf119fb3301a6fecbe90608a8edbfd418bdc644cf053615e6271aa65b3fdc00b
   languageName: node
   linkType: hard
 
@@ -34888,24 +34923,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"posthog-js@npm:1.347.1":
-  version: 1.347.1
-  resolution: "posthog-js@npm:1.347.1"
+"posthog-js@npm:1.352.1":
+  version: 1.352.1
+  resolution: "posthog-js@npm:1.352.1"
   dependencies:
     "@opentelemetry/api": "npm:^1.9.0"
     "@opentelemetry/api-logs": "npm:^0.208.0"
     "@opentelemetry/exporter-logs-otlp-http": "npm:^0.208.0"
     "@opentelemetry/resources": "npm:^2.2.0"
     "@opentelemetry/sdk-logs": "npm:^0.208.0"
-    "@posthog/core": "npm:1.22.0"
-    "@posthog/types": "npm:1.347.1"
+    "@posthog/core": "npm:1.23.1"
+    "@posthog/types": "npm:1.352.1"
     core-js: "npm:^3.38.1"
     dompurify: "npm:^3.3.1"
     fflate: "npm:^0.4.8"
     preact: "npm:^10.28.2"
     query-selector-shadow-dom: "npm:^1.0.1"
     web-vitals: "npm:^5.1.0"
-  checksum: 10c0/3c55a54edabe6af75068af5d42cc2979b82e1695f6c8cd0660e0de0a36678f0aea9541f1c10890b11cca23775ed3c7a016293d501a0e010a201569bf29d0db6c
+  checksum: 10c0/f849251f4460d5155e7ab7c8c672aca756c2bd0e16058c4dbc5989ed84cc34299b80009b7ae5ce297342d45dc48be4e774e34f042bd99efb3043429d80dfa63b
   languageName: node
   linkType: hard
 
@@ -39411,10 +39446,10 @@ __metadata:
     "@codemirror/lang-javascript": "npm:^6.2.4"
     "@codemirror/lang-json": "npm:^6.0.2"
     "@codemirror/lang-sass": "npm:^6.0.2"
-    "@codemirror/language": "npm:6.11.0"
+    "@codemirror/language": "npm:6.12.1"
     "@codemirror/legacy-modes": "npm:^6.5.2"
-    "@codemirror/state": "npm:6.5.2"
-    "@codemirror/view": "npm:6.36.8"
+    "@codemirror/state": "npm:6.5.4"
+    "@codemirror/view": "npm:6.39.15"
     "@entur/icons": "workspace:^"
     "@sanity/eslint-config-studio": "npm:5.0.2"
     "@sanity/ui": "npm:3.1.11"
@@ -39426,7 +39461,7 @@ __metadata:
     react-dom: "npm:18.3.1"
     sanity: "npm:4.19.0"
     sanity-plugin-media: "npm:4.1.1"
-    styled-components: "npm:6.3.9"
+    styled-components: "npm:6.3.11"
     typescript: "npm:5.9.3"
   languageName: unknown
   linkType: soft
@@ -39477,9 +39512,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"styled-components@npm:6.3.9":
-  version: 6.3.9
-  resolution: "styled-components@npm:6.3.9"
+"styled-components@npm:6.3.11":
+  version: 6.3.11
+  resolution: "styled-components@npm:6.3.11"
   dependencies:
     "@emotion/is-prop-valid": "npm:1.4.0"
     "@emotion/unitless": "npm:0.10.0"
@@ -39496,7 +39531,7 @@ __metadata:
   peerDependenciesMeta:
     react-dom:
       optional: true
-  checksum: 10c0/3c9c71255442e95fdb1feeba40fab615cd810836262b3637ef71aa9c5193d3b5d98d172d20a133a9d58c95512e29a4a6c5543e554835319a539212c28e380656
+  checksum: 10c0/26e9e6205b9cebb3db56cd1ffcd43d8b7cb0d2801cdd6cea7d361b11ac32a8de24a88279e6138816c6d922099dccd6a08a0a6aeacf08f2281095151169640595
   languageName: node
   linkType: hard
 
