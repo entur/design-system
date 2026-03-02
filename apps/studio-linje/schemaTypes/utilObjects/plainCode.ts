@@ -1,4 +1,5 @@
 import { defineField, defineType } from 'sanity';
+import CodeInput from '../../components/CodeInput';
 
 export const plainCode = defineType({
   name: 'plainCode',
@@ -9,8 +10,9 @@ export const plainCode = defineType({
       name: 'code',
       title: 'Innhold',
       type: 'text',
-      rows: 6,
       description: 'Kode som skal vises (JSX, CSS, etc.)',
+      components: { input: CodeInput },
+      options: { languageSiblingField: 'language' } as any,
     }),
     defineField({
       name: 'language',

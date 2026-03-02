@@ -4,6 +4,7 @@ import { Heading3 } from '@entur/typography';
 import { CodeBlock } from '@components/Codeblock/CodeBlock';
 import Playground from '@components/Playground/Playground';
 import { InitialAdvancedProp } from '@components/Playground/playground-utils';
+import './CodeExampleResolver.scss';
 
 // Import all props files dynamically
 import * as buttonProps from '@data/props/button-props';
@@ -140,7 +141,7 @@ export const CodeExampleResolver = ({ value }: CodeExampleProps) => {
       : plainCode?.language || codeLanguage || 'jsx';
 
   return (
-    <div style={{ margin: '2rem 0' }}>
+    <div className="code-example">
       {title && codeDisplayType !== 'playground' && (
         <Heading3>{title}</Heading3>
       )}
@@ -165,6 +166,7 @@ export const CodeExampleResolver = ({ value }: CodeExampleProps) => {
           language={resolvedLanguage}
           wrapLongLines
           copyable={plainCodeCopyable}
+          hideLineNumbers
         >
           {resolvedPlainCode}
         </CodeBlock>

@@ -25,10 +25,7 @@
   }
 
   &__heading {
-    margin-right: 0;
-    @include for-desktop {
-      margin-right: t.$space-medium;
-    }
+    margin-right: t.$space-medium;
   }
 
   &__actions {
