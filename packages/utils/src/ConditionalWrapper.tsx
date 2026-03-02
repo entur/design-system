@@ -1,5 +1,3 @@
-import React from 'react';
-
 type ConditionalWrapperType = {
   condition: boolean;
   wrapper: any;
