@@ -192,15 +192,12 @@ export const structure = (S: any, { documentStore }: any) =>
                 ['For designere', 'For utviklere', 'Introduksjon'],
               ),
 
-              // Mønster needs custom filters because some documents
-              // were created with "Monster" (without ø)
               createCategorySection(
                 S,
                 documentStore,
                 ['page', 'componentDoc'],
                 'Mønster',
                 ['Mønster', 'Maler'],
-                'category == "Mønster" || category == "Monster"',
               ),
 
               createCategorySection(

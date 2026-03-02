@@ -13,7 +13,6 @@
 
 import React, { useEffect, useMemo, useRef } from 'react';
 import { type TextInputProps, set, unset, useFormValue } from 'sanity';
-import { Card, Stack, Text } from '@sanity/ui';
 
 // CodeMirror core
 import {
@@ -113,7 +112,7 @@ type CodeInputOptions = {
 };
 
 export default function CodeInput(props: TextInputProps) {
-  const { value, onChange, path, schemaType } = props;
+  const { value, onChange, readOnly, path, schemaType } = props;
   const options = (schemaType.options || {}) as CodeInputOptions;
 
   // Resolve the language — either a fixed value from options, or read
@@ -127,7 +126,8 @@ export default function CodeInput(props: TextInputProps) {
     [options.languageSiblingField, path],
   );
   const siblingLanguage = useFormValue(siblingPath) as string | undefined;
-  const language = options.language || siblingLanguage || 'jsx';
+  const rawLanguage = options.language || siblingLanguage || 'jsx';
+  const language = rawLanguage.trim().toLowerCase() || 'jsx';
 
   // Keep a ref to onChange so the editor's update listener always calls the
   // latest version without needing to recreate the editor on every render.
@@ -149,6 +149,8 @@ export default function CodeInput(props: TextInputProps) {
       history(),
       keymap.of([...defaultKeymap, ...historyKeymap, indentWithTab]),
       EditorView.lineWrapping,
+      EditorView.editable.of(!readOnly),
+      EditorState.readOnly.of(!!readOnly),
       getLanguageExtension(language),
       editorTheme,
       EditorView.updateListener.of(update => {
@@ -158,7 +160,7 @@ export default function CodeInput(props: TextInputProps) {
         }
       }),
     ],
-    [language],
+    [language, readOnly],
   );
 
   // Mount / unmount the editor. Recreates when language changes.
