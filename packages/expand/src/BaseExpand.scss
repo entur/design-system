@@ -1,6 +1,16 @@
 @use '@entur/tokens/dist/styles.scss' as t;
 
-// Used to override react-collapse's default transition
-.ReactCollapse--collapse {
-  transition: height t.$timings-slow ease-out;
+.eds-base-expand {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows t.$timings-medium ease-out;
+
+  &--open {
+    grid-template-rows: 1fr;
+  }
+
+  &__inner {
+    overflow: hidden;
+    min-height: 0;
+  }
 }

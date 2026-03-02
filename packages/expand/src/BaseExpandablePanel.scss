@@ -69,13 +69,8 @@
     padding: t.$space-default t.$space-default t.$space-default t.$space-large;
   }
 
-  // Used to override react-collapse's default transition
-  .ReactCollapse--collapse {
-    transition: height t.$timings-slow ease-out;
-  }
-
   &--disable-animation {
-    .ReactCollapse--collapse {
+    .eds-base-expand {
       transition: none;
     }
   }

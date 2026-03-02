@@ -2,11 +2,6 @@ import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 import { Accordion, AccordionItem } from '.';
 
-// This sucks, but there is some black magic in react-collapse that doesn't play well with jest tests. Please try fixing this
-jest.mock('react-collapse', () => ({
-  UnmountClosed: ({ children, isOpened }: any) => (isOpened ? children : null),
-}));
-
 test('renders a single accordion item', async () => {
   const { getByTestId, queryByText } = render(
     <Accordion>
