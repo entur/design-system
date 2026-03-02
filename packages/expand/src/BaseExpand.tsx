@@ -13,6 +13,7 @@ type BaseExpandProps = {
 };
 export const BaseExpand: React.FC<BaseExpandProps> = ({ open, ...rest }) => {
   return (
+    // @ts-expect-error react-collapse types are built against React 17
     <UnmountClosed isOpened={open}>
       <div {...rest} />
     </UnmountClosed>
