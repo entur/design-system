@@ -53,6 +53,32 @@ This enables the automatic JSX runtime, so you no longer need `import React from
 
 ## Breaking Changes
 
+### Quick Summary: Will There Be Breaking API Changes?
+
+**No breaking API changes** for consumers using the documented API. The migration is entirely internal:
+
+| Component | Public API changed? | Props changed? | Behavior changed? |
+|---|---|---|---|
+| `Modal` | ❌ No | ❌ No | ❌ No |
+| `ModalOverlay` | ❌ No | ❌ No | ❌ No |
+| `ModalContent` | ⚠️ `as` prop removed | ❌ No | ❌ No |
+| `Drawer` | ❌ No | ❌ No | ❌ No |
+| `Tabs` | ⚠️ `as` prop removed | ❌ No | ❌ No |
+| `TabList` | ⚠️ `as` prop removed | ❌ No | ❌ No |
+| `Tab` | ⚠️ `as` prop removed | ❌ No | ❌ No |
+| `TabPanel` | ⚠️ `as` prop removed | ❌ No | ❌ No |
+| `TabPanels` | ⚠️ `as` prop removed | ❌ No | ❌ No |
+
+The only breaking change is the **removal of the `as` prop**, which allowed rendering as a different HTML element or component. This prop is still accepted (no TypeScript error) but is silently ignored. If you were using `as`, use standard composition patterns instead:
+
+```tsx
+// Before (no longer works):
+<Tab as="a" href="/page">Link Tab</Tab>
+
+// After (use composition):
+<Tab><a href="/page">Link Tab</a></Tab>
+```
+
 ### Peer Dependencies
 
 All packages now require:
@@ -64,12 +90,22 @@ All packages now require:
 
 The internal implementation of `@entur/modal` has been migrated from `@reach/dialog` (deprecated, unmaintained) to `@react-aria/dialog` + `@react-aria/overlays` (actively maintained, React 18 compatible). See [Provider Choice Analysis](#provider-choice-analysis) for reasoning.
 
-**What changed:**
+**What changed internally:**
 
-- The public API (`Modal`, `ModalOverlay`, `ModalContent`, `Drawer`) remains the same
-- Props (`open`, `onDismiss`, `initialFocusRef`, `size`, `title`, etc.) are unchanged
-- The `as` prop on `ModalContent` is no longer supported. If you were using it, please use standard composition patterns instead
-- Focus management and keyboard interactions (Escape to close) work the same way
+- `@reach/dialog` → `@react-aria/dialog` + `@react-aria/overlays` + `@react-aria/focus`
+- Focus trapping now uses `FocusScope` from `@react-aria/focus` (previously `@reach/dialog`'s built-in)
+- Overlay management now uses `useModalOverlay` + `OverlayContainer` (previously `@reach/dialog`'s `DialogOverlay`)
+
+**What is preserved for consumers:**
+
+- ✅ `Modal` component with `open`, `onDismiss`, `size`, `title`, `closeLabel`, `closeOnClickOutside`, `initialFocusRef`, `align` props
+- ✅ `ModalOverlay` component with `open`, `onDismiss`, `initialFocusRef` props
+- ✅ `ModalContent` component with `size`, `title`, `align` props
+- ✅ `Drawer` component with `open`, `onDismiss`, `title`, `closeLabel`, `contrast`, `overlay` props
+- ✅ Focus trapping and restoration
+- ✅ Escape key to close
+- ✅ Click-outside-to-close (when `closeOnClickOutside` is true)
+- ✅ All CSS class names (`eds-modal__*`, `eds-drawer__*`)
 
 **What consumers need to do:** No changes required if you are using the documented API.
 
@@ -77,12 +113,22 @@ The internal implementation of `@entur/modal` has been migrated from `@reach/dia
 
 The internal implementation of `@entur/tab` has been migrated from `@reach/tabs` (deprecated, unmaintained) to a native ARIA tab implementation with no third-party dependency. See [Provider Choice Analysis](#provider-choice-analysis) for reasoning.
 
-**What changed:**
+**What changed internally:**
 
-- The public API (`Tabs`, `TabList`, `Tab`, `TabPanel`, `TabPanels`) remains the same
-- Props (`index`, `defaultIndex`, `onChange`, `disabled`, `width`, etc.) are unchanged
-- The `as` prop on Tab components is no longer supported. If you were using it, please use standard composition patterns instead
-- Keyboard navigation (Arrow Left/Right, Home, End) and ARIA attributes work the same way
+- `@reach/tabs` → Native ARIA implementation (zero dependencies)
+- Tab state management now uses React Context (`TabsContext`) instead of Reach's internal state
+- ARIA attributes (`role`, `aria-selected`, `aria-controls`, `aria-labelledby`) are applied directly
+- Keyboard navigation (ArrowLeft, ArrowRight, Home, End) is implemented natively in `TabList`
+
+**What is preserved for consumers:**
+
+- ✅ `Tabs` component with `index`, `defaultIndex`, `onChange` props (controlled and uncontrolled)
+- ✅ `TabList` component with `width` prop
+- ✅ `Tab` component with `disabled` prop
+- ✅ `TabPanel` and `TabPanels` components
+- ✅ Keyboard navigation (Arrow Left/Right, Home, End)
+- ✅ ARIA roles and attributes (tablist, tab, tabpanel, aria-selected, aria-controls)
+- ✅ All CSS class names (`eds-tabs`, `eds-tab`, `eds-tab-list`, `eds-tab-panel`, `eds-tab-panels`)
 
 **What consumers need to do:** No changes required if you are using the documented API.
 
