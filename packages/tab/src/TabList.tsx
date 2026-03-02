@@ -22,42 +22,39 @@ export const TabList: React.FC<TabListProps> = ({
   const { tabsId } = useContext(TabsContext);
   const tabListRef = useRef<HTMLDivElement>(null);
 
-  const handleKeyDown = useCallback(
-    (e: React.KeyboardEvent) => {
-      const tabs = tabListRef.current?.querySelectorAll<HTMLElement>(
-        '[role="tab"]:not([disabled])',
-      );
-      if (!tabs || tabs.length === 0) return;
+  const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
+    const tabs = tabListRef.current?.querySelectorAll<HTMLElement>(
+      '[role="tab"]:not([disabled])',
+    );
+    if (!tabs || tabs.length === 0) return;
 
-      const currentIndex = Array.from(tabs).findIndex(
-        tab => tab === document.activeElement,
-      );
-      if (currentIndex === -1) return;
+    const currentIndex = Array.from(tabs).findIndex(
+      tab => tab === document.activeElement,
+    );
+    if (currentIndex === -1) return;
 
-      let nextIndex: number | undefined;
-      switch (e.key) {
-        case 'ArrowRight':
-          nextIndex = (currentIndex + 1) % tabs.length;
-          break;
-        case 'ArrowLeft':
-          nextIndex = (currentIndex - 1 + tabs.length) % tabs.length;
-          break;
-        case 'Home':
-          nextIndex = 0;
-          break;
-        case 'End':
-          nextIndex = tabs.length - 1;
-          break;
-      }
+    let nextIndex: number | undefined;
+    switch (e.key) {
+      case 'ArrowRight':
+        nextIndex = (currentIndex + 1) % tabs.length;
+        break;
+      case 'ArrowLeft':
+        nextIndex = (currentIndex - 1 + tabs.length) % tabs.length;
+        break;
+      case 'Home':
+        nextIndex = 0;
+        break;
+      case 'End':
+        nextIndex = tabs.length - 1;
+        break;
+    }
 
-      if (nextIndex !== undefined) {
-        e.preventDefault();
-        tabs[nextIndex].focus();
-        tabs[nextIndex].click();
-      }
-    },
-    [],
-  );
+    if (nextIndex !== undefined) {
+      e.preventDefault();
+      tabs[nextIndex].focus();
+      tabs[nextIndex].click();
+    }
+  }, []);
 
   const Element: React.ElementType = as || 'div';
 
@@ -73,7 +70,7 @@ export const TabList: React.FC<TabListProps> = ({
     >
       {React.Children.map(children, (child, idx) =>
         React.isValidElement(child)
-          ? React.cloneElement(child, {
+          ? React.cloneElement(child as React.ReactElement<any>, {
               _tabIndex: idx,
               _tabId: `${tabsId}-tab-${idx}`,
               _panelId: `${tabsId}-panel-${idx}`,
