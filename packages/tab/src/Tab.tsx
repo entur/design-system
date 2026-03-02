@@ -38,7 +38,7 @@ export const Tab: React.FC<TabProps> = ({
   return (
     <Element
       role="tab"
-      type={as ? undefined : 'button'}
+      type={Element === 'button' ? 'button' : undefined}
       id={_tabId}
       aria-selected={isSelected}
       aria-controls={_panelId}
