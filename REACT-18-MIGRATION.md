@@ -61,23 +61,15 @@ This enables the automatic JSX runtime, so you no longer need `import React from
 |---|---|---|---|
 | `Modal` | ❌ No | ❌ No | ❌ No |
 | `ModalOverlay` | ❌ No | ❌ No | ❌ No |
-| `ModalContent` | ⚠️ `as` prop removed | ❌ No | ❌ No |
+| `ModalContent` | ❌ No | ❌ No | ❌ No |
 | `Drawer` | ❌ No | ❌ No | ❌ No |
-| `Tabs` | ⚠️ `as` prop removed | ❌ No | ❌ No |
-| `TabList` | ⚠️ `as` prop removed | ❌ No | ❌ No |
-| `Tab` | ⚠️ `as` prop removed | ❌ No | ❌ No |
-| `TabPanel` | ⚠️ `as` prop removed | ❌ No | ❌ No |
-| `TabPanels` | ⚠️ `as` prop removed | ❌ No | ❌ No |
+| `Tabs` | ❌ No | ❌ No | ❌ No |
+| `TabList` | ❌ No | ❌ No | ❌ No |
+| `Tab` | ❌ No | ❌ No | ❌ No |
+| `TabPanel` | ❌ No | ❌ No | ❌ No |
+| `TabPanels` | ❌ No | ❌ No | ❌ No |
 
-The only breaking change is the **removal of the `as` prop**, which allowed rendering as a different HTML element or component. This prop is still accepted (no TypeScript error) but is silently ignored. If you were using `as`, use standard composition patterns instead:
-
-```tsx
-// Before (no longer works):
-<Tab as="a" href="/page">Link Tab</Tab>
-
-// After (use composition):
-<Tab><a href="/page">Link Tab</a></Tab>
-```
+All existing props — including the `as` prop for polymorphic rendering — continue to work as before.
 
 ### Peer Dependencies
 
@@ -122,10 +114,10 @@ The internal implementation of `@entur/tab` has been migrated from `@reach/tabs`
 
 **What is preserved for consumers:**
 
-- ✅ `Tabs` component with `index`, `defaultIndex`, `onChange` props (controlled and uncontrolled)
-- ✅ `TabList` component with `width` prop
-- ✅ `Tab` component with `disabled` prop
-- ✅ `TabPanel` and `TabPanels` components
+- ✅ `Tabs` component with `index`, `defaultIndex`, `onChange`, `as` props (controlled and uncontrolled)
+- ✅ `TabList` component with `width`, `as` props
+- ✅ `Tab` component with `disabled`, `as` props
+- ✅ `TabPanel` and `TabPanels` components with `as` prop
 - ✅ Keyboard navigation (Arrow Left/Right, Home, End)
 - ✅ ARIA roles and attributes (tablist, tab, tabpanel, aria-selected, aria-controls)
 - ✅ All CSS class names (`eds-tabs`, `eds-tab`, `eds-tab-list`, `eds-tab-panel`, `eds-tab-panels`)
