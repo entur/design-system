@@ -23,7 +23,7 @@ export type TabProps = {
 export const Tab: React.FC<TabProps> = ({
   className,
   removeActiveLine = false,
-  as: _as,
+  as,
   disabled = false,
   _tabIndex = 0,
   _tabId,
@@ -33,11 +33,12 @@ export const Tab: React.FC<TabProps> = ({
 }) => {
   const { selectedIndex, onSelect } = useContext(TabsContext);
   const isSelected = selectedIndex === _tabIndex;
+  const Element: React.ElementType = as || 'button';
 
   return (
-    <button
+    <Element
       role="tab"
-      type="button"
+      type={as ? undefined : 'button'}
       id={_tabId}
       aria-selected={isSelected}
       aria-controls={_panelId}
@@ -52,6 +53,6 @@ export const Tab: React.FC<TabProps> = ({
       {...rest}
     >
       {children}
-    </button>
+    </Element>
   );
 };

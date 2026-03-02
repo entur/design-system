@@ -15,7 +15,7 @@ export type TabListProps = {
 export const TabList: React.FC<TabListProps> = ({
   className,
   width,
-  as: _as,
+  as,
   children,
   ...rest
 }) => {
@@ -56,8 +56,10 @@ export const TabList: React.FC<TabListProps> = ({
     }
   }, []);
 
+  const Element: React.ElementType = as || 'div';
+
   return (
-    <div
+    <Element
       role="tablist"
       ref={tabListRef}
       className={classNames('eds-tab-list', className, {
@@ -75,6 +77,6 @@ export const TabList: React.FC<TabListProps> = ({
             })
           : child,
       )}
-    </div>
+    </Element>
   );
 };
