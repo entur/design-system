@@ -24,7 +24,11 @@ test('renders a collapsible sidenavigation, and closes it and the SideNavigation
   );
 
   expect(getByText('First item')).toBeInTheDocument();
-  expect(queryByText('Group item')).not.toBeInTheDocument();
+  // Group is closed — content is in DOM but hidden via aria-hidden
+  expect(getByText('Group item').closest('.eds-base-expand')).toHaveAttribute(
+    'aria-hidden',
+    'true',
+  );
   expect(queryByText('Grouptrigger')).toBeInTheDocument();
   fireEvent.click(getByText('Grouptrigger'));
   act(() => {
@@ -42,7 +46,7 @@ test('renders a collapsible sidenavigation, and closes it and the SideNavigation
 });
 
 test('renders a collapsible sidenavigation, closes it, and opens through the SideNavigationGroup', async () => {
-  const { queryByRole, queryByText, getAllByRole } = render(
+  const { queryByRole, queryByText, getAllByRole, getByText } = render(
     <CollapsibleSideNavigation>
       <SideNavigationItem href="#first">First item</SideNavigationItem>
       <SideNavigationGroup title="Grouptrigger">
@@ -50,13 +54,23 @@ test('renders a collapsible sidenavigation, closes it, and opens through the Sid
       </SideNavigationGroup>
     </CollapsibleSideNavigation>,
   );
-  const groupItem = queryByText('Group item');
+  // Flush initial useShowDelayedLabel timeouts so they don't race with collapse timeouts
+  act(() => {
+    jest.runAllTimers();
+  });
+  // Group is closed — content is in DOM but hidden via aria-hidden
+  expect(getByText('Group item').closest('.eds-base-expand')).toHaveAttribute(
+    'aria-hidden',
+    'true',
+  );
+
   fireEvent.click(getAllByRole('button')[1]);
   act(() => {
     jest.advanceTimersByTime(OPEN_ANIMATION_TIME);
   });
+  // After sidebar collapse, text is removed from SideNavigationItems by showLabel
   await waitFor(() => {
-    expect(groupItem).not.toBeInTheDocument();
+    expect(queryByText('Group item')).not.toBeInTheDocument();
   });
 
   fireEvent.click(getAllByRole('button')[0]);
