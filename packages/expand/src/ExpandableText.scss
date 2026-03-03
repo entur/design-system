@@ -32,3 +32,9 @@
     }
   }
 }
+
+.eds-expandable-text--disable-animation {
+  .eds-base-expand {
+    transition: none;
+  }
+}
