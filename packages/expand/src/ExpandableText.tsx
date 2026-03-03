@@ -35,6 +35,10 @@ export type ExpandableTextProps = {
    */
   titleElement?: 'Heading5' | 'Paragraph' | 'SubParagraph';
   disableAnimation?: boolean;
+  /** Avmonter innholdet når det lukkes. Når false (standard), holdes innholdet montert og skjules med CSS.
+   * @default false
+   */
+  unmountOnClose?: boolean;
   [key: string]: any;
 };
 
@@ -42,14 +46,26 @@ export const ExpandableText: React.FC<ExpandableTextProps> = ({
   title,
   children,
   defaultOpen = false,
+  open: controlledOpen,
+  onToggle,
   contentStyle,
   titleElement = 'Heading5',
   disableAnimation,
+  unmountOnClose = false,
   className,
   ...rest
 }) => {
   const randomId = useRandomId('eds-expandable-text');
-  const [isOpen, setOpen] = React.useState(defaultOpen);
+  const [internalOpen, setInternalOpen] = React.useState(defaultOpen);
+  const isControlled = controlledOpen !== undefined;
+  const isOpen = isControlled ? controlledOpen : internalOpen;
+
+  const handleToggle = () => {
+    if (!isControlled) {
+      setInternalOpen(prev => !prev);
+    }
+    onToggle?.();
+  };
 
   const Element: React.ElementType = React.useMemo(
     () => GetTypographyComponent(titleElement),
@@ -61,13 +77,13 @@ export const ExpandableText: React.FC<ExpandableTextProps> = ({
       className={classNames('eds-expandable-text', className, {
         'eds-expandable-text--disable-animation': disableAnimation,
       })}
+      {...rest}
     >
       <ExpandableTextButton
         open={isOpen}
-        onToggle={() => setOpen(prev => !prev)}
-        aria-controls={isOpen ? randomId : undefined}
+        onToggle={handleToggle}
+        aria-controls={isOpen || !unmountOnClose ? randomId : undefined}
         as={Element}
-        {...rest}
       >
         {title}
       </ExpandableTextButton>
@@ -76,7 +92,7 @@ export const ExpandableText: React.FC<ExpandableTextProps> = ({
         id={randomId}
         open={isOpen}
         style={contentStyle}
-        {...rest}
+        unmountOnClose={unmountOnClose}
       >
         {children}
       </BaseExpand>
