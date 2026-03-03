@@ -1,10 +1,14 @@
 import React from 'react';
-import { fireEvent, render } from '@testing-library/react';
+import { render, fireEvent, act } from '@testing-library/react';
 
-import { SideNavigation, SideNavigationGroup, SideNavigationItem } from '.';
+import { SideNavigation, SideNavigationItem, SideNavigationGroup } from '.';
+
+jest.useFakeTimers();
+
+afterEach(() => jest.clearAllTimers());
 
 test('renders a nice looking menu group', () => {
-  const { getByRole, queryByText, getByText } = render(
+  const { getByRole, getByText } = render(
     <SideNavigationGroup title="My group">
       <SideNavigation>
         <SideNavigationItem>An item</SideNavigationItem>
@@ -13,24 +17,42 @@ test('renders a nice looking menu group', () => {
   );
   const trigger = getByRole('button');
   expect(getByRole('button')).toHaveTextContent('My group');
-  expect(queryByText('An item')).not.toBeInTheDocument();
+  // Content is in DOM but hidden via aria-hidden when group is closed
+  expect(getByText('An item').closest('.eds-base-expand')).toHaveAttribute(
+    'aria-hidden',
+    'true',
+  );
 
   fireEvent.click(trigger);
+  act(() => {
+    jest.runAllTimers();
+  });
 
   expect(getByText('An item')).toBeInTheDocument();
+  expect(getByText('An item').closest('.eds-base-expand')).not.toHaveAttribute(
+    'aria-hidden',
+  );
 });
 
 test('works as expected when controlled', () => {
   const spy = jest.fn();
-  const { getByRole, getByText, queryByText, rerender } = render(
+  const { getByRole, getByText, rerender } = render(
     <SideNavigationGroup title="My group" open={true} onToggle={spy}>
       <SideNavigation>
         <SideNavigationItem>An item</SideNavigationItem>
       </SideNavigation>
     </SideNavigationGroup>,
   );
+
+  act(() => {
+    jest.runAllTimers();
+  });
+
   const trigger = getByRole('button');
   expect(getByText('An item')).toBeInTheDocument();
+  expect(getByText('An item').closest('.eds-base-expand')).not.toHaveAttribute(
+    'aria-hidden',
+  );
 
   fireEvent.click(trigger);
 
@@ -44,5 +66,9 @@ test('works as expected when controlled', () => {
     </SideNavigationGroup>,
   );
 
-  expect(queryByText('An item')).not.toBeInTheDocument();
+  // Content stays in DOM but is hidden via aria-hidden
+  expect(getByText('An item').closest('.eds-base-expand')).toHaveAttribute(
+    'aria-hidden',
+    'true',
+  );
 });
