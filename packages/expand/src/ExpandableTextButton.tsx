@@ -2,7 +2,7 @@ import React from 'react';
 import { Heading5 } from '@entur/typography';
 import { ExpandArrow } from './ExpandArrow';
 
-export type ExandableTextButtonProps = {
+export type ExpandableTextButtonProps = {
   children: React.ReactNode;
   /** Prop for om innholdet er åpent */
   open?: boolean;
@@ -15,7 +15,7 @@ export type ExandableTextButtonProps = {
   [key: string]: any;
 };
 
-export const ExpandableTextButton: React.FC<ExandableTextButtonProps> = ({
+export const ExpandableTextButton: React.FC<ExpandableTextButtonProps> = ({
   children,
   open,
   onToggle,
