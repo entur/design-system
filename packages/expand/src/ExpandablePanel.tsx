@@ -11,27 +11,46 @@ export type ExpandablePanelProps = {
    * @default false
    */
   defaultOpen?: boolean;
+  /** Prop for om innholdet er åpent. Brukes hvis du vil kontrollere ExpandablePanel, sammen med onToggle */
+  open?: boolean;
   /** Funksjonen som styrer åpningen av ExpandablePanel */
   onToggle?: () => void;
   /** Styling som sendes til innholdet av ExpandablePanel */
   contentStyle?: CSSProperties;
+  /** Avmonter innholdet når det lukkes. Når false (standard), holdes innholdet montert og skjules med CSS.
+   * @default false
+   */
+  unmountOnClose?: boolean;
   [key: string]: any;
 };
 export const ExpandablePanel: React.FC<ExpandablePanelProps> = ({
   defaultOpen = false,
+  open: controlledOpen,
+  onToggle,
   contentStyle,
+  unmountOnClose,
   ...rest
 }) => {
   const randomId = useRandomId('eds-expandable');
 
-  const [isOpen, setOpen] = React.useState(defaultOpen);
+  const [internalOpen, setInternalOpen] = React.useState(defaultOpen);
+  const isControlled = controlledOpen !== undefined;
+  const isOpen = isControlled ? controlledOpen : internalOpen;
+
+  const handleToggle = () => {
+    if (!isControlled) {
+      setInternalOpen(prev => !prev);
+    }
+    onToggle?.();
+  };
 
   return (
     <BaseExpandablePanel
       id={randomId}
       open={isOpen}
-      onToggle={() => setOpen(prev => !prev)}
+      onToggle={handleToggle}
       contentStyle={contentStyle}
+      unmountOnClose={unmountOnClose}
       {...rest}
     />
   );
