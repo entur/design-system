@@ -15,12 +15,17 @@ export type AccordionItemProps = {
   /** Styling som sendes til innholdet av AccordionItem */
   contentStyle?: CSSProperties;
   disableAnimation?: boolean;
+  /** Avmonter innholdet når det lukkes. Når false (standard), holdes innholdet montert og skjules med CSS.
+   * @default false
+   */
+  unmountOnClose?: boolean;
   [key: string]: any;
 };
 export const AccordionItem: React.FC<AccordionItemProps> = ({
   defaultOpen = false,
   id: overrideId,
   contentStyle,
+  unmountOnClose,
   ...rest
 }) => {
   const randomId = useRandomId('eds-accordion-item');
@@ -34,6 +39,7 @@ export const AccordionItem: React.FC<AccordionItemProps> = ({
       id={id}
       onToggle={toggle}
       open={isOpen}
+      unmountOnClose={unmountOnClose}
     />
   );
 };

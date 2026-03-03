@@ -21,6 +21,10 @@ type BaseExpandablePanelProps = {
   /** Styling som sendes til innholdet av BaseExpandablePanel */
   contentStyle?: CSSProperties;
   disableAnimation?: boolean;
+  /** Avmonter innholdet når det lukkes. Når false (standard), holdes innholdet montert og skjules med CSS.
+   * @default false
+   */
+  unmountOnClose?: boolean;
   [key: string]: any;
 };
 export const BaseExpandablePanel: React.FC<BaseExpandablePanelProps> = ({
@@ -32,6 +36,7 @@ export const BaseExpandablePanel: React.FC<BaseExpandablePanelProps> = ({
   onToggle,
   contentStyle,
   disableAnimation,
+  unmountOnClose = false,
   ...rest
 }) => {
   return (
@@ -45,7 +50,7 @@ export const BaseExpandablePanel: React.FC<BaseExpandablePanelProps> = ({
         className="eds-expandable-panel__trigger"
         onClick={onToggle}
         aria-expanded={open}
-        aria-controls={open ? id : undefined}
+        aria-controls={open || !unmountOnClose ? id : undefined}
         {...rest}
       >
         <span className="eds-expandable-panel__grid">
@@ -62,6 +67,7 @@ export const BaseExpandablePanel: React.FC<BaseExpandablePanelProps> = ({
         id={id}
         open={open}
         style={contentStyle}
+        unmountOnClose={unmountOnClose}
       >
         {children}
       </BaseExpand>
