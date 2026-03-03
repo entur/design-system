@@ -15,15 +15,13 @@ export type ExpandableTextButtonProps = {
   [key: string]: any;
 };
 
-export const ExpandableTextButton: React.FC<ExpandableTextButtonProps> = ({
-  children,
-  open,
-  onToggle,
-  as: Component = Heading5,
-  ...rest
-}) => {
+export const ExpandableTextButton = React.forwardRef<
+  HTMLButtonElement,
+  ExpandableTextButtonProps
+>(({ children, open, onToggle, as: Component = Heading5, ...rest }, ref) => {
   return (
     <button
+      ref={ref}
       className="eds-expandable-text__trigger"
       aria-expanded={open}
       type="button"
@@ -34,4 +32,4 @@ export const ExpandableTextButton: React.FC<ExpandableTextButtonProps> = ({
       <ExpandArrow open={open} className="eds-expandable-text__arrow" />
     </button>
   );
-};
+});

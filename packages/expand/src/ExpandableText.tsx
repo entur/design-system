@@ -15,7 +15,10 @@ import {
 
 import './ExpandableText.scss';
 
-export type ExpandableTextProps = {
+export type ExpandableTextProps = Omit<
+  React.HTMLAttributes<HTMLDivElement>,
+  'title' | 'onToggle'
+> & {
   /** Teksten som skal "vises" */
   title: React.ReactNode;
   /** Innholdet som skal vises under linken */
@@ -33,81 +36,91 @@ export type ExpandableTextProps = {
   /** Hvilket typografisk element tittelen er
    * @default "Heading5"
    */
-  titleElement?: 'Heading5' | 'Paragraph' | 'SubParagraph';
+  titleElement?:
+    | 'Heading2'
+    | 'Heading3'
+    | 'Heading4'
+    | 'Heading5'
+    | 'Paragraph'
+    | 'SubParagraph';
+  /** Deaktiver åpne/lukke-animasjonen */
   disableAnimation?: boolean;
   /** Avmonter innholdet når det lukkes. Når false (standard), holdes innholdet montert og skjules med CSS.
    * @default false
    */
   unmountOnClose?: boolean;
-  [key: string]: any;
 };
 
-export const ExpandableText: React.FC<ExpandableTextProps> = ({
-  title,
-  children,
-  defaultOpen = false,
-  open: controlledOpen,
-  onToggle,
-  contentStyle,
-  titleElement = 'Heading5',
-  disableAnimation,
-  unmountOnClose = false,
-  className,
-  ...rest
-}) => {
-  const randomId = useRandomId('eds-expandable-text');
-  const [internalOpen, setInternalOpen] = React.useState(defaultOpen);
-  const isControlled = controlledOpen !== undefined;
-  const isOpen = isControlled ? controlledOpen : internalOpen;
+export const ExpandableText = React.forwardRef<
+  HTMLDivElement,
+  ExpandableTextProps
+>(
+  (
+    {
+      title,
+      children,
+      defaultOpen = false,
+      open: controlledOpen,
+      onToggle,
+      contentStyle,
+      titleElement = 'Heading5',
+      disableAnimation,
+      unmountOnClose = false,
+      className,
+      ...rest
+    },
+    ref,
+  ) => {
+    const randomId = useRandomId('eds-expandable-text');
+    const [internalOpen, setInternalOpen] =
+      React.useState<boolean>(defaultOpen);
+    const isControlled = controlledOpen !== undefined;
+    const isOpen = isControlled ? controlledOpen : internalOpen;
 
-  const handleToggle = () => {
-    if (!isControlled) {
-      setInternalOpen(prev => !prev);
-    }
-    onToggle?.();
-  };
+    const handleToggle = () => {
+      if (!isControlled) {
+        setInternalOpen(prev => !prev);
+      }
+      onToggle?.();
+    };
 
-  const Element: React.ElementType = React.useMemo(
-    () => GetTypographyComponent(titleElement),
-    [titleElement],
-  );
+    const Element: React.ElementType = React.useMemo(
+      () => GetTypographyComponent(titleElement),
+      [titleElement],
+    );
 
-  return (
-    <div
-      className={classNames('eds-expandable-text', className, {
-        'eds-expandable-text--disable-animation': disableAnimation,
-      })}
-      {...rest}
-    >
-      <ExpandableTextButton
-        open={isOpen}
-        onToggle={handleToggle}
-        aria-controls={isOpen || !unmountOnClose ? randomId : undefined}
-        as={Element}
+    return (
+      <div
+        ref={ref}
+        className={classNames('eds-expandable-text', className, {
+          'eds-expandable-text--disable-animation': disableAnimation,
+        })}
+        {...rest}
       >
-        {title}
-      </ExpandableTextButton>
-      <BaseExpand
-        className="eds-expandable-text__content"
-        id={randomId}
-        open={isOpen}
-        style={contentStyle}
-        unmountOnClose={unmountOnClose}
-      >
-        {children}
-      </BaseExpand>
-    </div>
-  );
-};
+        <ExpandableTextButton
+          open={isOpen}
+          onToggle={handleToggle}
+          aria-controls={isOpen || !unmountOnClose ? randomId : undefined}
+          as={Element}
+        >
+          {title}
+        </ExpandableTextButton>
+        <BaseExpand
+          className="eds-expandable-text__content"
+          id={randomId}
+          open={isOpen}
+          style={contentStyle}
+          unmountOnClose={unmountOnClose}
+        >
+          {children}
+        </BaseExpand>
+      </div>
+    );
+  },
+);
 
 function GetTypographyComponent(
-  element:
-    | 'Heading5'
-    | 'Heading4'
-    | 'Heading3'
-    | 'Heading2'
-    | 'Paragraph'
-    | 'SubParagraph',
+  element: NonNullable<ExpandableTextProps['titleElement']>,
 ) {
   switch (element) {
     case 'Heading5':
