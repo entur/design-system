@@ -1,0 +1,1290 @@
+// Undersøkelse 2022–2025 page styles
+// Responsive breakpoints: 1272px → 960px → 648px → 480px
+
+$bp-desktop: 1272px;
+$bp-tablet: 960px;
+$bp-mobile: 648px;
+$bp-small: 480px;
+
+// Satisfaction segment colors
+:root {
+  --survey-color-very-satisfied: #4daf79;
+  --survey-color-satisfied: #6ec6e6;
+  --survey-color-somewhat: #f0c75e;
+  --survey-color-dissatisfied: #e57373;
+}
+
+// ─── Header override for survey page ────────────────────────
+.undersokelse-wrapper .top-navigation {
+  background: var(--basecolors-frame-contrast);
+  border-bottom-color: transparent;
+}
+
+// ─── Reusable inner card ────────────────────────────────────
+.survey-card {
+  background: var(--basecolors-frame-contrastalt);
+  border-radius: 12px;
+  padding: 24px;
+
+  @media (max-width: $bp-mobile) {
+    padding: 16px;
+  }
+}
+
+// ─── Page layout ─────────────────────────────────────────────
+.survey-page {
+  $self: &;
+  // This variable is set via JavaScript in undersokelse.tsx
+  --background-height: 200rem;
+  $background-width: 400rem;
+  // Non-parallax transform to position background SVGs (based on frontpage reduced-motion fallback)
+  // All background elements use the same transform so traveller dots align with line paths
+  $bg-transform: translateX(-110rem) translateY(-55rem);
+
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background-color: var(--basecolors-frame-contrast);
+  font-family: var(--font-family-nationale), sans-serif;
+
+  &__background {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+
+    // Animation container for traveller dots
+    &__animation {
+      height: var(--background-height);
+      width: $background-width;
+      position: absolute;
+      top: 0;
+      left: 50vw;
+      transform: $bg-transform;
+
+      &__traveller {
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 50%;
+        position: relative;
+        top: 64.7rem;
+        left: 26.5rem;
+        background: var(--basecolors-shape-walk-contrast);
+        border: solid 2px var(--basecolors-stroke-contrast);
+        opacity: 0;
+        offset-distance: 0%;
+
+        @media (prefers-reduced-motion) {
+          animation: none !important;
+          display: none !important;
+        }
+
+        #{$self}--loaded & {
+          animation: survey-traveller-move 40s infinite ease-in-out;
+          animation-delay: 1.5s;
+          transition: opacity 1s ease-in;
+        }
+
+        &.first {
+          offset-path: path(
+            'M41.3,16.1h294.2c17.7,0,32,14.3,32,32v181.8c0,17.7,14.3,32,32,32l965.4-2c12.8,0,25,5.1,34,14.1l67.8,67.9c8.6,6.4,19.2,14,32.4,14h508.5c31.8,0,32,27.7,32,32v704.4'
+          );
+        }
+
+        &.second {
+          offset-path: path(
+            'M 592.6 279.7 v 233.8 c 0 17.7 14.3 32 32 32 h 221.4 l 51.9 1 h 215.4 c 17.7 0 32 14.3 32 32 v 182.8 c 0 17.7 14.3 32 32 32 h 834.9 l 59.6 0.5 h 759'
+          );
+          animation-direction: reverse;
+          animation-delay: 20s;
+        }
+      }
+    }
+  }
+}
+
+// Shared styles for background SVG elements (same approach as frontpage)
+.survey-bg-lines,
+.survey-bg-topographic-top,
+.survey-bg-topographic-bottom {
+  display: block;
+  height: var(--background-height);
+  width: 400rem;
+  position: absolute;
+  top: 0;
+  left: 50vw;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  overflow: visible;
+}
+
+.survey-bg-lines,
+.survey-bg-topographic-top,
+.survey-bg-topographic-bottom {
+  transform: translateX(-110rem) translateY(-55rem);
+}
+
+// Background element opacity – fade in after JS sets --loaded
+.survey-bg-lines {
+  .animated {
+    transition:
+      filter 0.3s cubic-bezier(0.17, 0.89, 0, -1.23),
+      stroke 0.3s cubic-bezier(0.17, 0.89, 0, -1.23);
+  }
+
+  .survey-page--loaded & {
+    opacity: 0.1;
+  }
+}
+
+.survey-bg-topographic-top {
+  .survey-page--loaded & {
+    opacity: 0.1;
+  }
+}
+
+.survey-bg-topographic-bottom {
+  .survey-page--loaded & {
+    opacity: 0.1;
+  }
+}
+
+// Traveller dot animation
+@keyframes survey-traveller-move {
+  5% {
+    opacity: 0.4;
+  }
+
+  99% {
+    opacity: 0.4;
+  }
+
+  100% {
+    offset-distance: 100%;
+    opacity: 0;
+  }
+}
+
+.survey-page__main {
+  position: relative;
+  z-index: 1;
+  max-width: $bp-desktop;
+  margin: 0 auto;
+  padding: 0 24px;
+
+  @media (max-width: $bp-tablet) {
+    padding: 0 16px;
+  }
+
+  @media (max-width: $bp-mobile) {
+    padding: 0 12px;
+  }
+}
+
+// ─── Section navigation ─────────────────────────────────────
+.survey-nav {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 12px 0 4px;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media (max-width: $bp-mobile) {
+    gap: 16px;
+  }
+
+  &__link {
+    font-size: var(--font-size-body-s);
+    color: var(--basecolors-text-subduedalt);
+    text-decoration: none;
+    white-space: nowrap;
+    padding: 4px 0;
+    transition: color 0.2s;
+
+    &:hover,
+    &:focus-visible {
+      color: var(--basecolors-text-light);
+    }
+  }
+}
+
+// ─── Header / Hero ───────────────────────────────────────────
+.survey-hero {
+  padding: 48px 0 40px;
+
+  @media (max-width: $bp-mobile) {
+    padding: 32px 0 24px;
+  }
+
+  &__title {
+    font-size: var(--font-size-heading-2xl);
+    font-weight: var(--font-weight-heading);
+    line-height: var(--font-line-height-heading-2xl);
+    color: var(--basecolors-text-light);
+    margin: 0 0 16px;
+
+    @media (max-width: $bp-tablet) {
+      font-size: var(--font-size-heading-xl);
+      line-height: var(--font-line-height-heading-xl);
+    }
+
+    @media (max-width: $bp-mobile) {
+      font-size: var(--font-size-heading-lg);
+      line-height: var(--font-line-height-heading-lg);
+    }
+  }
+
+  &__subtitle {
+    font-size: var(--font-size-body-lg);
+    line-height: var(--font-line-height-body-lg);
+    font-weight: var(--font-weight-body);
+    color: var(--basecolors-text-subduedalt);
+    max-width: 720px;
+    margin: 0;
+
+    @media (max-width: $bp-mobile) {
+      font-size: var(--font-size-body-m);
+      line-height: var(--font-line-height-body-m);
+    }
+  }
+}
+
+// ─── Nøkkeltall strip ────────────────────────────────────────
+.nokkeltall {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  margin-bottom: 64px;
+
+  @media (max-width: $bp-tablet) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: $bp-mobile) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: $bp-small) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// ─── DataCard ────────────────────────────────────────────────
+.data-card {
+  background: var(--basecolors-frame-contrastalt);
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 4px;
+
+  &__value {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--basecolors-text-light);
+    line-height: 1.2;
+  }
+
+  &__label {
+    font-size: var(--font-size-body-xs);
+    line-height: var(--font-line-height-body-xs);
+    color: var(--basecolors-text-subduedalt);
+  }
+
+  &__sublabel {
+    font-size: var(--font-size-body-xs);
+    line-height: var(--font-line-height-body-xs);
+    color: var(--basecolors-text-subduedalt);
+    opacity: 0.7;
+  }
+
+  &__change {
+    font-size: var(--font-size-body-xs);
+    line-height: 1;
+    padding: 0 8px;
+    height: 20px;
+    border-radius: 4px;
+    margin-top: 4px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+
+    .eds-icon {
+      position: static;
+    }
+
+    &--up {
+      color: var(--components-layout-badge-success-contrast-text);
+      background: var(--components-layout-badge-success-contrast-fill);
+    }
+
+    &--down {
+      color: var(--components-layout-badge-warning-contrast-text);
+      background: var(--components-layout-badge-warning-contrast-fill);
+    }
+
+    &--neutral {
+      color: var(--basecolors-text-accent);
+      background: var(--contrast-lavender);
+    }
+  }
+
+  &--small {
+    padding: 12px 16px;
+  }
+
+  &__value--small {
+    font-size: 28px;
+  }
+}
+
+// ─── SurveySection ───────────────────────────────────────────
+.survey-section {
+  padding: 40px 0;
+  margin-bottom: 32px;
+  scroll-margin-top: 56px;
+
+  @media (max-width: $bp-mobile) {
+    padding: 24px 0;
+  }
+
+  &__header {
+    margin-bottom: 8px;
+  }
+
+  &__title {
+    font-size: var(--font-size-heading-xl);
+    line-height: var(--font-line-height-heading-xl);
+    font-weight: var(--font-weight-heading);
+    color: var(--basecolors-text-light);
+    margin: 0;
+
+    @media (max-width: $bp-mobile) {
+      font-size: var(--font-size-heading-m);
+      line-height: var(--font-line-height-heading-m);
+    }
+  }
+
+  &__subtitle {
+    font-size: var(--font-size-body-s);
+    line-height: var(--font-line-height-body-s);
+    color: var(--basecolors-text-subduedalt);
+    margin: 0 0 24px;
+  }
+
+  &__content {
+    margin-top: 24px;
+  }
+}
+
+// ─── Oppsummering columns ────────────────────────────────────
+.oppsummering {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+
+  @media (max-width: $bp-mobile) {
+    grid-template-columns: 1fr;
+  }
+
+  &__icon {
+    display: block;
+    margin-bottom: 12px;
+    color: var(--basecolors-text-accent);
+  }
+
+  &__column {
+    border-radius: 12px;
+    padding: 24px;
+
+    @media (max-width: $bp-mobile) {
+      padding: 16px;
+    }
+
+    &--styrker {
+      background: var(--components-alert-alertbox-success-contrast-filldefault);
+    }
+
+    &--forbedringsomrader {
+      background: var(--components-alert-alertbox-warning-contrast-filldefault);
+    }
+  }
+
+  &__heading {
+    font-size: var(--font-size-heading-lg);
+    line-height: var(--font-line-height-heading-lg);
+    font-weight: var(--font-weight-heading);
+    color: var(--basecolors-text-accent);
+    margin: 0 0 20px;
+
+    @media (max-width: $bp-mobile) {
+      font-size: var(--font-size-heading-m);
+      line-height: var(--font-line-height-heading-m);
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__item {
+    font-size: var(--font-size-body-s);
+    line-height: var(--font-line-height-body-s);
+    color: var(--basecolors-text-accent);
+  }
+
+  &__item-heading {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+
+  &__item-text {
+    display: block;
+    color: var(--basecolors-text-accent);
+  }
+}
+
+// ─── Respondentprofil ────────────────────────────────────────
+.respondent-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 32px;
+
+  @media (max-width: $bp-mobile) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .data-card {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .data-card__label {
+    order: -1;
+  }
+}
+
+.respondent-interpretation {
+  font-size: var(--font-size-body-s);
+  line-height: var(--font-line-height-body-s);
+  color: var(--basecolors-text-subduedalt);
+  margin-top: 24px;
+}
+
+.charts-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+
+  @media (max-width: $bp-mobile) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// ─── HorizontalBarChart ──────────────────────────────────────
+.bar-chart {
+  &__title {
+    font-size: var(--font-size-heading-s);
+    line-height: var(--font-line-height-heading-s);
+    font-weight: var(--font-weight-heading);
+    color: var(--basecolors-text-light);
+    margin: 0 0 16px;
+
+    @media (max-width: $bp-mobile) {
+      font-size: var(--font-size-body-m);
+      line-height: var(--font-line-height-body-m);
+    }
+  }
+
+  &__bars {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: 180px 1fr auto;
+    align-items: center;
+    gap: 12px;
+
+    @media (max-width: $bp-small) {
+      grid-template-columns: 120px 1fr auto;
+    }
+  }
+
+  &__label {
+    font-size: var(--font-size-body-s);
+    color: var(--basecolors-text-light);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__track {
+    height: 24px;
+    background: rgb(255 255 255 / 8%);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  &__fill {
+    height: 100%;
+    background: var(--contrast-azure);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 8px;
+    min-width: 28px;
+    transition: width 0.5s ease;
+  }
+
+  &__value {
+    font-size: 11px;
+    color: var(--basecolors-text-accent);
+    font-weight: 600;
+  }
+
+  &__percent {
+    font-size: var(--font-size-body-s);
+    font-weight: var(--font-weight-heading);
+    color: var(--basecolors-text-light);
+    min-width: 40px;
+    text-align: right;
+  }
+}
+
+// ─── StackedBar (satisfaction) ───────────────────────────────
+.stacked-bar {
+  margin-bottom: 16px;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 6px;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  &__label {
+    font-size: var(--font-size-body-s);
+    font-weight: var(--font-weight-body);
+    color: var(--basecolors-text-light);
+  }
+
+  &__users {
+    font-size: var(--font-size-body-xs);
+    color: var(--basecolors-text-subduedalt);
+  }
+
+  &__track {
+    display: flex;
+    height: 28px;
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 2px;
+  }
+
+  &__segment {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+    transition: width 0.5s ease;
+  }
+
+  &__segment-value {
+    font-size: 11px;
+    font-weight: 600;
+    color: #1a1a2e;
+  }
+}
+
+.stacked-bar-legend {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: var(--font-size-body-xs);
+    color: var(--basecolors-text-subduedalt);
+  }
+
+  &__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+}
+
+// ─── Tilfredshet layout (matching Figma) ─────────────────────
+.tilfredshet-bars-card {
+  @extend .survey-card;
+  margin-bottom: 24px;
+}
+
+.tilfredshet-bottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+
+  @media (max-width: $bp-mobile) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// ─── Total score highlight ───────────────────────────────────
+.total-score {
+  @extend .survey-card;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+
+  @media (max-width: $bp-mobile) {
+    gap: 16px;
+  }
+
+  &__big {
+    font-size: 64px;
+    font-weight: 700;
+    color: var(--basecolors-text-light);
+    line-height: 1;
+
+    @media (max-width: $bp-mobile) {
+      font-size: 48px;
+    }
+  }
+
+  &__meta {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__subtitle {
+    font-size: var(--font-size-body-s);
+    line-height: var(--font-line-height-body-s);
+    color: var(--basecolors-text-subduedalt);
+  }
+
+  &__detail {
+    font-size: var(--font-size-body-s);
+    line-height: var(--font-line-height-body-s);
+    color: var(--basecolors-text-light);
+  }
+}
+
+// ─── Distribution bars ───────────────────────────────────────
+.distribution {
+  @extend .survey-card;
+
+  &__title {
+    font-size: var(--font-size-heading-s);
+    line-height: var(--font-line-height-heading-s);
+    font-weight: var(--font-weight-heading);
+    color: var(--basecolors-text-light);
+    margin: 0 0 16px;
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: 100px 1fr 50px;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+
+    @media (max-width: $bp-small) {
+      grid-template-columns: 80px 1fr 40px;
+    }
+  }
+
+  &__label {
+    font-size: var(--font-size-body-s);
+    color: var(--basecolors-text-light);
+  }
+
+  &__track {
+    height: 20px;
+    background: rgb(255 255 255 / 8%);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  &__fill {
+    height: 100%;
+    background: var(--contrast-azure);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 6px;
+    transition: width 0.5s ease;
+  }
+
+  &__fill-value {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--basecolors-text-accent);
+  }
+
+  &__percent {
+    font-size: var(--font-size-body-s);
+    font-weight: var(--font-weight-heading);
+    color: var(--basecolors-text-light);
+    text-align: right;
+  }
+}
+
+// ─── SurveyTable ─────────────────────────────────────────────
+.survey-table {
+  @extend .survey-card;
+  margin-bottom: 24px;
+
+  &__title {
+    font-size: var(--font-size-heading-s);
+    line-height: var(--font-line-height-heading-s);
+    font-weight: var(--font-weight-heading);
+    color: var(--basecolors-text-light);
+    margin: 0 0 12px;
+
+    @media (max-width: $bp-mobile) {
+      font-size: var(--font-size-body-m);
+      line-height: var(--font-line-height-body-m);
+    }
+  }
+
+  &__wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--font-size-body-s);
+  }
+
+  &__cell {
+    padding: 10px 16px;
+    text-align: left;
+    color: var(--basecolors-text-light);
+    border-bottom: 1px solid rgb(255 255 255 / 10%);
+    white-space: nowrap;
+
+    @media (max-width: $bp-small) {
+      padding: 8px 10px;
+    }
+  }
+
+  &__header-cell {
+    padding: 10px 16px;
+    text-align: left;
+    border-bottom: 1px solid rgb(255 255 255 / 10%);
+    white-space: nowrap;
+    font-weight: var(--font-weight-heading);
+    color: var(--basecolors-text-subduedalt);
+    font-size: var(--font-size-body-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+
+    @media (max-width: $bp-small) {
+      padding: 8px 10px;
+    }
+  }
+
+  &__label {
+    font-weight: 500;
+  }
+
+  &__trend {
+    font-size: 12px;
+    color: var(--basecolors-text-subduedalt);
+  }
+
+  &__trend-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    color: var(--components-layout-badge-success-contrast-text);
+    background: var(--components-layout-badge-success-contrast-fill);
+
+    &--stable {
+      color: var(--components-layout-badge-neutral-contrast-text);
+      background: var(--components-layout-badge-neutral-contrast-fill);
+    }
+
+    &--down {
+      color: var(--components-layout-badge-warning-contrast-text);
+      background: var(--components-layout-badge-warning-contrast-fill);
+    }
+
+    &--variable {
+      color: var(--components-layout-badge-information-contrast-text);
+      background: var(--components-layout-badge-information-contrast-fill);
+    }
+  }
+}
+
+// ─── Trend bar chart (year-over-year bars) ──────────────────
+.trend-bar {
+  @extend .survey-card;
+  margin-bottom: 24px;
+
+  &__title {
+    font-size: var(--font-size-heading-s);
+    line-height: var(--font-line-height-heading-s);
+    font-weight: var(--font-weight-heading);
+    color: var(--basecolors-text-light);
+    margin: 0 0 16px;
+  }
+
+  &__rows {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: 40px 1fr auto;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &__year {
+    font-size: var(--font-size-body-s);
+    color: var(--basecolors-text-light);
+  }
+
+  &__track {
+    height: 6px;
+    background: rgb(255 255 255 / 8%);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  &__fill {
+    height: 100%;
+    background: var(--contrast-azure);
+    border-radius: 3px;
+    transition: width 0.5s ease;
+  }
+
+  &__value {
+    font-size: var(--font-size-body-s);
+    font-weight: var(--font-weight-heading);
+    color: var(--basecolors-text-light);
+    min-width: 48px;
+    text-align: right;
+  }
+}
+
+// ─── Verdi grid ──────────────────────────────────────────────
+.verdi-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+
+  @media (max-width: $bp-mobile) {
+    grid-template-columns: 1fr;
+  }
+
+  > .survey-card {
+    // Each card inside the verdi grid
+  }
+}
+
+.time-savings-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  &__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: var(--font-size-body-s);
+    line-height: var(--font-line-height-body-s);
+    color: var(--basecolors-text-light);
+  }
+
+  &__count {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--basecolors-text-accent);
+    background: var(--contrast-lavender);
+    border-radius: 4px;
+    padding: 2px 6px;
+    flex-shrink: 0;
+    min-width: 36px;
+    text-align: center;
+  }
+}
+
+// ─── Contact donut-style ─────────────────────────────────────
+.contact-split {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+  justify-content: center;
+  margin: 16px 0;
+  flex-wrap: wrap;
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  &__percent {
+    font-size: 38px;
+    font-weight: 700;
+    color: var(--basecolors-text-light);
+    line-height: 1;
+
+    &--jungle {
+      color: var(--contrast-jungle);
+    }
+
+    &--coral {
+      color: var(--contrast-coral);
+    }
+  }
+
+  &__label {
+    font-size: var(--font-size-body-xs);
+    color: var(--basecolors-text-subduedalt);
+    margin-top: 4px;
+  }
+}
+
+.trend-note {
+  font-size: var(--font-size-body-s);
+  line-height: var(--font-line-height-body-s);
+  color: var(--basecolors-text-subduedalt);
+  margin: 12px 0;
+  font-style: italic;
+}
+
+// ─── Kommunikasjon layout ────────────────────────────────────
+.komm-grid-top {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 24px;
+
+  @media (max-width: $bp-mobile) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.komm-grid-middle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 24px;
+
+  @media (max-width: $bp-mobile) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// ─── FeedbackList ────────────────────────────────────────────
+.feedback-list {
+  @extend .survey-card;
+  background: var(--basecolors-frame-contrastalt);
+
+  &__title {
+    font-size: var(--font-size-heading-s);
+    line-height: var(--font-line-height-heading-s);
+    font-weight: var(--font-weight-heading);
+    color: var(--basecolors-text-light);
+    margin: 0 0 16px;
+  }
+
+  // 3-column quote grid matching Figma
+  &__quotes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+
+    @media (max-width: $bp-tablet) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: $bp-mobile) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__quote {
+    padding: 16px;
+    background: var(--basecolors-frame-contrast);
+    border-radius: 8px;
+    border-left: 8px solid var(--basecolors-stroke-subdued);
+  }
+
+  &__quote-text {
+    font-size: var(--font-size-body-s);
+    line-height: var(--font-line-height-body-s);
+    color: var(--basecolors-text-light);
+    margin: 0 0 6px;
+    font-style: italic;
+  }
+
+  &__quote-source {
+    font-size: var(--font-size-body-xs);
+    color: var(--basecolors-text-subduedalt);
+  }
+
+  // Horizontal issue rows matching Figma
+  &__issues {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__issue {
+    display: flex;
+    gap: 12px;
+    align-items: baseline;
+    padding: 10px 16px;
+    background: rgb(255 255 255 / 5%);
+    border-radius: 8px;
+
+    @media (max-width: $bp-mobile) {
+      flex-wrap: wrap;
+      padding: 10px 12px;
+    }
+  }
+
+  &__issue-count {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--components-layout-badge-primary-contrast-text);
+    background: var(--components-layout-badge-primary-contrast-fill);
+    border-radius: 4px;
+    padding: 4px 10px;
+    flex-shrink: 0;
+    min-width: 40px;
+    text-align: center;
+  }
+
+  &__issue-content {
+    font-size: var(--font-size-body-s);
+    line-height: var(--font-line-height-body-s);
+    color: var(--basecolors-text-light);
+  }
+
+  &__issue-title {
+    display: inline;
+    font-weight: 700;
+    margin-right: 8px;
+  }
+
+  &__issue-description {
+    display: inline;
+    color: var(--basecolors-text-subduedalt);
+  }
+}
+
+// ─── ImprovementCard ─────────────────────────────────────────
+.improvement-card {
+  @extend .survey-card;
+  margin-bottom: 16px;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+
+  &__number {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--contrast-lavender);
+    border-radius: 8px;
+    font-size: var(--font-size-body-m);
+    font-weight: 700;
+    color: var(--basecolors-text-accent);
+    flex-shrink: 0;
+  }
+
+  &__title {
+    font-size: var(--font-size-heading-s);
+    line-height: var(--font-line-height-heading-s);
+    font-weight: var(--font-weight-heading);
+    color: var(--basecolors-text-light);
+    margin: 0;
+    flex: 1;
+
+    @media (max-width: $bp-mobile) {
+      font-size: var(--font-size-body-m);
+      line-height: var(--font-line-height-body-m);
+    }
+  }
+
+  &__badge {
+    font-size: var(--font-size-body-xs);
+    font-weight: var(--font-weight-heading);
+    padding: 2px 10px;
+    border-radius: 4px;
+    flex-shrink: 0;
+
+    &--high {
+      color: var(--components-layout-badge-negative-contrast-text);
+      background: var(--components-layout-badge-negative-contrast-fill);
+    }
+
+    &--medium {
+      color: var(--components-layout-badge-warning-contrast-text);
+      background: var(--components-layout-badge-warning-contrast-fill);
+    }
+
+    &--low {
+      color: var(--components-layout-badge-information-contrast-text);
+      background: var(--components-layout-badge-information-contrast-fill);
+    }
+  }
+
+  &__description {
+    font-size: var(--font-size-body-s);
+    line-height: var(--font-line-height-body-s);
+    color: var(--basecolors-text-subduedalt);
+    margin: 0 0 12px;
+  }
+
+  // Chip/pill style actions matching Figma
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__action-item {
+    font-size: var(--font-size-body-xs);
+    line-height: var(--font-line-height-body-xs);
+    color: var(--components-layout-badge-neutral-contrast-text);
+    background: var(--components-layout-badge-neutral-contrast-fill);
+    border: none;
+    border-radius: 4px;
+    padding: 0 8px;
+    max-height: 16px;
+    display: inline-flex;
+    align-items: center;
+
+    &--primary {
+      color: var(--components-layout-badge-neutral-contrast-text);
+      background: var(--components-layout-badge-neutral-contrast-fill);
+      border-color: transparent;
+      font-weight: 600;
+    }
+  }
+}
+
+// ─── Konklusjon ──────────────────────────────────────────────
+.konklusjon-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+
+  @media (max-width: $bp-mobile) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.konklusjon-card {
+  @extend .survey-card;
+
+  &__title {
+    font-size: var(--font-size-heading-s);
+    line-height: var(--font-line-height-heading-s);
+    font-weight: var(--font-weight-heading);
+    margin: 0 0 10px;
+
+    @media (max-width: $bp-mobile) {
+      font-size: var(--font-size-body-m);
+      line-height: var(--font-line-height-body-m);
+    }
+
+    &--green {
+      color: var(--survey-color-very-satisfied);
+    }
+
+    &--yellow {
+      color: var(--survey-color-somewhat);
+    }
+
+    &--pink {
+      color: #e88de3;
+    }
+  }
+
+  &__description {
+    font-size: var(--font-size-body-s);
+    line-height: var(--font-line-height-body-s);
+    color: var(--basecolors-text-subduedalt);
+    margin: 0;
+  }
+}
+
+// ─── Subsection dividers ─────────────────────────────────────
+.survey-subsection {
+  @extend .survey-card;
+
+  &__title {
+    font-size: var(--font-size-heading-s);
+    line-height: var(--font-line-height-heading-s);
+    font-weight: var(--font-weight-heading);
+    color: var(--basecolors-text-light);
+    margin: 0 0 16px;
+
+    @media (max-width: $bp-mobile) {
+      font-size: var(--font-size-body-m);
+      line-height: var(--font-line-height-body-m);
+    }
+  }
+}
+
+// ─── Note callout ────────────────────────────────────────────
+.survey-note {
+  font-size: var(--font-size-body-s);
+  line-height: var(--font-line-height-body-s);
+  color: var(--basecolors-text-subduedalt);
+  padding: 12px 16px;
+  background: rgb(255 255 255 / 5%);
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-style: italic;
+}

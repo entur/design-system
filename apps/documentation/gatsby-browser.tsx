@@ -42,6 +42,7 @@ export const wrapPageElement: GatsbyBrowser['wrapPageElement'] = ({
   const children = <ConsentProvider>{element}</ConsentProvider>;
   if (props.location.pathname === '/') return <>{children}</>;
   if (props.location.pathname === '/stand') return <>{children}</>;
+  if (props.location.pathname === '/undersokelse') return <>{children}</>;
   const disableToc = Boolean(props.pageContext?.isComponentDoc);
   return (
     <DocLayout {...props} disableToc={disableToc}>
