@@ -1,19 +1,42 @@
 import React from 'react';
-import { fireEvent, render } from '@testing-library/react';
+import { act, fireEvent, render } from '@testing-library/react';
 
 import { ExpandableText } from '.';
 
-test('Expandable is rendered, clicked, and opened', () => {
+jest.useFakeTimers();
+
+afterEach(() => {
+  jest.clearAllTimers();
+});
+
+afterAll(() => {
+  jest.useRealTimers();
+});
+
+test('ExpandableText is rendered, clicked, and opened', () => {
   const { queryByText, getByRole } = render(
     <ExpandableText title="Some title">expanded content</ExpandableText>,
   );
 
-  expect(queryByText('expanded content')).not.toBeInTheDocument();
+  // Default unmountOnClose=false: content in DOM but hidden from a11y
+  const content = queryByText('expanded content');
+  expect(content).toBeInTheDocument();
+  expect(content!.closest('.eds-base-expand')).toHaveAttribute(
+    'aria-hidden',
+    'true',
+  );
+
   fireEvent.click(getByRole('button'));
-  expect(queryByText('expanded content')).toBeInTheDocument();
+  act(() => {
+    jest.runAllTimers();
+  });
+
+  expect(content!.closest('.eds-base-expand')).not.toHaveAttribute(
+    'aria-hidden',
+  );
 });
 
-test('You can even control them by passing open and onToggle props', () => {
+test('You can control ExpandableText by passing open and onToggle props', () => {
   const spy = jest.fn();
   const { queryByText, getByRole, rerender } = render(
     <ExpandableText title="Some title" onToggle={spy} open={false}>
@@ -21,17 +44,76 @@ test('You can even control them by passing open and onToggle props', () => {
     </ExpandableText>,
   );
 
-  expect(queryByText('expanded content')).not.toBeInTheDocument();
+  const content = queryByText('expanded content');
+  expect(content).toBeInTheDocument();
+  expect(content!.closest('.eds-base-expand')).toHaveAttribute(
+    'aria-hidden',
+    'true',
+  );
   expect(spy).not.toHaveBeenCalled();
 
   fireEvent.click(getByRole('button'));
 
+  // In controlled mode, clicking calls onToggle but doesn't change state
   expect(spy).toHaveBeenCalled();
+  expect(content!.closest('.eds-base-expand')).toHaveAttribute(
+    'aria-hidden',
+    'true',
+  );
+
+  // Parent re-renders with open=true
   rerender(
     <ExpandableText title="Some title" onToggle={spy} open={true}>
       expanded content
     </ExpandableText>,
   );
+  act(() => {
+    jest.runAllTimers();
+  });
+
+  expect(content!.closest('.eds-base-expand')).not.toHaveAttribute(
+    'aria-hidden',
+  );
+});
+
+test('unmountOnClose=false keeps content in DOM when closed', () => {
+  const { queryByText, getByRole } = render(
+    <ExpandableText title="Some title" unmountOnClose={false}>
+      expanded content
+    </ExpandableText>,
+  );
+
+  const content = queryByText('expanded content');
+  expect(content).toBeInTheDocument();
+  expect(content!.closest('.eds-base-expand')).toHaveAttribute(
+    'aria-hidden',
+    'true',
+  );
+
+  fireEvent.click(getByRole('button'));
+  act(() => {
+    jest.runAllTimers();
+  });
+
+  expect(content).toBeInTheDocument();
+  expect(content!.closest('.eds-base-expand')).not.toHaveAttribute(
+    'aria-hidden',
+  );
+});
+
+test('unmountOnClose=true unmounts content when closed', () => {
+  const { queryByText, getByRole } = render(
+    <ExpandableText title="Some title" unmountOnClose>
+      expanded content
+    </ExpandableText>,
+  );
+
+  expect(queryByText('expanded content')).not.toBeInTheDocument();
+
+  fireEvent.click(getByRole('button'));
+  act(() => {
+    jest.runAllTimers();
+  });
 
   expect(queryByText('expanded content')).toBeInTheDocument();
 });
