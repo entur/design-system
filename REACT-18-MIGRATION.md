@@ -55,19 +55,24 @@ This enables the automatic JSX runtime, so you no longer need `import React from
 
 ### Quick Summary: Will There Be Breaking API Changes?
 
-**No breaking API changes** for consumers using the documented API. The migration is entirely internal:
+**No breaking API changes** for `@entur/modal` and `@entur/tab`. The `@entur/expand` package has **new props** and a **behavioral change** (content now stays in the DOM when collapsed instead of being unmounted). See [@entur/expand](#enturexpand) below.
 
-| Component | Public API changed? | Props changed? | Behavior changed? |
-|---|---|---|---|
-| `Modal` | ❌ No | ❌ No | ❌ No |
-| `ModalOverlay` | ❌ No | ❌ No | ❌ No |
-| `ModalContent` | ❌ No | ❌ No | ❌ No |
-| `Drawer` | ❌ No | ❌ No | ❌ No |
-| `Tabs` | ❌ No | ❌ No | ❌ No |
-| `TabList` | ❌ No | ❌ No | ❌ No |
-| `Tab` | ❌ No | ❌ No | ❌ No |
-| `TabPanel` | ❌ No | ❌ No | ❌ No |
-| `TabPanels` | ❌ No | ❌ No | ❌ No |
+| Component         | Public API changed? | Props changed? | Behavior changed?  |
+| ----------------- | ------------------- | -------------- | ------------------ |
+| `Modal`           | ❌ No               | ❌ No          | ❌ No              |
+| `ModalOverlay`    | ❌ No               | ❌ No          | ❌ No              |
+| `ModalContent`    | ❌ No               | ❌ No          | ❌ No              |
+| `Drawer`          | ❌ No               | ❌ No          | ❌ No              |
+| `Tabs`            | ❌ No               | ❌ No          | ❌ No              |
+| `TabList`         | ❌ No               | ❌ No          | ❌ No              |
+| `Tab`             | ❌ No               | ❌ No          | ❌ No              |
+| `TabPanel`        | ❌ No               | ❌ No          | ❌ No              |
+| `TabPanels`       | ❌ No               | ❌ No          | ❌ No              |
+| `ExpandablePanel` | ❌ No               | ✅ New props   | ✅ Yes (see below) |
+| `ExpandableText`  | ❌ No               | ✅ New props   | ✅ Yes (see below) |
+| `Accordion`       | ❌ No               | ✅ New props   | ✅ Yes (see below) |
+| `AccordionItem`   | ❌ No               | ✅ New props   | ✅ Yes (see below) |
+| `BaseExpand`      | ❌ No               | ✅ New props   | ✅ Yes (see below) |
 
 All existing props — including the `as` prop for polymorphic rendering — continue to work as before.
 
@@ -124,6 +129,43 @@ The internal implementation of `@entur/tab` has been migrated from `@reach/tabs`
 
 **What consumers need to do:** No changes required if you are using the documented API.
 
+### @entur/expand
+
+The internal implementation of `@entur/expand` has been migrated from `react-collapse` (unmaintained, last published 2021) to a CSS grid animation with zero dependencies.
+
+**Breaking behavioral change — content stays in the DOM when collapsed:**
+
+Previously, collapsed content was unmounted (removed from the DOM). Now, collapsed content **stays in the DOM** but is hidden with `aria-hidden="true"` and `inert`. This is the new default behavior, matching how native `<details>` elements work.
+
+**If you relied on content being removed from the DOM when collapsed** (e.g., checking `document.querySelector` for elements inside collapsed sections, or relying on unmounting to reset component state), you can restore the old behavior with `unmountOnClose={true}`:
+
+```tsx
+// Old behavior: content is removed from DOM when collapsed
+<ExpandablePanel unmountOnClose={true} title="...">
+  {children}
+</ExpandablePanel>
+```
+
+This also affects `SideNavigationGroup` in `@entur/menu`, which uses `BaseExpand` internally. Content inside collapsed side navigation groups now stays in the DOM (hidden with `aria-hidden`).
+
+**New props:**
+
+| Component         | New props                                                     |
+| ----------------- | ------------------------------------------------------------- |
+| `ExpandablePanel` | `open`, `onToggle` (proper controlled mode), `unmountOnClose` |
+| `ExpandableText`  | `unmountOnClose`                                              |
+| `AccordionItem`   | `unmountOnClose`                                              |
+| `Accordion`       | `openId`, `onToggle`, `defaultOpenId` (controlled mode)       |
+| `BaseExpand`      | `unmountOnClose`                                              |
+
+**All expand components now support `ref` forwarding** via `React.forwardRef`.
+
+**What consumers need to do:**
+
+- Most consumers need no changes — the new default behavior is better for accessibility and performance
+- If you depend on collapsed content being removed from the DOM, add `unmountOnClose={true}`
+- If you want controlled accordion behavior, you can now use `openId` and `onToggle` on `Accordion`
+
 ### React 18 Behavioral Changes
 
 React 18 introduces several behavioral changes that may affect your application:
@@ -151,13 +193,13 @@ If you see double renders in development, this is expected behavior when using `
 
 Initially, the migration from `@reach/*` considered `@radix-ui` as a replacement. While Radix UI is an excellent library, introducing it would have added a **new third-party UI provider** to the project. After analysis, we chose to use existing providers instead:
 
-| Criterion | @radix-ui (rejected) | @react-aria (chosen for modal) | Native ARIA (chosen for tabs) |
-|---|---|---|---|
-| **Already in project?** | ❌ New provider | ✅ Used by @entur/datepicker | ✅ No dependency needed |
-| **Packages added** | 21 new packages | 3 new packages (shared infrastructure) | 0 new packages |
-| **API approach** | Component-based | Hook-based (consistent with datepicker) | Standard HTML + ARIA |
-| **Control** | Moderate | High (hooks give full control) | Full control |
-| **Maintenance burden** | New provider to track | Already tracked | None |
+| Criterion               | @radix-ui (rejected)  | @react-aria (chosen for modal)          | Native ARIA (chosen for tabs) |
+| ----------------------- | --------------------- | --------------------------------------- | ----------------------------- |
+| **Already in project?** | ❌ New provider       | ✅ Used by @entur/datepicker            | ✅ No dependency needed       |
+| **Packages added**      | 21 new packages       | 3 new packages (shared infrastructure)  | 0 new packages                |
+| **API approach**        | Component-based       | Hook-based (consistent with datepicker) | Standard HTML + ARIA          |
+| **Control**             | Moderate              | High (hooks give full control)          | Full control                  |
+| **Maintenance burden**  | New provider to track | Already tracked                         | None                          |
 
 ### Why @react-aria for Modal?
 
@@ -194,19 +236,20 @@ Instead of using `@react-aria/tabs`, tabs are implemented with native ARIA attri
 
 Using `@digdir/designsystemet-react` would bring in these **hard dependencies** (not peer deps):
 
-| Dependency | Size concern | Overlap with Entur? |
-|---|---|---|
-| `@digdir/designsystemet-web` | Custom element definitions for tabs, dialog, etc. | ❌ None |
-| `@digdir/designsystemet-types` | Type definitions | ❌ None |
-| `@navikt/aksel-icons` | NAV's entire icon set | ❌ Entur uses `@entur/icons` |
-| `@radix-ui/react-slot` | Re-introduces Radix UI | ❌ Just removed |
-| `@tanstack/react-virtual` | Virtualization library | ❌ Not currently used |
-| `@floating-ui/react` + `@floating-ui/dom` | Positioning library | ✅ Already used |
-| `clsx` | Class names utility | ❌ Entur uses `classnames` |
+| Dependency                                | Size concern                                      | Overlap with Entur?          |
+| ----------------------------------------- | ------------------------------------------------- | ---------------------------- |
+| `@digdir/designsystemet-web`              | Custom element definitions for tabs, dialog, etc. | ❌ None                      |
+| `@digdir/designsystemet-types`            | Type definitions                                  | ❌ None                      |
+| `@navikt/aksel-icons`                     | NAV's entire icon set                             | ❌ Entur uses `@entur/icons` |
+| `@radix-ui/react-slot`                    | Re-introduces Radix UI                            | ❌ Just removed              |
+| `@tanstack/react-virtual`                 | Virtualization library                            | ❌ Not currently used        |
+| `@floating-ui/react` + `@floating-ui/dom` | Positioning library                               | ✅ Already used              |
+| `clsx`                                    | Class names utility                               | ❌ Entur uses `classnames`   |
 
 Even with tree-shaking, the hard dependencies are all installed. Using just 2 components from `@digdir/designsystemet-react` would pull in NAV's icon library, re-introduce `@radix-ui`, and add a virtualization library — none of which Entur needs.
 
 Additionally, Designsystemet requires global CSS imports:
+
 ```js
 import '@digdir/designsystemet-css';
 import '@digdir/designsystemet-css/theme';
@@ -219,6 +262,7 @@ These would conflict with Entur's existing `eds-*` BEM styling system and design
 **CSS/Design language clash**: Designsystemet has its own design tokens, color palette, typography, and spacing system. Entur has its own brand identity with distinct tokens. Running two design systems side-by-side would create visual inconsistency and CSS specificity conflicts.
 
 **Web components in Tabs**: Designsystemet's Tabs uses custom elements (`<ds-tabs>`, `<ds-tab>`, `<ds-tablist>`, `<ds-tabpanel>`) from `@digdir/designsystemet-web`. This introduces:
+
 - Custom element registration side-effects on import
 - `suppressHydrationWarning` requirements (SSR complexity)
 - Non-standard DOM output that doesn't match Entur's testing patterns
@@ -228,15 +272,15 @@ These would conflict with Entur's existing `eds-*` BEM styling system and design
 
 #### API Mismatch
 
-| Feature | Entur (current) | Designsystemet |
-|---|---|---|
-| **Tab selection** | Index-based (`index={0}`) | Value-based (`value="tab1"`) |
-| **Tab onChange** | `onChange(index: number)` | `onChange(value: string)` |
-| **Modal open/close** | `open` + `onDismiss` props | `open` prop + `ref.close()` or `command` pattern |
-| **Focus management** | `initialFocusRef` prop | `autofocus` attribute |
-| **Tab keyboard nav** | Handled internally | Handled by custom element |
-| **Tab panel wrapper** | `<TabPanels>` component | No wrapper needed |
-| **Modal sizes** | `size="small|medium|large|..."` | `data-placement` attribute |
+| Feature               | Entur (current)                              | Designsystemet                                   |
+| --------------------- | -------------------------------------------- | ------------------------------------------------ |
+| **Tab selection**     | Index-based (`index={0}`)                    | Value-based (`value="tab1"`)                     |
+| **Tab onChange**      | `onChange(index: number)`                    | `onChange(value: string)`                        |
+| **Modal open/close**  | `open` + `onDismiss` props                   | `open` prop + `ref.close()` or `command` pattern |
+| **Focus management**  | `initialFocusRef` prop                       | `autofocus` attribute                            |
+| **Tab keyboard nav**  | Handled internally                           | Handled by custom element                        |
+| **Tab panel wrapper** | `<TabPanels>` component                      | No wrapper needed                                |
+| **Modal sizes**       | `size="small" \| "medium" \| "large" \| ...` | `data-placement` attribute                       |
 
 Adopting Designsystemet's API would require breaking changes to all consumer code for both `@entur/modal` and `@entur/tab`.
 
@@ -263,46 +307,52 @@ The current approach ([@react-aria for Modal](#why-react-aria-for-modal), [nativ
 
 After the migration, the design system uses **3 UI providers**, each for its strengths:
 
-| Provider | Used in | Purpose |
-|---|---|---|
-| **@react-aria** | datepicker, modal | Accessible form components, dialog/overlay management |
-| **@floating-ui** | tooltip, dropdown, menu, datepicker | Floating element positioning |
-| **downshift** | dropdown | Combobox/select state management |
+| Provider         | Used in                             | Purpose                                               |
+| ---------------- | ----------------------------------- | ----------------------------------------------------- |
+| **@react-aria**  | datepicker, modal                   | Accessible form components, dialog/overlay management |
+| **@floating-ui** | tooltip, dropdown, menu, datepicker | Floating element positioning                          |
+| **downshift**    | dropdown                            | Combobox/select state management                      |
 
 ### @reach Package Audit
 
 All `@reach/*` packages have been migrated:
 
-| @reach package | Migrated to | When |
-|---|---|---|
-| `@reach/dialog` | `@react-aria/dialog` + `@react-aria/overlays` | This migration |
-| `@reach/tabs` | Native ARIA implementation | This migration |
-| `@reach/menu` | `@floating-ui/react` | Previously migrated |
+| @reach package  | Migrated to                                                   | When                |
+| --------------- | ------------------------------------------------------------- | ------------------- |
+| `@reach/dialog` | `@react-aria/dialog` + `@react-aria/overlays`                 | This migration      |
+| `@reach/tabs`   | Native ARIA implementation                                    | This migration      |
+| `@reach/menu`   | `@floating-ui/react`                                          | Previously migrated |
 | `@reach/router` | N/A — Gatsby's internal dependency (`@gatsbyjs/reach-router`) | Not ours to migrate |
+
+### Other Deprecated Dependencies
+
+| Package          | Migrated to        | Notes                                                                                                 |
+| ---------------- | ------------------ | ----------------------------------------------------------------------------------------------------- |
+| `react-collapse` | CSS grid animation | Unmaintained since 2021. Replaced with zero-dependency CSS `grid-template-rows: 0fr → 1fr` transition |
 
 ## Third-Party Dependencies
 
 ### Updated Dependencies
 
-| Package | Previous | New | Notes |
-| --- | --- | --- | --- |
-| `@reach/dialog` | 0.16.2 | Removed | Replaced by `@react-aria/dialog` + `@react-aria/overlays` |
-| `@reach/tabs` | 0.15.3 | Removed | Replaced by native ARIA implementation |
-| `@testing-library/react` | 10.4.9 | 16.3.0 | React 18 support |
-| `@testing-library/dom` | — | 10.4.1 | New peer dependency |
+| Package                  | Previous | New     | Notes                                                     |
+| ------------------------ | -------- | ------- | --------------------------------------------------------- |
+| `@reach/dialog`          | 0.16.2   | Removed | Replaced by `@react-aria/dialog` + `@react-aria/overlays` |
+| `@reach/tabs`            | 0.15.3   | Removed | Replaced by native ARIA implementation                    |
+| `react-collapse`         | 5.1.1    | Removed | Replaced by CSS grid animation (zero dependencies)        |
+| `@testing-library/react` | 10.4.9   | 16.3.0  | React 18 support                                          |
+| `@testing-library/dom`   | —        | 10.4.1  | New peer dependency                                       |
 
 ### Unchanged Dependencies (React 18 Compatible)
 
-| Package | Version | Status |
-| --- | --- | --- |
-| `react-dropzone` | 11.7.1 | Works with React 18 (peer dep: `>=16.8`) |
-| `react-collapse` | 5.1.1 | Works with React 18 (peer dep: `>=16.3.0`) |
-| `react-focus-lock` | 2.13.6 | Works with React 18 |
-| `downshift` | 9.0.10 | Works with React 18 |
-| `@floating-ui/react` | 0.26.28 | Works with React 18 |
-| `@floating-ui/react-dom` | 2.1.6 | Works with React 18 |
-| `@react-aria/*` | 3.x | Works with React 18 |
-| `@react-stately/*` | 3.x | Works with React 18 |
+| Package                  | Version | Status                                   |
+| ------------------------ | ------- | ---------------------------------------- |
+| `react-dropzone`         | 11.7.1  | Works with React 18 (peer dep: `>=16.8`) |
+| `react-focus-lock`       | 2.13.6  | Works with React 18                      |
+| `downshift`              | 9.0.10  | Works with React 18                      |
+| `@floating-ui/react`     | 0.26.28 | Works with React 18                      |
+| `@floating-ui/react-dom` | 2.1.6   | Works with React 18                      |
+| `@react-aria/*`          | 3.x     | Works with React 18                      |
+| `@react-stately/*`       | 3.x     | Works with React 18                      |
 
 ## Testing Changes
 
