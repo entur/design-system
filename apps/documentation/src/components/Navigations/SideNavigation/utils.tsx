@@ -112,6 +112,7 @@ export const monsterMenuSortOrder = {
 export const ressurserMenuSortOrder = {
   oversikt: 1,
   workshopmaler: 2,
+  innsikt: 3,
 } as any;
 
 export const tokensMenuSortOrder = {

@@ -1,13 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 
-import { LikeIcon, ConfigurationIcon } from '@entur/icons';
+import { LikeIcon, ConfigurationIcon, BackArrowIcon } from '@entur/icons';
 import { Contrast } from '@entur/layout';
+import { IconButton } from '@entur/button';
 import { useWindowDimensions } from '@entur/utils';
 
+import { Link } from 'gatsby';
 import { SEO } from '@components/seo/SEO';
 
-import TopNavigationLayout from '../layouts/TopNavigationLayout';
+import TopNavigationLayout from '../../../layouts/TopNavigationLayout';
 
 import {
   LinjeLines,
@@ -15,14 +17,14 @@ import {
   LinjeTopographicBottom,
 } from '@media/images/frontpage/BackgroundElements';
 
-import DataCard from './undersokelse/DataCard';
-import { FeedbackIssues, FeedbackQuotes } from './undersokelse/FeedbackList';
-import HorizontalBarChart from './undersokelse/HorizontalBarChart';
-import ImprovementCard from './undersokelse/ImprovementCard';
-import { StackedBar, StackedBarLegend } from './undersokelse/StackedBar';
-import SurveySection from './undersokelse/SurveySection';
-import SurveyTable from './undersokelse/SurveyTable';
-import TrendBarChart from './undersokelse/TrendBarChart';
+import DataCard from '@components/Survey/DataCard';
+import { FeedbackIssues, FeedbackQuotes } from '@components/Survey/FeedbackList';
+import HorizontalBarChart from '@components/Survey/HorizontalBarChart';
+import ImprovementCard from '@components/Survey/ImprovementCard';
+import { StackedBar, StackedBarLegend } from '@components/Survey/StackedBar';
+import SurveySection from '@components/Survey/SurveySection';
+import SurveyTable from '@components/Survey/SurveyTable';
+import TrendBarChart from '@components/Survey/TrendBarChart';
 import {
   SECTION_NAV,
   NOKKELTALL,
@@ -35,13 +37,13 @@ import {
   KVALITATIVE,
   FORBEDRINGSFORSLAG,
   KONKLUSJON,
-} from './undersokelse/surveyData';
+} from '@components/Survey/surveyData';
 
-import './undersokelse.scss';
+import './brukerundersokelse.scss';
 
 const KONKLUSJON_COLORS = ['green', 'yellow', 'pink'] as const;
 
-const Undersokelse = () => {
+const Brukerundersokelse = () => {
   const { width } = useWindowDimensions();
   const [backgroundHeight, setBackgroundHeight] = useState(0);
   const mainRef = useRef<HTMLDivElement>(null);
@@ -102,21 +104,19 @@ const Undersokelse = () => {
         // @ts-expect-error css-variable inline is supported
         style={{ '--background-height': `${backgroundHeight}px` }}
       >
-        <div className="survey-page__background">
-          <div className="survey-page__background__animation">
-            <div
-              ref={animatedCircleRef}
-              className="survey-page__background__animation__traveller first"
-            />
-            <div className="survey-page__background__animation__traveller second" />
-          </div>
-          <LinjeTopographicBottom className="survey-bg-topographic-bottom" />
-          <LinjeTopographicTop className="survey-bg-topographic-top" />
-          <LinjeLines
-            svgRef={svgRef}
-            className="survey-bg-lines"
+        <div className="survey-page__animation">
+          <div
+            ref={animatedCircleRef}
+            className="survey-page__animation__traveller first"
           />
+          <div className="survey-page__animation__traveller second" />
         </div>
+        <LinjeTopographicBottom className="survey-bg-topographic-bottom" />
+        <LinjeTopographicTop className="survey-bg-topographic-top" />
+        <LinjeLines
+          svgRef={svgRef}
+          className="survey-bg-lines"
+        />
 
         <main ref={mainRef} className="survey-page__main">
           {/* Section navigation */}
@@ -134,6 +134,15 @@ const Undersokelse = () => {
 
           {/* Hero */}
           <header className="survey-hero">
+            <IconButton
+              as={Link}
+              to="/ressurser/"
+              aria-label="Tilbake til ressurser"
+              className="survey-hero__back"
+            >
+              <BackArrowIcon />
+              Tilbake til ressurser
+            </IconButton>
             <h1 className="survey-hero__title">
               Designsystem spørreundersøkelser
             </h1>
@@ -519,8 +528,8 @@ const Undersokelse = () => {
   );
 };
 
-export default Undersokelse;
+export default Brukerundersokelse;
 
 export const Head = () => {
-  return <SEO title="Undersokelse 2022–2025" />;
+  return <SEO title="Brukerundersøkelse" />;
 };
