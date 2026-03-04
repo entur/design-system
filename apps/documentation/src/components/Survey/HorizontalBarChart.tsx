@@ -21,11 +21,22 @@ const HorizontalBarChart: React.FC<HorizontalBarChartProps> = ({
   showValues = true,
 }) => {
   const max = maxValue ?? Math.max(...data.map(d => d.value));
+  const srDescription = data
+    .map(d => `${d.label}: ${d.value}${d.percent ? ` (${d.percent})` : ''}`)
+    .join(', ');
 
   return (
-    <div className="bar-chart">
-      {title && <h4 className="bar-chart__title">{title}</h4>}
-      <div className="bar-chart__bars">
+    <div
+      className="bar-chart"
+      role="img"
+      aria-label={`${title ?? 'Søylediagram'}. ${srDescription}`}
+    >
+      {title && (
+        <h4 className="bar-chart__title" aria-hidden="true">
+          {title}
+        </h4>
+      )}
+      <div className="bar-chart__bars" aria-hidden="true">
         {data.map(item => (
           <div className="bar-chart__row" key={item.label}>
             <span className="bar-chart__label">{item.label}</span>

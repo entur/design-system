@@ -1,7 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 
-import { LikeIcon, ConfigurationIcon, BackArrowIcon } from '@entur/icons';
+import { SkipToContent } from '@entur/a11y';
+import {
+  LikeIcon,
+  ConfigurationIcon,
+  BackArrowIcon,
+  StarredIcon,
+} from '@entur/icons';
 import { Contrast } from '@entur/layout';
 import { IconButton } from '@entur/button';
 import { useWindowDimensions } from '@entur/utils';
@@ -18,7 +24,10 @@ import {
 } from '@media/images/frontpage/BackgroundElements';
 
 import DataCard from '@components/Survey/DataCard';
-import { FeedbackIssues, FeedbackQuotes } from '@components/Survey/FeedbackList';
+import {
+  FeedbackIssues,
+  FeedbackQuotes,
+} from '@components/Survey/FeedbackList';
 import HorizontalBarChart from '@components/Survey/HorizontalBarChart';
 import ImprovementCard from '@components/Survey/ImprovementCard';
 import { StackedBar, StackedBarLegend } from '@components/Survey/StackedBar';
@@ -37,6 +46,7 @@ import {
   KVALITATIVE,
   FORBEDRINGSFORSLAG,
   KONKLUSJON,
+  RESPONDENTS_2025,
 } from '@components/Survey/surveyData';
 
 import './brukerundersokelse.scss';
@@ -49,9 +59,9 @@ const Brukerundersokelse = () => {
   const mainRef = useRef<HTMLDivElement>(null);
   const animatedCircleRef = useRef<HTMLDivElement>(null);
   const svgRef = useRef<SVGSVGElement>(null);
-  const animationFrameId = useRef<number>(null);
+  const animationFrameId = useRef<number | null>(null);
 
-  const _width = Math.floor(width ?? 0 / 100);
+  const _width = Math.floor((width ?? 0) / 100);
 
   useEffect(() => {
     const contentHeight = mainRef.current?.clientHeight ?? 0;
@@ -60,6 +70,11 @@ const Brukerundersokelse = () => {
 
   // Overlap detection – highlights animated line segments when the traveller dot passes over them
   useEffect(() => {
+    const prefersReducedMotion = window.matchMedia(
+      '(prefers-reduced-motion)',
+    ).matches;
+    if (prefersReducedMotion) return;
+
     const checkOverlap = () => {
       if (!animatedCircleRef.current || !svgRef.current) return;
 
@@ -94,33 +109,53 @@ const Brukerundersokelse = () => {
     };
   }, []);
 
+  const isLoaded = backgroundHeight > 0;
+
   return (
     <Contrast data-color-mode="contrast" className="undersokelse-wrapper">
+      <SkipToContent>Hopp til hovedinnhold</SkipToContent>
       <TopNavigationLayout data-color-mode="contrast" />
       <div
-        className={classNames('survey-page', {
-          'survey-page--loaded': backgroundHeight > 0,
-        })}
-        // @ts-expect-error css-variable inline is supported
-        style={{ '--background-height': `${backgroundHeight}px` }}
+        className="survey-page"
+        style={
+          {
+            '--background-height': `${backgroundHeight}px`,
+          } as React.CSSProperties
+        }
       >
         <div className="survey-page__animation">
           <div
             ref={animatedCircleRef}
-            className="survey-page__animation__traveller first"
+            className={classNames('survey-page__animation__traveller first', {
+              'survey-page__animation__traveller--loaded': isLoaded,
+            })}
           />
-          <div className="survey-page__animation__traveller second" />
+          <div
+            className={classNames('survey-page__animation__traveller second', {
+              'survey-page__animation__traveller--loaded': isLoaded,
+            })}
+          />
         </div>
-        <LinjeTopographicBottom className="survey-bg-topographic-bottom" />
-        <LinjeTopographicTop className="survey-bg-topographic-top" />
+        <LinjeTopographicBottom
+          className={classNames('survey-bg-topographic-bottom', {
+            'survey-bg-topographic-bottom--loaded': isLoaded,
+          })}
+        />
+        <LinjeTopographicTop
+          className={classNames('survey-bg-topographic-top', {
+            'survey-bg-topographic-top--loaded': isLoaded,
+          })}
+        />
         <LinjeLines
           svgRef={svgRef}
-          className="survey-bg-lines"
+          className={classNames('survey-bg-lines', {
+            'survey-bg-lines--loaded': isLoaded,
+          })}
         />
 
-        <main ref={mainRef} className="survey-page__main">
+        <main ref={mainRef} className="survey-page__main" id="main-content">
           {/* Section navigation */}
-          <nav className="survey-nav">
+          <nav className="survey-nav" aria-label="Seksjonsnavigasjon">
             {SECTION_NAV.map(item => (
               <a
                 key={item.id}
@@ -144,7 +179,7 @@ const Brukerundersokelse = () => {
               Tilbake til ressurser
             </IconButton>
             <h1 className="survey-hero__title">
-              Designsystem spørreundersøkelser
+              Designsystemets brukerundersøkelser
             </h1>
             <p className="survey-hero__subtitle">
               Analyse av brukerundersøkelser for Entur Linje designsystem
@@ -220,6 +255,8 @@ const Brukerundersokelse = () => {
                   label={card.year}
                   sublabel={card.breakdown}
                   small
+                  className="data-card--left-aligned"
+                  labelFirst
                 />
               ))}
             </div>
@@ -254,25 +291,38 @@ const Brukerundersokelse = () => {
                 <StackedBar key={item.label} item={item} />
               ))}
               <StackedBarLegend labels={TILFREDSHET.legend} />
-              <p className="survey-note" style={{ marginBottom: 0 }}>
+              <p className="survey-note survey-note--flush">
                 Kun respondenter som bruker delen aktivt. «Bruker ikke» er
                 ekskludert fra score.
               </p>
             </div>
 
             <div className="tilfredshet-bottom">
-              <div className="distribution">
-                <h4 className="distribution__title">
+              <div
+                className="distribution"
+                role="img"
+                aria-label={`Totaltilfredshet 2025 – Fordeling. ${TILFREDSHET.distribution
+                  .map(d => `${d.label} stjerner: ${d.count} (${d.percent})`)
+                  .join(', ')}`}
+              >
+                <h4 className="distribution__title" aria-hidden="true">
                   Totaltilfredshet 2025 – Fordeling (1–5 skala)
                 </h4>
-                {TILFREDSHET.distribution.map(d => {
+                {(() => {
                   const maxCount = Math.max(
                     ...TILFREDSHET.distribution.map(x => x.count),
                   );
-                  return (
-                    <div className="distribution__row" key={d.label}>
+                  return TILFREDSHET.distribution.map(d => (
+                    <div
+                      className="distribution__row"
+                      key={d.label}
+                      aria-hidden="true"
+                    >
                       <span className="distribution__label">
-                        {'★'.repeat(Number(d.label))} ({d.label})
+                        {Array.from({ length: Number(d.label) }, (_, j) => (
+                          <StarredIcon key={j} inline size={16} />
+                        ))}{' '}
+                        ({d.label})
                       </span>
                       <div className="distribution__track">
                         <div
@@ -292,16 +342,19 @@ const Brukerundersokelse = () => {
                           )}
                         </div>
                       </div>
-                      <span className="distribution__percent">
-                        {d.percent}
-                      </span>
+                      <span className="distribution__percent">{d.percent}</span>
                     </div>
-                  );
-                })}
+                  ));
+                })()}
               </div>
 
-              <div className="total-score">
-                <span className="total-score__big">
+              <div
+                className="total-score"
+                aria-label={`Totalscore: ${TILFREDSHET.totalScore.value} ${
+                  TILFREDSHET.totalScore.subtitle
+                }. ${TILFREDSHET.totalScore.details.join(' ')}`}
+              >
+                <span className="total-score__big" aria-hidden="true">
                   {TILFREDSHET.totalScore.value}
                 </span>
                 <div className="total-score__meta">
@@ -368,7 +421,7 @@ const Brukerundersokelse = () => {
                 <HorizontalBarChart
                   title={VERDI_IMPACT.sparerTid.title}
                   data={VERDI_IMPACT.sparerTid.data}
-                  maxValue={47}
+                  maxValue={RESPONDENTS_2025}
                 />
               </div>
               <div className="survey-card">
@@ -390,14 +443,14 @@ const Brukerundersokelse = () => {
                 <HorizontalBarChart
                   title={VERDI_IMPACT.bedreProdukter.title}
                   data={VERDI_IMPACT.bedreProdukter.data}
-                  maxValue={47}
+                  maxValue={RESPONDENTS_2025}
                 />
               </div>
               <div className="survey-card">
                 <HorizontalBarChart
                   title={VERDI_IMPACT.visuellKonsistens.title}
                   data={VERDI_IMPACT.visuellKonsistens.data}
-                  maxValue={47}
+                  maxValue={RESPONDENTS_2025}
                 />
               </div>
             </div>
@@ -409,12 +462,12 @@ const Brukerundersokelse = () => {
             title="Kommunikasjon & Kontakt"
             id="kommunikasjon"
           >
-            <div className="komm-grid-top">
+            <div className="survey-grid">
               <div className="survey-card">
                 <HorizontalBarChart
                   title={KOMMUNIKASJON.oppdateringer.title}
                   data={KOMMUNIKASJON.oppdateringer.data}
-                  maxValue={47}
+                  maxValue={RESPONDENTS_2025}
                 />
                 <p className="trend-note">
                   {KOMMUNIKASJON.oppdateringer.trend}
@@ -429,7 +482,7 @@ const Brukerundersokelse = () => {
               </div>
             </div>
 
-            <div className="komm-grid-middle">
+            <div className="survey-grid">
               <div className="survey-card">
                 <h3 className="survey-subsection__title">
                   {KOMMUNIKASJON.kontakt.title}
@@ -459,7 +512,7 @@ const Brukerundersokelse = () => {
                 <HorizontalBarChart
                   title={KOMMUNIKASJON.bidrag.title}
                   data={KOMMUNIKASJON.bidrag.data}
-                  maxValue={47}
+                  maxValue={RESPONDENTS_2025}
                 />
                 <p className="trend-note">{KOMMUNIKASJON.bidrag.trend}</p>
               </div>
@@ -484,7 +537,7 @@ const Brukerundersokelse = () => {
               title={KVALITATIVE.fungerBra.title}
               quotes={KVALITATIVE.fungerBra.quotes}
             />
-            <div style={{ marginTop: 24 }}>
+            <div className="survey-section-gap">
               <FeedbackIssues
                 title={KVALITATIVE.fungerIkke.title}
                 issues={KVALITATIVE.fungerIkke.issues}
@@ -522,7 +575,6 @@ const Brukerundersokelse = () => {
             </div>
           </SurveySection>
         </main>
-
       </div>
     </Contrast>
   );

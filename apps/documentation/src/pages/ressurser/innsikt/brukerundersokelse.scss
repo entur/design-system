@@ -1,33 +1,51 @@
 // Undersøkelse 2022–2025 page styles
 // Responsive breakpoints: 1272px → 960px → 648px → 480px
+@use '@entur/tokens/dist/styles.scss' as eds;
 
-$bp-desktop: 1272px;
+$bp-desktop: 1328px;
 $bp-tablet: 960px;
 $bp-mobile: 648px;
 $bp-small: 480px;
 
-// Satisfaction segment colors
-:root {
-  --survey-color-very-satisfied: #4daf79;
-  --survey-color-satisfied: #6ec6e6;
-  --survey-color-somewhat: #f0c75e;
-  --survey-color-dissatisfied: #e57373;
+// Satisfaction segment colors – mapped to @entur/tokens data palette
+.undersokelse-wrapper {
+  --survey-color-very-satisfied: var(--contrast-spring);
+  --survey-color-satisfied: var(--contrast-azure);
+  --survey-color-somewhat: var(--contrast-peach);
+  --survey-color-dissatisfied: var(--contrast-coral);
+  --survey-color-pink: var(--contrast-lilac);
 }
 
 // ─── Header override for survey page ────────────────────────
+// stylelint-disable-next-line selector-max-specificity -- overriding external .top-navigation component
 .undersokelse-wrapper .top-navigation {
   background: var(--basecolors-frame-contrast);
   border-bottom-color: transparent;
 }
 
 // ─── Reusable inner card ────────────────────────────────────
-.survey-card {
+%survey-card {
   background: var(--basecolors-frame-contrastalt);
   border-radius: 12px;
   padding: 24px;
 
   @media (max-width: $bp-mobile) {
     padding: 16px;
+  }
+}
+
+.survey-card {
+  @extend %survey-card;
+}
+
+// ─── Reusable 2-column responsive grid ──────────────────────
+%two-col-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+
+  @media (max-width: $bp-mobile) {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -52,7 +70,7 @@ $bp-small: 480px;
     height: var(--background-height);
     width: $background-width;
     position: absolute;
-    top: 0;
+    top: 5rem;
     left: 50vw;
     transform: $bg-transform;
 
@@ -73,7 +91,7 @@ $bp-small: 480px;
         display: none !important;
       }
 
-      #{$self}--loaded & {
+      &--loaded {
         animation: survey-traveller-move 40s infinite ease-in-out;
         animation-delay: 1.5s;
         transition: opacity 1s ease-in;
@@ -96,7 +114,7 @@ $bp-small: 480px;
   }
 }
 
-// Shared styles for background SVG elements (same approach as frontpage)
+// Shared styles for background SVG elements (static positioning, no parallax)
 .survey-bg-lines,
 .survey-bg-topographic-top,
 .survey-bg-topographic-bottom {
@@ -104,40 +122,34 @@ $bp-small: 480px;
   height: var(--background-height);
   width: 400rem;
   position: absolute;
-  top: 0;
+  top: 5rem;
   left: 50vw;
+  transform: translateX(-110rem) translateY(-55rem);
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
   overflow: visible;
 }
 
-.survey-bg-lines,
-.survey-bg-topographic-top,
-.survey-bg-topographic-bottom {
-  transform: translateX(-110rem) translateY(-55rem);
-}
-
-// Background element opacity – fade in after JS sets --loaded
+// Background element opacity – fade in via --loaded modifier class
 .survey-bg-lines {
+  // stylelint-disable-next-line selector-max-specificity -- targeting internal SVG elements
   .animated {
-    transition:
-      filter 0.3s cubic-bezier(0.17, 0.89, 0, -1.23),
-      stroke 0.3s cubic-bezier(0.17, 0.89, 0, -1.23);
+    transition: stroke 0.3s cubic-bezier(0.17, 0.89, 0, -1.23);
   }
 
-  .survey-page--loaded & {
+  &--loaded {
     opacity: 0.1;
   }
 }
 
 .survey-bg-topographic-top {
-  .survey-page--loaded & {
+  &--loaded {
     opacity: 0.5;
   }
 }
 
 .survey-bg-topographic-bottom {
-  .survey-page--loaded & {
+  &--loaded {
     opacity: 0.35;
   }
 }
@@ -163,14 +175,14 @@ $bp-small: 480px;
   z-index: 1;
   max-width: $bp-desktop;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 80px 24px 0;
 
   @media (max-width: $bp-tablet) {
-    padding: 0 16px;
+    padding: 108px 16px 0;
   }
 
   @media (max-width: $bp-mobile) {
-    padding: 0 12px;
+    padding: 108px 12px 0;
   }
 }
 
@@ -288,7 +300,7 @@ $bp-small: 480px;
   gap: 4px;
 
   &__value {
-    font-size: 36px;
+    font-size: 2.25rem;
     font-weight: 700;
     color: var(--basecolors-text-light);
     line-height: 1.2;
@@ -318,6 +330,7 @@ $bp-small: 480px;
     align-items: center;
     gap: 4px;
 
+    // stylelint-disable-next-line selector-max-specificity -- overriding external .eds-icon component
     .eds-icon {
       position: static;
     }
@@ -343,7 +356,7 @@ $bp-small: 480px;
   }
 
   &__value--small {
-    font-size: 28px;
+    font-size: eds.$font-sizes-extra-large3;
   }
 }
 
@@ -351,7 +364,7 @@ $bp-small: 480px;
 .survey-section {
   padding: 40px 0;
   margin-bottom: 32px;
-  scroll-margin-top: 56px;
+  scroll-margin-top: 96px;
 
   @media (max-width: $bp-mobile) {
     padding: 24px 0;
@@ -388,13 +401,7 @@ $bp-small: 480px;
 
 // ─── Oppsummering columns ────────────────────────────────────
 .oppsummering {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-
-  @media (max-width: $bp-mobile) {
-    grid-template-columns: 1fr;
-  }
+  @extend %two-col-grid;
 
   &__icon {
     display: block;
@@ -467,15 +474,15 @@ $bp-small: 480px;
   @media (max-width: $bp-mobile) {
     grid-template-columns: repeat(2, 1fr);
   }
+}
 
-  .data-card {
-    align-items: flex-start;
-    text-align: left;
-  }
+.data-card--left-aligned {
+  align-items: flex-start;
+  text-align: left;
+}
 
-  .data-card__label {
-    order: -1;
-  }
+.data-card__label--first {
+  order: -1;
 }
 
 .respondent-interpretation {
@@ -486,13 +493,7 @@ $bp-small: 480px;
 }
 
 .charts-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-
-  @media (max-width: $bp-mobile) {
-    grid-template-columns: 1fr;
-  }
+  @extend %two-col-grid;
 }
 
 // ─── HorizontalBarChart ──────────────────────────────────────
@@ -555,7 +556,7 @@ $bp-small: 480px;
   }
 
   &__value {
-    font-size: 11px;
+    font-size: eds.$font-sizes-small;
     color: var(--components-layout-badge-primary-contrast-text);
     font-weight: 600;
   }
@@ -610,9 +611,9 @@ $bp-small: 480px;
   }
 
   &__segment-value {
-    font-size: 11px;
+    font-size: eds.$font-sizes-small;
     font-weight: 600;
-    color: #1a1a2e;
+    color: var(--standard-blue);
   }
 }
 
@@ -640,23 +641,17 @@ $bp-small: 480px;
 
 // ─── Tilfredshet layout (matching Figma) ─────────────────────
 .tilfredshet-bars-card {
-  @extend .survey-card;
+  @extend %survey-card;
   margin-bottom: 24px;
 }
 
 .tilfredshet-bottom {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-
-  @media (max-width: $bp-mobile) {
-    grid-template-columns: 1fr;
-  }
+  @extend %two-col-grid;
 }
 
 // ─── Total score highlight ───────────────────────────────────
 .total-score {
-  @extend .survey-card;
+  @extend %survey-card;
   display: flex;
   align-items: center;
   gap: 32px;
@@ -667,13 +662,13 @@ $bp-small: 480px;
   }
 
   &__big {
-    font-size: 64px;
+    font-size: 4rem;
     font-weight: 700;
     color: var(--basecolors-text-light);
     line-height: 1;
 
     @media (max-width: $bp-mobile) {
-      font-size: 48px;
+      font-size: 3rem;
     }
   }
 
@@ -698,7 +693,7 @@ $bp-small: 480px;
 
 // ─── Distribution bars ───────────────────────────────────────
 .distribution {
-  @extend .survey-card;
+  @extend %survey-card;
 
   &__title {
     font-size: var(--font-size-heading-s);
@@ -710,19 +705,23 @@ $bp-small: 480px;
 
   &__row {
     display: grid;
-    grid-template-columns: 100px 1fr 50px;
+    grid-template-columns: 130px 1fr 50px;
     align-items: center;
     gap: 12px;
     margin-bottom: 8px;
 
     @media (max-width: $bp-small) {
-      grid-template-columns: 80px 1fr 40px;
+      grid-template-columns: 100px 1fr 40px;
     }
   }
 
   &__label {
+    display: flex;
+    align-items: center;
+    gap: 2px;
     font-size: var(--font-size-body-s);
     color: var(--basecolors-text-light);
+    white-space: nowrap;
   }
 
   &__track {
@@ -744,7 +743,7 @@ $bp-small: 480px;
   }
 
   &__fill-value {
-    font-size: 11px;
+    font-size: eds.$font-sizes-small;
     font-weight: 600;
     color: var(--components-layout-badge-primary-contrast-text);
   }
@@ -759,7 +758,7 @@ $bp-small: 480px;
 
 // ─── SurveyTable ─────────────────────────────────────────────
 .survey-table {
-  @extend .survey-card;
+  @extend %survey-card;
   margin-bottom: 24px;
 
   &__title {
@@ -819,13 +818,13 @@ $bp-small: 480px;
   }
 
   &__trend {
-    font-size: 12px;
+    font-size: eds.$font-sizes-small;
     color: var(--basecolors-text-subduedalt);
   }
 
   &__trend-badge {
     display: inline-block;
-    font-size: 11px;
+    font-size: eds.$font-sizes-small;
     font-weight: 600;
     padding: 2px 8px;
     border-radius: 4px;
@@ -852,7 +851,7 @@ $bp-small: 480px;
 
 // ─── Trend bar chart (year-over-year bars) ──────────────────
 .trend-bar {
-  @extend .survey-card;
+  @extend %survey-card;
   margin-bottom: 24px;
 
   &__title {
@@ -906,17 +905,7 @@ $bp-small: 480px;
 
 // ─── Verdi grid ──────────────────────────────────────────────
 .verdi-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-
-  @media (max-width: $bp-mobile) {
-    grid-template-columns: 1fr;
-  }
-
-  > .survey-card {
-    // Each card inside the verdi grid
-  }
+  @extend %two-col-grid;
 }
 
 .time-savings-list {
@@ -934,7 +923,7 @@ $bp-small: 480px;
   }
 
   &__count {
-    font-size: 11px;
+    font-size: eds.$font-sizes-small;
     font-weight: 700;
     color: var(--basecolors-text-accent);
     background: var(--contrast-lavender);
@@ -963,7 +952,7 @@ $bp-small: 480px;
   }
 
   &__percent {
-    font-size: 38px;
+    font-size: 2.375rem;
     font-weight: 700;
     color: var(--basecolors-text-light);
     line-height: 1;
@@ -993,32 +982,15 @@ $bp-small: 480px;
 }
 
 // ─── Kommunikasjon layout ────────────────────────────────────
-.komm-grid-top {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
+.survey-grid {
+  @extend %two-col-grid;
+
   margin-bottom: 24px;
-
-  @media (max-width: $bp-mobile) {
-    grid-template-columns: 1fr;
-  }
-}
-
-.komm-grid-middle {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-  margin-bottom: 24px;
-
-  @media (max-width: $bp-mobile) {
-    grid-template-columns: 1fr;
-  }
 }
 
 // ─── FeedbackList ────────────────────────────────────────────
 .feedback-list {
-  @extend .survey-card;
-  background: var(--basecolors-frame-contrastalt);
+  @extend %survey-card;
 
   &__title {
     font-size: var(--font-size-heading-s);
@@ -1085,7 +1057,7 @@ $bp-small: 480px;
   }
 
   &__issue-count {
-    font-size: 12px;
+    font-size: eds.$font-sizes-small;
     font-weight: 700;
     color: var(--components-layout-badge-primary-contrast-text);
     background: var(--components-layout-badge-primary-contrast-fill);
@@ -1116,7 +1088,7 @@ $bp-small: 480px;
 
 // ─── ImprovementCard ─────────────────────────────────────────
 .improvement-card {
-  @extend .survey-card;
+  @extend %survey-card;
   margin-bottom: 16px;
 
   &__header {
@@ -1206,13 +1178,6 @@ $bp-small: 480px;
     max-height: 16px;
     display: inline-flex;
     align-items: center;
-
-    &--primary {
-      color: var(--components-layout-badge-neutral-contrast-text);
-      background: var(--components-layout-badge-neutral-contrast-fill);
-      border-color: transparent;
-      font-weight: 600;
-    }
   }
 }
 
@@ -1228,7 +1193,7 @@ $bp-small: 480px;
 }
 
 .konklusjon-card {
-  @extend .survey-card;
+  @extend %survey-card;
 
   &__title {
     font-size: var(--font-size-heading-s);
@@ -1250,7 +1215,7 @@ $bp-small: 480px;
     }
 
     &--pink {
-      color: #e88de3;
+      color: var(--survey-color-pink);
     }
   }
 
@@ -1264,7 +1229,7 @@ $bp-small: 480px;
 
 // ─── Subsection dividers ─────────────────────────────────────
 .survey-subsection {
-  @extend .survey-card;
+  @extend %survey-card;
 
   &__title {
     font-size: var(--font-size-heading-s);
@@ -1278,6 +1243,27 @@ $bp-small: 480px;
       line-height: var(--font-line-height-body-m);
     }
   }
+}
+
+// ─── Utility classes ─────────────────────────────────────────
+.survey-note--flush {
+  margin-bottom: 0;
+}
+
+.survey-section-gap {
+  margin-top: 1.5rem;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
 
 // ─── Note callout ────────────────────────────────────────────

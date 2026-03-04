@@ -1,3 +1,5 @@
+export const RESPONDENTS_2025 = 47;
+
 export const NOKKELTALL = [
   {
     value: '116',
@@ -13,7 +15,7 @@ export const NOKKELTALL = [
   },
   {
     value: '81%',
-    label: 'Sparetid',
+    label: 'Jobber raskere',
     change: '19% fra 2022',
     trend: 'down' as const,
   },
@@ -127,12 +129,24 @@ export const RESPONDENTPROFIL = {
   roller: {
     title: 'Roller 2025 (n=47, flere valg mulig)',
     data: [
-      { label: 'Fullstack-utvikler', value: 14, color: 'var(--contrast-lavender)' },
-      { label: 'Frontend-utvikler', value: 14, color: 'var(--contrast-lavender)' },
+      {
+        label: 'Fullstack-utvikler',
+        value: 14,
+        color: 'var(--contrast-lavender)',
+      },
+      {
+        label: 'Frontend-utvikler',
+        value: 14,
+        color: 'var(--contrast-lavender)',
+      },
       { label: 'Designer', value: 12, color: 'var(--contrast-peach)' },
       { label: 'Tjenestedesigner', value: 6, color: 'var(--contrast-peach)' },
       { label: 'Backend-utvikler', value: 6, color: 'var(--contrast-blue)' },
-      { label: 'Annet (Tech Lead, PL, ++)', value: 4, color: 'var(--contrast-blue)' },
+      {
+        label: 'Annet (Tech Lead, PL, ++)',
+        value: 4,
+        color: 'var(--contrast-blue)',
+      },
     ],
   },
   primaryUsers: {
@@ -164,7 +178,12 @@ export const TILFREDSHET: {
     subtitle: string;
     details: string[];
   };
-  distribution: { label: string; count: number; percent: string; color: string }[];
+  distribution: {
+    label: string;
+    count: number;
+    percent: string;
+    color: string;
+  }[];
 } = {
   legend: [
     'Veldig fornøyd',
@@ -305,37 +324,62 @@ export const VERDI_IMPACT = {
   sparerTid: {
     title: 'Sparer du tid?',
     data: [
-      { label: 'Ja', value: 38, percent: '81%', color: 'var(--contrast-jungle)' },
-      { label: 'Nei / Ikke relevant', value: 3, percent: '6%', color: 'var(--contrast-coral)' },
-      { label: 'Bruker ikke / annet', value: 6, percent: '13%', color: 'var(--contrast-peach)' },
+      {
+        label: 'Ja',
+        value: 38,
+        percent: '81%',
+        color: 'var(--contrast-jungle)',
+      },
+      {
+        label: 'Nei / Ikke relevant',
+        value: 3,
+        percent: '6%',
+        color: 'var(--contrast-coral)',
+      },
+      {
+        label: 'Bruker ikke / annet',
+        value: 6,
+        percent: '13%',
+        color: 'var(--contrast-peach)',
+      },
     ],
   },
   hvaSparerTid: {
     title: 'Hva spares tid på? (oppsummert)',
     data: [
       {
-        count: '~25×',
+        count: '25×',
         text: 'Slipper å lage / vedlikeholde egne komponenter',
       },
-      { count: '~8×', text: 'Slipper å velge farger, fonter, CSS' },
+      { count: '8×', text: 'Slipper å velge farger, fonter, CSS' },
       {
-        count: '~5×',
+        count: '5×',
         text: 'Kan fokusere på logikk / innhold fremfor form',
       },
-      { count: '~4×', text: 'Skjemaer og standardiserte patterns' },
+      { count: '4×', text: 'Skjemaer og standardiserte patterns' },
     ],
   },
   bedreProdukter: {
     title: 'Bedre produkter?',
     data: [
-      { label: 'Ja', value: 41, percent: '87%', color: 'var(--contrast-jungle)' },
+      {
+        label: 'Ja',
+        value: 41,
+        percent: '87%',
+        color: 'var(--contrast-jungle)',
+      },
       { label: 'Nei', value: 2, percent: '4%', color: 'var(--contrast-coral)' },
     ],
   },
   visuellKonsistens: {
     title: 'Visuell konsistens på tvers?',
     data: [
-      { label: 'Ja', value: 41, percent: '87%', color: 'var(--contrast-jungle)' },
+      {
+        label: 'Ja',
+        value: 41,
+        percent: '87%',
+        color: 'var(--contrast-jungle)',
+      },
       { label: 'Nei', value: 2, percent: '4%', color: 'var(--contrast-coral)' },
     ],
   },
@@ -345,12 +389,26 @@ export const KOMMUNIKASJON = {
   oppdateringer: {
     title: 'Får med seg oppdateringer? (2025)',
     data: [
-      { label: 'Ja', value: 34, percent: '72%', color: 'var(--contrast-jungle)' },
-      { label: 'Nei', value: 7, percent: '15%', color: 'var(--contrast-coral)' },
-      { label: 'Delvis / Vet ikke', value: 6, percent: '13%', color: 'var(--contrast-peach)' },
+      {
+        label: 'Ja',
+        value: 34,
+        percent: '72%',
+        color: 'var(--contrast-jungle)',
+      },
+      {
+        label: 'Nei',
+        value: 7,
+        percent: '15%',
+        color: 'var(--contrast-coral)',
+      },
+      {
+        label: 'Delvis / Vet ikke',
+        value: 6,
+        percent: '13%',
+        color: 'var(--contrast-peach)',
+      },
     ],
-    trend:
-      '4-års trend: 64% (2022) → 81% (2023) → 73% (2024) → 74% (2025)',
+    trend: '4-års trend: 64% (2022) → 81% (2023) → 73% (2024) → 74% (2025)',
   },
   kanaler: {
     title: 'Ønskede informasjonskanaler (2025)',
@@ -360,24 +418,42 @@ export const KOMMUNIKASJON = {
       { label: 'Periodisk demo', value: 13, color: 'var(--contrast-spring)' },
       { label: 'Figma', value: 6, color: 'var(--contrast-peach)' },
     ],
-    trend:
-      'Totalt over 4 år: Slack 111 (96%), Demo 40 (35%), Linje 37 (32%)',
+    trend: 'Totalt over 4 år: Slack 111 (96%), Demo 40 (35%), Linje 37 (32%)',
   },
   kontakt: {
     title: 'Kontakt med teamet siste år',
     ja: { percent: '72%', count: 34 },
     nei: { percent: '26%', count: 12 },
     nytte: 'Nytte av kontakt: 4.2/5',
-    trend:
-      '4-års trend: 4.76 (2022) → 4.43 (2023) → 4.52 (2024) → 4.22 (2025)',
+    trend: '4-års trend: 4.76 (2022) → 4.43 (2023) → 4.52 (2024) → 4.22 (2025)',
   },
   bidrag: {
     title: 'Har du bidratt til designsystemet? (2025)',
     data: [
-      { label: 'Ja', value: 25, percent: '53%', color: 'var(--contrast-jungle)' },
-      { label: 'Nei', value: 9, percent: '19%', color: 'var(--contrast-coral)' },
-      { label: 'Vil gjerne', value: 7, percent: '15%', color: 'var(--contrast-lilac)' },
-      { label: 'Visste ikke at man kan', value: 5, percent: '11%', color: 'var(--contrast-peach)' },
+      {
+        label: 'Ja',
+        value: 25,
+        percent: '53%',
+        color: 'var(--contrast-jungle)',
+      },
+      {
+        label: 'Nei',
+        value: 9,
+        percent: '19%',
+        color: 'var(--contrast-coral)',
+      },
+      {
+        label: 'Vil gjerne',
+        value: 7,
+        percent: '15%',
+        color: 'var(--contrast-lilac)',
+      },
+      {
+        label: 'Visste ikke at man kan',
+        value: 5,
+        percent: '11%',
+        color: 'var(--contrast-peach)',
+      },
     ],
     trend:
       '4-års trend: 60% (2022) → 67% (2023) → 64% (2024) → 53% (2025) har bidratt',
@@ -385,10 +461,26 @@ export const KOMMUNIKASJON = {
   onboarding: {
     title: 'Innføring / Onboarding (2025)',
     data: [
-      { label: 'Noen i teamet mitt', value: 19, color: 'var(--contrast-lavender)' },
-      { label: 'Designsystem-teamet', value: 15, color: 'var(--contrast-blue)' },
-      { label: 'Trenger ikke, dok er nok', value: 11, color: 'var(--contrast-lavender)' },
-      { label: 'Ikke fått innføring', value: 5, color: 'var(--contrast-coral)' },
+      {
+        label: 'Noen i teamet mitt',
+        value: 19,
+        color: 'var(--contrast-lavender)',
+      },
+      {
+        label: 'Designsystem-teamet',
+        value: 15,
+        color: 'var(--contrast-blue)',
+      },
+      {
+        label: 'Trenger ikke, dok er nok',
+        value: 11,
+        color: 'var(--contrast-lavender)',
+      },
+      {
+        label: 'Ikke fått innføring',
+        value: 5,
+        color: 'var(--contrast-coral)',
+      },
     ],
   },
 };
@@ -406,7 +498,7 @@ export type FeedbackIssue = {
 
 export const KVALITATIVE = {
   fungerBra: {
-    title: '✓ Hva fungerer bra?',
+    title: 'Hva fungerer bra?',
     quotes: [
       {
         text: '«Linje er en gullressurs.»',
@@ -447,58 +539,56 @@ export const KVALITATIVE = {
     ] as FeedbackQuote[],
   },
   fungerIkke: {
-    title: '✗ Hva fungerer IKKE så bra? (Tematisert over 4 år)',
+    title: 'Hva fungerer IKKE så bra? (Tematisert over 4 år)',
     issues: [
       {
-        count: '~20×',
+        count: '20×',
         title: 'B2B/interne verktøy underdekket:',
         description:
           'Systemet oppleves som B2C-fokusert. Mangler tabeller, avanserte filtre, autocomplete, layout-komponenter. Gjentatt alle 4 år.',
       },
       {
-        count: '~15×',
+        count: '15×',
         title: 'Fargetokens forvirrende:',
         description:
           'Semantiske farger uklare, contrast/dark mode frustrerende, flere Figma-bibliotek skaper forvirring, navngiving inkonsistent Figma ↔ kode. Eskalerende 2024–2025.',
       },
       {
-        count: '~10×',
+        count: '10×',
         title: 'Figma ↔ React ute av synk:',
         description:
           'Komponentene stemmer ikke mellom design og kode. Ingen 1:1-mapping. Gjentatt 2023–2025.',
       },
       {
-        count: '~8×',
+        count: '8×',
         title: 'Versjonering/pakkestrategi:',
         description:
           'Separat versjonering per pakke gir forvirring. Uklart hvilke pakker hører sammen. Breaking changes smertefulle.',
       },
       {
-        count: '~7×',
+        count: '7×',
         title: 'Kapasitet/leveransetid:',
         description:
           '«Bare én utvikler» tidlig. Forbedret, men fiks kan ta tid. Sterkest 2022–2023.',
       },
       {
-        count: '~5×',
+        count: '5×',
         title: 'Dokumentasjon ujevn:',
         description:
           'Noen komponenter godt dokumentert, andre mangler detaljer/eksempler. Søk vanskelig.',
       },
       {
-        count: '~4×',
+        count: '4×',
         title: 'Open source / whitelabel:',
-        description:
-          'Vanskelig å bruke i OS-prosjekter. Nytt tema 2025.',
+        description: 'Vanskelig å bruke i OS-prosjekter. Nytt tema 2025.',
       },
       {
-        count: '~3×',
+        count: '3×',
         title: 'Figma-filer rotete:',
-        description:
-          'For mange separerte filer. Vanskelig å finne frem.',
+        description: 'For mange separerte filer. Vanskelig å finne frem.',
       },
       {
-        count: '~2×',
+        count: '2×',
         title: 'Komponenter lite fleksible:',
         description:
           'Noen komponenter vanskelige å tilpasse til spesifikke behov.',

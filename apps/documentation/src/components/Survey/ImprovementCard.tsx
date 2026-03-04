@@ -7,7 +7,7 @@ type ImprovementCardProps = {
 };
 
 const priorityClass = {
-  'Høy': 'improvement-card__badge--high',
+  Høy: 'improvement-card__badge--high',
   Medium: 'improvement-card__badge--medium',
   Lavere: 'improvement-card__badge--low',
 };
@@ -28,10 +28,7 @@ const ImprovementCard: React.FC<ImprovementCardProps> = ({ item }) => {
       {item.actions.length > 0 && (
         <div className="improvement-card__actions">
           {item.actions.map((action, i) => (
-            <span
-              className={`improvement-card__action-item ${action === 'Ett fargebibliotek i Figma' ? 'improvement-card__action-item--primary' : ''}`}
-              key={i}
-            >
+            <span className="improvement-card__action-item" key={i}>
               {action}
             </span>
           ))}
