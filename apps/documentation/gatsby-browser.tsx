@@ -40,8 +40,13 @@ export const wrapPageElement: GatsbyBrowser['wrapPageElement'] = ({
   props,
 }) => {
   const children = <ConsentProvider>{element}</ConsentProvider>;
-  if (props.location.pathname === '/') return <>{children}</>;
-  if (props.location.pathname === '/stand') return <>{children}</>;
+  const CUSTOM_LAYOUT_PAGES = [
+    '/',
+    '/stand',
+    '/ressurser/innsikt/brukerundersokelse',
+  ];
+  const normalizedPath = props.location.pathname.replace(/\/$/, '') || '/';
+  if (CUSTOM_LAYOUT_PAGES.includes(normalizedPath)) return <>{children}</>;
   const disableToc = Boolean(props.pageContext?.isComponentDoc);
   return (
     <DocLayout {...props} disableToc={disableToc}>

@@ -117,6 +117,14 @@ function mergeMdxAndSanityPageData(mdxPageData: any[], sanityPageData: any[]) {
       order: 2, // Place it after the main "Komponenter" overview page
       path: '/sandkasse/',
     } as MenuItem,
+    {
+      id: 'brukerundersokelse',
+      title: 'Brukerundersøkelse',
+      category: 'Ressurser',
+      subcategory: 'Innsikt',
+      order: 1,
+      path: '/ressurser/innsikt/brukerundersokelse/',
+    } as MenuItem,
   ];
 
   return [...mdxPages, ...sanityPages, ...customMenuItems];
