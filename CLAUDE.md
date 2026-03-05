@@ -111,6 +111,18 @@ optional breaking changes
 
 Branch naming: start with Jira issue ID, e.g. `ETU-38373-branch-name`.
 
+## AI Attribution
+
+Do NOT use `Co-authored-by` trailers for AI tools — that convention is reserved for human collaborators.
+
+When the majority of a commit's changes were produced by an AI tool, add a dedicated `AI-assistant` trailer with the actual tool and model used:
+
+```
+AI-assistant: <tool> (<model>)
+```
+
+If the developer wrote most of the code themselves (with only minor AI assistance), no AI attribution is needed.
+
 ## Formatting Rules
 
 Prettier: single quotes, trailing commas, semicolons, `arrowParens: avoid`, 80 char width (160 for SCSS). ESLint extends recommended + React + TypeScript rules.
