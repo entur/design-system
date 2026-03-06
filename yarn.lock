@@ -4210,9 +4210,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@codemirror/language@npm:6.12.1":
-  version: 6.12.1
-  resolution: "@codemirror/language@npm:6.12.1"
+"@codemirror/language@npm:6.12.2, @codemirror/language@npm:^6.4.0":
+  version: 6.12.2
+  resolution: "@codemirror/language@npm:6.12.2"
   dependencies:
     "@codemirror/state": "npm:^6.0.0"
     "@codemirror/view": "npm:^6.23.0"
@@ -4220,7 +4220,7 @@ __metadata:
     "@lezer/highlight": "npm:^1.0.0"
     "@lezer/lr": "npm:^1.0.0"
     style-mod: "npm:^4.0.0"
-  checksum: 10c0/d37e526a839f571f767372c49e28649c4e79a539c73845a74117ee408ad31c29d60a32b5e1bad439637b1456d18154d672eb225e9b4482d3e00eca150461bc6a
+  checksum: 10c0/7a167eca996970f08a58b864b3ec37246c152c37cb4a31dcf13d6154232b968c45e0e17296050784ecc279100c2b40313f26681164d6628f6a6e9b8927ae58a7
   languageName: node
   linkType: hard
 
@@ -4249,20 +4249,6 @@ __metadata:
     "@lezer/lr": "npm:^1.0.0"
     style-mod: "npm:^4.0.0"
   checksum: 10c0/0cbc2a98bd9e94e8e186af30613741a553fc45479e3875c79bddc32340d4d75ecc36229c66e2ee5fcffbc8fdd49b442e43847799d1d68651e3b4f8ec20d3d092
-  languageName: node
-  linkType: hard
-
-"@codemirror/language@npm:^6.4.0":
-  version: 6.12.2
-  resolution: "@codemirror/language@npm:6.12.2"
-  dependencies:
-    "@codemirror/state": "npm:^6.0.0"
-    "@codemirror/view": "npm:^6.23.0"
-    "@lezer/common": "npm:^1.5.0"
-    "@lezer/highlight": "npm:^1.0.0"
-    "@lezer/lr": "npm:^1.0.0"
-    style-mod: "npm:^4.0.0"
-  checksum: 10c0/7a167eca996970f08a58b864b3ec37246c152c37cb4a31dcf13d6154232b968c45e0e17296050784ecc279100c2b40313f26681164d6628f6a6e9b8927ae58a7
   languageName: node
   linkType: hard
 
@@ -5966,7 +5952,7 @@ __metadata:
     gatsby-transformer-sharp: "npm:5.16.0"
     hex-rgb: "npm:4.3.0"
     markdown-to-jsx: "npm:7.7.13"
-    posthog-js: "npm:1.352.1"
+    posthog-js: "npm:1.356.1"
     react: "npm:18.3.1"
     react-confetti: "npm:6.4.0"
     react-docgen-typescript: "npm:2.4.0"
@@ -10517,10 +10503,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@posthog/types@npm:1.352.1":
-  version: 1.352.1
-  resolution: "@posthog/types@npm:1.352.1"
-  checksum: 10c0/4c2ffe4239b398bc2a33ee41519dbe10f307db2296597464b697c4f23b29a084a311f646220fe64e4497c411e0b6747d95fe5ce2ad2d4c295ab722c5f32ea26f
+"@posthog/types@npm:1.356.1":
+  version: 1.356.1
+  resolution: "@posthog/types@npm:1.356.1"
+  checksum: 10c0/456aa3a05b1060feefd48ec8154c3d731b26859313c312f7b9b754c2d646f07f7bbe242ded8d342955abbd427ed4859685c9bc6df438313d890f41719b9d8a3f
   languageName: node
   linkType: hard
 
@@ -12229,9 +12215,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sanity/ui@npm:3.1.11":
-  version: 3.1.11
-  resolution: "@sanity/ui@npm:3.1.11"
+"@sanity/ui@npm:3.1.13":
+  version: 3.1.13
+  resolution: "@sanity/ui@npm:3.1.13"
   dependencies:
     "@floating-ui/react-dom": "npm:^2.1.6"
     "@juggle/resize-observer": "npm:^3.4.0"
@@ -12247,7 +12233,7 @@ __metadata:
     react-dom: ^18 || >=19.0.0-0
     react-is: ^18 || >=19.0.0-0
     styled-components: ^5.2 || ^6
-  checksum: 10c0/a7c65c56552e89ade90aa0e987cbb02a97345dfa520a7e13fa7c1ff77c2a90cd0ae5b0480ef3d47f750525aa799288ba4eb9406fe997c6f9d39d11a1c485c2d3
+  checksum: 10c0/a199145d6528c201728eb8e3bb75fb98dbe995d5c73f2457dd86e62383c9744aae23ddd208152e300eda81d7f9ca8dca7e1a05dec5349129ecd5e975b90ca991
   languageName: node
   linkType: hard
 
@@ -34377,9 +34363,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"posthog-js@npm:1.352.1":
-  version: 1.352.1
-  resolution: "posthog-js@npm:1.352.1"
+"posthog-js@npm:1.356.1":
+  version: 1.356.1
+  resolution: "posthog-js@npm:1.356.1"
   dependencies:
     "@opentelemetry/api": "npm:^1.9.0"
     "@opentelemetry/api-logs": "npm:^0.208.0"
@@ -34387,14 +34373,14 @@ __metadata:
     "@opentelemetry/resources": "npm:^2.2.0"
     "@opentelemetry/sdk-logs": "npm:^0.208.0"
     "@posthog/core": "npm:1.23.1"
-    "@posthog/types": "npm:1.352.1"
+    "@posthog/types": "npm:1.356.1"
     core-js: "npm:^3.38.1"
     dompurify: "npm:^3.3.1"
     fflate: "npm:^0.4.8"
     preact: "npm:^10.28.2"
     query-selector-shadow-dom: "npm:^1.0.1"
     web-vitals: "npm:^5.1.0"
-  checksum: 10c0/f849251f4460d5155e7ab7c8c672aca756c2bd0e16058c4dbc5989ed84cc34299b80009b7ae5ce297342d45dc48be4e774e34f042bd99efb3043429d80dfa63b
+  checksum: 10c0/f32fdd9b560d231c33831a8099fa97c5ca8ab05f4f491356efbfe2fec979a1ecf42abd4b2a22c6bd0d37f7fe28f975cd493ed84984b26df02cabe09456e6841b
   languageName: node
   linkType: hard
 
@@ -38794,13 +38780,13 @@ __metadata:
     "@codemirror/lang-javascript": "npm:^6.2.4"
     "@codemirror/lang-json": "npm:^6.0.2"
     "@codemirror/lang-sass": "npm:^6.0.2"
-    "@codemirror/language": "npm:6.12.1"
+    "@codemirror/language": "npm:6.12.2"
     "@codemirror/legacy-modes": "npm:^6.5.2"
     "@codemirror/state": "npm:6.5.4"
     "@codemirror/view": "npm:6.39.15"
     "@entur/icons": "workspace:^"
     "@sanity/eslint-config-studio": "npm:5.0.2"
-    "@sanity/ui": "npm:3.1.11"
+    "@sanity/ui": "npm:3.1.13"
     "@sanity/vision": "npm:4.19.0"
     "@types/react": "npm:18.3.24"
     eslint: "npm:9.26.0"

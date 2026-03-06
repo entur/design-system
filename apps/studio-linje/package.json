@@ -22,12 +22,12 @@
     "@codemirror/lang-javascript": "^6.2.4",
     "@codemirror/lang-json": "^6.0.2",
     "@codemirror/lang-sass": "^6.0.2",
-    "@codemirror/language": "6.12.1",
+    "@codemirror/language": "6.12.2",
     "@codemirror/legacy-modes": "^6.5.2",
     "@codemirror/state": "6.5.4",
     "@codemirror/view": "6.39.15",
     "@entur/icons": "workspace:^",
-    "@sanity/ui": "3.1.11",
+    "@sanity/ui": "3.1.13",
     "@sanity/vision": "4.19.0",
     "react": "18.3.1",
     "react-dom": "18.3.1",
@@ -45,6 +45,6 @@
   "resolutions": {
     "@codemirror/state": "6.5.4",
     "@codemirror/view": "6.39.15",
-    "@codemirror/language": "6.12.1"
+    "@codemirror/language": "6.12.2"
   }
 }
