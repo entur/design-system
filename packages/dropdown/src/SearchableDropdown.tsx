@@ -31,6 +31,10 @@ import { DropdownFieldAppendix } from './components/FieldComponents';
 import { DropdownProps } from './Dropdown';
 import { useResolvedItems } from './useResolvedItems';
 import {
+  getActiveElement,
+  useShadowDomEnvironment,
+} from './useShadowDomEnvironment';
+import {
   clamp,
   EMPTY_INPUT,
   getA11yStatusMessage,
@@ -114,6 +118,7 @@ export const SearchableDropdown = React.forwardRef(
     const [showSelectedItem, setShowSelectedItem] = useState(value !== null);
     const [lastHighlightedIndex, setLastHighlightedIndex] = useState(0);
     const inputRef = useRef<HTMLInputElement>(null);
+    const environment = useShadowDomEnvironment(inputRef);
 
     const {
       items: normalizedItems,
@@ -136,9 +141,13 @@ export const SearchableDropdown = React.forwardRef(
     };
 
     const inputHasFocus =
-      typeof document !== 'undefined'
-        ? inputRef?.current === document?.activeElement
-        : false;
+      typeof document !== 'undefined' &&
+      inputRef.current ===
+        getActiveElement(
+          (inputRef.current?.getRootNode() ?? document) as
+            | Document
+            | ShadowRoot,
+        );
 
     useEffect(() => {
       filterListItems({ inputValue });
@@ -230,6 +239,7 @@ export const SearchableDropdown = React.forwardRef(
       itemToString,
       selectedItem: value,
       stateReducer,
+      ...(environment && { environment }),
       onInputValueChange(changes) {
         updateListItems({ inputValue: changes.inputValue });
       },

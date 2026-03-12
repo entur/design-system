@@ -49,6 +49,7 @@ import {
 } from './utils';
 
 import { NormalizedDropdownItemType } from './types';
+import { useShadowDomEnvironment } from './useShadowDomEnvironment';
 
 import './Dropdown.scss';
 
@@ -170,6 +171,7 @@ export const MultiSelect = React.forwardRef(
   ) => {
     const [lastHighlightedIndex, setLastHighlightedIndex] = React.useState(0);
     const inputRef = useRef<HTMLInputElement>(null);
+    const environment = useShadowDomEnvironment(inputRef);
 
     useEffect(() => {
       //@ts-expect-error this is done to aid developers debug wrong prop usage
@@ -269,6 +271,7 @@ export const MultiSelect = React.forwardRef(
       // @ts-expect-error prop missing from library types
       itemToString,
       itemToKey,
+      ...(environment && { environment }),
       onSelectedItemsChange({ selectedItems: newSelectedItems }) {
         onChange(newSelectedItems);
       },
@@ -361,6 +364,7 @@ export const MultiSelect = React.forwardRef(
       itemToString,
       selectedItem: null,
       stateReducer,
+      ...(environment && { environment }),
       onInputValueChange(changes) {
         updateListItems({ inputValue: changes.inputValue });
       },
