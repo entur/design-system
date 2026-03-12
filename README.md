@@ -25,7 +25,7 @@ The monorepo is divided into `packages` and `apps`. `packages` contains all pack
 
 The monorepo needs the following tools to run properly:
 
-- NodeJS 20.19.4
+- NodeJS 24.14.0
 - yarn 4.9.3
 - npm (for publishing)
 - MacOS???
