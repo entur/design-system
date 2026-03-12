@@ -49,7 +49,7 @@
     "apps/*"
   ],
   "engines": {
-    "node": "20.19.4"
+    "node": "24.14.0"
   },
   "browserslist": [
     "cover 90% in NO",
@@ -73,7 +73,7 @@
     "@testing-library/react": "^10.4.9",
     "@testing-library/user-event": "14.6.1",
     "@types/jest-axe": "3.5.9",
-    "@types/node": "^20",
+    "@types/node": "^24",
     "@types/react": "17.0.88",
     "@types/react-dom": "17.0.26",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
