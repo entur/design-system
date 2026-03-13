@@ -30,6 +30,9 @@ coverage
 .vscode
 .idea
 
+# Claude Code
+.claude
+
 ## Local test environment
 TestBench.tsx
 content/components/testin.mdx
