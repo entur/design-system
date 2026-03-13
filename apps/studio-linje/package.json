@@ -41,10 +41,5 @@
     "eslint": "9.26.0",
     "prettier": "3.8.1",
     "typescript": "5.9.3"
-  },
-  "resolutions": {
-    "@codemirror/state": "6.5.4",
-    "@codemirror/view": "6.39.15",
-    "@codemirror/language": "6.12.1"
   }
 }
