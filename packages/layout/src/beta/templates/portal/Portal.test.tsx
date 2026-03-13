@@ -1,6 +1,7 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import { Template } from '..';
+import { useSidebarCollapsed } from '../SidebarContext';
 
 test('Template.Portal renders expected regions and forwards props', () => {
   const { getByTestId, container } = render(
@@ -64,4 +65,153 @@ test('Template.Portal.StatusBar renders and spans full width', () => {
     'eds-layout-template-portal__status-bar',
     'custom',
   );
+});
+
+test('Sidebar without collapsible has no toggle button', () => {
+  const { queryByRole } = render(
+    <Template.Portal>
+      <Template.Portal.Sidebar>
+        <Template.Portal.Sidebar.Navigation>
+          Nav
+        </Template.Portal.Sidebar.Navigation>
+      </Template.Portal.Sidebar>
+      <Template.Portal.Main />
+    </Template.Portal>,
+  );
+
+  expect(queryByRole('button')).toBeNull();
+});
+
+test('Collapsible sidebar renders toggle button', () => {
+  const { getByRole } = render(
+    <Template.Portal>
+      <Template.Portal.Sidebar collapsible>
+        <Template.Portal.Sidebar.Navigation>
+          Nav
+        </Template.Portal.Sidebar.Navigation>
+      </Template.Portal.Sidebar>
+      <Template.Portal.Main />
+    </Template.Portal>,
+  );
+
+  const toggle = getByRole('button');
+  expect(toggle).toHaveClass('eds-layout-template-sidebar__collapse-toggle');
+  expect(toggle).toHaveAttribute('aria-expanded', 'true');
+  expect(toggle).toHaveAttribute('aria-label', 'Lukk sidemeny');
+});
+
+test('Uncontrolled collapsible sidebar toggles on click', () => {
+  const { getByRole, getByTestId } = render(
+    <Template.Portal>
+      <Template.Portal.Sidebar collapsible data-testid="sidebar">
+        <Template.Portal.Sidebar.Navigation>
+          Nav content
+        </Template.Portal.Sidebar.Navigation>
+      </Template.Portal.Sidebar>
+      <Template.Portal.Main />
+    </Template.Portal>,
+  );
+
+  const sidebar = getByTestId('sidebar');
+  expect(sidebar).not.toHaveClass('eds-layout-template-sidebar--collapsed');
+
+  const toggle = getByRole('button');
+  fireEvent.click(toggle);
+
+  expect(sidebar).toHaveClass('eds-layout-template-sidebar--collapsed');
+  expect(toggle).toHaveAttribute('aria-expanded', 'false');
+  expect(toggle).toHaveAttribute('aria-label', 'Åpne sidemeny');
+
+  fireEvent.click(toggle);
+
+  expect(sidebar).not.toHaveClass('eds-layout-template-sidebar--collapsed');
+  expect(toggle).toHaveAttribute('aria-expanded', 'true');
+  expect(toggle).toHaveAttribute('aria-label', 'Lukk sidemeny');
+});
+
+test('Controlled collapsible sidebar respects collapsed prop and fires onCollapseToggle', () => {
+  const onCollapseToggle = jest.fn();
+
+  const { getByRole, getByTestId, rerender } = render(
+    <Template.Portal>
+      <Template.Portal.Sidebar
+        collapsible
+        collapsed={false}
+        onCollapseToggle={onCollapseToggle}
+        data-testid="sidebar"
+      >
+        <Template.Portal.Sidebar.Navigation>
+          Nav content
+        </Template.Portal.Sidebar.Navigation>
+      </Template.Portal.Sidebar>
+      <Template.Portal.Main />
+    </Template.Portal>,
+  );
+
+  const sidebar = getByTestId('sidebar');
+  expect(sidebar).not.toHaveClass('eds-layout-template-sidebar--collapsed');
+
+  const toggle = getByRole('button');
+  fireEvent.click(toggle);
+  expect(onCollapseToggle).toHaveBeenCalledWith(true);
+
+  rerender(
+    <Template.Portal>
+      <Template.Portal.Sidebar
+        collapsible
+        collapsed={true}
+        onCollapseToggle={onCollapseToggle}
+        data-testid="sidebar"
+      >
+        <Template.Portal.Sidebar.Navigation>
+          Nav content
+        </Template.Portal.Sidebar.Navigation>
+      </Template.Portal.Sidebar>
+      <Template.Portal.Main />
+    </Template.Portal>,
+  );
+
+  expect(sidebar).toHaveClass('eds-layout-template-sidebar--collapsed');
+  expect(toggle).toHaveAttribute('aria-expanded', 'false');
+});
+
+test('Collapsed sidebar sets --eds-sidebar-width inline style', () => {
+  const { getByTestId, getByRole } = render(
+    <Template.Portal>
+      <Template.Portal.Sidebar collapsible data-testid="sidebar">
+        <Template.Portal.Sidebar.Navigation>
+          Nav
+        </Template.Portal.Sidebar.Navigation>
+      </Template.Portal.Sidebar>
+      <Template.Portal.Main />
+    </Template.Portal>,
+  );
+
+  const sidebar = getByTestId('sidebar');
+  expect(sidebar.style.getPropertyValue('--eds-sidebar-width')).toBe('');
+
+  fireEvent.click(getByRole('button'));
+  expect(sidebar.style.getPropertyValue('--eds-sidebar-width')).toBe('2rem');
+});
+
+test('useSidebarCollapsed returns correct value inside collapsible sidebar children', () => {
+  const CollapsedIndicator = () => {
+    const { isCollapsed } = useSidebarCollapsed();
+    return <span data-testid="indicator">{String(isCollapsed)}</span>;
+  };
+
+  const { getByTestId, getByRole } = render(
+    <Template.Portal>
+      <Template.Portal.Sidebar collapsible>
+        <CollapsedIndicator />
+      </Template.Portal.Sidebar>
+      <Template.Portal.Main />
+    </Template.Portal>,
+  );
+
+  expect(getByTestId('indicator').textContent).toBe('false');
+
+  fireEvent.click(getByRole('button'));
+
+  expect(getByTestId('indicator').textContent).toBe('true');
 });
