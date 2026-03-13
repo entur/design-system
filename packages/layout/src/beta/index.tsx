@@ -6,7 +6,7 @@ import './index.scss';
 export { Grid, GridItem } from './Grid';
 export { LayoutWrapper, useLayoutValues } from './LayoutWrapper';
 export { Flex, FlexSpacer } from './Flex';
-export { Template } from './templates';
+export { Template, useSidebarCollapsed } from './templates';
 export type {
   GridProps,
   GridOwnProps,
