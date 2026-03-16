@@ -39,6 +39,10 @@ export type TextAreaProps = {
    * @default false
    */
   disableLabelAnimation?: boolean;
+  /** Kontrollerer resize-oppførselen til tekstområdet
+   * @default "vertical"
+   */
+  resize?: 'vertical' | 'none';
 } & React.TextareaHTMLAttributes<HTMLTextAreaElement>;
 
 export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
@@ -56,6 +60,7 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
       labelTooltipPlacement,
       onChange,
       disableLabelAnimation,
+      resize,
       ...rest
     },
     ref: React.Ref<HTMLTextAreaElement>,
@@ -88,6 +93,7 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
           aria-labelledby={textAreaId}
           onChange={onChange}
           variant={variant}
+          resize={resize}
           {...rest}
         />
       </BaseFormControl>
@@ -99,10 +105,14 @@ type TextAreaBaseProps = {
   readOnly?: boolean;
   disabled?: boolean;
   variant?: VariantType | typeof error | typeof info;
+  resize?: 'vertical' | 'none';
 } & React.TextareaHTMLAttributes<HTMLTextAreaElement>;
 
 const TextAreaBase = React.forwardRef<HTMLTextAreaElement, TextAreaBaseProps>(
-  ({ readOnly, disabled, onChange, value, variant, ...rest }, ref) => {
+  (
+    { readOnly, disabled, onChange, value, variant, resize, style, ...rest },
+    ref,
+  ) => {
     const contextVariant = useVariant();
     const currentVariant = variant || contextVariant;
     const { isFilled: isInputFilled, setFilled: setFiller } =
@@ -139,6 +149,7 @@ const TextAreaBase = React.forwardRef<HTMLTextAreaElement, TextAreaBaseProps>(
         onChange={handleChange}
         value={value}
         aria-invalid={currentVariant === 'error'}
+        style={resize ? { ...style, resize } : style}
         {...rest}
       />
     );
