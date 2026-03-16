@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.5.0](https://github.com/entur/design-system/compare/@entur/layout@3.4.2...@entur/layout@3.5.0) (2026-03-16)
+
+### Features
+
+- **layout/beta/sidebar:** add collapsible support to Template.Portal.Sidebar ([d2085b1](https://github.com/entur/design-system/commit/d2085b136933d0ba5855d12cb399e45965a57ab8))
+
 ## [3.4.1](https://github.com/entur/design-system/compare/@entur/layout@3.4.0...@entur/layout@3.4.1) (2026-02-20)
 
 **Note:** Version bump only for package @entur/layout

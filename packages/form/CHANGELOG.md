@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.3.0](https://github.com/entur/design-system/compare/@entur/form@9.2.7...@entur/form@9.3.0) (2026-03-16)
+
+### Bug Fixes
+
+- **form/segmented control:** correct onChange type to not include FormEventHandler ([4f07bc5](https://github.com/entur/design-system/commit/4f07bc55cd88b3e2ea59ed6e7b87174a31803615))
+
+### Features
+
+- **form/text area:** add resize prop to TextArea ([c382a05](https://github.com/entur/design-system/commit/c382a05fcb7fcfd454ab977594a427580bda98c2))
+
 ## [9.2.6](https://github.com/entur/design-system/compare/@entur/form@9.2.5...@entur/form@9.2.6) (2026-02-20)
 
 ### Bug Fixes

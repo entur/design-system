@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.9.3](https://github.com/entur/design-system/compare/studio-linje@1.9.2...studio-linje@1.9.3) (2026-03-16)
+
+### Bug Fixes
+
+- **sanity:** deduplicate @codemirror/state to fix CodeInput crash ([055a147](https://github.com/entur/design-system/commit/055a1476151abcc2a640353bea0b8e1db306813e))
+
 ## [1.9.1](https://github.com/entur/design-system/compare/studio-linje@1.9.0...studio-linje@1.9.1) (2026-02-20)
 
 **Note:** Version bump only for package studio-linje
