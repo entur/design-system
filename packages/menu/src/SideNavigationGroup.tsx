@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { BaseExpand, ExpandArrow } from '@entur/expand';
 import { useSideNavigationContext } from './CollapsibleSideNavigation';
 import { useShowDelayedLabel } from './useShowDelayedLabel';
-import { useControllableProp } from './useControllableProp';
+import { useControllableProp } from '@entur/utils';
 
 export type SideNavigationGroupProps = {
   /** Skal menygruppen være ekspandert by default? Kun relevant om komponenten ikke er kontrollert

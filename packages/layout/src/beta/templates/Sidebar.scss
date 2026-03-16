@@ -1,7 +1,19 @@
+@use '@entur/tokens/dist/styles.scss' as t;
+
 .eds-layout-template-sidebar {
-  padding: var(--eds-sidebar-padding, 1rem);
+  padding: var(--eds-sidebar-padding, 2rem);
   height: 100%;
   width: var(--eds-sidebar-width, 20rem);
+
+  &--collapsible {
+    overflow: hidden;
+    contain: inline-size;
+    transition: width ease-in-out t.$timings-medium;
+  }
+
+  &--collapsed {
+    padding: var(--eds-sidebar-padding, 2rem) 0;
+  }
 }
 
 .eds-layout-template-sidebar--plain {
@@ -10,10 +22,68 @@
 
 .eds-layout-template-sidebar__navigation {
   flex: 1 1 auto;
-  margin-left: calc(-1 * var(--eds-sidebar-padding, 1rem));
-  margin-right: calc(-1 * var(--eds-sidebar-padding, 1rem));
+  margin-left: calc(-1 * var(--eds-sidebar-padding, 2rem));
+  margin-right: calc(-1 * var(--eds-sidebar-padding, 2rem));
 }
 
 .eds-layout-template-sidebar__footer {
   margin-top: auto;
+}
+
+.eds-layout-template-sidebar__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--m);
+  flex: 1 0 auto;
+  min-width: calc(var(--eds-sidebar-width, 20rem) - 2 * var(--eds-sidebar-padding, 2rem));
+  opacity: 1;
+  transition: opacity ease-in t.$timings-fast t.$timings-medium;
+
+  .eds-layout-template-sidebar--collapsed & {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity ease-out t.$timings-fast, visibility 0s t.$timings-fast;
+  }
+}
+
+.eds-layout-template-sidebar-wrapper {
+  position: relative;
+}
+
+.eds-layout-template-sidebar__collapse-toggle {
+  position: absolute;
+  right: -1rem;
+  bottom: 2rem;
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  background-color: var(--basecolors-frame-default);
+  color: var(--text-dark);
+  box-shadow: t.$shadows-box-shadow;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: t.$z-indexes-sticky;
+  padding: 0;
+
+  .eds-contrast & {
+    background-color: var(--basecolors-frame-contrastalt);
+    color: var(--basecolors-text-light);
+  }
+
+  svg {
+    margin: 0;
+  }
+
+  &:focus-visible {
+    outline: t.$outlines-focus;
+    outline-color: var(--basecolors-stroke-focus-standard);
+    outline-offset: t.$outline-offsets-focus;
+
+    .eds-contrast & {
+      outline-color: var(--basecolors-stroke-focus-contrast);
+    }
+  }
 }
