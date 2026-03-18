@@ -66,7 +66,11 @@ export const Drawer: React.FC<DrawerProps> = ({
     <ConditionalWrapper
       condition={overlay}
       wrapper={(children: React.ReactNode) => (
-        <ModalOverlay open={open} onDismiss={onDismiss} aria-labelledby={titleId}>
+        <ModalOverlay
+          open={open}
+          onDismiss={onDismiss}
+          aria-labelledby={titleId}
+        >
           {children}
         </ModalOverlay>
       )}
