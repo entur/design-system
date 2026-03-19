@@ -3,10 +3,13 @@
 .eds-layout-template-sidebar {
   padding: var(--eds-sidebar-padding, 2rem);
   height: 100%;
+  max-height: 100dvh;
   width: var(--eds-sidebar-width, 20rem);
+  position: sticky;
+  top: 0;
 
   &--collapsible {
-    overflow: hidden;
+    overflow-x: hidden;
     contain: inline-size;
     transition: width ease-in-out t.$timings-medium;
   }
@@ -22,8 +25,16 @@
 
 .eds-layout-template-sidebar__navigation {
   flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255 255 255 / 0.3) transparent;
   margin-left: calc(-1 * var(--eds-sidebar-padding, 2rem));
   margin-right: calc(-1 * var(--eds-sidebar-padding, 2rem));
+
+  .eds-layout-template-sidebar--plain & {
+    scrollbar-color: rgba(0 0 0 / 0.2) transparent;
+  }
 }
 
 .eds-layout-template-sidebar__footer {
@@ -34,7 +45,8 @@
   display: flex;
   flex-direction: column;
   gap: var(--m);
-  flex: 1 0 auto;
+  flex: 1 1 0;
+  min-height: 0;
   min-width: calc(var(--eds-sidebar-width, 20rem) - 2 * var(--eds-sidebar-padding, 2rem));
   opacity: 1;
   transition: opacity ease-in t.$timings-fast t.$timings-medium;

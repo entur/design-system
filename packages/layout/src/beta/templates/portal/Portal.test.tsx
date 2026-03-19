@@ -143,6 +143,28 @@ test('Controlled collapsible sidebar respects collapsed prop and fires onCollaps
   expect(toggle).toHaveAttribute('aria-expanded', 'false');
 });
 
+test('Sidebar.Data renders as Flex column with gap', () => {
+  const { getByTestId } = render(
+    <Template.Portal>
+      <Template.Portal.Sidebar>
+        <Template.Portal.Sidebar.Data data-testid="data">
+          <div>Item 1</div>
+          <div>Item 2</div>
+        </Template.Portal.Sidebar.Data>
+        <Template.Portal.Sidebar.Navigation>
+          Nav
+        </Template.Portal.Sidebar.Navigation>
+      </Template.Portal.Sidebar>
+      <Template.Portal.Main />
+    </Template.Portal>,
+  );
+
+  const data = getByTestId('data');
+  expect(data).toHaveClass('eds-layout-flex');
+  expect(data.style.getPropertyValue('--flex-direction')).toBe('column');
+  expect(data.style.getPropertyValue('--flex-gap')).toBe('var(--s)');
+});
+
 test('Collapsed sidebar sets --eds-sidebar-width inline style', () => {
   const { getByTestId } = render(
     <Template.Portal>
