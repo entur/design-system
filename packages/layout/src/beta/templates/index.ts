@@ -11,8 +11,6 @@ import type {
   SidebarSectionProps,
 } from './Sidebar';
 
-export { useSidebarCollapsed } from './SidebarContext';
-
 export type TemplateComponent = {
   Portal: PortalComponent;
 };

@@ -1,22 +1,19 @@
 import React from 'react';
 import type { PolymorphicComponentProps } from '@entur/utils';
-import { useControllableProp } from '@entur/utils';
 import classNames from 'classnames';
 import { LeftArrowIcon, RightArrowIcon } from '@entur/icons';
 import { Contrast } from '../../Contrast';
 import { Flex } from '../Flex';
 import { Grid } from '../Grid';
-import { SidebarContext } from './SidebarContext';
 import './Sidebar.scss';
 
 type SidebarOwnProps = {
   /** Toggle contrast styling for the sidebar */
   contrast?: boolean;
-  /** Enable collapse functionality */
-  collapsible?: boolean;
-  /** Controlled collapsed state */
+  /** Controlled collapsed state. When provided, the sidebar becomes
+   * collapsible and a toggle button is rendered. */
   collapsed?: boolean;
-  /** Callback when the sidebar is toggled */
+  /** Callback when the collapse toggle is clicked */
   onCollapseToggle?: (collapsed: boolean) => void;
   /** aria-label for the toggle button when the sidebar is collapsed
    * @default 'Åpne sidemeny'
@@ -155,7 +152,6 @@ const SidebarRoot = React.forwardRef(
       className,
       style,
       contrast = true,
-      collapsible = false,
       collapsed,
       onCollapseToggle,
       openSidebarAriaLabel = 'Åpne sidemeny',
@@ -165,18 +161,8 @@ const SidebarRoot = React.forwardRef(
     }: SidebarProps<E>,
     ref?: React.Ref<Element>,
   ) => {
-    const handleCollapseToggle: (value?: boolean) => void = value => {
-      if (value === undefined || !onCollapseToggle) {
-        return;
-      }
-      onCollapseToggle(value);
-    };
-
-    const [isCollapsed, setIsCollapsed] = useControllableProp({
-      prop: collapsible ? collapsed : undefined,
-      defaultValue: false,
-      updater: handleCollapseToggle,
-    });
+    const collapsible = collapsed !== undefined;
+    const isCollapsed = collapsed ?? false;
 
     const WrapperElement = contrast ? Contrast : 'div';
 
@@ -218,27 +204,25 @@ const SidebarRoot = React.forwardRef(
         colSpan="1 / 2"
         className="eds-layout-template-sidebar-wrapper"
       >
-        <SidebarContext.Provider value={{ isCollapsed }}>
-          <Flex
-            ref={ref}
-            as={as || defaultSidebarElement}
-            direction="column"
-            gap="m"
-            className={sidebarClassNames}
-            style={collapsedStyle}
-            {...rest}
-          >
-            <div className="eds-layout-template-sidebar__content">
-              {children}
-            </div>
-          </Flex>
+        <Flex
+          ref={ref}
+          as={as || defaultSidebarElement}
+          direction="column"
+          gap="m"
+          className={sidebarClassNames}
+          style={collapsedStyle}
+          {...rest}
+        >
+          <div className="eds-layout-template-sidebar__content">{children}</div>
+        </Flex>
+        {onCollapseToggle && (
           <CollapseToggle
             isCollapsed={isCollapsed}
-            onToggle={() => setIsCollapsed(!isCollapsed)}
+            onToggle={() => onCollapseToggle(!isCollapsed)}
             openLabel={openSidebarAriaLabel}
             closeLabel={closeSidebarAriaLabel}
           />
-        </SidebarContext.Provider>
+        )}
       </Grid.Item>
     );
   },
