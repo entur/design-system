@@ -2,7 +2,6 @@ import React from 'react';
 import type { PolymorphicComponentProps } from '@entur/utils';
 import classNames from 'classnames';
 import { LeftArrowIcon, RightArrowIcon } from '@entur/icons';
-import { Contrast } from '../../Contrast';
 import { Flex } from '../Flex';
 import { Grid } from '../Grid';
 import './Sidebar.scss';
@@ -164,8 +163,6 @@ const SidebarRoot = React.forwardRef(
     const collapsible = collapsed !== undefined;
     const isCollapsed = collapsed ?? false;
 
-    const WrapperElement = contrast ? Contrast : 'div';
-
     const sidebarClassNames = classNames(
       'eds-layout-template-sidebar',
       {
@@ -176,9 +173,14 @@ const SidebarRoot = React.forwardRef(
       className,
     );
 
+    const wrapperClassNames = classNames({
+      'eds-contrast': contrast,
+      'eds-layout-template-sidebar-wrapper': collapsible,
+    });
+
     if (!collapsible) {
       return (
-        <Grid.Item as={WrapperElement} colSpan="1 / 2">
+        <Grid.Item className={wrapperClassNames} colSpan="1 / 2">
           <Flex
             ref={ref}
             as={as || defaultSidebarElement}
@@ -199,11 +201,7 @@ const SidebarRoot = React.forwardRef(
       : style;
 
     return (
-      <Grid.Item
-        as={WrapperElement}
-        colSpan="1 / 2"
-        className="eds-layout-template-sidebar-wrapper"
-      >
+      <Grid.Item className={wrapperClassNames} colSpan="1 / 2">
         <Flex
           ref={ref}
           as={as || defaultSidebarElement}
