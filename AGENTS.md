@@ -113,7 +113,7 @@ optional breaking changes
 ```
 
 - **type**: `fix`, `feat`, `chore`, `docs`, `refactor`, etc. Drives version bumps: `fix` → patch, `feat` → minor, `BREAKING CHANGE` → major. `fix` and `feat` are ONLY for code that affects consumers (i.e. within `packages/`). Use `test`, `refactor`, `chore`, etc. for non-consumer-facing changes.
-- **scope**: `package/component` format in lowercase. Single component: `travel/travel tag`. Entire package: `travel`. Entire repo: `root`. Documentation site: `website`. Multiple: `travel/travel tag, travel/travel header`.
+- **scope**: `package/component` format in lowercase. For components inside a `beta/` directory, use `package/beta/component` (e.g. `layout/beta/sidebar`). Single component: `travel/travel tag`. Beta component: `layout/beta/sidebar`. Entire package: `travel`. Entire repo: `root`. Documentation site: `website`. Multiple: `travel/travel tag, travel/travel header`.
 - **short description**: one sentence, imperative form (e.g. "add new variant", not "added new variant").
 - **Descriptions for `feat` and `fix`**: These end up in the changelog and are read by consumers. Keep them **consumer-focused** — explain what the change means for them and how to use it. Avoid internal technical details (implementation approach, refactoring rationale, what was removed internally).
 
