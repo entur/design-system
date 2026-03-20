@@ -1,0 +1,10 @@
+name: Design System Usage Scan
+
+on:
+  workflow_dispatch: {}
+
+jobs:
+  placeholder:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "placeholder — real workflow lives on feature branch"
