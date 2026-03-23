@@ -40,7 +40,13 @@ export const wrapPageElement: GatsbySSR['wrapPageElement'] = ({
   if (props.location.pathname === '/stand') return <>{children}</>;
   if (
     props.location.pathname.replace(/\/$/, '') ===
-    '/ressurser/innsikt/brukerundersokelse'
+      '/ressurser/innsikt/brukerundersokelse' ||
+    props.location.pathname.replace(/\/$/, '') ===
+      '/ressurser/innsikt/brukerundersokelse-utkast' ||
+    props.location.pathname.replace(/\/$/, '') ===
+      '/ressurser/innsikt/ikonanalyse' ||
+    props.location.pathname.replace(/\/$/, '') ===
+      '/ressurser/innsikt/okr-rapport'
   )
     return <>{children}</>;
 

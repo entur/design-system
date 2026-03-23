@@ -1,0 +1,23 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "documentation",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "cd /Users/weiqing/Documents/github/design-system && source ~/.nvm/nvm.sh && nvm use 20 && corepack enable && yarn start:documentation"],
+      "port": 8000
+    },
+    {
+      "name": "code-playground",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "source ~/.nvm/nvm.sh && nvm use 20 && yarn start:code-playground"],
+      "port": 9000
+    },
+    {
+      "name": "sanity-studio",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "source ~/.nvm/nvm.sh && nvm use 20 && yarn --cwd apps/studio-linje dev"],
+      "port": 3333
+    }
+  ]
+}
