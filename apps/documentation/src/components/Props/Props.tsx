@@ -14,7 +14,7 @@ import { ImportStatement } from '@components/Common/ImportStatement';
 import './Props.scss';
 
 // Utility functions for formatting prop types
-// oxlint-disable-next-line no-warning-comments -- Known limitation, tracked for improvement
+// oxlint-disable-next-line no-warning-comments -- Pre-existing follow-up comment discovered during oxlint migration; function needs refinement for component-specific handling
 // TODO removeDeprecatedVariantType only removes deprecated variant types that have VariantType. And it does not check if it removes from the correct component. It should be more specific.
 function removeDeprecatedVariantType(type: string) {
   const deprecatedVariantTypes = ['error', 'danger', 'info'];
