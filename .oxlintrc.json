@@ -27,21 +27,10 @@
     "import/default": "off",
     "import/no-named-as-default": "off",
     "import/no-named-as-default-member": "off",
-    "import/order": [
+    "import/order": "off",
+    "sort-imports": [
       "warn",
-      {
-        "groups": [
-          "builtin",
-          "external",
-          "internal",
-          "parent",
-          "sibling",
-          "index",
-          "type"
-        ],
-        "newlines-between": "always",
-        "alphabetize": { "order": "asc", "caseInsensitive": true }
-      }
+      { "ignoreDeclarationSort": true, "ignoreMemberSort": false }
     ],
 
     "jsx-a11y/click-events-have-key-events": "warn",
