@@ -119,12 +119,12 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
             className="side-navigation__group"
           >
             {subcategoryMenuItems.map(item => (
-              <MenuItem item={item} />
+              <MenuItem key={item.id} item={item} />
             ))}
           </SideNavigationGroup>
         ))}
         {ungrouped.map(item => (
-          <MenuItem item={item} />
+          <MenuItem key={item.id} item={item} />
         ))}
       </EnturSideNavigation>
     </div>

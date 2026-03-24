@@ -53,7 +53,7 @@ export function getSanitizedPath({
       .replaceAll('&', 'og')
       .replace(/\?$/, '')
       .replace(/ +/g, '-')
-      .replace(/[^a-zA-Z0-9\-]+\-/g, '');
+      .replace(/[^a-zA-Z0-9-]+-/g, '');
   }
 
   const sanitizedCategory = sanitizeText(category);

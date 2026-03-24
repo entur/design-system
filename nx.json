@@ -9,7 +9,7 @@
     "configs": [
       "{workspaceRoot}/tsconfig*.json",
       "{workspaceRoot}/package.json",
-      "{workspaceRoot}/.eslintrc",
+      "{workspaceRoot}/.oxlintrc.json",
       "{workspaceRoot}/jest.config.js",
       "{workspaceRoot}/postcss.config.mjs"
     ],
@@ -26,10 +26,6 @@
       "dependsOn": ["^build"],
       "inputs": ["^default", "configs"],
       "outputs": ["{projectRoot}/dist"]
-    },
-    "lint": {
-      "inputs": ["default", "configs"],
-      "cache": true
     },
     "test": {
       "cache": true

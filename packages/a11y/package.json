@@ -19,7 +19,6 @@
   "scripts": {
     "start": "vite build --watch",
     "build": "vite build",
-    "lint": "eslint src",
     "test": "jest"
   },
   "peerDependencies": {
@@ -35,7 +34,6 @@
     "@testing-library/react": "^10.4.9",
     "@testing-library/user-event": "14.6.1",
     "@vitejs/plugin-react": "^5.0.1",
-    "eslint": "^7.32.0",
     "jest": "^29.0.0",
     "jest-environment-jsdom": "^29.0.0",
     "ts-jest": "^29.0.0",
