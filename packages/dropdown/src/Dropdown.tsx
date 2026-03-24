@@ -17,7 +17,7 @@ import {
 
 import { BaseFormControl } from '@entur/form';
 import { space } from '@entur/tokens';
-import { mergeRefs, VariantType } from '@entur/utils';
+import { VariantType, mergeRefs } from '@entur/utils';
 
 import { DropdownList } from './components/DropdownList';
 import { DropdownFieldAppendix } from './components/FieldComponents';

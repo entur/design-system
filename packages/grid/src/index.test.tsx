@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { GridItem, GridContainer } from '.';
+import { GridContainer, GridItem } from '.';
 
 test('GridContainer renders with correct classes, with an additional class', () => {
   const { container } = render(

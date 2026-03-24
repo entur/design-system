@@ -3,7 +3,7 @@ import React from 'react';
 import { useLocale } from '@react-aria/i18n';
 import { useCalendarGrid } from '@react-aria/calendar';
 import { CalendarState } from '@react-stately/calendar';
-import { getWeeksInMonth, CalendarDate } from '@internationalized/date';
+import { CalendarDate, getWeeksInMonth } from '@internationalized/date';
 
 import { useRandomId } from '@entur/utils';
 import { VisuallyHidden } from '@entur/a11y';

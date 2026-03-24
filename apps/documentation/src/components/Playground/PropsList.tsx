@@ -4,10 +4,10 @@ import { AdvancedProps, capitalize } from './playground-utils';
 
 import { Dropdown, NormalizedDropdownItemType } from '@entur/dropdown';
 import {
+  SegmentedChoice,
+  SegmentedControl,
   Switch,
   TextField,
-  SegmentedControl,
-  SegmentedChoice,
 } from '@entur/form';
 
 import './Playground.scss';

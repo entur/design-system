@@ -3,8 +3,8 @@ import { Link } from 'gatsby';
 import classNames from 'classnames';
 import {
   SideNavigation as EnturSideNavigation,
-  SideNavigationItem,
   SideNavigationGroup,
+  SideNavigationItem,
 } from '@entur/menu';
 
 import { SecondaryButton } from '@entur/button';
@@ -12,13 +12,13 @@ import { SearchIcon } from '@entur/icons';
 import { Badge } from '@entur/layout';
 
 import {
-  isActive,
   MenuItem,
-  menuItemComparator,
-  sortSubCategoriesForCategory,
-  removeLeadingAndTrailingSlash,
-  normalizeString,
   getSanitizedPath,
+  isActive,
+  menuItemComparator,
+  normalizeString,
+  removeLeadingAndTrailingSlash,
+  sortSubCategoriesForCategory,
 } from './utils';
 
 import { useSearch } from '../../Search/SearchContext';

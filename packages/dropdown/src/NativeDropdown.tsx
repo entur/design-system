@@ -2,7 +2,7 @@ import React, { forwardRef } from 'react';
 import { BaseFormControl } from '@entur/form';
 import { DownArrowIcon } from '@entur/icons';
 import { LoadingDots } from '@entur/loader';
-import { useRandomId, VariantType } from '@entur/utils';
+import { VariantType, useRandomId } from '@entur/utils';
 
 import { useResolvedItems } from './useResolvedItems';
 import {

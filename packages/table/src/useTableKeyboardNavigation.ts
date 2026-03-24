@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, KeyboardEvent } from 'react';
+import { KeyboardEvent, useEffect, useRef, useState } from 'react';
 import { TableBodyProps, TableRowProps } from './index';
 
 function onTableKeypress(

@@ -2,19 +2,19 @@ import React, { cloneElement, useEffect, useRef, useState } from 'react';
 
 import classNames from 'classnames';
 import {
-  useFloating,
-  autoUpdate,
-  offset,
-  flip,
-  shift,
   arrow,
+  autoUpdate,
+  flip,
   limitShift,
+  offset,
+  shift,
+  useFloating,
 } from '@floating-ui/react';
 
 import { useRandomId } from '@entur/utils';
 import { CloseIcon } from '@entur/icons';
 import { IconButton } from '@entur/button';
-import { space, borderRadiuses } from '@entur/tokens';
+import { borderRadiuses, space } from '@entur/tokens';
 
 import { Placement, standardisePlacement } from './utils';
 

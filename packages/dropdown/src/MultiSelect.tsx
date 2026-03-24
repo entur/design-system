@@ -8,18 +8,18 @@ import React, {
 } from 'react';
 import classNames from 'classnames';
 import {
-  useMultipleSelection,
-  useCombobox,
-  UseComboboxStateChangeOptions,
   UseComboboxState,
+  UseComboboxStateChangeOptions,
+  useCombobox,
+  useMultipleSelection,
 } from 'downshift';
 import {
-  useFloating,
   autoUpdate,
-  offset,
   flip,
+  offset,
   shift,
   size,
+  useFloating,
 } from '@floating-ui/react-dom';
 
 import { VisuallyHidden } from '@entur/a11y';
@@ -36,8 +36,8 @@ import { DropdownList } from './components/DropdownList';
 import { useResolvedItems } from './useResolvedItems';
 import { DropdownProps } from './Dropdown';
 import {
-  clamp,
   EMPTY_INPUT,
+  clamp,
   getA11yStatusMessage,
   isFunctionWithQueryArgument,
   itemToKey,

@@ -9,26 +9,26 @@ import { I18nProvider, useLocale } from '@react-aria/i18n';
 import classNames from 'classnames';
 
 import type {
-  DateValue,
   AriaDatePickerProps,
-  MappedDateValue,
+  DateValue,
   Granularity,
+  MappedDateValue,
 } from '@react-types/datepicker';
 
 import { BaseFormControl, BaseFormControlProps } from '@entur/form';
 import {
   ConditionalWrapper,
+  VariantType,
   mergeRefs,
   useRandomId,
-  VariantType,
 } from '@entur/utils';
 
 import { FieldSegment } from '../shared/FieldSegment';
 import {
-  createCalendar,
   ForcedReturnType,
-  handleOnChange,
+  createCalendar,
   getAdjustedMaxDate,
+  handleOnChange,
   shouldUseAriaAlert,
 } from '../shared/utils';
 

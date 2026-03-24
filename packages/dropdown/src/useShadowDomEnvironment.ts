@@ -1,4 +1,4 @@
-import { useMemo, RefObject } from 'react';
+import { RefObject, useMemo } from 'react';
 import type { Environment } from 'downshift';
 
 /**

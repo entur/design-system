@@ -1,7 +1,7 @@
 import React from 'react';
-import { graphql, Link as GatsbyLink } from 'gatsby';
+import { Link as GatsbyLink, graphql } from 'gatsby';
 import { getGatsbyImageData } from 'gatsby-source-sanity';
-import { NavigationCard, MediaCard } from '@entur/layout';
+import { MediaCard, NavigationCard } from '@entur/layout';
 import { Link } from '@entur/typography';
 import { PrimaryButton, SecondaryButton } from '@entur/button';
 import { getIconByName } from 'src/utils/utils';

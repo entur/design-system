@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Link } from 'gatsby';
 import { graphql } from 'gatsby';
 
-import { Paragraph, Heading2, Link as TextLink } from '@entur/typography';
+import { Heading2, Paragraph, Link as TextLink } from '@entur/typography';
 import { PrimaryButton } from '@entur/button';
 import { ImageDisplay } from '@components/Media/ImageDisplay';
 import { useSettings } from '@providers/SettingsContext';

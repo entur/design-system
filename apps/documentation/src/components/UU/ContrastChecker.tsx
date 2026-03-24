@@ -8,12 +8,12 @@ import {
 import { SecondarySquareButton } from '@entur/button';
 import { flatten } from '../../utils/flatten';
 import {
-  Table,
-  TableHead,
-  TableBody,
-  TableRow,
-  HeaderCell,
   DataCell,
+  HeaderCell,
+  Table,
+  TableBody,
+  TableHead,
+  TableRow,
 } from '@entur/table';
 import {
   CheckIcon,
@@ -21,7 +21,7 @@ import {
   SwitchIcon,
   ValidTicketIcon,
 } from '@entur/icons';
-import { Heading4, CodeText } from '@entur/typography';
+import { CodeText, Heading4 } from '@entur/typography';
 import { CopyButton } from './CopyButton';
 import './ContrastChecker.scss';
 

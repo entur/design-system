@@ -1,7 +1,7 @@
 import { Switch } from '@entur/form';
 import { GridContainer } from '@entur/grid';
 import { Contrast } from '@entur/layout';
-import { colors, space, borderRadiuses } from '@entur/tokens';
+import { borderRadiuses, colors, space } from '@entur/tokens';
 import React from 'react';
 import ColorSwatch from './ColorSwatch';
 

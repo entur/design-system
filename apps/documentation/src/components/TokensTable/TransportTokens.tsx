@@ -1,13 +1,13 @@
 import React from 'react';
 import { TokensTableProps } from './types';
 import {
-  formatVariableByType,
   formatDotToVariable,
+  formatVariableByType,
   sliceTokenKey,
 } from '../../utils/formatVariable';
 import { GridItem } from '@entur/grid';
 import { Heading3, Heading5 } from '@entur/typography';
-import { useSettings, VariableFormat } from '@providers/SettingsContext';
+import { VariableFormat, useSettings } from '@providers/SettingsContext';
 import ColorToken from './ColorToken';
 
 const categorizedTokens = (

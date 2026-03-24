@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, cleanup } from '@testing-library/react';
+import { cleanup, render } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import { Heading } from '../components/Heading';
 import { Text } from '../components/Text';

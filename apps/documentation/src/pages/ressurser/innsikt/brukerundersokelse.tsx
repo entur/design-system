@@ -3,9 +3,9 @@ import classNames from 'classnames';
 
 import { SkipToContent } from '@entur/a11y';
 import {
-  LikeIcon,
-  ConfigurationIcon,
   BackArrowIcon,
+  ConfigurationIcon,
+  LikeIcon,
   StarredIcon,
 } from '@entur/icons';
 import { Contrast } from '@entur/layout';
@@ -19,8 +19,8 @@ import TopNavigationLayout from '../../../layouts/TopNavigationLayout';
 
 import {
   LinjeLines,
-  LinjeTopographicTop,
   LinjeTopographicBottom,
+  LinjeTopographicTop,
 } from '@media/images/frontpage/BackgroundElements';
 
 import DataCard from '@components/Survey/DataCard';
@@ -35,18 +35,18 @@ import SurveySection from '@components/Survey/SurveySection';
 import SurveyTable from '@components/Survey/SurveyTable';
 import TrendBarChart from '@components/Survey/TrendBarChart';
 import {
-  SECTION_NAV,
+  FORBEDRINGSFORSLAG,
+  KOMMUNIKASJON,
+  KONKLUSJON,
+  KVALITATIVE,
   NOKKELTALL,
   OPPSUMMERING,
   RESPONDENTPROFIL,
+  RESPONDENTS_2025,
+  SECTION_NAV,
   TILFREDSHET,
   TRENDER,
   VERDI_IMPACT,
-  KOMMUNIKASJON,
-  KVALITATIVE,
-  FORBEDRINGSFORSLAG,
-  KONKLUSJON,
-  RESPONDENTS_2025,
 } from '@components/Survey/surveyData';
 
 import './brukerundersokelse.scss';

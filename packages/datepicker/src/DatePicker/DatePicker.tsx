@@ -7,11 +7,11 @@ import {
 import { useDatePicker } from '@react-aria/datepicker';
 import { I18nProvider } from '@react-aria/i18n';
 import {
-  useFloating,
-  offset,
-  flip,
-  shift,
   autoUpdate,
+  flip,
+  offset,
+  shift,
+  useFloating,
 } from '@floating-ui/react-dom';
 import FocusLock from 'react-focus-lock';
 import classNames from 'classnames';

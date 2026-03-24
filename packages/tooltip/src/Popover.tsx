@@ -1,19 +1,19 @@
 import React, {
+  MutableRefObject,
   cloneElement,
   createContext,
-  MutableRefObject,
   useContext,
   useEffect,
 } from 'react';
 
 import classNames from 'classnames';
 import {
-  useFloating,
   autoUpdate,
-  offset,
   flip,
-  shift,
   limitShift,
+  offset,
+  shift,
+  useFloating,
 } from '@floating-ui/react-dom';
 
 import { Contrast } from '@entur/layout';

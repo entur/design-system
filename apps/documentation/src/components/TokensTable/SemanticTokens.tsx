@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heading4, Heading3 } from '@entur/typography';
+import { Heading3, Heading4 } from '@entur/typography';
 import { GridItem } from '@entur/grid';
 import {
   formatDotToVariable,

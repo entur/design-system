@@ -6,7 +6,7 @@ import {
   useVariant,
 } from '@entur/form';
 import { DateIcon } from '@entur/icons';
-import { useOnMount, useRandomId, VariantType } from '@entur/utils';
+import { VariantType, useOnMount, useRandomId } from '@entur/utils';
 
 /** @deprecated use variant="information" instead */
 const info = 'info';

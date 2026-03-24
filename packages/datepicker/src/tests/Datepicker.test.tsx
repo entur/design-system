@@ -11,7 +11,7 @@ import {
   parseDateTime,
   toCalendarDate,
 } from '@internationalized/date';
-import { toHaveNoViolations, axe } from 'jest-axe';
+import { axe, toHaveNoViolations } from 'jest-axe';
 
 import { DateField, DatePicker } from '../DatePicker';
 import { ForcedReturnType } from '../shared/utils';

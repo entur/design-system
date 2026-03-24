@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { CodeText, Paragraph } from '@entur/typography';
 import {
-  Table,
-  TableHead,
-  TableBody,
-  TableRow,
-  HeaderCell,
   DataCell,
+  HeaderCell,
+  Table,
+  TableBody,
+  TableHead,
+  TableRow,
 } from '@entur/table';
 
 import { useSettings } from '@providers/SettingsContext';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSiteMetadata } from '../../hooks/use-site-metadata';
-import { useStaticQuery, graphql } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
 
 export type SEOProps = {
   title?: string;

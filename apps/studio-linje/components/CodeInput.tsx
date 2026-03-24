@@ -17,25 +17,25 @@ import { type TextInputProps, set, unset, useFormValue } from 'sanity';
 // CodeMirror core
 import {
   EditorView,
+  highlightActiveLine,
   keymap,
   lineNumbers,
-  highlightActiveLine,
 } from '@codemirror/view';
 import { EditorState, type Extension } from '@codemirror/state';
 import {
   defaultKeymap,
-  historyKeymap,
   history,
+  historyKeymap,
   indentWithTab,
 } from '@codemirror/commands';
 import {
+  StreamLanguage,
+  type StreamParser,
   bracketMatching,
+  defaultHighlightStyle,
   foldGutter,
   indentOnInput,
   syntaxHighlighting,
-  defaultHighlightStyle,
-  StreamLanguage,
-  type StreamParser,
 } from '@codemirror/language';
 import { closeBrackets } from '@codemirror/autocomplete';
 

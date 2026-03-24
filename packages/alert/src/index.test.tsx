@@ -1,6 +1,6 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
-import { BannerAlertBox, ToastAlertBox, SmallAlertBox } from '.';
+import { fireEvent, render } from '@testing-library/react';
+import { BannerAlertBox, SmallAlertBox, ToastAlertBox } from '.';
 
 test('renders banner alert boxes', () => {
   const { getByText } = render(

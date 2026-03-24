@@ -4,8 +4,8 @@ import { CopyableText } from '@entur/alert';
 import BaseCardDesignEntur from '@components/Cards/BaseCardDesignEntur';
 import { useSettings } from '@providers/SettingsContext';
 import {
-  formatVariablePrimitive,
   formatVariableByType,
+  formatVariablePrimitive,
 } from '../../utils/formatVariable';
 import { TokensTableProps } from './types';
 

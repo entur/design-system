@@ -13,12 +13,12 @@ import {
 } from 'downshift';
 import classNames from 'classnames';
 import {
-  useFloating,
   autoUpdate,
-  offset,
   flip,
+  offset,
   shift,
   size,
+  useFloating,
 } from '@floating-ui/react-dom';
 
 import { BaseFormControl } from '@entur/form';
@@ -35,8 +35,8 @@ import {
   useShadowDomEnvironment,
 } from './useShadowDomEnvironment';
 import {
-  clamp,
   EMPTY_INPUT,
+  clamp,
   getA11yStatusMessage,
   isFunctionWithQueryArgument,
   itemToString,

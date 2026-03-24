@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useMemo } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import { useLocation } from '@reach/router';
 import classNames from 'classnames';

@@ -8,7 +8,7 @@ import {
   LinkedinIcon,
   TwitterIcon,
 } from '@entur/icons';
-import { Heading3, LeadParagraph, Link as DSLink } from '@entur/typography';
+import { Link as DSLink, Heading3, LeadParagraph } from '@entur/typography';
 import { colors, space } from '@entur/tokens';
 
 import { Logo } from '@components/Logo/Logo';
