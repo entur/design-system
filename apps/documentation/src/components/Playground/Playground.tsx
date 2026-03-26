@@ -40,7 +40,10 @@ type PlaygroundProps = {
   hideCode?: boolean;
   code: string;
   scope?: Record<string, any>;
+  /** Render the preview scaled down inside a 16:9 frame. E.g. 0.5 = half size. */
+  previewScale?: number;
 };
+
 const Playground: React.FC<PlaygroundProps> = ({
   code,
   scope = {},
@@ -53,6 +56,7 @@ const Playground: React.FC<PlaygroundProps> = ({
   defaultShowEditor = false,
   hideColorModeOption = false,
   hideCode = false,
+  previewScale,
 }) => {
   const { resolvedColorMode } = useSettings();
   const initialColorMode = defaultContrast
@@ -76,6 +80,22 @@ const Playground: React.FC<PlaygroundProps> = ({
   const Element = colorMode === 'contrast' ? Contrast : 'div';
 
   const finalScope = { ...packages, ...documentationComponents, ...scope };
+
+  const scaledPreviewStyle: React.CSSProperties | undefined = previewScale
+    ? {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: `${100 / previewScale}%`,
+        height: `${100 / previewScale}%`,
+        transform: `scale(${previewScale})`,
+        transformOrigin: 'top left',
+        padding: 0,
+        alignItems: 'flex-start',
+        justifyContent: 'flex-start',
+        overflow: 'hidden',
+      }
+    : undefined;
 
   return (
     <LiveProvider
@@ -128,6 +148,7 @@ const Playground: React.FC<PlaygroundProps> = ({
         <Element
           className={classNames('playground__live-preview-container', {
             'playground__live-preview-container--code-closed': !isShowingEditor,
+            'playground__live-preview-container--scaled': previewScale,
           })}
           style={
             hideColorModeOption
@@ -151,7 +172,7 @@ const Playground: React.FC<PlaygroundProps> = ({
         >
           <LivePreview
             className="playground__live-preview"
-            style={{ ...style }}
+            style={scaledPreviewStyle ?? style}
           />
           <LiveError className="playground__live-preview" />
         </Element>

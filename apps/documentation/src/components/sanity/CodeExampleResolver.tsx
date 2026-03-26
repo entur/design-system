@@ -43,6 +43,7 @@ type CodeExampleType = {
     props: SanityPlaygroundProp[];
     playgroundProps?: string;
     hideCode?: boolean;
+    scaledPreview?: boolean;
   };
   playgroundProps?: string;
   plainCode?: CodeContentField;
@@ -151,6 +152,7 @@ export const CodeExampleResolver = ({ value }: CodeExampleProps) => {
           props={selectedProps}
           code={resolvedPlaygroundCode}
           hideCode={playgroundCode?.hideCode}
+          previewScale={playgroundCode?.scaledPreview ? 0.5 : undefined}
           hideColorModeOption={(selectedProps?.length ?? 0) == 0}
           title={title}
         />

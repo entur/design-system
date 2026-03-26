@@ -60,6 +60,13 @@
       flex: 1;
       overflow: visible;
 
+      &--scaled {
+        aspect-ratio: 16 / 9;
+        position: relative;
+        overflow: hidden;
+        padding: 0;
+      }
+
       &:has(+ .playground__props-selector) {
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;

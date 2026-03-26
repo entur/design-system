@@ -69,6 +69,15 @@ export const playgroundCode = defineType({
       initialValue: false,
       fieldset: 'options',
     }),
+    defineField({
+      name: 'scaledPreview',
+      title: 'Vis som sidemal',
+      type: 'boolean',
+      description:
+        'Vis forhåndsvisningen som en nedskalert 16:9-skjerm. Nyttig for full-sides maler som Portal B2B.',
+      initialValue: false,
+      fieldset: 'options',
+    }),
   ],
   preview: {
     select: {
