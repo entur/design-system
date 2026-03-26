@@ -1,17 +1,13 @@
 import React from 'react';
 import { GatsbyBrowser } from 'gatsby';
-import posthog from 'posthog-js';
-import { PostHogProvider } from 'posthog-js/react';
 
 import './src/styles/index.scss';
 
 import { ToastProvider } from '@entur/alert';
 import {
   ConsentProvider,
-  AnalyticsProvider,
   SettingsProvider,
   MediaContextProvider,
-  AnalyticsContext,
   ColorsProvider,
 } from './src/providers';
 import { SearchProvider } from './src/components/Search/SearchContext';
