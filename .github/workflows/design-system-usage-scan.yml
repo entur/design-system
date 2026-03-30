@@ -1,10 +1,284 @@
 name: Design System Usage Scan
 
 on:
+  # Run weekly on Monday at 6:00 UTC
+  schedule:
+    - cron: '0 6 * * 1'
+  # Allow manual triggering
   workflow_dispatch: {}
+  # Run smoke test on PRs that change the scanner
+  pull_request:
+    paths:
+      - 'tools/design-system-scanner/**'
+      - '.github/workflows/design-system-usage-scan.yml'
+
+# Only allow one scan at a time
+concurrency:
+  group: design-system-usage-scan-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
 
 jobs:
-  placeholder:
+  # Smoke test: build and run tests (no secrets needed)
+  smoke-test:
+    if: github.event_name == 'pull_request'
+    name: Build and test scanner
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+
     steps:
-      - run: echo "placeholder — real workflow lives on feature branch"
+      - name: Checkout design-system repository
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        uses: ./.github/actions/install-and-cache-dependencies
+        with:
+          cache-key: scanner-yarn-${{ hashFiles('yarn.lock') }}
+
+      - name: Build scanner
+        run: yarn workspace @entur/design-system-scanner build
+
+      - name: Run tests
+        run: yarn workspace @entur/design-system-scanner test
+
+  # ── Full scan: discover repos → scan in parallel → aggregate ──
+
+  # Step 1: Discover all entur org repos that use @entur/* packages
+  discover:
+    name: Discover repos with @entur/* usage
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    outputs:
+      matrix: ${{ steps.discover.outputs.matrix }}
+      total: ${{ steps.discover.outputs.total }}
+
+    steps:
+      - name: Discover repos via GitHub code search
+        id: discover
+        env:
+          GH_TOKEN: ${{ secrets.SCANNER_PAT }}
+        run: |
+          # Search for repos containing @entur/ in package.json files
+          # The code search API returns up to 1000 results; paginate to collect all
+          repos="[]"
+          page=1
+
+          while true; do
+            result=$(gh api search/code \
+              --method GET \
+              -f q='@entur/ filename:package.json org:entur' \
+              -f per_page=100 \
+              -f page="$page" \
+              --jq '[.items[].repository.full_name]' 2>/dev/null || echo "[]")
+
+            if [ "$result" = "[]" ] || [ -z "$result" ]; then
+              break
+            fi
+
+            repos=$(echo "$repos $result" | jq -s 'add | unique')
+            count=$(echo "$result" | jq 'length')
+
+            if [ "$count" -lt 100 ]; then
+              break
+            fi
+
+            page=$((page + 1))
+          done
+
+          # Remove design-system repo itself and format as matrix
+          matrix=$(echo "$repos" | jq -c '[.[] | select(. != "entur/design-system")]')
+          total=$(echo "$matrix" | jq 'length')
+
+          echo "Found $total repos with @entur/* usage"
+          echo "matrix=$matrix" >> "$GITHUB_OUTPUT"
+          echo "total=$total" >> "$GITHUB_OUTPUT"
+
+  # Step 2: Scan each repo in parallel
+  scan-repo:
+    name: Scan ${{ matrix.repo }}
+    needs: discover
+    if: needs.discover.outputs.total != '0'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        repo: ${{ fromJson(needs.discover.outputs.matrix) }}
+      fail-fast: false
+
+    steps:
+      - name: Checkout design-system (scanner source)
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        uses: ./.github/actions/install-and-cache-dependencies
+        with:
+          cache-key: scanner-yarn-${{ hashFiles('yarn.lock') }}
+          only-for-workspace: '@entur/design-system-scanner'
+
+      - name: Build scanner
+        run: yarn workspace @entur/design-system-scanner build
+
+      - name: Checkout target repo
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ matrix.repo }}
+          token: ${{ secrets.SCANNER_PAT }}
+          path: target-repo
+          fetch-depth: 1
+
+      - name: Fetch repo metadata
+        id: meta
+        env:
+          GH_TOKEN: ${{ secrets.SCANNER_PAT }}
+        run: |
+          meta=$(gh api repos/${{ matrix.repo }} --jq '{
+            default_branch: .default_branch,
+            pushed_at: .pushed_at,
+            html_url: .html_url,
+            archived: .archived,
+            visibility: .visibility,
+            language: .language,
+            created_at: .created_at
+          }')
+
+          echo "default_branch=$(echo "$meta" | jq -r '.default_branch')" >> "$GITHUB_OUTPUT"
+          echo "pushed_at=$(echo "$meta" | jq -r '.pushed_at')" >> "$GITHUB_OUTPUT"
+          echo "html_url=$(echo "$meta" | jq -r '.html_url')" >> "$GITHUB_OUTPUT"
+          echo "archived=$(echo "$meta" | jq -r '.archived')" >> "$GITHUB_OUTPUT"
+          echo "visibility=$(echo "$meta" | jq -r '.visibility')" >> "$GITHUB_OUTPUT"
+          echo "language=$(echo "$meta" | jq -r '.language')" >> "$GITHUB_OUTPUT"
+          echo "created_at=$(echo "$meta" | jq -r '.created_at')" >> "$GITHUB_OUTPUT"
+
+      - name: Run scan
+        if: steps.meta.outputs.archived != 'true'
+        working-directory: tools/design-system-scanner
+        run: |
+          node dist/index.js \
+            --local ../../target-repo \
+            --repo-name "${{ matrix.repo }}" \
+            --repo-url "${{ steps.meta.outputs.html_url }}" \
+            --default-branch "${{ steps.meta.outputs.default_branch }}" \
+            --last-commit "${{ steps.meta.outputs.pushed_at }}" \
+            --visibility "${{ steps.meta.outputs.visibility }}" \
+            --archived "${{ steps.meta.outputs.archived }}" \
+            --primary-language "${{ steps.meta.outputs.language }}" \
+            --created-at "${{ steps.meta.outputs.created_at }}" \
+            --output scan-result.json
+
+      - name: Upload scan result
+        if: steps.meta.outputs.archived != 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: scan-${{ strategy.job-index }}
+          path: tools/design-system-scanner/scan-result.json
+          retention-days: 1
+
+  # Step 3: Aggregate all results and load into BigQuery
+  aggregate:
+    name: Aggregate results and load into BigQuery
+    needs: [discover, scan-repo]
+    if: always() && needs.discover.result == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment: prd
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - name: Checkout design-system repository
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        uses: ./.github/actions/install-and-cache-dependencies
+        with:
+          cache-key: scanner-yarn-${{ hashFiles('yarn.lock') }}
+          only-for-workspace: '@entur/design-system-scanner'
+
+      - name: Build scanner
+        run: yarn workspace @entur/design-system-scanner build
+
+      - name: Download all scan results
+        uses: actions/download-artifact@v4
+        with:
+          pattern: scan-*
+          path: scan-results
+
+      - name: Aggregate results
+        working-directory: tools/design-system-scanner
+        run: |
+          node dist/index.js \
+            --aggregate ../../scan-results \
+            --total-repos "${{ needs.discover.outputs.total }}" \
+            --output scan-report.json
+
+      - name: Upload aggregated report artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: design-system-usage-report
+          path: tools/design-system-scanner/scan-report.json
+          retention-days: 90
+
+      - name: Generate catalog
+        working-directory: tools/design-system-scanner
+        run: yarn workspace @entur/design-system-scanner generate-catalog
+
+      - name: Export for BigQuery
+        working-directory: tools/design-system-scanner
+        run: |
+          mkdir -p bq-export
+          node dist/index.js \
+            --bigquery-export scan-report.json \
+            --catalog catalog.json \
+            --output bq-export
+
+      - name: Upload BigQuery export as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: bq-export-${{ github.run_id }}
+          path: tools/design-system-scanner/bq-export/
+          retention-days: 90
+
+      - name: Authenticate to Google Cloud
+        uses: entur/gha-meta/.github/actions/cloud-auth@v1
+        with:
+          environment: prd
+          gcp_workload_identity_provider: ${{ vars.CI_WORKLOAD_IDENTITY_PROVIDER }}
+          gcp_service_account: ${{ vars.CI_SERVICE_ACCOUNT }}
+
+      - name: Load into BigQuery
+        working-directory: tools/design-system-scanner
+        env:
+          BQ_PROJECT: ent-edsscan-prd
+          BQ_DATASET: design_system_scanner
+        run: |
+          for table in scan_runs repos repo_package_usage repo_symbol_usage repo_workspaces; do
+            bq load --source_format=NEWLINE_DELIMITED_JSON --replace \
+              --project_id="$BQ_PROJECT" \
+              "$BQ_DATASET.$table" \
+              "bq-export/$table.ndjson"
+          done
+
+          # Optional tables — only generated when data is present
+          for table in file_findings repo_css_overrides ds_catalog; do
+            if [ -f "bq-export/$table.ndjson" ]; then
+              bq load --source_format=NEWLINE_DELIMITED_JSON --replace \
+                --project_id="$BQ_PROJECT" \
+                "$BQ_DATASET.$table" \
+                "bq-export/$table.ndjson"
+            fi
+          done
+
+          echo "Loaded data into BigQuery ($BQ_PROJECT.$BQ_DATASET)"
+
+  notify-failure:
+    name: Notify Slack on failure
+    needs: [discover, scan-repo, aggregate]
+    if: always() && (needs.discover.result == 'failure' || needs.scan-repo.result == 'failure' || needs.aggregate.result == 'failure')
+    uses: entur/gha-slack/.github/workflows/post.yml@v3
+    with:
+      channel_id: ${{ vars.SLACK_INTERNAL_CHANNEL_ID }}
+      message: ':warning: Design system scanner feilet. Se: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}'
+    secrets: inherit
