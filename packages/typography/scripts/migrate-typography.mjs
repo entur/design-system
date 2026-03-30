@@ -76,7 +76,7 @@ async function initializeGlob() {
     glob = globModule.default || globModule;
     useGlob = true;
     console.log('📦 Using glob package for pattern matching');
-  } catch (error) {
+  } catch {
     console.log('📁 Using Node.js built-ins for file discovery');
     console.log(
       '   (Install glob for better pattern matching: npm install glob or yarn add glob)',
@@ -85,7 +85,7 @@ async function initializeGlob() {
 }
 
 // Configuration
-const OLD_IMPORT = '@entur/typography';
+const _OLD_IMPORT = '@entur/typography';
 const BETA_IMPORT = '@entur/typography/beta';
 
 // Enhanced warning detection patterns - only truly problematic patterns
@@ -232,7 +232,7 @@ function analyzeFile(filePath, content) {
 }
 
 // Generate enhanced warnings with context and solutions
-function generateWarningWithSolution(warning, context, filePath, lineNumber) {
+function _generateWarningWithSolution(warning, _context, filePath, lineNumber) {
   const severity = determineSeverity(warning);
   const suggestion = generateSuggestion(warning, context);
   const codeExample = generateCodeExample(warning);
@@ -262,7 +262,7 @@ function determineSeverity(warning) {
 }
 
 // Generate actionable suggestions
-function generateSuggestion(warning, context) {
+function generateSuggestion(warning, _context) {
   if (warning.includes('style and margin')) {
     return 'Remove the margin prop as it will be overridden by inline styles. Use spacing prop instead.';
   }
@@ -421,7 +421,7 @@ const SPACING_MAPPING = {
 };
 
 // Import patterns to handle
-const IMPORT_PATTERNS = [
+const _IMPORT_PATTERNS = [
   /from\s+['"`]@entur\/typography['"`]/g,
   /from\s+['"`]@entur\/typography\/dist['"`]/g,
   /from\s+['"`]@entur\/typography\/dist\/index['"`]/g,

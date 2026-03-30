@@ -7,12 +7,12 @@ export default defineCliConfig({
   },
   deployment: {
     appId: 'xmuw8s0v9ledey19ci7eyij5',
-    autoUpdates: process.env.CI ? false : true,
+    autoUpdates: !process.env.CI,
   },
   graphql: [
     {
       tag: process.env.CI === 'true' ? 'default' : 'development',
-      playground: process.env.CI === 'true' ? false : true,
+      playground: process.env.CI !== 'true',
     },
   ],
 });

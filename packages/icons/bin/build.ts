@@ -90,7 +90,7 @@ async function outputComponentCode({
   component: Component;
   native?: boolean;
 }) {
-  const { name, svgPath, categories } = component;
+  const { name, svgPath, categories: _categories } = component;
   const rawSvgText = fs.readFileSync(svgPath, 'utf-8');
   const webCode = await transform(
     rawSvgText,

@@ -2,7 +2,6 @@ import React from 'react';
 import { cleanup, render } from '@testing-library/react';
 import { Heading } from '../components/Heading';
 import { Text } from '../components/Text';
-import { Link } from '../components/Link';
 
 afterEach(cleanup);
 

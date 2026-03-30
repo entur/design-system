@@ -94,7 +94,7 @@ export type SimpleTimePickerProps<TimeType extends TimeValue> =
 
 export const SimpleTimePicker = <TimeType extends TimeValue>({
   append,
-  className,
+  _className,
   disabled,
   feedback,
   showClockIcon = 'right',
@@ -256,7 +256,7 @@ export const SimpleTimePicker = <TimeType extends TimeValue>({
       try {
         const timeObject = parseTime(formatedTimeString);
         return timeObject;
-      } catch (e) {
+      } catch {
         return inputResult.INVALID;
       }
     }
@@ -279,15 +279,15 @@ export const SimpleTimePicker = <TimeType extends TimeValue>({
   };
 
   const {
-    onBlur,
-    onClick,
-    onDragStart,
-    onFocus,
-    onKeyDown,
-    onKeyUp,
-    onMouseDown,
-    onPointerDown,
-    onPointerUp,
+    onBlur: _onBlur,
+    onClick: _onClick,
+    onDragStart: _onDragStart,
+    onFocus: _onFocus,
+    onKeyDown: _onKeyDown,
+    onKeyUp: _onKeyUp,
+    onMouseDown: _onMouseDown,
+    onPointerDown: _onPointerDown,
+    onPointerUp: _onPointerUp,
     ...usedFieldProps
   } = fieldProps;
 

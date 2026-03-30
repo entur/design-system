@@ -29,9 +29,9 @@ export function lowerCaseFilterTest(
 
 export function noFilter<ValueType>(
   //@ts-expect-error only here to comply with dropdown filter API
-  item: NormalizedDropdownItemType<ValueType>,
+  _item: NormalizedDropdownItemType<ValueType>,
   //@ts-expect-error only here to comply with dropdown filter API
-  input: string | undefined,
+  _input: string | undefined,
 ) {
   return true;
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { HeadProps, PageProps, graphql } from 'gatsby';
 import { SEO } from '@components/seo/SEO';
 import { getSanitizedPath } from '@components/Navigations/SideNavigation/utils';

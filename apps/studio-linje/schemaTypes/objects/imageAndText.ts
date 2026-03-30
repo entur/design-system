@@ -155,7 +155,7 @@ export const imageAndText = defineType({
       text: 'text',
       image: 'image',
     },
-    prepare({ variant, dodontVariant, order, text, image }) {
+    prepare({ variant, dodontVariant, order, text: _text, image }) {
       if (variant === 'dodont') {
         return {
           title: `Do/Dont kort (${dodontVariant || 'success'})`,

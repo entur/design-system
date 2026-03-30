@@ -3,7 +3,6 @@ import { graphql } from 'gatsby';
 import { PortableText } from '../PortableText';
 import { GridContainer, GridItem } from '@entur/grid';
 import { GroupType } from '../types';
-import { CodeText } from '@entur/typography';
 
 import './Group.scss';
 

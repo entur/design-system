@@ -5,7 +5,6 @@ import { Granularity } from '@react-types/datepicker';
 import {
   CalendarDate,
   CalendarDateTime,
-  ZonedDateTime,
   parseAbsolute,
   parseDate,
   parseDateTime,

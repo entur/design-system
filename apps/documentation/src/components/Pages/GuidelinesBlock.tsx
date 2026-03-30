@@ -7,7 +7,7 @@ import './GuidelinesBlock.scss';
 type GuidelinesBlockProps = {
   title: string;
   children: React.ReactNode;
-  downloadSourceButton?: String;
+  downloadSourceButton?: string;
 };
 
 export const GuidelinesBlock: React.FC<GuidelinesBlockProps> = ({

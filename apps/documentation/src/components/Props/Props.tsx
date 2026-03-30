@@ -68,7 +68,7 @@ const Props: React.FC<PropsProps> = ({
   defaultOpen,
   npmPackage,
 }) => {
-  const { userType } = useSettings();
+  const { userType: _userType } = useSettings();
   const [componentProps, setComponentProps] = useState<any>(null);
 
   useEffect(() => {
@@ -92,7 +92,7 @@ const Props: React.FC<PropsProps> = ({
     (details: any) => details.defaultValue,
   );
 
-  const isDefaultOpenSet = defaultOpen !== undefined;
+  const _isDefaultOpenSet = defaultOpen !== undefined;
 
   return (
     <>
