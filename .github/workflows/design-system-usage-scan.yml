@@ -30,7 +30,7 @@ jobs:
 
     steps:
       - name: Checkout design-system repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Install dependencies
         uses: ./.github/actions/install-and-cache-dependencies
@@ -110,7 +110,7 @@ jobs:
 
     steps:
       - name: Checkout design-system (scanner source)
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Install dependencies
         uses: ./.github/actions/install-and-cache-dependencies
@@ -122,7 +122,7 @@ jobs:
         run: yarn workspace @entur/design-system-scanner build
 
       - name: Checkout target repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: ${{ matrix.repo }}
           token: ${{ secrets.SCANNER_PAT }}
@@ -170,7 +170,7 @@ jobs:
 
       - name: Upload scan result
         if: steps.meta.outputs.archived != 'true'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: scan-${{ strategy.job-index }}
           path: tools/design-system-scanner/scan-result.json
@@ -189,7 +189,7 @@ jobs:
       id-token: write
     steps:
       - name: Checkout design-system repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Install dependencies
         uses: ./.github/actions/install-and-cache-dependencies
@@ -201,7 +201,7 @@ jobs:
         run: yarn workspace @entur/design-system-scanner build
 
       - name: Download all scan results
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v5
         with:
           pattern: scan-*
           path: scan-results
@@ -215,7 +215,7 @@ jobs:
             --output scan-report.json
 
       - name: Upload aggregated report artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: design-system-usage-report
           path: tools/design-system-scanner/scan-report.json
@@ -235,7 +235,7 @@ jobs:
             --output bq-export
 
       - name: Upload BigQuery export as artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: bq-export-${{ github.run_id }}
           path: tools/design-system-scanner/bq-export/
