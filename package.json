@@ -45,7 +45,8 @@
   },
   "workspaces": [
     "packages/*",
-    "apps/*"
+    "apps/*",
+    "tools/*"
   ],
   "engines": {
     "node": "24.14.0"

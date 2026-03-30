@@ -1,0 +1,9 @@
+{
+  "name": "@myorg/web",
+  "version": "1.0.0",
+  "dependencies": {
+    "@entur/button": "^4.0.0",
+    "@entur/dropdown": "^6.0.0",
+    "@mui/material": "^5.15.0"
+  }
+}
