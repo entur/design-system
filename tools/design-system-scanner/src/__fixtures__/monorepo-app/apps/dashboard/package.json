@@ -1,0 +1,9 @@
+{
+  "name": "@myorg/dashboard",
+  "version": "1.0.0",
+  "dependencies": {
+    "@entur/table": "^5.0.0",
+    "@entur/typography": "^2.1.0",
+    "recharts": "^2.10.0"
+  }
+}

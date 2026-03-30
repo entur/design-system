@@ -1,0 +1,1928 @@
+{
+  "packages": [
+    {
+      "packageName": "@entur/a11y",
+      "latestVersion": "0.2.108",
+      "symbols": [
+        {
+          "symbolName": "SkipToContent",
+          "symbolType": "component",
+          "knownProps": ["children", "mainId"]
+        },
+        {
+          "symbolName": "VisuallyHidden",
+          "symbolType": "component",
+          "knownProps": ["as", "children"]
+        }
+      ]
+    },
+    {
+      "packageName": "@entur/alert",
+      "latestVersion": "0.18.8",
+      "symbols": [
+        {
+          "symbolName": "BannerAlertBox",
+          "symbolType": "component",
+          "knownProps": [
+            "children",
+            "className",
+            "closeButtonLabel",
+            "onClose",
+            "closable",
+            "title",
+            "variant"
+          ]
+        },
+        {
+          "symbolName": "BannerExpandableAlertBox",
+          "symbolType": "component",
+          "knownProps": [
+            "variant",
+            "title",
+            "children",
+            "className",
+            "openLabel",
+            "closeLabel",
+            "closeButtonLabel",
+            "onClose",
+            "closable"
+          ]
+        },
+        {
+          "symbolName": "CopyableText",
+          "symbolType": "component",
+          "knownProps": [
+            "className",
+            "children",
+            "textToCopy",
+            "successHeading",
+            "successMessage"
+          ]
+        },
+        {
+          "symbolName": "SmallAlertBox",
+          "symbolType": "component",
+          "knownProps": [
+            "children",
+            "className",
+            "closeButtonLabel",
+            "closable",
+            "onClose",
+            "title",
+            "width",
+            "variant"
+          ]
+        },
+        {
+          "symbolName": "SmallExpandableAlertBox",
+          "symbolType": "component",
+          "knownProps": [
+            "variant",
+            "title",
+            "children",
+            "className",
+            "openLabel",
+            "closeLabel",
+            "closeButtonLabel",
+            "closable",
+            "onClose",
+            "width"
+          ]
+        },
+        {
+          "symbolName": "ToastAlertBox",
+          "symbolType": "component",
+          "knownProps": [
+            "children",
+            "className",
+            "closeButtonLabel",
+            "onClose",
+            "closable",
+            "title",
+            "variant"
+          ]
+        },
+        {
+          "symbolName": "ToastProvider",
+          "symbolType": "component",
+          "knownProps": ["delay", "position", "className", "style", "children"]
+        },
+        {
+          "symbolName": "useToast",
+          "symbolType": "hook",
+          "knownProps": []
+        }
+      ]
+    },
+    {
+      "packageName": "@entur/button",
+      "latestVersion": "4.0.4",
+      "symbols": [
+        {
+          "symbolName": "Button",
+          "symbolType": "component",
+          "knownProps": [
+            "variant",
+            "size",
+            "loading",
+            "className",
+            "disabled",
+            "width",
+            "children",
+            "as",
+            "aria-label"
+          ]
+        },
+        {
+          "symbolName": "ButtonGroup",
+          "symbolType": "component",
+          "knownProps": ["children", "className", "as"]
+        },
+        {
+          "symbolName": "FloatingButton",
+          "symbolType": "component",
+          "knownProps": [
+            "aria-label",
+            "children",
+            "className",
+            "onClick",
+            "size"
+          ]
+        },
+        {
+          "symbolName": "IconButton",
+          "symbolType": "component",
+          "knownProps": [
+            "children",
+            "aria-label",
+            "className",
+            "disabled",
+            "as",
+            "size",
+            "loading"
+          ]
+        },
+        {
+          "symbolName": "NegativeButton",
+          "symbolType": "component",
+          "knownProps": [
+            "size",
+            "loading",
+            "className",
+            "disabled",
+            "width",
+            "children"
+          ]
+        },
+        {
+          "symbolName": "PrimaryButton",
+          "symbolType": "component",
+          "knownProps": [
+            "size",
+            "loading",
+            "className",
+            "disabled",
+            "width",
+            "children"
+          ]
+        },
+        {
+          "symbolName": "SecondaryButton",
+          "symbolType": "component",
+          "knownProps": [
+            "size",
+            "loading",
+            "className",
+            "disabled",
+            "width",
+            "children"
+          ]
+        },
+        {
+          "symbolName": "SecondarySquareButton",
+          "symbolType": "component",
+          "knownProps": ["children", "className", "size", "disabled", "loading"]
+        },
+        {
+          "symbolName": "SuccessButton",
+          "symbolType": "component",
+          "knownProps": [
+            "size",
+            "loading",
+            "className",
+            "disabled",
+            "width",
+            "children"
+          ]
+        },
+        {
+          "symbolName": "SuccessSquareButton",
+          "symbolType": "component",
+          "knownProps": ["children", "className", "size", "disabled", "loading"]
+        },
+        {
+          "symbolName": "TertiaryButton",
+          "symbolType": "component",
+          "knownProps": [
+            "size",
+            "loading",
+            "className",
+            "disabled",
+            "width",
+            "children"
+          ]
+        },
+        {
+          "symbolName": "TertiarySquareButton",
+          "symbolType": "component",
+          "knownProps": ["children", "className", "disabled", "loading", "as"]
+        }
+      ]
+    },
+    {
+      "packageName": "@entur/chip",
+      "latestVersion": "0.10.8",
+      "symbols": [
+        {
+          "symbolName": "ActionChip",
+          "symbolType": "component",
+          "knownProps": ["children", "className", "loading", "size"]
+        },
+        {
+          "symbolName": "ChoiceChip",
+          "symbolType": "component",
+          "knownProps": ["className", "disabled", "children", "value", "size"]
+        },
+        {
+          "symbolName": "ChoiceChipGroup",
+          "symbolType": "component",
+          "knownProps": ["name", "value", "children", "onChange", "label"]
+        },
+        {
+          "symbolName": "FilterChip",
+          "symbolType": "component",
+          "knownProps": ["className", "children", "value", "size"]
+        },
+        {
+          "symbolName": "TagChip",
+          "symbolType": "component",
+          "knownProps": [
+            "children",
+            "className",
+            "onClose",
+            "closeButtonAriaLabel",
+            "size"
+          ]
+        }
+      ]
+    },
+    {
+      "packageName": "@entur/datepicker",
+      "latestVersion": "11.5.8",
+      "symbols": [
+        {
+          "symbolName": "ariaLabelIfNorwegian",
+          "symbolType": "util",
+          "knownProps": []
+        },
+        {
+          "symbolName": "Calendar",
+          "symbolType": "component",
+          "knownProps": [
+            "selectedDate",
+            "onChange",
+            "navigationDescription",
+            "style",
+            "className",
+            "onSelectedCellClick",
+            "onCellClick",
+            "minDate",
+            "maxDate",
+            "showWeekNumbers",
+            "weekNumberHeader",
+            "showOutsideMonth",
+            "classNameForDate",
+            "ariaLabelForDate",
+            "onValidate",
+            "disabled",
+            "locale",
+            "calendarRef",
+            "forcedReturnType"
+          ]
+        },
+        {
+          "symbolName": "CalendarDate",
+          "symbolType": "component",
+          "knownProps": []
+        },
+        {
+          "symbolName": "CalendarDateTime",
+          "symbolType": "component",
+          "knownProps": []
+        },
+        {
+          "symbolName": "convertValueToType",
+          "symbolType": "util",
+          "knownProps": []
+        },
+        {
+          "symbolName": "createCalendar",
+          "symbolType": "util",
+          "knownProps": []
+        },
+        {
+          "symbolName": "DateField",
+          "symbolType": "component",
+          "knownProps": [
+            "selectedDate",
+            "onChange",
+            "label",
+            "locale",
+            "showTimeZone",
+            "granularity",
+            "showTime",
+            "minDate",
+            "maxDate",
+            "isDateUnavailable",
+            "forcedReturnType",
+            "feedback",
+            "variant",
+            "validationFeedback",
+            "validationVariant",
+            "onValidate",
+            "labelTooltip",
+            "labelProps",
+            "fieldProps",
+            "dateFieldRef",
+            "disabled",
+            "readOnly",
+            "className",
+            "style",
+            "prepend",
+            "append",
+            "labelTooltipButtonAriaLabel",
+            "labelTooltipPlacement",
+            "required",
+            "labelId",
+            "disableLabelAnimation",
+            "ariaAlertOnFeedback",
+            "after",
+            "before",
+            "ariaLabelOnReadOnly"
+          ]
+        },
+        {
+          "symbolName": "DatePicker",
+          "symbolType": "component",
+          "knownProps": [
+            "selectedDate",
+            "onChange",
+            "label",
+            "locale",
+            "showTimeZone",
+            "granularity",
+            "showTime",
+            "minDate",
+            "maxDate",
+            "isDateUnavailable",
+            "forcedReturnType",
+            "feedback",
+            "variant",
+            "validationFeedback",
+            "validationVariant",
+            "onValidate",
+            "disabled",
+            "readOnly",
+            "className",
+            "style",
+            "showWeekNumbers",
+            "weekNumberHeader",
+            "showOutsideMonth",
+            "disableModal",
+            "modalTreshold",
+            "labelTooltip",
+            "navigationDescription",
+            "classNameForDate",
+            "ariaLabelForDate",
+            "prepend",
+            "append",
+            "labelTooltipButtonAriaLabel",
+            "labelTooltipPlacement",
+            "required",
+            "labelId",
+            "disableLabelAnimation",
+            "ariaAlertOnFeedback",
+            "after",
+            "before",
+            "ariaLabelOnReadOnly"
+          ]
+        },
+        {
+          "symbolName": "DateValue",
+          "symbolType": "component",
+          "knownProps": []
+        },
+        {
+          "symbolName": "focusSegment",
+          "symbolType": "util",
+          "knownProps": []
+        },
+        {
+          "symbolName": "getAdjustedMaxDate",
+          "symbolType": "util",
+          "knownProps": []
+        },
+        {
+          "symbolName": "getWeekNumberForDate",
+          "symbolType": "util",
+          "knownProps": []
+        },
+        {
+          "symbolName": "handleOnChange",
+          "symbolType": "util",
+          "knownProps": []
+        },
+        {
+          "symbolName": "lastMillisecondOfDay",
+          "symbolType": "util",
+          "knownProps": []
+        },
+        {
+          "symbolName": "modulo",
+          "symbolType": "util",
+          "knownProps": []
+        },
+        {
+          "symbolName": "NativeDatePicker",
+          "symbolType": "component",
+          "knownProps": ["onChange", "variant"]
+        },
+        {
+          "symbolName": "nativeDateToDateValue",
+          "symbolType": "util",
+          "knownProps": []
+        },
+        {
+          "symbolName": "nativeDateToTimeValue",
+          "symbolType": "util",
+          "knownProps": []
+        },
+        {
+          "symbolName": "NativeTimePicker",
+          "symbolType": "component",
+          "knownProps": ["variant"]
+        },
+        {
+          "symbolName": "shouldUseAriaAlert",
+          "symbolType": "util",
+          "knownProps": []
+        },
+        {
+          "symbolName": "SimpleTimePicker",
+          "symbolType": "component",
+          "knownProps": [
+            "selectedTime",
+            "onChange",
+            "label",
+            "showSeconds",
+            "showClockIcon",
+            "padding",
+            "feedback",
+            "variant",
+            "prepend",
+            "append",
+            "labelTooltip",
+            "disabled",
+            "readOnly",
+            "inputRef",
+            "className",
+            "style",
+            "labelProps",
+            "labelTooltipButtonAriaLabel",
+            "labelTooltipPlacement",
+            "required",
+            "labelId",
+            "disableLabelAnimation",
+            "ariaAlertOnFeedback",
+            "after",
+            "before",
+            "ariaLabelOnReadOnly"
+          ]
+        },
+        {
+          "symbolName": "Time",
+          "symbolType": "component",
+          "knownProps": []
+        },
+        {
+          "symbolName": "timeOrDateValueToNativeDate",
+          "symbolType": "util",
+          "knownProps": []
+        },
+        {
+          "symbolName": "TimePicker",
+          "symbolType": "component",
+          "knownProps": [
+            "selectedTime",
+            "onChange",
+            "label",
+            "minuteIncrementForArrowButtons",
+            "locale",
+            "showTimeZone",
+            "showSeconds",
+            "leftArrowButtonAriaLabel",
+            "rightArrowButtonAriaLabel",
+            "feedback",
+            "variant",
+            "labelTooltip",
+            "disabled",
+            "readOnly",
+            "inputRef",
+            "forcedReturnType",
+            "forcedTimeZone",
+            "className",
+            "style",
+            "labelProps",
+            "prepend",
+            "append",
+            "labelTooltipButtonAriaLabel",
+            "labelTooltipPlacement",
+            "required",
+            "labelId",
+            "disableLabelAnimation",
+            "ariaAlertOnFeedback",
+            "after",
+            "before",
+            "ariaLabelOnReadOnly"
+          ]
+        },
+        {
+          "symbolName": "TimeValue",
+          "symbolType": "component",
+          "knownProps": []
+        },
+        {
+          "symbolName": "ZonedDateTime",
+          "symbolType": "component",
+          "knownProps": []
+        }
+      ]
+    },
+    {
+      "packageName": "@entur/dropdown",
+      "latestVersion": "8.1.0",
+      "symbols": [
+        {
+          "symbolName": "Dropdown",
+          "symbolType": "component",
+          "knownProps": [
+            "items",
+            "selectedItem",
+            "onChange",
+            "label",
+            "placeholder",
+            "clearable",
+            "selectOnTab",
+            "disabled",
+            "readOnly",
+            "variant",
+            "feedback",
+            "prepend",
+            "loading",
+            "loadingText",
+            "noMatchesText",
+            "labelClearSelectedItem",
+            "labelTooltip",
+            "disableLabelAnimation",
+            "className",
+            "listStyle",
+            "style",
+            "ariaLabelCloseList",
+            "ariaLabelOpenList",
+            "ariaLabelChosenSingular",
+            "ariaLabelSelectedItem"
+          ]
+        },
+        {
+          "symbolName": "DropdownItemType",
+          "symbolType": "component",
+          "knownProps": []
+        },
+        {
+          "symbolName": "MultiSelect",
+          "symbolType": "component",
+          "knownProps": [
+            "items",
+            "label",
+            "placeholder",
+            "clearable",
+            "selectOnTab",
+            "disabled",
+            "readOnly",
+            "variant",
+            "feedback",
+            "prepend",
+            "loading",
+            "loadingText",
+            "noMatchesText",
+            "labelClearSelectedItem",
+            "labelTooltip",
+            "disableLabelAnimation",
+            "className",
+            "listStyle",
+            "style",
+            "ariaLabelCloseList",
+            "ariaLabelOpenList",
+            "ariaLabelChosenSingular",
+            "ariaLabelSelectedItem",
+            "selectedItems",
+            "onChange",
+            "itemFilter",
+            "hideSelectAll",
+            "debounceTimeout",
+            "maxChips",
+            "clearInputOnSelect",
+            "labelSelectAll",
+            "labelAllItemsSelected",
+            "labelClearAllItems",
+            "ariaLabelRemoveSelected",
+            "ariaLabelChosenPlural",
+            "ariaLabelJumpToInput",
+            "onBlur",
+            "onClick",
+            "onKeyDown",
+            "onFocus"
+          ]
+        },
+        {
+          "symbolName": "NativeDropdown",
+          "symbolType": "component",
+          "knownProps": [
+            "className",
+            "disabled",
+            "feedback",
+            "items",
+            "label",
+            "onChange",
+            "prepend",
+            "readOnly",
+            "selectedItem",
+            "value",
+            "variant",
+            "disableLabelAnimation"
+          ]
+        },
+        {
+          "symbolName": "NormalizedDropdownItemType",
+          "symbolType": "component",
+          "knownProps": []
+        },
+        {
+          "symbolName": "SearchableDropdown",
+          "symbolType": "component",
+          "knownProps": [
+            "items",
+            "selectedItem",
+            "onChange",
+            "label",
+            "placeholder",
+            "clearable",
+            "selectOnTab",
+            "disabled",
+            "readOnly",
+            "variant",
+            "feedback",
+            "prepend",
+            "loading",
+            "loadingText",
+            "noMatchesText",
+            "labelClearSelectedItem",
+            "labelTooltip",
+            "disableLabelAnimation",
+            "className",
+            "listStyle",
+            "style",
+            "ariaLabelCloseList",
+            "ariaLabelOpenList",
+            "ariaLabelChosenSingular",
+            "ariaLabelSelectedItem",
+            "itemFilter",
+            "debounceTimeout",
+            "onBlur",
+            "onClick",
+            "onKeyDown",
+            "onFocus"
+          ]
+        }
+      ]
+    },
+    {
+      "packageName": "@entur/expand",
+      "latestVersion": "3.7.5",
+      "symbols": [
+        {
+          "symbolName": "Accordion",
+          "symbolType": "component",
+          "knownProps": ["children"]
+        },
+        {
+          "symbolName": "AccordionItem",
+          "symbolType": "component",
+          "knownProps": [
+            "title",
+            "children",
+            "defaultOpen",
+            "contentStyle",
+            "disableAnimation"
+          ]
+        },
+        {
+          "symbolName": "BaseExpand",
+          "symbolType": "component",
+          "knownProps": ["children", "open"]
+        },
+        {
+          "symbolName": "ExpandablePanel",
+          "symbolType": "component",
+          "knownProps": [
+            "title",
+            "children",
+            "defaultOpen",
+            "onToggle",
+            "contentStyle"
+          ]
+        },
+        {
+          "symbolName": "ExpandableText",
+          "symbolType": "component",
+          "knownProps": [
+            "title",
+            "children",
+            "defaultOpen",
+            "open",
+            "onToggle",
+            "contentStyle",
+            "titleElement",
+            "disableAnimation"
+          ]
+        },
+        {
+          "symbolName": "ExpandableTextButton",
+          "symbolType": "component",
+          "knownProps": []
+        },
+        {
+          "symbolName": "ExpandArrow",
+          "symbolType": "component",
+          "knownProps": ["open", "className"]
+        },
+        {
+          "symbolName": "useAccordion",
+          "symbolType": "hook",
+          "knownProps": []
+        }
+      ]
+    },
+    {
+      "packageName": "@entur/fileupload",
+      "latestVersion": "0.5.6",
+      "symbols": [
+        {
+          "symbolName": "FileUpload",
+          "symbolType": "component",
+          "knownProps": [
+            "successText",
+            "errorText",
+            "standbyText",
+            "errorUpload",
+            "onDelete",
+            "files",
+            "label",
+            "removeFileButtonDescription"
+          ]
+        }
+      ]
+    },
+    {
+      "packageName": "@entur/form",
+      "latestVersion": "9.3.0",
+      "symbols": [
+        {
+          "symbolName": "BaseFormControl",
+          "symbolType": "component",
+          "knownProps": [
+            "disabled",
+            "readOnly",
+            "prepend",
+            "append",
+            "variant",
+            "size",
+            "label",
+            "labelTooltip",
+            "labelTooltipButtonAriaLabel",
+            "labelTooltipPlacement",
+            "required",
+            "labelId",
+            "feedback",
+            "isFilled",
+            "labelProps",
+            "disableLabelAnimation",
+            "ariaAlertOnFeedback",
+            "after",
+            "before",
+            "ariaLabelOnReadOnly"
+          ]
+        },
+        {
+          "symbolName": "Checkbox",
+          "symbolType": "component",
+          "knownProps": [
+            "className",
+            "children",
+            "checked",
+            "onChange",
+            "disabled",
+            "readOnly",
+            "style",
+            "reduceClickArea",
+            "disableAnimation"
+          ]
+        },
+        {
+          "symbolName": "CheckboxPanel",
+          "symbolType": "component",
+          "knownProps": [
+            "value",
+            "checked",
+            "title",
+            "secondaryLabel",
+            "children",
+            "size",
+            "hideCheckbox",
+            "className",
+            "disabled",
+            "readOnly",
+            "style"
+          ]
+        },
+        {
+          "symbolName": "FeedbackText",
+          "symbolType": "component",
+          "knownProps": ["children", "hideIcon", "variant", "className"]
+        },
+        {
+          "symbolName": "Fieldset",
+          "symbolType": "component",
+          "knownProps": ["children", "className", "label"]
+        },
+        {
+          "symbolName": "hasValue",
+          "symbolType": "util",
+          "knownProps": []
+        },
+        {
+          "symbolName": "InputGroupContextProvider",
+          "symbolType": "component",
+          "knownProps": []
+        },
+        {
+          "symbolName": "InputGroupLabel",
+          "symbolType": "component",
+          "knownProps": [
+            "label",
+            "required",
+            "labelTooltip",
+            "labelId",
+            "isFilled",
+            "staticAnimation"
+          ]
+        },
+        {
+          "symbolName": "isFilled",
+          "symbolType": "util",
+          "knownProps": []
+        },
+        {
+          "symbolName": "Radio",
+          "symbolType": "component",
+          "knownProps": [
+            "className",
+            "children",
+            "value",
+            "disabled",
+            "readOnlyLabelDescription"
+          ]
+        },
+        {
+          "symbolName": "RadioGroup",
+          "symbolType": "component",
+          "knownProps": [
+            "name",
+            "label",
+            "value",
+            "children",
+            "onChange",
+            "readOnly",
+            "disabled"
+          ]
+        },
+        {
+          "symbolName": "RadioPanel",
+          "symbolType": "component",
+          "knownProps": [
+            "value",
+            "title",
+            "secondaryLabel",
+            "children",
+            "size",
+            "hideRadioButton",
+            "className",
+            "disabled",
+            "readOnly",
+            "style"
+          ]
+        },
+        {
+          "symbolName": "SegmentedChoice",
+          "symbolType": "component",
+          "knownProps": [
+            "value",
+            "children",
+            "className",
+            "onChange",
+            "as",
+            "ref"
+          ]
+        },
+        {
+          "symbolName": "SegmentedChoiceProps",
+          "symbolType": "component",
+          "knownProps": []
+        },
+        {
+          "symbolName": "SegmentedControl",
+          "symbolType": "component",
+          "knownProps": [
+            "name",
+            "label",
+            "children",
+            "value",
+            "defaultValue",
+            "onChange",
+            "size",
+            "className",
+            "selectedValue"
+          ]
+        },
+        {
+          "symbolName": "SegmentedControlComponent",
+          "symbolType": "component",
+          "knownProps": []
+        },
+        {
+          "symbolName": "SegmentedControlProps",
+          "symbolType": "component",
+          "knownProps": []
+        },
+        {
+          "symbolName": "Switch",
+          "symbolType": "component",
+          "knownProps": [
+            "className",
+            "children",
+            "labelPlacement",
+            "checked",
+            "icon",
+            "hideIcon",
+            "color",
+            "contrastColor",
+            "size",
+            "onChange"
+          ]
+        },
+        {
+          "symbolName": "TextArea",
+          "symbolType": "component",
+          "knownProps": ["readOnly", "disabled", "variant", "resize"]
+        },
+        {
+          "symbolName": "TextField",
+          "symbolType": "component",
+          "knownProps": ["disabled", "readOnly", "variant"]
+        },
+        {
+          "symbolName": "useInputGroupContext",
+          "symbolType": "hook",
+          "knownProps": []
+        },
+        {
+          "symbolName": "useVariant",
+          "symbolType": "hook",
+          "knownProps": []
+        },
+        {
+          "symbolName": "VariantProvider",
+          "symbolType": "component",
+          "knownProps": ["variant"]
+        }
+      ]
+    },
+    {
+      "packageName": "@entur/grid",
+      "latestVersion": "0.3.74",
+      "symbols": [
+        {
+          "symbolName": "GridContainer",
+          "symbolType": "component",
+          "knownProps": ["spacing", "rowSpacing", "as", "children", "className"]
+        },
+        {
+          "symbolName": "GridItem",
+          "symbolType": "component",
+          "knownProps": [
+            "small",
+            "medium",
+            "large",
+            "as",
+            "children",
+            "className"
+          ]
+        }
+      ]
+    },
+    {
+      "packageName": "@entur/layout",
+      "latestVersion": "3.5.0",
+      "symbols": [
+        {
+          "symbolName": "Badge",
+          "symbolType": "component",
+          "knownProps": [
+            "as",
+            "className",
+            "children",
+            "variant",
+            "showZero",
+            "max",
+            "type",
+            "invisible",
+            "hide",
+            "ref"
+          ]
+        },
+        {
+          "symbolName": "BaseCard",
+          "symbolType": "component",
+          "knownProps": ["as", "className", "children"]
+        },
+        {
+          "symbolName": "BulletBadge",
+          "symbolType": "component",
+          "knownProps": ["as", "className", "children", "variant", "hide"]
+        },
+        {
+          "symbolName": "Contrast",
+          "symbolType": "component",
+          "knownProps": ["className"]
+        },
+        {
+          "symbolName": "ContrastContext",
+          "symbolType": "component",
+          "knownProps": []
+        },
+        {
+          "symbolName": "MediaCard",
+          "symbolType": "component",
+          "knownProps": [
+            "as",
+            "title",
+            "description",
+            "category",
+            "className",
+            "children",
+            "style",
+            "headingLevel",
+            "hideArrow",
+            "orientation",
+            "wrapperProps",
+            "wholeCardAsElement"
+          ]
+        },
+        {
+          "symbolName": "NavigationCard",
+          "symbolType": "component",
+          "knownProps": [
+            "as",
+            "title",
+            "titleIcon",
+            "className",
+            "compact",
+            "children",
+            "externalLink"
+          ]
+        },
+        {
+          "symbolName": "NotificationBadge",
+          "symbolType": "component",
+          "knownProps": [
+            "as",
+            "className",
+            "children",
+            "variant",
+            "showZero",
+            "max",
+            "hide"
+          ]
+        },
+        {
+          "symbolName": "StatusBadge",
+          "symbolType": "component",
+          "knownProps": ["as", "className", "children", "variant", "hide"]
+        },
+        {
+          "symbolName": "Tag",
+          "symbolType": "component",
+          "knownProps": ["as", "className", "compact", "children"]
+        },
+        {
+          "symbolName": "useContrast",
+          "symbolType": "hook",
+          "knownProps": []
+        }
+      ]
+    },
+    {
+      "packageName": "@entur/loader",
+      "latestVersion": "0.6.5",
+      "symbols": [
+        {
+          "symbolName": "Loader",
+          "symbolType": "component",
+          "knownProps": ["children", "className", "progress"]
+        },
+        {
+          "symbolName": "LoadingDots",
+          "symbolType": "component",
+          "knownProps": ["color", "className"]
+        },
+        {
+          "symbolName": "SkeletonCircle",
+          "symbolType": "component",
+          "knownProps": ["className", "size"]
+        },
+        {
+          "symbolName": "SkeletonRectangle",
+          "symbolType": "component",
+          "knownProps": ["className", "width", "height"]
+        },
+        {
+          "symbolName": "SkeletonWrapper",
+          "symbolType": "component",
+          "knownProps": ["loadingAriaLabel", "className", "children"]
+        },
+        {
+          "symbolName": "Spinner",
+          "symbolType": "component",
+          "knownProps": ["className"]
+        }
+      ]
+    },
+    {
+      "packageName": "@entur/menu",
+      "latestVersion": "6.1.3",
+      "symbols": [
+        {
+          "symbolName": "BreadcrumbItem",
+          "symbolType": "component",
+          "knownProps": ["as", "children", "className", "isCurrent"]
+        },
+        {
+          "symbolName": "BreadcrumbNavigation",
+          "symbolType": "component",
+          "knownProps": ["aria-label", "children"]
+        },
+        {
+          "symbolName": "CollapsibleSideNavigation",
+          "symbolType": "component",
+          "knownProps": [
+            "className",
+            "size",
+            "collapsed",
+            "onCollapseToggle",
+            "collapsibleButtonPosition",
+            "openSideMenuAriaLabel",
+            "closeSideMenuAriaLabel"
+          ]
+        },
+        {
+          "symbolName": "OverflowMenu",
+          "symbolType": "component",
+          "knownProps": [
+            "children",
+            "buttonIcon",
+            "button",
+            "className",
+            "placement",
+            "position",
+            "aria-label"
+          ]
+        },
+        {
+          "symbolName": "OverflowMenuItem",
+          "symbolType": "component",
+          "knownProps": [
+            "children",
+            "className",
+            "onSelect",
+            "href",
+            "disabled"
+          ]
+        },
+        {
+          "symbolName": "OverflowMenuLink",
+          "symbolType": "component",
+          "knownProps": []
+        },
+        {
+          "symbolName": "Pagination",
+          "symbolType": "component",
+          "knownProps": [
+            "className",
+            "currentPage",
+            "onPageChange",
+            "pageCount",
+            "previousPageLabel",
+            "nextPageLabel",
+            "pageLabel",
+            "currentPageLabelForScreenreader",
+            "showInput",
+            "inputLabel",
+            "numberOfResults",
+            "resultsPerPage",
+            "resultsPerPageOptions",
+            "onResultsPerPageChange",
+            "hideNextButton",
+            "hidePrevButton",
+            "showingResultsLabel",
+            "showNumberOfResultsLabel"
+          ]
+        },
+        {
+          "symbolName": "SideNavigation",
+          "symbolType": "component",
+          "knownProps": ["className", "size"]
+        },
+        {
+          "symbolName": "SideNavigationGroup",
+          "symbolType": "component",
+          "knownProps": [
+            "defaultOpen",
+            "open",
+            "onToggle",
+            "className",
+            "children",
+            "title",
+            "icon"
+          ]
+        },
+        {
+          "symbolName": "SideNavigationItem",
+          "symbolType": "component",
+          "knownProps": [
+            "active",
+            "as",
+            "className",
+            "disabled",
+            "onClick",
+            "forceExpandSubMenus",
+            "icon"
+          ]
+        },
+        {
+          "symbolName": "Stepper",
+          "symbolType": "component",
+          "knownProps": [
+            "steps",
+            "activeIndex",
+            "interactive",
+            "onStepClick",
+            "showStepperIndex",
+            "className",
+            "ariaLabelStep",
+            "ariaLabelOf",
+            "ariaLabelCompleted",
+            "ariaLabelSummary"
+          ]
+        },
+        {
+          "symbolName": "TopNavigationItem",
+          "symbolType": "component",
+          "knownProps": ["active", "children", "as", "className"]
+        },
+        {
+          "symbolName": "useSideNavigationContext",
+          "symbolType": "hook",
+          "knownProps": []
+        }
+      ]
+    },
+    {
+      "packageName": "@entur/modal",
+      "latestVersion": "1.8.8",
+      "symbols": [
+        {
+          "symbolName": "Drawer",
+          "symbolType": "component",
+          "knownProps": [
+            "children",
+            "className",
+            "closeLabel",
+            "contrast",
+            "onDismiss",
+            "open",
+            "title",
+            "style",
+            "overlay"
+          ]
+        },
+        {
+          "symbolName": "headingsMap",
+          "symbolType": "util",
+          "knownProps": []
+        },
+        {
+          "symbolName": "Modal",
+          "symbolType": "component",
+          "knownProps": [
+            "children",
+            "closeLabel",
+            "initialFocusRef",
+            "open",
+            "onDismiss",
+            "size",
+            "align",
+            "title",
+            "closeOnClickOutside"
+          ]
+        },
+        {
+          "symbolName": "ModalContent",
+          "symbolType": "component",
+          "knownProps": ["children", "className", "size", "title", "align"]
+        },
+        {
+          "symbolName": "ModalOverlay",
+          "symbolType": "component",
+          "knownProps": [
+            "open",
+            "onDismiss",
+            "children",
+            "className",
+            "initialFocusRef"
+          ]
+        }
+      ]
+    },
+    {
+      "packageName": "@entur/tab",
+      "latestVersion": "0.6.5",
+      "symbols": [
+        {
+          "symbolName": "Tab",
+          "symbolType": "component",
+          "knownProps": ["children", "disabled", "as", "removeActiveLine"]
+        },
+        {
+          "symbolName": "TabList",
+          "symbolType": "component",
+          "knownProps": ["children", "as", "width"]
+        },
+        {
+          "symbolName": "TabPanel",
+          "symbolType": "component",
+          "knownProps": ["children", "as"]
+        },
+        {
+          "symbolName": "TabPanels",
+          "symbolType": "component",
+          "knownProps": ["children", "as"]
+        },
+        {
+          "symbolName": "Tabs",
+          "symbolType": "component",
+          "knownProps": ["children", "onChange", "defaultIndex", "index", "as"]
+        }
+      ]
+    },
+    {
+      "packageName": "@entur/table",
+      "latestVersion": "4.10.8",
+      "symbols": [
+        {
+          "symbolName": "DataCell",
+          "symbolType": "component",
+          "knownProps": [
+            "children",
+            "className",
+            "padding",
+            "status",
+            "variant"
+          ]
+        },
+        {
+          "symbolName": "EditableCell",
+          "symbolType": "component",
+          "knownProps": [
+            "className",
+            "children",
+            "variant",
+            "feedback",
+            "outlined"
+          ]
+        },
+        {
+          "symbolName": "ExpandableRow",
+          "symbolType": "component",
+          "knownProps": ["colSpan", "children", "open"]
+        },
+        {
+          "symbolName": "ExpandRowButton",
+          "symbolType": "component",
+          "knownProps": ["open", "onClick"]
+        },
+        {
+          "symbolName": "HeaderCell",
+          "symbolType": "component",
+          "knownProps": [
+            "children",
+            "className",
+            "padding",
+            "sortableButtonProps",
+            "sortable",
+            "sortConfig",
+            "name",
+            "sortedAscendingAriaLabel",
+            "sortedDescendingAriaLabel"
+          ]
+        },
+        {
+          "symbolName": "Table",
+          "symbolType": "component",
+          "knownProps": [
+            "className",
+            "spacing",
+            "fixed",
+            "stickyHeader",
+            "children"
+          ]
+        },
+        {
+          "symbolName": "TableBody",
+          "symbolType": "component",
+          "knownProps": ["children", "className", "ref"]
+        },
+        {
+          "symbolName": "TableFooter",
+          "symbolType": "component",
+          "knownProps": ["children"]
+        },
+        {
+          "symbolName": "TableHead",
+          "symbolType": "component",
+          "knownProps": ["children", "className"]
+        },
+        {
+          "symbolName": "TableRow",
+          "symbolType": "component",
+          "knownProps": [
+            "children",
+            "className",
+            "hover",
+            "active",
+            "error",
+            "ref"
+          ]
+        },
+        {
+          "symbolName": "useSortableData",
+          "symbolType": "hook",
+          "knownProps": []
+        },
+        {
+          "symbolName": "useTableKeyboardNavigation",
+          "symbolType": "hook",
+          "knownProps": []
+        }
+      ]
+    },
+    {
+      "packageName": "@entur/tokens",
+      "latestVersion": "3.22.3",
+      "symbols": [
+        {
+          "symbolName": "borderRadiuses",
+          "symbolType": "util",
+          "knownProps": []
+        },
+        {
+          "symbolName": "borderWidths",
+          "symbolType": "util",
+          "knownProps": []
+        },
+        {
+          "symbolName": "breakpoints",
+          "symbolType": "util",
+          "knownProps": []
+        },
+        {
+          "symbolName": "colors",
+          "symbolType": "util",
+          "knownProps": []
+        },
+        {
+          "symbolName": "componentColors",
+          "symbolType": "util",
+          "knownProps": []
+        },
+        {
+          "symbolName": "createColorSet",
+          "symbolType": "util",
+          "knownProps": []
+        },
+        {
+          "symbolName": "createColorsFileData",
+          "symbolType": "util",
+          "knownProps": []
+        },
+        {
+          "symbolName": "createJSColorFileData",
+          "symbolType": "util",
+          "knownProps": []
+        },
+        {
+          "symbolName": "createVariableSet",
+          "symbolType": "util",
+          "knownProps": []
+        },
+        {
+          "symbolName": "createVariablesFileData",
+          "symbolType": "util",
+          "knownProps": []
+        },
+        {
+          "symbolName": "fontSizes",
+          "symbolType": "util",
+          "knownProps": []
+        },
+        {
+          "symbolName": "fontWeights",
+          "symbolType": "util",
+          "knownProps": []
+        },
+        {
+          "symbolName": "lineHeights",
+          "symbolType": "util",
+          "knownProps": []
+        },
+        {
+          "symbolName": "outlineOffsets",
+          "symbolType": "util",
+          "knownProps": []
+        },
+        {
+          "symbolName": "outlines",
+          "symbolType": "util",
+          "knownProps": []
+        },
+        {
+          "symbolName": "shadows",
+          "symbolType": "util",
+          "knownProps": []
+        },
+        {
+          "symbolName": "space",
+          "symbolType": "util",
+          "knownProps": []
+        },
+        {
+          "symbolName": "timings",
+          "symbolType": "util",
+          "knownProps": []
+        },
+        {
+          "symbolName": "zIndexes",
+          "symbolType": "util",
+          "knownProps": []
+        }
+      ]
+    },
+    {
+      "packageName": "@entur/tooltip",
+      "latestVersion": "5.3.8",
+      "symbols": [
+        {
+          "symbolName": "Popover",
+          "symbolType": "component",
+          "knownProps": [
+            "children",
+            "placement",
+            "showPopover",
+            "setShowPopover"
+          ]
+        },
+        {
+          "symbolName": "PopoverCloseButton",
+          "symbolType": "component",
+          "knownProps": ["children"]
+        },
+        {
+          "symbolName": "PopoverContent",
+          "symbolType": "component",
+          "knownProps": ["children", "className", "style"]
+        },
+        {
+          "symbolName": "PopoverTrigger",
+          "symbolType": "component",
+          "knownProps": ["children"]
+        },
+        {
+          "symbolName": "standardisePlacement",
+          "symbolType": "util",
+          "knownProps": []
+        },
+        {
+          "symbolName": "Tooltip",
+          "symbolType": "component",
+          "knownProps": [
+            "placement",
+            "content",
+            "children",
+            "isOpen",
+            "onClickCloseButton",
+            "className",
+            "disableHoverListener",
+            "disableFocusListener",
+            "disableKeyboardListener",
+            "disableClickListener",
+            "showCloseButton",
+            "variant",
+            "hoverDelay",
+            "popperModifiers"
+          ]
+        }
+      ]
+    },
+    {
+      "packageName": "@entur/travel",
+      "latestVersion": "6.5.8",
+      "symbols": [
+        {
+          "symbolName": "LegBone",
+          "symbolType": "component",
+          "knownProps": [
+            "direction",
+            "pattern",
+            "color",
+            "startColor",
+            "endColor",
+            "showStart",
+            "showLine",
+            "showStop",
+            "className"
+          ]
+        },
+        {
+          "symbolName": "LegLine",
+          "symbolType": "component",
+          "knownProps": ["color", "direction", "pattern", "className"]
+        },
+        {
+          "symbolName": "TravelHeader",
+          "symbolType": "component",
+          "knownProps": ["as", "from", "to", "size", "noWrap", "className"]
+        },
+        {
+          "symbolName": "TravelLeg",
+          "symbolType": "component",
+          "knownProps": ["className", "transport", "direction"]
+        },
+        {
+          "symbolName": "TravelSwitch",
+          "symbolType": "component",
+          "knownProps": [
+            "className",
+            "checked",
+            "children",
+            "labelPlacement",
+            "transport",
+            "onChange",
+            "size"
+          ]
+        },
+        {
+          "symbolName": "TravelTag",
+          "symbolType": "component",
+          "knownProps": [
+            "onClose",
+            "children",
+            "className",
+            "alert",
+            "transport",
+            "label",
+            "labelPlacement",
+            "details"
+          ]
+        }
+      ]
+    },
+    {
+      "packageName": "@entur/typography",
+      "latestVersion": "2.1.5",
+      "symbols": [
+        {
+          "symbolName": "Blockquote",
+          "symbolType": "component",
+          "knownProps": ["className"]
+        },
+        {
+          "symbolName": "BlockquoteFooter",
+          "symbolType": "component",
+          "knownProps": ["className"]
+        },
+        {
+          "symbolName": "CodeText",
+          "symbolType": "component",
+          "knownProps": ["as", "className", "children"]
+        },
+        {
+          "symbolName": "EmphasizedText",
+          "symbolType": "component",
+          "knownProps": ["as", "className", "children", "margin"]
+        },
+        {
+          "symbolName": "Heading1",
+          "symbolType": "component",
+          "knownProps": ["as", "className", "children", "margin"]
+        },
+        {
+          "symbolName": "Heading2",
+          "symbolType": "component",
+          "knownProps": ["as", "className", "children", "margin"]
+        },
+        {
+          "symbolName": "Heading3",
+          "symbolType": "component",
+          "knownProps": ["as", "className", "children", "margin"]
+        },
+        {
+          "symbolName": "Heading4",
+          "symbolType": "component",
+          "knownProps": ["as", "className", "children", "margin"]
+        },
+        {
+          "symbolName": "Heading5",
+          "symbolType": "component",
+          "knownProps": ["as", "className", "children", "margin"]
+        },
+        {
+          "symbolName": "Heading6",
+          "symbolType": "component",
+          "knownProps": ["as", "className", "children", "margin"]
+        },
+        {
+          "symbolName": "Label",
+          "symbolType": "component",
+          "knownProps": ["as", "className", "children", "margin"]
+        },
+        {
+          "symbolName": "LeadParagraph",
+          "symbolType": "component",
+          "knownProps": ["as", "className", "children", "margin"]
+        },
+        {
+          "symbolName": "Link",
+          "symbolType": "component",
+          "knownProps": [
+            "external",
+            "as",
+            "className",
+            "children",
+            "margin",
+            "ariaLabelExternalIcon"
+          ]
+        },
+        {
+          "symbolName": "ListItem",
+          "symbolType": "component",
+          "knownProps": ["className", "children", "title"]
+        },
+        {
+          "symbolName": "NumberedList",
+          "symbolType": "component",
+          "knownProps": ["className", "children"]
+        },
+        {
+          "symbolName": "Paragraph",
+          "symbolType": "component",
+          "knownProps": ["as", "className", "children", "margin"]
+        },
+        {
+          "symbolName": "PreformattedText",
+          "symbolType": "component",
+          "knownProps": ["as", "className", "children"]
+        },
+        {
+          "symbolName": "SmallText",
+          "symbolType": "component",
+          "knownProps": ["as", "className", "children", "margin"]
+        },
+        {
+          "symbolName": "StrongText",
+          "symbolType": "component",
+          "knownProps": ["as", "className", "children", "margin"]
+        },
+        {
+          "symbolName": "SubLabel",
+          "symbolType": "component",
+          "knownProps": ["as", "className", "children", "margin"]
+        },
+        {
+          "symbolName": "SubParagraph",
+          "symbolType": "component",
+          "knownProps": ["as", "className", "children", "margin"]
+        },
+        {
+          "symbolName": "UnorderedList",
+          "symbolType": "component",
+          "knownProps": ["className", "children"]
+        }
+      ]
+    },
+    {
+      "packageName": "@entur/utils",
+      "latestVersion": "0.13.2",
+      "symbols": [
+        {
+          "symbolName": "ConditionalWrapper",
+          "symbolType": "component",
+          "knownProps": []
+        },
+        {
+          "symbolName": "getNodeText",
+          "symbolType": "util",
+          "knownProps": []
+        },
+        {
+          "symbolName": "mergeRefs",
+          "symbolType": "util",
+          "knownProps": []
+        },
+        {
+          "symbolName": "useControllableProp",
+          "symbolType": "hook",
+          "knownProps": []
+        },
+        {
+          "symbolName": "useDebounce",
+          "symbolType": "hook",
+          "knownProps": []
+        },
+        {
+          "symbolName": "useForceUpdate",
+          "symbolType": "hook",
+          "knownProps": []
+        },
+        {
+          "symbolName": "useOnClickOutside",
+          "symbolType": "hook",
+          "knownProps": []
+        },
+        {
+          "symbolName": "useOnEscape",
+          "symbolType": "hook",
+          "knownProps": []
+        },
+        {
+          "symbolName": "useOnMount",
+          "symbolType": "hook",
+          "knownProps": []
+        },
+        {
+          "symbolName": "useRandomId",
+          "symbolType": "hook",
+          "knownProps": []
+        },
+        {
+          "symbolName": "useWindowDimensions",
+          "symbolType": "hook",
+          "knownProps": []
+        },
+        {
+          "symbolName": "warnAboutMissingStyles",
+          "symbolType": "util",
+          "knownProps": []
+        }
+      ]
+    }
+  ]
+}
