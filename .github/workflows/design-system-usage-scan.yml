@@ -17,6 +17,9 @@ concurrency:
   group: design-system-usage-scan-${{ github.event_name }}-${{ github.ref }}
   cancel-in-progress: true
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 permissions:
   contents: read
 
