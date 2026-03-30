@@ -157,6 +157,7 @@
     "minimatch@npm:^9.0.4": "9.0.7",
     "minimatch@npm:^9.0.5": "9.0.7",
     "minimatch@npm:10.0.3": "10.2.4",
+    "handlebars": "4.7.9",
     "@codemirror/state": "6.5.4",
     "@codemirror/view": "6.39.15",
     "@codemirror/language": "6.12.1"
