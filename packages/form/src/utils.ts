@@ -1,4 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types -- disabled during Yarn upgrade
 export function hasValue(value: any): boolean {
   return value != null && !(Array.isArray(value) && value.length === 0);
 }
@@ -11,7 +10,6 @@ export function hasValue(value: any): boolean {
 // @param SSR - If true, also checks defaultValue property for SSR/uncontrolled initial state
 // @returns {boolean} False when not present or empty string.
 //                    True when any number or string with length.
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types -- disabled during Yarn upgrade
 export function isFilled(obj: any, SSR = false): boolean {
   if (obj == null) {
     return false;

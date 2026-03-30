@@ -246,7 +246,7 @@ export const MultiSelect = React.forwardRef(
 
     React.useEffect(() => {
       filterListItems({ inputValue });
-    }, [normalizedItems]); // eslint-disable-line react-hooks/exhaustive-deps
+    }, [normalizedItems]); // oxlint-disable-line react-hooks/exhaustive-deps
 
     const {
       hasSelectedItems,

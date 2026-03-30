@@ -155,7 +155,7 @@ export const Dropdown = React.forwardRef(
     const environment = useShadowDomEnvironment(toggleButtonRef);
 
     // Downshift may call stateReducer before useFloating refs are initialized, so we store them in a separate holder to avoid access before initialization
-    // eslint-disable-next-line prefer-const
+    // oxlint-disable-next-line prefer-const
     let floatingRefs:
       | ReturnType<typeof useFloating<HTMLDivElement>>['refs']
       | undefined;

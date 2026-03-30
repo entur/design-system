@@ -55,7 +55,6 @@ export const wrapPageElement: GatsbySSR['wrapPageElement'] = ({
 
 export const onRenderBody: GatsbySSR['onRenderBody'] = ({
   setHeadComponents,
-  setPostBodyComponents: _setPostBodyComponents,
 }) => {
   const usercentricsScript = (
     <script

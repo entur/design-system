@@ -9,7 +9,7 @@ import {
   TableRow,
 } from '@entur/table';
 
-import { useSettings } from '@providers/SettingsContext';
+
 import { ImportStatement } from '@components/Common/ImportStatement';
 import './Props.scss';
 
@@ -59,16 +59,13 @@ function formatPropType(typeName: string) {
 
 type PropsProps = {
   componentName: string;
-  defaultOpen?: boolean;
   npmPackage?: string;
 };
 
 const Props: React.FC<PropsProps> = ({
   componentName,
-  defaultOpen,
   npmPackage,
 }) => {
-  const { userType: _userType } = useSettings();
   const [componentProps, setComponentProps] = useState<any>(null);
 
   useEffect(() => {
@@ -91,8 +88,6 @@ const Props: React.FC<PropsProps> = ({
   const hasAnyDefaultValues = Object.values(componentProps).some(
     (details: any) => details.defaultValue,
   );
-
-  const _isDefaultOpenSet = defaultOpen !== undefined;
 
   return (
     <>

@@ -22,8 +22,8 @@ type MobileTopNavigationProps = {
   [key: string]: any;
 };
 const MobileTopNavigation: React.FC<MobileTopNavigationProps> = ({
-  frontPage: _frontPage,
-  className: _className,
+  frontPage,
+  className,
   ...rest
 }) => {
   const { colorMode } = useSettings();

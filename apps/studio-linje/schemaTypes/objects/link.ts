@@ -126,11 +126,10 @@ export const LinkType = defineType({
   preview: {
     select: {
       linkText: 'linkText',
-      linkType: 'linkType',
       linkAddressType: 'linkAddressType',
       downloadFile: 'downloadFile',
     },
-    prepare({ linkText, linkType: _linkType, linkAddressType, downloadFile }) {
+    prepare({ linkText, linkAddressType, downloadFile }) {
       if (linkAddressType === 'file' && downloadFile) {
         return {
           title: linkText

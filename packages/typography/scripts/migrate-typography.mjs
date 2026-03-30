@@ -85,7 +85,6 @@ async function initializeGlob() {
 }
 
 // Configuration
-const _OLD_IMPORT = '@entur/typography';
 const BETA_IMPORT = '@entur/typography/beta';
 
 // Enhanced warning detection patterns - only truly problematic patterns
@@ -104,14 +103,6 @@ const PROBLEMATIC_PATTERNS = {
   semanticMismatch: /<Heading[^>]*as="([^"]*)"[^>]*variant="([^"]*)"/g,
 };
 
-// Warning severity levels
-const WARNING_CATEGORIES = {
-  CRITICAL: 'critical', // Will break functionality
-  HIGH: 'high', // Likely to cause issues
-  MEDIUM: 'medium', // May cause styling issues
-  LOW: 'low', // Best practice suggestions
-  INFO: 'info', // Informational only
-};
 
 // =============================================================================
 // 🎯 MIGRATION FOLDERS CONFIGURATION
@@ -231,77 +222,6 @@ function analyzeFile(filePath, content) {
   return analysis;
 }
 
-// Generate enhanced warnings with context and solutions
-function _generateWarningWithSolution(warning, _context, filePath, lineNumber) {
-  const severity = determineSeverity(warning);
-  const suggestion = generateSuggestion(warning, context);
-  const codeExample = generateCodeExample(warning);
-
-  return {
-    message: warning,
-    severity,
-    suggestion,
-    codeExample,
-    file: filePath,
-    line: lineNumber,
-    documentation: getRelevantDocs(warning),
-  };
-}
-
-// Determine warning severity based on content
-function determineSeverity(warning) {
-  if (warning.includes('will break') || warning.includes('fatal'))
-    return WARNING_CATEGORIES.CRITICAL;
-  if (warning.includes('conflict') || warning.includes('override'))
-    return WARNING_CATEGORIES.HIGH;
-  if (warning.includes('may cause') || warning.includes('styling'))
-    return WARNING_CATEGORIES.MEDIUM;
-  if (warning.includes('best practice') || warning.includes('consider'))
-    return WARNING_CATEGORIES.LOW;
-  return WARNING_CATEGORIES.INFO;
-}
-
-// Generate actionable suggestions
-function generateSuggestion(warning, _context) {
-  if (warning.includes('style and margin')) {
-    return 'Remove the margin prop as it will be overridden by inline styles. Use spacing prop instead.';
-  }
-  if (warning.includes('missing variant')) {
-    return 'Add a variant prop to ensure consistent styling. Example: variant="title-1"';
-  }
-  if (warning.includes('nested typography')) {
-    return 'Avoid nesting Text components. Use spans or other inline elements for emphasis.';
-  }
-  if (warning.includes('deprecated margin')) {
-    return 'Replace margin prop with spacing prop for better consistency.';
-  }
-  return 'Review the component for potential styling conflicts.';
-}
-
-// Generate code examples for fixes
-function generateCodeExample(warning) {
-  if (warning.includes('style and margin')) {
-    return '// Before: <Text style={{color: "red"}} margin="bottom">\n// After:  <Text style={{color: "red"}} spacing="bottom">';
-  }
-  if (warning.includes('missing variant')) {
-    return '// Before: <Heading as="h1">Title</Heading>\n// After:  <Heading as="h1" variant="title-1">Title</Heading>';
-  }
-  if (warning.includes('nested typography')) {
-    return '// Before: <Text>Hello <Text>World</Text></Text>\n// After:  <Text>Hello <span>World</span></Text>';
-  }
-  return '';
-}
-
-// Get relevant documentation links
-function getRelevantDocs(warning) {
-  if (warning.includes('variant'))
-    return 'https://linje.entur.no/komponenter/ressurser/typography-beta#heading-variants';
-  if (warning.includes('spacing'))
-    return 'https://linje.entur.no/komponenter/ressurser/typography-beta#spacing';
-  if (warning.includes('semantic'))
-    return 'https://linje.entur.no/komponenter/ressurser/typography-beta#semantic-html';
-  return 'https://linje.entur.no/komponenter/ressurser/typography-beta';
-}
 
 let ALLOWED_DIRECTORIES = process.env.TYPOGRAPHY_MIGRATION_DIRS
   ? process.env.TYPOGRAPHY_MIGRATION_DIRS.split(',')
@@ -420,14 +340,6 @@ const SPACING_MAPPING = {
   'xs2-bottom': 'xs2-bottom',
 };
 
-// Import patterns to handle
-const _IMPORT_PATTERNS = [
-  /from\s+['"`]@entur\/typography['"`]/g,
-  /from\s+['"`]@entur\/typography\/dist['"`]/g,
-  /from\s+['"`]@entur\/typography\/dist\/index['"`]/g,
-  /from\s+['"`]@entur\/typography\/dist\/styles\.css['"`]/g,
-  /from\s+['"`]@entur\/typography\/styles['"`]/g,
-];
 
 // Parse JSX props more robustly
 function parseJSXProps(propsString) {

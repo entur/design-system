@@ -86,6 +86,7 @@ const preToCodeBlock = (preProps: any) => {
 };
 // Mapping styles and global import components for MDX-files
 // components are used in the MDXProvider in the DocLayout file.
+// oxlint-disable eslint-plugin-jsx-a11y(heading-has-content)
 const components = {
   // DS components - using new beta components
   h1: (props: any) => <Heading as="h1" variant="title-1" {...props} />,
@@ -199,5 +200,6 @@ const components = {
   },
   CodeBlock,
 };
+// oxlint-enable eslint-plugin-jsx-a11y(heading-has-content)
 
 export default components;

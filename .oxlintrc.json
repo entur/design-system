@@ -10,7 +10,8 @@
       "error",
       { "terms": ["todo", "xxx"], "location": "anywhere" }
     ],
-    "no-unused-vars": "warn",
+    "no-shadow": "off",
+    "no-unused-vars": ["warn", { "ignoreRestSiblings": true }],
     "no-unused-expressions": "off",
 
     "react/prop-types": "off",

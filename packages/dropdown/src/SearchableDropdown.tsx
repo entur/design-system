@@ -1,4 +1,4 @@
-/* eslint-disable  no-warning-comments */
+/* oxlint-disable no-warning-comments */
 import React, {
   useCallback,
   useEffect,
@@ -151,7 +151,7 @@ export const SearchableDropdown = React.forwardRef(
 
     useEffect(() => {
       filterListItems({ inputValue });
-    }, [normalizedItems]); // eslint-disable-line react-hooks/exhaustive-deps
+    }, [normalizedItems]); // oxlint-disable-line react-hooks/exhaustive-deps
 
     const stateReducer = useCallback(
       (

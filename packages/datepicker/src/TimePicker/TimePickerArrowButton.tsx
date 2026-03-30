@@ -17,7 +17,7 @@ export const TimePickerArrowButton = ({
   direction,
   onClick,
   disabled,
-  readonly: _readonly,
+  readonly,
   'aria-label': ariaLabel,
   ...rest
 }: TimePickerArrowButtonProps) => {
