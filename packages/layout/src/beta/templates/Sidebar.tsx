@@ -178,10 +178,13 @@ const SidebarRoot = React.forwardRef(
       className,
     );
 
-    const wrapperClassNames = classNames({
-      'eds-contrast': contrast,
-      'eds-layout-template-sidebar-wrapper': collapsible,
-    });
+    const wrapperClassNames = classNames(
+      'eds-layout-template-sidebar-wrapper',
+      {
+        'eds-contrast': contrast,
+        'eds-layout-template-sidebar-wrapper--collapsible': collapsible,
+      },
+    );
 
     if (!collapsible) {
       return (
