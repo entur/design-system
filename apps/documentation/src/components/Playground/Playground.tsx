@@ -42,6 +42,8 @@ type PlaygroundProps = {
   scope?: Record<string, any>;
   /** Render the preview scaled down inside a 16:9 frame. E.g. 0.5 = half size. */
   previewScale?: number;
+  /** Additional CSS properties applied to the live-preview container element. */
+  containerStyle?: React.CSSProperties;
 };
 
 const Playground: React.FC<PlaygroundProps> = ({
@@ -57,6 +59,7 @@ const Playground: React.FC<PlaygroundProps> = ({
   hideColorModeOption = false,
   hideCode = false,
   previewScale,
+  containerStyle,
 }) => {
   const { resolvedColorMode } = useSettings();
   const initialColorMode = defaultContrast
@@ -150,8 +153,8 @@ const Playground: React.FC<PlaygroundProps> = ({
             'playground__live-preview-container--code-closed': !isShowingEditor,
             'playground__live-preview-container--scaled': previewScale,
           })}
-          style={
-            hideColorModeOption
+          style={{
+            ...(hideColorModeOption
               ? undefined
               : {
                   background:
@@ -160,8 +163,9 @@ const Playground: React.FC<PlaygroundProps> = ({
                       : colorMode === 'light'
                       ? componentColors.light.designentur.playground.background
                       : 'revert-layer',
-                }
-          }
+                }),
+            ...containerStyle,
+          }}
           data-color-mode={
             hideColorModeOption
               ? undefined
