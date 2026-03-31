@@ -34,6 +34,11 @@ type SanityPlaygroundProp = {
   options?: string[];
 };
 
+type ContainerStyleEntry = {
+  property: string;
+  value: string;
+};
+
 type CodeExampleType = {
   title?: string;
   codeDisplayType: 'playground' | 'plain' | 'copyable';
@@ -44,6 +49,7 @@ type CodeExampleType = {
     playgroundProps?: string;
     hideCode?: boolean;
     scaledPreview?: boolean;
+    containerStyle?: ContainerStyleEntry[];
   };
   playgroundProps?: string;
   plainCode?: CodeContentField;
@@ -153,6 +159,10 @@ export const CodeExampleResolver = ({ value }: CodeExampleProps) => {
           code={resolvedPlaygroundCode}
           hideCode={playgroundCode?.hideCode}
           previewScale={playgroundCode?.scaledPreview ? 0.5 : undefined}
+          containerStyle={playgroundCode?.containerStyle?.reduce(
+            (acc, { property, value }) => ({ ...acc, [property]: value }),
+            {} as React.CSSProperties,
+          )}
           hideColorModeOption={(selectedProps?.length ?? 0) == 0}
           title={title}
         />
