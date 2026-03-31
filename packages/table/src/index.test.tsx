@@ -1,12 +1,12 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import {
-  Table,
-  TableHead,
-  TableBody,
-  TableRow,
   DataCell,
   HeaderCell,
+  Table,
+  TableBody,
+  TableHead,
+  TableRow,
   useSortableData,
 } from '.';
 

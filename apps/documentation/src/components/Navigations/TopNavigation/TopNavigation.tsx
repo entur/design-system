@@ -4,7 +4,7 @@ import { Location, useLocation } from '@reach/router';
 import classNames from 'classnames';
 
 import { IconButton } from '@entur/button';
-import { GithubIcon, MenuIcon } from '@entur/icons';
+import { GithubIcon } from '@entur/icons';
 import { useContrast } from '@entur/layout';
 import { TopNavigationItem } from '@entur/menu';
 import { Tooltip } from '@entur/tooltip';
@@ -17,7 +17,6 @@ import logo from '@media/logo/logo.svg';
 import logoDark from '@media/logo/logoDark.svg';
 
 import './TopNavigation.scss';
-import SideNavigationLayout from 'src/layouts/SideNavigationLayout';
 
 const TopNavigation = () => {
   const { colorMode } = useSettings();

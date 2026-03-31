@@ -1,5 +1,5 @@
 import path from 'path';
-import { GatsbyConfig, graphql } from 'gatsby';
+import { GatsbyConfig } from 'gatsby';
 import { getSanitizedPath } from './src/utils/getSanitizedPath';
 
 const isGitHubPullRequest =

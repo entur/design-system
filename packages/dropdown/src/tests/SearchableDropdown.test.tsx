@@ -2,7 +2,7 @@ import React from 'react';
 import { act, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { axe, toHaveNoViolations } from 'jest-axe';
-import { SearchableDropdown, DropdownItemType } from '..';
+import { DropdownItemType, SearchableDropdown } from '..';
 
 expect.extend(toHaveNoViolations);
 

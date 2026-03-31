@@ -2,8 +2,8 @@ import React from 'react';
 import { Heading5 } from '@entur/typography';
 import { GridItem } from '@entur/grid';
 import {
-  formatVariablePrimitive,
   formatVariableByType,
+  formatVariablePrimitive,
 } from '../../utils/formatVariable';
 import { TokensTableProps } from './types';
 import { useSettings } from '@providers/SettingsContext';

@@ -17,7 +17,7 @@ import {
 
 import { BaseFormControl } from '@entur/form';
 import { space } from '@entur/tokens';
-import { mergeRefs, VariantType } from '@entur/utils';
+import { VariantType, mergeRefs } from '@entur/utils';
 
 import { DropdownList } from './components/DropdownList';
 import { DropdownFieldAppendix } from './components/FieldComponents';
@@ -155,7 +155,7 @@ export const Dropdown = React.forwardRef(
     const environment = useShadowDomEnvironment(toggleButtonRef);
 
     // Downshift may call stateReducer before useFloating refs are initialized, so we store them in a separate holder to avoid access before initialization
-    // eslint-disable-next-line prefer-const
+    // oxlint-disable-next-line prefer-const
     let floatingRefs:
       | ReturnType<typeof useFloating<HTMLDivElement>>['refs']
       | undefined;

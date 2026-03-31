@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import { Template } from '..';
 
 test('Template.Portal renders expected regions and forwards props', () => {

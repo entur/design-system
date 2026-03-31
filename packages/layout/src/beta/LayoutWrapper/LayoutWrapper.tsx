@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useMemo } from 'react';
-import { DEFAULT_BREAKPOINTS, type Breakpoints } from './utils';
+import { type Breakpoints, DEFAULT_BREAKPOINTS } from './utils';
 
 export type LayoutValues = {
   breakpoints: Breakpoints;

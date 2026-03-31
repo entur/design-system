@@ -1,5 +1,5 @@
 import React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
 import { ImageDisplay, ImageDisplayProps } from './ImageDisplay';
 
 const MediaDisplay: React.FC<ImageDisplayProps> = ({

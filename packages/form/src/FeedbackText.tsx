@@ -1,8 +1,8 @@
 import React from 'react';
 import {
-  ValidationSuccessFilledIcon,
   ValidationErrorFilledIcon,
   ValidationExclamationFilledIcon,
+  ValidationSuccessFilledIcon,
 } from '@entur/icons';
 import { SubLabel } from '@entur/typography';
 import { VariantType } from '@entur/utils';

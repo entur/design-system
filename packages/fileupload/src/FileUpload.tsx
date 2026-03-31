@@ -1,13 +1,13 @@
 import React from 'react';
 import {
-  useDropzone,
+  DropEvent,
   DropzoneOptions,
   FileRejection,
-  DropEvent,
+  useDropzone,
 } from 'react-dropzone';
 import classNames from 'classnames';
 
-import { FileIcon, DeleteIcon } from '@entur/icons';
+import { DeleteIcon, FileIcon } from '@entur/icons';
 import { IconButton } from '@entur/button';
 import { Label } from '@entur/typography';
 

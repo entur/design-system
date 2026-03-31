@@ -1,6 +1,6 @@
 import React from 'react';
 import { cleanup, fireEvent, render, within } from '@testing-library/react';
-import { SearchableDropdown, Dropdown, MultiSelect } from '..';
+import { Dropdown, MultiSelect, SearchableDropdown } from '..';
 
 /**
  * Simulates a realistic browser click: mousedown → mouseup → click.

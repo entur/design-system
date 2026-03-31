@@ -3,7 +3,7 @@ import { Link } from 'gatsby';
 import classNames from 'classnames';
 import { Location } from '@reach/router';
 
-import { Contrast, useContrast } from '@entur/layout';
+import { useContrast } from '@entur/layout';
 import { IconButton } from '@entur/button';
 import { GithubIcon } from '@entur/icons';
 import { Tooltip } from '@entur/tooltip';
@@ -11,7 +11,6 @@ import { Tooltip } from '@entur/tooltip';
 import SettingsPanel from '../SettingsPanel';
 import { useSettings } from '@providers/SettingsContext';
 import { Search } from '@components/Search/Search';
-import SideNavigationLayout from 'src/layouts/SideNavigationLayout';
 import logo from '../../../media/logo/logo.svg';
 import logoDark from '../../../media/logo/logoDark.svg';
 

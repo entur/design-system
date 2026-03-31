@@ -5,15 +5,15 @@ import classNames from 'classnames';
 import { PolymorphicComponentProps } from '@entur/utils';
 
 import {
-  getSpacingClasses,
   getSemanticTypeFromTextVariant,
+  getSpacingClasses,
 } from '../utils/utils';
 
 import {
   TypographySize,
+  TypographySpacing,
   TypographyTextVariant,
   TypographyWeight,
-  TypographySpacing,
 } from '../types';
 
 import './text.scss';

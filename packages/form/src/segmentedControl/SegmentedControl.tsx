@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import { Label } from '@entur/typography';
-import { useRandomId, ExtendableProps } from '@entur/utils';
+import { ExtendableProps, useRandomId } from '@entur/utils';
 import './SegmentedControl.scss';
 
 type SegmentedContextProps = {

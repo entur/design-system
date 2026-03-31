@@ -447,7 +447,7 @@ function toFlattenedJSObjectKey(name: string) {
   const nameWithoutSpacesAndDashes = name
     .toLowerCase()
     .replace(/\s(\w)/g, (_, letter) => letter.toUpperCase())
-    .replace(/\-(\w)/g, (_, letter) => letter.toUpperCase());
+    .replace(/-(\w)/g, (_, letter) => letter.toUpperCase());
   const nameArray = nameWithoutSpacesAndDashes.split('/');
 
   const nameArrayWithStringNumbers = nameArray.map(namePart => {

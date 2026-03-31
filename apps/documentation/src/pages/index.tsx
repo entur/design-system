@@ -14,7 +14,7 @@ import {
 } from '@entur/icons';
 import { Contrast, NavigationCard } from '@entur/layout';
 import { colors } from '@entur/tokens';
-import { Heading1, Paragraph, Heading2 } from '@entur/typography';
+import { Heading1, Heading2, Paragraph } from '@entur/typography';
 import { useWindowDimensions } from '@entur/utils';
 
 import Footer from '@components/Footer/Footer';
@@ -24,12 +24,11 @@ import TopNavigationLayout from '../layouts/TopNavigationLayout';
 
 import {
   LinjeLines,
-  LinjeTopographicTop,
   LinjeTopographicBottom,
+  LinjeTopographicTop,
 } from '@media/images/frontpage/BackgroundElements';
 
 import './index.scss';
-import { Flex } from '@entur/layout/beta';
 
 const Index = () => {
   const { width } = useWindowDimensions();

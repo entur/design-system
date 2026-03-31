@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { TextArea } from './TextArea';
-import { toHaveNoViolations, axe } from 'jest-axe';
+import { axe, toHaveNoViolations } from 'jest-axe';
 
 expect.extend(toHaveNoViolations);
 test('TextField is accessible', async () => {

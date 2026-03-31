@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { IconButton } from '@entur/button';
 import { CloseSmallIcon } from '@entur/icons';
 import { Placement } from '@entur/tooltip';
-import { useRandomId, mergeRefs, VariantType } from '@entur/utils';
+import { VariantType, mergeRefs, useRandomId } from '@entur/utils';
 
 import { BaseFormControl } from './BaseFormControl';
 import { useInputGroupContext } from './InputGroupContext';

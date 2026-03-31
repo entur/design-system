@@ -5,12 +5,12 @@ import {
   Heading4,
   Heading6,
   Link,
-  UnorderedList,
   ListItem,
   StrongText,
+  UnorderedList,
 } from '@entur/typography';
 import { Tag } from '@entur/layout';
-import { NewIcon, BugIcon } from '@entur/icons';
+import { BugIcon, NewIcon } from '@entur/icons';
 
 export const MarkdownParser: React.FC<{ children: any }> = ({ children }) => {
   return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import { graphql, HeadProps } from 'gatsby';
+import { HeadProps, graphql } from 'gatsby';
 import { PortableText } from '@components/sanity';
 import { BasePageHeader } from '@components/PageHeader/BasePageHeader';
 import { PageType } from '@components/sanity/types';

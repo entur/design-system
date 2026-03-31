@@ -1,15 +1,15 @@
 import React from 'react';
 import * as allTokens from '@entur/tokens';
 import {
-  Table,
-  TableRow,
-  TableHead,
-  TableBody,
   DataCell,
   HeaderCell,
+  Table,
+  TableBody,
+  TableHead,
+  TableRow,
 } from '@entur/table';
 import { CodeText } from '@entur/typography';
-import { formatVariable, formatTokenValue } from '../../utils/formatVariable';
+import { formatTokenValue, formatVariable } from '../../utils/formatVariable';
 import { flatten } from '../../utils/flatten';
 import { CopyButton } from './CopyButton';
 import { useSettings } from '@providers/SettingsContext';

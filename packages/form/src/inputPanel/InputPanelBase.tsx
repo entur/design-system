@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import classNames from 'classnames';
-import { mergeRefs, useRandomId, useForceUpdate } from '@entur/utils';
+import { mergeRefs, useForceUpdate, useRandomId } from '@entur/utils';
 import { Checkbox } from '../Checkbox';
 import { Radio } from '../Radio';
 

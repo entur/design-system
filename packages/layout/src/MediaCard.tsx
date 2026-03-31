@@ -1,5 +1,5 @@
 import React, { CSSProperties } from 'react';
-import { Paragraph, Label, Heading3 } from '@entur/typography';
+import { Heading3, Label, Paragraph } from '@entur/typography';
 import classNames from 'classnames';
 import { BaseCard } from './BaseCard';
 import { ForwardIcon } from '@entur/icons';

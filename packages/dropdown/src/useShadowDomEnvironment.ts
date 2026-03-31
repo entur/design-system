@@ -1,4 +1,4 @@
-import { useMemo, RefObject } from 'react';
+import { RefObject, useMemo } from 'react';
 import type { Environment } from 'downshift';
 
 /**
@@ -75,6 +75,6 @@ export function useShadowDomEnvironment(
     // which triggers recomputation. This is intentional despite being
     // a ref — we need the environment to be created once the element
     // is available.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // oxlint-disable-next-line react-hooks/exhaustive-deps
   }, [ref.current]);
 }

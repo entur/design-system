@@ -2,9 +2,9 @@ import React, { cloneElement } from 'react';
 import classNames from 'classnames';
 import {
   CloseSmallIcon,
-  ValidationInfoFilledIcon,
   ValidationErrorFilledIcon,
   ValidationExclamationCircleFilledIcon,
+  ValidationInfoFilledIcon,
 } from '@entur/icons';
 import { useContrast } from '@entur/layout';
 

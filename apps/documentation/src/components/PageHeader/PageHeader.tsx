@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLocation } from '@reach/router';
-import { useStaticQuery, graphql } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
 import { Heading1, Label, LeadParagraph } from '@entur/typography';
 import { useSettings } from '@providers/SettingsContext';
 import { PackageChangelog } from './PackageChangelog';

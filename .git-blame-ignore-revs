@@ -1,0 +1,8 @@
+# Commits that are pure formatting changes and can be ignored in git blame.
+# Configure with: git config blame.ignoreRevsFile .git-blame-ignore-revs
+
+# sort import members alphabetically (eslint → oxlint migration)
+94318a8833a69ccfe379ebbdb52c183bbfed256f
+
+# resolve 53 safe lint warnings (no-unused-vars, no-unneeded-ternary, no-wrapper-object-types)
+08c307cf023e294ecb543907b28f5b0678d65000

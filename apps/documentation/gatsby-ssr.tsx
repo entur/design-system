@@ -6,10 +6,10 @@ import './src/styles/index.scss';
 import { ToastProvider } from '@entur/alert';
 
 import {
-  ConsentProvider,
-  SettingsProvider,
-  MediaContextProvider,
   ColorsProvider,
+  ConsentProvider,
+  MediaContextProvider,
+  SettingsProvider,
 } from './src/providers';
 import { SearchProvider } from './src/components/Search/SearchContext';
 import DocLayout from './src/layouts/DocLayout';
@@ -55,7 +55,6 @@ export const wrapPageElement: GatsbySSR['wrapPageElement'] = ({
 
 export const onRenderBody: GatsbySSR['onRenderBody'] = ({
   setHeadComponents,
-  setPostBodyComponents,
 }) => {
   const usercentricsScript = (
     <script

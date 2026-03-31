@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Language } from 'prism-react-renderer';
-import { LiveProvider, LivePreview, LiveEditor, LiveError } from 'react-live';
+import { LiveEditor, LiveError, LivePreview, LiveProvider } from 'react-live';
 import classNames from 'classnames';
 
 import { IconButton } from '@entur/button';

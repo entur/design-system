@@ -3,7 +3,7 @@ import classNames from 'classnames';
 
 import { MenuItem } from './utils';
 import { Drawer } from '@entur/modal';
-import { MenuIcon, CloseIcon } from '@entur/icons';
+import { CloseIcon, MenuIcon } from '@entur/icons';
 import { FloatingButton } from '@entur/button';
 import SideNavigation from './SideNavigation';
 

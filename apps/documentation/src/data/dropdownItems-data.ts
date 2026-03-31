@@ -1,8 +1,8 @@
 import {
   DenmarkIcon,
   NorwayIcon,
-  SamiIcon,
   PrioritySeatSeniorsIcon,
+  SamiIcon,
   SwedenIcon,
   UKIcon,
 } from '@entur/icons';

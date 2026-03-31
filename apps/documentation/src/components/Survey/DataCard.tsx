@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { UpwardIcon, DownwardIcon } from '@entur/icons';
+import { DownwardIcon, UpwardIcon } from '@entur/icons';
 
 type DataCardProps = {
   value: string;

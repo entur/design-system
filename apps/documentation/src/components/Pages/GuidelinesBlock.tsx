@@ -1,5 +1,5 @@
 import React from 'react';
-import { SecondaryButton, ButtonGroup } from '@entur/button';
+import { ButtonGroup, SecondaryButton } from '@entur/button';
 import { DownloadIcon } from '@entur/icons';
 import { Heading2 } from '@entur/typography';
 import './GuidelinesBlock.scss';
@@ -7,7 +7,7 @@ import './GuidelinesBlock.scss';
 type GuidelinesBlockProps = {
   title: string;
   children: React.ReactNode;
-  downloadSourceButton?: String;
+  downloadSourceButton?: string;
 };
 
 export const GuidelinesBlock: React.FC<GuidelinesBlockProps> = ({

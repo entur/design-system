@@ -44,7 +44,7 @@ const elementContainsEventTarget = (
       }
       return element.contains(target as Node);
     });
-    return contains ? true : false;
+    return contains;
   }
 
   return false;

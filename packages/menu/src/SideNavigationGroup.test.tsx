@@ -1,7 +1,7 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 
-import { SideNavigation, SideNavigationItem, SideNavigationGroup } from '.';
+import { SideNavigation, SideNavigationGroup, SideNavigationItem } from '.';
 
 test('renders a nice looking menu group', () => {
   const { getByRole, queryByText, getByText } = render(

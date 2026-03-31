@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import { DialogContent } from '@reach/dialog';
-import { Heading4, Heading3, Heading2 } from '@entur/typography';
+import { Heading2, Heading3, Heading4 } from '@entur/typography';
 import { useRandomId } from '@entur/utils';
 
 export type ModalContentProps = {

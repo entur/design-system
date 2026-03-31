@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import { useRandomId, useOnMount, mergeRefs, VariantType } from '@entur/utils';
+import { VariantType, mergeRefs, useOnMount, useRandomId } from '@entur/utils';
 
 import { useVariant } from './VariantProvider';
 import { BaseFormControl } from './BaseFormControl';

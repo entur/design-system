@@ -1,4 +1,4 @@
-/* eslint-disable  no-warning-comments */
+/* oxlint-disable no-warning-comments */
 import React, {
   useCallback,
   useEffect,
@@ -13,12 +13,12 @@ import {
 } from 'downshift';
 import classNames from 'classnames';
 import {
-  useFloating,
   autoUpdate,
-  offset,
   flip,
+  offset,
   shift,
   size,
+  useFloating,
 } from '@floating-ui/react-dom';
 
 import { BaseFormControl } from '@entur/form';
@@ -35,8 +35,8 @@ import {
   useShadowDomEnvironment,
 } from './useShadowDomEnvironment';
 import {
-  clamp,
   EMPTY_INPUT,
+  clamp,
   getA11yStatusMessage,
   isFunctionWithQueryArgument,
   itemToString,
@@ -151,7 +151,7 @@ export const SearchableDropdown = React.forwardRef(
 
     useEffect(() => {
       filterListItems({ inputValue });
-    }, [normalizedItems]); // eslint-disable-line react-hooks/exhaustive-deps
+    }, [normalizedItems]); // oxlint-disable-line react-hooks/exhaustive-deps
 
     const stateReducer = useCallback(
       (

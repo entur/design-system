@@ -3,7 +3,7 @@ import { useWindowDimensions } from '@entur/utils';
 import MobileSideNavigation from '@components/Navigations/SideNavigation/MobileSideNavigation';
 import SideNavigation from '@components/Navigations/SideNavigation/SideNavigation';
 import { MenuItem } from '@components/Navigations/SideNavigation/utils';
-import { useStaticQuery, graphql, PageProps } from 'gatsby';
+import { PageProps, graphql, useStaticQuery } from 'gatsby';
 import { pxToRem } from 'src/utils/utils';
 
 const SideNavigationLayout = ({

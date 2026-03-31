@@ -1,9 +1,9 @@
 import React from 'react';
-import { render, fireEvent, waitFor, act } from '@testing-library/react';
+import { act, fireEvent, render, waitFor } from '@testing-library/react';
 import {
   CollapsibleSideNavigation,
-  SideNavigationItem,
   SideNavigationGroup,
+  SideNavigationItem,
 } from '.';
 
 jest.useFakeTimers();
