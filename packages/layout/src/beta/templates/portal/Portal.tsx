@@ -46,7 +46,6 @@ const PortalRoot = React.forwardRef(
       <Grid
         ref={ref}
         as={as}
-        templateColumns="var(--eds-sidebar-width, min-content) minmax(0, 1fr)"
         gap="none"
         columnGap="m"
         className={classNames('eds-layout-template-portal', className)}

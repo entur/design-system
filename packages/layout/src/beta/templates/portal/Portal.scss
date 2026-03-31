@@ -1,21 +1,21 @@
 @use '@entur/tokens/dist/styles.scss' as t;
 
 .eds-layout-template-portal {
-  min-height: 100vh;
+  --eds-viewport-height: 100dvh;
+  --grid-template-columns: var(--eds-sidebar-width, min-content) minmax(0, 1fr);
+
+  min-height: 0;
+  max-height: var(--eds-viewport-height);
+  height: var(--eds-viewport-height);
   width: 100%;
 
-  // Override grid-template-columns directly (not via --grid-template-columns)
-  // because Grid sets that variable as an inline style, which CSS can't beat.
-  // The :where() wrapper in Grid.scss gives the property 0 specificity,
-  // so this selector wins.
-  // Use explicit length values (not min-content) so CSS can interpolate
-  // the transition in both directions.
+  // Animate the column width when a collapsible sidebar is present.
   &:has(.eds-layout-template-sidebar--collapsible) {
     transition: grid-template-columns ease-in-out t.$timings-medium;
   }
 
   &:has(.eds-layout-template-sidebar--collapsed) {
-    grid-template-columns: 2rem minmax(0, 1fr);
+    --grid-template-columns: 2rem minmax(0, 1fr);
   }
 
   &:has(> .eds-layout-template-portal__status-bar) {
