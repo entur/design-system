@@ -79,11 +79,16 @@ const SidebarData = React.forwardRef(
     { children, as, ...rest }: SidebarSectionProps<E>,
     ref?: React.Ref<Element>,
   ) => {
-    const Element: React.ElementType = as || defaultSectionElement;
     return (
-      <Element ref={ref} {...rest}>
+      <Flex
+        ref={ref}
+        as={as || defaultSectionElement}
+        direction="column"
+        gap="s"
+        {...rest}
+      >
         {children}
-      </Element>
+      </Flex>
     );
   },
 );
