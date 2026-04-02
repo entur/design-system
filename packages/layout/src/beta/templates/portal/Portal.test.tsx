@@ -21,9 +21,7 @@ test('Template.Portal renders expected regions and forwards props', () => {
 
   const portal = getByTestId('portal');
   expect(portal).toHaveClass('eds-layout-grid');
-  expect(portal.style.getPropertyValue('--grid-template-columns')).toBe(
-    'var(--eds-sidebar-width, min-content) minmax(0, 1fr)',
-  );
+  expect(portal).toHaveClass('eds-layout-template-portal');
   expect(portal.style.getPropertyValue('--grid-gap')).toBe('0');
   expect(portal.style.getPropertyValue('--grid-column-gap')).toBe('var(--m)');
 
