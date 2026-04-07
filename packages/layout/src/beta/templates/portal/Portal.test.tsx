@@ -21,9 +21,9 @@ test('Template.Portal renders expected regions and forwards props', () => {
 
   const portal = getByTestId('portal');
   expect(portal).toHaveClass('eds-layout-grid');
-  expect(portal.style.getPropertyValue('--grid-template-columns')).toBe(
-    'var(--eds-sidebar-width, min-content) minmax(0, 1fr)',
-  );
+  // --grid-template-columns is set via Portal.scss, not as an inline style,
+  // so the Grid does not override it with a default value.
+  expect(portal.style.getPropertyValue('--grid-template-columns')).toBeFalsy();
   expect(portal.style.getPropertyValue('--grid-gap')).toBe('0');
   expect(portal.style.getPropertyValue('--grid-column-gap')).toBe('var(--m)');
 

@@ -78,6 +78,39 @@ export const playgroundCode = defineType({
       initialValue: false,
       fieldset: 'options',
     }),
+    defineField({
+      name: 'containerStyle',
+      title: 'CSS for forhåndsvisning',
+      type: 'array',
+      description:
+        'CSS-stil som settes på forhåndsvisningsbeholderen (Playground).',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'property',
+              title: 'Egenskap',
+              type: 'string',
+            }),
+            defineField({ name: 'value', title: 'Verdi', type: 'string' }),
+          ],
+          preview: {
+            select: { property: 'property', value: 'value' },
+            prepare: ({
+              property,
+              value,
+            }: {
+              property: string;
+              value: string;
+            }) => ({
+              title: `${property}: ${value}`,
+            }),
+          },
+        },
+      ],
+      fieldset: 'options',
+    }),
   ],
   preview: {
     select: {
