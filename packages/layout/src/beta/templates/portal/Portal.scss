@@ -38,4 +38,6 @@
 
 .eds-layout-template-portal__main {
   padding: var(--eds-portal-main-padding, 1rem);
+  max-height: var(--eds-viewport-height, 100dvh);
+  overflow: auto;
 }
