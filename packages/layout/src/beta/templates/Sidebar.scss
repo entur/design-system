@@ -1,4 +1,5 @@
 @use '@entur/tokens/dist/styles.scss' as t;
+@use './variables' as v;
 
 .eds-layout-template-sidebar-wrapper {
   height: 100%;
@@ -6,15 +7,15 @@
 
   &--collapsible {
     position: relative;
-    max-height: var(--eds-viewport-height, 100dvh);
+    max-height: var(--eds-viewport-height, #{v.$default-viewport-height});
   }
 }
 
 .eds-layout-template-sidebar {
-  padding: var(--eds-sidebar-padding, 2rem);
+  padding: var(--eds-sidebar-padding, #{v.$default-sidebar-padding});
   height: 100%;
-  max-height: var(--eds-viewport-height, 100dvh);
-  width: var(--eds-sidebar-width, 20rem);
+  max-height: var(--eds-viewport-height, #{v.$default-viewport-height});
+  width: var(--eds-sidebar-width, #{v.$default-sidebar-width});
 
   &--collapsible {
     overflow-x: hidden;
@@ -23,7 +24,7 @@
   }
 
   &--collapsed {
-    padding: var(--eds-sidebar-padding, 2rem) 0;
+    padding: var(--eds-sidebar-padding, #{v.$default-sidebar-padding}) 0;
   }
 
   &--plain {
@@ -36,8 +37,8 @@
     overflow-y: auto;
     scrollbar-width: thin;
     scrollbar-color: rgba(255 255 255 / 0.3) transparent;
-    margin-left: calc(-1 * var(--eds-sidebar-padding, 2rem));
-    margin-right: calc(-1 * var(--eds-sidebar-padding, 2rem));
+    margin-left: calc(-1 * var(--eds-sidebar-padding, #{v.$default-sidebar-padding}));
+    margin-right: calc(-1 * var(--eds-sidebar-padding, #{v.$default-sidebar-padding}));
 
     .eds-layout-template-sidebar--plain & {
       scrollbar-color: rgba(0 0 0 / 0.2) transparent;
@@ -54,7 +55,7 @@
     gap: var(--m);
     flex: 1 1 0;
     min-height: 0;
-    min-width: calc(var(--eds-sidebar-width, 20rem) - 2 * var(--eds-sidebar-padding, 2rem));
+    min-width: calc(var(--eds-sidebar-width, #{v.$default-sidebar-width}) - 2 * var(--eds-sidebar-padding, #{v.$default-sidebar-padding}));
     opacity: 1;
     transition: opacity ease-in t.$timings-fast t.$timings-medium;
 
