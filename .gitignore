@@ -31,7 +31,8 @@ coverage
 .idea
 
 # Claude Code
-.claude
+/.claude/*
+!/.claude/skills/
 
 ## Local test environment
 TestBench.tsx
