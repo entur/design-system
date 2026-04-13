@@ -5841,6 +5841,7 @@ __metadata:
     "@yarnpkg/lockfile": "npm:^1.1.0"
     jest: "npm:^29.7.0"
     js-yaml: "npm:^4.1.0"
+    posthog-node: "npm:^4.18.0"
     react-scanner: "npm:1.1.0"
     ts-jest: "npm:^29.3.4"
     tsx: "npm:^4.19.4"
@@ -15608,6 +15609,17 @@ __metadata:
     form-data: "npm:^4.0.5"
     proxy-from-env: "npm:^2.1.0"
   checksum: 10c0/2541f4aa215a7d1842429dad006fc682d82bc0e74bd14500823f7d8cce3bbae0e0a8c328c8538946718f366ab8ce5a4c12e9ad40e5a0f3482ff8bff0cd115d45
+  languageName: node
+  linkType: hard
+
+"axios@npm:^1.8.2":
+  version: 1.15.0
+  resolution: "axios@npm:1.15.0"
+  dependencies:
+    follow-redirects: "npm:^1.15.11"
+    form-data: "npm:^4.0.5"
+    proxy-from-env: "npm:^2.1.0"
+  checksum: 10c0/47e0f860e98d4d7aa145e89ce0cae00e1fb0f1d2485f065c21fce955ddb1dba4103a46bd0e47acd18a27208a7f62c96249e620db575521b92a968619ab133409
   languageName: node
   linkType: hard
 
@@ -33974,6 +33986,15 @@ __metadata:
     query-selector-shadow-dom: "npm:^1.0.1"
     web-vitals: "npm:^5.1.0"
   checksum: 10c0/f849251f4460d5155e7ab7c8c672aca756c2bd0e16058c4dbc5989ed84cc34299b80009b7ae5ce297342d45dc48be4e774e34f042bd99efb3043429d80dfa63b
+  languageName: node
+  linkType: hard
+
+"posthog-node@npm:^4.18.0":
+  version: 4.18.0
+  resolution: "posthog-node@npm:4.18.0"
+  dependencies:
+    axios: "npm:^1.8.2"
+  checksum: 10c0/aa30427599d15b98357b5a88096a8b38b0812c71af49eb54fce0a46164521c247c3b064973931c3471cf84cb7f0e391bfc5d6174cd038f75f8c02cb8a9626cff
   languageName: node
   linkType: hard
 

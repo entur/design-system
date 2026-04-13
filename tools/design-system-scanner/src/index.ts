@@ -32,6 +32,7 @@ const SCAN_LIMITATIONS = [
  *   scanner --local /path/to/repo [--repo-name ...] [--output result.json]
  *   scanner --aggregate /path/to/results --total-repos N --output report.json
  *   scanner --bigquery-export report.json [--output bq-dir/]
+ *   scanner --posthog-export report.json [--posthog-dry-run] [--posthog-host <url>]
  */
 async function main(): Promise<void> {
   const args = parseArgs(process.argv.slice(2));
@@ -47,9 +48,11 @@ async function main(): Promise<void> {
     await aggregateResults(args);
   } else if (args.bigqueryExport) {
     exportForBigQuery(args);
+  } else if (args.posthogExport) {
+    await exportToPostHog(args);
   } else {
     console.error(
-      'Error: Specify --local <path>, --aggregate <path>, or --bigquery-export <path>',
+      'Error: Specify --local <path>, --aggregate <path>, --bigquery-export <path>, or --posthog-export <path>',
     );
     printUsage();
     process.exit(1);
@@ -602,6 +605,58 @@ function emitCatalogZeroRows(
   }
 }
 
+async function exportToPostHog(args: ParsedArgs): Promise<void> {
+  const reportPath = path.resolve(args.posthogExport!);
+
+  if (!fs.existsSync(reportPath)) {
+    console.error(`Report file not found: ${reportPath}`);
+    process.exit(1);
+  }
+
+  const report: ScanReport = JSON.parse(fs.readFileSync(reportPath, 'utf-8'));
+  const { sendScanReport, createDryRunClient, DEFAULT_POSTHOG_HOST } =
+    await import('./export/posthogClient');
+
+  const host =
+    args.posthogHost ?? process.env.POSTHOG_HOST ?? DEFAULT_POSTHOG_HOST;
+
+  if (args.posthogDryRun) {
+    console.log('PostHog dry-run — events will be printed, not sent.\n');
+    const client = createDryRunClient();
+    const count = await sendScanReport(report, {
+      client,
+      scannerVersion: SCANNER_VERSION,
+    });
+    console.log(
+      `\nDry-run complete. Would have sent ${count} events to ${host}`,
+    );
+    return;
+  }
+
+  const apiKey = args.posthogApiKey ?? process.env.POSTHOG_API_KEY;
+  if (!apiKey) {
+    console.error(
+      'Error: POSTHOG_API_KEY is required. Set the env var or pass --posthog-key <key>',
+    );
+    process.exit(1);
+  }
+
+  const { PostHog } = await import('posthog-node');
+  const client = new PostHog(apiKey, {
+    host,
+    flushAt: 1,
+    flushInterval: 0,
+  });
+
+  const count = await sendScanReport(report, {
+    client: client as unknown as Parameters<typeof sendScanReport>[1]['client'],
+    scannerVersion: SCANNER_VERSION,
+  });
+
+  await client.shutdown();
+  console.log(`Sent ${count} events to PostHog at ${host}`);
+}
+
 function findJsonFiles(dir: string): string[] {
   const files: string[] = [];
   try {
@@ -713,6 +768,11 @@ interface ParsedArgs {
   // Feature flags
   includeFileFindings?: boolean;
   catalog?: string;
+  // PostHog export flags
+  posthogExport?: string;
+  posthogDryRun?: boolean;
+  posthogHost?: string;
+  posthogApiKey?: string;
 }
 
 function parseArgs(argv: string[]): ParsedArgs {
@@ -766,6 +826,18 @@ function parseArgs(argv: string[]): ParsedArgs {
       case '--catalog':
         args.catalog = argv[++i];
         break;
+      case '--posthog-export':
+        args.posthogExport = argv[++i];
+        break;
+      case '--posthog-dry-run':
+        args.posthogDryRun = true;
+        break;
+      case '--posthog-host':
+        args.posthogHost = argv[++i];
+        break;
+      case '--posthog-key':
+        args.posthogApiKey = argv[++i];
+        break;
       case '--help':
       case '-h':
         args.help = true;
@@ -786,6 +858,7 @@ Usage:
   scanner --local <path>                         Scan a local directory
   scanner --aggregate <path> --output <path>     Merge per-repo results
   scanner --bigquery-export <path> [--output <dir>]  Export report as NDJSON for BigQuery
+  scanner --posthog-export <path>                Send scan report events to PostHog
 
 Options:
   --local, -l <path>         Path to local repository to scan
@@ -797,6 +870,10 @@ Options:
   --total-repos <n>          Total repos discovered (for report metadata)
   --bigquery-export <path>   Path to scan-report.json to export as NDJSON
   --catalog <path>           Path to catalog.json for unused symbol detection
+  --posthog-export <path>    Path to scan-report.json to send to PostHog
+  --posthog-dry-run          Print PostHog events without sending (no API key needed)
+  --posthog-host <url>       PostHog host URL (default: https://eu.i.posthog.com)
+  --posthog-key <key>        PostHog API key (default: POSTHOG_API_KEY env var)
   --output <path>            Write results to file or directory
   --visibility <vis>         Repository visibility (public/private/internal)
   --archived <bool>          Whether repo is archived
@@ -817,6 +894,12 @@ Examples:
 
   # Export for BigQuery
   scanner --bigquery-export scan-report.json --output ./bq-export/
+
+  # Send scan results to PostHog (dry-run)
+  scanner --posthog-export scan-report.json --posthog-dry-run
+
+  # Send scan results to PostHog
+  POSTHOG_API_KEY=phc_xxx scanner --posthog-export scan-report.json
 `);
 }
 
