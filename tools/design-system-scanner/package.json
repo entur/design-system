@@ -17,6 +17,7 @@
   "dependencies": {
     "@yarnpkg/lockfile": "^1.1.0",
     "js-yaml": "^4.1.0",
+    "posthog-node": "^4.18.0",
     "react-scanner": "1.1.0",
     "typescript": "^5.9.0-beta"
   },

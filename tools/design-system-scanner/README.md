@@ -41,6 +41,12 @@ yarn start --bigquery-export scan-report.json --output ./bq-export/
 
 # Export with catalog for unused symbol detection
 yarn start --bigquery-export scan-report.json --catalog catalog.json --output ./bq-export/
+
+# Send scan results to PostHog (dry-run)
+yarn start --posthog-export scan-report.json --posthog-dry-run
+
+# Send scan results to PostHog
+POSTHOG_API_KEY=phc_xxx yarn start --posthog-export scan-report.json
 ```
 
 ## CLI reference
@@ -52,6 +58,7 @@ yarn start --bigquery-export scan-report.json --catalog catalog.json --output ./
 | `--local <path>`           | Scan a single local repository               |
 | `--aggregate <path>`       | Merge per-repo JSON results from a directory |
 | `--bigquery-export <path>` | Export a scan report as NDJSON for BigQuery  |
+| `--posthog-export <path>`  | Send a scan report as events to PostHog      |
 
 ### Options
 
@@ -69,7 +76,47 @@ yarn start --bigquery-export scan-report.json --catalog catalog.json --output ./
 | `--primary-language <lang>` | Primary language from GitHub                          |
 | `--created-at <iso-date>`   | Repo creation date                                    |
 | `--include-file-findings`   | Collect per-file findings for drilldown               |
+| `--posthog-export <path>`   | Path to scan-report.json to send to PostHog           |
+| `--posthog-dry-run`         | Print PostHog events as JSON, don't send              |
+| `--posthog-host <url>`      | PostHog host (default: `https://eu.i.posthog.com`)    |
+| `--posthog-key <key>`       | PostHog API key (default: `POSTHOG_API_KEY` env var)  |
 | `--help, -h`                | Show help                                             |
+
+## PostHog export
+
+The scanner can send usage data to [PostHog](https://posthog.com) for product analytics dashboards.
+
+### Setup
+
+Add `POSTHOG_API_KEY` as a GitHub Actions secret in the repository settings. Optionally set `POSTHOG_HOST` as a variable (defaults to `https://eu.i.posthog.com`).
+
+### Local usage
+
+```bash
+# Dry-run: print all events as JSON without sending (no API key needed)
+yarn start --posthog-export scan-report.json --posthog-dry-run
+
+# Send to PostHog
+POSTHOG_API_KEY=phc_xxx yarn start --posthog-export scan-report.json
+
+# Custom host
+POSTHOG_API_KEY=phc_xxx yarn start --posthog-export scan-report.json --posthog-host https://app.posthog.com
+```
+
+### Events
+
+| Event               | One per                       | Key properties                                                                           |
+| ------------------- | ----------------------------- | ---------------------------------------------------------------------------------------- |
+| `ds_scan_run`       | scan execution                | `total_repos_scanned`, `repos_with_usage`, `scan_status`, `scanner_version`              |
+| `ds_repo_scanned`   | repository                    | `visibility`, `framework`, `is_monorepo`, `ds_package_count`, `component_instance_count` |
+| `ds_package_used`   | (repo, `@entur/*` package)    | `package_name`, `version`, `resolved_version`, `is_imported`, `symbol_count_used`        |
+| `ds_component_used` | (repo, JSX component)         | `component_name`, `package_name`, `instance_count`, `file_count`, `props_spread_count`   |
+| `ds_symbol_used`    | (repo, non-JSX symbol)        | `symbol_name`, `symbol_type`, `reference_count`, `files_used_in`                         |
+| `ds_css_override`   | (repo, `.eds-*` CSS override) | `selector`, `file_path`, `line_number`, `file_extension`                                 |
+
+Events use PostHog Group Analytics with `repo`, `ds_package`, `ds_component`, and `ds_symbol` groups, enabling dashboard breakdowns by e.g. "which packages are used in the most repos" or "repos using PrimaryButton".
+
+Timestamps are set to the scan's `timestamp` (not the send time), so weekly scans attribute data to the correct date.
 
 ## BigQuery output format
 
