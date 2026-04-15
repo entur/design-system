@@ -3,6 +3,7 @@ import * as crypto from 'crypto';
 import * as fs from 'fs';
 import * as path from 'path';
 import { scanRepository } from './scanner';
+import type { PostHogLike } from './export/posthogClient';
 import type {
   ScanReport,
   ScanRunMetadata,
@@ -615,7 +616,7 @@ async function exportToPostHog(args: ParsedArgs): Promise<void> {
 
   const report: ScanReport = JSON.parse(fs.readFileSync(reportPath, 'utf-8'));
   const { sendScanReport, createDryRunClient, DEFAULT_POSTHOG_HOST } =
-    await import('./export/posthogClient');
+    await import('./export/posthogClient.js');
 
   const host =
     args.posthogHost ?? process.env.POSTHOG_HOST ?? DEFAULT_POSTHOG_HOST;
@@ -642,14 +643,10 @@ async function exportToPostHog(args: ParsedArgs): Promise<void> {
   }
 
   const { PostHog } = await import('posthog-node');
-  const client = new PostHog(apiKey, {
-    host,
-    flushAt: 1,
-    flushInterval: 0,
-  });
+  const client = new PostHog(apiKey, { host });
 
   const count = await sendScanReport(report, {
-    client: client as unknown as Parameters<typeof sendScanReport>[1]['client'],
+    client: client as unknown as PostHogLike,
     scannerVersion: SCANNER_VERSION,
   });
 
