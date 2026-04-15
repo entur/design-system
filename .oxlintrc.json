@@ -14,7 +14,6 @@
     "no-unused-vars": ["warn", { "ignoreRestSiblings": true }],
     "no-unused-expressions": "off",
 
-    "react/prop-types": "off",
     "react/display-name": "off",
     "react/no-unknown-property": "off",
     "react/react-in-jsx-scope": "off",
@@ -29,7 +28,6 @@
     "import/namespace": "off",
     "import/no-named-as-default": "off",
     "import/no-named-as-default-member": "off",
-    "import/order": "off",
     "sort-imports": [
       "warn",
       { "ignoreDeclarationSort": true, "ignoreMemberSort": false }
