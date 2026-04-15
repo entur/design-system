@@ -190,6 +190,9 @@ jobs:
     permissions:
       contents: read
       id-token: write
+    env:
+      POSTHOG_API_KEY: ${{ secrets.POSTHOG_API_KEY }}
+      POSTHOG_HOST: ${{ vars.POSTHOG_HOST || 'https://eu.i.posthog.com' }}
     steps:
       - name: Checkout design-system repository
         uses: actions/checkout@v5
@@ -227,9 +230,6 @@ jobs:
       - name: Export to PostHog
         if: ${{ env.POSTHOG_API_KEY != '' }}
         working-directory: tools/design-system-scanner
-        env:
-          POSTHOG_API_KEY: ${{ secrets.POSTHOG_API_KEY }}
-          POSTHOG_HOST: ${{ vars.POSTHOG_HOST || 'https://eu.i.posthog.com' }}
         run: node dist/index.js --posthog-export scan-report.json
 
       - name: Generate catalog
