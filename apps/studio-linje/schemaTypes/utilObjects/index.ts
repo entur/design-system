@@ -1,3 +1,4 @@
+export { cssProperty } from './cssProperty';
 export { inlineIcon } from './inlineIcon';
 export { downloadFile } from './downloadFile';
 export { copyableText } from './copyableText';
