@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.6.1](https://github.com/entur/design-system/compare/@entur/layout@3.6.0...@entur/layout@3.6.1) (2026-04-16)
+
+### Bug Fixes
+
+- **layout/beta/portal, layout/beta/sidebar:** fix overflow scrolling and styling issues in Portal and Sidebar ([1de520b](https://github.com/entur/design-system/commit/1de520b80bbf70372c8c573f6fd8c9b173c94b08))
+
 # [3.5.0](https://github.com/entur/design-system/compare/@entur/layout@3.4.2...@entur/layout@3.5.0) (2026-03-16)
 
 ### Features
