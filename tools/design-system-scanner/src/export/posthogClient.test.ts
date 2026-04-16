@@ -380,6 +380,39 @@ describe('sendScanReport', () => {
 
     expect(count).toBe(events.length);
   });
+
+  it('flushes in batches when client supports flush', async () => {
+    let flushCount = 0;
+    const mockClient = {
+      capture: jest.fn(),
+      groupIdentify: jest.fn(),
+      flush: jest.fn().mockImplementation(async () => {
+        flushCount++;
+      }),
+    };
+
+    await sendScanReport(FIXTURE_REPORT, {
+      client: mockClient,
+      scannerVersion: '0.2.0',
+      flushBatchSize: 3,
+    });
+
+    // With small batch size, should flush multiple times
+    expect(flushCount).toBeGreaterThan(0);
+    expect(mockClient.flush).toHaveBeenCalled();
+  });
+
+  it('works without flush when client does not support it', async () => {
+    const mockClient = { capture: jest.fn(), groupIdentify: jest.fn() };
+
+    // Should not throw even without flush method
+    const count = await sendScanReport(FIXTURE_REPORT, {
+      client: mockClient,
+      scannerVersion: '0.2.0',
+    });
+
+    expect(count).toBeGreaterThan(0);
+  });
 });
 
 describe('createDryRunClient', () => {
