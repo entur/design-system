@@ -26,6 +26,7 @@ import type {
 export interface PostHogLike {
   capture(payload: CapturePayload): void;
   groupIdentify(payload: GroupIdentifyPayload): void;
+  flush?(): Promise<void>;
 }
 
 export interface CapturePayload {
@@ -162,25 +163,54 @@ export function buildGroupIdentifies(
 export interface SendScanReportOptions {
   client: PostHogLike;
   scannerVersion?: string;
+  /**
+   * Flush the client every N calls (group identifies + captures combined).
+   * Prevents posthog-node's internal queue from overflowing on large scans.
+   * Default: 500.
+   */
+  flushBatchSize?: number;
 }
 
 /**
  * Send a scan report to PostHog. Returns the number of events sent.
+ *
+ * Flushes in batches to avoid overwhelming posthog-node's internal queue,
+ * which defaults to maxQueueSize=1000. Without batched flushing, large scans
+ * (85+ repos) silently drop events that exceed the queue.
  */
 export async function sendScanReport(
   report: ScanReport,
   opts: SendScanReportOptions,
 ): Promise<number> {
-  const { client, scannerVersion } = opts;
+  const { client, scannerVersion, flushBatchSize = 500 } = opts;
+  const canFlush = typeof client.flush === 'function';
+
+  let pending = 0;
+
+  async function flushIfNeeded(): Promise<void> {
+    if (canFlush && pending >= flushBatchSize) {
+      await client.flush!();
+      pending = 0;
+    }
+  }
 
   const identifies = buildGroupIdentifies(report);
   for (const id of identifies) {
     client.groupIdentify(id);
+    pending++;
+    await flushIfNeeded();
   }
 
   const events = buildScanEvents(report, { scannerVersion });
   for (const event of events) {
     client.capture(event);
+    pending++;
+    await flushIfNeeded();
+  }
+
+  // Final flush for any remaining events
+  if (canFlush && pending > 0) {
+    await client.flush!();
   }
 
   return events.length;

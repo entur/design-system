@@ -643,14 +643,22 @@ async function exportToPostHog(args: ParsedArgs): Promise<void> {
   }
 
   const { PostHog } = await import('posthog-node');
-  const client = new PostHog(apiKey, { host });
+  const client = new PostHog(apiKey, {
+    host,
+    // Raise limits to handle large scans (85+ repos → thousands of events).
+    // Defaults (flushAt=20, maxQueueSize=1000) cause silent drops.
+    flushAt: 200,
+    maxQueueSize: 10000,
+    maxBatchSize: 500,
+  });
 
   const count = await sendScanReport(report, {
     client: client as unknown as PostHogLike,
     scannerVersion: SCANNER_VERSION,
   });
 
-  await client.shutdown();
+  // Give PostHog 60s to flush remaining events (default is 30s)
+  await client.shutdown(60_000);
   console.log(`Sent ${count} events to PostHog at ${host}`);
 }
 
