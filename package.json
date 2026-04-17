@@ -188,7 +188,8 @@
     "glob@npm:10.4.5": "10.5.0",
     "glob@npm:~10.3.12": "10.5.0",
     "glob@npm:^10.4.2": "10.5.0",
-    "min-document": "2.19.1"
+    "min-document": "2.19.1",
+    "protobufjs": "7.5.5"
   },
   "config": {
     "commitizen": {
