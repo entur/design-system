@@ -271,6 +271,7 @@ function findSourceFiles(
  */
 function aggregateImports(entries: FileImportEntry[]): ImportUsage[] {
   const map = new Map<string, ImportUsage>();
+  const filesByKey = new Map<string, Set<string>>();
 
   for (const entry of entries) {
     const key = `${entry.packageName}::${entry.symbolName}`;
@@ -278,8 +279,10 @@ function aggregateImports(entries: FileImportEntry[]): ImportUsage[] {
 
     if (existing) {
       existing.referenceCount += entry.referenceCount;
-      existing.filesUsedIn++;
+      filesByKey.get(key)!.add(entry.filePath);
+      existing.filesUsedIn = filesByKey.get(key)!.size;
     } else {
+      filesByKey.set(key, new Set([entry.filePath]));
       map.set(key, {
         packageName: entry.packageName,
         symbolName: entry.symbolName,

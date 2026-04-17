@@ -19,7 +19,7 @@ import type {
 const packageJson = JSON.parse(
   fs.readFileSync(path.resolve(__dirname, '..', 'package.json'), 'utf-8'),
 ) as { version: string };
-const SCANNER_VERSION = packageJson.version;
+const SCANNER_VERSION = packageJson.version ?? 'unknown';
 
 const SCAN_LIMITATIONS = [
   'Re-exports through barrel files are not followed — only direct @entur/* imports are detected.',
