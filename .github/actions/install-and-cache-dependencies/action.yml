@@ -19,10 +19,6 @@ runs:
       run: corepack enable
       shell: bash
 
-    - name: Enable Corepack
-      run: yarn set version berry
-      shell: bash
-
     - name: Cache dependencies
       uses: actions/cache@v5
       with:
