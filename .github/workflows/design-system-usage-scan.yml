@@ -283,7 +283,7 @@ jobs:
           BQ_DATASET: design_system_scanner
         run: |
           for table in scan_runs repos repo_package_usage repo_symbol_usage repo_workspaces; do
-            bq load --source_format=NEWLINE_DELIMITED_JSON --replace \
+            bq load --source_format=NEWLINE_DELIMITED_JSON \
               --project_id="$BQ_PROJECT" \
               "$BQ_DATASET.$table" \
               "bq-export/$table.ndjson"
@@ -292,7 +292,7 @@ jobs:
           # Optional tables — only generated when data is present
           for table in file_findings repo_css_overrides ds_catalog; do
             if [ -f "bq-export/$table.ndjson" ]; then
-              bq load --source_format=NEWLINE_DELIMITED_JSON --replace \
+              bq load --source_format=NEWLINE_DELIMITED_JSON \
                 --project_id="$BQ_PROJECT" \
                 "$BQ_DATASET.$table" \
                 "bq-export/$table.ndjson"
