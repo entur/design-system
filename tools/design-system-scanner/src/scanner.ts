@@ -152,7 +152,10 @@ function enrichPackageUsage(
     }
 
     // Count files from import analyzer separately (they track count, not names)
-    const importFileCount = imports.reduce((sum, i) => sum + i.filesUsedIn, 0);
+    const importFileCount = imports.reduce(
+      (max, i) => Math.max(max, i.filesUsedIn),
+      0,
+    );
 
     pkg.isImported = components.length > 0 || imports.length > 0;
     pkg.filesImportingCount = Math.max(allFiles.size, importFileCount);

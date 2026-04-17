@@ -16,7 +16,10 @@ import type {
   CatalogSymbol,
 } from './types';
 
-const SCANNER_VERSION = '0.2.0';
+const packageJson = JSON.parse(
+  fs.readFileSync(path.resolve(__dirname, '..', 'package.json'), 'utf-8'),
+) as { version: string };
+const SCANNER_VERSION = packageJson.version;
 
 const SCAN_LIMITATIONS = [
   'Re-exports through barrel files are not followed — only direct @entur/* imports are detected.',
@@ -164,7 +167,7 @@ async function aggregateResults(args: ParsedArgs): Promise<void> {
     timestamp: scanRun.scanTimestamp,
     source: 'github-actions',
     scanRun,
-    totalReposScanned: totalRepos,
+    totalReposScanned: repositories.length,
     reposWithUsage: repositories.filter(
       r => r.designSystemPackages.length > 0 || r.otherUILibraries.length > 0,
     ).length,
