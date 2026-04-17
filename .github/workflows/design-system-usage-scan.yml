@@ -59,10 +59,18 @@ jobs:
       total: ${{ steps.discover.outputs.total }}
 
     steps:
+      - name: Generate GitHub App token
+        id: generate-token
+        uses: actions/create-github-app-token@fee1f7d63c2ff003460e3d139729b119787bc349 # v2
+        with:
+          app-id: ${{ vars.SCANNER_APP_ID }}
+          private-key: ${{ secrets.SCANNER_APP_PRIVATE_KEY }}
+          owner: entur
+
       - name: Discover repos via GitHub code search
         id: discover
         env:
-          GH_TOKEN: ${{ secrets.SCANNER_PAT }}
+          GH_TOKEN: ${{ steps.generate-token.outputs.token }}
         run: |
           # Search for repos containing @entur/ in package.json files
           # The code search API returns up to 1000 results; paginate to collect all
@@ -112,6 +120,14 @@ jobs:
       fail-fast: false
 
     steps:
+      - name: Generate GitHub App token
+        id: generate-token
+        uses: actions/create-github-app-token@fee1f7d63c2ff003460e3d139729b119787bc349 # v2
+        with:
+          app-id: ${{ vars.SCANNER_APP_ID }}
+          private-key: ${{ secrets.SCANNER_APP_PRIVATE_KEY }}
+          owner: entur
+
       - name: Checkout design-system (scanner source)
         uses: actions/checkout@v5
 
@@ -128,14 +144,14 @@ jobs:
         uses: actions/checkout@v5
         with:
           repository: ${{ matrix.repo }}
-          token: ${{ secrets.SCANNER_PAT }}
+          token: ${{ steps.generate-token.outputs.token }}
           path: target-repo
           fetch-depth: 1
 
       - name: Fetch repo metadata
         id: meta
         env:
-          GH_TOKEN: ${{ secrets.SCANNER_PAT }}
+          GH_TOKEN: ${{ steps.generate-token.outputs.token }}
         run: |
           meta=$(gh api repos/${{ matrix.repo }} --jq '{
             default_branch: .default_branch,
