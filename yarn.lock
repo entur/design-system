@@ -5841,7 +5841,7 @@ __metadata:
     "@yarnpkg/lockfile": "npm:^1.1.0"
     jest: "npm:^29.7.0"
     js-yaml: "npm:^4.1.0"
-    posthog-node: "npm:^4.18.0"
+    posthog-node: "npm:^5.29.2"
     react-scanner: "npm:1.1.0"
     ts-jest: "npm:^29.3.4"
     tsx: "npm:^4.19.4"
@@ -10621,6 +10621,13 @@ __metadata:
   dependencies:
     cross-spawn: "npm:^7.0.6"
   checksum: 10c0/ceca5e0e01ef6902da45bc2f4d1d7b68bda48d575bbb8696014785c45a6db940e2cc6dd09e896a0101e98fe1acefcba71cb89b46e57c4956147799c631ccaace
+  languageName: node
+  linkType: hard
+
+"@posthog/core@npm:1.25.2":
+  version: 1.25.2
+  resolution: "@posthog/core@npm:1.25.2"
+  checksum: 10c0/a462328aa50303417abe0c87a0e4a4760b2e836b74cc582449e0480f2f04b832d1d51ade883c4d7fde2bf7e820646a050577b3a9339dd534de4ddd5cadd4bd15
   languageName: node
   linkType: hard
 
@@ -34106,12 +34113,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"posthog-node@npm:^4.18.0":
-  version: 4.18.0
-  resolution: "posthog-node@npm:4.18.0"
+"posthog-node@npm:^5.29.2":
+  version: 5.29.2
+  resolution: "posthog-node@npm:5.29.2"
   dependencies:
-    axios: "npm:^1.8.2"
-  checksum: 10c0/aa30427599d15b98357b5a88096a8b38b0812c71af49eb54fce0a46164521c247c3b064973931c3471cf84cb7f0e391bfc5d6174cd038f75f8c02cb8a9626cff
+    "@posthog/core": "npm:1.25.2"
+  peerDependencies:
+    rxjs: ^7.0.0
+  peerDependenciesMeta:
+    rxjs:
+      optional: true
+  checksum: 10c0/f0db54716534fc5a1edbc73d9aec74d409325049c3232b77b38bec75c66d53d75d7006a4924cebb29815629a18782e075761c64425930c08d1a6094e34089ee9
   languageName: node
   linkType: hard
 
