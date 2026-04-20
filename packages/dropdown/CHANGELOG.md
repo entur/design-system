@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.1.2](https://github.com/entur/design-system/compare/@entur/dropdown@8.1.1...@entur/dropdown@8.1.2) (2026-04-16)
+
+**Note:** Version bump only for package @entur/dropdown
+
+# [8.1.0](https://github.com/entur/design-system/compare/@entur/dropdown@8.0.9...@entur/dropdown@8.1.0) (2026-03-16)
+
+### Features
+
+- **dropdown:** make dropdown components work inside shadow DOM ([4f5f832](https://github.com/entur/design-system/commit/4f5f832138e909c3fb32b7e175d0fb69ee53cf0c))
+
 ## [8.0.8](https://github.com/entur/design-system/compare/@entur/dropdown@8.0.7...@entur/dropdown@8.0.8) (2026-02-20)
 
 ### Bug Fixes

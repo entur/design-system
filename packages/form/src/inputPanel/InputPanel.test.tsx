@@ -1,7 +1,7 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { toHaveNoViolations, axe } from 'jest-axe';
+import { axe, toHaveNoViolations } from 'jest-axe';
 
 import { CheckboxPanel, RadioPanel } from '.';
 import { Fieldset, RadioGroup } from '..';

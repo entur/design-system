@@ -1,10 +1,6 @@
-import { EditIcon } from '@entur/icons';
 import { Link } from '@entur/typography';
 
-import { useLocation } from '@reach/router';
-
 import React from 'react';
-import Divider from './Divider';
 import './SiteFooter.scss';
 
 const SiteFooter: React.FC = () => {

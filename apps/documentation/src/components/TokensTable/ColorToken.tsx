@@ -2,6 +2,7 @@ import React from 'react';
 import { formatTokenValue } from '../../utils/formatVariable';
 import { TokenProps } from './types';
 import { CopyableText } from '@entur/alert';
+// oxlint-disable-next-line no-warning-comments -- Pre-existing follow-up comment discovered during oxlint migration; getTransportStyle is not exported from @entur/travel
 // TODO This function is not exported from travel. So we include it here directly
 // import { getTransportStyle } from '@entur/travel';
 

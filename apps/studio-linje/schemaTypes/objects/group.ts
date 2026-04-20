@@ -1,5 +1,5 @@
 import { GridViewIcon } from '@entur/icons';
-import { defineType, defineField, defineArrayMember } from 'sanity';
+import { defineArrayMember, defineField, defineType } from 'sanity';
 
 export const GroupType = defineType({
   name: 'group',

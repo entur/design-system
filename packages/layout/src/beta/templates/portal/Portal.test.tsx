@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import { Template } from '..';
 
 test('Template.Portal renders expected regions and forwards props', () => {
@@ -21,9 +21,9 @@ test('Template.Portal renders expected regions and forwards props', () => {
 
   const portal = getByTestId('portal');
   expect(portal).toHaveClass('eds-layout-grid');
-  expect(portal.style.getPropertyValue('--grid-template-columns')).toBe(
-    'var(--eds-sidebar-width, min-content) minmax(0, 1fr)',
-  );
+  // --grid-template-columns is set via Portal.scss, not as an inline style,
+  // so the Grid does not override it with a default value.
+  expect(portal.style.getPropertyValue('--grid-template-columns')).toBeFalsy();
   expect(portal.style.getPropertyValue('--grid-gap')).toBe('0');
   expect(portal.style.getPropertyValue('--grid-column-gap')).toBe('var(--m)');
 
@@ -64,4 +64,119 @@ test('Template.Portal.StatusBar renders and spans full width', () => {
     'eds-layout-template-portal__status-bar',
     'custom',
   );
+});
+
+test('Sidebar without collapsed prop has no toggle button', () => {
+  const { queryByRole } = render(
+    <Template.Portal>
+      <Template.Portal.Sidebar>
+        <Template.Portal.Sidebar.Navigation>
+          Nav
+        </Template.Portal.Sidebar.Navigation>
+      </Template.Portal.Sidebar>
+      <Template.Portal.Main />
+    </Template.Portal>,
+  );
+
+  expect(queryByRole('button')).toBeNull();
+});
+
+test('Sidebar with collapsed prop renders toggle button', () => {
+  const { getByRole } = render(
+    <Template.Portal>
+      <Template.Portal.Sidebar collapsed={false} onCollapseToggle={jest.fn()}>
+        <Template.Portal.Sidebar.Navigation>
+          Nav
+        </Template.Portal.Sidebar.Navigation>
+      </Template.Portal.Sidebar>
+      <Template.Portal.Main />
+    </Template.Portal>,
+  );
+
+  const toggle = getByRole('button');
+  expect(toggle).toHaveClass('eds-layout-template-sidebar__collapse-toggle');
+  expect(toggle).toHaveAttribute('aria-expanded', 'true');
+  expect(toggle).toHaveAttribute('aria-label', 'Lukk sidemeny');
+});
+
+test('Controlled collapsible sidebar respects collapsed prop and fires onCollapseToggle', () => {
+  const onCollapseToggle = jest.fn();
+
+  const { getByRole, getByTestId, rerender } = render(
+    <Template.Portal>
+      <Template.Portal.Sidebar
+        collapsed={false}
+        onCollapseToggle={onCollapseToggle}
+        data-testid="sidebar"
+      >
+        <Template.Portal.Sidebar.Navigation>
+          Nav content
+        </Template.Portal.Sidebar.Navigation>
+      </Template.Portal.Sidebar>
+      <Template.Portal.Main />
+    </Template.Portal>,
+  );
+
+  const sidebar = getByTestId('sidebar');
+  expect(sidebar).not.toHaveClass('eds-layout-template-sidebar--collapsed');
+
+  const toggle = getByRole('button');
+  fireEvent.click(toggle);
+  expect(onCollapseToggle).toHaveBeenCalledWith(true);
+
+  rerender(
+    <Template.Portal>
+      <Template.Portal.Sidebar
+        collapsed={true}
+        onCollapseToggle={onCollapseToggle}
+        data-testid="sidebar"
+      >
+        <Template.Portal.Sidebar.Navigation>
+          Nav content
+        </Template.Portal.Sidebar.Navigation>
+      </Template.Portal.Sidebar>
+      <Template.Portal.Main />
+    </Template.Portal>,
+  );
+
+  expect(sidebar).toHaveClass('eds-layout-template-sidebar--collapsed');
+  expect(toggle).toHaveAttribute('aria-expanded', 'false');
+});
+
+test('Sidebar.Data renders as Flex column with gap', () => {
+  const { getByTestId } = render(
+    <Template.Portal>
+      <Template.Portal.Sidebar>
+        <Template.Portal.Sidebar.Data data-testid="data">
+          <div>Item 1</div>
+          <div>Item 2</div>
+        </Template.Portal.Sidebar.Data>
+        <Template.Portal.Sidebar.Navigation>
+          Nav
+        </Template.Portal.Sidebar.Navigation>
+      </Template.Portal.Sidebar>
+      <Template.Portal.Main />
+    </Template.Portal>,
+  );
+
+  const data = getByTestId('data');
+  expect(data).toHaveClass('eds-layout-flex');
+  expect(data.style.getPropertyValue('--flex-direction')).toBe('column');
+  expect(data.style.getPropertyValue('--flex-gap')).toBe('var(--s)');
+});
+
+test('Collapsed sidebar sets --eds-sidebar-width inline style', () => {
+  const { getByTestId } = render(
+    <Template.Portal>
+      <Template.Portal.Sidebar collapsed={true} data-testid="sidebar">
+        <Template.Portal.Sidebar.Navigation>
+          Nav
+        </Template.Portal.Sidebar.Navigation>
+      </Template.Portal.Sidebar>
+      <Template.Portal.Main />
+    </Template.Portal>,
+  );
+
+  const sidebar = getByTestId('sidebar');
+  expect(sidebar.style.getPropertyValue('--eds-sidebar-width')).toBe('2rem');
 });

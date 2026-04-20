@@ -1,8 +1,8 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { now, parseAbsolute, Time } from '@internationalized/date';
-import { toHaveNoViolations, axe } from 'jest-axe';
+import { Time, now, parseAbsolute } from '@internationalized/date';
+import { axe, toHaveNoViolations } from 'jest-axe';
 import { SimpleTimePicker, TimePicker } from '../TimePicker';
 
 expect.extend(toHaveNoViolations);

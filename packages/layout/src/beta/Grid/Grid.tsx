@@ -84,13 +84,12 @@ export const Grid = React.forwardRef(
   ): JSX.Element => {
     const Element: React.ElementType = as || defaultElement;
 
-    const resolvedTemplateColumns =
-      useResponsiveValue(templateColumns) ?? 'repeat(12, 1fr)';
+    const resolvedTemplateColumns = useResponsiveValue(templateColumns);
     const resolvedTemplateRows = useResponsiveValue(templateRows);
     const resolvedGap = useResponsiveValue(gap);
     const resolvedRowGap = useResponsiveValue(rowGap);
     const resolvedColumnGap = useResponsiveValue(columnGap);
-    const resolvedAutoFlow = useResponsiveValue(autoFlow) ?? 'row';
+    const resolvedAutoFlow = useResponsiveValue(autoFlow);
     const resolvedAlign = useResponsiveValue(align);
     const resolvedJustify = useResponsiveValue(justify);
     const resolvedAlignContent = useResponsiveValue(alignContent);

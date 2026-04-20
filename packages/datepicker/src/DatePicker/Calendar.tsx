@@ -15,8 +15,8 @@ import { LeftArrowIcon, RightArrowIcon } from '@entur/icons';
 import {
   ariaLabelIfNorwegian,
   createCalendar,
-  handleOnChange,
   getAdjustedMaxDate,
+  handleOnChange,
 } from '../shared/utils';
 import { CalendarButton } from '../shared/CalendarButton';
 import { CalendarGrid } from './CalendarGrid';

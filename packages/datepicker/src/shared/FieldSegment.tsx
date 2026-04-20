@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import classNames from 'classnames';
 import { useDateSegment } from '@react-aria/datepicker';
-import { DateSegment, DateFieldState } from '@react-stately/datepicker';
+import { DateFieldState, DateSegment } from '@react-stately/datepicker';
 
 import './FieldSegment.scss';
 

@@ -27,6 +27,7 @@ export function lowerCaseFilterTest(
   return inputRegex.test(item.label);
 }
 
+/* oxlint-disable no-unused-vars -- params required to match dropdown filter API signature */
 export function noFilter<ValueType>(
   //@ts-expect-error only here to comply with dropdown filter API
   item: NormalizedDropdownItemType<ValueType>,
@@ -35,6 +36,7 @@ export function noFilter<ValueType>(
 ) {
   return true;
 }
+/* oxlint-enable no-unused-vars */
 
 export const itemToString = (item: NormalizedDropdownItemType<any> | null) =>
   item ? item.label : '';

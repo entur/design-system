@@ -1,5 +1,5 @@
 import { DEFAULT_BREAKPOINTS } from './utils';
-import { useLayoutContext, type LayoutValues } from './LayoutWrapper';
+import { type LayoutValues, useLayoutContext } from './LayoutWrapper';
 
 export const useLayoutValues = (): LayoutValues => {
   const context = useLayoutContext();

@@ -1,20 +1,20 @@
 import React from 'react';
 
 import {
-  BusIcon,
-  FerryIcon,
-  CarferryIcon,
-  TramIcon,
-  PlaneIcon,
-  TrainIcon,
   BicycleIcon,
-  MobilityIcon,
-  MetroIcon,
-  HelicopterIcon,
-  FunicularIcon,
+  BusIcon,
   CablewayIcon,
-  TaxiIcon,
+  CarferryIcon,
+  FerryIcon,
+  FunicularIcon,
+  HelicopterIcon,
+  MetroIcon,
+  MobilityIcon,
+  PlaneIcon,
   SnowCoachIcon,
+  TaxiIcon,
+  TrainIcon,
+  TramIcon,
   WalkIcon,
 } from '@entur/icons';
 

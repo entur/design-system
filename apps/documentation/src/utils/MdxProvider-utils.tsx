@@ -1,59 +1,59 @@
 import * as React from 'react';
 import Props from '@components/Props/Props';
 import Playground from '@components/Playground/Playground';
-import { DoDontGroup, DoDontCard } from '@components/Cards/DoDont';
+import { DoDontCard, DoDontGroup } from '@components/Cards/DoDont';
 import BaseCardDesignEntur from '@components/Cards/BaseCardDesignEntur';
 import PageHeader from '@components/PageHeader/PageHeader';
 import { ImageDisplay } from '@components/Media/ImageDisplay';
 import { ImportStatement } from '@components/Common/ImportStatement';
-import { PrimaryButton, SecondaryButton, IconButton } from '@entur/button';
+import { IconButton, PrimaryButton, SecondaryButton } from '@entur/button';
 import {
-  TextField,
-  TextArea,
   Checkbox,
   Radio,
   RadioGroup,
   SegmentedChoice,
   SegmentedControl,
+  TextArea,
+  TextField,
 } from '@entur/form';
 import {
   Heading,
-  Text,
   Link,
-  UnorderedList,
-  NumberedList,
   ListItem,
+  NumberedList,
+  Text,
+  UnorderedList,
 } from '@entur/typography/beta';
 import {
-  Table,
-  TableHead,
-  TableBody,
-  TableFooter,
-  TableRow,
-  HeaderCell,
   DataCell,
   EditableCell,
-  ExpandableRow,
   ExpandRowButton,
+  ExpandableRow,
+  HeaderCell,
+  Table,
+  TableBody,
+  TableFooter,
+  TableHead,
+  TableRow,
 } from '@entur/table';
 import { VisuallyHidden } from '@entur/a11y';
 import { ExpandablePanel } from '@entur/expand';
-import { GridItem, GridContainer } from '@entur/grid';
+import { GridContainer, GridItem } from '@entur/grid';
 import {
   BannerAlertBox,
-  ToastAlertBox,
-  ToastProvider,
+  CopyableText,
   SmallAlertBox,
   SmallExpandableAlertBox,
-  CopyableText,
+  ToastAlertBox,
+  ToastProvider,
 } from '@entur/alert';
 import {
   Badge,
+  BulletBadge,
   NotificationBadge,
   StatusBadge,
-  BulletBadge,
 } from '@entur/layout';
-import { Tabs, TabList, Tab, TabPanels, TabPanel } from '@entur/tab';
+import { Tab, TabList, TabPanel, TabPanels, Tabs } from '@entur/tab';
 import { CodeBlock } from '@components/Codeblock/CodeBlock';
 
 const preToCodeBlock = (preProps: any) => {
@@ -86,6 +86,7 @@ const preToCodeBlock = (preProps: any) => {
 };
 // Mapping styles and global import components for MDX-files
 // components are used in the MDXProvider in the DocLayout file.
+// oxlint-disable eslint-plugin-jsx-a11y(heading-has-content)
 const components = {
   // DS components - using new beta components
   h1: (props: any) => <Heading as="h1" variant="title-1" {...props} />,
@@ -199,5 +200,6 @@ const components = {
   },
   CodeBlock,
 };
+// oxlint-enable eslint-plugin-jsx-a11y(heading-has-content)
 
 export default components;

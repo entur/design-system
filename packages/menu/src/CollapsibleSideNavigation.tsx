@@ -1,6 +1,6 @@
 import React from 'react';
 import { SideNavigationProps } from './SideNavigation';
-import { useControllableProp } from './useControllableProp';
+import { useControllableProp } from '@entur/utils';
 import classNames from 'classnames';
 import { LeftArrowIcon, MenuIcon } from '@entur/icons';
 

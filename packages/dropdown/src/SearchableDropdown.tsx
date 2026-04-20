@@ -1,4 +1,4 @@
-/* eslint-disable  no-warning-comments */
+/* oxlint-disable no-warning-comments */
 import React, {
   useCallback,
   useEffect,
@@ -13,12 +13,12 @@ import {
 } from 'downshift';
 import classNames from 'classnames';
 import {
-  useFloating,
   autoUpdate,
-  offset,
   flip,
+  offset,
   shift,
   size,
+  useFloating,
 } from '@floating-ui/react-dom';
 
 import { BaseFormControl } from '@entur/form';
@@ -31,8 +31,12 @@ import { DropdownFieldAppendix } from './components/FieldComponents';
 import { DropdownProps } from './Dropdown';
 import { useResolvedItems } from './useResolvedItems';
 import {
-  clamp,
+  getActiveElement,
+  useShadowDomEnvironment,
+} from './useShadowDomEnvironment';
+import {
   EMPTY_INPUT,
+  clamp,
   getA11yStatusMessage,
   isFunctionWithQueryArgument,
   itemToString,
@@ -114,6 +118,7 @@ export const SearchableDropdown = React.forwardRef(
     const [showSelectedItem, setShowSelectedItem] = useState(value !== null);
     const [lastHighlightedIndex, setLastHighlightedIndex] = useState(0);
     const inputRef = useRef<HTMLInputElement>(null);
+    const environment = useShadowDomEnvironment(inputRef);
 
     const {
       items: normalizedItems,
@@ -136,13 +141,17 @@ export const SearchableDropdown = React.forwardRef(
     };
 
     const inputHasFocus =
-      typeof document !== 'undefined'
-        ? inputRef?.current === document?.activeElement
-        : false;
+      typeof document !== 'undefined' &&
+      inputRef.current ===
+        getActiveElement(
+          (inputRef.current?.getRootNode() ?? document) as
+            | Document
+            | ShadowRoot,
+        );
 
     useEffect(() => {
       filterListItems({ inputValue });
-    }, [normalizedItems]); // eslint-disable-line react-hooks/exhaustive-deps
+    }, [normalizedItems]); // oxlint-disable-line react-hooks/exhaustive-deps
 
     const stateReducer = useCallback(
       (
@@ -230,6 +239,7 @@ export const SearchableDropdown = React.forwardRef(
       itemToString,
       selectedItem: value,
       stateReducer,
+      ...(environment && { environment }),
       onInputValueChange(changes) {
         updateListItems({ inputValue: changes.inputValue });
       },

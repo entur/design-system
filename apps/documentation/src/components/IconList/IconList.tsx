@@ -11,7 +11,7 @@ import {
   SearchableDropdown,
 } from '@entur/dropdown';
 import { Switch, TextField } from '@entur/form';
-import { DownloadIcon, CopyIcon, SearchIcon } from '@entur/icons';
+import { CopyIcon, DownloadIcon, SearchIcon } from '@entur/icons';
 import { fontSizes } from '@entur/tokens';
 import { VisuallyHidden } from '@entur/a11y';
 import { Tooltip } from '@entur/tooltip';

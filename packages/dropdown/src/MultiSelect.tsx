@@ -8,18 +8,18 @@ import React, {
 } from 'react';
 import classNames from 'classnames';
 import {
-  useMultipleSelection,
-  useCombobox,
-  UseComboboxStateChangeOptions,
   UseComboboxState,
+  UseComboboxStateChangeOptions,
+  useCombobox,
+  useMultipleSelection,
 } from 'downshift';
 import {
-  useFloating,
   autoUpdate,
-  offset,
   flip,
+  offset,
   shift,
   size,
+  useFloating,
 } from '@floating-ui/react-dom';
 
 import { VisuallyHidden } from '@entur/a11y';
@@ -36,8 +36,8 @@ import { DropdownList } from './components/DropdownList';
 import { useResolvedItems } from './useResolvedItems';
 import { DropdownProps } from './Dropdown';
 import {
-  clamp,
   EMPTY_INPUT,
+  clamp,
   getA11yStatusMessage,
   isFunctionWithQueryArgument,
   itemToKey,
@@ -49,6 +49,7 @@ import {
 } from './utils';
 
 import { NormalizedDropdownItemType } from './types';
+import { useShadowDomEnvironment } from './useShadowDomEnvironment';
 
 import './Dropdown.scss';
 
@@ -170,6 +171,7 @@ export const MultiSelect = React.forwardRef(
   ) => {
     const [lastHighlightedIndex, setLastHighlightedIndex] = React.useState(0);
     const inputRef = useRef<HTMLInputElement>(null);
+    const environment = useShadowDomEnvironment(inputRef);
 
     useEffect(() => {
       //@ts-expect-error this is done to aid developers debug wrong prop usage
@@ -244,7 +246,7 @@ export const MultiSelect = React.forwardRef(
 
     React.useEffect(() => {
       filterListItems({ inputValue });
-    }, [normalizedItems]); // eslint-disable-line react-hooks/exhaustive-deps
+    }, [normalizedItems]); // oxlint-disable-line react-hooks/exhaustive-deps
 
     const {
       hasSelectedItems,
@@ -269,6 +271,7 @@ export const MultiSelect = React.forwardRef(
       // @ts-expect-error prop missing from library types
       itemToString,
       itemToKey,
+      ...(environment && { environment }),
       onSelectedItemsChange({ selectedItems: newSelectedItems }) {
         onChange(newSelectedItems);
       },
@@ -361,6 +364,7 @@ export const MultiSelect = React.forwardRef(
       itemToString,
       selectedItem: null,
       stateReducer,
+      ...(environment && { environment }),
       onInputValueChange(changes) {
         updateListItems({ inputValue: changes.inputValue });
       },

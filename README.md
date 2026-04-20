@@ -25,8 +25,8 @@ The monorepo is divided into `packages` and `apps`. `packages` contains all pack
 
 The monorepo needs the following tools to run properly:
 
-- NodeJS 20.19.4
-- yarn 4.9.3
+- NodeJS 24.14.0
+- yarn 4.13.0
 - npm (for publishing)
 - React 18 or higher (all packages require React >=18.0.0)
 

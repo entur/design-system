@@ -1,6 +1,6 @@
 {
   "name": "@entur/documentation",
-  "version": "6.16.2",
+  "version": "6.18.1",
   "private": true,
   "description": "Documentation for Entur's design system",
   "keywords": [
@@ -66,7 +66,7 @@
     "gatsby-transformer-sharp": "5.16.0",
     "hex-rgb": "4.3.0",
     "markdown-to-jsx": "7.7.13",
-    "posthog-js": "1.347.1",
+    "posthog-js": "1.352.1",
     "react": "18.3.1",
     "react-confetti": "6.4.0",
     "react-dom": "18.3.1",
@@ -78,7 +78,7 @@
     "wcag-contrast": "3.0.0"
   },
   "devDependencies": {
-    "@types/node": "20.19.11",
+    "@types/node": "24.12.0",
     "@types/react": "18.3.24",
     "@types/react-dom": "18.3.7",
     "@types/react-syntax-highlighter": "15.5.13",

@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { graphql, HeadProps, PageProps } from 'gatsby';
+import React from 'react';
+import { HeadProps, PageProps, graphql } from 'gatsby';
 import { SEO } from '@components/seo/SEO';
 import { getSanitizedPath } from '@components/Navigations/SideNavigation/utils';
 import SanityTableOfContent from '@components/Navigations/TableOfContent/SanityTableOfContent';
 import { BasePageHeader } from '@components/PageHeader/BasePageHeader';
-import { Tabs, TabList, Tab, TabPanels, TabPanel } from '@entur/tab';
+import { Tab, TabList, TabPanel, TabPanels, Tabs } from '@entur/tab';
 import { PortableText } from '@components/sanity/PortableText';
 import { useWindowDimensions } from '@entur/utils';
 import { pxToRem } from 'src/utils/utils';

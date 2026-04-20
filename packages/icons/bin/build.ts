@@ -45,7 +45,6 @@ async function buildIconComponents() {
   const components = traverse('src/svgs').map((svgPath: string) => {
     // Check for .DS_Store to clarify confusing error message
     if (svgPath.endsWith('.DS_Store')) {
-      // eslint-disable-next-line no-undef
       console.error(
         '\nWARNING: You have a .DS_Store file among your svgs, please remove it. Path:',
         svgPath,
@@ -90,7 +89,7 @@ async function outputComponentCode({
   component: Component;
   native?: boolean;
 }) {
-  const { name, svgPath, categories } = component;
+  const { name, svgPath } = component;
   const rawSvgText = fs.readFileSync(svgPath, 'utf-8');
   const webCode = await transform(
     rawSvgText,

@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.2](https://github.com/entur/design-system/compare/@entur/utils@0.13.1...@entur/utils@0.13.2) (2026-03-16)
+
+**Note:** Version bump only for package @entur/utils
+
 # [0.13.0](https://github.com/entur/design-system/compare/@entur/utils@0.12.5...@entur/utils@0.13.0) (2025-12-05)
 
 ### Features

@@ -8,17 +8,17 @@ import React, {
 
 import classNames from 'classnames';
 import {
+  FloatingList,
   autoUpdate,
   flip,
   offset,
+  shift,
   useFloating,
   useInteractions,
   useListItem,
   useListNavigation,
-  useTypeahead,
-  FloatingList,
-  shift,
   useRole,
+  useTypeahead,
 } from '@floating-ui/react';
 
 import { IconButton } from '@entur/button';
@@ -26,10 +26,10 @@ import { VerticalDotsIcon } from '@entur/icons';
 import { Placement, standardisePlacement } from '@entur/tooltip';
 import { space } from '@entur/tokens';
 import {
+  PolymorphicComponentProps,
+  getNodeText,
   useOnClickOutside,
   useOnEscape,
-  getNodeText,
-  PolymorphicComponentProps,
 } from '@entur/utils';
 
 import './OverflowMenu.scss';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, cleanup } from '@testing-library/react';
+import { cleanup, render } from '@testing-library/react';
 import { Blockquote, BlockquoteFooter } from '../components/Blockquote';
 
 afterEach(cleanup);

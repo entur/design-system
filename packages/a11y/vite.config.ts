@@ -2,7 +2,7 @@ import { defineConfig, mergeConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
 import { createBaseConfig } from '../../vite.config.base';
-import { getPackageName, createFileNameFunction } from '../../vite.utils';
+import { createFileNameFunction, getPackageName } from '../../vite.utils';
 import pkg from './package.json';
 
 export default defineConfig(() => {

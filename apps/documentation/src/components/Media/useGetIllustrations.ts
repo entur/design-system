@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
 
 export const useGetIllustrations = () => {
   const query = useStaticQuery(graphql`

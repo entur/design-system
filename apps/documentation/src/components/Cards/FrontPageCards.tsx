@@ -1,9 +1,9 @@
 import React from 'react';
 import {
   ColorPickerIcon,
-  SourceCodeIcon,
   EditIcon,
   GridViewIcon,
+  SourceCodeIcon,
   UsersIcon,
 } from '@entur/icons';
 

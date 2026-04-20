@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import { Label } from '@entur/typography';
-import { useRandomId } from '@entur/utils';
+import { ExtendableProps, useRandomId } from '@entur/utils';
 import './SegmentedControl.scss';
 
 type SegmentedContextProps = {
@@ -27,38 +27,41 @@ export const useSegmentedContext = (): SegmentedContextProps => {
   return context;
 };
 
-export type SegmentedControlProps = React.HTMLAttributes<HTMLDivElement> & {
-  /** Navn på input-elementene */
-  name?: string;
-  /** Beskrivende tekst */
-  label?: string;
-  /** En eller flere SegmentedChoice-komponenter */
-  children: React.ReactNode;
-  /**
-   * Den valgte verdien (kontrollert modus).
-   * Bruk `value` for kontrollert eller evt. `defaultValue` for ukontrollert komponent.
-   */
-  value?: string | null;
-  /**
-   * Standard verdi (ukontrollert modus).
-   * Brukes når komponenten skal håndtere sin egen tilstand.
-   */
-  defaultValue?: string | null;
-  /**
-   * Callback for når det gjøres et valg.
-   * Påkrevd for kontrollert modus (`value` eller `selectedValue`).
-   */
-  onChange?: (value: string | null) => void;
-  /** Størrelsen på SegmentedChoice-komponentene */
-  size?: 'medium' | 'large';
-  /** Ekstra klassenavn */
-  className?: string;
-  /** @deprecated Bruk `value` for kontrollert eller `defaultValue` for ukontrollert oppførsel i stedet.
-   *
-   * Vi beveger oss gradvis mot å standardisere props for å følge
-   * HTML-standarder. Derfor vil vi etter hvert avvikle `selectedValue` og lignende props over tid. */
-  selectedValue?: string | null;
-};
+export type SegmentedControlProps = ExtendableProps<
+  React.HTMLAttributes<HTMLDivElement>,
+  {
+    /** Navn på input-elementene */
+    name?: string;
+    /** Beskrivende tekst */
+    label?: string;
+    /** En eller flere SegmentedChoice-komponenter */
+    children: React.ReactNode;
+    /**
+     * Den valgte verdien (kontrollert modus).
+     * Bruk `value` for kontrollert eller evt. `defaultValue` for ukontrollert komponent.
+     */
+    value?: string | null;
+    /**
+     * Standard verdi (ukontrollert modus).
+     * Brukes når komponenten skal håndtere sin egen tilstand.
+     */
+    defaultValue?: string | null;
+    /**
+     * Callback for når det gjøres et valg.
+     * Påkrevd for kontrollert modus (`value` eller `selectedValue`).
+     */
+    onChange?: (value: string | null) => void;
+    /** Størrelsen på SegmentedChoice-komponentene */
+    size?: 'medium' | 'large';
+    /** Ekstra klassenavn */
+    className?: string;
+    /** @deprecated Bruk `value` for kontrollert eller `defaultValue` for ukontrollert oppførsel i stedet.
+     *
+     * Vi beveger oss gradvis mot å standardisere props for å følge
+     * HTML-standarder. Derfor vil vi etter hvert avvikle `selectedValue` og lignende props over tid. */
+    selectedValue?: string | null;
+  }
+>;
 
 export const SegmentedControl = React.forwardRef<
   HTMLDivElement,

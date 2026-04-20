@@ -1,6 +1,6 @@
 import {
-  TypographySpacing,
   TypographyHeadingVariant,
+  TypographySpacing,
   TypographyTextVariant,
 } from '../types';
 

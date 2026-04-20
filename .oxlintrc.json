@@ -1,0 +1,68 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["react", "react-hooks", "typescript", "import", "jsx-a11y"],
+  "categories": {
+    "correctness": "error",
+    "suspicious": "warn"
+  },
+  "rules": {
+    "no-warning-comments": [
+      "error",
+      { "terms": ["todo", "xxx"], "location": "anywhere" }
+    ],
+    "no-shadow": "off",
+    "no-unused-vars": ["warn", { "ignoreRestSiblings": true }],
+    "no-unused-expressions": "off",
+
+    "react/display-name": "off",
+    "react/no-unknown-property": "off",
+    "react/react-in-jsx-scope": "off",
+
+    "typescript/no-explicit-any": "off",
+    "typescript/no-wrapper-object-types": "warn",
+
+    "react-hooks/exhaustive-deps": "warn",
+
+    "import/no-unassigned-import": "off",
+    "import/default": "off",
+    "import/namespace": "off",
+    "import/no-named-as-default": "off",
+    "import/no-named-as-default-member": "off",
+    "sort-imports": [
+      "warn",
+      { "ignoreDeclarationSort": true, "ignoreMemberSort": false }
+    ],
+
+    "jsx-a11y/click-events-have-key-events": "warn",
+    "jsx-a11y/no-static-element-interactions": "warn",
+    "jsx-a11y/heading-has-content": "warn",
+    "jsx-a11y/media-has-caption": "warn",
+    "jsx-a11y/role-supports-aria-props": "warn",
+    "jsx-a11y/prefer-tag-over-role": "warn",
+    "jsx-a11y/label-has-associated-control": "warn"
+  },
+  "settings": {
+    "react": {
+      "version": "17"
+    },
+    "jsx-a11y": {
+      "polymorphicPropName": "as",
+      "components": {},
+      "attributes": {}
+    }
+  },
+  "env": {
+    "builtin": true,
+    "browser": true,
+    "node": true
+  },
+  "globals": {},
+  "ignorePatterns": [
+    "**/dist/**",
+    "**/node_modules/**",
+    "**/*.d.ts",
+    "apps/documentation/gatsby-node.js",
+    "apps/documentation/public/**",
+    "apps/code-playground/**"
+  ]
+}

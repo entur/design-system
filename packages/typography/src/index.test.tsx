@@ -1,7 +1,8 @@
 import React from 'react';
-import { render, cleanup } from '@testing-library/react';
+import { cleanup, render } from '@testing-library/react';
 import * as components from '.';
 import {
+  Blockquote,
   Heading1,
   Heading2,
   Label,
@@ -9,7 +10,6 @@ import {
   NumberedList,
   Paragraph,
   UnorderedList,
-  Blockquote,
 } from '.';
 import { SmallText } from './SmallText';
 import { axe, toHaveNoViolations } from 'jest-axe';

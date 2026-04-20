@@ -5,10 +5,10 @@ import { useDebounce } from '@entur/utils';
 import { useNormalizedItems } from './useNormalizedItems';
 
 import {
-  PotentiallyAsyncDropdownItemType,
+  AsyncDropdownItemType,
   DropdownItemType,
   NormalizedDropdownItemType,
-  AsyncDropdownItemType,
+  PotentiallyAsyncDropdownItemType,
 } from './types';
 
 export const useResolvedItems = <ValueType extends NonNullable<any>>(

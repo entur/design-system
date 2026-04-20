@@ -1,9 +1,9 @@
 import React, {
   createContext,
-  useContext,
-  useState,
   useCallback,
+  useContext,
   useEffect,
+  useState,
 } from 'react';
 
 type SearchContextType = {

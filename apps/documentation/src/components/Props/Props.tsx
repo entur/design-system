@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { CodeText, Paragraph } from '@entur/typography';
 import {
-  Table,
-  TableHead,
-  TableBody,
-  TableRow,
-  HeaderCell,
   DataCell,
+  HeaderCell,
+  Table,
+  TableBody,
+  TableHead,
+  TableRow,
 } from '@entur/table';
 
-import { useSettings } from '@providers/SettingsContext';
+
 import { ImportStatement } from '@components/Common/ImportStatement';
 import './Props.scss';
 
 // Utility functions for formatting prop types
+// oxlint-disable-next-line no-warning-comments -- Pre-existing follow-up comment discovered during oxlint migration; function needs refinement for component-specific handling
 // TODO removeDeprecatedVariantType only removes deprecated variant types that have VariantType. And it does not check if it removes from the correct component. It should be more specific.
 function removeDeprecatedVariantType(type: string) {
   const deprecatedVariantTypes = ['error', 'danger', 'info'];
@@ -58,16 +59,13 @@ function formatPropType(typeName: string) {
 
 type PropsProps = {
   componentName: string;
-  defaultOpen?: boolean;
   npmPackage?: string;
 };
 
 const Props: React.FC<PropsProps> = ({
   componentName,
-  defaultOpen,
   npmPackage,
 }) => {
-  const { userType } = useSettings();
   const [componentProps, setComponentProps] = useState<any>(null);
 
   useEffect(() => {
@@ -90,8 +88,6 @@ const Props: React.FC<PropsProps> = ({
   const hasAnyDefaultValues = Object.values(componentProps).some(
     (details: any) => details.defaultValue,
   );
-
-  const isDefaultOpenSet = defaultOpen !== undefined;
 
   return (
     <>

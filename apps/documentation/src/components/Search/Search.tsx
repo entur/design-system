@@ -1,5 +1,5 @@
-import React, { useRef, useEffect, useState, useCallback } from 'react';
-import { graphql, useStaticQuery, Link as GatsbyLink, navigate } from 'gatsby';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { Link as GatsbyLink, graphql, navigate, useStaticQuery } from 'gatsby';
 // @ts-expect-error react-use-flexsearch is missing type declerations
 import { useFlexSearch } from 'react-use-flexsearch';
 import classNames from 'classnames';
@@ -20,12 +20,12 @@ import {
 import { Badge, Tag } from '@entur/layout';
 import { Flex } from '@entur/layout/beta';
 import {
-  UnorderedList,
-  ListItem,
-  Heading5,
-  SmallText,
   Heading2,
+  Heading5,
+  ListItem,
   Paragraph,
+  SmallText,
+  UnorderedList,
 } from '@entur/typography';
 import { useSearch } from './SearchContext';
 

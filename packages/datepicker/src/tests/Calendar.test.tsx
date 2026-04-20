@@ -6,7 +6,7 @@ import {
   CalendarDateTime,
   ZonedDateTime,
 } from '@internationalized/date';
-import { toHaveNoViolations, axe } from 'jest-axe';
+import { axe, toHaveNoViolations } from 'jest-axe';
 
 import { Calendar } from '../DatePicker/Calendar';
 

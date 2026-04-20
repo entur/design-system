@@ -1,4 +1,9 @@
-import React, { Dispatch, SetStateAction, useLayoutEffect } from 'react';
+import React, {
+  Dispatch,
+  SetStateAction,
+  useLayoutEffect,
+  useRef,
+} from 'react';
 import classNames from 'classnames';
 import { useSelect } from 'downshift';
 import {
@@ -12,7 +17,7 @@ import {
 
 import { BaseFormControl } from '@entur/form';
 import { space } from '@entur/tokens';
-import { mergeRefs, VariantType } from '@entur/utils';
+import { VariantType, mergeRefs } from '@entur/utils';
 
 import { DropdownList } from './components/DropdownList';
 import { DropdownFieldAppendix } from './components/FieldComponents';
@@ -23,6 +28,10 @@ import {
   NormalizedDropdownItemType,
   PotentiallyAsyncDropdownItemType,
 } from './types';
+import {
+  getActiveElement,
+  useShadowDomEnvironment,
+} from './useShadowDomEnvironment';
 
 import './Dropdown.scss';
 
@@ -142,9 +151,11 @@ export const Dropdown = React.forwardRef(
     const { items: normalizedItems, loading: resolvedItemsLoading } =
       useResolvedItems(initialItems);
     const isFilled = selectedItem !== null || placeholder !== undefined;
+    const toggleButtonRef = useRef<HTMLDivElement>(null);
+    const environment = useShadowDomEnvironment(toggleButtonRef);
 
     // Downshift may call stateReducer before useFloating refs are initialized, so we store them in a separate holder to avoid access before initialization
-    // eslint-disable-next-line prefer-const
+    // oxlint-disable-next-line prefer-const
     let floatingRefs:
       | ReturnType<typeof useFloating<HTMLDivElement>>['refs']
       | undefined;
@@ -162,10 +173,13 @@ export const Dropdown = React.forwardRef(
       items: normalizedItems,
       defaultHighlightedIndex: selectedItem ? undefined : 0,
       selectedItem,
+      ...(environment && { environment }),
       stateReducer(state, { changes, type }) {
+        const root = (toggleButtonRef.current?.getRootNode() ?? document) as
+          | Document
+          | ShadowRoot;
         const toggleButtonIsFocused =
-          typeof document !== 'undefined' &&
-          document.activeElement === floatingRefs?.reference.current;
+          getActiveElement(root) === floatingRefs?.reference.current;
 
         switch (type) {
           case useSelect.stateChangeTypes.ToggleButtonKeyDownArrowDown:
@@ -228,7 +242,7 @@ export const Dropdown = React.forwardRef(
       isFilled,
     });
     const toggleButtonProps = getToggleButtonProps({
-      ref: mergeRefs(ref, refs.setReference),
+      ref: mergeRefs(ref, refs.setReference, toggleButtonRef),
       'aria-disabled': disabled,
       'aria-label': disabled ? 'Disabled dropdown' : '',
       disabled: disabled,

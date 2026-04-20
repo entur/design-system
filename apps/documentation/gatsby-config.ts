@@ -1,5 +1,5 @@
 import path from 'path';
-import { GatsbyConfig, graphql } from 'gatsby';
+import { GatsbyConfig } from 'gatsby';
 import { getSanitizedPath } from './src/utils/getSanitizedPath';
 
 const isGitHubPullRequest =
@@ -324,7 +324,29 @@ const config: GatsbyConfig = {
             },
           );
 
-          return [...mdxNodes, ...sanityNodes, ...sanityComponentDocs];
+          // Manual entries for TSX pages not covered by MDX/Sanity
+          const manualPages = [
+            {
+              id: 'brukerundersokelse',
+              path: '/ressurser/innsikt/brukerundersokelse',
+              title: 'Designsystemets brukerundersøkelser',
+              tags: ['undersøkelse', 'innsikt', 'survey'],
+              description:
+                'Analyse av brukerundersøkelser for Entur Linje designsystem 2022–2025.',
+              npmPackage: null,
+              isBeta: false,
+              body: 'Designsystemets brukerundersøkelser brukerundersøkelse survey analyse tilfredshet trender respondenter kvalitative tilbakemeldinger forbedringsforslag',
+              category: 'Ressurser',
+              subcategory: 'Innsikt',
+            },
+          ];
+
+          return [
+            ...mdxNodes,
+            ...sanityNodes,
+            ...sanityComponentDocs,
+            ...manualPages,
+          ];
         },
 
         // GraphQL query used to fetch all data for the search index. This is

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import classNames from 'classnames';
-import { useRandomId, mergeRefs } from '@entur/utils';
+import { mergeRefs, useRandomId } from '@entur/utils';
 import { VisuallyHidden } from '@entur/a11y';
 
 export type TableProps = {

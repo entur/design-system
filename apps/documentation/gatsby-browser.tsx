@@ -1,18 +1,14 @@
 import React from 'react';
 import { GatsbyBrowser } from 'gatsby';
-import posthog from 'posthog-js';
-import { PostHogProvider } from 'posthog-js/react';
 
 import './src/styles/index.scss';
 
 import { ToastProvider } from '@entur/alert';
 import {
-  ConsentProvider,
-  AnalyticsProvider,
-  SettingsProvider,
-  MediaContextProvider,
-  AnalyticsContext,
   ColorsProvider,
+  ConsentProvider,
+  MediaContextProvider,
+  SettingsProvider,
 } from './src/providers';
 import { SearchProvider } from './src/components/Search/SearchContext';
 import DocLayout from './src/layouts/DocLayout';
@@ -40,8 +36,13 @@ export const wrapPageElement: GatsbyBrowser['wrapPageElement'] = ({
   props,
 }) => {
   const children = <ConsentProvider>{element}</ConsentProvider>;
-  if (props.location.pathname === '/') return <>{children}</>;
-  if (props.location.pathname === '/stand') return <>{children}</>;
+  const CUSTOM_LAYOUT_PAGES = [
+    '/',
+    '/stand',
+    '/ressurser/innsikt/brukerundersokelse',
+  ];
+  const normalizedPath = props.location.pathname.replace(/\/$/, '') || '/';
+  if (CUSTOM_LAYOUT_PAGES.includes(normalizedPath)) return <>{children}</>;
   const disableToc = Boolean(props.pageContext?.isComponentDoc);
   return (
     <DocLayout {...props} disableToc={disableToc}>

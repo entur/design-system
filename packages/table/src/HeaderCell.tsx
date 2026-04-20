@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 
-import { DownArrowIcon, UpArrowIcon, UnsortedIcon } from '@entur/icons';
+import { DownArrowIcon, UnsortedIcon, UpArrowIcon } from '@entur/icons';
 
 import { ExternalSortConfig } from '.';
 

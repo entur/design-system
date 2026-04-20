@@ -70,6 +70,15 @@ const createComponents = (context?: {
       const { href } = value;
       if (href === undefined) return null;
 
+      // Relative paths are internal links
+      if (href.startsWith('/')) {
+        return (
+          <Link as={GatsbyLink as any} to={href}>
+            {children}
+          </Link>
+        );
+      }
+
       try {
         const url = new URL(href);
         const internalHosts = ['linje.entur.no'];

@@ -2,16 +2,16 @@ import React, { useEffect } from 'react';
 
 import { CookieIcon, NightIcon, SettingsIcon, SunIcon } from '@entur/icons';
 import { Heading5 } from '@entur/typography';
-import { PrimaryButton, SecondaryButton, IconButton } from '@entur/button';
+import { IconButton, PrimaryButton, SecondaryButton } from '@entur/button';
 import { Dropdown } from '@entur/dropdown';
 import { SegmentedChoice, SegmentedControl } from '@entur/form';
 import { Modal } from '@entur/modal';
 
 import {
-  useSettings,
+  PackageManager,
   UserType,
   VariableFormat,
-  PackageManager,
+  useSettings,
 } from '@providers/SettingsContext';
 
 import './SettingsPanel.scss';

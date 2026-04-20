@@ -1,11 +1,9 @@
 import React from 'react';
 import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image';
 
-import { IconButton } from '@entur/button';
 import { DownloadIcon } from '@entur/icons';
 import { OverflowMenu, OverflowMenuItem } from '@entur/menu';
 
-import { Tooltip } from '@entur/tooltip';
 import classNames from 'classnames';
 
 import './ImageDisplay.scss';

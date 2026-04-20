@@ -6,7 +6,7 @@ import {
   useInputGroupContext,
   useVariant,
 } from '@entur/form';
-import { useOnMount, useRandomId, VariantType } from '@entur/utils';
+import { VariantType, useOnMount, useRandomId } from '@entur/utils';
 
 import './NativeTimePicker.scss';
 

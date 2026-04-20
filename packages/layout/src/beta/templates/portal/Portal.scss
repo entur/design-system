@@ -1,6 +1,22 @@
+@use '@entur/tokens/dist/styles.scss' as t;
+@use '../variables' as v;
+
 .eds-layout-template-portal {
-  min-height: 100vh;
+  --grid-template-columns: var(--eds-sidebar-width, #{v.$default-sidebar-column-width}) minmax(0, 1fr);
+
+  min-height: 0;
+  max-height: var(--eds-viewport-height, #{v.$default-viewport-height});
+  height: var(--eds-viewport-height, #{v.$default-viewport-height});
   width: 100%;
+
+  // Animate the column width when a collapsible sidebar is present.
+  &:has(.eds-layout-template-sidebar--collapsible) {
+    transition: grid-template-columns ease-in-out t.$timings-medium;
+  }
+
+  &:has(.eds-layout-template-sidebar--collapsed) {
+    --grid-template-columns: #{v.$default-sidebar-collapsed-width} minmax(0, 1fr);
+  }
 
   &:has(> .eds-layout-template-portal__status-bar) {
     --grid-template-rows: auto 1fr;
@@ -22,5 +38,7 @@
 }
 
 .eds-layout-template-portal__main {
-  padding: var(--eds-portal-main-padding, 1rem);
+  padding: var(--eds-portal-main-padding, #{v.$default-portal-main-padding});
+  max-height: var(--eds-viewport-height, #{v.$default-viewport-height});
+  overflow: auto;
 }

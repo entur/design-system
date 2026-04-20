@@ -6,14 +6,14 @@ import { useTimeFieldState } from '@react-stately/datepicker';
 import { now } from '@internationalized/date';
 
 import type {
-  TimeValue,
   AriaTimeFieldProps,
   MappedTimeValue,
+  TimeValue,
 } from '@react-types/datepicker';
 
 import { VisuallyHidden } from '@entur/a11y';
 import { BaseFormControl, BaseFormControlProps } from '@entur/form';
-import { useRandomId, VariantType } from '@entur/utils';
+import { VariantType, useRandomId } from '@entur/utils';
 
 import { FieldSegment } from '../shared/FieldSegment';
 import { TimePickerArrowButton } from './TimePickerArrowButton';

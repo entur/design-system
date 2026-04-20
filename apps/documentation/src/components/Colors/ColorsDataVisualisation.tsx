@@ -6,7 +6,7 @@ import React from 'react';
 import ColorSwatch from './ColorSwatch';
 import { borderRadiuses } from '@entur/tokens';
 import { graphql, useStaticQuery } from 'gatsby';
-import { GatsbyImage, getImage, IGatsbyImageData } from 'gatsby-plugin-image';
+import { GatsbyImage, IGatsbyImageData, getImage } from 'gatsby-plugin-image';
 
 const ColorsDataVisualisation: React.FC = () => {
   const [isContrast, setContrast] = React.useState(false);

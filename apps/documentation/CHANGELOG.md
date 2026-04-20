@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.18.1](https://github.com/entur/design-system/compare/@entur/documentation@6.18.0...@entur/documentation@6.18.1) (2026-04-16)
+
+**Note:** Version bump only for package @entur/documentation
+
+# [6.17.0](https://github.com/entur/design-system/compare/@entur/documentation@6.16.2...@entur/documentation@6.17.0) (2026-03-16)
+
+### Bug Fixes
+
+- **website:** handle relative paths in PortableText links ([de378ec](https://github.com/entur/design-system/commit/de378ec21801dfde6060314ab8dd6e25282ed98e))
+
+### Features
+
+- **website:** add designsystem survey analysis page 2022-2025 ([35216b4](https://github.com/entur/design-system/commit/35216b40571db5ef4630709d48423341eb55b7d6))
+- **website:** move survey page to ressurser/innsikt/brukerundersokelse ([2decd71](https://github.com/entur/design-system/commit/2decd718d61dae7389ca901df632f11047e0d54f))
+
 ## [6.16.1](https://github.com/entur/design-system/compare/@entur/documentation@6.16.0...@entur/documentation@6.16.1) (2026-02-20)
 
 **Note:** Version bump only for package @entur/documentation

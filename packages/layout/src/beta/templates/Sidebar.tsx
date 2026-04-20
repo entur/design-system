@@ -1,7 +1,7 @@
 import React from 'react';
 import type { PolymorphicComponentProps } from '@entur/utils';
 import classNames from 'classnames';
-import { Contrast } from '../../Contrast';
+import { LeftArrowIcon, RightArrowIcon } from '@entur/icons';
 import { Flex } from '../Flex';
 import { Grid } from '../Grid';
 import './Sidebar.scss';
@@ -9,6 +9,19 @@ import './Sidebar.scss';
 type SidebarOwnProps = {
   /** Toggle contrast styling for the sidebar */
   contrast?: boolean;
+  /** Controlled collapsed state. When provided, the sidebar becomes
+   * collapsible and a toggle button is rendered. */
+  collapsed?: boolean;
+  /** Callback when the collapse toggle is clicked */
+  onCollapseToggle?: (collapsed: boolean) => void;
+  /** aria-label for the toggle button when the sidebar is collapsed
+   * @default 'Åpne sidemeny'
+   */
+  openSidebarAriaLabel?: string;
+  /** aria-label for the toggle button when the sidebar is expanded
+   * @default 'Lukk sidemeny'
+   */
+  closeSidebarAriaLabel?: string;
   className?: string;
   style?: React.CSSProperties;
   children?: React.ReactNode;
@@ -66,11 +79,16 @@ const SidebarData = React.forwardRef(
     { children, as, ...rest }: SidebarSectionProps<E>,
     ref?: React.Ref<Element>,
   ) => {
-    const Element: React.ElementType = as || defaultSectionElement;
     return (
-      <Element ref={ref} {...rest}>
+      <Flex
+        ref={ref}
+        as={as || defaultSectionElement}
+        direction="column"
+        gap="s"
+        {...rest}
+      >
         {children}
-      </Element>
+      </Flex>
     );
   },
 );
@@ -114,6 +132,23 @@ const SidebarFooter = React.forwardRef(
   },
 );
 
+const CollapseToggle: React.FC<{
+  isCollapsed: boolean;
+  onToggle: () => void;
+  openLabel: string;
+  closeLabel: string;
+}> = ({ isCollapsed, onToggle, openLabel, closeLabel }) => (
+  <button
+    type="button"
+    className="eds-layout-template-sidebar__collapse-toggle"
+    onClick={onToggle}
+    aria-expanded={!isCollapsed}
+    aria-label={isCollapsed ? openLabel : closeLabel}
+  >
+    {isCollapsed ? <RightArrowIcon size={16} /> : <LeftArrowIcon size={16} />}
+  </button>
+);
+
 const SidebarRoot = React.forwardRef(
   <E extends React.ElementType = typeof defaultSidebarElement>(
     {
@@ -121,31 +156,79 @@ const SidebarRoot = React.forwardRef(
       className,
       style,
       contrast = true,
+      collapsed,
+      onCollapseToggle,
+      openSidebarAriaLabel = 'Åpne sidemeny',
+      closeSidebarAriaLabel = 'Lukk sidemeny',
       as,
       ...rest
     }: SidebarProps<E>,
     ref?: React.Ref<Element>,
   ) => {
-    const WrapperElement = contrast ? Contrast : 'div';
+    const collapsible = collapsed !== undefined;
+    const isCollapsed = collapsed ?? false;
+
+    const sidebarClassNames = classNames(
+      'eds-layout-template-sidebar',
+      {
+        'eds-layout-template-sidebar--plain': !contrast,
+        'eds-layout-template-sidebar--collapsible': collapsible,
+        'eds-layout-template-sidebar--collapsed': collapsible && isCollapsed,
+      },
+      className,
+    );
+
+    const wrapperClassNames = classNames(
+      'eds-layout-template-sidebar-wrapper',
+      {
+        'eds-contrast': contrast,
+        'eds-layout-template-sidebar-wrapper--collapsible': collapsible,
+      },
+    );
+
+    if (!collapsible) {
+      return (
+        <Grid.Item className={wrapperClassNames} colSpan="1 / 2">
+          <Flex
+            ref={ref}
+            as={as || defaultSidebarElement}
+            direction="column"
+            gap="m"
+            className={sidebarClassNames}
+            style={style}
+            {...rest}
+          >
+            {children}
+          </Flex>
+        </Grid.Item>
+      );
+    }
+
+    const collapsedStyle = isCollapsed
+      ? ({ ...style, '--eds-sidebar-width': '2rem' } as React.CSSProperties)
+      : style;
+
     return (
-      <Grid.Item as={WrapperElement} colSpan="1 / 2">
+      <Grid.Item className={wrapperClassNames} colSpan="1 / 2">
         <Flex
           ref={ref}
           as={as || defaultSidebarElement}
           direction="column"
           gap="m"
-          className={classNames(
-            'eds-layout-template-sidebar',
-            {
-              'eds-layout-template-sidebar--plain': !contrast,
-            },
-            className,
-          )}
-          style={style}
+          className={sidebarClassNames}
+          style={collapsedStyle}
           {...rest}
         >
-          {children}
+          <div className="eds-layout-template-sidebar__content">{children}</div>
         </Flex>
+        {onCollapseToggle && (
+          <CollapseToggle
+            isCollapsed={isCollapsed}
+            onToggle={() => onCollapseToggle(!isCollapsed)}
+            openLabel={openSidebarAriaLabel}
+            closeLabel={closeSidebarAriaLabel}
+          />
+        )}
       </Grid.Item>
     );
   },

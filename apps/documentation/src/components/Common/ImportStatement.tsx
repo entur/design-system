@@ -1,5 +1,4 @@
 import React from 'react';
-import { CopyableText } from '@entur/alert';
 import { CodeBlock } from '@components/Codeblock/CodeBlock';
 
 type Props = {

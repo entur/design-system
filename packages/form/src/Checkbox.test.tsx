@@ -1,6 +1,6 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
-import { toHaveNoViolations, axe } from 'jest-axe';
+import { fireEvent, render } from '@testing-library/react';
+import { axe, toHaveNoViolations } from 'jest-axe';
 import { Checkbox, Fieldset } from './';
 expect.extend(toHaveNoViolations);
 

@@ -6,14 +6,14 @@ import { useTimeFieldState } from '@react-stately/datepicker';
 import classNames from 'classnames';
 
 import type {
-  TimeValue,
   AriaTimeFieldProps,
   MappedTimeValue,
+  TimeValue,
 } from '@react-types/datepicker';
 
 import { BaseFormControlProps, TextField } from '@entur/form';
 import { ClockIcon } from '@entur/icons';
-import { mergeRefs, VariantType } from '@entur/utils';
+import { VariantType, mergeRefs } from '@entur/utils';
 
 import './SimpleTimePicker.scss';
 
@@ -256,7 +256,7 @@ export const SimpleTimePicker = <TimeType extends TimeValue>({
       try {
         const timeObject = parseTime(formatedTimeString);
         return timeObject;
-      } catch (e) {
+      } catch {
         return inputResult.INVALID;
       }
     }

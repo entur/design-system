@@ -30,8 +30,17 @@ coverage
 .vscode
 .idea
 
+# Claude Code
+/.claude/*
+!/.claude/skills/
+
 ## Local test environment
 TestBench.tsx
 content/components/testin.mdx
 
 **/charts/*.tgz
+
+# Scanner tool
+tools/design-system-scanner/scan-report.json
+tools/design-system-scanner/functions/node_modules
+tools/design-system-scanner/functions/dist

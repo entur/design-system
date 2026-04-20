@@ -2,10 +2,10 @@ import React from 'react';
 import classNames from 'classnames';
 import {
   CloseIcon,
-  ValidationSuccessIcon,
+  ValidationErrorIcon,
   ValidationExclamationIcon,
   ValidationInfoIcon,
-  ValidationErrorIcon,
+  ValidationSuccessIcon,
 } from '@entur/icons';
 import { IconButton } from '@entur/button';
 import { Tooltip } from '@entur/tooltip';
