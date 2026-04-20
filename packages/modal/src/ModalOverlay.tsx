@@ -58,6 +58,7 @@ export const ModalOverlay: React.FC<ModalOverlayProps> = ({
         {...underlayProps}
         {...rest}
       >
+        {/* eslint-disable-next-line jsx-a11y/no-autofocus -- Modals must auto-focus for accessibility per WAI-ARIA dialog pattern */}
         <FocusScope contain restoreFocus autoFocus={!initialFocusRef}>
           <div {...modalProps} ref={overlayRef}>
             <ModalContext.Provider value={{ initialFocusRef }}>
