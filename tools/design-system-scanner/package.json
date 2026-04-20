@@ -1,0 +1,32 @@
+{
+  "name": "@entur/design-system-scanner",
+  "version": "0.2.0",
+  "private": true,
+  "description": "Scans repositories for @entur/* design system component and import usage",
+  "license": "EUPL-1.2",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "start": "tsx src/index.ts",
+    "test": "jest",
+    "scan:local": "tsx src/index.ts --local",
+    "generate-catalog": "tsx scripts/generate-catalog.ts --packages-root ../../packages --output catalog.json",
+    "verify-catalog": "tsx scripts/generate-catalog.ts --packages-root ../../packages --output /tmp/catalog-check.json && jq -S 'del(.packages[].latestVersion)' catalog.json > /tmp/catalog-sorted.json && jq -S 'del(.packages[].latestVersion)' /tmp/catalog-check.json > /tmp/catalog-check-sorted.json && diff /tmp/catalog-sorted.json /tmp/catalog-check-sorted.json"
+  },
+  "dependencies": {
+    "@yarnpkg/lockfile": "^1.1.0",
+    "js-yaml": "^4.1.0",
+    "posthog-node": "^5.29.2",
+    "react-scanner": "1.1.0",
+    "typescript": "^5.9.2"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.14",
+    "@types/js-yaml": "^4.0.9",
+    "@types/react": "17.0.88",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.3.4",
+    "tsx": "^4.19.4"
+  }
+}

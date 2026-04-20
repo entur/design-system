@@ -1,0 +1,13 @@
+/* Override primary button color */
+.eds-primary-button {
+  background-color: red;
+}
+
+.custom-wrapper .eds-table__header {
+  font-weight: bold;
+}
+
+/* Not an override */
+.my-custom-class {
+  color: blue;
+}
