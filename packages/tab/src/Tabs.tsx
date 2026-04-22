@@ -1,6 +1,5 @@
-import React, { useState, useCallback } from 'react';
+import React, { useId, useState, useCallback } from 'react';
 import classNames from 'classnames';
-import { useRandomId } from '@entur/utils';
 
 import { TabsContext } from './TabsContext';
 
@@ -31,7 +30,7 @@ export const Tabs: React.FC<TabsProps> = ({
   const [internalIndex, setInternalIndex] = useState(defaultIndex ?? 0);
   const isControlled = index !== undefined;
   const selectedIndex = isControlled ? index : internalIndex;
-  const tabsId = useRandomId('eds-tabs');
+  const tabsId = useId();
 
   const onSelect = useCallback(
     (i: number) => {

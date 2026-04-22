@@ -40,7 +40,7 @@ test('first tab is selected by default', () => {
 
 test('clicking a tab switches the active panel', () => {
   const onChange = jest.fn();
-  const { getAllByRole, getByText, queryByText } = renderTabs({ onChange });
+  const { getAllByRole, getByText } = renderTabs({ onChange });
 
   const tabs = getAllByRole('tab');
   fireEvent.click(tabs[1]);
@@ -48,8 +48,8 @@ test('clicking a tab switches the active panel', () => {
   expect(tabs[1]).toHaveAttribute('aria-selected', 'true');
   expect(tabs[0]).toHaveAttribute('aria-selected', 'false');
 
-  expect(queryByText('Panel 1')).not.toBeInTheDocument();
-  expect(getByText('Panel 2')).toBeInTheDocument();
+  expect(getByText('Panel 1')).not.toBeVisible();
+  expect(getByText('Panel 2')).toBeVisible();
 
   expect(onChange).toHaveBeenCalledWith(1);
 });
@@ -264,6 +264,79 @@ test('TabPanel supports as prop', () => {
   expect(
     container.querySelector('section[role="tabpanel"]'),
   ).toBeInTheDocument();
+});
+
+test('inactive panels stay mounted but hidden by default', () => {
+  const { getAllByRole, getByText } = renderTabs();
+
+  const panels = getAllByRole('tabpanel', { hidden: true });
+  expect(panels).toHaveLength(3);
+
+  expect(getByText('Panel 1').closest('[role="tabpanel"]')).not.toHaveAttribute(
+    'hidden',
+  );
+  expect(getByText('Panel 2').closest('[role="tabpanel"]')).toHaveAttribute(
+    'hidden',
+  );
+  expect(getByText('Panel 3').closest('[role="tabpanel"]')).toHaveAttribute(
+    'hidden',
+  );
+});
+
+test('panels have tabIndex={0} for keyboard accessibility', () => {
+  const { getAllByRole } = renderTabs();
+
+  const panels = getAllByRole('tabpanel', { hidden: true });
+  for (const panel of panels) {
+    expect(panel).toHaveAttribute('tabindex', '0');
+  }
+});
+
+test('unmountOnChange removes inactive panels from DOM', () => {
+  const { getAllByRole, getByText, queryByText } = render(
+    <Tabs>
+      <TabList>
+        <Tab>Tab 1</Tab>
+        <Tab>Tab 2</Tab>
+      </TabList>
+      <TabPanels unmountOnChange>
+        <TabPanel>Panel 1</TabPanel>
+        <TabPanel>Panel 2</TabPanel>
+      </TabPanels>
+    </Tabs>,
+  );
+
+  expect(getByText('Panel 1')).toBeInTheDocument();
+  expect(queryByText('Panel 2')).not.toBeInTheDocument();
+
+  const tabs = getAllByRole('tab');
+  fireEvent.click(tabs[1]);
+
+  expect(queryByText('Panel 1')).not.toBeInTheDocument();
+  expect(getByText('Panel 2')).toBeInTheDocument();
+});
+
+test('keyboard navigation skips disabled tabs', () => {
+  const { getAllByRole, getByRole } = render(
+    <Tabs>
+      <TabList>
+        <Tab>Tab 1</Tab>
+        <Tab disabled>Tab 2</Tab>
+        <Tab>Tab 3</Tab>
+      </TabList>
+      <TabPanels>
+        <TabPanel>Panel 1</TabPanel>
+        <TabPanel>Panel 2</TabPanel>
+        <TabPanel>Panel 3</TabPanel>
+      </TabPanels>
+    </Tabs>,
+  );
+
+  const tabs = getAllByRole('tab');
+  tabs[0].focus();
+
+  fireEvent.keyDown(getByRole('tablist'), { key: 'ArrowRight' });
+  expect(document.activeElement).toBe(tabs[2]);
 });
 
 test('TabPanels supports as prop', () => {

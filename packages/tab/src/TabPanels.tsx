@@ -8,12 +8,15 @@ export type TabPanelsProps = {
   children: React.ReactNode;
   /** HTML-elementet eller React-komponenten som lager komponenten */
   as?: keyof JSX.IntrinsicElements | any;
+  /** Om innholdet i paneler skal avmonteres når de ikke er valgt */
+  unmountOnChange?: boolean;
   [key: string]: any;
 };
 
 export const TabPanels: React.FC<TabPanelsProps> = ({
   className,
   as,
+  unmountOnChange = false,
   children,
   ...rest
 }) => {
@@ -29,6 +32,7 @@ export const TabPanels: React.FC<TabPanelsProps> = ({
               _tabIndex: idx,
               _tabId: `${tabsId}-tab-${idx}`,
               _panelId: `${tabsId}-panel-${idx}`,
+              _unmountOnChange: unmountOnChange,
             })
           : child,
       )}

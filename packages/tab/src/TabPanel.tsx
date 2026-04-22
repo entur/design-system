@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { TabsContext } from './TabsContext';
 
 export type TabPanelProps = {
-  /** Overskriften til taben */
+  /** Innholdet i tab-panelet */
   children: React.ReactNode;
   /** HTML-elementet eller React-komponenten som lager komponenten */
   as?: keyof JSX.IntrinsicElements | any;
@@ -14,6 +14,8 @@ export type TabPanelProps = {
   _tabId?: string;
   /** @internal Injected by TabPanels */
   _panelId?: string;
+  /** @internal Injected by TabPanels */
+  _unmountOnChange?: boolean;
   [key: string]: any;
 };
 
@@ -23,13 +25,14 @@ export const TabPanel: React.FC<TabPanelProps> = ({
   _tabIndex = 0,
   _tabId,
   _panelId,
+  _unmountOnChange = false,
   children,
   ...rest
 }) => {
   const { selectedIndex } = useContext(TabsContext);
   const isSelected = selectedIndex === _tabIndex;
 
-  if (!isSelected) return null;
+  if (_unmountOnChange && !isSelected) return null;
 
   const Element: React.ElementType = as || 'div';
 
@@ -38,6 +41,8 @@ export const TabPanel: React.FC<TabPanelProps> = ({
       role="tabpanel"
       id={_panelId}
       aria-labelledby={_tabId}
+      tabIndex={0}
+      hidden={!isSelected}
       className={classNames('eds-tab-panel', className)}
       {...rest}
     >
