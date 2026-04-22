@@ -141,6 +141,7 @@ describe('scanner', () => {
           pushedAt: '2024-01-01T00:00:00Z',
           isMonorepo: false,
           framework: null,
+          reactVersion: null,
         },
       );
 
@@ -171,6 +172,30 @@ describe('scanner', () => {
       if (web) {
         expect(web.type).toBe('package');
       }
+    });
+
+    it('resolves reactVersion from lockfile when repoMetadata is provided', async () => {
+      const repoDir = path.join(FIXTURES_DIR, 'simple-app');
+      const result = await scanRepository(
+        repoDir,
+        'test/simple-app',
+        'https://github.com/test/simple-app',
+        'main',
+        '2024-01-01T00:00:00Z',
+        {
+          visibility: 'private',
+          archived: false,
+          primaryLanguage: 'TypeScript',
+          createdAt: '2020-01-01T00:00:00Z',
+          pushedAt: '2024-01-01T00:00:00Z',
+          isMonorepo: false,
+          framework: null,
+          reactVersion: null,
+        },
+      );
+
+      // simple-app fixture has react@^18.2.0 in package.json resolved to 18.2.0 in yarn.lock
+      expect(result.repoMetadata!.reactVersion).toBe('18.2.0');
     });
 
     it('collects file findings when flag is set', async () => {

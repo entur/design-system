@@ -36,6 +36,8 @@ export interface RepoMetadata {
   isMonorepo: boolean;
   /** Detected framework (next, gatsby, remix, cra, vite) */
   framework: string | null;
+  /** Resolved React version from lockfile, or declared range if unresolvable (e.g. "18.3.1") */
+  reactVersion: string | null;
 }
 
 /** Information about a workspace/package inside a monorepo. */

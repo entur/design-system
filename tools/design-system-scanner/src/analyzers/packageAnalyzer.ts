@@ -126,6 +126,28 @@ export function analyzePackageJson(repoDir: string): {
 }
 
 /**
+ * Detect the declared React version range from a package.json in the given directory.
+ * Works for either a repository root or an individual workspace directory.
+ * Returns the version string as declared (e.g. "^18.2.0"), not the resolved version.
+ * Lockfile resolution is done separately in scanner.ts.
+ * Prefers dependencies over devDependencies when both declare react.
+ */
+export function detectReactVersion(repoDir: string): string | null {
+  try {
+    const rootPkgPath = path.join(repoDir, 'package.json');
+    if (!fs.existsSync(rootPkgPath)) return null;
+    const pkg = JSON.parse(fs.readFileSync(rootPkgPath, 'utf-8'));
+    return (
+      (pkg.dependencies?.['react'] as string | undefined) ??
+      (pkg.devDependencies?.['react'] as string | undefined) ??
+      null
+    );
+  } catch {
+    return null;
+  }
+}
+
+/**
  * Detect the frontend framework used in a repository.
  * Checks the root package.json dependencies and devDependencies.
  */

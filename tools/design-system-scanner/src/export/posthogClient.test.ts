@@ -37,6 +37,7 @@ const FIXTURE_REPORT: ScanReport = {
         pushedAt: '2025-01-05T12:00:00.000Z',
         isMonorepo: false,
         framework: 'next',
+        reactVersion: '18.3.1',
       },
       workspaces: [],
       designSystemPackages: [
@@ -155,6 +156,7 @@ describe('buildScanEvents', () => {
     expect(repoEvent.properties.visibility).toBe('internal');
     expect(repoEvent.properties.archived).toBe(false);
     expect(repoEvent.properties.framework).toBe('next');
+    expect(repoEvent.properties.react_version).toBe('18.3.1');
     expect(repoEvent.properties.primary_language).toBe('TypeScript');
     expect(repoEvent.properties.is_monorepo).toBe(false);
   });
@@ -305,6 +307,7 @@ describe('buildGroupIdentifies', () => {
     expect(repoGroup.properties.name).toBe('entur/my-app');
     expect(repoGroup.properties.visibility).toBe('internal');
     expect(repoGroup.properties.framework).toBe('next');
+    expect(repoGroup.properties.react_version).toBe('18.3.1');
   });
 
   it('creates ds_package groups deduplicated across repos', () => {
