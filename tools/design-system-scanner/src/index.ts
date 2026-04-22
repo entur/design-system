@@ -88,6 +88,7 @@ async function scanLocal(args: ParsedArgs): Promise<void> {
           pushedAt: lastCommit,
           isMonorepo: false, // Will be detected by scanner
           framework: null, // Will be detected by scanner
+          reactVersion: null, // Will be detected by scanner
         }
       : undefined;
 
@@ -263,6 +264,7 @@ function exportForBigQuery(args: ParsedArgs): void {
         pushed_at: repo.repoMetadata?.pushedAt || null,
         is_monorepo: repo.repoMetadata?.isMonorepo || false,
         framework: repo.repoMetadata?.framework || null,
+        react_version: repo.repoMetadata?.reactVersion || null,
         ds_package_count: repo.designSystemPackages.length,
         ui_library_count: repo.otherUILibraries.length,
         component_count: repo.componentUsage.length,

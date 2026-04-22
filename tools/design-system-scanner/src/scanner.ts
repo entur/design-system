@@ -1,6 +1,8 @@
+import * as path from 'path';
 import {
   analyzePackageJson,
   detectFramework,
+  detectReactVersion,
   detectWorkspaces,
 } from './analyzers/packageAnalyzer';
 import { analyzeComponents } from './analyzers/reactScannerAnalyzer';
@@ -43,16 +45,30 @@ export async function scanRepository(
   const { designSystemPackages, otherUILibraries, isMonorepo } =
     analyzePackageJson(repoDir);
 
-  // 2. Detect framework and workspaces
+  // 2. Detect framework, workspaces, and React version
   const framework = detectFramework(repoDir);
   const workspaces = detectWorkspaces(repoDir);
 
-  // Enrich repo metadata with detected fields
+  // Detect React version — root package.json first, then workspace package.jsons
+  // (some monorepos only declare React in individual workspace packages, not at root)
+  let reactVersionRange = detectReactVersion(repoDir);
+  if (!reactVersionRange && workspaces.length > 0) {
+    for (const ws of workspaces) {
+      const wsVersion = detectReactVersion(path.join(repoDir, ws.path));
+      if (wsVersion) {
+        reactVersionRange = wsVersion;
+        break;
+      }
+    }
+  }
+
+  // Enrich repo metadata — react version resolved from lockfile below (alongside DS packages)
   const enrichedMetadata: RepoMetadata | undefined = repoMetadata
     ? {
         ...repoMetadata,
         isMonorepo,
         framework: repoMetadata.framework || framework,
+        reactVersion: repoMetadata.reactVersion ?? reactVersionRange,
       }
     : undefined;
 
@@ -76,8 +92,26 @@ export async function scanRepository(
     };
   }
 
-  // 3. Resolve actual installed versions from lockfile
-  resolveVersions(repoDir, designSystemPackages);
+  // 3. Resolve actual installed versions from lockfile — batch React with DS packages (single parse)
+  const reactPkg: PackageUsage | null = reactVersionRange
+    ? {
+        name: 'react',
+        version: reactVersionRange,
+        isDev: false,
+        isImported: false,
+        filesImportingCount: 0,
+        symbolCountUsed: 0,
+      }
+    : null;
+  resolveVersions(
+    repoDir,
+    reactPkg ? [...designSystemPackages, reactPkg] : designSystemPackages,
+  );
+
+  // Update enrichedMetadata with resolved React version (replaces the declared range)
+  if (reactPkg?.resolvedVersion && enrichedMetadata) {
+    enrichedMetadata.reactVersion = reactPkg.resolvedVersion;
+  }
 
   // 4. Analyze JSX component usage via react-scanner (AST-based)
   const { components: componentUsage, fileFindings: reactScannerFindings } =
