@@ -279,8 +279,8 @@ jobs:
       - name: Load into BigQuery
         working-directory: tools/design-system-scanner
         env:
-          BQ_PROJECT: ent-edsscan-prd
-          BQ_DATASET: design_system_scanner
+          BQ_PROJECT: ${{ vars.BQ_PROJECT }}
+          BQ_DATASET: ${{ vars.BQ_DATASET }}
         run: |
           for table in scan_runs repos repo_package_usage repo_symbol_usage repo_workspaces; do
             bq load --source_format=NEWLINE_DELIMITED_JSON \
