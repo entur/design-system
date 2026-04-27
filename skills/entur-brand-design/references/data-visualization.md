@@ -85,7 +85,7 @@ Test with colorblind simulators:
 
 ## Dark backgrounds
 
-Use `--contrast-*` variants when displaying charts on dark/navy backgrounds. These are lighter tints of each color that maintain visibility and contrast on dark surfaces.
+Use `--contrast-*` variants when displaying charts on dark/Lavender 90 backgrounds. These are lighter tints of each color that maintain visibility and contrast on dark surfaces.
 
 ```css
 [data-color-mode='dark'] .chart {

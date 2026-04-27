@@ -7,9 +7,9 @@ Full docs: https://linje.entur.no/kom-i-gang/for-utviklere/komponentbibliotek
 Packages are installed individually from npm. Use only what you need:
 
 ```bash
-yarn add @entur/button @entur/tokens @entur/styles
+yarn add @entur/button @entur/tokens
 # or
-npm install @entur/button @entur/tokens @entur/styles
+npm install @entur/button @entur/tokens
 ```
 
 ## Import CSS (required)

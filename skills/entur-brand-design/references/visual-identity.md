@@ -16,7 +16,7 @@ Entur is Norway's national public transport data platform. The visual identity r
 
 ### Colors
 
-The navy–white–coral triad is the visual foundation. See `colors.md` for full guidance.
+The Lavender 90–white–coral triad is the visual foundation. See `colors.md` for full guidance.
 
 ### Typography
 
@@ -25,7 +25,7 @@ Nationale is the brand typeface. Clean weight hierarchy, minimal variation. See 
 ### Logo
 
 - The Entur logotype is the primary brand mark
-- In digital products, the logo appears on the navy (`#181c56`) Contrast component or on white
+- In digital products, the logo appears on the Lavender 90 (`#181c56`) Contrast component or on white
 - The animated logo (opening motion) is the hero of Entur's brand storytelling
 
 ---
@@ -33,14 +33,14 @@ Nationale is the brand typeface. Clean weight hierarchy, minimal variation. See 
 ## Layout principles for digital surfaces
 
 - **Content first** — design frames content, doesn't decorate it
-- **Blue and white structure** — use `Contrast` sections (navy bg) for headers and hero areas; white for content
+- **Blue and white structure** — use `Contrast` sections (Lavender 90 bg) for headers and hero areas; white for content
 - **Coral as punctuation** — one coral element per view maximum (focus point, CTA, accent)
 - **Generous white space** — Entur's digital surfaces are calm, not busy
 
 ```tsx
 import { Contrast } from '@entur/layout';
 
-// Navy header section
+// Lavender 90 header section
 <Contrast>
   <Heading1>Planlegg reisen din</Heading1>
   <PrimaryButton>Søk etter avganger</PrimaryButton>
@@ -91,7 +91,7 @@ Illustration library access: requires Google Drive access (internal Entur use).
 When creating Entur presentations:
 
 - Use the official presentation templates (available in Google Drive / Confluence)
-- Lead with navy sections for structure, white for content
+- Lead with Lavender 90 sections for structure, white for content
 - Coral accents for key points only
 - Use Arial if Nationale is not available (Nationale requires a license)
 - For charts and data in presentations, follow the data visualization color order from `data-visualization.md`

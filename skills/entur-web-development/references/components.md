@@ -24,7 +24,7 @@ Full API docs: https://linje.entur.no/komponenter
 | `@entur/dropdown`   | `Dropdown`, `SearchableDropdown`, `MultiSelect`, `NativeDropdown`                                                    |
 | `@entur/a11y`       | `SkipToContent`, `VisuallyHidden`                                                                                    |
 
-Common patterns: all imports are named exports. Buttons are polymorphic (`as="a"`). TextField variants: `"default"` | `"success"` | `"warning"` | `"negative"`. Alert variants: `"information"` | `"success"` | `"warning"` | `"negative"`. Transport modes: `"rail"` | `"bus"` | `"metro"` | `"tram"` | `"ferry"` | `"plane"` | `"bicycle"` | `"walk"` + others.
+Common patterns: all imports are named exports. Buttons are polymorphic (`as="a"`). TextField variants: `"success"` | `"information"` | `"warning"` | `"negative"` (omit for default). Alert variants: `"information"` | `"success"` | `"warning"` | `"negative"`. Transport modes: `"rail"` | `"bus"` | `"metro"` | `"tram"` | `"ferry"` | `"plane"` | `"bicycle"` | `"walk"` + others.
 
 ---
 
@@ -92,7 +92,7 @@ import { Heading1, Heading2, Paragraph, LeadParagraph, SmallText, Label, SubLabe
 <Link href="/hjelp">Trenger du hjelp?</Link>
 ```
 
-Entur font: **Nationale** (licensed). In production apps, use the token-based font stack — it loads from `@entur/styles`.
+Entur font: **Nationale** (licensed). In production apps, use the token-based font stack from `@entur/tokens`.
 
 ---
 
@@ -142,7 +142,7 @@ import { TextField, TextArea, Checkbox, Radio, RadioGroup, Switch, Fieldset } fr
 </Switch>
 ```
 
-TextField `variant` values: `"default"` | `"success"` | `"warning"` | `"negative"`
+TextField `variant` values: `"success"` | `"information"` | `"warning"` | `"negative"` (omit for default)
 
 ---
 
@@ -257,7 +257,7 @@ import { Tooltip, Popover } from '@entur/tooltip';
 </Modal>
 
 // Drawer (slides from side)
-<Drawer open={drawerOpen} onDismiss={() => setDrawerOpen(false)}>
+<Drawer title="Filter" open={drawerOpen} onDismiss={() => setDrawerOpen(false)}>
   <p>Filterinnstillinger</p>
 </Drawer>
 
@@ -326,13 +326,13 @@ Specialized components for public transport UIs. Use these for any travel-relate
 import { TravelHeader, TravelTag, LegLine, LegBone, TravelLeg, TravelSwitch } from '@entur/travel';
 
 // Transport mode tags (colored by mode)
-<TravelTag transportMode="rail">Tog</TravelTag>
-<TravelTag transportMode="bus">Buss</TravelTag>
-<TravelTag transportMode="metro">T-bane</TravelTag>
+<TravelTag transport="rail">Tog</TravelTag>
+<TravelTag transport="bus">Buss</TravelTag>
+<TravelTag transport="metro">T-bane</TravelTag>
 
 // Journey leg visualization
 <TravelLeg>
-  <LegBone transportMode="rail" />
+  <LegBone direction="vertical" pattern="line" color="var(--standard-train)" />
 </TravelLeg>
 ```
 

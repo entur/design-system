@@ -29,7 +29,7 @@ import { base, semantic, transport, data } from '@entur/tokens';
 | Purpose | Token | Value |
 |---|---|---|
 | Page bg | `--fill-background-standard-light` | `#ffffff` |
-| Navy bg | `--fill-background-contrast-light` | `#181c56` |
+| Lavender 90 bg | `--fill-background-contrast-light` | `#181c56` |
 | Primary fill | `--fill-primary-default-light` | `#181c56` |
 | Coral accent | `--shape-highlight` | `#ff5959` |
 | Body text | `--text-dark` | `#08091c` |
@@ -65,13 +65,13 @@ Import `semantic.css` — these map to primitives and support light/dark switchi
 --fill-background-standard-dark     /* #08091c — dark mode page bg */
 --fill-background-tint-light        /* #f6f6f9 — subtle tint */
 --fill-background-tint-dark         /* #141527 */
---fill-background-contrast-light    /* #181c56 — Entur navy header/hero */
+--fill-background-contrast-light    /* #181c56 — Entur Lavender 90 header/hero */
 --fill-background-contrast-dark     /* #212233 */
 --fill-background-subdued-light     /* #d9dae8 */
 --fill-background-overlay-solid     /* #393a49 — modal backdrops */
 --fill-background-overlay-transparent /* rgba — lighter overlay */
 
-/* Primary (Entur navy/lavender) */
+/* Primary (Entur Lavender 90) */
 --fill-primary-default-light        /* #181c56 */
 --fill-primary-hover-light          /* #393d79 */
 --fill-primary-active-light         /* #11143c */
@@ -189,7 +189,7 @@ Import `base.css` — these respond to `data-color-mode` attribute.
 ```css
 /* In [data-color-mode='light'] / :root */
 --basecolors-frame-default          /* white bg */
---basecolors-frame-contrast         /* navy bg (#181c56) */
+--basecolors-frame-contrast         /* Lavender 90 bg (#181c56) */
 --basecolors-frame-tint             /* subtle tint (#f6f6f9) */
 --basecolors-frame-elevated         /* card/elevated surface */
 --basecolors-shape-accent           /* primary icon/shape color */
@@ -307,7 +307,7 @@ Key Entur brand colors:
 
 ```css
 /* Lavender (primary brand) */
---lavender-90: #181c56   /* primary navy */
+--lavender-90: #181c56   /* primary Lavender 90 */
 --lavender-80: #262f7d
 --lavender-70: #3b46ab
 --lavender-60: #5a68c4

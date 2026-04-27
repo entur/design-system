@@ -80,13 +80,13 @@ Props:
 
 ## Contrast component
 
-From `@entur/layout`. Places content on the navy Entur background. Ensures white text is used, meeting contrast requirements automatically.
+From `@entur/layout`. Places content on the Entur Lavender 90 (`#181c56`) background. Ensures white text is used, meeting contrast requirements automatically.
 
 ```tsx
 import { Contrast } from '@entur/layout';
 
 <Contrast>
-  <Heading1>This text will be white on navy</Heading1>
+  <Heading1>This text will be white on Lavender 90</Heading1>
 </Contrast>;
 ```
 
@@ -114,7 +114,7 @@ For custom validation, use the `feedback` and `variant` props:
 />
 ```
 
-The `feedback` prop automatically creates an associated `aria-describedby` relationship — no manual wiring needed.
+The `feedback` prop renders inline validation text near the field, paired with visual `variant` styling.
 
 For grouping related fields:
 
@@ -134,22 +134,16 @@ import { Fieldset } from '@entur/form';
 Use structural HTML elements — screen readers navigate by landmarks:
 
 ```html
-<header>
-  — site header / top nav
-  <nav>
-    — navigation regions (use aria-label to distinguish multiple navs)
-    <main>
-      — primary content
-      <section>
-        — thematic grouping (add aria-labelledby pointing to a heading)
-        <aside>
-          — supplementary content
-          <footer>— page footer</footer>
-        </aside>
-      </section>
-    </main>
-  </nav>
-</header>
+<header><!-- site header / top nav --></header>
+<nav aria-label="Hovedmeny"><!-- navigation --></nav>
+<main>
+  <!-- primary content -->
+  <section aria-labelledby="section-heading">
+    <!-- thematic grouping -->
+  </section>
+  <aside><!-- supplementary content --></aside>
+</main>
+<footer><!-- page footer --></footer>
 ```
 
 For interactive components not using native elements:
