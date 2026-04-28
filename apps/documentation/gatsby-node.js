@@ -89,6 +89,7 @@ async function createDocumentationPagesFromSanity(graphql, actions, reporter) {
           category
           subcategory
           isCategoryLandingPage
+          tag
         }
       }
       allSanityComponentDoc {
@@ -98,7 +99,7 @@ async function createDocumentationPagesFromSanity(graphql, actions, reporter) {
           category
           subcategory
           npmPackage
-          isBeta
+          tag
         }
       }
     }
@@ -116,6 +117,7 @@ async function createDocumentationPagesFromSanity(graphql, actions, reporter) {
       category: page.category,
       subcategory: page.subcategory,
       isCategoryLandingPage: page.isCategoryLandingPage,
+      tag: page.tag ?? undefined,
     });
 
     createPage({
@@ -132,7 +134,7 @@ async function createDocumentationPagesFromSanity(graphql, actions, reporter) {
       title: doc.title,
       category: doc.category,
       subcategory: doc.subcategory,
-      isBeta: doc.isBeta,
+      tag: doc.tag ?? undefined,
     });
 
     createPage({

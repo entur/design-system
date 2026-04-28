@@ -95,9 +95,12 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
       >
         <Flex justify="space-between">
           {item.title}{' '}
-          {item.isBeta && (
-            <Badge type="status" variant="warning">
-              beta
+          {item.tag && (
+            <Badge
+              type="status"
+              variant={item.tag === 'beta' ? 'warning' : 'positive'}
+            >
+              {item.tag}
             </Badge>
           )}
         </Flex>

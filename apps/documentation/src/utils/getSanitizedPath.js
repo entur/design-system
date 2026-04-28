@@ -17,7 +17,7 @@ function getSanitizedPath({
   title,
   categoryIndex,
   isCategoryLandingPage,
-  isBeta,
+  tag,
 }) {
   const sanitizedCategory = sanitizeText(category);
 
@@ -30,7 +30,9 @@ function getSanitizedPath({
     return `/${sanitizedCategory}`;
   }
 
-  const sanitizedTitle = `${sanitizeText(title)}${isBeta ? '/beta' : ''}`;
+  const sanitizedTitle = `${sanitizeText(title)}${
+    tag === 'beta' ? '/beta' : ''
+  }`;
   if (!subcategory) return `/${sanitizedCategory}/${sanitizedTitle}`;
 
   const sanitizedSubcategory = sanitizeText(subcategory);

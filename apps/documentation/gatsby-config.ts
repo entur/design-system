@@ -140,7 +140,7 @@ const config: GatsbyConfig = {
             id: 'id',
             index: [
               'title',
-              'tags',
+              'tag',
               'description',
               'npmPackage',
               'body',
@@ -152,7 +152,7 @@ const config: GatsbyConfig = {
               title: {
                 weight: 5, // Highest weight - most important for exact matches
               },
-              tags: {
+              tag: {
                 weight: 4, // High weight - contains specific, curated keywords
               },
               description: {
@@ -176,7 +176,7 @@ const config: GatsbyConfig = {
         ref: 'id',
         index: [
           'title',
-          'tags',
+          'tag',
           'description',
           'npmPackage',
           'body',
@@ -189,7 +189,7 @@ const config: GatsbyConfig = {
           'title',
           'description',
           'npmPackage',
-          'isBeta',
+          'tag',
           'category',
           'subcategory',
         ],
@@ -227,10 +227,10 @@ const config: GatsbyConfig = {
               id: node.id,
               path: node.frontmatter?.route,
               title: node.frontmatter?.title,
+              tag: null,
               tags: node.frontmatter?.tags,
               description: node.frontmatter?.description,
               npmPackage: node.frontmatter?.npmPackage,
-              isBeta: false,
               body: node.body,
               category: null,
               subcategory: null,
@@ -256,16 +256,17 @@ const config: GatsbyConfig = {
               category: node.category,
               subcategory: node.subcategory,
               isCategoryLandingPage: node.isCategoryLandingPage,
+              tag: node.tag ?? undefined,
             });
 
             return {
               id: node.id,
               path: path,
               title: node.title,
+              tag: node.tag ?? null,
               tags: [],
               description: node.description,
               npmPackage: null,
-              isBeta: false,
               body: node.content?._rawItems
                 ? JSON.stringify(node.content._rawItems)
                 : '',
@@ -280,7 +281,7 @@ const config: GatsbyConfig = {
                 title: node.title,
                 category: node.category,
                 subcategory: node.subcategory,
-                isBeta: node.isBeta,
+                tag: node.tag ?? undefined,
               });
 
               const tabsContent =
@@ -313,10 +314,10 @@ const config: GatsbyConfig = {
                 id: node.id,
                 path,
                 title: node.title,
+                tag: node.tag ?? null,
                 tags: [],
                 description: node.description,
                 npmPackage: node.npmPackage ?? null,
-                isBeta: node.isBeta,
                 body: combinedContent,
                 category: node.category,
                 subcategory: node.subcategory,
@@ -330,11 +331,10 @@ const config: GatsbyConfig = {
               id: 'brukerundersokelse',
               path: '/ressurser/innsikt/brukerundersokelse',
               title: 'Designsystemets brukerundersøkelser',
-              tags: ['undersøkelse', 'innsikt', 'survey'],
+              tag: null,
               description:
                 'Analyse av brukerundersøkelser for Entur Linje designsystem 2022–2025.',
               npmPackage: null,
-              isBeta: false,
               body: 'Designsystemets brukerundersøkelser brukerundersøkelse survey analyse tilfredshet trender respondenter kvalitative tilbakemeldinger forbedringsforslag',
               category: 'Ressurser',
               subcategory: 'Innsikt',
@@ -390,6 +390,7 @@ const config: GatsbyConfig = {
                 category
                 subcategory
                 isCategoryLandingPage
+                tag
                 content {
                   _rawItems
                 }
@@ -403,7 +404,7 @@ const config: GatsbyConfig = {
                 category
                 subcategory
                 npmPackage
-                isBeta
+                tag
                 beskrivelse {
                   _rawItems
                 }

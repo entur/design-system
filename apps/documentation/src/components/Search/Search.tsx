@@ -37,7 +37,7 @@ type StoreResult = {
   title: string | null;
   description: string | null;
   npmPackage?: string | null;
-  isBeta?: boolean;
+  tag?: string;
   icon?: any;
 };
 
@@ -327,9 +327,12 @@ const ListElement = (props: {
         >
           <Flex gap="s">
             {result.title}
-            {result.isBeta && (
-              <Badge type="status" variant="warning">
-                beta
+            {result.tag && (
+              <Badge
+                type="status"
+                variant={result.tag === 'beta' ? 'warning' : 'positive'}
+              >
+                {result.tag}
               </Badge>
             )}
           </Flex>

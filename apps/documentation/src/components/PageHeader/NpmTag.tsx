@@ -6,9 +6,9 @@ import { sanitizeEnturPackageName } from 'src/utils/utils';
 
 import './NpmTag.scss';
 
-export const NpmTag: React.FC<{ packageName: string; isBeta?: boolean }> = ({
+export const NpmTag: React.FC<{ packageName: string; tag?: string }> = ({
   packageName,
-  isBeta,
+  tag,
 }) => {
   const packageKey = sanitizeEnturPackageName(packageName);
   const fullPackageName = `@entur/${packageKey}`;
@@ -31,7 +31,7 @@ export const NpmTag: React.FC<{ packageName: string; isBeta?: boolean }> = ({
     <Flex gap="s">
       <Tag>
         {fullPackageName}
-        {isBeta ? '/beta' : ''}
+        {tag === 'beta' ? '/beta' : ''}
       </Tag>
       <Tag>v{currentPackage?.version}</Tag>
     </Flex>

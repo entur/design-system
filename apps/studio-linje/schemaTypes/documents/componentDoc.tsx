@@ -1,6 +1,7 @@
 import React from 'react';
 import { defineArrayMember, defineField, defineType } from 'sanity';
 import { AutocompletePageFieldInput } from '../../components/AutocompletePageFieldInput';
+import { AutocompleteTagInput } from '../../components/AutocompleteTagInput';
 
 import { StringInputProps } from 'sanity';
 
@@ -89,11 +90,11 @@ export const componentDoc = defineType({
       readOnly: true,
     }),
     defineField({
-      name: 'isBeta',
-      title: 'Beta',
-      type: 'boolean',
-      description: 'Markerer komponentdokumentasjonen som beta.',
-      initialValue: false,
+      name: 'tag',
+      title: 'Tag',
+      type: 'string',
+      components: { input: AutocompleteTagInput },
+      description: 'Valgfri tag som vises på komponentsiden.',
     }),
     defineField({
       name: 'intro',
@@ -143,11 +144,11 @@ export const componentDoc = defineType({
       title: 'title',
       category: 'category',
       subcategory: 'subcategory',
-      isBeta: 'isBeta',
+      tag: 'tag',
     },
-    prepare({ title, category, subcategory, isBeta }) {
+    prepare({ title, category, subcategory, tag }) {
       return {
-        title: `${title || 'Ingen tittel'}${isBeta ? ' (beta)' : ''}`,
+        title: `${title || 'Ingen tittel'}${tag ? ` (${tag})` : ''}`,
         subtitle: subcategory ? `${category} > ${subcategory}` : category,
       };
     },

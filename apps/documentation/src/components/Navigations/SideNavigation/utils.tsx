@@ -6,7 +6,7 @@ const { getSanitizedPath } = require('../../../utils/getSanitizedPath') as {
     title?: string;
     categoryIndex?: number;
     isCategoryLandingPage?: boolean;
-    isBeta?: boolean;
+    tag?: string;
   }) => string | undefined;
 };
 
@@ -17,7 +17,7 @@ export interface MenuItem {
   subcategory?: string;
   categoryIndex?: number;
   isCategoryLandingPage?: boolean;
-  isBeta?: boolean;
+  tag?: string;
   path?: string;
   order?: number;
 }

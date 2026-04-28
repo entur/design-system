@@ -4,7 +4,7 @@ export type GetSanitizedPathInput = {
   title?: string;
   categoryIndex?: number;
   isCategoryLandingPage?: boolean;
-  isBeta?: boolean;
+  tag?: string;
 };
 
 // Re-export JS implementation for Node/Gatsby compatibility.
