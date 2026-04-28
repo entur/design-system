@@ -78,25 +78,6 @@ Props:
 
 ---
 
-## Contrast color theme
-
-From `@entur/layout`. Contrast is a **color theme** in the Entur design system (hierarchically below color mode — each color mode can have multiple color themes). It activates the Lavender 90 / brand blue background and automatically switches all child components to use their contrast color variants (e.g. light text, contrast-aware borders and icons).
-
-This is part of Entur branding, not a WCAG contrast utility. A common use case is applying the Contrast theme to a sidebar or header while leaving the main content area in the default theme.
-
-```tsx
-import { Contrast } from '@entur/layout';
-
-<Contrast>
-  {/* All @entur components inside here automatically adapt to the contrast color theme */}
-  <SideNavigation>{/* … */}</SideNavigation>
-</Contrast>;
-```
-
-Components detect the Contrast theme via `useContrast()` from `@entur/layout` and adjust their styling accordingly. The `as` prop allows rendering as any element type.
-
----
-
 ## Form accessibility patterns
 
 All `@entur/form` components handle labeling automatically. Always pass a `label` prop — never rely on `placeholder` alone:
