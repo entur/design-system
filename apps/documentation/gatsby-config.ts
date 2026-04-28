@@ -265,7 +265,7 @@ const config: GatsbyConfig = {
               tags: [],
               description: node.description,
               npmPackage: null,
-              isBeta: false,
+              isBeta: node.isBeta,
               body: node.content?._rawItems
                 ? JSON.stringify(node.content._rawItems)
                 : '',
@@ -390,6 +390,7 @@ const config: GatsbyConfig = {
                 category
                 subcategory
                 isCategoryLandingPage
+                isBeta
                 content {
                   _rawItems
                 }

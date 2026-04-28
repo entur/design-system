@@ -44,6 +44,7 @@ const SideNavigationLayout = ({
           category
           title
           isCategoryLandingPage
+          isBeta
         }
       }
       allSanityComponentDoc {

@@ -64,6 +64,13 @@ export const page = defineType({
       },
     }),
     defineField({
+      name: 'isBeta',
+      title: 'Beta',
+      type: 'boolean',
+      description: 'Markerer siden som beta.',
+      initialValue: false,
+    }),
+    defineField({
       name: 'isCategoryLandingPage',
       title: 'Er kategorilandingsside',
       description:
@@ -112,8 +119,9 @@ export const page = defineType({
       category: 'category',
       subcategory: 'subcategory',
       isCategoryLandingPage: 'isCategoryLandingPage',
+      isBeta: 'isBeta',
     },
-    prepare({ title, category, subcategory, isCategoryLandingPage }) {
+    prepare({ title, category, subcategory, isCategoryLandingPage, isBeta }) {
       const subtitle = isCategoryLandingPage
         ? `${category} (Landingsside)`
         : subcategory
@@ -121,7 +129,7 @@ export const page = defineType({
         : category;
 
       return {
-        title: title || 'Ingen tittel',
+        title: `${title || 'Ingen tittel'}${isBeta ? ' (beta)' : ''}`,
         subtitle,
       };
     },

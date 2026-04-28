@@ -20,6 +20,7 @@ export default function ContentTemplate({
     description,
     npmPackage,
     isCategoryLandingPage,
+    isBeta,
   } = page;
 
   return (
@@ -31,6 +32,7 @@ export default function ContentTemplate({
         description={description}
         npmPackage={npmPackage}
         isCategoryLandingPage={isCategoryLandingPage}
+        isBeta={isBeta}
       />
       <PortableText value={content} />
     </>
@@ -46,6 +48,7 @@ export const Head = (
         category: string;
         subcategory: string;
         isCategoryLandingPage: boolean;
+        isBeta: boolean;
       };
     };
   },
@@ -58,6 +61,7 @@ export const Head = (
         category,
         subcategory,
         isCategoryLandingPage,
+        isBeta,
       },
     },
   } = props;
@@ -70,6 +74,7 @@ export const Head = (
         category,
         subcategory,
         isCategoryLandingPage,
+        isBeta,
       })}
     />
   );
@@ -83,6 +88,7 @@ export const query = graphql`
       subcategory
       description
       isCategoryLandingPage
+      isBeta
       content {
         ...TextBlockFragment
       }
