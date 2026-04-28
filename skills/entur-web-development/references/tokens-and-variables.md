@@ -6,16 +6,16 @@ Package: `@entur/tokens`
 
 ## Quick lookup
 
-**Layer priority**: semantic → base → transport/data → primitive (last resort).
+**Layer priority**: base → semantic (fallback) → primitive (last resort). For data visualisation use data tokens. For transport colors prefer base (supports color mode), transport is fallback.
 
 **CSS imports**:
 
 ```css
-@import '@entur/tokens/dist/semantic.css'; /* recommended — adapts to light/dark */
-@import '@entur/tokens/dist/base.css'; /* mode-aware brand structure */
-@import '@entur/tokens/dist/transport.css'; /* transport mode colors */
-@import '@entur/tokens/dist/data.css'; /* chart/graph colors */
-@import '@entur/tokens/dist/primitive.css'; /* raw hex — last resort */
+@import '@entur/tokens/dist/base.css'; /* recommended — supports light/dark color mode */
+@import '@entur/tokens/dist/semantic.css'; /* fallback if base doesn't fit — no color mode support */
+@import '@entur/tokens/dist/data.css'; /* data visualisation (charts/graphs) — supports color mode */
+@import '@entur/tokens/dist/transport.css'; /* transport mode colors — no automatic color mode, use base for transport colors when possible */
+@import '@entur/tokens/dist/primitive.css'; /* raw hex — last resort for web, ok for graphics */
 ```
 
 **JS imports**:
@@ -49,9 +49,9 @@ Read below only when you need the complete token list for a specific category.
 
 ---
 
-## Semantic tokens (recommended)
+## Semantic tokens (fallback)
 
-Import `semantic.css` — these map to primitives and support light/dark switching.
+Import `semantic.css` — these map to primitives but do not support automatic light/dark color mode switching. Use base tokens when possible.
 
 ```css
 @import '@entur/tokens/dist/semantic.css';
