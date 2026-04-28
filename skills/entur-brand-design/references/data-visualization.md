@@ -87,9 +87,16 @@ Test with colorblind simulators:
 
 Use `--contrast-*` variants when displaying charts on dark/Lavender 90 backgrounds. These are lighter tints of each color that maintain visibility and contrast on dark surfaces.
 
+`data.css` auto-resolves token values to their dark color mode equivalents inside `data-color-mode="dark"`. This is color mode adaptation — it is **not** an automatic switch to `--contrast-*` variants. Use `--contrast-*` explicitly when you need the lighter tints for legibility on dark backgrounds.
+
 ```css
 [data-color-mode='dark'] .chart {
-  /* tokens automatically resolve to contrast variants when using data.css */
+  /* data.css resolves to dark color mode values here automatically */
+}
+
+/* Use --contrast-* explicitly for lighter tints on dark backgrounds */
+.dark-background-chart .series-1 {
+  color: var(--contrast-blue);
 }
 ```
 
