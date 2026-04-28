@@ -16,11 +16,11 @@ Blue, white, and coral are Entur's main colors and should always be present. Cor
 
 ### Primary colors (always include these)
 
-| Color                  | Hex       | Usage                                      |
-| ---------------------- | --------- | ------------------------------------------ |
-| **Navy** (Lavender 90) | `#181c56` | Primary backgrounds, headers, buttons      |
-| **White**              | `#ffffff` | Page background, text on dark              |
-| **Coral**              | `#ff5959` | Accent, highlights, call-to-action details |
+| Color           | Hex       | Usage                                      |
+| --------------- | --------- | ------------------------------------------ |
+| **Lavender 90** | `#181c56` | Primary backgrounds, headers, buttons      |
+| **White**       | `#ffffff` | Page background, text on dark              |
+| **Coral**       | `#ff5959` | Accent, highlights, call-to-action details |
 
 ### Secondary colors (decorative, add depth)
 
@@ -53,7 +53,7 @@ Base tokens and semantic tokens support both modes. Apply `data-color-mode="dark
 
 ```html
 <div data-color-mode="dark">
-  <!-- Navy background context — tokens auto-shift -->
+  <!-- Lavender 90 background context — tokens auto-shift -->
 </div>
 ```
 
@@ -72,11 +72,11 @@ Always use semantic tokens (`@entur/tokens/dist/semantic.css`) over raw hex valu
 ```css
 /* Backgrounds */
 var(--fill-background-standard-light)   /* white */
-var(--fill-background-contrast-light)   /* #181c56 navy */
+var(--fill-background-contrast-light)   /* #181c56 Lavender 90 */
 var(--fill-background-tint-light)       /* #f6f6f9 */
 
 /* Shapes / fills */
-var(--shape-accent)                      /* primary navy */
+var(--shape-accent)                      /* primary Lavender 90 */
 var(--shape-highlight)                   /* coral */
 
 /* Text */

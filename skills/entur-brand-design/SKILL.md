@@ -16,7 +16,7 @@ The Entur identity is built around clarity and trust. Blue, white, and coral are
 
 ## Core principles
 
-- **Three-color foundation**: navy (`#181c56`), white, and coral (`#ff5959`) must always be present. Everything else supports them.
+- **Three-color foundation**: Lavender 90 (`#181c56`), white, and coral (`#ff5959`) must always be present. Everything else supports them.
 - **Coral is punctuation**: use it sparingly. One coral accent per view. It's a detail color — it appears in the logo and in focus points, not as a large fill.
 - **Content is the hero**: blue structures the layout, white hosts the content. Design recedes so information leads.
 - **Restraint**: two font weights, limited secondary colors, generous whitespace. Avoid busyness.
@@ -37,13 +37,13 @@ Read these for specifics:
 ## By use case
 
 **Web design / UI development**  
-Read `references/colors.md` for the token system. Use `Contrast` from `@entur/layout` for navy sections. Use `@entur/typography` for correct type hierarchy. Semantic color tokens auto-adapt to dark mode.
+Read `references/colors.md` for the token system. Use `Contrast` from `@entur/layout` for Lavender 90 sections. Use `@entur/typography` for correct type hierarchy. Semantic color tokens auto-adapt to dark mode.
 
 **Data visualizations / charts**  
 Read `references/data-visualization.md`. Use the 8-color palette in order. Start with Blue and Coral for 2 series. Always test for colorblind accessibility. Import from `@entur/tokens/dist/data.css`.
 
 **Presentations and documents**  
-Read `references/typography.md` (use Arial if Nationale is unlicensed) and `references/visual-identity.md`. Lead with navy sections, white for content, coral only as accents on key points.
+Read `references/typography.md` (use Arial if Nationale is unlicensed) and `references/visual-identity.md`. Lead with Lavender 90 sections, white for content, coral only as accents on key points.
 
 **Branding questions**  
 Read `references/colors.md` and `references/visual-identity.md` together. The identity section explains the brand positioning and what to avoid.
@@ -52,7 +52,7 @@ Read `references/colors.md` and `references/visual-identity.md` together. The id
 
 ## Quick reference
 
-**Primary colors**: `#181c56` (navy), `#ffffff` (white), `#ff5959` (coral)  
+**Primary colors**: `#181c56` (Lavender 90), `#ffffff` (white), `#ff5959` (coral)  
 **Main typeface**: Nationale (licensed) / Arial (fallback)  
 **Digital weights**: Medium (500) body, Demibold (600) headings  
 **Color token import**: `@import '@entur/tokens/dist/semantic.css'`  

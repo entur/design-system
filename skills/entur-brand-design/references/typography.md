@@ -70,10 +70,8 @@ Don't create hierarchy through color alone — combine size, weight, and spacing
 
 ## Font loading in apps
 
-The `@entur/styles` package includes the base font import. Ensure it's loaded globally before any component styles:
+The `@entur/tokens` package provides the design tokens. Ensure token styles are imported globally before any component styles:
 
-```ts
-import '@entur/styles';
-// or
-import '@entur/styles/dist/styles.css';
+```css
+@import '@entur/tokens/dist/semantic.css';
 ```

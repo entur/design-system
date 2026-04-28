@@ -6,16 +6,35 @@ Package: `@entur/tokens`
 
 ## Quick lookup
 
-**Layer priority**: semantic → base → transport/data → primitive (last resort).
+**Layer priority**: base → semantic (fallback) → primitive (last resort). For data visualisation use data tokens. For transport colors prefer base (supports color mode), transport is fallback.
 
-**CSS imports**:
+### Token file formats
+
+Each token set (base, semantic, data, transport, primitive) ships in three formats:
+
+| Format   | Import                                 | Notes                                                                                         |
+| -------- | -------------------------------------- | --------------------------------------------------------------------------------------------- |
+| **CSS**  | `@entur/tokens/dist/base.css`          | Global import recommended — define once, use everywhere via CSS custom properties             |
+| **SCSS** | `@entur/tokens/dist/base.scss`         | Import inside the `.scss` file that uses it                                                   |
+| **JS**   | `import { base } from '@entur/tokens'` | No automatic dark/light mode switching — must manually select `base.light.*` or `base.dark.*` |
+
+**`@entur/tokens/dist/styles.css`** is still valid for non-color tokens (spacing, typography, borders) as these are not yet available in the individual token files. For color tokens, prefer the specific files above.
+
+**CSS imports** (import only what you need):
 
 ```css
-@import '@entur/tokens/dist/semantic.css'; /* recommended — adapts to light/dark */
-@import '@entur/tokens/dist/base.css'; /* mode-aware brand structure */
-@import '@entur/tokens/dist/transport.css'; /* transport mode colors */
-@import '@entur/tokens/dist/data.css'; /* chart/graph colors */
-@import '@entur/tokens/dist/primitive.css'; /* raw hex — last resort */
+@import '@entur/tokens/dist/base.css'; /* recommended — supports light/dark color mode via data-color-mode attribute */
+@import '@entur/tokens/dist/semantic.css'; /* fallback if base doesn't fit — no color mode support */
+@import '@entur/tokens/dist/data.css'; /* data visualisation (charts/graphs) — auto-resolves to dark values inside data-color-mode="dark" */
+@import '@entur/tokens/dist/transport.css'; /* transport mode colors — no automatic color mode, use base for transport colors when possible */
+@import '@entur/tokens/dist/primitive.css'; /* raw hex — last resort for web, ok for graphics */
+```
+
+**SCSS imports**:
+
+```scss
+@use '@entur/tokens/dist/base.scss';
+@use '@entur/tokens/dist/data.scss';
 ```
 
 **JS imports**:
@@ -23,13 +42,17 @@ Package: `@entur/tokens`
 ```ts
 import { colors, space, borderWidths, fontWeights } from '@entur/tokens';
 import { base, semantic, transport, data } from '@entur/tokens';
+
+// JS does not auto-switch color mode — select explicitly:
+const bg = base.light.frame.default; // light mode
+const bgDark = base.dark.frame.default; // dark mode
 ```
 
 **Most-used tokens**:
 | Purpose | Token | Value |
 |---|---|---|
 | Page bg | `--fill-background-standard-light` | `#ffffff` |
-| Navy bg | `--fill-background-contrast-light` | `#181c56` |
+| Lavender 90 bg | `--fill-background-contrast-light` | `#181c56` |
 | Primary fill | `--fill-primary-default-light` | `#181c56` |
 | Coral accent | `--shape-highlight` | `#ff5959` |
 | Body text | `--text-dark` | `#08091c` |
@@ -49,9 +72,9 @@ Read below only when you need the complete token list for a specific category.
 
 ---
 
-## Semantic tokens (recommended)
+## Semantic tokens (fallback)
 
-Import `semantic.css` — these map to primitives and support light/dark switching.
+Import `semantic.css` — these map to primitives but do not support automatic light/dark color mode switching. Use base tokens when possible.
 
 ```css
 @import '@entur/tokens/dist/semantic.css';
@@ -65,13 +88,13 @@ Import `semantic.css` — these map to primitives and support light/dark switchi
 --fill-background-standard-dark     /* #08091c — dark mode page bg */
 --fill-background-tint-light        /* #f6f6f9 — subtle tint */
 --fill-background-tint-dark         /* #141527 */
---fill-background-contrast-light    /* #181c56 — Entur navy header/hero */
+--fill-background-contrast-light    /* #181c56 — Entur Lavender 90 header/hero */
 --fill-background-contrast-dark     /* #212233 */
 --fill-background-subdued-light     /* #d9dae8 */
 --fill-background-overlay-solid     /* #393a49 — modal backdrops */
 --fill-background-overlay-transparent /* rgba — lighter overlay */
 
-/* Primary (Entur navy/lavender) */
+/* Primary (Entur Lavender 90) */
 --fill-primary-default-light        /* #181c56 */
 --fill-primary-hover-light          /* #393d79 */
 --fill-primary-active-light         /* #11143c */
@@ -189,7 +212,7 @@ Import `base.css` — these respond to `data-color-mode` attribute.
 ```css
 /* In [data-color-mode='light'] / :root */
 --basecolors-frame-default          /* white bg */
---basecolors-frame-contrast         /* navy bg (#181c56) */
+--basecolors-frame-contrast         /* Lavender 90 bg (#181c56) */
 --basecolors-frame-tint             /* subtle tint (#f6f6f9) */
 --basecolors-frame-elevated         /* card/elevated surface */
 --basecolors-shape-accent           /* primary icon/shape color */
@@ -307,7 +330,7 @@ Key Entur brand colors:
 
 ```css
 /* Lavender (primary brand) */
---lavender-90: #181c56   /* primary navy */
+--lavender-90: #181c56   /* primary Lavender 90 */
 --lavender-80: #262f7d
 --lavender-70: #3b46ab
 --lavender-60: #5a68c4
