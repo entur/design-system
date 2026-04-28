@@ -78,20 +78,6 @@ Props:
 
 ---
 
-## Contrast component
-
-From `@entur/layout`. Places content on the Entur Lavender 90 (`#181c56`) background. Ensures white text is used, meeting contrast requirements automatically.
-
-```tsx
-import { Contrast } from '@entur/layout';
-
-<Contrast>
-  <Heading1>This text will be white on Lavender 90</Heading1>
-</Contrast>;
-```
-
----
-
 ## Form accessibility patterns
 
 All `@entur/form` components handle labeling automatically. Always pass a `label` prop — never rely on `placeholder` alone:
