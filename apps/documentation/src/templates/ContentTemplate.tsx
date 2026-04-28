@@ -48,7 +48,7 @@ export const Head = (
         category: string;
         subcategory: string;
         isCategoryLandingPage: boolean;
-        tag: string;
+        tag?: string | null;
       };
     };
   },

@@ -152,7 +152,7 @@ const config: GatsbyConfig = {
               title: {
                 weight: 5, // Highest weight - most important for exact matches
               },
-              tags: {
+              tag: {
                 weight: 4, // High weight - contains specific, curated keywords
               },
               description: {
@@ -227,10 +227,10 @@ const config: GatsbyConfig = {
               id: node.id,
               path: node.frontmatter?.route,
               title: node.frontmatter?.title,
+              tag: null,
               tags: node.frontmatter?.tags,
               description: node.frontmatter?.description,
               npmPackage: node.frontmatter?.npmPackage,
-              tags: [],
               body: node.body,
               category: null,
               subcategory: null,
@@ -331,11 +331,10 @@ const config: GatsbyConfig = {
               id: 'brukerundersokelse',
               path: '/ressurser/innsikt/brukerundersokelse',
               title: 'Designsystemets brukerundersøkelser',
-              tags: ['undersøkelse', 'innsikt', 'survey'],
+              tag: null,
               description:
                 'Analyse av brukerundersøkelser for Entur Linje designsystem 2022–2025.',
               npmPackage: null,
-              tags: [],
               body: 'Designsystemets brukerundersøkelser brukerundersøkelse survey analyse tilfredshet trender respondenter kvalitative tilbakemeldinger forbedringsforslag',
               category: 'Ressurser',
               subcategory: 'Innsikt',
