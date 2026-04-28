@@ -1,6 +1,7 @@
 import React from 'react';
 import { defineField, defineType } from 'sanity';
 import { AutocompletePageFieldInput } from '../../components/AutocompletePageFieldInput';
+import { AutocompleteTagInput } from '../../components/AutocompleteTagInput';
 
 import { StringInputProps } from 'sanity';
 
@@ -64,11 +65,11 @@ export const page = defineType({
       },
     }),
     defineField({
-      name: 'isBeta',
-      title: 'Beta',
-      type: 'boolean',
-      description: 'Markerer siden som beta.',
-      initialValue: false,
+      name: 'tag',
+      title: 'Tag',
+      type: 'string',
+      components: { input: AutocompleteTagInput },
+      description: 'Valgfri tag som vises på siden.',
     }),
     defineField({
       name: 'isCategoryLandingPage',
@@ -119,9 +120,9 @@ export const page = defineType({
       category: 'category',
       subcategory: 'subcategory',
       isCategoryLandingPage: 'isCategoryLandingPage',
-      isBeta: 'isBeta',
+      tag: 'tag',
     },
-    prepare({ title, category, subcategory, isCategoryLandingPage, isBeta }) {
+    prepare({ title, category, subcategory, isCategoryLandingPage, tag }) {
       const subtitle = isCategoryLandingPage
         ? `${category} (Landingsside)`
         : subcategory
@@ -129,7 +130,7 @@ export const page = defineType({
         : category;
 
       return {
-        title: `${title || 'Ingen tittel'}${isBeta ? ' (beta)' : ''}`,
+        title: `${title || 'Ingen tittel'}${tag ? ` (${tag})` : ''}`,
         subtitle,
       };
     },

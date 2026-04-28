@@ -17,7 +17,7 @@ export type BasePageHeaderProps = {
   npmPackage?: string;
   isCategoryLandingPage?: boolean;
   figmaLink?: string;
-  isBeta?: boolean;
+  tag?: string;
 };
 
 export const BasePageHeader: React.FC<BasePageHeaderProps> = ({
@@ -26,7 +26,7 @@ export const BasePageHeader: React.FC<BasePageHeaderProps> = ({
   description,
   npmPackage,
   figmaLink,
-  isBeta,
+  tag,
 }) => {
   return (
     <header className="page-header">
@@ -49,14 +49,17 @@ export const BasePageHeader: React.FC<BasePageHeaderProps> = ({
           <Heading1 margin="none" className="page-header__heading">
             {title}
           </Heading1>
-          {isBeta && (
-            <Badge variant="warning" type="status">
-              beta
+          {tag && (
+            <Badge
+              variant={tag === 'beta' ? 'warning' : 'positive'}
+              type="status"
+            >
+              {tag}
             </Badge>
           )}
         </Grid.Item>
         <Grid.Item colSpan="1 / 2" rowSpan="2 / -1">
-          {npmPackage && <NpmTag packageName={npmPackage} isBeta={isBeta} />}
+          {npmPackage && <NpmTag packageName={npmPackage} tag={tag} />}
         </Grid.Item>
         <Grid.Item colSpan="2 / -1" rowSpan="1 / -1">
           <Flex direction="column" align="end" gap="xs">
@@ -87,7 +90,7 @@ export const BasePageHeader: React.FC<BasePageHeaderProps> = ({
                   className="ds-npm-tag"
                   href={`https://github.com/entur/design-system/tree/main/packages/${sanitizeEnturPackageName(
                     npmPackage,
-                  )}${isBeta ? '/src/beta' : ''}`}
+                  )}${tag === 'beta' ? '/src/beta' : ''}`}
                 >
                   <ActionChip>
                     Github <GithubIcon aria-hidden="true" />

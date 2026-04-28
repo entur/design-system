@@ -16,7 +16,7 @@ type ComponentDoc = {
   description?: string;
   npmPackage?: string;
   figmaLink?: string;
-  isBeta?: boolean;
+  tag?: string;
   intro?: any;
   beskrivelse?: any;
   utvikling?: any;
@@ -41,7 +41,7 @@ export default function ComponentDocTemplate({
     npmPackage,
     figmaLink,
     intro,
-    isBeta,
+    tag,
     beskrivelse,
     utvikling,
     tabs,
@@ -62,7 +62,7 @@ export default function ComponentDocTemplate({
     description,
     npmPackage,
     figmaLink,
-    isBeta,
+    tag,
   };
 
   return (
@@ -154,7 +154,7 @@ export const query = graphql`
       description
       npmPackage
       figmaLink
-      isBeta
+      tag
       intro {
         ...TextBlockFragment
       }
