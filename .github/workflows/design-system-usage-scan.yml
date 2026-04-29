@@ -48,9 +48,9 @@ jobs:
 
   # ── Full scan: discover repos → scan in parallel → aggregate ──
 
-  # Step 1: Discover all entur org repos that use @entur/* packages
+  # Step 1: Discover all entur org repos with a React frontend
   discover:
-    name: Discover repos with @entur/* usage
+    name: Discover repos with React frontend
     if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     timeout-minutes: 10
@@ -72,7 +72,7 @@ jobs:
         env:
           GH_TOKEN: ${{ steps.generate-token.outputs.token }}
         run: |
-          # Search for repos containing @entur/ in package.json files
+          # Search for repos with react in package.json (covers Next, Gatsby, Remix etc.)
           # The code search API returns up to 1000 results; paginate to collect all
           repos="[]"
           page=1
@@ -80,7 +80,7 @@ jobs:
           while true; do
             result=$(gh api search/code \
               --method GET \
-              -f q='@entur/ filename:package.json org:entur' \
+              -f q='"react" filename:package.json org:entur' \
               -f per_page=100 \
               -f page="$page" \
               --jq '[.items[].repository.full_name]' 2>/dev/null || echo "[]")
@@ -103,7 +103,7 @@ jobs:
           matrix=$(echo "$repos" | jq -c '[.[] | select(. != "entur/design-system")]')
           total=$(echo "$matrix" | jq 'length')
 
-          echo "Found $total repos with @entur/* usage"
+          echo "Found $total repos with React frontend"
           echo "matrix=$matrix" >> "$GITHUB_OUTPUT"
           echo "total=$total" >> "$GITHUB_OUTPUT"
 
