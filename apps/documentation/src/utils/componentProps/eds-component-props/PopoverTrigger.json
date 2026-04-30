@@ -1,0 +1,27 @@
+{
+  "tags": {},
+  "description": "",
+  "displayName": "PopoverTrigger",
+  "methods": [],
+  "props": {
+    "children": {
+      "defaultValue": null,
+      "description": "Knapp som skal brukes for å åpne Popover",
+      "name": "children",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/tooltip/src/Popover.tsx",
+          "name": "TypeLiteral"
+        },
+        {
+          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "ReactElement<any, string | JSXElementConstructor<any>> & ReactNode"
+      }
+    }
+  }
+}

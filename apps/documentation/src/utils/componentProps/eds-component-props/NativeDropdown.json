@@ -1,9 +1,7 @@
-[
-  {
-    "tags": {},
-    "description": "",
-    "displayName": "NativeDropdown",
-    "methods": [],
-    "props": {}
-  }
-]
+{
+  "tags": {},
+  "description": "",
+  "displayName": "NativeDropdown",
+  "methods": [],
+  "props": {}
+}

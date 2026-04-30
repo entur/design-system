@@ -1,9 +1,7 @@
-[
-  {
-    "tags": {},
-    "description": "",
-    "displayName": "Table",
-    "methods": [],
-    "props": {}
-  }
-]
+{
+  "tags": {},
+  "description": "",
+  "displayName": "Table",
+  "methods": [],
+  "props": {}
+}
