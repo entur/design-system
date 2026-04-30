@@ -17,9 +17,15 @@ export type FlexSpacerProps<
   T extends React.ElementType = typeof defaultElement,
 > = PolymorphicComponentProps<T, FlexSpacerOwnProps>;
 
+export type FlexSpacerComponent = (<
+  E extends React.ElementType = typeof defaultElement,
+>(
+  props: FlexSpacerProps<E>,
+) => React.ReactElement | null) & { displayName?: string };
+
 const defaultElement = 'div';
 
-export const FlexSpacer = <
+export const FlexSpacer: FlexSpacerComponent = <
   E extends React.ElementType = typeof defaultElement,
 >({
   as,

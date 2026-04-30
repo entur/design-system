@@ -59,9 +59,15 @@ export type GridOwnProps = {
 export type GridProps<T extends React.ElementType = typeof defaultElement> =
   PolymorphicComponentProps<T, GridOwnProps>;
 
+export type GridComponent = (<
+  E extends React.ElementType = typeof defaultElement,
+>(
+  props: GridProps<E> & { ref?: React.Ref<Element> },
+) => React.ReactElement | null) & { displayName?: string };
+
 const defaultElement = 'div';
 
-export const Grid = React.forwardRef(
+export const Grid: GridComponent = React.forwardRef(
   <E extends React.ElementType = typeof defaultElement>(
     {
       templateColumns,

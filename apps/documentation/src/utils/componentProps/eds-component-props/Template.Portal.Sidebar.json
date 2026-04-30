@@ -20,6 +20,130 @@
       "type": {
         "name": "boolean | undefined"
       }
+    },
+    "collapsed": {
+      "defaultValue": null,
+      "description": "Controlled collapsed state. When provided, the sidebar becomes\ncollapsible and a toggle button is rendered.",
+      "name": "collapsed",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/layout/src/beta/templates/Sidebar.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "boolean | undefined"
+      }
+    },
+    "onCollapseToggle": {
+      "defaultValue": null,
+      "description": "Callback when the collapse toggle is clicked",
+      "name": "onCollapseToggle",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/layout/src/beta/templates/Sidebar.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "((collapsed: boolean) => void) | undefined"
+      }
+    },
+    "openSidebarAriaLabel": {
+      "defaultValue": {
+        "value": "Åpne sidemeny"
+      },
+      "description": "aria-label for the toggle button when the sidebar is collapsed",
+      "name": "openSidebarAriaLabel",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/layout/src/beta/templates/Sidebar.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "closeSidebarAriaLabel": {
+      "defaultValue": {
+        "value": "Lukk sidemeny"
+      },
+      "description": "aria-label for the toggle button when the sidebar is expanded",
+      "name": "closeSidebarAriaLabel",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/layout/src/beta/templates/Sidebar.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "className": {
+      "defaultValue": null,
+      "description": "",
+      "name": "className",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/layout/src/beta/templates/Sidebar.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "style": {
+      "defaultValue": null,
+      "description": "",
+      "name": "style",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/layout/src/beta/templates/Sidebar.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "CSSProperties | undefined"
+      }
+    },
+    "as": {
+      "defaultValue": null,
+      "description": "An override of the default HTML tag.\nCan also be another React component.",
+      "name": "as",
+      "declarations": [
+        {
+          "fileName": "design-system/node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "ElementType<any> | undefined"
+      }
+    },
+    "ref": {
+      "defaultValue": null,
+      "description": "",
+      "name": "ref",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/layout/src/beta/templates/Sidebar.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "Ref<Element> | undefined"
+      }
     }
   }
 }

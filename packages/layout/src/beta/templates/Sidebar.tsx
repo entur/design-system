@@ -46,7 +46,19 @@ export type SidebarSectionProps<
   T extends React.ElementType = typeof defaultSectionElement,
 > = PolymorphicComponentProps<T, SidebarSectionOwnProps>;
 
-const SidebarLogo = React.forwardRef(
+type SidebarRootComponent = (<
+  E extends React.ElementType = typeof defaultSidebarElement,
+>(
+  props: SidebarProps<E> & { ref?: React.Ref<Element> },
+) => React.ReactElement | null) & { displayName?: string };
+
+type SidebarSectionComponent<
+  Default extends React.ElementType = typeof defaultSectionElement,
+> = (<E extends React.ElementType = Default>(
+  props: SidebarSectionProps<E> & { ref?: React.Ref<Element> },
+) => React.ReactElement | null) & { displayName?: string };
+
+const SidebarLogo: SidebarSectionComponent = React.forwardRef(
   <E extends React.ElementType = typeof defaultSectionElement>(
     { children, as, ...rest }: SidebarSectionProps<E>,
     ref?: React.Ref<Element>,
@@ -60,7 +72,7 @@ const SidebarLogo = React.forwardRef(
   },
 );
 
-const SidebarUser = React.forwardRef(
+const SidebarUser: SidebarSectionComponent = React.forwardRef(
   <E extends React.ElementType = typeof defaultSectionElement>(
     { children, as, ...rest }: SidebarSectionProps<E>,
     ref?: React.Ref<Element>,
@@ -74,12 +86,13 @@ const SidebarUser = React.forwardRef(
   },
 );
 
-const SidebarData = React.forwardRef(
+const SidebarData: SidebarSectionComponent = React.forwardRef(
   <E extends React.ElementType = typeof defaultSectionElement>(
     { children, as, ...rest }: SidebarSectionProps<E>,
     ref?: React.Ref<Element>,
   ) => {
     return (
+      // @ts-expect-error generic prop forwarding through polymorphic Flex
       <Flex
         ref={ref}
         as={as || defaultSectionElement}
@@ -93,7 +106,9 @@ const SidebarData = React.forwardRef(
   },
 );
 
-const SidebarNavigation = React.forwardRef(
+const SidebarNavigation: SidebarSectionComponent<
+  typeof defaultNavigationElement
+> = React.forwardRef(
   <E extends React.ElementType = typeof defaultNavigationElement>(
     { children, className, as, ...rest }: SidebarSectionProps<E>,
     ref?: React.Ref<Element>,
@@ -114,23 +129,27 @@ const SidebarNavigation = React.forwardRef(
   },
 );
 
-const SidebarFooter = React.forwardRef(
-  <E extends React.ElementType = typeof defaultFooterElement>(
-    { children, className, as, ...rest }: SidebarSectionProps<E>,
-    ref?: React.Ref<Element>,
-  ) => {
-    const Element: React.ElementType = as || defaultFooterElement;
-    return (
-      <Element
-        ref={ref}
-        className={classNames('eds-layout-template-sidebar__footer', className)}
-        {...rest}
-      >
-        {children}
-      </Element>
-    );
-  },
-);
+const SidebarFooter: SidebarSectionComponent<typeof defaultFooterElement> =
+  React.forwardRef(
+    <E extends React.ElementType = typeof defaultFooterElement>(
+      { children, className, as, ...rest }: SidebarSectionProps<E>,
+      ref?: React.Ref<Element>,
+    ) => {
+      const Element: React.ElementType = as || defaultFooterElement;
+      return (
+        <Element
+          ref={ref}
+          className={classNames(
+            'eds-layout-template-sidebar__footer',
+            className,
+          )}
+          {...rest}
+        >
+          {children}
+        </Element>
+      );
+    },
+  );
 
 const CollapseToggle: React.FC<{
   isCollapsed: boolean;
@@ -149,7 +168,7 @@ const CollapseToggle: React.FC<{
   </button>
 );
 
-const SidebarRoot = React.forwardRef(
+const SidebarRoot: SidebarRootComponent = React.forwardRef(
   <E extends React.ElementType = typeof defaultSidebarElement>(
     {
       children,
@@ -189,6 +208,7 @@ const SidebarRoot = React.forwardRef(
     if (!collapsible) {
       return (
         <Grid.Item className={wrapperClassNames} colSpan="1 / 2">
+          {/* @ts-expect-error generic prop forwarding through polymorphic Flex */}
           <Flex
             ref={ref}
             as={as || defaultSidebarElement}
@@ -210,6 +230,7 @@ const SidebarRoot = React.forwardRef(
 
     return (
       <Grid.Item className={wrapperClassNames} colSpan="1 / 2">
+        {/* @ts-expect-error generic prop forwarding through polymorphic Flex */}
         <Flex
           ref={ref}
           as={as || defaultSidebarElement}
