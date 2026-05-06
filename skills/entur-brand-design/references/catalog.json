@@ -1,0 +1,535 @@
+{
+  "_readme": "Catalog for template.pptx (Entur_Powerpointmal). This file documents slide masters, layouts, and conventions — NOT slide content (the file has only 1 slide). Use this when starting a presentation from template.pptx, or when assigning a layout to a new slide.",
+
+  "source_file": "template.pptx",
+  "slide_dimensions": {
+    "width_emu": 12192000,
+    "height_emu": 6858000,
+    "width_in": 13.33,
+    "height_in": 7.5,
+    "format": "WIDE 16:9"
+  },
+
+  "structure": {
+    "slides": 1,
+    "slide_masters": 7,
+    "slide_layouts": 51,
+    "themes": 9,
+    "embedded_media": "33 images + 3 mp4 videos (in ppt/media/)"
+  },
+
+  "masters": {
+    "slideMaster1": {
+      "theme": "Intro og heading",
+      "purpose": "Cover, intro, and heading slides",
+      "layouts": [1, 2, 3, 4, 5, 6, 7, 8],
+      "bg": "white (layouts 5-8 inherit; layouts 1-4 set explicit navy #1E2052)"
+    },
+    "slideMaster2": {
+      "theme": "Kapittel, agenda og avsnitt",
+      "purpose": "Chapter dividers, agenda, and section breaks",
+      "layouts": [9, 10, 11],
+      "bg": "white master; layout10 sets navy #1F2152; layout11 inherits (check layout XML)"
+    },
+    "slideMaster3": {
+      "theme": "Innhold — text, figur, bilder",
+      "purpose": "Main content slides — the primary workhorse",
+      "layouts": [
+        12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29,
+        30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42
+      ],
+      "bg": "most inherit white from master; layouts 35, 36, 38, 39, 40, 41, 42 set explicit navy"
+    },
+    "slideMaster4": {
+      "theme": "Sitat",
+      "purpose": "Quote slides with background image",
+      "layouts": [43, 44],
+      "bg": "inherited (image background set in layout)"
+    },
+    "slideMaster5": {
+      "theme": "Filmer",
+      "purpose": "Animation and video slides",
+      "layouts": [45, 46, 47],
+      "bg": "inherited — contains embedded MP4 animations"
+    },
+    "slideMaster6": {
+      "theme": "Pause collage",
+      "purpose": "Pause/collage image slides",
+      "layouts": [48, 49],
+      "bg": "scheme:bg1"
+    },
+    "slideMaster7": {
+      "theme": "Avsluttende slides",
+      "purpose": "Closing/thank-you slides",
+      "layouts": [50, 51],
+      "bg": "navy #1F2152"
+    }
+  },
+
+  "placeholder_index_guide": {
+    "_note": "These idx values appear consistently across all layouts. Use them when setting placeholder text.",
+    "title(idx=0)": "Slide title",
+    "body(idx=1)": "Main content area (text/bullets)",
+    "body(idx=12)": "Footer / branding area (bottom of slide — do NOT put content here)",
+    "sldNum(idx=11)": "Slide number (automatic — do NOT edit)",
+    "body(idx=13)": "Full-slide content area (blank layouts)",
+    "body(idx=14)": "Intro / preamble text (shorter, above main body)",
+    "body(idx=15)": "Secondary description or supporting text",
+    "body(idx=16)": "Third content area / metadata",
+    "body(idx=17)": "Heading / large subheading (alternative to title in intro slides)",
+    "body(idx=20)": "Image / media placeholder area",
+    "body(idx=21)": "Bullet / agenda item (used in agenda layout)",
+    "body(idx=29)": "Body text on navy-background content layouts",
+    "pic(idx=13)": "Picture placeholder (explicit image drop zone)"
+  },
+
+  "layouts": {
+    "COVER & INTRO (master1, masters[0])": {
+      "layout01": {
+        "name": "Tittel, inngress og bilde",
+        "python_pptx": "masters[0].slide_layouts[0]",
+        "background": "navy #1E2052",
+        "use_when": "Primary cover slide with title, intro text, and an image/photo",
+        "placeholders": [
+          "pic(idx=13) — image area",
+          "title(idx=0)",
+          "body(idx=14) — intro text"
+        ],
+        "tags": ["cover", "navy", "image", "intro"]
+      },
+      "layout02": {
+        "name": "1_Tittel, inngress og bilde",
+        "python_pptx": "masters[0].slide_layouts[1]",
+        "background": "navy #1E2052",
+        "use_when": "Cover variant — title + intro text, no picture placeholder",
+        "placeholders": ["title(idx=0)", "body(idx=14) — intro text"],
+        "tags": ["cover", "navy", "text-only"]
+      },
+      "layout03": {
+        "name": "2_Tittel, inngress og bilde",
+        "python_pptx": "masters[0].slide_layouts[2]",
+        "background": "navy #1E2052",
+        "use_when": "Second cover variant — same as layout02 with different positioning",
+        "placeholders": ["title(idx=0)", "body(idx=14)"],
+        "tags": ["cover", "navy"]
+      },
+      "layout04": {
+        "name": "3 Tittel og ingress_blå",
+        "python_pptx": "masters[0].slide_layouts[3]",
+        "background": "navy #1E2052",
+        "use_when": "Cover/intro without image — title + intro heading text only on navy",
+        "placeholders": ["title(idx=0)", "body(idx=17) — heading text"],
+        "tags": ["cover", "navy", "heading"]
+      },
+      "layout05": {
+        "name": "Intro_Heading og ingress_bilde 1",
+        "python_pptx": "masters[0].slide_layouts[4]",
+        "background": "white (image-heavy)",
+        "use_when": "Intro slide with large heading and image — image position variant 1",
+        "placeholders": ["title(idx=0)", "body(idx=17) — heading"],
+        "tags": ["intro", "white", "image", "heading"]
+      },
+      "layout06": {
+        "name": "Intro_Heading og ingress_bilde 2",
+        "python_pptx": "masters[0].slide_layouts[5]",
+        "background": "white",
+        "use_when": "Image position variant 2",
+        "tags": ["intro", "white", "image"]
+      },
+      "layout07": {
+        "name": "Intro_Heading og ingress_bilde 3",
+        "python_pptx": "masters[0].slide_layouts[6]",
+        "background": "white",
+        "use_when": "Image position variant 3",
+        "tags": ["intro", "white", "image"]
+      },
+      "layout08": {
+        "name": "Intro_Heading og ingress_bilde 4",
+        "python_pptx": "masters[0].slide_layouts[7]",
+        "background": "white",
+        "use_when": "Image position variant 4",
+        "tags": ["intro", "white", "image"]
+      }
+    },
+
+    "CHAPTER & AGENDA (master2, masters[1])": {
+      "layout09": {
+        "name": "Lengre setning + tilhørende punkter",
+        "python_pptx": "masters[1].slide_layouts[0]",
+        "background": "white",
+        "use_when": "White slide with a longer opening sentence plus supporting bullet points below",
+        "placeholders": [
+          "body(idx=14) — long sentence",
+          "body(idx=15) — bullet points"
+        ],
+        "tags": ["content", "white", "text", "bullets"]
+      },
+      "layout10": {
+        "name": "Agenda + bullets",
+        "python_pptx": "masters[1].slide_layouts[1]",
+        "background": "navy #1F2152",
+        "use_when": "Agenda slide — title on navy with multiple numbered/bulleted agenda items in separate body placeholders",
+        "placeholders": [
+          "title(idx=0)",
+          "body(idx=21-28) — up to 8 agenda items"
+        ],
+        "tags": ["agenda", "navy", "bullets", "list"],
+        "note": "Has 8 separate body placeholders (idx 21-28) for individual agenda items"
+      },
+      "layout11": {
+        "name": "1_Kapittelside",
+        "python_pptx": "masters[1].slide_layouts[2]",
+        "background": "navy",
+        "use_when": "Chapter/section divider — large title centered on navy background with optional chapter number",
+        "placeholders": [
+          "title(idx=0) — chapter title",
+          "body(idx=21) — chapter number or subtitle"
+        ],
+        "tags": ["chapter", "divider", "section", "navy"]
+      }
+    },
+
+    "CONTENT (master3, masters[2] — main workhorse)": {
+      "layout12": {
+        "name": "Tittel, innhold og bilde_blank",
+        "python_pptx": "masters[2].slide_layouts[0]",
+        "background": "white",
+        "use_when": "Standard content slide — title top-left, content body, blank image placeholder area",
+        "placeholders": [
+          "title(idx=0)",
+          "body(idx=20) — image area",
+          "body(idx=14) — text content"
+        ],
+        "tags": ["content", "white", "image-area", "standard"],
+        "recommended": true
+      },
+      "layout13": {
+        "name": "Tittel, innhold og bilde 1",
+        "python_pptx": "masters[2].slide_layouts[1]",
+        "background": "white",
+        "use_when": "Standard content + pre-positioned image — image variant 1 (right side)",
+        "placeholders": ["title(idx=0)", "body(idx=20) — image"],
+        "tags": ["content", "white", "image", "right"],
+        "recommended": true
+      },
+      "layout14-20": {
+        "name": "Tittel, innhold og bilde 2-8",
+        "python_pptx": "masters[2].slide_layouts[2] through [8]",
+        "background": "white",
+        "use_when": "Same as layout13 — image in different size/position variants (2 through 8)",
+        "placeholders": ["title(idx=0)", "body(idx=20)"],
+        "tags": ["content", "white", "image"]
+      },
+      "layout21-24": {
+        "name": "Collage image variants (1–4)",
+        "python_pptx": "masters[2].slide_layouts[9] through [12]",
+        "background": "white",
+        "use_when": "Content slide with collage-style image arrangement",
+        "placeholders": ["title(idx=0)", "body(idx=20)"],
+        "tags": ["content", "white", "collage", "image"]
+      },
+      "layout25": {
+        "name": "Tittel og bilde",
+        "python_pptx": "masters[2].slide_layouts[13]",
+        "background": "white",
+        "use_when": "Title + large image only — minimal text, image-dominant slide",
+        "placeholders": ["title(idx=0)", "body(idx=20) — image"],
+        "tags": ["image", "white", "visual"]
+      },
+      "layout26": {
+        "name": "Tittel, bilde og litt tekst",
+        "python_pptx": "masters[2].slide_layouts[14]",
+        "background": "white",
+        "use_when": "Title + image with a small supporting text caption",
+        "placeholders": [
+          "title(idx=0)",
+          "body(idx=20) — image",
+          "body(idx=21) — caption text"
+        ],
+        "tags": ["image", "caption", "white"]
+      },
+      "layout27": {
+        "name": "Tittel, innhold og bilde",
+        "python_pptx": "masters[2].slide_layouts[15]",
+        "background": "white",
+        "use_when": "Title + two content areas (text left, image right)",
+        "placeholders": [
+          "title(idx=0)",
+          "body(idx=21) — text content",
+          "body(idx=22) — image/second content"
+        ],
+        "tags": ["two-column", "white", "split"],
+        "recommended": true
+      },
+      "layout28": {
+        "name": "Tittel, innhold og bilde (complex)",
+        "python_pptx": "masters[2].slide_layouts[16]",
+        "background": "white",
+        "use_when": "Complex multi-area slide — title + multiple body areas + image",
+        "placeholders": ["title(idx=0)", "body(idx=20,21,23,34,35)"],
+        "tags": ["multi-area", "white", "complex"]
+      },
+      "layout29": {
+        "name": "Tittel, innhold og bilde_venstre",
+        "python_pptx": "masters[2].slide_layouts[17]",
+        "background": "white",
+        "use_when": "Left-aligned content — title on left, body text left-side, image/area on right",
+        "placeholders": [
+          "title(idx=0)",
+          "body(idx=1) — left content",
+          "body(idx=34) — right image area"
+        ],
+        "tags": ["left-content", "white", "split"],
+        "recommended": true
+      },
+      "layout30": {
+        "name": "Tittel, innhold og bilde_venstre 1",
+        "python_pptx": "masters[2].slide_layouts[18]",
+        "background": "white",
+        "use_when": "Left-aligned variant 1",
+        "tags": ["left-content", "white"]
+      },
+      "layout31": {
+        "name": "Tittel, innhold og bilde_venstre 2",
+        "python_pptx": "masters[2].slide_layouts[19]",
+        "background": "white",
+        "use_when": "Left-aligned variant 2",
+        "tags": ["left-content", "white"]
+      },
+      "layout32": {
+        "name": "Tittel, innhold og bilde_venstre 3",
+        "python_pptx": "masters[2].slide_layouts[20]",
+        "background": "white",
+        "use_when": "Left-aligned variant 3",
+        "tags": ["left-content", "white"]
+      },
+      "layout33": {
+        "name": "Tittel, tre områder og bilde",
+        "python_pptx": "masters[2].slide_layouts[21]",
+        "background": "white",
+        "use_when": "Three-column content areas with title and optional image — use for 3 parallel items",
+        "placeholders": [
+          "title(idx=0)",
+          "body(idx=22,24,31) — 3 content areas",
+          "body(idx=32,33) — labels",
+          "body(idx=34) — image"
+        ],
+        "tags": ["three-column", "white", "split", "3-areas"],
+        "recommended": true
+      },
+      "layout34": {
+        "name": "Tittel_blank",
+        "python_pptx": "masters[2].slide_layouts[22]",
+        "background": "white",
+        "use_when": "Title-only slide on white — blank canvas for custom content. Default layout for all custom content slides.",
+        "placeholders": ["title(idx=0)"],
+        "tags": ["blank", "white", "title-only"],
+        "recommended": true
+      },
+      "layout35": {
+        "name": "Tittel_blank blå",
+        "python_pptx": "masters[2].slide_layouts[23]",
+        "background": "navy #1D2052",
+        "use_when": "Title-only slide on navy — blank canvas for custom shapes or diagrams on dark background",
+        "placeholders": ["title(idx=0)"],
+        "tags": ["blank", "navy", "title-only"],
+        "recommended": true
+      },
+      "layout36": {
+        "name": "Blank blå_innholdsslide",
+        "python_pptx": "masters[2].slide_layouts[24]",
+        "background": "navy #1D2052",
+        "use_when": "Fully blank navy slide — clean dark canvas with no pre-set title",
+        "placeholders": ["body(idx=13) — full-area content zone"],
+        "tags": ["blank", "navy", "full-canvas"],
+        "recommended": true
+      },
+      "layout37": {
+        "name": "Blank_innholdsslide",
+        "python_pptx": "masters[2].slide_layouts[25]",
+        "background": "white",
+        "use_when": "Fully blank white slide — clean canvas for custom content",
+        "placeholders": ["body(idx=13) — full-area content zone"],
+        "tags": ["blank", "white", "full-canvas"],
+        "recommended": true
+      },
+      "layout38": {
+        "name": "Tittle, innhold og bilde_blå 1",
+        "python_pptx": "masters[2].slide_layouts[26]",
+        "background": "navy #1E2152",
+        "use_when": "Navy content slide — title + text body + image area on dark background",
+        "placeholders": [
+          "title(idx=0)",
+          "body(idx=29) — body text",
+          "body(idx=20) — image area"
+        ],
+        "tags": ["content", "navy", "image"],
+        "recommended": true
+      },
+      "layout39": {
+        "name": "Tittle, innhold og bilde_blå",
+        "python_pptx": "masters[2].slide_layouts[27]",
+        "background": "navy #1F2152",
+        "use_when": "Navy content slide variant — same as layout38 with slightly different layout",
+        "placeholders": [
+          "title(idx=0)",
+          "body(idx=29) — body text",
+          "body(idx=20) — image area"
+        ],
+        "tags": ["content", "navy", "image"]
+      },
+      "layout40": {
+        "name": "Tittel, inngress og bilde (master3 variant)",
+        "python_pptx": "masters[2].slide_layouts[28]",
+        "background": "navy #1E2052",
+        "use_when": "Cover-style slide mid-deck — use when you need a cover appearance without switching masters",
+        "placeholders": ["pic(idx=13)", "title(idx=0)", "body(idx=14)"],
+        "tags": ["cover", "navy", "mid-deck"]
+      },
+      "layout41": {
+        "name": "1_Tittel, inngress og bilde (master3)",
+        "python_pptx": "masters[2].slide_layouts[29]",
+        "background": "navy #1E2052",
+        "use_when": "Navy intro variant on master3",
+        "tags": ["intro", "navy"]
+      },
+      "layout42": {
+        "name": "3 Tittel og ingress_blå (master3)",
+        "python_pptx": "masters[2].slide_layouts[30]",
+        "background": "navy #1E2052",
+        "use_when": "Navy title+heading variant on master3",
+        "tags": ["intro", "navy"]
+      }
+    },
+
+    "QUOTE (master4, masters[3])": {
+      "layout43": {
+        "name": "Sitat på bakgrunn_Mennesker",
+        "python_pptx": "masters[3].slide_layouts[0]",
+        "background": "image background (people)",
+        "use_when": "Full-bleed quote slide — large quote text overlaid on a people/human photo background",
+        "placeholders": ["body(idx=15) — quote text"],
+        "tags": ["quote", "image-background", "people"]
+      },
+      "layout44": {
+        "name": "Sitat på bakgrunn_generell",
+        "python_pptx": "masters[3].slide_layouts[1]",
+        "background": "image background (general)",
+        "use_when": "Full-bleed quote slide with a general/abstract background image",
+        "placeholders": ["body(idx=15) — quote text"],
+        "tags": ["quote", "image-background"]
+      }
+    },
+
+    "ANIMATION (master5, masters[4]) — DO NOT USE": {
+      "layout45": {
+        "name": "Animasjon_Vi kommer lenger..",
+        "python_pptx": "masters[4].slide_layouts[0]",
+        "use_when": "DO NOT USE — hardcoded brand animation (embedded MP4)",
+        "tags": ["animation", "avoid"]
+      },
+      "layout46": {
+        "name": "Animasjon_Entur samler og foredler_Tekstanimasjon",
+        "python_pptx": "masters[4].slide_layouts[1]",
+        "use_when": "DO NOT USE — hardcoded animation",
+        "tags": ["animation", "avoid"]
+      },
+      "layout47": {
+        "name": "Animasjon_transportmidler",
+        "python_pptx": "masters[4].slide_layouts[2]",
+        "use_when": "DO NOT USE — hardcoded transport animation",
+        "tags": ["animation", "avoid"]
+      }
+    },
+
+    "COLLAGE / PAUSE (master6, masters[5])": {
+      "layout48": {
+        "name": "1_Collagebilde 1",
+        "python_pptx": "masters[5].slide_layouts[0]",
+        "background": "scheme:bg1",
+        "use_when": "Pause/interlude slide with collage photo arrangement — variant 1",
+        "placeholders": ["body(idx=12) — branding/footer only"],
+        "tags": ["collage", "pause", "image"]
+      },
+      "layout49": {
+        "name": "1_Collagebilde 2",
+        "python_pptx": "masters[5].slide_layouts[1]",
+        "background": "scheme:bg1",
+        "use_when": "Pause/interlude slide with collage photo arrangement — variant 2",
+        "placeholders": ["body(idx=12) — branding/footer only"],
+        "tags": ["collage", "pause", "image"]
+      }
+    },
+
+    "CLOSING (master7, masters[6])": {
+      "layout50": {
+        "name": "Avslutning_Vi kommer lenger sammen",
+        "python_pptx": "masters[6].slide_layouts[0]",
+        "background": "navy #1F2152",
+        "use_when": "Closing slide with Entur tagline on navy",
+        "placeholders": ["body(idx=15) — optional closing text"],
+        "tags": ["closing", "navy", "tagline"]
+      },
+      "layout51": {
+        "name": "Avslutning_Tusen takk!",
+        "python_pptx": "masters[6].slide_layouts[1]",
+        "background": "navy #1F2152",
+        "use_when": "Thank-you / end slide — do NOT set title text, it is baked into the master",
+        "placeholders": ["body(idx=15) — optional contact info or message"],
+        "tags": ["closing", "thank-you", "navy"]
+      }
+    }
+  },
+
+  "quick_reference": {
+    "cover_navy_with_image": "masters[0].slide_layouts[0]",
+    "cover_navy_text_only": "masters[0].slide_layouts[3]",
+    "chapter_divider_navy": "masters[1].slide_layouts[2]",
+    "agenda_navy": "masters[1].slide_layouts[1]",
+    "content_standard_white": "masters[2].slide_layouts[0]",
+    "content_two_column": "masters[2].slide_layouts[15]",
+    "content_left_text_right_image": "masters[2].slide_layouts[17]",
+    "content_three_columns": "masters[2].slide_layouts[21]",
+    "content_title_only_white": "masters[2].slide_layouts[22]",
+    "content_title_only_navy": "masters[2].slide_layouts[23]",
+    "blank_navy_canvas": "masters[2].slide_layouts[24]",
+    "blank_white_canvas": "masters[2].slide_layouts[25]",
+    "content_navy_with_text": "masters[2].slide_layouts[26]",
+    "quote_with_background": "masters[3].slide_layouts[1]",
+    "closing_thank_you": "masters[6].slide_layouts[1]",
+    "closing_tagline": "masters[6].slide_layouts[0]"
+  },
+
+  "recommended_layouts": [
+    "masters[1].slide_layouts[2]  — Chapter divider (navy)",
+    "masters[2].slide_layouts[0]  — Standard content + image area (white)",
+    "masters[2].slide_layouts[15] — Two-column: text + image (white)",
+    "masters[2].slide_layouts[17] — Left text, right image (white)",
+    "masters[2].slide_layouts[21] — Three content areas (white)",
+    "masters[2].slide_layouts[22] — Title only, blank white (default for custom content)",
+    "masters[2].slide_layouts[23] — Title only, blank navy",
+    "masters[2].slide_layouts[24] — Fully blank navy canvas",
+    "masters[2].slide_layouts[25] — Fully blank white canvas",
+    "masters[2].slide_layouts[26] — Navy content + text + image",
+    "masters[6].slide_layouts[0]  — Closing (navy, tagline)",
+    "masters[6].slide_layouts[1]  — Thank-you (navy)"
+  ],
+
+  "do_not_use": [
+    "masters[4].slide_layouts[0-2] — Hardcoded animation slides (embedded MP4)",
+    "masters[5].slide_layouts[0-1] — Collage pause slides (image-heavy, no content placeholders)"
+  ],
+
+  "persistent_placeholders": {
+    "_note": "These appear on every layout and are controlled by the master — do not edit them.",
+    "body(idx=12)": "Entur branding footer (logo/brand element) — always bottom of slide",
+    "sldNum(idx=11)": "Auto slide number — always bottom right"
+  },
+
+  "master_background_colors": {
+    "cover_navy": "#1E2052 (layouts 1-4, 40-42)",
+    "agenda_navy": "#1F2152 (layouts 10, 50, 51)",
+    "content_navy": "#1D2052–#1F2152 (layouts 35, 36, 38, 39)",
+    "note": "All navy values are visually identical to #181C56 (Entur primary). Use #181C56 when adding explicit fills."
+  }
+}

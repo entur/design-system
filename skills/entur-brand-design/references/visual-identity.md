@@ -88,6 +88,8 @@ Illustration library access: requires Google Drive access (internal Entur use).
 
 ## Presentations and documents
 
+For programmatic presentation generation (python-pptx), see `presentations-pptx.md` and `catalog.json` in this references directory.
+
 ### Templates
 
 Three official formats are available — always start from one of these:
