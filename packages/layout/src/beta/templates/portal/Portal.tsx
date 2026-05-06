@@ -8,18 +8,21 @@ import './Portal.scss';
 type PortalOwnProps = {
   className?: string;
   style?: React.CSSProperties;
+  /** Content of the portal layout */
   children?: React.ReactNode;
 };
 
 type PortalStatusBarOwnProps = {
   className?: string;
   style?: React.CSSProperties;
+  /** Content of the status bar */
   children?: React.ReactNode;
 };
 
 type PortalMainOwnProps = {
   className?: string;
   style?: React.CSSProperties;
+  /** Main content area */
   children?: React.ReactNode;
 };
 

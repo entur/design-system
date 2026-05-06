@@ -24,6 +24,7 @@ type SidebarOwnProps = {
   closeSidebarAriaLabel?: string;
   className?: string;
   style?: React.CSSProperties;
+  /** Content of the sidebar */
   children?: React.ReactNode;
 };
 
@@ -208,18 +209,20 @@ const SidebarRoot: SidebarRootComponent = React.forwardRef(
     if (!collapsible) {
       return (
         <Grid.Item className={wrapperClassNames} colSpan="1 / 2">
-          {/* @ts-expect-error generic prop forwarding through polymorphic Flex */}
-          <Flex
-            ref={ref}
-            as={as || defaultSidebarElement}
-            direction="column"
-            gap="m"
-            className={sidebarClassNames}
-            style={style}
-            {...rest}
-          >
-            {children}
-          </Flex>
+          {
+            // @ts-expect-error generic prop forwarding through polymorphic Flex
+            <Flex
+              ref={ref}
+              as={as || defaultSidebarElement}
+              direction="column"
+              gap="m"
+              className={sidebarClassNames}
+              style={style}
+              {...rest}
+            >
+              {children}
+            </Flex>
+          }
         </Grid.Item>
       );
     }
@@ -230,18 +233,22 @@ const SidebarRoot: SidebarRootComponent = React.forwardRef(
 
     return (
       <Grid.Item className={wrapperClassNames} colSpan="1 / 2">
-        {/* @ts-expect-error generic prop forwarding through polymorphic Flex */}
-        <Flex
-          ref={ref}
-          as={as || defaultSidebarElement}
-          direction="column"
-          gap="m"
-          className={sidebarClassNames}
-          style={collapsedStyle}
-          {...rest}
-        >
-          <div className="eds-layout-template-sidebar__content">{children}</div>
-        </Flex>
+        {
+          // @ts-expect-error generic prop forwarding through polymorphic Flex
+          <Flex
+            ref={ref}
+            as={as || defaultSidebarElement}
+            direction="column"
+            gap="m"
+            className={sidebarClassNames}
+            style={collapsedStyle}
+            {...rest}
+          >
+            <div className="eds-layout-template-sidebar__content">
+              {children}
+            </div>
+          </Flex>
+        }
         {onCollapseToggle && (
           <CollapseToggle
             isCollapsed={isCollapsed}

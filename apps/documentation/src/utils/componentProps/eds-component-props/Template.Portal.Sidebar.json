@@ -115,6 +115,21 @@
         "name": "CSSProperties | undefined"
       }
     },
+    "children": {
+      "defaultValue": null,
+      "description": "Content of the sidebar",
+      "name": "children",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/layout/src/beta/templates/Sidebar.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
     "as": {
       "defaultValue": null,
       "description": "An override of the default HTML tag.\nCan also be another React component.",
