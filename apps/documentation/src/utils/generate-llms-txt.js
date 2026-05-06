@@ -27,7 +27,8 @@ const SUBCATEGORY_LABELS = {
 };
 
 function label(map, key) {
-  return (key && map[key]) || (key ? titleCase(key) : null);
+  const normalized = key && key.toLowerCase();
+  return (normalized && map[normalized]) || (key ? titleCase(key) : null);
 }
 
 function titleCase(str) {
@@ -40,9 +41,9 @@ function titleCase(str) {
 function groupByCategory(pages) {
   const map = {};
   for (const page of pages) {
-    const cat = page.category || 'other';
+    const cat = (page.category || 'other').toLowerCase();
     if (!map[cat]) map[cat] = {};
-    const sub = page.subcategory || '_root';
+    const sub = (page.subcategory || '_root').toLowerCase();
     if (!map[cat][sub]) map[cat][sub] = [];
     map[cat][sub].push(page);
   }
@@ -52,12 +53,15 @@ function groupByCategory(pages) {
 function formatPageLine(page) {
   const url = `${BASE_URL}${page.path}`;
   const desc = page.description ? `: ${page.description}` : '';
-  const pkg = page.npmPackage ? ` (\`${page.npmPackage}\`)` : '';
-  return `- [${page.title}](${url})${pkg}${desc}`;
+  let pkg = page.npmPackage || null;
+  if (pkg && !pkg.startsWith('@')) pkg = `@entur/${pkg}`;
+  const pkgStr = pkg ? ` (\`${pkg}\`)` : '';
+  return `- [${page.title}](${url})${pkgStr}${desc}`;
 }
 
 function generatePageIndex(pages) {
-  const grouped = groupByCategory(pages);
+  const filtered = pages.filter(p => !/\/test(\/|$)/.test(p.path));
+  const grouped = groupByCategory(filtered);
   const lines = [];
 
   for (const [cat, subcats] of Object.entries(grouped)) {
