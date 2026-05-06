@@ -67,7 +67,7 @@ Dark mode uses the **Ebony** palette as backgrounds:
 
 ## CSS tokens to use
 
-Always use semantic tokens (`@entur/tokens/dist/semantic.css`) over raw hex values:
+Always use tokens over raw hex values. Prefer base tokens (`@entur/tokens/dist/base.css`) — they support light/dark mode automatically. Use semantic tokens (`@entur/tokens/dist/semantic.css`) as fallback when base tokens don't fit:
 
 ```css
 /* Backgrounds */

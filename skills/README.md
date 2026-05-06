@@ -32,10 +32,28 @@ To give your agent design system knowledge, add this to your project's instructi
 ## Design system
 
 When working with Entur components, branding, or accessibility, read and follow:
-https://github.com/entur/design-system/blob/main/skills/entur-linje/SKILL.md
+https://raw.githubusercontent.com/entur/design-system/main/skills/entur-linje/SKILL.md
 ```
 
 The agent will fetch the skill when it encounters a relevant task — like building UI with `@entur/*` packages, choosing colors, or making something accessible.
+
+### Alternative: use llms.txt
+
+The documentation site publishes two machine-readable files for agents:
+
+| URL                                  | Contents                                             |
+| ------------------------------------ | ---------------------------------------------------- |
+| https://linje.entur.no/llms.txt      | Structured index of all documentation pages          |
+| https://linje.entur.no/llms-full.txt | Full skill content + complete page index in one file |
+
+`llms-full.txt` is the most complete single reference — an agent reading it gets all skill guidance plus links to every page on linje.entur.no. Use it as an alternative or complement to the GitHub skill URL:
+
+```markdown
+## Design system
+
+For full Entur design system reference, read:
+https://linje.entur.no/llms-full.txt
+```
 
 If your agent cannot fetch URLs, copy the contents of the relevant `SKILL.md` files directly into your instructions file instead.
 

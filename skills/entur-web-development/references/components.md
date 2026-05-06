@@ -4,25 +4,27 @@ Full API docs: https://linje.entur.no/komponenter
 
 ## Quick lookup — package → components
 
-| Package             | Key exports                                                                                                          |
-| ------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| `@entur/button`     | `PrimaryButton`, `SecondaryButton`, `TertiaryButton`, `NegativeButton`, `SuccessButton`, `IconButton`, `ButtonGroup` |
-| `@entur/typography` | `Heading1`–`Heading6`, `Paragraph`, `LeadParagraph`, `SmallText`, `Label`, `Link`                                    |
-| `@entur/form`       | `TextField`, `TextArea`, `Checkbox`, `Radio`, `RadioGroup`, `Switch`, `Fieldset`                                     |
-| `@entur/alert`      | `BannerAlertBox`, `SmallAlertBox`, `ToastProvider`, `useToast`                                                       |
-| `@entur/menu`       | `SideNavigation`, `BreadcrumbNavigation`, `Pagination`, `Stepper`                                                    |
-| `@entur/layout`     | `Contrast`, `NavigationCard`, `BaseCard`, `Badge`, `StatusBadge`, `Tag`                                              |
-| `@entur/grid`       | `GridContainer`, `GridItem`                                                                                          |
-| `@entur/modal`      | `Modal`, `ModalContent`, `Drawer`                                                                                    |
-| `@entur/tooltip`    | `Tooltip`, `Popover`                                                                                                 |
-| `@entur/table`      | `Table`, `TableHead`, `TableBody`, `TableRow`, `HeaderCell`, `DataCell`                                              |
-| `@entur/expand`     | `Accordion`, `AccordionItem`, `ExpandablePanel`                                                                      |
-| `@entur/tab`        | `Tabs`, `TabList`, `Tab`, `TabPanels`, `TabPanel`                                                                    |
-| `@entur/travel`     | `TravelHeader`, `TravelTag`, `LegLine`, `LegBone`, `TravelLeg`                                                       |
-| `@entur/loader`     | `Loader`, `Spinner`, `SkeletonRectangle`                                                                             |
-| `@entur/chip`       | `ChoiceChip`, `ChoiceChipGroup`, `FilterChip`, `ActionChip`                                                          |
-| `@entur/dropdown`   | `Dropdown`, `SearchableDropdown`, `MultiSelect`, `NativeDropdown`                                                    |
-| `@entur/a11y`       | `SkipToContent`, `VisuallyHidden`                                                                                    |
+| Package             | Key exports                                                                                                                                                                                                                              |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `@entur/button`     | `PrimaryButton`, `SecondaryButton`, `TertiaryButton`, `NegativeButton`, `SuccessButton`, `IconButton`, `ButtonGroup`, `FloatingButton`, `SecondarySquareButton`, `SuccessSquareButton`, `TertiarySquareButton`                           |
+| `@entur/typography` | `Heading1`–`Heading6`, `Paragraph`, `LeadParagraph`, `SubParagraph`, `SmallText`, `Label`, `SubLabel`, `Link`, `StrongText`, `EmphasizedText`, `Blockquote`, `CodeText`, `PreformattedText`, `ListItem`, `UnorderedList`, `NumberedList` |
+| `@entur/form`       | `TextField`, `TextArea`, `Checkbox`, `Radio`, `RadioGroup`, `RadioPanel`, `CheckboxPanel`, `Switch`, `Fieldset`, `FeedbackText`, `InputGroupLabel`, `SegmentedControl`                                                                   |
+| `@entur/alert`      | `BannerAlertBox`, `SmallAlertBox`, `ToastAlertBox`, `ExpandableAlertBox`, `CopyableText`, `ToastProvider`, `useToast`                                                                                                                    |
+| `@entur/menu`       | `SideNavigation`, `SideNavigationItem`, `SideNavigationGroup`, `CollapsibleSideNavigation`, `TopNavigationItem`, `BreadcrumbNavigation`, `BreadcrumbItem`, `OverflowMenu`, `Pagination`, `Stepper`                                       |
+| `@entur/layout`     | `Contrast`, `NavigationCard`, `BaseCard`, `MediaCard`, `Badge`, `BulletBadge`, `NotificationBadge`, `StatusBadge`, `Tag`                                                                                                                 |
+| `@entur/grid`       | `GridContainer`, `GridItem`                                                                                                                                                                                                              |
+| `@entur/modal`      | `Modal`, `ModalOverlay`, `ModalContent`, `Drawer`                                                                                                                                                                                        |
+| `@entur/tooltip`    | `Tooltip`, `Popover`                                                                                                                                                                                                                     |
+| `@entur/table`      | `Table`, `TableHead`, `TableBody`, `TableFooter`, `TableRow`, `HeaderCell`, `DataCell`, `EditableCell`, `ExpandableRow`, `ExpandRowButton`, `useSortableTable`, `useTableKeyboardNavigation`                                             |
+| `@entur/expand`     | `Accordion`, `AccordionItem`, `ExpandablePanel`, `ExpandableText`, `ExpandableTextButton`, `ExpandArrow`                                                                                                                                 |
+| `@entur/tab`        | `Tabs`, `TabList`, `Tab`, `TabPanels`, `TabPanel`                                                                                                                                                                                        |
+| `@entur/travel`     | `TravelHeader`, `TravelTag`, `LegLine`, `LegBone`, `TravelLeg`, `TravelSwitch`                                                                                                                                                           |
+| `@entur/loader`     | `Loader`, `Spinner`, `LoadingDots`, `SkeletonRectangle`, `SkeletonCircle`, `SkeletonWrapper`                                                                                                                                             |
+| `@entur/chip`       | `ChoiceChip`, `ChoiceChipGroup`, `FilterChip`, `ActionChip`, `TagChip`                                                                                                                                                                   |
+| `@entur/dropdown`   | `Dropdown`, `SearchableDropdown`, `MultiSelect`, `NativeDropdown`                                                                                                                                                                        |
+| `@entur/datepicker` | `DatePicker`, `TimePicker`                                                                                                                                                                                                               |
+| `@entur/fileupload` | `FileUpload`                                                                                                                                                                                                                             |
+| `@entur/a11y`       | `SkipToContent`, `VisuallyHidden`                                                                                                                                                                                                        |
 
 Common patterns: all imports are named exports. Buttons are polymorphic (`as="a"`). TextField variants: `"success"` | `"information"` | `"warning"` | `"negative"` (omit for default). Alert variants: `"information"` | `"success"` | `"warning"` | `"negative"`. Transport modes: `"rail"` | `"bus"` | `"metro"` | `"tram"` | `"ferry"` | `"plane"` | `"bicycle"` | `"walk"` + others.
 
@@ -337,6 +339,42 @@ import { TravelHeader, TravelTag, LegLine, LegBone, TravelLeg, TravelSwitch } fr
 ```
 
 Transport modes: `"rail"` | `"bus"` | `"metro"` | `"tram"` | `"ferry"` | `"plane"` | `"bicycle"` | `"walk"` | `"mobility"` | `"cableway"` | `"funicular"` | `"helicopter"` | `"taxi"`
+
+---
+
+## Date & Time
+
+Package: `@entur/datepicker`
+
+```tsx
+import { DatePicker, TimePicker } from '@entur/datepicker';
+
+// Date picker
+<DatePicker label="Reisedato" onChange={setDate} />
+
+// Time picker
+<TimePicker label="Avgangstid" onChange={setTime} />
+```
+
+---
+
+## File Upload
+
+Package: `@entur/fileupload`
+
+```tsx
+import { FileUpload } from '@entur/fileupload';
+
+const [files, setFiles] = useState<File[]>([]);
+
+<FileUpload
+  label="Last opp vedlegg"
+  accept=".pdf,.jpg,.png"
+  files={files}
+  onDrop={newFiles => setFiles(prev => [...prev, ...newFiles])}
+  onDelete={file => setFiles(prev => prev.filter(f => f !== file))}
+/>;
+```
 
 ---
 

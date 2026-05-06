@@ -14,11 +14,15 @@ npm install @entur/button @entur/tokens
 
 ## Import CSS (required)
 
-Components need their CSS to render correctly. Import globally in `App.tsx`, `index.js`, or a global `.scss` file.
+Components need their CSS to render correctly. Import globally in `App.tsx`, `index.js`, or a global stylesheet. **The order is critical** — token CSS must come first, then component CSS in the exact order below. Wrong order causes style conflicts and visual regressions.
 
-Recommended import order (avoids style conflicts):
+### CSS (in `.css` or `.tsx` files)
 
 ```css
+/* 1. Base tokens — always first */
+@import '@entur/tokens/dist/base.css';
+
+/* 2. Component styles — in this exact order */
 @import '@entur/a11y/dist/styles.css';
 @import '@entur/grid/dist/styles.css';
 @import '@entur/icons/dist/styles.css';
@@ -40,6 +44,41 @@ Recommended import order (avoids style conflicts):
 @import '@entur/table/dist/styles.css';
 @import '@entur/dropdown/dist/styles.css';
 ```
+
+Other token files (`semantic.css`, `data.css`, `transport.css`) should be imported on demand in the files that use them — not globally.
+
+### SCSS (in `.scss` files)
+
+In SCSS, use `@use` with a namespace alias instead of `@import` (Sass `@import` is deprecated):
+
+```scss
+/* 1. Base tokens — always first */
+@use '@entur/tokens/dist/base.scss' as eds;
+
+/* 2. Component styles — in this exact order, each with a namespace */
+@use '@entur/a11y/dist/styles.css' as a11y;
+@use '@entur/grid/dist/styles.css' as grid;
+@use '@entur/icons/dist/styles.css' as icons;
+@use '@entur/tab/dist/styles.css' as tab;
+@use '@entur/typography/dist/styles.css' as typography;
+@use '@entur/layout/dist/styles.css' as layout;
+@use '@entur/loader/dist/styles.css' as loader;
+@use '@entur/expand/dist/styles.css' as expand;
+@use '@entur/button/dist/styles.css' as button;
+@use '@entur/alert/dist/styles.css' as alert;
+@use '@entur/menu/dist/styles.css' as menu;
+@use '@entur/fileupload/dist/styles.css' as fileupload;
+@use '@entur/modal/dist/styles.css' as modal;
+@use '@entur/tooltip/dist/styles.css' as tooltip;
+@use '@entur/form/dist/styles.css' as form;
+@use '@entur/chip/dist/styles.css' as chip;
+@use '@entur/datepicker/dist/styles.css' as datepicker;
+@use '@entur/travel/dist/styles.css' as travel;
+@use '@entur/table/dist/styles.css' as table;
+@use '@entur/dropdown/dist/styles.css' as dropdown;
+```
+
+Import only the component styles you actually use — but keep the order.
 
 ## Import components
 
@@ -128,6 +167,16 @@ Ensure CSS is imported globally (not inside a component file) and in the correct
 ### CSS import order matters
 
 The order listed above is not arbitrary — some component styles build on base styles from earlier packages (e.g. `@entur/form` depends on `@entur/icons` and `@entur/typography`). Importing in the wrong order causes visual regressions.
+
+### Components look slightly different from the design
+
+If a component's borders, spacing, or colors do not match a design mockup, do **not** add CSS overrides. The discrepancy is usually one of:
+
+1. CSS imports are in the wrong order — fix the order (see above)
+2. The design uses a different component variant — use the correct variant
+3. The design has diverged from the design system — flag this in `#talk-designsystem`
+
+Adding custom borders, shadows, text-decoration, or color overrides to `@entur/*` components causes maintenance issues and breaks dark mode. Use a wrapper element for layout adjustments; use tokens for custom (non-DS) elements.
 
 ## Questions?
 

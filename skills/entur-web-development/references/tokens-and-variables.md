@@ -18,23 +18,22 @@ Each token set (base, semantic, data, transport, primitive) ships in three forma
 | **SCSS** | `@entur/tokens/dist/base.scss`         | Import inside the `.scss` file that uses it                                                   |
 | **JS**   | `import { base } from '@entur/tokens'` | No automatic dark/light mode switching — must manually select `base.light.*` or `base.dark.*` |
 
-**`@entur/tokens/dist/styles.css`** is still valid for non-color tokens (spacing, typography, borders) as these are not yet available in the individual token files. For color tokens, prefer the specific files above.
+**Global import**: only `base.css` should be imported globally (in your root stylesheet or `App.tsx`). It supports light/dark color mode via `data-color-mode` attribute.
 
-**CSS imports** (import only what you need):
+**On-demand imports**: import other token files in the specific files that need them:
 
 ```css
-@import '@entur/tokens/dist/base.css'; /* recommended — supports light/dark color mode via data-color-mode attribute */
 @import '@entur/tokens/dist/semantic.css'; /* fallback if base doesn't fit — no color mode support */
 @import '@entur/tokens/dist/data.css'; /* data visualisation (charts/graphs) — auto-resolves to dark values inside data-color-mode="dark" */
 @import '@entur/tokens/dist/transport.css'; /* transport mode colors — no automatic color mode, use base for transport colors when possible */
 @import '@entur/tokens/dist/primitive.css'; /* raw hex — last resort for web, ok for graphics */
 ```
 
-**SCSS imports**:
+**SCSS imports** (use `@use` with namespace, not `@import`):
 
 ```scss
-@use '@entur/tokens/dist/base.scss';
-@use '@entur/tokens/dist/data.scss';
+@use '@entur/tokens/dist/base.scss' as eds;
+@use '@entur/tokens/dist/data.scss' as data;
 ```
 
 **JS imports**:
@@ -302,20 +301,20 @@ Use in priority order (weight more of the first colors):
 --standard-coral: #ff5959     /* 2nd */
 --standard-jungle: #0ea2a8    /* 3rd */
 --standard-azure: #2f98fa     /* 4th */
---standard-peach: #ca825b     /* 5th */
---standard-lavender: #8692ca  /* 6th */
---standard-lilac: #8e57e3     /* 7th */
---standard-spring: #57a257    /* 8th — use least */
+--standard-lavender: #8692ca  /* 5th */
+--standard-peach: #ca825b     /* 6th */
+--standard-spring: #57a257    /* 7th */
+--standard-lilac: #8e57e3     /* 8th — use least */
 
 /* Contrast variants (for dark backgrounds) */
 --contrast-blue: #6c6eb7
 --contrast-coral: #ff5959
 --contrast-jungle: #0fc2b3
 --contrast-azure: #64b2fb
---contrast-peach: #ffbf9e
 --contrast-lavender: #aeb7e2
---contrast-lilac: #ea8bea
+--contrast-peach: #ffbf9e
 --contrast-spring: #7bc00b
+--contrast-lilac: #ea8bea
 ```
 
 All data colors meet WCAG 3:1 contrast for graphical elements and are tested for colorblind accessibility.

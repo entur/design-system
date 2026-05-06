@@ -8,6 +8,11 @@ const fetch = require('node-fetch');
 const crypto = require('crypto');
 // eslint-disable-next-line @typescript-eslint/no-var-requires -- disabled when we turned on linting for all files in the project
 const { getSanitizedPath } = require('./src/utils/getSanitizedPath');
+// eslint-disable-next-line @typescript-eslint/no-var-requires -- disabled when we turned on linting for all files in the project
+const {
+  generateLlmsTxt,
+  generateLlmsFullTxt,
+} = require('./src/utils/generate-llms-txt');
 
 exports.onCreateWebpackConfig = ({ actions, getConfig }) => {
   const oldConfig = getConfig();
@@ -86,6 +91,7 @@ async function createDocumentationPagesFromSanity(graphql, actions, reporter) {
         nodes {
           id
           title
+          description
           category
           subcategory
           isCategoryLandingPage
@@ -96,10 +102,27 @@ async function createDocumentationPagesFromSanity(graphql, actions, reporter) {
         nodes {
           id
           title
+          description
           category
           subcategory
           npmPackage
           tag
+        }
+      }
+      allMdx {
+        nodes {
+          id
+          frontmatter {
+            title
+            description
+            route
+            npmPackage
+          }
+          parent {
+            ... on File {
+              sourceInstanceName
+            }
+          }
         }
       }
     }
@@ -109,10 +132,13 @@ async function createDocumentationPagesFromSanity(graphql, actions, reporter) {
 
   const pages = (result.data.allSanityPage || {}).nodes || [];
   const componentDocs = (result.data.allSanityComponentDoc || {}).nodes || [];
+  const mdxNodes = (result.data.allMdx || {}).nodes || [];
+
+  const llmsPages = [];
 
   pages.forEach(page => {
     const id = page.id;
-    const path = getSanitizedPath({
+    const pagePath = getSanitizedPath({
       title: page.title,
       category: page.category,
       subcategory: page.subcategory,
@@ -121,16 +147,25 @@ async function createDocumentationPagesFromSanity(graphql, actions, reporter) {
     });
 
     createPage({
-      path,
+      path: pagePath,
       component: require.resolve('./src/templates/ContentTemplate.tsx'),
       context: { id },
+    });
+
+    llmsPages.push({
+      title: page.title,
+      description: page.description || '',
+      category: page.category || '',
+      subcategory: page.subcategory || '',
+      path: pagePath,
+      npmPackage: null,
     });
   });
   reporter.info(`[create page] Created ${pages.length} documentation pages`);
 
   componentDocs.forEach(doc => {
     const id = doc.id;
-    const path = getSanitizedPath({
+    const docPath = getSanitizedPath({
       title: doc.title,
       category: doc.category,
       subcategory: doc.subcategory,
@@ -138,14 +173,43 @@ async function createDocumentationPagesFromSanity(graphql, actions, reporter) {
     });
 
     createPage({
-      path,
+      path: docPath,
       component: require.resolve('./src/templates/ComponentDocTemplate.tsx'),
       context: { id },
+    });
+
+    llmsPages.push({
+      title: doc.title,
+      description: doc.description || '',
+      category: doc.category || '',
+      subcategory: doc.subcategory || '',
+      path: docPath,
+      npmPackage: doc.npmPackage || null,
     });
   });
   reporter.info(
     `[create page] Created ${componentDocs.length} component documentation pages`,
   );
+
+  mdxNodes
+    .filter(node => node.parent?.sourceInstanceName === 'pages')
+    .forEach(node => {
+      const route = node.frontmatter?.route;
+      if (!route) return;
+      const parts = route.replace(/^\//, '').split('/');
+      llmsPages.push({
+        title: node.frontmatter?.title || route,
+        description: node.frontmatter?.description || '',
+        category: parts[0] || '',
+        subcategory: parts[1] || '',
+        path: route,
+        npmPackage: node.frontmatter?.npmPackage || null,
+      });
+    });
+
+  fs.ensureDirSync(`${__dirname}/dist`);
+  fs.writeJsonSync(`${__dirname}/dist/llms-page-data.json`, llmsPages);
+  reporter.info(`[llms.txt] Collected ${llmsPages.length} pages for llms.txt`);
 }
 
 exports.sourceNodes = async ({ createNodeId, actions: { createNode } }) => {
@@ -183,4 +247,62 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   });
 
   await createDocumentationPagesFromSanity(graphql, actions, reporter);
+};
+
+const SKILLS_FILES = [
+  {
+    label: 'Getting Started',
+    file: 'entur-web-development/references/getting-started.md',
+  },
+  {
+    label: 'Component Reference',
+    file: 'entur-web-development/references/components.md',
+  },
+  {
+    label: 'Design Tokens & CSS Variables',
+    file: 'entur-web-development/references/tokens-and-variables.md',
+  },
+  { label: 'Colors', file: 'entur-brand-design/references/colors.md' },
+  {
+    label: 'Typography',
+    file: 'entur-brand-design/references/typography.md',
+  },
+  {
+    label: 'Visual Identity',
+    file: 'entur-brand-design/references/visual-identity.md',
+  },
+  {
+    label: 'Accessibility Patterns',
+    file: 'entur-accessibility/references/entur-a11y-patterns.md',
+  },
+];
+
+exports.onPostBuild = async ({ reporter }) => {
+  const pageDataPath = path.join(__dirname, 'dist', 'llms-page-data.json');
+  if (!fs.existsSync(pageDataPath)) {
+    reporter.warn(
+      '[llms.txt] No page data found, skipping llms.txt generation',
+    );
+    return;
+  }
+
+  const pages = fs.readJsonSync(pageDataPath);
+  const skillsDir = path.resolve(__dirname, '../../skills');
+
+  const skillsFiles = SKILLS_FILES.map(({ label: fileLabel, file }) => {
+    const filePath = path.join(skillsDir, file);
+    const content = fs.existsSync(filePath)
+      ? fs.readFileSync(filePath, 'utf8')
+      : '';
+    return { label: fileLabel, content };
+  }).filter(({ content }) => content);
+
+  const llmsTxt = generateLlmsTxt(pages);
+  const llmsFullTxt = generateLlmsFullTxt(pages, skillsFiles);
+
+  const publicDir = path.join(__dirname, 'public');
+  fs.writeFileSync(path.join(publicDir, 'llms.txt'), llmsTxt);
+  fs.writeFileSync(path.join(publicDir, 'llms-full.txt'), llmsFullTxt);
+
+  reporter.info('[llms.txt] Generated /llms.txt and /llms-full.txt');
 };

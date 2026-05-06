@@ -22,10 +22,10 @@ Use colors **in order** — the sequence also determines weighting. Use more of 
 | 2     | Coral    | `#ff5959` `--standard-coral`    | `#ff5959` `--contrast-coral`    |
 | 3     | Jungle   | `#0ea2a8` `--standard-jungle`   | `#0fc2b3` `--contrast-jungle`   |
 | 4     | Azure    | `#2f98fa` `--standard-azure`    | `#64b2fb` `--contrast-azure`    |
-| 5     | Peach    | `#ca825b` `--standard-peach`    | `#ffbf9e` `--contrast-peach`    |
-| 6     | Lavender | `#8692ca` `--standard-lavender` | `#aeb7e2` `--contrast-lavender` |
-| 7     | Lilac    | `#8e57e3` `--standard-lilac`    | `#ea8bea` `--contrast-lilac`    |
-| 8     | Spring   | `#57a257` `--standard-spring`   | `#7bc00b` `--contrast-spring`   |
+| 5     | Lavender | `#8692ca` `--standard-lavender` | `#aeb7e2` `--contrast-lavender` |
+| 6     | Peach    | `#ca825b` `--standard-peach`    | `#ffbf9e` `--contrast-peach`    |
+| 7     | Spring   | `#57a257` `--standard-spring`   | `#7bc00b` `--contrast-spring`   |
+| 8     | Lilac    | `#8e57e3` `--standard-lilac`    | `#ea8bea` `--contrast-lilac`    |
 
 CSS usage:
 
