@@ -16,21 +16,40 @@ The Entur identity is built around clarity and trust. Blue, white, and coral are
 
 ---
 
-## Critical Rules
+## Brand-led surfaces vs. product UI
 
-1. **ALWAYS include all three core colors** — Lavender 90 (`#181c56`), white (`#ffffff`), and coral (`#ff5959`) must be present in every design. A design without any of them stops feeling like Entur.
-2. **NEVER use coral as a large background fill** — it is a detail color. Maximum one coral accent per view (accent line, logo mark, CTA highlight).
-3. **ALWAYS weight blue and white as dominant** — blue for structure/headers, white for content. Secondary colors add depth but never overpower.
-4. **NEVER use data visualization colors for UI elements** (buttons, status indicators) — data colors are for charts only.
-5. **ALWAYS apply data colors in the specified order** — Blue first, Coral second, then Jungle, Azure, Lavender, Peach, Spring, Lilac. Never rearrange arbitrarily.
-6. **ALWAYS use Arial** when Nationale is unavailable (Office, email, external collaborators without a license).
-7. **NEVER build presentations from scratch** — always start from `template.pptx`. It embeds the correct 7 Entur slide masters.
+The rules below differ by context. Apply the right set:
+
+**Brand-led surfaces** — marketing pages, presentations, documents, splash screens, campaign material:
+
+- All three core colors (Lavender 90, white, coral) must be present
+- Blue and white are dominant; coral is a detail accent
+- Nationale typeface (or Arial fallback)
+
+**Product UI** — application screens, dashboards, forms, data tables, travel planning:
+
+- Prefer semantic tokens and component defaults from `@entur/*`
+- Do not force brand colors manually — components are already on-brand
+- Only reach for explicit brand colors when building a Contrast section or a branded hero area
+
+---
+
+## Core rules
+
+1. **In brand-led surfaces, include all three core colors** — Lavender 90 (`#181c56`), white (`#ffffff`), and coral (`#ff5959`) must be present. A design without any of them stops feeling like Entur.
+2. **Never use coral as a large background fill** — it is a detail color. Maximum one coral accent per view (accent line, logo mark, CTA highlight).
+3. **Weight blue and white as dominant** — blue for structure/headers, white for content. Secondary colors add depth but never overpower.
+4. **Never use data visualization colors for UI elements** (buttons, status indicators) — data colors are for charts only.
+5. **Apply data colors in the specified order** — Blue first, Coral second, then Jungle, Azure, Lavender, Peach, Spring, Lilac. Never rearrange arbitrarily.
+6. **Use Arial** when Nationale is unavailable (Office, email, external collaborators without a license).
+7. **Never build presentations from scratch** — always start from `template.pptx`. It embeds the correct 7 Entur slide masters.
+8. **In code, always use tokens — not hex values.** Brand docs and design specs list canonical hex values as references; translate them to CSS tokens when writing code.
 
 ---
 
 ## Core principles
 
-- **Three-color foundation**: Lavender 90 (`#181c56`), white, and coral (`#ff5959`) must always be present. Everything else supports them.
+- **Three-color foundation**: Lavender 90 (`#181c56`), white, and coral (`#ff5959`) must always be present in brand-led work. Everything else supports them.
 - **Coral is punctuation**: use it sparingly. One coral accent per view. It's a detail color — it appears in the logo and in focus points, not as a large fill.
 - **Content is the hero**: blue structures the layout, white hosts the content. Design recedes so information leads.
 - **Restraint**: two font weights, limited secondary colors, generous whitespace. Avoid busyness.
@@ -53,7 +72,7 @@ Read these for specifics:
 ## By use case
 
 **Web design / UI development**  
-Read `references/colors.md` for the token system. Use `Contrast` from `@entur/layout` for Lavender 90 sections. Use `@entur/typography` for correct type hierarchy. Semantic color tokens auto-adapt to dark mode.
+Read `references/colors.md` for the token system. Use `Contrast` from `@entur/layout` for Lavender 90 sections. Use `@entur/typography` for correct type hierarchy. Semantic color tokens auto-adapt to dark mode. Do not hardcode hex values in CSS or JS — use tokens.
 
 **Data visualizations / charts**  
 Read `references/data-visualization.md`. Use the 8-color palette in order. Start with Blue and Coral for 2 series. Always test for colorblind accessibility. Import from `@entur/tokens/dist/data.css`.
@@ -68,10 +87,10 @@ Read `references/colors.md` and `references/visual-identity.md` together. The id
 
 ## Quick reference
 
-**Primary colors**: `#181c56` (Lavender 90), `#ffffff` (white), `#ff5959` (coral)  
+**Primary colors**: `#181c56` (Lavender 90), `#ffffff` (white), `#ff5959` (coral) — hex for reference; use tokens in code  
 **Main typeface**: Nationale (licensed) / Arial (fallback)  
 **Digital weights**: Medium (500) body, Demibold (600) headings  
-**Color token import**: `@import '@entur/tokens/dist/base.css'` (prefer base; use semantic as fallback)  
+**Color token import**: `@import '@entur/tokens/dist/base.css'`  
 **Data viz import**: `@import '@entur/tokens/dist/data.css'`  
 **Full docs**: https://linje.entur.no/identitet
 
