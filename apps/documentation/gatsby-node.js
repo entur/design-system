@@ -74,18 +74,23 @@ const packages = [
 ];
 
 exports.onPreInit = () => {
-  propGenerationPromise = new Promise((resolve, reject) => {
-    const proc = spawn('yarn', ['generate-props'], {
-      stdio: 'inherit',
-      shell: true,
-      cwd: __dirname,
+  if (process.argv[2] !== 'build') return;
+
+  if (!process.env.SKIP_PROPS_GENERATION) {
+    propGenerationPromise = new Promise((resolve, reject) => {
+      const proc = spawn('yarn', ['generate-props'], {
+        stdio: 'inherit',
+        shell: true,
+        cwd: __dirname,
+      });
+      proc.on('error', reject);
+      proc.on('close', code =>
+        code === 0
+          ? resolve()
+          : reject(new Error(`generate-props exited with code ${code}`)),
+      );
     });
-    proc.on('close', code =>
-      code === 0
-        ? resolve()
-        : reject(new Error(`generate-props exited with code ${code}`)),
-    );
-  });
+  }
 
   playgroundBuildPromise = new Promise((resolve, reject) => {
     const proc = spawn('yarn', ['build'], {
@@ -93,6 +98,7 @@ exports.onPreInit = () => {
       shell: true,
       cwd: path.join(__dirname, '../code-playground'),
     });
+    proc.on('error', reject);
     proc.on('close', code =>
       code === 0
         ? resolve()
@@ -102,7 +108,7 @@ exports.onPreInit = () => {
 };
 
 exports.onPreBuild = async () => {
-  await propGenerationPromise;
+  if (propGenerationPromise) await propGenerationPromise;
 };
 
 exports.onPreBootstrap = () => {
@@ -343,12 +349,14 @@ exports.onPostBuild = async ({ reporter }) => {
 
   reporter.info('[llms.txt] Generated /llms.txt and /llms-full.txt');
 
-  await playgroundBuildPromise;
-  const sandkasseDir = path.join(publicDir, 'sandkasse');
-  fs.ensureDirSync(sandkasseDir);
-  fs.copySync(
-    path.join(__dirname, '../code-playground/public/playroom'),
-    sandkasseDir,
-  );
-  reporter.info('[playground] Copied code-playground build to /sandkasse');
+  if (playgroundBuildPromise) {
+    await playgroundBuildPromise;
+    const sandkasseDir = path.join(publicDir, 'sandkasse');
+    fs.ensureDirSync(sandkasseDir);
+    fs.copySync(
+      path.join(__dirname, '../code-playground/public/playroom'),
+      sandkasseDir,
+    );
+    reporter.info('[playground] Copied code-playground build to /sandkasse');
+  }
 };

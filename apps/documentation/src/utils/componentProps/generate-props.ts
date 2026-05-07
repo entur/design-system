@@ -1,4 +1,4 @@
-import { withCustomConfig } from 'react-docgen-typescript';
+import { ComponentDoc, withCustomConfig } from 'react-docgen-typescript';
 import fs from 'fs-extra';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -25,18 +25,24 @@ const componentsRootDir = path.join(__dirname, '../../../../../packages');
 
 const outputDir = path.join(__dirname, 'eds-component-props');
 
-// Ensure the output directory exists
-if (!fs.existsSync(outputDir)) {
-  fs.mkdirSync(outputDir, { recursive: true });
-}
+fs.mkdirSync(outputDir, { recursive: true });
 
 const hashesPath = path.join(outputDir, '_hashes.json');
 
-function loadHashes(): Record<string, string> {
-  if (fs.existsSync(hashesPath)) {
-    return JSON.parse(fs.readFileSync(hashesPath, { encoding: 'utf8' }));
+interface HashEntry {
+  hash: string;
+  outputs: string[];
+}
+
+function loadHashes(): Record<string, HashEntry> {
+  try {
+    const content = fs.readFileSync(hashesPath, { encoding: 'utf8' });
+    const parsed = JSON.parse(content);
+    if (typeof parsed !== 'object' || parsed === null) return {};
+    return parsed;
+  } catch {
+    return {};
   }
-  return {};
 }
 
 function hashFile(filePath: string): string {
@@ -78,13 +84,23 @@ function generatePropFiles(): void {
   console.log('🕵🏻‍♂️ Checking if prop files are out of date …');
 
   componentFiles.forEach(componentFile => {
-    const relativeKey = path.relative(componentsRootDir, componentFile);
+    const componentFileHashKey = path.relative(
+      componentsRootDir,
+      componentFile,
+    );
     const currentHash = hashFile(componentFile);
-    if (hashes[relativeKey] === currentHash) return;
+    const storedHash = hashes[componentFileHashKey];
+    if (
+      // Check if file is unchanged
+      storedHash?.hash === currentHash &&
+      // Check if all output props files exist
+      storedHash.outputs.every(o => fs.existsSync(path.join(outputDir, o)))
+    )
+      return;
 
-    const changed = generatePropFileForComponent(componentFile);
-    if (changed) {
-      hashes[relativeKey] = currentHash;
+    const { parsed, outputs } = generatePropFileForComponent(componentFile);
+    if (parsed) {
+      hashes[componentFileHashKey] = { hash: currentHash, outputs };
       hashesChanged = true;
     }
   });
@@ -96,39 +112,46 @@ function generatePropFiles(): void {
   }
 }
 
-// Returns true if any prop file was written
-function generatePropFileForComponent(componentFile: string): boolean {
-  let anyChanged = false;
+function generatePropFileForComponent(componentFile: string): {
+  parsed: boolean;
+  outputs: string[];
+} {
+  const outputs: string[] = [];
   try {
-    const propFiles = parser.parse(componentFile);
+    const parsedProps = parser.parse(componentFile);
 
-    propFiles.forEach((component: any) => {
-      delete component.filePath;
+    parsedProps.forEach((componentProps: Partial<ComponentDoc>) => {
+      delete componentProps.filePath;
 
-      const componentDisplayName = component.displayName;
+      const componentDisplayName = componentProps.displayName;
       const outputFilePath = path.join(
         outputDir,
         `${componentDisplayName}.json`,
       );
-      const normalizedJson = JSON.stringify(component, null, 2) + '\n';
+      const normalizedJson = JSON.stringify(componentProps, null, 2) + '\n';
 
-      const existingContent = fs.existsSync(outputFilePath)
-        ? fs.readFileSync(outputFilePath, { encoding: 'utf8' })
-        : null;
+      outputs.push(`${componentDisplayName}.json`);
+
+      let existingContent: string | null = null;
+      try {
+        existingContent = fs.readFileSync(outputFilePath, { encoding: 'utf8' });
+      } catch {
+        // file doesn't exist yet
+      }
 
       if (existingContent === normalizedJson) return;
 
       fs.writeFileSync(outputFilePath, normalizedJson, { encoding: 'utf8' });
-      anyChanged = true;
 
       console.log(
         `🚧 ${componentDisplayName}: Found changes and updated prop file.\n⚠️ This change should be committed to the repo!`,
       );
     });
+    return { parsed: true, outputs };
   } catch (error) {
     console.error(`Failed to extract props for ${componentFile}:`, error);
+    return { parsed: false, outputs: [] };
   }
-  return anyChanged;
 }
 
 generatePropFiles();
