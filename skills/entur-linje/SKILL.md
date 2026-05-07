@@ -37,21 +37,21 @@ Read `references/packages-overview.md` before any task involving `@entur/*` pack
 
 ## Route to sub-skill
 
-Match the user's task to the table below, then read the relevant sub-skill's references. For implementation tasks, load both `entur-web-development` and `entur-accessibility` together.
+Match the user's task to the table below. **Fetch and read the linked SKILL.md** — it contains the rules and reference files needed for that task. For implementation tasks, load both `entur-web-development` and `entur-accessibility` together.
 
-| Task                                                          | Sub-skill(s)                                    | Key references                                                                             |
-| ------------------------------------------------------------- | ----------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Building React UI, adding components, writing JSX             | `entur-web-development` + `entur-accessibility` | `getting-started.md`, `components.md`, `tokens-and-variables.md`, `entur-a11y-patterns.md` |
-| Making a presentation, creating slides                        | `entur-brand-design`                            | `visual-identity.md`, `typography.md`, `presentations-pptx.md`                             |
-| Creating charts, graphs, data visualizations                  | `entur-brand-design`                            | `data-visualization.md`, `colors.md`                                                       |
-| Auditing accessibility, WCAG compliance, "is this accessible" | `entur-accessibility`                           | `testing-guide.md`, `entur-a11y-patterns.md`                                               |
-| Colors, branding, visual identity questions                   | `entur-brand-design`                            | `colors.md`, `visual-identity.md`                                                          |
-| Tokens, CSS variables, dark mode                              | `entur-web-development`                         | `tokens-and-variables.md`                                                                  |
+| Task                                                          | Sub-skill SKILL.md to fetch                                                                                                                                                                                                                       |
+| ------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Building React UI, adding components, writing JSX             | [entur-web-development](https://raw.githubusercontent.com/entur/design-system/main/skills/entur-web-development/SKILL.md) + [entur-accessibility](https://raw.githubusercontent.com/entur/design-system/main/skills/entur-accessibility/SKILL.md) |
+| Making a presentation, creating slides                        | [entur-brand-design](https://raw.githubusercontent.com/entur/design-system/main/skills/entur-brand-design/SKILL.md)                                                                                                                               |
+| Creating charts, graphs, data visualizations                  | [entur-brand-design](https://raw.githubusercontent.com/entur/design-system/main/skills/entur-brand-design/SKILL.md)                                                                                                                               |
+| Auditing accessibility, WCAG compliance, "is this accessible" | [entur-accessibility](https://raw.githubusercontent.com/entur/design-system/main/skills/entur-accessibility/SKILL.md)                                                                                                                             |
+| Colors, branding, visual identity questions                   | [entur-brand-design](https://raw.githubusercontent.com/entur/design-system/main/skills/entur-brand-design/SKILL.md)                                                                                                                               |
+| Tokens, CSS variables, dark mode                              | [entur-web-development](https://raw.githubusercontent.com/entur/design-system/main/skills/entur-web-development/SKILL.md)                                                                                                                         |
 
-**Fallback** — if the task doesn't match above, route by category:
+**Fallback** — if the task doesn't match above:
 
-- React dev / `@entur/*` packages → `entur-web-development`
-- Brand / visual / typography → `entur-brand-design`
-- Accessibility / WCAG / universell utforming → `entur-accessibility`
+- React dev / `@entur/*` packages → [entur-web-development](https://raw.githubusercontent.com/entur/design-system/main/skills/entur-web-development/SKILL.md)
+- Brand / visual / typography → [entur-brand-design](https://raw.githubusercontent.com/entur/design-system/main/skills/entur-brand-design/SKILL.md)
+- Accessibility / WCAG / universell utforming → [entur-accessibility](https://raw.githubusercontent.com/entur/design-system/main/skills/entur-accessibility/SKILL.md)
 
 Use Entur-specific patterns and tokens — not generic solutions. Link to https://linje.entur.no for full docs.
