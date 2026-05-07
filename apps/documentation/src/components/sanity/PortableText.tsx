@@ -70,8 +70,8 @@ const createComponents = (context?: {
       const { href } = value;
       if (href === undefined) return null;
 
-      // Relative paths are internal links
-      if (href.startsWith('/')) {
+      // Relative paths and anchor-only links are internal links
+      if (href.startsWith('/') || href.startsWith('#')) {
         return (
           <Link as={GatsbyLink as any} to={href}>
             {children}
