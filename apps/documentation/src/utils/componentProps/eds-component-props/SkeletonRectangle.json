@@ -1,59 +1,57 @@
-[
-  {
-    "tags": {},
-    "description": "",
-    "displayName": "SkeletonRectangle",
-    "methods": [],
-    "props": {
-      "className": {
-        "defaultValue": null,
-        "description": "Ekstra klassenavn",
-        "name": "className",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/loader/src/SkeletonRectangle.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "string | undefined"
+{
+  "tags": {},
+  "description": "",
+  "displayName": "SkeletonRectangle",
+  "methods": [],
+  "props": {
+    "className": {
+      "defaultValue": null,
+      "description": "Ekstra klassenavn",
+      "name": "className",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/loader/src/SkeletonRectangle.tsx",
+          "name": "TypeLiteral"
         }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "width": {
+      "defaultValue": {
+        "value": "'100%'"
       },
-      "width": {
-        "defaultValue": {
-          "value": "'100%'"
-        },
-        "description": "Bredden til komponenten. Er 100% som default.",
-        "name": "width",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/loader/src/SkeletonRectangle.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "string | number | undefined"
+      "description": "Bredden til komponenten. Er 100% som default.",
+      "name": "width",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/loader/src/SkeletonRectangle.tsx",
+          "name": "TypeLiteral"
         }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | number | undefined"
+      }
+    },
+    "height": {
+      "defaultValue": {
+        "value": "'1rem'"
       },
-      "height": {
-        "defaultValue": {
-          "value": "'1rem'"
-        },
-        "description": "Høyden til komponenten. 1rem som default.",
-        "name": "height",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/loader/src/SkeletonRectangle.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "string | number | undefined"
+      "description": "Høyden til komponenten. 1rem som default.",
+      "name": "height",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/loader/src/SkeletonRectangle.tsx",
+          "name": "TypeLiteral"
         }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | number | undefined"
       }
     }
   }
-]
+}

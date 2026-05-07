@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "gatsby develop",
     "start": "gatsby develop",
-    "build": "yarn generate-props && gatsby build && yarn copy-playground",
+    "build": "gatsby build",
     "build:skip-props-generator": "gatsby build && yarn copy-playground",
     "copy-playground": "cd ../code-playground && yarn build && mkdir -p ../documentation/public/sandkasse && cp -r public/playroom/* ../documentation/public/sandkasse/",
     "serve": "gatsby serve",

@@ -2,8 +2,7 @@ import { withCustomConfig } from 'react-docgen-typescript';
 import fs from 'fs-extra';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { execFile } from 'child_process';
-import util from 'util';
+import crypto from 'crypto';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -29,6 +28,22 @@ const outputDir = path.join(__dirname, 'eds-component-props');
 // Ensure the output directory exists
 if (!fs.existsSync(outputDir)) {
   fs.mkdirSync(outputDir, { recursive: true });
+}
+
+const hashesPath = path.join(outputDir, '_hashes.json');
+
+function loadHashes(): Record<string, string> {
+  if (fs.existsSync(hashesPath)) {
+    return JSON.parse(fs.readFileSync(hashesPath, { encoding: 'utf8' }));
+  }
+  return {};
+}
+
+function hashFile(filePath: string): string {
+  return crypto
+    .createHash('md5')
+    .update(fs.readFileSync(filePath))
+    .digest('hex');
 }
 
 // Function to recursively traverse directories and find .tsx files, skip index and test-files
@@ -57,68 +72,33 @@ function getAllComponentFiles(
 // Parse and generate JSON for each .tsx file if needed
 function generatePropFiles(): void {
   const componentFiles = getAllComponentFiles(componentsRootDir);
+  const hashes = loadHashes();
+  let hashesChanged = false;
 
   console.log('🕵🏻‍♂️ Checking if prop files are out of date …');
 
   componentFiles.forEach(componentFile => {
-    const componentName = path.basename(componentFile, '.tsx');
-    const outputFilePath = path.join(outputDir, `${componentName}.json`);
+    const relativeKey = path.relative(componentsRootDir, componentFile);
+    const currentHash = hashFile(componentFile);
+    if (hashes[relativeKey] === currentHash) return;
 
-    updatePropsIfComponentIsModified(componentFile, outputFilePath);
+    const changed = generatePropFileForComponent(componentFile);
+    if (changed) {
+      hashes[relativeKey] = currentHash;
+      hashesChanged = true;
+    }
   });
-}
 
-const execFileAsync = util.promisify(execFile);
-
-async function getLastCommitDateForFile(file: string): Promise<string> {
-  try {
-    // Get the commit hash for the file
-    const { stdout: commitHash } = await execFileAsync('git', [
-      'log',
-      '--follow',
-      '-1',
-      '--pretty=format:%h',
-      '--no-patch',
-      '--',
-      file,
-    ]);
-
-    // Get the commit date using the hash
-    const { stdout: commitDate } = await execFileAsync('git', [
-      'show',
-      '--no-patch',
-      '--format=%ci',
-      commitHash.trim(),
-    ]);
-
-    return commitDate.trim();
-  } catch {
-    return '';
+  if (hashesChanged) {
+    fs.writeFileSync(hashesPath, JSON.stringify(hashes, null, 2) + '\n', {
+      encoding: 'utf8',
+    });
   }
 }
 
-// Check if the JSON props file needs to be updated
-async function updatePropsIfComponentIsModified(
-  componentFile: string,
-  jsonFile: string,
-) {
-  try {
-    const componentLastCommitDate = await getLastCommitDateForFile(
-      componentFile,
-    );
-    const propsLastCommitDate = await getLastCommitDateForFile(jsonFile);
-
-    if (componentLastCommitDate > propsLastCommitDate)
-      generatePropFileForComponent(componentFile);
-  } catch (error) {
-    console.error(
-      `Error checking if prop for ${jsonFile} needs update:`,
-      error,
-    );
-  }
-}
-
-function generatePropFileForComponent(componentFile: string): void {
+// Returns true if any prop file was written
+function generatePropFileForComponent(componentFile: string): boolean {
+  let anyChanged = false;
   try {
     const propFiles = parser.parse(componentFile);
 
@@ -132,7 +112,14 @@ function generatePropFileForComponent(componentFile: string): void {
       );
       const normalizedJson = JSON.stringify(component, null, 2) + '\n';
 
+      const existingContent = fs.existsSync(outputFilePath)
+        ? fs.readFileSync(outputFilePath, { encoding: 'utf8' })
+        : null;
+
+      if (existingContent === normalizedJson) return;
+
       fs.writeFileSync(outputFilePath, normalizedJson, { encoding: 'utf8' });
+      anyChanged = true;
 
       console.log(
         `🚧 ${componentDisplayName}: Found changes and updated prop file.\n⚠️ This change should be committed to the repo!`,
@@ -141,6 +128,7 @@ function generatePropFileForComponent(componentFile: string): void {
   } catch (error) {
     console.error(`Failed to extract props for ${componentFile}:`, error);
   }
+  return anyChanged;
 }
 
 generatePropFiles();

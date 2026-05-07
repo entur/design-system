@@ -7,12 +7,17 @@ const fetch = require('node-fetch');
 // eslint-disable-next-line @typescript-eslint/no-var-requires -- disabled when we turned on linting for all files in the project
 const crypto = require('crypto');
 // eslint-disable-next-line @typescript-eslint/no-var-requires -- disabled when we turned on linting for all files in the project
+const { spawn } = require('child_process');
+// eslint-disable-next-line @typescript-eslint/no-var-requires -- disabled when we turned on linting for all files in the project
 const { getSanitizedPath } = require('./src/utils/getSanitizedPath');
 // eslint-disable-next-line @typescript-eslint/no-var-requires -- disabled when we turned on linting for all files in the project
 const {
   generateLlmsTxt,
   generateLlmsFullTxt,
 } = require('./src/utils/generate-llms-txt');
+
+let propGenerationPromise = null;
+let playgroundBuildPromise = null;
 
 exports.onCreateWebpackConfig = ({ actions, getConfig }) => {
   const oldConfig = getConfig();
@@ -67,6 +72,38 @@ const packages = [
   'typography',
   'utils',
 ];
+
+exports.onPreInit = () => {
+  propGenerationPromise = new Promise((resolve, reject) => {
+    const proc = spawn('yarn', ['generate-props'], {
+      stdio: 'inherit',
+      shell: true,
+      cwd: __dirname,
+    });
+    proc.on('close', code =>
+      code === 0
+        ? resolve()
+        : reject(new Error(`generate-props exited with code ${code}`)),
+    );
+  });
+
+  playgroundBuildPromise = new Promise((resolve, reject) => {
+    const proc = spawn('yarn', ['build'], {
+      stdio: 'inherit',
+      shell: true,
+      cwd: path.join(__dirname, '../code-playground'),
+    });
+    proc.on('close', code =>
+      code === 0
+        ? resolve()
+        : reject(new Error(`code-playground build exited with code ${code}`)),
+    );
+  });
+};
+
+exports.onPreBuild = async () => {
+  await propGenerationPromise;
+};
 
 exports.onPreBootstrap = () => {
   fs.ensureDirSync(`${__dirname}/dist/changelogs/`);
@@ -305,4 +342,13 @@ exports.onPostBuild = async ({ reporter }) => {
   fs.writeFileSync(path.join(publicDir, 'llms-full.txt'), llmsFullTxt);
 
   reporter.info('[llms.txt] Generated /llms.txt and /llms-full.txt');
+
+  await playgroundBuildPromise;
+  const sandkasseDir = path.join(publicDir, 'sandkasse');
+  fs.ensureDirSync(sandkasseDir);
+  fs.copySync(
+    path.join(__dirname, '../code-playground/public/playroom'),
+    sandkasseDir,
+  );
+  reporter.info('[playground] Copied code-playground build to /sandkasse');
 };

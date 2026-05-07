@@ -1,89 +1,87 @@
-[
-  {
-    "tags": {},
-    "description": "",
-    "displayName": "Tabs",
-    "methods": [],
-    "props": {
-      "children": {
-        "defaultValue": null,
-        "description": "Overskriften til taben",
-        "name": "children",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/tab/src/Tabs.tsx",
-            "name": "TypeLiteral"
-          },
-          {
-            "fileName": "design-system/node_modules/@types/react/index.d.ts",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "ReactNode"
+{
+  "tags": {},
+  "description": "",
+  "displayName": "Tabs",
+  "methods": [],
+  "props": {
+    "children": {
+      "defaultValue": null,
+      "description": "Overskriften til taben",
+      "name": "children",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/tab/src/Tabs.tsx",
+          "name": "TypeLiteral"
+        },
+        {
+          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "name": "TypeLiteral"
         }
-      },
-      "onChange": {
-        "defaultValue": null,
-        "description": "Kalles når taben endres",
-        "name": "onChange",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/tab/src/Tabs.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "((index: number) => void) | undefined"
+      ],
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "onChange": {
+      "defaultValue": null,
+      "description": "Kalles når taben endres",
+      "name": "onChange",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/tab/src/Tabs.tsx",
+          "name": "TypeLiteral"
         }
-      },
-      "defaultIndex": {
-        "defaultValue": null,
-        "description": "Hvilken tab som skal være åpen by default",
-        "name": "defaultIndex",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/tab/src/Tabs.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "number | undefined"
+      ],
+      "required": false,
+      "type": {
+        "name": "((index: number) => void) | undefined"
+      }
+    },
+    "defaultIndex": {
+      "defaultValue": null,
+      "description": "Hvilken tab som skal være åpen by default",
+      "name": "defaultIndex",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/tab/src/Tabs.tsx",
+          "name": "TypeLiteral"
         }
-      },
-      "index": {
-        "defaultValue": null,
-        "description": "Den åpne indexen",
-        "name": "index",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/tab/src/Tabs.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "number | undefined"
+      ],
+      "required": false,
+      "type": {
+        "name": "number | undefined"
+      }
+    },
+    "index": {
+      "defaultValue": null,
+      "description": "Den åpne indexen",
+      "name": "index",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/tab/src/Tabs.tsx",
+          "name": "TypeLiteral"
         }
-      },
-      "as": {
-        "defaultValue": null,
-        "description": "HTML-elementet eller React-komponenten som lager komponenten",
-        "name": "as",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/tab/src/Tabs.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "any"
+      ],
+      "required": false,
+      "type": {
+        "name": "number | undefined"
+      }
+    },
+    "as": {
+      "defaultValue": null,
+      "description": "HTML-elementet eller React-komponenten som lager komponenten",
+      "name": "as",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/tab/src/Tabs.tsx",
+          "name": "TypeLiteral"
         }
+      ],
+      "required": false,
+      "type": {
+        "name": "any"
       }
     }
   }
-]
+}
