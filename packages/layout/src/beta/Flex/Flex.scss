@@ -1,4 +1,24 @@
 .eds-layout-flex {
+  --flex-display: initial;
+  --flex-direction: initial;
+  --flex-wrap: initial;
+  --flex-align-items: initial;
+  --flex-justify-content: initial;
+  --flex-align-content: initial;
+  --flex-gap: initial;
+  --flex-row-gap: initial;
+  --flex-column-gap: initial;
+  --flex: initial;
+  --flex-grow: initial;
+  --flex-shrink: initial;
+  --flex-basis: initial;
+  --flex-width: initial;
+  --flex-height: initial;
+  --flex-min-width: initial;
+  --flex-min-height: initial;
+  --flex-max-width: initial;
+  --flex-max-height: initial;
+
   :where(&) {
     display: var(--flex-display, flex);
     flex-direction: var(--flex-direction, row);
