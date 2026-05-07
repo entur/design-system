@@ -33,6 +33,7 @@ export const CopyableText = ({
   successMessage,
   textToCopy,
   className,
+  onClick,
   'aria-label': ariaLabel = `Kopier ${
     textToCopy ?? children
   } til utklippstavlen`,
@@ -43,12 +44,13 @@ export const CopyableText = ({
   const _textToCopy = textToCopy ?? children;
   const _successMessage =
     successMessage ?? `${_textToCopy} ble kopiert til utklippstavlen.`;
-  const handleClick = () => {
+  const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
     buttonRef.current &&
       copy(_textToCopy, {
         target: buttonRef.current,
       }) &&
       addToast({ title: successHeading, content: _successMessage });
+    onClick?.(e);
   };
   return (
     <div
