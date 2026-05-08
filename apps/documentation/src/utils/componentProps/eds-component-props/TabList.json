@@ -1,59 +1,57 @@
-[
-  {
-    "tags": {},
-    "description": "",
-    "displayName": "TabList",
-    "methods": [],
-    "props": {
-      "children": {
-        "defaultValue": null,
-        "description": "Tab-komponenter",
-        "name": "children",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/tab/src/TabList.tsx",
-            "name": "TypeLiteral"
-          },
-          {
-            "fileName": "design-system/node_modules/@types/react/index.d.ts",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "ReactNode"
+{
+  "tags": {},
+  "description": "",
+  "displayName": "TabList",
+  "methods": [],
+  "props": {
+    "children": {
+      "defaultValue": null,
+      "description": "Tab-komponenter",
+      "name": "children",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/tab/src/TabList.tsx",
+          "name": "TypeLiteral"
+        },
+        {
+          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "name": "TypeLiteral"
         }
-      },
-      "as": {
-        "defaultValue": null,
-        "description": "HTML-elementet eller React-komponenten som lager komponenten",
-        "name": "as",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/tab/src/TabList.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "any"
+      ],
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "as": {
+      "defaultValue": null,
+      "description": "HTML-elementet eller React-komponenten som lager komponenten",
+      "name": "as",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/tab/src/TabList.tsx",
+          "name": "TypeLiteral"
         }
-      },
-      "width": {
-        "defaultValue": null,
-        "description": "",
-        "name": "width",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/tab/src/TabList.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "\"fluid\" | undefined"
+      ],
+      "required": false,
+      "type": {
+        "name": "any"
+      }
+    },
+    "width": {
+      "defaultValue": null,
+      "description": "",
+      "name": "width",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/tab/src/TabList.tsx",
+          "name": "TypeLiteral"
         }
+      ],
+      "required": false,
+      "type": {
+        "name": "\"fluid\" | undefined"
       }
     }
   }
-]
+}

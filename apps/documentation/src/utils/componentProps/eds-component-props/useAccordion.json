@@ -1,37 +1,37 @@
 {
   "tags": {},
   "description": "",
-  "displayName": "ConditionalWrapper",
+  "displayName": "useAccordion",
   "methods": [],
   "props": {
-    "condition": {
+    "id": {
       "defaultValue": null,
       "description": "",
-      "name": "condition",
+      "name": "id",
       "declarations": [
         {
-          "fileName": "design-system/packages/utils/src/ConditionalWrapper.tsx",
+          "fileName": "design-system/packages/expand/src/Accordion.tsx",
           "name": "TypeLiteral"
         }
       ],
       "required": true,
       "type": {
-        "name": "boolean"
+        "name": "Id"
       }
     },
-    "wrapper": {
+    "defaultOpen": {
       "defaultValue": null,
       "description": "",
-      "name": "wrapper",
+      "name": "defaultOpen",
       "declarations": [
         {
-          "fileName": "design-system/packages/utils/src/ConditionalWrapper.tsx",
+          "fileName": "design-system/packages/expand/src/Accordion.tsx",
           "name": "TypeLiteral"
         }
       ],
-      "required": true,
+      "required": false,
       "type": {
-        "name": "any"
+        "name": "boolean | undefined"
       }
     }
   }

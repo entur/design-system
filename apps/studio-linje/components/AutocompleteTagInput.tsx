@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useClient } from 'sanity';
 import { StringInputProps, set, unset } from 'sanity';
 
+const capitalize = (s: string) =>
+  s ? s.charAt(0).toUpperCase() + s.slice(1) : s;
+
 export const AutocompleteTagInput = (props: StringInputProps) => {
   const client = useClient({ apiVersion: '2025-02-10' });
   const [options, setOptions] = useState<string[]>([]);
@@ -16,7 +19,7 @@ export const AutocompleteTagInput = (props: StringInputProps) => {
           `*[_type in ["page", "componentDoc"] && defined(tag)] { tag }`,
         );
         const allTags = result
-          .map(doc => doc.tag)
+          .map(doc => doc.tag?.toLowerCase())
           .filter((t): t is string => Boolean(t));
         setOptions([...new Set(allTags)].sort());
       } catch (error) {
@@ -32,22 +35,23 @@ export const AutocompleteTagInput = (props: StringInputProps) => {
 
   useEffect(() => {
     if (props.value && !searchTerm) {
-      setSearchTerm(props.value);
+      setSearchTerm(props.value.toLowerCase());
     }
   }, [props.value, searchTerm]);
 
-  const handleSelect = (tag: string) => {
-    props.onChange(set(tag));
-    setSearchTerm(tag);
+  const handleSelect = (selectedTag: string) => {
+    const lowercaseTag = selectedTag.toLowerCase();
+    props.onChange(set(lowercaseTag));
+    setSearchTerm(lowercaseTag);
     setShowDropdown(false);
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setSearchTerm(value);
+    const lowercaseValue = e.target.value.toLowerCase();
+    setSearchTerm(lowercaseValue);
     setShowDropdown(true);
-    if (value) {
-      props.onChange(set(value));
+    if (lowercaseValue) {
+      props.onChange(set(lowercaseValue));
     } else {
       props.onChange(unset());
     }
@@ -56,7 +60,7 @@ export const AutocompleteTagInput = (props: StringInputProps) => {
   const handleInputFocus = () => {
     setShowDropdown(true);
     if (props.value && !searchTerm) {
-      setSearchTerm(props.value);
+      setSearchTerm(props.value.toLowerCase());
     }
   };
 
@@ -64,9 +68,7 @@ export const AutocompleteTagInput = (props: StringInputProps) => {
     setTimeout(() => setShowDropdown(false), 200);
   };
 
-  const filteredOptions = options.filter(tag =>
-    tag.toLowerCase().includes(searchTerm.toLowerCase()),
-  );
+  const filteredOptions = options.filter(tag => tag.includes(searchTerm));
 
   if (loading) {
     return <div>Laster tags …</div>;
@@ -76,7 +78,7 @@ export const AutocompleteTagInput = (props: StringInputProps) => {
     <div style={{ position: 'relative' }}>
       <input
         type="text"
-        value={searchTerm}
+        value={capitalize(searchTerm)}
         onChange={handleInputChange}
         onFocus={handleInputFocus}
         onBlur={handleInputBlur}
@@ -125,7 +127,7 @@ export const AutocompleteTagInput = (props: StringInputProps) => {
                   e.currentTarget.style.backgroundColor = 'white';
                 }}
               >
-                {tag}
+                {capitalize(tag)}
               </div>
             ))
           ) : searchTerm ? (
@@ -137,8 +139,8 @@ export const AutocompleteTagInput = (props: StringInputProps) => {
                 fontStyle: 'italic',
               }}
             >
-              Ingen eksisterende tags funnet. &ldquo;{searchTerm}&rdquo; blir
-              lagt til som en ny tag.
+              Ingen eksisterende tags funnet. &ldquo;{capitalize(searchTerm)}
+              &rdquo; blir lagt til som en ny tag.
             </div>
           ) : (
             <div

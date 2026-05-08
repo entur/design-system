@@ -18,7 +18,7 @@
       ],
       "required": false,
       "type": {
-        "name": "any"
+        "name": "VariantType | \"error\" | \"info\" | undefined"
       }
     }
   }

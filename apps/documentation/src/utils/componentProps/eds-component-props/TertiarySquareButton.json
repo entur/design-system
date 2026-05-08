@@ -36,23 +36,6 @@
         "name": "string | undefined"
       }
     },
-    "size": {
-      "defaultValue": {
-        "value": "'medium'"
-      },
-      "description": "Størrelsen på knappen",
-      "name": "size",
-      "declarations": [
-        {
-          "fileName": "design-system/packages/button/src/TertiarySquareButton.tsx",
-          "name": "TypeLiteral"
-        }
-      ],
-      "required": false,
-      "type": {
-        "name": "\"small\" | \"medium\" | \"large\" | undefined"
-      }
-    },
     "disabled": {
       "defaultValue": {
         "value": "false"
