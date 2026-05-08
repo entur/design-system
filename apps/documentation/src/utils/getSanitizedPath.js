@@ -31,7 +31,7 @@ function getSanitizedPath({
   }
 
   const sanitizedTitle = `${sanitizeText(title)}${
-    tag === 'beta' ? '/beta' : ''
+    tag?.toLowerCase() === 'beta' ? '/beta' : ''
   }`;
   if (!subcategory) return `/${sanitizedCategory}/${sanitizedTitle}`;
 
