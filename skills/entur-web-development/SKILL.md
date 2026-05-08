@@ -31,7 +31,7 @@ The component library solves three things at once: components look right (Entur 
 
 1. **Add a `className` to the component** — this is your selector anchor. Never target `.eds-*` internal class names directly.
 2. **Use the following token priority** for color values:
-   - **Component tokens first** — `--components-{package}-{variant}-{context}-{property}` CSS custom properties (e.g. `--components-button-primary-standard-fill`). These live in each package's compiled `styles.css` and are scoped to the component's own context.
+   - **Component tokens first** — `--components-{package}-{variant}-{context}-{property}` CSS custom properties (e.g. `--components-button-primary-standard-default`). These live in each package's compiled `styles.css` and are scoped to the component's own context.
    - **Base tokens second** — `--basecolors-*` from `@entur/tokens/dist/base.css`
    - **Semantic tokens third** — `--fill-*`, `--text-*`, `--stroke-*` from `@entur/tokens/dist/semantic.css`
 3. **Never use `!important`** — if specificity is a problem, increase it via the `className` selector chain.
@@ -45,7 +45,7 @@ The component library solves three things at once: components look right (Entur 
 ```css
 /* intentional deviation — booking hero requires coral background */
 .booking-hero-cta {
-  --components-button-primary-standard-fill: var(--shape-highlight);
+  --components-button-primary-standard-default: var(--shape-highlight);
 }
 ```
 
