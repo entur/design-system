@@ -98,7 +98,9 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
           {item.tag && (
             <Badge
               type="status"
-              variant={item.tag === 'beta' ? 'warning' : 'positive'}
+              variant={
+                item.tag.toLowerCase() === 'beta' ? 'warning' : 'success'
+              }
             >
               {item.tag}
             </Badge>

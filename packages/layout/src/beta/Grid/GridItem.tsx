@@ -31,6 +31,12 @@ export type GridItemOwnProps = {
 export type GridItemProps<T extends React.ElementType = typeof defaultElement> =
   PolymorphicComponentProps<T, GridItemOwnProps>;
 
+export type GridItemComponent = (<
+  E extends React.ElementType = typeof defaultElement,
+>(
+  props: GridItemProps<E> & { ref?: React.Ref<Element> },
+) => React.ReactElement | null) & { displayName?: string };
+
 const defaultElement = 'div';
 
 const formatGridSpan = (
@@ -47,7 +53,7 @@ const formatGridSpan = (
   return value;
 };
 
-export const GridItem = React.forwardRef(
+export const GridItem: GridItemComponent = React.forwardRef(
   <E extends React.ElementType = typeof defaultElement>(
     {
       colSpan,

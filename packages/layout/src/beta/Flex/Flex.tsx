@@ -71,9 +71,15 @@ export type FlexOwnProps = {
 export type FlexProps<T extends React.ElementType = typeof defaultElement> =
   PolymorphicComponentProps<T, FlexOwnProps>;
 
+export type FlexComponent = (<
+  E extends React.ElementType = typeof defaultElement,
+>(
+  props: FlexProps<E> & { ref?: React.Ref<Element> },
+) => React.ReactElement | null) & { displayName?: string };
+
 const defaultElement = 'div';
 
-export const Flex = React.forwardRef(
+export const Flex: FlexComponent = React.forwardRef(
   <E extends React.ElementType = typeof defaultElement>(
     {
       direction,

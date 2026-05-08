@@ -8,18 +8,21 @@ import './Portal.scss';
 type PortalOwnProps = {
   className?: string;
   style?: React.CSSProperties;
+  /** Content of the portal layout */
   children?: React.ReactNode;
 };
 
 type PortalStatusBarOwnProps = {
   className?: string;
   style?: React.CSSProperties;
+  /** Content of the status bar */
   children?: React.ReactNode;
 };
 
 type PortalMainOwnProps = {
   className?: string;
   style?: React.CSSProperties;
+  /** Main content area */
   children?: React.ReactNode;
 };
 
@@ -37,12 +40,29 @@ export type PortalMainProps<
   T extends React.ElementType = typeof defaultPortalMainElement,
 > = PolymorphicComponentProps<T, PortalMainOwnProps>;
 
-const PortalRoot = React.forwardRef(
+type PortalRootComponent = (<E extends React.ElementType = typeof Grid>(
+  props: PortalProps<E> & { ref?: React.Ref<Element> },
+) => React.ReactElement | null) & { displayName?: string };
+
+type PortalStatusBarComponent = (<
+  E extends React.ElementType = typeof defaultStatusBarElement,
+>(
+  props: PortalStatusBarProps<E> & { ref?: React.Ref<Element> },
+) => React.ReactElement | null) & { displayName?: string };
+
+type PortalMainComponent = (<
+  E extends React.ElementType = typeof defaultPortalMainElement,
+>(
+  props: PortalMainProps<E> & { ref?: React.Ref<Element> },
+) => React.ReactElement | null) & { displayName?: string };
+
+const PortalRoot: PortalRootComponent = React.forwardRef(
   <E extends React.ElementType = typeof Grid>(
     { children, className, style, as, ...rest }: PortalProps<E>,
     ref?: React.Ref<Element>,
   ) => {
     return (
+      // @ts-expect-error generic prop forwarding through polymorphic Grid
       <Grid
         ref={ref}
         as={as}
@@ -58,12 +78,13 @@ const PortalRoot = React.forwardRef(
   },
 );
 
-const PortalStatusBar = React.forwardRef(
+const PortalStatusBar: PortalStatusBarComponent = React.forwardRef(
   <E extends React.ElementType = typeof defaultStatusBarElement>(
     { children, className, as, ...rest }: PortalStatusBarProps<E>,
     ref?: React.Ref<Element>,
   ) => {
     return (
+      // @ts-expect-error generic prop forwarding through polymorphic Grid.Item
       <Grid.Item
         ref={ref}
         as={as || defaultStatusBarElement}
@@ -79,12 +100,13 @@ const PortalStatusBar = React.forwardRef(
   },
 );
 
-const PortalMain = React.forwardRef(
+const PortalMain: PortalMainComponent = React.forwardRef(
   <E extends React.ElementType = typeof defaultPortalMainElement>(
     { children, className, style, as, ...rest }: PortalMainProps<E>,
     ref?: React.Ref<Element>,
   ) => {
     return (
+      // @ts-expect-error generic prop forwarding through polymorphic Grid.Item
       <Grid.Item
         ref={ref}
         as={as || defaultPortalMainElement}

@@ -86,6 +86,21 @@
       "type": {
         "name": "ReactNode"
       }
+    },
+    "ref": {
+      "defaultValue": null,
+      "description": "",
+      "name": "ref",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/layout/src/beta/Grid/GridItem.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "Ref<Element> | undefined"
+      }
     }
   }
 }
