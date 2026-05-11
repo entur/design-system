@@ -19,7 +19,7 @@ The component library solves three things at once: components look right (Entur 
 ## Core rules
 
 1. **Prefer `@entur/*` components** before building custom UI. The design system covers buttons, forms, navigation, modals, tables, accordions, tabs, alerts, chips, dropdowns, loaders, travel components, and layout primitives. Check `references/components.md` before building anything custom.
-2. **Import `@entur/tokens/dist/base.css` first**, before any component stylesheets. Then import component CSS in the order in `references/getting-started.md`. Wrong order causes visual regressions.
+2. **Import token CSS before component CSS.** `@entur/tokens/dist/base.css` first (colors, color mode), then `@entur/tokens/dist/styles.css` (spacing, border-radius, font sizes, breakpoints), then component stylesheets in the order in `references/getting-started.md`. In SCSS, use `@use` with a namespace: `@use '@entur/tokens/dist/styles.scss' as eds-styles;`. For colors, always use `base.css`/`semantic.css` tokens — ignore the `--colors-*` tokens in `styles.css` as they have no color mode support. Wrong order causes visual regressions.
 3. **Use tokens from `@entur/tokens`** for color, spacing, and typography in code. Never hardcode hex or rgb values — they break dark mode and drift from the brand. (Brand documentation and design specs may list canonical hex values as references; always translate those to tokens in code.)
 4. **Avoid targeting `.eds-*` internal selectors**, using `!important`, or wrapping components in CSS-in-JS overrides. Component styles are calibrated for contrast, dark mode, and interaction states. When a visual deviation is needed, use a scoped `className` on the component as an override anchor — see exception below.
 5. **Prefer wrapping `@entur/*` components** in a layout element rather than applying `padding` or `margin` directly to them. Inline styles are acceptable for dynamic runtime values that cannot be expressed as tokens or classes.
@@ -95,6 +95,7 @@ yarn add @entur/button @entur/tokens
 ```css
 /* 2. Import CSS globally (App.tsx or global stylesheet) — tokens first */
 @import '@entur/tokens/dist/base.css';
+@import '@entur/tokens/dist/styles.css';
 @import '@entur/button/dist/styles.css';
 ```
 

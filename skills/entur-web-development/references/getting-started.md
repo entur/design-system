@@ -19,10 +19,13 @@ Components need their CSS to render correctly. Import globally in `App.tsx`, `in
 ### CSS (in `.css` or `.tsx` files)
 
 ```css
-/* 1. Base tokens — always first */
+/* 1. Base tokens — always first (colors, color mode) */
 @import '@entur/tokens/dist/base.css';
 
-/* 2. Component styles — in this exact order */
+/* 2. Non-color tokens (spacing, border-radius, font sizes, breakpoints) */
+@import '@entur/tokens/dist/styles.css';
+
+/* 3. Component styles — in this exact order */
 @import '@entur/a11y/dist/styles.css';
 @import '@entur/grid/dist/styles.css';
 @import '@entur/icons/dist/styles.css';
@@ -52,10 +55,13 @@ Other token files (`semantic.css`, `data.css`, `transport.css`) should be import
 In SCSS, use `@use` with a namespace alias instead of `@import` (Sass `@import` is deprecated):
 
 ```scss
-/* 1. Base tokens — always first */
+/* 1. Base tokens — always first (colors, color mode) */
 @use '@entur/tokens/dist/base.scss' as eds;
 
-/* 2. Component styles — in this exact order, each with a namespace */
+/* 2. Non-color tokens (spacing, border-radius, font sizes, breakpoints) */
+@use '@entur/tokens/dist/styles.scss' as eds-styles;
+
+/* 3. Component styles — in this exact order, each with a namespace */
 @use '@entur/a11y/dist/styles.css' as a11y;
 @use '@entur/grid/dist/styles.css' as grid;
 @use '@entur/icons/dist/styles.css' as icons;
