@@ -33,6 +33,13 @@
       }
     }
   }
+
+  &--type-duration {
+    align-items: flex-end;
+    font-size: t.$font-sizes-extra-small;
+    line-height: 1;
+  }
+
   &--icon-and-text > .eds-icon {
     margin-right: t.$space-extra-small;
   }

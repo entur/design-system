@@ -27,6 +27,8 @@ export type TravelTagProps = {
    * @default "none"
    */
   alert?: 'none' | 'error' | 'warning' | 'info';
+  /** Duration brukes når man viser tid dette "transportmiddelet" bruker, anbefales hovedsaklig til gange og delingsmobilitet. publicCode brukes for å vise ID-en til linjen. */
+  type?: 'publicCode' | 'duration';
   /** Legger til farge og ikon tilpasset valgt transportmiddel */
   transport?: Transport;
   /** Element ved siden av eller under TravelTag.  */
@@ -48,6 +50,7 @@ export const TravelTag: React.FC<TravelTagProps> = ({
   children,
   className,
   alert = 'none',
+  type = 'publicCode',
   transport = 'none',
   label,
   labelPlacement = 'right',
@@ -92,6 +95,7 @@ export const TravelTag: React.FC<TravelTagProps> = ({
         'eds-travel-tag--alert': alertIsSet,
         'eds-travel-tag--alert--error': alert === 'error',
         'eds-travel-tag--transport': transportIsSet,
+        'eds-travel-tag--type-duration': type === 'duration',
         'eds-travel-tag--icon-and-text':
           numberOfChildren > 1 || (transportIsSet && numberOfChildren > 0),
       })}
