@@ -10,7 +10,7 @@ Package: `@entur/tokens`
 
 ### Token file formats
 
-Each token set (base, semantic, data, transport, primitive) ships in three formats:
+Each token set ships in CSS, SCSS, and JS formats:
 
 | Format   | Import                                 | Notes                                                                                         |
 | -------- | -------------------------------------- | --------------------------------------------------------------------------------------------- |
@@ -18,7 +18,7 @@ Each token set (base, semantic, data, transport, primitive) ships in three forma
 | **SCSS** | `@entur/tokens/dist/base.scss`         | Import inside the `.scss` file that uses it                                                   |
 | **JS**   | `import { base } from '@entur/tokens'` | No automatic dark/light mode switching — must manually select `base.light.*` or `base.dark.*` |
 
-**Global import**: only `base.css` should be imported globally (in your root stylesheet or `App.tsx`). It supports light/dark color mode via `data-color-mode` attribute.
+**Global imports**: import both `base.css` (colors, color mode) and `styles.css` (spacing, border-radius, font sizes, breakpoints) globally in your root stylesheet or `App.tsx`. In SCSS: `@use '@entur/tokens/dist/styles.scss' as eds-styles;`.
 
 **On-demand imports**: import other token files in the specific files that need them:
 
@@ -171,32 +171,83 @@ Import `semantic.css` — these map to primitives but do not support automatic l
 
 ---
 
-## Spacing tokens
+## Spacing, border-radius, and layout tokens
+
+These non-color tokens live in `styles.css` / `styles.scss` — import alongside `base.css`. Note: `styles.css` also contains `--colors-*` tokens, but **do not use those for colors** — they have no color mode support. Use `base.css` or `semantic.css` tokens for all color needs.
 
 ```css
-@import '@entur/tokens/dist/primitive.css';
-
-/* Size scale (rem) */
---size-0:   0rem
---size-1:   0.0625rem   /* 1px */
---size-2:   0.125rem    /* 2px */
---size-3:   0.25rem     /* 4px */
---size-4:   0.375rem    /* 6px */
---size-5:   0.5rem      /* 8px */
---size-6:   0.75rem     /* 12px */
---size-7:   0.875rem    /* 14px */
---size-8:   1rem        /* 16px */
---size-9:   1.25rem     /* 20px */
---size-10:  1.5rem      /* 24px */
---size-11:  1.75rem     /* 28px */
---size-12:  2rem        /* 32px */
---size-13:  2.25rem     /* 36px */
---size-14:  2.5rem      /* 40px */
---size-16:  3rem        /* 48px */
---size-19:  4rem        /* 64px */
---size-21:  5rem        /* 80px */
---size-23:  6rem        /* 96px */
+@import '@entur/tokens/dist/styles.css';
 ```
+
+```scss
+@use '@entur/tokens/dist/styles.scss' as eds-styles;
+```
+
+### Spacing (`--space-*`)
+
+```css
+--space-none:          0rem
+--space-extra-small2:  0.25rem   /* 4px */
+--space-extra-small:   0.5rem    /* 8px */
+--space-small:         0.75rem   /* 12px */
+--space-medium:        1rem      /* 16px */
+--space-default:       1rem      /* 16px — alias for medium */
+--space-large:         1.5rem    /* 24px */
+--space-extra-large:   2rem      /* 32px */
+--space-extra-large2:  2.5rem    /* 40px */
+--space-extra-large3:  3rem      /* 48px */
+--space-extra-large4:  3.5rem    /* 56px */
+--space-extra-large5:  4rem      /* 64px */
+--space-extra-large6:  4.5rem    /* 72px */
+--space-extra-large7:  5rem      /* 80px */
+--space-extra-large8:  5.5rem    /* 88px */
+--space-extra-large9:  6rem      /* 96px */
+```
+
+In SCSS: `$space-large`, `$space-extra-large`, etc.
+
+### Border radius (`--border-radiuses-*`)
+
+```css
+--border-radiuses-default:  0.0625rem  /* 1px */
+--border-radiuses-small:    0.0625rem  /* 1px */
+--border-radiuses-medium:   0.25rem    /* 4px */
+--border-radiuses-large:    0.5rem     /* 8px */
+```
+
+### Border width (`--border-widths-*`)
+
+```css
+--border-widths-default:  0.125rem  /* 2px */
+--border-widths-small:    0.0625rem /* 1px */
+--border-widths-medium:   0.125rem  /* 2px */
+--border-widths-large:    0.25rem   /* 4px */
+```
+
+### Breakpoints (`--breakpoints-*`)
+
+```css
+--breakpoints-large:        50rem   /* 800px */
+--breakpoints-extra-large:  75rem   /* 1200px */
+```
+
+### Font sizes and line heights
+
+```css
+--font-sizes-extra-small:   0.625rem  /* 10px */
+--font-sizes-small:         0.75rem   /* 12px */
+--font-sizes-medium:        0.875rem  /* 14px */
+--font-sizes-large:         1rem      /* 16px */
+--font-sizes-extra-large:   1.25rem   /* 20px */
+--font-sizes-extra-large2:  1.5rem    /* 24px */
+--font-sizes-extra-large3:  1.75rem   /* 28px */
+--font-sizes-extra-large4:  2rem      /* 32px */
+--font-sizes-extra-large5:  2.5rem    /* 40px */
+```
+
+### Primitive size scale (raw)
+
+`primitive.css` also provides a raw `--size-0` through `--size-29` numeric scale. Prefer the named `--space-*` tokens above for spacing — they are more readable and self-documenting.
 
 ---
 
