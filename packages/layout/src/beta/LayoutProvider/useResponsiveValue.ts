@@ -4,26 +4,29 @@ import type { ResponsiveValue } from './utils';
 
 const isResponsiveObject = <T>(
   value: ResponsiveValue<T>,
-): value is { sm?: T; md?: T; lg?: T } => {
+): value is { s?: T; m?: T; lg?: T; xl?: T } => {
   return (
     typeof value === 'object' &&
     value !== null &&
     !Array.isArray(value) &&
-    ('sm' in value || 'md' in value || 'lg' in value)
+    ('s' in value || 'm' in value || 'lg' in value || 'xl' in value)
   );
 };
 
 const getCurrentBreakpoint = (
-  breakpoints: { sm: number; md: number; lg: number },
+  breakpoints: { m: number; lg: number; xl: number },
   windowWidth: number,
-): 'sm' | 'md' | 'lg' => {
+): 's' | 'm' | 'lg' | 'xl' => {
+  if (windowWidth >= breakpoints.xl) {
+    return 'xl';
+  }
   if (windowWidth >= breakpoints.lg) {
     return 'lg';
   }
-  if (windowWidth >= breakpoints.md) {
-    return 'md';
+  if (windowWidth >= breakpoints.m) {
+    return 'm';
   }
-  return 'sm';
+  return 's';
 };
 
 export const useResponsiveValue = <T>(
@@ -31,10 +34,10 @@ export const useResponsiveValue = <T>(
 ): T | undefined => {
   const { breakpoints } = useLayoutValues();
   const [currentBreakpoint, setCurrentBreakpoint] = useState<
-    'sm' | 'md' | 'lg'
+    's' | 'm' | 'lg' | 'xl'
   >(() => {
     if (typeof window === 'undefined') {
-      return 'sm';
+      return 's';
     }
     return getCurrentBreakpoint(breakpoints, window.innerWidth);
   });
@@ -54,8 +57,9 @@ export const useResponsiveValue = <T>(
     };
 
     const mediaQueries = [
-      window.matchMedia(`(min-width: ${breakpoints.md}px)`),
+      window.matchMedia(`(min-width: ${breakpoints.m}px)`),
       window.matchMedia(`(min-width: ${breakpoints.lg}px)`),
+      window.matchMedia(`(min-width: ${breakpoints.xl}px)`),
     ];
 
     updateBreakpoint();
@@ -96,12 +100,14 @@ export const useResponsiveValue = <T>(
     return responsiveValue;
   }
 
-  const fallbackOrder: Array<'lg' | 'md' | 'sm'> =
-    currentBreakpoint === 'lg'
-      ? ['lg', 'md', 'sm']
-      : currentBreakpoint === 'md'
-      ? ['md', 'sm']
-      : ['sm'];
+  const fallbackOrder: Array<'xl' | 'lg' | 'm' | 's'> =
+    currentBreakpoint === 'xl'
+      ? ['xl', 'lg', 'm', 's']
+      : currentBreakpoint === 'lg'
+      ? ['lg', 'm', 's']
+      : currentBreakpoint === 'm'
+      ? ['m', 's']
+      : ['s'];
 
   for (const bp of fallbackOrder) {
     if (value[bp] !== undefined) {
