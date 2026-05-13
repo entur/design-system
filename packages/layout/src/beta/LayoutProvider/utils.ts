@@ -25,21 +25,32 @@ export type GridSpacingValue = (typeof VALID_SPACING_VALUES)[number];
 export type ResponsiveValue<T> =
   | T
   | {
-      sm?: T;
-      md?: T;
+      s?: T;
+      m?: T;
       lg?: T;
+      xl?: T;
     };
 
+/**
+ * Configurable min-width breakpoints (in px).
+ *
+ * `s` is always 0 and is not configurable — it is the base (mobile-first)
+ * fallback that activates below `m`.
+ *
+ * - `m`: activates at this width and above (default: 800px)
+ * - `lg`: activates at this width and above (default: 1200px)
+ * - `xl`: activates at this width and above (default: 1400px)
+ */
 export type Breakpoints = {
-  sm: number;
-  md: number;
+  m: number;
   lg: number;
+  xl: number;
 };
 
 export const DEFAULT_BREAKPOINTS: Breakpoints = {
-  sm: 0,
-  md: 800,
+  m: 800,
   lg: 1200,
+  xl: 1400,
 };
 
 const isValidSpacingValue = (value: unknown): value is GridSpacingValue => {

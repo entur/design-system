@@ -4,7 +4,8 @@
 import './index.scss';
 
 export { Grid, GridItem } from './Grid';
-export { LayoutWrapper, useLayoutValues } from './LayoutWrapper';
+export { LayoutProvider, useLayoutValues } from './LayoutProvider';
+export type { LayoutProviderProps } from './LayoutProvider';
 export { Flex, FlexSpacer } from './Flex';
 export { Template } from './templates';
 export type {
