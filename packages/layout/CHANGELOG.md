@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.0.0](https://github.com/entur/design-system/compare/@entur/layout@3.6.1...@entur/layout@4.0.0) (2026-05-13)
+
+### Bug Fixes
+
+- **layout/beta/flex:** fix props leaking into nested Flex components ([b604332](https://github.com/entur/design-system/commit/b60433256cadf371da392c740a18e532de6d6ab0))
+- **layout/beta:** document children in prop tables and fix [@ts-expect-error](https://github.com/ts-expect-error) syntax ([fa39228](https://github.com/entur/design-system/commit/fa3922878c6ca5b6b5525449c7da27f19e86dcb6))
+- **layout/beta:** export FlexComponent and GridComponent callable types ([d9f61a6](https://github.com/entur/design-system/commit/d9f61a63ad4a09ebfbd9ecbae37a63409d9b936f))
+
+### Features
+
+- **layout/beta/layout-provider:** rename LayoutWrapper to LayoutProvider and update breakpoints ([8a57ba7](https://github.com/entur/design-system/commit/8a57ba77a6c1e88f9c96cdf9a77209831139190d))
+
+### BREAKING CHANGES
+
+- **layout/beta/layout-provider:** LayoutWrapper is renamed to LayoutProvider; import from
+  LayoutProvider going forward. LayoutWrapperProps renamed to LayoutProviderProps.
+- **layout/beta/layout-provider:** ResponsiveValue breakpoint keys changed from sm/md/lg to
+  s/m/lg/xl. xl breakpoint added with a default of 1400px. s is not configurable
+  — it is the implicit base (0px) that activates below m.
+
+AI-assistant: Claude Code (claude-sonnet-4-6)
+
 ## [3.6.1](https://github.com/entur/design-system/compare/@entur/layout@3.6.0...@entur/layout@3.6.1) (2026-04-16)
 
 ### Bug Fixes
