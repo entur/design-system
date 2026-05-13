@@ -22,22 +22,22 @@
     "@codemirror/lang-javascript": "^6.2.4",
     "@codemirror/lang-json": "^6.0.2",
     "@codemirror/lang-sass": "^6.0.2",
-    "@codemirror/language": "6.12.1",
+    "@codemirror/language": "6.12.3",
     "@codemirror/legacy-modes": "^6.5.2",
-    "@codemirror/state": "6.5.4",
-    "@codemirror/view": "6.39.15",
+    "@codemirror/state": "6.6.0",
+    "@codemirror/view": "6.42.0",
     "@entur/icons": "workspace:^",
-    "@sanity/ui": "3.1.11",
+    "@sanity/ui": "3.2.0",
     "@sanity/vision": "4.19.0",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "sanity": "4.19.0",
-    "sanity-plugin-media": "4.1.1",
-    "styled-components": "6.3.11"
+    "sanity-plugin-media": "4.2.0",
+    "styled-components": "6.4.1"
   },
   "devDependencies": {
     "@types/react": "18.3.24",
-    "prettier": "3.8.1",
+    "prettier": "3.8.3",
     "typescript": "5.9.3"
   }
 }
