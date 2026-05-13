@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.10.1](https://github.com/entur/design-system/compare/studio-linje@1.10.0...studio-linje@1.10.1) (2026-05-13)
+
+### Bug Fixes
+
+- **sanity:** normalize tag input to lowercase, display capitalized ([838c7b0](https://github.com/entur/design-system/commit/838c7b0a2045fc5bd32af8ad61d490b45ef0100c))
+
 ## [1.9.3](https://github.com/entur/design-system/compare/studio-linje@1.9.2...studio-linje@1.9.3) (2026-03-16)
 
 ### Bug Fixes

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.11](https://github.com/entur/design-system/compare/@entur/alert@0.18.10...@entur/alert@0.18.11) (2026-05-13)
+
+### Bug Fixes
+
+- **alert/copyable text:** respect onClick prop passed by consumer ([f385fdf](https://github.com/entur/design-system/commit/f385fdfb1af8200a5aa0e6e19f05ab2dbdd44c6c))
+
 ## [0.18.10](https://github.com/entur/design-system/compare/@entur/alert@0.18.9...@entur/alert@0.18.10) (2026-04-16)
 
 **Note:** Version bump only for package @entur/alert
