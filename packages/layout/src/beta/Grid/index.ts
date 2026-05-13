@@ -30,5 +30,5 @@ export type { GridProps, GridOwnProps } from './Grid';
 export type { GridSpacingValue, ResponsiveValue } from '../LayoutWrapper/utils';
 export type { GridItemProps, GridItemOwnProps } from './GridItem';
 export { GridComponent as Grid, GridItem };
-export { LayoutWrapper } from '../LayoutWrapper/LayoutWrapper';
+export { LayoutProvider } from '../LayoutWrapper/LayoutWrapper';
 export { useLayoutValues } from '../LayoutWrapper/useLayoutValues';
