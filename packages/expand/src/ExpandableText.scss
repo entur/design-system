@@ -13,28 +13,28 @@
   display: flex;
   align-items: center;
 
-  .eds-contrast & {
+  :where(.eds-contrast) & {
     color: var(--components-expand-expandabletext-contrast-text);
   }
 
-  > :is(h5, h4, h3, h2, p) {
+  > :where(h5, h4, h3, h2, p) {
     margin-top: 0;
     margin-bottom: 0;
   }
 
-  &:focus-visible {
+  &:where(:focus-visible) {
     outline: t.$outlines-focus;
     outline-color: var(--basecolors-stroke-focus-standard);
     outline-offset: t.$outline-offsets-focus;
 
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       outline-color: var(--basecolors-stroke-focus-contrast);
     }
   }
 }
 
 .eds-expandable-text--disable-animation {
-  .eds-base-expand {
+  :where(.eds-base-expand) {
     transition: none;
   }
 }
