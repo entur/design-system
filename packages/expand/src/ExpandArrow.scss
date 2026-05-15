@@ -6,14 +6,14 @@
   &--open {
     transform: rotate(-180deg);
   }
-  .eds-contrast & {
+  :where(.eds-contrast) & {
     color: var(--components-expand-expandablepanel-contrast-icon);
   }
 }
 
 .eds-expandable-text,
 .eds-expandable-panel {
-  &--disable-animation .eds-expandable-arrow {
+  &--disable-animation :where(.eds-expandable-arrow) {
     transition: none;
   }
 }
