@@ -12,7 +12,7 @@
     "outputs": ["BannerAlertBox.json"]
   },
   "alert/src/CopyableText.tsx": {
-    "hash": "590d0c22b00848bff81bc592a5375fd1",
+    "hash": "340e0f61e1daa7e658483a15025adba4",
     "outputs": ["CopyableText.json"]
   },
   "alert/src/SmallAlertBox.tsx": {
@@ -160,7 +160,7 @@
     "outputs": ["Tag.json"]
   },
   "layout/src/beta/Grid/GridItem.tsx": {
-    "hash": "f0cee75f9e8f4fab25dbcdeb4d2bbf4f",
+    "hash": "7c591c0f95ea02133ac01ba4aa694d7e",
     "outputs": ["GridItem.json"]
   },
   "loader/src/BaseSkeleton.tsx": {
@@ -592,15 +592,15 @@
     "outputs": ["NavigationCard.json"]
   },
   "layout/src/beta/Flex/Flex.tsx": {
-    "hash": "24085e2f95f08a46a00dfdfba7cbb312",
+    "hash": "bdfb861644430c32909cfaaa584448e9",
     "outputs": ["Flex.json"]
   },
   "layout/src/beta/Flex/FlexSpacer.tsx": {
-    "hash": "cccadd702c42217a91b3e321925a4ca9",
+    "hash": "77102cdf186ed6260e916519d52b97c3",
     "outputs": ["FlexSpacer.json"]
   },
   "layout/src/beta/Grid/Grid.tsx": {
-    "hash": "9c807817d5bcbebf73df834c2571adca",
+    "hash": "15cd3fd6b6899c9fe663cbae18ad6bbb",
     "outputs": ["Grid.json"]
   },
   "layout/src/beta/LayoutWrapper/LayoutWrapper.tsx": {
@@ -608,11 +608,11 @@
     "outputs": ["LayoutWrapper.json"]
   },
   "layout/src/beta/templates/Sidebar.tsx": {
-    "hash": "ccc54dcff24cad3a09c336e37381e55b",
+    "hash": "a48618c6f67b1f34ecb7a761cb4b73f8",
     "outputs": ["Template.Portal.Sidebar.json"]
   },
   "layout/src/beta/templates/portal/Portal.tsx": {
-    "hash": "04f3bb1f09756f0e18d7b14400b1e0cb",
+    "hash": "0766d160ad5ffe749292ed4d8aa543e2",
     "outputs": ["Template.Portal.json"]
   },
   "menu/src/BreadcrumbItem.tsx": {
@@ -687,5 +687,9 @@
   "utils/src/PolymorphicComponent.tsx": {
     "hash": "c98a4c8755ceb1b523f93006e5d8039f",
     "outputs": []
+  },
+  "layout/src/beta/LayoutProvider/LayoutProvider.tsx": {
+    "hash": "693792318fe331399c1e6c0ee284e49d",
+    "outputs": ["LayoutProvider.json"]
   }
 }

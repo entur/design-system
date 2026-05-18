@@ -22,7 +22,7 @@
       ],
       "required": false,
       "type": {
-        "name": "(string & ElementType<any>) | (ComponentClass<any, any> & ElementType<any>) | (FunctionComponent<any> & ElementType<...>) | undefined"
+        "name": "(string & ElementType<any, keyof IntrinsicElements>) | (ComponentClass<any, any> & ElementType<any, keyof IntrinsicElements>) | (FunctionComponent<...> & ElementType<...>) | undefined"
       }
     },
     "className": {

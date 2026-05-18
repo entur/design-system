@@ -1,0 +1,23 @@
+{
+  "tags": {},
+  "description": "",
+  "displayName": "LayoutProvider",
+  "methods": [],
+  "props": {
+    "breakpoints": {
+      "defaultValue": null,
+      "description": "Custom breakpoint values (in px) to override the defaults.\n\nBreakpoints are **min-width** based: a breakpoint activates when the\nviewport is at least that wide and stays active until the next breakpoint.\n\nDefault values:\n- `s`: 0px — always active below `m` (not configurable)\n- `m`: 800px — active from 800px up to (but not including) `lg`\n- `lg`: 1200px — active from 1200px up to (but not including) `xl`\n- `xl`: 1400px — active from 1400px and above\n@example <LayoutProvider breakpoints={{ m: 600, lg: 1024, xl: 1280 }}>\n  ...\n</LayoutProvider>",
+      "name": "breakpoints",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/layout/src/beta/LayoutProvider/LayoutProvider.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "Partial<Breakpoints> | undefined"
+      }
+    }
+  }
+}

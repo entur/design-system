@@ -18,7 +18,7 @@
       ],
       "required": false,
       "type": {
-        "name": "\"-moz-initial\" | \"inherit\" | \"initial\" | \"revert\" | \"revert-layer\" | \"unset\" | \"column\" | \"column-reverse\" | \"row\" | \"row-reverse\" | { sm?: FlexDirection | undefined; md?: FlexDirection | undefined; lg?: FlexDirection | undefined; } | undefined"
+        "name": "\"-moz-initial\" | \"inherit\" | \"initial\" | \"revert\" | \"revert-layer\" | \"unset\" | \"column\" | \"column-reverse\" | \"row\" | \"row-reverse\" | { s?: FlexDirection | undefined; m?: FlexDirection | undefined; lg?: FlexDirection | undefined; xl?: FlexDirection | undefined; } | undefined"
       }
     },
     "wrap": {
@@ -35,7 +35,7 @@
       ],
       "required": false,
       "type": {
-        "name": "\"wrap\" | \"-moz-initial\" | \"inherit\" | \"initial\" | \"revert\" | \"revert-layer\" | \"unset\" | \"nowrap\" | \"wrap-reverse\" | { sm?: FlexWrap | undefined; md?: FlexWrap | undefined; lg?: FlexWrap | undefined; } | undefined"
+        "name": "\"wrap\" | \"-moz-initial\" | \"inherit\" | \"initial\" | \"revert\" | \"revert-layer\" | \"unset\" | \"nowrap\" | \"wrap-reverse\" | { s?: FlexWrap | undefined; m?: FlexWrap | undefined; lg?: FlexWrap | undefined; xl?: FlexWrap | undefined; } | undefined"
       }
     },
     "align": {
@@ -296,7 +296,7 @@
       ],
       "required": false,
       "type": {
-        "name": "(string & ElementType<any>) | (ComponentClass<any, any> & ElementType<any>) | (FunctionComponent<any> & ElementType<...>) | undefined"
+        "name": "(string & ElementType<any, keyof IntrinsicElements>) | (ComponentClass<any, any> & ElementType<any, keyof IntrinsicElements>) | (FunctionComponent<...> & ElementType<...>) | undefined"
       }
     },
     "className": {
