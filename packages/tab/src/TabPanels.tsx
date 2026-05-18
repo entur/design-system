@@ -1,6 +1,7 @@
-import React from 'react';
-import { TabPanels as ReachTabPanels } from '@reach/tabs';
+import React, { useContext } from 'react';
 import classNames from 'classnames';
+
+import { TabsContext } from './TabsContext';
 
 export type TabPanelsProps = {
   /** Tab-panelene */
@@ -10,11 +11,25 @@ export type TabPanelsProps = {
   [key: string]: any;
 };
 
-export const TabPanels: React.FC<TabPanelsProps> = ({ className, ...rest }) => {
+export const TabPanels: React.FC<TabPanelsProps> = ({
+  className,
+  as: _as,
+  children,
+  ...rest
+}) => {
+  const { tabsId } = useContext(TabsContext);
+
   return (
-    <ReachTabPanels
-      className={classNames('eds-tab-panels', className)}
-      {...rest}
-    />
+    <div className={classNames('eds-tab-panels', className)} {...rest}>
+      {React.Children.map(children, (child, idx) =>
+        React.isValidElement(child)
+          ? React.cloneElement(child, {
+              _tabIndex: idx,
+              _tabId: `${tabsId}-tab-${idx}`,
+              _panelId: `${tabsId}-panel-${idx}`,
+            })
+          : child,
+      )}
+    </div>
   );
 };
