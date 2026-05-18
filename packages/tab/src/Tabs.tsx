@@ -1,6 +1,8 @@
-import React from 'react';
-import { Tabs as ReachTabs } from '@reach/tabs';
+import React, { useState, useCallback } from 'react';
 import classNames from 'classnames';
+import { useRandomId } from '@entur/utils';
+
+import { TabsContext } from './TabsContext';
 
 export type TabsProps = {
   /** Overskriften til taben */
@@ -17,6 +19,35 @@ export type TabsProps = {
   [key: string]: any;
 };
 
-export const Tabs: React.FC<TabsProps> = ({ className, ...rest }) => {
-  return <ReachTabs className={classNames('eds-tabs', className)} {...rest} />;
+export const Tabs: React.FC<TabsProps> = ({
+  className,
+  index,
+  defaultIndex,
+  onChange,
+  as: _as,
+  children,
+  ...rest
+}) => {
+  const [internalIndex, setInternalIndex] = useState(defaultIndex ?? 0);
+  const isControlled = index !== undefined;
+  const selectedIndex = isControlled ? index : internalIndex;
+  const tabsId = useRandomId('eds-tabs');
+
+  const onSelect = useCallback(
+    (i: number) => {
+      if (!isControlled) {
+        setInternalIndex(i);
+      }
+      onChange?.(i);
+    },
+    [isControlled, onChange],
+  );
+
+  return (
+    <TabsContext.Provider value={{ selectedIndex, onSelect, tabsId }}>
+      <div className={classNames('eds-tabs', className)} {...rest}>
+        {children}
+      </div>
+    </TabsContext.Provider>
+  );
 };
