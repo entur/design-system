@@ -17,7 +17,7 @@
   background-color: var(--background-color);
   color: var(--text-color);
 
-  .eds-contrast & {
+  :where(.eds-contrast) & {
     --background-color: var(--components-travel-traveltag-contrast-fill-walk); //Default
     --text-color: var(--components-travel-traveltag-contrast-text-default);
   }
@@ -27,17 +27,24 @@
     &--error {
       background-color: var(--background-color);
       color: var(--text-color);
-      .eds-contrast &.eds-travel-tag {
+      :where(.eds-contrast) &:where(.eds-travel-tag) {
         background-color: var(--background-color);
         color: var(--text-color);
       }
     }
   }
-  &--icon-and-text > .eds-icon {
+
+  &--type-duration {
+    align-items: flex-end;
+    font-size: t.$font-sizes-extra-small;
+    line-height: 1;
+  }
+
+  &--icon-and-text > :where(.eds-icon) {
     margin-right: t.$space-extra-small;
   }
 
-  > .eds-icon {
+  > :where(.eds-icon) {
     font-size: t.$font-sizes-extra-large2;
     color: var(--text-color);
   }
@@ -54,29 +61,29 @@
     top: calc((t.$space-extra-large - (t.$space-default + t.$border-widths-medium)) / 2);
     right: calc(-1 * (t.$space-default - t.$border-widths-medium) / 2 - t.$space-extra-small2);
     background: var(--components-form-feedbacktext-information-standard-stroke);
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       background: var(--components-form-feedbacktext-information-contrast-stroke);
     }
 
     &-exclamation-icon {
       color: var(--components-form-feedbacktext-warning-standard-icon-fill);
-      .svg-validation-circlefilled-exclamation {
+      :where(.svg-validation-circlefilled-exclamation) {
         fill: var(--components-form-feedbacktext-warning-standard-icon-symbol);
       }
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         color: var(--components-form-feedbacktext-warning-contrast-icon-fill);
       }
     }
     &-error-icon {
       font-size: t.$font-sizes-medium;
       color: var(--components-form-feedbacktext-negative-standard-icon-fill);
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         color: var(--components-form-feedbacktext-negative-contrast-icon-fill);
       }
     }
     &-info-icon {
       color: var(--components-form-feedbacktext-information-standard-icon-fill);
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         color: var(--components-form-feedbacktext-information-contrast-icon-fill);
       }
     }
@@ -97,7 +104,7 @@
   &__label {
     color: var(--components-travel-traveltag-standard-text-label);
     font-size: t.$font-sizes-large;
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       color: var(--components-travel-traveltag-contrast-text-label);
     }
     &--right {
@@ -134,18 +141,18 @@
     font-size: t.$font-sizes-medium;
     line-height: t.$space-large;
 
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       background-color: var(--components-travel-traveltag-contrast-fill-details);
       color: var(--components-travel-traveltag-contrast-text-details);
       border-color: var(--components-travel-traveltag-contrast-stroke-details);
     }
 
-    .eds-travel-tag--alert--error & {
+    :where(.eds-travel-tag--alert--error) & {
       border-color: var(--components-travel-traveltag-standard-stroke-details-cancelled);
       background-color: var(--components-travel-traveltag-standard-fill-details-cancelled);
       color: var(--components-travel-traveltag-standard-text-cancelled);
 
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         border-color: var(--components-travel-traveltag-contrast-stroke-details-cancelled);
         background-color: var(--components-travel-traveltag-contrast-fill-details-cancelled);
         color: var(--components-travel-traveltag-contrast-text-cancelled);
@@ -164,11 +171,11 @@
     height: t.$space-large;
     width: t.$space-large;
     font-size: t.$font-sizes-large;
-    .eds-icon {
+    :where(.eds-icon) {
       color: var(--text-color);
       font-size: t.$font-sizes-medium;
     }
-    &:has(:focus-visible) {
+    &:has(:where(:focus-visible)) {
       outline-offset: t.$outline-offsets-focus;
       outline: t.$outlines-focus-contrast;
     }

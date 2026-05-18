@@ -18,3 +18,9 @@ test('TravelTag renders with content, spread props and with correct classnames, 
   fireEvent.click(closeButton);
   expect(spy).toHaveBeenCalledTimes(1);
 });
+test('TravelTag renders with duration type', () => {
+  const { getByText } = render(<TravelTag type="duration">12</TravelTag>);
+  expect(getByText('12').closest('.eds-travel-tag')).toHaveClass(
+    'eds-travel-tag--type-duration',
+  );
+});

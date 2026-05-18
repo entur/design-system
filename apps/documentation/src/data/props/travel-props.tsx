@@ -151,6 +151,12 @@ export const traveltag = [
     label: 'Label',
   },
   {
+    name: 'type',
+    defaultValue: 'publicCode',
+    options: ['publicCode', 'duration'],
+    type: 'segmented',
+  },
+  {
     name: 'labelPlacement',
     defaultValue: 'right',
     options: ['right', 'bottom'],
