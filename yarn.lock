@@ -3761,15 +3761,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime-corejs3@npm:7.29.2":
-  version: 7.29.2
-  resolution: "@babel/runtime-corejs3@npm:7.29.2"
-  dependencies:
-    core-js-pure: "npm:^3.48.0"
-  checksum: 10c0/24a9de8b592cf67fbe62c36c002a0da8c0456079a0543646a40e2b1b0838e7712f5ff49e9551624395ccd67a409c63e7c638b23e3bebbfdf54e373b1c707ebff
-  languageName: node
-  linkType: hard
-
 "@babel/runtime@npm:7.29.2":
   version: 7.29.2
   resolution: "@babel/runtime@npm:7.29.2"
@@ -5644,7 +5635,7 @@ __metadata:
     "@entur/tokens": "workspace:^"
     "@entur/utils": "workspace:^"
     "@testing-library/jest-dom": "npm:^5.17.0"
-    "@testing-library/react": "npm:^10.4.9"
+    "@testing-library/react": "npm:^16.3.0"
     "@testing-library/user-event": "npm:14.6.1"
     "@vitejs/plugin-react": "npm:^5.0.1"
     jest: "npm:^29.0.0"
@@ -5654,8 +5645,8 @@ __metadata:
     vite: "npm:^7.3.2"
     vite-plugin-dts: "npm:^4.5.4"
   peerDependencies:
-    react: ">=16.8.0"
-    react-dom: ">=16.8.0"
+    react: ">=18.0.0"
+    react-dom: ">=18.0.0"
   languageName: unknown
   linkType: soft
 
@@ -5671,7 +5662,7 @@ __metadata:
     "@entur/typography": "workspace:^"
     "@entur/utils": "workspace:^"
     "@testing-library/jest-dom": "npm:^5.17.0"
-    "@testing-library/react": "npm:^10.4.9"
+    "@testing-library/react": "npm:^16.3.0"
     "@testing-library/user-event": "npm:14.6.1"
     "@vitejs/plugin-react": "npm:^5.0.1"
     classnames: "npm:^2.5.1"
@@ -5683,8 +5674,8 @@ __metadata:
     vite: "npm:^7.3.2"
     vite-plugin-dts: "npm:^4.5.4"
   peerDependencies:
-    react: ">=16.8.0"
-    react-dom: ">=16.8.0"
+    react: ">=18.0.0"
+    react-dom: ">=18.0.0"
   languageName: unknown
   linkType: soft
 
@@ -5696,7 +5687,7 @@ __metadata:
     "@entur/tokens": "workspace:^"
     "@entur/utils": "workspace:^"
     "@testing-library/jest-dom": "npm:^5.17.0"
-    "@testing-library/react": "npm:^10.4.9"
+    "@testing-library/react": "npm:^16.3.0"
     "@testing-library/user-event": "npm:14.6.1"
     "@vitejs/plugin-react": "npm:^5.0.1"
     classnames: "npm:^2.5.1"
@@ -5707,8 +5698,8 @@ __metadata:
     vite: "npm:^7.3.2"
     vite-plugin-dts: "npm:^4.5.4"
   peerDependencies:
-    react: ">=16.8.0"
-    react-dom: ">=16.8.0"
+    react: ">=18.0.0"
+    react-dom: ">=18.0.0"
   languageName: unknown
   linkType: soft
 
@@ -5722,7 +5713,7 @@ __metadata:
     "@entur/tokens": "workspace:^"
     "@entur/utils": "workspace:^"
     "@testing-library/jest-dom": "npm:^5.17.0"
-    "@testing-library/react": "npm:^10.4.9"
+    "@testing-library/react": "npm:^16.3.0"
     "@testing-library/user-event": "npm:14.6.1"
     "@vitejs/plugin-react": "npm:^5.0.1"
     classnames: "npm:^2.5.1"
@@ -5733,8 +5724,8 @@ __metadata:
     vite: "npm:^7.3.2"
     vite-plugin-dts: "npm:^4.5.4"
   peerDependencies:
-    react: ">=16.8.0"
-    react-dom: ">=16.8.0"
+    react: ">=18.0.0"
+    react-dom: ">=18.0.0"
   languageName: unknown
   linkType: soft
 
@@ -5808,7 +5799,7 @@ __metadata:
     "@react-stately/datepicker": "npm:^3.16.0"
     "@react-types/datepicker": "npm:^3.13.4"
     "@testing-library/jest-dom": "npm:^5.17.0"
-    "@testing-library/react": "npm:^10.4.9"
+    "@testing-library/react": "npm:^16.3.0"
     "@testing-library/user-event": "npm:14.6.1"
     "@vitejs/plugin-react": "npm:^5.0.1"
     classnames: "npm:^2.5.1"
@@ -5820,8 +5811,8 @@ __metadata:
     vite: "npm:^7.3.2"
     vite-plugin-dts: "npm:^4.5.4"
   peerDependencies:
-    react: ">=16.8.0"
-    react-dom: ">=16.8.0"
+    react: ">=18.0.0"
+    react-dom: ">=18.0.0"
   languageName: unknown
   linkType: soft
 
@@ -5930,7 +5921,7 @@ __metadata:
     "@entur/utils": "workspace:^"
     "@floating-ui/react-dom": "npm:^2.1.6"
     "@testing-library/jest-dom": "npm:^5.17.0"
-    "@testing-library/react": "npm:^10.4.9"
+    "@testing-library/react": "npm:^16.3.0"
     "@testing-library/user-event": "npm:14.6.1"
     "@vitejs/plugin-react": "npm:^5.0.1"
     classnames: "npm:^2.5.1"
@@ -5942,8 +5933,8 @@ __metadata:
     vite: "npm:^7.3.2"
     vite-plugin-dts: "npm:^4.5.4"
   peerDependencies:
-    react: ">=16.8.0"
-    react-dom: ">=16.8.0"
+    react: ">=18.0.0"
+    react-dom: ">=18.0.0"
   languageName: unknown
   linkType: soft
 
@@ -5956,7 +5947,7 @@ __metadata:
     "@entur/typography": "workspace:^"
     "@entur/utils": "workspace:^"
     "@testing-library/jest-dom": "npm:^5.17.0"
-    "@testing-library/react": "npm:^10.4.9"
+    "@testing-library/react": "npm:^16.3.0"
     "@testing-library/user-event": "npm:14.6.1"
     "@types/react-collapse": "npm:5.0.4"
     "@vitejs/plugin-react": "npm:^5.0.1"
@@ -5969,8 +5960,8 @@ __metadata:
     vite: "npm:^7.3.2"
     vite-plugin-dts: "npm:^4.5.4"
   peerDependencies:
-    react: ">=16.8.0"
-    react-dom: ">=16.8.0"
+    react: ">=18.0.0"
+    react-dom: ">=18.0.0"
   languageName: unknown
   linkType: soft
 
@@ -5985,7 +5976,7 @@ __metadata:
     "@entur/typography": "workspace:^"
     "@entur/utils": "workspace:^"
     "@testing-library/jest-dom": "npm:^5.17.0"
-    "@testing-library/react": "npm:^10.4.9"
+    "@testing-library/react": "npm:^16.3.0"
     "@testing-library/user-event": "npm:14.6.1"
     "@vitejs/plugin-react": "npm:^5.0.1"
     classnames: "npm:^2.5.1"
@@ -5997,8 +5988,8 @@ __metadata:
     vite: "npm:^7.3.2"
     vite-plugin-dts: "npm:^4.5.4"
   peerDependencies:
-    react: ">=16.8.0"
-    react-dom: ">=16.8.0"
+    react: ">=18.0.0"
+    react-dom: ">=18.0.0"
   languageName: unknown
   linkType: soft
 
@@ -6013,7 +6004,7 @@ __metadata:
     "@entur/typography": "workspace:^"
     "@entur/utils": "workspace:^"
     "@testing-library/jest-dom": "npm:^5.17.0"
-    "@testing-library/react": "npm:^10.4.9"
+    "@testing-library/react": "npm:^16.3.0"
     "@testing-library/user-event": "npm:14.6.1"
     "@vitejs/plugin-react": "npm:^5.0.1"
     classnames: "npm:^2.5.1"
@@ -6024,8 +6015,8 @@ __metadata:
     vite: "npm:^7.3.2"
     vite-plugin-dts: "npm:^4.5.4"
   peerDependencies:
-    react: ">=16.8.0"
-    react-dom: ">=16.8.0"
+    react: ">=18.0.0"
+    react-dom: ">=18.0.0"
   languageName: unknown
   linkType: soft
 
@@ -6036,7 +6027,7 @@ __metadata:
     "@entur/tokens": "workspace:^"
     "@entur/utils": "workspace:^"
     "@testing-library/jest-dom": "npm:^5.17.0"
-    "@testing-library/react": "npm:^10.4.9"
+    "@testing-library/react": "npm:^16.3.0"
     "@testing-library/user-event": "npm:14.6.1"
     "@vitejs/plugin-react": "npm:^5.0.1"
     classnames: "npm:^2.5.1"
@@ -6047,8 +6038,8 @@ __metadata:
     vite: "npm:^7.3.2"
     vite-plugin-dts: "npm:^4.5.4"
   peerDependencies:
-    react: ">=16.8.0"
-    react-dom: ">=16.8.0"
+    react: ">=18.0.0"
+    react-dom: ">=18.0.0"
   languageName: unknown
   linkType: soft
 
@@ -6067,7 +6058,7 @@ __metadata:
     "@svgr/plugin-prettier": "npm:8.1.0"
     "@svgr/plugin-svgo": "npm:8.1.0"
     "@testing-library/jest-dom": "npm:^5.17.0"
-    "@testing-library/react": "npm:^10.4.9"
+    "@testing-library/react": "npm:^16.3.0"
     "@testing-library/user-event": "npm:14.6.1"
     "@types/fs-extra": "npm:^11.0.4"
     case: "npm:1.6.3"
@@ -6084,7 +6075,7 @@ __metadata:
     tsx: "npm:4.21.0"
     typescript: "npm:^5.9.2"
   peerDependencies:
-    react: ">=16.8.0"
+    react: ">=18.0.0"
   languageName: unknown
   linkType: soft
 
@@ -6097,7 +6088,7 @@ __metadata:
     "@entur/typography": "workspace:^"
     "@entur/utils": "workspace:^"
     "@testing-library/jest-dom": "npm:^5.17.0"
-    "@testing-library/react": "npm:^10.4.9"
+    "@testing-library/react": "npm:^16.3.0"
     "@testing-library/user-event": "npm:14.6.1"
     "@vitejs/plugin-react": "npm:^5.0.1"
     classnames: "npm:^2.5.1"
@@ -6108,8 +6099,8 @@ __metadata:
     vite: "npm:^7.3.2"
     vite-plugin-dts: "npm:^4.5.4"
   peerDependencies:
-    react: ">=16.8.0"
-    react-dom: ">=16.8.0"
+    react: ">=18.0.0"
+    react-dom: ">=18.0.0"
   languageName: unknown
   linkType: soft
 
@@ -6121,7 +6112,7 @@ __metadata:
     "@entur/typography": "workspace:^"
     "@entur/utils": "workspace:^"
     "@testing-library/jest-dom": "npm:^5.17.0"
-    "@testing-library/react": "npm:^10.4.9"
+    "@testing-library/react": "npm:^16.3.0"
     "@testing-library/user-event": "npm:14.6.1"
     "@vitejs/plugin-react": "npm:^5.0.1"
     classnames: "npm:^2.5.1"
@@ -6132,8 +6123,8 @@ __metadata:
     vite: "npm:^7.3.2"
     vite-plugin-dts: "npm:^4.5.4"
   peerDependencies:
-    react: ">=16.8.0"
-    react-dom: ">=16.8.0"
+    react: ">=18.0.0"
+    react-dom: ">=18.0.0"
   languageName: unknown
   linkType: soft
 
@@ -6151,7 +6142,7 @@ __metadata:
     "@entur/utils": "workspace:^"
     "@floating-ui/react": "npm:^0.26.28"
     "@testing-library/jest-dom": "npm:^5.17.0"
-    "@testing-library/react": "npm:^10.4.9"
+    "@testing-library/react": "npm:^16.3.0"
     "@testing-library/user-event": "npm:14.6.1"
     "@vitejs/plugin-react": "npm:^5.0.1"
     classnames: "npm:^2.5.1"
@@ -6162,8 +6153,8 @@ __metadata:
     vite: "npm:^7.3.2"
     vite-plugin-dts: "npm:^4.5.4"
   peerDependencies:
-    react: ">=16.8.0"
-    react-dom: ">=16.8.0"
+    react: ">=18.0.0"
+    react-dom: ">=18.0.0"
   languageName: unknown
   linkType: soft
 
@@ -6180,7 +6171,7 @@ __metadata:
     "@entur/utils": "workspace:^"
     "@reach/dialog": "npm:^0.16.2"
     "@testing-library/jest-dom": "npm:^5.17.0"
-    "@testing-library/react": "npm:^10.4.9"
+    "@testing-library/react": "npm:^16.3.0"
     "@testing-library/user-event": "npm:14.6.1"
     "@vitejs/plugin-react": "npm:^5.0.1"
     classnames: "npm:^2.5.1"
@@ -6192,8 +6183,8 @@ __metadata:
     vite: "npm:^7.3.2"
     vite-plugin-dts: "npm:^4.5.4"
   peerDependencies:
-    react: ">=16.8.0"
-    react-dom: ">=16.8.0"
+    react: ">=18.0.0"
+    react-dom: ">=18.0.0"
   languageName: unknown
   linkType: soft
 
@@ -6203,9 +6194,8 @@ __metadata:
   dependencies:
     "@entur/tokens": "workspace:^"
     "@entur/utils": "workspace:^"
-    "@reach/tabs": "npm:^0.15.3"
     "@testing-library/jest-dom": "npm:^5.17.0"
-    "@testing-library/react": "npm:^10.4.9"
+    "@testing-library/react": "npm:^16.3.0"
     "@testing-library/user-event": "npm:14.6.1"
     "@vitejs/plugin-react": "npm:^5.0.1"
     classnames: "npm:^2.5.1"
@@ -6216,8 +6206,8 @@ __metadata:
     vite: "npm:^7.3.2"
     vite-plugin-dts: "npm:^4.5.4"
   peerDependencies:
-    react: ">=16.8.0"
-    react-dom: ">=16.8.0"
+    react: ">=18.0.0"
+    react-dom: ">=18.0.0"
   languageName: unknown
   linkType: soft
 
@@ -6235,7 +6225,7 @@ __metadata:
     "@entur/tooltip": "workspace:^"
     "@entur/utils": "workspace:^"
     "@testing-library/jest-dom": "npm:^5.17.0"
-    "@testing-library/react": "npm:^10.4.9"
+    "@testing-library/react": "npm:^16.3.0"
     "@testing-library/user-event": "npm:14.6.1"
     "@types/lodash.get": "npm:^4.4.9"
     "@vitejs/plugin-react": "npm:^5.0.1"
@@ -6248,8 +6238,8 @@ __metadata:
     vite: "npm:^7.3.2"
     vite-plugin-dts: "npm:^4.5.4"
   peerDependencies:
-    react: ">=16.8.0"
-    react-dom: ">=16.8.0"
+    react: ">=18.0.0"
+    react-dom: ">=18.0.0"
   languageName: unknown
   linkType: soft
 
@@ -6258,7 +6248,7 @@ __metadata:
   resolution: "@entur/tokens@workspace:packages/tokens"
   dependencies:
     "@testing-library/jest-dom": "npm:^5.17.0"
-    "@testing-library/react": "npm:^10.4.9"
+    "@testing-library/react": "npm:^16.3.0"
     "@testing-library/user-event": "npm:14.6.1"
     "@types/flat": "npm:^0.0.28"
     "@types/fs-extra": "npm:^8.1.5"
@@ -6289,7 +6279,7 @@ __metadata:
     "@floating-ui/react": "npm:^0.26.28"
     "@floating-ui/react-dom": "npm:^2.1.6"
     "@testing-library/jest-dom": "npm:^5.17.0"
-    "@testing-library/react": "npm:^10.4.9"
+    "@testing-library/react": "npm:^16.3.0"
     "@testing-library/user-event": "npm:14.6.1"
     "@vitejs/plugin-react": "npm:^5.0.1"
     classnames: "npm:^2.5.1"
@@ -6300,8 +6290,8 @@ __metadata:
     vite: "npm:^7.3.2"
     vite-plugin-dts: "npm:^4.5.4"
   peerDependencies:
-    react: ">=16.8.0"
-    react-dom: ">=16.8.0"
+    react: ">=18.0.0"
+    react-dom: ">=18.0.0"
   languageName: unknown
   linkType: soft
 
@@ -6315,7 +6305,7 @@ __metadata:
     "@entur/tokens": "workspace:^"
     "@entur/utils": "workspace:^"
     "@testing-library/jest-dom": "npm:^5.17.0"
-    "@testing-library/react": "npm:^10.4.9"
+    "@testing-library/react": "npm:^16.3.0"
     "@testing-library/user-event": "npm:14.6.1"
     "@vitejs/plugin-react": "npm:^5.0.1"
     classnames: "npm:^2.5.1"
@@ -6326,8 +6316,8 @@ __metadata:
     vite: "npm:^7.3.2"
     vite-plugin-dts: "npm:^4.5.4"
   peerDependencies:
-    react: ">=16.8.0"
-    react-dom: ">=16.8.0"
+    react: ">=18.0.0"
+    react-dom: ">=18.0.0"
   languageName: unknown
   linkType: soft
 
@@ -6339,7 +6329,7 @@ __metadata:
     "@entur/tokens": "workspace:^"
     "@entur/utils": "workspace:^"
     "@testing-library/jest-dom": "npm:^5.17.0"
-    "@testing-library/react": "npm:^10.4.9"
+    "@testing-library/react": "npm:^16.3.0"
     "@testing-library/user-event": "npm:14.6.1"
     "@vitejs/plugin-react": "npm:^5.0.1"
     classnames: "npm:^2.5.1"
@@ -6352,8 +6342,8 @@ __metadata:
     vite: "npm:^7.3.2"
     vite-plugin-dts: "npm:^4.5.4"
   peerDependencies:
-    react: ">=16.8.0"
-    react-dom: ">=16.8.0"
+    react: ">=18.0.0"
+    react-dom: ">=18.0.0"
   dependenciesMeta:
     glob:
       optional: true
@@ -6365,7 +6355,7 @@ __metadata:
   resolution: "@entur/utils@workspace:packages/utils"
   dependencies:
     "@testing-library/jest-dom": "npm:^5.17.0"
-    "@testing-library/react": "npm:^10.4.9"
+    "@testing-library/react": "npm:^16.3.0"
     "@testing-library/user-event": "npm:14.6.1"
     jest: "npm:^29.0.0"
     jest-environment-jsdom: "npm:^29.0.0"
@@ -6375,8 +6365,8 @@ __metadata:
     vite: "npm:^7.3.2"
     vite-plugin-dts: "npm:^4.5.4"
   peerDependencies:
-    react: ">=16.8.0"
-    react-dom: ">=16.8.0"
+    react: ">=18.0.0"
+    react-dom: ">=18.0.0"
   languageName: unknown
   linkType: soft
 
@@ -8078,19 +8068,6 @@ __metadata:
     slash: "npm:^3.0.0"
     write-file-atomic: "npm:^4.0.2"
   checksum: 10c0/7f4a7f73dcf45dfdf280c7aa283cbac7b6e5a904813c3a93ead7e55873761fc20d5c4f0191d2019004fac6f55f061c82eb3249c2901164ad80e362e7a7ede5a6
-  languageName: node
-  linkType: hard
-
-"@jest/types@npm:^26.6.2":
-  version: 26.6.2
-  resolution: "@jest/types@npm:26.6.2"
-  dependencies:
-    "@types/istanbul-lib-coverage": "npm:^2.0.0"
-    "@types/istanbul-reports": "npm:^3.0.0"
-    "@types/node": "npm:*"
-    "@types/yargs": "npm:^15.0.0"
-    chalk: "npm:^4.0.0"
-  checksum: 10c0/5b9b957f38a002895eb04bbb8c3dda6fccce8e2551f3f44b02f1f43063a78e8bedce73cd4330b53ede00ae005de5cd805982fbb2ec6ab9feacf96344240d5db2
   languageName: node
   linkType: hard
 
@@ -10773,32 +10750,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@reach/auto-id@npm:0.15.3":
-  version: 0.15.3
-  resolution: "@reach/auto-id@npm:0.15.3"
-  dependencies:
-    "@reach/utils": "npm:0.15.3"
-    tslib: "npm:^2.3.0"
-  peerDependencies:
-    react: ^16.8.0 || 17.x
-    react-dom: ^16.8.0 || 17.x
-  checksum: 10c0/7224a67acda463b953422c36d90885868db83697315fc508e6b0e99faa0dccdc9fa0fcec73050457062d1a883d3b7a1b00dd7d281e87c9346f75bad5d3573b18
-  languageName: node
-  linkType: hard
-
-"@reach/descendants@npm:0.15.3":
-  version: 0.15.3
-  resolution: "@reach/descendants@npm:0.15.3"
-  dependencies:
-    "@reach/utils": "npm:0.15.3"
-    tslib: "npm:^2.3.0"
-  peerDependencies:
-    react: ^16.8.0 || 17.x
-    react-dom: ^16.8.0 || 17.x
-  checksum: 10c0/ddb355c9aba6643bc96bb4807ff8b196a03e88ca7fb957448198f1c016aac7ead98f5b2d3191c867e53fbaa5f9bf60d0abb746e5ac4ae82a8926ddbedd2f1ba3
-  languageName: node
-  linkType: hard
-
 "@reach/dialog@npm:^0.16.2":
   version: 0.16.2
   resolution: "@reach/dialog@npm:0.16.2"
@@ -10827,35 +10778,6 @@ __metadata:
     react: ^16.8.0 || 17.x
     react-dom: ^16.8.0 || 17.x
   checksum: 10c0/814872d0e3ddfe75ab59a4adb1e52f3d0c44a307ff738f203526925ebeae266c99808669ed7f44b886f2f0a2f16fca2a6e765c505354e675a60aa9b14ead92df
-  languageName: node
-  linkType: hard
-
-"@reach/tabs@npm:^0.15.3":
-  version: 0.15.3
-  resolution: "@reach/tabs@npm:0.15.3"
-  dependencies:
-    "@reach/auto-id": "npm:0.15.3"
-    "@reach/descendants": "npm:0.15.3"
-    "@reach/utils": "npm:0.15.3"
-    prop-types: "npm:^15.7.2"
-    tslib: "npm:^2.3.0"
-  peerDependencies:
-    react: ^16.8.0 || 17.x
-    react-dom: ^16.8.0 || 17.x
-  checksum: 10c0/060a5599404d542abf7dbee89e4aabea9667f195902857d0e5022d856e3fdd3637f7d388d3165b9b40ca8cc4f76df23bc049925e4a93e8f45974055e6091084d
-  languageName: node
-  linkType: hard
-
-"@reach/utils@npm:0.15.3":
-  version: 0.15.3
-  resolution: "@reach/utils@npm:0.15.3"
-  dependencies:
-    tiny-warning: "npm:^1.0.3"
-    tslib: "npm:^2.3.0"
-  peerDependencies:
-    react: ^16.8.0 || 17.x
-    react-dom: ^16.8.0 || 17.x
-  checksum: 10c0/56b163074ad13f67f89c2aeeca43e6758ca696d988db0d0e2bb049062a1258d9621ef0682eb1cea9240484904977c91878c63865cc0e7024e611cec1e9ded02f
   languageName: node
   linkType: hard
 
@@ -13061,19 +12983,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/dom@npm:^7.22.3":
-  version: 7.31.2
-  resolution: "@testing-library/dom@npm:7.31.2"
+"@testing-library/dom@npm:^10.4.1":
+  version: 10.4.1
+  resolution: "@testing-library/dom@npm:10.4.1"
   dependencies:
     "@babel/code-frame": "npm:^7.10.4"
     "@babel/runtime": "npm:^7.12.5"
-    "@types/aria-query": "npm:^4.2.0"
-    aria-query: "npm:^4.2.2"
-    chalk: "npm:^4.1.0"
-    dom-accessibility-api: "npm:^0.5.6"
-    lz-string: "npm:^1.4.4"
-    pretty-format: "npm:^26.6.2"
-  checksum: 10c0/51498f6552b669a547202f4f508a1e91b5a0c25a64be987e49601ec00f3d0cc514c591400f0ad49d91b7d522e40e29b29a209aecd43f8611e2240b1ba3d4f93d
+    "@types/aria-query": "npm:^5.0.1"
+    aria-query: "npm:5.3.0"
+    dom-accessibility-api: "npm:^0.5.9"
+    lz-string: "npm:^1.5.0"
+    picocolors: "npm:1.1.1"
+    pretty-format: "npm:^27.0.2"
+  checksum: 10c0/19ce048012d395ad0468b0dbcc4d0911f6f9e39464d7a8464a587b29707eed5482000dad728f5acc4ed314d2f4d54f34982999a114d2404f36d048278db815b1
   languageName: node
   linkType: hard
 
@@ -13094,16 +13016,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/react@npm:^10.4.9":
-  version: 10.4.9
-  resolution: "@testing-library/react@npm:10.4.9"
+"@testing-library/react@npm:^16.3.0":
+  version: 16.3.2
+  resolution: "@testing-library/react@npm:16.3.2"
   dependencies:
-    "@babel/runtime": "npm:^7.10.3"
-    "@testing-library/dom": "npm:^7.22.3"
+    "@babel/runtime": "npm:^7.12.5"
   peerDependencies:
-    react: "*"
-    react-dom: "*"
-  checksum: 10c0/25880d8b43938966ace7c1b6210eb996b5d2889e98cdd58ede6b81d4b09c70229ea3e89721f36d005f1c09ea3acc172dacb30e5f3fae45bb2f727ecfd60c2576
+    "@testing-library/dom": ^10.0.0
+    "@types/react": ^18.0.0 || ^19.0.0
+    "@types/react-dom": ^18.0.0 || ^19.0.0
+    react: ^18.0.0 || ^19.0.0
+    react-dom: ^18.0.0 || ^19.0.0
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+    "@types/react-dom":
+      optional: true
+  checksum: 10c0/f9c7f0915e1b5f7b750e6c7d8b51f091b8ae7ea99bacb761d7b8505ba25de9cfcb749a0f779f1650fb268b499dd79165dc7e1ee0b8b4cb63430d3ddc81ffe044
   languageName: node
   linkType: hard
 
@@ -13207,10 +13136,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/aria-query@npm:^4.2.0":
-  version: 4.2.2
-  resolution: "@types/aria-query@npm:4.2.2"
-  checksum: 10c0/6dc0d94890c2c7c2e347148ea32215b73bf480e0f0888a9bbfb7b531285a3daf0b95e600db5be1c03d6e5f825d63cf8c2aabc5db93d8d1fd47ce3211f73e8d66
+"@types/aria-query@npm:^5.0.1":
+  version: 5.0.4
+  resolution: "@types/aria-query@npm:5.0.4"
+  checksum: 10c0/dc667bc6a3acc7bba2bccf8c23d56cb1f2f4defaa704cfef595437107efaa972d3b3db9ec1d66bc2711bfc35086821edd32c302bffab36f2e79b97f312069f08
   languageName: node
   linkType: hard
 
@@ -13864,12 +13793,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:17.0.26":
-  version: 17.0.26
-  resolution: "@types/react-dom@npm:17.0.26"
+"@types/react-dom@npm:18.3.5":
+  version: 18.3.5
+  resolution: "@types/react-dom@npm:18.3.5"
   peerDependencies:
-    "@types/react": ^17.0.0
-  checksum: 10c0/8363921f08afe3f2ef82fe293301a0809ec646975fe9f5bfeb2e823f7237b97e47d27e1c6c2ffff27d15c12ab3cad1de6c77a737e37499fcc52793b0fd674f3f
+    "@types/react": ^18.0.0
+  checksum: 10c0/b163d35a6b32a79f5782574a7aeb12a31a647e248792bf437e6d596e2676961c394c5e3c6e91d1ce44ae90441dbaf93158efb4f051c0d61e2612f1cb04ce4faa
   languageName: node
   linkType: hard
 
@@ -14210,15 +14139,6 @@ __metadata:
   version: 21.0.3
   resolution: "@types/yargs-parser@npm:21.0.3"
   checksum: 10c0/e71c3bd9d0b73ca82e10bee2064c384ab70f61034bbfb78e74f5206283fc16a6d85267b606b5c22cb2a3338373586786fed595b2009825d6a9115afba36560a0
-  languageName: node
-  linkType: hard
-
-"@types/yargs@npm:^15.0.0":
-  version: 15.0.19
-  resolution: "@types/yargs@npm:15.0.19"
-  dependencies:
-    "@types/yargs-parser": "npm:*"
-  checksum: 10c0/9fe9b8645304a628006cbba2d1990fb015e2727274d0e3853f321a379a1242d1da2c15d2f56cff0d4313ae94f0383ccf834c3bded9fb3589608aefb3432fcf00
   languageName: node
   linkType: hard
 
@@ -15269,7 +15189,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ansi-regex@npm:^5.0.0, ansi-regex@npm:^5.0.1":
+"ansi-regex@npm:^5.0.1":
   version: 5.0.1
   resolution: "ansi-regex@npm:5.0.1"
   checksum: 10c0/9a64bb8627b434ba9327b60c027742e5d17ac69277960d041898596271d992d4d52ba7267a63ca10232e29f6107fc8a835f6ce8d719b88c5f8493f8254813737
@@ -15420,13 +15340,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"aria-query@npm:^4.2.2":
-  version: 4.2.2
-  resolution: "aria-query@npm:4.2.2"
+"aria-query@npm:5.3.0":
+  version: 5.3.0
+  resolution: "aria-query@npm:5.3.0"
   dependencies:
-    "@babel/runtime": "npm:^7.10.2"
-    "@babel/runtime-corejs3": "npm:^7.10.2"
-  checksum: 10c0/7e224fbbb4de8210c5d8cbaf0e1a22caa78f2068bf231f4c75302bd77eeba1c3e3b97912080535140be60174720d2ac817e5d6fec18592951b4b6488d4da7cdc
+    dequal: "npm:^2.0.3"
+  checksum: 10c0/2bff0d4eba5852a9dd578ecf47eaef0e82cc52569b48469b0aac2db5145db0b17b7a58d9e01237706d1e14b7a1b0ac9b78e9c97027ad97679dd8f91b85da1469
   languageName: node
   linkType: hard
 
@@ -18350,13 +18269,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"core-js-pure@npm:^3.48.0":
-  version: 3.49.0
-  resolution: "core-js-pure@npm:3.49.0"
-  checksum: 10c0/b4580a57b917d0bf1029356b1a60abf0f9b99562b67bf39c01485d58891f23603459ed71bde1d7f75c0a9a346829d8c281b255c525fb119726341364c513e82e
-  languageName: node
-  linkType: hard
-
 "core-js@npm:^3.31.0, core-js@npm:^3.38.1":
   version: 3.39.0
   resolution: "core-js@npm:3.39.0"
@@ -19481,7 +19393,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dequal@npm:^2.0.0":
+"dequal@npm:^2.0.0, dequal@npm:^2.0.3":
   version: 2.0.3
   resolution: "dequal@npm:2.0.3"
   checksum: 10c0/f98860cdf58b64991ae10205137c0e97d384c3a4edc7f807603887b7c4b850af1224a33d88012009f150861cbee4fa2d322c4cc04b9313bee312e47f6ecaa888
@@ -19496,13 +19408,14 @@ __metadata:
     "@commitlint/config-conventional": "npm:19.8.1"
     "@rollup/plugin-commonjs": "npm:^28.0.6"
     "@rollup/plugin-node-resolve": "npm:^16.0.1"
+    "@testing-library/dom": "npm:^10.4.1"
     "@testing-library/jest-dom": "npm:^5.17.0"
-    "@testing-library/react": "npm:^10.4.9"
+    "@testing-library/react": "npm:^16.3.0"
     "@testing-library/user-event": "npm:14.6.1"
     "@types/jest-axe": "npm:3.5.9"
     "@types/node": "npm:^24"
-    "@types/react": "npm:17.0.88"
-    "@types/react-dom": "npm:17.0.26"
+    "@types/react": "npm:18.3.24"
+    "@types/react-dom": "npm:18.3.5"
     "@vitejs/plugin-react": "npm:^5.0.1"
     case: "npm:1.6.3"
     commitizen: "npm:4.3.1"
@@ -19517,8 +19430,8 @@ __metadata:
     postcss-preset-env: "npm:10.3.1"
     prettier: "npm:2.8.8"
     pretty-quick: "npm:^3.3.1"
-    react: "npm:17.0.2"
-    react-dom: "npm:17.0.2"
+    react: "npm:18.3.1"
+    react-dom: "npm:18.3.1"
     rollup-plugin-sass: "npm:1.15.3"
     sass: "npm:1.90.0"
     stylelint: "npm:^16.0.0"
@@ -19720,7 +19633,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dom-accessibility-api@npm:^0.5.6":
+"dom-accessibility-api@npm:^0.5.6, dom-accessibility-api@npm:^0.5.9":
   version: 0.5.16
   resolution: "dom-accessibility-api@npm:0.5.16"
   checksum: 10c0/b2c2eda4fae568977cdac27a9f0c001edf4f95a6a6191dfa611e3721db2478d1badc01db5bb4fa8a848aeee13e442a6c2a4386d65ec65a1436f24715a2f8d053
@@ -28572,7 +28485,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lz-string@npm:^1.4.4, lz-string@npm:^1.5.0":
+"lz-string@npm:^1.5.0":
   version: 1.5.0
   resolution: "lz-string@npm:1.5.0"
   bin:
@@ -33099,7 +33012,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"picocolors@npm:^1.0.0, picocolors@npm:^1.0.1, picocolors@npm:^1.1.0, picocolors@npm:^1.1.1":
+"picocolors@npm:1.1.1, picocolors@npm:^1.0.0, picocolors@npm:^1.0.1, picocolors@npm:^1.1.0, picocolors@npm:^1.1.1":
   version: 1.1.1
   resolution: "picocolors@npm:1.1.1"
   checksum: 10c0/e2e3e8170ab9d7c7421969adaa7e1b31434f789afb9b3f115f6b96d91945041ac3ceb02e9ec6fe6510ff036bcc0bf91e69a1772edc0b707e12b19c0f2d6bcf58
@@ -34519,15 +34432,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pretty-format@npm:^26.6.2":
-  version: 26.6.2
-  resolution: "pretty-format@npm:26.6.2"
+"pretty-format@npm:^27.0.2":
+  version: 27.5.1
+  resolution: "pretty-format@npm:27.5.1"
   dependencies:
-    "@jest/types": "npm:^26.6.2"
-    ansi-regex: "npm:^5.0.0"
-    ansi-styles: "npm:^4.0.0"
+    ansi-regex: "npm:^5.0.1"
+    ansi-styles: "npm:^5.0.0"
     react-is: "npm:^17.0.1"
-  checksum: 10c0/b5ddf0e949b874b699d313fe9407f0eb65e67d00823b2dd95335905a73457260af7612f3bff6b48611fcca9ffcff003359e4c9faba4200d6209da433a859aef3
+  checksum: 10c0/0cbda1031aa30c659e10921fa94e0dd3f903ecbbbe7184a729ad66f2b6e7f17891e8c7d7654c458fa4ccb1a411ffb695b4f17bbcd3fe075fabe181027c4040ed
   languageName: node
   linkType: hard
 
@@ -35239,19 +35151,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:17.0.2":
-  version: 17.0.2
-  resolution: "react-dom@npm:17.0.2"
-  dependencies:
-    loose-envify: "npm:^1.1.0"
-    object-assign: "npm:^4.1.1"
-    scheduler: "npm:^0.20.2"
-  peerDependencies:
-    react: 17.0.2
-  checksum: 10c0/51abbcb72450fe527ebf978c3bc989ba266630faaa53f47a2fae5392369729e8de62b2e4683598cbe651ea7873cd34ec7d5127e2f50bf4bfe6bd0c3ad9bddcb0
-  languageName: node
-  linkType: hard
-
 "react-dom@npm:18.3.1":
   version: 18.3.1
   resolution: "react-dom@npm:18.3.1"
@@ -35677,16 +35576,6 @@ __metadata:
     react: ">=16 || >=17 || >= 18 || >= 19"
     react-dom: ">=16 || >=17 || >= 18 || >=19"
   checksum: 10c0/56f4ea49668ad1004be42ff75dc0eade581754dd37a0aa04a3b7470cb132b324de2e7af5d8e29c420bf9726fd4a016104e2a14347ed9cc23235ce7a658a0591e
-  languageName: node
-  linkType: hard
-
-"react@npm:17.0.2":
-  version: 17.0.2
-  resolution: "react@npm:17.0.2"
-  dependencies:
-    loose-envify: "npm:^1.1.0"
-    object-assign: "npm:^4.1.1"
-  checksum: 10c0/07ae8959acf1596f0550685102fd6097d461a54a4fd46a50f88a0cd7daaa97fdd6415de1dcb4bfe0da6aa43221a6746ce380410fa848acc60f8ac41f6649c148
   languageName: node
   linkType: hard
 
@@ -37288,16 +37177,6 @@ __metadata:
   dependencies:
     xmlchars: "npm:^2.2.0"
   checksum: 10c0/3847b839f060ef3476eb8623d099aa502ad658f5c40fd60c105ebce86d244389b0d76fcae30f4d0c728d7705ceb2f7e9b34bb54717b6a7dbedaf5dad2d9a4b74
-  languageName: node
-  linkType: hard
-
-"scheduler@npm:^0.20.2":
-  version: 0.20.2
-  resolution: "scheduler@npm:0.20.2"
-  dependencies:
-    loose-envify: "npm:^1.1.0"
-    object-assign: "npm:^4.1.1"
-  checksum: 10c0/b0982e4b0f34f4ffa4f2f486161c0fd9ce9b88680b045dccbf250eb1aa4fd27413570645455187a83535e2370f5c667a251045547765408492bd883cbe95fcdb
   languageName: node
   linkType: hard
 
