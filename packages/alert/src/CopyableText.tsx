@@ -63,10 +63,7 @@ export const CopyableText = ({
         className,
         `eds-copyable-text--size-${size}`,
       )}
-      type="button"
       onClick={handleClick}
-      tabIndex={-1}
-      aria-label=""
       {...rest}
     >
       <PreformattedText className="eds-copyable-text__preformatted-text">
