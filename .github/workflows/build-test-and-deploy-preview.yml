@@ -61,9 +61,7 @@ jobs:
       - name: Cache gatsby
         uses: actions/cache@v5
         with:
-          path: |
-            apps/documentation/.cache
-            apps/documentation/public
+          path: apps/documentation/.cache
           key: gatsby-${{ github.head_ref }}-${{ runner.os }}-${{ steps.cache_day_key.outputs.cache-key }}-${{ github.run_id }}
           restore-keys: gatsby-${{ github.head_ref }}-${{ runner.os }}-${{ steps.cache_day_key.outputs.cache-key }}
 

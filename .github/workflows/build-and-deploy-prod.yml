@@ -112,11 +112,9 @@ jobs:
       - name: Cache gatsby
         uses: actions/cache@v5
         with:
-          path: |
-            apps/documentation/.cache
-            apps/documentation/public
-          key: gatsby-${{ runner.os }}-${{ github.run_id }} # Since this is unique the cache will always be updated
-          restore-keys: gatsby-${{ runner.os }} # But since this one always matches we will also always get a cache hit
+          path: apps/documentation/.cache
+          key: gatsby-${{ runner.os }}-${{ github.run_id }}
+          restore-keys: gatsby-${{ runner.os }}
 
       - name: Build documentation
         run: yarn build:documentation:skip-packages-dependency
