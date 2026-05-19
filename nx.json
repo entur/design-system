@@ -32,6 +32,5 @@
     }
   },
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
-  "cacheDirectory": ".cache/nx",
-  "useLegacyCache": true
+  "cacheDirectory": ".cache/nx"
 }
