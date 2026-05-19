@@ -26,13 +26,23 @@ jobs:
       - name: Use Nx cache
         uses: ./.github/actions/use-nx-cache
 
-      - run: NX_REJECT_UNKNOWN_LOCAL_CACHE=0 yarn build:packages
+      - run: yarn build:packages
 
       - name: upload artifact
         uses: actions/upload-artifact@v7
         with:
           name: package-artifacts
           path: 'packages/**/dist'
+
+      - name: Upload Nx cache state
+        uses: actions/upload-artifact@v7
+        with:
+          name: nx-cache-state
+          path: |
+            .nx/cache
+            .nx/workspace-data
+          include-hidden-files: true
+          if-no-files-found: ignore
 
   build-documentation:
     name: Build documentation
@@ -99,7 +109,13 @@ jobs:
           name: package-artifacts
           path: 'packages'
 
-      - run: NX_REJECT_UNKNOWN_LOCAL_CACHE=0 yarn test
+      - name: Download Nx cache state
+        uses: actions/download-artifact@v8
+        with:
+          name: nx-cache-state
+          path: '.nx'
+
+      - run: yarn test
 
   lint-packages:
     name: Lint packages
@@ -122,7 +138,13 @@ jobs:
           name: package-artifacts
           path: 'packages'
 
-      - run: NX_REJECT_UNKNOWN_LOCAL_CACHE=0 yarn lint
+      - name: Download Nx cache state
+        uses: actions/download-artifact@v8
+        with:
+          name: nx-cache-state
+          path: '.nx'
+
+      - run: yarn lint
 
   deploy-documentation-to-preview-channel:
     needs: build-documentation

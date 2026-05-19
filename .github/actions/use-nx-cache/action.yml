@@ -1,11 +1,18 @@
 name: 'Manage Nx cache'
-description: 'Downloads Nx cache and updates it after run'
+description: 'Downloads Nx cache (artifacts + metadata DB) and updates it after run'
 runs:
   using: 'composite'
   steps:
     - name: Cache Nx
       uses: actions/cache@v5
       with:
-        path: '.cache/nx'
+        # Cache both the artifact store (`.nx/cache`) and the workspace metadata
+        # database (`.nx/workspace-data`). Nx 21+ uses the DB to verify that
+        # restored artifacts were produced by this workspace; without it the
+        # anti-cache-poisoning check rejects every artifact as "unrecognized"
+        # on a fresh runner, so the cache is effectively never used.
+        path: |
+          .nx/cache
+          .nx/workspace-data
         key: nx-${{ runner.os }}-${{ github.run_id }} # Since this is unique the cache will always be updated
         restore-keys: nx-${{ runner.os }}- # But since this one always matches we will also always get a cache hit
