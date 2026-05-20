@@ -26,7 +26,7 @@ jobs:
       - name: Use Nx cache
         uses: ./.github/actions/use-nx-cache
 
-      - run: yarn build:packages
+      - run: NX_REJECT_UNKNOWN_LOCAL_CACHE=0 yarn build:packages
 
       - name: upload artifact
         uses: actions/upload-artifact@v7
@@ -97,7 +97,7 @@ jobs:
           name: package-artifacts
           path: 'packages'
 
-      - run: yarn test
+      - run: NX_REJECT_UNKNOWN_LOCAL_CACHE=0 yarn test
 
   lint-packages:
     name: Lint packages
@@ -120,7 +120,7 @@ jobs:
           name: package-artifacts
           path: 'packages'
 
-      - run: yarn lint
+      - run: NX_REJECT_UNKNOWN_LOCAL_CACHE=0 yarn lint
 
   deploy-documentation-to-preview-channel:
     needs: build-documentation
