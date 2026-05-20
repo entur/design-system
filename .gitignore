@@ -33,6 +33,10 @@ coverage
 # Claude Code
 /.claude/*
 !/.claude/skills/
+!/.claude/commands/
+/.claude/commands/*
+!/.claude/commands/commit.md
+!/.claude/commands/update-pr.md
 
 ## Local test environment
 TestBench.tsx
