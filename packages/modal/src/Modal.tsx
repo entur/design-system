@@ -53,7 +53,7 @@ export const Modal: React.FC<ModalProps> = ({
 }) => {
   const randomId = useRandomId('eds-modal');
   const Heading: React.ElementType = headingsMap[size] || Heading2;
-  const showCloseButton = ['medium', 'large', 'extraLarge'].includes(size);
+  const showCloseButton = onDismiss !== undefined;
 
   let handleOnDismiss;
   if (onDismiss && closeOnClickOutside) {
