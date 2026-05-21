@@ -111,6 +111,7 @@ export const ModalOverlay: React.FC<ModalOverlayProps> = ({
     <dialog
       ref={dialogRef}
       className={classNames('eds-modal__overlay', className)}
+      aria-modal="true"
       {...rest}
       onKeyDown={handleKeyDown}
       onClick={handleClick}

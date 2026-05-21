@@ -62,6 +62,12 @@ export const Drawer: React.FC<DrawerProps> = ({
   };
 
   const Wrapper = contrast ? Contrast : React.Fragment;
+  const nonModalDialogProps = {
+    role: 'dialog' as const,
+    'aria-modal': false,
+    'aria-labelledby': titleId,
+  };
+
   return (
     <ConditionalWrapper
       condition={overlay}
@@ -77,7 +83,7 @@ export const Drawer: React.FC<DrawerProps> = ({
     >
       <Wrapper>
         <div
-          aria-labelledby={titleId}
+          {...(!overlay && nonModalDialogProps)}
           className={classNames('eds-drawer', className)}
           onKeyDown={handleKeyDown}
           style={style}
