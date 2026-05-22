@@ -2,27 +2,20 @@
 
 $modal-animation-duration: t.$timings-medium;
 
+html:has(dialog.eds-modal__overlay[open]),
+html:has(dialog.eds-modal__overlay[open]) body {
+  overflow: hidden;
+}
+
 .eds-modal {
   &__overlay {
-    // Reset native <dialog> styles
+    // <dialog> sizes to content; UA positions it (modal dialogs are
+    // centered in the top layer via the browser).
     border: none;
     padding: 0;
-    margin: 0;
-    max-width: none;
-    max-height: none;
-    width: 100%;
-    height: 100%;
+    background: transparent;
     color: inherit;
-
-    background: rgba(black, 0.5);
-    bottom: 0;
-    display: flex;
-    left: 0;
-    overflow: hidden;
     overscroll-behavior: contain;
-    position: fixed;
-    right: 0;
-    top: 0;
     z-index: t.$z-indexes-overlay;
 
     animation: fadeInOverlay;
@@ -30,7 +23,10 @@ $modal-animation-duration: t.$timings-medium;
     animation-timing-function: ease-in-out;
 
     &::backdrop {
-      background: transparent;
+      background: rgba(black, 0.5);
+      animation: fadeInOverlay;
+      animation-duration: $modal-animation-duration;
+      animation-timing-function: ease-in-out;
     }
   }
 

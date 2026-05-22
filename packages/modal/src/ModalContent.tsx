@@ -16,8 +16,7 @@ export type ModalContentProps = {
    * @default 'start'
    */
   align?: 'start' | 'center' | 'end';
-  [key: string]: any;
-};
+} & Omit<React.HTMLAttributes<HTMLDivElement>, 'title'>;
 
 export const headingsMap = {
   extraSmall: Heading4,

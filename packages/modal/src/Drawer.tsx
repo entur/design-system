@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import classNames from 'classnames';
 import { MoveFocusInside } from 'react-focus-lock';
 import { Contrast } from '@entur/layout';
@@ -49,6 +49,17 @@ export const Drawer: React.FC<DrawerProps> = ({
   overlay = false,
 }) => {
   const titleId = useRandomId('eds-drawer');
+  const previouslyFocusedRef = useRef<Element | null>(null);
+
+  useEffect(() => {
+    if (!open || overlay) return;
+    previouslyFocusedRef.current = document.activeElement;
+    return () => {
+      if (previouslyFocusedRef.current instanceof HTMLElement) {
+        previouslyFocusedRef.current.focus();
+      }
+    };
+  }, [open, overlay]);
 
   if (!open) {
     return null;

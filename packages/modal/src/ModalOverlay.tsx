@@ -1,5 +1,8 @@
 import React, { useRef, useEffect, useCallback } from 'react';
+import { createPortal } from 'react-dom';
+import FocusLock from 'react-focus-lock';
 import classNames from 'classnames';
+import { ContrastContext } from '@entur/layout';
 
 export type ModalOverlayProps = {
   /** Flagg som sier om modalen er åpen */
@@ -12,38 +15,40 @@ export type ModalOverlayProps = {
   className?: string;
   /** En ref til elementet som skal være fokusert når modalen åpnes. Defaulter til lukkeknappen */
   initialFocusRef?: React.RefObject<HTMLElement>;
-  [key: string]: any;
-};
-
-let scrollLockCount = 0;
-let originalBodyOverflow = '';
+  /** Om modalen skal lukkes når man klikker utenfor den
+   * @default true
+   */
+  closeOnClickOutside?: boolean;
+} & Omit<React.DialogHTMLAttributes<HTMLDialogElement>, 'open' | 'onClick'>;
 
 export const ModalOverlay: React.FC<ModalOverlayProps> = ({
   className,
   open,
   onDismiss,
   initialFocusRef,
+  closeOnClickOutside = true,
   children,
   ...rest
 }) => {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const previouslyFocusedRef = useRef<Element | null>(null);
 
-  // Open/close dialog and manage focus
+  // `data-autofocus` is what react-focus-lock targets on activation.
   useEffect(() => {
     const dialog = dialogRef.current;
     if (!dialog) return;
 
     previouslyFocusedRef.current = document.activeElement;
 
+    const focusTarget = initialFocusRef?.current;
+    focusTarget?.setAttribute('data-autofocus', '');
+
     if (!dialog.open) {
       dialog.showModal();
     }
-    if (initialFocusRef?.current) {
-      initialFocusRef.current.focus();
-    }
 
     return () => {
+      focusTarget?.removeAttribute('data-autofocus');
       if (dialog.open) {
         dialog.close();
       }
@@ -53,8 +58,6 @@ export const ModalOverlay: React.FC<ModalOverlayProps> = ({
     };
   }, [open, initialFocusRef]);
 
-  // Prevent native dialog close on Escape — native addEventListener
-  // is used instead of onCancel JSX prop for React 16/17 compatibility
   useEffect(() => {
     const dialog = dialogRef.current;
     if (!dialog) return;
@@ -67,24 +70,7 @@ export const ModalOverlay: React.FC<ModalOverlayProps> = ({
     return () => dialog.removeEventListener('cancel', handleCancel);
   }, [open]);
 
-  // Lock body scroll when open
-  useEffect(() => {
-    if (!open) return;
-    scrollLockCount++;
-    if (scrollLockCount === 1) {
-      originalBodyOverflow = document.body.style.overflow;
-      document.body.style.overflow = 'hidden';
-    }
-    return () => {
-      scrollLockCount--;
-      if (scrollLockCount === 0) {
-        document.body.style.overflow = originalBodyOverflow;
-      }
-    };
-  }, [open]);
-
-  // Handle Escape key — stopPropagation prevents nested modals from
-  // both closing when Escape is pressed
+  // stopPropagation so nested modals don't both close on Escape.
   const handleKeyDown = useCallback(
     (e: React.KeyboardEvent) => {
       if (e.key === 'Escape') {
@@ -98,25 +84,29 @@ export const ModalOverlay: React.FC<ModalOverlayProps> = ({
   // Dismiss when clicking the overlay backdrop (not children)
   const handleClick = useCallback(
     (e: React.MouseEvent<HTMLDialogElement>) => {
+      if (!closeOnClickOutside) return;
       if (e.target === dialogRef.current) {
         onDismiss?.();
       }
     },
-    [onDismiss],
+    [onDismiss, closeOnClickOutside],
   );
 
-  if (!open) return null;
+  if (!open || typeof document === 'undefined') return null;
 
-  return (
-    <dialog
-      ref={dialogRef}
-      className={classNames('eds-modal__overlay', className)}
-      aria-modal="true"
-      {...rest}
-      onKeyDown={handleKeyDown}
-      onClick={handleClick}
-    >
-      {children}
-    </dialog>
+  return createPortal(
+    <ContrastContext.Provider value={false}>
+      <dialog
+        ref={dialogRef}
+        className={classNames('eds-modal__overlay', className)}
+        aria-modal="true"
+        {...rest}
+        onKeyDown={handleKeyDown}
+        onClick={handleClick}
+      >
+        <FocusLock>{children}</FocusLock>
+      </dialog>
+    </ContrastContext.Provider>,
+    document.body,
   );
 };

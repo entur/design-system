@@ -35,8 +35,7 @@ export type ModalProps = {
    * @default true
    */
   closeOnClickOutside?: boolean;
-  [key: string]: any;
-};
+} & Omit<React.HTMLAttributes<HTMLDivElement>, 'title' | 'aria-label'>;
 
 export const Modal: React.FC<ModalProps> = ({
   children,
@@ -55,14 +54,11 @@ export const Modal: React.FC<ModalProps> = ({
   const Heading: React.ElementType = headingsMap[size] || Heading2;
   const showCloseButton = onDismiss !== undefined;
 
-  let handleOnDismiss;
-  if (onDismiss && closeOnClickOutside) {
-    handleOnDismiss = onDismiss;
-  }
   return (
     <ModalOverlay
       open={open}
-      onDismiss={handleOnDismiss}
+      onDismiss={onDismiss}
+      closeOnClickOutside={closeOnClickOutside}
       initialFocusRef={initialFocusRef}
       aria-labelledby={title ? randomId : undefined}
       aria-label={!title ? ariaLabel : undefined}
