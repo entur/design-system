@@ -22,22 +22,17 @@ type Component = {
  * If an icon is deprecated without a replacement, it is mapped to no value,
  * and you can still check for deprecation using `deprecatedIcons.has(iconName)`.
  */
-const DEPRECATED_ICONS = new Map([]);
+const DEPRECATED_ICONS = new Map([['BellIcon', 'AlertIcon']]);
 
 // These icons should not use brand-blue by default
-const OUTLIER_CATEGORIES = ['Partner', 'Flag', 'Entur'];
-const SPECIAL_OUTLIERS = [
-  'AmericanExpressIcon',
-  'MastercardIcon',
-  'VippsIcon',
-  'VippsLogoIcon',
-  'VisaIcon',
-  'CompassNeedleIcon',
-  'FigmaIcon',
-  'MuralIcon',
-  'ApplePayIcon',
-  'GooglePayIcon',
+const OUTLIER_CATEGORIES = [
+  'Partner',
+  'Flag',
+  'Entur',
+  'NonPartnerLogo',
+  'Payment',
 ];
+const SPECIAL_OUTLIERS = ['CompassNeedleIcon'];
 
 buildIconComponents();
 
