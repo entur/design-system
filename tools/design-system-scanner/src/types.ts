@@ -38,6 +38,8 @@ export interface RepoMetadata {
   framework: string | null;
   /** Resolved React version from lockfile, or declared range if unresolvable (e.g. "18.3.1") */
   reactVersion: string | null;
+  /** Unique code owners from CODEOWNERS file (e.g. ["@entur/team-x"]) */
+  codeOwners: string[];
 }
 
 /** Information about a workspace/package inside a monorepo. */
