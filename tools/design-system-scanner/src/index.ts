@@ -89,6 +89,7 @@ async function scanLocal(args: ParsedArgs): Promise<void> {
           isMonorepo: false, // Will be detected by scanner
           framework: null, // Will be detected by scanner
           reactVersion: null, // Will be detected by scanner
+          codeOwners: [], // Will be detected by scanner
         }
       : undefined;
 
@@ -265,6 +266,7 @@ function exportForBigQuery(args: ParsedArgs): void {
         is_monorepo: repo.repoMetadata?.isMonorepo || false,
         framework: repo.repoMetadata?.framework || null,
         react_version: repo.repoMetadata?.reactVersion || null,
+        code_owners: repo.repoMetadata?.codeOwners || [],
         ds_package_count: repo.designSystemPackages.length,
         ui_library_count: repo.otherUILibraries.length,
         component_count: repo.componentUsage.length,
@@ -693,6 +695,7 @@ function printSummary(usage: RepositoryUsage): void {
       m.framework && `Framework: ${m.framework}`,
       m.isMonorepo && 'Monorepo',
       m.visibility,
+      m.codeOwners.length > 0 && `Owners: ${m.codeOwners.join(', ')}`,
     ].filter(Boolean);
     if (meta.length > 0) console.log(`  ${meta.join(' | ')}\n`);
   }

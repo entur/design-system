@@ -38,6 +38,7 @@ const FIXTURE_REPORT: ScanReport = {
         isMonorepo: false,
         framework: 'next',
         reactVersion: '18.3.1',
+        codeOwners: ['@entur/team-app'],
       },
       workspaces: [],
       designSystemPackages: [

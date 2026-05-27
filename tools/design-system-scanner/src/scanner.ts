@@ -9,6 +9,7 @@ import { analyzeComponents } from './analyzers/reactScannerAnalyzer';
 import { analyzeImports } from './analyzers/importAnalyzer';
 import { resolveVersions } from './analyzers/lockfileResolver';
 import { analyzeCssOverrides } from './analyzers/cssOverrideAnalyzer';
+import { analyzeCodeOwners } from './analyzers/codeOwnersAnalyzer';
 import type {
   RepositoryUsage,
   RepoMetadata,
@@ -62,6 +63,9 @@ export async function scanRepository(
     }
   }
 
+  // Analyze CODEOWNERS
+  const codeOwners = analyzeCodeOwners(repoDir);
+
   // Enrich repo metadata — react version resolved from lockfile below (alongside DS packages)
   const enrichedMetadata: RepoMetadata | undefined = repoMetadata
     ? {
@@ -69,6 +73,7 @@ export async function scanRepository(
         isMonorepo,
         framework: repoMetadata.framework || framework,
         reactVersion: repoMetadata.reactVersion ?? reactVersionRange,
+        codeOwners,
       }
     : undefined;
 

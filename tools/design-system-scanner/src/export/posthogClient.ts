@@ -109,6 +109,7 @@ export function buildGroupIdentifies(
         react_version: repo.repoMetadata?.reactVersion ?? null,
         primary_language: repo.repoMetadata?.primaryLanguage ?? null,
         is_monorepo: repo.repoMetadata?.isMonorepo ?? false,
+        code_owners: repo.repoMetadata?.codeOwners ?? [],
       },
     });
 
@@ -268,6 +269,7 @@ function buildRepoEvents(repo: RepositoryUsage, ts: string): CapturePayload[] {
       ),
       import_usage_count: repo.importUsage.length,
       css_override_count: (repo.cssOverrides ?? []).length,
+      code_owners: repo.repoMetadata?.codeOwners ?? [],
     },
   });
 

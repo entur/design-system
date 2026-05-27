@@ -142,6 +142,7 @@ describe('scanner', () => {
           isMonorepo: false,
           framework: null,
           reactVersion: null,
+          codeOwners: [],
         },
       );
 
@@ -191,6 +192,7 @@ describe('scanner', () => {
           isMonorepo: false,
           framework: null,
           reactVersion: null,
+          codeOwners: [],
         },
       );
 
