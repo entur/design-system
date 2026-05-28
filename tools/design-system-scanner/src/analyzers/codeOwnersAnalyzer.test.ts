@@ -20,9 +20,9 @@ packages/sanity/ @entur/team-designsystem @entur/team-selvbetjent`;
     expect(parseCodeOwners(content)).toEqual(['@entur/team-a']);
   });
 
-  it('handles individual user owners', () => {
+  it('filters out non-entur owners', () => {
     const content = `* @someuser @entur/team-a`;
-    expect(parseCodeOwners(content)).toEqual(['@entur/team-a', '@someuser']);
+    expect(parseCodeOwners(content)).toEqual(['@entur/team-a']);
   });
 
   it('returns empty array for empty file', () => {

@@ -40,7 +40,7 @@ export function parseCodeOwners(content: string): string[] {
     const tokens = trimmed.split(/\s+/);
     for (let i = 1; i < tokens.length; i++) {
       const token = tokens[i];
-      if (token.startsWith('@')) {
+      if (token.startsWith('@entur/')) {
         owners.add(token);
       }
     }
