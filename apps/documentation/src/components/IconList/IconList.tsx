@@ -73,6 +73,48 @@ const deprecatedIcons = [
   'OutlinedValidationInfoIcon',
   'ValidationCheckIcon',
   'ValidationCheckFilledIcon',
+  // Old Partner root icons — renamed to *LogoMonoIcon / *LogoIcon
+  'BaneNORIcon',
+  'GOAColorIcon',
+  'ReisNordlandIcon',
+  'ReisNordlandColorIcon',
+  'SJNordIcon',
+  'AKTIcon',
+  'AlesundTurvognIcon',
+  'AtBIcon',
+  'BrakarIcon',
+  'FarteIcon',
+  'FlybussenIcon',
+  'FramIcon',
+  'GOAIcon',
+  'HykeIcon',
+  'InnlandstrafikkIcon',
+  'KolumbusIcon',
+  'NordlandIcon',
+  'OstfoldIcon',
+  'RuterIcon',
+  'SJIcon',
+  'SkyssIcon',
+  'SnelandiaIcon',
+  'SvipperIcon',
+  'VKTIcon',
+  'VyIcon',
+  'ØresundstågIcon',
+  // Old Mobility icons — moved to Logo/
+  'BergenBysykkelIcon',
+  'BoltIcon',
+  'FarteBysykkelIcon',
+  'GetAroundIcon',
+  'HertzIcon',
+  'KolumbusBysykkelIcon',
+  'LimeIcon',
+  'MoveAboutIcon',
+  'OsloBysykkelIcon',
+  'SURFIcon',
+  'TierIcon',
+  'TrondheimBysykkelIcon',
+  'VoiIcon',
+  'ZvippIcon',
 ];
 
 const unique = (value: string, index: number, listWithItems: string[]) => {
@@ -94,6 +136,11 @@ const IconList: React.FC<IconListProps> = ({ icons: allIconComponents }) => {
   );
   const [selectedCategory, setSelectedCategory] =
     React.useState<NormalizedDropdownItemType | null>(initialParams.category);
+
+  const [partnerIconSettings, setPartnerSettings] = React.useState<{
+    color: boolean;
+    symbol: boolean;
+  }>({ color: false, symbol: false });
 
   // Update URL when search string or category changes
   React.useEffect(() => {
@@ -151,6 +198,10 @@ const IconList: React.FC<IconListProps> = ({ icons: allIconComponents }) => {
     [],
   );
 
+  const partnerCategoryIsSelected = selectedCategory?.value
+    ?.toLowerCase()
+    .startsWith('partner');
+
   const searcherAllIcons = React.useMemo(
     () => new Searcher(allIcons, SEARCH_OPTIONS),
     [allIcons, SEARCH_OPTIONS],
@@ -167,23 +218,38 @@ const IconList: React.FC<IconListProps> = ({ icons: allIconComponents }) => {
     const iconsInSelectedCategory = allIcons.filter(icon => {
       // If selected category is a main category (no slash), show all icons in that category and its subcategories
       if (!selectedCategory.value.includes('/')) {
-        return (
-          icon.category === selectedCategory.value ||
-          icon.category.startsWith(selectedCategory.value + '/')
-        );
+        return icon.category.startsWith(selectedCategory.value);
       }
       // If selected category is a subcategory, show only icons in that exact subcategory
       return icon.category === selectedCategory.value;
     });
 
-    if (searchString === '') return iconsInSelectedCategory;
+    const relevantIconsInSelectedCategory = !partnerCategoryIsSelected
+      ? iconsInSelectedCategory
+      : iconsInSelectedCategory.filter(_icon => {
+          const isColorIcon = _icon.category.includes('/Light');
+          const isSymbolIcon = _icon.category.includes('Symbol');
 
-    return search(searchString, iconsInSelectedCategory, SEARCH_OPTIONS);
+          return (
+            partnerIconSettings.color === isColorIcon &&
+            partnerIconSettings.symbol === isSymbolIcon
+          );
+        });
+
+    if (searchString === '') return relevantIconsInSelectedCategory;
+
+    return search(
+      searchString,
+      relevantIconsInSelectedCategory,
+      SEARCH_OPTIONS,
+    );
   }, [
     allIcons,
     searchString,
     selectedCategory,
     searcherAllIcons,
+    partnerIconSettings.color,
+    partnerIconSettings.symbol,
     SEARCH_OPTIONS,
   ]);
 
@@ -196,9 +262,6 @@ const IconList: React.FC<IconListProps> = ({ icons: allIconComponents }) => {
   const numberOfResultsString = `${displayedIcons.length}\u00A0ikon${
     displayedIcons.length === 1 ? '' : 'er'
   }`;
-  const partnerCategoryIsSelected = selectedCategory?.value
-    ?.toLowerCase()
-    .startsWith('partner');
 
   const handleIconClick = (iconName: string) => () => {
     copy(iconName);
@@ -290,6 +353,32 @@ const IconList: React.FC<IconListProps> = ({ icons: allIconComponents }) => {
               >
                 Kontrast
               </Switch>
+            )}
+            {partnerCategoryIsSelected && (
+              <>
+                <Switch
+                  checked={partnerIconSettings.color}
+                  onChange={() =>
+                    setPartnerSettings(prev => ({
+                      ...prev,
+                      color: !prev.color,
+                    }))
+                  }
+                >
+                  Med farger
+                </Switch>
+                <Switch
+                  checked={partnerIconSettings.symbol}
+                  onChange={() =>
+                    setPartnerSettings(prev => ({
+                      ...prev,
+                      symbol: !prev.symbol,
+                    }))
+                  }
+                >
+                  Kun symbol
+                </Switch>
+              </>
             )}
             <span aria-live="polite">
               {numberOfResultsString}
