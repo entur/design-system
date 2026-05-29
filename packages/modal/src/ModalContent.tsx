@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useId } from 'react';
 import classNames from 'classnames';
 import { Heading4, Heading3, Heading2 } from '@entur/typography';
-import { useRandomId } from '@entur/utils';
 
 export type ModalContentProps = {
   /** Innholdet i modalen */
@@ -35,7 +34,7 @@ export const ModalContent: React.FC<ModalContentProps> = ({
   ...rest
 }) => {
   const Heading: React.ElementType = headingsMap[size] || Heading2;
-  const randomId = useRandomId('eds-modal');
+  const randomId = useId();
   return (
     <div
       className={classNames(

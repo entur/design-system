@@ -1,10 +1,9 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useId, useRef } from 'react';
 import classNames from 'classnames';
 import { MoveFocusInside } from 'react-focus-lock';
 import { Contrast } from '@entur/layout';
 import { CloseIcon } from '@entur/icons';
 import { Heading3 } from '@entur/typography';
-import { useRandomId } from '@entur/utils';
 import { IconButton } from '@entur/button';
 
 import './Drawer.scss';
@@ -48,7 +47,7 @@ export const Drawer: React.FC<DrawerProps> = ({
   style,
   overlay = false,
 }) => {
-  const titleId = useRandomId('eds-drawer');
+  const titleId = useId();
   const previouslyFocusedRef = useRef<Element | null>(null);
 
   useEffect(() => {
@@ -109,7 +108,7 @@ export const Drawer: React.FC<DrawerProps> = ({
               <CloseIcon aria-hidden />
             </IconButton>
             <div className="eds-drawer__content">
-              <Heading3 as="h2" id={titleId}>
+              <Heading3 as="h2" id={titleId} tabIndex={-1} data-autofocus="">
                 {title}
               </Heading3>
               {children}

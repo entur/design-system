@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { useId } from 'react';
 
 import { CloseIcon } from '@entur/icons';
 import { IconButton } from '@entur/button';
 import { Heading2 } from '@entur/typography';
-import { useRandomId } from '@entur/utils';
 
 import { ModalOverlay } from './ModalOverlay';
 import { ModalContent, headingsMap } from './ModalContent';
@@ -15,7 +14,7 @@ export type ModalProps = {
   children: React.ReactNode;
   /** Skjermleser-label til lukk-knappen */
   closeLabel?: string;
-  /** En ref til elementet som skal være fokusert når modalen åpnes. Defaulter til lukkeknappen */
+  /** En ref til elementet som skal være fokusert når modalen åpnes. Defaulter til tittelen, ellers første interaktive element */
   initialFocusRef?: React.RefObject<HTMLElement>;
   /** Flagg som sier om modalen er åpen */
   open?: boolean;
@@ -50,7 +49,7 @@ export const Modal: React.FC<ModalProps> = ({
   'aria-label': ariaLabel,
   ...rest
 }) => {
-  const randomId = useRandomId('eds-modal');
+  const randomId = useId();
   const Heading: React.ElementType = headingsMap[size] || Heading2;
   const showCloseButton = onDismiss !== undefined;
 
@@ -75,7 +74,13 @@ export const Modal: React.FC<ModalProps> = ({
           </IconButton>
         )}
         {title && (
-          <Heading margin="bottom" as="h2" id={randomId}>
+          <Heading
+            margin="bottom"
+            as="h2"
+            id={randomId}
+            tabIndex={-1}
+            data-autofocus={initialFocusRef ? undefined : ''}
+          >
             {title}
           </Heading>
         )}
