@@ -24,8 +24,11 @@ on:
   schedule:
     - cron: "0 3 * * 1-5" # Run Monday to Friday at 3AM UTC
 
+permissions:
+  packages: read
+
 jobs:
   code-scan:
     name: CodeQL Scan
-    uses: entur/gha-security/.github/workflows/code-scan.yml@v2
+    uses: entur/gha-security/.github/workflows/code-scan.yml@aeebe7ddac5952b3ef9f14380e2d5884b42a6c2e  # v2.13.0
     secrets: inherit
