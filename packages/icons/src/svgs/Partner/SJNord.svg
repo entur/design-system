@@ -1,6 +1,6 @@
-<svg fill="none" height="12" viewBox="0 0 72 12" width="72" xmlns="http://www.w3.org/2000/svg"
+<svg color="white" fill="none" height="12" viewBox="0 0 72 12" width="72" xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink">
-    <g fill="#fff">
+    <g fill="currentColor">
         <path
             d="m70.5457 5.94596c0 1.66047-1.1232 1.80563-2.4283 1.80563h-2.8109v-3.61126h2.8109c1.3051 0 2.4283.14516 2.4283 1.80563zm-2.4364-3.07812h-4.2543v6.15488h4.2543c2.2383 0 3.8907-.49923 3.8907-3.07812s-1.6524-3.07811-3.8907-3.07811z" />
         <path
