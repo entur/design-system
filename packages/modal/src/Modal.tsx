@@ -61,6 +61,7 @@ export const Modal: React.FC<ModalProps> = ({
       open={open}
       onDismiss={handleOnDismiss}
       initialFocusRef={initialFocusRef}
+      aria-labelledby={title ? randomId : undefined}
     >
       <ModalContent size={size} align={align} {...rest}>
         {showCloseButton && (

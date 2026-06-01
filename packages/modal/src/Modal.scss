@@ -4,11 +4,22 @@ $modal-animation-duration: t.$timings-medium;
 
 .eds-modal {
   &__overlay {
+    // Reset native <dialog> styles
+    border: none;
+    padding: 0;
+    margin: 0;
+    max-width: none;
+    max-height: none;
+    width: 100%;
+    height: 100%;
+    color: inherit;
+
     background: rgba(black, 0.5);
     bottom: 0;
     display: flex;
     left: 0;
     overflow: hidden;
+    overscroll-behavior: contain;
     position: fixed;
     right: 0;
     top: 0;
@@ -17,6 +28,10 @@ $modal-animation-duration: t.$timings-medium;
     animation: fadeInOverlay;
     animation-duration: $modal-animation-duration;
     animation-timing-function: ease-in-out;
+
+    &::backdrop {
+      background: transparent;
+    }
   }
 
   &__content {
