@@ -146,3 +146,12 @@ html:has(dialog.eds-modal__overlay[open]) body {
     opacity: 1;
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .eds-modal__overlay,
+  .eds-modal__overlay::backdrop,
+  .eds-modal__content,
+  .eds-modal__close {
+    animation: none;
+  }
+}
