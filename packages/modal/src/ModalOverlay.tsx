@@ -16,6 +16,7 @@ export type ModalOverlayProps = {
 };
 
 let scrollLockCount = 0;
+let originalBodyOverflow = '';
 
 export const ModalOverlay: React.FC<ModalOverlayProps> = ({
   className,
@@ -71,12 +72,13 @@ export const ModalOverlay: React.FC<ModalOverlayProps> = ({
     if (!open) return;
     scrollLockCount++;
     if (scrollLockCount === 1) {
+      originalBodyOverflow = document.body.style.overflow;
       document.body.style.overflow = 'hidden';
     }
     return () => {
       scrollLockCount--;
       if (scrollLockCount === 0) {
-        document.body.style.overflow = '';
+        document.body.style.overflow = originalBodyOverflow;
       }
     };
   }, [open]);
