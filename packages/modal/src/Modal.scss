@@ -2,32 +2,59 @@
 
 $modal-animation-duration: t.$timings-medium;
 
+// Lock body scroll while a modal is open.
+html:has(dialog.eds-modal__overlay[open]),
+html:has(dialog.eds-modal__overlay[open]) body {
+  overflow: hidden;
+}
+
 .eds-modal {
+  // Native <dialog> centers itself via UA margin:auto. We strip UA chrome and
+  // set max-width per size; width:100% (capped) gives ModalContent a parent
+  // width to fill so its own width:100% resolves.
   &__overlay {
-    // Reset native <dialog> styles
     border: none;
     padding: 0;
-    margin: 0;
-    max-width: none;
-    max-height: none;
-    width: 100%;
-    height: 100%;
+    background: transparent;
     color: inherit;
+  }
 
-    background: rgba(black, 0.5);
-    inset: 0;
-    display: flex;
+  &__overlay[open] {
+    z-index: t.$z-indexes-overlay;
+    width: 100%;
     overflow: hidden;
     overscroll-behavior: contain;
-    position: fixed;
-    z-index: t.$z-indexes-overlay;
-    animation: fadeInOverlay;
-    animation-duration: $modal-animation-duration;
-    animation-timing-function: ease-in-out;
+    animation: fadeInOverlay $modal-animation-duration ease-in-out;
 
     &::backdrop {
-      background: transparent;
+      background: rgba(black, 0.5);
+      animation: fadeInOverlay $modal-animation-duration ease-in-out;
     }
+  }
+
+  &__overlay--size-extraSmall {
+    max-width: 21rem;
+  }
+  &__overlay--size-small {
+    max-width: 28.125rem;
+  }
+  &__overlay--size-medium {
+    max-width: 45rem;
+  }
+  &__overlay--size-large {
+    max-width: 56.25rem;
+  }
+  &__overlay--size-extraLarge {
+    max-width: 78.75rem;
+  }
+
+  &__close {
+    position: absolute;
+    top: t.$space-medium;
+    right: t.$space-medium;
+    color: var(--components-modal-modal-standard-icon);
+    z-index: calc(#{t.$z-indexes-modal} + 1);
+    animation: slideInContent $modal-animation-duration ease-in-out;
   }
 
   &__content {
@@ -35,55 +62,48 @@ $modal-animation-duration: t.$timings-medium;
     border: 1px solid var(--components-modal-modal-standard-border);
     border-radius: 0.75rem;
     color: var(--components-modal-modal-standard-text);
-    margin: auto;
     padding: t.$space-large;
-    position: relative;
     width: 100%;
     max-height: 90vh;
     overflow: auto;
-    z-index: t.$z-indexes-modal;
-    animation: slideInContent;
-    animation-duration: $modal-animation-duration;
-    animation-timing-function: ease-in-out;
+    animation: slideInContent $modal-animation-duration ease-in-out;
 
-    &--align {
-      &-center {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
+    &--align-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
 
-      &-end {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-      }
+    &--align-end {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
     }
 
     &--size-extraSmall {
       max-width: 21rem;
       padding: t.$space-large;
     }
-
     &--size-small {
       max-width: 28.125rem;
       padding: t.$space-extra-large2;
+      padding-top: t.$space-extra-large;
     }
-
     &--size-medium {
       max-width: 45rem;
       padding: t.$space-extra-large3;
+      padding-top: t.$space-extra-large;
     }
-
     &--size-large {
       max-width: 56.25rem;
       padding: t.$space-extra-large3;
+      padding-top: t.$space-extra-large;
     }
-
     &--size-extraLarge {
       max-width: 78.75rem;
       padding: t.$space-extra-large3;
+      padding-top: t.$space-extra-large;
     }
 
     &::-webkit-scrollbar {
@@ -105,20 +125,12 @@ $modal-animation-duration: t.$timings-medium;
       }
     }
   }
-
-  &__close {
-    position: absolute;
-    top: t.$space-medium;
-    right: t.$space-medium;
-    color: var(--components-modal-modal-standard-icon);
-  }
 }
 
 @keyframes fadeInOverlay {
   from {
     opacity: 0;
   }
-
   to {
     opacity: 1;
   }
@@ -126,12 +138,11 @@ $modal-animation-duration: t.$timings-medium;
 
 @keyframes slideInContent {
   from {
-    top: 5rem;
+    transform: translateY(0.5rem);
     opacity: 0;
   }
-
   to {
-    top: 0%;
+    transform: translateY(0);
     opacity: 1;
   }
 }
