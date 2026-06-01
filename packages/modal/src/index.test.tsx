@@ -9,12 +9,13 @@ beforeAll(() => {
   };
   HTMLDialogElement.prototype.close = function (this: HTMLDialogElement) {
     this.removeAttribute('open');
+    this.dispatchEvent(new Event('close'));
   };
 });
 
 test('renders a nice looking modal', () => {
   const spy = jest.fn();
-  const { getByTestId } = render(
+  const { getByTestId, baseElement } = render(
     <Modal onDismiss={spy} open={true} title="title" size="large">
       <div data-testid="content">Modal content</div>
     </Modal>,
@@ -22,7 +23,8 @@ test('renders a nice looking modal', () => {
   expect(getByTestId('content')).toHaveTextContent('Modal content');
 
   expect(spy).not.toHaveBeenCalled();
-  fireEvent.keyDown(getByTestId('content'), { key: 'Escape' });
+  const dialog = baseElement.querySelector('dialog');
+  dialog?.dispatchEvent(new Event('cancel', { cancelable: true }));
   expect(spy).toHaveBeenCalled();
 });
 

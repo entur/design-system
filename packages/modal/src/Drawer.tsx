@@ -1,14 +1,13 @@
-import React from 'react';
+import React, { useEffect, useId, useRef } from 'react';
 import classNames from 'classnames';
-import { MoveFocusInside } from 'react-focus-lock';
 import { Contrast } from '@entur/layout';
 import { CloseIcon } from '@entur/icons';
 import { Heading3 } from '@entur/typography';
-import { useRandomId } from '@entur/utils';
 import { IconButton } from '@entur/button';
+import { ConditionalWrapper } from '@entur/utils';
+import { ModalOverlay } from './ModalOverlay';
 
 import './Drawer.scss';
-import { ModalOverlay } from './ModalOverlay';
 
 export type DrawerProps = {
   /** Innholdet. Typisk tekst, lenker eller knapper */
@@ -48,20 +47,44 @@ export const Drawer: React.FC<DrawerProps> = ({
   style,
   overlay = false,
 }) => {
-  const titleId = useRandomId('eds-drawer');
+  const titleId = useId();
+  const drawerRef = useRef<HTMLDivElement>(null);
+  const previouslyFocusedRef = useRef<Element | null>(null);
 
-  if (!open) {
-    return null;
-  }
+  useEffect(
+    function handleFocus() {
+      if (!open || overlay) return;
+      previouslyFocusedRef.current = document.activeElement;
+      drawerRef.current
+        ?.querySelector<HTMLElement>('[data-autofocus]')
+        ?.focus();
 
-  const handleKeyDown = (e: React.KeyboardEvent) => {
+      return () => {
+        if (previouslyFocusedRef.current instanceof HTMLElement) {
+          previouslyFocusedRef.current.focus();
+        }
+      };
+    },
+    [open, overlay],
+  );
+
+  const shouldRemoveFromDOM = !open && !overlay;
+  if (shouldRemoveFromDOM) return null;
+
+  function handleKeyDown(e: React.KeyboardEvent) {
     if (e.key === 'Escape') {
       e.stopPropagation();
       onDismiss();
     }
+  }
+
+  const Wrapper = contrast ? Contrast : 'div';
+  const nonModalDialogProps = {
+    role: 'dialog' as const,
+    'aria-modal': false,
+    'aria-labelledby': titleId,
   };
 
-  const Wrapper = contrast ? Contrast : React.Fragment;
   return (
     <ConditionalWrapper
       condition={overlay}
@@ -75,38 +98,28 @@ export const Drawer: React.FC<DrawerProps> = ({
         </ModalOverlay>
       )}
     >
-      <Wrapper>
-        <div
-          aria-labelledby={titleId}
-          className={classNames('eds-drawer', className)}
-          onKeyDown={handleKeyDown}
-          style={style}
+      <Wrapper
+        ref={drawerRef}
+        {...(!overlay && nonModalDialogProps)}
+        className={classNames('eds-drawer', className)}
+        onKeyDown={handleKeyDown}
+        style={style}
+      >
+        <IconButton
+          className="eds-drawer__close-button"
+          onClick={onDismiss}
+          type="button"
+          aria-label={closeLabel}
         >
-          <MoveFocusInside>
-            <IconButton
-              className="eds-drawer__close-button"
-              onClick={onDismiss}
-              type="button"
-              aria-label={closeLabel}
-            >
-              <CloseIcon aria-hidden />
-            </IconButton>
-            <div className="eds-drawer__content">
-              <Heading3 as="h2" id={titleId}>
-                {title}
-              </Heading3>
-              {children}
-            </div>
-          </MoveFocusInside>
+          <CloseIcon aria-hidden />
+        </IconButton>
+        <div className="eds-drawer__content">
+          <Heading3 as="h2" id={titleId} tabIndex={-1} data-autofocus="">
+            {title}
+          </Heading3>
+          {children}
         </div>
       </Wrapper>
     </ConditionalWrapper>
   );
 };
-
-const ConditionalWrapper: React.FC<{
-  condition: boolean;
-  wrapper: (child: JSX.Element) => JSX.Element;
-  children: React.ReactElement;
-}> = ({ condition, wrapper, children }) =>
-  condition ? wrapper(children) : children;
