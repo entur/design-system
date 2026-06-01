@@ -1,7 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { DialogContent } from '@reach/dialog';
-import { Heading2, Heading3, Heading4 } from '@entur/typography';
+import { Heading4, Heading3, Heading2 } from '@entur/typography';
 import { useRandomId } from '@entur/utils';
 
 export type ModalContentProps = {
@@ -39,14 +38,14 @@ export const ModalContent: React.FC<ModalContentProps> = ({
   const Heading: React.ElementType = headingsMap[size] || Heading2;
   const randomId = useRandomId('eds-modal');
   return (
-    <DialogContent
+    <div
       className={classNames(
         'eds-modal__content',
         `eds-modal__content--size-${size}`,
         `eds-modal__content--align-${align}`,
         className,
       )}
-      aria-labelledby={randomId}
+      aria-labelledby={title ? randomId : undefined}
       {...rest}
     >
       {title && (
@@ -55,6 +54,6 @@ export const ModalContent: React.FC<ModalContentProps> = ({
         </Heading>
       )}
       {children}
-    </DialogContent>
+    </div>
   );
 };

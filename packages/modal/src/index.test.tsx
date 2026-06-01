@@ -2,11 +2,15 @@ import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 import { Modal } from '.';
 
-// Needed to silence Reach's styling warning
-jest.mock('@reach/utils', () => ({
-  ...(jest.requireActual('@reach/utils') as object),
-  checkStyles: jest.fn(),
-}));
+// Polyfill <dialog> methods for jsdom
+beforeAll(() => {
+  HTMLDialogElement.prototype.showModal = function (this: HTMLDialogElement) {
+    this.setAttribute('open', '');
+  };
+  HTMLDialogElement.prototype.close = function (this: HTMLDialogElement) {
+    this.removeAttribute('open');
+  };
+});
 
 test('renders a nice looking modal', () => {
   const spy = jest.fn();
@@ -17,7 +21,7 @@ test('renders a nice looking modal', () => {
   );
   expect(getByTestId('content')).toHaveTextContent('Modal content');
 
-  expect(spy);
+  expect(spy).not.toHaveBeenCalled();
   fireEvent.keyDown(getByTestId('content'), { key: 'Escape' });
   expect(spy).toHaveBeenCalled();
 });
