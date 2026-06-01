@@ -9,7 +9,6 @@ import { IconButton } from '@entur/button';
 
 import './Drawer.scss';
 import { ModalOverlay } from './ModalOverlay';
-import { DialogContent } from '@reach/dialog';
 
 export type DrawerProps = {
   /** Innholdet. Typisk tekst, lenker eller knapper */
@@ -63,7 +62,6 @@ export const Drawer: React.FC<DrawerProps> = ({
   };
 
   const Wrapper = contrast ? Contrast : React.Fragment;
-  const ContentContainer = overlay ? DialogContent : 'div';
   return (
     <ConditionalWrapper
       condition={overlay}
@@ -74,7 +72,7 @@ export const Drawer: React.FC<DrawerProps> = ({
       )}
     >
       <Wrapper>
-        <ContentContainer
+        <div
           aria-labelledby={titleId}
           className={classNames('eds-drawer', className)}
           onKeyDown={handleKeyDown}
@@ -96,7 +94,7 @@ export const Drawer: React.FC<DrawerProps> = ({
               {children}
             </div>
           </MoveFocusInside>
-        </ContentContainer>
+        </div>
       </Wrapper>
     </ConditionalWrapper>
   );
