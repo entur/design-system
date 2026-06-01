@@ -16,10 +16,14 @@ export type ModalProps = {
   closeLabel?: string;
   /** En ref til elementet som skal være fokusert når modalen åpnes. Defaulter til tittelen, ellers første interaktive element */
   initialFocusRef?: React.RefObject<HTMLElement>;
-  /** Flagg som sier om modalen er åpen */
+  /** Styrer om modalen er synlig */
   open?: boolean;
-  /** Callback som kalles når brukeren ber om å lukke modalen */
-  onDismiss?: () => void;
+  /** Callback som kalles når brukeren ber om å lukke modalen. Påkrevd: Esc og klikk utenfor lukker alltid (nettleserens innebygde atferd for native dialog) */
+  onDismiss: () => void;
+  /** Om lukkeknappen skal vises i øvre høyre hjørne
+   * @default true
+   */
+  showCloseButton?: boolean;
   /** Størrelsen på modalen */
   size: 'extraSmall' | 'small' | 'medium' | 'large' | 'extraLarge';
   /** Hvordan innholdet skal plasseres i modalen
@@ -46,12 +50,12 @@ export const Modal: React.FC<ModalProps> = ({
   align = 'start',
   title,
   closeOnClickOutside = true,
+  showCloseButton = true,
   'aria-label': ariaLabel,
   ...rest
 }) => {
   const randomId = useId();
   const Heading: React.ElementType = headingsMap[size] || Heading2;
-  const showCloseButton = onDismiss !== undefined;
 
   return (
     <ModalOverlay
@@ -59,20 +63,21 @@ export const Modal: React.FC<ModalProps> = ({
       onDismiss={onDismiss}
       closeOnClickOutside={closeOnClickOutside}
       initialFocusRef={initialFocusRef}
+      className={`eds-modal__overlay--size-${size}`}
       aria-labelledby={title ? randomId : undefined}
       aria-label={!title ? ariaLabel : undefined}
     >
+      {showCloseButton && (
+        <IconButton
+          className="eds-modal__close"
+          aria-label={closeLabel}
+          onClick={onDismiss}
+          type="button"
+        >
+          <CloseIcon />
+        </IconButton>
+      )}
       <ModalContent size={size} align={align} {...rest}>
-        {showCloseButton && (
-          <IconButton
-            className="eds-modal__close"
-            aria-label={closeLabel}
-            onClick={onDismiss}
-            type="button"
-          >
-            <CloseIcon />
-          </IconButton>
-        )}
         {title && (
           <Heading
             margin="bottom"

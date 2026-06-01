@@ -1,6 +1,5 @@
-import React, { useRef, useEffect, useCallback } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
-import FocusLock from 'react-focus-lock';
 import classNames from 'classnames';
 import { ContrastContext } from '@entur/layout';
 
@@ -31,80 +30,56 @@ export const ModalOverlay: React.FC<ModalOverlayProps> = ({
   ...rest
 }) => {
   const dialogRef = useRef<HTMLDialogElement>(null);
-  const previouslyFocusedRef = useRef<Element | null>(null);
 
-  // `data-autofocus` is what react-focus-lock targets on activation.
+  // Toggle native dialog open state. Always stays in DOM so the browser can
+  // manage initial focus storage + restore on close.
   useEffect(() => {
     const dialog = dialogRef.current;
     if (!dialog) return;
-
-    previouslyFocusedRef.current = document.activeElement;
-
-    const focusTarget = initialFocusRef?.current;
-    focusTarget?.setAttribute('data-autofocus', '');
-
-    if (!dialog.open) {
+    if (open && !dialog.open) {
       dialog.showModal();
+      const target =
+        initialFocusRef?.current ??
+        dialog.querySelector<HTMLElement>('[data-autofocus]') ??
+        dialog;
+      target.focus();
+    } else if (!open && dialog.open) {
+      dialog.close();
     }
-
-    return () => {
-      focusTarget?.removeAttribute('data-autofocus');
-      if (dialog.open) {
-        dialog.close();
-      }
-      if (previouslyFocusedRef.current instanceof HTMLElement) {
-        previouslyFocusedRef.current.focus();
-      }
-    };
   }, [open, initialFocusRef]);
 
+  // Esc fires cancel — preventDefault so we route through onDismiss + state,
+  // which triggers the effect above to call close() (native restore runs).
   useEffect(() => {
     const dialog = dialogRef.current;
-    if (!dialog) return;
-
+    if (!dialog || !onDismiss) return;
     const handleCancel = (e: Event) => {
       e.preventDefault();
+      onDismiss();
     };
-
     dialog.addEventListener('cancel', handleCancel);
     return () => dialog.removeEventListener('cancel', handleCancel);
-  }, [open]);
+  }, [onDismiss]);
 
-  // stopPropagation so nested modals don't both close on Escape.
-  const handleKeyDown = useCallback(
-    (e: React.KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        e.stopPropagation();
-        onDismiss?.();
-      }
-    },
-    [onDismiss],
-  );
-
-  // Dismiss when clicking the overlay backdrop (not children)
   const handleClick = useCallback(
     (e: React.MouseEvent<HTMLDialogElement>) => {
       if (!closeOnClickOutside) return;
-      if (e.target === dialogRef.current) {
-        onDismiss?.();
-      }
+      if (e.target === dialogRef.current) onDismiss?.();
     },
     [onDismiss, closeOnClickOutside],
   );
 
-  if (!open || typeof document === 'undefined') return null;
+  if (typeof document === 'undefined') return null;
 
   return createPortal(
     <ContrastContext.Provider value={false}>
       <dialog
         ref={dialogRef}
         className={classNames('eds-modal__overlay', className)}
-        aria-modal="true"
         {...rest}
-        onKeyDown={handleKeyDown}
         onClick={handleClick}
       >
-        <FocusLock>{children}</FocusLock>
+        {open && children}
       </dialog>
     </ContrastContext.Provider>,
     document.body,

@@ -1,6 +1,5 @@
 import React, { useEffect, useId, useRef } from 'react';
 import classNames from 'classnames';
-import { MoveFocusInside } from 'react-focus-lock';
 import { Contrast } from '@entur/layout';
 import { CloseIcon } from '@entur/icons';
 import { Heading3 } from '@entur/typography';
@@ -48,11 +47,13 @@ export const Drawer: React.FC<DrawerProps> = ({
   overlay = false,
 }) => {
   const titleId = useId();
+  const drawerRef = useRef<HTMLDivElement>(null);
   const previouslyFocusedRef = useRef<Element | null>(null);
 
   useEffect(() => {
     if (!open || overlay) return;
     previouslyFocusedRef.current = document.activeElement;
+    drawerRef.current?.querySelector<HTMLElement>('[data-autofocus]')?.focus();
     return () => {
       if (previouslyFocusedRef.current instanceof HTMLElement) {
         previouslyFocusedRef.current.focus();
@@ -60,9 +61,10 @@ export const Drawer: React.FC<DrawerProps> = ({
     };
   }, [open, overlay]);
 
-  if (!open) {
-    return null;
-  }
+  // Non-overlay drawer is plain DOM — short-circuit when closed.
+  // Overlay drawer must stay mounted so ModalOverlay can call dialog.close()
+  // while in DOM (native focus restore).
+  if (!open && !overlay) return null;
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Escape') {
@@ -93,27 +95,26 @@ export const Drawer: React.FC<DrawerProps> = ({
     >
       <Wrapper>
         <div
+          ref={drawerRef}
           {...(!overlay && nonModalDialogProps)}
           className={classNames('eds-drawer', className)}
           onKeyDown={handleKeyDown}
           style={style}
         >
-          <MoveFocusInside>
-            <IconButton
-              className="eds-drawer__close-button"
-              onClick={onDismiss}
-              type="button"
-              aria-label={closeLabel}
-            >
-              <CloseIcon aria-hidden />
-            </IconButton>
-            <div className="eds-drawer__content">
-              <Heading3 as="h2" id={titleId} tabIndex={-1} data-autofocus="">
-                {title}
-              </Heading3>
-              {children}
-            </div>
-          </MoveFocusInside>
+          <IconButton
+            className="eds-drawer__close-button"
+            onClick={onDismiss}
+            type="button"
+            aria-label={closeLabel}
+          >
+            <CloseIcon aria-hidden />
+          </IconButton>
+          <div className="eds-drawer__content">
+            <Heading3 as="h2" id={titleId} tabIndex={-1} data-autofocus="">
+              {title}
+            </Heading3>
+            {children}
+          </div>
         </div>
       </Wrapper>
     </ConditionalWrapper>
