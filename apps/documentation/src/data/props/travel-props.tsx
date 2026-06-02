@@ -44,8 +44,14 @@ export const travelheader = [
   {
     name: 'size',
     defaultValue: 'large',
-    options: ['medium', 'large'],
+    options: ['small', 'medium', 'large'],
     type: 'segmented',
+  },
+  {
+    name: 'noWrap',
+    defaultValue: false,
+    type: 'boolean',
+    label: 'Samme linje',
   },
   {
     name: 'from',
