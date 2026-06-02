@@ -15,49 +15,23 @@ updates:
       time: '09:00'
       timezone: 'Europe/Oslo'
       day: 'monday'
-    open-pull-requests-limit: 3
+    open-pull-requests-limit: 1
   - package-ecosystem: 'npm'
-    directory: '/'
+    directory: '/apps/documentation'
     registries:
       - jfrog-artifactory
     commit-message:
-      prefix: 'chore(root/deps)'
+      prefix: 'chore(website/deps)'
     groups:
-      dev-deps:
+      all-deps:
         applies-to: version-updates
-        dependency-type: development
         update-types:
           - 'minor'
           - 'patch'
-      minor-and-patch:
-        applies-to: version-updates
-        dependency-type: production
+    ignore:
+      - dependency-name: '*'
         update-types:
-          - 'minor'
-          - 'patch'
-    schedule:
-      interval: 'monthly'
-    cooldown:
-      default-days: 7
-    open-pull-requests-limit: 2
-    allow:
-      - dependency-type: direct
-      - dependency-type: production
-      - dependency-type: development
-  - package-ecosystem: 'npm'
-    directories:
-      - '/packages/**/*'
-    registries:
-      - jfrog-artifactory
-    commit-message:
-      prefix: 'chore(packages/deps)'
-    groups:
-      dev-deps-minor-patch:
-        applies-to: version-updates
-        dependency-type: development
-        update-types:
-          - 'minor'
-          - 'patch'
+          - 'version-update:semver-major'
     schedule:
       interval: 'monthly'
     cooldown:
@@ -67,24 +41,3 @@ updates:
       - dependency-type: direct
       - dependency-type: production
       - dependency-type: development
-  - package-ecosystem: 'npm'
-    directories:
-      - '/apps/**/*'
-    registries:
-      - jfrog-artifactory
-    commit-message:
-      prefix: 'chore(apps/deps)'
-    groups:
-      minor-and-patch:
-        applies-to: version-updates
-        update-types:
-          - 'minor'
-          - 'patch'
-    schedule:
-      interval: 'monthly'
-    cooldown:
-      default-days: 7
-    open-pull-requests-limit: 1
-    allow:
-      - dependency-type: direct
-      - dependency-type: production
