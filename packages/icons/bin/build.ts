@@ -26,10 +26,10 @@ const DEPRECATED_ICONS = new Map([['BellIcon', 'AlertIcon']]);
 
 // These icons should not use brand-blue by default
 const OUTLIER_CATEGORIES = [
-  'Partner',
+  'Partners',
   'Flag',
   'Entur',
-  'NonPartnerLogo',
+  'ThirdPartyLogo',
   'Payment',
 ];
 const SPECIAL_OUTLIERS = ['CompassNeedleIcon'];
@@ -225,7 +225,7 @@ async function createSvgrConfig({
   };
 
   if (native) {
-    const isPartnerIcon = categories.includes('Partner');
+    const isPartnerIcon = categories.includes('Partners');
     config.svgProps = {
       ...(isPartnerIcon
         ? { color: '{(props.color || "#fff")}' }
