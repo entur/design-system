@@ -14,7 +14,7 @@ export type TravelHeaderProps = {
   /**Størrelsen på komponenten
    * @default 'large'
    */
-  size?: 'large' | 'medium';
+  size?: 'small' | 'medium' | 'large';
   /** Plassere til og fra på samme linje */
   noWrap?: boolean;
   /**Ekstra klassenavn */
@@ -36,6 +36,7 @@ export const TravelHeader: React.FC<TravelHeaderProps> = ({
       className={classNames('eds-travel-header', className, {
         'eds-travel-header--large': size === 'large',
         'eds-travel-header--medium': size === 'medium',
+        'eds-travel-header--small': size === 'small',
         'eds-travel-header--no-wrap': noWrap,
       })}
       aria-label={`Fra ${from}, til ${to}`}

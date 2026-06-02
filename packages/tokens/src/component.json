@@ -12599,73 +12599,73 @@
         "color": [],
         "number": [
           {
-            "name": "Components/travel/Travel header/border/small",
+            "name": "Components/travel/Travel Header/border/small",
             "value": "0.125rem",
             "var": "size-2",
             "rootAlias": "size-2"
           },
           {
-            "name": "Components/travel/Travel header/border/large",
+            "name": "Components/travel/Travel Header/border/large",
             "value": "0.25rem",
             "var": "size-3",
             "rootAlias": "size-3"
           },
           {
-            "name": "Components/travel/Travel header/border/medium",
+            "name": "Components/travel/Travel Header/border/medium",
             "value": "0.25rem",
             "var": "size-3",
             "rootAlias": "size-3"
           },
           {
-            "name": "Components/travel/Travel header/gap/small",
+            "name": "Components/travel/Travel Header/gap/small",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "Components/travel/Travel header/gap/medium",
+            "name": "Components/travel/Travel Header/gap/medium",
             "value": "0.75rem",
             "var": "size-6",
             "rootAlias": "size-6"
           },
           {
-            "name": "Components/travel/Travel header/gap/large",
+            "name": "Components/travel/Travel Header/gap/large",
             "value": "1rem",
             "var": "size-8",
             "rootAlias": "size-8"
           },
           {
-            "name": "Components/travel/Travel header/spacing/large",
+            "name": "Components/travel/Travel Header/spacing/large",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "Components/travel/Travel header/spacing/medium",
+            "name": "Components/travel/Travel Header/spacing/medium",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "Components/travel/Travel header/spacing/small",
+            "name": "Components/travel/Travel Header/spacing/small",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "Components/travel/Travel header/width/small",
+            "name": "Components/travel/Travel Header/width/small",
             "value": "1.5rem",
             "var": "size-10",
             "rootAlias": "size-10"
           },
           {
-            "name": "Components/travel/Travel header/width/medium",
+            "name": "Components/travel/Travel Header/width/medium",
             "value": "2rem",
             "var": "size-12",
             "rootAlias": "size-12"
           },
           {
-            "name": "Components/travel/Travel header/width/large",
+            "name": "Components/travel/Travel Header/width/large",
             "value": "2.5rem",
             "var": "size-14",
             "rootAlias": "size-14"
@@ -13371,73 +13371,73 @@
         "color": [],
         "number": [
           {
-            "name": "Components/travel/Travel header/border/small",
+            "name": "Components/travel/Travel Header/border/small",
             "value": "0.125rem",
             "var": "size-2",
             "rootAlias": "size-2"
           },
           {
-            "name": "Components/travel/Travel header/border/large",
+            "name": "Components/travel/Travel Header/border/large",
             "value": "0.25rem",
             "var": "size-3",
             "rootAlias": "size-3"
           },
           {
-            "name": "Components/travel/Travel header/border/medium",
+            "name": "Components/travel/Travel Header/border/medium",
             "value": "0.25rem",
             "var": "size-3",
             "rootAlias": "size-3"
           },
           {
-            "name": "Components/travel/Travel header/gap/medium",
+            "name": "Components/travel/Travel Header/gap/medium",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "Components/travel/Travel header/gap/small",
+            "name": "Components/travel/Travel Header/gap/small",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "Components/travel/Travel header/gap/large",
+            "name": "Components/travel/Travel Header/gap/large",
             "value": "0.75rem",
             "var": "size-6",
             "rootAlias": "size-6"
           },
           {
-            "name": "Components/travel/Travel header/spacing/large",
+            "name": "Components/travel/Travel Header/spacing/large",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "Components/travel/Travel header/spacing/medium",
+            "name": "Components/travel/Travel Header/spacing/medium",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "Components/travel/Travel header/spacing/small",
+            "name": "Components/travel/Travel Header/spacing/small",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "Components/travel/Travel header/width/small",
+            "name": "Components/travel/Travel Header/width/small",
             "value": "1.25rem",
             "var": "size-9",
             "rootAlias": "size-9"
           },
           {
-            "name": "Components/travel/Travel header/width/medium",
+            "name": "Components/travel/Travel Header/width/medium",
             "value": "1.75rem",
             "var": "size-11",
             "rootAlias": "size-11"
           },
           {
-            "name": "Components/travel/Travel header/width/large",
+            "name": "Components/travel/Travel Header/width/large",
             "value": "2rem",
             "var": "size-12",
             "rootAlias": "size-12"
@@ -14143,73 +14143,73 @@
         "color": [],
         "number": [
           {
-            "name": "Components/travel/Travel header/border/small",
+            "name": "Components/travel/Travel Header/border/small",
             "value": "0.25rem",
             "var": "size-3",
             "rootAlias": "size-3"
           },
           {
-            "name": "Components/travel/Travel header/border/medium",
+            "name": "Components/travel/Travel Header/border/medium",
             "value": "0.375rem",
             "var": "size-4",
             "rootAlias": "size-4"
           },
           {
-            "name": "Components/travel/Travel header/border/large",
+            "name": "Components/travel/Travel Header/border/large",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "Components/travel/Travel header/gap/small",
+            "name": "Components/travel/Travel Header/gap/small",
             "value": "0.75rem",
             "var": "size-6",
             "rootAlias": "size-6"
           },
           {
-            "name": "Components/travel/Travel header/gap/medium",
+            "name": "Components/travel/Travel Header/gap/medium",
             "value": "1rem",
             "var": "size-8",
             "rootAlias": "size-8"
           },
           {
-            "name": "Components/travel/Travel header/gap/large",
+            "name": "Components/travel/Travel Header/gap/large",
             "value": "1.5rem",
             "var": "size-10",
             "rootAlias": "size-10"
           },
           {
-            "name": "Components/travel/Travel header/spacing/small",
+            "name": "Components/travel/Travel Header/spacing/small",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "Components/travel/Travel header/spacing/medium",
+            "name": "Components/travel/Travel Header/spacing/medium",
             "value": "0.75rem",
             "var": "size-6",
             "rootAlias": "size-6"
           },
           {
-            "name": "Components/travel/Travel header/spacing/large",
+            "name": "Components/travel/Travel Header/spacing/large",
             "value": "1rem",
             "var": "size-8",
             "rootAlias": "size-8"
           },
           {
-            "name": "Components/travel/Travel header/width/small",
+            "name": "Components/travel/Travel Header/width/small",
             "value": "2.5rem",
             "var": "size-14",
             "rootAlias": "size-14"
           },
           {
-            "name": "Components/travel/Travel header/width/medium",
+            "name": "Components/travel/Travel Header/width/medium",
             "value": "3.5rem",
             "var": "size-18",
             "rootAlias": "size-18"
           },
           {
-            "name": "Components/travel/Travel header/width/large",
+            "name": "Components/travel/Travel Header/width/large",
             "value": "4.5rem",
             "var": "size-20",
             "rootAlias": "size-20"
