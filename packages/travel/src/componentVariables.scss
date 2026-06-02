@@ -638,46 +638,46 @@
 
 [data-view-mode='standard'],
 :root {
-  --components-travel-travelheader-border-small: #{$size-2};
+  --components-travel-travelheader-border-xl: #{$size-4};
   --components-travel-travelheader-border-large: #{$size-3};
   --components-travel-travelheader-border-medium: #{$size-3};
-  --components-travel-travelheader-gap-small: #{$size-5};
+  --components-travel-travelheader-gap-xl: #{$size-10};
   --components-travel-travelheader-gap-medium: #{$size-6};
   --components-travel-travelheader-gap-large: #{$size-8};
   --components-travel-travelheader-spacing-large: #{$size-5};
   --components-travel-travelheader-spacing-medium: #{$size-5};
-  --components-travel-travelheader-spacing-small: #{$size-5};
-  --components-travel-travelheader-width-small: #{$size-10};
+  --components-travel-travelheader-spacing-xl: #{$size-6};
+  --components-travel-travelheader-width-xl: #{$size-16};
   --components-travel-travelheader-width-medium: #{$size-12};
   --components-travel-travelheader-width-large: #{$size-14};
 }
 
 [data-view-mode='compact'] {
-  --components-travel-travelheader-border-small: #{$size-2};
+  --components-travel-travelheader-border-xl: #{$size-3};
   --components-travel-travelheader-border-large: #{$size-3};
   --components-travel-travelheader-border-medium: #{$size-3};
   --components-travel-travelheader-gap-medium: #{$size-5};
-  --components-travel-travelheader-gap-small: #{$size-5};
+  --components-travel-travelheader-gap-xl: #{$size-7};
   --components-travel-travelheader-gap-large: #{$size-6};
   --components-travel-travelheader-spacing-large: #{$size-5};
   --components-travel-travelheader-spacing-medium: #{$size-5};
-  --components-travel-travelheader-spacing-small: #{$size-5};
-  --components-travel-travelheader-width-small: #{$size-9};
+  --components-travel-travelheader-spacing-xl: #{$size-5};
+  --components-travel-travelheader-width-xl: #{$size-13};
   --components-travel-travelheader-width-medium: #{$size-11};
   --components-travel-travelheader-width-large: #{$size-12};
 }
 
 [data-view-mode='display'] {
-  --components-travel-travelheader-border-small: #{$size-3};
+  --components-travel-travelheader-border-xl: #{$size-6};
   --components-travel-travelheader-border-medium: #{$size-4};
   --components-travel-travelheader-border-large: #{$size-5};
-  --components-travel-travelheader-gap-small: #{$size-6};
+  --components-travel-travelheader-gap-xl: #{$size-12};
   --components-travel-travelheader-gap-medium: #{$size-8};
   --components-travel-travelheader-gap-large: #{$size-10};
-  --components-travel-travelheader-spacing-small: #{$size-5};
+  --components-travel-travelheader-spacing-xl: #{$size-10};
   --components-travel-travelheader-spacing-medium: #{$size-6};
   --components-travel-travelheader-spacing-large: #{$size-8};
-  --components-travel-travelheader-width-small: #{$size-14};
+  --components-travel-travelheader-width-xl: #{$size-22};
   --components-travel-travelheader-width-medium: #{$size-18};
   --components-travel-travelheader-width-large: #{$size-20};
 }

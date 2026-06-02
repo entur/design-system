@@ -5,39 +5,37 @@
   color: var(--components-travel-travelheader-standard-text);
   display: flex;
   flex-direction: column;
-  font-weight: t.$font-weights-heading;
-  line-height: var(--font-line-height-heading-xl);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--font-line-height-heading-lg);
   max-width: 100%;
   :where(.eds-contrast) & {
     color: var(--components-travel-travelheader-contrast-text);
   }
-  &--large {
+  &--extra-large {
     font-size: var(--font-size-heading-xl);
     line-height: var(--font-line-height-heading-xl);
-    gap: var(--components-travel-travelheader-spacing-large);
+
+    &:where(.eds-travel-header--no-wrap) {
+      gap: var(--components-travel-travelheader-gap-xl);
+    }
+  }
+  &--large {
+    font-size: var(--font-size-heading-lg);
+    line-height: var(--font-line-height-heading-lg);
 
     &:where(.eds-travel-header--no-wrap) {
       gap: var(--components-travel-travelheader-gap-large);
     }
   }
   &--medium {
-    font-size: var(--font-size-heading-lg);
-    line-height: var(--font-line-height-heading-lg);
-    gap: var(--components-travel-travelheader-spacing-medium);
+    font-size: var(--font-size-heading-m);
+    line-height: var(--font-line-height-heading-m);
 
     &:where(.eds-travel-header--no-wrap) {
       gap: var(--components-travel-travelheader-gap-medium);
     }
   }
-  &--small {
-    font-size: var(--font-size-heading-s);
-    line-height: var(--font-line-height-heading-s);
-    gap: var(--components-travel-travelheader-spacing-small);
 
-    &:where(.eds-travel-header--no-wrap) {
-      gap: var(--components-travel-travelheader-gap-small);
-    }
-  }
   &--no-wrap {
     flex-direction: row;
   }
@@ -56,8 +54,8 @@
       padding-left: calc(var(--components-travel-travelheader-width-medium) + var(--components-travel-travelheader-spacing-medium));
     }
 
-    :where(.eds-travel-header--small) & {
-      padding-left: calc(var(--components-travel-travelheader-width-small) + var(--components-travel-travelheader-spacing-small));
+    :where(.eds-travel-header--extra-large) & {
+      padding-left: calc(var(--components-travel-travelheader-width-xl) + var(--components-travel-travelheader-spacing-xl));
     }
 
     &::before {
@@ -75,9 +73,9 @@
         width: var(--components-travel-travelheader-width-medium);
       }
 
-      :where(.eds-travel-header--small) & {
-        height: var(--components-travel-travelheader-border-small);
-        width: var(--components-travel-travelheader-width-small);
+      :where(.eds-travel-header--extra-large) & {
+        height: var(--components-travel-travelheader-border-xl);
+        width: var(--components-travel-travelheader-width-xl);
       }
 
       :where(.eds-contrast) & {

@@ -26,8 +26,13 @@ test('TravelHeader renders with content, spread props and with correct classname
   const componentMedium = getByTestId(testid);
   expect(componentMedium).toHaveClass('eds-travel-header--medium');
   rerender(
-    <TravelHeader from={from} to={to} size="small" data-testid={testid} />,
+    <TravelHeader
+      from={from}
+      to={to}
+      size="extra-large"
+      data-testid={testid}
+    />,
   );
-  const componentSmall = getByTestId(testid);
-  expect(componentSmall).toHaveClass('eds-travel-header--small');
+  const componentXl = getByTestId(testid);
+  expect(componentXl).toHaveClass('eds-travel-header--extra-large');
 });
