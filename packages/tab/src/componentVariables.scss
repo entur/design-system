@@ -37,7 +37,7 @@
   --components-tab-contrast-icon-disabled: #{$shape-neutralalt2};
   --components-tab-contrast-text: #{$text-lightalt};
   --components-tab-contrast-text-disabled: #{$text-neutralalt2};
-  --components-tab-contrast-underline-selected: #{$stroke-highlightalt};
+  --components-tab-contrast-underline-selected: #{$stroke-highlight};
   --components-tab-standard-border: #{$stroke-darkalt};
   --components-tab-standard-fill-disabled: #{$fill-disabled-transparentalt};
   --components-tab-standard-fill-hover: #{$fill-background-overlay-solid};
@@ -47,5 +47,5 @@
   --components-tab-standard-icon-disabled: #{$shape-neutralalt2};
   --components-tab-standard-text: #{$text-lightalt};
   --components-tab-standard-text-disabled: #{$text-neutralalt2};
-  --components-tab-standard-underline-selected: #{$stroke-highlightalt};
+  --components-tab-standard-underline-selected: #{$stroke-highlight};
 }

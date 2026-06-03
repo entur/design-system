@@ -610,42 +610,24 @@
           },
           {
             "name": "Components/alert/AlertBox/Information/Contrast/Border",
-            "value": "#067eb2",
-            "var": "Stroke/Information",
-            "rootAlias": "Sky/50"
+            "value": "#ffffff00",
+            "var": "Stroke/Colorless",
+            "rootAlias": "White/Alpha-0"
           },
           {
-            "name": "Components/alert/AlertBox/Information/Contrast/Fill Default",
+            "name": "Components/alert/AlertBox/Information/Contrast/Fill",
             "value": "#acd7f1",
             "var": "Fill/Information/Tint",
             "rootAlias": "Sky/20"
           },
           {
-            "name": "Components/alert/AlertBox/Information/Contrast/Fill Toast",
-            "value": "#acd7f1",
-            "var": "Fill/Information/Tint",
-            "rootAlias": "Sky/20"
-          },
-          {
-            "name": "Components/alert/AlertBox/Information/Contrast/Icon Default",
+            "name": "Components/alert/AlertBox/Information/Contrast/Icon",
             "value": "#181c56",
             "var": "Shape/Accent",
             "rootAlias": "Lavender/90"
           },
           {
-            "name": "Components/alert/AlertBox/Information/Contrast/Icon Toast",
-            "value": "#181c56",
-            "var": "Shape/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/alert/AlertBox/Information/Contrast/Text Default",
-            "value": "#181c56",
-            "var": "Text/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/alert/AlertBox/Information/Contrast/Text Toast",
+            "name": "Components/alert/AlertBox/Information/Contrast/Text",
             "value": "#181c56",
             "var": "Text/Accent",
             "rootAlias": "Lavender/90"
@@ -657,79 +639,43 @@
             "rootAlias": "Sky/50"
           },
           {
-            "name": "Components/alert/AlertBox/Information/Standard/Fill Default",
+            "name": "Components/alert/AlertBox/Information/Standard/Fill",
             "value": "#e1eff8",
             "var": "Fill/Information/Muted",
             "rootAlias": "Sky/10"
           },
           {
-            "name": "Components/alert/AlertBox/Information/Standard/Fill Toast",
-            "value": "#e1eff8",
-            "var": "Fill/Information/Muted",
-            "rootAlias": "Sky/10"
-          },
-          {
-            "name": "Components/alert/AlertBox/Information/Standard/Icon Default",
+            "name": "Components/alert/AlertBox/Information/Standard/Icon",
             "value": "#067eb2",
             "var": "Shape/Information",
             "rootAlias": "Sky/50"
           },
           {
-            "name": "Components/alert/AlertBox/Information/Standard/Icon Toast",
-            "value": "#067eb2",
-            "var": "Shape/Information",
-            "rootAlias": "Sky/50"
-          },
-          {
-            "name": "Components/alert/AlertBox/Information/Standard/Text Default",
-            "value": "#181c56",
-            "var": "Text/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/alert/AlertBox/Information/Standard/Text Toast",
+            "name": "Components/alert/AlertBox/Information/Standard/Text",
             "value": "#181c56",
             "var": "Text/Accent",
             "rootAlias": "Lavender/90"
           },
           {
             "name": "Components/alert/AlertBox/Negative/Contrast/Border",
-            "value": "#d31b1b",
-            "var": "Stroke/Negative",
-            "rootAlias": "Coral/60"
+            "value": "#ffffff00",
+            "var": "Stroke/Colorless",
+            "rootAlias": "White/Alpha-0"
           },
           {
-            "name": "Components/alert/AlertBox/Negative/Contrast/Fill Default",
+            "name": "Components/alert/AlertBox/Negative/Contrast/Fill",
             "value": "#ff9494",
             "var": "Fill/Negative/Tint",
             "rootAlias": "Coral/30"
           },
           {
-            "name": "Components/alert/AlertBox/Negative/Contrast/Fill Toast",
-            "value": "#ff9494",
-            "var": "Fill/Negative/Tint",
-            "rootAlias": "Coral/30"
-          },
-          {
-            "name": "Components/alert/AlertBox/Negative/Contrast/Icon Default",
+            "name": "Components/alert/AlertBox/Negative/Contrast/Icon",
             "value": "#181c56",
             "var": "Shape/Accent",
             "rootAlias": "Lavender/90"
           },
           {
-            "name": "Components/alert/AlertBox/Negative/Contrast/Icon Toast",
-            "value": "#181c56",
-            "var": "Shape/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/alert/AlertBox/Negative/Contrast/Text Default",
-            "value": "#181c56",
-            "var": "Text/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/alert/AlertBox/Negative/Contrast/Text Toast",
+            "name": "Components/alert/AlertBox/Negative/Contrast/Text",
             "value": "#181c56",
             "var": "Text/Accent",
             "rootAlias": "Lavender/90"
@@ -741,79 +687,43 @@
             "rootAlias": "Coral/60"
           },
           {
-            "name": "Components/alert/AlertBox/Negative/Standard/Fill Default",
+            "name": "Components/alert/AlertBox/Negative/Standard/Fill",
             "value": "#ffcece",
             "var": "Fill/Negative/Muted",
             "rootAlias": "Coral/20"
           },
           {
-            "name": "Components/alert/AlertBox/Negative/Standard/Fill Toast",
-            "value": "#ffcece",
-            "var": "Fill/Negative/Muted",
-            "rootAlias": "Coral/20"
-          },
-          {
-            "name": "Components/alert/AlertBox/Negative/Standard/Icon Default",
+            "name": "Components/alert/AlertBox/Negative/Standard/Icon",
             "value": "#d31b1b",
             "var": "Shape/Negative",
             "rootAlias": "Coral/60"
           },
           {
-            "name": "Components/alert/AlertBox/Negative/Standard/Icon Toast",
-            "value": "#d31b1b",
-            "var": "Shape/Negative",
-            "rootAlias": "Coral/60"
-          },
-          {
-            "name": "Components/alert/AlertBox/Negative/Standard/Text Default",
-            "value": "#181c56",
-            "var": "Text/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/alert/AlertBox/Negative/Standard/Text Toast",
+            "name": "Components/alert/AlertBox/Negative/Standard/Text",
             "value": "#181c56",
             "var": "Text/Accent",
             "rootAlias": "Lavender/90"
           },
           {
             "name": "Components/alert/AlertBox/Success/Contrast/Border",
-            "value": "#1a8e60",
-            "var": "Stroke/Success",
-            "rootAlias": "Mint/60"
+            "value": "#ffffff00",
+            "var": "Stroke/Colorless",
+            "rootAlias": "White/Alpha-0"
           },
           {
-            "name": "Components/alert/AlertBox/Success/Contrast/Fill Default",
+            "name": "Components/alert/AlertBox/Success/Contrast/Fill",
             "value": "#9cd9c2",
             "var": "Fill/Success/Tint",
             "rootAlias": "Mint/30"
           },
           {
-            "name": "Components/alert/AlertBox/Success/Contrast/Fill Toast",
-            "value": "#9cd9c2",
-            "var": "Fill/Success/Tint",
-            "rootAlias": "Mint/30"
-          },
-          {
-            "name": "Components/alert/AlertBox/Success/Contrast/Icon Default",
+            "name": "Components/alert/AlertBox/Success/Contrast/Icon",
             "value": "#181c56",
             "var": "Shape/Accent",
             "rootAlias": "Lavender/90"
           },
           {
-            "name": "Components/alert/AlertBox/Success/Contrast/Icon Toast",
-            "value": "#181c56",
-            "var": "Shape/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/alert/AlertBox/Success/Contrast/Text Default",
-            "value": "#181c56",
-            "var": "Text/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/alert/AlertBox/Success/Contrast/Text Toast",
+            "name": "Components/alert/AlertBox/Success/Contrast/Text",
             "value": "#181c56",
             "var": "Text/Accent",
             "rootAlias": "Lavender/90"
@@ -825,79 +735,43 @@
             "rootAlias": "Mint/60"
           },
           {
-            "name": "Components/alert/AlertBox/Success/Standard/Fill Default",
+            "name": "Components/alert/AlertBox/Success/Standard/Fill",
             "value": "#d0f1e3",
             "var": "Fill/Success/Muted",
             "rootAlias": "Mint/20"
           },
           {
-            "name": "Components/alert/AlertBox/Success/Standard/Fill Toast",
-            "value": "#d0f1e3",
-            "var": "Fill/Success/Muted",
-            "rootAlias": "Mint/20"
-          },
-          {
-            "name": "Components/alert/AlertBox/Success/Standard/Icon Default",
+            "name": "Components/alert/AlertBox/Success/Standard/Icon",
             "value": "#1a8e60",
             "var": "Shape/Success",
             "rootAlias": "Mint/60"
           },
           {
-            "name": "Components/alert/AlertBox/Success/Standard/Icon Toast",
-            "value": "#1a8e60",
-            "var": "Shape/Success",
-            "rootAlias": "Mint/60"
-          },
-          {
-            "name": "Components/alert/AlertBox/Success/Standard/Text Default",
-            "value": "#181c56",
-            "var": "Text/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/alert/AlertBox/Success/Standard/Text Toast",
+            "name": "Components/alert/AlertBox/Success/Standard/Text",
             "value": "#181c56",
             "var": "Text/Accent",
             "rootAlias": "Lavender/90"
           },
           {
             "name": "Components/alert/AlertBox/Warning/Contrast/Border",
-            "value": "#e9b10c",
-            "var": "Stroke/Warning",
-            "rootAlias": "Canary/70"
+            "value": "#ffffff00",
+            "var": "Stroke/Colorless",
+            "rootAlias": "White/Alpha-0"
           },
           {
-            "name": "Components/alert/AlertBox/Warning/Contrast/Fill Default",
+            "name": "Components/alert/AlertBox/Warning/Contrast/Fill",
             "value": "#ffeeb3",
             "var": "Fill/Warning/Tint",
             "rootAlias": "Canary/30"
           },
           {
-            "name": "Components/alert/AlertBox/Warning/Contrast/Fill Toast",
-            "value": "#ffeeb3",
-            "var": "Fill/Warning/Tint",
-            "rootAlias": "Canary/30"
-          },
-          {
-            "name": "Components/alert/AlertBox/Warning/Contrast/Icon Default",
+            "name": "Components/alert/AlertBox/Warning/Contrast/Icon",
             "value": "#181c56",
             "var": "Shape/Accent",
             "rootAlias": "Lavender/90"
           },
           {
-            "name": "Components/alert/AlertBox/Warning/Contrast/Icon Toast",
-            "value": "#181c56",
-            "var": "Shape/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/alert/AlertBox/Warning/Contrast/Text Default",
-            "value": "#181c56",
-            "var": "Text/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/alert/AlertBox/Warning/Contrast/Text Default 2",
+            "name": "Components/alert/AlertBox/Warning/Contrast/Text",
             "value": "#181c56",
             "var": "Text/Accent",
             "rootAlias": "Lavender/90"
@@ -909,37 +783,19 @@
             "rootAlias": "Canary/70"
           },
           {
-            "name": "Components/alert/AlertBox/Warning/Standard/Fill Default",
+            "name": "Components/alert/AlertBox/Warning/Standard/Fill",
             "value": "#fff4cd",
             "var": "Fill/Warning/Muted",
             "rootAlias": "Canary/20"
           },
           {
-            "name": "Components/alert/AlertBox/Warning/Standard/Fill Toast",
-            "value": "#fff4cd",
-            "var": "Fill/Warning/Muted",
-            "rootAlias": "Canary/20"
-          },
-          {
-            "name": "Components/alert/AlertBox/Warning/Standard/Icon Default",
+            "name": "Components/alert/AlertBox/Warning/Standard/Icon",
             "value": "#181c56",
             "var": "Shape/Accent",
             "rootAlias": "Lavender/90"
           },
           {
-            "name": "Components/alert/AlertBox/Warning/Standard/Icon Toast",
-            "value": "#181c56",
-            "var": "Shape/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/alert/AlertBox/Warning/Standard/Text Default",
-            "value": "#181c56",
-            "var": "Text/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/alert/AlertBox/Warning/Standard/Text Toast",
+            "name": "Components/alert/AlertBox/Warning/Standard/Text",
             "value": "#181c56",
             "var": "Text/Accent",
             "rootAlias": "Lavender/90"
@@ -3581,7 +3437,7 @@
           {
             "name": "Components/menu/Side Navigation/Contrast/Label",
             "value": "#aeb7e2",
-            "var": "Text/Highlight",
+            "var": "Text/Contrast",
             "rootAlias": "Lavender/40"
           },
           {
@@ -3601,102 +3457,6 @@
             "value": "#b6b8ba",
             "var": "Text/NeutralAlt",
             "rootAlias": "Grey/50"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Contrast beta/Background-Child",
-            "value": "#9ea0bd1a",
-            "var": "Fill/Background/Tint/Transparent",
-            "rootAlias": "Transparent/Blue-Alpha10"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Contrast beta/Divider",
-            "value": "#54568c66",
-            "var": "Stroke/Transparent",
-            "rootAlias": "Transparent/Blue-Alpha40"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Contrast beta/Fill-Active",
-            "value": "#393d79",
-            "var": "Fill/Selected/Default/Contrast",
-            "rootAlias": "Blue/90"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Contrast beta/Fill-Click",
-            "value": "#8794d4",
-            "var": "Fill/Primary/Active/Contrast",
-            "rootAlias": "Lavender/50"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Contrast beta/Fill-Default",
-            "value": "#ffffff00",
-            "var": "Fill/Background/Standard/Colorless",
-            "rootAlias": "White/Alpha-0"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Contrast beta/Fill-Disabled",
-            "value": "#ffffff00",
-            "var": "Fill/Background/Standard/Colorless",
-            "rootAlias": "White/Alpha-0"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Contrast beta/Fill-Hover",
-            "value": "#626493",
-            "var": "Fill/Secondary/Hover/Contrast",
-            "rootAlias": "Blue/70"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Contrast beta/Icon",
-            "value": "#ffffff",
-            "var": "Shape/Light",
-            "rootAlias": "White/Alpha-100"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Contrast beta/Icon-Disabled",
-            "value": "#b6b8ba",
-            "var": "Shape/NeutralAlt",
-            "rootAlias": "Grey/50"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Contrast beta/Icon-Subdued",
-            "value": "#aeb7e2",
-            "var": "Shape/Contrast",
-            "rootAlias": "Lavender/40"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Contrast beta/Stroke-Dev",
-            "value": "#5ac39a",
-            "var": "Fill/Success/Contrast",
-            "rootAlias": "Mint/40"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Contrast beta/Stroke-Prod",
-            "value": "#ff5959",
-            "var": "Stroke/Highlight",
-            "rootAlias": "Coral/40"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Contrast beta/Stroke-Staging",
-            "value": "#ffe082",
-            "var": "Fill/Warning/Contrast",
-            "rootAlias": "Canary/40"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Contrast beta/Text",
-            "value": "#ffffff",
-            "var": "Text/Light",
-            "rootAlias": "White/Alpha-100"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Contrast beta/Text-Disabled",
-            "value": "#b6b8ba",
-            "var": "Text/NeutralAlt",
-            "rootAlias": "Grey/50"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Contrast beta/Text-Group",
-            "value": "#d9dae8",
-            "var": "Text/SubduedAlt",
-            "rootAlias": "Blue/30"
           },
           {
             "name": "Components/menu/Side Navigation/Standard/Avatar",
@@ -3777,102 +3537,6 @@
             "rootAlias": "Grey/70"
           },
           {
-            "name": "Components/menu/Side Navigation/Standard beta/Background-Child",
-            "value": "#e5e5e926",
-            "var": "Fill/Background/Overlay/Transparent",
-            "rootAlias": "Transparent/Ebony-Alpha15"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Standard beta/Divider",
-            "value": "#e5e5e9",
-            "var": "Stroke/LightAlt",
-            "rootAlias": "Ebony/10"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Standard beta/Fill-Active",
-            "value": "#9ea0bd1a",
-            "var": "Fill/Background/Tint/Transparent",
-            "rootAlias": "Transparent/Blue-Alpha10"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Standard beta/Fill-Click",
-            "value": "#aeb7e2",
-            "var": "Fill/Secondary/Active/Light",
-            "rootAlias": "Lavender/40"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Standard beta/Fill-Default",
-            "value": "#ffffff00",
-            "var": "Fill/Background/Standard/Colorless",
-            "rootAlias": "White/Alpha-0"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Standard beta/Fill-Disabled",
-            "value": "#ffffff00",
-            "var": "Fill/Background/Standard/Colorless",
-            "rootAlias": "White/Alpha-0"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Standard beta/Fill-Hover",
-            "value": "#d9dae8",
-            "var": "Fill/Background/Subdued/Light",
-            "rootAlias": "Blue/30"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Standard beta/Icon",
-            "value": "#181c56",
-            "var": "Shape/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Standard beta/Icon-Disabled",
-            "value": "#6e6f73",
-            "var": "Shape/Neutral",
-            "rootAlias": "Grey/70"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Standard beta/Icon-Subdued",
-            "value": "#626493",
-            "var": "Shape/Subdued",
-            "rootAlias": "Blue/70"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Standard beta/Stroke-Dev",
-            "value": "#37ab83",
-            "var": "Fill/Success/Subdued",
-            "rootAlias": "Mint/50"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Standard beta/Stroke-Prod",
-            "value": "#ff5959",
-            "var": "Stroke/Highlight",
-            "rootAlias": "Coral/40"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Standard beta/Stroke-Staging",
-            "value": "#ffca28",
-            "var": "Fill/Warning/Deep",
-            "rootAlias": "Canary/60"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Standard beta/Text",
-            "value": "#181c56",
-            "var": "Text/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Standard beta/Text-Disabled",
-            "value": "#6e6f73",
-            "var": "Text/Neutral",
-            "rootAlias": "Grey/70"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Standard beta/Text-Group",
-            "value": "#626493",
-            "var": "Text/Subdued",
-            "rootAlias": "Blue/70"
-          },
-          {
             "name": "Components/menu/Stepper/Contrast/Background",
             "value": "#626493",
             "var": "Fill/Secondary/Hover/Contrast",
@@ -3893,7 +3557,7 @@
           {
             "name": "Components/menu/Stepper/Contrast/Text-Uncompleted",
             "value": "#aeb7e2",
-            "var": "Text/Highlight",
+            "var": "Text/Contrast",
             "rootAlias": "Lavender/40"
           },
           {
@@ -6567,54 +6231,6 @@
             "rootAlias": "White/Alpha-100"
           },
           {
-            "name": "DesignEntur/Logo/Contrast/Background APP",
-            "value": "#ffffff",
-            "var": "Fill/Background/Standard/Light",
-            "rootAlias": "White/Alpha-100"
-          },
-          {
-            "name": "DesignEntur/Logo/Contrast/Highlight",
-            "value": "#ff5959",
-            "var": "Shape/Highlight",
-            "rootAlias": "Coral/40"
-          },
-          {
-            "name": "DesignEntur/Logo/Contrast/Text",
-            "value": "#ffffff",
-            "var": "Shape/Light",
-            "rootAlias": "White/Alpha-100"
-          },
-          {
-            "name": "DesignEntur/Logo/Contrast/Text APP",
-            "value": "#181c56",
-            "var": "Shape/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "DesignEntur/Logo/Standard/Background APP",
-            "value": "#181c56",
-            "var": "Fill/Background/Contrast/Light",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "DesignEntur/Logo/Standard/Highlight",
-            "value": "#ff5959",
-            "var": "Shape/Highlight",
-            "rootAlias": "Coral/40"
-          },
-          {
-            "name": "DesignEntur/Logo/Standard/Text",
-            "value": "#181c56",
-            "var": "Shape/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "DesignEntur/Logo/Standard/Text APP",
-            "value": "#ffffff",
-            "var": "Shape/Light",
-            "rootAlias": "White/Alpha-100"
-          },
-          {
             "name": "DesignEntur/NpmTag/Divide",
             "value": "#949699",
             "var": "Stroke/NeutralAlt",
@@ -7286,339 +6902,195 @@
           },
           {
             "name": "Components/alert/AlertBox/Information/Contrast/Border",
-            "value": "#067eb2",
-            "var": "Stroke/Information",
-            "rootAlias": "Sky/50"
-          },
-          {
-            "name": "Components/alert/AlertBox/Information/Contrast/Fill Default",
-            "value": "#2d98d233",
-            "var": "Fill/Information/Transparent",
-            "rootAlias": "Transparent/Sky-Alpha20"
-          },
-          {
-            "name": "Components/alert/AlertBox/Information/Contrast/Fill Toast",
             "value": "#acd7f1",
-            "var": "Fill/Information/Tint",
+            "var": "Stroke/InformationAlt",
             "rootAlias": "Sky/20"
           },
           {
-            "name": "Components/alert/AlertBox/Information/Contrast/Icon Default",
+            "name": "Components/alert/AlertBox/Information/Contrast/Fill",
+            "value": "#022231",
+            "var": "Fill/Information/Accent",
+            "rootAlias": "Sky/100"
+          },
+          {
+            "name": "Components/alert/AlertBox/Information/Contrast/Icon",
             "value": "#acd7f1",
             "var": "Shape/InformationAlt-2",
             "rootAlias": "Sky/20"
           },
           {
-            "name": "Components/alert/AlertBox/Information/Contrast/Icon Toast",
-            "value": "#181c56",
-            "var": "Shape/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/alert/AlertBox/Information/Contrast/Text Default",
+            "name": "Components/alert/AlertBox/Information/Contrast/Text",
             "value": "#e5e5e9",
             "var": "Text/LightAlt",
             "rootAlias": "Ebony/10"
-          },
-          {
-            "name": "Components/alert/AlertBox/Information/Contrast/Text Toast",
-            "value": "#181c56",
-            "var": "Text/Accent",
-            "rootAlias": "Lavender/90"
           },
           {
             "name": "Components/alert/AlertBox/Information/Standard/Border",
-            "value": "#067eb2",
-            "var": "Stroke/Information",
-            "rootAlias": "Sky/50"
-          },
-          {
-            "name": "Components/alert/AlertBox/Information/Standard/Fill Default",
-            "value": "#2d98d233",
-            "var": "Fill/Information/Transparent",
-            "rootAlias": "Transparent/Sky-Alpha20"
-          },
-          {
-            "name": "Components/alert/AlertBox/Information/Standard/Fill Toast",
             "value": "#acd7f1",
-            "var": "Fill/Information/Tint",
+            "var": "Stroke/InformationAlt",
             "rootAlias": "Sky/20"
           },
           {
-            "name": "Components/alert/AlertBox/Information/Standard/Icon Default",
+            "name": "Components/alert/AlertBox/Information/Standard/Fill",
+            "value": "#022231",
+            "var": "Fill/Information/Accent",
+            "rootAlias": "Sky/100"
+          },
+          {
+            "name": "Components/alert/AlertBox/Information/Standard/Icon",
             "value": "#acd7f1",
             "var": "Shape/InformationAlt-2",
             "rootAlias": "Sky/20"
           },
           {
-            "name": "Components/alert/AlertBox/Information/Standard/Icon Toast",
-            "value": "#067eb2",
-            "var": "Shape/Information",
-            "rootAlias": "Sky/50"
-          },
-          {
-            "name": "Components/alert/AlertBox/Information/Standard/Text Default",
+            "name": "Components/alert/AlertBox/Information/Standard/Text",
             "value": "#e5e5e9",
             "var": "Text/LightAlt",
             "rootAlias": "Ebony/10"
-          },
-          {
-            "name": "Components/alert/AlertBox/Information/Standard/Text Toast",
-            "value": "#181c56",
-            "var": "Text/Accent",
-            "rootAlias": "Lavender/90"
           },
           {
             "name": "Components/alert/AlertBox/Negative/Contrast/Border",
-            "value": "#d31b1b",
-            "var": "Stroke/Negative",
-            "rootAlias": "Coral/60"
-          },
-          {
-            "name": "Components/alert/AlertBox/Negative/Contrast/Fill Default",
-            "value": "#ff949433",
-            "var": "Fill/Negative/Transparent",
-            "rootAlias": "Transparent/Coral-Alpha20"
-          },
-          {
-            "name": "Components/alert/AlertBox/Negative/Contrast/Fill Toast",
             "value": "#ff9494",
-            "var": "Fill/Negative/Tint",
+            "var": "Stroke/NegativeAlt",
             "rootAlias": "Coral/30"
           },
           {
-            "name": "Components/alert/AlertBox/Negative/Contrast/Icon Default",
+            "name": "Components/alert/AlertBox/Negative/Contrast/Fill",
+            "value": "#2e0505",
+            "var": "Fill/Negative/Accent",
+            "rootAlias": "Coral/100"
+          },
+          {
+            "name": "Components/alert/AlertBox/Negative/Contrast/Icon",
             "value": "#ff9494",
             "var": "Shape/NegativeAlt",
             "rootAlias": "Coral/30"
           },
           {
-            "name": "Components/alert/AlertBox/Negative/Contrast/Icon Toast",
-            "value": "#181c56",
-            "var": "Shape/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/alert/AlertBox/Negative/Contrast/Text Default",
+            "name": "Components/alert/AlertBox/Negative/Contrast/Text",
             "value": "#e5e5e9",
             "var": "Text/LightAlt",
             "rootAlias": "Ebony/10"
-          },
-          {
-            "name": "Components/alert/AlertBox/Negative/Contrast/Text Toast",
-            "value": "#181c56",
-            "var": "Text/Accent",
-            "rootAlias": "Lavender/90"
           },
           {
             "name": "Components/alert/AlertBox/Negative/Standard/Border",
-            "value": "#d31b1b",
-            "var": "Stroke/Negative",
-            "rootAlias": "Coral/60"
-          },
-          {
-            "name": "Components/alert/AlertBox/Negative/Standard/Fill Default",
-            "value": "#ff949433",
-            "var": "Fill/Negative/Transparent",
-            "rootAlias": "Transparent/Coral-Alpha20"
-          },
-          {
-            "name": "Components/alert/AlertBox/Negative/Standard/Fill Toast",
             "value": "#ff9494",
-            "var": "Fill/Negative/Tint",
+            "var": "Stroke/NegativeAlt",
             "rootAlias": "Coral/30"
           },
           {
-            "name": "Components/alert/AlertBox/Negative/Standard/Icon Default",
+            "name": "Components/alert/AlertBox/Negative/Standard/Fill",
+            "value": "#2e0505",
+            "var": "Fill/Negative/Accent",
+            "rootAlias": "Coral/100"
+          },
+          {
+            "name": "Components/alert/AlertBox/Negative/Standard/Icon",
             "value": "#ff9494",
             "var": "Shape/NegativeAlt",
             "rootAlias": "Coral/30"
           },
           {
-            "name": "Components/alert/AlertBox/Negative/Standard/Icon Toast",
-            "value": "#d31b1b",
-            "var": "Shape/Negative",
-            "rootAlias": "Coral/60"
-          },
-          {
-            "name": "Components/alert/AlertBox/Negative/Standard/Text Default",
+            "name": "Components/alert/AlertBox/Negative/Standard/Text",
             "value": "#e5e5e9",
             "var": "Text/LightAlt",
             "rootAlias": "Ebony/10"
-          },
-          {
-            "name": "Components/alert/AlertBox/Negative/Standard/Text Toast",
-            "value": "#181c56",
-            "var": "Text/Accent",
-            "rootAlias": "Lavender/90"
           },
           {
             "name": "Components/alert/AlertBox/Success/Contrast/Border",
-            "value": "#1a8e60",
-            "var": "Stroke/Success",
-            "rootAlias": "Mint/60"
-          },
-          {
-            "name": "Components/alert/AlertBox/Success/Contrast/Fill Default",
-            "value": "#5ac39a33",
-            "var": "Fill/Success/Transparent",
-            "rootAlias": "Transparent/Mint-Alpha20"
-          },
-          {
-            "name": "Components/alert/AlertBox/Success/Contrast/Fill Toast",
             "value": "#9cd9c2",
-            "var": "Fill/Success/Tint",
+            "var": "Stroke/SuccessAlt-2",
             "rootAlias": "Mint/30"
           },
           {
-            "name": "Components/alert/AlertBox/Success/Contrast/Icon Default",
+            "name": "Components/alert/AlertBox/Success/Contrast/Fill",
+            "value": "#022015",
+            "var": "Fill/Success/Accent",
+            "rootAlias": "Mint/100"
+          },
+          {
+            "name": "Components/alert/AlertBox/Success/Contrast/Icon",
             "value": "#9cd9c2",
             "var": "Shape/SuccessAlt-2",
             "rootAlias": "Mint/30"
           },
           {
-            "name": "Components/alert/AlertBox/Success/Contrast/Icon Toast",
-            "value": "#181c56",
-            "var": "Shape/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/alert/AlertBox/Success/Contrast/Text Default",
+            "name": "Components/alert/AlertBox/Success/Contrast/Text",
             "value": "#e5e5e9",
             "var": "Text/LightAlt",
             "rootAlias": "Ebony/10"
-          },
-          {
-            "name": "Components/alert/AlertBox/Success/Contrast/Text Toast",
-            "value": "#181c56",
-            "var": "Text/Accent",
-            "rootAlias": "Lavender/90"
           },
           {
             "name": "Components/alert/AlertBox/Success/Standard/Border",
-            "value": "#1a8e60",
-            "var": "Stroke/Success",
-            "rootAlias": "Mint/60"
-          },
-          {
-            "name": "Components/alert/AlertBox/Success/Standard/Fill Default",
-            "value": "#5ac39a33",
-            "var": "Fill/Success/Transparent",
-            "rootAlias": "Transparent/Mint-Alpha20"
-          },
-          {
-            "name": "Components/alert/AlertBox/Success/Standard/Fill Toast",
             "value": "#9cd9c2",
-            "var": "Fill/Success/Tint",
+            "var": "Stroke/SuccessAlt-2",
             "rootAlias": "Mint/30"
           },
           {
-            "name": "Components/alert/AlertBox/Success/Standard/Icon Default",
+            "name": "Components/alert/AlertBox/Success/Standard/Fill",
+            "value": "#022015",
+            "var": "Fill/Success/Accent",
+            "rootAlias": "Mint/100"
+          },
+          {
+            "name": "Components/alert/AlertBox/Success/Standard/Icon",
             "value": "#9cd9c2",
             "var": "Shape/SuccessAlt-2",
             "rootAlias": "Mint/30"
           },
           {
-            "name": "Components/alert/AlertBox/Success/Standard/Icon Toast",
-            "value": "#1a8e60",
-            "var": "Shape/Success",
-            "rootAlias": "Mint/60"
-          },
-          {
-            "name": "Components/alert/AlertBox/Success/Standard/Text Default",
+            "name": "Components/alert/AlertBox/Success/Standard/Text",
             "value": "#e5e5e9",
             "var": "Text/LightAlt",
             "rootAlias": "Ebony/10"
-          },
-          {
-            "name": "Components/alert/AlertBox/Success/Standard/Text Toast",
-            "value": "#181c56",
-            "var": "Text/Accent",
-            "rootAlias": "Lavender/90"
           },
           {
             "name": "Components/alert/AlertBox/Warning/Contrast/Border",
-            "value": "#e9b10c",
-            "var": "Stroke/Warning",
-            "rootAlias": "Canary/70"
-          },
-          {
-            "name": "Components/alert/AlertBox/Warning/Contrast/Fill Default",
-            "value": "#ffe08240",
-            "var": "Fill/Warning/Transparent",
-            "rootAlias": "Transparent/Canary-Alpha25"
-          },
-          {
-            "name": "Components/alert/AlertBox/Warning/Contrast/Fill Toast",
             "value": "#ffeeb3",
-            "var": "Fill/Warning/Tint",
+            "var": "Stroke/WarningAlt",
             "rootAlias": "Canary/30"
           },
           {
-            "name": "Components/alert/AlertBox/Warning/Contrast/Icon Default",
+            "name": "Components/alert/AlertBox/Warning/Contrast/Fill",
+            "value": "#302403",
+            "var": "Fill/Warning/Accent",
+            "rootAlias": "Canary/100"
+          },
+          {
+            "name": "Components/alert/AlertBox/Warning/Contrast/Icon",
             "value": "#181c56",
             "var": "Shape/Accent",
             "rootAlias": "Lavender/90"
           },
           {
-            "name": "Components/alert/AlertBox/Warning/Contrast/Icon Toast",
-            "value": "#181c56",
-            "var": "Shape/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/alert/AlertBox/Warning/Contrast/Text Default",
-            "value": "#e5e5e9",
-            "var": "Text/LightAlt",
-            "rootAlias": "Ebony/10"
-          },
-          {
-            "name": "Components/alert/AlertBox/Warning/Contrast/Text Default 2",
+            "name": "Components/alert/AlertBox/Warning/Contrast/Text",
             "value": "#e5e5e9",
             "var": "Text/LightAlt",
             "rootAlias": "Ebony/10"
           },
           {
             "name": "Components/alert/AlertBox/Warning/Standard/Border",
-            "value": "#e9b10c",
-            "var": "Stroke/Warning",
-            "rootAlias": "Canary/70"
-          },
-          {
-            "name": "Components/alert/AlertBox/Warning/Standard/Fill Default",
-            "value": "#ffe08240",
-            "var": "Fill/Warning/Transparent",
-            "rootAlias": "Transparent/Canary-Alpha25"
-          },
-          {
-            "name": "Components/alert/AlertBox/Warning/Standard/Fill Toast",
             "value": "#ffeeb3",
-            "var": "Fill/Warning/Tint",
+            "var": "Stroke/WarningAlt",
             "rootAlias": "Canary/30"
           },
           {
-            "name": "Components/alert/AlertBox/Warning/Standard/Icon Default",
+            "name": "Components/alert/AlertBox/Warning/Standard/Fill",
+            "value": "#302403",
+            "var": "Fill/Warning/Accent",
+            "rootAlias": "Canary/100"
+          },
+          {
+            "name": "Components/alert/AlertBox/Warning/Standard/Icon",
             "value": "#ffeeb3",
             "var": "Shape/WarningAlt-2",
             "rootAlias": "Canary/30"
           },
           {
-            "name": "Components/alert/AlertBox/Warning/Standard/Icon Toast",
-            "value": "#181c56",
-            "var": "Shape/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/alert/AlertBox/Warning/Standard/Text Default",
+            "name": "Components/alert/AlertBox/Warning/Standard/Text",
             "value": "#e5e5e9",
             "var": "Text/LightAlt",
             "rootAlias": "Ebony/10"
-          },
-          {
-            "name": "Components/alert/AlertBox/Warning/Standard/Text Toast",
-            "value": "#181c56",
-            "var": "Text/Accent",
-            "rootAlias": "Lavender/90"
           },
           {
             "name": "Components/alert/Copyable text/Contrast/Border",
@@ -8546,9 +8018,9 @@
           },
           {
             "name": "Components/datepicker/Calendar/Stroke-Today",
-            "value": "#ff9494",
-            "var": "Stroke/HighlightAlt",
-            "rootAlias": "Coral/30"
+            "value": "#ff5959",
+            "var": "Stroke/Highlight",
+            "rootAlias": "Coral/40"
           },
           {
             "name": "Components/datepicker/Calendar/Text-Accent",
@@ -9848,9 +9320,9 @@
           },
           {
             "name": "Components/loader/Loader/Contrast/ProgressBar",
-            "value": "#ff9494",
-            "var": "Stroke/HighlightAlt",
-            "rootAlias": "Coral/30"
+            "value": "#ff5959",
+            "var": "Stroke/Highlight",
+            "rootAlias": "Coral/40"
           },
           {
             "name": "Components/loader/Loader/Contrast/Text",
@@ -9866,9 +9338,9 @@
           },
           {
             "name": "Components/loader/Loader/Standard/ProgressBar",
-            "value": "#ff9494",
-            "var": "Stroke/HighlightAlt",
-            "rootAlias": "Coral/30"
+            "value": "#ff5959",
+            "var": "Stroke/Highlight",
+            "rootAlias": "Coral/40"
           },
           {
             "name": "Components/loader/Loader/Standard/Text",
@@ -9962,9 +9434,9 @@
           },
           {
             "name": "Components/menu/Navigation Bar/Contrast/Stroke-Selected",
-            "value": "#ff9494",
-            "var": "Stroke/HighlightAlt",
-            "rootAlias": "Coral/30"
+            "value": "#ff5959",
+            "var": "Stroke/Highlight",
+            "rootAlias": "Coral/40"
           },
           {
             "name": "Components/menu/Navigation Bar/Contrast/Text-Selected",
@@ -10004,9 +9476,9 @@
           },
           {
             "name": "Components/menu/Navigation Bar/Standard/Stroke-Selected",
-            "value": "#ff9494",
-            "var": "Stroke/HighlightAlt",
-            "rootAlias": "Coral/30"
+            "value": "#ff5959",
+            "var": "Stroke/Highlight",
+            "rootAlias": "Coral/40"
           },
           {
             "name": "Components/menu/Navigation Bar/Standard/Text-Selected",
@@ -10262,9 +9734,9 @@
           },
           {
             "name": "Components/menu/Side Navigation/Contrast/Stroke-Selected",
-            "value": "#ff9494",
-            "var": "Stroke/HighlightAlt",
-            "rootAlias": "Coral/30"
+            "value": "#ff5959",
+            "var": "Stroke/Highlight",
+            "rootAlias": "Coral/40"
           },
           {
             "name": "Components/menu/Side Navigation/Contrast/Text",
@@ -10277,102 +9749,6 @@
             "value": "#949699",
             "var": "Text/NeutralAlt2",
             "rootAlias": "Grey/60"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Contrast beta/Background-Child",
-            "value": "#141527",
-            "var": "Fill/Background/Tint/Dark",
-            "rootAlias": "Ebony/95"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Contrast beta/Divider",
-            "value": "#2d2e3e",
-            "var": "Fill/Background/Subdued/Dark",
-            "rootAlias": "Ebony/85"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Contrast beta/Fill-Active",
-            "value": "#212233",
-            "var": "Fill/Background/Contrast/Dark",
-            "rootAlias": "Ebony/90"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Contrast beta/Fill-Click",
-            "value": "#e5e5e926",
-            "var": "Fill/Background/Overlay/Transparent",
-            "rootAlias": "Transparent/Ebony-Alpha15"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Contrast beta/Fill-Default",
-            "value": "#ffffff00",
-            "var": "Fill/Background/Standard/Colorless",
-            "rootAlias": "White/Alpha-0"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Contrast beta/Fill-Disabled",
-            "value": "#ffffff00",
-            "var": "Fill/Background/Standard/Colorless",
-            "rootAlias": "White/Alpha-0"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Contrast beta/Fill-Hover",
-            "value": "#e5e5e926",
-            "var": "Fill/Background/Overlay/Transparent",
-            "rootAlias": "Transparent/Ebony-Alpha15"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Contrast beta/Icon",
-            "value": "#e5e5e9",
-            "var": "Shape/LightAlt",
-            "rootAlias": "Ebony/10"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Contrast beta/Icon-Disabled",
-            "value": "#949699",
-            "var": "Shape/NeutralAlt2",
-            "rootAlias": "Grey/60"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Contrast beta/Icon-Subdued",
-            "value": "#e5e5e9",
-            "var": "Shape/LightAlt",
-            "rootAlias": "Ebony/10"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Contrast beta/Stroke-Dev",
-            "value": "#9cd9c2",
-            "var": "Fill/Success/Tint",
-            "rootAlias": "Mint/30"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Contrast beta/Stroke-Prod",
-            "value": "#ff9494",
-            "var": "Stroke/HighlightAlt",
-            "rootAlias": "Coral/30"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Contrast beta/Stroke-Staging",
-            "value": "#ffeeb3",
-            "var": "Fill/Warning/Tint",
-            "rootAlias": "Canary/30"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Contrast beta/Text",
-            "value": "#e5e5e9",
-            "var": "Text/LightAlt",
-            "rootAlias": "Ebony/10"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Contrast beta/Text-Disabled",
-            "value": "#949699",
-            "var": "Text/NeutralAlt2",
-            "rootAlias": "Grey/60"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Contrast beta/Text-Group",
-            "value": "#b3b4bd",
-            "var": "Text/DarkAlt",
-            "rootAlias": "Ebony/30"
           },
           {
             "name": "Components/menu/Side Navigation/Standard/Avatar",
@@ -10436,9 +9812,9 @@
           },
           {
             "name": "Components/menu/Side Navigation/Standard/Stroke-Selected",
-            "value": "#ff9494",
-            "var": "Stroke/HighlightAlt",
-            "rootAlias": "Coral/30"
+            "value": "#ff5959",
+            "var": "Stroke/Highlight",
+            "rootAlias": "Coral/40"
           },
           {
             "name": "Components/menu/Side Navigation/Standard/Text",
@@ -10451,102 +9827,6 @@
             "value": "#949699",
             "var": "Text/NeutralAlt2",
             "rootAlias": "Grey/60"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Standard beta/Background-Child",
-            "value": "#141527",
-            "var": "Fill/Background/Tint/Dark",
-            "rootAlias": "Ebony/95"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Standard beta/Divider",
-            "value": "#2d2e3e",
-            "var": "Fill/Background/Subdued/Dark",
-            "rootAlias": "Ebony/85"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Standard beta/Fill-Active",
-            "value": "#212233",
-            "var": "Fill/Background/Contrast/Dark",
-            "rootAlias": "Ebony/90"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Standard beta/Fill-Click",
-            "value": "#e5e5e926",
-            "var": "Fill/Background/Overlay/Transparent",
-            "rootAlias": "Transparent/Ebony-Alpha15"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Standard beta/Fill-Default",
-            "value": "#ffffff00",
-            "var": "Fill/Background/Standard/Colorless",
-            "rootAlias": "White/Alpha-0"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Standard beta/Fill-Disabled",
-            "value": "#ffffff00",
-            "var": "Fill/Background/Standard/Colorless",
-            "rootAlias": "White/Alpha-0"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Standard beta/Fill-Hover",
-            "value": "#e5e5e926",
-            "var": "Fill/Background/Overlay/Transparent",
-            "rootAlias": "Transparent/Ebony-Alpha15"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Standard beta/Icon",
-            "value": "#e5e5e9",
-            "var": "Shape/LightAlt",
-            "rootAlias": "Ebony/10"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Standard beta/Icon-Disabled",
-            "value": "#949699",
-            "var": "Shape/NeutralAlt2",
-            "rootAlias": "Grey/60"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Standard beta/Icon-Subdued",
-            "value": "#e5e5e9",
-            "var": "Shape/LightAlt",
-            "rootAlias": "Ebony/10"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Standard beta/Stroke-Dev",
-            "value": "#9cd9c2",
-            "var": "Fill/Success/Tint",
-            "rootAlias": "Mint/30"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Standard beta/Stroke-Prod",
-            "value": "#ff9494",
-            "var": "Stroke/HighlightAlt",
-            "rootAlias": "Coral/30"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Standard beta/Stroke-Staging",
-            "value": "#ffeeb3",
-            "var": "Fill/Warning/Tint",
-            "rootAlias": "Canary/30"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Standard beta/Text",
-            "value": "#e5e5e9",
-            "var": "Text/LightAlt",
-            "rootAlias": "Ebony/10"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Standard beta/Text-Disabled",
-            "value": "#949699",
-            "var": "Text/NeutralAlt2",
-            "rootAlias": "Grey/60"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Standard beta/Text-Group",
-            "value": "#b3b4bd",
-            "var": "Text/DarkAlt",
-            "rootAlias": "Ebony/30"
           },
           {
             "name": "Components/menu/Stepper/Contrast/Background",
@@ -10610,9 +9890,9 @@
           },
           {
             "name": "Components/menu/Table of Content/Contrast/Stroke-Selected",
-            "value": "#ff9494",
-            "var": "Stroke/HighlightAlt",
-            "rootAlias": "Coral/30"
+            "value": "#ff5959",
+            "var": "Stroke/Highlight",
+            "rootAlias": "Coral/40"
           },
           {
             "name": "Components/menu/Table of Content/Contrast/Stroke-Unselected",
@@ -10646,9 +9926,9 @@
           },
           {
             "name": "Components/menu/Table of Content/Standard/Stroke-Selected",
-            "value": "#ff9494",
-            "var": "Stroke/HighlightAlt",
-            "rootAlias": "Coral/30"
+            "value": "#ff5959",
+            "var": "Stroke/Highlight",
+            "rootAlias": "Coral/40"
           },
           {
             "name": "Components/menu/Table of Content/Standard/Stroke-Unselected",
@@ -10796,9 +10076,9 @@
           },
           {
             "name": "Components/tab/Contrast/Underline-selected",
-            "value": "#ff9494",
-            "var": "Stroke/HighlightAlt",
-            "rootAlias": "Coral/30"
+            "value": "#ff5959",
+            "var": "Stroke/Highlight",
+            "rootAlias": "Coral/40"
           },
           {
             "name": "Components/tab/Standard/Border",
@@ -10856,9 +10136,9 @@
           },
           {
             "name": "Components/tab/Standard/Underline-selected",
-            "value": "#ff9494",
-            "var": "Stroke/HighlightAlt",
-            "rootAlias": "Coral/30"
+            "value": "#ff5959",
+            "var": "Stroke/Highlight",
+            "rootAlias": "Coral/40"
           },
           {
             "name": "Components/table/Contrast/Cell-Fill",
@@ -11090,15 +10370,15 @@
           },
           {
             "name": "Components/travel/Leg Line/Stroke-Line",
-            "value": "#ff9494",
-            "var": "Stroke/HighlightAlt",
-            "rootAlias": "Coral/30"
+            "value": "#ff5959",
+            "var": "Stroke/Highlight",
+            "rootAlias": "Coral/40"
           },
           {
             "name": "Components/travel/Travel Header/Contrast/Stroke-Line",
-            "value": "#ff9494",
-            "var": "Stroke/HighlightAlt",
-            "rootAlias": "Coral/30"
+            "value": "#ff5959",
+            "var": "Stroke/Highlight",
+            "rootAlias": "Coral/40"
           },
           {
             "name": "Components/travel/Travel Header/Contrast/Text",
@@ -11108,9 +10388,9 @@
           },
           {
             "name": "Components/travel/Travel Header/Standard/Stroke-Line",
-            "value": "#ff9494",
-            "var": "Stroke/HighlightAlt",
-            "rootAlias": "Coral/30"
+            "value": "#ff5959",
+            "var": "Stroke/Highlight",
+            "rootAlias": "Coral/40"
           },
           {
             "name": "Components/travel/Travel Header/Standard/Text",
@@ -13243,54 +12523,6 @@
             "rootAlias": "Ebony/100"
           },
           {
-            "name": "DesignEntur/Logo/Contrast/Background APP",
-            "value": "#e5e5e926",
-            "var": "Fill/Background/Overlay/Transparent",
-            "rootAlias": "Transparent/Ebony-Alpha15"
-          },
-          {
-            "name": "DesignEntur/Logo/Contrast/Highlight",
-            "value": "#ff5959",
-            "var": "Shape/Highlight",
-            "rootAlias": "Coral/40"
-          },
-          {
-            "name": "DesignEntur/Logo/Contrast/Text",
-            "value": "#ffffff",
-            "var": "Shape/Light",
-            "rootAlias": "White/Alpha-100"
-          },
-          {
-            "name": "DesignEntur/Logo/Contrast/Text APP",
-            "value": "#ffffff",
-            "var": "Shape/Light",
-            "rootAlias": "White/Alpha-100"
-          },
-          {
-            "name": "DesignEntur/Logo/Standard/Background APP",
-            "value": "#e5e5e926",
-            "var": "Fill/Background/Overlay/Transparent",
-            "rootAlias": "Transparent/Ebony-Alpha15"
-          },
-          {
-            "name": "DesignEntur/Logo/Standard/Highlight",
-            "value": "#ff5959",
-            "var": "Shape/Highlight",
-            "rootAlias": "Coral/40"
-          },
-          {
-            "name": "DesignEntur/Logo/Standard/Text",
-            "value": "#ffffff",
-            "var": "Shape/Light",
-            "rootAlias": "White/Alpha-100"
-          },
-          {
-            "name": "DesignEntur/Logo/Standard/Text APP",
-            "value": "#ffffff",
-            "var": "Shape/Light",
-            "rootAlias": "White/Alpha-100"
-          },
-          {
             "name": "DesignEntur/NpmTag/Divide",
             "value": "#e5e5e9",
             "var": "Stroke/LightAlt",
@@ -13366,6 +12598,78 @@
         },
         "color": [],
         "number": [
+          {
+            "name": "Components/travel/Travel header/border/small",
+            "value": "0.125rem",
+            "var": "size-2",
+            "rootAlias": "size-2"
+          },
+          {
+            "name": "Components/travel/Travel header/border/large",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "Components/travel/Travel header/border/medium",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "Components/travel/Travel header/gap/small",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "Components/travel/Travel header/gap/medium",
+            "value": "0.75rem",
+            "var": "size-6",
+            "rootAlias": "size-6"
+          },
+          {
+            "name": "Components/travel/Travel header/gap/large",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "Components/travel/Travel header/spacing/large",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "Components/travel/Travel header/spacing/medium",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "Components/travel/Travel header/spacing/small",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "Components/travel/Travel header/width/small",
+            "value": "1.5rem",
+            "var": "size-10",
+            "rootAlias": "size-10"
+          },
+          {
+            "name": "Components/travel/Travel header/width/medium",
+            "value": "2rem",
+            "var": "size-12",
+            "rootAlias": "size-12"
+          },
+          {
+            "name": "Components/travel/Travel header/width/large",
+            "value": "2.5rem",
+            "var": "size-14",
+            "rootAlias": "size-14"
+          },
           {
             "name": "Components/button/border/Large",
             "value": "0.125rem",
@@ -14067,6 +13371,78 @@
         "color": [],
         "number": [
           {
+            "name": "Components/travel/Travel header/border/small",
+            "value": "0.125rem",
+            "var": "size-2",
+            "rootAlias": "size-2"
+          },
+          {
+            "name": "Components/travel/Travel header/border/large",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "Components/travel/Travel header/border/medium",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "Components/travel/Travel header/gap/medium",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "Components/travel/Travel header/gap/small",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "Components/travel/Travel header/gap/large",
+            "value": "0.75rem",
+            "var": "size-6",
+            "rootAlias": "size-6"
+          },
+          {
+            "name": "Components/travel/Travel header/spacing/large",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "Components/travel/Travel header/spacing/medium",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "Components/travel/Travel header/spacing/small",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "Components/travel/Travel header/width/small",
+            "value": "1.25rem",
+            "var": "size-9",
+            "rootAlias": "size-9"
+          },
+          {
+            "name": "Components/travel/Travel header/width/medium",
+            "value": "1.75rem",
+            "var": "size-11",
+            "rootAlias": "size-11"
+          },
+          {
+            "name": "Components/travel/Travel header/width/large",
+            "value": "2rem",
+            "var": "size-12",
+            "rootAlias": "size-12"
+          },
+          {
             "name": "Components/button/border/Large",
             "value": "0.125rem",
             "var": "size-2",
@@ -14766,6 +14142,78 @@
         },
         "color": [],
         "number": [
+          {
+            "name": "Components/travel/Travel header/border/small",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "Components/travel/Travel header/border/medium",
+            "value": "0.375rem",
+            "var": "size-4",
+            "rootAlias": "size-4"
+          },
+          {
+            "name": "Components/travel/Travel header/border/large",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "Components/travel/Travel header/gap/small",
+            "value": "0.75rem",
+            "var": "size-6",
+            "rootAlias": "size-6"
+          },
+          {
+            "name": "Components/travel/Travel header/gap/medium",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "Components/travel/Travel header/gap/large",
+            "value": "1.5rem",
+            "var": "size-10",
+            "rootAlias": "size-10"
+          },
+          {
+            "name": "Components/travel/Travel header/spacing/small",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "Components/travel/Travel header/spacing/medium",
+            "value": "0.75rem",
+            "var": "size-6",
+            "rootAlias": "size-6"
+          },
+          {
+            "name": "Components/travel/Travel header/spacing/large",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "Components/travel/Travel header/width/small",
+            "value": "2.5rem",
+            "var": "size-14",
+            "rootAlias": "size-14"
+          },
+          {
+            "name": "Components/travel/Travel header/width/medium",
+            "value": "3.5rem",
+            "var": "size-18",
+            "rootAlias": "size-18"
+          },
+          {
+            "name": "Components/travel/Travel header/width/large",
+            "value": "4.5rem",
+            "var": "size-20",
+            "rootAlias": "size-20"
+          },
           {
             "name": "Components/button/border/Small",
             "value": "0.125rem",

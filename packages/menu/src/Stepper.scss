@@ -51,12 +51,12 @@
     }
 
     &--active {
-      --text-color: var(--components-menu-stepper-standard-text-uncompleted);
+      --text-color: var(--components-menu-stepper-standard-text-completed);
       --label-font-weight: #{t.$font-weights-heading};
       --display-active-line: block;
 
       .eds-contrast & {
-        --text-color: var(--components-menu-stepper-contrast-text-uncompleted);
+        --text-color: var(--components-menu-stepper-contrast-text-completed);
       }
     }
 

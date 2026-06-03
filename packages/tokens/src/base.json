@@ -45,6 +45,18 @@
             "rootAlias": "Blue/10"
           },
           {
+            "name": "Base colors/Frame/Highlight",
+            "value": "#ff5959",
+            "var": "Stroke/Highlight",
+            "rootAlias": "Coral/40"
+          },
+          {
+            "name": "Base colors/Frame/HighlightAlt",
+            "value": "#ffbf9e",
+            "var": "Stroke/HighlightAlt",
+            "rootAlias": "Peach/40"
+          },
+          {
             "name": "Base colors/Frame/Subdued",
             "value": "#d9dae8",
             "var": "Fill/Background/Subdued/Light",
@@ -64,13 +76,13 @@
           },
           {
             "name": "Base colors/Shape/Bicycle-Contrast",
-            "value": "#00db9b",
+            "value": "#00dbb6",
             "var": "Contrast/Bicycle",
             "rootAlias": "Contrast/Bicycle"
           },
           {
             "name": "Base colors/Shape/Bicycle-Default",
-            "value": "#33826b",
+            "value": "#0d827e",
             "var": "Standard/Bicycle",
             "rootAlias": "Standard/Bicycle"
           },
@@ -184,13 +196,13 @@
           },
           {
             "name": "Base colors/Shape/Mobility-Contrast",
-            "value": "#00db9b",
+            "value": "#00dbb6",
             "var": "Contrast/Mobility",
             "rootAlias": "Contrast/Mobility"
           },
           {
             "name": "Base colors/Shape/Mobility-Default",
-            "value": "#33826b",
+            "value": "#0d827e",
             "var": "Standard/Mobility",
             "rootAlias": "Standard/Mobility"
           },
@@ -256,7 +268,7 @@
           },
           {
             "name": "Base colors/Shape/Walk-Contrast",
-            "value": "#8284ab",
+            "value": "#9ea0bd",
             "var": "Contrast/Walk",
             "rootAlias": "Contrast/Walk"
           },
@@ -327,6 +339,12 @@
             "rootAlias": "Coral/40"
           },
           {
+            "name": "Base colors/Stroke/Highlight 2",
+            "value": "#ffbf9e",
+            "var": "Text/HighlightAlt",
+            "rootAlias": "Peach/40"
+          },
+          {
             "name": "Base colors/Stroke/Light",
             "value": "#ffffff",
             "var": "Stroke/Light",
@@ -365,7 +383,7 @@
           {
             "name": "Base colors/Text/Highlight",
             "value": "#ff5959",
-            "var": "Stroke/Highlight",
+            "var": "Text/Highlight",
             "rootAlias": "Coral/40"
           },
           {
@@ -439,6 +457,18 @@
             "rootAlias": "Ebony/75"
           },
           {
+            "name": "Base colors/Frame/Highlight",
+            "value": "#ff5959",
+            "var": "Stroke/Highlight",
+            "rootAlias": "Coral/40"
+          },
+          {
+            "name": "Base colors/Frame/HighlightAlt",
+            "value": "#ffbf9e",
+            "var": "Stroke/HighlightAlt",
+            "rootAlias": "Peach/40"
+          },
+          {
             "name": "Base colors/Frame/Subdued",
             "value": "#2d2e3e",
             "var": "Fill/Background/Subdued/Dark",
@@ -458,13 +488,13 @@
           },
           {
             "name": "Base colors/Shape/Bicycle-Contrast",
-            "value": "#4db295",
+            "value": "#4db2a1",
             "var": "Dark/Bicycle",
             "rootAlias": "Dark/Bicycle"
           },
           {
             "name": "Base colors/Shape/Bicycle-Default",
-            "value": "#4db295",
+            "value": "#4db2a1",
             "var": "Dark/Bicycle",
             "rootAlias": "Dark/Bicycle"
           },
@@ -542,9 +572,9 @@
           },
           {
             "name": "Base colors/Shape/Highlight",
-            "value": "#ff9494",
-            "var": "Stroke/HighlightAlt",
-            "rootAlias": "Coral/30"
+            "value": "#ff5959",
+            "var": "Stroke/Highlight",
+            "rootAlias": "Coral/40"
           },
           {
             "name": "Base colors/Shape/Light",
@@ -578,13 +608,13 @@
           },
           {
             "name": "Base colors/Shape/Mobility-Contrast",
-            "value": "#4db295",
+            "value": "#4db2a1",
             "var": "Dark/Mobility",
             "rootAlias": "Dark/Mobility"
           },
           {
             "name": "Base colors/Shape/Mobility-Default",
-            "value": "#4db295",
+            "value": "#4db2a1",
             "var": "Dark/Mobility",
             "rootAlias": "Dark/Mobility"
           },
@@ -716,9 +746,15 @@
           },
           {
             "name": "Base colors/Stroke/Highlight",
-            "value": "#ff9494",
+            "value": "#ff5959",
+            "var": "Stroke/Highlight",
+            "rootAlias": "Coral/40"
+          },
+          {
+            "name": "Base colors/Stroke/Highlight 2",
+            "value": "#ffbf9e",
             "var": "Stroke/HighlightAlt",
-            "rootAlias": "Coral/30"
+            "rootAlias": "Peach/40"
           },
           {
             "name": "Base colors/Stroke/Light",
@@ -758,9 +794,9 @@
           },
           {
             "name": "Base colors/Text/Highlight",
-            "value": "#ff9494",
-            "var": "Stroke/HighlightAlt",
-            "rootAlias": "Coral/30"
+            "value": "#ff5959",
+            "var": "Text/Highlight",
+            "rootAlias": "Coral/40"
           },
           {
             "name": "Base colors/Text/HighlightAlt",

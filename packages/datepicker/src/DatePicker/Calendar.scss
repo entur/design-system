@@ -135,6 +135,11 @@
           color: var(--components-datepicker-calendar-text-subdued);
           opacity: 1;
 
+          &.eds-datepicker__calendar__grid__cell--selected {
+            background-color: var(--components-datepicker-calendar-datefill-selected);
+            color: var(--components-datepicker-calendar-text-accent);
+          }
+
           &:hover {
             background-color: var(--components-datepicker-calendar-datefill-hover);
             color: var(--components-datepicker-calendar-text-accent);

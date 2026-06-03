@@ -171,6 +171,12 @@
             "rootAlias": "Transparent/Neutral-Alpha10"
           },
           {
+            "name": "Fill/Information/Accent",
+            "value": "#022231",
+            "var": "Sky/100",
+            "rootAlias": "Sky/100"
+          },
+          {
             "name": "Fill/Information/Contrast",
             "value": "#64b3e7",
             "var": "Sky/30",
@@ -195,10 +201,10 @@
             "rootAlias": "Sky/20"
           },
           {
-            "name": "Fill/Information/Transparent",
-            "value": "#2d98d233",
-            "var": "Transparent/Sky-Alpha20",
-            "rootAlias": "Transparent/Sky-Alpha20"
+            "name": "Fill/Negative/Accent",
+            "value": "#2e0505",
+            "var": "Coral/100",
+            "rootAlias": "Coral/100"
           },
           {
             "name": "Fill/Negative/Contrast",
@@ -357,6 +363,12 @@
             "rootAlias": "Grey/20"
           },
           {
+            "name": "Fill/Success/Accent",
+            "value": "#022015",
+            "var": "Mint/100",
+            "rootAlias": "Mint/100"
+          },
+          {
             "name": "Fill/Success/Contrast",
             "value": "#5ac39a",
             "var": "Mint/40",
@@ -387,10 +399,10 @@
             "rootAlias": "Mint/30"
           },
           {
-            "name": "Fill/Success/Transparent",
-            "value": "#5ac39a33",
-            "var": "Transparent/Mint-Alpha20",
-            "rootAlias": "Transparent/Mint-Alpha20"
+            "name": "Fill/Warning/Accent",
+            "value": "#302403",
+            "var": "Canary/100",
+            "rootAlias": "Canary/100"
           },
           {
             "name": "Fill/Warning/Contrast",
@@ -415,12 +427,6 @@
             "value": "#ffeeb3",
             "var": "Canary/30",
             "rootAlias": "Canary/30"
-          },
-          {
-            "name": "Fill/Warning/Transparent",
-            "value": "#ffe08240",
-            "var": "Transparent/Canary-Alpha25",
-            "rootAlias": "Transparent/Canary-Alpha25"
           },
           {
             "name": "Shape/Accent",
@@ -460,9 +466,9 @@
           },
           {
             "name": "Shape/HighlightAlt",
-            "value": "#ff9494",
-            "var": "Coral/30",
-            "rootAlias": "Coral/30"
+            "value": "#ffbf9e",
+            "var": "Peach/40",
+            "rootAlias": "Peach/40"
           },
           {
             "name": "Shape/Inactive",
@@ -603,6 +609,12 @@
             "rootAlias": "Blue/80"
           },
           {
+            "name": "Stroke/ContrastAlt-2",
+            "value": "#11143c",
+            "var": "Lavender/100",
+            "rootAlias": "Lavender/100"
+          },
+          {
             "name": "Stroke/Dark",
             "value": "#b3b4bd",
             "var": "Ebony/30",
@@ -621,12 +633,6 @@
             "rootAlias": "Ebony/100"
           },
           {
-            "name": "Stroke/High contrast",
-            "value": "#11143c",
-            "var": "Lavender/100",
-            "rootAlias": "Lavender/100"
-          },
-          {
             "name": "Stroke/Highlight",
             "value": "#ff5959",
             "var": "Coral/40",
@@ -634,9 +640,9 @@
           },
           {
             "name": "Stroke/HighlightAlt",
-            "value": "#ff9494",
-            "var": "Coral/30",
-            "rootAlias": "Coral/30"
+            "value": "#ffbf9e",
+            "var": "Peach/40",
+            "rootAlias": "Peach/40"
           },
           {
             "name": "Stroke/Information",
@@ -741,6 +747,12 @@
             "rootAlias": "Lavender/90"
           },
           {
+            "name": "Text/Contrast",
+            "value": "#aeb7e2",
+            "var": "Lavender/40",
+            "rootAlias": "Lavender/40"
+          },
+          {
             "name": "Text/Dark",
             "value": "#08091c",
             "var": "Ebony/100",
@@ -760,9 +772,9 @@
           },
           {
             "name": "Text/Highlight",
-            "value": "#aeb7e2",
-            "var": "Lavender/40",
-            "rootAlias": "Lavender/40"
+            "value": "#ff5959",
+            "var": "Coral/40",
+            "rootAlias": "Coral/40"
           },
           {
             "name": "Text/HighlightAlt",
