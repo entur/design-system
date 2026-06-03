@@ -38,6 +38,10 @@ coverage
 !/.claude/commands/commit.md
 !/.claude/commands/update-pr.md
 
+# GitHub
+# We might want to include skills later on
+.github/skills/impeccable
+
 ## Local test environment
 TestBench.tsx
 content/components/testin.mdx
