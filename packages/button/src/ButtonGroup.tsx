@@ -14,11 +14,11 @@ export type ButtonGroupProps = {
   [key: string]: any;
 };
 
-export const ButtonGroup: React.FC<ButtonGroupProps> = ({
+export const ButtonGroup = ({
   as: Element = 'div',
   className,
   ...rest
-}) => {
+}: ButtonGroupProps) => {
   return (
     <Element className={classNames('eds-button-group', className)} {...rest} />
   );
