@@ -46,7 +46,7 @@ export type TravelTagProps = {
   HTMLDivElement
 >;
 
-export const TravelTag: React.FC<TravelTagProps> = ({
+export const TravelTag = ({
   children,
   className,
   alert = 'none',
@@ -58,7 +58,7 @@ export const TravelTag: React.FC<TravelTagProps> = ({
   details,
   style,
   ...rest
-}) => {
+}: TravelTagProps) => {
   const isContrast = useContrast();
   const isClosable = Boolean(onClose);
   const transportIsSet = transport !== 'none';

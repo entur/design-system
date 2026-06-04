@@ -17,12 +17,12 @@ export type TravelLegProps = {
   HTMLDivElement
 >;
 
-export const TravelLeg: React.FC<TravelLegProps> = ({
+export const TravelLeg = ({
   className,
   transport,
   direction,
   ...rest
-}) => {
+}: TravelLegProps) => {
   const { pattern } = getTransportStyle(transport);
   const isContrast = useContrast();
   const deCapitalizeTransport = transport.toLowerCase();
