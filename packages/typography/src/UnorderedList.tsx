@@ -11,7 +11,6 @@ export type UnorderedListProps = {
   HTMLUListElement
 >;
 
-export const UnorderedList: React.FC<UnorderedListProps> = ({
-  className,
-  ...rest
-}) => <ul className={classNames('eds-unordered-list', className)} {...rest} />;
+export const UnorderedList = ({ className, ...rest }: UnorderedListProps) => (
+  <ul className={classNames('eds-unordered-list', className)} {...rest} />
+);
