@@ -57,7 +57,7 @@ type FileUploadProps = DropzoneOptions & {
   [key: string]: any;
 };
 
-export const FileUpload: React.FC<FileUploadProps> = ({
+export const FileUpload = ({
   standbyText = 'Dra fil eller klikk for å laste opp',
   errorText = 'Feil ved opplasting av fil',
   successText = 'Opplasting fullført',
@@ -70,7 +70,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({
   removeFileButtonDescription = 'Fjern fil',
   style,
   ...rest
-}) => {
+}: FileUploadProps) => {
   const { getRootProps, getInputProps, isDragActive, isDragReject } =
     useDropzone({
       onDrop,
