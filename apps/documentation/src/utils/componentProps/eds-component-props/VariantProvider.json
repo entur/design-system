@@ -12,7 +12,7 @@
       "name": "variant",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/VariantProvider.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/form/src/VariantProvider.tsx",
           "name": "TypeLiteral"
         }
       ],

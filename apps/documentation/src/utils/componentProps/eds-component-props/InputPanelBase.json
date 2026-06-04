@@ -10,7 +10,7 @@
       "name": "title",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/inputPanel/InputPanelBase.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/form/src/inputPanel/InputPanelBase.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -27,7 +27,7 @@
       "name": "size",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/inputPanel/InputPanelBase.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/form/src/inputPanel/InputPanelBase.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -42,11 +42,11 @@
       "name": "checked",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/inputPanel/InputPanelBase.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/form/src/inputPanel/InputPanelBase.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@types/react/index.d.ts",
           "name": "InputHTMLAttributes"
         }
       ],
@@ -63,11 +63,11 @@
       "name": "disabled",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/inputPanel/InputPanelBase.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/form/src/inputPanel/InputPanelBase.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@types/react/index.d.ts",
           "name": "InputHTMLAttributes"
         }
       ],
@@ -84,11 +84,11 @@
       "name": "readOnly",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/inputPanel/InputPanelBase.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/form/src/inputPanel/InputPanelBase.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@types/react/index.d.ts",
           "name": "InputHTMLAttributes"
         }
       ],
@@ -105,11 +105,11 @@
       "name": "type",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/inputPanel/InputPanelBase.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/form/src/inputPanel/InputPanelBase.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@types/react/index.d.ts",
           "name": "InputHTMLAttributes"
         }
       ],
@@ -124,11 +124,11 @@
       "name": "value",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/inputPanel/InputPanelBase.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/form/src/inputPanel/InputPanelBase.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@types/react/index.d.ts",
           "name": "InputHTMLAttributes"
         }
       ],
@@ -143,11 +143,11 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/inputPanel/InputPanelBase.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/form/src/inputPanel/InputPanelBase.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@types/react/index.d.ts",
           "name": "HTMLAttributes"
         }
       ],
@@ -162,11 +162,11 @@
       "name": "style",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/inputPanel/InputPanelBase.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/form/src/inputPanel/InputPanelBase.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@types/react/index.d.ts",
           "name": "HTMLAttributes"
         }
       ],
@@ -181,11 +181,11 @@
       "name": "children",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/inputPanel/InputPanelBase.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/form/src/inputPanel/InputPanelBase.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@types/react/index.d.ts",
           "name": "DOMAttributes"
         }
       ],
@@ -200,7 +200,7 @@
       "name": "secondaryLabel",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/inputPanel/InputPanelBase.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/form/src/inputPanel/InputPanelBase.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -217,7 +217,7 @@
       "name": "hideSelectionIndicator",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/inputPanel/InputPanelBase.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/form/src/inputPanel/InputPanelBase.tsx",
           "name": "TypeLiteral"
         }
       ],

@@ -10,7 +10,7 @@
       "name": "items",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -25,7 +25,7 @@
       "name": "selectedItem",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -42,7 +42,7 @@
       "name": "onChange",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -57,7 +57,7 @@
       "name": "label",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -72,7 +72,7 @@
       "name": "placeholder",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -89,7 +89,7 @@
       "name": "clearable",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -106,7 +106,7 @@
       "name": "selectOnTab",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -123,7 +123,7 @@
       "name": "disabled",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -140,7 +140,7 @@
       "name": "readOnly",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -157,7 +157,7 @@
       "name": "variant",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -172,7 +172,7 @@
       "name": "feedback",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -187,7 +187,7 @@
       "name": "prepend",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -202,7 +202,7 @@
       "name": "loading",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -219,7 +219,7 @@
       "name": "loadingText",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -236,11 +236,11 @@
       "name": "noMatchesText",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/packages/dropdown/src/SearchableDropdown.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/dropdown/src/SearchableDropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -257,7 +257,7 @@
       "name": "labelClearSelectedItem",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -272,7 +272,7 @@
       "name": "labelTooltip",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -289,7 +289,7 @@
       "name": "disableLabelAnimation",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -304,7 +304,7 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -319,7 +319,7 @@
       "name": "listStyle",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -334,7 +334,7 @@
       "name": "style",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -351,7 +351,7 @@
       "name": "ariaLabelCloseList",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -368,7 +368,7 @@
       "name": "ariaLabelOpenList",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -385,7 +385,7 @@
       "name": "ariaLabelChosenSingular",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -402,7 +402,7 @@
       "name": "ariaLabelSelectedItem",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -419,7 +419,7 @@
       "name": "itemFilter",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/SearchableDropdown.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/dropdown/src/SearchableDropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -434,7 +434,7 @@
       "name": "debounceTimeout",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/SearchableDropdown.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/dropdown/src/SearchableDropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -449,7 +449,7 @@
       "name": "onBlur",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/SearchableDropdown.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/dropdown/src/SearchableDropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -464,7 +464,7 @@
       "name": "onClick",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/SearchableDropdown.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/dropdown/src/SearchableDropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -479,7 +479,7 @@
       "name": "onKeyDown",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/SearchableDropdown.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/dropdown/src/SearchableDropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -494,7 +494,7 @@
       "name": "onFocus",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/SearchableDropdown.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/dropdown/src/SearchableDropdown.tsx",
           "name": "TypeLiteral"
         }
       ],

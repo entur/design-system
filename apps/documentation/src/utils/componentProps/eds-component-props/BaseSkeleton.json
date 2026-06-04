@@ -10,7 +10,7 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "design-system/packages/loader/src/BaseSkeleton.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/loader/src/BaseSkeleton.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -25,7 +25,7 @@
       "name": "style",
       "declarations": [
         {
-          "fileName": "design-system/packages/loader/src/BaseSkeleton.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/loader/src/BaseSkeleton.tsx",
           "name": "TypeLiteral"
         }
       ],

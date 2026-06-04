@@ -12,7 +12,7 @@
       "name": "as",
       "declarations": [
         {
-          "fileName": "design-system/packages/a11y/src/VisuallyHidden.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/a11y/src/VisuallyHidden.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -27,11 +27,11 @@
       "name": "children",
       "declarations": [
         {
-          "fileName": "design-system/packages/a11y/src/VisuallyHidden.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/a11y/src/VisuallyHidden.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@types/react/index.d.ts",
           "name": "TypeLiteral"
         }
       ],

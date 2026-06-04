@@ -10,7 +10,7 @@
       "name": "open",
       "declarations": [
         {
-          "fileName": "design-system/packages/expand/src/ExpandableTextButton.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/expand/src/ExpandableTextButton.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -25,7 +25,7 @@
       "name": "onToggle",
       "declarations": [
         {
-          "fileName": "design-system/packages/expand/src/ExpandableTextButton.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/expand/src/ExpandableTextButton.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -42,7 +42,7 @@
       "name": "as",
       "declarations": [
         {
-          "fileName": "design-system/packages/expand/src/ExpandableTextButton.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/expand/src/ExpandableTextButton.tsx",
           "name": "TypeLiteral"
         }
       ],

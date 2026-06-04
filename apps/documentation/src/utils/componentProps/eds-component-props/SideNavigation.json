@@ -10,7 +10,7 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "design-system/packages/menu/src/SideNavigation.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/menu/src/SideNavigation.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -27,7 +27,7 @@
       "name": "size",
       "declarations": [
         {
-          "fileName": "design-system/packages/menu/src/SideNavigation.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/menu/src/SideNavigation.tsx",
           "name": "TypeLiteral"
         }
       ],

@@ -12,7 +12,7 @@
       "name": "as",
       "declarations": [
         {
-          "fileName": "design-system/packages/travel/src/TravelHeader.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/travel/src/TravelHeader.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -27,7 +27,7 @@
       "name": "from",
       "declarations": [
         {
-          "fileName": "design-system/packages/travel/src/TravelHeader.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/travel/src/TravelHeader.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -42,7 +42,7 @@
       "name": "to",
       "declarations": [
         {
-          "fileName": "design-system/packages/travel/src/TravelHeader.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/travel/src/TravelHeader.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -59,7 +59,7 @@
       "name": "size",
       "declarations": [
         {
-          "fileName": "design-system/packages/travel/src/TravelHeader.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/travel/src/TravelHeader.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -74,7 +74,7 @@
       "name": "noWrap",
       "declarations": [
         {
-          "fileName": "design-system/packages/travel/src/TravelHeader.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/travel/src/TravelHeader.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -89,7 +89,7 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "design-system/packages/travel/src/TravelHeader.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/travel/src/TravelHeader.tsx",
           "name": "TypeLiteral"
         }
       ],

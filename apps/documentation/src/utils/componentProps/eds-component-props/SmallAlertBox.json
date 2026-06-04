@@ -10,11 +10,11 @@
       "name": "children",
       "declarations": [
         {
-          "fileName": "design-system/packages/alert/src/SmallAlertBox.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/alert/src/SmallAlertBox.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@types/react/index.d.ts",
           "name": "TypeLiteral"
         }
       ],
@@ -29,7 +29,7 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "design-system/packages/alert/src/SmallAlertBox.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/alert/src/SmallAlertBox.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -44,7 +44,7 @@
       "name": "closeButtonLabel",
       "declarations": [
         {
-          "fileName": "design-system/packages/alert/src/SmallAlertBox.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/alert/src/SmallAlertBox.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -61,7 +61,7 @@
       "name": "closable",
       "declarations": [
         {
-          "fileName": "design-system/packages/alert/src/SmallAlertBox.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/alert/src/SmallAlertBox.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -76,7 +76,7 @@
       "name": "onClose",
       "declarations": [
         {
-          "fileName": "design-system/packages/alert/src/SmallAlertBox.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/alert/src/SmallAlertBox.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -91,7 +91,7 @@
       "name": "title",
       "declarations": [
         {
-          "fileName": "design-system/packages/alert/src/SmallAlertBox.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/alert/src/SmallAlertBox.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -106,7 +106,7 @@
       "name": "width",
       "declarations": [
         {
-          "fileName": "design-system/packages/alert/src/SmallAlertBox.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/alert/src/SmallAlertBox.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -121,7 +121,7 @@
       "name": "variant",
       "declarations": [
         {
-          "fileName": "design-system/packages/alert/src/SmallAlertBox.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/alert/src/SmallAlertBox.tsx",
           "name": "TypeLiteral"
         }
       ],

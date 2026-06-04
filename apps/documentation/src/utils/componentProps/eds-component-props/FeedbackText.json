@@ -10,11 +10,11 @@
       "name": "children",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/FeedbackText.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/form/src/FeedbackText.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@types/react/index.d.ts",
           "name": "TypeLiteral"
         }
       ],
@@ -31,7 +31,7 @@
       "name": "hideIcon",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/FeedbackText.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/form/src/FeedbackText.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -46,7 +46,7 @@
       "name": "variant",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/FeedbackText.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/form/src/FeedbackText.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -61,7 +61,7 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/FeedbackText.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/form/src/FeedbackText.tsx",
           "name": "TypeLiteral"
         }
       ],

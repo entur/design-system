@@ -10,11 +10,11 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "design-system/packages/table/src/TableRow.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/table/src/TableRow.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@types/react/index.d.ts",
           "name": "HTMLAttributes"
         }
       ],
@@ -31,7 +31,7 @@
       "name": "hover",
       "declarations": [
         {
-          "fileName": "design-system/packages/table/src/TableRow.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/table/src/TableRow.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -48,7 +48,7 @@
       "name": "active",
       "declarations": [
         {
-          "fileName": "design-system/packages/table/src/TableRow.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/table/src/TableRow.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -65,7 +65,7 @@
       "name": "error",
       "declarations": [
         {
-          "fileName": "design-system/packages/table/src/TableRow.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/table/src/TableRow.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -80,11 +80,11 @@
       "name": "children",
       "declarations": [
         {
-          "fileName": "design-system/packages/table/src/TableRow.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/table/src/TableRow.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@types/react/index.d.ts",
           "name": "DOMAttributes"
         }
       ],

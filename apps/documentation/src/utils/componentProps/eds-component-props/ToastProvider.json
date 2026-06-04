@@ -12,7 +12,7 @@
       "name": "delay",
       "declarations": [
         {
-          "fileName": "design-system/packages/alert/src/ToastProvider.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/alert/src/ToastProvider.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -29,7 +29,7 @@
       "name": "position",
       "declarations": [
         {
-          "fileName": "design-system/packages/alert/src/ToastProvider.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/alert/src/ToastProvider.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -44,7 +44,7 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "design-system/packages/alert/src/ToastProvider.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/alert/src/ToastProvider.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -59,7 +59,7 @@
       "name": "style",
       "declarations": [
         {
-          "fileName": "design-system/packages/alert/src/ToastProvider.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/alert/src/ToastProvider.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -74,11 +74,11 @@
       "name": "children",
       "declarations": [
         {
-          "fileName": "design-system/packages/alert/src/ToastProvider.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/alert/src/ToastProvider.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@types/react/index.d.ts",
           "name": "TypeLiteral"
         }
       ],

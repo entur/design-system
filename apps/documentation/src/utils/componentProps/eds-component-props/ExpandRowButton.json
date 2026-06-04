@@ -10,7 +10,7 @@
       "name": "open",
       "declarations": [
         {
-          "fileName": "design-system/packages/table/src/ExpandRowButton.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/table/src/ExpandRowButton.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -25,11 +25,11 @@
       "name": "onClick",
       "declarations": [
         {
-          "fileName": "design-system/packages/table/src/ExpandRowButton.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/table/src/ExpandRowButton.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@types/react/index.d.ts",
           "name": "DOMAttributes"
         }
       ],

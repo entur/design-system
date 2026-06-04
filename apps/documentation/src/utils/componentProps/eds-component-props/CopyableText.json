@@ -10,11 +10,11 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "design-system/packages/alert/src/CopyableText.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/alert/src/CopyableText.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@types/react/index.d.ts",
           "name": "HTMLAttributes"
         }
       ],
@@ -29,7 +29,7 @@
       "name": "children",
       "declarations": [
         {
-          "fileName": "design-system/packages/alert/src/CopyableText.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/alert/src/CopyableText.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -44,7 +44,7 @@
       "name": "textToCopy",
       "declarations": [
         {
-          "fileName": "design-system/packages/alert/src/CopyableText.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/alert/src/CopyableText.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -61,7 +61,7 @@
       "name": "successHeading",
       "declarations": [
         {
-          "fileName": "design-system/packages/alert/src/CopyableText.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/alert/src/CopyableText.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -78,7 +78,7 @@
       "name": "successMessage",
       "declarations": [
         {
-          "fileName": "design-system/packages/alert/src/CopyableText.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/alert/src/CopyableText.tsx",
           "name": "TypeLiteral"
         }
       ],

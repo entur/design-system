@@ -10,7 +10,7 @@
       "name": "direction",
       "declarations": [
         {
-          "fileName": "design-system/packages/datepicker/src/TimePicker/TimePickerArrowButton.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/datepicker/src/TimePicker/TimePickerArrowButton.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -25,7 +25,7 @@
       "name": "disabled",
       "declarations": [
         {
-          "fileName": "design-system/packages/datepicker/src/TimePicker/TimePickerArrowButton.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/datepicker/src/TimePicker/TimePickerArrowButton.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -40,7 +40,7 @@
       "name": "readonly",
       "declarations": [
         {
-          "fileName": "design-system/packages/datepicker/src/TimePicker/TimePickerArrowButton.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/datepicker/src/TimePicker/TimePickerArrowButton.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -55,7 +55,7 @@
       "name": "aria-label",
       "declarations": [
         {
-          "fileName": "design-system/packages/datepicker/src/TimePicker/TimePickerArrowButton.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/datepicker/src/TimePicker/TimePickerArrowButton.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -70,7 +70,7 @@
       "name": "onClick",
       "declarations": [
         {
-          "fileName": "design-system/packages/datepicker/src/TimePicker/TimePickerArrowButton.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/datepicker/src/TimePicker/TimePickerArrowButton.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -85,7 +85,7 @@
       "name": "onFocus",
       "declarations": [
         {
-          "fileName": "design-system/packages/datepicker/src/TimePicker/TimePickerArrowButton.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/datepicker/src/TimePicker/TimePickerArrowButton.tsx",
           "name": "TypeLiteral"
         }
       ],

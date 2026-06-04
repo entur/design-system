@@ -10,11 +10,11 @@
       "name": "color",
       "declarations": [
         {
-          "fileName": "design-system/packages/travel/src/LegLine.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/travel/src/LegLine.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@types/react/index.d.ts",
           "name": "HTMLAttributes"
         }
       ],
@@ -31,7 +31,7 @@
       "name": "direction",
       "declarations": [
         {
-          "fileName": "design-system/packages/travel/src/LegLine.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/travel/src/LegLine.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -46,7 +46,7 @@
       "name": "pattern",
       "declarations": [
         {
-          "fileName": "design-system/packages/travel/src/LegLine.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/travel/src/LegLine.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -61,11 +61,11 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "design-system/packages/travel/src/LegLine.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/travel/src/LegLine.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@types/react/index.d.ts",
           "name": "HTMLAttributes"
         }
       ],

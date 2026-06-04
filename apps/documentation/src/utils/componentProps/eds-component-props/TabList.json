@@ -10,11 +10,11 @@
       "name": "children",
       "declarations": [
         {
-          "fileName": "design-system/packages/tab/src/TabList.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/tab/src/TabList.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@types/react/index.d.ts",
           "name": "TypeLiteral"
         }
       ],
@@ -29,7 +29,7 @@
       "name": "as",
       "declarations": [
         {
-          "fileName": "design-system/packages/tab/src/TabList.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/tab/src/TabList.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -44,7 +44,7 @@
       "name": "width",
       "declarations": [
         {
-          "fileName": "design-system/packages/tab/src/TabList.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/tab/src/TabList.tsx",
           "name": "TypeLiteral"
         }
       ],

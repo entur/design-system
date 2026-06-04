@@ -10,7 +10,7 @@
       "name": "steps",
       "declarations": [
         {
-          "fileName": "design-system/packages/menu/src/Stepper.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/menu/src/Stepper.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -25,7 +25,7 @@
       "name": "activeIndex",
       "declarations": [
         {
-          "fileName": "design-system/packages/menu/src/Stepper.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/menu/src/Stepper.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -42,7 +42,7 @@
       "name": "interactive",
       "declarations": [
         {
-          "fileName": "design-system/packages/menu/src/Stepper.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/menu/src/Stepper.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -57,7 +57,7 @@
       "name": "onStepClick",
       "declarations": [
         {
-          "fileName": "design-system/packages/menu/src/Stepper.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/menu/src/Stepper.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -74,7 +74,7 @@
       "name": "showStepperIndex",
       "declarations": [
         {
-          "fileName": "design-system/packages/menu/src/Stepper.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/menu/src/Stepper.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -89,7 +89,7 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "design-system/packages/menu/src/Stepper.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/menu/src/Stepper.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -106,7 +106,7 @@
       "name": "ariaLabelStep",
       "declarations": [
         {
-          "fileName": "design-system/packages/menu/src/Stepper.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/menu/src/Stepper.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -123,7 +123,7 @@
       "name": "ariaLabelOf",
       "declarations": [
         {
-          "fileName": "design-system/packages/menu/src/Stepper.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/menu/src/Stepper.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -140,7 +140,7 @@
       "name": "ariaLabelCompleted",
       "declarations": [
         {
-          "fileName": "design-system/packages/menu/src/Stepper.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/menu/src/Stepper.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -157,7 +157,7 @@
       "name": "ariaLabelSummary",
       "declarations": [
         {
-          "fileName": "design-system/packages/menu/src/Stepper.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/menu/src/Stepper.tsx",
           "name": "TypeLiteral"
         }
       ],

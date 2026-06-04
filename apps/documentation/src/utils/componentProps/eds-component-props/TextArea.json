@@ -10,11 +10,11 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/TextArea.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/form/src/TextArea.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@types/react/index.d.ts",
           "name": "HTMLAttributes"
         }
       ],
@@ -29,7 +29,7 @@
       "name": "variant",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/TextArea.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/form/src/TextArea.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -46,11 +46,11 @@
       "name": "disabled",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/TextArea.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/form/src/TextArea.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@types/react/index.d.ts",
           "name": "TextareaHTMLAttributes"
         }
       ],
@@ -67,11 +67,11 @@
       "name": "readOnly",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/TextArea.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/form/src/TextArea.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@types/react/index.d.ts",
           "name": "TextareaHTMLAttributes"
         }
       ],
@@ -86,7 +86,7 @@
       "name": "label",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/TextArea.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/form/src/TextArea.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -101,7 +101,7 @@
       "name": "labelTooltip",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/TextArea.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/form/src/TextArea.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -116,7 +116,7 @@
       "name": "labelTooltipButtonAriaLabel",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/TextArea.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/form/src/TextArea.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -131,7 +131,7 @@
       "name": "labelTooltipPlacement",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/TextArea.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/form/src/TextArea.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -146,7 +146,7 @@
       "name": "feedback",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/TextArea.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/form/src/TextArea.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -163,7 +163,7 @@
       "name": "disableLabelAnimation",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/TextArea.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/form/src/TextArea.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -180,7 +180,7 @@
       "name": "resize",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/TextArea.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/form/src/TextArea.tsx",
           "name": "TypeLiteral"
         }
       ],

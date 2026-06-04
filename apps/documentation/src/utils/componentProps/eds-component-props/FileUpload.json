@@ -12,11 +12,11 @@
       "name": "accept",
       "declarations": [
         {
-          "fileName": "design-system/node_modules/react-dropzone/typings/react-dropzone.d.ts",
+          "fileName": "apps/documentation/fix-cache-corruption/node_modules/react-dropzone/typings/react-dropzone.d.ts",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/packages/fileupload/src/FileUpload.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/fileupload/src/FileUpload.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -31,11 +31,11 @@
       "name": "minSize",
       "declarations": [
         {
-          "fileName": "design-system/node_modules/react-dropzone/typings/react-dropzone.d.ts",
+          "fileName": "apps/documentation/fix-cache-corruption/node_modules/react-dropzone/typings/react-dropzone.d.ts",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/packages/fileupload/src/FileUpload.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/fileupload/src/FileUpload.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -50,11 +50,11 @@
       "name": "maxSize",
       "declarations": [
         {
-          "fileName": "design-system/node_modules/react-dropzone/typings/react-dropzone.d.ts",
+          "fileName": "apps/documentation/fix-cache-corruption/node_modules/react-dropzone/typings/react-dropzone.d.ts",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/packages/fileupload/src/FileUpload.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/fileupload/src/FileUpload.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -69,7 +69,7 @@
       "name": "maxFiles",
       "declarations": [
         {
-          "fileName": "design-system/node_modules/react-dropzone/typings/react-dropzone.d.ts",
+          "fileName": "apps/documentation/fix-cache-corruption/node_modules/react-dropzone/typings/react-dropzone.d.ts",
           "name": "TypeLiteral"
         }
       ],
@@ -84,7 +84,7 @@
       "name": "preventDropOnDocument",
       "declarations": [
         {
-          "fileName": "design-system/node_modules/react-dropzone/typings/react-dropzone.d.ts",
+          "fileName": "apps/documentation/fix-cache-corruption/node_modules/react-dropzone/typings/react-dropzone.d.ts",
           "name": "TypeLiteral"
         }
       ],
@@ -99,7 +99,7 @@
       "name": "noClick",
       "declarations": [
         {
-          "fileName": "design-system/node_modules/react-dropzone/typings/react-dropzone.d.ts",
+          "fileName": "apps/documentation/fix-cache-corruption/node_modules/react-dropzone/typings/react-dropzone.d.ts",
           "name": "TypeLiteral"
         }
       ],
@@ -114,7 +114,7 @@
       "name": "noKeyboard",
       "declarations": [
         {
-          "fileName": "design-system/node_modules/react-dropzone/typings/react-dropzone.d.ts",
+          "fileName": "apps/documentation/fix-cache-corruption/node_modules/react-dropzone/typings/react-dropzone.d.ts",
           "name": "TypeLiteral"
         }
       ],
@@ -129,7 +129,7 @@
       "name": "noDrag",
       "declarations": [
         {
-          "fileName": "design-system/node_modules/react-dropzone/typings/react-dropzone.d.ts",
+          "fileName": "apps/documentation/fix-cache-corruption/node_modules/react-dropzone/typings/react-dropzone.d.ts",
           "name": "TypeLiteral"
         }
       ],
@@ -144,7 +144,7 @@
       "name": "noDragEventsBubbling",
       "declarations": [
         {
-          "fileName": "design-system/node_modules/react-dropzone/typings/react-dropzone.d.ts",
+          "fileName": "apps/documentation/fix-cache-corruption/node_modules/react-dropzone/typings/react-dropzone.d.ts",
           "name": "TypeLiteral"
         }
       ],
@@ -159,7 +159,7 @@
       "name": "disabled",
       "declarations": [
         {
-          "fileName": "design-system/node_modules/react-dropzone/typings/react-dropzone.d.ts",
+          "fileName": "apps/documentation/fix-cache-corruption/node_modules/react-dropzone/typings/react-dropzone.d.ts",
           "name": "TypeLiteral"
         }
       ],
@@ -174,11 +174,11 @@
       "name": "onDrop",
       "declarations": [
         {
-          "fileName": "design-system/node_modules/react-dropzone/typings/react-dropzone.d.ts",
+          "fileName": "apps/documentation/fix-cache-corruption/node_modules/react-dropzone/typings/react-dropzone.d.ts",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/packages/fileupload/src/FileUpload.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/fileupload/src/FileUpload.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -193,7 +193,7 @@
       "name": "onDropAccepted",
       "declarations": [
         {
-          "fileName": "design-system/node_modules/react-dropzone/typings/react-dropzone.d.ts",
+          "fileName": "apps/documentation/fix-cache-corruption/node_modules/react-dropzone/typings/react-dropzone.d.ts",
           "name": "TypeLiteral"
         }
       ],
@@ -208,7 +208,7 @@
       "name": "onDropRejected",
       "declarations": [
         {
-          "fileName": "design-system/node_modules/react-dropzone/typings/react-dropzone.d.ts",
+          "fileName": "apps/documentation/fix-cache-corruption/node_modules/react-dropzone/typings/react-dropzone.d.ts",
           "name": "TypeLiteral"
         }
       ],
@@ -223,7 +223,7 @@
       "name": "getFilesFromEvent",
       "declarations": [
         {
-          "fileName": "design-system/node_modules/react-dropzone/typings/react-dropzone.d.ts",
+          "fileName": "apps/documentation/fix-cache-corruption/node_modules/react-dropzone/typings/react-dropzone.d.ts",
           "name": "TypeLiteral"
         }
       ],
@@ -238,7 +238,7 @@
       "name": "onFileDialogCancel",
       "declarations": [
         {
-          "fileName": "design-system/node_modules/react-dropzone/typings/react-dropzone.d.ts",
+          "fileName": "apps/documentation/fix-cache-corruption/node_modules/react-dropzone/typings/react-dropzone.d.ts",
           "name": "TypeLiteral"
         }
       ],
@@ -253,7 +253,7 @@
       "name": "onFileDialogOpen",
       "declarations": [
         {
-          "fileName": "design-system/node_modules/react-dropzone/typings/react-dropzone.d.ts",
+          "fileName": "apps/documentation/fix-cache-corruption/node_modules/react-dropzone/typings/react-dropzone.d.ts",
           "name": "TypeLiteral"
         }
       ],
@@ -268,7 +268,7 @@
       "name": "validator",
       "declarations": [
         {
-          "fileName": "design-system/node_modules/react-dropzone/typings/react-dropzone.d.ts",
+          "fileName": "apps/documentation/fix-cache-corruption/node_modules/react-dropzone/typings/react-dropzone.d.ts",
           "name": "TypeLiteral"
         }
       ],
@@ -285,7 +285,7 @@
       "name": "successText",
       "declarations": [
         {
-          "fileName": "design-system/packages/fileupload/src/FileUpload.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/fileupload/src/FileUpload.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -302,7 +302,7 @@
       "name": "errorText",
       "declarations": [
         {
-          "fileName": "design-system/packages/fileupload/src/FileUpload.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/fileupload/src/FileUpload.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -319,7 +319,7 @@
       "name": "standbyText",
       "declarations": [
         {
-          "fileName": "design-system/packages/fileupload/src/FileUpload.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/fileupload/src/FileUpload.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -336,7 +336,7 @@
       "name": "errorUpload",
       "declarations": [
         {
-          "fileName": "design-system/packages/fileupload/src/FileUpload.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/fileupload/src/FileUpload.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -353,7 +353,7 @@
       "name": "onDelete",
       "declarations": [
         {
-          "fileName": "design-system/packages/fileupload/src/FileUpload.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/fileupload/src/FileUpload.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -370,7 +370,7 @@
       "name": "files",
       "declarations": [
         {
-          "fileName": "design-system/packages/fileupload/src/FileUpload.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/fileupload/src/FileUpload.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -385,7 +385,7 @@
       "name": "label",
       "declarations": [
         {
-          "fileName": "design-system/packages/fileupload/src/FileUpload.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/fileupload/src/FileUpload.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -402,7 +402,7 @@
       "name": "removeFileButtonDescription",
       "declarations": [
         {
-          "fileName": "design-system/packages/fileupload/src/FileUpload.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/fileupload/src/FileUpload.tsx",
           "name": "TypeLiteral"
         }
       ],

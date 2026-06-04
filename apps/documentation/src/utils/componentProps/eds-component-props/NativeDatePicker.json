@@ -10,11 +10,11 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "design-system/packages/datepicker/src/DatePicker/NativeDatePicker.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/datepicker/src/DatePicker/NativeDatePicker.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@types/react/index.d.ts",
           "name": "HTMLAttributes"
         }
       ],
@@ -29,7 +29,7 @@
       "name": "label",
       "declarations": [
         {
-          "fileName": "design-system/packages/datepicker/src/DatePicker/NativeDatePicker.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/datepicker/src/DatePicker/NativeDatePicker.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -44,7 +44,7 @@
       "name": "feedback",
       "declarations": [
         {
-          "fileName": "design-system/packages/datepicker/src/DatePicker/NativeDatePicker.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/datepicker/src/DatePicker/NativeDatePicker.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -59,7 +59,7 @@
       "name": "variant",
       "declarations": [
         {
-          "fileName": "design-system/packages/datepicker/src/DatePicker/NativeDatePicker.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/datepicker/src/DatePicker/NativeDatePicker.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -76,7 +76,7 @@
       "name": "disableLabelAnimation",
       "declarations": [
         {
-          "fileName": "design-system/packages/datepicker/src/DatePicker/NativeDatePicker.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/datepicker/src/DatePicker/NativeDatePicker.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -93,7 +93,7 @@
       "name": "prepend",
       "declarations": [
         {
-          "fileName": "design-system/packages/datepicker/src/DatePicker/NativeDatePicker.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/datepicker/src/DatePicker/NativeDatePicker.tsx",
           "name": "TypeLiteral"
         }
       ],

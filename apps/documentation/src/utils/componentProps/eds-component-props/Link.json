@@ -14,7 +14,7 @@
       "name": "external",
       "declarations": [
         {
-          "fileName": "design-system/packages/typography/src/beta/components/Link.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/typography/src/beta/components/Link.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -29,7 +29,7 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "design-system/packages/typography/src/beta/components/Link.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/typography/src/beta/components/Link.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -44,7 +44,7 @@
       "name": "children",
       "declarations": [
         {
-          "fileName": "design-system/packages/typography/src/beta/components/Link.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/typography/src/beta/components/Link.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -59,7 +59,7 @@
       "name": "spacing",
       "declarations": [
         {
-          "fileName": "design-system/packages/typography/src/beta/components/Link.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/typography/src/beta/components/Link.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -76,7 +76,7 @@
       "name": "ariaLabelExternalIcon",
       "declarations": [
         {
-          "fileName": "design-system/packages/typography/src/beta/components/Link.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/typography/src/beta/components/Link.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -91,7 +91,7 @@
       "name": "as",
       "declarations": [
         {
-          "fileName": "design-system/node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
+          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
           "name": "TypeLiteral"
         }
       ],

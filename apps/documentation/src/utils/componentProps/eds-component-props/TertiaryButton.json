@@ -14,7 +14,7 @@
       "name": "size",
       "declarations": [
         {
-          "fileName": "design-system/packages/button/src/TertiaryButton.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/button/src/TertiaryButton.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -31,7 +31,7 @@
       "name": "loading",
       "declarations": [
         {
-          "fileName": "design-system/packages/button/src/TertiaryButton.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/button/src/TertiaryButton.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -46,7 +46,7 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "design-system/packages/button/src/TertiaryButton.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/button/src/TertiaryButton.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -63,7 +63,7 @@
       "name": "disabled",
       "declarations": [
         {
-          "fileName": "design-system/packages/button/src/TertiaryButton.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/button/src/TertiaryButton.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -80,7 +80,7 @@
       "name": "width",
       "declarations": [
         {
-          "fileName": "design-system/packages/button/src/TertiaryButton.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/button/src/TertiaryButton.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -95,7 +95,7 @@
       "name": "children",
       "declarations": [
         {
-          "fileName": "design-system/packages/button/src/TertiaryButton.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/button/src/TertiaryButton.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -110,7 +110,7 @@
       "name": "as",
       "declarations": [
         {
-          "fileName": "design-system/node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
+          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
           "name": "TypeLiteral"
         }
       ],
@@ -125,7 +125,7 @@
       "name": "ref",
       "declarations": [
         {
-          "fileName": "design-system/node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
+          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
           "name": "TypeLiteral"
         }
       ],

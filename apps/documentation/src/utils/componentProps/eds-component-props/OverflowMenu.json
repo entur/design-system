@@ -10,7 +10,7 @@
       "name": "children",
       "declarations": [
         {
-          "fileName": "design-system/packages/menu/src/OverflowMenu.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/menu/src/OverflowMenu.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -25,7 +25,7 @@
       "name": "buttonIcon",
       "declarations": [
         {
-          "fileName": "design-system/packages/menu/src/OverflowMenu.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/menu/src/OverflowMenu.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -42,7 +42,7 @@
       "name": "button",
       "declarations": [
         {
-          "fileName": "design-system/packages/menu/src/OverflowMenu.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/menu/src/OverflowMenu.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -57,7 +57,7 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "design-system/packages/menu/src/OverflowMenu.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/menu/src/OverflowMenu.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -74,7 +74,7 @@
       "name": "placement",
       "declarations": [
         {
-          "fileName": "design-system/packages/menu/src/OverflowMenu.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/menu/src/OverflowMenu.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -89,7 +89,7 @@
       "name": "position",
       "declarations": [
         {
-          "fileName": "design-system/packages/menu/src/OverflowMenu.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/menu/src/OverflowMenu.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -106,7 +106,7 @@
       "name": "aria-label",
       "declarations": [
         {
-          "fileName": "design-system/packages/menu/src/OverflowMenu.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/menu/src/OverflowMenu.tsx",
           "name": "TypeLiteral"
         }
       ],

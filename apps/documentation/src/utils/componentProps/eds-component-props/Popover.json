@@ -10,11 +10,11 @@
       "name": "children",
       "declarations": [
         {
-          "fileName": "design-system/packages/tooltip/src/Popover.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/tooltip/src/Popover.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@types/react/index.d.ts",
           "name": "TypeLiteral"
         }
       ],
@@ -31,7 +31,7 @@
       "name": "placement",
       "declarations": [
         {
-          "fileName": "design-system/packages/tooltip/src/Popover.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/tooltip/src/Popover.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -46,7 +46,7 @@
       "name": "showPopover",
       "declarations": [
         {
-          "fileName": "design-system/packages/tooltip/src/Popover.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/tooltip/src/Popover.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -61,7 +61,7 @@
       "name": "setShowPopover",
       "declarations": [
         {
-          "fileName": "design-system/packages/tooltip/src/Popover.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/tooltip/src/Popover.tsx",
           "name": "TypeLiteral"
         }
       ],

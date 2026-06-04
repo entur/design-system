@@ -10,7 +10,7 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "design-system/packages/table/src/EditableCell.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/table/src/EditableCell.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -25,11 +25,11 @@
       "name": "children",
       "declarations": [
         {
-          "fileName": "design-system/packages/table/src/EditableCell.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/table/src/EditableCell.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@types/react/index.d.ts",
           "name": "TypeLiteral"
         }
       ],
@@ -44,7 +44,7 @@
       "name": "variant",
       "declarations": [
         {
-          "fileName": "design-system/packages/table/src/EditableCell.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/table/src/EditableCell.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -59,7 +59,7 @@
       "name": "feedback",
       "declarations": [
         {
-          "fileName": "design-system/packages/table/src/EditableCell.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/table/src/EditableCell.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -76,7 +76,7 @@
       "name": "outlined",
       "declarations": [
         {
-          "fileName": "design-system/packages/table/src/EditableCell.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/table/src/EditableCell.tsx",
           "name": "TypeLiteral"
         }
       ],

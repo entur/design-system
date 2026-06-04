@@ -12,7 +12,7 @@
       "name": "contrast",
       "declarations": [
         {
-          "fileName": "design-system/packages/layout/src/beta/templates/Sidebar.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/layout/src/beta/templates/Sidebar.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -27,7 +27,7 @@
       "name": "collapsed",
       "declarations": [
         {
-          "fileName": "design-system/packages/layout/src/beta/templates/Sidebar.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/layout/src/beta/templates/Sidebar.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -42,7 +42,7 @@
       "name": "onCollapseToggle",
       "declarations": [
         {
-          "fileName": "design-system/packages/layout/src/beta/templates/Sidebar.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/layout/src/beta/templates/Sidebar.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -59,7 +59,7 @@
       "name": "openSidebarAriaLabel",
       "declarations": [
         {
-          "fileName": "design-system/packages/layout/src/beta/templates/Sidebar.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/layout/src/beta/templates/Sidebar.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -76,7 +76,7 @@
       "name": "closeSidebarAriaLabel",
       "declarations": [
         {
-          "fileName": "design-system/packages/layout/src/beta/templates/Sidebar.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/layout/src/beta/templates/Sidebar.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -91,7 +91,7 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "design-system/packages/layout/src/beta/templates/Sidebar.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/layout/src/beta/templates/Sidebar.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -106,7 +106,7 @@
       "name": "style",
       "declarations": [
         {
-          "fileName": "design-system/packages/layout/src/beta/templates/Sidebar.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/layout/src/beta/templates/Sidebar.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -121,7 +121,7 @@
       "name": "children",
       "declarations": [
         {
-          "fileName": "design-system/packages/layout/src/beta/templates/Sidebar.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/layout/src/beta/templates/Sidebar.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -136,13 +136,13 @@
       "name": "as",
       "declarations": [
         {
-          "fileName": "design-system/node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
+          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
           "name": "TypeLiteral"
         }
       ],
       "required": false,
       "type": {
-        "name": "ElementType<any, keyof IntrinsicElements> | undefined"
+        "name": "ElementType<any> | undefined"
       }
     },
     "ref": {
@@ -151,7 +151,7 @@
       "name": "ref",
       "declarations": [
         {
-          "fileName": "design-system/packages/layout/src/beta/templates/Sidebar.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/layout/src/beta/templates/Sidebar.tsx",
           "name": "TypeLiteral"
         }
       ],

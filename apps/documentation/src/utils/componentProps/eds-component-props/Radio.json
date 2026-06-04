@@ -10,11 +10,11 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/Radio.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/form/src/Radio.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@types/react/index.d.ts",
           "name": "HTMLAttributes"
         }
       ],
@@ -29,11 +29,11 @@
       "name": "children",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/Radio.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/form/src/Radio.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@types/react/index.d.ts",
           "name": "DOMAttributes"
         }
       ],
@@ -48,11 +48,11 @@
       "name": "value",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/Radio.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/form/src/Radio.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@types/react/index.d.ts",
           "name": "InputHTMLAttributes"
         }
       ],
@@ -69,11 +69,11 @@
       "name": "disabled",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/Radio.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/form/src/Radio.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@types/react/index.d.ts",
           "name": "InputHTMLAttributes"
         }
       ],
@@ -88,7 +88,7 @@
       "name": "readOnlyLabelDescription",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/Radio.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/form/src/Radio.tsx",
           "name": "TypeLiteral"
         }
       ],

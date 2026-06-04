@@ -12,7 +12,7 @@
       "name": "open",
       "declarations": [
         {
-          "fileName": "design-system/packages/expand/src/ExpandArrow.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/expand/src/ExpandArrow.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -27,7 +27,7 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "design-system/packages/expand/src/ExpandArrow.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/expand/src/ExpandArrow.tsx",
           "name": "TypeLiteral"
         }
       ],

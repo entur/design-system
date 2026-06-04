@@ -10,7 +10,7 @@
       "name": "title",
       "declarations": [
         {
-          "fileName": "design-system/packages/expand/src/AccordionItem.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/expand/src/AccordionItem.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -25,11 +25,11 @@
       "name": "children",
       "declarations": [
         {
-          "fileName": "design-system/packages/expand/src/AccordionItem.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/expand/src/AccordionItem.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@types/react/index.d.ts",
           "name": "TypeLiteral"
         }
       ],
@@ -46,7 +46,7 @@
       "name": "defaultOpen",
       "declarations": [
         {
-          "fileName": "design-system/packages/expand/src/AccordionItem.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/expand/src/AccordionItem.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -61,7 +61,7 @@
       "name": "contentStyle",
       "declarations": [
         {
-          "fileName": "design-system/packages/expand/src/AccordionItem.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/expand/src/AccordionItem.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -76,7 +76,7 @@
       "name": "disableAnimation",
       "declarations": [
         {
-          "fileName": "design-system/packages/expand/src/AccordionItem.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/expand/src/AccordionItem.tsx",
           "name": "TypeLiteral"
         }
       ],

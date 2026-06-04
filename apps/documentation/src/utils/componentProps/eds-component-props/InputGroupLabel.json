@@ -10,7 +10,7 @@
       "name": "label",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/InputGroupLabel.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/form/src/InputGroupLabel.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -25,7 +25,7 @@
       "name": "required",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/InputGroupLabel.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/form/src/InputGroupLabel.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -40,7 +40,7 @@
       "name": "labelTooltip",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/InputGroupLabel.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/form/src/InputGroupLabel.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -55,7 +55,7 @@
       "name": "labelId",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/InputGroupLabel.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/form/src/InputGroupLabel.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -70,7 +70,7 @@
       "name": "isFilled",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/InputGroupLabel.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/form/src/InputGroupLabel.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -87,7 +87,7 @@
       "name": "staticAnimation",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/InputGroupLabel.tsx",
+          "fileName": "apps/documentation/fix-cache-corruption/packages/form/src/InputGroupLabel.tsx",
           "name": "TypeLiteral"
         }
       ],
