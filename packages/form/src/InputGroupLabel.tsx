@@ -15,7 +15,7 @@ export type InputGroupLabelProps = {
   HTMLLabelElement
 >;
 
-export const InputGroupLabel: React.FC<InputGroupLabelProps> = ({
+export const InputGroupLabel = ({
   label,
   required,
   labelId,
@@ -23,7 +23,7 @@ export const InputGroupLabel: React.FC<InputGroupLabelProps> = ({
   className,
   isFilled: forceIsFilled,
   ...rest
-}) => {
+}: InputGroupLabelProps) => {
   const { isFilled } = useInputGroupContext();
   const filler = staticAnimation || (forceIsFilled ?? isFilled);
   return (
