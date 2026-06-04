@@ -25,14 +25,14 @@ export const headingsMap = {
   extraLarge: Heading2,
 };
 
-export const ModalContent: React.FC<ModalContentProps> = ({
+export const ModalContent = ({
   children,
   className,
   size,
   title,
   align = 'start',
   ...rest
-}) => {
+}: ModalContentProps) => {
   const Heading: React.ElementType = headingsMap[size] || Heading2;
   const randomId = useId();
   return (
