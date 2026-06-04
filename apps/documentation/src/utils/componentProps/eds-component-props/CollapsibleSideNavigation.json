@@ -10,7 +10,7 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "design-system/packages/menu/src/SideNavigation.tsx",
+          "fileName": "packages/menu/src/SideNavigation.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -27,7 +27,7 @@
       "name": "size",
       "declarations": [
         {
-          "fileName": "design-system/packages/menu/src/SideNavigation.tsx",
+          "fileName": "packages/menu/src/SideNavigation.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -44,7 +44,7 @@
       "name": "collapsed",
       "declarations": [
         {
-          "fileName": "design-system/packages/menu/src/CollapsibleSideNavigation.tsx",
+          "fileName": "packages/menu/src/CollapsibleSideNavigation.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -59,7 +59,7 @@
       "name": "onCollapseToggle",
       "declarations": [
         {
-          "fileName": "design-system/packages/menu/src/CollapsibleSideNavigation.tsx",
+          "fileName": "packages/menu/src/CollapsibleSideNavigation.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -76,7 +76,7 @@
       "name": "collapsibleButtonPosition",
       "declarations": [
         {
-          "fileName": "design-system/packages/menu/src/CollapsibleSideNavigation.tsx",
+          "fileName": "packages/menu/src/CollapsibleSideNavigation.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -93,7 +93,7 @@
       "name": "openSideMenuAriaLabel",
       "declarations": [
         {
-          "fileName": "design-system/packages/menu/src/CollapsibleSideNavigation.tsx",
+          "fileName": "packages/menu/src/CollapsibleSideNavigation.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -110,7 +110,7 @@
       "name": "closeSideMenuAriaLabel",
       "declarations": [
         {
-          "fileName": "design-system/packages/menu/src/CollapsibleSideNavigation.tsx",
+          "fileName": "packages/menu/src/CollapsibleSideNavigation.tsx",
           "name": "TypeLiteral"
         }
       ],

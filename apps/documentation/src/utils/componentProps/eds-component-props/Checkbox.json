@@ -10,11 +10,11 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/Checkbox.tsx",
+          "fileName": "packages/form/src/Checkbox.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "HTMLAttributes"
         }
       ],
@@ -29,11 +29,11 @@
       "name": "children",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/Checkbox.tsx",
+          "fileName": "packages/form/src/Checkbox.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "DOMAttributes"
         }
       ],
@@ -48,7 +48,7 @@
       "name": "checked",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/Checkbox.tsx",
+          "fileName": "packages/form/src/Checkbox.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -63,11 +63,11 @@
       "name": "onChange",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/Checkbox.tsx",
+          "fileName": "packages/form/src/Checkbox.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "InputHTMLAttributes"
         }
       ],
@@ -84,11 +84,11 @@
       "name": "disabled",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/Checkbox.tsx",
+          "fileName": "packages/form/src/Checkbox.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "InputHTMLAttributes"
         }
       ],
@@ -105,11 +105,11 @@
       "name": "readOnly",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/Checkbox.tsx",
+          "fileName": "packages/form/src/Checkbox.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "InputHTMLAttributes"
         }
       ],
@@ -124,11 +124,11 @@
       "name": "style",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/Checkbox.tsx",
+          "fileName": "packages/form/src/Checkbox.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "HTMLAttributes"
         }
       ],
@@ -145,7 +145,7 @@
       "name": "reduceClickArea",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/Checkbox.tsx",
+          "fileName": "packages/form/src/Checkbox.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -162,7 +162,7 @@
       "name": "disableAnimation",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/Checkbox.tsx",
+          "fileName": "packages/form/src/Checkbox.tsx",
           "name": "TypeLiteral"
         }
       ],

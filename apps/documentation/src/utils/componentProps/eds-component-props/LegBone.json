@@ -10,7 +10,7 @@
       "name": "direction",
       "declarations": [
         {
-          "fileName": "design-system/packages/travel/src/LegBone.tsx",
+          "fileName": "packages/travel/src/LegBone.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -25,7 +25,7 @@
       "name": "pattern",
       "declarations": [
         {
-          "fileName": "design-system/packages/travel/src/LegBone.tsx",
+          "fileName": "packages/travel/src/LegBone.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -40,11 +40,11 @@
       "name": "color",
       "declarations": [
         {
-          "fileName": "design-system/packages/travel/src/LegBone.tsx",
+          "fileName": "packages/travel/src/LegBone.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "HTMLAttributes"
         }
       ],
@@ -61,7 +61,7 @@
       "name": "startColor",
       "declarations": [
         {
-          "fileName": "design-system/packages/travel/src/LegBone.tsx",
+          "fileName": "packages/travel/src/LegBone.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -78,7 +78,7 @@
       "name": "endColor",
       "declarations": [
         {
-          "fileName": "design-system/packages/travel/src/LegBone.tsx",
+          "fileName": "packages/travel/src/LegBone.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -95,7 +95,7 @@
       "name": "showStart",
       "declarations": [
         {
-          "fileName": "design-system/packages/travel/src/LegBone.tsx",
+          "fileName": "packages/travel/src/LegBone.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -112,7 +112,7 @@
       "name": "showLine",
       "declarations": [
         {
-          "fileName": "design-system/packages/travel/src/LegBone.tsx",
+          "fileName": "packages/travel/src/LegBone.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -129,7 +129,7 @@
       "name": "showStop",
       "declarations": [
         {
-          "fileName": "design-system/packages/travel/src/LegBone.tsx",
+          "fileName": "packages/travel/src/LegBone.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -144,11 +144,11 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "design-system/packages/travel/src/LegBone.tsx",
+          "fileName": "packages/travel/src/LegBone.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "HTMLAttributes"
         }
       ],

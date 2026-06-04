@@ -10,11 +10,11 @@
       "name": "variant",
       "declarations": [
         {
-          "fileName": "design-system/packages/alert/src/ExpandableAlertBox.tsx",
+          "fileName": "packages/alert/src/ExpandableAlertBox.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/packages/alert/src/BannerAlertBox.tsx",
+          "fileName": "packages/alert/src/BannerAlertBox.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -29,11 +29,11 @@
       "name": "title",
       "declarations": [
         {
-          "fileName": "design-system/packages/alert/src/ExpandableAlertBox.tsx",
+          "fileName": "packages/alert/src/ExpandableAlertBox.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/packages/alert/src/BannerAlertBox.tsx",
+          "fileName": "packages/alert/src/BannerAlertBox.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -48,15 +48,15 @@
       "name": "children",
       "declarations": [
         {
-          "fileName": "design-system/packages/alert/src/ExpandableAlertBox.tsx",
+          "fileName": "packages/alert/src/ExpandableAlertBox.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/packages/alert/src/BannerAlertBox.tsx",
+          "fileName": "packages/alert/src/BannerAlertBox.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "TypeLiteral"
         }
       ],
@@ -71,11 +71,11 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "design-system/packages/alert/src/ExpandableAlertBox.tsx",
+          "fileName": "packages/alert/src/ExpandableAlertBox.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/packages/alert/src/BannerAlertBox.tsx",
+          "fileName": "packages/alert/src/BannerAlertBox.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -92,7 +92,7 @@
       "name": "openLabel",
       "declarations": [
         {
-          "fileName": "design-system/packages/alert/src/ExpandableAlertBox.tsx",
+          "fileName": "packages/alert/src/ExpandableAlertBox.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -109,7 +109,7 @@
       "name": "closeLabel",
       "declarations": [
         {
-          "fileName": "design-system/packages/alert/src/ExpandableAlertBox.tsx",
+          "fileName": "packages/alert/src/ExpandableAlertBox.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -124,7 +124,7 @@
       "name": "closeButtonLabel",
       "declarations": [
         {
-          "fileName": "design-system/packages/alert/src/BannerAlertBox.tsx",
+          "fileName": "packages/alert/src/BannerAlertBox.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -139,7 +139,7 @@
       "name": "onClose",
       "declarations": [
         {
-          "fileName": "design-system/packages/alert/src/BannerAlertBox.tsx",
+          "fileName": "packages/alert/src/BannerAlertBox.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -156,7 +156,7 @@
       "name": "closable",
       "declarations": [
         {
-          "fileName": "design-system/packages/alert/src/BannerAlertBox.tsx",
+          "fileName": "packages/alert/src/BannerAlertBox.tsx",
           "name": "TypeLiteral"
         }
       ],

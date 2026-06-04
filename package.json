@@ -7,7 +7,7 @@
     "build:package": "lerna run build --scope \"@entur/$*\" | cat",
     "build:packages": "lerna run build --no-private",
     "build:documentation": "lerna run --scope @entur/documentation build",
-    "build:documentation:skip-packages-dependency": "lerna run --scope @entur/documentation build:skip-props-generator",
+    "build:documentation:skip-packages-dependency": "yarn workspace @entur/documentation build",
     "build:code-playground": "lerna run --scope @entur/code-playground build",
     "build:studio-linje": "lerna run --scope @entur/studio-linje build",
     "clean": "lerna clean",

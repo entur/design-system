@@ -10,11 +10,11 @@
       "name": "children",
       "declarations": [
         {
-          "fileName": "design-system/packages/menu/src/PaginationPage.tsx",
+          "fileName": "packages/menu/src/PaginationPage.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "TypeLiteral"
         }
       ],
@@ -29,7 +29,7 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "design-system/packages/menu/src/PaginationPage.tsx",
+          "fileName": "packages/menu/src/PaginationPage.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -44,7 +44,7 @@
       "name": "selected",
       "declarations": [
         {
-          "fileName": "design-system/packages/menu/src/PaginationPage.tsx",
+          "fileName": "packages/menu/src/PaginationPage.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -59,7 +59,7 @@
       "name": "disabled",
       "declarations": [
         {
-          "fileName": "design-system/packages/menu/src/PaginationPage.tsx",
+          "fileName": "packages/menu/src/PaginationPage.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -74,7 +74,7 @@
       "name": "onClick",
       "declarations": [
         {
-          "fileName": "design-system/packages/menu/src/PaginationPage.tsx",
+          "fileName": "packages/menu/src/PaginationPage.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -89,7 +89,7 @@
       "name": "aria-label",
       "declarations": [
         {
-          "fileName": "design-system/packages/menu/src/PaginationPage.tsx",
+          "fileName": "packages/menu/src/PaginationPage.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -104,7 +104,7 @@
       "name": "aria-describedby",
       "declarations": [
         {
-          "fileName": "design-system/packages/menu/src/PaginationPage.tsx",
+          "fileName": "packages/menu/src/PaginationPage.tsx",
           "name": "TypeLiteral"
         }
       ],

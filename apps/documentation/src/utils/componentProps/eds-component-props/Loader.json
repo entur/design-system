@@ -10,11 +10,11 @@
       "name": "children",
       "declarations": [
         {
-          "fileName": "design-system/packages/loader/src/Loader.tsx",
+          "fileName": "packages/loader/src/Loader.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "TypeLiteral"
         }
       ],
@@ -29,7 +29,7 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "design-system/packages/loader/src/Loader.tsx",
+          "fileName": "packages/loader/src/Loader.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -46,7 +46,7 @@
       "name": "progress",
       "declarations": [
         {
-          "fileName": "design-system/packages/loader/src/Loader.tsx",
+          "fileName": "packages/loader/src/Loader.tsx",
           "name": "TypeLiteral"
         }
       ],

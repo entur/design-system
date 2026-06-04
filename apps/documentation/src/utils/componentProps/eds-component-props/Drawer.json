@@ -10,11 +10,11 @@
       "name": "children",
       "declarations": [
         {
-          "fileName": "design-system/packages/modal/src/Drawer.tsx",
+          "fileName": "packages/modal/src/Drawer.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "TypeLiteral"
         }
       ],
@@ -29,7 +29,7 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "design-system/packages/modal/src/Drawer.tsx",
+          "fileName": "packages/modal/src/Drawer.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -46,7 +46,7 @@
       "name": "closeLabel",
       "declarations": [
         {
-          "fileName": "design-system/packages/modal/src/Drawer.tsx",
+          "fileName": "packages/modal/src/Drawer.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -63,7 +63,7 @@
       "name": "contrast",
       "declarations": [
         {
-          "fileName": "design-system/packages/modal/src/Drawer.tsx",
+          "fileName": "packages/modal/src/Drawer.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -78,7 +78,7 @@
       "name": "onDismiss",
       "declarations": [
         {
-          "fileName": "design-system/packages/modal/src/Drawer.tsx",
+          "fileName": "packages/modal/src/Drawer.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -95,7 +95,7 @@
       "name": "open",
       "declarations": [
         {
-          "fileName": "design-system/packages/modal/src/Drawer.tsx",
+          "fileName": "packages/modal/src/Drawer.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -110,7 +110,7 @@
       "name": "title",
       "declarations": [
         {
-          "fileName": "design-system/packages/modal/src/Drawer.tsx",
+          "fileName": "packages/modal/src/Drawer.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -125,7 +125,7 @@
       "name": "style",
       "declarations": [
         {
-          "fileName": "design-system/packages/modal/src/Drawer.tsx",
+          "fileName": "packages/modal/src/Drawer.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -142,7 +142,7 @@
       "name": "overlay",
       "declarations": [
         {
-          "fileName": "design-system/packages/modal/src/Drawer.tsx",
+          "fileName": "packages/modal/src/Drawer.tsx",
           "name": "TypeLiteral"
         }
       ],

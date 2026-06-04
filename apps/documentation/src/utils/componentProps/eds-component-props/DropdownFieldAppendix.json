@@ -10,7 +10,7 @@
       "name": "disabled",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/components/FieldComponents.tsx",
+          "fileName": "packages/dropdown/src/components/FieldComponents.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -25,7 +25,7 @@
       "name": "ariaLabelCloseList",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/components/FieldComponents.tsx",
+          "fileName": "packages/dropdown/src/components/FieldComponents.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -40,7 +40,7 @@
       "name": "ariaLabelOpenList",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/components/FieldComponents.tsx",
+          "fileName": "packages/dropdown/src/components/FieldComponents.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -57,7 +57,7 @@
       "name": "clearable",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/components/FieldComponents.tsx",
+          "fileName": "packages/dropdown/src/components/FieldComponents.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -72,7 +72,7 @@
       "name": "labelClearSelected",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/components/FieldComponents.tsx",
+          "fileName": "packages/dropdown/src/components/FieldComponents.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -89,7 +89,7 @@
       "name": "focusable",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/components/FieldComponents.tsx",
+          "fileName": "packages/dropdown/src/components/FieldComponents.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -104,7 +104,7 @@
       "name": "isOpen",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/components/FieldComponents.tsx",
+          "fileName": "packages/dropdown/src/components/FieldComponents.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -121,7 +121,7 @@
       "name": "loading",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/components/FieldComponents.tsx",
+          "fileName": "packages/dropdown/src/components/FieldComponents.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -136,7 +136,7 @@
       "name": "loadingText",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/components/FieldComponents.tsx",
+          "fileName": "packages/dropdown/src/components/FieldComponents.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -151,7 +151,7 @@
       "name": "onClear",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/components/FieldComponents.tsx",
+          "fileName": "packages/dropdown/src/components/FieldComponents.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -166,7 +166,7 @@
       "name": "itemIsSelected",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/components/FieldComponents.tsx",
+          "fileName": "packages/dropdown/src/components/FieldComponents.tsx",
           "name": "TypeLiteral"
         }
       ],

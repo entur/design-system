@@ -114,7 +114,12 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
 
   return (
     <div className={classNames('side-navigation-wrapper', className)}>
-      <SearchBar onOpenSearch={openSearch} />
+      <SearchBar
+        onOpenSearch={() => {
+          onClickMenuItem?.();
+          openSearch();
+        }}
+      />
       <EnturSideNavigation style={{ marginTop: mobile ? '0rem' : '1.5rem' }}>
         {sortedGrouped.map(([subcategory, subcategoryMenuItems]) => (
           <SideNavigationGroup

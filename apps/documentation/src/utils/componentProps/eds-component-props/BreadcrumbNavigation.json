@@ -12,7 +12,7 @@
       "name": "aria-label",
       "declarations": [
         {
-          "fileName": "design-system/packages/menu/src/BreadcrumbNavigation.tsx",
+          "fileName": "packages/menu/src/BreadcrumbNavigation.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -27,11 +27,11 @@
       "name": "children",
       "declarations": [
         {
-          "fileName": "design-system/packages/menu/src/BreadcrumbNavigation.tsx",
+          "fileName": "packages/menu/src/BreadcrumbNavigation.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "TypeLiteral"
         }
       ],

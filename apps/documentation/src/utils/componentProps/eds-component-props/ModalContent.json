@@ -10,11 +10,11 @@
       "name": "children",
       "declarations": [
         {
-          "fileName": "design-system/packages/modal/src/ModalContent.tsx",
+          "fileName": "packages/modal/src/ModalContent.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "TypeLiteral"
         }
       ],
@@ -29,7 +29,7 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "design-system/packages/modal/src/ModalContent.tsx",
+          "fileName": "packages/modal/src/ModalContent.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -44,7 +44,7 @@
       "name": "size",
       "declarations": [
         {
-          "fileName": "design-system/packages/modal/src/ModalContent.tsx",
+          "fileName": "packages/modal/src/ModalContent.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -59,7 +59,7 @@
       "name": "title",
       "declarations": [
         {
-          "fileName": "design-system/packages/modal/src/ModalContent.tsx",
+          "fileName": "packages/modal/src/ModalContent.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -76,7 +76,7 @@
       "name": "align",
       "declarations": [
         {
-          "fileName": "design-system/packages/modal/src/ModalContent.tsx",
+          "fileName": "packages/modal/src/ModalContent.tsx",
           "name": "TypeLiteral"
         }
       ],

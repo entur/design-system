@@ -10,7 +10,7 @@
       "name": "name",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/segmentedControl/SegmentedControl.tsx",
+          "fileName": "packages/form/src/segmentedControl/SegmentedControl.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -25,7 +25,7 @@
       "name": "label",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/segmentedControl/SegmentedControl.tsx",
+          "fileName": "packages/form/src/segmentedControl/SegmentedControl.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -40,7 +40,7 @@
       "name": "children",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/segmentedControl/SegmentedControl.tsx",
+          "fileName": "packages/form/src/segmentedControl/SegmentedControl.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -55,7 +55,7 @@
       "name": "value",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/segmentedControl/SegmentedControl.tsx",
+          "fileName": "packages/form/src/segmentedControl/SegmentedControl.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -70,7 +70,7 @@
       "name": "defaultValue",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/segmentedControl/SegmentedControl.tsx",
+          "fileName": "packages/form/src/segmentedControl/SegmentedControl.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -85,7 +85,7 @@
       "name": "onChange",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/segmentedControl/SegmentedControl.tsx",
+          "fileName": "packages/form/src/segmentedControl/SegmentedControl.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -102,7 +102,7 @@
       "name": "size",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/segmentedControl/SegmentedControl.tsx",
+          "fileName": "packages/form/src/segmentedControl/SegmentedControl.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -117,7 +117,7 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/segmentedControl/SegmentedControl.tsx",
+          "fileName": "packages/form/src/segmentedControl/SegmentedControl.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -132,7 +132,7 @@
       "name": "selectedValue",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/segmentedControl/SegmentedControl.tsx",
+          "fileName": "packages/form/src/segmentedControl/SegmentedControl.tsx",
           "name": "TypeLiteral"
         }
       ],

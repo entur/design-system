@@ -10,11 +10,11 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "design-system/packages/typography/src/beta/components/Blockquote.tsx",
+          "fileName": "packages/typography/src/beta/components/Blockquote.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "HTMLAttributes"
         }
       ],

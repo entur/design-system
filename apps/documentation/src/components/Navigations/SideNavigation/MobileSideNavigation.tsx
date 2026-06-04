@@ -30,9 +30,8 @@ const MobileSideNavigation: React.FC<MobileMenuProps> = ({
       <Drawer
         open={openSidebar}
         onDismiss={() => setOpenSidebar(false)}
-        title={''}
+        title="Navigasjonsmeny"
         className="side-navigation__drawer"
-        overlay
       >
         <SideNavigation
           menuItems={menuItems}
@@ -48,6 +47,7 @@ const MobileSideNavigation: React.FC<MobileMenuProps> = ({
         })}
         onClick={() => setOpenSidebar(!openSidebar)}
         type="button"
+        aria-expanded={openSidebar}
         aria-label={openSidebar ? 'Lukk meny' : 'Åpne meny'}
       >
         {openSidebar ? (

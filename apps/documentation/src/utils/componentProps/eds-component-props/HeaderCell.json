@@ -10,11 +10,11 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "design-system/packages/table/src/HeaderCell.tsx",
+          "fileName": "packages/table/src/HeaderCell.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "HTMLAttributes"
         }
       ],
@@ -29,11 +29,11 @@
       "name": "children",
       "declarations": [
         {
-          "fileName": "design-system/packages/table/src/HeaderCell.tsx",
+          "fileName": "packages/table/src/HeaderCell.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "DOMAttributes"
         }
       ],
@@ -48,7 +48,7 @@
       "name": "name",
       "declarations": [
         {
-          "fileName": "design-system/packages/table/src/HeaderCell.tsx",
+          "fileName": "packages/table/src/HeaderCell.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -65,7 +65,7 @@
       "name": "sortable",
       "declarations": [
         {
-          "fileName": "design-system/packages/table/src/HeaderCell.tsx",
+          "fileName": "packages/table/src/HeaderCell.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -80,7 +80,7 @@
       "name": "sortConfig",
       "declarations": [
         {
-          "fileName": "design-system/packages/table/src/HeaderCell.tsx",
+          "fileName": "packages/table/src/HeaderCell.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -97,7 +97,7 @@
       "name": "padding",
       "declarations": [
         {
-          "fileName": "design-system/packages/table/src/HeaderCell.tsx",
+          "fileName": "packages/table/src/HeaderCell.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -112,7 +112,7 @@
       "name": "sortableButtonProps",
       "declarations": [
         {
-          "fileName": "design-system/packages/table/src/HeaderCell.tsx",
+          "fileName": "packages/table/src/HeaderCell.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -129,7 +129,7 @@
       "name": "sortedAscendingAriaLabel",
       "declarations": [
         {
-          "fileName": "design-system/packages/table/src/HeaderCell.tsx",
+          "fileName": "packages/table/src/HeaderCell.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -146,7 +146,7 @@
       "name": "sortedDescendingAriaLabel",
       "declarations": [
         {
-          "fileName": "design-system/packages/table/src/HeaderCell.tsx",
+          "fileName": "packages/table/src/HeaderCell.tsx",
           "name": "TypeLiteral"
         }
       ],

@@ -10,11 +10,11 @@
       "name": "children",
       "declarations": [
         {
-          "fileName": "design-system/packages/tab/src/TabPanels.tsx",
+          "fileName": "packages/tab/src/TabPanels.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "TypeLiteral"
         }
       ],
@@ -29,7 +29,7 @@
       "name": "as",
       "declarations": [
         {
-          "fileName": "design-system/packages/tab/src/TabPanels.tsx",
+          "fileName": "packages/tab/src/TabPanels.tsx",
           "name": "TypeLiteral"
         }
       ],

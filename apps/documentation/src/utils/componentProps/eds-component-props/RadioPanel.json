@@ -10,7 +10,7 @@
       "name": "title",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/inputPanel/RadioPanel.tsx",
+          "fileName": "packages/form/src/inputPanel/RadioPanel.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -27,7 +27,7 @@
       "name": "size",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/inputPanel/RadioPanel.tsx",
+          "fileName": "packages/form/src/inputPanel/RadioPanel.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -44,11 +44,11 @@
       "name": "disabled",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/inputPanel/RadioPanel.tsx",
+          "fileName": "packages/form/src/inputPanel/RadioPanel.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "InputHTMLAttributes"
         }
       ],
@@ -65,11 +65,11 @@
       "name": "readOnly",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/inputPanel/RadioPanel.tsx",
+          "fileName": "packages/form/src/inputPanel/RadioPanel.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "InputHTMLAttributes"
         }
       ],
@@ -84,11 +84,11 @@
       "name": "value",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/inputPanel/RadioPanel.tsx",
+          "fileName": "packages/form/src/inputPanel/RadioPanel.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "InputHTMLAttributes"
         }
       ],
@@ -103,11 +103,11 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/inputPanel/RadioPanel.tsx",
+          "fileName": "packages/form/src/inputPanel/RadioPanel.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "HTMLAttributes"
         }
       ],
@@ -122,11 +122,11 @@
       "name": "style",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/inputPanel/RadioPanel.tsx",
+          "fileName": "packages/form/src/inputPanel/RadioPanel.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "HTMLAttributes"
         }
       ],
@@ -141,11 +141,11 @@
       "name": "children",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/inputPanel/RadioPanel.tsx",
+          "fileName": "packages/form/src/inputPanel/RadioPanel.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "DOMAttributes"
         }
       ],
@@ -160,7 +160,7 @@
       "name": "secondaryLabel",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/inputPanel/RadioPanel.tsx",
+          "fileName": "packages/form/src/inputPanel/RadioPanel.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -177,7 +177,7 @@
       "name": "hideRadioButton",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/inputPanel/RadioPanel.tsx",
+          "fileName": "packages/form/src/inputPanel/RadioPanel.tsx",
           "name": "TypeLiteral"
         }
       ],

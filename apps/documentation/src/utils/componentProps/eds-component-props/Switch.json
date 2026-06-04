@@ -10,11 +10,11 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/Switch.tsx",
+          "fileName": "packages/form/src/Switch.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "HTMLAttributes"
         }
       ],
@@ -29,11 +29,11 @@
       "name": "children",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/Switch.tsx",
+          "fileName": "packages/form/src/Switch.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "DOMAttributes"
         }
       ],
@@ -50,7 +50,7 @@
       "name": "labelPlacement",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/Switch.tsx",
+          "fileName": "packages/form/src/Switch.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -65,11 +65,11 @@
       "name": "checked",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/Switch.tsx",
+          "fileName": "packages/form/src/Switch.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "InputHTMLAttributes"
         }
       ],
@@ -84,7 +84,7 @@
       "name": "icon",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/Switch.tsx",
+          "fileName": "packages/form/src/Switch.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -101,7 +101,7 @@
       "name": "hideIcon",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/Switch.tsx",
+          "fileName": "packages/form/src/Switch.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -118,11 +118,11 @@
       "name": "color",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/Switch.tsx",
+          "fileName": "packages/form/src/Switch.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "HTMLAttributes"
         }
       ],
@@ -139,7 +139,7 @@
       "name": "contrastColor",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/Switch.tsx",
+          "fileName": "packages/form/src/Switch.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -156,7 +156,7 @@
       "name": "size",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/Switch.tsx",
+          "fileName": "packages/form/src/Switch.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -171,11 +171,11 @@
       "name": "onChange",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/Switch.tsx",
+          "fileName": "packages/form/src/Switch.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "InputHTMLAttributes"
         }
       ],

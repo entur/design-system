@@ -3,6 +3,22 @@
 @use '@entur/tokens/dist/styles.scss' as eds;
 @use '@entur/utils/dist/breakpoints.scss' as *;
 
+.side-navigation--desktop {
+  display: block;
+
+  @media screen and (max-width: map.get(variables.$breakpoints, 'tablet')) {
+    display: none;
+  }
+}
+
+.side-navigation--mobile {
+  display: none;
+
+  @media screen and (max-width: map.get(variables.$breakpoints, 'tablet')) {
+    display: block;
+  }
+}
+
 .side-navigation {
   &__logo {
     width: 100%;
@@ -28,7 +44,15 @@
     background: var(--components-menu-sidenavigation-standard-background);
 
     h2 {
-      display: none; // hide Drawer heading
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
     }
 
     &__wrapper {

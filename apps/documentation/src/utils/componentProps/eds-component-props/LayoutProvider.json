@@ -10,7 +10,7 @@
       "name": "breakpoints",
       "declarations": [
         {
-          "fileName": "design-system/packages/layout/src/beta/LayoutProvider/LayoutProvider.tsx",
+          "fileName": "packages/layout/src/beta/LayoutProvider/LayoutProvider.tsx",
           "name": "TypeLiteral"
         }
       ],

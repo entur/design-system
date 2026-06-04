@@ -10,7 +10,7 @@
       "name": "variant",
       "declarations": [
         {
-          "fileName": "design-system/packages/typography/src/beta/components/Heading.tsx",
+          "fileName": "packages/typography/src/beta/components/Heading.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -25,7 +25,7 @@
       "name": "size",
       "declarations": [
         {
-          "fileName": "design-system/packages/typography/src/beta/components/Heading.tsx",
+          "fileName": "packages/typography/src/beta/components/Heading.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -40,7 +40,7 @@
       "name": "children",
       "declarations": [
         {
-          "fileName": "design-system/packages/typography/src/beta/components/Heading.tsx",
+          "fileName": "packages/typography/src/beta/components/Heading.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -55,7 +55,7 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "design-system/packages/typography/src/beta/components/Heading.tsx",
+          "fileName": "packages/typography/src/beta/components/Heading.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -70,7 +70,7 @@
       "name": "style",
       "declarations": [
         {
-          "fileName": "design-system/packages/typography/src/beta/components/Heading.tsx",
+          "fileName": "packages/typography/src/beta/components/Heading.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -85,7 +85,7 @@
       "name": "spacing",
       "declarations": [
         {
-          "fileName": "design-system/packages/typography/src/beta/components/Heading.tsx",
+          "fileName": "packages/typography/src/beta/components/Heading.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -100,7 +100,7 @@
       "name": "as",
       "declarations": [
         {
-          "fileName": "design-system/node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
+          "fileName": "node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
           "name": "TypeLiteral"
         }
       ],

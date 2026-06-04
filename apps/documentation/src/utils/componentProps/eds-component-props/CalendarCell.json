@@ -10,7 +10,7 @@
       "name": "state",
       "declarations": [
         {
-          "fileName": "design-system/packages/datepicker/src/DatePicker/CalendarCell.tsx",
+          "fileName": "packages/datepicker/src/DatePicker/CalendarCell.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -25,7 +25,7 @@
       "name": "date",
       "declarations": [
         {
-          "fileName": "design-system/packages/datepicker/src/DatePicker/CalendarCell.tsx",
+          "fileName": "packages/datepicker/src/DatePicker/CalendarCell.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -40,7 +40,7 @@
       "name": "weekNumberString",
       "declarations": [
         {
-          "fileName": "design-system/packages/datepicker/src/DatePicker/CalendarCell.tsx",
+          "fileName": "packages/datepicker/src/DatePicker/CalendarCell.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -57,7 +57,7 @@
       "name": "showOutsideMonth",
       "declarations": [
         {
-          "fileName": "design-system/packages/datepicker/src/DatePicker/CalendarCell.tsx",
+          "fileName": "packages/datepicker/src/DatePicker/CalendarCell.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -74,7 +74,7 @@
       "name": "onSelectedCellClick",
       "declarations": [
         {
-          "fileName": "design-system/packages/datepicker/src/DatePicker/CalendarCell.tsx",
+          "fileName": "packages/datepicker/src/DatePicker/CalendarCell.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -91,7 +91,7 @@
       "name": "onCellClick",
       "declarations": [
         {
-          "fileName": "design-system/packages/datepicker/src/DatePicker/CalendarCell.tsx",
+          "fileName": "packages/datepicker/src/DatePicker/CalendarCell.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -106,7 +106,7 @@
       "name": "classNameForDate",
       "declarations": [
         {
-          "fileName": "design-system/packages/datepicker/src/DatePicker/CalendarCell.tsx",
+          "fileName": "packages/datepicker/src/DatePicker/CalendarCell.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -121,7 +121,7 @@
       "name": "ariaLabelForDate",
       "declarations": [
         {
-          "fileName": "design-system/packages/datepicker/src/DatePicker/CalendarCell.tsx",
+          "fileName": "packages/datepicker/src/DatePicker/CalendarCell.tsx",
           "name": "TypeLiteral"
         }
       ],

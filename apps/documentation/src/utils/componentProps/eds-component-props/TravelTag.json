@@ -12,7 +12,7 @@
       "name": "onClose",
       "declarations": [
         {
-          "fileName": "design-system/packages/travel/src/TravelTag.tsx",
+          "fileName": "packages/travel/src/TravelTag.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -27,15 +27,15 @@
       "name": "children",
       "declarations": [
         {
-          "fileName": "design-system/packages/travel/src/TravelTag.tsx",
+          "fileName": "packages/travel/src/TravelTag.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "DOMAttributes"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "TypeLiteral"
         }
       ],
@@ -50,11 +50,11 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "design-system/packages/travel/src/TravelTag.tsx",
+          "fileName": "packages/travel/src/TravelTag.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "HTMLAttributes"
         }
       ],
@@ -71,13 +71,30 @@
       "name": "alert",
       "declarations": [
         {
-          "fileName": "design-system/packages/travel/src/TravelTag.tsx",
+          "fileName": "packages/travel/src/TravelTag.tsx",
           "name": "TypeLiteral"
         }
       ],
       "required": false,
       "type": {
         "name": "\"none\" | \"error\" | \"warning\" | \"info\" | undefined"
+      }
+    },
+    "type": {
+      "defaultValue": {
+        "value": "publicCode"
+      },
+      "description": "Duration brukes når man viser tid dette \"transportmiddelet\" bruker, anbefales hovedsaklig til gange og delingsmobilitet. publicCode brukes for å vise ID-en til linjen.",
+      "name": "type",
+      "declarations": [
+        {
+          "fileName": "packages/travel/src/TravelTag.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "\"publicCode\" | \"duration\" | undefined"
       }
     },
     "transport": {
@@ -88,7 +105,7 @@
       "name": "transport",
       "declarations": [
         {
-          "fileName": "design-system/packages/travel/src/TravelTag.tsx",
+          "fileName": "packages/travel/src/TravelTag.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -103,7 +120,7 @@
       "name": "label",
       "declarations": [
         {
-          "fileName": "design-system/packages/travel/src/TravelTag.tsx",
+          "fileName": "packages/travel/src/TravelTag.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -120,7 +137,7 @@
       "name": "labelPlacement",
       "declarations": [
         {
-          "fileName": "design-system/packages/travel/src/TravelTag.tsx",
+          "fileName": "packages/travel/src/TravelTag.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -135,7 +152,7 @@
       "name": "details",
       "declarations": [
         {
-          "fileName": "design-system/packages/travel/src/TravelTag.tsx",
+          "fileName": "packages/travel/src/TravelTag.tsx",
           "name": "TypeLiteral"
         }
       ],

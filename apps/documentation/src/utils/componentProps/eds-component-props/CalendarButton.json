@@ -10,7 +10,7 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "design-system/packages/datepicker/src/shared/CalendarButton.tsx",
+          "fileName": "packages/datepicker/src/shared/CalendarButton.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -25,7 +25,7 @@
       "name": "style",
       "declarations": [
         {
-          "fileName": "design-system/packages/datepicker/src/shared/CalendarButton.tsx",
+          "fileName": "packages/datepicker/src/shared/CalendarButton.tsx",
           "name": "TypeLiteral"
         }
       ],

@@ -12,7 +12,7 @@
       "name": "active",
       "declarations": [
         {
-          "fileName": "design-system/packages/menu/src/TopNavigationItem.tsx",
+          "fileName": "packages/menu/src/TopNavigationItem.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -27,7 +27,7 @@
       "name": "children",
       "declarations": [
         {
-          "fileName": "design-system/packages/menu/src/TopNavigationItem.tsx",
+          "fileName": "packages/menu/src/TopNavigationItem.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -44,11 +44,11 @@
       "name": "as",
       "declarations": [
         {
-          "fileName": "design-system/packages/menu/src/TopNavigationItem.tsx",
+          "fileName": "packages/menu/src/TopNavigationItem.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
+          "fileName": "node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
           "name": "TypeLiteral"
         }
       ],
@@ -63,7 +63,7 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "design-system/packages/menu/src/TopNavigationItem.tsx",
+          "fileName": "packages/menu/src/TopNavigationItem.tsx",
           "name": "TypeLiteral"
         }
       ],

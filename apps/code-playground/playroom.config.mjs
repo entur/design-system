@@ -1,6 +1,10 @@
 import { createRequire } from 'module';
 import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const require = createRequire(import.meta.url);
+const repoRoot = path.resolve(__dirname, '../..');
 
 export default {
   components: './src/components.ts',
@@ -38,8 +42,8 @@ export default {
             {
               test: /\.s?css$/,
               include: [
-                /design-system[\\/]apps[\\/]code-playground[\\/]/,
-                /design-system[\\/]packages[\\/][^\\/]+[\\/]dist[\\/]/,
+                path.resolve(repoRoot, 'apps/code-playground'),
+                path.resolve(repoRoot, 'packages'),
               ],
               use: [
                 'style-loader',

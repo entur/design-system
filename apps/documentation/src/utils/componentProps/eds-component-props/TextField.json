@@ -10,7 +10,7 @@
       "name": "prepend",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/TextField.tsx",
+          "fileName": "packages/form/src/TextField.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -25,7 +25,7 @@
       "name": "append",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/TextField.tsx",
+          "fileName": "packages/form/src/TextField.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -40,11 +40,11 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/TextField.tsx",
+          "fileName": "packages/form/src/TextField.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "HTMLAttributes"
         }
       ],
@@ -59,7 +59,7 @@
       "name": "label",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/TextField.tsx",
+          "fileName": "packages/form/src/TextField.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -74,7 +74,7 @@
       "name": "labelTooltip",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/TextField.tsx",
+          "fileName": "packages/form/src/TextField.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -89,7 +89,7 @@
       "name": "labelTooltipButtonAriaLabel",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/TextField.tsx",
+          "fileName": "packages/form/src/TextField.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -104,7 +104,7 @@
       "name": "labelTooltipPlacement",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/TextField.tsx",
+          "fileName": "packages/form/src/TextField.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -119,7 +119,7 @@
       "name": "feedback",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/TextField.tsx",
+          "fileName": "packages/form/src/TextField.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -134,7 +134,7 @@
       "name": "variant",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/TextField.tsx",
+          "fileName": "packages/form/src/TextField.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -151,11 +151,11 @@
       "name": "disabled",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/TextField.tsx",
+          "fileName": "packages/form/src/TextField.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "InputHTMLAttributes"
         }
       ],
@@ -172,11 +172,11 @@
       "name": "readOnly",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/TextField.tsx",
+          "fileName": "packages/form/src/TextField.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "InputHTMLAttributes"
         }
       ],
@@ -193,7 +193,7 @@
       "name": "size",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/TextField.tsx",
+          "fileName": "packages/form/src/TextField.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -210,7 +210,7 @@
       "name": "disableLabelAnimation",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/TextField.tsx",
+          "fileName": "packages/form/src/TextField.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -225,7 +225,7 @@
       "name": "labelProps",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/TextField.tsx",
+          "fileName": "packages/form/src/TextField.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -242,7 +242,7 @@
       "name": "clearable",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/TextField.tsx",
+          "fileName": "packages/form/src/TextField.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -257,7 +257,7 @@
       "name": "onClear",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/TextField.tsx",
+          "fileName": "packages/form/src/TextField.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -274,7 +274,7 @@
       "name": "clearButtonAriaLabel",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/TextField.tsx",
+          "fileName": "packages/form/src/TextField.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -291,7 +291,7 @@
       "name": "ariaAlertOnFeedback",
       "declarations": [
         {
-          "fileName": "design-system/packages/form/src/TextField.tsx",
+          "fileName": "packages/form/src/TextField.tsx",
           "name": "TypeLiteral"
         }
       ],

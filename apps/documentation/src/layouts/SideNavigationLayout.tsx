@@ -1,10 +1,8 @@
 import React from 'react';
-import { useWindowDimensions } from '@entur/utils';
 import MobileSideNavigation from '@components/Navigations/SideNavigation/MobileSideNavigation';
 import SideNavigation from '@components/Navigations/SideNavigation/SideNavigation';
 import { MenuItem } from '@components/Navigations/SideNavigation/utils';
 import { PageProps, graphql, useStaticQuery } from 'gatsby';
-import { pxToRem } from 'src/utils/utils';
 
 const SideNavigationLayout = ({
   location,
@@ -12,11 +10,6 @@ const SideNavigationLayout = ({
   location: PageProps['location'];
 }) => {
   const [openSidebar, setOpenSidebar] = React.useState(false);
-
-  const { width } = useWindowDimensions();
-  const remWidth = pxToRem(width);
-  const isSmallScreen = remWidth !== undefined && remWidth < 60;
-  const isLargeScreen = remWidth !== undefined && remWidth >= 60;
 
   const MenuData = useStaticQuery(graphql`
     query AllPages {
@@ -63,18 +56,22 @@ const SideNavigationLayout = ({
     ...MenuData.allSanityPage.nodes,
     ...MenuData.allSanityComponentDoc.nodes,
   ]);
-  if (isSmallScreen)
-    return (
-      <MobileSideNavigation
-        menuItems={menuItems}
-        openSidebar={openSidebar}
-        setOpenSidebar={setOpenSidebar}
-        currentLocation={location}
-      />
-    );
-  if (isLargeScreen)
-    return <SideNavigation menuItems={menuItems} currentLocation={location} />;
-  return <></>;
+
+  return (
+    <nav aria-label="Sidemeny">
+      <div className="side-navigation--desktop">
+        <SideNavigation menuItems={menuItems} currentLocation={location} />
+      </div>
+      <div className="side-navigation--mobile">
+        <MobileSideNavigation
+          menuItems={menuItems}
+          openSidebar={openSidebar}
+          setOpenSidebar={setOpenSidebar}
+          currentLocation={location}
+        />
+      </div>
+    </nav>
+  );
 };
 
 export default SideNavigationLayout;
@@ -91,7 +88,7 @@ function mergeMdxAndSanityPageData(mdxPageData: any[], sanityPageData: any[]) {
         tags: page.frontmatter.tags,
         order: page.frontmatter.order,
         categoryIndex: page.frontmatter.categoryIndex,
-        isCategoryLandingPage: false, // MDX pages don't have this field
+        isCategoryLandingPage: false,
         tag: undefined,
       } as MenuItem;
     });
@@ -107,14 +104,13 @@ function mergeMdxAndSanityPageData(mdxPageData: any[], sanityPageData: any[]) {
       tag: page.tag ?? undefined,
     } as MenuItem;
   });
-  // Add custom menu items
   const customMenuItems: MenuItem[] = [
     {
       id: 'code-playground',
       title: 'Sandkasse',
       category: 'Komponenter',
       subcategory: 'Oversikt',
-      order: 2, // Place it after the main "Komponenter" overview page
+      order: 2,
       path: '/sandkasse/',
     } as MenuItem,
     {

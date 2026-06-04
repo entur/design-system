@@ -12,11 +12,11 @@
       "name": "as",
       "declarations": [
         {
-          "fileName": "design-system/packages/layout/src/MediaCard.tsx",
+          "fileName": "packages/layout/src/MediaCard.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
+          "fileName": "node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
           "name": "TypeLiteral"
         }
       ],
@@ -31,7 +31,7 @@
       "name": "title",
       "declarations": [
         {
-          "fileName": "design-system/packages/layout/src/MediaCard.tsx",
+          "fileName": "packages/layout/src/MediaCard.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -46,7 +46,7 @@
       "name": "description",
       "declarations": [
         {
-          "fileName": "design-system/packages/layout/src/MediaCard.tsx",
+          "fileName": "packages/layout/src/MediaCard.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -61,7 +61,7 @@
       "name": "category",
       "declarations": [
         {
-          "fileName": "design-system/packages/layout/src/MediaCard.tsx",
+          "fileName": "packages/layout/src/MediaCard.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -76,7 +76,7 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "design-system/packages/layout/src/MediaCard.tsx",
+          "fileName": "packages/layout/src/MediaCard.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -91,7 +91,7 @@
       "name": "children",
       "declarations": [
         {
-          "fileName": "design-system/packages/layout/src/MediaCard.tsx",
+          "fileName": "packages/layout/src/MediaCard.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -106,7 +106,7 @@
       "name": "style",
       "declarations": [
         {
-          "fileName": "design-system/packages/layout/src/MediaCard.tsx",
+          "fileName": "packages/layout/src/MediaCard.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -123,7 +123,7 @@
       "name": "headingLevel",
       "declarations": [
         {
-          "fileName": "design-system/packages/layout/src/MediaCard.tsx",
+          "fileName": "packages/layout/src/MediaCard.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -140,7 +140,7 @@
       "name": "hideArrow",
       "declarations": [
         {
-          "fileName": "design-system/packages/layout/src/MediaCard.tsx",
+          "fileName": "packages/layout/src/MediaCard.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -157,7 +157,7 @@
       "name": "orientation",
       "declarations": [
         {
-          "fileName": "design-system/packages/layout/src/MediaCard.tsx",
+          "fileName": "packages/layout/src/MediaCard.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -172,7 +172,7 @@
       "name": "wrapperProps",
       "declarations": [
         {
-          "fileName": "design-system/packages/layout/src/MediaCard.tsx",
+          "fileName": "packages/layout/src/MediaCard.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -187,7 +187,7 @@
       "name": "wholeCardAsElement",
       "declarations": [
         {
-          "fileName": "design-system/packages/layout/src/MediaCard.tsx",
+          "fileName": "packages/layout/src/MediaCard.tsx",
           "name": "TypeLiteral"
         }
       ],

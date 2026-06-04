@@ -10,7 +10,7 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "design-system/packages/loader/src/SkeletonRectangle.tsx",
+          "fileName": "packages/loader/src/SkeletonRectangle.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -27,7 +27,7 @@
       "name": "width",
       "declarations": [
         {
-          "fileName": "design-system/packages/loader/src/SkeletonRectangle.tsx",
+          "fileName": "packages/loader/src/SkeletonRectangle.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -44,7 +44,7 @@
       "name": "height",
       "declarations": [
         {
-          "fileName": "design-system/packages/loader/src/SkeletonRectangle.tsx",
+          "fileName": "packages/loader/src/SkeletonRectangle.tsx",
           "name": "TypeLiteral"
         }
       ],

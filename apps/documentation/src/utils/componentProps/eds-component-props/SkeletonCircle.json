@@ -10,7 +10,7 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "design-system/packages/loader/src/SkeletonCircle.tsx",
+          "fileName": "packages/loader/src/SkeletonCircle.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -27,7 +27,7 @@
       "name": "size",
       "declarations": [
         {
-          "fileName": "design-system/packages/loader/src/SkeletonCircle.tsx",
+          "fileName": "packages/loader/src/SkeletonCircle.tsx",
           "name": "TypeLiteral"
         }
       ],

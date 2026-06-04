@@ -10,7 +10,7 @@
       "name": "onClear",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/components/FieldComponents.tsx",
+          "fileName": "packages/dropdown/src/components/FieldComponents.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -27,7 +27,7 @@
       "name": "labelClearSelectedItems",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/components/FieldComponents.tsx",
+          "fileName": "packages/dropdown/src/components/FieldComponents.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -44,7 +44,7 @@
       "name": "focusable",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/components/FieldComponents.tsx",
+          "fileName": "packages/dropdown/src/components/FieldComponents.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -59,7 +59,7 @@
       "name": "ariaLabelClearItems",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/components/FieldComponents.tsx",
+          "fileName": "packages/dropdown/src/components/FieldComponents.tsx",
           "name": "TypeLiteral"
         }
       ],

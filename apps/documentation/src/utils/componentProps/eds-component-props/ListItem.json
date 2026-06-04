@@ -12,7 +12,7 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "design-system/packages/typography/src/beta/components/ListItem.tsx",
+          "fileName": "packages/typography/src/beta/components/ListItem.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -27,7 +27,7 @@
       "name": "children",
       "declarations": [
         {
-          "fileName": "design-system/packages/typography/src/beta/components/ListItem.tsx",
+          "fileName": "packages/typography/src/beta/components/ListItem.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -42,7 +42,7 @@
       "name": "title",
       "declarations": [
         {
-          "fileName": "design-system/packages/typography/src/beta/components/ListItem.tsx",
+          "fileName": "packages/typography/src/beta/components/ListItem.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -57,7 +57,7 @@
       "name": "spacing",
       "declarations": [
         {
-          "fileName": "design-system/packages/typography/src/beta/components/ListItem.tsx",
+          "fileName": "packages/typography/src/beta/components/ListItem.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -72,7 +72,7 @@
       "name": "as",
       "declarations": [
         {
-          "fileName": "design-system/node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
+          "fileName": "node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
           "name": "TypeLiteral"
         }
       ],

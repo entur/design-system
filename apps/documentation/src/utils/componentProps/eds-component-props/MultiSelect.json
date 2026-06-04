@@ -10,7 +10,7 @@
       "name": "items",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -25,7 +25,7 @@
       "name": "label",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -40,7 +40,7 @@
       "name": "placeholder",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -57,7 +57,7 @@
       "name": "clearable",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -74,7 +74,7 @@
       "name": "selectOnTab",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -91,7 +91,7 @@
       "name": "disabled",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -108,7 +108,7 @@
       "name": "readOnly",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -125,7 +125,7 @@
       "name": "variant",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -140,7 +140,7 @@
       "name": "feedback",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -155,7 +155,7 @@
       "name": "prepend",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -170,7 +170,7 @@
       "name": "loading",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -187,7 +187,7 @@
       "name": "loadingText",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -204,7 +204,7 @@
       "name": "noMatchesText",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -221,7 +221,7 @@
       "name": "labelClearSelectedItem",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -236,7 +236,7 @@
       "name": "labelTooltip",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -253,7 +253,7 @@
       "name": "disableLabelAnimation",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -268,7 +268,7 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -283,7 +283,7 @@
       "name": "listStyle",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -298,7 +298,7 @@
       "name": "style",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -315,7 +315,7 @@
       "name": "ariaLabelCloseList",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -332,7 +332,7 @@
       "name": "ariaLabelOpenList",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -349,7 +349,7 @@
       "name": "ariaLabelChosenSingular",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -366,7 +366,7 @@
       "name": "ariaLabelSelectedItem",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -383,7 +383,7 @@
       "name": "selectedItems",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/MultiSelect.tsx",
+          "fileName": "packages/dropdown/src/MultiSelect.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -400,7 +400,7 @@
       "name": "onChange",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/MultiSelect.tsx",
+          "fileName": "packages/dropdown/src/MultiSelect.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -417,7 +417,7 @@
       "name": "itemFilter",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/MultiSelect.tsx",
+          "fileName": "packages/dropdown/src/MultiSelect.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -434,7 +434,7 @@
       "name": "hideSelectAll",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/MultiSelect.tsx",
+          "fileName": "packages/dropdown/src/MultiSelect.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -451,7 +451,7 @@
       "name": "debounceTimeout",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/MultiSelect.tsx",
+          "fileName": "packages/dropdown/src/MultiSelect.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -468,7 +468,7 @@
       "name": "maxChips",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/MultiSelect.tsx",
+          "fileName": "packages/dropdown/src/MultiSelect.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -485,7 +485,7 @@
       "name": "clearInputOnSelect",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/MultiSelect.tsx",
+          "fileName": "packages/dropdown/src/MultiSelect.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -502,7 +502,7 @@
       "name": "labelSelectAll",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/MultiSelect.tsx",
+          "fileName": "packages/dropdown/src/MultiSelect.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -519,7 +519,7 @@
       "name": "labelAllItemsSelected",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/MultiSelect.tsx",
+          "fileName": "packages/dropdown/src/MultiSelect.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -536,7 +536,7 @@
       "name": "labelClearAllItems",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/MultiSelect.tsx",
+          "fileName": "packages/dropdown/src/MultiSelect.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -553,7 +553,7 @@
       "name": "ariaLabelRemoveSelected",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/MultiSelect.tsx",
+          "fileName": "packages/dropdown/src/MultiSelect.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -570,7 +570,7 @@
       "name": "ariaLabelChosenPlural",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/MultiSelect.tsx",
+          "fileName": "packages/dropdown/src/MultiSelect.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -587,7 +587,7 @@
       "name": "ariaLabelJumpToInput",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/MultiSelect.tsx",
+          "fileName": "packages/dropdown/src/MultiSelect.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -602,7 +602,7 @@
       "name": "onBlur",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/MultiSelect.tsx",
+          "fileName": "packages/dropdown/src/MultiSelect.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -617,7 +617,7 @@
       "name": "onClick",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/MultiSelect.tsx",
+          "fileName": "packages/dropdown/src/MultiSelect.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -632,7 +632,7 @@
       "name": "onKeyDown",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/MultiSelect.tsx",
+          "fileName": "packages/dropdown/src/MultiSelect.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -647,7 +647,7 @@
       "name": "onFocus",
       "declarations": [
         {
-          "fileName": "design-system/packages/dropdown/src/MultiSelect.tsx",
+          "fileName": "packages/dropdown/src/MultiSelect.tsx",
           "name": "TypeLiteral"
         }
       ],

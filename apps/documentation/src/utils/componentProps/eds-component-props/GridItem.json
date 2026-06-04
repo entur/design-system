@@ -10,7 +10,7 @@
       "name": "colSpan",
       "declarations": [
         {
-          "fileName": "design-system/packages/layout/src/beta/Grid/GridItem.tsx",
+          "fileName": "packages/layout/src/beta/Grid/GridItem.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -27,7 +27,7 @@
       "name": "rowSpan",
       "declarations": [
         {
-          "fileName": "design-system/packages/layout/src/beta/Grid/GridItem.tsx",
+          "fileName": "packages/layout/src/beta/Grid/GridItem.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -44,17 +44,17 @@
       "name": "as",
       "declarations": [
         {
-          "fileName": "design-system/packages/layout/src/beta/Grid/GridItem.tsx",
+          "fileName": "packages/layout/src/beta/Grid/GridItem.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "design-system/node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
+          "fileName": "node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
           "name": "TypeLiteral"
         }
       ],
       "required": false,
       "type": {
-        "name": "(string & ElementType<any, keyof IntrinsicElements>) | (ComponentClass<any, any> & ElementType<any, keyof IntrinsicElements>) | (FunctionComponent<...> & ElementType<...>) | undefined"
+        "name": "(string & ElementType<any>) | (ComponentClass<any, any> & ElementType<any>) | (FunctionComponent<any> & ElementType<...>) | undefined"
       }
     },
     "className": {
@@ -63,7 +63,7 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "design-system/packages/layout/src/beta/Grid/GridItem.tsx",
+          "fileName": "packages/layout/src/beta/Grid/GridItem.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -78,7 +78,7 @@
       "name": "children",
       "declarations": [
         {
-          "fileName": "design-system/packages/layout/src/beta/Grid/GridItem.tsx",
+          "fileName": "packages/layout/src/beta/Grid/GridItem.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -93,7 +93,7 @@
       "name": "ref",
       "declarations": [
         {
-          "fileName": "design-system/packages/layout/src/beta/Grid/GridItem.tsx",
+          "fileName": "packages/layout/src/beta/Grid/GridItem.tsx",
           "name": "TypeLiteral"
         }
       ],
