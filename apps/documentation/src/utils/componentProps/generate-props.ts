@@ -21,7 +21,8 @@ const parser = withCustomConfig(tsConfigPath, {
   },
 });
 
-const componentsRootDir = path.join(__dirname, '../../../../../packages');
+const repoRoot = path.resolve(__dirname, '../../../../..');
+const componentsRootDir = path.join(repoRoot, 'packages');
 
 const outputDir = path.join(__dirname, 'eds-component-props');
 
@@ -122,6 +123,7 @@ function generatePropFileForComponent(componentFile: string): {
 
     parsedProps.forEach((componentProps: Partial<ComponentDoc>) => {
       delete componentProps.filePath;
+      normalizeFileNames(componentProps);
 
       const componentDisplayName = componentProps.displayName;
       const outputFilePath = path.join(
@@ -151,6 +153,20 @@ function generatePropFileForComponent(componentFile: string): {
   } catch (error) {
     console.error(`Failed to extract props for ${componentFile}:`, error);
     return { parsed: false, outputs: [] };
+  }
+}
+
+function normalizeFileNames(componentProps: Partial<ComponentDoc>): void {
+  if (!componentProps.props) return;
+  for (const prop of Object.values(componentProps.props)) {
+    if (!prop.declarations) continue;
+    for (const decl of prop.declarations) {
+      if (!decl.fileName) continue;
+      const abs = path.isAbsolute(decl.fileName)
+        ? decl.fileName
+        : path.resolve(decl.fileName);
+      decl.fileName = path.relative(repoRoot, abs);
+    }
   }
 }
 
