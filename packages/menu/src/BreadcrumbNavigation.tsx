@@ -15,12 +15,12 @@ export type BreadcrumbNavigationProps = Omit<
   children: React.ReactNode;
 };
 
-export const BreadcrumbNavigation: React.FC<BreadcrumbNavigationProps> = ({
+export const BreadcrumbNavigation = ({
   'aria-label': ariaLabel = 'Brødsmulesti',
   className,
   children,
   ...rest
-}) => {
+}: BreadcrumbNavigationProps) => {
   const childrenArray = React.Children.toArray(children);
 
   const _children = childrenArray.map((child, index) => {

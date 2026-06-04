@@ -16,7 +16,7 @@ export type PaginationPageProps = {
   'aria-label': string;
   'aria-describedby'?: string;
 };
-export const PaginationPage: React.FC<PaginationPageProps> = ({
+export const PaginationPage = ({
   children,
   className,
   selected,
@@ -24,7 +24,7 @@ export const PaginationPage: React.FC<PaginationPageProps> = ({
   onClick,
   'aria-label': ariaLabel,
   'aria-describedby': ariaDescribedby,
-}) => (
+}: PaginationPageProps) => (
   <button
     className={classNames(
       'eds-pagination__controls__page',
