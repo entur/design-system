@@ -12,12 +12,12 @@ export type ListItemProps = {
   [key: string]: any;
 };
 
-export const ListItem: React.FC<ListItemProps> = ({
+export const ListItem = ({
   children,
   className,
   title,
   ...rest
-}) => (
+}: ListItemProps) => (
   <li className={classNames('eds-list-item', className)} {...rest}>
     {title && <StrongText className="eds-list-item__title">{title}</StrongText>}
     {children}
