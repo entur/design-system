@@ -25,9 +25,7 @@ type CollapsibleSideNavigationProps = SideNavigationProps & {
   closeSideMenuAriaLabel?: string;
 };
 
-export const CollapsibleSideNavigation: React.FC<
-  CollapsibleSideNavigationProps
-> = ({
+export const CollapsibleSideNavigation = ({
   className,
   children,
   size,
@@ -37,7 +35,7 @@ export const CollapsibleSideNavigation: React.FC<
   openSideMenuAriaLabel = 'Åpne sidemeny',
   closeSideMenuAriaLabel = 'Lukk sidemeny',
   ...rest
-}) => {
+}: CollapsibleSideNavigationProps) => {
   const [collapsedMenu, setCollapsedMenu] = useControllableProp({
     prop: collapsible,
     defaultValue: false,
