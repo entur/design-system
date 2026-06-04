@@ -14,11 +14,11 @@ export type LoadingDotsProps = {
   HTMLDivElement
 >;
 
-export const LoadingDots: React.FC<LoadingDotsProps> = ({
+export const LoadingDots = ({
   color = 'blue',
   className,
   ...rest
-}) => {
+}: LoadingDotsProps) => {
   return (
     <div
       className={classNames(
@@ -40,7 +40,7 @@ type LoadingDotProps = {
   dotNumber: string;
 };
 
-const LoadingDot: React.FC<LoadingDotProps> = ({ dotNumber }) => {
+const LoadingDot = ({ dotNumber }: LoadingDotProps) => {
   return (
     <span
       className={classNames(

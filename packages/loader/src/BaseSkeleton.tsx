@@ -9,11 +9,11 @@ type BaseSkeletonProps = {
   [key: string]: any;
 };
 
-export const BaseSkeleton: React.FC<BaseSkeletonProps> = ({
+export const BaseSkeleton = ({
   className,
   style,
   ...rest
-}) => {
+}: BaseSkeletonProps) => {
   return (
     <div
       className={classNames('eds-skeleton', 'eds-skeleton--animate', className)}
