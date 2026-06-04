@@ -14,12 +14,12 @@ export type LoaderProps = {
   [key: string]: any;
 };
 
-export const Loader: React.FC<LoaderProps> = ({
+export const Loader = ({
   children,
   className,
   progress = 'indeterminate',
   ...rest
-}) => {
+}: LoaderProps) => {
   const isIndeterminate = progress === 'indeterminate';
   let styles = {};
   if (!isIndeterminate) {
