@@ -17,7 +17,7 @@ export type TabsProps = {
   className?: string;
 } & Omit<React.ComponentPropsWithoutRef<'div'>, 'children' | 'onChange'>;
 
-export const Tabs: React.FC<TabsProps> = ({
+export const Tabs = ({
   className,
   index,
   defaultIndex,
@@ -25,7 +25,7 @@ export const Tabs: React.FC<TabsProps> = ({
   as,
   children,
   ...rest
-}) => {
+}: TabsProps) => {
   const [internalIndex, setInternalIndex] = useState(defaultIndex ?? 0);
   const isControlled = index !== undefined;
   const selectedIndex = isControlled ? index : internalIndex;
