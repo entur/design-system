@@ -91,7 +91,7 @@ export type TooltipProps = {
   [key: string]: any;
 };
 
-export const Tooltip: React.FC<TooltipProps> = ({
+export const Tooltip = ({
   placement,
   content,
   children,
@@ -107,7 +107,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
   hoverDelay,
   style,
   ...rest
-}) => {
+}: TooltipProps) => {
   const [showTooltip, setShowTooltip] = useState(isOpen ?? false);
   const tooltipArrowRef = useRef(null);
   const tooltipId = useRandomId('eds-tooltip');
