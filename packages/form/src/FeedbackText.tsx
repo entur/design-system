@@ -15,9 +15,11 @@ const info = 'info';
 /** @deprecated use variant="negative" instead */
 const error = 'error';
 
-const AlertIcon: React.FC<{
+const AlertIcon = ({
+  variant,
+}: {
   variant: VariantType | typeof info | typeof error;
-}> = ({ variant }) => {
+}) => {
   const iconClass = `eds-feedback-text__icon eds-feedback-text__icon--${variant}`;
   switch (variant) {
     case 'success':
@@ -68,13 +70,13 @@ export type FeedbackTextProps = {
   className?: string;
   [key: string]: any;
 };
-export const FeedbackText: React.FC<FeedbackTextProps> = ({
+export const FeedbackText = ({
   children,
   hideIcon = false,
   variant,
   className,
   ...rest
-}) => {
+}: FeedbackTextProps) => {
   return (
     <SubLabel
       className={classNames(
