@@ -10,7 +10,7 @@
       "name": "children",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/button/src/SuccessSquareButton.tsx",
+          "fileName": "packages/button/src/SuccessSquareButton.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -25,7 +25,7 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/button/src/SuccessSquareButton.tsx",
+          "fileName": "packages/button/src/SuccessSquareButton.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -42,7 +42,7 @@
       "name": "size",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/button/src/SuccessSquareButton.tsx",
+          "fileName": "packages/button/src/SuccessSquareButton.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -59,7 +59,7 @@
       "name": "disabled",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/button/src/SuccessSquareButton.tsx",
+          "fileName": "packages/button/src/SuccessSquareButton.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -76,7 +76,7 @@
       "name": "loading",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/button/src/SuccessSquareButton.tsx",
+          "fileName": "packages/button/src/SuccessSquareButton.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -91,7 +91,7 @@
       "name": "as",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
+          "fileName": "node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
           "name": "TypeLiteral"
         }
       ],
@@ -106,7 +106,7 @@
       "name": "ref",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
+          "fileName": "node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
           "name": "TypeLiteral"
         }
       ],

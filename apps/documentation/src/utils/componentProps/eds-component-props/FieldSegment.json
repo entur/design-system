@@ -10,7 +10,7 @@
       "name": "segment",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/datepicker/src/shared/FieldSegment.tsx",
+          "fileName": "packages/datepicker/src/shared/FieldSegment.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -25,7 +25,7 @@
       "name": "state",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/datepicker/src/shared/FieldSegment.tsx",
+          "fileName": "packages/datepicker/src/shared/FieldSegment.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -40,7 +40,7 @@
       "name": "aria-describedby",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/datepicker/src/shared/FieldSegment.tsx",
+          "fileName": "packages/datepicker/src/shared/FieldSegment.tsx",
           "name": "TypeLiteral"
         }
       ],

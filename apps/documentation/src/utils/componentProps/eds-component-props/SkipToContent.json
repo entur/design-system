@@ -10,11 +10,11 @@
       "name": "children",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/a11y/src/SkipToContent.tsx",
+          "fileName": "packages/a11y/src/SkipToContent.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "TypeLiteral"
         }
       ],
@@ -31,7 +31,7 @@
       "name": "mainId",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/a11y/src/SkipToContent.tsx",
+          "fileName": "packages/a11y/src/SkipToContent.tsx",
           "name": "TypeLiteral"
         }
       ],

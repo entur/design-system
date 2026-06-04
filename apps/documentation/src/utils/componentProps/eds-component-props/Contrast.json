@@ -10,7 +10,7 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/layout/src/Contrast.tsx",
+          "fileName": "packages/layout/src/Contrast.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -25,7 +25,7 @@
       "name": "as",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
+          "fileName": "node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
           "name": "TypeLiteral"
         }
       ],
@@ -40,7 +40,7 @@
       "name": "ref",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
+          "fileName": "node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
           "name": "TypeLiteral"
         }
       ],

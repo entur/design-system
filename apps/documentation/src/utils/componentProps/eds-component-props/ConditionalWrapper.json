@@ -10,7 +10,7 @@
       "name": "condition",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/utils/src/ConditionalWrapper.tsx",
+          "fileName": "packages/utils/src/ConditionalWrapper.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -25,7 +25,7 @@
       "name": "wrapper",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/utils/src/ConditionalWrapper.tsx",
+          "fileName": "packages/utils/src/ConditionalWrapper.tsx",
           "name": "TypeLiteral"
         }
       ],

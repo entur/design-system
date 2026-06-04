@@ -10,11 +10,11 @@
       "name": "children",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/tab/src/TabPanel.tsx",
+          "fileName": "packages/tab/src/TabPanel.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "TypeLiteral"
         }
       ],
@@ -29,7 +29,7 @@
       "name": "as",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/tab/src/TabPanel.tsx",
+          "fileName": "packages/tab/src/TabPanel.tsx",
           "name": "TypeLiteral"
         }
       ],

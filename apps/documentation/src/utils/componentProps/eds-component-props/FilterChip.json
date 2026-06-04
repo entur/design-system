@@ -10,11 +10,11 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/chip/src/FilterChip.tsx",
+          "fileName": "packages/chip/src/FilterChip.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "HTMLAttributes"
         }
       ],
@@ -29,11 +29,11 @@
       "name": "children",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/chip/src/FilterChip.tsx",
+          "fileName": "packages/chip/src/FilterChip.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "DOMAttributes"
         }
       ],
@@ -48,7 +48,7 @@
       "name": "value",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/chip/src/FilterChip.tsx",
+          "fileName": "packages/chip/src/FilterChip.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -65,7 +65,7 @@
       "name": "size",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/chip/src/FilterChip.tsx",
+          "fileName": "packages/chip/src/FilterChip.tsx",
           "name": "TypeLiteral"
         }
       ],

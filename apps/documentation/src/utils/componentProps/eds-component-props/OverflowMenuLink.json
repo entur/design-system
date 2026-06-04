@@ -10,7 +10,7 @@
       "name": "children",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/menu/src/OverflowMenu.tsx",
+          "fileName": "packages/menu/src/OverflowMenu.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -25,7 +25,7 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/menu/src/OverflowMenu.tsx",
+          "fileName": "packages/menu/src/OverflowMenu.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -42,11 +42,11 @@
       "name": "onSelect",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/menu/src/OverflowMenu.tsx",
+          "fileName": "packages/menu/src/OverflowMenu.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/menu/src/OverflowMenu.tsx",
+          "fileName": "packages/menu/src/OverflowMenu.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -61,7 +61,7 @@
       "name": "href",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/menu/src/OverflowMenu.tsx",
+          "fileName": "packages/menu/src/OverflowMenu.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -76,7 +76,7 @@
       "name": "disabled",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/menu/src/OverflowMenu.tsx",
+          "fileName": "packages/menu/src/OverflowMenu.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -91,7 +91,7 @@
       "name": "as",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
+          "fileName": "node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
           "name": "TypeLiteral"
         }
       ],

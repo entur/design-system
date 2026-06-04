@@ -2,6 +2,7 @@ import { ComponentDoc, withCustomConfig } from 'react-docgen-typescript';
 import fs from 'fs-extra';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { execSync } from 'child_process';
 import crypto from 'crypto';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -21,7 +22,9 @@ const parser = withCustomConfig(tsConfigPath, {
   },
 });
 
-const repoRoot = path.resolve(__dirname, '../../../../..');
+const repoRoot = execSync('git rev-parse --show-toplevel', {
+  encoding: 'utf8',
+}).trim();
 const componentsRootDir = path.join(repoRoot, 'packages');
 
 const outputDir = path.join(__dirname, 'eds-component-props');
@@ -156,16 +159,22 @@ function generatePropFileForComponent(componentFile: string): {
   }
 }
 
+function normalizeFileName(fileName: string): string {
+  const normalized = fileName.replace(/\\/g, '/');
+  for (const prefix of ['packages/', 'node_modules/']) {
+    const idx = normalized.indexOf(prefix);
+    if (idx !== -1) return normalized.slice(idx);
+  }
+  return normalized;
+}
+
 function normalizeFileNames(componentProps: Partial<ComponentDoc>): void {
   if (!componentProps.props) return;
   for (const prop of Object.values(componentProps.props)) {
     if (!prop.declarations) continue;
     for (const decl of prop.declarations) {
       if (!decl.fileName) continue;
-      const abs = path.isAbsolute(decl.fileName)
-        ? decl.fileName
-        : path.resolve(decl.fileName);
-      decl.fileName = path.relative(repoRoot, abs);
+      decl.fileName = normalizeFileName(decl.fileName);
     }
   }
 }

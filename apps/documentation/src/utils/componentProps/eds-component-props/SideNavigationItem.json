@@ -12,7 +12,7 @@
       "name": "active",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/menu/src/SideNavigationItem.tsx",
+          "fileName": "packages/menu/src/SideNavigationItem.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -27,11 +27,11 @@
       "name": "as",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/menu/src/SideNavigationItem.tsx",
+          "fileName": "packages/menu/src/SideNavigationItem.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
+          "fileName": "node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
           "name": "TypeLiteral"
         }
       ],
@@ -46,7 +46,7 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/menu/src/SideNavigationItem.tsx",
+          "fileName": "packages/menu/src/SideNavigationItem.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -61,7 +61,7 @@
       "name": "disabled",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/menu/src/SideNavigationItem.tsx",
+          "fileName": "packages/menu/src/SideNavigationItem.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -76,7 +76,7 @@
       "name": "onClick",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/menu/src/SideNavigationItem.tsx",
+          "fileName": "packages/menu/src/SideNavigationItem.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -91,7 +91,7 @@
       "name": "forceExpandSubMenus",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/menu/src/SideNavigationItem.tsx",
+          "fileName": "packages/menu/src/SideNavigationItem.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -106,7 +106,7 @@
       "name": "icon",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/menu/src/SideNavigationItem.tsx",
+          "fileName": "packages/menu/src/SideNavigationItem.tsx",
           "name": "TypeLiteral"
         }
       ],

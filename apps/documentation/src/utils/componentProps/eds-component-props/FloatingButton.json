@@ -10,11 +10,11 @@
       "name": "aria-label",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/button/src/FloatingButton.tsx",
+          "fileName": "packages/button/src/FloatingButton.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "AriaAttributes"
         }
       ],
@@ -29,15 +29,15 @@
       "name": "children",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/button/src/FloatingButton.tsx",
+          "fileName": "packages/button/src/FloatingButton.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "DOMAttributes"
         },
         {
-          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "TypeLiteral"
         }
       ],
@@ -52,11 +52,11 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/button/src/FloatingButton.tsx",
+          "fileName": "packages/button/src/FloatingButton.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "HTMLAttributes"
         }
       ],
@@ -71,11 +71,11 @@
       "name": "onClick",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/button/src/FloatingButton.tsx",
+          "fileName": "packages/button/src/FloatingButton.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "DOMAttributes"
         }
       ],
@@ -92,7 +92,7 @@
       "name": "size",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/button/src/FloatingButton.tsx",
+          "fileName": "packages/button/src/FloatingButton.tsx",
           "name": "TypeLiteral"
         }
       ],

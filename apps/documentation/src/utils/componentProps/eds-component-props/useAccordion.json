@@ -10,7 +10,7 @@
       "name": "id",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/expand/src/Accordion.tsx",
+          "fileName": "packages/expand/src/Accordion.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -25,7 +25,7 @@
       "name": "defaultOpen",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/expand/src/Accordion.tsx",
+          "fileName": "packages/expand/src/Accordion.tsx",
           "name": "TypeLiteral"
         }
       ],

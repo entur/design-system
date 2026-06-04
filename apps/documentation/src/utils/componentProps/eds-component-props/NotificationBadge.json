@@ -12,11 +12,11 @@
       "name": "as",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/layout/src/Badge/NotificationBadge.tsx",
+          "fileName": "packages/layout/src/Badge/NotificationBadge.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
+          "fileName": "node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
           "name": "TypeLiteral"
         }
       ],
@@ -31,7 +31,7 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/layout/src/Badge/NotificationBadge.tsx",
+          "fileName": "packages/layout/src/Badge/NotificationBadge.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -46,7 +46,7 @@
       "name": "children",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/layout/src/Badge/NotificationBadge.tsx",
+          "fileName": "packages/layout/src/Badge/NotificationBadge.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -61,7 +61,7 @@
       "name": "variant",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/layout/src/Badge/NotificationBadge.tsx",
+          "fileName": "packages/layout/src/Badge/NotificationBadge.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -78,7 +78,7 @@
       "name": "showZero",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/layout/src/Badge/NotificationBadge.tsx",
+          "fileName": "packages/layout/src/Badge/NotificationBadge.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -95,7 +95,7 @@
       "name": "max",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/layout/src/Badge/NotificationBadge.tsx",
+          "fileName": "packages/layout/src/Badge/NotificationBadge.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -110,7 +110,7 @@
       "name": "hide",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/layout/src/Badge/NotificationBadge.tsx",
+          "fileName": "packages/layout/src/Badge/NotificationBadge.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -125,7 +125,7 @@
       "name": "ref",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
+          "fileName": "node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
           "name": "TypeLiteral"
         }
       ],

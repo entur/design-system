@@ -10,7 +10,7 @@
       "name": "value",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/form/src/segmentedControl/SegmentedChoice.tsx",
+          "fileName": "packages/form/src/segmentedControl/SegmentedChoice.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -25,7 +25,7 @@
       "name": "children",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/form/src/segmentedControl/SegmentedChoice.tsx",
+          "fileName": "packages/form/src/segmentedControl/SegmentedChoice.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -40,7 +40,7 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/form/src/segmentedControl/SegmentedChoice.tsx",
+          "fileName": "packages/form/src/segmentedControl/SegmentedChoice.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -55,7 +55,7 @@
       "name": "onChange",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/form/src/segmentedControl/SegmentedChoice.tsx",
+          "fileName": "packages/form/src/segmentedControl/SegmentedChoice.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -70,7 +70,7 @@
       "name": "as",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
+          "fileName": "node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
           "name": "TypeLiteral"
         }
       ],
@@ -85,7 +85,7 @@
       "name": "ref",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
+          "fileName": "node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
           "name": "TypeLiteral"
         }
       ],

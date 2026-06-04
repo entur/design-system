@@ -12,7 +12,7 @@
       "name": "onClose",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/travel/src/TravelTag.tsx",
+          "fileName": "packages/travel/src/TravelTag.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -27,15 +27,15 @@
       "name": "children",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/travel/src/TravelTag.tsx",
+          "fileName": "packages/travel/src/TravelTag.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "DOMAttributes"
         },
         {
-          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "TypeLiteral"
         }
       ],
@@ -50,11 +50,11 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/travel/src/TravelTag.tsx",
+          "fileName": "packages/travel/src/TravelTag.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "HTMLAttributes"
         }
       ],
@@ -71,7 +71,7 @@
       "name": "alert",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/travel/src/TravelTag.tsx",
+          "fileName": "packages/travel/src/TravelTag.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -88,7 +88,7 @@
       "name": "type",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/travel/src/TravelTag.tsx",
+          "fileName": "packages/travel/src/TravelTag.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -105,7 +105,7 @@
       "name": "transport",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/travel/src/TravelTag.tsx",
+          "fileName": "packages/travel/src/TravelTag.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -120,7 +120,7 @@
       "name": "label",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/travel/src/TravelTag.tsx",
+          "fileName": "packages/travel/src/TravelTag.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -137,7 +137,7 @@
       "name": "labelPlacement",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/travel/src/TravelTag.tsx",
+          "fileName": "packages/travel/src/TravelTag.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -152,7 +152,7 @@
       "name": "details",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/travel/src/TravelTag.tsx",
+          "fileName": "packages/travel/src/TravelTag.tsx",
           "name": "TypeLiteral"
         }
       ],

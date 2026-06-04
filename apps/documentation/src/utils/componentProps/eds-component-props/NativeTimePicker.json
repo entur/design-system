@@ -10,11 +10,11 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/datepicker/src/TimePicker/NativeTimePicker.tsx",
+          "fileName": "packages/datepicker/src/TimePicker/NativeTimePicker.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "HTMLAttributes"
         }
       ],
@@ -29,7 +29,7 @@
       "name": "label",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/datepicker/src/TimePicker/NativeTimePicker.tsx",
+          "fileName": "packages/datepicker/src/TimePicker/NativeTimePicker.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -44,7 +44,7 @@
       "name": "feedback",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/datepicker/src/TimePicker/NativeTimePicker.tsx",
+          "fileName": "packages/datepicker/src/TimePicker/NativeTimePicker.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -59,7 +59,7 @@
       "name": "variant",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/datepicker/src/TimePicker/NativeTimePicker.tsx",
+          "fileName": "packages/datepicker/src/TimePicker/NativeTimePicker.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -74,7 +74,7 @@
       "name": "prepend",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/datepicker/src/TimePicker/NativeTimePicker.tsx",
+          "fileName": "packages/datepicker/src/TimePicker/NativeTimePicker.tsx",
           "name": "TypeLiteral"
         }
       ],

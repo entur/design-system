@@ -10,7 +10,7 @@
       "name": "onClear",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/dropdown/src/components/FieldComponents.tsx",
+          "fileName": "packages/dropdown/src/components/FieldComponents.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -27,7 +27,7 @@
       "name": "labelClearSelectedItems",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/dropdown/src/components/FieldComponents.tsx",
+          "fileName": "packages/dropdown/src/components/FieldComponents.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -44,7 +44,7 @@
       "name": "focusable",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/dropdown/src/components/FieldComponents.tsx",
+          "fileName": "packages/dropdown/src/components/FieldComponents.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -59,7 +59,7 @@
       "name": "ariaLabelClearItems",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/dropdown/src/components/FieldComponents.tsx",
+          "fileName": "packages/dropdown/src/components/FieldComponents.tsx",
           "name": "TypeLiteral"
         }
       ],

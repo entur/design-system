@@ -12,7 +12,7 @@
       "name": "defaultOpen",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/menu/src/SideNavigationGroup.tsx",
+          "fileName": "packages/menu/src/SideNavigationGroup.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -27,7 +27,7 @@
       "name": "open",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/menu/src/SideNavigationGroup.tsx",
+          "fileName": "packages/menu/src/SideNavigationGroup.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -42,7 +42,7 @@
       "name": "onToggle",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/menu/src/SideNavigationGroup.tsx",
+          "fileName": "packages/menu/src/SideNavigationGroup.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -57,7 +57,7 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/menu/src/SideNavigationGroup.tsx",
+          "fileName": "packages/menu/src/SideNavigationGroup.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -72,11 +72,11 @@
       "name": "children",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/menu/src/SideNavigationGroup.tsx",
+          "fileName": "packages/menu/src/SideNavigationGroup.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "TypeLiteral"
         }
       ],
@@ -91,7 +91,7 @@
       "name": "title",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/menu/src/SideNavigationGroup.tsx",
+          "fileName": "packages/menu/src/SideNavigationGroup.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -106,7 +106,7 @@
       "name": "icon",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/menu/src/SideNavigationGroup.tsx",
+          "fileName": "packages/menu/src/SideNavigationGroup.tsx",
           "name": "TypeLiteral"
         }
       ],

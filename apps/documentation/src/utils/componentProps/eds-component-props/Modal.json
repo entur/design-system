@@ -10,11 +10,11 @@
       "name": "children",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/modal/src/Modal.tsx",
+          "fileName": "packages/modal/src/Modal.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "TypeLiteral"
         }
       ],
@@ -31,7 +31,7 @@
       "name": "closeLabel",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/modal/src/Modal.tsx",
+          "fileName": "packages/modal/src/Modal.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -46,7 +46,7 @@
       "name": "initialFocusRef",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/modal/src/Modal.tsx",
+          "fileName": "packages/modal/src/Modal.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -61,7 +61,7 @@
       "name": "open",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/modal/src/Modal.tsx",
+          "fileName": "packages/modal/src/Modal.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -76,7 +76,7 @@
       "name": "onDismiss",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/modal/src/Modal.tsx",
+          "fileName": "packages/modal/src/Modal.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -91,7 +91,7 @@
       "name": "size",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/modal/src/Modal.tsx",
+          "fileName": "packages/modal/src/Modal.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -108,7 +108,7 @@
       "name": "align",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/modal/src/Modal.tsx",
+          "fileName": "packages/modal/src/Modal.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -123,7 +123,7 @@
       "name": "title",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/modal/src/Modal.tsx",
+          "fileName": "packages/modal/src/Modal.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -140,7 +140,7 @@
       "name": "closeOnClickOutside",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/modal/src/Modal.tsx",
+          "fileName": "packages/modal/src/Modal.tsx",
           "name": "TypeLiteral"
         }
       ],

@@ -10,7 +10,7 @@
       "name": "currentPage",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/menu/src/PaginationInput.tsx",
+          "fileName": "packages/menu/src/PaginationInput.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -27,7 +27,7 @@
       "name": "label",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/menu/src/PaginationInput.tsx",
+          "fileName": "packages/menu/src/PaginationInput.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -42,7 +42,7 @@
       "name": "onPageChange",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/menu/src/PaginationInput.tsx",
+          "fileName": "packages/menu/src/PaginationInput.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -57,7 +57,7 @@
       "name": "pageCount",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/menu/src/PaginationInput.tsx",
+          "fileName": "packages/menu/src/PaginationInput.tsx",
           "name": "TypeLiteral"
         }
       ],

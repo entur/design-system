@@ -10,7 +10,7 @@
       "name": "open",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/modal/src/ModalOverlay.tsx",
+          "fileName": "packages/modal/src/ModalOverlay.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -25,7 +25,7 @@
       "name": "onDismiss",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/modal/src/ModalOverlay.tsx",
+          "fileName": "packages/modal/src/ModalOverlay.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -40,11 +40,11 @@
       "name": "children",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/modal/src/ModalOverlay.tsx",
+          "fileName": "packages/modal/src/ModalOverlay.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "TypeLiteral"
         }
       ],
@@ -59,7 +59,7 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/modal/src/ModalOverlay.tsx",
+          "fileName": "packages/modal/src/ModalOverlay.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -74,7 +74,7 @@
       "name": "initialFocusRef",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/modal/src/ModalOverlay.tsx",
+          "fileName": "packages/modal/src/ModalOverlay.tsx",
           "name": "TypeLiteral"
         }
       ],

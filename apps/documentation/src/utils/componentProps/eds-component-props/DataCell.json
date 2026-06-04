@@ -10,11 +10,11 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/table/src/DataCell.tsx",
+          "fileName": "packages/table/src/DataCell.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "HTMLAttributes"
         }
       ],
@@ -31,7 +31,7 @@
       "name": "padding",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/table/src/DataCell.tsx",
+          "fileName": "packages/table/src/DataCell.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -46,7 +46,7 @@
       "name": "status",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/table/src/DataCell.tsx",
+          "fileName": "packages/table/src/DataCell.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -61,7 +61,7 @@
       "name": "variant",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/table/src/DataCell.tsx",
+          "fileName": "packages/table/src/DataCell.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -76,11 +76,11 @@
       "name": "children",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/table/src/DataCell.tsx",
+          "fileName": "packages/table/src/DataCell.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "DOMAttributes"
         }
       ],

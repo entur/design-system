@@ -10,7 +10,7 @@
       "name": "value",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/chip/src/ChoiceChip.tsx",
+          "fileName": "packages/chip/src/ChoiceChip.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -27,7 +27,7 @@
       "name": "size",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/chip/src/ChoiceChip.tsx",
+          "fileName": "packages/chip/src/ChoiceChip.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -44,11 +44,11 @@
       "name": "disabled",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/chip/src/ChoiceChip.tsx",
+          "fileName": "packages/chip/src/ChoiceChip.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "InputHTMLAttributes"
         }
       ],
@@ -63,11 +63,11 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/chip/src/ChoiceChip.tsx",
+          "fileName": "packages/chip/src/ChoiceChip.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "HTMLAttributes"
         }
       ],
@@ -82,11 +82,11 @@
       "name": "children",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/chip/src/ChoiceChip.tsx",
+          "fileName": "packages/chip/src/ChoiceChip.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "DOMAttributes"
         }
       ],

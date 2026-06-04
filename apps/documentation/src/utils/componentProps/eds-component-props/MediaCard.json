@@ -12,11 +12,11 @@
       "name": "as",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/layout/src/MediaCard.tsx",
+          "fileName": "packages/layout/src/MediaCard.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
+          "fileName": "node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
           "name": "TypeLiteral"
         }
       ],
@@ -31,7 +31,7 @@
       "name": "title",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/layout/src/MediaCard.tsx",
+          "fileName": "packages/layout/src/MediaCard.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -46,7 +46,7 @@
       "name": "description",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/layout/src/MediaCard.tsx",
+          "fileName": "packages/layout/src/MediaCard.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -61,7 +61,7 @@
       "name": "category",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/layout/src/MediaCard.tsx",
+          "fileName": "packages/layout/src/MediaCard.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -76,7 +76,7 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/layout/src/MediaCard.tsx",
+          "fileName": "packages/layout/src/MediaCard.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -91,7 +91,7 @@
       "name": "children",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/layout/src/MediaCard.tsx",
+          "fileName": "packages/layout/src/MediaCard.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -106,7 +106,7 @@
       "name": "style",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/layout/src/MediaCard.tsx",
+          "fileName": "packages/layout/src/MediaCard.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -123,7 +123,7 @@
       "name": "headingLevel",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/layout/src/MediaCard.tsx",
+          "fileName": "packages/layout/src/MediaCard.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -140,7 +140,7 @@
       "name": "hideArrow",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/layout/src/MediaCard.tsx",
+          "fileName": "packages/layout/src/MediaCard.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -157,7 +157,7 @@
       "name": "orientation",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/layout/src/MediaCard.tsx",
+          "fileName": "packages/layout/src/MediaCard.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -172,7 +172,7 @@
       "name": "wrapperProps",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/layout/src/MediaCard.tsx",
+          "fileName": "packages/layout/src/MediaCard.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -187,7 +187,7 @@
       "name": "wholeCardAsElement",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/layout/src/MediaCard.tsx",
+          "fileName": "packages/layout/src/MediaCard.tsx",
           "name": "TypeLiteral"
         }
       ],

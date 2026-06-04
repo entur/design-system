@@ -10,11 +10,11 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/travel/src/TravelLeg.tsx",
+          "fileName": "packages/travel/src/TravelLeg.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "HTMLAttributes"
         }
       ],
@@ -29,7 +29,7 @@
       "name": "transport",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/travel/src/TravelLeg.tsx",
+          "fileName": "packages/travel/src/TravelLeg.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -44,7 +44,7 @@
       "name": "direction",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/travel/src/TravelLeg.tsx",
+          "fileName": "packages/travel/src/TravelLeg.tsx",
           "name": "TypeLiteral"
         }
       ],

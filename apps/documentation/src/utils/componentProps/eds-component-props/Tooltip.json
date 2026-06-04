@@ -10,7 +10,7 @@
       "name": "placement",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/tooltip/src/Tooltip.tsx",
+          "fileName": "packages/tooltip/src/Tooltip.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -25,7 +25,7 @@
       "name": "content",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/tooltip/src/Tooltip.tsx",
+          "fileName": "packages/tooltip/src/Tooltip.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -40,11 +40,11 @@
       "name": "children",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/tooltip/src/Tooltip.tsx",
+          "fileName": "packages/tooltip/src/Tooltip.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "TypeLiteral"
         }
       ],
@@ -59,7 +59,7 @@
       "name": "isOpen",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/tooltip/src/Tooltip.tsx",
+          "fileName": "packages/tooltip/src/Tooltip.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -76,7 +76,7 @@
       "name": "onClickCloseButton",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/tooltip/src/Tooltip.tsx",
+          "fileName": "packages/tooltip/src/Tooltip.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -91,7 +91,7 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/tooltip/src/Tooltip.tsx",
+          "fileName": "packages/tooltip/src/Tooltip.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -108,7 +108,7 @@
       "name": "disableHoverListener",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/tooltip/src/Tooltip.tsx",
+          "fileName": "packages/tooltip/src/Tooltip.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -125,7 +125,7 @@
       "name": "disableFocusListener",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/tooltip/src/Tooltip.tsx",
+          "fileName": "packages/tooltip/src/Tooltip.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -142,7 +142,7 @@
       "name": "disableKeyboardListener",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/tooltip/src/Tooltip.tsx",
+          "fileName": "packages/tooltip/src/Tooltip.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -159,7 +159,7 @@
       "name": "disableClickListener",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/tooltip/src/Tooltip.tsx",
+          "fileName": "packages/tooltip/src/Tooltip.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -176,7 +176,7 @@
       "name": "showCloseButton",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/tooltip/src/Tooltip.tsx",
+          "fileName": "packages/tooltip/src/Tooltip.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -191,7 +191,7 @@
       "name": "variant",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/tooltip/src/Tooltip.tsx",
+          "fileName": "packages/tooltip/src/Tooltip.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -208,7 +208,7 @@
       "name": "hoverDelay",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/tooltip/src/Tooltip.tsx",
+          "fileName": "packages/tooltip/src/Tooltip.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -223,7 +223,7 @@
       "name": "popperModifiers",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/tooltip/src/Tooltip.tsx",
+          "fileName": "packages/tooltip/src/Tooltip.tsx",
           "name": "TypeLiteral"
         }
       ],

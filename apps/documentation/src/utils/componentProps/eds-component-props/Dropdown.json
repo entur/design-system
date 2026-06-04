@@ -10,7 +10,7 @@
       "name": "items",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -25,7 +25,7 @@
       "name": "selectedItem",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -40,7 +40,7 @@
       "name": "onChange",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -55,7 +55,7 @@
       "name": "label",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -70,7 +70,7 @@
       "name": "placeholder",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -87,7 +87,7 @@
       "name": "clearable",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -104,7 +104,7 @@
       "name": "selectOnTab",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -121,7 +121,7 @@
       "name": "disabled",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -138,7 +138,7 @@
       "name": "readOnly",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -155,7 +155,7 @@
       "name": "variant",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -170,7 +170,7 @@
       "name": "feedback",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -185,7 +185,7 @@
       "name": "prepend",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -200,7 +200,7 @@
       "name": "loading",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -217,7 +217,7 @@
       "name": "loadingText",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -234,7 +234,7 @@
       "name": "noMatchesText",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -251,7 +251,7 @@
       "name": "labelClearSelectedItem",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -266,7 +266,7 @@
       "name": "labelTooltip",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -283,7 +283,7 @@
       "name": "disableLabelAnimation",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -298,7 +298,7 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -313,7 +313,7 @@
       "name": "listStyle",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -328,7 +328,7 @@
       "name": "style",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -345,7 +345,7 @@
       "name": "ariaLabelCloseList",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -362,7 +362,7 @@
       "name": "ariaLabelOpenList",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -379,7 +379,7 @@
       "name": "ariaLabelChosenSingular",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -396,7 +396,7 @@
       "name": "ariaLabelSelectedItem",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/dropdown/src/Dropdown.tsx",
+          "fileName": "packages/dropdown/src/Dropdown.tsx",
           "name": "TypeLiteral"
         }
       ],

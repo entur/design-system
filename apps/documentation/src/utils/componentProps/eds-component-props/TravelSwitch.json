@@ -10,11 +10,11 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/travel/src/TravelSwitch.tsx",
+          "fileName": "packages/travel/src/TravelSwitch.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "HTMLAttributes"
         }
       ],
@@ -29,11 +29,11 @@
       "name": "checked",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/travel/src/TravelSwitch.tsx",
+          "fileName": "packages/travel/src/TravelSwitch.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "InputHTMLAttributes"
         }
       ],
@@ -48,15 +48,15 @@
       "name": "children",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/travel/src/TravelSwitch.tsx",
+          "fileName": "packages/travel/src/TravelSwitch.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "DOMAttributes"
         },
         {
-          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "TypeLiteral"
         }
       ],
@@ -73,7 +73,7 @@
       "name": "labelPlacement",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/travel/src/TravelSwitch.tsx",
+          "fileName": "packages/travel/src/TravelSwitch.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -88,7 +88,7 @@
       "name": "transport",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/travel/src/TravelSwitch.tsx",
+          "fileName": "packages/travel/src/TravelSwitch.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -103,11 +103,11 @@
       "name": "onChange",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/travel/src/TravelSwitch.tsx",
+          "fileName": "packages/travel/src/TravelSwitch.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "InputHTMLAttributes"
         }
       ],
@@ -124,7 +124,7 @@
       "name": "size",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/travel/src/TravelSwitch.tsx",
+          "fileName": "packages/travel/src/TravelSwitch.tsx",
           "name": "TypeLiteral"
         }
       ],

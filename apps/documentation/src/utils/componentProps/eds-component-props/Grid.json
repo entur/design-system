@@ -12,7 +12,7 @@
       "name": "templateColumns",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/layout/src/beta/Grid/Grid.tsx",
+          "fileName": "packages/layout/src/beta/Grid/Grid.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -29,7 +29,7 @@
       "name": "gap",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/layout/src/beta/Grid/Grid.tsx",
+          "fileName": "packages/layout/src/beta/Grid/Grid.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -44,7 +44,7 @@
       "name": "rowGap",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/layout/src/beta/Grid/Grid.tsx",
+          "fileName": "packages/layout/src/beta/Grid/Grid.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -59,7 +59,7 @@
       "name": "columnGap",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/layout/src/beta/Grid/Grid.tsx",
+          "fileName": "packages/layout/src/beta/Grid/Grid.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -74,7 +74,7 @@
       "name": "templateRows",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/layout/src/beta/Grid/Grid.tsx",
+          "fileName": "packages/layout/src/beta/Grid/Grid.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -91,7 +91,7 @@
       "name": "autoFlow",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/layout/src/beta/Grid/Grid.tsx",
+          "fileName": "packages/layout/src/beta/Grid/Grid.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -106,7 +106,7 @@
       "name": "align",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/layout/src/beta/Grid/Grid.tsx",
+          "fileName": "packages/layout/src/beta/Grid/Grid.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -121,7 +121,7 @@
       "name": "justify",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/layout/src/beta/Grid/Grid.tsx",
+          "fileName": "packages/layout/src/beta/Grid/Grid.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -136,7 +136,7 @@
       "name": "alignContent",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/layout/src/beta/Grid/Grid.tsx",
+          "fileName": "packages/layout/src/beta/Grid/Grid.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -151,7 +151,7 @@
       "name": "height",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/layout/src/beta/Grid/Grid.tsx",
+          "fileName": "packages/layout/src/beta/Grid/Grid.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -168,11 +168,11 @@
       "name": "as",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/layout/src/beta/Grid/Grid.tsx",
+          "fileName": "packages/layout/src/beta/Grid/Grid.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
+          "fileName": "node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
           "name": "TypeLiteral"
         }
       ],
@@ -187,7 +187,7 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/layout/src/beta/Grid/Grid.tsx",
+          "fileName": "packages/layout/src/beta/Grid/Grid.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -202,7 +202,7 @@
       "name": "children",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/layout/src/beta/Grid/Grid.tsx",
+          "fileName": "packages/layout/src/beta/Grid/Grid.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -217,7 +217,7 @@
       "name": "ref",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/layout/src/beta/Grid/Grid.tsx",
+          "fileName": "packages/layout/src/beta/Grid/Grid.tsx",
           "name": "TypeLiteral"
         }
       ],

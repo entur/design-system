@@ -10,11 +10,11 @@
       "name": "children",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/tab/src/Tabs.tsx",
+          "fileName": "packages/tab/src/Tabs.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "TypeLiteral"
         }
       ],
@@ -29,7 +29,7 @@
       "name": "onChange",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/tab/src/Tabs.tsx",
+          "fileName": "packages/tab/src/Tabs.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -44,7 +44,7 @@
       "name": "defaultIndex",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/tab/src/Tabs.tsx",
+          "fileName": "packages/tab/src/Tabs.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -59,7 +59,7 @@
       "name": "index",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/tab/src/Tabs.tsx",
+          "fileName": "packages/tab/src/Tabs.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -74,7 +74,7 @@
       "name": "as",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/tab/src/Tabs.tsx",
+          "fileName": "packages/tab/src/Tabs.tsx",
           "name": "TypeLiteral"
         }
       ],

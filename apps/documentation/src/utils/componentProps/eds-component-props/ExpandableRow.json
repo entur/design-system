@@ -10,7 +10,7 @@
       "name": "colSpan",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/table/src/ExpandableRow.tsx",
+          "fileName": "packages/table/src/ExpandableRow.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -25,11 +25,11 @@
       "name": "children",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/table/src/ExpandableRow.tsx",
+          "fileName": "packages/table/src/ExpandableRow.tsx",
           "name": "TypeLiteral"
         },
         {
-          "fileName": "apps/documentation/fix-cache-corruption/node_modules/@types/react/index.d.ts",
+          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "TypeLiteral"
         }
       ],
@@ -46,7 +46,7 @@
       "name": "open",
       "declarations": [
         {
-          "fileName": "apps/documentation/fix-cache-corruption/packages/table/src/ExpandableRow.tsx",
+          "fileName": "packages/table/src/ExpandableRow.tsx",
           "name": "TypeLiteral"
         }
       ],
