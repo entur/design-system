@@ -16,13 +16,13 @@ export type LegLineProps = {
   HTMLDivElement
 >;
 
-export const LegLine: React.FC<LegLineProps> = ({
+export const LegLine = ({
   color,
   direction = 'horizontal',
   pattern,
   className,
   ...rest
-}) => {
+}: LegLineProps) => {
   return (
     <div
       className={classNames('eds-leg-line', className, {
