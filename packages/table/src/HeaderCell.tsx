@@ -100,6 +100,7 @@ export const HeaderCell = React.forwardRef<
 );
 
 type SortableHeaderCellButtonProps = {
+  children: React.ReactNode;
   sortConfig: ExternalSortConfig;
   isCurrentlySorted: boolean;
   sortableButtonProps: React.DetailedHTMLProps<
@@ -111,7 +112,7 @@ type SortableHeaderCellButtonProps = {
   sortedDescendingAriaLabel?: string;
 };
 
-const SortableHeaderCellButton: React.FC<SortableHeaderCellButtonProps> = ({
+const SortableHeaderCellButton = ({
   sortConfig,
   sortableButtonProps,
   isCurrentlySorted,
@@ -119,7 +120,7 @@ const SortableHeaderCellButton: React.FC<SortableHeaderCellButtonProps> = ({
   ariaSort,
   sortedAscendingAriaLabel,
   sortedDescendingAriaLabel,
-}) => {
+}: SortableHeaderCellButtonProps) => {
   const [sortedAriaInfo, setSortedAriaInfo] = useState<string | undefined>('');
 
   const { className, ...rest } = sortableButtonProps;
