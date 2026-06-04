@@ -15,13 +15,13 @@ export type AccordionProps = {
   defaultOpenId?: Id;
 };
 
-export const Accordion: React.FC<AccordionProps> = ({
+export const Accordion = ({
   openId: controlledOpenId,
   onToggle,
   defaultOpenId = null,
   children,
   ...rest
-}) => {
+}: AccordionProps) => {
   const [internalOpenId, setInternalOpenId] = React.useState<Id>(defaultOpenId);
   const isControlled = controlledOpenId !== undefined;
   const openId = isControlled ? controlledOpenId : internalOpenId;
