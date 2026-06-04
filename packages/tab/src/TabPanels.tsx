@@ -13,13 +13,13 @@ export type TabPanelsProps = {
   className?: string;
 } & Omit<React.ComponentPropsWithoutRef<'div'>, 'children'>;
 
-export const TabPanels: React.FC<TabPanelsProps> = ({
+export const TabPanels = ({
   className,
   as,
   keepMounted = false,
   children,
   ...rest
-}) => {
+}: TabPanelsProps) => {
   const { tabsId } = useContext(TabsContext);
 
   const Element: React.ElementType = as || 'div';
