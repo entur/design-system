@@ -1,43 +1,41 @@
 import React, { useContext } from 'react';
 import classNames from 'classnames';
 
-import { TabsContext } from './TabsContext';
+import { TabPanelItemContext, TabsContext } from './TabsContext';
 
 export type TabPanelProps = {
-  /** Overskriften til taben */
-  children: React.ReactNode;
+  /** Innholdet i tab-panelet */
+  children?: React.ReactNode;
   /** HTML-elementet eller React-komponenten som lager komponenten */
-  as?: keyof JSX.IntrinsicElements | any;
-  /** @internal Injected by TabPanels */
-  _tabIndex?: number;
-  /** @internal Injected by TabPanels */
-  _tabId?: string;
-  /** @internal Injected by TabPanels */
-  _panelId?: string;
-  [key: string]: any;
-};
+  as?: keyof JSX.IntrinsicElements | React.ElementType;
+  className?: string;
+} & Omit<React.ComponentPropsWithoutRef<'div'>, 'children'>;
 
 export const TabPanel: React.FC<TabPanelProps> = ({
   className,
   as,
-  _tabIndex = 0,
-  _tabId,
-  _panelId,
   children,
   ...rest
 }) => {
   const { selectedIndex } = useContext(TabsContext);
-  const isSelected = selectedIndex === _tabIndex;
+  const itemContext = useContext(TabPanelItemContext);
+  const tabIndex = itemContext?.tabIndex ?? 0;
+  const keepMounted = itemContext?.keepMounted ?? false;
 
-  if (!isSelected) return null;
+  const isSelected = selectedIndex === tabIndex;
+  const isHiddenButMounted = keepMounted && !isSelected;
+
+  if (!isSelected && !keepMounted) return null;
 
   const Element: React.ElementType = as || 'div';
 
   return (
     <Element
       role="tabpanel"
-      id={_panelId}
-      aria-labelledby={_tabId}
+      id={itemContext?.panelId}
+      aria-labelledby={itemContext?.tabId}
+      tabIndex={isSelected ? 0 : -1}
+      hidden={isHiddenButMounted || undefined}
       className={classNames('eds-tab-panel', className)}
       {...rest}
     >

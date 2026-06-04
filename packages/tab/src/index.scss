@@ -45,6 +45,9 @@
   border-radius: t.$border-radiuses-medium t.$border-radiuses-medium 0 0;
   color: var(--components-tab-standard-text);
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   font-family: inherit;
   font-size: inherit;
   height: t.$space-extra-large3;
@@ -134,7 +137,8 @@
     background: transparent;
   }
 
-  &[disabled] {
+  &[disabled],
+  &[aria-disabled='true'] {
     background: var(--components-tab-standard-fill-disabled);
     border-color: none;
     color: var(--components-tab-standard-text-disabled);

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import classNames from 'classnames';
 
-import { TabsContext } from './TabsContext';
+import { TabItemContext, TabsContext } from './TabsContext';
 
 export type TabProps = {
   /** Overskriften til taben */
@@ -9,47 +9,43 @@ export type TabProps = {
   /** Om taben er disabled eller ikke */
   disabled?: boolean;
   /** HTML-elementet eller React-komponenten som lager komponenten */
-  as?: keyof JSX.IntrinsicElements | any;
+  as?: keyof JSX.IntrinsicElements | React.ElementType;
   removeActiveLine?: boolean;
-  /** @internal Injected by TabList */
-  _tabIndex?: number;
-  /** @internal Injected by TabList */
-  _tabId?: string;
-  /** @internal Injected by TabList */
-  _panelId?: string;
-  [key: string]: any;
-};
+  className?: string;
+} & Omit<React.ComponentPropsWithoutRef<'button'>, 'children' | 'disabled'>;
 
 export const Tab: React.FC<TabProps> = ({
   className,
   removeActiveLine = false,
   as,
   disabled = false,
-  _tabIndex = 0,
-  _tabId,
-  _panelId,
   children,
   ...rest
 }) => {
   const { selectedIndex, onSelect } = useContext(TabsContext);
-  const isSelected = selectedIndex === _tabIndex;
+  const itemContext = useContext(TabItemContext);
+  const tabIndex = itemContext?.tabIndex ?? 0;
+  const isSelected = selectedIndex === tabIndex;
   const Element: React.ElementType = as || 'button';
 
   return (
     <Element
       role="tab"
       type={as ? undefined : 'button'}
-      id={_tabId}
+      id={itemContext?.tabId}
       aria-selected={isSelected}
-      aria-controls={_panelId}
+      aria-controls={itemContext?.panelId}
       tabIndex={isSelected ? 0 : -1}
-      disabled={disabled}
+      disabled={disabled || undefined}
+      aria-disabled={disabled || undefined}
       className={classNames(
         'eds-tab',
         { 'eds-tab--remove-active-line': removeActiveLine },
         className,
       )}
-      onClick={() => onSelect(_tabIndex)}
+      onClick={() => {
+        if (!disabled) onSelect(tabIndex);
+      }}
       {...rest}
     >
       {children}
