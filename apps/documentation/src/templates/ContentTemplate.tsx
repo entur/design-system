@@ -2,6 +2,7 @@ import React from 'react';
 import { HeadProps, graphql } from 'gatsby';
 import { PortableText } from '@components/sanity';
 import { BasePageHeader } from '@components/PageHeader/BasePageHeader';
+import SanityTableOfContent from '@components/Navigations/TableOfContent/SanityTableOfContent';
 import { PageType } from '@components/sanity/types';
 import { SEO } from '@components/seo/SEO';
 import { getSanitizedPath } from '@components/Navigations/SideNavigation/utils';
@@ -34,6 +35,7 @@ export default function ContentTemplate({
         isCategoryLandingPage={isCategoryLandingPage}
         tag={tag}
       />
+      {content && <SanityTableOfContent content={content} />}
       <PortableText value={content} />
     </>
   );
