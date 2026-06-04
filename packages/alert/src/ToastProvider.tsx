@@ -86,13 +86,13 @@ export type ToastProviderProps = {
   children: React.ReactNode;
 };
 
-export const ToastProvider: React.FC<ToastProviderProps> = ({
+export const ToastProvider = ({
   delay = 6000,
   children,
   position = 'bottom-right',
   className,
   style,
-}) => {
+}: ToastProviderProps) => {
   const [toasts, dispatch] = React.useReducer(toastReducer, []);
   const [hoveringId, setHovering] = React.useState<string>();
   const timeoutIdRefs = React.useRef<{ [key: string]: number }>({});
