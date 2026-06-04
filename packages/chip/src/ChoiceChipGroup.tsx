@@ -18,14 +18,14 @@ export type ChoiceChipGroupProps = {
   [key: string]: any;
 };
 
-export const ChoiceChipGroup: React.FC<ChoiceChipGroupProps> = ({
+export const ChoiceChipGroup = ({
   name,
   value,
   children,
   onChange,
   label,
   ...rest
-}) => {
+}: ChoiceChipGroupProps) => {
   const contextValue = React.useMemo(
     () => ({ name, value, onChange }),
     [name, value, onChange],
