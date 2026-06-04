@@ -24,7 +24,7 @@ export type SideNavigationGroupProps = {
   [key: string]: any;
 };
 
-export const SideNavigationGroup: React.FC<SideNavigationGroupProps> = ({
+export const SideNavigationGroup = ({
   defaultOpen = false,
   open,
   onToggle,
@@ -33,7 +33,7 @@ export const SideNavigationGroup: React.FC<SideNavigationGroupProps> = ({
   title,
   icon,
   ...rest
-}) => {
+}: SideNavigationGroupProps) => {
   const [isOpen, setOpen] = useControllableProp({
     prop: open,
     updater: onToggle,
