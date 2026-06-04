@@ -16,13 +16,13 @@ export type TabListProps = {
   'aria-labelledby'?: string;
 } & Omit<React.ComponentPropsWithoutRef<'div'>, 'children'>;
 
-export const TabList: React.FC<TabListProps> = ({
+export const TabList = ({
   className,
   width,
   as,
   children,
   ...rest
-}) => {
+}: TabListProps) => {
   const { tabsId } = useContext(TabsContext);
   const tabListRef = useRef<HTMLElement>(null);
 

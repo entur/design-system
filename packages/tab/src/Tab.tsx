@@ -14,14 +14,14 @@ export type TabProps = {
   className?: string;
 } & Omit<React.ComponentPropsWithoutRef<'button'>, 'children' | 'disabled'>;
 
-export const Tab: React.FC<TabProps> = ({
+export const Tab = ({
   className,
   removeActiveLine = false,
   as,
   disabled = false,
   children,
   ...rest
-}) => {
+}: TabProps) => {
   const { selectedIndex, onSelect } = useContext(TabsContext);
   const itemContext = useContext(TabItemContext);
   const tabIndex = itemContext?.tabIndex ?? 0;

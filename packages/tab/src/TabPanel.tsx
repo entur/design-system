@@ -11,12 +11,12 @@ export type TabPanelProps = {
   className?: string;
 } & Omit<React.ComponentPropsWithoutRef<'div'>, 'children'>;
 
-export const TabPanel: React.FC<TabPanelProps> = ({
+export const TabPanel = ({
   className,
   as,
   children,
   ...rest
-}) => {
+}: TabPanelProps) => {
   const { selectedIndex } = useContext(TabsContext);
   const itemContext = useContext(TabPanelItemContext);
   const tabIndex = itemContext?.tabIndex ?? 0;
