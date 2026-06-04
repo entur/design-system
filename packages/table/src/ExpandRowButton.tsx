@@ -9,11 +9,11 @@ export type ExpandRowButtonProps = {
   onClick: (e: React.MouseEvent) => void;
 } & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
-export const ExpandRowButton: React.FC<ExpandRowButtonProps> = ({
+export const ExpandRowButton = ({
   open,
   onClick,
   ...rest
-}) => {
+}: ExpandRowButtonProps) => {
   return (
     <IconButton
       className={classNames('eds-expand-row-button', {
