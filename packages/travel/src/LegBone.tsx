@@ -37,7 +37,7 @@ export type LegBoneProps = {
   HTMLDivElement
 >;
 
-export const LegBone: React.FC<LegBoneProps> = ({
+export const LegBone = ({
   direction,
   pattern,
   color,
@@ -48,7 +48,7 @@ export const LegBone: React.FC<LegBoneProps> = ({
   showLine = true,
   className,
   ...rest
-}) => {
+}: LegBoneProps) => {
   return (
     <div
       className={classNames(className, 'eds-leg-bone', [
