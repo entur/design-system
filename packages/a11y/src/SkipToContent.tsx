@@ -10,10 +10,10 @@ export type SkipToContentProps = {
   mainId?: string;
 };
 
-export const SkipToContent: React.FC<SkipToContentProps> = ({
+export const SkipToContent = ({
   children,
   mainId = 'main-content',
-}) => (
+}: SkipToContentProps) => (
   <a className="eds-skip-to-content" href={`#${mainId}`}>
     {children}
   </a>
