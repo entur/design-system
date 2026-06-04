@@ -1,16 +1,20 @@
-import React, { useRef, useCallback, useContext } from 'react';
+import React, { useCallback, useContext, useRef } from 'react';
 import classNames from 'classnames';
 
-import { TabsContext } from './TabsContext';
+import { TabItemContext, TabsContext } from './TabsContext';
 
 export type TabListProps = {
   /** Tab-komponenter */
   children: React.ReactNode;
   /** HTML-elementet eller React-komponenten som lager komponenten */
-  as?: keyof JSX.IntrinsicElements | any;
+  as?: keyof JSX.IntrinsicElements | React.ElementType;
   width?: 'fluid';
-  [key: string]: any;
-};
+  className?: string;
+  /** Tilgjengelig navn på tab-listen (dersom det ikke finnes en synlig overskrift) */
+  'aria-label'?: string;
+  /** ID til elementet som navngir tab-listen */
+  'aria-labelledby'?: string;
+} & Omit<React.ComponentPropsWithoutRef<'div'>, 'children'>;
 
 export const TabList: React.FC<TabListProps> = ({
   className,
@@ -20,7 +24,7 @@ export const TabList: React.FC<TabListProps> = ({
   ...rest
 }) => {
   const { tabsId } = useContext(TabsContext);
-  const tabListRef = useRef<HTMLDivElement>(null);
+  const tabListRef = useRef<HTMLElement>(null);
 
   const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
     const tabs = tabListRef.current?.querySelectorAll<HTMLElement>(
@@ -61,6 +65,7 @@ export const TabList: React.FC<TabListProps> = ({
   return (
     <Element
       role="tablist"
+      tabIndex={-1}
       ref={tabListRef}
       className={classNames('eds-tab-list', className, {
         'eds-tab-list--width-fluid': width === 'fluid',
@@ -68,15 +73,17 @@ export const TabList: React.FC<TabListProps> = ({
       onKeyDown={handleKeyDown}
       {...rest}
     >
-      {React.Children.map(children, (child, idx) =>
-        React.isValidElement(child)
-          ? React.cloneElement(child as React.ReactElement<any>, {
-              _tabIndex: idx,
-              _tabId: `${tabsId}-tab-${idx}`,
-              _panelId: `${tabsId}-panel-${idx}`,
-            })
-          : child,
-      )}
+      {React.Children.map(children, (child, idx) => (
+        <TabItemContext.Provider
+          value={{
+            tabIndex: idx,
+            tabId: `${tabsId}-tab-${idx}`,
+            panelId: `${tabsId}-panel-${idx}`,
+          }}
+        >
+          {child}
+        </TabItemContext.Provider>
+      ))}
     </Element>
   );
 };

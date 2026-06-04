@@ -55,24 +55,24 @@ This enables the automatic JSX runtime, so you no longer need `import React from
 
 ### Quick Summary: Will There Be Breaking API Changes?
 
-**No breaking API changes** for `@entur/modal` and `@entur/tab`. The `@entur/expand` package has **new props** and a **behavioral change** (content now stays in the DOM when collapsed instead of being unmounted). See [@entur/expand](#enturexpand) below.
+**No breaking API changes** for `@entur/modal`. The `@entur/tab` package has **stricter TypeScript types** and **changed DOM output** (see [@entur/tab](#enturtab) below). The `@entur/expand` package has **new props** and a **behavioral change** (content now stays in the DOM when collapsed instead of being unmounted). See [@entur/expand](#enturexpand) below.
 
-| Component         | Public API changed? | Props changed? | Behavior changed?  |
-| ----------------- | ------------------- | -------------- | ------------------ |
-| `Modal`           | ❌ No               | ❌ No          | ❌ No              |
-| `ModalOverlay`    | ❌ No               | ❌ No          | ❌ No              |
-| `ModalContent`    | ❌ No               | ❌ No          | ❌ No              |
-| `Drawer`          | ❌ No               | ❌ No          | ❌ No              |
-| `Tabs`            | ❌ No               | ❌ No          | ❌ No              |
-| `TabList`         | ❌ No               | ❌ No          | ❌ No              |
-| `Tab`             | ❌ No               | ❌ No          | ❌ No              |
-| `TabPanel`        | ❌ No               | ❌ No          | ❌ No              |
-| `TabPanels`       | ❌ No               | ❌ No          | ❌ No              |
-| `ExpandablePanel` | ❌ No               | ✅ New props   | ✅ Yes (see below) |
-| `ExpandableText`  | ❌ No               | ✅ New props   | ✅ Yes (see below) |
-| `Accordion`       | ❌ No               | ✅ New props   | ✅ Yes (see below) |
-| `AccordionItem`   | ❌ No               | ✅ New props   | ✅ Yes (see below) |
-| `BaseExpand`      | ❌ No               | ✅ New props   | ✅ Yes (see below) |
+| Component         | Public API changed? | Props changed?    | Behavior changed?  |
+| ----------------- | ------------------- | ----------------- | ------------------ |
+| `Modal`           | ❌ No               | ❌ No             | ❌ No              |
+| `ModalOverlay`    | ❌ No               | ❌ No             | ❌ No              |
+| `ModalContent`    | ❌ No               | ❌ No             | ❌ No              |
+| `Drawer`          | ❌ No               | ❌ No             | ❌ No              |
+| `Tabs`            | ❌ No               | ✅ Stricter types | ❌ No              |
+| `TabList`         | ❌ No               | ✅ Stricter types | ❌ No              |
+| `Tab`             | ❌ No               | ✅ Stricter types | ❌ No              |
+| `TabPanel`        | ❌ No               | ✅ Stricter types | ❌ No              |
+| `TabPanels`       | ❌ No               | ✅ New props      | ❌ No              |
+| `ExpandablePanel` | ❌ No               | ✅ New props      | ✅ Yes (see below) |
+| `ExpandableText`  | ❌ No               | ✅ New props      | ✅ Yes (see below) |
+| `Accordion`       | ❌ No               | ✅ New props      | ✅ Yes (see below) |
+| `AccordionItem`   | ❌ No               | ✅ New props      | ✅ Yes (see below) |
+| `BaseExpand`      | ❌ No               | ✅ New props      | ✅ Yes (see below) |
 
 All existing props — including the `as` prop for polymorphic rendering — continue to work as before.
 
@@ -127,7 +127,19 @@ The internal implementation of `@entur/tab` has been migrated from `@reach/tabs`
 - ✅ ARIA roles and attributes (tablist, tab, tabpanel, aria-selected, aria-controls)
 - ✅ All CSS class names (`eds-tabs`, `eds-tab`, `eds-tab-list`, `eds-tab-panel`, `eds-tab-panels`)
 
-**What consumers need to do:** No changes required if you are using the documented API.
+**What consumers need to do:**
+
+1. **Remove `data-reach-*` selectors** — If your CSS or tests target `[data-reach-tab]`, `[data-reach-tab-list]`, etc., replace them with `.eds-tab`, `.eds-tab-list`, `.eds-tab-panel`, or role selectors (`[role="tab"]`, `[role="tablist"]`, `[role="tabpanel"]`).
+
+2. **Remove non-standard props** — Components previously accepted arbitrary props via `[key: string]: any`. Now types are strict. All standard HTML attributes (`className`, `style`, `id`, event handlers) still work. Remove any Reach-specific or unknown props.
+
+3. **Don't hardcode generated IDs in tests** — Tab and panel IDs now use React's `useId()` format instead of Reach's ID scheme. Use `aria-controls`/`aria-labelledby` to find linked elements instead of matching specific ID strings.
+
+**New features:**
+
+- `keepMounted` prop on `TabPanels` — keeps all panels in the DOM with `hidden` attribute instead of unmounting
+- SSR-compatible — `useId()` produces stable IDs across server and client rendering
+- `aria-label` and `aria-labelledby` are now explicitly typed on `TabList`
 
 ### @entur/expand
 
