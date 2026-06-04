@@ -1,23 +1,21 @@
-import React, { useState, useCallback } from 'react';
+import React, { useCallback, useId, useState } from 'react';
 import classNames from 'classnames';
-import { useRandomId } from '@entur/utils';
 
 import { TabsContext } from './TabsContext';
 
 export type TabsProps = {
-  /** Overskriften til taben */
+  /** Tab-innholdet */
   children: React.ReactNode;
   /** Kalles når taben endres */
   onChange?: (index: number) => void;
   /** Hvilken tab som skal være åpen by default */
   defaultIndex?: number;
-  /** Den åpne indexen */
+  /** Den åpne indexen (kontrollert) */
   index?: number;
   /** HTML-elementet eller React-komponenten som lager komponenten */
-  as?: keyof JSX.IntrinsicElements | any;
-
-  [key: string]: any;
-};
+  as?: keyof JSX.IntrinsicElements | React.ElementType;
+  className?: string;
+} & Omit<React.ComponentPropsWithoutRef<'div'>, 'children' | 'onChange'>;
 
 export const Tabs: React.FC<TabsProps> = ({
   className,
@@ -31,7 +29,7 @@ export const Tabs: React.FC<TabsProps> = ({
   const [internalIndex, setInternalIndex] = useState(defaultIndex ?? 0);
   const isControlled = index !== undefined;
   const selectedIndex = isControlled ? index : internalIndex;
-  const tabsId = useRandomId('eds-tabs');
+  const tabsId = useId();
 
   const onSelect = useCallback(
     (i: number) => {
