@@ -20,7 +20,7 @@ export type ModalOverlayProps = {
   closeOnClickOutside?: boolean;
 } & Omit<React.DialogHTMLAttributes<HTMLDialogElement>, 'open' | 'onClick'>;
 
-export const ModalOverlay: React.FC<ModalOverlayProps> = ({
+export const ModalOverlay = ({
   className,
   open,
   onDismiss,
@@ -28,7 +28,7 @@ export const ModalOverlay: React.FC<ModalOverlayProps> = ({
   closeOnClickOutside = true,
   children,
   ...rest
-}) => {
+}: ModalOverlayProps) => {
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   // Toggle native dialog open state. Always stays in DOM so the browser can
