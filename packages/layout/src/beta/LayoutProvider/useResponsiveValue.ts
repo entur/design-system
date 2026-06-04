@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useSyncExternalStore } from 'react';
 import { useLayoutValues } from './useLayoutValues';
 import type { ResponsiveValue } from './utils';
 
@@ -13,79 +13,60 @@ const isResponsiveObject = <T>(
   );
 };
 
-const getCurrentBreakpoint = (
-  breakpoints: { m: number; lg: number; xl: number },
-  windowWidth: number,
-): 's' | 'm' | 'lg' | 'xl' => {
-  if (windowWidth >= breakpoints.xl) {
-    return 'xl';
-  }
-  if (windowWidth >= breakpoints.lg) {
-    return 'lg';
-  }
-  if (windowWidth >= breakpoints.m) {
-    return 'm';
-  }
+type Breakpoint = 's' | 'm' | 'lg' | 'xl';
+
+const getCurrentBreakpoint = (breakpoints: {
+  m: number;
+  lg: number;
+  xl: number;
+}): Breakpoint => {
+  const width = window.innerWidth;
+  if (width >= breakpoints.xl) return 'xl';
+  if (width >= breakpoints.lg) return 'lg';
+  if (width >= breakpoints.m) return 'm';
   return 's';
 };
+
+const serverBreakpoint: Breakpoint = 's';
 
 export const useResponsiveValue = <T>(
   value: ResponsiveValue<T> | undefined,
 ): T | undefined => {
   const { breakpoints } = useLayoutValues();
-  const [currentBreakpoint, setCurrentBreakpoint] = useState<
-    's' | 'm' | 'lg' | 'xl'
-  >(() => {
-    if (typeof window === 'undefined') {
-      return 's';
-    }
-    return getCurrentBreakpoint(breakpoints, window.innerWidth);
-  });
 
-  useEffect(() => {
-    if (
-      typeof window === 'undefined' ||
-      typeof window.matchMedia !== 'function'
-    ) {
-      return;
-    }
-
-    const updateBreakpoint = () => {
-      setCurrentBreakpoint(
-        getCurrentBreakpoint(breakpoints, window.innerWidth),
-      );
-    };
-
-    const mediaQueries = [
-      window.matchMedia(`(min-width: ${breakpoints.m}px)`),
-      window.matchMedia(`(min-width: ${breakpoints.lg}px)`),
-      window.matchMedia(`(min-width: ${breakpoints.xl}px)`),
-    ];
-
-    updateBreakpoint();
-
-    const handleChange = () => {
-      updateBreakpoint();
-    };
-
-    mediaQueries.forEach(mq => {
-      if (mq.addEventListener) {
-        mq.addEventListener('change', handleChange);
-      } else {
-        mq.addListener(handleChange);
+  const subscribe = useCallback(
+    (callback: () => void) => {
+      if (typeof window.matchMedia !== 'function') {
+        return () => {};
       }
-    });
+      const mediaQueries = [
+        window.matchMedia(`(min-width: ${breakpoints.m}px)`),
+        window.matchMedia(`(min-width: ${breakpoints.lg}px)`),
+        window.matchMedia(`(min-width: ${breakpoints.xl}px)`),
+      ];
+      mediaQueries.forEach(mq => mq.addEventListener('change', callback));
+      return () => {
+        mediaQueries.forEach(mq => mq.removeEventListener('change', callback));
+      };
+    },
+    [breakpoints],
+  );
 
-    return () => {
-      mediaQueries.forEach(mq => {
-        if (mq.removeEventListener) {
-          mq.removeEventListener('change', handleChange);
-        } else {
-          mq.removeListener(handleChange);
-        }
-      });
-    };
-  }, [breakpoints]);
+  const getSnapshot = useCallback(
+    () =>
+      typeof window.matchMedia === 'function'
+        ? getCurrentBreakpoint(breakpoints)
+        : serverBreakpoint,
+    [breakpoints],
+  );
+
+  const getServerSnapshot = useCallback(() => serverBreakpoint, []);
+
+  const currentBreakpoint = useSyncExternalStore(
+    subscribe,
+    getSnapshot,
+    getServerSnapshot,
+  );
 
   if (!value) {
     return undefined;
@@ -100,7 +81,7 @@ export const useResponsiveValue = <T>(
     return responsiveValue;
   }
 
-  const fallbackOrder: Array<'xl' | 'lg' | 'm' | 's'> =
+  const fallbackOrder: Array<Breakpoint> =
     currentBreakpoint === 'xl'
       ? ['xl', 'lg', 'm', 's']
       : currentBreakpoint === 'lg'
