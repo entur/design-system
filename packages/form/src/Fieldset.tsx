@@ -13,12 +13,12 @@ export type FieldsetProps = {
   [key: string]: any;
 };
 
-export const Fieldset: React.FC<FieldsetProps> = ({
+export const Fieldset = ({
   children,
   className,
   label,
   ...rest
-}) => (
+}: FieldsetProps) => (
   <fieldset className={classNames('eds-fieldset', className)} {...rest}>
     {label && <Heading5 as="legend">{label}</Heading5>}
     {children}

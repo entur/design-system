@@ -235,10 +235,13 @@ const TextFieldBase = React.forwardRef<HTMLInputElement, TextFieldBaseProps>(
   },
 );
 
-const ClearButton: React.FC<{
+const ClearButton = ({
+  onClear,
+  ariaLabel,
+}: {
   onClear: () => void;
   ariaLabel: string;
-}> = ({ onClear, ariaLabel }) => {
+}) => {
   const { isFilled } = useInputGroupContext();
   if (isFilled) {
     return (
