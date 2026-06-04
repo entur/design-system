@@ -1,6 +1,6 @@
-import React from 'react';
+import { useId } from 'react';
 
 export const useRandomId = (prefix?: string): string => {
-  const ref = React.useRef(String(Math.random()).substring(2));
-  return `${prefix}-${ref.current}`;
+  const id = useId();
+  return prefix ? `${prefix}${id}` : id;
 };
