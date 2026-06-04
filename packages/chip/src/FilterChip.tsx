@@ -66,7 +66,7 @@ export const FilterChip = React.forwardRef<HTMLInputElement, FilterChipProps>(
   },
 );
 
-const CheckboxIcon: React.FC = () => {
+const CheckboxIcon = () => {
   return (
     <svg
       className="eds-filter-chip-icon"
