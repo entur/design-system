@@ -37,12 +37,12 @@ export type PopoverProps = {
   setShowPopover?: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-export const Popover: React.FC<PopoverProps> = ({
+export const Popover = ({
   children,
   placement = 'bottom-start',
   showPopover: controlledState,
   setShowPopover: setControlledState,
-}) => {
+}: PopoverProps) => {
   const [showPopover, setShowPopover, controlled] = useCustomState(
     controlledState,
     setControlledState,
@@ -142,7 +142,7 @@ export type PopoverTriggerProps = {
   children: React.ReactElement;
 };
 
-export const PopoverTrigger: React.FC<PopoverTriggerProps> = ({ children }) => {
+export const PopoverTrigger = ({ children }: PopoverTriggerProps) => {
   const { popoverTriggerProps } = usePopoverContext();
   const child = React.Children.only(children) as React.ReactElement<any>;
   return cloneElement(child, popoverTriggerProps);
@@ -153,10 +153,10 @@ export type PopoverCloseButtonProps = {
   children: React.ReactElement;
 };
 
-export const PopoverCloseButton: React.FC<PopoverCloseButtonProps> = ({
+export const PopoverCloseButton = ({
   children,
   ...rest
-}) => {
+}: PopoverCloseButtonProps) => {
   const { closeButtonProps } = usePopoverContext();
   return cloneElement(children, { ...closeButtonProps, ...rest });
 };
