@@ -40,7 +40,7 @@ export type ModalProps = {
   closeOnClickOutside?: boolean;
 } & Omit<React.HTMLAttributes<HTMLDivElement>, 'title' | 'aria-label'>;
 
-export const Modal: React.FC<ModalProps> = ({
+export const Modal = ({
   children,
   closeLabel = 'Lukk',
   initialFocusRef,
@@ -53,7 +53,7 @@ export const Modal: React.FC<ModalProps> = ({
   showCloseButton = true,
   'aria-label': ariaLabel,
   ...rest
-}) => {
+}: ModalProps) => {
   const randomId = useId();
   const Heading: React.ElementType = headingsMap[size] || Heading2;
 

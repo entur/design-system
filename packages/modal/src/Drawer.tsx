@@ -36,7 +36,7 @@ export type DrawerProps = {
   overlay?: boolean;
 };
 
-export const Drawer: React.FC<DrawerProps> = ({
+export const Drawer = ({
   children,
   className,
   closeLabel = 'Lukk skuff',
@@ -46,7 +46,7 @@ export const Drawer: React.FC<DrawerProps> = ({
   title,
   style,
   overlay = false,
-}) => {
+}: DrawerProps) => {
   const titleId = useId();
   const drawerRef = useRef<HTMLDivElement>(null);
   const previouslyFocusedRef = useRef<Element | null>(null);
