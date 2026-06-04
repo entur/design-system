@@ -12,16 +12,12 @@ export type SideNavigationProps = {
   [key: string]: any;
 };
 
-type InternalMarker = {
-  __IS_ENTUR_MENU__: boolean;
-};
-
-export const SideNavigation: React.FC<SideNavigationProps> & InternalMarker = ({
+const SideNavigationBase = ({
   className,
   children,
   size = 'medium',
   ...rest
-}) => {
+}: SideNavigationProps) => {
   if (!children || !React.Children.count(children)) {
     return null;
   }
@@ -39,5 +35,6 @@ export const SideNavigation: React.FC<SideNavigationProps> & InternalMarker = ({
   );
 };
 
-/** This is required to check that the Menu */
-SideNavigation.__IS_ENTUR_MENU__ = true;
+export const SideNavigation = Object.assign(SideNavigationBase, {
+  __IS_ENTUR_MENU__: true as const,
+});

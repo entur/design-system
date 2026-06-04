@@ -7,12 +7,12 @@ export type PaginationInputProps = {
   pageCount: number;
 };
 
-export const PaginationInput: React.FC<PaginationInputProps> = ({
+export const PaginationInput = ({
   currentPage,
   pageCount,
   label = 'Gå til side',
   onPageChange,
-}) => {
+}: PaginationInputProps) => {
   const [input, setInput] = React.useState(String(currentPage));
   // If the currentPage prop changes, we want to reset the input field
   React.useEffect(() => {
