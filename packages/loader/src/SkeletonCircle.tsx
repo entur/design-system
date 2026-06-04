@@ -12,11 +12,11 @@ export type SkeletonCircleProps = {
   [key: string]: any;
 };
 
-export const SkeletonCircle: React.FC<SkeletonCircleProps> = ({
+export const SkeletonCircle = ({
   className,
   size,
   ...rest
-}) => {
+}: SkeletonCircleProps) => {
   return (
     <BaseSkeleton
       className={classNames(className, 'eds-skeleton-circle')}

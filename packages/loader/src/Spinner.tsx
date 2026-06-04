@@ -10,7 +10,7 @@ export type SpinnerProps = {
   HTMLDivElement
 >;
 
-export const Spinner: React.FC<SpinnerProps> = ({ className, ...rest }) => {
+export const Spinner = ({ className, ...rest }: SpinnerProps) => {
   return (
     <>
       <div

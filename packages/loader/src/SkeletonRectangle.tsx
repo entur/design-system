@@ -15,12 +15,12 @@ export type SkeletonRectangleProps = {
   [key: string]: any;
 };
 
-export const SkeletonRectangle: React.FC<SkeletonRectangleProps> = ({
+export const SkeletonRectangle = ({
   className,
   width,
   height,
   ...rest
-}) => {
+}: SkeletonRectangleProps) => {
   return (
     <BaseSkeleton
       className={classNames('eds-skeleton-rectangle', className)}
