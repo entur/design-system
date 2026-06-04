@@ -26,7 +26,6 @@ query animationQuery {
 }
 `;
 
-<PageHeader />
 
 <video controls style={{ width: "100%", marginBottom: space.extraLarge }} controlslist="nofullscreen nodownload noremoteplayback noplaybackrate" disablepictureinpicture>
     <source src={props.data.files.videos.find(video => video.name === "EN---TUR_animasjon-1").publicURL} type="video/mp4" />

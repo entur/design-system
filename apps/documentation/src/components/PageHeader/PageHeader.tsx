@@ -12,15 +12,9 @@ type Props = {
   category?: string;
   forceNoLeadText?: boolean;
   title?: string;
-  children?: React.ReactNode;
 };
 
-const PageHeader: React.FC<Props> = ({
-  title,
-  children,
-  category,
-  forceNoLeadText,
-}) => {
+const PageHeader: React.FC<Props> = ({ title, category, forceNoLeadText }) => {
   const location = useLocation();
   const data = useStaticQuery(graphql`
     query {
@@ -50,7 +44,7 @@ const PageHeader: React.FC<Props> = ({
   const { packageManager, userType } = useSettings();
   const leadText = forceNoLeadText
     ? null
-    : children || currentDoc?.frontmatter?.description;
+    : currentDoc?.frontmatter?.description;
   const installText =
     packageManager === 'yarn'
       ? `yarn add @entur/${npmPackage}`

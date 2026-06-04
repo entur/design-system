@@ -7,18 +7,22 @@ import SiteFooter from '@components/Footer/SiteFooter';
 import TopNavigationLayout from './TopNavigationLayout';
 import components from '../utils/MdxProvider-utils';
 import SideNavigationLayout from './SideNavigationLayout';
-import TableOfContentLayout from './TableOfContentLayout';
+import PageHeader from '@components/PageHeader/PageHeader';
+import MdxTableOfContent from '@components/Navigations/TableOfContent/MdxTableOfContent';
 import { scrollToHashOnLoad } from '../utils/scrollUtils';
 
 const DocLayout = ({
   children,
   location,
   disableToc = false,
+  pageContext,
 }: PageProps & { disableToc?: boolean }) => {
-  // Handle hash scrolling on page load
   useEffect(() => {
     scrollToHashOnLoad();
   }, [location.pathname, location.hash]);
+
+  const frontmatter = (pageContext as any)?.frontmatter;
+  const showHeader = !disableToc && !frontmatter?.removeHeader;
 
   return (
     <>
@@ -29,11 +33,12 @@ const DocLayout = ({
       <div className="page">
         <div className="site-content">
           <main id="main">
+            {showHeader && <PageHeader />}
+            {!disableToc && <MdxTableOfContent />}
             <MDXProvider components={components as MDXComponents}>
               {children}
             </MDXProvider>
           </main>
-          {!disableToc && <TableOfContentLayout />}
           <SiteFooter />
         </div>
       </div>

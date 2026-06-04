@@ -1,12 +1,29 @@
 @use '../../../styles/variables' as variables;
 @use '@entur/tokens/dist/styles.scss' as tokens;
 
+$_indicator-width: tokens.$border-widths-medium;
+$_base-padding: 1rem;
+
+.table-of-content-wrapper {
+  position: relative;
+  padding-left: $_base-padding;
+  border-left: $_indicator-width solid var(--components-menu-tableofcontent-standard-stroke-unselected);
+  max-width: 15rem;
+}
+
 .table-of-content {
   list-style: none;
   padding: 0;
-  max-width: 15rem;
-  padding-left: 1rem;
-  border-left: tokens.$border-widths-medium solid var(--components-menu-tableofcontent-standard-stroke-unselected);
+  margin: 0;
+
+  &__indicator {
+    position: absolute;
+    left: -$_indicator-width;
+    width: $_indicator-width;
+    background: var(--components-menu-tableofcontent-standard-stroke-selected);
+    transition: transform tokens.$timings-medium ease-in-out, height tokens.$timings-medium ease-in-out;
+    pointer-events: none;
+  }
 
   &__link {
     color: var(--components-menu-tableofcontent-standard-text-unselected);
@@ -16,103 +33,86 @@
     position: relative;
     transition: color tokens.$timings-medium ease-in-out;
 
-    &:before {
-      display: block;
-      content: '';
-      height: tokens.$space-large;
-      width: tokens.$border-widths-medium;
-      position: absolute;
-      left: -1rem - tokens.$border-widths-medium;
-      background: transparent;
+    &:hover {
+      color: var(--components-menu-tableofcontent-standard-text-selected);
+    }
 
-      .table-of-content__item--depth-3 & {
-        left: -2.5rem - tokens.$border-widths-medium;
-      }
+    &:focus-visible {
+      outline: tokens.$outlines-focus;
+      outline-offset: tokens.$outline-offsets-focus;
     }
 
     &--active {
       color: var(--components-menu-tableofcontent-standard-text-selected);
       font-weight: tokens.$font-weights-heading;
-
-      &:before {
-        background: var(--components-menu-tableofcontent-standard-stroke-selected);
-      }
     }
   }
 
   &__item {
     margin-bottom: tokens.$space-medium;
 
-    &--depth-2 {
-      padding-left: tokens.$space-large;
+    &:last-child {
+      margin-bottom: 0;
+    }
 
-      .table-of-content__link:before {
-        left: -2.625rem;
-      }
+    &--depth-2 {
+      padding-left: 0;
     }
 
     &--depth-3 {
-      padding-left: tokens.$space-extra-large;
+      padding-left: tokens.$space-large;
     }
-  }
-  &-container {
-    display: block;
-    z-index: 1;
-    position: fixed;
-    left: variables.$toc-left-position;
-    top: (variables.$navbar-height + 2rem);
-    bottom: 0rem;
 
-    @media screen and (min-width: variables.$show-toc-min-width) {
-      overflow-y: auto;
-      max-height: calc(100% - 9rem);
-      height: fit-content;
+    &--depth-4 {
+      padding-left: tokens.$space-extra-large;
     }
   }
 }
 
-@media screen and (max-width: 1439px) {
-  .page .site-content:has(.table-of-content-container) {
-    margin-right: 5rem;
+// Fixed sidebar — visible only on wide screens
+.table-of-content-sidebar {
+  display: none;
+  z-index: 1;
+  position: fixed;
+  left: variables.$toc-left-position;
+  top: (variables.$navbar-height + 2rem);
+  bottom: 0;
+  overflow-y: auto;
+  max-height: calc(100% - 9rem);
+  height: fit-content;
+
+  @media screen and (min-width: variables.$show-toc-min-width) {
+    display: block;
   }
+}
 
-  .table-of-content-container {
-    transition: left tokens.$timings-medium ease-in-out;
-    height: fit-content;
-    left: 95%;
+// Inline disclosure — visible only on narrow screens
+.table-of-content-inline {
+  margin-top: tokens.$space-large;
+  margin-bottom: tokens.$space-large;
 
-    &:hover {
-      width: 100%;
-      left: 70%;
-      max-height: calc(100vh - variables.$navbar-height - 2rem);
-      overflow-y: auto;
-      background: var(--components-menu-sidenavigation-standard-background);
-      box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);
-      & span {
-        color: var(--components-menu-tableofcontent-standard-text-unselected);
-        font-size: tokens.$font-sizes-medium;
-
-        &--active {
-          color: var(--components-menu-tableofcontent-standard-text-selected);
-          font-weight: tokens.$font-weights-heading;
-        }
-      }
-    }
-  }
-
-  .table-of-content-container h2 {
+  @media screen and (min-width: variables.$show-toc-min-width) {
     display: none;
   }
 
-  .table-of-content__link {
-    & span {
-      color: transparent;
-      font-size: 0;
+  .table-of-content-wrapper {
+    max-width: none;
+  }
 
-      &--active {
-        color: transparent;
-        font-size: 0;
-      }
+  .table-of-content__item {
+    margin-bottom: tokens.$space-small;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .table-of-content__link--active {
+    color: var(--components-menu-tableofcontent-standard-text-unselected);
+    font-weight: inherit;
+
+    &:hover {
+      color: var(--components-menu-tableofcontent-standard-text-selected);
     }
   }
 }
