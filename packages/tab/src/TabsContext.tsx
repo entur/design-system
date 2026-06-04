@@ -6,10 +6,28 @@ export type TabsContextValue = {
   tabsId: string;
 };
 
-// Default values are provided so components work even without a Tabs parent,
-// though in practice Tab/TabPanel are always rendered inside Tabs.
 export const TabsContext = React.createContext<TabsContextValue>({
   selectedIndex: 0,
   onSelect: () => undefined,
   tabsId: '',
 });
+
+export type TabItemContextValue = {
+  tabIndex: number;
+  tabId: string;
+  panelId: string;
+};
+
+export const TabItemContext = React.createContext<TabItemContextValue | null>(
+  null,
+);
+
+export type TabPanelItemContextValue = {
+  tabIndex: number;
+  tabId: string;
+  panelId: string;
+  keepMounted: boolean;
+};
+
+export const TabPanelItemContext =
+  React.createContext<TabPanelItemContextValue | null>(null);
