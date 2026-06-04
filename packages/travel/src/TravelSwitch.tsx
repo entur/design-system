@@ -25,14 +25,14 @@ export type TravelSwitchProps = {
   size?: 'medium' | 'large';
 } & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'>;
 
-export const TravelSwitch: React.FC<TravelSwitchProps> = ({
+export const TravelSwitch = ({
   className,
   children,
   labelPlacement = 'right',
   transport,
   size,
   ...rest
-}) => {
+}: TravelSwitchProps) => {
   const { Icon } = getTransportStyle(transport);
   const deCapitalizeTransport = transport.toLowerCase();
 

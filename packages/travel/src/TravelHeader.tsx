@@ -22,7 +22,7 @@ export type TravelHeaderProps = {
   [key: string]: any;
 };
 
-export const TravelHeader: React.FC<TravelHeaderProps> = ({
+export const TravelHeader = ({
   as: Element = 'div',
   from,
   to,
@@ -30,7 +30,7 @@ export const TravelHeader: React.FC<TravelHeaderProps> = ({
   className,
   noWrap,
   ...rest
-}) => {
+}: TravelHeaderProps) => {
   return (
     <Element
       className={classNames('eds-travel-header', className, {
