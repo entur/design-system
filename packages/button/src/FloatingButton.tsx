@@ -18,12 +18,12 @@ export type FloatingButtonProps = {
   [key: string]: any;
 } & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
-export const FloatingButton: React.FC<FloatingButtonProps> = ({
+export const FloatingButton = ({
   className,
   children,
   size = 'medium',
   ...rest
-}) => {
+}: FloatingButtonProps) => {
   return (
     <button
       className={classNames(
