@@ -28,6 +28,6 @@ export type BannerAlertBoxProps = {
   [key: string]: any;
 };
 
-export const BannerAlertBox: React.FC<BannerAlertBoxProps> = props => (
+export const BannerAlertBox = (props: BannerAlertBoxProps) => (
   <BaseAlertBox {...props} size="banner" />
 );

@@ -60,7 +60,7 @@ type BaseAlertBoxProps = {
   [key: string]: any;
 };
 
-export const BaseAlertBox: React.FC<BaseAlertBoxProps> = ({
+export const BaseAlertBox = ({
   children,
   className,
   closable = false,
@@ -71,7 +71,7 @@ export const BaseAlertBox: React.FC<BaseAlertBoxProps> = ({
   title,
   toastIsBeingRemoved,
   ...rest
-}) => {
+}: BaseAlertBoxProps) => {
   const [isClosed, setClosed] = React.useState(false);
   if (isClosed) {
     return null;
