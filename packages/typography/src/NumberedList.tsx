@@ -8,11 +8,11 @@ export type NumberedListProps = {
   children: React.ReactNode;
 } & React.OlHTMLAttributes<HTMLOListElement>;
 
-export const NumberedList: React.FC<NumberedListProps> = ({
+export const NumberedList = ({
   className,
   type = '1',
   ...rest
-}) => (
+}: NumberedListProps) => (
   <ol
     className={classNames(
       'eds-numbered-list',
