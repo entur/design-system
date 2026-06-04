@@ -11,12 +11,12 @@ export type SkeletonWrapperProps = {
   [key: string]: any;
 };
 
-export const SkeletonWrapper: React.FC<SkeletonWrapperProps> = ({
+export const SkeletonWrapper = ({
   className,
   children,
   loadingAriaLabel = 'Laster inn innhold …',
   ...rest
-}) => {
+}: SkeletonWrapperProps) => {
   return (
     <div
       className={classNames('eds-skeleton-wrapper', className)}
