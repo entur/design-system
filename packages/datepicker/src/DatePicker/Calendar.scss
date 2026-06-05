@@ -17,6 +17,8 @@
     color: var(--components-datepicker-calendar-text-accent);
 
     h2 {
+      flex: 1;
+      text-align: center;
       font-size: t.$font-sizes-large;
       font-weight: t.$font-weights-heading;
     }
@@ -40,6 +42,16 @@
         visibility: hidden;
       }
     }
+  }
+
+  &__grids {
+    display: flex;
+    gap: t.$space-large;
+  }
+
+  &__month {
+    display: flex;
+    flex-direction: column;
   }
 
   &__grid {
@@ -77,6 +89,33 @@
           border-style: dashed;
         }
 
+        &:has(.eds-datepicker__calendar__grid__cell--in-range) {
+          background-color: var(--components-datepicker-calendar-datefill-range);
+          border-left-color: var(--components-datepicker-calendar-datefill-range);
+          border-right-color: var(--components-datepicker-calendar-datefill-range);
+          border-top-color: var(--components-datepicker-calendar-dateborder);
+          border-bottom-color: var(--components-datepicker-calendar-dateborder);
+        }
+
+        &:has(.eds-datepicker__calendar__grid__cell--selection-start:not(.eds-datepicker__calendar__grid__cell--selection-end)) {
+          background: linear-gradient(to right, transparent 50%, var(--components-datepicker-calendar-datefill-range) 50%);
+          border-right-color: var(--components-datepicker-calendar-datefill-range);
+          border-top-color: var(--components-datepicker-calendar-dateborder);
+          border-bottom-color: var(--components-datepicker-calendar-dateborder);
+        }
+
+        &:has(.eds-datepicker__calendar__grid__cell--selection-end:not(.eds-datepicker__calendar__grid__cell--selection-start)) {
+          background: linear-gradient(to left, transparent 50%, var(--components-datepicker-calendar-datefill-range) 50%);
+          border-left-color: var(--components-datepicker-calendar-datefill-range);
+          border-top-color: var(--components-datepicker-calendar-dateborder);
+          border-bottom-color: var(--components-datepicker-calendar-dateborder);
+        }
+
+        &:has(.eds-datepicker__calendar__grid__cell--selection-start.eds-datepicker__calendar__grid__cell--selection-end) {
+          background: transparent;
+          border-color: transparent;
+        }
+
         &:focus-within {
           z-index: 2;
         }
@@ -89,7 +128,12 @@
 
       &:active {
         background-color: var(--components-datepicker-calendar-datefill-selected);
-        color: var(--components-datepicker-calendar-text-accent);
+        color: var(--components-datepicker-calendar-text-range-endpoint);
+      }
+
+      &--between-months {
+        opacity: 0.5;
+        pointer-events: none;
       }
       &:focus-visible {
         outline: t.$outlines-focus;
@@ -98,18 +142,53 @@
       }
 
       &--selected {
-        background-color: var(--components-datepicker-calendar-datefill-selected);
-        color: var(--components-datepicker-calendar-text-accent);
+        background-color: var(--components-datepicker-calendar-datefill-range-endpoint);
+        color: var(--components-datepicker-calendar-text-range-endpoint);
+        border-radius: 4px;
 
         &:hover {
-          background-color: var(--components-datepicker-calendar-datefill-hover);
-          color: var(--components-datepicker-calendar-text-accent);
+          background-color: var(--components-datepicker-calendar-datefill-range-endpoint-hover);
+          color: var(--components-datepicker-calendar-text-range-endpoint);
         }
 
         &:active {
-          background-color: var(--components-datepicker-calendar-datefill-selected);
+          background-color: var(--components-datepicker-calendar-datefill-range-endpoint);
+          color: var(--components-datepicker-calendar-text-range-endpoint);
+        }
+      }
+
+      &--in-range {
+        background-color: var(--components-datepicker-calendar-datefill-range);
+        color: var(--components-datepicker-calendar-text-accent);
+        border-radius: 0;
+
+        &:hover {
+          background-color: var(--components-datepicker-calendar-datefill-range-hover);
           color: var(--components-datepicker-calendar-text-accent);
         }
+      }
+
+      &--selection-start,
+      &--selection-end {
+        background-color: var(--components-datepicker-calendar-datefill-range-endpoint);
+        color: var(--components-datepicker-calendar-text-range-endpoint);
+
+        &:hover {
+          background-color: var(--components-datepicker-calendar-datefill-range-endpoint-hover);
+          color: var(--components-datepicker-calendar-text-range-endpoint);
+        }
+      }
+
+      &--selection-start:not(.eds-datepicker__calendar__grid__cell--selection-end) {
+        border-radius: 4px 0 0 4px;
+      }
+
+      &--selection-end:not(.eds-datepicker__calendar__grid__cell--selection-start) {
+        border-radius: 0 4px 4px 0;
+      }
+
+      &--selection-start.eds-datepicker__calendar__grid__cell--selection-end {
+        border-radius: 4px;
       }
 
       &--disabled {
