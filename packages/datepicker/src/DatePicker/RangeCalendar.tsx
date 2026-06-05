@@ -32,10 +32,18 @@ type BaseRangeCalendarProps<DateType extends DateValue> = {
   /** Ekstra klassenavn */
   className?: string;
   /** Tidligste gyldige datovalg.
-   * Eks: today(getLocalTimeZone()) == i dag i lokal tidssone. */
+   * Eks: today(getLocalTimeZone()) == i dag i lokal tidssone.
+   *
+   * OBS: Hvis du bruker dato med tid vil tidspunktet også tas hensyn til.
+   * Gyldig fra og med den tiden som legges inn som minDate.
+   * Dato uten tid vil være gyldig hele minDate-dagen */
   minDate?: DateValue;
   /** Seneste gyldige datovalg.
-   * Eks: today(getLocalTimeZone()).add({days: 1}) == i morgen i lokal tidssone */
+   * Eks: today(getLocalTimeZone()).add({days: 1}) == i morgen i lokal tidssone
+   *
+   * OBS: Hvis du bruker dato med tid vil tidspunktet også tas hensyn til.
+   * Gyldig til og med den tiden som legges inn som maxDate.
+   * Dato uten tid vil være gyldig hele maxDate-dagen */
   maxDate?: DateValue;
   /** Slå på visning av ukenummere i kalenderen. Overskriften for ukenummer-kolonnen
    * kan endres med prop-en 'weekNumberHeader'
@@ -45,6 +53,7 @@ type BaseRangeCalendarProps<DateType extends DateValue> = {
    * @default 'uke' */
   weekNumberHeader?: string;
   /** Vis datoer som ligger utenfor den viste måneden.
+   * @example Hvis uken starter på onsdag vises de to siste datoene i forrige måned i ruten til mandagen og tirsdagen før.
    * @default false */
   showOutsideMonth?: boolean;
   /** Brukes for å legge til klassenavn på spesifikke datoer i kalenderen.
@@ -91,13 +100,13 @@ export type RangeCalendarProps<DateType extends DateValue> =
   BaseRangeCalendarProps<DateType> & ExtendedRangeCalendarProps<DateType>;
 
 export const RangeCalendar = <DateType extends DateValue>({
-  locale: localeOverride,
+  locale: localOverride,
   ...rest
 }: RangeCalendarProps<DateType>) => {
   const props = { isDisabled: rest.disabled, ...rest };
   const { locale } = useLocale();
   return (
-    <I18nProvider locale={localeOverride ?? locale}>
+    <I18nProvider locale={localOverride ?? locale}>
       <RangeCalendarBase {...props} />
     </I18nProvider>
   );

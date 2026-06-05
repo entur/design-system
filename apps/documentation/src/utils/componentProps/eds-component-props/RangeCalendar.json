@@ -81,7 +81,7 @@
     },
     "minDate": {
       "defaultValue": null,
-      "description": "Tidligste gyldige datovalg.\nEks: today(getLocalTimeZone()) == i dag i lokal tidssone.",
+      "description": "Tidligste gyldige datovalg.\nEks: today(getLocalTimeZone()) == i dag i lokal tidssone.\n\nOBS: Hvis du bruker dato med tid vil tidspunktet også tas hensyn til.\nGyldig fra og med den tiden som legges inn som minDate.\nDato uten tid vil være gyldig hele minDate-dagen",
       "name": "minDate",
       "declarations": [
         {
@@ -96,7 +96,7 @@
     },
     "maxDate": {
       "defaultValue": null,
-      "description": "Seneste gyldige datovalg.\nEks: today(getLocalTimeZone()).add({days: 1}) == i morgen i lokal tidssone",
+      "description": "Seneste gyldige datovalg.\nEks: today(getLocalTimeZone()).add({days: 1}) == i morgen i lokal tidssone\n\nOBS: Hvis du bruker dato med tid vil tidspunktet også tas hensyn til.\nGyldig til og med den tiden som legges inn som maxDate.\nDato uten tid vil være gyldig hele maxDate-dagen",
       "name": "maxDate",
       "declarations": [
         {
@@ -147,7 +147,7 @@
       "defaultValue": {
         "value": false
       },
-      "description": "Vis datoer som ligger utenfor den viste måneden.",
+      "description": "Vis datoer som ligger utenfor den viste måneden.\n@example Hvis uken starter på onsdag vises de to siste datoene i forrige måned i ruten til mandagen og tirsdagen før.",
       "name": "showOutsideMonth",
       "declarations": [
         {
