@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/entur/design-system/compare/@entur/tab@0.6.6...@entur/tab@0.7.0) (2026-06-05)
+
+### Features
+
+- **tokens:** update primitive, semantic, base and component color tokens ([3ef6220](https://github.com/entur/design-system/commit/3ef622059143f24dcf7c94b19d4b7337fbac3508))
+
 ## [0.6.7](https://github.com/entur/design-system/compare/@entur/tab@0.6.6...@entur/tab@0.6.7) (2026-05-13)
 
 **Note:** Version bump only for package @entur/tab

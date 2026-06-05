@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.2.0](https://github.com/entur/design-system/compare/@entur/menu@6.1.5...@entur/menu@6.2.0) (2026-06-05)
+
+### Bug Fixes
+
+- **menu/stepper:** use accent color for current step label ([28cae92](https://github.com/entur/design-system/commit/28cae927a6f45654afa5f31c9710474574514d52))
+
+### Features
+
+- **tokens:** update primitive, semantic, base and component color tokens ([3ef6220](https://github.com/entur/design-system/commit/3ef622059143f24dcf7c94b19d4b7337fbac3508))
+
 ## [6.1.6](https://github.com/entur/design-system/compare/@entur/menu@6.1.5...@entur/menu@6.1.6) (2026-05-13)
 
 **Note:** Version bump only for package @entur/menu

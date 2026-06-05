@@ -1,6 +1,6 @@
 {
   "name": "@entur/tooltip",
-  "version": "5.3.11",
+  "version": "5.3.12",
   "license": "EUPL-1.2",
   "main": "dist/tooltip.cjs.js",
   "module": "dist/tooltip.esm.js",

@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.0.0](https://github.com/entur/design-system/compare/@entur/travel@6.5.10...@entur/travel@7.0.0) (2026-06-05)
+
+### Code Refactoring
+
+- **travel/travel tag:** reduce specificity for all travel tag classes to 0,1,0 ([70dacf1](https://github.com/entur/design-system/commit/70dacf17eb1ac58298d0d153d87d77995bc06fac))
+
+### Features
+
+- **tokens:** update primitive, semantic, base and component color tokens ([3ef6220](https://github.com/entur/design-system/commit/3ef622059143f24dcf7c94b19d4b7337fbac3508))
+- **travel/travel tag:** add tag type duration with smaller text size ([2dab88d](https://github.com/entur/design-system/commit/2dab88ddc373404fbb4c6818f918e32a5c784cdb))
+
+### BREAKING CHANGES
+
+- **travel/travel tag:** New class specificities could lead to visual changes if you override these classes.
+
+AI-assistant: Claude Code (claude-opus-4-6)
+
 ## [6.5.11](https://github.com/entur/design-system/compare/@entur/travel@6.5.10...@entur/travel@6.5.11) (2026-05-13)
 
 **Note:** Version bump only for package @entur/travel

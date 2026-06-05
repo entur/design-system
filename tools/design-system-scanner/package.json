@@ -1,6 +1,6 @@
 {
   "name": "@entur/design-system-scanner",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "private": true,
   "description": "Scans repositories for @entur/* design system component and import usage",
   "license": "EUPL-1.2",

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.23.0](https://github.com/entur/design-system/compare/@entur/tokens@3.22.4...@entur/tokens@3.23.0) (2026-06-05)
+
+### Features
+
+- **tokens:** update primitive, semantic, base and component color tokens ([3ef6220](https://github.com/entur/design-system/commit/3ef622059143f24dcf7c94b19d4b7337fbac3508))
+
 ## [3.22.5](https://github.com/entur/design-system/compare/@entur/tokens@3.22.4...@entur/tokens@3.22.5) (2026-05-13)
 
 **Note:** Version bump only for package @entur/tokens

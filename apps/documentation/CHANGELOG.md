@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.18.3](https://github.com/entur/design-system/compare/@entur/documentation@6.18.1...@entur/documentation@6.18.3) (2026-06-05)
+
+### Bug Fixes
+
+- **layout/beta:** document children in prop tables and fix [@ts-expect-error](https://github.com/ts-expect-error) syntax ([fa39228](https://github.com/entur/design-system/commit/fa3922878c6ca5b6b5525449c7da27f19e86dcb6))
+- **layout/beta:** export FlexComponent and GridComponent callable types ([d9f61a6](https://github.com/entur/design-system/commit/d9f61a63ad4a09ebfbd9ecbae37a63409d9b936f))
+- **website:** case-insensitive beta tag check in path generation ([eb6e77f](https://github.com/entur/design-system/commit/eb6e77f2a1485c92f78c8b2ac99f6a7ae8a041ab))
+- **website:** correct tag badge variant and case-insensitive matching in side navigation ([9f74c27](https://github.com/entur/design-system/commit/9f74c271010bcf9f8815748796d3c799e675a410))
+- **website:** fix llms.txt duplicate sections, missing @entur/ prefix, and test page ([b20feec](https://github.com/entur/design-system/commit/b20feecb29bed7d55010689b77e9dcc05b1fed13))
+- **website:** render sidebar in SSR and improve accessibility ([fbec14d](https://github.com/entur/design-system/commit/fbec14d3b592fea84a3a3c6f2d92775d79590673))
+- **website:** treat anchor-only links as internal in PortableText ([b07f92f](https://github.com/entur/design-system/commit/b07f92fe4499289693f7e08279518cc250a22956))
+
 ## [6.18.2](https://github.com/entur/design-system/compare/@entur/documentation@6.18.1...@entur/documentation@6.18.2) (2026-05-13)
 
 ### Bug Fixes

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.19.0](https://github.com/entur/design-system/compare/@entur/alert@0.18.10...@entur/alert@0.19.0) (2026-06-05)
+
+### Bug Fixes
+
+- **alert/copyable text:** respect onClick prop passed by consumer ([f385fdf](https://github.com/entur/design-system/commit/f385fdfb1af8200a5aa0e6e19f05ab2dbdd44c6c))
+
+### Features
+
+- **alert:** use unified color tokens and remove separate toast styling ([214441b](https://github.com/entur/design-system/commit/214441baf0dd53c3cdc64425a48fe1a6cf56a857))
+- **tokens:** update primitive, semantic, base and component color tokens ([3ef6220](https://github.com/entur/design-system/commit/3ef622059143f24dcf7c94b19d4b7337fbac3508))
+
 ## [0.18.11](https://github.com/entur/design-system/compare/@entur/alert@0.18.10...@entur/alert@0.18.11) (2026-05-13)
 
 ### Bug Fixes

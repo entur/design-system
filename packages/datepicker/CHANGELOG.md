@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.6.0](https://github.com/entur/design-system/compare/@entur/datepicker@11.5.10...@entur/datepicker@11.6.0) (2026-06-05)
+
+### Bug Fixes
+
+- **datepicker/calendar:** show selected color for outside-month dates ([1f2f7e0](https://github.com/entur/design-system/commit/1f2f7e0d9b4a68e90e2fa6ef3ef90a4b4fad0315))
+
+### Features
+
+- **tokens:** update primitive, semantic, base and component color tokens ([3ef6220](https://github.com/entur/design-system/commit/3ef622059143f24dcf7c94b19d4b7337fbac3508))
+
 ## [11.5.11](https://github.com/entur/design-system/compare/@entur/datepicker@11.5.10...@entur/datepicker@11.5.11) (2026-05-13)
 
 **Note:** Version bump only for package @entur/datepicker

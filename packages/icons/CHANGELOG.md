@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.0.0](https://github.com/entur/design-system/compare/@entur/icons@8.4.5...@entur/icons@9.0.0) (2026-06-05)
+
+### Features
+
+- **icons/airport:** add new airport icon ([7257cb6](https://github.com/entur/design-system/commit/7257cb60e5ec0331756ae9ee326a84604bf6dbd1))
+- **icons/plane:** update plane icon to new visual to comply with standards ([7f6da6a](https://github.com/entur/design-system/commit/7f6da6a58c9bd0a3eee5be63800700f96202feb1))
+- **icons/platform:** add Platform icon ([de507bf](https://github.com/entur/design-system/commit/de507bf8602fdec988f1be6e1115bc1628b50400))
+- **icons:** add Alert and Silent icons ([e6c45a7](https://github.com/entur/design-system/commit/e6c45a759efc7cf2b3273aca448b4224033757b0))
+- **icons:** add AlertMobile icon ([1335391](https://github.com/entur/design-system/commit/1335391648f984f6c14078e25689274a987a0d10))
+- **icons:** add AppLauncher icon ([d3c7280](https://github.com/entur/design-system/commit/d3c728074ef4b91fc842f8c1d882dd869c94d25e))
+- **icons:** add Apple and Google Play app store icons ([02e52d5](https://github.com/entur/design-system/commit/02e52d5e3b54f4bb4aa33e95e14c813cd3f29b05))
+- **icons:** add Dialog and DialogFilled icons ([9325579](https://github.com/entur/design-system/commit/93255791382865e235df07bbe765e1f74ed4d99a))
+- **icons:** add Dislike icon ([d83cefc](https://github.com/entur/design-system/commit/d83cefcbf9184da707dd0c4ffcd1da9c5415b784))
+- **icons:** add NOR-WAY Bussekspress partner icon ([34c443b](https://github.com/entur/design-system/commit/34c443bd36a05f492a3116eceba8f0bc48fa9eb3))
+- **icons:** add Required, RequiredFilled, RequiredSmall and RequiredSmallFilled icons ([8d14d6f](https://github.com/entur/design-system/commit/8d14d6f0adc8649d6c2de763c53107bdeac3d6ba))
+- **icons:** add Sort, LogIn, Profile, and ProfileFilled icons; move Share to UI ([aaed1e9](https://github.com/entur/design-system/commit/aaed1e90b4e0587a585e52dcb1164ed08ed179ba))
+
+### BREAKING CHANGES
+
+- **icons/plane:** PlaneIcon changed from side-view taking-off to top-down
+  45 degree view.
+
 ## [8.4.6](https://github.com/entur/design-system/compare/@entur/icons@8.4.5...@entur/icons@8.4.6) (2026-05-13)
 
 **Note:** Version bump only for package @entur/icons
