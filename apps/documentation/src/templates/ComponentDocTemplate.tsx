@@ -6,8 +6,6 @@ import SanityTableOfContent from '@components/Navigations/TableOfContent/SanityT
 import { BasePageHeader } from '@components/PageHeader/BasePageHeader';
 import { Tab, TabList, TabPanel, TabPanels, Tabs } from '@entur/tab';
 import { PortableText } from '@components/sanity/PortableText';
-import { useWindowDimensions } from '@entur/utils';
-import { pxToRem } from 'src/utils/utils';
 
 type ComponentDoc = {
   title: string;
@@ -81,17 +79,12 @@ const TabsSection = React.memo(function TabsSection({
   tabs: Array<{ title?: string; _rawContent?: any }>;
   context: { npmPackage?: string };
 }) {
-  const { width: viewportWidth } = useWindowDimensions();
-  const [activeTab, setActiveTab] = React.useState(0);
-
-  const activeTabItem = tabs[activeTab];
   const shouldRenderAsTabs = tabs.length > 1;
-  const isLargeScreen = (pxToRem(viewportWidth) ?? 0) >= 60;
 
   return (
     <>
       {shouldRenderAsTabs ? (
-        <Tabs style={{ marginRight: 'auto' }} onChange={setActiveTab}>
+        <Tabs>
           <TabList width="fluid">
             {tabs.map(tab => (
               <Tab key={`${tab.title}`}>{tab.title}</Tab>
@@ -100,16 +93,21 @@ const TabsSection = React.memo(function TabsSection({
           <TabPanels>
             {tabs.map(tab => (
               <TabPanel key={`${tab.title}`}>
+                {tab._rawContent && (
+                  <SanityTableOfContent content={tab._rawContent} />
+                )}
                 {renderContent({ value: tab._rawContent, context })}
               </TabPanel>
             ))}
           </TabPanels>
         </Tabs>
       ) : (
-        renderContent({ value: tabs[0]?._rawContent, context })
-      )}
-      {isLargeScreen && activeTabItem?._rawContent && (
-        <SanityTableOfContent content={activeTabItem._rawContent} />
+        <>
+          {tabs[0]?._rawContent && (
+            <SanityTableOfContent content={tabs[0]._rawContent} />
+          )}
+          {renderContent({ value: tabs[0]?._rawContent, context })}
+        </>
       )}
     </>
   );

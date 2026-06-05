@@ -1,6 +1,6 @@
 ---
 title: Tokens
-description: Designsystemet er et system for å opprettholde frontend kode og visuell konsistens. Det inneholder alt som er felles på tvers av team og produkter og som gir verdi å dele i Entur.
+description: Designtokens er vårt felles designspråk satt i system - bindeleddet mellom alle flater.
 route: /tokens
 parent: tokens
 npmPackage: tokens
@@ -15,8 +15,6 @@ export const Head = ( props ) => {
   return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
 }
 
-<PageHeader>Designtokens er vårt felles designspråk satt i system - bindeleddet mellom
-alle flater.</PageHeader>
 
 Ved bruk av pakken _@entur/tokens_ så har man tilgang til alle gjenbrukbare verdier som kan brukes for å designe sider og komponenter for å følge Entur sin visuelle identitet.
 Disse kan aksesseres enten ved CSS, SASS, LESS eller Javscript.
