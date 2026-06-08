@@ -123,7 +123,7 @@ jobs:
   deploy-documentation-to-prod:
     name: Deploy documentation to production
     needs: build-documentation
-    uses: entur/gha-firebase/.github/workflows/firebase-hosting-deploy.yml@v1.2.5
+    uses: entur/gha-firebase/.github/workflows/firebase-hosting-deploy.yml@v1.2.6
     with:
       gcp_project_id: entur-design-system
       environment: prd
