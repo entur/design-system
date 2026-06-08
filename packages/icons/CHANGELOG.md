@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.0.1](https://github.com/entur/design-system/compare/@entur/icons@9.0.0...@entur/icons@9.0.1) (2026-06-08)
+
+### Bug Fixes
+
+- **icons:** correct viewBox padding for oversized icons ([722c7fd](https://github.com/entur/design-system/commit/722c7fdd233c736d885c09c3c0693d3f083e18f2))
+- **icons:** preserve original colors for flag and logo icons ([df099c9](https://github.com/entur/design-system/commit/df099c9bd3d873e13430954bf99a8e45010ce283))
+
 # [9.0.0](https://github.com/entur/design-system/compare/@entur/icons@8.4.5...@entur/icons@9.0.0) (2026-06-05)
 
 ### Features

@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.19.0](https://github.com/entur/design-system/compare/@entur/documentation@6.18.3...@entur/documentation@6.19.0) (2026-06-08)
+
+### Features
+
+- **website:** add table of content to Sanity content pages ([34d063a](https://github.com/entur/design-system/commit/34d063a27c69dedb479746059d335593c7eba008))
+- **website:** merge and improve table of content ([7b17ba6](https://github.com/entur/design-system/commit/7b17ba647de699f5ac54a38488f47ffbf04db781))
+
 ## [6.18.3](https://github.com/entur/design-system/compare/@entur/documentation@6.18.1...@entur/documentation@6.18.3) (2026-06-05)
 
 ### Bug Fixes
