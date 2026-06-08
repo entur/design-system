@@ -64,9 +64,19 @@ async function buildIconComponents() {
     } as Component;
   });
 
+  const seen = new Map<string, string>();
+  for (const { name, svgPath } of components) {
+    if (seen.has(name)) {
+      throw new Error(
+        `Duplicate icon name "${name}" from:\n  - ${seen.get(
+          name,
+        )}\n  - ${svgPath}\nRename one of the SVG files to resolve.`,
+      );
+    }
+    seen.set(name, svgPath);
+  }
+
   for (const component of components) {
-    // Read the SVG, optimize it with SVGO, and transpile it to React components
-    // for both the web and React Native
     outputComponentCode({ component });
     outputComponentCode({ component, native: true });
   }
