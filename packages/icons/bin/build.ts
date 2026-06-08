@@ -27,8 +27,8 @@ const DEPRECATED_ICONS = new Map([['BellIcon', 'AlertIcon']]);
 // These icons should not use brand-blue by default
 const OUTLIER_CATEGORIES = [
   'Partners',
-  'Flag',
-  'Entur',
+  'Flags',
+  'Logo',
   'ThirdPartyLogo',
   'Payment',
 ];
