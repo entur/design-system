@@ -1,0 +1,48 @@
+name: Upload assets to CDN
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'packages/assets/src/illustrations/**'
+      - 'packages/assets/src/animations/**'
+      - 'packages/assets/src/logos/**'
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: yarn
+
+      - run: yarn install --immutable
+
+      - name: Build assets package
+        run: yarn build:package assets
+
+      - name: Authenticate to Google Cloud
+        uses: entur/gha-meta/.github/actions/cloud-auth@v1
+        with:
+          environment: prd
+          gcp_workload_identity_provider: ${{ vars.CI_WORKLOAD_IDENTITY_PROVIDER }}
+          gcp_service_account: ${{ vars.CI_SERVICE_ACCOUNT }}
+
+      - name: Upload new assets to GCS
+        working-directory: packages/assets
+        run: yarn upload
+        env:
+          GCS_BUCKET: ${{ vars.ASSETS_GCS_BUCKET }}
+
+      - name: Verify all asset URLs
+        working-directory: packages/assets
+        run: yarn verify
+        env:
+          GCS_BUCKET: ${{ vars.ASSETS_GCS_BUCKET }}

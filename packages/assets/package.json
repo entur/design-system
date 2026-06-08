@@ -1,0 +1,40 @@
+{
+  "name": "@entur/assets",
+  "version": "0.0.0",
+  "license": "EUPL-1.2",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    "./illustrations/*": "./dist/illustrations/*",
+    "./animations/*": "./dist/animations/*",
+    "./logos/*": "./dist/logos/*",
+    "./urls": {
+      "types": "./dist/urls/index.d.ts",
+      "import": "./dist/urls/index.mjs",
+      "require": "./dist/urls/index.js"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/entur/design-system.git",
+    "directory": "packages/assets"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "yarn prebuild && tsx bin/build.ts",
+    "upload": "tsx bin/upload.ts",
+    "verify": "tsx bin/verify.ts"
+  },
+  "devDependencies": {
+    "@google-cloud/storage": "^7.0.0",
+    "esbuild": "^0.25.0",
+    "rimraf": "6.1.3",
+    "sharp": "^0.33.0",
+    "tsx": "4.21.0",
+    "typescript": "^5.9.2"
+  }
+}

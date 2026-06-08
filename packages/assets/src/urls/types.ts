@@ -1,0 +1,151 @@
+export type IllustrationVariants = {
+  darkmode?: boolean;
+  circled?: boolean;
+  contrast?: boolean;
+};
+
+export type AnimationVariants = {
+  darkmode?: boolean;
+  contrast?: boolean;
+};
+
+export type LogoVariants = {
+  symbol?: boolean;
+  darkmode?: boolean;
+  contrast?: boolean;
+  monochrome?: boolean;
+};
+
+export type AssetType = 'illustrations' | 'animations' | 'logos';
+
+export type AssetFormat = 'svg' | 'png' | 'webp';
+
+// GENERATED — do not edit manually. Rebuilt by bin/build.ts from src/ file inventory.
+export type IllustrationKey =
+  | 'baggage-1'
+  | 'baggage-2'
+  | 'beaver'
+  | 'boat'
+  | 'bus'
+  | 'calendar'
+  | 'child-reaching-up'
+  | 'city-man-and-woman-hugging'
+  | 'city-man-biking'
+  | 'city-man-checking-the-time'
+  | 'city-man-standing-with-dog'
+  | 'city-senior-walking-with-dog'
+  | 'city-woman-holding-package'
+  | 'city-woman-on-wheelchair'
+  | 'city-woman-riding-scooter'
+  | 'city-woman-standing-by-luggage'
+  | 'city-woman-standing-on-scooter'
+  | 'city-woman-standing-with-child'
+  | 'city-woman-walking-with-device-v1'
+  | 'city-woman-walking-with-device-v2'
+  | 'city-woman-walking-with-guide-dog'
+  | 'city-woman-walking-with-luggage'
+  | 'city-women-sitting-inside-the-train'
+  | 'clapping'
+  | 'clock'
+  | 'data'
+  | 'desktop-screen'
+  | 'device-mobile-trip'
+  | 'digital-shared-system-of-public-transport'
+  | 'dog'
+  | 'dog-1'
+  | 'doves'
+  | 'ducks'
+  | 'frontpage-summer'
+  | 'frontpage-winter'
+  | 'goat'
+  | 'hedgehog'
+  | 'id-based-ticketing'
+  | 'kitty'
+  | 'l-hand-discount'
+  | 'l-hand-trip'
+  | 'leaves'
+  | 'man-and-child-sitting-on-a-bench'
+  | 'man-and-woman-hugging'
+  | 'man-biking'
+  | 'man-checking-the-time'
+  | 'man-staff'
+  | 'man-standing-with-dog'
+  | 'mobile'
+  | 'mobile-discount'
+  | 'moose-spring'
+  | 'moose-winter'
+  | 'mountain-women-sitting-inside-the-train'
+  | 'mouse'
+  | 'musk'
+  | 'notification'
+  | 'person-reading-newspaper'
+  | 'public-transport-system'
+  | 'r-hand-discount'
+  | 'r-hand-trip'
+  | 'rabbit'
+  | 'remove'
+  | 'runner'
+  | 'runner-3'
+  | 'scene-city'
+  | 'scooter'
+  | 'send'
+  | 'senior-walking-with-dog'
+  | 'sheep'
+  | 'squirrel'
+  | 'tablet-screen'
+  | 'tap-card'
+  | 'teddy'
+  | 'terms-of-service'
+  | 'thumbs-up'
+  | 'ticket'
+  | 'ticket-machine'
+  | 'train'
+  | 'train-station-man-and-woman-hugging'
+  | 'train-station-man-checking-the-time'
+  | 'train-station-man-standing-with-dog'
+  | 'train-station-senior-walking-with-dog'
+  | 'train-station-woman-holding-package'
+  | 'train-station-woman-on-wheelchair'
+  | 'train-station-woman-standing-by-luggage'
+  | 'train-station-woman-standing-with-child'
+  | 'train-station-woman-walking-with-device-v1'
+  | 'train-station-woman-walking-with-device-v2'
+  | 'train-station-woman-walking-with-guide-dog'
+  | 'train-station-woman-walking-with-luggage'
+  | 'training-1'
+  | 'training-2'
+  | 'tram'
+  | 'woman-holding-package'
+  | 'woman-on-wheelchair'
+  | 'woman-riding-scooter'
+  | 'woman-staff'
+  | 'woman-standing-by-luggage'
+  | 'woman-standing-on-scooter'
+  | 'woman-standing-with-child'
+  | 'woman-walking-with-device-v1'
+  | 'woman-walking-with-device-v2'
+  | 'woman-walking-with-guide-dog'
+  | 'woman-walking-with-luggage';
+
+export type AnimationKey =
+  | 'beaver'
+  | 'boat'
+  | 'bus'
+  | 'check-clock'
+  | 'check-clock-no-loop'
+  | 'clock'
+  | 'doves'
+  | 'ducks'
+  | 'goat'
+  | 'musk'
+  | 'porcupine'
+  | 'sheep'
+  | 'squirrel'
+  | 'ticket-loader'
+  | 'train'
+  | 'tram'
+  | 'travel-loader'
+  | 'travel-loader-2'
+  | 'travel-loader-3';
+
+export type LogoKey = 'partner/test-operator';
