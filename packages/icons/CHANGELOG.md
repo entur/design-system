@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.0.2](https://github.com/entur/design-system/compare/@entur/icons@9.0.1...@entur/icons@9.0.2) (2026-06-08)
+
+### Bug Fixes
+
+- **icons:** rename NorWay partner icon to avoid collision with Norway flag ([a5e1c3a](https://github.com/entur/design-system/commit/a5e1c3ae5a273938ab67bb7e1c1020100d0f858c))
+
 ## [9.0.1](https://github.com/entur/design-system/compare/@entur/icons@9.0.0...@entur/icons@9.0.1) (2026-06-08)
 
 ### Bug Fixes

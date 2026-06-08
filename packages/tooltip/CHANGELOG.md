@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.3.14](https://github.com/entur/design-system/compare/@entur/tooltip@5.3.13...@entur/tooltip@5.3.14) (2026-06-08)
+
+**Note:** Version bump only for package @entur/tooltip
+
 ## [5.3.13](https://github.com/entur/design-system/compare/@entur/tooltip@5.3.12...@entur/tooltip@5.3.13) (2026-06-08)
 
 **Note:** Version bump only for package @entur/tooltip
