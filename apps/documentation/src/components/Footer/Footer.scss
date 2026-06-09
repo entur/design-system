@@ -4,6 +4,10 @@
   position: relative;
   background-color: var(--basecolors-frame-contrast);
 
+  &--light {
+    background-color: var(--basecolors-background-default);
+  }
+
   &__mobile-item {
     @include breakpoint.for-desktop {
       display: none;

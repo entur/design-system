@@ -3,7 +3,7 @@ import { PageProps } from 'gatsby';
 import { MDXProvider } from '@mdx-js/react';
 import { MDXComponents } from 'mdx/types';
 import { SkipToContent } from '@entur/a11y';
-import SiteFooter from '@components/Footer/SiteFooter';
+import Footer from '@components/Footer/Footer';
 import TopNavigationLayout from './TopNavigationLayout';
 import components from '../utils/MdxProvider-utils';
 import SideNavigationLayout from './SideNavigationLayout';
@@ -39,8 +39,8 @@ const DocLayout = ({
               {children}
             </MDXProvider>
           </main>
-          <SiteFooter />
         </div>
+        <Footer className="footer--light" />
       </div>
     </>
   );

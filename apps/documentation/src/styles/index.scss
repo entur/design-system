@@ -51,6 +51,8 @@ body {
   overflow-y: auto;
   position: relative;
   top: variables.$navbar-height;
+  display: flex;
+  flex-direction: column;
 
   @media screen and (min-width: map.get(variables.$breakpoints, 'mobile-small')) {
     top: variables.$navbar-height--mobile;
@@ -64,7 +66,7 @@ body {
   .site-content {
     display: flex;
     flex-direction: column;
-    height: 100%;
+    flex: 1;
     margin: eds.$space-extra-large eds.$space-extra-large eds.$space-default;
     transition: max-width eds.$timings-fast ease-out, margin-left eds.$timings-fast ease-out;
 
@@ -88,7 +90,7 @@ body {
       //     margin-top: 4rem;
       //   }
 
-      //   // two adjacent headers
+      //   // two adjacent neighbors
       //   [class^='eds-h'] + [class^='eds-h'] {
       //     margin-top: 2rem;
       //   }
