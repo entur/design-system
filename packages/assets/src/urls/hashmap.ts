@@ -1599,102 +1599,731 @@ export const HASH_MAP: Record<string, Record<string, string>> = {
       'woman-walking-with-luggage-731e7df5.webp',
   },
   animations: {
-    'beaver.contrast': 'beaver.contrast-ecb85276.json',
-    'beaver.darkmode': 'beaver.darkmode-82a23ffc.json',
-    beaver: 'beaver-5b4b9838.json',
-    'boat.contrast': 'boat.contrast-5ce17cee.json',
-    'boat.darkmode': 'boat.darkmode-512d47b3.json',
-    boat: 'boat-17c1e937.json',
-    'bus.contrast': 'bus.contrast-d411953b.json',
-    'bus.darkmode': 'bus.darkmode-0aceb6a0.json',
-    bus: 'bus-e7c8c105.json',
-    'check-clock-no-loop': 'check-clock-no-loop-f89bf801.json',
-    'check-clock': 'check-clock-232781ae.json',
-    'clock.contrast': 'clock.contrast-24581528.json',
-    'clock.darkmode': 'clock.darkmode-ccc6eeb9.json',
-    clock: 'clock-36bdc674.json',
-    'doves.contrast': 'doves.contrast-3d509308.json',
-    'doves.darkmode': 'doves.darkmode-1f38831f.json',
-    doves: 'doves-ecfad2d7.json',
-    'ducks.contrast': 'ducks.contrast-3804fb56.json',
-    'ducks.darkmode': 'ducks.darkmode-f48ae3e8.json',
-    ducks: 'ducks-4bb6c4d0.json',
-    'goat.contrast': 'goat.contrast-f9a59d53.json',
-    'goat.darkmode': 'goat.darkmode-a6b038d1.json',
-    goat: 'goat-01fc948a.json',
-    'musk.contrast': 'musk.contrast-a91db365.json',
-    'musk.darkmode': 'musk.darkmode-f60f5f55.json',
-    musk: 'musk-8f88740a.json',
-    'porcupine.contrast': 'porcupine.contrast-cb8df710.json',
-    'porcupine.darkmode': 'porcupine.darkmode-4565a766.json',
-    porcupine: 'porcupine-fab84c64.json',
-    'sheep.contrast': 'sheep.contrast-3b0b8018.json',
-    'sheep.darkmode': 'sheep.darkmode-9a849333.json',
-    sheep: 'sheep-4ae5623b.json',
-    'squirrel.contrast': 'squirrel.contrast-5def8ca2.json',
-    'squirrel.darkmode': 'squirrel.darkmode-aba20f75.json',
-    squirrel: 'squirrel-9f441089.json',
-    'ticket-loader': 'ticket-loader-334a0547.json',
-    'train.contrast': 'train.contrast-ec055a4c.json',
-    'train.darkmode': 'train.darkmode-f5a2125c.json',
-    train: 'train-c22670cc.json',
-    'tram.contrast': 'tram.contrast-b5671baf.json',
-    'tram.darkmode': 'tram.darkmode-cc28bcb3.json',
-    tram: 'tram-ca061712.json',
-    'travel-loader-2': 'travel-loader-2-880d087a.json',
-    'travel-loader-3': 'travel-loader-3-880d087a.json',
-    'travel-loader': 'travel-loader-880d087a.json',
+    'beaver.contrast': 'beaver.contrast-3b39e241.json',
+    'beaver.darkmode': 'beaver.darkmode-ae14a610.json',
+    beaver: 'beaver-d17d3e81.json',
+    'boat.contrast': 'boat.contrast-9f1839aa.json',
+    'boat.darkmode': 'boat.darkmode-d14b87fc.json',
+    boat: 'boat-e3a1892b.json',
+    'bus.contrast': 'bus.contrast-d4ad9a0f.json',
+    'bus.darkmode': 'bus.darkmode-67886fc3.json',
+    bus: 'bus-da2289e4.json',
+    'check-clock-no-loop': 'check-clock-no-loop-09e589ba.json',
+    'check-clock': 'check-clock-5edc5af2.json',
+    'clock.contrast': 'clock.contrast-e7f9404a.json',
+    'clock.darkmode': 'clock.darkmode-0517f5f6.json',
+    clock: 'clock-6a1c1d79.json',
+    'doves.contrast': 'doves.contrast-ce2ddc28.json',
+    'doves.darkmode': 'doves.darkmode-fcf79b15.json',
+    doves: 'doves-18efdc64.json',
+    'ducks.contrast': 'ducks.contrast-79b53281.json',
+    'ducks.darkmode': 'ducks.darkmode-b338a0ee.json',
+    ducks: 'ducks-a3b41ed0.json',
+    'goat.contrast': 'goat.contrast-b17cede6.json',
+    'goat.darkmode': 'goat.darkmode-c0114156.json',
+    goat: 'goat-dc6be5c9.json',
+    'musk.contrast': 'musk.contrast-de2ad1be.json',
+    'musk.darkmode': 'musk.darkmode-daf72c3d.json',
+    musk: 'musk-dad37b99.json',
+    'porcupine.contrast': 'porcupine.contrast-dc437184.json',
+    'porcupine.darkmode': 'porcupine.darkmode-81f396a3.json',
+    porcupine: 'porcupine-015e9241.json',
+    'sheep.contrast': 'sheep.contrast-900620b6.json',
+    'sheep.darkmode': 'sheep.darkmode-7818ed72.json',
+    sheep: 'sheep-18e56bec.json',
+    'squirrel.contrast': 'squirrel.contrast-6ae7e514.json',
+    'squirrel.darkmode': 'squirrel.darkmode-d740ea50.json',
+    squirrel: 'squirrel-15946693.json',
+    'ticket-loader': 'ticket-loader-65b7357b.json',
+    'train.contrast': 'train.contrast-413067bf.json',
+    'train.darkmode': 'train.darkmode-13cef72b.json',
+    train: 'train-81546332.json',
+    'tram.contrast': 'tram.contrast-b5d29985.json',
+    'tram.darkmode': 'tram.darkmode-6afc0431.json',
+    tram: 'tram-6e668a42.json',
+    'travel-loader-2': 'travel-loader-2-6289b89a.json',
+    'travel-loader-3': 'travel-loader-3-6289b89a.json',
+    'travel-loader': 'travel-loader-6289b89a.json',
   },
   logos: {
-    'partner/test-operator.darkmode':
-      'partner/test-operator.darkmode-f4e1c66e.svg',
-    'partner/test-operator.monochrome':
-      'partner/test-operator.monochrome-8a70431c.svg',
-    'partner/test-operator.monochrome.symbol':
-      'partner/test-operator.monochrome.symbol-366c2a88.svg',
-    'partner/test-operator': 'partner/test-operator-f4e1c66e.svg',
-    'partner/test-operator.symbol': 'partner/test-operator.symbol-9b510d5e.svg',
-    'partner/test-operator.monochrome.darkmode':
-      'partner/test-operator.monochrome.darkmode-ccb63599.svg',
-    'partner/test-operator.monochrome.contrast':
-      'partner/test-operator.monochrome.contrast-578dc9a0.svg',
-    'partner/test-operator.monochrome.symbol.darkmode':
-      'partner/test-operator.monochrome.symbol.darkmode-54e8bdbf.svg',
-    'partner/test-operator.monochrome.symbol.contrast':
-      'partner/test-operator.monochrome.symbol.contrast-7b96c6f5.svg',
-    'partner/test-operator.darkmode.png':
-      'partner/test-operator.darkmode-89c8c7eb.png',
-    'partner/test-operator.darkmode.webp':
-      'partner/test-operator.darkmode-f31b714f.webp',
-    'partner/test-operator.monochrome.png':
-      'partner/test-operator.monochrome-9cd8cfa4.png',
-    'partner/test-operator.monochrome.webp':
-      'partner/test-operator.monochrome-ccfbbe0c.webp',
-    'partner/test-operator.monochrome.symbol.png':
-      'partner/test-operator.monochrome.symbol-4c0b4199.png',
-    'partner/test-operator.monochrome.symbol.webp':
-      'partner/test-operator.monochrome.symbol-06eafdc7.webp',
-    'partner/test-operator.png': 'partner/test-operator-89c8c7eb.png',
-    'partner/test-operator.webp': 'partner/test-operator-f31b714f.webp',
-    'partner/test-operator.symbol.png':
-      'partner/test-operator.symbol-24e049f7.png',
-    'partner/test-operator.symbol.webp':
-      'partner/test-operator.symbol-ad3323cf.webp',
-    'partner/test-operator.monochrome.darkmode.png':
-      'partner/test-operator.monochrome.darkmode-c32e593f.png',
-    'partner/test-operator.monochrome.darkmode.webp':
-      'partner/test-operator.monochrome.darkmode-6d56b9b1.webp',
-    'partner/test-operator.monochrome.contrast.png':
-      'partner/test-operator.monochrome.contrast-cedc63ed.png',
-    'partner/test-operator.monochrome.contrast.webp':
-      'partner/test-operator.monochrome.contrast-3e7e78e7.webp',
-    'partner/test-operator.monochrome.symbol.darkmode.png':
-      'partner/test-operator.monochrome.symbol.darkmode-c32e593f.png',
-    'partner/test-operator.monochrome.symbol.darkmode.webp':
-      'partner/test-operator.monochrome.symbol.darkmode-6d56b9b1.webp',
-    'partner/test-operator.monochrome.symbol.contrast.png':
-      'partner/test-operator.monochrome.symbol.contrast-cedc63ed.png',
-    'partner/test-operator.monochrome.symbol.contrast.webp':
-      'partner/test-operator.monochrome.symbol.contrast-3e7e78e7.webp',
+    'entur/entur.darkmode': 'entur/entur.darkmode-8625f201.svg',
+    'entur/entur': 'entur/entur-99b6dd31.svg',
+    'partner/akt.darkmode.monochrome':
+      'partner/akt.darkmode.monochrome-31b6a1cf.svg',
+    'partner/akt.darkmode': 'partner/akt.darkmode-4ef56e8b.svg',
+    'partner/akt.darkmode.symbol': 'partner/akt.darkmode.symbol-0b32ed56.svg',
+    'partner/akt.monochrome': 'partner/akt.monochrome-cad96564.svg',
+    'partner/akt': 'partner/akt-1a3b4713.svg',
+    'partner/akt.symbol': 'partner/akt.symbol-dc728de8.svg',
+    'partner/alesund-turvogn.monochrome':
+      'partner/alesund-turvogn.monochrome-70a34cdd.svg',
+    'partner/atb.darkmode.monochrome':
+      'partner/atb.darkmode.monochrome-8079b9d0.svg',
+    'partner/atb.darkmode': 'partner/atb.darkmode-fb19ff28.svg',
+    'partner/atb.darkmode.symbol': 'partner/atb.darkmode.symbol-423132e5.svg',
+    'partner/atb.monochrome': 'partner/atb.monochrome-b79466c1.svg',
+    'partner/atb': 'partner/atb-fb19ff28.svg',
+    'partner/atb.symbol': 'partner/atb.symbol-bf99c801.svg',
+    'partner/bane-nor.monochrome': 'partner/bane-nor.monochrome-32fefbcd.svg',
+    'partner/bergen-bysykkel.monochrome':
+      'partner/bergen-bysykkel.monochrome-4f71d252.svg',
+    'partner/bolt.monochrome': 'partner/bolt.monochrome-221a540b.svg',
+    'partner/brakar-bysykkel.darkmode.monochrome':
+      'partner/brakar-bysykkel.darkmode.monochrome-c9700440.svg',
+    'partner/brakar-bysykkel.monochrome':
+      'partner/brakar-bysykkel.monochrome-262c8976.svg',
+    'partner/brakar-no-text.monochrome':
+      'partner/brakar-no-text.monochrome-10d29947.svg',
+    'partner/brakar.darkmode.monochrome':
+      'partner/brakar.darkmode.monochrome-0c1cf5c0.svg',
+    'partner/brakar.darkmode': 'partner/brakar.darkmode-8c39e2c6.svg',
+    'partner/brakar.darkmode.symbol':
+      'partner/brakar.darkmode.symbol-5b58ffaf.svg',
+    'partner/brakar.monochrome': 'partner/brakar.monochrome-76565761.svg',
+    'partner/brakar': 'partner/brakar-c4580291.svg',
+    'partner/brakar.symbol': 'partner/brakar.symbol-1320d5fb.svg',
+    'partner/city-bike.monochrome': 'partner/city-bike.monochrome-8e0064a1.svg',
+    'partner/dott.darkmode.monochrome':
+      'partner/dott.darkmode.monochrome-6676e7e3.svg',
+    'partner/dott.monochrome': 'partner/dott.monochrome-c3ed0dc2.svg',
+    'partner/farte-bysykkel.monochrome':
+      'partner/farte-bysykkel.monochrome-1e5d5e64.svg',
+    'partner/farte.darkmode.monochrome':
+      'partner/farte.darkmode.monochrome-474cb7dd.svg',
+    'partner/farte.darkmode': 'partner/farte.darkmode-fc33338b.svg',
+    'partner/farte.darkmode.symbol':
+      'partner/farte.darkmode.symbol-6eb7fb6d.svg',
+    'partner/farte.monochrome': 'partner/farte.monochrome-7933da0a.svg',
+    'partner/farte': 'partner/farte-4493283c.svg',
+    'partner/farte.symbol': 'partner/farte.symbol-46e1ab96.svg',
+    'partner/flixbus.darkmode.monochrome':
+      'partner/flixbus.darkmode.monochrome-edcc1aae.svg',
+    'partner/flixbus.darkmode.symbol':
+      'partner/flixbus.darkmode.symbol-39d88593.svg',
+    'partner/flixbus.monochrome': 'partner/flixbus.monochrome-c963570b.svg',
+    'partner/flixbus.symbol': 'partner/flixbus.symbol-82d980f0.svg',
+    'partner/flybussen.darkmode.monochrome':
+      'partner/flybussen.darkmode.monochrome-81d54249.svg',
+    'partner/flybussen.monochrome': 'partner/flybussen.monochrome-e99b4716.svg',
+    'partner/fram.darkmode.monochrome':
+      'partner/fram.darkmode.monochrome-8e7659bd.svg',
+    'partner/fram.darkmode': 'partner/fram.darkmode-b4d83aca.svg',
+    'partner/fram.darkmode.symbol': 'partner/fram.darkmode.symbol-65daa05c.svg',
+    'partner/fram.monochrome': 'partner/fram.monochrome-5804b164.svg',
+    'partner/fram': 'partner/fram-b4d83aca.svg',
+    'partner/fram.symbol': 'partner/fram.symbol-f000fe02.svg',
+    'partner/getaround.monochrome': 'partner/getaround.monochrome-6c559e19.svg',
+    'partner/goa.darkmode.monochrome':
+      'partner/goa.darkmode.monochrome-a6ff92d3.svg',
+    'partner/goa.darkmode.symbol': 'partner/goa.darkmode.symbol-64015308.svg',
+    'partner/goa.monochrome': 'partner/goa.monochrome-d810ce50.svg',
+    'partner/goa.symbol': 'partner/goa.symbol-60e53cbf.svg',
+    'partner/hafjell.monochrome': 'partner/hafjell.monochrome-f0f5f1b2.svg',
+    'partner/hafjellbussen.monochrome':
+      'partner/hafjellbussen.monochrome-0c91ccda.svg',
+    'partner/hertz.darkmode.monochrome':
+      'partner/hertz.darkmode.monochrome-e9ca6076.svg',
+    'partner/hertz.monochrome': 'partner/hertz.monochrome-fc3a4bcb.svg',
+    'partner/hyke.darkmode.monochrome':
+      'partner/hyke.darkmode.monochrome-f875712b.svg',
+    'partner/hyke.monochrome': 'partner/hyke.monochrome-20e98029.svg',
+    'partner/hyre.monochrome': 'partner/hyre.monochrome-012fefac.svg',
+    'partner/innlandstrafikk.darkmode.monochrome':
+      'partner/innlandstrafikk.darkmode.monochrome-2fff2830.svg',
+    'partner/innlandstrafikk.darkmode':
+      'partner/innlandstrafikk.darkmode-c13b9f55.svg',
+    'partner/innlandstrafikk.darkmode.symbol':
+      'partner/innlandstrafikk.darkmode.symbol-18839ff7.svg',
+    'partner/innlandstrafikk.monochrome':
+      'partner/innlandstrafikk.monochrome-680338a1.svg',
+    'partner/innlandstrafikk': 'partner/innlandstrafikk-12cbb066.svg',
+    'partner/innlandstrafikk.symbol':
+      'partner/innlandstrafikk.symbol-4cd695b1.svg',
+    'partner/kolumbus-bysykkel.monochrome':
+      'partner/kolumbus-bysykkel.monochrome-c84eb6d6.svg',
+    'partner/kolumbus.darkmode.monochrome':
+      'partner/kolumbus.darkmode.monochrome-bf0c27bf.svg',
+    'partner/kolumbus.darkmode': 'partner/kolumbus.darkmode-fd816a09.svg',
+    'partner/kolumbus.darkmode.symbol':
+      'partner/kolumbus.darkmode.symbol-971fe557.svg',
+    'partner/kolumbus.monochrome': 'partner/kolumbus.monochrome-69ebfe88.svg',
+    'partner/kolumbus': 'partner/kolumbus-8f856cc9.svg',
+    'partner/kolumbus.symbol': 'partner/kolumbus.symbol-d1f30203.svg',
+    'partner/lime.monochrome': 'partner/lime.monochrome-2827e357.svg',
+    'partner/moveabout.monochrome': 'partner/moveabout.monochrome-6471196c.svg',
+    'partner/nordland.darkmode.monochrome':
+      'partner/nordland.darkmode.monochrome-8b6bf92c.svg',
+    'partner/nordland.darkmode': 'partner/nordland.darkmode-f3499847.svg',
+    'partner/nordland.darkmode.symbol':
+      'partner/nordland.darkmode.symbol-503a0047.svg',
+    'partner/nordland.monochrome': 'partner/nordland.monochrome-39981649.svg',
+    'partner/nordland': 'partner/nordland-f3499847.svg',
+    'partner/nordland.symbol': 'partner/nordland.symbol-b4604f16.svg',
+    'partner/norway-bussekspress.monochrome':
+      'partner/norway-bussekspress.monochrome-63e73d4a.svg',
+    'partner/oresundstag.darkmode.monochrome':
+      'partner/oresundstag.darkmode.monochrome-535165c1.svg',
+    'partner/oresundstag.monochrome':
+      'partner/oresundstag.monochrome-1ab59ec6.svg',
+    'partner/oslo-bysykkel.monochrome':
+      'partner/oslo-bysykkel.monochrome-eaa30d07.svg',
+    'partner/ostfold.darkmode.monochrome':
+      'partner/ostfold.darkmode.monochrome-d0477a24.svg',
+    'partner/ostfold.darkmode': 'partner/ostfold.darkmode-8ffd8b43.svg',
+    'partner/ostfold.darkmode.symbol':
+      'partner/ostfold.darkmode.symbol-33c94f3d.svg',
+    'partner/ostfold.monochrome': 'partner/ostfold.monochrome-54741ed8.svg',
+    'partner/ostfold': 'partner/ostfold-72786298.svg',
+    'partner/ostfold.symbol': 'partner/ostfold.symbol-d6fd3a9c.svg',
+    'partner/otto.monochrome': 'partner/otto.monochrome-1f9a1207.svg',
+    'partner/rail': 'partner/rail-74bb3a8c.svg',
+    'partner/rail.symbol': 'partner/rail.symbol-43d5241b.svg',
+    'partner/reis-nordland.monochrome':
+      'partner/reis-nordland.monochrome-23eee4b3.svg',
+    'partner/ruter-no-text.monochrome':
+      'partner/ruter-no-text.monochrome-7a6d226f.svg',
+    'partner/ruter.darkmode.monochrome':
+      'partner/ruter.darkmode.monochrome-787c1e60.svg',
+    'partner/ruter.darkmode': 'partner/ruter.darkmode-42d3b3fd.svg',
+    'partner/ruter.darkmode.symbol':
+      'partner/ruter.darkmode.symbol-f5057ad3.svg',
+    'partner/ruter.monochrome': 'partner/ruter.monochrome-cf16abe7.svg',
+    'partner/ruter': 'partner/ruter-e6518a09.svg',
+    'partner/ruter.symbol': 'partner/ruter.symbol-1208b277.svg',
+    'partner/ryde.monochrome': 'partner/ryde.monochrome-9068ac46.svg',
+    'partner/scooter.monochrome': 'partner/scooter.monochrome-71605e87.svg',
+    'partner/sj-nord.monochrome': 'partner/sj-nord.monochrome-a9398337.svg',
+    'partner/sj.darkmode.monochrome':
+      'partner/sj.darkmode.monochrome-062f0ede.svg',
+    'partner/sj.darkmode.symbol': 'partner/sj.darkmode.symbol-4e06e693.svg',
+    'partner/sj.monochrome': 'partner/sj.monochrome-bbdc6e14.svg',
+    'partner/sj.symbol': 'partner/sj.symbol-5d4da5b1.svg',
+    'partner/skyss-no-text.monochrome':
+      'partner/skyss-no-text.monochrome-4ae7a010.svg',
+    'partner/skyss.darkmode.monochrome':
+      'partner/skyss.darkmode.monochrome-845f514a.svg',
+    'partner/skyss.darkmode': 'partner/skyss.darkmode-4f00e041.svg',
+    'partner/skyss.darkmode.symbol':
+      'partner/skyss.darkmode.symbol-1a09c09f.svg',
+    'partner/skyss.monochrome': 'partner/skyss.monochrome-481b4f33.svg',
+    'partner/skyss': 'partner/skyss-aad86125.svg',
+    'partner/skyss.symbol': 'partner/skyss.symbol-6fb2a8be.svg',
+    'partner/snalltaget.darkmode.monochrome':
+      'partner/snalltaget.darkmode.monochrome-97676d02.svg',
+    'partner/snalltaget.monochrome':
+      'partner/snalltaget.monochrome-fd905a2d.svg',
+    'partner/snelandia.darkmode.monochrome':
+      'partner/snelandia.darkmode.monochrome-9a8466c6.svg',
+    'partner/snelandia.darkmode': 'partner/snelandia.darkmode-867c64e7.svg',
+    'partner/snelandia.darkmode.symbol':
+      'partner/snelandia.darkmode.symbol-8ee0a0b3.svg',
+    'partner/snelandia.monochrome': 'partner/snelandia.monochrome-80ec528c.svg',
+    'partner/snelandia': 'partner/snelandia-29ea150d.svg',
+    'partner/snelandia.symbol': 'partner/snelandia.symbol-6b10fbcb.svg',
+    'partner/surf.monochrome': 'partner/surf.monochrome-47e12550.svg',
+    'partner/svipper.darkmode.monochrome':
+      'partner/svipper.darkmode.monochrome-c54b1486.svg',
+    'partner/svipper.darkmode': 'partner/svipper.darkmode-2f6fb187.svg',
+    'partner/svipper.darkmode.symbol':
+      'partner/svipper.darkmode.symbol-49c39438.svg',
+    'partner/svipper.monochrome': 'partner/svipper.monochrome-2bf360a8.svg',
+    'partner/svipper': 'partner/svipper-2f6fb187.svg',
+    'partner/svipper.symbol': 'partner/svipper.symbol-49c39438.svg',
+    'partner/tier.monochrome': 'partner/tier.monochrome-da6dc264.svg',
+    'partner/tog.darkmode': 'partner/tog.darkmode-4d41e96f.svg',
+    'partner/tog.darkmode.symbol': 'partner/tog.darkmode.symbol-0eddde84.svg',
+    'partner/tog': 'partner/tog-74bb3a8c.svg',
+    'partner/tog.symbol': 'partner/tog.symbol-0eddde84.svg',
+    'partner/troms-fylkestrafikk.monochrome':
+      'partner/troms-fylkestrafikk.monochrome-eeb8486e.svg',
+    'partner/troms.darkmode.monochrome':
+      'partner/troms.darkmode.monochrome-56783673.svg',
+    'partner/troms.darkmode': 'partner/troms.darkmode-bee46fac.svg',
+    'partner/troms.darkmode.symbol':
+      'partner/troms.darkmode.symbol-c77a8c5d.svg',
+    'partner/troms.monochrome': 'partner/troms.monochrome-0927fad4.svg',
+    'partner/troms': 'partner/troms-87b0c5b0.svg',
+    'partner/troms.symbol': 'partner/troms.symbol-545fb1bc.svg',
+    'partner/trondheim-bysykkel.monochrome':
+      'partner/trondheim-bysykkel.monochrome-9160185e.svg',
+    'partner/vkt.darkmode.monochrome':
+      'partner/vkt.darkmode.monochrome-844958c1.svg',
+    'partner/vkt.darkmode': 'partner/vkt.darkmode-5eb0f933.svg',
+    'partner/vkt.darkmode.symbol': 'partner/vkt.darkmode.symbol-0ada9841.svg',
+    'partner/vkt.monochrome': 'partner/vkt.monochrome-ed7f5f9b.svg',
+    'partner/vkt': 'partner/vkt-22a90c5a.svg',
+    'partner/vkt.symbol': 'partner/vkt.symbol-419d5157.svg',
+    'partner/voi.monochrome': 'partner/voi.monochrome-afe2ccaa.svg',
+    'partner/vy.darkmode.monochrome':
+      'partner/vy.darkmode.monochrome-39655586.svg',
+    'partner/vy.darkmode.symbol': 'partner/vy.darkmode.symbol-18bf0fc7.svg',
+    'partner/vy.monochrome': 'partner/vy.monochrome-ae6acf8b.svg',
+    'partner/vy.symbol': 'partner/vy.symbol-d3dee47b.svg',
+    'partner/zvipp.monochrome': 'partner/zvipp.monochrome-56cd5161.svg',
+    'entur/entur.darkmode.png': 'entur/entur.darkmode-723d2461.png',
+    'entur/entur.darkmode.webp': 'entur/entur.darkmode-439bb916.webp',
+    'entur/entur.png': 'entur/entur-64ff5cf8.png',
+    'entur/entur.webp': 'entur/entur-b0913586.webp',
+    'partner/akt.darkmode.monochrome.png':
+      'partner/akt.darkmode.monochrome-2aacdf09.png',
+    'partner/akt.darkmode.monochrome.webp':
+      'partner/akt.darkmode.monochrome-a6aeb517.webp',
+    'partner/akt.darkmode.png': 'partner/akt.darkmode-4694cc42.png',
+    'partner/akt.darkmode.webp': 'partner/akt.darkmode-0bcdef18.webp',
+    'partner/akt.darkmode.symbol.png':
+      'partner/akt.darkmode.symbol-83a05b08.png',
+    'partner/akt.darkmode.symbol.webp':
+      'partner/akt.darkmode.symbol-c8b8906d.webp',
+    'partner/akt.monochrome.png': 'partner/akt.monochrome-2bf9ed06.png',
+    'partner/akt.monochrome.webp': 'partner/akt.monochrome-36034caf.webp',
+    'partner/akt.png': 'partner/akt-ad9589c6.png',
+    'partner/akt.webp': 'partner/akt-325a0862.webp',
+    'partner/akt.symbol.png': 'partner/akt.symbol-83a05b08.png',
+    'partner/akt.symbol.webp': 'partner/akt.symbol-c8b8906d.webp',
+    'partner/alesund-turvogn.monochrome.png':
+      'partner/alesund-turvogn.monochrome-d0512235.png',
+    'partner/alesund-turvogn.monochrome.webp':
+      'partner/alesund-turvogn.monochrome-5efdf44e.webp',
+    'partner/atb.darkmode.monochrome.png':
+      'partner/atb.darkmode.monochrome-65f5f182.png',
+    'partner/atb.darkmode.monochrome.webp':
+      'partner/atb.darkmode.monochrome-4065a93e.webp',
+    'partner/atb.darkmode.png': 'partner/atb.darkmode-44e44fa1.png',
+    'partner/atb.darkmode.webp': 'partner/atb.darkmode-a5d88fae.webp',
+    'partner/atb.darkmode.symbol.png':
+      'partner/atb.darkmode.symbol-f5ccd3c6.png',
+    'partner/atb.darkmode.symbol.webp':
+      'partner/atb.darkmode.symbol-044628ed.webp',
+    'partner/atb.monochrome.png': 'partner/atb.monochrome-476be370.png',
+    'partner/atb.monochrome.webp': 'partner/atb.monochrome-f1381d6d.webp',
+    'partner/atb.png': 'partner/atb-44e44fa1.png',
+    'partner/atb.webp': 'partner/atb-a5d88fae.webp',
+    'partner/atb.symbol.png': 'partner/atb.symbol-53ca4b99.png',
+    'partner/atb.symbol.webp': 'partner/atb.symbol-17513895.webp',
+    'partner/bane-nor.monochrome.png':
+      'partner/bane-nor.monochrome-825097c1.png',
+    'partner/bane-nor.monochrome.webp':
+      'partner/bane-nor.monochrome-a7659392.webp',
+    'partner/bergen-bysykkel.monochrome.png':
+      'partner/bergen-bysykkel.monochrome-8c1d4db4.png',
+    'partner/bergen-bysykkel.monochrome.webp':
+      'partner/bergen-bysykkel.monochrome-1feec77a.webp',
+    'partner/bolt.monochrome.png': 'partner/bolt.monochrome-7b180475.png',
+    'partner/bolt.monochrome.webp': 'partner/bolt.monochrome-85fedcd0.webp',
+    'partner/brakar-bysykkel.darkmode.monochrome.png':
+      'partner/brakar-bysykkel.darkmode.monochrome-a1d3738f.png',
+    'partner/brakar-bysykkel.darkmode.monochrome.webp':
+      'partner/brakar-bysykkel.darkmode.monochrome-77346cfe.webp',
+    'partner/brakar-bysykkel.monochrome.png':
+      'partner/brakar-bysykkel.monochrome-ca6d2c04.png',
+    'partner/brakar-bysykkel.monochrome.webp':
+      'partner/brakar-bysykkel.monochrome-c6f27291.webp',
+    'partner/brakar-no-text.monochrome.png':
+      'partner/brakar-no-text.monochrome-06ed4293.png',
+    'partner/brakar-no-text.monochrome.webp':
+      'partner/brakar-no-text.monochrome-1d6e459a.webp',
+    'partner/brakar.darkmode.monochrome.png':
+      'partner/brakar.darkmode.monochrome-ae1fdc21.png',
+    'partner/brakar.darkmode.monochrome.webp':
+      'partner/brakar.darkmode.monochrome-2e31c590.webp',
+    'partner/brakar.darkmode.png': 'partner/brakar.darkmode-477af4b6.png',
+    'partner/brakar.darkmode.webp': 'partner/brakar.darkmode-34c5b847.webp',
+    'partner/brakar.darkmode.symbol.png':
+      'partner/brakar.darkmode.symbol-47575555.png',
+    'partner/brakar.darkmode.symbol.webp':
+      'partner/brakar.darkmode.symbol-93d6e1fe.webp',
+    'partner/brakar.monochrome.png': 'partner/brakar.monochrome-dc675f40.png',
+    'partner/brakar.monochrome.webp': 'partner/brakar.monochrome-a377c0e7.webp',
+    'partner/brakar.png': 'partner/brakar-ed895bae.png',
+    'partner/brakar.webp': 'partner/brakar-e9cce56e.webp',
+    'partner/brakar.symbol.png': 'partner/brakar.symbol-56bdd58b.png',
+    'partner/brakar.symbol.webp': 'partner/brakar.symbol-3c84d5d8.webp',
+    'partner/city-bike.monochrome.png':
+      'partner/city-bike.monochrome-c528f309.png',
+    'partner/city-bike.monochrome.webp':
+      'partner/city-bike.monochrome-5b75923c.webp',
+    'partner/dott.darkmode.monochrome.png':
+      'partner/dott.darkmode.monochrome-456e5975.png',
+    'partner/dott.darkmode.monochrome.webp':
+      'partner/dott.darkmode.monochrome-49bca5ac.webp',
+    'partner/dott.monochrome.png': 'partner/dott.monochrome-77dcc1d0.png',
+    'partner/dott.monochrome.webp': 'partner/dott.monochrome-edb98784.webp',
+    'partner/farte-bysykkel.monochrome.png':
+      'partner/farte-bysykkel.monochrome-b968fa27.png',
+    'partner/farte-bysykkel.monochrome.webp':
+      'partner/farte-bysykkel.monochrome-aec45539.webp',
+    'partner/farte.darkmode.monochrome.png':
+      'partner/farte.darkmode.monochrome-bedb2cbe.png',
+    'partner/farte.darkmode.monochrome.webp':
+      'partner/farte.darkmode.monochrome-6540566b.webp',
+    'partner/farte.darkmode.png': 'partner/farte.darkmode-b3ecc83e.png',
+    'partner/farte.darkmode.webp': 'partner/farte.darkmode-17ac034e.webp',
+    'partner/farte.darkmode.symbol.png':
+      'partner/farte.darkmode.symbol-9059735e.png',
+    'partner/farte.darkmode.symbol.webp':
+      'partner/farte.darkmode.symbol-e1154cb0.webp',
+    'partner/farte.monochrome.png': 'partner/farte.monochrome-4e07c9fc.png',
+    'partner/farte.monochrome.webp': 'partner/farte.monochrome-24e1118b.webp',
+    'partner/farte.png': 'partner/farte-3d892dc3.png',
+    'partner/farte.webp': 'partner/farte-b1b428fe.webp',
+    'partner/farte.symbol.png': 'partner/farte.symbol-ae2fe02f.png',
+    'partner/farte.symbol.webp': 'partner/farte.symbol-4dd5fd3b.webp',
+    'partner/flixbus.darkmode.monochrome.png':
+      'partner/flixbus.darkmode.monochrome-bc7df65c.png',
+    'partner/flixbus.darkmode.monochrome.webp':
+      'partner/flixbus.darkmode.monochrome-ff81ce43.webp',
+    'partner/flixbus.darkmode.symbol.png':
+      'partner/flixbus.darkmode.symbol-fabcf1d0.png',
+    'partner/flixbus.darkmode.symbol.webp':
+      'partner/flixbus.darkmode.symbol-26c9e0c8.webp',
+    'partner/flixbus.monochrome.png': 'partner/flixbus.monochrome-41bfea36.png',
+    'partner/flixbus.monochrome.webp':
+      'partner/flixbus.monochrome-2f170805.webp',
+    'partner/flixbus.symbol.png': 'partner/flixbus.symbol-0f9637aa.png',
+    'partner/flixbus.symbol.webp': 'partner/flixbus.symbol-3556413b.webp',
+    'partner/flybussen.darkmode.monochrome.png':
+      'partner/flybussen.darkmode.monochrome-f49b04bb.png',
+    'partner/flybussen.darkmode.monochrome.webp':
+      'partner/flybussen.darkmode.monochrome-8235a96b.webp',
+    'partner/flybussen.monochrome.png':
+      'partner/flybussen.monochrome-77b4f7de.png',
+    'partner/flybussen.monochrome.webp':
+      'partner/flybussen.monochrome-11b61188.webp',
+    'partner/fram.darkmode.monochrome.png':
+      'partner/fram.darkmode.monochrome-daa72a7d.png',
+    'partner/fram.darkmode.monochrome.webp':
+      'partner/fram.darkmode.monochrome-9a54237f.webp',
+    'partner/fram.darkmode.png': 'partner/fram.darkmode-b05ec9de.png',
+    'partner/fram.darkmode.webp': 'partner/fram.darkmode-85deef4e.webp',
+    'partner/fram.darkmode.symbol.png':
+      'partner/fram.darkmode.symbol-f90fa4c7.png',
+    'partner/fram.darkmode.symbol.webp':
+      'partner/fram.darkmode.symbol-a8361386.webp',
+    'partner/fram.monochrome.png': 'partner/fram.monochrome-6e35465f.png',
+    'partner/fram.monochrome.webp': 'partner/fram.monochrome-50c19d3e.webp',
+    'partner/fram.png': 'partner/fram-b05ec9de.png',
+    'partner/fram.webp': 'partner/fram-85deef4e.webp',
+    'partner/fram.symbol.png': 'partner/fram.symbol-0f6cc995.png',
+    'partner/fram.symbol.webp': 'partner/fram.symbol-7694afb0.webp',
+    'partner/getaround.monochrome.png':
+      'partner/getaround.monochrome-7c7a2c0c.png',
+    'partner/getaround.monochrome.webp':
+      'partner/getaround.monochrome-b6fd03bb.webp',
+    'partner/goa.darkmode.monochrome.png':
+      'partner/goa.darkmode.monochrome-256ca24b.png',
+    'partner/goa.darkmode.monochrome.webp':
+      'partner/goa.darkmode.monochrome-7dc93719.webp',
+    'partner/goa.darkmode.symbol.png':
+      'partner/goa.darkmode.symbol-9ec5a357.png',
+    'partner/goa.darkmode.symbol.webp':
+      'partner/goa.darkmode.symbol-62c6f9ba.webp',
+    'partner/goa.monochrome.png': 'partner/goa.monochrome-4c027d4a.png',
+    'partner/goa.monochrome.webp': 'partner/goa.monochrome-5661fb25.webp',
+    'partner/goa.symbol.png': 'partner/goa.symbol-5d3befcb.png',
+    'partner/goa.symbol.webp': 'partner/goa.symbol-7bd917bf.webp',
+    'partner/hafjell.monochrome.png': 'partner/hafjell.monochrome-cb1952f5.png',
+    'partner/hafjell.monochrome.webp':
+      'partner/hafjell.monochrome-2b6347b7.webp',
+    'partner/hafjellbussen.monochrome.png':
+      'partner/hafjellbussen.monochrome-eab98c1d.png',
+    'partner/hafjellbussen.monochrome.webp':
+      'partner/hafjellbussen.monochrome-eded870f.webp',
+    'partner/hertz.darkmode.monochrome.png':
+      'partner/hertz.darkmode.monochrome-d7723a16.png',
+    'partner/hertz.darkmode.monochrome.webp':
+      'partner/hertz.darkmode.monochrome-62e6c648.webp',
+    'partner/hertz.monochrome.png': 'partner/hertz.monochrome-9e7a6443.png',
+    'partner/hertz.monochrome.webp': 'partner/hertz.monochrome-12fbcb66.webp',
+    'partner/hyke.darkmode.monochrome.png':
+      'partner/hyke.darkmode.monochrome-9af82004.png',
+    'partner/hyke.darkmode.monochrome.webp':
+      'partner/hyke.darkmode.monochrome-299fd837.webp',
+    'partner/hyke.monochrome.png': 'partner/hyke.monochrome-2636c7a0.png',
+    'partner/hyke.monochrome.webp': 'partner/hyke.monochrome-c9c8766b.webp',
+    'partner/hyre.monochrome.png': 'partner/hyre.monochrome-e8ff6a35.png',
+    'partner/hyre.monochrome.webp': 'partner/hyre.monochrome-f3000cf0.webp',
+    'partner/innlandstrafikk.darkmode.monochrome.png':
+      'partner/innlandstrafikk.darkmode.monochrome-71442301.png',
+    'partner/innlandstrafikk.darkmode.monochrome.webp':
+      'partner/innlandstrafikk.darkmode.monochrome-c2b6efe3.webp',
+    'partner/innlandstrafikk.darkmode.png':
+      'partner/innlandstrafikk.darkmode-6681a5c2.png',
+    'partner/innlandstrafikk.darkmode.webp':
+      'partner/innlandstrafikk.darkmode-8045c693.webp',
+    'partner/innlandstrafikk.darkmode.symbol.png':
+      'partner/innlandstrafikk.darkmode.symbol-459cf4ad.png',
+    'partner/innlandstrafikk.darkmode.symbol.webp':
+      'partner/innlandstrafikk.darkmode.symbol-7a437088.webp',
+    'partner/innlandstrafikk.monochrome.png':
+      'partner/innlandstrafikk.monochrome-dbf1dccc.png',
+    'partner/innlandstrafikk.monochrome.webp':
+      'partner/innlandstrafikk.monochrome-c0d3adc6.webp',
+    'partner/innlandstrafikk.png': 'partner/innlandstrafikk-fb9f08b4.png',
+    'partner/innlandstrafikk.webp': 'partner/innlandstrafikk-2724b9eb.webp',
+    'partner/innlandstrafikk.symbol.png':
+      'partner/innlandstrafikk.symbol-d1a2366b.png',
+    'partner/innlandstrafikk.symbol.webp':
+      'partner/innlandstrafikk.symbol-a13f54af.webp',
+    'partner/kolumbus-bysykkel.monochrome.png':
+      'partner/kolumbus-bysykkel.monochrome-77a5d149.png',
+    'partner/kolumbus-bysykkel.monochrome.webp':
+      'partner/kolumbus-bysykkel.monochrome-362e0f27.webp',
+    'partner/kolumbus.darkmode.monochrome.png':
+      'partner/kolumbus.darkmode.monochrome-b1336c38.png',
+    'partner/kolumbus.darkmode.monochrome.webp':
+      'partner/kolumbus.darkmode.monochrome-eb9ece1f.webp',
+    'partner/kolumbus.darkmode.png': 'partner/kolumbus.darkmode-aa4f92f4.png',
+    'partner/kolumbus.darkmode.webp': 'partner/kolumbus.darkmode-d099d674.webp',
+    'partner/kolumbus.darkmode.symbol.png':
+      'partner/kolumbus.darkmode.symbol-161e38ca.png',
+    'partner/kolumbus.darkmode.symbol.webp':
+      'partner/kolumbus.darkmode.symbol-e083a3a6.webp',
+    'partner/kolumbus.monochrome.png':
+      'partner/kolumbus.monochrome-a6143b3d.png',
+    'partner/kolumbus.monochrome.webp':
+      'partner/kolumbus.monochrome-d9e6cfc2.webp',
+    'partner/kolumbus.png': 'partner/kolumbus-d12d33de.png',
+    'partner/kolumbus.webp': 'partner/kolumbus-a1fb04e1.webp',
+    'partner/kolumbus.symbol.png': 'partner/kolumbus.symbol-1b8c5b1c.png',
+    'partner/kolumbus.symbol.webp': 'partner/kolumbus.symbol-4ca0d11d.webp',
+    'partner/lime.monochrome.png': 'partner/lime.monochrome-dd89b406.png',
+    'partner/lime.monochrome.webp': 'partner/lime.monochrome-515df6e0.webp',
+    'partner/moveabout.monochrome.png':
+      'partner/moveabout.monochrome-a6366356.png',
+    'partner/moveabout.monochrome.webp':
+      'partner/moveabout.monochrome-e2b36bcd.webp',
+    'partner/nordland.darkmode.monochrome.png':
+      'partner/nordland.darkmode.monochrome-fe709200.png',
+    'partner/nordland.darkmode.monochrome.webp':
+      'partner/nordland.darkmode.monochrome-bed44c7b.webp',
+    'partner/nordland.darkmode.png': 'partner/nordland.darkmode-fe709200.png',
+    'partner/nordland.darkmode.webp': 'partner/nordland.darkmode-bed44c7b.webp',
+    'partner/nordland.darkmode.symbol.png':
+      'partner/nordland.darkmode.symbol-dcd22e95.png',
+    'partner/nordland.darkmode.symbol.webp':
+      'partner/nordland.darkmode.symbol-9b8e9863.webp',
+    'partner/nordland.monochrome.png':
+      'partner/nordland.monochrome-a5bfb9a0.png',
+    'partner/nordland.monochrome.webp':
+      'partner/nordland.monochrome-c10c7a53.webp',
+    'partner/nordland.png': 'partner/nordland-fe709200.png',
+    'partner/nordland.webp': 'partner/nordland-bed44c7b.webp',
+    'partner/nordland.symbol.png': 'partner/nordland.symbol-f42fad70.png',
+    'partner/nordland.symbol.webp': 'partner/nordland.symbol-74a3cb6c.webp',
+    'partner/norway-bussekspress.monochrome.png':
+      'partner/norway-bussekspress.monochrome-0aa17e80.png',
+    'partner/norway-bussekspress.monochrome.webp':
+      'partner/norway-bussekspress.monochrome-88f57f7e.webp',
+    'partner/oresundstag.darkmode.monochrome.png':
+      'partner/oresundstag.darkmode.monochrome-75fb454e.png',
+    'partner/oresundstag.darkmode.monochrome.webp':
+      'partner/oresundstag.darkmode.monochrome-de943ecf.webp',
+    'partner/oresundstag.monochrome.png':
+      'partner/oresundstag.monochrome-f9f937c9.png',
+    'partner/oresundstag.monochrome.webp':
+      'partner/oresundstag.monochrome-6a7d85f9.webp',
+    'partner/oslo-bysykkel.monochrome.png':
+      'partner/oslo-bysykkel.monochrome-ff32a3c3.png',
+    'partner/oslo-bysykkel.monochrome.webp':
+      'partner/oslo-bysykkel.monochrome-68e14aa5.webp',
+    'partner/ostfold.darkmode.monochrome.png':
+      'partner/ostfold.darkmode.monochrome-824fe6da.png',
+    'partner/ostfold.darkmode.monochrome.webp':
+      'partner/ostfold.darkmode.monochrome-cbe1b2f7.webp',
+    'partner/ostfold.darkmode.png': 'partner/ostfold.darkmode-f4a3f70e.png',
+    'partner/ostfold.darkmode.webp': 'partner/ostfold.darkmode-3cd57582.webp',
+    'partner/ostfold.darkmode.symbol.png':
+      'partner/ostfold.darkmode.symbol-71404a0c.png',
+    'partner/ostfold.darkmode.symbol.webp':
+      'partner/ostfold.darkmode.symbol-067b3278.webp',
+    'partner/ostfold.monochrome.png': 'partner/ostfold.monochrome-8fb1d764.png',
+    'partner/ostfold.monochrome.webp':
+      'partner/ostfold.monochrome-dc9245c3.webp',
+    'partner/ostfold.png': 'partner/ostfold-34a20e6a.png',
+    'partner/ostfold.webp': 'partner/ostfold-7cc5b633.webp',
+    'partner/ostfold.symbol.png': 'partner/ostfold.symbol-92942de2.png',
+    'partner/ostfold.symbol.webp': 'partner/ostfold.symbol-4fe26ad8.webp',
+    'partner/otto.monochrome.png': 'partner/otto.monochrome-bebe5218.png',
+    'partner/otto.monochrome.webp': 'partner/otto.monochrome-b25f9ac6.webp',
+    'partner/rail.png': 'partner/rail-54e60909.png',
+    'partner/rail.webp': 'partner/rail-c29ceb42.webp',
+    'partner/rail.symbol.png': 'partner/rail.symbol-1375ee7b.png',
+    'partner/rail.symbol.webp': 'partner/rail.symbol-5dc32314.webp',
+    'partner/reis-nordland.monochrome.png':
+      'partner/reis-nordland.monochrome-86f8f439.png',
+    'partner/reis-nordland.monochrome.webp':
+      'partner/reis-nordland.monochrome-b66376bb.webp',
+    'partner/ruter-no-text.monochrome.png':
+      'partner/ruter-no-text.monochrome-d2a89084.png',
+    'partner/ruter-no-text.monochrome.webp':
+      'partner/ruter-no-text.monochrome-54ab56c6.webp',
+    'partner/ruter.darkmode.monochrome.png':
+      'partner/ruter.darkmode.monochrome-000d3780.png',
+    'partner/ruter.darkmode.monochrome.webp':
+      'partner/ruter.darkmode.monochrome-28a81a0b.webp',
+    'partner/ruter.darkmode.png': 'partner/ruter.darkmode-6f8fe242.png',
+    'partner/ruter.darkmode.webp': 'partner/ruter.darkmode-5c90e6e8.webp',
+    'partner/ruter.darkmode.symbol.png':
+      'partner/ruter.darkmode.symbol-52072bd2.png',
+    'partner/ruter.darkmode.symbol.webp':
+      'partner/ruter.darkmode.symbol-65ed76da.webp',
+    'partner/ruter.monochrome.png': 'partner/ruter.monochrome-a61a6075.png',
+    'partner/ruter.monochrome.webp': 'partner/ruter.monochrome-f76951ad.webp',
+    'partner/ruter.png': 'partner/ruter-46a218a7.png',
+    'partner/ruter.webp': 'partner/ruter-627992ea.webp',
+    'partner/ruter.symbol.png': 'partner/ruter.symbol-0c006e52.png',
+    'partner/ruter.symbol.webp': 'partner/ruter.symbol-3ccea27f.webp',
+    'partner/ryde.monochrome.png': 'partner/ryde.monochrome-9288d33b.png',
+    'partner/ryde.monochrome.webp': 'partner/ryde.monochrome-325044d1.webp',
+    'partner/scooter.monochrome.png': 'partner/scooter.monochrome-e158ce67.png',
+    'partner/scooter.monochrome.webp':
+      'partner/scooter.monochrome-7e9d7f8d.webp',
+    'partner/sj-nord.monochrome.png': 'partner/sj-nord.monochrome-08ce2462.png',
+    'partner/sj-nord.monochrome.webp':
+      'partner/sj-nord.monochrome-74bf9697.webp',
+    'partner/sj.darkmode.monochrome.png':
+      'partner/sj.darkmode.monochrome-9252e802.png',
+    'partner/sj.darkmode.monochrome.webp':
+      'partner/sj.darkmode.monochrome-126aa48a.webp',
+    'partner/sj.darkmode.symbol.png': 'partner/sj.darkmode.symbol-5ea8f49c.png',
+    'partner/sj.darkmode.symbol.webp':
+      'partner/sj.darkmode.symbol-90ae82ff.webp',
+    'partner/sj.monochrome.png': 'partner/sj.monochrome-bc1b790a.png',
+    'partner/sj.monochrome.webp': 'partner/sj.monochrome-00d87977.webp',
+    'partner/sj.symbol.png': 'partner/sj.symbol-bb686e06.png',
+    'partner/sj.symbol.webp': 'partner/sj.symbol-32049087.webp',
+    'partner/skyss-no-text.monochrome.png':
+      'partner/skyss-no-text.monochrome-5ab27a62.png',
+    'partner/skyss-no-text.monochrome.webp':
+      'partner/skyss-no-text.monochrome-e7c6522c.webp',
+    'partner/skyss.darkmode.monochrome.png':
+      'partner/skyss.darkmode.monochrome-27b91568.png',
+    'partner/skyss.darkmode.monochrome.webp':
+      'partner/skyss.darkmode.monochrome-2e7deb6f.webp',
+    'partner/skyss.darkmode.png': 'partner/skyss.darkmode-4fc4abfd.png',
+    'partner/skyss.darkmode.webp': 'partner/skyss.darkmode-47c6890e.webp',
+    'partner/skyss.darkmode.symbol.png':
+      'partner/skyss.darkmode.symbol-025a2d3d.png',
+    'partner/skyss.darkmode.symbol.webp':
+      'partner/skyss.darkmode.symbol-44bc4388.webp',
+    'partner/skyss.monochrome.png': 'partner/skyss.monochrome-3065f2cf.png',
+    'partner/skyss.monochrome.webp': 'partner/skyss.monochrome-6a4668bd.webp',
+    'partner/skyss.png': 'partner/skyss-29fe7509.png',
+    'partner/skyss.webp': 'partner/skyss-48121ca6.webp',
+    'partner/skyss.symbol.png': 'partner/skyss.symbol-033e2c85.png',
+    'partner/skyss.symbol.webp': 'partner/skyss.symbol-a36e7b9e.webp',
+    'partner/snalltaget.darkmode.monochrome.png':
+      'partner/snalltaget.darkmode.monochrome-2d500bda.png',
+    'partner/snalltaget.darkmode.monochrome.webp':
+      'partner/snalltaget.darkmode.monochrome-a10bcd12.webp',
+    'partner/snalltaget.monochrome.png':
+      'partner/snalltaget.monochrome-eaf2392a.png',
+    'partner/snalltaget.monochrome.webp':
+      'partner/snalltaget.monochrome-34e6ffa0.webp',
+    'partner/snelandia.darkmode.monochrome.png':
+      'partner/snelandia.darkmode.monochrome-85554f75.png',
+    'partner/snelandia.darkmode.monochrome.webp':
+      'partner/snelandia.darkmode.monochrome-fa371881.webp',
+    'partner/snelandia.darkmode.png': 'partner/snelandia.darkmode-e02566da.png',
+    'partner/snelandia.darkmode.webp':
+      'partner/snelandia.darkmode-0cb2e5d9.webp',
+    'partner/snelandia.darkmode.symbol.png':
+      'partner/snelandia.darkmode.symbol-21b9c6c8.png',
+    'partner/snelandia.darkmode.symbol.webp':
+      'partner/snelandia.darkmode.symbol-05f12506.webp',
+    'partner/snelandia.monochrome.png':
+      'partner/snelandia.monochrome-605c59c1.png',
+    'partner/snelandia.monochrome.webp':
+      'partner/snelandia.monochrome-99be960d.webp',
+    'partner/snelandia.png': 'partner/snelandia-340bf91f.png',
+    'partner/snelandia.webp': 'partner/snelandia-e20bc7bc.webp',
+    'partner/snelandia.symbol.png': 'partner/snelandia.symbol-003c1042.png',
+    'partner/snelandia.symbol.webp': 'partner/snelandia.symbol-cc7775f9.webp',
+    'partner/surf.monochrome.png': 'partner/surf.monochrome-e1eab289.png',
+    'partner/surf.monochrome.webp': 'partner/surf.monochrome-9b1c6975.webp',
+    'partner/svipper.darkmode.monochrome.png':
+      'partner/svipper.darkmode.monochrome-4ee44e48.png',
+    'partner/svipper.darkmode.monochrome.webp':
+      'partner/svipper.darkmode.monochrome-6f3408be.webp',
+    'partner/svipper.darkmode.png': 'partner/svipper.darkmode-953cfd7c.png',
+    'partner/svipper.darkmode.webp': 'partner/svipper.darkmode-e1d1161f.webp',
+    'partner/svipper.darkmode.symbol.png':
+      'partner/svipper.darkmode.symbol-bb3662e4.png',
+    'partner/svipper.darkmode.symbol.webp':
+      'partner/svipper.darkmode.symbol-9ce85485.webp',
+    'partner/svipper.monochrome.png': 'partner/svipper.monochrome-60bee221.png',
+    'partner/svipper.monochrome.webp':
+      'partner/svipper.monochrome-aa6dd0e4.webp',
+    'partner/svipper.png': 'partner/svipper-953cfd7c.png',
+    'partner/svipper.webp': 'partner/svipper-e1d1161f.webp',
+    'partner/svipper.symbol.png': 'partner/svipper.symbol-bb3662e4.png',
+    'partner/svipper.symbol.webp': 'partner/svipper.symbol-9ce85485.webp',
+    'partner/tier.monochrome.png': 'partner/tier.monochrome-b4fca8be.png',
+    'partner/tier.monochrome.webp': 'partner/tier.monochrome-2db00357.webp',
+    'partner/tog.darkmode.png': 'partner/tog.darkmode-b62f7c05.png',
+    'partner/tog.darkmode.webp': 'partner/tog.darkmode-05e3908c.webp',
+    'partner/tog.darkmode.symbol.png':
+      'partner/tog.darkmode.symbol-51a7ad54.png',
+    'partner/tog.darkmode.symbol.webp':
+      'partner/tog.darkmode.symbol-08e87aae.webp',
+    'partner/tog.png': 'partner/tog-54e60909.png',
+    'partner/tog.webp': 'partner/tog-c29ceb42.webp',
+    'partner/tog.symbol.png': 'partner/tog.symbol-51a7ad54.png',
+    'partner/tog.symbol.webp': 'partner/tog.symbol-08e87aae.webp',
+    'partner/troms-fylkestrafikk.monochrome.png':
+      'partner/troms-fylkestrafikk.monochrome-b4c81067.png',
+    'partner/troms-fylkestrafikk.monochrome.webp':
+      'partner/troms-fylkestrafikk.monochrome-6391892c.webp',
+    'partner/troms.darkmode.monochrome.png':
+      'partner/troms.darkmode.monochrome-ca1e1272.png',
+    'partner/troms.darkmode.monochrome.webp':
+      'partner/troms.darkmode.monochrome-5cdd0a98.webp',
+    'partner/troms.darkmode.png': 'partner/troms.darkmode-89042b6e.png',
+    'partner/troms.darkmode.webp': 'partner/troms.darkmode-2e346b38.webp',
+    'partner/troms.darkmode.symbol.png':
+      'partner/troms.darkmode.symbol-8793f2ef.png',
+    'partner/troms.darkmode.symbol.webp':
+      'partner/troms.darkmode.symbol-fda2bd84.webp',
+    'partner/troms.monochrome.png': 'partner/troms.monochrome-86d84ed1.png',
+    'partner/troms.monochrome.webp': 'partner/troms.monochrome-d43571e1.webp',
+    'partner/troms.png': 'partner/troms-dad7f037.png',
+    'partner/troms.webp': 'partner/troms-b7887160.webp',
+    'partner/troms.symbol.png': 'partner/troms.symbol-0e323899.png',
+    'partner/troms.symbol.webp': 'partner/troms.symbol-ab87478f.webp',
+    'partner/trondheim-bysykkel.monochrome.png':
+      'partner/trondheim-bysykkel.monochrome-1ab20724.png',
+    'partner/trondheim-bysykkel.monochrome.webp':
+      'partner/trondheim-bysykkel.monochrome-db6c0ff5.webp',
+    'partner/vkt.darkmode.monochrome.png':
+      'partner/vkt.darkmode.monochrome-047afb28.png',
+    'partner/vkt.darkmode.monochrome.webp':
+      'partner/vkt.darkmode.monochrome-7a0a27a4.webp',
+    'partner/vkt.darkmode.png': 'partner/vkt.darkmode-8f872ff9.png',
+    'partner/vkt.darkmode.webp': 'partner/vkt.darkmode-c0fd38b5.webp',
+    'partner/vkt.darkmode.symbol.png':
+      'partner/vkt.darkmode.symbol-0432aec0.png',
+    'partner/vkt.darkmode.symbol.webp':
+      'partner/vkt.darkmode.symbol-ba0bd1ed.webp',
+    'partner/vkt.monochrome.png': 'partner/vkt.monochrome-51adac4c.png',
+    'partner/vkt.monochrome.webp': 'partner/vkt.monochrome-e4b59c81.webp',
+    'partner/vkt.png': 'partner/vkt-5d57491e.png',
+    'partner/vkt.webp': 'partner/vkt-72da0cf8.webp',
+    'partner/vkt.symbol.png': 'partner/vkt.symbol-17c8160c.png',
+    'partner/vkt.symbol.webp': 'partner/vkt.symbol-e6318137.webp',
+    'partner/voi.monochrome.png': 'partner/voi.monochrome-b91a2118.png',
+    'partner/voi.monochrome.webp': 'partner/voi.monochrome-2468851f.webp',
+    'partner/vy.darkmode.monochrome.png':
+      'partner/vy.darkmode.monochrome-d4d6a643.png',
+    'partner/vy.darkmode.monochrome.webp':
+      'partner/vy.darkmode.monochrome-e9680f9a.webp',
+    'partner/vy.darkmode.symbol.png': 'partner/vy.darkmode.symbol-57176388.png',
+    'partner/vy.darkmode.symbol.webp':
+      'partner/vy.darkmode.symbol-4ffecc9c.webp',
+    'partner/vy.monochrome.png': 'partner/vy.monochrome-ab20d088.png',
+    'partner/vy.monochrome.webp': 'partner/vy.monochrome-894a0a47.webp',
+    'partner/vy.symbol.png': 'partner/vy.symbol-9169584f.png',
+    'partner/vy.symbol.webp': 'partner/vy.symbol-eca83b55.webp',
+    'partner/zvipp.monochrome.png': 'partner/zvipp.monochrome-3d848d79.png',
+    'partner/zvipp.monochrome.webp': 'partner/zvipp.monochrome-dd753c2a.webp',
   },
 };
