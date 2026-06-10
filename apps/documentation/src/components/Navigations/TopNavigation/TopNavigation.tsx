@@ -3,11 +3,8 @@ import { Link } from 'gatsby';
 import { Location, useLocation } from '@reach/router';
 import classNames from 'classnames';
 
-import { IconButton } from '@entur/button';
-import { GithubIcon } from '@entur/icons';
 import { useContrast } from '@entur/layout';
 import { TopNavigationItem } from '@entur/menu';
-import { Tooltip } from '@entur/tooltip';
 
 import SettingsPanel from '../SettingsPanel';
 import { useSettings } from '@providers/SettingsContext';
@@ -18,7 +15,10 @@ import logoDark from '@media/logo/logoDark.svg';
 
 import './TopNavigation.scss';
 
-const TopNavigation = () => {
+const TopNavigation = ({
+  className,
+  ...rest
+}: React.ComponentPropsWithoutRef<'header'>) => {
   const { colorMode } = useSettings();
   const isContrast = useContrast();
   const location = useLocation();
@@ -31,11 +31,11 @@ const TopNavigation = () => {
       typeof window !== 'undefined' &&
       window.matchMedia('(prefers-color-scheme: dark)').matches);
   return (
-    <nav
-      className={classNames('top-navigation', {
+    <header
+      className={classNames('top-navigation', className, {
         'top-navigation--frontpage eds-contrast': isFrontpage,
       })}
-      aria-label="Navigasjon, hovedseksjoner"
+      {...rest}
     >
       <Link to="/" className="top-navigation__logo">
         <img
@@ -45,26 +45,18 @@ const TopNavigation = () => {
           alt="Entur logo, klikk for å gå til startsiden"
         />
       </Link>
-      <NavItem to="/kom-i-gang">Kom i gang</NavItem>
-      <NavItem to="/identitet">Identitet</NavItem>
-      <NavItem to="/komponenter">Komponenter</NavItem>
-      <NavItem to="/tokens">Tokens</NavItem>
-      <NavItem to="/monster">Mønster</NavItem>
-      <NavItem to="/ressurser">Ressurser</NavItem>
-      <NavItem to="/universell-utforming">Universell utforming</NavItem>
+      <nav aria-label="Navigasjon, hovedseksjoner">
+        <NavItem to="/kom-i-gang">Kom i gang</NavItem>
+        <NavItem to="/identitet">Identitet</NavItem>
+        <NavItem to="/komponenter">Komponenter</NavItem>
+        <NavItem to="/tokens">Tokens</NavItem>
+        <NavItem to="/monster">Mønster</NavItem>
+        <NavItem to="/ressurser">Ressurser</NavItem>
+        <NavItem to="/universell-utforming">Universell utforming</NavItem>
+      </nav>
       <Search />
-      <Tooltip content="Entur Linje på GitHub">
-        <IconButton
-          className="top-navigation__github"
-          aria-label="Entur Linje på Github"
-          as="a"
-          href="https://github.com/entur/design-system"
-        >
-          <GithubIcon aria-hidden />
-        </IconButton>
-      </Tooltip>
       <SettingsPanel />
-    </nav>
+    </header>
   );
 };
 

@@ -10,7 +10,6 @@ import SideNavigation from './SideNavigation';
 import './SideNavigation.scss';
 
 type MobileMenuProps = {
-  className?: string;
   menuItems: MenuItem[];
   openSidebar: boolean;
   setOpenSidebar: React.Dispatch<React.SetStateAction<boolean>>;
@@ -31,6 +30,7 @@ const MobileSideNavigation: React.FC<MobileMenuProps> = ({
         open={openSidebar}
         onDismiss={() => setOpenSidebar(false)}
         title="Navigasjonsmeny"
+        overlay
         className="side-navigation__drawer"
       >
         <SideNavigation

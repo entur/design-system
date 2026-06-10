@@ -5,7 +5,7 @@ import { ComponentIcon, GithubIcon, SourceCodeIcon } from '@entur/icons';
 import { ActionChip } from '@entur/chip';
 import { Flex, Grid } from '@entur/layout/beta';
 import { Badge } from '@entur/layout';
-import { sanitizeEnturPackageName } from 'src/utils/utils';
+import { isBetaTag, sanitizeEnturPackageName } from 'src/utils/utils';
 import { NpmTag } from './NpmTag';
 import './PageHeader.scss';
 
@@ -51,7 +51,7 @@ export const BasePageHeader: React.FC<BasePageHeaderProps> = ({
           </Heading1>
           {tag && (
             <Badge
-              variant={tag === 'beta' ? 'warning' : 'positive'}
+              variant={isBetaTag(tag) ? 'warning' : 'positive'}
               type="status"
             >
               {tag}
@@ -90,7 +90,7 @@ export const BasePageHeader: React.FC<BasePageHeaderProps> = ({
                   className="ds-npm-tag"
                   href={`https://github.com/entur/design-system/tree/main/packages/${sanitizeEnturPackageName(
                     npmPackage,
-                  )}${tag === 'beta' ? '/src/beta' : ''}`}
+                  )}${isBetaTag(tag) ? '/src/beta' : ''}`}
                 >
                   <ActionChip>
                     Github <GithubIcon aria-hidden="true" />

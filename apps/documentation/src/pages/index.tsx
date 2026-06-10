@@ -33,7 +33,7 @@ import './index.scss';
 const Index = () => {
   const { width } = useWindowDimensions();
   const [backgroundHeight, setBackgroundHeight] = useState(0);
-  const footerRef = useRef<HTMLDivElement>(null);
+  const footerRef = useRef<HTMLElement>(null);
   const mainRef = useRef<HTMLDivElement>(null);
 
   const _width = Math.floor(width ?? 0 / 100);
@@ -168,7 +168,7 @@ const Index = () => {
               </SecondaryButton>
             </div>
           </main>
-          <Footer footerRef={footerRef} forceColorMode="contrast" />
+          <Footer footerRef={footerRef} contrast />
         </div>
       </Contrast>
     </>

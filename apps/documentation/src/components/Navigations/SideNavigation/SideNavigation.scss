@@ -30,13 +30,11 @@
   }
 
   &-wrapper {
-    position: fixed;
-    z-index: eds.$z-indexes-sticky;
-    top: variables.$navbar-height;
-    height: calc(100dvh - variables.$navbar-height);
-    overflow-y: scroll;
-    width: variables.$side-navigation-width--large-desktop;
-    background: var(--components-menu-sidenavigation-standard-background);
+    position: sticky;
+    top: var(--navbar-height);
+    max-height: calc(100dvh - var(--navbar-height));
+    overflow-y: auto;
+    width: 100%;
   }
 
   &__drawer {
@@ -71,6 +69,10 @@
       z-index: eds.$z-indexes-toast;
       transform: scale(1.25);
       transition: transform eds.$timings-medium ease-in-out;
+
+      @media screen and (min-width: map.get(variables.$breakpoints, 'tablet')) {
+        display: none;
+      }
 
       &:focus-visible {
         outline: eds.$outlines-focus;

@@ -2,7 +2,7 @@ import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import { Tag } from '@entur/layout';
 import { Flex } from '@entur/layout/beta';
-import { sanitizeEnturPackageName } from 'src/utils/utils';
+import { isBetaTag, sanitizeEnturPackageName } from 'src/utils/utils';
 
 import './NpmTag.scss';
 
@@ -31,7 +31,7 @@ export const NpmTag: React.FC<{ packageName: string; tag?: string }> = ({
     <Flex gap="s">
       <Tag>
         {fullPackageName}
-        {tag === 'beta' ? '/beta' : ''}
+        {isBetaTag(tag) ? '/beta' : ''}
       </Tag>
       <Tag>v{currentPackage?.version}</Tag>
     </Flex>

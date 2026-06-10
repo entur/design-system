@@ -88,6 +88,11 @@ tsconfig.json
 package.json
 ```
 
+## HTML & Markup Principles
+
+- **Minimize wrappers:** Avoid unnecessary wrapper elements. Prefer composing via the `as` prop (e.g. `<GridItem as={Footer}>`) over adding wrapping `<div>`s.
+- **Semantic HTML5:** Use the correct element for the job — `<header>`, `<footer>`, `<nav>`, `<main>`, `<section>`, `<aside>`, etc. — rather than generic `<div>`s wherever semantics apply.
+
 ## Architecture & Patterns
 
 - **Polymorphic components:** Many components accept an `as` prop for element composition (e.g. Button can render as `<a>`)

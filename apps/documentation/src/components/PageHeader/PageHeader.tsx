@@ -1,99 +1,33 @@
 import React from 'react';
-import { useLocation } from '@reach/router';
-import { graphql, useStaticQuery } from 'gatsby';
-import { Heading1, Label, LeadParagraph } from '@entur/typography';
-import { useSettings } from '@providers/SettingsContext';
-import { PackageChangelog } from './PackageChangelog';
-import { NpmChip } from './NpmChip';
-import { CopyableText } from '@entur/alert';
-import './PageHeader.scss';
+import { BasePageHeader } from './BasePageHeader';
 
-type Props = {
-  category?: string;
-  forceNoLeadText?: boolean;
+type Frontmatter = {
   title?: string;
+  description?: string;
+  parent?: string;
+  menu?: string;
+  npmPackage?: string;
+  tag?: string;
+  figmaLink?: string;
 };
 
-const PageHeader: React.FC<Props> = ({ title, category, forceNoLeadText }) => {
-  const location = useLocation();
-  const data = useStaticQuery(graphql`
-    query {
-      allMdx {
-        nodes {
-          frontmatter {
-            title
-            npmPackage
-            route
-            description
-            parent
-            menu
-          }
-        }
-      }
-    }
-  `);
+type Props = {
+  frontmatter?: Frontmatter;
+};
 
-  const currentDoc = data.allMdx.nodes.find(node =>
-    new RegExp(`^${node.frontmatter.route}$`).test(location.pathname),
-  );
-
-  const npmPackage = currentDoc?.frontmatter?.npmPackage || '';
-
-  const categoryToShow = category || currentDoc?.frontmatter.menu || '';
-  const titleToShow = title || currentDoc?.frontmatter?.title || '';
-  const { packageManager, userType } = useSettings();
-  const leadText = forceNoLeadText
-    ? null
-    : currentDoc?.frontmatter?.description;
-  const installText =
-    packageManager === 'yarn'
-      ? `yarn add @entur/${npmPackage}`
-      : `npm install @entur/${npmPackage}`;
-  const cssImport = `@import '@entur/${npmPackage}/dist/styles.css';`;
+const PageHeader: React.FC<Props> = ({ frontmatter }) => {
+  if (!frontmatter?.title) return null;
 
   return (
-    <header>
-      {categoryToShow && (
-        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-          <Label
-            as="div"
-            style={{ letterSpacing: '1px', marginBottom: '0.5rem' }}
-          >
-            {categoryToShow.toUpperCase()}
-          </Label>
-          {npmPackage && userType === 'developer' && (
-            <span style={{ float: 'right' }}>
-              <PackageChangelog packageName={npmPackage} />
-            </span>
-          )}
-        </div>
-      )}
-      <div style={{ display: 'flex', alignItems: 'center' }}>
-        <Heading1 margin="none" style={{ marginRight: '1rem' }}>
-          {titleToShow}
-        </Heading1>
-        {npmPackage && userType === 'developer' && (
-          <NpmChip packageName={npmPackage} />
-        )}
-      </div>
-      {leadText && <LeadParagraph>{leadText}</LeadParagraph>}
-      {npmPackage && userType === 'developer' && (
-        <div className="page-header__import-wrapper">
-          <CopyableText
-            successMessage="Innstalleringstekst ble kopiert til utklippstavla."
-            className="page-header__import-wrapper__copy-button"
-          >
-            {installText}
-          </CopyableText>
-          <CopyableText
-            successMessage="CSS-importen ble kopiert til utklippstavla."
-            className="page-header__import-wrapper__copy-button"
-          >
-            {cssImport}
-          </CopyableText>
-        </div>
-      )}
-    </header>
+    <BasePageHeader
+      title={frontmatter.title}
+      category={frontmatter.parent}
+      subcategory={frontmatter.menu}
+      description={frontmatter.description}
+      npmPackage={frontmatter.npmPackage}
+      tag={frontmatter.tag}
+      figmaLink={frontmatter.figmaLink}
+    />
   );
 };
 

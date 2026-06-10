@@ -39,10 +39,14 @@ const extractHeadingsFromPortableText = (content: any): TocHeading[] => {
 const SanityTableOfContent: React.FC<SanityTableOfContentProps> = ({
   content,
 }) => {
-  const headings = useMemo(
-    () => extractHeadingsFromPortableText(content),
-    [content],
-  );
+  const headings = useMemo(() => {
+    const seen = new Set<string>();
+    return extractHeadingsFromPortableText(content).filter(h => {
+      if (seen.has(h.id)) return false;
+      seen.add(h.id);
+      return true;
+    });
+  }, [content]);
 
   return <TableOfContent headings={headings} />;
 };

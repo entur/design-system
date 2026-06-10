@@ -156,7 +156,7 @@ const TableOfContent: React.FC<TableOfContentProps> = ({ headings }) => {
   return (
     <>
       <nav className="table-of-content-sidebar" aria-label="Innhold">
-        <Heading4 as="h2" style={{ margin: 0 }}>
+        <Heading4 as="h2" style={{ margin: 0, marginBlockEnd: '1rem' }}>
           Innhold
         </Heading4>
         <TocList
