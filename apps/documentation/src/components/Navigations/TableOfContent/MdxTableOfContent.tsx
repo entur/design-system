@@ -15,7 +15,6 @@ interface TableOfContentQuery {
     nodes: {
       frontmatter: {
         route: string;
-        removeToc: boolean;
       };
       tableOfContents: {
         items?: MdxHeading[];
@@ -49,7 +48,6 @@ const MdxTableOfContent = () => {
         nodes {
           frontmatter {
             route
-            removeToc
           }
           tableOfContents
         }
@@ -64,7 +62,7 @@ const MdxTableOfContent = () => {
         removeTrailingSlash(node.frontmatter.route) ===
         removeTrailingSlash(pathname),
     );
-    if (!currentDoc || currentDoc.frontmatter.removeToc) return [];
+    if (!currentDoc) return [];
     return flattenHeadings(currentDoc.tableOfContents?.items);
   }, [data, pathname]);
 

@@ -3,7 +3,6 @@ import Props from '@components/Props/Props';
 import Playground from '@components/Playground/Playground';
 import { DoDontCard, DoDontGroup } from '@components/Cards/DoDont';
 import BaseCardDesignEntur from '@components/Cards/BaseCardDesignEntur';
-import PageHeader from '@components/PageHeader/PageHeader';
 import { ImageDisplay } from '@components/Media/ImageDisplay';
 import { ImportStatement } from '@components/Common/ImportStatement';
 import { IconButton, PrimaryButton, SecondaryButton } from '@entur/button';
@@ -163,7 +162,6 @@ const components = {
   DoDontGroup,
   DoDontCard,
   BaseCardDesignEntur,
-  PageHeader,
   ImageDisplay,
   Checkbox,
   Radio,
