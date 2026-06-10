@@ -6,9 +6,10 @@ import { PageProps, graphql, useStaticQuery } from 'gatsby';
 
 const SideNavigationLayout = ({
   location,
+  ...rest
 }: {
   location: PageProps['location'];
-}) => {
+} & React.ComponentPropsWithoutRef<'nav'>) => {
   const [openSidebar, setOpenSidebar] = React.useState(false);
 
   const MenuData = useStaticQuery(graphql`
@@ -22,7 +23,6 @@ const SideNavigationLayout = ({
             parent
             menu
             order
-            removeToc
             npmPackage
             tags
             categoryIndex
@@ -58,18 +58,19 @@ const SideNavigationLayout = ({
   ]);
 
   return (
-    <nav aria-label="Sidemeny">
-      <div className="side-navigation--desktop">
-        <SideNavigation menuItems={menuItems} currentLocation={location} />
-      </div>
-      <div className="side-navigation--mobile">
-        <MobileSideNavigation
-          menuItems={menuItems}
-          openSidebar={openSidebar}
-          setOpenSidebar={setOpenSidebar}
-          currentLocation={location}
-        />
-      </div>
+    <nav aria-label="Sidemeny" {...rest}>
+      <SideNavigation
+        className="side-navigation--desktop"
+        menuItems={menuItems}
+        currentLocation={location}
+      />
+      <MobileSideNavigation
+        className="side-navigation--mobile"
+        menuItems={menuItems}
+        openSidebar={openSidebar}
+        setOpenSidebar={setOpenSidebar}
+        currentLocation={location}
+      />
     </nav>
   );
 };

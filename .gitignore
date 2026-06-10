@@ -37,6 +37,7 @@ coverage
 /.claude/commands/*
 !/.claude/commands/commit.md
 !/.claude/commands/update-pr.md
+.playwright-mcp
 
 # GitHub
 # We might want to include skills later on

@@ -18,7 +18,7 @@ import logoDark from '@media/logo/logoDark.svg';
 
 import './TopNavigation.scss';
 
-const TopNavigation = () => {
+const TopNavigation = ({ className, ...rest }: React.ComponentPropsWithoutRef<'nav'>) => {
   const { colorMode } = useSettings();
   const isContrast = useContrast();
   const location = useLocation();
@@ -32,10 +32,11 @@ const TopNavigation = () => {
       window.matchMedia('(prefers-color-scheme: dark)').matches);
   return (
     <nav
-      className={classNames('top-navigation', {
+      className={classNames('top-navigation', className, {
         'top-navigation--frontpage eds-contrast': isFrontpage,
       })}
       aria-label="Navigasjon, hovedseksjoner"
+      {...rest}
     >
       <Link to="/" className="top-navigation__logo">
         <img

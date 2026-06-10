@@ -1,10 +1,18 @@
 export const SCROLL_OFFSET_REM = 5.5;
 
+const getNavbarHeightPx = () => {
+  if (typeof window === 'undefined') return SCROLL_OFFSET_REM * 16;
+  const val = getComputedStyle(document.documentElement)
+    .getPropertyValue('--navbar-height')
+    .trim();
+  return (parseFloat(val) + 0.5) * 16;
+};
+
 export const scrollToElement = (elementId: string, offset?: number) => {
   const element = document.getElementById(elementId);
   if (!element) return;
 
-  const scrollOffset = (offset ?? SCROLL_OFFSET_REM) * 16;
+  const scrollOffset = offset !== undefined ? offset * 16 : getNavbarHeightPx();
   const top =
     element.getBoundingClientRect().top + window.scrollY - scrollOffset;
 

@@ -45,12 +45,7 @@ export const wrapPageElement: GatsbySSR['wrapPageElement'] = ({
   const normalizedPath = props.location.pathname.replace(/\/$/, '') || '/';
   if (CUSTOM_LAYOUT_PAGES.includes(normalizedPath)) return <>{children}</>;
 
-  const disableToc = Boolean(props.pageContext?.isComponentDoc);
-  return (
-    <DocLayout {...props} disableToc={disableToc}>
-      {children}
-    </DocLayout>
-  );
+  return <DocLayout {...props}>{children}</DocLayout>;
 };
 
 export const onRenderBody: GatsbySSR['onRenderBody'] = ({

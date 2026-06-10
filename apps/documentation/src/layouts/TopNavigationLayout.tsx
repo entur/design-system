@@ -4,11 +4,17 @@ import MobileTopNavigation from '@components/Navigations/TopNavigation/MobileTop
 import { useWindowDimensions } from '@entur/utils';
 import { pxToRem } from 'src/utils/utils';
 
-const TopNavigationLayout: React.FC = () => {
+const TopNavigationLayout: React.FC<
+  React.HTMLAttributes<HTMLElement>
+> = props => {
   const { width } = useWindowDimensions();
   const remWidth = pxToRem(width);
   const isMobile = remWidth !== undefined && remWidth < 60;
-  return isMobile ? <MobileTopNavigation /> : <TopNavigation />;
+  return isMobile ? (
+    <MobileTopNavigation {...props} />
+  ) : (
+    <TopNavigation {...props} />
+  );
 };
 
 export default TopNavigationLayout;

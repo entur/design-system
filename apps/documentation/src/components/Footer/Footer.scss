@@ -1,52 +1,59 @@
+@use '@entur/tokens/dist/styles.scss' as eds;
 @use '@entur/utils/dist/breakpoints.scss' as breakpoint;
 
 .footer {
   position: relative;
-  background-color: var(--basecolors-frame-contrast);
-
-  &--light {
-    background-color: var(--basecolors-background-default);
-  }
-
-  &__mobile-item {
-    @include breakpoint.for-desktop {
-      display: none;
-    }
-  }
-  &__lead {
-    margin: 0 !important;
-    @include breakpoint.for-desktop {
-      width: 69%;
-    }
-  }
+  border-top: eds.$border-widths-default solid var(--designentur-header-default-divider);
 
   &__grid-container {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 2rem 1.5rem;
+
     @include breakpoint.for-desktop {
-      padding-top: 4.5rem;
-      padding-bottom: 2.5rem;
-    }
-    .eds-grid__container {
-      gap: 2rem;
-      @include breakpoint.for-desktop;
+      grid-template-columns: repeat(3, 1fr);
+      padding: 4rem 3rem 3rem;
     }
   }
+
+  &__social {
+    display: flex;
+    margin-top: 1rem;
+
+    .eds-icon-button {
+      width: unset;
+      height: unset;
+    }
+  }
+
   &__link {
     display: block;
     width: fit-content;
     margin-bottom: 1rem;
   }
+
+  &__description {
+    margin-top: 1rem;
+    margin-bottom: 0;
+  }
+
   &__entur-banner {
     display: flex;
-    justify-content: space-between;
-    max-width: 1328px;
-    margin: 0 auto;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
     border-top: 1px solid var(--designentur-footer-default-divider);
     padding: 1rem 1.5rem;
+
+    @include breakpoint.for-desktop {
+      padding-left: 3rem;
+      padding-right: 3rem;
+    }
+
+    &__item {
+      border-right: 1px solid var(--designentur-footer-default-divider);
+      padding-right: 0.5rem;
+    }
   }
 }

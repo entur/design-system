@@ -31,7 +31,7 @@ const MobileTopNavigation: React.FC<MobileTopNavigationProps> = ({
 
   return (
     <nav
-      className={classNames('mobile-topnav', {
+      className={classNames('mobile-topnav', className, {
         'eds-contrast':
           typeof window !== 'undefined' && window.location.pathname === '/',
       })}
