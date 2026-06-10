@@ -38,12 +38,6 @@
       outline-offset: eds.$outline-offsets-focus;
     }
   }
-  &__github {
-    display: flex;
-    gap: eds.$space-extra-small;
-    margin-left: eds.$space-small;
-  }
-
   nav {
     display: contents;
   }
