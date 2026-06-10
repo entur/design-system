@@ -10,7 +10,6 @@ import SideNavigation from './SideNavigation';
 import './SideNavigation.scss';
 
 type MobileMenuProps = {
-  className?: string;
   menuItems: MenuItem[];
   openSidebar: boolean;
   setOpenSidebar: React.Dispatch<React.SetStateAction<boolean>>;

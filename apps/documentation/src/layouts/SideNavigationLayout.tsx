@@ -65,7 +65,6 @@ const SideNavigationLayout = ({
         currentLocation={location}
       />
       <MobileSideNavigation
-        className="side-navigation--mobile"
         menuItems={menuItems}
         openSidebar={openSidebar}
         setOpenSidebar={setOpenSidebar}
