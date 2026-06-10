@@ -51,14 +51,15 @@ body {
 }
 
 .page {
-  display: flex;
-  flex-direction: column;
+  min-width: 0;
   margin: eds.$space-extra-large eds.$space-extra-large eds.$space-default;
+  padding-top: var(--navbar-height);
   transition: max-width eds.$timings-fast ease-out, margin-left eds.$timings-fast ease-out;
 
   @media screen and (min-width: map.get(variables.$breakpoints, 'tablet')) {
     max-width: 45rem;
     margin: 2rem 2rem 1rem 3rem;
+    padding-top: 0;
   }
 }
 
