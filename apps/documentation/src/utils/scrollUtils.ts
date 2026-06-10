@@ -5,7 +5,9 @@ const getNavbarHeightPx = () => {
   const val = getComputedStyle(document.documentElement)
     .getPropertyValue('--navbar-height')
     .trim();
-  return (parseFloat(val) + 1.5) * 16;
+  const height = parseFloat(val);
+  if (isNaN(height)) return SCROLL_OFFSET_REM * 16;
+  return (height + 1.5) * 16;
 };
 
 export const scrollToElement = (elementId: string, offset?: number) => {

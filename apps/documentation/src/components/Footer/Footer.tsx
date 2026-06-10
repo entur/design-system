@@ -48,7 +48,7 @@ const Footer = ({
           <Link
             as="button"
             type="button"
-            onClick={() => window.__ucCmp.showFirstLayer()}
+            onClick={() => window.__ucCmp?.showFirstLayer()}
             className="footer__link"
           >
             <CookieFilledIcon inline aria-hidden="true" /> Endre hvilken
