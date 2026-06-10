@@ -5,6 +5,10 @@
   position: relative;
   border-top: eds.$border-widths-default solid var(--designentur-header-default-divider);
 
+  &.eds-contrast {
+    border-top-color: var(--designentur-header-contrast-divider);
+  }
+
   &__grid-container {
     display: grid;
     grid-template-columns: 1fr;
@@ -41,6 +45,10 @@
     gap: 0.5rem;
     align-items: center;
     border-top: 1px solid var(--designentur-footer-default-divider);
+
+    .eds-contrast & {
+      border-top-color: var(--designentur-footer-contrast-divider);
+    }
     padding: 1rem 1.5rem;
 
     @include breakpoint.for-desktop {
