@@ -17,20 +17,16 @@
     }
   }
 
-  &__social {
-    display: flex;
-    margin-top: 1rem;
-
-    .eds-icon-button {
-      width: unset;
-      height: unset;
-    }
-  }
-
   &__link {
     display: block;
     width: fit-content;
     margin-bottom: 1rem;
+
+    :where(&) {
+      border: none;
+      background: none;
+      padding-inline: 0;
+    }
   }
 
   &__description {
@@ -49,11 +45,6 @@
     @include breakpoint.for-desktop {
       padding-left: 3rem;
       padding-right: 3rem;
-    }
-
-    &__item {
-      border-right: 1px solid var(--designentur-footer-default-divider);
-      padding-right: 0.5rem;
     }
   }
 }
