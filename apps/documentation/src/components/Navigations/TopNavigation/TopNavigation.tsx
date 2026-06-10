@@ -18,7 +18,10 @@ import logoDark from '@media/logo/logoDark.svg';
 
 import './TopNavigation.scss';
 
-const TopNavigation = ({ className, ...rest }: React.ComponentPropsWithoutRef<'nav'>) => {
+const TopNavigation = ({
+  className,
+  ...rest
+}: React.ComponentPropsWithoutRef<'header'>) => {
   const { colorMode } = useSettings();
   const isContrast = useContrast();
   const location = useLocation();
@@ -31,11 +34,10 @@ const TopNavigation = ({ className, ...rest }: React.ComponentPropsWithoutRef<'n
       typeof window !== 'undefined' &&
       window.matchMedia('(prefers-color-scheme: dark)').matches);
   return (
-    <nav
+    <header
       className={classNames('top-navigation', className, {
         'top-navigation--frontpage eds-contrast': isFrontpage,
       })}
-      aria-label="Navigasjon, hovedseksjoner"
       {...rest}
     >
       <Link to="/" className="top-navigation__logo">
@@ -46,13 +48,15 @@ const TopNavigation = ({ className, ...rest }: React.ComponentPropsWithoutRef<'n
           alt="Entur logo, klikk for å gå til startsiden"
         />
       </Link>
-      <NavItem to="/kom-i-gang">Kom i gang</NavItem>
-      <NavItem to="/identitet">Identitet</NavItem>
-      <NavItem to="/komponenter">Komponenter</NavItem>
-      <NavItem to="/tokens">Tokens</NavItem>
-      <NavItem to="/monster">Mønster</NavItem>
-      <NavItem to="/ressurser">Ressurser</NavItem>
-      <NavItem to="/universell-utforming">Universell utforming</NavItem>
+      <nav aria-label="Navigasjon, hovedseksjoner">
+        <NavItem to="/kom-i-gang">Kom i gang</NavItem>
+        <NavItem to="/identitet">Identitet</NavItem>
+        <NavItem to="/komponenter">Komponenter</NavItem>
+        <NavItem to="/tokens">Tokens</NavItem>
+        <NavItem to="/monster">Mønster</NavItem>
+        <NavItem to="/ressurser">Ressurser</NavItem>
+        <NavItem to="/universell-utforming">Universell utforming</NavItem>
+      </nav>
       <Search />
       <Tooltip content="Entur Linje på GitHub">
         <IconButton
@@ -65,7 +69,7 @@ const TopNavigation = ({ className, ...rest }: React.ComponentPropsWithoutRef<'n
         </IconButton>
       </Tooltip>
       <SettingsPanel />
-    </nav>
+    </header>
   );
 };
 
