@@ -1,6 +1,6 @@
-export const SCROLL_OFFSET_REM = 5.5;
+const SCROLL_OFFSET_REM = 5.5;
 
-const getNavbarHeightPx = () => {
+export const getNavbarHeightPx = () => {
   if (typeof window === 'undefined') return SCROLL_OFFSET_REM * 16;
   const val = getComputedStyle(document.documentElement)
     .getPropertyValue('--navbar-height')

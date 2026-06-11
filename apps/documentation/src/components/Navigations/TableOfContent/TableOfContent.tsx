@@ -4,8 +4,8 @@ import classNames from 'classnames';
 import { Heading4 } from '@entur/typography';
 import { ExpandablePanel } from '@entur/expand';
 import {
+  getNavbarHeightPx,
   handleHashLinkClick,
-  SCROLL_OFFSET_REM,
 } from '../../../utils/scrollUtils';
 
 import './TableOfContent.scss';
@@ -20,8 +20,6 @@ interface TableOfContentProps {
   headings: TocHeading[];
 }
 
-const SCROLL_OFFSET_PX = SCROLL_OFFSET_REM * 16 + 2;
-
 function useActiveHeading(headings: TocHeading[]) {
   const [activeId, setActiveId] = useState<string | null>(
     headings[0]?.id ?? null,
@@ -34,11 +32,12 @@ function useActiveHeading(headings: TocHeading[]) {
 
     const update = () => {
       if (clickedId.current) return;
+      const offsetPx = getNavbarHeightPx() + 2;
       let current = headings[0]?.id ?? null;
       for (const heading of headings) {
         const el = document.getElementById(heading.id);
         if (!el) continue;
-        if (el.getBoundingClientRect().top <= SCROLL_OFFSET_PX) {
+        if (el.getBoundingClientRect().top <= offsetPx) {
           current = heading.id;
         } else {
           break;
@@ -137,16 +136,14 @@ const TocList: React.FC<{
   );
 };
 
-const TableOfContent: React.FC<TableOfContentProps> = ({ headings }) => {
-  const filteredHeadings = useMemo(
-    () => headings.filter(h => h.depth >= 2 && h.depth <= 4),
-    [headings],
-  );
+const useFilteredHeadings = (headings: TocHeading[]) =>
+  useMemo(() => headings.filter(h => h.depth >= 2 && h.depth <= 4), [headings]);
+
+const TableOfContentSidebar: React.FC<TableOfContentProps> = ({ headings }) => {
+  const filteredHeadings = useFilteredHeadings(headings);
   const { activeId, setClickedHeading } = useActiveHeading(filteredHeadings);
 
-  if (filteredHeadings.length < 2) {
-    return null;
-  }
+  if (filteredHeadings.length < 2) return null;
 
   const onLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     setClickedHeading(id);
@@ -154,30 +151,43 @@ const TableOfContent: React.FC<TableOfContentProps> = ({ headings }) => {
   };
 
   return (
-    <>
-      <nav className="table-of-content-sidebar" aria-label="Innhold">
-        <Heading4 as="h2" style={{ margin: 0, marginBlockEnd: '1rem' }}>
-          Innhold
-        </Heading4>
+    <nav className="table-of-content-sidebar" aria-label="Innhold">
+      <Heading4 as="h2" style={{ margin: 0, marginBlockEnd: '1rem' }}>
+        Innhold
+      </Heading4>
+      <TocList
+        headings={filteredHeadings}
+        activeId={activeId}
+        onLinkClick={onLinkClick}
+        animated
+      />
+    </nav>
+  );
+};
+
+const TableOfContentInline: React.FC<TableOfContentProps> = ({ headings }) => {
+  const filteredHeadings = useFilteredHeadings(headings);
+  const { activeId, setClickedHeading } = useActiveHeading(filteredHeadings);
+
+  if (filteredHeadings.length < 2) return null;
+
+  const onLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    setClickedHeading(id);
+    handleHashLinkClick(e);
+  };
+
+  return (
+    <nav className="table-of-content-inline" aria-label="Innhold">
+      <ExpandablePanel title="Innhold">
         <TocList
           headings={filteredHeadings}
           activeId={activeId}
           onLinkClick={onLinkClick}
-          animated
         />
-      </nav>
-
-      <nav className="table-of-content-inline" aria-label="Innhold">
-        <ExpandablePanel title="Innhold">
-          <TocList
-            headings={filteredHeadings}
-            activeId={activeId}
-            onLinkClick={onLinkClick}
-          />
-        </ExpandablePanel>
-      </nav>
-    </>
+      </ExpandablePanel>
+    </nav>
   );
 };
 
-export default TableOfContent;
+export { TableOfContentSidebar, TableOfContentInline };
+export default TableOfContentInline;

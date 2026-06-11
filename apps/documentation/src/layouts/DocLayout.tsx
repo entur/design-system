@@ -9,6 +9,8 @@ import components from '../utils/MdxProvider-utils';
 import SideNavigationLayout from './SideNavigationLayout';
 import PageHeader from '@components/PageHeader/PageHeader';
 import MdxTableOfContent from '@components/Navigations/TableOfContent/MdxTableOfContent';
+import TableOfContentAside from '@components/Navigations/TableOfContent/TableOfContentAside';
+import { TocProvider } from '@components/Navigations/TableOfContent/TocContext';
 import { scrollToHashOnLoad } from '../utils/scrollUtils';
 
 const DocLayout = ({ children, location, pageContext }: PageProps) => {
@@ -20,10 +22,10 @@ const DocLayout = ({ children, location, pageContext }: PageProps) => {
   const showHeader = !frontmatter?.removeHeader;
 
   return (
-    <>
+    <TocProvider>
       <SkipToContent mainId="main">Gå til hovedinnhold</SkipToContent>
       <div className="doc-layout">
-        <TopNavigationLayout className="doc-layout__full-width" />
+        <TopNavigationLayout className="doc-layout__topnav" />
         <SideNavigationLayout location={location} className="side-nav-column" />
         <main id="main" className="page">
           {showHeader && <PageHeader frontmatter={frontmatter} />}
@@ -32,9 +34,10 @@ const DocLayout = ({ children, location, pageContext }: PageProps) => {
             {children}
           </MDXProvider>
         </main>
-        <Footer className="doc-layout__full-width" />
+        <TableOfContentAside />
+        <Footer className="doc-layout__footer" />
       </div>
-    </>
+    </TocProvider>
   );
 };
 

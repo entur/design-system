@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { HeadProps, graphql } from 'gatsby';
 import { PortableText } from '@components/sanity';
 import { BasePageHeader } from '@components/PageHeader/BasePageHeader';
 import SanityTableOfContent from '@components/Navigations/TableOfContent/SanityTableOfContent';
+import { extractHeadingsFromPortableText } from '@components/Navigations/TableOfContent/SanityTableOfContent';
+import { useSetTocHeadings } from '@components/Navigations/TableOfContent/TocContext';
 import { PageType } from '@components/sanity/types';
 import { SEO } from '@components/seo/SEO';
 import { getSanitizedPath } from '@components/Navigations/SideNavigation/utils';
@@ -23,6 +25,12 @@ export default function ContentTemplate({
     isCategoryLandingPage,
     tag,
   } = page;
+
+  const headings = useMemo(
+    () => extractHeadingsFromPortableText(content),
+    [content],
+  );
+  useSetTocHeadings(headings);
 
   return (
     <>

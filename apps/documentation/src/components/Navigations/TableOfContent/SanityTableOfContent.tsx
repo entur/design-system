@@ -1,11 +1,12 @@
 import React, { useMemo } from 'react';
-import TableOfContent, { TocHeading } from './TableOfContent';
+import { TableOfContentInline } from './TableOfContent';
+import type { TocHeading } from './TableOfContent';
 
 interface SanityTableOfContentProps {
   content: any;
 }
 
-const extractHeadingsFromPortableText = (content: any): TocHeading[] => {
+export const extractHeadingsFromPortableText = (content: any): TocHeading[] => {
   if (!content) return [];
 
   const headings: TocHeading[] = [];
@@ -48,7 +49,7 @@ const SanityTableOfContent: React.FC<SanityTableOfContentProps> = ({
     });
   }, [content]);
 
-  return <TableOfContent headings={headings} />;
+  return <TableOfContentInline headings={headings} />;
 };
 
 export default SanityTableOfContent;

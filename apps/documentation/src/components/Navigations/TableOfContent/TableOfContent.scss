@@ -69,21 +69,13 @@ $_base-padding: 1rem;
   }
 }
 
-// Fixed sidebar — visible only on wide screens
+// Sidebar rendered inside the toc-aside element — sticky within grid cell
 .table-of-content-sidebar {
-  display: none;
-  z-index: 1;
-  position: fixed;
-  left: variables.$toc-left-position;
+  position: sticky;
   top: (variables.$navbar-height + 2rem);
-  bottom: 0;
+  max-height: calc(100vh - variables.$navbar-height - 4rem);
   overflow-y: auto;
-  max-height: calc(100% - 9rem);
-  height: fit-content;
-
-  @media screen and (min-width: variables.$show-toc-min-width) {
-    display: block;
-  }
+  margin-block-end: 2rem;
 }
 
 // Inline disclosure — visible only on narrow screens

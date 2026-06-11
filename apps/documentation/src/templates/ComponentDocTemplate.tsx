@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useMemo, useState } from 'react';
 import { HeadProps, PageProps, graphql } from 'gatsby';
 import { SEO } from '@components/seo/SEO';
 import { getSanitizedPath } from '@components/Navigations/SideNavigation/utils';
 import SanityTableOfContent from '@components/Navigations/TableOfContent/SanityTableOfContent';
+import { extractHeadingsFromPortableText } from '@components/Navigations/TableOfContent/SanityTableOfContent';
+import { useSetTocHeadings } from '@components/Navigations/TableOfContent/TocContext';
 import { BasePageHeader } from '@components/PageHeader/BasePageHeader';
 import { Tab, TabList, TabPanel, TabPanels, Tabs } from '@entur/tab';
 import { PortableText } from '@components/sanity/PortableText';
@@ -79,12 +81,20 @@ const TabsSection = React.memo(function TabsSection({
   tabs: Array<{ title?: string; _rawContent?: any }>;
   context: { npmPackage?: string };
 }) {
+  const [activeIndex, setActiveIndex] = useState(0);
   const shouldRenderAsTabs = tabs.length > 1;
+
+  const activeContent = tabs[activeIndex]?._rawContent ?? tabs[0]?._rawContent;
+  const activeHeadings = useMemo(
+    () => extractHeadingsFromPortableText(activeContent),
+    [activeContent],
+  );
+  useSetTocHeadings(activeHeadings);
 
   return (
     <>
       {shouldRenderAsTabs ? (
-        <Tabs>
+        <Tabs index={activeIndex} onChange={setActiveIndex}>
           <TabList width="fluid">
             {tabs.map(tab => (
               <Tab key={`${tab.title}`}>{tab.title}</Tab>

@@ -2,7 +2,8 @@ import React, { useMemo } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import { useLocation } from '@reach/router';
 import { removeTrailingSlash } from '../SideNavigation/utils';
-import TableOfContent, { TocHeading } from './TableOfContent';
+import { TableOfContentInline } from './TableOfContent';
+import type { TocHeading } from './TableOfContent';
 
 interface MdxHeading {
   url: string;
@@ -66,7 +67,7 @@ const MdxTableOfContent = () => {
     return flattenHeadings(currentDoc.tableOfContents?.items);
   }, [data, pathname]);
 
-  return <TableOfContent headings={headings} />;
+  return <TableOfContentInline headings={headings} />;
 };
 
 export default MdxTableOfContent;
