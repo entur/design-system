@@ -28,6 +28,7 @@ import {
   UnorderedList,
 } from '@entur/typography';
 import { useSearch } from './SearchContext';
+import { ArticleTag } from '../Common/ArticleTag';
 
 import './Search.scss';
 
@@ -327,14 +328,7 @@ const ListElement = (props: {
         >
           <Flex gap="s">
             {result.title}
-            {result.tag && (
-              <Badge
-                type="status"
-                variant={result.tag === 'beta' ? 'warning' : 'positive'}
-              >
-                {result.tag}
-              </Badge>
-            )}
+            {result.tag && <ArticleTag tag={result.tag} />}
           </Flex>
         </GatsbyLink>
         <SmallText>{result.description}</SmallText>

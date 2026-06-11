@@ -10,6 +10,7 @@ import {
 import { SecondaryButton } from '@entur/button';
 import { SearchIcon } from '@entur/icons';
 import { Badge } from '@entur/layout';
+import { ArticleTag } from '../../Common/ArticleTag';
 
 import {
   MenuItem,
@@ -94,17 +95,7 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
         onClick={onClickMenuItem}
       >
         <Flex justify="space-between">
-          {item.title}{' '}
-          {item.tag && (
-            <Badge
-              type="status"
-              variant={
-                item.tag.toLowerCase() === 'beta' ? 'warning' : 'success'
-              }
-            >
-              {item.tag}
-            </Badge>
-          )}
+          {item.title} {item.tag && <ArticleTag tag={item.tag} />}
         </Flex>
       </SideNavigationItem>
     );

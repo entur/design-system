@@ -4,8 +4,8 @@ import { PackageChangelog } from './PackageChangelog';
 import { ComponentIcon, GithubIcon, SourceCodeIcon } from '@entur/icons';
 import { ActionChip } from '@entur/chip';
 import { Flex, Grid } from '@entur/layout/beta';
-import { Badge } from '@entur/layout';
 import { isBetaTag, sanitizeEnturPackageName } from 'src/utils/utils';
+import { ArticleTag } from '../Common/ArticleTag';
 import { NpmTag } from './NpmTag';
 import './PageHeader.scss';
 
@@ -49,14 +49,7 @@ export const BasePageHeader: React.FC<BasePageHeaderProps> = ({
           <Heading1 margin="none" className="page-header__heading">
             {title}
           </Heading1>
-          {tag && (
-            <Badge
-              variant={isBetaTag(tag) ? 'warning' : 'positive'}
-              type="status"
-            >
-              {tag}
-            </Badge>
-          )}
+          {tag && <ArticleTag tag={tag} />}
         </Grid.Item>
         <Grid.Item colSpan="1 / 2" rowSpan="2 / -1">
           {npmPackage && <NpmTag packageName={npmPackage} tag={tag} />}
