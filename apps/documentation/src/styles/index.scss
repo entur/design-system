@@ -50,6 +50,21 @@ body {
   margin: 0;
 }
 
+.doc-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+
+  @media screen and (min-width: map.get(variables.$breakpoints, 'tablet')) {
+    grid-template-columns: 18rem 1fr;
+  }
+}
+
+.doc-layout__full-width {
+  @media screen and (min-width: map.get(variables.$breakpoints, 'tablet')) {
+    grid-column: 1 / -1;
+  }
+}
+
 .page {
   min-width: 0;
   margin: eds.$space-extra-large eds.$space-extra-large eds.$space-default;

@@ -3,7 +3,6 @@ import { PageProps } from 'gatsby';
 import { MDXProvider } from '@mdx-js/react';
 import { MDXComponents } from 'mdx/types';
 import { SkipToContent } from '@entur/a11y';
-import { Grid, GridItem, LayoutProvider } from '@entur/layout/beta';
 import Footer from '@components/Footer/Footer';
 import TopNavigationLayout from './TopNavigationLayout';
 import components from '../utils/MdxProvider-utils';
@@ -23,28 +22,18 @@ const DocLayout = ({ children, location, pageContext }: PageProps) => {
   return (
     <>
       <SkipToContent mainId="main">Gå til hovedinnhold</SkipToContent>
-      <LayoutProvider breakpoints={{ m: 960 }}>
-        <Grid
-          className="doc-layout"
-          templateColumns={{ s: '1fr', m: '18rem 1fr' }}
-          gap="none"
-        >
-          <GridItem as={TopNavigationLayout} colSpan={{ s: 1, m: '1 / -1' }} />
-          <GridItem
-            as={SideNavigationLayout}
-            location={location}
-            className="side-nav-column"
-          />
-          <GridItem as="main" id="main" className="page">
-            {showHeader && <PageHeader frontmatter={frontmatter} />}
-            <MdxTableOfContent />
-            <MDXProvider components={components as MDXComponents}>
-              {children}
-            </MDXProvider>
-          </GridItem>
-          <GridItem as={Footer} colSpan={{ s: 1, m: '1 / -1' }} />
-        </Grid>
-      </LayoutProvider>
+      <div className="doc-layout">
+        <TopNavigationLayout className="doc-layout__full-width" />
+        <SideNavigationLayout location={location} className="side-nav-column" />
+        <main id="main" className="page">
+          {showHeader && <PageHeader frontmatter={frontmatter} />}
+          <MdxTableOfContent />
+          <MDXProvider components={components as MDXComponents}>
+            {children}
+          </MDXProvider>
+        </main>
+        <Footer className="doc-layout__full-width" />
+      </div>
     </>
   );
 };
