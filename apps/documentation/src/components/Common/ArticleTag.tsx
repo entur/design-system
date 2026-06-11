@@ -1,3 +1,4 @@
+import React from 'react';
 import { Badge } from '@entur/layout';
 import { isBetaTag } from 'src/utils/utils';
 
