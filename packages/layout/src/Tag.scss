@@ -1,29 +1,110 @@
 @use '@entur/tokens/dist/styles.scss' as t;
 
 .eds-tag {
-  background: t.$colors-greys-grey70;
-  color: t.$colors-brand-blue;
-  display: inline-block;
-  min-width: t.$space-extra-large;
-  padding: t.$space-extra-small2 t.$space-small;
-  font-size: t.$font-sizes-medium;
-  line-height: t.$line-heights-large;
-  &--leading-icon .eds-icon {
-    margin-right: t.$space-extra-small;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--components-layout-badge-status-gap-medium);
+  font-family: inherit;
+  font-weight: t.$font-weights-body;
+  font-size: t.$font-sizes-small;
+  line-height: t.$line-heights-medium;
+  text-transform: uppercase;
+  width: fit-content;
+  padding: 0 var(--components-layout-badge-status-inlinepadding-medium);
+  height: var(--components-layout-badge-status-height-medium);
+  border-radius: var(--components-layout-badge-status-radius-medium);
+  border: t.$border-widths-small solid transparent;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity t.$timings-medium ease-in-out, visibility 0s linear;
+
+  &--hide {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity t.$timings-medium ease-in-out, visibility 0s linear 0.3s;
   }
-  &--trailing-icon .eds-icon {
-    margin-left: t.$space-extra-small;
+
+  &--size-small {
+    padding: 0 var(--components-layout-badge-status-inlinepadding-small);
+    height: var(--components-layout-badge-status-height-small);
+    gap: var(--components-layout-badge-status-gap-small);
+    border-radius: var(--components-layout-badge-status-radius-small);
   }
-  &--compact {
-    font-size: t.$font-sizes-small;
-    padding: calc(t.$space-extra-small2 / 2) t.$space-extra-small;
-    line-height: t.$line-heights-medium;
-    height: 1.5rem;
-    &.eds-tag--leading-icon .eds-icon {
-      margin-right: t.$space-extra-small2;
+
+  &--size-large {
+    padding: 0 var(--components-layout-badge-status-inlinepadding-large);
+    height: var(--components-layout-badge-status-height-large);
+    gap: var(--components-layout-badge-status-gap-large);
+    border-radius: var(--components-layout-badge-status-radius-large);
+  }
+
+  &--variant-primary {
+    background-color: var(--components-layout-badge-primary-standard-fill);
+    color: var(--components-layout-badge-primary-standard-text);
+
+    .eds-contrast & {
+      background-color: var(--components-layout-badge-primary-contrast-fill);
+      color: var(--components-layout-badge-primary-contrast-text);
     }
-    &.eds-tag--trailing-icon .eds-icon {
-      margin-left: t.$space-extra-small2;
+  }
+
+  &--variant-neutral {
+    background-color: var(--components-layout-badge-neutral-standard-fill);
+    color: var(--components-layout-badge-neutral-standard-text);
+    border-color: var(--components-layout-badge-neutral-standard-border);
+
+    .eds-contrast & {
+      background-color: var(--components-layout-badge-neutral-contrast-fill);
+      color: var(--components-layout-badge-neutral-contrast-text);
+      border-color: var(--components-layout-badge-neutral-contrast-border);
+    }
+  }
+
+  &--variant-success {
+    background-color: var(--components-layout-badge-success-standard-fill);
+    color: var(--components-layout-badge-success-standard-text);
+    border-color: var(--components-layout-badge-success-standard-border);
+
+    .eds-contrast & {
+      background-color: var(--components-layout-badge-success-contrast-fill);
+      color: var(--components-layout-badge-success-contrast-text);
+      border-color: var(--components-layout-badge-success-contrast-border);
+    }
+  }
+
+  &--variant-warning {
+    background-color: var(--components-layout-badge-warning-standard-fill);
+    color: var(--components-layout-badge-warning-standard-text);
+    border-color: var(--components-layout-badge-warning-standard-border);
+
+    .eds-contrast & {
+      background-color: var(--components-layout-badge-warning-contrast-fill);
+      color: var(--components-layout-badge-warning-contrast-text);
+      border-color: var(--components-layout-badge-warning-contrast-border);
+    }
+  }
+
+  &--variant-negative {
+    background-color: var(--components-layout-badge-negative-standard-fill);
+    color: var(--components-layout-badge-negative-standard-text);
+    border-color: var(--components-layout-badge-negative-standard-border);
+
+    .eds-contrast & {
+      background-color: var(--components-layout-badge-negative-contrast-fill);
+      color: var(--components-layout-badge-negative-contrast-text);
+      border-color: var(--components-layout-badge-negative-contrast-border);
+    }
+  }
+
+  &--variant-information {
+    background-color: var(--components-layout-badge-information-standard-fill);
+    color: var(--components-layout-badge-information-standard-text);
+    border-color: var(--components-layout-badge-information-standard-border);
+
+    .eds-contrast & {
+      background-color: var(--components-layout-badge-information-contrast-fill);
+      color: var(--components-layout-badge-information-contrast-text);
+      border-color: var(--components-layout-badge-information-contrast-border);
     }
   }
 }

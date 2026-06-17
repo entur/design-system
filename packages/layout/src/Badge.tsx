@@ -5,12 +5,7 @@ import { VariantType } from '@entur/utils';
 
 import './Badge.scss';
 
-/** @deprecated use variant="information" instead */
-const info = 'info';
-/** @deprecated use variant="negative" instead */
-const danger = 'danger';
-
-export type BadgeTypes = 'status' | 'bullet' | 'notification';
+export type BadgeTypes = 'bullet' | 'notification';
 
 export type BadgeOwnProps = {
   /** Elementet som wrapper badgen
@@ -19,21 +14,29 @@ export type BadgeOwnProps = {
   as?: 'span' | React.ElementType;
   /** Ekstra klassenavn */
   className?: string;
-  /** Elementet som badge vil legges relativt til */
+  /**
+   * Innhold i badge.
+   * For `type="notification"`: legg til `aria-label` på Badge-elementet eller bruk
+   * `VisuallyHidden` inni for å gi skjermlesere kontekst utover tallet,
+   * f.eks. `aria-label="3 uleste meldinger"`.
+   * For `type="bullet"`: sørg for at teksten alene er meningsfull uten fargen.
+   */
   children: React.ReactNode;
-  /** Hvilken type badge man vil ha */
-  variant: 'primary' | 'neutral' | VariantType | typeof danger | typeof info;
+  /** Visuell farge-variant */
+  variant: 'primary' | 'neutral' | VariantType;
   /** Om 0 skal vises
    * @default false
    */
   showZero?: boolean;
   /** Hva som er høyeste tallet før det legges på "+"
-   * @default ++
+   * @default 99
    */
   max?: number;
   type?: BadgeTypes;
-  /** @deprecated Bruk `hide` i stedet */
-  invisible?: boolean;
+  /** Størrelse
+   * @default "medium"
+   */
+  size?: 'small' | 'medium' | 'large';
   /** Skjul badge */
   hide?: boolean;
 };
@@ -57,10 +60,10 @@ export const Badge: BadgeComponent = React.forwardRef(
       max = 99,
       variant,
       showZero = false,
-      invisible: invisibleProp = false,
-      hide: hideProp = false,
+      hide = false,
       as,
-      type = 'status',
+      type = 'notification',
+      size = 'medium',
       ...rest
     }: BadgeProps<T>,
     ref: PolymorphicRef<T>,
@@ -68,10 +71,7 @@ export const Badge: BadgeComponent = React.forwardRef(
     const Element: React.ElementType = as || defaultElement;
 
     const computedHide =
-      hideProp ||
-      invisibleProp ||
-      (children === 0 && !showZero) ||
-      children == null;
+      hide || (children === 0 && !showZero) || children == null;
 
     let displayValue;
     if (typeof children === 'number') {
@@ -80,19 +80,22 @@ export const Badge: BadgeComponent = React.forwardRef(
       displayValue = children;
     }
 
-    const classList = classNames(
-      className,
-      'eds-badge',
-      {
-        'eds-badge--hide': computedHide,
-        'eds-badge--show-zero': showZero,
-      },
-      `eds-badge--variant-${variant}`,
-      `eds-badge--type-${type}`,
-    );
-
     return (
-      <Element className={classList} ref={ref} {...rest}>
+      <Element
+        className={classNames(
+          className,
+          'eds-badge',
+          {
+            'eds-badge--hide': computedHide,
+            'eds-badge--show-zero': showZero,
+          },
+          `eds-badge--variant-${variant}`,
+          `eds-badge--type-${type}`,
+          `eds-badge--size-${size}`,
+        )}
+        ref={ref}
+        {...rest}
+      >
         {displayValue}
       </Element>
     );
