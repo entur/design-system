@@ -46,12 +46,7 @@ import {
   ToastAlertBox,
   ToastProvider,
 } from '@entur/alert';
-import {
-  Badge,
-  BulletBadge,
-  NotificationBadge,
-  StatusBadge,
-} from '@entur/layout';
+import { Badge, Tag } from '@entur/layout';
 import { Tab, TabList, TabPanel, TabPanels, Tabs } from '@entur/tab';
 import { CodeBlock } from '@components/Codeblock/CodeBlock';
 
@@ -144,9 +139,7 @@ const components = {
   PrimaryButton,
   SecondaryButton,
   Badge,
-  NotificationBadge,
-  StatusBadge,
-  BulletBadge,
+  Tag,
   Tabs,
   TabList,
   Tab,

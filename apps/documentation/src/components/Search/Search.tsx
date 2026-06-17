@@ -17,7 +17,7 @@ import {
   TokenIcon,
   UserIcon,
 } from '@entur/icons';
-import { Badge, Tag } from '@entur/layout';
+import { Tag } from '@entur/layout';
 import { Flex } from '@entur/layout/beta';
 import {
   Heading2,
@@ -179,7 +179,7 @@ export const Search = () => {
         size="small"
       >
         <SearchIcon aria-hidden="true" /> Søk …
-        <Badge as="kbd" variant="neutral" type="status">
+        <Tag as="kbd" variant="neutral">
           <span
             style={{
               marginRight: '0.25rem',
@@ -188,7 +188,7 @@ export const Search = () => {
             ⌘
           </span>
           k
-        </Badge>
+        </Tag>
       </SecondaryButton>
       <IconButton className="searchmodal__button--small" onClick={openSearch}>
         <SearchIcon aria-hidden="true" />

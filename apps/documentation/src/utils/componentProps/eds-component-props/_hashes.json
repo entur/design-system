@@ -340,7 +340,7 @@
     "outputs": ["NavigationCard.json"]
   },
   "layout/src/Tag.tsx": {
-    "hash": "f7c5889d8c07e4d67efee217a298c58d",
+    "hash": "7430afacb36978af2bf5c073f5800077",
     "outputs": ["Tag.json"]
   },
   "layout/src/beta/Flex/Flex.tsx": {
@@ -687,5 +687,9 @@
   "utils/src/PolymorphicComponent.tsx": {
     "hash": "c98a4c8755ceb1b523f93006e5d8039f",
     "outputs": []
+  },
+  "layout/src/Badge.tsx": {
+    "hash": "3bb4ec80c8d57d099d22b141739ea529",
+    "outputs": ["Badge.json"]
   }
 }

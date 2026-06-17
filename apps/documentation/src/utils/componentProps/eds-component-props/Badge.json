@@ -12,7 +12,7 @@
       "name": "as",
       "declarations": [
         {
-          "fileName": "packages/layout/src/Badge/Badge.tsx",
+          "fileName": "packages/layout/src/Badge.tsx",
           "name": "TypeLiteral"
         },
         {
@@ -31,7 +31,7 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "packages/layout/src/Badge/Badge.tsx",
+          "fileName": "packages/layout/src/Badge.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -42,11 +42,11 @@
     },
     "children": {
       "defaultValue": null,
-      "description": "Elementet som badge vil legges relativt til",
+      "description": "Innhold i badge",
       "name": "children",
       "declarations": [
         {
-          "fileName": "packages/layout/src/Badge/Badge.tsx",
+          "fileName": "packages/layout/src/Badge.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -57,17 +57,17 @@
     },
     "variant": {
       "defaultValue": null,
-      "description": "Hvilken type badge man vil ha",
+      "description": "Visuell farge-variant",
       "name": "variant",
       "declarations": [
         {
-          "fileName": "packages/layout/src/Badge/Badge.tsx",
+          "fileName": "packages/layout/src/Badge.tsx",
           "name": "TypeLiteral"
         }
       ],
       "required": true,
       "type": {
-        "name": "\"primary\" | \"neutral\" | VariantType | \"danger\" | \"info\""
+        "name": "\"primary\" | \"neutral\" | VariantType"
       }
     },
     "showZero": {
@@ -78,7 +78,7 @@
       "name": "showZero",
       "declarations": [
         {
-          "fileName": "packages/layout/src/Badge/Badge.tsx",
+          "fileName": "packages/layout/src/Badge.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -95,7 +95,7 @@
       "name": "max",
       "declarations": [
         {
-          "fileName": "packages/layout/src/Badge/Badge.tsx",
+          "fileName": "packages/layout/src/Badge.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -106,13 +106,13 @@
     },
     "type": {
       "defaultValue": {
-        "value": "status"
+        "value": "notification"
       },
       "description": "",
       "name": "type",
       "declarations": [
         {
-          "fileName": "packages/layout/src/Badge/Badge.tsx",
+          "fileName": "packages/layout/src/Badge.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -121,21 +121,21 @@
         "name": "BadgeTypes | undefined"
       }
     },
-    "invisible": {
+    "size": {
       "defaultValue": {
-        "value": false
+        "value": "medium"
       },
-      "description": "@deprecated Bruk `hide` i stedet",
-      "name": "invisible",
+      "description": "Størrelse",
+      "name": "size",
       "declarations": [
         {
-          "fileName": "packages/layout/src/Badge/Badge.tsx",
+          "fileName": "packages/layout/src/Badge.tsx",
           "name": "TypeLiteral"
         }
       ],
       "required": false,
       "type": {
-        "name": "boolean | undefined"
+        "name": "\"small\" | \"medium\" | \"large\" | undefined"
       }
     },
     "hide": {
@@ -146,7 +146,7 @@
       "name": "hide",
       "declarations": [
         {
-          "fileName": "packages/layout/src/Badge/Badge.tsx",
+          "fileName": "packages/layout/src/Badge.tsx",
           "name": "TypeLiteral"
         }
       ],
