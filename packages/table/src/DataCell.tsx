@@ -1,13 +1,8 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import { BulletBadge } from '@entur/layout';
+import { Badge } from '@entur/layout';
 import { VariantType } from '@entur/utils';
-
-/** @deprecated use variant="information" instead */
-const info = 'info';
-/** @deprecated use variant="negative" instead */
-const danger = 'danger';
 
 export type DataCellProps = {
   /** Innholdet i tabellcellen */
@@ -19,7 +14,7 @@ export type DataCellProps = {
   /** @deprecated bruk variant */
   status?: 'positive' | 'negative' | 'neutral';
   /** Hvilken type status man vil vise */
-  variant?: 'primary' | 'neutral' | VariantType | typeof danger | typeof info;
+  variant?: 'primary' | 'neutral' | VariantType;
 } & React.DetailedHTMLProps<
   React.TdHTMLAttributes<HTMLTableDataCellElement>,
   HTMLTableDataCellElement
@@ -64,7 +59,9 @@ export const DataCell = React.forwardRef<
         {...rest}
       >
         {variant ? (
-          <BulletBadge variant={variant}>{children}</BulletBadge>
+          <Badge type="bullet" variant={variant}>
+            {children}
+          </Badge>
         ) : (
           children
         )}
