@@ -54,17 +54,6 @@ jobs:
           name: package-artifacts
           path: 'packages'
 
-      - name: Create cache key based on day
-        id: cache_day_key
-        run: echo "cache-key=$(date -u '+%Y-%m-%d')" >> $GITHUB_OUTPUT
-
-      - name: Cache gatsby
-        uses: actions/cache@v5
-        with:
-          path: apps/documentation/.cache
-          key: gatsby-${{ github.head_ref }}-${{ runner.os }}-${{ steps.cache_day_key.outputs.cache-key }}-${{ github.run_id }}
-          restore-keys: gatsby-${{ github.head_ref }}-${{ runner.os }}-${{ steps.cache_day_key.outputs.cache-key }}
-
       - name: Build documentation
         run: yarn build:documentation:skip-packages-dependency
 
