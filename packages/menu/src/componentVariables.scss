@@ -9,6 +9,12 @@
   --components-menu-breadcrumb-contrast-text: #{$text-light};
   --components-menu-breadcrumb-standard-icon: #{$shape-accent};
   --components-menu-breadcrumb-standard-text: #{$text-accent};
+  --components-menu-logo-contrast-entur-line: #{$shape-highlight};
+  --components-menu-logo-contrast-entur-text: #{$shape-light};
+  --components-menu-logo-contrast-productname-text: #{$text-highlight};
+  --components-menu-logo-standard-entur-line: #{$shape-highlight};
+  --components-menu-logo-standard-entur-text: #{$shape-accent};
+  --components-menu-logo-standard-productname-text: #{$text-highlight};
   --components-menu-navigationbar-contrast-background: #{$fill-background-contrast-lightalt};
   --components-menu-navigationbar-contrast-divide: #{$stroke-colorless};
   --components-menu-navigationbar-contrast-icon-selected: #{$shape-light};
@@ -106,6 +112,12 @@
   --components-menu-breadcrumb-contrast-text: #{$text-lightalt};
   --components-menu-breadcrumb-standard-icon: #{$shape-lightalt};
   --components-menu-breadcrumb-standard-text: #{$text-lightalt};
+  --components-menu-logo-contrast-entur-line: #{$shape-highlight};
+  --components-menu-logo-contrast-entur-text: #{$shape-light};
+  --components-menu-logo-contrast-productname-text: #{$text-highlight};
+  --components-menu-logo-standard-entur-line: #{$shape-highlight};
+  --components-menu-logo-standard-entur-text: #{$shape-light};
+  --components-menu-logo-standard-productname-text: #{$text-highlight};
   --components-menu-navigationbar-contrast-background: #{$fill-background-overlay-solid};
   --components-menu-navigationbar-contrast-divide: #{$stroke-colorless};
   --components-menu-navigationbar-contrast-icon-selected: #{$shape-lightalt};

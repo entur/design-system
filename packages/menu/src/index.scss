@@ -1,6 +1,9 @@
 // Used to register the styles as loaded!
 @use './componentVariables.scss';
 @use '@entur/tokens/dist/base.scss' as *;
+// Manually import typography tokens (to support dynamic text sizes) until these are out of beta
+@use '@entur/typography/src/beta/typographyTokens.scss' as *;
+
 :root {
   --eds-menu: 1;
   --reach-menu-button: 1;

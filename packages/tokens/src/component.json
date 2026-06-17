@@ -3117,6 +3117,42 @@
             "rootAlias": "Lavender/90"
           },
           {
+            "name": "Components/menu/Logo/Contrast/Entur/Line",
+            "value": "#ff5959",
+            "var": "Shape/Highlight",
+            "rootAlias": "Coral/40"
+          },
+          {
+            "name": "Components/menu/Logo/Contrast/Entur/Text",
+            "value": "#ffffff",
+            "var": "Shape/Light",
+            "rootAlias": "White/Alpha-100"
+          },
+          {
+            "name": "Components/menu/Logo/Contrast/ProductName/Text",
+            "value": "#ff5959",
+            "var": "Text/Highlight",
+            "rootAlias": "Coral/40"
+          },
+          {
+            "name": "Components/menu/Logo/Standard/Entur/Line",
+            "value": "#ff5959",
+            "var": "Shape/Highlight",
+            "rootAlias": "Coral/40"
+          },
+          {
+            "name": "Components/menu/Logo/Standard/Entur/Text",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/menu/Logo/Standard/ProductName/Text",
+            "value": "#ff5959",
+            "var": "Text/Highlight",
+            "rootAlias": "Coral/40"
+          },
+          {
             "name": "Components/menu/Navigation Bar/Contrast/Background",
             "value": "#393d79",
             "var": "Fill/Background/Contrast/LightAlt",
@@ -9407,6 +9443,42 @@
             "value": "#e5e5e9",
             "var": "Text/LightAlt",
             "rootAlias": "Ebony/10"
+          },
+          {
+            "name": "Components/menu/Logo/Contrast/Entur/Line",
+            "value": "#ff5959",
+            "var": "Shape/Highlight",
+            "rootAlias": "Coral/40"
+          },
+          {
+            "name": "Components/menu/Logo/Contrast/Entur/Text",
+            "value": "#ffffff",
+            "var": "Shape/Light",
+            "rootAlias": "White/Alpha-100"
+          },
+          {
+            "name": "Components/menu/Logo/Contrast/ProductName/Text",
+            "value": "#ff5959",
+            "var": "Text/Highlight",
+            "rootAlias": "Coral/40"
+          },
+          {
+            "name": "Components/menu/Logo/Standard/Entur/Line",
+            "value": "#ff5959",
+            "var": "Shape/Highlight",
+            "rootAlias": "Coral/40"
+          },
+          {
+            "name": "Components/menu/Logo/Standard/Entur/Text",
+            "value": "#ffffff",
+            "var": "Shape/Light",
+            "rootAlias": "White/Alpha-100"
+          },
+          {
+            "name": "Components/menu/Logo/Standard/ProductName/Text",
+            "value": "#ff5959",
+            "var": "Text/Highlight",
+            "rootAlias": "Coral/40"
           },
           {
             "name": "Components/menu/Navigation Bar/Contrast/Background",

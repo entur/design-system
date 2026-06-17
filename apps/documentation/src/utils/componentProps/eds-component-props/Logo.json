@@ -1,0 +1,106 @@
+{
+  "tags": {},
+  "description": "",
+  "displayName": "Logo",
+  "methods": [],
+  "props": {
+    "productName": {
+      "defaultValue": null,
+      "description": "Produktnavnet som vises etter Entur-logoen (f.eks. \"Tavla\", \"Partner\")",
+      "name": "productName",
+      "declarations": [
+        {
+          "fileName": "packages/menu/src/Logo.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "size": {
+      "defaultValue": {
+        "value": "medium"
+      },
+      "description": "Størrelsen på logoen",
+      "name": "size",
+      "declarations": [
+        {
+          "fileName": "packages/menu/src/Logo.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "\"small\" | \"medium\" | undefined"
+      }
+    },
+    "href": {
+      "defaultValue": null,
+      "description": "URL-en logoen lenker til. Gjør at komponenten rendres som en lenke",
+      "name": "href",
+      "declarations": [
+        {
+          "fileName": "packages/menu/src/Logo.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "as": {
+      "defaultValue": {
+        "value": "'div' (eller 'a' hvis href er satt)"
+      },
+      "description": "HTML-elementet eller React-komponenten som brukes\nAn override of the default HTML tag.\nCan also be another React component.",
+      "name": "as",
+      "declarations": [
+        {
+          "fileName": "packages/menu/src/Logo.tsx",
+          "name": "TypeLiteral"
+        },
+        {
+          "fileName": "node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "(\"symbol\" & ElementType<any>) | (\"object\" & ElementType<any>) | (ComponentClass<any, any> & ElementType<any>) | ... 177 more ... | undefined"
+      }
+    },
+    "className": {
+      "defaultValue": null,
+      "description": "Ekstra klassenavn",
+      "name": "className",
+      "declarations": [
+        {
+          "fileName": "packages/menu/src/Logo.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "ref": {
+      "defaultValue": null,
+      "description": "",
+      "name": "ref",
+      "declarations": [
+        {
+          "fileName": "node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "any"
+      }
+    }
+  }
+}
