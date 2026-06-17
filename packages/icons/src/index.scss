@@ -19,43 +19,43 @@
 
   &__metro {
     color: var(--basecolors-shape-metro-default);
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       color: var(--basecolors-shape-metro-contrast);
     }
   }
   &__bus {
     color: var(--basecolors-shape-bus-default);
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       color: var(--basecolors-shape-bus-contrast);
     }
   }
   &__plane {
     color: var(--basecolors-shape-plane-default);
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       color: var(--basecolors-shape-plane-contrast);
     }
   }
   &__helicopter {
     color: var(--basecolors-shape-helicopter-default);
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       color: var(--basecolors-shape-helicopter-contrast);
     }
   }
   &__tram {
     color: var(--basecolors-shape-tram-default);
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       color: var(--basecolors-shape-tram-contrast);
     }
   }
   &__funicular {
     color: var(--basecolors-shape-funicular-default);
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       color: var(--basecolors-shape-funicular-contrast);
     }
   }
   &__cableway {
     color: var(--basecolors-shape-cableway-default);
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       color: var(--basecolors-shape-cableway-contrast);
     }
   }
@@ -63,13 +63,13 @@
   &__taxi,
   &__snowcoach {
     color: var(--basecolors-shape-taxi-default);
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       color: var(--basecolors-shape-taxi-contrast);
     }
   }
   &__bicycle {
     color: var(--basecolors-shape-bicycle-default);
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       color: var(--basecolors-shape-bicycle-contrast);
     }
   }
@@ -78,20 +78,20 @@
   &__strolling,
   &__running {
     color: var(--basecolors-shape-walk-default);
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       color: var(--basecolors-shape-walk-contrast);
     }
   }
   &__train {
     color: var(--basecolors-shape-train-default);
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       color: var(--basecolors-shape-train-contrast);
     }
   }
   &__ferry,
   &__carferry {
     color: var(--basecolors-shape-ferry-default);
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       color: var(--basecolors-shape-ferry-contrast);
     }
   }
@@ -99,7 +99,7 @@
   &__citybike,
   &__carsharing {
     color: var(--basecolors-shape-mobility-default);
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       color: var(--basecolors-shape-mobility-contrast);
     }
   }
@@ -107,7 +107,7 @@
   :where(.svg-exclamation) {
     fill: var(--basecolors-frame-default);
 
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       fill: var(--basecolors-frame-contrast);
     }
   }
