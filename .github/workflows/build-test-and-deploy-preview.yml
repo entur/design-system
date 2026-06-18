@@ -113,7 +113,7 @@ jobs:
 
   deploy-documentation-to-preview-channel:
     needs: build-documentation
-    uses: entur/gha-firebase/.github/workflows/firebase-hosting-preview.yml@v1.2.5
+    uses: entur/gha-firebase/.github/workflows/firebase-hosting-preview.yml@v1.2.6
     with:
       gcp_project_id: entur-design-system
       environment: prd
