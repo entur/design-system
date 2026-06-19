@@ -1,0 +1,162 @@
+---
+title: Calendar
+description: Calendar er en inline-kalenderkomponent for å velge en enkelt dato.
+route: /komponenter/skjemaelementer/calendar
+parent: Komponenter
+menu: Skjemaelementer
+npmPackage: datepicker
+tags: dato, date, kalender, calendar, velger
+---
+
+import { now, today, isWeekend } from '@internationalized/date';
+
+import {
+  Calendar,
+} from '@entur/datepicker';
+
+import { SEO } from '@components/seo/SEO';
+
+import './styles.scss';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+
+<Playground
+  hideContrastOption
+  code={`() => {
+    const [date, setDate] = React.useState(now('Europe/Oslo'));
+    return (
+      <Calendar
+        label="Dato"
+        selectedDate={date}
+        onChange={date => setDate(date)}
+        locale="nb-NO"
+      />
+    );
+  }`}
+  scope={{now}}
+/>
+
+## Kom i gang
+
+Calendar viser en inline-kalender der brukeren kan velge en enkelt dato. Den fungerer med samme type datoobjekter som [DatePicker](/komponenter/skjemaelementer/datepicker) og støtter mange av de samme props-ene.
+
+For periodevalg (fra- og til-dato), se [RangeCalendar](/komponenter/skjemaelementer/rangecalendar).
+
+<SmallAlertBox variant="information">
+  <div>
+    <strong>OBS:</strong> hjelpefunksjoner fra{' '}
+    <CodeText>@internationalized/date</CodeText> (typ.{' '}
+    <CodeText>now()</CodeText> og <CodeText>isWeekend()</CodeText>) er ikke
+    inkludert i <CodeText>@entur/datepicker</CodeText>, legg til{' '}
+    <CodeText>@internationalized/date</CodeText> i repo ditt for å bruke dem.
+  </div>
+</SmallAlertBox>
+
+### Språk og locale
+
+Språk og locals er støttet gjennom prop-en `locale` eller [react-aria](https://react-spectrum.adobe.com/react-aria/I18nProvider.html) sin `<I18nProvider />`.
+`locale` støtter strenger på BCP 47-formatet, eks. `nb-NO` for norsk. Her finner du en [liste over BCP 47-koder](https://www.techonthenet.com/js/language_tags.php). Som default velges den locale-en som er satt på brukeren maskin.
+
+`navigationDescription` er en prop som forteller brukeren hvordan de kan navigere i kalenderen med tastaturet. En norsk og engelsk verdi følger med automatisk, men andre språk må legges inn selv.
+
+### Datovalidering
+
+Hvis du ønsker å begrense tilgjengelige datoer kan du benytte `minDate`- og `maxDate`-props-ene eller `isDateUnavailable()`-valideringsfunksjonen. `minDate` og `maxDate` tar inn et `CalendarDate`-objekt. `isDateUnavailable()` tar inn en `DateValue` og returnerer en `boolean`.
+
+<Playground
+  defaultShowEditor
+  hideContrastOption
+  code={`() => {
+    const [date, setDate] = React.useState(now('Europe/Oslo'));
+    return (
+      <Calendar
+        label="Dato"
+        selectedDate={date}
+        onChange={date => setDate(date)}
+        locale="nb-NO"
+        minDate={today('Europe/Oslo')}
+        maxDate={today('Europe/Oslo').add({ months: 1 })}
+      />
+    );
+  }`}
+  scope={{now, today}}
+/>
+
+### Styling av datoer
+
+Calendar har støtte for prop-en `classNameForDate`. `classNameForDate` skal være en funksjon som tar inn en dato og returnerer en streng med klassenavnet som skal legges til for dato-ruten. 
+
+Hvis stylingen som legges til er meningsbærende bør du også bruke `ariaLabelForDate` til å beskrive stylingens mening for skjermlesere o.l.
+
+<Playground hideContrastOption
+code={`() => {
+    const [date, setDate] = React.useState(now('Europe/Oslo'));
+    return (
+      <Calendar
+        label="Dato"
+        selectedDate={date}
+        onChange={date => setDate(date)}
+        locale="nb-NO"
+        classNameForDate={date => isWeekend(date, 'nb-NO') ? 'special-class' : ''}
+        ariaLabelForDate={date => isWeekend(date, 'nb-NO') ? ', helgedag' : ''}
+      />
+    );
+  }`}
+scope={{now , isWeekend}} />
+
+### Vise datoer utenfor måneden
+
+Hvis du ønsker å vise og gjøre det mulig å velge datoer fra forrige og neste måned i kalenderen, kan du bruke prop-en `showOutsideMonth`.
+
+<Playground hideContrastOption
+code={`() => {
+    const [date, setDate] = React.useState(now('Europe/Oslo'));
+    return (
+      <Calendar
+        label="Dato"
+        selectedDate={date}
+        onChange={date => setDate(date)}
+        locale="nb-NO"
+        showOutsideMonth
+      />
+    );
+  }`}
+scope={{now}} />
+
+### Vise ukenummer
+
+Hvis du trenger å vise ukenummer i kalenderen kan du benytte prop-en `showWeekNumbers`. Du kan endre overskriften til ukenummerkolonnen ved å bruke prop-en `weekNumberHeading`.
+
+<Playground hideContrastOption
+code={`() => {
+    const [date, setDate] = React.useState(now('Europe/Oslo'));
+    return (
+      <Calendar
+        label="Dato"
+        selectedDate={date}
+        onChange={date => setDate(date)}
+        locale="nb-NO"
+        showWeekNumbers
+      />
+    );
+  }`}
+scope={{now}} />
+
+## Retningslinjer
+
+### Universell utforming
+
+Calendar bruker [react-aria](https://react-spectrum.adobe.com/react-aria/useCalendar.html) i bakgrunnen. Denne pakken sørger for gjennomgående støtte for universell utforming.
+Alle interagerbare elementer i kalenderen har aria-beskrivelser og er tilgjengelige med tastaturet.
+
+Hvis du endrer `locale` (dvs. språk) til noe annet enn norsk og engelsk må du sende inn verdier på riktig språk til `navigationDescription`-prop-en.
+
+## Komponenter
+
+### Calendar
+
+<ImportStatement imports="Calendar" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="Calendar" />

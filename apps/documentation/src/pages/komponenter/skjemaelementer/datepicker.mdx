@@ -1,11 +1,11 @@
 ---
 title: DatePicker
-description: DatePicker, DateField, Calendar og NativeDatePicker er komponenter for å velge datoer.
+description: DatePicker, DateField og NativeDatePicker er komponenter for å velge datoer.
 route: /komponenter/skjemaelementer/datepicker
 parent: Komponenter
 menu: Skjemaelementer
 npmPackage: datepicker
-tags: dato, date, time, tid, picker, calendar, kalender, datofelt, felt
+tags: dato, date, time, tid, picker, datofelt, felt
 ---
 
 import { now, today, isWeekend } from '@internationalized/date';
@@ -13,8 +13,6 @@ import { now, today, isWeekend } from '@internationalized/date';
 import {
   DatePicker,
   DateField,
-  Calendar,
-  RangeCalendar,
   TimePicker,
   NativeDatePicker,
   nativeDateToDateValue,
@@ -63,6 +61,8 @@ DatePicker støtter også ulike locals og språk. DatePicker bygger på react-ar
     <CodeText>@internationalized/date</CodeText> i repo ditt for å bruke dem.
   </div>
 </SmallAlertBox>
+
+Se også [Calendar](/komponenter/skjemaelementer/calendar) for inline-kalender og [RangeCalendar](/komponenter/skjemaelementer/rangecalendar) for periodevalg.
 
 ### Språk og locale
 
@@ -308,117 +308,6 @@ men vil bruke OS-et sin styling og interaksjonsmetode når man interagerer med d
     );
   }`}/>
 
-### Kun kalender
-
-Hvis du ønsker å kun vise en inline kalender til brukeren kan du benytte `<Calendar />`-komponenten. Denne fungerer med samme type datoobjekter som `<DatePicker />` og støtter mange av de samme props-ene.
-
-<Playground hideContrastOption code={`() => {
-    const [date, setDate] = React.useState(now('Europe/Oslo'));
-    return (
-      <Calendar
-        label="Dato"
-        selectedDate={date}
-        onChange={date => setDate(date)}
-        locale="nb-NO"
-      />
-    );
-  }`}
-  scope={{now}} />
-
-
-#### Styling av datoer i kalenderen
-
-Både `DatePicker` og `Calendar` har støtte for prop-en `classNameForDate`. `classNameForDate` skal være en funksjon som tar inn en dato og returnerer en streng med klassenavnet som skal legges til for dato-ruten. 
-
-Hvis stylingen som legges til er meningsbærende bør du også bruke `ariaLabelForDate` til å beskrive stylingens mening for skjermlesere o.l.
-
-<Playground hideContrastOption
-code={`() => {
-    const [date, setDate] = React.useState(now('Europe/Oslo'));
-    return (
-      <Calendar
-        label="Dato"
-        selectedDate={date}
-        onChange={date => setDate(date)}
-        locale="nb-NO"
-        classNameForDate={date => isWeekend(date, 'nb-NO') ? 'special-class' : ''}
-        ariaLabelForDate={date => isWeekend(date, 'nb-NO') ? ', helgedag' : ''}
-      />
-    );
-  }`}
-scope={{now , isWeekend}} />
-
-#### Vise datoer utenfor måneden
-
-Hvis du ønsker å vise og gjøre det mulig å velge datoer fra forrige og neste måned i kalenderen, kan du bruke prop-en `showOutsideMonth`. Støttes i både `DatePicker` og `Calendar`.
-
-<Playground hideContrastOption
-code={`() => {
-    const [date, setDate] = React.useState(now('Europe/Oslo'));
-    return (
-      <Calendar
-        label="Dato"
-        selectedDate={date}
-        onChange={date => setDate(date)}
-        locale="nb-NO"
-        showOutsideMonth
-      />
-    );
-  }`}
-scope={{now}} />
-
-#### Vise ukenummer
-
-Hvis du trenger å vise ukenummer i kalenderen kan du benytte prop-en `showWeekNumbers`. Du kan endre overskriften til ukenummerkolonnen ved å bruke prop-en `weekNumberHeading`.
-
-<Playground hideContrastOption
-code={`() => {
-    const [date, setDate] = React.useState(now('Europe/Oslo'));
-    return (
-      <Calendar
-        label="Dato"
-        selectedDate={date}
-        onChange={date => setDate(date)}
-        locale="nb-NO"
-        showWeekNumbers
-      />
-    );
-  }`}
-scope={{now}} />
-
-### Periodekalender
-
-Hvis du ønsker å la brukeren velge en periode (fra- og til-dato) kan du benytte `<RangeCalendar />`-komponenten. Den fungerer med samme type datoobjekter som `<Calendar />` og støtter de fleste av de samme props-ene, men tar inn og returnerer et objekt med `start` og `end` i stedet for én enkelt dato. Props som er spesifikke for enkeltdatovelgeren (`onSelectedCellClick`, `onCellClick` og `forcedReturnType`) er ikke tilgjengelige, mens `visibleDuration` er en prop som kun finnes på `<RangeCalendar />`.
-
-<Playground hideContrastOption code={`() => {
-    const [range, setRange] = React.useState(null);
-    return (
-      <RangeCalendar
-        value={range}
-        onChange={setRange}
-        locale="nb-NO"
-      />
-    );
-  }`}
-  scope={{RangeCalendar}} />
-
-#### Vise flere måneder samtidig
-
-Bruk `visibleDuration`-prop-en for å vise flere måneder samtidig i periodekalenderen.
-
-<Playground hideContrastOption code={`() => {
-    const [range, setRange] = React.useState(null);
-    return (
-      <RangeCalendar
-        value={range}
-        onChange={setRange}
-        locale="nb-NO"
-        visibleDuration={{ months: 2 }}
-      />
-    );
-  }`}
-  scope={{RangeCalendar}} />
-
 ### Kun inputfelt
 
 Hvis du ønsker å kun vise et inputfelt uten mulighet for en kalender-popover kan du benytte `<DateField />`-komponenten. Denne fungerer med samme type datoobjekter som `<DatePicker />` og støtter mange av de samme props-ene.
@@ -473,16 +362,6 @@ Hvis du endrer `locale` (dvs. språk) til noe annet enn norsk og engelsk må du 
 
 <ImportStatement imports="DateField" packageName={props.pageContext.frontmatter.npmPackage} />
 <Props componentName="DateField" />
-
-### Calendar
-
-<ImportStatement imports="Calendar" packageName={props.pageContext.frontmatter.npmPackage} />
-<Props componentName="Calendar" />
-
-### RangeCalendar
-
-<ImportStatement imports="RangeCalendar" packageName={props.pageContext.frontmatter.npmPackage} />
-<Props componentName="RangeCalendar" />
 
 ### NativeDatePicker
 
