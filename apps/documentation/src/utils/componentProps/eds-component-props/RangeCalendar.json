@@ -1,0 +1,275 @@
+{
+  "tags": {},
+  "description": "",
+  "displayName": "RangeCalendar",
+  "methods": [],
+  "props": {
+    "value": {
+      "defaultValue": null,
+      "description": "Det valgte datoperioden. Null hvis ingen periode er valgt.",
+      "name": "value",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/datepicker/src/DatePicker/RangeCalendar.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": true,
+      "type": {
+        "name": "RangeValue<MappedDateValue<DateType>> | null"
+      }
+    },
+    "onChange": {
+      "defaultValue": null,
+      "description": "Callback som kalles når valgt periode endres.",
+      "name": "onChange",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/datepicker/src/DatePicker/RangeCalendar.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "((value: RangeValue<MappedDateValue<DateType>> | null) => void) | undefined"
+      }
+    },
+    "navigationDescription": {
+      "defaultValue": null,
+      "description": "",
+      "name": "navigationDescription",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/datepicker/src/DatePicker/RangeCalendar.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "style": {
+      "defaultValue": null,
+      "description": "",
+      "name": "style",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/datepicker/src/DatePicker/RangeCalendar.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "CSSProperties | undefined"
+      }
+    },
+    "className": {
+      "defaultValue": null,
+      "description": "Ekstra klassenavn",
+      "name": "className",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/datepicker/src/DatePicker/RangeCalendar.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "minDate": {
+      "defaultValue": null,
+      "description": "Tidligste gyldige datovalg.\nEks: today(getLocalTimeZone()) == i dag i lokal tidssone.\n\nOBS: Hvis du bruker dato med tid vil tidspunktet også tas hensyn til.\nGyldig fra og med den tiden som legges inn som minDate.\nDato uten tid vil være gyldig hele minDate-dagen",
+      "name": "minDate",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/datepicker/src/DatePicker/RangeCalendar.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "DateValue | undefined"
+      }
+    },
+    "maxDate": {
+      "defaultValue": null,
+      "description": "Seneste gyldige datovalg.\nEks: today(getLocalTimeZone()).add({days: 1}) == i morgen i lokal tidssone\n\nOBS: Hvis du bruker dato med tid vil tidspunktet også tas hensyn til.\nGyldig til og med den tiden som legges inn som maxDate.\nDato uten tid vil være gyldig hele maxDate-dagen",
+      "name": "maxDate",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/datepicker/src/DatePicker/RangeCalendar.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "DateValue | undefined"
+      }
+    },
+    "showWeekNumbers": {
+      "defaultValue": {
+        "value": false
+      },
+      "description": "Slå på visning av ukenummere i kalenderen. Overskriften for ukenummer-kolonnen\nkan endres med prop-en 'weekNumberHeader'",
+      "name": "showWeekNumbers",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/datepicker/src/DatePicker/RangeCalendar.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "boolean | undefined"
+      }
+    },
+    "weekNumberHeader": {
+      "defaultValue": {
+        "value": "uke"
+      },
+      "description": "Overskrift som vises for ukenummer-kolonnen. Vises kun hvis 'showWeekNumbers' er true.",
+      "name": "weekNumberHeader",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/datepicker/src/DatePicker/RangeCalendar.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "showOutsideMonth": {
+      "defaultValue": {
+        "value": false
+      },
+      "description": "Vis datoer som ligger utenfor den viste måneden.\n@example Hvis uken starter på onsdag vises de to siste datoene i forrige måned i ruten til mandagen og tirsdagen før.",
+      "name": "showOutsideMonth",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/datepicker/src/DatePicker/RangeCalendar.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "boolean | undefined"
+      }
+    },
+    "classNameForDate": {
+      "defaultValue": {
+        "value": "undefined"
+      },
+      "description": "Brukes for å legge til klassenavn på spesifikke datoer i kalenderen.\nTar inn en dato og skal returnere klassenavnet som skal legges til den datoen.\n@example (date) => isWeekend(date, 'no-NO') ? 'weekend' : ''\n\nOBS: hvis stylingen er meningsbærende bør du bruke ariaLabelForDate i tillegg for å beskrive\nmeningen til skjermlesere o.l.",
+      "name": "classNameForDate",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/datepicker/src/DatePicker/RangeCalendar.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "((date: CalendarDate) => string) | undefined"
+      }
+    },
+    "ariaLabelForDate": {
+      "defaultValue": {
+        "value": "undefined"
+      },
+      "description": "Legger til teksten som returneres på datoen i kalenderen sin aria-label.\nBør brukes sammen med classNameForDate hvis styling-endringene gjort der er meningsbærende.\n@example (date) => isWeekend(date, 'no-NO') ? 'helgedag' : ''",
+      "name": "ariaLabelForDate",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/datepicker/src/DatePicker/RangeCalendar.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "((date: CalendarDate) => string) | undefined"
+      }
+    },
+    "onValidate": {
+      "defaultValue": null,
+      "description": "Callback-funksjon for når valideringen til datovelgeren endrer seg",
+      "name": "onValidate",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/datepicker/src/DatePicker/RangeCalendar.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "((isValid?: boolean | undefined) => void) | undefined"
+      }
+    },
+    "disabled": {
+      "defaultValue": null,
+      "description": "",
+      "name": "disabled",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/datepicker/src/DatePicker/RangeCalendar.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "boolean | undefined"
+      }
+    },
+    "locale": {
+      "defaultValue": null,
+      "description": "",
+      "name": "locale",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/datepicker/src/DatePicker/RangeCalendar.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "calendarRef": {
+      "defaultValue": null,
+      "description": "",
+      "name": "calendarRef",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/datepicker/src/DatePicker/RangeCalendar.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "MutableRefObject<HTMLDivElement | null> | undefined"
+      }
+    },
+    "visibleDuration": {
+      "defaultValue": {
+        "value": "{months: 1}"
+      },
+      "description": "Vis flere måneder samtidig i kalenderen.\n@example {months: 2}",
+      "name": "visibleDuration",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/datepicker/src/DatePicker/RangeCalendar.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "Pick<DateDuration, \"months\"> | undefined"
+      }
+    }
+  }
+}

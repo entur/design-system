@@ -1713,10 +1713,34 @@
             "rootAlias": "Lavender/20"
           },
           {
+            "name": "Components/datepicker/Calendar/DateFill-Range",
+            "value": "#eaeaf1",
+            "var": "Fill/Selected/Default/Tint",
+            "rootAlias": "Blue/20"
+          },
+          {
+            "name": "Components/datepicker/Calendar/DateFill-Range-Endpoint",
+            "value": "#181c56",
+            "var": "Fill/Primary/Default/Light",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/datepicker/Calendar/DateFill-Range-Endpoint-Hover",
+            "value": "#292b6a",
+            "var": "Fill/Background/Contrast/LightAlt-2",
+            "rootAlias": "Blue/100"
+          },
+          {
+            "name": "Components/datepicker/Calendar/DateFill-Range-Hover",
+            "value": "#d9dae8",
+            "var": "Fill/Selected/Hover/Tint",
+            "rootAlias": "Blue/30"
+          },
+          {
             "name": "Components/datepicker/Calendar/DateFill-Selected",
-            "value": "#aeb7e2",
-            "var": "Fill/Secondary/Active/Light",
-            "rootAlias": "Lavender/40"
+            "value": "#181c56",
+            "var": "Fill/Primary/Default/Light",
+            "rootAlias": "Lavender/90"
           },
           {
             "name": "Components/datepicker/Calendar/Icon",
@@ -1741,6 +1765,12 @@
             "value": "#b6b8ba",
             "var": "Text/NeutralAlt",
             "rootAlias": "Grey/50"
+          },
+          {
+            "name": "Components/datepicker/Calendar/Text-Range-Endpoint",
+            "value": "#ffffff",
+            "var": "Text/Light",
+            "rootAlias": "White/Alpha-100"
           },
           {
             "name": "Components/datepicker/Calendar/Text-Subdued",
@@ -8005,10 +8035,34 @@
             "rootAlias": "Transparent/Ebony-Alpha35"
           },
           {
+            "name": "Components/datepicker/Calendar/DateFill-Range",
+            "value": "#525360",
+            "var": "Fill/Selected/Default/TintDark",
+            "rootAlias": "Ebony/70"
+          },
+          {
+            "name": "Components/datepicker/Calendar/DateFill-Range-Endpoint",
+            "value": "#aeb7e2",
+            "var": "Fill/Primary/Default/Contrast",
+            "rootAlias": "Lavender/40"
+          },
+          {
+            "name": "Components/datepicker/Calendar/DateFill-Range-Endpoint-Hover",
+            "value": "#c7cdeb",
+            "var": "Fill/Primary/Hover/Contrast",
+            "rootAlias": "Lavender/30"
+          },
+          {
+            "name": "Components/datepicker/Calendar/DateFill-Range-Hover",
+            "value": "#5e5f6c",
+            "var": "Fill/Selected/Hover/TintDark",
+            "rootAlias": "Ebony/65"
+          },
+          {
             "name": "Components/datepicker/Calendar/DateFill-Selected",
-            "value": "#e5e5e926",
-            "var": "Fill/Background/Overlay/Transparent",
-            "rootAlias": "Transparent/Ebony-Alpha15"
+            "value": "#aeb7e2",
+            "var": "Fill/Primary/Default/Contrast",
+            "rootAlias": "Lavender/40"
           },
           {
             "name": "Components/datepicker/Calendar/Icon",
@@ -8033,6 +8087,12 @@
             "value": "#6e6f73",
             "var": "Text/Neutral",
             "rootAlias": "Grey/70"
+          },
+          {
+            "name": "Components/datepicker/Calendar/Text-Range-Endpoint",
+            "value": "#08091c",
+            "var": "Text/Dark",
+            "rootAlias": "Ebony/100"
           },
           {
             "name": "Components/datepicker/Calendar/Text-Subdued",
