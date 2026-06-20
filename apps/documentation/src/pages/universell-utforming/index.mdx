@@ -1,6 +1,6 @@
 ---
 title: Introduksjon
-description: Universell utforming (UU) bygger på tanken om at tjenester skal være tilgjengelige for alle, uavhengig av alder, funksjonsevne og utdanningsnivå.
+description: Universell utforming handler om å lage løsninger som fungerer for alle – gjennom god produktutvikling, inkluderende design og lovpålagte krav.
 route: /universell-utforming
 parent: Universell utforming
 order: 1
@@ -14,49 +14,71 @@ export const Head = ( props ) => {
 }
 
 
-Universelt utformede løsninger sikrer at flest mulig forstår og kan bruke dem. Det er en viktig designbeslutning å inkludere alle, ikke bare fordi vi må på grunn av lovkrav, men fordi det er viktig å gjøre med tanke på inkludering og likestilling. Vi har høye ambisjoner om å være en foregangsbedrift på dette området. Vi ønsker at det skal være en del av vår kultur, og dette blir derfor høyt prioritert hos Entur.
+Universell utforming (UU) handler om mer enn tilgjengelighet i kode. Det handler om å bruke produktutvikling, brukerinnsikt og utforsking til å komme frem til løsninger som fungerer godt for alle – ikke bare å legge på ARIA-attributter i etterkant for å gjøre en løsning «tilgjengelig».
 
-Enturs samfunnsansvar er at kollektive reiser skal være førstevalget, og det skal være tilgjengelig for alle. Enturs digitale løsninger må innfri krav om universell utforming, og den informasjonen som vi samler inn og viser ut i våre egne flater - og formidler videre til andre aktører – skal også være tilpasset behovene til et bredt spekter av reisende.
+Når vi designer og bygger med alle brukere i tankene fra start, lager vi bedre produkter for absolutt alle. Det er kjernen i universell utforming.
 
-## Bakgrunn og regelverk
+## Mer enn teknisk tilgjengelighet
 
-Universell utforming sikrer like muligheter for alle og er en forutsetning for å unngå digitale skiller i befolkningen. Universelt utformede løsninger gir gevinster for både brukere, virksomheter og samfunnet, som økt selvbetjening og flere brukere.
+Det er lett å tenke på universell utforming som en teknisk sjekkliste: kontrast, ARIA-tags, tastaturnavigasjon. Men ekte universell utforming starter lenge før koden skrives. Det starter med å forstå hvem brukerne er, hvilke situasjoner de befinner seg i, og hva de faktisk trenger.
 
-I tillegg til at universelt utformede løsninger er en fordel og en forventning, er det også et krav. EUs webdirektiv (WAD) er gjennomført i forskrift om universell utforming av IKT-løsninger i norsk rett. Kravene innebærer blant annet at offentlige virksomheter skal utforme nettløsningene sine i samsvar med 47 av 78 suksesskriterier etter WCAG 2.1 og publisere tilgjengelighetserklæringer for løsningene. Det er forventet at det kommer flere og utvidede krav til universell utforming i årene fremover.
+**Entur Reisevenn** er et godt eksempel på dette. Reisevenn ble utviklet for å hjelpe blinde og svaksynte med å reise kollektivt – med beacons på holdeplasser og lydveiledning i en mobilapp. Men løsningen ble ikke til ved å gjøre en eksisterende app «tilgjengelig». Den ble bygget fra bunnen av, i tett dialog med brukerne, for å løse et reelt problem. Resultatet er en tjeneste som gir verdi for mange – også eldre, personer med andre funksjonsnedsettelser, og alle som er usikre i ukjente omgivelser.
 
-## Ansvar og ressurspersoner i Entur
+Dette er universell utforming i praksis: å bruke designprosessen til å finne løsninger som inkluderer, fremfor å reparere løsninger som ekskluderer.
 
-UU er en integrert del av arbeidsprosessene til våre utviklingsteam. For å sikre dette tilrettelegger vi for kontinuerlig kompetansebygging og erfaringsutveksling om temaet. I tillegg strekker vi oss etter at all ny funksjonalitet er designet og utviklet etter prinsipper for universell utforming.
+## Regelverk i Norge
 
-Vi gjør også jevnlig brukertester med ulike brukergrupper for å sikre at vi hensyntar ulike behov.
-Hos Entur er det enkelte team ansvarlig for at de digitale produktene de lager oppfyller krav til universell utforming. Vi tar gjerne imot tilbakemeldinger om våre nettløsninger på tilbakemelding@entur.org
+Universell utforming er lovpålagt i Norge. Her er de viktigste rammeverkene du bør kjenne til:
 
-## UU i korte trekk
+### Forskrift om universell utforming av IKT
 
-På et overordnet nivå så handler Universell Utforming om “design for alle”. Dette betyr at alle sammen, i ulike situasjoner og med ulike forutsetninger skal kunne ta i bruk et produkt.
-Det innebærer at tjenester skal være intuitive og fleksible, tolerere brukerfeil, lav fysisk anstrengelse, og informasjonen skal være lett tilgjengelig og forståelig.
+[Forskriften](https://lovdata.no/dokument/SF/forskrift/2013-06-21-732) stiller krav om at IKT-løsninger rettet mot allmennheten skal være universelt utformet. Den gjelder både offentlig og privat sektor.
 
-Viktige fokusområder for å dekke nødvendige krav i digitale løsninger er:
+### EUs webdirektiv (WAD)
 
-- Kontraster
-- Fontstørrelser og zoom
-- Kognitiv belastning
-- Skjermleser
+[Webdirektivet](https://www.uutilsynet.no/webdirektivet-wad/eus-webdirektiv-wad/265) stiller krav om at offentlige virksomheter skal følge WCAG-standarden og publisere tilgjengelighetserklæringer. Direktivet er innlemmet i norsk rett.
 
-Har man et fokus på disse fra start, så vil kunne unngå vanlige fallgruver, og forbedre den helhetlige brukeropplevelsen for alle brukere. For å oppnå god UU på tvers av alle produktene til Entur, er det viktige at alle sitter på et likt grunnlag om hva som er viktig i designen og utviklingen av et produkt.
+### EUs tilgjengelighetsdirektiv (EAA)
+
+[European Accessibility Act](https://www.uutilsynet.no/tilgjengelighetsdirektivet-eaa/eus-tilgjengelegheitsdirektiv-eaa/268) utvider kravene til privat sektor. Direktivet dekker blant annet e-handel, bank, kollektivtransport, e-bøker og selvbetjeningsterminaler. EAA trådte i kraft i EU i juni 2025 og er under innlemmelse i norsk lov gjennom EØS-avtalen.
+
+### WCAG 2.2
+
+[WCAG 2.2](https://www.w3.org/TR/WCAG22/) er den gjeldende standarden for tilgjengelighet på nett. Den erstatter WCAG 2.1 og er referansestandarden i EN 301 549, som både WAD og EAA viser til. Kravet er nivå AA.
+
+### Uu-tilsynet
+
+[Tilsynet for universell utforming av IKT](https://www.uutilsynet.no/) (Uu-tilsynet) fører tilsyn, gir veiledning og kan ilegge bøter ved brudd. De publiserer tilsynsrapporter og har gode ressurser for å forstå kravene.
+
+## Ansvar hos Entur
+
+Hvert team er ansvarlig for at produktene de bygger oppfyller kravene til universell utforming. Vi jobber for at UU skal være en integrert del av hele utviklingsprosessen – fra idé og design til utvikling og testing.
+
+Vi gjennomfører jevnlig brukertester med ulike brukergrupper og deler erfaringer på tvers av teamene. Tilbakemeldinger på tilgjengelighet i våre løsninger kan sendes til tilbakemelding@entur.org.
+
+## Viktige fokusområder
+
+For å bygge gode, tilgjengelige løsninger bør du ha disse områdene i bakhodet:
+
+- **Kontrast** – Tilstrekkelig kontrast mellom tekst og bakgrunn (4.5:1 for vanlig tekst, 3:1 for stor tekst).
+- **Fontstørrelser og zoom** – Brukere skal kunne forstørre innholdet til minst 200 % uten tap av funksjonalitet.
+- **Kognitiv belastning** – Hold innholdet enkelt, logisk strukturert og forutsigbart.
+- **Tastaturnavigasjon** – Alt skal kunne brukes uten mus.
+- **Skjermleser** – Innholdet skal gi mening når det leses opp med hjelpemiddelteknologi.
 
 ## For designere
 
-1. **Design for alle**: Vi ønsker å tilby en god brukeropplevelse for alle, også de som har en temporær eller permanent funksjonsnedsettelse.
-2. **Språk**: Språket skal være enkelt å forstå, men presist nok til å være korrekt. Vi bør unngå internt språk og forkortelser. Mengde og type tekst skal alltid tilpasses tiltenkt målgruppe og situasjon.
-3. **Kontrast**: For å sikre god lesbarhet i våre applikasjoner er det viktig å opprettholde kontrastkrav for farger på nett.
-4. **Fontstørrelser**: Sikre at brukere kan overstyre tekststørrelser for å gjøre teksten lettere å lese.
-5. **Visuell feedback**: Relevant visuell feedback til brukeren, eksempelvis gode valideringstekster for skjemaer og input.
-6. **Klikkflate**: God trykkflate på interaktive elementer.
+1. **Design for alle** – Tenk på permanente, midlertidige og situasjonsbestemte funksjonsnedsettelser fra start.
+2. **Enkelt språk** – Unngå fagsjargong og forkortelser. Tilpass tekst til målgruppen.
+3. **Kontrast** – Bruk [kontrastsjekker](/universell-utforming/kontrastsjekker) for å verifisere fargevalg mot WCAG-kravene.
+4. **Fontstørrelser** – Bruk relative enheter slik at brukere kan overstyre tekststørrelse.
+5. **Visuell feedback** – Gi tydelige tilbakemeldinger, for eksempel gode feilmeldinger i skjemaer.
+6. **Trykkeflate** – Sørg for store nok klikkflater på interaktive elementer (minst 24×24 px per WCAG 2.2).
 
-### For utviklere
+## For utviklere
 
-1. **God semantisk HTML**: Eksempelvis `section`, `nav` og `main`, for henoldsvis seksjoner, navigering og hovedinnholdet i applikasjonen sin. [Les mer om semantisk html her](https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML).
-2. **Tastaturnavigasjon**: Legge til rette for god tastaturnavigasjon med fokuserbarhet på relevante objekter.
-3. **Skjermleser**: Legge til rette for skjermleser. Alt-tekst på bilder, aria-labels. Teste med skjermleser for å sikre at alt i grensesnittet er tilgjengelig, og ligger i riktig rekkefølge.
-4. **Responsivitet**: Legge til rette for at produktet skal være responsive, slik at alle elementene er tilpasset til flaten man benytter.
+1. **Semantisk HTML** – Bruk riktig element for jobben: `<nav>`, `<main>`, `<section>`, `<button>`. [Les mer om semantisk HTML](https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML).
+2. **Tastaturnavigasjon** – Sørg for synlig fokusmarkering og logisk tab-rekkefølge.
+3. **Skjermleser** – Legg til meningsfull alt-tekst, aria-labels der det trengs, og test med VoiceOver eller NVDA.
+4. **Responsivt design** – Løsningen skal fungere på alle skjermstørrelser og ved forstørring.
+5. **Testing** – Bruk automatiserte verktøy som axe og Lighthouse, men test også manuelt med tastatur og skjermleser. Se [testguiden](/universell-utforming/testguide) for mer.
