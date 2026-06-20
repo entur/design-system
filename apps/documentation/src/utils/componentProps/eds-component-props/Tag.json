@@ -6,7 +6,7 @@
   "props": {
     "as": {
       "defaultValue": {
-        "value": "'div'"
+        "value": "'span'"
       },
       "description": "HTML-elementet eller React-komponenten som rendres\nAn override of the default HTML tag.\nCan also be another React component.",
       "name": "as",
@@ -40,12 +40,46 @@
         "name": "string | undefined"
       }
     },
-    "compact": {
+    "variant": {
       "defaultValue": {
-        "value": "false"
+        "value": "'neutral'"
       },
-      "description": "Mindre og mer kompakt Tag, til f.eks. tabellbruk",
-      "name": "compact",
+      "description": "Visuell farge-variant",
+      "name": "variant",
+      "declarations": [
+        {
+          "fileName": "packages/layout/src/Tag.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "\"primary\" | \"neutral\" | VariantType | undefined"
+      }
+    },
+    "size": {
+      "defaultValue": {
+        "value": "medium"
+      },
+      "description": "Størrelse",
+      "name": "size",
+      "declarations": [
+        {
+          "fileName": "packages/layout/src/Tag.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "\"small\" | \"medium\" | \"large\" | undefined"
+      }
+    },
+    "hide": {
+      "defaultValue": {
+        "value": false
+      },
+      "description": "Skjul tag",
+      "name": "hide",
       "declarations": [
         {
           "fileName": "packages/layout/src/Tag.tsx",
@@ -55,6 +89,21 @@
       "required": false,
       "type": {
         "name": "boolean | undefined"
+      }
+    },
+    "ref": {
+      "defaultValue": null,
+      "description": "",
+      "name": "ref",
+      "declarations": [
+        {
+          "fileName": "node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "any"
       }
     }
   }

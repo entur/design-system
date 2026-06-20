@@ -15,14 +15,7 @@ import {
   TrainIcon,
   ViewIcon,
 } from '@entur/icons';
-import {
-  Badge,
-  BulletBadge,
-  Contrast,
-  NotificationBadge,
-  StatusBadge,
-  Tag,
-} from '@entur/layout';
+import { Badge, Contrast, Tag } from '@entur/layout';
 import { LoadingDots } from '@entur/loader';
 import { SmallAlertBox } from '@entur/alert';
 import { BreadcrumbItem, BreadcrumbNavigation } from '@entur/menu';
@@ -499,12 +492,20 @@ const Stand = () => {
     () => [
       {
         id: 'tag-design',
-        content: <Tag tabIndex={-1}>Design</Tag>,
+        content: (
+          <Tag tabIndex={-1} variant="neutral">
+            Design
+          </Tag>
+        ),
         scale: 0.95,
       },
       {
         id: 'tag-uu',
-        content: <Tag tabIndex={-1}>UU</Tag>,
+        content: (
+          <Tag tabIndex={-1} variant="neutral">
+            UU
+          </Tag>
+        ),
         scale: 0.9,
       },
       {
@@ -610,9 +611,9 @@ const Stand = () => {
       {
         id: 'statusbadge',
         content: (
-          <StatusBadge variant="success" tabIndex={-1}>
+          <Tag variant="success" tabIndex={-1}>
             Klar
-          </StatusBadge>
+          </Tag>
         ),
         className: 'stand__sprite--badge',
         scale: 1,
@@ -620,9 +621,9 @@ const Stand = () => {
       {
         id: 'bulletbadge',
         content: (
-          <BulletBadge variant="information" tabIndex={-1}>
+          <Badge type="bullet" variant="information" tabIndex={-1}>
             Info
-          </BulletBadge>
+          </Badge>
         ),
         className: 'stand__sprite--badge',
         scale: 0.95,
@@ -651,25 +652,29 @@ const Stand = () => {
       },
       {
         id: 'badge-notification',
-        content: <NotificationBadge variant="primary">4</NotificationBadge>,
+        content: (
+          <Badge type="notification" variant="primary">
+            4
+          </Badge>
+        ),
         className: 'stand__sprite--notification',
         scale: 1.05,
       },
       {
         id: 'badge-beta',
         content: (
-          <Badge tabIndex={-1} variant="neutral" type="status">
+          <Tag tabIndex={-1} variant="neutral">
             Beta
-          </Badge>
+          </Tag>
         ),
         scale: 1.1,
       },
       {
         id: 'badge-nytt',
         content: (
-          <Badge tabIndex={-1} variant="neutral" type="status">
+          <Tag tabIndex={-1} variant="neutral">
             Nytt
-          </Badge>
+          </Tag>
         ),
         scale: 1.05,
       },

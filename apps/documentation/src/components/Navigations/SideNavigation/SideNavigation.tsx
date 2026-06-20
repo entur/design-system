@@ -9,7 +9,7 @@ import {
 
 import { SecondaryButton } from '@entur/button';
 import { SearchIcon } from '@entur/icons';
-import { Badge } from '@entur/layout';
+import { Tag } from '@entur/layout';
 import { ArticleTag } from '../../Common/ArticleTag';
 
 import {
@@ -149,10 +149,9 @@ const SearchBar: React.FC<SearchBarProps> = ({ onOpenSearch }) => {
     >
       <SearchIcon aria-hidden="true" />
       <span>Søk …</span>
-      <Badge
+      <Tag
         as="kbd"
         variant="neutral"
-        type="status"
         style={{
           width: '5ch',
           minWidth: 'unset',
@@ -160,7 +159,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onOpenSearch }) => {
         }}
       >
         ⌘ k
-      </Badge>
+      </Tag>
     </SecondaryButton>
   );
 };
