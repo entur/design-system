@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.20.0](https://github.com/entur/design-system/compare/@entur/documentation@6.19.0...@entur/documentation@6.20.0) (2026-06-22)
+
+### Bug Fixes
+
+- **website:** add @internationalized/date to Playground scope ([7180a16](https://github.com/entur/design-system/commit/7180a16e0f7602f89ffcf7e0b07948c83b8eef9f))
+- **website:** add missing React import to ArticleTag component ([b3ca9e7](https://github.com/entur/design-system/commit/b3ca9e7c2f796de789ad468c4ec56e9e795f99b2))
+- **website:** align footer link text to start ([6c65f0b](https://github.com/entur/design-system/commit/6c65f0b80fddce160f332c0508cb3db7cad9666d))
+- **website:** change top navigation root to header element with nav ([5ac280a](https://github.com/entur/design-system/commit/5ac280adf495693ccb2cd1ed4b34b5357703e5d6))
+- **website:** fix broken article tag badge variant in search and navigation ([581d8ca](https://github.com/entur/design-system/commit/581d8ca2fcf665a9af1a31d6f4e30660812c12c0))
+- **website:** fix nav display:contents a11y issue, remove dead className prop ([45462d6](https://github.com/entur/design-system/commit/45462d692eb16556a02267d8ed958081ecf50291))
+- **website:** fix page layout overflow and mobile scroll offset ([8acb4cc](https://github.com/entur/design-system/commit/8acb4cc035e03bf410b4923cc35a4a34194f823a))
+- **website:** guard against missing CMP and NaN scroll offset ([1ccb173](https://github.com/entur/design-system/commit/1ccb1738415456ea7c64e771729e45eb0a361b02))
+- **website:** move table of contents to sticky aside element ([76b74d4](https://github.com/entur/design-system/commit/76b74d4852a495f66f5a5fc3aacdea4f71869a90))
+- **website:** remove GitHub link from top navigation ([252e4a0](https://github.com/entur/design-system/commit/252e4a0d1035eae1b3070a6ef5f514a0b6a6183d))
+- **website:** replace JS-based responsive grid with CSS media queries ([7d7af5e](https://github.com/entur/design-system/commit/7d7af5e44cddb1d2c773f0e2097fd7c63a7d75c7))
+- **website:** restructure layout with CSS Grid and sticky sidebar ([67b70ca](https://github.com/entur/design-system/commit/67b70cad2eb2d3d016a0c7286b985667bb37305f))
+- **website:** show full footer on all documentation pages ([e45e67a](https://github.com/entur/design-system/commit/e45e67aea7a0591caf780cd0d9fee03453e86d29))
+- **website:** show table of contents on all pages, fix duplicate active items ([a1440fa](https://github.com/entur/design-system/commit/a1440fa7a8cb1f6653f69ae789a73904c39ce6e2))
+- **website:** simplify footer markup and use semantic HTML ([eee5e9c](https://github.com/entur/design-system/commit/eee5e9cd7201283562099ad781d3525ba2fe577a))
+- **website:** unify MDX and Sanity page headers, fix beta tag casing ([7f4cec2](https://github.com/entur/design-system/commit/7f4cec2e7a842b159848355975fdac9586e96d30))
+- **website:** use contrast divider tokens for footer borders on frontpage ([3654d23](https://github.com/entur/design-system/commit/3654d235592c296720b9ac7254c6a0b2f0917d49))
+
+### Features
+
+- **datepicker/range calendar:** add RangeCalendar component ([62a8041](https://github.com/entur/design-system/commit/62a8041f66fcb378ca18d408121acc555b63fbc1))
+- **datepicker/range calendar:** update docs ([becf816](https://github.com/entur/design-system/commit/becf816cb76578251b71b44fc3f341f7c7438134))
+- **menu/logo:** add Logo component for standardized Entur product logos ([75dd9dc](https://github.com/entur/design-system/commit/75dd9dc5c6789d4c1ec680ace52a8c3697b3c53b))
+- **website:** add copy-link anchors to MDX headings and fix shared ID generation ([d0c0255](https://github.com/entur/design-system/commit/d0c02553453d857771d4ee9f4ff82cc625f9566c))
+- **website:** add copy-link button on headings and hash update from ToC ([308cfc1](https://github.com/entur/design-system/commit/308cfc135cb932396da89c337e0b7c70a39d3aeb))
+- **website:** add description field support for Playground examples ([49ae9ff](https://github.com/entur/design-system/commit/49ae9ff2239b2aa9c16ac487df9645a26ca8ccb0))
+- **website:** add hash-based deep-linking for ComponentDoc tabs ([4bb0d41](https://github.com/entur/design-system/commit/4bb0d4110e21963e96d6499881461ed378b47e8c))
+
 ## [6.19.1](https://github.com/entur/design-system/compare/@entur/documentation@6.19.0...@entur/documentation@6.19.1) (2026-06-08)
 
 **Note:** Version bump only for package @entur/documentation

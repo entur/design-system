@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.3.0](https://github.com/entur/design-system/compare/@entur/menu@6.2.1...@entur/menu@6.3.0) (2026-06-22)
+
+### Features
+
+- **menu/logo:** add Logo component for standardized Entur product logos ([75dd9dc](https://github.com/entur/design-system/commit/75dd9dc5c6789d4c1ec680ace52a8c3697b3c53b))
+
 ## [6.2.2](https://github.com/entur/design-system/compare/@entur/menu@6.2.1...@entur/menu@6.2.2) (2026-06-08)
 
 **Note:** Version bump only for package @entur/menu

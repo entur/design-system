@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.0.3](https://github.com/entur/design-system/compare/@entur/icons@9.0.2...@entur/icons@9.0.3) (2026-06-22)
+
+### Bug Fixes
+
+- **icons:** reduce CSS specificity of icon contrast selectors ([2a3053b](https://github.com/entur/design-system/commit/2a3053b1cd54e77a0328fe55446048e2e3a0d181))
+
 ## [9.0.2](https://github.com/entur/design-system/compare/@entur/icons@9.0.1...@entur/icons@9.0.2) (2026-06-08)
 
 ### Bug Fixes

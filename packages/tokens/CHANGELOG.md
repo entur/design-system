@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.24.0](https://github.com/entur/design-system/compare/@entur/tokens@3.23.0...@entur/tokens@3.24.0) (2026-06-22)
+
+### Bug Fixes
+
+- **tokens:** rename TintDark to DarkTint and Calendar endpoint tokens to Selected ([1250370](https://github.com/entur/design-system/commit/1250370d3e4f8f6ad2a096d4855800498f474dfc))
+
+### Features
+
+- **menu/logo:** add Logo component for standardized Entur product logos ([75dd9dc](https://github.com/entur/design-system/commit/75dd9dc5c6789d4c1ec680ace52a8c3697b3c53b))
+- **tokens:** add range selection color tokens for Calendar ([ac2365e](https://github.com/entur/design-system/commit/ac2365e4c2b5c6832586ec21e1e95813522d2a8c))
+
 # [3.23.0](https://github.com/entur/design-system/compare/@entur/tokens@3.22.4...@entur/tokens@3.23.0) (2026-06-05)
 
 ### Features

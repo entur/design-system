@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.11.0](https://github.com/entur/design-system/compare/studio-linje@1.10.3...studio-linje@1.11.0) (2026-06-22)
+
+### Features
+
+- **website:** add description field support for Playground examples ([49ae9ff](https://github.com/entur/design-system/commit/49ae9ff2239b2aa9c16ac487df9645a26ca8ccb0))
+
 ## [1.10.4](https://github.com/entur/design-system/compare/studio-linje@1.10.3...studio-linje@1.10.4) (2026-06-08)
 
 **Note:** Version bump only for package studio-linje

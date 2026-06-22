@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.7.0](https://github.com/entur/design-system/compare/@entur/datepicker@11.6.1...@entur/datepicker@11.7.0) (2026-06-22)
+
+### Bug Fixes
+
+- **datepicker/calendar:** update SCSS vars to use renamed token names ([4945880](https://github.com/entur/design-system/commit/4945880de158c083d04b8a145e0dd6028564e5f2))
+- **tokens:** rename TintDark to DarkTint and Calendar endpoint tokens to Selected ([1250370](https://github.com/entur/design-system/commit/1250370d3e4f8f6ad2a096d4855800498f474dfc))
+
+### Features
+
+- **datepicker/range calendar:** add RangeCalendar component ([62a8041](https://github.com/entur/design-system/commit/62a8041f66fcb378ca18d408121acc555b63fbc1))
+- **datepicker/range calendar:** update docs ([becf816](https://github.com/entur/design-system/commit/becf816cb76578251b71b44fc3f341f7c7438134))
+
 ## [11.6.2](https://github.com/entur/design-system/compare/@entur/datepicker@11.6.1...@entur/datepicker@11.6.2) (2026-06-08)
 
 **Note:** Version bump only for package @entur/datepicker
