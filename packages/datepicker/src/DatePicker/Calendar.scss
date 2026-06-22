@@ -128,7 +128,7 @@
 
       &:active {
         background-color: var(--components-datepicker-calendar-datefill-selected);
-        color: var(--components-datepicker-calendar-text-range-endpoint);
+        color: var(--components-datepicker-calendar-text-selected);
       }
 
       &--between-months {
@@ -142,18 +142,18 @@
       }
 
       &--selected {
-        background-color: var(--components-datepicker-calendar-datefill-range-endpoint);
-        color: var(--components-datepicker-calendar-text-range-endpoint);
+        background-color: var(--components-datepicker-calendar-datefill-selected);
+        color: var(--components-datepicker-calendar-text-selected);
         border-radius: 4px;
 
         &:hover {
-          background-color: var(--components-datepicker-calendar-datefill-range-endpoint-hover);
-          color: var(--components-datepicker-calendar-text-range-endpoint);
+          background-color: var(--components-datepicker-calendar-datefill-selected-hover);
+          color: var(--components-datepicker-calendar-text-selected);
         }
 
         &:active {
-          background-color: var(--components-datepicker-calendar-datefill-range-endpoint);
-          color: var(--components-datepicker-calendar-text-range-endpoint);
+          background-color: var(--components-datepicker-calendar-datefill-selected);
+          color: var(--components-datepicker-calendar-text-selected);
         }
       }
 
@@ -170,12 +170,12 @@
 
       &--selection-start,
       &--selection-end {
-        background-color: var(--components-datepicker-calendar-datefill-range-endpoint);
-        color: var(--components-datepicker-calendar-text-range-endpoint);
+        background-color: var(--components-datepicker-calendar-datefill-selected);
+        color: var(--components-datepicker-calendar-text-selected);
 
         &:hover {
-          background-color: var(--components-datepicker-calendar-datefill-range-endpoint-hover);
-          color: var(--components-datepicker-calendar-text-range-endpoint);
+          background-color: var(--components-datepicker-calendar-datefill-selected-hover);
+          color: var(--components-datepicker-calendar-text-selected);
         }
       }
 
