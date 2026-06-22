@@ -1719,13 +1719,7 @@
             "rootAlias": "Blue/20"
           },
           {
-            "name": "Components/datepicker/Calendar/DateFill-Range-Endpoint",
-            "value": "#181c56",
-            "var": "Fill/Primary/Default/Light",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/datepicker/Calendar/DateFill-Range-Endpoint-Hover",
+            "name": "Components/datepicker/Calendar/DateFill-Selected-Hover",
             "value": "#292b6a",
             "var": "Fill/Background/Contrast/LightAlt-2",
             "rootAlias": "Blue/100"
@@ -1767,7 +1761,7 @@
             "rootAlias": "Grey/50"
           },
           {
-            "name": "Components/datepicker/Calendar/Text-Range-Endpoint",
+            "name": "Components/datepicker/Calendar/Text-Selected",
             "value": "#ffffff",
             "var": "Text/Light",
             "rootAlias": "White/Alpha-100"
@@ -8037,17 +8031,11 @@
           {
             "name": "Components/datepicker/Calendar/DateFill-Range",
             "value": "#525360",
-            "var": "Fill/Selected/Default/TintDark",
+            "var": "Fill/Selected/Default/DarkTint",
             "rootAlias": "Ebony/70"
           },
           {
-            "name": "Components/datepicker/Calendar/DateFill-Range-Endpoint",
-            "value": "#aeb7e2",
-            "var": "Fill/Primary/Default/Contrast",
-            "rootAlias": "Lavender/40"
-          },
-          {
-            "name": "Components/datepicker/Calendar/DateFill-Range-Endpoint-Hover",
+            "name": "Components/datepicker/Calendar/DateFill-Selected-Hover",
             "value": "#c7cdeb",
             "var": "Fill/Primary/Hover/Contrast",
             "rootAlias": "Lavender/30"
@@ -8055,7 +8043,7 @@
           {
             "name": "Components/datepicker/Calendar/DateFill-Range-Hover",
             "value": "#5e5f6c",
-            "var": "Fill/Selected/Hover/TintDark",
+            "var": "Fill/Selected/Hover/DarkTint",
             "rootAlias": "Ebony/65"
           },
           {
@@ -8089,7 +8077,7 @@
             "rootAlias": "Grey/70"
           },
           {
-            "name": "Components/datepicker/Calendar/Text-Range-Endpoint",
+            "name": "Components/datepicker/Calendar/Text-Selected",
             "value": "#08091c",
             "var": "Text/Dark",
             "rootAlias": "Ebony/100"

@@ -11,15 +11,14 @@
   --components-datepicker-calendar-dateborder: #{$stroke-neutral};
   --components-datepicker-calendar-datefill-hover: #{$fill-secondary-hover-light};
   --components-datepicker-calendar-datefill-range: #{$fill-selected-default-tint};
-  --components-datepicker-calendar-datefill-range-endpoint: #{$fill-primary-default-light};
-  --components-datepicker-calendar-datefill-range-endpoint-hover: #{$fill-background-contrast-lightalt-2};
+  --components-datepicker-calendar-datefill-selected-hover: #{$fill-background-contrast-lightalt-2};
   --components-datepicker-calendar-datefill-range-hover: #{$fill-selected-hover-tint};
   --components-datepicker-calendar-datefill-selected: #{$fill-primary-default-light};
   --components-datepicker-calendar-icon: #{$shape-accent};
   --components-datepicker-calendar-stroke-today: #{$stroke-highlight};
   --components-datepicker-calendar-text-accent: #{$text-accent};
   --components-datepicker-calendar-text-disabled: #{$text-neutralalt};
-  --components-datepicker-calendar-text-range-endpoint: #{$text-light};
+  --components-datepicker-calendar-text-selected: #{$text-light};
   --components-datepicker-calendar-text-subdued: #{$text-subdued};
 }
 
@@ -29,15 +28,14 @@
   --components-datepicker-calendar-border: #{$stroke-colorless};
   --components-datepicker-calendar-dateborder: #{$stroke-darkalt};
   --components-datepicker-calendar-datefill-hover: #{$fill-selected-hover-dark};
-  --components-datepicker-calendar-datefill-range: #{$fill-selected-default-tintdark};
-  --components-datepicker-calendar-datefill-range-endpoint: #{$fill-primary-default-contrast};
-  --components-datepicker-calendar-datefill-range-endpoint-hover: #{$fill-primary-hover-contrast};
-  --components-datepicker-calendar-datefill-range-hover: #{$fill-selected-hover-tintdark};
+  --components-datepicker-calendar-datefill-range: #{$fill-selected-default-darktint};
+  --components-datepicker-calendar-datefill-selected-hover: #{$fill-primary-hover-contrast};
+  --components-datepicker-calendar-datefill-range-hover: #{$fill-selected-hover-darktint};
   --components-datepicker-calendar-datefill-selected: #{$fill-primary-default-contrast};
   --components-datepicker-calendar-icon: #{$shape-lightalt};
   --components-datepicker-calendar-stroke-today: #{$stroke-highlight};
   --components-datepicker-calendar-text-accent: #{$text-lightalt};
   --components-datepicker-calendar-text-disabled: #{$text-neutral};
-  --components-datepicker-calendar-text-range-endpoint: #{$text-dark};
+  --components-datepicker-calendar-text-selected: #{$text-dark};
   --components-datepicker-calendar-text-subdued: #{$text-darkalt};
 }
