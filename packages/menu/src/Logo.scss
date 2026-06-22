@@ -1,0 +1,56 @@
+@use '@entur/tokens/dist/styles.scss' as t;
+@use '@entur/tokens/dist/primitive.scss' as p;
+
+.eds-logo {
+  --eds-logo-svg-height: #{p.$size-12};
+  --eds-logo-text-size: #{t.$font-sizes-extra-large4};
+  --eds-logo-text-padding-top: #{p.$size-4};
+
+  display: inline-flex;
+  align-items: flex-start;
+  text-decoration: none;
+  gap: #{p.$size-6};
+
+  &--small {
+    --eds-logo-svg-height: #{p.$size-10};
+    --eds-logo-text-size: #{t.$font-sizes-extra-large2};
+    --eds-logo-text-padding-top: 0.281rem;
+  }
+
+  &__svg {
+    flex-shrink: 0;
+    height: var(--eds-logo-svg-height);
+    width: auto;
+  }
+
+  &__entur-letter {
+    fill: var(--components-menu-logo-standard-entur-text);
+
+    :where(.eds-contrast .eds-logo) & {
+      fill: var(--components-menu-logo-contrast-entur-text);
+    }
+  }
+
+  &__entur-bar {
+    fill: var(--components-menu-logo-standard-entur-line);
+  }
+
+  &__product-name {
+    color: var(--components-menu-logo-standard-productname-text);
+    font-weight: var(--font-weight-body);
+    font-size: var(--eds-logo-text-size);
+    padding-top: var(--eds-logo-text-padding-top);
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  &:focus-visible {
+    outline: t.$outlines-focus;
+    outline-color: var(--basecolors-stroke-focus-standard);
+    outline-offset: t.$outline-offsets-focus;
+
+    .eds-contrast & {
+      outline-color: var(--basecolors-stroke-focus-contrast);
+    }
+  }
+}

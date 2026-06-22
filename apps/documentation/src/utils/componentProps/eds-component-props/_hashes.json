@@ -687,5 +687,9 @@
   "utils/src/PolymorphicComponent.tsx": {
     "hash": "c98a4c8755ceb1b523f93006e5d8039f",
     "outputs": []
+  },
+  "menu/src/Logo.tsx": {
+    "hash": "b7e48ee2188e4631d7f7f8a4da7030d0",
+    "outputs": ["Logo.json"]
   }
 }

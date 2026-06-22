@@ -14,6 +14,7 @@ warnAboutMissingStyles(
 export * from './BreadcrumbNavigation';
 export * from './BreadcrumbItem';
 export * from './CollapsibleSideNavigation';
+export * from './Logo';
 export * from './OverflowMenu';
 export * from './Pagination';
 export * from './SideNavigation';
