@@ -1,0 +1,18 @@
+.heading-anchor {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+
+  .heading-anchor__copy-button {
+    opacity: 0;
+    transition: opacity 0.15s ease;
+
+    &:focus-visible {
+      opacity: 1;
+    }
+  }
+
+  &:hover .heading-anchor__copy-button {
+    opacity: 1;
+  }
+}

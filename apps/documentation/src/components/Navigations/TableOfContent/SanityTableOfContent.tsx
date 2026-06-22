@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
 import { TableOfContentInline } from './TableOfContent';
 import type { TocHeading } from './TableOfContent';
+import { sanitizeText } from 'src/utils/utils';
 
 interface SanityTableOfContentProps {
   content: any;
@@ -10,6 +11,14 @@ export const extractHeadingsFromPortableText = (content: any): TocHeading[] => {
   if (!content) return [];
 
   const headings: TocHeading[] = [];
+  const seen = new Map<string, number>();
+
+  const getUniqueId = (text: string) => {
+    const base = sanitizeText(text);
+    const count = seen.get(base) ?? 0;
+    seen.set(base, count + 1);
+    return count === 0 ? base : `${base}-${count + 1}`;
+  };
 
   const processBlock = (block: any) => {
     if (block._type === 'block' && block.style?.startsWith('h')) {
@@ -17,8 +26,12 @@ export const extractHeadingsFromPortableText = (content: any): TocHeading[] => {
       const title =
         block.children?.map((child: any) => child.text || '').join('') || '';
 
-      if (title && block._key) {
-        headings.push({ id: block._key, title, depth: level });
+      if (title) {
+        headings.push({
+          id: getUniqueId(title),
+          title,
+          depth: level,
+        });
       }
     }
 

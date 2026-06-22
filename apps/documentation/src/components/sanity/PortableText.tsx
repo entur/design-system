@@ -31,22 +31,47 @@ import { GuidelineResolver } from './GuidelineResolver';
 import { PropsTableResolver } from './PropsTableResolver';
 import { InlineIcon } from './types';
 import { isEnturIcon } from 'src/utils/utils';
+import { HeadingAnchor } from './HeadingAnchor';
+import { HeadingIdProvider } from './HeadingIdContext';
+
+const getBlockText = (value: any) =>
+  value.children?.map((c: any) => c.text || '').join('') || '';
 
 const createComponents = (context?: {
   npmPackage?: string;
 }): Partial<PortableTextReactComponents> => ({
   block: {
     h2: ({ children, value }) => (
-      <Heading2 id={value._key}>{children}</Heading2>
+      <HeadingAnchor
+        headingText={getBlockText(value)}
+        HeadingComponent={Heading2}
+      >
+        {children}
+      </HeadingAnchor>
     ),
     h3: ({ children, value }) => (
-      <Heading3 id={value._key}>{children}</Heading3>
+      <HeadingAnchor
+        headingText={getBlockText(value)}
+        HeadingComponent={Heading3}
+      >
+        {children}
+      </HeadingAnchor>
     ),
     h4: ({ children, value }) => (
-      <Heading4 id={value._key}>{children}</Heading4>
+      <HeadingAnchor
+        headingText={getBlockText(value)}
+        HeadingComponent={Heading4}
+      >
+        {children}
+      </HeadingAnchor>
     ),
     h5: ({ children, value }) => (
-      <Heading5 id={value._key}>{children}</Heading5>
+      <HeadingAnchor
+        headingText={getBlockText(value)}
+        HeadingComponent={Heading5}
+      >
+        {children}
+      </HeadingAnchor>
     ),
     normal: ({ children }) => <Paragraph>{children}</Paragraph>,
   },
@@ -142,6 +167,8 @@ type ExtendedPortableTextProps = PortableTextProps & {
 
 export const PortableText = ({ value, context }: ExtendedPortableTextProps) => {
   return (
-    <PortableTextReact components={createComponents(context)} value={value} />
+    <HeadingIdProvider>
+      <PortableTextReact components={createComponents(context)} value={value} />
+    </HeadingIdProvider>
   );
 };
