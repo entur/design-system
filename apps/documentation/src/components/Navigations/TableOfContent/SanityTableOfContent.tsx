@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { TableOfContentInline } from './TableOfContent';
 import type { TocHeading } from './TableOfContent';
-import { sanitizeText } from 'src/utils/utils';
+import { getUniqueId } from '@components/sanity/HeadingIdContext';
 
 interface SanityTableOfContentProps {
   content: any;
@@ -13,13 +13,6 @@ export const extractHeadingsFromPortableText = (content: any): TocHeading[] => {
   const headings: TocHeading[] = [];
   const seen = new Map<string, number>();
 
-  const getUniqueId = (text: string) => {
-    const base = sanitizeText(text);
-    const count = seen.get(base) ?? 0;
-    seen.set(base, count + 1);
-    return count === 0 ? base : `${base}-${count + 1}`;
-  };
-
   const processBlock = (block: any) => {
     if (block._type === 'block' && block.style?.startsWith('h')) {
       const level = parseInt(block.style.replace('h', ''));
@@ -28,7 +21,7 @@ export const extractHeadingsFromPortableText = (content: any): TocHeading[] => {
 
       if (title) {
         headings.push({
-          id: getUniqueId(title),
+          id: getUniqueId(title, seen),
           title,
           depth: level,
         });

@@ -23,6 +23,18 @@ import {
   Text,
   UnorderedList,
 } from '@entur/typography/beta';
+import { HeadingAnchor } from '@components/sanity/HeadingAnchor';
+
+const MdxH2 = (props: any) => <Heading as="h2" variant="title-2" {...props} />;
+const MdxH3 = (props: any) => (
+  <Heading as="h3" variant="subtitle-1" {...props} />
+);
+const MdxH4 = (props: any) => (
+  <Heading as="h4" variant="subtitle-2" {...props} />
+);
+const MdxH5 = (props: any) => (
+  <Heading as="h5" variant="section-1" {...props} />
+);
 import {
   DataCell,
   EditableCell,
@@ -89,10 +101,26 @@ const preToCodeBlock = (preProps: any) => {
 const components = {
   // DS components - using new beta components
   h1: (props: any) => <Heading as="h1" variant="title-1" {...props} />,
-  h2: (props: any) => <Heading as="h2" variant="title-2" {...props} />,
-  h3: (props: any) => <Heading as="h3" variant="subtitle-1" {...props} />,
-  h4: (props: any) => <Heading as="h4" variant="subtitle-2" {...props} />,
-  h5: (props: any) => <Heading as="h5" variant="section-1" {...props} />,
+  h2: ({ id, children }: any) => (
+    <HeadingAnchor headingId={id} HeadingComponent={MdxH2}>
+      {children}
+    </HeadingAnchor>
+  ),
+  h3: ({ id, children }: any) => (
+    <HeadingAnchor headingId={id} HeadingComponent={MdxH3}>
+      {children}
+    </HeadingAnchor>
+  ),
+  h4: ({ id, children }: any) => (
+    <HeadingAnchor headingId={id} HeadingComponent={MdxH4}>
+      {children}
+    </HeadingAnchor>
+  ),
+  h5: ({ id, children }: any) => (
+    <HeadingAnchor headingId={id} HeadingComponent={MdxH5}>
+      {children}
+    </HeadingAnchor>
+  ),
   h6: (props: any) => <Heading as="h6" variant="section-2" {...props} />,
   p: (props: any) => <Text variant="paragraph" {...props} />,
   a: (props: any) => <Link {...props} />,

@@ -6,26 +6,43 @@ import { useHeadingId } from './HeadingIdContext';
 import './HeadingAnchor.scss';
 
 type HeadingAnchorProps = {
-  headingText: string;
+  headingText?: string;
+  headingId?: string;
   children: React.ReactNode;
   HeadingComponent: React.ElementType;
 };
 
 export const HeadingAnchor: React.FC<HeadingAnchorProps> = ({
   headingText,
+  headingId,
   HeadingComponent,
   children,
 }) => {
-  const { getUniqueId } = useHeadingId();
-  const id = useMemo(() => getUniqueId(headingText), []);
+  const { getId } = useHeadingId();
+  const generatedId = useMemo(
+    () => (headingText ? getId(headingText) : ''),
+    [getId, headingText],
+  );
+  const id = headingId ?? generatedId;
   const { addToast } = useToast();
 
   const copyLink = () => {
     if (!id) return;
     const url = `${window.location.origin}${window.location.pathname}#${id}`;
     history.replaceState(null, '', `#${id}`);
-    navigator.clipboard.writeText(url);
-    addToast({ title: 'Kopiert!', content: 'Lenke kopiert til utklippstavla' });
+    navigator.clipboard.writeText(url).then(
+      () =>
+        addToast({
+          title: 'Kopiert!',
+          content: 'Lenke kopiert til utklippstavla',
+        }),
+      () =>
+        addToast({
+          title: 'Kopiering feilet',
+          content: 'Kunne ikke kopiere lenken til utklippstavla',
+          variant: 'information',
+        }),
+    );
   };
 
   return (
