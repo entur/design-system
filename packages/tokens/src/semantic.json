@@ -345,7 +345,7 @@
             "rootAlias": "Blue/20"
           },
           {
-            "name": "Fill/Selected/Default/TintDark",
+            "name": "Fill/Selected/Default/DarkTint",
             "value": "#525360",
             "var": "Ebony/70",
             "rootAlias": "Ebony/70"
@@ -381,7 +381,7 @@
             "rootAlias": "Blue/30"
           },
           {
-            "name": "Fill/Selected/Hover/TintDark",
+            "name": "Fill/Selected/Hover/DarkTint",
             "value": "#5e5f6c",
             "var": "Ebony/65",
             "rootAlias": "Ebony/65"
