@@ -29,6 +29,7 @@ export const handleHashLinkClick = (
 
   event.preventDefault();
   const elementId = href.substring(1);
+  history.replaceState(null, '', href);
   scrollToElement(elementId);
 };
 

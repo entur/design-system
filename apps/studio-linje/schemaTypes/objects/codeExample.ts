@@ -31,6 +31,15 @@ export const codeExample = defineType({
       hidden: ({ parent }) => parent?.codeDisplayType === 'copyable',
     }),
     defineField({
+      name: 'description',
+      title: 'Beskrivelse',
+      type: 'text',
+      rows: 2,
+      description:
+        'Kort beskrivelse som vises under tittelen og over eksempelet.',
+      hidden: ({ parent }) => parent?.codeDisplayType === 'copyable',
+    }),
+    defineField({
       name: 'playgroundCode',
       title: 'Playground‑kode',
       type: 'playgroundCode',

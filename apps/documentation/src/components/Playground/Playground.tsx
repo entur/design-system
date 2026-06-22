@@ -10,8 +10,7 @@ import { SourceCodeIcon } from '@entur/icons';
 import { Contrast } from '@entur/layout';
 import { Flex } from '@entur/layout/beta';
 import { componentColors } from '@entur/tokens';
-import { Heading5 } from '@entur/typography';
-import { Heading } from '@entur/typography/beta';
+import { Heading3, Heading5, Paragraph } from '@entur/typography';
 import { ConditionalWrapper } from '@entur/utils';
 import { useSettings } from '@providers/SettingsContext';
 
@@ -24,6 +23,7 @@ import PropsList from './PropsList';
 import theme from './themeForPlayground';
 import { packages } from './packages-scope';
 import { documentationComponents } from './documentation-scope';
+import { utilsScope } from './utils-scope';
 
 import './Playground.scss';
 
@@ -33,6 +33,7 @@ type PlaygroundProps = {
   props?: InitialAdvancedProp[];
   style?: React.CSSProperties;
   title?: string;
+  description?: string;
   defaultContrast?: boolean;
   defaultDarkMode?: boolean;
   defaultShowEditor?: boolean;
@@ -53,6 +54,7 @@ const Playground: React.FC<PlaygroundProps> = ({
   props,
   style,
   title,
+  description,
   defaultContrast = false,
   defaultDarkMode = false,
   defaultShowEditor = false,
@@ -82,7 +84,12 @@ const Playground: React.FC<PlaygroundProps> = ({
 
   const Element = colorMode === 'contrast' ? Contrast : 'div';
 
-  const finalScope = { ...packages, ...documentationComponents, ...scope };
+  const finalScope = {
+    ...utilsScope,
+    ...packages,
+    ...documentationComponents,
+    ...scope,
+  };
 
   const scaledPreviewStyle: React.CSSProperties | undefined = previewScale
     ? {
@@ -109,12 +116,9 @@ const Playground: React.FC<PlaygroundProps> = ({
       theme={theme}
     >
       <div className="playground__header">
-        <Flex direction="column" gap="none" justify="center">
-          {title && (
-            <Heading as="h3" size="lg" spacing="none">
-              {title}
-            </Heading>
-          )}
+        <Flex direction="column" justify="center">
+          {title && <Heading3>{title}</Heading3>}
+          {description && <Paragraph>{description}</Paragraph>}
           {!hideColorModeOption && (
             <div className="playground__color-mode-select">
               <SegmentedControl

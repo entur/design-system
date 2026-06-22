@@ -30,6 +30,19 @@ export function isEnturIcon(iconName: string): iconName is keyof typeof icons {
   return iconName in icons;
 }
 
+export function sanitizeText(text: string): string {
+  if (!text) return '';
+  return text
+    .toLowerCase()
+    .replaceAll('æ', 'ae')
+    .replaceAll('ø', 'o')
+    .replaceAll('å', 'a')
+    .replaceAll('&', 'og')
+    .replace(/\?$/, '')
+    .replace(/ +/g, '-')
+    .replace(/[^a-zA-Z0-9-]+-/g, '');
+}
+
 export function getSanitizedPath({
   category,
   subcategory,
@@ -43,19 +56,6 @@ export function getSanitizedPath({
   categoryIndex?: number;
   isCategoryLandingPage?: boolean;
 }) {
-  function sanitizeText(text: string) {
-    if (!text) return undefined;
-    return text
-      .toLowerCase()
-      .replaceAll('æ', 'ae')
-      .replaceAll('ø', 'o')
-      .replaceAll('å', 'a')
-      .replaceAll('&', 'og')
-      .replace(/\?$/, '')
-      .replace(/ +/g, '-')
-      .replace(/[^a-zA-Z0-9-]+-/g, '');
-  }
-
   const sanitizedCategory = sanitizeText(category);
 
   // If this is a category landing page, return just the category path

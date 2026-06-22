@@ -41,6 +41,7 @@ type ContainerStyleEntry = {
 
 type CodeExampleType = {
   title?: string;
+  description?: string;
   codeDisplayType: 'playground' | 'plain' | 'copyable';
   playgroundCode?: {
     code?: string;
@@ -106,6 +107,7 @@ type CodeExampleProps = {
 export const CodeExampleResolver = ({ value }: CodeExampleProps) => {
   const {
     title,
+    description,
     codeDisplayType,
     playgroundCode,
     playgroundProps,
@@ -165,6 +167,7 @@ export const CodeExampleResolver = ({ value }: CodeExampleProps) => {
           )}
           hideColorModeOption={(selectedProps?.length ?? 0) == 0}
           title={title}
+          description={description}
         />
       ) : codeDisplayType === 'copyable' && copyableText ? (
         <CopyableText

@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { HeadProps, PageProps, graphql } from 'gatsby';
 import { SEO } from '@components/seo/SEO';
 import { getSanitizedPath } from '@components/Navigations/SideNavigation/utils';
@@ -8,6 +8,7 @@ import { useSetTocHeadings } from '@components/Navigations/TableOfContent/TocCon
 import { BasePageHeader } from '@components/PageHeader/BasePageHeader';
 import { Tab, TabList, TabPanel, TabPanels, Tabs } from '@entur/tab';
 import { PortableText } from '@components/sanity/PortableText';
+import { scrollToElement } from '../utils/scrollUtils';
 
 type ComponentDoc = {
   title: string;
@@ -74,6 +75,24 @@ export default function ComponentDocTemplate({
   );
 }
 
+const buildHeadingToTabMap = (
+  tabs: Array<{ title?: string; _rawContent?: any }>,
+): Map<string, number> => {
+  const map = new Map<string, number>();
+  tabs.forEach((tab, index) => {
+    const headings = extractHeadingsFromPortableText(tab._rawContent);
+    headings.forEach(h => map.set(h.id, index));
+  });
+  return map;
+};
+
+const getInitialTabIndex = (headingToTab: Map<string, number>): number => {
+  if (typeof window === 'undefined') return 0;
+  const hash = window.location.hash.substring(1);
+  if (!hash) return 0;
+  return headingToTab.get(hash) ?? 0;
+};
+
 const TabsSection = React.memo(function TabsSection({
   tabs,
   context,
@@ -81,8 +100,39 @@ const TabsSection = React.memo(function TabsSection({
   tabs: Array<{ title?: string; _rawContent?: any }>;
   context: { npmPackage?: string };
 }) {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const headingToTab = useMemo(() => buildHeadingToTabMap(tabs), [tabs]);
+
+  const [activeIndex, setActiveIndex] = useState(() =>
+    getInitialTabIndex(headingToTab),
+  );
   const shouldRenderAsTabs = tabs.length > 1;
+
+  const scrollToHash = useCallback(() => {
+    const hash = window.location.hash.substring(1);
+    if (hash) {
+      requestAnimationFrame(() => scrollToElement(hash));
+    }
+  }, []);
+
+  useEffect(() => {
+    scrollToHash();
+  }, [scrollToHash]);
+
+  useEffect(() => {
+    const onHashChange = () => {
+      const hash = window.location.hash.substring(1);
+      if (!hash) return;
+      const tabIndex = headingToTab.get(hash);
+      if (tabIndex !== undefined && tabIndex !== activeIndex) {
+        setActiveIndex(tabIndex);
+        requestAnimationFrame(() => scrollToElement(hash));
+      } else {
+        scrollToElement(hash);
+      }
+    };
+    window.addEventListener('hashchange', onHashChange);
+    return () => window.removeEventListener('hashchange', onHashChange);
+  }, [headingToTab, activeIndex]);
 
   const activeContent = tabs[activeIndex]?._rawContent ?? tabs[0]?._rawContent;
   const activeHeadings = useMemo(

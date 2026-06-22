@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
 import { TableOfContentInline } from './TableOfContent';
 import type { TocHeading } from './TableOfContent';
+import { getUniqueId } from '@components/sanity/HeadingIdContext';
 
 interface SanityTableOfContentProps {
   content: any;
@@ -10,6 +11,7 @@ export const extractHeadingsFromPortableText = (content: any): TocHeading[] => {
   if (!content) return [];
 
   const headings: TocHeading[] = [];
+  const seen = new Map<string, number>();
 
   const processBlock = (block: any) => {
     if (block._type === 'block' && block.style?.startsWith('h')) {
@@ -17,8 +19,12 @@ export const extractHeadingsFromPortableText = (content: any): TocHeading[] => {
       const title =
         block.children?.map((child: any) => child.text || '').join('') || '';
 
-      if (title && block._key) {
-        headings.push({ id: block._key, title, depth: level });
+      if (title) {
+        headings.push({
+          id: getUniqueId(title, seen),
+          title,
+          depth: level,
+        });
       }
     }
 
