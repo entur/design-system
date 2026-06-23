@@ -114,6 +114,7 @@ export const CalendarGrid = ({
                         key={`${date.month}.${date.day}`}
                         state={state}
                         date={date}
+                        currentMonth={gridStartDate}
                         aria-describedby={calendarGridId + 'description'}
                         weekNumberString={
                           showWeekNumbers
