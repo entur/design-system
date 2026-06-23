@@ -1,6 +1,6 @@
 ---
 title: Hvem designer vi for?
-description: Universell utforming handler om å forstå hele spekteret av menneskelige behov – permanente, midlertidige og situasjonsbestemte.
+description: Vi designer for alle mennesker, i alle situasjoner. Det inkluderer deg som leser dette – fordi alle opplever barrierer i ulike kontekster.
 route: /universell-utforming/hvem-designer-vi-for
 parent: Universell utforming
 order: 2
@@ -13,65 +13,80 @@ export const Head = ( props ) => {
 }
 
 
-Vi designer for alle. Det betyr ikke bare de som har en permanent funksjonsnedsettelse – det betyr også de som har brukket armen, sitter i en bråkete buss, eller bruker telefonen i sterkt sollys.
+Vi designer for alle mennesker. Det betyr deg som sitter ved skrivebordet, bestemoren som booker togbillett, tenåringen med én AirPod i, den blinde pendleren med skjermleser, og forelderen som holder en baby mens de sjekker avgangstider.
 
-Funksjonsnedsettelser kan være **permanente**, **midlertidige** eller **situasjonsbestemte**. En person med én arm, en person med gipset håndledd, og en forelder som holder et barn – alle har det til felles at de opererer med bare én hånd. Når vi designer for den ene, lager vi bedre løsninger for alle tre.
+Universell utforming handler ikke om å lage et produkt for «funksjonsfriske» og deretter tilpasse det for «de med nedsettelser». Det handler om å forstå at alle mennesker har ulike behov i ulike situasjoner – og at en god løsning fungerer for hele dette spekteret.
 
-Dette perspektivet er kjernen i inkluderende design: å forstå at funksjonsnedsettelser ikke bare gjelder en spesiell gruppe, men at alle kan oppleve dem i ulike situasjoner.
+## Alle opplever barrierer
+
+Tenk deg disse situasjonene:
+
+| Permanent | Midlertidig | Situasjonsbestemt |
+|-----------|-------------|-------------------|
+| Én arm | Brukket håndledd | Holder et barn |
+| Blind | Øyeoperasjon | Sterk sol på skjermen |
+| Døv | Ørebetennelse | Bråkete omgivelser |
+| Kognitiv nedsettelse | Hjernerystelse | Stresset og hastepreget |
+
+Poenget er ikke at disse situasjonene er like – de er åpenbart forskjellige i alvorlighetsgrad og varighet. Men de stiller lignende krav til løsningen vi bygger. Når vi lager noe som fungerer med én hånd, med lav kontrast, eller uten lyd – da fungerer det bedre for alle i kolonnen.
 
 ## Synshemming
 
-Synshemming dekker alt fra fargeblindhet og svaksynthet til full blindhet. Det kan også gjelde alle i situasjoner med dårlig belysning eller sollys på skjermen.
+Synshemming spenner fra fargeblindhet og svaksynthet til full blindhet. Men «svekket syn» gjelder også deg når du bruker telefonen i sollys, eller leser på skjermen uten briller sent på kvelden.
 
-**Vanlige utfordringer:**
-- Liten tekst og svak kontrast
-- Små klikkflater og uvanlige skrifttyper
-- Fargekoding som eneste meningsbærer (problematisk ved fargeblindhet)
-- Manglende alternativtekst på bilder
+**Slik påvirker det løsningen din:**
+- Tekst med svak kontrast blir uleselig
+- Små klikkflater er vanskelige å treffe
+- Informasjon som kun formidles med farge (f.eks. «rødt = feil») er usynlig for fargeblinde
+- Innhold uten alternativtekst eksisterer ikke for skjermleserbrukere
 
-**Hva vi kan gjøre:**
-- Følg kontrastkravene i WCAG (4.5:1 for vanlig tekst)
-- Bruk aldri farge alene til å formidle informasjon
-- Sørg for god støtte for skjermlesere gjennom semantisk HTML
-- Test med VoiceOver, NVDA eller TalkBack
+**Det du kan gjøre:**
+- Hold kontrasten over 4.5:1 for vanlig tekst (bruk [kontrastsjekkeren](/universell-utforming/kontrastsjekker))
+- Kombiner farge med tekst, ikoner eller mønster for å formidle mening
+- Skriv semantisk HTML slik at skjermlesere forstår strukturen
+- Test med VoiceOver (Mac/iOS), NVDA (Windows) eller TalkBack (Android)
 
-Les mer om [synshemming og brukeropplevelse](https://www.uutilsynet.no/brukerutfordringer/syn/158) hos Uu-tilsynet.
+Les mer hos [Uu-tilsynet om syn](https://www.uutilsynet.no/brukerutfordringer/syn/158).
 
 ## Nedsatt motorikk
 
-Personer med nedsatt motorikk kan bruke skjermtastatur, joystick, øyestyring eller andre alternative styringsmetoder. De har ofte redusert presisjon og trenger mer tid.
+Noen bruker joystick, øyestyring eller tale for å navigere. Andre bruker tastatur fordi musen er for upresis. Felles er at de trenger løsninger som er tolerante for upresise bevegelser og som ikke krever komplekse interaksjoner.
 
-**Hva vi kan gjøre:**
-- Sørg for at alt kan brukes med tastatur
-- Ha store nok klikkflater (minst 24×24 px)
-- Unngå tidsfrister der det ikke er strengt nødvendig
-- Gi brukeren mulighet til å angre og rette opp feil
+**Det du kan gjøre:**
+- Sørg for at alt fungerer med tastatur alene
+- Lag trykkeflater på minst 24×24 px
+- Unngå tidsfrister – eller la brukeren forlenge dem
+- Gjør det lett å angre handlinger
 
-Les mer om [nedsatt motorikk](https://www.uutilsynet.no/brukerutfordringer/motorikk/157) hos Uu-tilsynet.
+Les mer hos [Uu-tilsynet om motorikk](https://www.uutilsynet.no/brukerutfordringer/motorikk/157).
 
-## Kognitive nedsettelser
+## Kognitive utfordringer
 
-Kognitive funksjonsnedsettelser påvirker evnen til å ta inn, bearbeide og huske informasjon. Å designe for denne gruppen gir enklere og mer brukervennlige produkter for alle.
+Kognitive utfordringer dekker alt fra dysleksi og ADHD til demens – men også vanlig stress, søvnmangel og informasjonsoverbelastning. De fleste av oss opplever redusert kognitiv kapasitet i perioder.
 
-**Hva vi kan gjøre:**
-- Bruk enkel, tydelig og konsekvent navigasjon
-- Del opp lange eller kompliserte prosesser i steg
-- Gi forståelige feilmeldinger med konkrete forslag til løsning
-- Unngå unødvendig kompleksitet og visuelt støy
+Å lage løsninger som er enkle å forstå og bruke under kognitivt press gjør dem bedre for absolutt alle.
 
-Les mer om [kognitive nedsettelser](https://www.uutilsynet.no/brukerutfordringer/kognisjon/160) hos Uu-tilsynet.
+**Det du kan gjøre:**
+- Hold navigasjonen konsekvent og forutsigbar
+- Del opp lange prosesser i tydelige steg
+- Skriv feilmeldinger som forklarer problemet og foreslår en løsning
+- Fjern unødvendig visuelt støy – la brukeren fokusere på oppgaven
+
+Les mer hos [Uu-tilsynet om kognisjon](https://www.uutilsynet.no/brukerutfordringer/kognisjon/160).
 
 ## Hørselhemming
 
-De fleste av Enturs produkter bruker ikke lyd og video i stor grad, men det er viktig å huske på denne gruppen.
+De fleste av Enturs løsninger er ikke avhengige av lyd, men prinsippet er viktig: informasjon skal aldri formidles kun gjennom én sans.
 
-**Hva vi kan gjøre:**
-- Tilby teksting eller transkripsjon for lyd- og videoinnhold
-- Ikke bruk lyd som eneste kanal for viktig informasjon
-- Husk at døve med tegnspråk som morsmål kan ha norsk som andrespråk – hold teksten enkel
+**Det du kan gjøre:**
+- Tilby teksting for lyd- og videoinnhold
+- Bruk aldri lyd alene for å varsle brukeren
+- Husk at døve med tegnspråk som morsmål kan foretrekke enkelt skriftspråk
 
-Les mer om [hørselhemming](https://www.uutilsynet.no/brukerutfordringer/horsel/159) hos Uu-tilsynet.
+Les mer hos [Uu-tilsynet om hørsel](https://www.uutilsynet.no/brukerutfordringer/horsel/159).
 
-## Brukertesting og innsikt
+## Brukertesting er nøkkelen
 
-Jevnlig kontakt med faktiske brukere er essensielt. Brukertesting bør gjennomføres med en så bred og representativ gruppe som mulig – inkludert personer med funksjonsnedsettelser. Det er gjennom reell innsikt vi oppdager utfordringer vi ikke hadde tenkt på, og det er slik vi lager genuint inkluderende produkter.
+Du kan ikke sjekke deg til god universell utforming med verktøy alene. Automatiserte tester fanger det åpenbare – manglende alt-tekst, for lav kontrast. Men de kan ikke si om løsningen faktisk er forståelig, navigerbar og brukbar.
+
+Test med ekte mennesker. Inkluder personer med funksjonsnedsettelser i brukertestene. Observer hvordan ulike mennesker løser oppgaver i løsningen din. Det er slik du oppdager problemene du aldri hadde tenkt på.
