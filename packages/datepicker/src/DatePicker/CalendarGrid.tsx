@@ -13,6 +13,7 @@ import { CalendarCell } from './CalendarCell';
 
 type CalendarGridProps = {
   state: CalendarState;
+  startDate?: CalendarDate;
   navigationDescription?: string;
   showWeekNumbers: boolean;
   weekNumberHeader: string;
@@ -25,6 +26,7 @@ type CalendarGridProps = {
 
 export const CalendarGrid = ({
   state,
+  startDate,
   navigationDescription,
   onSelectedCellClick = () => {
     return;
@@ -42,9 +44,13 @@ export const CalendarGrid = ({
   const calendarGridId = useRandomId('eds-calendar');
   const { locale } = useLocale();
 
-  const { gridProps, headerProps, weekDays } = useCalendarGrid(rest, state);
+  const gridStartDate = startDate ?? state.visibleRange.start;
+  const { gridProps, headerProps, weekDays } = useCalendarGrid(
+    { ...rest, startDate: gridStartDate },
+    state,
+  );
 
-  const weeksInMonth = getWeeksInMonth(state.visibleRange.start, locale);
+  const weeksInMonth = getWeeksInMonth(gridStartDate, locale);
   const weeksArray = Array.from(Array(weeksInMonth).keys());
 
   const weekDaysMapped = () => {
@@ -88,7 +94,7 @@ export const CalendarGrid = ({
         <tbody>
           {weeksArray.map(weekIndex => {
             const weekNumber = getWeekNumberForDate(
-              state.getDatesInWeek(weekIndex)[0],
+              state.getDatesInWeek(weekIndex, gridStartDate)[0],
             );
             return (
               <tr key={weekIndex}>
@@ -101,7 +107,7 @@ export const CalendarGrid = ({
                   </th>
                 )}
                 {state
-                  .getDatesInWeek(weekIndex)
+                  .getDatesInWeek(weekIndex, gridStartDate)
                   .map((date, i) =>
                     date ? (
                       <CalendarCell

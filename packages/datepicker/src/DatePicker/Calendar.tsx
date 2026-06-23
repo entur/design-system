@@ -7,7 +7,7 @@ import {
   CalendarStateOptions,
   useCalendarState,
 } from '@react-stately/calendar';
-import { CalendarDate, DateValue } from '@internationalized/date';
+import { CalendarDate, DateDuration, DateValue } from '@internationalized/date';
 import { MappedDateValue } from '@react-types/datepicker';
 
 import { LeftArrowIcon, RightArrowIcon } from '@entur/icons';
@@ -92,6 +92,11 @@ type BaseCalendarProps<DateType extends DateValue> = {
   locale?: string;
   calendarRef?: React.MutableRefObject<HTMLDivElement | null>;
   forcedReturnType?: DateFieldProps<DateType>['forcedReturnType'];
+  /** Vis flere måneder samtidig i kalenderen.
+   * @default {months: 1}
+   * @example {months: 2}
+   */
+  visibleDuration?: Pick<DateDuration, 'months'>;
 };
 
 export type CalendarProps<DateType extends DateValue> =
@@ -118,6 +123,7 @@ const CalendarBase = <DateType extends DateValue>({
   showWeekNumbers = false,
   weekNumberHeader = 'uke',
   showOutsideMonth = false,
+  visibleDuration,
   forcedReturnType,
   style,
   className,
@@ -149,6 +155,7 @@ const CalendarBase = <DateType extends DateValue>({
     createCalendar,
     minValue: minDate,
     maxValue: getAdjustedMaxDate(maxDate),
+    visibleDuration,
   };
 
   const state = useCalendarState(_props);
@@ -160,6 +167,17 @@ const CalendarBase = <DateType extends DateValue>({
     [state.isValueInvalid],
   );
 
+  const monthCount =
+    state.visibleRange.end.month -
+    state.visibleRange.start.month +
+    1 +
+    (state.visibleRange.end.year - state.visibleRange.start.year) * 12;
+
+  const getMonthTitle = (startDate: CalendarDate) =>
+    new Intl.DateTimeFormat(locale, { month: 'long', year: 'numeric' }).format(
+      new Date(startDate.year, startDate.month - 1),
+    );
+
   return (
     <div
       {...calendarProps}
@@ -167,41 +185,55 @@ const CalendarBase = <DateType extends DateValue>({
       className={classNames('eds-datepicker__calendar', className)}
       style={style}
     >
-      <div className="eds-datepicker__calendar__header">
-        <CalendarButton
-          {...prevButtonProps}
-          aria-label={ariaLabelIfNorwegian(
-            'Forrige måned',
-            locale,
-            prevButtonProps,
-          )}
-        >
-          <LeftArrowIcon size={20} />
-        </CalendarButton>
-        <h2>{title}</h2>
-        <CalendarButton
-          {...nextButtonProps}
-          aria-label={ariaLabelIfNorwegian(
-            'Neste måned',
-            locale,
-            nextButtonProps,
-          )}
-        >
-          <RightArrowIcon size={20} />
-        </CalendarButton>
+      <div className="eds-datepicker__calendar__grids">
+        {Array.from({ length: monthCount }, (_, i) => {
+          const startDate = state.visibleRange.start.add({ months: i });
+          return (
+            <div key={i} className="eds-datepicker__calendar__month">
+              <div className="eds-datepicker__calendar__header">
+                {i === 0 && (
+                  <CalendarButton
+                    {...prevButtonProps}
+                    aria-label={ariaLabelIfNorwegian(
+                      'Forrige måned',
+                      locale,
+                      prevButtonProps,
+                    )}
+                  >
+                    <LeftArrowIcon size={20} />
+                  </CalendarButton>
+                )}
+                <h2>{monthCount > 1 ? getMonthTitle(startDate) : title}</h2>
+                {i === monthCount - 1 && (
+                  <CalendarButton
+                    {...nextButtonProps}
+                    aria-label={ariaLabelIfNorwegian(
+                      'Neste måned',
+                      locale,
+                      nextButtonProps,
+                    )}
+                  >
+                    <RightArrowIcon size={20} />
+                  </CalendarButton>
+                )}
+              </div>
+              <CalendarGrid
+                {...rest}
+                state={state}
+                startDate={startDate}
+                navigationDescription={navigationDescription}
+                onSelectedCellClick={onSelectedCellClick}
+                onCellClick={onCellClick}
+                classNameForDate={classNameForDate}
+                ariaLabelForDate={ariaLabelForDate}
+                showWeekNumbers={showWeekNumbers}
+                weekNumberHeader={weekNumberHeader}
+                showOutsideMonth={showOutsideMonth}
+              />
+            </div>
+          );
+        })}
       </div>
-      <CalendarGrid
-        {...rest}
-        state={state}
-        navigationDescription={navigationDescription}
-        onSelectedCellClick={onSelectedCellClick}
-        onCellClick={onCellClick}
-        classNameForDate={classNameForDate}
-        ariaLabelForDate={ariaLabelForDate}
-        showWeekNumbers={showWeekNumbers}
-        weekNumberHeader={weekNumberHeader}
-        showOutsideMonth={showOutsideMonth}
-      />
     </div>
   );
 };
