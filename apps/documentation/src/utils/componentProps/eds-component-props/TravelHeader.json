@@ -65,7 +65,7 @@
       ],
       "required": false,
       "type": {
-        "name": "\"large\" | \"medium\" | undefined"
+        "name": "\"medium\" | \"large\" | \"xl\" | undefined"
       }
     },
     "noWrap": {
