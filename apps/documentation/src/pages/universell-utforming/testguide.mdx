@@ -1,6 +1,6 @@
 ---
 title: Testguide
-description: En praktisk guide til hvordan du kan teste universell utforming i løsningen din – med tastatur, skjermleser og automatiserte verktøy.
+description: En praktisk sjekkliste for å teste tilgjengelighet – med tastatur, skjermleser og automatiserte verktøy.
 route: /universell-utforming/testguide
 parent: Universell utforming
 order: 3
@@ -13,9 +13,11 @@ export const Head = ( props ) => {
 }
 
 
-God universell utforming krever både automatisert og manuell testing. Automatiserte verktøy fanger opp mange vanlige feil, men de kan ikke vurdere om løsningen faktisk er brukbar. Manuell testing med tastatur og skjermleser er uerstattelig.
+Automatiserte verktøy fanger opp ca. 30–50 % av tilgjengelighetsproblemer. Resten krever at du tester manuelt – med tastatur, skjermleser og sunt skjønn. Denne guiden gir deg en konkret sjekkliste du kan bruke underveis i utviklingen.
 
-Uu-tilsynet publiserer [tilsynsrapporter](https://www.uutilsynet.no/tilsynsrapporter/tilsynsrapporter/270) som viser hva og hvordan de tester. Disse er nyttige for å forstå hvilke feil som går igjen.
+**Tips:** Du trenger ikke kjøre alt på én gang. Gjør tastaturtest og kontrastsjekk til en vane hver gang du bygger noe nytt. Kjør skjermlesertest før lansering.
+
+Uu-tilsynet publiserer [tilsynsrapporter](https://www.uutilsynet.no/tilsynsrapporter/tilsynsrapporter/270) som viser vanlige feil. Disse gir nyttig kontekst for hva tilsynet faktisk ser etter.
 
 ## 1. Tastaturnavigasjon
 
