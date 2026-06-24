@@ -1,7 +1,47 @@
+// Same responsive var cascade pattern as Flex.scss — setting only -base is enough.
 .eds-layout-grid-item {
-  --grid-item-column: initial;
-  --grid-item-row: initial;
+  --grid-item-col-base: initial;
+  --grid-item-col-m: initial;
+  --grid-item-col-lg: initial;
+  --grid-item-col-xl: initial;
+  --grid-item-row-base: initial;
+  --grid-item-row-m: initial;
+  --grid-item-row-lg: initial;
+  --grid-item-row-xl: initial;
+  --grid-item-align-self-base: initial;
+  --grid-item-align-self-m: initial;
+  --grid-item-align-self-lg: initial;
+  --grid-item-align-self-xl: initial;
+  --grid-item-justify-self-base: initial;
+  --grid-item-justify-self-m: initial;
+  --grid-item-justify-self-lg: initial;
+  --grid-item-justify-self-xl: initial;
 
-  grid-column: var(--grid-item-column);
-  grid-row: var(--grid-item-row);
+  :where(&) {
+    grid-column: var(--grid-item-col-base);
+    grid-row: var(--grid-item-row-base);
+    align-self: var(--grid-item-align-self-base);
+    justify-self: var(--grid-item-justify-self-base);
+
+    @media (min-width: 800px) {
+      grid-column: var(--grid-item-col-m, var(--grid-item-col-base));
+      grid-row: var(--grid-item-row-m, var(--grid-item-row-base));
+      align-self: var(--grid-item-align-self-m, var(--grid-item-align-self-base));
+      justify-self: var(--grid-item-justify-self-m, var(--grid-item-justify-self-base));
+    }
+
+    @media (min-width: 1200px) {
+      grid-column: var(--grid-item-col-lg, var(--grid-item-col-m, var(--grid-item-col-base)));
+      grid-row: var(--grid-item-row-lg, var(--grid-item-row-m, var(--grid-item-row-base)));
+      align-self: var(--grid-item-align-self-lg, var(--grid-item-align-self-m, var(--grid-item-align-self-base)));
+      justify-self: var(--grid-item-justify-self-lg, var(--grid-item-justify-self-m, var(--grid-item-justify-self-base)));
+    }
+
+    @media (min-width: 1400px) {
+      grid-column: var(--grid-item-col-xl, var(--grid-item-col-lg, var(--grid-item-col-m, var(--grid-item-col-base))));
+      grid-row: var(--grid-item-row-xl, var(--grid-item-row-lg, var(--grid-item-row-m, var(--grid-item-row-base))));
+      align-self: var(--grid-item-align-self-xl, var(--grid-item-align-self-lg, var(--grid-item-align-self-m, var(--grid-item-align-self-base))));
+      justify-self: var(--grid-item-justify-self-xl, var(--grid-item-justify-self-lg, var(--grid-item-justify-self-m, var(--grid-item-justify-self-base))));
+    }
+  }
 }

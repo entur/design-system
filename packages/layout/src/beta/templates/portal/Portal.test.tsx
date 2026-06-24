@@ -21,11 +21,15 @@ test('Template.Portal renders expected regions and forwards props', () => {
 
   const portal = getByTestId('portal');
   expect(portal).toHaveClass('eds-layout-grid');
-  // --grid-template-columns is set via Portal.scss, not as an inline style,
+  // --grid-template-columns-base is set via Portal.scss, not as an inline style,
   // so the Grid does not override it with a default value.
-  expect(portal.style.getPropertyValue('--grid-template-columns')).toBeFalsy();
-  expect(portal.style.getPropertyValue('--grid-gap')).toBe('0');
-  expect(portal.style.getPropertyValue('--grid-column-gap')).toBe('var(--m)');
+  expect(
+    portal.style.getPropertyValue('--grid-template-columns-base'),
+  ).toBeFalsy();
+  expect(portal.style.getPropertyValue('--grid-gap-base')).toBe('0');
+  expect(portal.style.getPropertyValue('--grid-column-gap-base')).toBe(
+    'var(--m)',
+  );
 
   const sidebar = getByTestId('sidebar');
   expect(sidebar.tagName).toBe('ASIDE');
@@ -161,8 +165,8 @@ test('Sidebar.Data renders as Flex column with gap', () => {
 
   const data = getByTestId('data');
   expect(data).toHaveClass('eds-layout-flex');
-  expect(data.style.getPropertyValue('--flex-direction')).toBe('column');
-  expect(data.style.getPropertyValue('--flex-gap')).toBe('var(--s)');
+  expect(data.style.getPropertyValue('--flex-direction-base')).toBe('column');
+  expect(data.style.getPropertyValue('--flex-gap-base')).toBe('var(--s)');
 });
 
 test('Collapsed sidebar sets --eds-sidebar-width inline style', () => {
