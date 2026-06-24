@@ -1,0 +1,108 @@
+const VALID_SPACING_VALUES = [
+  '2xs',
+  'xs',
+  's',
+  's-m',
+  'm',
+  'm-l',
+  'l',
+  'xl',
+  '2xl',
+  '3xl',
+  '4xl',
+  '5xl',
+  '6xl',
+  '7xl',
+  '8xl',
+  '9xl',
+  '10xl',
+  '11xl',
+  'none',
+] as const;
+
+export type SpacingValue = (typeof VALID_SPACING_VALUES)[number];
+
+/**
+ * Value that can vary across breakpoints: base (0px+), m (800px+), lg (1200px+), xl (1400px+).
+ *
+ * Pass a flat value to apply it at all breakpoints, or an object with `base` (required) and
+ * any optional overrides. Omitted breakpoints inherit from the previous one.
+ *
+ * @example
+ * // Same for all breakpoints:
+ * direction="column"
+ *
+ * // column on mobile, row from lg upward:
+ * direction={{ base: 'column', lg: 'row' }}
+ */
+export type ResponsiveValue<T> =
+  | T
+  | {
+      base: T;
+      m?: T;
+      lg?: T;
+      xl?: T;
+    };
+
+export const isResponsiveObject = <T>(
+  value: ResponsiveValue<T>,
+): value is { base: T; m?: T; lg?: T; xl?: T } => {
+  return (
+    typeof value === 'object' &&
+    value !== null &&
+    !Array.isArray(value) &&
+    'base' in value
+  );
+};
+
+/**
+ * Converts a `ResponsiveValue` into CSS custom property entries.
+ * Only emits vars for breakpoints that were explicitly set; the SCSS cascade handles
+ * inheritance (e.g. -m falls back to -base if unset).
+ */
+export const toResponsiveCssVars = <T>(
+  prefix: string,
+  value: ResponsiveValue<T> | undefined,
+  transform: (v: T) => string | number | undefined = v => v as string | number,
+): Record<string, string | number | undefined> => {
+  if (value === undefined) return {};
+
+  if (isResponsiveObject(value)) {
+    return {
+      [`${prefix}-base`]: transform(value.base),
+      ...(value.m !== undefined && { [`${prefix}-m`]: transform(value.m) }),
+      ...(value.lg !== undefined && { [`${prefix}-lg`]: transform(value.lg) }),
+      ...(value.xl !== undefined && { [`${prefix}-xl`]: transform(value.xl) }),
+    };
+  }
+
+  return { [`${prefix}-base`]: transform(value as T) };
+};
+
+const isValidSpacingValue = (value: unknown): value is SpacingValue => {
+  return (
+    typeof value === 'string' &&
+    VALID_SPACING_VALUES.includes(value as SpacingValue)
+  );
+};
+
+export const getSpacingValue = (
+  spacing: SpacingValue | undefined,
+  componentName = 'Layout',
+): string | undefined => {
+  if (!spacing) return undefined;
+  if (spacing === 'none') return '0';
+
+  if (!isValidSpacingValue(spacing)) {
+    if (process.env.NODE_ENV !== 'production') {
+      console.warn(
+        `Invalid ${componentName} spacing value: "${spacing}". Valid values are: ${VALID_SPACING_VALUES.join(
+          ', ',
+        )}. Falling back to undefined.`,
+      );
+    }
+    return undefined;
+  }
+
+  return `var(--${spacing})`;
+};

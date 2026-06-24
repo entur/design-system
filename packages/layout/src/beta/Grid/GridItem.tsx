@@ -1,30 +1,30 @@
 import React from 'react';
 import { PolymorphicComponentProps } from '@entur/utils';
-import { useResponsiveValue } from '../LayoutProvider/useResponsiveValue';
-import type { ResponsiveValue } from '../LayoutProvider/utils';
 import classNames from 'classnames';
-
+import { toResponsiveCssVars } from '../utils';
+import type { ResponsiveValue } from '../utils';
 import './GridItem.scss';
 
+type ColRowValue = number | string;
+
 export type GridItemOwnProps = {
-  /** Number of columns the item should span (supports responsive objects)
-   * If number: adds "span" prefix (e.g., 6 → "span 6")
-   * If string: used directly (e.g., "span 3" or "1 / 3")
+  /**
+   * Columns to span. Number adds "span" prefix (e.g. 6 → "span 6"). String used as-is (e.g. "1 / -1").
+   * Accepts a responsive object: `{ base: 12, m: 6, lg: 4 }`.
    */
-  colSpan?: number | string | ResponsiveValue<number | string>;
-  /** Number of rows the item should span (supports responsive objects)
-   * @default 1
-   * If number: adds "span" prefix (e.g., 2 → "span 2")
-   * If string: used directly (e.g., "span 2" or "1 / 3")
+  colSpan?: ResponsiveValue<ColRowValue>;
+  /**
+   * Rows to span. Number adds "span" prefix (e.g. 2 → "span 2"). String used as-is.
+   * Accepts a responsive object: `{ base: 1, m: 2 }`.
    */
-  rowSpan?: number | string | ResponsiveValue<number | string>;
-  /** HTML element or React component used to render the Grid item
-   * @default "div"
-   */
+  rowSpan?: ResponsiveValue<ColRowValue>;
+  /** CSS align-self value */
+  alignSelf?: ResponsiveValue<React.CSSProperties['alignSelf']>;
+  /** CSS justify-self value */
+  justifySelf?: ResponsiveValue<React.CSSProperties['justifySelf']>;
+  /** HTML element or React component to render as. @default "div" */
   as?: string | React.ElementType;
-  /** Additional class names */
   className?: string;
-  /** Content of the Grid item */
   children?: React.ReactNode;
 };
 
@@ -39,25 +39,16 @@ export type GridItemComponent = (<
 
 const defaultElement = 'div';
 
-const formatGridSpan = (
-  value: number | string | undefined,
-): string | undefined => {
-  if (value === undefined) {
-    return undefined;
-  }
-
-  if (typeof value === 'number') {
-    return `span ${value}`;
-  }
-
-  return value;
-};
+const formatSpan = (value: ColRowValue): string =>
+  typeof value === 'number' ? `span ${value}` : value;
 
 export const GridItem: GridItemComponent = React.forwardRef(
   <E extends React.ElementType = typeof defaultElement>(
     {
       colSpan,
-      rowSpan = 1,
+      rowSpan,
+      alignSelf,
+      justifySelf,
       as,
       className,
       children,
@@ -68,16 +59,11 @@ export const GridItem: GridItemComponent = React.forwardRef(
   ): JSX.Element => {
     const Element: React.ElementType = as || defaultElement;
 
-    const resolvedColSpan = useResponsiveValue(colSpan);
-    const resolvedRowSpan = useResponsiveValue(rowSpan);
-
     const itemStyle: React.CSSProperties = {
-      ...(resolvedColSpan !== undefined && {
-        '--grid-item-column': formatGridSpan(resolvedColSpan),
-      }),
-      ...(resolvedRowSpan !== undefined && {
-        '--grid-item-row': formatGridSpan(resolvedRowSpan),
-      }),
+      ...toResponsiveCssVars('--grid-item-col', colSpan, formatSpan),
+      ...toResponsiveCssVars('--grid-item-row', rowSpan, formatSpan),
+      ...toResponsiveCssVars('--grid-item-align-self', alignSelf),
+      ...toResponsiveCssVars('--grid-item-justify-self', justifySelf),
       ...style,
     } as React.CSSProperties;
 
@@ -93,3 +79,5 @@ export const GridItem: GridItemComponent = React.forwardRef(
     );
   },
 );
+
+GridItem.displayName = 'GridItem';

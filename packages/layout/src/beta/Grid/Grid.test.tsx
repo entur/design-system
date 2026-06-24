@@ -3,52 +3,147 @@ import { render } from '@testing-library/react';
 import { Grid } from './Grid';
 import { GridItem } from './GridItem';
 
-test('Grid sets CSS variables from props', () => {
+test('Grid renders with class', () => {
+  const { getByTestId } = render(<Grid data-testid="grid" />);
+  expect(getByTestId('grid')).toHaveClass('eds-layout-grid');
+});
+
+test('Grid sets plain templateColumns at base only', () => {
+  const { getByTestId } = render(
+    <Grid data-testid="grid" templateColumns="200px 1fr" />,
+  );
+  const el = getByTestId('grid');
+  expect(el.style.getPropertyValue('--grid-template-columns-base')).toBe(
+    '200px 1fr',
+  );
+  expect(el.style.getPropertyValue('--grid-template-columns-m')).toBe('');
+});
+
+test('Grid sets responsive templateColumns for explicit breakpoints', () => {
   const { getByTestId } = render(
     <Grid
       data-testid="grid"
-      templateColumns="200px 1fr"
-      gap="s"
-      columnGap="none"
-      height="100%"
+      templateColumns={{
+        base: '1fr',
+        m: 'repeat(6, 1fr)',
+        lg: 'repeat(12, 1fr)',
+      }}
     />,
   );
-
-  const grid = getByTestId('grid');
-  expect(grid).toHaveClass('eds-layout-grid');
-  expect(grid.style.getPropertyValue('--grid-template-columns')).toBe(
-    '200px 1fr',
+  const el = getByTestId('grid');
+  expect(el.style.getPropertyValue('--grid-template-columns-base')).toBe('1fr');
+  expect(el.style.getPropertyValue('--grid-template-columns-m')).toBe(
+    'repeat(6, 1fr)',
   );
-  expect(grid.style.getPropertyValue('--grid-gap')).toBe('var(--s)');
-  expect(grid.style.getPropertyValue('--grid-column-gap')).toBe('0');
-  expect(grid.style.getPropertyValue('--grid-height')).toBe('100%');
+  expect(el.style.getPropertyValue('--grid-template-columns-lg')).toBe(
+    'repeat(12, 1fr)',
+  );
+  expect(el.style.getPropertyValue('--grid-template-columns-xl')).toBe('');
 });
 
-test('Grid sets align and justify CSS variables from props', () => {
+test('Grid sets responsive gap as spacing vars for explicit breakpoints', () => {
+  const { getByTestId } = render(
+    <Grid data-testid="grid" gap={{ base: 'xs', m: 'm' }} />,
+  );
+  const el = getByTestId('grid');
+  expect(el.style.getPropertyValue('--grid-gap-base')).toBe('var(--xs)');
+  expect(el.style.getPropertyValue('--grid-gap-m')).toBe('var(--m)');
+  expect(el.style.getPropertyValue('--grid-gap-lg')).toBe('');
+});
+
+test('Grid sets rowGap as CSS var', () => {
+  const { getByTestId } = render(<Grid data-testid="grid" rowGap="s" />);
+  const el = getByTestId('grid');
+  expect(el.style.getPropertyValue('--grid-row-gap-base')).toBe('var(--s)');
+  expect(el.style.rowGap).toBe('');
+});
+
+test('Grid sets align, justify, justifyItems, alignContent', () => {
   const { getByTestId } = render(
     <Grid
       data-testid="grid"
       align="center"
       justify="space-between"
       alignContent="end"
+      justifyItems="start"
     />,
   );
-
-  const grid = getByTestId('grid');
-  expect(grid.style.getPropertyValue('--grid-align-items')).toBe('center');
-  expect(grid.style.getPropertyValue('--grid-justify-content')).toBe(
+  const el = getByTestId('grid');
+  expect(el.style.getPropertyValue('--grid-align-items-base')).toBe('center');
+  expect(el.style.getPropertyValue('--grid-justify-content-base')).toBe(
     'space-between',
   );
-  expect(grid.style.getPropertyValue('--grid-align-content')).toBe('end');
+  expect(el.style.getPropertyValue('--grid-align-content-base')).toBe('end');
+  expect(el.style.getPropertyValue('--grid-justify-items-base')).toBe('start');
 });
 
-test('GridItem formats colSpan and rowSpan values', () => {
-  const { getByTestId } = render(
-    <GridItem data-testid="item" colSpan={3} rowSpan="2 / 3" />,
-  );
+test('GridItem renders with class', () => {
+  const { getByTestId } = render(<GridItem data-testid="item" />);
+  expect(getByTestId('item')).toHaveClass('eds-layout-grid-item');
+});
 
-  const item = getByTestId('item');
-  expect(item).toHaveClass('eds-layout-grid-item');
-  expect(item.style.getPropertyValue('--grid-item-column')).toBe('span 3');
-  expect(item.style.getPropertyValue('--grid-item-row')).toBe('2 / 3');
+test('GridItem sets plain colSpan at base only', () => {
+  const { getByTestId } = render(<GridItem data-testid="item" colSpan={6} />);
+  const el = getByTestId('item');
+  expect(el.style.getPropertyValue('--grid-item-col-base')).toBe('span 6');
+  expect(el.style.getPropertyValue('--grid-item-col-m')).toBe('');
+});
+
+test('GridItem sets responsive colSpan for explicit breakpoints', () => {
+  const { getByTestId } = render(
+    <GridItem data-testid="item" colSpan={{ base: 12, m: 6, lg: '1 / -1' }} />,
+  );
+  const el = getByTestId('item');
+  expect(el.style.getPropertyValue('--grid-item-col-base')).toBe('span 12');
+  expect(el.style.getPropertyValue('--grid-item-col-m')).toBe('span 6');
+  expect(el.style.getPropertyValue('--grid-item-col-lg')).toBe('1 / -1');
+  expect(el.style.getPropertyValue('--grid-item-col-xl')).toBe('');
+});
+
+test('GridItem sets responsive rowSpan', () => {
+  const { getByTestId } = render(
+    <GridItem data-testid="item" rowSpan={{ base: 1, m: 2 }} />,
+  );
+  const el = getByTestId('item');
+  expect(el.style.getPropertyValue('--grid-item-row-base')).toBe('span 1');
+  expect(el.style.getPropertyValue('--grid-item-row-m')).toBe('span 2');
+});
+
+test('GridItem does not set col var when colSpan not provided', () => {
+  const { getByTestId } = render(<GridItem data-testid="item" />);
+  expect(
+    getByTestId('item').style.getPropertyValue('--grid-item-col-base'),
+  ).toBe('');
+});
+
+test('Grid sets minWidth as CSS var', () => {
+  const { getByTestId } = render(<Grid data-testid="grid" minWidth="200px" />);
+  const el = getByTestId('grid');
+  expect(el.style.getPropertyValue('--grid-min-width-base')).toBe('200px');
+  expect(el.style.getPropertyValue('--grid-min-width-m')).toBe('');
+});
+
+test('Grid sets responsive maxWidth for explicit breakpoints', () => {
+  const { getByTestId } = render(
+    <Grid data-testid="grid" maxWidth={{ base: '100%', lg: '1200px' }} />,
+  );
+  const el = getByTestId('grid');
+  expect(el.style.getPropertyValue('--grid-max-width-base')).toBe('100%');
+  expect(el.style.getPropertyValue('--grid-max-width-m')).toBe('');
+  expect(el.style.getPropertyValue('--grid-max-width-lg')).toBe('1200px');
+  expect(el.style.getPropertyValue('--grid-max-width-xl')).toBe('');
+});
+
+test('GridItem sets responsive alignSelf', () => {
+  const { getByTestId } = render(
+    <GridItem
+      data-testid="item"
+      alignSelf={{ base: 'stretch', m: 'center' }}
+    />,
+  );
+  const el = getByTestId('item');
+  expect(el.style.getPropertyValue('--grid-item-align-self-base')).toBe(
+    'stretch',
+  );
+  expect(el.style.getPropertyValue('--grid-item-align-self-m')).toBe('center');
 });

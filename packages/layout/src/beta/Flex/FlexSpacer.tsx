@@ -3,9 +3,7 @@ import classNames from 'classnames';
 import { PolymorphicComponentProps } from '@entur/utils';
 
 export type FlexSpacerOwnProps = {
-  /** HTML element or React component used to render Flex.Spacer
-   * @default "div"
-   */
+  /** HTML element or React component to render as. @default "div" */
   as?: string | React.ElementType;
   /** Additional class name */
   className?: string;
