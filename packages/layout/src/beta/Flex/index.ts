@@ -23,7 +23,8 @@ export const FlexComponent: Flex = Object.assign(FlexParent, {
 });
 
 FlexComponent.Spacer.displayName = 'Flex.Spacer';
+FlexComponent.displayName = 'Flex';
 
-export type { FlexProps, FlexOwnProps, FlexSpacingValue } from './Flex';
+export type { FlexProps, FlexOwnProps } from './Flex';
 export type { FlexSpacerProps, FlexSpacerOwnProps } from './FlexSpacer';
 export { FlexComponent as Flex, FlexSpacer };

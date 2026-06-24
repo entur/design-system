@@ -1,61 +1,62 @@
 import React from 'react';
 import { PolymorphicComponentProps } from '@entur/utils';
-import { getSpacingValue } from '../LayoutProvider/utils';
-import type {
-  GridSpacingValue,
-  ResponsiveValue,
-} from '../LayoutProvider/utils';
-import { useResponsiveValue } from '../LayoutProvider/useResponsiveValue';
+import { getSpacingValue, toResponsiveCssVars } from '../utils';
+import type { SpacingValue, ResponsiveValue } from '../utils';
 import classNames from 'classnames';
-
 import './Grid.scss';
 
 type AlignItems = React.CSSProperties['alignItems'];
 type JustifyContent = React.CSSProperties['justifyContent'];
+type JustifyItems = React.CSSProperties['justifyItems'];
 type AlignContent = React.CSSProperties['alignContent'];
+type AutoFlow = 'row' | 'column' | 'dense' | 'row dense' | 'column dense';
 
+/**
+ * CSS Grid container with responsive props. All layout props accept either a flat value
+ * (applied at all breakpoints) or a `{ base, m?, lg?, xl? }` object where `base` is required
+ * and omitted breakpoints inherit from the previous one.
+ *
+ * Defaults to a 12-column grid. Pair with `GridItem` to control column/row placement.
+ *
+ * @example
+ * <Grid templateColumns={{ base: 'repeat(4, 1fr)', lg: 'repeat(12, 1fr)' }} gap="m">
+ *   <GridItem colSpan={{ base: 4, lg: 6 }}>...</GridItem>
+ * </Grid>
+ */
 export type GridOwnProps = {
-  /** CSS grid-template-columns value (supports responsive objects)
-   * @default "repeat(12, 1fr)"
-   */
-  templateColumns?: string | ResponsiveValue<string>;
-  /** Spacing between grid items (supports responsive objects)
-   * @default "m"
-   */
-  gap?: GridSpacingValue | ResponsiveValue<GridSpacingValue>;
-  /** Vertical spacing between grid rows (supports responsive objects) */
-  rowGap?: GridSpacingValue | ResponsiveValue<GridSpacingValue>;
-  /** Horizontal spacing between grid columns (supports responsive objects) */
-  columnGap?: GridSpacingValue | ResponsiveValue<GridSpacingValue>;
-  /** CSS grid-template-rows value (supports responsive objects) */
-  templateRows?: string | ResponsiveValue<string>;
-  /** CSS grid-auto-flow value (supports responsive objects)
-   * @default "row"
-   */
-  autoFlow?:
-    | 'row'
-    | 'column'
-    | 'dense'
-    | 'row dense'
-    | 'column dense'
-    | ResponsiveValue<
-        'row' | 'column' | 'dense' | 'row dense' | 'column dense'
-      >;
-  /** CSS align-items value (supports responsive objects) */
-  align?: AlignItems | ResponsiveValue<AlignItems>;
-  /** CSS justify-content value (supports responsive objects) */
-  justify?: JustifyContent | ResponsiveValue<JustifyContent>;
-  /** CSS align-content value (supports responsive objects) */
-  alignContent?: AlignContent | ResponsiveValue<AlignContent>;
-  /** The height of the grid container */
-  height?: string;
-  /** HTML element or React component used to render the Grid
-   * @default "div"
-   */
+  /** CSS grid-template-columns value. @default "repeat(12, 1fr)" */
+  templateColumns?: ResponsiveValue<string>;
+  /** CSS grid-template-rows value */
+  templateRows?: ResponsiveValue<string>;
+  /** CSS grid-auto-flow value. @default "row" */
+  autoFlow?: ResponsiveValue<AutoFlow>;
+  /** CSS grid-auto-rows value */
+  autoRows?: ResponsiveValue<string>;
+  /** CSS grid-auto-columns value */
+  autoColumns?: ResponsiveValue<string>;
+  /** Gap between grid items */
+  gap?: ResponsiveValue<SpacingValue>;
+  /** Vertical gap between rows (overrides gap for rows) */
+  rowGap?: ResponsiveValue<SpacingValue>;
+  /** Horizontal gap between columns */
+  columnGap?: ResponsiveValue<SpacingValue>;
+  /** CSS align-items value */
+  align?: ResponsiveValue<AlignItems>;
+  /** CSS justify-content value */
+  justify?: ResponsiveValue<JustifyContent>;
+  /** CSS justify-items value */
+  justifyItems?: ResponsiveValue<JustifyItems>;
+  /** CSS align-content value */
+  alignContent?: ResponsiveValue<AlignContent>;
+  /** Height of the grid container */
+  height?: ResponsiveValue<string>;
+  /** Min-width of the grid container */
+  minWidth?: ResponsiveValue<string>;
+  /** Max-width of the grid container */
+  maxWidth?: ResponsiveValue<string>;
+  /** HTML element or React component to render as. @default "div" */
   as?: string | React.ElementType;
-  /** Additional class names */
   className?: string;
-  /** Content of the Grid container */
   children?: React.ReactNode;
 };
 
@@ -75,14 +76,19 @@ export const Grid: GridComponent = React.forwardRef(
     {
       templateColumns,
       templateRows,
-      gap = 'm',
+      autoFlow,
+      autoRows,
+      autoColumns,
+      gap,
       rowGap,
       columnGap,
-      autoFlow = 'row',
       align,
       justify,
+      justifyItems,
       alignContent,
       height,
+      minWidth,
+      maxWidth,
       as,
       className,
       children,
@@ -93,47 +99,26 @@ export const Grid: GridComponent = React.forwardRef(
   ): JSX.Element => {
     const Element: React.ElementType = as || defaultElement;
 
-    const resolvedTemplateColumns = useResponsiveValue(templateColumns);
-    const resolvedTemplateRows = useResponsiveValue(templateRows);
-    const resolvedGap = useResponsiveValue(gap);
-    const resolvedRowGap = useResponsiveValue(rowGap);
-    const resolvedColumnGap = useResponsiveValue(columnGap);
-    const resolvedAutoFlow = useResponsiveValue(autoFlow);
-    const resolvedAlign = useResponsiveValue(align);
-    const resolvedJustify = useResponsiveValue(justify);
-    const resolvedAlignContent = useResponsiveValue(alignContent);
-
     const gridStyle: React.CSSProperties = {
-      ...(resolvedTemplateColumns && {
-        '--grid-template-columns': resolvedTemplateColumns,
-      }),
-      ...(resolvedTemplateRows && {
-        '--grid-template-rows': resolvedTemplateRows,
-      }),
-      ...(resolvedAutoFlow && {
-        '--grid-auto-flow': resolvedAutoFlow,
-      }),
-      ...(resolvedAlign && {
-        '--grid-align-items': resolvedAlign,
-      }),
-      ...(resolvedJustify && {
-        '--grid-justify-content': resolvedJustify,
-      }),
-      ...(resolvedAlignContent && {
-        '--grid-align-content': resolvedAlignContent,
-      }),
-      ...(resolvedGap && {
-        '--grid-gap': getSpacingValue(resolvedGap),
-      }),
-      ...(resolvedRowGap && {
-        '--grid-row-gap': getSpacingValue(resolvedRowGap),
-      }),
-      ...(resolvedColumnGap && {
-        '--grid-column-gap': getSpacingValue(resolvedColumnGap),
-      }),
-      ...(height && {
-        '--grid-height': height,
-      }),
+      ...toResponsiveCssVars('--grid-template-columns', templateColumns),
+      ...toResponsiveCssVars('--grid-template-rows', templateRows),
+      ...toResponsiveCssVars('--grid-auto-flow', autoFlow),
+      ...toResponsiveCssVars('--grid-auto-rows', autoRows),
+      ...toResponsiveCssVars('--grid-auto-columns', autoColumns),
+      ...toResponsiveCssVars('--grid-gap', gap, getSpacingValue),
+      ...toResponsiveCssVars('--grid-row-gap', rowGap ?? gap, getSpacingValue),
+      ...toResponsiveCssVars(
+        '--grid-column-gap',
+        columnGap ?? gap,
+        getSpacingValue,
+      ),
+      ...toResponsiveCssVars('--grid-align-items', align),
+      ...toResponsiveCssVars('--grid-justify-content', justify),
+      ...toResponsiveCssVars('--grid-justify-items', justifyItems),
+      ...toResponsiveCssVars('--grid-align-content', alignContent),
+      ...toResponsiveCssVars('--grid-height', height),
+      ...toResponsiveCssVars('--grid-min-width', minWidth),
+      ...toResponsiveCssVars('--grid-max-width', maxWidth),
       ...style,
     } as React.CSSProperties;
 
@@ -149,3 +134,5 @@ export const Grid: GridComponent = React.forwardRef(
     );
   },
 );
+
+Grid.displayName = 'Grid';
