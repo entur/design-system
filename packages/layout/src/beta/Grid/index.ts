@@ -25,11 +25,8 @@ export const GridComponent: Grid = Object.assign(GridParent, {
 });
 
 GridComponent.Item.displayName = 'Grid.Item';
+GridComponent.displayName = 'Grid';
 
 export type { GridProps, GridOwnProps } from './Grid';
-export type {
-  GridSpacingValue,
-  ResponsiveValue,
-} from '../LayoutProvider/utils';
 export type { GridItemProps, GridItemOwnProps } from './GridItem';
 export { GridComponent as Grid, GridItem };
