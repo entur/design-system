@@ -10,7 +10,7 @@
     flex-direction: row;
     align-items: center;
 
-    &:has(.eds-textfield__clear-button) {
+    &:where(:has(.eds-textfield__clear-button)) {
       margin-right: -(t.$space-medium);
     }
   }
@@ -18,27 +18,27 @@
   &__clear-button {
     margin-inline: t.$space-extra-small2;
 
-    &:hover {
+    &:where(:hover) {
       background: var(--components-button-iconbutton-standard-hover);
     }
 
-    &:focus-visible {
+    &:where(:focus-visible) {
       outline: t.$outlines-focus;
       outline-color: var(--basecolors-stroke-focus-standard);
     }
 
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       color: var(--components-button-iconbutton-standard-text);
 
-      &:hover {
+      &:where(:hover) {
         background-color: var(--components-button-iconbutton-standard-hover);
       }
-      &:focus-visible {
+      &:where(:focus-visible) {
         outline: t.$outlines-focus;
         outline-color: var(--basecolors-stroke-focus-standard);
         outline-offset: t.$outline-offsets-focus;
       }
-      &:active {
+      &:where(:active) {
         background-color: var(--components-button-iconbutton-standard-active);
       }
     }
@@ -52,7 +52,7 @@
     height: 1.5rem;
     width: 1px;
 
-    .eds-contrast .eds-form-control-wrapper--disabled & {
+    :where(.eds-contrast) :where(.eds-form-control-wrapper--disabled) & {
       background-color: var(--components-form-baseform-contrast-icon);
     }
   }

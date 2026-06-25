@@ -3,26 +3,26 @@
 
 .eds-textarea__wrapper {
   // Quickfix for illegible label when input exceeds height of textarea
-  :not(.eds-form-control-wrapper--disabled, .eds-form-control-wrapper--readonly) .eds-textarea__label .eds-input-group__label {
+  :not(.eds-form-control-wrapper--disabled, .eds-form-control-wrapper--readonly) .eds-textarea__label :where(.eds-input-group__label) {
     background: var(--basecolors-frame-default);
     width: fit-content;
     height: fit-content;
     padding: 0.15rem;
     margin: -0.15rem;
 
-    *[data-color-mode='dark'] .eds-contrast & {
+    *[data-color-mode='dark'] :where(.eds-contrast) & {
       background-color: var(--basecolors-frame-contrast);
     }
   }
 
-  textarea.eds-form-control.eds-textarea {
+  :where(textarea).eds-form-control.eds-textarea {
     min-height: 7.75rem;
     resize: vertical;
     line-height: t.$line-heights-extra-large;
   }
 
   // No right side padding to make resize handle positioned in bottom right corner
-  .eds-form-control-wrapper {
+  :where(.eds-form-control-wrapper) {
     padding-right: 0;
     cursor: text;
   }

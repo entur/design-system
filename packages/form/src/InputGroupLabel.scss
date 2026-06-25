@@ -21,7 +21,7 @@ $label-top-large: 0.5rem;
   line-height: t.$font-sizes-small;
   height: 10px;
   padding: 0;
-  .eds-textarea__label & {
+  :where(.eds-textarea__label) & {
     box-shadow: 0px -2px 0px 4px var(--textarea-label-background);
     background: var(--textarea-label-background);
     width: calc(100% - #{t.$space-default} - #{t.$space-default} - 4px); // ~36px = margin-left + scrollbar-width + box-shadow blur
@@ -36,10 +36,10 @@ $label-top-large: 0.5rem;
   &__label {
     color: var(--components-form-baseform-standard-text-label);
     display: flex;
-    .eds-form-control-wrapper--is-filled & {
+    :where(.eds-form-control-wrapper--is-filled) & {
       @include labelPositionTop;
     }
-    .eds-form-control-wrapper--is-filled.eds-form-control-wrapper--size-large & {
+    :where(.eds-form-control-wrapper--is-filled.eds-form-control-wrapper--size-large) & {
       @include labelPositionTopLarge;
     }
     font-size: t.$font-sizes-large;
@@ -52,12 +52,12 @@ $label-top-large: 0.5rem;
       line-height ease-in-out t.$timings-medium;
     user-select: none;
     pointer-events: none;
-    .eds-form-control-wrapper--size-large & {
+    :where(.eds-form-control-wrapper--size-large) & {
       @include labelPositionDefaultLarge;
     }
     &--filled {
       @include labelPositionTop;
-      .eds-form-control-wrapper--size-large & {
+      :where(.eds-form-control-wrapper--size-large) & {
         @include labelPositionTopLarge;
       }
     }
@@ -65,16 +65,16 @@ $label-top-large: 0.5rem;
 }
 
 .eds-form-control-wrapper {
-  &:focus-within :not(.eds-input-group-label-wrapper--controlled-label-position) .eds-input-group__label {
+  &:where(:focus-within) :not(.eds-input-group-label-wrapper--controlled-label-position) :where(.eds-input-group__label) {
     @include labelPositionTop;
   }
-  &--size-large:focus-within {
-    & :not(.eds-input-group-label-wrapper--controlled-label-position) .eds-input-group__label {
+  &--size-large:where(:focus-within) {
+    & :not(.eds-input-group-label-wrapper--controlled-label-position) :where(.eds-input-group__label) {
       @include labelPositionTopLarge;
     }
   }
   &--disabled {
-    &:focus-within .eds-input-group__label {
+    &:where(:focus-within) :where(.eds-input-group__label) {
       top: 1rem;
       font-size: t.$font-sizes-large;
       height: t.$space-extra-large3;

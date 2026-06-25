@@ -7,7 +7,7 @@
     color: $text;
   }
 
-  .eds-contrast & {
+  :where(.eds-contrast) & {
     border-color: $contrast-border;
     background: $contrast-background;
     @if $contrast-text {
@@ -17,20 +17,20 @@
 }
 
 .eds-input-panel {
-  &:has(:focus-visible) {
-    .eds-input-panel__container {
+  &:where(:has(:focus-visible)) {
+    :where(.eds-input-panel__container) {
       outline: t.$outlines-focus;
       outline-color: var(--basecolors-stroke-focus-standard);
       outline-offset: t.$outline-offsets-focus;
     }
-    .eds-contrast & {
-      .eds-input-panel__container {
+    :where(.eds-contrast) & {
+      :where(.eds-input-panel__container) {
         outline-color: var(--basecolors-stroke-focus-contrast);
       }
     }
   }
 
-  > input {
+  > :where(input) {
     position: absolute;
     opacity: 0;
     cursor: pointer;
@@ -54,23 +54,23 @@
     width: fit-content;
     transition: background ease-in-out t.$timings-fast, border-color ease-in-out t.$timings-fast;
 
-    &:hover {
+    &:where(:hover) {
       background-color: var(--components-form-basepanel-standard-fill-hover);
 
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         background-color: var(--components-form-basepanel-contrast-fill-hover);
       }
     }
 
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       background-color: var(--components-form-basepanel-contrast-fill-default);
       border-color: var(--components-form-basepanel-contrast-border-default);
       color: var(--components-form-basepanel-contrast-text-accent);
     }
 
-    .eds-checkbox__icon,
-    .eds-checkbox__icon .eds-checkbox__icon,
-    .eds-form-component--radio__radio {
+    :where(.eds-checkbox__icon),
+    :where(.eds-checkbox__icon .eds-checkbox__icon),
+    :where(.eds-form-component--radio__radio) {
       width: 1.5rem;
       height: 1.5rem;
       margin-right: 0;
@@ -86,10 +86,10 @@
       var(--components-form-basepanel-contrast-fill-selected)
     );
 
-    &:hover {
+    &:where(:hover) {
       background-color: var(--components-form-basepanel-standard-fill-hover);
 
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         background-color: var(--components-form-basepanel-contrast-fill-hover);
       }
     }
@@ -97,7 +97,7 @@
 
   // Readonly checked and unchecked state
   &--readonly {
-    .eds-input-panel__container {
+    :where(.eds-input-panel__container) {
       border-style: dashed;
       cursor: default;
       @include panel-surface(
@@ -109,10 +109,10 @@
         var(--components-form-basepanel-contrast-text-accent)
       );
 
-      &:hover {
+      &:where(:hover) {
         background-color: var(--components-form-basepanel-standard-fill-default);
 
-        .eds-contrast & {
+        :where(.eds-contrast) & {
           background-color: var(--components-form-basepanel-contrast-fill-default);
         }
       }
@@ -131,7 +131,7 @@
 
   // Disabled checked and unchecked state
   &--disabled {
-    .eds-input-panel__container {
+    :where(.eds-input-panel__container) {
       cursor: not-allowed;
       @include panel-surface(
         var(--components-form-basepanel-standard-border-disabled),
@@ -142,10 +142,10 @@
         var(--components-form-basepanel-contrast-text-disabled)
       );
 
-      &:hover {
+      &:where(:hover) {
         background-color: var(--components-form-basepanel-standard-fill-disabled);
 
-        .eds-contrast & {
+        :where(.eds-contrast) & {
           background-color: var(--components-form-basepanel-contrast-fill-disabled);
         }
       }
@@ -162,23 +162,23 @@
   }
 
   &--medium {
-    .eds-input-panel__title {
+    :where(.eds-input-panel__title) {
       font-size: t.$font-sizes-large;
       font-weight: t.$font-weights-body;
     }
-    &.eds-input-panel__container {
+    &:where(.eds-input-panel__container) {
       padding-bottom: t.$space-medium;
       min-height: 3.75rem;
     }
   }
 
   &--large {
-    .eds-input-panel__title {
+    :where(.eds-input-panel__title) {
       font-size: t.$font-sizes-extra-large;
       font-weight: t.$font-weights-body;
       line-height: t.$line-heights-extra-large3;
     }
-    &.eds-input-panel__container {
+    &:where(.eds-input-panel__container) {
       min-height: 6rem;
     }
   }
@@ -195,7 +195,7 @@
     align-items: center;
     gap: 0.75rem;
 
-    .eds-checkbox__container {
+    :where(.eds-checkbox__container) {
       margin: 0;
     }
   }

@@ -10,43 +10,43 @@
     height: t.$space-extra-large;
     width: fit-content;
     user-select: none;
-    :hover ~ .eds-form-component--radio__radio {
+    :where(:hover) ~ .eds-form-component--radio__radio {
       background-color: var(--components-form-radio-standard-fill-hover);
 
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         background-color: var(--components-form-radio-contrast-fill-hover);
       }
     }
 
-    input {
+    :where(input) {
       position: absolute;
       opacity: 0;
       cursor: pointer;
       height: 0;
       width: 0;
-      &:checked ~ .eds-form-component--radio__radio .eds-form-component--radio__circle {
+      &:where(:checked) ~ .eds-form-component--radio__radio .eds-form-component--radio__circle {
         height: 0.625rem;
         width: 0.625rem;
       }
-      &:focus-visible ~ .eds-form-component--radio__radio {
+      &:where(:focus-visible) ~ .eds-form-component--radio__radio {
         outline: t.$outlines-focus;
         outline-color: var(--basecolors-stroke-focus-standard);
         outline-offset: t.$outline-offsets-focus;
-        .eds-contrast & {
+        :where(.eds-contrast) & {
           outline-color: var(--basecolors-stroke-focus-contrast);
         }
       }
     }
 
-    &:has(input:disabled) {
+    &:where(:has(input:disabled)) {
       cursor: not-allowed;
     }
-    &:has(.eds-form-component--radio__radio--readonly) {
+    &:where(:has(.eds-form-component--radio__radio--readonly)) {
       cursor: default;
       user-select: text;
     }
 
-    .eds-form-component--radio__radio {
+    :where(.eds-form-component--radio__radio) {
       position: relative;
       height: calc(t.$space-medium + t.$space-extra-small2);
       width: calc(t.$space-medium + t.$space-extra-small2);
@@ -57,61 +57,61 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         background-color: var(--components-form-radio-contrast-fill-default);
         border-color: var(--components-form-radio-contrast-border);
       }
 
-      &.eds-form-component--radio__radio--disabled {
+      &:where(.eds-form-component--radio__radio--disabled) {
         background: var(--components-form-radio-contrast-fill-disabled);
         border-color: var(--components-form-radio-contrast-text-disabled);
 
-        &:hover {
+        &:where(:hover) {
           border-color: var(--components-form-radio-contrast-text-disabled);
         }
-        .eds-contrast & {
+        :where(.eds-contrast) & {
           background: var(--components-form-radio-contrast-fill-disabled);
           border-color: var(--components-form-radio-contrast-text-disabled);
         }
         & ~ .eds-form-component--radio__label {
           color: var(--components-form-radio-contrast-text-disabled);
         }
-        &:checked ~ .eds-form-component--radio__radio .eds-form-component--radio__circle {
+        &:where(:checked) ~ .eds-form-component--radio__radio .eds-form-component--radio__circle {
           background-color: var(--components-form-radio-standard-icon-disabled);
           border-color: var(--components-form-radio-contrast-text-disabled);
         }
-        .eds-form-component--radio__circle {
+        :where(.eds-form-component--radio__circle) {
           background-color: var(--components-form-radio-standard-icon-disabled);
 
-          .eds-contrast & {
+          :where(.eds-contrast) & {
             background-color: var(--components-form-radio-contrast-icon-disabled);
           }
         }
       }
 
-      &.eds-form-component--radio__radio--readonly {
+      &:where(.eds-form-component--radio__radio--readonly) {
         background: var(--components-form-radio-standard-fill-disabled);
         border-color: var(--components-form-radio-standard-border-readonly);
 
-        .eds-contrast & {
+        :where(.eds-contrast) & {
           background: var(--components-form-radio-contrast-fill-disabled);
           border-color: var(--components-form-radio-contrast-border-readonly);
         }
 
-        &:checked ~ .eds-form-component--radio__radio .eds-form-component--radio__circle {
+        &:where(:checked) ~ .eds-form-component--radio__radio .eds-form-component--radio__circle {
           background-color: var(--components-form-radio-standard-fill-selected);
           border-color: var(--components-form-radio-standard-border-readonly);
         }
       }
 
-      .eds-form-component--radio__circle {
+      :where(.eds-form-component--radio__circle) {
         display: block;
         width: 0;
         height: 0;
         border-radius: 50%;
         background-color: var(--components-form-radio-standard-fill-selected);
         transition: width t.$timings-fast ease-in-out, height t.$timings-fast ease-in-out;
-        .eds-contrast & {
+        :where(.eds-contrast) & {
           background-color: var(--components-form-radio-contrast-icon);
         }
       }

@@ -5,7 +5,7 @@
   user-select: none;
   padding: 0.5rem 0;
   width: fit-content;
-  input {
+  :where(input) {
     opacity: 0;
     pointer-events: none;
     position: absolute;
@@ -35,12 +35,12 @@
     top: 0.125rem;
     left: 0.125rem;
     position: relative;
-    .eds-switch__switch--large & {
+    :where(.eds-switch__switch--large) & {
       height: 1.75rem;
       width: 1.75rem;
     }
 
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       box-shadow: 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.5);
     }
   }
@@ -55,44 +55,44 @@
     border-radius: 1.5rem;
     box-shadow: inset 0px 2px 2px -1px rgba(0, 0, 0, 0.1);
 
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       background-color: var(--components-form-switch-contrast-fill-false);
     }
 
-    .eds-switch--right & {
+    :where(.eds-switch--right) & {
       margin-right: t.$space-small;
     }
 
-    svg g, // This is to colorize every type of icon that will potentially be included
-    path {
+    :where(svg g), // This is to colorize every type of icon that will potentially be included
+    :where(path) {
       fill: var(--components-form-switch-standard-icon-false);
       transition: fill ease-in-out t.$timings-fast;
 
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         fill: var(--components-form-switch-contrast-icon-false);
       }
     }
 
-    :checked + & {
+    :where(:checked) + & {
       background-color: var(--eds-switch-color);
-      .eds-switch__circle {
+      :where(.eds-switch__circle) {
         left: 1.625rem;
-        svg g,
-        path {
+        :where(svg g),
+        :where(path) {
           fill: var(--eds-switch-color);
         }
       }
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         background-color: var(--eds-switch-contrast-color);
       }
     }
 
-    :focus-visible + & {
+    :where(:focus-visible) + & {
       outline: t.$outlines-focus;
       outline-color: var(--basecolors-stroke-focus-standard);
       outline-offset: t.$outline-offsets-focus;
 
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         outline-color: var(--basecolors-stroke-focus-contrast);
       }
     }
@@ -101,12 +101,12 @@
       width: 3.75rem;
       height: 2rem;
       border-radius: 3.75rem;
-      :checked + & {
-        .eds-switch__circle {
+      :where(:checked) + & {
+        :where(.eds-switch__circle) {
           left: 1.875rem; //30px
         }
       }
-      & svg {
+      & :where(svg) {
         position: relative;
         right: 0.05rem;
       }

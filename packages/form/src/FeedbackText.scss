@@ -10,7 +10,7 @@
   }
   &__text {
     color: var(--components-form-feedbacktext-information-standard-text);
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       color: var(--components-form-feedbacktext-information-contrast-text);
     }
   }
@@ -26,12 +26,12 @@
 
   &--success {
     color: var(--components-form-feedbacktext-success-standard-icon-fill);
-    circle {
+    :where(circle) {
       fill: var(--components-form-feedbacktext-success-standard-icon-symbol);
     }
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       color: var(--components-form-feedbacktext-success-contrast-icon-fill);
-      circle {
+      :where(circle) {
         fill: var(--components-form-feedbacktext-success-contrast-icon-symbol);
       }
     }
@@ -39,12 +39,12 @@
   &--error,
   &--negative {
     color: var(--components-form-feedbacktext-negative-standard-icon-fill);
-    circle {
+    :where(circle) {
       fill: var(--components-form-feedbacktext-negative-standard-icon-symbol);
     }
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       color: var(--components-form-feedbacktext-negative-contrast-icon-fill);
-      circle {
+      :where(circle) {
         fill: var(--components-form-feedbacktext-negative-contrast-icon-symbol);
       }
     }
@@ -52,24 +52,24 @@
   &--info,
   &--information {
     color: var(--components-form-feedbacktext-information-standard-icon-fill);
-    circle {
+    :where(circle) {
       fill: var(--components-form-feedbacktext-information-standard-icon-symbol);
     }
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       color: var(--components-form-feedbacktext-information-contrast-icon-fill);
-      circle {
+      :where(circle) {
         fill: var(--components-form-feedbacktext-information-contrast-icon-symbol);
       }
     }
   }
   &--warning {
     color: var(--components-form-feedbacktext-warning-standard-icon-fill);
-    .svg-exclamation {
+    :where(.svg-exclamation) {
       fill: var(--components-form-feedbacktext-warning-standard-icon-symbol);
     }
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       color: var(--components-form-feedbacktext-warning-contrast-icon-fill);
-      circle {
+      :where(circle) {
         fill: var(--components-form-feedbacktext-warning-contrast-icon-symbol);
       }
     }

@@ -15,34 +15,24 @@
       height: fit-content;
     }
 
-    input {
+    :where(input) {
       position: absolute;
       opacity: 0;
       height: 0;
       width: 0;
 
-      &:checked + .eds-checkbox__icon,
-      &:indeterminate + .eds-checkbox__icon {
+      &:where(:checked) + .eds-checkbox__icon,
+      &:where(:indeterminate) + .eds-checkbox__icon {
         background-color: var(--components-form-checkbox-standard-fill-selected);
-        .eds-checkbox-icon {
+        :where(.eds-checkbox-icon) {
           visibility: visible;
 
-          path {
+          :where(path) {
             stroke: var(--components-form-checkbox-standard-icon);
             animation: stroke ease-in-out t.$timings-medium t.$timings-fast forwards;
           }
-          rect {
+          :where(rect) {
             fill: var(--components-form-checkbox-standard-icon);
-          }
-        }
-
-        .eds-contrast {
-          color: var(--components-form-checkbox-contrast-fill-selected);
-          path {
-            stroke: var(--components-form-checkbox-contrast-icon);
-          }
-          rect {
-            fill: var(--components-form-checkbox-contrast-icon);
           }
         }
 
@@ -57,18 +47,18 @@
         &--readonly {
           background-color: var(--components-form-checkbox-standard-fill-disabled);
 
-          .eds-checkbox-icon {
-            path {
+          :where(.eds-checkbox-icon) {
+            :where(path) {
               stroke: var(--components-form-checkbox-standard-icon-readonly);
             }
-            rect {
+            :where(rect) {
               fill: var(--components-form-checkbox-standard-icon-readonly);
             }
-            .eds-contrast & {
-              path {
+            :where(.eds-contrast) & {
+              :where(path) {
                 stroke: var(--components-form-checkbox-contrast-icon-readonly);
               }
-              rect {
+              :where(rect) {
                 fill: var(--components-form-checkbox-contrast-icon-readonly);
               }
             }
@@ -78,43 +68,43 @@
     }
   }
 
-  &:hover:not(&--readonly, &--disabled) {
-    input + .eds-checkbox__icon {
+  &:where(:hover):where(:not(&--readonly, &--disabled)) {
+    :where(input) + :where(.eds-checkbox__icon) {
       border-color: var(--components-form-checkbox-standard-border);
       background-color: var(--components-form-checkbox-standard-fill-hover);
 
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         border-color: var(--components-form-checkbox-contrast-border);
         background-color: var(--components-form-checkbox-contrast-fill-hover);
       }
     }
 
-    input:checked + .eds-checkbox__icon,
-    input:indeterminate + .eds-checkbox__icon:not(.eds-checkbox--disabled) {
+    :where(input):where(:checked) + :where(.eds-checkbox__icon),
+    :where(input):where(:indeterminate) + :where(.eds-checkbox__icon):where(:not(.eds-checkbox--disabled)) {
       border-color: transparent;
       background-color: var(--components-form-checkbox-standard-fill-selectedhover);
 
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         background-color: var(--components-form-checkbox-contrast-fill-selectedhover);
       }
     }
   }
-  &:active:not(&--readonly, &--disabled) {
-    input:checked + .eds-checkbox__icon,
-    input:indeterminate + .eds-checkbox__icon {
+  &:where(:active):where(:not(&--readonly, &--disabled)) {
+    :where(input):where(:checked) + :where(.eds-checkbox__icon),
+    :where(input):where(:indeterminate) + :where(.eds-checkbox__icon) {
       background-color: var(--components-form-checkbox-standard-fill-selected);
 
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         background-color: var(--components-form-checkbox-contrast-fill-selected);
       }
     }
   }
-  &:has(:focus-visible) {
-    .eds-checkbox__icon {
+  &:where(:has(:focus-visible)) {
+    :where(.eds-checkbox__icon) {
       outline: t.$outlines-focus;
       outline-color: var(--basecolors-stroke-focus-standard);
       outline-offset: t.$outline-offsets-focus;
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         outline-color: var(--basecolors-stroke-focus-contrast);
       }
     }
@@ -122,16 +112,16 @@
   &--disabled {
     cursor: not-allowed;
 
-    input {
+    :where(input) {
       pointer-events: none;
     }
 
-    .eds-checkbox__label {
+    :where(.eds-checkbox__label) {
       opacity: 0.5;
     }
-    .eds-checkbox__icon {
+    :where(.eds-checkbox__icon) {
       border-color: var(--components-form-checkbox-standard-icon-disabled);
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         border-color: var(--components-form-checkbox-contrast-icon-disabled);
       }
     }
@@ -141,15 +131,15 @@
     pointer-events: auto;
     user-select: text;
 
-    input {
+    :where(input) {
       pointer-events: auto;
       user-select: text;
     }
 
-    .eds-checkbox__icon {
+    :where(.eds-checkbox__icon) {
       border-color: var(--components-form-checkbox-standard-border-readonly);
 
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         border-color: var(--components-form-checkbox-contrast-border-readonly);
       }
     }
@@ -171,14 +161,14 @@
     &--reduced-click-area {
       margin-right: 0;
     }
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       border-color: var(--components-form-checkbox-contrast-border);
     }
-    .eds-checkbox-icon {
+    :where(.eds-checkbox-icon) {
       height: t.$space-default;
       width: t.$space-default;
       visibility: hidden;
-      path {
+      :where(path) {
         transform-origin: 50% 50%;
         stroke-dasharray: 48; // This and offset is approximate to the "length" of the path
         stroke-dashoffset: 48;
@@ -186,14 +176,14 @@
       }
     }
     &--no-animation {
-      .eds-checkbox-icon {
-        path {
+      :where(.eds-checkbox-icon) {
+        :where(path) {
           animation: none !important;
           transition: none !important;
           stroke-dasharray: 48;
           stroke-dashoffset: 0;
         }
-        rect {
+        :where(rect) {
           transition: none !important;
         }
       }

@@ -10,7 +10,7 @@
     &--has-tooltip {
       padding-right: t.$space-extra-large;
     }
-    &:has(.eds-form-control-wrapper--disabled):not(:has(.eds-form-control-wrapper--readonly)) {
+    &:where(:has(.eds-form-control-wrapper--disabled)):where(:not(:has(.eds-form-control-wrapper--readonly))) {
       cursor: not-allowed;
     }
   }
@@ -29,18 +29,18 @@
     color: var(--components-form-baseform-standard-text-content);
     transition: border-color t.$timings-fast ease-in-out;
 
-    &:hover {
+    &:where(:hover) {
       border-color: var(--components-form-baseform-standard-border-interactive);
 
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         border-color: var(--components-form-baseform-contrast-border-interactive);
       }
     }
 
-    &:focus-within:not(.eds-form-control-wrapper--readonly) {
+    &:where(:focus-within):where(:not(.eds-form-control-wrapper--readonly)) {
       border-color: var(--components-form-baseform-standard-border-interactive);
       outline: 2px solid var(--components-form-baseform-standard-border-interactive);
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         border-color: var(--components-form-baseform-contrast-border-interactive);
         outline-color: var(--components-form-baseform-contrast-border-interactive);
       }
@@ -56,15 +56,15 @@
       background-color: var(--components-form-baseform-standard-fill-disabled);
       pointer-events: none;
       color: var(--components-form-baseform-standard-text-disabled);
-      .eds-input-group__label {
+      :where(.eds-input-group__label) {
         color: var(--components-form-baseform-standard-text-disabled);
       }
 
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         border-color: transparent;
         background-color: var(--components-form-baseform-contrast-fill-disabled);
         color: var(--components-form-baseform-contrast-text-disabled);
-        .eds-input-group__label {
+        :where(.eds-input-group__label) {
           color: var(--components-form-baseform-contrast-text-disabled);
         }
       }
@@ -74,10 +74,10 @@
         display: none;
       }
 
-      &:focus-within {
+      &:where(:focus-within) {
         border-color: transparent;
         outline: none;
-        .eds-contrast & {
+        :where(.eds-contrast) & {
           border-color: transparent;
           outline: none;
         }
@@ -89,17 +89,17 @@
       background: var(--components-form-baseform-standard-fill-readonly);
       border: var(--components-form-baseform-standard-fill-readonly);
 
-      &:focus-visible {
+      &:where(:focus-visible) {
         outline: none;
       }
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         background: var(--components-form-baseform-contrast-fill-readonly);
         border: var(--components-form-baseform-contrast-fill-readonly);
         color: var(--components-form-baseform-contrast-text-description);
-        .eds-form-control {
+        :where(.eds-form-control) {
           color: var(--components-form-baseform-contrast-text-description);
         }
-        .eds-input-group__label {
+        :where(.eds-input-group__label) {
           color: var(--components-form-baseform-contrast-text-description);
         }
       }
@@ -111,9 +111,9 @@
     }
 
     &--size-medium {
-      .eds-form-control,
-      .eds-form-control__append,
-      .eds-form-control__prepend {
+      :where(.eds-form-control),
+      :where(.eds-form-control__append),
+      :where(.eds-form-control__prepend) {
         font-size: t.$font-sizes-large;
         line-height: t.$line-heights-small;
       }
@@ -121,9 +121,9 @@
     &--size-large {
       min-height: 4rem;
 
-      .eds-form-control,
-      .eds-form-control__append,
-      .eds-form-control__prepend {
+      :where(.eds-form-control),
+      :where(.eds-form-control__append),
+      :where(.eds-form-control__prepend) {
         font-size: t.$font-sizes-extra-large2;
       }
     }
@@ -131,14 +131,14 @@
     // Validation modes changes the border colors
     &--success {
       border-color: var(--components-form-baseform-standard-border-success);
-      &:focus-within {
+      &:where(:focus-within) {
         border-color: var(--components-form-baseform-standard-border-success);
         outline-color: var(--components-form-baseform-standard-border-success);
       }
 
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         border-color: var(--components-form-baseform-standard-border-success);
-        &:focus-within {
+        &:where(:focus-within) {
           border-color: var(--components-form-baseform-contrast-border-success);
           outline-color: var(--components-form-baseform-contrast-border-success);
         }
@@ -148,14 +148,14 @@
     &--error,
     &--negative {
       border-color: var(--components-form-baseform-standard-border-negative);
-      &:focus-within {
+      &:where(:focus-within) {
         border-color: var(--components-form-baseform-standard-border-negative);
         outline-color: var(--components-form-baseform-standard-border-negative);
       }
 
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         border-color: var(--components-form-baseform-contrast-border-negative);
-        &:focus-within {
+        &:where(:focus-within) {
           border-color: var(--components-form-baseform-contrast-border-negative);
           outline-color: var(--components-form-baseform-contrast-border-negative);
         }
@@ -163,8 +163,8 @@
     }
   }
 
-  .eds-tooltip {
-    .eds-contrast & {
+  :where(.eds-tooltip) {
+    :where(.eds-contrast) & {
       background: var(--components-tooltip-tooltip-standard-fill);
       color: var(--components-tooltip-tooltip-standard-text);
       box-shadow: t.$shadows-box-shadow;
@@ -193,7 +193,7 @@
     opacity: 0;
     transition: opacity t.$timings-medium ease-in-out;
   }
-  &:focus {
+  &:where(:focus) {
     outline: none;
     &::placeholder {
       opacity: 1;
