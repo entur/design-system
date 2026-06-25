@@ -47,7 +47,11 @@ export const CopyableText = ({
       await navigator.clipboard.writeText(_textToCopy);
       addToast({ title: successHeading, content: _successMessage });
     } catch {
-      // clipboard write failed silently
+      addToast({
+        title: 'Kopiering feilet',
+        content: 'Kunne ikke kopiere til utklippstavlen.',
+        variant: 'information',
+      });
     }
     onClick?.(e);
   };
