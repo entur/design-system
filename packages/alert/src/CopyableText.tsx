@@ -1,5 +1,4 @@
 import React from 'react';
-import copy from 'copy-text-to-clipboard';
 
 import { IconButton } from '@entur/button';
 import { CopyIcon } from '@entur/icons';
@@ -40,16 +39,16 @@ export const CopyableText = ({
   ...rest
 }: CopyableTextProps): JSX.Element => {
   const { addToast } = useToast();
-  const buttonRef = React.useRef<HTMLButtonElement>(null);
   const _textToCopy = textToCopy ?? children;
   const _successMessage =
     successMessage ?? `${_textToCopy} ble kopiert til utklippstavlen.`;
-  const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    buttonRef.current &&
-      copy(_textToCopy, {
-        target: buttonRef.current,
-      }) &&
+  const handleClick = async (e: React.MouseEvent<HTMLDivElement>) => {
+    try {
+      await navigator.clipboard.writeText(_textToCopy);
       addToast({ title: successHeading, content: _successMessage });
+    } catch {
+      // clipboard write failed silently
+    }
     onClick?.(e);
   };
   return (
@@ -68,7 +67,6 @@ export const CopyableText = ({
           className="eds-copyable-text__button"
           aria-label={ariaLabel}
           type="button"
-          ref={buttonRef}
         >
           <CopyIcon className={'eds-copyable-text__button__icon'} />
         </IconButton>

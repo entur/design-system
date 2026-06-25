@@ -33,8 +33,7 @@
     "@entur/tooltip": "workspace:^",
     "@entur/typography": "workspace:^",
     "@entur/utils": "workspace:^",
-    "classnames": "^2.5.1",
-    "copy-text-to-clipboard": "^2.2.0"
+    "classnames": "^2.5.1"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.17.0",
