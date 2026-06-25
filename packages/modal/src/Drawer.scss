@@ -15,7 +15,7 @@
   z-index: t.$z-indexes-modal;
   overflow-y: auto;
 
-  .eds-contrast & {
+  :where(.eds-contrast) & {
     background-color: var(--components-modal-drawer-contrast-background);
     color: var(--components-modal-drawer-contrast-text);
   }
