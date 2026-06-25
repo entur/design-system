@@ -3,27 +3,27 @@
 
 .eds-action-chip {
   cursor: pointer;
-  &:focus-visible {
+  &:where(:focus-visible) {
     outline: t.$outlines-focus;
     outline-color: var(--basecolors-stroke-focus-standard);
     outline-offset: t.$outline-offsets-focus;
 
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       outline-color: var(--basecolors-stroke-focus-contrast);
     }
   }
-  &:hover {
+  &:where(:hover) {
     border-color: var(--components-chip-standard-border);
     background-color: var(--components-chip-standard-hover);
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       border-color: transparent;
       background-color: var(--components-chip-contrast-hover);
     }
   }
-  &:active {
+  &:where(:active) {
     background-color: var(--components-chip-standard-active);
     border-color: transparent;
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       background-color: var(--components-chip-contrast-active);
       color: var(--components-chip-contrast-text-selected);
     }
@@ -38,8 +38,8 @@
     }
   }
 
-  &__loading-dots .eds-loading-dots__dot {
-    .eds-contrast & {
+  &__loading-dots :where(.eds-loading-dots__dot) {
+    :where(.eds-contrast) & {
       background-color: var(--colors-brand-white);
     }
   }

@@ -15,31 +15,31 @@
     padding: 0.0625rem;
     margin-left: t.$space-extra-small2;
     transition: box-shadow t.$timings-fast ease-in-out, background t.$timings-fast ease-in-out;
-    svg {
+    :where(svg) {
       width: 1.5rem;
       height: 1.5rem;
     }
-    &:focus-visible {
+    &:where(:focus-visible) {
       outline: t.$outlines-focus;
       outline-color: var(--basecolors-stroke-focus-standard);
       outline-offset: t.$outline-offsets-focus;
 
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         outline-color: var(--basecolors-stroke-focus-contrast);
       }
     }
-    &:hover {
+    &:where(:hover) {
       border-color: var(--components-chip-standard-border);
       background-color: var(--components-chip-standard-hover);
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         border-color: transparent;
         background-color: var(--components-chip-contrast-hover);
       }
     }
-    &:active {
+    &:where(:active) {
       background-color: var(--components-chip-standard-active);
       border-color: transparent;
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         background-color: var(--components-chip-contrast-active);
         color: var(--components-chip-contrast-text-selected);
       }

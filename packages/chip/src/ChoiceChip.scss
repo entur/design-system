@@ -13,64 +13,64 @@
     height: 0;
     position: absolute;
     width: 0;
-    ~ .eds-chip {
+    ~ :where(.eds-chip) {
       background-color: var(--components-chip-standard-default);
       color: var(--components-chip-standard-text-unselected);
       border-color: var(--components-chip-standard-border);
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         border-color: var(--components-chip-contrast-border);
         color: var(--components-chip-contrast-text-unselected);
         background-color: var(--components-chip-contrast-default);
       }
     }
-    &:checked ~ .eds-chip {
+    &:where(:checked) ~ :where(.eds-chip) {
       background-color: var(--components-chip-standard-active);
       color: var(--components-chip-standard-text-selected);
       border-color: transparent;
 
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         background-color: var(--components-chip-contrast-active);
       }
-      &:hover {
-        .eds-contrast & {
+      &:where(:hover) {
+        :where(.eds-contrast) & {
           color: var(--components-chip-contrast-text-unselected);
         }
       }
     }
-    &:focus-visible ~ .eds-chip {
+    &:where(:focus-visible) ~ :where(.eds-chip) {
       outline: t.$outlines-focus;
       outline-color: var(--basecolors-stroke-focus-standard);
       outline-offset: t.$outline-offsets-focus;
 
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         outline-color: var(--basecolors-stroke-focus-contrast);
       }
     }
-    &:not(:disabled):hover ~ .eds-chip {
+    &:where(:not(:disabled):hover) ~ :where(.eds-chip) {
       border-color: var(--components-chip-standard-border);
       background-color: var(--components-chip-standard-hover);
       color: var(--components-chip-standard-text-unselected);
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         border-color: transparent;
         background-color: var(--components-chip-contrast-hover);
         color: var(--components-chip-contrast-text-unselected);
       }
     }
-    &:not(:disabled):active ~ .eds-chip {
+    &:where(:not(:disabled):active) ~ :where(.eds-chip) {
       background-color: var(--components-chip-standard-active);
       border-color: transparent;
       color: var(--components-chip-contrast-text-selected);
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         background-color: var(--components-chip-contrast-active);
       }
     }
   }
-  .eds-chip {
+  :where(.eds-chip) {
     &--disabled {
       border-style: dashed;
       cursor: not-allowed;
       color: var(--components-chip-standard-text-disabled);
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         opacity: 1;
         border-color: var(--components-chip-contrast-border-disabled);
         color: var(--components-chip-contrast-text-disabled);

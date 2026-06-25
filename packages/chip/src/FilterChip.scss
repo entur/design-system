@@ -11,26 +11,26 @@
     height: 0;
     width: 0;
 
-    &:checked ~ .eds-chip {
+    &:where(:checked) ~ :where(.eds-chip) {
       background-color: var(--components-chip-standard-active);
       color: var(--components-chip-standard-text-selected);
       border-color: transparent;
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         background-color: var(--components-chip-contrast-active);
       }
-      &:hover {
+      &:where(:hover) {
         color: var(--components-chip-standard-text-unselected);
 
-        .eds-filter-chip-icon {
-          .eds-filter-chip-icon__path {
+        :where(.eds-filter-chip-icon) {
+          :where(.eds-filter-chip-icon__path) {
             stroke: var(--components-chip-standard-icon-unselected);
           }
         }
 
-        .eds-contrast & {
+        :where(.eds-contrast) & {
           color: var(--components-chip-contrast-text-unselected);
-          .eds-filter-chip-icon {
-            .eds-filter-chip-icon__path {
+          :where(.eds-filter-chip-icon) {
+            :where(.eds-filter-chip-icon__path) {
               stroke: var(--components-chip-contrast-icon-unselected);
             }
           }
@@ -38,11 +38,11 @@
       }
     }
 
-    &:checked ~ .eds-chip .eds-filter-chip__icon {
+    &:where(:checked) ~ :where(.eds-chip) :where(.eds-filter-chip__icon) {
       display: inline-flex;
       margin-right: t.$space-extra-small2;
 
-      .eds-filter-chip-icon {
+      :where(.eds-filter-chip-icon) {
         &__path {
           stroke: var(--components-chip-contrast-icon-selected);
           animation: stroke ease-in-out 0.5s 0.1s forwards;
@@ -50,24 +50,24 @@
       }
     }
 
-    &:focus-visible ~ .eds-chip {
+    &:where(:focus-visible) ~ :where(.eds-chip) {
       outline: t.$outlines-focus;
       outline-color: var(--basecolors-stroke-focus-standard);
       outline-offset: t.$outline-offsets-focus;
 
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         outline-color: var(--basecolors-stroke-focus-contrast);
       }
     }
 
-    &:hover ~ .eds-chip {
+    &:where(:hover) ~ :where(.eds-chip) {
       border-color: var(--components-chip-standard-border);
       background-color: var(--components-chip-standard-hover);
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         border-color: transparent;
         background-color: var(--components-chip-contrast-hover);
-        .eds-filter-chip__icon {
-          .eds-filter-chip-icon {
+        :where(.eds-filter-chip__icon) {
+          :where(.eds-filter-chip-icon) {
             &__path {
               stroke: var(--components-chip-contrast-icon-unselected);
             }
@@ -76,11 +76,11 @@
       }
     }
 
-    &:active ~ .eds-chip {
+    &:where(:active) ~ :where(.eds-chip) {
       background-color: var(--components-chip-standard-active);
       border-color: transparent;
       color: var(--components-chip-standard-text-selected);
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         background-color: var(--components-chip-contrast-active);
         color: var(--components-chip-contrast-text-selected);
       }
@@ -88,13 +88,13 @@
   }
 }
 
-.eds-chip .eds-filter-chip__icon {
+.eds-chip :where(.eds-filter-chip__icon) {
   display: none;
   justify-content: center;
   align-items: center;
   position: relative;
   stroke: var(--components-chip-contrast-icon-selected);
-  .eds-filter-chip-icon {
+  :where(.eds-filter-chip-icon) {
     height: t.$font-sizes-large;
     width: t.$font-sizes-large;
 
