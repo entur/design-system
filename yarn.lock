@@ -5666,7 +5666,6 @@ __metadata:
     "@testing-library/user-event": "npm:14.6.1"
     "@vitejs/plugin-react": "npm:^5.0.1"
     classnames: "npm:^2.5.1"
-    copy-text-to-clipboard: "npm:^2.2.0"
     jest: "npm:^29.0.0"
     jest-environment-jsdom: "npm:^29.0.0"
     ts-jest: "npm:^29.0.0"
@@ -5870,7 +5869,6 @@ __metadata:
     "@types/react-syntax-highlighter": "npm:15.5.13"
     "@types/wcag-contrast": "npm:3.0.3"
     classnames: "npm:2.5.1"
-    copy-text-to-clipboard: "npm:2.2.0"
     fast-fuzzy: "npm:1.12.0"
     firebase-tools: "npm:14.27.0"
     gatsby: "npm:5.16.1"
@@ -18150,13 +18148,6 @@ __metadata:
   version: 0.7.0
   resolution: "cookie@npm:0.7.0"
   checksum: 10c0/15c20c9b85431c8565b1750f9bccff0bd289b943d956e25fffce3b146e57934075965c8305a4e3a65a70622c9ed483e013daf9159d9c50f5c3f97f2e7c8117ac
-  languageName: node
-  linkType: hard
-
-"copy-text-to-clipboard@npm:2.2.0, copy-text-to-clipboard@npm:^2.2.0":
-  version: 2.2.0
-  resolution: "copy-text-to-clipboard@npm:2.2.0"
-  checksum: 10c0/a4e9dafdfeb46b0f16f13fae4d27a484eae6c6c0cc313bedbc13b713f01c0ef804ee69a2e0cd55b8d0a6186997ccdf56fdda4018a364f87c34b1d8ad8f73bd72
   languageName: node
   linkType: hard
 

@@ -1,6 +1,5 @@
 import React from 'react';
 import { useToast } from '@entur/alert';
-import copy from 'copy-text-to-clipboard';
 import { SecondaryButton } from '@entur/button';
 import { CopyIcon } from '@entur/icons';
 
@@ -26,11 +25,12 @@ export const CopyButton: React.FC<Props> = ({ textToCopy, children }) => {
     <SecondaryButton
       size="small"
       onClick={() => {
-        copy(textToCopy);
-        setCopied(true);
-        addToast({
-          title: 'Kopiert!',
-          content: 'Tokenet ble kopiert til utklippstavla',
+        navigator.clipboard.writeText(textToCopy).then(() => {
+          setCopied(true);
+          addToast({
+            title: 'Kopiert!',
+            content: 'Tokenet ble kopiert til utklippstavla',
+          });
         });
       }}
       className="eds-copy-button"

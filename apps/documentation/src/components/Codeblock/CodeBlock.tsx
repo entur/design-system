@@ -5,8 +5,6 @@ import { useToast } from '@entur/alert';
 import { ActionChip } from '@entur/chip';
 import { ExpandablePanel } from '@entur/expand';
 import { CopyIcon, SourceCodeIcon } from '@entur/icons';
-import copy from 'copy-text-to-clipboard';
-
 // @ts-expect-error mangler typer for theme-fil
 import theme from './themeForCodeBlock';
 
@@ -64,10 +62,11 @@ export const CodeBlock = ({
             size="small"
             type="button"
             onClick={() => {
-              copy(children);
-              addToast({
-                title: 'Innhold kopiert!',
-                content: '',
+              navigator.clipboard.writeText(children).then(() => {
+                addToast({
+                  title: 'Innhold kopiert!',
+                  content: '',
+                });
               });
             }}
           >

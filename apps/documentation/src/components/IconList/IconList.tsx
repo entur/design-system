@@ -1,7 +1,6 @@
 import React from 'react';
 import { ComponentType } from 'react';
 import classNames from 'classnames';
-import copy from 'copy-text-to-clipboard';
 import { Searcher, search } from 'fast-fuzzy';
 import { useToast } from '@entur/alert';
 import { IconButton, SecondaryButton } from '@entur/button';
@@ -201,10 +200,11 @@ const IconList: React.FC<IconListProps> = ({ icons: allIconComponents }) => {
     .startsWith('partner');
 
   const handleIconClick = (iconName: string) => () => {
-    copy(iconName);
-    addToast({
-      title: `"${iconName}"\u00A0kopiert!`,
-      content: 'Du finner det i utklippstavla',
+    navigator.clipboard.writeText(iconName).then(() => {
+      addToast({
+        title: `"${iconName}"\u00A0kopiert!`,
+        content: 'Du finner det i utklippstavla',
+      });
     });
   };
 
