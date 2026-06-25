@@ -18,12 +18,18 @@ export type GridItemOwnProps = {
    * Accepts a responsive object: `{ base: 1, m: 2 }`.
    */
   rowSpan?: ResponsiveValue<ColRowValue>;
+  /** CSS grid-column-start value. Number = line number (e.g. 2 → grid-column-start: 2). String used as-is. */
+  colStart?: ResponsiveValue<ColRowValue>;
+  /** CSS grid-column-end value. Number = line number. String used as-is (e.g. "-1"). */
+  colEnd?: ResponsiveValue<ColRowValue>;
+  /** CSS grid-row-start value. Number = line number. String used as-is. */
+  rowStart?: ResponsiveValue<ColRowValue>;
+  /** CSS grid-row-end value. Number = line number. String used as-is. */
+  rowEnd?: ResponsiveValue<ColRowValue>;
   /** CSS align-self value */
   alignSelf?: ResponsiveValue<React.CSSProperties['alignSelf']>;
   /** CSS justify-self value */
   justifySelf?: ResponsiveValue<React.CSSProperties['justifySelf']>;
-  /** HTML element or React component to render as. @default "div" */
-  as?: string | React.ElementType;
   className?: string;
   children?: React.ReactNode;
 };
@@ -47,6 +53,10 @@ export const GridItem: GridItemComponent = React.forwardRef(
     {
       colSpan,
       rowSpan,
+      colStart,
+      colEnd,
+      rowStart,
+      rowEnd,
       alignSelf,
       justifySelf,
       as,
@@ -62,6 +72,10 @@ export const GridItem: GridItemComponent = React.forwardRef(
     const itemStyle: React.CSSProperties = {
       ...toResponsiveCssVars('--grid-item-col', colSpan, formatSpan),
       ...toResponsiveCssVars('--grid-item-row', rowSpan, formatSpan),
+      ...toResponsiveCssVars('--grid-item-col-start', colStart),
+      ...toResponsiveCssVars('--grid-item-col-end', colEnd),
+      ...toResponsiveCssVars('--grid-item-row-start', rowStart),
+      ...toResponsiveCssVars('--grid-item-row-end', rowEnd),
       ...toResponsiveCssVars('--grid-item-align-self', alignSelf),
       ...toResponsiveCssVars('--grid-item-justify-self', justifySelf),
       ...style,

@@ -51,6 +51,42 @@ test('Grid sets responsive gap as spacing vars for explicit breakpoints', () => 
   expect(el.style.getPropertyValue('--grid-gap-lg')).toBe('');
 });
 
+test('Grid sets responsive templateColumns for s breakpoint', () => {
+  const { getByTestId } = render(
+    <Grid
+      data-testid="grid"
+      templateColumns={{
+        base: '1fr',
+        s: 'repeat(6, 1fr)',
+        lg: 'repeat(12, 1fr)',
+      }}
+    />,
+  );
+  const el = getByTestId('grid');
+  expect(el.style.getPropertyValue('--grid-template-columns-base')).toBe('1fr');
+  expect(el.style.getPropertyValue('--grid-template-columns-s')).toBe(
+    'repeat(6, 1fr)',
+  );
+  expect(el.style.getPropertyValue('--grid-template-columns-m')).toBe('');
+  expect(el.style.getPropertyValue('--grid-template-columns-lg')).toBe(
+    'repeat(12, 1fr)',
+  );
+});
+
+test('Grid sets minHeight and maxHeight as CSS vars', () => {
+  const { getByTestId } = render(
+    <Grid
+      data-testid="grid"
+      minHeight="200px"
+      maxHeight={{ base: '400px', lg: '600px' }}
+    />,
+  );
+  const el = getByTestId('grid');
+  expect(el.style.getPropertyValue('--grid-min-height-base')).toBe('200px');
+  expect(el.style.getPropertyValue('--grid-max-height-base')).toBe('400px');
+  expect(el.style.getPropertyValue('--grid-max-height-lg')).toBe('600px');
+});
+
 test('Grid sets rowGap as CSS var', () => {
   const { getByTestId } = render(<Grid data-testid="grid" rowGap="s" />);
   const el = getByTestId('grid');
@@ -132,6 +168,45 @@ test('Grid sets responsive maxWidth for explicit breakpoints', () => {
   expect(el.style.getPropertyValue('--grid-max-width-m')).toBe('');
   expect(el.style.getPropertyValue('--grid-max-width-lg')).toBe('1200px');
   expect(el.style.getPropertyValue('--grid-max-width-xl')).toBe('');
+});
+
+test('GridItem sets colStart and colEnd as CSS vars', () => {
+  const { getByTestId } = render(
+    <GridItem data-testid="item" colStart={2} colEnd={-1} />,
+  );
+  const el = getByTestId('item');
+  expect(el.style.getPropertyValue('--grid-item-col-start-base')).toBe('2');
+  expect(el.style.getPropertyValue('--grid-item-col-end-base')).toBe('-1');
+});
+
+test('GridItem sets responsive colStart', () => {
+  const { getByTestId } = render(
+    <GridItem data-testid="item" colStart={{ base: 1, m: 3 }} />,
+  );
+  const el = getByTestId('item');
+  expect(el.style.getPropertyValue('--grid-item-col-start-base')).toBe('1');
+  expect(el.style.getPropertyValue('--grid-item-col-start-m')).toBe('3');
+  expect(el.style.getPropertyValue('--grid-item-col-start-lg')).toBe('');
+});
+
+test('GridItem sets rowStart and rowEnd as CSS vars', () => {
+  const { getByTestId } = render(
+    <GridItem data-testid="item" rowStart={2} rowEnd="span 3" />,
+  );
+  const el = getByTestId('item');
+  expect(el.style.getPropertyValue('--grid-item-row-start-base')).toBe('2');
+  expect(el.style.getPropertyValue('--grid-item-row-end-base')).toBe('span 3');
+});
+
+test('GridItem colStart uses s breakpoint', () => {
+  const { getByTestId } = render(
+    <GridItem data-testid="item" colStart={{ base: 1, s: 2, lg: 3 }} />,
+  );
+  const el = getByTestId('item');
+  expect(el.style.getPropertyValue('--grid-item-col-start-base')).toBe('1');
+  expect(el.style.getPropertyValue('--grid-item-col-start-s')).toBe('2');
+  expect(el.style.getPropertyValue('--grid-item-col-start-m')).toBe('');
+  expect(el.style.getPropertyValue('--grid-item-col-start-lg')).toBe('3');
 });
 
 test('GridItem sets responsive alignSelf', () => {
