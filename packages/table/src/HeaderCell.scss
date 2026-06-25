@@ -8,12 +8,12 @@
   height: t.$space-extra-large3;
   padding: 0 (t.$space-default + t.$space-extra-small);
 
-  .eds-table--middle &,
-  .eds-table--small & {
+  :where(.eds-table--middle) &,
+  :where(.eds-table--small) & {
     padding: 0 t.$space-default;
   }
 
-  .eds-contrast & {
+  :where(.eds-contrast) & {
     color: var(--components-table-contrast-text);
     border-bottom-color: var(--components-table-contrast-stroke);
   }
@@ -31,12 +31,12 @@
     padding: t.$space-medium t.$space-small;
   }
   &--sortable {
-    &:focus-visible {
+    &:where(:focus-visible) {
       outline: t.$outlines-focus;
       outline-color: var(--basecolors-stroke-focus-standard);
       outline-offset: t.$outline-offsets-focus;
 
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         outline-color: var(--basecolors-stroke-focus-contrast);
       }
     }
@@ -59,23 +59,23 @@
       position: absolute;
       margin-left: t.$space-extra-small2;
     }
-    &:focus-visible {
+    &:where(:focus-visible) {
       outline: t.$outlines-focus;
       outline-color: var(--basecolors-stroke-focus-standard);
       outline-offset: t.$outline-offsets-focus;
 
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         outline-color: var(--basecolors-stroke-focus-contrast);
       }
     }
   }
 
-  .eds-table--sticky-header & {
+  :where(.eds-table--sticky-header) & {
     background-color: var(--components-table-standard-header-fill);
     position: sticky;
     top: 0;
 
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       background-color: var(--components-table-contrast-header-fill);
     }
   }
