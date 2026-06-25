@@ -7,12 +7,12 @@
   }
   &__input {
     width: 100%;
-    &:focus-visible {
+    &:where(:focus-visible) {
       outline: t.$outlines-focus;
       outline-color: var(--basecolors-stroke-focus-standard);
       outline-offset: t.$outline-offsets-focus;
 
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         outline-color: var(--basecolors-stroke-focus-contrast);
       }
     }
@@ -27,21 +27,21 @@
     padding: t.$space-extra-small;
     text-align: center;
     width: 100%;
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       border-color: var(--components-loader-fileupload-contrast-stroke-default);
       color: var(--components-loader-fileupload-contrast-text);
     }
     &--success {
       border-color: var(--components-loader-fileupload-standard-stroke-success);
       border-style: solid;
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         border-color: var(--components-loader-fileupload-contrast-stroke-success);
       }
     }
     &--error {
       border-color: var(--components-loader-fileupload-standard-stroke-negative);
       border-style: solid;
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         border-color: var(--components-loader-fileupload-contrast-stroke-negative);
       }
     }
@@ -50,7 +50,7 @@
       border-color: var(--components-loader-fileupload-standard-stroke-disabled);
       opacity: 0.5;
 
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         color: var(--components-loader-fileupload-contrast-text-disabled);
         border-color: var(--components-loader-fileupload-contrast-stroke-disabled);
       }
@@ -64,19 +64,19 @@
     grid-template-columns: auto 1fr auto;
     align-items: center;
     font-size: t.$font-sizes-medium;
-    > .eds-file-upload__file-name-icon {
+    > :where(.eds-file-upload__file-name-icon) {
       align-self: flex-start;
       color: var(--components-loader-fileupload-standard-icon);
       margin: t.$space-extra-small 0;
       margin-right: t.$space-extra-small2;
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         color: var(--components-loader-fileupload-contrast-icon);
       }
     }
     &-path {
       word-break: break-word;
     }
-    .eds-icon-button {
+    :where(.eds-icon-button) {
       align-self: flex-start;
       margin-left: t.$space-small;
     }
