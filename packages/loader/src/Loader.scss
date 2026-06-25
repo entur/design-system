@@ -27,15 +27,15 @@
   max-width: 20rem;
   margin: 0 auto;
   color: var(--components-loader-loader-standard-text);
-  .eds-loader__label {
+  :where(.eds-loader__label) {
     margin-bottom: t.$space-extra-small;
   }
-  .eds-loader__percentage {
+  :where(.eds-loader__percentage) {
     float: right;
     margin-top: t.$space-extra-small;
   }
 
-  .eds-contrast & {
+  :where(.eds-contrast) & {
     color: var(--components-loader-loader-contrast-text);
   }
 }
@@ -50,12 +50,12 @@
     transition: width t.$timings-fast ease-out;
     width: var(--loader-width);
 
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       border-color: var(--components-loader-loader-standard-progressbar);
     }
   }
 
-  .eds-contrast & {
+  :where(.eds-contrast) & {
     border-color: var(--components-loader-loader-contrast-border);
   }
 

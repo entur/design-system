@@ -16,7 +16,7 @@
     border-radius: 50%;
     margin-right: 2px;
     transform: scale(1);
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       background-color: var(--components-loader-loader-contrast-text);
     }
     &--blue {

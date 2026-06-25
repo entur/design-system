@@ -4,7 +4,7 @@
   border-radius: 50%;
   border: 2px solid var(--components-loader-spinner-standard-fill);
   animation: l20-1 0.8s infinite linear alternate, l20-2 1.6s infinite linear;
-  .eds-contrast & {
+  :where(.eds-contrast) & {
     border-color: var(--components-loader-spinner-contrast-fill);
   }
   @keyframes l20-1 {

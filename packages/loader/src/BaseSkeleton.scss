@@ -19,7 +19,7 @@
     animation: shimmer 2s infinite linear;
     background: linear-gradient(to right, var(--background-color) 4%, var(--shimmer-highlight-color) 25%, var(--background-color) 36%);
     background-size: 1000px 100%;
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       --background-color: var(--components-loader-skeleton-contrast-fill);
       --shimmer-highlight-color: var(--components-loader-skeleton-contrast-highlight);
     }
