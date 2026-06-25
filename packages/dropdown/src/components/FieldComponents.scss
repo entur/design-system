@@ -3,27 +3,27 @@
 .eds-dropdown {
   &__selected-item-tag {
     // revert contrast styling since dropdown field always is light
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       background: var(--components-chip-standard-default);
       border: t.$border-widths-small solid var(--components-chip-standard-border);
       color: var(--components-chip-standard-text-unselected);
 
-      &:hover {
+      &:where(:hover) {
         border-color: var(--components-chip-standard-border);
         background-color: var(--components-chip-standard-hover);
       }
-      &:active {
+      &:where(:active) {
         background-color: var(--components-chip-standard-active);
         border-color: transparent;
       }
 
-      .eds-tag-chip__close-button {
+      :where(.eds-tag-chip__close-button) {
         color: var(--components-chip-standard-text-unselected);
 
-        &:hover {
+        &:where(:hover) {
           background-color: var(--components-chip-standard-hover);
         }
-        &:focus-visible {
+        &:where(:focus-visible) {
           outline-color: var(--basecolors-stroke-focus-standard);
         }
       }
@@ -32,14 +32,14 @@
     &--readonly,
     &--disabled {
       padding-right: 0.5rem;
-      .eds-tag-chip__close-button {
+      :where(.eds-tag-chip__close-button) {
         display: none;
       }
     }
 
     &--readonly {
       cursor: text;
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         background-color: var(--components-form-baseform-standard-fill-readonly);
         border-color: var(--components-chip-contrast-border);
         color: var(--components-form-baseform-contrast-fill-default);
@@ -49,7 +49,7 @@
     &--disabled {
       cursor: not-allowed;
       border: 1px dashed var(--components-chip-standard-border-disabled);
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         background-color: var(--components-form-baseform-standard-fill-disabled);
         border: 1px dashed var(--components-chip-contrast-border-disabled);
         color: var(--components-form-baseform-standard-text-disabled);
@@ -64,19 +64,19 @@
   }
 
   // This is done to remove contrast specific styling
-  .eds-icon-button {
-    .eds-contrast & {
+  :where(.eds-icon-button) {
+    :where(.eds-contrast) & {
       color: var(--components-button-iconbutton-standard-text);
 
-      &:hover {
+      &:where(:hover) {
         background-color: var(--components-button-iconbutton-standard-hover);
       }
-      &:focus-visible {
+      &:where(:focus-visible) {
         outline: t.$outlines-focus;
         outline-color: var(--basecolors-stroke-focus-standard);
         outline-offset: t.$outline-offsets-focus;
       }
-      &:active {
+      &:where(:active) {
         background-color: var(--components-button-iconbutton-standard-active);
       }
     }
@@ -106,11 +106,11 @@
     &__toggle-button {
       margin-right: -(t.$space-small);
 
-      &--open svg {
+      &--open :where(svg) {
         transform: rotate(180deg);
       }
 
-      svg {
+      :where(svg) {
         transition: transform ease-in-out t.$timings-fast;
       }
 
@@ -121,19 +121,19 @@
         height: 100%;
         width: 1.5rem;
         margin-left: 0.25rem;
-        .eds-loading-dots__dot {
+        :where(.eds-loading-dots__dot) {
           background-color: var(--components-loader-loader-standard-text);
-          .eds-contrast & {
+          :where(.eds-contrast) & {
             background-color: var(--components-loader-loader-standard-text);
           }
         }
       }
 
-      .eds-contrast & {
-        &:hover {
+      :where(.eds-contrast) & {
+        &:where(:hover) {
           background-color: var(--components-button-iconbutton-standard-hover);
         }
-        &:focus-visible {
+        &:where(:focus-visible) {
           outline-color: var(--basecolors-stroke-focus-standard);
         }
       }

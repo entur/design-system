@@ -17,7 +17,7 @@
   width: min(95dvw, 100%);
   max-height: var(--list-max-height, 15rem);
 
-  &:focus {
+  &:where(:focus) {
     outline: none;
   }
 
@@ -34,7 +34,7 @@
     color: var(--components-form-basemenu-text);
     background-color: var(--components-form-basemenu-fill-default);
 
-    &:last-child {
+    &:where(:last-child) {
       border-bottom: none;
     }
 
@@ -50,19 +50,19 @@
     &__checkbox {
       pointer-events: none;
       // revert contrast styling since dropdownList always is light
-      .eds-contrast & {
-        &.eds-checkbox__container {
-          > input + .eds-checkbox__icon {
+      :where(.eds-contrast) & {
+        &:where(.eds-checkbox__container) {
+          > :where(input) + :where(.eds-checkbox__icon) {
             border-color: var(--components-form-checkbox-standard-border);
           }
-          > input:checked,
-          > input:indeterminate {
-            + .eds-checkbox__icon {
+          > :where(input):where(:checked),
+          > :where(input):where(:indeterminate) {
+            + :where(.eds-checkbox__icon) {
               background-color: var(--components-form-checkbox-standard-fill-selected);
-              path {
+              :where(path) {
                 stroke: var(--components-form-checkbox-standard-icon);
               }
-              rect {
+              :where(rect) {
                 fill: var(--components-form-checkbox-standard-icon);
               }
             }
@@ -75,14 +75,13 @@
       background-color: var(--components-form-basemenu-fill-hover);
 
       // change to hover style for checkbox when list is hovered
-      .eds-dropdown__list__item__checkbox.eds-checkbox__container,
-      .eds-dropdown__list__item__checkbox.eds-checkbox__container:hover {
-        > input:checked + .eds-checkbox__icon,
-        > input:indeterminate + .eds-checkbox__icon {
+      :where(.eds-dropdown__list__item__checkbox.eds-checkbox__container) {
+        > :where(input):where(:checked) + :where(.eds-checkbox__icon),
+        > :where(input):where(:indeterminate) + :where(.eds-checkbox__icon) {
           background-color: var(--components-form-checkbox-standard-fill-selected);
           border-color: transparent;
         }
-        > input + .eds-checkbox__icon {
+        > :where(input) + :where(.eds-checkbox__icon) {
           border-color: var(--components-form-checkbox-standard-border);
         }
       }

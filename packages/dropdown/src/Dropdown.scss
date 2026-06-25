@@ -4,7 +4,7 @@
   position: relative;
   cursor: pointer;
 
-  &:has(.eds-form-control-wrapper--readonly) {
+  &:where(:has(:where(.eds-form-control-wrapper--readonly))) {
     cursor: text;
   }
 
@@ -31,7 +31,7 @@
     text-overflow: ellipsis;
     line-height: t.$line-heights-small;
 
-    &:focus {
+    &:where(:focus) {
       outline: none;
     }
   }
@@ -54,7 +54,7 @@
     }
 
     // Remove fade transition when item is selected
-    :not(.eds-dropdown--searchable__selected-item--hidden) + ::placeholder {
+    :where(:not(.eds-dropdown--searchable__selected-item--hidden)) + ::placeholder {
       transition: none;
     }
   }
@@ -71,16 +71,16 @@
       &--filled {
         padding: 1.25rem t.$space-none 0.25rem;
 
-        .eds-dropdown__input {
+        :where(.eds-dropdown__input) {
           padding: unset;
           min-height: 1.5rem;
         }
 
-        .eds-tag-chip {
-          &:focus {
+        :where(.eds-tag-chip) {
+          &:where(:focus) {
             box-shadow: t.$shadows-focus;
           }
-          &__close-button svg {
+          &__close-button :where(svg) {
             width: 1rem;
             height: 1rem;
           }
@@ -90,16 +90,16 @@
   }
 
   &--native {
-    + .eds-form-control__append {
+    + :where(.eds-form-control__append) {
       margin-left: -2em;
       pointer-events: none;
     }
 
     // Override for Windows
-    & option {
+    & :where(option) {
       color: var(--components-form-basemenu-text);
       background-color: var(--components-form-basemenu-fill-default);
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         color: var(--components-form-basemenu-text);
       }
     }
