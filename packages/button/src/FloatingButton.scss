@@ -30,31 +30,31 @@ $small-padding: calc((36rem - 14rem) / 2 / 16);
   &--extended {
     padding: 0 $default-padding;
   }
-  &:hover {
+  &:where(:hover) {
     background-color: var(--components-button-floating-standard-hover);
   }
-  &:active {
+  &:where(:active) {
     background-color: var(--components-button-floating-standard-active);
   }
 
-  &:focus-visible {
+  &:where(:focus-visible) {
     outline: t.$outlines-focus;
     outline-color: var(--basecolors-stroke-focus-standard);
     outline-offset: t.$outline-offsets-focus;
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       outline-color: var(--basecolors-stroke-focus-contrast);
     }
   }
 
-  .eds-contrast & {
+  :where(.eds-contrast) & {
     background: var(--components-button-floating-contrast-default);
     color: var(--components-button-floating-contrast-text);
     // TODO box shadow is not available as a variable yet, needs to be implemented
     box-shadow: t.$shadows-box-shadow-contrast;
-    &:hover {
+    &:where(:hover) {
       background-color: var(--components-button-floating-contrast-hover);
     }
-    &:active {
+    &:where(:active) {
       background-color: var(--components-button-floating-contrast-active);
     }
   }
@@ -66,7 +66,7 @@ $small-padding: calc((36rem - 14rem) / 2 / 16);
     min-width: $small-height;
     min-height: $small-height;
     flex: 0 1 auto;
-    &.eds-floating-button--extended {
+    &:where(.eds-floating-button--extended) {
       padding: 0 $small-padding;
     }
   }
@@ -75,11 +75,11 @@ $small-padding: calc((36rem - 14rem) / 2 / 16);
 .eds-floating-button--extended > * {
   margin: 0 0.5em;
 
-  &:first-child {
+  &:where(:first-child) {
     margin-left: 0;
   }
 
-  &:last-child {
+  &:where(:last-child) {
     margin-right: 0;
   }
 }

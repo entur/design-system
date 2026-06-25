@@ -11,10 +11,10 @@
   align-items: center;
   font-size: t.$font-sizes-large;
   padding: t.$space-extra-small;
-  .eds-contrast & {
+  :where(.eds-contrast) & {
     color: var(--components-button-iconbutton-contrast-text);
 
-    > .eds-loading-dots .eds-loading-dots__dot {
+    > :where(.eds-loading-dots) :where(.eds-loading-dots__dot) {
       background-color: var(--components-button-iconbutton-contrast-icon);
     }
   }
@@ -23,25 +23,25 @@
     width: 1.5rem;
     padding: 0;
   }
-  &:hover {
+  &:where(:hover) {
     background-color: var(--components-button-iconbutton-standard-hover);
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       background-color: var(--components-button-iconbutton-contrast-hover);
     }
   }
-  &:active {
+  &:where(:active) {
     background: var(--components-button-iconbutton-standard-active);
     color: var(--components-button-iconbutton-standard-text-active);
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       background: var(--components-button-iconbutton-contrast-active);
       color: var(--components-button-iconbutton-contrast-text-active);
     }
   }
-  &:focus-visible {
+  &:where(:focus-visible) {
     outline: t.$outlines-focus;
     outline-color: var(--basecolors-stroke-focus-standard);
     outline-offset: t.$outline-offsets-focus;
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       outline-color: var(--basecolors-stroke-focus-contrast);
     }
   }

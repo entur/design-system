@@ -187,26 +187,26 @@
     --icon-color: var(--components-button-squaresecondary-standard-icon);
     --label-color: var(--components-button-squaresecondary-standard-text);
 
-    &:hover {
+    &:where(:hover) {
       --button-background: var(--components-button-squaresecondary-standard-hover);
     }
-    &:active {
+    &:where(:active) {
       --button-background: var(--components-button-squaresecondary-standard-active);
       --border-color: var(--components-button-squaresecondary-standard-border-active);
       --icon-color: var(--components-button-squaresecondary-standard-icon-active);
     }
 
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       --button-background: var(--components-button-squaresecondary-contrast-default);
       --border-color: var(--components-button-squaresecondary-contrast-border);
       --icon-color: var(--components-button-squaresecondary-contrast-icon-default);
       --label-color: var(--components-button-squaresecondary-contrast-label);
 
-      &:hover {
+      &:where(:hover) {
         --button-background: var(--components-button-squaresecondary-contrast-hover);
         --icon-color: var(--components-button-squaresecondary-contrast-icon-hover);
       }
-      &:active {
+      &:where(:active) {
         --button-background: var(--components-button-squaresecondary-contrast-active);
         --border-color: var(--components-button-squaresecondary-contrast-border-active);
         --icon-color: var(--components-button-squaresecondary-contrast-icon-active);
@@ -215,12 +215,12 @@
 
     font-size: t.$font-sizes-medium;
 
-    .eds-square-button__label + .eds-square-button__button,
-    .eds-square-button__button + .eds-square-button__label {
+    :where(.eds-square-button__label) + :where(.eds-square-button__button),
+    :where(.eds-square-button__button) + :where(.eds-square-button__label) {
       margin-left: t.$space-small;
     }
 
-    .eds-square-button__button {
+    :where(.eds-square-button__button) {
       height: t.$space-extra-large;
       width: t.$space-extra-large;
       border-width: t.$border-widths-small;
