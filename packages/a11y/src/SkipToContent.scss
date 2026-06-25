@@ -15,10 +15,10 @@
   width: 100%;
   z-index: t.$z-indexes-overlay;
 
-  &:visited {
+  &:where(:visited) {
     color: inherit;
   }
-  &:focus {
+  &:where(:focus) {
     transform: none;
     outline: none;
     box-shadow: t.$shadows-focus;
