@@ -56,8 +56,6 @@ export type FlexOwnProps = {
   minHeight?: ResponsiveValue<string>;
   maxWidth?: ResponsiveValue<string>;
   maxHeight?: ResponsiveValue<string>;
-  /** HTML element or React component to render as. @default "div" */
-  as?: string | React.ElementType;
   className?: string;
   children?: React.ReactNode;
 };

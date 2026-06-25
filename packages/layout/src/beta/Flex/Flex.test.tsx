@@ -61,6 +61,18 @@ test('Flex sets responsive gap as spacing vars for explicit breakpoints', () => 
   expect(el.style.getPropertyValue('--flex-gap-xl')).toBe('');
 });
 
+test('Flex sets responsive direction for s breakpoint', () => {
+  const { getByTestId } = render(
+    <Flex data-testid="flex" direction={{ base: 'column', s: 'row' }} />,
+  );
+  const el = getByTestId('flex');
+  expect(el.style.getPropertyValue('--flex-direction-base')).toBe('column');
+  expect(el.style.getPropertyValue('--flex-direction-s')).toBe('row');
+  expect(el.style.getPropertyValue('--flex-direction-m')).toBe('');
+  expect(el.style.getPropertyValue('--flex-direction-lg')).toBe('');
+  expect(el.style.getPropertyValue('--flex-direction-xl')).toBe('');
+});
+
 test('Flex sets align and justify', () => {
   const { getByTestId } = render(
     <Flex data-testid="flex" align="center" justify="space-between" />,
