@@ -23,7 +23,7 @@ const VALID_SPACING_VALUES = [
 export type SpacingValue = (typeof VALID_SPACING_VALUES)[number];
 
 /**
- * Value that can vary across breakpoints: base (0px+), m (800px+), lg (1200px+), xl (1400px+).
+ * Value that can vary across breakpoints: base (0px+), s (600px+), m (800px+), lg (1200px+), xl (1400px+).
  *
  * Pass a flat value to apply it at all breakpoints, or an object with `base` (required) and
  * any optional overrides. Omitted breakpoints inherit from the previous one.
@@ -32,13 +32,17 @@ export type SpacingValue = (typeof VALID_SPACING_VALUES)[number];
  * // Same for all breakpoints:
  * direction="column"
  *
- * // column on mobile, row from lg upward:
- * direction={{ base: 'column', lg: 'row' }}
+ * // column on mobile, row from m upward:
+ * direction={{ base: 'column', m: 'row' }}
+ *
+ * // column on mobile, row from s (600px) upward:
+ * direction={{ base: 'column', s: 'row' }}
  */
 export type ResponsiveValue<T> =
   | T
   | {
       base: T;
+      s?: T;
       m?: T;
       lg?: T;
       xl?: T;
@@ -70,6 +74,7 @@ export const toResponsiveCssVars = <T>(
   if (isResponsiveObject(value)) {
     return {
       [`${prefix}-base`]: transform(value.base),
+      ...(value.s !== undefined && { [`${prefix}-s`]: transform(value.s) }),
       ...(value.m !== undefined && { [`${prefix}-m`]: transform(value.m) }),
       ...(value.lg !== undefined && { [`${prefix}-lg`]: transform(value.lg) }),
       ...(value.xl !== undefined && { [`${prefix}-xl`]: transform(value.xl) }),

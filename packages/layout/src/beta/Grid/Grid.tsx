@@ -50,12 +50,14 @@ export type GridOwnProps = {
   alignContent?: ResponsiveValue<AlignContent>;
   /** Height of the grid container */
   height?: ResponsiveValue<string>;
+  /** Min-height of the grid container */
+  minHeight?: ResponsiveValue<string>;
+  /** Max-height of the grid container */
+  maxHeight?: ResponsiveValue<string>;
   /** Min-width of the grid container */
   minWidth?: ResponsiveValue<string>;
   /** Max-width of the grid container */
   maxWidth?: ResponsiveValue<string>;
-  /** HTML element or React component to render as. @default "div" */
-  as?: string | React.ElementType;
   className?: string;
   children?: React.ReactNode;
 };
@@ -87,6 +89,8 @@ export const Grid: GridComponent = React.forwardRef(
       justifyItems,
       alignContent,
       height,
+      minHeight,
+      maxHeight,
       minWidth,
       maxWidth,
       as,
@@ -117,6 +121,8 @@ export const Grid: GridComponent = React.forwardRef(
       ...toResponsiveCssVars('--grid-justify-items', justifyItems),
       ...toResponsiveCssVars('--grid-align-content', alignContent),
       ...toResponsiveCssVars('--grid-height', height),
+      ...toResponsiveCssVars('--grid-min-height', minHeight),
+      ...toResponsiveCssVars('--grid-max-height', maxHeight),
       ...toResponsiveCssVars('--grid-min-width', minWidth),
       ...toResponsiveCssVars('--grid-max-width', maxWidth),
       ...style,
