@@ -7,16 +7,16 @@
   border: t.$border-widths-small solid var(--components-tooltip-popover-standard-border);
   font-family: inherit;
   z-index: t.$z-indexes-popover;
-  .eds-contrast & {
+  :where(.eds-contrast) & {
     background: var(--components-tooltip-popover-contrast-fill);
     box-shadow: t.$shadows-box-shadow-contrast;
   }
-  &:focus-visible {
+  &:where(:focus-visible) {
     outline: t.$outlines-focus;
     outline-color: var(--basecolors-stroke-focus-standard);
     outline-offset: t.$outline-offsets-focus;
 
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       outline-color: var(--basecolors-stroke-focus-contrast);
     }
   }

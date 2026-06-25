@@ -28,7 +28,7 @@ $tooltip-padding-side: 0.625rem;
   background: var(--components-tooltip-tooltip-standard-fill);
   color: var(--components-tooltip-tooltip-standard-text);
 
-  .eds-contrast & {
+  :where(.eds-contrast) & {
     color: var(--components-tooltip-tooltip-contrast-text);
     background: var(--components-tooltip-tooltip-contrast-fill);
     box-shadow: t.$shadows-box-shadow-contrast;
@@ -65,7 +65,7 @@ $tooltip-padding-side: 0.625rem;
     border: solid var(--components-tooltip-tooltip-standard-fill-negative);
     color: var(--components-tooltip-tooltip-standard-text-negative);
 
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       background: var(--components-tooltip-tooltip-contrast-fill-negative);
       color: var(--components-tooltip-tooltip-contrast-text-negative);
       border: solid var(--components-tooltip-tooltip-contrast-fill-negative);
@@ -81,29 +81,29 @@ $tooltip-padding-side: 0.625rem;
     margin-left: t.$space-extra-small2;
     color: inherit;
 
-    &:hover {
+    &:where(:hover) {
       background-color: var(--components-button-iconbutton-contrast-hover);
     }
-    &:focus-visible {
+    &:where(:focus-visible) {
       outline: t.$outlines-focus;
       outline-color: var(--basecolors-stroke-focus-contrast);
       outline-offset: t.$outline-offsets-focus;
     }
-    &:active {
+    &:where(:active) {
       background-color: var(--components-button-iconbutton-contrast-active);
     }
 
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       color: inherit;
-      &:hover {
+      &:where(:hover) {
         background-color: var(--components-button-iconbutton-standard-hover);
       }
-      &:focus-visible {
+      &:where(:focus-visible) {
         outline: t.$outlines-focus;
         outline-color: var(--basecolors-stroke-focus-standard);
         outline-offset: t.$outline-offsets-focus;
       }
-      &:active {
+      &:where(:active) {
         background-color: var(--components-button-iconbutton-standard-active);
       }
     }
