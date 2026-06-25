@@ -30,14 +30,14 @@
     background-color: var(--components-layout-badge-primary-standard-fill);
     color: var(--components-layout-badge-primary-standard-text);
 
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       color: var(--components-layout-badge-primary-contrast-text);
       background-color: var(--components-layout-badge-primary-contrast-fill);
     }
 
-    &.eds-badge--type-bullet::before {
+    &:where(.eds-badge--type-bullet)::before {
       background-color: var(--components-layout-badge-primary-standard-bullet);
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         background-color: var(--components-layout-badge-primary-contrast-bullet);
       }
     }
@@ -45,21 +45,21 @@
   &--variant-success {
     background-color: var(--components-layout-badge-success-standard-fill);
     color: var(--components-layout-badge-success-standard-text);
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       background-color: var(--components-layout-badge-success-contrast-fill);
       color: var(--components-layout-badge-success-contrast-text);
     }
 
-    &.eds-badge--type-status,
-    &.eds-badge--type-notification {
+    &:where(.eds-badge--type-status),
+    &:where(.eds-badge--type-notification) {
       border-color: var(--components-layout-badge-success-standard-border);
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         border-color: var(--components-layout-badge-success-contrast-border);
       }
     }
-    &.eds-badge--type-bullet::before {
+    &:where(.eds-badge--type-bullet)::before {
       background-color: var(--components-layout-badge-success-standard-bullet);
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         background-color: var(--components-layout-badge-success-contrast-bullet);
       }
     }
@@ -67,20 +67,20 @@
   &--variant-warning {
     background-color: var(--components-layout-badge-warning-standard-fill);
     color: var(--components-layout-badge-warning-standard-text);
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       background-color: var(--components-layout-badge-warning-contrast-fill);
       color: var(--components-layout-badge-warning-contrast-text);
     }
-    &.eds-badge--type-status,
-    &.eds-badge--type-notification {
+    &:where(.eds-badge--type-status),
+    &:where(.eds-badge--type-notification) {
       border-color: var(--components-layout-badge-warning-standard-border);
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         border-color: var(--components-layout-badge-warning-contrast-border);
       }
     }
-    &.eds-badge--type-bullet::before {
+    &:where(.eds-badge--type-bullet)::before {
       background-color: var(--components-layout-badge-warning-standard-bullet);
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         background-color: var(--components-layout-badge-warning-contrast-bullet);
       }
     }
@@ -90,20 +90,20 @@
     background-color: var(--components-layout-badge-negative-standard-fill);
     color: var(--components-layout-badge-negative-standard-text);
 
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       background-color: var(--components-layout-badge-negative-contrast-fill);
       color: var(--components-layout-badge-negative-contrast-text);
     }
-    &.eds-badge--type-status,
-    &.eds-badge--type-notification {
+    &:where(.eds-badge--type-status),
+    &:where(.eds-badge--type-notification) {
       border-color: var(--components-layout-badge-negative-standard-border);
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         border-color: var(--components-layout-badge-negative-contrast-border);
       }
     }
-    &.eds-badge--type-bullet::before {
+    &:where(.eds-badge--type-bullet)::before {
       background-color: var(--components-layout-badge-negative-standard-bullet);
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         background-color: var(--components-layout-badge-negative-contrast-bullet);
       }
     }
@@ -113,21 +113,21 @@
     background-color: var(--components-layout-badge-information-standard-fill);
     color: var(--components-layout-badge-information-standard-text);
 
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       background-color: var(--components-layout-badge-information-contrast-fill);
       color: var(--components-layout-badge-information-contrast-text);
     }
 
-    &.eds-badge--type-status,
-    &.eds-badge--type-notification {
+    &:where(.eds-badge--type-status),
+    &:where(.eds-badge--type-notification) {
       border-color: var(--components-layout-badge-information-standard-border);
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         border-color: var(--components-layout-badge-information-contrast-border);
       }
     }
-    &.eds-badge--type-bullet::before {
+    &:where(.eds-badge--type-bullet)::before {
       background-color: var(--components-layout-badge-information-standard-bullet);
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         background-color: var(--components-layout-badge-information-contrast-bullet);
       }
     }
@@ -136,21 +136,21 @@
     background-color: var(--components-layout-badge-neutral-standard-fill);
     color: var(--components-layout-badge-neutral-standard-text);
 
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       background-color: var(--components-layout-badge-neutral-contrast-fill);
       color: var(--components-layout-badge-neutral-contrast-text);
     }
 
-    &.eds-badge--type-status,
-    &.eds-badge--type-notification {
+    &:where(.eds-badge--type-status),
+    &:where(.eds-badge--type-notification) {
       border-color: var(--components-layout-badge-neutral-standard-border);
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         border-color: var(--components-layout-badge-neutral-contrast-border);
       }
     }
-    &.eds-badge--type-bullet::before {
+    &:where(.eds-badge--type-bullet)::before {
       background-color: var(--components-layout-badge-neutral-standard-bullet);
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         background-color: var(--components-layout-badge-neutral-contrast-bullet);
       }
     }
@@ -174,7 +174,7 @@
       min-width: t.$space-large;
       padding: 0 t.$space-extra-small2;
       border: t.$border-widths-small solid transparent;
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         border-color: transparent;
       }
     }
@@ -186,7 +186,7 @@
       border: none;
       position: relative;
       padding-left: 0.625rem + t.$space-small;
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         color: var(--components-layout-badge-primary-contrast-text-bullet);
         background: none;
       }

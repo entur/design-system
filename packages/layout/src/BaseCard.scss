@@ -13,7 +13,7 @@
   appearance: none;
   text-decoration: none;
 
-  .eds-contrast & {
+  :where(.eds-contrast) & {
     background-color: var(--components-layout-card-contrast-fill-default-solid);
     border-color: var(--components-layout-card-contrast-border-default);
     box-shadow: none;

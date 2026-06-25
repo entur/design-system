@@ -40,7 +40,7 @@
     margin-left: calc(-1 * var(--eds-sidebar-padding, #{v.$default-sidebar-padding}));
     margin-right: calc(-1 * var(--eds-sidebar-padding, #{v.$default-sidebar-padding}));
 
-    .eds-layout-template-sidebar--plain & {
+    :where(.eds-layout-template-sidebar--plain) & {
       scrollbar-color: rgba(0 0 0 / 0.2) transparent;
     }
   }
@@ -59,7 +59,7 @@
     opacity: 1;
     transition: opacity ease-in t.$timings-fast t.$timings-medium;
 
-    .eds-layout-template-sidebar--collapsed & {
+    :where(.eds-layout-template-sidebar--collapsed) & {
       opacity: 0;
       visibility: hidden;
       transition: opacity ease-out t.$timings-fast, visibility 0s t.$timings-fast;
@@ -84,21 +84,21 @@
     z-index: t.$z-indexes-sticky;
     padding: 0;
 
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       background-color: var(--basecolors-frame-contrastalt);
       color: var(--basecolors-text-light);
     }
 
-    svg {
+    :where(svg) {
       margin: 0;
     }
 
-    &:focus-visible {
+    &:where(:focus-visible) {
       outline: t.$outlines-focus;
       outline-color: var(--basecolors-stroke-focus-standard);
       outline-offset: t.$outline-offsets-focus;
 
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         outline-color: var(--basecolors-stroke-focus-contrast);
       }
     }

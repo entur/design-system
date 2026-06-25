@@ -8,10 +8,10 @@
   padding: t.$space-extra-small2 t.$space-small;
   font-size: t.$font-sizes-medium;
   line-height: t.$line-heights-large;
-  &--leading-icon .eds-icon {
+  &--leading-icon :where(.eds-icon) {
     margin-right: t.$space-extra-small;
   }
-  &--trailing-icon .eds-icon {
+  &--trailing-icon :where(.eds-icon) {
     margin-left: t.$space-extra-small;
   }
   &--compact {
@@ -19,10 +19,10 @@
     padding: calc(t.$space-extra-small2 / 2) t.$space-extra-small;
     line-height: t.$line-heights-medium;
     height: 1.5rem;
-    &.eds-tag--leading-icon .eds-icon {
+    &:where(.eds-tag--leading-icon) :where(.eds-icon) {
       margin-right: t.$space-extra-small2;
     }
-    &.eds-tag--trailing-icon .eds-icon {
+    &:where(.eds-tag--trailing-icon) :where(.eds-icon) {
       margin-left: t.$space-extra-small2;
     }
   }
