@@ -39,7 +39,7 @@
   font-size: t.$font-sizes-large;
   line-height: t.$line-heights-large;
 
-  .eds-contrast {
+  :where(.eds-contrast) {
     --primary-background-color: var(--basecolors-frame-contrast);
     --primary-text-color: var(--components-typography-basetext-contrast-text-accent);
     --primary-label-color: var(--components-typography-label-contrast-text-accent);
@@ -173,8 +173,8 @@
   color: var(--primary-text-color);
 
   &,
-  &:link,
-  &:visited {
+  &:where(:link),
+  &:where(:visited) {
     font-size: inherit;
     text-decoration: none;
     position: relative;
@@ -184,7 +184,7 @@
     background-size: 100% 0.125rem;
     background-position: 0 100%;
   }
-  &:hover {
+  &:where(:hover) {
     animation: eds-link-underline 0.3s ease-in;
     cursor: pointer;
   }
@@ -198,12 +198,12 @@
     }
   }
 
-  &:focus-visible {
+  &:where(:focus-visible) {
     outline: t.$outlines-focus;
     outline-color: var(--basecolors-stroke-focus-standard);
     outline-offset: t.$outline-offsets-focus;
 
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       outline-color: var(--basecolors-stroke-focus-contrast);
     }
   }
@@ -216,7 +216,7 @@
   &--ext-icon {
     margin-left: t.$space-extra-small2;
 
-    p & {
+    :where(p) & {
       top: 0;
     }
   }
@@ -282,7 +282,7 @@
 
 .eds-unordered-list {
   list-style: none;
-  .eds-list-item {
+  :where(.eds-list-item) {
     &::before {
       content: '';
       background: var(--components-typography-list-standard-border);
@@ -301,35 +301,35 @@
   list-style: none;
   &--type {
     &-a {
-      & > .eds-list-item {
+      & > :where(.eds-list-item) {
         &::before {
           content: counter(eds-numbered-list-counter, lower-alpha);
         }
       }
     }
     &-A {
-      & > .eds-list-item {
+      & > :where(.eds-list-item) {
         &::before {
           content: counter(eds-numbered-list-counter, upper-alpha);
         }
       }
     }
     &-1 {
-      & > .eds-list-item {
+      & > :where(.eds-list-item) {
         &::before {
           content: counter(eds-numbered-list-counter, decimal);
         }
       }
     }
     &-i {
-      & > .eds-list-item {
+      & > :where(.eds-list-item) {
         &::before {
           content: counter(eds-numbered-list-counter, lower-roman);
         }
       }
     }
     &-I {
-      & > .eds-list-item {
+      & > :where(.eds-list-item) {
         &::before {
           content: counter(eds-numbered-list-counter, upper-roman);
         }
@@ -342,7 +342,7 @@
   padding-left: t.$space-extra-small;
 }
 
-.eds-numbered-list > .eds-list-item {
+.eds-numbered-list > :where(.eds-list-item) {
   counter-increment: eds-numbered-list-counter;
   margin-top: t.$space-large;
   position: relative;
@@ -368,7 +368,7 @@
   font-weight: t.$font-weights-heading;
   margin-bottom: t.$space-extra-small;
 
-  .eds-list-item:first-of-type {
+  :where(.eds-list-item):where(:first-of-type) {
     margin: none;
   }
 }

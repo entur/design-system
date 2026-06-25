@@ -319,7 +319,7 @@
       &--ext-icon {
         margin-left: t.$space-extra-small2;
 
-        p & {
+        :where(p) & {
           top: 0;
         }
       }
@@ -359,7 +359,7 @@
       :where(.eds-contrast) & {
         color: var(--components-typography-list-contrast-text-accent);
       }
-      .eds-text--list-item {
+      :where(.eds-text--list-item) {
         &::before {
           content: '';
           background: var(--components-typography-list-standard-border);
@@ -383,35 +383,35 @@
       }
 
       &--type-a {
-        & > .eds-text--list-item {
+        & > :where(.eds-text--list-item) {
           &::before {
             content: counter(eds-numbered-list-counter, lower-alpha);
           }
         }
       }
       &--type-A {
-        & > .eds-text--list-item {
+        & > :where(.eds-text--list-item) {
           &::before {
             content: counter(eds-numbered-list-counter, upper-alpha);
           }
         }
       }
       &--type-1 {
-        & > .eds-text--list-item {
+        & > :where(.eds-text--list-item) {
           &::before {
             content: counter(eds-numbered-list-counter, decimal);
           }
         }
       }
       &--type-i {
-        & > .eds-text--list-item {
+        & > :where(.eds-text--list-item) {
           &::before {
             content: counter(eds-numbered-list-counter, lower-roman);
           }
         }
       }
       &--type-I {
-        & > .eds-text--list-item {
+        & > :where(.eds-text--list-item) {
           &::before {
             content: counter(eds-numbered-list-counter, upper-roman);
           }
@@ -423,7 +423,7 @@
       padding-left: t.$space-extra-small;
     }
 
-    &--numbered-list > .eds-text--list-item {
+    &--numbered-list > :where(.eds-text--list-item) {
       counter-increment: eds-numbered-list-counter;
       margin-bottom: var(--font-paragraph-spacing-body-m);
       position: relative;
