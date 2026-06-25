@@ -7,20 +7,20 @@
   }
   &--hide-clock {
     --input-width: 5rem;
-    &.eds-simple-timepicker--has-tooltip {
+    &:where(.eds-simple-timepicker--has-tooltip) {
       --input-width: 7rem;
     }
   }
   &--show-seconds {
     --input-width: 8.5rem;
 
-    &.eds-simple-timepicker--hide-clock {
+    &:where(.eds-simple-timepicker--hide-clock) {
       --input-width: 6.5rem;
-      &.eds-simple-timepicker--has-tooltip {
+      &:where(.eds-simple-timepicker--has-tooltip) {
         --input-width: 8.5rem;
       }
     }
-    &.eds-simple-timepicker--has-tooltip {
+    &:where(.eds-simple-timepicker--has-tooltip) {
       --input-width: 10.5rem;
     }
   }

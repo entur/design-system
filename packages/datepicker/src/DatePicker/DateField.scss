@@ -4,17 +4,17 @@
   width: fit-content;
   display: block;
 
-  .eds-form-control-wrapper {
+  :where(.eds-form-control-wrapper) {
     display: inline-flex;
     padding-inline: 1rem;
     width: fit-content;
 
     &--disabled {
-      &:focus-within {
+      &:where(:focus-within) {
         border-color: transparent;
         box-shadow: none;
       }
-      .eds-date-and-time-field__segment:focus {
+      :where(.eds-date-and-time-field__segment):where(:focus) {
         background: none;
       }
     }

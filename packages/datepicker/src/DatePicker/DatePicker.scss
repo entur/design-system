@@ -2,8 +2,8 @@
 
 .eds-datepicker {
   // Overrides for default datefield
-  &.eds-datefield {
-    &:not(.eds-datepicker--disabled) .eds-form-control {
+  &:where(.eds-datefield) {
+    &:where(:not(.eds-datepicker--disabled)) :where(.eds-form-control) {
       &-wrapper {
         padding-right: 0rem;
       }
@@ -18,23 +18,23 @@
     margin: t.$space-none t.$space-extra-small2 t.$space-none t.$space-extra-small;
 
     // This is done to remove contrast specific styling
-    &.eds-icon-button {
+    &:where(.eds-icon-button) {
       color: var(--components-datepicker-calendar-icon);
-      &:hover {
+      &:where(:hover) {
         background-color: var(--components-button-iconbutton-standard-hover);
       }
-      &:focus-visible {
+      &:where(:focus-visible) {
         outline: t.$outlines-focus;
         outline-color: var(--basecolors-stroke-focus-standard);
         outline-offset: 0;
       }
-      &:active {
+      &:where(:active) {
         background-color: var(--components-button-iconbutton-standard-active);
       }
     }
   }
 
-  &__calendar-modal.eds-modal__content {
+  &__calendar-modal:where(.eds-modal__content) {
     padding: unset;
     width: inherit;
     background-color: unset;

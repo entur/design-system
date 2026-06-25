@@ -1,7 +1,6 @@
 @use '@entur/tokens/dist/styles.scss' as t;
 
-.eds-datepicker__calendar,
-.eds-contrast .eds-datepicker__calendar {
+.eds-datepicker__calendar {
   width: fit-content;
   padding: t.$space-large;
   padding-top: t.$space-small;
@@ -16,7 +15,7 @@
     align-items: center;
     color: var(--components-datepicker-calendar-text-accent);
 
-    h2 {
+    :where(h2) {
       flex: 1;
       text-align: center;
       font-size: t.$font-sizes-large;
@@ -24,18 +23,18 @@
     }
 
     // This is done to remove contrast specific styling
-    .eds-icon-button {
+    :where(.eds-icon-button) {
       color: var(--components-button-iconbutton-standard-text);
 
-      &:hover {
+      &:where(:hover) {
         background-color: var(--components-button-iconbutton-standard-hover);
       }
-      &:focus-visible {
+      &:where(:focus-visible) {
         outline: t.$outlines-focus;
         outline-color: var(--basecolors-stroke-focus-standard);
         outline-offset: t.$outline-offsets-focus;
       }
-      &:active {
+      &:where(:active) {
         background-color: var(--components-button-iconbutton-standard-active);
       }
       &--disabled__wrapper {
@@ -60,7 +59,7 @@
     border-collapse: collapse;
 
     &__weeknumber,
-    thead tr th {
+    :where(thead tr th) {
       color: var(--components-datepicker-calendar-text-subdued);
       font-size: t.$font-sizes-small;
     }
@@ -85,11 +84,11 @@
         padding: 0;
         border: 1px solid var(--components-datepicker-calendar-dateborder);
 
-        &:has(.eds-datepicker__calendar__grid__cell--outside-month--visible) {
+        &:where(:has(.eds-datepicker__calendar__grid__cell--outside-month--visible)) {
           border-style: dashed;
         }
 
-        &:has(.eds-datepicker__calendar__grid__cell--in-range) {
+        &:where(:has(.eds-datepicker__calendar__grid__cell--in-range)) {
           background-color: var(--components-datepicker-calendar-datefill-range);
           border-left-color: var(--components-datepicker-calendar-datefill-range);
           border-right-color: var(--components-datepicker-calendar-datefill-range);
@@ -97,36 +96,36 @@
           border-bottom-color: var(--components-datepicker-calendar-dateborder);
         }
 
-        &:has(.eds-datepicker__calendar__grid__cell--selection-start:not(.eds-datepicker__calendar__grid__cell--selection-end)) {
+        &:where(:has(.eds-datepicker__calendar__grid__cell--selection-start:not(.eds-datepicker__calendar__grid__cell--selection-end))) {
           background: linear-gradient(to right, transparent 50%, var(--components-datepicker-calendar-datefill-range) 50%);
           border-right-color: var(--components-datepicker-calendar-datefill-range);
           border-top-color: var(--components-datepicker-calendar-dateborder);
           border-bottom-color: var(--components-datepicker-calendar-dateborder);
         }
 
-        &:has(.eds-datepicker__calendar__grid__cell--selection-end:not(.eds-datepicker__calendar__grid__cell--selection-start)) {
+        &:where(:has(.eds-datepicker__calendar__grid__cell--selection-end:not(.eds-datepicker__calendar__grid__cell--selection-start))) {
           background: linear-gradient(to left, transparent 50%, var(--components-datepicker-calendar-datefill-range) 50%);
           border-left-color: var(--components-datepicker-calendar-datefill-range);
           border-top-color: var(--components-datepicker-calendar-dateborder);
           border-bottom-color: var(--components-datepicker-calendar-dateborder);
         }
 
-        &:has(.eds-datepicker__calendar__grid__cell--selection-start.eds-datepicker__calendar__grid__cell--selection-end) {
+        &:where(:has(.eds-datepicker__calendar__grid__cell--selection-start.eds-datepicker__calendar__grid__cell--selection-end)) {
           background: transparent;
           border-color: transparent;
         }
 
-        &:focus-within {
+        &:where(:focus-within) {
           z-index: 2;
         }
       }
 
-      &:hover {
+      &:where(:hover) {
         background-color: var(--components-datepicker-calendar-datefill-hover);
         color: var(--components-datepicker-calendar-text-accent);
       }
 
-      &:active {
+      &:where(:active) {
         background-color: var(--components-datepicker-calendar-datefill-selected);
         color: var(--components-datepicker-calendar-text-selected);
       }
@@ -135,7 +134,7 @@
         opacity: 0.5;
         pointer-events: none;
       }
-      &:focus-visible {
+      &:where(:focus-visible) {
         outline: t.$outlines-focus;
         outline-color: var(--basecolors-stroke-focus-standard);
         outline-offset: t.$outline-offsets-focus;
@@ -146,12 +145,12 @@
         color: var(--components-datepicker-calendar-text-selected);
         border-radius: 4px;
 
-        &:hover {
+        &:where(:hover) {
           background-color: var(--components-datepicker-calendar-datefill-selected-hover);
           color: var(--components-datepicker-calendar-text-selected);
         }
 
-        &:active {
+        &:where(:active) {
           background-color: var(--components-datepicker-calendar-datefill-selected);
           color: var(--components-datepicker-calendar-text-selected);
         }
@@ -162,7 +161,7 @@
         color: var(--components-datepicker-calendar-text-accent);
         border-radius: 0;
 
-        &:hover {
+        &:where(:hover) {
           background-color: var(--components-datepicker-calendar-datefill-range-hover);
           color: var(--components-datepicker-calendar-text-accent);
         }
@@ -173,28 +172,28 @@
         background-color: var(--components-datepicker-calendar-datefill-selected);
         color: var(--components-datepicker-calendar-text-selected);
 
-        &:hover {
+        &:where(:hover) {
           background-color: var(--components-datepicker-calendar-datefill-selected-hover);
           color: var(--components-datepicker-calendar-text-selected);
         }
       }
 
-      &--selection-start:not(.eds-datepicker__calendar__grid__cell--selection-end) {
+      &--selection-start:where(:not(.eds-datepicker__calendar__grid__cell--selection-end)) {
         border-radius: 4px 0 0 4px;
       }
 
-      &--selection-end:not(.eds-datepicker__calendar__grid__cell--selection-start) {
+      &--selection-end:where(:not(.eds-datepicker__calendar__grid__cell--selection-start)) {
         border-radius: 0 4px 4px 0;
       }
 
-      &--selection-start.eds-datepicker__calendar__grid__cell--selection-end {
+      &--selection-start:where(.eds-datepicker__calendar__grid__cell--selection-end) {
         border-radius: 4px;
       }
 
       &--disabled {
         opacity: 0.5;
 
-        &:hover {
+        &:where(:hover) {
           background-color: transparent;
           cursor: not-allowed;
         }
@@ -203,7 +202,7 @@
       &--outside-month {
         color: transparent;
 
-        &:hover {
+        &:where(:hover) {
           background-color: transparent;
           color: transparent;
           cursor: default;
@@ -214,25 +213,25 @@
           color: var(--components-datepicker-calendar-text-subdued);
           opacity: 1;
 
-          &.eds-datepicker__calendar__grid__cell--selected {
+          &:where(.eds-datepicker__calendar__grid__cell--selected) {
             background-color: var(--components-datepicker-calendar-datefill-selected);
             color: var(--components-datepicker-calendar-text-accent);
           }
 
-          &:hover {
+          &:where(:hover) {
             background-color: var(--components-datepicker-calendar-datefill-hover);
             color: var(--components-datepicker-calendar-text-accent);
             opacity: 0.8;
             cursor: default;
           }
 
-          &:active {
+          &:where(:active) {
             background-color: var(--components-datepicker-calendar-datefill-selected);
             color: var(--components-datepicker-calendar-text-accent);
             opacity: 1;
           }
 
-          &:focus-visible {
+          &:where(:focus-visible) {
             outline: t.$outlines-focus;
             outline-color: var(--basecolors-stroke-focus-standard);
             outline-offset: t.$outline-offsets-focus;

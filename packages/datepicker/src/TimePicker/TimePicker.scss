@@ -10,7 +10,7 @@
   }
 
   // Overrides for default base form control
-  .eds-form-control {
+  :where(.eds-form-control) {
     &__prepend {
       margin-right: 0.25rem;
     }
@@ -33,24 +33,24 @@
     }
 
     // This is done to remove contrast specific styling
-    &.eds-icon-button {
+    &:where(.eds-icon-button) {
       color: var(--components-button-iconbutton-standard-text);
 
-      &:hover {
+      &:where(:hover) {
         background-color: var(--components-button-iconbutton-standard-hover);
       }
-      &:focus-visible {
+      &:where(:focus-visible) {
         outline: t.$outlines-focus;
         outline-color: var(--basecolors-stroke-focus-standard);
         outline-offset: t.$outline-offsets-focus;
       }
-      &:active {
+      &:where(:active) {
         background-color: var(--components-button-iconbutton-standard-active);
       }
     }
   }
 
-  .eds-icon-button--disabled__wrapper {
+  :where(.eds-icon-button--disabled__wrapper) {
     display: none;
   }
 }

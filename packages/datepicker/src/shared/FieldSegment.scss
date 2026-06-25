@@ -7,7 +7,7 @@
     font-variant-numeric: tabular-nums;
     text-align: end;
 
-    &:is(:first-child, :last-child):not([role='spinbutton']) {
+    &:where(:is(:first-child, :last-child)):where(:not([role='spinbutton'])) {
       padding: 0;
     }
 
@@ -19,13 +19,13 @@
       margin-left: -0.1rem;
       margin-right: -0.2rem;
     }
-    &:focus-visible {
+    &:where(:focus-visible) {
       background-color: var(--components-button-iconbutton-standard-active);
       outline: transparent;
       border-radius: t.$border-radiuses-default;
     }
     // Targets the year-stepper
-    &[aria-valuemax='9999'] {
+    &:where([aria-valuemax='9999']) {
       min-width: 4ch;
     }
   }
