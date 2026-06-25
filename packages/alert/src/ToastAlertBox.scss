@@ -8,7 +8,7 @@
   align-items: flex-end;
   flex-direction: column;
 
-  .eds-alert-box__close-button {
+  :where(.eds-alert-box__close-button) {
     position: absolute;
     top: t.$space-small;
     right: t.$space-small;

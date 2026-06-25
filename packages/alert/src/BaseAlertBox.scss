@@ -47,16 +47,16 @@
     border-color: var(--components-alert-alertbox-success-standard-border);
     color: var(--components-alert-alertbox-success-standard-text);
 
-    .eds-alert-box__icon {
+    :where(.eds-alert-box__icon) {
       color: var(--components-alert-alertbox-success-standard-icon);
     }
 
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       background-color: var(--components-alert-alertbox-success-contrast-fill);
       border-color: var(--components-alert-alertbox-success-contrast-border);
       color: var(--components-alert-alertbox-success-contrast-text);
 
-      .eds-alert-box__icon {
+      :where(.eds-alert-box__icon) {
         color: var(--components-alert-alertbox-success-contrast-icon);
       }
     }
@@ -67,16 +67,16 @@
     border-color: var(--components-alert-alertbox-information-standard-border);
     color: var(--components-alert-alertbox-information-standard-text);
 
-    .eds-alert-box__icon {
+    :where(.eds-alert-box__icon) {
       color: var(--components-alert-alertbox-information-standard-icon);
     }
 
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       background-color: var(--components-alert-alertbox-information-contrast-fill);
       border-color: var(--components-alert-alertbox-information-contrast-border);
       color: var(--components-alert-alertbox-information-contrast-text);
 
-      .eds-alert-box__icon {
+      :where(.eds-alert-box__icon) {
         color: var(--components-alert-alertbox-information-contrast-icon);
       }
     }
@@ -86,15 +86,15 @@
     border-color: var(--components-alert-alertbox-warning-standard-border);
     color: var(--components-alert-alertbox-warning-standard-text);
 
-    .eds-alert-box__icon {
+    :where(.eds-alert-box__icon) {
       color: var(--components-alert-alertbox-warning-standard-icon);
     }
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       background-color: var(--components-alert-alertbox-warning-contrast-fill);
       border-color: var(--components-alert-alertbox-warning-contrast-border);
       color: var(--components-alert-alertbox-warning-contrast-text);
 
-      .eds-alert-box__icon {
+      :where(.eds-alert-box__icon) {
         color: var(--components-alert-alertbox-warning-contrast-icon);
       }
     }
@@ -105,16 +105,16 @@
     border-color: var(--components-alert-alertbox-negative-standard-border);
     color: var(--components-alert-alertbox-negative-standard-text);
 
-    .eds-alert-box__icon {
+    :where(.eds-alert-box__icon) {
       color: var(--components-alert-alertbox-negative-standard-icon);
     }
 
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       background-color: var(--components-alert-alertbox-negative-contrast-fill);
       border-color: var(--components-alert-alertbox-negative-contrast-border);
       color: var(--components-alert-alertbox-negative-contrast-text);
 
-      .eds-alert-box__icon {
+      :where(.eds-alert-box__icon) {
         color: var(--components-alert-alertbox-negative-contrast-icon);
       }
     }
@@ -132,8 +132,8 @@
     margin-right: 0.5em;
     margin-top: 0;
 
-    .eds-alert-box--banner &,
-    .eds-alert-box--toast & {
+    :where(.eds-alert-box--banner) &,
+    :where(.eds-alert-box--toast) & {
       @include breakpoint.for-desktop {
         font-size: t.$space-extra-large; // standalone icon size
         margin-top: -(t.$space-extra-small2);
@@ -156,44 +156,44 @@
       align-items: center;
     }
 
-    .eds-alert-box--banner &,
-    .eds-alert-box--toast & {
+    :where(.eds-alert-box--banner) &,
+    :where(.eds-alert-box--toast) & {
       margin-right: t.$space-extra-large;
     }
 
-    & > *:first-child {
+    & > *:where(:first-child) {
       margin-top: 0;
     }
 
-    & > *:last-child {
+    & > *:where(:last-child) {
       margin-bottom: 0;
     }
   }
   // Overwrites button default styling
-  & &__close-button {
+  & :where(&__close-button) {
     margin-top: -0.3125rem;
     margin-left: t.$space-extra-small;
     height: fit-content;
     width: fit-content;
 
     // Normal mode and contrast mode
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       color: var(--components-button-iconbutton-standard-text);
-      &:hover {
+      &:where(:hover) {
         background: var(--components-button-iconbutton-standard-hover);
       }
-      &:active {
+      &:where(:active) {
         background: var(--components-button-iconbutton-standard-active);
       }
-      &:focus-visible {
+      &:where(:focus-visible) {
         outline: t.$outlines-focus;
         outline-color: var(--basecolors-stroke-focus-standard);
       }
     }
   }
   // Overwrites tooltip default styling
-  & &__tooltip {
-    .eds-contrast & {
+  & :where(&__tooltip) {
+    :where(.eds-contrast) & {
       background: var(--components-tooltip-tooltip-standard-fill);
       color: var(--components-tooltip-tooltip-standard-text);
       &::after {

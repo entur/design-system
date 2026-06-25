@@ -1,7 +1,6 @@
 @use '@entur/tokens/dist/styles.scss' as t;
 
-.eds-copyable-text,
-.eds-contrast .eds-copyable-text {
+.eds-copyable-text {
   appearance: none;
   background: none;
   border: 0;
@@ -25,9 +24,9 @@
 
     transition: border-color t.$timings-fast;
 
-    &:hover {
+    &:where(:hover) {
       border-color: var(--components-alert-copyabletext-standard-border-interactive);
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         border-color: var(--components-alert-copyabletext-contrast-border-interactive);
       }
     }
@@ -39,7 +38,7 @@
     text-wrap: nowrap;
   }
 
-  & &__button {
+  & :where(&__button) {
     color: var(--components-alert-copyabletext-standard-text);
     margin: -0.5rem; // remove extra spacing added by icon button padding
     margin-left: 0.5rem;
@@ -47,23 +46,19 @@
     height: fit-content;
 
     &,
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       color: var(--components-alert-copyabletext-standard-text);
-      &:hover {
+      &:where(:hover) {
         background: var(--components-button-iconbutton-standard-hover);
       }
 
-      &:active {
+      &:where(:active) {
         background: var(--components-button-iconbutton-standard-active);
       }
-      &:focus-visible {
+      &:where(:focus-visible) {
         outline: t.$outlines-focus;
         outline-color: var(--basecolors-stroke-focus-standard);
         outline-offset: t.$outline-offsets-focus;
-
-        .eds-contrast & {
-          outline-color: var(--basecolors-stroke-focus-standard);
-        }
       }
     }
   }
