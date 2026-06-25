@@ -18,11 +18,11 @@
     flex-direction: column;
     width: 1rem;
 
-    .eds-leg-bone__start {
+    :where(.eds-leg-bone__start) {
       margin-bottom: 0.125rem;
     }
 
-    .eds-leg-bone__stop {
+    :where(.eds-leg-bone__stop) {
       margin-top: 0.125rem;
     }
   }
@@ -31,11 +31,11 @@
     flex-direction: row;
     height: 1rem;
 
-    .eds-leg-bone__start {
+    :where(.eds-leg-bone__start) {
       margin-right: 0.125rem;
     }
 
-    .eds-leg-bone__stop {
+    :where(.eds-leg-bone__stop) {
       margin-left: 0.125rem;
     }
   }
