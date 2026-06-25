@@ -26,20 +26,20 @@
     background: var(--components-menu-navigationbar-standard-stroke-selected);
     transition: width ease-in-out t.$timings-medium, opacity ease-in-out t.$timings-medium;
   }
-  .eds-contrast & {
+  :where(.eds-contrast) & {
     color: var(--components-menu-navigationbar-contrast-text-unselected);
   }
 
-  &:focus-visible {
+  &:where(:focus-visible) {
     outline: t.$outlines-focus;
     outline-color: var(--basecolors-stroke-focus-standard);
     outline-offset: t.$outline-offsets-focus;
 
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       outline-color: var(--basecolors-stroke-focus-contrast);
     }
   }
-  &:hover {
+  &:where(:hover) {
     --show-active-line: 1;
     &::after {
       width: t.$space-extra-large;
@@ -52,7 +52,7 @@
     &::after {
       width: t.$space-extra-large;
     }
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       color: var(--components-menu-navigationbar-contrast-text-selected);
     }
   }

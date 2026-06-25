@@ -24,16 +24,16 @@
     font-family: inherit;
     text-transform: none;
 
-    &:focus-visible &__label {
+    &:where(:focus-visible) :where(&__label) {
       outline-offset: t.$outline-offsets-focus;
       outline: t.$outlines-focus;
 
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         outline: t.$outlines-focus-contrast;
       }
     }
 
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       --text-color: var(--components-menu-stepper-contrast-text-uncompleted);
       --line-color: var(--components-menu-stepper-contrast-background);
     }
@@ -55,7 +55,7 @@
       --label-font-weight: #{t.$font-weights-heading};
       --display-active-line: block;
 
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         --text-color: var(--components-menu-stepper-contrast-text-completed);
       }
     }
@@ -64,7 +64,7 @@
       --text-color: var(--components-menu-stepper-standard-text-completed);
       --line-color: var(--components-menu-stepper-standard-progressbar);
 
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         --text-color: var(--components-menu-stepper-contrast-text-completed);
         --line-color: var(--components-menu-stepper-contrast-progressbar);
       }
@@ -84,11 +84,11 @@
       color: var(--text-color);
       font-weight: var(--label-font-weight);
 
-      .eds-stepper__step--interactive:hover & {
+      :where(.eds-stepper__step--interactive):where(:hover) & {
         background-color: var(--components-menu-stepper-standard-background);
         color: var(--components-menu-stepper-standard-text-completed);
 
-        .eds-contrast & {
+        :where(.eds-contrast) & {
           background-color: var(--components-menu-stepper-contrast-background);
           color: var(--components-menu-stepper-contrast-text-completed);
         }
@@ -100,7 +100,7 @@
       background: var(--line-color);
       position: relative;
 
-      &:before {
+      &::before {
         display: var(--display-active-line);
         content: '';
         position: absolute;
@@ -114,11 +114,11 @@
         height: calc(#{t.$space-extra-small} - #{t.$border-widths-medium} - 0.01rem);
         transform: rotate(45deg);
 
-        .eds-contrast & {
+        :where(.eds-contrast) & {
           background: var(--components-menu-stepper-contrast-progressbar);
         }
       }
-      &:after {
+      &::after {
         display: var(--display-active-line);
 
         content: '';
@@ -130,7 +130,7 @@
 
         background: var(--components-menu-stepper-standard-progressbar);
 
-        .eds-contrast & {
+        :where(.eds-contrast) & {
           background: var(--components-menu-stepper-contrast-progressbar);
         }
       }

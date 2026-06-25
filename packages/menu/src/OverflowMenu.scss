@@ -8,7 +8,7 @@
     border: t.$border-widths-small solid var(--components-menu-overflowmenu-border);
     z-index: t.$z-indexes-popover;
 
-    &.eds-contrast {
+    &:where(.eds-contrast) {
       box-shadow: t.$shadows-box-shadow-contrast;
     }
   }
@@ -31,7 +31,7 @@
     &--highlighted {
       background: var(--components-menu-overflowmenu-fill-hover);
     }
-    &:active {
+    &:where(:active) {
       background: var(--components-menu-overflowmenu-fill-active);
       color: var(--components-menu-overflowmenu-text-active);
     }
@@ -41,7 +41,7 @@
       cursor: not-allowed;
     }
 
-    svg {
+    :where(svg) {
       margin-right: t.$space-small;
     }
   }

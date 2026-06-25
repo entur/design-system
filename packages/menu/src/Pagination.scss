@@ -15,11 +15,11 @@
     justify-content: flex-start;
     color: var(--components-menu-pagination-standard-text-subdued);
 
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       color: var(--components-menu-pagination-contrast-text-subdued);
     }
 
-    & &__change-number-of-results {
+    & :where(&__change-number-of-results) {
       border: solid t.$border-widths-small var(--components-menu-pagination-contrast-border-unselected);
       margin: 0 t.$space-extra-small;
 
@@ -29,16 +29,16 @@
         gap: t.$space-extra-small;
       }
 
-      &[aria-expanded='true'] {
-        .eds-pagination__results__change-number-of-results__content__arrow {
+      &:where([aria-expanded='true']) {
+        :where(.eds-pagination__results__change-number-of-results__content__arrow) {
           transform: rotate(180deg);
         }
       }
     }
   }
 
-  &__results:first-of-type:last-of-type,
-  &__controls:first-of-type:last-of-type {
+  &__results:where(:first-of-type:last-of-type),
+  &__controls:where(:first-of-type:last-of-type) {
     margin: 0 auto;
   }
 
@@ -66,7 +66,7 @@
       user-select: none;
       min-width: t.$space-extra-large;
 
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         background-color: var(--components-menu-pagination-contrast-default);
         border-color: var(--components-menu-pagination-contrast-border-unselected);
         color: var(--components-menu-pagination-contrast-text-unselected);
@@ -78,7 +78,7 @@
         color: var(--components-menu-pagination-standard-text-selected);
         opacity: 1;
         pointer-events: none;
-        .eds-contrast & {
+        :where(.eds-contrast) & {
           background: var(--components-menu-pagination-contrast-active);
           border-color: var(--components-menu-pagination-contrast-border-selected);
           color: var(--components-menu-pagination-contrast-text-selected);
@@ -89,20 +89,20 @@
         pointer-events: none;
       }
 
-      &:hover {
+      &:where(:hover) {
         background-color: var(--components-menu-pagination-standard-hover);
         border-color: var(--components-menu-pagination-standard-border-unselected);
 
-        .eds-contrast & {
+        :where(.eds-contrast) & {
           background-color: var(--components-menu-pagination-contrast-hover);
           border-color: var(--components-menu-pagination-contrast-border-unselected);
         }
       }
-      &:focus-visible {
+      &:where(:focus-visible) {
         outline: t.$outlines-focus;
         outline-color: var(--basecolors-stroke-focus-standard);
         outline-offset: t.$outline-offsets-focus;
-        .eds-contrast & {
+        :where(.eds-contrast) & {
           outline-color: var(--basecolors-stroke-focus-contrast);
         }
       }
@@ -118,7 +118,7 @@
         user-select: none;
         width: t.$space-extra-large;
         margin: 0 2px;
-        .eds-contrast & {
+        :where(.eds-contrast) & {
           color: var(--components-menu-pagination-contrast-icon);
         }
       }
@@ -134,7 +134,7 @@
         font-size: t.$font-sizes-medium;
         margin-left: t.$space-extra-small;
         padding: 0 t.$space-medium;
-        .eds-contrast & {
+        :where(.eds-contrast) & {
           border-color: var(--components-menu-pagination-contrast-border-unselected);
           color: var(--components-menu-pagination-contrast-text-subdued);
         }
@@ -152,7 +152,7 @@
         text-align: center;
         width: t.$space-extra-large;
 
-        .eds-contrast & {
+        :where(.eds-contrast) & {
           background-color: var(--components-menu-pagination-contrast-default);
           border-color: var(--components-menu-pagination-contrast-border-unselected);
           color: var(--components-menu-pagination-contrast-text-unselected);
@@ -164,11 +164,11 @@
           margin: 0;
         }
 
-        &:focus-visible {
+        &:where(:focus-visible) {
           outline: t.$outlines-focus;
           outline-color: var(--basecolors-stroke-focus-standard);
           outline-offset: t.$outline-offsets-focus;
-          .eds-contrast & {
+          :where(.eds-contrast) & {
             outline-color: var(--basecolors-stroke-focus-contrast);
           }
         }
