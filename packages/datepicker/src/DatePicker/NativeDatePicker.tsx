@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useId } from 'react';
 import {
   BaseFormControl,
   isFilled,
@@ -6,7 +6,7 @@ import {
   useVariant,
 } from '@entur/form';
 import { DateIcon } from '@entur/icons';
-import { VariantType, useOnMount, useRandomId } from '@entur/utils';
+import { VariantType, useOnMount } from '@entur/utils';
 
 /** @deprecated use variant="information" instead */
 const info = 'info';
@@ -50,7 +50,7 @@ export const NativeDatePicker = React.forwardRef<
     },
     ref: React.Ref<HTMLInputElement>,
   ) => {
-    const nativedatepickerId = useRandomId('eds-nativetimepicker');
+    const nativedatepickerId = `eds-nativetimepicker${useId()}`;
     return (
       <BaseFormControl
         style={style}

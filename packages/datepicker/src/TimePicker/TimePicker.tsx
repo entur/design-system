@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useId, useRef } from 'react';
 import classNames from 'classnames';
 import { useTimeField } from '@react-aria/datepicker';
 import { I18nProvider, useLocale } from '@react-aria/i18n';
@@ -13,7 +13,7 @@ import type {
 
 import { VisuallyHidden } from '@entur/a11y';
 import { BaseFormControl, BaseFormControlProps } from '@entur/form';
-import { VariantType, useRandomId } from '@entur/utils';
+import { VariantType } from '@entur/utils';
 
 import { FieldSegment } from '../shared/FieldSegment';
 import { TimePickerArrowButton } from './TimePickerArrowButton';
@@ -138,7 +138,7 @@ export const TimePicker = <TimeType extends TimeValue>({
 }: TimePickerProps<TimeType>) => {
   let { locale } = useLocale();
   if (customLocale) locale = customLocale;
-  const timePickerId = useRandomId('eds-timepicker');
+  const timePickerId = `eds-timepicker${useId()}`;
 
   const timeZone =
     forcedTimeZone ??
@@ -177,7 +177,7 @@ export const TimePicker = <TimeType extends TimeValue>({
     state,
     timeFieldRef,
   );
-  const id = useRandomId('timepicker');
+  const id = `timepicker${useId()}`;
 
   const getCurrentTime = () => {
     const getCurrentTimeWithCorrectType = convertValueToType({
