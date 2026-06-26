@@ -1,6 +1,6 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useId, useRef } from 'react';
 import classNames from 'classnames';
-import { mergeRefs, useRandomId } from '@entur/utils';
+import { mergeRefs } from '@entur/utils';
 import { VisuallyHidden } from '@entur/a11y';
 
 export type TableProps = {
@@ -35,7 +35,7 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps>(
     },
     ref,
   ) => {
-    const sortableHeaderId = useRandomId('sortable-header');
+    const sortableHeaderId = `sortable-header${useId()}`;
 
     const tableRef = useRef<HTMLTableElement>(null);
 
