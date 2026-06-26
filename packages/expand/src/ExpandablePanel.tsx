@@ -1,5 +1,4 @@
-import React, { CSSProperties } from 'react';
-import { useRandomId } from '@entur/utils';
+import React, { CSSProperties, useId } from 'react';
 import { BaseExpandablePanel } from './BaseExpandablePanel';
 
 export type ExpandablePanelProps = Omit<
@@ -44,7 +43,7 @@ export const ExpandablePanel = React.forwardRef<
     },
     ref,
   ) => {
-    const randomId = useRandomId('eds-expandable');
+    const randomId = `eds-expandable${useId()}`;
     const id = overrideId || randomId;
 
     const [internalOpen, setInternalOpen] =

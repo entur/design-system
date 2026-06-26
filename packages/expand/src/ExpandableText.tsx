@@ -1,7 +1,5 @@
-import React, { CSSProperties } from 'react';
+import React, { CSSProperties, useId } from 'react';
 import classNames from 'classnames';
-
-import { useRandomId } from '@entur/utils';
 import { ExpandableTextButton } from './ExpandableTextButton';
 import { BaseExpand } from './BaseExpand';
 import {
@@ -71,7 +69,7 @@ export const ExpandableText = React.forwardRef<
     },
     ref,
   ) => {
-    const randomId = useRandomId('eds-expandable-text');
+    const randomId = `eds-expandable-text${useId()}`;
     const [internalOpen, setInternalOpen] =
       React.useState<boolean>(defaultOpen);
     const isControlled = controlledOpen !== undefined;
