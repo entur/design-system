@@ -21,11 +21,6 @@
   &:has(> .eds-layout-template-portal__status-bar) {
     --grid-template-rows-base: auto 1fr;
 
-    > .eds-layout-template-portal__status-bar {
-      --grid-item-col-base: 1 / -1;
-      --grid-item-row-base: 1;
-    }
-
     // Override Sidebar's rowSpan to row 2 when StatusBar is present
     > .eds-layout-grid-item:has(.eds-layout-template-sidebar) {
       --grid-item-row-base: 2;
