@@ -1,10 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useId, useState } from 'react';
 import classNames from 'classnames';
 
 import { DownArrowIcon, LeftArrowIcon, RightArrowIcon } from '@entur/icons';
 import { VisuallyHidden } from '@entur/a11y';
 import { Label } from '@entur/typography';
-import { useRandomId } from '@entur/utils';
 
 import { PaginationPage } from './PaginationPage';
 import { PaginationInput } from './PaginationInput';
@@ -111,7 +110,7 @@ export const Pagination = ({
   ...rest
 }: PaginationProps) => {
   const [listedEntries, setListedEntries] = useState<Array<number | '…'>>([]);
-  const paginationId = useRandomId('eds-pagination');
+  const paginationId = `eds-pagination${useId()}`;
 
   const isFirstPostSelected = currentPage === 1;
   const isLastPostSelected = currentPage === pageCount;
