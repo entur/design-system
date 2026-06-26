@@ -1,11 +1,10 @@
-import React from 'react';
+import { useId } from 'react';
 
 import { useLocale } from '@react-aria/i18n';
 import { useCalendarGrid } from '@react-aria/calendar';
 import { CalendarState } from '@react-stately/calendar';
 import { CalendarDate, getWeeksInMonth } from '@internationalized/date';
 
-import { useRandomId } from '@entur/utils';
 import { VisuallyHidden } from '@entur/a11y';
 
 import { getWeekNumberForDate } from '../shared/utils';
@@ -39,7 +38,7 @@ export const CalendarGrid = ({
   ariaLabelForDate,
   ...rest
 }: CalendarGridProps) => {
-  const calendarGridId = useRandomId('eds-calendar');
+  const calendarGridId = `eds-calendar${useId()}`;
   const { locale } = useLocale();
 
   const { gridProps, headerProps, weekDays } = useCalendarGrid(rest, state);
