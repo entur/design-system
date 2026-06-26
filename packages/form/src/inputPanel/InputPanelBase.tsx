@@ -1,6 +1,6 @@
-import React, { useRef } from 'react';
+import React, { useId, useRef } from 'react';
 import classNames from 'classnames';
-import { mergeRefs, useForceUpdate, useRandomId } from '@entur/utils';
+import { mergeRefs, useForceUpdate } from '@entur/utils';
 import { Checkbox } from '../Checkbox';
 import { Radio } from '../Radio';
 
@@ -85,7 +85,7 @@ export const InputPanelBase = React.forwardRef<
 
     const inputRef = useRef<HTMLInputElement>(null);
 
-    const defaultId = useRandomId('eds-inputpanel');
+    const defaultId = `eds-inputpanel${useId()}`;
     const inputPanelId = id || defaultId;
     const forceUpdate = useForceUpdate();
 

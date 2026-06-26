@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useId } from 'react';
 import classNames from 'classnames';
 
-import { VariantType, mergeRefs, useOnMount, useRandomId } from '@entur/utils';
+import { VariantType, mergeRefs, useOnMount } from '@entur/utils';
 
 import { useVariant } from './VariantProvider';
 import { BaseFormControl } from './BaseFormControl';
@@ -65,7 +65,7 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
     },
     ref: React.Ref<HTMLTextAreaElement>,
   ) => {
-    const textAreaId = useRandomId('eds-textarea');
+    const textAreaId = `eds-textarea${useId()}`;
     const textareaRef = React.useRef<HTMLTextAreaElement>(null);
     return (
       <BaseFormControl
