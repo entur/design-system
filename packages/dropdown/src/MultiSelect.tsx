@@ -2,6 +2,7 @@ import React, {
   Dispatch,
   SetStateAction,
   useEffect,
+  useId,
   useLayoutEffect,
   useRef,
   useState,
@@ -25,7 +26,7 @@ import {
 import { VisuallyHidden } from '@entur/a11y';
 import { BaseFormControl } from '@entur/form';
 import { space } from '@entur/tokens';
-import { mergeRefs, useRandomId } from '@entur/utils';
+import { mergeRefs } from '@entur/utils';
 
 import {
   DropdownFieldAppendix,
@@ -193,7 +194,7 @@ export const MultiSelect = React.forwardRef(
       selectedItems.length === normalizedItems.length;
 
     // special 'item' used as Select All entry in the dropdown list
-    const selectAllUniqueId = useRandomId('select-all');
+    const selectAllUniqueId = `select-all${useId()}`;
     const selectAll: NormalizedDropdownItemType<string> = React.useMemo(
       () => ({
         value: selectAllUniqueId,
