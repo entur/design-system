@@ -1,5 +1,4 @@
-import React, { CSSProperties } from 'react';
-import { useRandomId } from '@entur/utils';
+import React, { CSSProperties, useId } from 'react';
 import { BaseExpandablePanel } from './BaseExpandablePanel';
 import { useAccordion } from './Accordion';
 
@@ -39,7 +38,7 @@ export const AccordionItem = React.forwardRef<
     },
     ref,
   ) => {
-    const randomId = useRandomId('eds-accordion-item');
+    const randomId = `eds-accordion-item${useId()}`;
     const id = overrideId || randomId;
     const { isOpen, toggle } = useAccordion({ id, defaultOpen });
 
