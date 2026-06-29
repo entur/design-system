@@ -194,8 +194,10 @@
       &--disabled {
         opacity: 0.5;
 
-        &:hover {
+        &:hover,
+        &:active {
           background-color: transparent;
+          color: inherit;
           cursor: not-allowed;
         }
       }

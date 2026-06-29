@@ -343,6 +343,55 @@ describe('Calendar', () => {
     expect(onChange).toHaveBeenCalled();
   });
 
+  describe('visibleDuration', () => {
+    test('renders two month headings when visibleDuration is 2 months', () => {
+      render(<Calendar {...defaultProps} visibleDuration={{ months: 2 }} />);
+
+      expect(
+        screen.getByRole('heading', { name: 'September 2023' }),
+      ).toBeInTheDocument();
+      expect(
+        screen.getByRole('heading', { name: 'October 2023' }),
+      ).toBeInTheDocument();
+    });
+
+    test('renders two grids when visibleDuration is 2 months', () => {
+      render(<Calendar {...defaultProps} visibleDuration={{ months: 2 }} />);
+
+      expect(screen.getAllByRole('grid')).toHaveLength(2);
+    });
+
+    test('overflow dates between months are not duplicated as interactive cells', () => {
+      const { container } = render(
+        <Calendar {...defaultProps} visibleDuration={{ months: 2 }} />,
+      );
+
+      const betweenMonthsCells = container.querySelectorAll(
+        '.eds-datepicker__calendar__grid__cell--between-months',
+      );
+      betweenMonthsCells.forEach(cell => {
+        expect(cell).toHaveAttribute('aria-hidden', 'true');
+        expect(cell).not.toHaveAttribute('aria-label');
+      });
+    });
+
+    test('navigation moves both months forward when next is clicked', async () => {
+      const user = userEvent.setup();
+
+      render(<Calendar {...defaultProps} visibleDuration={{ months: 2 }} />);
+
+      const rightArrow = screen.getByLabelText('Next');
+      await user.click(rightArrow);
+
+      expect(
+        screen.getByRole('heading', { name: 'November 2023' }),
+      ).toBeInTheDocument();
+      expect(
+        screen.getByRole('heading', { name: 'December 2023' }),
+      ).toBeInTheDocument();
+    });
+  });
+
   test('Timezones should always be UTC', () => {
     expect(new Date().getTimezoneOffset()).toBe(0);
   });

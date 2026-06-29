@@ -1,25 +1,21 @@
 import React, { useEffect } from 'react';
 
-import classNames from 'classnames';
 import { I18nProvider, useLocale } from '@react-aria/i18n';
 import { AriaCalendarProps, useCalendar } from '@react-aria/calendar';
 import {
   CalendarStateOptions,
   useCalendarState,
 } from '@react-stately/calendar';
-import { CalendarDate, DateValue } from '@internationalized/date';
+import { CalendarDate, DateDuration, DateValue } from '@internationalized/date';
 import { MappedDateValue } from '@react-types/datepicker';
 
-import { LeftArrowIcon, RightArrowIcon } from '@entur/icons';
-
 import {
-  ariaLabelIfNorwegian,
   createCalendar,
   getAdjustedMaxDate,
   handleOnChange,
 } from '../shared/utils';
-import { CalendarButton } from '../shared/CalendarButton';
-import { CalendarGrid } from './CalendarGrid';
+import { CalendarBase } from './CalendarBase';
+import { CalendarCell } from './CalendarCell';
 import { DateFieldProps } from './DateField';
 
 import './Calendar.scss';
@@ -92,6 +88,11 @@ type BaseCalendarProps<DateType extends DateValue> = {
   locale?: string;
   calendarRef?: React.MutableRefObject<HTMLDivElement | null>;
   forcedReturnType?: DateFieldProps<DateType>['forcedReturnType'];
+  /** Vis flere måneder samtidig i kalenderen.
+   * @default {months: 1}
+   * @example {months: 2}
+   */
+  visibleDuration?: Pick<DateDuration, 'months'>;
 };
 
 export type CalendarProps<DateType extends DateValue> =
@@ -105,12 +106,12 @@ export const Calendar = <DateType extends DateValue>({
   const { locale } = useLocale();
   return (
     <I18nProvider locale={localOverride ?? locale}>
-      <CalendarBase {...props} />
+      <_Calendar {...props} />
     </I18nProvider>
   );
 };
 
-const CalendarBase = <DateType extends DateValue>({
+const _Calendar = <DateType extends DateValue>({
   selectedDate,
   onChange,
   minDate,
@@ -118,6 +119,7 @@ const CalendarBase = <DateType extends DateValue>({
   showWeekNumbers = false,
   weekNumberHeader = 'uke',
   showOutsideMonth = false,
+  visibleDuration,
   forcedReturnType,
   style,
   className,
@@ -149,6 +151,7 @@ const CalendarBase = <DateType extends DateValue>({
     createCalendar,
     minValue: minDate,
     maxValue: getAdjustedMaxDate(maxDate),
+    visibleDuration,
   };
 
   const state = useCalendarState(_props);
@@ -161,47 +164,33 @@ const CalendarBase = <DateType extends DateValue>({
   );
 
   return (
-    <div
-      {...calendarProps}
-      ref={calendarRef}
-      className={classNames('eds-datepicker__calendar', className)}
+    <CalendarBase
+      state={state}
+      calendarProps={calendarProps}
+      prevButtonProps={prevButtonProps}
+      nextButtonProps={nextButtonProps}
+      title={title}
+      calendarRef={calendarRef}
       style={style}
-    >
-      <div className="eds-datepicker__calendar__header">
-        <CalendarButton
-          {...prevButtonProps}
-          aria-label={ariaLabelIfNorwegian(
-            'Forrige måned',
-            locale,
-            prevButtonProps,
-          )}
-        >
-          <LeftArrowIcon size={20} />
-        </CalendarButton>
-        <h2>{title}</h2>
-        <CalendarButton
-          {...nextButtonProps}
-          aria-label={ariaLabelIfNorwegian(
-            'Neste måned',
-            locale,
-            nextButtonProps,
-          )}
-        >
-          <RightArrowIcon size={20} />
-        </CalendarButton>
-      </div>
-      <CalendarGrid
-        {...rest}
-        state={state}
-        navigationDescription={navigationDescription}
-        onSelectedCellClick={onSelectedCellClick}
-        onCellClick={onCellClick}
-        classNameForDate={classNameForDate}
-        ariaLabelForDate={ariaLabelForDate}
-        showWeekNumbers={showWeekNumbers}
-        weekNumberHeader={weekNumberHeader}
-        showOutsideMonth={showOutsideMonth}
-      />
-    </div>
+      className={className}
+      navigationDescription={navigationDescription}
+      showWeekNumbers={showWeekNumbers}
+      weekNumberHeader={weekNumberHeader}
+      renderCell={(date, currentMonth, weekNumberString, ariaDescribedBy) => (
+        <CalendarCell
+          key={`${date.month}.${date.day}`}
+          state={state}
+          date={date}
+          currentMonth={currentMonth}
+          aria-describedby={ariaDescribedBy}
+          weekNumberString={weekNumberString}
+          onSelectedCellClick={onSelectedCellClick}
+          onCellClick={onCellClick}
+          classNameForDate={classNameForDate}
+          ariaLabelForDate={ariaLabelForDate}
+          showOutsideMonth={showOutsideMonth}
+        />
+      )}
+    />
   );
 };
