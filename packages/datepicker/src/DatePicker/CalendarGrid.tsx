@@ -2,51 +2,42 @@ import React from 'react';
 
 import { useLocale } from '@react-aria/i18n';
 import { useCalendarGrid } from '@react-aria/calendar';
-import { CalendarState } from '@react-stately/calendar';
+import { CalendarState, RangeCalendarState } from '@react-stately/calendar';
 import { CalendarDate, getWeeksInMonth } from '@internationalized/date';
 
 import { useRandomId } from '@entur/utils';
 import { VisuallyHidden } from '@entur/a11y';
 
 import { getWeekNumberForDate } from '../shared/utils';
-import { CalendarCell } from './CalendarCell';
 
 type CalendarGridProps = {
-  state: CalendarState;
+  state: CalendarState | RangeCalendarState;
   startDate?: CalendarDate;
   navigationDescription?: string;
   showWeekNumbers: boolean;
   weekNumberHeader: string;
-  showOutsideMonth?: boolean;
-  onSelectedCellClick?: () => void;
-  onCellClick?: () => void;
-  classNameForDate?: (date: CalendarDate) => string;
-  ariaLabelForDate?: (date: CalendarDate) => string;
+  renderCell: (
+    date: CalendarDate,
+    currentMonth: CalendarDate,
+    weekNumberString: string,
+    ariaDescribedBy: string,
+  ) => React.ReactNode;
 };
 
 export const CalendarGrid = ({
   state,
   startDate,
   navigationDescription,
-  onSelectedCellClick = () => {
-    return;
-  },
-  onCellClick = () => {
-    return;
-  },
   showWeekNumbers,
   weekNumberHeader,
-  showOutsideMonth = false,
-  classNameForDate,
-  ariaLabelForDate,
-  ...rest
+  renderCell,
 }: CalendarGridProps) => {
   const calendarGridId = useRandomId('eds-calendar');
   const { locale } = useLocale();
 
   const gridStartDate = startDate ?? state.visibleRange.start;
   const { gridProps, headerProps, weekDays } = useCalendarGrid(
-    { ...rest, startDate: gridStartDate },
+    { startDate: gridStartDate },
     state,
   );
 
@@ -96,6 +87,9 @@ export const CalendarGrid = ({
             const weekNumber = getWeekNumberForDate(
               state.getDatesInWeek(weekIndex, gridStartDate)[0],
             );
+            const weekNumberString = showWeekNumbers
+              ? `, ${weekNumberHeader} ${weekNumber},`
+              : '';
             return (
               <tr key={weekIndex}>
                 {showWeekNumbers && (
@@ -110,23 +104,12 @@ export const CalendarGrid = ({
                   .getDatesInWeek(weekIndex, gridStartDate)
                   .map((date, i) =>
                     date ? (
-                      <CalendarCell
-                        key={`${date.month}.${date.day}`}
-                        state={state}
-                        date={date}
-                        currentMonth={gridStartDate}
-                        aria-describedby={calendarGridId + 'description'}
-                        weekNumberString={
-                          showWeekNumbers
-                            ? `, ${weekNumberHeader} ${weekNumber},`
-                            : ''
-                        }
-                        onSelectedCellClick={onSelectedCellClick}
-                        onCellClick={onCellClick}
-                        classNameForDate={classNameForDate}
-                        ariaLabelForDate={ariaLabelForDate}
-                        showOutsideMonth={showOutsideMonth}
-                      />
+                      renderCell(
+                        date,
+                        gridStartDate,
+                        weekNumberString,
+                        calendarGridId + 'description',
+                      )
                     ) : (
                       <td key={i} />
                     ),

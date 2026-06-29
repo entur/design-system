@@ -1,7 +1,5 @@
 import React, { useEffect, useRef } from 'react';
 
-import classNames from 'classnames';
-import './Calendar.scss';
 import { I18nProvider, useLocale } from '@react-aria/i18n';
 import { AriaRangeCalendarProps, useRangeCalendar } from '@react-aria/calendar';
 import {
@@ -12,15 +10,11 @@ import { CalendarDate, DateDuration, DateValue } from '@internationalized/date';
 import { RangeValue } from '@react-types/shared';
 import { MappedDateValue } from '@react-types/datepicker';
 
-import { LeftArrowIcon, RightArrowIcon } from '@entur/icons';
+import { createCalendar, getAdjustedMaxDate } from '../shared/utils';
+import { CalendarBase } from './CalendarBase';
+import { RangeCalendarCell } from './RangeCalendarCell';
 
-import {
-  ariaLabelIfNorwegian,
-  createCalendar,
-  getAdjustedMaxDate,
-} from '../shared/utils';
-import { CalendarButton } from '../shared/CalendarButton';
-import { RangeCalendarGrid } from './RangeCalendarGrid';
+import './Calendar.scss';
 
 type BaseRangeCalendarProps<DateType extends DateValue> = {
   /** Det valgte datoperioden. Null hvis ingen periode er valgt. */
@@ -107,12 +101,12 @@ export const RangeCalendar = <DateType extends DateValue>({
   const { locale } = useLocale();
   return (
     <I18nProvider locale={localOverride ?? locale}>
-      <RangeCalendarBase {...props} />
+      <_RangeCalendar {...props} />
     </I18nProvider>
   );
 };
 
-const RangeCalendarBase = <DateType extends DateValue>({
+const _RangeCalendar = <DateType extends DateValue>({
   value,
   onChange,
   minDate,
@@ -153,71 +147,32 @@ const RangeCalendarBase = <DateType extends DateValue>({
     [state.isValueInvalid],
   );
 
-  const monthCount =
-    state.visibleRange.end.month -
-    state.visibleRange.start.month +
-    1 +
-    (state.visibleRange.end.year - state.visibleRange.start.year) * 12;
-
-  const getMonthTitle = (startDate: CalendarDate) =>
-    new Intl.DateTimeFormat(locale, { month: 'long', year: 'numeric' }).format(
-      new Date(startDate.year, startDate.month - 1),
-    );
-
   return (
-    <div
-      {...calendarProps}
-      ref={ref}
-      className={classNames('eds-datepicker__calendar', className)}
+    <CalendarBase
+      state={state}
+      calendarProps={calendarProps}
+      prevButtonProps={prevButtonProps}
+      nextButtonProps={nextButtonProps}
+      title={title}
+      calendarRef={ref}
       style={style}
-    >
-      <div className="eds-datepicker__calendar__grids">
-        {Array.from({ length: monthCount }, (_, i) => {
-          const startDate = state.visibleRange.start.add({ months: i });
-          return (
-            <div key={i} className="eds-datepicker__calendar__month">
-              <div className="eds-datepicker__calendar__header">
-                {i === 0 && (
-                  <CalendarButton
-                    {...prevButtonProps}
-                    aria-label={ariaLabelIfNorwegian(
-                      'Forrige måned',
-                      locale,
-                      prevButtonProps,
-                    )}
-                  >
-                    <LeftArrowIcon size={20} />
-                  </CalendarButton>
-                )}
-                <h2>{monthCount > 1 ? getMonthTitle(startDate) : title}</h2>
-                {i === monthCount - 1 && (
-                  <CalendarButton
-                    {...nextButtonProps}
-                    aria-label={ariaLabelIfNorwegian(
-                      'Neste måned',
-                      locale,
-                      nextButtonProps,
-                    )}
-                  >
-                    <RightArrowIcon size={20} />
-                  </CalendarButton>
-                )}
-              </div>
-              <RangeCalendarGrid
-                {...rest}
-                state={state}
-                startDate={startDate}
-                navigationDescription={navigationDescription}
-                classNameForDate={classNameForDate}
-                ariaLabelForDate={ariaLabelForDate}
-                showWeekNumbers={showWeekNumbers}
-                weekNumberHeader={weekNumberHeader}
-                showOutsideMonth={showOutsideMonth}
-              />
-            </div>
-          );
-        })}
-      </div>
-    </div>
+      className={className}
+      navigationDescription={navigationDescription}
+      showWeekNumbers={showWeekNumbers}
+      weekNumberHeader={weekNumberHeader}
+      renderCell={(date, currentMonth, weekNumberString, ariaDescribedBy) => (
+        <RangeCalendarCell
+          key={`${date.month}.${date.day}`}
+          state={state}
+          date={date}
+          currentMonth={currentMonth}
+          aria-describedby={ariaDescribedBy}
+          weekNumberString={weekNumberString}
+          classNameForDate={classNameForDate}
+          ariaLabelForDate={ariaLabelForDate}
+          showOutsideMonth={showOutsideMonth}
+        />
+      )}
+    />
   );
 };
