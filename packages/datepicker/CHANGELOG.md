@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.8.0](https://github.com/entur/design-system/compare/@entur/datepicker@11.7.0...@entur/datepicker@11.8.0) (2026-06-29)
+
+### Bug Fixes
+
+- **datepicker/calendar:** prevent :active styling on disabled cells ([b9b481c](https://github.com/entur/design-system/commit/b9b481cf996a6512b25a450e3968aca05f146bf8))
+- **datepicker/calendar:** prevent duplicate interactive cells in multi-month view ([2d095a2](https://github.com/entur/design-system/commit/2d095a26654ae505056cb720cbffdd952ecf1400))
+
+### Features
+
+- **datepicker/calendar:** add visibleDuration prop to Calendar component ([fa7be0e](https://github.com/entur/design-system/commit/fa7be0ec542cd0cc221d819d35ae8e497c961076))
+
 # [11.7.0](https://github.com/entur/design-system/compare/@entur/datepicker@11.6.1...@entur/datepicker@11.7.0) (2026-06-22)
 
 ### Bug Fixes
