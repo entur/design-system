@@ -44,17 +44,25 @@ export const BasePageHeader: React.FC<BasePageHeaderProps> = ({
         rowGap="s"
         justify="space-between"
         align="end"
+        autoFlow={'column'}
       >
-        <Grid.Item as={Flex} colSpan="1 / 2" rowSpan="1 / 2" align="baseline">
+        <Grid.Item
+          as={Flex}
+          colStart={1}
+          colEnd={2}
+          rowStart={1}
+          rowEnd={2}
+          align="baseline"
+        >
           <Heading1 margin="none" className="page-header__heading">
             {title}
           </Heading1>
           {tag && <ArticleTag tag={tag} />}
         </Grid.Item>
-        <Grid.Item colSpan="1 / 2" rowSpan="2 / -1">
+        <Grid.Item colStart={1} colEnd={2} rowStart={2} rowEnd={-1}>
           {npmPackage && <NpmTag packageName={npmPackage} tag={tag} />}
         </Grid.Item>
-        <Grid.Item colSpan="2 / -1" rowSpan="1 / -1">
+        <Grid.Item colStart={2} colEnd={-1} rowStart={1} rowEnd={-1}>
           <Flex direction="column" align="end" gap="xs">
             {npmPackage && <PackageChangelog packageName={npmPackage} />}
             <Flex direction="row" gap="2xs" wrap="wrap" justify="end">
