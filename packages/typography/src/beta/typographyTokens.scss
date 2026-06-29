@@ -56,11 +56,13 @@
   --font-size-label-s: var(--size-7);
   --font-size-label-m: var(--size-8);
   --font-size-label-lg: var(--size-9);
+
   /* string */
   --font-family-nationale: nationale;
   --font-weight-body: 500;
   --font-weight-heading: 600;
 }
+
 [data-view-mode='compact'] {
   /* number */
   --font-line-height-body-xs: var(--size-8);
@@ -102,11 +104,13 @@
   --font-size-label-s: var(--size-7);
   --font-size-label-m: var(--size-8);
   --font-size-label-lg: var(--size-9);
+
   /* string */
   --font-family-nationale: nationale;
   --font-weight-body: 500;
   --font-weight-heading: 600;
 }
+
 [data-view-mode='display'] {
   /* number */
   --font-line-height-body-xs: var(--size-11);
@@ -148,6 +152,7 @@
   --font-size-label-s: var(--size-10);
   --font-size-label-m: var(--size-12);
   --font-size-label-lg: var(--size-14);
+
   /* string */
   --font-family-nationale: nationale;
   --font-weight-body: 500;

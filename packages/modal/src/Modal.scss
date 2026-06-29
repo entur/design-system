@@ -4,20 +4,17 @@
   // Tell Reach that we're doing the styling ourselves
   --reach-dialog: 1;
 }
+
 $modal-animation-duration: t.$timings-medium;
 
 .eds-modal {
   &__overlay {
     background: rgba(black, 0.5);
-    bottom: 0;
+    inset: 0;
     display: flex;
-    left: 0;
     overflow: hidden;
     position: fixed;
-    right: 0;
-    top: 0;
     z-index: t.$z-indexes-overlay;
-
     animation: fadeInOverlay;
     animation-duration: $modal-animation-duration;
     animation-timing-function: ease-in-out;
@@ -35,7 +32,6 @@ $modal-animation-duration: t.$timings-medium;
     max-height: 90vh;
     overflow: auto;
     z-index: t.$z-indexes-modal;
-
     animation: slideInContent;
     animation-duration: $modal-animation-duration;
     animation-timing-function: ease-in-out;
@@ -83,14 +79,17 @@ $modal-animation-duration: t.$timings-medium;
     &::-webkit-scrollbar {
       width: 16px;
     }
+
     &::-webkit-scrollbar-track {
       margin-block: t.$space-extra-small;
     }
+
     &::-webkit-scrollbar-thumb {
       background-color: lightgrey;
       border: 4px solid transparent;
       border-radius: 8px;
       background-clip: padding-box;
+
       &:hover {
         background-color: grey;
       }

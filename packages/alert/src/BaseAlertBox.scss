@@ -61,6 +61,7 @@
       }
     }
   }
+
   &--info,
   &--information {
     background-color: var(--components-alert-alertbox-information-standard-fill);
@@ -81,6 +82,7 @@
       }
     }
   }
+
   &--warning {
     background-color: var(--components-alert-alertbox-warning-standard-fill);
     border-color: var(--components-alert-alertbox-warning-standard-border);
@@ -89,6 +91,7 @@
     .eds-alert-box__icon {
       color: var(--components-alert-alertbox-warning-standard-icon);
     }
+
     .eds-contrast & {
       background-color: var(--components-alert-alertbox-warning-contrast-fill);
       border-color: var(--components-alert-alertbox-warning-contrast-border);
@@ -99,6 +102,7 @@
       }
     }
   }
+
   &--error,
   &--negative {
     background-color: var(--components-alert-alertbox-negative-standard-fill);
@@ -169,6 +173,7 @@
       margin-bottom: 0;
     }
   }
+
   // Overwrites button default styling
   & &__close-button {
     margin-top: -0.3125rem;
@@ -179,23 +184,28 @@
     // Normal mode and contrast mode
     .eds-contrast & {
       color: var(--components-button-iconbutton-standard-text);
+
       &:hover {
         background: var(--components-button-iconbutton-standard-hover);
       }
+
       &:active {
         background: var(--components-button-iconbutton-standard-active);
       }
+
       &:focus-visible {
         outline: t.$outlines-focus;
         outline-color: var(--basecolors-stroke-focus-standard);
       }
     }
   }
+
   // Overwrites tooltip default styling
   & &__tooltip {
     .eds-contrast & {
       background: var(--components-tooltip-tooltip-standard-fill);
       color: var(--components-tooltip-tooltip-standard-text);
+
       &::after {
         background: var(--components-tooltip-tooltip-standard-fill);
       }

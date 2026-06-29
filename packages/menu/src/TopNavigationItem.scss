@@ -15,17 +15,19 @@
   font-family: inherit;
   font-size: t.$font-sizes-large;
   font-weight: t.$font-weights-heading;
+
   &::after {
     content: '';
     display: block;
     bottom: t.$space-default;
     height: 0.1875rem; // 3px in rem
-    width: 0; //t.$space-extra-large;
+    width: 0; // t.$space-extra-large;
     margin: 0 auto;
     opacity: var(--show-active-line);
     background: var(--components-menu-navigationbar-standard-stroke-selected);
     transition: width ease-in-out t.$timings-medium, opacity ease-in-out t.$timings-medium;
   }
+
   .eds-contrast & {
     color: var(--components-menu-navigationbar-contrast-text-unselected);
   }
@@ -39,8 +41,10 @@
       outline-color: var(--basecolors-stroke-focus-contrast);
     }
   }
+
   &:hover {
     --show-active-line: 1;
+
     &::after {
       width: t.$space-extra-large;
     }
@@ -48,10 +52,13 @@
 
   &--active {
     color: var(--components-menu-navigationbar-standard-text-selected);
+
     --show-active-line: 1;
+
     &::after {
       width: t.$space-extra-large;
     }
+
     .eds-contrast & {
       color: var(--components-menu-navigationbar-contrast-text-selected);
     }

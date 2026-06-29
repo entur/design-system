@@ -18,22 +18,27 @@
       font-size: var(--font-size-heading-2xl);
       line-height: var(--font-line-height-heading-2xl);
     }
+
     &--xl {
       font-size: var(--font-size-heading-xl);
       line-height: var(--font-line-height-heading-xl);
     }
+
     &--lg {
       font-size: var(--font-size-heading-lg);
       line-height: var(--font-line-height-heading-lg);
     }
+
     &--m {
       font-size: var(--font-size-heading-m);
       line-height: var(--font-line-height-heading-m);
     }
+
     &--s {
       font-size: var(--font-size-heading-s);
       line-height: var(--font-line-height-heading-s);
     }
+
     &--xs {
       font-size: var(--font-size-heading-xs);
       line-height: var(--font-line-height-heading-xs);
@@ -49,6 +54,7 @@
         margin-top: var(--font-paragraph-spacing-heading-2xl);
       }
     }
+
     &--title-2 {
       font-size: var(--font-size-heading-xl);
       line-height: var(--font-line-height-heading-xl);
@@ -58,6 +64,7 @@
         margin-top: var(--font-paragraph-spacing-heading-xl);
       }
     }
+
     &--subtitle-1 {
       font-size: var(--font-size-heading-lg);
       line-height: var(--font-line-height-heading-lg);
@@ -67,6 +74,7 @@
         margin-top: var(--font-paragraph-spacing-heading-lg);
       }
     }
+
     &--subtitle-2 {
       font-size: var(--font-size-heading-m);
       line-height: var(--font-line-height-heading-m);
@@ -76,6 +84,7 @@
         margin-top: var(--font-paragraph-spacing-heading-m);
       }
     }
+
     &--section-1 {
       font-size: var(--font-size-heading-s);
       line-height: var(--font-line-height-heading-s);
@@ -85,6 +94,7 @@
         margin-top: var(--font-paragraph-spacing-heading-s);
       }
     }
+
     &--section-2 {
       font-size: var(--font-size-heading-xs);
       line-height: var(--font-line-height-heading-xs);
@@ -103,74 +113,92 @@
       margin-top: 0;
       margin-bottom: 0;
     }
+
     &--spacing-xs2 {
       margin-top: t.$space-extra-small2;
       margin-bottom: t.$space-extra-small2;
     }
+
     &--spacing-xs2-top {
       margin-top: t.$space-extra-small2;
       margin-bottom: 0;
     }
+
     &--spacing-xs2-bottom {
       margin-top: 0;
       margin-bottom: t.$space-extra-small2;
     }
+
     &--spacing-xs {
       margin-top: t.$space-extra-small;
       margin-bottom: t.$space-extra-small;
     }
+
     &--spacing-xs-top {
       margin-top: t.$space-extra-small;
       margin-bottom: 0;
     }
+
     &--spacing-xs-bottom {
       margin-top: 0;
       margin-bottom: t.$space-extra-small;
     }
+
     &--spacing-sm {
       margin-top: t.$space-small;
       margin-bottom: t.$space-small;
     }
+
     &--spacing-sm-top {
       margin-top: t.$space-small;
       margin-bottom: 0;
     }
+
     &--spacing-sm-bottom {
       margin-top: 0;
       margin-bottom: t.$space-small;
     }
+
     &--spacing-md {
       margin-top: t.$space-medium;
       margin-bottom: t.$space-medium;
     }
+
     &--spacing-md-top {
       margin-top: t.$space-medium;
       margin-bottom: 0;
     }
+
     &--spacing-md-bottom {
       margin-top: 0;
       margin-bottom: t.$space-medium;
     }
+
     &--spacing-lg {
       margin-top: t.$space-large;
       margin-bottom: t.$space-large;
     }
+
     &--spacing-lg-top {
       margin-top: t.$space-large;
       margin-bottom: 0;
     }
+
     &--spacing-lg-bottom {
       margin-top: 0;
       margin-bottom: t.$space-large;
     }
+
     &--spacing-xl {
       margin-top: t.$space-extra-large;
       margin-bottom: t.$space-extra-large;
     }
+
     &--spacing-xl-top {
       margin-top: t.$space-extra-large;
       margin-bottom: 0;
     }
+
     &--spacing-xl-bottom {
       margin-top: 0;
       margin-bottom: t.$space-extra-large;

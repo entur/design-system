@@ -10,6 +10,7 @@
   &__item {
     display: inline-block;
     color: var(--components-menu-breadcrumb-standard-text);
+
     :where(.eds-contrast) & {
       color: var(--components-menu-breadcrumb-contrast-text);
     }
@@ -51,6 +52,7 @@
           from {
             background-size: 0% t.$border-widths-default;
           }
+
           to {
             background-size: 100% t.$border-widths-default;
           }

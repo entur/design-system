@@ -1,5 +1,5 @@
 @use '@entur/tokens/dist/styles.scss' as t;
-@use './componentVariables.scss';
+@use './componentVariables';
 @use '@entur/tokens/dist/base.scss' as *;
 
 :root {
@@ -16,6 +16,7 @@
   padding-top: t.$space-extra-small2;
   margin-top: -(t.$space-extra-small2);
   z-index: t.$z-indexes-default;
+
   &::after {
     content: '';
     position: absolute;
@@ -27,6 +28,7 @@
     height: t.$border-widths-default;
     width: inherit;
     z-index: t.$z-indexes-behind;
+
     .eds-contrast & {
       background-color: var(--components-tab-contrast-border);
     }
@@ -52,17 +54,21 @@
   min-width: 8rem;
   padding: t.$space-extra-small t.$space-default;
   position: relative;
+
   .eds-tab-list--width-fluid & {
     flex-grow: 1;
     min-width: 0;
   }
+
   .eds-contrast & {
     background-color: var(--components-tab-contrast-fill-unselected);
     color: var(--components-tab-contrast-text);
   }
+
   &:hover {
     background-color: var(--components-tab-standard-fill-hover);
     color: var(--components-menu-tableofcontent-standard-text-selected);
+
     .eds-contrast & {
       background-color: var(--components-tab-contrast-fill-hover);
       color: var(--components-tab-contrast-text);
@@ -81,9 +87,9 @@
     left: -(t.$border-widths-default);
     right: -(t.$border-widths-default);
     background-color: var(--components-tab-standard-border);
-
     display: block;
     height: t.$border-widths-default;
+
     .eds-contrast & {
       background-color: var(--components-tab-contrast-border);
     }
@@ -105,6 +111,7 @@
       background-color: var(--components-tab-standard-fill-selected);
       left: 0;
       right: 0;
+
       .eds-contrast & {
         background-color: var(--components-tab-contrast-fill-selected);
       }
@@ -123,6 +130,7 @@
       right: 0;
     }
   }
+
   &--remove-active-line[aria-selected='true']::before {
     background: transparent;
   }
@@ -132,6 +140,7 @@
     border-color: none;
     color: var(--components-tab-standard-text-disabled);
     cursor: not-allowed;
+
     .eds-contrast & {
       background: var(--components-tab-contrast-fill-disabled);
       border-color: none;

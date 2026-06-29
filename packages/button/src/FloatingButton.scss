@@ -11,6 +11,7 @@ $small-padding: calc((36rem - 14rem) / 2 / 16);
   background: var(--components-button-floating-standard-default);
   border: 0;
   border-radius: calc($default-height / 2);
+
   // TODO box shadow is not available as a variable yet, needs to be implemented
   box-shadow: t.$shadows-box-shadow;
   color: var(--components-button-floating-standard-text);
@@ -30,9 +31,11 @@ $small-padding: calc((36rem - 14rem) / 2 / 16);
   &--extended {
     padding: 0 $default-padding;
   }
+
   &:hover {
     background-color: var(--components-button-floating-standard-hover);
   }
+
   &:active {
     background-color: var(--components-button-floating-standard-active);
   }
@@ -41,6 +44,7 @@ $small-padding: calc((36rem - 14rem) / 2 / 16);
     outline: t.$outlines-focus;
     outline-color: var(--basecolors-stroke-focus-standard);
     outline-offset: t.$outline-offsets-focus;
+
     .eds-contrast & {
       outline-color: var(--basecolors-stroke-focus-contrast);
     }
@@ -49,11 +53,14 @@ $small-padding: calc((36rem - 14rem) / 2 / 16);
   .eds-contrast & {
     background: var(--components-button-floating-contrast-default);
     color: var(--components-button-floating-contrast-text);
+
     // TODO box shadow is not available as a variable yet, needs to be implemented
     box-shadow: t.$shadows-box-shadow-contrast;
+
     &:hover {
       background-color: var(--components-button-floating-contrast-hover);
     }
+
     &:active {
       background-color: var(--components-button-floating-contrast-active);
     }
@@ -66,6 +73,7 @@ $small-padding: calc((36rem - 14rem) / 2 / 16);
     min-width: $small-height;
     min-height: $small-height;
     flex: 0 1 auto;
+
     &.eds-floating-button--extended {
       padding: 0 $small-padding;
     }

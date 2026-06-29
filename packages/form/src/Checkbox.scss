@@ -11,6 +11,7 @@
     user-select: none;
     width: fit-content;
     margin: t.$space-extra-small 0;
+
     &--reduced-click-area {
       height: fit-content;
     }
@@ -24,6 +25,7 @@
       &:checked + .eds-checkbox__icon,
       &:indeterminate + .eds-checkbox__icon {
         background-color: var(--components-form-checkbox-standard-fill-selected);
+
         .eds-checkbox-icon {
           visibility: visible;
 
@@ -31,6 +33,7 @@
             stroke: var(--components-form-checkbox-standard-icon);
             animation: stroke ease-in-out t.$timings-medium t.$timings-fast forwards;
           }
+
           rect {
             fill: var(--components-form-checkbox-standard-icon);
           }
@@ -38,9 +41,11 @@
 
         .eds-contrast {
           color: var(--components-form-checkbox-contrast-fill-selected);
+
           path {
             stroke: var(--components-form-checkbox-contrast-icon);
           }
+
           rect {
             fill: var(--components-form-checkbox-contrast-icon);
           }
@@ -61,13 +66,16 @@
             path {
               stroke: var(--components-form-checkbox-standard-icon-readonly);
             }
+
             rect {
               fill: var(--components-form-checkbox-standard-icon-readonly);
             }
+
             .eds-contrast & {
               path {
                 stroke: var(--components-form-checkbox-contrast-icon-readonly);
               }
+
               rect {
                 fill: var(--components-form-checkbox-contrast-icon-readonly);
               }
@@ -99,6 +107,7 @@
       }
     }
   }
+
   &:active:not(&--readonly, &--disabled) {
     input:checked + .eds-checkbox__icon,
     input:indeterminate + .eds-checkbox__icon {
@@ -109,16 +118,19 @@
       }
     }
   }
+
   &:has(:focus-visible) {
     .eds-checkbox__icon {
       outline: t.$outlines-focus;
       outline-color: var(--basecolors-stroke-focus-standard);
       outline-offset: t.$outline-offsets-focus;
+
       .eds-contrast & {
         outline-color: var(--basecolors-stroke-focus-contrast);
       }
     }
   }
+
   &--disabled {
     cursor: not-allowed;
 
@@ -129,13 +141,16 @@
     .eds-checkbox__label {
       opacity: 0.5;
     }
+
     .eds-checkbox__icon {
       border-color: var(--components-form-checkbox-standard-icon-disabled);
+
       .eds-contrast & {
         border-color: var(--components-form-checkbox-contrast-icon-disabled);
       }
     }
   }
+
   &--readonly {
     cursor: default;
     pointer-events: auto;
@@ -154,13 +169,13 @@
       }
     }
   }
+
   &__icon {
     box-sizing: border-box;
     display: inline-flex;
     justify-content: center;
     align-items: center;
     position: relative;
-
     margin-right: t.$space-default;
     height: 1.25rem;
     width: 1.25rem;
@@ -168,16 +183,20 @@
     border-radius: calc(t.$border-radiuses-medium / 2);
     background-color: transparent;
     transition: border-color t.$timings-fast ease-in-out, background-color t.$timings-fast ease-in-out;
+
     &--reduced-click-area {
       margin-right: 0;
     }
+
     .eds-contrast & {
       border-color: var(--components-form-checkbox-contrast-border);
     }
+
     .eds-checkbox-icon {
       height: t.$space-default;
       width: t.$space-default;
       visibility: hidden;
+
       path {
         transform-origin: 50% 50%;
         stroke-dasharray: 48; // This and offset is approximate to the "length" of the path
@@ -185,6 +204,7 @@
         stroke-width: 0.375rem;
       }
     }
+
     &--no-animation {
       .eds-checkbox-icon {
         path {
@@ -193,6 +213,7 @@
           stroke-dasharray: 48;
           stroke-dashoffset: 0;
         }
+
         rect {
           transition: none !important;
         }

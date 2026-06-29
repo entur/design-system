@@ -3,6 +3,7 @@
 @mixin panel-surface($border, $background, $contrast-border, $contrast-background, $text: null, $contrast-text: null) {
   border-color: $border;
   background: $background;
+
   @if $text {
     color: $text;
   }
@@ -10,6 +11,7 @@
   .eds-contrast & {
     border-color: $contrast-border;
     background: $contrast-background;
+
     @if $contrast-text {
       color: $contrast-text;
     }
@@ -23,6 +25,7 @@
       outline-color: var(--basecolors-stroke-focus-standard);
       outline-offset: t.$outline-offsets-focus;
     }
+
     .eds-contrast & {
       .eds-input-panel__container {
         outline-color: var(--basecolors-stroke-focus-contrast);
@@ -100,6 +103,7 @@
     .eds-input-panel__container {
       border-style: dashed;
       cursor: default;
+
       @include panel-surface(
         var(--components-form-checkbox-standard-border-readonly),
         var(--components-form-basepanel-standard-fill-default),
@@ -120,6 +124,7 @@
 
     :where(input:checked) + .eds-input-panel__container {
       border-style: dashed;
+
       @include panel-surface(
         var(--components-form-checkbox-standard-border-readonly),
         var(--components-form-basepanel-standard-fill-default),
@@ -133,6 +138,7 @@
   &--disabled {
     .eds-input-panel__container {
       cursor: not-allowed;
+
       @include panel-surface(
         var(--components-form-basepanel-standard-border-disabled),
         var(--components-form-basepanel-standard-fill-disabled),
@@ -166,6 +172,7 @@
       font-size: t.$font-sizes-large;
       font-weight: t.$font-weights-body;
     }
+
     &.eds-input-panel__container {
       padding-bottom: t.$space-medium;
       min-height: 3.75rem;
@@ -178,6 +185,7 @@
       font-weight: t.$font-weights-body;
       line-height: t.$line-heights-extra-large3;
     }
+
     &.eds-input-panel__container {
       min-height: 6rem;
     }

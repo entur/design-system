@@ -10,6 +10,7 @@
     &--has-tooltip {
       padding-right: t.$space-extra-large;
     }
+
     &:has(.eds-form-control-wrapper--disabled):not(:has(.eds-form-control-wrapper--readonly)) {
       cursor: not-allowed;
     }
@@ -40,6 +41,7 @@
     &:focus-within:not(.eds-form-control-wrapper--readonly) {
       border-color: var(--components-form-baseform-standard-border-interactive);
       outline: 2px solid var(--components-form-baseform-standard-border-interactive);
+
       .eds-contrast & {
         border-color: var(--components-form-baseform-contrast-border-interactive);
         outline-color: var(--components-form-baseform-contrast-border-interactive);
@@ -56,6 +58,7 @@
       background-color: var(--components-form-baseform-standard-fill-disabled);
       pointer-events: none;
       color: var(--components-form-baseform-standard-text-disabled);
+
       .eds-input-group__label {
         color: var(--components-form-baseform-standard-text-disabled);
       }
@@ -64,6 +67,7 @@
         border-color: transparent;
         background-color: var(--components-form-baseform-contrast-fill-disabled);
         color: var(--components-form-baseform-contrast-text-disabled);
+
         .eds-input-group__label {
           color: var(--components-form-baseform-contrast-text-disabled);
         }
@@ -77,12 +81,14 @@
       &:focus-within {
         border-color: transparent;
         outline: none;
+
         .eds-contrast & {
           border-color: transparent;
           outline: none;
         }
       }
     }
+
     &--readonly {
       border-color: transparent;
       cursor: default;
@@ -92,13 +98,16 @@
       &:focus-visible {
         outline: none;
       }
+
       .eds-contrast & {
         background: var(--components-form-baseform-contrast-fill-readonly);
         border: var(--components-form-baseform-contrast-fill-readonly);
         color: var(--components-form-baseform-contrast-text-description);
+
         .eds-form-control {
           color: var(--components-form-baseform-contrast-text-description);
         }
+
         .eds-input-group__label {
           color: var(--components-form-baseform-contrast-text-description);
         }
@@ -118,6 +127,7 @@
         line-height: t.$line-heights-small;
       }
     }
+
     &--size-large {
       min-height: 4rem;
 
@@ -131,6 +141,7 @@
     // Validation modes changes the border colors
     &--success {
       border-color: var(--components-form-baseform-standard-border-success);
+
       &:focus-within {
         border-color: var(--components-form-baseform-standard-border-success);
         outline-color: var(--components-form-baseform-standard-border-success);
@@ -138,6 +149,7 @@
 
       .eds-contrast & {
         border-color: var(--components-form-baseform-standard-border-success);
+
         &:focus-within {
           border-color: var(--components-form-baseform-contrast-border-success);
           outline-color: var(--components-form-baseform-contrast-border-success);
@@ -148,6 +160,7 @@
     &--error,
     &--negative {
       border-color: var(--components-form-baseform-standard-border-negative);
+
       &:focus-within {
         border-color: var(--components-form-baseform-standard-border-negative);
         outline-color: var(--components-form-baseform-standard-border-negative);
@@ -155,6 +168,7 @@
 
       .eds-contrast & {
         border-color: var(--components-form-baseform-contrast-border-negative);
+
         &:focus-within {
           border-color: var(--components-form-baseform-contrast-border-negative);
           outline-color: var(--components-form-baseform-contrast-border-negative);
@@ -193,8 +207,10 @@
     opacity: 0;
     transition: opacity t.$timings-medium ease-in-out;
   }
+
   &:focus {
     outline: none;
+
     &::placeholder {
       opacity: 1;
     }
@@ -204,6 +220,7 @@
   &__append {
     position: relative;
     line-height: inherit;
+
     &--tooltip {
       all: unset;
       position: absolute;

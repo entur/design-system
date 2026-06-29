@@ -5,20 +5,25 @@
   margin: 0.2rem 0;
   height: 1rem;
   width: 100%;
+
   &-circle {
     border-radius: 50%;
     width: t.$space-default;
     height: t.$space-default;
   }
+
   &-rectangle {
     height: t.$space-default;
   }
+
   &--animate {
     --background-color: var(--components-loader-skeleton-standard-fill);
     --shimmer-highlight-color: var(--components-loader-skeleton-standard-highlight);
+
     animation: shimmer 2s infinite linear;
     background: linear-gradient(to right, var(--background-color) 4%, var(--shimmer-highlight-color) 25%, var(--background-color) 36%);
     background-size: 1000px 100%;
+
     .eds-contrast & {
       --background-color: var(--components-loader-skeleton-contrast-fill);
       --shimmer-highlight-color: var(--components-loader-skeleton-contrast-highlight);
@@ -30,6 +35,7 @@
   0% {
     background-position: -1000px 0;
   }
+
   100% {
     background-position: 1000px 0;
   }

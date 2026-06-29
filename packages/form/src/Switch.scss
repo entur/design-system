@@ -5,16 +5,19 @@
   user-select: none;
   padding: 0.5rem 0;
   width: fit-content;
+
   input {
     opacity: 0;
     pointer-events: none;
     position: absolute;
   }
+
   &--right {
     display: flex;
     flex-direction: row;
     align-items: center;
   }
+
   &--bottom {
     display: flex;
     flex-direction: column;
@@ -35,15 +38,17 @@
     top: 0.125rem;
     left: 0.125rem;
     position: relative;
+
     .eds-switch__switch--large & {
       height: 1.75rem;
       width: 1.75rem;
     }
 
     .eds-contrast & {
-      box-shadow: 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.5);
+      box-shadow: 0 0.0625rem 0.1875rem rgb(0 0 0 / 50%);
     }
   }
+
   &__switch {
     position: relative;
     background-color: var(--components-form-switch-standard-fill-false);
@@ -53,7 +58,7 @@
     height: 1.5rem;
     width: 3rem;
     border-radius: 1.5rem;
-    box-shadow: inset 0px 2px 2px -1px rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 2px 2px -1px rgb(0 0 0 / 10%);
 
     .eds-contrast & {
       background-color: var(--components-form-switch-contrast-fill-false);
@@ -75,13 +80,16 @@
 
     :checked + & {
       background-color: var(--eds-switch-color);
+
       .eds-switch__circle {
         left: 1.625rem;
+
         svg g,
         path {
           fill: var(--eds-switch-color);
         }
       }
+
       .eds-contrast & {
         background-color: var(--eds-switch-contrast-color);
       }
@@ -101,11 +109,13 @@
       width: 3.75rem;
       height: 2rem;
       border-radius: 3.75rem;
+
       :checked + & {
         .eds-switch__circle {
-          left: 1.875rem; //30px
+          left: 1.875rem; // 30px
         }
       }
+
       & svg {
         position: relative;
         right: 0.05rem;
@@ -118,14 +128,17 @@
       &--right {
         font-size: t.$font-sizes-large;
       }
+
       &--bottom {
         font-size: t.$font-sizes-medium;
       }
     }
+
     &--medium {
       &--right {
         font-size: t.$font-sizes-medium;
       }
+
       &--bottom {
         font-size: t.$font-sizes-small;
       }

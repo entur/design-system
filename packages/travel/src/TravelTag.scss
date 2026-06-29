@@ -1,7 +1,7 @@
 @use '@entur/tokens/dist/styles.scss' as t;
 
 .eds-travel-tag {
-  --background-color: var(--components-travel-traveltag-standard-fill-walk); //Default
+  --background-color: var(--components-travel-traveltag-standard-fill-walk); // Default
   --text-color: var(--components-travel-traveltag-standard-text-default);
 
   display: inline-flex;
@@ -13,20 +13,21 @@
   font-size: t.$font-sizes-medium;
   line-height: t.$space-large;
   border-radius: t.$border-radiuses-medium;
-
   background-color: var(--background-color);
   color: var(--text-color);
 
   :where(.eds-contrast) & {
-    --background-color: var(--components-travel-traveltag-contrast-fill-walk); //Default
+    --background-color: var(--components-travel-traveltag-contrast-fill-walk); // Default
     --text-color: var(--components-travel-traveltag-contrast-text-default);
   }
 
   &--alert {
     padding-right: t.$space-small;
+
     &--error {
       background-color: var(--background-color);
       color: var(--text-color);
+
       :where(.eds-contrast) &:where(.eds-travel-tag) {
         background-color: var(--background-color);
         color: var(--text-color);
@@ -61,28 +62,35 @@
     top: calc((t.$space-extra-large - (t.$space-default + t.$border-widths-medium)) / 2);
     right: calc(-1 * (t.$space-default - t.$border-widths-medium) / 2 - t.$space-extra-small2);
     background: var(--components-form-feedbacktext-information-standard-stroke);
+
     :where(.eds-contrast) & {
       background: var(--components-form-feedbacktext-information-contrast-stroke);
     }
 
     &-exclamation-icon {
       color: var(--components-form-feedbacktext-warning-standard-icon-fill);
+
       :where(.svg-validation-circlefilled-exclamation) {
         fill: var(--components-form-feedbacktext-warning-standard-icon-symbol);
       }
+
       :where(.eds-contrast) & {
         color: var(--components-form-feedbacktext-warning-contrast-icon-fill);
       }
     }
+
     &-error-icon {
       font-size: t.$font-sizes-medium;
       color: var(--components-form-feedbacktext-negative-standard-icon-fill);
+
       :where(.eds-contrast) & {
         color: var(--components-form-feedbacktext-negative-contrast-icon-fill);
       }
     }
+
     &-info-icon {
       color: var(--components-form-feedbacktext-information-standard-icon-fill);
+
       :where(.eds-contrast) & {
         color: var(--components-form-feedbacktext-information-contrast-icon-fill);
       }
@@ -91,10 +99,12 @@
 
   &__wrapper {
     display: inline-flex;
+
     &--label-position-right {
       flex-direction: row;
       align-items: center;
     }
+
     &--label-position-bottom {
       flex-direction: column;
       align-items: flex-start;
@@ -104,15 +114,19 @@
   &__label {
     color: var(--components-travel-traveltag-standard-text-label);
     font-size: t.$font-sizes-large;
+
     :where(.eds-contrast) & {
       color: var(--components-travel-traveltag-contrast-text-label);
     }
+
     &--right {
       margin-left: t.$space-extra-small;
+
       &--with-alert {
         margin-left: t.$space-default;
       }
     }
+
     &--bottom {
       margin-top: calc(t.$space-extra-small2 / 2);
       font-size: t.$font-sizes-medium;
@@ -126,12 +140,10 @@
     white-space: nowrap;
     min-width: t.$space-large;
     height: calc(100% + 2 * t.$space-extra-small2);
-
     margin-block: -1 * t.$space-extra-small2;
     margin-left: t.$space-extra-small;
     margin-right: -1 * t.$space-small;
     padding-inline: t.$space-extra-small;
-
     background-color: var(--components-travel-traveltag-standard-fill-details);
     color: var(--components-travel-traveltag-standard-text-details);
     border: t.$border-widths-small solid var(--components-travel-traveltag-standard-stroke-details);
@@ -171,10 +183,12 @@
     height: t.$space-large;
     width: t.$space-large;
     font-size: t.$font-sizes-large;
+
     :where(.eds-icon) {
       color: var(--text-color);
       font-size: t.$font-sizes-medium;
     }
+
     &:has(:where(:focus-visible)) {
       outline-offset: t.$outline-offsets-focus;
       outline: t.$outlines-focus-contrast;

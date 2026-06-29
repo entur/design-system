@@ -1,6 +1,7 @@
 // Used to register the styles as loaded!
-@use './componentVariables.scss';
+@use './componentVariables';
 @use '@entur/tokens/dist/base.scss' as *;
+
 :root {
   --eds-loader: 1;
 }

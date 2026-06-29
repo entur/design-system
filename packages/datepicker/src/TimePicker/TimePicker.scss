@@ -14,11 +14,13 @@
     &__prepend {
       margin-right: 0.25rem;
     }
+
     &__append {
       margin-left: 0.25rem;
     }
+
     &-wrapper {
-      padding: 0rem;
+      padding: 0;
       display: inline-flex;
     }
   }
@@ -39,11 +41,13 @@
       &:hover {
         background-color: var(--components-button-iconbutton-standard-hover);
       }
+
       &:focus-visible {
         outline: t.$outlines-focus;
         outline-color: var(--basecolors-stroke-focus-standard);
         outline-offset: t.$outline-offsets-focus;
       }
+
       &:active {
         background-color: var(--components-button-iconbutton-standard-active);
       }

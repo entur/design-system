@@ -11,6 +11,7 @@
   align-items: center;
   font-size: t.$font-sizes-large;
   padding: t.$space-extra-small;
+
   .eds-contrast & {
     color: var(--components-button-iconbutton-contrast-text);
 
@@ -18,33 +19,41 @@
       background-color: var(--components-button-iconbutton-contrast-icon);
     }
   }
+
   &--size-small {
     height: 1.5rem;
     width: 1.5rem;
     padding: 0;
   }
+
   &:hover {
     background-color: var(--components-button-iconbutton-standard-hover);
+
     .eds-contrast & {
       background-color: var(--components-button-iconbutton-contrast-hover);
     }
   }
+
   &:active {
     background: var(--components-button-iconbutton-standard-active);
     color: var(--components-button-iconbutton-standard-text-active);
+
     .eds-contrast & {
       background: var(--components-button-iconbutton-contrast-active);
       color: var(--components-button-iconbutton-contrast-text-active);
     }
   }
+
   &:focus-visible {
     outline: t.$outlines-focus;
     outline-color: var(--basecolors-stroke-focus-standard);
     outline-offset: t.$outline-offsets-focus;
+
     .eds-contrast & {
       outline-color: var(--basecolors-stroke-focus-contrast);
     }
   }
+
   &--disabled {
     opacity: 0.5;
     pointer-events: none;

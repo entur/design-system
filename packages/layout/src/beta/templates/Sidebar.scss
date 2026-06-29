@@ -36,12 +36,12 @@
     min-height: 0;
     overflow-y: auto;
     scrollbar-width: thin;
-    scrollbar-color: rgba(255 255 255 / 0.3) transparent;
+    scrollbar-color: rgba(255 255 255 / 30%) transparent;
     margin-left: calc(-1 * var(--eds-sidebar-padding, #{v.$default-sidebar-padding}));
     margin-right: calc(-1 * var(--eds-sidebar-padding, #{v.$default-sidebar-padding}));
 
     .eds-layout-template-sidebar--plain & {
-      scrollbar-color: rgba(0 0 0 / 0.2) transparent;
+      scrollbar-color: rgba(0 0 0 / 20%) transparent;
     }
   }
 

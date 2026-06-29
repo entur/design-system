@@ -1,6 +1,7 @@
-@use './componentVariables.scss';
+@use './componentVariables';
 @use '@entur/tokens/dist/base.scss' as *;
 @use '@entur/tokens/dist/transport.css';
+
 :root {
   --eds-travel: 1;
 }

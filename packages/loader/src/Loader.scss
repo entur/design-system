@@ -27,9 +27,11 @@
   max-width: 20rem;
   margin: 0 auto;
   color: var(--components-loader-loader-standard-text);
+
   .eds-loader__label {
     margin-bottom: t.$space-extra-small;
   }
+
   .eds-loader__percentage {
     float: right;
     margin-top: t.$space-extra-small;
@@ -42,6 +44,7 @@
 
 .eds-loader__bar {
   border: t.$border-widths-small solid var(--components-loader-loader-standard-border);
+
   &::after {
     background: var(--components-loader-loader-standard-progressbar);
     content: '';

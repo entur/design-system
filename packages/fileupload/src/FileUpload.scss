@@ -5,8 +5,10 @@
     display: inline-block;
     min-width: 13.75rem;
   }
+
   &__input {
     width: 100%;
+
     &:focus-visible {
       outline: t.$outlines-focus;
       outline-color: var(--basecolors-stroke-focus-standard);
@@ -17,6 +19,7 @@
       }
     }
   }
+
   &__dropzone {
     border: t.$border-widths-medium var(--components-loader-fileupload-standard-stroke-default) dashed;
     display: inline-block;
@@ -27,24 +30,30 @@
     padding: t.$space-extra-small;
     text-align: center;
     width: 100%;
+
     .eds-contrast & {
       border-color: var(--components-loader-fileupload-contrast-stroke-default);
       color: var(--components-loader-fileupload-contrast-text);
     }
+
     &--success {
       border-color: var(--components-loader-fileupload-standard-stroke-success);
       border-style: solid;
+
       .eds-contrast & {
         border-color: var(--components-loader-fileupload-contrast-stroke-success);
       }
     }
+
     &--error {
       border-color: var(--components-loader-fileupload-standard-stroke-negative);
       border-style: solid;
+
       .eds-contrast & {
         border-color: var(--components-loader-fileupload-contrast-stroke-negative);
       }
     }
+
     &--reject {
       color: var(--components-loader-fileupload-standard-text-disabled);
       border-color: var(--components-loader-fileupload-standard-stroke-disabled);
@@ -56,26 +65,32 @@
       }
     }
   }
+
   &__file-list {
     width: 100%;
   }
+
   &__file-name {
     display: grid;
     grid-template-columns: auto 1fr auto;
     align-items: center;
     font-size: t.$font-sizes-medium;
+
     > .eds-file-upload__file-name-icon {
       align-self: flex-start;
       color: var(--components-loader-fileupload-standard-icon);
       margin: t.$space-extra-small 0;
       margin-right: t.$space-extra-small2;
+
       .eds-contrast & {
         color: var(--components-loader-fileupload-contrast-icon);
       }
     }
+
     &-path {
       word-break: break-word;
     }
+
     .eds-icon-button {
       align-self: flex-start;
       margin-left: t.$space-small;

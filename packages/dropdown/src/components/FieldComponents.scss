@@ -12,6 +12,7 @@
         border-color: var(--components-chip-standard-border);
         background-color: var(--components-chip-standard-hover);
       }
+
       &:active {
         background-color: var(--components-chip-standard-active);
         border-color: transparent;
@@ -23,6 +24,7 @@
         &:hover {
           background-color: var(--components-chip-standard-hover);
         }
+
         &:focus-visible {
           outline-color: var(--basecolors-stroke-focus-standard);
         }
@@ -32,6 +34,7 @@
     &--readonly,
     &--disabled {
       padding-right: 0.5rem;
+
       .eds-tag-chip__close-button {
         display: none;
       }
@@ -39,6 +42,7 @@
 
     &--readonly {
       cursor: text;
+
       .eds-contrast & {
         background-color: var(--components-form-baseform-standard-fill-readonly);
         border-color: var(--components-chip-contrast-border);
@@ -49,6 +53,7 @@
     &--disabled {
       cursor: not-allowed;
       border: 1px dashed var(--components-chip-standard-border-disabled);
+
       .eds-contrast & {
         background-color: var(--components-form-baseform-standard-fill-disabled);
         border: 1px dashed var(--components-chip-contrast-border-disabled);
@@ -71,11 +76,13 @@
       &:hover {
         background-color: var(--components-button-iconbutton-standard-hover);
       }
+
       &:focus-visible {
         outline: t.$outlines-focus;
         outline-color: var(--basecolors-stroke-focus-standard);
         outline-offset: t.$outline-offsets-focus;
       }
+
       &:active {
         background-color: var(--components-button-iconbutton-standard-active);
       }
@@ -121,8 +128,10 @@
         height: 100%;
         width: 1.5rem;
         margin-left: 0.25rem;
+
         .eds-loading-dots__dot {
           background-color: var(--components-loader-loader-standard-text);
+
           .eds-contrast & {
             background-color: var(--components-loader-loader-standard-text);
           }
@@ -133,6 +142,7 @@
         &:hover {
           background-color: var(--components-button-iconbutton-standard-hover);
         }
+
         &:focus-visible {
           outline-color: var(--basecolors-stroke-focus-standard);
         }

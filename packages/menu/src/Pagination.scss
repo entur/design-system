@@ -78,12 +78,14 @@
         color: var(--components-menu-pagination-standard-text-selected);
         opacity: 1;
         pointer-events: none;
+
         .eds-contrast & {
           background: var(--components-menu-pagination-contrast-active);
           border-color: var(--components-menu-pagination-contrast-border-selected);
           color: var(--components-menu-pagination-contrast-text-selected);
         }
       }
+
       &--disabled {
         opacity: 0.5;
         pointer-events: none;
@@ -98,10 +100,12 @@
           border-color: var(--components-menu-pagination-contrast-border-unselected);
         }
       }
+
       &:focus-visible {
         outline: t.$outlines-focus;
         outline-color: var(--basecolors-stroke-focus-standard);
         outline-offset: t.$outline-offsets-focus;
+
         .eds-contrast & {
           outline-color: var(--basecolors-stroke-focus-contrast);
         }
@@ -118,6 +122,7 @@
         user-select: none;
         width: t.$space-extra-large;
         margin: 0 2px;
+
         .eds-contrast & {
           color: var(--components-menu-pagination-contrast-icon);
         }
@@ -128,12 +133,14 @@
       &__wrapper {
         white-space: nowrap;
       }
+
       &__label {
         border-left: t.$border-widths-small solid var(--components-menu-pagination-standard-border-unselected);
         color: var(--components-menu-pagination-standard-text-subdued);
         font-size: t.$font-sizes-medium;
         margin-left: t.$space-extra-small;
         padding: 0 t.$space-medium;
+
         .eds-contrast & {
           border-color: var(--components-menu-pagination-contrast-border-unselected);
           color: var(--components-menu-pagination-contrast-text-subdued);
@@ -157,6 +164,7 @@
           border-color: var(--components-menu-pagination-contrast-border-unselected);
           color: var(--components-menu-pagination-contrast-text-unselected);
         }
+
         // Removes those pesky increment and decrement buttons on input[type=number]
         &::-webkit-inner-spin-button,
         &::-webkit-outer-spin-button {
@@ -168,6 +176,7 @@
           outline: t.$outlines-focus;
           outline-color: var(--basecolors-stroke-focus-standard);
           outline-offset: t.$outline-offsets-focus;
+
           .eds-contrast & {
             outline-color: var(--basecolors-stroke-focus-contrast);
           }

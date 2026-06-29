@@ -1,8 +1,9 @@
 @use '@entur/tokens/dist/styles.scss' as t;
-@use './index.scss';
+@use './index';
 
 .eds-action-chip {
   cursor: pointer;
+
   &:focus-visible {
     outline: t.$outlines-focus;
     outline-color: var(--basecolors-stroke-focus-standard);
@@ -12,22 +13,27 @@
       outline-color: var(--basecolors-stroke-focus-contrast);
     }
   }
+
   &:hover {
     border-color: var(--components-chip-standard-border);
     background-color: var(--components-chip-standard-hover);
+
     .eds-contrast & {
       border-color: transparent;
       background-color: var(--components-chip-contrast-hover);
     }
   }
+
   &:active {
     background-color: var(--components-chip-standard-active);
     border-color: transparent;
+
     .eds-contrast & {
       background-color: var(--components-chip-contrast-active);
       color: var(--components-chip-contrast-text-selected);
     }
   }
+
   &--disabled {
     opacity: 0.5;
     pointer-events: none;

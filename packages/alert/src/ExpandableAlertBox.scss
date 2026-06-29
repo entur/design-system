@@ -5,18 +5,23 @@
   .eds-alert-box__content {
     width: 100%;
   }
+
   &.eds-alert-box--banner .eds-alert-box__icon {
     margin-top: 0.0625rem; // 2px
+
     @include breakpoint.for-desktop {
       margin-top: -0.375rem; // 6px
     }
   }
+
   &.eds-alert-box--small .eds-alert-box__icon {
     margin-top: 0.125rem; // 2px
+
     @include breakpoint.for-desktop {
       margin-top: 0.125rem; // 2px
     }
   }
+
   &__title {
     display: flex;
     justify-content: space-between;
@@ -33,11 +38,13 @@
     line-height: t.$line-heights-extra-large;
     padding: 0 t.$space-extra-small2;
     flex-shrink: 0;
+
     &:focus-visible {
       outline: t.$outlines-focus;
       outline-color: var(--basecolors-stroke-focus-standard);
       outline-offset: t.$outline-offsets-focus;
     }
+
     .eds-icon {
       font-size: t.$font-sizes-large;
       padding-left: t.$space-extra-small2;

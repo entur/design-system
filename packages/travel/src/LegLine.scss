@@ -1,8 +1,8 @@
 .eds-leg-line {
   flex-grow: 1;
-
   mask-image: url('./pattern/line.svg');
   mask-position: center;
+
   &--dotted {
     mask-image: url('./pattern/dotted.svg');
   }

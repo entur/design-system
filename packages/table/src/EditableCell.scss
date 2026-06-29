@@ -2,9 +2,11 @@
 
 .eds-editable-cell {
   padding: t.$space-extra-small2 t.$space-small;
+
   .eds-table--middle & {
     padding: calc(t.$space-extra-small / 2) calc(t.$space-default / 2);
   }
+
   .eds-table--small & {
     padding: 0.125rem t.$space-extra-small;
   }
@@ -12,12 +14,14 @@
   // input-sizes
   .eds-form-control-wrapper:not(.eds-datepicker__datefield) {
     min-height: 0;
+
     .eds-form-control {
       padding: t.$space-small;
 
       .eds-table--middle & {
         padding: t.$space-extra-small2 calc(#{t.$space-extra-small} - #{t.$border-widths-small});
       }
+
       .eds-table--small & {
         padding: calc(#{t.$space-extra-small2} - 0.125rem) calc(#{t.$space-extra-small} - #{t.$border-widths-small});
       }

@@ -18,15 +18,14 @@
 
   &__preformatted-text {
     margin: 0;
-
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     transition: border-color t.$timings-fast;
 
     &:hover {
       border-color: var(--components-alert-copyabletext-standard-border-interactive);
+
       .eds-contrast & {
         border-color: var(--components-alert-copyabletext-contrast-border-interactive);
       }
@@ -49,6 +48,7 @@
     &,
     .eds-contrast & {
       color: var(--components-alert-copyabletext-standard-text);
+
       &:hover {
         background: var(--components-button-iconbutton-standard-hover);
       }
@@ -56,6 +56,7 @@
       &:active {
         background: var(--components-button-iconbutton-standard-active);
       }
+
       &:focus-visible {
         outline: t.$outlines-focus;
         outline-color: var(--basecolors-stroke-focus-standard);

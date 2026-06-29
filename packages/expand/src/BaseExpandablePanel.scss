@@ -3,9 +3,11 @@
 .eds-expandable-panel {
   width: 100%;
   position: relative;
+
   & + & {
     margin-top: t.$border-widths-default;
   }
+
   &:focus,
   &:focus-within {
     z-index: 2;
@@ -39,10 +41,12 @@
 
     &:hover {
       background: var(--components-expand-expandablepanel-standard-fill-hover);
+
       .eds-contrast & {
         background: var(--components-expand-expandablepanel-contrast-fill-hover);
       }
     }
+
     &:focus-visible {
       outline: t.$outlines-focus;
       outline-color: var(--basecolors-stroke-focus-standard);
@@ -53,6 +57,7 @@
       }
     }
   }
+
   &__icon-container {
     display: flex;
     align-items: center;
@@ -68,6 +73,7 @@
   .ReactCollapse--collapse {
     transition: height t.$timings-slow ease-out;
   }
+
   &--disable-animation {
     .ReactCollapse--collapse {
       transition: none;

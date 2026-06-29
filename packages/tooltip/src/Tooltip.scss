@@ -21,7 +21,6 @@ $tooltip-padding-side: 0.625rem;
   min-height: 1rem;
   min-width: 2rem;
   max-width: 32rem;
-
   font-size: t.$font-sizes-medium;
   border-radius: t.$border-radiuses-medium;
   box-shadow: t.$shadows-box-shadow;
@@ -43,18 +42,25 @@ $tooltip-padding-side: 0.625rem;
 
     &--right {
       @extend .eds-tooltip__arrow;
+
       left: -$tooltip-arrow-half-height;
     }
+
     &--left {
       @extend .eds-tooltip__arrow;
+
       right: -$tooltip-arrow-half-height;
     }
+
     &--top {
       @extend .eds-tooltip__arrow;
+
       bottom: -$tooltip-arrow-half-height;
     }
+
     &--bottom {
       @extend .eds-tooltip__arrow;
+
       top: -$tooltip-arrow-half-height;
     }
   }
@@ -84,25 +90,30 @@ $tooltip-padding-side: 0.625rem;
     &:hover {
       background-color: var(--components-button-iconbutton-contrast-hover);
     }
+
     &:focus-visible {
       outline: t.$outlines-focus;
       outline-color: var(--basecolors-stroke-focus-contrast);
       outline-offset: t.$outline-offsets-focus;
     }
+
     &:active {
       background-color: var(--components-button-iconbutton-contrast-active);
     }
 
     .eds-contrast & {
       color: inherit;
+
       &:hover {
         background-color: var(--components-button-iconbutton-standard-hover);
       }
+
       &:focus-visible {
         outline: t.$outlines-focus;
         outline-color: var(--basecolors-stroke-focus-standard);
         outline-offset: t.$outline-offsets-focus;
       }
+
       &:active {
         background-color: var(--components-button-iconbutton-standard-active);
       }

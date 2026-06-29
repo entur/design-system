@@ -4,6 +4,7 @@
 .eds-side-navigation,
 .eds-side-navigation-group {
   color: var(--components-menu-sidenavigation-standard-text);
+
   .eds-contrast & {
     color: var(--components-menu-sidenavigation-contrast-text);
   }
@@ -16,6 +17,7 @@
   align-self: center;
   position: relative;
   top: 0.075em;
+
   .eds-contrast & {
     color: var(--components-menu-sidenavigation-contrast-icon);
   }
@@ -23,6 +25,7 @@
 
 .eds-side-navigation__click-target[disabled] svg {
   color: var(--components-menu-sidenavigation-standard-icon-disabled);
+
   .eds-contrast & {
     color: var(--components-menu-sidenavigation-contrast-icon-disabled);
   }
@@ -31,6 +34,7 @@
 .eds-side-navigation {
   --padding-vertical: #{t.$space-medium};
   --padding-horizontal: #{t.$space-extra-large2};
+
   background-color: var(--components-menu-sidenavigation-standard-background);
   color: var(--components-menu-sidenavigation-standard-text);
   padding: 0;
@@ -38,6 +42,7 @@
   list-style: none;
   position: relative;
   transition: max-width ease-in-out t.$timings-medium;
+
   .eds-contrast & {
     background-color: var(--components-menu-sidenavigation-contrast-background);
     color: var(--components-menu-sidenavigation-contrast-text);
@@ -59,19 +64,23 @@
     align-items: center;
     justify-content: center;
     z-index: t.$z-indexes-sticky;
+
     .eds-contrast & {
       background-color: var(--components-menu-sidenavigation-contrast-background);
       color: var(--components-menu-sidenavigation-contast-text);
       box-shadow: t.$shadows-box-shadow;
     }
+
     svg {
       margin: 0;
       top: 0;
       color: var(--components-menu-sidenavigation-standard-icon);
+
       .eds-contrast & {
         color: var(--components-menu-sidenavigation-contrast-icon);
       }
     }
+
     &:focus-visible {
       outline: t.$outlines-focus;
       outline-color: var(--basecolors-stroke-focus-standard);
@@ -94,10 +103,12 @@
   // Nested sub menus
   & & {
     background-color: var(--components-menu-sidenavigation-standard-background);
+
     .eds-contrast & {
       background-color: var(--components-menu-sidenavigation-contrast-background);
     }
   }
+
   &--collapsed {
     max-width: 80px;
   }
@@ -108,8 +119,10 @@
   & & .eds-side-navigation__click-target {
     padding-left: t.$space-extra-large4;
     box-shadow: none;
+
     &--active {
       background-color: var(--components-menu-sidenavigation-standard-fill-active);
+
       .eds-contrast & {
         background-color: var(--components-menu-sidenavigation-contrast-fill-active);
       }
@@ -141,12 +154,15 @@
     color: var(--components-menu-sidenavigation-contrast-text);
     border-color: var(--components-menu-sidenavigation-contrast-divide);
   }
+
   .eds-side-navigation--collapsed & {
     padding-left: t.$space-extra-large;
   }
+
   &--active {
     box-shadow: inset t.$border-widths-large 0 0 var(--components-menu-sidenavigation-standard-stroke-selected);
     font-weight: t.$font-weights-heading;
+
     .eds-contrast & {
       box-shadow: inset t.$border-widths-large 0 0 var(--components-menu-sidenavigation-contrast-stroke-selected);
     }
@@ -155,6 +171,7 @@
   &[disabled] {
     cursor: not-allowed;
     color: var(--components-menu-sidenavigation-standard-text-disabled);
+
     .eds-contrast & {
       color: var(--components-menu-sidenavigation-contrast-text-disabled);
     }
@@ -163,6 +180,7 @@
   &:not([disabled]) {
     &:hover {
       background-color: var(--components-menu-sidenavigation-standard-fill-hover);
+
       .eds-contrast & {
         background-color: var(--components-menu-sidenavigation-contrast-fill-hover);
       }
@@ -211,14 +229,17 @@
   text-transform: uppercase;
   transition: padding t.$timings-medium ease-in-out;
   width: 100%;
+
   .eds-contrast & {
     color: var(--components-menu-sidenavigation-contrast-label);
     background-color: var(--components-menu-sidenavigation-contrast-background);
     border-color: var(--components-menu-sidenavigation-contrast-divide);
   }
+
   &-icon {
     margin-right: t.$space-small;
   }
+
   .eds-side-navigation-group__expand-icon {
     margin-right: t.$space-extra-large2;
     color: var(--components-menu-sidenavigation-standard-icon-label);
@@ -227,9 +248,11 @@
       color: var(--components-menu-sidenavigation-contrast-icon-label);
     }
   }
+
   .eds-side-navigation--collapsed & {
     padding-left: t.$space-extra-large;
   }
+
   &:focus-visible {
     outline: t.$outlines-focus;
     outline-color: var(--basecolors-stroke-focus-standard);

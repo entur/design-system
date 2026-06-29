@@ -1,5 +1,6 @@
 // Used to register the styles as loaded!
-@use './componentVariables.scss';
+@use './componentVariables';
+
 :root {
   --eds-datepicker: 1;
 }

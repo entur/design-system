@@ -34,6 +34,7 @@
 
   .eds-contrast & {
     --background-color: var(--components-form-segmentedcontrol-contrast-background);
+
     color: var(--components-form-segmentedcontrol-contrast-text-unselected);
   }
 
@@ -49,11 +50,13 @@
   // Selected state (when aria-checked="true")
   &[aria-checked='true'] {
     --background-color: var(--components-form-segmentedcontrol-standard-fill-selected);
+
     color: var(--components-form-segmentedcontrol-standard-text-selected);
     box-shadow: t.$shadows-box-shadow;
 
     .eds-contrast & {
       --background-color: var(--components-form-segmentedcontrol-contrast-fill-selected);
+
       box-shadow: t.$shadows-box-shadow-contrast;
       color: var(--components-form-segmentedcontrol-contrast-text-selected);
     }

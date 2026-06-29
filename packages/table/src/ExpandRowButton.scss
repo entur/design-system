@@ -4,6 +4,7 @@
   &__icon {
     transition: transform ease-in-out t.$timings-medium;
   }
+
   &--open &__icon {
     transform: rotate(180deg);
   }

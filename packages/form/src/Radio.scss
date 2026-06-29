@@ -10,6 +10,7 @@
     height: t.$space-extra-large;
     width: fit-content;
     user-select: none;
+
     :hover ~ .eds-form-component--radio__radio {
       background-color: var(--components-form-radio-standard-fill-hover);
 
@@ -24,14 +25,17 @@
       cursor: pointer;
       height: 0;
       width: 0;
+
       &:checked ~ .eds-form-component--radio__radio .eds-form-component--radio__circle {
         height: 0.625rem;
         width: 0.625rem;
       }
+
       &:focus-visible ~ .eds-form-component--radio__radio {
         outline: t.$outlines-focus;
         outline-color: var(--basecolors-stroke-focus-standard);
         outline-offset: t.$outline-offsets-focus;
+
         .eds-contrast & {
           outline-color: var(--basecolors-stroke-focus-contrast);
         }
@@ -41,6 +45,7 @@
     &:has(input:disabled) {
       cursor: not-allowed;
     }
+
     &:has(.eds-form-component--radio__radio--readonly) {
       cursor: default;
       user-select: text;
@@ -57,6 +62,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+
       .eds-contrast & {
         background-color: var(--components-form-radio-contrast-fill-default);
         border-color: var(--components-form-radio-contrast-border);
@@ -69,17 +75,21 @@
         &:hover {
           border-color: var(--components-form-radio-contrast-text-disabled);
         }
+
         .eds-contrast & {
           background: var(--components-form-radio-contrast-fill-disabled);
           border-color: var(--components-form-radio-contrast-text-disabled);
         }
+
         & ~ .eds-form-component--radio__label {
           color: var(--components-form-radio-contrast-text-disabled);
         }
+
         &:checked ~ .eds-form-component--radio__radio .eds-form-component--radio__circle {
           background-color: var(--components-form-radio-standard-icon-disabled);
           border-color: var(--components-form-radio-contrast-text-disabled);
         }
+
         .eds-form-component--radio__circle {
           background-color: var(--components-form-radio-standard-icon-disabled);
 
@@ -111,6 +121,7 @@
         border-radius: 50%;
         background-color: var(--components-form-radio-standard-fill-selected);
         transition: width t.$timings-fast ease-in-out, height t.$timings-fast ease-in-out;
+
         .eds-contrast & {
           background-color: var(--components-form-radio-contrast-icon);
         }

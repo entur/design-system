@@ -30,14 +30,17 @@
       &:hover {
         background-color: var(--components-button-iconbutton-standard-hover);
       }
+
       &:focus-visible {
         outline: t.$outlines-focus;
         outline-color: var(--basecolors-stroke-focus-standard);
         outline-offset: t.$outline-offsets-focus;
       }
+
       &:active {
         background-color: var(--components-button-iconbutton-standard-active);
       }
+
       &--disabled__wrapper {
         visibility: hidden;
       }
@@ -56,7 +59,7 @@
 
   &__grid {
     position: relative;
-    border-spacing: 0px;
+    border-spacing: 0;
     border-collapse: collapse;
 
     &__weeknumber,
@@ -91,10 +94,8 @@
 
         &:has(.eds-datepicker__calendar__grid__cell--in-range) {
           background-color: var(--components-datepicker-calendar-datefill-range);
-          border-left-color: var(--components-datepicker-calendar-datefill-range);
-          border-right-color: var(--components-datepicker-calendar-datefill-range);
-          border-top-color: var(--components-datepicker-calendar-dateborder);
-          border-bottom-color: var(--components-datepicker-calendar-dateborder);
+          border-color: var(--components-datepicker-calendar-dateborder) var(--components-datepicker-calendar-datefill-range)
+            var(--components-datepicker-calendar-dateborder) var(--components-datepicker-calendar-datefill-range);
         }
 
         &:has(.eds-datepicker__calendar__grid__cell--selection-start:not(.eds-datepicker__calendar__grid__cell--selection-end)) {
@@ -135,6 +136,7 @@
         opacity: 0.5;
         pointer-events: none;
       }
+
       &:focus-visible {
         outline: t.$outlines-focus;
         outline-color: var(--basecolors-stroke-focus-standard);

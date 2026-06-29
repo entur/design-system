@@ -9,7 +9,6 @@
   display: flex;
   flex-direction: row;
   width: 100%;
-
   list-style-type: none;
 
   &__step {
@@ -80,7 +79,6 @@
       padding: 0 t.$space-extra-small;
       width: fit-content;
       border-radius: t.$border-radiuses-default;
-
       color: var(--text-color);
       font-weight: var(--label-font-weight);
 
@@ -100,7 +98,7 @@
       background: var(--line-color);
       position: relative;
 
-      &:before {
+      &::before {
         display: var(--display-active-line);
         content: '';
         position: absolute;
@@ -109,7 +107,7 @@
         border-radius: t.$border-radiuses-small;
         background: var(--components-menu-stepper-standard-progressbar);
 
-        //Approximate pixel perfect adjustments in size
+        // Approximate pixel perfect adjustments in size
         width: calc(#{t.$space-extra-small} - #{t.$border-widths-medium} - 0.01rem);
         height: calc(#{t.$space-extra-small} - #{t.$border-widths-medium} - 0.01rem);
         transform: rotate(45deg);
@@ -118,16 +116,15 @@
           background: var(--components-menu-stepper-contrast-progressbar);
         }
       }
-      &:after {
-        display: var(--display-active-line);
 
+      &::after {
+        display: var(--display-active-line);
         content: '';
         position: absolute;
         left: 0;
         bottom: 0;
         width: 50%;
         height: t.$space-extra-small;
-
         background: var(--components-menu-stepper-standard-progressbar);
 
         .eds-contrast & {

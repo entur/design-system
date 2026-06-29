@@ -6,12 +6,12 @@
   border-radius: 1rem;
   color: var(--components-chip-standard-text-unselected);
   font-family: inherit;
-
   transition: background t.$timings-fast ease-out, border t.$timings-fast ease-out;
   display: flex;
   justify-content: center;
   align-items: center;
   white-space: nowrap;
+
   svg {
     font-size: t.$font-sizes-medium;
   }
@@ -35,6 +35,7 @@
       }
     }
   }
+
   &--size-medium {
     height: 2rem;
     min-width: 3rem;
@@ -46,6 +47,7 @@
   &--leading-icon > svg:first-of-type {
     margin-right: t.$space-extra-small2;
   }
+
   &--trailing-icon > svg:last-of-type {
     margin-left: t.$space-extra-small2;
   }

@@ -1,11 +1,9 @@
 @use 'sass:meta';
-
 @use '@entur/tokens/dist/styles.scss' as t;
 @use '@entur/tokens/dist/base.scss' as *;
 @use '@entur/utils/dist/breakpoints.scss' as *;
-
-@use './componentVariables.scss';
-@use './fonts.scss';
+@use './componentVariables';
+@use './fonts';
 
 @layer core.reset {
   @include meta.load-css('modern-normalize/modern-normalize.css');
@@ -25,7 +23,7 @@
   --primary-background-color: var(--basecolors-frame-default);
   --primary-text-color: var(--components-typography-basetext-standard-text-accent);
   --primary-label-color: var(--components-typography-label-standard-text-accent);
-  --eds-font-family: 'Nationale', Arial, 'Gotham Rounded', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell,
+  --eds-font-family: 'Nationale', arial, 'Gotham Rounded', -apple-system, blinkmacsystemfont, 'Segoe UI', roboto, oxygen-sans, ubuntu, cantarell,
     'Helvetica Neue', sans-serif;
 
   // Base styles
@@ -33,7 +31,7 @@
   box-sizing: border-box;
   color: var(--primary-text-color);
   background-color: var(--primary-background-color);
-  font-family: 'Nationale', Arial, 'Gotham Rounded', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue',
+  font-family: Nationale, Arial, 'Gotham Rounded', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue',
     sans-serif;
   font-weight: t.$font-weights-body;
   font-size: t.$font-sizes-large;
@@ -75,6 +73,7 @@
     line-height: t.$line-heights-extra-large7;
   }
 }
+
 .eds-h2 {
   font-size: t.$font-sizes-extra-large;
   line-height: t.$line-heights-extra-large4;
@@ -85,6 +84,7 @@
     line-height: t.$line-heights-extra-large6;
   }
 }
+
 .eds-h3 {
   font-size: t.$font-sizes-large;
   line-height: t.$line-heights-extra-large;
@@ -95,6 +95,7 @@
     line-height: t.$line-heights-extra-large4;
   }
 }
+
 .eds-h4 {
   font-size: t.$font-sizes-medium;
   line-height: t.$line-heights-large;
@@ -105,6 +106,7 @@
     line-height: t.$line-heights-extra-large3;
   }
 }
+
 .eds-h5 {
   font-size: t.$font-sizes-small;
   line-height: t.$line-heights-medium;
@@ -115,6 +117,7 @@
     line-height: t.$line-heights-extra-large;
   }
 }
+
 .eds-h6 {
   font-size: t.$font-sizes-small;
   line-height: t.$line-heights-medium;
@@ -138,6 +141,7 @@
     line-height: t.$line-heights-extra-large;
   }
 }
+
 .eds-lead-paragraph {
   color: var(--primary-text-color);
   font-size: 1.25rem;
@@ -149,6 +153,7 @@
     line-height: t.$line-heights-extra-large4;
   }
 }
+
 .eds-sub-paragraph {
   color: var(--primary-text-color);
   font-size: t.$font-sizes-medium;
@@ -158,6 +163,7 @@
     line-height: t.$line-heights-large;
   }
 }
+
 .eds-small-text {
   color: var(--primary-text-color);
   font-size: t.$font-sizes-extra-small;
@@ -178,12 +184,12 @@
     font-size: inherit;
     text-decoration: none;
     position: relative;
-
     background-image: linear-gradient(120deg, var(--primary-text-color) 0%, var(--primary-text-color) 100%);
     background-repeat: no-repeat;
     background-size: 100% 0.125rem;
     background-position: 0 100%;
   }
+
   &:hover {
     animation: eds-link-underline 0.3s ease-in;
     cursor: pointer;
@@ -193,6 +199,7 @@
     from {
       background-size: 0% 0.125rem;
     }
+
     to {
       background-size: 100% 0.125rem;
     }
@@ -259,9 +266,10 @@
   border: t.$border-widths-small solid var(--components-typography-codetext-standard-border);
   border-radius: t.$border-radiuses-medium;
   color: var(--components-typography-codetext-standard-text);
-  font-family: 'Monaco', monospace;
+  font-family: Monaco, monospace;
   font-size: t.$font-sizes-medium;
 }
+
 .eds-preformatted-text {
   padding: 1rem;
   white-space: pre-wrap;
@@ -282,6 +290,7 @@
 
 .eds-unordered-list {
   list-style: none;
+
   .eds-list-item {
     &::before {
       content: '';
@@ -299,6 +308,7 @@
 .eds-numbered-list {
   counter-reset: eds-numbered-list-counter;
   list-style: none;
+
   &--type {
     &-a {
       & > .eds-list-item {
@@ -307,6 +317,7 @@
         }
       }
     }
+
     &-A {
       & > .eds-list-item {
         &::before {
@@ -314,6 +325,7 @@
         }
       }
     }
+
     &-1 {
       & > .eds-list-item {
         &::before {
@@ -321,6 +333,7 @@
         }
       }
     }
+
     &-i {
       & > .eds-list-item {
         &::before {
@@ -328,6 +341,7 @@
         }
       }
     }
+
     &-I {
       & > .eds-list-item {
         &::before {
@@ -409,9 +423,11 @@
   &--margin-top {
     margin-bottom: 0;
   }
+
   &--margin-bottom {
     margin-top: 0;
   }
+
   &--margin-none {
     margin-top: 0;
     margin-bottom: 0;
@@ -422,6 +438,7 @@
   0% {
     width: 0;
   }
+
   100% {
     width: 100%;
   }

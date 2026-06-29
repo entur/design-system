@@ -1,5 +1,5 @@
 @use '@entur/tokens/dist/styles.scss' as t;
-@use '@entur/tokens/dist/base.scss';
+@use '@entur/tokens/dist/base';
 
 .eds-textarea__wrapper {
   // Quickfix for illegible label when input exceeds height of textarea

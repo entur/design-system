@@ -5,7 +5,7 @@
   &.eds-datefield {
     &:not(.eds-datepicker--disabled) .eds-form-control {
       &-wrapper {
-        padding-right: 0rem;
+        padding-right: 0;
       }
 
       &__append {
@@ -20,14 +20,17 @@
     // This is done to remove contrast specific styling
     &.eds-icon-button {
       color: var(--components-datepicker-calendar-icon);
+
       &:hover {
         background-color: var(--components-button-iconbutton-standard-hover);
       }
+
       &:focus-visible {
         outline: t.$outlines-focus;
         outline-color: var(--basecolors-stroke-focus-standard);
         outline-offset: 0;
       }
+
       &:active {
         background-color: var(--components-button-iconbutton-standard-active);
       }
