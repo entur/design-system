@@ -117,7 +117,7 @@ jobs:
       contents: read
       pull-requests: write
       id-token: write
-    uses: entur/gha-firebase/.github/workflows/firebase-hosting-preview.yml@v1.2.7
+    uses: entur/gha-firebase/.github/workflows/firebase-hosting-preview.yml@v1
     with:
       gcp_project_id: entur-design-system
       environment: prd
