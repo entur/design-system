@@ -10,7 +10,7 @@
       "name": "state",
       "declarations": [
         {
-          "fileName": "design-system/packages/datepicker/src/DatePicker/RangeCalendarGrid.tsx",
+          "fileName": "packages/datepicker/src/DatePicker/RangeCalendarGrid.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -25,7 +25,7 @@
       "name": "startDate",
       "declarations": [
         {
-          "fileName": "design-system/packages/datepicker/src/DatePicker/RangeCalendarGrid.tsx",
+          "fileName": "packages/datepicker/src/DatePicker/RangeCalendarGrid.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -40,7 +40,7 @@
       "name": "navigationDescription",
       "declarations": [
         {
-          "fileName": "design-system/packages/datepicker/src/DatePicker/RangeCalendarGrid.tsx",
+          "fileName": "packages/datepicker/src/DatePicker/RangeCalendarGrid.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -55,7 +55,7 @@
       "name": "showWeekNumbers",
       "declarations": [
         {
-          "fileName": "design-system/packages/datepicker/src/DatePicker/RangeCalendarGrid.tsx",
+          "fileName": "packages/datepicker/src/DatePicker/RangeCalendarGrid.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -70,7 +70,7 @@
       "name": "weekNumberHeader",
       "declarations": [
         {
-          "fileName": "design-system/packages/datepicker/src/DatePicker/RangeCalendarGrid.tsx",
+          "fileName": "packages/datepicker/src/DatePicker/RangeCalendarGrid.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -87,7 +87,7 @@
       "name": "showOutsideMonth",
       "declarations": [
         {
-          "fileName": "design-system/packages/datepicker/src/DatePicker/RangeCalendarGrid.tsx",
+          "fileName": "packages/datepicker/src/DatePicker/RangeCalendarGrid.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -102,7 +102,7 @@
       "name": "classNameForDate",
       "declarations": [
         {
-          "fileName": "design-system/packages/datepicker/src/DatePicker/RangeCalendarGrid.tsx",
+          "fileName": "packages/datepicker/src/DatePicker/RangeCalendarGrid.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -117,7 +117,7 @@
       "name": "ariaLabelForDate",
       "declarations": [
         {
-          "fileName": "design-system/packages/datepicker/src/DatePicker/RangeCalendarGrid.tsx",
+          "fileName": "packages/datepicker/src/DatePicker/RangeCalendarGrid.tsx",
           "name": "TypeLiteral"
         }
       ],

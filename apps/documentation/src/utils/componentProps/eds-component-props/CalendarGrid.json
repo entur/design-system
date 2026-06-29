@@ -16,7 +16,22 @@
       ],
       "required": true,
       "type": {
-        "name": "CalendarState"
+        "name": "CalendarState | RangeCalendarState<DateValue>"
+      }
+    },
+    "startDate": {
+      "defaultValue": null,
+      "description": "",
+      "name": "startDate",
+      "declarations": [
+        {
+          "fileName": "packages/datepicker/src/DatePicker/CalendarGrid.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "CalendarDate | undefined"
       }
     },
     "navigationDescription": {
@@ -64,85 +79,19 @@
         "name": "string"
       }
     },
-    "showOutsideMonth": {
-      "defaultValue": {
-        "value": false
-      },
-      "description": "",
-      "name": "showOutsideMonth",
-      "declarations": [
-        {
-          "fileName": "packages/datepicker/src/DatePicker/CalendarGrid.tsx",
-          "name": "TypeLiteral"
-        }
-      ],
-      "required": false,
-      "type": {
-        "name": "boolean | undefined"
-      }
-    },
-    "onSelectedCellClick": {
-      "defaultValue": {
-        "value": "() => {\n    return;\n  }"
-      },
-      "description": "",
-      "name": "onSelectedCellClick",
-      "declarations": [
-        {
-          "fileName": "packages/datepicker/src/DatePicker/CalendarGrid.tsx",
-          "name": "TypeLiteral"
-        }
-      ],
-      "required": false,
-      "type": {
-        "name": "(() => void) | undefined"
-      }
-    },
-    "onCellClick": {
-      "defaultValue": {
-        "value": "() => {\n    return;\n  }"
-      },
-      "description": "",
-      "name": "onCellClick",
-      "declarations": [
-        {
-          "fileName": "packages/datepicker/src/DatePicker/CalendarGrid.tsx",
-          "name": "TypeLiteral"
-        }
-      ],
-      "required": false,
-      "type": {
-        "name": "(() => void) | undefined"
-      }
-    },
-    "classNameForDate": {
+    "renderCell": {
       "defaultValue": null,
       "description": "",
-      "name": "classNameForDate",
+      "name": "renderCell",
       "declarations": [
         {
           "fileName": "packages/datepicker/src/DatePicker/CalendarGrid.tsx",
           "name": "TypeLiteral"
         }
       ],
-      "required": false,
+      "required": true,
       "type": {
-        "name": "((date: CalendarDate) => string) | undefined"
-      }
-    },
-    "ariaLabelForDate": {
-      "defaultValue": null,
-      "description": "",
-      "name": "ariaLabelForDate",
-      "declarations": [
-        {
-          "fileName": "packages/datepicker/src/DatePicker/CalendarGrid.tsx",
-          "name": "TypeLiteral"
-        }
-      ],
-      "required": false,
-      "type": {
-        "name": "((date: CalendarDate) => string) | undefined"
+        "name": "(date: CalendarDate, currentMonth: CalendarDate, weekNumberString: string, ariaDescribedBy: string) => ReactNode"
       }
     }
   }

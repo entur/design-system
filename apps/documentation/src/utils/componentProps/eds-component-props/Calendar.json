@@ -302,6 +302,23 @@
       "type": {
         "name": "ForcedReturnType"
       }
+    },
+    "visibleDuration": {
+      "defaultValue": {
+        "value": "{months: 1}"
+      },
+      "description": "Vis flere måneder samtidig i kalenderen.\n@example {months: 2}",
+      "name": "visibleDuration",
+      "declarations": [
+        {
+          "fileName": "packages/datepicker/src/DatePicker/Calendar.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "Pick<DateDuration, \"months\"> | undefined"
+      }
     }
   }
 }

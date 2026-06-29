@@ -1,0 +1,188 @@
+{
+  "tags": {},
+  "description": "",
+  "displayName": "CalendarBase",
+  "methods": [],
+  "props": {
+    "state": {
+      "defaultValue": null,
+      "description": "",
+      "name": "state",
+      "declarations": [
+        {
+          "fileName": "packages/datepicker/src/DatePicker/CalendarBase.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": true,
+      "type": {
+        "name": "CalendarState | RangeCalendarState<DateValue>"
+      }
+    },
+    "calendarProps": {
+      "defaultValue": null,
+      "description": "",
+      "name": "calendarProps",
+      "declarations": [
+        {
+          "fileName": "packages/datepicker/src/DatePicker/CalendarBase.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": true,
+      "type": {
+        "name": "HTMLAttributes<HTMLElement>"
+      }
+    },
+    "prevButtonProps": {
+      "defaultValue": null,
+      "description": "",
+      "name": "prevButtonProps",
+      "declarations": [
+        {
+          "fileName": "packages/datepicker/src/DatePicker/CalendarBase.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": true,
+      "type": {
+        "name": "AriaButtonProps<\"button\">"
+      }
+    },
+    "nextButtonProps": {
+      "defaultValue": null,
+      "description": "",
+      "name": "nextButtonProps",
+      "declarations": [
+        {
+          "fileName": "packages/datepicker/src/DatePicker/CalendarBase.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": true,
+      "type": {
+        "name": "AriaButtonProps<\"button\">"
+      }
+    },
+    "title": {
+      "defaultValue": null,
+      "description": "",
+      "name": "title",
+      "declarations": [
+        {
+          "fileName": "packages/datepicker/src/DatePicker/CalendarBase.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": true,
+      "type": {
+        "name": "string"
+      }
+    },
+    "calendarRef": {
+      "defaultValue": null,
+      "description": "",
+      "name": "calendarRef",
+      "declarations": [
+        {
+          "fileName": "packages/datepicker/src/DatePicker/CalendarBase.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "Ref<HTMLDivElement> | undefined"
+      }
+    },
+    "style": {
+      "defaultValue": null,
+      "description": "",
+      "name": "style",
+      "declarations": [
+        {
+          "fileName": "packages/datepicker/src/DatePicker/CalendarBase.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "CSSProperties | undefined"
+      }
+    },
+    "className": {
+      "defaultValue": null,
+      "description": "",
+      "name": "className",
+      "declarations": [
+        {
+          "fileName": "packages/datepicker/src/DatePicker/CalendarBase.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "navigationDescription": {
+      "defaultValue": null,
+      "description": "",
+      "name": "navigationDescription",
+      "declarations": [
+        {
+          "fileName": "packages/datepicker/src/DatePicker/CalendarBase.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "showWeekNumbers": {
+      "defaultValue": null,
+      "description": "",
+      "name": "showWeekNumbers",
+      "declarations": [
+        {
+          "fileName": "packages/datepicker/src/DatePicker/CalendarBase.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": true,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    "weekNumberHeader": {
+      "defaultValue": null,
+      "description": "",
+      "name": "weekNumberHeader",
+      "declarations": [
+        {
+          "fileName": "packages/datepicker/src/DatePicker/CalendarBase.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": true,
+      "type": {
+        "name": "string"
+      }
+    },
+    "renderCell": {
+      "defaultValue": null,
+      "description": "",
+      "name": "renderCell",
+      "declarations": [
+        {
+          "fileName": "packages/datepicker/src/DatePicker/CalendarBase.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": true,
+      "type": {
+        "name": "(date: CalendarDate, currentMonth: CalendarDate, weekNumberString: string, ariaDescribedBy: string) => ReactNode"
+      }
+    }
+  }
+}

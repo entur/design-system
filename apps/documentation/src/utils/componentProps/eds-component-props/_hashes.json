@@ -112,15 +112,15 @@
     "outputs": ["TagChip.json"]
   },
   "datepicker/src/DatePicker/Calendar.tsx": {
-    "hash": "67dbb6c3afb0ef6325ef55484b96b917",
+    "hash": "157fa7b13ad14b272e336f9be6f1ca69",
     "outputs": ["Calendar.json"]
   },
   "datepicker/src/DatePicker/CalendarCell.tsx": {
-    "hash": "507404d4061fba31dd6d6c5e253c63ea",
+    "hash": "5820e4003d70e4633742888533675f15",
     "outputs": ["CalendarCell.json"]
   },
   "datepicker/src/DatePicker/CalendarGrid.tsx": {
-    "hash": "a819ae2f8329740ede2c2e09b51f623b",
+    "hash": "1d4f552beb3118ff42fb56afc75ae829",
     "outputs": ["CalendarGrid.json"]
   },
   "datepicker/src/DatePicker/DateField.tsx": {
@@ -689,7 +689,23 @@
     "outputs": []
   },
   "menu/src/Logo.tsx": {
-    "hash": "b7e48ee2188e4631d7f7f8a4da7030d0",
+    "hash": "335cf5f929d9a3565774db28c4960911",
     "outputs": ["Logo.json"]
+  },
+  "datepicker/src/DatePicker/RangeCalendar.tsx": {
+    "hash": "ae778ccac6d80dcc8f47aec4595c7401",
+    "outputs": ["RangeCalendar.json"]
+  },
+  "datepicker/src/DatePicker/RangeCalendarCell.tsx": {
+    "hash": "78028597a1b5a58cbdb00672075cfdf3",
+    "outputs": ["RangeCalendarCell.json"]
+  },
+  "datepicker/src/DatePicker/RangeCalendarGrid.tsx": {
+    "hash": "b074f3d4133cb9c965b2914b6d913bae",
+    "outputs": ["RangeCalendarGrid.json"]
+  },
+  "datepicker/src/DatePicker/CalendarBase.tsx": {
+    "hash": "b1efaa23aaaec28b5f4512c20ca08896",
+    "outputs": ["CalendarBase.json"]
   }
 }

@@ -34,6 +34,21 @@
         "name": "CalendarDate"
       }
     },
+    "currentMonth": {
+      "defaultValue": null,
+      "description": "",
+      "name": "currentMonth",
+      "declarations": [
+        {
+          "fileName": "packages/datepicker/src/DatePicker/CalendarCell.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": true,
+      "type": {
+        "name": "CalendarDate"
+      }
+    },
     "weekNumberString": {
       "defaultValue": null,
       "description": "",

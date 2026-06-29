@@ -10,7 +10,7 @@
       "name": "state",
       "declarations": [
         {
-          "fileName": "design-system/packages/datepicker/src/DatePicker/RangeCalendarCell.tsx",
+          "fileName": "packages/datepicker/src/DatePicker/RangeCalendarCell.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -25,7 +25,22 @@
       "name": "date",
       "declarations": [
         {
-          "fileName": "design-system/packages/datepicker/src/DatePicker/RangeCalendarCell.tsx",
+          "fileName": "packages/datepicker/src/DatePicker/RangeCalendarCell.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": true,
+      "type": {
+        "name": "CalendarDate"
+      }
+    },
+    "currentMonth": {
+      "defaultValue": null,
+      "description": "",
+      "name": "currentMonth",
+      "declarations": [
+        {
+          "fileName": "packages/datepicker/src/DatePicker/RangeCalendarCell.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -40,7 +55,7 @@
       "name": "weekNumberString",
       "declarations": [
         {
-          "fileName": "design-system/packages/datepicker/src/DatePicker/RangeCalendarCell.tsx",
+          "fileName": "packages/datepicker/src/DatePicker/RangeCalendarCell.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -57,7 +72,7 @@
       "name": "showOutsideMonth",
       "declarations": [
         {
-          "fileName": "design-system/packages/datepicker/src/DatePicker/RangeCalendarCell.tsx",
+          "fileName": "packages/datepicker/src/DatePicker/RangeCalendarCell.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -72,7 +87,7 @@
       "name": "classNameForDate",
       "declarations": [
         {
-          "fileName": "design-system/packages/datepicker/src/DatePicker/RangeCalendarCell.tsx",
+          "fileName": "packages/datepicker/src/DatePicker/RangeCalendarCell.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -87,7 +102,7 @@
       "name": "ariaLabelForDate",
       "declarations": [
         {
-          "fileName": "design-system/packages/datepicker/src/DatePicker/RangeCalendarCell.tsx",
+          "fileName": "packages/datepicker/src/DatePicker/RangeCalendarCell.tsx",
           "name": "TypeLiteral"
         }
       ],
