@@ -55,25 +55,25 @@ This enables the automatic JSX runtime, so you no longer need `import React from
 
 ### Quick Summary: Will There Be Breaking API Changes?
 
-**No breaking API changes** for `@entur/modal`. The `@entur/tab` package has **stricter TypeScript types** and **changed DOM output** (see [@entur/tab](#enturtab) below). The `@entur/expand` package has **new props** and a **behavioral change** (content now stays in the DOM when collapsed instead of being unmounted). See [@entur/expand](#enturexpand) below.
+`@entur/modal` has **breaking changes**: `onDismiss` is now required and the DOM output changed from `<div>` to native `<dialog>`. The `@entur/tab` package has **stricter TypeScript types** and **changed DOM output** (see [@entur/tab](#enturtab) below). The `@entur/expand` package has **new props** and a **behavioral change** (content now stays in the DOM when collapsed instead of being unmounted). See [@entur/expand](#enturexpand) below.
 
-| Component         | Public API changed? | Props changed?    | Behavior changed?  |
-| ----------------- | ------------------- | ----------------- | ------------------ |
-| `Modal`           | ❌ No               | ❌ No             | ❌ No              |
-| `ModalOverlay`    | ❌ No               | ❌ No             | ❌ No              |
-| `ModalContent`    | ❌ No               | ❌ No             | ❌ No              |
-| `Drawer`          | ❌ No               | ❌ No             | ❌ No              |
-| `Tabs`            | ❌ No               | ✅ Stricter types | ❌ No              |
-| `TabList`         | ❌ No               | ✅ Stricter types | ❌ No              |
-| `Tab`             | ❌ No               | ✅ Stricter types | ❌ No              |
-| `TabPanel`        | ❌ No               | ✅ Stricter types | ❌ No              |
-| `TabPanels`       | ❌ No               | ✅ New props      | ❌ No              |
-| `ExpandablePanel` | ❌ No               | ✅ New props      | ✅ Yes (see below) |
-| `ExpandableText`  | ❌ No               | ✅ New props      | ✅ Yes (see below) |
-| `Accordion`       | ❌ No               | ✅ New props      | ✅ Yes (see below) |
-| `AccordionItem`   | ❌ No               | ✅ New props      | ✅ Yes (see below) |
-| `BaseExpand`      | ❌ No               | ✅ New props      | ✅ Yes (see below) |
-| `useRandomId`     | ⚠️ Deprecated       | ❌ No             | ❌ No              |
+| Component         | Public API changed? | Props changed?                                 | Behavior changed?       |
+| ----------------- | ------------------- | ---------------------------------------------- | ----------------------- |
+| `Modal`           | ✅ Yes              | ✅ `onDismiss` required, new `showCloseButton` | ✅ Native `<dialog>`    |
+| `ModalOverlay`    | ✅ Yes              | ❌ No                                          | ✅ `<div>` → `<dialog>` |
+| `ModalContent`    | ❌ No               | ❌ No                                          | ❌ No                   |
+| `Drawer`          | ❌ No               | ❌ No                                          | ❌ No                   |
+| `Tabs`            | ❌ No               | ✅ Stricter types                              | ❌ No                   |
+| `TabList`         | ❌ No               | ✅ Stricter types                              | ❌ No                   |
+| `Tab`             | ❌ No               | ✅ Stricter types                              | ❌ No                   |
+| `TabPanel`        | ❌ No               | ✅ Stricter types                              | ❌ No                   |
+| `TabPanels`       | ❌ No               | ✅ New props                                   | ❌ No                   |
+| `ExpandablePanel` | ❌ No               | ✅ New props                                   | ✅ Yes (see below)      |
+| `ExpandableText`  | ❌ No               | ✅ New props                                   | ✅ Yes (see below)      |
+| `Accordion`       | ❌ No               | ✅ New props                                   | ✅ Yes (see below)      |
+| `AccordionItem`   | ❌ No               | ✅ New props                                   | ✅ Yes (see below)      |
+| `BaseExpand`      | ❌ No               | ✅ New props                                   | ✅ Yes (see below)      |
+| `useRandomId`     | ⚠️ Deprecated       | ❌ No                                          | ❌ No                   |
 
 All existing props — including the `as` prop for polymorphic rendering — continue to work as before.
 
@@ -86,26 +86,37 @@ All packages now require:
 
 ### @entur/modal
 
-The internal implementation of `@entur/modal` has been migrated from `@reach/dialog` (deprecated, unmaintained) to `@react-aria/dialog` + `@react-aria/overlays` (actively maintained, React 18 compatible). See [Provider Choice Analysis](#provider-choice-analysis) for reasoning.
+The internal implementation of `@entur/modal` has been migrated from `@reach/dialog` (deprecated, unmaintained) to the **native HTML `<dialog>` element**. This removes all third-party dependencies for the modal — no `@reach/dialog`, no `@react-aria`, just the browser's built-in dialog API.
 
 **What changed internally:**
 
-- `@reach/dialog` → `@react-aria/dialog` + `@react-aria/overlays` + `@react-aria/focus`
-- Focus trapping now uses `FocusScope` from `@react-aria/focus` (previously `@reach/dialog`'s built-in)
-- Overlay management now uses `useModalOverlay` + `OverlayContainer` (previously `@reach/dialog`'s `DialogOverlay`)
+- `@reach/dialog` → Native `<dialog>` element with `showModal()` / `close()`
+- Focus trapping is now handled natively by the browser (built into `<dialog>`)
+- Focus restoration on close is handled natively by the browser
+- Backdrop styling uses `::backdrop` pseudo-element instead of a custom overlay div
+- Body scroll lock uses `html:has(dialog[open])` CSS instead of JavaScript
+
+**Breaking changes:**
+
+- **`onDismiss` is now required** on `Modal`. The native `<dialog>` always allows closing via Escape — `onDismiss` ensures the parent state stays in sync.
+- **New `showCloseButton` prop** (default: `true`) — controls whether the close button appears in the top right corner. Previously the close button was always rendered inside `ModalContent`.
 
 **What is preserved for consumers:**
 
 - ✅ `Modal` component with `open`, `onDismiss`, `size`, `title`, `closeLabel`, `closeOnClickOutside`, `initialFocusRef`, `align` props
 - ✅ `ModalOverlay` component with `open`, `onDismiss`, `initialFocusRef` props
-- ✅ `ModalContent` component with `size`, `title`, `align` props
+- ✅ `ModalContent` component with `size`, `align` props
 - ✅ `Drawer` component with `open`, `onDismiss`, `title`, `closeLabel`, `contrast`, `overlay` props
-- ✅ Focus trapping and restoration
+- ✅ Focus trapping and restoration (now native)
 - ✅ Escape key to close
 - ✅ Click-outside-to-close (when `closeOnClickOutside` is true)
 - ✅ All CSS class names (`eds-modal__*`, `eds-drawer__*`)
 
-**What consumers need to do:** No changes required if you are using the documented API.
+**What consumers need to do:**
+
+1. **Add `onDismiss` if missing** — it's now a required prop on `Modal`. If you already pass it (most common usage), no change needed.
+2. **CSS targeting `<div>` overlay** — If you target the overlay element in CSS assuming it's a `<div>`, update to target `<dialog>` or use the existing `.eds-modal__overlay` class.
+3. **`data-reach-dialog-*` selectors** — Remove any references to Reach-specific data attributes.
 
 ### @entur/tab
 
@@ -236,22 +247,25 @@ If you see double renders in development, this is expected behavior when using `
 
 Initially, the migration from `@reach/*` considered `@radix-ui` as a replacement. While Radix UI is an excellent library, introducing it would have added a **new third-party UI provider** to the project. After analysis, we chose to use existing providers instead:
 
-| Criterion               | @radix-ui (rejected)  | @react-aria (chosen for modal)          | Native ARIA (chosen for tabs) |
-| ----------------------- | --------------------- | --------------------------------------- | ----------------------------- |
-| **Already in project?** | ❌ New provider       | ✅ Used by @entur/datepicker            | ✅ No dependency needed       |
-| **Packages added**      | 21 new packages       | 3 new packages (shared infrastructure)  | 0 new packages                |
-| **API approach**        | Component-based       | Hook-based (consistent with datepicker) | Standard HTML + ARIA          |
-| **Control**             | Moderate              | High (hooks give full control)          | Full control                  |
-| **Maintenance burden**  | New provider to track | Already tracked                         | None                          |
+| Criterion               | @radix-ui (rejected)  | Native `<dialog>` (chosen for modal) | Native ARIA (chosen for tabs) |
+| ----------------------- | --------------------- | ------------------------------------ | ----------------------------- |
+| **Already in project?** | ❌ New provider       | ✅ Built into the browser            | ✅ No dependency needed       |
+| **Packages added**      | 21 new packages       | 0 new packages                       | 0 new packages                |
+| **API approach**        | Component-based       | Native HTML element                  | Standard HTML + ARIA          |
+| **Control**             | Moderate              | Full control                         | Full control                  |
+| **Maintenance burden**  | New provider to track | None — browser-maintained            | None                          |
 
-### Why @react-aria for Modal?
+### Why Native `<dialog>` for Modal?
 
-The `@entur/datepicker` package already depends on `@react-aria/*` (6 packages: button, calendar, datepicker, i18n + stately). Using `@react-aria/dialog` and `@react-aria/overlays` for the modal:
+The native HTML `<dialog>` element provides everything a modal needs out of the box:
 
-1. **Reuses existing provider** — `@react-aria` is already a trusted, maintained dependency
-2. **Shares infrastructure** — `@react-aria/utils`, `@react-aria/focus`, `@react-aria/ssr` are already transitive dependencies. Adding dialog/overlays only adds 3 new packages
-3. **Consistent architecture** — Hook-based approach matches how the datepicker uses @react-aria
-4. **Full accessibility** — `useDialog`, `useModalOverlay`, and `FocusScope` provide complete dialog accessibility (ARIA roles, focus trapping, Escape key, click-outside dismissal)
+1. **Zero dependencies** — No third-party packages needed. Focus trapping, focus restoration, and Escape-to-close are all built into the browser
+2. **`::backdrop` pseudo-element** — Native backdrop styling without extra DOM nodes
+3. **Top layer rendering** — `showModal()` places the dialog in the browser's top layer, above all other content regardless of z-index
+4. **Scroll lock** — Combined with `html:has(dialog[open]) { overflow: hidden }` for a CSS-only solution
+5. **Accessibility** — Native `role="dialog"` and `aria-modal="true"` are automatic
+
+An earlier iteration of this migration used `@react-aria/dialog` + `@react-aria/overlays`, but native `<dialog>` proved simpler and removed the need for additional dependencies.
 
 ### Why Native ARIA for Tabs?
 
@@ -311,7 +325,7 @@ These would conflict with Entur's existing `eds-*` BEM styling system and design
 - Non-standard DOM output that doesn't match Entur's testing patterns
 - Potential conflicts with other custom element registrations
 
-**Dialog uses native `<dialog>`**: Their Dialog wraps the native HTML `<dialog>` element, which is good for standards but has a different mental model than our overlay-based approach. Their Dialog also uses `@radix-ui/react-slot` for the `asChild` pattern.
+**Dialog uses native `<dialog>`**: Their Dialog wraps the native HTML `<dialog>` element — similar to our approach now, but theirs also uses `@radix-ui/react-slot` for the `asChild` pattern, adding an unnecessary dependency.
 
 #### API Mismatch
 
@@ -344,17 +358,19 @@ Adopting Designsystemet's API would require breaking changes to all consumer cod
 5. ❌ **Not a headless library**: It's a complete design system, not a utility to cherry-pick from
 6. ❌ **Web component complexity**: Custom elements add SSR/hydration/testing concerns
 
-The current approach ([@react-aria for Modal](#why-react-aria-for-modal), [native ARIA for Tabs](#why-native-aria-for-tabs)) is better suited because it provides accessible behavior primitives without imposing external design opinions or unnecessary dependencies.
+The current approach ([native `<dialog>` for Modal](#why-native-dialog-for-modal), [native ARIA for Tabs](#why-native-aria-for-tabs)) is better suited because it uses browser-native primitives without imposing external design opinions or unnecessary dependencies.
 
 ### Provider Summary
 
 After the migration, the design system uses **3 UI providers**, each for its strengths:
 
-| Provider         | Used in                             | Purpose                                               |
-| ---------------- | ----------------------------------- | ----------------------------------------------------- |
-| **@react-aria**  | datepicker, modal                   | Accessible form components, dialog/overlay management |
-| **@floating-ui** | tooltip, dropdown, menu, datepicker | Floating element positioning                          |
-| **downshift**    | dropdown                            | Combobox/select state management                      |
+| Provider         | Used in                             | Purpose                             |
+| ---------------- | ----------------------------------- | ----------------------------------- |
+| **@react-aria**  | datepicker                          | Accessible calendar/date components |
+| **@floating-ui** | tooltip, dropdown, menu, datepicker | Floating element positioning        |
+| **downshift**    | dropdown                            | Combobox/select state management    |
+
+Modal and tabs now use **zero third-party UI dependencies** — native `<dialog>` and native ARIA respectively.
 
 ### @reach Package Audit
 
@@ -362,7 +378,7 @@ All `@reach/*` packages have been migrated:
 
 | @reach package  | Migrated to                                                   | When                |
 | --------------- | ------------------------------------------------------------- | ------------------- |
-| `@reach/dialog` | `@react-aria/dialog` + `@react-aria/overlays`                 | This migration      |
+| `@reach/dialog` | Native HTML `<dialog>` element                                | This migration      |
 | `@reach/tabs`   | Native ARIA implementation                                    | This migration      |
 | `@reach/menu`   | `@floating-ui/react`                                          | Previously migrated |
 | `@reach/router` | N/A — Gatsby's internal dependency (`@gatsbyjs/reach-router`) | Not ours to migrate |
@@ -377,13 +393,13 @@ All `@reach/*` packages have been migrated:
 
 ### Updated Dependencies
 
-| Package                  | Previous | New     | Notes                                                     |
-| ------------------------ | -------- | ------- | --------------------------------------------------------- |
-| `@reach/dialog`          | 0.16.2   | Removed | Replaced by `@react-aria/dialog` + `@react-aria/overlays` |
-| `@reach/tabs`            | 0.15.3   | Removed | Replaced by native ARIA implementation                    |
-| `react-collapse`         | 5.1.1    | Removed | Replaced by CSS grid animation (zero dependencies)        |
-| `@testing-library/react` | 10.4.9   | 16.3.0  | React 18 support                                          |
-| `@testing-library/dom`   | —        | 10.4.1  | New peer dependency                                       |
+| Package                  | Previous | New     | Notes                                              |
+| ------------------------ | -------- | ------- | -------------------------------------------------- |
+| `@reach/dialog`          | 0.16.2   | Removed | Replaced by native HTML `<dialog>` element         |
+| `@reach/tabs`            | 0.15.3   | Removed | Replaced by native ARIA implementation             |
+| `react-collapse`         | 5.1.1    | Removed | Replaced by CSS grid animation (zero dependencies) |
+| `@testing-library/react` | 10.4.9   | 16.3.0  | React 18 support                                   |
+| `@testing-library/dom`   | —        | 10.4.1  | New peer dependency                                |
 
 ### Unchanged Dependencies (React 18 Compatible)
 
