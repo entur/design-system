@@ -73,6 +73,7 @@ This enables the automatic JSX runtime, so you no longer need `import React from
 | `Accordion`       | ❌ No               | ✅ New props      | ✅ Yes (see below) |
 | `AccordionItem`   | ❌ No               | ✅ New props      | ✅ Yes (see below) |
 | `BaseExpand`      | ❌ No               | ✅ New props      | ✅ Yes (see below) |
+| `useRandomId`     | ⚠️ Deprecated       | ❌ No             | ❌ No              |
 
 All existing props — including the `as` prop for polymorphic rendering — continue to work as before.
 
@@ -177,6 +178,36 @@ This also affects `SideNavigationGroup` in `@entur/menu`, which uses `BaseExpand
 - Most consumers need no changes — the new default behavior is better for accessibility and performance
 - If you depend on collapsed content being removed from the DOM, add `unmountOnClose={true}`
 - If you want controlled accordion behavior, you can now use `openId` and `onToggle` on `Accordion`
+
+### @entur/utils
+
+#### `useRandomId` is deprecated
+
+`useRandomId` from `@entur/utils` is now deprecated. React 18 provides `useId()` natively, which serves the same purpose. Replace usages as follows:
+
+**Before:**
+
+```tsx
+import { useRandomId } from '@entur/utils';
+
+const MyComponent = () => {
+  const id = useRandomId('eds-my-component');
+  return <div id={id}>...</div>;
+};
+```
+
+**After:**
+
+```tsx
+import { useId } from 'react';
+
+const MyComponent = () => {
+  const id = `eds-my-component${useId()}`;
+  return <div id={id}>...</div>;
+};
+```
+
+`useRandomId` will continue to work (it delegates to `useId()` internally), but will be removed in a future major version.
 
 ### React 18 Behavioral Changes
 
