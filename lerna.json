@@ -4,7 +4,8 @@
   "packages": ["packages/*", "apps/*", "tools/*"],
   "command": {
     "version": {
-      "message": "chore(release): publish"
+      "message": "chore(release): publish",
+      "changelogPreset": "./tools/conventional-changelog-entur"
     }
   },
   "$schema": "node_modules/lerna/schemas/lerna-schema.json"
