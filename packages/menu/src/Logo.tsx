@@ -53,22 +53,30 @@ export const Logo: LogoComponent = React.forwardRef(
         href={typeof Element !== 'string' || Element === 'a' ? href : undefined}
         {...rest}
       >
-        <EnturSvgLogo className="eds-logo__svg" />
+        <EnturSvgLogo
+          className="eds-logo__svg"
+          label={productName ? `Entur ${productName} logo` : 'Entur logo'}
+        />
         {productName && (
-          <span className="eds-logo__product-name">{productName}</span>
+          <span className="eds-logo__product-name" aria-hidden="true">
+            {productName}
+          </span>
         )}
       </Element>
     );
   },
 );
 
-const EnturSvgLogo: React.FC<{ className?: string }> = ({ className }) => (
+const EnturSvgLogo: React.FC<{ className?: string; label: string }> = ({
+  className,
+  label,
+}) => (
   <svg
     className={className}
     viewBox="0 0 68.625 20.8254"
     xmlns="http://www.w3.org/2000/svg"
     role="img"
-    aria-label="Entur"
+    aria-label={label}
     focusable="false"
   >
     {/* E */}

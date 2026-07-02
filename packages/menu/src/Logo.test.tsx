@@ -60,3 +60,21 @@ test('forwards additional props', () => {
   const { container } = render(<Logo data-testid="logo" />);
   expect(container.firstChild).toHaveAttribute('data-testid', 'logo');
 });
+
+test('SVG has combined aria-label with product name', () => {
+  const { container } = render(<Logo productName="Miljødata" />);
+  const svg = container.querySelector('svg');
+  expect(svg).toHaveAttribute('aria-label', 'Entur Miljødata logo');
+});
+
+test('SVG has "Entur logo" aria-label without product name', () => {
+  const { container } = render(<Logo />);
+  const svg = container.querySelector('svg');
+  expect(svg).toHaveAttribute('aria-label', 'Entur logo');
+});
+
+test('product name span is aria-hidden', () => {
+  const { container } = render(<Logo productName="Tavla" />);
+  const span = container.querySelector('.eds-logo__product-name');
+  expect(span).toHaveAttribute('aria-hidden', 'true');
+});
