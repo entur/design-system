@@ -18276,6 +18276,14 @@ __metadata:
   languageName: node
   linkType: hard
 
+"conventional-changelog-entur@workspace:tools/conventional-changelog-entur":
+  version: 0.0.0-use.local
+  resolution: "conventional-changelog-entur@workspace:tools/conventional-changelog-entur"
+  dependencies:
+    conventional-changelog-angular: "npm:^7.0.0"
+  languageName: unknown
+  linkType: soft
+
 "conventional-changelog-preset-loader@npm:^3.0.0":
   version: 3.0.0
   resolution: "conventional-changelog-preset-loader@npm:3.0.0"

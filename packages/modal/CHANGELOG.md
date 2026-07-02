@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-next.0](https://github.com/entur/design-system/compare/@entur/modal@1.8.15...@entur/modal@2.0.0-next.0) (2026-07-02)
+
+### Bug Fixes
+
+- **modal:** give Drawer dialog an accessible name ([fdb13ca](https://github.com/entur/design-system/commit/fdb13caba4c4568a2d32a3750e3778989ffdba00))
+- **modal:** remove React.FC in favor of typed function parameters ([3b9df2d](https://github.com/entur/design-system/commit/3b9df2d028373a86ca2326e798c640abb9d1b2b4))
+- **tab, expand, modal, utils:** fix React 18 type errors and clean up [@reach](https://github.com/reach) leftovers ([2699574](https://github.com/entur/design-system/commit/269957479190189b0b3e1b2f49b174b5a69413c2))
+
+### Features
+
+- **modal:** respect prefers-reduced-motion ([e0ffd1b](https://github.com/entur/design-system/commit/e0ffd1b7160ee181f6c79af203d0a1dff7da0ec0))
+
 ## [1.8.15](https://github.com/entur/design-system/compare/@entur/modal@1.8.13...@entur/modal@1.8.15) (2026-06-22)
 
 **Note:** Version bump only for package @entur/modal

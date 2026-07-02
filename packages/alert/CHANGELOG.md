@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-next.0](https://github.com/entur/design-system/compare/@entur/alert@0.19.3...@entur/alert@1.0.0-next.0) (2026-07-02)
+
+### Bug Fixes
+
+- **alert:** remove React.FC in favor of typed function parameters ([b21329d](https://github.com/entur/design-system/commit/b21329d45665d1c746fe9c3d067522269caf2be5))
+
 ## [0.19.3](https://github.com/entur/design-system/compare/@entur/alert@0.19.1...@entur/alert@0.19.3) (2026-06-22)
 
 **Note:** Version bump only for package @entur/alert

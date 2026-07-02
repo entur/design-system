@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.20.2-next.0](https://github.com/entur/design-system/compare/@entur/documentation@6.20.1...@entur/documentation@6.20.2-next.0) (2026-07-02)
+
+### Bug Fixes
+
+- **website:** use explicit grid placement props in page header ([8830ee2](https://github.com/entur/design-system/commit/8830ee2dd7c36951f65b1025c1ae6e5548d9eaf6))
+
 ## [6.20.1](https://github.com/entur/design-system/compare/@entur/documentation@6.20.0...@entur/documentation@6.20.1) (2026-06-29)
 
 **Note:** Version bump only for package @entur/documentation

@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.0.0-next.0](https://github.com/entur/design-system/compare/@entur/expand@3.7.11...@entur/expand@4.0.0-next.0) (2026-07-02)
+
+### Bug Fixes
+
+- **expand:** fix prefers-reduced-motion selector and type name typo ([daafa6a](https://github.com/entur/design-system/commit/daafa6aaee521058778c804794f01e88d1141fb0))
+- **expand:** remove React.FC in favor of typed function parameters ([5615fcc](https://github.com/entur/design-system/commit/5615fcc1a2614f86498543e878b0efef2aa00cc6))
+- **tab, expand, modal, utils:** fix React 18 type errors and clean up [@reach](https://github.com/reach) leftovers ([2699574](https://github.com/entur/design-system/commit/269957479190189b0b3e1b2f49b174b5a69413c2))
+
+- feat(expand)!: add unmountOnClose prop and proper controlled mode ([abcbc4e](https://github.com/entur/design-system/commit/abcbc4e00da1f02daa22fc0ba322154557f2c159))
+
+### Features
+
+- **expand:** add forwardRef support to all expand components ([84496d3](https://github.com/entur/design-system/commit/84496d385575b4b69e49d6290c4f41158637e914))
+- **expand:** reduce css specificity for all expand classes to 0,1,0 ([05f443e](https://github.com/entur/design-system/commit/05f443e95eaf2e23af89be13d84404fb0b88bb3f))
+- **expand:** replace react-collapse with CSS grid animation ([704a0c1](https://github.com/entur/design-system/commit/704a0c17515c022d36252a5dbdc5ad7c895fc1a0))
+
+### BREAKING CHANGES
+
+- **expand:** New specificity for classes could lead to visual changes
+  if you have overridden expand classes
+- Expand components now keep content mounted in the DOM
+  when closed by default. Use unmountOnClose={true} to get the previous
+  behavior where content is unmounted on close. ExpandableText rest props
+  are now applied to the outer wrapper div instead of child components.
+
 ## [3.7.11](https://github.com/entur/design-system/compare/@entur/expand@3.7.9...@entur/expand@3.7.11) (2026-06-22)
 
 **Note:** Version bump only for package @entur/expand

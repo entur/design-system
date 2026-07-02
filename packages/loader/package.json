@@ -1,6 +1,6 @@
 {
   "name": "@entur/loader",
-  "version": "0.7.3",
+  "version": "1.0.0-next.0",
   "license": "EUPL-1.2",
   "main": "dist/loader.cjs.js",
   "module": "dist/loader.esm.js",

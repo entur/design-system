@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0-next.0](https://github.com/entur/design-system/compare/@entur/typography@2.1.11...@entur/typography@3.0.0-next.0) (2026-07-02)
+
+### Bug Fixes
+
+- **typography:** remove React.FC in favor of typed function parameters ([f3232fe](https://github.com/entur/design-system/commit/f3232fe8eaf99a6bb94aeb3844197e82bea38c00))
+
 ## [2.1.11](https://github.com/entur/design-system/compare/@entur/typography@2.1.9...@entur/typography@2.1.11) (2026-06-22)
 
 **Note:** Version bump only for package @entur/typography

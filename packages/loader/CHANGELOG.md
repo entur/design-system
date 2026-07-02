@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-next.0](https://github.com/entur/design-system/compare/@entur/loader@0.7.3...@entur/loader@1.0.0-next.0) (2026-07-02)
+
+### Bug Fixes
+
+- **loader:** remove React.FC in favor of typed function parameters ([38fd7ac](https://github.com/entur/design-system/commit/38fd7ac2f33832fec46f179879d4886d37c028a9))
+
 ## [0.7.3](https://github.com/entur/design-system/compare/@entur/loader@0.7.1...@entur/loader@0.7.3) (2026-06-22)
 
 **Note:** Version bump only for package @entur/loader

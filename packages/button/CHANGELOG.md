@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-next.0](https://github.com/entur/design-system/compare/@entur/button@4.0.10...@entur/button@5.0.0-next.0) (2026-07-02)
+
+### Bug Fixes
+
+- **button:** remove React.FC in favor of typed function parameters ([1b90ece](https://github.com/entur/design-system/commit/1b90ecefac24ceeb3b53aec6bb3f6b2c142a5794))
+
 ## [4.0.10](https://github.com/entur/design-system/compare/@entur/button@4.0.8...@entur/button@4.0.10) (2026-06-22)
 
 **Note:** Version bump only for package @entur/button

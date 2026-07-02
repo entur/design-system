@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-next.0](https://github.com/entur/design-system/compare/@entur/fileupload@0.5.12...@entur/fileupload@1.0.0-next.0) (2026-07-02)
+
+### Bug Fixes
+
+- **fileupload:** remove React.FC in favor of typed function parameters ([a68bbb6](https://github.com/entur/design-system/commit/a68bbb6ecf2b9a952f9155ab6c7569c56868f4cc))
+
 ## [0.5.12](https://github.com/entur/design-system/compare/@entur/fileupload@0.5.10...@entur/fileupload@0.5.12) (2026-06-22)
 
 **Note:** Version bump only for package @entur/fileupload

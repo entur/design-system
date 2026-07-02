@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-next.0](https://github.com/entur/design-system/compare/@entur/tab@0.7.1...@entur/tab@1.0.0-next.0) (2026-07-02)
+
+### Bug Fixes
+
+- **tab, expand, modal, utils:** fix React 18 type errors and clean up [@reach](https://github.com/reach) leftovers ([2699574](https://github.com/entur/design-system/commit/269957479190189b0b3e1b2f49b174b5a69413c2))
+- **tab:** add Tab as prop test and fix type attribute for as='button' edge case ([be16ca2](https://github.com/entur/design-system/commit/be16ca207dce58558000e4e42738af5b3712be4c))
+- **tab:** remove React.FC in favor of typed function parameters ([12278c8](https://github.com/entur/design-system/commit/12278c8eda759f2e0aacbd2896c9fc325437c1b3))
+- **tab:** restore functional as prop in all tab components ([a7f9e96](https://github.com/entur/design-system/commit/a7f9e963984b6346b8d5e0749af63475baf7fdcd))
+
+- feat(tab)!: replace @reach/tabs with native ARIA implementation ([efb8fdf](https://github.com/entur/design-system/commit/efb8fdfbfaf320e24574408740e040cf6d7c746a))
+
+### BREAKING CHANGES
+
+- Stricter TypeScript types replace [key: string]: any.
+  data-reach-\* attributes removed from DOM. Generated element IDs use new
+  format. See REACT-18-MIGRATION.md for migration steps.
+
+AI-assistant: Claude Code (claude-opus-4-6)
+
 ## [0.7.1](https://github.com/entur/design-system/compare/@entur/tab@0.7.0...@entur/tab@0.7.1) (2026-06-22)
 
 **Note:** Version bump only for package @entur/tab

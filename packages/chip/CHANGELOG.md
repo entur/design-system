@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-next.0](https://github.com/entur/design-system/compare/@entur/chip@0.10.15...@entur/chip@1.0.0-next.0) (2026-07-02)
+
+### Bug Fixes
+
+- **chip:** remove React.FC in favor of typed function parameters ([1aaf52e](https://github.com/entur/design-system/commit/1aaf52ea18835588448803309a0fb266a4d80836))
+
 ## [0.10.15](https://github.com/entur/design-system/compare/@entur/chip@0.10.13...@entur/chip@0.10.15) (2026-06-22)
 
 **Note:** Version bump only for package @entur/chip

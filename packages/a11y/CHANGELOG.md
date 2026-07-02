@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-next.0](https://github.com/entur/design-system/compare/@entur/a11y@0.2.112...@entur/a11y@1.0.0-next.0) (2026-07-02)
+
+### Bug Fixes
+
+- **a11y:** remove React.FC in favor of typed function parameters ([f35af16](https://github.com/entur/design-system/commit/f35af165bc605f134e7077c89aeb150846234cce))
+
 ## [0.2.112](https://github.com/entur/design-system/compare/@entur/a11y@0.2.111...@entur/a11y@0.2.112) (2026-06-22)
 
 **Note:** Version bump only for package @entur/a11y

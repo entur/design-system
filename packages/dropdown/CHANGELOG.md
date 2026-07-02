@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.0.0-next.0](https://github.com/entur/design-system/compare/@entur/dropdown@8.1.7...@entur/dropdown@9.0.0-next.0) (2026-07-02)
+
+### Bug Fixes
+
+- **dropdown:** fix typeahead tests for React 18 automatic batching ([2cb2a69](https://github.com/entur/design-system/commit/2cb2a69b2dc6b87013c8d24c4229359af80e1967))
+
 ## [8.1.7](https://github.com/entur/design-system/compare/@entur/dropdown@8.1.5...@entur/dropdown@8.1.7) (2026-06-22)
 
 **Note:** Version bump only for package @entur/dropdown

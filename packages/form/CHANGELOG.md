@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.0.0-next.0](https://github.com/entur/design-system/compare/@entur/form@9.3.7...@entur/form@10.0.0-next.0) (2026-07-02)
+
+### Bug Fixes
+
+- **form:** remove React.FC in favor of typed function parameters ([d7baa79](https://github.com/entur/design-system/commit/d7baa796bc8097ce8c6dada2a86ab1692078b317))
+
 ## [9.3.7](https://github.com/entur/design-system/compare/@entur/form@9.3.5...@entur/form@9.3.7) (2026-06-22)
 
 **Note:** Version bump only for package @entur/form

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-next.0](https://github.com/entur/design-system/compare/@entur/table@4.10.15...@entur/table@5.0.0-next.0) (2026-07-02)
+
+### Bug Fixes
+
+- **table:** remove React.FC in favor of typed function parameters ([5c2511c](https://github.com/entur/design-system/commit/5c2511ccc34acf1ea31a76bdfcc5b67fdc3ed1ff))
+
 ## [4.10.15](https://github.com/entur/design-system/compare/@entur/table@4.10.13...@entur/table@4.10.15) (2026-06-22)
 
 **Note:** Version bump only for package @entur/table

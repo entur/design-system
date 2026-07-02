@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.0.0-next.0](https://github.com/entur/design-system/compare/@entur/travel@7.0.3...@entur/travel@8.0.0-next.0) (2026-07-02)
+
+### Bug Fixes
+
+- **travel:** remove React.FC in favor of typed function parameters ([9cfdbb2](https://github.com/entur/design-system/commit/9cfdbb2e79b04708e75bb08cb8f84dc284dea370))
+
 ## [7.0.3](https://github.com/entur/design-system/compare/@entur/travel@7.0.1...@entur/travel@7.0.3) (2026-06-22)
 
 **Note:** Version bump only for package @entur/travel

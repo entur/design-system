@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.0.0-next.0](https://github.com/entur/design-system/compare/@entur/menu@6.3.0...@entur/menu@7.0.0-next.0) (2026-07-02)
+
+### Bug Fixes
+
+- **menu:** remove React.FC in favor of typed function parameters ([5ad88bc](https://github.com/entur/design-system/commit/5ad88bc9b99bada64378bafdde77a1963ce32ea2))
+
 # [6.3.0](https://github.com/entur/design-system/compare/@entur/menu@6.2.1...@entur/menu@6.3.0) (2026-06-22)
 
 ### Features

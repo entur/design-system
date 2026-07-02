@@ -1,6 +1,6 @@
 {
   "name": "@entur/typography",
-  "version": "2.1.11",
+  "version": "3.0.0-next.0",
   "license": "SEE LICENSE IN README.md",
   "main": "./dist/typography.cjs.js",
   "module": "./dist/typography.esm.js",

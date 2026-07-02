@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0-next.0](https://github.com/entur/design-system/compare/@entur/tooltip@5.3.15...@entur/tooltip@6.0.0-next.0) (2026-07-02)
+
+### Bug Fixes
+
+- **tooltip:** remove React.FC in favor of typed function parameters ([9884951](https://github.com/entur/design-system/commit/9884951a95e242b426b1e9aea2e7f1cbea762647))
+
 ## [5.3.15](https://github.com/entur/design-system/compare/@entur/tooltip@5.3.13...@entur/tooltip@5.3.15) (2026-06-22)
 
 **Note:** Version bump only for package @entur/tooltip
