@@ -1,4 +1,3 @@
-import React from 'react';
 import { cleanup, render } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import { Heading } from '../components/Heading';
