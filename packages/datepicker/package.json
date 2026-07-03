@@ -58,5 +58,16 @@
     "typescript": "^5.9.2",
     "vite": "^7.3.2",
     "vite-plugin-dts": "^4.5.4"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/datepicker.esm.js",
+      "require": "./dist/datepicker.cjs.js",
+      "default": "./dist/datepicker.esm.js"
+    },
+    "./styles": "./dist/styles.css",
+    "./dist/styles.css": "./dist/styles.css",
+    "./package.json": "./package.json"
   }
 }
