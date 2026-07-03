@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.113](https://github.com/entur/design-system/compare/@entur/a11y@0.2.112...@entur/a11y@0.2.113) (2026-07-03)
+
+**Note:** Version bump only for package @entur/a11y
+
 ## [0.2.112](https://github.com/entur/design-system/compare/@entur/a11y@0.2.111...@entur/a11y@0.2.112) (2026-06-22)
 
 **Note:** Version bump only for package @entur/a11y

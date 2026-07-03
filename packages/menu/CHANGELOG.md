@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.3.1](https://github.com/entur/design-system/compare/@entur/menu@6.3.0...@entur/menu@6.3.1) (2026-07-03)
+
+### Bug Fixes
+
+- **menu/logo:** announce logo as single cohesive image for screen readers ([37c93c9](https://github.com/entur/design-system/commit/37c93c9af67133113304d4f8cf426cadc627510b))
+
 # [6.3.0](https://github.com/entur/design-system/compare/@entur/menu@6.2.1...@entur/menu@6.3.0) (2026-06-22)
 
 ### Features

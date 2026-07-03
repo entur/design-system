@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.0.4](https://github.com/entur/design-system/compare/@entur/icons@9.0.3...@entur/icons@9.0.4) (2026-07-03)
+
+**Note:** Version bump only for package @entur/icons
+
 ## [9.0.3](https://github.com/entur/design-system/compare/@entur/icons@9.0.2...@entur/icons@9.0.3) (2026-06-22)
 
 ### Bug Fixes
