@@ -1,4 +1,3 @@
-import React from 'react';
 import classNames from 'classnames';
 import { DownArrowIcon } from '@entur/icons';
 import './ExpandArrow.scss';
