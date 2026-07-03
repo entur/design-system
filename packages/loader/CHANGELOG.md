@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-next.1](https://github.com/entur/design-system/compare/@entur/loader@1.0.0-next.0...@entur/loader@1.0.0-next.1) (2026-07-03)
+
+- feat(loader)!: add exports field for ESM-compatible module resolution ([a4c70f9](https://github.com/entur/design-system/commit/a4c70f922768dba93eabd479e052537393a7894d))
+
+### BREAKING CHANGES
+
+- undocumented deep imports into dist/ may break.
+
 # [1.0.0-next.0](https://github.com/entur/design-system/compare/@entur/loader@0.7.3...@entur/loader@1.0.0-next.0) (2026-07-02)
 
 ### Bug Fixes

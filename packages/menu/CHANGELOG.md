@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.0.0-next.1](https://github.com/entur/design-system/compare/@entur/menu@7.0.0-next.0...@entur/menu@7.0.0-next.1) (2026-07-03)
+
+- feat(menu)!: add exports field for ESM-compatible module resolution ([ac4327b](https://github.com/entur/design-system/commit/ac4327ba31d100ecdf0fd6f2dfbd81702acaf622))
+
+### BREAKING CHANGES
+
+- undocumented deep imports into dist/ may break.
+
 # [7.0.0-next.0](https://github.com/entur/design-system/compare/@entur/menu@6.3.0...@entur/menu@7.0.0-next.0) (2026-07-02)
 
 ### Bug Fixes

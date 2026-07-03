@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.0.0-next.1](https://github.com/entur/design-system/compare/@entur/layout@4.0.0-next.0...@entur/layout@4.0.0-next.1) (2026-07-03)
+
+- feat(layout)!: tighten exports field and remove dist/\* wildcard ([03f90f7](https://github.com/entur/design-system/commit/03f90f796776513703f4fe327c1f858d02b46740))
+
+### BREAKING CHANGES
+
+- undocumented deep imports into dist/ may break.
+
 # [4.0.0-next.0](https://github.com/entur/design-system/compare/@entur/layout@3.7.4...@entur/layout@4.0.0-next.0) (2026-07-02)
 
 ### Bug Fixes

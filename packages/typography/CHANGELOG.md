@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0-next.1](https://github.com/entur/design-system/compare/@entur/typography@3.0.0-next.0...@entur/typography@3.0.0-next.1) (2026-07-03)
+
+- feat(typography)!: tighten exports field and remove dist/\* wildcard ([0411e7d](https://github.com/entur/design-system/commit/0411e7d0827e4188a968a1f050facc949de48f93))
+
+### BREAKING CHANGES
+
+- undocumented deep imports into dist/ may break.
+
 # [3.0.0-next.0](https://github.com/entur/design-system/compare/@entur/typography@2.1.11...@entur/typography@3.0.0-next.0) (2026-07-02)
 
 ### Bug Fixes

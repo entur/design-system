@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.20.2-next.1](https://github.com/entur/design-system/compare/@entur/documentation@6.20.2-next.0...@entur/documentation@6.20.2-next.1) (2026-07-03)
+
+### Bug Fixes
+
+- **website:** replace deep @entur/icons/dist import with public API ([190ad64](https://github.com/entur/design-system/commit/190ad64a88a3647b4bf69c13843d8a89eb9eada5))
+
 ## [6.20.2-next.0](https://github.com/entur/design-system/compare/@entur/documentation@6.20.1...@entur/documentation@6.20.2-next.0) (2026-07-02)
 
 ### Bug Fixes
