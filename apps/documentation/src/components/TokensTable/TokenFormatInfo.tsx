@@ -6,7 +6,7 @@ import { SmallAlertBox } from '@entur/alert';
 import { useSettings } from '@providers/SettingsContext';
 
 import { AllTokensTableProps } from './types';
-import { DownArrowIcon } from '@entur/icons/dist';
+import { DownArrowIcon } from '@entur/icons';
 
 type TokenTableFormatInfoProps = {
   tokenKey: AllTokensTableProps['tokenKey'];
