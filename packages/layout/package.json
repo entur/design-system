@@ -19,9 +19,11 @@
       "default": "./dist/beta/esm/index.mjs"
     },
     "./beta/styles": "./dist/beta/styles/index.css",
-    "./dist/*": "./dist/*",
+    "./styles": "./dist/styles.css",
+    "./dist/styles.css": "./dist/styles.css",
     "./dist/beta": null,
-    "./dist/beta/*": null
+    "./dist/beta/*": null,
+    "./package.json": "./package.json"
   },
   "sideEffects": [
     "./dist/**/*.css"
