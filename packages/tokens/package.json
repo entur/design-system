@@ -44,5 +44,40 @@
   "dependencies": {
     "flat": "^5.0.2",
     "hex-rgb": "^4.3.0"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/tokens.esm.js",
+      "require": "./dist/tokens.cjs.js",
+      "default": "./dist/tokens.esm.js"
+    },
+    "./styles": "./dist/styles.css",
+    "./styles/base": "./dist/base.css",
+    "./styles/base.scss": "./dist/base.scss",
+    "./styles/semantic": "./dist/semantic.css",
+    "./styles/semantic.scss": "./dist/semantic.scss",
+    "./styles/primitive": "./dist/primitive.css",
+    "./styles/primitive.scss": "./dist/primitive.scss",
+    "./styles/transport": "./dist/transport.css",
+    "./styles/transport.scss": "./dist/transport.scss",
+    "./styles/data": "./dist/data.css",
+    "./styles/data.scss": "./dist/data.scss",
+    "./styles/styles.scss": "./dist/styles.scss",
+    "./dist/styles.css": "./dist/styles.css",
+    "./dist/styles.scss": "./dist/styles.scss",
+    "./dist/base.css": "./dist/base.css",
+    "./dist/base.scss": "./dist/base.scss",
+    "./dist/semantic.css": "./dist/semantic.css",
+    "./dist/semantic.scss": "./dist/semantic.scss",
+    "./dist/primitive.css": "./dist/primitive.css",
+    "./dist/primitive.scss": "./dist/primitive.scss",
+    "./dist/transport.css": "./dist/transport.css",
+    "./dist/transport.scss": "./dist/transport.scss",
+    "./dist/data.css": "./dist/data.css",
+    "./dist/data.scss": "./dist/data.scss",
+    "./dist/base": "./dist/base.scss",
+    "./dist/styles": "./dist/styles.scss",
+    "./package.json": "./package.json"
   }
 }
