@@ -13,8 +13,13 @@
       "default": "./dist/utils.esm.js"
     },
     "./styles/layers": "./dist/layers.scss",
-    "./package.json": "./package.json",
-    "./dist/*": "./dist/*"
+    "./styles/breakpoints": "./dist/breakpoints.scss",
+    "./styles/color-utils": "./dist/color-utils.scss",
+    "./dist/layers.scss": "./dist/layers.scss",
+    "./dist/breakpoints.scss": "./dist/breakpoints.scss",
+    "./dist/breakpoints": "./dist/breakpoints.scss",
+    "./dist/color-utils.scss": "./dist/color-utils.scss",
+    "./package.json": "./package.json"
   },
   "sideEffects": [
     "./dist/**/*.css"
