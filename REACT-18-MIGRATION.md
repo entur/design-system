@@ -55,7 +55,7 @@ This enables the automatic JSX runtime, so you no longer need `import React from
 
 ### Quick Summary: Will There Be Breaking API Changes?
 
-`@entur/modal` has **breaking changes**: `onDismiss` is now required and the DOM output changed from `<div>` to native `<dialog>`. The `@entur/tab` package has **stricter TypeScript types** and **changed DOM output** (see [@entur/tab](#enturtab) below). The `@entur/expand` package has **new props** and a **behavioral change** (content now stays in the DOM when collapsed instead of being unmounted). See [@entur/expand](#enturexpand) below.
+`@entur/modal` has **breaking changes**: `onDismiss` is now required and the DOM output changed from `<div>` to native `<dialog>`. The `@entur/tab` package has **stricter TypeScript types** and **changed DOM output** (see [@entur/tab](#enturtab) below). The `@entur/expand` package has **new props** and a **behavioral change** (content now stays in the DOM when collapsed instead of being unmounted). See [@entur/expand](#enturexpand) below. All packages now have **strict `exports` in `package.json`** — deep imports into `dist/` that aren't explicitly listed will break. See [ESM `exports`](#esm-exports) below.
 
 | Component         | Public API changed? | Props changed?                                 | Behavior changed?       |
 | ----------------- | ------------------- | ---------------------------------------------- | ----------------------- |
@@ -83,6 +83,68 @@ All packages now require:
 
 - `react: >=18.0.0` (previously `>=16.8.0`)
 - `react-dom: >=18.0.0` (previously `>=16.8.0`)
+
+### ESM `exports`
+
+All `@entur/*` packages now declare a strict [`exports`](https://nodejs.org/api/packages.html#exports) field in `package.json`. This gives bundlers proper ESM/CJS resolution without alias workarounds, but it also **restricts which paths can be imported**.
+
+**What changed:**
+
+- Every package now has `"exports"` with explicit `types`, `import`, `require`, and `default` conditions.
+- Deep imports into `dist/` that are not explicitly listed will fail (e.g. `@entur/button/dist/Button` no longer works).
+- CSS can be imported via a clean `./styles` subpath: `import '@entur/button/styles'` instead of `import '@entur/button/dist/styles.css'`. The old `./dist/styles.css` path still works.
+
+**What consumers need to do:**
+
+1. **Remove custom alias/resolve configuration** — If you added bundler aliases to resolve `@entur/*` ESM entry points, you can remove them. The `exports` field handles this natively.
+
+2. **Fix deep `dist/` imports** — If you import internal files like `@entur/button/dist/Button`, replace with the public API import:
+
+   ```tsx
+   // ❌ Before (will break)
+   import { Button } from '@entur/button/dist/Button';
+
+   // ✅ After
+   import { Button } from '@entur/button';
+   ```
+
+3. **CSS imports** — Both old and new paths work:
+
+   ```tsx
+   // ✅ New (recommended)
+   import '@entur/button/styles';
+
+   // ✅ Still works
+   import '@entur/button/dist/styles.css';
+   ```
+
+**`@entur/tokens` style imports:**
+
+Token SCSS/CSS files are available via clean subpaths. Old `dist/` paths still work:
+
+```scss
+// ✅ New (recommended)
+@use '@entur/tokens/styles/base.scss' as *;
+@use '@entur/tokens/styles/semantic.scss' as *;
+@use '@entur/tokens/styles/styles.scss' as t;
+
+// ✅ Still works
+@use '@entur/tokens/dist/base.scss' as *;
+@use '@entur/tokens/dist/semantic.scss' as *;
+@use '@entur/tokens/dist/styles.scss' as t;
+```
+
+**`@entur/utils` SCSS imports:**
+
+```scss
+// ✅ New (recommended)
+@use '@entur/utils/styles/breakpoints' as breakpoint;
+@use '@entur/utils/styles/color-utils' as util;
+
+// ✅ Still works
+@use '@entur/utils/dist/breakpoints.scss' as breakpoint;
+@use '@entur/utils/dist/color-utils.scss' as util;
+```
 
 ### @entur/modal
 
