@@ -59,5 +59,16 @@
   },
   "dependencies": {
     "@entur/tokens": "workspace:^"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.js",
+      "default": "./dist/index.esm.js"
+    },
+    "./styles": "./dist/styles.css",
+    "./dist/styles.css": "./dist/styles.css",
+    "./package.json": "./package.json"
   }
 }
