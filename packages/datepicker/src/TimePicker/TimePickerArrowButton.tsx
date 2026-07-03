@@ -1,4 +1,3 @@
-import React from 'react';
 import classNames from 'classnames';
 
 import { IconButton } from '@entur/button';
