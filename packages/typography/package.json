@@ -22,10 +22,10 @@
     "./beta/styles": "./dist/beta/styles/index.css",
     "./fonts/*": "./fonts/*",
     "./scripts/*": "./scripts/*",
-    "./package.json": "./package.json",
-    "./dist/*": "./dist/*",
+    "./dist/styles.css": "./dist/styles.css",
     "./dist/beta": null,
-    "./dist/beta/*": null
+    "./dist/beta/*": null,
+    "./package.json": "./package.json"
   },
   "sideEffects": [
     "./dist/**/*.css"
