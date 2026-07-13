@@ -64,8 +64,8 @@ export type TextFieldProps = {
    */
   clearButtonAriaLabel?: string;
   /** Setter feedback-tekstens rolle for skjermlesere.
-   * true/'status' = aria-live="polite" (venter til brukeren er ferdig)
-   * 'alert' = aria-live="assertive" (avbryter umiddelbart)
+   * true/'status' = role="status" (venter til brukeren er ferdig)
+   * 'alert' = role="alert" (avbryter umiddelbart)
    * false = ingen automatisk annonsering
    * @default true
    */

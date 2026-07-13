@@ -487,7 +487,7 @@
       "defaultValue": {
         "value": "true"
       },
-      "description": "Setter feedback-tekstens rolle for skjermlesere.\ntrue/'status' = aria-live=\"polite\" (venter til brukeren er ferdig)\n'alert' = aria-live=\"assertive\" (avbryter umiddelbart)\nfalse = ingen automatisk annonsering",
+      "description": "Setter feedback-tekstens rolle for skjermlesere.\ntrue/'status' = role=\"status\" (venter til brukeren er ferdig)\n'alert' = role=\"alert\" (avbryter umiddelbart)\nfalse = ingen automatisk annonsering",
       "name": "ariaAlertOnFeedback",
       "declarations": [
         {

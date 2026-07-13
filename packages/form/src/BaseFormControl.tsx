@@ -60,8 +60,8 @@ export type BaseFormControlProps = React.HTMLAttributes<HTMLDivElement> & {
   disableLabelAnimation?: boolean;
   onClick?: (event: React.MouseEvent<HTMLElement>) => void;
   /** Setter feedback-tekstens rolle for skjermlesere.
-   * true/'status' = aria-live="polite" (venter til brukeren er ferdig)
-   * 'alert' = aria-live="assertive" (avbryter umiddelbart)
+   * true/'status' = role="status" (venter til brukeren er ferdig)
+   * 'alert' = role="alert" (avbryter umiddelbart)
    * false = ingen automatisk annonsering
    * @default true
    */
