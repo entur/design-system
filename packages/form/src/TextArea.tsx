@@ -43,6 +43,13 @@ export type TextAreaProps = {
    * @default "vertical"
    */
   resize?: 'vertical' | 'none';
+  /** Setter feedback-tekstens rolle for skjermlesere.
+   * true/'status' = aria-live="polite" (venter til brukeren er ferdig)
+   * 'alert' = aria-live="assertive" (avbryter umiddelbart)
+   * false = ingen automatisk annonsering
+   * @default true
+   */
+  ariaAlertOnFeedback?: boolean | 'alert' | 'status';
 } & React.TextareaHTMLAttributes<HTMLTextAreaElement>;
 
 export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
@@ -61,6 +68,7 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
       onChange,
       disableLabelAnimation,
       resize,
+      ariaAlertOnFeedback,
       ...rest
     },
     ref: React.Ref<HTMLTextAreaElement>,
@@ -82,6 +90,7 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
         labelTooltipPlacement={labelTooltipPlacement}
         labelProps={{ className: 'eds-textarea__label' }}
         disableLabelAnimation={disableLabelAnimation}
+        ariaAlertOnFeedback={ariaAlertOnFeedback}
         onClick={e => {
           if (e.target === e.currentTarget) textareaRef?.current?.focus();
         }}

@@ -188,6 +188,23 @@
       "type": {
         "name": "\"vertical\" | \"none\" | undefined"
       }
+    },
+    "ariaAlertOnFeedback": {
+      "defaultValue": {
+        "value": "true"
+      },
+      "description": "Setter feedback-tekstens rolle for skjermlesere.\ntrue/'status' = aria-live=\"polite\" (venter til brukeren er ferdig)\n'alert' = aria-live=\"assertive\" (avbryter umiddelbart)\nfalse = ingen automatisk annonsering",
+      "name": "ariaAlertOnFeedback",
+      "declarations": [
+        {
+          "fileName": "packages/form/src/TextArea.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "boolean | \"alert\" | \"status\" | undefined"
+      }
     }
   }
 }
