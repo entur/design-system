@@ -64,6 +64,8 @@ export const isResponsiveObject = <T>(
  * Only emits vars for breakpoints that were explicitly set; the SCSS cascade handles
  * inheritance (e.g. -m falls back to -base if unset).
  */
+const VALID_BREAKPOINTS = ['base', 's', 'm', 'lg', 'xl'] as const;
+
 export const toResponsiveCssVars = <T>(
   prefix: string,
   value: ResponsiveValue<T> | undefined,
@@ -72,6 +74,23 @@ export const toResponsiveCssVars = <T>(
   if (value === undefined) return {};
 
   if (isResponsiveObject(value)) {
+    if (process.env.NODE_ENV !== 'production') {
+      const unknown = Object.keys(value).filter(
+        k =>
+          !VALID_BREAKPOINTS.includes(k as (typeof VALID_BREAKPOINTS)[number]),
+      );
+      if (unknown.length > 0) {
+        console.warn(
+          `Unknown responsive breakpoint keys: ${unknown
+            .map(k => `"${k}"`)
+            .join(', ')}. ` +
+            `Valid keys are: ${VALID_BREAKPOINTS.join(
+              ', ',
+            )}. Unknown keys will be ignored.`,
+        );
+      }
+    }
+
     return {
       [`${prefix}-base`]: transform(value.base),
       ...(value.s !== undefined && { [`${prefix}-s`]: transform(value.s) }),
@@ -79,6 +98,21 @@ export const toResponsiveCssVars = <T>(
       ...(value.lg !== undefined && { [`${prefix}-lg`]: transform(value.lg) }),
       ...(value.xl !== undefined && { [`${prefix}-xl`]: transform(value.xl) }),
     };
+  }
+
+  if (typeof value === 'object' && value !== null) {
+    if (process.env.NODE_ENV !== 'production') {
+      console.warn(
+        `Responsive object is missing required "base" key. ` +
+          `Got keys: ${Object.keys(value)
+            .map(k => `"${k}"`)
+            .join(', ')}. ` +
+          `Valid keys are: ${VALID_BREAKPOINTS.join(
+            ', ',
+          )}. Value will be ignored.`,
+      );
+    }
+    return {};
   }
 
   return { [`${prefix}-base`]: transform(value as T) };
