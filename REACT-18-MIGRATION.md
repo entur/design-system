@@ -55,7 +55,7 @@ This enables the automatic JSX runtime, so you no longer need `import React from
 
 ### Quick Summary: Will There Be Breaking API Changes?
 
-`@entur/modal` has **breaking changes**: `onDismiss` is now required and the DOM output changed from `<div>` to native `<dialog>`. The `@entur/tab` package has **stricter TypeScript types** and **changed DOM output** (see [@entur/tab](#enturtab) below). The `@entur/expand` package has **new props** and a **behavioral change** (content now stays in the DOM when collapsed instead of being unmounted). See [@entur/expand](#enturexpand) below. All packages now have **strict `exports` in `package.json`** — deep imports into `dist/` that aren't explicitly listed will break. See [ESM `exports`](#esm-exports) below.
+`@entur/modal` has **breaking changes**: `onDismiss` is now required and the DOM output changed from `<div>` to native `<dialog>`. The `@entur/tab` package has **stricter TypeScript types** and **changed DOM output** (see [@entur/tab](#enturtab) below). The `@entur/expand` package has **new props** and a **behavioral change** (content now stays in the DOM when collapsed instead of being unmounted). See [@entur/expand](#enturexpand) below. The `@entur/layout` package has **breaking changes**: `LayoutWrapper` is removed, responsive breakpoint keys changed (`sm`→`base`, `md`→`m`), and the beta `Grid` no longer has a default gap. See [@entur/layout](#enturlayout) below. All packages now have **strict `exports` in `package.json`** — deep imports into `dist/` that aren't explicitly listed will break. See [ESM `exports`](#esm-exports) below.
 
 | Component         | Public API changed? | Props changed?                                 | Behavior changed?       |
 | ----------------- | ------------------- | ---------------------------------------------- | ----------------------- |
@@ -73,6 +73,8 @@ This enables the automatic JSX runtime, so you no longer need `import React from
 | `Accordion`       | ❌ No               | ✅ New props                                   | ✅ Yes (see below)      |
 | `AccordionItem`   | ❌ No               | ✅ New props                                   | ✅ Yes (see below)      |
 | `BaseExpand`      | ❌ No               | ✅ New props                                   | ✅ Yes (see below)      |
+| `LayoutWrapper`   | ✅ Yes (removed)    | N/A                                            | N/A                     |
+| `Grid` (beta)     | ❌ No               | ✅ New breakpoint keys, no default gap         | ✅ Yes (see below)      |
 | `useRandomId`     | ⚠️ Deprecated       | ❌ No                                          | ❌ No                   |
 
 All existing props — including the `as` prop for polymorphic rendering — continue to work as before.
@@ -251,6 +253,66 @@ This also affects `SideNavigationGroup` in `@entur/menu`, which uses `BaseExpand
 - Most consumers need no changes — the new default behavior is better for accessibility and performance
 - If you depend on collapsed content being removed from the DOM, add `unmountOnClose={true}`
 - If you want controlled accordion behavior, you can now use `openId` and `onToggle` on `Accordion`
+
+### @entur/layout
+
+#### `LayoutWrapper` removed
+
+`LayoutWrapper` has been removed. Use `Grid` from `@entur/layout/beta` directly to build your page layout.
+
+```tsx
+// ❌ Before
+import { LayoutWrapper } from '@entur/layout';
+
+<LayoutWrapper>{children}</LayoutWrapper>;
+
+// ✅ After
+import { Grid } from '@entur/layout/beta';
+
+<Grid
+  templateColumns={{
+    base: 'repeat(4, 1fr)',
+    m: 'repeat(8, 1fr)',
+    lg: 'repeat(12, 1fr)',
+  }}
+  columnGap={{ base: 's-m', m: 'm-l' }}
+>
+  {children}
+</Grid>;
+```
+
+#### Responsive breakpoint keys changed
+
+The beta `Grid` uses new responsive breakpoint keys. Update all responsive value objects:
+
+| Old key | New key |
+| ------- | ------- |
+| `sm`    | `base`  |
+| `md`    | `m`     |
+| `lg`    | `lg`    |
+| `xl`    | `xl`    |
+
+```tsx
+// ❌ Before
+<Grid.Item colSpan={{ sm: '1 / -1', md: '1 / -1', lg: '3 / -3' }}>
+
+// ✅ After
+<Grid.Item colSpan={{ base: '1 / -1', m: '1 / -1', lg: '3 / -3' }}>
+```
+
+#### Grid no longer has a default gap
+
+The beta `Grid` defaults to no gap. If you relied on a default or inherited gap (e.g. from a parent grid class), you must now set `gap`, `rowGap`, or `columnGap` explicitly on each `Grid`.
+
+```tsx
+// ❌ No gap — items will be flush against each other
+<Grid templateColumns="repeat(3, 1fr)">
+
+// ✅ Explicit gap
+<Grid templateColumns="repeat(3, 1fr)" gap="m">
+```
+
+Valid spacing values: `"2xs"`, `"xs"`, `"s"`, `"s-m"`, `"m"`, `"m-l"`, `"l"`, `"xl"`, `"2xl"` … `"11xl"`, `"none"`.
 
 ### @entur/utils
 
