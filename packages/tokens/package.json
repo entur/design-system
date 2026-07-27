@@ -52,16 +52,40 @@
       "require": "./dist/tokens.cjs.js",
       "default": "./dist/tokens.esm.js"
     },
-    "./styles": "./dist/styles.css",
-    "./styles/base": "./dist/base.css",
+    "./styles": {
+      "sass": "./dist/styles.scss",
+      "style": "./dist/styles.css",
+      "default": "./dist/styles.css"
+    },
+    "./styles/base": {
+      "sass": "./dist/base.scss",
+      "style": "./dist/base.css",
+      "default": "./dist/base.css"
+    },
+    "./styles/semantic": {
+      "sass": "./dist/semantic.scss",
+      "style": "./dist/semantic.css",
+      "default": "./dist/semantic.css"
+    },
+    "./styles/primitive": {
+      "sass": "./dist/primitive.scss",
+      "style": "./dist/primitive.css",
+      "default": "./dist/primitive.css"
+    },
+    "./styles/transport": {
+      "sass": "./dist/transport.scss",
+      "style": "./dist/transport.css",
+      "default": "./dist/transport.css"
+    },
+    "./styles/data": {
+      "sass": "./dist/data.scss",
+      "style": "./dist/data.css",
+      "default": "./dist/data.css"
+    },
     "./styles/base.scss": "./dist/base.scss",
-    "./styles/semantic": "./dist/semantic.css",
     "./styles/semantic.scss": "./dist/semantic.scss",
-    "./styles/primitive": "./dist/primitive.css",
     "./styles/primitive.scss": "./dist/primitive.scss",
-    "./styles/transport": "./dist/transport.css",
     "./styles/transport.scss": "./dist/transport.scss",
-    "./styles/data": "./dist/data.css",
     "./styles/data.scss": "./dist/data.scss",
     "./styles/styles.scss": "./dist/styles.scss",
     "./dist/styles.css": "./dist/styles.css",
