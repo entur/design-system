@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.0.0-next.2](https://github.com/entur/design-system/compare/@entur/form@10.0.0-next.1...@entur/form@10.0.0-next.2) (2026-07-27)
+
+**Note:** Version bump only for package @entur/form
+
 # [10.0.0-next.1](https://github.com/entur/design-system/compare/@entur/form@10.0.0-next.0...@entur/form@10.0.0-next.1) (2026-07-03)
 
 - feat(form)!: add exports field for ESM-compatible module resolution ([a4a8af6](https://github.com/entur/design-system/commit/a4a8af698ebc665a91ffc6c1b32d9054fedc5710))

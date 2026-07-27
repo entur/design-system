@@ -1,6 +1,6 @@
 {
   "name": "@entur/a11y",
-  "version": "1.0.0-next.1",
+  "version": "1.0.0-next.2",
   "license": "EUPL-1.2",
   "main": "dist/a11y.cjs.js",
   "module": "dist/a11y.esm.js",

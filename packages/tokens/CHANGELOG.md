@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.0.0-next.1](https://github.com/entur/design-system/compare/@entur/tokens@4.0.0-next.0...@entur/tokens@4.0.0-next.1) (2026-07-27)
+
+### Features
+
+- **tokens:** add sass conditional exports for pkg: importer support ([9adc4a5](https://github.com/entur/design-system/commit/9adc4a57849d12a228346d604b62fa340ea266a5))
+
 # [4.0.0-next.0](https://github.com/entur/design-system/compare/@entur/tokens@3.24.1-next.0...@entur/tokens@4.0.0-next.0) (2026-07-03)
 
 - feat(tokens)!: add exports field for ESM-compatible module resolution ([5b0a414](https://github.com/entur/design-system/commit/5b0a414339432f492d12c27c1f720cffc50201bf))

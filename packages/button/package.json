@@ -1,6 +1,6 @@
 {
   "name": "@entur/button",
-  "version": "5.0.0-next.1",
+  "version": "5.0.0-next.2",
   "license": "EUPL-1.2",
   "main": "dist/button.cjs.js",
   "module": "dist/button.esm.js",

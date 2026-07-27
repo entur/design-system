@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.0.0-next.2](https://github.com/entur/design-system/compare/@entur/expand@4.0.0-next.1...@entur/expand@4.0.0-next.2) (2026-07-27)
+
+**Note:** Version bump only for package @entur/expand
+
 # [4.0.0-next.1](https://github.com/entur/design-system/compare/@entur/expand@4.0.0-next.0...@entur/expand@4.0.0-next.1) (2026-07-03)
 
 - feat(expand)!: add exports field for ESM-compatible module resolution ([41f70e7](https://github.com/entur/design-system/commit/41f70e7d65230f3e4b21813156b25c69e7304545))

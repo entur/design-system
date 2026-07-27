@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.0.0-next.2](https://github.com/entur/design-system/compare/@entur/travel@8.0.0-next.1...@entur/travel@8.0.0-next.2) (2026-07-27)
+
+**Note:** Version bump only for package @entur/travel
+
 # [8.0.0-next.1](https://github.com/entur/design-system/compare/@entur/travel@8.0.0-next.0...@entur/travel@8.0.0-next.1) (2026-07-03)
 
 - feat(travel)!: add exports field for ESM-compatible module resolution ([285f795](https://github.com/entur/design-system/commit/285f795838713b8cf97d27433752bca50cfa891c))

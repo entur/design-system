@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-next.2](https://github.com/entur/design-system/compare/@entur/chip@1.0.0-next.1...@entur/chip@1.0.0-next.2) (2026-07-27)
+
+**Note:** Version bump only for package @entur/chip
+
 # [1.0.0-next.1](https://github.com/entur/design-system/compare/@entur/chip@1.0.0-next.0...@entur/chip@1.0.0-next.1) (2026-07-03)
 
 - feat(chip)!: add exports field for ESM-compatible module resolution ([ae0dd24](https://github.com/entur/design-system/commit/ae0dd24e5db08355f7c3b6fa609d691c57dc6653))

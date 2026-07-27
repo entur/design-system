@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-next.2](https://github.com/entur/design-system/compare/@entur/table@5.0.0-next.1...@entur/table@5.0.0-next.2) (2026-07-27)
+
+**Note:** Version bump only for package @entur/table
+
 # [5.0.0-next.1](https://github.com/entur/design-system/compare/@entur/table@5.0.0-next.0...@entur/table@5.0.0-next.1) (2026-07-03)
 
 - feat(table)!: add exports field for ESM-compatible module resolution ([5226276](https://github.com/entur/design-system/commit/522627627c9b4ec625e529dcd5b29baab8afbeb5))

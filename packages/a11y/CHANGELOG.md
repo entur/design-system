@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-next.2](https://github.com/entur/design-system/compare/@entur/a11y@1.0.0-next.1...@entur/a11y@1.0.0-next.2) (2026-07-27)
+
+**Note:** Version bump only for package @entur/a11y
+
 # [1.0.0-next.1](https://github.com/entur/design-system/compare/@entur/a11y@1.0.0-next.0...@entur/a11y@1.0.0-next.1) (2026-07-03)
 
 - feat(a11y)!: add exports field for ESM-compatible module resolution ([80689e8](https://github.com/entur/design-system/commit/80689e89f8f285d4a0ccbedaad50cf5efa621c5b))

@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.0.0-next.2](https://github.com/entur/design-system/compare/@entur/datepicker@12.0.0-next.1...@entur/datepicker@12.0.0-next.2) (2026-07-27)
+
+**Note:** Version bump only for package @entur/datepicker
+
 # [12.0.0-next.1](https://github.com/entur/design-system/compare/@entur/datepicker@12.0.0-next.0...@entur/datepicker@12.0.0-next.1) (2026-07-03)
 
 - feat(datepicker)!: add exports field for ESM-compatible module resolution ([97ab5d1](https://github.com/entur/design-system/commit/97ab5d1e217e5a06e0c49bffeb08238811fabd8a))

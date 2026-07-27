@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-next.2](https://github.com/entur/design-system/compare/@entur/modal@2.0.0-next.1...@entur/modal@2.0.0-next.2) (2026-07-27)
+
+**Note:** Version bump only for package @entur/modal
+
 # [2.0.0-next.1](https://github.com/entur/design-system/compare/@entur/modal@2.0.0-next.0...@entur/modal@2.0.0-next.1) (2026-07-03)
 
 - feat(modal)!: add exports field for ESM-compatible module resolution ([d77ffa9](https://github.com/entur/design-system/commit/d77ffa97fdd0c207501155a5cb694e0cf9d27b4b))

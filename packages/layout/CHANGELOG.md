@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.0.0-next.2](https://github.com/entur/design-system/compare/@entur/layout@4.0.0-next.1...@entur/layout@4.0.0-next.2) (2026-07-27)
+
+### Bug Fixes
+
+- **layout/beta/grid:** resolve grid-column shorthand override bug and restore default gap ([d8d96d8](https://github.com/entur/design-system/commit/d8d96d83aa429e83c0b433236adc4a84fa66ff47))
+- **layout/beta/grid:** warn on invalid responsive breakpoint keys instead of rendering [object Object] ([ee80009](https://github.com/entur/design-system/commit/ee80009d87eeb65508fc4662317960ece7f5e721))
+
 # [4.0.0-next.1](https://github.com/entur/design-system/compare/@entur/layout@4.0.0-next.0...@entur/layout@4.0.0-next.1) (2026-07-03)
 
 - feat(layout)!: tighten exports field and remove dist/\* wildcard ([03f90f7](https://github.com/entur/design-system/commit/03f90f796776513703f4fe327c1f858d02b46740))
