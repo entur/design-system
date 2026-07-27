@@ -23,11 +23,11 @@
 
     // Override Sidebar's rowSpan to row 2 when StatusBar is present
     > .eds-layout-grid-item:has(.eds-layout-template-sidebar) {
-      --grid-item-row-base: 2;
+      --grid-item-row-start-base: 2;
     }
 
     > .eds-layout-template-portal__main {
-      --grid-item-row-base: 2;
+      --grid-item-row-start-base: 2;
     }
   }
 }

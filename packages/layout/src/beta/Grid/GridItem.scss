@@ -1,15 +1,5 @@
 // Same responsive var cascade pattern as Flex.scss — setting only -base is enough.
 .eds-layout-grid-item {
-  --grid-item-col-base: initial;
-  --grid-item-col-s: initial;
-  --grid-item-col-m: initial;
-  --grid-item-col-lg: initial;
-  --grid-item-col-xl: initial;
-  --grid-item-row-base: initial;
-  --grid-item-row-s: initial;
-  --grid-item-row-m: initial;
-  --grid-item-row-lg: initial;
-  --grid-item-row-xl: initial;
   --grid-item-col-start-base: initial;
   --grid-item-col-start-s: initial;
   --grid-item-col-start-m: initial;
@@ -42,9 +32,6 @@
   --grid-item-justify-self-xl: initial;
 
   :where(&) {
-    // shorthand first so individual start/end props can override it below
-    grid-column: var(--grid-item-col-base);
-    grid-row: var(--grid-item-row-base);
     grid-column-start: var(--grid-item-col-start-base);
     grid-column-end: var(--grid-item-col-end-base);
     grid-row-start: var(--grid-item-row-start-base);
@@ -53,8 +40,6 @@
     justify-self: var(--grid-item-justify-self-base);
 
     @media (min-width: 600px) {
-      grid-column: var(--grid-item-col-s, var(--grid-item-col-base));
-      grid-row: var(--grid-item-row-s, var(--grid-item-row-base));
       grid-column-start: var(--grid-item-col-start-s, var(--grid-item-col-start-base));
       grid-column-end: var(--grid-item-col-end-s, var(--grid-item-col-end-base));
       grid-row-start: var(--grid-item-row-start-s, var(--grid-item-row-start-base));
@@ -64,8 +49,6 @@
     }
 
     @media (min-width: 800px) {
-      grid-column: var(--grid-item-col-m, var(--grid-item-col-s, var(--grid-item-col-base)));
-      grid-row: var(--grid-item-row-m, var(--grid-item-row-s, var(--grid-item-row-base)));
       grid-column-start: var(--grid-item-col-start-m, var(--grid-item-col-start-s, var(--grid-item-col-start-base)));
       grid-column-end: var(--grid-item-col-end-m, var(--grid-item-col-end-s, var(--grid-item-col-end-base)));
       grid-row-start: var(--grid-item-row-start-m, var(--grid-item-row-start-s, var(--grid-item-row-start-base)));
@@ -75,8 +58,6 @@
     }
 
     @media (min-width: 1200px) {
-      grid-column: var(--grid-item-col-lg, var(--grid-item-col-m, var(--grid-item-col-s, var(--grid-item-col-base))));
-      grid-row: var(--grid-item-row-lg, var(--grid-item-row-m, var(--grid-item-row-s, var(--grid-item-row-base))));
       grid-column-start: var(--grid-item-col-start-lg, var(--grid-item-col-start-m, var(--grid-item-col-start-s, var(--grid-item-col-start-base))));
       grid-column-end: var(--grid-item-col-end-lg, var(--grid-item-col-end-m, var(--grid-item-col-end-s, var(--grid-item-col-end-base))));
       grid-row-start: var(--grid-item-row-start-lg, var(--grid-item-row-start-m, var(--grid-item-row-start-s, var(--grid-item-row-start-base))));
@@ -86,8 +67,6 @@
     }
 
     @media (min-width: 1400px) {
-      grid-column: var(--grid-item-col-xl, var(--grid-item-col-lg, var(--grid-item-col-m, var(--grid-item-col-s, var(--grid-item-col-base)))));
-      grid-row: var(--grid-item-row-xl, var(--grid-item-row-lg, var(--grid-item-row-m, var(--grid-item-row-s, var(--grid-item-row-base)))));
       grid-column-start: var(
         --grid-item-col-start-xl,
         var(--grid-item-col-start-lg, var(--grid-item-col-start-m, var(--grid-item-col-start-s, var(--grid-item-col-start-base))))

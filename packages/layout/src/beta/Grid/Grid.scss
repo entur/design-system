@@ -97,7 +97,6 @@
     grid-auto-flow: var(--grid-auto-flow-base, row);
     grid-auto-rows: var(--grid-auto-rows-base);
     grid-auto-columns: var(--grid-auto-columns-base);
-    gap: var(--grid-gap-base);
     row-gap: var(--grid-row-gap-base);
     column-gap: var(--grid-column-gap-base);
     align-items: var(--grid-align-items-base);
@@ -116,7 +115,6 @@
       grid-auto-flow: var(--grid-auto-flow-s, var(--grid-auto-flow-base, row));
       grid-auto-rows: var(--grid-auto-rows-s, var(--grid-auto-rows-base));
       grid-auto-columns: var(--grid-auto-columns-s, var(--grid-auto-columns-base));
-      gap: var(--grid-gap-s, var(--grid-gap-base));
       row-gap: var(--grid-row-gap-s, var(--grid-row-gap-base));
       column-gap: var(--grid-column-gap-s, var(--grid-column-gap-base));
       align-items: var(--grid-align-items-s, var(--grid-align-items-base));
@@ -136,7 +134,6 @@
       grid-auto-flow: var(--grid-auto-flow-m, var(--grid-auto-flow-s, var(--grid-auto-flow-base, row)));
       grid-auto-rows: var(--grid-auto-rows-m, var(--grid-auto-rows-s, var(--grid-auto-rows-base)));
       grid-auto-columns: var(--grid-auto-columns-m, var(--grid-auto-columns-s, var(--grid-auto-columns-base)));
-      gap: var(--grid-gap-m, var(--grid-gap-s, var(--grid-gap-base)));
       row-gap: var(--grid-row-gap-m, var(--grid-row-gap-s, var(--grid-row-gap-base)));
       column-gap: var(--grid-column-gap-m, var(--grid-column-gap-s, var(--grid-column-gap-base)));
       align-items: var(--grid-align-items-m, var(--grid-align-items-s, var(--grid-align-items-base)));
@@ -159,7 +156,6 @@
       grid-auto-flow: var(--grid-auto-flow-lg, var(--grid-auto-flow-m, var(--grid-auto-flow-s, var(--grid-auto-flow-base, row))));
       grid-auto-rows: var(--grid-auto-rows-lg, var(--grid-auto-rows-m, var(--grid-auto-rows-s, var(--grid-auto-rows-base))));
       grid-auto-columns: var(--grid-auto-columns-lg, var(--grid-auto-columns-m, var(--grid-auto-columns-s, var(--grid-auto-columns-base))));
-      gap: var(--grid-gap-lg, var(--grid-gap-m, var(--grid-gap-s, var(--grid-gap-base))));
       row-gap: var(--grid-row-gap-lg, var(--grid-row-gap-m, var(--grid-row-gap-s, var(--grid-row-gap-base))));
       column-gap: var(--grid-column-gap-lg, var(--grid-column-gap-m, var(--grid-column-gap-s, var(--grid-column-gap-base))));
       align-items: var(--grid-align-items-lg, var(--grid-align-items-m, var(--grid-align-items-s, var(--grid-align-items-base))));
@@ -188,7 +184,6 @@
         --grid-auto-columns-xl,
         var(--grid-auto-columns-lg, var(--grid-auto-columns-m, var(--grid-auto-columns-s, var(--grid-auto-columns-base))))
       );
-      gap: var(--grid-gap-xl, var(--grid-gap-lg, var(--grid-gap-m, var(--grid-gap-s, var(--grid-gap-base)))));
       row-gap: var(--grid-row-gap-xl, var(--grid-row-gap-lg, var(--grid-row-gap-m, var(--grid-row-gap-s, var(--grid-row-gap-base)))));
       column-gap: var(--grid-column-gap-xl, var(--grid-column-gap-lg, var(--grid-column-gap-m, var(--grid-column-gap-s, var(--grid-column-gap-base)))));
       align-items: var(--grid-align-items-xl, var(--grid-align-items-lg, var(--grid-align-items-m, var(--grid-align-items-s, var(--grid-align-items-base)))));

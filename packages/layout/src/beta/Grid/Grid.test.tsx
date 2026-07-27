@@ -117,22 +117,27 @@ test('GridItem renders with class', () => {
   expect(getByTestId('item')).toHaveClass('eds-layout-grid-item');
 });
 
-test('GridItem sets plain colSpan at base only', () => {
+test('GridItem sets plain colSpan as col-start at base only', () => {
   const { getByTestId } = render(<GridItem data-testid="item" colSpan={6} />);
   const el = getByTestId('item');
-  expect(el.style.getPropertyValue('--grid-item-col-base')).toBe('span 6');
-  expect(el.style.getPropertyValue('--grid-item-col-m')).toBe('');
+  expect(el.style.getPropertyValue('--grid-item-col-start-base')).toBe(
+    'span 6',
+  );
+  expect(el.style.getPropertyValue('--grid-item-col-start-m')).toBe('');
 });
 
-test('GridItem sets responsive colSpan for explicit breakpoints', () => {
+test('GridItem sets responsive colSpan, splitting slash values into start/end', () => {
   const { getByTestId } = render(
     <GridItem data-testid="item" colSpan={{ base: 12, m: 6, lg: '1 / -1' }} />,
   );
   const el = getByTestId('item');
-  expect(el.style.getPropertyValue('--grid-item-col-base')).toBe('span 12');
-  expect(el.style.getPropertyValue('--grid-item-col-m')).toBe('span 6');
-  expect(el.style.getPropertyValue('--grid-item-col-lg')).toBe('1 / -1');
-  expect(el.style.getPropertyValue('--grid-item-col-xl')).toBe('');
+  expect(el.style.getPropertyValue('--grid-item-col-start-base')).toBe(
+    'span 12',
+  );
+  expect(el.style.getPropertyValue('--grid-item-col-start-m')).toBe('span 6');
+  expect(el.style.getPropertyValue('--grid-item-col-start-lg')).toBe('1');
+  expect(el.style.getPropertyValue('--grid-item-col-end-lg')).toBe('-1');
+  expect(el.style.getPropertyValue('--grid-item-col-start-xl')).toBe('');
 });
 
 test('GridItem sets responsive rowSpan', () => {
@@ -140,14 +145,16 @@ test('GridItem sets responsive rowSpan', () => {
     <GridItem data-testid="item" rowSpan={{ base: 1, m: 2 }} />,
   );
   const el = getByTestId('item');
-  expect(el.style.getPropertyValue('--grid-item-row-base')).toBe('span 1');
-  expect(el.style.getPropertyValue('--grid-item-row-m')).toBe('span 2');
+  expect(el.style.getPropertyValue('--grid-item-row-start-base')).toBe(
+    'span 1',
+  );
+  expect(el.style.getPropertyValue('--grid-item-row-start-m')).toBe('span 2');
 });
 
 test('GridItem does not set col var when colSpan not provided', () => {
   const { getByTestId } = render(<GridItem data-testid="item" />);
   expect(
-    getByTestId('item').style.getPropertyValue('--grid-item-col-base'),
+    getByTestId('item').style.getPropertyValue('--grid-item-col-start-base'),
   ).toBe('');
 });
 
