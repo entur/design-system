@@ -7,16 +7,16 @@
  * The media queries read each breakpoint's var but fall back to the previous one:
  *
  *   @media (min-width: 600px) {
- *     gap: var(--flex-gap-s, var(--flex-gap-base));
+ *     row-gap: var(--flex-row-gap-s, var(--flex-row-gap-base));
  *   }
  *
  * So if only -base is set, s/m/lg/xl all inherit it automatically.
  * If -s is also set, m/lg/xl inherit from -s. And so on.
  *
- * row-gap/column-gap do NOT fall back to gap here — that fallback is handled in JS
- * (Flex.tsx) by passing `rowGap ?? gap` to toResponsiveCssVars. External CSS that sets
- * --flex-gap-base directly must also set --flex-row-gap-base / --flex-column-gap-base
- * explicitly if it needs them.
+ * CSS shorthands (gap, flex) are NOT declared here — only their longhands.
+ * Mixing shorthands and longhands in the same rule causes longhands with
+ * unset (initial) vars to clobber shorthand values via IACVT. The JS layer
+ * handles shorthand-to-longhand mapping (e.g. rowGap ?? gap in Flex.tsx).
  */
 .eds-layout-flex {
   --flex-display: initial;
@@ -118,10 +118,8 @@
     align-items: var(--flex-align-items-base);
     justify-content: var(--flex-justify-content-base);
     align-content: var(--flex-align-content-base);
-    gap: var(--flex-gap-base);
     row-gap: var(--flex-row-gap-base);
     column-gap: var(--flex-column-gap-base);
-    flex: var(--flex-base);
     flex-grow: var(--flex-grow-base);
     flex-shrink: var(--flex-shrink-base);
     flex-basis: var(--flex-basis-base);
@@ -138,10 +136,8 @@
       align-items: var(--flex-align-items-s, var(--flex-align-items-base));
       justify-content: var(--flex-justify-content-s, var(--flex-justify-content-base));
       align-content: var(--flex-align-content-s, var(--flex-align-content-base));
-      gap: var(--flex-gap-s, var(--flex-gap-base));
       row-gap: var(--flex-row-gap-s, var(--flex-row-gap-base));
       column-gap: var(--flex-column-gap-s, var(--flex-column-gap-base));
-      flex: var(--flex-s, var(--flex-base));
       flex-grow: var(--flex-grow-s, var(--flex-grow-base));
       flex-shrink: var(--flex-shrink-s, var(--flex-shrink-base));
       flex-basis: var(--flex-basis-s, var(--flex-basis-base));
@@ -159,10 +155,8 @@
       align-items: var(--flex-align-items-m, var(--flex-align-items-s, var(--flex-align-items-base)));
       justify-content: var(--flex-justify-content-m, var(--flex-justify-content-s, var(--flex-justify-content-base)));
       align-content: var(--flex-align-content-m, var(--flex-align-content-s, var(--flex-align-content-base)));
-      gap: var(--flex-gap-m, var(--flex-gap-s, var(--flex-gap-base)));
       row-gap: var(--flex-row-gap-m, var(--flex-row-gap-s, var(--flex-row-gap-base)));
       column-gap: var(--flex-column-gap-m, var(--flex-column-gap-s, var(--flex-column-gap-base)));
-      flex: var(--flex-m, var(--flex-s, var(--flex-base)));
       flex-grow: var(--flex-grow-m, var(--flex-grow-s, var(--flex-grow-base)));
       flex-shrink: var(--flex-shrink-m, var(--flex-shrink-s, var(--flex-shrink-base)));
       flex-basis: var(--flex-basis-m, var(--flex-basis-s, var(--flex-basis-base)));
@@ -180,10 +174,8 @@
       align-items: var(--flex-align-items-lg, var(--flex-align-items-m, var(--flex-align-items-s, var(--flex-align-items-base))));
       justify-content: var(--flex-justify-content-lg, var(--flex-justify-content-m, var(--flex-justify-content-s, var(--flex-justify-content-base))));
       align-content: var(--flex-align-content-lg, var(--flex-align-content-m, var(--flex-align-content-s, var(--flex-align-content-base))));
-      gap: var(--flex-gap-lg, var(--flex-gap-m, var(--flex-gap-s, var(--flex-gap-base))));
       row-gap: var(--flex-row-gap-lg, var(--flex-row-gap-m, var(--flex-row-gap-s, var(--flex-row-gap-base))));
       column-gap: var(--flex-column-gap-lg, var(--flex-column-gap-m, var(--flex-column-gap-s, var(--flex-column-gap-base))));
-      flex: var(--flex-lg, var(--flex-m, var(--flex-s, var(--flex-base))));
       flex-grow: var(--flex-grow-lg, var(--flex-grow-m, var(--flex-grow-s, var(--flex-grow-base))));
       flex-shrink: var(--flex-shrink-lg, var(--flex-shrink-m, var(--flex-shrink-s, var(--flex-shrink-base))));
       flex-basis: var(--flex-basis-lg, var(--flex-basis-m, var(--flex-basis-s, var(--flex-basis-base))));
@@ -207,10 +199,8 @@
         --flex-align-content-xl,
         var(--flex-align-content-lg, var(--flex-align-content-m, var(--flex-align-content-s, var(--flex-align-content-base))))
       );
-      gap: var(--flex-gap-xl, var(--flex-gap-lg, var(--flex-gap-m, var(--flex-gap-s, var(--flex-gap-base)))));
       row-gap: var(--flex-row-gap-xl, var(--flex-row-gap-lg, var(--flex-row-gap-m, var(--flex-row-gap-s, var(--flex-row-gap-base)))));
       column-gap: var(--flex-column-gap-xl, var(--flex-column-gap-lg, var(--flex-column-gap-m, var(--flex-column-gap-s, var(--flex-column-gap-base)))));
-      flex: var(--flex-xl, var(--flex-lg, var(--flex-m, var(--flex-s, var(--flex-base)))));
       flex-grow: var(--flex-grow-xl, var(--flex-grow-lg, var(--flex-grow-m, var(--flex-grow-s, var(--flex-grow-base)))));
       flex-shrink: var(--flex-shrink-xl, var(--flex-shrink-lg, var(--flex-shrink-m, var(--flex-shrink-s, var(--flex-shrink-base)))));
       flex-basis: var(--flex-basis-xl, var(--flex-basis-lg, var(--flex-basis-m, var(--flex-basis-s, var(--flex-basis-base)))));

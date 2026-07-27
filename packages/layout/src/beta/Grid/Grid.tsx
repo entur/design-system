@@ -81,7 +81,7 @@ export const Grid: GridComponent = React.forwardRef(
       autoFlow,
       autoRows,
       autoColumns,
-      gap,
+      gap = 'm',
       rowGap,
       columnGap,
       align,

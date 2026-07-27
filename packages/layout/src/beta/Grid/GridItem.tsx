@@ -1,11 +1,50 @@
 import React from 'react';
 import { PolymorphicComponentProps } from '@entur/utils';
 import classNames from 'classnames';
-import { toResponsiveCssVars } from '../utils';
+import { isResponsiveObject, toResponsiveCssVars } from '../utils';
 import type { ResponsiveValue } from '../utils';
 import './GridItem.scss';
 
 type ColRowValue = number | string;
+
+const formatSpanValue = (value: ColRowValue): string =>
+  typeof value === 'number' ? `span ${value}` : value;
+
+/**
+ * Converts a colSpan/rowSpan value into grid-column-start / grid-column-end
+ * (or row) CSS vars. String values containing "/" are split into start + end.
+ */
+const spanToStartEndVars = (
+  startPrefix: string,
+  endPrefix: string,
+  value: ResponsiveValue<ColRowValue> | undefined,
+): Record<string, string | number | undefined> => {
+  if (value === undefined) return {};
+
+  const processOne = (v: ColRowValue, suffix: string) => {
+    const formatted = formatSpanValue(v);
+    const slashIdx = formatted.indexOf('/');
+    if (slashIdx !== -1) {
+      return {
+        [`${startPrefix}-${suffix}`]: formatted.slice(0, slashIdx).trim(),
+        [`${endPrefix}-${suffix}`]: formatted.slice(slashIdx + 1).trim(),
+      };
+    }
+    return { [`${startPrefix}-${suffix}`]: formatted };
+  };
+
+  if (isResponsiveObject(value)) {
+    return {
+      ...processOne(value.base, 'base'),
+      ...(value.s !== undefined ? processOne(value.s, 's') : {}),
+      ...(value.m !== undefined ? processOne(value.m, 'm') : {}),
+      ...(value.lg !== undefined ? processOne(value.lg, 'lg') : {}),
+      ...(value.xl !== undefined ? processOne(value.xl, 'xl') : {}),
+    };
+  }
+
+  return processOne(value as ColRowValue, 'base');
+};
 
 export type GridItemOwnProps = {
   /**
@@ -45,9 +84,6 @@ export type GridItemComponent = (<
 
 const defaultElement = 'div';
 
-const formatSpan = (value: ColRowValue): string =>
-  typeof value === 'number' ? `span ${value}` : value;
-
 export const GridItem: GridItemComponent = React.forwardRef(
   <E extends React.ElementType = typeof defaultElement>(
     {
@@ -70,8 +106,16 @@ export const GridItem: GridItemComponent = React.forwardRef(
     const Element: React.ElementType = as || defaultElement;
 
     const itemStyle: React.CSSProperties = {
-      ...toResponsiveCssVars('--grid-item-col', colSpan, formatSpan),
-      ...toResponsiveCssVars('--grid-item-row', rowSpan, formatSpan),
+      ...spanToStartEndVars(
+        '--grid-item-col-start',
+        '--grid-item-col-end',
+        colSpan,
+      ),
+      ...spanToStartEndVars(
+        '--grid-item-row-start',
+        '--grid-item-row-end',
+        rowSpan,
+      ),
       ...toResponsiveCssVars('--grid-item-col-start', colStart),
       ...toResponsiveCssVars('--grid-item-col-end', colEnd),
       ...toResponsiveCssVars('--grid-item-row-start', rowStart),
