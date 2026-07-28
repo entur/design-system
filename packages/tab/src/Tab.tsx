@@ -34,7 +34,7 @@ export const Tab = ({
       type={as ? undefined : 'button'}
       id={itemContext?.tabId}
       aria-selected={isSelected}
-      aria-controls={itemContext?.panelId}
+      aria-controls={isSelected ? itemContext?.panelId : undefined}
       tabIndex={isSelected ? 0 : -1}
       disabled={disabled || undefined}
       aria-disabled={disabled || undefined}
@@ -43,10 +43,11 @@ export const Tab = ({
         { 'eds-tab--remove-active-line': removeActiveLine },
         className,
       )}
-      onClick={() => {
+      {...rest}
+      onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+        rest.onClick?.(e);
         if (!disabled) onSelect(tabIndex);
       }}
-      {...rest}
     >
       {children}
     </Element>

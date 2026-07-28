@@ -28,7 +28,7 @@ export const TabList = ({
 
   const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
     const tabs = tabListRef.current?.querySelectorAll<HTMLElement>(
-      '[role="tab"]:not([disabled])',
+      '[role="tab"]:not([disabled]):not([aria-disabled="true"])',
     );
     if (!tabs || tabs.length === 0) return;
 
@@ -70,8 +70,11 @@ export const TabList = ({
       className={classNames('eds-tab-list', className, {
         'eds-tab-list--width-fluid': width === 'fluid',
       })}
-      onKeyDown={handleKeyDown}
       {...rest}
+      onKeyDown={(e: React.KeyboardEvent<HTMLDivElement>) => {
+        rest.onKeyDown?.(e);
+        handleKeyDown(e);
+      }}
     >
       {React.Children.map(children, (child, idx) => (
         <TabItemContext.Provider

@@ -167,6 +167,21 @@ test('tab and panel have matching aria-controls/aria-labelledby', () => {
   expect(panel.getAttribute('aria-labelledby')).toBe(tabId);
 });
 
+test('only the selected tab points aria-controls at a rendered panel', () => {
+  const { getAllByRole } = renderTabs();
+
+  const tabs = getAllByRole('tab');
+  const selectedPanelId = tabs[0].getAttribute('aria-controls');
+
+  expect(selectedPanelId).toBeTruthy();
+  expect(
+    document.getElementById(selectedPanelId as string),
+  ).toBeInTheDocument();
+  // Unselected panels are unmounted, so pointing at their id would be a dangling reference
+  expect(tabs[1]).not.toHaveAttribute('aria-controls');
+  expect(tabs[2]).not.toHaveAttribute('aria-controls');
+});
+
 test('ArrowRight moves focus to next tab', () => {
   const { getAllByRole, getByRole } = renderTabs();
 

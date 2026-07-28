@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import { useId } from 'react';
 
 import { useLocale } from '@react-aria/i18n';
@@ -20,7 +21,7 @@ type CalendarGridProps = {
     currentMonth: CalendarDate,
     weekNumberString: string,
     ariaDescribedBy: string,
-  ) => React.ReactNode;
+  ) => ReactNode;
 };
 
 export const CalendarGrid = ({

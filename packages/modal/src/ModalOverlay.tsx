@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import classNames from 'classnames';
 import { ContrastContext } from '@entur/layout';
@@ -30,6 +30,11 @@ export const ModalOverlay = ({
   ...rest
 }: ModalOverlayProps) => {
   const dialogRef = useRef<HTMLDialogElement>(null);
+  // The portal can only render after hydration — server and first client render
+  // must match, and the server has no <dialog> to hydrate against.
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => setIsMounted(true), []);
 
   // Toggle native dialog open state. Always stays in DOM so the browser can
   // manage initial focus storage + restore on close.
@@ -46,22 +51,22 @@ export const ModalOverlay = ({
     } else if (!open && dialog.open) {
       dialog.close();
     }
-  }, [open, initialFocusRef]);
+  }, [open, initialFocusRef, isMounted]);
 
   // Esc fires cancel — preventDefault so we route through onDismiss + state,
   // which triggers the effect above to call close() (native restore runs).
   useEffect(
     function syncCancelEvent() {
       const dialog = dialogRef.current;
-      if (!dialog || !onDismiss) return;
+      if (!dialog) return;
       const handleCancel = (e: Event) => {
         e.preventDefault();
-        onDismiss();
+        onDismiss?.();
       };
       dialog.addEventListener('cancel', handleCancel);
       return () => dialog.removeEventListener('cancel', handleCancel);
     },
-    [onDismiss],
+    [onDismiss, isMounted],
   );
 
   const handleClick = useCallback(
@@ -72,7 +77,7 @@ export const ModalOverlay = ({
     [onDismiss, closeOnClickOutside],
   );
 
-  if (typeof document === 'undefined') return null;
+  if (!isMounted) return null;
 
   return createPortal(
     <ContrastContext.Provider value={false}>
