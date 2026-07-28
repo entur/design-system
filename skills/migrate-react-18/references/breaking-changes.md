@@ -165,6 +165,17 @@ Previously, collapsed content was unmounted. Now it stays in the DOM, hidden wit
 
 This also affects `SideNavigationGroup` from `@entur/menu` — collapsed groups keep content in DOM.
 
+### `ExpandableText` spreads extra props on the wrapper, not the button
+
+Props that aren't part of `ExpandableTextProps` used to land on the toggle button. They now land on the outer `<div>`:
+
+```tsx
+// data-testid, onClick, aria-* etc. now sit on the wrapper div
+<ExpandableText title="..." data-testid="my-expandable">
+```
+
+Update tests and handlers that expected these on the button — target the button by its role instead: `getByRole('button', { name: 'title' })`.
+
 ### New controlled mode
 
 `ExpandablePanel` now accepts `open` and `onToggle` for controlled mode. `Accordion` now accepts `openId`, `onToggle`, and `defaultOpenId`. No action required — these are additive.
@@ -173,65 +184,55 @@ This also affects `SideNavigationGroup` from `@entur/menu` — collapsed groups 
 
 ---
 
-## @entur/layout
+## @entur/layout (beta)
 
-### `LayoutWrapper` removed
+Beta `Grid` and `Flex` resolve responsive props through a CSS custom property cascade instead of a JS breakpoint hook. Everything below concerns `@entur/layout/beta` only.
 
-Replace with `Grid` from `@entur/layout/beta`:
+### `LayoutProvider` and `useLayoutValues` removed
+
+Both are gone, along with the `LayoutProviderProps` type. Breakpoints are now fixed in CSS and no longer configurable:
+
+| Key    | Applies from |
+| ------ | ------------ |
+| `base` | 0px          |
+| `s`    | 600px        |
+| `m`    | 800px        |
+| `lg`   | 1200px       |
+| `xl`   | 1400px       |
 
 ```tsx
-// ❌ Removed
-import { LayoutWrapper } from '@entur/layout';
-<LayoutWrapper>{children}</LayoutWrapper>;
-
-// ✅ Replacement
-import { Grid } from '@entur/layout/beta';
-<Grid
-  templateColumns={{
-    base: 'repeat(4, 1fr)',
-    m: 'repeat(8, 1fr)',
-    lg: 'repeat(12, 1fr)',
-  }}
-  columnGap={{ base: 's-m', m: 'm-l' }}
->
+// ❌ Removed — delete the wrapper entirely
+<LayoutProvider breakpoints={{ m: 600, lg: 1024, xl: 1280 }}>
   {children}
-</Grid>;
+</LayoutProvider>;
+
+// ✅ Children work unchanged without it
+{
+  children;
+}
 ```
 
-### Responsive breakpoint keys changed
+If the project relied on custom breakpoint values, those viewport widths now come from the table above — rework the affected responsive objects, or add your own media queries around the component.
 
-Update all responsive value objects on beta `Grid` components:
+### Responsive object keys: `s` → `base`, and `s` now means something else
 
-| Old key | New key          |
-| ------- | ---------------- |
-| `sm`    | `base`           |
-| `md`    | `m`              |
-| `lg`    | `lg` (unchanged) |
-| `xl`    | `xl` (unchanged) |
+The old base key was `s` (0px). It is now `base`, and `s` has been reused for a new 600px breakpoint. **Renaming is mandatory** — leaving `s` in place compiles under plain JS but silently applies the value from 600px up instead of from 0px.
 
 ```tsx
-// ❌ Old keys
-<Grid.Item colSpan={{ sm: '1 / -1', md: '1 / -1', lg: '3 / -3' }}>
+// ❌ Old — s was the mobile base
+<Grid.Item colSpan={{ s: '1 / -1', m: '1 / -1', lg: '3 / -3' }}>
 
-// ✅ New keys
+// ✅ New — base is required, s is now the 600px breakpoint
 <Grid.Item colSpan={{ base: '1 / -1', m: '1 / -1', lg: '3 / -3' }}>
 ```
 
-### Grid no longer has default gap
+`base` is required on every responsive object. TypeScript flags a missing `base`; at runtime the object is ignored and a console warning is logged. Unknown keys are warned about and dropped.
 
-Explicitly set `gap`, `rowGap`, or `columnGap` on every `Grid`:
+### Spacing value types renamed
 
-```tsx
-// ❌ No gap — items flush against each other
-<Grid templateColumns="repeat(3, 1fr)">
+`GridSpacingValue` and `FlexSpacingValue` are replaced by a single `SpacingValue`, still exported from `@entur/layout/beta`.
 
-// ✅ Explicit gap
-<Grid templateColumns="repeat(3, 1fr)" gap="m">
-```
-
-Valid spacing values: `"2xs"`, `"xs"`, `"s"`, `"s-m"`, `"m"`, `"m-l"`, `"l"`, `"xl"`, `"2xl"` … `"11xl"`, `"none"`.
-
-**Search patterns:** `LayoutWrapper`, `from '@entur/layout'`, responsive objects with `sm:` or `md:` keys, `Grid` without `gap`/`rowGap`/`columnGap`.
+**Search patterns:** `LayoutProvider`, `useLayoutValues`, `LayoutProviderProps`, `GridSpacingValue`, `FlexSpacingValue`, responsive objects with an `s:` key.
 
 ---
 

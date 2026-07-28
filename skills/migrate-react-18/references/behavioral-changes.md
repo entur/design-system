@@ -24,16 +24,26 @@ Focus trapping and restoration are now handled natively by `<dialog>`, not by Ja
 
 - Focus moves into the dialog on open and returns to the trigger on close — same as before, but the browser handles it
 - Edge cases where JavaScript focus trapping conflicted with other focus management (e.g. third-party widgets inside modals) may resolve themselves
-- `initialFocusRef` still works, but if omitted the browser decides which element receives initial focus (typically the first focusable element, or the dialog itself)
+- `initialFocusRef` still works. If omitted, focus goes to the modal title (or the dialog itself when there is no title) rather than the first interactive element
 
 ### Scroll lock
 
-Body scroll is prevented with CSS (`html:has(dialog[open]) { overflow: hidden }`) instead of JavaScript.
+Body scroll is prevented with CSS (`html:has(.eds-modal__overlay[open]) { overflow: hidden }`) instead of JavaScript.
 
 **What you'll notice:**
 
 - No layout shift from scrollbar disappearing — the CSS approach is cleaner
 - If your app has custom scroll-lock logic that conflicts, you may see double-locking or no locking
+
+### Server rendering
+
+The overlay is portalled into `document.body`, which cannot be server-rendered, so it renders nothing on the server and nothing on the first client render — it appears right after hydration.
+
+**What you'll notice:**
+
+- No `<dialog>` in server-rendered HTML, even for a modal that starts `open`
+- Tests that assert on markup before effects have flushed won't find the dialog; use `await waitFor(...)` or let your testing library's `render` flush effects
+- This is deliberate: rendering the portal during hydration made React discard the server HTML for the entire root (hydration error #418/#423)
 
 ---
 
@@ -79,22 +89,24 @@ The expand/collapse animation now uses CSS `grid-template-rows` transition inste
 
 ---
 
-## @entur/layout (beta Grid)
+## @entur/layout (beta Grid and Flex)
 
-### No default gap
+### Responsive props resolve in CSS, not JavaScript
 
-The beta `Grid` no longer has any default gap. If you relied on an implicit gap (e.g. inherited from a parent's CSS), items will be flush against each other.
+Responsive values are emitted as CSS custom properties and resolved by media queries, instead of being computed from a JS breakpoint hook.
 
 **What you'll notice:**
 
-- Grid items touching each other where they previously had spacing
-- This is intentional — explicit `gap`, `rowGap`, or `columnGap` is now required
+- Correct layout in server-rendered HTML and on first paint — no flash of the mobile layout while JS boots
+- No re-render on viewport resize; the browser handles the switch
+- Breakpoints are fixed (`base` 0, `s` 600px, `m` 800px, `lg` 1200px, `xl` 1400px) and can no longer be configured
 
 ### Breakpoint key names
 
-Responsive value objects use different key names (`sm` → `base`, `md` → `m`). If you missed updating one, the value will be silently ignored and the grid will fall back to its non-responsive default.
+The base key is now `base` (was `s`), and `s` has been reused for a new 600px breakpoint. A responsive object without `base` is ignored entirely, with a console warning in development.
 
 **What you'll notice:**
 
-- Layout looks correct on some screen sizes but wrong on others — check for leftover `sm`/`md` keys in responsive value objects
+- Layout correct on some screen sizes but wrong on others — check for leftover `s:` keys that were meant as the mobile base
+- Console warnings naming unknown or missing keys during development
 - Console warnings for invalid breakpoint keys (the new version warns instead of silently ignoring)
