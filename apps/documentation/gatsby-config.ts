@@ -28,6 +28,7 @@ const config: GatsbyConfig = {
       options: {
         projectId: 'npa0lfls',
         dataset: 'production',
+        overlayDrafts: process.env.NODE_ENV === 'development',
         watchMode: process.env.NODE_ENV === 'development',
         graphqlTag:
           process.env.SANITY_GRAPHQL_TAG ||
