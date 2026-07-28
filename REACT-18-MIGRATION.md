@@ -6,56 +6,11 @@ This document outlines the changes made to upgrade `@entur/*` packages from Reac
 
 All `@entur/*` packages now require **React 18.0.0 or higher** as a peer dependency. This is a **breaking change** for consumers still using React 17.
 
-## Required Changes for Consumers
-
-### 1. Upgrade React
-
-Update your project's React dependencies:
-
-```bash
-npm install react@^18 react-dom@^18 @types/react@^18 @types/react-dom@^18
-```
-
-### 2. Update Your Entry Point (createRoot)
-
-React 18 introduces a new root API. Update your application entry point:
-
-**Before (React 17):**
-
-```tsx
-import ReactDOM from 'react-dom';
-
-ReactDOM.render(<App />, document.getElementById('root'));
-```
-
-**After (React 18):**
-
-```tsx
-import { createRoot } from 'react-dom/client';
-
-const root = createRoot(document.getElementById('root')!);
-root.render(<App />);
-```
-
-### 3. TypeScript Configuration
-
-If you use TypeScript, update your `tsconfig.json` to use the new JSX transform:
-
-```json
-{
-  "compilerOptions": {
-    "jsx": "react-jsx"
-  }
-}
-```
-
-This enables the automatic JSX runtime, so you no longer need `import React from 'react'` at the top of every file that uses JSX.
-
 ## Breaking Changes
 
 ### Quick Summary: Will There Be Breaking API Changes?
 
-`@entur/modal` has **breaking changes**: `onDismiss` is now required and the DOM output changed from `<div>` to native `<dialog>`. The `@entur/tab` package has **stricter TypeScript types** and **changed DOM output** (see [@entur/tab](#enturtab) below). The `@entur/expand` package has **new props** and a **behavioral change** (content now stays in the DOM when collapsed instead of being unmounted). See [@entur/expand](#enturexpand) below. The `@entur/layout` package has **breaking changes**: `LayoutWrapper` is removed, responsive breakpoint keys changed (`sm`→`base`, `md`→`m`), and the beta `Grid` no longer has a default gap. See [@entur/layout](#enturlayout) below. All packages now have **strict `exports` in `package.json`** — deep imports into `dist/` that aren't explicitly listed will break. See [ESM `exports`](#esm-exports) below.
+`@entur/modal` has **breaking changes**: `onDismiss` is now required and the DOM output changed from `<div>` to native `<dialog>`. The `@entur/tab` package has **stricter TypeScript types** and **changed DOM output** (see [@entur/tab](#enturtab) below). The `@entur/expand` package has **new props** and a **behavioral change** (content now stays in the DOM when collapsed instead of being unmounted). See [@entur/expand](#enturexpand) below. The `@entur/layout` package has **breaking changes**: `LayoutWrapper` is removed and responsive breakpoint keys changed (`sm`→`base`, `md`→`m`). See [@entur/layout](#enturlayout) below. All packages now have **strict `exports` in `package.json`** — deep imports into `dist/` that aren't explicitly listed will break. See [ESM `exports`](#esm-exports) below.
 
 | Component         | Public API changed? | Props changed?                                 | Behavior changed?       |
 | ----------------- | ------------------- | ---------------------------------------------- | ----------------------- |
@@ -74,7 +29,7 @@ This enables the automatic JSX runtime, so you no longer need `import React from
 | `AccordionItem`   | ❌ No               | ✅ New props                                   | ✅ Yes (see below)      |
 | `BaseExpand`      | ❌ No               | ✅ New props                                   | ✅ Yes (see below)      |
 | `LayoutWrapper`   | ✅ Yes (removed)    | N/A                                            | N/A                     |
-| `Grid` (beta)     | ❌ No               | ✅ New breakpoint keys, no default gap         | ✅ Yes (see below)      |
+| `Grid` (beta)     | ❌ No               | ✅ New breakpoint keys                         | ✅ Yes (see below)      |
 | `useRandomId`     | ⚠️ Deprecated       | ❌ No                                          | ❌ No                   |
 
 All existing props — including the `as` prop for polymorphic rendering — continue to work as before.
@@ -300,20 +255,6 @@ The beta `Grid` uses new responsive breakpoint keys. Update all responsive value
 <Grid.Item colSpan={{ base: '1 / -1', m: '1 / -1', lg: '3 / -3' }}>
 ```
 
-#### Grid no longer has a default gap
-
-The beta `Grid` defaults to no gap. If you relied on a default or inherited gap (e.g. from a parent grid class), you must now set `gap`, `rowGap`, or `columnGap` explicitly on each `Grid`.
-
-```tsx
-// ❌ No gap — items will be flush against each other
-<Grid templateColumns="repeat(3, 1fr)">
-
-// ✅ Explicit gap
-<Grid templateColumns="repeat(3, 1fr)" gap="m">
-```
-
-Valid spacing values: `"2xs"`, `"xs"`, `"s"`, `"s-m"`, `"m"`, `"m-l"`, `"l"`, `"xl"`, `"2xl"` … `"11xl"`, `"none"`.
-
 ### @entur/utils
 
 #### `useRandomId` is deprecated
@@ -343,27 +284,6 @@ const MyComponent = () => {
 ```
 
 `useRandomId` will continue to work (it delegates to `useId()` internally), but will be removed in a future major version.
-
-### React 18 Behavioral Changes
-
-React 18 introduces several behavioral changes that may affect your application:
-
-#### Automatic Batching
-
-React 18 automatically batches state updates in all contexts (previously only in React event handlers). This means:
-
-- Fewer re-renders, which improves performance
-- Intermediate states may not be visible during rapid state updates
-- If you rely on seeing intermediate states (e.g., loading indicators during quick operations), you may need to use `ReactDOM.flushSync()` to force synchronous updates
-
-#### Strict Mode
-
-React 18's `<StrictMode>` now simulates component mounting, unmounting, and re-mounting in development. This helps find bugs related to:
-
-- Missing cleanup in `useEffect`
-- Components not being resilient to being mounted twice
-
-If you see double renders in development, this is expected behavior when using `<StrictMode>`.
 
 ## Provider Choice Analysis
 
