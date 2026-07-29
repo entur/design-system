@@ -1,4 +1,8 @@
 // Same responsive var cascade pattern as Flex.scss — setting only -base is enough.
+
+/* stylelint-disable declaration-block-no-redundant-longhand-properties --
+   Longhands must stay separate: unset vars are guaranteed-invalid, and a shorthand
+   like `gap: var(--row) var(--col)` drops both values when only one var is set. */
 .eds-layout-grid-item {
   --grid-item-col-start-base: initial;
   --grid-item-col-start-s: initial;
@@ -39,7 +43,7 @@
     align-self: var(--grid-item-align-self-base);
     justify-self: var(--grid-item-justify-self-base);
 
-    @media (min-width: 600px) {
+    @media (width >= 600px) {
       grid-column-start: var(--grid-item-col-start-s, var(--grid-item-col-start-base));
       grid-column-end: var(--grid-item-col-end-s, var(--grid-item-col-end-base));
       grid-row-start: var(--grid-item-row-start-s, var(--grid-item-row-start-base));
@@ -48,7 +52,7 @@
       justify-self: var(--grid-item-justify-self-s, var(--grid-item-justify-self-base));
     }
 
-    @media (min-width: 800px) {
+    @media (width >= 800px) {
       grid-column-start: var(--grid-item-col-start-m, var(--grid-item-col-start-s, var(--grid-item-col-start-base)));
       grid-column-end: var(--grid-item-col-end-m, var(--grid-item-col-end-s, var(--grid-item-col-end-base)));
       grid-row-start: var(--grid-item-row-start-m, var(--grid-item-row-start-s, var(--grid-item-row-start-base)));
@@ -57,7 +61,7 @@
       justify-self: var(--grid-item-justify-self-m, var(--grid-item-justify-self-s, var(--grid-item-justify-self-base)));
     }
 
-    @media (min-width: 1200px) {
+    @media (width >= 1200px) {
       grid-column-start: var(--grid-item-col-start-lg, var(--grid-item-col-start-m, var(--grid-item-col-start-s, var(--grid-item-col-start-base))));
       grid-column-end: var(--grid-item-col-end-lg, var(--grid-item-col-end-m, var(--grid-item-col-end-s, var(--grid-item-col-end-base))));
       grid-row-start: var(--grid-item-row-start-lg, var(--grid-item-row-start-m, var(--grid-item-row-start-s, var(--grid-item-row-start-base))));
@@ -66,7 +70,7 @@
       justify-self: var(--grid-item-justify-self-lg, var(--grid-item-justify-self-m, var(--grid-item-justify-self-s, var(--grid-item-justify-self-base))));
     }
 
-    @media (min-width: 1400px) {
+    @media (width >= 1400px) {
       grid-column-start: var(
         --grid-item-col-start-xl,
         var(--grid-item-col-start-lg, var(--grid-item-col-start-m, var(--grid-item-col-start-s, var(--grid-item-col-start-base))))

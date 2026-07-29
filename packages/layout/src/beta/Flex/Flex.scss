@@ -6,7 +6,7 @@
  *
  * The media queries read each breakpoint's var but fall back to the previous one:
  *
- *   @media (min-width: 600px) {
+ *   @media (width >= 600px) {
  *     row-gap: var(--flex-row-gap-s, var(--flex-row-gap-base));
  *   }
  *
@@ -18,6 +18,10 @@
  * unset (initial) vars to clobber shorthand values via IACVT. The JS layer
  * handles shorthand-to-longhand mapping (e.g. rowGap ?? gap in Flex.tsx).
  */
+
+/* stylelint-disable declaration-block-no-redundant-longhand-properties --
+   See the note above: collapsing these longhands into shorthands drops all
+   values in the shorthand whenever a single var is unset. */
 .eds-layout-flex {
   --flex-display: initial;
   --flex-direction-base: initial;
@@ -130,7 +134,7 @@
     max-width: var(--flex-max-width-base);
     max-height: var(--flex-max-height-base);
 
-    @media (min-width: 600px) {
+    @media (width >= 600px) {
       flex-direction: var(--flex-direction-s, var(--flex-direction-base, row));
       flex-wrap: var(--flex-wrap-s, var(--flex-wrap-base, nowrap));
       align-items: var(--flex-align-items-s, var(--flex-align-items-base));
@@ -149,7 +153,7 @@
       max-height: var(--flex-max-height-s, var(--flex-max-height-base));
     }
 
-    @media (min-width: 800px) {
+    @media (width >= 800px) {
       flex-direction: var(--flex-direction-m, var(--flex-direction-s, var(--flex-direction-base, row)));
       flex-wrap: var(--flex-wrap-m, var(--flex-wrap-s, var(--flex-wrap-base, nowrap)));
       align-items: var(--flex-align-items-m, var(--flex-align-items-s, var(--flex-align-items-base)));
@@ -168,7 +172,7 @@
       max-height: var(--flex-max-height-m, var(--flex-max-height-s, var(--flex-max-height-base)));
     }
 
-    @media (min-width: 1200px) {
+    @media (width >= 1200px) {
       flex-direction: var(--flex-direction-lg, var(--flex-direction-m, var(--flex-direction-s, var(--flex-direction-base, row))));
       flex-wrap: var(--flex-wrap-lg, var(--flex-wrap-m, var(--flex-wrap-s, var(--flex-wrap-base, nowrap))));
       align-items: var(--flex-align-items-lg, var(--flex-align-items-m, var(--flex-align-items-s, var(--flex-align-items-base))));
@@ -187,7 +191,7 @@
       max-height: var(--flex-max-height-lg, var(--flex-max-height-m, var(--flex-max-height-s, var(--flex-max-height-base))));
     }
 
-    @media (min-width: 1400px) {
+    @media (width >= 1400px) {
       flex-direction: var(--flex-direction-xl, var(--flex-direction-lg, var(--flex-direction-m, var(--flex-direction-s, var(--flex-direction-base, row)))));
       flex-wrap: var(--flex-wrap-xl, var(--flex-wrap-lg, var(--flex-wrap-m, var(--flex-wrap-s, var(--flex-wrap-base, nowrap)))));
       align-items: var(--flex-align-items-xl, var(--flex-align-items-lg, var(--flex-align-items-m, var(--flex-align-items-s, var(--flex-align-items-base)))));

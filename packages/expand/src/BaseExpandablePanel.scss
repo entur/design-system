@@ -3,9 +3,11 @@
 .eds-expandable-panel {
   width: 100%;
   position: relative;
+
   & + :where(&) {
     margin-top: t.$border-widths-default;
   }
+
   &:where(:focus, :focus-within) {
     z-index: 2;
   }
@@ -38,10 +40,12 @@
 
     &:where(:hover) {
       background: var(--components-expand-expandablepanel-standard-fill-hover);
+
       :where(.eds-contrast) & {
         background: var(--components-expand-expandablepanel-contrast-fill-hover);
       }
     }
+
     &:where(:focus-visible) {
       outline: t.$outlines-focus;
       outline-color: var(--basecolors-stroke-focus-standard);
