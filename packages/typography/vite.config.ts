@@ -24,9 +24,8 @@ export default defineConfig({
         typography: resolve(__dirname, 'src/index.tsx'),
       },
       formats: ['es', 'cjs'],
-      fileName: (format) => {
-        // Match old structure: typography.cjs.js and typography.esm.js
-        return `typography.${format === 'es' ? 'esm.js' : 'cjs.js'}`;
+      fileName: format => {
+        return `typography.${format === 'es' ? 'mjs' : 'cjs'}`;
       },
     },
     rollupOptions: {

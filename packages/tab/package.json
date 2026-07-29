@@ -2,8 +2,8 @@
   "name": "@entur/tab",
   "version": "0.7.2",
   "license": "EUPL-1.2",
-  "main": "dist/tab.cjs.js",
-  "module": "dist/tab.esm.js",
+  "main": "dist/tab.cjs",
+  "module": "dist/tab.mjs",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
@@ -45,9 +45,9 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/tab.esm.js",
-      "require": "./dist/tab.cjs.js",
-      "default": "./dist/tab.esm.js"
+      "import": "./dist/tab.mjs",
+      "require": "./dist/tab.cjs",
+      "default": "./dist/tab.mjs"
     },
     "./styles": "./dist/styles.css",
     "./dist/styles.css": "./dist/styles.css",

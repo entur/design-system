@@ -2,8 +2,8 @@
   "name": "@entur/a11y",
   "version": "0.2.113",
   "license": "EUPL-1.2",
-  "main": "dist/a11y.cjs.js",
-  "module": "dist/a11y.esm.js",
+  "main": "dist/a11y.cjs",
+  "module": "dist/a11y.mjs",
   "typings": "dist/index.d.ts",
   "files": [
     "dist"
@@ -44,9 +44,9 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/a11y.esm.js",
-      "require": "./dist/a11y.cjs.js",
-      "default": "./dist/a11y.esm.js"
+      "import": "./dist/a11y.mjs",
+      "require": "./dist/a11y.cjs",
+      "default": "./dist/a11y.mjs"
     },
     "./styles": "./dist/styles.css",
     "./dist/styles.css": "./dist/styles.css",

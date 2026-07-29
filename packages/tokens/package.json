@@ -2,8 +2,8 @@
   "name": "@entur/tokens",
   "version": "3.24.0",
   "license": "EUPL-1.2",
-  "main": "dist/tokens.cjs.js",
-  "module": "dist/tokens.esm.js",
+  "main": "dist/tokens.cjs",
+  "module": "dist/tokens.mjs",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
@@ -48,9 +48,9 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/tokens.esm.js",
-      "require": "./dist/tokens.cjs.js",
-      "default": "./dist/tokens.esm.js"
+      "import": "./dist/tokens.mjs",
+      "require": "./dist/tokens.cjs",
+      "default": "./dist/tokens.mjs"
     },
     "./styles": {
       "sass": "./dist/styles.scss",

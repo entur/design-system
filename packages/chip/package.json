@@ -2,8 +2,8 @@
   "name": "@entur/chip",
   "version": "0.10.16",
   "license": "EUPL-1.2",
-  "main": "dist/chip.cjs.js",
-  "module": "dist/chip.esm.js",
+  "main": "dist/chip.cjs",
+  "module": "dist/chip.mjs",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
@@ -48,9 +48,9 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/chip.esm.js",
-      "require": "./dist/chip.cjs.js",
-      "default": "./dist/chip.esm.js"
+      "import": "./dist/chip.mjs",
+      "require": "./dist/chip.cjs",
+      "default": "./dist/chip.mjs"
     },
     "./styles": "./dist/styles.css",
     "./dist/styles.css": "./dist/styles.css",

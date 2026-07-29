@@ -2,8 +2,8 @@
   "name": "@entur/modal",
   "version": "1.8.16",
   "license": "EUPL-1.2",
-  "main": "dist/modal.cjs.js",
-  "module": "dist/modal.esm.js",
+  "main": "dist/modal.cjs",
+  "module": "dist/modal.mjs",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
@@ -50,9 +50,9 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/modal.esm.js",
-      "require": "./dist/modal.cjs.js",
-      "default": "./dist/modal.esm.js"
+      "import": "./dist/modal.mjs",
+      "require": "./dist/modal.cjs",
+      "default": "./dist/modal.mjs"
     },
     "./styles": "./dist/styles.css",
     "./dist/styles.css": "./dist/styles.css",

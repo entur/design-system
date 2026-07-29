@@ -2,8 +2,8 @@
   "name": "@entur/button",
   "version": "4.0.11",
   "license": "EUPL-1.2",
-  "main": "dist/button.cjs.js",
-  "module": "dist/button.esm.js",
+  "main": "dist/button.cjs",
+  "module": "dist/button.mjs",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
@@ -46,9 +46,9 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/button.esm.js",
-      "require": "./dist/button.cjs.js",
-      "default": "./dist/button.esm.js"
+      "import": "./dist/button.mjs",
+      "require": "./dist/button.cjs",
+      "default": "./dist/button.mjs"
     },
     "./styles": "./dist/styles.css",
     "./dist/styles.css": "./dist/styles.css",

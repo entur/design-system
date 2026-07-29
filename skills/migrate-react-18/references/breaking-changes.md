@@ -53,6 +53,19 @@ import '@entur/button/dist/styles.css';
 @use '@entur/utils/dist/breakpoints.scss' as breakpoint;
 ```
 
+### Built files renamed to `.mjs` / `.cjs`
+
+The ESM bundle is now `dist/<name>.mjs` and the CommonJS bundle `dist/<name>.cjs` (previously `.esm.js` / `.cjs.js`). Resolution happens through `exports`, `main`, and `module`, so normal imports need no change — but update anything that names the files directly, e.g. a Jest `moduleNameMapper` pointing into `dist/`:
+
+```js
+// ❌ Old
+'^@entur/tokens$': '<rootDir>/node_modules/@entur/tokens/dist/tokens.cjs.js',
+// ✅ New
+'^@entur/tokens$': '<rootDir>/node_modules/@entur/tokens/dist/tokens.cjs',
+```
+
+If a custom webpack/babel rule only matches `/\.js$/` for `node_modules`, widen it to `/\.(js|mjs|cjs)$/`.
+
 ### Remove bundler aliases
 
 If the project has custom alias/resolve configuration to handle `@entur/*` ESM entry points, remove it. The `exports` field handles resolution natively.

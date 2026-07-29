@@ -2,8 +2,8 @@
   "name": "@entur/grid",
   "version": "0.3.79",
   "license": "EUPL-1.2",
-  "main": "dist/grid.cjs.js",
-  "module": "dist/grid.esm.js",
+  "main": "dist/grid.cjs",
+  "module": "dist/grid.mjs",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
@@ -45,9 +45,9 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/grid.esm.js",
-      "require": "./dist/grid.cjs.js",
-      "default": "./dist/grid.esm.js"
+      "import": "./dist/grid.mjs",
+      "require": "./dist/grid.cjs",
+      "default": "./dist/grid.mjs"
     },
     "./styles": "./dist/styles.css",
     "./dist/styles.css": "./dist/styles.css",

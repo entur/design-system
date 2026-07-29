@@ -2,8 +2,8 @@
   "name": "@entur/loader",
   "version": "0.7.4",
   "license": "EUPL-1.2",
-  "main": "dist/loader.cjs.js",
-  "module": "dist/loader.esm.js",
+  "main": "dist/loader.cjs",
+  "module": "dist/loader.mjs",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
@@ -46,9 +46,9 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/loader.esm.js",
-      "require": "./dist/loader.cjs.js",
-      "default": "./dist/loader.esm.js"
+      "import": "./dist/loader.mjs",
+      "require": "./dist/loader.cjs",
+      "default": "./dist/loader.mjs"
     },
     "./styles": "./dist/styles.css",
     "./dist/styles.css": "./dist/styles.css",

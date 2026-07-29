@@ -2,8 +2,8 @@
   "name": "@entur/table",
   "version": "4.10.16",
   "license": "EUPL-1.2",
-  "main": "dist/table.cjs.js",
-  "module": "dist/table.esm.js",
+  "main": "dist/table.cjs",
+  "module": "dist/table.mjs",
   "typings": "dist/index.d.ts",
   "files": [
     "dist"
@@ -54,9 +54,9 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/table.esm.js",
-      "require": "./dist/table.cjs.js",
-      "default": "./dist/table.esm.js"
+      "import": "./dist/table.mjs",
+      "require": "./dist/table.cjs",
+      "default": "./dist/table.mjs"
     },
     "./styles": "./dist/styles.css",
     "./dist/styles.css": "./dist/styles.css",

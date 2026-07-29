@@ -2,15 +2,15 @@
   "name": "@entur/utils",
   "version": "0.13.6",
   "license": "EUPL-1.2",
-  "main": "dist/utils.cjs.js",
-  "module": "dist/utils.esm.js",
+  "main": "dist/utils.cjs",
+  "module": "dist/utils.mjs",
   "typings": "dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/utils.esm.js",
-      "require": "./dist/utils.cjs.js",
-      "default": "./dist/utils.esm.js"
+      "import": "./dist/utils.mjs",
+      "require": "./dist/utils.cjs",
+      "default": "./dist/utils.mjs"
     },
     "./styles/layers": "./dist/layers.scss",
     "./styles/breakpoints": "./dist/breakpoints.scss",

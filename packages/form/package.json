@@ -2,8 +2,8 @@
   "name": "@entur/form",
   "version": "9.3.8",
   "license": "EUPL-1.2",
-  "main": "dist/form.cjs.js",
-  "module": "dist/form.esm.js",
+  "main": "dist/form.cjs",
+  "module": "dist/form.mjs",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
@@ -49,9 +49,9 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/form.esm.js",
-      "require": "./dist/form.cjs.js",
-      "default": "./dist/form.esm.js"
+      "import": "./dist/form.mjs",
+      "require": "./dist/form.cjs",
+      "default": "./dist/form.mjs"
     },
     "./styles": "./dist/styles.css",
     "./dist/styles.css": "./dist/styles.css",

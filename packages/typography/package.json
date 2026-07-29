@@ -2,15 +2,15 @@
   "name": "@entur/typography",
   "version": "2.1.12",
   "license": "SEE LICENSE IN README.md",
-  "main": "./dist/typography.cjs.js",
-  "module": "./dist/typography.esm.js",
+  "main": "./dist/typography.cjs",
+  "module": "./dist/typography.mjs",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/typography.esm.js",
-      "require": "./dist/typography.cjs.js",
-      "default": "./dist/typography.esm.js"
+      "import": "./dist/typography.mjs",
+      "require": "./dist/typography.cjs",
+      "default": "./dist/typography.mjs"
     },
     "./beta": {
       "types": "./dist/beta/types/index.d.ts",

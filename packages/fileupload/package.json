@@ -2,8 +2,8 @@
   "name": "@entur/fileupload",
   "version": "0.5.13",
   "license": "EUPL-1.2",
-  "main": "dist/fileupload.cjs.js",
-  "module": "dist/fileupload.esm.js",
+  "main": "dist/fileupload.cjs",
+  "module": "dist/fileupload.mjs",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
@@ -50,9 +50,9 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/fileupload.esm.js",
-      "require": "./dist/fileupload.cjs.js",
-      "default": "./dist/fileupload.esm.js"
+      "import": "./dist/fileupload.mjs",
+      "require": "./dist/fileupload.cjs",
+      "default": "./dist/fileupload.mjs"
     },
     "./styles": "./dist/styles.css",
     "./dist/styles.css": "./dist/styles.css",

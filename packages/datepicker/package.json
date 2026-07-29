@@ -2,8 +2,8 @@
   "name": "@entur/datepicker",
   "version": "11.8.1",
   "license": "EUPL-1.2",
-  "main": "dist/datepicker.cjs.js",
-  "module": "dist/datepicker.esm.js",
+  "main": "dist/datepicker.cjs",
+  "module": "dist/datepicker.mjs",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
@@ -62,9 +62,9 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/datepicker.esm.js",
-      "require": "./dist/datepicker.cjs.js",
-      "default": "./dist/datepicker.esm.js"
+      "import": "./dist/datepicker.mjs",
+      "require": "./dist/datepicker.cjs",
+      "default": "./dist/datepicker.mjs"
     },
     "./styles": "./dist/styles.css",
     "./dist/styles.css": "./dist/styles.css",

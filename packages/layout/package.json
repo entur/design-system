@@ -2,15 +2,15 @@
   "name": "@entur/layout",
   "version": "3.7.5",
   "license": "EUPL-1.2",
-  "main": "dist/layout.cjs.js",
-  "module": "dist/layout.esm.js",
+  "main": "dist/layout.cjs",
+  "module": "dist/layout.mjs",
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/layout.esm.js",
-      "require": "./dist/layout.cjs.js",
-      "default": "./dist/layout.esm.js"
+      "import": "./dist/layout.mjs",
+      "require": "./dist/layout.cjs",
+      "default": "./dist/layout.mjs"
     },
     "./beta": {
       "types": "./dist/beta/types/index.d.ts",

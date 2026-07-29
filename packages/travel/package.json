@@ -2,8 +2,8 @@
   "name": "@entur/travel",
   "version": "7.0.4",
   "license": "EUPL-1.2",
-  "main": "dist/travel.cjs.js",
-  "module": "dist/travel.esm.js",
+  "main": "dist/travel.cjs",
+  "module": "dist/travel.mjs",
   "typings": "dist/index.d.ts",
   "files": [
     "dist"
@@ -48,9 +48,9 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/travel.esm.js",
-      "require": "./dist/travel.cjs.js",
-      "default": "./dist/travel.esm.js"
+      "import": "./dist/travel.mjs",
+      "require": "./dist/travel.cjs",
+      "default": "./dist/travel.mjs"
     },
     "./styles": "./dist/styles.css",
     "./dist/styles.css": "./dist/styles.css",

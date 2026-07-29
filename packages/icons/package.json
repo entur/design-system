@@ -2,8 +2,8 @@
   "name": "@entur/icons",
   "version": "9.0.4",
   "license": "EUPL-1.2",
-  "main": "dist/index.js",
-  "module": "dist/index.esm.js",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
   "react-native": "dist/index.esm.native.js",
   "typings": "dist/index.d.ts",
   "files": [
@@ -64,9 +64,9 @@
     ".": {
       "types": "./dist/index.d.ts",
       "react-native": "./dist/index.esm.native.js",
-      "import": "./dist/index.esm.js",
-      "require": "./dist/index.js",
-      "default": "./dist/index.esm.js"
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.mjs"
     },
     "./styles": "./dist/styles.css",
     "./dist/styles.css": "./dist/styles.css",

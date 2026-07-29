@@ -2,8 +2,8 @@
   "name": "@entur/tooltip",
   "version": "5.3.16",
   "license": "EUPL-1.2",
-  "main": "dist/tooltip.cjs.js",
-  "module": "dist/tooltip.esm.js",
+  "main": "dist/tooltip.cjs",
+  "module": "dist/tooltip.mjs",
   "typings": "dist/index.d.ts",
   "files": [
     "dist"
@@ -50,9 +50,9 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/tooltip.esm.js",
-      "require": "./dist/tooltip.cjs.js",
-      "default": "./dist/tooltip.esm.js"
+      "import": "./dist/tooltip.mjs",
+      "require": "./dist/tooltip.cjs",
+      "default": "./dist/tooltip.mjs"
     },
     "./styles": "./dist/styles.css",
     "./dist/styles.css": "./dist/styles.css",

@@ -2,8 +2,8 @@
   "name": "@entur/dropdown",
   "version": "8.1.8",
   "license": "EUPL-1.2",
-  "main": "dist/dropdown.cjs.js",
-  "module": "dist/dropdown.esm.js",
+  "main": "dist/dropdown.cjs",
+  "module": "dist/dropdown.mjs",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
@@ -54,9 +54,9 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/dropdown.esm.js",
-      "require": "./dist/dropdown.cjs.js",
-      "default": "./dist/dropdown.esm.js"
+      "import": "./dist/dropdown.mjs",
+      "require": "./dist/dropdown.cjs",
+      "default": "./dist/dropdown.mjs"
     },
     "./styles": "./dist/styles.css",
     "./dist/styles.css": "./dist/styles.css",

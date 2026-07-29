@@ -2,8 +2,8 @@
   "name": "@entur/menu",
   "version": "6.3.1",
   "license": "EUPL-1.2",
-  "main": "dist/menu.cjs.js",
-  "module": "dist/menu.esm.js",
+  "main": "dist/menu.cjs",
+  "module": "dist/menu.mjs",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
@@ -52,9 +52,9 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/menu.esm.js",
-      "require": "./dist/menu.cjs.js",
-      "default": "./dist/menu.esm.js"
+      "import": "./dist/menu.mjs",
+      "require": "./dist/menu.cjs",
+      "default": "./dist/menu.mjs"
     },
     "./styles": "./dist/styles.css",
     "./dist/styles.css": "./dist/styles.css",

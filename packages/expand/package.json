@@ -2,8 +2,8 @@
   "name": "@entur/expand",
   "version": "3.7.12",
   "license": "EUPL-1.2",
-  "main": "dist/expand.cjs.js",
-  "module": "dist/expand.esm.js",
+  "main": "dist/expand.cjs",
+  "module": "dist/expand.mjs",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
@@ -47,9 +47,9 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/expand.esm.js",
-      "require": "./dist/expand.cjs.js",
-      "default": "./dist/expand.esm.js"
+      "import": "./dist/expand.mjs",
+      "require": "./dist/expand.cjs",
+      "default": "./dist/expand.mjs"
     },
     "./styles": "./dist/styles.css",
     "./dist/styles.css": "./dist/styles.css",
