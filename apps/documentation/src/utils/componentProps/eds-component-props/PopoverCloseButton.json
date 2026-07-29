@@ -12,15 +12,11 @@
         {
           "fileName": "packages/tooltip/src/Popover.tsx",
           "name": "TypeLiteral"
-        },
-        {
-          "fileName": "node_modules/@types/react/index.d.ts",
-          "name": "TypeLiteral"
         }
       ],
-      "required": false,
+      "required": true,
       "type": {
-        "name": "ReactElement<any, string | JSXElementConstructor<any>> & ReactNode"
+        "name": "ReactElement<any, string | JSXElementConstructor<any>>"
       }
     }
   }

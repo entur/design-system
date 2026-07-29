@@ -45,7 +45,7 @@
         },
         {
           "fileName": "node_modules/@types/react/index.d.ts",
-          "name": "TypeLiteral"
+          "name": "DOMAttributes"
         }
       ],
       "required": false,
@@ -61,6 +61,10 @@
         {
           "fileName": "packages/modal/src/ModalOverlay.tsx",
           "name": "TypeLiteral"
+        },
+        {
+          "fileName": "node_modules/@types/react/index.d.ts",
+          "name": "HTMLAttributes"
         }
       ],
       "required": false,
@@ -81,6 +85,23 @@
       "required": false,
       "type": {
         "name": "RefObject<HTMLElement> | undefined"
+      }
+    },
+    "closeOnClickOutside": {
+      "defaultValue": {
+        "value": true
+      },
+      "description": "Om modalen skal lukkes når man klikker utenfor den",
+      "name": "closeOnClickOutside",
+      "declarations": [
+        {
+          "fileName": "packages/modal/src/ModalOverlay.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "boolean | undefined"
       }
     }
   }

@@ -39,7 +39,7 @@
       ],
       "required": false,
       "type": {
-        "name": "((boolean | ReactChild | ReactFragment | ReactPortal | null) & string) | undefined"
+        "name": "string | (ReactElement<any, string | JSXElementConstructor<any>> & string) | (Iterable<ReactNode> & string) | (ReactPortal & string) | undefined"
       }
     },
     "children": {
@@ -54,13 +54,9 @@
         {
           "fileName": "packages/alert/src/BannerAlertBox.tsx",
           "name": "TypeLiteral"
-        },
-        {
-          "fileName": "node_modules/@types/react/index.d.ts",
-          "name": "TypeLiteral"
         }
       ],
-      "required": false,
+      "required": true,
       "type": {
         "name": "ReactNode"
       }

@@ -8,7 +8,7 @@
       "defaultValue": {
         "value": "\"div\""
       },
-      "description": "HTML element or React component used to render Flex.Spacer\nAn override of the default HTML tag.\nCan also be another React component.",
+      "description": "HTML element or React component to render as.\nAn override of the default HTML tag.\nCan also be another React component.",
       "name": "as",
       "declarations": [
         {
@@ -22,7 +22,7 @@
       ],
       "required": false,
       "type": {
-        "name": "(string & ElementType<any>) | (ComponentClass<any, any> & ElementType<any>) | (FunctionComponent<any> & ElementType<...>) | undefined"
+        "name": "(string & ElementType<any, keyof IntrinsicElements>) | (ComponentClass<any, any> & ElementType<any, keyof IntrinsicElements>) | (FunctionComponent<...> & ElementType<...>) | undefined"
       }
     },
     "className": {

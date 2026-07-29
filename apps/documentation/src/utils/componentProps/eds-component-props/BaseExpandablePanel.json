@@ -19,40 +19,6 @@
         "name": "ReactNode"
       }
     },
-    "children": {
-      "defaultValue": null,
-      "description": "Innholdet som skal vises under panelet",
-      "name": "children",
-      "declarations": [
-        {
-          "fileName": "packages/expand/src/BaseExpandablePanel.tsx",
-          "name": "TypeLiteral"
-        },
-        {
-          "fileName": "node_modules/@types/react/index.d.ts",
-          "name": "TypeLiteral"
-        }
-      ],
-      "required": false,
-      "type": {
-        "name": "ReactNode"
-      }
-    },
-    "id": {
-      "defaultValue": null,
-      "description": "IDen til expand-panelet",
-      "name": "id",
-      "declarations": [
-        {
-          "fileName": "packages/expand/src/BaseExpandablePanel.tsx",
-          "name": "TypeLiteral"
-        }
-      ],
-      "required": true,
-      "type": {
-        "name": "string"
-      }
-    },
     "open": {
       "defaultValue": null,
       "description": "Prop for om innholdet er åpent",
@@ -102,6 +68,23 @@
       "defaultValue": null,
       "description": "",
       "name": "disableAnimation",
+      "declarations": [
+        {
+          "fileName": "packages/expand/src/BaseExpandablePanel.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "boolean | undefined"
+      }
+    },
+    "unmountOnClose": {
+      "defaultValue": {
+        "value": false
+      },
+      "description": "Avmonter innholdet når det lukkes. Når false (standard), holdes innholdet montert og skjules med CSS.",
+      "name": "unmountOnClose",
       "declarations": [
         {
           "fileName": "packages/expand/src/BaseExpandablePanel.tsx",

@@ -35,10 +35,6 @@
         {
           "fileName": "node_modules/@types/react/index.d.ts",
           "name": "DOMAttributes"
-        },
-        {
-          "fileName": "node_modules/@types/react/index.d.ts",
-          "name": "TypeLiteral"
         }
       ],
       "required": false,

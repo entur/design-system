@@ -12,13 +12,9 @@
         {
           "fileName": "packages/tab/src/TabList.tsx",
           "name": "TypeLiteral"
-        },
-        {
-          "fileName": "node_modules/@types/react/index.d.ts",
-          "name": "TypeLiteral"
         }
       ],
-      "required": false,
+      "required": true,
       "type": {
         "name": "ReactNode"
       }
@@ -35,7 +31,7 @@
       ],
       "required": false,
       "type": {
-        "name": "any"
+        "name": "\"symbol\" | \"object\" | \"div\" | \"a\" | \"abbr\" | \"address\" | \"area\" | \"article\" | \"aside\" | \"audio\" | \"b\" | \"base\" | \"bdi\" | \"bdo\" | \"big\" | \"blockquote\" | \"body\" | \"br\" | \"button\" | \"canvas\" | ... 160 more ... | undefined"
       }
     },
     "width": {
@@ -51,6 +47,63 @@
       "required": false,
       "type": {
         "name": "\"fluid\" | undefined"
+      }
+    },
+    "className": {
+      "defaultValue": null,
+      "description": "",
+      "name": "className",
+      "declarations": [
+        {
+          "fileName": "packages/tab/src/TabList.tsx",
+          "name": "TypeLiteral"
+        },
+        {
+          "fileName": "node_modules/@types/react/index.d.ts",
+          "name": "HTMLAttributes"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "aria-label": {
+      "defaultValue": null,
+      "description": "Tilgjengelig navn på tab-listen (dersom det ikke finnes en synlig overskrift)\nDefines a string value that labels the current element.\n@see aria-labelledby.",
+      "name": "aria-label",
+      "declarations": [
+        {
+          "fileName": "packages/tab/src/TabList.tsx",
+          "name": "TypeLiteral"
+        },
+        {
+          "fileName": "node_modules/@types/react/index.d.ts",
+          "name": "AriaAttributes"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "aria-labelledby": {
+      "defaultValue": null,
+      "description": "ID til elementet som navngir tab-listen\nIdentifies the element (or elements) that labels the current element.\n@see aria-describedby.",
+      "name": "aria-labelledby",
+      "declarations": [
+        {
+          "fileName": "packages/tab/src/TabList.tsx",
+          "name": "TypeLiteral"
+        },
+        {
+          "fileName": "node_modules/@types/react/index.d.ts",
+          "name": "AriaAttributes"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
       }
     }
   }

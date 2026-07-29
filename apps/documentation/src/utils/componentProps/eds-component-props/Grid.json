@@ -8,8 +8,70 @@
       "defaultValue": {
         "value": "\"repeat(12, 1fr)\""
       },
-      "description": "CSS grid-template-columns value (supports responsive objects)",
+      "description": "CSS grid-template-columns value.",
       "name": "templateColumns",
+      "declarations": [
+        {
+          "fileName": "packages/layout/src/beta/Grid/Grid.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "ResponsiveValue<string> | undefined"
+      }
+    },
+    "templateRows": {
+      "defaultValue": null,
+      "description": "CSS grid-template-rows value",
+      "name": "templateRows",
+      "declarations": [
+        {
+          "fileName": "packages/layout/src/beta/Grid/Grid.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "ResponsiveValue<string> | undefined"
+      }
+    },
+    "autoFlow": {
+      "defaultValue": {
+        "value": "\"row\""
+      },
+      "description": "CSS grid-auto-flow value.",
+      "name": "autoFlow",
+      "declarations": [
+        {
+          "fileName": "packages/layout/src/beta/Grid/Grid.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "ResponsiveValue<AutoFlow> | undefined"
+      }
+    },
+    "autoRows": {
+      "defaultValue": null,
+      "description": "CSS grid-auto-rows value",
+      "name": "autoRows",
+      "declarations": [
+        {
+          "fileName": "packages/layout/src/beta/Grid/Grid.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "ResponsiveValue<string> | undefined"
+      }
+    },
+    "autoColumns": {
+      "defaultValue": null,
+      "description": "CSS grid-auto-columns value",
+      "name": "autoColumns",
       "declarations": [
         {
           "fileName": "packages/layout/src/beta/Grid/Grid.tsx",
@@ -25,7 +87,7 @@
       "defaultValue": {
         "value": "m"
       },
-      "description": "Spacing between grid items (supports responsive objects)",
+      "description": "Gap between grid items",
       "name": "gap",
       "declarations": [
         {
@@ -40,7 +102,7 @@
     },
     "rowGap": {
       "defaultValue": null,
-      "description": "Vertical spacing between grid rows (supports responsive objects)",
+      "description": "Vertical gap between rows (overrides gap for rows)",
       "name": "rowGap",
       "declarations": [
         {
@@ -55,7 +117,7 @@
     },
     "columnGap": {
       "defaultValue": null,
-      "description": "Horizontal spacing between grid columns (supports responsive objects)",
+      "description": "Horizontal gap between columns",
       "name": "columnGap",
       "declarations": [
         {
@@ -68,10 +130,70 @@
         "name": "ResponsiveValue<\"s\" | \"2xs\" | \"xs\" | \"s-m\" | \"m\" | \"m-l\" | \"l\" | \"xl\" | \"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"6xl\" | \"7xl\" | \"8xl\" | \"9xl\" | \"10xl\" | \"11xl\" | \"none\"> | undefined"
       }
     },
-    "templateRows": {
+    "align": {
       "defaultValue": null,
-      "description": "CSS grid-template-rows value (supports responsive objects)",
-      "name": "templateRows",
+      "description": "CSS align-items value",
+      "name": "align",
+      "declarations": [
+        {
+          "fileName": "packages/layout/src/beta/Grid/Grid.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "ResponsiveValue<AlignItems | undefined>"
+      }
+    },
+    "justify": {
+      "defaultValue": null,
+      "description": "CSS justify-content value",
+      "name": "justify",
+      "declarations": [
+        {
+          "fileName": "packages/layout/src/beta/Grid/Grid.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "ResponsiveValue<JustifyContent | undefined>"
+      }
+    },
+    "justifyItems": {
+      "defaultValue": null,
+      "description": "CSS justify-items value",
+      "name": "justifyItems",
+      "declarations": [
+        {
+          "fileName": "packages/layout/src/beta/Grid/Grid.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "ResponsiveValue<JustifyItems | undefined>"
+      }
+    },
+    "alignContent": {
+      "defaultValue": null,
+      "description": "CSS align-content value",
+      "name": "alignContent",
+      "declarations": [
+        {
+          "fileName": "packages/layout/src/beta/Grid/Grid.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "ResponsiveValue<AlignContent | undefined>"
+      }
+    },
+    "height": {
+      "defaultValue": null,
+      "description": "Height of the grid container",
+      "name": "height",
       "declarations": [
         {
           "fileName": "packages/layout/src/beta/Grid/Grid.tsx",
@@ -83,27 +205,10 @@
         "name": "ResponsiveValue<string> | undefined"
       }
     },
-    "autoFlow": {
-      "defaultValue": {
-        "value": "row"
-      },
-      "description": "CSS grid-auto-flow value (supports responsive objects)",
-      "name": "autoFlow",
-      "declarations": [
-        {
-          "fileName": "packages/layout/src/beta/Grid/Grid.tsx",
-          "name": "TypeLiteral"
-        }
-      ],
-      "required": false,
-      "type": {
-        "name": "ResponsiveValue<\"row\" | \"column\" | \"dense\" | \"row dense\" | \"column dense\"> | undefined"
-      }
-    },
-    "align": {
+    "minHeight": {
       "defaultValue": null,
-      "description": "CSS align-items value (supports responsive objects)",
-      "name": "align",
+      "description": "Min-height of the grid container",
+      "name": "minHeight",
       "declarations": [
         {
           "fileName": "packages/layout/src/beta/Grid/Grid.tsx",
@@ -112,13 +217,13 @@
       ],
       "required": false,
       "type": {
-        "name": "\"center\" | (string & {}) | \"-moz-initial\" | \"inherit\" | \"initial\" | \"revert\" | \"revert-layer\" | \"unset\" | \"end\" | \"flex-end\" | \"flex-start\" | \"self-end\" | \"self-start\" | \"start\" | ... 4 more ... | undefined"
+        "name": "ResponsiveValue<string> | undefined"
       }
     },
-    "justify": {
+    "maxHeight": {
       "defaultValue": null,
-      "description": "CSS justify-content value (supports responsive objects)",
-      "name": "justify",
+      "description": "Max-height of the grid container",
+      "name": "maxHeight",
       "declarations": [
         {
           "fileName": "packages/layout/src/beta/Grid/Grid.tsx",
@@ -127,13 +232,13 @@
       ],
       "required": false,
       "type": {
-        "name": "\"center\" | (string & {}) | \"-moz-initial\" | \"inherit\" | \"initial\" | \"revert\" | \"revert-layer\" | \"unset\" | \"end\" | \"flex-end\" | \"flex-start\" | \"start\" | \"normal\" | \"stretch\" | \"space-around\" | ... 5 more ... | undefined"
+        "name": "ResponsiveValue<string> | undefined"
       }
     },
-    "alignContent": {
+    "minWidth": {
       "defaultValue": null,
-      "description": "CSS align-content value (supports responsive objects)",
-      "name": "alignContent",
+      "description": "Min-width of the grid container",
+      "name": "minWidth",
       "declarations": [
         {
           "fileName": "packages/layout/src/beta/Grid/Grid.tsx",
@@ -142,13 +247,13 @@
       ],
       "required": false,
       "type": {
-        "name": "\"center\" | (string & {}) | \"-moz-initial\" | \"inherit\" | \"initial\" | \"revert\" | \"revert-layer\" | \"unset\" | \"end\" | \"flex-end\" | \"flex-start\" | \"start\" | \"baseline\" | \"normal\" | ... 5 more ... | undefined"
+        "name": "ResponsiveValue<string> | undefined"
       }
     },
-    "height": {
+    "maxWidth": {
       "defaultValue": null,
-      "description": "The height of the grid container",
-      "name": "height",
+      "description": "Max-width of the grid container",
+      "name": "maxWidth",
       "declarations": [
         {
           "fileName": "packages/layout/src/beta/Grid/Grid.tsx",
@@ -157,33 +262,12 @@
       ],
       "required": false,
       "type": {
-        "name": "string | undefined"
-      }
-    },
-    "as": {
-      "defaultValue": {
-        "value": "\"div\""
-      },
-      "description": "HTML element or React component used to render the Grid\nAn override of the default HTML tag.\nCan also be another React component.",
-      "name": "as",
-      "declarations": [
-        {
-          "fileName": "packages/layout/src/beta/Grid/Grid.tsx",
-          "name": "TypeLiteral"
-        },
-        {
-          "fileName": "node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
-          "name": "TypeLiteral"
-        }
-      ],
-      "required": false,
-      "type": {
-        "name": "(string & ElementType<any>) | (ComponentClass<any, any> & ElementType<any>) | (FunctionComponent<any> & ElementType<...>) | undefined"
+        "name": "ResponsiveValue<string> | undefined"
       }
     },
     "className": {
       "defaultValue": null,
-      "description": "Additional class names",
+      "description": "",
       "name": "className",
       "declarations": [
         {
@@ -196,19 +280,19 @@
         "name": "string | undefined"
       }
     },
-    "children": {
+    "as": {
       "defaultValue": null,
-      "description": "Content of the Grid container",
-      "name": "children",
+      "description": "An override of the default HTML tag.\nCan also be another React component.",
+      "name": "as",
       "declarations": [
         {
-          "fileName": "packages/layout/src/beta/Grid/Grid.tsx",
+          "fileName": "node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
           "name": "TypeLiteral"
         }
       ],
       "required": false,
       "type": {
-        "name": "ReactNode"
+        "name": "ElementType<any, keyof IntrinsicElements> | undefined"
       }
     },
     "ref": {

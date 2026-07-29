@@ -1,7 +1,5 @@
 {
-  "tags": {
-    "beta": "Experimental component - may have breaking changes in future releases"
-  },
+  "tags": {},
   "description": "",
   "displayName": "UnorderedList",
   "methods": [],
@@ -12,8 +10,12 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "packages/typography/src/beta/components/UnorderedList.tsx",
+          "fileName": "packages/typography/src/UnorderedList.tsx",
           "name": "TypeLiteral"
+        },
+        {
+          "fileName": "node_modules/@types/react/index.d.ts",
+          "name": "HTMLAttributes"
         }
       ],
       "required": false,
@@ -27,43 +29,17 @@
       "name": "children",
       "declarations": [
         {
-          "fileName": "packages/typography/src/beta/components/UnorderedList.tsx",
+          "fileName": "packages/typography/src/UnorderedList.tsx",
           "name": "TypeLiteral"
+        },
+        {
+          "fileName": "node_modules/@types/react/index.d.ts",
+          "name": "DOMAttributes"
         }
       ],
-      "required": true,
+      "required": false,
       "type": {
         "name": "ReactNode"
-      }
-    },
-    "spacing": {
-      "defaultValue": null,
-      "description": "Spacing around the component (same as Text and Heading components)",
-      "name": "spacing",
-      "declarations": [
-        {
-          "fileName": "packages/typography/src/beta/components/UnorderedList.tsx",
-          "name": "TypeLiteral"
-        }
-      ],
-      "required": false,
-      "type": {
-        "name": "TypographySpacing | undefined"
-      }
-    },
-    "as": {
-      "defaultValue": null,
-      "description": "An override of the default HTML tag.\nCan also be another React component.",
-      "name": "as",
-      "declarations": [
-        {
-          "fileName": "node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
-          "name": "TypeLiteral"
-        }
-      ],
-      "required": false,
-      "type": {
-        "name": "ElementType<any> | undefined"
       }
     }
   }

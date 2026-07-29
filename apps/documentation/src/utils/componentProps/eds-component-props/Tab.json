@@ -12,19 +12,17 @@
         {
           "fileName": "packages/tab/src/Tab.tsx",
           "name": "TypeLiteral"
-        },
-        {
-          "fileName": "node_modules/@types/react/index.d.ts",
-          "name": "TypeLiteral"
         }
       ],
-      "required": false,
+      "required": true,
       "type": {
         "name": "ReactNode"
       }
     },
     "disabled": {
-      "defaultValue": null,
+      "defaultValue": {
+        "value": false
+      },
       "description": "Om taben er disabled eller ikke",
       "name": "disabled",
       "declarations": [
@@ -50,7 +48,7 @@
       ],
       "required": false,
       "type": {
-        "name": "any"
+        "name": "\"symbol\" | \"object\" | \"button\" | \"a\" | \"abbr\" | \"address\" | \"area\" | \"article\" | \"aside\" | \"audio\" | \"b\" | \"base\" | \"bdi\" | \"bdo\" | \"big\" | \"blockquote\" | \"body\" | \"br\" | \"canvas\" | ... 161 more ... | undefined"
       }
     },
     "removeActiveLine": {
@@ -68,6 +66,25 @@
       "required": false,
       "type": {
         "name": "boolean | undefined"
+      }
+    },
+    "className": {
+      "defaultValue": null,
+      "description": "",
+      "name": "className",
+      "declarations": [
+        {
+          "fileName": "packages/tab/src/Tab.tsx",
+          "name": "TypeLiteral"
+        },
+        {
+          "fileName": "node_modules/@types/react/index.d.ts",
+          "name": "HTMLAttributes"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
       }
     }
   }

@@ -15,7 +15,7 @@
         },
         {
           "fileName": "node_modules/@types/react/index.d.ts",
-          "name": "TypeLiteral"
+          "name": "DOMAttributes"
         }
       ],
       "required": false,
@@ -31,6 +31,10 @@
         {
           "fileName": "packages/modal/src/ModalContent.tsx",
           "name": "TypeLiteral"
+        },
+        {
+          "fileName": "node_modules/@types/react/index.d.ts",
+          "name": "HTMLAttributes"
         }
       ],
       "required": false,

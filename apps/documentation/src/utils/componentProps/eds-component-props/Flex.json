@@ -4,11 +4,28 @@
   "displayName": "Flex",
   "methods": [],
   "props": {
+    "display": {
+      "defaultValue": {
+        "value": "\"flex\""
+      },
+      "description": "CSS display value.",
+      "name": "display",
+      "declarations": [
+        {
+          "fileName": "packages/layout/src/beta/Flex/Flex.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "\"flex\" | \"inline-flex\" | undefined"
+      }
+    },
     "direction": {
       "defaultValue": {
         "value": "\"row\""
       },
-      "description": "CSS flex-direction value (supports responsive objects)",
+      "description": "CSS flex-direction value.",
       "name": "direction",
       "declarations": [
         {
@@ -18,14 +35,14 @@
       ],
       "required": false,
       "type": {
-        "name": "\"-moz-initial\" | \"inherit\" | \"initial\" | \"revert\" | \"revert-layer\" | \"unset\" | \"column\" | \"column-reverse\" | \"row\" | \"row-reverse\" | { s?: FlexDirection | undefined; m?: FlexDirection | undefined; lg?: FlexDirection | undefined; xl?: FlexDirection | undefined; } | undefined"
+        "name": "ResponsiveValue<FlexDirection | undefined>"
       }
     },
     "wrap": {
       "defaultValue": {
         "value": "\"nowrap\""
       },
-      "description": "CSS flex-wrap value (supports responsive objects)",
+      "description": "CSS flex-wrap value.",
       "name": "wrap",
       "declarations": [
         {
@@ -35,12 +52,12 @@
       ],
       "required": false,
       "type": {
-        "name": "\"wrap\" | \"-moz-initial\" | \"inherit\" | \"initial\" | \"revert\" | \"revert-layer\" | \"unset\" | \"nowrap\" | \"wrap-reverse\" | { s?: FlexWrap | undefined; m?: FlexWrap | undefined; lg?: FlexWrap | undefined; xl?: FlexWrap | undefined; } | undefined"
+        "name": "ResponsiveValue<FlexWrap | undefined>"
       }
     },
     "align": {
       "defaultValue": null,
-      "description": "CSS align-items value (supports responsive objects)",
+      "description": "CSS align-items value",
       "name": "align",
       "declarations": [
         {
@@ -50,12 +67,12 @@
       ],
       "required": false,
       "type": {
-        "name": "\"center\" | (string & {}) | \"-moz-initial\" | \"inherit\" | \"initial\" | \"revert\" | \"revert-layer\" | \"unset\" | \"end\" | \"flex-end\" | \"flex-start\" | \"self-end\" | \"self-start\" | \"start\" | ... 4 more ... | undefined"
+        "name": "ResponsiveValue<AlignItems | undefined>"
       }
     },
     "justify": {
       "defaultValue": null,
-      "description": "CSS justify-content value (supports responsive objects)",
+      "description": "CSS justify-content value",
       "name": "justify",
       "declarations": [
         {
@@ -65,12 +82,12 @@
       ],
       "required": false,
       "type": {
-        "name": "\"center\" | (string & {}) | \"-moz-initial\" | \"inherit\" | \"initial\" | \"revert\" | \"revert-layer\" | \"unset\" | \"end\" | \"flex-end\" | \"flex-start\" | \"start\" | \"normal\" | \"stretch\" | \"space-around\" | ... 5 more ... | undefined"
+        "name": "ResponsiveValue<JustifyContent | undefined>"
       }
     },
     "alignContent": {
       "defaultValue": null,
-      "description": "CSS align-content value (supports responsive objects)",
+      "description": "CSS align-content value",
       "name": "alignContent",
       "declarations": [
         {
@@ -80,12 +97,12 @@
       ],
       "required": false,
       "type": {
-        "name": "\"center\" | (string & {}) | \"-moz-initial\" | \"inherit\" | \"initial\" | \"revert\" | \"revert-layer\" | \"unset\" | \"end\" | \"flex-end\" | \"flex-start\" | \"start\" | \"baseline\" | \"normal\" | ... 5 more ... | undefined"
+        "name": "ResponsiveValue<AlignContent | undefined>"
       }
     },
     "gap": {
       "defaultValue": null,
-      "description": "Spacing between flex items (supports responsive objects)",
+      "description": "Gap between flex items",
       "name": "gap",
       "declarations": [
         {
@@ -100,7 +117,7 @@
     },
     "rowGap": {
       "defaultValue": null,
-      "description": "Vertical spacing between rows (supports responsive objects)",
+      "description": "Vertical gap between rows (overrides gap for rows)",
       "name": "rowGap",
       "declarations": [
         {
@@ -115,7 +132,7 @@
     },
     "columnGap": {
       "defaultValue": null,
-      "description": "Horizontal spacing between columns (supports responsive objects)",
+      "description": "Horizontal gap between columns (overrides gap for columns)",
       "name": "columnGap",
       "declarations": [
         {
@@ -130,7 +147,7 @@
     },
     "flex": {
       "defaultValue": null,
-      "description": "CSS flex shorthand value",
+      "description": "CSS flex shorthand (for use as a flex item)",
       "name": "flex",
       "declarations": [
         {
@@ -140,12 +157,12 @@
       ],
       "required": false,
       "type": {
-        "name": "Flex<string | number> | undefined"
+        "name": "ResponsiveValue<Flex<string | number> | undefined>"
       }
     },
     "grow": {
       "defaultValue": null,
-      "description": "CSS flex-grow value",
+      "description": "CSS flex-grow (for use as a flex item)",
       "name": "grow",
       "declarations": [
         {
@@ -155,12 +172,12 @@
       ],
       "required": false,
       "type": {
-        "name": "number | undefined"
+        "name": "ResponsiveValue<number> | undefined"
       }
     },
     "shrink": {
       "defaultValue": null,
-      "description": "CSS flex-shrink value",
+      "description": "CSS flex-shrink (for use as a flex item)",
       "name": "shrink",
       "declarations": [
         {
@@ -170,12 +187,12 @@
       ],
       "required": false,
       "type": {
-        "name": "number | undefined"
+        "name": "ResponsiveValue<number> | undefined"
       }
     },
     "basis": {
       "defaultValue": null,
-      "description": "CSS flex-basis value",
+      "description": "CSS flex-basis (for use as a flex item)",
       "name": "basis",
       "declarations": [
         {
@@ -185,12 +202,12 @@
       ],
       "required": false,
       "type": {
-        "name": "FlexBasis<string | number> | undefined"
+        "name": "ResponsiveValue<FlexBasis<string | number> | undefined>"
       }
     },
     "width": {
       "defaultValue": null,
-      "description": "CSS width value",
+      "description": "",
       "name": "width",
       "declarations": [
         {
@@ -200,12 +217,12 @@
       ],
       "required": false,
       "type": {
-        "name": "string | undefined"
+        "name": "ResponsiveValue<string> | undefined"
       }
     },
     "height": {
       "defaultValue": null,
-      "description": "CSS height value",
+      "description": "",
       "name": "height",
       "declarations": [
         {
@@ -215,12 +232,12 @@
       ],
       "required": false,
       "type": {
-        "name": "string | undefined"
+        "name": "ResponsiveValue<string> | undefined"
       }
     },
     "minWidth": {
       "defaultValue": null,
-      "description": "CSS min-width value",
+      "description": "",
       "name": "minWidth",
       "declarations": [
         {
@@ -230,12 +247,12 @@
       ],
       "required": false,
       "type": {
-        "name": "string | undefined"
+        "name": "ResponsiveValue<string> | undefined"
       }
     },
     "minHeight": {
       "defaultValue": null,
-      "description": "CSS min-height value",
+      "description": "",
       "name": "minHeight",
       "declarations": [
         {
@@ -245,12 +262,12 @@
       ],
       "required": false,
       "type": {
-        "name": "string | undefined"
+        "name": "ResponsiveValue<string> | undefined"
       }
     },
     "maxWidth": {
       "defaultValue": null,
-      "description": "CSS max-width value",
+      "description": "",
       "name": "maxWidth",
       "declarations": [
         {
@@ -260,12 +277,12 @@
       ],
       "required": false,
       "type": {
-        "name": "string | undefined"
+        "name": "ResponsiveValue<string> | undefined"
       }
     },
     "maxHeight": {
       "defaultValue": null,
-      "description": "CSS max-height value",
+      "description": "",
       "name": "maxHeight",
       "declarations": [
         {
@@ -275,33 +292,12 @@
       ],
       "required": false,
       "type": {
-        "name": "string | undefined"
-      }
-    },
-    "as": {
-      "defaultValue": {
-        "value": "\"div\""
-      },
-      "description": "HTML element or React component used to render the Flex container\nAn override of the default HTML tag.\nCan also be another React component.",
-      "name": "as",
-      "declarations": [
-        {
-          "fileName": "packages/layout/src/beta/Flex/Flex.tsx",
-          "name": "TypeLiteral"
-        },
-        {
-          "fileName": "node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
-          "name": "TypeLiteral"
-        }
-      ],
-      "required": false,
-      "type": {
-        "name": "(string & ElementType<any>) | (ComponentClass<any, any> & ElementType<any>) | (FunctionComponent<any> & ElementType<...>) | undefined"
+        "name": "ResponsiveValue<string> | undefined"
       }
     },
     "className": {
       "defaultValue": null,
-      "description": "Additional class names",
+      "description": "",
       "name": "className",
       "declarations": [
         {
@@ -314,19 +310,19 @@
         "name": "string | undefined"
       }
     },
-    "children": {
+    "as": {
       "defaultValue": null,
-      "description": "Content of the Flex container",
-      "name": "children",
+      "description": "An override of the default HTML tag.\nCan also be another React component.",
+      "name": "as",
       "declarations": [
         {
-          "fileName": "packages/layout/src/beta/Flex/Flex.tsx",
+          "fileName": "node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
           "name": "TypeLiteral"
         }
       ],
       "required": false,
       "type": {
-        "name": "ReactNode"
+        "name": "ElementType<any, keyof IntrinsicElements> | undefined"
       }
     },
     "ref": {

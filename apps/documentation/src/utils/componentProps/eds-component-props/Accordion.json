@@ -12,15 +12,58 @@
         {
           "fileName": "packages/expand/src/Accordion.tsx",
           "name": "TypeLiteral"
-        },
+        }
+      ],
+      "required": true,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "openId": {
+      "defaultValue": null,
+      "description": "ID-en til det åpne panelet. Brukes for kontrollert modus, sammen med onToggle.",
+      "name": "openId",
+      "declarations": [
         {
-          "fileName": "node_modules/@types/react/index.d.ts",
+          "fileName": "packages/expand/src/Accordion.tsx",
           "name": "TypeLiteral"
         }
       ],
       "required": false,
       "type": {
-        "name": "ReactNode"
+        "name": "Id | undefined"
+      }
+    },
+    "onToggle": {
+      "defaultValue": null,
+      "description": "Kalles når et panel åpnes eller lukkes. Mottar IDen til panelet som ble åpnet, eller null om det ble lukket.",
+      "name": "onToggle",
+      "declarations": [
+        {
+          "fileName": "packages/expand/src/Accordion.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "((id: Id) => void) | undefined"
+      }
+    },
+    "defaultOpenId": {
+      "defaultValue": {
+        "value": null
+      },
+      "description": "ID-en til panelet som skal være åpent som standard (ukontrollert modus)",
+      "name": "defaultOpenId",
+      "declarations": [
+        {
+          "fileName": "packages/expand/src/Accordion.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "Id | undefined"
       }
     }
   }

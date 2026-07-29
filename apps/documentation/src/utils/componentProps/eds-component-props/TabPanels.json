@@ -12,13 +12,9 @@
         {
           "fileName": "packages/tab/src/TabPanels.tsx",
           "name": "TypeLiteral"
-        },
-        {
-          "fileName": "node_modules/@types/react/index.d.ts",
-          "name": "TypeLiteral"
         }
       ],
-      "required": false,
+      "required": true,
       "type": {
         "name": "ReactNode"
       }
@@ -35,7 +31,43 @@
       ],
       "required": false,
       "type": {
-        "name": "any"
+        "name": "\"symbol\" | \"object\" | \"div\" | \"a\" | \"abbr\" | \"address\" | \"area\" | \"article\" | \"aside\" | \"audio\" | \"b\" | \"base\" | \"bdi\" | \"bdo\" | \"big\" | \"blockquote\" | \"body\" | \"br\" | \"button\" | \"canvas\" | ... 160 more ... | undefined"
+      }
+    },
+    "keepMounted": {
+      "defaultValue": {
+        "value": false
+      },
+      "description": "Behold alle panel-noder i DOM (skjult med hidden-attributt) i stedet for å avmontere",
+      "name": "keepMounted",
+      "declarations": [
+        {
+          "fileName": "packages/tab/src/TabPanels.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "boolean | undefined"
+      }
+    },
+    "className": {
+      "defaultValue": null,
+      "description": "",
+      "name": "className",
+      "declarations": [
+        {
+          "fileName": "packages/tab/src/TabPanels.tsx",
+          "name": "TypeLiteral"
+        },
+        {
+          "fileName": "node_modules/@types/react/index.d.ts",
+          "name": "HTMLAttributes"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
       }
     }
   }
