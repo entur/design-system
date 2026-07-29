@@ -25,5 +25,5 @@ export function getPackageName(dirname: string): string {
  */
 export function createFileNameFunction(packageName: string) {
   return (format: string) =>
-    `${packageName}.${format === 'es' ? 'esm' : 'cjs'}.js`;
+    `${packageName}.${format === 'es' ? 'mjs' : 'cjs'}`;
 }

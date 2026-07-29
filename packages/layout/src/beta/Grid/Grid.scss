@@ -1,26 +1,213 @@
+/**
+ * Same responsive var cascade pattern as Flex.scss — see that file for full explanation.
+ *
+ * Setting only --grid-*-base is enough; -s, -m, -lg, and -xl fall back to it automatically.
+ */
+
+/* stylelint-disable declaration-block-no-redundant-longhand-properties --
+   Longhands must stay separate: unset vars are guaranteed-invalid, and a shorthand
+   like `gap: var(--row) var(--col)` drops both values when only one var is set. */
 .eds-layout-grid {
-  --grid-template-columns: initial;
-  --grid-template-rows: initial;
-  --grid-auto-flow: initial;
-  --grid-align-items: initial;
-  --grid-justify-content: initial;
-  --grid-align-content: initial;
-  --grid-gap: initial;
-  --grid-row-gap: initial;
-  --grid-column-gap: initial;
-  --grid-height: initial;
+  --grid-template-columns-base: initial;
+  --grid-template-columns-s: initial;
+  --grid-template-columns-m: initial;
+  --grid-template-columns-lg: initial;
+  --grid-template-columns-xl: initial;
+  --grid-template-rows-base: initial;
+  --grid-template-rows-s: initial;
+  --grid-template-rows-m: initial;
+  --grid-template-rows-lg: initial;
+  --grid-template-rows-xl: initial;
+  --grid-auto-flow-base: initial;
+  --grid-auto-flow-s: initial;
+  --grid-auto-flow-m: initial;
+  --grid-auto-flow-lg: initial;
+  --grid-auto-flow-xl: initial;
+  --grid-auto-rows-base: initial;
+  --grid-auto-rows-s: initial;
+  --grid-auto-rows-m: initial;
+  --grid-auto-rows-lg: initial;
+  --grid-auto-rows-xl: initial;
+  --grid-auto-columns-base: initial;
+  --grid-auto-columns-s: initial;
+  --grid-auto-columns-m: initial;
+  --grid-auto-columns-lg: initial;
+  --grid-auto-columns-xl: initial;
+  --grid-gap-base: initial;
+  --grid-gap-s: initial;
+  --grid-gap-m: initial;
+  --grid-gap-lg: initial;
+  --grid-gap-xl: initial;
+  --grid-row-gap-base: initial;
+  --grid-row-gap-s: initial;
+  --grid-row-gap-m: initial;
+  --grid-row-gap-lg: initial;
+  --grid-row-gap-xl: initial;
+  --grid-column-gap-base: initial;
+  --grid-column-gap-s: initial;
+  --grid-column-gap-m: initial;
+  --grid-column-gap-lg: initial;
+  --grid-column-gap-xl: initial;
+  --grid-align-items-base: initial;
+  --grid-align-items-s: initial;
+  --grid-align-items-m: initial;
+  --grid-align-items-lg: initial;
+  --grid-align-items-xl: initial;
+  --grid-justify-content-base: initial;
+  --grid-justify-content-s: initial;
+  --grid-justify-content-m: initial;
+  --grid-justify-content-lg: initial;
+  --grid-justify-content-xl: initial;
+  --grid-justify-items-base: initial;
+  --grid-justify-items-s: initial;
+  --grid-justify-items-m: initial;
+  --grid-justify-items-lg: initial;
+  --grid-justify-items-xl: initial;
+  --grid-align-content-base: initial;
+  --grid-align-content-s: initial;
+  --grid-align-content-m: initial;
+  --grid-align-content-lg: initial;
+  --grid-align-content-xl: initial;
+  --grid-height-base: initial;
+  --grid-height-s: initial;
+  --grid-height-m: initial;
+  --grid-height-lg: initial;
+  --grid-height-xl: initial;
+  --grid-min-height-base: initial;
+  --grid-min-height-s: initial;
+  --grid-min-height-m: initial;
+  --grid-min-height-lg: initial;
+  --grid-min-height-xl: initial;
+  --grid-max-height-base: initial;
+  --grid-max-height-s: initial;
+  --grid-max-height-m: initial;
+  --grid-max-height-lg: initial;
+  --grid-max-height-xl: initial;
+  --grid-min-width-base: initial;
+  --grid-min-width-s: initial;
+  --grid-min-width-m: initial;
+  --grid-min-width-lg: initial;
+  --grid-min-width-xl: initial;
+  --grid-max-width-base: initial;
+  --grid-max-width-s: initial;
+  --grid-max-width-m: initial;
+  --grid-max-width-lg: initial;
+  --grid-max-width-xl: initial;
 
   :where(&) {
     display: grid;
-    grid-template-columns: var(--grid-template-columns, repeat(12, 1fr));
-    grid-template-rows: var(--grid-template-rows);
-    grid-auto-flow: var(--grid-auto-flow, row);
-    align-items: var(--grid-align-items);
-    justify-content: var(--grid-justify-content);
-    align-content: var(--grid-align-content);
-    gap: var(--grid-gap);
-    row-gap: var(--grid-row-gap, var(--grid-gap));
-    column-gap: var(--grid-column-gap, var(--grid-gap));
-    height: var(--grid-height);
+    grid-template-columns: var(--grid-template-columns-base, repeat(12, 1fr));
+    grid-template-rows: var(--grid-template-rows-base);
+    grid-auto-flow: var(--grid-auto-flow-base, row);
+    grid-auto-rows: var(--grid-auto-rows-base);
+    grid-auto-columns: var(--grid-auto-columns-base);
+    row-gap: var(--grid-row-gap-base);
+    column-gap: var(--grid-column-gap-base);
+    align-items: var(--grid-align-items-base);
+    justify-content: var(--grid-justify-content-base);
+    justify-items: var(--grid-justify-items-base);
+    align-content: var(--grid-align-content-base);
+    height: var(--grid-height-base);
+    min-height: var(--grid-min-height-base);
+    max-height: var(--grid-max-height-base);
+    min-width: var(--grid-min-width-base);
+    max-width: var(--grid-max-width-base);
+
+    @media (width >= 600px) {
+      grid-template-columns: var(--grid-template-columns-s, var(--grid-template-columns-base, repeat(12, 1fr)));
+      grid-template-rows: var(--grid-template-rows-s, var(--grid-template-rows-base));
+      grid-auto-flow: var(--grid-auto-flow-s, var(--grid-auto-flow-base, row));
+      grid-auto-rows: var(--grid-auto-rows-s, var(--grid-auto-rows-base));
+      grid-auto-columns: var(--grid-auto-columns-s, var(--grid-auto-columns-base));
+      row-gap: var(--grid-row-gap-s, var(--grid-row-gap-base));
+      column-gap: var(--grid-column-gap-s, var(--grid-column-gap-base));
+      align-items: var(--grid-align-items-s, var(--grid-align-items-base));
+      justify-content: var(--grid-justify-content-s, var(--grid-justify-content-base));
+      justify-items: var(--grid-justify-items-s, var(--grid-justify-items-base));
+      align-content: var(--grid-align-content-s, var(--grid-align-content-base));
+      height: var(--grid-height-s, var(--grid-height-base));
+      min-height: var(--grid-min-height-s, var(--grid-min-height-base));
+      max-height: var(--grid-max-height-s, var(--grid-max-height-base));
+      min-width: var(--grid-min-width-s, var(--grid-min-width-base));
+      max-width: var(--grid-max-width-s, var(--grid-max-width-base));
+    }
+
+    @media (width >= 800px) {
+      grid-template-columns: var(--grid-template-columns-m, var(--grid-template-columns-s, var(--grid-template-columns-base, repeat(12, 1fr))));
+      grid-template-rows: var(--grid-template-rows-m, var(--grid-template-rows-s, var(--grid-template-rows-base)));
+      grid-auto-flow: var(--grid-auto-flow-m, var(--grid-auto-flow-s, var(--grid-auto-flow-base, row)));
+      grid-auto-rows: var(--grid-auto-rows-m, var(--grid-auto-rows-s, var(--grid-auto-rows-base)));
+      grid-auto-columns: var(--grid-auto-columns-m, var(--grid-auto-columns-s, var(--grid-auto-columns-base)));
+      row-gap: var(--grid-row-gap-m, var(--grid-row-gap-s, var(--grid-row-gap-base)));
+      column-gap: var(--grid-column-gap-m, var(--grid-column-gap-s, var(--grid-column-gap-base)));
+      align-items: var(--grid-align-items-m, var(--grid-align-items-s, var(--grid-align-items-base)));
+      justify-content: var(--grid-justify-content-m, var(--grid-justify-content-s, var(--grid-justify-content-base)));
+      justify-items: var(--grid-justify-items-m, var(--grid-justify-items-s, var(--grid-justify-items-base)));
+      align-content: var(--grid-align-content-m, var(--grid-align-content-s, var(--grid-align-content-base)));
+      height: var(--grid-height-m, var(--grid-height-s, var(--grid-height-base)));
+      min-height: var(--grid-min-height-m, var(--grid-min-height-s, var(--grid-min-height-base)));
+      max-height: var(--grid-max-height-m, var(--grid-max-height-s, var(--grid-max-height-base)));
+      min-width: var(--grid-min-width-m, var(--grid-min-width-s, var(--grid-min-width-base)));
+      max-width: var(--grid-max-width-m, var(--grid-max-width-s, var(--grid-max-width-base)));
+    }
+
+    @media (width >= 1200px) {
+      grid-template-columns: var(
+        --grid-template-columns-lg,
+        var(--grid-template-columns-m, var(--grid-template-columns-s, var(--grid-template-columns-base, repeat(12, 1fr))))
+      );
+      grid-template-rows: var(--grid-template-rows-lg, var(--grid-template-rows-m, var(--grid-template-rows-s, var(--grid-template-rows-base))));
+      grid-auto-flow: var(--grid-auto-flow-lg, var(--grid-auto-flow-m, var(--grid-auto-flow-s, var(--grid-auto-flow-base, row))));
+      grid-auto-rows: var(--grid-auto-rows-lg, var(--grid-auto-rows-m, var(--grid-auto-rows-s, var(--grid-auto-rows-base))));
+      grid-auto-columns: var(--grid-auto-columns-lg, var(--grid-auto-columns-m, var(--grid-auto-columns-s, var(--grid-auto-columns-base))));
+      row-gap: var(--grid-row-gap-lg, var(--grid-row-gap-m, var(--grid-row-gap-s, var(--grid-row-gap-base))));
+      column-gap: var(--grid-column-gap-lg, var(--grid-column-gap-m, var(--grid-column-gap-s, var(--grid-column-gap-base))));
+      align-items: var(--grid-align-items-lg, var(--grid-align-items-m, var(--grid-align-items-s, var(--grid-align-items-base))));
+      justify-content: var(--grid-justify-content-lg, var(--grid-justify-content-m, var(--grid-justify-content-s, var(--grid-justify-content-base))));
+      justify-items: var(--grid-justify-items-lg, var(--grid-justify-items-m, var(--grid-justify-items-s, var(--grid-justify-items-base))));
+      align-content: var(--grid-align-content-lg, var(--grid-align-content-m, var(--grid-align-content-s, var(--grid-align-content-base))));
+      height: var(--grid-height-lg, var(--grid-height-m, var(--grid-height-s, var(--grid-height-base))));
+      min-height: var(--grid-min-height-lg, var(--grid-min-height-m, var(--grid-min-height-s, var(--grid-min-height-base))));
+      max-height: var(--grid-max-height-lg, var(--grid-max-height-m, var(--grid-max-height-s, var(--grid-max-height-base))));
+      min-width: var(--grid-min-width-lg, var(--grid-min-width-m, var(--grid-min-width-s, var(--grid-min-width-base))));
+      max-width: var(--grid-max-width-lg, var(--grid-max-width-m, var(--grid-max-width-s, var(--grid-max-width-base))));
+    }
+
+    @media (width >= 1400px) {
+      grid-template-columns: var(
+        --grid-template-columns-xl,
+        var(--grid-template-columns-lg, var(--grid-template-columns-m, var(--grid-template-columns-s, var(--grid-template-columns-base, repeat(12, 1fr)))))
+      );
+      grid-template-rows: var(
+        --grid-template-rows-xl,
+        var(--grid-template-rows-lg, var(--grid-template-rows-m, var(--grid-template-rows-s, var(--grid-template-rows-base))))
+      );
+      grid-auto-flow: var(--grid-auto-flow-xl, var(--grid-auto-flow-lg, var(--grid-auto-flow-m, var(--grid-auto-flow-s, var(--grid-auto-flow-base, row)))));
+      grid-auto-rows: var(--grid-auto-rows-xl, var(--grid-auto-rows-lg, var(--grid-auto-rows-m, var(--grid-auto-rows-s, var(--grid-auto-rows-base)))));
+      grid-auto-columns: var(
+        --grid-auto-columns-xl,
+        var(--grid-auto-columns-lg, var(--grid-auto-columns-m, var(--grid-auto-columns-s, var(--grid-auto-columns-base))))
+      );
+      row-gap: var(--grid-row-gap-xl, var(--grid-row-gap-lg, var(--grid-row-gap-m, var(--grid-row-gap-s, var(--grid-row-gap-base)))));
+      column-gap: var(--grid-column-gap-xl, var(--grid-column-gap-lg, var(--grid-column-gap-m, var(--grid-column-gap-s, var(--grid-column-gap-base)))));
+      align-items: var(--grid-align-items-xl, var(--grid-align-items-lg, var(--grid-align-items-m, var(--grid-align-items-s, var(--grid-align-items-base)))));
+      justify-content: var(
+        --grid-justify-content-xl,
+        var(--grid-justify-content-lg, var(--grid-justify-content-m, var(--grid-justify-content-s, var(--grid-justify-content-base))))
+      );
+      justify-items: var(
+        --grid-justify-items-xl,
+        var(--grid-justify-items-lg, var(--grid-justify-items-m, var(--grid-justify-items-s, var(--grid-justify-items-base))))
+      );
+      align-content: var(
+        --grid-align-content-xl,
+        var(--grid-align-content-lg, var(--grid-align-content-m, var(--grid-align-content-s, var(--grid-align-content-base))))
+      );
+      height: var(--grid-height-xl, var(--grid-height-lg, var(--grid-height-m, var(--grid-height-s, var(--grid-height-base)))));
+      min-height: var(--grid-min-height-xl, var(--grid-min-height-lg, var(--grid-min-height-m, var(--grid-min-height-s, var(--grid-min-height-base)))));
+      max-height: var(--grid-max-height-xl, var(--grid-max-height-lg, var(--grid-max-height-m, var(--grid-max-height-s, var(--grid-max-height-base)))));
+      min-width: var(--grid-min-width-xl, var(--grid-min-width-lg, var(--grid-min-width-m, var(--grid-min-width-s, var(--grid-min-width-base)))));
+      max-width: var(--grid-max-width-xl, var(--grid-max-width-lg, var(--grid-max-width-m, var(--grid-max-width-s, var(--grid-max-width-base)))));
+    }
   }
 }

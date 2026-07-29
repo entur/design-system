@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useId } from 'react';
 import classNames from 'classnames';
 import {
   BaseFormControl,
@@ -6,7 +6,7 @@ import {
   useInputGroupContext,
   useVariant,
 } from '@entur/form';
-import { VariantType, useOnMount, useRandomId } from '@entur/utils';
+import { VariantType, useOnMount } from '@entur/utils';
 
 import './NativeTimePicker.scss';
 
@@ -36,7 +36,7 @@ export const NativeTimePicker = React.forwardRef<
     { className, style, onChange, label, feedback, variant, prepend, ...rest },
     ref: React.Ref<HTMLInputElement>,
   ) => {
-    const nativetimepickerId = useRandomId('eds-native-timepicker');
+    const nativetimepickerId = `eds-native-timepicker${useId()}`;
     return (
       <BaseFormControl
         style={style}

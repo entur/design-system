@@ -1,0 +1,9 @@
+{
+  "name": "conventional-changelog-entur",
+  "version": "1.0.0",
+  "private": true,
+  "main": "index.js",
+  "dependencies": {
+    "conventional-changelog-angular": "^7.0.0"
+  }
+}

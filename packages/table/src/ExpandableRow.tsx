@@ -12,11 +12,11 @@ export type ExpandableRowProps = {
   open?: boolean;
 };
 
-export const ExpandableRow: React.FC<ExpandableRowProps> = ({
+export const ExpandableRow = ({
   open = false,
   children,
   colSpan,
-}) => {
+}: ExpandableRowProps) => {
   return (
     <tr>
       <td colSpan={colSpan}>

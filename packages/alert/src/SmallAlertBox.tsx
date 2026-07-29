@@ -31,14 +31,14 @@ export type SmallAlertBoxProps = {
   [key: string]: any;
 };
 
-export const SmallAlertBox: React.FC<SmallAlertBoxProps> = ({
+export const SmallAlertBox = ({
   className,
   width,
   onClose,
   closable = false,
   closeButtonLabel,
   ...rest
-}) => (
+}: SmallAlertBoxProps) => (
   <BaseAlertBox
     className={classNames(className, {
       'eds-alert-box--fit-content': width === 'fit-content',

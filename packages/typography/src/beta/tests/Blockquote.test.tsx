@@ -1,4 +1,3 @@
-import React from 'react';
 import { cleanup, render } from '@testing-library/react';
 import { Blockquote, BlockquoteFooter } from '../components/Blockquote';
 

@@ -6,7 +6,7 @@
   "props": {
     "colSpan": {
       "defaultValue": null,
-      "description": "Number of columns the item should span (supports responsive objects)\nIf number: adds \"span\" prefix (e.g., 6 → \"span 6\")\nIf string: used directly (e.g., \"span 3\" or \"1 / 3\")",
+      "description": "Columns to span. Number adds \"span\" prefix (e.g. 6 → \"span 6\"). String used as-is (e.g. \"1 / -1\").\nAccepts a responsive object: `{ base: 12, m: 6, lg: 4 }`.",
       "name": "colSpan",
       "declarations": [
         {
@@ -16,14 +16,12 @@
       ],
       "required": false,
       "type": {
-        "name": "ResponsiveValue<string | number> | undefined"
+        "name": "ResponsiveValue<ColRowValue> | undefined"
       }
     },
     "rowSpan": {
-      "defaultValue": {
-        "value": 1
-      },
-      "description": "Number of rows the item should span (supports responsive objects)",
+      "defaultValue": null,
+      "description": "Rows to span. Number adds \"span\" prefix (e.g. 2 → \"span 2\"). String used as-is.\nAccepts a responsive object: `{ base: 1, m: 2 }`.",
       "name": "rowSpan",
       "declarations": [
         {
@@ -33,33 +31,102 @@
       ],
       "required": false,
       "type": {
-        "name": "ResponsiveValue<string | number> | undefined"
+        "name": "ResponsiveValue<ColRowValue> | undefined"
       }
     },
-    "as": {
-      "defaultValue": {
-        "value": "\"div\""
-      },
-      "description": "HTML element or React component used to render the Grid item\nAn override of the default HTML tag.\nCan also be another React component.",
-      "name": "as",
+    "colStart": {
+      "defaultValue": null,
+      "description": "CSS grid-column-start value. Number = line number (e.g. 2 → grid-column-start: 2). String used as-is.",
+      "name": "colStart",
       "declarations": [
         {
           "fileName": "packages/layout/src/beta/Grid/GridItem.tsx",
-          "name": "TypeLiteral"
-        },
-        {
-          "fileName": "node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
           "name": "TypeLiteral"
         }
       ],
       "required": false,
       "type": {
-        "name": "(string & ElementType<any>) | (ComponentClass<any, any> & ElementType<any>) | (FunctionComponent<any> & ElementType<...>) | undefined"
+        "name": "ResponsiveValue<ColRowValue> | undefined"
+      }
+    },
+    "colEnd": {
+      "defaultValue": null,
+      "description": "CSS grid-column-end value. Number = line number. String used as-is (e.g. \"-1\").",
+      "name": "colEnd",
+      "declarations": [
+        {
+          "fileName": "packages/layout/src/beta/Grid/GridItem.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "ResponsiveValue<ColRowValue> | undefined"
+      }
+    },
+    "rowStart": {
+      "defaultValue": null,
+      "description": "CSS grid-row-start value. Number = line number. String used as-is.",
+      "name": "rowStart",
+      "declarations": [
+        {
+          "fileName": "packages/layout/src/beta/Grid/GridItem.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "ResponsiveValue<ColRowValue> | undefined"
+      }
+    },
+    "rowEnd": {
+      "defaultValue": null,
+      "description": "CSS grid-row-end value. Number = line number. String used as-is.",
+      "name": "rowEnd",
+      "declarations": [
+        {
+          "fileName": "packages/layout/src/beta/Grid/GridItem.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "ResponsiveValue<ColRowValue> | undefined"
+      }
+    },
+    "alignSelf": {
+      "defaultValue": null,
+      "description": "CSS align-self value",
+      "name": "alignSelf",
+      "declarations": [
+        {
+          "fileName": "packages/layout/src/beta/Grid/GridItem.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "ResponsiveValue<AlignSelf | undefined>"
+      }
+    },
+    "justifySelf": {
+      "defaultValue": null,
+      "description": "CSS justify-self value",
+      "name": "justifySelf",
+      "declarations": [
+        {
+          "fileName": "packages/layout/src/beta/Grid/GridItem.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "ResponsiveValue<JustifySelf | undefined>"
       }
     },
     "className": {
       "defaultValue": null,
-      "description": "Additional class names",
+      "description": "",
       "name": "className",
       "declarations": [
         {
@@ -72,19 +139,19 @@
         "name": "string | undefined"
       }
     },
-    "children": {
+    "as": {
       "defaultValue": null,
-      "description": "Content of the Grid item",
-      "name": "children",
+      "description": "An override of the default HTML tag.\nCan also be another React component.",
+      "name": "as",
       "declarations": [
         {
-          "fileName": "packages/layout/src/beta/Grid/GridItem.tsx",
+          "fileName": "node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
           "name": "TypeLiteral"
         }
       ],
       "required": false,
       "type": {
-        "name": "ReactNode"
+        "name": "ElementType<any, keyof IntrinsicElements> | undefined"
       }
     },
     "ref": {

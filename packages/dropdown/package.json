@@ -2,8 +2,8 @@
   "name": "@entur/dropdown",
   "version": "8.1.8",
   "license": "EUPL-1.2",
-  "main": "dist/dropdown.cjs.js",
-  "module": "dist/dropdown.esm.js",
+  "main": "dist/dropdown.cjs",
+  "module": "dist/dropdown.mjs",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
@@ -22,8 +22,8 @@
     "test": "jest"
   },
   "peerDependencies": {
-    "react": ">=16.8.0",
-    "react-dom": ">=16.8.0"
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
   },
   "dependencies": {
     "@entur/a11y": "workspace:^",
@@ -41,7 +41,7 @@
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^10.4.9",
+    "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "14.6.1",
     "@vitejs/plugin-react": "^5.0.1",
     "jest": "^29.0.0",
@@ -50,5 +50,16 @@
     "typescript": "^5.9.2",
     "vite": "^7.3.2",
     "vite-plugin-dts": "^4.5.4"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/dropdown.mjs",
+      "require": "./dist/dropdown.cjs",
+      "default": "./dist/dropdown.mjs"
+    },
+    "./styles": "./dist/styles.css",
+    "./dist/styles.css": "./dist/styles.css",
+    "./package.json": "./package.json"
   }
 }

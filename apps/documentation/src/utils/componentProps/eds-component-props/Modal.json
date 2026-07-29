@@ -15,7 +15,7 @@
         },
         {
           "fileName": "node_modules/@types/react/index.d.ts",
-          "name": "TypeLiteral"
+          "name": "DOMAttributes"
         }
       ],
       "required": false,
@@ -42,7 +42,7 @@
     },
     "initialFocusRef": {
       "defaultValue": null,
-      "description": "En ref til elementet som skal være fokusert når modalen åpnes. Defaulter til lukkeknappen",
+      "description": "En ref til elementet som skal være fokusert når modalen åpnes. Defaulter til tittelen, ellers første interaktive element",
       "name": "initialFocusRef",
       "declarations": [
         {
@@ -57,7 +57,7 @@
     },
     "open": {
       "defaultValue": null,
-      "description": "Flagg som sier om modalen er åpen",
+      "description": "Styrer om modalen er synlig",
       "name": "open",
       "declarations": [
         {
@@ -72,8 +72,25 @@
     },
     "onDismiss": {
       "defaultValue": null,
-      "description": "Callback som kalles når brukeren ber om å lukke modalen",
+      "description": "Callback som kalles når brukeren ber om å lukke modalen. Påkrevd: Esc og klikk utenfor lukker alltid (nettleserens innebygde atferd for native dialog)",
       "name": "onDismiss",
+      "declarations": [
+        {
+          "fileName": "packages/modal/src/Modal.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": true,
+      "type": {
+        "name": "() => void"
+      }
+    },
+    "showCloseButton": {
+      "defaultValue": {
+        "value": true
+      },
+      "description": "Om lukkeknappen skal vises i øvre høyre hjørne",
+      "name": "showCloseButton",
       "declarations": [
         {
           "fileName": "packages/modal/src/Modal.tsx",
@@ -82,7 +99,7 @@
       ],
       "required": false,
       "type": {
-        "name": "(() => void) | undefined"
+        "name": "boolean | undefined"
       }
     },
     "size": {
@@ -130,6 +147,21 @@
       "required": false,
       "type": {
         "name": "ReactNode"
+      }
+    },
+    "aria-label": {
+      "defaultValue": null,
+      "description": "Tilgjengelig navn for modalen når title ikke er satt",
+      "name": "aria-label",
+      "declarations": [
+        {
+          "fileName": "packages/modal/src/Modal.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
       }
     },
     "closeOnClickOutside": {

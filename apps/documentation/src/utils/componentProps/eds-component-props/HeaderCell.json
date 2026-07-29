@@ -4,25 +4,6 @@
   "displayName": "HeaderCell",
   "methods": [],
   "props": {
-    "className": {
-      "defaultValue": null,
-      "description": "Ekstra klassenavn",
-      "name": "className",
-      "declarations": [
-        {
-          "fileName": "packages/table/src/HeaderCell.tsx",
-          "name": "TypeLiteral"
-        },
-        {
-          "fileName": "node_modules/@types/react/index.d.ts",
-          "name": "HTMLAttributes"
-        }
-      ],
-      "required": false,
-      "type": {
-        "name": "string | undefined"
-      }
-    },
     "children": {
       "defaultValue": null,
       "description": "Kolonneoverskrift",
@@ -42,10 +23,31 @@
         "name": "ReactNode"
       }
     },
-    "name": {
+    "className": {
       "defaultValue": null,
-      "description": "Navnet det skal sorteres på. Benyttes via useSortableTable",
-      "name": "name",
+      "description": "Ekstra klassenavn",
+      "name": "className",
+      "declarations": [
+        {
+          "fileName": "packages/table/src/HeaderCell.tsx",
+          "name": "TypeLiteral"
+        },
+        {
+          "fileName": "node_modules/@types/react/index.d.ts",
+          "name": "HTMLAttributes"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "padding": {
+      "defaultValue": {
+        "value": "default"
+      },
+      "description": "Størrelse som settes for HeaderCell for ulikt innhold av komponenter",
+      "name": "padding",
       "declarations": [
         {
           "fileName": "packages/table/src/HeaderCell.tsx",
@@ -54,7 +56,22 @@
       ],
       "required": false,
       "type": {
-        "name": "string | undefined"
+        "name": "\"default\" | \"checkbox\" | \"radio\" | \"overflow-menu\" | undefined"
+      }
+    },
+    "sortableButtonProps": {
+      "defaultValue": null,
+      "description": "Ekstra props som kan sendes til sorteringsknappelementet. Benyttes via useSortableTable",
+      "name": "sortableButtonProps",
+      "declarations": [
+        {
+          "fileName": "packages/table/src/HeaderCell.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> | undefined"
       }
     },
     "sortable": {
@@ -89,27 +106,10 @@
         "name": "ExternalSortConfig | undefined"
       }
     },
-    "padding": {
-      "defaultValue": {
-        "value": "default"
-      },
-      "description": "Størrelse som settes for HeaderCell for ulikt innhold av komponenter",
-      "name": "padding",
-      "declarations": [
-        {
-          "fileName": "packages/table/src/HeaderCell.tsx",
-          "name": "TypeLiteral"
-        }
-      ],
-      "required": false,
-      "type": {
-        "name": "\"default\" | \"checkbox\" | \"radio\" | \"overflow-menu\" | undefined"
-      }
-    },
-    "sortableButtonProps": {
+    "name": {
       "defaultValue": null,
-      "description": "Ekstra props som kan sendes til sorteringsknappelementet. Benyttes via useSortableTable",
-      "name": "sortableButtonProps",
+      "description": "Navnet det skal sorteres på. Benyttes via useSortableTable",
+      "name": "name",
       "declarations": [
         {
           "fileName": "packages/table/src/HeaderCell.tsx",
@@ -118,7 +118,7 @@
       ],
       "required": false,
       "type": {
-        "name": "DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> | undefined"
+        "name": "string | undefined"
       }
     },
     "sortedAscendingAriaLabel": {

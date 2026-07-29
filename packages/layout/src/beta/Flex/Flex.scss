@@ -1,46 +1,220 @@
+/**
+ * How responsive props work in Flex (and Grid/GridItem):
+ *
+ * Each CSS property has one var per breakpoint: -base, -s, -m, -lg, -xl.
+ * All five start as `initial`, which in CSS custom properties means "not set".
+ *
+ * The media queries read each breakpoint's var but fall back to the previous one:
+ *
+ *   @media (width >= 600px) {
+ *     row-gap: var(--flex-row-gap-s, var(--flex-row-gap-base));
+ *   }
+ *
+ * So if only -base is set, s/m/lg/xl all inherit it automatically.
+ * If -s is also set, m/lg/xl inherit from -s. And so on.
+ *
+ * CSS shorthands (gap, flex) are NOT declared here — only their longhands.
+ * Mixing shorthands and longhands in the same rule causes longhands with
+ * unset (initial) vars to clobber shorthand values via IACVT. The JS layer
+ * handles shorthand-to-longhand mapping (e.g. rowGap ?? gap in Flex.tsx).
+ */
+
+/* stylelint-disable declaration-block-no-redundant-longhand-properties --
+   See the note above: collapsing these longhands into shorthands drops all
+   values in the shorthand whenever a single var is unset. */
 .eds-layout-flex {
   --flex-display: initial;
-  --flex-direction: initial;
-  --flex-wrap: initial;
-  --flex-align-items: initial;
-  --flex-justify-content: initial;
-  --flex-align-content: initial;
-  --flex-gap: initial;
-  --flex-row-gap: initial;
-  --flex-column-gap: initial;
-  --flex: initial;
-  --flex-grow: initial;
-  --flex-shrink: initial;
-  --flex-basis: initial;
-  --flex-width: initial;
-  --flex-height: initial;
-  --flex-min-width: initial;
-  --flex-min-height: initial;
-  --flex-max-width: initial;
-  --flex-max-height: initial;
+  --flex-direction-base: initial;
+  --flex-direction-s: initial;
+  --flex-direction-m: initial;
+  --flex-direction-lg: initial;
+  --flex-direction-xl: initial;
+  --flex-wrap-base: initial;
+  --flex-wrap-s: initial;
+  --flex-wrap-m: initial;
+  --flex-wrap-lg: initial;
+  --flex-wrap-xl: initial;
+  --flex-align-items-base: initial;
+  --flex-align-items-s: initial;
+  --flex-align-items-m: initial;
+  --flex-align-items-lg: initial;
+  --flex-align-items-xl: initial;
+  --flex-justify-content-base: initial;
+  --flex-justify-content-s: initial;
+  --flex-justify-content-m: initial;
+  --flex-justify-content-lg: initial;
+  --flex-justify-content-xl: initial;
+  --flex-align-content-base: initial;
+  --flex-align-content-s: initial;
+  --flex-align-content-m: initial;
+  --flex-align-content-lg: initial;
+  --flex-align-content-xl: initial;
+  --flex-gap-base: initial;
+  --flex-gap-s: initial;
+  --flex-gap-m: initial;
+  --flex-gap-lg: initial;
+  --flex-gap-xl: initial;
+  --flex-row-gap-base: initial;
+  --flex-row-gap-s: initial;
+  --flex-row-gap-m: initial;
+  --flex-row-gap-lg: initial;
+  --flex-row-gap-xl: initial;
+  --flex-column-gap-base: initial;
+  --flex-column-gap-s: initial;
+  --flex-column-gap-m: initial;
+  --flex-column-gap-lg: initial;
+  --flex-column-gap-xl: initial;
+  --flex-base: initial;
+  --flex-s: initial;
+  --flex-m: initial;
+  --flex-lg: initial;
+  --flex-xl: initial;
+  --flex-grow-base: initial;
+  --flex-grow-s: initial;
+  --flex-grow-m: initial;
+  --flex-grow-lg: initial;
+  --flex-grow-xl: initial;
+  --flex-shrink-base: initial;
+  --flex-shrink-s: initial;
+  --flex-shrink-m: initial;
+  --flex-shrink-lg: initial;
+  --flex-shrink-xl: initial;
+  --flex-basis-base: initial;
+  --flex-basis-s: initial;
+  --flex-basis-m: initial;
+  --flex-basis-lg: initial;
+  --flex-basis-xl: initial;
+  --flex-width-base: initial;
+  --flex-width-s: initial;
+  --flex-width-m: initial;
+  --flex-width-lg: initial;
+  --flex-width-xl: initial;
+  --flex-height-base: initial;
+  --flex-height-s: initial;
+  --flex-height-m: initial;
+  --flex-height-lg: initial;
+  --flex-height-xl: initial;
+  --flex-min-width-base: initial;
+  --flex-min-width-s: initial;
+  --flex-min-width-m: initial;
+  --flex-min-width-lg: initial;
+  --flex-min-width-xl: initial;
+  --flex-min-height-base: initial;
+  --flex-min-height-s: initial;
+  --flex-min-height-m: initial;
+  --flex-min-height-lg: initial;
+  --flex-min-height-xl: initial;
+  --flex-max-width-base: initial;
+  --flex-max-width-s: initial;
+  --flex-max-width-m: initial;
+  --flex-max-width-lg: initial;
+  --flex-max-width-xl: initial;
+  --flex-max-height-base: initial;
+  --flex-max-height-s: initial;
+  --flex-max-height-m: initial;
+  --flex-max-height-lg: initial;
+  --flex-max-height-xl: initial;
 
   :where(&) {
     display: var(--flex-display, flex);
-    flex-direction: var(--flex-direction, row);
-    flex-wrap: var(--flex-wrap, nowrap);
-    align-items: var(--flex-align-items);
-    justify-content: var(--flex-justify-content);
-    align-content: var(--flex-align-content);
-    gap: var(--flex-gap);
-    row-gap: var(--flex-row-gap, var(--flex-gap));
-    column-gap: var(--flex-column-gap, var(--flex-gap));
-    -webkit-column-gap: var(--flex-column-gap, var(--flex-gap));
-    -moz-column-gap: var(--flex-column-gap, var(--flex-gap));
-    flex: var(--flex);
-    flex-grow: var(--flex-grow);
-    flex-shrink: var(--flex-shrink);
-    flex-basis: var(--flex-basis);
-    width: var(--flex-width);
-    height: var(--flex-height);
-    min-width: var(--flex-min-width);
-    min-height: var(--flex-min-height);
-    max-width: var(--flex-max-width);
-    max-height: var(--flex-max-height);
+    flex-direction: var(--flex-direction-base, row);
+    flex-wrap: var(--flex-wrap-base, nowrap);
+    align-items: var(--flex-align-items-base);
+    justify-content: var(--flex-justify-content-base);
+    align-content: var(--flex-align-content-base);
+    row-gap: var(--flex-row-gap-base);
+    column-gap: var(--flex-column-gap-base);
+    flex-grow: var(--flex-grow-base);
+    flex-shrink: var(--flex-shrink-base);
+    flex-basis: var(--flex-basis-base);
+    width: var(--flex-width-base);
+    height: var(--flex-height-base);
+    min-width: var(--flex-min-width-base);
+    min-height: var(--flex-min-height-base);
+    max-width: var(--flex-max-width-base);
+    max-height: var(--flex-max-height-base);
+
+    @media (width >= 600px) {
+      flex-direction: var(--flex-direction-s, var(--flex-direction-base, row));
+      flex-wrap: var(--flex-wrap-s, var(--flex-wrap-base, nowrap));
+      align-items: var(--flex-align-items-s, var(--flex-align-items-base));
+      justify-content: var(--flex-justify-content-s, var(--flex-justify-content-base));
+      align-content: var(--flex-align-content-s, var(--flex-align-content-base));
+      row-gap: var(--flex-row-gap-s, var(--flex-row-gap-base));
+      column-gap: var(--flex-column-gap-s, var(--flex-column-gap-base));
+      flex-grow: var(--flex-grow-s, var(--flex-grow-base));
+      flex-shrink: var(--flex-shrink-s, var(--flex-shrink-base));
+      flex-basis: var(--flex-basis-s, var(--flex-basis-base));
+      width: var(--flex-width-s, var(--flex-width-base));
+      height: var(--flex-height-s, var(--flex-height-base));
+      min-width: var(--flex-min-width-s, var(--flex-min-width-base));
+      min-height: var(--flex-min-height-s, var(--flex-min-height-base));
+      max-width: var(--flex-max-width-s, var(--flex-max-width-base));
+      max-height: var(--flex-max-height-s, var(--flex-max-height-base));
+    }
+
+    @media (width >= 800px) {
+      flex-direction: var(--flex-direction-m, var(--flex-direction-s, var(--flex-direction-base, row)));
+      flex-wrap: var(--flex-wrap-m, var(--flex-wrap-s, var(--flex-wrap-base, nowrap)));
+      align-items: var(--flex-align-items-m, var(--flex-align-items-s, var(--flex-align-items-base)));
+      justify-content: var(--flex-justify-content-m, var(--flex-justify-content-s, var(--flex-justify-content-base)));
+      align-content: var(--flex-align-content-m, var(--flex-align-content-s, var(--flex-align-content-base)));
+      row-gap: var(--flex-row-gap-m, var(--flex-row-gap-s, var(--flex-row-gap-base)));
+      column-gap: var(--flex-column-gap-m, var(--flex-column-gap-s, var(--flex-column-gap-base)));
+      flex-grow: var(--flex-grow-m, var(--flex-grow-s, var(--flex-grow-base)));
+      flex-shrink: var(--flex-shrink-m, var(--flex-shrink-s, var(--flex-shrink-base)));
+      flex-basis: var(--flex-basis-m, var(--flex-basis-s, var(--flex-basis-base)));
+      width: var(--flex-width-m, var(--flex-width-s, var(--flex-width-base)));
+      height: var(--flex-height-m, var(--flex-height-s, var(--flex-height-base)));
+      min-width: var(--flex-min-width-m, var(--flex-min-width-s, var(--flex-min-width-base)));
+      min-height: var(--flex-min-height-m, var(--flex-min-height-s, var(--flex-min-height-base)));
+      max-width: var(--flex-max-width-m, var(--flex-max-width-s, var(--flex-max-width-base)));
+      max-height: var(--flex-max-height-m, var(--flex-max-height-s, var(--flex-max-height-base)));
+    }
+
+    @media (width >= 1200px) {
+      flex-direction: var(--flex-direction-lg, var(--flex-direction-m, var(--flex-direction-s, var(--flex-direction-base, row))));
+      flex-wrap: var(--flex-wrap-lg, var(--flex-wrap-m, var(--flex-wrap-s, var(--flex-wrap-base, nowrap))));
+      align-items: var(--flex-align-items-lg, var(--flex-align-items-m, var(--flex-align-items-s, var(--flex-align-items-base))));
+      justify-content: var(--flex-justify-content-lg, var(--flex-justify-content-m, var(--flex-justify-content-s, var(--flex-justify-content-base))));
+      align-content: var(--flex-align-content-lg, var(--flex-align-content-m, var(--flex-align-content-s, var(--flex-align-content-base))));
+      row-gap: var(--flex-row-gap-lg, var(--flex-row-gap-m, var(--flex-row-gap-s, var(--flex-row-gap-base))));
+      column-gap: var(--flex-column-gap-lg, var(--flex-column-gap-m, var(--flex-column-gap-s, var(--flex-column-gap-base))));
+      flex-grow: var(--flex-grow-lg, var(--flex-grow-m, var(--flex-grow-s, var(--flex-grow-base))));
+      flex-shrink: var(--flex-shrink-lg, var(--flex-shrink-m, var(--flex-shrink-s, var(--flex-shrink-base))));
+      flex-basis: var(--flex-basis-lg, var(--flex-basis-m, var(--flex-basis-s, var(--flex-basis-base))));
+      width: var(--flex-width-lg, var(--flex-width-m, var(--flex-width-s, var(--flex-width-base))));
+      height: var(--flex-height-lg, var(--flex-height-m, var(--flex-height-s, var(--flex-height-base))));
+      min-width: var(--flex-min-width-lg, var(--flex-min-width-m, var(--flex-min-width-s, var(--flex-min-width-base))));
+      min-height: var(--flex-min-height-lg, var(--flex-min-height-m, var(--flex-min-height-s, var(--flex-min-height-base))));
+      max-width: var(--flex-max-width-lg, var(--flex-max-width-m, var(--flex-max-width-s, var(--flex-max-width-base))));
+      max-height: var(--flex-max-height-lg, var(--flex-max-height-m, var(--flex-max-height-s, var(--flex-max-height-base))));
+    }
+
+    @media (width >= 1400px) {
+      flex-direction: var(--flex-direction-xl, var(--flex-direction-lg, var(--flex-direction-m, var(--flex-direction-s, var(--flex-direction-base, row)))));
+      flex-wrap: var(--flex-wrap-xl, var(--flex-wrap-lg, var(--flex-wrap-m, var(--flex-wrap-s, var(--flex-wrap-base, nowrap)))));
+      align-items: var(--flex-align-items-xl, var(--flex-align-items-lg, var(--flex-align-items-m, var(--flex-align-items-s, var(--flex-align-items-base)))));
+      justify-content: var(
+        --flex-justify-content-xl,
+        var(--flex-justify-content-lg, var(--flex-justify-content-m, var(--flex-justify-content-s, var(--flex-justify-content-base))))
+      );
+      align-content: var(
+        --flex-align-content-xl,
+        var(--flex-align-content-lg, var(--flex-align-content-m, var(--flex-align-content-s, var(--flex-align-content-base))))
+      );
+      row-gap: var(--flex-row-gap-xl, var(--flex-row-gap-lg, var(--flex-row-gap-m, var(--flex-row-gap-s, var(--flex-row-gap-base)))));
+      column-gap: var(--flex-column-gap-xl, var(--flex-column-gap-lg, var(--flex-column-gap-m, var(--flex-column-gap-s, var(--flex-column-gap-base)))));
+      flex-grow: var(--flex-grow-xl, var(--flex-grow-lg, var(--flex-grow-m, var(--flex-grow-s, var(--flex-grow-base)))));
+      flex-shrink: var(--flex-shrink-xl, var(--flex-shrink-lg, var(--flex-shrink-m, var(--flex-shrink-s, var(--flex-shrink-base)))));
+      flex-basis: var(--flex-basis-xl, var(--flex-basis-lg, var(--flex-basis-m, var(--flex-basis-s, var(--flex-basis-base)))));
+      width: var(--flex-width-xl, var(--flex-width-lg, var(--flex-width-m, var(--flex-width-s, var(--flex-width-base)))));
+      height: var(--flex-height-xl, var(--flex-height-lg, var(--flex-height-m, var(--flex-height-s, var(--flex-height-base)))));
+      min-width: var(--flex-min-width-xl, var(--flex-min-width-lg, var(--flex-min-width-m, var(--flex-min-width-s, var(--flex-min-width-base)))));
+      min-height: var(--flex-min-height-xl, var(--flex-min-height-lg, var(--flex-min-height-m, var(--flex-min-height-s, var(--flex-min-height-base)))));
+      max-width: var(--flex-max-width-xl, var(--flex-max-width-lg, var(--flex-max-width-m, var(--flex-max-width-s, var(--flex-max-width-base)))));
+      max-height: var(--flex-max-height-xl, var(--flex-max-height-lg, var(--flex-max-height-m, var(--flex-max-height-s, var(--flex-max-height-base)))));
+    }
   }
 }
 

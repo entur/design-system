@@ -12,13 +12,9 @@
         {
           "fileName": "packages/expand/src/BaseExpand.tsx",
           "name": "TypeLiteral"
-        },
-        {
-          "fileName": "node_modules/@types/react/index.d.ts",
-          "name": "TypeLiteral"
         }
       ],
-      "required": false,
+      "required": true,
       "type": {
         "name": "ReactNode"
       }
@@ -36,6 +32,23 @@
       "required": true,
       "type": {
         "name": "boolean"
+      }
+    },
+    "unmountOnClose": {
+      "defaultValue": {
+        "value": false
+      },
+      "description": "Avmonter innholdet når det lukkes. Når false (standard), holdes innholdet montert og skjules med CSS.",
+      "name": "unmountOnClose",
+      "declarations": [
+        {
+          "fileName": "packages/expand/src/BaseExpand.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "boolean | undefined"
       }
     }
   }

@@ -2,7 +2,7 @@ import React from 'react';
 import { Heading5 } from '@entur/typography';
 import { ExpandArrow } from './ExpandArrow';
 
-export type ExandableTextButtonProps = {
+export type ExpandableTextButtonProps = {
   children: React.ReactNode;
   /** Prop for om innholdet er åpent */
   open?: boolean;
@@ -15,15 +15,13 @@ export type ExandableTextButtonProps = {
   [key: string]: any;
 };
 
-export const ExpandableTextButton: React.FC<ExandableTextButtonProps> = ({
-  children,
-  open,
-  onToggle,
-  as: Component = Heading5,
-  ...rest
-}) => {
+export const ExpandableTextButton = React.forwardRef<
+  HTMLButtonElement,
+  ExpandableTextButtonProps
+>(({ children, open, onToggle, as: Component = Heading5, ...rest }, ref) => {
   return (
     <button
+      ref={ref}
       className="eds-expandable-text__trigger"
       aria-expanded={open}
       type="button"
@@ -34,4 +32,4 @@ export const ExpandableTextButton: React.FC<ExandableTextButtonProps> = ({
       <ExpandArrow open={open} className="eds-expandable-text__arrow" />
     </button>
   );
-};
+});

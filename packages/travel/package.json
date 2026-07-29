@@ -2,8 +2,8 @@
   "name": "@entur/travel",
   "version": "7.0.4",
   "license": "EUPL-1.2",
-  "main": "dist/travel.cjs.js",
-  "module": "dist/travel.esm.js",
+  "main": "dist/travel.cjs",
+  "module": "dist/travel.mjs",
   "typings": "dist/index.d.ts",
   "files": [
     "dist"
@@ -22,8 +22,8 @@
     "test": "jest"
   },
   "peerDependencies": {
-    "react": ">=16.8.0",
-    "react-dom": ">=16.8.0"
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
   },
   "dependencies": {
     "@entur/form": "workspace:^",
@@ -35,7 +35,7 @@
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^10.4.9",
+    "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "14.6.1",
     "@vitejs/plugin-react": "^5.0.1",
     "jest": "^29.0.0",
@@ -44,5 +44,16 @@
     "typescript": "^5.9.2",
     "vite": "^7.3.2",
     "vite-plugin-dts": "^4.5.4"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/travel.mjs",
+      "require": "./dist/travel.cjs",
+      "default": "./dist/travel.mjs"
+    },
+    "./styles": "./dist/styles.css",
+    "./dist/styles.css": "./dist/styles.css",
+    "./package.json": "./package.json"
   }
 }

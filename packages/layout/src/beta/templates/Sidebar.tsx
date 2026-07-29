@@ -152,12 +152,17 @@ const SidebarFooter: SidebarSectionComponent<typeof defaultFooterElement> =
     },
   );
 
-const CollapseToggle: React.FC<{
+const CollapseToggle = ({
+  isCollapsed,
+  onToggle,
+  openLabel,
+  closeLabel,
+}: {
   isCollapsed: boolean;
   onToggle: () => void;
   openLabel: string;
   closeLabel: string;
-}> = ({ isCollapsed, onToggle, openLabel, closeLabel }) => (
+}) => (
   <button
     type="button"
     className="eds-layout-template-sidebar__collapse-toggle"

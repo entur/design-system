@@ -6,15 +6,11 @@
   "props": {
     "children": {
       "defaultValue": null,
-      "description": "Overskriften til taben",
+      "description": "Innholdet i tab-panelet",
       "name": "children",
       "declarations": [
         {
           "fileName": "packages/tab/src/TabPanel.tsx",
-          "name": "TypeLiteral"
-        },
-        {
-          "fileName": "node_modules/@types/react/index.d.ts",
           "name": "TypeLiteral"
         }
       ],
@@ -35,7 +31,26 @@
       ],
       "required": false,
       "type": {
-        "name": "any"
+        "name": "\"symbol\" | \"object\" | \"div\" | \"a\" | \"abbr\" | \"address\" | \"area\" | \"article\" | \"aside\" | \"audio\" | \"b\" | \"base\" | \"bdi\" | \"bdo\" | \"big\" | \"blockquote\" | \"body\" | \"br\" | \"button\" | \"canvas\" | ... 160 more ... | undefined"
+      }
+    },
+    "className": {
+      "defaultValue": null,
+      "description": "",
+      "name": "className",
+      "declarations": [
+        {
+          "fileName": "packages/tab/src/TabPanel.tsx",
+          "name": "TypeLiteral"
+        },
+        {
+          "fileName": "node_modules/@types/react/index.d.ts",
+          "name": "HTMLAttributes"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
       }
     }
   }

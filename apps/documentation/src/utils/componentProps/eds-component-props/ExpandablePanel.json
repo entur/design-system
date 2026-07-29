@@ -19,31 +19,27 @@
         "name": "ReactNode"
       }
     },
-    "children": {
-      "defaultValue": null,
-      "description": "Innholdet som skal vises under panelet",
-      "name": "children",
-      "declarations": [
-        {
-          "fileName": "packages/expand/src/ExpandablePanel.tsx",
-          "name": "TypeLiteral"
-        },
-        {
-          "fileName": "node_modules/@types/react/index.d.ts",
-          "name": "TypeLiteral"
-        }
-      ],
-      "required": false,
-      "type": {
-        "name": "ReactNode"
-      }
-    },
     "defaultOpen": {
       "defaultValue": {
         "value": false
       },
       "description": "Hvilken tilstand ExpandablePanel skal ha som default",
       "name": "defaultOpen",
+      "declarations": [
+        {
+          "fileName": "packages/expand/src/ExpandablePanel.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "boolean | undefined"
+      }
+    },
+    "open": {
+      "defaultValue": null,
+      "description": "Prop for om innholdet er åpent. Brukes hvis du vil kontrollere ExpandablePanel, sammen med onToggle",
+      "name": "open",
       "declarations": [
         {
           "fileName": "packages/expand/src/ExpandablePanel.tsx",
@@ -83,6 +79,38 @@
       "required": false,
       "type": {
         "name": "CSSProperties | undefined"
+      }
+    },
+    "disableAnimation": {
+      "defaultValue": null,
+      "description": "Deaktiver åpne/lukke-animasjonen",
+      "name": "disableAnimation",
+      "declarations": [
+        {
+          "fileName": "packages/expand/src/ExpandablePanel.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "boolean | undefined"
+      }
+    },
+    "unmountOnClose": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "Avmonter innholdet når det lukkes. Når false (standard), holdes innholdet montert og skjules med CSS.",
+      "name": "unmountOnClose",
+      "declarations": [
+        {
+          "fileName": "packages/expand/src/ExpandablePanel.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "boolean | undefined"
       }
     }
   }

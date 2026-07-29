@@ -1,8 +1,8 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, useId } from 'react';
 import { BaseFormControl } from '@entur/form';
 import { DownArrowIcon } from '@entur/icons';
 import { LoadingDots } from '@entur/loader';
-import { VariantType, useRandomId } from '@entur/utils';
+import { VariantType } from '@entur/utils';
 
 import { useResolvedItems } from './useResolvedItems';
 import {
@@ -91,7 +91,7 @@ export const NativeDropdown = forwardRef(
   ) => {
     const { items: normalizedItems, loading } =
       useResolvedItems<ValueType>(items);
-    const nativeDropdownId = useRandomId('eds-dropdown-native');
+    const nativeDropdownId = `eds-dropdown-native${useId()}`;
 
     return (
       <BaseFormControl

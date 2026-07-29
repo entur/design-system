@@ -61,7 +61,7 @@
       ],
       "required": false,
       "type": {
-        "name": "ElementType<any> | undefined"
+        "name": "ElementType<any, keyof IntrinsicElements> | undefined"
       }
     },
     "ref": {

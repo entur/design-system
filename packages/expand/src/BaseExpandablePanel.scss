@@ -4,12 +4,11 @@
   width: 100%;
   position: relative;
 
-  & + & {
+  & + :where(&) {
     margin-top: t.$border-widths-default;
   }
 
-  &:focus,
-  &:focus-within {
+  &:where(:focus, :focus-within) {
     z-index: 2;
   }
 
@@ -34,25 +33,25 @@
     width: 100%;
     word-break: break-word;
 
-    .eds-contrast & {
+    :where(.eds-contrast) & {
       background: var(--components-expand-expandablepanel-contrast-fill-default);
       color: var(--components-expand-expandablepanel-contrast-text);
     }
 
-    &:hover {
+    &:where(:hover) {
       background: var(--components-expand-expandablepanel-standard-fill-hover);
 
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         background: var(--components-expand-expandablepanel-contrast-fill-hover);
       }
     }
 
-    &:focus-visible {
+    &:where(:focus-visible) {
       outline: t.$outlines-focus;
       outline-color: var(--basecolors-stroke-focus-standard);
       outline-offset: t.$outline-offsets-focus;
 
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         outline-color: var(--basecolors-stroke-focus-contrast);
       }
     }
@@ -69,13 +68,8 @@
     padding: t.$space-default t.$space-default t.$space-default t.$space-large;
   }
 
-  // Used to override react-collapse's default transition
-  .ReactCollapse--collapse {
-    transition: height t.$timings-slow ease-out;
-  }
-
   &--disable-animation {
-    .ReactCollapse--collapse {
+    :where(.eds-base-expand) {
       transition: none;
     }
   }

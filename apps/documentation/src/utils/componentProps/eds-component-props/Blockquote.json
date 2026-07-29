@@ -10,7 +10,7 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "packages/typography/src/beta/components/Blockquote.tsx",
+          "fileName": "packages/typography/src/Blockquote.tsx",
           "name": "TypeLiteral"
         },
         {

@@ -67,9 +67,12 @@ export const Logo: LogoComponent = React.forwardRef(
   },
 );
 
-const EnturSvgLogo: React.FC<{ className?: string; label: string }> = ({
+const EnturSvgLogo = ({
   className,
   label,
+}: {
+  className?: string;
+  label: string;
 }) => (
   <svg
     className={className}

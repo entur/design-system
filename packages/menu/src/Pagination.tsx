@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useId, useState } from 'react';
 import classNames from 'classnames';
 
 import { DownArrowIcon, LeftArrowIcon, RightArrowIcon } from '@entur/icons';
 import { VisuallyHidden } from '@entur/a11y';
 import { Label } from '@entur/typography';
-import { useRandomId } from '@entur/utils';
 
 import { PaginationPage } from './PaginationPage';
 import { PaginationInput } from './PaginationInput';
@@ -84,7 +83,7 @@ export type PaginationProps = {
   [key: string]: any;
 };
 
-export const Pagination: React.FC<PaginationProps> = ({
+export const Pagination = ({
   className,
   currentPage,
   inputLabel,
@@ -109,9 +108,9 @@ export const Pagination: React.FC<PaginationProps> = ({
   hideNextButton = false,
   hidePrevButton = false,
   ...rest
-}) => {
+}: PaginationProps) => {
   const [listedEntries, setListedEntries] = useState<Array<number | '…'>>([]);
-  const paginationId = useRandomId('eds-pagination');
+  const paginationId = `eds-pagination${useId()}`;
 
   const isFirstPostSelected = currentPage === 1;
   const isLastPostSelected = currentPage === pageCount;
@@ -268,7 +267,7 @@ export const Pagination: React.FC<PaginationProps> = ({
   );
 };
 
-const Ellipsis: React.FC = () => (
+const Ellipsis = () => (
   <span className="eds-pagination__controls__page__ellipsis" aria-hidden="true">
     …
   </span>

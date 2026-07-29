@@ -10,9 +10,11 @@ const InputGroupContext = React.createContext<InputGroupContextType>({
   setFilled: () => null,
 });
 
-export const InputGroupContextProvider: React.FC<{
+export const InputGroupContextProvider = ({
+  children,
+}: {
   children: React.ReactNode;
-}> = ({ children }) => {
+}) => {
   const [filled, setFilled] = React.useState(false);
 
   const value = React.useMemo(

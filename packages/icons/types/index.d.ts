@@ -1,5 +1,3 @@
-import React from 'react';
-
 export declare type IconProps = {
   /**Ekstra klassenavn */
   className?: string;

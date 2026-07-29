@@ -168,7 +168,7 @@ export const structure = (S: any, { documentStore }: any) =>
                 [
                   'Knapper',
                   'Feedback',
-                  'Layout og flater',
+                  'Layout & Flater',
                   'Navigasjon',
                   'Reise',
                   'Ressurser',

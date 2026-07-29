@@ -18,7 +18,7 @@ Entur Linje — a React component library and design system monorepo. Published 
 
 - **Monorepo:** Lerna (independent versioning) + Yarn 4.9.3 workspaces + Nx (task caching)
 - **Build:** Vite (packages), Gatsby 5 (docs), Playroom (playground)
-- **Language:** TypeScript 5.9, React 17, SCSS
+- **Language:** TypeScript 5.9, React 18, SCSS
 - **Test:** Jest 29 + React Testing Library
 - **Node:** 24.14.0 required
 

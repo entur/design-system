@@ -19,25 +19,6 @@
         "name": "ReactNode"
       }
     },
-    "children": {
-      "defaultValue": null,
-      "description": "Innholdet som skal vises under linken",
-      "name": "children",
-      "declarations": [
-        {
-          "fileName": "packages/expand/src/ExpandableText.tsx",
-          "name": "TypeLiteral"
-        },
-        {
-          "fileName": "node_modules/@types/react/index.d.ts",
-          "name": "TypeLiteral"
-        }
-      ],
-      "required": false,
-      "type": {
-        "name": "ReactNode"
-      }
-    },
     "defaultOpen": {
       "defaultValue": {
         "value": false
@@ -114,13 +95,30 @@
       ],
       "required": false,
       "type": {
-        "name": "\"Heading5\" | \"Paragraph\" | \"SubParagraph\" | undefined"
+        "name": "\"Heading2\" | \"Heading3\" | \"Heading4\" | \"Heading5\" | \"Paragraph\" | \"SubParagraph\" | undefined"
       }
     },
     "disableAnimation": {
       "defaultValue": null,
-      "description": "",
+      "description": "Deaktiver åpne/lukke-animasjonen",
       "name": "disableAnimation",
+      "declarations": [
+        {
+          "fileName": "packages/expand/src/ExpandableText.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "boolean | undefined"
+      }
+    },
+    "unmountOnClose": {
+      "defaultValue": {
+        "value": false
+      },
+      "description": "Avmonter innholdet når det lukkes. Når false (standard), holdes innholdet montert og skjules med CSS.",
+      "name": "unmountOnClose",
       "declarations": [
         {
           "fileName": "packages/expand/src/ExpandableText.tsx",

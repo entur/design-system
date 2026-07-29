@@ -2,8 +2,8 @@
   "name": "@entur/tokens",
   "version": "3.24.0",
   "license": "EUPL-1.2",
-  "main": "dist/tokens.cjs.js",
-  "module": "dist/tokens.esm.js",
+  "main": "dist/tokens.cjs",
+  "module": "dist/tokens.mjs",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
@@ -26,11 +26,12 @@
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^10.4.9",
+    "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "14.6.1",
     "@types/flat": "^0.0.28",
     "@types/fs-extra": "^8.1.5",
     "case": "^1.6.3",
+    "flat": "^5.0.2",
     "fs-extra": "^9.1.0",
     "jest": "^29.0.0",
     "jest-environment-jsdom": "^29.0.0",
@@ -42,7 +43,65 @@
     "vite-plugin-dts": "^4.5.4"
   },
   "dependencies": {
-    "flat": "^5.0.2",
     "hex-rgb": "^4.3.0"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/tokens.mjs",
+      "require": "./dist/tokens.cjs",
+      "default": "./dist/tokens.mjs"
+    },
+    "./styles": {
+      "sass": "./dist/styles.scss",
+      "style": "./dist/styles.css",
+      "default": "./dist/styles.css"
+    },
+    "./styles/base": {
+      "sass": "./dist/base.scss",
+      "style": "./dist/base.css",
+      "default": "./dist/base.css"
+    },
+    "./styles/semantic": {
+      "sass": "./dist/semantic.scss",
+      "style": "./dist/semantic.css",
+      "default": "./dist/semantic.css"
+    },
+    "./styles/primitive": {
+      "sass": "./dist/primitive.scss",
+      "style": "./dist/primitive.css",
+      "default": "./dist/primitive.css"
+    },
+    "./styles/transport": {
+      "sass": "./dist/transport.scss",
+      "style": "./dist/transport.css",
+      "default": "./dist/transport.css"
+    },
+    "./styles/data": {
+      "sass": "./dist/data.scss",
+      "style": "./dist/data.css",
+      "default": "./dist/data.css"
+    },
+    "./styles/base.scss": "./dist/base.scss",
+    "./styles/semantic.scss": "./dist/semantic.scss",
+    "./styles/primitive.scss": "./dist/primitive.scss",
+    "./styles/transport.scss": "./dist/transport.scss",
+    "./styles/data.scss": "./dist/data.scss",
+    "./styles/styles.scss": "./dist/styles.scss",
+    "./dist/styles.css": "./dist/styles.css",
+    "./dist/styles.scss": "./dist/styles.scss",
+    "./dist/base.css": "./dist/base.css",
+    "./dist/base.scss": "./dist/base.scss",
+    "./dist/semantic.css": "./dist/semantic.css",
+    "./dist/semantic.scss": "./dist/semantic.scss",
+    "./dist/primitive.css": "./dist/primitive.css",
+    "./dist/primitive.scss": "./dist/primitive.scss",
+    "./dist/transport.css": "./dist/transport.css",
+    "./dist/transport.scss": "./dist/transport.scss",
+    "./dist/data.css": "./dist/data.css",
+    "./dist/data.scss": "./dist/data.scss",
+    "./dist/base": "./dist/base.scss",
+    "./dist/styles": "./dist/styles.scss",
+    "./package.json": "./package.json"
   }
 }

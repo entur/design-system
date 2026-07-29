@@ -1,23 +1,70 @@
 @use '@entur/tokens/dist/styles.scss' as t;
 
-:root {
-  // Tell Reach that we're doing the styling ourselves
-  --reach-dialog: 1;
-}
-
 $modal-animation-duration: t.$timings-medium;
 
+// Lock page scroll. Root only: locking body too makes body a scroll container,
+// which breaks position: sticky.
+/* stylelint-disable-next-line selector-max-specificity --
+   :has() is the only way to react to an open dialog from an ancestor. */
+html:has(.eds-modal__overlay[open]) {
+  overflow: hidden;
+}
+
 .eds-modal {
+  // Native <dialog> centers itself via UA margin:auto. We strip UA chrome and
+  // set max-width per size; width:100% (capped) gives ModalContent a parent
+  // width to fill so its own width:100% resolves.
   &__overlay {
-    background: rgba(black, 0.5);
-    inset: 0;
-    display: flex;
-    overflow: hidden;
-    position: fixed;
+    border: none;
+    padding: 0;
+    background: transparent;
+    color: inherit;
+  }
+
+  /* stylelint-disable-next-line selector-max-specificity --
+     [open] is set by the browser on the native dialog; there is no class for it. */
+  &__overlay[open] {
     z-index: t.$z-indexes-overlay;
-    animation: fadeInOverlay;
-    animation-duration: $modal-animation-duration;
-    animation-timing-function: ease-in-out;
+    width: 100%;
+    overflow: hidden;
+    overscroll-behavior: contain;
+    animation: fadeInOverlay $modal-animation-duration ease-in-out;
+
+    /* stylelint-disable-next-line selector-max-specificity --
+       ::backdrop is a UA pseudo-element, unreachable with a plain class. */
+    &::backdrop {
+      background: rgba(black, 0.5);
+      animation: fadeInOverlay $modal-animation-duration ease-in-out;
+    }
+  }
+
+  &__overlay--size-extraSmall {
+    max-width: 21rem;
+  }
+
+  &__overlay--size-small {
+    max-width: 28.125rem;
+  }
+
+  &__overlay--size-medium {
+    max-width: 45rem;
+  }
+
+  &__overlay--size-large {
+    max-width: 56.25rem;
+  }
+
+  &__overlay--size-extraLarge {
+    max-width: 78.75rem;
+  }
+
+  &__close {
+    position: absolute;
+    top: t.$space-medium;
+    right: t.$space-medium;
+    color: var(--components-modal-modal-standard-icon);
+    z-index: calc(#{t.$z-indexes-modal} + 1);
+    animation: slideInContent $modal-animation-duration ease-in-out;
   }
 
   &__content {
@@ -25,30 +72,23 @@ $modal-animation-duration: t.$timings-medium;
     border: 1px solid var(--components-modal-modal-standard-border);
     border-radius: 0.75rem;
     color: var(--components-modal-modal-standard-text);
-    margin: auto;
     padding: t.$space-large;
-    position: relative;
     width: 100%;
     max-height: 90vh;
     overflow: auto;
-    z-index: t.$z-indexes-modal;
-    animation: slideInContent;
-    animation-duration: $modal-animation-duration;
-    animation-timing-function: ease-in-out;
+    animation: slideInContent $modal-animation-duration ease-in-out;
 
-    &--align {
-      &-center {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
+    &--align-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
 
-      &-end {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-      }
+    &--align-end {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
     }
 
     &--size-extraSmall {
@@ -59,21 +99,25 @@ $modal-animation-duration: t.$timings-medium;
     &--size-small {
       max-width: 28.125rem;
       padding: t.$space-extra-large2;
+      padding-top: t.$space-extra-large;
     }
 
     &--size-medium {
       max-width: 45rem;
       padding: t.$space-extra-large3;
+      padding-top: t.$space-extra-large;
     }
 
     &--size-large {
       max-width: 56.25rem;
       padding: t.$space-extra-large3;
+      padding-top: t.$space-extra-large;
     }
 
     &--size-extraLarge {
       max-width: 78.75rem;
       padding: t.$space-extra-large3;
+      padding-top: t.$space-extra-large;
     }
 
     &::-webkit-scrollbar {
@@ -95,13 +139,6 @@ $modal-animation-duration: t.$timings-medium;
       }
     }
   }
-
-  &__close {
-    position: absolute;
-    top: t.$space-medium;
-    right: t.$space-medium;
-    color: var(--components-modal-modal-standard-icon);
-  }
 }
 
 @keyframes fadeInOverlay {
@@ -116,12 +153,23 @@ $modal-animation-duration: t.$timings-medium;
 
 @keyframes slideInContent {
   from {
-    top: 5rem;
+    transform: translateY(0.5rem);
     opacity: 0;
   }
 
   to {
-    top: 0%;
+    transform: translateY(0);
     opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .eds-modal__overlay,
+  /* stylelint-disable-next-line selector-max-specificity --
+     ::backdrop is a UA pseudo-element, unreachable with a plain class. */
+  .eds-modal__overlay::backdrop,
+  .eds-modal__content,
+  .eds-modal__close {
+    animation: none;
   }
 }

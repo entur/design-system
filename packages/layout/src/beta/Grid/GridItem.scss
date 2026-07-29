@@ -1,7 +1,100 @@
-.eds-layout-grid-item {
-  --grid-item-column: initial;
-  --grid-item-row: initial;
+// Same responsive var cascade pattern as Flex.scss — setting only -base is enough.
 
-  grid-column: var(--grid-item-column);
-  grid-row: var(--grid-item-row);
+/* stylelint-disable declaration-block-no-redundant-longhand-properties --
+   Longhands must stay separate: unset vars are guaranteed-invalid, and a shorthand
+   like `gap: var(--row) var(--col)` drops both values when only one var is set. */
+.eds-layout-grid-item {
+  --grid-item-col-start-base: initial;
+  --grid-item-col-start-s: initial;
+  --grid-item-col-start-m: initial;
+  --grid-item-col-start-lg: initial;
+  --grid-item-col-start-xl: initial;
+  --grid-item-col-end-base: initial;
+  --grid-item-col-end-s: initial;
+  --grid-item-col-end-m: initial;
+  --grid-item-col-end-lg: initial;
+  --grid-item-col-end-xl: initial;
+  --grid-item-row-start-base: initial;
+  --grid-item-row-start-s: initial;
+  --grid-item-row-start-m: initial;
+  --grid-item-row-start-lg: initial;
+  --grid-item-row-start-xl: initial;
+  --grid-item-row-end-base: initial;
+  --grid-item-row-end-s: initial;
+  --grid-item-row-end-m: initial;
+  --grid-item-row-end-lg: initial;
+  --grid-item-row-end-xl: initial;
+  --grid-item-align-self-base: initial;
+  --grid-item-align-self-s: initial;
+  --grid-item-align-self-m: initial;
+  --grid-item-align-self-lg: initial;
+  --grid-item-align-self-xl: initial;
+  --grid-item-justify-self-base: initial;
+  --grid-item-justify-self-s: initial;
+  --grid-item-justify-self-m: initial;
+  --grid-item-justify-self-lg: initial;
+  --grid-item-justify-self-xl: initial;
+
+  :where(&) {
+    grid-column-start: var(--grid-item-col-start-base);
+    grid-column-end: var(--grid-item-col-end-base);
+    grid-row-start: var(--grid-item-row-start-base);
+    grid-row-end: var(--grid-item-row-end-base);
+    align-self: var(--grid-item-align-self-base);
+    justify-self: var(--grid-item-justify-self-base);
+
+    @media (width >= 600px) {
+      grid-column-start: var(--grid-item-col-start-s, var(--grid-item-col-start-base));
+      grid-column-end: var(--grid-item-col-end-s, var(--grid-item-col-end-base));
+      grid-row-start: var(--grid-item-row-start-s, var(--grid-item-row-start-base));
+      grid-row-end: var(--grid-item-row-end-s, var(--grid-item-row-end-base));
+      align-self: var(--grid-item-align-self-s, var(--grid-item-align-self-base));
+      justify-self: var(--grid-item-justify-self-s, var(--grid-item-justify-self-base));
+    }
+
+    @media (width >= 800px) {
+      grid-column-start: var(--grid-item-col-start-m, var(--grid-item-col-start-s, var(--grid-item-col-start-base)));
+      grid-column-end: var(--grid-item-col-end-m, var(--grid-item-col-end-s, var(--grid-item-col-end-base)));
+      grid-row-start: var(--grid-item-row-start-m, var(--grid-item-row-start-s, var(--grid-item-row-start-base)));
+      grid-row-end: var(--grid-item-row-end-m, var(--grid-item-row-end-s, var(--grid-item-row-end-base)));
+      align-self: var(--grid-item-align-self-m, var(--grid-item-align-self-s, var(--grid-item-align-self-base)));
+      justify-self: var(--grid-item-justify-self-m, var(--grid-item-justify-self-s, var(--grid-item-justify-self-base)));
+    }
+
+    @media (width >= 1200px) {
+      grid-column-start: var(--grid-item-col-start-lg, var(--grid-item-col-start-m, var(--grid-item-col-start-s, var(--grid-item-col-start-base))));
+      grid-column-end: var(--grid-item-col-end-lg, var(--grid-item-col-end-m, var(--grid-item-col-end-s, var(--grid-item-col-end-base))));
+      grid-row-start: var(--grid-item-row-start-lg, var(--grid-item-row-start-m, var(--grid-item-row-start-s, var(--grid-item-row-start-base))));
+      grid-row-end: var(--grid-item-row-end-lg, var(--grid-item-row-end-m, var(--grid-item-row-end-s, var(--grid-item-row-end-base))));
+      align-self: var(--grid-item-align-self-lg, var(--grid-item-align-self-m, var(--grid-item-align-self-s, var(--grid-item-align-self-base))));
+      justify-self: var(--grid-item-justify-self-lg, var(--grid-item-justify-self-m, var(--grid-item-justify-self-s, var(--grid-item-justify-self-base))));
+    }
+
+    @media (width >= 1400px) {
+      grid-column-start: var(
+        --grid-item-col-start-xl,
+        var(--grid-item-col-start-lg, var(--grid-item-col-start-m, var(--grid-item-col-start-s, var(--grid-item-col-start-base))))
+      );
+      grid-column-end: var(
+        --grid-item-col-end-xl,
+        var(--grid-item-col-end-lg, var(--grid-item-col-end-m, var(--grid-item-col-end-s, var(--grid-item-col-end-base))))
+      );
+      grid-row-start: var(
+        --grid-item-row-start-xl,
+        var(--grid-item-row-start-lg, var(--grid-item-row-start-m, var(--grid-item-row-start-s, var(--grid-item-row-start-base))))
+      );
+      grid-row-end: var(
+        --grid-item-row-end-xl,
+        var(--grid-item-row-end-lg, var(--grid-item-row-end-m, var(--grid-item-row-end-s, var(--grid-item-row-end-base))))
+      );
+      align-self: var(
+        --grid-item-align-self-xl,
+        var(--grid-item-align-self-lg, var(--grid-item-align-self-m, var(--grid-item-align-self-s, var(--grid-item-align-self-base))))
+      );
+      justify-self: var(
+        --grid-item-justify-self-xl,
+        var(--grid-item-justify-self-lg, var(--grid-item-justify-self-m, var(--grid-item-justify-self-s, var(--grid-item-justify-self-base))))
+      );
+    }
+  }
 }

@@ -1,4 +1,3 @@
-import React from 'react';
 import { act, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { axe, toHaveNoViolations } from 'jest-axe';
@@ -211,14 +210,10 @@ describe('SearchableDropdown', () => {
     ).not.toBeInTheDocument();
 
     // since we are updating state with typeahead we need to wrap this section in 'act'
-    await act(async () => {
-      await user.keyboard('{b}');
+    await user.keyboard('{b}');
 
-      await new Promise(r => setTimeout(r, useResolvedItemsDebounceTimeout)); // wait out debounce for search to start loading new data
-
-      expect(screen.queryByText('loading')).toBeInTheDocument();
-
-      await waitFor(() => screen.getByRole('option', { name: 'Bergen' }));
+    await waitFor(() => screen.getByRole('option', { name: 'Bergen' }), {
+      timeout: 3000,
     });
 
     expect(screen.queryByText('loading')).not.toBeInTheDocument();

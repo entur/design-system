@@ -11,11 +11,11 @@ export type VisuallyHiddenProps = {
   [key: string]: any;
 };
 
-export const VisuallyHidden: React.FC<VisuallyHiddenProps> = ({
+export const VisuallyHidden = ({
   as: Element = 'span',
   children,
   ...rest
-}) => (
+}: VisuallyHiddenProps) => (
   <Element className="eds-visually-hidden" {...rest}>
     {children}
   </Element>

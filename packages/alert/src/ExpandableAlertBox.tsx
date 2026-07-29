@@ -11,18 +11,18 @@ import { SmallAlertBoxProps } from './SmallAlertBox';
 export type SmallExpandableAlertBoxProps = ExpandableAlertBoxProps &
   SmallAlertBoxProps;
 
-export const SmallExpandableAlertBox: React.FC<
-  SmallExpandableAlertBoxProps
-> = props => {
+export const SmallExpandableAlertBox = (
+  props: SmallExpandableAlertBoxProps,
+) => {
   return <ExpandableAlertBox size="small" {...props} />;
 };
 
 export type BannerExpandableAlertBoxProps = ExpandableAlertBoxProps &
   BannerAlertBoxProps;
 
-export const BannerExpandableAlertBox: React.FC<
-  BannerExpandableAlertBoxProps
-> = props => {
+export const BannerExpandableAlertBox = (
+  props: BannerExpandableAlertBoxProps,
+) => {
   return <ExpandableAlertBox size="banner" {...props} />;
 };
 
@@ -51,7 +51,7 @@ type ExpandableAlertBoxProps = {
   [key: string]: any;
 };
 
-const ExpandableAlertBox: React.FC<ExpandableAlertBoxProps> = ({
+const ExpandableAlertBox = ({
   variant,
   title,
   children,
@@ -60,7 +60,7 @@ const ExpandableAlertBox: React.FC<ExpandableAlertBoxProps> = ({
   openLabel,
   closeLabel,
   ...rest
-}) => {
+}: ExpandableAlertBoxProps) => {
   const [open, setopen] = React.useState(false);
   return (
     <BaseAlertBox
@@ -91,13 +91,13 @@ type ExpandableAlertBoxTitleProps = {
   onClick: (e: React.MouseEvent) => void;
 };
 
-const ExpandableAlertBoxTitle: React.FC<ExpandableAlertBoxTitleProps> = ({
+const ExpandableAlertBoxTitle = ({
   title,
   open,
   openLabel = 'Les mer',
   closeLabel = 'Lukk',
   onClick,
-}) => {
+}: ExpandableAlertBoxTitleProps) => {
   return (
     <div className="eds-expandable-alert-box__title">
       <div>{title}</div>

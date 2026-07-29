@@ -1,4 +1,3 @@
-import React from 'react';
 import classNames from 'classnames';
 import { DownArrowIcon } from '@entur/icons';
 import './ExpandArrow.scss';
@@ -13,11 +12,11 @@ type ExpandArrowProps = {
   [key: string]: any;
 };
 
-export const ExpandArrow: React.FC<ExpandArrowProps> = ({
+export const ExpandArrow = ({
   open = false,
   className,
   ...rest
-}) => {
+}: ExpandArrowProps) => {
   return (
     <DownArrowIcon
       className={classNames(className, 'eds-expandable-arrow', {

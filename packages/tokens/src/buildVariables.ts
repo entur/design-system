@@ -1,4 +1,6 @@
-import { unflatten } from 'flat';
+import flat from 'flat';
+
+const { unflatten } = flat;
 
 type Variable = {
   name: string;

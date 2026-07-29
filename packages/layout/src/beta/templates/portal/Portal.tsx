@@ -88,6 +88,9 @@ const PortalStatusBar: PortalStatusBarComponent = React.forwardRef(
       <Grid.Item
         ref={ref}
         as={as || defaultStatusBarElement}
+        colStart={1}
+        colEnd={-1}
+        rowSpan={1}
         className={classNames(
           'eds-layout-template-portal__status-bar',
           className,

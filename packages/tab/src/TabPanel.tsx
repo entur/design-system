@@ -1,21 +1,45 @@
-import React from 'react';
-import { TabPanel as ReachTabPanel } from '@reach/tabs';
+import React, { useContext } from 'react';
 import classNames from 'classnames';
 
-export type TabPanelProps = {
-  /** Overskriften til taben */
-  children: React.ReactNode;
-  /** HTML-elementet eller React-komponenten som lager komponenten */
-  as?: keyof JSX.IntrinsicElements | any;
-  [key: string]: any;
-};
+import { TabPanelItemContext, TabsContext } from './TabsContext';
 
-export const TabPanel: React.FC<TabPanelProps> = ({ className, ...rest }) => {
+export type TabPanelProps = {
+  /** Innholdet i tab-panelet */
+  children?: React.ReactNode;
+  /** HTML-elementet eller React-komponenten som lager komponenten */
+  as?: keyof JSX.IntrinsicElements | React.ElementType;
+  className?: string;
+} & Omit<React.ComponentPropsWithoutRef<'div'>, 'children'>;
+
+export const TabPanel = ({
+  className,
+  as,
+  children,
+  ...rest
+}: TabPanelProps) => {
+  const { selectedIndex } = useContext(TabsContext);
+  const itemContext = useContext(TabPanelItemContext);
+  const tabIndex = itemContext?.tabIndex ?? 0;
+  const keepMounted = itemContext?.keepMounted ?? false;
+
+  const isSelected = selectedIndex === tabIndex;
+  const isHiddenButMounted = keepMounted && !isSelected;
+
+  if (!isSelected && !keepMounted) return null;
+
+  const Element: React.ElementType = as || 'div';
+
   return (
-    <ReachTabPanel
+    <Element
+      role="tabpanel"
+      id={itemContext?.panelId}
+      aria-labelledby={itemContext?.tabId}
+      tabIndex={isSelected ? 0 : -1}
+      hidden={isHiddenButMounted || undefined}
       className={classNames('eds-tab-panel', className)}
       {...rest}
-      tabIndex={undefined}
-    />
+    >
+      {children}
+    </Element>
   );
 };

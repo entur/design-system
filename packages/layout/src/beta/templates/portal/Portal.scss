@@ -2,7 +2,7 @@
 @use '../variables' as v;
 
 .eds-layout-template-portal {
-  --grid-template-columns: var(--eds-sidebar-width, #{v.$default-sidebar-column-width}) minmax(0, 1fr);
+  --grid-template-columns-base: var(--eds-sidebar-width, #{v.$default-sidebar-column-width}) minmax(0, 1fr);
 
   min-height: 0;
   max-height: var(--eds-viewport-height, #{v.$default-viewport-height});
@@ -15,24 +15,19 @@
   }
 
   &:has(.eds-layout-template-sidebar--collapsed) {
-    --grid-template-columns: #{v.$default-sidebar-collapsed-width} minmax(0, 1fr);
+    --grid-template-columns-base: #{v.$default-sidebar-collapsed-width} minmax(0, 1fr);
   }
 
   &:has(> .eds-layout-template-portal__status-bar) {
-    --grid-template-rows: auto 1fr;
-
-    > .eds-layout-template-portal__status-bar {
-      --grid-item-column: 1 / -1;
-      --grid-item-row: 1;
-    }
+    --grid-template-rows-base: auto 1fr;
 
     // Override Sidebar's rowSpan to row 2 when StatusBar is present
     > .eds-layout-grid-item:has(.eds-layout-template-sidebar) {
-      --grid-item-row: 2;
+      --grid-item-row-start-base: 2;
     }
 
     > .eds-layout-template-portal__main {
-      --grid-item-row: 2;
+      --grid-item-row-start-base: 2;
     }
   }
 }

@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useId } from 'react';
 import classNames from 'classnames';
 
 import { IconButton } from '@entur/button';
 import { CloseSmallIcon } from '@entur/icons';
 import { Placement } from '@entur/tooltip';
-import { VariantType, mergeRefs, useRandomId } from '@entur/utils';
+import { VariantType, mergeRefs } from '@entur/utils';
 
 import { BaseFormControl } from './BaseFormControl';
 import { useInputGroupContext } from './InputGroupContext';
@@ -100,7 +100,7 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
     },
     ref: React.Ref<HTMLInputElement>,
   ) => {
-    const randomId = useRandomId('eds-textfield');
+    const randomId = `eds-textfield${useId()}`;
     const textFieldId = labelProps && labelProps.id ? labelProps.id : randomId;
     const textFieldRef = React.useRef<HTMLInputElement>(null);
     const { setFilled } = useInputGroupContext();
@@ -235,10 +235,13 @@ const TextFieldBase = React.forwardRef<HTMLInputElement, TextFieldBaseProps>(
   },
 );
 
-const ClearButton: React.FC<{
+const ClearButton = ({
+  onClear,
+  ariaLabel,
+}: {
   onClear: () => void;
   ariaLabel: string;
-}> = ({ onClear, ariaLabel }) => {
+}) => {
   const { isFilled } = useInputGroupContext();
   if (isFilled) {
     return (

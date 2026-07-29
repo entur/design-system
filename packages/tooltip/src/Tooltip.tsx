@@ -1,4 +1,4 @@
-import React, { cloneElement, useEffect, useRef, useState } from 'react';
+import React, { cloneElement, useEffect, useId, useRef, useState } from 'react';
 
 import classNames from 'classnames';
 import {
@@ -11,7 +11,6 @@ import {
   useFloating,
 } from '@floating-ui/react';
 
-import { useRandomId } from '@entur/utils';
 import { CloseIcon } from '@entur/icons';
 import { IconButton } from '@entur/button';
 import { borderRadiuses, space } from '@entur/tokens';
@@ -91,7 +90,7 @@ export type TooltipProps = {
   [key: string]: any;
 };
 
-export const Tooltip: React.FC<TooltipProps> = ({
+export const Tooltip = ({
   placement,
   content,
   children,
@@ -107,10 +106,10 @@ export const Tooltip: React.FC<TooltipProps> = ({
   hoverDelay,
   style,
   ...rest
-}) => {
+}: TooltipProps) => {
   const [showTooltip, setShowTooltip] = useState(isOpen ?? false);
   const tooltipArrowRef = useRef(null);
-  const tooltipId = useRandomId('eds-tooltip');
+  const tooltipId = `eds-tooltip${useId()}`;
   const hoverOpenTimer = useRef<ReturnType<typeof setTimeout>>();
   const hoverCloseTimer = useRef<ReturnType<typeof setTimeout>>();
 

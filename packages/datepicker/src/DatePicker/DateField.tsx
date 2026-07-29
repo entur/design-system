@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useRef } from 'react';
+import React, { ReactNode, useEffect, useId, useRef } from 'react';
 
 import {
   DateFieldStateOptions,
@@ -16,12 +16,7 @@ import type {
 } from '@react-types/datepicker';
 
 import { BaseFormControl, BaseFormControlProps } from '@entur/form';
-import {
-  ConditionalWrapper,
-  VariantType,
-  mergeRefs,
-  useRandomId,
-} from '@entur/utils';
+import { ConditionalWrapper, VariantType, mergeRefs } from '@entur/utils';
 
 import { FieldSegment } from '../shared/FieldSegment';
 import {
@@ -200,7 +195,7 @@ export const DateField = <DateType extends DateValue>({
 
   useEffect(() => onValidate?.(!state.isInvalid), [state.isInvalid]);
 
-  const id = useRandomId('datefield');
+  const id = `datefield${useId()}`;
 
   return (
     <ConditionalWrapper

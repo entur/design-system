@@ -11,12 +11,13 @@ const VariantContext = React.createContext<
 >(null);
 
 export type VariantProviderProps = {
+  children: React.ReactNode;
   variant?: VariantType | typeof error | typeof info;
 };
-export const VariantProvider: React.FC<VariantProviderProps> = ({
+export const VariantProvider = ({
   children,
   variant = null,
-}) => {
+}: VariantProviderProps) => {
   return (
     <VariantContext.Provider value={variant}>
       {children}

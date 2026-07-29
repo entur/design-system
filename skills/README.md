@@ -10,6 +10,7 @@ Skills are instruction sets that give AI coding agents specialized knowledge abo
 | `entur-web-development` | Installing and using `@entur/*` React packages, CSS import order, tokens, component catalog |
 | `entur-accessibility`   | WCAG 2.1, universell utforming, keyboard testing, screen readers, Norwegian law compliance  |
 | `entur-brand-design`    | Colors, typography, data visualization, visual identity, presentations                      |
+| `migrate-react-18`      | Step-by-step migration for projects upgrading @entur/\* packages to React 18 major versions |
 
 Start with `entur-linje`. It reads the task and loads the relevant sub-skill automatically.
 

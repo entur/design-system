@@ -2,15 +2,15 @@
   "name": "@entur/layout",
   "version": "3.7.5",
   "license": "EUPL-1.2",
-  "main": "dist/layout.cjs.js",
-  "module": "dist/layout.esm.js",
+  "main": "dist/layout.cjs",
+  "module": "dist/layout.mjs",
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/layout.esm.js",
-      "require": "./dist/layout.cjs.js",
-      "default": "./dist/layout.esm.js"
+      "import": "./dist/layout.mjs",
+      "require": "./dist/layout.cjs",
+      "default": "./dist/layout.mjs"
     },
     "./beta": {
       "types": "./dist/beta/types/index.d.ts",
@@ -19,9 +19,11 @@
       "default": "./dist/beta/esm/index.mjs"
     },
     "./beta/styles": "./dist/beta/styles/index.css",
-    "./dist/*": "./dist/*",
+    "./styles": "./dist/styles.css",
+    "./dist/styles.css": "./dist/styles.css",
     "./dist/beta": null,
-    "./dist/beta/*": null
+    "./dist/beta/*": null,
+    "./package.json": "./package.json"
   },
   "sideEffects": [
     "./dist/**/*.css"
@@ -46,8 +48,8 @@
     "test": "jest"
   },
   "peerDependencies": {
-    "react": ">=16.8.0",
-    "react-dom": ">=16.8.0"
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
   },
   "dependencies": {
     "@entur/icons": "workspace:^",
@@ -58,7 +60,7 @@
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^10.4.9",
+    "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "14.6.1",
     "@vitejs/plugin-react": "^5.0.1",
     "jest": "^29.0.0",

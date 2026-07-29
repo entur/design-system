@@ -23,6 +23,6 @@ export type ToastAlertBoxProps = {
   [key: string]: any;
 };
 
-export const ToastAlertBox: React.FC<ToastAlertBoxProps> = props => (
+export const ToastAlertBox = (props: ToastAlertBoxProps) => (
   <BaseAlertBox {...props} size="toast" role="status" />
 );

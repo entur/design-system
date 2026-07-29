@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useId } from 'react';
 import classNames from 'classnames';
 import { Label } from '@entur/typography';
-import { ExtendableProps, useRandomId } from '@entur/utils';
+import { ExtendableProps } from '@entur/utils';
 import './SegmentedControl.scss';
 
 type SegmentedContextProps = {
@@ -86,7 +86,7 @@ export const SegmentedControl = React.forwardRef<
       defaultValue ?? null,
     );
     const [focusedValue, setFocusedValue] = React.useState<string | null>(null);
-    const id = useRandomId('eds-segmented-control');
+    const id = `eds-segmented-control${useId()}`;
 
     const isControlled = deprecatedValue !== undefined || value !== undefined;
     const currentValue =

@@ -29,14 +29,14 @@ type EditableCellProps = {
   [key: string]: any;
 };
 
-export const EditableCell: React.FC<EditableCellProps> = ({
+export const EditableCell = ({
   children,
   className,
   feedback,
   variant,
   outlined = false,
   ...rest
-}) => {
+}: EditableCellProps) => {
   return (
     <VariantProvider variant={variant}>
       <DataCell

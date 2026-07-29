@@ -1,5 +1,3 @@
-import React from 'react';
-
 type ConditionalWrapperType = {
   condition: boolean;
   wrapper: any;
@@ -10,4 +8,4 @@ export const ConditionalWrapper = ({
   condition,
   wrapper,
   children,
-}: ConditionalWrapperType) => (condition ? wrapper(children) : <>{children}</>);
+}: ConditionalWrapperType) => (condition ? wrapper(children) : children);

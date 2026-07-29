@@ -106,8 +106,10 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
   },
 );
 
-const CheckboxIcon: React.FC<{ indeterminate: boolean }> = ({
+const CheckboxIcon = ({
   indeterminate = false,
+}: {
+  indeterminate: boolean;
 }) => {
   return (
     <svg

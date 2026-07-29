@@ -1,4 +1,3 @@
-import React from 'react';
 import classNames from 'classnames';
 
 import { VisuallyHidden } from '@entur/a11y';
@@ -42,7 +41,7 @@ export type StepperProps = {
   [key: string]: any;
 };
 
-export const Stepper: React.FC<StepperProps> = ({
+export const Stepper = ({
   activeIndex,
   className,
   interactive = false,
@@ -56,7 +55,7 @@ export const Stepper: React.FC<StepperProps> = ({
     activeIndex + 1
   } ${steps[activeIndex]},`,
   ...rest
-}) => {
+}: StepperProps) => {
   return (
     <ol
       className={classNames('eds-stepper', className)}
