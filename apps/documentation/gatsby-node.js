@@ -111,14 +111,33 @@ exports.onPreBuild = async () => {
   if (propGenerationPromise) await propGenerationPromise;
 };
 
+// Commit subjects may contain bare tags like <dialog>, which MDX parses as JSX
+// and fails on. Escape < outside code fences and inline code.
+const escapeMdxTags = markdown =>
+  markdown
+    .split(/(^```[\s\S]*?^```$)/m)
+    .map((block, index) =>
+      index % 2 === 1
+        ? block
+        : block
+            .split(/(`[^`\n]*`)/)
+            .map((part, i) => (i % 2 === 1 ? part : part.replace(/</g, '&lt;')))
+            .join(''),
+    )
+    .join('');
+
 exports.onPreBootstrap = () => {
   fs.ensureDirSync(`${__dirname}/dist/changelogs/`);
   fs.ensureDirSync(`${__dirname}/dist/icons/`);
 
   for (let changelogPackage in packages) {
-    fs.copyFileSync(
+    const changelog = fs.readFileSync(
       path.resolve(`../../packages/${packages[changelogPackage]}/CHANGELOG.md`),
+      'utf8',
+    );
+    fs.writeFileSync(
       `${__dirname}/dist/changelogs/${packages[changelogPackage]}.md`,
+      escapeMdxTags(changelog),
     );
   }
 
