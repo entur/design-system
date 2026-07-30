@@ -9,11 +9,15 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **form:** remove React.FC in favor of typed function parameters ([8cca9de](https://github.com/entur/design-system/commit/8cca9de7a89e31b0df07ffe9b1a1bcd1794fb73f))
 
-- feat(form)!: add exports field for ESM-compatible module resolution ([eea2a52](https://github.com/entur/design-system/commit/eea2a52a2239e55413476dfd5248ec9fe73a11ae))
+### Features
+
+- **form:** add exports field for ESM-compatible module resolution ([eea2a52](https://github.com/entur/design-system/commit/eea2a52a2239e55413476dfd5248ec9fe73a11ae))
+- **form:** require React 18 as minimum peer dependency ([372e013](https://github.com/entur/design-system/commit/372e0135acdd70dad40cda12ebb63d2661fd8a84))
 
 ### BREAKING CHANGES
 
-- undocumented deep imports into dist/ may break.
+- **form:** undocumented deep imports into dist/ may break.
+- **form:** require React 18 as minimum peer dependency
 
 ## [9.3.8](https://github.com/entur/design-system/compare/@entur/form@9.3.7...@entur/form@9.3.8) (2026-07-03)
 

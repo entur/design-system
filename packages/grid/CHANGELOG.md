@@ -5,11 +5,15 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # [0.4.0](https://github.com/entur/design-system/compare/@entur/grid@0.3.79...@entur/grid@0.4.0) (2026-07-30)
 
-- feat(grid)!: add exports field for ESM-compatible module resolution ([cfa4b6f](https://github.com/entur/design-system/commit/cfa4b6fe6eb0043fe5f4316935598544dcba2767))
+### Features
+
+- **grid:** add exports field for ESM-compatible module resolution ([cfa4b6f](https://github.com/entur/design-system/commit/cfa4b6fe6eb0043fe5f4316935598544dcba2767))
+- **grid:** require React 18 as minimum peer dependency ([a516a71](https://github.com/entur/design-system/commit/a516a7156eca267cb7ad09ea57d4e2f949332013))
 
 ### BREAKING CHANGES
 
-- undocumented deep imports into dist/ may break.
+- **grid:** undocumented deep imports into dist/ may break.
+- **grid:** require React 18 as minimum peer dependency
 
 ## [0.3.79](https://github.com/entur/design-system/compare/@entur/grid@0.3.78...@entur/grid@0.3.79) (2026-07-03)
 

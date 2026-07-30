@@ -9,11 +9,15 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **dropdown:** fix typeahead tests for React 18 automatic batching ([5119d0f](https://github.com/entur/design-system/commit/5119d0fc3aa5e24f7a006798289d7c172a2458f3))
 
-- feat(dropdown)!: add exports field for ESM-compatible module resolution ([acb447d](https://github.com/entur/design-system/commit/acb447deac5b2e9fa8b64fc423622c84731c9d63))
+### Features
+
+- **dropdown:** add exports field for ESM-compatible module resolution ([acb447d](https://github.com/entur/design-system/commit/acb447deac5b2e9fa8b64fc423622c84731c9d63))
+- **dropdown:** require React 18 as minimum peer dependency ([41ed9ee](https://github.com/entur/design-system/commit/41ed9ee43295404c0bd46c0734b6e45bd8f2776a))
 
 ### BREAKING CHANGES
 
-- undocumented deep imports into dist/ may break.
+- **dropdown:** undocumented deep imports into dist/ may break.
+- **dropdown:** require React 18 as minimum peer dependency
 
 ## [8.1.8](https://github.com/entur/design-system/compare/@entur/dropdown@8.1.7...@entur/dropdown@8.1.8) (2026-07-03)
 

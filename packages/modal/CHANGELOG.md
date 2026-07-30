@@ -11,15 +11,20 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 - **modal:** remove React.FC in favor of typed function parameters ([abc098b](https://github.com/entur/design-system/commit/abc098b24b4cd883c0f47ed0f1270f4af5a03a6e))
 - **tab, expand, modal, utils:** fix React 18 type errors and clean up [@reach](https://github.com/reach) leftovers ([d29bedc](https://github.com/entur/design-system/commit/d29bedcdc2701a192e0cf39587a2928cae55191e))
 
-- feat(modal)!: add exports field for ESM-compatible module resolution ([01c75e1](https://github.com/entur/design-system/commit/01c75e1b583100f5ea920fb541e31edbc23e51c4))
-
 ### Features
 
+- **modal:** add exports field for ESM-compatible module resolution ([01c75e1](https://github.com/entur/design-system/commit/01c75e1b583100f5ea920fb541e31edbc23e51c4))
+- **modal:** replace @reach/dialog with native <dialog> element ([0de754e](https://github.com/entur/design-system/commit/0de754e5a63f6b4d4ea7223f293d439fae8ac49d))
+- **modal:** require onDismiss and add showCloseButton prop ([3b3f85e](https://github.com/entur/design-system/commit/3b3f85e1ea331bdc9bc5b2ca7eca3a3fccfe17d9))
+- **modal:** require React 18 as minimum peer dependency ([bdcfb0f](https://github.com/entur/design-system/commit/bdcfb0f117cb77be801f0586ee515dc084cf185a))
 - **modal:** respect prefers-reduced-motion ([c0427df](https://github.com/entur/design-system/commit/c0427df257fe4ae68b7d1abf255e2cda2615f69b))
 
 ### BREAKING CHANGES
 
-- undocumented deep imports into dist/ may break.
+- **modal:** undocumented deep imports into dist/ may break.
+- **modal:** require onDismiss and add showCloseButton prop
+- **modal:** replace @reach/dialog with native <dialog> element
+- **modal:** require React 18 as minimum peer dependency
 
 ## [1.8.16](https://github.com/entur/design-system/compare/@entur/modal@1.8.15...@entur/modal@1.8.16) (2026-07-03)
 

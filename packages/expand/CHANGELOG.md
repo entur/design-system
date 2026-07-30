@@ -11,24 +11,25 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 - **expand:** remove React.FC in favor of typed function parameters ([1510aa0](https://github.com/entur/design-system/commit/1510aa05f85f0061b7edabe2262fc8b654614d1d))
 - **tab, expand, modal, utils:** fix React 18 type errors and clean up [@reach](https://github.com/reach) leftovers ([d29bedc](https://github.com/entur/design-system/commit/d29bedcdc2701a192e0cf39587a2928cae55191e))
 
-- feat(expand)!: add exports field for ESM-compatible module resolution ([654f3f2](https://github.com/entur/design-system/commit/654f3f2f93be9ee597130820cbcf1886e630af40))
-- feat(expand)!: add unmountOnClose prop and proper controlled mode ([bb22fdb](https://github.com/entur/design-system/commit/bb22fdb6116bf67670b73c4c8c6235e740a104f6))
-
 ### Features
 
+- **expand:** add exports field for ESM-compatible module resolution ([654f3f2](https://github.com/entur/design-system/commit/654f3f2f93be9ee597130820cbcf1886e630af40))
 - **expand:** add forwardRef support to all expand components ([7286125](https://github.com/entur/design-system/commit/72861258423e7c40bde3284f7b8824756cc133b4))
+- **expand:** add unmountOnClose prop and proper controlled mode ([bb22fdb](https://github.com/entur/design-system/commit/bb22fdb6116bf67670b73c4c8c6235e740a104f6))
 - **expand:** reduce css specificity for all expand classes to 0,1,0 ([441ab12](https://github.com/entur/design-system/commit/441ab12a18747bafbc6e112fbf127acdd7646eac))
 - **expand:** replace react-collapse with CSS grid animation ([f428df0](https://github.com/entur/design-system/commit/f428df08834c6ba48e6c06d172978aa39806d2f7))
+- **expand:** require React 18 as minimum peer dependency ([8e3257d](https://github.com/entur/design-system/commit/8e3257d9237d57fda580ac4d4450af2aa62d20b2))
 
 ### BREAKING CHANGES
 
-- undocumented deep imports into dist/ may break.
+- **expand:** undocumented deep imports into dist/ may break.
 - **expand:** New specificity for classes could lead to visual changes
   if you have overridden expand classes
-- Expand components now keep content mounted in the DOM
+- **expand:** Expand components now keep content mounted in the DOM
   when closed by default. Use unmountOnClose={true} to get the previous
   behavior where content is unmounted on close. ExpandableText rest props
   are now applied to the outer wrapper div instead of child components.
+- **expand:** require React 18 as minimum peer dependency
 
 ## [3.7.12](https://github.com/entur/design-system/compare/@entur/expand@3.7.11...@entur/expand@3.7.12) (2026-07-03)
 

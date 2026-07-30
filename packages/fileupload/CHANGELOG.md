@@ -9,11 +9,15 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **fileupload:** remove React.FC in favor of typed function parameters ([77540db](https://github.com/entur/design-system/commit/77540db34f6f5453134b5697141b28021afd37d2))
 
-- feat(fileupload)!: add exports field for ESM-compatible module resolution ([2b2ad4b](https://github.com/entur/design-system/commit/2b2ad4b7937540a180ce6a285daeaba955254301))
+### Features
+
+- **fileupload:** add exports field for ESM-compatible module resolution ([2b2ad4b](https://github.com/entur/design-system/commit/2b2ad4b7937540a180ce6a285daeaba955254301))
+- **fileupload:** require React 18 as minimum peer dependency ([8438a95](https://github.com/entur/design-system/commit/8438a95518dc8be6a1ae39a11beb723e4e75699b))
 
 ### BREAKING CHANGES
 
-- undocumented deep imports into dist/ may break.
+- **fileupload:** undocumented deep imports into dist/ may break.
+- **fileupload:** require React 18 as minimum peer dependency
 
 ## [0.5.13](https://github.com/entur/design-system/compare/@entur/fileupload@0.5.12...@entur/fileupload@0.5.13) (2026-07-03)
 

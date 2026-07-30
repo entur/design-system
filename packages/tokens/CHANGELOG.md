@@ -5,15 +5,14 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # [4.0.0](https://github.com/entur/design-system/compare/@entur/tokens@3.24.0...@entur/tokens@4.0.0) (2026-07-30)
 
-- feat(tokens)!: add exports field for ESM-compatible module resolution ([4ba8cc2](https://github.com/entur/design-system/commit/4ba8cc21baf1e7cb4b91545190e0ad7f1a3d473e))
-
 ### Features
 
+- **tokens:** add exports field for ESM-compatible module resolution ([4ba8cc2](https://github.com/entur/design-system/commit/4ba8cc21baf1e7cb4b91545190e0ad7f1a3d473e))
 - **tokens:** add sass conditional exports for pkg: importer support ([9ae5507](https://github.com/entur/design-system/commit/9ae550786f73da2f73935826b14597fa3f477448))
 
 ### BREAKING CHANGES
 
-- undocumented deep imports into dist/ may break.
+- **tokens:** undocumented deep imports into dist/ may break.
 
 # [3.24.0](https://github.com/entur/design-system/compare/@entur/tokens@3.23.0...@entur/tokens@3.24.0) (2026-06-22)
 

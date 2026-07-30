@@ -13,15 +13,16 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 - **layout/beta/layout provider:** use useSyncExternalStore for responsive breakpoints ([e32586e](https://github.com/entur/design-system/commit/e32586e3c1995f060bf705440184109d2ffe48bb))
 - **layout:** remove React.FC in favor of typed function parameters ([a57ff97](https://github.com/entur/design-system/commit/a57ff97ec925127b0147f02a13f2ac6efe9709a4))
 
-- feat(layout)!: tighten exports field and remove dist/\* wildcard ([76f1930](https://github.com/entur/design-system/commit/76f193093e6030eba848f7e2f7b97632ad50f842))
-
 ### Features
 
 - **layout/beta/flex, layout/beta/grid:** add s breakpoint, placement props, and size constraints ([14353fe](https://github.com/entur/design-system/commit/14353fed95858537ce09ceb329b5b9dbf80e0cc5))
+- **layout:** require React 18 as minimum peer dependency ([467cf46](https://github.com/entur/design-system/commit/467cf46e4867fec2646cb13011436adc860f0ec4))
+- **layout:** tighten exports field and remove dist/\* wildcard ([76f1930](https://github.com/entur/design-system/commit/76f193093e6030eba848f7e2f7b97632ad50f842))
 
 ### BREAKING CHANGES
 
-- undocumented deep imports into dist/ may break.
+- **layout:** undocumented deep imports into dist/ may break.
+- **layout:** require React 18 as minimum peer dependency
 
 ## [3.7.5](https://github.com/entur/design-system/compare/@entur/layout@3.7.4...@entur/layout@3.7.5) (2026-07-03)
 

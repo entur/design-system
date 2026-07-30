@@ -5,11 +5,15 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # [10.0.0](https://github.com/entur/design-system/compare/@entur/icons@9.0.4...@entur/icons@10.0.0) (2026-07-30)
 
-- feat(icons)!: add exports field for ESM-compatible module resolution ([3b50337](https://github.com/entur/design-system/commit/3b50337fc8edf7d95b6fcb868fbb8a74ee2cd83b))
+### Features
+
+- **icons:** add exports field for ESM-compatible module resolution ([3b50337](https://github.com/entur/design-system/commit/3b50337fc8edf7d95b6fcb868fbb8a74ee2cd83b))
+- **icons:** require React 18 as minimum peer dependency ([13d4e88](https://github.com/entur/design-system/commit/13d4e88ed1b01d51779c64e11269aa3729920caa))
 
 ### BREAKING CHANGES
 
-- undocumented deep imports into dist/ may break.
+- **icons:** undocumented deep imports into dist/ may break.
+- **icons:** require React 18 as minimum peer dependency
 
 ## [9.0.4](https://github.com/entur/design-system/compare/@entur/icons@9.0.3...@entur/icons@9.0.4) (2026-07-03)
 

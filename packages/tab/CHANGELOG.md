@@ -12,17 +12,20 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 - **tab:** remove React.FC in favor of typed function parameters ([6460121](https://github.com/entur/design-system/commit/6460121c7c9092c48d272e09bbf83fbc109d5f08))
 - **tab:** restore functional as prop in all tab components ([3590760](https://github.com/entur/design-system/commit/3590760b5104a09afd1a04498a450ce3a7d3b1a8))
 
-- feat(tab)!: add exports field for ESM-compatible module resolution ([2138b30](https://github.com/entur/design-system/commit/2138b30c46a0272542a55bda52939f56bcc7fb76))
-- feat(tab)!: replace @reach/tabs with native ARIA implementation ([9c28573](https://github.com/entur/design-system/commit/9c2857395510ffcb22cbd2b825c96c61f26d9f92))
+### Features
+
+- **tab:** add exports field for ESM-compatible module resolution ([2138b30](https://github.com/entur/design-system/commit/2138b30c46a0272542a55bda52939f56bcc7fb76))
+- **tab:** replace @reach/tabs with native ARIA implementation ([9c28573](https://github.com/entur/design-system/commit/9c2857395510ffcb22cbd2b825c96c61f26d9f92))
+- **tab:** require React 18, replace @reach/tabs with custom ARIA implementation ([987efe0](https://github.com/entur/design-system/commit/987efe0a3a50dda8a1d20d40767e1e45bd24becd))
 
 ### BREAKING CHANGES
 
-- undocumented deep imports into dist/ may break.
-- Stricter TypeScript types replace [key: string]: any.
+- **tab:** undocumented deep imports into dist/ may break.
+- **tab:** Stricter TypeScript types replace [key: string]: any.
   data-reach-\* attributes removed from DOM. Generated element IDs use new
   format.
 
-AI-assistant: Claude Code (claude-opus-4-6)
+- **tab:** require React 18, replace @reach/tabs with custom ARIA implementation
 
 ## [0.7.2](https://github.com/entur/design-system/compare/@entur/tab@0.7.1...@entur/tab@0.7.2) (2026-07-03)
 
