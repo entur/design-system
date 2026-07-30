@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.14.0](https://github.com/entur/design-system/compare/@entur/utils@0.13.6...@entur/utils@0.14.0) (2026-07-30)
+
+### Bug Fixes
+
+- **tab, expand, modal, utils:** fix React 18 type errors and clean up [@reach](https://github.com/reach) leftovers ([d29bedc](https://github.com/entur/design-system/commit/d29bedcdc2701a192e0cf39587a2928cae55191e))
+- **utils:** deprecate useRandomId in favor of React useId ([15dbaa4](https://github.com/entur/design-system/commit/15dbaa4e3636e33b8a3e698326593e25d8d266c9))
+- **utils:** use React 18 useId() and useSyncExternalStore ([410887a](https://github.com/entur/design-system/commit/410887ae87a97269e936db42f4b2500ad25393e5))
+
+- feat(utils)!: tighten exports field and remove dist/\* wildcard ([90dde47](https://github.com/entur/design-system/commit/90dde470681d6332982272c3e742a03d6614c8f4))
+
+### BREAKING CHANGES
+
+- undocumented deep imports into dist/ may break.
+
 ## [0.13.6](https://github.com/entur/design-system/compare/@entur/utils@0.13.5...@entur/utils@0.13.6) (2026-07-03)
 
 **Note:** Version bump only for package @entur/utils

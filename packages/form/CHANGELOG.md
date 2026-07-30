@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.0.0](https://github.com/entur/design-system/compare/@entur/form@9.3.8...@entur/form@10.0.0) (2026-07-30)
+
+### Bug Fixes
+
+- **form:** remove React.FC in favor of typed function parameters ([8cca9de](https://github.com/entur/design-system/commit/8cca9de7a89e31b0df07ffe9b1a1bcd1794fb73f))
+
+- feat(form)!: add exports field for ESM-compatible module resolution ([eea2a52](https://github.com/entur/design-system/commit/eea2a52a2239e55413476dfd5248ec9fe73a11ae))
+
+### BREAKING CHANGES
+
+- undocumented deep imports into dist/ may break.
+
 ## [9.3.8](https://github.com/entur/design-system/compare/@entur/form@9.3.7...@entur/form@9.3.8) (2026-07-03)
 
 **Note:** Version bump only for package @entur/form

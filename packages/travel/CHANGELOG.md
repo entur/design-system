@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.0.0](https://github.com/entur/design-system/compare/@entur/travel@7.0.4...@entur/travel@8.0.0) (2026-07-30)
+
+### Bug Fixes
+
+- **travel:** remove React.FC in favor of typed function parameters ([3f05690](https://github.com/entur/design-system/commit/3f056907fd5353ea695b37f5f0303517d5bd6579))
+
+- feat(travel)!: add exports field for ESM-compatible module resolution ([3a27ee0](https://github.com/entur/design-system/commit/3a27ee04529583836a4294e49678a615bde30957))
+
+### BREAKING CHANGES
+
+- undocumented deep imports into dist/ may break.
+
 ## [7.0.4](https://github.com/entur/design-system/compare/@entur/travel@7.0.3...@entur/travel@7.0.4) (2026-07-03)
 
 **Note:** Version bump only for package @entur/travel

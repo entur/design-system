@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/entur/design-system/compare/@entur/fileupload@0.5.13...@entur/fileupload@0.6.0) (2026-07-30)
+
+### Bug Fixes
+
+- **fileupload:** remove React.FC in favor of typed function parameters ([77540db](https://github.com/entur/design-system/commit/77540db34f6f5453134b5697141b28021afd37d2))
+
+- feat(fileupload)!: add exports field for ESM-compatible module resolution ([2b2ad4b](https://github.com/entur/design-system/commit/2b2ad4b7937540a180ce6a285daeaba955254301))
+
+### BREAKING CHANGES
+
+- undocumented deep imports into dist/ may break.
+
 ## [0.5.13](https://github.com/entur/design-system/compare/@entur/fileupload@0.5.12...@entur/fileupload@0.5.13) (2026-07-03)
 
 **Note:** Version bump only for package @entur/fileupload

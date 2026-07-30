@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.20.3](https://github.com/entur/design-system/compare/@entur/documentation@6.20.2...@entur/documentation@6.20.3) (2026-07-30)
+
+### Bug Fixes
+
+- **website:** apply Sanity containerStyle to LivePreview instead of outer container ([6ec00aa](https://github.com/entur/design-system/commit/6ec00aa6f1b6fbda5c86458aa73a203d64967f51))
+- **website:** enable overlayDrafts for Sanity source in development ([5ab90f5](https://github.com/entur/design-system/commit/5ab90f534b19fb8382dd24038847ad617eb8a949))
+- **website:** fix playground spacing and border-radius with BaseExpand ([5d0585f](https://github.com/entur/design-system/commit/5d0585fc79e9c83c405eac9ef7202ac5a30adc8e))
+- **website:** replace deep @entur/icons/dist import with public API ([c4a7c9a](https://github.com/entur/design-system/commit/c4a7c9a9401a6ec0033fbff5de2cdceb3535bf55))
+- **website:** use explicit grid placement props in page header ([c18ef83](https://github.com/entur/design-system/commit/c18ef83f6317c40f2695eca049d1334ccb05d59d))
+
 ## [6.20.2](https://github.com/entur/design-system/compare/@entur/documentation@6.20.1...@entur/documentation@6.20.2) (2026-07-03)
 
 **Note:** Version bump only for package @entur/documentation

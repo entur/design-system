@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0](https://github.com/entur/design-system/compare/@entur/table@4.10.16...@entur/table@5.0.0) (2026-07-30)
+
+### Bug Fixes
+
+- **table:** remove React.FC in favor of typed function parameters ([24e2193](https://github.com/entur/design-system/commit/24e219357e4a8e87274a59324ffdc76354d5a8a9))
+
+- feat(table)!: add exports field for ESM-compatible module resolution ([57ca3d4](https://github.com/entur/design-system/commit/57ca3d4979848dbd735d4b5a137d558914c207f9))
+
+### BREAKING CHANGES
+
+- undocumented deep imports into dist/ may break.
+
 ## [4.10.16](https://github.com/entur/design-system/compare/@entur/table@4.10.15...@entur/table@4.10.16) (2026-07-03)
 
 **Note:** Version bump only for package @entur/table

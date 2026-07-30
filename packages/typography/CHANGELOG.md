@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0](https://github.com/entur/design-system/compare/@entur/typography@2.1.12...@entur/typography@3.0.0) (2026-07-30)
+
+### Bug Fixes
+
+- **typography:** remove React.FC in favor of typed function parameters ([aaa3979](https://github.com/entur/design-system/commit/aaa39795bed3c20e735302d0a9446622d40d46c0))
+
+- feat(typography)!: tighten exports field and remove dist/\* wildcard ([51cbed1](https://github.com/entur/design-system/commit/51cbed12c4f3f83be8fb1a5f83dc49d7b2fb5ac4))
+
+### BREAKING CHANGES
+
+- undocumented deep imports into dist/ may break.
+
 ## [2.1.12](https://github.com/entur/design-system/compare/@entur/typography@2.1.11...@entur/typography@2.1.12) (2026-07-03)
 
 **Note:** Version bump only for package @entur/typography

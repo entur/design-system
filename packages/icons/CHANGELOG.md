@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.0.0](https://github.com/entur/design-system/compare/@entur/icons@9.0.4...@entur/icons@10.0.0) (2026-07-30)
+
+- feat(icons)!: add exports field for ESM-compatible module resolution ([3b50337](https://github.com/entur/design-system/commit/3b50337fc8edf7d95b6fcb868fbb8a74ee2cd83b))
+
+### BREAKING CHANGES
+
+- undocumented deep imports into dist/ may break.
+
 ## [9.0.4](https://github.com/entur/design-system/compare/@entur/icons@9.0.3...@entur/icons@9.0.4) (2026-07-03)
 
 **Note:** Version bump only for package @entur/icons

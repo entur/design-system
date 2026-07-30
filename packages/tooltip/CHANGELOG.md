@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0](https://github.com/entur/design-system/compare/@entur/tooltip@5.3.16...@entur/tooltip@6.0.0) (2026-07-30)
+
+### Bug Fixes
+
+- **tooltip:** remove React.FC in favor of typed function parameters ([9ed9f08](https://github.com/entur/design-system/commit/9ed9f08391793674fb5cda9e1f738a05d90d973c))
+
+- feat(tooltip)!: add exports field for ESM-compatible module resolution ([13a0d92](https://github.com/entur/design-system/commit/13a0d92ed4a74da0406cd57bd193553030dd9c55))
+
+### BREAKING CHANGES
+
+- undocumented deep imports into dist/ may break.
+
 ## [5.3.16](https://github.com/entur/design-system/compare/@entur/tooltip@5.3.15...@entur/tooltip@5.3.16) (2026-07-03)
 
 **Note:** Version bump only for package @entur/tooltip

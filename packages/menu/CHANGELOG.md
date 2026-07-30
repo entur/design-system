@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.0.0](https://github.com/entur/design-system/compare/@entur/menu@6.3.1...@entur/menu@7.0.0) (2026-07-30)
+
+### Bug Fixes
+
+- **menu:** remove React.FC in favor of typed function parameters ([00f2fcb](https://github.com/entur/design-system/commit/00f2fcb8a447da28edf76968f392c872023abf62))
+
+- feat(menu)!: add exports field for ESM-compatible module resolution ([e2fe17f](https://github.com/entur/design-system/commit/e2fe17fb0fa7fc11c1d7952bb65a19cab39e0a0d))
+
+### BREAKING CHANGES
+
+- undocumented deep imports into dist/ may break.
+
 ## [6.3.1](https://github.com/entur/design-system/compare/@entur/menu@6.3.0...@entur/menu@6.3.1) (2026-07-03)
 
 ### Bug Fixes

@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.0.0](https://github.com/entur/design-system/compare/@entur/layout@3.7.5...@entur/layout@4.0.0) (2026-07-30)
+
+### Bug Fixes
+
+- **layout/beta/flex, layout/beta/grid:** replace JS breakpoint hook with CSS custom property cascade ([fedec15](https://github.com/entur/design-system/commit/fedec153f0386aa4dac324c38a1a493b7f4ed9b8))
+- **layout/beta/grid:** resolve grid-column shorthand override bug and restore default gap ([f9a8eb1](https://github.com/entur/design-system/commit/f9a8eb1b663542125092047cb1e6366150878b7e))
+- **layout/beta/grid:** warn on invalid responsive breakpoint keys instead of rendering them ([1167efe](https://github.com/entur/design-system/commit/1167efe628bde62a5fb580fdf562c5589238702b))
+- **layout/beta/layout provider:** use useSyncExternalStore for responsive breakpoints ([e32586e](https://github.com/entur/design-system/commit/e32586e3c1995f060bf705440184109d2ffe48bb))
+- **layout:** remove React.FC in favor of typed function parameters ([a57ff97](https://github.com/entur/design-system/commit/a57ff97ec925127b0147f02a13f2ac6efe9709a4))
+
+- feat(layout)!: tighten exports field and remove dist/\* wildcard ([76f1930](https://github.com/entur/design-system/commit/76f193093e6030eba848f7e2f7b97632ad50f842))
+
+### Features
+
+- **layout/beta/flex, layout/beta/grid:** add s breakpoint, placement props, and size constraints ([14353fe](https://github.com/entur/design-system/commit/14353fed95858537ce09ceb329b5b9dbf80e0cc5))
+
+### BREAKING CHANGES
+
+- undocumented deep imports into dist/ may break.
+
 ## [3.7.5](https://github.com/entur/design-system/compare/@entur/layout@3.7.4...@entur/layout@3.7.5) (2026-07-03)
 
 **Note:** Version bump only for package @entur/layout

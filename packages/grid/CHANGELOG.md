@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/entur/design-system/compare/@entur/grid@0.3.79...@entur/grid@0.4.0) (2026-07-30)
+
+- feat(grid)!: add exports field for ESM-compatible module resolution ([cfa4b6f](https://github.com/entur/design-system/commit/cfa4b6fe6eb0043fe5f4316935598544dcba2767))
+
+### BREAKING CHANGES
+
+- undocumented deep imports into dist/ may break.
+
 ## [0.3.79](https://github.com/entur/design-system/compare/@entur/grid@0.3.78...@entur/grid@0.3.79) (2026-07-03)
 
 **Note:** Version bump only for package @entur/grid

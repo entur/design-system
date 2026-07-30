@@ -1,6 +1,6 @@
 {
   "name": "@entur/tokens",
-  "version": "3.24.0",
+  "version": "4.0.0",
   "license": "EUPL-1.2",
   "main": "dist/tokens.cjs",
   "module": "dist/tokens.mjs",

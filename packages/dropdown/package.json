@@ -1,6 +1,6 @@
 {
   "name": "@entur/dropdown",
-  "version": "8.1.8",
+  "version": "9.0.0",
   "license": "EUPL-1.2",
   "main": "dist/dropdown.cjs",
   "module": "dist/dropdown.mjs",

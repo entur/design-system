@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0](https://github.com/entur/design-system/compare/@entur/button@4.0.11...@entur/button@5.0.0) (2026-07-30)
+
+### Bug Fixes
+
+- **button:** remove React.FC in favor of typed function parameters ([2d324cb](https://github.com/entur/design-system/commit/2d324cb78a38a718727d1c2a34c349d8a1a95ec4))
+
+- feat(button)!: add exports field for ESM-compatible module resolution ([adef8ac](https://github.com/entur/design-system/commit/adef8accfa3c1786b37fb9ebe86a602461a1fa85))
+
+### BREAKING CHANGES
+
+- undocumented deep imports into dist/ may break.
+
 ## [4.0.11](https://github.com/entur/design-system/compare/@entur/button@4.0.10...@entur/button@4.0.11) (2026-07-03)
 
 **Note:** Version bump only for package @entur/button

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.0.0](https://github.com/entur/design-system/compare/@entur/dropdown@8.1.8...@entur/dropdown@9.0.0) (2026-07-30)
+
+### Bug Fixes
+
+- **dropdown:** fix typeahead tests for React 18 automatic batching ([5119d0f](https://github.com/entur/design-system/commit/5119d0fc3aa5e24f7a006798289d7c172a2458f3))
+
+- feat(dropdown)!: add exports field for ESM-compatible module resolution ([acb447d](https://github.com/entur/design-system/commit/acb447deac5b2e9fa8b64fc423622c84731c9d63))
+
+### BREAKING CHANGES
+
+- undocumented deep imports into dist/ may break.
+
 ## [8.1.8](https://github.com/entur/design-system/compare/@entur/dropdown@8.1.7...@entur/dropdown@8.1.8) (2026-07-03)
 
 **Note:** Version bump only for package @entur/dropdown

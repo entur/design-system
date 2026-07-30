@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.20.0](https://github.com/entur/design-system/compare/@entur/alert@0.19.4...@entur/alert@0.20.0) (2026-07-30)
+
+### Bug Fixes
+
+- **alert:** remove React.FC in favor of typed function parameters ([21fcbac](https://github.com/entur/design-system/commit/21fcbac900e4723edcd81e2edb1227938eb033cf))
+
+- feat(alert)!: add exports field for ESM-compatible module resolution ([1b11810](https://github.com/entur/design-system/commit/1b11810c863f08926a2cbb4ca7978e12ecac9da1))
+
+### BREAKING CHANGES
+
+- undocumented deep imports into dist/ may break.
+
 ## [0.19.4](https://github.com/entur/design-system/compare/@entur/alert@0.19.3...@entur/alert@0.19.4) (2026-07-03)
 
 **Note:** Version bump only for package @entur/alert

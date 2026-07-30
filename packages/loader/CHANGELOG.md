@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/entur/design-system/compare/@entur/loader@0.7.4...@entur/loader@0.8.0) (2026-07-30)
+
+### Bug Fixes
+
+- **loader:** remove React.FC in favor of typed function parameters ([3ccbd6e](https://github.com/entur/design-system/commit/3ccbd6eb65c4babb6d9d7f60c57469d8a29d43e6))
+
+- feat(loader)!: add exports field for ESM-compatible module resolution ([f22bced](https://github.com/entur/design-system/commit/f22bced69505fe493ee032c858ae5413b37fb6e8))
+
+### BREAKING CHANGES
+
+- undocumented deep imports into dist/ may break.
+
 ## [0.7.4](https://github.com/entur/design-system/compare/@entur/loader@0.7.3...@entur/loader@0.7.4) (2026-07-03)
 
 **Note:** Version bump only for package @entur/loader
