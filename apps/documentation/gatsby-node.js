@@ -311,33 +311,67 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   await createDocumentationPagesFromSanity(graphql, actions, reporter);
 };
 
-const SKILLS_FILES = [
-  {
-    label: 'Getting Started',
-    file: 'entur-web-development/references/getting-started.md',
-  },
-  {
-    label: 'Component Reference',
-    file: 'entur-web-development/references/components.md',
-  },
-  {
-    label: 'Design Tokens & CSS Variables',
-    file: 'entur-web-development/references/tokens-and-variables.md',
-  },
-  { label: 'Colors', file: 'entur-brand-design/references/colors.md' },
-  {
-    label: 'Typography',
-    file: 'entur-brand-design/references/typography.md',
-  },
-  {
-    label: 'Visual Identity',
-    file: 'entur-brand-design/references/visual-identity.md',
-  },
-  {
-    label: 'Accessibility Patterns',
-    file: 'entur-accessibility/references/entur-a11y-patterns.md',
-  },
+// Router first, then each sub-skill with its own references, so llms-full.txt reads top-down.
+const SKILL_ORDER = [
+  'entur-linje',
+  'entur-web-development',
+  'entur-accessibility',
+  'entur-brand-design',
 ];
+
+/**
+ * Collects every SKILL.md and references/*.md under skills/, in reading order.
+ * Walking the directory rather than keeping a list means a new reference file is
+ * published without a matching edit here.
+ */
+const collectSkillFiles = (skillsDir, reporter) => {
+  if (!fs.existsSync(skillsDir)) {
+    reporter.warn(`[llms.txt] No skills directory at ${skillsDir}`);
+    return [];
+  }
+
+  const present = fs
+    .readdirSync(skillsDir, { withFileTypes: true })
+    .filter(entry => entry.isDirectory())
+    .map(entry => entry.name);
+
+  const ordered = [
+    ...SKILL_ORDER.filter(name => present.includes(name)),
+    ...present.filter(name => !SKILL_ORDER.includes(name)).sort(),
+  ];
+
+  const collected = [];
+
+  for (const skill of ordered) {
+    const files = [path.join(skillsDir, skill, 'SKILL.md')];
+    const referencesDir = path.join(skillsDir, skill, 'references');
+    if (fs.existsSync(referencesDir)) {
+      files.push(
+        ...fs
+          .readdirSync(referencesDir)
+          .filter(name => name.endsWith('.md'))
+          .sort()
+          .map(name => path.join(referencesDir, name)),
+      );
+    }
+
+    for (const filePath of files) {
+      if (!fs.existsSync(filePath)) {
+        reporter.warn(`[llms.txt] Skill file missing: ${filePath}`);
+        continue;
+      }
+      const content = fs.readFileSync(filePath, 'utf8');
+      // The first heading is the file's own title; fall back to the filename.
+      const heading = /^#\s+(.+)$/m.exec(content);
+      const label = heading
+        ? heading[1].trim()
+        : path.basename(filePath, '.md');
+      collected.push({ label, content });
+    }
+  }
+
+  return collected;
+};
 
 exports.onPostBuild = async ({ reporter }) => {
   const pageDataPath = path.join(__dirname, 'dist', 'llms-page-data.json');
@@ -351,13 +385,8 @@ exports.onPostBuild = async ({ reporter }) => {
   const pages = fs.readJsonSync(pageDataPath);
   const skillsDir = path.resolve(__dirname, '../../skills');
 
-  const skillsFiles = SKILLS_FILES.map(({ label: fileLabel, file }) => {
-    const filePath = path.join(skillsDir, file);
-    const content = fs.existsSync(filePath)
-      ? fs.readFileSync(filePath, 'utf8')
-      : '';
-    return { label: fileLabel, content };
-  }).filter(({ content }) => content);
+  const skillsFiles = collectSkillFiles(skillsDir, reporter);
+  reporter.info(`[llms.txt] Including ${skillsFiles.length} skill files`);
 
   const llmsTxt = generateLlmsTxt(pages);
   const llmsFullTxt = generateLlmsFullTxt(pages, skillsFiles);
