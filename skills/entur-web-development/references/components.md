@@ -6,16 +6,16 @@ Full API docs: https://linje.entur.no/komponenter
 
 | Package             | Key exports                                                                                                                                                                                                                              |
 | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `@entur/button`     | `PrimaryButton`, `SecondaryButton`, `TertiaryButton`, `NegativeButton`, `SuccessButton`, `IconButton`, `ButtonGroup`, `FloatingButton`, `SecondarySquareButton`, `SuccessSquareButton`, `TertiarySquareButton`                           |
+| `@entur/button`     | `PrimaryButton`, `SecondaryButton`, `NegativeButton`, `SuccessButton`, `IconButton`, `ButtonGroup`, `FloatingButton`, `SecondarySquareButton`, `SuccessSquareButton` — plus deprecated `TertiaryButton`, `TertiarySquareButton`          |
 | `@entur/typography` | `Heading1`–`Heading6`, `Paragraph`, `LeadParagraph`, `SubParagraph`, `SmallText`, `Label`, `SubLabel`, `Link`, `StrongText`, `EmphasizedText`, `Blockquote`, `CodeText`, `PreformattedText`, `ListItem`, `UnorderedList`, `NumberedList` |
 | `@entur/form`       | `TextField`, `TextArea`, `Checkbox`, `Radio`, `RadioGroup`, `RadioPanel`, `CheckboxPanel`, `Switch`, `Fieldset`, `FeedbackText`, `InputGroupLabel`, `SegmentedControl`                                                                   |
-| `@entur/alert`      | `BannerAlertBox`, `SmallAlertBox`, `ToastAlertBox`, `ExpandableAlertBox`, `CopyableText`, `ToastProvider`, `useToast`                                                                                                                    |
+| `@entur/alert`      | `BannerAlertBox`, `SmallAlertBox`, `ToastAlertBox`, `BannerExpandableAlertBox`, `SmallExpandableAlertBox`, `CopyableText`, `ToastProvider`, `useToast`                                                                                   |
 | `@entur/menu`       | `SideNavigation`, `SideNavigationItem`, `SideNavigationGroup`, `CollapsibleSideNavigation`, `TopNavigationItem`, `BreadcrumbNavigation`, `BreadcrumbItem`, `OverflowMenu`, `Pagination`, `Stepper`                                       |
 | `@entur/layout`     | `Contrast`, `NavigationCard`, `BaseCard`, `MediaCard`, `Badge`, `BulletBadge`, `NotificationBadge`, `StatusBadge`, `Tag`                                                                                                                 |
 | `@entur/grid`       | `GridContainer`, `GridItem`                                                                                                                                                                                                              |
 | `@entur/modal`      | `Modal`, `ModalOverlay`, `ModalContent`, `Drawer`                                                                                                                                                                                        |
 | `@entur/tooltip`    | `Tooltip`, `Popover`                                                                                                                                                                                                                     |
-| `@entur/table`      | `Table`, `TableHead`, `TableBody`, `TableFooter`, `TableRow`, `HeaderCell`, `DataCell`, `EditableCell`, `ExpandableRow`, `ExpandRowButton`, `useSortableTable`, `useTableKeyboardNavigation`                                             |
+| `@entur/table`      | `Table`, `TableHead`, `TableBody`, `TableFooter`, `TableRow`, `HeaderCell`, `DataCell`, `EditableCell`, `ExpandableRow`, `ExpandRowButton`, `useSortableData`, `useTableKeyboardNavigation`                                              |
 | `@entur/expand`     | `Accordion`, `AccordionItem`, `ExpandablePanel`, `ExpandableText`, `ExpandableTextButton`, `ExpandArrow`                                                                                                                                 |
 | `@entur/tab`        | `Tabs`, `TabList`, `Tab`, `TabPanels`, `TabPanel`                                                                                                                                                                                        |
 | `@entur/travel`     | `TravelHeader`, `TravelTag`, `LegLine`, `LegBone`, `TravelLeg`, `TravelSwitch`                                                                                                                                                           |
@@ -43,7 +43,7 @@ Package: `@entur/button`
 Use the right variant for the action's importance. Avoid multiple primaries in the same view — they compete for attention.
 
 ```tsx
-import { PrimaryButton, SecondaryButton, TertiaryButton, NegativeButton, SuccessButton, IconButton, ButtonGroup } from '@entur/button';
+import { PrimaryButton, SecondaryButton, NegativeButton, SuccessButton, IconButton, ButtonGroup } from '@entur/button';
 
 // Primary — main call to action
 <PrimaryButton onClick={handleSubmit}>Kjøp billett</PrimaryButton>
@@ -51,8 +51,8 @@ import { PrimaryButton, SecondaryButton, TertiaryButton, NegativeButton, Success
 // Secondary — alternative actions
 <SecondaryButton onClick={handleCancel}>Avbryt</SecondaryButton>
 
-// Tertiary — low-emphasis, often in dense UIs
-<TertiaryButton>Les mer</TertiaryButton>
+// Low-emphasis, often in dense UIs — TertiaryButton is deprecated, use size="small"
+<SecondaryButton size="small">Les mer</SecondaryButton>
 
 // Destructive action
 <NegativeButton onClick={handleDelete}>Slett</NegativeButton>
@@ -132,8 +132,13 @@ import { TextField, TextArea, Checkbox, Radio, RadioGroup, Switch, Fieldset } fr
   Jeg godtar vilkårene
 </Checkbox>
 
-// Radio group
-<RadioGroup label="Reisemåte">
+// Radio group — name is required; onChange receives the event
+<RadioGroup
+  name="reisemate"
+  label="Reisemåte"
+  value={mode}
+  onChange={e => setMode(e.target.value)}
+>
   <Radio value="tog">Tog</Radio>
   <Radio value="buss">Buss</Radio>
 </RadioGroup>
@@ -170,7 +175,7 @@ import { BannerAlertBox, SmallAlertBox, ToastProvider, useToast } from '@entur/a
 
 // Use toast in any component
 const { addToast } = useToast();
-addToast({ title: 'Lagret!', variant: 'success' });
+addToast({ title: 'Lagret!', content: 'Endringene er lagret.', variant: 'success' });
 ```
 
 Variants: `"information"` | `"success"` | `"warning"` | `"negative"`
@@ -233,8 +238,8 @@ import { GridContainer, GridItem } from '@entur/grid';
   </GridItem>
 </GridContainer>
 
-// Badges
-<Badge>3</Badge>
+// Badges — variant is required
+<Badge variant="primary">3</Badge>
 <StatusBadge variant="success">Aktiv</StatusBadge>
 
 // Tag chips for labeling
@@ -251,8 +256,8 @@ Package: `@entur/modal`
 import { Modal, ModalContent, Drawer } from '@entur/modal';
 import { Tooltip, Popover } from '@entur/tooltip';
 
-// Modal dialog
-<Modal open={isOpen} onDismiss={() => setOpen(false)}>
+// Modal dialog — size is required on both Modal and ModalContent
+<Modal open={isOpen} onDismiss={() => setOpen(false)} size="small">
   <ModalContent title="Bekreft kjøp" size="small">
     Er du sikker på at du vil kjøpe billetten?
   </ModalContent>
@@ -332,8 +337,8 @@ import { TravelHeader, TravelTag, LegLine, LegBone, TravelLeg, TravelSwitch } fr
 <TravelTag transport="bus">Buss</TravelTag>
 <TravelTag transport="metro">T-bane</TravelTag>
 
-// Journey leg visualization
-<TravelLeg>
+// Journey leg visualization — transport and direction are both required
+<TravelLeg transport="rail" direction="vertical">
   <LegBone direction="vertical" pattern="line" color="var(--standard-train)" />
 </TravelLeg>
 ```
@@ -349,11 +354,11 @@ Package: `@entur/datepicker`
 ```tsx
 import { DatePicker, TimePicker } from '@entur/datepicker';
 
-// Date picker
-<DatePicker label="Reisedato" onChange={setDate} />
+// Date picker — selectedDate is required; onChange may be called with null
+<DatePicker label="Reisedato" selectedDate={date} onChange={setDate} />
 
-// Time picker
-<TimePicker label="Avgangstid" onChange={setTime} />
+// Time picker — selectedTime is required
+<TimePicker label="Avgangstid" selectedTime={time} onChange={setTime} />
 ```
 
 ---
