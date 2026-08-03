@@ -12,6 +12,7 @@
   font-size: inherit;
   display: flex;
   align-items: center;
+  gap: t.$space-extra-small2;
 
   :where(.eds-contrast) & {
     color: var(--components-expand-expandabletext-contrast-text);
