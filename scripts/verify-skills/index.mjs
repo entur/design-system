@@ -71,6 +71,26 @@ const publishedPackages = fs
   .map(e => e.name)
   .sort();
 
+/**
+ * The checks read types and tokens from source where it exists and from dist/ otherwise.
+ * dist/ is build output, so on an unbuilt checkout the export registry and the token list
+ * come up empty and every documented export and `var(--x)` looks wrong. Name the real
+ * cause rather than reporting hundreds of failures against the docs.
+ */
+function abortUnbuilt(what) {
+  console.error(
+    `verify-skills: ${what}.\n` +
+      'Packages that only ship types and CSS in dist/ have not been built. ' +
+      'Run `yarn build:packages` first.',
+  );
+  process.exit(1);
+}
+
+function assertBuiltPackages() {
+  const unbuilt = publishedPackages.filter(p => !packageEntry(p));
+  if (unbuilt.length) abortUnbuilt(`no types found for ${unbuilt.join(', ')}`);
+}
+
 const compilerOptions = {
   target: ts.ScriptTarget.ESNext,
   module: ts.ModuleKind.ESNext,
@@ -223,7 +243,8 @@ function extractFences(file) {
 
     if (afterIdx !== -1) from = afterIdx + 1;
     else if (beforeIdx !== -1) continue; // Before with no After: intentionally wrong
-    if (avoidIdx > from) to = avoidIdx;
+    // `>=`, so a fence whose first line is the "Avoid" comment is excluded too.
+    if (avoidIdx >= from) to = avoidIdx;
 
     const slice = body.slice(from, to);
     // A sliced fence loses its imports; auto-resolution puts them back.
@@ -242,6 +263,8 @@ function extractFences(file) {
 const SCRATCH = fs.mkdtempSync(
   path.join(REPO, 'node_modules', '.verify-skills-'),
 );
+// On exit, so a throw or an early `process.exit` cannot leave the directory behind.
+process.on('exit', () => fs.rmSync(SCRATCH, { recursive: true, force: true }));
 
 /** Injected header line count per fence, so diagnostics map back to markdown lines. */
 const headerOffsets = [];
@@ -460,44 +483,34 @@ function checkProse(files, registry) {
 function collectTokenNames() {
   const names = new Set();
   const distDir = path.join(PACKAGES_DIR, 'tokens', 'dist');
-  if (!fs.existsSync(distDir)) return names;
-  for (const file of walk(distDir, f => f.endsWith('.css'))) {
-    const css = fs.readFileSync(file, 'utf8');
-    for (const m of css.matchAll(/(--[a-z0-9-]+)\s*:/g)) names.add(m[1]);
+  if (fs.existsSync(distDir)) {
+    for (const file of walk(distDir, f => f.endsWith('.css'))) {
+      const css = fs.readFileSync(file, 'utf8');
+      for (const m of css.matchAll(/(--[a-z0-9-]+)\s*:/g)) names.add(m[1]);
+    }
   }
+  if (!names.size)
+    abortUnbuilt('no CSS custom properties found in @entur/tokens');
   return names;
 }
 
 /* --------------------------------- llms.txt coverage (Part 5 regression guard) */
 
-function checkLlmsCoverage(skillFiles) {
+/**
+ * llms-full.txt is built by walking skills/, which covers every file by construction.
+ * The drift this guards against is that walk being replaced by a hardcoded list again.
+ */
+function checkLlmsCoverage() {
   const gatsbyNode = path.join(REPO, 'apps/documentation/gatsby-node.js');
   if (!fs.existsSync(gatsbyNode)) return;
   const source = fs.readFileSync(gatsbyNode, 'utf8');
 
-  // A directory walk covers everything by construction; only a hardcoded list can drift.
-  if (!/SKILLS_FILES\s*=\s*\[/.test(source)) {
-    if (!/collectSkillFiles/.test(source)) {
-      warn(
-        'apps/documentation/gatsby-node.js',
-        0,
-        'no skill-file collection found — llms-full.txt may omit skill content',
-      );
-    }
-    return;
-  }
-
-  for (const file of skillFiles) {
-    // README.md is install instructions for humans, not skill content.
-    if (path.basename(file) === 'README.md') continue;
-    const relToSkills = path.relative(SKILLS_DIR, file);
-    if (!source.includes(relToSkills)) {
-      fail(
-        'apps/documentation/gatsby-node.js',
-        0,
-        `SKILLS_FILES omits ${relToSkills} — it will be missing from llms-full.txt`,
-      );
-    }
+  if (!/collectSkillFiles/.test(source)) {
+    warn(
+      'apps/documentation/gatsby-node.js',
+      0,
+      'skill files are no longer collected by directory walk — llms-full.txt may omit skill content',
+    );
   }
 }
 
@@ -505,6 +518,7 @@ function checkLlmsCoverage(skillFiles) {
 
 const quiet = process.argv.includes('--quiet');
 const skillFiles = walk(SKILLS_DIR, f => f.endsWith('.md'));
+assertBuiltPackages();
 const registry = buildExportRegistry();
 
 if (!quiet) {
@@ -517,9 +531,7 @@ if (!quiet) {
 const fences = skillFiles.flatMap(extractFences);
 typecheckFences(fences, registry);
 checkProse(skillFiles, registry);
-checkLlmsCoverage(skillFiles);
-
-fs.rmSync(SCRATCH, { recursive: true, force: true });
+checkLlmsCoverage();
 
 const report = (items, label) => {
   if (!items.length) return;

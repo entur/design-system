@@ -123,7 +123,8 @@ jobs:
         with:
           cache-key: yarn-${{ hashFiles('**/yarn.lock') }}
 
-      # @entur/icons and @entur/tokens have no src entry point, so the check reads their dist.
+      # @entur/icons has no src entry point and the token CSS variables are generated,
+      # so the check reads both packages' dist.
       - name: Download package artifacts
         uses: actions/download-artifact@v8
         with:
