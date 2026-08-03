@@ -43,6 +43,30 @@ test('renders a single accordion item', () => {
   );
 });
 
+test('makes collapsed content inert', () => {
+  const { getByRole, queryByText } = render(
+    <Accordion>
+      <AccordionItem title="Trains">
+        <button type="button">Buy ticket</button>
+      </AccordionItem>
+    </Accordion>,
+  );
+
+  const content = queryByText('Buy ticket')!.closest('.eds-base-expand');
+  expect(content).toHaveAttribute('inert');
+
+  fireEvent.click(getByRole('button', { name: 'Trains' }));
+  act(() => {
+    jest.runAllTimers();
+  });
+
+  expect(content).not.toHaveAttribute('inert');
+
+  fireEvent.click(getByRole('button', { name: 'Trains' }));
+
+  expect(content).toHaveAttribute('inert');
+});
+
 test('renders a group of accordion items that can be opened and closed', () => {
   const { getByRole, queryByText } = render(
     <Accordion>

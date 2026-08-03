@@ -69,12 +69,15 @@ export const BaseExpand = React.forwardRef<HTMLDivElement, BaseExpandProps>(
 
     if (!mounted) return null;
 
+    // `inert` is a string on purpose: React 18 drops `inert={true}` and React 19
+    // drops `inert=""`, so only a string value renders the attribute on both.
+    // React 19 logs a dev-only warning about it — do not "fix" it to a boolean.
     return (
       <div
         ref={mergeRefs(collapseRef, ref)}
         className={`eds-base-expand${expanded ? ' eds-base-expand--open' : ''}`}
         onTransitionEnd={handleTransitionEnd}
-        {...(!expanded ? { 'aria-hidden': true, inert: '' } : {})}
+        {...(!expanded ? { 'aria-hidden': true, inert: 'true' } : {})}
       >
         <div className="eds-base-expand__inner">
           <div {...rest}>{children}</div>
