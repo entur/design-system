@@ -730,7 +730,7 @@ These rules apply across all page patterns:
 4. **`SideNavigationItem` needs an `href`** — it renders an `<a>`, and an anchor without `href` is not focusable or announced as a link. Pass `href`, or `as="button" onClick`
 5. **`BaseCard` is `display: flex; align-items: flex-start`** — stacked card content needs a `<Flex direction="column" gap="s">` wrapper, otherwise every child lands on one row
 6. **Contrast for hero sections** — wraps content in dark branded background; tokens adapt automatically
-7. **GridContainer + GridItem for responsive layouts** — use `small`, `medium`, `large` breakpoints
+7. **GridContainer + GridItem for responsive layouts** — use `small`, `medium`, `large` breakpoints. For a CSS-grid template (`templateColumns`, `templateAreas`), flexbox props, or a portal app shell, use `Grid`, `Flex` and `Template.Portal` from `@entur/layout/beta` instead — beta, so its API can change between minors. Import its CSS from `@entur/layout/beta/styles`
 8. **Spacing via tokens** — use `var(--space-*)` values, not hardcoded rem/px. Wrap components in layout elements for margin/padding rather than applying directly to `@entur/*` components
 9. **One PrimaryButton per view** — use `SecondaryButton` for secondary actions, `SecondaryButton size="small"` where you want a lighter weight. Two competing primaries dilute the call-to-action
 10. **Cap prose line length at 65ch** — add `max-width: 65ch` to prose containers to keep text readable

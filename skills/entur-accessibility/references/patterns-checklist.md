@@ -90,7 +90,7 @@ Component-specific checklists and code examples. The component handles interacti
 // Good — async results announced when they arrive
 <div aria-live="polite" aria-atomic="false">
   {results.map(r => (
-    <ResultItem key={r.id} {...r} />
+    <Paragraph key={r.id}>{r.label}</Paragraph>
   ))}
 </div>
 ```

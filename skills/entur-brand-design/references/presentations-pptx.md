@@ -72,7 +72,7 @@ Catalog layout numbers are globally sequential (01–51). python-pptx uses 0-ind
 
 ## Step 1 — Read the catalog
 
-Before building, read `catalog.json` from the skill base directory. It lists all 51 layouts with their master index, placeholder indices, and use cases. Do NOT generate slide thumbnails unless necessary.
+Before building, read `catalog.json` — next to this file in an installed skill, otherwise https://raw.githubusercontent.com/entur/design-system/main/skills/entur-brand-design/references/catalog.json. It is JSON, so it is not part of `llms-full.txt`; fetch it directly. It lists all 51 layouts with their master index, placeholder indices, and use cases. Do NOT generate slide thumbnails unless necessary.
 
 ---
 

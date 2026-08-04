@@ -58,6 +58,8 @@ Every published package. Reach for one of these before writing custom UI.
 | `@entur/typography` | Headings, paragraphs, labels, links, lists, code                        |
 | `@entur/utils`      | Shared utilities and types                                              |
 
+Two packages also ship a `beta` subpath — `@entur/layout/beta` (`Grid`, `Flex`, `Template.Portal` app shell) and `@entur/typography/beta` (`Heading`, `Text`). Beta APIs can change between minors, so reach for them when you need what the stable package lacks — a CSS-grid layout primitive or a portal shell — and stay on the stable exports otherwise.
+
 Every export of every package: `references/packages-overview.md`
 
 ---
