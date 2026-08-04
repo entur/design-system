@@ -107,7 +107,8 @@ export const RangeCalendar = <DateType extends DateValue>({
 };
 
 const _RangeCalendar = <DateType extends DateValue>({
-  value,
+  // normalize undefined to null so the calendar stays controlled and empty
+  value = null,
   onChange,
   minDate,
   maxDate,

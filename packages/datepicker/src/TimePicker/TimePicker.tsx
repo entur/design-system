@@ -112,7 +112,8 @@ export type TimePickerProps<TimeType extends TimeValue> =
   BaseTimePickerProps<TimeType> & ExtendedTimePickerProps<TimeType>;
 
 export const TimePicker = <TimeType extends TimeValue>({
-  selectedTime,
+  // normalize undefined to null so the picker stays controlled and empty
+  selectedTime = null,
   onChange,
   disabled,
   readOnly,

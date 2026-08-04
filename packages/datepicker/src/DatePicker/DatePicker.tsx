@@ -93,7 +93,8 @@ export type DatePickerProps<DateType extends DateValue> = Omit<
   ExtendedDateFieldProps<DateType>;
 
 export const DatePicker = <DateType extends DateValue>({
-  selectedDate,
+  // normalize undefined to null so the picker stays controlled and empty
+  selectedDate = null,
   locale,
   disabled,
   readOnly,

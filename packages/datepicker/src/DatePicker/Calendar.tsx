@@ -112,7 +112,8 @@ export const Calendar = <DateType extends DateValue>({
 };
 
 const _Calendar = <DateType extends DateValue>({
-  selectedDate,
+  // normalize undefined to null so the calendar stays controlled and empty
+  selectedDate = null,
   onChange,
   minDate,
   maxDate,
