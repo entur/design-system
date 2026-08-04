@@ -48,19 +48,6 @@ const rel = f => path.relative(REPO, f);
 
 /* -------------------------------------------------- @entur/* export registry */
 
-/** Resolves `@entur/x` to the file TypeScript should read for its types. */
-function packageEntry(pkg) {
-  for (const candidate of [
-    `packages/${pkg}/src/index.tsx`,
-    `packages/${pkg}/src/index.ts`,
-    `packages/${pkg}/dist/index.d.ts`,
-  ]) {
-    const full = path.join(REPO, candidate);
-    if (fs.existsSync(full)) return full;
-  }
-  return null;
-}
-
 const publishedPackages = fs
   .readdirSync(PACKAGES_DIR, { withFileTypes: true })
   .filter(
@@ -70,6 +57,65 @@ const publishedPackages = fs
   )
   .map(e => e.name)
   .sort();
+
+const packageJson = pkg =>
+  JSON.parse(
+    fs.readFileSync(path.join(PACKAGES_DIR, pkg, 'package.json'), 'utf8'),
+  );
+
+/** Resolves one entry point of `@entur/x` to the file TypeScript should read. */
+function moduleEntry(pkg, sub, exportsField) {
+  const seg = sub ? `${sub}/` : '';
+  const declared = exportsField?.[sub ? `./${sub}` : '.']?.types;
+  for (const candidate of [
+    `packages/${pkg}/src/${seg}index.tsx`,
+    `packages/${pkg}/src/${seg}index.ts`,
+    declared
+      ? path.posix.join(`packages/${pkg}`, declared)
+      : `packages/${pkg}/dist/${seg}index.d.ts`,
+  ]) {
+    const full = path.join(REPO, candidate);
+    if (fs.existsSync(full)) return full;
+  }
+  return null;
+}
+
+const packageEntry = pkg => moduleEntry(pkg, '', packageJson(pkg).exports);
+
+/**
+ * Every JS entry point the packages expose: the root plus subpath exports that ship
+ * types, e.g. `@entur/layout/beta`. Without the subpaths, `Grid` and `Template` are
+ * unknown names and every example using them is silently stubbed as `any`.
+ *
+ * Roots come first so that when two entry points export the same name (`GridItem`
+ * exists in both `@entur/grid` and `@entur/layout/beta`) the root owns it. Fences
+ * that keep their own imports are unaffected either way.
+ */
+function collectModules() {
+  const roots = [];
+  const subpaths = [];
+
+  for (const pkg of publishedPackages) {
+    const exportsField = packageJson(pkg).exports;
+    const rootEntry = moduleEntry(pkg, '', exportsField);
+    if (rootEntry)
+      roots.push({ specifier: `@entur/${pkg}`, pkg, entry: rootEntry });
+
+    if (!exportsField || typeof exportsField !== 'object') continue;
+    for (const [key, target] of Object.entries(exportsField)) {
+      // Only subpaths that resolve to a typed module; `./styles` and friends are CSS.
+      if (!key.startsWith('./') || key === './package.json') continue;
+      if (!target || typeof target !== 'object' || !target.types) continue;
+      const sub = key.slice(2);
+      const entry = moduleEntry(pkg, sub, exportsField);
+      if (entry)
+        subpaths.push({ specifier: `@entur/${pkg}/${sub}`, pkg, entry });
+    }
+  }
+  return [...roots, ...subpaths];
+}
+
+const modules = collectModules();
 
 /**
  * The checks read types and tokens from source where it exists and from dist/ otherwise.
@@ -109,22 +155,20 @@ const compilerOptions = {
   noUnusedParameters: false,
   baseUrl: REPO,
   paths: Object.fromEntries(
-    publishedPackages
-      .map(p => [`@entur/${p}`, [path.relative(REPO, packageEntry(p) ?? '')]])
-      .filter(([, v]) => v[0]),
+    modules.map(m => [m.specifier, [path.relative(REPO, m.entry)]]),
   ),
 };
 
-/** exportName -> { pkg, deprecated } for every export of every @entur/* package. */
+/** exportName -> { specifier, deprecated } for every export of every @entur/* module. */
 function buildExportRegistry() {
-  const roots = publishedPackages.map(packageEntry).filter(Boolean);
-  const program = ts.createProgram(roots, compilerOptions);
+  const program = ts.createProgram(
+    modules.map(m => m.entry),
+    compilerOptions,
+  );
   const checker = program.getTypeChecker();
   const registry = new Map();
 
-  for (const pkg of publishedPackages) {
-    const entry = packageEntry(pkg);
-    if (!entry) continue;
+  for (const { specifier, entry } of modules) {
     const source = program.getSourceFile(entry);
     if (!source) continue;
     const moduleSymbol = checker.getSymbolAtLocation(source);
@@ -134,9 +178,9 @@ function buildExportRegistry() {
       const deprecated = exp
         .getJsDocTags(checker)
         .some(tag => tag.name === 'deprecated');
-      // First package to export a name owns it; alphabetical order keeps this stable.
+      // First module to export a name owns it; collectModules' order keeps this stable.
       if (!registry.has(exp.getName())) {
-        registry.set(exp.getName(), { pkg, deprecated });
+        registry.set(exp.getName(), { specifier, deprecated });
       }
     }
   }
@@ -291,6 +335,32 @@ function writeFenceModule(fence, index, extraHeader = '') {
   return target;
 }
 
+/**
+ * Capitalized JSX tags in a generated fence module, by root identifier — `Template` for
+ * `<Template.Portal.Main>`. Used to tell an unknown *component* apart from the mock data
+ * and handlers a doc example legitimately leaves undefined.
+ */
+function jsxTagNames(file) {
+  const source = ts.createSourceFile(
+    file,
+    fs.readFileSync(file, 'utf8'),
+    ts.ScriptTarget.ESNext,
+    true,
+    ts.ScriptKind.TSX,
+  );
+  const names = new Set();
+  const visit = node => {
+    if (ts.isJsxOpeningElement(node) || ts.isJsxSelfClosingElement(node)) {
+      let tag = node.tagName;
+      while (ts.isPropertyAccessExpression(tag)) tag = tag.expression;
+      if (ts.isIdentifier(tag) && /^[A-Z]/.test(tag.text)) names.add(tag.text);
+    }
+    ts.forEachChild(node, visit);
+  };
+  visit(source);
+  return names;
+}
+
 function typecheckFences(fences, registry) {
   if (!fences.length) return;
 
@@ -316,11 +386,12 @@ function typecheckFences(fences, registry) {
   // Resolve unknown identifiers iteratively: real @entur/* exports become imports,
   // everything else becomes `declare const x: any` so genuine type errors surface.
   let remaining = [];
+  let fenceFiles = [];
   for (let pass = 0; pass < 4; pass++) {
-    const files = fences.map((f, idx) =>
+    fenceFiles = fences.map((f, idx) =>
       writeFenceModule(f, idx, buildHeader(idx)),
     );
-    const program = ts.createProgram(files, compilerOptions);
+    const program = ts.createProgram(fenceFiles, compilerOptions);
     const diagnostics = [
       ...program.getSemanticDiagnostics(),
       ...program.getSyntacticDiagnostics(),
@@ -344,7 +415,7 @@ function typecheckFences(fences, registry) {
       if (missing) {
         const hit = registry.get(missing);
         if (hit && !imported[idx].has(missing)) {
-          imported[idx].set(missing, `@entur/${hit.pkg}`);
+          imported[idx].set(missing, hit.specifier);
           progressed = true;
         } else if (!hit && !declared[idx].has(missing)) {
           declared[idx].add(missing);
@@ -378,6 +449,22 @@ function typecheckFences(fences, registry) {
       'fence is abbreviated (unclosed JSX or a repeated identifier) — only partially checked',
     );
   }
+
+  // A stubbed identifier used as a JSX tag is a component the packages do not export —
+  // the `<ExpandableAlertBox>` class of error. Stubbing it as `any` would hide it.
+  const allow = new Set(ALLOWLIST.identifiers);
+  fences.forEach((fence, idx) => {
+    if (truncated.has(idx) || !declared[idx].size) return;
+    const tags = jsxTagNames(fenceFiles[idx]);
+    for (const name of declared[idx]) {
+      if (!tags.has(name) || allow.has(name) || /Icon$/.test(name)) continue;
+      fail(
+        fence.file,
+        fence.startLine,
+        `<${name}> is not exported by any @entur/* package`,
+      );
+    }
+  });
 
   for (const d of remaining) {
     if (truncated.has(d.idx)) continue;
