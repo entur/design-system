@@ -29,7 +29,7 @@ function TravelSearchPage() {
   return (
     <>
       <SkipToContent>Til hovedinnhold</SkipToContent>
-      <nav>{/* top navigation */}</nav>
+      <nav aria-label="Hovedmeny">{/* top navigation */}</nav>
 
       <main id="main-content">
         {/* Hero with search form */}
@@ -162,7 +162,7 @@ function SettingsPage() {
   return (
     <>
       <SkipToContent>Til hovedinnhold</SkipToContent>
-      <nav>{/* navigation */}</nav>
+      <nav aria-label="Hovedmeny">{/* navigation */}</nav>
 
       <main id="main-content">
         <div
@@ -315,7 +315,7 @@ function DashboardPage() {
   return (
     <>
       <SkipToContent>Til hovedinnhold</SkipToContent>
-      <nav>{/* side navigation */}</nav>
+      <nav aria-label="Sidemeny">{/* side navigation */}</nav>
 
       <main
         id="main-content"
@@ -399,20 +399,29 @@ function DashboardPage() {
         {isLoading ? (
           <SkeletonRectangle width="100%" height={400} />
         ) : (
-          <Table {...getSortableTableProps()}>
+          <Table aria-label="Bestillinger" {...getSortableTableProps()}>
             <TableHead>
               <TableRow>
-                <HeaderCell {...getSortableHeaderProps({ name: 'id' })}>
+                <HeaderCell
+                  scope="col"
+                  {...getSortableHeaderProps({ name: 'id' })}
+                >
                   Bestillingsnr.
                 </HeaderCell>
-                <HeaderCell {...getSortableHeaderProps({ name: 'customer' })}>
+                <HeaderCell
+                  scope="col"
+                  {...getSortableHeaderProps({ name: 'customer' })}
+                >
                   Kunde
                 </HeaderCell>
-                <HeaderCell {...getSortableHeaderProps({ name: 'date' })}>
+                <HeaderCell
+                  scope="col"
+                  {...getSortableHeaderProps({ name: 'date' })}
+                >
                   Dato
                 </HeaderCell>
-                <HeaderCell>Status</HeaderCell>
-                <HeaderCell>Beløp</HeaderCell>
+                <HeaderCell scope="col">Status</HeaderCell>
+                <HeaderCell scope="col">Beløp</HeaderCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -468,7 +477,7 @@ function LandingPage() {
   return (
     <>
       <SkipToContent>Til hovedinnhold</SkipToContent>
-      <nav>{/* top navigation */}</nav>
+      <nav aria-label="Hovedmeny">{/* top navigation */}</nav>
 
       <main id="main-content">
         {/* Hero */}
@@ -606,7 +615,7 @@ function TripDetailPage({ trip }) {
   return (
     <>
       <SkipToContent>Til hovedinnhold</SkipToContent>
-      <nav>{/* navigation */}</nav>
+      <nav aria-label="Hovedmeny">{/* navigation */}</nav>
 
       <main
         id="main-content"
@@ -716,11 +725,15 @@ function TripDetailPage({ trip }) {
 These rules apply across all page patterns:
 
 1. **SkipToContent first** — always include from `@entur/a11y` with matching `id="main-content"` on `<main>`
-2. **Contrast for hero sections** — wraps content in dark branded background; tokens adapt automatically
-3. **GridContainer + GridItem for responsive layouts** — use `small`, `medium`, `large` breakpoints
-4. **Spacing via tokens** — use `var(--space-*)` values, not hardcoded rem/px. Wrap components in layout elements for margin/padding rather than applying directly to `@entur/*` components
-5. **One PrimaryButton per view** — use `SecondaryButton` for secondary actions, `SecondaryButton size="small"` where you want a lighter weight. Two competing primaries dilute the call-to-action
-6. **Cap prose line length at 65ch** — add `max-width: 65ch` to prose containers to keep text readable
-7. **BannerAlertBox for page-level messages** — success, error, warning at the top of relevant section
-8. **Loader and Skeleton for loading states** — use `Loader` for full-page, `SkeletonRectangle` for inline placeholders
-9. **Empty states should teach** — don't just say "nothing here"; explain what to do next or show a helpful illustration
+2. **Name every landmark and table** — `aria-label` on each `<nav>` and `<aside>`, `aria-label` or `aria-labelledby` on every `<Table>`, `scope="col"` on every `HeaderCell`. See `entur-accessibility/references/patterns-checklist.md`
+3. **Headings describe sections, never values** — a metric card's number is `<Heading2 as="p">`, not `<Heading2>`; a sidebar brand name is `<Heading3 as="p">`. Both keep the type scale and leave the heading outline intact (`h1` → `h2` → `h3`, no skips, nothing above the page `h1`)
+4. **`SideNavigationItem` needs an `href`** — it renders an `<a>`, and an anchor without `href` is not focusable or announced as a link. Pass `href`, or `as="button" onClick`
+5. **`BaseCard` is `display: flex; align-items: flex-start`** — stacked card content needs a `<Flex direction="column" gap="s">` wrapper, otherwise every child lands on one row
+6. **Contrast for hero sections** — wraps content in dark branded background; tokens adapt automatically
+7. **GridContainer + GridItem for responsive layouts** — use `small`, `medium`, `large` breakpoints
+8. **Spacing via tokens** — use `var(--space-*)` values, not hardcoded rem/px. Wrap components in layout elements for margin/padding rather than applying directly to `@entur/*` components
+9. **One PrimaryButton per view** — use `SecondaryButton` for secondary actions, `SecondaryButton size="small"` where you want a lighter weight. Two competing primaries dilute the call-to-action
+10. **Cap prose line length at 65ch** — add `max-width: 65ch` to prose containers to keep text readable
+11. **BannerAlertBox for page-level messages** — success, error, warning at the top of relevant section
+12. **Loader and Skeleton for loading states** — use `Loader` for full-page, `SkeletonRectangle` for inline placeholders
+13. **Empty states should teach** — don't just say "nothing here"; explain what to do next or show a helpful illustration
