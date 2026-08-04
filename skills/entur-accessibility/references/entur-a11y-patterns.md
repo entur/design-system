@@ -108,8 +108,8 @@ For grouping related fields:
 import { Fieldset } from '@entur/form';
 
 <Fieldset label="Reisedato">
-  <DatePicker label="Fra" />
-  <DatePicker label="Til" />
+  <DatePicker label="Fra" selectedDate={from} onChange={setFrom} />
+  <DatePicker label="Til" selectedDate={to} onChange={setTo} />
 </Fieldset>;
 ```
 

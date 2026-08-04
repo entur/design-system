@@ -66,6 +66,8 @@ List every `@entur/*` package in the project and upgrade them all in one command
 
 ### 4. Fix breaking changes
 
+> **Resolving reference files:** if you are reading this over HTTP rather than from an installed skill folder, resolve each `references/<file>.md` below against `https://raw.githubusercontent.com/entur/design-system/main/skills/migrate-react-18/`
+
 Load **[references/breaking-changes.md](references/breaking-changes.md)** and work through each section that applies to this project. Only process sections for packages the project actually uses.
 
 The reference covers:
