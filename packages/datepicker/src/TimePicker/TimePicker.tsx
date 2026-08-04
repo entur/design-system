@@ -35,6 +35,7 @@ type ExtendedTimePickerProps<TimeType extends TimeValue> = Omit<
   AriaTimeFieldProps<TimeType>,
   | keyof BaseTimePickerProps<TimeValue>
   | 'value'
+  | 'defaultValue'
   | 'hideTimeZone'
   | 'placeholder'
   | 'minValue'
