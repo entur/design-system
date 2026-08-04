@@ -233,10 +233,10 @@ const IGNORED_CODES = new Set([
   18046, // 'x' is of type 'unknown' (from stubbed mock data)
 ]);
 /**
- * Docs shorten JSX (`<Modal open title="...">` with no closing tag) and repeat an
- * identifier across a before/after pair. Such a fence cannot be parsed whole, so
- * every diagnostic in it is unreliable — report it as partially checked instead of
- * failing the build on an artefact of the abbreviation.
+ * Docs sometimes shorten JSX (`<Modal open title="...">` with no closing tag) or repeat
+ * an identifier across a before/after pair. Such a fence cannot be parsed whole, so its
+ * diagnostics are unreliable and the fence goes unchecked — which is where a missing
+ * required prop survives. Detected here so it can be reported rather than passed over.
  */
 const isStructuralCode = code =>
   code < 2000 || code === 17008 || code === 2300 || code === 2451;
@@ -441,12 +441,15 @@ function typecheckFences(fences, registry) {
     remaining.filter(d => isStructuralCode(d.code)).map(d => d.idx),
   );
 
+  // An abbreviated fence cannot be checked at all, and a missing required prop hides
+  // there as readily as anywhere else — so it fails. Close the JSX, or mark the fence
+  // `<!-- verify-skills: skip -->` to exclude it deliberately.
   for (const idx of truncated) {
     const fence = fences[idx];
-    warn(
+    fail(
       fence.file,
       fence.startLine,
-      'fence is abbreviated (unclosed JSX or a repeated identifier) — only partially checked',
+      'fence cannot be parsed whole (unclosed JSX or a repeated identifier) so it is unchecked — close the JSX or mark it skipped',
     );
   }
 
