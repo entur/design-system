@@ -31,7 +31,7 @@ yarn lint:fix                 # Auto-fix lint issues
 ## Architecture
 
 ```
-packages/       # 23 published @entur/* npm packages
+packages/       # 22 published @entur/* npm packages
   button/       # Example: @entur/button
   tokens/       # Design tokens (JS + SCSS generation)
   utils/        # Shared utilities and types
