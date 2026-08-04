@@ -22,7 +22,7 @@ const SKILLS_DIR = path.join(REPO, 'skills');
 const PACKAGES_DIR = path.join(REPO, 'packages');
 const ALLOWLIST = JSON.parse(
   fs.readFileSync(
-    path.join(REPO, 'scripts/verify-skills/allowlist.json'),
+    path.join(REPO, 'tools/verify-skills/allowlist.json'),
     'utf8',
   ),
 );
