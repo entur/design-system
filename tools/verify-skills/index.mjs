@@ -413,7 +413,12 @@ function typecheckFences(fences, registry) {
           : null;
 
       if (missing) {
-        const hit = registry.get(missing);
+        // Only components and hooks are resolved from the packages. Doc examples name
+        // their mock data `data`, `rows`, `results` — and `@entur/tokens` really does
+        // export a `data` object, so importing by name would typecheck the example
+        // against an unrelated value. Everything else is stubbed.
+        const isApiName = /^[A-Z]/.test(missing) || /^use[A-Z]/.test(missing);
+        const hit = isApiName ? registry.get(missing) : undefined;
         if (hit && !imported[idx].has(missing)) {
           imported[idx].set(missing, hit.specifier);
           progressed = true;
