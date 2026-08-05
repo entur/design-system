@@ -138,13 +138,16 @@ export const sortSubCategoriesForCategory = (
   return aSortOrder - bSortOrder;
 };
 
-export const sorters: { [key: string]: any } = {
-  'kom-i-gang': komIGangMenuSortOrder,
-  identitet: visuellIdentitetMenuSortOrder,
-  komponenter: componentsMenuSortOrder,
-  tokens: tokensMenuSortOrder,
-  monster: monsterMenuSortOrder,
-  ressurser: ressurserMenuSortOrder,
-};
+// Keys are normalized so both route slugs ('kom-i-gang') and titles ('Kom i gang') resolve
+export const sorters: { [key: string]: any } = Object.fromEntries(
+  Object.entries({
+    'kom-i-gang': komIGangMenuSortOrder,
+    identitet: visuellIdentitetMenuSortOrder,
+    komponenter: componentsMenuSortOrder,
+    tokens: tokensMenuSortOrder,
+    monster: monsterMenuSortOrder,
+    ressurser: ressurserMenuSortOrder,
+  }).map(([category, sortOrder]) => [normalizeString(category), sortOrder]),
+);
 
 export { getSanitizedPath };
