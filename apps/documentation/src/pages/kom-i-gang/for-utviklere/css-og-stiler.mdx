@@ -1,0 +1,130 @@
+---
+title: CSS og stiler
+description: Komponentene våre kommer med separate CSS-filer som må importeres for at alt skal fungere. Her lærer du hvordan du importerer dem, hvilken rekkefølge de må ha og hva du gjør når stilene ikke fungere.
+route: /kom-i-gang/for-utviklere/css-og-stiler
+parent: Kom i gang
+menu: For utviklere
+order: 2
+---
+
+import { SEO } from '@components/seo/SEO';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+
+For at komponentene skal se riktige ut, må du inkludere CSS-filene fra pakkene du bruker. Dette bør gjøres på et globalt nivå i applikasjonen din, f.eks. i `App.tsx`, `index.js`, eller en global `.css` eller `.scss`-fil.
+
+## Hvordan importere
+
+Hver pakke eksponerer stilene sine på under `/styles`. Importer dem gjerne direkte i JavaScript eller TypeScript (anbefalt for moderne prosjekter):
+
+```js
+import '@entur/button/styles';
+```
+
+Eller i en CSS-fil:
+
+```css
+@import '@entur/button/styles';
+```
+
+I en SCSS-fil bruker du `@use`:
+
+```scss
+@use '@entur/tokens/styles/base' as *;
+@use '@entur/button/styles';
+```
+
+<SmallAlertBox variant="information">
+  `/styles` er en subpath i pakkens <CodeText>exports</CodeText>, og kobles riktig gjennom bundleren din, f.eks Webpack (via sass-loader) og Vite. Importerer du gjennom <CodeText>sass</CodeText> direkte, må du oppgi full sti – <CodeText>@entur/tokens/dist/base.scss</CodeText> – eller bruke <CodeText>pkg:</CodeText>-prefiks.
+</SmallAlertBox>
+
+De gamle stiene  – som `@entur/button/dist/styles.css` – virker fortsatt, men `/styles` er den anbefalte formen.
+
+## Riktig rekkefølge
+
+For å unngå uventede stilkonflikter er det viktig å importere stilene i riktig rekkefølge. Tokens først, deretter komponentstilene:
+
+```css
+/* 1. Basetokens – alltid først (farger og fargemodus) */
+@import '@entur/tokens/styles/base';
+
+/* 2. Øvrige tokens (spacing, border-radius, fontstørrelser, breakpoints) */
+@import '@entur/tokens/styles';
+
+/* 3. Komponentstiler – i denne rekkefølgen */
+@import '@entur/a11y/styles';
+@import '@entur/grid/styles';
+@import '@entur/icons/styles';
+@import '@entur/tab/styles';
+@import '@entur/typography/styles';
+@import '@entur/typography/beta/styles';
+@import '@entur/layout/styles';
+@import '@entur/layout/beta/styles';
+@import '@entur/loader/styles';
+@import '@entur/expand/styles';
+@import '@entur/button/styles';
+@import '@entur/alert/styles';
+@import '@entur/menu/styles';
+@import '@entur/fileupload/styles';
+@import '@entur/modal/styles';
+@import '@entur/tooltip/styles';
+@import '@entur/form/styles';
+@import '@entur/chip/styles';
+@import '@entur/datepicker/styles';
+@import '@entur/travel/styles';
+@import '@entur/table/styles';
+@import '@entur/dropdown/styles';
+```
+
+Importerer du fra JavaScript eller SCSS, er det samme rekkefølge – bytt `@import` med `import` eller `@use`.
+
+Du trenger bare stilene for pakkene du faktisk bruker – men behold rekkefølgen mellom dem. Rekkefølgen er ikke tilfeldig: noen komponentstiler bygger på stiler fra pakker lenger opp i listen. `@entur/form` avhenger for eksempel av `@entur/icons` og `@entur/typography`.
+
+De øvrige token-filene (`semantic`, `data`, `transport`) importeres ved behov i filene som bruker dem – ikke globalt.
+
+## Betapakker har egne stilfiler
+
+`@entur/typography/beta` og `@entur/layout/beta` har stiler som ligger utenfor hovedstilene til pakken. Bruker du betakomponentene, må du importere `/beta/styles` i tillegg til `/styles`, slik listen over viser.
+
+## Mørk modus
+
+Komponentene følger fargemodusen til nærmeste forelder med `data-color-mode="dark"` eller `data-color-mode="light"`. Token-variablene bytter verdi automatisk, så du trenger ikke gjøre noe per komponent:
+
+```html
+<div data-color-mode="dark">
+  <!-- tokens har mørke verdier her -->
+</div>
+```
+
+Sett attributtet på `document.documentElement` hvis hele appen skal bytte. Se [dark mode](/tokens/fargetokens/dark-mode) for hele oppsettet.
+
+## Overstyring av komponentstiler
+
+Overstyring kan bryte visuell konsistens og gir vedlikeholdsgjeld når designsystemet endrer seg. Sjekk først om det finnes en variant som løser behovet – spør gjerne på [#talk-designsystem](https://entur.slack.com/archives/C899QSPB7).
+
+Er det likevel best å overskrive er dette noen råd:
+
+1. Legg en egen `className` på komponenten og bruk den som selektor. Ikke sikt på interne `.eds-*`-klasser.
+2. Sett token-variabler framfor rene verdier – komponenttokens (`--components-{pakke}-…`) først, deretter base- og semantiske tokens.
+3. Ikke bruk `!important`. Trenger du høyere spesifisitet, bygg den opp gjennom din egen selektor.
+4. Skriv en kort kommentar om hvorfor avviket finnes, så det kan spores.
+
+```css
+/* bevisst avvik – bestillingsforsiden krever korall bakgrunn */
+.booking-hero-cta {
+  --components-button-primary-standard-default: var(--shape-highlight);
+}
+```
+
+## Feilsøking
+
+**Stilene ser feil ut etter en oppgradering.** Sjekk om du har duplikate `@entur/*`-pakker i avhengighetstreet – to versjoner av samme pakke gir inkompatibel CSS og JS. `yarn dedupe --pattern "@entur"` eller `npm dedupe` rydder opp.
+
+**Komponentene er helt ustylet.** CSS-importen må ligge globalt, ikke inne i en komponentfil. Mangler stilene for én pakke, kan det også slå ut på pakker lenger ned i rekkefølgen. Hvis pakken avhenger av en annen pakken må du også ha dens stiler, eksempelvis avhenger `datepicker` av `button`.
+
+**Tailwind eller annet rammeverk overstyrer stilene våre.** Mesteparten av CSS-en vår ligger utenfor cascade layers, og ulagd CSS taper alltid mot ulagd CSS som kommer senere. Legg rammeverkets globale reset i et `@layer`, eller flytt importrekkefølgen slik at Entur-stilene kommer sist.
+
+**Komponenten avviker litt fra skissen.** Ikke legg på CSS-overstyringer med en gang – sjekk først importrekkefølgen og om skissen bruker en annen variant. Er det skissen som har divergert, si fra på #talk-designsystem.
