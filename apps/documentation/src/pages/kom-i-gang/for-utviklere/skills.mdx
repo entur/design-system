@@ -1,0 +1,123 @@
+---
+title: Skills
+description: Linje tilbyr noen skills som gir KI-kodeagenter mer kunnskap om riktig bruk av komponenter, tokens, universell utforming og lignende. Denne artiklen tar deg gjennom hvordan du installerer og bruker skillsene.
+route: /kom-i-gang/for-utviklere/skills
+parent: Kom i gang
+menu: For utviklere
+order: 3
+---
+
+import { SEO } from '@components/seo/SEO';
+import { CodeBlock } from '@components/Codeblock/CodeBlock';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+
+## Hva er en skill?
+
+En skill er et instruksjonssett en KI-kodeagent laster inn når oppgaven krever det. Agenten får da info om blant annet hvilke `@entur/*`-komponenter som finnes, hvordan laste inn CSS på riktig måte, hvilke fargevariabler den skal bruke og hvilke krav universell utforming stiller.
+
+Skillene er en del av [designsystem-repoet](https://github.com/entur/design-system/tree/main/skills).
+
+## Tilgjengelige skills
+
+<Table spacing="middle">
+  <TableHead>
+    <TableRow>
+      <HeaderCell>Skill</HeaderCell>
+      <HeaderCell>Dekker</HeaderCell>
+    </TableRow>
+  </TableHead>
+  <TableBody>
+    <TableRow>
+      <DataCell><CodeText>entur-linje</CodeText></DataCell>
+      <DataCell>Inneholder informasjon om tilgjengelige skills og delegerer oppgaven til riktig sted.</DataCell>
+    </TableRow>
+    <TableRow>
+      <DataCell><CodeText>entur-web-development</CodeText></DataCell>
+      <DataCell>Installasjon og bruk av <CodeText>@entur/*</CodeText>-pakkene, CSS-rekkefølge, tokens, komponentkatalog</DataCell>
+    </TableRow>
+    <TableRow>
+      <DataCell><CodeText>entur-accessibility</CodeText></DataCell>
+      <DataCell>WCAG 2.1, universell utforming, tastaturtesting, skjermlesere, lovkrav</DataCell>
+    </TableRow>
+    <TableRow>
+      <DataCell><CodeText>entur-brand-design</CodeText></DataCell>
+      <DataCell>Farger, typografi, datavisualisering, visuell identitet, presentasjoner</DataCell>
+    </TableRow>
+    <TableRow>
+      <DataCell><CodeText>migrate-react-18</CodeText></DataCell>
+      <DataCell>Oppgradering av <CodeText>@entur/*</CodeText> til React 18-majorversjonene, steg for steg</DataCell>
+    </TableRow>
+  </TableBody>
+</Table>
+
+Du trenger bare å forholde deg til `entur-linje`. Den ser hva oppgaven handler om og laster resten selv.
+
+## Claude Code via Enturs marketplace (anbefalt)
+
+Skillene er publisert som plugin i Enturs plugin-marketplace i [entur/ai](https://github.com/entur/ai), sammen med de andre KI-verktøyene på plattformen. Kjør dette i Claude Code:
+
+```bash
+/plugin marketplace add entur/ai
+/plugin install entur-linje@entur
+```
+
+Marketplacet peker rett på `main` i design-system-repoet. Du kan kjøre følgende kommando for å hente siste versjon av skillen:
+
+```bash
+claude plugin marketplace update entur
+```
+
+Agenten skal i prinsippet bruke skills automatisk når de er relevante, men du kan også tvinge den til å bruke den med `/entur-linje`-kommandoen inne i Claude.
+
+## Gjennom AGENTS.md
+
+De fleste KI-kodeagenter leser en instruksjonsfil i prosjektet ditt – `CLAUDE.md`, `AGENTS.md`, `.cursor/rules/*.mdc` eller `.windsurfrules`, avhengig av verktøy. Legg dette inn der:
+
+<CodeBlock language="markdown" hideLineNumbers copyable>
+  {`## Designsystem\n
+Når du jobber med Entur-komponenter, profil eller universell utforming, les og følg:
+https://raw.githubusercontent.com/entur/design-system/main/skills/entur-linje/SKILL.md`}
+</CodeBlock>
+
+## Maskinlesbar dokumentasjon
+
+Dokumentasjonssiden publiserer to filer for agenter:
+
+<Table spacing="middle">
+  <TableHead>
+    <TableRow>
+      <HeaderCell>URL</HeaderCell>
+      <HeaderCell>Innhold</HeaderCell>
+    </TableRow>
+  </TableHead>
+  <TableBody>
+    <TableRow>
+      <DataCell><LinkText href="https://linje.entur.no/llms.txt">llms.txt</LinkText></DataCell>
+      <DataCell>Strukturert indeks over alle dokumentasjonssider</DataCell>
+    </TableRow>
+    <TableRow>
+      <DataCell><LinkText href="https://linje.entur.no/llms-full.txt">llms-full.txt</LinkText></DataCell>
+      <DataCell>Alt skill-innhold og hele sideindeksen i én fil</DataCell>
+    </TableRow>
+  </TableBody>
+</Table>
+
+`llms-full.txt` er den mest komplette enkeltreferansen: en agent som leser den får alle skills og alle referansefiler inline. Bruk den som alternativ eller supplement til skill-URL-en.
+
+## Fordeler
+
+Denne skillen vil hjelpe deg med å:
+
+- installere bare de `@entur/*`-pakkene som trengs, og få CSS-rekkefølgen riktig
+- bruke tokens framfor hardkodede farger og spacing, og ikke overstyre `.eds-*`-klasser
+- velge komponentvarianten som finnes, framfor å bygge en egen
+- skrive kode som oppfyller WCAG 2.1 AA, med norske feilmeldinger og riktige labels
+- migrere til nyere versjoner der det er breaking changes
+
+<SmallAlertBox variant="information">
+  Les alltid gjennom det agenten produserer. Skillene gjør den mye mer treffsikker, men de gjør den ikke ufeilbarlig – og de erstatter ikke en gjennomgang av universell utforming.
+</SmallAlertBox>
