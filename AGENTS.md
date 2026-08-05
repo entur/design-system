@@ -1,18 +1,10 @@
 # AGENTS.md
 
-This file provides guidance to AI coding agents when working with code in this repository.
+Entur Linje — a React component library and design system monorepo. Published as scoped `@entur/*` npm packages with independent versioning.
 
 ## Entur Standards
 
-Read and follow the Entur platform standards at:
-https://github.com/entur/ai/blob/main/AGENTS.md
-
-When working on a specific task, also read the relevant guides
-linked from that file (e.g. code-review.md, markdown.md).
-
-## Project Overview
-
-Entur Linje — a React component library and design system monorepo. Published as scoped `@entur/*` npm packages with independent versioning. Includes a Gatsby documentation site and a Playroom code playground.
+Read and follow: https://github.com/entur/ai/blob/main/AGENTS.md
 
 ## Tech Stack
 
@@ -25,36 +17,21 @@ Entur Linje — a React component library and design system monorepo. Published 
 ## Common Commands
 
 ```bash
-# Initial setup
 yarn setup                    # Install deps + build all packages
-
-# Development
-yarn start:package [name]     # Watch mode for a package (e.g. button)
-yarn start:code-playground    # Start Playroom for live testing
-yarn start:code-playground-for-package [name]  # Both at once
+yarn start:package [name]     # Watch mode for a package
 yarn start:documentation      # Gatsby dev server
-
-# Build
 yarn build:packages           # Build all npm packages
 yarn build:package [name]     # Build single package
-
-# Test
 yarn test                     # Run all tests (TZ=UTC)
-yarn test:package [name]      # Test single package (e.g. yarn test:package button)
-
-# Lint
+yarn test:package [name]      # Test single package
 yarn lint                     # Lint all packages
 yarn lint:fix                 # Auto-fix lint issues
-yarn lint:styles              # Stylelint on CSS/SCSS
-
-# Commits (conventional-commits via Commitizen)
-yarn gc:format                # Interactive commit formatter
 ```
 
-## Repository Structure
+## Architecture
 
 ```
-packages/       # 23 published @entur/* npm packages
+packages/       # 22 published @entur/* npm packages
   button/       # Example: @entur/button
   tokens/       # Design tokens (JS + SCSS generation)
   utils/        # Shared utilities and types
@@ -97,11 +74,13 @@ package.json
 
 - **Polymorphic components:** Many components accept an `as` prop for element composition (e.g. Button can render as `<a>`)
 - **Forward refs:** All components use `React.forwardRef`
-- **CSS:** BEM naming with `eds-` prefix (e.g. `eds-button`, `eds-button--variant-primary`, `eds-button__loading-dots`)
-- **Stylelint enforces:** max specificity `0,1,0`, BEM class pattern, no IDs
-- **Cross-package imports:** `@entur/[package]` resolved via path aliases in tsconfig and jest config
+- **CSS:** BEM naming with `eds-` prefix, SCSS modules, cascade layers via `@entur/utils/styles/layers`
 - **Dual output:** Each package builds to ESM + CJS with separate CSS bundle and `.d.ts` files
-- **Design tokens:** `@entur/tokens` provides shared design tokens consumed as SCSS variables and JS exports
+- **Design tokens:** `@entur/tokens` provides shared tokens as CSS custom properties, SCSS variables, and JS exports
+
+## Formatting
+
+Prettier: single quotes, trailing commas, semicolons, `arrowParens: avoid`, 80 char width (160 for SCSS). ESLint extends recommended + React + TypeScript rules.
 
 ## Commit Conventions
 
@@ -117,64 +96,27 @@ optional longer description
 optional breaking changes
 ```
 
-- **type**: `fix`, `feat`, `chore`, `docs`, `refactor`, etc. Drives version bumps: `fix` → patch, `feat` → minor, `BREAKING CHANGE` → major. `fix` and `feat` are ONLY for code that affects consumers (i.e. within `packages/` or `skills/` — published skills in the `skills/` directory are consumer-facing). Use `test`, `refactor`, `chore`, etc. for non-consumer-facing changes.
+- **type**: `fix`, `feat`, `chore`, `docs`, `refactor`, etc. Drives version bumps: `fix` → patch, `feat` → minor, `BREAKING CHANGE` → major. `fix` and `feat` are ONLY for code that affects consumers (i.e. within `packages/` or `skills/`). Use `test`, `refactor`, `chore`, etc. for non-consumer-facing changes.
 - **scope**: `package/component` format in lowercase. For components inside a `beta/` directory, use `package/beta/component` (e.g. `layout/beta/sidebar`). Single component: `travel/travel tag`. Beta component: `layout/beta/sidebar`. Entire package: `travel`. Entire repo: `root`. Documentation site: `website`. Skills: `skills`. Multiple: `travel/travel tag, travel/travel header`.
 - **short description**: one sentence, imperative form (e.g. "add new variant", not "added new variant").
-- **Descriptions for `feat` and `fix`**: These end up in the changelog and are read by consumers. Keep them **consumer-focused** — explain what the change means for them and how to use it. Avoid internal technical details (implementation approach, refactoring rationale, what was removed internally).
+- **Descriptions for `feat` and `fix`**: These end up in the changelog and are read by consumers. Keep them **consumer-focused** — explain what the change means for them and how to use it. Avoid internal technical details.
 
 Branch naming: start with Jira issue ID, e.g. `ETU-38373-branch-name`.
 
-## AI Attribution
+### AI Attribution
 
-Do NOT use `Co-authored-by` trailers for AI tools — that convention is reserved for human collaborators.
+Do NOT use `Co-authored-by` trailers for AI tools — reserved for human collaborators.
 
-When the majority of a commit's changes were produced by an AI tool, add a dedicated `AI-assistant` trailer with the actual tool and model used:
+When the majority of a commit's changes were produced by an AI tool, add:
 
 ```
 AI-assistant: <tool> (<model>)
 ```
 
-If the developer wrote most of the code themselves (with only minor AI assistance), no AI attribution is needed.
+No trailer needed for minor AI assistance.
 
-## Formatting Rules
+## Further Reading
 
-Prettier: single quotes, trailing commas, semicolons, `arrowParens: avoid`, 80 char width (160 for SCSS). ESLint extends recommended + React + TypeScript rules.
+Packages carry their own `AGENTS.md` where they need one:
 
-## @entur/icons
-
-SVG source files live in `packages/icons/src/svgs/<Category>/`. The build script (`bin/build.ts`) generates React components from them automatically. Component names are derived from the **filename only** (not the path), PascalCased and suffixed with `Icon` (e.g. `Alert.svg` → `AlertIcon`).
-
-### Icon categories
-
-Categories that should **not** use brand-blue by default are listed in `OUTLIER_CATEGORIES` in `build.ts`:
-
-- `Partner` — operator/partner logos
-- `Flag` — country flags
-- `Entur` — Entur brand logos
-- `NonPartnerLogo` — external app/tool logos (Figma, Mural, Apple, Google Play)
-- `Payment` — payment brand logos (Visa, Mastercard, Vipps, etc.)
-
-Individual one-off exceptions go in `SPECIAL_OUTLIERS`.
-
-### Renaming or moving icons
-
-When an icon is **renamed**, the old name must be kept alive as deprecated:
-
-1. Keep the old SVG file in its original location (copy of the new icon content is fine).
-2. Add an entry to `DEPRECATED_ICONS` in `bin/build.ts`:
-   ```ts
-   const DEPRECATED_ICONS = new Map([['OldNameIcon', 'NewNameIcon']]);
-   ```
-3. This automatically adds a `@deprecated` JSDoc comment and a `console.warn` to the generated component.
-
-When an icon is **moved to a different category folder** without a name change, no deprecation is needed — the component name stays the same.
-
-### Adding new icons
-
-1. Export the SVG from Figma and normalize it to match the package format:
-   - `<svg width="16" height="16" viewBox="..." fill="none" xmlns="http://www.w3.org/2000/svg">`
-   - Use `fill="#181C56"` directly (not CSS variables).
-   - No `preserveAspectRatio`, `overflow`, or `style` attributes on the `<svg>` element.
-   - No `<g id="Icon Fill">` wrapper.
-2. Place the file in the correct category folder under `src/svgs/`.
-3. If the icon belongs to an outlier category (brand colors), ensure the category is in `OUTLIER_CATEGORIES`.
+- [packages/icons/AGENTS.md](packages/icons/AGENTS.md) — icon build pipeline, adding/renaming icons, SVG format

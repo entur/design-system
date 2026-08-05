@@ -111,6 +111,28 @@ jobs:
 
       - run: NX_REJECT_UNKNOWN_LOCAL_CACHE=0 yarn lint
 
+  verify-skills:
+    name: Verify skills against package APIs
+    needs: build-packages
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Install and Cache Yarn Dependencies
+        uses: ./.github/actions/install-and-cache-dependencies
+        with:
+          cache-key: yarn-${{ hashFiles('**/yarn.lock') }}
+
+      # @entur/icons has no src entry point and the token CSS variables are generated,
+      # so the check reads both packages' dist.
+      - name: Download package artifacts
+        uses: actions/download-artifact@v8
+        with:
+          name: package-artifacts
+          path: 'packages'
+
+      - run: yarn verify:skills
+
   deploy-documentation-to-preview-channel:
     needs: build-documentation
     permissions:

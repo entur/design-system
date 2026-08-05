@@ -137,6 +137,73 @@ Apply `data-color-mode="dark"` or `data-color-mode="light"` to a parent element.
 </div>
 ```
 
+### Implementing a dark mode toggle
+
+Read the OS preference on mount, persist user choice in `localStorage`, and apply the attribute to `<html>` or a root container:
+
+```tsx
+function useDarkMode() {
+  const [mode, setMode] = useState<'light' | 'dark'>(() => {
+    const stored = localStorage.getItem('color-mode');
+    if (stored === 'light' || stored === 'dark') return stored;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? 'dark'
+      : 'light';
+  });
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-color-mode', mode);
+    localStorage.setItem('color-mode', mode);
+  }, [mode]);
+
+  return {
+    mode,
+    toggle: () => setMode(m => (m === 'dark' ? 'light' : 'dark')),
+  };
+}
+```
+
+```tsx
+// In your root layout
+const { mode, toggle } = useDarkMode();
+<IconButton
+  aria-label={mode === 'dark' ? 'Bytt til lys modus' : 'Bytt til mørk modus'}
+  onClick={toggle}
+>
+  {mode === 'dark' ? <SunIcon /> : <MoonIcon />}
+</IconButton>;
+```
+
+Apply `data-color-mode` to `document.documentElement` (not a nested div) so all components inherit it. Scoping it to a nested element is only correct when mixing modes deliberately (e.g. a dark sidebar in a light app).
+
+## Component overrides
+
+> **Warning:** Overriding component styles breaks visual consistency, may break dark mode, and creates a maintenance burden when the design system evolves. Before proceeding, inform the user of these risks and suggest they consult the design system team in `#talk-designsystem` — there may be an existing component variant, a planned addition, or a better approach.
+
+When a visual deviation is required:
+
+1. **Add a `className` to the component** — this is your selector anchor. Never target `.eds-*` internal class names directly.
+2. **Token priority for color values**:
+   - **Component tokens first** — `--components-{package}-{variant}-{context}-{property}` (scoped to the component's own context)
+   - **Base tokens second** — `--basecolors-*` from `@entur/tokens/dist/base.css`
+   - **Semantic tokens third** — `--fill-*`, `--text-*`, `--stroke-*` from `@entur/tokens/dist/semantic.css`
+3. **Never use `!important`** — if specificity is a problem, increase it via the `className` selector chain.
+4. **Add a short comment** marking the intentional deviation so it can be tracked.
+
+```tsx
+// Component gets a className as the override anchor
+<PrimaryButton className="booking-hero-cta">Kjøp billett</PrimaryButton>
+```
+
+```css
+/* intentional deviation — booking hero requires coral background */
+.booking-hero-cta {
+  --components-button-primary-standard-default: var(--shape-highlight);
+}
+```
+
+Rules 3 (no hardcoded hex), 6 (SkipToContent), 7 (form labels), and 8 (named imports) from the skill still apply regardless of deviation.
+
 ## Accessibility note
 
 `@entur/a11y` provides `SkipToContent` and `VisuallyHidden`. Always add `SkipToContent` at the top of pages and ensure `id="main-content"` exists on the main element. See `entur-accessibility` skill.
@@ -165,6 +232,10 @@ npm dedupe
 ```
 
 Then rebuild and verify styles load in the correct order.
+
+### Tailwind or third-party CSS overrides Entur styles
+
+Most `@entur/*` CSS is unlayered, and unlayered CSS outranks every cascade layer. So a framework's unlayered rules (Tailwind's preflight, normalize.css) can flatten Entur component styling, while the same rules placed in a layer cannot. See `references/css-layers.md` for which Entur CSS is layered, how to declare layer order, and how to integrate Tailwind v4.
 
 ### Missing styles / unstyled components
 

@@ -1,7 +1,7 @@
 # Building Entur Presentations with python-pptx
 
 Full identity docs: https://linje.entur.no/identitet  
-Template files: available internally (contact #talk-designsystem on Slack)
+Template download: https://linje.entur.no/identitet/maler/presentasjon
 
 Use this guide when programmatically generating `.pptx` presentations for Entur — e.g. via Claude cowork, automated reporting, or script-based deck generation.
 
@@ -9,13 +9,15 @@ Use this guide when programmatically generating `.pptx` presentations for Entur 
 
 ## Template files
 
-| File                   | Purpose                                                                                                     |
-| ---------------------- | ----------------------------------------------------------------------------------------------------------- |
-| `template.pptx`        | Base for all new presentations — 7 slide masters, 51 named layouts, correct fonts, logo, and closing slides |
-| `visual-elements.pptx` | Demo library of pre-built visuals — reference only, do NOT use as base                                      |
-| `catalog.json`         | Machine-readable index of all 51 layouts + 7 masters (read this before building)                            |
+| File                       | Purpose                                                                                                     |
+| -------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `Entur_Powerpointmal.pptx` | Base for all new presentations — 7 slide masters, 51 named layouts, correct fonts, logo, and closing slides |
+| `visual-elements.pptx`     | Demo library of pre-built visuals — reference only, do NOT use as base                                      |
+| `catalog.json`             | Machine-readable index of all 51 layouts + 7 masters (read this before building)                            |
 
-> **Note:** Always start from `template.pptx`. Building from `visual-elements.pptx` gives the wrong masters and a mismatched layout palette.
+Download `Entur_Powerpointmal.pptx` from: https://linje.entur.no/identitet/maler/presentasjon
+
+> **Note:** Always start from `Entur_Powerpointmal.pptx`. Building from `visual-elements.pptx` gives the wrong masters and a mismatched layout palette.
 
 ---
 
@@ -70,7 +72,7 @@ Catalog layout numbers are globally sequential (01–51). python-pptx uses 0-ind
 
 ## Step 1 — Read the catalog
 
-Before building, read `catalog.json` from the skill base directory. It lists all 51 layouts with their master index, placeholder indices, and use cases. Do NOT generate slide thumbnails unless necessary.
+Before building, read `catalog.json` — next to this file in an installed skill, otherwise https://raw.githubusercontent.com/entur/design-system/main/skills/entur-brand-design/references/catalog.json. It is JSON, so it is not part of `llms-full.txt`; fetch it directly. It lists all 51 layouts with their master index, placeholder indices, and use cases. Do NOT generate slide thumbnails unless necessary.
 
 ---
 
@@ -107,7 +109,7 @@ from pptx.util import Emu, Pt
 from pptx.dml.color import RGBColor
 from pptx.enum.text import PP_ALIGN
 
-prs = Presentation('/path/to/template.pptx')
+prs = Presentation('/path/to/Entur_Powerpointmal.pptx')
 masters = prs.slide_masters
 
 # Add a slide using the correct layout
@@ -404,7 +406,7 @@ pdftoppm -r 150 output.pdf slides/slide
 
 ## Key rules
 
-- **Always start from `template.pptx`** — it embeds the 7 correct Entur masters and all 51 layouts
+- **Always start from `Entur_Powerpointmal.pptx`** (download from linje.entur.no/identitet/maler/presentasjon) — it embeds the 7 correct Entur masters and all 51 layouts
 - **Never text-dump** — every content slide needs visual hierarchy (use patterns above)
 - **Default content layout**: `masters[2].slide_layouts[22]` (Tittel_blank)
 - **Coral accent line** — always add below the title on every Tittel_blank slide

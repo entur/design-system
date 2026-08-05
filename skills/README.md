@@ -16,6 +16,19 @@ Start with `entur-linje`. It reads the task and loads the relevant sub-skill aut
 
 ## How to use
 
+### Recommended: install the plugin (Claude Code)
+
+The skills are published through Entur's plugin marketplace in [entur/ai](https://github.com/entur/ai):
+
+```
+/plugin marketplace add entur/ai
+/plugin install entur-linje@entur
+```
+
+This installs all five skills with their reference files on disk, so the agent can open a reference the moment it needs one, and `/plugin update` keeps them current. Prefer this over the URL methods below — they cannot reach the reference files.
+
+### Any agent: point at the skill URL
+
 Most AI coding agents read a project-level instructions file to understand your codebase. The file name varies by tool:
 
 | Agent                                                                                                                             | Instructions file                                |
@@ -38,6 +51,8 @@ https://raw.githubusercontent.com/entur/design-system/main/skills/entur-linje/SK
 
 The agent will fetch the skill when it encounters a relevant task — like building UI with `@entur/*` packages, choosing colors, or making something accessible.
 
+Each skill lists reference files as relative paths like `references/components.md`. Read over HTTP there is no folder to resolve them against, so every skill states its base URL — the agent joins the two to fetch a reference. Installing the plugin avoids the round trip entirely.
+
 ### Alternative: use llms.txt
 
 The documentation site publishes two machine-readable files for agents:
@@ -47,7 +62,7 @@ The documentation site publishes two machine-readable files for agents:
 | https://linje.entur.no/llms.txt      | Structured index of all documentation pages          |
 | https://linje.entur.no/llms-full.txt | Full skill content + complete page index in one file |
 
-`llms-full.txt` is the most complete single reference — an agent reading it gets all skill guidance plus links to every page on linje.entur.no. Use it as an alternative or complement to the GitHub skill URL:
+`llms-full.txt` is the most complete single reference — an agent reading it gets every skill and every reference file inlined, plus links to every page on linje.entur.no. Use it as an alternative or complement to the GitHub skill URL:
 
 ```markdown
 ## Design system
@@ -75,7 +90,8 @@ Skills live in `skills/<skill-name>/SKILL.md` with supporting reference files in
 To improve a skill:
 
 1. Edit the relevant `SKILL.md` or reference file
-2. Test by asking your agent the question you want it to answer correctly
-3. Submit a PR — changes go live immediately for anyone pointing to `main`
+2. Run `yarn verify:skills` — it typechecks every code example against the real `@entur/*` types and checks that referenced exports and tokens exist
+3. Test by asking your agent the question you want it to answer correctly
+4. Submit a PR — changes go live immediately for anyone pointing to `main`, and for plugin users on their next `/plugin update`
 
 Questions? Find us in `#talk-designsystem` on Slack or open an issue.

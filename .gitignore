@@ -1,5 +1,6 @@
 # generated files
 dist
+packages/tokens/src/generated-js-objects
 public
 *.tsbuildinfo
 .rts2_cache

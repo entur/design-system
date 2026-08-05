@@ -84,10 +84,19 @@ The modal moved from `@reach/dialog` to the native HTML `<dialog>` element.
 
 ```tsx
 // ❌ Missing onDismiss
-<Modal open={isOpen} title="...">
+<Modal open={isOpen} size="small" title="...">
+  …
+</Modal>
 
 // ✅ Add onDismiss
-<Modal open={isOpen} onDismiss={() => setIsOpen(false)} title="...">
+<Modal
+  open={isOpen}
+  onDismiss={() => setIsOpen(false)}
+  size="small"
+  title="..."
+>
+  …
+</Modal>
 ```
 
 ### DOM output changed: `<div>` → `<dialog>`
@@ -115,7 +124,7 @@ Remove any CSS selectors or test queries targeting `[data-reach-dialog-overlay]`
 
 ### New `showCloseButton` prop
 
-Default `true`. If you previously rendered a close button inside `ModalContent` manually, you may now have duplicates. Either remove the manual button or pass `showCloseButton={false}`.
+Default `true`. If you previously rendered a close button inside your modal manually, you may now have duplicates. Either remove the manual button or pass `showCloseButton={false}`.
 
 **Search patterns:** `data-reach-dialog`, `div.eds-modal`, `<Modal` without `onDismiss`.
 
@@ -185,6 +194,8 @@ Props that aren't part of `ExpandableTextProps` used to land on the toggle butto
 ```tsx
 // data-testid, onClick, aria-* etc. now sit on the wrapper div
 <ExpandableText title="..." data-testid="my-expandable">
+  …
+</ExpandableText>
 ```
 
 Update tests and handlers that expected these on the button — target the button by its role instead: `getByRole('button', { name: 'title' })`.
@@ -233,10 +244,12 @@ The old base key was `s` (0px). It is now `base`, and `s` has been reused for a 
 
 ```tsx
 // ❌ Old — s was the mobile base
-<Grid.Item colSpan={{ s: '1 / -1', m: '1 / -1', lg: '3 / -3' }}>
+<Grid.Item colSpan={{ s: '1 / -1', m: '1 / -1', lg: '3 / -3' }}>…</Grid.Item>
 
 // ✅ New — base is required, s is now the 600px breakpoint
 <Grid.Item colSpan={{ base: '1 / -1', m: '1 / -1', lg: '3 / -3' }}>
+  …
+</Grid.Item>
 ```
 
 `base` is required on every responsive object. TypeScript flags a missing `base`; at runtime the object is ignored and a console warning is logged. Unknown keys are warned about and dropped.

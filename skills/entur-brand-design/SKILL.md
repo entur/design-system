@@ -42,17 +42,13 @@ The rules below differ by context. Apply the right set:
 4. **Never use data visualization colors for UI elements** (buttons, status indicators) — data colors are for charts only.
 5. **Apply data colors in the specified order** — Blue first, Coral second, then Jungle, Azure, Lavender, Peach, Spring, Lilac. Never rearrange arbitrarily.
 6. **Use Arial** when Nationale is unavailable (Office, email, external collaborators without a license).
-7. **Never build presentations from scratch** — always start from `template.pptx`. It embeds the correct 7 Entur slide masters.
+7. **Never build presentations from scratch** — always start from `Entur_Powerpointmal.pptx`. It embeds the correct 7 Entur slide masters.
 8. **In code, always use tokens — not hex values.** Brand docs and design specs list canonical hex values as references; translate them to CSS tokens when writing code.
-
----
-
-## Core principles
-
-- **Three-color foundation**: Lavender 90 (`#181c56`), white, and coral (`#ff5959`) must always be present in brand-led work. Everything else supports them.
-- **Coral is punctuation**: use it sparingly. One coral accent per view. It's a detail color — it appears in the logo and in focus points, not as a large fill.
-- **Content is the hero**: blue structures the layout, white hosts the content. Design recedes so information leads.
-- **Restraint**: two font weights, limited secondary colors, generous whitespace. Avoid busyness.
+9. **Content is the hero** — blue structures the layout, white hosts the content. Design recedes so information leads.
+10. **Restraint** — two font weights, limited secondary colors, generous whitespace. Avoid busyness.
+11. **Use `Contrast` from `@entur/layout`** for Lavender 90 sections in web UI, and `@entur/typography` for type hierarchy. Semantic tokens adapt to dark mode on their own.
+12. **Digital type weights** — Medium (500) for body, Demibold (600) for headings.
+13. **Test data visualizations for colorblind accessibility** — never let color be the only way to tell two series apart.
 
 ---
 
@@ -62,37 +58,12 @@ Read these for specifics:
 
 - **`references/colors.md`** — full color system, primary/secondary palettes, CSS tokens, color weighting, status colors, contrast requirements
 - **`references/typography.md`** — Nationale typeface, two weights for digital, Arial fallback, hierarchy guidelines, font loading
-- **`references/data-visualization.md`** — data color palette (ordered), colorblind accessibility, light/dark variants, combining with transport colors
+- **`references/data-visualization.md`** — data color palette (ordered), colorblind accessibility, light/dark variants, combining with transport colors. Import from `@entur/tokens/dist/data.css`
 - **`references/visual-identity.md`** — layout principles, Contrast component, animation, illustrations, presentation guidelines
 - **`references/presentations-pptx.md`** — step-by-step python-pptx workflow, layout index, 5 slide patterns, helper functions, QA
-- **`references/catalog.json`** — machine-readable index of all 51 layouts + 7 masters in template.pptx with python-pptx references
+- **`references/catalog.json`** — machine-readable index of all 51 layouts + 7 masters in Entur_Powerpointmal.pptx with python-pptx references
 
----
-
-## By use case
-
-**Web design / UI development**  
-Read `references/colors.md` for the token system. Use `Contrast` from `@entur/layout` for Lavender 90 sections. Use `@entur/typography` for correct type hierarchy. Semantic color tokens auto-adapt to dark mode. Do not hardcode hex values in CSS or JS — use tokens.
-
-**Data visualizations / charts**  
-Read `references/data-visualization.md`. Use the 8-color palette in order. Start with Blue and Coral for 2 series. Always test for colorblind accessibility. Import from `@entur/tokens/dist/data.css`.
-
-**Presentations and documents**  
-Read `references/typography.md` (use Arial if Nationale is unlicensed) and `references/visual-identity.md`. Lead with Lavender 90 sections, white for content, coral only as accents on key points. For programmatic generation with python-pptx, read `references/presentations-pptx.md` and `references/catalog.json`.
-
-**Branding questions**  
-Read `references/colors.md` and `references/visual-identity.md` together. The identity section explains the brand positioning and what to avoid.
-
----
-
-## Quick reference
-
-**Primary colors**: `#181c56` (Lavender 90), `#ffffff` (white), `#ff5959` (coral) — hex for reference; use tokens in code  
-**Main typeface**: Nationale (licensed) / Arial (fallback)  
-**Digital weights**: Medium (500) body, Demibold (600) headings  
-**Color token import**: `@import '@entur/tokens/dist/base.css'`  
-**Data viz import**: `@import '@entur/tokens/dist/data.css'`  
-**Full docs**: https://linje.entur.no/identitet
+> **Resolving these files:** if you are reading this over HTTP rather than from an installed skill folder, resolve each `references/<file>` above against `https://raw.githubusercontent.com/entur/design-system/main/skills/entur-brand-design/`
 
 ## Beyond Entur
 
