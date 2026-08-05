@@ -31,6 +31,7 @@ type ExtendedSimpleTimePickerProps<TimeType extends TimeValue> = Omit<
   AriaTimeFieldProps<TimeType>,
   | keyof BaseSimpleTimePickerProps<TimeType>
   | 'value'
+  | 'defaultValue'
   | 'hideTimeZone'
   | 'placeholder'
   | 'minValue'
@@ -105,7 +106,8 @@ export const SimpleTimePicker = <TimeType extends TimeValue>({
   padding = 'default',
   prepend,
   readOnly,
-  selectedTime,
+  // normalize undefined to null so the picker stays controlled and empty
+  selectedTime = null,
   showSeconds,
   style,
   variant,

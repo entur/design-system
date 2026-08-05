@@ -65,7 +65,7 @@ export function nativeDateToDateValue(
   timeZone?: string,
   offset?: number,
 ) {
-  if (date === null) return null;
+  if (date == null) return null;
 
   if (noTimeOnlyDate)
     return new CalendarDate(
@@ -91,7 +91,7 @@ export function nativeDateToTimeValue(
   timeZone?: string,
   offset?: number,
 ) {
-  if (date === null) return null;
+  if (date == null) return null;
 
   if (noDateOnlyTime)
     return new Time(
@@ -114,7 +114,7 @@ export function timeOrDateValueToNativeDate(
   value: TimeValue | DateValue | null,
   timeZoneForCalendarDateTime?: string,
 ) {
-  if (value === null) return null;
+  if (value == null) return null;
 
   // type is Time
   if (!('day' in value)) {
@@ -175,7 +175,7 @@ export const convertValueToType = ({
   type: 'CalendarDate' | 'CalendarDateTime' | 'ZonedDateTime' | 'Time';
   timezone?: string;
 }) => {
-  if (value === null) return null;
+  if (value == null) return null;
   switch (type) {
     case 'CalendarDate':
       if (!('day' in value)) return today(timezone);
@@ -223,7 +223,7 @@ export const focusSegment = (
 
 /** Based on code from https://stackoverflow.com/questions/6117814/get-week-of-year-in-javascript-like-in-php */
 export function getWeekNumberForDate(date: DateValue | null) {
-  if (date === null) return -1;
+  if (date == null) return -1;
   const calendarDate = convertValueToType({
     value: date,
     type: 'CalendarDate',
@@ -262,10 +262,10 @@ export function handleOnChange<DateType extends DateValue>({
         value,
         type: forcedReturnType ?? 'ZonedDateTime',
         timezone:
-          (value !== null && 'timeZone' in value
+          (value != null && 'timeZone' in value
             ? (value.timeZone as string)
             : undefined) ??
-          (selectedDate !== null && 'timeZone' in selectedDate
+          (selectedDate != null && 'timeZone' in selectedDate
             ? (selectedDate.timeZone as string)
             : undefined),
       }) as MappedDateValue<typeof forcedReturnType> | null,

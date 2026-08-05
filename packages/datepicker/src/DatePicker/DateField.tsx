@@ -138,7 +138,8 @@ export type DateFieldProps<DateType extends DateValue> =
   BaseDateFieldProps<DateType> & ExtendedDateFieldProps<DateType>;
 
 export const DateField = <DateType extends DateValue>({
-  selectedDate,
+  // normalize undefined to null so the field stays controlled and empty
+  selectedDate = null,
   onChange,
   label,
   locale: customLocale,
