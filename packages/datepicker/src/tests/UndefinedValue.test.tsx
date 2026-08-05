@@ -53,6 +53,7 @@ describe('undefined value props', () => {
   });
 
   test('DateField with undefined selectedDate fires onChange on full date', async () => {
+    const user = userEvent.setup();
     const spy = jest.fn();
     render(
       <DateField
@@ -62,12 +63,13 @@ describe('undefined value props', () => {
         locale="en-GB"
       />,
     );
-    await userEvent.click(screen.getByRole('spinbutton', { name: /day/ }));
-    await userEvent.keyboard('04082026');
+    await user.click(screen.getByRole('spinbutton', { name: /day/ }));
+    await user.keyboard('04082026');
     expect(spy).toHaveBeenCalled();
   });
 
   test('TimePicker with undefined selectedTime fires onChange on typing', async () => {
+    const user = userEvent.setup();
     const spy = jest.fn();
     render(
       <TimePicker
@@ -77,10 +79,8 @@ describe('undefined value props', () => {
         locale="en-GB"
       />,
     );
-    await userEvent.click(
-      screen.getByRole('spinbutton', { name: 'hour, test' }),
-    );
-    await userEvent.keyboard('1230');
+    await user.click(screen.getByRole('spinbutton', { name: 'hour, test' }));
+    await user.keyboard('1230');
     expect(spy).toHaveBeenCalled();
   });
 
@@ -97,13 +97,14 @@ describe('undefined value props', () => {
   });
 
   test('RangeCalendar with undefined value stays controlled', async () => {
+    const user = userEvent.setup();
     const spy = jest.fn();
     render(
       <RangeCalendar value={undefined as any} onChange={spy} locale="en-GB" />,
     );
     const dates = screen.getAllByRole('button', { name: /\d/ });
-    await userEvent.click(dates[5]);
-    await userEvent.click(dates[8]);
+    await user.click(dates[5]);
+    await user.click(dates[8]);
     expect(spy).toHaveBeenCalled();
     // controlled: nothing is selected until the consumer passes a value back
     expect(document.querySelectorAll('[aria-selected="true"]')).toHaveLength(0);
