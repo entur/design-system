@@ -25,9 +25,7 @@ $label-top-large: 0.5rem;
   padding: 0;
 
   .eds-textarea__label & {
-    box-shadow: 0 -2px 0 4px var(--textarea-label-background);
-    background: var(--textarea-label-background);
-    width: calc(100% - #{t.$space-default} - #{t.$space-default} - 4px); // ~36px = margin-left + scrollbar-width + box-shadow blur
+    width: calc(100% - #{t.$space-default} - #{t.$space-default} - 4px); // margin-left + scrollbar-width
   }
 }
 

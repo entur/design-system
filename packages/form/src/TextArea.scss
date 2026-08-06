@@ -1,24 +1,19 @@
 @use '@entur/tokens/dist/styles.scss' as t;
-@use '@entur/tokens/dist/base';
 
 .eds-textarea__wrapper {
-  // Quickfix for illegible label when input exceeds height of textarea
-  :not(.eds-form-control-wrapper--disabled, .eds-form-control-wrapper--readonly) .eds-textarea__label .eds-input-group__label {
-    background: var(--basecolors-frame-default);
-    width: fit-content;
-    height: fit-content;
-    padding: 0.15rem;
-    margin: -0.15rem;
-
-    *[data-color-mode='dark'] .eds-contrast & {
-      background-color: var(--basecolors-frame-contrast);
-    }
-  }
-
   textarea.eds-form-control.eds-textarea {
     min-height: 7.75rem;
     resize: vertical;
     line-height: t.$line-heights-extra-large;
+
+    // Fades out text scrolling under the overlaid label, so the label stays legible on any background.
+    // Second layer keeps the scrollbar gutter opaque, since the label does not reach it anyway.
+    $scrollbar-gutter: 20px; // same right-hand space the label already leaves free
+
+    mask-image: linear-gradient(to bottom, transparent 0, transparent 16px, black 20px), linear-gradient(black, black);
+    mask-size: calc(100% - #{$scrollbar-gutter}) 100%, $scrollbar-gutter 100%;
+    mask-position: top left, top right;
+    mask-repeat: no-repeat;
   }
 
   // No right side padding to make resize handle positioned in bottom right corner
