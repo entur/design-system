@@ -1,0 +1,53 @@
+@use '@entur/tokens/dist/styles.scss' as eds;
+
+.privacy-details {
+  &__fieldset {
+    border: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__choice {
+    margin-bottom: eds.$space-large;
+  }
+
+  &__choice-description {
+    margin: eds.$space-extra-small2 0 eds.$space-medium 1.75rem;
+  }
+
+  &__service {
+    margin-bottom: eds.$space-extra-small;
+  }
+
+  &__section {
+    margin-top: eds.$space-medium;
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: eds.$space-extra-small;
+    margin: eds.$space-extra-small2 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__tag {
+    border: eds.$border-widths-default solid var(--basecolors-stroke-subdued);
+    border-radius: eds.$border-radiuses-medium;
+    padding: 0.125rem eds.$space-extra-small;
+    font-size: eds.$font-sizes-small;
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: eds.$space-medium;
+    margin-top: eds.$space-large;
+  }
+
+  &__status {
+    margin-top: eds.$space-extra-small;
+    min-height: 1.5rem;
+  }
+}
