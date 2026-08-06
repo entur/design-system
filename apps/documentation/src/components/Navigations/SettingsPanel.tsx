@@ -7,6 +7,7 @@ import { Dropdown } from '@entur/dropdown';
 import { SegmentedChoice, SegmentedControl } from '@entur/form';
 import { Modal } from '@entur/modal';
 
+import { useConsent } from '@providers/ConsentProvider';
 import {
   PackageManager,
   UserType,
@@ -33,6 +34,7 @@ const SettingsPanel = () => {
     colorMode,
     setColorMode,
   } = useSettings();
+  const { openBanner } = useConsent();
 
   useEffect(() => {
     async function fetchControllerID() {
@@ -146,7 +148,11 @@ const SettingsPanel = () => {
         <SecondaryButton
           size="small"
           style={{ marginTop: '0.5rem' }}
-          onClick={() => window.__ucCmp.showFirstLayer()}
+          onClick={() => {
+            // The banner sits at the top of the page, so get the modal out of the way
+            setOpen(false);
+            openBanner();
+          }}
         >
           <CookieIcon />
           Endre informasjonskapser

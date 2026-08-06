@@ -1,8 +1,13 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef } from 'react';
 import { usePersistedState } from './SettingsContext';
 import {
+  CMP_VIEW_CHANGED_EVENT,
   CONSENT_UPDATED_EVENT,
+  CmpView,
   Consents,
+  UcFirstLayerLabels,
+  fetchUcLabels,
+  getCMP,
   handleConsentUpdate,
 } from 'src/utils/cmpUtils';
 
@@ -20,6 +25,14 @@ type ConsentProviderProps = {
 type ConsentContextType = {
   consents: ConsentSet | null;
   updateConsents: (updatedValues: ConsentSet) => void;
+  /** Texts for the consent banner, as authored in the Usercentrics admin */
+  bannerLabels: UcFirstLayerLabels | null;
+  isBannerOpen: boolean;
+  /** True when the banner was opened by the user, and should be brought into view */
+  isBannerFocusRequested: boolean;
+  openBanner: () => void;
+  closeBanner: () => void;
+  clearBannerFocusRequest: () => void;
 };
 
 const ConsentContext = React.createContext<ConsentContextType | null>(null);
@@ -32,16 +45,77 @@ export const ConsentProvider = ({
     'consents',
     initialConsents,
   );
+  const [bannerLabels, setBannerLabels] =
+    React.useState<UcFirstLayerLabels | null>(null);
+  const [isBannerOpen, setBannerOpen] = React.useState(false);
+  const [isBannerFocusRequested, setBannerFocusRequested] =
+    React.useState(false);
+  const labelsRequest = useRef<Promise<UcFirstLayerLabels | null> | null>(null);
 
   const updateConsents = (updatedValues: ConsentSet) => {
     setConsents({ ...consents, ...updatedValues });
   };
+
+  const loadBannerLabels = useCallback(async () => {
+    if (!labelsRequest.current) {
+      labelsRequest.current = (async () => {
+        const cmp = await getCMP();
+        const consentDetails = await cmp?.getConsentDetails();
+        if (!consentDetails) return null;
+        const bundle = await fetchUcLabels(consentDetails.consent);
+        return bundle?.firstLayer ?? null;
+      })();
+    }
+    const labels = await labelsRequest.current;
+    if (labels) setBannerLabels(labels);
+    return labels;
+  }, []);
+
+  const closeBanner = useCallback(() => {
+    setBannerOpen(false);
+    setBannerFocusRequested(false);
+  }, []);
+
+  const clearBannerFocusRequest = useCallback(
+    () => setBannerFocusRequested(false),
+    [],
+  );
+
+  // Without texts from Usercentrics there is nothing to show, so the banner only opens
+  // once they have loaded. Opening is always a deliberate action here — the entry points
+  // sit in the footer and the settings panel, far from the banner — so ask for it to be
+  // brought into view.
+  const openBanner = useCallback(async () => {
+    const labels = await loadBannerLabels();
+    if (!labels) return;
+    setBannerOpen(true);
+    setBannerFocusRequested(true);
+  }, [loadBannerLabels]);
+
+  // Usercentrics decides whether consent is still needed — it accounts for first visits,
+  // expiry and renewed consent settings.
+  useEffect(() => {
+    let cancelled = false;
+
+    (async () => {
+      const cmp = await getCMP();
+      const consentDetails = await cmp?.getConsentDetails();
+      if (cancelled || !consentDetails?.consent.required) return;
+      const labels = await loadBannerLabels();
+      if (!cancelled && labels) setBannerOpen(true);
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [loadBannerLabels]);
 
   // Event listener for handling changes to and from Usercentrics CMP
   useEffect(() => {
     let previousConsents: Consents | null = null;
 
     const consentUpdateHandler = async (event: Event) => {
+      setBannerOpen(false);
       previousConsents = await handleConsentUpdate(event, previousConsents);
     };
 
@@ -52,13 +126,43 @@ export const ConsentProvider = ({
     };
   }, []);
 
+  // Suppressing the Usercentrics UI only covers its initial render, and it can still ask
+  // to show itself later. ConsentBanner and the privacy page cover everything we need, so
+  // close it again whenever it tries.
+  useEffect(() => {
+    const viewChangeHandler = (event: Event) => {
+      const view = (event as CustomEvent<{ view?: CmpView }>).detail?.view;
+      if (view && view !== 'NONE') window.__ucCmp?.closeCmp();
+    };
+
+    window.addEventListener(CMP_VIEW_CHANGED_EVENT, viewChangeHandler);
+
+    return () => {
+      window.removeEventListener(CMP_VIEW_CHANGED_EVENT, viewChangeHandler);
+    };
+  }, []);
+
   const contextValue = useMemo(
     () => ({
       consents,
       updateConsents,
+      bannerLabels,
+      isBannerOpen,
+      isBannerFocusRequested,
+      openBanner,
+      closeBanner,
+      clearBannerFocusRequest,
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [consents],
+    [
+      consents,
+      bannerLabels,
+      isBannerOpen,
+      isBannerFocusRequested,
+      openBanner,
+      closeBanner,
+      clearBannerFocusRequest,
+    ],
   );
 
   return (

@@ -1,0 +1,106 @@
+import React from 'react';
+import { Link as GatsbyLink } from 'gatsby';
+
+import { PrimaryButton } from '@entur/button';
+import { Heading2, Link } from '@entur/typography';
+
+import { useConsent } from '@providers/ConsentProvider';
+import { sanitizeUcHtml } from 'src/utils/sanitizeUcHtml';
+
+import './ConsentBanner.scss';
+
+const TITLE_ID = 'consent-banner-title';
+
+/** Consent banner following the pattern at
+ *  https://designsystemet.no/no/patterns/consent-banner: inline at the top of the page,
+ *  never a dialog, never blocking, and it never traps focus or takes it on page load.
+ *  Usercentrics still records the consent — we only replace its UI. */
+export const ConsentBanner = () => {
+  const {
+    isBannerOpen,
+    isBannerFocusRequested,
+    bannerLabels,
+    closeBanner,
+    clearBannerFocusRequest,
+  } = useConsent();
+  const sectionRef = React.useRef<HTMLElement>(null);
+
+  // The banner is no use unseen, so bring it into view whenever it opens — the browser
+  // restores scroll position on load, and inserting the banner above the content shifts
+  // the page out from under it. Deferred so the shift has settled first.
+  React.useEffect(() => {
+    if (!isBannerOpen) return;
+    const frame = requestAnimationFrame(() => {
+      sectionRef.current?.scrollIntoView({ block: 'start' });
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [isBannerOpen]);
+
+  // Taking focus is reserved for when the user asked for the banner. On page load focus
+  // has to stay put, so that reading the page is never interrupted. Focusing the section
+  // rather than the heading means screen readers announce the banner's name along with it.
+  React.useEffect(() => {
+    if (!isBannerOpen || !isBannerFocusRequested) return;
+    sectionRef.current?.focus({ preventScroll: true });
+    clearBannerFocusRequest();
+  }, [isBannerOpen, isBannerFocusRequested, clearBannerFocusRequest]);
+
+  if (!isBannerOpen || !bannerLabels) return null;
+
+  const { privacy, buttons } = bannerLabels;
+
+  // acceptAllConsents and denyAllConsents persist the choice themselves. Keep the banner
+  // up if Usercentrics is unreachable, so a choice never looks recorded when it isn't.
+  const answer = async (accepted: boolean) => {
+    const cmp = window.__ucCmp;
+    if (!cmp) return;
+    closeBanner();
+    if (accepted) await cmp.acceptAllConsents();
+    else await cmp.denyAllConsents();
+  };
+
+  return (
+    <section
+      className="consent-banner"
+      aria-labelledby={TITLE_ID}
+      ref={sectionRef}
+      tabIndex={-1}
+    >
+      <div className="consent-banner__content">
+        <Heading2 id={TITLE_ID} className="consent-banner__title" margin="none">
+          {privacy.title}
+        </Heading2>
+        {privacy.description && (
+          <div
+            className="consent-banner__description"
+            // eslint-disable-next-line react/no-danger
+            dangerouslySetInnerHTML={{
+              __html: sanitizeUcHtml(privacy.description),
+            }}
+          />
+        )}
+        {/* Accepting and declining must look equally weighted for the consent to be
+            valid, so both are primary buttons. */}
+        <div className="consent-banner__actions">
+          <PrimaryButton onClick={() => answer(true)}>
+            {buttons.accept}
+          </PrimaryButton>
+          <PrimaryButton onClick={() => answer(false)}>
+            {buttons.deny}
+          </PrimaryButton>
+        </div>
+        {buttons.more && (
+          <Link
+            as={GatsbyLink}
+            to="/personvern"
+            className="consent-banner__details-link"
+          >
+            {buttons.more}
+          </Link>
+        )}
+      </div>
+    </section>
+  );
+};
+
+export default ConsentBanner;

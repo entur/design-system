@@ -9,6 +9,8 @@ import {
 import { Link, Heading3 } from '@entur/typography';
 import { Logo } from '@entur/menu';
 
+import { useConsent } from '@providers/ConsentProvider';
+
 import './Footer.scss';
 
 const Footer = ({
@@ -20,6 +22,7 @@ const Footer = ({
   footerRef?: RefObject<HTMLElement>;
   contrast?: boolean;
 } & React.ComponentPropsWithoutRef<'footer'>) => {
+  const { openBanner } = useConsent();
   return (
     <footer
       ref={footerRef}
@@ -42,10 +45,13 @@ const Footer = ({
           >
             Tilgjengelighetserklæring
           </Link>
+          <Link href="/personvern" className="footer__link">
+            Personvern
+          </Link>
           <Link
             as="button"
             type="button"
-            onClick={() => window.__ucCmp?.showFirstLayer()}
+            onClick={() => openBanner()}
             className="footer__link"
           >
             <CookieFilledIcon inline aria-hidden="true" /> Endre hvilken

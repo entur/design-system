@@ -1,0 +1,70 @@
+@use 'sass:map';
+@use '../../styles/variables' as variables;
+@use '@entur/tokens/dist/styles.scss' as eds;
+
+// ConsentBanner and the privacy page replace Usercentrics' own UI entirely. Suppressing
+// it at load does not stop it asking to show itself later, so keep it hidden outright.
+#usercentrics-cmp-ui {
+  display: none;
+}
+
+// Gatsby moves focus to #gatsby-focus-wrapper on every route change, and the browser
+// scrolls the newly focused element into view. The wrapper starts right below the banner,
+// so that scroll lands just past it. Reserving room above the wrapper makes the scroll
+// stop at the top of the page, with the banner in view, instead.
+body:has(.consent-banner) #gatsby-focus-wrapper {
+  scroll-margin-top: 100vh;
+}
+
+.consent-banner {
+  $consent-banner-max-width: 50rem;
+  background: var(--basecolors-frame-tint);
+  border-bottom: eds.$border-widths-default solid var(--basecolors-stroke-subdued);
+
+  &__content {
+    max-width: $consent-banner-max-width;
+    padding: eds.$space-large eds.$space-large eds.$space-extra-large;
+
+    @media screen and (min-width: map.get(variables.$breakpoints, 'tablet')) {
+      padding: eds.$space-extra-large eds.$space-extra-large2;
+    }
+  }
+
+  &__description {
+    margin-top: eds.$space-extra-small;
+
+    p {
+      margin-block: 0 eds.$space-extra-small;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: eds.$space-medium;
+    margin-top: eds.$space-large;
+  }
+
+  &__details-link {
+    display: inline-block;
+    margin-top: eds.$space-large;
+
+    :where(&) {
+      border: none;
+      background: none;
+      padding-inline: 0;
+    }
+  }
+}
+
+// Below tablet the top navigation is fixed, and .page carries the offset that keeps
+// content clear of it. The banner sits above .page, so it has to take that offset over.
+@media screen and (max-width: (map.get(variables.$breakpoints, 'tablet') - 0.0625rem)) {
+  .consent-banner {
+    padding-top: var(--navbar-height);
+  }
+
+  body:has(.consent-banner) .page {
+    padding-top: 0;
+  }
+}
