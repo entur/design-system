@@ -1,6 +1,6 @@
 {
   "name": "@entur/a11y",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "license": "EUPL-1.2",
   "main": "dist/a11y.cjs",
   "module": "dist/a11y.mjs",

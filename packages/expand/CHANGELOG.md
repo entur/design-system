@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.1](https://github.com/entur/design-system/compare/@entur/expand@4.0.0...@entur/expand@4.0.1) (2026-08-06)
+
+### Bug Fixes
+
+- **expand/expandable text:** add spacing between title and chevron ([1c29e8c](https://github.com/entur/design-system/commit/1c29e8c12c3d173e04c870c61909598ac34ce357))
+- **expand:** keep collapsed content unreachable on React 19 ([3d490e8](https://github.com/entur/design-system/commit/3d490e8d21ea47236de4a971f613fd6b072601c4))
+
 # [4.0.0](https://github.com/entur/design-system/compare/@entur/expand@3.7.12...@entur/expand@4.0.0) (2026-07-30)
 
 ### Bug Fixes

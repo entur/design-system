@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.4.14](https://github.com/entur/design-system/compare/@entur/code-playground@2.4.13...@entur/code-playground@2.4.14) (2026-08-06)
+
+### Bug Fixes
+
+- **code-playground:** load design token custom properties in the sandbox ([d1ea91a](https://github.com/entur/design-system/commit/d1ea91a075e49b1a37e773844d87c0c994f5837e))
+
 ## [2.4.13](https://github.com/entur/design-system/compare/@entur/code-playground@2.4.12...@entur/code-playground@2.4.13) (2026-07-30)
 
 **Note:** Version bump only for package @entur/code-playground

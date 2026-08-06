@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.20.4](https://github.com/entur/design-system/compare/@entur/documentation@6.20.3...@entur/documentation@6.20.4) (2026-08-06)
+
+### Bug Fixes
+
+- **website:** add spacing below tables in documentation pages ([fa65fd5](https://github.com/entur/design-system/commit/fa65fd59ebf79bc65779c1640966b757e439772a))
+- **website:** correct the CSS import guidance and give it its own page ([2a84958](https://github.com/entur/design-system/commit/2a849584e56cd3f002d88aa6adbab1aee3fe4e6b))
+- **website:** document the design system skills for developers ([7a26cdb](https://github.com/entur/design-system/commit/7a26cdb88704343ec686e12b87215ba952158881))
+- **website:** escape bare HTML tags in copied changelogs ([00238f5](https://github.com/entur/design-system/commit/00238f5cfb1553a6b5b97ed1776b5d5ee8313bbc))
+- **website:** sort the getting started submenus in the intended order ([7ff963d](https://github.com/entur/design-system/commit/7ff963d2b02ae4b25ce4aca13cf0ee525c45baaf))
+
 ## [6.20.3](https://github.com/entur/design-system/compare/@entur/documentation@6.20.2...@entur/documentation@6.20.3) (2026-07-30)
 
 ### Bug Fixes

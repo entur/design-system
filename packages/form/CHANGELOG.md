@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.0.1](https://github.com/entur/design-system/compare/@entur/form@10.0.0...@entur/form@10.0.1) (2026-08-06)
+
+### Bug Fixes
+
+- **form/text area:** keep the label legible on any background ([5309457](https://github.com/entur/design-system/commit/5309457cd04558dc2add88db202f043a1a1558ec))
+
 # [10.0.0](https://github.com/entur/design-system/compare/@entur/form@9.3.8...@entur/form@10.0.0) (2026-07-30)
 
 ### Bug Fixes

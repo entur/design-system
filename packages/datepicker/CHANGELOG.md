@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.0.1](https://github.com/entur/design-system/compare/@entur/datepicker@12.0.0...@entur/datepicker@12.0.1) (2026-08-06)
+
+### Bug Fixes
+
+- **datepicker:** treat undefined value as empty instead of crashing ([d244ce6](https://github.com/entur/design-system/commit/d244ce68f1f3538ada00a618a0562ecedf63e2db))
+
 # [12.0.0](https://github.com/entur/design-system/compare/@entur/datepicker@11.8.1...@entur/datepicker@12.0.0) (2026-07-30)
 
 ### Features

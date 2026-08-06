@@ -1,6 +1,6 @@
 {
   "name": "@entur/menu",
-  "version": "7.0.0",
+  "version": "7.0.1",
   "license": "EUPL-1.2",
   "main": "dist/menu.cjs",
   "module": "dist/menu.mjs",
