@@ -54,11 +54,21 @@ body:has(.consent-banner) #gatsby-focus-wrapper {
   }
 }
 
-// Below tablet the top navigation is fixed, and .page carries the offset that keeps
-// content clear of it. The banner sits above .page, so it has to take that offset over.
+// On small screens the navigation is fixed and would cover the banner. While the banner is
+// up, let the navigation sit in the flow below it instead, so the banner comes first as it
+// does on wide screens. It still sticks to the top once the banner scrolls away, and .page
+// no longer needs to reserve room for a fixed navigation.
 @media screen and (max-width: (map.get(variables.$breakpoints, 'tablet') - 0.0625rem)) {
-  .consent-banner {
-    padding-top: var(--navbar-height);
+  body:has(.consent-banner) .mobile-topnav {
+    position: sticky;
+    min-width: 0;
+  }
+
+  // A 1fr column is never narrower than its content, and the navigation is only in the flow
+  // while the banner is up. Without this its category row widens the page past the viewport
+  // instead of scrolling.
+  body:has(.consent-banner) .doc-layout {
+    grid-template-columns: minmax(0, 1fr);
   }
 
   body:has(.consent-banner) .page {
