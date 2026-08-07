@@ -13,8 +13,24 @@ export const sanitizeUcHtml = (html: string) => {
   });
 
   const parsed = new DOMParser().parseFromString(clean, 'text/html');
+
   parsed.body.querySelectorAll('a:not([href])').forEach(anchor => {
     anchor.replaceWith(...Array.from(anchor.childNodes));
   });
+
+  parsed.body.querySelectorAll('a').forEach(anchor => {
+    // An empty link is invisible to sighted users and unreadable to screen readers.
+    if (!anchor.textContent?.trim()) {
+      anchor.remove();
+      return;
+    }
+    // Borrow the design system's link styling — without it these fall back to the
+    // browser's own blue and visited purple.
+    anchor.classList.add('eds-link');
+    if (anchor.getAttribute('target') === '_blank') {
+      anchor.setAttribute('rel', 'noreferrer');
+    }
+  });
+
   return parsed.body.innerHTML;
 };
