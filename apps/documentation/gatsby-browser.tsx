@@ -13,7 +13,6 @@ import {
 import { SearchProvider } from './src/components/Search/SearchContext';
 import { ConsentBanner } from './src/components/ConsentBanner/ConsentBanner';
 import DocLayout from './src/layouts/DocLayout';
-import { isConsentBannerVisible } from './src/utils/scrollUtils';
 
 export const wrapRootElement: GatsbyBrowser['wrapRootElement'] = ({
   element,
@@ -62,10 +61,10 @@ export const shouldUpdateScroll: GatsbyBrowser['shouldUpdateScroll'] = ({
 
   const hasHash = routerProps.location.hash !== '';
 
-  // An unanswered consent banner has to stay in view across navigation, so going to the
-  // top of the page wins over jumping to a hash. The banner is at the top of the document,
-  // so the top of the page is where it is.
-  if (!hasHash || isConsentBannerVisible()) {
+  // An unanswered consent banner has to stay in view across navigation, and it sits at the
+  // top of the document — so landing at the top of the page keeps it visible. A hash still
+  // wins, since it means the reader asked for a particular section.
+  if (!hasHash) {
     window.scrollTo({ top: 0, left: 0 });
 
     const page = document.getElementsByClassName('page')?.[0];

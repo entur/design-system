@@ -16,4 +16,10 @@
   section {
     margin-top: eds.$space-extra-large2;
   }
+
+  // Linked-to sections have to land below the navigation, which is fixed on small screens
+  // and sticky on large ones.
+  :is(h1, h2)[id] {
+    scroll-margin-top: calc(var(--navbar-height) + #{eds.$space-medium});
+  }
 }

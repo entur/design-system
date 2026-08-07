@@ -82,6 +82,7 @@ export const PrivacyDetails = () => {
   const [saved, setSaved] = React.useState(false);
   const [unavailable, setUnavailable] = React.useState(false);
   const [controllerId, setControllerId] = React.useState<string | undefined>();
+  const hasHandledHash = React.useRef(false);
 
   const load = React.useCallback(async () => {
     const cmp = await getCMP();
@@ -111,6 +112,20 @@ export const PrivacyDetails = () => {
   React.useEffect(() => {
     load();
   }, [load]);
+
+  // The sections only exist once Usercentrics has answered, which is long after the
+  // browser gave up on the hash in the address bar. Take over that jump once, so links
+  // pointing straight at a section land on it.
+  React.useEffect(() => {
+    if (!categories || hasHandledHash.current) return;
+    const id = window.location.hash.slice(1);
+    const target = document.getElementById(id);
+    if (!id || !target) return;
+    hasHandledHash.current = true;
+    // scroll-margin-top on the headings keeps them clear of the fixed navigation, and
+    // holds even as the panels below settle into place.
+    target.scrollIntoView({ block: 'start' });
+  }, [categories]);
 
   const persist = async (values: Record<string, boolean>) => {
     const ok = await saveCategoryConsents(

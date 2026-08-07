@@ -1,21 +1,5 @@
 const SCROLL_OFFSET_REM = 5.5;
 
-const CONSENT_BANNER_SELECTOR = '.consent-banner';
-
-/** An unanswered consent banner sits at the top of the page and has to stay visible, so
- *  it takes precedence over restoring scroll position or jumping to a hash. */
-export const isConsentBannerVisible = () =>
-  typeof document !== 'undefined' &&
-  document.querySelector(CONSENT_BANNER_SELECTOR) !== null;
-
-export const scrollConsentBannerIntoView = () => {
-  if (typeof document === 'undefined') return false;
-  const banner = document.querySelector(CONSENT_BANNER_SELECTOR);
-  if (!banner) return false;
-  banner.scrollIntoView({ block: 'start' });
-  return true;
-};
-
 export const getNavbarHeightPx = () => {
   if (typeof window === 'undefined') return SCROLL_OFFSET_REM * 16;
   const val = getComputedStyle(document.documentElement)
@@ -55,7 +39,6 @@ export const scrollToHashOnLoad = () => {
   const hash = window.location.hash;
   if (hash) {
     setTimeout(() => {
-      if (scrollConsentBannerIntoView()) return;
       const elementId = hash.substring(1);
       scrollToElement(elementId);
     }, 100);
