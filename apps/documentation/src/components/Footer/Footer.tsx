@@ -6,7 +6,8 @@ import {
   FigmaIcon,
   GithubIcon,
 } from '@entur/icons';
-import { Link, Heading3 } from '@entur/typography';
+import { Link as GatsbyLink } from 'gatsby';
+import { Heading3, Link } from '@entur/typography';
 import { Logo } from '@entur/menu';
 
 import { useConsent } from '@providers/ConsentProvider';
@@ -45,7 +46,7 @@ const Footer = ({
           >
             Tilgjengelighetserklæring
           </Link>
-          <Link href="/personvern" className="footer__link">
+          <Link as={GatsbyLink} to="/personvern" className="footer__link">
             Personvern
           </Link>
           <Link
