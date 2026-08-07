@@ -25,8 +25,8 @@ export function getActiveElement(root: Document | ShadowRoot): Element | null {
  *
  * This adapter redirects downshift's event listeners to the shadow
  * root (where targets are not retargeted) and proxies
- * `document.activeElement` to return the shadow root's active
- * element instead.
+ * `document.activeElement` so it drills into shadow roots instead of
+ * stopping at the shadow host.
  *
  * Outside shadow DOM this returns `undefined`, letting downshift
  * use its default `window` environment.
@@ -39,11 +39,14 @@ function createShadowEnvironment(shadowRoot: ShadowRoot): Environment {
     removeEventListener: shadowRoot.removeEventListener.bind(shadowRoot),
     Node: window.Node,
     document: new Proxy(document, {
-      get(target, prop, receiver) {
+      get(target, prop) {
         if (prop === 'activeElement') {
-          return getActiveElement(shadowRoot);
+          return getActiveElement(document);
         }
-        const value = Reflect.get(target, prop, receiver);
+        // Read with `target` as the receiver, not the proxy: accessors on
+        // Document.prototype (`body`, `head`, …) are branded and throw
+        // "Illegal invocation" when invoked with anything else as `this`.
+        const value = Reflect.get(target, prop);
         return typeof value === 'function' ? value.bind(target) : value;
       },
     }),
