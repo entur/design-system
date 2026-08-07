@@ -45,15 +45,12 @@ body:has(.consent-banner) #gatsby-focus-wrapper {
     margin-top: eds.$space-large;
   }
 
-  &__details-link {
-    display: inline-block;
-    margin-top: eds.$space-large;
-
-    :where(&) {
-      border: none;
-      background: none;
-      padding-inline: 0;
-    }
+  // Set apart from the choice above it, and quieter, so it reads as information rather
+  // than another option.
+  &__necessary {
+    margin-top: eds.$space-extra-large;
+    // One step below body text: quieter, still comfortable to read.
+    font-size: eds.$font-sizes-medium;
   }
 }
 

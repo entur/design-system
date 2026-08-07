@@ -185,7 +185,13 @@ export function waitFor(
 }
 
 export type UcFirstLayerLabels = {
-  privacy: { title: string; description: string };
+  privacy: {
+    title: string;
+    description: string;
+    /** "Short Banner Message for Web" in the Usercentrics admin. Carries the note about
+     *  the necessary information that cannot be turned off. */
+    shortDescription?: string;
+  };
   buttons: { accept: string; deny: string; more: string; save: string };
 };
 

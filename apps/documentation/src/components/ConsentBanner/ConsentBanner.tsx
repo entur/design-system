@@ -1,8 +1,7 @@
 import React from 'react';
-import { Link as GatsbyLink } from 'gatsby';
 
 import { PrimaryButton } from '@entur/button';
-import { Heading2, Link } from '@entur/typography';
+import { Heading2 } from '@entur/typography';
 
 import { useConsent } from '@providers/ConsentProvider';
 import { sanitizeUcHtml } from 'src/utils/sanitizeUcHtml';
@@ -30,11 +29,14 @@ export const ConsentBanner = () => {
   // the page out from under it. Deferred so the shift has settled first.
   React.useEffect(() => {
     if (!isBannerOpen) return;
+    // A hash in the address bar means the reader asked for a particular section, so leave
+    // them there rather than dragging the page up to the banner. It stays a scroll away.
+    if (!isBannerFocusRequested && window.location.hash) return;
     const frame = requestAnimationFrame(() => {
       sectionRef.current?.scrollIntoView({ block: 'start' });
     });
     return () => cancelAnimationFrame(frame);
-  }, [isBannerOpen]);
+  }, [isBannerOpen, isBannerFocusRequested]);
 
   // Taking focus is reserved for when the user asked for the banner. On page load focus
   // has to stay put, so that reading the page is never interrupted. Focusing the section
@@ -89,14 +91,16 @@ export const ConsentBanner = () => {
             {buttons.deny}
           </PrimaryButton>
         </div>
-        {buttons.more && (
-          <Link
-            as={GatsbyLink}
-            to="/personvern"
-            className="consent-banner__details-link"
-          >
-            {buttons.more}
-          </Link>
+        {/* The note about what cannot be turned off belongs after the choice, so it never
+            reads as one of the options. */}
+        {privacy.shortDescription && (
+          <div
+            className="consent-banner__necessary"
+            // eslint-disable-next-line react/no-danger
+            dangerouslySetInnerHTML={{
+              __html: sanitizeUcHtml(privacy.shortDescription),
+            }}
+          />
         )}
       </div>
     </section>
