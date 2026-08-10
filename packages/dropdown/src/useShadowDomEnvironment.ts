@@ -1,18 +1,7 @@
 import { RefObject, useMemo } from 'react';
 import type { Environment } from 'downshift';
 
-/**
- * Returns the active element, drilling into shadow roots.
- * `document.activeElement` stops at the shadow host — this
- * follows the chain into nested shadow roots.
- */
-export function getActiveElement(root: Document | ShadowRoot): Element | null {
-  const active = root.activeElement;
-  if (active?.shadowRoot) {
-    return getActiveElement(active.shadowRoot);
-  }
-  return active;
-}
+import { getActiveElement } from '@entur/utils';
 
 /**
  * Creates a downshift `environment` that works inside shadow DOM.
@@ -41,7 +30,7 @@ function createShadowEnvironment(shadowRoot: ShadowRoot): Environment {
     document: new Proxy(document, {
       get(target, prop) {
         if (prop === 'activeElement') {
-          return getActiveElement(document);
+          return getActiveElement();
         }
         // Read with `target` as the receiver, not the proxy: accessors on
         // Document.prototype (`body`, `head`, …) are branded and throw

@@ -23,17 +23,14 @@ import {
 
 import { BaseFormControl } from '@entur/form';
 import { space } from '@entur/tokens';
-import { mergeRefs } from '@entur/utils';
+import { getActiveElement, mergeRefs } from '@entur/utils';
 
 import { DropdownList } from './components/DropdownList';
 import { DropdownFieldAppendix } from './components/FieldComponents';
 
 import { DropdownProps } from './Dropdown';
 import { useResolvedItems } from './useResolvedItems';
-import {
-  getActiveElement,
-  useShadowDomEnvironment,
-} from './useShadowDomEnvironment';
+import { useShadowDomEnvironment } from './useShadowDomEnvironment';
 import {
   EMPTY_INPUT,
   clamp,
@@ -142,12 +139,7 @@ export const SearchableDropdown = React.forwardRef(
 
     const inputHasFocus =
       typeof document !== 'undefined' &&
-      inputRef.current ===
-        getActiveElement(
-          (inputRef.current?.getRootNode() ?? document) as
-            | Document
-            | ShadowRoot,
-        );
+      inputRef.current === getActiveElement();
 
     useEffect(() => {
       filterListItems({ inputValue });
