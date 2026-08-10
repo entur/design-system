@@ -10,5 +10,6 @@ export * from './useWindowDimensions';
 export * from './ConditionalWrapper';
 export * from './warnAboutMissingStyles';
 export * from './types/variants';
+export * from './getActiveElement';
 export * from './getNodeText';
 export * from './useControllableProp';
