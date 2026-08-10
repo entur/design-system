@@ -20,6 +20,7 @@
     "lint:packages": "oxlint packages/",
     "lint:styles": "stylelint 'packages/**/*.{css,scss}' --ignore-path .gitignore",
     "lint:styles:package": "lerna run lint:styles --scope \"@entur/$*\"",
+    "check:consent-texts": "node tools/check-consent-texts/index.mjs",
     "verify:skills": "node tools/verify-skills/index.mjs",
     "prepublishOnly": "yarn build:packages && yarn lint && yarn test:single-run",
     "prerelease-packages": "HUSKY=0 lerna publish --conventional-commits --conventional-prerelease --pre-dist-tag next --preid beta",
