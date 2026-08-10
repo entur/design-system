@@ -51,14 +51,20 @@ export const ConsentBanner = () => {
 
   const { privacy, buttons } = bannerLabels;
 
-  // acceptAllConsents and denyAllConsents persist the choice themselves. Keep the banner
-  // up if Usercentrics is unreachable, so a choice never looks recorded when it isn't.
+  // acceptAllConsents and denyAllConsents persist the choice themselves. The banner only
+  // closes once one of them has gone through, so a choice never looks recorded when it is
+  // not. Usercentrics also closes it through UC_CONSENT, which is harmless twice over.
   const answer = async (accepted: boolean) => {
     const cmp = window.__ucCmp;
     if (!cmp) return;
+    try {
+      if (accepted) await cmp.acceptAllConsents();
+      else await cmp.denyAllConsents();
+    } catch {
+      // The question stands, so leave it on screen to be answered again.
+      return;
+    }
     closeBanner();
-    if (accepted) await cmp.acceptAllConsents();
-    else await cmp.denyAllConsents();
   };
 
   return (

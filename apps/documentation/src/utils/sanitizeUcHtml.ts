@@ -14,11 +14,14 @@ export const sanitizeUcHtml = (html: string) => {
 
   const parsed = new DOMParser().parseFromString(clean, 'text/html');
 
-  parsed.body.querySelectorAll('a:not([href])').forEach(anchor => {
-    anchor.replaceWith(...Array.from(anchor.childNodes));
-  });
-
   parsed.body.querySelectorAll('a').forEach(anchor => {
+    // Sanitising drops an unsafe href, and the editor sometimes leaves an empty one behind.
+    // Either way the link leads nowhere, so unwrap it rather than leave text that invites a
+    // click. An empty href is worse than none: it reloads the page.
+    if (!anchor.getAttribute('href')?.trim()) {
+      anchor.replaceWith(...Array.from(anchor.childNodes));
+      return;
+    }
     // An empty link is invisible to sighted users and unreadable to screen readers.
     if (!anchor.textContent?.trim()) {
       anchor.remove();

@@ -272,9 +272,14 @@ export async function saveCategoryConsents(
 ) {
   const cmp = await getCMP();
   if (!cmp) return false;
-  await cmp.updateCategoriesConsents(categoryConsents);
-  await cmp.saveConsents();
-  return true;
+  try {
+    await cmp.updateCategoriesConsents(categoryConsents);
+    await cmp.saveConsents();
+    return true;
+  } catch {
+    // Callers show the choice as unavailable rather than as saved.
+    return false;
+  }
 }
 
 export const POSTHOG_SERVICE_NAME = 'PostHog.com';

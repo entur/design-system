@@ -74,7 +74,10 @@ export const ConsentProvider = ({
       })();
     }
     const labels = await labelsRequest.current;
+    // Hold on to the request so it only runs once, but not to a failure: a connection that
+    // drops for a moment should not rule out the texts for the rest of the visit.
     if (labels) setBannerLabels(labels);
+    else labelsRequest.current = null;
     return labels;
   }, []);
 

@@ -35,7 +35,9 @@ const buildCategories = (
     .filter(([, category]) => !category.hidden)
     .map(([id, category]) => ({
       id,
-      name: labels.categories[id]?.name ?? category.name,
+      // Falls back to the id so a checkbox is never left without a label. Both names
+      // missing would mean Usercentrics served a category it has no text for.
+      name: labels.categories[id]?.name ?? category.name ?? id,
       description: labels.categories[id]?.description,
       essential: category.essential ?? false,
       accepted: category.state === 'ALL_ACCEPTED',
