@@ -23,6 +23,15 @@
     margin-top: eds.$space-medium;
   }
 
+  &__list {
+    margin: eds.$space-medium 0;
+    padding-left: eds.$space-large;
+
+    li + li {
+      margin-top: eds.$space-extra-small;
+    }
+  }
+
   &__tags {
     display: flex;
     flex-wrap: wrap;

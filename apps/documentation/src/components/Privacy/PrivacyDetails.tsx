@@ -143,14 +143,55 @@ export const PrivacyDetails = () => {
   const setAll = (consent: boolean) =>
     persist(Object.fromEntries(Object.keys(selected).map(id => [id, consent])));
 
+  // The necessary storage below is written by the site itself, so it keeps working even when
+  // Usercentrics is unreachable. It has to be accounted for either way.
   if (unavailable) {
     return (
-      <Paragraph>
-        Vi får ikke kontakt med samtykkeløsningen vår akkurat nå, så vi kan ikke
-        vise hva som lagres. Prøv å laste siden på nytt. Bruker du en
-        annonseblokkerer, kan den være årsaken. Ingen valgfrie teknologier er i
-        bruk så lenge dette vedvarer.
-      </Paragraph>
+      <>
+        <section aria-labelledby="personvern-utilgjengelig">
+          <Heading2 id="personvern-utilgjengelig">
+            Vi får ikke kontakt med samtykkeløsningen vår
+          </Heading2>
+          <Paragraph>
+            Derfor kan vi ikke vise deg de valgfrie teknologiene akkurat nå, og
+            du får heller ikke gitt eller endret samtykke. Bruker du en
+            annonseblokkerer, er den mest sannsynlig årsaken. Prøv å laste siden
+            på nytt, eller å slå av blokkeringen for dette nettstedet.
+          </Paragraph>
+          <Paragraph>
+            Ingenting valgfritt er i bruk så lenge dette vedvarer. Vi samler
+            ikke inn noe om hvordan du bruker nettstedet før du har sagt ja til
+            det.
+          </Paragraph>
+        </section>
+
+        <section aria-labelledby="personvern-nodvendig">
+          <Heading2 id="personvern-nodvendig">
+            Nødvendig informasjon vi lagrer
+          </Heading2>
+          <Paragraph>
+            Dette lagrer nettstedet selv, uavhengig av samtykkeløsningen, og det
+            er i bruk nå. Du kan ikke velge det bort, men det følger deg ikke
+            videre til andre nettsteder, og vi bruker det ikke til å lage
+            statistikk.
+          </Paragraph>
+          <ul className="privacy-details__list">
+            <li>
+              Valgene dine for fargemodus, kodeformat, pakkeverktøy og hva slags
+              bruker du er, slik at nettstedet ser likt ut neste gang du er her.
+            </li>
+            <li>
+              Svaret du gir på spørsmålet om informasjonsinnsamling, slik at vi
+              ikke spør om igjen. Vi er pålagt å spørre, og da må vi lagre
+              svaret.
+            </li>
+          </ul>
+          <Paragraph>
+            Alt dette ligger lagret i nettleseren din. Sletter du data for
+            nettstedet, er det borte, og da spør vi på nytt.
+          </Paragraph>
+        </section>
+      </>
     );
   }
 
