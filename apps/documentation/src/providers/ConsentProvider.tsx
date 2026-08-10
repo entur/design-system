@@ -30,6 +30,10 @@ type ConsentContextType = {
   isBannerOpen: boolean;
   /** True when the banner was opened by the user, and should be brought into view */
   isBannerFocusRequested: boolean;
+  /** False once we know Usercentrics cannot be reached, so entry points that would open
+   *  the banner can step aside instead of leading nowhere. The privacy page explains the
+   *  situation and what is stored regardless. */
+  canOpenBanner: boolean;
   openBanner: () => void;
   closeBanner: () => void;
   clearBannerFocusRequest: () => void;
@@ -50,6 +54,9 @@ export const ConsentProvider = ({
   const [isBannerOpen, setBannerOpen] = React.useState(false);
   const [isBannerFocusRequested, setBannerFocusRequested] =
     React.useState(false);
+  // Assume it works until proven otherwise, so the entry points don't flicker away on a
+  // slow connection.
+  const [canOpenBanner, setCanOpenBanner] = React.useState(true);
   const labelsRequest = useRef<Promise<UcFirstLayerLabels | null> | null>(null);
 
   const updateConsents = (updatedValues: ConsentSet) => {
@@ -87,7 +94,10 @@ export const ConsentProvider = ({
   // brought into view.
   const openBanner = useCallback(async () => {
     const labels = await loadBannerLabels();
-    if (!labels) return;
+    if (!labels) {
+      setCanOpenBanner(false);
+      return;
+    }
     setBannerOpen(true);
     setBannerFocusRequested(true);
   }, [loadBannerLabels]);
@@ -100,9 +110,17 @@ export const ConsentProvider = ({
     (async () => {
       const cmp = await getCMP();
       const consentDetails = await cmp?.getConsentDetails();
-      if (cancelled || !consentDetails?.consent.required) return;
+      if (cancelled) return;
+      if (!consentDetails) {
+        // Usually an ad blocker stopping the loader.
+        setCanOpenBanner(false);
+        return;
+      }
+      if (!consentDetails.consent.required) return;
       const labels = await loadBannerLabels();
-      if (!cancelled && labels) setBannerOpen(true);
+      if (cancelled) return;
+      if (labels) setBannerOpen(true);
+      else setCanOpenBanner(false);
     })();
 
     return () => {
@@ -149,6 +167,7 @@ export const ConsentProvider = ({
       bannerLabels,
       isBannerOpen,
       isBannerFocusRequested,
+      canOpenBanner,
       openBanner,
       closeBanner,
       clearBannerFocusRequest,
@@ -159,6 +178,7 @@ export const ConsentProvider = ({
       bannerLabels,
       isBannerOpen,
       isBannerFocusRequested,
+      canOpenBanner,
       openBanner,
       closeBanner,
       clearBannerFocusRequest,

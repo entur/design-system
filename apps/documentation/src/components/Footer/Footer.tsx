@@ -23,7 +23,7 @@ const Footer = ({
   footerRef?: RefObject<HTMLElement>;
   contrast?: boolean;
 } & React.ComponentPropsWithoutRef<'footer'>) => {
-  const { openBanner } = useConsent();
+  const { openBanner, canOpenBanner } = useConsent();
   return (
     <footer
       ref={footerRef}
@@ -49,15 +49,19 @@ const Footer = ({
           <Link as={GatsbyLink} to="/personvern" className="footer__link">
             Personvern
           </Link>
-          <Link
-            as="button"
-            type="button"
-            onClick={() => openBanner()}
-            className="footer__link"
-          >
-            <CookieFilledIcon inline aria-hidden="true" /> Endre hvilken
-            informasjon vi får lagre
-          </Link>
+          {/* Hidden when the consent solution is unreachable, since it could not do
+              anything. The privacy link above explains the situation. */}
+          {canOpenBanner && (
+            <Link
+              as="button"
+              type="button"
+              onClick={() => openBanner()}
+              className="footer__link"
+            >
+              <CookieFilledIcon inline aria-hidden="true" /> Endre hvilken
+              informasjon vi får lagre
+            </Link>
+          )}
         </nav>
         <div>
           <Heading3 margin="bottom">Kontakt og ressurser</Heading3>
