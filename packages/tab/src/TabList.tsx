@@ -1,5 +1,6 @@
 import React, { useCallback, useContext, useRef } from 'react';
 import classNames from 'classnames';
+import { getActiveElement } from '@entur/utils';
 
 import { TabItemContext, TabsContext } from './TabsContext';
 
@@ -32,8 +33,9 @@ export const TabList = ({
     );
     if (!tabs || tabs.length === 0) return;
 
+    const focusedElement = getActiveElement();
     const currentIndex = Array.from(tabs).findIndex(
-      tab => tab === document.activeElement,
+      tab => tab === focusedElement,
     );
     if (currentIndex === -1) return;
 
