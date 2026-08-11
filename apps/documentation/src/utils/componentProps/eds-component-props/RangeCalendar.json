@@ -5,7 +5,9 @@
   "methods": [],
   "props": {
     "value": {
-      "defaultValue": null,
+      "defaultValue": {
+        "value": null
+      },
       "description": "Det valgte datoperioden. Null hvis ingen periode er valgt.",
       "name": "value",
       "declarations": [
@@ -14,7 +16,7 @@
           "name": "TypeLiteral"
         }
       ],
-      "required": true,
+      "required": false,
       "type": {
         "name": "RangeValue<MappedDateValue<DateType>> | null"
       }
