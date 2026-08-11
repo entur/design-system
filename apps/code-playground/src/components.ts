@@ -16,8 +16,8 @@ export * from '@entur/layout';
 export * from '@entur/layout/beta';
 export * from '@entur/loader';
 export * from '@entur/menu';
-// Namespaced: exports a SideNavigation that would otherwise clash with the stable one
-export * as MenuBeta from '@entur/menu/beta';
+// Aliased: exports a SideNavigation that would otherwise clash with the stable one
+export { SideNavigation as SideNavigationBeta } from '@entur/menu/beta';
 export * from '@entur/modal';
 export * from '@entur/tab';
 export * from '@entur/table';

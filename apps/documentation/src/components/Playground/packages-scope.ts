@@ -40,9 +40,9 @@ export const packages = {
   ...layoutBeta,
   ...loader,
   ...menu,
-  // Namespaced: @entur/menu/beta exports a SideNavigation that would otherwise
+  // Aliased: @entur/menu/beta exports a SideNavigation that would otherwise
   // shadow the stable one used by the existing examples.
-  MenuBeta: menuBeta,
+  SideNavigationBeta: menuBeta.SideNavigation,
   ...modal,
   ...tab,
   ...table,
