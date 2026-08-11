@@ -4,7 +4,7 @@ import { Contrast } from '@entur/layout';
 import { CloseIcon } from '@entur/icons';
 import { Heading3 } from '@entur/typography';
 import { IconButton } from '@entur/button';
-import { ConditionalWrapper } from '@entur/utils';
+import { ConditionalWrapper, getActiveElement } from '@entur/utils';
 import { ModalOverlay } from './ModalOverlay';
 
 import './Drawer.scss';
@@ -54,7 +54,7 @@ export const Drawer = ({
   useEffect(
     function handleFocus() {
       if (!open || overlay) return;
-      previouslyFocusedRef.current = document.activeElement;
+      previouslyFocusedRef.current = getActiveElement();
       drawerRef.current
         ?.querySelector<HTMLElement>('[data-autofocus]')
         ?.focus();
