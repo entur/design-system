@@ -137,9 +137,9 @@ export const SearchableDropdown = React.forwardRef(
       filterListItems({ inputValue: inputValue ?? EMPTY_INPUT });
     };
 
+    // Both are null before mount and on the server, so check the ref too
     const inputHasFocus =
-      typeof document !== 'undefined' &&
-      inputRef.current === getActiveElement();
+      inputRef.current !== null && inputRef.current === getActiveElement();
 
     useEffect(() => {
       filterListItems({ inputValue });
