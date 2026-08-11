@@ -1,0 +1,170 @@
+@use '@entur/tokens/dist/styles.scss' as t;
+
+.eds-side-navigation-beta {
+  --eds-side-navigation-beta-fill-default: var(--components-menu-sidenavigation-beta-standard-fill-default);
+  --eds-side-navigation-beta-fill-hover: var(--components-menu-sidenavigation-beta-standard-fill-hover);
+  --eds-side-navigation-beta-fill-click: var(--components-menu-sidenavigation-beta-standard-fill-click);
+  --eds-side-navigation-beta-fill-active: var(--components-menu-sidenavigation-beta-standard-fill-active);
+  --eds-side-navigation-beta-fill-disabled: var(--components-menu-sidenavigation-beta-standard-fill-disabled);
+  --eds-side-navigation-beta-text: var(--components-menu-sidenavigation-beta-standard-text);
+  --eds-side-navigation-beta-text-disabled: var(--components-menu-sidenavigation-beta-standard-text-disabled);
+  --eds-side-navigation-beta-text-group: var(--components-menu-sidenavigation-beta-standard-text-group);
+  --eds-side-navigation-beta-icon: var(--components-menu-sidenavigation-beta-standard-icon);
+  --eds-side-navigation-beta-icon-subdued: var(--components-menu-sidenavigation-beta-standard-icon-subdued);
+  --eds-side-navigation-beta-icon-disabled: var(--components-menu-sidenavigation-beta-standard-icon-disabled);
+  --eds-side-navigation-beta-stroke-active: var(--components-menu-sidenavigation-beta-standard-stroke-active);
+  --eds-side-navigation-beta-alert: var(--components-menu-sidenavigation-beta-standard-alert);
+  --eds-side-navigation-beta-focus: var(--basecolors-stroke-focus-standard);
+
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  color: var(--eds-side-navigation-beta-text);
+}
+
+:where(.eds-contrast) .eds-side-navigation-beta {
+  --eds-side-navigation-beta-fill-default: var(--components-menu-sidenavigation-beta-contrast-fill-default);
+  --eds-side-navigation-beta-fill-hover: var(--components-menu-sidenavigation-beta-contrast-fill-hover);
+  --eds-side-navigation-beta-fill-click: var(--components-menu-sidenavigation-beta-contrast-fill-click);
+  --eds-side-navigation-beta-fill-active: var(--components-menu-sidenavigation-beta-contrast-fill-active);
+  --eds-side-navigation-beta-fill-disabled: var(--components-menu-sidenavigation-beta-contrast-fill-disabled);
+  --eds-side-navigation-beta-text: var(--components-menu-sidenavigation-beta-contrast-text);
+  --eds-side-navigation-beta-text-disabled: var(--components-menu-sidenavigation-beta-contrast-text-disabled);
+  --eds-side-navigation-beta-text-group: var(--components-menu-sidenavigation-beta-contrast-text-group);
+  --eds-side-navigation-beta-icon: var(--components-menu-sidenavigation-beta-contrast-icon);
+  --eds-side-navigation-beta-icon-subdued: var(--components-menu-sidenavigation-beta-contrast-icon-subdued);
+  --eds-side-navigation-beta-icon-disabled: var(--components-menu-sidenavigation-beta-contrast-icon-disabled);
+  --eds-side-navigation-beta-stroke-active: var(--components-menu-sidenavigation-beta-contrast-stroke-active);
+  --eds-side-navigation-beta-alert: var(--components-menu-sidenavigation-beta-contrast-alert);
+  --eds-side-navigation-beta-focus: var(--basecolors-stroke-focus-contrast);
+}
+
+.eds-side-navigation-beta__group-list,
+.eds-side-navigation-beta__submenu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.eds-side-navigation-beta__group-title {
+  display: block;
+  padding: 1.5rem 1rem 0.5rem;
+  color: var(--eds-side-navigation-beta-text-group);
+  font-size: t.$font-sizes-small;
+  font-weight: t.$font-weights-body;
+  line-height: t.$line-heights-small;
+  text-transform: uppercase;
+}
+
+.eds-side-navigation-beta__click-target {
+  appearance: none;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  min-height: 3rem;
+  padding: 0 1rem;
+  border: 0;
+  border-radius: 0;
+  background-color: var(--eds-side-navigation-beta-fill-default);
+  color: var(--eds-side-navigation-beta-text);
+  font-family: inherit;
+  font-size: t.$font-sizes-large;
+  font-weight: t.$font-weights-body;
+  line-height: t.$line-heights-extra-large;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+// Undermenyelementer rykkes inn forbi ikonkolonnen til forelderen.
+:where(.eds-side-navigation-beta__submenu) .eds-side-navigation-beta__click-target {
+  padding-left: 2.5rem;
+}
+
+.eds-side-navigation-beta__click-target--active {
+  box-shadow: inset t.$border-widths-large 0 0 var(--eds-side-navigation-beta-stroke-active);
+  background-color: var(--eds-side-navigation-beta-fill-active);
+  font-weight: t.$font-weights-heading;
+  line-height: t.$line-heights-medium;
+}
+
+.eds-side-navigation-beta__click-target:where([disabled]) {
+  background-color: var(--eds-side-navigation-beta-fill-disabled);
+  color: var(--eds-side-navigation-beta-text-disabled);
+  cursor: not-allowed;
+}
+
+.eds-side-navigation-beta__click-target:not(:where([disabled])):hover {
+  background-color: var(--eds-side-navigation-beta-fill-hover);
+}
+
+.eds-side-navigation-beta__click-target:not(:where([disabled])):active {
+  background-color: var(--eds-side-navigation-beta-fill-click);
+}
+
+.eds-side-navigation-beta__click-target:not(:where([disabled])):focus-visible {
+  outline: t.$outlines-focus;
+  outline-color: var(--eds-side-navigation-beta-focus);
+
+  // Negativ offset holder fokusringen innenfor raden, som går helt ut i kanten.
+  outline-offset: -1 * t.$outline-offsets-focus;
+}
+
+:where(.eds-side-navigation-beta__click-target[disabled]) .eds-side-navigation-beta__icon,
+:where(.eds-side-navigation-beta__click-target[disabled]) .eds-side-navigation-beta__chevron {
+  color: var(--eds-side-navigation-beta-icon-disabled);
+}
+
+.eds-side-navigation-beta__label {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.eds-side-navigation-beta__label-text {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.eds-side-navigation-beta__icon {
+  display: inline-flex;
+  flex: none;
+  color: var(--eds-side-navigation-beta-icon);
+}
+
+.eds-side-navigation-beta__icon :where(svg) {
+  width: 1rem;
+  height: 1rem;
+}
+
+.eds-side-navigation-beta__badge {
+  display: inline-flex;
+  flex: none;
+}
+
+.eds-side-navigation-beta__alert {
+  display: block;
+  flex: none;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: var(--eds-side-navigation-beta-alert);
+}
+
+.eds-side-navigation-beta__chevron {
+  flex: none;
+  width: 1rem;
+  height: 1rem;
+  color: var(--eds-side-navigation-beta-icon-subdued);
+  transition: transform t.$timings-medium ease-out;
+}
+
+.eds-side-navigation-beta__chevron--open {
+  transform: rotate(-180deg);
+}
