@@ -13,7 +13,7 @@ import type {
 
 import { BaseFormControlProps, TextField } from '@entur/form';
 import { ClockIcon } from '@entur/icons';
-import { VariantType, mergeRefs } from '@entur/utils';
+import { VariantType, getActiveElement, mergeRefs } from '@entur/utils';
 
 import './SimpleTimePicker.scss';
 
@@ -146,7 +146,10 @@ export const SimpleTimePicker = <TimeType extends TimeValue>({
     const selectedTimeString = getStringFromTimeValue(selectedTime);
     setInputText(selectedTimeString);
 
-    const timeFieldIsFocused = document.activeElement === timeFieldRef?.current;
+    // check the ref too, since both are null before mount
+    const timeFieldIsFocused =
+      timeFieldRef.current !== null &&
+      getActiveElement() === timeFieldRef.current;
     if (selectedTimeString === '' && !timeFieldIsFocused)
       addPlaceholderToInput();
   };
