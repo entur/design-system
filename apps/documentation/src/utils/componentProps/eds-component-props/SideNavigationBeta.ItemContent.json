@@ -1,0 +1,70 @@
+{
+  "tags": {},
+  "description": "Delt radinnhold for menyelementer og ekspanderbare menyelementer.",
+  "displayName": "SideNavigationBeta.ItemContent",
+  "methods": [],
+  "props": {
+    "icon": {
+      "defaultValue": null,
+      "description": "Ikon som vises til venstre for etiketten",
+      "name": "icon",
+      "declarations": [
+        {
+          "fileName": "packages/menu/src/beta/SideNavigation/SideNavigationItemContent.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "badge": {
+      "defaultValue": null,
+      "description": "Innhold som vises til høyre for etiketten, typisk en StatusBadge",
+      "name": "badge",
+      "declarations": [
+        {
+          "fileName": "packages/menu/src/beta/SideNavigation/SideNavigationItemContent.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "alert": {
+      "defaultValue": null,
+      "description": "Viser en varselprikk ytterst til høyre",
+      "name": "alert",
+      "declarations": [
+        {
+          "fileName": "packages/menu/src/beta/SideNavigation/SideNavigationItemContent.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "boolean | undefined"
+      }
+    },
+    "alertLabel": {
+      "defaultValue": {
+        "value": "Varsel"
+      },
+      "description": "Tekst som leses opp for varselprikken",
+      "name": "alertLabel",
+      "declarations": [
+        {
+          "fileName": "packages/menu/src/beta/SideNavigation/SideNavigationItemContent.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    }
+  }
+}

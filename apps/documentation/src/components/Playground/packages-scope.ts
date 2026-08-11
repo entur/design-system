@@ -13,6 +13,7 @@ import * as layout from '@entur/layout';
 import * as layoutBeta from '@entur/layout/beta';
 import * as loader from '@entur/loader';
 import * as menu from '@entur/menu';
+import * as menuBeta from '@entur/menu/beta';
 import * as modal from '@entur/modal';
 import * as tab from '@entur/tab';
 import * as table from '@entur/table';
@@ -39,6 +40,9 @@ export const packages = {
   ...layoutBeta,
   ...loader,
   ...menu,
+  // Namespaced: @entur/menu/beta exports a SideNavigation that would otherwise
+  // shadow the stable one used by the existing examples.
+  MenuBeta: menuBeta,
   ...modal,
   ...tab,
   ...table,
