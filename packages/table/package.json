@@ -1,6 +1,6 @@
 {
   "name": "@entur/table",
-  "version": "5.0.1",
+  "version": "5.0.2-beta.0",
   "license": "EUPL-1.2",
   "main": "dist/table.cjs",
   "module": "dist/table.mjs",

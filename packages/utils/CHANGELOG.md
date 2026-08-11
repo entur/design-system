@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.15.0-beta.0](https://github.com/entur/design-system/compare/@entur/utils@0.14.1...@entur/utils@0.15.0-beta.0) (2026-08-11)
+
+### Bug Fixes
+
+- **utils:** make getActiveElement safe to call during server rendering ([d33559d](https://github.com/entur/design-system/commit/d33559dfd0bf4972b263515ec126dbedca61d971))
+
+### Features
+
+- **utils:** add getActiveElement for finding focus inside shadow DOM ([25b1b70](https://github.com/entur/design-system/commit/25b1b7070be139278972c7554a70559ed171fe52))
+
 ## [0.14.1](https://github.com/entur/design-system/compare/@entur/utils@0.14.0...@entur/utils@0.14.1) (2026-08-06)
 
 **Note:** Version bump only for package @entur/utils
