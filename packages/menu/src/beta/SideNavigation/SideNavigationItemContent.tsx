@@ -22,7 +22,7 @@ export const SideNavigationItemContent: React.FC<
     <span className="eds-side-navigation-beta__label">
       <span className="eds-side-navigation-beta__label-text">
         {icon && <span className="eds-side-navigation-beta__icon">{icon}</span>}
-        <span>{children}</span>
+        <span className="eds-side-navigation-beta__text">{children}</span>
       </span>
       {badge && (
         <span className="eds-side-navigation-beta__badge">{badge}</span>

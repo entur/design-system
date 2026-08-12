@@ -48,7 +48,7 @@ import '@entur/menu/beta/styles';
   `Template.Portal.Sidebar` in `@entur/layout/beta` owns the `collapsed` prop.
 - **"Group" means something else.** In the stable component a group is the expandable thing.
   Here a group is a heading, and expanding is `ExpandableItem`'s job.
-- **No `size` prop.** The spec has a single 48px row height.
+- **No `size` prop.** The spec has a single 48px row height, growing only when a label wraps.
 - **No dividers** between items.
 - `onToggle` is now `onOpenChange`, and it always receives the new boolean.
 
@@ -84,6 +84,18 @@ would be visibly open for one frame on every navigation.
 `BaseExpand` from `@entur/expand` is safe to rely on here: it seeds `useState(open)` and
 animates with `grid-template-rows: 0fr → 1fr`, so it neither measures the DOM nor flips state
 on mount.
+
+### Labels may wrap to two lines
+
+A label that does not fit on one line wraps to a second, and is cut with an ellipsis after that.
+The row is built from block padding plus a `min-height` rather than a fixed height, so it grows
+with the second line instead of clipping it. Icon, badge and alert stay vertically centred
+against the whole label.
+
+Truncation is `-webkit-line-clamp`, which needs `display: -webkit-box` on the text element —
+hence the separate `__text` span around `children`. Two lines is a hard limit, not a default:
+the row height stays predictable in a sidebar, and a label needing three lines is a content
+problem.
 
 ### Visual states carry no React state
 
