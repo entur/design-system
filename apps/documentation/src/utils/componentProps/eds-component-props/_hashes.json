@@ -112,7 +112,7 @@
     "outputs": ["TagChip.json"]
   },
   "datepicker/src/DatePicker/Calendar.tsx": {
-    "hash": "157fa7b13ad14b272e336f9be6f1ca69",
+    "hash": "727b22f82c4c4b6271cda0fde4ca399d",
     "outputs": ["Calendar.json"]
   },
   "datepicker/src/DatePicker/CalendarCell.tsx": {
@@ -124,11 +124,11 @@
     "outputs": ["CalendarGrid.json"]
   },
   "datepicker/src/DatePicker/DateField.tsx": {
-    "hash": "c7a0e2c9674e686b784167e2c0980ce1",
+    "hash": "b5edbb48e99c4974b0bce7579d7459da",
     "outputs": ["DateField.json"]
   },
   "datepicker/src/DatePicker/DatePicker.tsx": {
-    "hash": "6c2dec68f8edc170674b1d376b54c0c9",
+    "hash": "c03a1b0ff1716015a0618b632378f6dd",
     "outputs": ["DatePicker.json"]
   },
   "datepicker/src/DatePicker/NativeDatePicker.tsx": {
@@ -140,11 +140,11 @@
     "outputs": ["NativeTimePicker.json"]
   },
   "datepicker/src/TimePicker/SimpleTimePicker.tsx": {
-    "hash": "0edee77520d8663af9102beeb2aa3cd3",
+    "hash": "43a8b19441ebaf35db4f9bb4d253615e",
     "outputs": ["SimpleTimePicker.json"]
   },
   "datepicker/src/TimePicker/TimePicker.tsx": {
-    "hash": "9a6f2f1de49a3eecb792780c2872bd6e",
+    "hash": "3e90394d60396488cf4c4c73ca96d9b6",
     "outputs": ["TimePicker.json"]
   },
   "datepicker/src/TimePicker/TimePickerArrowButton.tsx": {
@@ -196,7 +196,7 @@
     "outputs": ["AccordionItem.json"]
   },
   "expand/src/BaseExpand.tsx": {
-    "hash": "9827301324ff04a0113c9077600bcd4b",
+    "hash": "7d9f895edec123f4f4e84d2718a2dd71",
     "outputs": ["BaseExpand.json"]
   },
   "expand/src/BaseExpandablePanel.tsx": {
@@ -693,7 +693,7 @@
     "outputs": ["Logo.json"]
   },
   "datepicker/src/DatePicker/RangeCalendar.tsx": {
-    "hash": "ae778ccac6d80dcc8f47aec4595c7401",
+    "hash": "37d71e60202548caa477f60ab820e18e",
     "outputs": ["RangeCalendar.json"]
   },
   "datepicker/src/DatePicker/RangeCalendarCell.tsx": {
@@ -711,5 +711,25 @@
   "tab/src/TabsContext.tsx": {
     "hash": "4b0508bbf39d74c4eb7dc35ae0907186",
     "outputs": []
+  },
+  "menu/src/beta/SideNavigation/SideNavigation.tsx": {
+    "hash": "fdf22f55d0b67b59b298ca3592919ee7",
+    "outputs": ["SideNavigationBeta.json"]
+  },
+  "menu/src/beta/SideNavigation/SideNavigationExpandableItem.tsx": {
+    "hash": "846bcf1ab7d734e6fddc745c8e055b8a",
+    "outputs": ["SideNavigationBeta.ExpandableItem.json"]
+  },
+  "menu/src/beta/SideNavigation/SideNavigationGroup.tsx": {
+    "hash": "3b1754c5d86674683a7873f67b7f60b5",
+    "outputs": ["SideNavigationBeta.Group.json"]
+  },
+  "menu/src/beta/SideNavigation/SideNavigationItem.tsx": {
+    "hash": "0fe3822a9b5476137297aae5c97cc585",
+    "outputs": ["SideNavigationBeta.Item.json"]
+  },
+  "menu/src/beta/SideNavigation/SideNavigationItemContent.tsx": {
+    "hash": "b51ed3bad83aa205e495d7f7c06f03d7",
+    "outputs": ["SideNavigationBeta.ItemContent.json"]
   }
 }

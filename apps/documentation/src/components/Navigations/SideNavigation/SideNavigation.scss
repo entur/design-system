@@ -25,8 +25,13 @@
     padding: eds.$space-extra-large2 eds.$space-extra-large2 0 eds.$space-extra-large2;
   }
 
-  &__group {
-    margin-top: 1rem;
+  // Line the labels up with the top bar logo, which sits on the top bar's
+  // padding-inline. Set as padding rather than a margin so hover and active
+  // backgrounds still run to the edge of the sidebar.
+  &__menu {
+    --eds-side-navigation-padding-inline-start: #{eds.$space-extra-large2};
+
+    margin-bottom: 2rem;
   }
 
   &-wrapper {
@@ -87,27 +92,6 @@
 
     .eds-drawer__close-button {
       z-index: 10;
-    }
-  }
-
-  &__searchbar__button {
-    display: flex;
-    align-items: center;
-    max-width: 13rem;
-    margin-left: 2rem;
-    margin-top: 1rem;
-
-    kbd {
-      display: inline-block;
-      margin-left: auto;
-    }
-  }
-
-  @media screen and (max-width: map.get(variables.$breakpoints, 'tablet')) {
-    .searchbar__button {
-      span {
-        display: none;
-      }
     }
   }
 }

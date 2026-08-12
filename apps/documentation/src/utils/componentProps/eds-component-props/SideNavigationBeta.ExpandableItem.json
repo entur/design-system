@@ -1,0 +1,166 @@
+{
+  "tags": {},
+  "description": "",
+  "displayName": "SideNavigationBeta.ExpandableItem",
+  "methods": [],
+  "props": {
+    "icon": {
+      "defaultValue": null,
+      "description": "Ikon som vises til venstre for etiketten",
+      "name": "icon",
+      "declarations": [
+        {
+          "fileName": "packages/menu/src/beta/SideNavigation/SideNavigationItemContent.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "badge": {
+      "defaultValue": null,
+      "description": "Innhold som vises til høyre for etiketten, typisk en StatusBadge",
+      "name": "badge",
+      "declarations": [
+        {
+          "fileName": "packages/menu/src/beta/SideNavigation/SideNavigationItemContent.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "alert": {
+      "defaultValue": null,
+      "description": "Viser en varselprikk ytterst til høyre",
+      "name": "alert",
+      "declarations": [
+        {
+          "fileName": "packages/menu/src/beta/SideNavigation/SideNavigationItemContent.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "boolean | undefined"
+      }
+    },
+    "alertLabel": {
+      "defaultValue": {
+        "value": "'Varsel'"
+      },
+      "description": "Tekst som leses opp for varselprikken",
+      "name": "alertLabel",
+      "declarations": [
+        {
+          "fileName": "packages/menu/src/beta/SideNavigation/SideNavigationItemContent.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "title": {
+      "defaultValue": null,
+      "description": "Etiketten til det ekspanderbare elementet",
+      "name": "title",
+      "declarations": [
+        {
+          "fileName": "packages/menu/src/beta/SideNavigation/SideNavigationExpandableItem.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": true,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "active": {
+      "defaultValue": {
+        "value": false
+      },
+      "description": "Marker elementet som gjeldende side",
+      "name": "active",
+      "declarations": [
+        {
+          "fileName": "packages/menu/src/beta/SideNavigation/SideNavigationExpandableItem.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "boolean | undefined"
+      }
+    },
+    "disabled": {
+      "defaultValue": {
+        "value": false
+      },
+      "description": "Deaktiver elementet",
+      "name": "disabled",
+      "declarations": [
+        {
+          "fileName": "packages/menu/src/beta/SideNavigation/SideNavigationExpandableItem.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "boolean | undefined"
+      }
+    },
+    "open": {
+      "defaultValue": null,
+      "description": "Om undermenyen er åpen. Gjør komponenten kontrollert",
+      "name": "open",
+      "declarations": [
+        {
+          "fileName": "packages/menu/src/beta/SideNavigation/SideNavigationExpandableItem.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "boolean | undefined"
+      }
+    },
+    "defaultOpen": {
+      "defaultValue": {
+        "value": false
+      },
+      "description": "Om undermenyen er åpen ved første render. Kun relevant når komponenten\nikke er kontrollert",
+      "name": "defaultOpen",
+      "declarations": [
+        {
+          "fileName": "packages/menu/src/beta/SideNavigation/SideNavigationExpandableItem.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "boolean | undefined"
+      }
+    },
+    "onOpenChange": {
+      "defaultValue": null,
+      "description": "Kalles med den nye tilstanden når undermenyen åpnes eller lukkes",
+      "name": "onOpenChange",
+      "declarations": [
+        {
+          "fileName": "packages/menu/src/beta/SideNavigation/SideNavigationExpandableItem.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "((open: boolean) => void) | undefined"
+      }
+    }
+  }
+}

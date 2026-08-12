@@ -1,0 +1,23 @@
+{
+  "tags": {},
+  "description": "",
+  "displayName": "SideNavigationBeta.Group",
+  "methods": [],
+  "props": {
+    "title": {
+      "defaultValue": null,
+      "description": "Overskriften til gruppen",
+      "name": "title",
+      "declarations": [
+        {
+          "fileName": "packages/menu/src/beta/SideNavigation/SideNavigationGroup.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": true,
+      "type": {
+        "name": "ReactNode"
+      }
+    }
+  }
+}

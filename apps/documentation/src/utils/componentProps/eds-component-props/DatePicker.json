@@ -5,7 +5,9 @@
   "methods": [],
   "props": {
     "selectedDate": {
-      "defaultValue": null,
+      "defaultValue": {
+        "value": null
+      },
       "description": "Den valgte tiden. Tid i '@internationalized/date'-pakkens format",
       "name": "selectedDate",
       "declarations": [
@@ -14,7 +16,7 @@
           "name": "TypeLiteral"
         }
       ],
-      "required": true,
+      "required": false,
       "type": {
         "name": "DateValue | null"
       }

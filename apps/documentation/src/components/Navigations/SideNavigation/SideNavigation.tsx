@@ -1,20 +1,14 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import classNames from 'classnames';
-import {
-  SideNavigation as EnturSideNavigation,
-  SideNavigationGroup,
-  SideNavigationItem,
-} from '@entur/menu';
+import { SideNavigation as EnturSideNavigation } from '@entur/menu/beta';
 
-import { SecondaryButton } from '@entur/button';
-import { SearchIcon } from '@entur/icons';
-import { Badge } from '@entur/layout';
 import { ArticleTag } from '../../Common/ArticleTag';
 
 import {
   MenuItem,
   getSanitizedPath,
+  groupSubcategoryFor,
   isActive,
   menuItemComparator,
   normalizeString,
@@ -22,13 +16,13 @@ import {
   sortSubCategoriesForCategory,
 } from './utils';
 
-import { useSearch } from '../../Search/SearchContext';
-
 import './SideNavigation.scss';
-import { Flex } from '@entur/layout/beta';
+
+// useLayoutEffect would warn during Gatsby's server render, where it never runs
+const useIsomorphicLayoutEffect =
+  typeof window === 'undefined' ? React.useEffect : React.useLayoutEffect;
 
 type SideNavigationProps = {
-  mobile?: boolean;
   menuItems: MenuItem[];
   className?: string;
   onClickMenuItem?: () => void;
@@ -36,18 +30,37 @@ type SideNavigationProps = {
 };
 
 const SideNavigation: React.FC<SideNavigationProps> = ({
-  mobile = false,
   menuItems,
   className,
   onClickMenuItem,
   currentLocation,
 }) => {
-  const { openSearch } = useSearch();
+  const wrapperRef = React.useRef<HTMLDivElement>(null);
 
   const currentPathSegments = removeLeadingAndTrailingSlash(
     currentLocation.pathname,
   )?.split('/');
   const currentCategory = normalizeString(currentPathSegments?.[0]) ?? '';
+
+  // The menu is long enough that the current page is often below the fold.
+  // Centre it in the sidebar when it is out of view, before the first paint.
+  // Only the sidebar scrolls — scrollIntoView would move the page as well.
+  useIsomorphicLayoutEffect(() => {
+    const wrapper = wrapperRef.current;
+    const activeItem = wrapper?.querySelector('[aria-current="page"]');
+    if (!wrapper || !activeItem) return;
+
+    const wrapperBox = wrapper.getBoundingClientRect();
+    const itemBox = activeItem.getBoundingClientRect();
+    const isInView =
+      itemBox.top >= wrapperBox.top && itemBox.bottom <= wrapperBox.bottom;
+    if (isInView) return;
+
+    wrapper.scrollTop +=
+      itemBox.top -
+      wrapperBox.top -
+      (wrapper.clientHeight - itemBox.height) / 2;
+  }, [currentLocation.pathname]);
 
   // Filter, group, and sort menu items
   const processedMenuItems = React.useMemo(() => {
@@ -56,7 +69,7 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
     menuItems
       .filter(item => normalizeString(item.category) === currentCategory)
       .forEach(item => {
-        const { subcategory } = item;
+        const subcategory = groupSubcategoryFor(item);
         const subcategoryLowercase = subcategory?.toLowerCase();
         if (subcategoryLowercase) {
           if (!grouped[subcategoryLowercase])
@@ -87,81 +100,39 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
     const { item } = props;
     const path = item.path || getSanitizedPath(item) || '';
     return (
-      <SideNavigationItem
+      <EnturSideNavigation.Item
         key={item.id}
         as={Link}
         to={path}
         active={isActive(path, currentLocation)}
         onClick={onClickMenuItem}
+        badge={item.tag ? <ArticleTag tag={item.tag} /> : undefined}
       >
-        <Flex justify="space-between">
-          {item.title} {item.tag && <ArticleTag tag={item.tag} />}
-        </Flex>
-      </SideNavigationItem>
+        {item.title}
+      </EnturSideNavigation.Item>
     );
   };
 
   const { sortedGrouped, ungrouped } = processedMenuItems;
 
   return (
-    <div className={classNames('side-navigation-wrapper', className)}>
-      <SearchBar
-        onOpenSearch={() => {
-          onClickMenuItem?.();
-          openSearch();
-        }}
-      />
-      <EnturSideNavigation style={{ marginTop: mobile ? '0rem' : '1.5rem' }}>
+    <div
+      className={classNames('side-navigation-wrapper', className)}
+      ref={wrapperRef}
+    >
+      <EnturSideNavigation className="side-navigation__menu">
         {sortedGrouped.map(([subcategory, subcategoryMenuItems]) => (
-          <SideNavigationGroup
-            key={subcategory}
-            defaultOpen={true}
-            title={subcategory}
-            className="side-navigation__group"
-          >
+          <EnturSideNavigation.Group key={subcategory} title={subcategory}>
             {subcategoryMenuItems.map(item => (
               <MenuItem key={item.id} item={item} />
             ))}
-          </SideNavigationGroup>
+          </EnturSideNavigation.Group>
         ))}
         {ungrouped.map(item => (
           <MenuItem key={item.id} item={item} />
         ))}
       </EnturSideNavigation>
     </div>
-  );
-};
-
-type SearchBarProps = {
-  /** Callback to open the search modal */
-  onOpenSearch: () => void;
-  /** Ekstra klassenavn */
-  className?: string;
-};
-
-const SearchBar: React.FC<SearchBarProps> = ({ onOpenSearch }) => {
-  return (
-    <SecondaryButton
-      aria-label="Søk i dokumentasjon"
-      className="side-navigation__searchbar__button"
-      onClick={onOpenSearch}
-      width="fluid"
-    >
-      <SearchIcon aria-hidden="true" />
-      <span>Søk …</span>
-      <Badge
-        as="kbd"
-        variant="neutral"
-        type="status"
-        style={{
-          width: '5ch',
-          minWidth: 'unset',
-          paddingInline: '0.25rem',
-        }}
-      >
-        ⌘ k
-      </Badge>
-    </SecondaryButton>
   );
 };
 

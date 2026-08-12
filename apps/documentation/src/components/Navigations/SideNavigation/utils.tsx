@@ -80,16 +80,27 @@ export function menuItemComparator(a: MenuItem, b: MenuItem) {
   return 0;
 }
 
+// Under Komponenter every component lives in one flat, alphabetical group.
+// Only these subcategories keep a section of their own.
+const KOMPONENTER_MERGED_GROUP = 'Komponenter';
+const KOMPONENTER_STANDALONE_SUBCATEGORIES = ['oversikt', 'ressurser', 'maler'];
+
+export const groupSubcategoryFor = (item: MenuItem): string | undefined => {
+  if (normalizeString(item.category) !== 'komponenter') return item.subcategory;
+  if (!item.subcategory) return item.subcategory;
+  return KOMPONENTER_STANDALONE_SUBCATEGORIES.includes(
+    normalizeString(item.subcategory),
+  )
+    ? item.subcategory
+    : KOMPONENTER_MERGED_GROUP;
+};
+
 // Menu-items sort orders
 export const componentsMenuSortOrder = {
   oversikt: 1,
   ressurser: 2,
-  knapper: 3,
-  skjemaelementer: 4,
-  navigasjon: 5,
-  'layout & flater': 6,
-  feedback: 7,
-  reise: 8,
+  komponenter: 3,
+  maler: 4,
 } as any;
 
 export const komIGangMenuSortOrder = {

@@ -1,0 +1,149 @@
+{
+  "tags": {},
+  "description": "",
+  "displayName": "SideNavigationBeta.Item",
+  "methods": [],
+  "props": {
+    "icon": {
+      "defaultValue": null,
+      "description": "Ikon som vises til venstre for etiketten",
+      "name": "icon",
+      "declarations": [
+        {
+          "fileName": "packages/menu/src/beta/SideNavigation/SideNavigationItemContent.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "badge": {
+      "defaultValue": null,
+      "description": "Innhold som vises til høyre for etiketten, typisk en StatusBadge",
+      "name": "badge",
+      "declarations": [
+        {
+          "fileName": "packages/menu/src/beta/SideNavigation/SideNavigationItemContent.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "alert": {
+      "defaultValue": null,
+      "description": "Viser en varselprikk ytterst til høyre",
+      "name": "alert",
+      "declarations": [
+        {
+          "fileName": "packages/menu/src/beta/SideNavigation/SideNavigationItemContent.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "boolean | undefined"
+      }
+    },
+    "alertLabel": {
+      "defaultValue": {
+        "value": "'Varsel'"
+      },
+      "description": "Tekst som leses opp for varselprikken",
+      "name": "alertLabel",
+      "declarations": [
+        {
+          "fileName": "packages/menu/src/beta/SideNavigation/SideNavigationItemContent.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "active": {
+      "defaultValue": {
+        "value": false
+      },
+      "description": "Marker elementet som gjeldende side",
+      "name": "active",
+      "declarations": [
+        {
+          "fileName": "packages/menu/src/beta/SideNavigation/SideNavigationItem.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "boolean | undefined"
+      }
+    },
+    "disabled": {
+      "defaultValue": {
+        "value": false
+      },
+      "description": "Deaktiver elementet. Rendres da som en deaktivert knapp",
+      "name": "disabled",
+      "declarations": [
+        {
+          "fileName": "packages/menu/src/beta/SideNavigation/SideNavigationItem.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "boolean | undefined"
+      }
+    },
+    "className": {
+      "defaultValue": null,
+      "description": "Ekstra klassenavn",
+      "name": "className",
+      "declarations": [
+        {
+          "fileName": "packages/menu/src/beta/SideNavigation/SideNavigationItem.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "as": {
+      "defaultValue": null,
+      "description": "An override of the default HTML tag.\nCan also be another React component.",
+      "name": "as",
+      "declarations": [
+        {
+          "fileName": "node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "ElementType<any, keyof IntrinsicElements> | undefined"
+      }
+    },
+    "ref": {
+      "defaultValue": null,
+      "description": "",
+      "name": "ref",
+      "declarations": [
+        {
+          "fileName": "packages/menu/src/beta/SideNavigation/SideNavigationItem.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "Ref<Element> | undefined"
+      }
+    }
+  }
+}
