@@ -3,15 +3,10 @@ import { Link } from 'gatsby';
 import { Location, useLocation } from '@reach/router';
 import classNames from 'classnames';
 
-import { useContrast } from '@entur/layout';
-import { TopNavigationItem } from '@entur/menu';
+import { Logo, TopNavigationItem } from '@entur/menu';
 
 import SettingsPanel from '../SettingsPanel';
-import { useSettings } from '@providers/SettingsContext';
 import { Search } from '@components/Search/Search';
-
-import logo from '@media/logo/logo.svg';
-import logoDark from '@media/logo/logoDark.svg';
 
 import './TopNavigation.scss';
 
@@ -19,17 +14,10 @@ const TopNavigation = ({
   className,
   ...rest
 }: React.ComponentPropsWithoutRef<'header'>) => {
-  const { colorMode } = useSettings();
-  const isContrast = useContrast();
   const location = useLocation();
 
   const isFrontpage = location.pathname === '/';
-  const shouldUseNegativeLogo =
-    colorMode === 'dark' ||
-    isContrast ||
-    (colorMode === 'system' &&
-      typeof window !== 'undefined' &&
-      window.matchMedia('(prefers-color-scheme: dark)').matches);
+
   return (
     <header
       className={classNames('top-navigation', className, {
@@ -37,14 +25,7 @@ const TopNavigation = ({
       })}
       {...rest}
     >
-      <Link to="/" className="top-navigation__logo">
-        <img
-          src={shouldUseNegativeLogo ? logoDark : logo}
-          height="32px"
-          width="102px"
-          alt="Entur logo, klikk for å gå til startsiden"
-        />
-      </Link>
+      <Logo as={Link} to="/" className="top-navigation__logo" />
       <nav aria-label="Navigasjon, hovedseksjoner">
         <NavItem to="/kom-i-gang">Kom i gang</NavItem>
         <NavItem to="/identitet">Identitet</NavItem>
