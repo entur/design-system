@@ -7,9 +7,7 @@ import {
   GithubIcon,
 } from '@entur/icons';
 import { Link, Heading3 } from '@entur/typography';
-
-import { Logo } from '@components/Logo/Logo';
-import { useSettings } from '@providers/SettingsContext';
+import { Logo } from '@entur/menu';
 
 import './Footer.scss';
 
@@ -22,7 +20,6 @@ const Footer = ({
   footerRef?: RefObject<HTMLElement>;
   contrast?: boolean;
 } & React.ComponentPropsWithoutRef<'footer'>) => {
-  const { colorMode } = useSettings();
   return (
     <footer
       ref={footerRef}
@@ -31,7 +28,7 @@ const Footer = ({
     >
       <div className="footer__grid-container">
         <div>
-          <Logo colorMode={contrast ? 'dark' : colorMode} />
+          <Logo />
           <p className="footer__description">
             Entur Linje er designsystemet til Entur. Det hjelper designere og
             utviklere å bygge konsistente digitale tjenester.

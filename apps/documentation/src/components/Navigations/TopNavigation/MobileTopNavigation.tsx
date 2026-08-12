@@ -3,12 +3,10 @@ import { Link } from 'gatsby';
 import classNames from 'classnames';
 import { Location } from '@reach/router';
 
-import { useContrast } from '@entur/layout';
+import { Logo } from '@entur/menu';
+
 import SettingsPanel from '../SettingsPanel';
-import { useSettings } from '@providers/SettingsContext';
 import { Search } from '@components/Search/Search';
-import logo from '../../../media/logo/logo.svg';
-import logoDark from '../../../media/logo/logoDark.svg';
 
 import './MobileTopNav.scss';
 
@@ -22,9 +20,6 @@ const MobileTopNavigation: React.FC<MobileTopNavigationProps> = ({
   className,
   ...rest
 }) => {
-  const { colorMode } = useSettings();
-  const isContrast = useContrast();
-
   return (
     <nav
       className={classNames('mobile-topnav', className, {
@@ -34,12 +29,7 @@ const MobileTopNavigation: React.FC<MobileTopNavigationProps> = ({
       {...rest}
     >
       <div className="mobile-topnav__menu">
-        <Link to="/" className="mobile-topnav__logo">
-          <img
-            src={colorMode === 'dark' || isContrast ? logoDark : logo}
-            alt="Entur logo – Linje starside"
-          />
-        </Link>
+        <Logo as={Link} to="/" size="small" className="mobile-topnav__logo" />
         <Search />
         <SettingsPanel />
       </div>
