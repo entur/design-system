@@ -1,11 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import classNames from 'classnames';
-import {
-  SideNavigation as EnturSideNavigation,
-  SideNavigationGroup,
-  SideNavigationItem,
-} from '@entur/menu';
+import { SideNavigation as EnturSideNavigation } from '@entur/menu/beta';
 
 import { SecondaryButton } from '@entur/button';
 import { SearchIcon } from '@entur/icons';
@@ -25,7 +21,6 @@ import {
 import { useSearch } from '../../Search/SearchContext';
 
 import './SideNavigation.scss';
-import { Flex } from '@entur/layout/beta';
 
 type SideNavigationProps = {
   mobile?: boolean;
@@ -87,17 +82,16 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
     const { item } = props;
     const path = item.path || getSanitizedPath(item) || '';
     return (
-      <SideNavigationItem
+      <EnturSideNavigation.Item
         key={item.id}
         as={Link}
         to={path}
         active={isActive(path, currentLocation)}
         onClick={onClickMenuItem}
+        badge={item.tag ? <ArticleTag tag={item.tag} /> : undefined}
       >
-        <Flex justify="space-between">
-          {item.title} {item.tag && <ArticleTag tag={item.tag} />}
-        </Flex>
-      </SideNavigationItem>
+        {item.title}
+      </EnturSideNavigation.Item>
     );
   };
 
@@ -111,18 +105,16 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
           openSearch();
         }}
       />
-      <EnturSideNavigation style={{ marginTop: mobile ? '0rem' : '1.5rem' }}>
+      <EnturSideNavigation
+        className="side-navigation__menu"
+        style={{ marginTop: mobile ? '0rem' : '1.5rem' }}
+      >
         {sortedGrouped.map(([subcategory, subcategoryMenuItems]) => (
-          <SideNavigationGroup
-            key={subcategory}
-            defaultOpen={true}
-            title={subcategory}
-            className="side-navigation__group"
-          >
+          <EnturSideNavigation.Group key={subcategory} title={subcategory}>
             {subcategoryMenuItems.map(item => (
               <MenuItem key={item.id} item={item} />
             ))}
-          </SideNavigationGroup>
+          </EnturSideNavigation.Group>
         ))}
         {ungrouped.map(item => (
           <MenuItem key={item.id} item={item} />
