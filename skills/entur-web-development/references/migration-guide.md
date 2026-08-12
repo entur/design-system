@@ -142,6 +142,154 @@ Same rename as `@entur/form`.
 
 ---
 
+### `@entur/menu` — `SideNavigation` → `@entur/menu/beta`
+
+The beta `SideNavigation` supersedes the stable one. The stable component still works and is not deprecated yet, so migrate when convenient — but new code should use the beta.
+
+```tsx
+// Before
+import {
+  SideNavigation,
+  SideNavigationGroup,
+  SideNavigationItem,
+} from '@entur/menu';
+
+// After
+import { SideNavigation } from '@entur/menu/beta';
+import '@entur/expand/dist/styles.css'; // required — the submenu uses BaseExpand
+import '@entur/menu/beta/styles'; // in addition to @entur/menu/styles
+```
+
+Everything is reached through one compound component:
+
+| Stable                             | Beta                                                |
+| ---------------------------------- | --------------------------------------------------- |
+| `SideNavigation`                   | `SideNavigation`                                    |
+| `SideNavigationItem`               | `SideNavigation.Item`                               |
+| `SideNavigationGroup` (expandable) | `SideNavigation.ExpandableItem`                     |
+| — (no equivalent)                  | `SideNavigation.Group` (a non-interactive heading)  |
+| `CollapsibleSideNavigation`        | `Template.Portal.Sidebar` from `@entur/layout/beta` |
+
+**`Group` changed meaning.** In the stable component a group is the expandable thing. In the beta a group is a heading that labels a set of items, and expanding is `ExpandableItem`'s job. A stable `SideNavigationGroup` almost always maps to `ExpandableItem`, not to `Group`.
+
+**Before:**
+
+```tsx
+// Before
+import {
+  SideNavigation,
+  SideNavigationGroup,
+  SideNavigationItem,
+} from '@entur/menu';
+
+<SideNavigation>
+  <SideNavigationGroup title="Rapporter" defaultOpen onToggle={fn}>
+    <SideNavigationItem as={Link} to="/salg" active>
+      Salg
+    </SideNavigationItem>
+  </SideNavigationGroup>
+</SideNavigation>;
+```
+
+**After:**
+
+```tsx
+import { SideNavigation } from '@entur/menu/beta';
+
+<SideNavigation>
+  <SideNavigation.ExpandableItem title="Rapporter" onOpenChange={fn}>
+    <SideNavigation.Item as={Link} to="/salg" active>
+      Salg
+    </SideNavigation.Item>
+  </SideNavigation.ExpandableItem>
+</SideNavigation>;
+```
+
+Prop changes on the expandable:
+
+| Stable                             | Beta                                     | Notes                            |
+| ---------------------------------- | ---------------------------------------- | -------------------------------- |
+| `onToggle?: (e?: boolean) => void` | `onOpenChange?: (open: boolean) => void` | Always called with the new value |
+| `open`, `defaultOpen`              | `open`, `defaultOpen`                    | Unchanged                        |
+| `icon`                             | `icon`                                   | Unchanged                        |
+| `title`                            | `title`                                  | Unchanged                        |
+
+**Drop `defaultOpen` when the submenu contains the active page.** The beta opens itself when any descendant has `active`, resolved during render so it is already open in server-rendered HTML. Only pass `open`/`defaultOpen` when you need to override that — for example when a wrapper component renders the items internally, since the check only sees items passed as JSX children.
+
+Other changes:
+
+- **`size` is gone.** All rows are 48px.
+- **Dividers between items are gone.**
+- **`badge` and `alert` slots added.** Content that used to be crammed into the item's children now has a home: `badge` takes a node (typically a `StatusBadge`), `alert` renders a dot at the far right, and `alertLabel` sets its screen-reader text (default `"Varsel"`).
+- **Contrast is inherited**, from an `.eds-contrast` ancestor, exactly as before. There is no `contrast` prop.
+
+**Before** — badge stuffed into the label:
+
+```tsx
+// Before
+import { SideNavigationItem } from '@entur/menu';
+import { StatusBadge } from '@entur/layout';
+import { Flex } from '@entur/layout/beta';
+
+<SideNavigationItem as={Link} to="/varsler">
+  <Flex justify="space-between">
+    Varsler <StatusBadge variant="neutral">3</StatusBadge>
+  </Flex>
+</SideNavigationItem>;
+```
+
+**After:**
+
+```tsx
+import { SideNavigation } from '@entur/menu/beta';
+import { StatusBadge } from '@entur/layout';
+
+<SideNavigation.Item
+  as={Link}
+  to="/varsler"
+  badge={<StatusBadge variant="neutral">3</StatusBadge>}
+>
+  Varsler
+</SideNavigation.Item>;
+```
+
+Replacing `CollapsibleSideNavigation` means moving the collapse state up to the app shell:
+
+**Before:**
+
+```tsx
+// Before
+import { CollapsibleSideNavigation, SideNavigationItem } from '@entur/menu';
+
+<CollapsibleSideNavigation
+  collapsed={collapsed}
+  onCollapseToggle={setCollapsed}
+>
+  <SideNavigationItem as={Link} to="/oversikt">
+    Oversikt
+  </SideNavigationItem>
+</CollapsibleSideNavigation>;
+```
+
+**After:**
+
+```tsx
+import { SideNavigation } from '@entur/menu/beta';
+import { Template } from '@entur/layout/beta';
+
+<Template.Portal.Sidebar collapsed={collapsed} onCollapseToggle={setCollapsed}>
+  <Template.Portal.Sidebar.Navigation>
+    <SideNavigation>
+      <SideNavigation.Item as={Link} to="/oversikt">
+        Oversikt
+      </SideNavigation.Item>
+    </SideNavigation>
+  </Template.Portal.Sidebar.Navigation>
+</Template.Portal.Sidebar>;
+```
+
+---
+
 ## Common migration patterns
 
 ### Variant string normalisation (applies across packages)
