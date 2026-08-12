@@ -25,7 +25,7 @@ import {
 } from '@entur/layout';
 import { LoadingDots } from '@entur/loader';
 import { SmallAlertBox } from '@entur/alert';
-import { BreadcrumbItem, BreadcrumbNavigation } from '@entur/menu';
+import { BreadcrumbItem, BreadcrumbNavigation, Logo } from '@entur/menu';
 import { TravelTag } from '@entur/travel';
 import { Heading1, Heading2, Paragraph } from '@entur/typography';
 
@@ -35,7 +35,6 @@ import {
   LinjeTopographicBottom,
   LinjeTopographicTop,
 } from '@media/images/frontpage/BackgroundElements';
-import logoDark from '@media/logo/logoDark.svg';
 
 import './stand.scss';
 
@@ -915,7 +914,7 @@ const Stand = () => {
           <header className="stand__hero">
             <Heading1 className="stand__title">
               <span className="stand__title__logo">
-                <img src={logoDark} height="80" width="256" alt="Entur" />
+                <Logo />
               </span>
               <span className="stand__title__text">Linje</span>
             </Heading1>
