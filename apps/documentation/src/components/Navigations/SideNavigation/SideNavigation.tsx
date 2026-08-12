@@ -8,6 +8,7 @@ import { ArticleTag } from '../../Common/ArticleTag';
 import {
   MenuItem,
   getSanitizedPath,
+  groupSubcategoryFor,
   isActive,
   menuItemComparator,
   normalizeString,
@@ -42,7 +43,7 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
     menuItems
       .filter(item => normalizeString(item.category) === currentCategory)
       .forEach(item => {
-        const { subcategory } = item;
+        const subcategory = groupSubcategoryFor(item);
         const subcategoryLowercase = subcategory?.toLowerCase();
         if (subcategoryLowercase) {
           if (!grouped[subcategoryLowercase])
