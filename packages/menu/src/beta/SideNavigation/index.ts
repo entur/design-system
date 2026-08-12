@@ -18,8 +18,8 @@ export const SideNavigation: SideNavigationComponent = Object.assign(
   },
 );
 
-// displayName settes i den enkelte komponentfilen, slik at
-// react-docgen-typescript plukker den opp når prop-tabellene genereres.
+// displayName is set in each component file so that react-docgen-typescript
+// picks it up when the prop tables are generated.
 
 export type { SideNavigationProps } from './SideNavigation';
 export type {

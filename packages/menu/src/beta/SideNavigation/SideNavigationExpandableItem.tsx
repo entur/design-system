@@ -70,18 +70,18 @@ export const SideNavigationExpandableItem = React.forwardRef<
   ) => {
     const panelId = React.useId();
 
-    // Åpen-tilstand løses under render: kontrollert > brukerens valg > utledet
-    // fra et aktivt underelement. Uten den utledede tilstanden ville menyen
-    // kollapse ved hver sidenavigering i en server-rendret app.
+    // Open state is resolved during render: controlled > the user's own toggle >
+    // derived from an active descendant. Without the derived tier the menu would
+    // collapse on every navigation in a server-rendered app.
     const derivedOpen = hasActiveDescendant(children) || defaultOpen;
     const [state, setState] = React.useState<{
       user: boolean | null;
       derived: boolean;
     }>({ user: null, derived: derivedOpen });
 
-    // Når den utledede tilstanden endrer seg har vi navigert til en annen side,
-    // og brukerens tidligere valg gjelder ikke lenger. Justeres under render
-    // framfor i en effekt, ellers vises feil gruppe åpen i én frame.
+    // A change in the derived value means we navigated to another page, so the
+    // user's earlier toggle no longer applies. Adjusted during render rather than
+    // in an effect, which would paint the wrong group open for one frame.
     if (state.derived !== derivedOpen) {
       setState({ user: null, derived: derivedOpen });
     }

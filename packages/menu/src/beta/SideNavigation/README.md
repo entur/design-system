@@ -109,6 +109,33 @@ Each variable is re-declared as a short `--eds-side-navigation-beta-*` alias on 
 the contrast variants are swapped in one place. Rules downstream only ever read the alias, so
 adding a new mode means changing one block, not every rule.
 
+### `--eds-side-navigation-padding-inline-start`
+
+The one custom property meant to be set by consumers. It moves the label, icon and group
+heading on the start side only — the end side always keeps its 1.5rem — without indenting the
+rows, so hover and active backgrounds still run to the edge of the sidebar. Submenu items stay 1.5rem further in, so nesting reads the same at any value.
+
+```scss
+// Line the labels up with a logo sitting 2.5rem from the edge
+.my-sidebar-nav {
+  --eds-side-navigation-padding-inline-start: 2.5rem;
+}
+```
+
+Set it on the nav itself or on any ancestor — the sidebar wrapper, a theme class, `:root`.
+
+Deliberately **not** named `--eds-side-navigation-beta-*`: it is public API, and a consumer
+should not have to rename it when the component leaves beta. The `--eds-side-navigation-beta-*`
+colour aliases above are internal and will be renamed then.
+
+The 1.5rem default lives in each `var()` fallback rather than in a declaration on the component
+root. A declaration on the root would sit on the same element the consumer is most likely to
+inherit from, so an ancestor's value would lose to it and the override would silently do
+nothing.
+
+Setting a margin on the `<ul>` instead would move the backgrounds and the active indicator
+along with the text, which is usually not what you want in a full-bleed sidebar.
+
 ## Limitations
 
 - **One submenu level.** The spec draws exactly one. Nesting an `ExpandableItem` inside a

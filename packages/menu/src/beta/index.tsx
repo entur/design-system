@@ -1,8 +1,8 @@
 import { warnAboutMissingStyles } from '@entur/utils';
 import './index.scss';
 
-// Undermenyen bruker BaseExpand fra @entur/expand, og kollapser ikke uten
-// stilene derfra. Ikonene kommer fra @entur/icons.
+// The submenu uses BaseExpand from @entur/expand and will not collapse without
+// its styles. The chevron comes from @entur/icons.
 warnAboutMissingStyles('expand', 'icons');
 
 export { SideNavigation } from './SideNavigation';

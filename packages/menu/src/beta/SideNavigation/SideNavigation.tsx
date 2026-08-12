@@ -18,7 +18,7 @@ export const SideNavigationRoot = React.forwardRef<
   </ul>
 ));
 
-// Navnene her styrer både React DevTools og filnavnet på de genererte
-// prop-tabellene i dokumentasjonen, og må derfor ikke kollidere med de stabile
-// SideNavigation-komponentene.
+// These names drive both React DevTools and the filenames of the generated
+// prop tables in the documentation, so they must not collide with the stable
+// SideNavigation components.
 SideNavigationRoot.displayName = 'SideNavigationBeta';

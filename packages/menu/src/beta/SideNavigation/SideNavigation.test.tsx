@@ -178,7 +178,7 @@ describe('SideNavigation.ExpandableItem (beta)', () => {
     await user.click(trigger);
 
     expect(onOpenChange).toHaveBeenCalledWith(true);
-    // Kontrollert: tilstanden endrer seg ikke uten at forelderen oppdaterer den
+    // Controlled: the state does not change unless the parent updates it
     expect(trigger).toHaveAttribute('aria-expanded', 'false');
   });
 
@@ -198,12 +198,12 @@ describe('SideNavigation.ExpandableItem (beta)', () => {
     const trigger = screen.getByRole('button', { name: /Utvidbar/ });
     expect(trigger).toHaveAttribute('aria-expanded', 'false');
 
-    // Brukeren åpner menyen manuelt
+    // The user opens the menu manually
     await user.click(trigger);
     expect(trigger).toHaveAttribute('aria-expanded', 'true');
 
-    // Navigering bort: den utledede tilstanden er fortsatt lukket, men brukerens
-    // valg gjelder til den utledede tilstanden faktisk endrer seg
+    // Navigating away: the user's toggle holds until the derived value itself
+    // actually changes
     rerender(<Menu activeChild />);
     expect(trigger).toHaveAttribute('aria-expanded', 'true');
 
