@@ -18,6 +18,10 @@ import {
 
 import './SideNavigation.scss';
 
+// useLayoutEffect would warn during Gatsby's server render, where it never runs
+const useIsomorphicLayoutEffect =
+  typeof window === 'undefined' ? React.useEffect : React.useLayoutEffect;
+
 type SideNavigationProps = {
   menuItems: MenuItem[];
   className?: string;
@@ -31,10 +35,32 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
   onClickMenuItem,
   currentLocation,
 }) => {
+  const wrapperRef = React.useRef<HTMLDivElement>(null);
+
   const currentPathSegments = removeLeadingAndTrailingSlash(
     currentLocation.pathname,
   )?.split('/');
   const currentCategory = normalizeString(currentPathSegments?.[0]) ?? '';
+
+  // The menu is long enough that the current page is often below the fold.
+  // Centre it in the sidebar when it is out of view, before the first paint.
+  // Only the sidebar scrolls — scrollIntoView would move the page as well.
+  useIsomorphicLayoutEffect(() => {
+    const wrapper = wrapperRef.current;
+    const activeItem = wrapper?.querySelector('[aria-current="page"]');
+    if (!wrapper || !activeItem) return;
+
+    const wrapperBox = wrapper.getBoundingClientRect();
+    const itemBox = activeItem.getBoundingClientRect();
+    const isInView =
+      itemBox.top >= wrapperBox.top && itemBox.bottom <= wrapperBox.bottom;
+    if (isInView) return;
+
+    wrapper.scrollTop +=
+      itemBox.top -
+      wrapperBox.top -
+      (wrapper.clientHeight - itemBox.height) / 2;
+  }, [currentLocation.pathname]);
 
   // Filter, group, and sort menu items
   const processedMenuItems = React.useMemo(() => {
@@ -90,7 +116,10 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
   const { sortedGrouped, ungrouped } = processedMenuItems;
 
   return (
-    <div className={classNames('side-navigation-wrapper', className)}>
+    <div
+      className={classNames('side-navigation-wrapper', className)}
+      ref={wrapperRef}
+    >
       <EnturSideNavigation className="side-navigation__menu">
         {sortedGrouped.map(([subcategory, subcategoryMenuItems]) => (
           <EnturSideNavigation.Group key={subcategory} title={subcategory}>
