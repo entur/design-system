@@ -1,18 +1,7 @@
 import { RefObject, useMemo } from 'react';
 import type { Environment } from 'downshift';
 
-/**
- * Returns the active element, drilling into shadow roots.
- * `document.activeElement` stops at the shadow host — this
- * follows the chain into nested shadow roots.
- */
-export function getActiveElement(root: Document | ShadowRoot): Element | null {
-  const active = root.activeElement;
-  if (active?.shadowRoot) {
-    return getActiveElement(active.shadowRoot);
-  }
-  return active;
-}
+import { getActiveElement } from '@entur/utils';
 
 /**
  * Creates a downshift `environment` that works inside shadow DOM.
@@ -25,8 +14,8 @@ export function getActiveElement(root: Document | ShadowRoot): Element | null {
  *
  * This adapter redirects downshift's event listeners to the shadow
  * root (where targets are not retargeted) and proxies
- * `document.activeElement` to return the shadow root's active
- * element instead.
+ * `document.activeElement` so it drills into shadow roots instead of
+ * stopping at the shadow host.
  *
  * Outside shadow DOM this returns `undefined`, letting downshift
  * use its default `window` environment.
@@ -39,11 +28,14 @@ function createShadowEnvironment(shadowRoot: ShadowRoot): Environment {
     removeEventListener: shadowRoot.removeEventListener.bind(shadowRoot),
     Node: window.Node,
     document: new Proxy(document, {
-      get(target, prop, receiver) {
+      get(target, prop) {
         if (prop === 'activeElement') {
-          return getActiveElement(shadowRoot);
+          return getActiveElement();
         }
-        const value = Reflect.get(target, prop, receiver);
+        // Read with `target` as the receiver, not the proxy: accessors on
+        // Document.prototype (`body`, `head`, …) are branded and throw
+        // "Illegal invocation" when invoked with anything else as `this`.
+        const value = Reflect.get(target, prop);
         return typeof value === 'function' ? value.bind(target) : value;
       },
     }),

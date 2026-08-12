@@ -17,7 +17,7 @@ import {
 
 import { BaseFormControl } from '@entur/form';
 import { space } from '@entur/tokens';
-import { VariantType, mergeRefs } from '@entur/utils';
+import { VariantType, getActiveElement, mergeRefs } from '@entur/utils';
 
 import { DropdownList } from './components/DropdownList';
 import { DropdownFieldAppendix } from './components/FieldComponents';
@@ -28,10 +28,7 @@ import {
   NormalizedDropdownItemType,
   PotentiallyAsyncDropdownItemType,
 } from './types';
-import {
-  getActiveElement,
-  useShadowDomEnvironment,
-} from './useShadowDomEnvironment';
+import { useShadowDomEnvironment } from './useShadowDomEnvironment';
 
 import './Dropdown.scss';
 
@@ -175,11 +172,8 @@ export const Dropdown = React.forwardRef(
       selectedItem,
       ...(environment && { environment }),
       stateReducer(state, { changes, type }) {
-        const root = (toggleButtonRef.current?.getRootNode() ?? document) as
-          | Document
-          | ShadowRoot;
         const toggleButtonIsFocused =
-          getActiveElement(root) === floatingRefs?.reference.current;
+          getActiveElement() === floatingRefs?.reference.current;
 
         switch (type) {
           case useSelect.stateChangeTypes.ToggleButtonKeyDownArrowDown:
