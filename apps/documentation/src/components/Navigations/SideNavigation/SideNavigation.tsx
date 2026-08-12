@@ -3,9 +3,6 @@ import { Link } from 'gatsby';
 import classNames from 'classnames';
 import { SideNavigation as EnturSideNavigation } from '@entur/menu/beta';
 
-import { SecondaryButton } from '@entur/button';
-import { SearchIcon } from '@entur/icons';
-import { Badge } from '@entur/layout';
 import { ArticleTag } from '../../Common/ArticleTag';
 
 import {
@@ -18,12 +15,9 @@ import {
   sortSubCategoriesForCategory,
 } from './utils';
 
-import { useSearch } from '../../Search/SearchContext';
-
 import './SideNavigation.scss';
 
 type SideNavigationProps = {
-  mobile?: boolean;
   menuItems: MenuItem[];
   className?: string;
   onClickMenuItem?: () => void;
@@ -31,14 +25,11 @@ type SideNavigationProps = {
 };
 
 const SideNavigation: React.FC<SideNavigationProps> = ({
-  mobile = false,
   menuItems,
   className,
   onClickMenuItem,
   currentLocation,
 }) => {
-  const { openSearch } = useSearch();
-
   const currentPathSegments = removeLeadingAndTrailingSlash(
     currentLocation.pathname,
   )?.split('/');
@@ -99,16 +90,7 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
 
   return (
     <div className={classNames('side-navigation-wrapper', className)}>
-      <SearchBar
-        onOpenSearch={() => {
-          onClickMenuItem?.();
-          openSearch();
-        }}
-      />
-      <EnturSideNavigation
-        className="side-navigation__menu"
-        style={{ marginTop: mobile ? '0rem' : '1.5rem' }}
-      >
+      <EnturSideNavigation className="side-navigation__menu">
         {sortedGrouped.map(([subcategory, subcategoryMenuItems]) => (
           <EnturSideNavigation.Group key={subcategory} title={subcategory}>
             {subcategoryMenuItems.map(item => (
@@ -121,39 +103,6 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
         ))}
       </EnturSideNavigation>
     </div>
-  );
-};
-
-type SearchBarProps = {
-  /** Callback to open the search modal */
-  onOpenSearch: () => void;
-  /** Ekstra klassenavn */
-  className?: string;
-};
-
-const SearchBar: React.FC<SearchBarProps> = ({ onOpenSearch }) => {
-  return (
-    <SecondaryButton
-      aria-label="Søk i dokumentasjon"
-      className="side-navigation__searchbar__button"
-      onClick={onOpenSearch}
-      width="fluid"
-    >
-      <SearchIcon aria-hidden="true" />
-      <span>Søk …</span>
-      <Badge
-        as="kbd"
-        variant="neutral"
-        type="status"
-        style={{
-          width: '5ch',
-          minWidth: 'unset',
-          paddingInline: '0.25rem',
-        }}
-      >
-        ⌘ k
-      </Badge>
-    </SecondaryButton>
   );
 };
 

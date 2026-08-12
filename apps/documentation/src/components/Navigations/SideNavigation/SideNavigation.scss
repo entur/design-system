@@ -30,6 +30,8 @@
   // backgrounds still run to the edge of the sidebar.
   &__menu {
     --eds-side-navigation-padding-inline-start: #{eds.$space-extra-large2};
+
+    margin-bottom: 2rem;
   }
 
   &-wrapper {
@@ -90,27 +92,6 @@
 
     .eds-drawer__close-button {
       z-index: 10;
-    }
-  }
-
-  &__searchbar__button {
-    display: flex;
-    align-items: center;
-    max-width: 13rem;
-    margin-left: eds.$space-extra-large2;
-    margin-top: 1rem;
-
-    kbd {
-      display: inline-block;
-      margin-left: auto;
-    }
-  }
-
-  @media screen and (max-width: map.get(variables.$breakpoints, 'tablet')) {
-    .searchbar__button {
-      span {
-        display: none;
-      }
     }
   }
 }

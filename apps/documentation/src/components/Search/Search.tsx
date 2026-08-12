@@ -178,16 +178,9 @@ export const Search = () => {
         onClick={openSearch}
         size="small"
       >
-        <SearchIcon aria-hidden="true" /> Søk …
+        <SearchIcon aria-hidden="true" /> Søk
         <Badge as="kbd" variant="neutral" type="status">
-          <span
-            style={{
-              marginRight: '0.25rem',
-            }}
-          >
-            ⌘
-          </span>
-          k
+          ⌘+k
         </Badge>
       </SecondaryButton>
       <IconButton className="searchmodal__button--small" onClick={openSearch}>
