@@ -11,6 +11,9 @@
   p & {
     position: relative;
     top: 0.2em;
+    // The offset assumes a baseline-aligned icon, so state it instead of inheriting whatever
+    // the host reset decided — Tailwind Preflight and some normalize variants center svg.
+    vertical-align: baseline;
   }
 
   :where(g, path) {
