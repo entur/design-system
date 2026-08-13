@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.1.0](https://github.com/entur/design-system/compare/@entur/menu@7.0.1...@entur/menu@7.1.0) (2026-08-13)
+
+### Features
+
+- **menu/beta/side navigation:** add SideNavigation as a beta component ([48dd419](https://github.com/entur/design-system/commit/48dd4191bcf49a7ab61892dbd1d81da018d38bf3))
+- **menu/beta/side navigation:** let consumers align the labels with a layout grid ([928d16b](https://github.com/entur/design-system/commit/928d16bc4257d8d0c57547c9081d53ec2d061d81))
+- **menu/beta/side navigation:** let labels run over two lines ([5b66b3a](https://github.com/entur/design-system/commit/5b66b3a6fe41d64abf53a6970a01961b48762d8c))
+
 ## [7.0.1](https://github.com/entur/design-system/compare/@entur/menu@7.0.0...@entur/menu@7.0.1) (2026-08-06)
 
 **Note:** Version bump only for package @entur/menu

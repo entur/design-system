@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.20.2](https://github.com/entur/design-system/compare/@entur/alert@0.20.1...@entur/alert@0.20.2) (2026-08-13)
+
+**Note:** Version bump only for package @entur/alert
+
 ## [0.20.1](https://github.com/entur/design-system/compare/@entur/alert@0.20.0...@entur/alert@0.20.1) (2026-08-06)
 
 **Note:** Version bump only for package @entur/alert

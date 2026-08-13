@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.2](https://github.com/entur/design-system/compare/@entur/modal@2.0.1...@entur/modal@2.0.2) (2026-08-13)
+
+### Bug Fixes
+
+- **modal/drawer:** return focus to the element that opened the drawer inside shadow DOM ([62fa004](https://github.com/entur/design-system/commit/62fa004e23e3c0ede6dea80b35ea0908b26fa4ae))
+
 ## [2.0.1](https://github.com/entur/design-system/compare/@entur/modal@2.0.0...@entur/modal@2.0.1) (2026-08-06)
 
 **Note:** Version bump only for package @entur/modal

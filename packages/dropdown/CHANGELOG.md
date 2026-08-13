@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.0.2](https://github.com/entur/design-system/compare/@entur/dropdown@9.0.1...@entur/dropdown@9.0.2) (2026-08-13)
+
+### Bug Fixes
+
+- **dropdown:** stop console errors when rendered inside shadow DOM ([cb8c7c7](https://github.com/entur/design-system/commit/cb8c7c79986d0082ceb428c7c273595edcf21050))
+
 ## [9.0.1](https://github.com/entur/design-system/compare/@entur/dropdown@9.0.0...@entur/dropdown@9.0.1) (2026-08-06)
 
 **Note:** Version bump only for package @entur/dropdown

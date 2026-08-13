@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.20.5](https://github.com/entur/design-system/compare/@entur/documentation@6.20.4...@entur/documentation@6.20.5) (2026-08-13)
+
+### Bug Fixes
+
+- **website:** drop the sidebar column background ([af5c278](https://github.com/entur/design-system/commit/af5c2782600bfe786d4ef0eec212f9f476567ebf))
+- **website:** expose the beta side navigation as SideNavigationBeta ([77ae98e](https://github.com/entur/design-system/commit/77ae98e943b29d4e33b7d3781b1d40234d5fd008))
+- **website:** let Maler keep its own group under Komponenter ([be54964](https://github.com/entur/design-system/commit/be54964877c3f2cdc84a76b6c0c785846ee94c6d))
+- **website:** list every component in one group under Komponenter ([a6aff49](https://github.com/entur/design-system/commit/a6aff4914c87c7420360fad6ad84b8249647796d))
+- **website:** load @entur/menu/beta in the docs site and playroom ([aeb997c](https://github.com/entur/design-system/commit/aeb997c039a96854bc6e14f7d98b2438d8dcfac5))
+- **website:** move search out of the sidebar ([5173347](https://github.com/entur/design-system/commit/5173347227dbe2318958f38d51d6f732abf333cc))
+- **website:** move the Grid page out of Ressurser ([f8623a9](https://github.com/entur/design-system/commit/f8623a9615f2744b907521d19f9c7c7c285b553a))
+- **website:** regenerate stale datepicker prop tables ([4a2c23b](https://github.com/entur/design-system/commit/4a2c23bae01066851cfaecf2b49de45dbee2d20d))
+- **website:** render every docs logo with the Logo component ([693fa9c](https://github.com/entur/design-system/commit/693fa9cc02af0ceeae4583939455b87281be29ca))
+- **website:** render the top bar logo with the Logo component ([f8e8f4c](https://github.com/entur/design-system/commit/f8e8f4cba61f82825d5fa0978652abda3c43d071))
+- **website:** scroll the sidebar to the current page ([39bf01e](https://github.com/entur/design-system/commit/39bf01e659f657304735f4a4e386005e987f950f))
+- **website:** use the beta SideNavigation for the docs sidebar ([1fcb0e2](https://github.com/entur/design-system/commit/1fcb0e2f098cea70ae229e1a2a28a3eb84c8369c))
+
 ## [6.20.4](https://github.com/entur/design-system/compare/@entur/documentation@6.20.3...@entur/documentation@6.20.4) (2026-08-06)
 
 ### Bug Fixes

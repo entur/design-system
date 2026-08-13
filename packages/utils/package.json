@@ -1,6 +1,6 @@
 {
   "name": "@entur/utils",
-  "version": "0.14.1",
+  "version": "0.15.0",
   "license": "EUPL-1.2",
   "main": "dist/utils.cjs",
   "module": "dist/utils.mjs",

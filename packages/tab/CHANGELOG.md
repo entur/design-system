@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.2](https://github.com/entur/design-system/compare/@entur/tab@0.8.1...@entur/tab@0.8.2) (2026-08-13)
+
+### Bug Fixes
+
+- **tab/tab list:** keep arrow key navigation working inside shadow DOM ([db1bf7e](https://github.com/entur/design-system/commit/db1bf7ee93517f8ee02cc25e0f5381d45e76e021))
+
 ## [0.8.1](https://github.com/entur/design-system/compare/@entur/tab@0.8.0...@entur/tab@0.8.1) (2026-08-06)
 
 **Note:** Version bump only for package @entur/tab

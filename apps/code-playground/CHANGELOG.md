@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.4.15](https://github.com/entur/design-system/compare/@entur/code-playground@2.4.14...@entur/code-playground@2.4.15) (2026-08-13)
+
+### Bug Fixes
+
+- **website:** expose the beta side navigation as SideNavigationBeta ([77ae98e](https://github.com/entur/design-system/commit/77ae98e943b29d4e33b7d3781b1d40234d5fd008))
+- **website:** load @entur/menu/beta in the docs site and playroom ([aeb997c](https://github.com/entur/design-system/commit/aeb997c039a96854bc6e14f7d98b2438d8dcfac5))
+
 ## [2.4.14](https://github.com/entur/design-system/compare/@entur/code-playground@2.4.13...@entur/code-playground@2.4.14) (2026-08-06)
 
 ### Bug Fixes

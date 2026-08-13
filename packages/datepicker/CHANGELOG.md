@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.0.2](https://github.com/entur/design-system/compare/@entur/datepicker@12.0.1...@entur/datepicker@12.0.2) (2026-08-13)
+
+### Bug Fixes
+
+- **datepicker/simple time picker:** keep a cleared field empty while it has focus inside shadow DOM ([cdf9ffb](https://github.com/entur/design-system/commit/cdf9ffb9ada7b7d95a96aabca75e4ea7caead15e))
+
 ## [12.0.1](https://github.com/entur/design-system/compare/@entur/datepicker@12.0.0...@entur/datepicker@12.0.1) (2026-08-06)
 
 ### Bug Fixes
