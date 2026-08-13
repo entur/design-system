@@ -235,7 +235,7 @@ Then rebuild and verify styles load in the correct order.
 
 ### Tailwind or third-party CSS overrides Entur styles
 
-Most `@entur/*` CSS is unlayered, and unlayered CSS outranks every cascade layer. So a framework's unlayered rules (Tailwind's preflight, normalize.css) can flatten Entur component styling, while the same rules placed in a layer cannot. See `references/css-layers.md` for which Entur CSS is layered, how to declare layer order, and how to integrate Tailwind v4.
+Most `@entur/*` CSS is unlayered, and unlayered CSS outranks every cascade layer. So a framework's unlayered rules (Tailwind's preflight, normalize.css) can flatten Entur component styling, while the same rules placed in a layer cannot. With `@entur/typography` installed you do not need a third-party reset at all — it ships modern-normalize and `box-sizing: border-box`, and preflight's `svg { vertical-align: middle }` misaligns inline icons no matter which layer it lands in. See `references/css-layers.md` for which Entur CSS is layered, how to declare layer order, and how to integrate Tailwind v4.
 
 ### Missing styles / unstyled components
 
