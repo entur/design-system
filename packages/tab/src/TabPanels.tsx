@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
 import classNames from 'classnames';
 
-import { TabPanelItemContext, TabsContext } from './TabsContext';
+import { useIndexedChildren } from './indexedItems';
+import { TabsContext } from './TabsContext';
 
 export type TabPanelsProps = {
   /** Tab-panelene */
@@ -20,24 +21,19 @@ export const TabPanels = ({
   children,
   ...rest
 }: TabPanelsProps) => {
-  const { tabsId } = useContext(TabsContext);
+  const { selectedIndex, reportIndices } = useContext(TabsContext);
+
+  const items = useIndexedChildren('panel', children, {
+    selectedIndex,
+    keepMounted,
+    onIndices: indices => reportIndices('panel', indices),
+  });
 
   const Element: React.ElementType = as || 'div';
 
   return (
     <Element className={classNames('eds-tab-panels', className)} {...rest}>
-      {React.Children.map(children, (child, idx) => (
-        <TabPanelItemContext.Provider
-          value={{
-            tabIndex: idx,
-            tabId: `${tabsId}-tab-${idx}`,
-            panelId: `${tabsId}-panel-${idx}`,
-            keepMounted,
-          }}
-        >
-          {child}
-        </TabPanelItemContext.Provider>
-      ))}
+      {items}
     </Element>
   );
 };

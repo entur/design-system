@@ -1,6 +1,7 @@
 import React, { useCallback, useId, useState } from 'react';
 import classNames from 'classnames';
 
+import { useUnreachablePanelWarning } from './indexedItems';
 import { TabsContext } from './TabsContext';
 
 export type TabsProps = {
@@ -30,6 +31,7 @@ export const Tabs = ({
   const isControlled = index !== undefined;
   const selectedIndex = isControlled ? index : internalIndex;
   const tabsId = useId();
+  const reportIndices = useUnreachablePanelWarning();
 
   const onSelect = useCallback(
     (i: number) => {
@@ -44,7 +46,9 @@ export const Tabs = ({
   const Element: React.ElementType = as || 'div';
 
   return (
-    <TabsContext.Provider value={{ selectedIndex, onSelect, tabsId }}>
+    <TabsContext.Provider
+      value={{ selectedIndex, onSelect, tabsId, reportIndices }}
+    >
       <Element className={classNames('eds-tabs', className)} {...rest}>
         {children}
       </Element>

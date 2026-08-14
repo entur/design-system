@@ -1,13 +1,17 @@
 import React, { useContext } from 'react';
 import classNames from 'classnames';
 
-import { TabItemContext, TabsContext } from './TabsContext';
+import { useItemIndex } from './indexedItems';
+import { TabsContext } from './TabsContext';
 
 export type TabProps = {
   /** Overskriften til taben */
   children: React.ReactNode;
   /** Om taben er disabled eller ikke */
   disabled?: boolean;
+  /** Indeksen til taben. Settes vanligvis ut fra rekkefølgen i `TabList`, men må
+   * angis manuelt dersom taben ligger inne i en egen komponent */
+  index?: number;
   /** HTML-elementet eller React-komponenten som lager komponenten */
   as?: keyof JSX.IntrinsicElements | React.ElementType;
   removeActiveLine?: boolean;
@@ -19,12 +23,12 @@ export const Tab = ({
   removeActiveLine = false,
   as,
   disabled = false,
+  index,
   children,
   ...rest
 }: TabProps) => {
-  const { selectedIndex, onSelect } = useContext(TabsContext);
-  const itemContext = useContext(TabItemContext);
-  const tabIndex = itemContext?.tabIndex ?? 0;
+  const { selectedIndex, onSelect, tabsId } = useContext(TabsContext);
+  const { index: tabIndex } = useItemIndex('tab', index);
   const isSelected = selectedIndex === tabIndex;
   const Element: React.ElementType = as || 'button';
 
@@ -32,9 +36,9 @@ export const Tab = ({
     <Element
       role="tab"
       type={as ? undefined : 'button'}
-      id={itemContext?.tabId}
+      id={`${tabsId}-tab-${tabIndex}`}
       aria-selected={isSelected}
-      aria-controls={isSelected ? itemContext?.panelId : undefined}
+      aria-controls={isSelected ? `${tabsId}-panel-${tabIndex}` : undefined}
       tabIndex={isSelected ? 0 : -1}
       disabled={disabled || undefined}
       aria-disabled={disabled || undefined}

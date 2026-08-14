@@ -2,7 +2,8 @@ import React, { useCallback, useContext, useRef } from 'react';
 import classNames from 'classnames';
 import { getActiveElement } from '@entur/utils';
 
-import { TabItemContext, TabsContext } from './TabsContext';
+import { useIndexedChildren } from './indexedItems';
+import { TabsContext } from './TabsContext';
 
 export type TabListProps = {
   /** Tab-komponenter */
@@ -24,42 +25,34 @@ export const TabList = ({
   children,
   ...rest
 }: TabListProps) => {
-  const { tabsId } = useContext(TabsContext);
+  const { reportIndices } = useContext(TabsContext);
   const tabListRef = useRef<HTMLElement>(null);
 
+  const items = useIndexedChildren('tab', children, {
+    onIndices: indices => reportIndices('tab', indices),
+  });
+
   const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
-    const tabs = tabListRef.current?.querySelectorAll<HTMLElement>(
-      '[role="tab"]:not([disabled]):not([aria-disabled="true"])',
+    const tabs = Array.from(
+      tabListRef.current?.querySelectorAll<HTMLElement>(
+        '[role="tab"]:not([disabled]):not([aria-disabled="true"])',
+      ) ?? [],
     );
-    if (!tabs || tabs.length === 0) return;
-
     const focusedElement = getActiveElement();
-    const currentIndex = Array.from(tabs).findIndex(
-      tab => tab === focusedElement,
-    );
-    if (currentIndex === -1) return;
+    const current = tabs.findIndex(tab => tab === focusedElement);
+    if (current === -1) return;
 
-    let nextIndex: number | undefined;
-    switch (e.key) {
-      case 'ArrowRight':
-        nextIndex = (currentIndex + 1) % tabs.length;
-        break;
-      case 'ArrowLeft':
-        nextIndex = (currentIndex - 1 + tabs.length) % tabs.length;
-        break;
-      case 'Home':
-        nextIndex = 0;
-        break;
-      case 'End':
-        nextIndex = tabs.length - 1;
-        break;
-    }
+    const next = {
+      ArrowRight: (current + 1) % tabs.length,
+      ArrowLeft: (current - 1 + tabs.length) % tabs.length,
+      Home: 0,
+      End: tabs.length - 1,
+    }[e.key];
+    if (next === undefined) return;
 
-    if (nextIndex !== undefined) {
-      e.preventDefault();
-      tabs[nextIndex].focus();
-      tabs[nextIndex].click();
-    }
+    e.preventDefault();
+    tabs[next].focus();
+    tabs[next].click();
   }, []);
 
   const Element: React.ElementType = as || 'div';
@@ -78,17 +71,7 @@ export const TabList = ({
         handleKeyDown(e);
       }}
     >
-      {React.Children.map(children, (child, idx) => (
-        <TabItemContext.Provider
-          value={{
-            tabIndex: idx,
-            tabId: `${tabsId}-tab-${idx}`,
-            panelId: `${tabsId}-panel-${idx}`,
-          }}
-        >
-          {child}
-        </TabItemContext.Provider>
-      ))}
+      {items}
     </Element>
   );
 };
