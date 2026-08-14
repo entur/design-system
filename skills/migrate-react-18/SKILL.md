@@ -72,14 +72,14 @@ Load **[references/breaking-changes.md](references/breaking-changes.md)** and wo
 
 The reference covers:
 
-| Package                      | Key changes                                                               |
-| ---------------------------- | ------------------------------------------------------------------------- |
-| ESM `exports` (all packages) | Deep `dist/` imports break; built files renamed to `.mjs`/`.cjs`          |
-| `@entur/modal`               | `onDismiss` required, `<div>` → `<dialog>`, `data-reach-*` selectors gone |
-| `@entur/tab`                 | `data-reach-*` selectors gone, stricter types, ID format changed          |
-| `@entur/expand`              | Content stays in DOM when collapsed; `unmountOnClose` opt-out             |
-| `@entur/layout` (beta)       | `LayoutProvider` removed; responsive base key `s` → `base`                |
-| `@entur/utils`               | `useRandomId` deprecated → use React `useId()`                            |
+| Package                      | Key changes                                                                                             |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------- |
+| ESM `exports` (all packages) | Deep `dist/` imports break; built files renamed to `.mjs`/`.cjs`                                        |
+| `@entur/modal`               | `onDismiss` required, `<div>` → `<dialog>`, `data-reach-*` selectors gone                               |
+| `@entur/tab`                 | `data-reach-*` selectors gone, stricter types, ID format changed, tab/panel index comes from the markup |
+| `@entur/expand`              | Content stays in DOM when collapsed; `unmountOnClose` opt-out                                           |
+| `@entur/layout` (beta)       | `LayoutProvider` removed; responsive base key `s` → `base`                                              |
+| `@entur/utils`               | `useRandomId` deprecated → use React `useId()`                                                          |
 
 For each applicable section: grep for the affected patterns, fix them, and confirm no instances remain.
 
@@ -106,6 +106,7 @@ Fix any remaining type errors or test failures. Common issues:
 
 - **Type errors from stricter props** — `@entur/tab` components no longer accept arbitrary props. Remove unknown props.
 - **Test failures from ID changes** — Tab/panel IDs now use `useId()` format. Don't match specific ID strings; use `aria-controls`/`aria-labelledby` to find linked elements.
+- **All panels render under the first tab** — panels hidden behind a component of your own (an error boundary, a data wrapper, or a component per panel) share one index. Render each panel from `<TabPanels>`, or pass each one an explicit `index` prop. `@entur/tab` logs an error in development when this happens.
 - **Test failures from batched updates** — React 18 batches all state updates. Wrap assertions that depend on intermediate states in `act()` or use `waitFor`.
 - **Double renders in dev** — `<StrictMode>` now mounts, unmounts, and re-mounts components. This is expected; fix missing `useEffect` cleanups it reveals.
 

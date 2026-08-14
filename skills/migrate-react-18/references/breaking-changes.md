@@ -165,7 +165,96 @@ const panel = document.getElementById(tab.getAttribute('aria-controls')!);
 
 Keeps all panels in the DOM with `hidden` attribute instead of unmounting inactive ones. No action required unless you want this behavior.
 
-**Search patterns:** `data-reach-tab`, `data-reach-tabs`, hardcoded tab/panel IDs in tests.
+### `Tab` and `TabPanel` get their index from the markup
+
+`TabList` and `TabPanels` hand out one index per child, and the child at index _n_ belongs to the tab at index _n_. Under `@reach/tabs` every tab and panel registered itself and got its index from the document order, so it did not matter how deeply it was nested.
+
+Fragments, `Suspense` boundaries and wrapper elements are supported — they consume no index of their own:
+
+```tsx
+// ✅ Both work
+<TabPanels>
+  <>
+    <TabPanel>One</TabPanel>
+    <TabPanel>Two</TabPanel>
+  </>
+</TabPanels>
+
+<TabPanels>
+  <div className="my-layout">
+    <TabPanel>One</TabPanel>
+    <TabPanel>Two</TabPanel>
+  </div>
+</TabPanels>
+```
+
+Your own components are opaque — `TabPanels` cannot look inside them, so each one gets a single index. Several panels behind one component therefore share that index and open and close together:
+
+```tsx
+// ❌ Both panels get index 0 and render at the same time
+const MyPanels = () => (
+  <>
+    <TabPanel>One</TabPanel>
+    <TabPanel>Two</TabPanel>
+  </>
+);
+
+<TabPanels>
+  <MyPanels />
+</TabPanels>;
+
+// ✅ Render the panels from TabPanels
+<TabPanels>
+  <TabPanel>One</TabPanel>
+  <TabPanel>Two</TabPanel>
+</TabPanels>;
+```
+
+### Panels behind a wrapper component
+
+A component of your own between `TabPanels` and the panels — an error boundary, a data or layout wrapper — hides them, so all of them inherit that component's single index. Either lift the wrapper out of `TabPanels`, or give each panel an explicit `index`:
+
+```tsx
+// ❌ Every panel below the wrapper gets index 0
+<TabPanels>
+  <Wrapper>
+    <FirstPanel />
+    <SecondPanel />
+  </Wrapper>
+</TabPanels>
+
+// ✅ Lift the wrapper out — TabPanels sees the panel components again
+<Wrapper>
+  <TabPanels>
+    <FirstPanel />
+    <SecondPanel />
+  </TabPanels>
+</Wrapper>
+
+// ✅ Or place each panel yourself; index wins over the inherited one
+const Wrapper = ({ children }: { children?: any }) => <div>{children}</div>;
+const FirstPanel = ({ index }: { index?: number }) => (
+  <TabPanel index={index}>…</TabPanel>
+);
+const SecondPanel = ({ index }: { index?: number }) => (
+  <TabPanel index={index}>…</TabPanel>
+);
+
+<TabPanels>
+  <Wrapper>
+    <FirstPanel index={0} />
+    <SecondPanel index={1} />
+  </Wrapper>
+</TabPanels>;
+```
+
+Lifting the wrapper out relies on each component rendering a single `TabPanel`; `index` works regardless. Note that a `Suspense` boundary needs neither — it is transparent like a fragment.
+
+`TabPanel` otherwise needs a `TabPanels` parent, and `Tab` a `TabList` parent — outside them, with no `index` prop, they fall back to index 0 and log a `console.warn` in development.
+
+`TabList` and `TabPanels` also report unusable indices in development: a `console.error` when several children share an index, and a `console.warn` when the selected tab has no panel while later indices are in use (which is also what a panel that is still loading looks like).
+
+**Search patterns:** `data-reach-tab`, `data-reach-tabs`, hardcoded tab/panel IDs in tests, components that return more than one `<Tab>` or `<TabPanel>`, `<TabPanels>` whose children are components of your own.
 
 ---
 
