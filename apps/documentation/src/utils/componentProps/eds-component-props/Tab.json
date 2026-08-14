@@ -36,6 +36,21 @@
         "name": "boolean | undefined"
       }
     },
+    "index": {
+      "defaultValue": null,
+      "description": "Indeksen til taben. Settes vanligvis ut fra rekkefølgen i `TabList`, men må\nangis manuelt dersom taben ligger inne i en egen komponent",
+      "name": "index",
+      "declarations": [
+        {
+          "fileName": "packages/tab/src/Tab.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "number | undefined"
+      }
+    },
     "as": {
       "defaultValue": null,
       "description": "HTML-elementet eller React-komponenten som lager komponenten",
