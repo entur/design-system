@@ -34,6 +34,15 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 - **tab:** Stricter TypeScript types replace [key: string]: any.
   data-reach-\* attributes removed from DOM. Generated element IDs use new
   format.
+- **tab:** Tab and TabPanel now get their index from their position among the
+  children of TabList and TabPanels, instead of registering themselves in
+  document order. Fragments, Suspense boundaries and plain elements are
+  transparent, but a component of your own counts as one child whether it
+  renders one tab or panel, several, or none — so panels behind a wrapper
+  component share an index and open together, and a non-panel component next to
+  the panels shifts every panel after it. Render each Tab and TabPanel directly
+  from TabList and TabPanels, and put conditionals on a tab and its panel
+  together. Development builds warn when the indices cannot line up.
 
 - **tab:** require React 18, replace @reach/tabs with custom ARIA implementation
 
