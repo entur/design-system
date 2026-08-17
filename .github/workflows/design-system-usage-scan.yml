@@ -305,7 +305,7 @@ jobs:
     name: Notify Slack on failure
     needs: [discover, scan-repo, aggregate]
     if: always() && (needs.discover.result == 'failure' || needs.scan-repo.result == 'failure' || needs.aggregate.result == 'failure')
-    uses: entur/gha-slack/.github/workflows/post.yml@70bb994f2287131d46fbaab133ce2e31c32a07f4 # v3
+    uses: entur/gha-slack/.github/workflows/post.yml@d8260cd3e326507200f1ccccf195e81ffcbbe7d9 # v3
     with:
       channel_id: ${{ vars.SLACK_INTERNAL_CHANNEL_ID }}
       message: ':warning: Design system scanner feilet. Se: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}'
