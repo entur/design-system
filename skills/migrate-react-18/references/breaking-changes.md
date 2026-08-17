@@ -250,11 +250,95 @@ const SecondPanel = ({ index }: { index?: number }) => (
 
 Lifting the wrapper out relies on each component rendering a single `TabPanel`; `index` works regardless. Note that a `Suspense` boundary needs neither — it is transparent like a fragment.
 
-`TabPanel` otherwise needs a `TabPanels` parent, and `Tab` a `TabList` parent — outside them, with no `index` prop, they fall back to index 0 and log a `console.warn` in development.
+### A component that is not a panel still takes an index
 
-`TabList` and `TabPanels` also report unusable indices in development: a `console.error` when several children share an index, and a `console.warn` when the selected tab has no panel while later indices are in use (which is also what a panel that is still loading looks like).
+This one is easy to miss, because the markup looks harmless and worked before. Any component of your own counts as one child whether or not it renders a panel, so a heading or a layout component next to the panels shifts every panel after it by one:
 
-**Search patterns:** `data-reach-tab`, `data-reach-tabs`, hardcoded tab/panel IDs in tests, components that return more than one `<Tab>` or `<TabPanel>`, `<TabPanels>` whose children are components of your own.
+```tsx
+// ❌ Heading takes index 0, so the panels end up at 1 and 2.
+// Tab 1 shows nothing, tab 2 shows the first panel.
+<TabPanels>
+  <Heading />
+  <TabPanel>One</TabPanel>
+  <TabPanel>Two</TabPanel>
+</TabPanels>
+
+// ✅ Move it out of TabPanels
+<Heading />
+<TabPanels>
+  <TabPanel>One</TabPanel>
+  <TabPanel>Two</TabPanel>
+</TabPanels>
+
+// ✅ Or inline the markup, since plain elements are transparent
+<TabPanels>
+  <h2>A heading</h2>
+  <TabPanel>One</TabPanel>
+  <TabPanel>Two</TabPanel>
+</TabPanels>
+```
+
+Plain elements, strings, `null` and `false` never take an index, so conditional children are safe as long as they are not components of your own.
+
+### Render a tab and its panel under the same condition
+
+Under `@reach/tabs` both sides re-registered on every render, so a condition on one side alone still left the pairing intact. The index now comes from the position, so a falsy conditional shifts every later index **on its own side only** — and the two sides stop agreeing from that point on.
+
+The damage depends on where the conditional sits. In the middle of a list it silently pairs a tab with the wrong panel:
+
+```tsx
+// ❌ With `show` false, tabs number A=0, C=1 — but panels number A=0, B=1, C=2.
+// Clicking tab C shows Panel B.
+<TabList>
+  <Tab>A</Tab>
+  {show && <Tab>B</Tab>}
+  <Tab>C</Tab>
+</TabList>
+<TabPanels>
+  <TabPanel>Panel A</TabPanel>
+  <TabPanel>Panel B</TabPanel>
+  <TabPanel>Panel C</TabPanel>
+</TabPanels>
+
+// ✅ Same condition on both sides — indices stay in step
+<TabList>
+  <Tab>A</Tab>
+  {show && <Tab>B</Tab>}
+  <Tab>C</Tab>
+</TabList>
+<TabPanels>
+  <TabPanel>Panel A</TabPanel>
+  {show && <TabPanel>Panel B</TabPanel>}
+  <TabPanel>Panel C</TabPanel>
+</TabPanels>
+```
+
+At the **end** of a list, a one-sided conditional is harmless in practice: the orphaned panel is simply unreachable, and an unselected panel renders nothing anyway. It still logs a `console.error`, so fix it, but nothing is visibly wrong. A trailing tab with no panel is allowed outright and does not warn.
+
+So it isn't the counts that matter, it's the positions. Putting both sides under the same condition is the rule worth following, because it holds wherever the conditional sits.
+
+### One `TabList` and one `TabPanels` per `Tabs`
+
+Each container numbers its own children from 0 and knows nothing about the other, so a second one restarts at 0 — two tabs end up selected at once, two panels show at once, and the generated ids collide. Nothing warns about this, since neither container can see the duplicate.
+
+```tsx
+// ❌ Both lists produce indices 0 and 1
+<Tabs>
+  <TabList>…</TabList>
+  <TabList>…</TabList>
+  <TabPanels>…</TabPanels>
+</Tabs>
+```
+
+Use one of each, and give each group of tabs its own `Tabs` if you need two.
+
+### Development warnings
+
+`TabPanel` needs a `TabPanels` parent, and `Tab` a `TabList` parent — outside them, with no `index` prop, they fall back to index 0 and log a `console.warn` in development.
+
+`TabList` and `TabPanels` also report unusable indices in development: a `console.error` when several children share an index, and a `console.warn` when the selected tab has no panel while later indices are in use (which is also what a panel that is still loading looks like). `Tabs` logs a `console.error` for a panel no tab can reach.
+
+**Search patterns:** `data-reach-tab`, `data-reach-tabs`, hardcoded tab/panel IDs in tests, components that return more than one `<Tab>` or `<TabPanel>`, `<TabPanels>` whose children are components of your own, non-panel components inside `<TabPanels>`, conditionals on only one of `<Tab>`/`<TabPanel>`, more than one `<TabList>` or `<TabPanels>` inside a `<Tabs>`.
 
 ---
 

@@ -107,6 +107,8 @@ Fix any remaining type errors or test failures. Common issues:
 - **Type errors from stricter props** — `@entur/tab` components no longer accept arbitrary props. Remove unknown props.
 - **Test failures from ID changes** — Tab/panel IDs now use `useId()` format. Don't match specific ID strings; use `aria-controls`/`aria-labelledby` to find linked elements.
 - **All panels render under the first tab** — panels hidden behind a component of your own (an error boundary, a data wrapper, or a component per panel) share one index. Render each panel from `<TabPanels>`, or pass each one an explicit `index` prop. `@entur/tab` logs an error in development when this happens.
+- **Panels are off by one** — a component of your own inside `<TabPanels>` takes an index even when it renders no panel, so a heading or layout component shifts every panel after it. Move it out of `<TabPanels>`, or inline it as plain markup.
+- **A tab shows the wrong panel** — a `<Tab>` and its `<TabPanel>` sit under different conditions, so a falsy conditional shifts every later index on one side only. Silent when the conditional is mid-list; merely logged when it's last. Put both behind the same condition.
 - **Test failures from batched updates** — React 18 batches all state updates. Wrap assertions that depend on intermediate states in `act()` or use `waitFor`.
 - **Double renders in dev** — `<StrictMode>` now mounts, unmounts, and re-mounts components. This is expected; fix missing `useEffect` cleanups it reveals.
 
