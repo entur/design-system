@@ -28,6 +28,7 @@ import {
   NormalizedDropdownItemType,
   PotentiallyAsyncDropdownItemType,
 } from './types';
+import { useFloatingRef } from './useFloatingRef';
 import { useShadowDomEnvironment } from './useShadowDomEnvironment';
 
 import './Dropdown.scss';
@@ -213,6 +214,9 @@ export const Dropdown = React.forwardRef(
     // Update to use latest refs from floating-ui
     floatingRefs = refs;
 
+    const setFloatingMenu = useFloatingRef(refs.setFloating);
+    const setFloatingReference = useFloatingRef(refs.setReference);
+
     // Update floating-ui position on scroll etc. Floating-ui's autoupdate is usually used inside
     // the useFloating hook but this requires the floating element to be conditionally rendered.
     // Downshift doesn't work correctly when conditionally rendered since props and refs aren't correctly
@@ -236,7 +240,7 @@ export const Dropdown = React.forwardRef(
       isFilled,
     });
     const toggleButtonProps = getToggleButtonProps({
-      ref: mergeRefs(ref, refs.setReference, toggleButtonRef),
+      ref: mergeRefs(ref, setFloatingReference, toggleButtonRef),
       'aria-disabled': disabled,
       'aria-label': disabled ? 'Disabled dropdown' : '',
       disabled: disabled,
@@ -258,7 +262,7 @@ export const Dropdown = React.forwardRef(
     });
     const menuProps = getMenuProps({
       refKey: 'innerRef',
-      ref: refs.setFloating,
+      ref: setFloatingMenu,
       style: listStyle,
     });
 

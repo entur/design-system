@@ -30,6 +30,7 @@ import { DropdownFieldAppendix } from './components/FieldComponents';
 
 import { DropdownProps } from './Dropdown';
 import { useResolvedItems } from './useResolvedItems';
+import { useFloatingRef } from './useFloatingRef';
 import { useShadowDomEnvironment } from './useShadowDomEnvironment';
 import {
   EMPTY_INPUT,
@@ -279,6 +280,8 @@ export const SearchableDropdown = React.forwardRef(
       ],
     });
 
+    const setFloatingMenu = useFloatingRef(refs.setFloating);
+
     // Update floating-ui position on scroll etc. Floating-ui's autoupdate is usually used inside
     // the useFloating hook but this requires the floating element to be conditionally rendered.
     // Downshift doesn't work correctly when conditionally rendered since props and refs aren't correctly
@@ -299,7 +302,7 @@ export const SearchableDropdown = React.forwardRef(
     });
     const menuProps = getMenuProps({
       refKey: 'innerRef',
-      ref: refs.setFloating,
+      ref: setFloatingMenu,
       style: listStyle,
     });
     const inputProps = getInputProps({
@@ -350,6 +353,8 @@ export const SearchableDropdown = React.forwardRef(
         onKeyDown={onKeyDown}
         prepend={prepend}
         readOnly={readOnly}
+        // A plain ref, not one downshift rebuilds every render, so it can go
+        // straight to floating-ui. useFloatingRef covers the refs that can't.
         ref={refs.setReference}
         style={style}
         tabIndex={disabled || readOnly ? -1 : undefined}

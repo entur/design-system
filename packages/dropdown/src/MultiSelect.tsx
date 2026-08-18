@@ -50,6 +50,7 @@ import {
 } from './utils';
 
 import { NormalizedDropdownItemType } from './types';
+import { useFloatingRef } from './useFloatingRef';
 import { useShadowDomEnvironment } from './useShadowDomEnvironment';
 
 import './Dropdown.scss';
@@ -410,6 +411,8 @@ export const MultiSelect = React.forwardRef(
       ],
     });
 
+    const setFloatingMenu = useFloatingRef(refs.setFloating);
+
     // Update floating-ui position on scroll etc. Floating-ui's autoupdate is usually used inside
     // the useFloating hook but this requires the floating element to be conditionally rendered.
     // Downshift doesn't work correctly when conditionally rendered since props and refs aren't correctly
@@ -466,7 +469,7 @@ export const MultiSelect = React.forwardRef(
     const menuProps = getMenuProps({
       'aria-multiselectable': true,
       refKey: 'innerRef',
-      ref: refs.setFloating,
+      ref: setFloatingMenu,
       style: listStyle,
     });
     const toggleButtonProps = getToggleButtonProps({
@@ -495,6 +498,8 @@ export const MultiSelect = React.forwardRef(
         }}
         onKeyDown={onKeyDown}
         readOnly={readOnly}
+        // A plain ref, not one downshift rebuilds every render, so it can go
+        // straight to floating-ui. useFloatingRef covers the refs that can't.
         ref={refs.setReference}
         style={style}
         variant={variant}
