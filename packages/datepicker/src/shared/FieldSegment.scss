@@ -12,7 +12,8 @@
     }
 
     &--placeholder {
-      color: var(--components-datepicker-datefield-standard-text-content);
+      // Same token as ::placeholder in BaseFormControl, so date segments match other fields
+      color: var(--components-form-baseform-standard-text-label);
     }
 
     &--dot-separator {
