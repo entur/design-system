@@ -59,6 +59,19 @@ Tab and panel IDs now use React's `useId()` format (e.g. `:r1:`) instead of Reac
 - Browser devtools will show the new ID format in the DOM
 - Deep links or URL fragments pointing to specific tab panel IDs will stop working
 
+### Development warnings for tab and panel markup
+
+`@entur/tab` logs in development — never in production — when the markup cannot produce usable indices:
+
+- `console.warn` when a `Tab` renders outside `TabList` or a `TabPanel` outside `TabPanels`, with no `index` prop to fall back on
+- `console.error` when several tabs or panels share an index — usually panels hidden behind a component of your own
+- `console.warn` when the selected tab has no panel while later indices are in use. A panel that is still loading looks the same from the outside, so this one is a hint, not a verdict
+
+**What you'll notice:**
+
+- New console output in dev builds if the markup hits one of those cases; the message says what to change
+- Tests that fail on unexpected console output need the markup fixed, not the assertion relaxed
+
 ---
 
 ## @entur/expand

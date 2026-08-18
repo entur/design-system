@@ -34,6 +34,21 @@
         "name": "\"symbol\" | \"object\" | \"div\" | \"a\" | \"abbr\" | \"address\" | \"area\" | \"article\" | \"aside\" | \"audio\" | \"b\" | \"base\" | \"bdi\" | \"bdo\" | \"big\" | \"blockquote\" | \"body\" | \"br\" | \"button\" | \"canvas\" | ... 160 more ... | undefined"
       }
     },
+    "index": {
+      "defaultValue": null,
+      "description": "Indeksen til panelet. Settes vanligvis ut fra rekkefølgen i `TabPanels`,\nmen må angis manuelt dersom panelet ligger inne i en egen komponent",
+      "name": "index",
+      "declarations": [
+        {
+          "fileName": "packages/tab/src/TabPanel.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "number | undefined"
+      }
+    },
     "className": {
       "defaultValue": null,
       "description": "",

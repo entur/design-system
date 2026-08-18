@@ -329,6 +329,29 @@ import { Tabs, TabList, Tab, TabPanels, TabPanel } from '@entur/tab';
 </Tabs>
 ```
 
+### Tabs: keep the tabs and panels in the markup
+
+`TabList` and `TabPanels` number their children by position, and the panel at position _n_ belongs to the tab at position _n_. Render both directly, one `TabList` and one `TabPanels` per `Tabs`, and build them from the same data so they cannot drift apart:
+
+```tsx
+<Tabs>
+  <TabList>
+    {views.map(view => (
+      <Tab key={view.id}>{view.title}</Tab>
+    ))}
+  </TabList>
+  <TabPanels>
+    {views.map(view => (
+      <TabPanel key={view.id}>{view.content}</TabPanel>
+    ))}
+  </TabPanels>
+</Tabs>
+```
+
+Fragments, `Suspense` boundaries and plain elements are transparent, so nesting tabs or panels inside them is fine. A component of your own is not: it counts as one child whether it renders one panel, several, or none at all. So don't put a wrapper component, a heading component, or a component-per-panel inside `TabPanels` — and put conditionals on the tab and its panel together, never on just one.
+
+When a panel genuinely has to live inside a component of your own, pass the position explicitly with the `index` prop on `Tab` and `TabPanel`; it wins over the inherited one. In development the components log a warning or error when the indices cannot line up.
+
 ---
 
 ## Travel-specific

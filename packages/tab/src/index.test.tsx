@@ -1,3 +1,4 @@
+import { StrictMode, Suspense } from 'react';
 import { fireEvent, render } from '@testing-library/react';
 import { Tab, TabList, TabPanel, TabPanels, Tabs } from '.';
 
@@ -323,6 +324,460 @@ test('keepMounted keeps all panels in DOM', () => {
   expect(panels).toHaveLength(2);
   expect(panels[1]).toHaveAttribute('hidden');
   expect(panels[0]).not.toHaveAttribute('hidden');
+});
+
+describe('panels nested in markup', () => {
+  test('tabs and panels inside fragments get their own index', () => {
+    const { getAllByRole, getByText, queryByText } = render(
+      <Tabs>
+        <TabList>
+          <>
+            <Tab>Tab 1</Tab>
+            <Tab>Tab 2</Tab>
+            <Tab>Tab 3</Tab>
+          </>
+        </TabList>
+        <TabPanels>
+          <>
+            <TabPanel>Panel 1</TabPanel>
+            <TabPanel>Panel 2</TabPanel>
+            <TabPanel>Panel 3</TabPanel>
+          </>
+        </TabPanels>
+      </Tabs>,
+    );
+
+    expect(getByText('Panel 1')).toBeInTheDocument();
+    expect(queryByText('Panel 2')).not.toBeInTheDocument();
+    expect(queryByText('Panel 3')).not.toBeInTheDocument();
+
+    fireEvent.click(getAllByRole('tab')[2]);
+
+    expect(getByText('Panel 3')).toBeInTheDocument();
+    expect(queryByText('Panel 1')).not.toBeInTheDocument();
+  });
+
+  test('tabs and panels inside wrapper elements get their own index', () => {
+    const { getAllByRole, getByText, queryByText } = render(
+      <Tabs>
+        <TabList>
+          <div>
+            <Tab>Tab 1</Tab>
+            <Tab>Tab 2</Tab>
+            <Tab>Tab 3</Tab>
+          </div>
+        </TabList>
+        <TabPanels>
+          <div>
+            <TabPanel>Panel 1</TabPanel>
+            <TabPanel>Panel 2</TabPanel>
+            <TabPanel>Panel 3</TabPanel>
+          </div>
+        </TabPanels>
+      </Tabs>,
+    );
+
+    expect(getByText('Panel 1')).toBeInTheDocument();
+    expect(queryByText('Panel 2')).not.toBeInTheDocument();
+
+    fireEvent.click(getAllByRole('tab')[1]);
+
+    expect(getByText('Panel 2')).toBeInTheDocument();
+    expect(queryByText('Panel 1')).not.toBeInTheDocument();
+  });
+
+  test('panels nested several levels deep get their own index', () => {
+    const { getAllByRole, getByText, queryByText } = render(
+      <Tabs>
+        <TabList>
+          <div>
+            <>
+              <Tab>Tab 1</Tab>
+              <span>
+                <Tab>Tab 2</Tab>
+              </span>
+            </>
+          </div>
+        </TabList>
+        <TabPanels>
+          <div>
+            <>
+              <TabPanel>Panel 1</TabPanel>
+              <div>
+                <TabPanel>Panel 2</TabPanel>
+              </div>
+            </>
+          </div>
+        </TabPanels>
+      </Tabs>,
+    );
+
+    const tabs = getAllByRole('tab');
+    expect(getByText('Panel 1')).toBeInTheDocument();
+    expect(queryByText('Panel 2')).not.toBeInTheDocument();
+
+    fireEvent.click(tabs[1]);
+
+    expect(getByText('Panel 2')).toBeInTheDocument();
+    expect(queryByText('Panel 1')).not.toBeInTheDocument();
+    expect(tabs[0]).toHaveAttribute('aria-selected', 'false');
+    expect(tabs[1]).toHaveAttribute('aria-selected', 'true');
+  });
+
+  test('tabs and panels inside a Suspense boundary get their own index', () => {
+    const { getAllByRole, getByText, queryByText } = render(
+      <Tabs>
+        <TabList>
+          <Tab>Tab 1</Tab>
+          <Tab>Tab 2</Tab>
+        </TabList>
+        <TabPanels>
+          <Suspense fallback={<span>Loading</span>}>
+            <TabPanel>Panel 1</TabPanel>
+            <TabPanel>Panel 2</TabPanel>
+          </Suspense>
+        </TabPanels>
+      </Tabs>,
+    );
+
+    expect(getByText('Panel 1')).toBeInTheDocument();
+    expect(queryByText('Panel 2')).not.toBeInTheDocument();
+
+    fireEvent.click(getAllByRole('tab')[1]);
+
+    expect(getByText('Panel 2')).toBeInTheDocument();
+    expect(queryByText('Panel 1')).not.toBeInTheDocument();
+  });
+
+  test('content that is not a tab or a panel does not consume an index', () => {
+    const showFirstPanel = false;
+    const { getAllByRole, getByText } = render(
+      <Tabs>
+        <TabList>
+          <span>Not a tab</span>
+          <Tab>Tab 1</Tab>
+          <Tab>Tab 2</Tab>
+        </TabList>
+        <TabPanels>
+          <hr />
+          {showFirstPanel && <TabPanel>Hidden panel</TabPanel>}
+          <TabPanel>Panel 1</TabPanel>
+          <TabPanel>Panel 2</TabPanel>
+        </TabPanels>
+      </Tabs>,
+    );
+
+    expect(getByText('Panel 1')).toBeInTheDocument();
+
+    fireEvent.click(getAllByRole('tab')[1]);
+    expect(getByText('Panel 2')).toBeInTheDocument();
+  });
+});
+
+describe('explicit index prop', () => {
+  // Stands in for a consumer component that renders one panel, which TabPanels
+  // cannot look inside — the only way in is the index prop
+  const OwnPanel = ({ index, label }: { index: number; label: string }) => (
+    <TabPanel index={index}>{label}</TabPanel>
+  );
+
+  test('a panel inside a component gets the index it is given', () => {
+    const { getAllByRole, getByText, queryByText } = render(
+      <Tabs>
+        <TabList>
+          <Tab>Tab 1</Tab>
+          <Tab>Tab 2</Tab>
+          <Tab>Tab 3</Tab>
+        </TabList>
+        <TabPanels>
+          <div>
+            <OwnPanel index={0} label="Panel 1" />
+            <OwnPanel index={1} label="Panel 2" />
+            <OwnPanel index={2} label="Panel 3" />
+          </div>
+        </TabPanels>
+      </Tabs>,
+    );
+
+    expect(getByText('Panel 1')).toBeInTheDocument();
+
+    fireEvent.click(getAllByRole('tab')[2]);
+
+    expect(getByText('Panel 3')).toBeInTheDocument();
+    expect(queryByText('Panel 1')).not.toBeInTheDocument();
+  });
+
+  test('the index prop wins over the index TabPanels handed out', () => {
+    const { getAllByRole, getByText, queryByText } = render(
+      <Tabs>
+        <TabList>
+          <Tab index={1}>Tab 1</Tab>
+          <Tab index={0}>Tab 2</Tab>
+        </TabList>
+        <TabPanels>
+          <TabPanel index={1}>Panel 1</TabPanel>
+          <TabPanel index={0}>Panel 2</TabPanel>
+        </TabPanels>
+      </Tabs>,
+    );
+
+    // Index 0 is selected, which is the second tab and the second panel
+    expect(getByText('Panel 2')).toBeInTheDocument();
+    expect(queryByText('Panel 1')).not.toBeInTheDocument();
+    expect(getAllByRole('tab')[1]).toHaveAttribute('aria-selected', 'true');
+
+    fireEvent.click(getAllByRole('tab')[0]);
+    expect(getByText('Panel 1')).toBeInTheDocument();
+  });
+
+  test('aria-controls and aria-labelledby follow the given index', () => {
+    const { getAllByRole } = render(
+      <Tabs>
+        <TabList>
+          <Tab>Tab 1</Tab>
+          <Tab>Tab 2</Tab>
+        </TabList>
+        <TabPanels>
+          <div>
+            <OwnPanel index={0} label="Panel 1" />
+            <OwnPanel index={1} label="Panel 2" />
+          </div>
+        </TabPanels>
+      </Tabs>,
+    );
+
+    const tab = getAllByRole('tab')[1];
+    fireEvent.click(tab);
+
+    const panel = getAllByRole('tabpanel')[0];
+    expect(panel.id).toBe(tab.getAttribute('aria-controls'));
+    expect(panel).toHaveAttribute('aria-labelledby', tab.id);
+  });
+});
+
+describe('development warnings', () => {
+  let consoleError: jest.SpyInstance;
+  let consoleWarn: jest.SpyInstance;
+
+  beforeEach(() => {
+    consoleError = jest.spyOn(console, 'error').mockImplementation(() => {});
+    consoleWarn = jest.spyOn(console, 'warn').mockImplementation(() => {});
+  });
+
+  afterEach(() => {
+    consoleError.mockRestore();
+    consoleWarn.mockRestore();
+  });
+
+  test('warns when a TabPanel is rendered without TabPanels', () => {
+    const { getByText } = render(
+      <Tabs>
+        <TabList>
+          <Tab>Tab 1</Tab>
+          <Tab>Tab 2</Tab>
+        </TabList>
+        <TabPanel>Panel 1</TabPanel>
+        <TabPanel>Panel 2</TabPanel>
+      </Tabs>,
+    );
+
+    // Both panels fall back to index 0 and render at the same time
+    expect(getByText('Panel 1')).toBeInTheDocument();
+    expect(getByText('Panel 2')).toBeInTheDocument();
+
+    expect(consoleWarn).toHaveBeenCalledWith(
+      expect.stringContaining('<TabPanel> was rendered outside of <TabPanels>'),
+    );
+  });
+
+  test('warns when a Tab is rendered without TabList', () => {
+    render(
+      <Tabs>
+        <Tab>Tab 1</Tab>
+        <TabPanels>
+          <TabPanel>Panel 1</TabPanel>
+        </TabPanels>
+      </Tabs>,
+    );
+
+    expect(consoleWarn).toHaveBeenCalledWith(
+      expect.stringContaining('<Tab> was rendered outside of <TabList>'),
+    );
+  });
+
+  test('warns when the selected index has no panel but later ones do', () => {
+    // Only a warning: a panel that is still loading looks the same from here
+    const Header = () => <h2>Heading</h2>;
+
+    render(
+      <Tabs>
+        <TabList>
+          <Tab>Tab 1</Tab>
+          <Tab>Tab 2</Tab>
+        </TabList>
+        <TabPanels>
+          <div>
+            <Header />
+            <TabPanel>Panel 1</TabPanel>
+            <TabPanel>Panel 2</TabPanel>
+          </div>
+        </TabPanels>
+      </Tabs>,
+    );
+
+    expect(consoleWarn).toHaveBeenCalledWith(
+      expect.stringContaining('No <TabPanel> got index 0'),
+    );
+    // The last panel ended up at index 2, which no tab can reach
+    expect(consoleError).toHaveBeenCalledWith(
+      expect.stringContaining('No <Tab> got index 2'),
+    );
+  });
+
+  test('warns about a panel no tab can reach', () => {
+    const showSecondTab = false;
+
+    render(
+      <Tabs>
+        <TabList>
+          <Tab>Tab 1</Tab>
+          {showSecondTab && <Tab>Tab 2</Tab>}
+        </TabList>
+        <TabPanels>
+          <TabPanel>Panel 1</TabPanel>
+          <TabPanel>Panel 2</TabPanel>
+        </TabPanels>
+      </Tabs>,
+    );
+
+    expect(consoleError).toHaveBeenCalledWith(
+      expect.stringContaining('No <Tab> got index 1'),
+    );
+  });
+
+  test('a tab with no panel of its own does not warn', () => {
+    render(
+      <Tabs>
+        <TabList>
+          <Tab>Tab 1</Tab>
+          <Tab>Tab 2</Tab>
+        </TabList>
+        <TabPanels>
+          <TabPanel>Panel 1</TabPanel>
+        </TabPanels>
+      </Tabs>,
+    );
+
+    expect(consoleError).not.toHaveBeenCalled();
+    expect(consoleWarn).not.toHaveBeenCalled();
+  });
+
+  test('warns when several panels resolve to the same index', () => {
+    const TwoPanels = () => (
+      <>
+        <TabPanel>Panel 1</TabPanel>
+        <TabPanel>Panel 2</TabPanel>
+      </>
+    );
+
+    render(
+      <Tabs>
+        <TabList>
+          <Tab>Tab 1</Tab>
+          <Tab>Tab 2</Tab>
+        </TabList>
+        <TabPanels>
+          <TwoPanels />
+        </TabPanels>
+      </Tabs>,
+    );
+
+    expect(consoleError).toHaveBeenCalledWith(
+      expect.stringContaining(
+        'Several <TabPanel> components got the same index (0)',
+      ),
+    );
+  });
+
+  test('does not warn for supported markup', () => {
+    render(
+      <Tabs>
+        <TabList>
+          <>
+            <Tab>Tab 1</Tab>
+            <Tab>Tab 2</Tab>
+          </>
+        </TabList>
+        <TabPanels>
+          <div>
+            <TabPanel>Panel 1</TabPanel>
+            <TabPanel>Panel 2</TabPanel>
+          </div>
+        </TabPanels>
+      </Tabs>,
+    );
+
+    expect(consoleError).not.toHaveBeenCalled();
+    expect(consoleWarn).not.toHaveBeenCalled();
+  });
+
+  test('an index prop on each panel silences the shared-index error', () => {
+    const TwoPanels = () => (
+      <>
+        <TabPanel index={0}>Panel 1</TabPanel>
+        <TabPanel index={1}>Panel 2</TabPanel>
+      </>
+    );
+
+    render(
+      <Tabs>
+        <TabList>
+          <Tab>Tab 1</Tab>
+          <Tab>Tab 2</Tab>
+        </TabList>
+        <TabPanels>
+          <TwoPanels />
+        </TabPanels>
+      </Tabs>,
+    );
+
+    expect(consoleError).not.toHaveBeenCalled();
+    expect(consoleWarn).not.toHaveBeenCalled();
+  });
+
+  test('a panel with an index prop outside TabPanels does not warn', () => {
+    render(
+      <Tabs>
+        <TabList>
+          <Tab index={0}>Tab 1</Tab>
+        </TabList>
+        <TabPanel index={0}>Panel 1</TabPanel>
+      </Tabs>,
+    );
+
+    expect(consoleError).not.toHaveBeenCalled();
+    expect(consoleWarn).not.toHaveBeenCalled();
+  });
+
+  test('does not warn in StrictMode, where effects run twice', () => {
+    render(
+      <StrictMode>
+        <Tabs>
+          <TabList>
+            <Tab>Tab 1</Tab>
+            <Tab>Tab 2</Tab>
+          </TabList>
+          <TabPanels>
+            <TabPanel>Panel 1</TabPanel>
+            <TabPanel>Panel 2</TabPanel>
+          </TabPanels>
+        </Tabs>
+      </StrictMode>,
+    );
+
+    expect(consoleError).not.toHaveBeenCalled();
+    expect(consoleWarn).not.toHaveBeenCalled();
+  });
 });
 
 test('TabList accepts aria-label', () => {
