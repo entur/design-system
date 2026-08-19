@@ -102,6 +102,33 @@ For custom validation, use the `feedback` and `variant` props:
 
 The `feedback` prop renders inline validation text near the field, paired with visual `variant` styling.
 
+### Feedback text is announced automatically
+
+Every form component that renders `feedback` also renders it inside a live region with `role="status"`, present in the DOM from mount. Screen readers announce the message politely when it appears or changes — you do not need to add an `aria-live` region of your own. Wrapping the field in one announces the same text twice.
+
+The message text has to identify the problem on its own. The status icon is `aria-hidden`, so nothing but your text tells a screen reader user whether this is an error, a warning or a confirmation:
+
+```tsx
+// Good — the text says what is wrong
+<TextField label="Mobilnummer" variant="negative" feedback="Ugyldig format. Bruk 8 siffer." />
+
+// Bad — "Ugyldig" only reads as an error because of the red icon
+<TextField label="Mobilnummer" variant="negative" feedback="Ugyldig" />
+```
+
+Two props change the announcement. They apply to `TextField`, `TextArea`, `DateField`, `TimePicker`, `SimpleTimePicker`, `NativeDatePicker`, `NativeTimePicker`, `Dropdown`, `SearchableDropdown`, `MultiSelect` and `NativeDropdown`:
+
+| Prop                           | Effect                                                                                                                                                    |
+| ------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| _none_                         | `role="status"` — polite announcement. The default, and correct for nearly all validation                                                                 |
+| `ariaAlertOnFeedback`          | `true`/`'alert'` gives `role="alert"` — interrupts the screen reader immediately. Only for messages that block the user                                    |
+| `ariaAlertOnFeedback={false}`  | No live region at all. Use when something else announces the error, such as a focused error summary after submit                                          |
+| `feedbackProps`                | Passed to the feedback text. Your own `role` or `aria-live` here overrides the prop above                                                                 |
+
+Prefer the default. `role="alert"` cuts off whatever the screen reader is currently saying, including the user's own typing echo, so inline validation that fires on change or blur should stay polite.
+
+`ariaAlertOnFeedback={false}` is also the escape hatch for feedback that changes on every keystroke — a character counter rendered through `feedback` would otherwise be announced on each change.
+
 For grouping related fields:
 
 ```tsx
@@ -169,7 +196,9 @@ Contrast checker: https://linje.entur.no/universell-utforming/kontrastsjekker
 
 ## ARIA live regions
 
-For dynamic content updates (alerts, toast notifications, results):
+Form fields are already covered — `feedback` gets its own live region, so don't wrap a field in one. See [Feedback text is announced automatically](#feedback-text-is-announced-automatically).
+
+For other dynamic content updates (alerts, toast notifications, results):
 
 ```tsx
 // Use ToastProvider from @entur/alert for toast messages
