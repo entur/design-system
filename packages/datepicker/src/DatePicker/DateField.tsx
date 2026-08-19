@@ -164,6 +164,7 @@ export const DateField = <DateType extends DateValue>({
   onValidate,
   dateFieldRef: ref,
   ariaAlertOnFeedback,
+  feedbackProps,
   ...rest
 }: DateFieldProps<DateType>) => {
   const { locale } = useLocale();
@@ -208,6 +209,7 @@ export const DateField = <DateType extends DateValue>({
       <BaseFormControl
         append={append}
         ariaAlertOnFeedback={ariaAlertOnFeedback}
+        feedbackProps={feedbackProps}
         className={classNames('eds-datefield', className, {
           'eds-datefield--has-tooltip': labelTooltip !== undefined,
         })}

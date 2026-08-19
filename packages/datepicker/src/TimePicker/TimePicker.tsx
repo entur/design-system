@@ -132,6 +132,7 @@ export const TimePicker = <TimeType extends TimeValue>({
   append,
   prepend,
   ariaAlertOnFeedback,
+  feedbackProps,
   ...rest
 }: TimePickerProps<TimeType>) => {
   let { locale } = useLocale();
@@ -223,6 +224,7 @@ export const TimePicker = <TimeType extends TimeValue>({
           </div>
         }
         ariaAlertOnFeedback={ariaAlertOnFeedback}
+        feedbackProps={feedbackProps}
         aria-describedby={timePickerId + 'description'}
         className={classNames('eds-timepicker', className, {
           'eds-timepicker--disabled': disabled,

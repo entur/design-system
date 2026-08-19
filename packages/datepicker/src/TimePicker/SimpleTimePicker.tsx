@@ -111,6 +111,8 @@ export const SimpleTimePicker = <TimeType extends TimeValue>({
   showSeconds,
   style,
   variant,
+  ariaAlertOnFeedback,
+  feedbackProps,
   ...rest
 }: SimpleTimePickerProps<TimeType>) => {
   const [inputText, setInputText] = useState('');
@@ -314,6 +316,8 @@ export const SimpleTimePicker = <TimeType extends TimeValue>({
         disabled={disabled}
         disableLabelAnimation
         feedback={feedback}
+        ariaAlertOnFeedback={ariaAlertOnFeedback}
+        feedbackProps={feedbackProps}
         label={label}
         labelProps={labelProps}
         labelTooltip={labelTooltip}
