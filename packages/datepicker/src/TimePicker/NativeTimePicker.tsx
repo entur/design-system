@@ -115,7 +115,7 @@ const NativeTimePickerBase = React.forwardRef<
   return (
     <input
       ref={ref}
-      aria-invalid={currentVariant === 'error'}
+      aria-invalid={currentVariant === 'negative' || currentVariant === error}
       type="time"
       className="eds-form-control"
       onChange={handleChange}

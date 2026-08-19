@@ -123,7 +123,7 @@ const NativeDatePickerBase = React.forwardRef<
   return (
     <input
       ref={ref}
-      aria-invalid={currentVariant === 'error'}
+      aria-invalid={currentVariant === 'negative' || currentVariant === error}
       type="date"
       className="eds-form-control eds-native-date-picker"
       onChange={handleChange}
