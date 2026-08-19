@@ -15,7 +15,7 @@ import {
   useFloating,
 } from '@floating-ui/react-dom';
 
-import { BaseFormControl } from '@entur/form';
+import { BaseFormControl, FeedbackAnnouncementProps } from '@entur/form';
 import { space } from '@entur/tokens';
 import { VariantType, getActiveElement, mergeRefs } from '@entur/utils';
 
@@ -112,7 +112,7 @@ export type DropdownProps<ValueType> = {
    * @default ', valgt element, trykk for å fjerne'
    */
   ariaLabelSelectedItem?: string;
-};
+} & FeedbackAnnouncementProps;
 
 export const Dropdown = React.forwardRef(
   <ValueType extends NonNullable<any>>(

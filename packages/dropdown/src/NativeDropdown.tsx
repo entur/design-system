@@ -1,5 +1,5 @@
 import React, { forwardRef, useId } from 'react';
-import { BaseFormControl } from '@entur/form';
+import { BaseFormControl, FeedbackAnnouncementProps } from '@entur/form';
 import { DownArrowIcon } from '@entur/icons';
 import { LoadingDots } from '@entur/loader';
 import { VariantType } from '@entur/utils';
@@ -66,7 +66,7 @@ export type NativeDropdownProps<ValueType> = {
    */
   disableLabelAnimation?: boolean;
   [key: string]: any;
-};
+} & FeedbackAnnouncementProps;
 
 export const NativeDropdown = forwardRef(
   <ValueType extends string | number>(
@@ -85,6 +85,8 @@ export const NativeDropdown = forwardRef(
       style,
       value,
       variant,
+      ariaAlertOnFeedback,
+      feedbackProps,
       ...rest
     }: NativeDropdownProps<ValueType>,
     ref: React.ForwardedRef<HTMLSelectElement>,
@@ -98,6 +100,8 @@ export const NativeDropdown = forwardRef(
         disabled={disabled}
         readOnly={readOnly}
         prepend={prepend}
+        ariaAlertOnFeedback={ariaAlertOnFeedback}
+        feedbackProps={feedbackProps}
         append={
           <FieldAppend
             hidden={disabled || readOnly}
