@@ -469,4 +469,43 @@ describe('SearchableDropdown', () => {
     const result = await axe(container);
     expect(result).toHaveNoViolations();
   });
+
+  describe('aria-invalid', () => {
+    test.each(['negative', 'error'] as const)(
+      'is true for %s variant',
+      variant => {
+        const { container } = render(
+          <SearchableDropdown
+            label="test label"
+            items={testItems}
+            selectedItem={null}
+            onChange={() => undefined}
+            variant={variant}
+          />,
+        );
+
+        expect(container.querySelector('input')).toHaveAttribute(
+          'aria-invalid',
+          'true',
+        );
+      },
+    );
+
+    test('is false for warning variant', () => {
+      const { container } = render(
+        <SearchableDropdown
+          label="test label"
+          items={testItems}
+          selectedItem={null}
+          onChange={() => undefined}
+          variant="warning"
+        />,
+      );
+
+      expect(container.querySelector('input')).toHaveAttribute(
+        'aria-invalid',
+        'false',
+      );
+    });
+  });
 });

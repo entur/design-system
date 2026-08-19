@@ -375,4 +375,41 @@ describe('Dropdown', () => {
     const result = await axe(container);
     expect(result).toHaveNoViolations();
   });
+
+  describe('aria-invalid', () => {
+    test.each(['negative', 'error'] as const)(
+      'is true for %s variant',
+      variant => {
+        const { container } = render(
+          <Dropdown
+            label="test label"
+            items={testItems}
+            selectedItem={null}
+            variant={variant}
+          />,
+        );
+
+        expect(container.querySelector('[role="combobox"]')).toHaveAttribute(
+          'aria-invalid',
+          'true',
+        );
+      },
+    );
+
+    test('is false for warning variant', () => {
+      const { container } = render(
+        <Dropdown
+          label="test label"
+          items={testItems}
+          selectedItem={null}
+          variant="warning"
+        />,
+      );
+
+      expect(container.querySelector('[role="combobox"]')).toHaveAttribute(
+        'aria-invalid',
+        'false',
+      );
+    });
+  });
 });

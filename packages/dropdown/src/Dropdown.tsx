@@ -279,6 +279,7 @@ export const Dropdown = React.forwardRef(
         style={style}
         variant={variant}
         {...toggleButtonProps}
+        aria-invalid={variant === 'negative' || variant === error}
         after={
           <DropdownList
             ariaLabelChosenSingular={ariaLabelChosenSingular}

@@ -400,6 +400,7 @@ export const SearchableDropdown = React.forwardRef(
             'eds-dropdown__input--hidden': showSelectedItem,
           })}
           {...inputProps}
+          aria-invalid={variant === 'negative' || variant === 'error'}
         />
         <DropdownFieldAppendix
           {...toggleButtonProps}
