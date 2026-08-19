@@ -14,11 +14,23 @@
       flex-direction: column;
     }
   }
+  // The bottom gap is handed over to the code section, open or closed, so the
+  // gap never changes size and nothing below the playground moves
+  &__live-preview-and-props-wrapper:has(+ .eds-base-expand),
+  &__live-preview-container:has(+ .eds-base-expand) {
+    margin-bottom: 0rem;
+  }
+  // The open class is dropped the instant closing starts, so the corners are
+  // held square until the collapse has finished
+  &__live-preview-and-props-wrapper,
+  &__live-preview-container {
+    transition: border-bottom-left-radius 0s tokens.$timings-medium, border-bottom-right-radius 0s tokens.$timings-medium;
+  }
   &__live-preview-and-props-wrapper:has(+ .eds-base-expand--open),
   &__live-preview-container:has(+ .eds-base-expand--open) {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
-    margin-bottom: 0rem;
+    transition-delay: 0s;
   }
   &__live-preview {
     padding: 1rem;
@@ -121,10 +133,6 @@
     }
   }
 
-  .eds-base-expand--open {
-    margin-bottom: tokens.$space-extra-large;
-  }
-
   &__expandable {
     overflow: hidden;
     border-bottom-left-radius: tokens.$border-radiuses-medium;
@@ -194,4 +202,13 @@
       }
     }
   }
+}
+
+// The gap the preview handed over. It stays the same whether the code section
+// is open or closed, and matches the margin the preceding element gave up.
+.playground__live-preview-and-props-wrapper:has(+ .eds-base-expand) + .eds-base-expand {
+  margin-bottom: tokens.$space-extra-large;
+}
+.playground__live-preview-container:has(+ .eds-base-expand) + .eds-base-expand {
+  margin-bottom: 1.5rem;
 }
