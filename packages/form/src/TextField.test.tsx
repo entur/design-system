@@ -255,4 +255,30 @@ describe('TextField', () => {
       expect(clearButton.tabIndex).not.toBe(-1);
     });
   });
+
+  describe('aria-invalid', () => {
+    test.each(['negative', 'error'] as const)(
+      'is true for %s variant',
+      variant => {
+        render(<TextField label="Test field" variant={variant} />);
+
+        expect(screen.getByLabelText('Test field')).toHaveAttribute(
+          'aria-invalid',
+          'true',
+        );
+      },
+    );
+
+    test.each(['warning', 'success', 'information', undefined] as const)(
+      'is false for %s variant',
+      variant => {
+        render(<TextField label="Test field" variant={variant} />);
+
+        expect(screen.getByLabelText('Test field')).toHaveAttribute(
+          'aria-invalid',
+          'false',
+        );
+      },
+    );
+  });
 });

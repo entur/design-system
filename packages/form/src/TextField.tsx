@@ -218,7 +218,7 @@ const TextFieldBase = React.forwardRef<HTMLInputElement, TextFieldBaseProps>(
 
     return (
       <input
-        aria-invalid={currentVariant === 'error'}
+        aria-invalid={currentVariant === 'negative' || currentVariant === error}
         className="eds-form-control"
         disabled={disabled}
         readOnly={readOnly}

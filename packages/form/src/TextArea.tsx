@@ -153,7 +153,7 @@ const TextAreaBase = React.forwardRef<HTMLTextAreaElement, TextAreaBaseProps>(
         disabled={disabled}
         onChange={handleChange}
         value={value}
-        aria-invalid={currentVariant === 'error'}
+        aria-invalid={currentVariant === 'negative' || currentVariant === error}
         style={resize ? { ...style, resize } : style}
         {...rest}
       />
