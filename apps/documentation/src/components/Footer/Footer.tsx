@@ -53,12 +53,18 @@ const Footer = ({
           </Link>
         </nav>
         <div>
-          <Heading3 margin="bottom">Kom i kontakt med oss</Heading3>
+          <Heading3 margin="bottom">Kontakt og ressurser</Heading3>
           <Link
             href="https://entur.slack.com/archives/C899QSPB7"
             className="footer__link"
           >
             #talk-designsystem på Slack
+          </Link>
+          <Link
+            href="mailto:teamdesignsystem@entur.org"
+            className="footer__link"
+          >
+            <EmailIcon inline aria-hidden="true" /> teamdesignsystem@entur.org
           </Link>
           <Link
             href="https://github.com/entur/design-system"
@@ -71,12 +77,6 @@ const Footer = ({
             className="footer__link"
           >
             <FigmaIcon inline aria-hidden="true" /> Figma (krever innlogging)
-          </Link>
-          <Link
-            href="mailto:teamdesignsystem@entur.org"
-            className="footer__link"
-          >
-            <EmailIcon inline aria-hidden="true" /> teamdesignsystem@entur.org
           </Link>
         </div>
       </div>
