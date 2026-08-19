@@ -42,6 +42,14 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Attributes
 
   For tekst som går over flere linjer, bruk heller [Text area](/komponenter/skjemaelementer/textarea).
 
+## Tilgjengelighet
+
+`feedback` vises i en live region med `role="status"`, slik at skjermlesere leser opp meldingen når den kommer. Du trenger derfor ikke legge til en egen `aria-live`-region rundt feltet. Det gir dobbel opplesing.
+
+Ikonet ved siden av meldingen er skjult for skjermlesere. Teksten må derfor være selvforklarende og tydelig formidle om det er en feilmelding eller et varsel.
+
+Du kan styre opplesingen med `ariaAlertOnFeedback`. Standardverdien `'status'` gir en høflig opplesing, `'alert'` avbryter skjermleseren umiddelbart – bruk den bare til meldinger som hindrer brukeren i å komme videre – og `false` skrur av opplesingen helt. Med `feedbackProps` kan du sette egne `role`- og `aria-live`-verdier på feedback-teksten.
+
 ## Props
 
 ### TextField

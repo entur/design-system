@@ -934,7 +934,6 @@ const Stand = () => {
                 className="stand__question__field"
                 feedback={errorMessage ?? undefined}
                 variant={errorMessage ? 'negative' : undefined}
-                ariaAlertOnFeedback="status"
               />
               <PrimaryButton type="submit">Legg til</PrimaryButton>
             </form>
