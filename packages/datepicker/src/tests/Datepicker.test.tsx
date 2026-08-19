@@ -261,8 +261,12 @@ test('maxDate works correctly for edge values', () => {
     </>,
   );
 
-  expect(screen.queryAllByRole('alert')[0]).toBeUndefined();
-  expect(screen.queryAllByRole('alert')[1]).toBeUndefined();
+  expect(screen.queryAllByRole('status')[0]).not.toHaveTextContent(
+    'Expected error',
+  );
+  expect(screen.queryAllByRole('status')[1]).not.toHaveTextContent(
+    'Expected error',
+  );
 
   rerender(
     <>
@@ -285,8 +289,8 @@ test('maxDate works correctly for edge values', () => {
     </>,
   );
 
-  expect(screen.getAllByRole('alert')[0]).toHaveTextContent('Expected error');
-  expect(screen.getAllByRole('alert')[1]).toHaveTextContent('Expected error');
+  expect(screen.getAllByRole('status')[0]).toHaveTextContent('Expected error');
+  expect(screen.getAllByRole('status')[1]).toHaveTextContent('Expected error');
 });
 
 test('gives errors correctly using maxDate as CalendarDate', () => {
@@ -314,8 +318,8 @@ test('gives errors correctly using maxDate as CalendarDate', () => {
     </>,
   );
 
-  expect(screen.getAllByRole('alert')[0]).toHaveTextContent('Expected error');
-  expect(screen.getAllByRole('alert')[1]).toHaveTextContent('Expected error');
+  expect(screen.getAllByRole('status')[0]).toHaveTextContent('Expected error');
+  expect(screen.getAllByRole('status')[1]).toHaveTextContent('Expected error');
 
   rerender(
     <>
@@ -338,8 +342,12 @@ test('gives errors correctly using maxDate as CalendarDate', () => {
     </>,
   );
 
-  expect(screen.queryAllByRole('alert')[0]).toBeUndefined();
-  expect(screen.queryAllByRole('alert')[1]).toBeUndefined();
+  expect(screen.queryAllByRole('status')[0]).not.toHaveTextContent(
+    'Expected error',
+  );
+  expect(screen.queryAllByRole('status')[1]).not.toHaveTextContent(
+    'Expected error',
+  );
 });
 
 test('gives errors correctly using maxDate as CalendarDateTime', () => {
@@ -367,8 +375,8 @@ test('gives errors correctly using maxDate as CalendarDateTime', () => {
     </>,
   );
 
-  expect(screen.getAllByRole('alert')[0]).toHaveTextContent('Expected error');
-  expect(screen.getAllByRole('alert')[1]).toHaveTextContent('Expected error');
+  expect(screen.getAllByRole('status')[0]).toHaveTextContent('Expected error');
+  expect(screen.getAllByRole('status')[1]).toHaveTextContent('Expected error');
 
   rerender(
     <>
@@ -391,8 +399,12 @@ test('gives errors correctly using maxDate as CalendarDateTime', () => {
     </>,
   );
 
-  expect(screen.queryAllByRole('alert')[0]).toBeUndefined();
-  expect(screen.queryAllByRole('alert')[1]).toBeUndefined();
+  expect(screen.queryAllByRole('status')[0]).not.toHaveTextContent(
+    'Expected error',
+  );
+  expect(screen.queryAllByRole('status')[1]).not.toHaveTextContent(
+    'Expected error',
+  );
 });
 
 test('gives errors correctly using minDate as CalendarDate', () => {
@@ -420,8 +432,8 @@ test('gives errors correctly using minDate as CalendarDate', () => {
     </>,
   );
 
-  expect(screen.getAllByRole('alert')[0]).toHaveTextContent('Expected error');
-  expect(screen.getAllByRole('alert')[1]).toHaveTextContent('Expected error');
+  expect(screen.getAllByRole('status')[0]).toHaveTextContent('Expected error');
+  expect(screen.getAllByRole('status')[1]).toHaveTextContent('Expected error');
 
   rerender(
     <>
@@ -444,8 +456,12 @@ test('gives errors correctly using minDate as CalendarDate', () => {
     </>,
   );
 
-  expect(screen.queryAllByRole('alert')[0]).toBeUndefined();
-  expect(screen.queryAllByRole('alert')[1]).toBeUndefined();
+  expect(screen.queryAllByRole('status')[0]).not.toHaveTextContent(
+    'Expected error',
+  );
+  expect(screen.queryAllByRole('status')[1]).not.toHaveTextContent(
+    'Expected error',
+  );
 });
 
 test('gives errors correctly using minDate as CalendarDateTime', () => {
@@ -473,8 +489,8 @@ test('gives errors correctly using minDate as CalendarDateTime', () => {
     </>,
   );
 
-  expect(screen.getAllByRole('alert')[0]).toHaveTextContent('Expected error');
-  expect(screen.getAllByRole('alert')[1]).toHaveTextContent('Expected error');
+  expect(screen.getAllByRole('status')[0]).toHaveTextContent('Expected error');
+  expect(screen.getAllByRole('status')[1]).toHaveTextContent('Expected error');
 
   rerender(
     <>
@@ -497,8 +513,12 @@ test('gives errors correctly using minDate as CalendarDateTime', () => {
     </>,
   );
 
-  expect(screen.queryAllByRole('alert')[0]).toBeUndefined();
-  expect(screen.queryAllByRole('alert')[1]).toBeUndefined();
+  expect(screen.queryAllByRole('status')[0]).not.toHaveTextContent(
+    'Expected error',
+  );
+  expect(screen.queryAllByRole('status')[1]).not.toHaveTextContent(
+    'Expected error',
+  );
 });
 
 test('shows selected granularity', () => {
@@ -702,7 +722,27 @@ test('onValidate fires on invalid date', async () => {
 }, 10000);
 
 describe('ARIA roles on feedback text', () => {
-  test('applies role="alert" for negative variant (immediate announcement)', () => {
+  test.each(['negative', 'error', 'warning', 'information', 'info', 'success'])(
+    'applies role="status" by default for %s variant (polite announcement)',
+    variant => {
+      const currentDate = new CalendarDate(1997, 7, 10);
+      const { container } = render(
+        <DateField
+          label="test"
+          selectedDate={currentDate}
+          onChange={() => undefined}
+          feedback="Dette er en melding"
+          variant={variant as any}
+          locale="en-GB"
+        />,
+      );
+
+      const feedbackElement = container.querySelector('.eds-feedback-text');
+      expect(feedbackElement).toHaveAttribute('role', 'status');
+    },
+  );
+
+  test('applies role="alert" when ariaAlertOnFeedback="alert"', () => {
     const currentDate = new CalendarDate(1997, 7, 10);
     const { container } = render(
       <DateField
@@ -711,98 +751,13 @@ describe('ARIA roles on feedback text', () => {
         onChange={() => undefined}
         feedback="Dette er en feilmelding"
         variant="negative"
+        ariaAlertOnFeedback="alert"
         locale="en-GB"
       />,
     );
 
     const feedbackElement = container.querySelector('.eds-feedback-text');
     expect(feedbackElement).toHaveAttribute('role', 'alert');
-  });
-
-  test('applies role="alert" for error variant (deprecated, immediate announcement)', () => {
-    const currentDate = new CalendarDate(1997, 7, 10);
-    const { container } = render(
-      <DateField
-        label="test"
-        selectedDate={currentDate}
-        onChange={() => undefined}
-        feedback="Dette er en feilmelding"
-        variant="error"
-        locale="en-GB"
-      />,
-    );
-
-    const feedbackElement = container.querySelector('.eds-feedback-text');
-    expect(feedbackElement).toHaveAttribute('role', 'alert');
-  });
-
-  test('applies role="status" for warning variant (polite announcement)', () => {
-    const currentDate = new CalendarDate(1997, 7, 10);
-    const { container } = render(
-      <DateField
-        label="test"
-        selectedDate={currentDate}
-        onChange={() => undefined}
-        feedback="Dette er en advarsel"
-        variant="warning"
-        locale="en-GB"
-      />,
-    );
-
-    const feedbackElement = container.querySelector('.eds-feedback-text');
-    expect(feedbackElement).toHaveAttribute('role', 'status');
-    expect(feedbackElement).not.toHaveAttribute('role', 'alert');
-  });
-
-  test('does NOT apply role="alert" for information variant', () => {
-    const currentDate = new CalendarDate(1997, 7, 10);
-    const { container } = render(
-      <DateField
-        label="test"
-        selectedDate={currentDate}
-        onChange={() => undefined}
-        feedback="Dette er en informasjonsmelding"
-        variant="information"
-        locale="en-GB"
-      />,
-    );
-
-    const feedbackElement = container.querySelector('.eds-feedback-text');
-    expect(feedbackElement).not.toHaveAttribute('role', 'alert');
-  });
-
-  test('does NOT apply role="alert" for info variant (deprecated)', () => {
-    const currentDate = new CalendarDate(1997, 7, 10);
-    const { container } = render(
-      <DateField
-        label="test"
-        selectedDate={currentDate}
-        onChange={() => undefined}
-        feedback="Dette er en informasjonsmelding"
-        variant="info"
-        locale="en-GB"
-      />,
-    );
-
-    const feedbackElement = container.querySelector('.eds-feedback-text');
-    expect(feedbackElement).not.toHaveAttribute('role', 'alert');
-  });
-
-  test('does NOT apply role="alert" for success variant', () => {
-    const currentDate = new CalendarDate(1997, 7, 10);
-    const { container } = render(
-      <DateField
-        label="test"
-        selectedDate={currentDate}
-        onChange={() => undefined}
-        feedback="Dette er en suksessmelding"
-        variant="success"
-        locale="en-GB"
-      />,
-    );
-
-    const feedbackElement = container.querySelector('.eds-feedback-text');
-    expect(feedbackElement).not.toHaveAttribute('role', 'alert');
   });
 });
 

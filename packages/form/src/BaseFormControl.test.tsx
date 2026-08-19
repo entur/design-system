@@ -87,6 +87,111 @@ test('renders variants correctly', () => {
   expect(wrapper).not.toHaveClass('eds-form-control-wrapper--success');
 });
 
+test('renders live region in DOM before feedback exists', () => {
+  const { container, rerender } = render(
+    <BaseFormControl label="test" labelId="testId">
+      <input />
+    </BaseFormControl>,
+  );
+
+  const region = container.querySelector('.eds-feedback-text');
+  expect(region).toBeInTheDocument();
+  expect(region).toHaveAttribute('role', 'status');
+  expect(region).not.toHaveAttribute('aria-live');
+  expect(region).toBeEmptyDOMElement();
+
+  rerender(
+    <BaseFormControl
+      label="test"
+      labelId="testId"
+      variant="negative"
+      feedback="Feltet er påkrevd"
+    >
+      <input />
+    </BaseFormControl>,
+  );
+
+  expect(region).toHaveAttribute('role', 'status');
+  expect(region).not.toHaveAttribute('aria-live');
+  expect(region).toHaveTextContent('Feltet er påkrevd');
+});
+
+test.each(['negative', 'warning', 'success', 'information'] as const)(
+  'uses status role by default for %s variant',
+  (variant: 'negative' | 'warning' | 'success' | 'information') => {
+    const { container } = render(
+      <BaseFormControl
+        label="test"
+        labelId="testId"
+        variant={variant}
+        feedback="Melding"
+      >
+        <input />
+      </BaseFormControl>,
+    );
+
+    const region = container.querySelector('.eds-feedback-text');
+    expect(region).toHaveAttribute('role', 'status');
+    expect(region).not.toHaveAttribute('aria-live');
+    expect(region).toHaveTextContent('Melding');
+  },
+);
+
+test('uses alert role when ariaAlertOnFeedback is alert', () => {
+  const { container, rerender } = render(
+    <BaseFormControl label="test" labelId="testId" ariaAlertOnFeedback="alert">
+      <input />
+    </BaseFormControl>,
+  );
+
+  const region = container.querySelector('.eds-feedback-text');
+  expect(region).toHaveAttribute('role', 'alert');
+  expect(region).not.toHaveAttribute('aria-live');
+  expect(region).toBeEmptyDOMElement();
+
+  rerender(
+    <BaseFormControl
+      label="test"
+      labelId="testId"
+      ariaAlertOnFeedback="alert"
+      variant="negative"
+      feedback="Feltet er påkrevd"
+    >
+      <input />
+    </BaseFormControl>,
+  );
+
+  expect(region).toHaveAttribute('role', 'alert');
+  expect(region).toHaveTextContent('Feltet er påkrevd');
+});
+
+test('renders no live region when ariaAlertOnFeedback is false', () => {
+  const { container, rerender } = render(
+    <BaseFormControl label="test" labelId="testId" ariaAlertOnFeedback={false}>
+      <input />
+    </BaseFormControl>,
+  );
+
+  expect(container.querySelector('.eds-feedback-text')).not.toBeInTheDocument();
+
+  rerender(
+    <BaseFormControl
+      label="test"
+      labelId="testId"
+      ariaAlertOnFeedback={false}
+      variant="negative"
+      feedback="Feltet er påkrevd"
+    >
+      <input />
+    </BaseFormControl>,
+  );
+
+  const feedbackText = container.querySelector('.eds-feedback-text');
+  expect(feedbackText).toHaveTextContent('Feltet er påkrevd');
+  expect(feedbackText).not.toHaveAttribute('aria-live');
+  expect(feedbackText).not.toHaveAttribute('role');
+});
+
 test('renders prepend- and append-containers', () => {
   const { container, rerender } = render(
     <BaseFormControl label="test" labelId="testId">

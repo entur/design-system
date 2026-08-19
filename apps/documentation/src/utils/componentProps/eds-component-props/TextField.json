@@ -285,9 +285,9 @@
     },
     "ariaAlertOnFeedback": {
       "defaultValue": {
-        "value": false
+        "value": "true"
       },
-      "description": "Setter feedback-tekstens rolle for skjermlesere.\n'alert' = aria-live=\"assertive\" (avbryter umiddelbart)\n'status' = aria-live=\"polite\" (venter til bruker er ferdig)\nundefined/false = ingen automatisk annonsering",
+      "description": "Setter feedback-tekstens rolle for skjermlesere.\ntrue/'status' = aria-live=\"polite\" (venter til brukeren er ferdig)\n'alert' = aria-live=\"assertive\" (avbryter umiddelbart)\nfalse = ingen automatisk annonsering",
       "name": "ariaAlertOnFeedback",
       "declarations": [
         {

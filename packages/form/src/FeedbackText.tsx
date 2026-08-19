@@ -24,33 +24,24 @@ const AlertIcon = ({
   switch (variant) {
     case 'success':
       return (
-        <ValidationSuccessFilledIcon
-          aria-label="Suksessmelding"
-          className={iconClass}
-        />
+        <ValidationSuccessFilledIcon aria-hidden="true" className={iconClass} />
       );
     case 'negative':
       return (
-        <ValidationErrorFilledIcon
-          aria-label="Feilmelding"
-          className={iconClass}
-        />
+        <ValidationErrorFilledIcon aria-hidden="true" className={iconClass} />
       );
     case 'information':
       return null;
     case 'warning':
       return (
         <ValidationExclamationFilledIcon
-          aria-label="Varselmelding"
+          aria-hidden="true"
           className={iconClass}
         />
       );
     case error:
       return (
-        <ValidationErrorFilledIcon
-          aria-label="Feilmelding"
-          className={iconClass}
-        />
+        <ValidationErrorFilledIcon aria-hidden="true" className={iconClass} />
       );
     case info:
       return null;
@@ -60,12 +51,13 @@ const AlertIcon = ({
 };
 
 export type FeedbackTextProps = {
-  /** Teksten som vises */
-  children: React.ReactNode;
+  /** Teksten som vises. Uten tekst rendres en tom (usynlig) container,
+   * slik at en aria-live-region kan eksistere i DOM før meldingen settes */
+  children?: React.ReactNode;
   /** Skjuler ikonet */
   hideIcon?: boolean;
   /** Feedbackvarianten*/
-  variant: VariantType | typeof error | typeof info;
+  variant?: VariantType | typeof error | typeof info;
   /** Ekstra klassenavn */
   className?: string;
   [key: string]: any;
@@ -77,6 +69,7 @@ export const FeedbackText = ({
   className,
   ...rest
 }: FeedbackTextProps) => {
+  const hasContent = children !== undefined && children !== null;
   return (
     <SubLabel
       className={classNames(
@@ -84,13 +77,16 @@ export const FeedbackText = ({
         {
           'eds-feedback-text--information':
             variant === info || variant === 'information',
+          'eds-feedback-text--empty': !hasContent,
         },
         className,
       )}
       {...rest}
     >
-      {!hideIcon && <AlertIcon variant={variant} />}
-      <span className="eds-feedback-text__text">{children}</span>
+      {hasContent && !hideIcon && variant && <AlertIcon variant={variant} />}
+      {hasContent && (
+        <span className="eds-feedback-text__text">{children}</span>
+      )}
     </SubLabel>
   );
 };

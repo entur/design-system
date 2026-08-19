@@ -10,6 +10,10 @@
     padding-left: calc(#{t.$space-medium} + #{t.$border-widths-medium});
   }
 
+  &--empty {
+    margin-top: 0;
+  }
+
   &__text {
     color: var(--components-form-feedbacktext-information-standard-text);
 

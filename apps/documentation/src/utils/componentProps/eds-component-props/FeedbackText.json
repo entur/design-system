@@ -6,7 +6,7 @@
   "props": {
     "children": {
       "defaultValue": null,
-      "description": "Teksten som vises",
+      "description": "Teksten som vises. Uten tekst rendres en tom (usynlig) container,\nslik at en aria-live-region kan eksistere i DOM før meldingen settes",
       "name": "children",
       "declarations": [
         {
@@ -46,9 +46,9 @@
           "name": "TypeLiteral"
         }
       ],
-      "required": true,
+      "required": false,
       "type": {
-        "name": "VariantType | \"error\" | \"info\""
+        "name": "VariantType | \"error\" | \"info\" | undefined"
       }
     },
     "className": {

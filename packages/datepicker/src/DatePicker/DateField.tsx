@@ -24,7 +24,6 @@ import {
   createCalendar,
   getAdjustedMaxDate,
   handleOnChange,
-  shouldUseAriaAlert,
 } from '../shared/utils';
 
 import './DateField.scss';
@@ -164,6 +163,7 @@ export const DateField = <DateType extends DateValue>({
   prepend,
   onValidate,
   dateFieldRef: ref,
+  ariaAlertOnFeedback,
   ...rest
 }: DateFieldProps<DateType>) => {
   const { locale } = useLocale();
@@ -207,9 +207,7 @@ export const DateField = <DateType extends DateValue>({
     >
       <BaseFormControl
         append={append}
-        ariaAlertOnFeedback={shouldUseAriaAlert(
-          variant ?? (state.isInvalid ? validationVariant : undefined),
-        )}
+        ariaAlertOnFeedback={ariaAlertOnFeedback}
         className={classNames('eds-datefield', className, {
           'eds-datefield--has-tooltip': labelTooltip !== undefined,
         })}

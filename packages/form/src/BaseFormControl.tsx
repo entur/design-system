@@ -58,12 +58,13 @@ export type BaseFormControlProps = React.HTMLAttributes<HTMLDivElement> & {
   style?: React.CSSProperties;
   /** Plasserer labelen statisk på toppen av inputfeltet */
   disableLabelAnimation?: boolean;
-  /** Setter feedback-tekstens rolle for skjermlesere.
-   * 'alert' = aria-live="assertive" (avbryter umiddelbart)
-   * 'status' = aria-live="polite" (venter til bruker er ferdig)
-   * undefined/false = ingen automatisk annonsering
-   */
   onClick?: (event: React.MouseEvent<HTMLElement>) => void;
+  /** Setter feedback-tekstens rolle for skjermlesere.
+   * true/'status' = aria-live="polite" (venter til brukeren er ferdig)
+   * 'alert' = aria-live="assertive" (avbryter umiddelbart)
+   * false = ingen automatisk annonsering
+   * @default true
+   */
   ariaAlertOnFeedback?: boolean | 'alert' | 'status';
   /** Legg til et element etter feltet */
   after?: React.ReactNode;
@@ -100,14 +101,22 @@ export const BaseFormControl = React.forwardRef<
       labelProps,
       style,
       disableLabelAnimation = false,
-      ariaAlertOnFeedback = false,
+      ariaAlertOnFeedback = true,
       ariaLabelOnReadOnly = 'Dette skjemafeltet kan bare leses',
       ...rest
     },
     ref,
   ) => {
     const contextVariant = useVariant();
-    const currentVariant = variant || contextVariant;
+    const currentVariant = variant || contextVariant || undefined;
+
+    const feedbackRole =
+      ariaAlertOnFeedback === false
+        ? undefined
+        : ariaAlertOnFeedback === 'alert'
+        ? 'alert'
+        : 'status';
+    const showFeedback = Boolean(feedback && currentVariant);
 
     return (
       <InputGroupContextProvider>
@@ -181,19 +190,17 @@ export const BaseFormControl = React.forwardRef<
             {children}
             {append && <div className="eds-form-control__append">{append}</div>}
           </div>
-          {feedback && currentVariant && (
-            <FeedbackText
-              variant={currentVariant}
-              role={
-                ariaAlertOnFeedback === true || ariaAlertOnFeedback === 'alert'
-                  ? 'alert'
-                  : ariaAlertOnFeedback === 'status'
-                  ? 'status'
-                  : undefined
-              }
-            >
-              {feedback}
+          {feedbackRole !== undefined ? (
+            // Live region rendres alltid, slik at den finnes i DOM
+            // før feedback-teksten settes — ellers annonserer ikke
+            // skjermlesere innholdet pålitelig
+            <FeedbackText variant={currentVariant} role={feedbackRole}>
+              {showFeedback ? feedback : undefined}
             </FeedbackText>
+          ) : (
+            showFeedback && (
+              <FeedbackText variant={currentVariant}>{feedback}</FeedbackText>
+            )
           )}
           {after}
         </div>

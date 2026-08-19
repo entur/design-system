@@ -64,9 +64,10 @@ export type TextFieldProps = {
    */
   clearButtonAriaLabel?: string;
   /** Setter feedback-tekstens rolle for skjermlesere.
+   * true/'status' = aria-live="polite" (venter til brukeren er ferdig)
    * 'alert' = aria-live="assertive" (avbryter umiddelbart)
-   * 'status' = aria-live="polite" (venter til bruker er ferdig)
-   * undefined/false = ingen automatisk annonsering
+   * false = ingen automatisk annonsering
+   * @default true
    */
   ariaAlertOnFeedback?: boolean | 'alert' | 'status';
 } & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'label'>;
@@ -95,7 +96,7 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
       onClear,
       clearButtonAriaLabel = 'Tøm felt',
       value,
-      ariaAlertOnFeedback = false,
+      ariaAlertOnFeedback,
       ...rest
     },
     ref: React.Ref<HTMLInputElement>,
