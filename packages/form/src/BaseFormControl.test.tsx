@@ -165,6 +165,25 @@ test('uses alert role when ariaAlertOnFeedback is alert', () => {
   expect(region).toHaveTextContent('Feltet er påkrevd');
 });
 
+test('uses alert role when ariaAlertOnFeedback is true', () => {
+  const { container } = render(
+    <BaseFormControl
+      label="test"
+      labelId="testId"
+      ariaAlertOnFeedback
+      variant="negative"
+      feedback="Feltet er påkrevd"
+    >
+      <input />
+    </BaseFormControl>,
+  );
+
+  expect(container.querySelector('.eds-feedback-text')).toHaveAttribute(
+    'role',
+    'alert',
+  );
+});
+
 test('renders no live region when ariaAlertOnFeedback is false', () => {
   const { container, rerender } = render(
     <BaseFormControl label="test" labelId="testId" ariaAlertOnFeedback={false}>
@@ -190,6 +209,61 @@ test('renders no live region when ariaAlertOnFeedback is false', () => {
   expect(feedbackText).toHaveTextContent('Feltet er påkrevd');
   expect(feedbackText).not.toHaveAttribute('aria-live');
   expect(feedbackText).not.toHaveAttribute('role');
+});
+
+test('role from feedbackProps overrides the aria props', () => {
+  const { container } = render(
+    <BaseFormControl
+      label="test"
+      labelId="testId"
+      ariaAlertOnFeedback="alert"
+      feedbackProps={{ role: 'status' }}
+      variant="negative"
+      feedback="Feltet er påkrevd"
+    >
+      <input />
+    </BaseFormControl>,
+  );
+
+  expect(container.querySelector('.eds-feedback-text')).toHaveAttribute(
+    'role',
+    'status',
+  );
+});
+
+test('aria-live from feedbackProps replaces the implicit role', () => {
+  const { container } = render(
+    <BaseFormControl
+      label="test"
+      labelId="testId"
+      feedbackProps={{ 'aria-live': 'off' }}
+    >
+      <input />
+    </BaseFormControl>,
+  );
+
+  const region = container.querySelector('.eds-feedback-text');
+  expect(region).toBeInTheDocument();
+  expect(region).toHaveAttribute('aria-live', 'off');
+  expect(region).not.toHaveAttribute('role');
+});
+
+test('passes other feedbackProps on to the feedback text', () => {
+  const { container } = render(
+    <BaseFormControl
+      label="test"
+      labelId="testId"
+      feedbackProps={{ id: 'feedbackId', className: 'custom-feedback' }}
+      variant="negative"
+      feedback="Feltet er påkrevd"
+    >
+      <input />
+    </BaseFormControl>,
+  );
+
+  const region = container.querySelector('.eds-feedback-text');
+  expect(region).toHaveAttribute('id', 'feedbackId');
+  expect(region).toHaveClass('custom-feedback');
 });
 
 test('renders prepend- and append-containers', () => {

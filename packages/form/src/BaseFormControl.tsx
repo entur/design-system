@@ -18,61 +18,74 @@ const info = 'info';
 /** @deprecated use variant="negative" instead */
 const error = 'error';
 
-export type BaseFormControlProps = React.HTMLAttributes<HTMLDivElement> & {
-  /** Et skjemaelement med `eds-form-control`-klassen */
-  children: React.ReactNode;
-  /** Ekstra klassenavn */
-  className?: string;
-  /** Sett til true om skjema-elementet er disabled */
-  disabled?: boolean;
-  /** Sett til true om skjema-elementet er i read-only modus */
-  readOnly?: boolean;
-  /** Tekst eller ikon som vises foran skjema-elementet */
-  prepend?: React.ReactNode;
-  /** Tekst eller ikon som vises etter skjema-elementet */
-  append?: React.ReactNode;
-  /** Valideringsvariant */
-  variant?: VariantType | typeof error | typeof info;
-  /**Størrelsen på skjemaelementet
-   * @default "medium"
-   */
-  size?: 'medium' | 'large';
-  /** Label til inputfeltet */
-  label: React.ReactNode;
-  /** En tooltip som forklarer labelen til inputfeltet */
-  labelTooltip?: React.ReactNode;
-  /** Forklarende tekst for knappen som åpner labelTooltip */
-  labelTooltipButtonAriaLabel?: string;
-  labelTooltipPlacement?: Placement;
-  /** Illustrerer om inputfeltet er påkrevd eller ikke */
-  required?: boolean;
-  /** ID som settes på labelen til inputfeltet */
-  labelId: string;
-  /** Varselmelding, som vil komme under form-komponenten */
-  feedback?: string;
-  /** Om inputfeltet er fylt med data. Brukes for plassering av label */
-  isFilled?: boolean;
-  /**Ekstra props som sendes til label */
-  labelProps?: { [key: string]: any };
-  /** Ekstra styling */
-  style?: React.CSSProperties;
-  /** Plasserer labelen statisk på toppen av inputfeltet */
-  disableLabelAnimation?: boolean;
-  onClick?: (event: React.MouseEvent<HTMLElement>) => void;
-  /** Setter feedback-tekstens rolle for skjermlesere.
-   * true/'status' = role="status" (venter til brukeren er ferdig)
-   * 'alert' = role="alert" (avbryter umiddelbart)
-   * false = ingen automatisk annonsering
-   * @default true
+/** Props som styrer hvordan feedback-teksten annonseres av skjermlesere.
+ * Deles av alle skjemakomponentene som rendrer en feedback-tekst */
+export type FeedbackAnnouncementProps = {
+  /** Styrer hvordan feedback-teksten annonseres av skjermlesere.
+   * Standarden 'status' lar skjermleseren annonsere meldingen når
+   * brukeren er ferdig med det den holder på med, og live region-en
+   * rendres da alltid i DOM, også før meldingen finnes.
+   * true/'alert' gir role="alert", som avbryter skjermleseren og
+   * annonserer meldingen umiddelbart – bruk den bare til meldinger som
+   * hindrer brukeren i å komme videre. false skrur av automatisk
+   * annonsering.
+   * @default 'status'
    */
   ariaAlertOnFeedback?: boolean | 'alert' | 'status';
-  /** Legg til et element etter feltet */
-  after?: React.ReactNode;
-  /** Legg til et element før feltet */
-  before?: React.ReactNode;
-  /** Aria-label som brukes når inputfeltet er i read-only modus */
-  ariaLabelOnReadOnly?: string;
+  /** Ekstra props som sendes til feedback-teksten. Egne `role`- og
+   * `aria-live`-verdier her overstyrer ariaAlertOnFeedback */
+  feedbackProps?: React.HTMLAttributes<HTMLElement>;
 };
+
+export type BaseFormControlProps = React.HTMLAttributes<HTMLDivElement> &
+  FeedbackAnnouncementProps & {
+    /** Et skjemaelement med `eds-form-control`-klassen */
+    children: React.ReactNode;
+    /** Ekstra klassenavn */
+    className?: string;
+    /** Sett til true om skjema-elementet er disabled */
+    disabled?: boolean;
+    /** Sett til true om skjema-elementet er i read-only modus */
+    readOnly?: boolean;
+    /** Tekst eller ikon som vises foran skjema-elementet */
+    prepend?: React.ReactNode;
+    /** Tekst eller ikon som vises etter skjema-elementet */
+    append?: React.ReactNode;
+    /** Valideringsvariant */
+    variant?: VariantType | typeof error | typeof info;
+    /**Størrelsen på skjemaelementet
+     * @default "medium"
+     */
+    size?: 'medium' | 'large';
+    /** Label til inputfeltet */
+    label: React.ReactNode;
+    /** En tooltip som forklarer labelen til inputfeltet */
+    labelTooltip?: React.ReactNode;
+    /** Forklarende tekst for knappen som åpner labelTooltip */
+    labelTooltipButtonAriaLabel?: string;
+    labelTooltipPlacement?: Placement;
+    /** Illustrerer om inputfeltet er påkrevd eller ikke */
+    required?: boolean;
+    /** ID som settes på labelen til inputfeltet */
+    labelId: string;
+    /** Varselmelding, som vil komme under form-komponenten */
+    feedback?: string;
+    /** Om inputfeltet er fylt med data. Brukes for plassering av label */
+    isFilled?: boolean;
+    /**Ekstra props som sendes til label */
+    labelProps?: { [key: string]: any };
+    /** Ekstra styling */
+    style?: React.CSSProperties;
+    /** Plasserer labelen statisk på toppen av inputfeltet */
+    disableLabelAnimation?: boolean;
+    onClick?: (event: React.MouseEvent<HTMLElement>) => void;
+    /** Legg til et element etter feltet */
+    after?: React.ReactNode;
+    /** Legg til et element før feltet */
+    before?: React.ReactNode;
+    /** Aria-label som brukes når inputfeltet er i read-only modus */
+    ariaLabelOnReadOnly?: string;
+  };
 
 export const BaseFormControl = React.forwardRef<
   HTMLDivElement,
@@ -101,7 +114,8 @@ export const BaseFormControl = React.forwardRef<
       labelProps,
       style,
       disableLabelAnimation = false,
-      ariaAlertOnFeedback = true,
+      ariaAlertOnFeedback = 'status',
+      feedbackProps,
       ariaLabelOnReadOnly = 'Dette skjemafeltet kan bare leses',
       ...rest
     },
@@ -110,12 +124,25 @@ export const BaseFormControl = React.forwardRef<
     const contextVariant = useVariant();
     const currentVariant = variant || contextVariant || undefined;
 
-    const feedbackRole =
-      ariaAlertOnFeedback === false
-        ? undefined
-        : ariaAlertOnFeedback === 'alert'
+    const {
+      role: feedbackRoleOverride,
+      'aria-live': feedbackAriaLive,
+      ...restFeedbackProps
+    } = feedbackProps ?? {};
+
+    const defaultFeedbackRole =
+      ariaAlertOnFeedback === true || ariaAlertOnFeedback === 'alert'
         ? 'alert'
-        : 'status';
+        : ariaAlertOnFeedback === 'status'
+        ? 'status'
+        : undefined;
+
+    // role and aria-live passed by the developer win over our own props
+    const feedbackRole =
+      feedbackRoleOverride ??
+      (feedbackAriaLive !== undefined ? undefined : defaultFeedbackRole);
+    const isLiveRegion =
+      feedbackRole !== undefined || feedbackAriaLive !== undefined;
     const showFeedback = Boolean(feedback && currentVariant);
 
     return (
@@ -190,17 +217,18 @@ export const BaseFormControl = React.forwardRef<
             {children}
             {append && <div className="eds-form-control__append">{append}</div>}
           </div>
-          {feedbackRole !== undefined ? (
-            // Live region rendres alltid, slik at den finnes i DOM
-            // før feedback-teksten settes — ellers annonserer ikke
-            // skjermlesere innholdet pålitelig
-            <FeedbackText variant={currentVariant} role={feedbackRole}>
+          {(isLiveRegion || showFeedback) && (
+            // Live region-en rendres alltid, slik at den finnes i DOM før
+            // feedback-teksten settes — ellers annonserer ikke skjermlesere
+            // innholdet pålitelig
+            <FeedbackText
+              variant={currentVariant}
+              role={feedbackRole}
+              aria-live={feedbackAriaLive}
+              {...restFeedbackProps}
+            >
               {showFeedback ? feedback : undefined}
             </FeedbackText>
-          ) : (
-            showFeedback && (
-              <FeedbackText variant={currentVariant}>{feedback}</FeedbackText>
-            )
           )}
           {after}
         </div>

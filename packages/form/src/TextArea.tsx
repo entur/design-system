@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { VariantType, mergeRefs, useOnMount } from '@entur/utils';
 
 import { useVariant } from './VariantProvider';
-import { BaseFormControl } from './BaseFormControl';
+import { BaseFormControl, FeedbackAnnouncementProps } from './BaseFormControl';
 import { useInputGroupContext } from './InputGroupContext';
 import { isFilled } from './utils';
 
@@ -43,14 +43,8 @@ export type TextAreaProps = {
    * @default "vertical"
    */
   resize?: 'vertical' | 'none';
-  /** Setter feedback-tekstens rolle for skjermlesere.
-   * true/'status' = aria-live="polite" (venter til brukeren er ferdig)
-   * 'alert' = aria-live="assertive" (avbryter umiddelbart)
-   * false = ingen automatisk annonsering
-   * @default true
-   */
-  ariaAlertOnFeedback?: boolean | 'alert' | 'status';
-} & React.TextareaHTMLAttributes<HTMLTextAreaElement>;
+} & FeedbackAnnouncementProps &
+  React.TextareaHTMLAttributes<HTMLTextAreaElement>;
 
 export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
   (
@@ -69,6 +63,7 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
       disableLabelAnimation,
       resize,
       ariaAlertOnFeedback,
+      feedbackProps,
       ...rest
     },
     ref: React.Ref<HTMLTextAreaElement>,
@@ -91,6 +86,7 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
         labelProps={{ className: 'eds-textarea__label' }}
         disableLabelAnimation={disableLabelAnimation}
         ariaAlertOnFeedback={ariaAlertOnFeedback}
+        feedbackProps={feedbackProps}
         onClick={e => {
           if (e.target === e.currentTarget) textareaRef?.current?.focus();
         }}

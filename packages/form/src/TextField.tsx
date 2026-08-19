@@ -6,7 +6,7 @@ import { CloseSmallIcon } from '@entur/icons';
 import { Placement } from '@entur/tooltip';
 import { VariantType, mergeRefs } from '@entur/utils';
 
-import { BaseFormControl } from './BaseFormControl';
+import { BaseFormControl, FeedbackAnnouncementProps } from './BaseFormControl';
 import { useInputGroupContext } from './InputGroupContext';
 import { isFilled } from './utils';
 import { useVariant } from './VariantProvider';
@@ -63,14 +63,8 @@ export type TextFieldProps = {
    * @default "Tøm felt"
    */
   clearButtonAriaLabel?: string;
-  /** Setter feedback-tekstens rolle for skjermlesere.
-   * true/'status' = role="status" (venter til brukeren er ferdig)
-   * 'alert' = role="alert" (avbryter umiddelbart)
-   * false = ingen automatisk annonsering
-   * @default true
-   */
-  ariaAlertOnFeedback?: boolean | 'alert' | 'status';
-} & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'label'>;
+} & FeedbackAnnouncementProps &
+  Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'label'>;
 
 export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
   (
@@ -97,6 +91,7 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
       clearButtonAriaLabel = 'Tøm felt',
       value,
       ariaAlertOnFeedback,
+      feedbackProps,
       ...rest
     },
     ref: React.Ref<HTMLInputElement>,
@@ -158,6 +153,7 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
         disableLabelAnimation={disableLabelAnimation}
         labelProps={labelProps}
         ariaAlertOnFeedback={ariaAlertOnFeedback}
+        feedbackProps={feedbackProps}
         onClick={e => {
           if (e.target === e.currentTarget) textFieldRef?.current?.focus();
         }}
