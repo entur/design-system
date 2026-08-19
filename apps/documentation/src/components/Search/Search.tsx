@@ -42,6 +42,8 @@ type StoreResult = {
   icon?: any;
 };
 
+const SEARCH_HEADING_ID = 'searchmodal-heading';
+
 let LIST_ITEM_ICON_PROPS = {
   inline: true,
   size: '1.25rem',
@@ -191,10 +193,18 @@ export const Search = () => {
         open={open}
         onDismiss={handleDismiss}
         initialFocusRef={searchbarRef}
+        aria-label="Søk i dokumentasjon"
+        closeLabel="Lukk søk"
         className="searchmodal"
       >
+        <Heading2 margin="bottom" id={SEARCH_HEADING_ID}>
+          Søk i dokumentasjon
+        </Heading2>
         <TextField
-          label="Søk i dokumentasjon"
+          // Named by the dialog heading instead of its own label
+          label=""
+          aria-labelledby={SEARCH_HEADING_ID}
+          placeholder="Søk etter komponenter, retningslinjer og mer …"
           value={searchQuery}
           onChange={event => updateSearchQuery(event.currentTarget.value)}
           ref={searchbarRef}

@@ -4,8 +4,15 @@
 
 @use '../../styles/variables' as variables;
 
+// Offset the dialog, not the content — the close button is positioned against
+// the dialog, so offsetting the content alone leaves the X floating outside it.
+/* stylelint-disable-next-line selector-max-specificity --
+   :has() is the only way to reach the dialog; the class lands on the content. */
+.eds-modal__overlay:has(> .searchmodal) {
+  margin-block: 4dvh auto;
+}
+
 .searchmodal {
-  margin-top: 4dvh;
   padding-top: t.$space-extra-large;
 
   &__button {
@@ -39,6 +46,16 @@
   }
 
   &__searchbar {
+    // No visible label here, so drop the space reserved for it and show the
+    // placeholder without waiting for focus.
+    input.eds-form-control {
+      padding-block: 0;
+
+      &::placeholder {
+        opacity: 1;
+      }
+    }
+
     &::after {
       content: '';
       display: block;
@@ -134,9 +151,5 @@
         margin-left: auto;
       }
     }
-  }
-
-  .eds-modal__close {
-    display: none;
   }
 }
