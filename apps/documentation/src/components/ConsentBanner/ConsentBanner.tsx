@@ -24,9 +24,8 @@ export const ConsentBanner = () => {
   } = useConsent();
   const sectionRef = React.useRef<HTMLElement>(null);
 
-  // The banner is no use unseen, so bring it into view whenever it opens — the browser
-  // restores scroll position on load, and inserting the banner above the content shifts
-  // the page out from under it. Deferred so the shift has settled first.
+  // Scroll to the banner when it opens: the page may already be scrolled past it.
+  // Waits one frame, because adding the banner shifts the page down first.
   React.useEffect(() => {
     if (!isBannerOpen) return;
     // A hash in the address bar means the reader asked for a particular section, so leave
@@ -38,9 +37,8 @@ export const ConsentBanner = () => {
     return () => cancelAnimationFrame(frame);
   }, [isBannerOpen, isBannerFocusRequested]);
 
-  // Taking focus is reserved for when the user asked for the banner. On page load focus
-  // has to stay put, so that reading the page is never interrupted. Focusing the section
-  // rather than the heading means screen readers announce the banner's name along with it.
+  // Move focus only when the reader asked for the banner, never on page load.
+  // Focus the section, not the heading, so screen readers read out its name.
   React.useEffect(() => {
     if (!isBannerOpen || !isBannerFocusRequested) return;
     sectionRef.current?.focus({ preventScroll: true });
@@ -51,9 +49,8 @@ export const ConsentBanner = () => {
 
   const { privacy, buttons } = bannerLabels;
 
-  // acceptAllConsents and denyAllConsents persist the choice themselves. The banner only
-  // closes once one of them has gone through, so a choice never looks recorded when it is
-  // not. Usercentrics also closes it through UC_CONSENT, which is harmless twice over.
+  // acceptAllConsents and denyAllConsents save the choice themselves. Close the banner
+  // only after one of them succeeds, so a failed choice never looks recorded.
   const answer = async (accepted: boolean) => {
     const cmp = window.__ucCmp;
     if (!cmp) return;

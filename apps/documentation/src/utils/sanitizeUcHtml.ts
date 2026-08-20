@@ -15,9 +15,8 @@ export const sanitizeUcHtml = (html: string) => {
   const parsed = new DOMParser().parseFromString(clean, 'text/html');
 
   parsed.body.querySelectorAll('a').forEach(anchor => {
-    // Sanitising drops an unsafe href, and the editor sometimes leaves an empty one behind.
-    // Either way the link leads nowhere, so unwrap it rather than leave text that invites a
-    // click. An empty href is worse than none: it reloads the page.
+    // A link with no href goes nowhere, and href="" reloads the page. Remove the link and
+    // keep its text, so nothing looks clickable without being clickable.
     if (!anchor.getAttribute('href')?.trim()) {
       anchor.replaceWith(...Array.from(anchor.childNodes));
       return;
