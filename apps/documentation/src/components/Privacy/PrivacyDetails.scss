@@ -1,5 +1,11 @@
 @use '@entur/tokens/dist/styles.scss' as eds;
 
+// Keeps a linked-to section clear of the navigation, which is fixed on small screens and
+// sticky on large ones.
+.privacy-details__section-heading {
+  scroll-margin-top: calc(var(--navbar-height) + #{eds.$space-medium});
+}
+
 .privacy-details {
   &__fieldset {
     border: none;
@@ -53,6 +59,10 @@
     flex-wrap: wrap;
     gap: eds.$space-medium;
     margin-top: eds.$space-large;
+  }
+
+  &__consent-id {
+    margin-bottom: eds.$space-extra-large2;
   }
 
   &__status {

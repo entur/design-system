@@ -115,9 +115,8 @@ export const PrivacyDetails = () => {
     load();
   }, [load]);
 
-  // The sections only exist once Usercentrics has answered, which is long after the
-  // browser gave up on the hash in the address bar. Take over that jump once, so links
-  // pointing straight at a section land on it.
+  // The sections render only after Usercentrics responds, by which time the browser has
+  // already abandoned the hash in the address bar. Perform that scroll here instead, once.
   React.useEffect(() => {
     if (!categories || hasHandledHash.current) return;
     const id = window.location.hash.slice(1);
@@ -151,7 +150,10 @@ export const PrivacyDetails = () => {
     return (
       <>
         <section aria-labelledby="personvern-utilgjengelig">
-          <Heading2 id="personvern-utilgjengelig">
+          <Heading2
+            className="privacy-details__section-heading"
+            id="personvern-utilgjengelig"
+          >
             Vi får ikke kontakt med samtykkeløsningen vår
           </Heading2>
           <Paragraph>
@@ -168,7 +170,10 @@ export const PrivacyDetails = () => {
         </section>
 
         <section aria-labelledby="personvern-nodvendig">
-          <Heading2 id="personvern-nodvendig">
+          <Heading2
+            className="privacy-details__section-heading"
+            id="personvern-nodvendig"
+          >
             Nødvendig informasjon vi lagrer
           </Heading2>
           <Paragraph>
@@ -235,7 +240,12 @@ export const PrivacyDetails = () => {
   return (
     <>
       <section aria-labelledby="personvern-valg">
-        <Heading2 id="personvern-valg">Dine valg</Heading2>
+        <Heading2
+          className="privacy-details__section-heading"
+          id="personvern-valg"
+        >
+          Dine valg
+        </Heading2>
         {optional.length === 0 ? (
           <Paragraph>
             Vi bruker ingen valgfrie teknologier på dette nettstedet.
@@ -302,7 +312,10 @@ export const PrivacyDetails = () => {
 
       {essential.length > 0 && (
         <section aria-labelledby="personvern-nodvendig">
-          <Heading2 id="personvern-nodvendig">
+          <Heading2
+            className="privacy-details__section-heading"
+            id="personvern-nodvendig"
+          >
             Nødvendig informasjon vi lagrer
           </Heading2>
           <Paragraph>
@@ -317,13 +330,19 @@ export const PrivacyDetails = () => {
 
       {controllerId && (
         <section aria-labelledby="personvern-id">
-          <Heading2 id="personvern-id">Din samtykke-ID</Heading2>
+          <Heading2
+            className="privacy-details__section-heading"
+            id="personvern-id"
+          >
+            Din samtykke-ID
+          </Heading2>
           <Paragraph>
             Samtykket ditt er lagret under en tilfeldig ID, ikke under navn
             eller e-post. Skal du be om innsyn i eller sletting av det vi har
             lagret, oppgi denne IDen til oss.
           </Paragraph>
           <CopyableText
+            className="privacy-details__consent-id"
             textToCopy={controllerId}
             successMessage={`Samtykke-IDen «${controllerId}» ble kopiert til utklippstavlen.`}
           >

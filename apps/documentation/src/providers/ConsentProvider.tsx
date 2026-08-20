@@ -91,10 +91,8 @@ export const ConsentProvider = ({
     [],
   );
 
-  // Without texts from Usercentrics there is nothing to show, so the banner only opens
-  // once they have loaded. Opening is always a deliberate action here — the entry points
-  // sit in the footer and the settings panel, far from the banner — so ask for it to be
-  // brought into view.
+  // Opens only once the texts have loaded, since there is nothing to show without them.
+  // Called from the footer and the settings panel, so the banner is also brought into view.
   const openBanner = useCallback(async () => {
     const labels = await loadBannerLabels();
     if (!labels) {
@@ -147,9 +145,8 @@ export const ConsentProvider = ({
     };
   }, []);
 
-  // Suppressing the Usercentrics UI only covers its initial render, and it can still ask
-  // to show itself later. ConsentBanner and the privacy page cover everything we need, so
-  // close it again whenever it tries.
+  // Suppressing the Usercentrics UI only covers its first render; it can still ask to show
+  // itself later. ConsentBanner and the privacy page replace it, so close it every time.
   useEffect(() => {
     const viewChangeHandler = (event: Event) => {
       const view = (event as CustomEvent<{ view?: CmpView }>).detail?.view;

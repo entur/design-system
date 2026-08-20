@@ -39,8 +39,9 @@ export function removeLeadingAndTrailingSlash(str?: string) {
   return removeLeadingSlash(removeTrailingSlash(str));
 }
 
-export const normalizeString = (string?: string): string => {
-  if (string === undefined) return '';
+// Pages without a parent give a null category from GraphQL, which a default value misses.
+export const normalizeString = (string?: string | null): string => {
+  if (string === undefined || string === null) return '';
   return string
     .replace(/\//g, '')
     .replace(/-/g, ' ')

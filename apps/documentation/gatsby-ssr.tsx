@@ -43,7 +43,6 @@ export const wrapPageElement: GatsbySSR['wrapPageElement'] = ({
   const CUSTOM_LAYOUT_PAGES = [
     '/',
     '/stand',
-    '/personvern',
     '/ressurser/innsikt/brukerundersokelse',
   ];
   const normalizedPath = props.location.pathname.replace(/\/$/, '') || '/';

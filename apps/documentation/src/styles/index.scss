@@ -79,6 +79,35 @@ body {
   }
 }
 
+// Removes the 18rem column the side menu would have filled, so content starts at the edge.
+.doc-layout--without-side-navigation {
+  @media screen and (min-width: map.get(variables.$breakpoints, 'tablet')) {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'topnav'
+      'main'
+      'toc'
+      'footer';
+  }
+
+  @media screen and (min-width: variables.$show-toc-min-width) {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      'topnav topnav'
+      'main   toc'
+      'footer footer';
+  }
+
+  // Nothing occupies the left any more, so centre the content instead of leaving it there.
+  // Only from tablet up: below that .page has no max-width, so auto margins collapse to
+  // zero and the text would meet the edges of the screen.
+  @media screen and (min-width: map.get(variables.$breakpoints, 'tablet')) {
+    .page {
+      margin-inline: auto;
+    }
+  }
+}
+
 .doc-layout__topnav {
   grid-area: topnav;
 }
