@@ -82,6 +82,15 @@ package.json
 
 Prettier: single quotes, trailing commas, semicolons, `arrowParens: avoid`, 80 char width (160 for SCSS). ESLint extends recommended + React + TypeScript rules.
 
+## Code Comments
+
+- **Default to none.** Comment only what the code cannot say itself: a non-obvious reason, a subtle bug being avoided, a spec or browser behaviour being worked around
+- **Two lines at most**, and clear on first read. Short but vague is no better than long
+- **Name the mechanism**, not the consequence: "removes the 4rem column the menu would have filled", not "or the content stays pushed aside"
+- **Refer to identifiers, not positions.** `doSomething and doSomethingElse both save first`, never "these two" or "the call above"
+- **Keep the register neutral and technical.** No figurative or conversational phrasing
+- Never restate what the code does, or describe how it used to work
+
 ## Commit Conventions
 
 Uses conventional-commits enforced by Commitizen + commitlint (Husky lints on push).
