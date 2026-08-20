@@ -11,14 +11,17 @@ html:has(.eds-modal__overlay[open]) {
 }
 
 .eds-modal {
-  // Native <dialog> centers itself via UA margin:auto. We strip UA chrome and
-  // set max-width per size; width:100% (capped) gives ModalContent a parent
-  // width to fill so its own width:100% resolves.
+  // We strip UA chrome and set max-width per size; width:100% (capped) gives
+  // ModalContent a parent width to fill so its own width:100% resolves.
   &__overlay {
     border: none;
     padding: 0;
     background: transparent;
     color: inherit;
+
+    // Centering. Same as the UA dialog rule, but restated so resets that zero
+    // out margins on every element (e.g. Tailwind Preflight) cannot win.
+    margin: auto;
   }
 
   /* stylelint-disable-next-line selector-max-specificity --
