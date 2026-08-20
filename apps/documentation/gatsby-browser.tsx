@@ -11,6 +11,7 @@ import {
   SettingsProvider,
 } from './src/providers';
 import { SearchProvider } from './src/components/Search/SearchContext';
+import { ConsentBanner } from './src/components/ConsentBanner/ConsentBanner';
 import DocLayout from './src/layouts/DocLayout';
 
 export const wrapRootElement: GatsbyBrowser['wrapRootElement'] = ({
@@ -19,6 +20,8 @@ export const wrapRootElement: GatsbyBrowser['wrapRootElement'] = ({
   return (
     <SettingsProvider>
       <ConsentProvider>
+        {/* Belongs at the very top of the page, ahead of the skip link */}
+        <ConsentBanner />
         <ToastProvider>
           <ColorsProvider>
             <MediaContextProvider>
@@ -35,15 +38,14 @@ export const wrapPageElement: GatsbyBrowser['wrapPageElement'] = ({
   element,
   props,
 }) => {
-  const children = <ConsentProvider>{element}</ConsentProvider>;
   const CUSTOM_LAYOUT_PAGES = [
     '/',
     '/stand',
     '/ressurser/innsikt/brukerundersokelse',
   ];
   const normalizedPath = props.location.pathname.replace(/\/$/, '') || '/';
-  if (CUSTOM_LAYOUT_PAGES.includes(normalizedPath)) return <>{children}</>;
-  return <DocLayout {...props}>{children}</DocLayout>;
+  if (CUSTOM_LAYOUT_PAGES.includes(normalizedPath)) return <>{element}</>;
+  return <DocLayout {...props}>{element}</DocLayout>;
 };
 
 // Since Gatsby does automatic scroll restoration on navigation,
@@ -58,6 +60,9 @@ export const shouldUpdateScroll: GatsbyBrowser['shouldUpdateScroll'] = ({
 
   const hasHash = routerProps.location.hash !== '';
 
+  // An unanswered consent banner has to stay in view across navigation, and it sits at the
+  // top of the document — so landing at the top of the page keeps it visible. A hash still
+  // wins, since it means the reader asked for a particular section.
   if (!hasHash) {
     window.scrollTo({ top: 0, left: 0 });
 

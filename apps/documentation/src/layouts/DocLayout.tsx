@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import classNames from 'classnames';
 import { PageProps } from 'gatsby';
 import { MDXProvider } from '@mdx-js/react';
 import { MDXComponents } from 'mdx/types';
@@ -20,13 +21,25 @@ const DocLayout = ({ children, location, pageContext }: PageProps) => {
 
   const frontmatter = (pageContext as any)?.frontmatter;
   const showHeader = !frontmatter?.removeHeader;
+  // Pages outside the top level categories have no side menu to show — the menu is built
+  // from the first part of the path — so they can ask for the column to be left out.
+  const showSideNavigation = !frontmatter?.removeSideNavigation;
 
   return (
     <TocProvider>
       <SkipToContent mainId="main">Gå til hovedinnhold</SkipToContent>
-      <div className="doc-layout">
+      <div
+        className={classNames('doc-layout', {
+          'doc-layout--without-side-navigation': !showSideNavigation,
+        })}
+      >
         <TopNavigationLayout className="doc-layout__topnav" />
-        <SideNavigationLayout location={location} className="side-nav-column" />
+        {showSideNavigation && (
+          <SideNavigationLayout
+            location={location}
+            className="side-nav-column"
+          />
+        )}
         <main id="main" className="page">
           {showHeader && <PageHeader frontmatter={frontmatter} />}
           <MdxTableOfContent />

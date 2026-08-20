@@ -12,7 +12,9 @@ import {
   SettingsProvider,
 } from './src/providers';
 import { SearchProvider } from './src/components/Search/SearchContext';
+import { ConsentBanner } from './src/components/ConsentBanner/ConsentBanner';
 import DocLayout from './src/layouts/DocLayout';
+import { UC_SETTINGS_ID, UC_USE_DRAFT } from './src/utils/cmpUtils';
 
 export const wrapRootElement: GatsbyBrowser['wrapRootElement'] = ({
   element,
@@ -20,6 +22,8 @@ export const wrapRootElement: GatsbyBrowser['wrapRootElement'] = ({
   return (
     <SettingsProvider>
       <ConsentProvider>
+        {/* Belongs at the very top of the page, ahead of the skip link */}
+        <ConsentBanner />
         <ToastProvider>
           <ColorsProvider>
             <MediaContextProvider>
@@ -36,27 +40,39 @@ export const wrapPageElement: GatsbySSR['wrapPageElement'] = ({
   element,
   props,
 }) => {
-  const children = <ConsentProvider>{element}</ConsentProvider>;
   const CUSTOM_LAYOUT_PAGES = [
     '/',
     '/stand',
     '/ressurser/innsikt/brukerundersokelse',
   ];
   const normalizedPath = props.location.pathname.replace(/\/$/, '') || '/';
-  if (CUSTOM_LAYOUT_PAGES.includes(normalizedPath)) return <>{children}</>;
+  if (CUSTOM_LAYOUT_PAGES.includes(normalizedPath)) return <>{element}</>;
 
-  return <DocLayout {...props}>{children}</DocLayout>;
+  return <DocLayout {...props}>{element}</DocLayout>;
 };
 
 export const onRenderBody: GatsbySSR['onRenderBody'] = ({
   setHeadComponents,
 }) => {
+  // Keeps Usercentrics from rendering its own banner. The SDK still initialises fully, so
+  // consent storage, script unblocking and consent logging keep working — we only take
+  // over the first layer, see ConsentBanner. Must run before the loader, hence a
+  // synchronous script placed ahead of the async loader tag.
+  const suppressUcUiScript = (
+    <script
+      key="cmp-suppress"
+      dangerouslySetInnerHTML={{
+        __html: 'window.UC_UI_SUPPRESS_CMP_DISPLAY = true;',
+      }}
+    />
+  );
   const usercentricsScript = (
     <script
       key="cmp"
       id="usercentrics-cmp"
       src="https://web.cmp.usercentrics.eu/ui/loader.js"
-      data-settings-id="6QfyMRB25Z5CMz"
+      data-settings-id={UC_SETTINGS_ID}
+      data-draft={UC_USE_DRAFT ? 'true' : undefined}
       async
     ></script>
   );
@@ -74,6 +90,6 @@ export const onRenderBody: GatsbySSR['onRenderBody'] = ({
     />
   );
 
-  setHeadComponents([usercentricsScript, posthogScript]);
+  setHeadComponents([suppressUcUiScript, usercentricsScript, posthogScript]);
   return null;
 };

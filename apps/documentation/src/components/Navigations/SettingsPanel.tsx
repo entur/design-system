@@ -7,6 +7,7 @@ import { Dropdown } from '@entur/dropdown';
 import { SegmentedChoice, SegmentedControl } from '@entur/form';
 import { Modal } from '@entur/modal';
 
+import { useConsent } from '@providers/ConsentProvider';
 import {
   PackageManager,
   UserType,
@@ -33,6 +34,7 @@ const SettingsPanel = () => {
     colorMode,
     setColorMode,
   } = useSettings();
+  const { openBanner, canOpenBanner } = useConsent();
 
   useEffect(() => {
     async function fetchControllerID() {
@@ -142,21 +144,32 @@ const SettingsPanel = () => {
             Lagre
           </PrimaryButton>
         </form>
-        <Heading5 as="h3">Informasjonskapsler</Heading5>
-        <SecondaryButton
-          size="small"
-          style={{ marginTop: '0.5rem' }}
-          onClick={() => window.__ucCmp.showFirstLayer()}
-        >
-          <CookieIcon />
-          Endre informasjonskapser
-        </SecondaryButton>
-        <CopyableText
-          textToCopy={trackingID || 'Ikke tilgjengelig'}
-          successMessage={`Din sporings-ID «${trackingID}» ble kopiert til utklippstavlen.`}
-        >
-          Hent sporings-ID
-        </CopyableText>
+        {/* Left out entirely when the consent solution is unreachable: neither control
+            could do anything, and the tracking ID does not exist. The privacy page
+            explains the situation. */}
+        {canOpenBanner && (
+          <>
+            <Heading5 as="h3">Informasjonskapsler</Heading5>
+            <SecondaryButton
+              size="small"
+              style={{ marginTop: '0.5rem' }}
+              onClick={() => {
+                // The banner sits at the top of the page, so get the modal out of the way
+                setOpen(false);
+                openBanner();
+              }}
+            >
+              <CookieIcon />
+              Endre informasjonskapsler
+            </SecondaryButton>
+            <CopyableText
+              textToCopy={trackingID || 'Ikke tilgjengelig'}
+              successMessage={`Din sporings-ID «${trackingID}» ble kopiert til utklippstavlen.`}
+            >
+              Hent sporings-ID
+            </CopyableText>
+          </>
+        )}
       </Modal>
     </>
   );

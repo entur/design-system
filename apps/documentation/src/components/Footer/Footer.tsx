@@ -6,8 +6,11 @@ import {
   FigmaIcon,
   GithubIcon,
 } from '@entur/icons';
-import { Link, Heading3 } from '@entur/typography';
+import { Link as GatsbyLink } from 'gatsby';
+import { Heading3, Link } from '@entur/typography';
 import { Logo } from '@entur/menu';
+
+import { useConsent } from '@providers/ConsentProvider';
 
 import './Footer.scss';
 
@@ -20,6 +23,7 @@ const Footer = ({
   footerRef?: RefObject<HTMLElement>;
   contrast?: boolean;
 } & React.ComponentPropsWithoutRef<'footer'>) => {
+  const { openBanner, canOpenBanner } = useConsent();
   return (
     <footer
       ref={footerRef}
@@ -42,15 +46,22 @@ const Footer = ({
           >
             Tilgjengelighetserklæring
           </Link>
-          <Link
-            as="button"
-            type="button"
-            onClick={() => window.__ucCmp?.showFirstLayer()}
-            className="footer__link"
-          >
-            <CookieFilledIcon inline aria-hidden="true" /> Endre hvilken
-            informasjon vi får lagre
+          <Link as={GatsbyLink} to="/personvern" className="footer__link">
+            Personvern
           </Link>
+          {/* Hidden when the consent solution is unreachable, since it could not do
+              anything. The privacy link above explains the situation. */}
+          {canOpenBanner && (
+            <Link
+              as="button"
+              type="button"
+              onClick={() => openBanner()}
+              className="footer__link"
+            >
+              <CookieFilledIcon inline aria-hidden="true" /> Endre hvilken
+              informasjon vi får lagre
+            </Link>
+          )}
         </nav>
         <div>
           <Heading3 margin="bottom">Kontakt og ressurser</Heading3>
