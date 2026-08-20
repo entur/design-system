@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.21.0](https://github.com/entur/design-system/compare/@entur/documentation@6.20.5...@entur/documentation@6.21.0) (2026-08-20)
+
+### Bug Fixes
+
+- **form, datepicker:** announce feedback text to screen readers by default ([10783dd](https://github.com/entur/design-system/commit/10783ddfdb043bb8d0ebaf71743471ebf0290fcb))
+- **website:** add the missing gap below an open playground code section ([f8db929](https://github.com/entur/design-system/commit/f8db929990b304fc69b6a10f85f883ad16e5f826))
+- **website:** move search modal close button inside the dialog ([97074e3](https://github.com/entur/design-system/commit/97074e33eeff4f4c55622f0639aeeb07bc635e10))
+- **website:** rename footer contact section and reorder its links ([a6668f2](https://github.com/entur/design-system/commit/a6668f2906b55f5eae4256672572bc07ca2f5077))
+
+### Features
+
+- **form/text area:** forward ariaAlertOnFeedback so feedback is announced ([440f401](https://github.com/entur/design-system/commit/440f401e46bec2b746bf3817025c026e880fad41))
+
 ## [6.20.5](https://github.com/entur/design-system/compare/@entur/documentation@6.20.4...@entur/documentation@6.20.5) (2026-08-13)
 
 ### Bug Fixes

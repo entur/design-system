@@ -1,6 +1,6 @@
 {
   "name": "@entur/expand",
-  "version": "4.0.2",
+  "version": "4.0.3",
   "license": "EUPL-1.2",
   "main": "dist/expand.cjs",
   "module": "dist/expand.mjs",

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/entur/design-system/compare/@entur/tab@0.8.2...@entur/tab@0.9.0) (2026-08-20)
+
+### Features
+
+- **tab:** let Tab and TabPanel take an explicit index ([72a1661](https://github.com/entur/design-system/commit/72a1661e902d75e0187e86c90a1e1ff916eabb42))
+
 ## [0.8.2](https://github.com/entur/design-system/compare/@entur/tab@0.8.1...@entur/tab@0.8.2) (2026-08-13)
 
 ### Bug Fixes

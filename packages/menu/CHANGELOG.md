@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.1.1](https://github.com/entur/design-system/compare/@entur/menu@7.1.0...@entur/menu@7.1.1) (2026-08-20)
+
+### Bug Fixes
+
+- **menu/side navigation, menu/overflow menu:** restore contrast text color on the collapse button ([1d1040d](https://github.com/entur/design-system/commit/1d1040d79708bd4b277ff9ab509f98ca1ecdec02))
+
 # [7.1.0](https://github.com/entur/design-system/compare/@entur/menu@7.0.1...@entur/menu@7.1.0) (2026-08-13)
 
 ### Features

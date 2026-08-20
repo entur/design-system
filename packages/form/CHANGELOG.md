@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.1.0](https://github.com/entur/design-system/compare/@entur/form@10.0.2...@entur/form@10.1.0) (2026-08-20)
+
+### Bug Fixes
+
+- **form, datepicker:** announce feedback text to screen readers by default ([10783dd](https://github.com/entur/design-system/commit/10783ddfdb043bb8d0ebaf71743471ebf0290fcb))
+- **form/feedback text:** restore the symbol inside the error icon ([4abb000](https://github.com/entur/design-system/commit/4abb0000824565545c50617aab7f06752b774354))
+- **form/text field, form/text area:** set aria-invalid for the negative variant ([a932ec3](https://github.com/entur/design-system/commit/a932ec38328d720bb7573ebababf7938448ae9bb))
+
+### Features
+
+- **form/text area:** forward ariaAlertOnFeedback so feedback is announced ([440f401](https://github.com/entur/design-system/commit/440f401e46bec2b746bf3817025c026e880fad41))
+- **form:** control how feedback text is announced with ariaAlertOnFeedback and feedbackProps ([f555018](https://github.com/entur/design-system/commit/f5550189f3189485113d45bd7803b5b241c4a241))
+
 ## [10.0.2](https://github.com/entur/design-system/compare/@entur/form@10.0.1...@entur/form@10.0.2) (2026-08-13)
 
 **Note:** Version bump only for package @entur/form

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.1.0](https://github.com/entur/design-system/compare/@entur/datepicker@12.0.2...@entur/datepicker@12.1.0) (2026-08-20)
+
+### Bug Fixes
+
+- **datepicker/date field:** dim unfilled date and time segments ([0693bb0](https://github.com/entur/design-system/commit/0693bb0859a0835d725101aecd87c26b2b2092a1))
+- **datepicker:** set aria-invalid for the negative variant ([6b9ef16](https://github.com/entur/design-system/commit/6b9ef16b7d4ca7e5f5682906cf4959e97e14bcff))
+- **form, datepicker:** announce feedback text to screen readers by default ([10783dd](https://github.com/entur/design-system/commit/10783ddfdb043bb8d0ebaf71743471ebf0290fcb))
+
+### Features
+
+- **datepicker:** control how feedback text is announced with ariaAlertOnFeedback and feedbackProps ([d8e96e5](https://github.com/entur/design-system/commit/d8e96e5e194a62b138b85770653f77d8f64b7a70))
+
 ## [12.0.2](https://github.com/entur/design-system/compare/@entur/datepicker@12.0.1...@entur/datepicker@12.0.2) (2026-08-13)
 
 ### Bug Fixes

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.3](https://github.com/entur/design-system/compare/@entur/modal@2.0.2...@entur/modal@2.0.3) (2026-08-20)
+
+### Bug Fixes
+
+- **modal:** keep the modal centered when a CSS reset zeroes out margins ([9003c10](https://github.com/entur/design-system/commit/9003c1018d718892f949e008de8e01bd6b4f5fc0))
+
 ## [2.0.2](https://github.com/entur/design-system/compare/@entur/modal@2.0.1...@entur/modal@2.0.2) (2026-08-13)
 
 ### Bug Fixes

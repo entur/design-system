@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.1.0](https://github.com/entur/design-system/compare/@entur/dropdown@9.0.2...@entur/dropdown@9.1.0) (2026-08-20)
+
+### Bug Fixes
+
+- **dropdown:** set aria-invalid for the negative variant ([c21ebbf](https://github.com/entur/design-system/commit/c21ebbf3f5868abf46250088f4f89ec9df080f3c))
+- **dropdown:** stop the render loop that crashed selection in automated tests ([1494ede](https://github.com/entur/design-system/commit/1494ede78b44cbce3ff9a91ae334b9f6218c6442))
+
+### Features
+
+- **dropdown:** control how feedback text is announced with ariaAlertOnFeedback and feedbackProps ([405b303](https://github.com/entur/design-system/commit/405b3037a7eceac97925609d56a37ca4d667c1f5))
+
 ## [9.0.2](https://github.com/entur/design-system/compare/@entur/dropdown@9.0.1...@entur/dropdown@9.0.2) (2026-08-13)
 
 ### Bug Fixes

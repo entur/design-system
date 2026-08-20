@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.0.2](https://github.com/entur/design-system/compare/@entur/icons@10.0.1...@entur/icons@10.0.2) (2026-08-20)
+
+### Bug Fixes
+
+- **icons:** keep inline icon alignment independent of the app's CSS reset ([2bffb5d](https://github.com/entur/design-system/commit/2bffb5d5c4b5e441b8b9686466b59c84073a81e5))
+
 ## [10.0.1](https://github.com/entur/design-system/compare/@entur/icons@10.0.0...@entur/icons@10.0.1) (2026-08-06)
 
 **Note:** Version bump only for package @entur/icons
