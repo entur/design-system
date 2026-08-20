@@ -119,6 +119,8 @@ import { TextField, TextArea, Checkbox, Radio, RadioGroup, Switch, Fieldset } fr
 />
 
 // With validation feedback
+// feedback is announced to screen readers via role="status" — no aria-live of your own.
+// Pass ariaAlertOnFeedback for role="alert", or ariaAlertOnFeedback={false} to stay silent.
 <TextField
   label="Mobilnummer"
   value={phone}

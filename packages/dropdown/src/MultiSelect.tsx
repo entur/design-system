@@ -570,7 +570,10 @@ export const MultiSelect = React.forwardRef(
               selectedItem={summarySelectedItems}
             />
           )}
-          <input {...inputProps} />
+          <input
+            {...inputProps}
+            aria-invalid={variant === 'negative' || variant === 'error'}
+          />
         </div>
         <DropdownFieldAppendix
           {...toggleButtonProps}

@@ -167,6 +167,8 @@ Hvert tidssegment er tilgjengelig med tastaturet og alle interagerbare elementer
 
 Hvis du endrer `locale` (dvs. språk) må du sende inn verdier på riktig språk til `leftArrowButtonAriaLabel`- og `rightArrowButtonAriaLabel`-props-ene.
 
+`feedback` vises i en live region med `role="status"`, slik at skjermlesere leser opp meldingen når den kommer. Ikonet ved siden av meldingen er skjult for skjermlesere, så teksten må være selvforklarende og tydelig formidle om det er en feilmelding eller et varsel. Du kan styre opplesingen med `ariaAlertOnFeedback`, der standardverdien `'status'` gir en høflig opplesing, `'alert'` avbryter skjermleseren umiddelbart og `false` skrur av opplesingen helt, og med `feedbackProps` kan du sette egne `role`- og `aria-live`-verdier.
+
 ### Mer kompakt fritektsvariant (B2B)
 
 For grensesnitt der et kompakt skjemafelt og mulighet til å kopiere og lime inn fullstendige tidspunkt er viktig kan man bruke `SimpleTimePicker`. Denne varianten inneholder

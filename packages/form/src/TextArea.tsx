@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { VariantType, mergeRefs, useOnMount } from '@entur/utils';
 
 import { useVariant } from './VariantProvider';
-import { BaseFormControl } from './BaseFormControl';
+import { BaseFormControl, FeedbackAnnouncementProps } from './BaseFormControl';
 import { useInputGroupContext } from './InputGroupContext';
 import { isFilled } from './utils';
 
@@ -43,7 +43,8 @@ export type TextAreaProps = {
    * @default "vertical"
    */
   resize?: 'vertical' | 'none';
-} & React.TextareaHTMLAttributes<HTMLTextAreaElement>;
+} & FeedbackAnnouncementProps &
+  React.TextareaHTMLAttributes<HTMLTextAreaElement>;
 
 export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
   (
@@ -61,6 +62,8 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
       onChange,
       disableLabelAnimation,
       resize,
+      ariaAlertOnFeedback,
+      feedbackProps,
       ...rest
     },
     ref: React.Ref<HTMLTextAreaElement>,
@@ -82,6 +85,8 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
         labelTooltipPlacement={labelTooltipPlacement}
         labelProps={{ className: 'eds-textarea__label' }}
         disableLabelAnimation={disableLabelAnimation}
+        ariaAlertOnFeedback={ariaAlertOnFeedback}
+        feedbackProps={feedbackProps}
         onClick={e => {
           if (e.target === e.currentTarget) textareaRef?.current?.focus();
         }}
@@ -148,7 +153,7 @@ const TextAreaBase = React.forwardRef<HTMLTextAreaElement, TextAreaBaseProps>(
         disabled={disabled}
         onChange={handleChange}
         value={value}
-        aria-invalid={currentVariant === 'error'}
+        aria-invalid={currentVariant === 'negative' || currentVariant === error}
         style={resize ? { ...style, resize } : style}
         {...rest}
       />

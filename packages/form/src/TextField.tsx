@@ -6,7 +6,7 @@ import { CloseSmallIcon } from '@entur/icons';
 import { Placement } from '@entur/tooltip';
 import { VariantType, mergeRefs } from '@entur/utils';
 
-import { BaseFormControl } from './BaseFormControl';
+import { BaseFormControl, FeedbackAnnouncementProps } from './BaseFormControl';
 import { useInputGroupContext } from './InputGroupContext';
 import { isFilled } from './utils';
 import { useVariant } from './VariantProvider';
@@ -63,13 +63,8 @@ export type TextFieldProps = {
    * @default "Tøm felt"
    */
   clearButtonAriaLabel?: string;
-  /** Setter feedback-tekstens rolle for skjermlesere.
-   * 'alert' = aria-live="assertive" (avbryter umiddelbart)
-   * 'status' = aria-live="polite" (venter til bruker er ferdig)
-   * undefined/false = ingen automatisk annonsering
-   */
-  ariaAlertOnFeedback?: boolean | 'alert' | 'status';
-} & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'label'>;
+} & FeedbackAnnouncementProps &
+  Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'label'>;
 
 export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
   (
@@ -95,7 +90,8 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
       onClear,
       clearButtonAriaLabel = 'Tøm felt',
       value,
-      ariaAlertOnFeedback = false,
+      ariaAlertOnFeedback,
+      feedbackProps,
       ...rest
     },
     ref: React.Ref<HTMLInputElement>,
@@ -157,6 +153,7 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
         disableLabelAnimation={disableLabelAnimation}
         labelProps={labelProps}
         ariaAlertOnFeedback={ariaAlertOnFeedback}
+        feedbackProps={feedbackProps}
         onClick={e => {
           if (e.target === e.currentTarget) textFieldRef?.current?.focus();
         }}
@@ -221,7 +218,7 @@ const TextFieldBase = React.forwardRef<HTMLInputElement, TextFieldBaseProps>(
 
     return (
       <input
-        aria-invalid={currentVariant === 'error'}
+        aria-invalid={currentVariant === 'negative' || currentVariant === error}
         className="eds-form-control"
         disabled={disabled}
         readOnly={readOnly}

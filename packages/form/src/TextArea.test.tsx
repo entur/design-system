@@ -22,3 +22,31 @@ test('textarea does not override default CSS resize when no resize prop is set',
   const textarea = container.querySelector('textarea');
   expect(textarea?.style.resize).toBe('');
 });
+
+describe('aria-invalid', () => {
+  test.each(['negative', 'error'] as const)(
+    'is true for %s variant',
+    variant => {
+      const { container } = render(
+        <TextArea label="testing label" variant={variant} />,
+      );
+      expect(container.querySelector('textarea')).toHaveAttribute(
+        'aria-invalid',
+        'true',
+      );
+    },
+  );
+
+  test.each(['warning', 'success', 'information', undefined] as const)(
+    'is false for %s variant',
+    variant => {
+      const { container } = render(
+        <TextArea label="testing label" variant={variant} />,
+      );
+      expect(container.querySelector('textarea')).toHaveAttribute(
+        'aria-invalid',
+        'false',
+      );
+    },
+  );
+});

@@ -2,6 +2,7 @@ import React, { useId } from 'react';
 import classNames from 'classnames';
 import {
   BaseFormControl,
+  FeedbackAnnouncementProps,
   isFilled,
   useInputGroupContext,
   useVariant,
@@ -26,14 +27,26 @@ export type NativeTimePickerProps = {
   variant?: VariantType | typeof error | typeof info;
   /** Tekst eller ikon som kommer før inputfelter */
   prepend?: React.ReactNode;
-} & React.InputHTMLAttributes<HTMLInputElement>;
+} & FeedbackAnnouncementProps &
+  React.InputHTMLAttributes<HTMLInputElement>;
 
 export const NativeTimePicker = React.forwardRef<
   HTMLInputElement,
   NativeTimePickerProps
 >(
   (
-    { className, style, onChange, label, feedback, variant, prepend, ...rest },
+    {
+      className,
+      style,
+      onChange,
+      label,
+      feedback,
+      variant,
+      prepend,
+      ariaAlertOnFeedback,
+      feedbackProps,
+      ...rest
+    },
     ref: React.Ref<HTMLInputElement>,
   ) => {
     const nativetimepickerId = `eds-native-timepicker${useId()}`;
@@ -47,6 +60,8 @@ export const NativeTimePicker = React.forwardRef<
         variant={variant}
         labelId={nativetimepickerId}
         disableLabelAnimation
+        ariaAlertOnFeedback={ariaAlertOnFeedback}
+        feedbackProps={feedbackProps}
       >
         <NativeTimePickerBase
           onChange={onChange}
@@ -100,7 +115,7 @@ const NativeTimePickerBase = React.forwardRef<
   return (
     <input
       ref={ref}
-      aria-invalid={currentVariant === 'error'}
+      aria-invalid={currentVariant === 'negative' || currentVariant === error}
       type="time"
       className="eds-form-control"
       onChange={handleChange}

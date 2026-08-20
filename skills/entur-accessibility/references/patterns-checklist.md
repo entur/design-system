@@ -8,6 +8,9 @@ Component-specific checklists and code examples. The component handles interacti
 
 - [ ] Every field has a visible `label` prop — not just `placeholder`
 - [ ] Invalid fields set both `variant="negative"` and `feedback="…"` — error communicated in text, not color alone
+- [ ] `feedback` text identifies the problem on its own — the status icon is `aria-hidden`, so "Ugyldig" alone tells a screen reader user nothing
+- [ ] No hand-rolled `aria-live` region around a field — `feedback` is already announced with `role="status"`
+- [ ] `role="alert"` (`ariaAlertOnFeedback`) only for messages that block the user — it interrupts the screen reader mid-sentence
 - [ ] Related fields grouped with `Fieldset` and a descriptive `label`
 - [ ] Required fields are indicated (via `label` text or equivalent — not color alone)
 
@@ -90,7 +93,7 @@ Component-specific checklists and code examples. The component handles interacti
 ## Loading states
 
 - [ ] Use `Loader` with descriptive text for meaningful loading states — `Spinner` alone is not announced to screen readers
-- [ ] For async results appearing in the page (search results, filtered lists), wrap the region in `aria-live="polite"`
+- [ ] For async results appearing in the page (search results, filtered lists), wrap the region in `aria-live="polite"` — but not around a form field's `feedback`, which already has its own live region
 
 ```tsx
 // Good — text is announced to screen readers

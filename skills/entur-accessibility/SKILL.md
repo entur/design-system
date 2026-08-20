@@ -41,6 +41,7 @@ These things cannot be automated by components — you must supply them:
 5. **`SkipToContent` as the first element** in every app with navigation, with `<main id="main-content">`.
 6. **Logical heading hierarchy.** Use `Heading1`–`Heading6` in order — don't skip levels for visual sizing.
 7. **`variant="negative"` and `feedback` together** on invalid form fields — error state must not rely on color alone.
+8. **`feedback` text that stands on its own.** It is announced through a live region while the status icon is `aria-hidden`, so the text is all a screen reader user gets — "Ugyldig" is not enough.
 
 ---
 

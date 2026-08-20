@@ -1,6 +1,7 @@
 import React, { useId } from 'react';
 import {
   BaseFormControl,
+  FeedbackAnnouncementProps,
   isFilled,
   useInputGroupContext,
   useVariant,
@@ -30,7 +31,8 @@ export type NativeDatePickerProps = {
    * @default <DateIcon />
    */
   prepend?: React.ReactNode;
-} & React.InputHTMLAttributes<HTMLInputElement>;
+} & FeedbackAnnouncementProps &
+  React.InputHTMLAttributes<HTMLInputElement>;
 
 export const NativeDatePicker = React.forwardRef<
   HTMLInputElement,
@@ -46,6 +48,8 @@ export const NativeDatePicker = React.forwardRef<
       variant,
       disableLabelAnimation,
       prepend = <DateIcon inline />,
+      ariaAlertOnFeedback,
+      feedbackProps,
       ...rest
     },
     ref: React.Ref<HTMLInputElement>,
@@ -61,6 +65,8 @@ export const NativeDatePicker = React.forwardRef<
         variant={variant}
         labelId={nativedatepickerId}
         disableLabelAnimation={disableLabelAnimation}
+        ariaAlertOnFeedback={ariaAlertOnFeedback}
+        feedbackProps={feedbackProps}
         isFilled
       >
         <NativeDatePickerBase
@@ -117,7 +123,7 @@ const NativeDatePickerBase = React.forwardRef<
   return (
     <input
       ref={ref}
-      aria-invalid={currentVariant === 'error'}
+      aria-invalid={currentVariant === 'negative' || currentVariant === error}
       type="date"
       className="eds-form-control eds-native-date-picker"
       onChange={handleChange}

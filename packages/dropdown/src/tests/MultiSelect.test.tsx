@@ -738,4 +738,43 @@ describe('MultiSelect', () => {
     const result = await axe(container);
     expect(result).toHaveNoViolations();
   });
+
+  describe('aria-invalid', () => {
+    test.each(['negative', 'error'] as const)(
+      'is true for %s variant',
+      variant => {
+        const { container } = render(
+          <MultiSelect
+            label="test label"
+            items={testItems}
+            selectedItems={[]}
+            onChange={() => undefined}
+            variant={variant}
+          />,
+        );
+
+        expect(container.querySelector('input')).toHaveAttribute(
+          'aria-invalid',
+          'true',
+        );
+      },
+    );
+
+    test('is false for warning variant', () => {
+      const { container } = render(
+        <MultiSelect
+          label="test label"
+          items={testItems}
+          selectedItems={[]}
+          onChange={() => undefined}
+          variant="warning"
+        />,
+      );
+
+      expect(container.querySelector('input')).toHaveAttribute(
+        'aria-invalid',
+        'false',
+      );
+    });
+  });
 });

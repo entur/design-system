@@ -188,6 +188,38 @@
       "type": {
         "name": "\"vertical\" | \"none\" | undefined"
       }
+    },
+    "ariaAlertOnFeedback": {
+      "defaultValue": {
+        "value": "'status'"
+      },
+      "description": "Styrer hvordan feedback-teksten annonseres av skjermlesere.\nStandarden 'status' lar skjermleseren annonsere meldingen når\nbrukeren er ferdig med det den holder på med, og live region-en\nrendres da alltid i DOM, også før meldingen finnes.\ntrue/'alert' gir role=\"alert\", som avbryter skjermleseren og\nannonserer meldingen umiddelbart – bruk den bare til meldinger som\nhindrer brukeren i å komme videre. false skrur av automatisk\nannonsering.",
+      "name": "ariaAlertOnFeedback",
+      "declarations": [
+        {
+          "fileName": "packages/form/src/BaseFormControl.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "boolean | \"alert\" | \"status\" | undefined"
+      }
+    },
+    "feedbackProps": {
+      "defaultValue": null,
+      "description": "Ekstra props som sendes til feedback-teksten. Egne `role`- og\n`aria-live`-verdier her overstyrer ariaAlertOnFeedback",
+      "name": "feedbackProps",
+      "declarations": [
+        {
+          "fileName": "packages/form/src/BaseFormControl.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "HTMLAttributes<HTMLElement> | undefined"
+      }
     }
   }
 }

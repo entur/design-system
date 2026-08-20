@@ -90,7 +90,8 @@ Screen readers convert page content to speech and braille. Test with real screen
 - Page title is descriptive
 - Images have meaningful alt text (or `alt=""` if decorative)
 - Form fields have visible, associated labels
-- Error messages are announced when they appear
+- Error messages are announced when they appear — and only once. Two announcements of the same text usually means an `aria-live` wrapper around a field that already announces its `feedback`
+- A field's error message says what is wrong without relying on the status icon, which is `aria-hidden`
 - Status updates (loading, results) use `aria-live` regions
 - Interactive elements have accessible names (especially icon-only buttons)
 
