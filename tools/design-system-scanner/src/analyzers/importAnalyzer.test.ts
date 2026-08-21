@@ -82,4 +82,36 @@ describe('importAnalyzer', () => {
       expect(finding.findingType).toBe('import');
     }
   });
+
+  describe('file findings mode', () => {
+    const deepImportApp = path.join(FIXTURES_DIR, 'deep-import-app');
+
+    it('keeps test files out of the aggregate while collecting them as findings', async () => {
+      // Findings mode widens the crawl; the aggregate must not change with it.
+      const withFindings = await analyzeImports(deepImportApp, true);
+      const withoutFindings = await analyzeImports(deepImportApp, false);
+
+      const byName = (result: Awaited<ReturnType<typeof analyzeImports>>) =>
+        [...result.imports].sort((a, b) =>
+          a.symbolName.localeCompare(b.symbolName),
+        );
+
+      // Compares reference and file counts too: the fixture's test file imports
+      // Table, which TableView.tsx also imports, so a leak inflates an existing
+      // symbol instead of adding a name.
+      expect(byName(withFindings)).toEqual(byName(withoutFindings));
+      expect(byName(withFindings).map(i => i.symbolName)).not.toContain(
+        'EditableCell',
+      );
+
+      const testFindings = withFindings.fileFindings.filter(f => f.isTestFile);
+      expect(testFindings.length).toBeGreaterThan(0);
+      expect(testFindings.map(f => f.symbolName)).toContain('EditableCell');
+    });
+
+    it('collects no findings when the flag is off', async () => {
+      const { fileFindings } = await analyzeImports(deepImportApp, false);
+      expect(fileFindings).toEqual([]);
+    });
+  });
 });

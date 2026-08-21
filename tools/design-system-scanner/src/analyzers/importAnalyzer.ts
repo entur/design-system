@@ -39,6 +39,12 @@ const EXCLUDE_FILE_PATTERNS = [
   /\.d\.[jt]sx?$/,
 ];
 
+/** Whether a file is collected for findings only, and kept out of the aggregate. */
+function isFindingsOnlyFile(filePath: string): boolean {
+  const basename = path.basename(filePath);
+  return EXCLUDE_FILE_PATTERNS.some(p => p.test(basename));
+}
+
 /**
  * Check if a module specifier matches a known @entur/* design system package.
  * Returns the canonical package name (e.g., "@entur/button") or null.
@@ -348,7 +354,13 @@ export async function analyzeImports(
       }
     }
 
-    const imports = aggregateImports(allEntries);
+    // includeFileFindings widens the crawl to test, story and declaration files;
+    // excluding them here keeps aggregateImports comparable across scans.
+    const imports = aggregateImports(
+      includeFileFindings
+        ? allEntries.filter(entry => !isFindingsOnlyFile(entry.filePath))
+        : allEntries,
+    );
     const fileFindings = includeFileFindings
       ? entriesToFileFindings(allEntries)
       : [];

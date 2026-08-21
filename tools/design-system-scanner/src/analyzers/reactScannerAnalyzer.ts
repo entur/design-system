@@ -54,8 +54,10 @@ function mapImportStyle(importType?: string): ImportStyle {
  * E.g., "@entur/layout/beta" → "/beta", "@entur/button" → undefined
  */
 function extractDeepImportPath(moduleName: string): string | undefined {
+  // Require a path separator after the package name. A bare startsWith would let
+  // "@entur/table" match the "@entur/tab" entry and report "le" as the subpath.
   for (const pkg of DESIGN_SYSTEM_PACKAGES) {
-    if (moduleName.startsWith(pkg) && moduleName.length > pkg.length) {
+    if (moduleName.startsWith(pkg + '/')) {
       return moduleName.slice(pkg.length);
     }
   }
