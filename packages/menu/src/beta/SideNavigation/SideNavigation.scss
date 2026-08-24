@@ -59,7 +59,7 @@ $eds-side-navigation-beta-inline-padding-default: 1.5rem;
 
 .eds-side-navigation-beta__group-title {
   display: block;
-  padding-block: 2rem 0.5rem;
+  padding-block: 1.5rem 0.5rem;
 
   // Only the start side is consumer-adjustable; the end side stays put. The
   // default lives in the fallback, not in a declaration on the root, so that
@@ -108,7 +108,7 @@ $eds-side-navigation-beta-inline-padding-default: 1.5rem;
 }
 
 .eds-side-navigation-beta__click-target--active {
-  box-shadow: inset t.$border-widths-large 0 0 var(--eds-side-navigation-beta-stroke-active);
+  box-shadow: inset t.$border-widths-medium 0 0 var(--eds-side-navigation-beta-stroke-active);
   background-color: var(--eds-side-navigation-beta-fill-active);
   font-weight: t.$font-weights-heading;
   line-height: t.$line-heights-medium;
@@ -159,7 +159,9 @@ $eds-side-navigation-beta-inline-padding-default: 1.5rem;
 .eds-side-navigation-beta__label-text {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+
+  // 0.5rem after a 1rem icon puts the label 3rem in, where submenu labels start
+  gap: 0.5rem;
   min-width: 0;
 }
 
