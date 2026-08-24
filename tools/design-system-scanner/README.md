@@ -4,7 +4,7 @@ Scans Entur GitHub repositories for `@entur/*` design system usage and loads res
 
 ## What it does
 
-1. Discovers repos via GitHub code search (finds all repos with `@entur/*` in `package.json`)
+1. Scans the repos it is pointed at — discovery is the orchestrating workflow's job
 2. Shallow-clones each repo and fetches metadata via GitHub API
 3. Analyzes each repo across multiple dimensions:
    - **Package analysis** — `@entur/*` dependencies, other UI libraries (MUI, styled-components, etc.), framework detection, monorepo workspace detection
@@ -16,13 +16,13 @@ Scans Entur GitHub repositories for `@entur/*` design system usage and loads res
 5. Exports NDJSON files for loading into BigQuery
 6. Loads results directly into BigQuery and saves artifacts to GitHub Actions
 
-## GitHub Actions pipeline
+## GitHub Actions
 
-The scanner runs via `.github/workflows/design-system-usage-scan.yml`:
+The scan itself runs from an internal repository, which holds the credentials and org
+access it needs.
 
-- **Weekly** (Mondays 06:00 UTC) + manual dispatch
-- **PR smoke test**: Builds, tests, and runs a local scan on PRs that touch scanner files
-- Three jobs: `discover` → `scan-repo` (matrix, parallel per repo) → `aggregate`
+This repo only builds and tests the scanner, via `.github/workflows/scanner-ci.yml` on
+PRs that touch scanner files.
 
 ## Local usage
 

@@ -8,7 +8,7 @@ on:
   pull_request:
     paths:
       - 'tools/design-system-scanner/**'
-      - '.github/workflows/design-system-usage-scan.yml'
+      - '.github/workflows/scanner-ci.yml'
 
 concurrency:
   group: design-system-scanner-ci-${{ github.ref }}
