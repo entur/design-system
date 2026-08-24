@@ -270,7 +270,7 @@ jobs:
           retention-days: 90
 
       - name: Authenticate to Google Cloud
-        uses: entur/gha-meta/.github/actions/cloud-auth@d4b4acf63140d1ffcc9c73138670ad02478f2907 # v1
+        uses: entur/gha-meta/.github/actions/cloud-auth@c14eef7f4d90ed1be2c1df4dfb0927322bcbb3ba # v1
         with:
           environment: prd
           gcp_workload_identity_provider: ${{ vars.CI_WORKLOAD_IDENTITY_PROVIDER }}
