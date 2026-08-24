@@ -150,6 +150,17 @@ async function aggregateResults(args: ParsedArgs): Promise<void> {
   const totalRepos = args.totalRepos || repositories.length;
   const failedRepos = totalRepos - repositories.length;
 
+  // A scan that discovers far fewer repos than minRepos is degraded even when every
+  // discovered repo scanned cleanly.
+  const belowFloor = args.minRepos !== undefined && totalRepos < args.minRepos;
+
+  if (belowFloor) {
+    console.warn(
+      `Discovered ${totalRepos} repos, below the expected floor of ${args.minRepos}. ` +
+        `Marking this scan as partial.`,
+    );
+  }
+
   const scanRun: ScanRunMetadata = {
     scanId: crypto.randomUUID(),
     scanTimestamp: new Date().toISOString(),
@@ -158,10 +169,10 @@ async function aggregateResults(args: ParsedArgs): Promise<void> {
     totalReposScanned: repositories.length,
     totalReposFailed: failedRepos,
     scanStatus:
-      failedRepos === 0
-        ? 'success'
-        : repositories.length === 0
+      repositories.length === 0
         ? 'failure'
+        : failedRepos === 0 && !belowFloor
+        ? 'success'
         : 'partial',
   };
 
@@ -780,6 +791,7 @@ interface ParsedArgs {
   createdAt?: string;
   // Feature flags
   includeFileFindings?: boolean;
+  minRepos?: number;
   catalog?: string;
   // PostHog export flags
   posthogExport?: string;
@@ -817,6 +829,9 @@ function parseArgs(argv: string[]): ParsedArgs {
         break;
       case '--total-repos':
         args.totalRepos = parseInt(argv[++i], 10) || undefined;
+        break;
+      case '--min-repos':
+        args.minRepos = parseInt(argv[++i], 10) || undefined;
         break;
       case '--output':
         args.output = argv[++i];
@@ -881,6 +896,7 @@ Options:
   --last-commit <iso-date>   Last commit timestamp
   --aggregate <path>         Path to directory with per-repo JSON results
   --total-repos <n>          Total repos discovered (for report metadata)
+  --min-repos <n>            Expected minimum discovered; below it the scan is partial
   --bigquery-export <path>   Path to scan-report.json to export as NDJSON
   --catalog <path>           Path to catalog.json for unused symbol detection
   --posthog-export <path>    Path to scan-report.json to send to PostHog

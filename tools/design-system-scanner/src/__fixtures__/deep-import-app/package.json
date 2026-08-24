@@ -1,0 +1,10 @@
+{
+  "name": "deep-import-app",
+  "version": "1.0.0",
+  "dependencies": {
+    "@entur/layout": "^3.0.0",
+    "@entur/table": "^5.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
