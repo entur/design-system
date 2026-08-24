@@ -73,7 +73,8 @@ export const SideNavigationExpandableItem = React.forwardRef<
     // Open state is resolved during render: controlled > the user's own toggle >
     // derived from an active descendant. Without the derived tier the menu would
     // collapse on every navigation in a server-rendered app.
-    const derivedOpen = hasActiveDescendant(children) || defaultOpen;
+    const activeDescendant = hasActiveDescendant(children);
+    const derivedOpen = activeDescendant || defaultOpen;
     const [state, setState] = React.useState<{
       user: boolean | null;
       derived: boolean;
@@ -88,6 +89,11 @@ export const SideNavigationExpandableItem = React.forwardRef<
 
     const isControlled = open !== undefined;
     const isOpen = isControlled ? open : state.user ?? derivedOpen;
+
+    // Marked as leading to the current page when the item itself is active or
+    // the active page sits inside its submenu. The open state decides how much
+    // of the marking is drawn — see the stylesheet.
+    const showActive = active || activeDescendant;
 
     const toggle = () => {
       const next = !isOpen;
@@ -112,7 +118,8 @@ export const SideNavigationExpandableItem = React.forwardRef<
             'eds-side-navigation-beta__click-target',
             'eds-side-navigation-beta__click-target--expandable',
             {
-              'eds-side-navigation-beta__click-target--active': active,
+              'eds-side-navigation-beta__click-target--active': showActive,
+              'eds-side-navigation-beta__click-target--open': isOpen,
             },
           )}
           aria-expanded={isOpen}

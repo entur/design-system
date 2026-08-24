@@ -159,6 +159,67 @@ describe('SideNavigation.ExpandableItem (beta)', () => {
     );
   });
 
+  it('marks an expandable item whose submenu holds the active page', async () => {
+    const user = userEvent.setup();
+    render(
+      <SideNavigation>
+        <SideNavigation.ExpandableItem title="Utvidbar">
+          <SideNavigation.Item href="/a" active>
+            Aktiv
+          </SideNavigation.Item>
+        </SideNavigation.ExpandableItem>
+      </SideNavigation>,
+    );
+
+    // Opened by the active descendant, so the label is bold but --open keeps
+    // the background off
+    const trigger = screen.getByRole('button', { name: /Utvidbar/ });
+    expect(trigger).toHaveClass(
+      'eds-side-navigation-beta__click-target--active',
+      'eds-side-navigation-beta__click-target--open',
+    );
+    // The submenu is the one row that is the active page
+    expect(trigger).not.toHaveAttribute('aria-current');
+
+    await user.click(trigger);
+
+    expect(trigger).toHaveClass(
+      'eds-side-navigation-beta__click-target--active',
+    );
+    expect(trigger).not.toHaveClass(
+      'eds-side-navigation-beta__click-target--open',
+    );
+  });
+
+  it('keeps the bold label on an active expandable item while it is open', async () => {
+    const user = userEvent.setup();
+    render(
+      <SideNavigation>
+        <SideNavigation.ExpandableItem title="Utvidbar" active>
+          <SideNavigation.Item href="/a">Underelement</SideNavigation.Item>
+        </SideNavigation.ExpandableItem>
+      </SideNavigation>,
+    );
+
+    const trigger = screen.getByRole('button', { name: /Utvidbar/ });
+    expect(trigger).toHaveClass(
+      'eds-side-navigation-beta__click-target--active',
+    );
+    expect(trigger).not.toHaveClass(
+      'eds-side-navigation-beta__click-target--open',
+    );
+
+    await user.click(trigger);
+
+    // Still the current page, so still bold — --open resets the background the
+    // same class would otherwise draw
+    expect(trigger).toHaveClass(
+      'eds-side-navigation-beta__click-target--active',
+      'eds-side-navigation-beta__click-target--open',
+    );
+    expect(trigger).toHaveAttribute('aria-current', 'page');
+  });
+
   it('respects the open prop and reports changes through onOpenChange', async () => {
     const user = userEvent.setup();
     const onOpenChange = jest.fn();

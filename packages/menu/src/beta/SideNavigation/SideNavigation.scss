@@ -114,6 +114,13 @@ $eds-side-navigation-beta-inline-padding-default: 1.5rem;
   line-height: t.$line-heights-medium;
 }
 
+// An open expandable item keeps only the bold label; the submenu row below it
+// carries the tint and the bar. Precedes the hover and click rules so they win.
+.eds-side-navigation-beta__click-target--active:where(.eds-side-navigation-beta__click-target--open) {
+  box-shadow: none;
+  background-color: var(--eds-side-navigation-beta-fill-default);
+}
+
 .eds-side-navigation-beta__click-target:where([disabled]) {
   background-color: var(--eds-side-navigation-beta-fill-disabled);
   color: var(--eds-side-navigation-beta-text-disabled);

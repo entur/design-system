@@ -101,7 +101,25 @@ problem.
 
 Figma's `Hover`, `Click`, `Active` and `Disabled` states map to `:hover`, `:active`, the
 `active` prop and the `disabled` prop respectively. Nothing about the row's appearance is
-tracked in JS.
+tracked in JS, apart from the open state an `ExpandableItem` already tracks — see below.
+
+### One current page, one marking
+
+A bold label says this row leads to the current page. The tinted background and the accent bar
+say this row _is_ it, so an `ExpandableItem` only draws them while its submenu is hidden:
+
+| Expandable item                   | Marking                            |
+| --------------------------------- | ---------------------------------- |
+| Collapsed, `active`               | Background, accent bar, bold label |
+| Collapsed, active page in submenu | Background, accent bar, bold label |
+| Open, `active`                    | Bold label only                    |
+| Open, active page in submenu      | Bold label only                    |
+
+An open group would otherwise carry the background twice, once on the parent and once on the
+submenu row below it. Hover and click backgrounds still apply on every row, open or not.
+
+Both collapsed rows use the same active-descendant walk that decides whether to open, so the
+marking follows the submenu even though nothing in the submenu is rendered.
 
 ### The submenu rail
 
