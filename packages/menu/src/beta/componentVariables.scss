@@ -18,6 +18,7 @@
   --components-menu-sidenavigation-beta-standard-icon-subdued: #{$shape-subdued};
   --components-menu-sidenavigation-beta-standard-icon-disabled: #{$shape-neutral};
   --components-menu-sidenavigation-beta-standard-stroke-active: #{$stroke-accent};
+  --components-menu-sidenavigation-beta-standard-stroke-child-default: #{$stroke-lightalt};
   --components-menu-sidenavigation-beta-standard-alert: #{$fill-negative-deep};
   --components-menu-sidenavigation-beta-contrast-fill-default: #{$fill-background-standard-colorless};
   --components-menu-sidenavigation-beta-contrast-fill-hover: #{$fill-secondary-hover-contrast};
@@ -31,6 +32,9 @@
   --components-menu-sidenavigation-beta-contrast-icon-subdued: #{$shape-contrast};
   --components-menu-sidenavigation-beta-contrast-icon-disabled: #{$shape-neutralalt};
   --components-menu-sidenavigation-beta-contrast-stroke-active: #{$stroke-light};
+
+  // Stroke/SubduedAlt in Figma; no matching semantic token has shipped yet.
+  --components-menu-sidenavigation-beta-contrast-stroke-child-default: #{$blue-90};
   --components-menu-sidenavigation-beta-contrast-alert: #{$fill-negative-contrast};
 }
 
@@ -47,6 +51,7 @@
   --components-menu-sidenavigation-beta-standard-icon-subdued: #{$shape-lightalt};
   --components-menu-sidenavigation-beta-standard-icon-disabled: #{$shape-neutralalt2};
   --components-menu-sidenavigation-beta-standard-stroke-active: #{$stroke-darkalt};
+  --components-menu-sidenavigation-beta-standard-stroke-child-default: #{$stroke-dark};
   --components-menu-sidenavigation-beta-standard-alert: #{$fill-negative-tint};
   --components-menu-sidenavigation-beta-contrast-fill-default: #{$fill-background-standard-colorless};
   --components-menu-sidenavigation-beta-contrast-fill-hover: #{$fill-background-overlay-transparent};
@@ -60,5 +65,6 @@
   --components-menu-sidenavigation-beta-contrast-icon-subdued: #{$shape-lightalt};
   --components-menu-sidenavigation-beta-contrast-icon-disabled: #{$shape-neutralalt2};
   --components-menu-sidenavigation-beta-contrast-stroke-active: #{$stroke-darkalt};
+  --components-menu-sidenavigation-beta-contrast-stroke-child-default: #{$stroke-dark};
   --components-menu-sidenavigation-beta-contrast-alert: #{$fill-negative-tint};
 }

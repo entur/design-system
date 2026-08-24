@@ -103,6 +103,13 @@ Figma's `Hover`, `Click`, `Active` and `Disabled` states map to `:hover`, `:acti
 `active` prop and the `disabled` prop respectively. Nothing about the row's appearance is
 tracked in JS.
 
+### The submenu rail
+
+Every submenu row draws a 2px rail on its start edge; the rows stack with no gap, so the rails
+read as one line down the submenu. The active row draws its own segment in the accent colour
+instead. Unlike the full-bleed top-level rows, submenu rows are inset 1.5rem on both sides, so
+the rail sits under the parent's icon and the background stops short of the sidebar edge.
+
 ### Contrast is inherited, not a prop
 
 Styles respond to a `.eds-contrast` ancestor rather than exposing a `contrast` prop, so the
@@ -125,7 +132,9 @@ adding a new mode means changing one block, not every rule.
 
 The one custom property meant to be set by consumers. It moves the label, icon and group
 heading on the start side only — the end side always keeps its 1.5rem — without indenting the
-rows, so hover and active backgrounds still run to the edge of the sidebar. Submenu items stay 1.5rem further in, so nesting reads the same at any value.
+top-level rows, so their hover and active backgrounds still run to the edge of the sidebar. The
+submenu box starts at the same value, so its rail and its labels shift along with the rows
+above and nesting reads the same at any value.
 
 ```scss
 // Line the labels up with a logo sitting 2.5rem from the edge

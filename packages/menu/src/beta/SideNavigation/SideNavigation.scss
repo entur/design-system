@@ -15,6 +15,7 @@ $eds-side-navigation-beta-inline-padding-default: 1.5rem;
   --eds-side-navigation-beta-icon-subdued: var(--components-menu-sidenavigation-beta-standard-icon-subdued);
   --eds-side-navigation-beta-icon-disabled: var(--components-menu-sidenavigation-beta-standard-icon-disabled);
   --eds-side-navigation-beta-stroke-active: var(--components-menu-sidenavigation-beta-standard-stroke-active);
+  --eds-side-navigation-beta-stroke-child: var(--components-menu-sidenavigation-beta-standard-stroke-child-default);
   --eds-side-navigation-beta-alert: var(--components-menu-sidenavigation-beta-standard-alert);
   --eds-side-navigation-beta-focus: var(--basecolors-stroke-focus-standard);
 
@@ -37,6 +38,7 @@ $eds-side-navigation-beta-inline-padding-default: 1.5rem;
   --eds-side-navigation-beta-icon-subdued: var(--components-menu-sidenavigation-beta-contrast-icon-subdued);
   --eds-side-navigation-beta-icon-disabled: var(--components-menu-sidenavigation-beta-contrast-icon-disabled);
   --eds-side-navigation-beta-stroke-active: var(--components-menu-sidenavigation-beta-contrast-stroke-active);
+  --eds-side-navigation-beta-stroke-child: var(--components-menu-sidenavigation-beta-contrast-stroke-child-default);
   --eds-side-navigation-beta-alert: var(--components-menu-sidenavigation-beta-contrast-alert);
   --eds-side-navigation-beta-focus: var(--basecolors-stroke-focus-contrast);
 }
@@ -46,6 +48,13 @@ $eds-side-navigation-beta-inline-padding-default: 1.5rem;
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+// Inset from both panel edges, unlike the full-bleed top-level rows
+.eds-side-navigation-beta__submenu {
+  padding-inline: var(--eds-side-navigation-padding-inline-start, $eds-side-navigation-beta-inline-padding-default)
+    $eds-side-navigation-beta-inline-padding-default;
+  padding-block-end: 0.75rem;
 }
 
 .eds-side-navigation-beta__group-title {
@@ -91,10 +100,11 @@ $eds-side-navigation-beta-inline-padding-default: 1.5rem;
   cursor: pointer;
 }
 
-// Submenu items are indented past the parent's icon column: the icon is 1rem
-// wide with a 0.5rem gap, so the label lines up with the parent's label.
+// The rail down the submenu, one segment per row. The label clears the parent's
+// icon column, lining up with the parent's label.
 :where(.eds-side-navigation-beta__submenu) .eds-side-navigation-beta__click-target {
-  padding-inline-start: calc(var(--eds-side-navigation-padding-inline-start, $eds-side-navigation-beta-inline-padding-default) + 1.5rem);
+  box-shadow: inset t.$border-widths-medium 0 0 var(--eds-side-navigation-beta-stroke-child);
+  padding-inline: 1.5rem 1rem;
 }
 
 .eds-side-navigation-beta__click-target--active {
