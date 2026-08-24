@@ -1,0 +1,43 @@
+name: Design System Scanner CI
+
+# The scan itself runs from an internal repository, which holds the credentials and
+# org access it needs. This workflow only builds and tests.
+
+on:
+  # Run smoke test on PRs that change the scanner
+  pull_request:
+    paths:
+      - 'tools/design-system-scanner/**'
+      - '.github/workflows/scanner-ci.yml'
+
+concurrency:
+  group: design-system-scanner-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+permissions:
+  contents: read
+
+jobs:
+  # Smoke test: build and run tests (no secrets needed)
+  smoke-test:
+    name: Build and test scanner
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout design-system repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Install dependencies
+        uses: ./.github/actions/install-and-cache-dependencies
+        with:
+          cache-key: scanner-yarn-${{ hashFiles('yarn.lock') }}
+
+      - name: Build scanner
+        run: yarn workspace @entur/design-system-scanner build
+
+      - name: Run tests
+        run: yarn workspace @entur/design-system-scanner test
