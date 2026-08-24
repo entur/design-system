@@ -831,7 +831,7 @@ function parseArgs(argv: string[]): ParsedArgs {
         args.totalRepos = parseInt(argv[++i], 10) || undefined;
         break;
       case '--min-repos':
-        args.minRepos = parseInt(argv[++i], 10);
+        args.minRepos = parseInt(argv[++i], 10) || undefined;
         break;
       case '--output':
         args.output = argv[++i];
