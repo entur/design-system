@@ -128,6 +128,19 @@ moment the submenu opens and those items can show their own dots. `alert` on the
 still forces a dot — for a submenu built by a wrapper component the walk cannot see into — and
 follows the same open rule.
 
+### Mixed icons warn in development
+
+Icons are all-or-nothing on one level: either every row has one, or none does. A row without an
+icon among rows that have one loses the icon column, and its label no longer lines up with the
+rest. `SideNavigation` checks its own level and each `ExpandableItem` checks its submenu, then
+`console.warn`s once per level with the labels that stand out. The check is stripped in
+production builds, and the rows still render either way — it points at the design rule, it does
+not enforce it.
+
+Rows inside a `Group` count towards the level around the group, not a level of their own: a
+group heading separates rows without indenting them, so those rows share the icon column with
+every other top-level row.
+
 ### The submenu rail
 
 Every submenu row draws a 2px rail on its start edge; the rows stack with no gap, so the rails

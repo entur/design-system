@@ -2,14 +2,16 @@ import React from 'react';
 import classNames from 'classnames';
 import { BaseExpand } from '@entur/expand';
 import { DownArrowIcon } from '@entur/icons';
+import { getNodeText } from '@entur/utils';
 
 import {
   SideNavigationItemContent,
   type SideNavigationItemContentProps,
 } from './SideNavigationItemContent';
+import { warnOnMixedIcons } from './warnOnMixedIcons';
 
-/** Ser etter `active`- og `alert`-menyelementer i undermenyen. Kjøres under
- * render, slik at riktig gruppe er åpen allerede i server-HTML-en. */
+/** Looks for `active` and `alert` items in the submenu. Runs during render, so
+ * that the right group is already open in the server HTML. */
 const scanSubmenu = (
   node: React.ReactNode,
 ): { active: boolean; alert: boolean } => {
@@ -84,6 +86,8 @@ export const SideNavigationExpandableItem = React.forwardRef<
     ref,
   ) => {
     const panelId = React.useId();
+
+    warnOnMixedIcons(children, `the submenu "${getNodeText(title)}"`);
 
     // Open state is resolved during render: controlled > the user's own toggle >
     // derived from an active descendant. Without the derived tier the menu would

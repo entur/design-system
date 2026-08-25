@@ -7,6 +7,7 @@ import { hydrateRoot } from 'react-dom/client';
 import '@testing-library/jest-dom';
 
 import { SideNavigation } from '.';
+import { resetMixedIconWarnings } from './warnOnMixedIcons';
 
 describe('SideNavigation (beta)', () => {
   it('renders its items in a list', () => {
@@ -352,5 +353,80 @@ describe('SideNavigation (beta) server rendering', () => {
     consoleError.mockRestore();
     expect(errors).toHaveLength(0);
     document.body.removeChild(container);
+  });
+});
+
+describe('the mixed-icon warning', () => {
+  let warn: jest.SpyInstance;
+
+  beforeEach(() => {
+    resetMixedIconWarnings();
+    warn = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+  });
+
+  afterEach(() => warn.mockRestore());
+
+  it('warns when only some items on the top level have an icon', () => {
+    render(
+      <SideNavigation>
+        <SideNavigation.Group title="Gruppe">
+          <SideNavigation.Item href="/a" icon={<span />}>
+            Med ikon
+          </SideNavigation.Item>
+          <SideNavigation.Item href="/b">Uten ikon</SideNavigation.Item>
+        </SideNavigation.Group>
+      </SideNavigation>,
+    );
+
+    expect(warn).toHaveBeenCalledTimes(1);
+    expect(warn.mock.calls[0][0]).toContain('the top level');
+    expect(warn.mock.calls[0][0]).toContain('"Med ikon"');
+  });
+
+  it('warns per submenu, naming the expandable item', () => {
+    render(
+      <SideNavigation>
+        <SideNavigation.ExpandableItem title="Salg" icon={<span />}>
+          <SideNavigation.Item href="/a" icon={<span />}>
+            Med ikon
+          </SideNavigation.Item>
+          <SideNavigation.Item href="/b">Uten ikon</SideNavigation.Item>
+        </SideNavigation.ExpandableItem>
+      </SideNavigation>,
+    );
+
+    expect(warn).toHaveBeenCalledTimes(1);
+    expect(warn.mock.calls[0][0]).toContain('the submenu "Salg"');
+  });
+
+  it('stays quiet when a level is consistent', () => {
+    render(
+      <SideNavigation>
+        <SideNavigation.Item href="/a" icon={<span />}>
+          Med ikon
+        </SideNavigation.Item>
+        <SideNavigation.ExpandableItem title="Salg" icon={<span />}>
+          <SideNavigation.Item href="/b">Uten ikon</SideNavigation.Item>
+          <SideNavigation.Item href="/c">Uten ikon også</SideNavigation.Item>
+        </SideNavigation.ExpandableItem>
+      </SideNavigation>,
+    );
+
+    expect(warn).not.toHaveBeenCalled();
+  });
+
+  it('warns once for the same level, however many renders', () => {
+    const markup = (
+      <SideNavigation>
+        <SideNavigation.Item href="/a" icon={<span />}>
+          Med ikon
+        </SideNavigation.Item>
+        <SideNavigation.Item href="/b">Uten ikon</SideNavigation.Item>
+      </SideNavigation>
+    );
+    const { rerender } = render(markup);
+    rerender(markup);
+
+    expect(warn).toHaveBeenCalledTimes(1);
   });
 });
