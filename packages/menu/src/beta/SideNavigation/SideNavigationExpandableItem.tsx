@@ -8,29 +8,44 @@ import {
   type SideNavigationItemContentProps,
 } from './SideNavigationItemContent';
 
-/** Ser etter et `active`-menyelement i undermenyen. Kjøres under render, slik at
- * riktig gruppe er åpen allerede i server-HTML-en. */
-const hasActiveDescendant = (node: React.ReactNode): boolean =>
-  React.Children.toArray(node).some(child => {
-    if (!React.isValidElement(child)) return false;
-    const { active, children } = child.props as {
+/** Ser etter `active`- og `alert`-menyelementer i undermenyen. Kjøres under
+ * render, slik at riktig gruppe er åpen allerede i server-HTML-en. */
+const scanSubmenu = (
+  node: React.ReactNode,
+): { active: boolean; alert: boolean } => {
+  let active = false;
+  let alert = false;
+
+  React.Children.forEach(node, child => {
+    if (!React.isValidElement(child)) return;
+    const props = child.props as {
       active?: boolean;
+      alert?: boolean;
       children?: React.ReactNode;
     };
-    return active === true || hasActiveDescendant(children);
+    const nested = scanSubmenu(props.children);
+    active = active || props.active === true || nested.active;
+    alert = alert || props.alert === true || nested.alert;
   });
+
+  return { active, alert };
+};
 
 export type SideNavigationExpandableItemProps = Omit<
   React.ComponentPropsWithoutRef<'li'>,
   'title' | 'onToggle'
 > &
-  Omit<SideNavigationItemContentProps, 'children'> & {
+  Omit<SideNavigationItemContentProps, 'children' | 'alert'> & {
     /** Etiketten til det ekspanderbare elementet */
     title: React.ReactNode;
     /** Undermenyen */
     children: React.ReactNode;
     /** Marker elementet som gjeldende side */
     active?: boolean;
+    /** Vis en varselprikk selv om ingen menyelementer i undermenyen har
+     * `alert`. Prikken vises uansett bare når undermenyen er lukket – er den
+     * åpen, viser menyelementene sine egne prikker */
+    alert?: boolean;
     /** Deaktiver elementet */
     disabled?: boolean;
     /** Om undermenyen er åpen. Gjør komponenten kontrollert */
@@ -73,8 +88,8 @@ export const SideNavigationExpandableItem = React.forwardRef<
     // Open state is resolved during render: controlled > the user's own toggle >
     // derived from an active descendant. Without the derived tier the menu would
     // collapse on every navigation in a server-rendered app.
-    const activeDescendant = hasActiveDescendant(children);
-    const derivedOpen = activeDescendant || defaultOpen;
+    const submenu = scanSubmenu(children);
+    const derivedOpen = submenu.active || defaultOpen;
     const [state, setState] = React.useState<{
       user: boolean | null;
       derived: boolean;
@@ -93,7 +108,11 @@ export const SideNavigationExpandableItem = React.forwardRef<
     // Marked as leading to the current page when the item itself is active or
     // the active page sits inside its submenu. The open state decides how much
     // of the marking is drawn — see the stylesheet.
-    const showActive = active || activeDescendant;
+    const showActive = active || submenu.active;
+
+    // The dot stands in for the submenu's own dots while they are hidden, so it
+    // goes away as soon as the submenu can show them itself.
+    const showAlert = (alert || submenu.alert) && !isOpen;
 
     const toggle = () => {
       const next = !isOpen;
@@ -133,7 +152,7 @@ export const SideNavigationExpandableItem = React.forwardRef<
           <SideNavigationItemContent
             icon={icon}
             badge={badge}
-            alert={alert}
+            alert={showAlert}
             alertLabel={alertLabel}
           >
             {title}

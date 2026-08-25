@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { act } from 'react';
 import { renderToString } from 'react-dom/server';
@@ -218,6 +218,46 @@ describe('SideNavigation.ExpandableItem (beta)', () => {
       'eds-side-navigation-beta__click-target--open',
     );
     expect(trigger).toHaveAttribute('aria-current', 'page');
+  });
+
+  it('shows the alert dot for a submenu that has one, only while collapsed', async () => {
+    const user = userEvent.setup();
+    render(
+      <SideNavigation>
+        <SideNavigation.ExpandableItem title="Utvidbar">
+          <SideNavigation.Item href="/a">Uten varsel</SideNavigation.Item>
+          <SideNavigation.Item href="/b" alert>
+            Med varsel
+          </SideNavigation.Item>
+        </SideNavigation.ExpandableItem>
+      </SideNavigation>,
+    );
+
+    const trigger = screen.getByRole('button', { name: /Utvidbar/ });
+    expect(
+      within(trigger).getByRole('img', { name: 'Varsel' }),
+    ).toBeInTheDocument();
+
+    await user.click(trigger);
+
+    // Open: the submenu item shows its own dot
+    expect(
+      within(trigger).queryByRole('img', { name: 'Varsel' }),
+    ).not.toBeInTheDocument();
+  });
+
+  it('leaves out the alert dot when no item in the submenu has one', () => {
+    render(
+      <SideNavigation>
+        <SideNavigation.ExpandableItem title="Utvidbar">
+          <SideNavigation.Item href="/a">Uten varsel</SideNavigation.Item>
+        </SideNavigation.ExpandableItem>
+      </SideNavigation>,
+    );
+
+    expect(
+      screen.queryByRole('img', { name: 'Varsel' }),
+    ).not.toBeInTheDocument();
   });
 
   it('respects the open prop and reports changes through onOpenChange', async () => {

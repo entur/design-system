@@ -118,8 +118,15 @@ say this row _is_ it, so an `ExpandableItem` only draws them while its submenu i
 An open group would otherwise carry the background twice, once on the parent and once on the
 submenu row below it. Hover and click backgrounds still apply on every row, open or not.
 
-Both collapsed rows use the same active-descendant walk that decides whether to open, so the
-marking follows the submenu even though nothing in the submenu is rendered.
+Both collapsed rows use the same submenu walk that decides whether to open, so the marking
+follows the submenu even though nothing in the submenu is rendered.
+
+### The alert dot stands in for the submenu's dots
+
+An `ExpandableItem` shows the dot when any item in its submenu has `alert`, and drops it the
+moment the submenu opens and those items can show their own dots. `alert` on the item itself
+still forces a dot — for a submenu built by a wrapper component the walk cannot see into — and
+follows the same open rule.
 
 ### The submenu rail
 
@@ -179,8 +186,9 @@ along with the text, which is usually not what you want in a full-bleed sidebar.
 
 - **One submenu level.** The spec draws exactly one. Nesting an `ExpandableItem` inside a
   submenu will render, but the indentation is not designed for it.
-- **The active-descendant walk only sees JSX children.** `items.map(...)` is fine, but a
-  wrapper component that renders items internally is invisible to it — those consumers must
-  pass `open` or `defaultOpen` themselves. The stable component has the same limitation.
+- **The submenu walk only sees JSX children.** `items.map(...)` is fine, but a wrapper
+  component that renders items internally is invisible to it — those consumers must pass
+  `open` or `defaultOpen` and `alert` themselves. The stable component has the same
+  limitation.
 - **No environment indicator.** Figma's `.EnvBadge` / `Stroke-Prod` stripe is drawn but hidden
   in every variant, so it is not implemented.
