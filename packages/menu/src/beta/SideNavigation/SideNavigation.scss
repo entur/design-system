@@ -89,6 +89,9 @@ $eds-side-navigation-beta-inline-padding-default: 1.5rem;
     $eds-side-navigation-beta-inline-padding-default;
   border: 0;
   border-radius: 0;
+
+  // Always drawn, transparent until a state colours it, so the fade has a start
+  box-shadow: inset t.$border-widths-medium 0 0 transparent;
   background-color: var(--eds-side-navigation-beta-fill-default);
   color: var(--eds-side-navigation-beta-text);
   font-family: inherit;
@@ -98,6 +101,7 @@ $eds-side-navigation-beta-inline-padding-default: 1.5rem;
   text-align: left;
   text-decoration: none;
   cursor: pointer;
+  transition: box-shadow t.$timings-medium ease-out;
 }
 
 // The rail down the submenu, one segment per row. The label clears the parent's
@@ -117,7 +121,7 @@ $eds-side-navigation-beta-inline-padding-default: 1.5rem;
 // An open expandable item keeps only the bold label; the submenu row below it
 // carries the tint and the bar. Precedes the hover and click rules so they win.
 .eds-side-navigation-beta__click-target--active:where(.eds-side-navigation-beta__click-target--open) {
-  box-shadow: none;
+  box-shadow: inset t.$border-widths-medium 0 0 transparent;
   background-color: var(--eds-side-navigation-beta-fill-default);
 }
 
@@ -201,6 +205,14 @@ $eds-side-navigation-beta-inline-padding-default: 1.5rem;
   height: 0.5rem;
   border-radius: 50%;
   background-color: var(--eds-side-navigation-beta-alert);
+
+  // visibility transitions in steps, so the dot survives the fade out
+  transition: opacity t.$timings-medium ease-out, visibility t.$timings-medium;
+}
+
+.eds-side-navigation-beta__alert--faded {
+  visibility: hidden;
+  opacity: 0;
 }
 
 .eds-side-navigation-beta__chevron {
@@ -213,4 +225,12 @@ $eds-side-navigation-beta-inline-padding-default: 1.5rem;
 
 .eds-side-navigation-beta__chevron--open {
   transform: rotate(-180deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .eds-side-navigation-beta__click-target,
+  .eds-side-navigation-beta__alert,
+  .eds-side-navigation-beta__chevron {
+    transition: none;
+  }
 }

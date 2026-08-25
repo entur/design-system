@@ -35,7 +35,7 @@ export type SideNavigationExpandableItemProps = Omit<
   React.ComponentPropsWithoutRef<'li'>,
   'title' | 'onToggle'
 > &
-  Omit<SideNavigationItemContentProps, 'children' | 'alert'> & {
+  Omit<SideNavigationItemContentProps, 'children' | 'alert' | 'alertFaded'> & {
     /** Etiketten til det ekspanderbare elementet */
     title: React.ReactNode;
     /** Undermenyen */
@@ -111,8 +111,9 @@ export const SideNavigationExpandableItem = React.forwardRef<
     const showActive = active || submenu.active;
 
     // The dot stands in for the submenu's own dots while they are hidden, so it
-    // goes away as soon as the submenu can show them itself.
-    const showAlert = (alert || submenu.alert) && !isOpen;
+    // fades out as soon as the submenu can show them itself. It stays in the
+    // row either way, so opening the submenu does not shift the label.
+    const hasAlert = alert || submenu.alert;
 
     const toggle = () => {
       const next = !isOpen;
@@ -152,7 +153,8 @@ export const SideNavigationExpandableItem = React.forwardRef<
           <SideNavigationItemContent
             icon={icon}
             badge={badge}
-            alert={showAlert}
+            alert={hasAlert}
+            alertFaded={isOpen}
             alertLabel={alertLabel}
           >
             {title}
