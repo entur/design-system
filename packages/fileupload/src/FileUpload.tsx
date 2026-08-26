@@ -1,9 +1,11 @@
 import {
+  Accept,
   DropEvent,
   DropzoneOptions,
   FileRejection,
   useDropzone,
 } from 'react-dropzone';
+import { useMemo } from 'react';
 import classNames from 'classnames';
 
 import { DeleteIcon, FileIcon } from '@entur/icons';
@@ -12,7 +14,7 @@ import { Label } from '@entur/typography';
 
 import './FileUpload.scss';
 
-type FileUploadProps = DropzoneOptions & {
+type FileUploadProps = Omit<DropzoneOptions, 'accept'> & {
   /** Tekst som vises ved fullført opplasting
    * @default "Opplasting fullført"
    */
@@ -37,8 +39,12 @@ type FileUploadProps = DropzoneOptions & {
   ): void;
   /** Callback for når en fil slettes fra lista */
   onDelete?: (file: File) => void;
-  /** Hvilken filtyper som skal aksepteres */
-  accept?: string | string[];
+  /** Hvilken filtyper som skal aksepteres. Enten MIME-typer og filendelser
+   * som tekst, eller et oppslag fra MIME-type til filendelser.
+   * @example accept=".pdf, image/png"
+   * @example accept={{ 'image/png': ['.png'] }}
+   */
+  accept?: string | string[] | Accept;
   /** Filene som er aktive i komponenten */
   files: File[];
   /** Beskrivende tekst som forklarer feltet */
@@ -73,7 +79,7 @@ export const FileUpload = ({
   const { getRootProps, getInputProps, isDragActive, isDragReject } =
     useDropzone({
       onDrop,
-      accept: accept,
+      accept: useMemo(() => toAcceptMap(accept), [accept]),
       ...rest,
     });
 
@@ -83,7 +89,7 @@ export const FileUpload = ({
     <div className="eds-file-upload__wrapper" {...style}>
       <div className="eds-file-upload__input" {...getRootProps()}>
         {label && <Label style={{ display: 'flex' }}>{label}</Label>}
-        <input {...getInputProps()} />
+        <input {...withoutSentinelAccept(getInputProps())} />
         <span
           className={classNames(
             'eds-file-upload__dropzone',
@@ -121,6 +127,42 @@ export const FileUpload = ({
     </div>
   );
 };
+
+/** react-dropzone krever at hver filendelse ligger under en MIME-type. Denne
+ * finnes ikke, så det er filendelsene under den som filtrerer. */
+const EXTENSION_ONLY = 'entur/extension-only';
+
+/** Hjelpe-MIME-typen skal ikke ut i DOM-en. */
+function withoutSentinelAccept<T extends { accept?: string }>(props: T): T {
+  if (!props.accept?.includes(EXTENSION_ONLY)) return props;
+  const accept = props.accept
+    .split(',')
+    .filter(entry => entry !== EXTENSION_ONLY)
+    .join(',');
+  return { ...props, accept: accept || undefined };
+}
+
+/** react-dropzone tar `accept` som et oppslag fra MIME-type til filendelser.
+ * Vi tar imot den flate tekstformen også, slik APIet vårt alltid har gjort. */
+function toAcceptMap(
+  accept: string | string[] | Accept | undefined,
+): Accept | undefined {
+  if (accept === undefined) return undefined;
+  if (typeof accept !== 'string' && !Array.isArray(accept)) return accept;
+
+  const entries = (Array.isArray(accept) ? accept : accept.split(','))
+    .map(entry => entry.trim())
+    .filter(Boolean);
+  if (entries.length === 0) return undefined;
+
+  return entries.reduce<Record<string, string[]>>((map, entry) => {
+    const isMimeType = entry.includes('/');
+    const key = isMimeType ? entry : EXTENSION_ONLY;
+    map[key] ??= [];
+    if (!isMimeType) map[key].push(entry);
+    return map;
+  }, {});
+}
 
 function convertSizeToHuman(size: number) {
   if (size < 1000) {

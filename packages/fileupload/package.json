@@ -33,7 +33,7 @@
     "@entur/typography": "workspace:^",
     "@entur/utils": "workspace:^",
     "classnames": "^2.5.1",
-    "react-dropzone": "^11.7.1"
+    "react-dropzone": "^20.1.1"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.17.0",
