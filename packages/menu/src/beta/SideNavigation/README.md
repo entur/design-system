@@ -166,9 +166,23 @@ Each variable is re-declared as a short `--eds-side-navigation-beta-*` alias on 
 the contrast variants are swapped in one place. Rules downstream only ever read the alias, so
 adding a new mode means changing one block, not every rule.
 
+### `--eds-side-navigation-max-width`
+
+The nav takes its width from its container and caps at 20rem. A cap rather than a width, so
+that inside a narrower sidebar it still fills the panel exactly and the full-bleed rows keep
+reaching both edges; the cap only takes effect standalone, where a bare container would
+otherwise leave the nav spanning the whole page.
+
+```scss
+// A wider nav than the 20rem default
+.my-sidebar-nav {
+  --eds-side-navigation-max-width: 26rem;
+}
+```
+
 ### `--eds-side-navigation-padding-inline-start`
 
-The one custom property meant to be set by consumers. It moves the label, icon and group
+The second custom property meant to be set by consumers. It moves the label, icon and group
 heading on the start side only — the end side always keeps its 1.5rem — without indenting the
 top-level rows, so their hover and active backgrounds still run to the edge of the sidebar. The
 submenu box starts at the same value, so its rail and its labels shift along with the rows

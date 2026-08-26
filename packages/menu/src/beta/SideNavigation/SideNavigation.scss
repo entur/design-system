@@ -19,6 +19,7 @@ $eds-side-navigation-beta-inline-padding-default: 1.5rem;
   --eds-side-navigation-beta-alert: var(--components-menu-sidenavigationbeta-standard-alert);
   --eds-side-navigation-beta-focus: var(--basecolors-stroke-focus-standard);
 
+  max-width: var(--eds-side-navigation-max-width, 20rem);
   list-style: none;
   margin: 0;
   padding: 0;
