@@ -1,64 +1,68 @@
 @use '@entur/tokens/dist/semantic.scss' as *;
 
-/* Hand-written until the "Standard beta" / "Contrast beta" side navigation
+/* Hand-written until the "Side Navigation beta" side navigation
  * variables ship in @entur/tokens. When they do, delete this file and rely on
  * the generated ../componentVariables.scss instead.
  * Source: Entur UI Library, node 26271-19314. */
 [data-color-mode='light'],
 :root {
-  --components-menu-sidenavigation-beta-standard-fill-default: #{$fill-background-standard-colorless};
-  --components-menu-sidenavigation-beta-standard-fill-hover: #{$fill-background-subdued-light};
-  --components-menu-sidenavigation-beta-standard-fill-click: #{$fill-secondary-active-light};
-  --components-menu-sidenavigation-beta-standard-fill-active: #{$fill-background-tint-light};
-  --components-menu-sidenavigation-beta-standard-fill-disabled: #{$fill-background-standard-colorless};
-  --components-menu-sidenavigation-beta-standard-text: #{$text-accent};
-  --components-menu-sidenavigation-beta-standard-text-disabled: #{$text-neutral};
-  --components-menu-sidenavigation-beta-standard-text-group: #{$text-subdued};
-  --components-menu-sidenavigation-beta-standard-icon: #{$shape-accent};
-  --components-menu-sidenavigation-beta-standard-icon-subdued: #{$shape-subdued};
-  --components-menu-sidenavigation-beta-standard-icon-disabled: #{$shape-neutral};
-  --components-menu-sidenavigation-beta-standard-stroke-active: #{$stroke-accent};
-  --components-menu-sidenavigation-beta-standard-alert: #{$fill-negative-deep};
-  --components-menu-sidenavigation-beta-contrast-fill-default: #{$fill-background-standard-colorless};
-  --components-menu-sidenavigation-beta-contrast-fill-hover: #{$fill-secondary-hover-contrast};
-  --components-menu-sidenavigation-beta-contrast-fill-click: #{$fill-primary-active-contrast};
-  --components-menu-sidenavigation-beta-contrast-fill-active: #{$fill-selected-default-contrast};
-  --components-menu-sidenavigation-beta-contrast-fill-disabled: #{$fill-background-standard-colorless};
-  --components-menu-sidenavigation-beta-contrast-text: #{$text-light};
-  --components-menu-sidenavigation-beta-contrast-text-disabled: #{$text-neutralalt};
-  --components-menu-sidenavigation-beta-contrast-text-group: #{$text-subduedalt};
-  --components-menu-sidenavigation-beta-contrast-icon: #{$shape-light};
-  --components-menu-sidenavigation-beta-contrast-icon-subdued: #{$shape-contrast};
-  --components-menu-sidenavigation-beta-contrast-icon-disabled: #{$shape-neutralalt};
-  --components-menu-sidenavigation-beta-contrast-stroke-active: #{$stroke-light};
-  --components-menu-sidenavigation-beta-contrast-alert: #{$fill-negative-contrast};
+  --components-menu-sidenavigationbeta-standard-fill-default: #{$fill-background-standard-colorless};
+  --components-menu-sidenavigationbeta-standard-fill-hover: #{$fill-background-subdued-light};
+  --components-menu-sidenavigationbeta-standard-fill-click: #{$fill-secondary-active-light};
+  --components-menu-sidenavigationbeta-standard-fill-active: #{$fill-selected-default-tint};
+  --components-menu-sidenavigationbeta-standard-fill-disabled: #{$fill-background-standard-colorless};
+  --components-menu-sidenavigationbeta-standard-text: #{$text-accent};
+  --components-menu-sidenavigationbeta-standard-text-disabled: #{$text-neutral};
+  --components-menu-sidenavigationbeta-standard-text-group: #{$text-subdued};
+  --components-menu-sidenavigationbeta-standard-icon: #{$shape-accent};
+  --components-menu-sidenavigationbeta-standard-icon-subdued: #{$shape-subdued};
+  --components-menu-sidenavigationbeta-standard-icon-disabled: #{$shape-neutral};
+  --components-menu-sidenavigationbeta-standard-stroke-active: #{$stroke-accent};
+  --components-menu-sidenavigationbeta-standard-stroke-submenu-indicator-default: #{$stroke-lightalt};
+  --components-menu-sidenavigationbeta-standard-alert: #{$fill-negative-deep};
+  --components-menu-sidenavigationbeta-contrast-fill-default: #{$fill-background-standard-colorless};
+  --components-menu-sidenavigationbeta-contrast-fill-hover: #{$fill-secondary-hover-contrast};
+  --components-menu-sidenavigationbeta-contrast-fill-click: #{$fill-primary-active-contrast};
+  --components-menu-sidenavigationbeta-contrast-fill-active: #{$fill-selected-default-contrast};
+  --components-menu-sidenavigationbeta-contrast-fill-disabled: #{$fill-background-standard-colorless};
+  --components-menu-sidenavigationbeta-contrast-text: #{$text-light};
+  --components-menu-sidenavigationbeta-contrast-text-disabled: #{$text-neutralalt};
+  --components-menu-sidenavigationbeta-contrast-text-group: #{$text-subduedalt};
+  --components-menu-sidenavigationbeta-contrast-icon: #{$shape-light};
+  --components-menu-sidenavigationbeta-contrast-icon-subdued: #{$shape-contrast};
+  --components-menu-sidenavigationbeta-contrast-icon-disabled: #{$shape-neutralalt};
+  --components-menu-sidenavigationbeta-contrast-stroke-active: #{$stroke-light};
+  --components-menu-sidenavigationbeta-contrast-stroke-submenu-indicator-default: #{$stroke-subdued};
+  --components-menu-sidenavigationbeta-contrast-alert: #{$fill-negative-contrast};
 }
 
 [data-color-mode='dark'] {
-  --components-menu-sidenavigation-beta-standard-fill-default: #{$fill-background-standard-colorless};
-  --components-menu-sidenavigation-beta-standard-fill-hover: #{$fill-background-overlay-transparent};
-  --components-menu-sidenavigation-beta-standard-fill-click: #{$fill-background-overlay-transparent};
-  --components-menu-sidenavigation-beta-standard-fill-active: #{$fill-background-contrast-dark};
-  --components-menu-sidenavigation-beta-standard-fill-disabled: #{$fill-background-standard-colorless};
-  --components-menu-sidenavigation-beta-standard-text: #{$text-lightalt};
-  --components-menu-sidenavigation-beta-standard-text-disabled: #{$text-neutralalt2};
-  --components-menu-sidenavigation-beta-standard-text-group: #{$text-darkalt};
-  --components-menu-sidenavigation-beta-standard-icon: #{$shape-lightalt};
-  --components-menu-sidenavigation-beta-standard-icon-subdued: #{$shape-lightalt};
-  --components-menu-sidenavigation-beta-standard-icon-disabled: #{$shape-neutralalt2};
-  --components-menu-sidenavigation-beta-standard-stroke-active: #{$stroke-darkalt};
-  --components-menu-sidenavigation-beta-standard-alert: #{$fill-negative-tint};
-  --components-menu-sidenavigation-beta-contrast-fill-default: #{$fill-background-standard-colorless};
-  --components-menu-sidenavigation-beta-contrast-fill-hover: #{$fill-background-overlay-transparent};
-  --components-menu-sidenavigation-beta-contrast-fill-click: #{$fill-background-overlay-transparent};
-  --components-menu-sidenavigation-beta-contrast-fill-active: #{$fill-background-contrast-dark};
-  --components-menu-sidenavigation-beta-contrast-fill-disabled: #{$fill-background-standard-colorless};
-  --components-menu-sidenavigation-beta-contrast-text: #{$text-lightalt};
-  --components-menu-sidenavigation-beta-contrast-text-disabled: #{$text-neutralalt2};
-  --components-menu-sidenavigation-beta-contrast-text-group: #{$text-darkalt};
-  --components-menu-sidenavigation-beta-contrast-icon: #{$shape-lightalt};
-  --components-menu-sidenavigation-beta-contrast-icon-subdued: #{$shape-lightalt};
-  --components-menu-sidenavigation-beta-contrast-icon-disabled: #{$shape-neutralalt2};
-  --components-menu-sidenavigation-beta-contrast-stroke-active: #{$stroke-darkalt};
-  --components-menu-sidenavigation-beta-contrast-alert: #{$fill-negative-tint};
+  --components-menu-sidenavigationbeta-standard-fill-default: #{$fill-background-standard-colorless};
+  --components-menu-sidenavigationbeta-standard-fill-hover: #{$fill-background-overlay-transparent};
+  --components-menu-sidenavigationbeta-standard-fill-click: #{$fill-background-overlay-transparent};
+  --components-menu-sidenavigationbeta-standard-fill-active: #{$fill-selected-default-darktint};
+  --components-menu-sidenavigationbeta-standard-fill-disabled: #{$fill-background-standard-colorless};
+  --components-menu-sidenavigationbeta-standard-text: #{$text-lightalt};
+  --components-menu-sidenavigationbeta-standard-text-disabled: #{$text-neutralalt2};
+  --components-menu-sidenavigationbeta-standard-text-group: #{$text-darkalt};
+  --components-menu-sidenavigationbeta-standard-icon: #{$shape-lightalt};
+  --components-menu-sidenavigationbeta-standard-icon-subdued: #{$shape-lightalt};
+  --components-menu-sidenavigationbeta-standard-icon-disabled: #{$shape-neutralalt2};
+  --components-menu-sidenavigationbeta-standard-stroke-active: #{$stroke-neutral};
+  --components-menu-sidenavigationbeta-standard-stroke-submenu-indicator-default: #{$stroke-darkalt};
+  --components-menu-sidenavigationbeta-standard-alert: #{$fill-negative-tint};
+  --components-menu-sidenavigationbeta-contrast-fill-default: #{$fill-background-standard-colorless};
+  --components-menu-sidenavigationbeta-contrast-fill-hover: #{$fill-background-overlay-transparent};
+  --components-menu-sidenavigationbeta-contrast-fill-click: #{$fill-background-overlay-transparent};
+  --components-menu-sidenavigationbeta-contrast-fill-active: #{$fill-selected-default-darktint};
+  --components-menu-sidenavigationbeta-contrast-fill-disabled: #{$fill-background-standard-colorless};
+  --components-menu-sidenavigationbeta-contrast-text: #{$text-lightalt};
+  --components-menu-sidenavigationbeta-contrast-text-disabled: #{$text-neutralalt2};
+  --components-menu-sidenavigationbeta-contrast-text-group: #{$text-darkalt};
+  --components-menu-sidenavigationbeta-contrast-icon: #{$shape-lightalt};
+  --components-menu-sidenavigationbeta-contrast-icon-subdued: #{$shape-lightalt};
+  --components-menu-sidenavigationbeta-contrast-icon-disabled: #{$shape-neutralalt2};
+  --components-menu-sidenavigationbeta-contrast-stroke-active: #{$stroke-neutral};
+  --components-menu-sidenavigationbeta-contrast-stroke-submenu-indicator-default: #{$stroke-darkalt};
+  --components-menu-sidenavigationbeta-contrast-alert: #{$fill-negative-tint};
 }

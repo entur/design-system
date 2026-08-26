@@ -3,21 +3,23 @@
 $eds-side-navigation-beta-inline-padding-default: 1.5rem;
 
 .eds-side-navigation-beta {
-  --eds-side-navigation-beta-fill-default: var(--components-menu-sidenavigation-beta-standard-fill-default);
-  --eds-side-navigation-beta-fill-hover: var(--components-menu-sidenavigation-beta-standard-fill-hover);
-  --eds-side-navigation-beta-fill-click: var(--components-menu-sidenavigation-beta-standard-fill-click);
-  --eds-side-navigation-beta-fill-active: var(--components-menu-sidenavigation-beta-standard-fill-active);
-  --eds-side-navigation-beta-fill-disabled: var(--components-menu-sidenavigation-beta-standard-fill-disabled);
-  --eds-side-navigation-beta-text: var(--components-menu-sidenavigation-beta-standard-text);
-  --eds-side-navigation-beta-text-disabled: var(--components-menu-sidenavigation-beta-standard-text-disabled);
-  --eds-side-navigation-beta-text-group: var(--components-menu-sidenavigation-beta-standard-text-group);
-  --eds-side-navigation-beta-icon: var(--components-menu-sidenavigation-beta-standard-icon);
-  --eds-side-navigation-beta-icon-subdued: var(--components-menu-sidenavigation-beta-standard-icon-subdued);
-  --eds-side-navigation-beta-icon-disabled: var(--components-menu-sidenavigation-beta-standard-icon-disabled);
-  --eds-side-navigation-beta-stroke-active: var(--components-menu-sidenavigation-beta-standard-stroke-active);
-  --eds-side-navigation-beta-alert: var(--components-menu-sidenavigation-beta-standard-alert);
+  --eds-side-navigation-beta-fill-default: var(--components-menu-sidenavigationbeta-standard-fill-default);
+  --eds-side-navigation-beta-fill-hover: var(--components-menu-sidenavigationbeta-standard-fill-hover);
+  --eds-side-navigation-beta-fill-click: var(--components-menu-sidenavigationbeta-standard-fill-click);
+  --eds-side-navigation-beta-fill-active: var(--components-menu-sidenavigationbeta-standard-fill-active);
+  --eds-side-navigation-beta-fill-disabled: var(--components-menu-sidenavigationbeta-standard-fill-disabled);
+  --eds-side-navigation-beta-text: var(--components-menu-sidenavigationbeta-standard-text);
+  --eds-side-navigation-beta-text-disabled: var(--components-menu-sidenavigationbeta-standard-text-disabled);
+  --eds-side-navigation-beta-text-group: var(--components-menu-sidenavigationbeta-standard-text-group);
+  --eds-side-navigation-beta-icon: var(--components-menu-sidenavigationbeta-standard-icon);
+  --eds-side-navigation-beta-icon-subdued: var(--components-menu-sidenavigationbeta-standard-icon-subdued);
+  --eds-side-navigation-beta-icon-disabled: var(--components-menu-sidenavigationbeta-standard-icon-disabled);
+  --eds-side-navigation-beta-stroke-active: var(--components-menu-sidenavigationbeta-standard-stroke-active);
+  --eds-side-navigation-beta-stroke-submenu-indicator: var(--components-menu-sidenavigationbeta-standard-stroke-submenu-indicator-default);
+  --eds-side-navigation-beta-alert: var(--components-menu-sidenavigationbeta-standard-alert);
   --eds-side-navigation-beta-focus: var(--basecolors-stroke-focus-standard);
 
+  max-width: var(--eds-side-navigation-max-width, 20rem);
   list-style: none;
   margin: 0;
   padding: 0;
@@ -25,19 +27,20 @@ $eds-side-navigation-beta-inline-padding-default: 1.5rem;
 }
 
 :where(.eds-contrast) .eds-side-navigation-beta {
-  --eds-side-navigation-beta-fill-default: var(--components-menu-sidenavigation-beta-contrast-fill-default);
-  --eds-side-navigation-beta-fill-hover: var(--components-menu-sidenavigation-beta-contrast-fill-hover);
-  --eds-side-navigation-beta-fill-click: var(--components-menu-sidenavigation-beta-contrast-fill-click);
-  --eds-side-navigation-beta-fill-active: var(--components-menu-sidenavigation-beta-contrast-fill-active);
-  --eds-side-navigation-beta-fill-disabled: var(--components-menu-sidenavigation-beta-contrast-fill-disabled);
-  --eds-side-navigation-beta-text: var(--components-menu-sidenavigation-beta-contrast-text);
-  --eds-side-navigation-beta-text-disabled: var(--components-menu-sidenavigation-beta-contrast-text-disabled);
-  --eds-side-navigation-beta-text-group: var(--components-menu-sidenavigation-beta-contrast-text-group);
-  --eds-side-navigation-beta-icon: var(--components-menu-sidenavigation-beta-contrast-icon);
-  --eds-side-navigation-beta-icon-subdued: var(--components-menu-sidenavigation-beta-contrast-icon-subdued);
-  --eds-side-navigation-beta-icon-disabled: var(--components-menu-sidenavigation-beta-contrast-icon-disabled);
-  --eds-side-navigation-beta-stroke-active: var(--components-menu-sidenavigation-beta-contrast-stroke-active);
-  --eds-side-navigation-beta-alert: var(--components-menu-sidenavigation-beta-contrast-alert);
+  --eds-side-navigation-beta-fill-default: var(--components-menu-sidenavigationbeta-contrast-fill-default);
+  --eds-side-navigation-beta-fill-hover: var(--components-menu-sidenavigationbeta-contrast-fill-hover);
+  --eds-side-navigation-beta-fill-click: var(--components-menu-sidenavigationbeta-contrast-fill-click);
+  --eds-side-navigation-beta-fill-active: var(--components-menu-sidenavigationbeta-contrast-fill-active);
+  --eds-side-navigation-beta-fill-disabled: var(--components-menu-sidenavigationbeta-contrast-fill-disabled);
+  --eds-side-navigation-beta-text: var(--components-menu-sidenavigationbeta-contrast-text);
+  --eds-side-navigation-beta-text-disabled: var(--components-menu-sidenavigationbeta-contrast-text-disabled);
+  --eds-side-navigation-beta-text-group: var(--components-menu-sidenavigationbeta-contrast-text-group);
+  --eds-side-navigation-beta-icon: var(--components-menu-sidenavigationbeta-contrast-icon);
+  --eds-side-navigation-beta-icon-subdued: var(--components-menu-sidenavigationbeta-contrast-icon-subdued);
+  --eds-side-navigation-beta-icon-disabled: var(--components-menu-sidenavigationbeta-contrast-icon-disabled);
+  --eds-side-navigation-beta-stroke-active: var(--components-menu-sidenavigationbeta-contrast-stroke-active);
+  --eds-side-navigation-beta-stroke-submenu-indicator: var(--components-menu-sidenavigationbeta-contrast-stroke-submenu-indicator-default);
+  --eds-side-navigation-beta-alert: var(--components-menu-sidenavigationbeta-contrast-alert);
   --eds-side-navigation-beta-focus: var(--basecolors-stroke-focus-contrast);
 }
 
@@ -48,9 +51,16 @@ $eds-side-navigation-beta-inline-padding-default: 1.5rem;
   padding: 0;
 }
 
+// Inset from both panel edges, unlike the full-bleed top-level rows
+.eds-side-navigation-beta__submenu {
+  padding-inline: var(--eds-side-navigation-padding-inline-start, $eds-side-navigation-beta-inline-padding-default)
+    $eds-side-navigation-beta-inline-padding-default;
+  padding-block-end: 0.75rem;
+}
+
 .eds-side-navigation-beta__group-title {
   display: block;
-  padding-block: 2rem 0.5rem;
+  padding-block: 1.5rem 0.5rem;
 
   // Only the start side is consumer-adjustable; the end side stays put. The
   // default lives in the fallback, not in a declaration on the root, so that
@@ -80,6 +90,9 @@ $eds-side-navigation-beta-inline-padding-default: 1.5rem;
     $eds-side-navigation-beta-inline-padding-default;
   border: 0;
   border-radius: 0;
+
+  // Always drawn, transparent until a state colours it, so the fade has a start
+  box-shadow: inset t.$border-widths-medium 0 0 transparent;
   background-color: var(--eds-side-navigation-beta-fill-default);
   color: var(--eds-side-navigation-beta-text);
   font-family: inherit;
@@ -89,41 +102,56 @@ $eds-side-navigation-beta-inline-padding-default: 1.5rem;
   text-align: left;
   text-decoration: none;
   cursor: pointer;
+  transition: box-shadow t.$timings-medium ease-out;
+
+  // Bare [disabled], not :where([disabled]), so a row that is both disabled and
+  // current reads as disabled without depending on rule order.
+  &[disabled] {
+    background-color: var(--eds-side-navigation-beta-fill-disabled);
+    color: var(--eds-side-navigation-beta-text-disabled);
+    cursor: not-allowed;
+  }
+
+  &:not(:where([disabled])):hover {
+    background-color: var(--eds-side-navigation-beta-fill-hover);
+  }
+
+  &:not(:where([disabled])):active {
+    background-color: var(--eds-side-navigation-beta-fill-click);
+  }
+
+  &:not(:where([disabled])):focus-visible {
+    outline: t.$outlines-focus;
+    outline-color: var(--eds-side-navigation-beta-focus);
+
+    // A negative offset keeps the focus ring inside the row, which is full-bleed.
+    outline-offset: -1 * t.$outline-offsets-focus;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
 }
 
-// Submenu items are indented past the parent's icon column: the icon is 1rem
-// wide with a 0.5rem gap, so the label lines up with the parent's label.
+// The rail down the submenu, one segment per row. The label clears the parent's
+// icon column, lining up with the parent's label.
 :where(.eds-side-navigation-beta__submenu) .eds-side-navigation-beta__click-target {
-  padding-inline-start: calc(var(--eds-side-navigation-padding-inline-start, $eds-side-navigation-beta-inline-padding-default) + 1.5rem);
+  box-shadow: inset t.$border-widths-medium 0 0 var(--eds-side-navigation-beta-stroke-submenu-indicator);
+  padding-inline: 1.5rem 1rem;
 }
 
 .eds-side-navigation-beta__click-target--active {
-  box-shadow: inset t.$border-widths-large 0 0 var(--eds-side-navigation-beta-stroke-active);
+  box-shadow: inset t.$border-widths-medium 0 0 var(--eds-side-navigation-beta-stroke-active);
   background-color: var(--eds-side-navigation-beta-fill-active);
   font-weight: t.$font-weights-heading;
   line-height: t.$line-heights-medium;
 }
 
-.eds-side-navigation-beta__click-target:where([disabled]) {
-  background-color: var(--eds-side-navigation-beta-fill-disabled);
-  color: var(--eds-side-navigation-beta-text-disabled);
-  cursor: not-allowed;
-}
-
-.eds-side-navigation-beta__click-target:not(:where([disabled])):hover {
-  background-color: var(--eds-side-navigation-beta-fill-hover);
-}
-
-.eds-side-navigation-beta__click-target:not(:where([disabled])):active {
-  background-color: var(--eds-side-navigation-beta-fill-click);
-}
-
-.eds-side-navigation-beta__click-target:not(:where([disabled])):focus-visible {
-  outline: t.$outlines-focus;
-  outline-color: var(--eds-side-navigation-beta-focus);
-
-  // A negative offset keeps the focus ring inside the row, which is full-bleed.
-  outline-offset: -1 * t.$outline-offsets-focus;
+// An open expandable item keeps only the bold label; the submenu row below it
+// carries the tint and the bar. Hover and click outrank this on specificity.
+.eds-side-navigation-beta__click-target--active:where(.eds-side-navigation-beta__click-target--open) {
+  box-shadow: inset t.$border-widths-medium 0 0 transparent;
+  background-color: var(--eds-side-navigation-beta-fill-default);
 }
 
 :where(.eds-side-navigation-beta__click-target[disabled]) .eds-side-navigation-beta__icon,
@@ -142,7 +170,9 @@ $eds-side-navigation-beta-inline-padding-default: 1.5rem;
 .eds-side-navigation-beta__label-text {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+
+  // 0.5rem after a 1rem icon puts the label 3rem in, where submenu labels start
+  gap: 0.5rem;
   min-width: 0;
 }
 
@@ -163,11 +193,11 @@ $eds-side-navigation-beta-inline-padding-default: 1.5rem;
   display: inline-flex;
   flex: none;
   color: var(--eds-side-navigation-beta-icon);
-}
 
-.eds-side-navigation-beta__icon :where(svg) {
-  width: 1rem;
-  height: 1rem;
+  :where(svg) {
+    width: 1rem;
+    height: 1rem;
+  }
 }
 
 .eds-side-navigation-beta__badge {
@@ -182,6 +212,18 @@ $eds-side-navigation-beta-inline-padding-default: 1.5rem;
   height: 0.5rem;
   border-radius: 50%;
   background-color: var(--eds-side-navigation-beta-alert);
+
+  // visibility transitions in steps, so the dot survives the fade out
+  transition: opacity t.$timings-medium ease-out, visibility t.$timings-medium;
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+}
+
+.eds-side-navigation-beta__alert--faded {
+  visibility: hidden;
+  opacity: 0;
 }
 
 .eds-side-navigation-beta__chevron {
@@ -190,6 +232,10 @@ $eds-side-navigation-beta-inline-padding-default: 1.5rem;
   height: 1rem;
   color: var(--eds-side-navigation-beta-icon-subdued);
   transition: transform t.$timings-medium ease-out;
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
 }
 
 .eds-side-navigation-beta__chevron--open {

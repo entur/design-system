@@ -101,7 +101,52 @@ problem.
 
 Figma's `Hover`, `Click`, `Active` and `Disabled` states map to `:hover`, `:active`, the
 `active` prop and the `disabled` prop respectively. Nothing about the row's appearance is
-tracked in JS.
+tracked in JS, apart from the open state an `ExpandableItem` already tracks — see below.
+
+### One current page, one marking
+
+A bold label says this row leads to the current page. The tinted background and the accent bar
+say this row _is_ it, so an `ExpandableItem` only draws them while its submenu is hidden:
+
+| Expandable item                   | Marking                            |
+| --------------------------------- | ---------------------------------- |
+| Collapsed, `active`               | Background, accent bar, bold label |
+| Collapsed, active page in submenu | Background, accent bar, bold label |
+| Open, `active`                    | Bold label only                    |
+| Open, active page in submenu      | Bold label only                    |
+
+An open group would otherwise carry the background twice, once on the parent and once on the
+submenu row below it. Hover and click backgrounds still apply on every row, open or not.
+
+Both collapsed rows use the same submenu walk that decides whether to open, so the marking
+follows the submenu even though nothing in the submenu is rendered.
+
+### The alert dot stands in for the submenu's dots
+
+An `ExpandableItem` shows the dot when any item in its submenu has `alert`, and drops it the
+moment the submenu opens and those items can show their own dots. `alert` on the item itself
+still forces a dot — for a submenu built by a wrapper component the walk cannot see into — and
+follows the same open rule.
+
+### Mixed icons warn in development
+
+Icons are all-or-nothing on one level: either every row has one, or none does. A row without an
+icon among rows that have one loses the icon column, and its label no longer lines up with the
+rest. `SideNavigation` checks its own level and each `ExpandableItem` checks its submenu, then
+`console.warn`s once per level with the labels that stand out. The check is stripped in
+production builds, and the rows still render either way — it points at the design rule, it does
+not enforce it.
+
+Rows inside a `Group` count towards the level around the group, not a level of their own: a
+group heading separates rows without indenting them, so those rows share the icon column with
+every other top-level row.
+
+### The submenu rail
+
+Every submenu row draws a 2px rail on its start edge; the rows stack with no gap, so the rails
+read as one line down the submenu. The active row draws its own segment in the accent colour
+instead. Unlike the full-bleed top-level rows, submenu rows are inset 1.5rem on both sides, so
+the rail sits under the parent's icon and the background stops short of the sidebar edge.
 
 ### Contrast is inherited, not a prop
 
@@ -112,7 +157,7 @@ that class itself, which means the two compose with no configuration.
 ### Colour tokens are local for now
 
 `src/beta/componentVariables.scss` hand-writes the
-`--components-menu-sidenavigation-beta-*` variables against semantic tokens from
+`--components-menu-sidenavigationbeta-*` variables against semantic tokens from
 `@entur/tokens`. Figma has them under `Side Navigation/Standard beta` and
 `Side Navigation/Contrast beta`, but they have not shipped in `@entur/tokens` yet. Delete that
 file and switch to the generated `../componentVariables.scss` once they do.
@@ -121,11 +166,27 @@ Each variable is re-declared as a short `--eds-side-navigation-beta-*` alias on 
 the contrast variants are swapped in one place. Rules downstream only ever read the alias, so
 adding a new mode means changing one block, not every rule.
 
+### `--eds-side-navigation-max-width`
+
+The nav takes its width from its container and caps at 20rem. A cap rather than a width, so
+that inside a narrower sidebar it still fills the panel exactly and the full-bleed rows keep
+reaching both edges; the cap only takes effect standalone, where a bare container would
+otherwise leave the nav spanning the whole page.
+
+```scss
+// A wider nav than the 20rem default
+.my-sidebar-nav {
+  --eds-side-navigation-max-width: 26rem;
+}
+```
+
 ### `--eds-side-navigation-padding-inline-start`
 
-The one custom property meant to be set by consumers. It moves the label, icon and group
+The second custom property meant to be set by consumers. It moves the label, icon and group
 heading on the start side only — the end side always keeps its 1.5rem — without indenting the
-rows, so hover and active backgrounds still run to the edge of the sidebar. Submenu items stay 1.5rem further in, so nesting reads the same at any value.
+top-level rows, so their hover and active backgrounds still run to the edge of the sidebar. The
+submenu box starts at the same value, so its rail and its labels shift along with the rows
+above and nesting reads the same at any value.
 
 ```scss
 // Line the labels up with a logo sitting 2.5rem from the edge
@@ -152,8 +213,9 @@ along with the text, which is usually not what you want in a full-bleed sidebar.
 
 - **One submenu level.** The spec draws exactly one. Nesting an `ExpandableItem` inside a
   submenu will render, but the indentation is not designed for it.
-- **The active-descendant walk only sees JSX children.** `items.map(...)` is fine, but a
-  wrapper component that renders items internally is invisible to it — those consumers must
-  pass `open` or `defaultOpen` themselves. The stable component has the same limitation.
+- **The submenu walk only sees JSX children.** `items.map(...)` is fine, but a wrapper
+  component that renders items internally is invisible to it — those consumers must pass
+  `open` or `defaultOpen` and `alert` themselves. The stable component has the same
+  limitation.
 - **No environment indicator.** Figma's `.EnvBadge` / `Stroke-Prod` stripe is drawn but hidden
   in every variant, so it is not implemented.

@@ -9,7 +9,10 @@ import {
 
 const defaultElement = 'a';
 
-export type SideNavigationItemOwnProps = SideNavigationItemContentProps & {
+export type SideNavigationItemOwnProps = Omit<
+  SideNavigationItemContentProps,
+  'alertFaded'
+> & {
   /** Marker elementet som gjeldende side */
   active?: boolean;
   /** Deaktiver elementet. Rendres da som en deaktivert knapp */

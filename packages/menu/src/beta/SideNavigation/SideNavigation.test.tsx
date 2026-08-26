@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { act } from 'react';
 import { renderToString } from 'react-dom/server';
@@ -7,6 +7,7 @@ import { hydrateRoot } from 'react-dom/client';
 import '@testing-library/jest-dom';
 
 import { SideNavigation } from '.';
+import { resetMixedIconWarnings } from './warnOnMixedIcons';
 
 describe('SideNavigation (beta)', () => {
   it('renders its items in a list', () => {
@@ -159,6 +160,107 @@ describe('SideNavigation.ExpandableItem (beta)', () => {
     );
   });
 
+  it('marks an expandable item whose submenu holds the active page', async () => {
+    const user = userEvent.setup();
+    render(
+      <SideNavigation>
+        <SideNavigation.ExpandableItem title="Utvidbar">
+          <SideNavigation.Item href="/a" active>
+            Aktiv
+          </SideNavigation.Item>
+        </SideNavigation.ExpandableItem>
+      </SideNavigation>,
+    );
+
+    // Opened by the active descendant, so the label is bold but --open keeps
+    // the background off
+    const trigger = screen.getByRole('button', { name: /Utvidbar/ });
+    expect(trigger).toHaveClass(
+      'eds-side-navigation-beta__click-target--active',
+      'eds-side-navigation-beta__click-target--open',
+    );
+    // The submenu is the one row that is the active page
+    expect(trigger).not.toHaveAttribute('aria-current');
+
+    await user.click(trigger);
+
+    expect(trigger).toHaveClass(
+      'eds-side-navigation-beta__click-target--active',
+    );
+    expect(trigger).not.toHaveClass(
+      'eds-side-navigation-beta__click-target--open',
+    );
+  });
+
+  it('keeps the bold label on an active expandable item while it is open', async () => {
+    const user = userEvent.setup();
+    render(
+      <SideNavigation>
+        <SideNavigation.ExpandableItem title="Utvidbar" active>
+          <SideNavigation.Item href="/a">Underelement</SideNavigation.Item>
+        </SideNavigation.ExpandableItem>
+      </SideNavigation>,
+    );
+
+    const trigger = screen.getByRole('button', { name: /Utvidbar/ });
+    expect(trigger).toHaveClass(
+      'eds-side-navigation-beta__click-target--active',
+    );
+    expect(trigger).not.toHaveClass(
+      'eds-side-navigation-beta__click-target--open',
+    );
+
+    await user.click(trigger);
+
+    // Still the current page, so still bold — --open resets the background the
+    // same class would otherwise draw
+    expect(trigger).toHaveClass(
+      'eds-side-navigation-beta__click-target--active',
+      'eds-side-navigation-beta__click-target--open',
+    );
+    expect(trigger).toHaveAttribute('aria-current', 'page');
+  });
+
+  it('shows the alert dot for a submenu that has one, only while collapsed', async () => {
+    const user = userEvent.setup();
+    render(
+      <SideNavigation>
+        <SideNavigation.ExpandableItem title="Utvidbar">
+          <SideNavigation.Item href="/a">Uten varsel</SideNavigation.Item>
+          <SideNavigation.Item href="/b" alert>
+            Med varsel
+          </SideNavigation.Item>
+        </SideNavigation.ExpandableItem>
+      </SideNavigation>,
+    );
+
+    const trigger = screen.getByRole('button', { name: /Utvidbar/ });
+    expect(
+      within(trigger).getByRole('img', { name: 'Varsel' }),
+    ).toBeInTheDocument();
+
+    await user.click(trigger);
+
+    // Open: the submenu item shows its own dot
+    expect(
+      within(trigger).queryByRole('img', { name: 'Varsel' }),
+    ).not.toBeInTheDocument();
+  });
+
+  it('leaves out the alert dot when no item in the submenu has one', () => {
+    render(
+      <SideNavigation>
+        <SideNavigation.ExpandableItem title="Utvidbar">
+          <SideNavigation.Item href="/a">Uten varsel</SideNavigation.Item>
+        </SideNavigation.ExpandableItem>
+      </SideNavigation>,
+    );
+
+    expect(
+      screen.queryByRole('img', { name: 'Varsel' }),
+    ).not.toBeInTheDocument();
+  });
+
   it('respects the open prop and reports changes through onOpenChange', async () => {
     const user = userEvent.setup();
     const onOpenChange = jest.fn();
@@ -182,30 +284,48 @@ describe('SideNavigation.ExpandableItem (beta)', () => {
     expect(trigger).toHaveAttribute('aria-expanded', 'false');
   });
 
-  it('discards a stored toggle when the active descendant changes', async () => {
-    const user = userEvent.setup();
-    const Menu = ({ activeChild }: { activeChild: boolean }) => (
-      <SideNavigation>
-        <SideNavigation.ExpandableItem title="Utvidbar">
-          <SideNavigation.Item href="/a" active={activeChild}>
-            Underelement
-          </SideNavigation.Item>
-        </SideNavigation.ExpandableItem>
-      </SideNavigation>
-    );
+  const Menu = ({ activeChild }: { activeChild: boolean }) => (
+    <SideNavigation>
+      <SideNavigation.ExpandableItem title="Utvidbar">
+        <SideNavigation.Item href="/a" active={activeChild}>
+          Underelement
+        </SideNavigation.Item>
+      </SideNavigation.ExpandableItem>
+    </SideNavigation>
+  );
 
+  it('opens when the active page moves into the submenu, whatever the user chose', async () => {
+    const user = userEvent.setup();
     const { rerender } = render(<Menu activeChild={false} />);
+
     const trigger = screen.getByRole('button', { name: /Utvidbar/ });
+    await user.click(trigger);
+    await user.click(trigger);
     expect(trigger).toHaveAttribute('aria-expanded', 'false');
 
-    // The user opens the menu manually
-    await user.click(trigger);
-    expect(trigger).toHaveAttribute('aria-expanded', 'true');
-
-    // Navigating away: the user's toggle holds until the derived value itself
-    // actually changes
+    // Navigating into the submenu overrides the user's own toggle
     rerender(<Menu activeChild />);
     expect(trigger).toHaveAttribute('aria-expanded', 'true');
+  });
+
+  it('stays open when the active page leaves the submenu', () => {
+    const { rerender } = render(<Menu activeChild />);
+
+    const trigger = screen.getByRole('button', { name: /Utvidbar/ });
+    expect(trigger).toHaveAttribute('aria-expanded', 'true');
+
+    // Navigating out is no reason to collapse a panel the user is looking at
+    rerender(<Menu activeChild={false} />);
+    expect(trigger).toHaveAttribute('aria-expanded', 'true');
+  });
+
+  it('stays closed when the active page leaves a submenu the user closed', async () => {
+    const user = userEvent.setup();
+    const { rerender } = render(<Menu activeChild />);
+
+    const trigger = screen.getByRole('button', { name: /Utvidbar/ });
+    await user.click(trigger);
+    expect(trigger).toHaveAttribute('aria-expanded', 'false');
 
     rerender(<Menu activeChild={false} />);
     expect(trigger).toHaveAttribute('aria-expanded', 'false');
@@ -251,5 +371,80 @@ describe('SideNavigation (beta) server rendering', () => {
     consoleError.mockRestore();
     expect(errors).toHaveLength(0);
     document.body.removeChild(container);
+  });
+});
+
+describe('the mixed-icon warning', () => {
+  let warn: jest.SpyInstance;
+
+  beforeEach(() => {
+    resetMixedIconWarnings();
+    warn = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+  });
+
+  afterEach(() => warn.mockRestore());
+
+  it('warns when only some items on the top level have an icon', () => {
+    render(
+      <SideNavigation>
+        <SideNavigation.Group title="Gruppe">
+          <SideNavigation.Item href="/a" icon={<span />}>
+            Med ikon
+          </SideNavigation.Item>
+          <SideNavigation.Item href="/b">Uten ikon</SideNavigation.Item>
+        </SideNavigation.Group>
+      </SideNavigation>,
+    );
+
+    expect(warn).toHaveBeenCalledTimes(1);
+    expect(warn.mock.calls[0][0]).toContain('the top level');
+    expect(warn.mock.calls[0][0]).toContain('"Med ikon"');
+  });
+
+  it('warns per submenu, naming the expandable item', () => {
+    render(
+      <SideNavigation>
+        <SideNavigation.ExpandableItem title="Salg" icon={<span />}>
+          <SideNavigation.Item href="/a" icon={<span />}>
+            Med ikon
+          </SideNavigation.Item>
+          <SideNavigation.Item href="/b">Uten ikon</SideNavigation.Item>
+        </SideNavigation.ExpandableItem>
+      </SideNavigation>,
+    );
+
+    expect(warn).toHaveBeenCalledTimes(1);
+    expect(warn.mock.calls[0][0]).toContain('the submenu "Salg"');
+  });
+
+  it('stays quiet when a level is consistent', () => {
+    render(
+      <SideNavigation>
+        <SideNavigation.Item href="/a" icon={<span />}>
+          Med ikon
+        </SideNavigation.Item>
+        <SideNavigation.ExpandableItem title="Salg" icon={<span />}>
+          <SideNavigation.Item href="/b">Uten ikon</SideNavigation.Item>
+          <SideNavigation.Item href="/c">Uten ikon også</SideNavigation.Item>
+        </SideNavigation.ExpandableItem>
+      </SideNavigation>,
+    );
+
+    expect(warn).not.toHaveBeenCalled();
+  });
+
+  it('warns once for the same level, however many renders', () => {
+    const markup = (
+      <SideNavigation>
+        <SideNavigation.Item href="/a" icon={<span />}>
+          Med ikon
+        </SideNavigation.Item>
+        <SideNavigation.Item href="/b">Uten ikon</SideNavigation.Item>
+      </SideNavigation>
+    );
+    const { rerender } = render(markup);
+    rerender(markup);
+
+    expect(warn).toHaveBeenCalledTimes(1);
   });
 });

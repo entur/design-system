@@ -327,6 +327,12 @@
             "rootAlias": "Ebony/50"
           },
           {
+            "name": "Fill/Selected/Default/DarkTint",
+            "value": "#525360",
+            "var": "Ebony/70",
+            "rootAlias": "Ebony/70"
+          },
+          {
             "name": "Fill/Selected/Default/Light",
             "value": "#f6f6f9",
             "var": "Blue/10",
@@ -345,12 +351,6 @@
             "rootAlias": "Blue/20"
           },
           {
-            "name": "Fill/Selected/Default/DarkTint",
-            "value": "#525360",
-            "var": "Ebony/70",
-            "rootAlias": "Ebony/70"
-          },
-          {
             "name": "Fill/Selected/Hover/Contrast",
             "value": "#54568c",
             "var": "Blue/80",
@@ -361,6 +361,12 @@
             "value": "#e5e5e959",
             "var": "Transparent/Ebony-Alpha35",
             "rootAlias": "Transparent/Ebony-Alpha35"
+          },
+          {
+            "name": "Fill/Selected/Hover/DarkTint",
+            "value": "#5e5f6c",
+            "var": "Ebony/65",
+            "rootAlias": "Ebony/65"
           },
           {
             "name": "Fill/Selected/Hover/Light",
@@ -379,12 +385,6 @@
             "value": "#d9dae8",
             "var": "Blue/30",
             "rootAlias": "Blue/30"
-          },
-          {
-            "name": "Fill/Selected/Hover/DarkTint",
-            "value": "#5e5f6c",
-            "var": "Ebony/65",
-            "rootAlias": "Ebony/65"
           },
           {
             "name": "Fill/Success/Accent",
@@ -633,12 +633,6 @@
             "rootAlias": "Blue/80"
           },
           {
-            "name": "Stroke/ContrastAlt-2",
-            "value": "#11143c",
-            "var": "Lavender/100",
-            "rootAlias": "Lavender/100"
-          },
-          {
             "name": "Stroke/Dark",
             "value": "#b3b4bd",
             "var": "Ebony/30",
@@ -721,6 +715,12 @@
             "value": "#8284ab",
             "var": "Blue/60",
             "rootAlias": "Blue/60"
+          },
+          {
+            "name": "Stroke/SubduedAlt",
+            "value": "#393d79",
+            "var": "Blue/90",
+            "rootAlias": "Blue/90"
           },
           {
             "name": "Stroke/Success",
