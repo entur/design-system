@@ -1,0 +1,53 @@
+name: Check Consent Texts
+
+# The documentation site reads its consent banner texts from an undocumented Usercentrics
+# endpoint. If it changes shape or stops answering, the banner quietly stops appearing —
+# safe, but silent. This check is the warning. See tools/check-consent-texts/index.mjs.
+on:
+  # Every morning at 05:00 UTC, before most people start
+  schedule:
+    - cron: '0 5 * * *'
+  # Allow manual triggering
+  workflow_dispatch: {}
+  # Run on PRs that change the check itself
+  pull_request:
+    paths:
+      - 'tools/check-consent-texts/**'
+      - '.github/workflows/check-consent-texts.yml'
+
+concurrency:
+  group: check-consent-texts-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: Check that the consent texts can be read
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout design-system repository
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+
+      # The check only uses Node built-ins, so there is nothing to install.
+      - name: Set up Node
+        uses: actions/setup-node@2028fbc5c25fe9cf00d9f06a71cc4710d4507903 # v6.0.0
+        with:
+          node-version-file: .nvmrc
+
+      - name: Read the consent texts from Usercentrics
+        run: node tools/check-consent-texts/index.mjs
+
+  notify-failure:
+    name: Notify Slack on failure
+    needs: [check]
+    # Only shout when it breaks on its own, not while someone is editing the check
+    if: always() && needs.check.result == 'failure' && github.event_name != 'pull_request'
+    uses: entur/gha-slack/.github/workflows/post.yml@70bb994f2287131d46fbaab133ce2e31c32a07f4 # v3
+    with:
+      channel_id: ${{ vars.SLACK_INTERNAL_CHANNEL_ID }}
+      message: ':warning: Samtykketekstene fra Usercentrics kan ikke leses som forventet, så samtykkebanneret på linje.entur.no vises ikke. Se: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}'
+    secrets: inherit
