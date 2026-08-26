@@ -157,7 +157,7 @@ that class itself, which means the two compose with no configuration.
 ### Colour tokens are local for now
 
 `src/beta/componentVariables.scss` hand-writes the
-`--components-menu-sidenavigation-beta-*` variables against semantic tokens from
+`--components-menu-sidenavigationbeta-*` variables against semantic tokens from
 `@entur/tokens`. Figma has them under `Side Navigation/Standard beta` and
 `Side Navigation/Contrast beta`, but they have not shipped in `@entur/tokens` yet. Delete that
 file and switch to the generated `../componentVariables.scss` once they do.

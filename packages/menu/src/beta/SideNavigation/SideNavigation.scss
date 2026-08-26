@@ -3,20 +3,20 @@
 $eds-side-navigation-beta-inline-padding-default: 1.5rem;
 
 .eds-side-navigation-beta {
-  --eds-side-navigation-beta-fill-default: var(--components-menu-sidenavigation-beta-standard-fill-default);
-  --eds-side-navigation-beta-fill-hover: var(--components-menu-sidenavigation-beta-standard-fill-hover);
-  --eds-side-navigation-beta-fill-click: var(--components-menu-sidenavigation-beta-standard-fill-click);
-  --eds-side-navigation-beta-fill-active: var(--components-menu-sidenavigation-beta-standard-fill-active);
-  --eds-side-navigation-beta-fill-disabled: var(--components-menu-sidenavigation-beta-standard-fill-disabled);
-  --eds-side-navigation-beta-text: var(--components-menu-sidenavigation-beta-standard-text);
-  --eds-side-navigation-beta-text-disabled: var(--components-menu-sidenavigation-beta-standard-text-disabled);
-  --eds-side-navigation-beta-text-group: var(--components-menu-sidenavigation-beta-standard-text-group);
-  --eds-side-navigation-beta-icon: var(--components-menu-sidenavigation-beta-standard-icon);
-  --eds-side-navigation-beta-icon-subdued: var(--components-menu-sidenavigation-beta-standard-icon-subdued);
-  --eds-side-navigation-beta-icon-disabled: var(--components-menu-sidenavigation-beta-standard-icon-disabled);
-  --eds-side-navigation-beta-stroke-active: var(--components-menu-sidenavigation-beta-standard-stroke-active);
-  --eds-side-navigation-beta-stroke-submenu-indicator: var(--components-menu-sidenavigation-beta-standard-stroke-submenu-indicator-default);
-  --eds-side-navigation-beta-alert: var(--components-menu-sidenavigation-beta-standard-alert);
+  --eds-side-navigation-beta-fill-default: var(--components-menu-sidenavigationbeta-standard-fill-default);
+  --eds-side-navigation-beta-fill-hover: var(--components-menu-sidenavigationbeta-standard-fill-hover);
+  --eds-side-navigation-beta-fill-click: var(--components-menu-sidenavigationbeta-standard-fill-click);
+  --eds-side-navigation-beta-fill-active: var(--components-menu-sidenavigationbeta-standard-fill-active);
+  --eds-side-navigation-beta-fill-disabled: var(--components-menu-sidenavigationbeta-standard-fill-disabled);
+  --eds-side-navigation-beta-text: var(--components-menu-sidenavigationbeta-standard-text);
+  --eds-side-navigation-beta-text-disabled: var(--components-menu-sidenavigationbeta-standard-text-disabled);
+  --eds-side-navigation-beta-text-group: var(--components-menu-sidenavigationbeta-standard-text-group);
+  --eds-side-navigation-beta-icon: var(--components-menu-sidenavigationbeta-standard-icon);
+  --eds-side-navigation-beta-icon-subdued: var(--components-menu-sidenavigationbeta-standard-icon-subdued);
+  --eds-side-navigation-beta-icon-disabled: var(--components-menu-sidenavigationbeta-standard-icon-disabled);
+  --eds-side-navigation-beta-stroke-active: var(--components-menu-sidenavigationbeta-standard-stroke-active);
+  --eds-side-navigation-beta-stroke-submenu-indicator: var(--components-menu-sidenavigationbeta-standard-stroke-submenu-indicator-default);
+  --eds-side-navigation-beta-alert: var(--components-menu-sidenavigationbeta-standard-alert);
   --eds-side-navigation-beta-focus: var(--basecolors-stroke-focus-standard);
 
   list-style: none;
@@ -26,20 +26,20 @@ $eds-side-navigation-beta-inline-padding-default: 1.5rem;
 }
 
 :where(.eds-contrast) .eds-side-navigation-beta {
-  --eds-side-navigation-beta-fill-default: var(--components-menu-sidenavigation-beta-contrast-fill-default);
-  --eds-side-navigation-beta-fill-hover: var(--components-menu-sidenavigation-beta-contrast-fill-hover);
-  --eds-side-navigation-beta-fill-click: var(--components-menu-sidenavigation-beta-contrast-fill-click);
-  --eds-side-navigation-beta-fill-active: var(--components-menu-sidenavigation-beta-contrast-fill-active);
-  --eds-side-navigation-beta-fill-disabled: var(--components-menu-sidenavigation-beta-contrast-fill-disabled);
-  --eds-side-navigation-beta-text: var(--components-menu-sidenavigation-beta-contrast-text);
-  --eds-side-navigation-beta-text-disabled: var(--components-menu-sidenavigation-beta-contrast-text-disabled);
-  --eds-side-navigation-beta-text-group: var(--components-menu-sidenavigation-beta-contrast-text-group);
-  --eds-side-navigation-beta-icon: var(--components-menu-sidenavigation-beta-contrast-icon);
-  --eds-side-navigation-beta-icon-subdued: var(--components-menu-sidenavigation-beta-contrast-icon-subdued);
-  --eds-side-navigation-beta-icon-disabled: var(--components-menu-sidenavigation-beta-contrast-icon-disabled);
-  --eds-side-navigation-beta-stroke-active: var(--components-menu-sidenavigation-beta-contrast-stroke-active);
-  --eds-side-navigation-beta-stroke-submenu-indicator: var(--components-menu-sidenavigation-beta-contrast-stroke-submenu-indicator-default);
-  --eds-side-navigation-beta-alert: var(--components-menu-sidenavigation-beta-contrast-alert);
+  --eds-side-navigation-beta-fill-default: var(--components-menu-sidenavigationbeta-contrast-fill-default);
+  --eds-side-navigation-beta-fill-hover: var(--components-menu-sidenavigationbeta-contrast-fill-hover);
+  --eds-side-navigation-beta-fill-click: var(--components-menu-sidenavigationbeta-contrast-fill-click);
+  --eds-side-navigation-beta-fill-active: var(--components-menu-sidenavigationbeta-contrast-fill-active);
+  --eds-side-navigation-beta-fill-disabled: var(--components-menu-sidenavigationbeta-contrast-fill-disabled);
+  --eds-side-navigation-beta-text: var(--components-menu-sidenavigationbeta-contrast-text);
+  --eds-side-navigation-beta-text-disabled: var(--components-menu-sidenavigationbeta-contrast-text-disabled);
+  --eds-side-navigation-beta-text-group: var(--components-menu-sidenavigationbeta-contrast-text-group);
+  --eds-side-navigation-beta-icon: var(--components-menu-sidenavigationbeta-contrast-icon);
+  --eds-side-navigation-beta-icon-subdued: var(--components-menu-sidenavigationbeta-contrast-icon-subdued);
+  --eds-side-navigation-beta-icon-disabled: var(--components-menu-sidenavigationbeta-contrast-icon-disabled);
+  --eds-side-navigation-beta-stroke-active: var(--components-menu-sidenavigationbeta-contrast-stroke-active);
+  --eds-side-navigation-beta-stroke-submenu-indicator: var(--components-menu-sidenavigationbeta-contrast-stroke-submenu-indicator-default);
+  --eds-side-navigation-beta-alert: var(--components-menu-sidenavigationbeta-contrast-alert);
   --eds-side-navigation-beta-focus: var(--basecolors-stroke-focus-contrast);
 }
 
