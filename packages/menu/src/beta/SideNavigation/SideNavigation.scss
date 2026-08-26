@@ -102,6 +102,34 @@ $eds-side-navigation-beta-inline-padding-default: 1.5rem;
   text-decoration: none;
   cursor: pointer;
   transition: box-shadow t.$timings-medium ease-out;
+
+  // Bare [disabled], not :where([disabled]), so a row that is both disabled and
+  // current reads as disabled without depending on rule order.
+  &[disabled] {
+    background-color: var(--eds-side-navigation-beta-fill-disabled);
+    color: var(--eds-side-navigation-beta-text-disabled);
+    cursor: not-allowed;
+  }
+
+  &:not(:where([disabled])):hover {
+    background-color: var(--eds-side-navigation-beta-fill-hover);
+  }
+
+  &:not(:where([disabled])):active {
+    background-color: var(--eds-side-navigation-beta-fill-click);
+  }
+
+  &:not(:where([disabled])):focus-visible {
+    outline: t.$outlines-focus;
+    outline-color: var(--eds-side-navigation-beta-focus);
+
+    // A negative offset keeps the focus ring inside the row, which is full-bleed.
+    outline-offset: -1 * t.$outline-offsets-focus;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
 }
 
 // The rail down the submenu, one segment per row. The label clears the parent's
@@ -119,32 +147,10 @@ $eds-side-navigation-beta-inline-padding-default: 1.5rem;
 }
 
 // An open expandable item keeps only the bold label; the submenu row below it
-// carries the tint and the bar. Precedes the hover and click rules so they win.
+// carries the tint and the bar. Hover and click outrank this on specificity.
 .eds-side-navigation-beta__click-target--active:where(.eds-side-navigation-beta__click-target--open) {
   box-shadow: inset t.$border-widths-medium 0 0 transparent;
   background-color: var(--eds-side-navigation-beta-fill-default);
-}
-
-.eds-side-navigation-beta__click-target:where([disabled]) {
-  background-color: var(--eds-side-navigation-beta-fill-disabled);
-  color: var(--eds-side-navigation-beta-text-disabled);
-  cursor: not-allowed;
-}
-
-.eds-side-navigation-beta__click-target:not(:where([disabled])):hover {
-  background-color: var(--eds-side-navigation-beta-fill-hover);
-}
-
-.eds-side-navigation-beta__click-target:not(:where([disabled])):active {
-  background-color: var(--eds-side-navigation-beta-fill-click);
-}
-
-.eds-side-navigation-beta__click-target:not(:where([disabled])):focus-visible {
-  outline: t.$outlines-focus;
-  outline-color: var(--eds-side-navigation-beta-focus);
-
-  // A negative offset keeps the focus ring inside the row, which is full-bleed.
-  outline-offset: -1 * t.$outline-offsets-focus;
 }
 
 :where(.eds-side-navigation-beta__click-target[disabled]) .eds-side-navigation-beta__icon,
@@ -186,11 +192,11 @@ $eds-side-navigation-beta-inline-padding-default: 1.5rem;
   display: inline-flex;
   flex: none;
   color: var(--eds-side-navigation-beta-icon);
-}
 
-.eds-side-navigation-beta__icon :where(svg) {
-  width: 1rem;
-  height: 1rem;
+  :where(svg) {
+    width: 1rem;
+    height: 1rem;
+  }
 }
 
 .eds-side-navigation-beta__badge {
@@ -208,6 +214,10 @@ $eds-side-navigation-beta-inline-padding-default: 1.5rem;
 
   // visibility transitions in steps, so the dot survives the fade out
   transition: opacity t.$timings-medium ease-out, visibility t.$timings-medium;
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
 }
 
 .eds-side-navigation-beta__alert--faded {
@@ -221,16 +231,12 @@ $eds-side-navigation-beta-inline-padding-default: 1.5rem;
   height: 1rem;
   color: var(--eds-side-navigation-beta-icon-subdued);
   transition: transform t.$timings-medium ease-out;
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
 }
 
 .eds-side-navigation-beta__chevron--open {
   transform: rotate(-180deg);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .eds-side-navigation-beta__click-target,
-  .eds-side-navigation-beta__alert,
-  .eds-side-navigation-beta__chevron {
-    transition: none;
-  }
 }
