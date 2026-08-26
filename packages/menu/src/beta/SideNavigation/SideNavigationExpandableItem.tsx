@@ -11,7 +11,7 @@ import {
 import { warnOnMixedIcons } from './warnOnMixedIcons';
 
 /** Looks for `active` and `alert` items in the submenu. Runs during render, so
- * that the right group is already open in the server HTML. */
+ * the right group is already open in the server HTML. */
 const scanSubmenu = (
   node: React.ReactNode,
 ): { active: boolean; alert: boolean } => {
@@ -99,24 +99,23 @@ export const SideNavigationExpandableItem = React.forwardRef<
       derived: boolean;
     }>({ user: null, derived: derivedOpen });
 
-    // A change in the derived value means we navigated to another page, so the
-    // user's earlier toggle no longer applies. Adjusted during render rather than
-    // in an effect, which would paint the wrong group open for one frame.
+    // Gaining the active page clears the user's toggle; losing it keeps the
+    // panel as it stands. Set during render, not in an effect, which would paint
+    // the wrong group open for one frame.
     if (state.derived !== derivedOpen) {
-      setState({ user: null, derived: derivedOpen });
+      setState({
+        user: derivedOpen ? null : state.user ?? true,
+        derived: derivedOpen,
+      });
     }
 
     const isControlled = open !== undefined;
     const isOpen = isControlled ? open : state.user ?? derivedOpen;
 
-    // Marked as leading to the current page when the item itself is active or
-    // the active page sits inside its submenu. The open state decides how much
-    // of the marking is drawn — see the stylesheet.
+    // How much of the marking this draws depends on isOpen — see the stylesheet
     const showActive = active || submenu.active;
 
-    // The dot stands in for the submenu's own dots while they are hidden, so it
-    // fades out as soon as the submenu can show them itself. It stays in the
-    // row either way, so opening the submenu does not shift the label.
+    // Rendered whether or not it is faded, so isOpen does not shift the label
     const hasAlert = alert || submenu.alert;
 
     const toggle = () => {

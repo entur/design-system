@@ -284,30 +284,48 @@ describe('SideNavigation.ExpandableItem (beta)', () => {
     expect(trigger).toHaveAttribute('aria-expanded', 'false');
   });
 
-  it('discards a stored toggle when the active descendant changes', async () => {
-    const user = userEvent.setup();
-    const Menu = ({ activeChild }: { activeChild: boolean }) => (
-      <SideNavigation>
-        <SideNavigation.ExpandableItem title="Utvidbar">
-          <SideNavigation.Item href="/a" active={activeChild}>
-            Underelement
-          </SideNavigation.Item>
-        </SideNavigation.ExpandableItem>
-      </SideNavigation>
-    );
+  const Menu = ({ activeChild }: { activeChild: boolean }) => (
+    <SideNavigation>
+      <SideNavigation.ExpandableItem title="Utvidbar">
+        <SideNavigation.Item href="/a" active={activeChild}>
+          Underelement
+        </SideNavigation.Item>
+      </SideNavigation.ExpandableItem>
+    </SideNavigation>
+  );
 
+  it('opens when the active page moves into the submenu, whatever the user chose', async () => {
+    const user = userEvent.setup();
     const { rerender } = render(<Menu activeChild={false} />);
+
     const trigger = screen.getByRole('button', { name: /Utvidbar/ });
+    await user.click(trigger);
+    await user.click(trigger);
     expect(trigger).toHaveAttribute('aria-expanded', 'false');
 
-    // The user opens the menu manually
-    await user.click(trigger);
-    expect(trigger).toHaveAttribute('aria-expanded', 'true');
-
-    // Navigating away: the user's toggle holds until the derived value itself
-    // actually changes
+    // Navigating into the submenu overrides the user's own toggle
     rerender(<Menu activeChild />);
     expect(trigger).toHaveAttribute('aria-expanded', 'true');
+  });
+
+  it('stays open when the active page leaves the submenu', () => {
+    const { rerender } = render(<Menu activeChild />);
+
+    const trigger = screen.getByRole('button', { name: /Utvidbar/ });
+    expect(trigger).toHaveAttribute('aria-expanded', 'true');
+
+    // Navigating out is no reason to collapse a panel the user is looking at
+    rerender(<Menu activeChild={false} />);
+    expect(trigger).toHaveAttribute('aria-expanded', 'true');
+  });
+
+  it('stays closed when the active page leaves a submenu the user closed', async () => {
+    const user = userEvent.setup();
+    const { rerender } = render(<Menu activeChild />);
+
+    const trigger = screen.getByRole('button', { name: /Utvidbar/ });
+    await user.click(trigger);
+    expect(trigger).toHaveAttribute('aria-expanded', 'false');
 
     rerender(<Menu activeChild={false} />);
     expect(trigger).toHaveAttribute('aria-expanded', 'false');
