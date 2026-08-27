@@ -2,6 +2,7 @@
 @use '@entur/utils/dist/breakpoints.scss' as breakpoint;
 
 .eds-alert-box {
+  align-items: flex-start;
   border: t.$border-widths-small solid transparent;
   border-radius: t.$border-radiuses-medium;
   display: flex;
@@ -35,6 +36,11 @@
 
   &--small {
     font-size: t.$font-sizes-medium;
+    line-height: t.$line-heights-medium;
+
+    @include breakpoint.for-desktop {
+      line-height: t.$line-heights-large;
+    }
   }
 
   &--fit-content {
@@ -122,11 +128,6 @@
         color: var(--components-alert-alertbox-negative-contrast-icon);
       }
     }
-  }
-
-  &--no-title {
-    display: flex;
-    align-items: center;
   }
 
   &__icon {
