@@ -35,6 +35,11 @@
 
   &--small {
     font-size: t.$font-sizes-medium;
+    line-height: t.$line-heights-medium;
+
+    @include breakpoint.for-desktop {
+      line-height: t.$line-heights-large;
+    }
   }
 
   &--fit-content {
