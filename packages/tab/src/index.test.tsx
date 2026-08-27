@@ -1,5 +1,5 @@
-import { StrictMode, Suspense } from 'react';
-import { fireEvent, render } from '@testing-library/react';
+import { ReactNode, StrictMode, Suspense } from 'react';
+import { act, fireEvent, render } from '@testing-library/react';
 import { Tab, TabList, TabPanel, TabPanels, Tabs } from '.';
 
 function renderTabs(props: { onChange?: (index: number) => void } = {}) {
@@ -556,6 +556,10 @@ describe('explicit index prop', () => {
 });
 
 describe('development warnings', () => {
+  // Stands in for a consumer wrapper such as an ErrorBoundary, which the
+  // parents cannot see inside
+  const Wrapper = ({ children }: { children: ReactNode }) => <>{children}</>;
+
   let consoleError: jest.SpyInstance;
   let consoleWarn: jest.SpyInstance;
 
@@ -691,6 +695,56 @@ describe('development warnings', () => {
         </TabPanels>
       </Tabs>,
     );
+
+    expect(consoleError).toHaveBeenCalledWith(
+      expect.stringContaining(
+        'Several <TabPanel> components got the same index (0)',
+      ),
+    );
+  });
+
+  test('warns about panels that only mount once a Suspense boundary resolves', async () => {
+    let resolvePanels: () => void = () => undefined;
+    let hasLoaded = false;
+    const loading = new Promise<void>(resolve => {
+      resolvePanels = () => {
+        hasLoaded = true;
+        resolve();
+      };
+    });
+    const LoadsLate = ({ label }: { label: string }) => {
+      if (!hasLoaded) throw loading;
+      return <span>{label}</span>;
+    };
+
+    render(
+      <Tabs>
+        <TabList>
+          <Tab>Tab 1</Tab>
+          <Tab>Tab 2</Tab>
+        </TabList>
+        <TabPanels>
+          <Wrapper>
+            <Suspense fallback={<span>Loading</span>}>
+              <TabPanel>
+                <LoadsLate label="Panel 1" />
+              </TabPanel>
+              <TabPanel>
+                <LoadsLate label="Panel 2" />
+              </TabPanel>
+            </Suspense>
+          </Wrapper>
+        </TabPanels>
+      </Tabs>,
+    );
+
+    // The panels have not mounted yet, so there is nothing to warn about
+    expect(consoleError).not.toHaveBeenCalled();
+
+    await act(async () => {
+      resolvePanels();
+      await loading;
+    });
 
     expect(consoleError).toHaveBeenCalledWith(
       expect.stringContaining(
