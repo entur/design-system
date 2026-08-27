@@ -5736,6 +5736,7 @@ __metadata:
     react-dom: "npm:18.3.1"
     remark-gfm: "npm:4.0.1"
     remark-parse: "npm:11.0.0"
+    resolve-url-loader: "npm:5.0.0"
     sass-loader: "npm:16.0.7"
     style-loader: "npm:4.0.0"
     ts-loader: "npm:9.5.4"
