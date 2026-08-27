@@ -62,6 +62,10 @@
   }
 
   &--size-medium {
+    .eds-copyable-text__preformatted-text {
+      border-radius: var(--components-button-radius-medium);
+    }
+
     .eds-copyable-text__button {
       margin: -0.5rem; // remove extra spacing added by icon button padding
       margin-left: t.$space-extra-small;
@@ -74,6 +78,7 @@
     .eds-copyable-text__preformatted-text {
       height: 2rem;
       padding: 0 t.$space-extra-small2 0 t.$space-small;
+      border-radius: var(--components-button-radius-small);
     }
 
     .eds-copyable-text__button {
