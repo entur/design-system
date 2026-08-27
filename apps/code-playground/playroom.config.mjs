@@ -49,8 +49,9 @@ export default {
                 'style-loader',
                 {
                   loader: 'css-loader',
-                  options: { importLoaders: 1 },
+                  options: { importLoaders: 2 },
                 },
+                'resolve-url-loader',
                 {
                   loader: 'sass-loader',
                   options: {
