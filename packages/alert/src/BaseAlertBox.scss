@@ -2,6 +2,7 @@
 @use '@entur/utils/dist/breakpoints.scss' as breakpoint;
 
 .eds-alert-box {
+  align-items: flex-start;
   border: t.$border-widths-small solid transparent;
   border-radius: t.$border-radiuses-medium;
   display: flex;
