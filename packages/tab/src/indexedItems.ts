@@ -1,6 +1,25 @@
-import React, { useCallback, useContext, useEffect, useRef } from 'react';
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useReducer,
+  useRef,
+} from 'react';
 
 const isDev = () => process.env.NODE_ENV !== 'production';
+
+/**
+ * A tab or a panel behind a Suspense boundary mounts after its parent, and only
+ * its own subtree renders again once loading finishes. This re-renders the
+ * parent too, so the checks below also see the children that arrived late.
+ */
+function useRecheck() {
+  const [, bump] = useReducer((count: number) => count + 1, 0);
+
+  return useCallback(() => {
+    if (isDev()) bump();
+  }, []);
+}
 
 export type ItemKind = 'tab' | 'panel';
 
@@ -84,16 +103,21 @@ export function useIndexedChildren(
   const { selectedIndex, keepMounted = false, onIndices } = options;
   const counts = useRef(new Map<number, number>());
   const warn = useWarnOnce();
+  const recheck = useRecheck();
 
-  const register = useCallback((index: number) => {
-    counts.current.set(index, (counts.current.get(index) ?? 0) + 1);
+  const register = useCallback(
+    (index: number) => {
+      counts.current.set(index, (counts.current.get(index) ?? 0) + 1);
+      recheck();
 
-    return () => {
-      const left = (counts.current.get(index) ?? 0) - 1;
-      if (left > 0) counts.current.set(index, left);
-      else counts.current.delete(index);
-    };
-  }, []);
+      return () => {
+        const left = (counts.current.get(index) ?? 0) - 1;
+        if (left > 0) counts.current.set(index, left);
+        else counts.current.delete(index);
+      };
+    },
+    [recheck],
+  );
 
   // Runs after the children have registered themselves
   useEffect(() => {
@@ -142,6 +166,10 @@ export function useIndexedChildren(
   return walk(children);
 }
 
+function isSameIndices(a: number[] | undefined, b: number[]) {
+  return a?.length === b.length && a.every(index => b.includes(index));
+}
+
 function sharedIndexMessage(kind: ItemKind, shared: number[]) {
   const { child, parent, self, sibling } = NAMES[kind];
 
@@ -172,10 +200,17 @@ If the ${self} loads lazily, it sorts itself out once loading finishes.`;
 export function useUnreachablePanelWarning() {
   const seen = useRef<{ tab?: number[]; panel?: number[] }>({});
   const warn = useWarnOnce();
+  const recheck = useRecheck();
 
-  const reportIndices = useCallback((kind: ItemKind, indices: number[]) => {
-    seen.current[kind] = indices;
-  }, []);
+  const reportIndices = useCallback(
+    (kind: ItemKind, indices: number[]) => {
+      const previous = seen.current[kind];
+      seen.current[kind] = indices;
+      // Guards against a render loop: the parents report on every render
+      if (!isSameIndices(previous, indices)) recheck();
+    },
+    [recheck],
+  );
 
   useEffect(() => {
     const { tab, panel } = seen.current;
