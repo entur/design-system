@@ -91,6 +91,21 @@ Prettier: single quotes, trailing commas, semicolons, `arrowParens: avoid`, 80 c
 - **Keep the register neutral and technical.** No figurative or conversational phrasing
 - Never restate what the code does, or describe how it used to work
 
+## Norwegian Text
+
+Norwegian text — docs, JSDoc, error messages, PR descriptions, Jira issues — is Bokmål. Never Nynorsk.
+
+Do not translate technical terms. Keep the English word when it is:
+
+- the name of a prop, function, keyword, type, HTML element, or CSS feature (`children`, `ref`, `disabled`, `useEffect`, `aria-live`, `cascade layer`)
+- a framework or platform concept a Norwegian developer would say in English anyway (`parent`, `state`, `hook`, `callback`, `default`, `token`, `wrapper`, `live region`)
+
+Translate only ordinary words: component → komponent, page → side, button → knapp, width → bredde.
+
+Inflect around the English term instead of Norwegianising it: `props`-ene, `prop`-en, `children`-en, `items`-prop-en. Never `proppene`, never a made-up Norwegian noun for something the API calls something else — the reader has to map the word back to the code.
+
+Rule of thumb: if a Norwegian developer would say the English word out loud, keep the English word.
+
 ## Commit Conventions
 
 Uses conventional-commits enforced by Commitizen + commitlint (Husky lints on push).

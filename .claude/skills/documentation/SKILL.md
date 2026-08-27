@@ -53,6 +53,27 @@ Read [references/sanity-patching.md](references/sanity-patching.md) for how to u
 
 Read [references/sanity-schema.md](references/sanity-schema.md) for document structure, schema types, and the componentDoc tree.
 
+## Writing Norwegian docs
+
+All documentation prose is Bokmål, never Nynorsk.
+
+**Do not translate technical terms.** Keep the English word when it is:
+
+- the name of a prop, function, keyword, type, HTML element, or CSS feature — `children`, `ref`, `disabled`, `useEffect`, `aria-live`, `role="status"`, `cascade layer`
+- a framework or platform concept a Norwegian developer would say in English anyway — `parent`, `state`, `hook`, `callback`, `default`, `token`, `wrapper`, `live region`
+
+Translate only ordinary words: component → komponent, page → side, button → knapp, width → bredde.
+
+Inflect around the English term rather than Norwegianising it: `props`-ene, `prop`-en, `children`-en, `items`-prop-en. Never `proppene`, and never invent a Norwegian noun for something the API calls something else — the reader has to map the word back to the code.
+
+Rule of thumb: if a Norwegian developer would say the English word out loud, keep the English word.
+
+Other prose rules:
+
+- No literally translated English idioms. Describe the goal plainly instead.
+- Prefer a comma or full stop over a dash when joining clauses. When a dash is right, use an en-dash (–), never an em-dash.
+- Keep it generic — never bake one team's component or domain names into the docs.
+
 ## Common tasks
 
 ### Update component docs after a release

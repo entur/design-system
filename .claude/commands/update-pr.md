@@ -48,6 +48,14 @@ Focus on factual accuracy. Don't rewrite style or restructure unless something i
 
 Write the corrected body. Keep everything that's accurate. Fix only what's wrong or missing. Preserve the Norwegian language and the PR template section structure.
 
+Norwegian wording rules:
+
+- Bokmål, never Nynorsk.
+- Do not translate technical terms. Prop, function, keyword, type, HTML element and CSS feature names stay in English (`children`, `ref`, `disabled`, `useEffect`, `aria-live`), as do framework concepts a Norwegian developer would say in English anyway (`parent`, `state`, `hook`, `callback`, `default`, `token`, `wrapper`).
+- Translate only ordinary words: component → komponent, page → side, button → knapp.
+- Inflect around the English term: `props`-ene, `prop`-en, `children`-en. Never `proppene`, and never invent a Norwegian noun for something the code calls something else.
+- Prefer a comma or full stop over a dash when joining clauses. When a dash is right, use an en-dash (–), never an em-dash.
+
 If a section is genuinely not applicable (e.g. no screenshots for a tooling change), keep it with the existing N/A note or omit gracefully — don't add noise.
 
 ## Step 5: Apply via REST API
