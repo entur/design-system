@@ -89,7 +89,6 @@ export const BaseAlertBox = ({
         `eds-alert-box--${variant}`,
         {
           'eds-alert-box--toast--exit-animation': toastIsBeingRemoved,
-          'eds-alert-box--no-title': !title,
         },
         className,
       )}
