@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.1](https://github.com/entur/design-system/compare/@entur/tab@0.9.0...@entur/tab@0.9.1) (2026-08-28)
+
+### Bug Fixes
+
+- **tab:** warn about mismatched indices when panels load lazily ([b8f354c](https://github.com/entur/design-system/commit/b8f354c79e45bd9a6bcb665a0e08e506fa4768a3))
+
 # [0.9.0](https://github.com/entur/design-system/compare/@entur/tab@0.8.2...@entur/tab@0.9.0) (2026-08-20)
 
 ### Features

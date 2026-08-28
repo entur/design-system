@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.2.0](https://github.com/entur/design-system/compare/@entur/menu@7.1.1...@entur/menu@7.2.0) (2026-08-28)
+
+### Bug Fixes
+
+- **menu/beta/side navigation:** correct spacing and bar width to match Figma ([6faafc0](https://github.com/entur/design-system/commit/6faafc096f71d689e52e92d44a530e07cdb648b9))
+- **menu/beta/side navigation:** highlight only the row for the current page ([a80af1d](https://github.com/entur/design-system/commit/a80af1da2bfc9dfea1cbc630fd7244626fbc263c))
+- **menu/beta/side navigation:** keep a submenu open when the active page leaves ([30d0a04](https://github.com/entur/design-system/commit/30d0a045db9dad721f7caf4bf913e350d416ac71))
+- **menu/beta/side navigation:** update the colours of the row for the current page ([6bfca42](https://github.com/entur/design-system/commit/6bfca428d8c9d58d8edd1b617a51063551b73622))
+
+### Features
+
+- **menu/beta/side navigation:** cap the width at 20rem ([f49ebf0](https://github.com/entur/design-system/commit/f49ebf0bad8568aa32304c872aa96f01903da826))
+- **menu/beta/side navigation:** fade the accent bar and the alert dot ([4d022c5](https://github.com/entur/design-system/commit/4d022c50be53c23ae1a83209ea6993631ac1f8b6))
+- **menu/beta/side navigation:** let an ExpandableItem show alerts from its submenu ([c130b06](https://github.com/entur/design-system/commit/c130b068e44925a7981050104c64be3fededeb6d))
+- **menu/beta/side navigation:** show the submenu hierarchy with an indicator ([8e5859f](https://github.com/entur/design-system/commit/8e5859f0d8029368d3ba81d0cbfee0aa4b76b5bd))
+- **menu/beta/side navigation:** warn when icons are mixed on one level ([209a64b](https://github.com/entur/design-system/commit/209a64bb295bfcdfd8160decbe7ae28c701118d8))
+
 ## [7.1.1](https://github.com/entur/design-system/compare/@entur/menu@7.1.0...@entur/menu@7.1.1) (2026-08-20)
 
 ### Bug Fixes

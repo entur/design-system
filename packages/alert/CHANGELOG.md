@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.21.0](https://github.com/entur/design-system/compare/@entur/alert@0.20.3...@entur/alert@0.21.0) (2026-08-28)
+
+### Bug Fixes
+
+- **alert/copyable text:** drop the wrapper's empty aria-label and tabindex ([0dae9f8](https://github.com/entur/design-system/commit/0dae9f8493d01f9c9398a71567ab78b05150fa58))
+- **alert:** add missing line-height to small alert variant ([2309a0d](https://github.com/entur/design-system/commit/2309a0d3753ec7b1ab405b3f0e82b27295c0eac7))
+- **alert:** align icon with first line in alerts without a title ([bf8e421](https://github.com/entur/design-system/commit/bf8e421060613594cc3d0fe984a7b1efba71b1fe))
+- **alert:** make icon top-alignment explicit ([aa4008b](https://github.com/entur/design-system/commit/aa4008b07fb241a4b52983823d696df793e3d3bc))
+
+### Features
+
+- **alert/copyable text:** add a size prop with small and medium ([2b6492d](https://github.com/entur/design-system/commit/2b6492d204133cd1793c1651880049a3b634d0c9))
+- **alert/copyable text:** take the corner radius from Button ([cde257e](https://github.com/entur/design-system/commit/cde257ea4725462d33bd946cb3ca91b0632f9261))
+
 ## [0.20.3](https://github.com/entur/design-system/compare/@entur/alert@0.20.2...@entur/alert@0.20.3) (2026-08-20)
 
 **Note:** Version bump only for package @entur/alert

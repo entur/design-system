@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.1.0](https://github.com/entur/design-system/compare/@entur/tokens@4.0.1...@entur/tokens@4.1.0) (2026-08-28)
+
+### Features
+
+- **tokens:** add the semantic token Stroke/SubduedAlt ([b81039b](https://github.com/entur/design-system/commit/b81039bdd5ad69a344dc27f654bf6643f63b0ac1))
+
 ## [4.0.1](https://github.com/entur/design-system/compare/@entur/tokens@4.0.0...@entur/tokens@4.0.1) (2026-08-06)
 
 **Note:** Version bump only for package @entur/tokens

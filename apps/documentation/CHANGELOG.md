@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.22.0](https://github.com/entur/design-system/compare/@entur/documentation@6.21.0...@entur/documentation@6.22.0) (2026-08-28)
+
+### Bug Fixes
+
+- **website:** handle failures when recording consent ([131b866](https://github.com/entur/design-system/commit/131b8660e7775fdf68b1cb5c1a623ab546f94171))
+- **website:** hide the consent controls when they cannot do anything ([5652af6](https://github.com/entur/design-system/commit/5652af6c04849b840f090f2f785773ec5890980c))
+- **website:** let links point straight at a section of the privacy page ([52dbbe3](https://github.com/entur/design-system/commit/52dbbe3172fa76e15a8b534738e6be4505aa8ada))
+- **website:** navigate to the privacy page without a full reload ([3ad54aa](https://github.com/entur/design-system/commit/3ad54aa2d7b744c7ce48cd0ccbd050c193190b67))
+- **website:** put the consent banner above the navigation on mobile ([e757093](https://github.com/entur/design-system/commit/e7570935a7baa48c93c05c0888b6e9f09a4e0922))
+- **website:** style links in consent texts like the rest of the site ([926334b](https://github.com/entur/design-system/commit/926334b7f2c0abb75cb4fcfbf7485b0dbd3bcd2a))
+- **website:** tell readers what we store when the consent solution is down ([36f1fbd](https://github.com/entur/design-system/commit/36f1fbd161a37451fc933e872a7402b93adeeb22))
+
+### Features
+
+- **website:** add a privacy page showing what we store ([4707f63](https://github.com/entur/design-system/commit/4707f6347a42f6be0b2e499045a06840a0fa3bf9))
+- **website:** make the privacy page an ordinary documentation page ([6386329](https://github.com/entur/design-system/commit/63863290853d67d0598d1bf70d6907e5af3f1769))
+- **website:** replace the embedded cookie banner with our own ([8bc6866](https://github.com/entur/design-system/commit/8bc6866fdadce4a077ad79ebf75aea652569d1f8))
+- **website:** show the short banner message below the consent buttons ([569a22f](https://github.com/entur/design-system/commit/569a22fd6cb172f25e8f00d1524bb8944dbb605d))
+
 # [6.21.0](https://github.com/entur/design-system/compare/@entur/documentation@6.20.5...@entur/documentation@6.21.0) (2026-08-20)
 
 ### Bug Fixes
