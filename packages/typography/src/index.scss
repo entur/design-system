@@ -206,6 +206,7 @@
   }
 
   &:focus-visible {
+    border-radius: t.$border-radiuses-medium;
     outline: t.$outlines-focus;
     outline-color: var(--basecolors-stroke-focus-standard);
     outline-offset: t.$outline-offsets-focus;
