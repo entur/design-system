@@ -10,19 +10,43 @@ order: 13
 import { ExternalIcon } from '@entur/icons';
 import IllustrationList from '@components/Media/IllustrationList';
 import { SEO } from '@components/seo/SEO';
+import { graphql } from 'gatsby';
+import './illustrasjoner.scss';
 
 export const Head = ( props ) => {
   return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
 }
+
+export const query = graphql`
+  query {
+    files: allFile(
+      filter: {
+        sourceInstanceName: { eq: "downloads" }
+        relativePath: { glob: "illustrations/**" }
+        extension: { eq: "svg" }
+      }
+    ) {
+    images: nodes {
+      name
+      publicURL
+      relativePath
+    }
+    }
+  }
+`;
 
 
 Motivene i illustrasjonene viser ulike situasjoner og møter i trafikkbildet som er en representasjon av Enturs rolle i kollektiv-Norge. Illustrasjonsstilen 
 tar utgangspunkt i norsk natur og landskap, og tar opp elementer fra Entur sin visuelle profil for å skape gjenkjennelse og en rød tråd i identiteten. 
 Illustrasjonenes fremste oppgave er å myke opp og menneskeliggjøre uttrykket i våre digitale flater.
 
-Ved behov for andre formater eller utsnitt av materiale som ligger i illustrasjonsbiblioteket, kontakt oss på Slack i [#talk-designsystem](https://entur.slack.com/archives/C899QSPB7). 
-Vi jobber også med å utvikle animasjoner av noen av motivene, etter smidige prinsipper, litt etter litt. Det er foreløpig ikke avklart om de animerte 
-illustrasjonene skal legges ut her eller et annet sted.
+<Tabs style={{ marginTop: "4rem" }}>
+<TabList>
+  <Tab>Illustrasjoner</Tab>
+  <Tab>Retningslinjer</Tab>
+</TabList>
+<TabPanels>
+<TabPanel>
 
 ## Filformater
 Våre kvadratiske illustrasjoner er tilgjengelig i pdf-, png- og svg-format. Illustrasjoner i landskap er tilgjengelige i png-format. Ved behov for andre formater eller utsnitt av materiale som ligger i illustrasjonsbiblioteket, kontakt oss på Slack i [#talk-designsystem](https://entur.slack.com/archives/C899QSPB7).
@@ -77,3 +101,127 @@ bør de settes i et fler-kolonners grid.
 
 ### Scenarioer
 <IllustrationList categoryFilter="scenario" disableBackgroundSwitch />
+
+</TabPanel>
+<TabPanel>
+
+## Generelle retningslinjer
+
+Ved behov for andre formater eller utsnitt av materiale som ligger i illustrasjonsbiblioteket, kontakt oss på Slack i [#talk-designsystem](https://entur.slack.com/archives/C899QSPB7). 
+Vi jobber også med å utvikle animasjoner av noen av motivene, etter smidige prinsipper, litt etter litt. Det er foreløpig ikke avklart om de animerte 
+illustrasjonene skal legges ut her eller et annet sted.
+
+De kvadratiske motivene er designet for å hyggeliggjøre meldinger som kan være kjedelig eller irriterende for brukeren å få. 
+Det skal ikke brukes mer enn tre slike illustrasjoner på én sidevisning, og i tilfeller hvor det brukes mer enn én illustrasjon på en side 
+bør de settes i et fler-kolonners grid.
+
+## Statusbeskjeder
+
+Statusbeskjeder informerer brukeren når noe går galt, eller når det ikke finnes innhold å vise. De består ofte av en illustrasjon, en kort forklarende tekst og eventuelt en handlingsmulighet.
+
+<BannerAlertBox title="Informasjon" variant="information">Denne siden er under arbeid. Det som står her er det Entur appen bruker. Om du har innspill til mer standardisert innhold her, ta kontakt med oss!</BannerAlertBox>
+
+Her presenteres illustrasjonene som brukes for ulike statusbeskjeder. Illustrasjonene finnes også som animasjoner. Disse ligger i Google Drive i mappen `DesignGuild/Illustration Library/Animations/Animasjoner Entur`.
+
+<GridContainer spacing="medium">
+  <GridItem small={12} medium={4} className="statusbeskjed-grid">
+    <ImageDisplay
+      imgSource={props.data.files.images.find(image => image.name === "Sheep")?.publicURL}
+      alt="sau"
+      preset="full-width-image"
+    />
+    Ingen treff eller systemfeil
+  </GridItem>
+  <GridItem small={12} medium={4} className="statusbeskjed-grid">
+    <ImageDisplay
+      imgSource={props.data.files.images.find(image => image.name === "Musk")?.publicURL}
+      alt="moskus"
+      preset="full-width-image"
+    />
+    Fant ikke siden (404) / Ingen tilgang
+  </GridItem>
+  <GridItem small={12} medium={4} className="statusbeskjed-grid">
+    <ImageDisplay
+      imgSource={props.data.files.images.find(image => image.name === "Beaver")?.publicURL}
+      alt="bever"
+      preset="full-width-image"
+    />
+    Ingen nett
+  </GridItem>
+  <GridItem small={12} medium={4} className="statusbeskjed-grid">
+    <ImageDisplay
+      imgSource={props.data.files.images.find(image => image.name === "Squirrel")?.publicURL}
+      alt="ekorn"
+      preset="full-width-image"
+    />
+    Pålogging og profil
+  </GridItem>
+  <GridItem small={12} medium={4} className="statusbeskjed-grid">
+    <ImageDisplay
+      imgSource={props.data.files.images.find(image => image.name === "Hedgehog")?.publicURL}
+      alt="pinnsvin"
+      preset="full-width-image"
+    />
+    Sesjon utløpt
+  </GridItem>
+  <GridItem small={12} medium={4} className="statusbeskjed-grid">
+    <ImageDisplay
+      imgSource={props.data.files.images.find(image => image.name === "Leaves")?.publicURL}
+      alt="blader"
+      preset="full-width-image"
+    />
+    Innhold mangler
+  </GridItem>
+  <GridItem small={12} medium={4} className="statusbeskjed-grid">
+    <ImageDisplay
+      imgSource={props.data.files.images.find(image => image.name === "Rabbit")?.publicURL}
+      alt="kaniner"
+      preset="full-width-image"
+    />
+    Innhold mangler
+  </GridItem>
+  <GridItem small={12} medium={4} className="statusbeskjed-grid">
+    <ImageDisplay
+      imgSource={props.data.files.images.find(image => image.name === "Ducks")?.publicURL}
+      alt="ender som går over et gangfelt"
+      preset="full-width-image"
+    />
+    Betaling pågår
+  </GridItem>
+  <GridItem small={12} medium={4} className="statusbeskjed-grid">
+    <ImageDisplay
+      imgSource={props.data.files.images.find(image => image.name === "Doves")?.publicURL}
+      alt="duer"
+      preset="full-width-image"
+    />
+    Leter etter plass
+  </GridItem>
+  <GridItem small={12} medium={4} className="statusbeskjed-grid">
+    <ImageDisplay
+      imgSource={props.data.files.images.find(image => image.name === "Goat")?.publicURL}
+      alt="geit"
+      preset="full-width-image"
+    />
+    Behandler refusjon
+  </GridItem>
+  <GridItem small={12} medium={4} className="statusbeskjed-grid">
+    <ImageDisplay
+      imgSource={props.data.files.images.find(image => image.name === "Kitty")?.publicURL}
+      alt="katt med tom matskål"
+      preset="full-width-image"
+    />
+    Personvern og cookies
+  </GridItem>
+  <GridItem small={12} medium={4} className="statusbeskjed-grid">
+    <ImageDisplay
+      imgSource={props.data.files.images.find(image => image.name === "Mouse")?.publicURL}
+      alt="mus som spiser cookie"
+      preset="full-width-image"
+    />
+    Personvern og cookies
+  </GridItem>
+</GridContainer>
+
+</TabPanel>
+</TabPanels>
+</Tabs>

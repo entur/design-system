@@ -145,7 +145,7 @@ const TabsSection = React.memo(function TabsSection({
     <>
       {shouldRenderAsTabs ? (
         <Tabs index={activeIndex} onChange={setActiveIndex}>
-          <TabList width="fluid">
+          <TabList>
             {tabs.map(tab => (
               <Tab key={`${tab.title}`}>{tab.title}</Tab>
             ))}
