@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 import copy from 'copy-text-to-clipboard';
 
 import { IconButton } from '@entur/button';
@@ -25,7 +26,9 @@ export type CopyableTextProps = {
    * @default `${textToCopy} ble kopiert til utklippstavlen.`
    */
   successMessage?: string;
-} & Omit<React.ButtonHTMLAttributes<HTMLDivElement>, 'children'>;
+  /** Størrelse på CopyableText */
+  size?: 'small' | 'medium';
+} & Omit<React.HTMLAttributes<HTMLDivElement>, 'children'>;
 
 export const CopyableText = ({
   children,
@@ -37,6 +40,7 @@ export const CopyableText = ({
   'aria-label': ariaLabel = `Kopier ${
     textToCopy ?? children
   } til utklippstavlen`,
+  size = 'medium',
   ...rest
 }: CopyableTextProps): JSX.Element => {
   const { addToast } = useToast();
@@ -54,12 +58,12 @@ export const CopyableText = ({
   };
   return (
     <div
-      className={'eds-copyable-text ' + className}
-      style={{ ...rest.style }}
-      type="button"
+      className={classNames(
+        'eds-copyable-text',
+        className,
+        `eds-copyable-text--size-${size}`,
+      )}
       onClick={handleClick}
-      tabIndex={-1}
-      aria-label=""
       {...rest}
     >
       <PreformattedText className="eds-copyable-text__preformatted-text">
@@ -68,6 +72,7 @@ export const CopyableText = ({
           className="eds-copyable-text__button"
           aria-label={ariaLabel}
           type="button"
+          size={size}
           ref={buttonRef}
         >
           <CopyIcon className={'eds-copyable-text__button__icon'} />

@@ -1,7 +1,6 @@
 @use '@entur/tokens/dist/styles.scss' as t;
 
-.eds-copyable-text,
-.eds-contrast .eds-copyable-text {
+.eds-copyable-text {
   appearance: none;
   background: none;
   border: 0;
@@ -26,7 +25,7 @@
     &:hover {
       border-color: var(--components-alert-copyabletext-standard-border-interactive);
 
-      .eds-contrast & {
+      :where(.eds-contrast) & {
         border-color: var(--components-alert-copyabletext-contrast-border-interactive);
       }
     }
@@ -38,16 +37,15 @@
     text-wrap: nowrap;
   }
 
-  & &__button {
-    color: var(--components-alert-copyabletext-standard-text);
-    margin: -0.5rem; // remove extra spacing added by icon button padding
-    margin-left: 0.5rem;
-    width: fit-content;
-    height: fit-content;
+  &__button {
+    color: var(--components-alert-copyabletext-standard-icon);
+    flex-shrink: 0; // long text must not squash the fixed-size icon button
 
-    &,
-    .eds-contrast & {
-      color: var(--components-alert-copyabletext-standard-text);
+    // the box keeps its light fill on contrast, so icon, hover fill and focus ring
+    // stay dark-on-light instead of the light-on-dark values .eds-contrast
+    // .eds-icon-button applies
+    .eds-contrast .eds-copyable-text & {
+      color: var(--components-alert-copyabletext-contrast-icon);
 
       &:hover {
         background: var(--components-button-iconbutton-standard-hover);
@@ -58,14 +56,33 @@
       }
 
       &:focus-visible {
-        outline: t.$outlines-focus;
         outline-color: var(--basecolors-stroke-focus-standard);
-        outline-offset: t.$outline-offsets-focus;
-
-        .eds-contrast & {
-          outline-color: var(--basecolors-stroke-focus-standard);
-        }
       }
+    }
+  }
+
+  &--size-medium {
+    .eds-copyable-text__preformatted-text {
+      border-radius: var(--components-button-radius-medium);
+    }
+
+    .eds-copyable-text__button {
+      margin: -0.5rem; // remove extra spacing added by icon button padding
+      margin-left: t.$space-extra-small;
+      width: fit-content;
+      height: fit-content;
+    }
+  }
+
+  &--size-small {
+    .eds-copyable-text__preformatted-text {
+      height: 2rem;
+      padding: 0 t.$space-extra-small2 0 t.$space-small;
+      border-radius: var(--components-button-radius-small);
+    }
+
+    .eds-copyable-text__button {
+      margin-left: t.$space-extra-small;
     }
   }
 }
