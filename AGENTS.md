@@ -124,6 +124,8 @@ optional breaking changes
 - **scope**: `package/component` format in lowercase. For components inside a `beta/` directory, use `package/beta/component` (e.g. `layout/beta/sidebar`). Single component: `travel/travel tag`. Beta component: `layout/beta/sidebar`. Entire package: `travel`. Entire repo: `root`. Documentation site: `website`. Skills: `skills`. Multiple: `travel/travel tag, travel/travel header`.
 - **short description**: one sentence, imperative form (e.g. "add new variant", not "added new variant").
 - **Descriptions for `feat` and `fix`**: These end up in the changelog and are read by consumers. Keep them **consumer-focused** — explain what the change means for them and how to use it. Avoid internal technical details.
+- **The longer description also lands in `CHANGELOG.md`**, indented under the entry, so write it for consumers too. Metadata trailers (`AI-assistant`, `Co-authored-by`, `Signed-off-by`, …) are stripped out.
+- **Scopes with a `beta` segment get their own changelog sections** ("Features (beta)", "Bug Fixes (beta)", …), placed after the stable ones, so getting the scope right keeps beta changes out of the stable list.
 
 Branch naming: start with Jira issue ID, e.g. `ETU-38373-branch-name`.
 
