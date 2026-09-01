@@ -1,12 +1,71 @@
-@use '@entur/tokens/dist/styles.scss' as tokens;
+@use '@entur/tokens/dist/styles.scss' as t;
+@use '~@entur/utils/dist/breakpoints.scss' as *;
 
-.changelog-link {
-  cursor: pointer;
-  font-family: inherit;
-  border: none;
-  background: none;
-  background-image: linear-gradient(120deg, var(--primary-text-color), var(--primary-text-color));
-  background-repeat: no-repeat;
-  background-size: 100% 0.125rem;
-  background-position: 0 100%;
+.changelog-overview {
+  // Keeps the package list off the heading that follows it on the page.
+  margin-bottom: t.$space-extra-large;
+
+  // Multi-column, so the alphabetical order reads down each column.
+  &__list {
+    column-count: 1;
+    column-gap: t.$space-medium;
+    list-style: none;
+    margin: t.$space-none;
+    padding: t.$space-none;
+
+    @include for-desktop {
+      column-count: 3;
+    }
+  }
+
+  &__item {
+    break-inside: avoid;
+    // Columns ignore the margin of a first child, padding keeps the rhythm.
+    padding-bottom: t.$space-medium;
+  }
+}
+
+.changelog-card {
+  display: block;
+  border: t.$border-widths-small solid var(--basecolors-stroke-subdued);
+  border-radius: t.$border-radiuses-large;
+  padding: t.$space-medium;
+  text-decoration: none;
+  color: inherit;
+  background: var(--basecolors-frame-default);
+  transition: background 0.1s ease-in-out, border-color 0.1s ease-in-out;
+
+  &:hover {
+    background: var(--basecolors-frame-tint);
+    border-color: var(--basecolors-stroke-default);
+
+    .changelog-card__arrow {
+      transform: translateX(t.$space-extra-small2);
+    }
+  }
+
+  &:focus-visible {
+    outline: t.$border-widths-medium solid var(--basecolors-stroke-focus-standard);
+    outline-offset: t.$space-extra-small2;
+  }
+
+  &__title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: t.$space-extra-small;
+  }
+
+  &__arrow {
+    color: var(--basecolors-text-accent);
+    transition: transform 0.1s ease-in-out;
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    gap: t.$space-extra-small;
+    margin-top: t.$space-extra-small;
+    color: var(--basecolors-text-subdued);
+  }
 }

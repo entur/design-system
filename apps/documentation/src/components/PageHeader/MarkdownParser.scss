@@ -1,0 +1,44 @@
+@use '@entur/tokens/dist/styles.scss' as t;
+
+.markdown-parser {
+  &__section {
+    display: flex;
+    align-items: center;
+    gap: t.$space-extra-small;
+    margin: t.$space-large t.$space-none t.$space-none;
+
+    // Keeps the beta badge on the same line as the section name. Tag hardcodes
+    // its light colours, so the tokens it has for the job are set here instead
+    // — without them the badge inside it themes for dark mode and the tag
+    // around it does not.
+    .eds-tag {
+      display: inline-flex;
+      align-items: center;
+      background: var(--components-layout-badge-tag-standard-fill);
+      color: var(--components-layout-badge-tag-standard-text);
+    }
+
+    .eds-badge {
+      margin-left: t.$space-extra-small;
+    }
+  }
+
+  // The longer description from the commit message, shown under the entry.
+  // Nested to win over the block margins the typography components set.
+  .markdown-parser__description {
+    color: var(--basecolors-text-subdued);
+    // Sets the entry apart from the next one in the list.
+    margin-bottom: t.$space-small;
+
+    > * {
+      font-size: t.$font-sizes-medium;
+      line-height: t.$line-heights-large;
+      margin-top: t.$space-extra-small;
+      margin-bottom: t.$space-extra-small;
+    }
+
+    > :last-child {
+      margin-bottom: t.$space-none;
+    }
+  }
+}

@@ -111,23 +111,10 @@ exports.onPreBuild = async () => {
   if (propGenerationPromise) await propGenerationPromise;
 };
 
-// Commit subjects may contain bare tags like <dialog>, which MDX parses as JSX
-// and fails on. Escape < outside code fences and inline code.
-const escapeMdxTags = markdown =>
-  markdown
-    .split(/(^```[\s\S]*?^```$)/m)
-    .map((block, index) =>
-      index % 2 === 1
-        ? block
-        : block
-            .split(/(`[^`\n]*`)/)
-            .map((part, i) => (i % 2 === 1 ? part : part.replace(/</g, '&lt;')))
-            .join(''),
-    )
-    .join('');
-
 exports.onPreBootstrap = () => {
-  fs.ensureDirSync(`${__dirname}/dist/changelogs/`);
+  // Emptied, not just ensured: .md changelogs from an earlier build would still
+  // be picked up by gatsby-plugin-mdx and show up twice in the changelog list.
+  fs.emptyDirSync(`${__dirname}/dist/changelogs/`);
   fs.ensureDirSync(`${__dirname}/dist/icons/`);
 
   for (let changelogPackage in packages) {
@@ -135,9 +122,13 @@ exports.onPreBootstrap = () => {
       path.resolve(`../../packages/${packages[changelogPackage]}/CHANGELOG.md`),
       'utf8',
     );
+    // Written as .markdown, not .md: gatsby-plugin-mdx only picks up .md/.mdx,
+    // and commit messages contain JSX-looking text (<dialog>, prop={value})
+    // that MDX tries to parse. The changelog view fetches the raw file and
+    // renders it with markdown-to-jsx instead.
     fs.writeFileSync(
-      `${__dirname}/dist/changelogs/${packages[changelogPackage]}.md`,
-      escapeMdxTags(changelog),
+      `${__dirname}/dist/changelogs/${packages[changelogPackage]}.markdown`,
+      changelog,
     );
   }
 
@@ -282,17 +273,22 @@ exports.sourceNodes = async ({ createNodeId, actions: { createNode } }) => {
         `https://registry.npmjs.org/@entur/${thePackage}`,
       );
       const result = await data.json();
+      const version = result['dist-tags'].latest;
+      // When the latest version was published, for the changelog overview.
+      const publishedAt = result.time?.[version] || null;
+
       createNode({
         name: thePackage,
         parent: '__SOURCE__',
         children: [],
         id: createNodeId(thePackage),
-        version: result['dist-tags'].latest,
+        version,
+        publishedAt,
         internal: {
           type: 'NpmPackageVersion',
           contentDigest: crypto
             .createHash('md5')
-            .update(result['dist-tags'].latest)
+            .update(`${version}${publishedAt}`)
             .digest('hex'),
         },
       });
