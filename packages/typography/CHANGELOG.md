@@ -9,6 +9,22 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **typography:** round the focus ring on links ([abbcaa4](https://github.com/entur/design-system/commit/abbcaa4f91344bf21369e6717a0a0f354c735e63))
 
+  CSS outline follows an element's own border-radius, so links —
+  which never had one — got a square keyboard-focus ring while
+  buttons and other interactive elements, which do set a
+  border-radius, got a rounded one.
+
+  Added border-radius scoped to :focus-visible on both dagens and
+  beta Link, so only the focus ring is affected and the resting-state
+  underline (a background-image, which border-radius would otherwise
+  clip at its corners) stays untouched. The underline stays visible
+  while focused too, which can still clip slightly at its very ends
+  against the rounded corners — accepted trade-off, keeping the
+  underline visible during focus matters more than eliminating that.
+
+  Beta's declaration stays inside its existing @layer
+  components.primitives block, same as the rest of the component.
+
 ## [3.0.3](https://github.com/entur/design-system/compare/@entur/typography@3.0.2...@entur/typography@3.0.3) (2026-08-20)
 
 **Note:** Version bump only for package @entur/typography
@@ -27,10 +43,16 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **typography:** remove React.FC in favor of typed function parameters ([aaa3979](https://github.com/entur/design-system/commit/aaa39795bed3c20e735302d0a9446622d40d46c0))
 
+  React.FC no longer provides implicit children typing in React 18.
+  Move type annotations directly to function parameters.
+
 ### Features
 
 - **typography:** require React 18 as minimum peer dependency ([26662ac](https://github.com/entur/design-system/commit/26662ac433a4b85e843dec2d5d29e14d4016cfe0))
 - **typography:** tighten exports field and remove dist/\* wildcard ([51cbed1](https://github.com/entur/design-system/commit/51cbed12c4f3f83be8fb1a5f83dc49d7b2fb5ac4))
+
+  Replaces ./dist/\* wildcard with explicit ./dist/styles.css entry.
+  Consumers no longer need bundler aliases for ESM resolution.
 
 ### BREAKING CHANGES
 
@@ -71,6 +93,10 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **typography:** upgrade glob to v13 to resolve critical @isaacs/brace-expansion vulnerability ([08abdbc](https://github.com/entur/design-system/commit/08abdbc43255a1630688d0559b173d7d17da2486))
 
+  glob@11 pulled in minimatch@10.1.1 → @isaacs/brace-expansion@5.0.0 which
+  has a critical vulnerability. glob@13 uses minimatch@10.2.1 → brace-expansion@5.0.2
+  which resolves it. The programmatic API used by the migration script is unchanged.
+
 ## [2.1.3](https://github.com/entur/design-system/compare/@entur/typography@2.1.2...@entur/typography@2.1.3) (2026-01-28)
 
 **Note:** Version bump only for package @entur/typography
@@ -85,32 +111,51 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - add new component size css variables to all relevant packages ([aceafa8](https://github.com/entur/design-system/commit/aceafa85c8da121ad0654fb08caad22257c16bc9))
 
-### \[BETA\] Bug Fixes
-
-- **typography/beta:** change attribute view-mode to data-view-mode ([31a3531](https://github.com/entur/design-system/commit/31a35314456f90647cedefa0c6d02745b546c38e))
-- **typography/beta:** change to correct variables for label, subparagraph, title-1 ([973f35f](https://github.com/entur/design-system/commit/973f35fda0890ab8f3beae3a80cfcdd8146fbf6a))
-
-### \[BETA\] Features
-
-- **typography/beta:** change from dynamic css import to main entry styles file ([4fe9374](https://github.com/entur/design-system/commit/4fe9374367d533cb6a76f368984083c163aac327))
-- **typography/beta:** update typography beta tokens ([65c82b7](https://github.com/entur/design-system/commit/65c82b7f6e4fb07283dfd871f959b174ffe2d6b1))
-- **typography/beta:** update typography variables ([bf90ebf](https://github.com/entur/design-system/commit/bf90ebf80656ee9e9725e2dd2bbb1675941813b3))
-- **typography/beta:** use css layers and :where to reduce specificity ([c66e58f](https://github.com/entur/design-system/commit/c66e58f39c8944ab530ec307a40d65411f28aebd))
-
-### \[BETA\] BREAKING CHANGES
+### \[BETA\] BREAKING CHANGES (beta)
 
 - **typography/beta:** You must now add "@import '@entur/typography/beta/styles'" in you styles entry to
   get styling
+
 - **typography/beta:** Attribute name change breaks existing implementations
+
 - **typography/beta:** Specificity for classes have changes. Also, if your users use outdated browsers,
   you should apply a polyfill for css layers.
+
+### \[BETA\] Bug Fixes (beta)
+
+- **typography/beta:** change attribute view-mode to data-view-mode ([31a3531](https://github.com/entur/design-system/commit/31a35314456f90647cedefa0c6d02745b546c38e))
+
+  This is done to comply with html standardsfor custom sttributes.
+
+- **typography/beta:** change to correct variables for label, subparagraph, title-1 ([973f35f](https://github.com/entur/design-system/commit/973f35fda0890ab8f3beae3a80cfcdd8146fbf6a))
+
+### \[BETA\] Features (beta)
+
+- **typography/beta:** change from dynamic css import to main entry styles file ([4fe9374](https://github.com/entur/design-system/commit/4fe9374367d533cb6a76f368984083c163aac327))
+
+  This is based on dynamic imports not providing enough value to outweigh its downsides
+
+- **typography/beta:** update typography beta tokens ([65c82b7](https://github.com/entur/design-system/commit/65c82b7f6e4fb07283dfd871f959b174ffe2d6b1))
+
+- **typography/beta:** update typography variables ([bf90ebf](https://github.com/entur/design-system/commit/bf90ebf80656ee9e9725e2dd2bbb1675941813b3))
+
+- **typography/beta:** use css layers and :where to reduce specificity ([c66e58f](https://github.com/entur/design-system/commit/c66e58f39c8944ab530ec307a40d65411f28aebd))
+
+  This change makes styling behaviour for typography more predictable
 
 ## [2.0.4](https://github.com/entur/design-system/compare/@entur/typography@2.0.3...@entur/typography@2.0.4) (2025-11-24)
 
 ### Bug Fixes
 
 - remove unneccesary vendor prefixes from source scss files ([14fe64e](https://github.com/entur/design-system/commit/14fe64eac51ae7756ea096cdc2c3b1e8bc1cb921))
+
+  Vendor prefixas are now added via PostCSS instead
+
+### Bug Fixes (beta)
+
 - **typography/beta:** remove "bin" from package.json ([c385cf1](https://github.com/entur/design-system/commit/c385cf1dcb9e550aa2f95e59d1126d8f6491bea7))
+
+  This binary is not needed. Use script "migrate" instead.
 
 ## [2.0.3](https://github.com/entur/design-system/compare/@entur/typography@2.0.2...@entur/typography@2.0.3) (2025-10-20)
 
@@ -134,6 +179,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 - **typography beta:** remove medium weight as default in text component ([e37adb1](https://github.com/entur/design-system/commit/e37adb173664232fa422edbb2241955af469158a))
 - **typography:** remove type module from package.json ([44e27d3](https://github.com/entur/design-system/commit/44e27d3a23dfbba7f4189b5e7f4041cc8eb8904c))
 
+  This is done to fix incorrect module resolution for cjs.js files where it is read as esm.
+
 # [2.0.0](https://github.com/entur/design-system/compare/@entur/typography@1.9.14...@entur/typography@2.0.0) (2025-09-24)
 
 ### Bug Fixes
@@ -145,13 +192,32 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **typography:** use modern exports and restructure beta build output ([46b365c](https://github.com/entur/design-system/commit/46b365cfffed531bea7d36e7be138dc5445f050c))
 
+  New beta components are available under @entur/typography/beta.
+
 ### Features
 
 - **typography beta:** add migration script ([114601d](https://github.com/entur/design-system/commit/114601d592491cacb2fdb88745a07f054f54223f))
+
+  See linje.entur.no/komponenter/ressurser/typography-migration
+
 - **typography beta:** add new Heading component ([11890a9](https://github.com/entur/design-system/commit/11890a9344271bc391343af105f7c79659a6fef9))
+
+  Beta version with new API and improvements. See
+  linje.entur.no/komponenter/ressurser/typography-beta
+
 - **typography beta:** add new special typography components ([8579d0b](https://github.com/entur/design-system/commit/8579d0be41026763cbfc4c19f3afa5b5f780b708))
+
+  Adds blockquote, link, list item, numbered list and unordered list. See
+  linje.entur.no/komponenter/ressurser/typography-beta
+
 - **typography beta:** add new Text component ([dc859c0](https://github.com/entur/design-system/commit/dc859c090036bcb6df64b1874aa1954b6e6c8dd7))
+
+  Beta version with new API and improvements. See linje.entur.no/komponenter/ressurser/typography-beta
+
 - **typography beta:** automatically load needed css in js files ([7f2cc06](https://github.com/entur/design-system/commit/7f2cc06a0fd88fafcfd6ccb2ddfac69eb204e493))
+
+  Experimental feature since it assumes our consumers can load css via JS
+
 - **typography:** replace normalize.scss with modern-normalize.css ([c84d804](https://github.com/entur/design-system/commit/c84d804d836035be96dd31d9dcd3b2fbeff188ef))
 
 ### BREAKING CHANGES
@@ -164,8 +230,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Bug Fixes
 
 - **deps:** bump minor for dependencies ([bdde8f2](https://github.com/entur/design-system/commit/bdde8f2d5ab46cfa307a424429063b9700edfc1e))
+
+  classnames, react-focus-lock, @react-aria, @react-stately, @internationalized/date, react-dropzone
+
 - exclude dependencies from bundle ([5252a14](https://github.com/entur/design-system/commit/5252a14c4c615452f3cc7effc73287a5ee42399e))
 - fix package.json field order ([7de85f2](https://github.com/entur/design-system/commit/7de85f2baf08a1fc3a0223e3f149c8cf9636546b))
+
+  incorrect order made types unavailable
 
 ## [1.9.12](https://github.com/entur/design-system/compare/@entur/typography@1.9.11...@entur/typography@1.9.12) (2025-06-27)
 

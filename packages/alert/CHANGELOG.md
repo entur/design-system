@@ -8,14 +8,56 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Bug Fixes
 
 - **alert/copyable text:** drop the wrapper's empty aria-label and tabindex ([0dae9f8](https://github.com/entur/design-system/commit/0dae9f8493d01f9c9398a71567ab78b05150fa58))
+
+  The wrapper div carried aria-label="", tabIndex={-1} and a type attribute that
+  does nothing on a div. Screen readers now announce the copy button itself.
+
 - **alert:** add missing line-height to small alert variant ([2309a0d](https://github.com/entur/design-system/commit/2309a0d3753ec7b1ab405b3f0e82b27295c0eac7))
+
+  The small alert variant set a smaller font-size for its text but no
+  matching line-height, so text fell back to the browser default,
+  which is shorter than the icon's fixed box. This made the icon look
+  larger than and lower than the text. Adding the same font-size/
+  line-height pairing used elsewhere in the type scale fixes the
+  vertical alignment.
+
 - **alert:** align icon with first line in alerts without a title ([bf8e421](https://github.com/entur/design-system/commit/bf8e421060613594cc3d0fe984a7b1efba71b1fe))
+
+  Alerts without a title vertically centered the icon against the
+  whole content block, so the icon drifted away from the text on
+  multi-line messages instead of following the first line. Removing
+  the centering makes no-title alerts use the same top alignment as
+  titled alerts, so the icon lines up with the first line regardless
+  of how much text follows.
+
 - **alert:** make icon top-alignment explicit ([aa4008b](https://github.com/entur/design-system/commit/aa4008b07fb241a4b52983823d696df793e3d3bc))
+
+  The icon appeared top-aligned because align-items defaults to
+  stretch, which behaves as flex-start when a flex item (the icon)
+  has a definite cross-size. Setting align-items: flex-start
+  explicitly documents the intent and removes the dependency on that
+  implicit fallback behavior.
 
 ### Features
 
 - **alert/copyable text:** add a size prop with small and medium ([2b6492d](https://github.com/entur/design-system/commit/2b6492d204133cd1793c1651880049a3b634d0c9))
+
+  The small size gives a 2rem tall box for tighter layouts, e.g. inline with
+  running text or in table cells. Medium stays the default.
+
+  Each size lives in its own --size-\* block, matching how button and chip name
+  their size modifiers, so the medium margins that used to sit unconditionally on
+  the button now belong to a size like every other size-specific rule.
+
+  Sizing the icon button means .eds-contrast .eds-icon-button now has a say in its
+  colours, so the copy icon reads the copyabletext icon token explicitly and keeps
+  the contrast values the box expects.
+
 - **alert/copyable text:** take the corner radius from Button ([cde257e](https://github.com/entur/design-system/commit/cde257ea4725462d33bd946cb3ca91b0632f9261))
+
+  The box used a flat 4px radius from PreformattedText. It now takes its radius
+  per size from Button's radius tokens — 8px on medium and 6px on small — so it
+  follows the theme the same way buttons do.
 
 ## [0.20.3](https://github.com/entur/design-system/compare/@entur/alert@0.20.2...@entur/alert@0.20.3) (2026-08-20)
 
@@ -35,9 +77,18 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **alert:** remove React.FC in favor of typed function parameters ([21fcbac](https://github.com/entur/design-system/commit/21fcbac900e4723edcd81e2edb1227938eb033cf))
 
+  React.FC no longer provides implicit children typing in React 18.
+  Move type annotations directly to function parameters.
+
 ### Features
 
 - **alert:** add exports field for ESM-compatible module resolution ([1b11810](https://github.com/entur/design-system/commit/1b11810c863f08926a2cbb4ca7978e12ecac9da1))
+
+  Consumers no longer need bundler aliases to resolve ESM entry points.
+  Declares explicit exports map with entries for main entrypoint,
+  ./styles (CSS), ./dist/styles.css (compat), and ./package.json.
+  Deep dist/ imports not listed will stop resolving.
+
 - **alert:** require React 18 as minimum peer dependency ([0bf5f25](https://github.com/entur/design-system/commit/0bf5f25280dadcf59053fc78d13b0266bd57abdd))
 
 ### BREAKING CHANGES
@@ -70,7 +121,15 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Features
 
 - **alert:** use unified color tokens and remove separate toast styling ([214441b](https://github.com/entur/design-system/commit/214441baf0dd53c3cdc64425a48fe1a6cf56a857))
+
+  Toast alerts now share the same appearance as standard alerts.
+  Dark mode no longer applies separate fills and icon colors for toast.
+
 - **tokens:** update primitive, semantic, base and component color tokens ([3ef6220](https://github.com/entur/design-system/commit/3ef622059143f24dcf7c94b19d4b7337fbac3508))
+
+  Updates primitive, semantic, base and component-level color tokens.
+  Visual changes affect alert, datepicker, loader, menu, tab, and travel
+  components.
 
 ## [0.18.11](https://github.com/entur/design-system/compare/@entur/alert@0.18.10...@entur/alert@0.18.11) (2026-05-13)
 
@@ -137,8 +196,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Bug Fixes
 
 - **deps:** bump minor for dependencies ([bdde8f2](https://github.com/entur/design-system/commit/bdde8f2d5ab46cfa307a424429063b9700edfc1e))
+
+  classnames, react-focus-lock, @react-aria, @react-stately, @internationalized/date, react-dropzone
+
 - exclude dependencies from bundle ([5252a14](https://github.com/entur/design-system/commit/5252a14c4c615452f3cc7effc73287a5ee42399e))
 - fix package.json field order ([7de85f2](https://github.com/entur/design-system/commit/7de85f2baf08a1fc3a0223e3f149c8cf9636546b))
+
+  incorrect order made types unavailable
 
 ## [0.17.12](https://github.com/entur/design-system/compare/@entur/alert@0.17.11...@entur/alert@0.17.12) (2025-06-27)
 

@@ -25,9 +25,18 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **button:** remove React.FC in favor of typed function parameters ([2d324cb](https://github.com/entur/design-system/commit/2d324cb78a38a718727d1c2a34c349d8a1a95ec4))
 
+  React.FC no longer provides implicit children typing in React 18.
+  Move type annotations directly to function parameters.
+
 ### Features
 
 - **button:** add exports field for ESM-compatible module resolution ([adef8ac](https://github.com/entur/design-system/commit/adef8accfa3c1786b37fb9ebe86a602461a1fa85))
+
+  Consumers no longer need bundler aliases to resolve ESM entry points.
+  Declares explicit exports map with entries for main entrypoint,
+  ./styles (CSS), ./dist/styles.css (compat), and ./package.json.
+  Deep dist/ imports not listed will stop resolving.
+
 - **button:** require React 18 as minimum peer dependency ([95efab1](https://github.com/entur/design-system/commit/95efab17430d567d678f776d856740daccfc2523))
 
 ### BREAKING CHANGES
@@ -87,15 +96,36 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **button/square button:** reduce specificity for all square button classes to 0,1,0 ([659a2d6](https://github.com/entur/design-system/commit/659a2d6b8de293028fe0e28020b38355c8230863))
 
+  This makes loading and overriding the component more predictable.
+
 ### Features
 
 - **button/button:** add support for dynamic typography size ([5c276ba](https://github.com/entur/design-system/commit/5c276ba1c13e399981a4ee771e3c1e016861b611))
+
+  Use typographyTokens from @entur/typography if available.
+
 - **button/button:** add support for view mode in button ([f4977bb](https://github.com/entur/design-system/commit/f4977bb18f5c542b8a8164d166e185029a5fc991))
+
+  Button component will adapt based on data-view-mode being set to standard, compact or display.
+
 - **button/button:** change minimum width for button to the same as button height ([147db46](https://github.com/entur/design-system/commit/147db46b5e4af4686dc3bcc6909b6e671c343ab4))
+
+  This change makes button more customisable, allowing more compact usage.
+
 - **button/button:** reduce css specificity for all button classes to 0,1,0 ([fd30648](https://github.com/entur/design-system/commit/fd3064829de8f48379961f1b460c4b9b7e873cba))
 - **button/square button:** add size prop to square button components ([2eecf46](https://github.com/entur/design-system/commit/2eecf46cb7c70dff2eecc8915e93722e33ec3b11))
+
+  Sizes available are "small", "medium" and "large". "medium" is default.
+
 - **button/square button:** add support for view-mode in square button ([f3874c7](https://github.com/entur/design-system/commit/f3874c7676fbb9d27189b2afe35d6699ca40efd7))
+
+  Square button components sizes will adapt based on data-view-mode
+  being set to standard, compact or display.
+  Border radius is updated to give a more round and playful design.
+
 - **button/tertiary square button:** deprecate TertiarySquareButton ([96fd529](https://github.com/entur/design-system/commit/96fd529b599d78498319fd381c51425cfa3a133c))
+
+  Use SecondarySquareButton with size="small" instead.
 
 ### BREAKING CHANGES
 
@@ -137,8 +167,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Bug Fixes
 
 - **deps:** bump minor for dependencies ([bdde8f2](https://github.com/entur/design-system/commit/bdde8f2d5ab46cfa307a424429063b9700edfc1e))
+
+  classnames, react-focus-lock, @react-aria, @react-stately, @internationalized/date, react-dropzone
+
 - exclude dependencies from bundle ([5252a14](https://github.com/entur/design-system/commit/5252a14c4c615452f3cc7effc73287a5ee42399e))
 - fix package.json field order ([7de85f2](https://github.com/entur/design-system/commit/7de85f2baf08a1fc3a0223e3f149c8cf9636546b))
+
+  incorrect order made types unavailable
 
 ## [3.3.12](https://github.com/entur/design-system/compare/@entur/button@3.3.11...@entur/button@3.3.12) (2025-06-27)
 

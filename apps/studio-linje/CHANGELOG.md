@@ -29,6 +29,10 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **website:** add description field support for Playground examples ([49ae9ff](https://github.com/entur/design-system/commit/49ae9ff2239b2aa9c16ac487df9645a26ca8ccb0))
 
+  Add optional description text that renders below the title and above the
+  visual example in Playground components. Includes Sanity schema field,
+  CodeExampleResolver passthrough, and Playground rendering.
+
 ## [1.10.4](https://github.com/entur/design-system/compare/studio-linje@1.10.3...studio-linje@1.10.4) (2026-06-08)
 
 **Note:** Version bump only for package studio-linje
@@ -43,17 +47,30 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **sanity:** normalize tag input to lowercase, display capitalized ([838c7b0](https://github.com/entur/design-system/commit/838c7b0a2045fc5bd32af8ad61d490b45ef0100c))
 
+  Tags are now stored as lowercase regardless of input, and displayed
+  with a capital first letter in the input field and dropdown options.
+  Existing mixed-case tags (e.g. "Beta"/"beta") are deduplicated on fetch.
+
 ## [1.10.1](https://github.com/entur/design-system/compare/studio-linje@1.10.0...studio-linje@1.10.1) (2026-05-13)
 
 ### Bug Fixes
 
 - **sanity:** normalize tag input to lowercase, display capitalized ([838c7b0](https://github.com/entur/design-system/commit/838c7b0a2045fc5bd32af8ad61d490b45ef0100c))
 
+  Tags are now stored as lowercase regardless of input, and displayed
+  with a capital first letter in the input field and dropdown options.
+  Existing mixed-case tags (e.g. "Beta"/"beta") are deduplicated on fetch.
+
 ## [1.9.3](https://github.com/entur/design-system/compare/studio-linje@1.9.2...studio-linje@1.9.3) (2026-03-16)
 
 ### Bug Fixes
 
 - **sanity:** deduplicate @codemirror/state to fix CodeInput crash ([055a147](https://github.com/entur/design-system/commit/055a1476151abcc2a640353bea0b8e1db306813e))
+
+  Move @codemirror/\* resolutions from studio-linje to root package.json,
+  since Yarn workspaces only honors resolutions at the root level. The
+  duplicate @codemirror/state versions (6.5.2 + 6.5.4) broke instanceof
+  checks in CodeMirror, causing "Unrecognized extension value" errors.
 
 ## [1.9.1](https://github.com/entur/design-system/compare/studio-linje@1.9.0...studio-linje@1.9.1) (2026-02-20)
 
@@ -87,12 +104,23 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **website:** use development graphql tag in gatsby when running dev server ([4c10391](https://github.com/entur/design-system/commit/4c10391c91d7ef785c0d7fbf6d8507b91697a59f))
 
+  Also when running a Github PR build
+
 ### Features
 
 - **website/page builder:** add props to playground via Sanity ([7d0510d](https://github.com/entur/design-system/commit/7d0510d824fc575371b9fa40591e21f44151193f))
 - **website/page builder:** add support for video with new Media object ([0241985](https://github.com/entur/design-system/commit/0241985a29e90e7874d1370f4ba2119640853a16))
+
+  Also deprecate the ImageAndText object in favour of Media and Seksjon in a Group
+
 - **website/page builder:** move copyable text under code example ([7fefe2d](https://github.com/entur/design-system/commit/7fefe2df13d90a9909920330593fbff0a187d1d9))
+
+  Also use CodeBlock instead of preformatted text for code examples.
+
 - **website/page builder:** remove doDontGroup and add guideline ([47c645a](https://github.com/entur/design-system/commit/47c645aec35d8feda267c18a851f3a82d74bf504))
+
+  Standardize sanity objects by making a more general guideline component
+  that works inside the generic group object instead of special doDontGroup.
 
 # [1.6.0](https://github.com/entur/design-system/compare/studio-linje@1.5.1...studio-linje@1.6.0) (2025-09-05)
 
@@ -128,16 +156,25 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 - **page-builder:** add download link type to page ([ebb1a63](https://github.com/entur/design-system/commit/ebb1a634a00e3022c00f76cb1548d4bf5c81bd58))
 - **page-builder:** add functionality for making a page the category landingpage ([cf78f76](https://github.com/entur/design-system/commit/cf78f7685f790454909ef7d1ea0823bb2a24a162))
 - **page-builder:** add group type ([33610bd](https://github.com/entur/design-system/commit/33610bd293148b294615ac9679bb9b62cdbb84ee))
+
+  Used to display multiple components in a row.
+
 - **page-builder:** add guideline card ([07dcdec](https://github.com/entur/design-system/commit/07dcdec7202f5c5cd9bc5c38b9b504ca60f0107a))
 - **page-builder:** add image display presets ([f93e9d7](https://github.com/entur/design-system/commit/f93e9d7b7d51ee57314b769edbbdb94f930d7567))
 - **page-builder:** add inline icons to rich text editor in sanity ([84ae384](https://github.com/entur/design-system/commit/84ae384d3244d18c4e72849641b5789ea0ca6466))
 - **page-builder:** add link type ([e6f407b](https://github.com/entur/design-system/commit/e6f407b77f7024f5214ebfe00e1999ca52ef8cf3))
 - **page-builder:** add possibility to add more download files to imageAndText ([53d58c4](https://github.com/entur/design-system/commit/53d58c4be1f6d43b7003ff1963cba143c3aa8f11))
 - **page-builder:** add primary and secondary button link ([5c2f9cc](https://github.com/entur/design-system/commit/5c2f9cc92560f1904565e4befb3a7d1f7d517f8c))
+
+  also set max width to card link
+
 - **page-builder:** create path for page from categories and title ([940e351](https://github.com/entur/design-system/commit/940e35112cac851f06f0aea9d8d3167c3b31a4c9))
 - **page-builder:** move all blocks into text editor ([c4641cf](https://github.com/entur/design-system/commit/c4641cfbb32103709e8eb707bbb082fb9103b126))
 - **page-builder:** wip add images in text block directly ([4873ab2](https://github.com/entur/design-system/commit/4873ab2883e2feda2c56e6d216ce7813a8a3f9fc))
 - **sanity:** add page sorting in sanity studio ([0d27328](https://github.com/entur/design-system/commit/0d2732873ca3ffa80e07f40acdfce62a67472a4f))
+
+  Also add autocomplete field for category and subcategory selection
+
 - **sanity:** add sanity media plugin ([18b1588](https://github.com/entur/design-system/commit/18b1588677fafd517fbb68f4c1dcd7520b0df41e))
 - **website:** add support for sanity content ([2652b6b](https://github.com/entur/design-system/commit/2652b6bcd01f18c96616cd4cb43f679c1a8b3ec3))
 - **website:** move to usercentrics for consent management ([79d2043](https://github.com/entur/design-system/commit/79d2043b0a7e71d012bf76ca9077687e0580da96))
@@ -151,6 +188,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 - **page-builder:** add image display presets ([f93e9d7](https://github.com/entur/design-system/commit/f93e9d7b7d51ee57314b769edbbdb94f930d7567))
 - **page-builder:** add possibility to add more download files to imageAndText ([53d58c4](https://github.com/entur/design-system/commit/53d58c4be1f6d43b7003ff1963cba143c3aa8f11))
 - **sanity:** add page sorting in sanity studio ([0d27328](https://github.com/entur/design-system/commit/0d2732873ca3ffa80e07f40acdfce62a67472a4f))
+
+  Also add autocomplete field for category and subcategory selection
 
 # [1.3.0](https://github.com/entur/design-system/compare/linje@1.2.0...linje@1.3.0) (2025-08-01)
 
@@ -168,6 +207,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **page-builder:** add primary and secondary button link ([5c2f9cc](https://github.com/entur/design-system/commit/5c2f9cc92560f1904565e4befb3a7d1f7d517f8c))
 
+  also set max width to card link
+
 # 1.1.0 (2025-06-17)
 
 ### Bug Fixes
@@ -181,6 +222,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 - add basic sanity implementation ([fab6121](https://github.com/entur/design-system/commit/fab61211d23c6667fd0178e562e6db6941c5bbf1))
 - **page-builder:** add download link to image ([d9153b1](https://github.com/entur/design-system/commit/d9153b1599a7204398a25715825d7943366d9d7f))
 - **page-builder:** add group type ([33610bd](https://github.com/entur/design-system/commit/33610bd293148b294615ac9679bb9b62cdbb84ee))
+
+  Used to display multiple components in a row.
+
 - **page-builder:** add inline icons to rich text editor in sanity ([84ae384](https://github.com/entur/design-system/commit/84ae384d3244d18c4e72849641b5789ea0ca6466))
 - **page-builder:** add link type ([e6f407b](https://github.com/entur/design-system/commit/e6f407b77f7024f5214ebfe00e1999ca52ef8cf3))
 - **page-builder:** create path for page from categories and title ([940e351](https://github.com/entur/design-system/commit/940e35112cac851f06f0aea9d8d3167c3b31a4c9))

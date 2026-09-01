@@ -9,6 +9,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **tokens:** add the semantic token Stroke/SubduedAlt ([b81039b](https://github.com/entur/design-system/commit/b81039bdd5ad69a344dc27f654bf6643f63b0ac1))
 
+  Also removes Stroke/ContrastAlt-2, which no component used, so
+  $stroke-contrastalt-2 and --stroke-contrastalt-2 are no longer generated.
+
 ## [4.0.1](https://github.com/entur/design-system/compare/@entur/tokens@4.0.0...@entur/tokens@4.0.1) (2026-08-06)
 
 **Note:** Version bump only for package @entur/tokens
@@ -18,7 +21,18 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Features
 
 - **tokens:** add exports field for ESM-compatible module resolution ([4ba8cc2](https://github.com/entur/design-system/commit/4ba8cc21baf1e7cb4b91545190e0ad7f1a3d473e))
+
+  Consumers no longer need bundler aliases to resolve ESM entry points.
+  Declares explicit exports map with style subpaths for all token
+  categories (base, semantic, primitive, transport, data) in both
+  CSS and SCSS. Old dist/ paths preserved for backwards compatibility.
+
 - **tokens:** add sass conditional exports for pkg: importer support ([9ae5507](https://github.com/entur/design-system/commit/9ae550786f73da2f73935826b14597fa3f477448))
+
+  Style entry points (./styles, ./styles/base, etc.) now use conditional
+  exports with sass/style/default conditions. Consumers using the Sass
+  pkg: importer get SCSS files automatically via `pkg:@entur/tokens/styles`,
+  while bundlers and plain JS resolve to CSS.
 
 ### BREAKING CHANGES
 
@@ -30,16 +44,42 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **tokens:** rename TintDark to DarkTint and Calendar endpoint tokens to Selected ([1250370](https://github.com/entur/design-system/commit/1250370d3e4f8f6ad2a096d4855800498f474dfc))
 
+  Rename color token variables to align with Figma:
+
+  - Fill/Selected/Default/TintDark → Fill/Selected/Default/DarkTint
+  - Fill/Selected/Hover/TintDark → Fill/Selected/Hover/DarkTint
+  - DateFill-Range-Endpoint → removed (duplicate of DateFill-Selected)
+  - DateFill-Range-Endpoint-Hover → DateFill-Selected-Hover
+  - Text-Range-Endpoint → Text-Selected
+
 ### Features
 
 - **menu/logo:** add Logo component for standardized Entur product logos ([75dd9dc](https://github.com/entur/design-system/commit/75dd9dc5c6789d4c1ec680ace52a8c3697b3c53b))
+
+  New <Logo> component renders the Entur wordmark with an optional product name.
+  Use `productName` to display your product name next to the logo, `size` to choose
+  between medium and small, and `href` to make it a link.
+
+  Usage: <Logo productName="Partner" size="medium" href="/" />
+
 - **tokens:** add range selection color tokens for Calendar ([ac2365e](https://github.com/entur/design-system/commit/ac2365e4c2b5c6832586ec21e1e95813522d2a8c))
+
+  Add semantic tokens Fill/Selected/Default/Tint, TintDark and
+  Fill/Selected/Hover/Tint, TintDark for range fill backgrounds.
+  Add component tokens DateFill-Range, DateFill-Range-Endpoint,
+  DateFill-Range-Endpoint-Hover, DateFill-Range-Hover and
+  Text-Range-Endpoint. Update DateFill-Selected to use
+  Fill/Primary/Default.
 
 # [3.23.0](https://github.com/entur/design-system/compare/@entur/tokens@3.22.4...@entur/tokens@3.23.0) (2026-06-05)
 
 ### Features
 
 - **tokens:** update primitive, semantic, base and component color tokens ([3ef6220](https://github.com/entur/design-system/commit/3ef622059143f24dcf7c94b19d4b7337fbac3508))
+
+  Updates primitive, semantic, base and component-level color tokens.
+  Visual changes affect alert, datepicker, loader, menu, tab, and travel
+  components.
 
 ## [3.22.5](https://github.com/entur/design-system/compare/@entur/tokens@3.22.4...@entur/tokens@3.22.5) (2026-05-13)
 
@@ -55,6 +95,10 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **travel:** add missing snowcoach transport tokens and CSS variable fallback ([6bb1406](https://github.com/entur/design-system/commit/6bb14065418cede6ebd2c0b3435a7e866829b753))
 
+  SnowCoach transport mode existed but did not display correctly due to
+  missing CSS variables and design tokens. Add variables for fill, icon,
+  and text across all themes. Add CSS variable fallback for robustness.
+
 ## [3.22.1](https://github.com/entur/design-system/compare/@entur/tokens@3.22.0...@entur/tokens@3.22.1) (2026-01-28)
 
 ### Bug Fixes
@@ -67,6 +111,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **tokens/base:** add highlight-alt color to base ([6e48e5e](https://github.com/entur/design-system/commit/6e48e5eeaabe3faaff098089410421b785afcc56))
 
+  Also update mobility and bicycle color to meet WCAG standards.
+
 # [3.21.0](https://github.com/entur/design-system/compare/@entur/tokens@3.20.0...@entur/tokens@3.21.0) (2025-12-05)
 
 ### Features
@@ -74,19 +120,29 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 - add new component size css variables to all relevant packages ([aceafa8](https://github.com/entur/design-system/commit/aceafa85c8da121ad0654fb08caad22257c16bc9))
 - **tokens:** add primitiveSize and update existing variables ([01088cf](https://github.com/entur/design-system/commit/01088cf4d7388c746742e12339cf7833822c2c8f))
 
+  ComponentColors is renamed to componentVariables since it now also contains sizing.
+  ComponentColors still exists for backwards compatebility.
+
 # [3.20.0](https://github.com/entur/design-system/compare/@entur/tokens@3.19.3...@entur/tokens@3.20.0) (2025-09-30)
 
 ### Features
 
 - **add travel:** add detail section to TravelTag ([0185c7a](https://github.com/entur/design-system/commit/0185c7aa2c1e5961435d9d92c7a7020c24a27c4b))
 
+  This field is useful for e.g. adding a departure number to the tag.
+
 ## [3.19.2](https://github.com/entur/design-system/compare/@entur/tokens@3.19.1...@entur/tokens@3.19.2) (2025-08-29)
 
 ### Bug Fixes
 
 - **deps:** bump minor for dependencies ([bdde8f2](https://github.com/entur/design-system/commit/bdde8f2d5ab46cfa307a424429063b9700edfc1e))
+
+  classnames, react-focus-lock, @react-aria, @react-stately, @internationalized/date, react-dropzone
+
 - exclude dependencies from bundle ([5252a14](https://github.com/entur/design-system/commit/5252a14c4c615452f3cc7effc73287a5ee42399e))
 - fix package.json field order ([7de85f2](https://github.com/entur/design-system/commit/7de85f2baf08a1fc3a0223e3f149c8cf9636546b))
+
+  incorrect order made types unavailable
 
 ## [3.19.1](https://github.com/entur/design-system/compare/@entur/tokens@3.19.0...@entur/tokens@3.19.1) (2025-05-22)
 

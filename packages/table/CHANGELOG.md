@@ -25,9 +25,19 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **table:** remove React.FC in favor of typed function parameters ([24e2193](https://github.com/entur/design-system/commit/24e219357e4a8e87274a59324ffdc76354d5a8a9))
 
+  React.FC no longer provides implicit children typing in React 18.
+  Move type annotations directly to function parameters.
+  Add explicit children prop to SortableHeaderCellButtonProps.
+
 ### Features
 
 - **table:** add exports field for ESM-compatible module resolution ([57ca3d4](https://github.com/entur/design-system/commit/57ca3d4979848dbd735d4b5a137d558914c207f9))
+
+  Consumers no longer need bundler aliases to resolve ESM entry points.
+  Declares explicit exports map with entries for main entrypoint,
+  ./styles (CSS), ./dist/styles.css (compat), and ./package.json.
+  Deep dist/ imports not listed will stop resolving.
+
 - **table:** require React 18 as minimum peer dependency ([aed2ecd](https://github.com/entur/design-system/commit/aed2ecd42af5254c12a67074714eae6d8f638a68))
 
 ### BREAKING CHANGES
@@ -122,8 +132,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Bug Fixes
 
 - **deps:** bump minor for dependencies ([bdde8f2](https://github.com/entur/design-system/commit/bdde8f2d5ab46cfa307a424429063b9700edfc1e))
+
+  classnames, react-focus-lock, @react-aria, @react-stately, @internationalized/date, react-dropzone
+
 - exclude dependencies from bundle ([5252a14](https://github.com/entur/design-system/commit/5252a14c4c615452f3cc7effc73287a5ee42399e))
 - fix package.json field order ([7de85f2](https://github.com/entur/design-system/commit/7de85f2baf08a1fc3a0223e3f149c8cf9636546b))
+
+  incorrect order made types unavailable
 
 ## [4.9.13](https://github.com/entur/design-system/compare/@entur/table@4.9.12...@entur/table@4.9.13) (2025-07-29)
 

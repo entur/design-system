@@ -13,6 +13,11 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **icons:** keep inline icon alignment independent of the app's CSS reset ([2bffb5d](https://github.com/entur/design-system/commit/2bffb5d5c4b5e441b8b9686466b59c84073a81e5))
 
+  Inline icons now state baseline alignment themselves. In apps whose reset
+  centers svg elements — Tailwind Preflight, several normalize variants —
+  the 0.2em nudge used to double-correct and pushed the icon about 4px below
+  the text, most visibly on the BreadcrumbItem separator.
+
 ## [10.0.1](https://github.com/entur/design-system/compare/@entur/icons@10.0.0...@entur/icons@10.0.1) (2026-08-06)
 
 **Note:** Version bump only for package @entur/icons
@@ -22,6 +27,12 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Features
 
 - **icons:** add exports field for ESM-compatible module resolution ([3b50337](https://github.com/entur/design-system/commit/3b50337fc8edf7d95b6fcb868fbb8a74ee2cd83b))
+
+  Consumers no longer need bundler aliases to resolve ESM entry points.
+  Declares explicit exports map with entries for main entrypoint,
+  ./styles (CSS), ./dist/styles.css (compat), and ./package.json.
+  Deep dist/ imports not listed will stop resolving.
+
 - **icons:** require React 18 as minimum peer dependency ([13d4e88](https://github.com/entur/design-system/commit/13d4e88ed1b01d51779c64e11269aa3729920caa))
 
 ### BREAKING CHANGES
@@ -39,35 +50,86 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **icons:** reduce CSS specificity of icon contrast selectors ([2a3053b](https://github.com/entur/design-system/commit/2a3053b1cd54e77a0328fe55446048e2e3a0d181))
 
+  Wrap .eds-contrast selectors in :where() to lower specificity from
+  (0,2,0) to (0,1,0), preventing icon contrast styles from overriding
+  component styles that depend on icons.
+
+  NB: Contrast mode selectors now have lower specificity. Consumers with
+  custom overrides targeting .eds-contrast .eds-icon\_\_\* may see changed
+  cascade behavior.
+
 ## [9.0.2](https://github.com/entur/design-system/compare/@entur/icons@9.0.1...@entur/icons@9.0.2) (2026-06-08)
 
 ### Bug Fixes
 
 - **icons:** rename NorWay partner icon to avoid collision with Norway flag ([a5e1c3a](https://github.com/entur/design-system/commit/a5e1c3ae5a273938ab67bb7e1c1020100d0f858c))
 
+  NorWay.svg and Norway.svg both resolved to NorwayIcon, causing consumers
+  to get the bus company logo instead of the Norwegian flag.
+
 ## [9.0.1](https://github.com/entur/design-system/compare/@entur/icons@9.0.0...@entur/icons@9.0.1) (2026-06-08)
 
 ### Bug Fixes
 
 - **icons:** correct viewBox padding for oversized icons ([722c7fd](https://github.com/entur/design-system/commit/722c7fdd233c736d885c09c3c0693d3f083e18f2))
+
+  Icons had smaller viewBox than 16×16 canvas, causing them to render
+  larger than other icons. Fixed by setting viewBox to 16×16 and shifting
+  path coordinates to center the content with proper padding.
+
 - **icons:** preserve original colors for flag and logo icons ([df099c9](https://github.com/entur/design-system/commit/df099c9bd3d873e13430954bf99a8e45010ce283))
+
+  Flag and Entur logo icons were incorrectly rendered in solid blue
+  instead of their original multicolor designs.
 
 # [9.0.0](https://github.com/entur/design-system/compare/@entur/icons@8.4.5...@entur/icons@9.0.0) (2026-06-05)
 
 ### Features
 
 - **icons/airport:** add new airport icon ([7257cb6](https://github.com/entur/design-system/commit/7257cb60e5ec0331756ae9ee326a84604bf6dbd1))
+
+  New AirportIcon shows a plane inside a circle, matching BaneNor and Oslo Lufthavn airport icon for better cross-platform recognition.
+
 - **icons/plane:** update plane icon to new visual to comply with standards ([7f6da6a](https://github.com/entur/design-system/commit/7f6da6a58c9bd0a3eee5be63800700f96202feb1))
+
+  The plane icon is now a top-down view at a 45 degree angle, replacing the
+  previous side-view taking-off design. Updated to match BaneNor and Oslo
+  Lufthavn icon standards.
+
 - **icons/platform:** add Platform icon ([de507bf](https://github.com/entur/design-system/commit/de507bf8602fdec988f1be6e1115bc1628b50400))
 - **icons:** add Alert and Silent icons ([e6c45a7](https://github.com/entur/design-system/commit/e6c45a759efc7cf2b3273aca448b4224033757b0))
+
+  Alert replaces Bell (BellIcon is kept as a deprecated alias).
+  Silent is the muted/notifications-off counterpart to Alert.
+
 - **icons:** add AlertMobile icon ([1335391](https://github.com/entur/design-system/commit/1335391648f984f6c14078e25689274a987a0d10))
+
+  Mobile phone notification alert icon, with filled variant.
+
 - **icons:** add AppLauncher icon ([d3c7280](https://github.com/entur/design-system/commit/d3c728074ef4b91fc842f8c1d882dd869c94d25e))
+
+  3×3 grid icon for opening an application launcher or app selection view.
+
 - **icons:** add Apple and Google Play app store icons ([02e52d5](https://github.com/entur/design-system/commit/02e52d5e3b54f4bb4aa33e95e14c813cd3f29b05))
+
+  Apple App Store and Google Play Store brand icons, placed in the
+  NonPartnerLogo category. Distinct from ApplePay/GooglePay payment icons.
+
 - **icons:** add Dialog and DialogFilled icons ([9325579](https://github.com/entur/design-system/commit/93255791382865e235df07bbe765e1f74ed4d99a))
 - **icons:** add Dislike icon ([d83cefc](https://github.com/entur/design-system/commit/d83cefcbf9184da707dd0c4ffcd1da9c5415b784))
+
+  Thumbs-down counterpart to LikeIcon, matching the Figma icon library.
+
 - **icons:** add NOR-WAY Bussekspress partner icon ([34c443b](https://github.com/entur/design-system/commit/34c443bd36a05f492a3116eceba8f0bc48fa9eb3))
+
+  Adds NorWayIcon to the Partners category for use by Sørvis and Entur Web/App.
+
 - **icons:** add Required, RequiredFilled, RequiredSmall and RequiredSmallFilled icons ([8d14d6f](https://github.com/entur/design-system/commit/8d14d6f0adc8649d6c2de763c53107bdeac3d6ba))
 - **icons:** add Sort, LogIn, Profile, and ProfileFilled icons; move Share to UI ([aaed1e9](https://github.com/entur/design-system/commit/aaed1e90b4e0587a585e52dcb1164ed08ed179ba))
+
+  New icons available: SortIcon (sort/filter results), LogInIcon (sign in),
+  ProfileIcon and ProfileFilledIcon (user profile). ShareIcon moved from
+  the Arrows category to UI — no consumer API change, same export name.
 
 ### BREAKING CHANGES
 
@@ -96,6 +158,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **icons:** add explicit inline diplay for design system icons ([6ff3ba7](https://github.com/entur/design-system/commit/6ff3ba7a95134bbcddafd0cc3d5ebeeea6b2a212))
 
+  This is done to avoid issues from reset stylesheets setting svg to display block.
+
 ## [8.3.1](https://github.com/entur/design-system/compare/@entur/icons@8.3.0...@entur/icons@8.3.1) (2025-12-05)
 
 **Note:** Version bump only for package @entur/icons
@@ -105,6 +169,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Features
 
 - apply postcss-preset-env to all package styles.css bundles ([853183b](https://github.com/entur/design-system/commit/853183b8e5d8bc3ecc39a75c16feddd994b73f32))
+
+  Vendor prefixing could in edge cases lead to changes since it
+  could activate previously non-available functionality.
 
 # [8.2.0](https://github.com/entur/design-system/compare/@entur/icons@8.1.0...@entur/icons@8.2.0) (2025-10-20)
 
@@ -118,11 +185,15 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **icons:** add new mobility icons ([62dcac9](https://github.com/entur/design-system/commit/62dcac9e089fecaf865fa55a717abddf73c0704a))
 
+  Includes: FarteBysykkel, Hafjell, Hertz, KolombusBySykkel, OttoMobility and Surf
+
 ## [8.0.1](https://github.com/entur/design-system/compare/@entur/icons@8.0.0...@entur/icons@8.0.1) (2025-08-29)
 
 ### Bug Fixes
 
 - **deps:** bump minor for dependencies ([bdde8f2](https://github.com/entur/design-system/commit/bdde8f2d5ab46cfa307a424429063b9700edfc1e))
+
+  classnames, react-focus-lock, @react-aria, @react-stately, @internationalized/date, react-dropzone
 
 # [8.0.0](https://github.com/entur/design-system/compare/@entur/icons@7.14.0...@entur/icons@8.0.0) (2025-06-27)
 
@@ -205,6 +276,8 @@ Please update your imports and usages accordingly.
 
 - **icons:** fix 'Received `true` for a non-boolean attribute `inline`.' warning ([920a634](https://github.com/entur/design-system/commit/920a634a14309dabc6290557fb037a7ee0a51725))
 
+  `inline` is no longer incorrectly forwarded to svg-element.
+
 ### Features
 
 - **icons:** add new birth date icon ([2d19be3](https://github.com/entur/design-system/commit/2d19be30cd1cdce8948eaacbe81eeca000b6c481))
@@ -227,6 +300,9 @@ Please update your imports and usages accordingly.
 - **icons:** add new tag icon ([ae1e970](https://github.com/entur/design-system/commit/ae1e9700419a28186c5efdaebe0df8eac69bfdc9))
 - **icons:** add new token icon ([01bc2fe](https://github.com/entur/design-system/commit/01bc2fe357627eff0c6477123a1d265d28d28ebf))
 - **icons:** add posibility to change color of partner icons in React Native ([11a164e](https://github.com/entur/design-system/commit/11a164ec3bad9b66cd291856413be15904f30d51))
+
+  All partner icons now use currentColor instead of hardcoded white. (internal): Build script is
+  converted to typescript
 
 ## [7.6.1](https://github.com/entur/design-system/compare/@entur/icons@7.6.0...@entur/icons@7.6.1) (2025-02-20)
 

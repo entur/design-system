@@ -13,11 +13,17 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **modal:** keep the modal centered when a CSS reset zeroes out margins ([9003c10](https://github.com/entur/design-system/commit/9003c1018d718892f949e008de8e01bd6b4f5fc0))
 
+  The native dialog was relying on the browser's own margin rule for
+  centering, which resets like Tailwind Preflight override. Centering is now
+  set in the modal's own styles, so no local override is needed.
+
 ## [2.0.2](https://github.com/entur/design-system/compare/@entur/modal@2.0.1...@entur/modal@2.0.2) (2026-08-13)
 
 ### Bug Fixes
 
 - **modal/drawer:** return focus to the element that opened the drawer inside shadow DOM ([62fa004](https://github.com/entur/design-system/commit/62fa004e23e3c0ede6dea80b35ea0908b26fa4ae))
+
+  Focus previously returned to the shadow host instead of the element that had focus before the drawer opened.
 
 ## [2.0.1](https://github.com/entur/design-system/compare/@entur/modal@2.0.0...@entur/modal@2.0.1) (2026-08-06)
 
@@ -28,16 +34,64 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Bug Fixes
 
 - **modal:** give Drawer dialog an accessible name ([da7460a](https://github.com/entur/design-system/commit/da7460a0e7ac962ad463a707df3e1dd254fa1763))
+
+  The Drawer title is now exposed as the dialog's accessible name via
+  aria-labelledby, so screen readers announce the drawer correctly when
+  it opens.
+
 - **modal:** remove React.FC in favor of typed function parameters ([abc098b](https://github.com/entur/design-system/commit/abc098b24b4cd883c0f47ed0f1270f4af5a03a6e))
+
+  React.FC no longer provides implicit children typing in React 18.
+  Move type annotations directly to function parameters.
+
 - **tab, expand, modal, utils:** fix React 18 type errors and clean up [@reach](https://github.com/reach) leftovers ([d29bedc](https://github.com/entur/design-system/commit/d29bedcdc2701a192e0cf39587a2928cae55191e))
+
+  - Fix cloneElement TS errors in TabList and TabPanels by casting to ReactElement<any>
+  - Suppress react-collapse type incompatibility with React 18 in BaseExpand
+  - Remove dead --reach-tabs and --reach-dialog CSS custom properties
+  - Update @types/react@18 and @types/react-dom@18 resolutions to match devDependencies
+  - Remove unused React import in ConditionalWrapper (react-jsx handles it)
 
 ### Features
 
 - **modal:** add exports field for ESM-compatible module resolution ([01c75e1](https://github.com/entur/design-system/commit/01c75e1b583100f5ea920fb541e31edbc23e51c4))
+
+  Consumers no longer need bundler aliases to resolve ESM entry points.
+  Declares explicit exports map with entries for main entrypoint,
+  ./styles (CSS), ./dist/styles.css (compat), and ./package.json.
+  Deep dist/ imports not listed will stop resolving.
+
 - **modal:** replace @reach/dialog with native <dialog> element ([0de754e](https://github.com/entur/design-system/commit/0de754e5a63f6b4d4ea7223f293d439fae8ac49d))
+
+  The Modal and Drawer components now use the native HTML <dialog>
+  element under the hood. Behaviour is broadly the same, but a few
+  things differ:
+
+  - The backdrop is now a ::backdrop pseudo-element. CSS overrides that
+    targeted a backdrop DOM node need to be updated.
+  - The overlay DOM is a <dialog> element. Selectors targeting
+    @reach/dialog's [data-reach-dialog-*] attributes no longer apply.
+  - Focus management now uses the browser's built-in top layer and
+    sibling inert behaviour. Tab can leave the modal to browser chrome
+    (address bar) by design.
+
 - **modal:** require onDismiss and add showCloseButton prop ([3b3f85e](https://github.com/entur/design-system/commit/3b3f85e1ea331bdc9bc5b2ca7eca3a3fccfe17d9))
+
+  - onDismiss is now required. Esc and clicking outside the modal always
+    close it — the dismiss callback wires React state to that.
+  - New showCloseButton prop (default true) hides the close button.
+    Useful for command palette / cmd-K style modals.
+  - The modal title receives focus when the modal opens.
+  - Keep the modal mounted between opens; toggle visibility with the
+    open prop. Avoid {open && <Modal>}, which prevents focus from
+    returning to the trigger on close.
+  - Smaller bundle: react-focus-lock is no longer used.
+
 - **modal:** require React 18 as minimum peer dependency ([bdcfb0f](https://github.com/entur/design-system/commit/bdcfb0f117cb77be801f0586ee515dc084cf185a))
 - **modal:** respect prefers-reduced-motion ([c0427df](https://github.com/entur/design-system/commit/c0427df257fe4ae68b7d1abf255e2cda2615f69b))
+
+  The slide and fade animations on open are disabled for users who have
+  requested reduced motion in their operating system.
 
 ### BREAKING CHANGES
 
@@ -129,8 +183,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Bug Fixes
 
 - **deps:** bump minor for dependencies ([bdde8f2](https://github.com/entur/design-system/commit/bdde8f2d5ab46cfa307a424429063b9700edfc1e))
+
+  classnames, react-focus-lock, @react-aria, @react-stately, @internationalized/date, react-dropzone
+
 - exclude dependencies from bundle ([5252a14](https://github.com/entur/design-system/commit/5252a14c4c615452f3cc7effc73287a5ee42399e))
 - fix package.json field order ([7de85f2](https://github.com/entur/design-system/commit/7de85f2baf08a1fc3a0223e3f149c8cf9636546b))
+
+  incorrect order made types unavailable
 
 ## [1.7.72](https://github.com/entur/design-system/compare/@entur/modal@1.7.71...@entur/modal@1.7.72) (2025-06-27)
 

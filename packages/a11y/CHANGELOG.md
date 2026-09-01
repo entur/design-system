@@ -21,9 +21,18 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **a11y:** remove React.FC in favor of typed function parameters ([7bf10f3](https://github.com/entur/design-system/commit/7bf10f3beb68b00477aa996c3a78adda6c314058))
 
+  React.FC no longer provides implicit children typing in React 18.
+  Move type annotations directly to function parameters.
+
 ### Features
 
 - **a11y:** add exports field for ESM-compatible module resolution ([2beb2f5](https://github.com/entur/design-system/commit/2beb2f56ba2b428f96b66d3a4140055d1a5f683d))
+
+  Consumers no longer need bundler aliases to resolve ESM entry points.
+  Declares explicit exports map with entries for main entrypoint,
+  ./styles (CSS), ./dist/styles.css (compat), and ./package.json.
+  Deep dist/ imports not listed will stop resolving.
+
 - **a11y:** require React 18 as minimum peer dependency ([0596eba](https://github.com/entur/design-system/commit/0596eba5e95b376216bbbcf6c8981337b8e7785c))
 
 ### BREAKING CHANGES
@@ -77,6 +86,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - exclude dependencies from bundle ([5252a14](https://github.com/entur/design-system/commit/5252a14c4c615452f3cc7effc73287a5ee42399e))
 - fix package.json field order ([7de85f2](https://github.com/entur/design-system/commit/7de85f2baf08a1fc3a0223e3f149c8cf9636546b))
+
+  incorrect order made types unavailable
 
 ## [0.2.99](https://github.com/entur/design-system/compare/@entur/a11y@0.2.98...@entur/a11y@0.2.99) (2025-05-22)
 

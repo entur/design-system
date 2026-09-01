@@ -25,9 +25,18 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **chip:** remove React.FC in favor of typed function parameters ([bd269e3](https://github.com/entur/design-system/commit/bd269e3b5497bbcb814390d35effe84b273a16e7))
 
+  React.FC no longer provides implicit children typing in React 18.
+  Move type annotations directly to function parameters.
+
 ### Features
 
 - **chip:** add exports field for ESM-compatible module resolution ([9234e1c](https://github.com/entur/design-system/commit/9234e1c9acbd447f6d825abeec560211a05730a8))
+
+  Consumers no longer need bundler aliases to resolve ESM entry points.
+  Declares explicit exports map with entries for main entrypoint,
+  ./styles (CSS), ./dist/styles.css (compat), and ./package.json.
+  Deep dist/ imports not listed will stop resolving.
+
 - **chip:** require React 18 as minimum peer dependency ([71a1996](https://github.com/entur/design-system/commit/71a1996dbf868c77857f2c935fca30fbc71a4e4d))
 
 ### BREAKING CHANGES
@@ -99,6 +108,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - remove unneccesary vendor prefixes from source scss files ([14fe64e](https://github.com/entur/design-system/commit/14fe64eac51ae7756ea096cdc2c3b1e8bc1cb921))
 
+  Vendor prefixas are now added via PostCSS instead
+
 ## [0.9.8](https://github.com/entur/design-system/compare/@entur/chip@0.9.7...@entur/chip@0.9.8) (2025-10-27)
 
 **Note:** Version bump only for package @entur/chip
@@ -128,8 +139,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Bug Fixes
 
 - **deps:** bump minor for dependencies ([bdde8f2](https://github.com/entur/design-system/commit/bdde8f2d5ab46cfa307a424429063b9700edfc1e))
+
+  classnames, react-focus-lock, @react-aria, @react-stately, @internationalized/date, react-dropzone
+
 - exclude dependencies from bundle ([5252a14](https://github.com/entur/design-system/commit/5252a14c4c615452f3cc7effc73287a5ee42399e))
 - fix package.json field order ([7de85f2](https://github.com/entur/design-system/commit/7de85f2baf08a1fc3a0223e3f149c8cf9636546b))
+
+  incorrect order made types unavailable
 
 # [0.9.0](https://github.com/entur/design-system/compare/@entur/chip@0.8.12...@entur/chip@0.9.0) (2025-07-29)
 

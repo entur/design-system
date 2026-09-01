@@ -9,17 +9,32 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **tab:** warn about mismatched indices when panels load lazily ([b8f354c](https://github.com/entur/design-system/commit/b8f354c79e45bd9a6bcb665a0e08e506fa4768a3))
 
+  Tabs and panels that mount behind a Suspense boundary now trigger the
+  index warnings right away. Before, the warning only showed up after
+  switching tab, so markup that renders every panel at once looked fine
+  in the console on load.
+
 # [0.9.0](https://github.com/entur/design-system/compare/@entur/tab@0.8.2...@entur/tab@0.9.0) (2026-08-20)
 
 ### Features
 
 - **tab:** let Tab and TabPanel take an explicit index ([72a1661](https://github.com/entur/design-system/commit/72a1661e902d75e0187e86c90a1e1ff916eabb42))
 
+  Tabs and panels nested in fragments, wrapper elements or Suspense now get the
+  index their position implies, instead of all belonging to the first tab. A
+  panel that lives inside a component of your own takes an index prop.
+
+  When the indices cannot line up, the console explains why and how to fix it:
+  several tabs or panels on one index, a selected tab without a panel, or a
+  panel no tab can reach.
+
 ## [0.8.2](https://github.com/entur/design-system/compare/@entur/tab@0.8.1...@entur/tab@0.8.2) (2026-08-13)
 
 ### Bug Fixes
 
 - **tab/tab list:** keep arrow key navigation working inside shadow DOM ([db1bf7e](https://github.com/entur/design-system/commit/db1bf7ee93517f8ee02cc25e0f5381d45e76e021))
+
+  Arrow keys, Home and End now move between tabs when the tab list is rendered inside a shadow root.
 
 ## [0.8.1](https://github.com/entur/design-system/compare/@entur/tab@0.8.0...@entur/tab@0.8.1) (2026-08-06)
 
@@ -30,15 +45,50 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Bug Fixes
 
 - **tab, expand, modal, utils:** fix React 18 type errors and clean up [@reach](https://github.com/reach) leftovers ([d29bedc](https://github.com/entur/design-system/commit/d29bedcdc2701a192e0cf39587a2928cae55191e))
+
+  - Fix cloneElement TS errors in TabList and TabPanels by casting to ReactElement<any>
+  - Suppress react-collapse type incompatibility with React 18 in BaseExpand
+  - Remove dead --reach-tabs and --reach-dialog CSS custom properties
+  - Update @types/react@18 and @types/react-dom@18 resolutions to match devDependencies
+  - Remove unused React import in ConditionalWrapper (react-jsx handles it)
+
 - **tab:** add Tab as prop test and fix type attribute for as='button' edge case ([2d79281](https://github.com/entur/design-system/commit/2d79281f6b224a425c57607e9579324bda9f867a))
 - **tab:** remove React.FC in favor of typed function parameters ([6460121](https://github.com/entur/design-system/commit/6460121c7c9092c48d272e09bbf83fbc109d5f08))
+
+  React.FC no longer provides implicit children typing in React 18.
+  Move type annotations directly to function parameters.
+
 - **tab:** restore functional as prop in all tab components ([3590760](https://github.com/entur/design-system/commit/3590760b5104a09afd1a04498a450ce3a7d3b1a8))
+
+  The as prop was previously accepted but silently ignored (\_as variable
+  was never used). Now all 5 tab components (Tabs, TabList, Tab, TabPanel,
+  TabPanels) properly render with the specified element type, consistent
+  with 50+ other components in the design system that use the as prop.
+
+  For Tab, type="button" is only set when rendering as the default button
+  element to avoid invalid HTML attributes on non-button elements.
 
 ### Features
 
 - **tab:** add exports field for ESM-compatible module resolution ([2138b30](https://github.com/entur/design-system/commit/2138b30c46a0272542a55bda52939f56bcc7fb76))
+
+  Consumers no longer need bundler aliases to resolve ESM entry points.
+  Declares explicit exports map with entries for main entrypoint,
+  ./styles (CSS), ./dist/styles.css (compat), and ./package.json.
+  Deep dist/ imports not listed will stop resolving.
+
 - **tab:** replace @reach/tabs with native ARIA implementation ([9c28573](https://github.com/entur/design-system/commit/9c2857395510ffcb22cbd2b825c96c61f26d9f92))
+
+  Replace @reach/tabs with zero-dependency implementation using React
+  Context and WAI-ARIA tabs pattern. SSR-compatible via React useId().
+
+  New features: keepMounted prop on TabPanels, aria-label/aria-labelledby
+  on TabList, disabled tab support for polymorphic as prop.
+
 - **tab:** require React 18, replace @reach/tabs with custom ARIA implementation ([987efe0](https://github.com/entur/design-system/commit/987efe0a3a50dda8a1d20d40767e1e45bd24becd))
+
+  Removes @reach/tabs and replaces it with a custom accessible tab implementation
+  using ARIA roles. All existing props and keyboard navigation are preserved.
 
 ### BREAKING CHANGES
 
@@ -71,6 +121,10 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Features
 
 - **tokens:** update primitive, semantic, base and component color tokens ([3ef6220](https://github.com/entur/design-system/commit/3ef622059143f24dcf7c94b19d4b7337fbac3508))
+
+  Updates primitive, semantic, base and component-level color tokens.
+  Visual changes affect alert, datepicker, loader, menu, tab, and travel
+  components.
 
 ## [0.6.7](https://github.com/entur/design-system/compare/@entur/tab@0.6.6...@entur/tab@0.6.7) (2026-05-13)
 
@@ -107,8 +161,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Bug Fixes
 
 - **deps:** bump minor for dependencies ([bdde8f2](https://github.com/entur/design-system/commit/bdde8f2d5ab46cfa307a424429063b9700edfc1e))
+
+  classnames, react-focus-lock, @react-aria, @react-stately, @internationalized/date, react-dropzone
+
 - exclude dependencies from bundle ([5252a14](https://github.com/entur/design-system/commit/5252a14c4c615452f3cc7effc73287a5ee42399e))
 - fix package.json field order ([7de85f2](https://github.com/entur/design-system/commit/7de85f2baf08a1fc3a0223e3f149c8cf9636546b))
+
+  incorrect order made types unavailable
 
 ## [0.5.4](https://github.com/entur/design-system/compare/@entur/tab@0.5.3...@entur/tab@0.5.4) (2025-05-22)
 

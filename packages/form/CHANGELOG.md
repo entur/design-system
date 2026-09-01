@@ -12,13 +12,46 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Bug Fixes
 
 - **form, datepicker:** announce feedback text to screen readers by default ([10783dd](https://github.com/entur/design-system/commit/10783ddfdb043bb8d0ebaf71743471ebf0290fcb))
+
+  The live region is now rendered empty on mount and filled when a message
+  appears, so screen readers pick up validation messages reliably.
+
+  Messages default to role="status". Pass ariaAlertOnFeedback="alert" for
+  messages that must interrupt what the screen reader is saying.
+
+  Status icons are hidden from screen readers, so the feedback text needs to
+  be understandable on its own.
+
+  Note: datepicker feedback with variant negative or warning previously got
+  role="alert" and now defaults to role="status".
+
 - **form/feedback text:** restore the symbol inside the error icon ([4abb000](https://github.com/entur/design-system/commit/4abb0000824565545c50617aab7f06752b774354))
+
+  The inner circle of the error and negative icon referenced a custom
+  property that does not exist, so the symbol lost its fill and blended
+  into the icon background.
+
 - **form/text field, form/text area:** set aria-invalid for the negative variant ([a932ec3](https://github.com/entur/design-system/commit/a932ec38328d720bb7573ebababf7938448ae9bb))
+
+  aria-invalid only checked the deprecated variant="error", so fields using
+  variant="negative" were never marked invalid for screen readers.
 
 ### Features
 
 - **form/text area:** forward ariaAlertOnFeedback so feedback is announced ([440f401](https://github.com/entur/design-system/commit/440f401e46bec2b746bf3817025c026e880fad41))
+
+  TextArea never passed the prop on to BaseFormControl, so its feedback text
+  was never announced to screen readers.
+
 - **form:** control how feedback text is announced with ariaAlertOnFeedback and feedbackProps ([f555018](https://github.com/entur/design-system/commit/f5550189f3189485113d45bd7803b5b241c4a241))
+
+  ariaAlertOnFeedback now defaults to 'status', so the feedback text is
+  announced politely without setting any props. Pass true or 'alert' for
+  role="alert" on messages that must interrupt the screen reader, or false to
+  drop the live region entirely.
+
+  feedbackProps forwards extra props to the feedback text. Your own role or
+  aria-live there wins over ariaAlertOnFeedback.
 
 ## [10.0.2](https://github.com/entur/design-system/compare/@entur/form@10.0.1...@entur/form@10.0.2) (2026-08-13)
 
@@ -30,15 +63,29 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **form/text area:** keep the label legible on any background ([5309457](https://github.com/entur/design-system/commit/5309457cd04558dc2add88db202f043a1a1558ec))
 
+  The label no longer paints its own background patch. Text scrolling under it
+  fades out instead, so the label reads correctly in light mode, dark mode,
+  inside Contrast and on custom background colours.
+
 # [10.0.0](https://github.com/entur/design-system/compare/@entur/form@9.3.8...@entur/form@10.0.0) (2026-07-30)
 
 ### Bug Fixes
 
 - **form:** remove React.FC in favor of typed function parameters ([8cca9de](https://github.com/entur/design-system/commit/8cca9de7a89e31b0df07ffe9b1a1bcd1794fb73f))
 
+  React.FC no longer provides implicit children typing in React 18.
+  Move type annotations directly to function parameters.
+  Add explicit children prop to VariantProviderProps.
+
 ### Features
 
 - **form:** add exports field for ESM-compatible module resolution ([eea2a52](https://github.com/entur/design-system/commit/eea2a52a2239e55413476dfd5248ec9fe73a11ae))
+
+  Consumers no longer need bundler aliases to resolve ESM entry points.
+  Declares explicit exports map with entries for main entrypoint,
+  ./styles (CSS), ./dist/styles.css (compat), and ./package.json.
+  Deep dist/ imports not listed will stop resolving.
+
 - **form:** require React 18 as minimum peer dependency ([372e013](https://github.com/entur/design-system/commit/372e0135acdd70dad40cda12ebb63d2661fd8a84))
 
 ### BREAKING CHANGES
@@ -80,15 +127,22 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **form/segmented control:** correct onChange type to not include FormEventHandler ([4f07bc5](https://github.com/entur/design-system/commit/4f07bc55cd88b3e2ea59ed6e7b87174a31803615))
 
+  onChange is now correctly typed as (value: string | null) => void instead
+  of an intersection with React.FormEventHandler<HTMLDivElement>.
+
 ### Features
 
 - **form/text area:** add resize prop to TextArea ([c382a05](https://github.com/entur/design-system/commit/c382a05fcb7fcfd454ab977594a427580bda98c2))
+
+  Adds a `resize` prop that controls the CSS resize behavior of the textarea element. Accepts resize values "none" or "vertical". Defaults to "vertical" (unchanged from current behavior).
 
 ## [9.2.6](https://github.com/entur/design-system/compare/@entur/form@9.2.5...@entur/form@9.2.6) (2026-02-20)
 
 ### Bug Fixes
 
 - **form/segmented control:** fix keyboad navigation not working when using tooltip wrapper ([79b32de](https://github.com/entur/design-system/commit/79b32de394edc3bfe44c7b02d2d62cdecb35bb8d))
+
+  Fixed by making sure keyboard foucus only moves between actual segmented options.
 
 ## [9.2.5](https://github.com/entur/design-system/compare/@entur/form@9.2.4...@entur/form@9.2.5) (2026-02-05)
 
@@ -121,7 +175,16 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 - **datepicker:** use aria-alert only on negative and warning variants ([352c6f6](https://github.com/entur/design-system/commit/352c6f6469661c681b89faf6fa8d993ecdd9db63))
 - **form/text field:** only add extra wrapper around append elements when clearable is true ([22ef49d](https://github.com/entur/design-system/commit/22ef49d0fd594854c7f5466413cc36091abbeacc))
 - **form/textfield:** clearable prop not working for uncontrolled input ([b1eba6d](https://github.com/entur/design-system/commit/b1eba6d2056a6b63f11edc5540b2d489c9b36375))
+
+  Clear button is now keyboard accessible and onClear is not needed for
+  the clear button to work.
+
+  Before: The clear button only appeared if both clearable AND onClear were provided. After: The clear
+  button appears whenever clearable={true}, and uses onClear if provided
+
 - **form/textfield:** use icon button component for clear button ([0a402a6](https://github.com/entur/design-system/commit/0a402a65ed23e77c721e41445acef801c29af4af))
+
+  Append now works together with clearable.
 
 ### Features
 
@@ -142,6 +205,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **form/segmented control:** add polymorphic `as` prop to SegmentedChoice ([1c77768](https://github.com/entur/design-system/commit/1c77768bcb78abb401e23a5c19af6d20e94140c9))
 - **form/segmented control:** add support for uncontrolled behavior ([00671b0](https://github.com/entur/design-system/commit/00671b09c797ea511c16dc7e212484300d0cece5))
+
+  Deprecate `selectedValue` and add `value` and `defaultValue` to follow HTML standards.
+
 - **segmented control:** add support for new subcomponent API with SegmentedControl.Item ([caae72a](https://github.com/entur/design-system/commit/caae72a570d052e8f5848ea7ea6f79d91194860f))
 
 ### BREAKING CHANGES
@@ -162,6 +228,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **add travel:** add detail section to TravelTag ([0185c7a](https://github.com/entur/design-system/commit/0185c7aa2c1e5961435d9d92c7a7020c24a27c4b))
 
+  This field is useful for e.g. adding a departure number to the tag.
+
 ## [8.3.4](https://github.com/entur/design-system/compare/@entur/form@8.3.3...@entur/form@8.3.4) (2025-09-24)
 
 **Note:** Version bump only for package @entur/form
@@ -171,8 +239,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Bug Fixes
 
 - **deps:** bump minor for dependencies ([bdde8f2](https://github.com/entur/design-system/commit/bdde8f2d5ab46cfa307a424429063b9700edfc1e))
+
+  classnames, react-focus-lock, @react-aria, @react-stately, @internationalized/date, react-dropzone
+
 - exclude dependencies from bundle ([5252a14](https://github.com/entur/design-system/commit/5252a14c4c615452f3cc7effc73287a5ee42399e))
 - fix package.json field order ([7de85f2](https://github.com/entur/design-system/commit/7de85f2baf08a1fc3a0223e3f149c8cf9636546b))
+
+  incorrect order made types unavailable
 
 ## [8.3.1](https://github.com/entur/design-system/compare/@entur/form@8.3.0...@entur/form@8.3.1) (2025-07-29)
 

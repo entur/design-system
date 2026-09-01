@@ -20,6 +20,12 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Features
 
 - **grid:** add exports field for ESM-compatible module resolution ([cfa4b6f](https://github.com/entur/design-system/commit/cfa4b6fe6eb0043fe5f4316935598544dcba2767))
+
+  Consumers no longer need bundler aliases to resolve ESM entry points.
+  Declares explicit exports map with entries for main entrypoint,
+  ./styles (CSS), ./dist/styles.css (compat), and ./package.json.
+  Deep dist/ imports not listed will stop resolving.
+
 - **grid:** require React 18 as minimum peer dependency ([a516a71](https://github.com/entur/design-system/commit/a516a7156eca267cb7ad09ea57d4e2f949332013))
 
 ### BREAKING CHANGES
@@ -72,8 +78,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Bug Fixes
 
 - **deps:** bump minor for dependencies ([bdde8f2](https://github.com/entur/design-system/commit/bdde8f2d5ab46cfa307a424429063b9700edfc1e))
+
+  classnames, react-focus-lock, @react-aria, @react-stately, @internationalized/date, react-dropzone
+
 - exclude dependencies from bundle ([5252a14](https://github.com/entur/design-system/commit/5252a14c4c615452f3cc7effc73287a5ee42399e))
 - fix package.json field order ([7de85f2](https://github.com/entur/design-system/commit/7de85f2baf08a1fc3a0223e3f149c8cf9636546b))
+
+  incorrect order made types unavailable
 
 ## [0.3.65](https://github.com/entur/design-system/compare/@entur/grid@0.3.64...@entur/grid@0.3.65) (2025-05-22)
 

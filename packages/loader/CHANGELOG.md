@@ -25,9 +25,18 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **loader:** remove React.FC in favor of typed function parameters ([3ccbd6e](https://github.com/entur/design-system/commit/3ccbd6eb65c4babb6d9d7f60c57469d8a29d43e6))
 
+  React.FC no longer provides implicit children typing in React 18.
+  Move type annotations directly to function parameters.
+
 ### Features
 
 - **loader:** add exports field for ESM-compatible module resolution ([f22bced](https://github.com/entur/design-system/commit/f22bced69505fe493ee032c858ae5413b37fb6e8))
+
+  Consumers no longer need bundler aliases to resolve ESM entry points.
+  Declares explicit exports map with entries for main entrypoint,
+  ./styles (CSS), ./dist/styles.css (compat), and ./package.json.
+  Deep dist/ imports not listed will stop resolving.
+
 - **loader:** require React 18 as minimum peer dependency ([80ad49b](https://github.com/entur/design-system/commit/80ad49bdfaab3ed2497462810c6d9378055133fe))
 
 ### BREAKING CHANGES
@@ -56,6 +65,10 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Features
 
 - **tokens:** update primitive, semantic, base and component color tokens ([3ef6220](https://github.com/entur/design-system/commit/3ef622059143f24dcf7c94b19d4b7337fbac3508))
+
+  Updates primitive, semantic, base and component-level color tokens.
+  Visual changes affect alert, datepicker, loader, menu, tab, and travel
+  components.
 
 ## [0.6.7](https://github.com/entur/design-system/compare/@entur/loader@0.6.6...@entur/loader@0.6.7) (2026-05-13)
 
@@ -89,6 +102,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - remove unneccesary vendor prefixes from source scss files ([14fe64e](https://github.com/entur/design-system/commit/14fe64eac51ae7756ea096cdc2c3b1e8bc1cb921))
 
+  Vendor prefixas are now added via PostCSS instead
+
 ## [0.5.35](https://github.com/entur/design-system/compare/@entur/loader@0.5.34...@entur/loader@0.5.35) (2025-10-20)
 
 **Note:** Version bump only for package @entur/loader
@@ -110,8 +125,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Bug Fixes
 
 - **deps:** bump minor for dependencies ([bdde8f2](https://github.com/entur/design-system/commit/bdde8f2d5ab46cfa307a424429063b9700edfc1e))
+
+  classnames, react-focus-lock, @react-aria, @react-stately, @internationalized/date, react-dropzone
+
 - exclude dependencies from bundle ([5252a14](https://github.com/entur/design-system/commit/5252a14c4c615452f3cc7effc73287a5ee42399e))
 - fix package.json field order ([7de85f2](https://github.com/entur/design-system/commit/7de85f2baf08a1fc3a0223e3f149c8cf9636546b))
+
+  incorrect order made types unavailable
 
 ## [0.5.29](https://github.com/entur/design-system/compare/@entur/loader@0.5.28...@entur/loader@0.5.29) (2025-06-27)
 

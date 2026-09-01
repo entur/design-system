@@ -25,9 +25,18 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **travel:** remove React.FC in favor of typed function parameters ([3f05690](https://github.com/entur/design-system/commit/3f056907fd5353ea695b37f5f0303517d5bd6579))
 
+  React.FC no longer provides implicit children typing in React 18.
+  Move type annotations directly to function parameters.
+
 ### Features
 
 - **travel:** add exports field for ESM-compatible module resolution ([3a27ee0](https://github.com/entur/design-system/commit/3a27ee04529583836a4294e49678a615bde30957))
+
+  Consumers no longer need bundler aliases to resolve ESM entry points.
+  Declares explicit exports map with entries for main entrypoint,
+  ./styles (CSS), ./dist/styles.css (compat), and ./package.json.
+  Deep dist/ imports not listed will stop resolving.
+
 - **travel:** require React 18 as minimum peer dependency ([fffe3fc](https://github.com/entur/design-system/commit/fffe3fc042c5e13fcb6ac810689caee5160ff9dd))
 
 ### BREAKING CHANGES
@@ -60,7 +69,16 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Features
 
 - **tokens:** update primitive, semantic, base and component color tokens ([3ef6220](https://github.com/entur/design-system/commit/3ef622059143f24dcf7c94b19d4b7337fbac3508))
+
+  Updates primitive, semantic, base and component-level color tokens.
+  Visual changes affect alert, datepicker, loader, menu, tab, and travel
+  components.
+
 - **travel/travel tag:** add tag type duration with smaller text size ([2dab88d](https://github.com/entur/design-system/commit/2dab88ddc373404fbb4c6818f918e32a5c784cdb))
+
+  New prop `type` with values `publicCode` (default) and `duration`.
+  Duration applies a smaller font size for displaying travel time,
+  intended for walk and shared mobility transport modes.
 
 ### BREAKING CHANGES
 
@@ -86,6 +104,10 @@ AI-assistant: Claude Code (claude-opus-4-6)
 
 - **travel/travel tag:** prevent text wrapping in TravelTag and details section ([8ae6bc2](https://github.com/entur/design-system/commit/8ae6bc2ff65c00802c0d6af63e5232498892125f))
 - **travel:** add missing snowcoach transport tokens and CSS variable fallback ([6bb1406](https://github.com/entur/design-system/commit/6bb14065418cede6ebd2c0b3435a7e866829b753))
+
+  SnowCoach transport mode existed but did not display correctly due to
+  missing CSS variables and design tokens. Add variables for fill, icon,
+  and text across all themes. Add CSS variable fallback for robustness.
 
 ## [6.5.5](https://github.com/entur/design-system/compare/@entur/travel@6.5.4...@entur/travel@6.5.5) (2026-02-05)
 
@@ -117,6 +139,9 @@ AI-assistant: Claude Code (claude-opus-4-6)
 ### Bug Fixes
 
 - remove unneccesary vendor prefixes from source scss files ([14fe64e](https://github.com/entur/design-system/commit/14fe64eac51ae7756ea096cdc2c3b1e8bc1cb921))
+
+  Vendor prefixas are now added via PostCSS instead
+
 - **travel/travel tag:** fix className not being applied to travel tag ([74e87c6](https://github.com/entur/design-system/commit/74e87c6173912d4553be06c32ae4c7339f00a89a))
 
 ## [6.4.4](https://github.com/entur/design-system/compare/@entur/travel@6.4.3...@entur/travel@6.4.4) (2025-10-27)
@@ -141,6 +166,8 @@ AI-assistant: Claude Code (claude-opus-4-6)
 
 - **add travel:** add detail section to TravelTag ([0185c7a](https://github.com/entur/design-system/commit/0185c7aa2c1e5961435d9d92c7a7020c24a27c4b))
 
+  This field is useful for e.g. adding a departure number to the tag.
+
 ## [6.3.16](https://github.com/entur/design-system/compare/@entur/travel@6.3.15...@entur/travel@6.3.16) (2025-09-24)
 
 **Note:** Version bump only for package @entur/travel
@@ -150,8 +177,13 @@ AI-assistant: Claude Code (claude-opus-4-6)
 ### Bug Fixes
 
 - **deps:** bump minor for dependencies ([bdde8f2](https://github.com/entur/design-system/commit/bdde8f2d5ab46cfa307a424429063b9700edfc1e))
+
+  classnames, react-focus-lock, @react-aria, @react-stately, @internationalized/date, react-dropzone
+
 - exclude dependencies from bundle ([5252a14](https://github.com/entur/design-system/commit/5252a14c4c615452f3cc7effc73287a5ee42399e))
 - fix package.json field order ([7de85f2](https://github.com/entur/design-system/commit/7de85f2baf08a1fc3a0223e3f149c8cf9636546b))
+
+  incorrect order made types unavailable
 
 ## [6.3.13](https://github.com/entur/design-system/compare/@entur/travel@6.3.12...@entur/travel@6.3.13) (2025-07-29)
 

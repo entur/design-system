@@ -9,6 +9,11 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **utils:** add getActiveElement for finding focus inside shadow DOM ([f67e2a3](https://github.com/entur/design-system/commit/f67e2a30ec772833911c0fd1b0cb29cc3aebd670))
 
+  Comparing against document.activeElement fails inside shadow DOM, where
+  it stops at the shadow host. This helper follows the chain into nested
+  shadow roots and behaves identically outside shadow DOM. It returns null
+  when there is no DOM, so it is safe to call during server rendering.
+
 ## [0.14.1](https://github.com/entur/design-system/compare/@entur/utils@0.14.0...@entur/utils@0.14.1) (2026-08-06)
 
 **Note:** Version bump only for package @entur/utils
@@ -18,13 +23,32 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Bug Fixes
 
 - **tab, expand, modal, utils:** fix React 18 type errors and clean up [@reach](https://github.com/reach) leftovers ([d29bedc](https://github.com/entur/design-system/commit/d29bedcdc2701a192e0cf39587a2928cae55191e))
+
+  - Fix cloneElement TS errors in TabList and TabPanels by casting to ReactElement<any>
+  - Suppress react-collapse type incompatibility with React 18 in BaseExpand
+  - Remove dead --reach-tabs and --reach-dialog CSS custom properties
+  - Update @types/react@18 and @types/react-dom@18 resolutions to match devDependencies
+  - Remove unused React import in ConditionalWrapper (react-jsx handles it)
+
 - **utils:** deprecate useRandomId in favor of React useId ([15dbaa4](https://github.com/entur/design-system/commit/15dbaa4e3636e33b8a3e698326593e25d8d266c9))
 - **utils:** use React 18 useId() and useSyncExternalStore ([410887a](https://github.com/entur/design-system/commit/410887ae87a97269e936db42f4b2500ad25393e5))
+
+  useRandomId now wraps useId() instead of Math.random(), which
+  eliminates SSR hydration mismatches for all components generating
+  HTML IDs (datepicker, dropdown, expand, form, menu, table, tooltip).
+
+  useWindowDimensions now uses useSyncExternalStore with a server
+  snapshot, making it concurrent-rendering safe and SSR-compatible.
 
 ### Features
 
 - **utils:** require React 18 as minimum peer dependency ([0e96e91](https://github.com/entur/design-system/commit/0e96e9149904a394e8f02004c2065679872d3f98))
 - **utils:** tighten exports field and remove dist/\* wildcard ([90dde47](https://github.com/entur/design-system/commit/90dde470681d6332982272c3e742a03d6614c8f4))
+
+  Replaces ./dist/\* wildcard with explicit SCSS subpath entries.
+  Adds ./styles/breakpoints and ./styles/color-utils as clean imports.
+  Removes phantom ./styles export (no styles.css exists).
+  Consumers no longer need bundler aliases for ESM resolution.
 
 ### BREAKING CHANGES
 
@@ -59,6 +83,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - exclude dependencies from bundle ([5252a14](https://github.com/entur/design-system/commit/5252a14c4c615452f3cc7effc73287a5ee42399e))
 - fix package.json field order ([7de85f2](https://github.com/entur/design-system/commit/7de85f2baf08a1fc3a0223e3f149c8cf9636546b))
+
+  incorrect order made types unavailable
 
 ## [0.12.3](https://github.com/entur/design-system/compare/@entur/utils@0.12.2...@entur/utils@0.12.3) (2025-03-24)
 

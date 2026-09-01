@@ -8,49 +8,222 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Bug Fixes
 
 - **website:** handle failures when recording consent ([131b866](https://github.com/entur/design-system/commit/131b8660e7775fdf68b1cb5c1a623ab546f94171))
+
+  Review of the consent work turned up four ways a failure could pass for
+  success:
+
+  - The banner closed before the choice had been recorded, so a rejected call
+    left the reader believing they had answered.
+  - Saving from the privacy page threw past the check that shows the choice as
+    unavailable, so a failed save looked like a saved one.
+  - A single failed attempt at reading the texts was remembered for the rest of
+    the visit, so a connection that dropped for a moment ruled out the banner
+    until the next page load.
+  - Links with an empty address were left looking clickable, and reloaded the
+    page when clicked.
+
+  Category names also fall back to their id rather than rendering a checkbox
+  with no label, should Usercentrics ever serve a category it has no text for.
+
 - **website:** hide the consent controls when they cannot do anything ([5652af6](https://github.com/entur/design-system/commit/5652af6c04849b840f090f2f785773ec5890980c))
+
+  The footer link and the settings panel section for changing consent stayed
+  visible when Usercentrics could not be reached, and clicking them did nothing
+  at all. They are now left out until we know the consent solution answers, so
+  nothing leads to a dead end. The privacy link in the footer still explains
+  what is stored and why the choice is unavailable.
+
+  Also corrects the spelling of "informasjonskapsler" in the settings panel.
+
 - **website:** let links point straight at a section of the privacy page ([52dbbe3](https://github.com/entur/design-system/commit/52dbbe3172fa76e15a8b534738e6be4505aa8ada))
+
+  Links such as /personvern#personvern-nodvendig now land on the section they
+  name. The sections are built from data we fetch after the page loads, so the
+  browser had already given up on the address bar by the time they existed.
+
+  A section in the address bar now also takes precedence over keeping the
+  consent banner in view, since it says where the reader wants to be. Ordinary
+  navigation still lands at the top with the banner visible.
+
 - **website:** navigate to the privacy page without a full reload ([3ad54aa](https://github.com/entur/design-system/commit/3ad54aa2d7b744c7ce48cd0ccbd050c193190b67))
+
+  The footer link to /personvern used a plain href, so it reloaded the whole
+  site instead of navigating within it.
+
 - **website:** put the consent banner above the navigation on mobile ([e757093](https://github.com/entur/design-system/commit/e7570935a7baa48c93c05c0888b6e9f09a4e0922))
+
+  The banner is meant to come first on the page, as it does on wide screens.
+  On small screens the navigation is fixed and sat on top of it, leaving the
+  banner below the menu.
+
+  The navigation now follows the page while the banner is up, and returns to
+  its fixed position once the banner has been answered. It still sticks to the
+  top of the screen once the banner is scrolled past.
+
 - **website:** style links in consent texts like the rest of the site ([926334b](https://github.com/entur/design-system/commit/926334b7f2c0abb75cb4fcfbf7485b0dbd3bcd2a))
+
+  Links inside the consent texts came out in the browser's own blue and
+  visited purple, since they arrive as plain HTML from Usercentrics. They now
+  use the design system's link styling.
+
+  Links without any text are dropped — they were invisible to readers and
+  unusable with a screen reader.
+
 - **website:** tell readers what we store when the consent solution is down ([36f1fbd](https://github.com/entur/design-system/commit/36f1fbd161a37451fc933e872a7402b93adeeb22))
+
+  The privacy page only showed an error when it could not reach Usercentrics.
+  The information the site stores itself keeps working regardless, so the page
+  now accounts for it either way, and says plainly that no optional technology
+  is in use and that consent cannot be given until the connection is back.
 
 ### Features
 
 - **website:** add a privacy page showing what we store ([4707f63](https://github.com/entur/design-system/commit/4707f6347a42f6be0b2e499045a06840a0fa3bf9))
+
+  New page at /personvern listing every technology the site uses, what it
+  collects and why, and on what legal basis. Optional categories can be
+  turned on and off from the page itself, and it shows the consent ID to
+  quote when asking for access or deletion.
+
+  The details are read from Usercentrics, so they cannot drift from the
+  configuration. Linked from the footer and from the consent banner, which
+  replaces linking to the Usercentrics detail layer.
+
 - **website:** make the privacy page an ordinary documentation page ([6386329](https://github.com/entur/design-system/commit/63863290853d67d0598d1bf70d6907e5af3f1769))
+
+  /personvern was built with its own layout because the side menu is derived
+  from the first segment of the path, leaving a root level page with an empty
+  column beside it. Frontmatter can now ask for that column to be left out, so
+  the page uses the same layout as the rest of the site and no longer carries
+  its own navigation and footer.
+
+  Also fixes normalizeString, which handled an undefined category but not the
+  null that GraphQL returns for a page without a parent.
+
 - **website:** replace the embedded cookie banner with our own ([8bc6866](https://github.com/entur/design-system/commit/8bc6866fdadce4a077ad79ebf75aea652569d1f8))
+
+  The cookie banner now follows the consent banner pattern from
+  designsystemet.no: inline at the top of the page, not a dialog, and it
+  never blocks the page or takes focus on load. Accept and decline carry
+  equal weight, as a valid consent requires.
+
+  Usercentrics still records the consent and unblocks scripts. Its own UI
+  is suppressed and all banner text is read from the Usercentrics admin, so
+  the copy stays in one place.
+
 - **website:** show the short banner message below the consent buttons ([569a22f](https://github.com/entur/design-system/commit/569a22fd6cb172f25e8f00d1524bb8944dbb605d))
+
+  The short banner message from Usercentrics is now shown under the Ja/Nei
+  buttons, where it explains the necessary information that cannot be turned
+  off. It sits apart from the buttons so it never reads as a third option.
+
+  This replaces the separate link to the privacy page, which the message
+  itself already carries.
 
 # [6.21.0](https://github.com/entur/design-system/compare/@entur/documentation@6.20.5...@entur/documentation@6.21.0) (2026-08-20)
 
 ### Bug Fixes
 
 - **form, datepicker:** announce feedback text to screen readers by default ([10783dd](https://github.com/entur/design-system/commit/10783ddfdb043bb8d0ebaf71743471ebf0290fcb))
+
+  The live region is now rendered empty on mount and filled when a message
+  appears, so screen readers pick up validation messages reliably.
+
+  Messages default to role="status". Pass ariaAlertOnFeedback="alert" for
+  messages that must interrupt what the screen reader is saying.
+
+  Status icons are hidden from screen readers, so the feedback text needs to
+  be understandable on its own.
+
+  Note: datepicker feedback with variant negative or warning previously got
+  role="alert" and now defaults to role="status".
+
 - **website:** add the missing gap below an open playground code section ([f8db929](https://github.com/entur/design-system/commit/f8db929990b304fc69b6a10f85f883ad16e5f826))
+
+  The element above the code section hands its bottom margin over to the
+  section itself, so the gap is the same whether the code is open or closed and
+  nothing below the playground moves while it collapses.
+
 - **website:** move search modal close button inside the dialog ([97074e3](https://github.com/entur/design-system/commit/97074e33eeff4f4c55622f0639aeeb07bc635e10))
+
+  Add a heading above the search field that also names the field, and turn
+  the old label into a placeholder.
+
 - **website:** rename footer contact section and reorder its links ([a6668f2](https://github.com/entur/design-system/commit/a6668f2906b55f5eae4256672572bc07ca2f5077))
 
 ### Features
 
 - **form/text area:** forward ariaAlertOnFeedback so feedback is announced ([440f401](https://github.com/entur/design-system/commit/440f401e46bec2b746bf3817025c026e880fad41))
 
+  TextArea never passed the prop on to BaseFormControl, so its feedback text
+  was never announced to screen readers.
+
 ## [6.20.5](https://github.com/entur/design-system/compare/@entur/documentation@6.20.4...@entur/documentation@6.20.5) (2026-08-13)
 
 ### Bug Fixes
 
 - **website:** drop the sidebar column background ([af5c278](https://github.com/entur/design-system/commit/af5c2782600bfe786d4ef0eec212f9f476567ebf))
+
+  The beta SideNavigation paints its own background, so the column behind it
+  no longer needs one.
+
 - **website:** expose the beta side navigation as SideNavigationBeta ([77ae98e](https://github.com/entur/design-system/commit/77ae98e943b29d4e33b7d3781b1d40234d5fd008))
+
+  A single alias reads better in doc examples than a MenuBeta namespace, and still
+  avoids shadowing the stable SideNavigation.
+
 - **website:** let Maler keep its own group under Komponenter ([be54964](https://github.com/entur/design-system/commit/be54964877c3f2cdc84a76b6c0c785846ee94c6d))
+
+  Subcategories under Komponenter are merged into one group, so Maler needs
+  to opt out the same way Oversikt and Ressurser do.
+
 - **website:** list every component in one group under Komponenter ([a6aff49](https://github.com/entur/design-system/commit/a6aff4914c87c7420360fad6ad84b8249647796d))
+
+  The section split (Knapper, Skjemaelementer, Navigasjon, Layout & Flater,
+  Feedback, Reise) made components hard to find when you did not already know
+  which section one belonged to. They now share a single alphabetical group.
+  Oversikt and Ressurser keep their own.
+
 - **website:** load @entur/menu/beta in the docs site and playroom ([aeb997c](https://github.com/entur/design-system/commit/aeb997c039a96854bc6e14f7d98b2438d8dcfac5))
+
+  Exposed under a MenuBeta namespace rather than spread flat, since its
+  SideNavigation would otherwise shadow the stable one used by existing examples.
+
 - **website:** move search out of the sidebar ([5173347](https://github.com/entur/design-system/commit/5173347227dbe2318958f38d51d6f732abf333cc))
+
+  The sidebar duplicated the search button that already sits in the top bar,
+  so drop it and leave the top bar as the one entry point.
+
 - **website:** move the Grid page out of Ressurser ([f8623a9](https://github.com/entur/design-system/commit/f8623a9615f2744b907521d19f9c7c7c285b553a))
+
+  Grid is a component, not a resource, so it belongs in the component group
+  with the rest. The URL is unchanged.
+
 - **website:** regenerate stale datepicker prop tables ([4a2c23b](https://github.com/entur/design-system/commit/4a2c23bae01066851cfaecf2b49de45dbee2d20d))
+
+  Drift picked up by running the prop generator; unrelated to the beta menu work.
+
 - **website:** render every docs logo with the Logo component ([693fa9c](https://github.com/entur/design-system/commit/693fa9cc02af0ceeae4583939455b87281be29ca))
+
+  Replaces the local Logo wrapper and the remaining img tags in the mobile
+  top bar, the footer and the stand page. The component resolves dark and
+  contrast through its own tokens, so the manual colorMode branching and the
+  logo.svg/logoDark.svg assets are gone.
+
 - **website:** render the top bar logo with the Logo component ([f8e8f4c](https://github.com/entur/design-system/commit/f8e8f4cba61f82825d5fa0978652abda3c43d071))
+
+  Replaces the hand-rolled img and the manual dark/contrast switching, which
+  the component already handles through its own tokens.
+
 - **website:** scroll the sidebar to the current page ([39bf01e](https://github.com/entur/design-system/commit/39bf01e659f657304735f4a4e386005e987f950f))
+
+  Centres the active menu item in the sidebar when it starts below the
+  fold. Only the sidebar scrolls, the page stays put.
+
 - **website:** use the beta SideNavigation for the docs sidebar ([1fcb0e2](https://github.com/entur/design-system/commit/1fcb0e2f098cea70ae229e1a2a28a3eb84c8369c))
+
+  Dogfoods the new component, and lines the labels up with the top bar logo via
+  --eds-side-navigation-padding-inline-start.
 
 ## [6.20.4](https://github.com/entur/design-system/compare/@entur/documentation@6.20.3...@entur/documentation@6.20.4) (2026-08-06)
 
@@ -58,9 +231,30 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **website:** add spacing below tables in documentation pages ([fa65fd5](https://github.com/entur/design-system/commit/fa65fd59ebf79bc65779c1640966b757e439772a))
 - **website:** correct the CSS import guidance and give it its own page ([2a84958](https://github.com/entur/design-system/commit/2a849584e56cd3f002d88aa6adbab1aee3fe4e6b))
+
+  Token CSS was missing from the import order entirely, layout/beta was
+  absent, and only the old dist/ paths were documented. CSS now lives on
+  /kom-i-gang/for-utviklere/css-og-stiler with the order the app actually
+  uses, plus dark mode, override rules and troubleshooting.
+
 - **website:** document the design system skills for developers ([7a26cdb](https://github.com/entur/design-system/commit/7a26cdb88704343ec686e12b87215ba952158881))
+
+  New page covering what the skills are, installing them through Entur's
+  plugin marketplace (entur/ai), the skills CLI, instruction-file URLs and
+  llms.txt.
+
 - **website:** escape bare HTML tags in copied changelogs ([00238f5](https://github.com/entur/design-system/commit/00238f5cfb1553a6b5b97ed1776b5d5ee8313bbc))
+
+  Changelog entries generated from commit subjects can contain bare tags
+  like <dialog>, which MDX parses as JSX and fails to compile. Escape <
+  outside code fences and inline code when copying CHANGELOG.md into the
+  documentation build.
+
 - **website:** sort the getting started submenus in the intended order ([7ff963d](https://github.com/entur/design-system/commit/7ff963d2b02ae4b25ce4aca13cf0ee525c45baaf))
+
+  The sorters lookup normalized the category from the URL ('kom-i-gang' ->
+  'kom i gang') but the key was the raw slug, so Kom i gang fell back to
+  alphabetical order and Introduksjon ended up last.
 
 ## [6.20.3](https://github.com/entur/design-system/compare/@entur/documentation@6.20.2...@entur/documentation@6.20.3) (2026-07-30)
 
@@ -69,8 +263,15 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 - **website:** apply Sanity containerStyle to LivePreview instead of outer container ([6ec00aa](https://github.com/entur/design-system/commit/6ec00aa6f1b6fbda5c86458aa73a203d64967f51))
 - **website:** enable overlayDrafts for Sanity source in development ([5ab90f5](https://github.com/entur/design-system/commit/5ab90f534b19fb8382dd24038847ad617eb8a949))
 - **website:** fix playground spacing and border-radius with BaseExpand ([5d0585f](https://github.com/entur/design-system/commit/5d0585fc79e9c83c405eac9ef7202ac5a30adc8e))
+
+  Target .eds-base-expand for sibling selector and margin since
+  BaseExpand renders className on an inner div, not the root element.
+
 - **website:** replace deep @entur/icons/dist import with public API ([c4a7c9a](https://github.com/entur/design-system/commit/c4a7c9a9401a6ec0033fbff5de2cdceb3535bf55))
 - **website:** use explicit grid placement props in page header ([c18ef83](https://github.com/entur/design-system/commit/c18ef83f6317c40f2695eca049d1334ccb05d59d))
+
+  Replace colSpan/rowSpan string shorthand with colStart/colEnd/rowStart/rowEnd
+  number props and add autoFlow to fix grid layout.
 
 ## [6.20.2](https://github.com/entur/design-system/compare/@entur/documentation@6.20.1...@entur/documentation@6.20.2) (2026-07-03)
 
@@ -85,32 +286,136 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Bug Fixes
 
 - **website:** add @internationalized/date to Playground scope ([7180a16](https://github.com/entur/design-system/commit/7180a16e0f7602f89ffcf7e0b07948c83b8eef9f))
+
+  Expose now, today, getLocalTimeZone and other @internationalized/date
+  exports in react-live scope so Sanity-sourced code examples work.
+
 - **website:** add missing React import to ArticleTag component ([b3ca9e7](https://github.com/entur/design-system/commit/b3ca9e7c2f796de789ad468c4ec56e9e795f99b2))
 - **website:** align footer link text to start ([6c65f0b](https://github.com/entur/design-system/commit/6c65f0b80fddce160f332c0508cb3db7cad9666d))
 - **website:** change top navigation root to header element with nav ([5ac280a](https://github.com/entur/design-system/commit/5ac280adf495693ccb2cd1ed4b34b5357703e5d6))
+
+  Wrap nav links in <nav aria-label="..."> and make the root element a
+  semantic <header>. Apply display:contents on inner nav to preserve
+  existing flex layout. Fix className prop not being applied in mobile nav.
+
 - **website:** fix broken article tag badge variant in search and navigation ([581d8ca](https://github.com/entur/design-system/commit/581d8ca2fcf665a9af1a31d6f4e30660812c12c0))
+
+  The Badge used for article tags (e.g. "Beta") had two bugs: it used a
+  non-existent "positive" variant causing missing styles, and a strict
+  equality check against lowercase "beta" that didn't match the actual
+  cased value from Sanity. Extract shared ArticleTag component to fix
+  both issues consistently across search modal, side navigation, and
+  page header.
+
 - **website:** fix nav display:contents a11y issue, remove dead className prop ([45462d6](https://github.com/entur/design-system/commit/45462d692eb16556a02267d8ed958081ecf50291))
+
+  Replace display:contents on <nav> in top navigation with display:flex to
+  preserve the nav landmark in the accessibility tree. Remove unused
+  className prop from MobileSideNavigation which was never forwarded.
+
 - **website:** fix page layout overflow and mobile scroll offset ([8acb4cc](https://github.com/entur/design-system/commit/8acb4cc035e03bf410b4923cc35a4a34194f823a))
+
+  Remove display:flex from .page (not needed in CSS Grid layout), add
+  min-width:0 to prevent grid item horizontal overflow, add padding-top
+  for mobile fixed nav offset, and increase ToC scroll buffer to 1.5rem
+  for comfortable heading clearance below the two-row mobile nav.
+
 - **website:** guard against missing CMP and NaN scroll offset ([1ccb173](https://github.com/entur/design-system/commit/1ccb1738415456ea7c64e771729e45eb0a361b02))
+
+  Add optional chaining on window.\_\_ucCmp.showFirstLayer() in footer to
+  prevent throw if CMP script hasn't loaded. Add NaN guard in
+  getNavbarHeightPx() to fall back to SCROLL_OFFSET_REM when
+  --navbar-height CSS variable is missing or unparseable.
+
 - **website:** move table of contents to sticky aside element ([76b74d4](https://github.com/entur/design-system/commit/76b74d4852a495f66f5a5fc3aacdea4f71869a90))
+
+  Restructure ToC from position:fixed inside main to a semantic aside
+  element as sibling to main, using CSS Grid named areas. ToC now
+  naturally stops at footer boundary via sticky positioning within its
+  grid cell. Sidebar headings update on tab switch via TocContext.
+
 - **website:** remove GitHub link from top navigation ([252e4a0](https://github.com/entur/design-system/commit/252e4a0d1035eae1b3070a6ef5f514a0b6a6183d))
 - **website:** replace JS-based responsive grid with CSS media queries ([7d7af5e](https://github.com/entur/design-system/commit/7d7af5e44cddb1d2c773f0e2097fd7c63a7d75c7))
+
+  The beta Grid component uses JS (useResponsiveValue) for responsive
+  layout, causing a hydration mismatch between Gatsby SSR and client.
+  This made page content disappear until a DOM refresh (e.g. resize).
+
+  Temporary workaround using plain CSS grid with media queries in the
+  doc layout. Proper fix in Grid/GridItem tracked in ETU-73505.
+
 - **website:** restructure layout with CSS Grid and sticky sidebar ([67b70ca](https://github.com/entur/design-system/commit/67b70cad2eb2d3d016a0c7286b985667bb37305f))
+
+  Replace position-based layout with CSS Grid in DocLayout. Use GridItem
+  as-prop to eliminate wrapper elements and make sticky positioning work
+  correctly. Side nav background now extends to page bottom.
+  --navbar-height CSS var used consistently for scroll offset.
+
 - **website:** show full footer on all documentation pages ([e45e67a](https://github.com/entur/design-system/commit/e45e67aea7a0591caf780cd0d9fee03453e86d29))
 - **website:** show table of contents on all pages, fix duplicate active items ([a1440fa](https://github.com/entur/design-system/commit/a1440fa7a8cb1f6653f69ae789a73904c39ce6e2))
+
+  Remove removeToc frontmatter and disableToc prop — ToC now shows on all
+  pages except CUSTOM_LAYOUT_PAGES. Deduplicate headings in SanityTableOfContent
+  to fix multiple items getting the active class simultaneously. Hide ToC
+  when fewer than 2 headings.
+
 - **website:** simplify footer markup and use semantic HTML ([eee5e9c](https://github.com/entur/design-system/commit/eee5e9cd7201283562099ad781d3525ba2fe577a))
+
+  Remove contrast mode and extra wrapper elements. Replace custom grid
+  divs with native CSS Grid. Add border matching top nav divider.
+  Footer now renders as a direct <footer> element in the grid.
+
 - **website:** unify MDX and Sanity page headers, fix beta tag casing ([7f4cec2](https://github.com/entur/design-system/commit/7f4cec2e7a842b159848355975fdac9586e96d30))
+
+  MDX PageHeader now delegates to BasePageHeader (same as Sanity component
+  docs). Extract isBetaTag() util to utils.ts for case-insensitive comparison,
+  fixing the beta badge showing wrong variant when Sanity stores 'Beta'
+  instead of 'beta'.
+
 - **website:** use contrast divider tokens for footer borders on frontpage ([3654d23](https://github.com/entur/design-system/commit/3654d235592c296720b9ac7254c6a0b2f0917d49))
 
 ### Features
 
 - **datepicker/range calendar:** add RangeCalendar component ([62a8041](https://github.com/entur/design-system/commit/62a8041f66fcb378ca18d408121acc555b63fbc1))
+
+  RangeCalendar lets users select a date range (start and end date). Supports visibleDuration prop to
+  display multiple months simultaneously.
+
+  The selected date styling for the existing Calendar component has also
+  been updated — the selected date now uses a filled primary color instead
+  of the previous lighter secondary tint.
+
 - **datepicker/range calendar:** update docs ([becf816](https://github.com/entur/design-system/commit/becf816cb76578251b71b44fc3f341f7c7438134))
 - **menu/logo:** add Logo component for standardized Entur product logos ([75dd9dc](https://github.com/entur/design-system/commit/75dd9dc5c6789d4c1ec680ace52a8c3697b3c53b))
+
+  New <Logo> component renders the Entur wordmark with an optional product name.
+  Use `productName` to display your product name next to the logo, `size` to choose
+  between medium and small, and `href` to make it a link.
+
+  Usage: <Logo productName="Partner" size="medium" href="/" />
+
 - **website:** add copy-link anchors to MDX headings and fix shared ID generation ([d0c0255](https://github.com/entur/design-system/commit/d0c02553453d857771d4ee9f4ff82cc625f9566c))
+
+  Extend HeadingAnchor to accept a pre-existing ID for MDX headings,
+  and extract getUniqueId as shared function so ToC and rendered
+  headings always produce matching IDs.
+
 - **website:** add copy-link button on headings and hash update from ToC ([308cfc1](https://github.com/entur/design-system/commit/308cfc135cb932396da89c337e0b7c70a39d3aeb))
+
+  Headings in Sanity-rendered content now show a copy-link button on hover.
+  Clicking ToC links updates the URL hash, enabling shareable section links.
+
 - **website:** add description field support for Playground examples ([49ae9ff](https://github.com/entur/design-system/commit/49ae9ff2239b2aa9c16ac487df9645a26ca8ccb0))
+
+  Add optional description text that renders below the title and above the
+  visual example in Playground components. Includes Sanity schema field,
+  CodeExampleResolver passthrough, and Playground rendering.
+
 - **website:** add hash-based deep-linking for ComponentDoc tabs ([4bb0d41](https://github.com/entur/design-system/commit/4bb0d4110e21963e96d6499881461ed378b47e8c))
+
+  URL hash matching a heading key now switches to the correct tab and
+  scrolls to that section. Supports both initial page load and hashchange
+  events, enabling cross-page links to specific tab sections.
 
 ## [6.19.1](https://github.com/entur/design-system/compare/@entur/documentation@6.19.0...@entur/documentation@6.19.1) (2026-06-08)
 
@@ -121,30 +426,111 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Features
 
 - **website:** add table of content to Sanity content pages ([34d063a](https://github.com/entur/design-system/commit/34d063a27c69dedb479746059d335593c7eba008))
+
+  ContentTemplate (used for general Sanity pages like Stil og tone)
+  was missing SanityTableOfContent. Add it between header and content.
+
 - **website:** merge and improve table of content ([7b17ba6](https://github.com/entur/design-system/commit/7b17ba647de699f5ac54a38488f47ffbf04db781))
+
+  Merge MdxTableOfContent and SanityTableOfContent into a shared
+  TableOfContent component with unified scroll tracking, animated
+  indicator, and responsive inline/sidebar modes.
+
+  - Shared TableOfContent with useActiveHeading hook using
+    getBoundingClientRect-based scroll tracking
+  - Animated sliding indicator in sidebar mode
+  - ExpandablePanel-based inline ToC for narrow screens
+  - Move PageHeader into DocLayout, remove from 76 MDX files
+  - Delete redundant TableOfContentLayout wrapper
+  - Fix scroll offset detection with 2px buffer for subpixel rounding
+  - Add focus-visible outline following Entur brand tokens
+  - Place Sanity ToC inside each TabPanel for tab-contextual navigation
 
 ## [6.18.3](https://github.com/entur/design-system/compare/@entur/documentation@6.18.1...@entur/documentation@6.18.3) (2026-06-05)
 
 ### Bug Fixes
 
-- **layout/beta:** document children in prop tables and fix [@ts-expect-error](https://github.com/ts-expect-error) syntax ([fa39228](https://github.com/entur/design-system/commit/fa3922878c6ca5b6b5525449c7da27f19e86dcb6))
-- **layout/beta:** export FlexComponent and GridComponent callable types ([d9f61a6](https://github.com/entur/design-system/commit/d9f61a63ad4a09ebfbd9ecbae37a63409d9b936f))
 - **website:** case-insensitive beta tag check in path generation ([eb6e77f](https://github.com/entur/design-system/commit/eb6e77f2a1485c92f78c8b2ac99f6a7ae8a041ab))
+
 - **website:** correct tag badge variant and case-insensitive matching in side navigation ([9f74c27](https://github.com/entur/design-system/commit/9f74c271010bcf9f8815748796d3c799e675a410))
+
 - **website:** fix llms.txt duplicate sections, missing @entur/ prefix, and test page ([b20feec](https://github.com/entur/design-system/commit/b20feecb29bed7d55010689b77e9dcc05b1fed13))
+
+  - Normalize category/subcategory keys to lowercase before label lookup and
+    grouping, so capitalization differences in Sanity data don't produce
+    duplicate sections
+  - Prepend @entur/ to bare npm package names (e.g. button → @entur/button)
+  - Filter out /test paths from the page index
+
 - **website:** render sidebar in SSR and improve accessibility ([fbec14d](https://github.com/entur/design-system/commit/fbec14d3b592fea84a3a3c6f2d92775d79590673))
+
+  Use CSS media queries instead of JS useWindowDimensions for responsive
+  sidebar, so desktop sidebar is present in static HTML. Prevents sidebar
+  from disappearing when JS fails to load.
+
+  - Add <nav aria-label> landmark around sidebar
+  - Use non-modal Drawer for mobile nav (no focus trap)
+  - Add aria-expanded on mobile menu toggle button
+  - Visually hide Drawer heading for screen readers instead of display:none
+  - Add CSS responsive classes for desktop/mobile show/hide
+
 - **website:** treat anchor-only links as internal in PortableText ([b07f92f](https://github.com/entur/design-system/commit/b07f92fe4499289693f7e08279518cc250a22956))
+
+### Bug Fixes (beta)
+
+- **layout/beta:** document children in prop tables and fix [@ts-expect-error](https://github.com/ts-expect-error) syntax ([fa39228](https://github.com/entur/design-system/commit/fa3922878c6ca5b6b5525449c7da27f19e86dcb6))
+
+  Add JSDoc to children in SidebarOwnProps and Portal own-props so
+  react-docgen-typescript picks up the package-local declaration
+  instead of the filtered node_modules one. Regenerate JSON prop files.
+
+  Convert {/_ @ts-expect-error _/} JSX comment in Sidebar.tsx to
+  proper // @ts-expect-error inside expression containers — same
+  suppression effect, conventional form.
+
+- **layout/beta:** export FlexComponent and GridComponent callable types ([d9f61a6](https://github.com/entur/design-system/commit/d9f61a63ad4a09ebfbd9ecbae37a63409d9b936f))
+
+  Adds FlexComponent and GridComponent as exported type aliases so
+  consumers can reference the polymorphic component types directly.
+  Also fixes empty prop tables for Flex, Grid, GridItem, Sidebar, and
+  Portal in the documentation site.
 
 ## [6.18.2](https://github.com/entur/design-system/compare/@entur/documentation@6.18.1...@entur/documentation@6.18.2) (2026-05-13)
 
 ### Bug Fixes
 
-- **layout/beta:** document children in prop tables and fix [@ts-expect-error](https://github.com/ts-expect-error) syntax ([fa39228](https://github.com/entur/design-system/commit/fa3922878c6ca5b6b5525449c7da27f19e86dcb6))
-- **layout/beta:** export FlexComponent and GridComponent callable types ([d9f61a6](https://github.com/entur/design-system/commit/d9f61a63ad4a09ebfbd9ecbae37a63409d9b936f))
 - **website:** case-insensitive beta tag check in path generation ([eb6e77f](https://github.com/entur/design-system/commit/eb6e77f2a1485c92f78c8b2ac99f6a7ae8a041ab))
+
 - **website:** correct tag badge variant and case-insensitive matching in side navigation ([9f74c27](https://github.com/entur/design-system/commit/9f74c271010bcf9f8815748796d3c799e675a410))
+
 - **website:** fix llms.txt duplicate sections, missing @entur/ prefix, and test page ([b20feec](https://github.com/entur/design-system/commit/b20feecb29bed7d55010689b77e9dcc05b1fed13))
+
+  - Normalize category/subcategory keys to lowercase before label lookup and
+    grouping, so capitalization differences in Sanity data don't produce
+    duplicate sections
+  - Prepend @entur/ to bare npm package names (e.g. button → @entur/button)
+  - Filter out /test paths from the page index
+
 - **website:** treat anchor-only links as internal in PortableText ([b07f92f](https://github.com/entur/design-system/commit/b07f92fe4499289693f7e08279518cc250a22956))
+
+### Bug Fixes (beta)
+
+- **layout/beta:** document children in prop tables and fix [@ts-expect-error](https://github.com/ts-expect-error) syntax ([fa39228](https://github.com/entur/design-system/commit/fa3922878c6ca5b6b5525449c7da27f19e86dcb6))
+
+  Add JSDoc to children in SidebarOwnProps and Portal own-props so
+  react-docgen-typescript picks up the package-local declaration
+  instead of the filtered node_modules one. Regenerate JSON prop files.
+
+  Convert {/_ @ts-expect-error _/} JSX comment in Sidebar.tsx to
+  proper // @ts-expect-error inside expression containers — same
+  suppression effect, conventional form.
+
+- **layout/beta:** export FlexComponent and GridComponent callable types ([d9f61a6](https://github.com/entur/design-system/commit/d9f61a63ad4a09ebfbd9ecbae37a63409d9b936f))
+
+  Adds FlexComponent and GridComponent as exported type aliases so
+  consumers can reference the polymorphic component types directly.
+  Also fixes empty prop tables for Flex, Grid, GridItem, Sidebar, and
+  Portal in the documentation site.
 
 ## [6.18.1](https://github.com/entur/design-system/compare/@entur/documentation@6.18.0...@entur/documentation@6.18.1) (2026-04-16)
 
@@ -156,10 +542,25 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **website:** handle relative paths in PortableText links ([de378ec](https://github.com/entur/design-system/commit/de378ec21801dfde6060314ab8dd6e25282ed98e))
 
+  Relative href values (e.g. /identitet) caused SSR failures because
+  new URL() requires an absolute URL. Now relative paths are detected
+  early and rendered as internal Gatsby links.
+
 ### Features
 
 - **website:** add designsystem survey analysis page 2022-2025 ([35216b4](https://github.com/entur/design-system/commit/35216b40571db5ef4630709d48423341eb55b7d6))
+
+  Add /undersokelse page with interactive analysis of 4 years of
+  design system user surveys (116 respondents). Includes sections for
+  key metrics, satisfaction trends, respondent profiles, value/impact,
+  communication, qualitative feedback, and top improvement suggestions.
+
 - **website:** move survey page to ressurser/innsikt/brukerundersokelse ([2decd71](https://github.com/entur/design-system/commit/2decd718d61dae7389ca901df632f11047e0d54f))
+
+  Move the survey analysis page to its new location under Ressurser > Innsikt
+  in the site navigation. The page bypasses the standard DocLayout for a
+  full-width layout while remaining accessible via the side navigation.
+  Add a back button with BackArrowIcon linking to /ressurser/.
 
 ## [6.16.1](https://github.com/entur/design-system/compare/@entur/documentation@6.16.0...@entur/documentation@6.16.1) (2026-02-20)
 
@@ -234,12 +635,23 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **website:** use development graphql tag in gatsby when running dev server ([4c10391](https://github.com/entur/design-system/commit/4c10391c91d7ef785c0d7fbf6d8507b91697a59f))
 
+  Also when running a Github PR build
+
 ### Features
 
 - **website/page builder:** add props to playground via Sanity ([7d0510d](https://github.com/entur/design-system/commit/7d0510d824fc575371b9fa40591e21f44151193f))
 - **website/page builder:** add support for video with new Media object ([0241985](https://github.com/entur/design-system/commit/0241985a29e90e7874d1370f4ba2119640853a16))
+
+  Also deprecate the ImageAndText object in favour of Media and Seksjon in a Group
+
 - **website/page builder:** move copyable text under code example ([7fefe2d](https://github.com/entur/design-system/commit/7fefe2df13d90a9909920330593fbff0a187d1d9))
+
+  Also use CodeBlock instead of preformatted text for code examples.
+
 - **website/page builder:** remove doDontGroup and add guideline ([47c645a](https://github.com/entur/design-system/commit/47c645aec35d8feda267c18a851f3a82d74bf504))
+
+  Standardize sanity objects by making a more general guideline component
+  that works inside the generic group object instead of special doDontGroup.
 
 ## [6.11.3](https://github.com/entur/design-system/compare/@entur/documentation@6.11.2...@entur/documentation@6.11.3) (2025-10-20)
 
@@ -345,12 +757,18 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **page-builder:** improve download link and fix margin for links ([4f5795a](https://github.com/entur/design-system/commit/4f5795a4a39a2821024196b1e1cc38de47a8961c))
 - **page-builder:** more spacing for link buttons ([1038b1a](https://github.com/entur/design-system/commit/1038b1ae8e3aee96cddd788b1674def8f2da0020))
+
+  Also delete Powerpoint page
+
 - **website:** incorrect variables for token overview ([588c8e4](https://github.com/entur/design-system/commit/588c8e41287afa2de6edb146847e5e912da0533b))
 
 ### Features
 
 - **page-builder:** add download link type to page ([ebb1a63](https://github.com/entur/design-system/commit/ebb1a634a00e3022c00f76cb1548d4bf5c81bd58))
 - **website:** add keyboard navigation to search modal ([3fdb3e7](https://github.com/entur/design-system/commit/3fdb3e764eab2e6ffca68481f789552f56d7903b))
+
+  Made with help from cursor AI
+
 - **website:** switch sidebar search over to new search modal ([aaee45a](https://github.com/entur/design-system/commit/aaee45a8347dea7953de3d3c5182cabfbf79637a))
 
 ### Performance Improvements
@@ -364,6 +782,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 - **website:** fix props tables not always displaying available props ([bf8473f](https://github.com/entur/design-system/commit/bf8473f2d12f80d7bf750050b90cb9ee3922d797))
 - **website:** fix text wrapping in image-display download overflow menu ([4531dce](https://github.com/entur/design-system/commit/4531dce7e5994975b3c66e0dacfb3d58106a82b7))
 
+  This also removes the tooltip from the menu which might impact accessibility negatively.
+
 # [6.6.0](https://github.com/entur/design-system/compare/@entur/documentation@6.5.0...@entur/documentation@6.6.0) (2025-06-27)
 
 ### Features
@@ -372,24 +792,37 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 - **form:** add readonly on radio and checkbox ([af575a6](https://github.com/entur/design-system/commit/af575a6c4a91c307606ee44adb6ebd2397a3dd19))
 - **page-builder:** add primary and secondary button link ([5c2f9cc](https://github.com/entur/design-system/commit/5c2f9cc92560f1904565e4befb3a7d1f7d517f8c))
 
+  also set max width to card link
+
 # [6.5.0](https://github.com/entur/design-system/compare/@entur/documentation@6.4.0...@entur/documentation@6.5.0) (2025-06-17)
 
 ### Bug Fixes
 
 - **docs:** fix broken internal links ([fd74e6f](https://github.com/entur/design-system/commit/fd74e6f0650d053e96d7892b308dd8e34cf5f4af))
 - **page-builder:** downgrade gatsby-source-sanity ([d5554c1](https://github.com/entur/design-system/commit/d5554c11993cbf3a04814c641b0be7917e160694))
+
+  This is done to avoid illegal NTFS file name error in GitHub Actions
+
 - **page-builder:** download link for image-and-text now triggers download ([293314c](https://github.com/entur/design-system/commit/293314c065e5585e67211e9e5d98ab75412a3fc2))
 - **page-builder:** improve components ([3b0157d](https://github.com/entur/design-system/commit/3b0157d4082255a7a1b100c24d43df63b17ec91b))
 - **ressurser:** update links for resources overview page ([2b63046](https://github.com/entur/design-system/commit/2b6304677292aaf659badc044402463c607d92a5))
+
+  and replace verdiforslag page with sanity version
+
 - **website:** make sanity ImageAndText work with ImageDisplay ([2990986](https://github.com/entur/design-system/commit/2990986d02d46443c468fd61e264251414052b3e))
 - **website:** make side navigation desktop work with page builder ([0202aeb](https://github.com/entur/design-system/commit/0202aeb4d2cc6f4c8770039061b940baf20406be))
 - **website:** update urls and names to work with new side navigation system ([d1ce4e2](https://github.com/entur/design-system/commit/d1ce4e248deb4df09a2ffdff140f0e5e54e219ab))
+
+  BREAKING: some urls have changed
 
 ### Features
 
 - **datepicker, timepicker:** improve types structure ([b79f00c](https://github.com/entur/design-system/commit/b79f00ce999437b9132aac6f80e33d21f7d8075c))
 - **page-builder:** add download link to image ([d9153b1](https://github.com/entur/design-system/commit/d9153b1599a7204398a25715825d7943366d9d7f))
 - **page-builder:** add group type ([33610bd](https://github.com/entur/design-system/commit/33610bd293148b294615ac9679bb9b62cdbb84ee))
+
+  Used to display multiple components in a row.
+
 - **page-builder:** add inline icons to rich text editor in sanity ([84ae384](https://github.com/entur/design-system/commit/84ae384d3244d18c4e72849641b5789ea0ca6466))
 - **page-builder:** add link type ([e6f407b](https://github.com/entur/design-system/commit/e6f407b77f7024f5214ebfe00e1999ca52ef8cf3))
 - **page-builder:** add SEO to page builder sites ([d883260](https://github.com/entur/design-system/commit/d883260e01093ede59bc502e106446ab89753d16))
@@ -457,9 +890,14 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 - **website:** make background reposition on resize ([863ce82](https://github.com/entur/design-system/commit/863ce82162cb3dfab243ac4b5da18592aa0fab6c))
 - **website:** small improvements and fixes ([26eeb45](https://github.com/entur/design-system/commit/26eeb45a0f7339b139c7f194a67dc3cdcae76e63))
 
+  also changes breakpoints to use rem instead of px values
+
 ### Features
 
 - **datepicker:** add "second" granularity support to datepicker ([4233035](https://github.com/entur/design-system/commit/42330359e450855effd241e3c3d9b22ebc282ffc))
+
+  Also includes small styling tweeks to time selection segments
+
 - **icons:** add new birth date icon ([2d19be3](https://github.com/entur/design-system/commit/2d19be30cd1cdce8948eaacbe81eeca000b6c481))
 - **mediacard:** new prop orientation: horizontal ([43c9e21](https://github.com/entur/design-system/commit/43c9e21e0b4e47e4feb2e6df77ad0a9a77a1e523))
 - **mediacard:** new prop orientation: horizontal ([f8caa0e](https://github.com/entur/design-system/commit/f8caa0eb6899d3c69b8dc85bd4a148791df7c587))

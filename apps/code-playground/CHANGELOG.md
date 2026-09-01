@@ -16,13 +16,24 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Bug Fixes
 
 - **website:** expose the beta side navigation as SideNavigationBeta ([77ae98e](https://github.com/entur/design-system/commit/77ae98e943b29d4e33b7d3781b1d40234d5fd008))
+
+  A single alias reads better in doc examples than a MenuBeta namespace, and still
+  avoids shadowing the stable SideNavigation.
+
 - **website:** load @entur/menu/beta in the docs site and playroom ([aeb997c](https://github.com/entur/design-system/commit/aeb997c039a96854bc6e14f7d98b2438d8dcfac5))
+
+  Exposed under a MenuBeta namespace rather than spread flat, since its
+  SideNavigation would otherwise shadow the stable one used by existing examples.
 
 ## [2.4.14](https://github.com/entur/design-system/compare/@entur/code-playground@2.4.13...@entur/code-playground@2.4.14) (2026-08-06)
 
 ### Bug Fixes
 
 - **code-playground:** load design token custom properties in the sandbox ([d1ea91a](https://github.com/entur/design-system/commit/d1ea91a075e49b1a37e773844d87c0c994f5837e))
+
+  Only the Sass entry point was imported, which defines $-variables and no
+  :root block, so every var(--space-_) and var(--colors-_) written in the
+  sandbox resolved to nothing.
 
 ## [2.4.13](https://github.com/entur/design-system/compare/@entur/code-playground@2.4.12...@entur/code-playground@2.4.13) (2026-07-30)
 
@@ -70,10 +81,17 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # [2.4.0](https://github.com/entur/design-system/compare/@entur/code-playground@2.3.13...@entur/code-playground@2.4.0) (2026-02-05)
 
-### Features
+### Features (beta)
 
 - **layout/beta/flex:** add Flex beta component ([c265cb9](https://github.com/entur/design-system/commit/c265cb976894e71470bc744347eb99453ffa7fac))
+
+  A wrapper substitute for css flexbox with defaults.
+  Documentation coming later.
+
 - **layout/beta/grid:** add new Grid and Grid.Item beta components ([3f950a1](https://github.com/entur/design-system/commit/3f950a18b003742b4ab15661320cac17b8ca8214))
+
+  This version is more flexible and allows for creating complex layouts.
+  Based on CSS grid. Documentation coming later.
 
 ## [2.3.13](https://github.com/entur/design-system/compare/@entur/code-playground@2.3.12...@entur/code-playground@2.3.13) (2026-01-28)
 
@@ -116,6 +134,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Bug Fixes
 
 - **code-playground:** make webpack config work with new beta typography ([1bc49b7](https://github.com/entur/design-system/commit/1bc49b70232c7e4d3d53784041b6e174a3758666))
+
+  Adds support for css imports in js-file from our packages
 
 ## [2.3.2](https://github.com/entur/design-system/compare/@entur/code-playground@2.3.1...@entur/code-playground@2.3.2) (2025-09-24)
 

@@ -23,21 +23,69 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **layout/beta/flex, layout/beta/grid:** replace JS breakpoint hook with CSS custom property cascade ([fedec15](https://github.com/entur/design-system/commit/fedec153f0386aa4dac324c38a1a493b7f4ed9b8))
-- **layout/beta/grid:** resolve grid-column shorthand override bug and restore default gap ([f9a8eb1](https://github.com/entur/design-system/commit/f9a8eb1b663542125092047cb1e6366150878b7e))
-- **layout/beta/grid:** warn on invalid responsive breakpoint keys instead of rendering them ([1167efe](https://github.com/entur/design-system/commit/1167efe628bde62a5fb580fdf562c5589238702b))
-- **layout/beta/layout provider:** use useSyncExternalStore for responsive breakpoints ([e32586e](https://github.com/entur/design-system/commit/e32586e3c1995f060bf705440184109d2ffe48bb))
 - **layout:** remove React.FC in favor of typed function parameters ([a57ff97](https://github.com/entur/design-system/commit/a57ff97ec925127b0147f02a13f2ac6efe9709a4))
+
+  React.FC no longer provides implicit children typing in React 18.
+  Move type annotations directly to function parameters.
 
 ### Features
 
-- **layout/beta/flex, layout/beta/grid:** add s breakpoint, placement props, and size constraints ([14353fe](https://github.com/entur/design-system/commit/14353fed95858537ce09ceb329b5b9dbf80e0cc5))
 - **layout:** require React 18 as minimum peer dependency ([467cf46](https://github.com/entur/design-system/commit/467cf46e4867fec2646cb13011436adc860f0ec4))
+
 - **layout:** tighten exports field and remove dist/\* wildcard ([76f1930](https://github.com/entur/design-system/commit/76f193093e6030eba848f7e2f7b97632ad50f842))
+
+  Replaces ./dist/\* wildcard with explicit ./styles and ./dist/styles.css
+  entries. Consumers no longer need bundler aliases for ESM resolution.
+
+### Bug Fixes (beta)
+
+- **layout/beta/flex, layout/beta/grid:** replace JS breakpoint hook with CSS custom property cascade ([fedec15](https://github.com/entur/design-system/commit/fedec153f0386aa4dac324c38a1a493b7f4ed9b8))
+
+  useResponsiveValue used window.innerWidth via useSyncExternalStore, causing
+  SSR failures and hydration mismatches. Responsive props now emit per-breakpoint
+  CSS vars (e.g. --flex-direction-base, --flex-direction-m); SCSS fallback chains
+  handle inheritance so unset breakpoints automatically inherit from the previous
+  one. No JS breakpoint detection, no LayoutProvider context required.
+
+  Also: require base key in ResponsiveValue objects (was optional with s key),
+  simplify row-gap/column-gap cascade by resolving gap fallback in JS
+  (rowGap ?? gap), and add minWidth/maxWidth props to Grid.
+
+- **layout/beta/grid:** resolve grid-column shorthand override bug and restore default gap ([f9a8eb1](https://github.com/entur/design-system/commit/f9a8eb1b663542125092047cb1e6366150878b7e))
+
+  CSS longhands (grid-column-start/end) declared after the grid-column
+  shorthand always override it — even when their vars are unset (initial
+  resolves to auto via IACVT). This caused colSpan/rowSpan to silently
+  have no effect.
+
+  Remove grid-column/grid-row shorthands from CSS entirely. colSpan and
+  rowSpan now write directly to start/end vars, with slash values like
+  "1 / -1" parsed into separate start and end vars. Also update
+  Portal.scss which referenced the removed --grid-item-row-base var.
+
+  Restore gap="m" default that was unintentionally dropped in 81f70eccf
+  when replacing the JS breakpoint hook with CSS custom property cascade.
+
+- **layout/beta/grid:** warn on invalid responsive breakpoint keys instead of rendering them ([1167efe](https://github.com/entur/design-system/commit/1167efe628bde62a5fb580fdf562c5589238702b))
+
+  Adds dev-mode warnings when consumers pass unknown breakpoint keys
+  (e.g. "sm", "md") or omit the required "base" key. Invalid keys are
+  ignored instead of being passed through as CSS vars.
+
+- **layout/beta/layout provider:** use useSyncExternalStore for responsive breakpoints ([e32586e](https://github.com/entur/design-system/commit/e32586e3c1995f060bf705440184109d2ffe48bb))
+
+  Replaces useState + useEffect + matchMedia subscription with
+  useSyncExternalStore, making breakpoint detection concurrent-rendering
+  safe and SSR-compatible via getServerSnapshot (defaults to 's').
+
+### Features (beta)
+
+- **layout/beta/flex, layout/beta/grid:** add s breakpoint, placement props, and size constraints ([14353fe](https://github.com/entur/design-system/commit/14353fed95858537ce09ceb329b5b9dbf80e0cc5))
 
 ### BREAKING CHANGES
 
 - **layout:** undocumented deep imports into dist/ may break.
+
 - **layout:** require React 18 as minimum peer dependency
 
 ## [3.7.5](https://github.com/entur/design-system/compare/@entur/layout@3.7.4...@entur/layout@3.7.5) (2026-07-03)
@@ -62,20 +110,40 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # [4.0.0](https://github.com/entur/design-system/compare/@entur/layout@3.6.1...@entur/layout@4.0.0) (2026-05-13)
 
-### Bug Fixes
+### Bug Fixes (beta)
 
 - **layout/beta/flex:** fix props leaking into nested Flex components ([b604332](https://github.com/entur/design-system/commit/b60433256cadf371da392c740a18e532de6d6ab0))
+
+  Props are now isolated per Flex instance. Previously, setting props
+  like gap="l" on a parent Flex caused nested Flex components without
+  that prop to also receive it.
+
 - **layout/beta:** document children in prop tables and fix [@ts-expect-error](https://github.com/ts-expect-error) syntax ([fa39228](https://github.com/entur/design-system/commit/fa3922878c6ca5b6b5525449c7da27f19e86dcb6))
+
+  Add JSDoc to children in SidebarOwnProps and Portal own-props so
+  react-docgen-typescript picks up the package-local declaration
+  instead of the filtered node_modules one. Regenerate JSON prop files.
+
+  Convert {/_ @ts-expect-error _/} JSX comment in Sidebar.tsx to
+  proper // @ts-expect-error inside expression containers — same
+  suppression effect, conventional form.
+
 - **layout/beta:** export FlexComponent and GridComponent callable types ([d9f61a6](https://github.com/entur/design-system/commit/d9f61a63ad4a09ebfbd9ecbae37a63409d9b936f))
 
-### Features
+  Adds FlexComponent and GridComponent as exported type aliases so
+  consumers can reference the polymorphic component types directly.
+  Also fixes empty prop tables for Flex, Grid, GridItem, Sidebar, and
+  Portal in the documentation site.
+
+### Features (beta)
 
 - **layout/beta/layout-provider:** rename LayoutWrapper to LayoutProvider and update breakpoints ([8a57ba7](https://github.com/entur/design-system/commit/8a57ba77a6c1e88f9c96cdf9a77209831139190d))
 
-### BREAKING CHANGES
+### BREAKING CHANGES (beta)
 
 - **layout/beta/layout-provider:** LayoutWrapper is renamed to LayoutProvider; import from
   LayoutProvider going forward. LayoutWrapperProps renamed to LayoutProviderProps.
+
 - **layout/beta/layout-provider:** ResponsiveValue breakpoint keys changed from sm/md/lg to
   s/m/lg/xl. xl breakpoint added with a default of 1400px. s is not configurable
   — it is the implicit base (0px) that activates below m.
@@ -84,15 +152,25 @@ AI-assistant: Claude Code (claude-sonnet-4-6)
 
 ## [3.6.1](https://github.com/entur/design-system/compare/@entur/layout@3.6.0...@entur/layout@3.6.1) (2026-04-16)
 
-### Bug Fixes
+### Bug Fixes (beta)
 
 - **layout/beta/portal, layout/beta/sidebar:** fix overflow scrolling and styling issues in Portal and Sidebar ([1de520b](https://github.com/entur/design-system/commit/1de520b80bbf70372c8c573f6fd8c9b173c94b08))
 
+  - Portal.main: add overflow: auto and max-height so main content scrolls within the fixed-height layout
+  - Sidebar: remove redundant position: sticky (no-op inside fixed-height grid)
+  - Sidebar: add max-height to collapsible wrapper
+  - Sidebar collapse toggle: fix incorrect color token (--text-dark → --basecolors-stroke-light)
+
 # [3.5.0](https://github.com/entur/design-system/compare/@entur/layout@3.4.2...@entur/layout@3.5.0) (2026-03-16)
 
-### Features
+### Features (beta)
 
 - **layout/beta/sidebar:** add collapsible support to Template.Portal.Sidebar ([d2085b1](https://github.com/entur/design-system/commit/d2085b136933d0ba5855d12cb399e45965a57ab8))
+
+  New optional props: `collapsible`, `collapsed`, `onCollapseToggle`,
+  `openSidebarAriaLabel`, and `closeSidebarAriaLabel`. Supports both
+  controlled and uncontrolled usage. A `useSidebarCollapsed` hook is
+  exported for children to read the collapsed state.
 
 ## [3.4.1](https://github.com/entur/design-system/compare/@entur/layout@3.4.0...@entur/layout@3.4.1) (2026-02-20)
 
@@ -100,17 +178,32 @@ AI-assistant: Claude Code (claude-sonnet-4-6)
 
 # [3.4.0](https://github.com/entur/design-system/compare/@entur/layout@3.3.3...@entur/layout@3.4.0) (2026-02-05)
 
-### Bug Fixes
+### Bug Fixes (beta)
 
 - **layout/beta/template:** make portal template 100% width ([fa8b580](https://github.com/entur/design-system/commit/fa8b5808a0876eb8744a44323a6ba0bce7b3ae28))
 
-### Features
+### Features (beta)
 
 - **layout/beta/flex:** add Flex beta component ([c265cb9](https://github.com/entur/design-system/commit/c265cb976894e71470bc744347eb99453ffa7fac))
+
+  A wrapper substitute for css flexbox with defaults.
+  Documentation coming later.
+
 - **layout/beta/grid:** add justify and align props to Grid ([9eda387](https://github.com/entur/design-system/commit/9eda387bfcd099571d1f848cab1b75310cffa4f1))
+
 - **layout/beta/grid:** add new Grid and Grid.Item beta components ([3f950a1](https://github.com/entur/design-system/commit/3f950a18b003742b4ab15661320cac17b8ca8214))
+
+  This version is more flexible and allows for creating complex layouts.
+  Based on CSS grid. Documentation coming later.
+
 - **layout/beta/layout wrapper:** add optional LayoutWrapper component ([68e0c02](https://github.com/entur/design-system/commit/68e0c0223eba6a36b433bae4e8961bf0c07b67f1))
+
+  Use this component to override default values like breakpoints etc.
+
 - **layout/beta/template:** add template beta component for B2B portal applications ([ea4fe34](https://github.com/entur/design-system/commit/ea4fe34b9b0d46eae0dc9eb99240f5117424eb0d))
+
+  Template to be used for B2B portals for easier setup and consistency
+  accross Entur applications.
 
 ## [3.3.3](https://github.com/entur/design-system/compare/@entur/layout@3.3.2...@entur/layout@3.3.3) (2026-01-28)
 
@@ -144,6 +237,8 @@ AI-assistant: Claude Code (claude-sonnet-4-6)
 
 - **add travel:** add detail section to TravelTag ([0185c7a](https://github.com/entur/design-system/commit/0185c7aa2c1e5961435d9d92c7a7020c24a27c4b))
 
+  This field is useful for e.g. adding a departure number to the tag.
+
 ## [3.1.11](https://github.com/entur/design-system/compare/@entur/layout@3.1.10...@entur/layout@3.1.11) (2025-09-24)
 
 **Note:** Version bump only for package @entur/layout
@@ -153,8 +248,13 @@ AI-assistant: Claude Code (claude-sonnet-4-6)
 ### Bug Fixes
 
 - **deps:** bump minor for dependencies ([bdde8f2](https://github.com/entur/design-system/commit/bdde8f2d5ab46cfa307a424429063b9700edfc1e))
+
+  classnames, react-focus-lock, @react-aria, @react-stately, @internationalized/date, react-dropzone
+
 - exclude dependencies from bundle ([5252a14](https://github.com/entur/design-system/commit/5252a14c4c615452f3cc7effc73287a5ee42399e))
 - fix package.json field order ([7de85f2](https://github.com/entur/design-system/commit/7de85f2baf08a1fc3a0223e3f149c8cf9636546b))
+
+  incorrect order made types unavailable
 
 ## [3.1.8](https://github.com/entur/design-system/compare/@entur/layout@3.1.7...@entur/layout@3.1.8) (2025-06-27)
 

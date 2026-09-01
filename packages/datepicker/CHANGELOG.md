@@ -12,12 +12,40 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Bug Fixes
 
 - **datepicker/date field:** dim unfilled date and time segments ([0693bb0](https://github.com/entur/design-system/commit/0693bb0859a0835d725101aecd87c26b2b2092a1))
+
+  Placeholder segments referenced a custom property that does not exist and
+  rendered in the normal text color. They now use the same placeholder color
+  as other form fields.
+
 - **datepicker:** set aria-invalid for the negative variant ([6b9ef16](https://github.com/entur/design-system/commit/6b9ef16b7d4ca7e5f5682906cf4959e97e14bcff))
+
+  NativeDatePicker and NativeTimePicker only checked the deprecated
+  variant="error", so variant="negative" was never marked invalid for screen
+  readers.
+
 - **form, datepicker:** announce feedback text to screen readers by default ([10783dd](https://github.com/entur/design-system/commit/10783ddfdb043bb8d0ebaf71743471ebf0290fcb))
+
+  The live region is now rendered empty on mount and filled when a message
+  appears, so screen readers pick up validation messages reliably.
+
+  Messages default to role="status". Pass ariaAlertOnFeedback="alert" for
+  messages that must interrupt what the screen reader is saying.
+
+  Status icons are hidden from screen readers, so the feedback text needs to
+  be understandable on its own.
+
+  Note: datepicker feedback with variant negative or warning previously got
+  role="alert" and now defaults to role="status".
 
 ### Features
 
 - **datepicker:** control how feedback text is announced with ariaAlertOnFeedback and feedbackProps ([d8e96e5](https://github.com/entur/design-system/commit/d8e96e5e194a62b138b85770653f77d8f64b7a70))
+
+  feedbackProps lets you set your own role or aria-live on the feedback text,
+  and ariaAlertOnFeedback decides how the message is announced.
+
+  Available on DateField, TimePicker, SimpleTimePicker, NativeDatePicker and
+  NativeTimePicker. The two latter also accept ariaAlertOnFeedback now.
 
 ## [12.0.2](https://github.com/entur/design-system/compare/@entur/datepicker@12.0.1...@entur/datepicker@12.0.2) (2026-08-13)
 
@@ -25,17 +53,32 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **datepicker/simple time picker:** keep a cleared field empty while it has focus inside shadow DOM ([cdf9ffb](https://github.com/entur/design-system/commit/cdf9ffb9ada7b7d95a96aabca75e4ea7caead15e))
 
+  The placeholder is now only inserted when the field really is unfocused.
+
 ## [12.0.1](https://github.com/entur/design-system/compare/@entur/datepicker@12.0.0...@entur/datepicker@12.0.1) (2026-08-06)
 
 ### Bug Fixes
 
 - **datepicker:** treat undefined value as empty instead of crashing ([d244ce6](https://github.com/entur/design-system/commit/d244ce68f1f3538ada00a618a0562ecedf63e2db))
 
+  All pickers now handle an undefined value like null: the field renders
+  empty and stays controlled. Before, undefined threw a TypeError that
+  could take down the whole page.
+
+  Useful with react-hook-form >= 7.73.1, which gives undefined for nested
+  fields under a null parent. No need for `value ?? null` at the call site.
+
 # [12.0.0](https://github.com/entur/design-system/compare/@entur/datepicker@11.8.1...@entur/datepicker@12.0.0) (2026-07-30)
 
 ### Features
 
 - **datepicker:** add exports field for ESM-compatible module resolution ([6ea556f](https://github.com/entur/design-system/commit/6ea556f00ebb4926bd717a362dec48a37ad1fbfe))
+
+  Consumers no longer need bundler aliases to resolve ESM entry points.
+  Declares explicit exports map with entries for main entrypoint,
+  ./styles (CSS), ./dist/styles.css (compat), and ./package.json.
+  Deep dist/ imports not listed will stop resolving.
+
 - **datepicker:** require React 18 as minimum peer dependency ([e04be77](https://github.com/entur/design-system/commit/e04be7720c2ee29714059a0928aeb17ecc3ad027))
 
 ### BREAKING CHANGES
@@ -54,9 +97,19 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 - **datepicker/calendar:** prevent :active styling on disabled cells ([b9b481c](https://github.com/entur/design-system/commit/b9b481cf996a6512b25a450e3968aca05f146bf8))
 - **datepicker/calendar:** prevent duplicate interactive cells in multi-month view ([2d095a2](https://github.com/entur/design-system/commit/2d095a26654ae505056cb720cbffdd952ecf1400))
 
+  When visibleDuration spans multiple months, overflow dates from adjacent
+  months appeared in multiple grids as fully interactive cells. Adds
+  isBetweenVisibleMonths handling to CalendarCell (matching RangeCalendarCell)
+  to make such cells presentational and aria-hidden. Also adds tests for the
+  visibleDuration prop.
+
 ### Features
 
 - **datepicker/calendar:** add visibleDuration prop to Calendar component ([fa7be0e](https://github.com/entur/design-system/commit/fa7be0ec542cd0cc221d819d35ae8e497c961076))
+
+  Makes visibleDuration available on Calendar, matching the existing
+  implementation on RangeCalendar. Adds startDate prop to CalendarGrid
+  so each grid instance renders the correct month offset.
 
 # [11.7.0](https://github.com/entur/design-system/compare/@entur/datepicker@11.6.1...@entur/datepicker@11.7.0) (2026-06-22)
 
@@ -65,9 +118,25 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 - **datepicker/calendar:** update SCSS vars to use renamed token names ([4945880](https://github.com/entur/design-system/commit/4945880de158c083d04b8a145e0dd6028564e5f2))
 - **tokens:** rename TintDark to DarkTint and Calendar endpoint tokens to Selected ([1250370](https://github.com/entur/design-system/commit/1250370d3e4f8f6ad2a096d4855800498f474dfc))
 
+  Rename color token variables to align with Figma:
+
+  - Fill/Selected/Default/TintDark → Fill/Selected/Default/DarkTint
+  - Fill/Selected/Hover/TintDark → Fill/Selected/Hover/DarkTint
+  - DateFill-Range-Endpoint → removed (duplicate of DateFill-Selected)
+  - DateFill-Range-Endpoint-Hover → DateFill-Selected-Hover
+  - Text-Range-Endpoint → Text-Selected
+
 ### Features
 
 - **datepicker/range calendar:** add RangeCalendar component ([62a8041](https://github.com/entur/design-system/commit/62a8041f66fcb378ca18d408121acc555b63fbc1))
+
+  RangeCalendar lets users select a date range (start and end date). Supports visibleDuration prop to
+  display multiple months simultaneously.
+
+  The selected date styling for the existing Calendar component has also
+  been updated — the selected date now uses a filled primary color instead
+  of the previous lighter secondary tint.
+
 - **datepicker/range calendar:** update docs ([becf816](https://github.com/entur/design-system/commit/becf816cb76578251b71b44fc3f341f7c7438134))
 
 ## [11.6.2](https://github.com/entur/design-system/compare/@entur/datepicker@11.6.1...@entur/datepicker@11.6.2) (2026-06-08)
@@ -84,9 +153,16 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **datepicker/calendar:** show selected color for outside-month dates ([1f2f7e0](https://github.com/entur/design-system/commit/1f2f7e0d9b4a68e90e2fa6ef3ef90a4b4fad0315))
 
+  When showOutsideMonth is true, selected dates outside the current month
+  now receive the selected fill color instead of the muted overflow background.
+
 ### Features
 
 - **tokens:** update primitive, semantic, base and component color tokens ([3ef6220](https://github.com/entur/design-system/commit/3ef622059143f24dcf7c94b19d4b7337fbac3508))
+
+  Updates primitive, semantic, base and component-level color tokens.
+  Visual changes affect alert, datepicker, loader, menu, tab, and travel
+  components.
 
 ## [11.5.11](https://github.com/entur/design-system/compare/@entur/datepicker@11.5.10...@entur/datepicker@11.5.11) (2026-05-13)
 
@@ -105,6 +181,10 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Bug Fixes
 
 - **datepicker:** allow typing any day of month in date fields ([f152ef4](https://github.com/entur/design-system/commit/f152ef41f718bc17468a47ab4f7dc35a22276897))
+
+  Previously, entering e.g. "31" in the day field would be clamped to 30
+  if the current month placeholder had fewer days. Now the value is
+  accepted as typed and validated on blur instead.
 
 ## [11.5.5](https://github.com/entur/design-system/compare/@entur/datepicker@11.5.4...@entur/datepicker@11.5.5) (2026-02-05)
 
@@ -152,11 +232,15 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **datepicker:** add showOutsideMonth prop to DatePicker and Calendar ([3a2d2a7](https://github.com/entur/design-system/commit/3a2d2a7e869315c203bcc0dd8b99802fd52c6c6b))
 
+  showOutsideMonth lets the user see and select dates which are outside the currently shown month.
+
 # [11.3.0](https://github.com/entur/design-system/compare/@entur/datepicker@11.2.3...@entur/datepicker@11.3.0) (2025-09-30)
 
 ### Features
 
 - **add travel:** add detail section to TravelTag ([0185c7a](https://github.com/entur/design-system/commit/0185c7aa2c1e5961435d9d92c7a7020c24a27c4b))
+
+  This field is useful for e.g. adding a departure number to the tag.
 
 ## [11.2.3](https://github.com/entur/design-system/compare/@entur/datepicker@11.2.2...@entur/datepicker@11.2.3) (2025-09-24)
 
@@ -167,8 +251,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Bug Fixes
 
 - **deps:** bump minor for dependencies ([bdde8f2](https://github.com/entur/design-system/commit/bdde8f2d5ab46cfa307a424429063b9700edfc1e))
+
+  classnames, react-focus-lock, @react-aria, @react-stately, @internationalized/date, react-dropzone
+
 - exclude dependencies from bundle ([5252a14](https://github.com/entur/design-system/commit/5252a14c4c615452f3cc7effc73287a5ee42399e))
 - fix package.json field order ([7de85f2](https://github.com/entur/design-system/commit/7de85f2baf08a1fc3a0223e3f149c8cf9636546b))
+
+  incorrect order made types unavailable
 
 # [11.2.0](https://github.com/entur/design-system/compare/@entur/datepicker@11.1.2...@entur/datepicker@11.2.0) (2025-08-01)
 
@@ -179,6 +268,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Features
 
 - **datepicker:** add onValidate prop ([85d9ed8](https://github.com/entur/design-system/commit/85d9ed803843eeaa5fb629487937d6072b7bda18))
+
+  This callback emits the state of isValid based on minDate, maxDate and isDateUnavailable when the state changes.
 
 ## [11.1.2](https://github.com/entur/design-system/compare/@entur/datepicker@11.1.1...@entur/datepicker@11.1.2) (2025-07-29)
 
@@ -237,9 +328,14 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **datepicker:** change default datetime type to ZonedDateTime ([78443c9](https://github.com/entur/design-system/commit/78443c9568c4f8e82e26a7c65ffee9a164a21bf5))
 
+  This is done to avoid unexpected issues where a date without time is selected and sometimes leads to
+  a crash.
+
 ### Features
 
 - **datepicker:** add "second" granularity support to datepicker ([4233035](https://github.com/entur/design-system/commit/42330359e450855effd241e3c3d9b22ebc282ffc))
+
+  Also includes small styling tweeks to time selection segments
 
 ### BREAKING CHANGES
 
