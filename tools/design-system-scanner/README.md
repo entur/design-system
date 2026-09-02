@@ -25,6 +25,11 @@ access it needs.
 This repo only builds and tests the scanner, via `.github/workflows/scanner-ci.yml` on
 PRs that touch scanner files.
 
+To try a scanner change before merging it, dispatch the scan workflow in that internal
+repo with `scanner_ref` set to your branch and `skip_export` on. That runs the branch's
+scanner against every repo but skips the PostHog and BigQuery exports, and uploads the
+scan report and NDJSON as an artifact instead.
+
 ## Local usage
 
 ```bash
