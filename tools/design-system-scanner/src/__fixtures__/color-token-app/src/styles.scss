@@ -1,0 +1,24 @@
+@use '@entur/tokens/dist/styles' as t;
+
+$local-spacing: 1rem;
+
+.panel {
+  /* New generation, read as a CSS custom property */
+  background: var(--fill-background-tint-light);
+  border-color: var(--basecolors-stroke-focus-standard);
+
+  /* Legacy generation, read as an SCSS variable */
+  color: $colors-blues-blue50;
+
+  /* Hardcoded, but the design system already publishes this colour */
+  outline-color: #181c56;
+
+  /* Hardcoded with no token equivalent */
+  box-shadow: 0 0 0 1px #abcdef;
+}
+
+.badge {
+  background: rgb(255, 89, 89);
+  color: red;
+  padding: $local-spacing;
+}

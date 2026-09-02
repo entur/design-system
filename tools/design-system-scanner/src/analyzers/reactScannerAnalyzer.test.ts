@@ -11,7 +11,9 @@ describe('reactScannerAnalyzer', () => {
 
       const sidebar = components.find(c => c.componentName === 'Sidebar');
       expect(sidebar).toBeDefined();
-      expect(sidebar!.packageName).toBe('@entur/layout/beta');
+      // packageName is always the root package; the subpath lives only in
+      // deepImportPath, so a breakdown by package does not split beta out
+      expect(sidebar!.packageName).toBe('@entur/layout');
       expect(sidebar!.deepImportPath).toBe('/beta');
     });
 

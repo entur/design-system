@@ -1,0 +1,10 @@
+{
+  "name": "typography-beta-app",
+  "version": "1.0.0",
+  "dependencies": {
+    "@entur/typography": "^3.0.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "styled-components": "^6.1.0"
+  }
+}

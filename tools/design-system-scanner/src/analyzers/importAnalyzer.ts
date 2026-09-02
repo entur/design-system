@@ -7,12 +7,17 @@ import type {
   SymbolType,
   FileFinding,
 } from '../types';
-import { DESIGN_SYSTEM_PACKAGES } from './packageAnalyzer';
-import { EXCLUDE_DIRS } from './constants';
+import { resolveDesignSystemSpecifier } from './packageAnalyzer';
+import {
+  SOURCE_EXTENSIONS,
+  findFilesByExtension,
+  isFindingsOnlyFile,
+} from './constants';
 
 /** Per-file import entry before aggregation. */
 interface FileImportEntry {
   packageName: string;
+  deepImportPath?: string;
   symbolName: string;
   localName: string;
   symbolType: SymbolType;
@@ -27,35 +32,6 @@ interface FileImportEntry {
 export interface AnalyzeImportsResult {
   imports: ImportUsage[];
   fileFindings: FileFinding[];
-}
-
-/** File extensions to analyze. */
-const SOURCE_EXTENSIONS = new Set(['.ts', '.tsx', '.js', '.jsx']);
-
-/** Patterns for files to exclude (tests, stories, declarations). */
-const EXCLUDE_FILE_PATTERNS = [
-  /\.(test|spec)\.[jt]sx?$/,
-  /\.(stories|story)\.[jt]sx?$/,
-  /\.d\.[jt]sx?$/,
-];
-
-/** Whether a file is collected for findings only, and kept out of the aggregate. */
-function isFindingsOnlyFile(filePath: string): boolean {
-  const basename = path.basename(filePath);
-  return EXCLUDE_FILE_PATTERNS.some(p => p.test(basename));
-}
-
-/**
- * Check if a module specifier matches a known @entur/* design system package.
- * Returns the canonical package name (e.g., "@entur/button") or null.
- */
-function matchDesignSystemPackage(moduleSpecifier: string): string | null {
-  for (const pkg of DESIGN_SYSTEM_PACKAGES) {
-    if (moduleSpecifier === pkg || moduleSpecifier.startsWith(pkg + '/')) {
-      return pkg;
-    }
-  }
-  return null;
 }
 
 /**
@@ -149,9 +125,9 @@ function analyzeFile(filePath: string, repoDir: string): FileImportEntry[] {
     const moduleSpecifier = statement.moduleSpecifier;
     if (!ts.isStringLiteral(moduleSpecifier)) continue;
 
-    const moduleName = moduleSpecifier.text;
-    const packageName = matchDesignSystemPackage(moduleName);
-    if (!packageName) continue;
+    const resolved = resolveDesignSystemSpecifier(moduleSpecifier.text);
+    if (!resolved) continue;
+    const { packageName, deepImportPath } = resolved;
 
     const importClause = statement.importClause;
     if (!importClause) continue; // side-effect import: import '@entur/styles'
@@ -163,7 +139,8 @@ function analyzeFile(filePath: string, repoDir: string): FileImportEntry[] {
     if (importClause.name) {
       const localName = importClause.name.text;
       entries.push({
-        packageName: moduleName,
+        packageName,
+        deepImportPath,
         symbolName: 'default',
         localName,
         symbolType: classifySymbol(localName),
@@ -183,7 +160,8 @@ function analyzeFile(filePath: string, repoDir: string): FileImportEntry[] {
     if (ts.isNamespaceImport(namedBindings)) {
       const localName = namedBindings.name.text;
       entries.push({
-        packageName: moduleName,
+        packageName,
+        deepImportPath,
         symbolName: '*',
         localName,
         symbolType: 'unknown',
@@ -207,7 +185,8 @@ function analyzeFile(filePath: string, repoDir: string): FileImportEntry[] {
         const isAliased = !!element.propertyName;
 
         entries.push({
-          packageName: moduleName,
+          packageName,
+          deepImportPath,
           symbolName: originalName,
           localName,
           symbolType: classifySymbol(originalName),
@@ -226,53 +205,6 @@ function analyzeFile(filePath: string, repoDir: string): FileImportEntry[] {
 }
 
 /**
- * Recursively find source files to analyze.
- */
-function findSourceFiles(
-  dir: string,
-  includeTestFiles: boolean,
-  depth = 0,
-): string[] {
-  if (depth > 10) return [];
-
-  const results: string[] = [];
-
-  try {
-    const entries = fs.readdirSync(dir, { withFileTypes: true });
-    for (const entry of entries) {
-      if (entry.isDirectory()) {
-        if (EXCLUDE_DIRS.has(entry.name) || entry.name.startsWith('.')) {
-          continue;
-        }
-        results.push(
-          ...findSourceFiles(
-            path.join(dir, entry.name),
-            includeTestFiles,
-            depth + 1,
-          ),
-        );
-      } else if (entry.isFile()) {
-        const ext = path.extname(entry.name);
-        if (!SOURCE_EXTENSIONS.has(ext)) continue;
-
-        if (!includeTestFiles) {
-          const isExcluded = EXCLUDE_FILE_PATTERNS.some(p =>
-            p.test(entry.name),
-          );
-          if (isExcluded) continue;
-        }
-
-        results.push(path.join(dir, entry.name));
-      }
-    }
-  } catch {
-    // Skip inaccessible directories
-  }
-
-  return results;
-}
-
-/**
  * Aggregate per-file import entries into per-symbol ImportUsage summaries.
  */
 function aggregateImports(entries: FileImportEntry[]): ImportUsage[] {
@@ -280,7 +212,11 @@ function aggregateImports(entries: FileImportEntry[]): ImportUsage[] {
   const filesByKey = new Map<string, Set<string>>();
 
   for (const entry of entries) {
-    const key = `${entry.packageName}::${entry.symbolName}`;
+    // The subpath is part of the key: Link from @entur/typography and Link from
+    // @entur/typography/beta are different symbols despite the shared root.
+    const key = `${entry.packageName}${entry.deepImportPath ?? ''}::${
+      entry.symbolName
+    }`;
     const existing = map.get(key);
 
     if (existing) {
@@ -291,6 +227,7 @@ function aggregateImports(entries: FileImportEntry[]): ImportUsage[] {
       filesByKey.set(key, new Set([entry.filePath]));
       map.set(key, {
         packageName: entry.packageName,
+        deepImportPath: entry.deepImportPath,
         symbolName: entry.symbolName,
         symbolType: entry.symbolType,
         importStyle: entry.importStyle,
@@ -341,7 +278,9 @@ export async function analyzeImports(
   includeFileFindings = false,
 ): Promise<AnalyzeImportsResult> {
   try {
-    const sourceFiles = findSourceFiles(repoDir, includeFileFindings);
+    const sourceFiles = findFilesByExtension(repoDir, SOURCE_EXTENSIONS, {
+      includeFindingsOnlyFiles: includeFileFindings,
+    });
 
     const allEntries: FileImportEntry[] = [];
 

@@ -32,6 +32,50 @@ export const DESIGN_SYSTEM_PACKAGES = new Set([
   '@entur/utils',
 ]);
 
+/** A design system import split into its root package and optional subpath. */
+export interface ResolvedDesignSystemSpecifier {
+  /** Canonical root package, e.g. "@entur/typography" */
+  packageName: string;
+  /** Subpath beyond the package root, e.g. "/beta", or undefined */
+  deepImportPath?: string;
+}
+
+/**
+ * Asset imports carry a file extension and sometimes a bundler query string,
+ * e.g. "@entur/typography/fonts/Entur-Nationale-Medium.woff2?url". They are not
+ * symbol imports and must not be reported as package usage.
+ */
+const ASSET_SPECIFIER_PATTERN =
+  /\.(woff2?|ttf|eot|otf|svg|png|jpe?g|gif|webp|avif|css|scss|sass|less|json)(\?.*)?$/i;
+
+/**
+ * Resolve a module specifier to its design system root package and subpath.
+ *
+ * Returns null for anything that is not a design system import, including asset
+ * imports. Splitting the root package from the subpath here is what keeps
+ * package_name consistent across every event the scanner emits: without it a
+ * deep import reports "@entur/typography/beta" as its own package, so a
+ * breakdown by package splits beta out as a phantom entry and a filter on
+ * "@entur/typography" silently drops every beta usage.
+ */
+export function resolveDesignSystemSpecifier(
+  moduleSpecifier: string,
+): ResolvedDesignSystemSpecifier | null {
+  for (const pkg of DESIGN_SYSTEM_PACKAGES) {
+    if (moduleSpecifier === pkg) return { packageName: pkg };
+
+    // Require a separator so "@entur/table" cannot match the "@entur/tab" entry
+    if (moduleSpecifier.startsWith(pkg + '/')) {
+      if (ASSET_SPECIFIER_PATTERN.test(moduleSpecifier)) return null;
+      return {
+        packageName: pkg,
+        deepImportPath: moduleSpecifier.slice(pkg.length),
+      };
+    }
+  }
+  return null;
+}
+
 /**
  * Known UI libraries to detect in addition to @entur/* packages.
  * Maps package name patterns to their category.

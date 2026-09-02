@@ -40,6 +40,13 @@ export interface RepoMetadata {
   reactVersion: string | null;
   /** Unique code owners from CODEOWNERS file (e.g. ["@entur/team-x"]) */
   codeOwners: string[];
+  /**
+   * Owning teams (e.g. ["@entur/team-x"]), from the org team map when available
+   * and CODEOWNERS otherwise. CODEOWNERS alone covers only about a quarter of repos.
+   */
+  ownerTeams: string[];
+  /** Where ownerTeams came from */
+  ownerTeamsSource: 'org-team' | 'codeowners' | 'none';
 }
 
 /** Information about a workspace/package inside a monorepo. */
@@ -80,8 +87,16 @@ export interface RepositoryUsage {
   importUsage: ImportUsage[];
   /** Per-file findings for drilldown (only when --include-file-findings is set) */
   fileFindings?: FileFinding[];
-  /** CSS override findings (.eds-* selectors used in consumer stylesheets) */
+  /** CSS override findings (.eds-* selectors used in consumer code) */
   cssOverrides: CssOverrideFinding[];
+  /** Colour token usage, aggregated per token */
+  colorTokenUsage: ColorTokenFinding[];
+  /** Hardcoded colour literals, aggregated per normalised value */
+  hardcodedColors: HardcodedColorFinding[];
+  /** Repo-level typography rollup */
+  typographySummary: TypographySummary;
+  /** Repo-level colour token rollup */
+  colorTokenSummary: ColorTokenSummary;
 }
 
 // ── Package-level types ──
@@ -161,11 +176,19 @@ export interface ImportUsage {
   referenceCount: number;
   /** Number of files that import this symbol */
   filesUsedIn: number;
+  /** Subpath beyond package root if deep import (e.g., "/beta") */
+  deepImportPath?: string;
 }
 
 // ── CSS override types ──
 
-/** A single CSS override finding (.eds-* selector used in consumer stylesheets). */
+/** Which generation of a package's internal class names an override targets. */
+export type ClassGeneration = 'legacy' | 'beta' | 'unknown';
+
+/** Where an override of an internal class name was found. */
+export type OverrideSource = 'stylesheet' | 'css-in-js' | 'jsx-classname';
+
+/** A single CSS override finding (.eds-* selector used in consumer code). */
 export interface CssOverrideFinding {
   /** The .eds-* CSS class selector being overridden (e.g. ".eds-primary-button") */
   selector: string;
@@ -175,6 +198,124 @@ export interface CssOverrideFinding {
   lineNumber: number;
   /** File extension (e.g. ".scss") */
   fileExtension: string;
+  /** Package that owns the class, or null when unrecognised */
+  packageName: string | null;
+  /** Class without its modifier suffix (".eds-text--paragraph" → "eds-text") */
+  baseClass: string | null;
+  /** Which generation of the package's styles the class belongs to */
+  classGeneration: ClassGeneration;
+  /** Whether this came from a stylesheet, a CSS-in-JS literal, or a className string */
+  source: OverrideSource;
+}
+
+// ── Colour token types ──
+
+/** The token layer a colour variable belongs to. */
+export type ColorTokenLayer =
+  | 'primitive'
+  | 'semantic'
+  | 'base'
+  | 'data'
+  | 'transport'
+  | 'component'
+  | 'legacy';
+
+/** How a colour token reference was written. */
+export type ColorSource =
+  | 'stylesheet'
+  | 'css-in-js'
+  | 'js-token-object'
+  | 'inline-style';
+
+/** Aggregated usage of one colour token in one repository. */
+export interface ColorTokenFinding {
+  /** Token name without sigil (e.g. "blue-10", "colors-blues-blue50") */
+  tokenName: string;
+  /** Which token layer the token belongs to */
+  tokenLayer: ColorTokenLayer;
+  /** Legacy (hand-maintained) tokens vs the Figma-variable generation */
+  tokenGeneration: 'legacy' | 'new';
+  /** Total references across the repo */
+  occurrenceCount: number;
+  /** Number of distinct files referencing it */
+  fileCount: number;
+  /** Distinct sources the references came from */
+  sources: ColorSource[];
+}
+
+/** How a hardcoded colour literal was written. */
+export type ColorFormat = 'hex' | 'rgb' | 'hsl' | 'named';
+
+/** Aggregated usage of one hardcoded colour literal in one repository. */
+export interface HardcodedColorFinding {
+  /** Normalised value — lowercase hex where convertible, else the literal as written */
+  value: string;
+  /** Notation the literal was written in */
+  colorFormat: ColorFormat;
+  /** Total occurrences across the repo */
+  occurrenceCount: number;
+  /** Number of distinct files it appears in */
+  fileCount: number;
+  /**
+   * Name of a design system token with the same value, when one exists.
+   * The core migration-friction signal: a colour hardcoded despite having a token.
+   */
+  matchesTokenName?: string;
+  /** Layer of the matching token */
+  matchesTokenLayer?: ColorTokenLayer;
+  /** Distinct sources the occurrences came from */
+  sources: ColorSource[];
+}
+
+// ── Repo-level rollups ──
+
+/**
+ * Per-repo typography summary, so adoption is a single-event metric rather than
+ * something that has to be recomputed by joining component rows.
+ */
+export interface TypographySummary {
+  /** Whether @entur/typography is a dependency */
+  hasPackage: boolean;
+  /** Declared version range, or null */
+  packageVersion: string | null;
+  /** Whether it is only a devDependency (i.e. not shipped to production) */
+  isDevDependency: boolean;
+  /** Any JSX usage of components imported from @entur/typography/beta */
+  usesNewTypography: boolean;
+  /** Any JSX usage of components imported from @entur/typography root */
+  usesLegacyTypography: boolean;
+  /** JSX instances of new (beta) typography components */
+  newInstanceCount: number;
+  /** JSX instances of legacy typography components */
+  legacyInstanceCount: number;
+  /** newInstanceCount / (new + legacy), or null when there are no instances */
+  newShare: number | null;
+  /** Overrides of typography class names, any generation */
+  classOverrideCount: number;
+  /** Overrides targeting legacy typography class names */
+  classOverrideLegacyCount: number;
+  /** Overrides targeting beta typography class names */
+  classOverrideBetaCount: number;
+}
+
+/** Per-repo colour token summary. */
+export interface ColorTokenSummary {
+  /** Whether the colour analysis ran to completion for this repo */
+  analysisComplete: boolean;
+  /** Number of stylesheet files inspected */
+  styleFilesScanned: number;
+  /** Total colour token references */
+  usageCount: number;
+  /** Number of distinct tokens referenced */
+  distinctTokenCount: number;
+  /** References to legacy (hand-maintained) tokens */
+  legacyTokenCount: number;
+  /** References to the Figma-variable token generation */
+  newTokenCount: number;
+  /** Total hardcoded colour occurrences */
+  hardcodedColorCount: number;
+  /** Hardcoded occurrences whose value already exists as a token */
+  hardcodedMatchingTokenCount: number;
 }
 
 // ── File-level types ──
@@ -217,6 +358,38 @@ export interface CatalogPackage {
   /** Latest published version on npm, or null if unavailable. */
   latestVersion: string | null;
   symbols: CatalogSymbol[];
+}
+
+/** An internal CSS class name published by a design system package. */
+export interface CatalogClassName {
+  /** Class name without the leading dot (e.g. "eds-text--paragraph") */
+  className: string;
+  /** Class without its modifier suffix (e.g. "eds-text") */
+  baseClass: string;
+  /** Package that publishes it */
+  packageName: string;
+  /** Which generation of the package's styles it belongs to */
+  generation: ClassGeneration;
+}
+
+/** A colour token published by the design system. */
+export interface CatalogColorToken {
+  /** Token name without sigil (e.g. "blue-10", "colors-blues-blue50") */
+  name: string;
+  /** Which token layer it belongs to */
+  layer: ColorTokenLayer;
+  /** Normalised lowercase hex value, or null when it resolves to another variable */
+  value: string | null;
+}
+
+/**
+ * Class names and colour tokens published by the design system, built from the
+ * monorepo's own sources. Kept separate from DesignSystemCatalog because it needs
+ * neither the TypeScript type checker nor network access.
+ */
+export interface StyleCatalog {
+  classNames: CatalogClassName[];
+  colorTokens: CatalogColorToken[];
 }
 
 /** The full design system component/symbol catalog. */

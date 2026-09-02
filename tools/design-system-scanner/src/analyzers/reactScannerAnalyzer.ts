@@ -1,6 +1,10 @@
 import * as path from 'path';
 import type { ComponentUsage, FileFinding, ImportStyle } from '../types';
-import { DESIGN_SYSTEM_PACKAGES } from './packageAnalyzer';
+import {
+  DESIGN_SYSTEM_PACKAGES,
+  resolveDesignSystemSpecifier,
+} from './packageAnalyzer';
+import { EXCLUDE_DIRS } from './constants';
 
 interface ScannerInstance {
   importInfo?: {
@@ -47,21 +51,6 @@ function mapImportStyle(importType?: string): ImportStyle {
     default:
       return 'unknown';
   }
-}
-
-/**
- * Extract the deep import subpath from a module name.
- * E.g., "@entur/layout/beta" → "/beta", "@entur/button" → undefined
- */
-function extractDeepImportPath(moduleName: string): string | undefined {
-  // Require a path separator after the package name. A bare startsWith would let
-  // "@entur/table" match the "@entur/tab" entry and report "le" as the subpath.
-  for (const pkg of DESIGN_SYSTEM_PACKAGES) {
-    if (moduleName.startsWith(pkg + '/')) {
-      return moduleName.slice(pkg.length);
-    }
-  }
-  return undefined;
 }
 
 /** Classify a file path based on naming conventions. */
@@ -114,14 +103,17 @@ function createEnturProcessor(repoDir: string, includeFileFindings: boolean) {
       // Derive fields from the first instance's importInfo
       const firstInstance = instances[0];
       const importInfo = firstInstance?.importInfo;
-      const packageName = importInfo?.moduleName || 'unknown';
+      const moduleName = importInfo?.moduleName;
+      // packageName is the root package; the subpath lives in deepImportPath only
+      const resolved = moduleName
+        ? resolveDesignSystemSpecifier(moduleName)
+        : null;
+      const packageName = resolved?.packageName ?? moduleName ?? 'unknown';
+      const deepImportPath = resolved?.deepImportPath;
       const importStyle = mapImportStyle(importInfo?.importType);
       const imported = importInfo?.imported;
       const local = importInfo?.local;
       const isAliased = !!(imported && local && imported !== local);
-      const deepImportPath = importInfo?.moduleName
-        ? extractDeepImportPath(importInfo.moduleName)
-        : undefined;
 
       // Collect file paths (basenames for ComponentUsage, relative for findings)
       const fileSet = new Set<string>();
@@ -171,24 +163,6 @@ function createEnturProcessor(repoDir: string, includeFileFindings: boolean) {
     return { components, fileFindings };
   };
 }
-
-/** Directories to exclude from react-scanner crawl. */
-const EXCLUDE_DIRS = new Set([
-  'node_modules',
-  '.next',
-  'dist',
-  'build',
-  'coverage',
-  '__tests__',
-  '__mocks__',
-  'storybook-static',
-  '.storybook',
-  'public',
-  '.cache',
-  '.turbo',
-  '.nx',
-  'out',
-]);
 
 /**
  * Build a regex that matches design system package imports,

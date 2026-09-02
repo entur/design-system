@@ -10,7 +10,10 @@
  *   ds_package_used     — one per (repo, @entur/* package)
  *   ds_component_used   — one per (repo, JSX component) from react-scanner
  *   ds_symbol_used      — one per (repo, non-JSX symbol) from import analyzer
- *   ds_css_override     — one per (repo, .eds-* CSS override)
+ *   ds_css_override     — one per (repo, internal .eds-* class name usage)
+ *   ds_color_token_used — one per (repo, colour token)
+ *   ds_hardcoded_color  — one per (repo, normalised hardcoded colour)
+ *   ds_repo_team        — one per (repo, owning team)
  */
 
 import type {
@@ -18,9 +21,12 @@ import type {
   RepositoryUsage,
   ComponentUsage,
   ImportUsage,
+  ColorTokenFinding,
   CssOverrideFinding,
+  HardcodedColorFinding,
   PackageUsage,
 } from '../types';
+import { flattenColorTokenSummary, flattenTypographySummary } from '../rollups';
 
 /** Minimal PostHog client interface — satisfied by posthog-node and the dry-run double. */
 export interface PostHogLike {
@@ -110,6 +116,7 @@ export function buildGroupIdentifies(
         primary_language: repo.repoMetadata?.primaryLanguage ?? null,
         is_monorepo: repo.repoMetadata?.isMonorepo ?? false,
         code_owners: repo.repoMetadata?.codeOwners ?? [],
+        owner_teams: repo.repoMetadata?.ownerTeams ?? [],
       },
     });
 
@@ -270,6 +277,11 @@ function buildRepoEvents(repo: RepositoryUsage, ts: string): CapturePayload[] {
       import_usage_count: repo.importUsage.length,
       css_override_count: (repo.cssOverrides ?? []).length,
       code_owners: repo.repoMetadata?.codeOwners ?? [],
+      owner_teams: repo.repoMetadata?.ownerTeams ?? [],
+      owner_teams_source: repo.repoMetadata?.ownerTeamsSource ?? 'none',
+      // Repo-level rollups, so each key result is a single-event metric
+      ...flattenTypographySummary(repo.typographySummary),
+      ...flattenColorTokenSummary(repo.colorTokenSummary),
     },
   });
 
@@ -288,9 +300,33 @@ function buildRepoEvents(repo: RepositoryUsage, ts: string): CapturePayload[] {
     events.push(buildSymbolEvent(repo.name, imp, ts));
   }
 
-  // ds_css_override — one per .eds-* override finding
+  // ds_css_override — one per internal .eds-* class name usage
   for (const override of repo.cssOverrides ?? []) {
     events.push(buildCssOverrideEvent(repo.name, override, ts));
+  }
+
+  // ds_color_token_used — one per colour token, already aggregated per repo
+  for (const token of repo.colorTokenUsage ?? []) {
+    events.push(buildColorTokenEvent(repo.name, token, ts));
+  }
+
+  // ds_hardcoded_color — one per normalised colour value
+  for (const color of repo.hardcodedColors ?? []) {
+    events.push(buildHardcodedColorEvent(repo.name, color, ts));
+  }
+
+  // ds_repo_team — one per owning team, so team-level shares need no array
+  // breakdown. Emitted as an event property rather than a group type because
+  // all five PostHog group-type slots but one are already taken.
+  for (const team of repo.repoMetadata?.ownerTeams ?? []) {
+    events.push(
+      buildRepoTeamEvent(
+        repo.name,
+        team,
+        repo.repoMetadata?.ownerTeamsSource ?? 'none',
+        ts,
+      ),
+    );
   }
 
   return events;
@@ -372,6 +408,7 @@ function buildSymbolEvent(
       files_used_in: imp.filesUsedIn,
       import_style: imp.importStyle,
       is_aliased: imp.isAliased,
+      deep_import_path: imp.deepImportPath ?? null,
     },
   };
 }
@@ -392,6 +429,75 @@ function buildCssOverrideEvent(
       file_path: override.filePath,
       line_number: override.lineNumber,
       file_extension: override.fileExtension,
+      package_name: override.packageName,
+      base_class: override.baseClass,
+      class_generation: override.classGeneration,
+      source: override.source,
+    },
+  };
+}
+
+function buildColorTokenEvent(
+  repoName: string,
+  token: ColorTokenFinding,
+  ts: string,
+): CapturePayload {
+  return {
+    distinctId: `repo:${repoName}:colortoken:${token.tokenName}`,
+    event: 'ds_color_token_used',
+    properties: {
+      $timestamp: ts,
+      $groups: { repo: repoName },
+      repo_name: repoName,
+      token_name: token.tokenName,
+      token_layer: token.tokenLayer,
+      token_generation: token.tokenGeneration,
+      occurrence_count: token.occurrenceCount,
+      file_count: token.fileCount,
+      sources: token.sources,
+    },
+  };
+}
+
+function buildHardcodedColorEvent(
+  repoName: string,
+  color: HardcodedColorFinding,
+  ts: string,
+): CapturePayload {
+  return {
+    distinctId: `repo:${repoName}:color:${color.value}`,
+    event: 'ds_hardcoded_color',
+    properties: {
+      $timestamp: ts,
+      $groups: { repo: repoName },
+      repo_name: repoName,
+      color_value: color.value,
+      color_format: color.colorFormat,
+      occurrence_count: color.occurrenceCount,
+      file_count: color.fileCount,
+      // Set when the design system already publishes this colour as a token
+      matches_token_name: color.matchesTokenName ?? null,
+      matches_token_layer: color.matchesTokenLayer ?? null,
+      sources: color.sources,
+    },
+  };
+}
+
+function buildRepoTeamEvent(
+  repoName: string,
+  teamSlug: string,
+  teamSource: string,
+  ts: string,
+): CapturePayload {
+  return {
+    distinctId: `repo:${repoName}:team:${teamSlug}`,
+    event: 'ds_repo_team',
+    properties: {
+      $timestamp: ts,
+      $groups: { repo: repoName },
+      repo_name: repoName,
+      team_slug: teamSlug,
+      team_source: teamSource,
     },
   };
 }
