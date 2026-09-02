@@ -39,6 +39,18 @@ export interface CapturePayload {
   distinctId: string;
   event: string;
   properties: Record<string, unknown>;
+  /**
+   * Group keys by group type. Must be a top-level field: posthog-node does not
+   * read a "$groups" property, so passing it inside `properties` leaves the
+   * event's group columns empty and silently disables every group breakdown.
+   */
+  groups?: Record<string, string>;
+  /**
+   * Event time. Also top-level — a "$timestamp" property is ignored, which
+   * leaves weekly scans attributed to their ingestion time instead of the
+   * scan's own timestamp.
+   */
+  timestamp?: Date;
 }
 
 export interface GroupIdentifyPayload {
@@ -69,8 +81,8 @@ export function buildScanEvents(
   events.push({
     distinctId: `scan-run:${scanId}`,
     event: 'ds_scan_run',
+    timestamp: new Date(ts),
     properties: {
-      $timestamp: ts,
       scan_id: scanId,
       total_repos_scanned: report.totalReposScanned,
       repos_with_usage: report.reposWithUsage,
@@ -255,9 +267,9 @@ function buildRepoEvents(repo: RepositoryUsage, ts: string): CapturePayload[] {
   events.push({
     distinctId: repoId,
     event: 'ds_repo_scanned',
+    timestamp: new Date(ts),
+    groups: { repo: repo.name },
     properties: {
-      $timestamp: ts,
-      $groups: { repo: repo.name },
       repo_name: repo.name,
       url: repo.url,
       default_branch: repo.defaultBranch,
@@ -340,9 +352,9 @@ function buildPackageEvent(
   return {
     distinctId: `repo:${repoName}:package:${pkg.name}`,
     event: 'ds_package_used',
+    timestamp: new Date(ts),
+    groups: { repo: repoName, ds_package: pkg.name },
     properties: {
-      $timestamp: ts,
-      $groups: { repo: repoName, ds_package: pkg.name },
       repo_name: repoName,
       package_name: pkg.name,
       version: pkg.version,
@@ -364,13 +376,13 @@ function buildComponentEvent(
   return {
     distinctId: `repo:${repoName}:component:${groupKey}`,
     event: 'ds_component_used',
+    timestamp: new Date(ts),
+    groups: {
+      repo: repoName,
+      ds_package: comp.packageName,
+      ds_component: groupKey,
+    },
     properties: {
-      $timestamp: ts,
-      $groups: {
-        repo: repoName,
-        ds_package: comp.packageName,
-        ds_component: groupKey,
-      },
       repo_name: repoName,
       package_name: comp.packageName,
       component_name: comp.componentName,
@@ -393,13 +405,13 @@ function buildSymbolEvent(
   return {
     distinctId: `repo:${repoName}:symbol:${groupKey}`,
     event: 'ds_symbol_used',
+    timestamp: new Date(ts),
+    groups: {
+      repo: repoName,
+      ds_package: imp.packageName,
+      ds_symbol: groupKey,
+    },
     properties: {
-      $timestamp: ts,
-      $groups: {
-        repo: repoName,
-        ds_package: imp.packageName,
-        ds_symbol: groupKey,
-      },
       repo_name: repoName,
       package_name: imp.packageName,
       symbol_name: imp.symbolName,
@@ -421,9 +433,9 @@ function buildCssOverrideEvent(
   return {
     distinctId: `repo:${repoName}:css:${override.filePath}:${override.lineNumber}`,
     event: 'ds_css_override',
+    timestamp: new Date(ts),
+    groups: { repo: repoName },
     properties: {
-      $timestamp: ts,
-      $groups: { repo: repoName },
       repo_name: repoName,
       selector: override.selector,
       file_path: override.filePath,
@@ -445,9 +457,9 @@ function buildColorTokenEvent(
   return {
     distinctId: `repo:${repoName}:colortoken:${token.tokenName}`,
     event: 'ds_color_token_used',
+    timestamp: new Date(ts),
+    groups: { repo: repoName },
     properties: {
-      $timestamp: ts,
-      $groups: { repo: repoName },
       repo_name: repoName,
       token_name: token.tokenName,
       token_layer: token.tokenLayer,
@@ -467,9 +479,9 @@ function buildHardcodedColorEvent(
   return {
     distinctId: `repo:${repoName}:color:${color.value}`,
     event: 'ds_hardcoded_color',
+    timestamp: new Date(ts),
+    groups: { repo: repoName },
     properties: {
-      $timestamp: ts,
-      $groups: { repo: repoName },
       repo_name: repoName,
       color_value: color.value,
       color_format: color.colorFormat,
@@ -492,9 +504,9 @@ function buildRepoTeamEvent(
   return {
     distinctId: `repo:${repoName}:team:${teamSlug}`,
     event: 'ds_repo_team',
+    timestamp: new Date(ts),
+    groups: { repo: repoName },
     properties: {
-      $timestamp: ts,
-      $groups: { repo: repoName },
       repo_name: repoName,
       team_slug: teamSlug,
       team_source: teamSource,

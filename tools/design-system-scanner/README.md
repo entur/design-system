@@ -142,7 +142,7 @@ one event per (repo, team) makes a team-level share a plain breakdown instead of
 
 Events use PostHog Group Analytics with `repo`, `ds_package`, `ds_component`, and `ds_symbol` groups, enabling dashboard breakdowns by e.g. "which packages are used in the most repos" or "repos using PrimaryButton".
 
-Timestamps are set to the scan's `timestamp` (not the send time), so weekly scans attribute data to the correct date.
+Group keys and the event timestamp are sent as **top-level** capture fields, not as `$groups` / `$timestamp` properties. posthog-node ignores those properties, which leaves the event's group columns empty (silently disabling every group breakdown and making `unique_group` aggregations return 0) and attributes each event to its ingestion time. Timestamps are set to the scan's `timestamp`, so weekly scans attribute data to the correct date.
 
 ## BigQuery output format
 

@@ -267,7 +267,7 @@ describe('buildScanEvents', () => {
     expect(scanRun.properties.scanner_version).toBe('0.2.0');
     expect(scanRun.properties.source).toBe('github-actions');
     expect(scanRun.properties.scan_status).toBe('success');
-    expect(scanRun.properties.$timestamp).toBe(FIXED_TS);
+    expect(scanRun.timestamp).toEqual(new Date(FIXED_TS));
   });
 
   it('emits one ds_repo_scanned per repository', () => {
@@ -515,10 +515,11 @@ describe('buildScanEvents', () => {
     expect(overrideEvent.properties.file_extension).toBe('.scss');
   });
 
-  it('all events have $timestamp set to report.timestamp', () => {
+  it('all events set the top-level timestamp to report.timestamp', () => {
     const events = buildScanEvents(FIXTURE_REPORT);
     for (const event of events) {
-      expect(event.properties.$timestamp).toBe(FIXED_TS);
+      // posthog-node ignores a $timestamp property, so it has to be top-level
+      expect(event.timestamp).toEqual(new Date(FIXED_TS));
     }
   });
 
@@ -692,5 +693,40 @@ describe('createDryRunClient', () => {
     const parsed = JSON.parse(lines[0]);
     expect(parsed.type).toBe('groupIdentify');
     expect(parsed.groupType).toBe('repo');
+  });
+});
+
+describe('group analytics', () => {
+  it('sends group keys as a top-level field, not as a property', () => {
+    // posthog-node does not read a $groups property. Passing it inside
+    // `properties` left every event's group columns empty, which silently
+    // disabled group breakdowns and made unique_group aggregations return 0.
+    const events = buildScanEvents(FIXTURE_REPORT);
+
+    const repoEvent = events.find(
+      e =>
+        e.event === 'ds_repo_scanned' && e.distinctId === 'repo:entur/my-app',
+    )!;
+    expect(repoEvent.groups).toEqual({ repo: 'entur/my-app' });
+    expect(repoEvent.properties.$groups).toBeUndefined();
+
+    const componentEvent = events.find(e => e.event === 'ds_component_used')!;
+    expect(componentEvent.groups).toMatchObject({
+      repo: 'entur/my-app',
+      ds_package: '@entur/button',
+    });
+  });
+
+  it('sets groups on every event that belongs to a repo', () => {
+    const events = buildScanEvents(FIXTURE_REPORT);
+
+    for (const event of events) {
+      if (event.event === 'ds_scan_run') {
+        // Not scoped to a repo
+        expect(event.groups).toBeUndefined();
+        continue;
+      }
+      expect(event.groups?.repo).toBeDefined();
+    }
   });
 });
