@@ -78,8 +78,7 @@ POSTHOG_API_KEY=phc_xxx yarn start --posthog-export scan-report.json
 | `--created-at <iso-date>`   | Repo creation date                                     |
 | `--include-file-findings`   | Collect per-file findings for drilldown                |
 | `--packages-root <path>`    | Design system `packages/` dir (default: auto-detected) |
-| `--owner-teams <a,b>`       | Owning teams for `--local` (default: CODEOWNERS)       |
-| `--team-map <path>`         | repo → teams JSON applied during `--aggregate`         |
+| `--owner-teams <a,b>`       | Owning teams (default: CODEOWNERS)                     |
 | `--posthog-export <path>`   | Path to scan-report.json to send to PostHog            |
 | `--posthog-dry-run`         | Print PostHog events as JSON, don't send               |
 | `--posthog-host <url>`      | PostHog host (default: `https://eu.i.posthog.com`)     |

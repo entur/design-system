@@ -161,10 +161,6 @@ async function aggregateResults(args: ParsedArgs): Promise<void> {
     }
   }
 
-  if (args.teamMap) {
-    applyTeamMap(repositories, path.resolve(args.teamMap));
-  }
-
   const totalRepos = args.totalRepos || repositories.length;
   const failedRepos = totalRepos - repositories.length;
 
@@ -799,51 +795,6 @@ function parseCommaList(value?: string): string[] {
     .filter(Boolean);
 }
 
-/**
- * Fill in owning teams from a repo → teams map produced by the scan workflow.
- *
- * The map is built once per scan from the org's teams, which name an owner for
- * far more repos than CODEOWNERS does. Repos missing from the map keep whatever
- * the CODEOWNERS fallback found.
- */
-function applyTeamMap(
-  repositories: RepositoryUsage[],
-  teamMapPath: string,
-): void {
-  if (!fs.existsSync(teamMapPath)) {
-    console.warn(
-      `Team map not found: ${teamMapPath} — keeping CODEOWNERS teams`,
-    );
-    return;
-  }
-
-  let teamMap: Record<string, string[]>;
-  try {
-    teamMap = JSON.parse(fs.readFileSync(teamMapPath, 'utf-8'));
-  } catch (error) {
-    console.warn(
-      `Could not parse team map ${teamMapPath}:`,
-      error instanceof Error ? error.message : error,
-    );
-    return;
-  }
-
-  let matched = 0;
-  for (const repo of repositories) {
-    const teams = teamMap[repo.name];
-    if (!repo.repoMetadata || !Array.isArray(teams) || teams.length === 0) {
-      continue;
-    }
-    repo.repoMetadata.ownerTeams = teams;
-    repo.repoMetadata.ownerTeamsSource = 'org-team';
-    matched++;
-  }
-
-  console.log(
-    `Team map: resolved owning teams for ${matched}/${repositories.length} repos`,
-  );
-}
-
 function findJsonFiles(dir: string): string[] {
   const files: string[] = [];
   try {
@@ -959,7 +910,6 @@ interface ParsedArgs {
   catalog?: string;
   packagesRoot?: string;
   ownerTeams?: string;
-  teamMap?: string;
   // PostHog export flags
   posthogExport?: string;
   posthogDryRun?: boolean;
@@ -1027,9 +977,6 @@ function parseArgs(argv: string[]): ParsedArgs {
       case '--owner-teams':
         args.ownerTeams = argv[++i];
         break;
-      case '--team-map':
-        args.teamMap = argv[++i];
-        break;
       case '--posthog-export':
         args.posthogExport = argv[++i];
         break;
@@ -1076,8 +1023,7 @@ Options:
   --bigquery-export <path>   Path to scan-report.json to export as NDJSON
   --catalog <path>           Path to catalog.json for unused symbol detection
   --packages-root <path>     Path to the design system packages/ dir (default: auto-detected)
-  --owner-teams <a,b>        Comma-separated owning teams for --local (default: CODEOWNERS)
-  --team-map <path>          repo → teams JSON applied during --aggregate
+  --owner-teams <a,b>        Comma-separated owning teams (default: CODEOWNERS)
   --posthog-export <path>    Path to scan-report.json to send to PostHog
   --posthog-dry-run          Print PostHog events without sending (no API key needed)
   --posthog-host <url>       PostHog host URL (default: https://eu.i.posthog.com)
