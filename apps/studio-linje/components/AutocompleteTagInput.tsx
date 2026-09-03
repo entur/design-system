@@ -1,6 +1,6 @@
+import { Card, Stack, Text, TextInput } from '@sanity/ui';
 import React, { useEffect, useState } from 'react';
-import { useClient } from 'sanity';
-import { StringInputProps, set, unset } from 'sanity';
+import { StringInputProps, set, unset, useClient } from 'sanity';
 
 const capitalize = (s: string) =>
   s ? s.charAt(0).toUpperCase() + s.slice(1) : s;
@@ -71,93 +71,75 @@ export const AutocompleteTagInput = (props: StringInputProps) => {
   const filteredOptions = options.filter(tag => tag.includes(searchTerm));
 
   if (loading) {
-    return <div>Laster tags …</div>;
+    return (
+      <Text size={1} muted>
+        Laster tags …
+      </Text>
+    );
   }
 
   return (
-    <div style={{ position: 'relative' }}>
-      <input
-        type="text"
+    <Stack style={{ position: 'relative' }}>
+      <TextInput
         value={capitalize(searchTerm)}
         onChange={handleInputChange}
         onFocus={handleInputFocus}
         onBlur={handleInputBlur}
         placeholder="Søk eller skriv inn en ny tag …"
-        style={{
-          width: '100%',
-          padding: '8px',
-          border: '1px solid #ccc',
-          borderRadius: '4px',
-          fontSize: '14px',
-          boxSizing: 'border-box',
-        }}
       />
-
       {showDropdown && (
-        <div
+        <Card
+          shadow={2}
+          radius={2}
           style={{
             position: 'absolute',
-            top: '100%',
+            top: 'calc(100% + 4px)',
             left: 0,
             right: 0,
-            backgroundColor: 'white',
-            border: '1px solid #ccc',
-            borderRadius: '4px',
             maxHeight: '200px',
             overflowY: 'auto',
             zIndex: 1000,
-            boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
           }}
         >
-          {filteredOptions.length > 0 ? (
-            filteredOptions.map(tag => (
-              <div
-                key={tag}
-                onClick={() => handleSelect(tag)}
-                style={{
-                  padding: '8px 12px',
-                  cursor: 'pointer',
-                  borderBottom: '1px solid #f0f0f0',
-                  fontSize: '14px',
-                }}
-                onMouseEnter={e => {
-                  e.currentTarget.style.backgroundColor = '#f5f5f5';
-                }}
-                onMouseLeave={e => {
-                  e.currentTarget.style.backgroundColor = 'white';
-                }}
-              >
-                {capitalize(tag)}
-              </div>
-            ))
-          ) : searchTerm ? (
-            <div
-              style={{
-                padding: '8px 12px',
-                color: '#666',
-                fontSize: '14px',
-                fontStyle: 'italic',
-              }}
-            >
-              Ingen eksisterende tags funnet. &ldquo;{capitalize(searchTerm)}
-              &rdquo; blir lagt til som en ny tag.
-            </div>
-          ) : (
-            <div
-              style={{
-                padding: '8px 12px',
-                color: '#666',
-                fontSize: '14px',
-                fontStyle: 'italic',
-              }}
-            >
-              {options.length > 0
-                ? `${options.length} tags finnes. Skriv for å filtrere.`
-                : 'Ingen tags finnes ennå. Skriv for å legge til en ny.'}
-            </div>
-          )}
-        </div>
+          <Stack>
+            {filteredOptions.length > 0 ? (
+              filteredOptions.map(tag => (
+                <Card
+                  key={tag}
+                  as="button"
+                  padding={3}
+                  radius={1}
+                  tone="default"
+                  style={{
+                    cursor: 'pointer',
+                    textAlign: 'left',
+                    width: '100%',
+                    border: 'none',
+                  }}
+                  onClick={() => handleSelect(tag)}
+                >
+                  <Text size={1}>{capitalize(tag)}</Text>
+                </Card>
+              ))
+            ) : searchTerm ? (
+              <Card padding={3}>
+                <Text size={1} muted>
+                  Ingen eksisterende tags funnet. &ldquo;
+                  {capitalize(searchTerm)}&rdquo; blir lagt til som en ny tag.
+                </Text>
+              </Card>
+            ) : (
+              <Card padding={3}>
+                <Text size={1} muted>
+                  {options.length > 0
+                    ? `${options.length} tags finnes. Skriv for å filtrere.`
+                    : 'Ingen tags finnes ennå. Skriv for å legge til en ny.'}
+                </Text>
+              </Card>
+            )}
+          </Stack>
+        </Card>
       )}
-    </div>
+    </Stack>
   );
 };

@@ -100,7 +100,8 @@ export const componentDoc = defineType({
       name: 'intro',
       title: 'Intro',
       type: 'textBlocks',
-      description: 'Valgfritt innhold som vises over fanene.',
+      description:
+        'Valgfritt innhold som vises over fanene – for eksempel et playground-eksempel.',
     }),
     defineField({
       name: 'tabs',

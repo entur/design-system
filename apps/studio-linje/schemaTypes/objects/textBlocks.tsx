@@ -1,6 +1,8 @@
 import * as icons from '@entur/icons';
 import { defineField, defineType } from 'sanity';
+import { TitleSuggestionsInput } from '../../components/TitleSuggestionsInput';
 import { isEnturIcon } from '../../utils';
+import { ALL_SECTION_TITLES } from '../../titleSuggestions';
 
 export const VARIANT_TYPES = [
   { title: 'Standard', value: 'normal' },
@@ -39,7 +41,14 @@ export const textBlocksType = defineType({
       name: 'title',
       title: 'Tittel',
       type: 'string',
-      hidden: ({ parent }) => !['alert'].includes(parent?.variant || ''),
+      description:
+        'Valgfri seksjonstittel. Velg fra standardtitlene eller skriv en egendefinert.',
+      hidden: ({ parent }) => !parent?._key,
+      components: {
+        input: TitleSuggestionsInput({
+          suggestions: ALL_SECTION_TITLES,
+        }),
+      },
     }),
     defineField({
       name: 'alertType',
