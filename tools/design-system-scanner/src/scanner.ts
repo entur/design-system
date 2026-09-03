@@ -9,7 +9,11 @@ import { analyzeComponents } from './analyzers/reactScannerAnalyzer';
 import { analyzeImports } from './analyzers/importAnalyzer';
 import { resolveVersions } from './analyzers/lockfileResolver';
 import { analyzeCssOverrides } from './analyzers/cssOverrideAnalyzer';
+import { analyzeColorTokens } from './analyzers/colorTokenAnalyzer';
 import { analyzeCodeOwners } from './analyzers/codeOwnersAnalyzer';
+import { loadStyleCatalog } from './analyzers/styleCatalog';
+import type { StyleCatalogIndex } from './analyzers/styleCatalog';
+import { buildColorTokenSummary, buildTypographySummary } from './rollups';
 import type {
   RepositoryUsage,
   RepoMetadata,
@@ -21,6 +25,19 @@ import type {
 export interface ScanOptions {
   /** Whether to collect per-file findings */
   includeFileFindings?: boolean;
+  /**
+   * Override where the design system's own packages/ directory is found. Used
+   * to build the class name and colour token catalogue; resolved from the
+   * scanner's own location when omitted.
+   */
+  packagesRoot?: string;
+  /**
+   * Owning teams for this repo, from the org team map. Falls back to the
+   * CODEOWNERS teams when empty, which covers far fewer repos.
+   */
+  ownerTeams?: string[];
+  /** Pre-built style catalogue, to avoid rebuilding it per repo */
+  styleCatalog?: StyleCatalogIndex | null;
 }
 
 /**
@@ -32,6 +49,8 @@ export interface ScanOptions {
  * 3. Source files for JSX component usage via react-scanner (AST-based)
  * 4. Source files for non-JSX import usage via TypeScript AST
  * 5. Workspace structure for monorepos
+ * 6. Internal .eds-* class name usage in stylesheets, CSS-in-JS and className
+ * 7. Colour token usage and hardcoded colours
  */
 export async function scanRepository(
   repoDir: string,
@@ -66,6 +85,17 @@ export async function scanRepository(
   // Analyze CODEOWNERS
   const codeOwners = analyzeCodeOwners(repoDir);
 
+  // CODEOWNERS names a team in only about a quarter of Entur repos, so the org
+  // team map is the primary source and CODEOWNERS the fallback.
+  const providedTeams = options.ownerTeams?.filter(Boolean) ?? [];
+  const ownerTeams = providedTeams.length > 0 ? providedTeams : codeOwners;
+  const ownerTeamsSource: RepoMetadata['ownerTeamsSource'] =
+    providedTeams.length > 0
+      ? 'org-team'
+      : codeOwners.length > 0
+      ? 'codeowners'
+      : 'none';
+
   // Enrich repo metadata — react version resolved from lockfile below (alongside DS packages)
   const enrichedMetadata: RepoMetadata | undefined = repoMetadata
     ? {
@@ -74,11 +104,37 @@ export async function scanRepository(
         framework: repoMetadata.framework || framework,
         reactVersion: repoMetadata.reactVersion ?? reactVersionRange,
         codeOwners,
+        ownerTeams,
+        ownerTeamsSource,
       }
     : undefined;
 
-  // CSS overrides are always scanned — cheap regex, useful regardless of DS package presence
-  const { findings: cssOverrides } = analyzeCssOverrides(repoDir);
+  // The catalogue of internal class names and colour tokens, built from the
+  // design system's own sources. Callers scanning many repos should build it
+  // once and pass it in.
+  const styleCatalog =
+    options.styleCatalog !== undefined
+      ? options.styleCatalog
+      : loadStyleCatalog(options.packagesRoot);
+
+  // Class name usage and colour tokens are always scanned: a repo with no
+  // @entur/* dependency can still hardcode colours the design system publishes,
+  // and the colour mapping is meant to cover the estate, not just consumers.
+  const { findings: cssOverrides } = analyzeCssOverrides(repoDir, styleCatalog);
+  const {
+    tokens: colorTokenUsage,
+    hardcoded: hardcodedColors,
+    // The colour analysis needs the catalogue and returns early without it, so
+    // its own count is the only one that cannot claim files it never read
+    styleFilesScanned,
+  } = analyzeColorTokens(repoDir, styleCatalog);
+
+  const colorTokenSummary = buildColorTokenSummary({
+    analysisComplete: styleCatalog !== null,
+    styleFilesScanned,
+    colorTokenUsage,
+    hardcodedColors,
+  });
 
   // Skip deeper analysis if no design system packages found
   if (designSystemPackages.length === 0) {
@@ -94,6 +150,14 @@ export async function scanRepository(
       componentUsage: [],
       importUsage: [],
       cssOverrides,
+      colorTokenUsage,
+      hardcodedColors,
+      typographySummary: buildTypographySummary({
+        designSystemPackages: [],
+        componentUsage: [],
+        cssOverrides,
+      }),
+      colorTokenSummary,
     };
   }
 
@@ -147,6 +211,14 @@ export async function scanRepository(
     importUsage,
     fileFindings,
     cssOverrides,
+    colorTokenUsage,
+    hardcodedColors,
+    typographySummary: buildTypographySummary({
+      designSystemPackages,
+      componentUsage,
+      cssOverrides,
+    }),
+    colorTokenSummary,
   };
 }
 

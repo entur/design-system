@@ -3,6 +3,7 @@ import * as crypto from 'crypto';
 import * as fs from 'fs';
 import * as path from 'path';
 import { scanRepository } from './scanner';
+import { flattenColorTokenSummary, flattenTypographySummary } from './rollups';
 import type { PostHogLike } from './export/posthogClient';
 import type {
   ScanReport,
@@ -12,6 +13,8 @@ import type {
   ComponentUsage,
   ImportUsage,
   CssOverrideFinding,
+  ColorTokenFinding,
+  HardcodedColorFinding,
   DesignSystemCatalog,
   CatalogSymbol,
 } from './types';
@@ -27,6 +30,9 @@ const SCAN_LIMITATIONS = [
   'Aliased imports (e.g., import { Button as Btn }) are tracked as separate component names.',
   'Only JSX renders are counted — programmatic usage (e.g., createElement) is not detected.',
   'Hook/util/token detection uses name-based heuristics and may misclassify some symbols.',
+  'Stylesheets are scanned line by line, so nested SCSS selectors are not expanded.',
+  'Class names assembled at runtime from fragments are not detected.',
+  'Colour token member access resolves for the legacy colors object only; newer token objects are consumed as CSS variables.',
 ];
 
 /**
@@ -76,9 +82,11 @@ async function scanLocal(args: ParsedArgs): Promise<void> {
   const defaultBranch = args.defaultBranch || 'local';
   const lastCommit = args.lastCommit || new Date().toISOString();
 
-  // Build RepoMetadata from CLI flags (passed from workflow)
+  // Build RepoMetadata from CLI flags (passed from workflow). Owning teams count
+  // as metadata too: without this they are silently dropped when the other
+  // metadata flags are absent, since the scanner only fills in an existing object.
   const repoMetadata: RepoMetadata | undefined =
-    args.visibility || args.archived !== undefined
+    args.visibility || args.archived !== undefined || args.ownerTeams
       ? {
           visibility:
             (args.visibility as RepoMetadata['visibility']) || 'private',
@@ -90,6 +98,8 @@ async function scanLocal(args: ParsedArgs): Promise<void> {
           framework: null, // Will be detected by scanner
           reactVersion: null, // Will be detected by scanner
           codeOwners: [], // Will be detected by scanner
+          ownerTeams: [], // Resolved by scanner from --owner-teams or CODEOWNERS
+          ownerTeamsSource: 'none',
         }
       : undefined;
 
@@ -102,7 +112,11 @@ async function scanLocal(args: ParsedArgs): Promise<void> {
     defaultBranch,
     lastCommit,
     repoMetadata,
-    { includeFileFindings: args.includeFileFindings },
+    {
+      includeFileFindings: args.includeFileFindings,
+      packagesRoot: args.packagesRoot,
+      ownerTeams: parseCommaList(args.ownerTeams),
+    },
   );
 
   if (args.output) {
@@ -204,6 +218,9 @@ async function aggregateResults(args: ParsedArgs): Promise<void> {
  *   - repo_package_usage.ndjson: one row per (repo, package)
  *   - repo_symbol_usage.ndjson: one row per (repo, symbol) — merged from react-scanner + import analyzer
  *   - repo_workspaces.ndjson: one row per (repo, workspace)
+ *   - repo_css_overrides.ndjson: one row per internal class name usage
+ *   - repo_color_tokens.ndjson: one row per (repo, colour token)
+ *   - repo_hardcoded_colors.ndjson: one row per (repo, normalised colour)
  *   - file_findings.ndjson: one row per file-level finding (only with --include-file-findings)
  */
 function exportForBigQuery(args: ParsedArgs): void {
@@ -257,6 +274,8 @@ function exportForBigQuery(args: ParsedArgs): void {
   const workspaceRows: string[] = [];
   const fileFindingRows: string[] = [];
   const cssOverrideRows: string[] = [];
+  const colorTokenRows: string[] = [];
+  const hardcodedColorRows: string[] = [];
   const catalogRows: string[] = [];
 
   for (const repo of report.repositories) {
@@ -278,10 +297,14 @@ function exportForBigQuery(args: ParsedArgs): void {
         framework: repo.repoMetadata?.framework || null,
         react_version: repo.repoMetadata?.reactVersion || null,
         code_owners: repo.repoMetadata?.codeOwners || [],
+        owner_teams: repo.repoMetadata?.ownerTeams || [],
+        owner_teams_source: repo.repoMetadata?.ownerTeamsSource || 'none',
         ds_package_count: repo.designSystemPackages.length,
         ui_library_count: repo.otherUILibraries.length,
         component_count: repo.componentUsage.length,
         css_override_count: repo.cssOverrides?.length || 0,
+        ...flattenTypographySummary(repo.typographySummary),
+        ...flattenColorTokenSummary(repo.colorTokenSummary),
       }),
     );
 
@@ -379,6 +402,22 @@ function exportForBigQuery(args: ParsedArgs): void {
       repo.cssOverrides || [],
     );
 
+    // repo_color_tokens and repo_hardcoded_colors tables
+    emitColorTokenRows(
+      colorTokenRows,
+      scanId,
+      scanTimestamp,
+      repo.name,
+      repo.colorTokenUsage || [],
+    );
+    emitHardcodedColorRows(
+      hardcodedColorRows,
+      scanId,
+      scanTimestamp,
+      repo.name,
+      repo.hardcodedColors || [],
+    );
+
     // Zero-count catalog rows for installed-but-unused symbols
     if (catalog) {
       emitCatalogZeroRows(
@@ -408,6 +447,14 @@ function exportForBigQuery(args: ParsedArgs): void {
 
   if (cssOverrideRows.length > 0) {
     files.push(['repo_css_overrides.ndjson', cssOverrideRows]);
+  }
+
+  if (colorTokenRows.length > 0) {
+    files.push(['repo_color_tokens.ndjson', colorTokenRows]);
+  }
+
+  if (hardcodedColorRows.length > 0) {
+    files.push(['repo_hardcoded_colors.ndjson', hardcodedColorRows]);
   }
 
   if (catalogRows.length > 0) {
@@ -532,6 +579,65 @@ function emitCssOverrideRows(
         file_path: override.filePath,
         line_number: override.lineNumber,
         file_extension: override.fileExtension,
+        package_name: override.packageName,
+        base_class: override.baseClass,
+        class_generation: override.classGeneration,
+        source: override.source,
+      }),
+    );
+  }
+}
+
+/**
+ * Emit repo_color_tokens rows — one row per (repo, colour token).
+ */
+function emitColorTokenRows(
+  rows: string[],
+  scanId: string,
+  scanTimestamp: string,
+  repoName: string,
+  tokens: ColorTokenFinding[],
+): void {
+  for (const token of tokens) {
+    rows.push(
+      JSON.stringify({
+        scan_id: scanId,
+        scan_timestamp: scanTimestamp,
+        repo_name: repoName,
+        token_name: token.tokenName,
+        token_layer: token.tokenLayer,
+        token_generation: token.tokenGeneration,
+        occurrence_count: token.occurrenceCount,
+        file_count: token.fileCount,
+        sources: token.sources,
+      }),
+    );
+  }
+}
+
+/**
+ * Emit repo_hardcoded_colors rows — one row per (repo, normalised colour).
+ */
+function emitHardcodedColorRows(
+  rows: string[],
+  scanId: string,
+  scanTimestamp: string,
+  repoName: string,
+  colors: HardcodedColorFinding[],
+): void {
+  for (const color of colors) {
+    rows.push(
+      JSON.stringify({
+        scan_id: scanId,
+        scan_timestamp: scanTimestamp,
+        repo_name: repoName,
+        color_value: color.value,
+        color_format: color.colorFormat,
+        occurrence_count: color.occurrenceCount,
+        file_count: color.fileCount,
+        matches_token_name: color.matchesTokenName ?? null,
+        matches_token_layer: color.matchesTokenLayer ?? null,
+        sources: color.sources,
       }),
     );
   }
@@ -680,6 +786,15 @@ async function exportToPostHog(args: ParsedArgs): Promise<void> {
   console.log(`Sent ${count} events to PostHog at ${host}`);
 }
 
+/** Split a comma-separated CLI value into trimmed, non-empty entries. */
+function parseCommaList(value?: string): string[] {
+  if (!value) return [];
+  return value
+    .split(',')
+    .map(entry => entry.trim())
+    .filter(Boolean);
+}
+
 function findJsonFiles(dir: string): string[] {
   const files: string[] = [];
   try {
@@ -793,6 +908,8 @@ interface ParsedArgs {
   includeFileFindings?: boolean;
   minRepos?: number;
   catalog?: string;
+  packagesRoot?: string;
+  ownerTeams?: string;
   // PostHog export flags
   posthogExport?: string;
   posthogDryRun?: boolean;
@@ -854,6 +971,12 @@ function parseArgs(argv: string[]): ParsedArgs {
       case '--catalog':
         args.catalog = argv[++i];
         break;
+      case '--packages-root':
+        args.packagesRoot = argv[++i];
+        break;
+      case '--owner-teams':
+        args.ownerTeams = argv[++i];
+        break;
       case '--posthog-export':
         args.posthogExport = argv[++i];
         break;
@@ -899,6 +1022,8 @@ Options:
   --min-repos <n>            Expected minimum discovered; below it the scan is partial
   --bigquery-export <path>   Path to scan-report.json to export as NDJSON
   --catalog <path>           Path to catalog.json for unused symbol detection
+  --packages-root <path>     Path to the design system packages/ dir (default: auto-detected)
+  --owner-teams <a,b>        Comma-separated owning teams (default: CODEOWNERS)
   --posthog-export <path>    Path to scan-report.json to send to PostHog
   --posthog-dry-run          Print PostHog events without sending (no API key needed)
   --posthog-host <url>       PostHog host URL (default: https://eu.i.posthog.com)

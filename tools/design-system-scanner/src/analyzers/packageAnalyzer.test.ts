@@ -3,6 +3,7 @@ import {
   analyzePackageJson,
   detectFramework,
   detectWorkspaces,
+  resolveDesignSystemSpecifier,
 } from './packageAnalyzer';
 
 const FIXTURES_DIR = path.join(__dirname, '..', '__fixtures__');
@@ -150,5 +151,49 @@ describe('packageAnalyzer', () => {
         expect(typeof ws.dsPackageCount).toBe('number');
       }
     });
+  });
+});
+
+describe('resolveDesignSystemSpecifier', () => {
+  it('resolves a bare package import', () => {
+    expect(resolveDesignSystemSpecifier('@entur/typography')).toEqual({
+      packageName: '@entur/typography',
+    });
+  });
+
+  it('splits a deep import into root package and subpath', () => {
+    // Keeping the subpath out of packageName is what makes package_name
+    // consistent across every event: otherwise a filter on
+    // "@entur/typography" silently drops all beta usage
+    expect(resolveDesignSystemSpecifier('@entur/typography/beta')).toEqual({
+      packageName: '@entur/typography',
+      deepImportPath: '/beta',
+    });
+  });
+
+  it('does not treat a longer package name as a subpath of a shorter one', () => {
+    expect(resolveDesignSystemSpecifier('@entur/table')).toEqual({
+      packageName: '@entur/table',
+    });
+  });
+
+  it('rejects asset imports', () => {
+    // These were being reported as package usage with a "default" symbol
+    expect(
+      resolveDesignSystemSpecifier(
+        '@entur/typography/fonts/Entur-Nationale-Medium.woff2?url',
+      ),
+    ).toBeNull();
+    expect(
+      resolveDesignSystemSpecifier('@entur/typography/dist/styles.css'),
+    ).toBeNull();
+    expect(
+      resolveDesignSystemSpecifier('@entur/icons/dist/logo.svg'),
+    ).toBeNull();
+  });
+
+  it('returns null for packages outside the design system', () => {
+    expect(resolveDesignSystemSpecifier('@entur/sdk')).toBeNull();
+    expect(resolveDesignSystemSpecifier('react')).toBeNull();
   });
 });

@@ -1,0 +1,13 @@
+/* Overrides the new typography component's internal classes */
+.eds-heading--section-1 {
+  margin-top: 0;
+}
+
+.eds-paragraph {
+  line-height: 1.8;
+}
+
+/* Not a typography class — regression guard for prefix matching */
+.eds-textfield__wrapper {
+  border-color: red;
+}
