@@ -13,7 +13,7 @@
 *[_type == "page" && slug.current == "my-slug"]{_id, title}
 
 // List all component docs
-*[_type == "componentDoc"]{_id, title, category, subcategory, isBeta} | order(title asc)
+*[_type == "componentDoc"]{_id, title, category, subcategory} | order(title asc)
 ```
 
 ## Query strategically
@@ -26,23 +26,25 @@ Full documents can be very large (50KB+). Always query in stages — never fetch
 *[_id == "doc-id"]{
   title,
   "tab_titles": tabs[].title,
-  "tab_item_count": count(tabs[].content.items[])
+  "tab_section_titles": tabs[].sections[].title,
+  "tab_section_count": count(tabs[].sections[]),
+  "tab_has_legacy_content": tabs[].content != null
 }
 ```
 
-**Step 2 — Tab content with `_key` values:**
+**Step 2 — Sections and their content with `_key` values, for one tab:**
 
 ```groq
 *[_id == "doc-id"]{
-  "items": tabs[0].content.items[]{ _key, _type, style, "text": children[].text }
+  "sections": tabs[0].sections[]{ _key, title, items[]{ _key, _type, style, "text": children[].text } }
 }
 ```
 
-**Step 3 — Full block structure for specific blocks you need to modify:**
+**Step 3 — Full block structure for specific items you need to modify:**
 
 ```groq
 *[_id == "doc-id"]{
-  "block": tabs[0].content.items[_key == "abc123"][0]
+  "block": tabs[0].sections[_key == "sectionKey"][0].items[_key == "abc123"][0]
 }
 ```
 
@@ -50,8 +52,16 @@ Full documents can be very large (50KB+). Always query in stages — never fetch
 
 ```groq
 *[_id == "doc-id"]{
-  "block_a": tabs[0].content.items[_key == "abc"][0],
-  "block_b": tabs[0].content.items[_key == "def"][0]
+  "block_a": tabs[0].sections[_key == "sectionKey"][0].items[_key == "abc"][0],
+  "block_b": tabs[0].sections[_key == "sectionKey"][0].items[_key == "def"][0]
+}
+```
+
+**Legacy tabs** (not yet migrated) still use `content.items` instead of `sections`:
+
+```groq
+*[_id == "doc-id"]{
+  "items": tabs[0].content.items[]{ _key, _type, style, "text": children[].text }
 }
 ```
 
@@ -62,4 +72,4 @@ Sanity uses a `drafts.` prefix on `_id` for unpublished changes. When you patch 
 - **Published:** `_id == "abc-123"`
 - **Draft:** `_id == "drafts.abc-123"`
 
-By default, queries return **published** documents. To see drafts after patching, use `perspective: "drafts"` or query the `drafts.`-prefixed ID directly.
+By default (`perspective: "raw"`), `mcp__Sanity__query_documents` returns whatever is stored under that exact `_id` — draft or published, whichever you queried for. Use `perspective: "drafts"` to see the draft version of a document you queried by its published ID, or `perspective: "published"` to see only published content.
