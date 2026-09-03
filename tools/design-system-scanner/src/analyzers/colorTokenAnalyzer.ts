@@ -10,6 +10,7 @@ import type {
 import {
   SOURCE_EXTENSIONS,
   STYLE_EXTENSIONS,
+  TEMPLATE_TEXT_KINDS,
   findFilesByExtension,
 } from './constants';
 import { legacyPathToTokenName, normalizeColor } from './styleCatalog';
@@ -285,13 +286,6 @@ function scanStylesheet(
 }
 
 // ── Source files ────────────────────────────────────────────────────────────
-
-const TEMPLATE_TEXT_KINDS = new Set<ts.SyntaxKind>([
-  ts.SyntaxKind.NoSubstitutionTemplateLiteral,
-  ts.SyntaxKind.TemplateHead,
-  ts.SyntaxKind.TemplateMiddle,
-  ts.SyntaxKind.TemplateTail,
-]);
 
 /**
  * Map local binding names to the @entur/tokens export they refer to.

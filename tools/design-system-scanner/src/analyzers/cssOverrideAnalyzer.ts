@@ -5,6 +5,7 @@ import type { CssOverrideFinding, OverrideSource } from '../types';
 import {
   SOURCE_EXTENSIONS,
   STYLE_EXTENSIONS,
+  TEMPLATE_TEXT_KINDS,
   findFilesByExtension,
 } from './constants';
 import type { StyleCatalogIndex } from './styleCatalog';
@@ -79,14 +80,6 @@ function scanStylesheet(
 }
 
 // ── CSS-in-JS and className strings ─────────────────────────────────────────
-
-/** Template literal token kinds that carry raw text we need to inspect. */
-const TEMPLATE_TEXT_KINDS = new Set<ts.SyntaxKind>([
-  ts.SyntaxKind.NoSubstitutionTemplateLiteral,
-  ts.SyntaxKind.TemplateHead,
-  ts.SyntaxKind.TemplateMiddle,
-  ts.SyntaxKind.TemplateTail,
-]);
 
 function lineOf(sourceFile: ts.SourceFile, position: number): number {
   return sourceFile.getLineAndCharacterOfPosition(position).line + 1;

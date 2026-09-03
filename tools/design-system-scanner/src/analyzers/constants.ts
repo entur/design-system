@@ -1,5 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
+import * as ts from 'typescript';
 
 /** Directories to exclude when walking source files. */
 export const EXCLUDE_DIRS = new Set([
@@ -88,3 +89,15 @@ export function findFilesByExtension(
 
   return results;
 }
+
+/**
+ * The node kinds that carry the text of a template literal. A CSS-in-JS block
+ * is split across these when it interpolates, so a walk has to look at all of
+ * them rather than only the no-substitution case.
+ */
+export const TEMPLATE_TEXT_KINDS = new Set<ts.SyntaxKind>([
+  ts.SyntaxKind.NoSubstitutionTemplateLiteral,
+  ts.SyntaxKind.TemplateHead,
+  ts.SyntaxKind.TemplateMiddle,
+  ts.SyntaxKind.TemplateTail,
+]);
