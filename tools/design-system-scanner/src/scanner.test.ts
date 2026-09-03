@@ -343,6 +343,24 @@ describe('scanner rollups', () => {
     ).toBeGreaterThan(0);
   });
 
+  it('reports no scanned files when the catalogue is unavailable', async () => {
+    // analysisComplete: false has to mean the colour analysis did not run, so
+    // the file count must not be borrowed from an analyzer that did
+    const result = await scanRepository(
+      path.join(FIXTURES_DIR, 'color-token-app'),
+      'test/color-token-app',
+      'https://github.com/test/color-token-app',
+      'main',
+      '2024-01-01T00:00:00Z',
+      undefined,
+      { styleCatalog: null },
+    );
+
+    expect(result.colorTokenSummary.analysisComplete).toBe(false);
+    expect(result.colorTokenSummary.styleFilesScanned).toBe(0);
+    expect(result.colorTokenSummary.usageCount).toBe(0);
+  });
+
   it('still maps colours for a repo with no design system dependency', async () => {
     // The colour mapping is meant to cover the estate, not just consumers, so
     // it must run before the no-@entur/* early return

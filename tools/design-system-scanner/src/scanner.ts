@@ -120,12 +120,14 @@ export async function scanRepository(
   // Class name usage and colour tokens are always scanned: a repo with no
   // @entur/* dependency can still hardcode colours the design system publishes,
   // and the colour mapping is meant to cover the estate, not just consumers.
-  const { findings: cssOverrides, styleFilesScanned } = analyzeCssOverrides(
-    repoDir,
-    styleCatalog,
-  );
-  const { tokens: colorTokenUsage, hardcoded: hardcodedColors } =
-    analyzeColorTokens(repoDir, styleCatalog);
+  const { findings: cssOverrides } = analyzeCssOverrides(repoDir, styleCatalog);
+  const {
+    tokens: colorTokenUsage,
+    hardcoded: hardcodedColors,
+    // The colour analysis needs the catalogue and returns early without it, so
+    // its own count is the only one that cannot claim files it never read
+    styleFilesScanned,
+  } = analyzeColorTokens(repoDir, styleCatalog);
 
   const colorTokenSummary = buildColorTokenSummary({
     analysisComplete: styleCatalog !== null,

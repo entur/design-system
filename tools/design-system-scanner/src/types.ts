@@ -248,7 +248,7 @@ export type ColorFormat = 'hex' | 'rgb' | 'hsl' | 'named';
 
 /** Aggregated usage of one hardcoded colour literal in one repository. */
 export interface HardcodedColorFinding {
-  /** Normalised value — lowercase hex where convertible, else the literal as written */
+  /** Normalised value — lowercase hex where convertible, else the literal trimmed and lowercased */
   value: string;
   /** Notation the literal was written in */
   colorFormat: ColorFormat;
