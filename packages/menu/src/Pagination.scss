@@ -172,6 +172,10 @@
           margin: 0;
         }
 
+        /* stylelint-disable-next-line property-no-vendor-prefix --
+           Firefox needs this for the spinner above; autoprefixer can't derive it from appearance: none. */
+        -moz-appearance: textfield;
+
         &:focus-visible {
           outline: t.$outlines-focus;
           outline-color: var(--basecolors-stroke-focus-standard);

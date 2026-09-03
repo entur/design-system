@@ -128,6 +128,11 @@ export const textfield = [
     defaultValue: false,
     type: 'boolean',
   },
+  {
+    name: 'clearable',
+    defaultValue: false,
+    type: 'boolean',
+  },
 ];
 
 export const textarea = [

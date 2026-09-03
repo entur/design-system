@@ -50,6 +50,14 @@ Ikonet ved siden av meldingen er skjult for skjermlesere. Teksten må derfor væ
 
 Du kan styre opplesingen med `ariaAlertOnFeedback`. Standardverdien `'status'` gir en høflig opplesing, `'alert'` avbryter skjermleseren umiddelbart – bruk den bare til meldinger som hindrer brukeren i å komme videre – og `false` skrur av opplesingen helt. Med `feedbackProps` kan du sette egne `role`- og `aria-live`-verdier på feedback-teksten.
 
+### Nullstill innhold – bruk `clearable`, ikke `type="search"`
+
+Bruk `clearable` når du vil gi brukeren en knapp for å tømme feltet. Ikke sett `type="search"` bare for å få en innebygd nullstill-knapp fra nettleseren – bruker du `clearable` sammen med `type="search"`, skjuler `TextField` automatisk nettleserens eget søke-kryss (`::-webkit-search-cancel-button`), slik at det ikke dupliserer knappen `clearable` gir deg. Uten `clearable` beholder feltet nettleserens native kryss uendret.
+
+`type="search"` gir feltet den implisitte ARIA-rollen `searchbox`, som skjermlesere leser opp. Sett den kun når feltet faktisk fungerer som et søkefelt – ikke som en snarvei for å få nullstill-funksjonalitet.
+
+Knappen som `clearable` gir deg, er et ekte `<button>` med `aria-label` (standardverdi `"Tøm felt"`, kan endres med `clearButtonAriaLabel`), og er dermed pålitelig tilgjengelig for skjermlesere på tvers av nettlesere. Nettleserens eget søke-kryss har historisk vært upålitelig eksponert for assistive teknologi.
+
 ## Props
 
 ### TextField
