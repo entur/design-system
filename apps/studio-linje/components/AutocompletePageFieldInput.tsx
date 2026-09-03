@@ -1,192 +1,168 @@
-import React, {useEffect, useState} from 'react'
-import {useClient} from 'sanity'
-import {StringInputProps, set, unset} from 'sanity'
+import { Card, Stack, Text, TextInput } from '@sanity/ui';
+import React, { useEffect, useState } from 'react';
+import { StringInputProps, set, unset, useClient } from 'sanity';
 
 interface Option {
-  title: string
-  value: string
+  title: string;
+  value: string;
 }
 
 interface DynamicInputProps extends StringInputProps {
-  fieldType: 'category' | 'subcategory'
+  fieldType: 'category' | 'subcategory';
 }
 
 export const AutocompletePageFieldInput = (props: DynamicInputProps) => {
-  const {fieldType} = props
-  const client = useClient({apiVersion: '2025-02-10'})
-  const [options, setOptions] = useState<Option[]>([])
-  const [loading, setLoading] = useState(true)
-  const [searchTerm, setSearchTerm] = useState('')
-  const [showDropdown, setShowDropdown] = useState(false)
+  const { fieldType } = props;
+  const client = useClient({ apiVersion: '2025-02-10' });
+  const [options, setOptions] = useState<Option[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [showDropdown, setShowDropdown] = useState(false);
 
   useEffect(() => {
     const fetchOptions = async () => {
       try {
         const query = `*[_type == "page" && defined(${fieldType})] {
           ${fieldType}
-        } | order(${fieldType} asc)`
+        } | order(${fieldType} asc)`;
 
-        const result = await client.fetch(query)
-        let optionItems: Option[] = []
+        const result = await client.fetch(query);
+        let optionItems: Option[] = [];
 
         if (result && Array.isArray(result)) {
           const validValues = result
             .map((item: any) => item[fieldType])
-            .filter((value: string) => value && typeof value === 'string')
-          const uniqueValues = [...new Set(validValues)]
+            .filter((value: string) => value && typeof value === 'string');
+          const uniqueValues = [...new Set(validValues)];
           optionItems = uniqueValues.map((value: string) => ({
             title: value,
             value: value,
-          }))
+          }));
         }
 
-        setOptions(optionItems)
+        setOptions(optionItems);
       } catch (error) {
-        console.error(`Error fetching ${fieldType}s:`, error)
-        setOptions([])
+        console.error(`Error fetching ${fieldType}s:`, error);
+        setOptions([]);
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
-    }
+    };
 
-    fetchOptions()
-  }, [client, fieldType])
+    fetchOptions();
+  }, [client, fieldType]);
 
   useEffect(() => {
     if (props.value && !searchTerm) {
-      setSearchTerm(props.value)
+      setSearchTerm(props.value);
     }
-  }, [props.value, searchTerm])
+  }, [props.value, searchTerm]);
 
   const handleSelect = (option: Option) => {
-    props.onChange(set(option.value))
-    setSearchTerm(option.title)
-    setShowDropdown(false)
-  }
+    props.onChange(set(option.value));
+    setSearchTerm(option.title);
+    setShowDropdown(false);
+  };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value
-    setSearchTerm(value)
-    setShowDropdown(true)
-
+    const value = e.target.value;
+    setSearchTerm(value);
+    setShowDropdown(true);
     if (value) {
-      props.onChange(set(value))
+      props.onChange(set(value));
     } else {
-      props.onChange(unset())
+      props.onChange(unset());
     }
-  }
+  };
 
   const handleInputFocus = () => {
-    setShowDropdown(true)
+    setShowDropdown(true);
     if (props.value && !searchTerm) {
-      setSearchTerm(props.value)
+      setSearchTerm(props.value);
     }
-  }
+  };
 
   const handleInputBlur = () => {
-    setTimeout(() => setShowDropdown(false), 200)
-  }
-  const fieldName = fieldType === 'category' ? 'kategori' : 'underkategori'
+    setTimeout(() => setShowDropdown(false), 200);
+  };
 
-  const placeholder = `Søk eller skriv inn en ny ${fieldName} …`
-
-  const noResultsMessage = `Ingen eksisterende ${fieldName}er funnet. "${searchTerm}" blir lagt til som en ny ${fieldName}.`
-
-  const startTypingMessage = `Skriv eller søk for å legge til en ${fieldName}.`
-
-  const availableMessage = `${options.length} ${fieldName}er finnes.`
-
-  const filteredOptions = options.filter((option) =>
-    option.title?.toLowerCase().includes(searchTerm.toLowerCase())
-  )
+  const fieldName = fieldType === 'category' ? 'kategori' : 'underkategori';
+  const placeholder = `Søk eller skriv inn en ny ${fieldName} …`;
+  const filteredOptions = options.filter(option =>
+    option.title?.toLowerCase().includes(searchTerm.toLowerCase()),
+  );
 
   if (loading) {
-    return <div>Laster {fieldType}er …</div>
+    return (
+      <Text size={1} muted>
+        Laster {fieldType}er …
+      </Text>
+    );
   }
 
   return (
-    <div style={{position: 'relative'}}>
-      <input
-        type="text"
+    <Stack style={{ position: 'relative' }}>
+      <TextInput
         value={searchTerm}
         onChange={handleInputChange}
         onFocus={handleInputFocus}
         onBlur={handleInputBlur}
         placeholder={placeholder}
-        style={{
-          width: '100%',
-          padding: '8px',
-          border: '1px solid #ccc',
-          borderRadius: '4px',
-          fontSize: '14px',
-          boxSizing: 'border-box',
-        }}
       />
-
       {showDropdown && (
-        <div
+        <Card
+          shadow={2}
+          radius={2}
           style={{
             position: 'absolute',
-            top: '100%',
+            top: 'calc(100% + 4px)',
             left: 0,
             right: 0,
-            backgroundColor: 'white',
-            border: '1px solid #ccc',
-            borderRadius: '4px',
             maxHeight: '200px',
             overflowY: 'auto',
             zIndex: 1000,
-            boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
           }}
         >
-          {filteredOptions.length > 0 ? (
-            filteredOptions.map((option) => (
-              <div
-                key={option.value}
-                onClick={() => handleSelect(option)}
-                style={{
-                  padding: '8px 12px',
-                  cursor: 'pointer',
-                  borderBottom: '1px solid #f0f0f0',
-                  fontSize: '14px',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = '#f5f5f5'
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = 'white'
-                }}
-              >
-                {option.title}
-              </div>
-            ))
-          ) : searchTerm ? (
-            <div
-              style={{
-                padding: '8px 12px',
-                color: '#666',
-                fontSize: '14px',
-                fontStyle: 'italic',
-              }}
-            >
-              {noResultsMessage}
-            </div>
-          ) : (
-            <div
-              style={{
-                padding: '8px 12px',
-                color: '#666',
-                fontSize: '14px',
-                fontStyle: 'italic',
-              }}
-            >
-              {startTypingMessage}
-            </div>
-          )}
-        </div>
+          <Stack>
+            {filteredOptions.length > 0 ? (
+              filteredOptions.map(option => (
+                <Card
+                  key={option.value}
+                  as="button"
+                  padding={3}
+                  radius={1}
+                  tone="default"
+                  style={{
+                    cursor: 'pointer',
+                    textAlign: 'left',
+                    width: '100%',
+                    border: 'none',
+                  }}
+                  onClick={() => handleSelect(option)}
+                >
+                  <Text size={1}>{option.title}</Text>
+                </Card>
+              ))
+            ) : searchTerm ? (
+              <Card padding={3}>
+                <Text size={1} muted>
+                  Ingen eksisterende {fieldName}er funnet. &ldquo;{searchTerm}
+                  &rdquo; blir lagt til som en ny {fieldName}.
+                </Text>
+              </Card>
+            ) : (
+              <Card padding={3}>
+                <Text size={1} muted>
+                  Skriv eller søk for å legge til en {fieldName}.
+                </Text>
+              </Card>
+            )}
+          </Stack>
+        </Card>
       )}
-
-      <div style={{marginTop: '4px', fontSize: '12px', color: '#666'}}>{availableMessage}</div>
-    </div>
-  )
-}
+      <Text size={1} muted>
+        {options.length} {fieldName}er finnes.
+      </Text>
+    </Stack>
+  );
+};

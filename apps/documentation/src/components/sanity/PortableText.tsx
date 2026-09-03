@@ -163,12 +163,20 @@ type ExtendedPortableTextProps = PortableTextProps & {
   context?: {
     npmPackage?: string;
   };
+  // Set by callers already wrapped in their own HeadingIdProvider (e.g. a
+  // docSection body nested under its tab's provider) so this call shares
+  // that counter instead of starting a new one.
+  sharedHeadingIds?: boolean;
 };
 
-export const PortableText = ({ value, context }: ExtendedPortableTextProps) => {
-  return (
-    <HeadingIdProvider>
-      <PortableTextReact components={createComponents(context)} value={value} />
-    </HeadingIdProvider>
+export const PortableText = ({
+  value,
+  context,
+  sharedHeadingIds,
+}: ExtendedPortableTextProps) => {
+  const content = (
+    <PortableTextReact components={createComponents(context)} value={value} />
   );
+  if (sharedHeadingIds) return content;
+  return <HeadingIdProvider>{content}</HeadingIdProvider>;
 };

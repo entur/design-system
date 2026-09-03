@@ -7,7 +7,10 @@ import { extractHeadingsFromPortableText } from '@components/Navigations/TableOf
 import { useSetTocHeadings } from '@components/Navigations/TableOfContent/TocContext';
 import { BasePageHeader } from '@components/PageHeader/BasePageHeader';
 import { Tab, TabList, TabPanel, TabPanels, Tabs } from '@entur/tab';
+import { Heading2 } from '@entur/typography';
 import { PortableText } from '@components/sanity/PortableText';
+import { HeadingAnchor } from '@components/sanity/HeadingAnchor';
+import { HeadingIdProvider } from '@components/sanity/HeadingIdContext';
 import { scrollToElement } from '../utils/scrollUtils';
 
 type ComponentDoc = {
@@ -23,6 +26,7 @@ type ComponentDoc = {
   utvikling?: any;
   tabs?: Array<{
     title?: string;
+    _rawSections?: any;
     _rawContent?: any;
   }>;
 };
@@ -41,20 +45,25 @@ export default function ComponentDocTemplate({
     description,
     npmPackage,
     figmaLink,
-    intro,
     tag,
+    intro,
     beskrivelse,
     utvikling,
     tabs,
   } = data.sanityComponentDoc;
 
-  const tabsBackwardsCompatible =
+  const rawTabs =
     tabs && tabs.length > 0
       ? tabs
       : [
           { title: 'Beskrivelse', _rawContent: beskrivelse },
           { title: 'Utvikling', _rawContent: utvikling },
         ];
+
+  const tabsBackwardsCompatible = rawTabs.map(tab => ({
+    title: tab.title,
+    content: tab._rawSections ?? tab._rawContent ?? null,
+  }));
 
   const headerProps = {
     title,
@@ -69,18 +78,18 @@ export default function ComponentDocTemplate({
   return (
     <>
       <BasePageHeader {...headerProps} />
-      {renderContent({ value: intro, context: { npmPackage } })}
+      {intro && <PortableText value={intro} context={{ npmPackage }} />}
       <TabsSection tabs={tabsBackwardsCompatible} context={{ npmPackage }} />
     </>
   );
 }
 
 const buildHeadingToTabMap = (
-  tabs: Array<{ title?: string; _rawContent?: any }>,
+  tabs: Array<{ title?: string; content?: any }>,
 ): Map<string, number> => {
   const map = new Map<string, number>();
   tabs.forEach((tab, index) => {
-    const headings = extractHeadingsFromPortableText(tab._rawContent);
+    const headings = extractHeadingsFromPortableText(tab.content);
     headings.forEach(h => map.set(h.id, index));
   });
   return map;
@@ -97,7 +106,7 @@ const TabsSection = React.memo(function TabsSection({
   tabs,
   context,
 }: {
-  tabs: Array<{ title?: string; _rawContent?: any }>;
+  tabs: Array<{ title?: string; content?: any }>;
   context: { npmPackage?: string };
 }) {
   const headingToTab = useMemo(() => buildHeadingToTabMap(tabs), [tabs]);
@@ -134,7 +143,7 @@ const TabsSection = React.memo(function TabsSection({
     return () => window.removeEventListener('hashchange', onHashChange);
   }, [headingToTab, activeIndex]);
 
-  const activeContent = tabs[activeIndex]?._rawContent ?? tabs[0]?._rawContent;
+  const activeContent = tabs[activeIndex]?.content ?? tabs[0]?.content;
   const activeHeadings = useMemo(
     () => extractHeadingsFromPortableText(activeContent),
     [activeContent],
@@ -153,28 +162,66 @@ const TabsSection = React.memo(function TabsSection({
           <TabPanels>
             {tabs.map(tab => (
               <TabPanel key={`${tab.title}`}>
-                {tab._rawContent && (
-                  <SanityTableOfContent content={tab._rawContent} />
-                )}
-                {renderContent({ value: tab._rawContent, context })}
+                {tab.content && <SanityTableOfContent content={tab.content} />}
+                {renderContent({ value: tab.content, context })}
               </TabPanel>
             ))}
           </TabPanels>
         </Tabs>
       ) : (
         <>
-          {tabs[0]?._rawContent && (
-            <SanityTableOfContent content={tabs[0]._rawContent} />
+          {tabs[0]?.content && (
+            <SanityTableOfContent content={tabs[0].content} />
           )}
-          {renderContent({ value: tabs[0]?._rawContent, context })}
+          {renderContent({ value: tabs[0]?.content, context })}
         </>
       )}
     </>
   );
 });
 
+const DocSectionContent = ({
+  section,
+  npmPackage,
+}: {
+  section: { _key: string; title?: string; items?: any[] };
+  npmPackage?: string;
+}) => {
+  if (!section.items?.length) return null;
+  return (
+    <>
+      {section.title && (
+        <HeadingAnchor headingText={section.title} HeadingComponent={Heading2}>
+          {section.title}
+        </HeadingAnchor>
+      )}
+      <PortableText
+        value={section.items}
+        context={{ npmPackage }}
+        sharedHeadingIds
+      />
+    </>
+  );
+};
+
 const renderContent = ({ value, context }: { value: any; context?: any }) => {
-  return value && <PortableText value={value} context={context} />;
+  if (!value) return null;
+  if (Array.isArray(value)) {
+    return (
+      // One counter per tab, matching extractHeadingsFromPortableText's ids —
+      // otherwise duplicate section titles collide with the TOC's deduped one.
+      <HeadingIdProvider>
+        {value.map((section: any) => (
+          <DocSectionContent
+            key={section._key}
+            section={section}
+            npmPackage={context?.npmPackage}
+          />
+        ))}
+      </HeadingIdProvider>
+    );
+  }
+  return <PortableText value={value} context={context} />;
 };
 
 export const Head = (
@@ -218,6 +265,7 @@ export const query = graphql`
       }
       tabs {
         title
+        _rawSections
         _rawContent(resolveReferences: { maxDepth: 10 })
       }
       beskrivelse {

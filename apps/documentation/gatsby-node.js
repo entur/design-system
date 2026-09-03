@@ -19,6 +19,28 @@ const {
 let propGenerationPromise = null;
 let playgroundBuildPromise = null;
 
+// Manual override: gatsby-source-sanity can't infer sections' shape from ingested data, so this guarantees _rawSections always exists.
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions;
+  createTypes(`
+    type SanityComponentDocTab {
+      _rawSections: JSON
+    }
+  `);
+};
+
+// Unlike the plugin's own raw fields, this doesn't resolve references — images stay as { asset: { _ref } }; MediaResolver's fallback reads width/height/format straight off that.
+exports.createResolvers = ({ createResolvers }) => {
+  createResolvers({
+    SanityComponentDocTab: {
+      _rawSections: {
+        type: 'JSON',
+        resolve: source => source.sections ?? null,
+      },
+    },
+  });
+};
+
 exports.onCreateWebpackConfig = ({ actions, getConfig }) => {
   const oldConfig = getConfig();
   const editedConfig = getConfig();
