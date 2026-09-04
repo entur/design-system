@@ -10,8 +10,55 @@ import type {
 
 const TYPOGRAPHY_PACKAGE = '@entur/typography';
 
-/** The subpath the new typography components are published under. */
-const BETA_SUBPATH = '/beta';
+/**
+ * Components only the new typography exports.
+ *
+ * Adoption is keyed on the component name rather than the import subpath, so
+ * the metric survives the new typography being promoted out of beta: after
+ * that both generations are imported from the package root and the subpath is
+ * gone.
+ */
+const NEW_TYPOGRAPHY_COMPONENTS = new Set(['Heading', 'Text']);
+
+/** Components only the legacy typography exports. */
+const LEGACY_TYPOGRAPHY_COMPONENTS = new Set([
+  'Heading1',
+  'Heading2',
+  'Heading3',
+  'Heading4',
+  'Heading5',
+  'Heading6',
+  'Paragraph',
+  'LeadParagraph',
+  'SubParagraph',
+  'SmallText',
+  'StrongText',
+  'EmphasizedText',
+  'Label',
+  'SubLabel',
+  'CodeText',
+  'PreformattedText',
+]);
+
+type TypographyGeneration = 'new' | 'legacy' | 'shared';
+
+/**
+ * Which typography generation a JSX instance belongs to.
+ *
+ * Link, Blockquote, BlockquoteFooter and the list components are exported
+ * under the same name by both generations, so they are counted separately and
+ * kept out of the adoption share. The import subpath could tell them apart
+ * today, but only until the new typography leaves beta — using it would make
+ * the same component count as new before the release and as shared after,
+ * which is the step change this classification exists to avoid.
+ */
+function typographyGeneration(component: ComponentUsage): TypographyGeneration {
+  if (NEW_TYPOGRAPHY_COMPONENTS.has(component.componentName)) return 'new';
+  if (LEGACY_TYPOGRAPHY_COMPONENTS.has(component.componentName)) {
+    return 'legacy';
+  }
+  return 'shared';
+}
 
 export interface TypographySummaryInput {
   designSystemPackages: PackageUsage[];
@@ -38,13 +85,19 @@ export function buildTypographySummary({
 
   let newInstanceCount = 0;
   let legacyInstanceCount = 0;
+  let sharedInstanceCount = 0;
 
   for (const component of componentUsage) {
     if (component.packageName !== TYPOGRAPHY_PACKAGE) continue;
-    if (component.deepImportPath === BETA_SUBPATH) {
-      newInstanceCount += component.instanceCount;
-    } else if (!component.deepImportPath) {
-      legacyInstanceCount += component.instanceCount;
+    switch (typographyGeneration(component)) {
+      case 'new':
+        newInstanceCount += component.instanceCount;
+        break;
+      case 'legacy':
+        legacyInstanceCount += component.instanceCount;
+        break;
+      default:
+        sharedInstanceCount += component.instanceCount;
     }
   }
 
@@ -62,6 +115,7 @@ export function buildTypographySummary({
     usesLegacyTypography: legacyInstanceCount > 0,
     newInstanceCount,
     legacyInstanceCount,
+    sharedInstanceCount,
     newShare: totalInstances > 0 ? newInstanceCount / totalInstances : null,
     classOverrideCount: typographyOverrides.length,
     classOverrideLegacyCount: typographyOverrides.filter(
@@ -69,6 +123,9 @@ export function buildTypographySummary({
     ).length,
     classOverrideBetaCount: typographyOverrides.filter(
       o => o.classGeneration === 'beta',
+    ).length,
+    classOverrideUnknownCount: typographyOverrides.filter(
+      o => o.classGeneration === 'unknown',
     ).length,
   };
 }
@@ -139,10 +196,12 @@ export function flattenTypographySummary(
     typography_uses_legacy: summary.usesLegacyTypography,
     typography_new_instance_count: summary.newInstanceCount,
     typography_legacy_instance_count: summary.legacyInstanceCount,
+    typography_shared_instance_count: summary.sharedInstanceCount,
     typography_new_share: summary.newShare,
     typography_class_override_count: summary.classOverrideCount,
     typography_class_override_legacy_count: summary.classOverrideLegacyCount,
     typography_class_override_beta_count: summary.classOverrideBetaCount,
+    typography_class_override_unknown_count: summary.classOverrideUnknownCount,
   };
 }
 
