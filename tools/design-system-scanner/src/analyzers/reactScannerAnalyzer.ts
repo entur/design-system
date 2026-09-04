@@ -114,6 +114,9 @@ function createEnturProcessor(repoDir: string, includeFileFindings: boolean) {
       const imported = importInfo?.imported;
       const local = importInfo?.local;
       const isAliased = !!(imported && local && imported !== local);
+      // react-scanner keys components by the name used in JSX, which is the
+      // local alias. Report the exported name so a rollup can classify on it.
+      const exportedName = isAliased && imported ? imported : componentName;
 
       // Collect file paths (basenames for ComponentUsage, relative for findings)
       const fileSet = new Set<string>();
@@ -136,7 +139,7 @@ function createEnturProcessor(repoDir: string, includeFileFindings: boolean) {
             filePath: relativePath,
             fileExtension: path.extname(absFile),
             packageName,
-            symbolName: componentName,
+            symbolName: exportedName,
             findingType: deepImportPath ? 'deep_import' : 'jsx_usage',
             lineNumber: instance.location?.start?.line,
             ...classification,
@@ -145,7 +148,7 @@ function createEnturProcessor(repoDir: string, includeFileFindings: boolean) {
       }
 
       components.push({
-        componentName,
+        componentName: exportedName,
         packageName,
         instanceCount: instances.length,
         props: propCounts,
