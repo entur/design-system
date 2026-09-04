@@ -124,6 +124,9 @@ export function buildTypographySummary({
     classOverrideBetaCount: typographyOverrides.filter(
       o => o.classGeneration === 'beta',
     ).length,
+    classOverrideUnknownCount: typographyOverrides.filter(
+      o => o.classGeneration === 'unknown',
+    ).length,
   };
 }
 
@@ -198,6 +201,7 @@ export function flattenTypographySummary(
     typography_class_override_count: summary.classOverrideCount,
     typography_class_override_legacy_count: summary.classOverrideLegacyCount,
     typography_class_override_beta_count: summary.classOverrideBetaCount,
+    typography_class_override_unknown_count: summary.classOverrideUnknownCount,
   };
 }
 

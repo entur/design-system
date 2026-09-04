@@ -303,6 +303,12 @@ export interface TypographySummary {
   classOverrideLegacyCount: number;
   /** Overrides targeting beta typography class names */
   classOverrideBetaCount: number;
+  /**
+   * Overrides of a class name both generations ship, so the generation cannot
+   * be told apart (.eds-contrast today). Kept as its own count so the three
+   * add up to classOverrideCount instead of leaving an unexplained remainder.
+   */
+  classOverrideUnknownCount: number;
 }
 
 /** Per-repo colour token summary. */

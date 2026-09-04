@@ -198,6 +198,27 @@ describe('buildTypographySummary', () => {
     expect(summary.classOverrideLegacyCount).toBe(2);
   });
 
+  it('counts an override the generations share as its own bucket', () => {
+    // .eds-contrast ships in both generations, so the class name cannot say
+    // which one is being overridden. Counting it as neither would leave
+    // classOverrideCount larger than the two buckets with nothing to explain it
+    const summary = buildTypographySummary({
+      designSystemPackages: [pkg()],
+      componentUsage: [],
+      cssOverrides: [
+        override({ classGeneration: 'legacy', selector: '.eds-h1' }),
+        override({ classGeneration: 'unknown', selector: '.eds-contrast' }),
+      ],
+    });
+
+    expect(summary.classOverrideUnknownCount).toBe(1);
+    expect(
+      summary.classOverrideLegacyCount +
+        summary.classOverrideBetaCount +
+        summary.classOverrideUnknownCount,
+    ).toBe(summary.classOverrideCount);
+  });
+
   it('ignores components from other packages', () => {
     const summary = buildTypographySummary({
       designSystemPackages: [pkg()],

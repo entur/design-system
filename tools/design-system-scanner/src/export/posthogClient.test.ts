@@ -198,6 +198,7 @@ const FIXTURE_REPORT: ScanReport = {
         classOverrideCount: 2,
         classOverrideLegacyCount: 1,
         classOverrideBetaCount: 1,
+        classOverrideUnknownCount: 0,
       },
       colorTokenSummary: {
         analysisComplete: true,
@@ -237,6 +238,7 @@ const FIXTURE_REPORT: ScanReport = {
         classOverrideCount: 0,
         classOverrideLegacyCount: 0,
         classOverrideBetaCount: 0,
+        classOverrideUnknownCount: 0,
       },
       colorTokenSummary: {
         analysisComplete: true,
