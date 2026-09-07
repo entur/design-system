@@ -38,15 +38,15 @@ Universell utforming er lovpålagt. Her er det viktigste du trenger å vite:
 
 ### EUs webdirektiv (WAD)
 
-[Webdirektivet](https://www.uutilsynet.no/webdirektivet-wad/eus-webdirektiv-wad/265) krever at offentlige virksomheter følger WCAG-standarden og publiserer tilgjengelighetserklæringer. Innlemmet i norsk rett.
+[Webdirektivet](https://www.uutilsynet.no/webdirektivet-wad/eus-webdirektiv-wad/265) krever at offentlige virksomheter følger WCAG-standarden og publiserer tilgjengelighetserklæringer. Innlemmet i norsk rett. Siden viser hvilken WCAG-versjon som gjelder til enhver tid.
 
 ### EUs tilgjengelighetsdirektiv (EAA)
 
-[European Accessibility Act](https://www.uutilsynet.no/tilgjengelighetsdirektivet-eaa/eus-tilgjengelegheitsdirektiv-eaa/268) utvider kravene til privat sektor – blant annet e-handel, bank, kollektivtransport og selvbetjeningsterminaler. Trådte i kraft i EU i juni 2025, under innlemmelse i norsk lov.
+[European Accessibility Act](https://www.uutilsynet.no/tilgjengelighetsdirektivet-eaa/eus-tilgjengelegheitsdirektiv-eaa/268) skal utvide kravene til privat sektor – blant annet e-handel, bank, kollektivtransport og selvbetjeningsterminaler. Trådte i kraft i EU i juni 2025, men er foreløpig ikke innlemmet i norsk lov. Se siden for oppdatert status.
 
-### WCAG 2.2
+### WCAG – vi følger nyeste versjon allerede
 
-[WCAG 2.2](https://www.w3.org/TR/WCAG22/) er gjeldende standard. Nivå AA er minimumskravet. Standarden er referansen i EN 301 549, som både WAD og EAA peker til.
+Uu-tilsynet [holder oversikt over hvilken WCAG-versjon som til enhver tid er lovpålagt](https://www.uutilsynet.no/fremtidig-regelverk/status-nyere-versjoner-av-wcag/1868) – det tar gjerne noen år fra en ny versjon publiseres til den blir en del av regelverket. Vi venter ikke på det: vi legger [WCAG 2.2](https://www.w3.org/TR/WCAG22/) nivå AA til grunn allerede nå, fordi de nyeste kriteriene (som god nok trykkeflate og enklere autentisering) gjør produktene bedre for alle – uavhengig av når loven tar dem inn.
 
 ### Uu-tilsynet
 
@@ -77,7 +77,7 @@ Tilbakemeldinger på tilgjengelighet kan sendes til tilbakemelding@entur.org.
 3. **Sjekk kontrast tidlig** – Bruk [kontrastsjekkeren](/universell-utforming/kontrastsjekker) mens du designer, ikke etter du er ferdig.
 4. **Bruk relative størrelser** – Slik at brukere som forstørrer tekst ikke mister funksjonalitet.
 5. **Gi tydelige tilbakemeldinger** – Feilmeldinger skal si hva som gikk galt og hva brukeren kan gjøre.
-6. **Lag store nok trykkeflater** – Minst 24×24 px for interaktive elementer (WCAG 2.2).
+6. **Lag store nok trykkeflater** – Minst 24×24 px for interaktive elementer. Et [WCAG 2.2-kriterium](https://www.uutilsynet.no/fremtidig-regelverk/status-nyere-versjoner-av-wcag/1868) vi følger allerede, selv om det ikke er lovkrav i Norge ennå.
 
 ### For utviklere
 
@@ -85,4 +85,7 @@ Tilbakemeldinger på tilgjengelighet kan sendes til tilbakemelding@entur.org.
 2. **Sørg for tastaturstøtte** – Tab-rekkefølgen skal følge den visuelle layouten. Fokusmarkering skal alltid være synlig. Modaler skal fange fokus.
 3. **Test med skjermleser** – Kjør VoiceOver (Mac) eller NVDA (Windows) og naviger gjennom løsningen. Gir det mening? Er rekkefølgen logisk?
 4. **La innholdet flyte** – Bruk responsivt design som fungerer ved alle vindusbredder og ved forstørring opp til 400 %.
-5. **Automatiser det du kan** – Bruk [axe](https://www.deque.com/axe/) og Lighthouse i CI for å fange opplagte feil. Men husk: automatiserte verktøy fanger bare ca. 30–50 % av problemene. [Se testguiden](/universell-utforming/testguide) for en komplett tilnærming.
+5. **Husk video** – Forhåndsinnspilt video fra offentlig sektor skal ha [synstolking](https://www.uutilsynet.no/regelverk/fra-i-dag-skal-nye-videoopptak-i-offentleg-sektor-ha-synstolking/2128) av viktig visuell informasjon.
+6. **Automatiser det du kan** – Bruk [axe](https://www.deque.com/axe/) og Lighthouse i CI for å fange opplagte feil. Men husk: automatiserte verktøy fanger bare ca. 30–50 % av problemene. [Se testguiden](/universell-utforming/testguide) for en komplett tilnærming.
+
+Se [verktøy og ressurser](/universell-utforming/verktoy-og-ressurser) for en fullstendig oversikt over standarder, testverktøy og læringsressurser.
