@@ -25,7 +25,7 @@ The skills are published through Entur's plugin marketplace in [entur/ai](https:
 /plugin install entur-linje@entur
 ```
 
-This installs all five skills with their reference files on disk, so the agent can open a reference the moment it needs one, and `/plugin update` keeps them current. Prefer this over the URL methods below — they cannot reach the reference files.
+This installs all five skills with their reference files on disk, so the agent can open a reference the moment it needs one, and `/plugin update` keeps them current. Prefer this over the URL methods below — those reach reference files only one HTTP request at a time, and always from `main`.
 
 ### Any agent: point at the skill URL
 

@@ -5,6 +5,8 @@ description: Apply Entur's visual identity correctly in designs, presentations, 
 
 > **Audience:** AI coding agents. Entur employees should visit [linje.entur.no/identitet](https://linje.entur.no/identitet).
 
+> **Resolving `references/` paths:** if you are reading this over HTTP rather than from an installed skill folder, resolve every `references/<file>` path in this file against `https://raw.githubusercontent.com/entur/design-system/main/skills/entur-brand-design/` — not against the folder of whichever skill linked you here.
+
 # Entur Brand Design
 
 This skill helps you apply Entur's visual identity correctly across web design, presentations, data visualizations, and branded content.
@@ -62,8 +64,6 @@ Read these for specifics:
 - **`references/visual-identity.md`** — layout principles, Contrast component, animation, illustrations, presentation guidelines
 - **`references/presentations-pptx.md`** — step-by-step python-pptx workflow, layout index, 5 slide patterns, helper functions, QA
 - **`references/catalog.json`** — machine-readable index of all 51 layouts + 7 masters in Entur_Powerpointmal.pptx with python-pptx references
-
-> **Resolving these files:** if you are reading this over HTTP rather than from an installed skill folder, resolve each `references/<file>` above against `https://raw.githubusercontent.com/entur/design-system/main/skills/entur-brand-design/`
 
 ## Beyond Entur
 

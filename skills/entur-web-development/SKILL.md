@@ -5,6 +5,8 @@ description: Build React applications with Entur Linje @entur/* component packag
 
 > **Audience:** AI coding agents. Entur developers should visit [linje.entur.no/komponenter](https://linje.entur.no/komponenter).
 
+> **Resolving `references/` paths:** if you are reading this over HTTP rather than from an installed skill folder, resolve every `references/<file>` path in this file against `https://raw.githubusercontent.com/entur/design-system/main/skills/entur-web-development/` — not against the folder of whichever skill linked you here.
+
 # Entur Web Development
 
 This skill helps you build correct, accessible, on-brand React applications using Entur Linje's `@entur/*` component packages.
@@ -94,8 +96,6 @@ Read these when you need specifics:
 - **`references/tokens-and-variables.md`** — CSS custom property reference for semantic, base, transport, and data tokens; JS import patterns
 - **`references/css-layers.md`** — using CSS cascade layers with `@entur/*`: importing component CSS into a layer for clean overrides, the layer order, and Tailwind v4 setup
 - **`references/migration-guide.md`** — breaking changes and deprecated APIs per package
-
-> **Resolving these files:** if you are reading this over HTTP rather than from an installed skill folder, resolve each `references/<file>.md` above against `https://raw.githubusercontent.com/entur/design-system/main/skills/entur-web-development/`
 
 ## Beyond Entur
 

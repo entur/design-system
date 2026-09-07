@@ -27,6 +27,8 @@ Entur Linje is the official React component library and design system for Entur 
 
 Match the user's task to the table below. **Fetch and read the linked SKILL.md before proceeding** — it contains the rules, patterns, and reference files needed for that task. For implementation tasks, load both `entur-web-development` and `entur-accessibility` together.
 
+Any `references/<file>` path you meet inside a sub-skill resolves against **that sub-skill's own folder**, never against `entur-linje/` — each sub-skill SKILL.md states its base URL at the top.
+
 | Task                                                                                                 | Sub-skill SKILL.md to fetch                                                                                                                                                                                                                       |
 | ---------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Building React UI, adding components, writing JSX                                                    | [entur-web-development](https://raw.githubusercontent.com/entur/design-system/main/skills/entur-web-development/SKILL.md) + [entur-accessibility](https://raw.githubusercontent.com/entur/design-system/main/skills/entur-accessibility/SKILL.md) |
