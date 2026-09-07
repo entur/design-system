@@ -1,5 +1,6 @@
 import path from 'path';
 import { GatsbyConfig } from 'gatsby';
+import remarkGfm from 'remark-gfm';
 import { getSanitizedPath } from './src/utils/getSanitizedPath';
 
 const isGitHubPullRequest =
@@ -68,6 +69,13 @@ const config: GatsbyConfig = {
       resolve: 'gatsby-plugin-mdx',
       options: {
         extensions: ['.mdx', '.md'],
+        mdxOptions: {
+          // GFM (tables, strikethrough, etc.) isn't supported by MDX v2 out
+          // of the box and was silently dropped when gatsby-plugin-mdx was
+          // upgraded past v4 — markdown tables in .mdx pages rendered as
+          // plain paragraphs instead of <table> elements without this.
+          remarkPlugins: [remarkGfm],
+        },
         gatsbyRemarkPlugins: [
           {
             resolve: 'gatsby-remark-images',
