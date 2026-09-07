@@ -63,6 +63,70 @@ describe('buildTypographySummary', () => {
     expect(summary.newShare).toBeNull();
   });
 
+  it('counts Heading and Text as the new typography without a subpath', () => {
+    // The metric has to survive the new typography being promoted out of
+    // beta, when both generations are imported from the package root
+    const summary = buildTypographySummary({
+      designSystemPackages: [pkg()],
+      componentUsage: [
+        component({ componentName: 'Heading', instanceCount: 2 }),
+        component({ componentName: 'Text', instanceCount: 5 }),
+        component({ componentName: 'Paragraph', instanceCount: 3 }),
+      ],
+      cssOverrides: [],
+    });
+
+    expect(summary.usesNewTypography).toBe(true);
+    expect(summary.usesLegacyTypography).toBe(true);
+    expect(summary.newInstanceCount).toBe(7);
+    expect(summary.legacyInstanceCount).toBe(3);
+    expect(summary.newShare).toBe(0.7);
+  });
+
+  it('keeps components shared by both generations out of the share', () => {
+    const summary = buildTypographySummary({
+      designSystemPackages: [pkg()],
+      componentUsage: [
+        component({ componentName: 'Heading', instanceCount: 1 }),
+        component({ componentName: 'Link', instanceCount: 40 }),
+        component({ componentName: 'ListItem', instanceCount: 20 }),
+        component({ componentName: 'BlockquoteFooter', instanceCount: 2 }),
+      ],
+      cssOverrides: [],
+    });
+
+    expect(summary.newInstanceCount).toBe(1);
+    expect(summary.legacyInstanceCount).toBe(0);
+    expect(summary.sharedInstanceCount).toBe(62);
+    expect(summary.newShare).toBe(1);
+  });
+
+  it('classifies a shared component the same way on both sides of the release', () => {
+    // The subpath could tell these apart today, but only until the new
+    // typography leaves beta — using it would make the same component count as
+    // new before the release and as shared after
+    const fraBeta = buildTypographySummary({
+      designSystemPackages: [pkg()],
+      componentUsage: [
+        component({
+          componentName: 'Link',
+          instanceCount: 4,
+          deepImportPath: '/beta',
+        }),
+      ],
+      cssOverrides: [],
+    });
+    const fraRot = buildTypographySummary({
+      designSystemPackages: [pkg()],
+      componentUsage: [component({ componentName: 'Link', instanceCount: 4 })],
+      cssOverrides: [],
+    });
+
+    expect(fraBeta).toEqual(fraRot);
+    expect(fraBeta.usesNewTypography).toBe(false);
+    expect(fraBeta.sharedInstanceCount).toBe(4);
+  });
+
   it('counts beta instances as the new typography', () => {
     const summary = buildTypographySummary({
       designSystemPackages: [pkg()],
@@ -132,6 +196,27 @@ describe('buildTypographySummary', () => {
     expect(summary.classOverrideCount).toBe(3);
     expect(summary.classOverrideBetaCount).toBe(1);
     expect(summary.classOverrideLegacyCount).toBe(2);
+  });
+
+  it('counts an override the generations share as its own bucket', () => {
+    // .eds-contrast ships in both generations, so the class name cannot say
+    // which one is being overridden. Counting it as neither would leave
+    // classOverrideCount larger than the two buckets with nothing to explain it
+    const summary = buildTypographySummary({
+      designSystemPackages: [pkg()],
+      componentUsage: [],
+      cssOverrides: [
+        override({ classGeneration: 'legacy', selector: '.eds-h1' }),
+        override({ classGeneration: 'unknown', selector: '.eds-contrast' }),
+      ],
+    });
+
+    expect(summary.classOverrideUnknownCount).toBe(1);
+    expect(
+      summary.classOverrideLegacyCount +
+        summary.classOverrideBetaCount +
+        summary.classOverrideUnknownCount,
+    ).toBe(summary.classOverrideCount);
   });
 
   it('ignores components from other packages', () => {

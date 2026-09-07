@@ -53,6 +53,30 @@ function mapImportStyle(importType?: string): ImportStyle {
   }
 }
 
+/**
+ * The exported name react-scanner's component key stands for.
+ *
+ * Named imports arrive resolved: an aliased `Heading as H` is keyed as
+ * `Heading`, and a dot in the key is a real sub-component (`Expandable.Header`)
+ * that has to survive. A namespace import has no export name to resolve, so
+ * react-scanner keys it by the JSX expression instead and the local binding
+ * ends up in front: `import * as Typo` renders as `Typo.Heading1`. Only that
+ * prefix is dropped, or the classifier would see a name it cannot place.
+ */
+export function exportedComponentName(
+  componentName: string,
+  importStyle: ImportStyle,
+  local: string | undefined,
+): string {
+  if (importStyle !== 'namespace') return componentName;
+  if (local && componentName.startsWith(`${local}.`)) {
+    return componentName.slice(local.length + 1);
+  }
+  // No local binding to match on; the namespace is still the first segment
+  const firstDot = componentName.indexOf('.');
+  return firstDot === -1 ? componentName : componentName.slice(firstDot + 1);
+}
+
 /** Classify a file path based on naming conventions. */
 function classifyFile(relativePath: string): {
   isTestFile: boolean;
@@ -114,6 +138,11 @@ function createEnturProcessor(repoDir: string, includeFileFindings: boolean) {
       const imported = importInfo?.imported;
       const local = importInfo?.local;
       const isAliased = !!(imported && local && imported !== local);
+      const exportedName = exportedComponentName(
+        componentName,
+        importStyle,
+        local,
+      );
 
       // Collect file paths (basenames for ComponentUsage, relative for findings)
       const fileSet = new Set<string>();
@@ -136,7 +165,7 @@ function createEnturProcessor(repoDir: string, includeFileFindings: boolean) {
             filePath: relativePath,
             fileExtension: path.extname(absFile),
             packageName,
-            symbolName: componentName,
+            symbolName: exportedName,
             findingType: deepImportPath ? 'deep_import' : 'jsx_usage',
             lineNumber: instance.location?.start?.line,
             ...classification,
@@ -145,7 +174,7 @@ function createEnturProcessor(repoDir: string, includeFileFindings: boolean) {
       }
 
       components.push({
-        componentName,
+        componentName: exportedName,
         packageName,
         instanceCount: instances.length,
         props: propCounts,

@@ -280,14 +280,21 @@ export interface TypographySummary {
   packageVersion: string | null;
   /** Whether it is only a devDependency (i.e. not shipped to production) */
   isDevDependency: boolean;
-  /** Any JSX usage of components imported from @entur/typography/beta */
+  /** Any JSX usage of a component only the new typography exports */
   usesNewTypography: boolean;
-  /** Any JSX usage of components imported from @entur/typography root */
+  /** Any JSX usage of a component only the legacy typography exports */
   usesLegacyTypography: boolean;
-  /** JSX instances of new (beta) typography components */
+  /** JSX instances of new typography components (Heading, Text) */
   newInstanceCount: number;
-  /** JSX instances of legacy typography components */
+  /** JSX instances of legacy typography components (Heading1-6, Paragraph, ...) */
   legacyInstanceCount: number;
+  /**
+   * JSX instances of components both generations export under the same name
+   * (Link, Blockquote, BlockquoteFooter, the lists). Excluded from newShare,
+   * since the name cannot tell the generations apart once the new typography
+   * is promoted out of beta.
+   */
+  sharedInstanceCount: number;
   /** newInstanceCount / (new + legacy), or null when there are no instances */
   newShare: number | null;
   /** Overrides of typography class names, any generation */
@@ -296,6 +303,12 @@ export interface TypographySummary {
   classOverrideLegacyCount: number;
   /** Overrides targeting beta typography class names */
   classOverrideBetaCount: number;
+  /**
+   * Overrides of a class name both generations ship, so the generation cannot
+   * be told apart (.eds-contrast today). Kept as its own count so the three
+   * add up to classOverrideCount instead of leaving an unexplained remainder.
+   */
+  classOverrideUnknownCount: number;
 }
 
 /** Per-repo colour token summary. */
