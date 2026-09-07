@@ -162,6 +162,14 @@ const components = {
   EditableCell,
   ExpandableRow,
   ExpandRowButton,
+  // Markdown/GFM table syntax renders these lowercase HTML tags — map them to
+  // the same design system components used by the capitalized JSX above.
+  table: Table,
+  thead: TableHead,
+  tbody: TableBody,
+  tr: TableRow,
+  th: HeaderCell,
+  td: DataCell,
   Label: (props: any) => <Text variant="label" {...props} />,
   ToastAlertBox,
   ToastProvider,

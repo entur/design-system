@@ -1,18 +1,9 @@
 import React from 'react';
 import { GatsbyBrowser } from 'gatsby';
-import { MDXProvider } from '@mdx-js/react';
 
 import './src/styles/index.scss';
 
 import { ToastProvider } from '@entur/alert';
-import {
-  DataCell,
-  HeaderCell,
-  Table,
-  TableBody,
-  TableHead,
-  TableRow,
-} from '@entur/table';
 import {
   ColorsProvider,
   ConsentProvider,
@@ -22,17 +13,6 @@ import {
 import { SearchProvider } from './src/components/Search/SearchContext';
 import { ConsentBanner } from './src/components/ConsentBanner/ConsentBanner';
 import DocLayout from './src/layouts/DocLayout';
-
-// Renders markdown tables in .mdx pages with the design system's own Table
-// components instead of bare, unstyled table/th/td elements.
-const mdxComponents = {
-  table: Table,
-  thead: TableHead,
-  tbody: TableBody,
-  tr: TableRow,
-  th: HeaderCell,
-  td: DataCell,
-};
 
 export const wrapRootElement: GatsbyBrowser['wrapRootElement'] = ({
   element,
@@ -45,9 +25,7 @@ export const wrapRootElement: GatsbyBrowser['wrapRootElement'] = ({
         <ToastProvider>
           <ColorsProvider>
             <MediaContextProvider>
-              <SearchProvider>
-                <MDXProvider components={mdxComponents}>{element}</MDXProvider>
-              </SearchProvider>
+              <SearchProvider>{element}</SearchProvider>
             </MediaContextProvider>
           </ColorsProvider>
         </ToastProvider>
