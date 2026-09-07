@@ -5,6 +5,8 @@ description: Build accessible Entur web applications that comply with WCAG 2.1 a
 
 > **Audience:** AI coding agents. Entur developers should visit [linje.entur.no/universell-utforming](https://linje.entur.no/universell-utforming).
 
+> **Resolving `references/` paths:** if you are reading this over HTTP rather than from an installed skill folder, resolve every `references/<file>` path in this file against `https://raw.githubusercontent.com/entur/design-system/main/skills/entur-accessibility/` — not against the folder of whichever skill linked you here.
+
 # Entur Accessibility
 
 This skill helps you build accessible Entur applications that comply with WCAG 2.1 and Norwegian law.
@@ -70,8 +72,6 @@ Norwegian accessibility authority audit reports: https://www.uutilsynet.no/tilsy
 - **`references/patterns-checklist.md`** — component-specific checklists for forms, modals, dropdowns, icon buttons, loading states, and tables with code examples
 - **`references/entur-a11y-patterns.md`** — `SkipToContent`, `VisuallyHidden`, form labeling, semantic HTML, ARIA live regions, image alt text, icon accessibility
 - **`references/testing-guide.md`** — keyboard navigation, zoom, color contrast, screen readers, heading structure; automated tool recommendations; Norwegian law context
-
-> **Resolving these files:** if you are reading this over HTTP rather than from an installed skill folder, resolve each `references/<file>.md` above against `https://raw.githubusercontent.com/entur/design-system/main/skills/entur-accessibility/`
 
 Test in this order: keyboard → zoom → contrast → screen reader → automated.
 
