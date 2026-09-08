@@ -159,6 +159,9 @@ export const DatePicker = <DateType extends DateValue>({
     whileElementsMounted: (ref, float, update) =>
       autoUpdate(ref, float, update, { elementResize: false }),
     placement: 'bottom-start',
+    // Fixed takes the calendar out of the field's scroll container, so shift()'s
+    // padding cannot become horizontal overflow there
+    strategy: 'fixed',
     middleware: [
       offset(space.extraSmall2),
       flip(),
