@@ -12,6 +12,9 @@
   box-shadow: t.$shadows-box-shadow;
   cursor: default;
 
+  // Fills the scrollbar gutter, which the items don't cover
+  background-color: var(--components-form-basemenu-fill-default);
+
   // Set from the field's width by the size middleware, since a fixed element
   // has no ancestor for a percentage to resolve against
   width: var(--list-width, auto);
