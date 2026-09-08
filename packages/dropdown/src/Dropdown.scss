@@ -102,3 +102,13 @@
     }
   }
 }
+
+// The field keeps its standard look under .eds-contrast, so the dots
+// must not switch to the contrast colour with it
+.eds-dropdown-native__loading-dots .eds-loading-dots__dot {
+  background-color: var(--components-loader-loader-standard-text);
+
+  .eds-contrast & {
+    background-color: var(--components-loader-loader-standard-text);
+  }
+}

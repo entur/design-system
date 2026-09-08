@@ -125,6 +125,7 @@ export const DropdownFieldAppendix = forwardRef(
             <IconButton
               className={classNames('eds-dropdown__appendix__toggle-button', {
                 'eds-dropdown__appendix__toggle-button--open': isOpen,
+                'eds-dropdown__appendix__toggle-button--loading': loading,
               })}
               ref={ref}
               aria-label={getToggleAriaLabel()}

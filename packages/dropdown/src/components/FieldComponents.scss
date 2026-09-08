@@ -121,20 +121,13 @@
         transition: transform ease-in-out t.$timings-fast;
       }
 
-      &--loading-dots {
-        align-items: center;
-        display: flex;
-        justify-content: center;
-        height: 100%;
-        width: 1.5rem;
-        margin-left: 0.25rem;
+      // .eds-icon-button paints its dots with the contrast icon colour under
+      // .eds-contrast, but the field keeps its standard look
+      &--loading.eds-icon-button > .eds-loading-dots .eds-loading-dots__dot {
+        background-color: var(--components-loader-loader-standard-text);
 
-        .eds-loading-dots__dot {
+        .eds-contrast & {
           background-color: var(--components-loader-loader-standard-text);
-
-          .eds-contrast & {
-            background-color: var(--components-loader-loader-standard-text);
-          }
         }
       }
 
