@@ -3,6 +3,37 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.1.2](https://github.com/entur/design-system/compare/@entur/dropdown@9.1.1...@entur/dropdown@9.1.2) (2026-09-08)
+
+### Bug Fixes
+
+- **dropdown:** keep the loading dots readable in contrast ([5eaebc8](https://github.com/entur/design-system/commit/5eaebc80600dc570ee4e813164721db3fb80907f))
+
+  The loading indicator in the field was styled through a modifier class that
+  was never applied, and switched to the contrast colour under `.eds-contrast`
+  while the field itself stayed light. The dots in SearchableDropdown,
+  MultiSelect and NativeDropdown now render in the standard colour in both
+  modes.
+
+- **dropdown:** make the menu opaque behind the scrollbar ([ec3da86](https://github.com/entur/design-system/commit/ec3da86b388401dcf571a3fc90a8b1adc21d1314))
+
+  The menu now paints its own background, so nothing shows through the
+  scrollbar gutter in Safari.
+
+- **dropdown:** stop the menu adding horizontal scroll to its container ([4fa446b](https://github.com/entur/design-system/commit/4fa446b425d3fa194e1046919b68921c436c445f))
+
+  The menu of Dropdown, SearchableDropdown and MultiSelect is positioned with
+  floating-ui's fixed strategy. A field inside a scroll container no longer
+  gets an 8px horizontal scrollbar when the menu opens, and an ancestor with
+  overflow: hidden no longer cuts the menu off, so CSS workarounds for that
+  can go. The menu stays anchored to its field while the container scrolls.
+
+  The menu now paints over content it used to be clipped by, such as a header
+  or a neighbouring column.
+
+  An ancestor with a transform, filter or will-change still clips the menu,
+  since it becomes the containing block for fixed positioning.
+
 ## [9.1.1](https://github.com/entur/design-system/compare/@entur/dropdown@9.1.0...@entur/dropdown@9.1.1) (2026-08-28)
 
 **Note:** Version bump only for package @entur/dropdown

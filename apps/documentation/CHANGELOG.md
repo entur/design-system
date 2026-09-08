@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.23.0](https://github.com/entur/design-system/compare/@entur/documentation@6.22.0...@entur/documentation@6.23.0) (2026-09-08)
+
+### Bug Fixes
+
+- **website:** increase bottom margin on code examples ([e6140cf](https://github.com/entur/design-system/commit/e6140cf4f4e91224cfd6b5af513834d0d47dfc18))
+- **website:** increase bottom margin on illustration lists ([77300bb](https://github.com/entur/design-system/commit/77300bbe1729d74bc13ac74ad125f65d42c486ac))
+- **website:** move Statusbeskjeder page into Illustrasjoner section ([eb7c90a](https://github.com/entur/design-system/commit/eb7c90ae46bac4d6f5f8b9abf84868917f254fcc))
+- **website:** remove fluid tab width from ComponentDocTemplate ([55c7a31](https://github.com/entur/design-system/commit/55c7a316c7d0a181442cfd7d195092511dbe2051))
+
+  Tabs now size to content width instead of stretching to fill the
+  container, matching the style used in MDX pages.
+
+### Features
+
+- **website:** rework the changelog view ([b23130a](https://github.com/entur/design-system/commit/b23130ad25d09bfb924a70dfd733cb34e51a5edb))
+
+  Entries now show the description from the commit message, and beta
+  entries are grouped in their own sections, marked with a badge.
+
+  Changelogs are read as raw markdown instead of going through MDX, which
+  tried to parse commit text like tabIndex={-1} as JSX. Both the overview
+  page and the chip on a component page share one modal.
+
+  The package overview is a list of cards with the current version and
+  release date, ordered down each column, and a changelog can be linked
+  to: ?package=<name> on the overview, ?changelog on a component page.
+
 # [6.22.0](https://github.com/entur/design-system/compare/@entur/documentation@6.21.0...@entur/documentation@6.22.0) (2026-08-28)
 
 ### Bug Fixes

@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.2.1](https://github.com/entur/design-system/compare/@entur/menu@7.2.0...@entur/menu@7.2.1) (2026-09-08)
+
+**Note:** Version bump only for package @entur/menu
+
 # [7.2.0](https://github.com/entur/design-system/compare/@entur/menu@7.1.1...@entur/menu@7.2.0) (2026-08-28)
 
 ### Bug Fixes (beta)

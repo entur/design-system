@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.1.2](https://github.com/entur/design-system/compare/@entur/datepicker@12.1.1...@entur/datepicker@12.1.2) (2026-09-08)
+
+### Bug Fixes
+
+- **datepicker/date picker:** stop the calendar adding horizontal scroll to its container ([d0b23f1](https://github.com/entur/design-system/commit/d0b23f19abdee8314e1b998f6ec5b8238de066dd))
+
+  The calendar is positioned with floating-ui's fixed strategy. A DatePicker
+  inside a scroll container that is itself positioned no longer pushes a
+  horizontal scrollbar onto that container when the calendar opens, and an
+  ancestor with overflow: hidden no longer cuts the calendar off.
+
+  An ancestor with a transform, filter or will-change still clips it, since
+  it becomes the containing block for fixed positioning.
+
 ## [12.1.1](https://github.com/entur/design-system/compare/@entur/datepicker@12.1.0...@entur/datepicker@12.1.1) (2026-08-28)
 
 **Note:** Version bump only for package @entur/datepicker
