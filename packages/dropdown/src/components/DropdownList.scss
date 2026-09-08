@@ -37,10 +37,6 @@
     color: var(--components-form-basemenu-text);
     background-color: var(--components-form-basemenu-fill-default);
 
-    &:last-child {
-      border-bottom: none;
-    }
-
     &__text {
       flex: 1;
       cursor: default;
