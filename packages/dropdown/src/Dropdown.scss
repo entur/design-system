@@ -1,7 +1,6 @@
 @use '@entur/tokens/dist/styles.scss' as t;
 
 .eds-dropdown {
-  position: relative;
   cursor: pointer;
 
   &:has(.eds-form-control-wrapper--readonly) {
@@ -14,11 +13,6 @@
 
     &--hidden {
       flex: 0;
-    }
-
-    &__wrapper {
-      flex: 1 1 auto;
-      display: flex;
     }
   }
 
@@ -40,7 +34,6 @@
     cursor: text;
 
     &__selected-item {
-      position: relative;
       flex: 1;
       overflow-x: hidden;
       text-overflow: ellipsis;
@@ -107,5 +100,15 @@
         color: var(--components-form-basemenu-text);
       }
     }
+  }
+}
+
+// The field keeps its standard look under .eds-contrast, so the dots
+// must not switch to the contrast colour with it
+.eds-dropdown-native__loading-dots .eds-loading-dots__dot {
+  background-color: var(--components-loader-loader-standard-text);
+
+  .eds-contrast & {
+    background-color: var(--components-loader-loader-standard-text);
   }
 }

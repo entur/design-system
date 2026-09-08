@@ -1,7 +1,6 @@
 @use '@entur/tokens/dist/styles.scss' as t;
 
 .eds-dropdown__list {
-  position: absolute;
   box-sizing: border-box;
   overflow-y: auto;
   z-index: t.$z-indexes-popover;
@@ -13,8 +12,12 @@
   box-shadow: t.$shadows-box-shadow;
   cursor: default;
 
+  // Set from the field's width by the size middleware, since a fixed element
+  // has no ancestor for a percentage to resolve against
+  width: var(--list-width, auto);
+
   // The list should not be wider than the viewport
-  width: min(95dvw, 100%);
+  max-width: 95dvw;
   max-height: var(--list-max-height, 15rem);
 
   &:focus {
@@ -33,10 +36,6 @@
     overflow-x: hidden;
     color: var(--components-form-basemenu-text);
     background-color: var(--components-form-basemenu-fill-default);
-
-    &:last-child {
-      border-bottom: none;
-    }
 
     &__text {
       flex: 1;
