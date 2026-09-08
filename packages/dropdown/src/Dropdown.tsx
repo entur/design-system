@@ -196,11 +196,20 @@ export const Dropdown = React.forwardRef(
     const { refs, floatingStyles, update } = useFloating<HTMLDivElement>({
       open: isOpen,
       placement: 'bottom-start',
+      // Fixed takes the menu out of the field's scroll container, so shift()'s
+      // padding cannot become horizontal overflow there
+      strategy: 'fixed',
       middleware: [
         offset(space.extraSmall2),
         shift({ padding: space.extraSmall }),
         size({
-          apply({ elements, availableHeight }) {
+          apply({ elements, rects, availableHeight }) {
+            // A fixed element resolves percentages against the viewport, so the
+            // menu cannot inherit the field's width from CSS
+            elements.floating.style.setProperty(
+              '--list-width',
+              `${rects.reference.width}px`,
+            );
             elements.floating.style.setProperty(
               '--list-max-height',
               `${clamp(10 * 16, availableHeight, 20 * 16)}px`,
