@@ -73,7 +73,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **tab, expand, modal, utils:** fix React 18 type errors and clean up [@reach](https://github.com/reach) leftovers ([d29bedc](https://github.com/entur/design-system/commit/d29bedcdc2701a192e0cf39587a2928cae55191e))
 
-  - Fix cloneElement TS errors in TabList and TabPanels by casting to ReactElement<any>
+  - Fix cloneElement TS errors in TabList and TabPanels by casting to `ReactElement<any>`
   - Suppress react-collapse type incompatibility with React 18 in BaseExpand
   - Remove dead --reach-tabs and --reach-dialog CSS custom properties
   - Update @types/react@18 and @types/react-dom@18 resolutions to match devDependencies
@@ -98,7 +98,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
   Add unmountOnClose prop to all expand components. Content now stays
   mounted in the DOM when collapsed (hidden with aria-hidden and inert),
-  which matches native <details> behavior. Use unmountOnClose={true} to
+  which matches native `<details>` behavior. Use unmountOnClose={true} to
   restore the previous unmount-on-close behavior.
 
   Add proper controlled mode (open + onToggle) to ExpandablePanel and

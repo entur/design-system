@@ -187,11 +187,11 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **menu/logo:** add Logo component for standardized Entur product logos ([75dd9dc](https://github.com/entur/design-system/commit/75dd9dc5c6789d4c1ec680ace52a8c3697b3c53b))
 
-  New <Logo> component renders the Entur wordmark with an optional product name.
+  New `<Logo>` component renders the Entur wordmark with an optional product name.
   Use `productName` to display your product name next to the logo, `size` to choose
   between medium and small, and `href` to make it a link.
 
-  Usage: <Logo productName="Partner" size="medium" href="/" />
+  Usage: `<Logo productName="Partner" size="medium" href="/" />`
 
 ## [6.2.2](https://github.com/entur/design-system/compare/@entur/menu@6.2.1...@entur/menu@6.2.2) (2026-06-08)
 

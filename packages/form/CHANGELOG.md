@@ -193,7 +193,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 - **form/segmented control:** correct onChange type to not include FormEventHandler ([4f07bc5](https://github.com/entur/design-system/commit/4f07bc55cd88b3e2ea59ed6e7b87174a31803615))
 
   onChange is now correctly typed as (value: string | null) => void instead
-  of an intersection with React.FormEventHandler<HTMLDivElement>.
+  of an intersection with `React.FormEventHandler<HTMLDivElement>`.
 
 ### Features
 

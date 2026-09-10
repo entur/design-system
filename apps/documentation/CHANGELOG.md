@@ -28,7 +28,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
   The package overview is a list of cards with the current version and
   release date, ordered down each column, and a changelog can be linked
-  to: ?package=<name> on the overview, ?changelog on a component page.
+  to: `?package=<name>` on the overview, ?changelog on a component page.
 
 # [6.22.0](https://github.com/entur/design-system/compare/@entur/documentation@6.21.0...@entur/documentation@6.22.0) (2026-08-28)
 
@@ -273,7 +273,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 - **website:** escape bare HTML tags in copied changelogs ([00238f5](https://github.com/entur/design-system/commit/00238f5cfb1553a6b5b97ed1776b5d5ee8313bbc))
 
   Changelog entries generated from commit subjects can contain bare tags
-  like <dialog>, which MDX parses as JSX and fails to compile. Escape <
+  like `<dialog>`, which MDX parses as JSX and fails to compile. Escape `<`
   outside code fences and inline code when copying CHANGELOG.md into the
   documentation build.
 
@@ -345,8 +345,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 - **website:** align footer link text to start ([6c65f0b](https://github.com/entur/design-system/commit/6c65f0b80fddce160f332c0508cb3db7cad9666d))
 - **website:** change top navigation root to header element with nav ([5ac280a](https://github.com/entur/design-system/commit/5ac280adf495693ccb2cd1ed4b34b5357703e5d6))
 
-  Wrap nav links in <nav aria-label="..."> and make the root element a
-  semantic <header>. Apply display:contents on inner nav to preserve
+  Wrap nav links in `<nav aria-label="...">` and make the root element a
+  semantic `<header>`. Apply display:contents on inner nav to preserve
   existing flex layout. Fix className prop not being applied in mobile nav.
 
 - **website:** fix broken article tag badge variant in search and navigation ([581d8ca](https://github.com/entur/design-system/commit/581d8ca2fcf665a9af1a31d6f4e30660812c12c0))
@@ -360,7 +360,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **website:** fix nav display:contents a11y issue, remove dead className prop ([45462d6](https://github.com/entur/design-system/commit/45462d692eb16556a02267d8ed958081ecf50291))
 
-  Replace display:contents on <nav> in top navigation with display:flex to
+  Replace display:contents on `<nav>` in top navigation with display:flex to
   preserve the nav landmark in the accessibility tree. Remove unused
   className prop from MobileSideNavigation which was never forwarded.
 
@@ -414,7 +414,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
   Remove contrast mode and extra wrapper elements. Replace custom grid
   divs with native CSS Grid. Add border matching top nav divider.
-  Footer now renders as a direct <footer> element in the grid.
+  Footer now renders as a direct `<footer>` element in the grid.
 
 - **website:** unify MDX and Sanity page headers, fix beta tag casing ([7f4cec2](https://github.com/entur/design-system/commit/7f4cec2e7a842b159848355975fdac9586e96d30))
 
@@ -439,11 +439,11 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 - **datepicker/range calendar:** update docs ([becf816](https://github.com/entur/design-system/commit/becf816cb76578251b71b44fc3f341f7c7438134))
 - **menu/logo:** add Logo component for standardized Entur product logos ([75dd9dc](https://github.com/entur/design-system/commit/75dd9dc5c6789d4c1ec680ace52a8c3697b3c53b))
 
-  New <Logo> component renders the Entur wordmark with an optional product name.
+  New `<Logo>` component renders the Entur wordmark with an optional product name.
   Use `productName` to display your product name next to the logo, `size` to choose
   between medium and small, and `href` to make it a link.
 
-  Usage: <Logo productName="Partner" size="medium" href="/" />
+  Usage: `<Logo productName="Partner" size="medium" href="/" />`
 
 - **website:** add copy-link anchors to MDX headings and fix shared ID generation ([d0c0255](https://github.com/entur/design-system/commit/d0c02553453d857771d4ee9f4ff82cc625f9566c))
 
@@ -537,7 +537,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   sidebar, so desktop sidebar is present in static HTML. Prevents sidebar
   from disappearing when JS fails to load.
 
-  - Add <nav aria-label> landmark around sidebar
+  - Add `<nav aria-label>` landmark around sidebar
   - Use non-modal Drawer for mobile nav (no focus trap)
   - Add aria-expanded on mobile menu toggle button
   - Visually hide Drawer heading for screen readers instead of display:none

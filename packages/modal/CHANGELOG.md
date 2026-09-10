@@ -73,7 +73,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **tab, expand, modal, utils:** fix React 18 type errors and clean up [@reach](https://github.com/reach) leftovers ([d29bedc](https://github.com/entur/design-system/commit/d29bedcdc2701a192e0cf39587a2928cae55191e))
 
-  - Fix cloneElement TS errors in TabList and TabPanels by casting to ReactElement<any>
+  - Fix cloneElement TS errors in TabList and TabPanels by casting to `ReactElement<any>`
   - Suppress react-collapse type incompatibility with React 18 in BaseExpand
   - Remove dead --reach-tabs and --reach-dialog CSS custom properties
   - Update @types/react@18 and @types/react-dom@18 resolutions to match devDependencies
@@ -88,15 +88,15 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   ./styles (CSS), ./dist/styles.css (compat), and ./package.json.
   Deep dist/ imports not listed will stop resolving.
 
-- **modal:** replace @reach/dialog with native <dialog> element ([0de754e](https://github.com/entur/design-system/commit/0de754e5a63f6b4d4ea7223f293d439fae8ac49d))
+- **modal:** replace @reach/dialog with native `<dialog>` element ([0de754e](https://github.com/entur/design-system/commit/0de754e5a63f6b4d4ea7223f293d439fae8ac49d))
 
-  The Modal and Drawer components now use the native HTML <dialog>
+  The Modal and Drawer components now use the native HTML `<dialog>`
   element under the hood. Behaviour is broadly the same, but a few
   things differ:
 
   - The backdrop is now a ::backdrop pseudo-element. CSS overrides that
     targeted a backdrop DOM node need to be updated.
-  - The overlay DOM is a <dialog> element. Selectors targeting
+  - The overlay DOM is a `<dialog>` element. Selectors targeting
     @reach/dialog's [data-reach-dialog-*] attributes no longer apply.
   - Focus management now uses the browser's built-in top layer and
     sibling inert behaviour. Tab can leave the modal to browser chrome
@@ -110,7 +110,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
     Useful for command palette / cmd-K style modals.
   - The modal title receives focus when the modal opens.
   - Keep the modal mounted between opens; toggle visibility with the
-    open prop. Avoid {open && <Modal>}, which prevents focus from
+    open prop. Avoid `{open && <Modal>}`, which prevents focus from
     returning to the trigger on close.
   - Smaller bundle: react-focus-lock is no longer used.
 
@@ -124,7 +124,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **modal:** undocumented deep imports into dist/ may break.
 - **modal:** require onDismiss and add showCloseButton prop
-- **modal:** replace @reach/dialog with native <dialog> element
+- **modal:** replace @reach/dialog with native `<dialog>` element
 - **modal:** require React 18 as minimum peer dependency
 
 ## [1.8.16](https://github.com/entur/design-system/compare/@entur/modal@1.8.15...@entur/modal@1.8.16) (2026-07-03)

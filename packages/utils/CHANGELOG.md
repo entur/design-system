@@ -28,7 +28,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **tab, expand, modal, utils:** fix React 18 type errors and clean up [@reach](https://github.com/reach) leftovers ([d29bedc](https://github.com/entur/design-system/commit/d29bedcdc2701a192e0cf39587a2928cae55191e))
 
-  - Fix cloneElement TS errors in TabList and TabPanels by casting to ReactElement<any>
+  - Fix cloneElement TS errors in TabList and TabPanels by casting to `ReactElement<any>`
   - Suppress react-collapse type incompatibility with React 18 in BaseExpand
   - Remove dead --reach-tabs and --reach-dialog CSS custom properties
   - Update @types/react@18 and @types/react-dom@18 resolutions to match devDependencies
