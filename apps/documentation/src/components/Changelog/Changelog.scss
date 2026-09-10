@@ -2,31 +2,38 @@
 @use '~@entur/utils/dist/breakpoints.scss' as *;
 
 .changelog-overview {
-  // Keeps the package list off the heading that follows it on the page.
+  // Keeps the package list off the note that follows it on the page.
   margin-bottom: t.$space-extra-large;
 
-  // Multi-column, so the alphabetical order reads down each column.
+  // A wrapping row, so the alphabetical order reads across each line and the
+  // cards on one line share a height.
   &__list {
-    column-count: 1;
-    column-gap: t.$space-medium;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: t.$space-medium;
     list-style: none;
     margin: t.$space-none;
     padding: t.$space-none;
-
-    @include for-desktop {
-      column-count: 3;
-    }
   }
 
   &__item {
-    break-inside: avoid;
-    // Columns ignore the margin of a first child, padding keeps the rhythm.
-    padding-bottom: t.$space-medium;
+    // No growing: a last line with one or two cards keeps their width.
+    flex: 0 1 100%;
+
+    @include for-desktop {
+      // Three to a line, with the two gaps between them taken off the share.
+      flex-basis: calc((100% - 2 * #{t.$space-medium}) / 3);
+    }
   }
 }
 
 .changelog-card {
   display: block;
+  // Fills the stretched list item, so the cards on one line end level. The
+  // border and padding have to count towards that height.
+  box-sizing: border-box;
+  height: 100%;
   border: t.$border-widths-small solid var(--basecolors-stroke-subdued);
   border-radius: t.$border-radiuses-large;
   padding: t.$space-medium;
