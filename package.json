@@ -28,6 +28,7 @@
     "graduate-prerelease-packages": "HUSKY=0 lerna publish --conventional-commits  --conventional-graduate",
     "publish-packages": "HUSKY=0 lerna publish --conventional-commits",
     "publish-packages-after-failed-attempt": "HUSKY=0 lerna publish from-package --conventional-commits",
+    "version": "node tools/changelog-dependency-updates/cli.js",
     "start": "yarn -s run start-warning",
     "start-warning": "node -e \"console.warn('\u001b[31mUNAVAILABLE: use \u001b[4m\u001b[32myarn start:documentation\u001b[0m\u001b[31m to start dev server for design system websit or \u001b[4m\u001b[32myarn start:package name\u001b[0m\u001b[31m to start watch mode for package called name\u001b[0m')\"",
     "start:code-playground": "lerna run --scope @entur/code-playground start",

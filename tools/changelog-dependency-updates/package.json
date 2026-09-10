@@ -1,0 +1,15 @@
+{
+  "name": "changelog-dependency-updates",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Replaces Lerna's version-bump-only changelog note with the internal dependency updates behind it",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "markdown-to-jsx": "7.7.17",
+    "react": "18.3.1"
+  }
+}

@@ -129,6 +129,13 @@ optional breaking changes
 
 Branch naming: start with Jira issue ID, e.g. `ETU-38373-branch-name`.
 
+### Changelogs
+
+`CHANGELOG.md` is generated at release time — never edit one by hand. [tools/conventional-changelog-entur](tools/conventional-changelog-entur) is the preset, and [tools/changelog-dependency-updates](tools/changelog-dependency-updates) fills in the entries Lerna would leave as `**Note:** Version bump only for package …`. Two rules for commit bodies follow from them:
+
+- **Backtick every tag name.** `<dialog>`, `<details>`, `<Logo />` and type parameters such as `ReactElement<any>` are read as markdown wherever the changelog is: bare, `<details>` becomes an empty disclosure widget and everything after a `<dialog>` disappears into it.
+- **Explain a shared change in that package's own commit.** A dependent package's entry links to the change and claims nothing about it, so which token moved, what it looks like now, and what a consumer should check belong in the `feat(tokens)`/`fix(tokens)` body that fifteen packages will point at. The same holds for `@entur/utils`, `@entur/icons` and anything else half the repo depends on. That includes saying so when a change is visually neutral — the generator never writes "No visual changes" itself.
+
 ### AI Attribution
 
 Do NOT use `Co-authored-by` trailers for AI tools — reserved for human collaborators.
@@ -146,3 +153,4 @@ No trailer needed for minor AI assistance.
 Packages carry their own `AGENTS.md` where they need one:
 
 - [packages/icons/AGENTS.md](packages/icons/AGENTS.md) — icon build pipeline, adding/renaming icons, SVG format
+- [tools/changelog-dependency-updates/README.md](tools/changelog-dependency-updates/README.md) — how dependency-only changelog entries are generated, and what they deliberately do not claim
