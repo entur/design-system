@@ -131,7 +131,7 @@ Branch naming: start with Jira issue ID, e.g. `ETU-38373-branch-name`.
 
 ### Changelogs
 
-`CHANGELOG.md` is generated at release time — never edit one by hand. [tools/conventional-changelog-entur](tools/conventional-changelog-entur) is the preset, and [tools/changelog-dependency-updates](tools/changelog-dependency-updates) fills in the entries Lerna would leave as `**Note:** Version bump only for package …`. Two rules for commit bodies follow from them:
+`CHANGELOG.md` is generated at release time — never edit one by hand. Only `packages/*` is versioned; the private apps and tools are not, so they have no changelog. [tools/conventional-changelog-entur](tools/conventional-changelog-entur) is the preset, and [tools/changelog-dependency-updates](tools/changelog-dependency-updates) fills in the entries Lerna would leave as `**Note:** Version bump only for package …`. Two rules for commit bodies follow from them:
 
 - **Backtick every tag name.** `<dialog>`, `<details>`, `<Logo />` and type parameters such as `ReactElement<any>` are read as markdown wherever the changelog is: bare, `<details>` becomes an empty disclosure widget and everything after a `<dialog>` disappears into it.
 - **Explain a shared change in that package's own commit.** A dependent package's entry links to the change and claims nothing about it, so which token moved, what it looks like now, and what a consumer should check belong in the `feat(tokens)`/`fix(tokens)` body that fifteen packages will point at. The same holds for `@entur/utils`, `@entur/icons` and anything else half the repo depends on. That includes saying so when a change is visually neutral — the generator never writes "No visual changes" itself.
