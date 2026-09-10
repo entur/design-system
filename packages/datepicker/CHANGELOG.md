@@ -1,4 +1,4 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
@@ -19,7 +19,16 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [12.1.1](https://github.com/entur/design-system/compare/@entur/datepicker@12.1.0...@entur/datepicker@12.1.1) (2026-08-28)
 
-**Note:** Version bump only for package @entur/datepicker
+### Entur Dependency Updates
+
+- **@entur/a11y:** `^0.3.2` → `^0.3.3` ([changelog](https://github.com/entur/design-system/blob/main/packages/a11y/CHANGELOG.md#033-2026-08-28))
+- **@entur/button:** `^5.0.3` → `^5.0.4` ([changelog](https://github.com/entur/design-system/blob/main/packages/button/CHANGELOG.md#504-2026-08-28))
+- **@entur/form:** `^10.1.0` → `^10.1.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#1011-2026-08-28))
+- **@entur/icons:** `^10.0.2` → `^10.0.3` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#1003-2026-08-28))
+- **@entur/modal:** `^2.0.3` → `^2.0.4` ([changelog](https://github.com/entur/design-system/blob/main/packages/modal/CHANGELOG.md#204-2026-08-28))
+- **@entur/tokens:** `^4.0.1` → `^4.1.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#410-2026-08-28))
+- **@entur/tooltip:** `^6.0.3` → `^6.0.4` ([changelog](https://github.com/entur/design-system/blob/main/packages/tooltip/CHANGELOG.md#604-2026-08-28))
+- **@entur/typography:** `^3.0.3` → `^3.0.4` ([changelog](https://github.com/entur/design-system/blob/main/packages/typography/CHANGELOG.md#304-2026-08-28))
 
 # [12.1.0](https://github.com/entur/design-system/compare/@entur/datepicker@12.0.2...@entur/datepicker@12.1.0) (2026-08-20)
 
@@ -102,7 +111,16 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [11.8.1](https://github.com/entur/design-system/compare/@entur/datepicker@11.8.0...@entur/datepicker@11.8.1) (2026-07-03)
 
-**Note:** Version bump only for package @entur/datepicker
+### Entur Dependency Updates
+
+- **@entur/a11y:** `^0.2.112` → `^0.2.113` ([changelog](https://github.com/entur/design-system/blob/main/packages/a11y/CHANGELOG.md#02113-2026-07-03))
+- **@entur/button:** `^4.0.10` → `^4.0.11` ([changelog](https://github.com/entur/design-system/blob/main/packages/button/CHANGELOG.md#4011-2026-07-03))
+- **@entur/form:** `^9.3.7` → `^9.3.8` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#938-2026-07-03))
+- **@entur/icons:** `^9.0.3` → `^9.0.4` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#904-2026-07-03))
+- **@entur/modal:** `^1.8.15` → `^1.8.16` ([changelog](https://github.com/entur/design-system/blob/main/packages/modal/CHANGELOG.md#1816-2026-07-03))
+- **@entur/tooltip:** `^5.3.15` → `^5.3.16` ([changelog](https://github.com/entur/design-system/blob/main/packages/tooltip/CHANGELOG.md#5316-2026-07-03))
+- **@entur/typography:** `^2.1.11` → `^2.1.12` ([changelog](https://github.com/entur/design-system/blob/main/packages/typography/CHANGELOG.md#2112-2026-07-03))
+- **@entur/utils:** `^0.13.5` → `^0.13.6` ([changelog](https://github.com/entur/design-system/blob/main/packages/utils/CHANGELOG.md#0136-2026-07-03))
 
 # [11.8.0](https://github.com/entur/design-system/compare/@entur/datepicker@11.7.0...@entur/datepicker@11.8.0) (2026-06-29)
 
@@ -155,11 +173,25 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [11.6.2](https://github.com/entur/design-system/compare/@entur/datepicker@11.6.1...@entur/datepicker@11.6.2) (2026-06-08)
 
-**Note:** Version bump only for package @entur/datepicker
+### Entur Dependency Updates
+
+- **@entur/button:** `^4.0.8` → `^4.0.9` ([changelog](https://github.com/entur/design-system/blob/main/packages/button/CHANGELOG.md#409-2026-06-08))
+- **@entur/form:** `^9.3.5` → `^9.3.6` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#936-2026-06-08))
+- **@entur/icons:** `^9.0.1` → `^9.0.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#902-2026-06-08))
+- **@entur/modal:** `^1.8.13` → `^1.8.14` ([changelog](https://github.com/entur/design-system/blob/main/packages/modal/CHANGELOG.md#1814-2026-06-08))
+- **@entur/tooltip:** `^5.3.13` → `^5.3.14` ([changelog](https://github.com/entur/design-system/blob/main/packages/tooltip/CHANGELOG.md#5314-2026-06-08))
+- **@entur/typography:** `^2.1.9` → `^2.1.10` ([changelog](https://github.com/entur/design-system/blob/main/packages/typography/CHANGELOG.md#2110-2026-06-08))
 
 ## [11.6.1](https://github.com/entur/design-system/compare/@entur/datepicker@11.6.0...@entur/datepicker@11.6.1) (2026-06-08)
 
-**Note:** Version bump only for package @entur/datepicker
+### Entur Dependency Updates
+
+- **@entur/button:** `^4.0.7` → `^4.0.8` ([changelog](https://github.com/entur/design-system/blob/main/packages/button/CHANGELOG.md#408-2026-06-08))
+- **@entur/form:** `^9.3.4` → `^9.3.5` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#935-2026-06-08))
+- **@entur/icons:** `^9.0.0` → `^9.0.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#901-2026-06-08))
+- **@entur/modal:** `^1.8.12` → `^1.8.13` ([changelog](https://github.com/entur/design-system/blob/main/packages/modal/CHANGELOG.md#1813-2026-06-08))
+- **@entur/tooltip:** `^5.3.12` → `^5.3.13` ([changelog](https://github.com/entur/design-system/blob/main/packages/tooltip/CHANGELOG.md#5313-2026-06-08))
+- **@entur/typography:** `^2.1.8` → `^2.1.9` ([changelog](https://github.com/entur/design-system/blob/main/packages/typography/CHANGELOG.md#219-2026-06-08))
 
 # [11.6.0](https://github.com/entur/design-system/compare/@entur/datepicker@11.5.10...@entur/datepicker@11.6.0) (2026-06-05)
 
@@ -180,15 +212,45 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [11.5.11](https://github.com/entur/design-system/compare/@entur/datepicker@11.5.10...@entur/datepicker@11.5.11) (2026-05-13)
 
-**Note:** Version bump only for package @entur/datepicker
+### Entur Dependency Updates
+
+- **@entur/a11y:** `^0.2.109` → `^0.2.110` ([changelog](https://github.com/entur/design-system/blob/main/packages/a11y/CHANGELOG.md#02110-2026-05-13))
+- **@entur/button:** `^4.0.5` → `^4.0.6` ([changelog](https://github.com/entur/design-system/blob/main/packages/button/CHANGELOG.md#406-2026-05-13))
+- **@entur/form:** `^9.3.2` → `^9.3.3` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#933-2026-05-13))
+- **@entur/icons:** `^8.4.5` → `^8.4.6` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#846-2026-05-13))
+- **@entur/modal:** `^1.8.10` → `^1.8.11` ([changelog](https://github.com/entur/design-system/blob/main/packages/modal/CHANGELOG.md#1811-2026-05-13))
+- **@entur/tokens:** `^3.22.4` → `^3.22.5` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3225-2026-05-13))
+- **@entur/tooltip:** `^5.3.10` → `^5.3.11` ([changelog](https://github.com/entur/design-system/blob/main/packages/tooltip/CHANGELOG.md#5311-2026-05-13))
+- **@entur/typography:** `^2.1.6` → `^2.1.7` ([changelog](https://github.com/entur/design-system/blob/main/packages/typography/CHANGELOG.md#217-2026-05-13))
+- **@entur/utils:** `^0.13.3` → `^0.13.4` ([changelog](https://github.com/entur/design-system/blob/main/packages/utils/CHANGELOG.md#0134-2026-05-13))
 
 ## [11.5.10](https://github.com/entur/design-system/compare/@entur/datepicker@11.5.9...@entur/datepicker@11.5.10) (2026-04-16)
 
-**Note:** Version bump only for package @entur/datepicker
+### Entur Dependency Updates
+
+- **@entur/a11y:** `^0.2.108` → `^0.2.109` ([changelog](https://github.com/entur/design-system/blob/main/packages/a11y/CHANGELOG.md))
+- **@entur/button:** `^4.0.4` → `^4.0.5` ([changelog](https://github.com/entur/design-system/blob/main/packages/button/CHANGELOG.md))
+- **@entur/form:** `^9.3.0` → `^9.3.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#932-2026-04-16))
+- **@entur/icons:** `^8.4.4` → `^8.4.5` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md))
+- **@entur/modal:** `^1.8.8` → `^1.8.10` ([changelog](https://github.com/entur/design-system/blob/main/packages/modal/CHANGELOG.md#1810-2026-04-16))
+- **@entur/tokens:** `^3.22.3` → `^3.22.4` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md))
+- **@entur/tooltip:** `^5.3.8` → `^5.3.10` ([changelog](https://github.com/entur/design-system/blob/main/packages/tooltip/CHANGELOG.md#5310-2026-04-16))
+- **@entur/typography:** `^2.1.5` → `^2.1.6` ([changelog](https://github.com/entur/design-system/blob/main/packages/typography/CHANGELOG.md))
+- **@entur/utils:** `^0.13.2` → `^0.13.3` ([changelog](https://github.com/entur/design-system/blob/main/packages/utils/CHANGELOG.md))
 
 ## [11.5.8](https://github.com/entur/design-system/compare/@entur/datepicker@11.5.7...@entur/datepicker@11.5.8) (2026-03-16)
 
-**Note:** Version bump only for package @entur/datepicker
+### Entur Dependency Updates
+
+- **@entur/a11y:** `^0.2.107` → `^0.2.108` ([changelog](https://github.com/entur/design-system/blob/main/packages/a11y/CHANGELOG.md#02108-2026-03-16))
+- **@entur/button:** `^4.0.3` → `^4.0.4` ([changelog](https://github.com/entur/design-system/blob/main/packages/button/CHANGELOG.md#404-2026-03-16))
+- **@entur/form:** `^9.2.6` → `^9.3.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#930-2026-03-16))
+- **@entur/icons:** `^8.4.3` → `^8.4.4` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#844-2026-03-16))
+- **@entur/modal:** `^1.8.6` → `^1.8.8` ([changelog](https://github.com/entur/design-system/blob/main/packages/modal/CHANGELOG.md#188-2026-03-16))
+- **@entur/tokens:** `^3.22.2` → `^3.22.3` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3223-2026-03-16))
+- **@entur/tooltip:** `^5.3.6` → `^5.3.8` ([changelog](https://github.com/entur/design-system/blob/main/packages/tooltip/CHANGELOG.md#538-2026-03-16))
+- **@entur/typography:** `^2.1.4` → `^2.1.5` ([changelog](https://github.com/entur/design-system/blob/main/packages/typography/CHANGELOG.md#215-2026-03-16))
+- **@entur/utils:** `^0.13.1` → `^0.13.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/utils/CHANGELOG.md#0132-2026-03-16))
 
 ## [11.5.6](https://github.com/entur/design-system/compare/@entur/datepicker@11.5.5...@entur/datepicker@11.5.6) (2026-02-20)
 
@@ -202,19 +264,47 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [11.5.5](https://github.com/entur/design-system/compare/@entur/datepicker@11.5.4...@entur/datepicker@11.5.5) (2026-02-05)
 
-**Note:** Version bump only for package @entur/datepicker
+### Entur Dependency Updates
+
+- **@entur/form:** `^9.2.4` → `^9.2.5` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#925-2026-02-05))
+- **@entur/modal:** `^1.8.4` → `^1.8.5` ([changelog](https://github.com/entur/design-system/blob/main/packages/modal/CHANGELOG.md#185-2026-02-05))
+- **@entur/tooltip:** `^5.3.4` → `^5.3.5` ([changelog](https://github.com/entur/design-system/blob/main/packages/tooltip/CHANGELOG.md#535-2026-02-05))
 
 ## [11.5.4](https://github.com/entur/design-system/compare/@entur/datepicker@11.5.3...@entur/datepicker@11.5.4) (2026-01-28)
 
-**Note:** Version bump only for package @entur/datepicker
+### Entur Dependency Updates
+
+- **@entur/a11y:** `^0.2.105` → `^0.2.106` ([changelog](https://github.com/entur/design-system/blob/main/packages/a11y/CHANGELOG.md#02106-2026-01-28))
+- **@entur/button:** `^4.0.1` → `^4.0.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/button/CHANGELOG.md#402-2026-01-28))
+- **@entur/form:** `^9.2.3` → `^9.2.4` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#924-2026-01-28))
+- **@entur/icons:** `^8.4.1` → `^8.4.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#842-2026-01-28))
+- **@entur/modal:** `^1.8.3` → `^1.8.4` ([changelog](https://github.com/entur/design-system/blob/main/packages/modal/CHANGELOG.md#184-2026-01-28))
+- **@entur/tokens:** `^3.22.0` → `^3.22.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3221-2026-01-28))
+- **@entur/tooltip:** `^5.3.3` → `^5.3.4` ([changelog](https://github.com/entur/design-system/blob/main/packages/tooltip/CHANGELOG.md#534-2026-01-28))
+- **@entur/typography:** `^2.1.2` → `^2.1.3` ([changelog](https://github.com/entur/design-system/blob/main/packages/typography/CHANGELOG.md#213-2026-01-28))
 
 ## [11.5.3](https://github.com/entur/design-system/compare/@entur/datepicker@11.5.2...@entur/datepicker@11.5.3) (2026-01-23)
 
-**Note:** Version bump only for package @entur/datepicker
+### Entur Dependency Updates
+
+- **@entur/button:** `^4.0.0` → `^4.0.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/button/CHANGELOG.md#401-2026-01-23))
+- **@entur/form:** `^9.2.2` → `^9.2.3` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#923-2026-01-23))
+- **@entur/modal:** `^1.8.2` → `^1.8.3` ([changelog](https://github.com/entur/design-system/blob/main/packages/modal/CHANGELOG.md#183-2026-01-23))
+- **@entur/tooltip:** `^5.3.2` → `^5.3.3` ([changelog](https://github.com/entur/design-system/blob/main/packages/tooltip/CHANGELOG.md#533-2026-01-23))
 
 ## [11.5.2](https://github.com/entur/design-system/compare/@entur/datepicker@11.5.1...@entur/datepicker@11.5.2) (2026-01-23)
 
-**Note:** Version bump only for package @entur/datepicker
+### Entur Dependency Updates
+
+- **@entur/a11y:** `^0.2.103` → `^0.2.105` ([changelog](https://github.com/entur/design-system/blob/main/packages/a11y/CHANGELOG.md#02105-2026-01-23))
+- **@entur/button:** `^3.4.0` → `^4.0.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/button/CHANGELOG.md#400-2026-01-23))
+- **@entur/form:** `^9.2.0` → `^9.2.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#922-2026-01-23))
+- **@entur/icons:** `^8.3.1` → `^8.4.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#841-2026-01-23))
+- **@entur/modal:** `^1.8.0` → `^1.8.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/modal/CHANGELOG.md#182-2026-01-23))
+- **@entur/tokens:** `^3.21.0` → `^3.22.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3220-2026-01-23))
+- **@entur/tooltip:** `^5.3.0` → `^5.3.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/tooltip/CHANGELOG.md#532-2026-01-23))
+- **@entur/typography:** `^2.1.0` → `^2.1.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/typography/CHANGELOG.md#212-2026-01-23))
+- **@entur/utils:** `^0.13.0` → `^0.13.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/utils/CHANGELOG.md))
 
 # [11.5.0](https://github.com/entur/design-system/compare/@entur/datepicker@11.4.4...@entur/datepicker@11.5.0) (2025-12-05)
 
@@ -230,15 +320,26 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [11.4.3](https://github.com/entur/design-system/compare/@entur/datepicker@11.4.2...@entur/datepicker@11.4.3) (2025-10-27)
 
-**Note:** Version bump only for package @entur/datepicker
+### Entur Dependency Updates
+
+- **@entur/form:** `^9.0.0` → `^9.0.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#901-2025-10-27))
 
 ## [11.4.2](https://github.com/entur/design-system/compare/@entur/datepicker@11.4.1...@entur/datepicker@11.4.2) (2025-10-27)
 
-**Note:** Version bump only for package @entur/datepicker
+### Entur Dependency Updates
+
+- **@entur/form:** `^8.4.2` → `^9.0.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#900-2025-10-27))
 
 ## [11.4.1](https://github.com/entur/design-system/compare/@entur/datepicker@11.4.0...@entur/datepicker@11.4.1) (2025-10-20)
 
-**Note:** Version bump only for package @entur/datepicker
+### Entur Dependency Updates
+
+- **@entur/button:** `^3.3.17` → `^3.3.18` ([changelog](https://github.com/entur/design-system/blob/main/packages/button/CHANGELOG.md#3318-2025-10-20))
+- **@entur/form:** `^8.4.1` → `^8.4.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#842-2025-10-20))
+- **@entur/icons:** `^8.1.0` → `^8.2.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#820-2025-10-20))
+- **@entur/modal:** `^1.7.77` → `^1.7.78` ([changelog](https://github.com/entur/design-system/blob/main/packages/modal/CHANGELOG.md#1778-2025-10-20))
+- **@entur/tooltip:** `^5.2.16` → `^5.2.17` ([changelog](https://github.com/entur/design-system/blob/main/packages/tooltip/CHANGELOG.md#5217-2025-10-20))
+- **@entur/typography:** `^2.0.2` → `^2.0.3` ([changelog](https://github.com/entur/design-system/blob/main/packages/typography/CHANGELOG.md#203-2025-10-20))
 
 # [11.4.0](https://github.com/entur/design-system/compare/@entur/datepicker@11.3.0...@entur/datepicker@11.4.0) (2025-10-17)
 
@@ -258,7 +359,17 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [11.2.3](https://github.com/entur/design-system/compare/@entur/datepicker@11.2.2...@entur/datepicker@11.2.3) (2025-09-24)
 
-**Note:** Version bump only for package @entur/datepicker
+### Entur Dependency Updates
+
+- **@entur/a11y:** `^0.2.100` → `^0.2.101` ([changelog](https://github.com/entur/design-system/blob/main/packages/a11y/CHANGELOG.md))
+- **@entur/button:** `^3.3.13` → `^3.3.15` ([changelog](https://github.com/entur/design-system/blob/main/packages/button/CHANGELOG.md#3315-2025-09-24))
+- **@entur/form:** `^8.3.2` → `^8.3.4` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#834-2025-09-24))
+- **@entur/icons:** `^8.0.1` → `^8.0.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md))
+- **@entur/modal:** `^1.7.73` → `^1.7.75` ([changelog](https://github.com/entur/design-system/blob/main/packages/modal/CHANGELOG.md#1775-2025-09-24))
+- **@entur/tokens:** `^3.19.2` → `^3.19.3` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md))
+- **@entur/tooltip:** `^5.2.13` → `^5.2.14` ([changelog](https://github.com/entur/design-system/blob/main/packages/tooltip/CHANGELOG.md))
+- **@entur/typography:** `^1.9.13` → `^2.0.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/typography/CHANGELOG.md#200-2025-09-24))
+- **@entur/utils:** `^0.12.4` → `^0.12.5` ([changelog](https://github.com/entur/design-system/blob/main/packages/utils/CHANGELOG.md))
 
 ## [11.2.1](https://github.com/entur/design-system/compare/@entur/datepicker@11.2.0...@entur/datepicker@11.2.1) (2025-08-29)
 
@@ -287,7 +398,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [11.1.2](https://github.com/entur/design-system/compare/@entur/datepicker@11.1.1...@entur/datepicker@11.1.2) (2025-07-29)
 
-**Note:** Version bump only for package @entur/datepicker
+### Entur Dependency Updates
+
+- **@entur/form:** `^8.3.0` → `^8.3.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#831-2025-07-29))
 
 ## [11.1.1](https://github.com/entur/design-system/compare/@entur/datepicker@11.1.0...@entur/datepicker@11.1.1) (2025-06-27)
 
@@ -308,23 +421,60 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [11.0.6](https://github.com/entur/design-system/compare/@entur/datepicker@11.0.6-beta.0...@entur/datepicker@11.0.6) (2025-06-06)
 
-**Note:** Version bump only for package @entur/datepicker
+### Entur Dependency Updates
+
+- **@entur/button:** `^3.3.10-beta.0` → `^3.3.10` ([changelog](https://github.com/entur/design-system/blob/main/packages/button/CHANGELOG.md#3310-2025-06-06))
+- **@entur/form:** `^8.2.10-beta.0` → `^8.2.10` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#8210-2025-06-06))
+- **@entur/icons:** `^7.13.0-beta.0` → `^7.13.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#7130-2025-06-06))
+- **@entur/modal:** `^1.7.70-beta.0` → `^1.7.70` ([changelog](https://github.com/entur/design-system/blob/main/packages/modal/CHANGELOG.md#1770-2025-06-06))
+- **@entur/tooltip:** `^5.2.10-beta.0` → `^5.2.10` ([changelog](https://github.com/entur/design-system/blob/main/packages/tooltip/CHANGELOG.md#5210-2025-06-06))
+- **@entur/typography:** `^1.9.10-beta.0` → `^1.9.10` ([changelog](https://github.com/entur/design-system/blob/main/packages/typography/CHANGELOG.md#1910-2025-06-06))
 
 ## [11.0.6-beta.0](https://github.com/entur/design-system/compare/@entur/datepicker@11.0.5...@entur/datepicker@11.0.6-beta.0) (2025-06-06)
 
-**Note:** Version bump only for package @entur/datepicker
+### Entur Dependency Updates
+
+- **@entur/button:** `^3.3.9` → `^3.3.10-beta.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/button/CHANGELOG.md#3310-beta0-2025-06-06))
+- **@entur/form:** `^8.2.9` → `^8.2.10-beta.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#8210-beta0-2025-06-06))
+- **@entur/icons:** `^7.12.0` → `^7.13.0-beta.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#7130-beta0-2025-06-06))
+- **@entur/modal:** `^1.7.69` → `^1.7.70-beta.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/modal/CHANGELOG.md#1770-beta0-2025-06-06))
+- **@entur/tooltip:** `^5.2.9` → `^5.2.10-beta.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/tooltip/CHANGELOG.md#5210-beta0-2025-06-06))
+- **@entur/typography:** `^1.9.9` → `^1.9.10-beta.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/typography/CHANGELOG.md#1910-beta0-2025-06-06))
 
 ## [11.0.5](https://github.com/entur/design-system/compare/@entur/datepicker@11.0.4...@entur/datepicker@11.0.5) (2025-05-22)
 
-**Note:** Version bump only for package @entur/datepicker
+### Entur Dependency Updates
+
+- **@entur/a11y:** `^0.2.98` → `^0.2.99` ([changelog](https://github.com/entur/design-system/blob/main/packages/a11y/CHANGELOG.md#0299-2025-05-22))
+- **@entur/button:** `^3.3.8` → `^3.3.9` ([changelog](https://github.com/entur/design-system/blob/main/packages/button/CHANGELOG.md#339-2025-05-22))
+- **@entur/form:** `^8.2.8` → `^8.2.9` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#829-2025-05-22))
+- **@entur/icons:** `^7.11.1` → `^7.12.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#7120-2025-05-22))
+- **@entur/modal:** `^1.7.68` → `^1.7.69` ([changelog](https://github.com/entur/design-system/blob/main/packages/modal/CHANGELOG.md#1769-2025-05-22))
+- **@entur/tokens:** `^3.19.0` → `^3.19.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3191-2025-05-22))
+- **@entur/tooltip:** `^5.2.8` → `^5.2.9` ([changelog](https://github.com/entur/design-system/blob/main/packages/tooltip/CHANGELOG.md#529-2025-05-22))
+- **@entur/typography:** `^1.9.8` → `^1.9.9` ([changelog](https://github.com/entur/design-system/blob/main/packages/typography/CHANGELOG.md#199-2025-05-22))
 
 ## [11.0.4](https://github.com/entur/design-system/compare/@entur/datepicker@11.0.3...@entur/datepicker@11.0.4) (2025-04-29)
 
-**Note:** Version bump only for package @entur/datepicker
+### Entur Dependency Updates
+
+- **@entur/button:** `^3.3.7` → `^3.3.8` ([changelog](https://github.com/entur/design-system/blob/main/packages/button/CHANGELOG.md#338-2025-04-29))
+- **@entur/form:** `^8.2.7` → `^8.2.8` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#828-2025-04-29))
+- **@entur/icons:** `^7.11.0` → `^7.11.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#7111-2025-04-29))
+- **@entur/modal:** `^1.7.67` → `^1.7.68` ([changelog](https://github.com/entur/design-system/blob/main/packages/modal/CHANGELOG.md#1768-2025-04-29))
+- **@entur/tooltip:** `^5.2.7` → `^5.2.8` ([changelog](https://github.com/entur/design-system/blob/main/packages/tooltip/CHANGELOG.md#528-2025-04-29))
+- **@entur/typography:** `^1.9.7` → `^1.9.8` ([changelog](https://github.com/entur/design-system/blob/main/packages/typography/CHANGELOG.md#198-2025-04-29))
 
 ## [11.0.3](https://github.com/entur/design-system/compare/@entur/datepicker@11.0.2...@entur/datepicker@11.0.3) (2025-04-29)
 
-**Note:** Version bump only for package @entur/datepicker
+### Entur Dependency Updates
+
+- **@entur/button:** `^3.3.6` → `^3.3.7` ([changelog](https://github.com/entur/design-system/blob/main/packages/button/CHANGELOG.md#337-2025-04-29))
+- **@entur/form:** `^8.2.6` → `^8.2.7` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#827-2025-04-29))
+- **@entur/icons:** `^7.10.0` → `^7.11.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#7110-2025-04-29))
+- **@entur/modal:** `^1.7.66` → `^1.7.67` ([changelog](https://github.com/entur/design-system/blob/main/packages/modal/CHANGELOG.md#1767-2025-04-29))
+- **@entur/tooltip:** `^5.2.6` → `^5.2.7` ([changelog](https://github.com/entur/design-system/blob/main/packages/tooltip/CHANGELOG.md#527-2025-04-29))
+- **@entur/typography:** `^1.9.6` → `^1.9.7` ([changelog](https://github.com/entur/design-system/blob/main/packages/typography/CHANGELOG.md#197-2025-04-29))
 
 ## [11.0.2](https://github.com/entur/design-system/compare/@entur/datepicker@11.0.1...@entur/datepicker@11.0.2) (2025-04-23)
 
@@ -334,7 +484,14 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [11.0.1](https://github.com/entur/design-system/compare/@entur/datepicker@11.0.0...@entur/datepicker@11.0.1) (2025-04-11)
 
-**Note:** Version bump only for package @entur/datepicker
+### Entur Dependency Updates
+
+- **@entur/button:** `^3.3.4` → `^3.3.5` ([changelog](https://github.com/entur/design-system/blob/main/packages/button/CHANGELOG.md#335-2025-04-11))
+- **@entur/form:** `^8.2.4` → `^8.2.5` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#825-2025-04-11))
+- **@entur/icons:** `^7.8.0` → `^7.9.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#790-2025-04-11))
+- **@entur/modal:** `^1.7.64` → `^1.7.65` ([changelog](https://github.com/entur/design-system/blob/main/packages/modal/CHANGELOG.md#1765-2025-04-11))
+- **@entur/tooltip:** `^5.2.4` → `^5.2.5` ([changelog](https://github.com/entur/design-system/blob/main/packages/tooltip/CHANGELOG.md#525-2025-04-11))
+- **@entur/typography:** `^1.9.4` → `^1.9.5` ([changelog](https://github.com/entur/design-system/blob/main/packages/typography/CHANGELOG.md#195-2025-04-11))
 
 # [11.0.0](https://github.com/entur/design-system/compare/@entur/datepicker@10.1.3...@entur/datepicker@11.0.0) (2025-03-24)
 
@@ -358,15 +515,40 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [10.1.3](https://github.com/entur/design-system/compare/@entur/datepicker@10.1.2...@entur/datepicker@10.1.3) (2025-03-05)
 
-**Note:** Version bump only for package @entur/datepicker
+### Entur Dependency Updates
+
+- **@entur/a11y:** `^0.2.96` → `^0.2.97` ([changelog](https://github.com/entur/design-system/blob/main/packages/a11y/CHANGELOG.md#0297-2025-03-05))
+- **@entur/button:** `^3.3.2` → `^3.3.3` ([changelog](https://github.com/entur/design-system/blob/main/packages/button/CHANGELOG.md#333-2025-03-05))
+- **@entur/form:** `^8.2.2` → `^8.2.3` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#823-2025-03-05))
+- **@entur/icons:** `^7.7.0` → `^7.7.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#771-2025-03-05))
+- **@entur/modal:** `^1.7.62` → `^1.7.63` ([changelog](https://github.com/entur/design-system/blob/main/packages/modal/CHANGELOG.md#1763-2025-03-05))
+- **@entur/tokens:** `^3.17.6` → `^3.18.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3180-2025-03-05))
+- **@entur/tooltip:** `^5.2.2` → `^5.2.3` ([changelog](https://github.com/entur/design-system/blob/main/packages/tooltip/CHANGELOG.md#523-2025-03-05))
+- **@entur/typography:** `^1.9.2` → `^1.9.3` ([changelog](https://github.com/entur/design-system/blob/main/packages/typography/CHANGELOG.md#193-2025-03-05))
 
 ## [10.1.2](https://github.com/entur/design-system/compare/@entur/datepicker@10.1.1...@entur/datepicker@10.1.2) (2025-02-25)
 
-**Note:** Version bump only for package @entur/datepicker
+### Entur Dependency Updates
+
+- **@entur/button:** `^3.3.1` → `^3.3.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/button/CHANGELOG.md#332-2025-02-25))
+- **@entur/form:** `^8.2.1` → `^8.2.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#822-2025-02-25))
+- **@entur/icons:** `^7.6.1` → `^7.7.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#770-2025-02-25))
+- **@entur/modal:** `^1.7.61` → `^1.7.62` ([changelog](https://github.com/entur/design-system/blob/main/packages/modal/CHANGELOG.md#1762-2025-02-25))
+- **@entur/tooltip:** `^5.2.1` → `^5.2.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/tooltip/CHANGELOG.md#522-2025-02-25))
+- **@entur/typography:** `^1.9.1` → `^1.9.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/typography/CHANGELOG.md#192-2025-02-25))
 
 ## [10.1.1](https://github.com/entur/design-system/compare/@entur/datepicker@10.1.0...@entur/datepicker@10.1.1) (2025-02-20)
 
-**Note:** Version bump only for package @entur/datepicker
+### Entur Dependency Updates
+
+- **@entur/a11y:** `^0.2.95` → `^0.2.96` ([changelog](https://github.com/entur/design-system/blob/main/packages/a11y/CHANGELOG.md#0296-2025-02-20))
+- **@entur/button:** `^3.3.0` → `^3.3.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/button/CHANGELOG.md#331-2025-02-20))
+- **@entur/form:** `^8.2.0` → `^8.2.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#821-2025-02-20))
+- **@entur/icons:** `^7.6.0` → `^7.6.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#761-2025-02-20))
+- **@entur/modal:** `^1.7.60` → `^1.7.61` ([changelog](https://github.com/entur/design-system/blob/main/packages/modal/CHANGELOG.md#1761-2025-02-20))
+- **@entur/tokens:** `^3.17.5` → `^3.17.6` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3176-2025-02-20))
+- **@entur/tooltip:** `^5.2.0` → `^5.2.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/tooltip/CHANGELOG.md#521-2025-02-20))
+- **@entur/typography:** `^1.9.0` → `^1.9.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/typography/CHANGELOG.md#191-2025-02-20))
 
 # [10.1.0](https://github.com/entur/design-system/compare/@entur/datepicker@10.0.13...@entur/datepicker@10.1.0) (2025-01-24)
 
@@ -376,15 +558,44 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [10.0.13](https://github.com/entur/design-system/compare/@entur/datepicker@10.0.12...@entur/datepicker@10.0.13) (2025-01-15)
 
-**Note:** Version bump only for package @entur/datepicker
+### Entur Dependency Updates
+
+- **@entur/a11y:** `^0.2.94` → `^0.2.95` ([changelog](https://github.com/entur/design-system/blob/main/packages/a11y/CHANGELOG.md#0295-2025-01-15))
+- **@entur/button:** `^3.2.37` → `^3.2.38` ([changelog](https://github.com/entur/design-system/blob/main/packages/button/CHANGELOG.md#3238-2025-01-15))
+- **@entur/form:** `^8.1.9` → `^8.1.10` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#8110-2025-01-15))
+- **@entur/icons:** `^7.5.1` → `^7.6.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#760-2025-01-15))
+- **@entur/modal:** `^1.7.58` → `^1.7.59` ([changelog](https://github.com/entur/design-system/blob/main/packages/modal/CHANGELOG.md#1759-2025-01-15))
+- **@entur/tokens:** `^3.17.4` → `^3.17.5` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3175-2025-01-15))
+- **@entur/tooltip:** `^5.1.5` → `^5.1.6` ([changelog](https://github.com/entur/design-system/blob/main/packages/tooltip/CHANGELOG.md#516-2025-01-15))
+- **@entur/typography:** `^1.8.50` → `^1.8.51` ([changelog](https://github.com/entur/design-system/blob/main/packages/typography/CHANGELOG.md#1851-2025-01-15))
 
 ## [10.0.12](https://github.com/entur/design-system/compare/@entur/datepicker@10.0.12-RC.0...@entur/datepicker@10.0.12) (2025-01-14)
 
-**Note:** Version bump only for package @entur/datepicker
+### Entur Dependency Updates
+
+- **@entur/a11y:** `^0.2.94-RC.0` → `^0.2.94` ([changelog](https://github.com/entur/design-system/blob/main/packages/a11y/CHANGELOG.md#0294-2025-01-14))
+- **@entur/button:** `^3.2.37-RC.0` → `^3.2.37` ([changelog](https://github.com/entur/design-system/blob/main/packages/button/CHANGELOG.md#3237-2025-01-14))
+- **@entur/form:** `^8.1.9-RC.0` → `^8.1.9` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#819-2025-01-14))
+- **@entur/icons:** `^7.5.1-RC.0` → `^7.5.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#751-2025-01-14))
+- **@entur/modal:** `^1.7.58-RC.0` → `^1.7.58` ([changelog](https://github.com/entur/design-system/blob/main/packages/modal/CHANGELOG.md#1758-2025-01-14))
+- **@entur/tokens:** `^3.17.4-RC.0` → `^3.17.4` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3174-2025-01-14))
+- **@entur/tooltip:** `^5.1.5-RC.0` → `^5.1.5` ([changelog](https://github.com/entur/design-system/blob/main/packages/tooltip/CHANGELOG.md#515-2025-01-14))
+- **@entur/typography:** `^1.8.50-RC.0` → `^1.8.50` ([changelog](https://github.com/entur/design-system/blob/main/packages/typography/CHANGELOG.md#1850-2025-01-14))
+- **@entur/utils:** `^0.12.2-RC.0` → `^0.12.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/utils/CHANGELOG.md#0122-2025-01-14))
 
 ## [10.0.12-RC.0](https://github.com/entur/design-system/compare/@entur/datepicker@10.0.11...@entur/datepicker@10.0.12-RC.0) (2025-01-09)
 
-**Note:** Version bump only for package @entur/datepicker
+### Entur Dependency Updates
+
+- **@entur/a11y:** `^0.2.93` → `^0.2.94-RC.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/a11y/CHANGELOG.md#0294-rc0-2025-01-09))
+- **@entur/button:** `^3.2.36` → `^3.2.37-RC.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/button/CHANGELOG.md#3237-rc0-2025-01-09))
+- **@entur/form:** `^8.1.8` → `^8.1.9-RC.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#819-rc0-2025-01-09))
+- **@entur/icons:** `^7.5.0` → `^7.5.1-RC.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#751-rc0-2025-01-09))
+- **@entur/modal:** `^1.7.57` → `^1.7.58-RC.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/modal/CHANGELOG.md#1758-rc0-2025-01-09))
+- **@entur/tokens:** `^3.17.3` → `^3.17.4-RC.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3174-rc0-2025-01-09))
+- **@entur/tooltip:** `^5.1.4` → `^5.1.5-RC.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/tooltip/CHANGELOG.md#515-rc0-2025-01-09))
+- **@entur/typography:** `^1.8.49` → `^1.8.50-RC.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/typography/CHANGELOG.md#1850-rc0-2025-01-09))
+- **@entur/utils:** `^0.12.1` → `^0.12.2-RC.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/utils/CHANGELOG.md#0122-rc0-2025-01-09))
 
 ## [10.0.11](https://github.com/entur/design-system/compare/@entur/datepicker@10.0.10...@entur/datepicker@10.0.11) (2024-12-06)
 
@@ -825,12 +1036,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 **Note:** Version bump only for package @entur/datepicker
 
 ## [4.0.4](https://github.com/entur/design-system/compare/@entur/datepicker@4.0.1...@entur/datepicker@4.0.4) (2023-02-17)
-
-### Performance Improvements
-
-- **sass:** change from node-sass to dart-sass ([390a77f](https://github.com/entur/design-system/commits/390a77f0c28e9da56642d80dded2293d86ab65b2))
-
-## [4.0.3](https://github.com/entur/design-system/compare/@entur/datepicker@4.0.1...@entur/datepicker@4.0.3) (2023-02-15)
 
 ### Performance Improvements
 

@@ -1,15 +1,19 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
 ## [10.0.4](https://github.com/entur/design-system/compare/@entur/icons@10.0.3...@entur/icons@10.0.4) (2026-09-08)
 
-**Note:** Version bump only for package @entur/icons
+### Entur Dependency Updates
+
+- **@entur/tokens:** `^4.1.0` → `^4.1.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#411-2026-09-08))
 
 ## [10.0.3](https://github.com/entur/design-system/compare/@entur/icons@10.0.2...@entur/icons@10.0.3) (2026-08-28)
 
-**Note:** Version bump only for package @entur/icons
+### Entur Dependency Updates
+
+- **@entur/tokens:** `^4.0.1` → `^4.1.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#410-2026-08-28))
 
 ## [10.0.2](https://github.com/entur/design-system/compare/@entur/icons@10.0.1...@entur/icons@10.0.2) (2026-08-20)
 
@@ -24,7 +28,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [10.0.1](https://github.com/entur/design-system/compare/@entur/icons@10.0.0...@entur/icons@10.0.1) (2026-08-06)
 
-**Note:** Version bump only for package @entur/icons
+### Entur Dependency Updates
+
+- **@entur/tokens:** `^4.0.0` → `^4.0.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#401-2026-08-06))
 
 # [10.0.0](https://github.com/entur/design-system/compare/@entur/icons@9.0.4...@entur/icons@10.0.0) (2026-07-30)
 
@@ -142,19 +148,27 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [8.4.6](https://github.com/entur/design-system/compare/@entur/icons@8.4.5...@entur/icons@8.4.6) (2026-05-13)
 
-**Note:** Version bump only for package @entur/icons
+### Entur Dependency Updates
+
+- **@entur/tokens:** `^3.22.3` → `^3.22.5` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3225-2026-05-13))
 
 ## [8.4.4](https://github.com/entur/design-system/compare/@entur/icons@8.4.3...@entur/icons@8.4.4) (2026-03-16)
 
-**Note:** Version bump only for package @entur/icons
+### Entur Dependency Updates
+
+- **@entur/tokens:** `^3.22.2` → `^3.22.3` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3223-2026-03-16))
 
 ## [8.4.3](https://github.com/entur/design-system/compare/@entur/icons@8.4.2...@entur/icons@8.4.3) (2026-02-20)
 
-**Note:** Version bump only for package @entur/icons
+### Entur Dependency Updates
+
+- **@entur/tokens:** `^3.22.1` → `^3.22.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3222-2026-02-20))
 
 ## [8.4.2](https://github.com/entur/design-system/compare/@entur/icons@8.4.1...@entur/icons@8.4.2) (2026-01-28)
 
-**Note:** Version bump only for package @entur/icons
+### Entur Dependency Updates
+
+- **@entur/tokens:** `^3.22.0` → `^3.22.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3221-2026-01-28))
 
 ## [8.4.1](https://github.com/entur/design-system/compare/@entur/icons@8.4.0...@entur/icons@8.4.1) (2026-01-23)
 
@@ -166,7 +180,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [8.3.1](https://github.com/entur/design-system/compare/@entur/icons@8.3.0...@entur/icons@8.3.1) (2025-12-05)
 
-**Note:** Version bump only for package @entur/icons
+### Entur Dependency Updates
+
+- **@entur/tokens:** `^3.20.0` → `^3.21.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3210-2025-12-05))
 
 # [8.3.0](https://github.com/entur/design-system/compare/@entur/icons@8.2.0...@entur/icons@8.3.0) (2025-11-24)
 
@@ -288,7 +304,9 @@ Please update your imports and usages accordingly.
 
 ## [7.7.1](https://github.com/entur/design-system/compare/@entur/icons@7.7.0...@entur/icons@7.7.1) (2025-03-05)
 
-**Note:** Version bump only for package @entur/icons
+### Entur Dependency Updates
+
+- **@entur/tokens:** `^3.17.6` → `^3.18.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3180-2025-03-05))
 
 # [7.7.0](https://github.com/entur/design-system/compare/@entur/icons@7.6.1...@entur/icons@7.7.0) (2025-02-25)
 
@@ -310,7 +328,9 @@ Please update your imports and usages accordingly.
 
 ## [7.6.1](https://github.com/entur/design-system/compare/@entur/icons@7.6.0...@entur/icons@7.6.1) (2025-02-20)
 
-**Note:** Version bump only for package @entur/icons
+### Entur Dependency Updates
+
+- **@entur/tokens:** `^3.17.5` → `^3.17.6` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3176-2025-02-20))
 
 # [7.6.0](https://github.com/entur/design-system/compare/@entur/icons@7.5.1...@entur/icons@7.6.0) (2025-01-15)
 
@@ -320,11 +340,15 @@ Please update your imports and usages accordingly.
 
 ## [7.5.1](https://github.com/entur/design-system/compare/@entur/icons@7.5.1-RC.0...@entur/icons@7.5.1) (2025-01-14)
 
-**Note:** Version bump only for package @entur/icons
+### Entur Dependency Updates
+
+- **@entur/tokens:** `^3.17.4-RC.0` → `^3.17.4` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3174-2025-01-14))
 
 ## [7.5.1-RC.0](https://github.com/entur/design-system/compare/@entur/icons@7.5.0...@entur/icons@7.5.1-RC.0) (2025-01-09)
 
-**Note:** Version bump only for package @entur/icons
+### Entur Dependency Updates
+
+- **@entur/tokens:** `^3.17.3` → `^3.17.4-RC.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3174-rc0-2025-01-09))
 
 # [7.5.0](https://github.com/entur/design-system/compare/@entur/icons@7.4.3...@entur/icons@7.5.0) (2024-11-20)
 

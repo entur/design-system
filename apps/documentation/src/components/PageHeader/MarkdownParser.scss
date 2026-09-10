@@ -1,7 +1,8 @@
 @use '@entur/tokens/dist/styles.scss' as t;
 
 .markdown-parser {
-  &__section {
+  &__section,
+  &__dependencies-title {
     display: flex;
     align-items: center;
     gap: t.$space-extra-small;
@@ -21,6 +22,31 @@
     .eds-badge {
       margin-left: t.$space-extra-small;
     }
+  }
+
+  // A release that is nothing but dependency updates: the tag names the
+  // section like the other ones do, and the list under it is folded away.
+  &__dependencies {
+    // The trigger sets font-size: inherit, so the summary reads as body text
+    // rather than as a section title.
+    font-size: t.$font-sizes-medium;
+
+    // The packages the release moved, a level below the entry that opens
+    // them: subdued, and with a shorter dash than the entry above.
+    .eds-unordered-list .eds-unordered-list {
+      color: var(--basecolors-text-subdued);
+      margin: t.$space-extra-small t.$space-none t.$space-small;
+
+      .eds-list-item::before {
+        width: t.$space-extra-small;
+      }
+    }
+  }
+
+  // The line that opens the list, in the place of a list entry.
+  &__dependencies-summary {
+    font-weight: t.$font-weights-body;
+    text-align: left;
   }
 
   // The longer description from the commit message, shown under the entry.

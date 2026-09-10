@@ -5,7 +5,8 @@
   "command": {
     "version": {
       "message": "chore(release): publish",
-      "changelogPreset": "./tools/conventional-changelog-entur"
+      "changelogPreset": "./tools/conventional-changelog-entur",
+      "private": false
     }
   },
   "$schema": "node_modules/lerna/schemas/lerna-schema.json"
