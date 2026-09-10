@@ -1,4 +1,4 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
@@ -36,7 +36,16 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [9.1.1](https://github.com/entur/design-system/compare/@entur/dropdown@9.1.0...@entur/dropdown@9.1.1) (2026-08-28)
 
-**Note:** Version bump only for package @entur/dropdown
+### Entur Dependency Updates
+
+- **@entur/a11y:** `^0.3.2` → `^0.3.3` ([changelog](https://github.com/entur/design-system/blob/main/packages/a11y/CHANGELOG.md#033-2026-08-28))
+- **@entur/button:** `^5.0.3` → `^5.0.4` ([changelog](https://github.com/entur/design-system/blob/main/packages/button/CHANGELOG.md#504-2026-08-28))
+- **@entur/chip:** `^0.11.3` → `^0.11.4` ([changelog](https://github.com/entur/design-system/blob/main/packages/chip/CHANGELOG.md#0114-2026-08-28))
+- **@entur/form:** `^10.1.0` → `^10.1.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#1011-2026-08-28))
+- **@entur/icons:** `^10.0.2` → `^10.0.3` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#1003-2026-08-28))
+- **@entur/loader:** `^0.8.3` → `^0.8.4` ([changelog](https://github.com/entur/design-system/blob/main/packages/loader/CHANGELOG.md#084-2026-08-28))
+- **@entur/tokens:** `^4.0.1` → `^4.1.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#410-2026-08-28))
+- **@entur/tooltip:** `^6.0.3` → `^6.0.4` ([changelog](https://github.com/entur/design-system/blob/main/packages/tooltip/CHANGELOG.md#604-2026-08-28))
 
 # [9.1.0](https://github.com/entur/design-system/compare/@entur/dropdown@9.0.2...@entur/dropdown@9.1.0) (2026-08-20)
 
@@ -75,7 +84,17 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [9.0.1](https://github.com/entur/design-system/compare/@entur/dropdown@9.0.0...@entur/dropdown@9.0.1) (2026-08-06)
 
-**Note:** Version bump only for package @entur/dropdown
+### Entur Dependency Updates
+
+- **@entur/a11y:** `^0.3.0` → `^0.3.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/a11y/CHANGELOG.md#031-2026-08-06))
+- **@entur/button:** `^5.0.0` → `^5.0.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/button/CHANGELOG.md#501-2026-08-06))
+- **@entur/chip:** `^0.11.0` → `^0.11.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/chip/CHANGELOG.md#0111-2026-08-06))
+- **@entur/form:** `^10.0.0` → `^10.0.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#1001-2026-08-06))
+- **@entur/icons:** `^10.0.0` → `^10.0.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#1001-2026-08-06))
+- **@entur/loader:** `^0.8.0` → `^0.8.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/loader/CHANGELOG.md#081-2026-08-06))
+- **@entur/tokens:** `^4.0.0` → `^4.0.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#401-2026-08-06))
+- **@entur/tooltip:** `^6.0.0` → `^6.0.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/tooltip/CHANGELOG.md#601-2026-08-06))
+- **@entur/utils:** `^0.14.0` → `^0.14.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/utils/CHANGELOG.md#0141-2026-08-06))
 
 # [9.0.0](https://github.com/entur/design-system/compare/@entur/dropdown@8.1.8...@entur/dropdown@9.0.0) (2026-07-30)
 
@@ -103,31 +122,93 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [8.1.8](https://github.com/entur/design-system/compare/@entur/dropdown@8.1.7...@entur/dropdown@8.1.8) (2026-07-03)
 
-**Note:** Version bump only for package @entur/dropdown
+### Entur Dependency Updates
+
+- **@entur/a11y:** `^0.2.112` → `^0.2.113` ([changelog](https://github.com/entur/design-system/blob/main/packages/a11y/CHANGELOG.md#02113-2026-07-03))
+- **@entur/button:** `^4.0.10` → `^4.0.11` ([changelog](https://github.com/entur/design-system/blob/main/packages/button/CHANGELOG.md#4011-2026-07-03))
+- **@entur/chip:** `^0.10.15` → `^0.10.16` ([changelog](https://github.com/entur/design-system/blob/main/packages/chip/CHANGELOG.md#01016-2026-07-03))
+- **@entur/form:** `^9.3.7` → `^9.3.8` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#938-2026-07-03))
+- **@entur/icons:** `^9.0.3` → `^9.0.4` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#904-2026-07-03))
+- **@entur/loader:** `^0.7.3` → `^0.7.4` ([changelog](https://github.com/entur/design-system/blob/main/packages/loader/CHANGELOG.md#074-2026-07-03))
+- **@entur/tooltip:** `^5.3.15` → `^5.3.16` ([changelog](https://github.com/entur/design-system/blob/main/packages/tooltip/CHANGELOG.md#5316-2026-07-03))
+- **@entur/utils:** `^0.13.5` → `^0.13.6` ([changelog](https://github.com/entur/design-system/blob/main/packages/utils/CHANGELOG.md#0136-2026-07-03))
 
 ## [8.1.7](https://github.com/entur/design-system/compare/@entur/dropdown@8.1.5...@entur/dropdown@8.1.7) (2026-06-22)
 
-**Note:** Version bump only for package @entur/dropdown
+### Entur Dependency Updates
+
+- **@entur/a11y:** `^0.2.111` → `^0.2.112` ([changelog](https://github.com/entur/design-system/blob/main/packages/a11y/CHANGELOG.md#02112-2026-06-22))
+- **@entur/button:** `^4.0.9` → `^4.0.10` ([changelog](https://github.com/entur/design-system/blob/main/packages/button/CHANGELOG.md#4010-2026-06-22))
+- **@entur/chip:** `^0.10.14` → `^0.10.15` ([changelog](https://github.com/entur/design-system/blob/main/packages/chip/CHANGELOG.md#01015-2026-06-22))
+- **@entur/form:** `^9.3.6` → `^9.3.7` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#937-2026-06-22))
+- **@entur/icons:** `^9.0.2` → `^9.0.3` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#903-2026-06-22))
+- **@entur/loader:** `^0.7.2` → `^0.7.3` ([changelog](https://github.com/entur/design-system/blob/main/packages/loader/CHANGELOG.md#073-2026-06-22))
+- **@entur/tokens:** `^3.23.0` → `^3.24.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3240-2026-06-22))
+- **@entur/tooltip:** `^5.3.14` → `^5.3.15` ([changelog](https://github.com/entur/design-system/blob/main/packages/tooltip/CHANGELOG.md#5315-2026-06-22))
 
 ## [8.1.6](https://github.com/entur/design-system/compare/@entur/dropdown@8.1.5...@entur/dropdown@8.1.6) (2026-06-08)
 
-**Note:** Version bump only for package @entur/dropdown
+### Entur Dependency Updates
+
+- **@entur/button:** `^4.0.8` → `^4.0.9` ([changelog](https://github.com/entur/design-system/blob/main/packages/button/CHANGELOG.md#409-2026-06-08))
+- **@entur/chip:** `^0.10.13` → `^0.10.14` ([changelog](https://github.com/entur/design-system/blob/main/packages/chip/CHANGELOG.md#01014-2026-06-08))
+- **@entur/form:** `^9.3.5` → `^9.3.6` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#936-2026-06-08))
+- **@entur/icons:** `^9.0.1` → `^9.0.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#902-2026-06-08))
+- **@entur/loader:** `^0.7.1` → `^0.7.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/loader/CHANGELOG.md#072-2026-06-08))
+- **@entur/tooltip:** `^5.3.13` → `^5.3.14` ([changelog](https://github.com/entur/design-system/blob/main/packages/tooltip/CHANGELOG.md#5314-2026-06-08))
 
 ## [8.1.5](https://github.com/entur/design-system/compare/@entur/dropdown@8.1.4...@entur/dropdown@8.1.5) (2026-06-08)
 
-**Note:** Version bump only for package @entur/dropdown
+### Entur Dependency Updates
+
+- **@entur/button:** `^4.0.7` → `^4.0.8` ([changelog](https://github.com/entur/design-system/blob/main/packages/button/CHANGELOG.md#408-2026-06-08))
+- **@entur/chip:** `^0.10.12` → `^0.10.13` ([changelog](https://github.com/entur/design-system/blob/main/packages/chip/CHANGELOG.md#01013-2026-06-08))
+- **@entur/form:** `^9.3.4` → `^9.3.5` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#935-2026-06-08))
+- **@entur/icons:** `^9.0.0` → `^9.0.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#901-2026-06-08))
+- **@entur/loader:** `^0.7.0` → `^0.7.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/loader/CHANGELOG.md#071-2026-06-08))
+- **@entur/tooltip:** `^5.3.12` → `^5.3.13` ([changelog](https://github.com/entur/design-system/blob/main/packages/tooltip/CHANGELOG.md#5313-2026-06-08))
 
 ## [8.1.4](https://github.com/entur/design-system/compare/@entur/dropdown@8.1.2...@entur/dropdown@8.1.4) (2026-06-05)
 
-**Note:** Version bump only for package @entur/dropdown
+### Entur Dependency Updates
+
+- **@entur/a11y:** `^0.2.110` → `^0.2.111` ([changelog](https://github.com/entur/design-system/blob/main/packages/a11y/CHANGELOG.md#02111-2026-06-05))
+- **@entur/button:** `^4.0.6` → `^4.0.7` ([changelog](https://github.com/entur/design-system/blob/main/packages/button/CHANGELOG.md#407-2026-06-05))
+- **@entur/chip:** `^0.10.11` → `^0.10.12` ([changelog](https://github.com/entur/design-system/blob/main/packages/chip/CHANGELOG.md#01012-2026-06-05))
+- **@entur/form:** `^9.3.3` → `^9.3.4` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#934-2026-06-05))
+- **@entur/icons:** `^8.4.6` → `^9.0.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#900-2026-06-05))
+- **@entur/loader:** `^0.6.7` → `^0.7.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/loader/CHANGELOG.md#070-2026-06-05))
+- **@entur/tokens:** `^3.22.5` → `^3.23.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3230-2026-06-05))
+- **@entur/tooltip:** `^5.3.11` → `^5.3.12` ([changelog](https://github.com/entur/design-system/blob/main/packages/tooltip/CHANGELOG.md#5312-2026-06-05))
+- **@entur/utils:** `^0.13.4` → `^0.13.5` ([changelog](https://github.com/entur/design-system/blob/main/packages/utils/CHANGELOG.md#0135-2026-06-05))
 
 ## [8.1.3](https://github.com/entur/design-system/compare/@entur/dropdown@8.1.2...@entur/dropdown@8.1.3) (2026-05-13)
 
-**Note:** Version bump only for package @entur/dropdown
+### Entur Dependency Updates
+
+- **@entur/a11y:** `^0.2.109` → `^0.2.110` ([changelog](https://github.com/entur/design-system/blob/main/packages/a11y/CHANGELOG.md#02110-2026-05-13))
+- **@entur/button:** `^4.0.5` → `^4.0.6` ([changelog](https://github.com/entur/design-system/blob/main/packages/button/CHANGELOG.md#406-2026-05-13))
+- **@entur/chip:** `^0.10.10` → `^0.10.11` ([changelog](https://github.com/entur/design-system/blob/main/packages/chip/CHANGELOG.md#01011-2026-05-13))
+- **@entur/form:** `^9.3.2` → `^9.3.3` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#933-2026-05-13))
+- **@entur/icons:** `^8.4.5` → `^8.4.6` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#846-2026-05-13))
+- **@entur/loader:** `^0.6.6` → `^0.6.7` ([changelog](https://github.com/entur/design-system/blob/main/packages/loader/CHANGELOG.md#067-2026-05-13))
+- **@entur/tokens:** `^3.22.4` → `^3.22.5` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3225-2026-05-13))
+- **@entur/tooltip:** `^5.3.10` → `^5.3.11` ([changelog](https://github.com/entur/design-system/blob/main/packages/tooltip/CHANGELOG.md#5311-2026-05-13))
+- **@entur/utils:** `^0.13.3` → `^0.13.4` ([changelog](https://github.com/entur/design-system/blob/main/packages/utils/CHANGELOG.md#0134-2026-05-13))
 
 ## [8.1.2](https://github.com/entur/design-system/compare/@entur/dropdown@8.1.1...@entur/dropdown@8.1.2) (2026-04-16)
 
-**Note:** Version bump only for package @entur/dropdown
+### Entur Dependency Updates
+
+- **@entur/a11y:** `^0.2.108` → `^0.2.109` ([changelog](https://github.com/entur/design-system/blob/main/packages/a11y/CHANGELOG.md))
+- **@entur/button:** `^4.0.4` → `^4.0.5` ([changelog](https://github.com/entur/design-system/blob/main/packages/button/CHANGELOG.md))
+- **@entur/chip:** `^0.10.8` → `^0.10.10` ([changelog](https://github.com/entur/design-system/blob/main/packages/chip/CHANGELOG.md#01010-2026-04-16))
+- **@entur/form:** `^9.3.0` → `^9.3.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#932-2026-04-16))
+- **@entur/icons:** `^8.4.4` → `^8.4.5` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md))
+- **@entur/loader:** `^0.6.5` → `^0.6.6` ([changelog](https://github.com/entur/design-system/blob/main/packages/loader/CHANGELOG.md))
+- **@entur/tokens:** `^3.22.3` → `^3.22.4` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md))
+- **@entur/tooltip:** `^5.3.8` → `^5.3.10` ([changelog](https://github.com/entur/design-system/blob/main/packages/tooltip/CHANGELOG.md#5310-2026-04-16))
+- **@entur/utils:** `^0.13.2` → `^0.13.3` ([changelog](https://github.com/entur/design-system/blob/main/packages/utils/CHANGELOG.md))
 
 # [8.1.0](https://github.com/entur/design-system/compare/@entur/dropdown@8.0.9...@entur/dropdown@8.1.0) (2026-03-16)
 
@@ -165,23 +246,64 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [8.0.6](https://github.com/entur/design-system/compare/@entur/dropdown@8.0.5...@entur/dropdown@8.0.6) (2026-01-28)
 
-**Note:** Version bump only for package @entur/dropdown
+### Entur Dependency Updates
+
+- **@entur/a11y:** `^0.2.105` → `^0.2.106` ([changelog](https://github.com/entur/design-system/blob/main/packages/a11y/CHANGELOG.md#02106-2026-01-28))
+- **@entur/button:** `^4.0.1` → `^4.0.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/button/CHANGELOG.md#402-2026-01-28))
+- **@entur/chip:** `^0.10.3` → `^0.10.4` ([changelog](https://github.com/entur/design-system/blob/main/packages/chip/CHANGELOG.md#0104-2026-01-28))
+- **@entur/form:** `^9.2.3` → `^9.2.4` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#924-2026-01-28))
+- **@entur/icons:** `^8.4.1` → `^8.4.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#842-2026-01-28))
+- **@entur/loader:** `^0.6.2` → `^0.6.3` ([changelog](https://github.com/entur/design-system/blob/main/packages/loader/CHANGELOG.md#063-2026-01-28))
+- **@entur/tokens:** `^3.22.0` → `^3.22.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3221-2026-01-28))
+- **@entur/tooltip:** `^5.3.3` → `^5.3.4` ([changelog](https://github.com/entur/design-system/blob/main/packages/tooltip/CHANGELOG.md#534-2026-01-28))
 
 ## [8.0.5](https://github.com/entur/design-system/compare/@entur/dropdown@8.0.4...@entur/dropdown@8.0.5) (2026-01-23)
 
-**Note:** Version bump only for package @entur/dropdown
+### Entur Dependency Updates
+
+- **@entur/button:** `^4.0.0` → `^4.0.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/button/CHANGELOG.md#401-2026-01-23))
+- **@entur/chip:** `^0.10.2` → `^0.10.3` ([changelog](https://github.com/entur/design-system/blob/main/packages/chip/CHANGELOG.md#0103-2026-01-23))
+- **@entur/form:** `^9.2.2` → `^9.2.3` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#923-2026-01-23))
+- **@entur/tooltip:** `^5.3.2` → `^5.3.3` ([changelog](https://github.com/entur/design-system/blob/main/packages/tooltip/CHANGELOG.md#533-2026-01-23))
 
 ## [8.0.4](https://github.com/entur/design-system/compare/@entur/dropdown@8.0.3...@entur/dropdown@8.0.4) (2026-01-23)
 
-**Note:** Version bump only for package @entur/dropdown
+### Entur Dependency Updates
+
+- **@entur/a11y:** `^0.2.103` → `^0.2.105` ([changelog](https://github.com/entur/design-system/blob/main/packages/a11y/CHANGELOG.md#02105-2026-01-23))
+- **@entur/button:** `^3.4.0` → `^4.0.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/button/CHANGELOG.md#400-2026-01-23))
+- **@entur/chip:** `^0.10.0` → `^0.10.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/chip/CHANGELOG.md#0102-2026-01-23))
+- **@entur/form:** `^9.2.0` → `^9.2.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#922-2026-01-23))
+- **@entur/icons:** `^8.3.1` → `^8.4.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#841-2026-01-23))
+- **@entur/loader:** `^0.6.0` → `^0.6.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/loader/CHANGELOG.md#062-2026-01-23))
+- **@entur/tokens:** `^3.21.0` → `^3.22.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3220-2026-01-23))
+- **@entur/tooltip:** `^5.3.0` → `^5.3.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/tooltip/CHANGELOG.md#532-2026-01-23))
+- **@entur/utils:** `^0.13.0` → `^0.13.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/utils/CHANGELOG.md))
 
 ## [8.0.2](https://github.com/entur/design-system/compare/@entur/dropdown@8.0.1...@entur/dropdown@8.0.2) (2025-12-05)
 
-**Note:** Version bump only for package @entur/dropdown
+### Entur Dependency Updates
+
+- **@entur/a11y:** `^0.2.102` → `^0.2.103` ([changelog](https://github.com/entur/design-system/blob/main/packages/a11y/CHANGELOG.md#02103-2025-12-05))
+- **@entur/button:** `^3.3.19` → `^3.4.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/button/CHANGELOG.md#340-2025-12-05))
+- **@entur/chip:** `^0.9.9` → `^0.10.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/chip/CHANGELOG.md#0100-2025-12-05))
+- **@entur/form:** `^9.1.0` → `^9.2.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#920-2025-12-05))
+- **@entur/icons:** `^8.3.0` → `^8.3.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#831-2025-12-05))
+- **@entur/loader:** `^0.5.36` → `^0.6.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/loader/CHANGELOG.md#060-2025-12-05))
+- **@entur/tokens:** `^3.20.0` → `^3.21.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3210-2025-12-05))
+- **@entur/tooltip:** `^5.2.18` → `^5.3.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/tooltip/CHANGELOG.md#530-2025-12-05))
+- **@entur/utils:** `^0.12.5` → `^0.13.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/utils/CHANGELOG.md#0130-2025-12-05))
 
 ## [8.0.1](https://github.com/entur/design-system/compare/@entur/dropdown@8.0.0...@entur/dropdown@8.0.1) (2025-11-24)
 
-**Note:** Version bump only for package @entur/dropdown
+### Entur Dependency Updates
+
+- **@entur/button:** `^3.3.18` → `^3.3.19` ([changelog](https://github.com/entur/design-system/blob/main/packages/button/CHANGELOG.md#3319-2025-11-24))
+- **@entur/chip:** `^0.9.8` → `^0.9.9` ([changelog](https://github.com/entur/design-system/blob/main/packages/chip/CHANGELOG.md#099-2025-11-24))
+- **@entur/form:** `^9.0.1` → `^9.1.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#910-2025-11-24))
+- **@entur/icons:** `^8.2.0` → `^8.3.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#830-2025-11-24))
+- **@entur/loader:** `^0.5.35` → `^0.5.36` ([changelog](https://github.com/entur/design-system/blob/main/packages/loader/CHANGELOG.md#0536-2025-11-24))
+- **@entur/tooltip:** `^5.2.17` → `^5.2.18` ([changelog](https://github.com/entur/design-system/blob/main/packages/tooltip/CHANGELOG.md#5218-2025-11-24))
 
 # [8.0.0](https://github.com/entur/design-system/compare/@entur/dropdown@7.3.11...@entur/dropdown@8.0.0) (2025-10-27)
 
@@ -212,15 +334,31 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [7.3.11](https://github.com/entur/design-system/compare/@entur/dropdown@7.3.10...@entur/dropdown@7.3.11) (2025-10-27)
 
-**Note:** Version bump only for package @entur/dropdown
+### Entur Dependency Updates
+
+- **@entur/chip:** `^0.9.6` → `^0.9.7` ([changelog](https://github.com/entur/design-system/blob/main/packages/chip/CHANGELOG.md#097-2025-10-27))
+- **@entur/form:** `^8.4.2` → `^9.0.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#900-2025-10-27))
 
 ## [7.3.10](https://github.com/entur/design-system/compare/@entur/dropdown@7.3.9...@entur/dropdown@7.3.10) (2025-10-20)
 
-**Note:** Version bump only for package @entur/dropdown
+### Entur Dependency Updates
+
+- **@entur/button:** `^3.3.17` → `^3.3.18` ([changelog](https://github.com/entur/design-system/blob/main/packages/button/CHANGELOG.md#3318-2025-10-20))
+- **@entur/chip:** `^0.9.5` → `^0.9.6` ([changelog](https://github.com/entur/design-system/blob/main/packages/chip/CHANGELOG.md#096-2025-10-20))
+- **@entur/form:** `^8.4.1` → `^8.4.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#842-2025-10-20))
+- **@entur/icons:** `^8.1.0` → `^8.2.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#820-2025-10-20))
+- **@entur/loader:** `^0.5.34` → `^0.5.35` ([changelog](https://github.com/entur/design-system/blob/main/packages/loader/CHANGELOG.md#0535-2025-10-20))
+- **@entur/tooltip:** `^5.2.16` → `^5.2.17` ([changelog](https://github.com/entur/design-system/blob/main/packages/tooltip/CHANGELOG.md#5217-2025-10-20))
 
 ## [7.3.9](https://github.com/entur/design-system/compare/@entur/dropdown@7.3.8...@entur/dropdown@7.3.9) (2025-10-17)
 
-**Note:** Version bump only for package @entur/dropdown
+### Entur Dependency Updates
+
+- **@entur/button:** `^3.3.16` → `^3.3.17` ([changelog](https://github.com/entur/design-system/blob/main/packages/button/CHANGELOG.md#3317-2025-10-17))
+- **@entur/chip:** `^0.9.4` → `^0.9.5` ([changelog](https://github.com/entur/design-system/blob/main/packages/chip/CHANGELOG.md#095-2025-10-17))
+- **@entur/form:** `^8.4.0` → `^8.4.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#841-2025-10-17))
+- **@entur/loader:** `^0.5.33` → `^0.5.34` ([changelog](https://github.com/entur/design-system/blob/main/packages/loader/CHANGELOG.md#0534-2025-10-17))
+- **@entur/tooltip:** `^5.2.15` → `^5.2.16` ([changelog](https://github.com/entur/design-system/blob/main/packages/tooltip/CHANGELOG.md#5216-2025-10-17))
 
 ## [7.3.8](https://github.com/entur/design-system/compare/@entur/dropdown@7.3.7...@entur/dropdown@7.3.8) (2025-09-30)
 
@@ -230,7 +368,12 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [7.3.7](https://github.com/entur/design-system/compare/@entur/dropdown@7.3.6...@entur/dropdown@7.3.7) (2025-09-24)
 
-**Note:** Version bump only for package @entur/dropdown
+### Entur Dependency Updates
+
+- **@entur/button:** `^3.3.14` → `^3.3.15` ([changelog](https://github.com/entur/design-system/blob/main/packages/button/CHANGELOG.md#3315-2025-09-24))
+- **@entur/chip:** `^0.9.2` → `^0.9.3` ([changelog](https://github.com/entur/design-system/blob/main/packages/chip/CHANGELOG.md#093-2025-09-24))
+- **@entur/form:** `^8.3.3` → `^8.3.4` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#834-2025-09-24))
+- **@entur/loader:** `^0.5.31` → `^0.5.32` ([changelog](https://github.com/entur/design-system/blob/main/packages/loader/CHANGELOG.md#0532-2025-09-24))
 
 ## [7.3.6](https://github.com/entur/design-system/compare/@entur/dropdown@7.3.5...@entur/dropdown@7.3.6) (2025-09-08)
 
@@ -298,11 +441,25 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [7.2.1](https://github.com/entur/design-system/compare/@entur/dropdown@7.2.0...@entur/dropdown@7.2.1) (2025-06-17)
 
-**Note:** Version bump only for package @entur/dropdown
+### Entur Dependency Updates
+
+- **@entur/button:** `^3.3.10` → `^3.3.11` ([changelog](https://github.com/entur/design-system/blob/main/packages/button/CHANGELOG.md#3311-2025-06-17))
+- **@entur/chip:** `^0.8.10` → `^0.8.11` ([changelog](https://github.com/entur/design-system/blob/main/packages/chip/CHANGELOG.md#0811-2025-06-17))
+- **@entur/form:** `^8.2.10` → `^8.2.11` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#8211-2025-06-17))
+- **@entur/icons:** `^7.13.0` → `^7.14.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#7140-2025-06-17))
+- **@entur/loader:** `^0.5.27` → `^0.5.28` ([changelog](https://github.com/entur/design-system/blob/main/packages/loader/CHANGELOG.md#0528-2025-06-17))
+- **@entur/tooltip:** `^5.2.10` → `^5.2.11` ([changelog](https://github.com/entur/design-system/blob/main/packages/tooltip/CHANGELOG.md#5211-2025-06-17))
 
 # [7.2.0](https://github.com/entur/design-system/compare/@entur/dropdown@7.2.0-beta.0...@entur/dropdown@7.2.0) (2025-06-06)
 
-**Note:** Version bump only for package @entur/dropdown
+### Entur Dependency Updates
+
+- **@entur/button:** `^3.3.10-beta.0` → `^3.3.10` ([changelog](https://github.com/entur/design-system/blob/main/packages/button/CHANGELOG.md#3310-2025-06-06))
+- **@entur/chip:** `^0.8.10-beta.0` → `^0.8.10` ([changelog](https://github.com/entur/design-system/blob/main/packages/chip/CHANGELOG.md#0810-2025-06-06))
+- **@entur/form:** `^8.2.10-beta.0` → `^8.2.10` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#8210-2025-06-06))
+- **@entur/icons:** `^7.13.0-beta.0` → `^7.13.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#7130-2025-06-06))
+- **@entur/loader:** `^0.5.27-beta.0` → `^0.5.27` ([changelog](https://github.com/entur/design-system/blob/main/packages/loader/CHANGELOG.md#0527-2025-06-06))
+- **@entur/tooltip:** `^5.2.10-beta.0` → `^5.2.10` ([changelog](https://github.com/entur/design-system/blob/main/packages/tooltip/CHANGELOG.md#5210-2025-06-06))
 
 # [7.2.0-beta.0](https://github.com/entur/design-system/compare/@entur/dropdown@7.1.5...@entur/dropdown@7.2.0-beta.0) (2025-06-06)
 
@@ -318,19 +475,49 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [7.1.5](https://github.com/entur/design-system/compare/@entur/dropdown@7.1.4...@entur/dropdown@7.1.5) (2025-05-22)
 
-**Note:** Version bump only for package @entur/dropdown
+### Entur Dependency Updates
+
+- **@entur/a11y:** `^0.2.98` → `^0.2.99` ([changelog](https://github.com/entur/design-system/blob/main/packages/a11y/CHANGELOG.md#0299-2025-05-22))
+- **@entur/button:** `^3.3.8` → `^3.3.9` ([changelog](https://github.com/entur/design-system/blob/main/packages/button/CHANGELOG.md#339-2025-05-22))
+- **@entur/chip:** `^0.8.8` → `^0.8.9` ([changelog](https://github.com/entur/design-system/blob/main/packages/chip/CHANGELOG.md#089-2025-05-22))
+- **@entur/form:** `^8.2.8` → `^8.2.9` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#829-2025-05-22))
+- **@entur/icons:** `^7.11.1` → `^7.12.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#7120-2025-05-22))
+- **@entur/loader:** `^0.5.25` → `^0.5.26` ([changelog](https://github.com/entur/design-system/blob/main/packages/loader/CHANGELOG.md#0526-2025-05-22))
+- **@entur/tokens:** `^3.19.0` → `^3.19.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3191-2025-05-22))
+- **@entur/tooltip:** `^5.2.8` → `^5.2.9` ([changelog](https://github.com/entur/design-system/blob/main/packages/tooltip/CHANGELOG.md#529-2025-05-22))
 
 ## [7.1.4](https://github.com/entur/design-system/compare/@entur/dropdown@7.1.3...@entur/dropdown@7.1.4) (2025-04-29)
 
-**Note:** Version bump only for package @entur/dropdown
+### Entur Dependency Updates
+
+- **@entur/button:** `^3.3.7` → `^3.3.8` ([changelog](https://github.com/entur/design-system/blob/main/packages/button/CHANGELOG.md#338-2025-04-29))
+- **@entur/chip:** `^0.8.7` → `^0.8.8` ([changelog](https://github.com/entur/design-system/blob/main/packages/chip/CHANGELOG.md#088-2025-04-29))
+- **@entur/form:** `^8.2.7` → `^8.2.8` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#828-2025-04-29))
+- **@entur/icons:** `^7.11.0` → `^7.11.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#7111-2025-04-29))
+- **@entur/loader:** `^0.5.24` → `^0.5.25` ([changelog](https://github.com/entur/design-system/blob/main/packages/loader/CHANGELOG.md#0525-2025-04-29))
+- **@entur/tooltip:** `^5.2.7` → `^5.2.8` ([changelog](https://github.com/entur/design-system/blob/main/packages/tooltip/CHANGELOG.md#528-2025-04-29))
 
 ## [7.1.3](https://github.com/entur/design-system/compare/@entur/dropdown@7.1.2...@entur/dropdown@7.1.3) (2025-04-29)
 
-**Note:** Version bump only for package @entur/dropdown
+### Entur Dependency Updates
+
+- **@entur/button:** `^3.3.6` → `^3.3.7` ([changelog](https://github.com/entur/design-system/blob/main/packages/button/CHANGELOG.md#337-2025-04-29))
+- **@entur/chip:** `^0.8.6` → `^0.8.7` ([changelog](https://github.com/entur/design-system/blob/main/packages/chip/CHANGELOG.md#087-2025-04-29))
+- **@entur/form:** `^8.2.6` → `^8.2.7` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#827-2025-04-29))
+- **@entur/icons:** `^7.10.0` → `^7.11.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#7110-2025-04-29))
+- **@entur/loader:** `^0.5.23` → `^0.5.24` ([changelog](https://github.com/entur/design-system/blob/main/packages/loader/CHANGELOG.md#0524-2025-04-29))
+- **@entur/tooltip:** `^5.2.6` → `^5.2.7` ([changelog](https://github.com/entur/design-system/blob/main/packages/tooltip/CHANGELOG.md#527-2025-04-29))
 
 ## [7.1.2](https://github.com/entur/design-system/compare/@entur/dropdown@7.1.1...@entur/dropdown@7.1.2) (2025-04-23)
 
-**Note:** Version bump only for package @entur/dropdown
+### Entur Dependency Updates
+
+- **@entur/button:** `^3.3.5` → `^3.3.6` ([changelog](https://github.com/entur/design-system/blob/main/packages/button/CHANGELOG.md#336-2025-04-23))
+- **@entur/chip:** `^0.8.5` → `^0.8.6` ([changelog](https://github.com/entur/design-system/blob/main/packages/chip/CHANGELOG.md#086-2025-04-23))
+- **@entur/form:** `^8.2.5` → `^8.2.6` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#826-2025-04-23))
+- **@entur/icons:** `^7.9.0` → `^7.10.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#7100-2025-04-23))
+- **@entur/loader:** `^0.5.22` → `^0.5.23` ([changelog](https://github.com/entur/design-system/blob/main/packages/loader/CHANGELOG.md#0523-2025-04-23))
+- **@entur/tooltip:** `^5.2.5` → `^5.2.6` ([changelog](https://github.com/entur/design-system/blob/main/packages/tooltip/CHANGELOG.md#526-2025-04-23))
 
 ## [7.1.1](https://github.com/entur/design-system/compare/@entur/dropdown@7.1.0...@entur/dropdown@7.1.1) (2025-04-11)
 
@@ -362,7 +549,14 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [7.0.2](https://github.com/entur/design-system/compare/@entur/dropdown@7.0.1...@entur/dropdown@7.0.2) (2025-02-25)
 
-**Note:** Version bump only for package @entur/dropdown
+### Entur Dependency Updates
+
+- **@entur/button:** `^3.3.1` → `^3.3.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/button/CHANGELOG.md#332-2025-02-25))
+- **@entur/chip:** `^0.8.1` → `^0.8.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/chip/CHANGELOG.md#082-2025-02-25))
+- **@entur/form:** `^8.2.1` → `^8.2.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#822-2025-02-25))
+- **@entur/icons:** `^7.6.1` → `^7.7.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#770-2025-02-25))
+- **@entur/loader:** `^0.5.18` → `^0.5.19` ([changelog](https://github.com/entur/design-system/blob/main/packages/loader/CHANGELOG.md#0519-2025-02-25))
+- **@entur/tooltip:** `^5.2.1` → `^5.2.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/tooltip/CHANGELOG.md#522-2025-02-25))
 
 ## [7.0.1](https://github.com/entur/design-system/compare/@entur/dropdown@6.1.0...@entur/dropdown@7.0.1) (2025-02-20)
 
@@ -392,7 +586,16 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [6.0.14](https://github.com/entur/design-system/compare/@entur/dropdown@6.0.13...@entur/dropdown@6.0.14) (2025-01-15)
 
-**Note:** Version bump only for package @entur/dropdown
+### Entur Dependency Updates
+
+- **@entur/a11y:** `^0.2.94` → `^0.2.95` ([changelog](https://github.com/entur/design-system/blob/main/packages/a11y/CHANGELOG.md#0295-2025-01-15))
+- **@entur/button:** `^3.2.37` → `^3.2.38` ([changelog](https://github.com/entur/design-system/blob/main/packages/button/CHANGELOG.md#3238-2025-01-15))
+- **@entur/chip:** `^0.7.27` → `^0.7.28` ([changelog](https://github.com/entur/design-system/blob/main/packages/chip/CHANGELOG.md#0728-2025-01-15))
+- **@entur/form:** `^8.1.9` → `^8.1.10` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#8110-2025-01-15))
+- **@entur/icons:** `^7.5.1` → `^7.6.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#760-2025-01-15))
+- **@entur/loader:** `^0.5.15` → `^0.5.16` ([changelog](https://github.com/entur/design-system/blob/main/packages/loader/CHANGELOG.md#0516-2025-01-15))
+- **@entur/tokens:** `^3.17.4` → `^3.17.5` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3175-2025-01-15))
+- **@entur/tooltip:** `^5.1.5` → `^5.1.6` ([changelog](https://github.com/entur/design-system/blob/main/packages/tooltip/CHANGELOG.md#516-2025-01-15))
 
 ## [6.0.13](https://github.com/entur/design-system/compare/@entur/dropdown@6.0.13-RC.0...@entur/dropdown@6.0.13) (2025-01-14)
 
@@ -926,10 +1129,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 **Note:** Version bump only for package @entur/dropdown
 
 ## [3.0.31](https://github.com/entur/design-system/compare/@entur/dropdown@3.0.28...@entur/dropdown@3.0.31) (2023-02-17)
-
-**Note:** Version bump only for package @entur/dropdown
-
-## [3.0.30](https://github.com/entur/design-system/compare/@entur/dropdown@3.0.28...@entur/dropdown@3.0.30) (2023-02-15)
 
 **Note:** Version bump only for package @entur/dropdown
 

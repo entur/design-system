@@ -1,23 +1,33 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
 ## [0.3.4](https://github.com/entur/design-system/compare/@entur/a11y@0.3.3...@entur/a11y@0.3.4) (2026-09-08)
 
-**Note:** Version bump only for package @entur/a11y
+### Entur Dependency Updates
+
+- **@entur/tokens:** `^4.1.0` → `^4.1.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#411-2026-09-08))
+- **@entur/utils:** `^0.15.0` → `^0.15.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/utils/CHANGELOG.md#0151-2026-09-08))
 
 ## [0.3.3](https://github.com/entur/design-system/compare/@entur/a11y@0.3.2...@entur/a11y@0.3.3) (2026-08-28)
 
-**Note:** Version bump only for package @entur/a11y
+### Entur Dependency Updates
+
+- **@entur/tokens:** `^4.0.1` → `^4.1.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#410-2026-08-28))
 
 ## [0.3.2](https://github.com/entur/design-system/compare/@entur/a11y@0.3.1...@entur/a11y@0.3.2) (2026-08-13)
 
-**Note:** Version bump only for package @entur/a11y
+### Entur Dependency Updates
+
+- **@entur/utils:** `^0.14.1` → `^0.15.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/utils/CHANGELOG.md#0150-2026-08-13))
 
 ## [0.3.1](https://github.com/entur/design-system/compare/@entur/a11y@0.3.0...@entur/a11y@0.3.1) (2026-08-06)
 
-**Note:** Version bump only for package @entur/a11y
+### Entur Dependency Updates
+
+- **@entur/tokens:** `^4.0.0` → `^4.0.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#401-2026-08-06))
+- **@entur/utils:** `^0.14.0` → `^0.14.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/utils/CHANGELOG.md#0141-2026-08-06))
 
 # [0.3.0](https://github.com/entur/design-system/compare/@entur/a11y@0.2.113...@entur/a11y@0.3.0) (2026-07-30)
 
@@ -46,43 +56,69 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [0.2.113](https://github.com/entur/design-system/compare/@entur/a11y@0.2.112...@entur/a11y@0.2.113) (2026-07-03)
 
-**Note:** Version bump only for package @entur/a11y
+### Entur Dependency Updates
+
+- **@entur/utils:** `^0.13.5` → `^0.13.6` ([changelog](https://github.com/entur/design-system/blob/main/packages/utils/CHANGELOG.md#0136-2026-07-03))
 
 ## [0.2.112](https://github.com/entur/design-system/compare/@entur/a11y@0.2.111...@entur/a11y@0.2.112) (2026-06-22)
 
-**Note:** Version bump only for package @entur/a11y
+### Entur Dependency Updates
+
+- **@entur/tokens:** `^3.23.0` → `^3.24.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3240-2026-06-22))
 
 ## [0.2.111](https://github.com/entur/design-system/compare/@entur/a11y@0.2.109...@entur/a11y@0.2.111) (2026-06-05)
 
-**Note:** Version bump only for package @entur/a11y
+### Entur Dependency Updates
+
+- **@entur/tokens:** `^3.22.5` → `^3.23.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3230-2026-06-05))
+- **@entur/utils:** `^0.13.4` → `^0.13.5` ([changelog](https://github.com/entur/design-system/blob/main/packages/utils/CHANGELOG.md#0135-2026-06-05))
 
 ## [0.2.110](https://github.com/entur/design-system/compare/@entur/a11y@0.2.109...@entur/a11y@0.2.110) (2026-05-13)
 
-**Note:** Version bump only for package @entur/a11y
+### Entur Dependency Updates
+
+- **@entur/tokens:** `^3.22.3` → `^3.22.5` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3225-2026-05-13))
+- **@entur/utils:** `^0.13.2` → `^0.13.4` ([changelog](https://github.com/entur/design-system/blob/main/packages/utils/CHANGELOG.md#0134-2026-05-13))
 
 ## [0.2.108](https://github.com/entur/design-system/compare/@entur/a11y@0.2.107...@entur/a11y@0.2.108) (2026-03-16)
 
-**Note:** Version bump only for package @entur/a11y
+### Entur Dependency Updates
+
+- **@entur/tokens:** `^3.22.2` → `^3.22.3` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3223-2026-03-16))
+- **@entur/utils:** `^0.13.1` → `^0.13.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/utils/CHANGELOG.md#0132-2026-03-16))
 
 ## [0.2.107](https://github.com/entur/design-system/compare/@entur/a11y@0.2.106...@entur/a11y@0.2.107) (2026-02-20)
 
-**Note:** Version bump only for package @entur/a11y
+### Entur Dependency Updates
+
+- **@entur/tokens:** `^3.22.1` → `^3.22.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3222-2026-02-20))
 
 ## [0.2.106](https://github.com/entur/design-system/compare/@entur/a11y@0.2.105...@entur/a11y@0.2.106) (2026-01-28)
 
-**Note:** Version bump only for package @entur/a11y
+### Entur Dependency Updates
+
+- **@entur/tokens:** `^3.22.0` → `^3.22.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3221-2026-01-28))
 
 ## [0.2.105](https://github.com/entur/design-system/compare/@entur/a11y@0.2.104...@entur/a11y@0.2.105) (2026-01-23)
 
-**Note:** Version bump only for package @entur/a11y
+### Entur Dependency Updates
+
+- **@entur/tokens:** `^3.21.0` → `^3.22.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3220-2026-01-23))
+- **@entur/utils:** `^0.13.0` → `^0.13.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/utils/CHANGELOG.md))
 
 ## [0.2.103](https://github.com/entur/design-system/compare/@entur/a11y@0.2.102...@entur/a11y@0.2.103) (2025-12-05)
 
-**Note:** Version bump only for package @entur/a11y
+### Entur Dependency Updates
+
+- **@entur/tokens:** `^3.20.0` → `^3.21.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3210-2025-12-05))
+- **@entur/utils:** `^0.12.5` → `^0.13.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/utils/CHANGELOG.md#0130-2025-12-05))
 
 ## [0.2.102](https://github.com/entur/design-system/compare/@entur/a11y@0.2.101...@entur/a11y@0.2.102) (2025-09-30)
 
-**Note:** Version bump only for package @entur/a11y
+### Entur Dependency Updates
+
+- **@entur/tokens:** `^3.19.2` → `^3.20.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3200-2025-09-30))
+- **@entur/utils:** `^0.12.4` → `^0.12.5` ([changelog](https://github.com/entur/design-system/blob/main/packages/utils/CHANGELOG.md))
 
 ## [0.2.100](https://github.com/entur/design-system/compare/@entur/a11y@0.2.99...@entur/a11y@0.2.100) (2025-08-29)
 
@@ -95,31 +131,48 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [0.2.99](https://github.com/entur/design-system/compare/@entur/a11y@0.2.98...@entur/a11y@0.2.99) (2025-05-22)
 
-**Note:** Version bump only for package @entur/a11y
+### Entur Dependency Updates
+
+- **@entur/tokens:** `^3.19.0` → `^3.19.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3191-2025-05-22))
 
 ## [0.2.98](https://github.com/entur/design-system/compare/@entur/a11y@0.2.97...@entur/a11y@0.2.98) (2025-03-24)
 
-**Note:** Version bump only for package @entur/a11y
+### Entur Dependency Updates
+
+- **@entur/tokens:** `^3.18.0` → `^3.19.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3190-2025-03-24))
+- **@entur/utils:** `^0.12.2` → `^0.12.3` ([changelog](https://github.com/entur/design-system/blob/main/packages/utils/CHANGELOG.md#0123-2025-03-24))
 
 ## [0.2.97](https://github.com/entur/design-system/compare/@entur/a11y@0.2.96...@entur/a11y@0.2.97) (2025-03-05)
 
-**Note:** Version bump only for package @entur/a11y
+### Entur Dependency Updates
+
+- **@entur/tokens:** `^3.17.6` → `^3.18.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3180-2025-03-05))
 
 ## [0.2.96](https://github.com/entur/design-system/compare/@entur/a11y@0.2.95...@entur/a11y@0.2.96) (2025-02-20)
 
-**Note:** Version bump only for package @entur/a11y
+### Entur Dependency Updates
+
+- **@entur/tokens:** `^3.17.5` → `^3.17.6` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3176-2025-02-20))
 
 ## [0.2.95](https://github.com/entur/design-system/compare/@entur/a11y@0.2.94...@entur/a11y@0.2.95) (2025-01-15)
 
-**Note:** Version bump only for package @entur/a11y
+### Entur Dependency Updates
+
+- **@entur/tokens:** `^3.17.4` → `^3.17.5` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3175-2025-01-15))
 
 ## [0.2.94](https://github.com/entur/design-system/compare/@entur/a11y@0.2.94-RC.0...@entur/a11y@0.2.94) (2025-01-14)
 
-**Note:** Version bump only for package @entur/a11y
+### Entur Dependency Updates
+
+- **@entur/tokens:** `^3.17.4-RC.0` → `^3.17.4` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3174-2025-01-14))
+- **@entur/utils:** `^0.12.2-RC.0` → `^0.12.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/utils/CHANGELOG.md#0122-2025-01-14))
 
 ## [0.2.94-RC.0](https://github.com/entur/design-system/compare/@entur/a11y@0.2.93...@entur/a11y@0.2.94-RC.0) (2025-01-09)
 
-**Note:** Version bump only for package @entur/a11y
+### Entur Dependency Updates
+
+- **@entur/tokens:** `^3.17.3` → `^3.17.4-RC.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3174-rc0-2025-01-09))
+- **@entur/utils:** `^0.12.1` → `^0.12.2-RC.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/utils/CHANGELOG.md#0122-rc0-2025-01-09))
 
 ## [0.2.93](https://github.com/entur/design-system/compare/@entur/a11y@0.2.92...@entur/a11y@0.2.93) (2024-11-12)
 

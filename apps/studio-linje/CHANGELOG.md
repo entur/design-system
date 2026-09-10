@@ -1,31 +1,43 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
 ## [1.11.6](https://github.com/entur/design-system/compare/studio-linje@1.11.5...studio-linje@1.11.6) (2026-09-08)
 
-**Note:** Version bump only for package studio-linje
+### Dependency Updates
+
+- **@entur/icons:** `^10.0.3` → `^10.0.4` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#1004-2026-09-08))
 
 ## [1.11.5](https://github.com/entur/design-system/compare/studio-linje@1.11.4...studio-linje@1.11.5) (2026-08-28)
 
-**Note:** Version bump only for package studio-linje
+### Dependency Updates
+
+- **@entur/icons:** `^10.0.2` → `^10.0.3` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#1003-2026-08-28))
 
 ## [1.11.4](https://github.com/entur/design-system/compare/studio-linje@1.11.3...studio-linje@1.11.4) (2026-08-20)
 
-**Note:** Version bump only for package studio-linje
+### Dependency Updates
+
+- **@entur/icons:** `^10.0.1` → `^10.0.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#1002-2026-08-20))
 
 ## [1.11.3](https://github.com/entur/design-system/compare/studio-linje@1.11.2...studio-linje@1.11.3) (2026-08-06)
 
-**Note:** Version bump only for package studio-linje
+### Dependency Updates
+
+- **@entur/icons:** `^10.0.0` → `^10.0.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#1001-2026-08-06))
 
 ## [1.11.2](https://github.com/entur/design-system/compare/studio-linje@1.11.1...studio-linje@1.11.2) (2026-07-30)
 
-**Note:** Version bump only for package studio-linje
+### Dependency Updates
+
+- **@entur/icons:** `^9.0.4` → `^10.0.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#1000-2026-07-30))
 
 ## [1.11.1](https://github.com/entur/design-system/compare/studio-linje@1.11.0...studio-linje@1.11.1) (2026-07-03)
 
-**Note:** Version bump only for package studio-linje
+### Dependency Updates
+
+- **@entur/icons:** `^9.0.3` → `^9.0.4` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#904-2026-07-03))
 
 # [1.11.0](https://github.com/entur/design-system/compare/studio-linje@1.10.3...studio-linje@1.11.0) (2026-06-22)
 
@@ -39,11 +51,15 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [1.10.4](https://github.com/entur/design-system/compare/studio-linje@1.10.3...studio-linje@1.10.4) (2026-06-08)
 
-**Note:** Version bump only for package studio-linje
+### Dependency Updates
+
+- **@entur/icons:** `^9.0.1` → `^10.0.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#1000-2026-07-30))
 
 ## [1.10.3](https://github.com/entur/design-system/compare/studio-linje@1.10.2...studio-linje@1.10.3) (2026-06-08)
 
-**Note:** Version bump only for package studio-linje
+### Dependency Updates
+
+- **@entur/icons:** `^9.0.0` → `^9.0.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#901-2026-06-08))
 
 ## [1.10.2](https://github.com/entur/design-system/compare/studio-linje@1.10.0...studio-linje@1.10.2) (2026-06-05)
 
@@ -78,7 +94,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [1.9.1](https://github.com/entur/design-system/compare/studio-linje@1.9.0...studio-linje@1.9.1) (2026-02-20)
 
-**Note:** Version bump only for package studio-linje
+### Dependency Updates
+
+- **@entur/icons:** `^8.4.2` → `^8.4.3` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#843-2026-02-20))
 
 # [1.9.0](https://github.com/entur/design-system/compare/studio-linje@1.8.3...studio-linje@1.9.0) (2026-02-05)
 
@@ -88,7 +106,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [1.8.3](https://github.com/entur/design-system/compare/studio-linje@1.8.2...studio-linje@1.8.3) (2026-01-28)
 
-**Note:** Version bump only for package studio-linje
+### Dependency Updates
+
+- **@entur/icons:** `^8.4.1` → `^8.4.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#842-2026-01-28))
 
 ## [1.8.2](https://github.com/entur/design-system/compare/studio-linje@1.8.1...studio-linje@1.8.2) (2026-01-23)
 

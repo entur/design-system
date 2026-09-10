@@ -1,23 +1,38 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
 ## [4.0.5](https://github.com/entur/design-system/compare/@entur/expand@4.0.4...@entur/expand@4.0.5) (2026-09-08)
 
-**Note:** Version bump only for package @entur/expand
+### Entur Dependency Updates
+
+- **@entur/icons:** `^10.0.3` → `^10.0.4` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#1004-2026-09-08))
+- **@entur/tokens:** `^4.1.0` → `^4.1.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#411-2026-09-08))
+- **@entur/typography:** `^3.0.4` → `^3.0.5` ([changelog](https://github.com/entur/design-system/blob/main/packages/typography/CHANGELOG.md#305-2026-09-08))
+- **@entur/utils:** `^0.15.0` → `^0.15.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/utils/CHANGELOG.md#0151-2026-09-08))
 
 ## [4.0.4](https://github.com/entur/design-system/compare/@entur/expand@4.0.3...@entur/expand@4.0.4) (2026-08-28)
 
-**Note:** Version bump only for package @entur/expand
+### Entur Dependency Updates
+
+- **@entur/icons:** `^10.0.2` → `^10.0.3` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#1003-2026-08-28))
+- **@entur/tokens:** `^4.0.1` → `^4.1.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#410-2026-08-28))
+- **@entur/typography:** `^3.0.3` → `^3.0.4` ([changelog](https://github.com/entur/design-system/blob/main/packages/typography/CHANGELOG.md#304-2026-08-28))
 
 ## [4.0.3](https://github.com/entur/design-system/compare/@entur/expand@4.0.2...@entur/expand@4.0.3) (2026-08-20)
 
-**Note:** Version bump only for package @entur/expand
+### Entur Dependency Updates
+
+- **@entur/icons:** `^10.0.1` → `^10.0.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#1002-2026-08-20))
+- **@entur/typography:** `^3.0.2` → `^3.0.3` ([changelog](https://github.com/entur/design-system/blob/main/packages/typography/CHANGELOG.md#303-2026-08-20))
 
 ## [4.0.2](https://github.com/entur/design-system/compare/@entur/expand@4.0.1...@entur/expand@4.0.2) (2026-08-13)
 
-**Note:** Version bump only for package @entur/expand
+### Entur Dependency Updates
+
+- **@entur/typography:** `^3.0.1` → `^3.0.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/typography/CHANGELOG.md#302-2026-08-13))
+- **@entur/utils:** `^0.14.1` → `^0.15.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/utils/CHANGELOG.md#0150-2026-08-13))
 
 ## [4.0.1](https://github.com/entur/design-system/compare/@entur/expand@4.0.0...@entur/expand@4.0.1) (2026-08-06)
 
@@ -128,43 +143,85 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [3.7.12](https://github.com/entur/design-system/compare/@entur/expand@3.7.11...@entur/expand@3.7.12) (2026-07-03)
 
-**Note:** Version bump only for package @entur/expand
+### Entur Dependency Updates
+
+- **@entur/icons:** `^9.0.3` → `^9.0.4` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#904-2026-07-03))
+- **@entur/typography:** `^2.1.11` → `^2.1.12` ([changelog](https://github.com/entur/design-system/blob/main/packages/typography/CHANGELOG.md#2112-2026-07-03))
+- **@entur/utils:** `^0.13.5` → `^0.13.6` ([changelog](https://github.com/entur/design-system/blob/main/packages/utils/CHANGELOG.md#0136-2026-07-03))
 
 ## [3.7.11](https://github.com/entur/design-system/compare/@entur/expand@3.7.9...@entur/expand@3.7.11) (2026-06-22)
 
-**Note:** Version bump only for package @entur/expand
+### Entur Dependency Updates
+
+- **@entur/icons:** `^9.0.2` → `^9.0.3` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#903-2026-06-22))
+- **@entur/tokens:** `^3.23.0` → `^3.24.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3240-2026-06-22))
+- **@entur/typography:** `^2.1.10` → `^2.1.11` ([changelog](https://github.com/entur/design-system/blob/main/packages/typography/CHANGELOG.md#2111-2026-06-22))
 
 ## [3.7.10](https://github.com/entur/design-system/compare/@entur/expand@3.7.9...@entur/expand@3.7.10) (2026-06-08)
 
-**Note:** Version bump only for package @entur/expand
+### Entur Dependency Updates
+
+- **@entur/icons:** `^9.0.1` → `^9.0.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#902-2026-06-08))
+- **@entur/typography:** `^2.1.9` → `^2.1.10` ([changelog](https://github.com/entur/design-system/blob/main/packages/typography/CHANGELOG.md#2110-2026-06-08))
 
 ## [3.7.9](https://github.com/entur/design-system/compare/@entur/expand@3.7.8...@entur/expand@3.7.9) (2026-06-08)
 
-**Note:** Version bump only for package @entur/expand
+### Entur Dependency Updates
+
+- **@entur/icons:** `^9.0.0` → `^9.0.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#901-2026-06-08))
+- **@entur/typography:** `^2.1.8` → `^2.1.9` ([changelog](https://github.com/entur/design-system/blob/main/packages/typography/CHANGELOG.md#219-2026-06-08))
 
 ## [3.7.8](https://github.com/entur/design-system/compare/@entur/expand@3.7.6...@entur/expand@3.7.8) (2026-06-05)
 
-**Note:** Version bump only for package @entur/expand
+### Entur Dependency Updates
+
+- **@entur/icons:** `^8.4.6` → `^9.0.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#900-2026-06-05))
+- **@entur/tokens:** `^3.22.5` → `^3.23.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3230-2026-06-05))
+- **@entur/typography:** `^2.1.7` → `^2.1.8` ([changelog](https://github.com/entur/design-system/blob/main/packages/typography/CHANGELOG.md#218-2026-06-05))
+- **@entur/utils:** `^0.13.4` → `^0.13.5` ([changelog](https://github.com/entur/design-system/blob/main/packages/utils/CHANGELOG.md#0135-2026-06-05))
 
 ## [3.7.7](https://github.com/entur/design-system/compare/@entur/expand@3.7.6...@entur/expand@3.7.7) (2026-05-13)
 
-**Note:** Version bump only for package @entur/expand
+### Entur Dependency Updates
+
+- **@entur/icons:** `^8.4.4` → `^8.4.6` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#846-2026-05-13))
+- **@entur/tokens:** `^3.22.3` → `^3.22.5` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3225-2026-05-13))
+- **@entur/typography:** `^2.1.5` → `^2.1.7` ([changelog](https://github.com/entur/design-system/blob/main/packages/typography/CHANGELOG.md#217-2026-05-13))
+- **@entur/utils:** `^0.13.2` → `^0.13.4` ([changelog](https://github.com/entur/design-system/blob/main/packages/utils/CHANGELOG.md#0134-2026-05-13))
 
 ## [3.7.5](https://github.com/entur/design-system/compare/@entur/expand@3.7.4...@entur/expand@3.7.5) (2026-03-16)
 
-**Note:** Version bump only for package @entur/expand
+### Entur Dependency Updates
+
+- **@entur/icons:** `^8.4.3` → `^8.4.4` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#844-2026-03-16))
+- **@entur/tokens:** `^3.22.2` → `^3.22.3` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3223-2026-03-16))
+- **@entur/typography:** `^2.1.4` → `^2.1.5` ([changelog](https://github.com/entur/design-system/blob/main/packages/typography/CHANGELOG.md#215-2026-03-16))
+- **@entur/utils:** `^0.13.1` → `^0.13.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/utils/CHANGELOG.md#0132-2026-03-16))
 
 ## [3.7.4](https://github.com/entur/design-system/compare/@entur/expand@3.7.3...@entur/expand@3.7.4) (2026-02-20)
 
-**Note:** Version bump only for package @entur/expand
+### Entur Dependency Updates
+
+- **@entur/icons:** `^8.4.2` → `^8.4.3` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#843-2026-02-20))
+- **@entur/tokens:** `^3.22.1` → `^3.22.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3222-2026-02-20))
+- **@entur/typography:** `^2.1.3` → `^2.1.4` ([changelog](https://github.com/entur/design-system/blob/main/packages/typography/CHANGELOG.md#214-2026-02-20))
 
 ## [3.7.3](https://github.com/entur/design-system/compare/@entur/expand@3.7.2...@entur/expand@3.7.3) (2026-01-28)
 
-**Note:** Version bump only for package @entur/expand
+### Entur Dependency Updates
+
+- **@entur/icons:** `^8.4.1` → `^8.4.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#842-2026-01-28))
+- **@entur/tokens:** `^3.22.0` → `^3.22.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3221-2026-01-28))
+- **@entur/typography:** `^2.1.2` → `^2.1.3` ([changelog](https://github.com/entur/design-system/blob/main/packages/typography/CHANGELOG.md#213-2026-01-28))
 
 ## [3.7.2](https://github.com/entur/design-system/compare/@entur/expand@3.7.1...@entur/expand@3.7.2) (2026-01-23)
 
-**Note:** Version bump only for package @entur/expand
+### Entur Dependency Updates
+
+- **@entur/icons:** `^8.3.1` → `^8.4.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#841-2026-01-23))
+- **@entur/tokens:** `^3.21.0` → `^3.22.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3220-2026-01-23))
+- **@entur/typography:** `^2.1.0` → `^2.1.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/typography/CHANGELOG.md#212-2026-01-23))
+- **@entur/utils:** `^0.13.0` → `^0.13.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/utils/CHANGELOG.md))
 
 # [3.7.0](https://github.com/entur/design-system/compare/@entur/expand@3.6.19...@entur/expand@3.7.0) (2025-12-05)
 
@@ -174,23 +231,40 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [3.6.19](https://github.com/entur/design-system/compare/@entur/expand@3.6.18...@entur/expand@3.6.19) (2025-11-24)
 
-**Note:** Version bump only for package @entur/expand
+### Entur Dependency Updates
+
+- **@entur/icons:** `^8.2.0` → `^8.3.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#830-2025-11-24))
+- **@entur/typography:** `^2.0.3` → `^2.0.4` ([changelog](https://github.com/entur/design-system/blob/main/packages/typography/CHANGELOG.md#204-2025-11-24))
 
 ## [3.6.18](https://github.com/entur/design-system/compare/@entur/expand@3.6.17...@entur/expand@3.6.18) (2025-10-20)
 
-**Note:** Version bump only for package @entur/expand
+### Entur Dependency Updates
+
+- **@entur/icons:** `^8.1.0` → `^8.2.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#820-2025-10-20))
+- **@entur/typography:** `^2.0.2` → `^2.0.3` ([changelog](https://github.com/entur/design-system/blob/main/packages/typography/CHANGELOG.md#203-2025-10-20))
 
 ## [3.6.17](https://github.com/entur/design-system/compare/@entur/expand@3.6.16...@entur/expand@3.6.17) (2025-10-17)
 
-**Note:** Version bump only for package @entur/expand
+### Entur Dependency Updates
+
+- **@entur/typography:** `^2.0.1` → `^2.0.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/typography/CHANGELOG.md#202-2025-10-17))
 
 ## [3.6.16](https://github.com/entur/design-system/compare/@entur/expand@3.6.15...@entur/expand@3.6.16) (2025-09-30)
 
-**Note:** Version bump only for package @entur/expand
+### Entur Dependency Updates
+
+- **@entur/icons:** `^8.0.2` → `^8.1.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#810-2025-09-30))
+- **@entur/tokens:** `^3.19.3` → `^3.20.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3200-2025-09-30))
+- **@entur/typography:** `^2.0.0` → `^2.0.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/typography/CHANGELOG.md#201-2025-09-30))
 
 ## [3.6.15](https://github.com/entur/design-system/compare/@entur/expand@3.6.14...@entur/expand@3.6.15) (2025-09-24)
 
-**Note:** Version bump only for package @entur/expand
+### Entur Dependency Updates
+
+- **@entur/icons:** `^8.0.1` → `^8.0.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md))
+- **@entur/tokens:** `^3.19.2` → `^3.19.3` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md))
+- **@entur/typography:** `^1.9.13` → `^2.0.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/typography/CHANGELOG.md#200-2025-09-24))
+- **@entur/utils:** `^0.12.4` → `^0.12.5` ([changelog](https://github.com/entur/design-system/blob/main/packages/utils/CHANGELOG.md))
 
 ## [3.6.13](https://github.com/entur/design-system/compare/@entur/expand@3.6.12...@entur/expand@3.6.13) (2025-08-29)
 
@@ -207,55 +281,99 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [3.6.12](https://github.com/entur/design-system/compare/@entur/expand@3.6.11...@entur/expand@3.6.12) (2025-06-27)
 
-**Note:** Version bump only for package @entur/expand
+### Entur Dependency Updates
+
+- **@entur/icons:** `^7.14.0` → `^8.0.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#800-2025-06-27))
+- **@entur/typography:** `^1.9.11` → `^1.9.12` ([changelog](https://github.com/entur/design-system/blob/main/packages/typography/CHANGELOG.md#1912-2025-06-27))
 
 ## [3.6.11](https://github.com/entur/design-system/compare/@entur/expand@3.6.10...@entur/expand@3.6.11) (2025-06-17)
 
-**Note:** Version bump only for package @entur/expand
+### Entur Dependency Updates
+
+- **@entur/icons:** `^7.13.0` → `^7.14.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#7140-2025-06-17))
+- **@entur/typography:** `^1.9.10` → `^1.9.11` ([changelog](https://github.com/entur/design-system/blob/main/packages/typography/CHANGELOG.md#1911-2025-06-17))
 
 ## [3.6.10](https://github.com/entur/design-system/compare/@entur/expand@3.6.10-beta.0...@entur/expand@3.6.10) (2025-06-06)
 
-**Note:** Version bump only for package @entur/expand
+### Entur Dependency Updates
+
+- **@entur/icons:** `^7.13.0-beta.0` → `^7.13.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#7130-2025-06-06))
+- **@entur/typography:** `^1.9.10-beta.0` → `^1.9.10` ([changelog](https://github.com/entur/design-system/blob/main/packages/typography/CHANGELOG.md#1910-2025-06-06))
 
 ## [3.6.10-beta.0](https://github.com/entur/design-system/compare/@entur/expand@3.6.9...@entur/expand@3.6.10-beta.0) (2025-06-06)
 
-**Note:** Version bump only for package @entur/expand
+### Entur Dependency Updates
+
+- **@entur/icons:** `^7.12.0` → `^7.13.0-beta.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#7130-beta0-2025-06-06))
+- **@entur/typography:** `^1.9.9` → `^1.9.10-beta.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/typography/CHANGELOG.md#1910-beta0-2025-06-06))
 
 ## [3.6.9](https://github.com/entur/design-system/compare/@entur/expand@3.6.8...@entur/expand@3.6.9) (2025-05-22)
 
-**Note:** Version bump only for package @entur/expand
+### Entur Dependency Updates
+
+- **@entur/icons:** `^7.11.1` → `^7.12.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#7120-2025-05-22))
+- **@entur/tokens:** `^3.19.0` → `^3.19.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3191-2025-05-22))
+- **@entur/typography:** `^1.9.8` → `^1.9.9` ([changelog](https://github.com/entur/design-system/blob/main/packages/typography/CHANGELOG.md#199-2025-05-22))
 
 ## [3.6.8](https://github.com/entur/design-system/compare/@entur/expand@3.6.7...@entur/expand@3.6.8) (2025-04-29)
 
-**Note:** Version bump only for package @entur/expand
+### Entur Dependency Updates
+
+- **@entur/icons:** `^7.11.0` → `^7.11.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#7111-2025-04-29))
+- **@entur/typography:** `^1.9.7` → `^1.9.8` ([changelog](https://github.com/entur/design-system/blob/main/packages/typography/CHANGELOG.md#198-2025-04-29))
 
 ## [3.6.7](https://github.com/entur/design-system/compare/@entur/expand@3.6.6...@entur/expand@3.6.7) (2025-04-29)
 
-**Note:** Version bump only for package @entur/expand
+### Entur Dependency Updates
+
+- **@entur/icons:** `^7.10.0` → `^7.11.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#7110-2025-04-29))
+- **@entur/typography:** `^1.9.6` → `^1.9.7` ([changelog](https://github.com/entur/design-system/blob/main/packages/typography/CHANGELOG.md#197-2025-04-29))
 
 ## [3.6.6](https://github.com/entur/design-system/compare/@entur/expand@3.6.5...@entur/expand@3.6.6) (2025-04-23)
 
-**Note:** Version bump only for package @entur/expand
+### Entur Dependency Updates
+
+- **@entur/icons:** `^7.9.0` → `^7.10.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#7100-2025-04-23))
+- **@entur/typography:** `^1.9.5` → `^1.9.6` ([changelog](https://github.com/entur/design-system/blob/main/packages/typography/CHANGELOG.md#196-2025-04-23))
 
 ## [3.6.5](https://github.com/entur/design-system/compare/@entur/expand@3.6.4...@entur/expand@3.6.5) (2025-04-11)
 
-**Note:** Version bump only for package @entur/expand
+### Entur Dependency Updates
+
+- **@entur/icons:** `^7.8.0` → `^7.9.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#790-2025-04-11))
+- **@entur/typography:** `^1.9.4` → `^1.9.5` ([changelog](https://github.com/entur/design-system/blob/main/packages/typography/CHANGELOG.md#195-2025-04-11))
 
 ## [3.6.4](https://github.com/entur/design-system/compare/@entur/expand@3.6.3...@entur/expand@3.6.4) (2025-03-24)
 
-**Note:** Version bump only for package @entur/expand
+### Entur Dependency Updates
+
+- **@entur/icons:** `^7.7.1` → `^7.8.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#780-2025-03-24))
+- **@entur/tokens:** `^3.18.0` → `^3.19.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3190-2025-03-24))
+- **@entur/typography:** `^1.9.3` → `^1.9.4` ([changelog](https://github.com/entur/design-system/blob/main/packages/typography/CHANGELOG.md#194-2025-03-24))
+- **@entur/utils:** `^0.12.2` → `^0.12.3` ([changelog](https://github.com/entur/design-system/blob/main/packages/utils/CHANGELOG.md#0123-2025-03-24))
 
 ## [3.6.3](https://github.com/entur/design-system/compare/@entur/expand@3.6.2...@entur/expand@3.6.3) (2025-03-05)
 
-**Note:** Version bump only for package @entur/expand
+### Entur Dependency Updates
+
+- **@entur/icons:** `^7.7.0` → `^7.7.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#771-2025-03-05))
+- **@entur/tokens:** `^3.17.6` → `^3.18.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3180-2025-03-05))
+- **@entur/typography:** `^1.9.2` → `^1.9.3` ([changelog](https://github.com/entur/design-system/blob/main/packages/typography/CHANGELOG.md#193-2025-03-05))
 
 ## [3.6.2](https://github.com/entur/design-system/compare/@entur/expand@3.6.1...@entur/expand@3.6.2) (2025-02-25)
 
-**Note:** Version bump only for package @entur/expand
+### Entur Dependency Updates
+
+- **@entur/icons:** `^7.6.1` → `^7.7.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#770-2025-02-25))
+- **@entur/typography:** `^1.9.1` → `^1.9.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/typography/CHANGELOG.md#192-2025-02-25))
 
 ## [3.6.1](https://github.com/entur/design-system/compare/@entur/expand@3.6.0...@entur/expand@3.6.1) (2025-02-20)
 
-**Note:** Version bump only for package @entur/expand
+### Entur Dependency Updates
+
+- **@entur/icons:** `^7.6.0` → `^7.6.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#761-2025-02-20))
+- **@entur/tokens:** `^3.17.5` → `^3.17.6` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3176-2025-02-20))
+- **@entur/typography:** `^1.9.0` → `^1.9.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/typography/CHANGELOG.md#191-2025-02-20))
 
 # [3.6.0](https://github.com/entur/design-system/compare/@entur/expand@3.5.27...@entur/expand@3.6.0) (2025-01-24)
 
@@ -269,15 +387,29 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [3.5.27](https://github.com/entur/design-system/compare/@entur/expand@3.5.26...@entur/expand@3.5.27) (2025-01-15)
 
-**Note:** Version bump only for package @entur/expand
+### Entur Dependency Updates
+
+- **@entur/icons:** `^7.5.1` → `^7.6.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#760-2025-01-15))
+- **@entur/tokens:** `^3.17.4` → `^3.17.5` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3175-2025-01-15))
+- **@entur/typography:** `^1.8.50` → `^1.8.51` ([changelog](https://github.com/entur/design-system/blob/main/packages/typography/CHANGELOG.md#1851-2025-01-15))
 
 ## [3.5.26](https://github.com/entur/design-system/compare/@entur/expand@3.5.26-RC.0...@entur/expand@3.5.26) (2025-01-14)
 
-**Note:** Version bump only for package @entur/expand
+### Entur Dependency Updates
+
+- **@entur/icons:** `^7.5.1-RC.0` → `^7.5.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#751-2025-01-14))
+- **@entur/tokens:** `^3.17.4-RC.0` → `^3.17.4` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3174-2025-01-14))
+- **@entur/typography:** `^1.8.50-RC.0` → `^1.8.50` ([changelog](https://github.com/entur/design-system/blob/main/packages/typography/CHANGELOG.md#1850-2025-01-14))
+- **@entur/utils:** `^0.12.2-RC.0` → `^0.12.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/utils/CHANGELOG.md#0122-2025-01-14))
 
 ## [3.5.26-RC.0](https://github.com/entur/design-system/compare/@entur/expand@3.5.25...@entur/expand@3.5.26-RC.0) (2025-01-09)
 
-**Note:** Version bump only for package @entur/expand
+### Entur Dependency Updates
+
+- **@entur/icons:** `^7.5.0` → `^7.5.1-RC.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#751-rc0-2025-01-09))
+- **@entur/tokens:** `^3.17.3` → `^3.17.4-RC.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3174-rc0-2025-01-09))
+- **@entur/typography:** `^1.8.49` → `^1.8.50-RC.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/typography/CHANGELOG.md#1850-rc0-2025-01-09))
+- **@entur/utils:** `^0.12.1` → `^0.12.2-RC.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/utils/CHANGELOG.md#0122-rc0-2025-01-09))
 
 ## [3.5.25](https://github.com/entur/design-system/compare/@entur/expand@3.5.24...@entur/expand@3.5.25) (2024-11-20)
 

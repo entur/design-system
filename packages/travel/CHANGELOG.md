@@ -1,27 +1,52 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
 ## [8.0.5](https://github.com/entur/design-system/compare/@entur/travel@8.0.4...@entur/travel@8.0.5) (2026-09-08)
 
-**Note:** Version bump only for package @entur/travel
+### Entur Dependency Updates
+
+- **@entur/form:** `^10.1.1` → `^10.1.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#1012-2026-09-08))
+- **@entur/icons:** `^10.0.3` → `^10.0.4` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#1004-2026-09-08))
+- **@entur/layout:** `^4.0.4` → `^4.0.5` ([changelog](https://github.com/entur/design-system/blob/main/packages/layout/CHANGELOG.md#405-2026-09-08))
+- **@entur/tokens:** `^4.1.0` → `^4.1.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#411-2026-09-08))
+- **@entur/utils:** `^0.15.0` → `^0.15.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/utils/CHANGELOG.md#0151-2026-09-08))
 
 ## [8.0.4](https://github.com/entur/design-system/compare/@entur/travel@8.0.3...@entur/travel@8.0.4) (2026-08-28)
 
-**Note:** Version bump only for package @entur/travel
+### Entur Dependency Updates
+
+- **@entur/form:** `^10.1.0` → `^10.1.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#1011-2026-08-28))
+- **@entur/icons:** `^10.0.2` → `^10.0.3` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#1003-2026-08-28))
+- **@entur/layout:** `^4.0.3` → `^4.0.4` ([changelog](https://github.com/entur/design-system/blob/main/packages/layout/CHANGELOG.md#404-2026-08-28))
+- **@entur/tokens:** `^4.0.1` → `^4.1.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#410-2026-08-28))
 
 ## [8.0.3](https://github.com/entur/design-system/compare/@entur/travel@8.0.2...@entur/travel@8.0.3) (2026-08-20)
 
-**Note:** Version bump only for package @entur/travel
+### Entur Dependency Updates
+
+- **@entur/form:** `^10.0.2` → `^10.1.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#1010-2026-08-20))
+- **@entur/icons:** `^10.0.1` → `^10.0.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#1002-2026-08-20))
+- **@entur/layout:** `^4.0.2` → `^4.0.3` ([changelog](https://github.com/entur/design-system/blob/main/packages/layout/CHANGELOG.md#403-2026-08-20))
 
 ## [8.0.2](https://github.com/entur/design-system/compare/@entur/travel@8.0.1...@entur/travel@8.0.2) (2026-08-13)
 
-**Note:** Version bump only for package @entur/travel
+### Entur Dependency Updates
+
+- **@entur/form:** `^10.0.1` → `^10.0.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#1002-2026-08-13))
+- **@entur/layout:** `^4.0.1` → `^4.0.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/layout/CHANGELOG.md#402-2026-08-13))
+- **@entur/utils:** `^0.14.1` → `^0.15.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/utils/CHANGELOG.md#0150-2026-08-13))
 
 ## [8.0.1](https://github.com/entur/design-system/compare/@entur/travel@8.0.0...@entur/travel@8.0.1) (2026-08-06)
 
-**Note:** Version bump only for package @entur/travel
+### Entur Dependency Updates
+
+- **@entur/form:** `^10.0.0` → `^10.0.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#1001-2026-08-06))
+- **@entur/icons:** `^10.0.0` → `^10.0.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#1001-2026-08-06))
+- **@entur/layout:** `^4.0.0` → `^4.0.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/layout/CHANGELOG.md#401-2026-08-06))
+- **@entur/tokens:** `^4.0.0` → `^4.0.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#401-2026-08-06))
+- **@entur/utils:** `^0.14.0` → `^0.14.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/utils/CHANGELOG.md#0141-2026-08-06))
 
 # [8.0.0](https://github.com/entur/design-system/compare/@entur/travel@7.0.4...@entur/travel@8.0.0) (2026-07-30)
 
@@ -50,19 +75,37 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [7.0.4](https://github.com/entur/design-system/compare/@entur/travel@7.0.3...@entur/travel@7.0.4) (2026-07-03)
 
-**Note:** Version bump only for package @entur/travel
+### Entur Dependency Updates
+
+- **@entur/form:** `^9.3.7` → `^9.3.8` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#938-2026-07-03))
+- **@entur/icons:** `^9.0.3` → `^9.0.4` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#904-2026-07-03))
+- **@entur/layout:** `^3.7.4` → `^3.7.5` ([changelog](https://github.com/entur/design-system/blob/main/packages/layout/CHANGELOG.md#375-2026-07-03))
+- **@entur/utils:** `^0.13.5` → `^0.13.6` ([changelog](https://github.com/entur/design-system/blob/main/packages/utils/CHANGELOG.md#0136-2026-07-03))
 
 ## [7.0.3](https://github.com/entur/design-system/compare/@entur/travel@7.0.1...@entur/travel@7.0.3) (2026-06-22)
 
-**Note:** Version bump only for package @entur/travel
+### Entur Dependency Updates
+
+- **@entur/form:** `^9.3.6` → `^9.3.7` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#937-2026-06-22))
+- **@entur/icons:** `^9.0.2` → `^9.0.3` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#903-2026-06-22))
+- **@entur/layout:** `^3.7.3` → `^3.7.4` ([changelog](https://github.com/entur/design-system/blob/main/packages/layout/CHANGELOG.md#374-2026-06-22))
+- **@entur/tokens:** `^3.23.0` → `^3.24.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3240-2026-06-22))
 
 ## [7.0.2](https://github.com/entur/design-system/compare/@entur/travel@7.0.1...@entur/travel@7.0.2) (2026-06-08)
 
-**Note:** Version bump only for package @entur/travel
+### Entur Dependency Updates
+
+- **@entur/form:** `^9.3.5` → `^9.3.6` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#936-2026-06-08))
+- **@entur/icons:** `^9.0.1` → `^9.0.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#902-2026-06-08))
+- **@entur/layout:** `^3.7.2` → `^3.7.3` ([changelog](https://github.com/entur/design-system/blob/main/packages/layout/CHANGELOG.md#373-2026-06-08))
 
 ## [7.0.1](https://github.com/entur/design-system/compare/@entur/travel@7.0.0...@entur/travel@7.0.1) (2026-06-08)
 
-**Note:** Version bump only for package @entur/travel
+### Entur Dependency Updates
+
+- **@entur/form:** `^9.3.4` → `^9.3.5` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#935-2026-06-08))
+- **@entur/icons:** `^9.0.0` → `^9.0.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#901-2026-06-08))
+- **@entur/layout:** `^3.7.1` → `^3.7.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/layout/CHANGELOG.md#372-2026-06-08))
 
 # [7.0.0](https://github.com/entur/design-system/compare/@entur/travel@6.5.10...@entur/travel@7.0.0) (2026-06-05)
 
@@ -92,15 +135,33 @@ AI-assistant: Claude Code (claude-opus-4-6)
 
 ## [6.5.11](https://github.com/entur/design-system/compare/@entur/travel@6.5.10...@entur/travel@6.5.11) (2026-05-13)
 
-**Note:** Version bump only for package @entur/travel
+### Entur Dependency Updates
+
+- **@entur/form:** `^9.3.2` → `^9.3.3` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#933-2026-05-13))
+- **@entur/icons:** `^8.4.5` → `^8.4.6` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#846-2026-05-13))
+- **@entur/layout:** `^3.6.1` → `^3.7.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/layout/CHANGELOG.md#370-2026-05-13))
+- **@entur/tokens:** `^3.22.4` → `^3.22.5` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3225-2026-05-13))
+- **@entur/utils:** `^0.13.3` → `^0.13.4` ([changelog](https://github.com/entur/design-system/blob/main/packages/utils/CHANGELOG.md#0134-2026-05-13))
 
 ## [6.5.10](https://github.com/entur/design-system/compare/@entur/travel@6.5.9...@entur/travel@6.5.10) (2026-04-16)
 
-**Note:** Version bump only for package @entur/travel
+### Entur Dependency Updates
+
+- **@entur/form:** `^9.3.0` → `^9.3.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#932-2026-04-16))
+- **@entur/icons:** `^8.4.4` → `^8.4.5` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md))
+- **@entur/layout:** `^3.5.0` → `^3.6.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/layout/CHANGELOG.md#361-2026-04-16))
+- **@entur/tokens:** `^3.22.3` → `^3.22.4` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md))
+- **@entur/utils:** `^0.13.2` → `^0.13.3` ([changelog](https://github.com/entur/design-system/blob/main/packages/utils/CHANGELOG.md))
 
 ## [6.5.8](https://github.com/entur/design-system/compare/@entur/travel@6.5.7...@entur/travel@6.5.8) (2026-03-16)
 
-**Note:** Version bump only for package @entur/travel
+### Entur Dependency Updates
+
+- **@entur/form:** `^9.2.6` → `^9.3.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#930-2026-03-16))
+- **@entur/icons:** `^8.4.3` → `^8.4.4` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#844-2026-03-16))
+- **@entur/layout:** `^3.4.1` → `^3.5.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/layout/CHANGELOG.md#350-2026-03-16))
+- **@entur/tokens:** `^3.22.2` → `^3.22.3` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3223-2026-03-16))
+- **@entur/utils:** `^0.13.1` → `^0.13.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/utils/CHANGELOG.md#0132-2026-03-16))
 
 ## [6.5.6](https://github.com/entur/design-system/compare/@entur/travel@6.5.5...@entur/travel@6.5.6) (2026-02-20)
 
@@ -115,7 +176,10 @@ AI-assistant: Claude Code (claude-opus-4-6)
 
 ## [6.5.5](https://github.com/entur/design-system/compare/@entur/travel@6.5.4...@entur/travel@6.5.5) (2026-02-05)
 
-**Note:** Version bump only for package @entur/travel
+### Entur Dependency Updates
+
+- **@entur/form:** `^9.2.4` → `^9.2.5` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#925-2026-02-05))
+- **@entur/layout:** `^3.3.3` → `^3.4.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/layout/CHANGELOG.md#340-2026-02-05))
 
 ## [6.5.4](https://github.com/entur/design-system/compare/@entur/travel@6.5.3...@entur/travel@6.5.4) (2026-01-28)
 
@@ -126,11 +190,19 @@ AI-assistant: Claude Code (claude-opus-4-6)
 
 ## [6.5.3](https://github.com/entur/design-system/compare/@entur/travel@6.5.2...@entur/travel@6.5.3) (2026-01-23)
 
-**Note:** Version bump only for package @entur/travel
+### Entur Dependency Updates
+
+- **@entur/form:** `^9.2.2` → `^9.2.3` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#923-2026-01-23))
 
 ## [6.5.2](https://github.com/entur/design-system/compare/@entur/travel@6.5.1...@entur/travel@6.5.2) (2026-01-23)
 
-**Note:** Version bump only for package @entur/travel
+### Entur Dependency Updates
+
+- **@entur/form:** `^9.2.0` → `^9.2.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#922-2026-01-23))
+- **@entur/icons:** `^8.3.1` → `^8.4.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#841-2026-01-23))
+- **@entur/layout:** `^3.3.0` → `^3.3.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/layout/CHANGELOG.md#332-2026-01-23))
+- **@entur/tokens:** `^3.21.0` → `^3.22.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3220-2026-01-23))
+- **@entur/utils:** `^0.13.0` → `^0.13.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/utils/CHANGELOG.md))
 
 # [6.5.0](https://github.com/entur/design-system/compare/@entur/travel@6.4.5...@entur/travel@6.5.0) (2025-12-05)
 
@@ -150,19 +222,30 @@ AI-assistant: Claude Code (claude-opus-4-6)
 
 ## [6.4.4](https://github.com/entur/design-system/compare/@entur/travel@6.4.3...@entur/travel@6.4.4) (2025-10-27)
 
-**Note:** Version bump only for package @entur/travel
+### Entur Dependency Updates
+
+- **@entur/form:** `^9.0.0` → `^9.0.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#901-2025-10-27))
 
 ## [6.4.3](https://github.com/entur/design-system/compare/@entur/travel@6.4.2...@entur/travel@6.4.3) (2025-10-27)
 
-**Note:** Version bump only for package @entur/travel
+### Entur Dependency Updates
+
+- **@entur/form:** `^8.4.2` → `^9.0.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#900-2025-10-27))
 
 ## [6.4.2](https://github.com/entur/design-system/compare/@entur/travel@6.4.1...@entur/travel@6.4.2) (2025-10-20)
 
-**Note:** Version bump only for package @entur/travel
+### Entur Dependency Updates
+
+- **@entur/form:** `^8.4.1` → `^8.4.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#842-2025-10-20))
+- **@entur/icons:** `^8.1.0` → `^8.2.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#820-2025-10-20))
+- **@entur/layout:** `^3.2.1` → `^3.2.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/layout/CHANGELOG.md#322-2025-10-20))
 
 ## [6.4.1](https://github.com/entur/design-system/compare/@entur/travel@6.4.0...@entur/travel@6.4.1) (2025-10-17)
 
-**Note:** Version bump only for package @entur/travel
+### Entur Dependency Updates
+
+- **@entur/form:** `^8.4.0` → `^8.4.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#841-2025-10-17))
+- **@entur/layout:** `^3.2.0` → `^3.2.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/layout/CHANGELOG.md#321-2025-10-17))
 
 # [6.4.0](https://github.com/entur/design-system/compare/@entur/travel@6.3.16...@entur/travel@6.4.0) (2025-09-30)
 
@@ -174,7 +257,13 @@ AI-assistant: Claude Code (claude-opus-4-6)
 
 ## [6.3.16](https://github.com/entur/design-system/compare/@entur/travel@6.3.15...@entur/travel@6.3.16) (2025-09-24)
 
-**Note:** Version bump only for package @entur/travel
+### Entur Dependency Updates
+
+- **@entur/form:** `^8.3.2` → `^8.3.4` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#834-2025-09-24))
+- **@entur/icons:** `^8.0.1` → `^8.0.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md))
+- **@entur/layout:** `^3.1.9` → `^3.1.11` ([changelog](https://github.com/entur/design-system/blob/main/packages/layout/CHANGELOG.md#3111-2025-09-24))
+- **@entur/tokens:** `^3.19.2` → `^3.19.3` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md))
+- **@entur/utils:** `^0.12.4` → `^0.12.5` ([changelog](https://github.com/entur/design-system/blob/main/packages/utils/CHANGELOG.md))
 
 ## [6.3.14](https://github.com/entur/design-system/compare/@entur/travel@6.3.13...@entur/travel@6.3.14) (2025-08-29)
 
@@ -191,59 +280,118 @@ AI-assistant: Claude Code (claude-opus-4-6)
 
 ## [6.3.13](https://github.com/entur/design-system/compare/@entur/travel@6.3.12...@entur/travel@6.3.13) (2025-07-29)
 
-**Note:** Version bump only for package @entur/travel
+### Entur Dependency Updates
+
+- **@entur/form:** `^8.3.0` → `^8.3.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#831-2025-07-29))
 
 ## [6.3.12](https://github.com/entur/design-system/compare/@entur/travel@6.3.11...@entur/travel@6.3.12) (2025-06-27)
 
-**Note:** Version bump only for package @entur/travel
+### Entur Dependency Updates
+
+- **@entur/form:** `^8.2.11` → `^8.3.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#830-2025-06-27))
+- **@entur/icons:** `^7.14.0` → `^8.0.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#800-2025-06-27))
+- **@entur/layout:** `^3.1.7` → `^3.1.8` ([changelog](https://github.com/entur/design-system/blob/main/packages/layout/CHANGELOG.md#318-2025-06-27))
 
 ## [6.3.11](https://github.com/entur/design-system/compare/@entur/travel@6.3.10...@entur/travel@6.3.11) (2025-06-17)
 
-**Note:** Version bump only for package @entur/travel
+### Entur Dependency Updates
+
+- **@entur/form:** `^8.2.10` → `^8.2.11` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#8211-2025-06-17))
+- **@entur/icons:** `^7.13.0` → `^7.14.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#7140-2025-06-17))
+- **@entur/layout:** `^3.1.6` → `^3.1.7` ([changelog](https://github.com/entur/design-system/blob/main/packages/layout/CHANGELOG.md#317-2025-06-17))
 
 ## [6.3.10](https://github.com/entur/design-system/compare/@entur/travel@6.3.10-beta.0...@entur/travel@6.3.10) (2025-06-06)
 
-**Note:** Version bump only for package @entur/travel
+### Entur Dependency Updates
+
+- **@entur/form:** `^8.2.10-beta.0` → `^8.2.10` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#8210-2025-06-06))
+- **@entur/icons:** `^7.13.0-beta.0` → `^7.13.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#7130-2025-06-06))
+- **@entur/layout:** `^3.1.6-beta.0` → `^3.1.6` ([changelog](https://github.com/entur/design-system/blob/main/packages/layout/CHANGELOG.md#316-2025-06-06))
 
 ## [6.3.10-beta.0](https://github.com/entur/design-system/compare/@entur/travel@6.3.9...@entur/travel@6.3.10-beta.0) (2025-06-06)
 
-**Note:** Version bump only for package @entur/travel
+### Entur Dependency Updates
+
+- **@entur/form:** `^8.2.9` → `^8.2.10-beta.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#8210-beta0-2025-06-06))
+- **@entur/icons:** `^7.12.0` → `^7.13.0-beta.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#7130-beta0-2025-06-06))
+- **@entur/layout:** `^3.1.5` → `^3.1.6-beta.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/layout/CHANGELOG.md#316-beta0-2025-06-06))
 
 ## [6.3.9](https://github.com/entur/design-system/compare/@entur/travel@6.3.8...@entur/travel@6.3.9) (2025-05-22)
 
-**Note:** Version bump only for package @entur/travel
+### Entur Dependency Updates
+
+- **@entur/form:** `^8.2.8` → `^8.2.9` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#829-2025-05-22))
+- **@entur/icons:** `^7.11.1` → `^7.12.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#7120-2025-05-22))
+- **@entur/layout:** `^3.1.4` → `^3.1.5` ([changelog](https://github.com/entur/design-system/blob/main/packages/layout/CHANGELOG.md#315-2025-05-22))
+- **@entur/tokens:** `^3.19.0` → `^3.19.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3191-2025-05-22))
 
 ## [6.3.8](https://github.com/entur/design-system/compare/@entur/travel@6.3.7...@entur/travel@6.3.8) (2025-04-29)
 
-**Note:** Version bump only for package @entur/travel
+### Entur Dependency Updates
+
+- **@entur/form:** `^8.2.7` → `^8.2.8` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#828-2025-04-29))
+- **@entur/icons:** `^7.11.0` → `^7.11.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#7111-2025-04-29))
+- **@entur/layout:** `^3.1.3` → `^3.1.4` ([changelog](https://github.com/entur/design-system/blob/main/packages/layout/CHANGELOG.md#314-2025-04-29))
 
 ## [6.3.7](https://github.com/entur/design-system/compare/@entur/travel@6.3.6...@entur/travel@6.3.7) (2025-04-29)
 
-**Note:** Version bump only for package @entur/travel
+### Entur Dependency Updates
+
+- **@entur/form:** `^8.2.6` → `^8.2.7` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#827-2025-04-29))
+- **@entur/icons:** `^7.10.0` → `^7.11.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#7110-2025-04-29))
+- **@entur/layout:** `^3.1.2` → `^3.1.3` ([changelog](https://github.com/entur/design-system/blob/main/packages/layout/CHANGELOG.md#313-2025-04-29))
 
 ## [6.3.6](https://github.com/entur/design-system/compare/@entur/travel@6.3.5...@entur/travel@6.3.6) (2025-04-23)
 
-**Note:** Version bump only for package @entur/travel
+### Entur Dependency Updates
+
+- **@entur/form:** `^8.2.5` → `^8.2.6` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#826-2025-04-23))
+- **@entur/icons:** `^7.9.0` → `^7.10.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#7100-2025-04-23))
+- **@entur/layout:** `^3.1.1` → `^3.1.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/layout/CHANGELOG.md#312-2025-04-23))
 
 ## [6.3.5](https://github.com/entur/design-system/compare/@entur/travel@6.3.4...@entur/travel@6.3.5) (2025-04-11)
 
-**Note:** Version bump only for package @entur/travel
+### Entur Dependency Updates
+
+- **@entur/form:** `^8.2.4` → `^8.2.5` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#825-2025-04-11))
+- **@entur/icons:** `^7.8.0` → `^7.9.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#790-2025-04-11))
+- **@entur/layout:** `^3.1.0` → `^3.1.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/layout/CHANGELOG.md#311-2025-04-11))
 
 ## [6.3.4](https://github.com/entur/design-system/compare/@entur/travel@6.3.3...@entur/travel@6.3.4) (2025-03-24)
 
-**Note:** Version bump only for package @entur/travel
+### Entur Dependency Updates
+
+- **@entur/form:** `^8.2.3` → `^8.2.4` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#824-2025-03-24))
+- **@entur/icons:** `^7.7.1` → `^7.8.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#780-2025-03-24))
+- **@entur/layout:** `^3.0.0` → `^3.1.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/layout/CHANGELOG.md#310-2025-03-24))
+- **@entur/tokens:** `^3.18.0` → `^3.19.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3190-2025-03-24))
+- **@entur/utils:** `^0.12.2` → `^0.12.3` ([changelog](https://github.com/entur/design-system/blob/main/packages/utils/CHANGELOG.md#0123-2025-03-24))
 
 ## [6.3.3](https://github.com/entur/design-system/compare/@entur/travel@6.3.2...@entur/travel@6.3.3) (2025-03-05)
 
-**Note:** Version bump only for package @entur/travel
+### Entur Dependency Updates
+
+- **@entur/form:** `^8.2.2` → `^8.2.3` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#823-2025-03-05))
+- **@entur/icons:** `^7.7.0` → `^7.7.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#771-2025-03-05))
+- **@entur/layout:** `^2.4.2` → `^3.0.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/layout/CHANGELOG.md#300-2025-03-05))
+- **@entur/tokens:** `^3.17.6` → `^3.18.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3180-2025-03-05))
 
 ## [6.3.2](https://github.com/entur/design-system/compare/@entur/travel@6.3.1...@entur/travel@6.3.2) (2025-02-25)
 
-**Note:** Version bump only for package @entur/travel
+### Entur Dependency Updates
+
+- **@entur/form:** `^8.2.1` → `^8.2.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#822-2025-02-25))
+- **@entur/icons:** `^7.6.1` → `^7.7.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#770-2025-02-25))
+- **@entur/layout:** `^2.4.1` → `^2.4.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/layout/CHANGELOG.md#242-2025-02-25))
 
 ## [6.3.1](https://github.com/entur/design-system/compare/@entur/travel@6.3.0...@entur/travel@6.3.1) (2025-02-20)
 
-**Note:** Version bump only for package @entur/travel
+### Entur Dependency Updates
+
+- **@entur/form:** `^8.2.0` → `^8.2.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#821-2025-02-20))
+- **@entur/icons:** `^7.6.0` → `^7.6.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#761-2025-02-20))
+- **@entur/layout:** `^2.4.0` → `^2.4.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/layout/CHANGELOG.md#241-2025-02-20))
+- **@entur/tokens:** `^3.17.5` → `^3.17.6` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3176-2025-02-20))
 
 # [6.3.0](https://github.com/entur/design-system/compare/@entur/travel@6.2.14...@entur/travel@6.3.0) (2025-01-24)
 
@@ -253,15 +401,32 @@ AI-assistant: Claude Code (claude-opus-4-6)
 
 ## [6.2.14](https://github.com/entur/design-system/compare/@entur/travel@6.2.13...@entur/travel@6.2.14) (2025-01-15)
 
-**Note:** Version bump only for package @entur/travel
+### Entur Dependency Updates
+
+- **@entur/form:** `^8.1.9` → `^8.1.10` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#8110-2025-01-15))
+- **@entur/icons:** `^7.5.1` → `^7.6.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#760-2025-01-15))
+- **@entur/layout:** `^2.3.21` → `^2.3.22` ([changelog](https://github.com/entur/design-system/blob/main/packages/layout/CHANGELOG.md#2322-2025-01-15))
+- **@entur/tokens:** `^3.17.4` → `^3.17.5` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3175-2025-01-15))
 
 ## [6.2.13](https://github.com/entur/design-system/compare/@entur/travel@6.2.13-RC.0...@entur/travel@6.2.13) (2025-01-14)
 
-**Note:** Version bump only for package @entur/travel
+### Entur Dependency Updates
+
+- **@entur/form:** `^8.1.9-RC.0` → `^8.1.9` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#819-2025-01-14))
+- **@entur/icons:** `^7.5.1-RC.0` → `^7.5.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#751-2025-01-14))
+- **@entur/layout:** `^2.3.21-RC.0` → `^2.3.21` ([changelog](https://github.com/entur/design-system/blob/main/packages/layout/CHANGELOG.md#2321-2025-01-14))
+- **@entur/tokens:** `^3.17.4-RC.0` → `^3.17.4` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3174-2025-01-14))
+- **@entur/utils:** `^0.12.2-RC.0` → `^0.12.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/utils/CHANGELOG.md#0122-2025-01-14))
 
 ## [6.2.13-RC.0](https://github.com/entur/design-system/compare/@entur/travel@6.2.12...@entur/travel@6.2.13-RC.0) (2025-01-09)
 
-**Note:** Version bump only for package @entur/travel
+### Entur Dependency Updates
+
+- **@entur/form:** `^8.1.8` → `^8.1.9-RC.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#819-rc0-2025-01-09))
+- **@entur/icons:** `^7.5.0` → `^7.5.1-RC.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#751-rc0-2025-01-09))
+- **@entur/layout:** `^2.3.20` → `^2.3.21-RC.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/layout/CHANGELOG.md#2321-rc0-2025-01-09))
+- **@entur/tokens:** `^3.17.3` → `^3.17.4-RC.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#3174-rc0-2025-01-09))
+- **@entur/utils:** `^0.12.1` → `^0.12.2-RC.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/utils/CHANGELOG.md#0122-rc0-2025-01-09))
 
 ## [6.2.12](https://github.com/entur/design-system/compare/@entur/travel@6.2.11...@entur/travel@6.2.12) (2024-12-06)
 
