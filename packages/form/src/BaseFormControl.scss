@@ -203,6 +203,13 @@
   color: var(--components-form-baseform-standard-text-content);
   background-color: transparent;
 
+  // Chrome and Safari add their own clear ("x") button for input[type="search"].
+  // Hidden only when our own clearable button is present, so a consumer without `clearable` keeps it.
+  &:has(~ .eds-form-control__append .eds-textfield__clear-button)::-webkit-search-cancel-button {
+    appearance: none;
+    display: none;
+  }
+
   &::placeholder {
     opacity: 0;
     transition: opacity t.$timings-medium ease-in-out;
