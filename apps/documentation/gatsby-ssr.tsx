@@ -1,5 +1,5 @@
 import React from 'react';
-import { GatsbyBrowser, GatsbySSR } from 'gatsby';
+import { GatsbySSR } from 'gatsby';
 
 import './src/styles/index.scss';
 
@@ -16,9 +16,7 @@ import { ConsentBanner } from './src/components/ConsentBanner/ConsentBanner';
 import DocLayout from './src/layouts/DocLayout';
 import { UC_SETTINGS_ID, UC_USE_DRAFT } from './src/utils/cmpUtils';
 
-export const wrapRootElement: GatsbyBrowser['wrapRootElement'] = ({
-  element,
-}) => {
+export const wrapRootElement: GatsbySSR['wrapRootElement'] = ({ element }) => {
   return (
     <SettingsProvider>
       <ConsentProvider>

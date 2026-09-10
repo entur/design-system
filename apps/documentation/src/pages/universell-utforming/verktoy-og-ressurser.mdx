@@ -1,0 +1,78 @@
+---
+title: Verktøy og ressurser
+description: Alt du trenger for å jobbe med universell utforming – verktøy for testing, standarder og læringsressurser.
+route: /universell-utforming/verktoy-og-ressurser
+parent: Universell utforming
+order: 4
+---
+
+import { SEO } from '@components/seo/SEO';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+
+Her finner du verktøyene og ressursene du trenger for å jobbe med universell utforming i hverdagen – enten du designer, utvikler eller tester.
+
+## Regelverk og standarder
+
+Se [Regelverk i Norge](/universell-utforming) for hva som faktisk er lovpålagt akkurat nå.
+
+- [WCAG 2.2](https://www.w3.org/TR/WCAG22/) – Nyeste versjon av standarden for tilgjengelighet på nett
+- [Uu-tilsynets veiledning](https://www.uutilsynet.no/) – Norges tilsynsmyndighet for universell utforming av IKT
+- [EUs tilgjengelighetsdirektiv (EAA)](https://www.uutilsynet.no/tilgjengelighetsdirektivet-eaa/eus-tilgjengelegheitsdirektiv-eaa/268) – Skal utvide kravene til privat sektor
+- [EN 301 549](https://www.etsi.org/deliver/etsi_en/301500_301599/301549/03.02.01_60/en_301549v030201p.pdf) – Den europeiske standarden som WAD og EAA viser til
+
+## Tilgjengelighetserklæring
+
+Alle offentlige virksomheter – og etter hvert også private – skal publisere en tilgjengelighetserklæring for sine digitale løsninger. Erklæringen skal:
+
+- Beskrive i hvilken grad løsningen oppfyller kravene
+- Forklare eventuelt innhold som ikke er universelt utformet, med begrunnelse
+- Tilby en tilbakemeldingsfunksjon der brukere kan melde fra om mangler
+- Oppdateres minst én gang i året, eller ved større endringer
+
+[Uu-tilsynet har en felles løsning](https://www.uutilsynet.no/tilgjengelighetserklaring/tilgjengelegheitserklaring/233) for å opprette og publisere tilgjengelighetserklæringer.
+
+## Skjermlesere
+
+- **macOS / iOS**: [VoiceOver](https://support.apple.com/guide/voiceover/welcome/mac) – innebygd og godt støttet. Aktiver med Cmd+F5 på Mac.
+- **Windows**: [NVDA](https://www.nvaccess.org/) – gratis og mye brukt. Innebygde Narrator er også et alternativ.
+- **Android**: TalkBack – innebygd i Android.
+
+**Tips**: På iPhone kan du legge VoiceOver som snarvei under tilgjengelighetsinnstillinger, slik at det enkelt kan slås av og på med tre trykk på sideknappen.
+
+## Nettleserutvidelser
+
+- **[axe DevTools](https://www.deque.com/axe/devtools/)** – Grundig tilgjengelighetstesting i Chrome og Firefox. Identifiserer problemer og foreslår løsninger.
+- **[Wave](https://wave.webaim.org/extension/)** – Visuell tilgjengelighetstesting fra WebAIM.
+- **[HeadingsMap](https://chromewebstore.google.com/detail/headingsmap/flbjommegcjonpdmenkdiocclhjacmbi)** – Visualiserer overskriftshierarkiet på en side.
+- **[Lighthouse](https://developer.chrome.com/docs/lighthouse/)** – Innebygd i Chrome DevTools. Kjør en «Accessibility»-audit.
+
+## Automatiserte tester i kode
+
+- **[jest-axe](https://github.com/nickcolley/jest-axe)** – Integrer axe-core i Jest-tester for å fange opp vanlige tilgjengelighetsfeil automatisk i CI.
+- **[axe-core](https://github.com/dequelabs/axe-core)** – Grunnbiblioteket som mange verktøy bygger på. Kan brukes direkte i end-to-end-tester.
+- **[W3C-validator](https://validator.w3.org/)** – Sjekk at HTML-koden er korrekt og velformet.
+
+## Farger og kontrast
+
+- **[Vår kontrastsjekker](/universell-utforming/kontrastsjekker)** – Sjekk kontrastforhold mot WCAG-kravene direkte her på siden.
+- **[Funkify](https://www.funkify.org/)** – Chrome-utvidelse som simulerer ulike funksjonsnedsettelser, inkludert fargeblindhet og tåkesyn.
+- **Chrome DevTools** – Gå til `Rendering → Emulate vision deficiencies` for å simulere fargeblindhet og svaksynthet.
+
+## Video og synstolking
+
+Se [testguiden](/universell-utforming/testguide) for kravet i detalj.
+
+- **[Uu-tilsynets veiledning om synstolking](https://www.uutilsynet.no/regelverk/fra-i-dag-skal-nye-videoopptak-i-offentleg-sektor-ha-synstolking/2128)**
+- **[Løsningsforslag for synstolking](https://www.uutilsynet.no/veiledning/125-synstolking-forhandsinnspilt/1927)** – Konkrete eksempler på hvordan kravet kan løses i praksis
+
+## Læringsressurser
+
+- [Uu-tilsynets e-læringskurs](https://www.uutilsynet.no/veiledning/e-laeringskurs-om-universell-utforming-av-nettinnhold/199) – Gratis norsk kurs om å lage tilgjengelig nettinnhold, fra Digdir. Fullt gjeldende for privat sektor, men ikke oppdatert etter webdirektivet for offentlig sektor.
+- [W3C WAI – Web Accessibility Initiative](https://www.w3.org/WAI/) – Offisielle ressurser fra W3C om tilgjengelighet.
+- [a11ycasts (YouTube)](https://www.youtube.com/playlist?list=PLNYkxOF6rcICWx0C9LFWzRNpEN7MFJI23) – Videoserie om tilgjengelighet fra Google Chrome-teamet.
+- [The A11Y Project](https://www.a11yproject.com/) – Praktiske tips og sjekklister for tilgjengelighet.
+- [Inclusive Design Principles](https://inclusivedesignprinciples.info/) – Prinsipper for inkluderende design.

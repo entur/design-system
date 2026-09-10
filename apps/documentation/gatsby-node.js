@@ -304,6 +304,11 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     toPath: '/komponenter/navigasjon/breadcrumbnavigation',
   });
 
+  createRedirect({
+    fromPath: '/universell-utforming/nyttige-verktoy',
+    toPath: '/universell-utforming/verktoy-og-ressurser',
+  });
+
   await createDocumentationPagesFromSanity(graphql, actions, reporter);
 };
 

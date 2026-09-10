@@ -73,6 +73,7 @@
     "react-live": "4.1.8",
     "react-syntax-highlighter": "15.6.6",
     "react-use-flexsearch": "0.1.1",
+    "remark-gfm": "3.0.1",
     "resolve-url-loader": "5.0.0",
     "sass": "1.100.0",
     "wcag-contrast": "3.0.0"
