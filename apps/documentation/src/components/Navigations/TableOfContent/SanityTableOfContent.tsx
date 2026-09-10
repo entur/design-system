@@ -14,6 +14,14 @@ export const extractHeadingsFromPortableText = (content: any): TocHeading[] => {
   const seen = new Map<string, number>();
 
   const processBlock = (block: any) => {
+    if (block._type === 'docSection' && block.title) {
+      headings.push({
+        id: getUniqueId(block.title, seen),
+        title: block.title,
+        depth: 2,
+      });
+    }
+
     if (block._type === 'block' && block.style?.startsWith('h')) {
       const level = parseInt(block.style.replace('h', ''));
       const title =
@@ -28,8 +36,11 @@ export const extractHeadingsFromPortableText = (content: any): TocHeading[] => {
       }
     }
 
-    if (block.items) {
-      block.items.forEach((item: any) => processBlock(item));
+    // Nested blocks live under different fields per type: docSection/textBlocks
+    // use items, group uses content, guideline/imageAndText use text.
+    const nested = block.items ?? block.content ?? block.text;
+    if (Array.isArray(nested)) {
+      nested.forEach((item: any) => processBlock(item));
     }
   };
 

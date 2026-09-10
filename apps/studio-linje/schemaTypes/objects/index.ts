@@ -7,3 +7,4 @@ export { guideline } from './guideline';
 export { propsTable } from './propsTable';
 export { media } from './media';
 export { componentDocTab } from './componentDocTab';
+export { docSectionType } from './docSection';
