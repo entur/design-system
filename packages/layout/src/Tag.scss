@@ -1,34 +1,100 @@
 @use '@entur/tokens/dist/styles.scss' as t;
 
+// Sass reads bare blue, coral, lime and lavender as color literals
+$variants: 'neutral', 'spring', 'jungle', 'blue', 'lilac', 'lavender', 'coral', 'peach', 'lime', 'mystic', 'success', 'warning', 'negative', 'information';
+
 .eds-tag {
-  background: t.$colors-greys-grey70;
-  color: t.$colors-brand-blue;
-  display: inline-block;
-  min-width: t.$space-extra-large;
-  padding: t.$space-extra-small2 t.$space-small;
-  font-size: t.$font-sizes-medium;
-  line-height: t.$line-heights-large;
+  display: inline-flex;
+  align-items: center;
+  width: max-content;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  vertical-align: middle;
+  white-space: nowrap;
+  overflow: hidden;
+  font-family: inherit;
+  font-weight: t.$font-weights-body;
+  font-size: t.$font-sizes-small;
+  line-height: t.$line-heights-small;
+  height: var(--components-layout-tag-height-medium);
+  padding-inline: var(--components-layout-tag-inlinepadding-medium);
+  gap: var(--components-layout-tag-gap-medium);
+  border-radius: var(--components-layout-tag-radius-medium);
+  border: var(--components-layout-tag-border-medium) solid var(--eds-tag-border);
+  background-color: var(--eds-tag-fill);
+  color: var(--eds-tag-text);
 
-  &--leading-icon .eds-icon {
-    margin-right: t.$space-extra-small;
-  }
+  &:where(:focus-visible) {
+    outline: t.$outlines-focus;
+    outline-color: var(--basecolors-stroke-focus-standard);
+    outline-offset: t.$outline-offsets-focus;
 
-  &--trailing-icon .eds-icon {
-    margin-left: t.$space-extra-small;
-  }
-
-  &--compact {
-    font-size: t.$font-sizes-small;
-    padding: calc(t.$space-extra-small2 / 2) t.$space-extra-small;
-    line-height: t.$line-heights-medium;
-    height: 1.5rem;
-
-    &.eds-tag--leading-icon .eds-icon {
-      margin-right: t.$space-extra-small2;
+    :where(.eds-contrast) & {
+      outline-color: var(--basecolors-stroke-focus-contrast);
     }
+  }
 
-    &.eds-tag--trailing-icon .eds-icon {
-      margin-left: t.$space-extra-small2;
+  :where(.eds-icon) {
+    flex-shrink: 0;
+    width: var(--components-layout-tag-icon-medium);
+    height: var(--components-layout-tag-icon-medium);
+    color: inherit;
+  }
+
+  &--size-small {
+    height: var(--components-layout-tag-height-small);
+    padding-inline: var(--components-layout-tag-inlinepadding-small);
+    gap: var(--components-layout-tag-gap-small);
+    border-radius: var(--components-layout-tag-radius-small);
+    border-width: var(--components-layout-tag-border-small);
+
+    :where(.eds-icon) {
+      width: var(--components-layout-tag-icon-small);
+      height: var(--components-layout-tag-icon-small);
     }
   }
+
+  &--size-large {
+    height: var(--components-layout-tag-height-large);
+    padding-inline: var(--components-layout-tag-inlinepadding-large);
+    gap: var(--components-layout-tag-gap-large);
+    border-radius: var(--components-layout-tag-radius-large);
+    border-width: var(--components-layout-tag-border-large);
+    font-size: t.$font-sizes-large;
+    line-height: t.$line-heights-extra-large;
+
+    :where(.eds-icon) {
+      width: var(--components-layout-tag-icon-large);
+      height: var(--components-layout-tag-icon-large);
+    }
+  }
+
+  @each $variant in $variants {
+    &--variant-#{$variant} {
+      --eds-tag-fill: var(--components-layout-tag-fill-default-#{$variant});
+      --eds-tag-border: var(--components-layout-tag-stroke-default-#{$variant});
+      --eds-tag-text: var(--components-layout-tag-text-default-standard);
+
+      :where(.eds-contrast) & {
+        --eds-tag-fill: var(--components-layout-tag-fill-contrast-#{$variant});
+        --eds-tag-text: var(--components-layout-tag-text-contrast-standard);
+      }
+    }
+  }
+
+  // neutral is the one variant with its own text color
+  &--variant-neutral {
+    --eds-tag-text: var(--components-layout-tag-text-default-neutral);
+
+    :where(.eds-contrast) & {
+      --eds-tag-text: var(--components-layout-tag-text-contrast-neutral);
+    }
+  }
+}
+
+// :where() adds no specificity, so this ties with the variant blocks and has to
+// stay last to win on source order
+:where(.eds-contrast) .eds-tag {
+  --eds-tag-border: transparent;
 }

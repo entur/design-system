@@ -1,52 +1,92 @@
 import React from 'react';
 import classNames from 'classnames';
+import {
+  PolymorphicComponentPropsWithRef,
+  PolymorphicRef,
+  VariantType,
+} from '@entur/utils';
+
 import './Tag.scss';
-import { PolymorphicComponentProps } from '@entur/utils';
+
+export type TagHue =
+  | 'spring'
+  | 'jungle'
+  | 'blue'
+  | 'lilac'
+  | 'lavender'
+  | 'coral'
+  | 'peach'
+  | 'lime'
+  | 'mystic';
+
+export type TagVariant = 'neutral' | TagHue | VariantType;
+
+export type TagSize = 'small' | 'medium' | 'large';
 
 export type TagOwnProps = {
   /** HTML-elementet eller React-komponenten som rendres
-   * @default 'div'
+   * @default "span"
    */
-  as?: string | React.ElementType;
+  as?: 'span' | React.ElementType;
   /** Ekstra klassenavn */
   className?: string;
-  /**Mindre og mer kompakt Tag, til f.eks. tabellbruk
-   * @default false
-   */
-  compact?: boolean;
+  /** Innholdet i taggen. Ikoner arver tekstfargen, og legges inn som `children`
+   * sammen med teksten */
   children: React.ReactNode;
+  /** Fargevarianten til taggen. `neutral` og de ni kategorifargene er nøytrale
+   * i betydning, mens `success`, `warning`, `negative` og `information` sier
+   * noe om status
+   * @default "neutral"
+   */
+  variant?: TagVariant;
+  /** Størrelsen på taggen
+   * @default "medium"
+   */
+  size?: TagSize;
+  /** @deprecated Bruk `size="small"` i stedet */
+  compact?: boolean;
 };
 
-export type TagProps<T extends React.ElementType = typeof defaultElement> =
-  PolymorphicComponentProps<T, TagOwnProps>;
+export type TagProps<T extends React.ElementType> =
+  PolymorphicComponentPropsWithRef<T, TagOwnProps>;
 
-const defaultElement = 'div';
+export type TagComponent = <
+  T extends React.ElementType = typeof defaultElement,
+>(
+  props: TagProps<T>,
+) => React.ReactElement | null;
 
-export const Tag = <E extends React.ElementType = typeof defaultElement>({
-  className,
-  children,
-  compact,
-  as,
-  ...rest
-}: TagProps<E>): JSX.Element => {
-  const Element: React.ElementType = as || defaultElement;
-  const childrenArray = React.Children.toArray(children);
-  const hasLeadingIcon =
-    childrenArray.length > 1 && typeof childrenArray[0] !== 'string';
-  const hasTrailingIcon =
-    childrenArray.length > 1 &&
-    typeof childrenArray[childrenArray.length - 1] !== 'string';
+const defaultElement = 'span';
 
-  return (
-    <Element
-      className={classNames('eds-tag', className, {
-        'eds-tag--leading-icon': hasLeadingIcon,
-        'eds-tag--trailing-icon': hasTrailingIcon,
-        'eds-tag--compact': compact,
-      })}
-      {...rest}
-    >
-      {children}
-    </Element>
-  );
-};
+export const Tag: TagComponent = React.forwardRef(
+  <T extends React.ElementType = typeof defaultElement>(
+    {
+      as,
+      className,
+      children,
+      variant = 'neutral',
+      size,
+      compact = false,
+      ...rest
+    }: TagProps<T>,
+    ref: PolymorphicRef<T>,
+  ) => {
+    const Element: React.ElementType = as || defaultElement;
+    const computedSize = size ?? (compact ? 'small' : 'medium');
+
+    return (
+      <Element
+        className={classNames(
+          'eds-tag',
+          `eds-tag--variant-${variant}`,
+          `eds-tag--size-${computedSize}`,
+          className,
+        )}
+        ref={ref}
+        {...rest}
+      >
+        {children}
+      </Element>
+    );
+  },
+);
