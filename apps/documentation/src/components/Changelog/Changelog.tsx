@@ -83,7 +83,10 @@ const Changelog = () => {
                   </span>
                   <span className="changelog-card__meta">
                     {published && (
-                      <Tag as="span" compact>{`v${published.version}`}</Tag>
+                      <Tag
+                        as="span"
+                        size="small"
+                      >{`v${published.version}`}</Tag>
                     )}
                     {publishedAt && (
                       <SmallText margin="none">{publishedAt}</SmallText>
