@@ -10,19 +10,25 @@
         "color": [
           {
             "name": "Contrast/Azure",
-            "value": "#64b2fb",
+            "value": "#64c9fb",
             "var": "",
             "rootAlias": ""
           },
           {
             "name": "Contrast/Blue",
-            "value": "#6c6eb7",
+            "value": "#6ea5f7",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Contrast/Chalk",
+            "value": "#cccdd4",
             "var": "",
             "rootAlias": ""
           },
           {
             "name": "Contrast/Coral",
-            "value": "#ff5959",
+            "value": "#ff9494",
             "var": "",
             "rootAlias": ""
           },
@@ -45,6 +51,18 @@
             "rootAlias": ""
           },
           {
+            "name": "Contrast/Lime",
+            "value": "#e6f53d",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Contrast/Mystic",
+            "value": "#c6a2f7",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
             "name": "Contrast/Peach",
             "value": "#ffbf9e",
             "var": "",
@@ -57,52 +75,250 @@
             "rootAlias": ""
           },
           {
+            "name": "Contrast/Icon/Default",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Contrast/Stroke/Default",
+            "value": "#ffffff00",
+            "var": "Stroke/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Contrast/Text/Default",
+            "value": "#181c56",
+            "var": "Text/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
             "name": "Standard/Azure",
-            "value": "#2f98fa",
+            "value": "#1193d4",
             "var": "",
             "rootAlias": ""
           },
           {
             "name": "Standard/Blue",
-            "value": "#181c56",
+            "value": "#4b58e4",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Standard/Chalk",
+            "value": "#6a6b78",
             "var": "",
             "rootAlias": ""
           },
           {
             "name": "Standard/Coral",
-            "value": "#ff5959",
+            "value": "#d31b1b",
             "var": "",
             "rootAlias": ""
           },
           {
             "name": "Standard/Jungle",
-            "value": "#0ea2a8",
+            "value": "#078388",
             "var": "",
             "rootAlias": ""
           },
           {
             "name": "Standard/Lavender",
-            "value": "#8692ca",
+            "value": "#181c56",
             "var": "",
             "rootAlias": ""
           },
           {
             "name": "Standard/Lilac",
-            "value": "#8e57e3",
+            "value": "#a529c7",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Standard/Lime",
+            "value": "#807900",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Standard/Mystic",
+            "value": "#680dd7",
             "var": "",
             "rootAlias": ""
           },
           {
             "name": "Standard/Peach",
-            "value": "#ca825b",
+            "value": "#ba5620",
             "var": "",
             "rootAlias": ""
           },
           {
             "name": "Standard/Spring",
-            "value": "#57a257",
+            "value": "#4a842d",
             "var": "",
             "rootAlias": ""
+          },
+          {
+            "name": "Standard/Icon/Default",
+            "value": "#ffffff",
+            "var": "Shape/Light",
+            "rootAlias": "White/Alpha-100"
+          },
+          {
+            "name": "Standard/Stroke/Default",
+            "value": "#ffffff",
+            "var": "Stroke/Light",
+            "rootAlias": "White/Alpha-100"
+          },
+          {
+            "name": "Standard/Text/Default",
+            "value": "#ffffff",
+            "var": "Text/Light",
+            "rootAlias": "White/Alpha-100"
+          },
+          {
+            "name": "Tint/Azure",
+            "value": "#cdeefe",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Tint/Blue",
+            "value": "#c5e0fc",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Tint/Chalk",
+            "value": "#eeeff1",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Tint/Coral",
+            "value": "#ffe5e5",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Tint/Jungle",
+            "value": "#c2f0ec",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Tint/Lavender",
+            "value": "#ced4ee",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Tint/Lilac",
+            "value": "#f9dcf9",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Tint/Lime",
+            "value": "#f0f98b",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Tint/Mystic",
+            "value": "#ebdefc",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Tint/Peach",
+            "value": "#ffe4d6",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Tint/Spring",
+            "value": "#d7ecb6",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Tint/Icon/Default",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Tint/Stroke/Azure",
+            "value": "#58a9d1",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Tint/Stroke/Blue",
+            "value": "#608cce",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Tint/Stroke/Chalk",
+            "value": "#abacb2",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Tint/Stroke/Coral",
+            "value": "#d98c8d",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Tint/Stroke/Jungle",
+            "value": "#14a397",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Tint/Stroke/Lavender",
+            "value": "#939abd",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Tint/Stroke/Lilac",
+            "value": "#c377c3",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Tint/Stroke/Lime",
+            "value": "#a0aa2c",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Tint/Stroke/Mystic",
+            "value": "#a689ce",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Tint/Stroke/Peach",
+            "value": "#d0987c",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Tint/Stroke/Spring",
+            "value": "#6aa111",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Tint/Text/Default",
+            "value": "#181c56",
+            "var": "Text/Accent",
+            "rootAlias": "Lavender/90"
           }
         ],
         "number": [],
@@ -116,13 +332,19 @@
         "color": [
           {
             "name": "Contrast/Azure",
-            "value": "#669bcc",
+            "value": "#71c5ef",
             "var": "",
             "rootAlias": ""
           },
           {
             "name": "Contrast/Blue",
-            "value": "#aeb7e2",
+            "value": "#86b4f8",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Contrast/Chalk",
+            "value": "#cccdd4",
             "var": "",
             "rootAlias": ""
           },
@@ -134,43 +356,79 @@
           },
           {
             "name": "Contrast/Jungle",
-            "value": "#349d94",
+            "value": "#66ccc3",
             "var": "",
             "rootAlias": ""
           },
           {
             "name": "Contrast/Lavender",
-            "value": "#7c8ad0",
+            "value": "#aeb7e2",
             "var": "",
             "rootAlias": ""
           },
           {
             "name": "Contrast/Lilac",
-            "value": "#c982c9",
+            "value": "#ebadeb",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Contrast/Lime",
+            "value": "#e5f06a",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Contrast/Mystic",
+            "value": "#c7afe7",
             "var": "",
             "rootAlias": ""
           },
           {
             "name": "Contrast/Peach",
-            "value": "#d6855c",
+            "value": "#f7cfba",
             "var": "",
             "rootAlias": ""
           },
           {
             "name": "Contrast/Spring",
-            "value": "#8cb24c",
+            "value": "#92cc33",
             "var": "",
             "rootAlias": ""
           },
           {
+            "name": "Contrast/Icon/Default",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Contrast/Stroke/Default",
+            "value": "#ffffff00",
+            "var": "Stroke/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Contrast/Text/Default",
+            "value": "#181c56",
+            "var": "Text/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
             "name": "Standard/Azure",
-            "value": "#669bcc",
+            "value": "#71c5ef",
             "var": "",
             "rootAlias": ""
           },
           {
             "name": "Standard/Blue",
-            "value": "#aeb7e2",
+            "value": "#86b4f8",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Standard/Chalk",
+            "value": "#cccdd4",
             "var": "",
             "rootAlias": ""
           },
@@ -182,33 +440,207 @@
           },
           {
             "name": "Standard/Jungle",
-            "value": "#349d94",
+            "value": "#66ccc3",
             "var": "",
             "rootAlias": ""
           },
           {
             "name": "Standard/Lavender",
-            "value": "#7c8ad0",
+            "value": "#aeb7e2",
             "var": "",
             "rootAlias": ""
           },
           {
             "name": "Standard/Lilac",
-            "value": "#c982c9",
+            "value": "#ebadeb",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Standard/Lime",
+            "value": "#e5f06a",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Standard/Mystic",
+            "value": "#c7afe7",
             "var": "",
             "rootAlias": ""
           },
           {
             "name": "Standard/Peach",
-            "value": "#d6855c",
+            "value": "#f7cfba",
             "var": "",
             "rootAlias": ""
           },
           {
             "name": "Standard/Spring",
-            "value": "#8cb24c",
+            "value": "#92cc33",
             "var": "",
             "rootAlias": ""
+          },
+          {
+            "name": "Standard/Icon/Default",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Standard/Stroke/Default",
+            "value": "#ffffff00",
+            "var": "Stroke/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Standard/Text/Default",
+            "value": "#181c56",
+            "var": "Text/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Tint/Azure",
+            "value": "#cdeefe",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Tint/Blue",
+            "value": "#c5e0fc",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Tint/Chalk",
+            "value": "#eeeef1",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Tint/Coral",
+            "value": "#ffe5e5",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Tint/Jungle",
+            "value": "#c2f0ec",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Tint/Lavender",
+            "value": "#ced4ee",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Tint/Lilac",
+            "value": "#f9dcf9",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Tint/Lime",
+            "value": "#f0f98b",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Tint/Mystic",
+            "value": "#ebdefc",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Tint/Peach",
+            "value": "#ffe4d6",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Tint/Spring",
+            "value": "#d7ecb6",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Tint/Icon/Default",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Tint/Stroke/Azure",
+            "value": "#ffffff00",
+            "var": "Stroke/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Tint/Stroke/Blue",
+            "value": "#ffffff00",
+            "var": "Stroke/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Tint/Stroke/Chalk",
+            "value": "#ffffff00",
+            "var": "Stroke/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Tint/Stroke/Coral",
+            "value": "#ffffff00",
+            "var": "Stroke/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Tint/Stroke/Jungle",
+            "value": "#ffffff00",
+            "var": "Stroke/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Tint/Stroke/Lavender",
+            "value": "#ffffff00",
+            "var": "Stroke/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Tint/Stroke/Lilac",
+            "value": "#ffffff00",
+            "var": "Stroke/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Tint/Stroke/Lime",
+            "value": "#ffffff00",
+            "var": "Stroke/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Tint/Stroke/Mystic",
+            "value": "#ffffff00",
+            "var": "Stroke/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Tint/Stroke/Peach",
+            "value": "#ffffff00",
+            "var": "Stroke/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Tint/Stroke/Spring",
+            "value": "#ffffff00",
+            "var": "Stroke/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Tint/Text/Default",
+            "value": "#181c56",
+            "var": "Text/Accent",
+            "rootAlias": "Lavender/90"
           }
         ],
         "number": [],

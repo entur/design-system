@@ -38,7 +38,7 @@
   --components-button-negative-contrast-active: #{$fill-negative-tint};
   --components-button-negative-contrast-border: #{$fill-negative-tint};
   --components-button-negative-contrast-default: #{$fill-background-standard-colorless};
-  --components-button-negative-contrast-hover: #{$fill-negative-transparent};
+  --components-button-negative-contrast-hover: #{$fill-negative-accent};
   --components-button-negative-contrast-icon: #{$shape-light};
   --components-button-negative-contrast-icon-active: #{$shape-accent};
   --components-button-negative-contrast-text: #{$text-light};
@@ -156,7 +156,7 @@
   --components-button-negative-contrast-active: #{$fill-negative-tint};
   --components-button-negative-contrast-border: #{$fill-negative-tint};
   --components-button-negative-contrast-default: #{$fill-background-standard-colorless};
-  --components-button-negative-contrast-hover: #{$fill-negative-transparent};
+  --components-button-negative-contrast-hover: #{$fill-negative-accent};
   --components-button-negative-contrast-icon: #{$shape-lightalt};
   --components-button-negative-contrast-icon-active: #{$shape-dark};
   --components-button-negative-contrast-text: #{$text-lightalt};
@@ -164,7 +164,7 @@
   --components-button-negative-standard-active: #{$fill-negative-tint};
   --components-button-negative-standard-border: #{$fill-negative-tint};
   --components-button-negative-standard-default: #{$fill-background-standard-colorless};
-  --components-button-negative-standard-hover: #{$fill-negative-transparent};
+  --components-button-negative-standard-hover: #{$fill-negative-accent};
   --components-button-negative-standard-icon: #{$text-lightalt};
   --components-button-negative-standard-icon-active: #{$shape-dark};
   --components-button-negative-standard-text: #{$text-lightalt};

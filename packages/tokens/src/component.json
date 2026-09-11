@@ -9,606 +9,6 @@
         },
         "color": [
           {
-            "name": "Components/Layout/Badge/Information/Contrast/Border",
-            "value": "#ffffff00",
-            "var": "Stroke/Colorless",
-            "rootAlias": "White/Alpha-0"
-          },
-          {
-            "name": "Components/Layout/Badge/Information/Contrast/Bullet",
-            "value": "#64b3e7",
-            "var": "Fill/Information/Contrast",
-            "rootAlias": "Sky/30"
-          },
-          {
-            "name": "Components/Layout/Badge/Information/Contrast/Fill",
-            "value": "#64b3e7",
-            "var": "Fill/Information/Contrast",
-            "rootAlias": "Sky/30"
-          },
-          {
-            "name": "Components/Layout/Badge/Information/Contrast/Icon",
-            "value": "#181c56",
-            "var": "Shape/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/Layout/Badge/Information/Contrast/Text",
-            "value": "#181c56",
-            "var": "Text/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/Layout/Badge/Information/Contrast/Text-Bullet",
-            "value": "#ffffff",
-            "var": "Text/Light",
-            "rootAlias": "White/Alpha-100"
-          },
-          {
-            "name": "Components/Layout/Badge/Information/Standard/Border",
-            "value": "#067eb2",
-            "var": "Stroke/Information",
-            "rootAlias": "Sky/50"
-          },
-          {
-            "name": "Components/Layout/Badge/Information/Standard/Bullet",
-            "value": "#067eb2",
-            "var": "Fill/Information/Deep",
-            "rootAlias": "Sky/50"
-          },
-          {
-            "name": "Components/Layout/Badge/Information/Standard/Fill",
-            "value": "#e1eff8",
-            "var": "Fill/Information/Muted",
-            "rootAlias": "Sky/10"
-          },
-          {
-            "name": "Components/Layout/Badge/Information/Standard/Icon",
-            "value": "#181c56",
-            "var": "Shape/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/Layout/Badge/Information/Standard/Text",
-            "value": "#181c56",
-            "var": "Text/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/Layout/Badge/Information/Standard/Text-Bullet",
-            "value": "#181c56",
-            "var": "Text/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/Layout/Badge/Negative/Contrast/Border",
-            "value": "#ffffff00",
-            "var": "Stroke/Colorless",
-            "rootAlias": "White/Alpha-0"
-          },
-          {
-            "name": "Components/Layout/Badge/Negative/Contrast/Bullet",
-            "value": "#ff5959",
-            "var": "Fill/Negative/Contrast",
-            "rootAlias": "Coral/40"
-          },
-          {
-            "name": "Components/Layout/Badge/Negative/Contrast/Fill",
-            "value": "#ff9494",
-            "var": "Fill/Negative/Tint",
-            "rootAlias": "Coral/30"
-          },
-          {
-            "name": "Components/Layout/Badge/Negative/Contrast/Icon",
-            "value": "#181c56",
-            "var": "Shape/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/Layout/Badge/Negative/Contrast/Text",
-            "value": "#181c56",
-            "var": "Text/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/Layout/Badge/Negative/Contrast/Text-Bullet",
-            "value": "#ffffff",
-            "var": "Text/Light",
-            "rootAlias": "White/Alpha-100"
-          },
-          {
-            "name": "Components/Layout/Badge/Negative/Standard/Border",
-            "value": "#d31b1b",
-            "var": "Stroke/Negative",
-            "rootAlias": "Coral/60"
-          },
-          {
-            "name": "Components/Layout/Badge/Negative/Standard/Bullet",
-            "value": "#d31b1b",
-            "var": "Fill/Negative/Deep",
-            "rootAlias": "Coral/60"
-          },
-          {
-            "name": "Components/Layout/Badge/Negative/Standard/Fill",
-            "value": "#ffcece",
-            "var": "Fill/Negative/Muted",
-            "rootAlias": "Coral/20"
-          },
-          {
-            "name": "Components/Layout/Badge/Negative/Standard/Icon",
-            "value": "#181c56",
-            "var": "Shape/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/Layout/Badge/Negative/Standard/Text",
-            "value": "#181c56",
-            "var": "Text/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/Layout/Badge/Negative/Standard/Text-Bullet",
-            "value": "#181c56",
-            "var": "Text/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/Layout/Badge/Neutral/Contrast/Border",
-            "value": "#ffffff00",
-            "var": "Stroke/Colorless",
-            "rootAlias": "White/Alpha-0"
-          },
-          {
-            "name": "Components/Layout/Badge/Neutral/Contrast/Bullet",
-            "value": "#c7cdeb",
-            "var": "Fill/Primary/Hover/Contrast",
-            "rootAlias": "Lavender/30"
-          },
-          {
-            "name": "Components/Layout/Badge/Neutral/Contrast/Fill",
-            "value": "#54568c",
-            "var": "Fill/Selected/Hover/Contrast",
-            "rootAlias": "Blue/80"
-          },
-          {
-            "name": "Components/Layout/Badge/Neutral/Contrast/Icon",
-            "value": "#ffffff",
-            "var": "Shape/Light",
-            "rootAlias": "White/Alpha-100"
-          },
-          {
-            "name": "Components/Layout/Badge/Neutral/Contrast/Text",
-            "value": "#ffffff",
-            "var": "Text/Light",
-            "rootAlias": "White/Alpha-100"
-          },
-          {
-            "name": "Components/Layout/Badge/Neutral/Contrast/Text-Bullet",
-            "value": "#ffffff",
-            "var": "Text/Light",
-            "rootAlias": "White/Alpha-100"
-          },
-          {
-            "name": "Components/Layout/Badge/Neutral/Standard/Border",
-            "value": "#949699",
-            "var": "Stroke/NeutralAlt",
-            "rootAlias": "Grey/60"
-          },
-          {
-            "name": "Components/Layout/Badge/Neutral/Standard/Bullet",
-            "value": "#81828f",
-            "var": "Fill/Selected/Default/DarkAlt",
-            "rootAlias": "Ebony/50"
-          },
-          {
-            "name": "Components/Layout/Badge/Neutral/Standard/Fill",
-            "value": "#f6f6f9",
-            "var": "Fill/Selected/Default/Light",
-            "rootAlias": "Blue/10"
-          },
-          {
-            "name": "Components/Layout/Badge/Neutral/Standard/Icon",
-            "value": "#181c56",
-            "var": "Shape/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/Layout/Badge/Neutral/Standard/Text",
-            "value": "#181c56",
-            "var": "Text/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/Layout/Badge/Neutral/Standard/Text-Bullet",
-            "value": "#181c56",
-            "var": "Text/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/Layout/Badge/Primary/Contrast/Bullet",
-            "value": "#aeb7e2",
-            "var": "Fill/Primary/Default/Contrast",
-            "rootAlias": "Lavender/40"
-          },
-          {
-            "name": "Components/Layout/Badge/Primary/Contrast/Fill",
-            "value": "#aeb7e2",
-            "var": "Fill/Primary/Default/Contrast",
-            "rootAlias": "Lavender/40"
-          },
-          {
-            "name": "Components/Layout/Badge/Primary/Contrast/Icon",
-            "value": "#181c56",
-            "var": "Shape/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/Layout/Badge/Primary/Contrast/Text",
-            "value": "#181c56",
-            "var": "Text/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/Layout/Badge/Primary/Contrast/Text-Bullet",
-            "value": "#ffffff",
-            "var": "Text/Light",
-            "rootAlias": "White/Alpha-100"
-          },
-          {
-            "name": "Components/Layout/Badge/Primary/Standard/Bullet",
-            "value": "#181c56",
-            "var": "Fill/Primary/Default/Light",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/Layout/Badge/Primary/Standard/Fill",
-            "value": "#181c56",
-            "var": "Fill/Primary/Default/Light",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/Layout/Badge/Primary/Standard/Icon",
-            "value": "#ffffff",
-            "var": "Shape/Light",
-            "rootAlias": "White/Alpha-100"
-          },
-          {
-            "name": "Components/Layout/Badge/Primary/Standard/Text",
-            "value": "#ffffff",
-            "var": "Text/Light",
-            "rootAlias": "White/Alpha-100"
-          },
-          {
-            "name": "Components/Layout/Badge/Primary/Standard/Text-Bullet",
-            "value": "#181c56",
-            "var": "Text/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/Layout/Badge/Success/Contrast/Border",
-            "value": "#ffffff00",
-            "var": "Stroke/Colorless",
-            "rootAlias": "White/Alpha-0"
-          },
-          {
-            "name": "Components/Layout/Badge/Success/Contrast/Bullet",
-            "value": "#5ac39a",
-            "var": "Fill/Success/Contrast",
-            "rootAlias": "Mint/40"
-          },
-          {
-            "name": "Components/Layout/Badge/Success/Contrast/Fill",
-            "value": "#5ac39a",
-            "var": "Fill/Success/Contrast",
-            "rootAlias": "Mint/40"
-          },
-          {
-            "name": "Components/Layout/Badge/Success/Contrast/Icon",
-            "value": "#181c56",
-            "var": "Shape/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/Layout/Badge/Success/Contrast/Text",
-            "value": "#181c56",
-            "var": "Text/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/Layout/Badge/Success/Contrast/Text-Bullet",
-            "value": "#ffffff",
-            "var": "Text/Light",
-            "rootAlias": "White/Alpha-100"
-          },
-          {
-            "name": "Components/Layout/Badge/Success/Standard/Border",
-            "value": "#1a8e60",
-            "var": "Stroke/Success",
-            "rootAlias": "Mint/60"
-          },
-          {
-            "name": "Components/Layout/Badge/Success/Standard/Bullet",
-            "value": "#1a8e60",
-            "var": "Fill/Success/Deep",
-            "rootAlias": "Mint/60"
-          },
-          {
-            "name": "Components/Layout/Badge/Success/Standard/Fill",
-            "value": "#d0f1e3",
-            "var": "Fill/Success/Muted",
-            "rootAlias": "Mint/20"
-          },
-          {
-            "name": "Components/Layout/Badge/Success/Standard/Icon",
-            "value": "#181c56",
-            "var": "Shape/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/Layout/Badge/Success/Standard/Text",
-            "value": "#181c56",
-            "var": "Text/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/Layout/Badge/Success/Standard/Text-Bullet",
-            "value": "#181c56",
-            "var": "Text/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/Layout/Badge/Tag/Contrast/Fill",
-            "value": "#393d79",
-            "var": "Fill/Background/Contrast/LightAlt",
-            "rootAlias": "Blue/90"
-          },
-          {
-            "name": "Components/Layout/Badge/Tag/Contrast/Icon",
-            "value": "#ffffff",
-            "var": "Shape/Light",
-            "rootAlias": "White/Alpha-100"
-          },
-          {
-            "name": "Components/Layout/Badge/Tag/Contrast/Text",
-            "value": "#ffffff",
-            "var": "Text/Light",
-            "rootAlias": "White/Alpha-100"
-          },
-          {
-            "name": "Components/Layout/Badge/Tag/Standard/Fill",
-            "value": "#f2f5f7",
-            "var": "Fill/Background/Tint/Neutral",
-            "rootAlias": "Grey/10"
-          },
-          {
-            "name": "Components/Layout/Badge/Tag/Standard/Icon",
-            "value": "#181c56",
-            "var": "Shape/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/Layout/Badge/Tag/Standard/Text",
-            "value": "#181c56",
-            "var": "Text/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/Layout/Badge/Warning/Contrast/Border",
-            "value": "#ffffff00",
-            "var": "Stroke/Colorless",
-            "rootAlias": "White/Alpha-0"
-          },
-          {
-            "name": "Components/Layout/Badge/Warning/Contrast/Bullet",
-            "value": "#ffe082",
-            "var": "Fill/Warning/Contrast",
-            "rootAlias": "Canary/40"
-          },
-          {
-            "name": "Components/Layout/Badge/Warning/Contrast/Fill",
-            "value": "#ffe082",
-            "var": "Fill/Warning/Contrast",
-            "rootAlias": "Canary/40"
-          },
-          {
-            "name": "Components/Layout/Badge/Warning/Contrast/Icon",
-            "value": "#181c56",
-            "var": "Shape/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/Layout/Badge/Warning/Contrast/Text",
-            "value": "#181c56",
-            "var": "Text/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/Layout/Badge/Warning/Contrast/Text-Bullet",
-            "value": "#ffffff",
-            "var": "Text/Light",
-            "rootAlias": "White/Alpha-100"
-          },
-          {
-            "name": "Components/Layout/Badge/Warning/Standard/Border",
-            "value": "#e9b10c",
-            "var": "Stroke/Warning",
-            "rootAlias": "Canary/70"
-          },
-          {
-            "name": "Components/Layout/Badge/Warning/Standard/Bullet",
-            "value": "#ffca28",
-            "var": "Fill/Warning/Deep",
-            "rootAlias": "Canary/60"
-          },
-          {
-            "name": "Components/Layout/Badge/Warning/Standard/Fill",
-            "value": "#fff4cd",
-            "var": "Fill/Warning/Muted",
-            "rootAlias": "Canary/20"
-          },
-          {
-            "name": "Components/Layout/Badge/Warning/Standard/Icon",
-            "value": "#181c56",
-            "var": "Shape/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/Layout/Badge/Warning/Standard/Text",
-            "value": "#181c56",
-            "var": "Text/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/Layout/Badge/Warning/Standard/Text-Bullet",
-            "value": "#181c56",
-            "var": "Text/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/Layout/Card/Contrast/Border-Default",
-            "value": "#ffffff00",
-            "var": "Stroke/Colorless",
-            "rootAlias": "White/Alpha-0"
-          },
-          {
-            "name": "Components/Layout/Card/Contrast/Border-active",
-            "value": "#aeb7e2",
-            "var": "Stroke/Contrast",
-            "rootAlias": "Lavender/40"
-          },
-          {
-            "name": "Components/Layout/Card/Contrast/Divide",
-            "value": "#ff5959",
-            "var": "Stroke/Highlight",
-            "rootAlias": "Coral/40"
-          },
-          {
-            "name": "Components/Layout/Card/Contrast/Fill-Default-Solid",
-            "value": "#393d79",
-            "var": "Fill/Selected/Default/Contrast",
-            "rootAlias": "Blue/90"
-          },
-          {
-            "name": "Components/Layout/Card/Contrast/Fill-Default-Transparent",
-            "value": "#393d79",
-            "var": "Fill/Selected/Default/Contrast",
-            "rootAlias": "Blue/90"
-          },
-          {
-            "name": "Components/Layout/Card/Contrast/Fill-HoverActive",
-            "value": "#54568c",
-            "var": "Fill/Selected/Hover/Contrast",
-            "rootAlias": "Blue/80"
-          },
-          {
-            "name": "Components/Layout/Card/Contrast/Icon",
-            "value": "#ffffff",
-            "var": "Shape/Light",
-            "rootAlias": "White/Alpha-100"
-          },
-          {
-            "name": "Components/Layout/Card/Contrast/Shadow layer1",
-            "value": "#ffffff00",
-            "var": "Fill/Background/Standard/Colorless",
-            "rootAlias": "White/Alpha-0"
-          },
-          {
-            "name": "Components/Layout/Card/Contrast/Shadow layer2",
-            "value": "#ffffff00",
-            "var": "Fill/Background/Standard/Colorless",
-            "rootAlias": "White/Alpha-0"
-          },
-          {
-            "name": "Components/Layout/Card/Contrast/Shadow layer3",
-            "value": "#ffffff00",
-            "var": "Fill/Background/Standard/Colorless",
-            "rootAlias": "White/Alpha-0"
-          },
-          {
-            "name": "Components/Layout/Card/Contrast/Subject text",
-            "value": "#d9dae8",
-            "var": "Text/SubduedAlt",
-            "rootAlias": "Blue/30"
-          },
-          {
-            "name": "Components/Layout/Card/Contrast/Text",
-            "value": "#ffffff",
-            "var": "Text/Light",
-            "rootAlias": "White/Alpha-100"
-          },
-          {
-            "name": "Components/Layout/Card/Standard/Border-Default",
-            "value": "#e3e6e8",
-            "var": "Stroke/Neutral",
-            "rootAlias": "Grey/30"
-          },
-          {
-            "name": "Components/Layout/Card/Standard/Border-active",
-            "value": "#181c56",
-            "var": "Stroke/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/Layout/Card/Standard/Divide",
-            "value": "#ff5959",
-            "var": "Stroke/Highlight",
-            "rootAlias": "Coral/40"
-          },
-          {
-            "name": "Components/Layout/Card/Standard/Fill-Default-Solid",
-            "value": "#ffffff",
-            "var": "Fill/Background/Standard/Light",
-            "rootAlias": "White/Alpha-100"
-          },
-          {
-            "name": "Components/Layout/Card/Standard/Fill-Default-Transparent",
-            "value": "#ffffff",
-            "var": "Fill/Background/Standard/Light",
-            "rootAlias": "White/Alpha-100"
-          },
-          {
-            "name": "Components/Layout/Card/Standard/Fill-HoverActive",
-            "value": "#f6f6f9",
-            "var": "Fill/Background/Tint/Light",
-            "rootAlias": "Blue/10"
-          },
-          {
-            "name": "Components/Layout/Card/Standard/Icon",
-            "value": "#181c56",
-            "var": "Shape/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/Layout/Card/Standard/Shadow layer1",
-            "value": "#cccdd44d",
-            "var": "Fill/Background/Overlay/TransparentAlt2",
-            "rootAlias": "Transparent/Ebony-Alpha20"
-          },
-          {
-            "name": "Components/Layout/Card/Standard/Shadow layer2",
-            "value": "#e5e5e959",
-            "var": "Fill/Selected/Hover/Dark",
-            "rootAlias": "Transparent/Ebony-Alpha35"
-          },
-          {
-            "name": "Components/Layout/Card/Standard/Shadow layer3",
-            "value": "#e5e5e926",
-            "var": "Fill/Background/Overlay/Transparent",
-            "rootAlias": "Transparent/Ebony-Alpha15"
-          },
-          {
-            "name": "Components/Layout/Card/Standard/Subject text",
-            "value": "#626493",
-            "var": "Text/Subdued",
-            "rootAlias": "Blue/70"
-          },
-          {
-            "name": "Components/Layout/Card/Standard/Text",
-            "value": "#181c56",
-            "var": "Text/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
             "name": "Components/alert/AlertBox/Information/Contrast/Border",
             "value": "#ffffff00",
             "var": "Stroke/Colorless",
@@ -1060,9 +460,9 @@
           },
           {
             "name": "Components/button/Negative/Contrast/Hover",
-            "value": "#ff949433",
-            "var": "Fill/Negative/Transparent",
-            "rootAlias": "Transparent/Coral-Alpha20"
+            "value": "#2e0505",
+            "var": "Fill/Negative/Accent",
+            "rootAlias": "Coral/100"
           },
           {
             "name": "Components/button/Negative/Contrast/Icon",
@@ -1719,12 +1119,6 @@
             "rootAlias": "Blue/20"
           },
           {
-            "name": "Components/datepicker/Calendar/DateFill-Selected-Hover",
-            "value": "#292b6a",
-            "var": "Fill/Background/Contrast/LightAlt-2",
-            "rootAlias": "Blue/100"
-          },
-          {
             "name": "Components/datepicker/Calendar/DateFill-Range-Hover",
             "value": "#d9dae8",
             "var": "Fill/Selected/Hover/Tint",
@@ -1735,6 +1129,12 @@
             "value": "#181c56",
             "var": "Fill/Primary/Default/Light",
             "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/datepicker/Calendar/DateFill-Selected-Hover",
+            "value": "#292b6a",
+            "var": "Fill/Background/Contrast/LightAlt-2",
+            "rootAlias": "Blue/100"
           },
           {
             "name": "Components/datepicker/Calendar/Icon",
@@ -2049,52 +1449,82 @@
             "rootAlias": "Grey/70"
           },
           {
-            "name": "Components/form/Base menu/Border",
+            "name": "Components/form/Base menu/Border/Borderless",
+            "value": "#ffffff00",
+            "var": "Stroke/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/form/Base menu/Border/Default",
             "value": "#8284ab",
             "var": "Stroke/Subdued",
             "rootAlias": "Blue/60"
           },
           {
-            "name": "Components/form/Base menu/Fill-Default",
+            "name": "Components/form/Base menu/Border/Subdued",
+            "value": "#b3b4bd",
+            "var": "Stroke/Dark",
+            "rootAlias": "Ebony/30"
+          },
+          {
+            "name": "Components/form/Base menu/Fill/Default",
             "value": "#f2f5f7",
             "var": "Fill/Background/Tint/Neutral",
             "rootAlias": "Grey/10"
           },
           {
-            "name": "Components/form/Base menu/Fill-Hover",
+            "name": "Components/form/Base menu/Fill/Hover",
             "value": "#d9ddf2",
             "var": "Fill/Secondary/Hover/Light",
             "rootAlias": "Lavender/20"
           },
           {
-            "name": "Components/form/Base menu/Fill-Selected",
+            "name": "Components/form/Base menu/Fill/Selected",
             "value": "#aeb7e2",
             "var": "Fill/Secondary/Active/Light",
             "rootAlias": "Lavender/40"
           },
           {
-            "name": "Components/form/Base menu/Icon",
+            "name": "Components/form/Base menu/Fill/White",
+            "value": "#ffffff",
+            "var": "Fill/Background/Standard/Light",
+            "rootAlias": "White/Alpha-100"
+          },
+          {
+            "name": "Components/form/Base menu/Icon/Default",
             "value": "#181c56",
             "var": "Shape/Accent",
             "rootAlias": "Lavender/90"
           },
           {
-            "name": "Components/form/Base menu/Icon-Disabled",
+            "name": "Components/form/Base menu/Icon/Disabled",
             "value": "#6e6f73",
             "var": "Shape/Neutral",
             "rootAlias": "Grey/70"
           },
           {
-            "name": "Components/form/Base menu/Text",
+            "name": "Components/form/Base menu/Icon/Subdued",
+            "value": "#626493",
+            "var": "Shape/Subdued",
+            "rootAlias": "Blue/70"
+          },
+          {
+            "name": "Components/form/Base menu/Text/Default",
             "value": "#181c56",
             "var": "Text/Accent",
             "rootAlias": "Lavender/90"
           },
           {
-            "name": "Components/form/Base menu/Text-Disabled",
+            "name": "Components/form/Base menu/Text/Disabled",
             "value": "#6e6f73",
             "var": "Text/Neutral",
             "rootAlias": "Grey/70"
+          },
+          {
+            "name": "Components/form/Base menu/Text/Subdued",
+            "value": "#626493",
+            "var": "Text/Subdued",
+            "rootAlias": "Blue/70"
           },
           {
             "name": "Components/form/Base panel/Contrast/Border-Default",
@@ -2128,9 +1558,9 @@
           },
           {
             "name": "Components/form/Base panel/Contrast/Fill-Expired",
-            "value": "#ff949433",
-            "var": "Fill/Negative/Transparent",
-            "rootAlias": "Transparent/Coral-Alpha20"
+            "value": "#2e0505",
+            "var": "Fill/Negative/Accent",
+            "rootAlias": "Coral/100"
           },
           {
             "name": "Components/form/Base panel/Contrast/Fill-Hover",
@@ -2200,9 +1630,9 @@
           },
           {
             "name": "Components/form/Base panel/Standard/Fill-Expired",
-            "value": "#ff949433",
-            "var": "Fill/Negative/Transparent",
-            "rootAlias": "Transparent/Coral-Alpha20"
+            "value": "#2e0505",
+            "var": "Fill/Negative/Accent",
+            "rootAlias": "Coral/100"
           },
           {
             "name": "Components/form/Base panel/Standard/Fill-Hover",
@@ -2937,6 +2367,888 @@
             "rootAlias": "Lavender/90"
           },
           {
+            "name": "Components/layout/Badge/Information/Contrast/Border",
+            "value": "#ffffff00",
+            "var": "Stroke/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/layout/Badge/Information/Contrast/Bullet",
+            "value": "#64b3e7",
+            "var": "Fill/Information/Contrast",
+            "rootAlias": "Sky/30"
+          },
+          {
+            "name": "Components/layout/Badge/Information/Contrast/Fill",
+            "value": "#64b3e7",
+            "var": "Fill/Information/Contrast",
+            "rootAlias": "Sky/30"
+          },
+          {
+            "name": "Components/layout/Badge/Information/Contrast/Icon",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/layout/Badge/Information/Contrast/Text",
+            "value": "#181c56",
+            "var": "Text/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/layout/Badge/Information/Contrast/Text-Bullet",
+            "value": "#ffffff",
+            "var": "Text/Light",
+            "rootAlias": "White/Alpha-100"
+          },
+          {
+            "name": "Components/layout/Badge/Information/Standard/Border",
+            "value": "#067eb2",
+            "var": "Stroke/Information",
+            "rootAlias": "Sky/50"
+          },
+          {
+            "name": "Components/layout/Badge/Information/Standard/Bullet",
+            "value": "#067eb2",
+            "var": "Fill/Information/Deep",
+            "rootAlias": "Sky/50"
+          },
+          {
+            "name": "Components/layout/Badge/Information/Standard/Fill",
+            "value": "#e1eff8",
+            "var": "Fill/Information/Muted",
+            "rootAlias": "Sky/10"
+          },
+          {
+            "name": "Components/layout/Badge/Information/Standard/Icon",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/layout/Badge/Information/Standard/Text",
+            "value": "#181c56",
+            "var": "Text/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/layout/Badge/Information/Standard/Text-Bullet",
+            "value": "#181c56",
+            "var": "Text/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/layout/Badge/Negative/Contrast/Border",
+            "value": "#ffffff00",
+            "var": "Stroke/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/layout/Badge/Negative/Contrast/Bullet",
+            "value": "#ff5959",
+            "var": "Fill/Negative/Contrast",
+            "rootAlias": "Coral/40"
+          },
+          {
+            "name": "Components/layout/Badge/Negative/Contrast/Fill",
+            "value": "#ff9494",
+            "var": "Fill/Negative/Tint",
+            "rootAlias": "Coral/30"
+          },
+          {
+            "name": "Components/layout/Badge/Negative/Contrast/Icon",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/layout/Badge/Negative/Contrast/Text",
+            "value": "#181c56",
+            "var": "Text/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/layout/Badge/Negative/Contrast/Text-Bullet",
+            "value": "#ffffff",
+            "var": "Text/Light",
+            "rootAlias": "White/Alpha-100"
+          },
+          {
+            "name": "Components/layout/Badge/Negative/Standard/Border",
+            "value": "#d31b1b",
+            "var": "Stroke/Negative",
+            "rootAlias": "Coral/60"
+          },
+          {
+            "name": "Components/layout/Badge/Negative/Standard/Bullet",
+            "value": "#d31b1b",
+            "var": "Fill/Negative/Deep",
+            "rootAlias": "Coral/60"
+          },
+          {
+            "name": "Components/layout/Badge/Negative/Standard/Fill",
+            "value": "#ffcece",
+            "var": "Fill/Negative/Muted",
+            "rootAlias": "Coral/20"
+          },
+          {
+            "name": "Components/layout/Badge/Negative/Standard/Icon",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/layout/Badge/Negative/Standard/Text",
+            "value": "#181c56",
+            "var": "Text/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/layout/Badge/Negative/Standard/Text-Bullet",
+            "value": "#181c56",
+            "var": "Text/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/layout/Badge/Neutral/Contrast/Border",
+            "value": "#ffffff00",
+            "var": "Stroke/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/layout/Badge/Neutral/Contrast/Bullet",
+            "value": "#c7cdeb",
+            "var": "Fill/Primary/Hover/Contrast",
+            "rootAlias": "Lavender/30"
+          },
+          {
+            "name": "Components/layout/Badge/Neutral/Contrast/Fill",
+            "value": "#54568c",
+            "var": "Fill/Selected/Hover/Contrast",
+            "rootAlias": "Blue/80"
+          },
+          {
+            "name": "Components/layout/Badge/Neutral/Contrast/Icon",
+            "value": "#ffffff",
+            "var": "Shape/Light",
+            "rootAlias": "White/Alpha-100"
+          },
+          {
+            "name": "Components/layout/Badge/Neutral/Contrast/Text",
+            "value": "#ffffff",
+            "var": "Text/Light",
+            "rootAlias": "White/Alpha-100"
+          },
+          {
+            "name": "Components/layout/Badge/Neutral/Contrast/Text-Bullet",
+            "value": "#ffffff",
+            "var": "Text/Light",
+            "rootAlias": "White/Alpha-100"
+          },
+          {
+            "name": "Components/layout/Badge/Neutral/Standard/Border",
+            "value": "#949699",
+            "var": "Stroke/NeutralAlt",
+            "rootAlias": "Grey/60"
+          },
+          {
+            "name": "Components/layout/Badge/Neutral/Standard/Bullet",
+            "value": "#81828f",
+            "var": "Fill/Selected/Default/DarkAlt",
+            "rootAlias": "Ebony/50"
+          },
+          {
+            "name": "Components/layout/Badge/Neutral/Standard/Fill",
+            "value": "#f6f6f9",
+            "var": "Fill/Selected/Default/Light",
+            "rootAlias": "Blue/10"
+          },
+          {
+            "name": "Components/layout/Badge/Neutral/Standard/Icon",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/layout/Badge/Neutral/Standard/Text",
+            "value": "#181c56",
+            "var": "Text/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/layout/Badge/Neutral/Standard/Text-Bullet",
+            "value": "#181c56",
+            "var": "Text/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/layout/Badge/Primary/Contrast/Bullet",
+            "value": "#aeb7e2",
+            "var": "Fill/Primary/Default/Contrast",
+            "rootAlias": "Lavender/40"
+          },
+          {
+            "name": "Components/layout/Badge/Primary/Contrast/Fill",
+            "value": "#aeb7e2",
+            "var": "Fill/Primary/Default/Contrast",
+            "rootAlias": "Lavender/40"
+          },
+          {
+            "name": "Components/layout/Badge/Primary/Contrast/Icon",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/layout/Badge/Primary/Contrast/Text",
+            "value": "#181c56",
+            "var": "Text/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/layout/Badge/Primary/Contrast/Text-Bullet",
+            "value": "#ffffff",
+            "var": "Text/Light",
+            "rootAlias": "White/Alpha-100"
+          },
+          {
+            "name": "Components/layout/Badge/Primary/Standard/Bullet",
+            "value": "#181c56",
+            "var": "Fill/Primary/Default/Light",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/layout/Badge/Primary/Standard/Fill",
+            "value": "#181c56",
+            "var": "Fill/Primary/Default/Light",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/layout/Badge/Primary/Standard/Icon",
+            "value": "#ffffff",
+            "var": "Shape/Light",
+            "rootAlias": "White/Alpha-100"
+          },
+          {
+            "name": "Components/layout/Badge/Primary/Standard/Text",
+            "value": "#ffffff",
+            "var": "Text/Light",
+            "rootAlias": "White/Alpha-100"
+          },
+          {
+            "name": "Components/layout/Badge/Primary/Standard/Text-Bullet",
+            "value": "#181c56",
+            "var": "Text/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/layout/Badge/Success/Contrast/Border",
+            "value": "#ffffff00",
+            "var": "Stroke/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/layout/Badge/Success/Contrast/Bullet",
+            "value": "#5ac39a",
+            "var": "Fill/Success/Contrast",
+            "rootAlias": "Mint/40"
+          },
+          {
+            "name": "Components/layout/Badge/Success/Contrast/Fill",
+            "value": "#5ac39a",
+            "var": "Fill/Success/Contrast",
+            "rootAlias": "Mint/40"
+          },
+          {
+            "name": "Components/layout/Badge/Success/Contrast/Icon",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/layout/Badge/Success/Contrast/Text",
+            "value": "#181c56",
+            "var": "Text/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/layout/Badge/Success/Contrast/Text-Bullet",
+            "value": "#ffffff",
+            "var": "Text/Light",
+            "rootAlias": "White/Alpha-100"
+          },
+          {
+            "name": "Components/layout/Badge/Success/Standard/Border",
+            "value": "#1a8e60",
+            "var": "Stroke/Success",
+            "rootAlias": "Mint/60"
+          },
+          {
+            "name": "Components/layout/Badge/Success/Standard/Bullet",
+            "value": "#1a8e60",
+            "var": "Fill/Success/Deep",
+            "rootAlias": "Mint/60"
+          },
+          {
+            "name": "Components/layout/Badge/Success/Standard/Fill",
+            "value": "#d0f1e3",
+            "var": "Fill/Success/Muted",
+            "rootAlias": "Mint/20"
+          },
+          {
+            "name": "Components/layout/Badge/Success/Standard/Icon",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/layout/Badge/Success/Standard/Text",
+            "value": "#181c56",
+            "var": "Text/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/layout/Badge/Success/Standard/Text-Bullet",
+            "value": "#181c56",
+            "var": "Text/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/layout/Badge/Warning/Contrast/Border",
+            "value": "#ffffff00",
+            "var": "Stroke/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/layout/Badge/Warning/Contrast/Bullet",
+            "value": "#ffe082",
+            "var": "Fill/Warning/Contrast",
+            "rootAlias": "Canary/40"
+          },
+          {
+            "name": "Components/layout/Badge/Warning/Contrast/Fill",
+            "value": "#ffe082",
+            "var": "Fill/Warning/Contrast",
+            "rootAlias": "Canary/40"
+          },
+          {
+            "name": "Components/layout/Badge/Warning/Contrast/Icon",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/layout/Badge/Warning/Contrast/Text",
+            "value": "#181c56",
+            "var": "Text/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/layout/Badge/Warning/Contrast/Text-Bullet",
+            "value": "#ffffff",
+            "var": "Text/Light",
+            "rootAlias": "White/Alpha-100"
+          },
+          {
+            "name": "Components/layout/Badge/Warning/Standard/Border",
+            "value": "#e9b10c",
+            "var": "Stroke/Warning",
+            "rootAlias": "Canary/70"
+          },
+          {
+            "name": "Components/layout/Badge/Warning/Standard/Bullet",
+            "value": "#ffca28",
+            "var": "Fill/Warning/Deep",
+            "rootAlias": "Canary/60"
+          },
+          {
+            "name": "Components/layout/Badge/Warning/Standard/Fill",
+            "value": "#fff4cd",
+            "var": "Fill/Warning/Muted",
+            "rootAlias": "Canary/20"
+          },
+          {
+            "name": "Components/layout/Badge/Warning/Standard/Icon",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/layout/Badge/Warning/Standard/Text",
+            "value": "#181c56",
+            "var": "Text/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/layout/Badge/Warning/Standard/Text-Bullet",
+            "value": "#181c56",
+            "var": "Text/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/layout/Card/Contrast/Border-Default",
+            "value": "#ffffff00",
+            "var": "Stroke/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/layout/Card/Contrast/Border-active",
+            "value": "#aeb7e2",
+            "var": "Stroke/Contrast",
+            "rootAlias": "Lavender/40"
+          },
+          {
+            "name": "Components/layout/Card/Contrast/Divide",
+            "value": "#ff5959",
+            "var": "Stroke/Highlight",
+            "rootAlias": "Coral/40"
+          },
+          {
+            "name": "Components/layout/Card/Contrast/Fill-Default-Solid",
+            "value": "#393d79",
+            "var": "Fill/Selected/Default/Contrast",
+            "rootAlias": "Blue/90"
+          },
+          {
+            "name": "Components/layout/Card/Contrast/Fill-Default-Transparent",
+            "value": "#393d79",
+            "var": "Fill/Selected/Default/Contrast",
+            "rootAlias": "Blue/90"
+          },
+          {
+            "name": "Components/layout/Card/Contrast/Fill-HoverActive",
+            "value": "#54568c",
+            "var": "Fill/Selected/Hover/Contrast",
+            "rootAlias": "Blue/80"
+          },
+          {
+            "name": "Components/layout/Card/Contrast/Icon",
+            "value": "#ffffff",
+            "var": "Shape/Light",
+            "rootAlias": "White/Alpha-100"
+          },
+          {
+            "name": "Components/layout/Card/Contrast/Shadow layer1",
+            "value": "#ffffff00",
+            "var": "Fill/Background/Standard/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/layout/Card/Contrast/Shadow layer2",
+            "value": "#ffffff00",
+            "var": "Fill/Background/Standard/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/layout/Card/Contrast/Shadow layer3",
+            "value": "#ffffff00",
+            "var": "Fill/Background/Standard/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/layout/Card/Contrast/Subject text",
+            "value": "#d9dae8",
+            "var": "Text/SubduedAlt",
+            "rootAlias": "Blue/30"
+          },
+          {
+            "name": "Components/layout/Card/Contrast/Text",
+            "value": "#ffffff",
+            "var": "Text/Light",
+            "rootAlias": "White/Alpha-100"
+          },
+          {
+            "name": "Components/layout/Card/Standard/Border-Default",
+            "value": "#e3e6e8",
+            "var": "Stroke/Neutral",
+            "rootAlias": "Grey/30"
+          },
+          {
+            "name": "Components/layout/Card/Standard/Border-active",
+            "value": "#181c56",
+            "var": "Stroke/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/layout/Card/Standard/Divide",
+            "value": "#ff5959",
+            "var": "Stroke/Highlight",
+            "rootAlias": "Coral/40"
+          },
+          {
+            "name": "Components/layout/Card/Standard/Fill-Default-Solid",
+            "value": "#ffffff",
+            "var": "Fill/Background/Standard/Light",
+            "rootAlias": "White/Alpha-100"
+          },
+          {
+            "name": "Components/layout/Card/Standard/Fill-Default-Transparent",
+            "value": "#ffffff",
+            "var": "Fill/Background/Standard/Light",
+            "rootAlias": "White/Alpha-100"
+          },
+          {
+            "name": "Components/layout/Card/Standard/Fill-HoverActive",
+            "value": "#f6f6f9",
+            "var": "Fill/Background/Tint/Light",
+            "rootAlias": "Blue/10"
+          },
+          {
+            "name": "Components/layout/Card/Standard/Icon",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/layout/Card/Standard/Shadow layer1",
+            "value": "#cccdd44d",
+            "var": "Fill/Background/Overlay/TransparentAlt2",
+            "rootAlias": "Transparent/Ebony-Alpha20"
+          },
+          {
+            "name": "Components/layout/Card/Standard/Shadow layer2",
+            "value": "#e5e5e959",
+            "var": "Fill/Selected/Hover/Dark",
+            "rootAlias": "Transparent/Ebony-Alpha35"
+          },
+          {
+            "name": "Components/layout/Card/Standard/Shadow layer3",
+            "value": "#e5e5e926",
+            "var": "Fill/Background/Overlay/Transparent",
+            "rootAlias": "Transparent/Ebony-Alpha15"
+          },
+          {
+            "name": "Components/layout/Card/Standard/Subject text",
+            "value": "#626493",
+            "var": "Text/Subdued",
+            "rootAlias": "Blue/70"
+          },
+          {
+            "name": "Components/layout/Card/Standard/Text",
+            "value": "#181c56",
+            "var": "Text/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/layout/Tag/Fill/Contrast/Azure",
+            "value": "#cdeefe",
+            "var": "Tint/Azure",
+            "rootAlias": "Tint/Azure"
+          },
+          {
+            "name": "Components/layout/Tag/Fill/Contrast/Blue",
+            "value": "#c5e0fc",
+            "var": "Tint/Blue",
+            "rootAlias": "Tint/Blue"
+          },
+          {
+            "name": "Components/layout/Tag/Fill/Contrast/Coral",
+            "value": "#ffe5e5",
+            "var": "Tint/Coral",
+            "rootAlias": "Tint/Coral"
+          },
+          {
+            "name": "Components/layout/Tag/Fill/Contrast/Information",
+            "value": "#64b3e7",
+            "var": "Fill/Information/Contrast",
+            "rootAlias": "Sky/30"
+          },
+          {
+            "name": "Components/layout/Tag/Fill/Contrast/Jungle",
+            "value": "#c2f0ec",
+            "var": "Tint/Jungle",
+            "rootAlias": "Tint/Jungle"
+          },
+          {
+            "name": "Components/layout/Tag/Fill/Contrast/Lavender",
+            "value": "#ced4ee",
+            "var": "Tint/Lavender",
+            "rootAlias": "Tint/Lavender"
+          },
+          {
+            "name": "Components/layout/Tag/Fill/Contrast/Lilac",
+            "value": "#f9dcf9",
+            "var": "Tint/Lilac",
+            "rootAlias": "Tint/Lilac"
+          },
+          {
+            "name": "Components/layout/Tag/Fill/Contrast/Lime",
+            "value": "#f0f98b",
+            "var": "Tint/Lime",
+            "rootAlias": "Tint/Lime"
+          },
+          {
+            "name": "Components/layout/Tag/Fill/Contrast/Mystic",
+            "value": "#ebdefc",
+            "var": "Tint/Mystic",
+            "rootAlias": "Tint/Mystic"
+          },
+          {
+            "name": "Components/layout/Tag/Fill/Contrast/Negative",
+            "value": "#ff9494",
+            "var": "Fill/Negative/Tint",
+            "rootAlias": "Coral/30"
+          },
+          {
+            "name": "Components/layout/Tag/Fill/Contrast/Neutral",
+            "value": "#54568c",
+            "var": "Fill/Selected/Hover/Contrast",
+            "rootAlias": "Blue/80"
+          },
+          {
+            "name": "Components/layout/Tag/Fill/Contrast/Peach",
+            "value": "#ffe4d6",
+            "var": "Tint/Peach",
+            "rootAlias": "Tint/Peach"
+          },
+          {
+            "name": "Components/layout/Tag/Fill/Contrast/Spring",
+            "value": "#d7ecb6",
+            "var": "Tint/Spring",
+            "rootAlias": "Tint/Spring"
+          },
+          {
+            "name": "Components/layout/Tag/Fill/Contrast/Success",
+            "value": "#5ac39a",
+            "var": "Fill/Success/Contrast",
+            "rootAlias": "Mint/40"
+          },
+          {
+            "name": "Components/layout/Tag/Fill/Contrast/Warning",
+            "value": "#ffe082",
+            "var": "Fill/Warning/Contrast",
+            "rootAlias": "Canary/40"
+          },
+          {
+            "name": "Components/layout/Tag/Fill/Default/Azure",
+            "value": "#cdeefe",
+            "var": "Tint/Azure",
+            "rootAlias": "Tint/Azure"
+          },
+          {
+            "name": "Components/layout/Tag/Fill/Default/Blue",
+            "value": "#c5e0fc",
+            "var": "Tint/Blue",
+            "rootAlias": "Tint/Blue"
+          },
+          {
+            "name": "Components/layout/Tag/Fill/Default/Coral",
+            "value": "#ffe5e5",
+            "var": "Tint/Coral",
+            "rootAlias": "Tint/Coral"
+          },
+          {
+            "name": "Components/layout/Tag/Fill/Default/Information",
+            "value": "#e1eff8",
+            "var": "Fill/Information/Muted",
+            "rootAlias": "Sky/10"
+          },
+          {
+            "name": "Components/layout/Tag/Fill/Default/Jungle",
+            "value": "#c2f0ec",
+            "var": "Tint/Jungle",
+            "rootAlias": "Tint/Jungle"
+          },
+          {
+            "name": "Components/layout/Tag/Fill/Default/Lavender",
+            "value": "#ced4ee",
+            "var": "Tint/Lavender",
+            "rootAlias": "Tint/Lavender"
+          },
+          {
+            "name": "Components/layout/Tag/Fill/Default/Lilac",
+            "value": "#f9dcf9",
+            "var": "Tint/Lilac",
+            "rootAlias": "Tint/Lilac"
+          },
+          {
+            "name": "Components/layout/Tag/Fill/Default/Lime",
+            "value": "#f0f98b",
+            "var": "Tint/Lime",
+            "rootAlias": "Tint/Lime"
+          },
+          {
+            "name": "Components/layout/Tag/Fill/Default/Mystic",
+            "value": "#ebdefc",
+            "var": "Tint/Mystic",
+            "rootAlias": "Tint/Mystic"
+          },
+          {
+            "name": "Components/layout/Tag/Fill/Default/Negative",
+            "value": "#ffcece",
+            "var": "Fill/Negative/Muted",
+            "rootAlias": "Coral/20"
+          },
+          {
+            "name": "Components/layout/Tag/Fill/Default/Neutral",
+            "value": "#f6f6f9",
+            "var": "Fill/Selected/Default/Light",
+            "rootAlias": "Blue/10"
+          },
+          {
+            "name": "Components/layout/Tag/Fill/Default/Peach",
+            "value": "#ffe4d6",
+            "var": "Tint/Peach",
+            "rootAlias": "Tint/Peach"
+          },
+          {
+            "name": "Components/layout/Tag/Fill/Default/Spring",
+            "value": "#d7ecb6",
+            "var": "Tint/Spring",
+            "rootAlias": "Tint/Spring"
+          },
+          {
+            "name": "Components/layout/Tag/Fill/Default/Success",
+            "value": "#d0f1e3",
+            "var": "Fill/Success/Muted",
+            "rootAlias": "Mint/20"
+          },
+          {
+            "name": "Components/layout/Tag/Fill/Default/Warning",
+            "value": "#fff4cd",
+            "var": "Fill/Warning/Muted",
+            "rootAlias": "Canary/20"
+          },
+          {
+            "name": "Components/layout/Tag/Icon/Contrast/Neutral",
+            "value": "#ffffff",
+            "var": "Shape/Light",
+            "rootAlias": "White/Alpha-100"
+          },
+          {
+            "name": "Components/layout/Tag/Icon/Contrast/Standard",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/layout/Tag/Icon/Default/Neutral",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/layout/Tag/Icon/Default/Standard",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/layout/Tag/Stroke/Default/Azure",
+            "value": "#58a9d1",
+            "var": "Tint/Stroke/Azure",
+            "rootAlias": "Tint/Stroke/Azure"
+          },
+          {
+            "name": "Components/layout/Tag/Stroke/Default/Blue",
+            "value": "#608cce",
+            "var": "Tint/Stroke/Blue",
+            "rootAlias": "Tint/Stroke/Blue"
+          },
+          {
+            "name": "Components/layout/Tag/Stroke/Default/Coral",
+            "value": "#d98c8d",
+            "var": "Tint/Stroke/Coral",
+            "rootAlias": "Tint/Stroke/Coral"
+          },
+          {
+            "name": "Components/layout/Tag/Stroke/Default/Information",
+            "value": "#067eb2",
+            "var": "Stroke/Information",
+            "rootAlias": "Sky/50"
+          },
+          {
+            "name": "Components/layout/Tag/Stroke/Default/Jungle",
+            "value": "#14a397",
+            "var": "Tint/Stroke/Jungle",
+            "rootAlias": "Tint/Stroke/Jungle"
+          },
+          {
+            "name": "Components/layout/Tag/Stroke/Default/Lavender",
+            "value": "#939abd",
+            "var": "Tint/Stroke/Lavender",
+            "rootAlias": "Tint/Stroke/Lavender"
+          },
+          {
+            "name": "Components/layout/Tag/Stroke/Default/Lilac",
+            "value": "#c377c3",
+            "var": "Tint/Stroke/Lilac",
+            "rootAlias": "Tint/Stroke/Lilac"
+          },
+          {
+            "name": "Components/layout/Tag/Stroke/Default/Lime",
+            "value": "#a0aa2c",
+            "var": "Tint/Stroke/Lime",
+            "rootAlias": "Tint/Stroke/Lime"
+          },
+          {
+            "name": "Components/layout/Tag/Stroke/Default/Mystic",
+            "value": "#a689ce",
+            "var": "Tint/Stroke/Mystic",
+            "rootAlias": "Tint/Stroke/Mystic"
+          },
+          {
+            "name": "Components/layout/Tag/Stroke/Default/Negative",
+            "value": "#d31b1b",
+            "var": "Stroke/Negative",
+            "rootAlias": "Coral/60"
+          },
+          {
+            "name": "Components/layout/Tag/Stroke/Default/Neutral",
+            "value": "#abacb2",
+            "var": "Tint/Stroke/Chalk",
+            "rootAlias": "Tint/Stroke/Chalk"
+          },
+          {
+            "name": "Components/layout/Tag/Stroke/Default/Peach",
+            "value": "#d0987c",
+            "var": "Tint/Stroke/Peach",
+            "rootAlias": "Tint/Stroke/Peach"
+          },
+          {
+            "name": "Components/layout/Tag/Stroke/Default/Spring",
+            "value": "#6aa111",
+            "var": "Tint/Stroke/Spring",
+            "rootAlias": "Tint/Stroke/Spring"
+          },
+          {
+            "name": "Components/layout/Tag/Stroke/Default/Success",
+            "value": "#1a8e60",
+            "var": "Stroke/Success",
+            "rootAlias": "Mint/60"
+          },
+          {
+            "name": "Components/layout/Tag/Stroke/Default/Warning",
+            "value": "#e9b10c",
+            "var": "Stroke/Warning",
+            "rootAlias": "Canary/70"
+          },
+          {
+            "name": "Components/layout/Tag/Text/Contrast/Neutral",
+            "value": "#ffffff",
+            "var": "Text/Light",
+            "rootAlias": "White/Alpha-100"
+          },
+          {
+            "name": "Components/layout/Tag/Text/Contrast/Standard",
+            "value": "#181c56",
+            "var": "Text/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/layout/Tag/Text/Default/Neutral",
+            "value": "#181c56",
+            "var": "Text/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/layout/Tag/Text/Default/Standard",
+            "value": "#181c56",
+            "var": "Text/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
             "name": "Components/loader/Fileupload/Contrast/Fill-Default",
             "value": "#ffffff00",
             "var": "Fill/Background/Standard/Colorless",
@@ -3441,160 +3753,148 @@
             "rootAlias": "Lavender/90"
           },
           {
-            "name": "Components/menu/Side Navigation/Contrast/Avatar",
-            "value": "#393d79",
-            "var": "Fill/Background/Contrast/LightAlt",
-            "rootAlias": "Blue/90"
+            "name": "Components/menu/Side Navigation/Contrast/Fill/Active",
+            "value": "#ffffff00",
+            "var": "Fill/Background/Standard/Colorless",
+            "rootAlias": "White/Alpha-0"
           },
           {
-            "name": "Components/menu/Side Navigation/Contrast/Background",
+            "name": "Components/menu/Side Navigation/Contrast/Fill/Background",
             "value": "#181c56",
             "var": "Fill/Background/Contrast/Light",
             "rootAlias": "Lavender/90"
           },
           {
-            "name": "Components/menu/Side Navigation/Contrast/Divide",
-            "value": "#8284ab",
-            "var": "Stroke/Subdued",
-            "rootAlias": "Blue/60"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Contrast/Fill-Active",
+            "name": "Components/menu/Side Navigation/Contrast/Fill/Default",
             "value": "#ffffff00",
             "var": "Fill/Background/Standard/Colorless",
             "rootAlias": "White/Alpha-0"
           },
           {
-            "name": "Components/menu/Side Navigation/Contrast/Fill-Default",
-            "value": "#ffffff00",
-            "var": "Fill/Background/Standard/Colorless",
-            "rootAlias": "White/Alpha-0"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Contrast/Fill-Hover",
+            "name": "Components/menu/Side Navigation/Contrast/Fill/Hover",
             "value": "#393d79",
             "var": "Fill/Background/Contrast/LightAlt",
             "rootAlias": "Blue/90"
           },
           {
-            "name": "Components/menu/Side Navigation/Contrast/Icon",
+            "name": "Components/menu/Side Navigation/Contrast/Icon/Default",
             "value": "#ffffff",
             "var": "Shape/Light",
             "rootAlias": "White/Alpha-100"
           },
           {
-            "name": "Components/menu/Side Navigation/Contrast/Icon-Disabled",
+            "name": "Components/menu/Side Navigation/Contrast/Icon/Disabled",
             "value": "#b6b8ba",
             "var": "Shape/NeutralAlt",
             "rootAlias": "Grey/50"
           },
           {
-            "name": "Components/menu/Side Navigation/Contrast/Icon-Label",
+            "name": "Components/menu/Side Navigation/Contrast/Icon/Label",
             "value": "#aeb7e2",
             "var": "Shape/Contrast",
             "rootAlias": "Lavender/40"
           },
           {
-            "name": "Components/menu/Side Navigation/Contrast/Label",
-            "value": "#aeb7e2",
-            "var": "Text/Contrast",
-            "rootAlias": "Lavender/40"
+            "name": "Components/menu/Side Navigation/Contrast/Stroke/Divide",
+            "value": "#8284ab",
+            "var": "Stroke/Subdued",
+            "rootAlias": "Blue/60"
           },
           {
-            "name": "Components/menu/Side Navigation/Contrast/Stroke-Selected",
+            "name": "Components/menu/Side Navigation/Contrast/Stroke/Selected",
             "value": "#ff5959",
             "var": "Stroke/Highlight",
             "rootAlias": "Coral/40"
           },
           {
-            "name": "Components/menu/Side Navigation/Contrast/Text",
+            "name": "Components/menu/Side Navigation/Contrast/Text/Default",
             "value": "#ffffff",
             "var": "Text/Light",
             "rootAlias": "White/Alpha-100"
           },
           {
-            "name": "Components/menu/Side Navigation/Contrast/Text-Disabled",
+            "name": "Components/menu/Side Navigation/Contrast/Text/Disabled",
             "value": "#b6b8ba",
             "var": "Text/NeutralAlt",
             "rootAlias": "Grey/50"
           },
           {
-            "name": "Components/menu/Side Navigation/Standard/Avatar",
-            "value": "#ffffff",
-            "var": "Fill/Background/Standard/Light",
-            "rootAlias": "White/Alpha-100"
+            "name": "Components/menu/Side Navigation/Contrast/Text/Label",
+            "value": "#aeb7e2",
+            "var": "Text/Contrast",
+            "rootAlias": "Lavender/40"
           },
           {
-            "name": "Components/menu/Side Navigation/Standard/Background",
+            "name": "Components/menu/Side Navigation/Standard/Fill/Active",
+            "value": "#ffffff00",
+            "var": "Fill/Background/Standard/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Standard/Fill/Background",
             "value": "#f2f5f7",
             "var": "Fill/Background/Tint/Neutral",
             "rootAlias": "Grey/10"
           },
           {
-            "name": "Components/menu/Side Navigation/Standard/Divide",
-            "value": "#e3e6e8",
-            "var": "Stroke/Neutral",
-            "rootAlias": "Grey/30"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Standard/Fill-Active",
+            "name": "Components/menu/Side Navigation/Standard/Fill/Default",
             "value": "#ffffff00",
             "var": "Fill/Background/Standard/Colorless",
             "rootAlias": "White/Alpha-0"
           },
           {
-            "name": "Components/menu/Side Navigation/Standard/Fill-Default",
-            "value": "#ffffff00",
-            "var": "Fill/Background/Standard/Colorless",
-            "rootAlias": "White/Alpha-0"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Standard/Fill-Hover",
+            "name": "Components/menu/Side Navigation/Standard/Fill/Hover",
             "value": "#d9dae8",
             "var": "Fill/Background/Subdued/Light",
             "rootAlias": "Blue/30"
           },
           {
-            "name": "Components/menu/Side Navigation/Standard/Icon",
+            "name": "Components/menu/Side Navigation/Standard/Icon/Default",
             "value": "#181c56",
             "var": "Shape/Accent",
             "rootAlias": "Lavender/90"
           },
           {
-            "name": "Components/menu/Side Navigation/Standard/Icon-Disabled",
+            "name": "Components/menu/Side Navigation/Standard/Icon/Disabled",
             "value": "#6e6f73",
             "var": "Shape/Neutral",
             "rootAlias": "Grey/70"
           },
           {
-            "name": "Components/menu/Side Navigation/Standard/Icon-Label",
+            "name": "Components/menu/Side Navigation/Standard/Icon/Label",
             "value": "#626493",
             "var": "Shape/Subdued",
             "rootAlias": "Blue/70"
           },
           {
-            "name": "Components/menu/Side Navigation/Standard/Label",
-            "value": "#626493",
-            "var": "Text/Subdued",
-            "rootAlias": "Blue/70"
+            "name": "Components/menu/Side Navigation/Standard/Stroke/Divide",
+            "value": "#e3e6e8",
+            "var": "Stroke/Neutral",
+            "rootAlias": "Grey/30"
           },
           {
-            "name": "Components/menu/Side Navigation/Standard/Stroke-Selected",
+            "name": "Components/menu/Side Navigation/Standard/Stroke/Selected",
             "value": "#181c56",
             "var": "Stroke/Accent",
             "rootAlias": "Lavender/90"
           },
           {
-            "name": "Components/menu/Side Navigation/Standard/Text",
+            "name": "Components/menu/Side Navigation/Standard/Text/Default",
             "value": "#181c56",
             "var": "Text/Accent",
             "rootAlias": "Lavender/90"
           },
           {
-            "name": "Components/menu/Side Navigation/Standard/Text-Disabled",
+            "name": "Components/menu/Side Navigation/Standard/Text/Disabled",
             "value": "#6e6f73",
             "var": "Text/Neutral",
             "rootAlias": "Grey/70"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Standard/Text/Label",
+            "value": "#626493",
+            "var": "Text/Subdued",
+            "rootAlias": "Blue/70"
           },
           {
             "name": "Components/menu/Stepper/Contrast/Background",
@@ -3715,6 +4015,84 @@
             "value": "#626493",
             "var": "Text/Subdued",
             "rootAlias": "Blue/70"
+          },
+          {
+            "name": "Components/menu/Topbar/Contrast/Avatar",
+            "value": "#393d79",
+            "var": "Fill/Background/Contrast/LightAlt",
+            "rootAlias": "Blue/90"
+          },
+          {
+            "name": "Components/menu/Topbar/Contrast/Background",
+            "value": "#181c56",
+            "var": "Fill/Background/Contrast/Light",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/menu/Topbar/Contrast/Divide",
+            "value": "#8284ab",
+            "var": "Stroke/Subdued",
+            "rootAlias": "Blue/60"
+          },
+          {
+            "name": "Components/menu/Topbar/Contrast/Fill-Active",
+            "value": "#ffffff00",
+            "var": "Fill/Background/Standard/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/menu/Topbar/Contrast/Fill-Default",
+            "value": "#ffffff00",
+            "var": "Fill/Background/Standard/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/menu/Topbar/Contrast/Fill-Hover",
+            "value": "#393d79",
+            "var": "Fill/Background/Contrast/LightAlt",
+            "rootAlias": "Blue/90"
+          },
+          {
+            "name": "Components/menu/Topbar/Contrast/Icon",
+            "value": "#ffffff",
+            "var": "Shape/Light",
+            "rootAlias": "White/Alpha-100"
+          },
+          {
+            "name": "Components/menu/Topbar/Contrast/Icon-Disabled",
+            "value": "#b6b8ba",
+            "var": "Shape/NeutralAlt",
+            "rootAlias": "Grey/50"
+          },
+          {
+            "name": "Components/menu/Topbar/Contrast/Icon-Label",
+            "value": "#aeb7e2",
+            "var": "Shape/Contrast",
+            "rootAlias": "Lavender/40"
+          },
+          {
+            "name": "Components/menu/Topbar/Contrast/Label",
+            "value": "#aeb7e2",
+            "var": "Text/Contrast",
+            "rootAlias": "Lavender/40"
+          },
+          {
+            "name": "Components/menu/Topbar/Contrast/Stroke-Selected",
+            "value": "#ff5959",
+            "var": "Stroke/Highlight",
+            "rootAlias": "Coral/40"
+          },
+          {
+            "name": "Components/menu/Topbar/Contrast/Text",
+            "value": "#ffffff",
+            "var": "Text/Light",
+            "rootAlias": "White/Alpha-100"
+          },
+          {
+            "name": "Components/menu/Topbar/Contrast/Text-Disabled",
+            "value": "#b6b8ba",
+            "var": "Text/NeutralAlt",
+            "rootAlias": "Grey/50"
           },
           {
             "name": "Components/modal/Drawer/Contrast/Background",
@@ -3922,9 +4300,9 @@
           },
           {
             "name": "Components/table/Contrast/Cell-Fill-Negative",
-            "value": "#ff949433",
-            "var": "Fill/Negative/Transparent",
-            "rootAlias": "Transparent/Coral-Alpha20"
+            "value": "#2e0505",
+            "var": "Fill/Negative/Accent",
+            "rootAlias": "Coral/100"
           },
           {
             "name": "Components/table/Contrast/Header-Fill",
@@ -6361,606 +6739,6 @@
         },
         "color": [
           {
-            "name": "Components/Layout/Badge/Information/Contrast/Border",
-            "value": "#ffffff00",
-            "var": "Stroke/Colorless",
-            "rootAlias": "White/Alpha-0"
-          },
-          {
-            "name": "Components/Layout/Badge/Information/Contrast/Bullet",
-            "value": "#acd7f1",
-            "var": "Fill/Information/Tint",
-            "rootAlias": "Sky/20"
-          },
-          {
-            "name": "Components/Layout/Badge/Information/Contrast/Fill",
-            "value": "#acd7f1",
-            "var": "Fill/Information/Tint",
-            "rootAlias": "Sky/20"
-          },
-          {
-            "name": "Components/Layout/Badge/Information/Contrast/Icon",
-            "value": "#181c56",
-            "var": "Shape/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/Layout/Badge/Information/Contrast/Text",
-            "value": "#08091c",
-            "var": "Text/Dark",
-            "rootAlias": "Ebony/100"
-          },
-          {
-            "name": "Components/Layout/Badge/Information/Contrast/Text-Bullet",
-            "value": "#e5e5e9",
-            "var": "Text/LightAlt",
-            "rootAlias": "Ebony/10"
-          },
-          {
-            "name": "Components/Layout/Badge/Information/Standard/Border",
-            "value": "#ffffff00",
-            "var": "Stroke/Colorless",
-            "rootAlias": "White/Alpha-0"
-          },
-          {
-            "name": "Components/Layout/Badge/Information/Standard/Bullet",
-            "value": "#acd7f1",
-            "var": "Fill/Information/Tint",
-            "rootAlias": "Sky/20"
-          },
-          {
-            "name": "Components/Layout/Badge/Information/Standard/Fill",
-            "value": "#acd7f1",
-            "var": "Fill/Information/Tint",
-            "rootAlias": "Sky/20"
-          },
-          {
-            "name": "Components/Layout/Badge/Information/Standard/Icon",
-            "value": "#181c56",
-            "var": "Shape/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/Layout/Badge/Information/Standard/Text",
-            "value": "#08091c",
-            "var": "Text/Dark",
-            "rootAlias": "Ebony/100"
-          },
-          {
-            "name": "Components/Layout/Badge/Information/Standard/Text-Bullet",
-            "value": "#e5e5e9",
-            "var": "Text/LightAlt",
-            "rootAlias": "Ebony/10"
-          },
-          {
-            "name": "Components/Layout/Badge/Negative/Contrast/Border",
-            "value": "#ffffff00",
-            "var": "Stroke/Colorless",
-            "rootAlias": "White/Alpha-0"
-          },
-          {
-            "name": "Components/Layout/Badge/Negative/Contrast/Bullet",
-            "value": "#ff9494",
-            "var": "Fill/Negative/Tint",
-            "rootAlias": "Coral/30"
-          },
-          {
-            "name": "Components/Layout/Badge/Negative/Contrast/Fill",
-            "value": "#ffcece",
-            "var": "Fill/Negative/Muted",
-            "rootAlias": "Coral/20"
-          },
-          {
-            "name": "Components/Layout/Badge/Negative/Contrast/Icon",
-            "value": "#181c56",
-            "var": "Shape/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/Layout/Badge/Negative/Contrast/Text",
-            "value": "#08091c",
-            "var": "Text/Dark",
-            "rootAlias": "Ebony/100"
-          },
-          {
-            "name": "Components/Layout/Badge/Negative/Contrast/Text-Bullet",
-            "value": "#e5e5e9",
-            "var": "Text/LightAlt",
-            "rootAlias": "Ebony/10"
-          },
-          {
-            "name": "Components/Layout/Badge/Negative/Standard/Border",
-            "value": "#ffffff00",
-            "var": "Stroke/Colorless",
-            "rootAlias": "White/Alpha-0"
-          },
-          {
-            "name": "Components/Layout/Badge/Negative/Standard/Bullet",
-            "value": "#ff9494",
-            "var": "Fill/Negative/Tint",
-            "rootAlias": "Coral/30"
-          },
-          {
-            "name": "Components/Layout/Badge/Negative/Standard/Fill",
-            "value": "#ffcece",
-            "var": "Fill/Negative/Muted",
-            "rootAlias": "Coral/20"
-          },
-          {
-            "name": "Components/Layout/Badge/Negative/Standard/Icon",
-            "value": "#181c56",
-            "var": "Shape/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/Layout/Badge/Negative/Standard/Text",
-            "value": "#08091c",
-            "var": "Text/Dark",
-            "rootAlias": "Ebony/100"
-          },
-          {
-            "name": "Components/Layout/Badge/Negative/Standard/Text-Bullet",
-            "value": "#e5e5e9",
-            "var": "Text/LightAlt",
-            "rootAlias": "Ebony/10"
-          },
-          {
-            "name": "Components/Layout/Badge/Neutral/Contrast/Border",
-            "value": "#ffffff00",
-            "var": "Stroke/Colorless",
-            "rootAlias": "White/Alpha-0"
-          },
-          {
-            "name": "Components/Layout/Badge/Neutral/Contrast/Bullet",
-            "value": "#e5e5e9",
-            "var": "Fill/Selected/Default/Dark",
-            "rootAlias": "Ebony/10"
-          },
-          {
-            "name": "Components/Layout/Badge/Neutral/Contrast/Fill",
-            "value": "#e5e5e959",
-            "var": "Fill/Selected/Hover/Dark",
-            "rootAlias": "Transparent/Ebony-Alpha35"
-          },
-          {
-            "name": "Components/Layout/Badge/Neutral/Contrast/Icon",
-            "value": "#e5e5e9",
-            "var": "Shape/LightAlt",
-            "rootAlias": "Ebony/10"
-          },
-          {
-            "name": "Components/Layout/Badge/Neutral/Contrast/Text",
-            "value": "#e5e5e9",
-            "var": "Text/LightAlt",
-            "rootAlias": "Ebony/10"
-          },
-          {
-            "name": "Components/Layout/Badge/Neutral/Contrast/Text-Bullet",
-            "value": "#e5e5e9",
-            "var": "Text/LightAlt",
-            "rootAlias": "Ebony/10"
-          },
-          {
-            "name": "Components/Layout/Badge/Neutral/Standard/Border",
-            "value": "#ffffff00",
-            "var": "Stroke/Colorless",
-            "rootAlias": "White/Alpha-0"
-          },
-          {
-            "name": "Components/Layout/Badge/Neutral/Standard/Bullet",
-            "value": "#e5e5e9",
-            "var": "Fill/Selected/Default/Dark",
-            "rootAlias": "Ebony/10"
-          },
-          {
-            "name": "Components/Layout/Badge/Neutral/Standard/Fill",
-            "value": "#e5e5e959",
-            "var": "Fill/Selected/Hover/Dark",
-            "rootAlias": "Transparent/Ebony-Alpha35"
-          },
-          {
-            "name": "Components/Layout/Badge/Neutral/Standard/Icon",
-            "value": "#e5e5e9",
-            "var": "Shape/LightAlt",
-            "rootAlias": "Ebony/10"
-          },
-          {
-            "name": "Components/Layout/Badge/Neutral/Standard/Text",
-            "value": "#e5e5e9",
-            "var": "Text/LightAlt",
-            "rootAlias": "Ebony/10"
-          },
-          {
-            "name": "Components/Layout/Badge/Neutral/Standard/Text-Bullet",
-            "value": "#e5e5e9",
-            "var": "Text/LightAlt",
-            "rootAlias": "Ebony/10"
-          },
-          {
-            "name": "Components/Layout/Badge/Primary/Contrast/Bullet",
-            "value": "#aeb7e2",
-            "var": "Fill/Primary/Default/Contrast",
-            "rootAlias": "Lavender/40"
-          },
-          {
-            "name": "Components/Layout/Badge/Primary/Contrast/Fill",
-            "value": "#aeb7e2",
-            "var": "Fill/Primary/Default/Contrast",
-            "rootAlias": "Lavender/40"
-          },
-          {
-            "name": "Components/Layout/Badge/Primary/Contrast/Icon",
-            "value": "#181c56",
-            "var": "Shape/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/Layout/Badge/Primary/Contrast/Text",
-            "value": "#08091c",
-            "var": "Text/Dark",
-            "rootAlias": "Ebony/100"
-          },
-          {
-            "name": "Components/Layout/Badge/Primary/Contrast/Text-Bullet",
-            "value": "#e5e5e9",
-            "var": "Text/LightAlt",
-            "rootAlias": "Ebony/10"
-          },
-          {
-            "name": "Components/Layout/Badge/Primary/Standard/Bullet",
-            "value": "#aeb7e2",
-            "var": "Fill/Primary/Default/Contrast",
-            "rootAlias": "Lavender/40"
-          },
-          {
-            "name": "Components/Layout/Badge/Primary/Standard/Fill",
-            "value": "#aeb7e2",
-            "var": "Fill/Primary/Default/Contrast",
-            "rootAlias": "Lavender/40"
-          },
-          {
-            "name": "Components/Layout/Badge/Primary/Standard/Icon",
-            "value": "#181c56",
-            "var": "Shape/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/Layout/Badge/Primary/Standard/Text",
-            "value": "#08091c",
-            "var": "Text/Dark",
-            "rootAlias": "Ebony/100"
-          },
-          {
-            "name": "Components/Layout/Badge/Primary/Standard/Text-Bullet",
-            "value": "#e5e5e9",
-            "var": "Text/LightAlt",
-            "rootAlias": "Ebony/10"
-          },
-          {
-            "name": "Components/Layout/Badge/Success/Contrast/Border",
-            "value": "#ffffff00",
-            "var": "Stroke/Colorless",
-            "rootAlias": "White/Alpha-0"
-          },
-          {
-            "name": "Components/Layout/Badge/Success/Contrast/Bullet",
-            "value": "#9cd9c2",
-            "var": "Fill/Success/Tint",
-            "rootAlias": "Mint/30"
-          },
-          {
-            "name": "Components/Layout/Badge/Success/Contrast/Fill",
-            "value": "#9cd9c2",
-            "var": "Fill/Success/Tint",
-            "rootAlias": "Mint/30"
-          },
-          {
-            "name": "Components/Layout/Badge/Success/Contrast/Icon",
-            "value": "#181c56",
-            "var": "Shape/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/Layout/Badge/Success/Contrast/Text",
-            "value": "#08091c",
-            "var": "Text/Dark",
-            "rootAlias": "Ebony/100"
-          },
-          {
-            "name": "Components/Layout/Badge/Success/Contrast/Text-Bullet",
-            "value": "#e5e5e9",
-            "var": "Text/LightAlt",
-            "rootAlias": "Ebony/10"
-          },
-          {
-            "name": "Components/Layout/Badge/Success/Standard/Border",
-            "value": "#ffffff00",
-            "var": "Stroke/Colorless",
-            "rootAlias": "White/Alpha-0"
-          },
-          {
-            "name": "Components/Layout/Badge/Success/Standard/Bullet",
-            "value": "#9cd9c2",
-            "var": "Fill/Success/Tint",
-            "rootAlias": "Mint/30"
-          },
-          {
-            "name": "Components/Layout/Badge/Success/Standard/Fill",
-            "value": "#9cd9c2",
-            "var": "Fill/Success/Tint",
-            "rootAlias": "Mint/30"
-          },
-          {
-            "name": "Components/Layout/Badge/Success/Standard/Icon",
-            "value": "#181c56",
-            "var": "Shape/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/Layout/Badge/Success/Standard/Text",
-            "value": "#08091c",
-            "var": "Text/Dark",
-            "rootAlias": "Ebony/100"
-          },
-          {
-            "name": "Components/Layout/Badge/Success/Standard/Text-Bullet",
-            "value": "#e5e5e9",
-            "var": "Text/LightAlt",
-            "rootAlias": "Ebony/10"
-          },
-          {
-            "name": "Components/Layout/Badge/Tag/Contrast/Fill",
-            "value": "#2d2e3e",
-            "var": "Fill/Background/Subdued/Dark",
-            "rootAlias": "Ebony/85"
-          },
-          {
-            "name": "Components/Layout/Badge/Tag/Contrast/Icon",
-            "value": "#e5e5e9",
-            "var": "Shape/LightAlt",
-            "rootAlias": "Ebony/10"
-          },
-          {
-            "name": "Components/Layout/Badge/Tag/Contrast/Text",
-            "value": "#e5e5e9",
-            "var": "Text/LightAlt",
-            "rootAlias": "Ebony/10"
-          },
-          {
-            "name": "Components/Layout/Badge/Tag/Standard/Fill",
-            "value": "#2d2e3e",
-            "var": "Fill/Background/Subdued/Dark",
-            "rootAlias": "Ebony/85"
-          },
-          {
-            "name": "Components/Layout/Badge/Tag/Standard/Icon",
-            "value": "#e5e5e9",
-            "var": "Shape/LightAlt",
-            "rootAlias": "Ebony/10"
-          },
-          {
-            "name": "Components/Layout/Badge/Tag/Standard/Text",
-            "value": "#e5e5e9",
-            "var": "Text/LightAlt",
-            "rootAlias": "Ebony/10"
-          },
-          {
-            "name": "Components/Layout/Badge/Warning/Contrast/Border",
-            "value": "#ffffff00",
-            "var": "Stroke/Colorless",
-            "rootAlias": "White/Alpha-0"
-          },
-          {
-            "name": "Components/Layout/Badge/Warning/Contrast/Bullet",
-            "value": "#ffeeb3",
-            "var": "Fill/Warning/Tint",
-            "rootAlias": "Canary/30"
-          },
-          {
-            "name": "Components/Layout/Badge/Warning/Contrast/Fill",
-            "value": "#ffeeb3",
-            "var": "Fill/Warning/Tint",
-            "rootAlias": "Canary/30"
-          },
-          {
-            "name": "Components/Layout/Badge/Warning/Contrast/Icon",
-            "value": "#181c56",
-            "var": "Shape/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/Layout/Badge/Warning/Contrast/Text",
-            "value": "#08091c",
-            "var": "Text/Dark",
-            "rootAlias": "Ebony/100"
-          },
-          {
-            "name": "Components/Layout/Badge/Warning/Contrast/Text-Bullet",
-            "value": "#e5e5e9",
-            "var": "Text/LightAlt",
-            "rootAlias": "Ebony/10"
-          },
-          {
-            "name": "Components/Layout/Badge/Warning/Standard/Border",
-            "value": "#ffffff00",
-            "var": "Stroke/Colorless",
-            "rootAlias": "White/Alpha-0"
-          },
-          {
-            "name": "Components/Layout/Badge/Warning/Standard/Bullet",
-            "value": "#ffeeb3",
-            "var": "Fill/Warning/Tint",
-            "rootAlias": "Canary/30"
-          },
-          {
-            "name": "Components/Layout/Badge/Warning/Standard/Fill",
-            "value": "#ffeeb3",
-            "var": "Fill/Warning/Tint",
-            "rootAlias": "Canary/30"
-          },
-          {
-            "name": "Components/Layout/Badge/Warning/Standard/Icon",
-            "value": "#181c56",
-            "var": "Shape/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/Layout/Badge/Warning/Standard/Text",
-            "value": "#08091c",
-            "var": "Text/Dark",
-            "rootAlias": "Ebony/100"
-          },
-          {
-            "name": "Components/Layout/Badge/Warning/Standard/Text-Bullet",
-            "value": "#e5e5e9",
-            "var": "Text/LightAlt",
-            "rootAlias": "Ebony/10"
-          },
-          {
-            "name": "Components/Layout/Card/Contrast/Border-Default",
-            "value": "#ffffff00",
-            "var": "Stroke/Colorless",
-            "rootAlias": "White/Alpha-0"
-          },
-          {
-            "name": "Components/Layout/Card/Contrast/Border-active",
-            "value": "#b3b4bd",
-            "var": "Stroke/Dark",
-            "rootAlias": "Ebony/30"
-          },
-          {
-            "name": "Components/Layout/Card/Contrast/Divide",
-            "value": "#ff5959",
-            "var": "Stroke/Highlight",
-            "rootAlias": "Coral/40"
-          },
-          {
-            "name": "Components/Layout/Card/Contrast/Fill-Default-Solid",
-            "value": "#393a49",
-            "var": "Fill/Background/Overlay/Solid",
-            "rootAlias": "Ebony/80"
-          },
-          {
-            "name": "Components/Layout/Card/Contrast/Fill-Default-Transparent",
-            "value": "#e5e5e926",
-            "var": "Fill/Background/Overlay/Transparent",
-            "rootAlias": "Transparent/Ebony-Alpha15"
-          },
-          {
-            "name": "Components/Layout/Card/Contrast/Fill-HoverActive",
-            "value": "#464755",
-            "var": "Fill/Background/Overlay/SolidAlt",
-            "rootAlias": "Ebony/75"
-          },
-          {
-            "name": "Components/Layout/Card/Contrast/Icon",
-            "value": "#e5e5e9",
-            "var": "Shape/LightAlt",
-            "rootAlias": "Ebony/10"
-          },
-          {
-            "name": "Components/Layout/Card/Contrast/Shadow layer1",
-            "value": "#ffffff00",
-            "var": "Fill/Background/Standard/Colorless",
-            "rootAlias": "White/Alpha-0"
-          },
-          {
-            "name": "Components/Layout/Card/Contrast/Shadow layer2",
-            "value": "#ffffff00",
-            "var": "Fill/Background/Standard/Colorless",
-            "rootAlias": "White/Alpha-0"
-          },
-          {
-            "name": "Components/Layout/Card/Contrast/Shadow layer3",
-            "value": "#ffffff00",
-            "var": "Fill/Background/Standard/Colorless",
-            "rootAlias": "White/Alpha-0"
-          },
-          {
-            "name": "Components/Layout/Card/Contrast/Subject text",
-            "value": "#b3b4bd",
-            "var": "Text/DarkAlt",
-            "rootAlias": "Ebony/30"
-          },
-          {
-            "name": "Components/Layout/Card/Contrast/Text",
-            "value": "#e5e5e9",
-            "var": "Text/LightAlt",
-            "rootAlias": "Ebony/10"
-          },
-          {
-            "name": "Components/Layout/Card/Standard/Border-Default",
-            "value": "#ffffff00",
-            "var": "Stroke/Colorless",
-            "rootAlias": "White/Alpha-0"
-          },
-          {
-            "name": "Components/Layout/Card/Standard/Border-active",
-            "value": "#b3b4bd",
-            "var": "Stroke/Dark",
-            "rootAlias": "Ebony/30"
-          },
-          {
-            "name": "Components/Layout/Card/Standard/Divide",
-            "value": "#ff5959",
-            "var": "Stroke/Highlight",
-            "rootAlias": "Coral/40"
-          },
-          {
-            "name": "Components/Layout/Card/Standard/Fill-Default-Solid",
-            "value": "#393a49",
-            "var": "Fill/Background/Overlay/Solid",
-            "rootAlias": "Ebony/80"
-          },
-          {
-            "name": "Components/Layout/Card/Standard/Fill-Default-Transparent",
-            "value": "#e5e5e926",
-            "var": "Fill/Background/Overlay/Transparent",
-            "rootAlias": "Transparent/Ebony-Alpha15"
-          },
-          {
-            "name": "Components/Layout/Card/Standard/Fill-HoverActive",
-            "value": "#464755",
-            "var": "Fill/Background/Overlay/SolidAlt",
-            "rootAlias": "Ebony/75"
-          },
-          {
-            "name": "Components/Layout/Card/Standard/Icon",
-            "value": "#e5e5e9",
-            "var": "Shape/LightAlt",
-            "rootAlias": "Ebony/10"
-          },
-          {
-            "name": "Components/Layout/Card/Standard/Shadow layer1",
-            "value": "#ffffff00",
-            "var": "Fill/Background/Standard/Colorless",
-            "rootAlias": "White/Alpha-0"
-          },
-          {
-            "name": "Components/Layout/Card/Standard/Shadow layer2",
-            "value": "#ffffff00",
-            "var": "Fill/Background/Standard/Colorless",
-            "rootAlias": "White/Alpha-0"
-          },
-          {
-            "name": "Components/Layout/Card/Standard/Shadow layer3",
-            "value": "#ffffff00",
-            "var": "Fill/Background/Standard/Colorless",
-            "rootAlias": "White/Alpha-0"
-          },
-          {
-            "name": "Components/Layout/Card/Standard/Subject text",
-            "value": "#b3b4bd",
-            "var": "Text/DarkAlt",
-            "rootAlias": "Ebony/30"
-          },
-          {
-            "name": "Components/Layout/Card/Standard/Text",
-            "value": "#e5e5e9",
-            "var": "Text/LightAlt",
-            "rootAlias": "Ebony/10"
-          },
-          {
             "name": "Components/alert/AlertBox/Information/Contrast/Border",
             "value": "#acd7f1",
             "var": "Stroke/InformationAlt",
@@ -7412,9 +7190,9 @@
           },
           {
             "name": "Components/button/Negative/Contrast/Hover",
-            "value": "#ff949433",
-            "var": "Fill/Negative/Transparent",
-            "rootAlias": "Transparent/Coral-Alpha20"
+            "value": "#2e0505",
+            "var": "Fill/Negative/Accent",
+            "rootAlias": "Coral/100"
           },
           {
             "name": "Components/button/Negative/Contrast/Icon",
@@ -7460,9 +7238,9 @@
           },
           {
             "name": "Components/button/Negative/Standard/Hover",
-            "value": "#ff949433",
-            "var": "Fill/Negative/Transparent",
-            "rootAlias": "Transparent/Coral-Alpha20"
+            "value": "#2e0505",
+            "var": "Fill/Negative/Accent",
+            "rootAlias": "Coral/100"
           },
           {
             "name": "Components/button/Negative/Standard/Icon",
@@ -8071,12 +7849,6 @@
             "rootAlias": "Ebony/70"
           },
           {
-            "name": "Components/datepicker/Calendar/DateFill-Selected-Hover",
-            "value": "#c7cdeb",
-            "var": "Fill/Primary/Hover/Contrast",
-            "rootAlias": "Lavender/30"
-          },
-          {
             "name": "Components/datepicker/Calendar/DateFill-Range-Hover",
             "value": "#5e5f6c",
             "var": "Fill/Selected/Hover/DarkTint",
@@ -8087,6 +7859,12 @@
             "value": "#aeb7e2",
             "var": "Fill/Primary/Default/Contrast",
             "rootAlias": "Lavender/40"
+          },
+          {
+            "name": "Components/datepicker/Calendar/DateFill-Selected-Hover",
+            "value": "#c7cdeb",
+            "var": "Fill/Primary/Hover/Contrast",
+            "rootAlias": "Lavender/30"
           },
           {
             "name": "Components/datepicker/Calendar/Icon",
@@ -8401,52 +8179,82 @@
             "rootAlias": "Grey/70"
           },
           {
-            "name": "Components/form/Base menu/Border",
+            "name": "Components/form/Base menu/Border/Borderless",
             "value": "#ffffff00",
             "var": "Stroke/Colorless",
             "rootAlias": "White/Alpha-0"
           },
           {
-            "name": "Components/form/Base menu/Fill-Default",
+            "name": "Components/form/Base menu/Border/Default",
+            "value": "#ffffff00",
+            "var": "Stroke/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/form/Base menu/Border/Subdued",
+            "value": "#8284ab",
+            "var": "Stroke/Subdued",
+            "rootAlias": "Blue/60"
+          },
+          {
+            "name": "Components/form/Base menu/Fill/Default",
             "value": "#464755",
             "var": "Fill/Background/Overlay/SolidAlt",
             "rootAlias": "Ebony/75"
           },
           {
-            "name": "Components/form/Base menu/Fill-Hover",
+            "name": "Components/form/Base menu/Fill/Hover",
             "value": "#626493",
             "var": "Fill/Secondary/Hover/Contrast",
             "rootAlias": "Blue/70"
           },
           {
-            "name": "Components/form/Base menu/Fill-Selected",
+            "name": "Components/form/Base menu/Fill/Selected",
             "value": "#8794d4",
             "var": "Fill/Secondary/Active/Contrast",
             "rootAlias": "Lavender/50"
           },
           {
-            "name": "Components/form/Base menu/Icon",
+            "name": "Components/form/Base menu/Fill/White",
+            "value": "#393a49",
+            "var": "Fill/Background/Overlay/Solid",
+            "rootAlias": "Ebony/80"
+          },
+          {
+            "name": "Components/form/Base menu/Icon/Default",
             "value": "#e5e5e9",
             "var": "Shape/LightAlt",
             "rootAlias": "Ebony/10"
           },
           {
-            "name": "Components/form/Base menu/Icon-Disabled",
+            "name": "Components/form/Base menu/Icon/Disabled",
             "value": "#949699",
             "var": "Shape/NeutralAlt2",
             "rootAlias": "Grey/60"
           },
           {
-            "name": "Components/form/Base menu/Text",
+            "name": "Components/form/Base menu/Icon/Subdued",
+            "value": "#b3b4bd",
+            "var": "Shape/DarkAlt",
+            "rootAlias": "Ebony/30"
+          },
+          {
+            "name": "Components/form/Base menu/Text/Default",
             "value": "#e5e5e9",
             "var": "Text/LightAlt",
             "rootAlias": "Ebony/10"
           },
           {
-            "name": "Components/form/Base menu/Text-Disabled",
+            "name": "Components/form/Base menu/Text/Disabled",
             "value": "#949699",
             "var": "Text/NeutralAlt2",
             "rootAlias": "Grey/60"
+          },
+          {
+            "name": "Components/form/Base menu/Text/Subdued",
+            "value": "#b3b4bd",
+            "var": "Text/DarkAlt",
+            "rootAlias": "Ebony/30"
           },
           {
             "name": "Components/form/Base panel/Contrast/Border-Default",
@@ -8480,9 +8288,9 @@
           },
           {
             "name": "Components/form/Base panel/Contrast/Fill-Expired",
-            "value": "#ff949433",
-            "var": "Fill/Negative/Transparent",
-            "rootAlias": "Transparent/Coral-Alpha20"
+            "value": "#2e0505",
+            "var": "Fill/Negative/Accent",
+            "rootAlias": "Coral/100"
           },
           {
             "name": "Components/form/Base panel/Contrast/Fill-Hover",
@@ -8552,9 +8360,9 @@
           },
           {
             "name": "Components/form/Base panel/Standard/Fill-Expired",
-            "value": "#ff949433",
-            "var": "Fill/Negative/Transparent",
-            "rootAlias": "Transparent/Coral-Alpha20"
+            "value": "#2e0505",
+            "var": "Fill/Negative/Accent",
+            "rootAlias": "Coral/100"
           },
           {
             "name": "Components/form/Base panel/Standard/Fill-Hover",
@@ -9289,6 +9097,888 @@
             "rootAlias": "Ebony/10"
           },
           {
+            "name": "Components/layout/Badge/Information/Contrast/Border",
+            "value": "#ffffff00",
+            "var": "Stroke/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/layout/Badge/Information/Contrast/Bullet",
+            "value": "#acd7f1",
+            "var": "Fill/Information/Tint",
+            "rootAlias": "Sky/20"
+          },
+          {
+            "name": "Components/layout/Badge/Information/Contrast/Fill",
+            "value": "#acd7f1",
+            "var": "Fill/Information/Tint",
+            "rootAlias": "Sky/20"
+          },
+          {
+            "name": "Components/layout/Badge/Information/Contrast/Icon",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/layout/Badge/Information/Contrast/Text",
+            "value": "#08091c",
+            "var": "Text/Dark",
+            "rootAlias": "Ebony/100"
+          },
+          {
+            "name": "Components/layout/Badge/Information/Contrast/Text-Bullet",
+            "value": "#e5e5e9",
+            "var": "Text/LightAlt",
+            "rootAlias": "Ebony/10"
+          },
+          {
+            "name": "Components/layout/Badge/Information/Standard/Border",
+            "value": "#ffffff00",
+            "var": "Stroke/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/layout/Badge/Information/Standard/Bullet",
+            "value": "#acd7f1",
+            "var": "Fill/Information/Tint",
+            "rootAlias": "Sky/20"
+          },
+          {
+            "name": "Components/layout/Badge/Information/Standard/Fill",
+            "value": "#acd7f1",
+            "var": "Fill/Information/Tint",
+            "rootAlias": "Sky/20"
+          },
+          {
+            "name": "Components/layout/Badge/Information/Standard/Icon",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/layout/Badge/Information/Standard/Text",
+            "value": "#08091c",
+            "var": "Text/Dark",
+            "rootAlias": "Ebony/100"
+          },
+          {
+            "name": "Components/layout/Badge/Information/Standard/Text-Bullet",
+            "value": "#e5e5e9",
+            "var": "Text/LightAlt",
+            "rootAlias": "Ebony/10"
+          },
+          {
+            "name": "Components/layout/Badge/Negative/Contrast/Border",
+            "value": "#ffffff00",
+            "var": "Stroke/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/layout/Badge/Negative/Contrast/Bullet",
+            "value": "#ff9494",
+            "var": "Fill/Negative/Tint",
+            "rootAlias": "Coral/30"
+          },
+          {
+            "name": "Components/layout/Badge/Negative/Contrast/Fill",
+            "value": "#ffcece",
+            "var": "Fill/Negative/Muted",
+            "rootAlias": "Coral/20"
+          },
+          {
+            "name": "Components/layout/Badge/Negative/Contrast/Icon",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/layout/Badge/Negative/Contrast/Text",
+            "value": "#08091c",
+            "var": "Text/Dark",
+            "rootAlias": "Ebony/100"
+          },
+          {
+            "name": "Components/layout/Badge/Negative/Contrast/Text-Bullet",
+            "value": "#e5e5e9",
+            "var": "Text/LightAlt",
+            "rootAlias": "Ebony/10"
+          },
+          {
+            "name": "Components/layout/Badge/Negative/Standard/Border",
+            "value": "#ffffff00",
+            "var": "Stroke/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/layout/Badge/Negative/Standard/Bullet",
+            "value": "#ff9494",
+            "var": "Fill/Negative/Tint",
+            "rootAlias": "Coral/30"
+          },
+          {
+            "name": "Components/layout/Badge/Negative/Standard/Fill",
+            "value": "#ffcece",
+            "var": "Fill/Negative/Muted",
+            "rootAlias": "Coral/20"
+          },
+          {
+            "name": "Components/layout/Badge/Negative/Standard/Icon",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/layout/Badge/Negative/Standard/Text",
+            "value": "#08091c",
+            "var": "Text/Dark",
+            "rootAlias": "Ebony/100"
+          },
+          {
+            "name": "Components/layout/Badge/Negative/Standard/Text-Bullet",
+            "value": "#e5e5e9",
+            "var": "Text/LightAlt",
+            "rootAlias": "Ebony/10"
+          },
+          {
+            "name": "Components/layout/Badge/Neutral/Contrast/Border",
+            "value": "#ffffff00",
+            "var": "Stroke/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/layout/Badge/Neutral/Contrast/Bullet",
+            "value": "#e5e5e9",
+            "var": "Fill/Selected/Default/Dark",
+            "rootAlias": "Ebony/10"
+          },
+          {
+            "name": "Components/layout/Badge/Neutral/Contrast/Fill",
+            "value": "#e5e5e959",
+            "var": "Fill/Selected/Hover/Dark",
+            "rootAlias": "Transparent/Ebony-Alpha35"
+          },
+          {
+            "name": "Components/layout/Badge/Neutral/Contrast/Icon",
+            "value": "#e5e5e9",
+            "var": "Shape/LightAlt",
+            "rootAlias": "Ebony/10"
+          },
+          {
+            "name": "Components/layout/Badge/Neutral/Contrast/Text",
+            "value": "#e5e5e9",
+            "var": "Text/LightAlt",
+            "rootAlias": "Ebony/10"
+          },
+          {
+            "name": "Components/layout/Badge/Neutral/Contrast/Text-Bullet",
+            "value": "#e5e5e9",
+            "var": "Text/LightAlt",
+            "rootAlias": "Ebony/10"
+          },
+          {
+            "name": "Components/layout/Badge/Neutral/Standard/Border",
+            "value": "#ffffff00",
+            "var": "Stroke/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/layout/Badge/Neutral/Standard/Bullet",
+            "value": "#e5e5e9",
+            "var": "Fill/Selected/Default/Dark",
+            "rootAlias": "Ebony/10"
+          },
+          {
+            "name": "Components/layout/Badge/Neutral/Standard/Fill",
+            "value": "#e5e5e959",
+            "var": "Fill/Selected/Hover/Dark",
+            "rootAlias": "Transparent/Ebony-Alpha35"
+          },
+          {
+            "name": "Components/layout/Badge/Neutral/Standard/Icon",
+            "value": "#e5e5e9",
+            "var": "Shape/LightAlt",
+            "rootAlias": "Ebony/10"
+          },
+          {
+            "name": "Components/layout/Badge/Neutral/Standard/Text",
+            "value": "#e5e5e9",
+            "var": "Text/LightAlt",
+            "rootAlias": "Ebony/10"
+          },
+          {
+            "name": "Components/layout/Badge/Neutral/Standard/Text-Bullet",
+            "value": "#e5e5e9",
+            "var": "Text/LightAlt",
+            "rootAlias": "Ebony/10"
+          },
+          {
+            "name": "Components/layout/Badge/Primary/Contrast/Bullet",
+            "value": "#aeb7e2",
+            "var": "Fill/Primary/Default/Contrast",
+            "rootAlias": "Lavender/40"
+          },
+          {
+            "name": "Components/layout/Badge/Primary/Contrast/Fill",
+            "value": "#aeb7e2",
+            "var": "Fill/Primary/Default/Contrast",
+            "rootAlias": "Lavender/40"
+          },
+          {
+            "name": "Components/layout/Badge/Primary/Contrast/Icon",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/layout/Badge/Primary/Contrast/Text",
+            "value": "#08091c",
+            "var": "Text/Dark",
+            "rootAlias": "Ebony/100"
+          },
+          {
+            "name": "Components/layout/Badge/Primary/Contrast/Text-Bullet",
+            "value": "#e5e5e9",
+            "var": "Text/LightAlt",
+            "rootAlias": "Ebony/10"
+          },
+          {
+            "name": "Components/layout/Badge/Primary/Standard/Bullet",
+            "value": "#aeb7e2",
+            "var": "Fill/Primary/Default/Contrast",
+            "rootAlias": "Lavender/40"
+          },
+          {
+            "name": "Components/layout/Badge/Primary/Standard/Fill",
+            "value": "#aeb7e2",
+            "var": "Fill/Primary/Default/Contrast",
+            "rootAlias": "Lavender/40"
+          },
+          {
+            "name": "Components/layout/Badge/Primary/Standard/Icon",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/layout/Badge/Primary/Standard/Text",
+            "value": "#08091c",
+            "var": "Text/Dark",
+            "rootAlias": "Ebony/100"
+          },
+          {
+            "name": "Components/layout/Badge/Primary/Standard/Text-Bullet",
+            "value": "#e5e5e9",
+            "var": "Text/LightAlt",
+            "rootAlias": "Ebony/10"
+          },
+          {
+            "name": "Components/layout/Badge/Success/Contrast/Border",
+            "value": "#ffffff00",
+            "var": "Stroke/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/layout/Badge/Success/Contrast/Bullet",
+            "value": "#9cd9c2",
+            "var": "Fill/Success/Tint",
+            "rootAlias": "Mint/30"
+          },
+          {
+            "name": "Components/layout/Badge/Success/Contrast/Fill",
+            "value": "#9cd9c2",
+            "var": "Fill/Success/Tint",
+            "rootAlias": "Mint/30"
+          },
+          {
+            "name": "Components/layout/Badge/Success/Contrast/Icon",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/layout/Badge/Success/Contrast/Text",
+            "value": "#08091c",
+            "var": "Text/Dark",
+            "rootAlias": "Ebony/100"
+          },
+          {
+            "name": "Components/layout/Badge/Success/Contrast/Text-Bullet",
+            "value": "#e5e5e9",
+            "var": "Text/LightAlt",
+            "rootAlias": "Ebony/10"
+          },
+          {
+            "name": "Components/layout/Badge/Success/Standard/Border",
+            "value": "#ffffff00",
+            "var": "Stroke/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/layout/Badge/Success/Standard/Bullet",
+            "value": "#9cd9c2",
+            "var": "Fill/Success/Tint",
+            "rootAlias": "Mint/30"
+          },
+          {
+            "name": "Components/layout/Badge/Success/Standard/Fill",
+            "value": "#9cd9c2",
+            "var": "Fill/Success/Tint",
+            "rootAlias": "Mint/30"
+          },
+          {
+            "name": "Components/layout/Badge/Success/Standard/Icon",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/layout/Badge/Success/Standard/Text",
+            "value": "#08091c",
+            "var": "Text/Dark",
+            "rootAlias": "Ebony/100"
+          },
+          {
+            "name": "Components/layout/Badge/Success/Standard/Text-Bullet",
+            "value": "#e5e5e9",
+            "var": "Text/LightAlt",
+            "rootAlias": "Ebony/10"
+          },
+          {
+            "name": "Components/layout/Badge/Warning/Contrast/Border",
+            "value": "#ffffff00",
+            "var": "Stroke/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/layout/Badge/Warning/Contrast/Bullet",
+            "value": "#ffeeb3",
+            "var": "Fill/Warning/Tint",
+            "rootAlias": "Canary/30"
+          },
+          {
+            "name": "Components/layout/Badge/Warning/Contrast/Fill",
+            "value": "#ffeeb3",
+            "var": "Fill/Warning/Tint",
+            "rootAlias": "Canary/30"
+          },
+          {
+            "name": "Components/layout/Badge/Warning/Contrast/Icon",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/layout/Badge/Warning/Contrast/Text",
+            "value": "#08091c",
+            "var": "Text/Dark",
+            "rootAlias": "Ebony/100"
+          },
+          {
+            "name": "Components/layout/Badge/Warning/Contrast/Text-Bullet",
+            "value": "#e5e5e9",
+            "var": "Text/LightAlt",
+            "rootAlias": "Ebony/10"
+          },
+          {
+            "name": "Components/layout/Badge/Warning/Standard/Border",
+            "value": "#ffffff00",
+            "var": "Stroke/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/layout/Badge/Warning/Standard/Bullet",
+            "value": "#ffeeb3",
+            "var": "Fill/Warning/Tint",
+            "rootAlias": "Canary/30"
+          },
+          {
+            "name": "Components/layout/Badge/Warning/Standard/Fill",
+            "value": "#ffeeb3",
+            "var": "Fill/Warning/Tint",
+            "rootAlias": "Canary/30"
+          },
+          {
+            "name": "Components/layout/Badge/Warning/Standard/Icon",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/layout/Badge/Warning/Standard/Text",
+            "value": "#08091c",
+            "var": "Text/Dark",
+            "rootAlias": "Ebony/100"
+          },
+          {
+            "name": "Components/layout/Badge/Warning/Standard/Text-Bullet",
+            "value": "#e5e5e9",
+            "var": "Text/LightAlt",
+            "rootAlias": "Ebony/10"
+          },
+          {
+            "name": "Components/layout/Card/Contrast/Border-Default",
+            "value": "#ffffff00",
+            "var": "Stroke/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/layout/Card/Contrast/Border-active",
+            "value": "#b3b4bd",
+            "var": "Stroke/Dark",
+            "rootAlias": "Ebony/30"
+          },
+          {
+            "name": "Components/layout/Card/Contrast/Divide",
+            "value": "#ff5959",
+            "var": "Stroke/Highlight",
+            "rootAlias": "Coral/40"
+          },
+          {
+            "name": "Components/layout/Card/Contrast/Fill-Default-Solid",
+            "value": "#393a49",
+            "var": "Fill/Background/Overlay/Solid",
+            "rootAlias": "Ebony/80"
+          },
+          {
+            "name": "Components/layout/Card/Contrast/Fill-Default-Transparent",
+            "value": "#e5e5e926",
+            "var": "Fill/Background/Overlay/Transparent",
+            "rootAlias": "Transparent/Ebony-Alpha15"
+          },
+          {
+            "name": "Components/layout/Card/Contrast/Fill-HoverActive",
+            "value": "#464755",
+            "var": "Fill/Background/Overlay/SolidAlt",
+            "rootAlias": "Ebony/75"
+          },
+          {
+            "name": "Components/layout/Card/Contrast/Icon",
+            "value": "#e5e5e9",
+            "var": "Shape/LightAlt",
+            "rootAlias": "Ebony/10"
+          },
+          {
+            "name": "Components/layout/Card/Contrast/Shadow layer1",
+            "value": "#ffffff00",
+            "var": "Fill/Background/Standard/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/layout/Card/Contrast/Shadow layer2",
+            "value": "#ffffff00",
+            "var": "Fill/Background/Standard/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/layout/Card/Contrast/Shadow layer3",
+            "value": "#ffffff00",
+            "var": "Fill/Background/Standard/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/layout/Card/Contrast/Subject text",
+            "value": "#b3b4bd",
+            "var": "Text/DarkAlt",
+            "rootAlias": "Ebony/30"
+          },
+          {
+            "name": "Components/layout/Card/Contrast/Text",
+            "value": "#e5e5e9",
+            "var": "Text/LightAlt",
+            "rootAlias": "Ebony/10"
+          },
+          {
+            "name": "Components/layout/Card/Standard/Border-Default",
+            "value": "#ffffff00",
+            "var": "Stroke/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/layout/Card/Standard/Border-active",
+            "value": "#b3b4bd",
+            "var": "Stroke/Dark",
+            "rootAlias": "Ebony/30"
+          },
+          {
+            "name": "Components/layout/Card/Standard/Divide",
+            "value": "#ff5959",
+            "var": "Stroke/Highlight",
+            "rootAlias": "Coral/40"
+          },
+          {
+            "name": "Components/layout/Card/Standard/Fill-Default-Solid",
+            "value": "#393a49",
+            "var": "Fill/Background/Overlay/Solid",
+            "rootAlias": "Ebony/80"
+          },
+          {
+            "name": "Components/layout/Card/Standard/Fill-Default-Transparent",
+            "value": "#e5e5e926",
+            "var": "Fill/Background/Overlay/Transparent",
+            "rootAlias": "Transparent/Ebony-Alpha15"
+          },
+          {
+            "name": "Components/layout/Card/Standard/Fill-HoverActive",
+            "value": "#464755",
+            "var": "Fill/Background/Overlay/SolidAlt",
+            "rootAlias": "Ebony/75"
+          },
+          {
+            "name": "Components/layout/Card/Standard/Icon",
+            "value": "#e5e5e9",
+            "var": "Shape/LightAlt",
+            "rootAlias": "Ebony/10"
+          },
+          {
+            "name": "Components/layout/Card/Standard/Shadow layer1",
+            "value": "#ffffff00",
+            "var": "Fill/Background/Standard/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/layout/Card/Standard/Shadow layer2",
+            "value": "#ffffff00",
+            "var": "Fill/Background/Standard/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/layout/Card/Standard/Shadow layer3",
+            "value": "#ffffff00",
+            "var": "Fill/Background/Standard/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/layout/Card/Standard/Subject text",
+            "value": "#b3b4bd",
+            "var": "Text/DarkAlt",
+            "rootAlias": "Ebony/30"
+          },
+          {
+            "name": "Components/layout/Card/Standard/Text",
+            "value": "#e5e5e9",
+            "var": "Text/LightAlt",
+            "rootAlias": "Ebony/10"
+          },
+          {
+            "name": "Components/layout/Tag/Fill/Contrast/Azure",
+            "value": "#cdeefe",
+            "var": "Tint/Azure",
+            "rootAlias": "Tint/Azure"
+          },
+          {
+            "name": "Components/layout/Tag/Fill/Contrast/Blue",
+            "value": "#c5e0fc",
+            "var": "Tint/Blue",
+            "rootAlias": "Tint/Blue"
+          },
+          {
+            "name": "Components/layout/Tag/Fill/Contrast/Coral",
+            "value": "#ffe5e5",
+            "var": "Tint/Coral",
+            "rootAlias": "Tint/Coral"
+          },
+          {
+            "name": "Components/layout/Tag/Fill/Contrast/Information",
+            "value": "#acd7f1",
+            "var": "Fill/Information/Tint",
+            "rootAlias": "Sky/20"
+          },
+          {
+            "name": "Components/layout/Tag/Fill/Contrast/Jungle",
+            "value": "#c2f0ec",
+            "var": "Tint/Jungle",
+            "rootAlias": "Tint/Jungle"
+          },
+          {
+            "name": "Components/layout/Tag/Fill/Contrast/Lavender",
+            "value": "#ced4ee",
+            "var": "Tint/Lavender",
+            "rootAlias": "Tint/Lavender"
+          },
+          {
+            "name": "Components/layout/Tag/Fill/Contrast/Lilac",
+            "value": "#f9dcf9",
+            "var": "Tint/Lilac",
+            "rootAlias": "Tint/Lilac"
+          },
+          {
+            "name": "Components/layout/Tag/Fill/Contrast/Lime",
+            "value": "#f0f98b",
+            "var": "Tint/Lime",
+            "rootAlias": "Tint/Lime"
+          },
+          {
+            "name": "Components/layout/Tag/Fill/Contrast/Mystic",
+            "value": "#ebdefc",
+            "var": "Tint/Mystic",
+            "rootAlias": "Tint/Mystic"
+          },
+          {
+            "name": "Components/layout/Tag/Fill/Contrast/Negative",
+            "value": "#ffcece",
+            "var": "Fill/Negative/Muted",
+            "rootAlias": "Coral/20"
+          },
+          {
+            "name": "Components/layout/Tag/Fill/Contrast/Neutral",
+            "value": "#e5e5e959",
+            "var": "Fill/Selected/Hover/Dark",
+            "rootAlias": "Transparent/Ebony-Alpha35"
+          },
+          {
+            "name": "Components/layout/Tag/Fill/Contrast/Peach",
+            "value": "#ffe4d6",
+            "var": "Tint/Peach",
+            "rootAlias": "Tint/Peach"
+          },
+          {
+            "name": "Components/layout/Tag/Fill/Contrast/Spring",
+            "value": "#d7ecb6",
+            "var": "Tint/Spring",
+            "rootAlias": "Tint/Spring"
+          },
+          {
+            "name": "Components/layout/Tag/Fill/Contrast/Success",
+            "value": "#9cd9c2",
+            "var": "Fill/Success/Tint",
+            "rootAlias": "Mint/30"
+          },
+          {
+            "name": "Components/layout/Tag/Fill/Contrast/Warning",
+            "value": "#ffeeb3",
+            "var": "Fill/Warning/Tint",
+            "rootAlias": "Canary/30"
+          },
+          {
+            "name": "Components/layout/Tag/Fill/Default/Azure",
+            "value": "#cdeefe",
+            "var": "Tint/Azure",
+            "rootAlias": "Tint/Azure"
+          },
+          {
+            "name": "Components/layout/Tag/Fill/Default/Blue",
+            "value": "#c5e0fc",
+            "var": "Tint/Blue",
+            "rootAlias": "Tint/Blue"
+          },
+          {
+            "name": "Components/layout/Tag/Fill/Default/Coral",
+            "value": "#ffe5e5",
+            "var": "Tint/Coral",
+            "rootAlias": "Tint/Coral"
+          },
+          {
+            "name": "Components/layout/Tag/Fill/Default/Information",
+            "value": "#acd7f1",
+            "var": "Fill/Information/Tint",
+            "rootAlias": "Sky/20"
+          },
+          {
+            "name": "Components/layout/Tag/Fill/Default/Jungle",
+            "value": "#c2f0ec",
+            "var": "Tint/Jungle",
+            "rootAlias": "Tint/Jungle"
+          },
+          {
+            "name": "Components/layout/Tag/Fill/Default/Lavender",
+            "value": "#ced4ee",
+            "var": "Tint/Lavender",
+            "rootAlias": "Tint/Lavender"
+          },
+          {
+            "name": "Components/layout/Tag/Fill/Default/Lilac",
+            "value": "#f9dcf9",
+            "var": "Tint/Lilac",
+            "rootAlias": "Tint/Lilac"
+          },
+          {
+            "name": "Components/layout/Tag/Fill/Default/Lime",
+            "value": "#f0f98b",
+            "var": "Tint/Lime",
+            "rootAlias": "Tint/Lime"
+          },
+          {
+            "name": "Components/layout/Tag/Fill/Default/Mystic",
+            "value": "#ebdefc",
+            "var": "Tint/Mystic",
+            "rootAlias": "Tint/Mystic"
+          },
+          {
+            "name": "Components/layout/Tag/Fill/Default/Negative",
+            "value": "#ffcece",
+            "var": "Fill/Negative/Muted",
+            "rootAlias": "Coral/20"
+          },
+          {
+            "name": "Components/layout/Tag/Fill/Default/Neutral",
+            "value": "#e5e5e959",
+            "var": "Fill/Selected/Hover/Dark",
+            "rootAlias": "Transparent/Ebony-Alpha35"
+          },
+          {
+            "name": "Components/layout/Tag/Fill/Default/Peach",
+            "value": "#ffe4d6",
+            "var": "Tint/Peach",
+            "rootAlias": "Tint/Peach"
+          },
+          {
+            "name": "Components/layout/Tag/Fill/Default/Spring",
+            "value": "#d7ecb6",
+            "var": "Tint/Spring",
+            "rootAlias": "Tint/Spring"
+          },
+          {
+            "name": "Components/layout/Tag/Fill/Default/Success",
+            "value": "#9cd9c2",
+            "var": "Fill/Success/Tint",
+            "rootAlias": "Mint/30"
+          },
+          {
+            "name": "Components/layout/Tag/Fill/Default/Warning",
+            "value": "#ffeeb3",
+            "var": "Fill/Warning/Tint",
+            "rootAlias": "Canary/30"
+          },
+          {
+            "name": "Components/layout/Tag/Icon/Contrast/Neutral",
+            "value": "#e5e5e9",
+            "var": "Shape/LightAlt",
+            "rootAlias": "Ebony/10"
+          },
+          {
+            "name": "Components/layout/Tag/Icon/Contrast/Standard",
+            "value": "#08091c",
+            "var": "Shape/Dark",
+            "rootAlias": "Ebony/100"
+          },
+          {
+            "name": "Components/layout/Tag/Icon/Default/Neutral",
+            "value": "#e5e5e9",
+            "var": "Shape/LightAlt",
+            "rootAlias": "Ebony/10"
+          },
+          {
+            "name": "Components/layout/Tag/Icon/Default/Standard",
+            "value": "#08091c",
+            "var": "Shape/Dark",
+            "rootAlias": "Ebony/100"
+          },
+          {
+            "name": "Components/layout/Tag/Stroke/Default/Azure",
+            "value": "#ffffff00",
+            "var": "Stroke/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/layout/Tag/Stroke/Default/Blue",
+            "value": "#ffffff00",
+            "var": "Stroke/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/layout/Tag/Stroke/Default/Coral",
+            "value": "#ffffff00",
+            "var": "Stroke/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/layout/Tag/Stroke/Default/Information",
+            "value": "#ffffff00",
+            "var": "Stroke/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/layout/Tag/Stroke/Default/Jungle",
+            "value": "#ffffff00",
+            "var": "Stroke/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/layout/Tag/Stroke/Default/Lavender",
+            "value": "#ffffff00",
+            "var": "Stroke/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/layout/Tag/Stroke/Default/Lilac",
+            "value": "#ffffff00",
+            "var": "Stroke/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/layout/Tag/Stroke/Default/Lime",
+            "value": "#ffffff00",
+            "var": "Stroke/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/layout/Tag/Stroke/Default/Mystic",
+            "value": "#ffffff00",
+            "var": "Stroke/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/layout/Tag/Stroke/Default/Negative",
+            "value": "#ffffff00",
+            "var": "Stroke/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/layout/Tag/Stroke/Default/Neutral",
+            "value": "#ffffff00",
+            "var": "Stroke/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/layout/Tag/Stroke/Default/Peach",
+            "value": "#ffffff00",
+            "var": "Stroke/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/layout/Tag/Stroke/Default/Spring",
+            "value": "#ffffff00",
+            "var": "Stroke/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/layout/Tag/Stroke/Default/Success",
+            "value": "#ffffff00",
+            "var": "Stroke/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/layout/Tag/Stroke/Default/Warning",
+            "value": "#ffffff00",
+            "var": "Stroke/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/layout/Tag/Text/Contrast/Neutral",
+            "value": "#e5e5e9",
+            "var": "Text/LightAlt",
+            "rootAlias": "Ebony/10"
+          },
+          {
+            "name": "Components/layout/Tag/Text/Contrast/Standard",
+            "value": "#08091c",
+            "var": "Text/Dark",
+            "rootAlias": "Ebony/100"
+          },
+          {
+            "name": "Components/layout/Tag/Text/Default/Neutral",
+            "value": "#e5e5e9",
+            "var": "Text/LightAlt",
+            "rootAlias": "Ebony/10"
+          },
+          {
+            "name": "Components/layout/Tag/Text/Default/Standard",
+            "value": "#08091c",
+            "var": "Text/Dark",
+            "rootAlias": "Ebony/100"
+          },
+          {
             "name": "Components/loader/Fileupload/Contrast/Fill-Default",
             "value": "#ffffff00",
             "var": "Fill/Background/Standard/Colorless",
@@ -9793,160 +10483,148 @@
             "rootAlias": "Ebony/10"
           },
           {
-            "name": "Components/menu/Side Navigation/Contrast/Avatar",
-            "value": "#e5e5e926",
-            "var": "Fill/Background/Overlay/Transparent",
-            "rootAlias": "Transparent/Ebony-Alpha15"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Contrast/Background",
-            "value": "#212233",
-            "var": "Fill/Background/Contrast/Dark",
-            "rootAlias": "Ebony/90"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Contrast/Divide",
-            "value": "#81828f",
-            "var": "Stroke/DarkAlt",
-            "rootAlias": "Ebony/50"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Contrast/Fill-Active",
+            "name": "Components/menu/Side Navigation/Contrast/Fill/Active",
             "value": "#ffffff00",
             "var": "Fill/Background/Standard/Colorless",
             "rootAlias": "White/Alpha-0"
           },
           {
-            "name": "Components/menu/Side Navigation/Contrast/Fill-Default",
-            "value": "#ffffff00",
-            "var": "Fill/Background/Standard/Colorless",
-            "rootAlias": "White/Alpha-0"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Contrast/Fill-Hover",
-            "value": "#e5e5e926",
-            "var": "Fill/Background/Overlay/Transparent",
-            "rootAlias": "Transparent/Ebony-Alpha15"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Contrast/Icon",
-            "value": "#e5e5e9",
-            "var": "Shape/LightAlt",
-            "rootAlias": "Ebony/10"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Contrast/Icon-Disabled",
-            "value": "#949699",
-            "var": "Shape/NeutralAlt2",
-            "rootAlias": "Grey/60"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Contrast/Icon-Label",
-            "value": "#b3b4bd",
-            "var": "Shape/DarkAlt",
-            "rootAlias": "Ebony/30"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Contrast/Label",
-            "value": "#b3b4bd",
-            "var": "Text/DarkAlt",
-            "rootAlias": "Ebony/30"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Contrast/Stroke-Selected",
-            "value": "#ff5959",
-            "var": "Stroke/Highlight",
-            "rootAlias": "Coral/40"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Contrast/Text",
-            "value": "#e5e5e9",
-            "var": "Text/LightAlt",
-            "rootAlias": "Ebony/10"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Contrast/Text-Disabled",
-            "value": "#949699",
-            "var": "Text/NeutralAlt2",
-            "rootAlias": "Grey/60"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Standard/Avatar",
-            "value": "#e5e5e926",
-            "var": "Fill/Background/Overlay/Transparent",
-            "rootAlias": "Transparent/Ebony-Alpha15"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Standard/Background",
+            "name": "Components/menu/Side Navigation/Contrast/Fill/Background",
             "value": "#212233",
             "var": "Fill/Background/Contrast/Dark",
             "rootAlias": "Ebony/90"
           },
           {
-            "name": "Components/menu/Side Navigation/Standard/Divide",
-            "value": "#81828f",
-            "var": "Stroke/DarkAlt",
-            "rootAlias": "Ebony/50"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Standard/Fill-Active",
+            "name": "Components/menu/Side Navigation/Contrast/Fill/Default",
             "value": "#ffffff00",
-            "var": "Fill/Secondary/Default/Colorless",
+            "var": "Fill/Background/Standard/Colorless",
             "rootAlias": "White/Alpha-0"
           },
           {
-            "name": "Components/menu/Side Navigation/Standard/Fill-Default",
-            "value": "#ffffff00",
-            "var": "Fill/Secondary/Default/Colorless",
-            "rootAlias": "White/Alpha-0"
-          },
-          {
-            "name": "Components/menu/Side Navigation/Standard/Fill-Hover",
+            "name": "Components/menu/Side Navigation/Contrast/Fill/Hover",
             "value": "#e5e5e926",
             "var": "Fill/Background/Overlay/Transparent",
             "rootAlias": "Transparent/Ebony-Alpha15"
           },
           {
-            "name": "Components/menu/Side Navigation/Standard/Icon",
+            "name": "Components/menu/Side Navigation/Contrast/Icon/Default",
             "value": "#e5e5e9",
             "var": "Shape/LightAlt",
             "rootAlias": "Ebony/10"
           },
           {
-            "name": "Components/menu/Side Navigation/Standard/Icon-Disabled",
+            "name": "Components/menu/Side Navigation/Contrast/Icon/Disabled",
             "value": "#949699",
             "var": "Shape/NeutralAlt2",
             "rootAlias": "Grey/60"
           },
           {
-            "name": "Components/menu/Side Navigation/Standard/Icon-Label",
+            "name": "Components/menu/Side Navigation/Contrast/Icon/Label",
             "value": "#b3b4bd",
             "var": "Shape/DarkAlt",
             "rootAlias": "Ebony/30"
           },
           {
-            "name": "Components/menu/Side Navigation/Standard/Label",
-            "value": "#b3b4bd",
-            "var": "Text/DarkAlt",
-            "rootAlias": "Ebony/30"
+            "name": "Components/menu/Side Navigation/Contrast/Stroke/Divide",
+            "value": "#81828f",
+            "var": "Stroke/DarkAlt",
+            "rootAlias": "Ebony/50"
           },
           {
-            "name": "Components/menu/Side Navigation/Standard/Stroke-Selected",
+            "name": "Components/menu/Side Navigation/Contrast/Stroke/Selected",
             "value": "#ff5959",
             "var": "Stroke/Highlight",
             "rootAlias": "Coral/40"
           },
           {
-            "name": "Components/menu/Side Navigation/Standard/Text",
+            "name": "Components/menu/Side Navigation/Contrast/Text/Default",
             "value": "#e5e5e9",
             "var": "Text/LightAlt",
             "rootAlias": "Ebony/10"
           },
           {
-            "name": "Components/menu/Side Navigation/Standard/Text-Disabled",
+            "name": "Components/menu/Side Navigation/Contrast/Text/Disabled",
             "value": "#949699",
             "var": "Text/NeutralAlt2",
             "rootAlias": "Grey/60"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Contrast/Text/Label",
+            "value": "#b3b4bd",
+            "var": "Text/DarkAlt",
+            "rootAlias": "Ebony/30"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Standard/Fill/Active",
+            "value": "#ffffff00",
+            "var": "Fill/Secondary/Default/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Standard/Fill/Background",
+            "value": "#212233",
+            "var": "Fill/Background/Contrast/Dark",
+            "rootAlias": "Ebony/90"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Standard/Fill/Default",
+            "value": "#ffffff00",
+            "var": "Fill/Secondary/Default/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Standard/Fill/Hover",
+            "value": "#e5e5e926",
+            "var": "Fill/Background/Overlay/Transparent",
+            "rootAlias": "Transparent/Ebony-Alpha15"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Standard/Icon/Default",
+            "value": "#e5e5e9",
+            "var": "Shape/LightAlt",
+            "rootAlias": "Ebony/10"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Standard/Icon/Disabled",
+            "value": "#949699",
+            "var": "Shape/NeutralAlt2",
+            "rootAlias": "Grey/60"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Standard/Icon/Label",
+            "value": "#b3b4bd",
+            "var": "Shape/DarkAlt",
+            "rootAlias": "Ebony/30"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Standard/Stroke/Divide",
+            "value": "#81828f",
+            "var": "Stroke/DarkAlt",
+            "rootAlias": "Ebony/50"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Standard/Stroke/Selected",
+            "value": "#ff5959",
+            "var": "Stroke/Highlight",
+            "rootAlias": "Coral/40"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Standard/Text/Default",
+            "value": "#e5e5e9",
+            "var": "Text/LightAlt",
+            "rootAlias": "Ebony/10"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Standard/Text/Disabled",
+            "value": "#949699",
+            "var": "Text/NeutralAlt2",
+            "rootAlias": "Grey/60"
+          },
+          {
+            "name": "Components/menu/Side Navigation/Standard/Text/Label",
+            "value": "#b3b4bd",
+            "var": "Text/DarkAlt",
+            "rootAlias": "Ebony/30"
           },
           {
             "name": "Components/menu/Stepper/Contrast/Background",
@@ -10067,6 +10745,84 @@
             "value": "#b3b4bd",
             "var": "Text/DarkAlt",
             "rootAlias": "Ebony/30"
+          },
+          {
+            "name": "Components/menu/Topbar/Contrast/Avatar",
+            "value": "#e5e5e926",
+            "var": "Fill/Background/Overlay/Transparent",
+            "rootAlias": "Transparent/Ebony-Alpha15"
+          },
+          {
+            "name": "Components/menu/Topbar/Contrast/Background",
+            "value": "#212233",
+            "var": "Fill/Background/Contrast/Dark",
+            "rootAlias": "Ebony/90"
+          },
+          {
+            "name": "Components/menu/Topbar/Contrast/Divide",
+            "value": "#81828f",
+            "var": "Stroke/DarkAlt",
+            "rootAlias": "Ebony/50"
+          },
+          {
+            "name": "Components/menu/Topbar/Contrast/Fill-Active",
+            "value": "#ffffff00",
+            "var": "Fill/Background/Standard/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/menu/Topbar/Contrast/Fill-Default",
+            "value": "#ffffff00",
+            "var": "Fill/Background/Standard/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/menu/Topbar/Contrast/Fill-Hover",
+            "value": "#e5e5e926",
+            "var": "Fill/Background/Overlay/Transparent",
+            "rootAlias": "Transparent/Ebony-Alpha15"
+          },
+          {
+            "name": "Components/menu/Topbar/Contrast/Icon",
+            "value": "#e5e5e9",
+            "var": "Shape/LightAlt",
+            "rootAlias": "Ebony/10"
+          },
+          {
+            "name": "Components/menu/Topbar/Contrast/Icon-Disabled",
+            "value": "#949699",
+            "var": "Shape/NeutralAlt2",
+            "rootAlias": "Grey/60"
+          },
+          {
+            "name": "Components/menu/Topbar/Contrast/Icon-Label",
+            "value": "#b3b4bd",
+            "var": "Shape/DarkAlt",
+            "rootAlias": "Ebony/30"
+          },
+          {
+            "name": "Components/menu/Topbar/Contrast/Label",
+            "value": "#b3b4bd",
+            "var": "Text/DarkAlt",
+            "rootAlias": "Ebony/30"
+          },
+          {
+            "name": "Components/menu/Topbar/Contrast/Stroke-Selected",
+            "value": "#ff5959",
+            "var": "Stroke/Highlight",
+            "rootAlias": "Coral/40"
+          },
+          {
+            "name": "Components/menu/Topbar/Contrast/Text",
+            "value": "#e5e5e9",
+            "var": "Text/LightAlt",
+            "rootAlias": "Ebony/10"
+          },
+          {
+            "name": "Components/menu/Topbar/Contrast/Text-Disabled",
+            "value": "#949699",
+            "var": "Text/NeutralAlt2",
+            "rootAlias": "Grey/60"
           },
           {
             "name": "Components/modal/Drawer/Contrast/Background",
@@ -10274,9 +11030,9 @@
           },
           {
             "name": "Components/table/Contrast/Cell-Fill-Negative",
-            "value": "#ff949433",
-            "var": "Fill/Negative/Transparent",
-            "rootAlias": "Transparent/Coral-Alpha20"
+            "value": "#2e0505",
+            "var": "Fill/Negative/Accent",
+            "rootAlias": "Coral/100"
           },
           {
             "name": "Components/table/Contrast/Header-Fill",
@@ -10316,9 +11072,9 @@
           },
           {
             "name": "Components/table/Standard/Fill-Negative",
-            "value": "#ff949433",
-            "var": "Fill/Negative/Transparent",
-            "rootAlias": "Transparent/Coral-Alpha20"
+            "value": "#2e0505",
+            "var": "Fill/Negative/Accent",
+            "rootAlias": "Coral/100"
           },
           {
             "name": "Components/table/Standard/Header-Fill",
@@ -12719,78 +13475,6 @@
         "color": [],
         "number": [
           {
-            "name": "Components/travel/Travel header/border/small",
-            "value": "0.125rem",
-            "var": "size-2",
-            "rootAlias": "size-2"
-          },
-          {
-            "name": "Components/travel/Travel header/border/large",
-            "value": "0.25rem",
-            "var": "size-3",
-            "rootAlias": "size-3"
-          },
-          {
-            "name": "Components/travel/Travel header/border/medium",
-            "value": "0.25rem",
-            "var": "size-3",
-            "rootAlias": "size-3"
-          },
-          {
-            "name": "Components/travel/Travel header/gap/small",
-            "value": "0.5rem",
-            "var": "size-5",
-            "rootAlias": "size-5"
-          },
-          {
-            "name": "Components/travel/Travel header/gap/medium",
-            "value": "0.75rem",
-            "var": "size-6",
-            "rootAlias": "size-6"
-          },
-          {
-            "name": "Components/travel/Travel header/gap/large",
-            "value": "1rem",
-            "var": "size-8",
-            "rootAlias": "size-8"
-          },
-          {
-            "name": "Components/travel/Travel header/spacing/large",
-            "value": "0.5rem",
-            "var": "size-5",
-            "rootAlias": "size-5"
-          },
-          {
-            "name": "Components/travel/Travel header/spacing/medium",
-            "value": "0.5rem",
-            "var": "size-5",
-            "rootAlias": "size-5"
-          },
-          {
-            "name": "Components/travel/Travel header/spacing/small",
-            "value": "0.5rem",
-            "var": "size-5",
-            "rootAlias": "size-5"
-          },
-          {
-            "name": "Components/travel/Travel header/width/small",
-            "value": "1.5rem",
-            "var": "size-10",
-            "rootAlias": "size-10"
-          },
-          {
-            "name": "Components/travel/Travel header/width/medium",
-            "value": "2rem",
-            "var": "size-12",
-            "rootAlias": "size-12"
-          },
-          {
-            "name": "Components/travel/Travel header/width/large",
-            "value": "2.5rem",
-            "var": "size-14",
-            "rootAlias": "size-14"
-          },
-          {
             "name": "Components/button/border/Large",
             "value": "0.125rem",
             "var": "size-2",
@@ -13253,6 +13937,114 @@
             "rootAlias": "size-11"
           },
           {
+            "name": "Components/layout/Tag/border/Large",
+            "value": "0.0625rem",
+            "var": "size-1",
+            "rootAlias": "size-1"
+          },
+          {
+            "name": "Components/layout/Tag/border/Medium",
+            "value": "0.0625rem",
+            "var": "size-1",
+            "rootAlias": "size-1"
+          },
+          {
+            "name": "Components/layout/Tag/border/Small",
+            "value": "0.0625rem",
+            "var": "size-1",
+            "rootAlias": "size-1"
+          },
+          {
+            "name": "Components/layout/Tag/gap/Medium",
+            "value": "0.125rem",
+            "var": "size-2",
+            "rootAlias": "size-2"
+          },
+          {
+            "name": "Components/layout/Tag/gap/Small",
+            "value": "0.125rem",
+            "var": "size-2",
+            "rootAlias": "size-2"
+          },
+          {
+            "name": "Components/layout/Tag/gap/Large",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "Components/layout/Tag/height/Small",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "Components/layout/Tag/height/Medium",
+            "value": "1.25rem",
+            "var": "size-9",
+            "rootAlias": "size-9"
+          },
+          {
+            "name": "Components/layout/Tag/height/Large",
+            "value": "1.75rem",
+            "var": "size-11",
+            "rootAlias": "size-11"
+          },
+          {
+            "name": "Components/layout/Tag/icon/Medium",
+            "value": "0.75rem",
+            "var": "size-6",
+            "rootAlias": "size-6"
+          },
+          {
+            "name": "Components/layout/Tag/icon/Small",
+            "value": "0.75rem",
+            "var": "size-6",
+            "rootAlias": "size-6"
+          },
+          {
+            "name": "Components/layout/Tag/icon/Large",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "Components/layout/Tag/inlinePadding/Medium",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "Components/layout/Tag/inlinePadding/Small",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "Components/layout/Tag/inlinePadding/Large",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "Components/layout/Tag/radius/Large",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "Components/layout/Tag/radius/Medium",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "Components/layout/Tag/radius/Small",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
             "name": "Components/layout/badge/bullet/bullet/Small",
             "value": "0.5rem",
             "var": "size-5",
@@ -13337,114 +14129,6 @@
             "rootAlias": "size-23"
           },
           {
-            "name": "Components/layout/badge/status/border/Large",
-            "value": "0.0625rem",
-            "var": "size-1",
-            "rootAlias": "size-1"
-          },
-          {
-            "name": "Components/layout/badge/status/border/Medium",
-            "value": "0.0625rem",
-            "var": "size-1",
-            "rootAlias": "size-1"
-          },
-          {
-            "name": "Components/layout/badge/status/border/Small",
-            "value": "0.0625rem",
-            "var": "size-1",
-            "rootAlias": "size-1"
-          },
-          {
-            "name": "Components/layout/badge/status/gap/Medium",
-            "value": "0.125rem",
-            "var": "size-2",
-            "rootAlias": "size-2"
-          },
-          {
-            "name": "Components/layout/badge/status/gap/Small",
-            "value": "0.125rem",
-            "var": "size-2",
-            "rootAlias": "size-2"
-          },
-          {
-            "name": "Components/layout/badge/status/gap/Large",
-            "value": "0.25rem",
-            "var": "size-3",
-            "rootAlias": "size-3"
-          },
-          {
-            "name": "Components/layout/badge/status/height/Small",
-            "value": "1rem",
-            "var": "size-8",
-            "rootAlias": "size-8"
-          },
-          {
-            "name": "Components/layout/badge/status/height/Medium",
-            "value": "1.25rem",
-            "var": "size-9",
-            "rootAlias": "size-9"
-          },
-          {
-            "name": "Components/layout/badge/status/height/Large",
-            "value": "1.75rem",
-            "var": "size-11",
-            "rootAlias": "size-11"
-          },
-          {
-            "name": "Components/layout/badge/status/icon/Medium",
-            "value": "0.75rem",
-            "var": "size-6",
-            "rootAlias": "size-6"
-          },
-          {
-            "name": "Components/layout/badge/status/icon/Small",
-            "value": "0.75rem",
-            "var": "size-6",
-            "rootAlias": "size-6"
-          },
-          {
-            "name": "Components/layout/badge/status/icon/Large",
-            "value": "1rem",
-            "var": "size-8",
-            "rootAlias": "size-8"
-          },
-          {
-            "name": "Components/layout/badge/status/inlinePadding/Medium",
-            "value": "0.25rem",
-            "var": "size-3",
-            "rootAlias": "size-3"
-          },
-          {
-            "name": "Components/layout/badge/status/inlinePadding/Small",
-            "value": "0.25rem",
-            "var": "size-3",
-            "rootAlias": "size-3"
-          },
-          {
-            "name": "Components/layout/badge/status/inlinePadding/Large",
-            "value": "0.5rem",
-            "var": "size-5",
-            "rootAlias": "size-5"
-          },
-          {
-            "name": "Components/layout/badge/status/radius/Large",
-            "value": "0.25rem",
-            "var": "size-3",
-            "rootAlias": "size-3"
-          },
-          {
-            "name": "Components/layout/badge/status/radius/Medium",
-            "value": "0.25rem",
-            "var": "size-3",
-            "rootAlias": "size-3"
-          },
-          {
-            "name": "Components/layout/badge/status/radius/Small",
-            "value": "0.25rem",
-            "var": "size-3",
-            "rootAlias": "size-3"
-          },
-          {
             "name": "Components/modal/border/default",
             "value": "0.0625rem",
             "var": "size-1",
@@ -13479,17 +14163,7 @@
             "value": "35rem",
             "var": "",
             "rootAlias": ""
-          }
-        ],
-        "string": []
-      },
-      {
-        "mode": {
-          "name": "Compact",
-          "id": "6155:0"
-        },
-        "color": [],
-        "number": [
+          },
           {
             "name": "Components/travel/Travel header/border/small",
             "value": "0.125rem",
@@ -13509,22 +14183,22 @@
             "rootAlias": "size-3"
           },
           {
-            "name": "Components/travel/Travel header/gap/medium",
-            "value": "0.5rem",
-            "var": "size-5",
-            "rootAlias": "size-5"
-          },
-          {
             "name": "Components/travel/Travel header/gap/small",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "Components/travel/Travel header/gap/large",
+            "name": "Components/travel/Travel header/gap/medium",
             "value": "0.75rem",
             "var": "size-6",
             "rootAlias": "size-6"
+          },
+          {
+            "name": "Components/travel/Travel header/gap/large",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
           },
           {
             "name": "Components/travel/Travel header/spacing/large",
@@ -13546,22 +14220,32 @@
           },
           {
             "name": "Components/travel/Travel header/width/small",
-            "value": "1.25rem",
-            "var": "size-9",
-            "rootAlias": "size-9"
+            "value": "1.5rem",
+            "var": "size-10",
+            "rootAlias": "size-10"
           },
           {
             "name": "Components/travel/Travel header/width/medium",
-            "value": "1.75rem",
-            "var": "size-11",
-            "rootAlias": "size-11"
-          },
-          {
-            "name": "Components/travel/Travel header/width/large",
             "value": "2rem",
             "var": "size-12",
             "rootAlias": "size-12"
           },
+          {
+            "name": "Components/travel/Travel header/width/large",
+            "value": "2.5rem",
+            "var": "size-14",
+            "rootAlias": "size-14"
+          }
+        ],
+        "string": []
+      },
+      {
+        "mode": {
+          "name": "Compact",
+          "id": "6155:0"
+        },
+        "color": [],
+        "number": [
           {
             "name": "Components/button/border/Large",
             "value": "0.125rem",
@@ -14025,6 +14709,114 @@
             "rootAlias": "size-10"
           },
           {
+            "name": "Components/layout/Tag/border/Large",
+            "value": "0.0625rem",
+            "var": "size-1",
+            "rootAlias": "size-1"
+          },
+          {
+            "name": "Components/layout/Tag/border/Medium",
+            "value": "0.0625rem",
+            "var": "size-1",
+            "rootAlias": "size-1"
+          },
+          {
+            "name": "Components/layout/Tag/border/Small",
+            "value": "0.0625rem",
+            "var": "size-1",
+            "rootAlias": "size-1"
+          },
+          {
+            "name": "Components/layout/Tag/gap/Medium",
+            "value": "0.125rem",
+            "var": "size-2",
+            "rootAlias": "size-2"
+          },
+          {
+            "name": "Components/layout/Tag/gap/Small",
+            "value": "0.125rem",
+            "var": "size-2",
+            "rootAlias": "size-2"
+          },
+          {
+            "name": "Components/layout/Tag/gap/Large",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "Components/layout/Tag/height/Medium",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "Components/layout/Tag/height/Small",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "Components/layout/Tag/height/Large",
+            "value": "1.5rem",
+            "var": "size-10",
+            "rootAlias": "size-10"
+          },
+          {
+            "name": "Components/layout/Tag/icon/Medium",
+            "value": "0.75rem",
+            "var": "size-6",
+            "rootAlias": "size-6"
+          },
+          {
+            "name": "Components/layout/Tag/icon/Small",
+            "value": "0.75rem",
+            "var": "size-6",
+            "rootAlias": "size-6"
+          },
+          {
+            "name": "Components/layout/Tag/icon/Large",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "Components/layout/Tag/inlinePadding/Large",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "Components/layout/Tag/inlinePadding/Medium",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "Components/layout/Tag/inlinePadding/Small",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "Components/layout/Tag/radius/Large",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "Components/layout/Tag/radius/Medium",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "Components/layout/Tag/radius/Small",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
             "name": "Components/layout/badge/bullet/bullet/Small",
             "value": "0.5rem",
             "var": "size-5",
@@ -14109,114 +14901,6 @@
             "rootAlias": "size-23"
           },
           {
-            "name": "Components/layout/badge/status/border/Large",
-            "value": "0.0625rem",
-            "var": "size-1",
-            "rootAlias": "size-1"
-          },
-          {
-            "name": "Components/layout/badge/status/border/Medium",
-            "value": "0.0625rem",
-            "var": "size-1",
-            "rootAlias": "size-1"
-          },
-          {
-            "name": "Components/layout/badge/status/border/Small",
-            "value": "0.0625rem",
-            "var": "size-1",
-            "rootAlias": "size-1"
-          },
-          {
-            "name": "Components/layout/badge/status/gap/Medium",
-            "value": "0.125rem",
-            "var": "size-2",
-            "rootAlias": "size-2"
-          },
-          {
-            "name": "Components/layout/badge/status/gap/Small",
-            "value": "0.125rem",
-            "var": "size-2",
-            "rootAlias": "size-2"
-          },
-          {
-            "name": "Components/layout/badge/status/gap/Large",
-            "value": "0.25rem",
-            "var": "size-3",
-            "rootAlias": "size-3"
-          },
-          {
-            "name": "Components/layout/badge/status/height/Medium",
-            "value": "1rem",
-            "var": "size-8",
-            "rootAlias": "size-8"
-          },
-          {
-            "name": "Components/layout/badge/status/height/Small",
-            "value": "1rem",
-            "var": "size-8",
-            "rootAlias": "size-8"
-          },
-          {
-            "name": "Components/layout/badge/status/height/Large",
-            "value": "1.5rem",
-            "var": "size-10",
-            "rootAlias": "size-10"
-          },
-          {
-            "name": "Components/layout/badge/status/icon/Medium",
-            "value": "0.75rem",
-            "var": "size-6",
-            "rootAlias": "size-6"
-          },
-          {
-            "name": "Components/layout/badge/status/icon/Small",
-            "value": "0.75rem",
-            "var": "size-6",
-            "rootAlias": "size-6"
-          },
-          {
-            "name": "Components/layout/badge/status/icon/Large",
-            "value": "1rem",
-            "var": "size-8",
-            "rootAlias": "size-8"
-          },
-          {
-            "name": "Components/layout/badge/status/inlinePadding/Large",
-            "value": "0.25rem",
-            "var": "size-3",
-            "rootAlias": "size-3"
-          },
-          {
-            "name": "Components/layout/badge/status/inlinePadding/Medium",
-            "value": "0.25rem",
-            "var": "size-3",
-            "rootAlias": "size-3"
-          },
-          {
-            "name": "Components/layout/badge/status/inlinePadding/Small",
-            "value": "0.25rem",
-            "var": "size-3",
-            "rootAlias": "size-3"
-          },
-          {
-            "name": "Components/layout/badge/status/radius/Large",
-            "value": "0.25rem",
-            "var": "size-3",
-            "rootAlias": "size-3"
-          },
-          {
-            "name": "Components/layout/badge/status/radius/Medium",
-            "value": "0.25rem",
-            "var": "size-3",
-            "rootAlias": "size-3"
-          },
-          {
-            "name": "Components/layout/badge/status/radius/Small",
-            "value": "0.25rem",
-            "var": "size-3",
-            "rootAlias": "size-3"
-          },
-          {
             "name": "Components/modal/border/default",
             "value": "0.0625rem",
             "var": "size-1",
@@ -14251,6 +14935,78 @@
             "value": "20rem",
             "var": "",
             "rootAlias": ""
+          },
+          {
+            "name": "Components/travel/Travel header/border/small",
+            "value": "0.125rem",
+            "var": "size-2",
+            "rootAlias": "size-2"
+          },
+          {
+            "name": "Components/travel/Travel header/border/large",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "Components/travel/Travel header/border/medium",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "Components/travel/Travel header/gap/medium",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "Components/travel/Travel header/gap/small",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "Components/travel/Travel header/gap/large",
+            "value": "0.75rem",
+            "var": "size-6",
+            "rootAlias": "size-6"
+          },
+          {
+            "name": "Components/travel/Travel header/spacing/large",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "Components/travel/Travel header/spacing/medium",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "Components/travel/Travel header/spacing/small",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "Components/travel/Travel header/width/small",
+            "value": "1.25rem",
+            "var": "size-9",
+            "rootAlias": "size-9"
+          },
+          {
+            "name": "Components/travel/Travel header/width/medium",
+            "value": "1.75rem",
+            "var": "size-11",
+            "rootAlias": "size-11"
+          },
+          {
+            "name": "Components/travel/Travel header/width/large",
+            "value": "2rem",
+            "var": "size-12",
+            "rootAlias": "size-12"
           }
         ],
         "string": []
@@ -14262,78 +15018,6 @@
         },
         "color": [],
         "number": [
-          {
-            "name": "Components/travel/Travel header/border/small",
-            "value": "0.25rem",
-            "var": "size-3",
-            "rootAlias": "size-3"
-          },
-          {
-            "name": "Components/travel/Travel header/border/medium",
-            "value": "0.375rem",
-            "var": "size-4",
-            "rootAlias": "size-4"
-          },
-          {
-            "name": "Components/travel/Travel header/border/large",
-            "value": "0.5rem",
-            "var": "size-5",
-            "rootAlias": "size-5"
-          },
-          {
-            "name": "Components/travel/Travel header/gap/small",
-            "value": "0.75rem",
-            "var": "size-6",
-            "rootAlias": "size-6"
-          },
-          {
-            "name": "Components/travel/Travel header/gap/medium",
-            "value": "1rem",
-            "var": "size-8",
-            "rootAlias": "size-8"
-          },
-          {
-            "name": "Components/travel/Travel header/gap/large",
-            "value": "1.5rem",
-            "var": "size-10",
-            "rootAlias": "size-10"
-          },
-          {
-            "name": "Components/travel/Travel header/spacing/small",
-            "value": "0.5rem",
-            "var": "size-5",
-            "rootAlias": "size-5"
-          },
-          {
-            "name": "Components/travel/Travel header/spacing/medium",
-            "value": "0.75rem",
-            "var": "size-6",
-            "rootAlias": "size-6"
-          },
-          {
-            "name": "Components/travel/Travel header/spacing/large",
-            "value": "1rem",
-            "var": "size-8",
-            "rootAlias": "size-8"
-          },
-          {
-            "name": "Components/travel/Travel header/width/small",
-            "value": "2.5rem",
-            "var": "size-14",
-            "rootAlias": "size-14"
-          },
-          {
-            "name": "Components/travel/Travel header/width/medium",
-            "value": "3.5rem",
-            "var": "size-18",
-            "rootAlias": "size-18"
-          },
-          {
-            "name": "Components/travel/Travel header/width/large",
-            "value": "4.5rem",
-            "var": "size-20",
-            "rootAlias": "size-20"
-          },
           {
             "name": "Components/button/border/Small",
             "value": "0.125rem",
@@ -14797,6 +15481,114 @@
             "rootAlias": "size-18"
           },
           {
+            "name": "Components/layout/Tag/border/Large",
+            "value": "0.125rem",
+            "var": "size-2",
+            "rootAlias": "size-2"
+          },
+          {
+            "name": "Components/layout/Tag/border/Medium",
+            "value": "0.125rem",
+            "var": "size-2",
+            "rootAlias": "size-2"
+          },
+          {
+            "name": "Components/layout/Tag/border/Small",
+            "value": "0.125rem",
+            "var": "size-2",
+            "rootAlias": "size-2"
+          },
+          {
+            "name": "Components/layout/Tag/gap/Medium",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "Components/layout/Tag/gap/Small",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "Components/layout/Tag/gap/Large",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "Components/layout/Tag/height/Small",
+            "value": "1.75rem",
+            "var": "size-11",
+            "rootAlias": "size-11"
+          },
+          {
+            "name": "Components/layout/Tag/height/Medium",
+            "value": "2.25rem",
+            "var": "size-13",
+            "rootAlias": "size-13"
+          },
+          {
+            "name": "Components/layout/Tag/height/Large",
+            "value": "3.5rem",
+            "var": "size-18",
+            "rootAlias": "size-18"
+          },
+          {
+            "name": "Components/layout/Tag/icon/Small",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "Components/layout/Tag/icon/Medium",
+            "value": "1.25rem",
+            "var": "size-9",
+            "rootAlias": "size-9"
+          },
+          {
+            "name": "Components/layout/Tag/icon/Large",
+            "value": "1.75rem",
+            "var": "size-11",
+            "rootAlias": "size-11"
+          },
+          {
+            "name": "Components/layout/Tag/inlinePadding/Medium",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "Components/layout/Tag/inlinePadding/Small",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "Components/layout/Tag/inlinePadding/Large",
+            "value": "0.75rem",
+            "var": "size-6",
+            "rootAlias": "size-6"
+          },
+          {
+            "name": "Components/layout/Tag/radius/Medium",
+            "value": "0.375rem",
+            "var": "size-4",
+            "rootAlias": "size-4"
+          },
+          {
+            "name": "Components/layout/Tag/radius/Small",
+            "value": "0.375rem",
+            "var": "size-4",
+            "rootAlias": "size-4"
+          },
+          {
+            "name": "Components/layout/Tag/radius/Large",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
             "name": "Components/layout/badge/bullet/bullet/Small",
             "value": "0.75rem",
             "var": "size-6",
@@ -14881,114 +15673,6 @@
             "rootAlias": "size-23"
           },
           {
-            "name": "Components/layout/badge/status/border/Large",
-            "value": "0.125rem",
-            "var": "size-2",
-            "rootAlias": "size-2"
-          },
-          {
-            "name": "Components/layout/badge/status/border/Medium",
-            "value": "0.125rem",
-            "var": "size-2",
-            "rootAlias": "size-2"
-          },
-          {
-            "name": "Components/layout/badge/status/border/Small",
-            "value": "0.125rem",
-            "var": "size-2",
-            "rootAlias": "size-2"
-          },
-          {
-            "name": "Components/layout/badge/status/gap/Medium",
-            "value": "0.25rem",
-            "var": "size-3",
-            "rootAlias": "size-3"
-          },
-          {
-            "name": "Components/layout/badge/status/gap/Small",
-            "value": "0.25rem",
-            "var": "size-3",
-            "rootAlias": "size-3"
-          },
-          {
-            "name": "Components/layout/badge/status/gap/Large",
-            "value": "0.5rem",
-            "var": "size-5",
-            "rootAlias": "size-5"
-          },
-          {
-            "name": "Components/layout/badge/status/height/Small",
-            "value": "1.75rem",
-            "var": "size-11",
-            "rootAlias": "size-11"
-          },
-          {
-            "name": "Components/layout/badge/status/height/Medium",
-            "value": "2.25rem",
-            "var": "size-13",
-            "rootAlias": "size-13"
-          },
-          {
-            "name": "Components/layout/badge/status/height/Large",
-            "value": "3.5rem",
-            "var": "size-18",
-            "rootAlias": "size-18"
-          },
-          {
-            "name": "Components/layout/badge/status/icon/Small",
-            "value": "1rem",
-            "var": "size-8",
-            "rootAlias": "size-8"
-          },
-          {
-            "name": "Components/layout/badge/status/icon/Medium",
-            "value": "1.25rem",
-            "var": "size-9",
-            "rootAlias": "size-9"
-          },
-          {
-            "name": "Components/layout/badge/status/icon/Large",
-            "value": "1.75rem",
-            "var": "size-11",
-            "rootAlias": "size-11"
-          },
-          {
-            "name": "Components/layout/badge/status/inlinePadding/Medium",
-            "value": "0.5rem",
-            "var": "size-5",
-            "rootAlias": "size-5"
-          },
-          {
-            "name": "Components/layout/badge/status/inlinePadding/Small",
-            "value": "0.5rem",
-            "var": "size-5",
-            "rootAlias": "size-5"
-          },
-          {
-            "name": "Components/layout/badge/status/inlinePadding/Large",
-            "value": "0.75rem",
-            "var": "size-6",
-            "rootAlias": "size-6"
-          },
-          {
-            "name": "Components/layout/badge/status/radius/Medium",
-            "value": "0.375rem",
-            "var": "size-4",
-            "rootAlias": "size-4"
-          },
-          {
-            "name": "Components/layout/badge/status/radius/Small",
-            "value": "0.375rem",
-            "var": "size-4",
-            "rootAlias": "size-4"
-          },
-          {
-            "name": "Components/layout/badge/status/radius/Large",
-            "value": "0.5rem",
-            "var": "size-5",
-            "rootAlias": "size-5"
-          },
-          {
             "name": "Components/modal/border/default",
             "value": "0.125rem",
             "var": "size-2",
@@ -15023,6 +15707,78 @@
             "value": "60rem",
             "var": "",
             "rootAlias": ""
+          },
+          {
+            "name": "Components/travel/Travel header/border/small",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "Components/travel/Travel header/border/medium",
+            "value": "0.375rem",
+            "var": "size-4",
+            "rootAlias": "size-4"
+          },
+          {
+            "name": "Components/travel/Travel header/border/large",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "Components/travel/Travel header/gap/small",
+            "value": "0.75rem",
+            "var": "size-6",
+            "rootAlias": "size-6"
+          },
+          {
+            "name": "Components/travel/Travel header/gap/medium",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "Components/travel/Travel header/gap/large",
+            "value": "1.5rem",
+            "var": "size-10",
+            "rootAlias": "size-10"
+          },
+          {
+            "name": "Components/travel/Travel header/spacing/small",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "Components/travel/Travel header/spacing/medium",
+            "value": "0.75rem",
+            "var": "size-6",
+            "rootAlias": "size-6"
+          },
+          {
+            "name": "Components/travel/Travel header/spacing/large",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "Components/travel/Travel header/width/small",
+            "value": "2.5rem",
+            "var": "size-14",
+            "rootAlias": "size-14"
+          },
+          {
+            "name": "Components/travel/Travel header/width/medium",
+            "value": "3.5rem",
+            "var": "size-18",
+            "rootAlias": "size-18"
+          },
+          {
+            "name": "Components/travel/Travel header/width/large",
+            "value": "4.5rem",
+            "var": "size-20",
+            "rootAlias": "size-20"
           }
         ],
         "string": []

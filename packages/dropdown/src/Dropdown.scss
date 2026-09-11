@@ -93,11 +93,11 @@
 
     // Override for Windows
     & option {
-      color: var(--components-form-basemenu-text);
+      color: var(--components-form-basemenu-text-default);
       background-color: var(--components-form-basemenu-fill-default);
 
       .eds-contrast & {
-        color: var(--components-form-basemenu-text);
+        color: var(--components-form-basemenu-text-default);
       }
     }
   }
