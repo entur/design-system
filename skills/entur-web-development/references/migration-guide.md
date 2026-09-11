@@ -85,19 +85,64 @@ Same rename as `@entur/form`.
 
 ---
 
-### `@entur/layout` — `StatusBadge`
+### `@entur/layout` — `StatusBadge` and `Badge type="status"` → `Tag`
 
-| Deprecated variant | Replacement     |
-| ------------------ | --------------- |
-| `"info"`           | `"information"` |
-| `"danger"`         | `"negative"`    |
+`StatusBadge`, and `Badge` with `type="status"`, are deprecated in favour of `Tag`. Both still
+render and are not going away this round, but they log a deprecation warning in development.
+`type` defaults to `"status"`, so a plain `<Badge>` hits this too.
+
+| Deprecated            | Replacement                  | Notes                                       |
+| --------------------- | ---------------------------- | ------------------------------------------- |
+| `StatusBadge`         | `Tag`                        | Same package, `@entur/layout`               |
+| `Badge type="status"` | `Tag`                        | Includes `<Badge>` with no `type` at all    |
+| `variant="primary"`   | `variant="neutral"` on `Tag` | No direct equivalent — `neutral` is closest |
+| `variant="info"`      | `variant="information"`      | Also still deprecated on `Badge` itself     |
+| `variant="danger"`    | `variant="negative"`         | Also still deprecated on `Badge` itself     |
+
+`Tag` adds nine category hues alongside the four status variants, plus `size`. It has no `hide`
+prop — render it conditionally instead.
 
 ```tsx
 // Before
 <StatusBadge variant="info">Informasjon</StatusBadge>
+<StatusBadge variant="primary">Kategori</StatusBadge>
+<Badge variant="success">Betalt</Badge>
+{erKansellert && <StatusBadge variant="danger">Kansellert</StatusBadge>}
 
 // After
-<StatusBadge variant="information">Informasjon</StatusBadge>
+<Tag variant="information">Informasjon</Tag>
+<Tag variant="neutral">Kategori</Tag>
+<Tag variant="success">Betalt</Tag>
+{erKansellert && <Tag variant="negative">Kansellert</Tag>}
+```
+
+`BulletBadge` and `NotificationBadge` are **not** deprecated — keep using them.
+
+---
+
+### `@entur/layout` — `Tag`
+
+| Deprecated prop | Replacement    | Notes                                        |
+| --------------- | -------------- | -------------------------------------------- |
+| `compact`       | `size="small"` | Still works; an explicit `size` wins over it |
+| `as="span"`     | Drop it        | `span` is now the default element            |
+
+`Tag` was redesigned and now takes `variant` (nine category hues, `neutral`, and the four status
+variants) and `size` (`"small" | "medium" | "large"`). The old look is gone: no uppercasing, and
+colours come from tokens rather than being hardcoded. Icons are passed as `children` and inherit
+the text colour.
+
+`Tag` previously rendered as a `div`, which is invalid inside a `<p>` or any inline context, so
+`as="span"` was a common workaround. The default element is now `span` and the override can go.
+
+```tsx
+// Before
+<Tag compact>Sone 2</Tag>
+<Tag as="span" compact>Sone 2</Tag>
+
+// After
+<Tag size="small" variant="lilac">Sone 2</Tag>
+<Tag size="small" variant="lilac">Sone 2</Tag>
 ```
 
 ---
@@ -483,4 +528,11 @@ grep -rn 'TertiaryButton\|TertiarySquareButton' src/
 
 # Find deprecated DataCell status prop
 grep -rn 'status="positive"\|status="negative"\|status="neutral"' src/
+
+# Find status badges to move to Tag — the second pattern catches <Badge> with no type
+grep -rn 'StatusBadge\|type="status"' src/
+grep -rn '<Badge' src/
+
+# Find the deprecated compact prop on Tag
+grep -rn '<Tag[^>]*compact' src/
 ```
