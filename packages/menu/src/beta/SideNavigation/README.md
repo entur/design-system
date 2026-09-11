@@ -33,7 +33,11 @@ import '@entur/menu/beta/styles';
 
     <SideNavigation.Item
       href="/varsler"
-      badge={<StatusBadge variant="neutral">Ny</StatusBadge>}
+      badge={
+        <Tag variant="neutral" size="small">
+          Ny
+        </Tag>
+      }
       alert
     >
       Varsler

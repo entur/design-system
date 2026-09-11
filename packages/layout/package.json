@@ -56,7 +56,8 @@
     "@entur/tokens": "workspace:^",
     "@entur/typography": "workspace:^",
     "@entur/utils": "workspace:^",
-    "classnames": "^2.5.1"
+    "classnames": "^2.5.1",
+    "tiny-warning": "^1.0.3"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.17.0",

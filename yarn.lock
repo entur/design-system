@@ -6060,6 +6060,7 @@ __metadata:
     classnames: "npm:^2.5.1"
     jest: "npm:^29.0.0"
     jest-environment-jsdom: "npm:^29.0.0"
+    tiny-warning: "npm:^1.0.3"
     ts-jest: "npm:^29.0.0"
     typescript: "npm:^5.9.2"
     vite: "npm:^7.3.2"
