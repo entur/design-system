@@ -1,5 +1,6 @@
 import path from 'path';
 import {
+  VariableSet,
   createColorsFileData,
   createVariableSet,
   createVariablesFileData,
@@ -28,6 +29,8 @@ try {
   const primitiveSizes = createVariableSet(primitiveSizesFileData, 'number');
   const combinedPrimitiveTokens = [...primitiveColors, ...primitiveSizes];
 
+  const dataTokens = createVariableSet(dataFileData, 'color');
+
   const colorFiles = [
     { colorData: combinedPrimitiveTokens, name: 'primitive' },
     {
@@ -38,7 +41,7 @@ try {
       colorData: createVariableSet(semanticFileData, 'color'),
       name: 'semantic',
     },
-    { colorData: createVariableSet(dataFileData, 'color'), name: 'data' },
+    { colorData: dataTokens, name: 'data' },
     { colorData: createVariableSet(baseFileData, 'color'), name: 'base' },
   ];
   // Extract specific categories from component.json
@@ -56,6 +59,34 @@ try {
   const componentSizes = componentSizesCategory
     ? createVariableSet(JSON.stringify([componentSizesCategory]), 'number')
     : [];
+
+  // Data tokens only exist as mode-dependent CSS variables, never as SCSS
+  // variables, so component tokens aliasing them get the value for their mode.
+  const dataTokensByModeAndKey = new Map<string, VariableSet>(
+    dataTokens.map(token => [`${token.mode}|${token.scss.key}`, token]),
+  );
+  const resolveDataAliases = (variables: VariableSet[]) =>
+    variables.map(variable => {
+      let resolved = variable;
+      for (let depth = 0; depth < 5 && resolved.usesAlias; depth++) {
+        const target = dataTokensByModeAndKey.get(
+          `${resolved.mode}|${resolved.scss.value}`,
+        );
+        if (!target) break;
+        resolved = {
+          ...resolved,
+          css: { ...resolved.css, value: target.css.value },
+          scss: {
+            ...resolved.scss,
+            value: target.scss.value,
+            sanitizedValue: target.scss.sanitizedValue,
+          },
+          less: { ...resolved.less, value: target.less.value },
+          usesAlias: target.usesAlias,
+        };
+      }
+      return resolved;
+    });
 
   colorFiles.forEach(colorFile => {
     outputExtensions.forEach(extension => {
@@ -79,7 +110,10 @@ try {
   const allPackages = getAllPackageNames();
 
   // Combine colors and sizes into a single componentVariables.scss file
-  const combinedVariables = [...componentColors, ...componentSizes];
+  const combinedVariables = [
+    ...resolveDataAliases(componentColors),
+    ...componentSizes,
+  ];
   const componentVariablesData = createVariablesFileData({
     variableSet: combinedVariables,
     keyType: 'css',

@@ -375,6 +375,7 @@ export function createVariablesFileData({
         keyType,
         valueType,
         withColorMode: true,
+        importFileNames: ['semantic'],
       });
       break;
     default:
