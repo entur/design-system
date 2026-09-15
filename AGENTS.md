@@ -77,6 +77,7 @@ package.json
 - **CSS:** BEM naming with `eds-` prefix, SCSS modules, cascade layers via `@entur/utils/styles/layers`
 - **Dual output:** Each package builds to ESM + CJS with separate CSS bundle and `.d.ts` files
 - **Design tokens:** `@entur/tokens` provides shared tokens as CSS custom properties, SCSS variables, and JS exports
+- **Prop unions stay inline:** Write literal unions directly in the props type. `react-docgen-typescript` does not expand named aliases, so the props table on the docs site would show the alias name instead of the values. Derive the alias from the props type afterwards: `type TagVariant = NonNullable<TagOwnProps['variant']>`
 
 ## Formatting
 
