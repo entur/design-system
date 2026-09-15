@@ -20,7 +20,7 @@ export const Head = ( props ) => {
 <Playground props={badgeprops} code={`<Badge variant="primary">1</Badge>`} />
 
 ## Varianter
-Badge inneholder varslene `StatusBadge`, `BulletBadge` og `NotificationBadge`. Til felles har de disse variantene:
+Badge inneholder varslene `BulletBadge` og `NotificationBadge`, i tillegg til `StatusBadge`, som er deprecated. Til felles har de disse variantene:
 - Primary
 - Success
 - Warning
@@ -30,16 +30,14 @@ Badge inneholder varslene `StatusBadge`, `BulletBadge` og `NotificationBadge`. T
 
 ### Status badge
 
-`StatusBadge` er en visuell indikator som brukes til å vise statusen til et element.
-Komponenten tilbys i ulike farger for å indikere hvilke status et element har.
-`StatusBadge` kan gi melding om advarsler, bekreftelser eller om noe er feil.
-Vi kan for eksempel bruke denne komponenten for å indikere at en billett er utløpt, et forfalt eller betalt beløp, avvik, utdatert oppgjør etc.
-`StatusBadge` i farger benyttes gjerne til dynamisk statusmarkering, som er et resultat av insidenter/hendelser.
+<SmallAlertBox variant="warning">
+`StatusBadge` og `Badge` med `type="status"` er deprecated. Bruk [Tag](/komponenter/layout-og-flater/tag) i stedet.
+</SmallAlertBox>
 
-`StatusBadge` i en default/neutral variant kan brukes for å kategorisere eller organisere elementer ved hjelp av nøkkelord som beskriver dem.
-Bruk denne varianten når har mange kategorier, og brukeren trenger en måte å skille mellom dem.
-For enkel skanning av de ulike, bør teksten ikke være på mer enn to ord.
-`StatusBadge` default/neutral benyttes gjerne til en mer statisk markering, som baserer seg på kategorisering.
+Tag dekker begge bruksområdene `StatusBadge` hadde: statusmarkering med `success`, `warning`, `negative` og `information`, og kategorimerking med ni fargevarianter i tillegg til `neutral`.
+`variant="primary"` er ikke videreført – bruk `variant="neutral"`.
+
+Komponenten fungerer fortsatt og brekker ikke, men den får ingen videreutvikling.
 
 ### Bullet badge
 
@@ -119,7 +117,7 @@ Unngå å bruk komponenten alene.
   <TabPanels>
     <TabPanel>
       <Heading2 as="span">Dine ordre</Heading2>
-      <StatusBadge variant="neutral">Ingen nye ordre</StatusBadge>
+      <Tag>Ingen nye ordre</Tag>
     </TabPanel>
     <TabPanel></TabPanel>
     <TabPanel></TabPanel>
@@ -146,6 +144,8 @@ En bullet-badge uten tekst bryter WCAG 2.1, informasjon skal ikke kun kommuniser
 ## Props
 
 ### StatusBadge
+
+Deprecated. Se [Tag](/komponenter/layout-og-flater/tag) for erstatningen.
 
 <ImportStatement imports="StatusBadge" packageName={props.pageContext.frontmatter.npmPackage} />
 <Props componentName="StatusBadge" />
