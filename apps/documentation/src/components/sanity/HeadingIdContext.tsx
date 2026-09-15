@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useMemo } from 'react';
 import { buildHeadingIdMap } from 'src/utils/headingIds';
 
-/** _key -> heading id, derived once from the content by buildHeadingIdMap. */
+/** _key -> heading id. */
 type HeadingIdMap = Map<string, string>;
 
 const HeadingIdContext = createContext<HeadingIdMap | null>(null);
@@ -16,8 +16,7 @@ export const HeadingIdProvider: React.FC<{
     [inherited, content],
   );
 
-  // Nested content shares the outermost map, so ids stay unique across the
-  // whole document instead of restarting per subtree.
+  // Nested content shares the outermost map, so ids stay unique document-wide.
   if (!ids) return <>{children}</>;
 
   return (

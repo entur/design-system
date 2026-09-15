@@ -22,8 +22,7 @@ export const HeadingAnchor: React.FC<HeadingAnchorProps> = ({
   children,
 }) => {
   const headingIds = useHeadingIds();
-  // Ids come from the shared map; the slug is only a fallback for content the
-  // extraction does not walk.
+  // The slug is a fallback for content the extraction does not walk.
   const id =
     headingId ??
     (headingKey ? headingIds?.get(headingKey) : undefined) ??

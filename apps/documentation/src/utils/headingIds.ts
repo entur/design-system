@@ -1,26 +1,21 @@
 import { sanitizeText } from './utils';
 
-// Depth 2 is a top-level section in both the Sanity and the MDX table of
-// contents; deeper levels are nested headings under it.
+// Depth 2 is a top-level section, 3 and 4 are nested under it.
 export const TOC_MIN_DEPTH = 2;
 export const TOC_MAX_DEPTH = 4;
 
 export type ExtractedHeading = {
-  /** Sanity _key of the block the heading came from, when it has one. */
+  /** _key of the block the heading came from. */
   key?: string;
   id: string;
   title: string;
   depth: number;
 };
 
-const getBlockText = (block: any): string =>
+export const getBlockText = (block: any): string =>
   block.children?.map((child: any) => child.text || '').join('') || '';
 
-/**
- * Single source of truth for heading ids: one pure walk over the Portable Text
- * tree, used both by the table of contents and by the rendered headings (which
- * look their id up by _key). Nothing derives an id any other way.
- */
+/** The one place heading ids are derived. Rendered headings look theirs up by _key. */
 export const extractHeadings = (content: any): ExtractedHeading[] => {
   if (!content) return [];
 
@@ -55,9 +50,7 @@ export const extractHeadings = (content: any): ExtractedHeading[] => {
       }
     }
 
-    // Nested blocks live under different fields per type: docSection/textBlocks
-    // use items (_rawItems when the field came from GraphQL rather than _raw),
-    // group uses content, guideline/imageAndText use text.
+    // Children sit under a different field per block type.
     const nested =
       block.items ?? block._rawItems ?? block.content ?? block.text;
     if (Array.isArray(nested)) nested.forEach(walk);

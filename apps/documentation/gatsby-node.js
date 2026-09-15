@@ -331,7 +331,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     toPath: '/universell-utforming/verktoy-og-ressurser',
   });
 
-  // Slug fix: punctuation no longer leaks into the path.
+  // These two moved when punctuation stopped leaking into slugs.
   createRedirect({
     fromPath: '/komponenter/ressurser/migrering-(react-18+)',
     toPath: '/komponenter/ressurser/migrering-react-18',

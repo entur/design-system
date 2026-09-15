@@ -33,9 +33,7 @@ import { InlineIcon } from './types';
 import { isEnturIcon } from 'src/utils/utils';
 import { HeadingAnchor } from './HeadingAnchor';
 import { HeadingIdProvider } from './HeadingIdContext';
-
-const getBlockText = (value: any) =>
-  value.children?.map((c: any) => c.text || '').join('') || '';
+import { getBlockText } from 'src/utils/headingIds';
 
 const createComponents = (context?: {
   npmPackage?: string;

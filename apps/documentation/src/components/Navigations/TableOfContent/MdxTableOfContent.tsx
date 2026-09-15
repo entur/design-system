@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import { useLocation } from '@reach/router';
 import { removeTrailingSlash } from '../SideNavigation/utils';
-import { TableOfContentInline } from './TableOfContent';
+import { TableOfContent } from './TableOfContent';
 import type { TocHeading } from './TableOfContent';
 import { useSetTocHeadings } from './TocContext';
 import { TOC_MIN_DEPTH } from 'src/utils/headingIds';
@@ -69,11 +69,10 @@ const MdxTableOfContent = () => {
     return flattenHeadings(currentDoc.tableOfContents?.items);
   }, [data, pathname]);
 
-  // Only MDX pages have headings here; on a Sanity page the list is empty and
-  // the template owns the context instead.
+  // On a Sanity page the list is empty and its template owns the context.
   useSetTocHeadings(headings.length > 0 ? headings : null);
 
-  return <TableOfContentInline headings={headings} />;
+  return <TableOfContent headings={headings} variant="inline" />;
 };
 
 export default MdxTableOfContent;

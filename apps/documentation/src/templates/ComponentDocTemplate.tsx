@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { HeadProps, PageProps, graphql } from 'gatsby';
 import { SEO } from '@components/seo/SEO';
 import { getSanitizedPath } from '@components/Navigations/SideNavigation/utils';
-import SanityTableOfContent from '@components/Navigations/TableOfContent/SanityTableOfContent';
+import { TableOfContent } from '@components/Navigations/TableOfContent/TableOfContent';
 import { extractHeadings } from 'src/utils/headingIds';
 import { useSetTocHeadings } from '@components/Navigations/TableOfContent/TocContext';
 import { BasePageHeader } from '@components/PageHeader/BasePageHeader';
@@ -84,17 +84,6 @@ export default function ComponentDocTemplate({
   );
 }
 
-const buildHeadingToTabMap = (
-  tabs: Array<{ title?: string; content?: any }>,
-): Map<string, number> => {
-  const map = new Map<string, number>();
-  tabs.forEach((tab, index) => {
-    const headings = extractHeadings(tab.content);
-    headings.forEach(h => map.set(h.id, index));
-  });
-  return map;
-};
-
 const TabsSection = React.memo(function TabsSection({
   tabs,
   context,
@@ -102,13 +91,23 @@ const TabsSection = React.memo(function TabsSection({
   tabs: Array<{ title?: string; content?: any }>;
   context: { npmPackage?: string };
 }) {
-  const headingToTab = useMemo(() => buildHeadingToTabMap(tabs), [tabs]);
+  const tabHeadings = useMemo(
+    () => tabs.map(tab => extractHeadings(tab.content)),
+    [tabs],
+  );
+  const headingToTab = useMemo(() => {
+    const map = new Map<string, number>();
+    tabHeadings.forEach((headings, index) =>
+      headings.forEach(heading => map.set(heading.id, index)),
+    );
+    return map;
+  }, [tabHeadings]);
 
   const [activeIndex, setActiveIndex] = useState(0);
   const shouldRenderAsTabs = tabs.length > 1;
 
-  // Reading the hash while rendering would have the server pick tab 0 and the
-  // client pick another, so the deep link is applied once after mount instead.
+  // Reading the hash while rendering would make the server and the client
+  // disagree on the open tab, so the deep link is applied after mount.
   const deepLinkApplied = useRef(false);
   const pendingHash = useRef<{ hash: string; tabIndex: number } | null>(null);
   useEffect(() => {
@@ -146,12 +145,7 @@ const TabsSection = React.memo(function TabsSection({
     return () => window.removeEventListener('hashchange', onHashChange);
   }, [headingToTab, activeIndex]);
 
-  const activeContent = tabs[activeIndex]?.content ?? tabs[0]?.content;
-  const activeHeadings = useMemo(
-    () => extractHeadings(activeContent),
-    [activeContent],
-  );
-  useSetTocHeadings(activeHeadings);
+  useSetTocHeadings(tabHeadings[activeIndex] ?? tabHeadings[0] ?? []);
 
   return (
     <>
@@ -163,9 +157,12 @@ const TabsSection = React.memo(function TabsSection({
             ))}
           </TabList>
           <TabPanels>
-            {tabs.map(tab => (
+            {tabs.map((tab, index) => (
               <TabPanel key={`${tab.title}`}>
-                {tab.content && <SanityTableOfContent content={tab.content} />}
+                <TableOfContent
+                  headings={tabHeadings[index]}
+                  variant="inline"
+                />
                 {renderContent({ value: tab.content, context })}
               </TabPanel>
             ))}
@@ -173,9 +170,7 @@ const TabsSection = React.memo(function TabsSection({
         </Tabs>
       ) : (
         <>
-          {tabs[0]?.content && (
-            <SanityTableOfContent content={tabs[0].content} />
-          )}
+          <TableOfContent headings={tabHeadings[0] ?? []} variant="inline" />
           {renderContent({ value: tabs[0]?.content, context })}
         </>
       )}
@@ -211,7 +206,7 @@ const renderContent = ({ value, context }: { value: any; context?: any }) => {
   if (!value) return null;
   if (Array.isArray(value)) {
     return (
-      // One map per tab, shared with the TOC through extractHeadings.
+      // One id map per tab, the same one the table of contents reads.
       <HeadingIdProvider content={value}>
         {value.map((section: any) => (
           <DocSectionContent
