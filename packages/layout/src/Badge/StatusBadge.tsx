@@ -23,9 +23,11 @@ type StatusBadgeBaseProps = {
   hide?: boolean;
 };
 
+/** @deprecated Bruk `TagProps` i stedet */
 export type StatusBadgeProps<T extends React.ElementType> =
   PolymorphicComponentPropsWithRef<T, StatusBadgeBaseProps>;
 
+/** @deprecated Bruk `TagComponent` i stedet */
 export type StatusBadgeComponent = <
   T extends React.ElementType = typeof defaultElement,
 >(
@@ -34,6 +36,8 @@ export type StatusBadgeComponent = <
 
 const defaultElement = 'span';
 
+/** @deprecated Bruk `Tag` i stedet. `variant="primary"` tilsvarer
+ * `variant="neutral"` på `Tag` */
 export const StatusBadge: StatusBadgeComponent = React.forwardRef(
   <T extends React.ElementType = typeof defaultElement>(
     props: StatusBadgeProps<T>,
