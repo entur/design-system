@@ -76,8 +76,8 @@ export function getSanitizedPath({
 
 export const isBetaTag = (tag?: string) => tag?.toLowerCase() === 'beta';
 
-export function sanitizeEnturPackageName(packageName: string) {
-  const normalizedPackageName = packageName.replace(/\/beta$/, '');
-  const packageKey = normalizedPackageName.split('@entur/')?.at(-1);
-  return packageKey;
+export function sanitizeEnturPackageName(packageName?: string) {
+  const normalizedPackageName = packageName?.replace(/\/beta$/, '');
+  const packageKey = normalizedPackageName?.split('@entur/')?.at(-1);
+  return packageKey ?? '';
 }

@@ -4,7 +4,7 @@ import { sanitizeEnturPackageName } from 'src/utils/utils';
 
 type Props = {
   imports: string;
-  packageName: string;
+  packageName?: string;
 };
 
 export const ImportStatement: React.FC<Props> = ({ imports, packageName }) => {
