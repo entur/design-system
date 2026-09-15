@@ -1,5 +1,10 @@
 import { sanitizeText } from './utils';
 
+// Depth 2 is a top-level section in both the Sanity and the MDX table of
+// contents; deeper levels are nested headings under it.
+export const TOC_MIN_DEPTH = 2;
+export const TOC_MAX_DEPTH = 4;
+
 export type ExtractedHeading = {
   /** Sanity _key of the block the heading came from, when it has one. */
   key?: string;
@@ -42,7 +47,7 @@ export const extractHeadings = (content: any): ExtractedHeading[] => {
     if (!block) return;
 
     if (block._type === 'docSection' && block.title) {
-      addHeading(block._key, block.title, 2);
+      addHeading(block._key, block.title, TOC_MIN_DEPTH);
     } else if (block._type === 'block' && block.style?.startsWith('h')) {
       const title = getBlockText(block);
       if (title) {

@@ -7,6 +7,7 @@ import {
   getNavbarHeightPx,
   handleHashLinkClick,
 } from '../../../utils/scrollUtils';
+import { TOC_MAX_DEPTH, TOC_MIN_DEPTH } from 'src/utils/headingIds';
 
 import './TableOfContent.scss';
 
@@ -20,51 +21,103 @@ interface TableOfContentProps {
   headings: TocHeading[];
 }
 
-function useActiveHeading(headings: TocHeading[]) {
+// Safari only got scrollend in 18.2, so the click lock needs a timer to fall
+// back on or the active marker would stay stuck on the clicked heading.
+const CLICK_LOCK_MS = 1000;
+
+function useActiveHeading(
+  headings: TocHeading[],
+  navRef: React.RefObject<HTMLElement>,
+) {
   const [activeId, setActiveId] = useState<string | null>(
     headings[0]?.id ?? null,
   );
-  const rafId = useRef(0);
   const clickedId = useRef<string | null>(null);
+  const lockTimeout = useRef<ReturnType<typeof setTimeout>>();
+  const releaseLock = useRef<() => void>(() => {});
 
   useEffect(() => {
     if (headings.length === 0) return;
 
-    const update = () => {
+    // Heading offsets are measured once and reused, so a scroll frame reads
+    // one number per heading instead of measuring all of them.
+    let offsetPx = 0;
+    let measuredHeight = 0;
+    let measured: Array<{ id: string; element: HTMLElement; top: number }> = [];
+
+    const measure = () => {
+      offsetPx = getNavbarHeightPx() + 2;
+      measuredHeight = document.documentElement.scrollHeight;
+      measured = headings
+        .map(heading => document.getElementById(heading.id))
+        .filter((element): element is HTMLElement => element !== null)
+        .map(element => ({
+          id: element.id,
+          element,
+          top: element.getBoundingClientRect().top + window.scrollY,
+        }));
+    };
+
+    // Images and code examples change the height of the page as they settle,
+    // and a re-render swaps the heading elements out for new ones.
+    const isStale = () =>
+      measured.length !== headings.length ||
+      document.documentElement.scrollHeight !== measuredHeight ||
+      measured.some(({ element }) => !element.isConnected);
+
+    const pick = () => {
+      // Sidebar and inline list are swapped by a media query, and the hidden
+      // one has nothing to highlight.
+      if (navRef.current?.offsetParent === null) return;
+      if (isStale()) measure();
       if (clickedId.current) return;
-      const offsetPx = getNavbarHeightPx() + 2;
-      let current = headings[0]?.id ?? null;
-      for (const heading of headings) {
-        const el = document.getElementById(heading.id);
-        if (!el) continue;
-        if (el.getBoundingClientRect().top <= offsetPx) {
-          current = heading.id;
-        } else {
-          break;
-        }
+      const line = window.scrollY + offsetPx;
+      let current = headings[0].id;
+      for (const heading of measured) {
+        if (heading.top > line) break;
+        current = heading.id;
       }
       setActiveId(current);
     };
 
+    const release = () => {
+      clearTimeout(lockTimeout.current);
+      clickedId.current = null;
+      measure();
+      pick();
+    };
+    releaseLock.current = release;
+
+    measure();
+    pick();
+
+    let frame = 0;
     const onScroll = () => {
-      cancelAnimationFrame(rafId.current);
-      rafId.current = requestAnimationFrame(update);
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(pick);
     };
 
     const onScrollEnd = () => {
-      clickedId.current = null;
-      update();
+      if (clickedId.current) release();
     };
 
-    update();
+    // A viewport change moves the headings and can change the navbar height.
+    const onResize = () => {
+      measure();
+      pick();
+    };
+    window.addEventListener('resize', onResize, { passive: true });
+
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('scrollend', onScrollEnd, { passive: true });
+
     return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener('resize', onResize);
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('scrollend', onScrollEnd);
-      cancelAnimationFrame(rafId.current);
     };
-  }, [headings]);
+  }, [headings, navRef]);
 
   const { pathname } = useLocation();
   useEffect(() => {
@@ -73,9 +126,16 @@ function useActiveHeading(headings: TocHeading[]) {
     }
   }, [pathname, headings]);
 
+  useEffect(() => () => clearTimeout(lockTimeout.current), []);
+
   const setClickedHeading = (id: string) => {
     clickedId.current = id;
     setActiveId(id);
+    clearTimeout(lockTimeout.current);
+    lockTimeout.current = setTimeout(
+      () => releaseLock.current(),
+      CLICK_LOCK_MS,
+    );
   };
 
   return { activeId, setClickedHeading };
@@ -136,12 +196,23 @@ const TocList: React.FC<{
   );
 };
 
+export const filterTocHeadings = (headings: TocHeading[]) =>
+  headings.filter(h => h.depth >= TOC_MIN_DEPTH && h.depth <= TOC_MAX_DEPTH);
+
+/** Fewer than two entries is a list of one link, which is not worth showing. */
+export const hasEnoughHeadings = (headings: TocHeading[]) =>
+  filterTocHeadings(headings).length >= 2;
+
 const useFilteredHeadings = (headings: TocHeading[]) =>
-  useMemo(() => headings.filter(h => h.depth >= 2 && h.depth <= 4), [headings]);
+  useMemo(() => filterTocHeadings(headings), [headings]);
 
 const TableOfContentSidebar: React.FC<TableOfContentProps> = ({ headings }) => {
+  const navRef = useRef<HTMLElement>(null);
   const filteredHeadings = useFilteredHeadings(headings);
-  const { activeId, setClickedHeading } = useActiveHeading(filteredHeadings);
+  const { activeId, setClickedHeading } = useActiveHeading(
+    filteredHeadings,
+    navRef,
+  );
 
   if (filteredHeadings.length < 2) return null;
 
@@ -151,7 +222,7 @@ const TableOfContentSidebar: React.FC<TableOfContentProps> = ({ headings }) => {
   };
 
   return (
-    <nav className="table-of-content-sidebar" aria-label="Innhold">
+    <nav className="table-of-content-sidebar" aria-label="Innhold" ref={navRef}>
       <Heading4 as="h2" style={{ margin: 0, marginBlockEnd: '1rem' }}>
         Innhold
       </Heading4>
@@ -166,8 +237,12 @@ const TableOfContentSidebar: React.FC<TableOfContentProps> = ({ headings }) => {
 };
 
 const TableOfContentInline: React.FC<TableOfContentProps> = ({ headings }) => {
+  const navRef = useRef<HTMLElement>(null);
   const filteredHeadings = useFilteredHeadings(headings);
-  const { activeId, setClickedHeading } = useActiveHeading(filteredHeadings);
+  const { activeId, setClickedHeading } = useActiveHeading(
+    filteredHeadings,
+    navRef,
+  );
 
   if (filteredHeadings.length < 2) return null;
 
@@ -177,7 +252,7 @@ const TableOfContentInline: React.FC<TableOfContentProps> = ({ headings }) => {
   };
 
   return (
-    <nav className="table-of-content-inline" aria-label="Innhold">
+    <nav className="table-of-content-inline" aria-label="Innhold" ref={navRef}>
       <ExpandablePanel title="Innhold">
         <TocList
           headings={filteredHeadings}

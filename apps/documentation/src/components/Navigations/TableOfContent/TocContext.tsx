@@ -27,9 +27,11 @@ export const TocProvider: React.FC<{ children: React.ReactNode }> = ({
 
 export const useTocHeadings = () => useContext(TocContext);
 
-export const useSetTocHeadings = (headings: TocHeading[]) => {
+/** Pass null to leave the context alone — some other page owns it. */
+export const useSetTocHeadings = (headings: TocHeading[] | null) => {
   const { setHeadings } = useTocHeadings();
   useEffect(() => {
+    if (!headings) return;
     setHeadings(headings);
     return () => setHeadings(null);
   }, [headings, setHeadings]);
