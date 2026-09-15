@@ -70,7 +70,11 @@ export const guideline = defineType({
                       Rule.uri({
                         allowRelative: true,
                         scheme: ['http', 'https', 'mailto', 'tel'],
-                      }),
+                      }).custom(href =>
+                        !href || /^([a-z][a-z0-9+.-]*:|\/|#)/i.test(href)
+                          ? true
+                          : 'En relativ sti må starte med / eller #',
+                      ),
                   }),
                   {
                     name: 'openInNewTab',
