@@ -8,10 +8,9 @@ Optional: a PR number (e.g. `/update-pr 303`). If omitted, use the current branc
 
 ## Step 1: Fetch the PR
 
-Run in parallel:
+Run:
 
 - `gh pr view $PR_NUMBER --json number,title,body,headRefName,baseRefName` — get current description and branch names
-- `gh repo view --json nameWithOwner` — get `owner/repo` for API calls
 
 If no PR number was given, omit `$PR_NUMBER` (gh defaults to current branch). If no open PR exists, stop and say so.
 
@@ -41,12 +40,23 @@ Go through the current PR description section by section. For each claim, verify
 - Are any steps, tools, or outputs in the code that aren't mentioned?
 - Does **Type endring** correctly reflect the nature of the changes?
 - Are the **Sjekkliste** checkboxes appropriate for this kind of change?
+- Does **Hvorfor** state the problem and the decision, rather than an external source the
+  branch is catching up to? See the framing rule below.
 
 Focus on factual accuracy. Don't rewrite style or restructure unless something is genuinely wrong or missing.
 
 ## Step 4: Produce the updated description
 
 Write the corrected body. Keep everything that's accurate. Fix only what's wrong or missing. Preserve the Norwegian language and the PR template section structure.
+
+**Code is the source of truth.** Never describe the work as implementing, matching or
+catching up to Figma — "Figma har fått ny utforming, så komponenten er oppdatert" gets the
+direction wrong and makes deliberate work read as catch-up. A redesign is a decision about
+the component that rolls out to both Figma and code, and neither is downstream of the other.
+Write **Hvorfor** as the problem with the component and the decision taken ("vi har utarbeidet
+et nytt design for X som erstatter Y"), and mention Figma only as a place the design also
+ships — never as the origin of the requirement. The same goes for any other upstream artefact
+a description could be tempted to defer to: a spec, a ticket or another team's component.
 
 Norwegian wording rules:
 
@@ -58,20 +68,19 @@ Norwegian wording rules:
 
 If a section is genuinely not applicable (e.g. no screenshots for a tooling change), keep it with the existing N/A note or omit gracefully — don't add noise.
 
-## Step 5: Apply via REST API
+## Step 5: Apply
 
-**Important:** Do NOT use `gh pr edit --body`. It silently fails due to a GraphQL Projects Classic deprecation error.
-
-Use the REST API instead:
+Write the body to a file and pass it with `--body-file` — a long body on the command line is
+fragile, and the file keeps the markdown intact:
 
 ```bash
-gh api repos/OWNER/REPO/pulls/PR_NUMBER \
-  --method PATCH \
-  --field body="..." \
-  --jq '.body' 2>&1 | grep -v "GraphQL.*Projects"
+gh pr edit PR_NUMBER --body-file /path/to/body.md
 ```
 
-Pass `owner/repo` from step 1. Verify the key changed lines in the output.
+`gh pr edit` is verified to work on this repo. If a `GraphQL: ... Projects` deprecation
+warning shows up in the output, it is noise from an unrelated field and does not mean the
+update failed — check the returned PR URL and exit code, and filter it with
+`2>&1 | grep -v "GraphQL.*Projects"` if it clutters the output.
 
 ## Step 6: Confirm
 
