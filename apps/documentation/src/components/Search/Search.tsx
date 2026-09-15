@@ -1,4 +1,10 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import { Link as GatsbyLink, graphql, navigate, useStaticQuery } from 'gatsby';
 // @ts-expect-error react-use-flexsearch is missing type declerations
 import { useFlexSearch } from 'react-use-flexsearch';
@@ -67,13 +73,55 @@ export const Search = () => {
     }
   `);
 
-  // Get the 10 most relevant results for the search
-  const results: StoreResult[] = useFlexSearch(
+  // Searches wider than the list shows: a page has to be among the candidates
+  // before the ranking below can promote it
+  const SEARCH_LIMIT = 50;
+
+  const matches: StoreResult[] = useFlexSearch(
     searchQuery,
     data.index.index,
     data.index.store,
-    { limit: NUMBER_OF_RESULTS, suggest: true },
+    { limit: SEARCH_LIMIT, suggest: true },
   ).filter((result: StoreResult) => result.path !== null);
+
+  const normalizedQuery = searchQuery.trim().toLowerCase();
+
+  const store: StoreResult[] = useMemo(() => {
+    const parsed =
+      typeof data.index.store === 'string'
+        ? JSON.parse(data.index.store)
+        : data.index.store;
+    return Object.values(parsed ?? {});
+  }, [data.index.store]);
+
+  // flexsearch weighs a title hit against every body hit and can drop a page
+  // entirely, so titles are matched against the store directly as well
+  const titleMatches = normalizedQuery
+    ? store.filter(
+        result =>
+          result.path !== null &&
+          result.title?.toLowerCase().includes(normalizedQuery),
+      )
+    : [];
+
+  // The page named after the query comes first, then pages whose name starts
+  // with it, then pages whose name contains it, then matches on body text
+  const titleRank = (result: StoreResult) => {
+    const title = result.title?.toLowerCase() ?? '';
+    if (title === normalizedQuery) return 0;
+    if (title.startsWith(normalizedQuery)) return 1;
+    if (title.includes(normalizedQuery)) return 2;
+    return 3;
+  };
+
+  // sort is stable, so flexsearch's own ranking decides within each tier
+  const results: StoreResult[] = [...titleMatches, ...matches]
+    .filter(
+      (result, index, all) =>
+        all.findIndex(other => other.id === result.id) === index,
+    )
+    .sort((a, b) => titleRank(a) - titleRank(b))
+    .slice(0, NUMBER_OF_RESULTS);
 
   const componentGroup = results.filter(result =>
     result.path?.includes('komponenter'),
