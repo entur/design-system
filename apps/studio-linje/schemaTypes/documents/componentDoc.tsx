@@ -2,6 +2,7 @@ import React from 'react';
 import { defineArrayMember, defineField, defineType } from 'sanity';
 import { AutocompletePageFieldInput } from '../../components/AutocompletePageFieldInput';
 import { AutocompleteTagInput } from '../../components/AutocompleteTagInput';
+import { NPM_PACKAGES } from '../../npmPackages';
 
 import { StringInputProps } from 'sanity';
 
@@ -74,7 +75,11 @@ export const componentDoc = defineType({
       name: 'npmPackage',
       title: 'NPM‑pakke',
       type: 'string',
-      description: 'Navn på NPM‑pakken, f.eks. @entur/button.',
+      description: 'Pakken komponenten publiseres i.',
+      options: {
+        list: NPM_PACKAGES,
+        layout: 'dropdown',
+      },
     }),
     defineField({
       name: 'figmaLink',
