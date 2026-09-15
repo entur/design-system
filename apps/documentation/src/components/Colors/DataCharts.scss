@@ -1,0 +1,63 @@
+@use '@entur/tokens/dist/styles.scss' as tokens;
+@use '@entur/tokens/dist/semantic.scss' as semantic;
+
+.data-chart {
+  display: block;
+  width: 100%;
+  height: auto;
+  font-family: inherit;
+
+  // Contrast colours sit on a dark surface, so the axis and labels follow.
+  --data-chart-axis: #{semantic.$stroke-neutral};
+  --data-chart-text: #{semantic.$text-neutral};
+
+  &--contrast {
+    --data-chart-axis: #{semantic.$stroke-light};
+    --data-chart-text: #{semantic.$text-light};
+  }
+
+  &__axis {
+    stroke: var(--data-chart-axis);
+    stroke-width: 1;
+  }
+
+  &__line {
+    fill: none;
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  &__label,
+  &__value {
+    fill: var(--data-chart-text);
+    font-size: 14px;
+    text-anchor: middle;
+  }
+
+  &__value {
+    font-weight: tokens.$font-weights-heading;
+  }
+
+  &__label--start {
+    text-anchor: start;
+  }
+
+  // Only used by the "avoid" example, to show what not to do.
+  &__label--on-shape {
+    fill: var(--standard-text-default);
+    font-weight: tokens.$font-weights-heading;
+  }
+}
+
+.data-chart-example {
+  &__surface {
+    border-radius: tokens.$border-radiuses-medium;
+    padding: tokens.$space-extra-large3;
+  }
+
+  &__surface--standard,
+  &__surface--tint {
+    background-color: semantic.$fill-background-tint-neutral;
+  }
+}

@@ -41,6 +41,8 @@ type DoDontCardProps = {
   title?: string;
   src?: string;
   imgSource?: IGatsbyImageData | null;
+  /** Anything rendered in the box in place of an image, e.g. an inline chart */
+  media?: React.ReactNode;
   variant?: VariantType | 'none';
   noPadding?: boolean;
   textInBox?: boolean;
@@ -54,6 +56,7 @@ export const DoDontCard = ({
   title,
   src,
   imgSource,
+  media,
   variant = 'success',
   noPadding = false,
   textInBox = false,
@@ -77,7 +80,7 @@ export const DoDontCard = ({
     </div>
   );
 
-  const hasImage = src !== undefined || !!imgSource;
+  const hasImage = src !== undefined || !!imgSource || media !== undefined;
 
   return (
     <article
@@ -103,6 +106,7 @@ export const DoDontCard = ({
             aria-hidden={ariaHidden}
           />
         )}
+        {media}
         {!hasImage && textInBox && textContent}
       </div>
       {!textInBox && textContent}

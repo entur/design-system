@@ -59,6 +59,15 @@ export const TokenFormatInfo: React.FC<TokenTableFormatInfoProps> = ({
             være statisk.
           </p>
         )}
+
+      {tokenKey === 'data' && variableFormat !== 'css' && (
+        <p>
+          <CodeText>data</CodeText> finnes kun som CSS-variabler, fordi fargene
+          bytter verdi med fargemodus. Verdiene under kopieres derfor som{' '}
+          <CodeText>CSS</CodeText>. I <CodeText>JS</CodeText> vil verdien være
+          statisk.
+        </p>
+      )}
     </SmallAlertBox>
   );
 };

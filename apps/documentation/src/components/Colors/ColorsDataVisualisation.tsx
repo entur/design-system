@@ -1,143 +1,127 @@
-import { Switch } from '@entur/form';
+import React from 'react';
+import { SegmentedControl } from '@entur/form';
 import { GridContainer } from '@entur/grid';
 import { Contrast } from '@entur/layout';
-import { colors, space } from '@entur/tokens';
-import React from 'react';
+import { borderRadiuses, data, space } from '@entur/tokens';
+import { useSettings } from '@providers/SettingsContext';
+import { formatVariableByType } from '../../utils/formatVariable';
 import ColorSwatch from './ColorSwatch';
-import { borderRadiuses } from '@entur/tokens';
-import { graphql, useStaticQuery } from 'gatsby';
-import { GatsbyImage, IGatsbyImageData, getImage } from 'gatsby-plugin-image';
+import {
+  DataBarChart,
+  DataLineChart,
+  DataPieChart,
+  DataStackedBarChart,
+  DataWeighting,
+} from './DataCharts';
+import { DataTier, dataHues, dataTierLabels, dataTiers } from './dataPalette';
+
+import './DataCharts.scss';
+
+const capitalize = (word: string) =>
+  word.charAt(0).toUpperCase() + word.slice(1);
+
+const TierPicker: React.FC<{
+  tiers: readonly DataTier[];
+  value: DataTier;
+  onChange: (tier: DataTier) => void;
+  label: string;
+}> = ({ tiers, value, onChange, label }) => (
+  <SegmentedControl
+    label={label}
+    value={value}
+    onChange={tier => tier && onChange(tier as DataTier)}
+    style={{ marginBottom: space.large }}
+  >
+    {tiers.map(tier => (
+      <SegmentedControl.Item key={tier} value={tier}>
+        {dataTierLabels[tier]}
+      </SegmentedControl.Item>
+    ))}
+  </SegmentedControl>
+);
 
 const ColorsDataVisualisation: React.FC = () => {
-  const [isContrast, setContrast] = React.useState(false);
-  const pathName = isContrast ? 'contrast' : 'default';
-  const Wrapper = isContrast ? Contrast : 'div';
+  const [tier, setTier] = React.useState<DataTier>('standard');
+  const { variableFormat, resolvedColorMode } = useSettings();
+  const Wrapper = tier === 'contrast' ? Contrast : 'div';
+
   return (
     <>
-      <Switch
-        style={{ marginBottom: space.extraLarge }}
-        onChange={() => setContrast(prev => !prev)}
-        checked={isContrast}
-      >
-        Vis kontrastfarger
-      </Switch>
+      <TierPicker
+        label="Fargenivå"
+        tiers={dataTiers}
+        value={tier}
+        onChange={setTier}
+      />
       <Wrapper
         style={{
-          padding: '1rem',
+          padding: space.medium,
           borderRadius: borderRadiuses.large,
         }}
       >
         <GridContainer spacing="large">
-          <ColorSwatch
-            path={`data.${pathName}.blue`}
-            title="Blue"
-            topLabel="Farge 1"
-          ></ColorSwatch>
-          <ColorSwatch
-            path={`data.${pathName}.coral`}
-            title="Coral"
-            topLabel="Farge 2"
-          ></ColorSwatch>
-          <ColorSwatch
-            path={`data.${pathName}.jungle`}
-            title="Jungle"
-            topLabel="Farge 3"
-          ></ColorSwatch>
-          <ColorSwatch
-            path={`data.${pathName}.azure`}
-            title="Azure"
-            topLabel="Farge 4"
-          ></ColorSwatch>
-          <ColorSwatch
-            path={`data.${pathName}.lavender`}
-            title="Lavender"
-            topLabel="Farge 5"
-          ></ColorSwatch>
-          <ColorSwatch
-            path={`data.${pathName}.peach`}
-            title="Peach"
-            topLabel="Farge 6"
-          ></ColorSwatch>
-          <ColorSwatch
-            path={`data.${pathName}.spring`}
-            title="Spring"
-            topLabel="Farge 7"
-          ></ColorSwatch>
-          <ColorSwatch
-            path={`data.${pathName}.lilac`}
-            title="Lilac"
-            topLabel="Farge 8"
-          ></ColorSwatch>
+          {dataHues.map((hue, index) => (
+            <ColorSwatch
+              key={hue}
+              title={capitalize(hue)}
+              topLabel={`Farge ${index + 1}`}
+              hex={data[resolvedColorMode][tier][hue]}
+              variable={formatVariableByType(
+                variableFormat,
+                `${tier}-${hue}`,
+                `${resolvedColorMode}.${tier}.${hue}`,
+                'data',
+              )}
+            />
+          ))}
         </GridContainer>
       </Wrapper>
     </>
   );
 };
 
-type DataIllustrationsProps = {
-  illustration: '1' | '2' | '3' | '4';
+const illustrations = {
+  '1': DataBarChart,
+  '2': DataPieChart,
+  '3': DataStackedBarChart,
+  '4': DataLineChart,
+  vekting: DataWeighting,
+} as const;
+
+const illustrationTitles: Record<keyof typeof illustrations, string> = {
+  '1': 'Søylediagram med to dataverdier, i Blue og Coral',
+  '2': 'Kakediagram med fem kategorier, med overvekt av Blue og Coral',
+  '3': 'Stablet søylediagram som bruker hele paletten i rangert rekkefølge',
+  '4': 'Linjediagram med fire like vektede serier',
+  vekting: 'Hvor mye det bør være av hver farge, fra farge 1 til farge 11',
 };
+
+type DataIllustrationsProps = {
+  illustration: keyof typeof illustrations;
+};
+
+/** The examples only cover the two tiers meant for chart fills. */
+const exampleTiers = ['standard', 'contrast'] as const;
 
 export const DataIllustrations: React.FC<DataIllustrationsProps> = ({
   illustration,
 }) => {
-  const [isContrast, setContrast] = React.useState(false);
-
-  // Fetch images
-  const data = useStaticQuery(graphql`
-    query illustrationQuery {
-      files: allFile(
-        filter: {
-          sourceInstanceName: { eq: "media" }
-          relativeDirectory: {
-            glob: "images/identitet/verktoykassen/datavisualisering"
-          }
-          extension: { eq: "png" }
-        }
-      ) {
-        nodes {
-          name
-          childImageSharp {
-            gatsbyImageData(layout: CONSTRAINED)
-          }
-        }
-      }
-    }
-  `);
-  const Wrapper = isContrast ? Contrast : 'div';
-
-  const imageName = isContrast
-    ? `Eksempel${illustration}Contrast`
-    : `Eksempel${illustration}`;
-  const image = data.files.nodes.find((node: any) => node.name === imageName);
+  const [tier, setTier] = React.useState<DataTier>('standard');
+  const Chart = illustrations[illustration];
+  const Wrapper = tier === 'contrast' ? Contrast : 'div';
 
   return (
     <>
-      <Switch
-        aria-hidden="true"
-        onChange={() => setContrast(prev => !prev)}
-        checked={isContrast}
-      >
-        <span aria-hidden="true">Vis i Contrast</span>
-      </Switch>
+      <TierPicker
+        label="Fargenivå"
+        tiers={exampleTiers}
+        value={tier}
+        onChange={setTier}
+      />
       <Wrapper
-        style={{
-          borderRadius: borderRadiuses.small,
-          padding: space.extraLarge3,
-          backgroundColor: isContrast ? '' : colors.greys.grey90,
-        }}
+        className={`data-chart-example__surface data-chart-example__surface--${tier}`}
       >
-        {image && (
-          <GatsbyImage
-            image={
-              getImage(
-                image.childImageSharp.gatsbyImageData,
-              ) as IGatsbyImageData
-            }
-            alt={`Illustration ${illustration}`}
-            style={{ width: '100%' }}
-          />
-        )}
+        <Chart tier={tier} title={illustrationTitles[illustration]} />
       </Wrapper>
     </>
   );
