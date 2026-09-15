@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { HeadProps, PageProps, graphql } from 'gatsby';
 import { SEO } from '@components/seo/SEO';
 import { getSanitizedPath } from '@components/Navigations/SideNavigation/utils';
@@ -95,13 +95,6 @@ const buildHeadingToTabMap = (
   return map;
 };
 
-const getInitialTabIndex = (headingToTab: Map<string, number>): number => {
-  if (typeof window === 'undefined') return 0;
-  const hash = window.location.hash.substring(1);
-  if (!hash) return 0;
-  return headingToTab.get(hash) ?? 0;
-};
-
 const TabsSection = React.memo(function TabsSection({
   tabs,
   context,
@@ -111,21 +104,31 @@ const TabsSection = React.memo(function TabsSection({
 }) {
   const headingToTab = useMemo(() => buildHeadingToTabMap(tabs), [tabs]);
 
-  const [activeIndex, setActiveIndex] = useState(() =>
-    getInitialTabIndex(headingToTab),
-  );
+  const [activeIndex, setActiveIndex] = useState(0);
   const shouldRenderAsTabs = tabs.length > 1;
 
-  const scrollToHash = useCallback(() => {
-    const hash = window.location.hash.substring(1);
-    if (hash) {
-      requestAnimationFrame(() => scrollToElement(hash));
-    }
-  }, []);
-
+  // Reading the hash while rendering would have the server pick tab 0 and the
+  // client pick another, so the deep link is applied once after mount instead.
+  const deepLinkApplied = useRef(false);
+  const pendingHash = useRef<{ hash: string; tabIndex: number } | null>(null);
   useEffect(() => {
-    scrollToHash();
-  }, [scrollToHash]);
+    if (deepLinkApplied.current) return;
+    deepLinkApplied.current = true;
+
+    const hash = window.location.hash.substring(1);
+    if (!hash) return;
+    const tabIndex = headingToTab.get(hash) ?? 0;
+    pendingHash.current = { hash, tabIndex };
+    setActiveIndex(tabIndex);
+  }, [headingToTab]);
+
+  // The heading only exists once its tab is the one being rendered.
+  useEffect(() => {
+    const pending = pendingHash.current;
+    if (!pending || pending.tabIndex !== activeIndex) return;
+    pendingHash.current = null;
+    requestAnimationFrame(() => scrollToElement(pending.hash));
+  }, [activeIndex]);
 
   useEffect(() => {
     const onHashChange = () => {
