@@ -6,7 +6,7 @@
   "props": {
     "as": {
       "defaultValue": {
-        "value": "'div'"
+        "value": "\"span\""
       },
       "description": "HTML-elementet eller React-komponenten som rendres\nAn override of the default HTML tag.\nCan also be another React component.",
       "name": "as",
@@ -22,7 +22,7 @@
       ],
       "required": false,
       "type": {
-        "name": "(string & ElementType<any>) | (ComponentClass<any, any> & ElementType<any>) | (FunctionComponent<any> & ElementType<...>) | undefined"
+        "name": "(\"symbol\" & ElementType<any, keyof IntrinsicElements>) | (\"object\" & ElementType<any, keyof IntrinsicElements>) | ... 178 more ... | undefined"
       }
     },
     "className": {
@@ -40,11 +40,60 @@
         "name": "string | undefined"
       }
     },
+    "children": {
+      "defaultValue": null,
+      "description": "Innholdet i taggen. Ikoner arver tekstfargen, og legges inn som `children`\nsammen med teksten",
+      "name": "children",
+      "declarations": [
+        {
+          "fileName": "packages/layout/src/Tag.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": true,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "variant": {
+      "defaultValue": {
+        "value": "neutral"
+      },
+      "description": "Fargevarianten til taggen. `neutral` og de ni kategorifargene er nøytrale\ni betydning, mens `success`, `warning`, `negative` og `information` sier\nnoe om status",
+      "name": "variant",
+      "declarations": [
+        {
+          "fileName": "packages/layout/src/Tag.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "\"neutral\" | \"spring\" | \"jungle\" | \"blue\" | \"lilac\" | \"lavender\" | \"coral\" | \"peach\" | \"lime\" | \"mystic\" | VariantType | undefined"
+      }
+    },
+    "size": {
+      "defaultValue": {
+        "value": "\"medium\""
+      },
+      "description": "Størrelsen på taggen",
+      "name": "size",
+      "declarations": [
+        {
+          "fileName": "packages/layout/src/Tag.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "\"small\" | \"medium\" | \"large\" | undefined"
+      }
+    },
     "compact": {
       "defaultValue": {
-        "value": "false"
+        "value": false
       },
-      "description": "Mindre og mer kompakt Tag, til f.eks. tabellbruk",
+      "description": "@deprecated Bruk `size=\"small\"` i stedet",
       "name": "compact",
       "declarations": [
         {
@@ -55,6 +104,21 @@
       "required": false,
       "type": {
         "name": "boolean | undefined"
+      }
+    },
+    "ref": {
+      "defaultValue": null,
+      "description": "",
+      "name": "ref",
+      "declarations": [
+        {
+          "fileName": "node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "any"
       }
     }
   }

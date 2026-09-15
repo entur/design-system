@@ -95,7 +95,7 @@
       "name": "size",
       "declarations": [
         {
-          "fileName": "design-system/packages/alert/src/CopyableText.tsx",
+          "fileName": "packages/alert/src/CopyableText.tsx",
           "name": "TypeLiteral"
         }
       ],
