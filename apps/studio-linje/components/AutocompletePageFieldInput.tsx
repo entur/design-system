@@ -22,7 +22,7 @@ export const AutocompletePageFieldInput = (props: DynamicInputProps) => {
   useEffect(() => {
     const fetchOptions = async () => {
       try {
-        const query = `*[_type == "page" && defined(${fieldType})] {
+        const query = `*[_type in ["page", "componentDoc"] && defined(${fieldType})] {
           ${fieldType}
         } | order(${fieldType} asc)`;
 
