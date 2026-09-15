@@ -12,9 +12,9 @@ const TableOfContentAside: React.FC = () => {
   if (!headings || filterTocHeadings(headings).length < 2) return null;
 
   return (
-    <aside className="toc-aside">
+    <div className="toc-aside">
       <TableOfContent headings={headings} variant="sidebar" />
-    </aside>
+    </div>
   );
 };
 
