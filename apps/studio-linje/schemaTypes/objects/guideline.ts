@@ -60,11 +60,18 @@ export const guideline = defineType({
                 type: 'object',
                 title: 'Link',
                 fields: [
-                  {
+                  defineField({
                     name: 'href',
                     type: 'url',
                     title: 'URL',
-                  },
+                    description:
+                      'Full nettadresse, eller en relativ sti som /komponenter/layout-og-flater/tag',
+                    validation: Rule =>
+                      Rule.uri({
+                        allowRelative: true,
+                        scheme: ['http', 'https', 'mailto', 'tel'],
+                      }),
+                  }),
                   {
                     name: 'openInNewTab',
                     type: 'boolean',
