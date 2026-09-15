@@ -331,6 +331,17 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     toPath: '/universell-utforming/verktoy-og-ressurser',
   });
 
+  // Slug fix: punctuation no longer leaks into the path.
+  createRedirect({
+    fromPath: '/komponenter/ressurser/migrering-(react-18+)',
+    toPath: '/komponenter/ressurser/migrering-react-18',
+  });
+
+  createRedirect({
+    fromPath: '/identitet/maler/visittkort-',
+    toPath: '/identitet/maler/visittkort',
+  });
+
   await createDocumentationPagesFromSanity(graphql, actions, reporter);
 };
 
