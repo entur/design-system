@@ -101,6 +101,11 @@ export const colors = {
       mobility: '#00db9b',
     },
   },
+  /**
+   * @deprecated Bruk `data` fra `@entur/tokens` i stedet. Verdiene her er
+   * frosset på den gamle paletten, og mangler tint-nivået og fargetonene
+   * chalk, lime og mystic.
+   */
   data: {
     default: {
       blue: '#181c56',
