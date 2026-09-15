@@ -15,14 +15,7 @@ import {
   TrainIcon,
   ViewIcon,
 } from '@entur/icons';
-import {
-  Badge,
-  BulletBadge,
-  Contrast,
-  NotificationBadge,
-  StatusBadge,
-  Tag,
-} from '@entur/layout';
+import { BulletBadge, Contrast, NotificationBadge, Tag } from '@entur/layout';
 import { LoadingDots } from '@entur/loader';
 import { SmallAlertBox } from '@entur/alert';
 import { BreadcrumbItem, BreadcrumbNavigation, Logo } from '@entur/menu';
@@ -607,11 +600,11 @@ const Stand = () => {
         scale: 0.9,
       },
       {
-        id: 'statusbadge',
+        id: 'tag-status',
         content: (
-          <StatusBadge variant="success" tabIndex={-1}>
+          <Tag variant="success" tabIndex={-1}>
             Klar
-          </StatusBadge>
+          </Tag>
         ),
         className: 'stand__sprite--badge',
         scale: 1,
@@ -655,20 +648,20 @@ const Stand = () => {
         scale: 1.05,
       },
       {
-        id: 'badge-beta',
+        id: 'tag-beta',
         content: (
-          <Badge tabIndex={-1} variant="neutral" type="status">
+          <Tag tabIndex={-1} variant="warning">
             Beta
-          </Badge>
+          </Tag>
         ),
         scale: 1.1,
       },
       {
-        id: 'badge-nytt',
+        id: 'tag-nytt',
         content: (
-          <Badge tabIndex={-1} variant="neutral" type="status">
+          <Tag tabIndex={-1} variant="information">
             Nytt
-          </Badge>
+          </Tag>
         ),
         scale: 1.05,
       },

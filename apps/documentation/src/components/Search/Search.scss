@@ -16,6 +16,8 @@
   padding-top: t.$space-extra-large;
 
   &__button {
+    display: inline-flex;
+    align-items: center;
     padding-inline: 0.25rem;
     margin-left: t.$space-default;
     white-space: nowrap;
@@ -29,7 +31,6 @@
     }
 
     kbd {
-      display: inline-block;
       margin-left: 0.75rem;
       padding-inline: 0.2rem;
 

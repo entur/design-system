@@ -1,11 +1,11 @@
 import React from 'react';
-import { Badge } from '@entur/layout';
+import { Tag } from '@entur/layout';
 import { isBetaTag } from 'src/utils/utils';
 
 export function ArticleTag({ tag }: { tag: string }) {
   return (
-    <Badge type="status" variant={isBetaTag(tag) ? 'warning' : 'success'}>
-      {tag}
-    </Badge>
+    <Tag variant={isBetaTag(tag) ? 'warning' : 'information'}>
+      {tag.charAt(0).toUpperCase() + tag.slice(1)}
+    </Tag>
   );
 }
