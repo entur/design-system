@@ -3,7 +3,7 @@ import { HeadProps, PageProps, graphql } from 'gatsby';
 import { SEO } from '@components/seo/SEO';
 import { getSanitizedPath } from '@components/Navigations/SideNavigation/utils';
 import SanityTableOfContent from '@components/Navigations/TableOfContent/SanityTableOfContent';
-import { extractHeadingsFromPortableText } from '@components/Navigations/TableOfContent/SanityTableOfContent';
+import { extractHeadings } from 'src/utils/headingIds';
 import { useSetTocHeadings } from '@components/Navigations/TableOfContent/TocContext';
 import { BasePageHeader } from '@components/PageHeader/BasePageHeader';
 import { Tab, TabList, TabPanel, TabPanels, Tabs } from '@entur/tab';
@@ -89,7 +89,7 @@ const buildHeadingToTabMap = (
 ): Map<string, number> => {
   const map = new Map<string, number>();
   tabs.forEach((tab, index) => {
-    const headings = extractHeadingsFromPortableText(tab.content);
+    const headings = extractHeadings(tab.content);
     headings.forEach(h => map.set(h.id, index));
   });
   return map;
@@ -145,7 +145,7 @@ const TabsSection = React.memo(function TabsSection({
 
   const activeContent = tabs[activeIndex]?.content ?? tabs[0]?.content;
   const activeHeadings = useMemo(
-    () => extractHeadingsFromPortableText(activeContent),
+    () => extractHeadings(activeContent),
     [activeContent],
   );
   useSetTocHeadings(activeHeadings);
@@ -191,15 +191,15 @@ const DocSectionContent = ({
   return (
     <>
       {section.title && (
-        <HeadingAnchor headingText={section.title} HeadingComponent={Heading2}>
+        <HeadingAnchor
+          headingKey={section._key}
+          headingText={section.title}
+          HeadingComponent={Heading2}
+        >
           {section.title}
         </HeadingAnchor>
       )}
-      <PortableText
-        value={section.items}
-        context={{ npmPackage }}
-        sharedHeadingIds
-      />
+      <PortableText value={section.items} context={{ npmPackage }} />
     </>
   );
 };
@@ -208,9 +208,8 @@ const renderContent = ({ value, context }: { value: any; context?: any }) => {
   if (!value) return null;
   if (Array.isArray(value)) {
     return (
-      // One counter per tab, matching extractHeadingsFromPortableText's ids —
-      // otherwise duplicate section titles collide with the TOC's deduped one.
-      <HeadingIdProvider>
+      // One map per tab, shared with the TOC through extractHeadings.
+      <HeadingIdProvider content={value}>
         {value.map((section: any) => (
           <DocSectionContent
             key={section._key}

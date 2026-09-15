@@ -5,7 +5,7 @@ import { removeTrailingSlash } from '../SideNavigation/utils';
 import { getSanitizedPath } from '../../../utils/getSanitizedPath';
 import { TableOfContentSidebar } from './TableOfContent';
 import type { TocHeading } from './TableOfContent';
-import { extractHeadingsFromPortableText } from './SanityTableOfContent';
+import { extractHeadings } from 'src/utils/headingIds';
 import { useTocHeadings } from './TocContext';
 
 import './TableOfContent.scss';
@@ -64,6 +64,7 @@ const TableOfContentAside: React.FC = () => {
           title
           tag
           tabs {
+            _rawSections
             _rawContent(resolveReferences: { maxDepth: 5 })
           }
           beskrivelse {
@@ -99,7 +100,7 @@ const TableOfContentAside: React.FC = () => {
       return removeTrailingSlash(path) === normalizedPath;
     });
     if (sanityPageMatch?.content) {
-      return extractHeadingsFromPortableText(sanityPageMatch.content);
+      return extractHeadings(sanityPageMatch.content);
     }
 
     const componentDocMatch = data.allSanityComponentDoc.nodes.find(
@@ -122,8 +123,9 @@ const TableOfContentAside: React.FC = () => {
               { _rawContent: componentDocMatch.utvikling },
             ];
       const firstTab = tabs[0];
-      if (firstTab?._rawContent) {
-        return extractHeadingsFromPortableText(firstTab._rawContent);
+      const firstTabContent = firstTab?._rawSections ?? firstTab?._rawContent;
+      if (firstTabContent) {
+        return extractHeadings(firstTabContent);
       }
     }
 
