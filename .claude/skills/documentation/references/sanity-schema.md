@@ -7,6 +7,8 @@ componentDoc
   ├── title, description, category, subcategory
   ├── npmPackage, figmaLink, tag
   ├── intro: textBlocks (optional, shown above the tabs — typically a playground example)
+  │     (an object, not an array: `{_type: "textBlocks", items: [...]}` — patch
+  │      `intro.items[...]`, never `intro[...]`)
   ├── tabs[]: componentDocTab
   │     ├── title (standard: "Oversikt", "Kode", "Tilgjengelighet" — custom titles allowed)
   │     ├── sections[]: docSection            ← current standard, use this for new/edited content
@@ -81,14 +83,32 @@ The first Oversikt section title is dynamic — it's always "Bruk `<title>` når
 - `playgroundCode.hideCode`: optional, hides the source code panel
 - `plainCode.code` / `plainCode.language`: static code string and language (e.g. `"jsx"`, `"bash"`, `"css"`)
 - `copyableText`: text shown with a copy button
+- `playgroundCode.props[]`: `playgroundProp` controls, each
+  `{name, type, label, defaultValue, options[]}` where `type` is `string`, `boolean`,
+  `segmented`, `dropdown`, `icon` or `children`. A `dropdown` must list **every** value the
+  prop accepts — a half-filled list reads as the component's full API. Never expose a
+  deprecated prop as a control; the playground is a recommendation of how to use the
+  component.
 
 ### Other block types
 
 - `propsTable` — takes just a `componentName`; renders that component's live props table
-- `guideline` — do/don't design guidance: `variant` (`success` | `information` | `warning` | `negative` | `none`), `title`, `text` (portable text), optional `image`/`alt`
+- `guideline` — do/don't design guidance: `variant` (`success` | `information` | `warning` | `negative` | `none`), `title`, `text` (portable text), optional `image`/`alt`.
+  It has no code field, so a guideline illustration can only be an image — a playground
+  can't live inside one.
 - `media` — images and video
 - `imageAndText` — side-by-side layout (deprecated)
-- `link`, `group` — link blocks and generic content grouping
+- `link` — link blocks
+- `group` — puts its `content` items on one row. Two items render at half width each
+  (`GroupResolver` gives `medium={6}`), three or more at a third; they stack on small
+  screens. This is how do/don't `guideline` pairs are shown side by side.
+
+### Rendering path
+
+The docs site fetches sections as raw JSON (`_rawSections` in `ComponentDocTemplate.tsx`)
+and resolves each `_type` through the `components` map in
+`apps/documentation/src/components/sanity/PortableText.tsx`. A block type that isn't in
+that map renders as nothing, so check it there before introducing one.
 
 ## Document types
 

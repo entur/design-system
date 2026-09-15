@@ -44,6 +44,9 @@ The docs site (`apps/documentation/`) is a Gatsby 5 app:
 - MDX files processed via `gatsby-plugin-mdx`
 - Portable text rendered with custom resolvers in `PortableText.tsx`
 - Templates: `ComponentDocTemplate.tsx` (componentDoc) and `ContentTemplate.tsx` (page)
+- Search is a local flexsearch index built in `gatsby-config.ts`. A componentDoc's body text
+  reaches it through `_rawIntro` and `_rawTabs` in the normaliser there — a new content field
+  is not searchable until it is added to that query and serialised into `sanityContent`.
 
 ## Working with Sanity
 
@@ -78,6 +81,11 @@ Other prose rules:
 - No literally translated English idioms. Describe the goal plainly instead.
 - Prefer a comma or full stop over a dash when joining clauses. When a dash is right, use an en-dash (–), never an em-dash.
 - Keep it generic — never bake one team's component or domain names into the docs.
+- Refer to a component by its own name with a Norwegian ending — `Tag`-en, `Modal`-en. Never
+  translate the name into an ordinary Norwegian noun ("merket", "vinduet"): the reader has to
+  be able to map the word back to the component they import.
+- Prefer "bør" over "skal" for guidance. Reserve "skal"/"må" for what is actually required,
+  such as an accessibility obligation.
 
 ## Common tasks
 
@@ -92,6 +100,18 @@ Other prose rules:
 4. Patch with `insert` (new section) or `set` (editing an existing block) — see patching
    reference.
 5. Tell the user changes are saved as draft; confirm before publishing.
+
+### Replace an MDX page with a Sanity doc
+
+Some components still have a page under `apps/documentation/src/pages/komponenter/`. The
+Sanity doc and the MDX file resolve to the same route, so the two have to change together:
+
+1. Build the Sanity doc while the MDX page is still live — a draft changes nothing publicly.
+2. Delete the MDX file in the same branch as the rest of the work, in its own commit.
+3. Publishing the Sanity doc and merging that deletion are two separate releases. Say which
+   one is happening first: until both are done the route is either duplicated or missing.
+4. Check what the MDX frontmatter carried that Sanity has no field for (`tags`, custom
+   `menu`/`order`) before deleting it.
 
 ### Migrate a tab from legacy `content` to `sections`
 
