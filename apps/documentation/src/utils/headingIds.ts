@@ -20,28 +20,28 @@ export const extractHeadings = (content: any): ExtractedHeading[] => {
   if (!content) return [];
 
   const headings: ExtractedHeading[] = [];
-  const seen = new Map<string, number>();
+  const taken = new Set<string>();
 
   const addHeading = (
     key: string | undefined,
     title: string,
     depth: number,
   ) => {
+    // Counting against every id handed out, not just repeats of this title,
+    // so a heading actually called "Steg 2" cannot take steg-2 from the
+    // second "Steg".
     const base = sanitizeText(title);
-    const count = seen.get(base) ?? 0;
-    seen.set(base, count + 1);
-    headings.push({
-      key,
-      id: count === 0 ? base : `${base}-${count + 1}`,
-      title,
-      depth,
-    });
+    let id = base;
+    for (let suffix = 2; taken.has(id); suffix += 1) id = `${base}-${suffix}`;
+    taken.add(id);
+    headings.push({ key, id, title, depth });
   };
 
   const walk = (block: any) => {
     if (!block) return;
 
-    if (block._type === 'docSection' && block.title) {
+    // An empty section renders nothing, so it would be a link to nowhere.
+    if (block._type === 'docSection' && block.title && block.items?.length) {
       addHeading(block._key, block.title, TOC_MIN_DEPTH);
     } else if (block._type === 'block' && block.style?.startsWith('h')) {
       const title = getBlockText(block);
