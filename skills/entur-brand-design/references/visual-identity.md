@@ -137,7 +137,7 @@ The template provides these slide types — use each for its intended purpose:
 
 On dark (Lavender 90) slides, use contrast data colors (see `data-visualization.md`):
 
-- Donut/ring charts: Azure (`#64b2fb`) as primary fill, Lavender (`#aeb7e2`) for secondary/empty arc
+- Donut/ring charts: Azure (`#64c9fb`) as primary fill, Lavender (`#aeb7e2`) for secondary/empty arc
 - Text labels: white
 - Background: Lavender 90 (`#181c56`)
 

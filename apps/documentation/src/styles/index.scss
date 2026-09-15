@@ -1,5 +1,7 @@
 @use 'sass:map';
 @use '@entur/tokens/dist/base.scss';
+// The data palette is used by charts and Tag across the site, not just on the token page.
+@use '@entur/tokens/dist/data.scss';
 @use './variables' as variables;
 @use '../utils/componentColors/designEnturComponentColors.scss' as *;
 

@@ -7,10 +7,13 @@ menu: Verktøykassen
 order: 5
 ---
 
-import { graphql } from 'gatsby'
 import ColorsDataVisualisation, {
   DataIllustrations,
 } from '@components/Colors/ColorsDataVisualisation';
+import {
+  DataTextOnShapesDont,
+  DataWrongWeightingDont,
+} from '@components/Colors/DataCharts';
 
 import { SEO } from '@components/seo/SEO';
 
@@ -18,26 +21,6 @@ export const Head = ( props ) => {
   return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
 }
 
-export const query = graphql`
-  query dataVisualQuery {
-    files: allFile(
-      filter: {
-        sourceInstanceName: { eq: "media" }
-        relativeDirectory: {
-          glob: "images/identitet/verktoykassen/datavisualisering"
-        }
-        extension: { eq: "png" }
-      }
-    ) {
-      images: nodes {
-        name
-        childImageSharp {
-          gatsbyImageData(layout: CONSTRAINED)
-        }
-      }
-    }
-  }
-`;
 
 
 Entur har en egen palett for farger som skal benyttes til visualisering av data.
@@ -53,6 +36,19 @@ Fargene har også tilhørende tokens. [Oversikt over alle fargetokens](/tokens/f
 
 ## Fargepalett
 
+Paletten har elleve fargetoner, og hver av dem finnes i tre nivåer. Velg nivå ut fra hva
+fargen skal brukes til, ikke ut fra hvilken som ser best ut:
+
+- **Standard** er hovednivået. Det er disse fargene du fyller søyler, linjer og flater med
+  på en vanlig lys bakgrunn.
+- **Tint** er de lyse variantene. De er ment som bakgrunn bak tekst eller ikoner – for
+  eksempel i en `Tag` – og har for svak kontrast til å bære data alene.
+- **Contrast** er variantene for mørk bakgrunn, altså inni `Contrast`-flater.
+
+Hvert nivå har i tillegg egne tokens for tekst, stroke og ikon, slik at det du tegner oppå
+fargen får riktig kontrast. Bruk `--standard-text-default` sammen med `--standard-*`,
+`--tint-text-default` sammen med `--tint-*`, og så videre.
+
 <ColorsDataVisualisation />
 
 <div style={{ height: '32px' }}></div>
@@ -65,17 +61,13 @@ Fargene har også tilhørende tokens. Oversikt over alle fargetokens er tilgjeng
 
 Når man benytter seg av denne fargepaletten så er det viktig at vektingen av fargene opprettholder den visuelle profilen til Entur.
 Derfor er rekkefølgen på fargene over også en rangering på hvor mye av hver farge det burde være.
-Det vil si bruk mest av `Blue` og `Coral`, og minst av `Spring` og `Lilac`.
+Det vil si bruk mest av `Blue` og `Coral`, og minst av fargene nederst i rekkefølgen.
 
-<ImageDisplay
-  imgSource={props.data.files.images.find(image => image.name === "DatavisualiseringVektlegging")?.childImageSharp.gatsbyImageData}
-  alt="Vektleggingen av datavisualiserings-fargene."
-  preset="full-width-image"
-/>
+<DataIllustrations illustration="vekting" />
 
 ### Eksempel 1
 
-I dette søylediagtrammet er det kun to dataverdier,
+I dette søylediagrammet er det kun to dataverdier,
 og disse bruker forholdsvis `Blue` og `Coral`, fordi dette er de to viktigste fargene i fargepaletten.
 
 <DataIllustrations illustration="1" />
@@ -108,16 +100,24 @@ Det er anbefalt å benytte mest av `Blue` og `Coral`, men det er ikke alltid mul
 
 <DoDontGroup>
   <DoDontCard
-    variant="warning" 
-    imgSource={props.data.files.images.find(image => image.name === "dataDont1")?.childImageSharp.gatsbyImageData} 
-    alt="Søylediagram med tekst på søylene"
+    variant="warning"
+    media={
+      <DataTextOnShapesDont
+        tier="standard"
+        title="Søylediagram med verdiene skrevet oppå søylene"
+      />
+    }
   >
     <Paragraph>Unngå tekst oppå former i diagrammet</Paragraph>
   </DoDontCard>
   <DoDontCard
     variant="warning"
-    imgSource={props.data.files.images.find(image => image.name === "dataDont2")?.childImageSharp.gatsbyImageData}
-    alt="Søylediagram med "
+    media={
+      <DataWrongWeightingDont
+        tier="standard"
+        title="Kakediagram der de lavest prioriterte fargene dekker mest"
+      />
+    }
   >
     <Paragraph>Unngå å benytte mest av de lavest prioriterte fargene</Paragraph>
   </DoDontCard>

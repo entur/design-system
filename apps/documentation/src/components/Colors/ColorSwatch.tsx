@@ -21,7 +21,12 @@ export function getColorFromPath(path: string): string {
 }
 
 type Props = {
-  path: string;
+  /** Dot-notation path into `colors`. Ignored when `hex` is given */
+  path?: string;
+  /** Colour to show, for palettes that do not live under `colors` */
+  hex?: string;
+  /** Variable name to copy, for palettes that do not live under `colors` */
+  variable?: string;
   style?: any;
   children?: string;
   cmyk?: string;
@@ -32,14 +37,17 @@ type Props = {
 const ColorSwatch: React.FC<Props> = ({
   children,
   path,
+  hex,
+  variable,
   style,
   cmyk,
   title,
   topLabel,
 }) => {
-  const backgroundColor = getColorFromPath(path);
+  const backgroundColor = hex ?? getColorFromPath(path as string);
   const { variableFormat } = useSettings();
-  const variableName = formatVariable(`colors.${path}`, variableFormat);
+  const variableName =
+    variable ?? formatVariable(`colors.${path}`, variableFormat);
   const rgb = hexrgb(backgroundColor, { format: 'array' });
 
   const { setChosenColor } = useColorContext();

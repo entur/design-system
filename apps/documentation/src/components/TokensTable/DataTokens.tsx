@@ -10,6 +10,14 @@ import { Heading3, Heading4 } from '@entur/typography';
 import { useSettings } from '@providers/SettingsContext';
 import ColorToken from './ColorToken';
 
+/** The palette hues are chart fills; the rest are the parts drawn on top of them. */
+const getIconCategory = (showValue: string) => {
+  if (showValue.startsWith('text')) return 'text';
+  if (showValue.startsWith('stroke')) return 'stroke';
+  if (showValue.startsWith('icon')) return 'shape';
+  return 'chart';
+};
+
 const DataTokenList: React.FC<TokensTableProps> = ({ tokens }) => {
   const { variableFormat } = useSettings();
 
@@ -32,15 +40,16 @@ const DataTokenList: React.FC<TokensTableProps> = ({ tokens }) => {
         categories[mainCategory][subCategory] = [];
       }
 
-      const formatVariableBySettingsType = formatVariableByType(
-        variableFormat,
+      // Data tokens are mode-dependent, so they only exist as CSS variables —
+      // there is no SCSS or LESS variable to copy.
+      const copyValue = formatVariableByType(
+        variableFormat === 'js' ? 'js' : 'css',
         sliceTokenKey(formattedVariable, 1),
         original,
         'data',
       );
-      const copyValue = formatVariableBySettingsType;
       const showValue = sliceTokenKey(formattedVariable, 2);
-      const iconCategory = 'chart';
+      const iconCategory = getIconCategory(showValue);
 
       categories[mainCategory][subCategory].push(
         <ColorToken
