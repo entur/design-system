@@ -3,7 +3,7 @@
 .code-example {
   margin: 2rem 0 4rem;
 
-  :where(h2, h3, h4, h5) + & {
+  :where(h2, h3, h4, h5, .heading-anchor) + & {
     margin-top: eds.$space-none;
   }
 }

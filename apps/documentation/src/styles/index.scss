@@ -152,3 +152,11 @@ body {
 .eds-link.gatsby-header-links {
   background-image: none;
 }
+
+// A paragraph that introduces a list belongs to it, so the two sit close together
+.page .eds-paragraph:has(+ .eds-unordered-list, + .eds-numbered-list) {
+  margin-bottom: eds.$space-extra-small;
+}
+.page .eds-paragraph + :is(.eds-unordered-list, .eds-numbered-list) {
+  margin-top: 0;
+}

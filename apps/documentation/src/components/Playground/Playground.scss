@@ -5,6 +5,13 @@
 .playground {
   &__header {
     display: flex;
+    align-items: flex-end;
+    gap: tokens.$space-small;
+
+    > *:first-child {
+      flex: 1 1 auto;
+      min-width: 0;
+    }
   }
   &__live-preview-and-props-wrapper {
     display: flex;
@@ -105,18 +112,20 @@
   }
   &__color-mode-select {
     margin-block: tokens.$space-extra-small;
+    width: fit-content;
   }
 
   &__code-button {
     z-index: 1;
-    align-self: flex-end;
     position: relative;
     bottom: 0rem;
     margin-left: auto;
     margin-bottom: 0.5rem;
 
     display: flex;
+    flex: 0 0 auto;
     gap: tokens.$space-small;
+    white-space: nowrap;
   }
 
   &__control {
