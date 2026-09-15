@@ -2,7 +2,7 @@ import React from 'react';
 import { compiler } from 'markdown-to-jsx';
 
 import { BaseExpand, ExpandableTextButton } from '@entur/expand';
-import { Badge, Tag } from '@entur/layout';
+import { Tag } from '@entur/layout';
 import {
   BackArrowIcon,
   BugIcon,
@@ -82,12 +82,8 @@ export const ChangelogSection = ({
       <Tag as="span">
         {Icon ? <Icon aria-hidden="true" /> : null}
         {title}
-        {isBeta && (
-          <Badge type="status" variant="neutral">
-            beta
-          </Badge>
-        )}
       </Tag>
+      {isBeta && <Tag variant="warning">beta</Tag>}
     </h4>
   );
 };

@@ -7,10 +7,6 @@
     align-items: center;
     gap: t.$space-extra-small;
     margin: t.$space-large t.$space-none t.$space-none;
-
-    .eds-badge {
-      margin-left: t.$space-extra-small;
-    }
   }
 
   // A release that is nothing but dependency updates: the tag names the
