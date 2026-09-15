@@ -22,7 +22,7 @@
       ],
       "required": false,
       "type": {
-        "name": "(\"symbol\" & ElementType<any>) | (\"object\" & ElementType<any>) | (ComponentClass<any, any> & ElementType<any>) | ... 177 more ... | undefined"
+        "name": "(\"symbol\" & ElementType<any, keyof IntrinsicElements>) | (\"object\" & ElementType<any, keyof IntrinsicElements>) | ... 178 more ... | undefined"
       }
     },
     "className": {
@@ -108,7 +108,7 @@
       "defaultValue": {
         "value": "status"
       },
-      "description": "",
+      "description": "Hvilken type badge man vil ha",
       "name": "type",
       "declarations": [
         {

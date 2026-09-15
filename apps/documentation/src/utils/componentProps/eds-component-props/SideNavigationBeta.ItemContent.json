@@ -49,6 +49,21 @@
         "name": "boolean | undefined"
       }
     },
+    "alertFaded": {
+      "defaultValue": null,
+      "description": "Behold plassen til varselprikken, men ton den ut. Brukes av\nExpandableItem når undermenyen er åpen og menyelementene viser sine egne\nprikker",
+      "name": "alertFaded",
+      "declarations": [
+        {
+          "fileName": "packages/menu/src/beta/SideNavigation/SideNavigationItemContent.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "boolean | undefined"
+      }
+    },
     "alertLabel": {
       "defaultValue": {
         "value": "Varsel"
