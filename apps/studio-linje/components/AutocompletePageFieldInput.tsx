@@ -1,4 +1,4 @@
-import { Card, Stack, Text, TextInput } from '@sanity/ui';
+import { Box, Card, Stack, Text, TextInput } from '@sanity/ui';
 import React, { useEffect, useState } from 'react';
 import { StringInputProps, set, unset, useClient } from 'sanity';
 
@@ -101,65 +101,69 @@ export const AutocompletePageFieldInput = (props: DynamicInputProps) => {
   }
 
   return (
-    <Stack style={{ position: 'relative' }}>
-      <TextInput
-        value={searchTerm}
-        onChange={handleInputChange}
-        onFocus={handleInputFocus}
-        onBlur={handleInputBlur}
-        placeholder={placeholder}
-      />
-      {showDropdown && (
-        <Card
-          shadow={2}
-          radius={2}
-          style={{
-            position: 'absolute',
-            top: 'calc(100% + 4px)',
-            left: 0,
-            right: 0,
-            maxHeight: '200px',
-            overflowY: 'auto',
-            zIndex: 1000,
-          }}
-        >
-          <Stack>
-            {filteredOptions.length > 0 ? (
-              filteredOptions.map(option => (
-                <Card
-                  key={option.value}
-                  as="button"
-                  padding={3}
-                  radius={1}
-                  tone="default"
-                  style={{
-                    cursor: 'pointer',
-                    textAlign: 'left',
-                    width: '100%',
-                    border: 'none',
-                  }}
-                  onClick={() => handleSelect(option)}
-                >
-                  <Text size={1}>{option.title}</Text>
+    <Stack gap={2}>
+      {/* Positioned wrapper: TextInput's border overlay is absolute, so it must
+          not resolve against a container that also holds the helper text. */}
+      <Box style={{ position: 'relative' }}>
+        <TextInput
+          value={searchTerm}
+          onChange={handleInputChange}
+          onFocus={handleInputFocus}
+          onBlur={handleInputBlur}
+          placeholder={placeholder}
+        />
+        {showDropdown && (
+          <Card
+            shadow={2}
+            radius={2}
+            style={{
+              position: 'absolute',
+              top: 'calc(100% + 4px)',
+              left: 0,
+              right: 0,
+              maxHeight: '200px',
+              overflowY: 'auto',
+              zIndex: 1000,
+            }}
+          >
+            <Stack>
+              {filteredOptions.length > 0 ? (
+                filteredOptions.map(option => (
+                  <Card
+                    key={option.value}
+                    as="button"
+                    padding={3}
+                    radius={1}
+                    tone="default"
+                    style={{
+                      cursor: 'pointer',
+                      textAlign: 'left',
+                      width: '100%',
+                      border: 'none',
+                    }}
+                    onClick={() => handleSelect(option)}
+                  >
+                    <Text size={1}>{option.title}</Text>
+                  </Card>
+                ))
+              ) : searchTerm ? (
+                <Card padding={3}>
+                  <Text size={1} muted>
+                    Ingen eksisterende {fieldName}er funnet. &ldquo;{searchTerm}
+                    &rdquo; blir lagt til som en ny {fieldName}.
+                  </Text>
                 </Card>
-              ))
-            ) : searchTerm ? (
-              <Card padding={3}>
-                <Text size={1} muted>
-                  Ingen eksisterende {fieldName}er funnet. &ldquo;{searchTerm}
-                  &rdquo; blir lagt til som en ny {fieldName}.
-                </Text>
-              </Card>
-            ) : (
-              <Card padding={3}>
-                <Text size={1} muted>
-                  Skriv eller søk for å legge til en {fieldName}.
-                </Text>
-              </Card>
-            )}
-          </Stack>
-        </Card>
-      )}
+              ) : (
+                <Card padding={3}>
+                  <Text size={1} muted>
+                    Skriv eller søk for å legge til en {fieldName}.
+                  </Text>
+                </Card>
+              )}
+            </Stack>
+          </Card>
+        )}
+      </Box>
       <Text size={1} muted>
         {options.length} {fieldName}er finnes.
       </Text>
