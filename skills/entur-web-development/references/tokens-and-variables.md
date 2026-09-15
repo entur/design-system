@@ -344,31 +344,58 @@ For charts, graphs, and data displays. Import `data.css`. These respond to `data
 @import '@entur/tokens/dist/data.css';
 ```
 
-Use in priority order (weight more of the first colors):
+Eleven hues, each in three tiers — `--standard-*` fills charts on a light surface, `--tint-*` is a
+pale background behind text or an icon (what `Tag` uses), `--contrast-*` fills charts on a dark
+surface. Each tier also has `--<tier>-text-default`, `--<tier>-stroke-default` and
+`--<tier>-icon-default` for whatever sits on top of the fill, and Tint has a per-hue
+`--tint-stroke-<hue>`.
+
+Use in priority order (weight more of the first colors). The order is the old eight-colour ranking
+with chalk, lime and mystic appended — design has not ranked the expanded palette yet.
 
 ```css
 /* Light mode */
---standard-blue: #181c56      /* 1st — use most */
---standard-coral: #ff5959     /* 2nd */
---standard-jungle: #0ea2a8    /* 3rd */
---standard-azure: #2f98fa     /* 4th */
---standard-lavender: #8692ca  /* 5th */
---standard-peach: #ca825b     /* 6th */
---standard-spring: #57a257    /* 7th */
---standard-lilac: #8e57e3     /* 8th — use least */
+--standard-blue: #4b58e4      /* 1st — use most */
+--standard-coral: #d31b1b     /* 2nd */
+--standard-jungle: #078388    /* 3rd */
+--standard-azure: #1193d4     /* 4th */
+--standard-lavender: #181c56  /* 5th */
+--standard-peach: #ba5620     /* 6th */
+--standard-spring: #4a842d    /* 7th */
+--standard-lilac: #a529c7     /* 8th */
+--standard-chalk: #6a6b78     /* 9th */
+--standard-lime: #807900      /* 10th */
+--standard-mystic: #680dd7    /* 11th — use least */
+
+/* Tint variants (surface behind text or an icon, not a data fill) */
+--tint-blue: #c5e0fc
+--tint-coral: #ffe5e5
+--tint-jungle: #c2f0ec
+--tint-azure: #cdeefe
+--tint-lavender: #ced4ee
+--tint-peach: #ffe4d6
+--tint-spring: #d7ecb6
+--tint-lilac: #f9dcf9
+--tint-chalk: #eeeff1
+--tint-lime: #f0f98b
+--tint-mystic: #ebdefc
 
 /* Contrast variants (for dark backgrounds) */
---contrast-blue: #6c6eb7
---contrast-coral: #ff5959
+--contrast-blue: #6ea5f7
+--contrast-coral: #ff9494
 --contrast-jungle: #0fc2b3
---contrast-azure: #64b2fb
+--contrast-azure: #64c9fb
 --contrast-lavender: #aeb7e2
 --contrast-peach: #ffbf9e
 --contrast-spring: #7bc00b
 --contrast-lilac: #ea8bea
+--contrast-chalk: #cccdd4
+--contrast-lime: #e6f53d
+--contrast-mystic: #c6a2f7
 ```
 
-All data colors meet WCAG 3:1 contrast for graphical elements and are tested for colorblind accessibility.
+`--standard-*` and `--contrast-*` meet WCAG 3:1 contrast for graphical elements and are tested for
+colorblind accessibility. `--tint-*` does not — it is a background, never a data fill.
 
 ---
 

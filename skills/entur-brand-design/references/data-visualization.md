@@ -14,18 +14,33 @@ Data visualization colors have different requirements than UI colors: they must 
 
 Import: `@entur/tokens/dist/data.css`
 
+Every hue comes in three tiers. Pick the tier by what the colour is for:
+
+- **Standard** — the fill for bars, lines and areas on a normal light surface. This is the default.
+- **Tint** — the pale variants, meant as a background behind text or an icon (this is what `Tag` uses). Too low-contrast to carry data on its own.
+- **Contrast** — the variants for dark surfaces (inside `Contrast`).
+
+Each tier also ships `--<tier>-text-default`, `--<tier>-stroke-default` and `--<tier>-icon-default` for whatever is drawn on top of the fill. Tint additionally has a per-hue stroke, `--tint-stroke-<hue>`.
+
 Use colors **in order** — the sequence also determines weighting. Use more of the early colors (Blue, Coral) and progressively less of the later ones.
 
-| Order | Name     | Light/Standard                  | Contrast (on dark)              |
-| ----- | -------- | ------------------------------- | ------------------------------- |
-| 1     | Blue     | `#181c56` `--standard-blue`     | `#6c6eb7` `--contrast-blue`     |
-| 2     | Coral    | `#ff5959` `--standard-coral`    | `#ff5959` `--contrast-coral`    |
-| 3     | Jungle   | `#0ea2a8` `--standard-jungle`   | `#0fc2b3` `--contrast-jungle`   |
-| 4     | Azure    | `#2f98fa` `--standard-azure`    | `#64b2fb` `--contrast-azure`    |
-| 5     | Lavender | `#8692ca` `--standard-lavender` | `#aeb7e2` `--contrast-lavender` |
-| 6     | Peach    | `#ca825b` `--standard-peach`    | `#ffbf9e` `--contrast-peach`    |
-| 7     | Spring   | `#57a257` `--standard-spring`   | `#7bc00b` `--contrast-spring`   |
-| 8     | Lilac    | `#8e57e3` `--standard-lilac`    | `#ea8bea` `--contrast-lilac`    |
+> The ranking below is the old eight-colour order with chalk, lime and mystic appended. Design has not ranked the expanded palette yet.
+
+| Order | Name     | Standard  | Tint      | Contrast (on dark) |
+| ----- | -------- | --------- | --------- | ------------------ |
+| 1     | Blue     | `#4b58e4` | `#c5e0fc` | `#6ea5f7`          |
+| 2     | Coral    | `#d31b1b` | `#ffe5e5` | `#ff9494`          |
+| 3     | Jungle   | `#078388` | `#c2f0ec` | `#0fc2b3`          |
+| 4     | Azure    | `#1193d4` | `#cdeefe` | `#64c9fb`          |
+| 5     | Lavender | `#181c56` | `#ced4ee` | `#aeb7e2`          |
+| 6     | Peach    | `#ba5620` | `#ffe4d6` | `#ffbf9e`          |
+| 7     | Spring   | `#4a842d` | `#d7ecb6` | `#7bc00b`          |
+| 8     | Lilac    | `#a529c7` | `#f9dcf9` | `#ea8bea`          |
+| 9     | Chalk    | `#6a6b78` | `#eeeff1` | `#cccdd4`          |
+| 10    | Lime     | `#807900` | `#f0f98b` | `#e6f53d`          |
+| 11    | Mystic   | `#680dd7` | `#ebdefc` | `#c6a2f7`          |
+
+The variable for any cell is `--<tier>-<hue>`, e.g. `--standard-blue`, `--tint-coral`, `--contrast-mystic`.
 
 CSS usage:
 
@@ -52,7 +67,7 @@ For 2 data series → use Blue and Coral (positions 1 and 2). These are the most
 
 For 3–4 series → add Jungle and Azure.
 
-For 5+ series → continue down the ordered list.
+For 5+ series → continue down the ordered list. Eleven hues is the ceiling; past that, group the tail into an "Other" category rather than reusing a hue.
 
 ### Weighting in a single chart
 
@@ -61,6 +76,10 @@ Even within one chart, use proportionally more of the early colors. In a pie cha
 ### Respect the order
 
 Don't rearrange colors arbitrarily — the order reflects both visual weight and Entur identity priority. Starting with Spring and using Blue last would look inconsistent with Entur's palette.
+
+### Don't use Tint for the data itself
+
+Tint is a surface tier. Filling a bar or a pie slice with `--tint-*` drops below the 3:1 graphical contrast requirement. Use it behind a label, not as the label's subject.
 
 ---
 
@@ -85,9 +104,9 @@ Test with colorblind simulators:
 
 ## Dark backgrounds
 
-Use `--contrast-*` variants when displaying charts on dark/Lavender 90 backgrounds. These are lighter tints of each color that maintain visibility and contrast on dark surfaces.
+Use `--contrast-*` variants when displaying charts on dark/Lavender 90 backgrounds. These are lighter versions of each hue that stay legible on a dark surface. Don't confuse them with the Tint tier, which is a pale surface colour for light backgrounds.
 
-`data.css` auto-resolves token values to their dark color mode equivalents inside `data-color-mode="dark"`. This is color mode adaptation — it is **not** an automatic switch to `--contrast-*` variants. Use `--contrast-*` explicitly when you need the lighter tints for legibility on dark backgrounds.
+`data.css` auto-resolves token values to their dark color mode equivalents inside `data-color-mode="dark"`. This is color mode adaptation — it is **not** an automatic switch to `--contrast-*` variants. Use `--contrast-*` explicitly when you need the lighter variants for legibility on dark backgrounds.
 
 ```css
 [data-color-mode='dark'] .chart {
