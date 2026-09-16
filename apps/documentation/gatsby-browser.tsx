@@ -11,8 +11,7 @@ import {
   SettingsProvider,
 } from './src/providers';
 import { SearchProvider } from './src/components/Search/SearchContext';
-import { ConsentBanner } from './src/components/ConsentBanner/ConsentBanner';
-import DocLayout from './src/layouts/DocLayout';
+import { renderPageElement } from './src/layouts/renderPageElement';
 
 export const wrapRootElement: GatsbyBrowser['wrapRootElement'] = ({
   element,
@@ -20,8 +19,6 @@ export const wrapRootElement: GatsbyBrowser['wrapRootElement'] = ({
   return (
     <SettingsProvider>
       <ConsentProvider>
-        {/* Belongs at the very top of the page, ahead of the skip link */}
-        <ConsentBanner />
         <ToastProvider>
           <ColorsProvider>
             <MediaContextProvider>
@@ -37,16 +34,7 @@ export const wrapRootElement: GatsbyBrowser['wrapRootElement'] = ({
 export const wrapPageElement: GatsbyBrowser['wrapPageElement'] = ({
   element,
   props,
-}) => {
-  const CUSTOM_LAYOUT_PAGES = [
-    '/',
-    '/stand',
-    '/ressurser/innsikt/brukerundersokelse',
-  ];
-  const normalizedPath = props.location.pathname.replace(/\/$/, '') || '/';
-  if (CUSTOM_LAYOUT_PAGES.includes(normalizedPath)) return <>{element}</>;
-  return <DocLayout {...props}>{element}</DocLayout>;
-};
+}) => renderPageElement(element, props);
 
 // Since Gatsby does automatic scroll restoration on navigation,
 // we need to manually disable it in some situations
