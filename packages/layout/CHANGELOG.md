@@ -3,6 +3,68 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0](https://github.com/entur/design-system/compare/@entur/layout@4.0.5...@entur/layout@5.0.0) (2026-09-16)
+
+### Features
+
+- **layout/badge:** deprecate StatusBadge and Badge type="status" for Tag ([437e1ea](https://github.com/entur/design-system/commit/437e1ea55d2f1aaf07f7a3d718e1bbdd720b68f1))
+
+  Use `Tag` instead. `variant="primary"` has no direct equivalent — `neutral`
+  is the closest match. `type` defaults to `"status"`, so a plain `<Badge>`
+  is covered by this too, and logs a deprecation warning in development.
+
+  `BulletBadge` and `NotificationBadge` are unaffected, and nothing is
+  removed: both components and the status styles keep working.
+
+- **layout/tag:** redesign Tag with colour variants and sizes ([c1c9ef0](https://github.com/entur/design-system/commit/c1c9ef0d4780cfefa5c39fcfa653a0287270eb35))
+
+  Tag has a new design, and gains a `variant` prop with nine category hues,
+  `neutral`, and the four status variants `success`, `warning`, `negative` and
+  `information`. A `size` prop takes `small`, `medium` or `large`.
+
+  Colours come from tokens, so Tag themes correctly in dark mode and on
+  contrast surfaces. Tag renders as a `span`, so it is valid inside a
+  paragraph; an `as="span"` override can be removed.
+
+  Icons are passed as `children` and inherit the text colour. The label sits
+  optically centred at every size. A long label is clipped at the edge of its
+  container instead of overflowing it, and a Tag rendered as a link gets a
+  focus indicator.
+
+  `compact` is deprecated in favour of `size="small"`. It still works, and an
+  explicit `size` takes precedence over it.
+
+- **tokens:** update the colour export and regularise component token names ([a14a5fd](https://github.com/entur/design-system/commit/a14a5fd400a5fe9bb5d68db3201ea87ffce080ed))
+
+  Twelve colours changed. Ten tokens moved from `Fill/Negative/Transparent` to
+  `Fill/Negative/Accent` — Button `negative` hover, TableRow `error` and two
+  unused base-panel tokens — and the DatePicker selected date changed fill.
+  Check contrast if you have styled on top of any of those.
+
+  Tag gets a full set of colour and size tokens for its redesign.
+
+  Several tokens were renamed to the Fill/Stroke/Text shape the rest of the
+  export uses. Each keeps its previous value, so BaseMenu, Dropdown and
+  SideNavigation look exactly as before; their stylesheets are updated here:
+
+  - `--components-form-basemenu-{border,text}` gained a `-default` suffix
+  - `--components-menu-sidenavigation-{standard,contrast}-` renamed
+    `background` to `fill-background`, `divide` to `stroke-divide`, `icon` to
+    `icon-default`, `label` to `text-label` and `text` to `text-default`
+
+  `--components-form-basemenu-border` and
+  `--components-menu-sidenavigation-standard-background` keep their old names
+  alongside the new ones, so overrides that use them still work.
+
+### BREAKING CHANGES
+
+- **layout/tag:** Tag has a new look. It takes over the visual form the status
+  badge had and no longer uppercases its label, so anywhere you have styled on
+  top of the old appearance needs a look.
+
+The root element is a `span` rather than a `div`. A `ref` typed as
+`HTMLDivElement`, and a selector like `div.eds-tag`, both need updating.
+
 ## [4.0.5](https://github.com/entur/design-system/compare/@entur/layout@4.0.4...@entur/layout@4.0.5) (2026-09-08)
 
 ### Entur Dependency Updates

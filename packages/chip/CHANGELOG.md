@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.6](https://github.com/entur/design-system/compare/@entur/chip@0.11.5...@entur/chip@0.11.6) (2026-09-16)
+
+### Entur Dependency Updates
+
+- **@entur/form:** `^10.1.2` → `^10.2.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#1020-2026-09-16))
+- **@entur/icons:** `^10.0.4` → `^10.0.5` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#1005-2026-09-16))
+- **@entur/loader:** `^0.8.5` → `^0.8.6` ([changelog](https://github.com/entur/design-system/blob/main/packages/loader/CHANGELOG.md#086-2026-09-16))
+- **@entur/tokens:** `^4.1.1` → `^4.2.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#420-2026-09-16))
+- **@entur/utils:** `^0.15.1` → `^0.15.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/utils/CHANGELOG.md#0152-2026-09-16))
+
 ## [0.11.5](https://github.com/entur/design-system/compare/@entur/chip@0.11.4...@entur/chip@0.11.5) (2026-09-08)
 
 ### Entur Dependency Updates

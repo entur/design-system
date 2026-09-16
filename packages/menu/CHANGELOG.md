@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.3.0](https://github.com/entur/design-system/compare/@entur/menu@7.2.1...@entur/menu@7.3.0) (2026-09-16)
+
+### Bug Fixes
+
+- **menu:** hide the native number-input spinner in Firefox for Pagination ([2fd2983](https://github.com/entur/design-system/commit/2fd29831195366e133dd960ae59c2d9e55e5c559))
+
+  The existing ::-webkit-inner-spin-button/::-webkit-outer-spin-button
+  rule only covers Chrome/Safari. Firefox needs -moz-appearance: textfield
+  to remove its own increment/decrement arrows on the page-number input.
+
+### Features
+
+- **tokens:** update the colour export and regularise component token names ([a14a5fd](https://github.com/entur/design-system/commit/a14a5fd400a5fe9bb5d68db3201ea87ffce080ed))
+
+  Twelve colours changed. Ten tokens moved from `Fill/Negative/Transparent` to
+  `Fill/Negative/Accent` — Button `negative` hover, TableRow `error` and two
+  unused base-panel tokens — and the DatePicker selected date changed fill.
+  Check contrast if you have styled on top of any of those.
+
+  Tag gets a full set of colour and size tokens for its redesign.
+
+  Several tokens were renamed to the Fill/Stroke/Text shape the rest of the
+  export uses. Each keeps its previous value, so BaseMenu, Dropdown and
+  SideNavigation look exactly as before; their stylesheets are updated here:
+
+  - `--components-form-basemenu-{border,text}` gained a `-default` suffix
+  - `--components-menu-sidenavigation-{standard,contrast}-` renamed
+    `background` to `fill-background`, `divide` to `stroke-divide`, `icon` to
+    `icon-default`, `label` to `text-label` and `text` to `text-default`
+
+  `--components-form-basemenu-border` and
+  `--components-menu-sidenavigation-standard-background` keep their old names
+  alongside the new ones, so overrides that use them still work.
+
 ## [7.2.1](https://github.com/entur/design-system/compare/@entur/menu@7.2.0...@entur/menu@7.2.1) (2026-09-08)
 
 ### Entur Dependency Updates

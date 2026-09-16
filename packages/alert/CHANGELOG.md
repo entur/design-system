@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.21.2](https://github.com/entur/design-system/compare/@entur/alert@0.21.1...@entur/alert@0.21.2) (2026-09-16)
+
+### Entur Dependency Updates
+
+- **@entur/button:** `^5.0.5` → `^5.1.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/button/CHANGELOG.md#510-2026-09-16))
+- **@entur/expand:** `^4.0.5` → `^4.0.6` ([changelog](https://github.com/entur/design-system/blob/main/packages/expand/CHANGELOG.md#406-2026-09-16))
+- **@entur/icons:** `^10.0.4` → `^10.0.5` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#1005-2026-09-16))
+- **@entur/tokens:** `^4.1.1` → `^4.2.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#420-2026-09-16))
+- **@entur/tooltip:** `^6.0.5` → `^6.0.6` ([changelog](https://github.com/entur/design-system/blob/main/packages/tooltip/CHANGELOG.md#606-2026-09-16))
+- **@entur/typography:** `^3.0.5` → `^3.0.6` ([changelog](https://github.com/entur/design-system/blob/main/packages/typography/CHANGELOG.md#306-2026-09-16))
+- **@entur/utils:** `^0.15.1` → `^0.15.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/utils/CHANGELOG.md#0152-2026-09-16))
+
 ## [0.21.1](https://github.com/entur/design-system/compare/@entur/alert@0.21.0...@entur/alert@0.21.1) (2026-09-08)
 
 ### Entur Dependency Updates
