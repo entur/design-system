@@ -86,8 +86,8 @@ Kode, where the reader has already decided and wants the markup.
   a wrong usage the API won't produce, or surrounding layout that would be noise to build.
 - **Label illustrative playgrounds with what they illustrate.** When a playground stands in
   for a figure, put the old caption in `description` and name each instance after the value
-  it demonstrates (`<Tag variant="spring">Spring</Tag>`), so the reader can map what they
-  see to the prop value.
+  it demonstrates (an instance rendering `variant="success"` is named `Success`), so the
+  reader can map what they see to the prop value.
 - **Concise and scannable.** Component docs are reference material a developer skims under
   time pressure, not an article read start to finish. Short paragraphs, headings where a
   section has sub-parts, lists over dense prose.
