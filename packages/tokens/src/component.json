@@ -2937,22 +2937,16 @@
             "rootAlias": "Lavender/90"
           },
           {
-            "name": "Components/layout/Tag/Fill/Contrast/Azure",
-            "value": "#cdeefe",
-            "var": "Tint/Azure",
-            "rootAlias": "Tint/Azure"
-          },
-          {
             "name": "Components/layout/Tag/Fill/Contrast/Blue",
             "value": "#c5e0fc",
-            "var": "Tint/Blue",
-            "rootAlias": "Tint/Blue"
+            "var": "",
+            "rootAlias": ""
           },
           {
             "name": "Components/layout/Tag/Fill/Contrast/Coral",
             "value": "#ffe5e5",
-            "var": "Tint/Coral",
-            "rootAlias": "Tint/Coral"
+            "var": "",
+            "rootAlias": ""
           },
           {
             "name": "Components/layout/Tag/Fill/Contrast/Information",
@@ -2963,32 +2957,32 @@
           {
             "name": "Components/layout/Tag/Fill/Contrast/Jungle",
             "value": "#c2f0ec",
-            "var": "Tint/Jungle",
-            "rootAlias": "Tint/Jungle"
+            "var": "",
+            "rootAlias": ""
           },
           {
             "name": "Components/layout/Tag/Fill/Contrast/Lavender",
             "value": "#ced4ee",
-            "var": "Tint/Lavender",
-            "rootAlias": "Tint/Lavender"
+            "var": "",
+            "rootAlias": ""
           },
           {
             "name": "Components/layout/Tag/Fill/Contrast/Lilac",
             "value": "#f9dcf9",
-            "var": "Tint/Lilac",
-            "rootAlias": "Tint/Lilac"
+            "var": "",
+            "rootAlias": ""
           },
           {
             "name": "Components/layout/Tag/Fill/Contrast/Lime",
             "value": "#f0f98b",
-            "var": "Tint/Lime",
-            "rootAlias": "Tint/Lime"
+            "var": "",
+            "rootAlias": ""
           },
           {
             "name": "Components/layout/Tag/Fill/Contrast/Mystic",
             "value": "#ebdefc",
-            "var": "Tint/Mystic",
-            "rootAlias": "Tint/Mystic"
+            "var": "",
+            "rootAlias": ""
           },
           {
             "name": "Components/layout/Tag/Fill/Contrast/Negative",
@@ -3005,14 +2999,14 @@
           {
             "name": "Components/layout/Tag/Fill/Contrast/Peach",
             "value": "#ffe4d6",
-            "var": "Tint/Peach",
-            "rootAlias": "Tint/Peach"
+            "var": "",
+            "rootAlias": ""
           },
           {
             "name": "Components/layout/Tag/Fill/Contrast/Spring",
             "value": "#d7ecb6",
-            "var": "Tint/Spring",
-            "rootAlias": "Tint/Spring"
+            "var": "",
+            "rootAlias": ""
           },
           {
             "name": "Components/layout/Tag/Fill/Contrast/Success",
@@ -3029,14 +3023,14 @@
           {
             "name": "Components/layout/Tag/Fill/Default/Blue",
             "value": "#c5e0fc",
-            "var": "Tint/Blue",
-            "rootAlias": "Tint/Blue"
+            "var": "",
+            "rootAlias": ""
           },
           {
             "name": "Components/layout/Tag/Fill/Default/Coral",
             "value": "#ffe5e5",
-            "var": "Tint/Coral",
-            "rootAlias": "Tint/Coral"
+            "var": "",
+            "rootAlias": ""
           },
           {
             "name": "Components/layout/Tag/Fill/Default/Information",
@@ -3047,32 +3041,32 @@
           {
             "name": "Components/layout/Tag/Fill/Default/Jungle",
             "value": "#c2f0ec",
-            "var": "Tint/Jungle",
-            "rootAlias": "Tint/Jungle"
+            "var": "",
+            "rootAlias": ""
           },
           {
             "name": "Components/layout/Tag/Fill/Default/Lavender",
             "value": "#ced4ee",
-            "var": "Tint/Lavender",
-            "rootAlias": "Tint/Lavender"
+            "var": "",
+            "rootAlias": ""
           },
           {
             "name": "Components/layout/Tag/Fill/Default/Lilac",
             "value": "#f9dcf9",
-            "var": "Tint/Lilac",
-            "rootAlias": "Tint/Lilac"
+            "var": "",
+            "rootAlias": ""
           },
           {
             "name": "Components/layout/Tag/Fill/Default/Lime",
             "value": "#f0f98b",
-            "var": "Tint/Lime",
-            "rootAlias": "Tint/Lime"
+            "var": "",
+            "rootAlias": ""
           },
           {
             "name": "Components/layout/Tag/Fill/Default/Mystic",
             "value": "#ebdefc",
-            "var": "Tint/Mystic",
-            "rootAlias": "Tint/Mystic"
+            "var": "",
+            "rootAlias": ""
           },
           {
             "name": "Components/layout/Tag/Fill/Default/Negative",
@@ -3089,14 +3083,14 @@
           {
             "name": "Components/layout/Tag/Fill/Default/Peach",
             "value": "#ffe4d6",
-            "var": "Tint/Peach",
-            "rootAlias": "Tint/Peach"
+            "var": "",
+            "rootAlias": ""
           },
           {
             "name": "Components/layout/Tag/Fill/Default/Spring",
             "value": "#d7ecb6",
-            "var": "Tint/Spring",
-            "rootAlias": "Tint/Spring"
+            "var": "",
+            "rootAlias": ""
           },
           {
             "name": "Components/layout/Tag/Fill/Default/Success",
@@ -3111,40 +3105,16 @@
             "rootAlias": "Canary/20"
           },
           {
-            "name": "Components/layout/Tag/Icon/Contrast/Neutral",
-            "value": "#ffffff",
-            "var": "Shape/Light",
-            "rootAlias": "White/Alpha-100"
-          },
-          {
-            "name": "Components/layout/Tag/Icon/Contrast/Standard",
-            "value": "#181c56",
-            "var": "Shape/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/layout/Tag/Icon/Default/Neutral",
-            "value": "#181c56",
-            "var": "Shape/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
-            "name": "Components/layout/Tag/Icon/Default/Standard",
-            "value": "#181c56",
-            "var": "Shape/Accent",
-            "rootAlias": "Lavender/90"
-          },
-          {
             "name": "Components/layout/Tag/Stroke/Default/Blue",
             "value": "#608cce",
-            "var": "Tint/Stroke/Blue",
-            "rootAlias": "Tint/Stroke/Blue"
+            "var": "",
+            "rootAlias": ""
           },
           {
             "name": "Components/layout/Tag/Stroke/Default/Coral",
             "value": "#d98c8d",
-            "var": "Tint/Stroke/Coral",
-            "rootAlias": "Tint/Stroke/Coral"
+            "var": "",
+            "rootAlias": ""
           },
           {
             "name": "Components/layout/Tag/Stroke/Default/Information",
@@ -3155,32 +3125,32 @@
           {
             "name": "Components/layout/Tag/Stroke/Default/Jungle",
             "value": "#14a397",
-            "var": "Tint/Stroke/Jungle",
-            "rootAlias": "Tint/Stroke/Jungle"
+            "var": "",
+            "rootAlias": ""
           },
           {
             "name": "Components/layout/Tag/Stroke/Default/Lavender",
             "value": "#939abd",
-            "var": "Tint/Stroke/Lavender",
-            "rootAlias": "Tint/Stroke/Lavender"
+            "var": "",
+            "rootAlias": ""
           },
           {
             "name": "Components/layout/Tag/Stroke/Default/Lilac",
             "value": "#c377c3",
-            "var": "Tint/Stroke/Lilac",
-            "rootAlias": "Tint/Stroke/Lilac"
+            "var": "",
+            "rootAlias": ""
           },
           {
             "name": "Components/layout/Tag/Stroke/Default/Lime",
             "value": "#a0aa2c",
-            "var": "Tint/Stroke/Lime",
-            "rootAlias": "Tint/Stroke/Lime"
+            "var": "",
+            "rootAlias": ""
           },
           {
             "name": "Components/layout/Tag/Stroke/Default/Mystic",
             "value": "#a689ce",
-            "var": "Tint/Stroke/Mystic",
-            "rootAlias": "Tint/Stroke/Mystic"
+            "var": "",
+            "rootAlias": ""
           },
           {
             "name": "Components/layout/Tag/Stroke/Default/Negative",
@@ -3191,20 +3161,20 @@
           {
             "name": "Components/layout/Tag/Stroke/Default/Neutral",
             "value": "#abacb2",
-            "var": "Tint/Stroke/Chalk",
-            "rootAlias": "Tint/Stroke/Chalk"
+            "var": "",
+            "rootAlias": ""
           },
           {
             "name": "Components/layout/Tag/Stroke/Default/Peach",
             "value": "#d0987c",
-            "var": "Tint/Stroke/Peach",
-            "rootAlias": "Tint/Stroke/Peach"
+            "var": "",
+            "rootAlias": ""
           },
           {
             "name": "Components/layout/Tag/Stroke/Default/Spring",
             "value": "#6aa111",
-            "var": "Tint/Stroke/Spring",
-            "rootAlias": "Tint/Stroke/Spring"
+            "var": "",
+            "rootAlias": ""
           },
           {
             "name": "Components/layout/Tag/Stroke/Default/Success",
@@ -9667,22 +9637,16 @@
             "rootAlias": "Ebony/10"
           },
           {
-            "name": "Components/layout/Tag/Fill/Contrast/Azure",
-            "value": "#cdeefe",
-            "var": "Tint/Azure",
-            "rootAlias": "Tint/Azure"
-          },
-          {
             "name": "Components/layout/Tag/Fill/Contrast/Blue",
             "value": "#c5e0fc",
-            "var": "Tint/Blue",
-            "rootAlias": "Tint/Blue"
+            "var": "",
+            "rootAlias": ""
           },
           {
             "name": "Components/layout/Tag/Fill/Contrast/Coral",
             "value": "#ffe5e5",
-            "var": "Tint/Coral",
-            "rootAlias": "Tint/Coral"
+            "var": "",
+            "rootAlias": ""
           },
           {
             "name": "Components/layout/Tag/Fill/Contrast/Information",
@@ -9693,32 +9657,32 @@
           {
             "name": "Components/layout/Tag/Fill/Contrast/Jungle",
             "value": "#c2f0ec",
-            "var": "Tint/Jungle",
-            "rootAlias": "Tint/Jungle"
+            "var": "",
+            "rootAlias": ""
           },
           {
             "name": "Components/layout/Tag/Fill/Contrast/Lavender",
             "value": "#ced4ee",
-            "var": "Tint/Lavender",
-            "rootAlias": "Tint/Lavender"
+            "var": "",
+            "rootAlias": ""
           },
           {
             "name": "Components/layout/Tag/Fill/Contrast/Lilac",
             "value": "#f9dcf9",
-            "var": "Tint/Lilac",
-            "rootAlias": "Tint/Lilac"
+            "var": "",
+            "rootAlias": ""
           },
           {
             "name": "Components/layout/Tag/Fill/Contrast/Lime",
             "value": "#f0f98b",
-            "var": "Tint/Lime",
-            "rootAlias": "Tint/Lime"
+            "var": "",
+            "rootAlias": ""
           },
           {
             "name": "Components/layout/Tag/Fill/Contrast/Mystic",
             "value": "#ebdefc",
-            "var": "Tint/Mystic",
-            "rootAlias": "Tint/Mystic"
+            "var": "",
+            "rootAlias": ""
           },
           {
             "name": "Components/layout/Tag/Fill/Contrast/Negative",
@@ -9735,14 +9699,14 @@
           {
             "name": "Components/layout/Tag/Fill/Contrast/Peach",
             "value": "#ffe4d6",
-            "var": "Tint/Peach",
-            "rootAlias": "Tint/Peach"
+            "var": "",
+            "rootAlias": ""
           },
           {
             "name": "Components/layout/Tag/Fill/Contrast/Spring",
             "value": "#d7ecb6",
-            "var": "Tint/Spring",
-            "rootAlias": "Tint/Spring"
+            "var": "",
+            "rootAlias": ""
           },
           {
             "name": "Components/layout/Tag/Fill/Contrast/Success",
@@ -9759,14 +9723,14 @@
           {
             "name": "Components/layout/Tag/Fill/Default/Blue",
             "value": "#c5e0fc",
-            "var": "Tint/Blue",
-            "rootAlias": "Tint/Blue"
+            "var": "",
+            "rootAlias": ""
           },
           {
             "name": "Components/layout/Tag/Fill/Default/Coral",
             "value": "#ffe5e5",
-            "var": "Tint/Coral",
-            "rootAlias": "Tint/Coral"
+            "var": "",
+            "rootAlias": ""
           },
           {
             "name": "Components/layout/Tag/Fill/Default/Information",
@@ -9777,32 +9741,32 @@
           {
             "name": "Components/layout/Tag/Fill/Default/Jungle",
             "value": "#c2f0ec",
-            "var": "Tint/Jungle",
-            "rootAlias": "Tint/Jungle"
+            "var": "",
+            "rootAlias": ""
           },
           {
             "name": "Components/layout/Tag/Fill/Default/Lavender",
             "value": "#ced4ee",
-            "var": "Tint/Lavender",
-            "rootAlias": "Tint/Lavender"
+            "var": "",
+            "rootAlias": ""
           },
           {
             "name": "Components/layout/Tag/Fill/Default/Lilac",
             "value": "#f9dcf9",
-            "var": "Tint/Lilac",
-            "rootAlias": "Tint/Lilac"
+            "var": "",
+            "rootAlias": ""
           },
           {
             "name": "Components/layout/Tag/Fill/Default/Lime",
             "value": "#f0f98b",
-            "var": "Tint/Lime",
-            "rootAlias": "Tint/Lime"
+            "var": "",
+            "rootAlias": ""
           },
           {
             "name": "Components/layout/Tag/Fill/Default/Mystic",
             "value": "#ebdefc",
-            "var": "Tint/Mystic",
-            "rootAlias": "Tint/Mystic"
+            "var": "",
+            "rootAlias": ""
           },
           {
             "name": "Components/layout/Tag/Fill/Default/Negative",
@@ -9819,14 +9783,14 @@
           {
             "name": "Components/layout/Tag/Fill/Default/Peach",
             "value": "#ffe4d6",
-            "var": "Tint/Peach",
-            "rootAlias": "Tint/Peach"
+            "var": "",
+            "rootAlias": ""
           },
           {
             "name": "Components/layout/Tag/Fill/Default/Spring",
             "value": "#d7ecb6",
-            "var": "Tint/Spring",
-            "rootAlias": "Tint/Spring"
+            "var": "",
+            "rootAlias": ""
           },
           {
             "name": "Components/layout/Tag/Fill/Default/Success",
@@ -9839,30 +9803,6 @@
             "value": "#ffeeb3",
             "var": "Fill/Warning/Tint",
             "rootAlias": "Canary/30"
-          },
-          {
-            "name": "Components/layout/Tag/Icon/Contrast/Neutral",
-            "value": "#e5e5e9",
-            "var": "Shape/LightAlt",
-            "rootAlias": "Ebony/10"
-          },
-          {
-            "name": "Components/layout/Tag/Icon/Contrast/Standard",
-            "value": "#08091c",
-            "var": "Shape/Dark",
-            "rootAlias": "Ebony/100"
-          },
-          {
-            "name": "Components/layout/Tag/Icon/Default/Neutral",
-            "value": "#e5e5e9",
-            "var": "Shape/LightAlt",
-            "rootAlias": "Ebony/10"
-          },
-          {
-            "name": "Components/layout/Tag/Icon/Default/Standard",
-            "value": "#08091c",
-            "var": "Shape/Dark",
-            "rootAlias": "Ebony/100"
           },
           {
             "name": "Components/layout/Tag/Stroke/Default/Blue",
