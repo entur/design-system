@@ -46,7 +46,7 @@ jobs:
     needs: [check]
     # Only shout when it breaks on its own, not while someone is editing the check
     if: always() && needs.check.result == 'failure' && github.event_name != 'pull_request'
-    uses: entur/gha-slack/.github/workflows/post.yml@70bb994f2287131d46fbaab133ce2e31c32a07f4 # v3
+    uses: entur/gha-slack/.github/workflows/post.yml@d8260cd3e326507200f1ccccf195e81ffcbbe7d9 # v3
     with:
       channel_id: ${{ vars.SLACK_INTERNAL_CHANNEL_ID }}
       message: ':warning: Samtykketekstene fra Usercentrics kan ikke leses som forventet, så samtykkebanneret på linje.entur.no vises ikke. Se: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}'
