@@ -2,8 +2,10 @@ import React, { useMemo } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import { useLocation } from '@reach/router';
 import { removeTrailingSlash } from '../SideNavigation/utils';
-import { TableOfContentInline } from './TableOfContent';
+import { TableOfContent } from './TableOfContent';
 import type { TocHeading } from './TableOfContent';
+import { useSetTocHeadings } from './TocContext';
+import { TOC_MIN_DEPTH } from 'src/utils/headingIds';
 
 interface MdxHeading {
   url: string;
@@ -26,7 +28,7 @@ interface TableOfContentQuery {
 
 const flattenHeadings = (
   items: MdxHeading[] = [],
-  headingLevel = 2,
+  headingLevel = TOC_MIN_DEPTH,
 ): TocHeading[] => {
   return items.reduce((acc: TocHeading[], item) => {
     const id = item.url?.replace('#', '');
@@ -67,7 +69,10 @@ const MdxTableOfContent = () => {
     return flattenHeadings(currentDoc.tableOfContents?.items);
   }, [data, pathname]);
 
-  return <TableOfContentInline headings={headings} />;
+  // On a Sanity page the list is empty and its template owns the context.
+  useSetTocHeadings(headings.length > 0 ? headings : null);
+
+  return <TableOfContent headings={headings} variant="inline" />;
 };
 
 export default MdxTableOfContent;

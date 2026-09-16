@@ -12,3 +12,8 @@
 .props-table__type {
   word-break: break-all;
 }
+
+.props__deprecated {
+  margin-inline-start: tokens.$space-small;
+  vertical-align: text-bottom;
+}

@@ -33,9 +33,7 @@ import { InlineIcon } from './types';
 import { isEnturIcon } from 'src/utils/utils';
 import { HeadingAnchor } from './HeadingAnchor';
 import { HeadingIdProvider } from './HeadingIdContext';
-
-const getBlockText = (value: any) =>
-  value.children?.map((c: any) => c.text || '').join('') || '';
+import { getBlockText } from 'src/utils/headingIds';
 
 const createComponents = (context?: {
   npmPackage?: string;
@@ -43,6 +41,7 @@ const createComponents = (context?: {
   block: {
     h2: ({ children, value }) => (
       <HeadingAnchor
+        headingKey={value._key}
         headingText={getBlockText(value)}
         HeadingComponent={Heading2}
       >
@@ -51,6 +50,7 @@ const createComponents = (context?: {
     ),
     h3: ({ children, value }) => (
       <HeadingAnchor
+        headingKey={value._key}
         headingText={getBlockText(value)}
         HeadingComponent={Heading3}
       >
@@ -59,6 +59,7 @@ const createComponents = (context?: {
     ),
     h4: ({ children, value }) => (
       <HeadingAnchor
+        headingKey={value._key}
         headingText={getBlockText(value)}
         HeadingComponent={Heading4}
       >
@@ -67,6 +68,7 @@ const createComponents = (context?: {
     ),
     h5: ({ children, value }) => (
       <HeadingAnchor
+        headingKey={value._key}
         headingText={getBlockText(value)}
         HeadingComponent={Heading5}
       >
@@ -163,20 +165,12 @@ type ExtendedPortableTextProps = PortableTextProps & {
   context?: {
     npmPackage?: string;
   };
-  // Set by callers already wrapped in their own HeadingIdProvider (e.g. a
-  // docSection body nested under its tab's provider) so this call shares
-  // that counter instead of starting a new one.
-  sharedHeadingIds?: boolean;
 };
 
-export const PortableText = ({
-  value,
-  context,
-  sharedHeadingIds,
-}: ExtendedPortableTextProps) => {
-  const content = (
+export const PortableText = ({ value, context }: ExtendedPortableTextProps) => (
+  // Nested PortableText calls inherit the outermost map, so this is a no-op
+  // wrapper for everything below the top-level content.
+  <HeadingIdProvider content={value}>
     <PortableTextReact components={createComponents(context)} value={value} />
-  );
-  if (sharedHeadingIds) return content;
-  return <HeadingIdProvider>{content}</HeadingIdProvider>;
-};
+  </HeadingIdProvider>
+);

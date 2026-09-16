@@ -80,7 +80,7 @@ med unntak av `checked` – dette siden checked-verdien styres gjennom `RadioGro
 
 ### RadioGroup
 
-<ImportStatement imports="RadioGroup" />
+<ImportStatement imports="RadioGroup" packageName={props.pageContext.frontmatter.npmPackage} />
 
 `RadioGroup` er en nødvendig wrapper for å bruke `RadioPanel` og lar deg gruppere flere `RadioPanel`-er under en overskrift. Du kan spesifisere valgt verdi via `value`-propen, lytte på endringer med `onChange` og sette en ledetekst/overskrift med `label`-propen.
 

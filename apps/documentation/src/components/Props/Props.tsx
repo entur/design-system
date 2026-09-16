@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Tag } from '@entur/layout';
 import { CodeText, Paragraph } from '@entur/typography';
 import {
   DataCell,
@@ -8,7 +9,6 @@ import {
   TableHead,
   TableRow,
 } from '@entur/table';
-
 
 import { ImportStatement } from '@components/Common/ImportStatement';
 import './Props.scss';
@@ -57,15 +57,27 @@ function formatPropType(typeName: string) {
   );
 }
 
+// react-docgen-typescript leaves the raw @deprecated tag in the description;
+// pull it out so the table can show it as a marker instead of literal text
+function splitDeprecation(description: string) {
+  const index = description.indexOf('@deprecated');
+  if (index === -1) return { isDeprecated: false, description };
+
+  const before = description.slice(0, index).trim();
+  const after = description.slice(index + '@deprecated'.length).trim();
+
+  return {
+    isDeprecated: true,
+    description: [before, after].filter(Boolean).join('\n'),
+  };
+}
+
 type PropsProps = {
   componentName: string;
   npmPackage?: string;
 };
 
-const Props: React.FC<PropsProps> = ({
-  componentName,
-  npmPackage,
-}) => {
+const Props: React.FC<PropsProps> = ({ componentName, npmPackage }) => {
   const [componentProps, setComponentProps] = useState<any>(null);
 
   useEffect(() => {
@@ -109,34 +121,45 @@ const Props: React.FC<PropsProps> = ({
           </TableHead>
           <TableBody>
             {Object.entries(componentProps).map(
-              ([propName, details]: [string, any]) => (
-                <TableRow key={propName}>
-                  <DataCell>
-                    <CodeText>{`${propName}${
-                      details.required ? '' : '?'
-                    }`}</CodeText>
-                  </DataCell>
-                  <DataCell>
-                    <CodeText className="props-table__type">
-                      {propName === 'as'
-                        ? 'string | React.ElementType'
-                        : formatPropType(details.type.name)}
-                    </CodeText>
-                  </DataCell>
-                  {hasAnyDefaultValues && (
+              ([propName, details]: [string, any]) => {
+                const { isDeprecated, description } = splitDeprecation(
+                  details.description || '',
+                );
+
+                return (
+                  <TableRow key={propName}>
                     <DataCell>
-                      {details.defaultValue ? (
-                        <CodeText>
-                          {String(details.defaultValue.value)}
-                        </CodeText>
-                      ) : null}
+                      <CodeText>{`${propName}${
+                        details.required ? '' : '?'
+                      }`}</CodeText>
+                      {isDeprecated && (
+                        <Tag as="span" compact className="props__deprecated">
+                          Deprecated
+                        </Tag>
+                      )}
                     </DataCell>
-                  )}
-                  <DataCell className="props__description">
-                    {details.description || ''}
-                  </DataCell>
-                </TableRow>
-              ),
+                    <DataCell>
+                      <CodeText className="props-table__type">
+                        {propName === 'as'
+                          ? 'string | React.ElementType'
+                          : formatPropType(details.type.name)}
+                      </CodeText>
+                    </DataCell>
+                    {hasAnyDefaultValues && (
+                      <DataCell>
+                        {details.defaultValue ? (
+                          <CodeText>
+                            {String(details.defaultValue.value)}
+                          </CodeText>
+                        ) : null}
+                      </DataCell>
+                    )}
+                    <DataCell className="props__description">
+                      {description}
+                    </DataCell>
+                  </TableRow>
+                );
+              },
             )}
           </TableBody>
         </Table>

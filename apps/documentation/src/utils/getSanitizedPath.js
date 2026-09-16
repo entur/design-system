@@ -1,3 +1,4 @@
+// Keep in sync with the copy in utils.ts.
 function sanitizeText(text) {
   if (!text) return undefined;
   return text
@@ -6,9 +7,10 @@ function sanitizeText(text) {
     .replaceAll('ø', 'o')
     .replaceAll('å', 'a')
     .replaceAll('&', 'og')
-    .replace(/\?$/, '')
-    .replace(/ +/g, '-')
-    .replace(/[^a-zA-Z0-9-]+-/g, '');
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
 }
 
 function getSanitizedPath({

@@ -1,12 +1,14 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { useToast } from '@entur/alert';
 import { IconButton } from '@entur/button';
 import { CopyIcon } from '@entur/icons';
-import { useHeadingId } from './HeadingIdContext';
+import { useHeadingIds } from './HeadingIdContext';
+import { sanitizeText } from 'src/utils/utils';
 import './HeadingAnchor.scss';
 
 type HeadingAnchorProps = {
   headingText?: string;
+  headingKey?: string;
   headingId?: string;
   children: React.ReactNode;
   HeadingComponent: React.ElementType;
@@ -14,16 +16,17 @@ type HeadingAnchorProps = {
 
 export const HeadingAnchor: React.FC<HeadingAnchorProps> = ({
   headingText,
+  headingKey,
   headingId,
   HeadingComponent,
   children,
 }) => {
-  const { getId } = useHeadingId();
-  const generatedId = useMemo(
-    () => (headingText ? getId(headingText) : ''),
-    [getId, headingText],
-  );
-  const id = headingId ?? generatedId;
+  const headingIds = useHeadingIds();
+  // The slug is a fallback for content the extraction does not walk.
+  const id =
+    headingId ??
+    (headingKey ? headingIds?.get(headingKey) : undefined) ??
+    (headingText ? sanitizeText(headingText) : '');
   const { addToast } = useToast();
 
   const copyLink = () => {

@@ -65,6 +65,21 @@ Full documents can be very large (50KB+). Always query in stages — never fetch
 }
 ```
 
+## When a query misbehaves
+
+- **Timeouts.** A broad projection over a large document times out rather than truncating.
+  Narrow the projection and query one tab or one section at a time.
+- **An empty result is not proof of absence.** The same query can return rows once and
+  `0 documents` a moment later — if a result contradicts what you saw earlier, re-run it
+  before concluding the content is gone. Confirm a document still exists with a cheap
+  `*[_type == "componentDoc" && title == "X"]{_id, _rev, _updatedAt}`.
+- **A missing draft means someone published.** Querying `drafts.<id>` and getting nothing
+  back, while the published `<id>` holds your edits, means the draft was published — often
+  by the user in Studio while you were working. Check `_updatedAt` before assuming your
+  patch went missing.
+- **Probe unknown field shapes with `count()`** (`{"n": count(field.items)}`) instead of
+  fetching the field and guessing whether it's an array or an object wrapper.
+
 ## Drafts and document IDs
 
 Sanity uses a `drafts.` prefix on `_id` for unpublished changes. When you patch a published document, Sanity creates a draft at `drafts.<original-id>`.

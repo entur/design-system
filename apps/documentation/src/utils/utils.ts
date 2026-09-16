@@ -30,6 +30,7 @@ export function isEnturIcon(iconName: string): iconName is keyof typeof icons {
   return iconName in icons;
 }
 
+// Keep in sync with the copy in getSanitizedPath.js, which gatsby-node uses.
 export function sanitizeText(text: string): string {
   if (!text) return '';
   return text
@@ -38,9 +39,10 @@ export function sanitizeText(text: string): string {
     .replaceAll('ø', 'o')
     .replaceAll('å', 'a')
     .replaceAll('&', 'og')
-    .replace(/\?$/, '')
-    .replace(/ +/g, '-')
-    .replace(/[^a-zA-Z0-9-]+-/g, '');
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
 }
 
 export function getSanitizedPath({
@@ -74,8 +76,8 @@ export function getSanitizedPath({
 
 export const isBetaTag = (tag?: string) => tag?.toLowerCase() === 'beta';
 
-export function sanitizeEnturPackageName(packageName: string) {
-  const normalizedPackageName = packageName.replace(/\/beta$/, '');
-  const packageKey = normalizedPackageName.split('@entur/')?.at(-1);
-  return packageKey;
+export function sanitizeEnturPackageName(packageName?: string) {
+  const normalizedPackageName = packageName?.replace(/\/beta$/, '');
+  const packageKey = normalizedPackageName?.split('@entur/')?.at(-1);
+  return packageKey ?? '';
 }

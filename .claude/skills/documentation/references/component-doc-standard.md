@@ -35,9 +35,17 @@ title as the exception, not the default.
    component is the right choice — not a restatement of what the component _is_.
 2. **"Retningslinjer"** — do/don't guidance. Prefer `guideline` blocks (with `variant`
    `success`/`negative`) over plain prose so the do/don't framing is visually distinct, not
-   just implied by wording.
+   just implied by wording. **Wrap each do/don't pair in a `group`** — a `group` with two
+   items renders them side by side, which is what makes the contrast readable. Loose
+   `guideline` blocks in `items` stack full-width, so the do and the don't end up far
+   apart. Put an `h3` block above each group to name the rule.
 3. **"Eksempler"** — one or more runnable examples via `codeExample` with
    `codeDisplayType: "playground"`. Show realistic usage, not a contrived minimal case.
+
+**Every `codeExample` in Oversikt sets `hideCode: true`.** The tab answers "should I use
+this?", so its examples are there to be looked at, not copied — the source panel is noise
+for the designer or developer deciding. The same example with the code shown belongs in
+Kode, where the reader has already decided and wants the markup.
 
 ### Kode
 
@@ -69,6 +77,17 @@ title as the exception, not the default.
   paragraph. A do/don't is a `guideline` block, not a sentence starting with "Husk at...".
   Plain prose (`block`) is for things that genuinely need explaining in sentences — context,
   rationale, exceptions.
+- **Show the component, don't picture it.** If an illustration only shows the component
+  itself — a row of variants, the sizes side by side, a state — it belongs in a
+  `codeExample` playground with `hideCode: true`, not in a `media` block. The playground
+  always matches the current build, themes with the page, and stays correct when the
+  component changes; a screenshot silently goes stale. Keep an image only when it shows
+  something the component can't render on its own: numbered anatomy markers, annotations,
+  a wrong usage the API won't produce, or surrounding layout that would be noise to build.
+- **Label illustrative playgrounds with what they illustrate.** When a playground stands in
+  for a figure, put the old caption in `description` and name each instance after the value
+  it demonstrates (an instance rendering `variant="success"` is named `Success`), so the
+  reader can map what they see to the prop value.
 - **Concise and scannable.** Component docs are reference material a developer skims under
   time pressure, not an article read start to finish. Short paragraphs, headings where a
   section has sub-parts, lists over dense prose.

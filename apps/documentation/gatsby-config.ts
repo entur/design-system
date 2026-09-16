@@ -293,16 +293,11 @@ const config: GatsbyConfig = {
                 tag: node.tag ?? undefined,
               });
 
-              const tabsContent =
-                node.tabs && node.tabs.length > 0
-                  ? node.tabs
-                      .map(tab =>
-                        tab.content?._rawItems
-                          ? JSON.stringify(tab.content._rawItems)
-                          : '',
-                      )
-                      .join(' ')
-                  : '';
+              // _rawTabs covers both the current sections model and the
+              // legacy content model, so every tab is searchable
+              const tabsContent = node._rawTabs
+                ? JSON.stringify(node._rawTabs)
+                : '';
 
               const beskrivelseContent = node.beskrivelse?._rawItems
                 ? JSON.stringify(node.beskrivelse._rawItems)
@@ -311,9 +306,13 @@ const config: GatsbyConfig = {
                 ? JSON.stringify(node.utvikling._rawItems)
                 : '';
 
+              const introContent = node._rawIntro
+                ? JSON.stringify(node._rawIntro)
+                : '';
+
               const sanityContent = tabsContent
-                ? tabsContent
-                : `${beskrivelseContent} ${utviklingContent}`.trim();
+                ? `${introContent} ${tabsContent}`.trim()
+                : `${introContent} ${beskrivelseContent} ${utviklingContent}`.trim();
 
               const mergedMdxContent = mergedMdxByRoute[path] || '';
               const combinedContent =
@@ -414,6 +413,8 @@ const config: GatsbyConfig = {
                 subcategory
                 npmPackage
                 tag
+                _rawIntro
+                _rawTabs
                 beskrivelse {
                   _rawItems
                 }

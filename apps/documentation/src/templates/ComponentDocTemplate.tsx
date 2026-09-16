@@ -1,9 +1,9 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { HeadProps, PageProps, graphql } from 'gatsby';
 import { SEO } from '@components/seo/SEO';
 import { getSanitizedPath } from '@components/Navigations/SideNavigation/utils';
-import SanityTableOfContent from '@components/Navigations/TableOfContent/SanityTableOfContent';
-import { extractHeadingsFromPortableText } from '@components/Navigations/TableOfContent/SanityTableOfContent';
+import { TableOfContent } from '@components/Navigations/TableOfContent/TableOfContent';
+import { extractHeadings } from 'src/utils/headingIds';
 import { useSetTocHeadings } from '@components/Navigations/TableOfContent/TocContext';
 import { BasePageHeader } from '@components/PageHeader/BasePageHeader';
 import { Tab, TabList, TabPanel, TabPanels, Tabs } from '@entur/tab';
@@ -84,24 +84,6 @@ export default function ComponentDocTemplate({
   );
 }
 
-const buildHeadingToTabMap = (
-  tabs: Array<{ title?: string; content?: any }>,
-): Map<string, number> => {
-  const map = new Map<string, number>();
-  tabs.forEach((tab, index) => {
-    const headings = extractHeadingsFromPortableText(tab.content);
-    headings.forEach(h => map.set(h.id, index));
-  });
-  return map;
-};
-
-const getInitialTabIndex = (headingToTab: Map<string, number>): number => {
-  if (typeof window === 'undefined') return 0;
-  const hash = window.location.hash.substring(1);
-  if (!hash) return 0;
-  return headingToTab.get(hash) ?? 0;
-};
-
 const TabsSection = React.memo(function TabsSection({
   tabs,
   context,
@@ -109,23 +91,43 @@ const TabsSection = React.memo(function TabsSection({
   tabs: Array<{ title?: string; content?: any }>;
   context: { npmPackage?: string };
 }) {
-  const headingToTab = useMemo(() => buildHeadingToTabMap(tabs), [tabs]);
-
-  const [activeIndex, setActiveIndex] = useState(() =>
-    getInitialTabIndex(headingToTab),
+  const tabHeadings = useMemo(
+    () => tabs.map(tab => extractHeadings(tab.content)),
+    [tabs],
   );
+  const headingToTab = useMemo(() => {
+    const map = new Map<string, number>();
+    tabHeadings.forEach((headings, index) =>
+      headings.forEach(heading => map.set(heading.id, index)),
+    );
+    return map;
+  }, [tabHeadings]);
+
+  const [activeIndex, setActiveIndex] = useState(0);
   const shouldRenderAsTabs = tabs.length > 1;
 
-  const scrollToHash = useCallback(() => {
-    const hash = window.location.hash.substring(1);
-    if (hash) {
-      requestAnimationFrame(() => scrollToElement(hash));
-    }
-  }, []);
-
+  // Reading the hash while rendering would make the server and the client
+  // disagree on the open tab, so the deep link is applied after mount.
+  const deepLinkApplied = useRef(false);
+  const pendingHash = useRef<{ hash: string; tabIndex: number } | null>(null);
   useEffect(() => {
-    scrollToHash();
-  }, [scrollToHash]);
+    if (deepLinkApplied.current) return;
+    deepLinkApplied.current = true;
+
+    const hash = window.location.hash.substring(1);
+    if (!hash) return;
+    const tabIndex = headingToTab.get(hash) ?? 0;
+    pendingHash.current = { hash, tabIndex };
+    setActiveIndex(tabIndex);
+  }, [headingToTab]);
+
+  // The heading only exists once its tab is the one being rendered.
+  useEffect(() => {
+    const pending = pendingHash.current;
+    if (!pending || pending.tabIndex !== activeIndex) return;
+    pendingHash.current = null;
+    requestAnimationFrame(() => scrollToElement(pending.hash));
+  }, [activeIndex]);
 
   useEffect(() => {
     const onHashChange = () => {
@@ -143,12 +145,7 @@ const TabsSection = React.memo(function TabsSection({
     return () => window.removeEventListener('hashchange', onHashChange);
   }, [headingToTab, activeIndex]);
 
-  const activeContent = tabs[activeIndex]?.content ?? tabs[0]?.content;
-  const activeHeadings = useMemo(
-    () => extractHeadingsFromPortableText(activeContent),
-    [activeContent],
-  );
-  useSetTocHeadings(activeHeadings);
+  useSetTocHeadings(tabHeadings[activeIndex] ?? tabHeadings[0] ?? []);
 
   return (
     <>
@@ -160,9 +157,12 @@ const TabsSection = React.memo(function TabsSection({
             ))}
           </TabList>
           <TabPanels>
-            {tabs.map(tab => (
+            {tabs.map((tab, index) => (
               <TabPanel key={`${tab.title}`}>
-                {tab.content && <SanityTableOfContent content={tab.content} />}
+                <TableOfContent
+                  headings={tabHeadings[index]}
+                  variant="inline"
+                />
                 {renderContent({ value: tab.content, context })}
               </TabPanel>
             ))}
@@ -170,9 +170,7 @@ const TabsSection = React.memo(function TabsSection({
         </Tabs>
       ) : (
         <>
-          {tabs[0]?.content && (
-            <SanityTableOfContent content={tabs[0].content} />
-          )}
+          <TableOfContent headings={tabHeadings[0] ?? []} variant="inline" />
           {renderContent({ value: tabs[0]?.content, context })}
         </>
       )}
@@ -191,15 +189,15 @@ const DocSectionContent = ({
   return (
     <>
       {section.title && (
-        <HeadingAnchor headingText={section.title} HeadingComponent={Heading2}>
+        <HeadingAnchor
+          headingKey={section._key}
+          headingText={section.title}
+          HeadingComponent={Heading2}
+        >
           {section.title}
         </HeadingAnchor>
       )}
-      <PortableText
-        value={section.items}
-        context={{ npmPackage }}
-        sharedHeadingIds
-      />
+      <PortableText value={section.items} context={{ npmPackage }} />
     </>
   );
 };
@@ -208,9 +206,8 @@ const renderContent = ({ value, context }: { value: any; context?: any }) => {
   if (!value) return null;
   if (Array.isArray(value)) {
     return (
-      // One counter per tab, matching extractHeadingsFromPortableText's ids —
-      // otherwise duplicate section titles collide with the TOC's deduped one.
-      <HeadingIdProvider>
+      // One id map per tab, the same one the table of contents reads.
+      <HeadingIdProvider content={value}>
         {value.map((section: any) => (
           <DocSectionContent
             key={section._key}
