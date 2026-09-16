@@ -7,9 +7,10 @@ import { Checkbox, Fieldset } from '@entur/form';
 import { Heading2, Heading3, Paragraph } from '@entur/typography';
 
 import {
-  ConsentDetails,
-  UcLabelBundle,
-  UcServiceDetailSection,
+  Category,
+  Service,
+  UcLabels,
+  fetchUcCategories,
   fetchUcLabels,
   getCMP,
   saveCategoryConsents,
@@ -24,30 +25,80 @@ type CategoryView = {
   description?: string;
   essential: boolean;
   accepted: boolean;
-  serviceIds: string[];
+  services: Service[];
 };
 
-const buildCategories = (
-  details: ConsentDetails,
-  labels: UcLabelBundle,
-): CategoryView[] =>
-  Object.entries(details.categories)
-    .filter(([, category]) => !category.hidden)
-    .map(([id, category]) => ({
-      id,
-      // Falls back to the id so a checkbox is never left without a label. Both names
-      // missing would mean Usercentrics served a category it has no text for.
-      name: labels.categories[id]?.name ?? category.name ?? id,
-      description: labels.categories[id]?.description,
-      essential: category.essential ?? false,
-      accepted: category.state === 'ALL_ACCEPTED',
-      serviceIds: Object.keys(category.dps ?? {}),
+/** One section of a service's detail list: a plain paragraph, or a list of labels for the
+ *  purposes, the collected data and the recipients. */
+type DetailSectionView = {
+  id: string;
+  title?: string;
+  description?: string;
+  text?: string;
+  tags?: string[];
+};
+
+const buildCategories = (categories: Category[]): CategoryView[] =>
+  categories
+    .filter(category => !category.isHidden)
+    .map(category => ({
+      id: category.slug,
+      // Falls back to the slug so a checkbox is never left without a label. A missing label
+      // would mean Usercentrics served a category it has no text for.
+      name: category.label || category.slug,
+      description: category.description,
+      essential: category.isEssential,
+      accepted: category.services.every(service => service.consent.status),
+      services: category.services,
     }));
 
-const DetailSection = ({ section }: { section: UcServiceDetailSection }) => {
-  const { body, title, description } = section;
-  const tags = Array.isArray(body?.value) ? body?.value : null;
-  const text = typeof body?.value === 'string' ? body.value : null;
+/** Turns what Usercentrics knows about a service into the sections the page lists. The
+ *  values come from the service, the headings from the texts in the admin. */
+const buildServiceSections = (
+  service: Service,
+  labels: UcLabels,
+): DetailSectionView[] => {
+  const { service: serviceLabels } = labels;
+
+  return [
+    {
+      id: 'processingCompany',
+      title: serviceLabels.processingCompanyTitle,
+      text: service.processingCompany?.name,
+    },
+    {
+      id: 'dataPurposes',
+      title: serviceLabels.dataPurposes.title,
+      description: serviceLabels.dataPurposes.description,
+      tags: service.dataPurposes,
+    },
+    {
+      id: 'dataCollected',
+      title: serviceLabels.dataCollected.title,
+      description: serviceLabels.dataCollected.description,
+      tags: service.dataCollected,
+    },
+    {
+      id: 'dataRecipients',
+      title: serviceLabels.dataRecipients.title,
+      description: serviceLabels.dataRecipients.description,
+      tags: service.dataRecipients,
+    },
+    {
+      id: 'retentionPeriod',
+      title: serviceLabels.retentionPeriod.title,
+      text: service.retentionPeriodDescription ?? undefined,
+    },
+    {
+      id: 'legalBasis',
+      title: serviceLabels.legalBasis.title,
+      text: service.legalBasis.join(', ') || undefined,
+    },
+  ];
+};
+
+const DetailSection = ({ section }: { section: DetailSectionView }) => {
+  const { tags, text, title, description } = section;
 
   // Sections with neither a value nor a description carry nothing worth a heading.
   if (!tags?.length && !text && !description) return null;
@@ -56,11 +107,11 @@ const DetailSection = ({ section }: { section: UcServiceDetailSection }) => {
     <div className="privacy-details__section">
       {title && <Heading3 margin="none">{title}</Heading3>}
       {text && <Paragraph margin="none">{text}</Paragraph>}
-      {tags && (
+      {tags && tags.length > 0 && (
         <ul className="privacy-details__tags">
           {tags.map(tag => (
-            <li key={tag.id} className="privacy-details__tag">
-              {tag.label}
+            <li key={tag} className="privacy-details__tag">
+              {tag}
             </li>
           ))}
         </ul>
@@ -76,7 +127,7 @@ const DetailSection = ({ section }: { section: UcServiceDetailSection }) => {
  *  second layer. The facts come from Usercentrics so they cannot drift from the admin; the
  *  surrounding text lives in the page itself. */
 export const PrivacyDetails = () => {
-  const [labels, setLabels] = React.useState<UcLabelBundle | null>(null);
+  const [labels, setLabels] = React.useState<UcLabels | null>(null);
   const [categories, setCategories] = React.useState<CategoryView[] | null>(
     null,
   );
@@ -88,20 +139,16 @@ export const PrivacyDetails = () => {
 
   const load = React.useCallback(async () => {
     const cmp = await getCMP();
-    const details = await cmp?.getConsentDetails();
-    if (!details) {
+    const fetchedCategories = await fetchUcCategories();
+    const bundle = await fetchUcLabels();
+    if (!cmp || !fetchedCategories || !bundle) {
       setUnavailable(true);
       return;
     }
-    const bundle = await fetchUcLabels(details.consent);
-    if (!bundle) {
-      setUnavailable(true);
-      return;
-    }
-    const built = buildCategories(details, bundle);
+    const built = buildCategories(fetchedCategories);
     setLabels(bundle);
     setCategories(built);
-    setControllerId(details.consent.controllerId || undefined);
+    setControllerId(cmp.getControllerId() || undefined);
     // The boxes show what is stored right now, so the page doubles as a record of the
     // current choice rather than asking for it again from scratch.
     setSelected(
@@ -208,34 +255,20 @@ export const PrivacyDetails = () => {
   const essential = categories.filter(c => c.essential);
 
   const renderServices = (category: CategoryView) =>
-    category.serviceIds.map(serviceId => {
-      const service = labels.services[serviceId];
-      if (!service) return null;
-      return (
-        <ExpandablePanel
-          key={serviceId}
-          title={service.name}
-          className="privacy-details__service"
-        >
-          {service.description && (
-            <Paragraph margin="none">{service.description}</Paragraph>
-          )}
-          {service.details?.genericContent
-            ?.filter(section => section.id !== 'description')
-            .map(section => (
-              <DetailSection key={section.id} section={section} />
-            ))}
-          {service.legalBasis?.length ? (
-            <div className="privacy-details__section">
-              <Heading3 margin="none">Behandlingsgrunnlag</Heading3>
-              <Paragraph margin="none">
-                {service.legalBasis.join(', ')}
-              </Paragraph>
-            </div>
-          ) : null}
-        </ExpandablePanel>
-      );
-    });
+    category.services.map(service => (
+      <ExpandablePanel
+        key={service.id}
+        title={service.name}
+        className="privacy-details__service"
+      >
+        {service.description && (
+          <Paragraph margin="none">{service.description}</Paragraph>
+        )}
+        {buildServiceSections(service, labels).map(section => (
+          <DetailSection key={section.id} section={section} />
+        ))}
+      </ExpandablePanel>
+    ));
 
   return (
     <>
