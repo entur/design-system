@@ -23,7 +23,7 @@ import {
   TokenIcon,
   UserIcon,
 } from '@entur/icons';
-import { Badge, Tag } from '@entur/layout';
+import { Tag } from '@entur/layout';
 import { Flex } from '@entur/layout/beta';
 import {
   Heading2,
@@ -229,9 +229,9 @@ export const Search = () => {
         size="small"
       >
         <SearchIcon aria-hidden="true" /> Søk
-        <Badge as="kbd" variant="neutral" type="status">
-          ⌘+k
-        </Badge>
+        <Tag as="kbd" variant="neutral">
+          ⌘+K
+        </Tag>
       </SecondaryButton>
       <IconButton className="searchmodal__button--small" onClick={openSearch}>
         <SearchIcon aria-hidden="true" />

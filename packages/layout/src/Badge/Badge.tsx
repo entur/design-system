@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import warning from 'tiny-warning';
 import { PolymorphicComponentPropsWithRef, PolymorphicRef } from '@entur/utils';
 import { VariantType } from '@entur/utils';
 
@@ -10,7 +11,22 @@ const info = 'info';
 /** @deprecated use variant="negative" instead */
 const danger = 'danger';
 
-export type BadgeTypes = 'status' | 'bullet' | 'notification';
+/** @deprecated Bruk `Tag` i stedet */
+const status = 'status';
+
+export type BadgeTypes = typeof status | 'bullet' | 'notification';
+
+let hasWarnedAboutStatusType = false;
+
+// tiny-warning compiles away in production builds
+function warnAboutStatusType() {
+  if (hasWarnedAboutStatusType) return;
+  hasWarnedAboutStatusType = true;
+  warning(
+    false,
+    '`StatusBadge` og `Badge` med `type="status"` er deprecated. Bruk `Tag` fra @entur/layout i stedet – `variant="primary"` tilsvarer `variant="neutral"` på `Tag`.',
+  );
+}
 
 export type BadgeOwnProps = {
   /** Elementet som wrapper badgen
@@ -31,6 +47,9 @@ export type BadgeOwnProps = {
    * @default ++
    */
   max?: number;
+  /** Hvilken type badge man vil ha
+   * @default "status"
+   */
   type?: BadgeTypes;
   /** @deprecated Bruk `hide` i stedet */
   invisible?: boolean;
@@ -66,6 +85,8 @@ export const Badge: BadgeComponent = React.forwardRef(
     ref: PolymorphicRef<T>,
   ) => {
     const Element: React.ElementType = as || defaultElement;
+
+    if (type === 'status') warnAboutStatusType();
 
     const computedHide =
       hideProp ||

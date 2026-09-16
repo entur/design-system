@@ -133,7 +133,11 @@ const Props: React.FC<PropsProps> = ({ componentName, npmPackage }) => {
                         details.required ? '' : '?'
                       }`}</CodeText>
                       {isDeprecated && (
-                        <Tag as="span" compact className="props__deprecated">
+                        <Tag
+                          size="small"
+                          variant="warning"
+                          className="props__deprecated"
+                        >
                           Deprecated
                         </Tag>
                       )}

@@ -3,23 +3,23 @@
 
 .eds-side-navigation,
 .eds-side-navigation-group {
-  color: var(--components-menu-sidenavigation-standard-text);
+  color: var(--components-menu-sidenavigation-standard-text-default);
 
   .eds-contrast & {
-    color: var(--components-menu-sidenavigation-contrast-text);
+    color: var(--components-menu-sidenavigation-contrast-text-default);
   }
 }
 
 .eds-side-navigation__click-target svg {
   margin-right: t.$space-medium;
-  color: var(--components-menu-sidenavigation-standard-icon);
+  color: var(--components-menu-sidenavigation-standard-icon-default);
   display: inline-flex;
   align-self: center;
   position: relative;
   top: 0.075em;
 
   .eds-contrast & {
-    color: var(--components-menu-sidenavigation-contrast-icon);
+    color: var(--components-menu-sidenavigation-contrast-icon-default);
   }
 }
 
@@ -35,8 +35,8 @@
   --padding-vertical: #{t.$space-medium};
   --padding-horizontal: #{t.$space-extra-large2};
 
-  background-color: var(--components-menu-sidenavigation-standard-background);
-  color: var(--components-menu-sidenavigation-standard-text);
+  background-color: var(--components-menu-sidenavigation-standard-fill-background);
+  color: var(--components-menu-sidenavigation-standard-text-default);
   padding: 0;
   margin: 0;
   list-style: none;
@@ -44,8 +44,8 @@
   transition: max-width ease-in-out t.$timings-medium;
 
   .eds-contrast & {
-    background-color: var(--components-menu-sidenavigation-contrast-background);
-    color: var(--components-menu-sidenavigation-contrast-text);
+    background-color: var(--components-menu-sidenavigation-contrast-fill-background);
+    color: var(--components-menu-sidenavigation-contrast-text-default);
   }
 
   &__collapse-button {
@@ -56,8 +56,8 @@
     border-radius: 50%;
     border: none;
     cursor: pointer;
-    background-color: var(--components-menu-sidenavigation-standard-background);
-    color: var(--components-menu-sidenavigation-standard-text);
+    background-color: var(--components-menu-sidenavigation-standard-fill-background);
+    color: var(--components-menu-sidenavigation-standard-text-default);
     box-shadow: t.$shadows-box-shadow;
     padding: 0;
     display: flex;
@@ -66,18 +66,18 @@
     z-index: t.$z-indexes-sticky;
 
     .eds-contrast & {
-      background-color: var(--components-menu-sidenavigation-contrast-background);
-      color: var(--components-menu-sidenavigation-contrast-text);
+      background-color: var(--components-menu-sidenavigation-contrast-fill-background);
+      color: var(--components-menu-sidenavigation-contrast-text-default);
       box-shadow: t.$shadows-box-shadow;
     }
 
     svg {
       margin: 0;
       top: 0;
-      color: var(--components-menu-sidenavigation-standard-icon);
+      color: var(--components-menu-sidenavigation-standard-icon-default);
 
       .eds-contrast & {
-        color: var(--components-menu-sidenavigation-contrast-icon);
+        color: var(--components-menu-sidenavigation-contrast-icon-default);
       }
     }
 
@@ -102,10 +102,10 @@
 
   // Nested sub menus
   & & {
-    background-color: var(--components-menu-sidenavigation-standard-background);
+    background-color: var(--components-menu-sidenavigation-standard-fill-background);
 
     .eds-contrast & {
-      background-color: var(--components-menu-sidenavigation-contrast-background);
+      background-color: var(--components-menu-sidenavigation-contrast-fill-background);
     }
   }
 
@@ -134,9 +134,9 @@
   appearance: none;
   background: none;
   border: 0;
-  border-bottom: t.$border-widths-small solid var(--components-menu-sidenavigation-standard-divide);
+  border-bottom: t.$border-widths-small solid var(--components-menu-sidenavigation-standard-stroke-divide);
   border-radius: 0;
-  color: var(--components-menu-sidenavigation-standard-text);
+  color: var(--components-menu-sidenavigation-standard-text-default);
   cursor: pointer;
   display: block;
   font-size: t.$font-sizes-large;
@@ -151,8 +151,8 @@
   width: 100%;
 
   .eds-contrast & {
-    color: var(--components-menu-sidenavigation-contrast-text);
-    border-color: var(--components-menu-sidenavigation-contrast-divide);
+    color: var(--components-menu-sidenavigation-contrast-text-default);
+    border-color: var(--components-menu-sidenavigation-contrast-stroke-divide);
   }
 
   .eds-side-navigation--collapsed & {
@@ -211,10 +211,10 @@
 .eds-side-navigation-group__trigger {
   align-items: center;
   appearance: none;
-  background-color: var(--components-menu-sidenavigation-standard-background);
+  background-color: var(--components-menu-sidenavigation-standard-fill-background);
   border: none;
-  border-bottom: t.$border-widths-small solid var(--components-menu-sidenavigation-standard-divide);
-  color: var(--components-menu-sidenavigation-standard-label);
+  border-bottom: t.$border-widths-small solid var(--components-menu-sidenavigation-standard-stroke-divide);
+  color: var(--components-menu-sidenavigation-standard-text-label);
   cursor: pointer;
   display: flex;
   font-size: t.$font-sizes-medium;
@@ -231,9 +231,9 @@
   width: 100%;
 
   .eds-contrast & {
-    color: var(--components-menu-sidenavigation-contrast-label);
-    background-color: var(--components-menu-sidenavigation-contrast-background);
-    border-color: var(--components-menu-sidenavigation-contrast-divide);
+    color: var(--components-menu-sidenavigation-contrast-text-label);
+    background-color: var(--components-menu-sidenavigation-contrast-fill-background);
+    border-color: var(--components-menu-sidenavigation-contrast-stroke-divide);
   }
 
   &-icon {

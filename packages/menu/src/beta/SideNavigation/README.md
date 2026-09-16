@@ -16,6 +16,8 @@ those styles a collapsed submenu stays visible. The beta entry point warns in de
 it is missing.
 
 ```tsx
+import { TicketIcon } from '@entur/icons';
+import { Tag } from '@entur/layout';
 import { SideNavigation } from '@entur/menu/beta';
 import '@entur/expand/styles';
 import '@entur/menu/beta/styles';
@@ -33,7 +35,11 @@ import '@entur/menu/beta/styles';
 
     <SideNavigation.Item
       href="/varsler"
-      badge={<StatusBadge variant="neutral">Ny</StatusBadge>}
+      badge={
+        <Tag variant="neutral" size="small">
+          Ny
+        </Tag>
+      }
       alert
     >
       Varsler

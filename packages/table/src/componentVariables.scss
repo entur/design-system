@@ -7,7 +7,7 @@
 :root {
   --components-table-contrast-cell-fill: #{$fill-background-standard-colorless};
   --components-table-contrast-cell-fill-hover: #{$fill-background-contrast-lightalt};
-  --components-table-contrast-cell-fill-negative: #{$fill-negative-transparent};
+  --components-table-contrast-cell-fill-negative: #{$fill-negative-accent};
   --components-table-contrast-header-fill: #{$fill-background-contrast-light};
   --components-table-contrast-icon: #{$shape-light};
   --components-table-contrast-stroke: #{$stroke-subdued};
@@ -24,14 +24,14 @@
 [data-color-mode='dark'] {
   --components-table-contrast-cell-fill: #{$fill-background-standard-colorless};
   --components-table-contrast-cell-fill-hover: #{$fill-background-overlay-transparent};
-  --components-table-contrast-cell-fill-negative: #{$fill-negative-transparent};
+  --components-table-contrast-cell-fill-negative: #{$fill-negative-accent};
   --components-table-contrast-header-fill: #{$fill-background-standard-dark};
   --components-table-contrast-icon: #{$shape-lightalt};
   --components-table-contrast-stroke: #{$stroke-darkalt};
   --components-table-contrast-text: #{$text-lightalt};
   --components-table-standard-cell-fill: #{$fill-background-standard-colorless};
   --components-table-standard-cell-fill-hover: #{$fill-background-overlay-transparent};
-  --components-table-standard-fill-negative: #{$fill-negative-transparent};
+  --components-table-standard-fill-negative: #{$fill-negative-accent};
   --components-table-standard-header-fill: #{$fill-background-standard-dark};
   --components-table-standard-icon: #{$shape-lightalt};
   --components-table-standard-stroke: #{$stroke-darkalt};

@@ -2,7 +2,7 @@ import React from 'react';
 import { compiler } from 'markdown-to-jsx';
 
 import { BaseExpand, ExpandableTextButton } from '@entur/expand';
-import { Badge, Tag } from '@entur/layout';
+import { Tag, TagVariant } from '@entur/layout';
 import {
   BackArrowIcon,
   BugIcon,
@@ -39,6 +39,20 @@ const SECTION_ICONS: Record<string, React.ElementType> = {
   // after the scope: only packages released from this repository are listed.
   'Entur Dependency Updates': PackageIcon,
   'Entur Peer Requirements': LinkIcon,
+};
+
+/**
+ * Seksjonene er kategorier, ikke tilstander, så de bruker kategorifarger valgt
+ * for å skille seg fra hverandre. `BREAKING CHANGES` er unntaket: den krever
+ * noe av den som leser, og er den eneste som bruker en statusfarge.
+ */
+const SECTION_VARIANTS: Record<string, TagVariant> = {
+  Features: 'spring',
+  'Bug Fixes': 'blue',
+  'BREAKING CHANGES': 'warning',
+  Reverts: 'neutral',
+  'Entur Dependency Updates': 'neutral',
+  'Entur Peer Requirements': 'jungle',
 };
 
 /** Sections a release can consist of entirely. */
@@ -79,15 +93,12 @@ export const ChangelogSection = ({
   return (
     // markdown-to-jsx passes a className of its own, so it goes first.
     <h4 {...rest} className="markdown-parser__section">
-      <Tag as="span">
+      <Tag variant={SECTION_VARIANTS[title]}>
         {Icon ? <Icon aria-hidden="true" /> : null}
         {title}
-        {isBeta && (
-          <Badge type="status" variant="neutral">
-            beta
-          </Badge>
-        )}
       </Tag>
+      {/* Samme kategorifarge som beta-merket ellers på siden. */}
+      {isBeta && <Tag variant="mystic">Beta</Tag>}
     </h4>
   );
 };
@@ -156,7 +167,7 @@ const DependencySection = ({
   return (
     <div className="markdown-parser__dependencies">
       <div className="markdown-parser__dependencies-title">
-        <Tag as="span">
+        <Tag variant={SECTION_VARIANTS[title]}>
           {Icon ? <Icon aria-hidden="true" /> : null}
           {title}
         </Tag>
