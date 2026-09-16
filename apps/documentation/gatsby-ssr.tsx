@@ -12,15 +12,12 @@ import {
   SettingsProvider,
 } from './src/providers';
 import { SearchProvider } from './src/components/Search/SearchContext';
-import { ConsentBanner } from './src/components/ConsentBanner/ConsentBanner';
-import DocLayout from './src/layouts/DocLayout';
+import { renderPageElement } from './src/layouts/renderPageElement';
 
 export const wrapRootElement: GatsbySSR['wrapRootElement'] = ({ element }) => {
   return (
     <SettingsProvider>
       <ConsentProvider>
-        {/* Belongs at the very top of the page, ahead of the skip link */}
-        <ConsentBanner />
         <ToastProvider>
           <ColorsProvider>
             <MediaContextProvider>
@@ -36,17 +33,7 @@ export const wrapRootElement: GatsbySSR['wrapRootElement'] = ({ element }) => {
 export const wrapPageElement: GatsbySSR['wrapPageElement'] = ({
   element,
   props,
-}) => {
-  const CUSTOM_LAYOUT_PAGES = [
-    '/',
-    '/stand',
-    '/ressurser/innsikt/brukerundersokelse',
-  ];
-  const normalizedPath = props.location.pathname.replace(/\/$/, '') || '/';
-  if (CUSTOM_LAYOUT_PAGES.includes(normalizedPath)) return <>{element}</>;
-
-  return <DocLayout {...props}>{element}</DocLayout>;
-};
+}) => renderPageElement(element, props);
 
 export const onRenderBody: GatsbySSR['onRenderBody'] = ({
   setHeadComponents,
