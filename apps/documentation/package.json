@@ -46,6 +46,7 @@
     "@internationalized/date": "3.12.1",
     "@mdx-js/react": "3.1.1",
     "@portabletext/react": "3.2.4",
+    "@usercentrics/cmp-browser-sdk": "4.60.0",
     "classnames": "2.5.1",
     "copy-text-to-clipboard": "2.2.0",
     "dompurify": "3.4.12",

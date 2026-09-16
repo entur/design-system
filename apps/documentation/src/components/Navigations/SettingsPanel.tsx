@@ -39,8 +39,7 @@ const SettingsPanel = () => {
   useEffect(() => {
     async function fetchControllerID() {
       const cmp = await getCMP();
-      const controllerID = await cmp?.getControllerId();
-      setTrackingID(controllerID);
+      setTrackingID(cmp?.getControllerId());
     }
     fetchControllerID();
   }, []);

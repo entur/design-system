@@ -4,6 +4,7 @@ import { PrimaryButton } from '@entur/button';
 import { Heading2 } from '@entur/typography';
 
 import { useConsent } from '@providers/ConsentProvider';
+import { saveAllConsents } from 'src/utils/cmpUtils';
 import { sanitizeUcHtml } from 'src/utils/sanitizeUcHtml';
 
 import './ConsentBanner.scss';
@@ -47,21 +48,14 @@ export const ConsentBanner = () => {
 
   if (!isBannerOpen || !bannerLabels) return null;
 
-  const { privacy, buttons } = bannerLabels;
+  const { firstLayer, buttons } = bannerLabels;
 
-  // acceptAllConsents and denyAllConsents save the choice themselves. Close the banner
-  // only after one of them succeeds, so a failed choice never looks recorded.
+  // Usercentrics stores the choice, unblocks the scripts it covers and logs the consent.
+  // Close the banner only once that succeeds, so a failed choice never looks recorded — the
+  // question stands, and stays on screen to be answered again.
   const answer = async (accepted: boolean) => {
-    const cmp = window.__ucCmp;
-    if (!cmp) return;
-    try {
-      if (accepted) await cmp.acceptAllConsents();
-      else await cmp.denyAllConsents();
-    } catch {
-      // The question stands, so leave it on screen to be answered again.
-      return;
-    }
-    closeBanner();
+    const saved = await saveAllConsents(accepted);
+    if (saved) closeBanner();
   };
 
   return (
@@ -73,14 +67,14 @@ export const ConsentBanner = () => {
     >
       <div className="consent-banner__content">
         <Heading2 id={TITLE_ID} className="consent-banner__title" margin="none">
-          {privacy.title}
+          {firstLayer.title}
         </Heading2>
-        {privacy.description && (
+        {firstLayer.description.default && (
           <div
             className="consent-banner__description"
             // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={{
-              __html: sanitizeUcHtml(privacy.description),
+              __html: sanitizeUcHtml(firstLayer.description.default),
             }}
           />
         )}
@@ -88,20 +82,20 @@ export const ConsentBanner = () => {
             valid, so both are primary buttons. */}
         <div className="consent-banner__actions">
           <PrimaryButton onClick={() => answer(true)}>
-            {buttons.accept}
+            {buttons.acceptAll}
           </PrimaryButton>
           <PrimaryButton onClick={() => answer(false)}>
-            {buttons.deny}
+            {buttons.denyAll}
           </PrimaryButton>
         </div>
         {/* The note about what cannot be turned off belongs after the choice, so it never
-            reads as one of the options. */}
-        {privacy.shortDescription && (
+            reads as one of the options. "Short Banner Message for Web" in the admin. */}
+        {firstLayer.description.shortDesktop && (
           <div
             className="consent-banner__necessary"
             // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={{
-              __html: sanitizeUcHtml(privacy.shortDescription),
+              __html: sanitizeUcHtml(firstLayer.description.shortDesktop),
             }}
           />
         )}
