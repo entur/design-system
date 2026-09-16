@@ -650,7 +650,7 @@ const Stand = () => {
       {
         id: 'tag-beta',
         content: (
-          <Tag tabIndex={-1} variant="warning">
+          <Tag tabIndex={-1} variant="mystic">
             Beta
           </Tag>
         ),
