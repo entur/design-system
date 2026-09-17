@@ -62,8 +62,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   badge had and no longer uppercases its label, so anywhere you have styled on
   top of the old appearance needs a look.
 
-The root element is a `span` rather than a `div`. A `ref` typed as
-`HTMLDivElement`, and a selector like `div.eds-tag`, both need updating.
+  The root element is a `span` rather than a `div`. A `ref` typed as
+  `HTMLDivElement`, and a selector like `div.eds-tag`, both need updating.
 
 ## [4.0.5](https://github.com/entur/design-system/compare/@entur/layout@4.0.4...@entur/layout@4.0.5) (2026-09-08)
 
@@ -252,8 +252,6 @@ The root element is a `span` rather than a `div`. A `ref` typed as
 - **layout/beta/layout-provider:** ResponsiveValue breakpoint keys changed from sm/md/lg to
   s/m/lg/xl. xl breakpoint added with a default of 1400px. s is not configurable
   — it is the implicit base (0px) that activates below m.
-
-AI-assistant: Claude Code (claude-sonnet-4-6)
 
 ## [3.6.1](https://github.com/entur/design-system/compare/@entur/layout@3.6.0...@entur/layout@3.6.1) (2026-04-16)
 

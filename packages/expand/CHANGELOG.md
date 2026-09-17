@@ -985,8 +985,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - ExpandableTextButton now takes in onToggle instead of using onClick directly
 
-ISSUES CLOSED: ETU-1853
-
 # [2.0.0](https://github.com/entur/design-system/compare/@entur/expand@1.1.15...@entur/expand@2.0.0) (2020-03-25)
 
 ### Features
@@ -996,8 +994,6 @@ ISSUES CLOSED: ETU-1853
 ### BREAKING CHANGES
 
 - ExpandableTextButton now takes in onToggle instead of using onClick directly
-
-ISSUES CLOSED: ETU-1853
 
 ## [1.1.15](https://github.com/entur/design-system/compare/@entur/expand@1.1.14...@entur/expand@1.1.15) (2020-03-20)
 

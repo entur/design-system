@@ -141,8 +141,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **travel/travel tag:** New class specificities could lead to visual changes if you override these classes.
 
-AI-assistant: Claude Code (claude-opus-4-6)
-
 ## [6.5.11](https://github.com/entur/design-system/compare/@entur/travel@6.5.10...@entur/travel@6.5.11) (2026-05-13)
 
 ### Entur Dependency Updates

@@ -1355,8 +1355,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - the compact prop is now deprecated, use density="middle" instead
 
-ISSUES CLOSED: DS-295 DS-296 DS-298
-
 # [1.0.0](https://github.com/entur/design-system/compare/@entur/table@0.5.0...@entur/table@1.0.0) (2020-03-25)
 
 ### Features
@@ -1367,8 +1365,6 @@ ISSUES CLOSED: DS-295 DS-296 DS-298
 ### BREAKING CHANGES
 
 - the compact prop is now deprecated, use density="middle" instead
-
-ISSUES CLOSED: DS-295 DS-296 DS-298
 
 # [0.5.0](https://github.com/entur/design-system/compare/@entur/table@0.4.1...@entur/table@0.5.0) (2020-03-20)
 

@@ -4,7 +4,7 @@ const createAngularPreset = require('conventional-changelog-angular');
 
 // Metadata trailers add no value for consumers reading the changelog.
 const TRAILER_PATTERN =
-  /^(AI-assistant|Co-authored-by|Signed-off-by|Reviewed-by|Reported-by|Tested-by|Acked-by|Refs):/i;
+  /^(AI-assistant|Co-authored-by|Signed-off-by|Reviewed-by|Reported-by|Tested-by|Acked-by|Refs|ISSUES CLOSED):/i;
 
 // Older commits list the packages they touch; the changelog is per package.
 const AFFECTS_PATTERN = /^affects:/i;
@@ -45,6 +45,19 @@ const BETA_SUFFIX = ' (beta)';
 const betaTitle = title => `${title}${BETA_SUFFIX}`;
 const isBetaTitle = title => title.endsWith(BETA_SUFFIX);
 
+// Aligns continuation lines with the text of the bullet they belong to.
+// Without it a blank line ends the list item, and the rest of the note is
+// rendered as a paragraph of its own.
+function indentLines(text, skipFirst) {
+  return text
+    .split('\n')
+    .map((line, index) => {
+      if (skipFirst && index === 0) return line;
+      return line.trim() ? `  ${line}` : '';
+    })
+    .join('\n');
+}
+
 // Renders the commit body as an indented block under its changelog bullet.
 function formatBody(body) {
   if (typeof body !== 'string') return '';
@@ -53,12 +66,13 @@ function formatBody(body) {
 
   if (!cleaned) return '';
 
-  const indented = cleaned
-    .split('\n')
-    .map(line => (line.trim() ? `  ${line}` : ''))
-    .join('\n');
+  return `\n\n${indentLines(cleaned, false)}`;
+}
 
-  return `\n\n${indented}`;
+// The note is written straight after the bullet, so only what follows the
+// first line needs the indent.
+function formatNote(text) {
+  return indentLines(stripTrailers(text), true);
 }
 
 async function createPreset() {
@@ -88,7 +102,7 @@ async function createPreset() {
     const isBeta = BETA_SCOPE_PATTERN.test(transformed.scope || '');
 
     transformed.notes.forEach(note => {
-      note.text = stripTrailers(note.text);
+      note.text = formatNote(note.text);
       if (isBeta) note.title = betaTitle(note.title);
     });
     transformed.body = formatBody(transformed.body);

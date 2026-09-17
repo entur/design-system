@@ -974,8 +974,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **Button:** Square buttons are now their own components.
 
-ISSUES CLOSED: DS-179
-
 ## [1.6.1](https://github.com/entur/design-system/compare/@entur/button@1.6.0...@entur/button@1.6.1) (2020-01-27)
 
 ### Bug Fixes

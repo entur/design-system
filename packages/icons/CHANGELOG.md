@@ -235,18 +235,18 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **icons:** The following icons have been renamed or replaced:
 
-* ReportsIcon → CopyIcon
-* SubwayIcon → MetroIcon
-* ScooterIcon → MobilityIcon
-* WalkingIcon → WalkIcon
-* OutlinedValidationCheckIcon → ValidationCheckIcon
-* OutlinedValidationErrorIcon → ValidationErrorIcon
-* OutlinedValidationExclamationIcon → ValidationExclamationIcon
-* OutlinedValidationInfoIcon → ValidationInfoIcon
-* ValidationCheckIcon → ValidationSuccessIcon
-* ValidationCheckFilledIcon → ValidationSuccessFilledIcon
+  - ReportsIcon → CopyIcon
+  - SubwayIcon → MetroIcon
+  - ScooterIcon → MobilityIcon
+  - WalkingIcon → WalkIcon
+  - OutlinedValidationCheckIcon → ValidationCheckIcon
+  - OutlinedValidationErrorIcon → ValidationErrorIcon
+  - OutlinedValidationExclamationIcon → ValidationExclamationIcon
+  - OutlinedValidationInfoIcon → ValidationInfoIcon
+  - ValidationCheckIcon → ValidationSuccessIcon
+  - ValidationCheckFilledIcon → ValidationSuccessFilledIcon
 
-Please update your imports and usages accordingly.
+  Please update your imports and usages accordingly.
 
 # [7.14.0](https://github.com/entur/design-system/compare/@entur/icons@7.13.0...@entur/icons@7.14.0) (2025-06-17)
 
@@ -1128,8 +1128,6 @@ Please update your imports and usages accordingly.
 
 - Removed icons: company, fineticket, periode, rescue, sanntid, salesplace, and location
 - **icons:** Name changes for icon (old-new): standard-expand, teddy-playroom, company-city, ticket-validticket
-
-ISSUES CLOSED: DS-269
 
 # [0.11.0](https://github.com/entur/design-system/compare/@entur/icons@0.10.0...@entur/icons@0.11.0) (2020-02-26)
 
