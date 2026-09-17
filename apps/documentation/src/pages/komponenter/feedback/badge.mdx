@@ -28,18 +28,40 @@ Badge inneholder varslene `BulletBadge` og `NotificationBadge`, i tillegg til `S
 - Information
 - Neutral
 
-### Status badge
+### Notification badge
 
-<SmallAlertBox variant="warning">
-`StatusBadge` og `Badge` med `type="status"` er deprecated. Bruk [Tag](/komponenter/layout-og-flater/tag) i stedet.
-</SmallAlertBox>
+`NotificationBadge` er en visuell indikator for numeriske verdier.
+Denne komponenten er egnet for å vise et varsel på et UI-element som kan kreve brukerens oppmerksomhet og som de bør ta hensyn til.
 
-<Playground hideColorModeOption code={`<StatusBadge variant="primary">Oppdatert</StatusBadge>`} />
+En `NotificationBadge` bør plasseres øverst til høyre relativt til elementet `NotificationBadge` tilhører.
+Unngå å bruk komponenten alene.
 
-Tag dekker begge bruksområdene `StatusBadge` hadde: statusmarkering med `success`, `warning`, `negative` og `information`, og kategorimerking med ni fargevarianter i tillegg til `neutral`.
-`variant="primary"` er ikke videreført – bruk `variant="neutral"`.
-
-Komponenten fungerer fortsatt og brekker ikke, men den får ingen videreutvikling.
+```jsx
+<Tabs>
+  <TabList>
+    <Tab style={{ position: 'relative', minWidth: '12rem' }}>Ordre</Tab>
+    <Tab style={{ position: 'relative', minWidth: '12rem' }}>Historikk</Tab>
+    <Tab style={{ position: 'relative', minWidth: '12rem' }}>
+      Merknader
+      <NotificationBadge
+        variant="primary"
+        style={{ position: 'absolute', top: 0 }}
+        max={10}
+      >
+        1 <VisuallyHidden>notifikasjon</VisuallyHidden>
+      </NotificationBadge>
+    </Tab>
+  </TabList>
+  <TabPanels>
+    <TabPanel>
+      <Heading2>Dine ordre</Heading2>
+      <Tag>Ingen nye ordre</Tag>
+    </TabPanel>
+    <TabPanel></TabPanel>
+    <TabPanel></TabPanel>
+  </TabPanels>
+</Tabs>
+```
 
 ### Bullet badge
 
@@ -92,41 +114,19 @@ Komponenten tilbys i ulike farger for å indikere hvilke status et objekt eller 
   </Table>
 ```
 
-### Notification badge
+### Status badge
 
-`NotificationBadge` er en visuell indikator for numeriske verdier.
-Denne komponenten er egnet for å vise et varsel på et UI-element som kan kreve brukerens oppmerksomhet og som de bør ta hensyn til.
+<SmallAlertBox variant="warning">
+`StatusBadge` og `Badge` med `type="status"` er deprecated. Bruk [Tag](/komponenter/layout-og-flater/tag) i stedet.
+</SmallAlertBox>
 
-En `NotificationBadge` bør plasseres øverst til høyre relativt til elementet `NotificationBadge` tilhører.
-Unngå å bruk komponenten alene.
+<Playground hideColorModeOption code={`<StatusBadge variant="primary">Oppdatert</StatusBadge>`} />
 
-```jsx
-<Tabs>
-  <TabList>
-    <Tab style={{ position: 'relative', minWidth: '12rem' }}>Ordre</Tab>
-    <Tab style={{ position: 'relative', minWidth: '12rem' }}>Historikk</Tab>
-    <Tab style={{ position: 'relative', minWidth: '12rem' }}>
-      Merknader
-      <NotificationBadge
-        variant="primary"
-        style={{ position: 'absolute', top: 0 }}
-        max={10}
-      >
-        1 <VisuallyHidden>notifikasjon</VisuallyHidden>
-      </NotificationBadge>
-    </Tab>
-  </TabList>
-  <TabPanels>
-    <TabPanel>
-      <Heading2 as="span">Dine ordre</Heading2>
-      <Tag>Ingen nye ordre</Tag>
-    </TabPanel>
-    <TabPanel></TabPanel>
-    <TabPanel></TabPanel>
-  </TabPanels>
-</Tabs>
-```
- 
+Tag dekker begge bruksområdene `StatusBadge` hadde: statusmarkering med `success`, `warning`, `negative` og `information`, og kategorimerking med ti kategorifarger, der `neutral` er en av dem.
+`variant="primary"` er ikke videreført – bruk `variant="neutral"`.
+
+Komponenten fungerer fortsatt og brekker ikke, men den får ingen videreutvikling.
+
 ## Retningslinjer
 
 ### Universell utforming
