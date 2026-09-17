@@ -13,7 +13,7 @@ export type FilterChipProps = {
   /** Størrelsen på chip
    * @default 'medium'
    */
-  size?: 'small' | 'medium';
+  size?: 'small' | 'medium' | 'large';
 } & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'value' | 'size'>;
 
 export const FilterChip = React.forwardRef<HTMLInputElement, FilterChipProps>(
@@ -30,13 +30,6 @@ export const FilterChip = React.forwardRef<HTMLInputElement, FilterChipProps>(
     },
     ref: React.Ref<HTMLInputElement>,
   ) => {
-    const childrenArray = React.Children.toArray(children);
-    const hasLeadingIcon =
-      childrenArray.length > 1 && typeof childrenArray[0] !== 'string';
-    const hasTrailingIcon =
-      childrenArray.length > 1 &&
-      typeof childrenArray[childrenArray.length - 1] !== 'string';
-
     const classList = cx(className, 'eds-filter-chip');
 
     return (
@@ -52,8 +45,7 @@ export const FilterChip = React.forwardRef<HTMLInputElement, FilterChipProps>(
         />
         <div
           className={cx('eds-chip', `eds-chip--size-${size}`, {
-            'eds-chip--leading-icon': hasLeadingIcon,
-            'eds-chip--trailing-icon': hasTrailingIcon,
+            'eds-chip--disabled': disabled,
           })}
         >
           <span className="eds-filter-chip__icon">

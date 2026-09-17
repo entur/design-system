@@ -18,7 +18,7 @@ export type ChoiceChipProps = {
   /** Størrelsen på chip
    * @default 'medium'
    */
-  size?: 'small' | 'medium';
+  size?: 'small' | 'medium' | 'large';
 } & Omit<
   React.DetailedHTMLProps<
     React.InputHTMLAttributes<HTMLInputElement>,
@@ -40,17 +40,8 @@ export const ChoiceChip = React.forwardRef<HTMLInputElement, ChoiceChipProps>(
     },
     ref: React.Ref<HTMLInputElement>,
   ) => {
-    const childrenArray = React.Children.toArray(children);
-    const hasLeadingIcon =
-      childrenArray.length > 1 && typeof childrenArray[0] !== 'string';
-    const hasTrailingIcon =
-      childrenArray.length > 1 &&
-      typeof childrenArray[childrenArray.length - 1] !== 'string';
-
     const classList = cx(className, 'eds-chip', `eds-chip--size-${size}`, {
       'eds-chip--disabled': disabled,
-      'eds-chip--leading-icon': hasLeadingIcon,
-      'eds-chip--trailing-icon': hasTrailingIcon,
     });
     const {
       name,

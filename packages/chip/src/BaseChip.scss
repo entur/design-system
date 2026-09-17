@@ -1,19 +1,34 @@
 @use '@entur/tokens/dist/styles.scss' as t;
 
 .eds-chip {
+  --eds-chip-icon-size: var(--components-chip-icon-default-medium);
+
   background: transparent;
-  border: t.$border-widths-small solid var(--components-chip-standard-border);
-  border-radius: 1rem;
+  border: var(--components-chip-border-medium) solid var(--components-chip-standard-border);
+  border-radius: var(--components-chip-radius-round);
   color: var(--components-chip-standard-text-unselected);
   font-family: inherit;
+  font-size: var(--font-size-body-s, var(--size-7));
+  line-height: var(--font-line-height-body-s, var(--size-9));
   transition: background t.$timings-fast ease-out, border t.$timings-fast ease-out;
   display: flex;
   justify-content: center;
   align-items: center;
   white-space: nowrap;
+  height: var(--components-chip-height-medium);
+  min-width: 3rem;
+  padding-inline: var(--components-chip-inlinepadding-default-medium);
+  gap: var(--components-chip-gap-medium);
 
-  svg {
-    font-size: t.$font-sizes-medium;
+  // Icons from @entur/icons are 1em, so font-size also reaches svgs without the eds-icon class
+  :where(svg) {
+    font-size: var(--eds-chip-icon-size);
+  }
+
+  :where(.eds-icon) {
+    flex-shrink: 0;
+    width: var(--eds-chip-icon-size);
+    height: var(--eds-chip-icon-size);
   }
 
   .eds-contrast & {
@@ -22,33 +37,46 @@
     border-color: var(--components-chip-contrast-border);
   }
 
-  &--size-small {
-    height: 1.5rem;
-    min-width: 2.5rem;
-    padding: 0 t.$space-extra-small;
-    font-size: t.$font-sizes-small;
+  &--disabled {
+    border-style: dashed;
+    border-color: var(--components-chip-standard-border-disabled);
+    color: var(--components-chip-standard-text-disabled);
+    cursor: not-allowed;
 
-    .eds-tag-chip__close-button {
-      svg {
-        width: 1rem;
-        height: 1rem;
+    :where(.eds-icon) {
+      color: var(--components-chip-standard-icon-disabled);
+    }
+
+    .eds-contrast & {
+      border-color: var(--components-chip-contrast-border-disabled);
+      color: var(--components-chip-contrast-text-disabled);
+
+      :where(.eds-icon) {
+        color: var(--components-chip-contrast-icon-disabled);
       }
     }
   }
 
-  &--size-medium {
-    height: 2rem;
-    min-width: 3rem;
-    padding: 0 t.$space-small;
-    font-size: t.$font-sizes-medium;
+  &--size-small {
+    --eds-chip-icon-size: var(--components-chip-icon-default-small);
+
+    height: var(--components-chip-height-small);
+    min-width: 2.5rem;
+    padding-inline: var(--components-chip-inlinepadding-default-small);
+    gap: var(--components-chip-gap-small);
+    border-width: var(--components-chip-border-small);
+    font-size: var(--font-size-body-xs, var(--size-6));
+    line-height: var(--font-line-height-body-xs, var(--size-8));
   }
 
-  // Will only target svg icons. Might need to expand logic in the future if this isn't sufficient
-  &--leading-icon > svg:first-of-type {
-    margin-right: t.$space-extra-small2;
-  }
+  &--size-large {
+    --eds-chip-icon-size: var(--components-chip-icon-default-large);
 
-  &--trailing-icon > svg:last-of-type {
-    margin-left: t.$space-extra-small2;
+    height: var(--components-chip-height-large);
+    padding-inline: var(--components-chip-inlinepadding-default-large);
+    gap: var(--components-chip-gap-large);
+    border-width: var(--components-chip-border-large);
+    font-size: var(--font-size-body-m, var(--size-8));
+    line-height: var(--font-line-height-body-m, var(--size-10));
   }
 }
