@@ -33,13 +33,18 @@ Legg attributtet `data-view-mode` på `html`-elementet for å sette modus for he
 ```
 
 Attributtet virker på et hvilket som helst element, ikke bare `html`. Komponenter arver modusen fra nærmeste parent som har
-attributtet, så du kan la én seksjon av siden ha en annen modus enn resten:
+attributtet, så du kan la én seksjon av siden ha en annen modus enn resten. Bytt modus i eksempelet under for å se hvordan
+komponentene skalerer:
 
-```jsx
-<div data-view-mode="compact">
-  <ActionChip>Lagre</ActionChip>
-</div>
-```
+<Playground
+  hideColorModeOption
+  showViewModeOption
+  code={`<div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
+  <PrimaryButton>Lagre</PrimaryButton>
+  <ActionChip>Legg til <AddIcon aria-hidden /></ActionChip>
+  <Tag>Ny</Tag>
+</div>`}
+/>
 
 Tokenene er CSS-variabler som er definert på nytt per modus, og komponentene leser dem:
 
