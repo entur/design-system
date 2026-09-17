@@ -17,7 +17,7 @@ export const Head = ( props ) => {
 }
 
 
-<Playground props={badgeprops} code={`<Badge variant="primary">1</Badge>`} />
+<Playground props={badgeprops} code={`<Badge variant="primary" type="notification">9+</Badge>`} />
 
 ## Varianter
 Badge inneholder varslene `BulletBadge` og `NotificationBadge`, i tillegg til `StatusBadge`, som er deprecated. Til felles har de disse variantene:
@@ -33,6 +33,8 @@ Badge inneholder varslene `BulletBadge` og `NotificationBadge`, i tillegg til `S
 <SmallAlertBox variant="warning">
 `StatusBadge` og `Badge` med `type="status"` er deprecated. Bruk [Tag](/komponenter/layout-og-flater/tag) i stedet.
 </SmallAlertBox>
+
+<Playground hideColorModeOption code={`<StatusBadge variant="primary">Oppdatert</StatusBadge>`} />
 
 Tag dekker begge bruksområdene `StatusBadge` hadde: statusmarkering med `success`, `warning`, `negative` og `information`, og kategorimerking med ni fargevarianter i tillegg til `neutral`.
 `variant="primary"` er ikke videreført – bruk `variant="neutral"`.

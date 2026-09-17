@@ -28,7 +28,7 @@ export const banner = [
 export const badgeprops = [
   {
     name: 'children',
-    defaultValue: 'Oppdatert',
+    defaultValue: '9+',
     type: 'string',
     label: 'Innhold',
   },
@@ -47,8 +47,8 @@ export const badgeprops = [
   },
   {
     name: 'type',
-    options: ['bullet', 'notification', 'status'],
-    defaultValue: 'status',
+    options: ['bullet', 'notification'],
+    defaultValue: 'notification',
     type: 'dropdown',
   },
 ];
