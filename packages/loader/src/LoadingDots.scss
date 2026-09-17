@@ -12,6 +12,8 @@
     content: '';
     height: 3px;
     width: 3px;
+    // The dots are a fixed 3px, so they must not shrink inside the 1em box
+    flex-shrink: 0;
     background-color: var(--components-loader-loader-standard-text);
     border-radius: 50%;
     margin-right: 2px;
