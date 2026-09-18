@@ -88,11 +88,11 @@
     "outputs": ["TertiarySquareButton.json"]
   },
   "chip/src/ActionChip.tsx": {
-    "hash": "93455a4d3eab80dfded653dd1f982106",
+    "hash": "84219e26241153b983fe565094e7416c",
     "outputs": ["ActionChip.json"]
   },
   "chip/src/ChoiceChip.tsx": {
-    "hash": "206205314648c624331d8518bb06e53f",
+    "hash": "0e56f0d9e6638d1139de7095c8687f55",
     "outputs": ["ChoiceChip.json"]
   },
   "chip/src/ChoiceChipGroup.tsx": {
@@ -104,11 +104,11 @@
     "outputs": ["ChoiceChipGroupContextProvider.json"]
   },
   "chip/src/FilterChip.tsx": {
-    "hash": "5bf7fd05be004c929000b1bb3aa7a74f",
+    "hash": "c4621b75003c003145d88dcc6a85a6a1",
     "outputs": ["FilterChip.json"]
   },
   "chip/src/TagChip.tsx": {
-    "hash": "f264870b6b27587f8063bb4bc2374640",
+    "hash": "0ce73a33b6280476da2145eced14afd1",
     "outputs": ["TagChip.json"]
   },
   "datepicker/src/DatePicker/Calendar.tsx": {

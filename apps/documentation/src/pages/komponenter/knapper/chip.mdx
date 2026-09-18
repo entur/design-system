@@ -103,6 +103,22 @@ eller ved å ‘huke vekk’ valget inne i en meny. De kan organiseres i en hori
 Samme design benyttes også til å vise valg i dropdown med multiple choice-funksjon.
 Man kan velge om man vil vise tags utenfor eller inne i søkefeltet/søkefeltene.
 
+## Størrelser
+
+Alle chips finnes i `small`, `medium` (default) og `large`. Størrelsene styres av `size`-prop-en.
+
+```jsx
+<div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+  <ActionChip size="small">Small</ActionChip>
+  <ActionChip size="medium">Medium</ActionChip>
+  <ActionChip size="large">Large</ActionChip>
+</div>
+```
+
+Høyder, padding, ikonstørrelser og typografi kommer fra tokens som følger
+[visningsmodus](/tokens/storrelsetokens/visningsmodus), så chips-ene skalerer innenfor hver `size`
+når `data-view-mode` er satt på en parent.
+
 ## Retningslinjer
 
 Følg våre generelle råd [om knapper](/komponenter/knapper/button) og [disabled states](/komponenter/knapper/button#disabled-state).

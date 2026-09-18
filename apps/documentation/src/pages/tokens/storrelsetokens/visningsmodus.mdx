@@ -1,0 +1,85 @@
+---
+title: Visningsmodus
+description: Visningsmodus lar deg skalere komponenter opp eller ned med attributtet data-view-mode, uten å bytte ut størrelsene i koden.
+route: /tokens/storrelsetokens/visningsmodus
+parent: Tokens
+menu: Størrelsetokens
+order: 3
+---
+
+import { SEO } from '@components/seo/SEO';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+Størrelsetokens finnes i tre visningsmodus. Samme komponent med samme `size` får ulik høyde, padding, ikonstørrelse og typografi
+avhengig av hvilken modus som er aktiv – du bytter altså ikke `size` i koden for å tilpasse flaten.
+
+- **Standard** – utgangspunktet, og det du får uten å gjøre noe.
+- **Compact** – tettere flater med mer innhold per skjerm, typisk proffverktøy og backoffice.
+- **Display** – store flater som leses på avstand, for eksempel skjermer på stasjon, automater og kiosk.
+
+Modusene er de samme som modusene på variablene i Figma, slik at design og kode deler oppsettet.
+
+## Bruk i kode
+
+Legg attributtet `data-view-mode` på `html`-elementet for å sette modus for hele applikasjonen:
+
+```html
+<html data-view-mode="standard">
+<html data-view-mode="compact">
+<html data-view-mode="display">
+```
+
+Attributtet virker på et hvilket som helst element, ikke bare `html`. Komponenter arver modusen fra nærmeste parent som har
+attributtet, så du kan la én seksjon av siden ha en annen modus enn resten. Bytt modus i eksempelet under for å se hvordan
+komponentene skalerer:
+
+<Playground
+  hideColorModeOption
+  showViewModeOption
+  code={`<div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
+  <PrimaryButton>Lagre</PrimaryButton>
+  <ActionChip>Legg til <AddIcon aria-hidden /></ActionChip>
+  <Tag>Ny</Tag>
+</div>`}
+/>
+
+Tokenene er CSS-variabler som er definert på nytt per modus, og komponentene leser dem:
+
+```css
+[data-view-mode='standard'],
+:root {
+  --components-chip-height-medium: var(--size-12);
+}
+
+[data-view-mode='compact'] {
+  --components-chip-height-medium: var(--size-11);
+}
+
+[data-view-mode='display'] {
+  --components-chip-height-medium: var(--size-19);
+}
+```
+
+Uten attributtet gjelder verdiene for `standard`, siden de også ligger på `:root`.
+
+## Hvilke komponenter støtter visningsmodus
+
+Støtten rulles ut komponent for komponent. Disse følger `data-view-mode` i dag:
+
+| Komponent | Pakke | Hva som skalerer |
+| --- | --- | --- |
+| `Button` og variantene | `@entur/button` | Høyde, padding, gap, border, radius og typografi |
+| `SquareButton` og variantene | `@entur/button` | Høyde, gap, border, radius og typografi |
+| `Tag` | `@entur/layout` | Høyde, padding, gap, ikon, border og radius |
+| `ActionChip`, `ChoiceChip`, `FilterChip`, `TagChip` | `@entur/chip` | Høyde, padding, gap, ikon, border og typografi |
+| `Heading` og `Text` (beta) | `@entur/typography` | Font-size, line-height og paragraph spacing |
+| `CopyableText` | `@entur/alert` | Kun radius, som den arver fra `Button` |
+
+Ikoner i `Button` og `SquareButton` er `1em` og følger derfor typografien. Radiusen på chips er rund i alle tre modus, og endrer seg ikke.
+
+Alle andre komponenter har faste størrelser og endrer seg ikke når du setter `data-view-mode`. Det gjelder også komponenter
+som har tokens for visningsmodus generert, men ennå ikke tatt dem i bruk. Setter du `compact` eller `display` på en flate med
+flere komponenter, må du derfor regne med at bare de over endrer seg, og sjekke at resultatet henger sammen visuelt.

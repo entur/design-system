@@ -1,9 +1,23 @@
 @use '@entur/tokens/dist/styles.scss' as t;
 
 .eds-tag-chip {
+  --eds-tag-chip-close-size: var(--components-chip-icon-tagchip-medium);
+
   cursor: default;
-  padding-right: calc(t.$space-extra-small2 / 2);
   width: fit-content;
+  padding-inline-end: var(--components-chip-inlinepadding-tagchip-medium);
+
+  &:where(.eds-chip--size-small) {
+    --eds-tag-chip-close-size: var(--components-chip-icon-tagchip-small);
+
+    padding-inline-end: var(--components-chip-inlinepadding-tagchip-small);
+  }
+
+  &:where(.eds-chip--size-large) {
+    --eds-tag-chip-close-size: var(--components-chip-icon-tagchip-large);
+
+    padding-inline-end: var(--components-chip-inlinepadding-tagchip-large);
+  }
 
   &__close-button {
     appearance: none;
@@ -12,15 +26,18 @@
     border-radius: 50%;
     cursor: pointer;
     display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
     color: inherit;
-    font-size: t.$font-sizes-medium;
-    padding: 0.0625rem;
-    margin-left: t.$space-extra-small2;
+    padding: 0;
+    width: var(--eds-tag-chip-close-size);
+    height: var(--eds-tag-chip-close-size);
     transition: box-shadow t.$timings-fast ease-in-out, background t.$timings-fast ease-in-out;
 
     svg {
-      width: 1.5rem;
-      height: 1.5rem;
+      width: var(--eds-tag-chip-close-size);
+      height: var(--eds-tag-chip-close-size);
     }
 
     &:focus-visible {

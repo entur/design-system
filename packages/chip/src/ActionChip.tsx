@@ -16,7 +16,7 @@ export type ActionChipProps = {
   /** Størrelsen på chip
    * @default 'medium'
    */
-  size?: 'small' | 'medium';
+  size?: 'small' | 'medium' | 'large';
 } & React.DetailedHTMLProps<
   React.ButtonHTMLAttributes<HTMLButtonElement>,
   HTMLButtonElement
@@ -28,11 +28,6 @@ export const ActionChip = React.forwardRef<HTMLButtonElement, ActionChipProps>(
     ref: React.Ref<HTMLButtonElement>,
   ) => {
     const childrenArray = React.Children.toArray(children);
-    const hasLeadingIcon =
-      childrenArray.length > 1 && typeof childrenArray[0] !== 'string';
-    const hasTrailingIcon =
-      childrenArray.length > 1 &&
-      typeof childrenArray[childrenArray.length - 1] !== 'string';
 
     const ariaLabelValue = () => {
       if (rest['aria-label']) return rest['aria-label'];
@@ -50,8 +45,7 @@ export const ActionChip = React.forwardRef<HTMLButtonElement, ActionChipProps>(
       'eds-action-chip',
       `eds-chip--size-${size}`,
       {
-        'eds-chip--leading-icon': hasLeadingIcon,
-        'eds-chip--trailing-icon': hasTrailingIcon,
+        'eds-chip--disabled': rest.disabled,
         'eds-action-chip--disabled': rest.disabled,
       },
     );

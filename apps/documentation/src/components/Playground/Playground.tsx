@@ -38,6 +38,8 @@ type PlaygroundProps = {
   defaultDarkMode?: boolean;
   defaultShowEditor?: boolean;
   hideColorModeOption?: boolean;
+  /** Show a switch for data-view-mode, applied to the live preview. */
+  showViewModeOption?: boolean;
   hideCode?: boolean;
   code: string;
   scope?: Record<string, any>;
@@ -59,6 +61,7 @@ const Playground: React.FC<PlaygroundProps> = ({
   defaultDarkMode = false,
   defaultShowEditor = false,
   hideColorModeOption = false,
+  showViewModeOption = false,
   hideCode = false,
   previewScale,
   containerStyle,
@@ -73,6 +76,9 @@ const Playground: React.FC<PlaygroundProps> = ({
     initialColorMode,
   );
   const [isShowingEditor, setShowingEditor] = useState(defaultShowEditor);
+  const [viewMode, setViewMode] = useState<'standard' | 'compact' | 'display'>(
+    'standard',
+  );
 
   const {
     codeWithUpdatedProps,
@@ -119,6 +125,23 @@ const Playground: React.FC<PlaygroundProps> = ({
         <Flex direction="column" justify="center">
           {title && <Heading3>{title}</Heading3>}
           {description && <Paragraph>{description}</Paragraph>}
+          {showViewModeOption && (
+            <div className="playground__color-mode-select">
+              <SegmentedControl
+                label="Visningsmodus"
+                onChange={selectedValue =>
+                  setViewMode(
+                    selectedValue as 'standard' | 'compact' | 'display',
+                  )
+                }
+                selectedValue={viewMode}
+              >
+                <SegmentedChoice value="standard">Standard</SegmentedChoice>
+                <SegmentedChoice value="compact">Compact</SegmentedChoice>
+                <SegmentedChoice value="display">Display</SegmentedChoice>
+              </SegmentedControl>
+            </div>
+          )}
           {!hideColorModeOption && (
             <div className="playground__color-mode-select">
               <SegmentedControl
@@ -177,6 +200,7 @@ const Playground: React.FC<PlaygroundProps> = ({
               ? 'dark'
               : 'light'
           }
+          data-view-mode={showViewModeOption ? viewMode : undefined}
         >
           <LivePreview
             className="playground__live-preview"

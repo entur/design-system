@@ -33,7 +33,7 @@
       ],
       "required": false,
       "type": {
-        "name": "\"small\" | \"medium\" | undefined"
+        "name": "\"small\" | \"medium\" | \"large\" | undefined"
       }
     },
     "disabled": {
