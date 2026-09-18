@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.0.6](https://github.com/entur/design-system/compare/@entur/icons@10.0.5...@entur/icons@10.0.6) (2026-09-18)
+
+**Note:** Version bump only for package @entur/icons
+
 ## [10.0.5](https://github.com/entur/design-system/compare/@entur/icons@10.0.4...@entur/icons@10.0.5) (2026-09-16)
 
 ### Entur Dependency Updates

@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.2.1](https://github.com/entur/design-system/compare/@entur/form@10.2.0...@entur/form@10.2.1) (2026-09-18)
+
+### Entur Dependency Updates
+
+- **@entur/button:** `^5.1.0` → `^5.1.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/button/CHANGELOG.md#511-2026-09-18))
+- **@entur/icons:** `^10.0.5` → `^10.0.6` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#1006-2026-09-18))
+- **@entur/tooltip:** `^6.0.6` → `^6.0.7` ([changelog](https://github.com/entur/design-system/blob/main/packages/tooltip/CHANGELOG.md#607-2026-09-18))
+- **@entur/typography:** `^3.0.6` → `^3.0.7` ([changelog](https://github.com/entur/design-system/blob/main/packages/typography/CHANGELOG.md#307-2026-09-18))
+
 # [10.2.0](https://github.com/entur/design-system/compare/@entur/form@10.1.2...@entur/form@10.2.0) (2026-09-16)
 
 ### Bug Fixes

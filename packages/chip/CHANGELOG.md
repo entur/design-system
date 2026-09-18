@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.12.0](https://github.com/entur/design-system/compare/@entur/chip@0.11.6...@entur/chip@0.12.0) (2026-09-18)
+
+### Features
+
+- **chip:** add a large size and scale chips with data-view-mode ([010f59c](https://github.com/entur/design-system/commit/010f59cf515afae27b2e3a4a45adb11a35e7aa8a))
+
+  All four chips take size="large" in addition to small and medium, and
+  every size now reads its height, padding, gap, icon size, border and
+  typography from the chip tokens. Set data-view-mode to "compact" or
+  "display" on a parent and the chips rescale within the size you asked
+  for; standard mode looks the same as before.
+
+  Disabled chips follow the design too: a dashed border and the disabled
+  text and icon colours instead of a faded chip. FilterChip had no
+  disabled styling at all, and now matches the others.
+
 ## [0.11.6](https://github.com/entur/design-system/compare/@entur/chip@0.11.5...@entur/chip@0.11.6) (2026-09-16)
 
 ### Entur Dependency Updates

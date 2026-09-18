@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.7](https://github.com/entur/design-system/compare/@entur/loader@0.8.6...@entur/loader@0.8.7) (2026-09-18)
+
+### Bug Fixes
+
+- **loader/loading dots:** keep the dots round at small font sizes ([fe76fd8](https://github.com/entur/design-system/commit/fe76fd8ee1e5eb11e6449c5d52f6b9234eea9d7c))
+
+  The dots box is 1em wide, and the three dots need about 15px, so any
+  container with a font-size below that squeezed them into ellipses. They
+  now keep their size instead. Visible in `ActionChip` small and medium and
+  in small `SquareButton`; every other loading state is unchanged.
+
 ## [0.8.6](https://github.com/entur/design-system/compare/@entur/loader@0.8.5...@entur/loader@0.8.6) (2026-09-16)
 
 ### Entur Dependency Updates

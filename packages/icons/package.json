@@ -1,6 +1,6 @@
 {
   "name": "@entur/icons",
-  "version": "10.0.5",
+  "version": "10.0.6",
   "license": "EUPL-1.2",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",

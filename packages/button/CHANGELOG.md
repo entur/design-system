@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.1.1](https://github.com/entur/design-system/compare/@entur/button@5.1.0...@entur/button@5.1.1) (2026-09-18)
+
+### Entur Dependency Updates
+
+- **@entur/loader:** `^0.8.6` → `^0.8.7` ([changelog](https://github.com/entur/design-system/blob/main/packages/loader/CHANGELOG.md#087-2026-09-18))
+
 # [5.1.0](https://github.com/entur/design-system/compare/@entur/button@5.0.5...@entur/button@5.1.0) (2026-09-16)
 
 ### Features
