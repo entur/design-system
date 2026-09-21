@@ -41,12 +41,17 @@ title as the exception, not the default.
    about choosing the right component in the first place. Only include this section when
    there's a genuine, nameable alternative to cross-link; skip it rather than inventing
    scenarios for a component with no real overlap.
-3. **"Retningslinjer"** — do/don't guidance. Prefer `guideline` blocks (with `variant`
-   `success`/`negative`) over plain prose so the do/don't framing is visually distinct, not
-   just implied by wording. **Wrap each do/don't pair in a `group`** — a `group` with two
-   items renders them side by side, which is what makes the contrast readable. Loose
-   `guideline` blocks in `items` stack full-width, so the do and the don't end up far
-   apart. Put an `h3` block above each group to name the rule.
+3. **"Retningslinjer"** — do/don't guidance. Use `guideline` blocks (with `variant`
+   `success`/`negative`) for do/don't content that already exists in the source being
+   migrated (e.g. an MDX `DoDontGroup`/`DoDontCard`, or existing prose already framed as
+   do/don't). Text-only `guideline` blocks are fine — an image is not required. **Never
+   invent new do/don't guidance yourself and format it as a `guideline` block** — if you
+   think a do/don't pair is worth adding that isn't already in the source, propose it to the
+   user as plain prose/a bullet list instead, not as `guideline`/`group`. Wrap each
+   pre-existing do/don't pair in a `group` — a `group` with two items renders them side by
+   side, which is what makes the contrast readable. Loose `guideline` blocks in `items` stack
+   full-width, so the do and the don't end up far apart. Put an `h3` block above each group to
+   name the rule.
 4. **"Eksempler"** — one or more runnable examples via `codeExample` with
    `codeDisplayType: "playground"`. Show realistic usage, not a contrived minimal case.
 
