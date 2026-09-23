@@ -33,13 +33,26 @@ title as the exception, not the default.
    in Sanity Studio's suggestion, so write it out with the real name in prose too (e.g. "Bruk
    Knapp når"). Content: a short list or a few sentences of concrete situations where this
    component is the right choice — not a restatement of what the component _is_.
-2. **"Retningslinjer"** — do/don't guidance. Prefer `guideline` blocks (with `variant`
-   `success`/`negative`) over plain prose so the do/don't framing is visually distinct, not
-   just implied by wording. **Wrap each do/don't pair in a `group`** — a `group` with two
-   items renders them side by side, which is what makes the contrast readable. Loose
-   `guideline` blocks in `items` stack full-width, so the do and the don't end up far
-   apart. Put an `h3` block above each group to name the rule.
-3. **"Eksempler"** — one or more runnable examples via `codeExample` with
+2. **"Unngå `<ComponentName>` når"** — the mirror of the section above: concrete situations
+   where a reader might reach for this component but shouldn't, each pointing to the
+   component to use instead via an inline link (e.g. "brukerne skal navigere til en annen
+   side, bruk heller [Link](...)"). Plain bullet list, same style as "Bruk ... når" — not a
+   `guideline` block, since this isn't a do/don't about using the component correctly, it's
+   about choosing the right component in the first place. Only include this section when
+   there's a genuine, nameable alternative to cross-link; skip it rather than inventing
+   scenarios for a component with no real overlap.
+3. **"Retningslinjer"** — do/don't guidance. Use `guideline` blocks (with `variant`
+   `success`/`negative`) for do/don't content that already exists in the source being
+   migrated (e.g. an MDX `DoDontGroup`/`DoDontCard`, or existing prose already framed as
+   do/don't). Text-only `guideline` blocks are fine — an image is not required. **Never
+   invent new do/don't guidance yourself and format it as a `guideline` block** — if you
+   think a do/don't pair is worth adding that isn't already in the source, propose it to the
+   user as plain prose/a bullet list instead, not as `guideline`/`group`. Wrap each
+   pre-existing do/don't pair in a `group` — a `group` with two items renders them side by
+   side, which is what makes the contrast readable. Loose `guideline` blocks in `items` stack
+   full-width, so the do and the don't end up far apart. Put an `h3` block above each group to
+   name the rule.
+4. **"Eksempler"** — one or more runnable examples via `codeExample` with
    `codeDisplayType: "playground"`. Show realistic usage, not a contrived minimal case.
 
 **Every `codeExample` in Oversikt sets `hideCode: true`.** The tab answers "should I use
@@ -61,9 +74,21 @@ Kode, where the reader has already decided and wants the markup.
 
 ### Tilgjengelighet
 
-1. **"Sjekkliste"** — a bullet list of accessibility guarantees the component already
-   handles (e.g. focus indicator, ARIA labeling) so the consumer knows what they don't need
-   to re-implement themselves.
+1. **"Sjekkliste"** — split into two `h3`-headed bullet lists (the pattern already used by
+   SideNavigation beta):
+
+   - **"Hva komponenten gjør for deg"** — accessibility guarantees the component already
+     handles (e.g. focus indicator, ARIA labeling) so the consumer knows what they don't need
+     to re-implement themselves.
+   - **"Hva du må gjøre selv"** — what the consumer still has to do for the component to be
+     accessible in their specific usage (e.g. wrap it in a landmark with a label, set the prop
+     that marks the current/active state). If a component genuinely requires nothing further
+     from the consumer, state that explicitly rather than omitting the heading.
+
+   Close the section with a standard link to the testguide: "Se
+   [testguiden](https://linje.entur.no/universell-utforming/testguide) for en fullstendig
+   sjekkliste for tilgjengelighetstesting." Same link, same wording, on every component.
+
 2. **"WCAG-kriterier"** — which WCAG success criteria are relevant/satisfied, referenced by
    number and name where possible (e.g. "1.4.3 Kontrast (minimum)").
 

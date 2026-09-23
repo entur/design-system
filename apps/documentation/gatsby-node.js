@@ -342,6 +342,11 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     toPath: '/identitet/maler/visittkort',
   });
 
+  createRedirect({
+    fromPath: '/komponenter/feedback/badge',
+    toPath: '/komponenter/layout-og-flater/badge',
+  });
+
   await createDocumentationPagesFromSanity(graphql, actions, reporter);
 };
 
