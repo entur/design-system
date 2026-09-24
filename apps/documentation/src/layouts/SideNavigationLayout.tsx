@@ -90,6 +90,7 @@ function mergeMdxAndSanityPageData(mdxPageData: any[], sanityPageData: any[]) {
         categoryIndex: page.frontmatter.categoryIndex,
         isCategoryLandingPage: false,
         tag: undefined,
+        path: page.frontmatter.route,
       } as MenuItem;
     });
   const sanityPages = sanityPageData.map(page => {
