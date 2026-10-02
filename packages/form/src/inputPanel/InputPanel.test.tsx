@@ -8,6 +8,15 @@ import { ExpandableText } from '@entur/expand';
 
 expect.extend(toHaveNoViolations);
 
+// Mirrors the accessible-name part of the browser's accname computation for
+// aria-labelledby, since jsdom doesn't compute this itself.
+const getAccessibleName = (element: HTMLElement) =>
+  (element.getAttribute('aria-labelledby') ?? '')
+    .split(' ')
+    .filter(Boolean)
+    .map(id => document.getElementById(id)?.textContent ?? '')
+    .join(' ');
+
 test('RadioPanel sets checked value from RadioGroup correctly', () => {
   const spy = jest.fn();
 
@@ -247,7 +256,7 @@ test('RadioPanel announces readOnly state via a hidden description', () => {
       <RadioPanel title="Oslo" value="Oslo" />
     </RadioGroup>,
   );
-  expect(getByDisplayValue('Oslo')).toHaveAttribute('aria-label', 'Oslo');
+  expect(getAccessibleName(getByDisplayValue('Oslo'))).toBe('Oslo');
   expect(getByDisplayValue('Oslo')).not.toHaveAttribute('aria-describedby');
 
   rerender(
@@ -263,7 +272,7 @@ test('RadioPanel announces readOnly state via a hidden description', () => {
   );
   const input = getByDisplayValue('Oslo');
   // readOnly must not change the accessible name - only add a description
-  expect(input).toHaveAttribute('aria-label', 'Oslo');
+  expect(getAccessibleName(input)).toBe('Oslo');
   const describedBy = input.getAttribute('aria-describedby');
   expect(describedBy).toBeTruthy();
   expect(getByText('Kan ikke endres')).toHaveAttribute('id', describedBy);
@@ -275,7 +284,7 @@ test('CheckboxPanel announces readOnly state via a hidden description', () => {
       <CheckboxPanel title="Oslo" value="Oslo" />
     </Fieldset>,
   );
-  expect(getByDisplayValue('Oslo')).toHaveAttribute('aria-label', 'Oslo');
+  expect(getAccessibleName(getByDisplayValue('Oslo'))).toBe('Oslo');
   expect(getByDisplayValue('Oslo')).not.toHaveAttribute('aria-describedby');
 
   rerender(
@@ -284,7 +293,7 @@ test('CheckboxPanel announces readOnly state via a hidden description', () => {
     </Fieldset>,
   );
   const input = getByDisplayValue('Oslo');
-  expect(input).toHaveAttribute('aria-label', 'Oslo');
+  expect(getAccessibleName(input)).toBe('Oslo');
   const describedBy = input.getAttribute('aria-describedby');
   expect(describedBy).toBeTruthy();
   expect(getByText('Kan ikke endres')).toHaveAttribute('id', describedBy);
@@ -298,8 +307,7 @@ test('CheckboxPanel includes secondaryLabel in its accessible name', () => {
       </CheckboxPanel>
     </Fieldset>,
   );
-  expect(getByDisplayValue('a')).toHaveAttribute(
-    'aria-label',
+  expect(getAccessibleName(getByDisplayValue('a'))).toBe(
     'Standard billett 299 kr',
   );
 });
@@ -314,8 +322,7 @@ test('CheckboxPanel exposes additional content as a description, not as part of 
   );
   const input = getByDisplayValue('a');
 
-  expect(input).toHaveAttribute('aria-label', 'Standard billett');
-  expect(input.getAttribute('aria-label')).not.toMatch(/Gjelder/);
+  expect(getAccessibleName(input)).toBe('Standard billett');
 
   const describedBy = input.getAttribute('aria-describedby');
   expect(describedBy).toBeTruthy();
@@ -337,7 +344,7 @@ test('CheckboxPanel with both readOnly and additional content describes both, sp
   expect(describedBy?.split(' ')).toHaveLength(2);
 });
 
-test('CheckboxPanel with a non-string title does not produce a broken accessible name', () => {
+test('CheckboxPanel correctly names itself from a non-string (JSX) title', () => {
   const { getByDisplayValue, queryByText } = render(
     <Fieldset>
       <CheckboxPanel title={<div>Bergen</div>} value="a">
@@ -346,6 +353,23 @@ test('CheckboxPanel with a non-string title does not produce a broken accessible
     </Fieldset>,
   );
   const input = getByDisplayValue('a');
-  expect(input).not.toHaveAttribute('aria-label');
+  expect(getAccessibleName(input)).toBe('Bergen');
   expect(queryByText('Bergen')).toBeVisible();
+});
+
+test('CheckboxPanel correctly includes a non-string (JSX) secondaryLabel in its accessible name', () => {
+  const { getByDisplayValue } = render(
+    <Fieldset>
+      <CheckboxPanel
+        title="Standard billett"
+        value="a"
+        secondaryLabel={<strong>299 kr</strong>}
+      >
+        Oslo
+      </CheckboxPanel>
+    </Fieldset>,
+  );
+  expect(getAccessibleName(getByDisplayValue('a'))).toBe(
+    'Standard billett 299 kr',
+  );
 });

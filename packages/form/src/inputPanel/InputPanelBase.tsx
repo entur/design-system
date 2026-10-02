@@ -7,9 +7,6 @@ import { Radio } from '../Radio';
 
 import './InputPanelBase.scss';
 
-const isStringable = (node: React.ReactNode): node is string | number =>
-  typeof node === 'string' || typeof node === 'number';
-
 export type InputPanelProps = {
   /** Om det er en radio- eller checkbox-variant */
   type: string;
@@ -91,6 +88,19 @@ export const InputPanelBase = React.forwardRef<
 
     const defaultId = `eds-inputpanel${useId()}`;
     const inputPanelId = id || defaultId;
+    const titleId = `${inputPanelId}-title`;
+    const secondaryLabelId =
+      secondaryLabel !== undefined
+        ? `${inputPanelId}-secondary-label`
+        : undefined;
+    // Name the input from the title/secondaryLabel elements themselves via
+    // aria-labelledby rather than stringifying them into aria-label - title
+    // and secondaryLabel are ReactNode, so this is the only approach that
+    // works correctly for both plain text and arbitrary JSX. It also keeps
+    // the additional content and the readOnly description (below) out of
+    // the accessible name, since only the referenced elements contribute to
+    // it - unlike the native label-text fallback, which would absorb them.
+    const labelledBy = [titleId, secondaryLabelId].filter(Boolean).join(' ');
     const additionalContentId = children
       ? `${inputPanelId}-additional-content`
       : undefined;
@@ -101,17 +111,6 @@ export const InputPanelBase = React.forwardRef<
       [additionalContentId, readOnlyDescriptionId].filter(Boolean).join(' ') ||
       undefined;
     const forceUpdate = useForceUpdate();
-
-    // Only override the accessible name when title/secondaryLabel are plain
-    // text - for a ReactNode title we can't reliably stringify it, so we
-    // leave aria-label unset and let the browser compute the name from the
-    // label's own content instead (the readOnly state is still announced
-    // separately via aria-describedby regardless of this).
-    const accessibleLabel = isStringable(title)
-      ? [title, isStringable(secondaryLabel) ? secondaryLabel : undefined]
-          .filter(label => label !== undefined)
-          .join(' ')
-      : undefined;
 
     const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       if (readOnly) {
@@ -154,15 +153,19 @@ export const InputPanelBase = React.forwardRef<
           id={inputPanelId}
           disabled={disabled}
           readOnly={readOnly}
-          aria-label={accessibleLabel}
+          aria-labelledby={labelledBy}
           aria-describedby={describedBy}
           {...rest}
         />
         <div className={panelClassList} style={style}>
           <div className="eds-input-panel__title-wrapper">
-            <div className="eds-input-panel__title">{title}</div>
+            <div id={titleId} className="eds-input-panel__title">
+              {title}
+            </div>
             <div className="eds-input-panel__secondary-label-and-icon-wrapper">
-              {secondaryLabel !== undefined && <>{secondaryLabel}</>}
+              {secondaryLabel !== undefined && (
+                <span id={secondaryLabelId}>{secondaryLabel}</span>
+              )}
               <span style={{ pointerEvents: 'none' }}>
                 {!hideSelectionIndicator &&
                   (type === 'radio' ? (
