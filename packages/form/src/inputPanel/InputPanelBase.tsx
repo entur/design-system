@@ -1,10 +1,14 @@
 import React, { useId, useRef } from 'react';
 import classNames from 'classnames';
+import { VisuallyHidden } from '@entur/a11y';
 import { mergeRefs, useForceUpdate } from '@entur/utils';
 import { Checkbox } from '../Checkbox';
 import { Radio } from '../Radio';
 
 import './InputPanelBase.scss';
+
+const isStringable = (node: React.ReactNode): node is string | number =>
+  typeof node === 'string' || typeof node === 'number';
 
 export type InputPanelProps = {
   /** Om det er en radio- eller checkbox-variant */
@@ -90,12 +94,24 @@ export const InputPanelBase = React.forwardRef<
     const additionalContentId = children
       ? `${inputPanelId}-additional-content`
       : undefined;
+    const readOnlyDescriptionId = readOnly
+      ? `${inputPanelId}-readonly-description`
+      : undefined;
+    const describedBy =
+      [additionalContentId, readOnlyDescriptionId].filter(Boolean).join(' ') ||
+      undefined;
     const forceUpdate = useForceUpdate();
 
-    const accessibleLabel = [title, secondaryLabel]
-      .filter(label => label !== undefined)
-      .map(label => label?.toString())
-      .join(' ');
+    // Only override the accessible name when title/secondaryLabel are plain
+    // text - for a ReactNode title we can't reliably stringify it, so we
+    // leave aria-label unset and let the browser compute the name from the
+    // label's own content instead (the readOnly state is still announced
+    // separately via aria-describedby regardless of this).
+    const accessibleLabel = isStringable(title)
+      ? [title, isStringable(secondaryLabel) ? secondaryLabel : undefined]
+          .filter(label => label !== undefined)
+          .join(' ')
+      : undefined;
 
     const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       if (readOnly) {
@@ -138,10 +154,8 @@ export const InputPanelBase = React.forwardRef<
           id={inputPanelId}
           disabled={disabled}
           readOnly={readOnly}
-          aria-label={
-            readOnly ? `${accessibleLabel}. Kan ikke endres` : accessibleLabel
-          }
-          aria-describedby={additionalContentId}
+          aria-label={accessibleLabel}
+          aria-describedby={describedBy}
           {...rest}
         />
         <div className={panelClassList} style={style}>
@@ -177,6 +191,11 @@ export const InputPanelBase = React.forwardRef<
               </span>
             </div>
           </div>
+          {readOnly && (
+            <VisuallyHidden id={readOnlyDescriptionId}>
+              Kan ikke endres
+            </VisuallyHidden>
+          )}
           {children && (
             <div
               id={additionalContentId}

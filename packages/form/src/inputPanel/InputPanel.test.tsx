@@ -239,17 +239,16 @@ test('CheckboxPanel should not have basic accessibility issues', async () => {
   expect(results).toHaveNoViolations();
 });
 
-test('RadioPanel announces readOnly state via aria-label', () => {
+test('RadioPanel announces readOnly state via a hidden description', () => {
   const spy = jest.fn();
 
-  const { getByDisplayValue, rerender } = render(
+  const { getByDisplayValue, getByText, rerender } = render(
     <RadioGroup name="city" label="Velg by" value="Oslo" onChange={spy}>
-      <RadioPanel title="Oslo" value="Oslo">
-        Oslo
-      </RadioPanel>
+      <RadioPanel title="Oslo" value="Oslo" />
     </RadioGroup>,
   );
   expect(getByDisplayValue('Oslo')).toHaveAttribute('aria-label', 'Oslo');
+  expect(getByDisplayValue('Oslo')).not.toHaveAttribute('aria-describedby');
 
   rerender(
     <RadioGroup
@@ -259,38 +258,36 @@ test('RadioPanel announces readOnly state via aria-label', () => {
       onChange={spy}
       readOnly
     >
-      <RadioPanel title="Oslo" value="Oslo">
-        Oslo
-      </RadioPanel>
+      <RadioPanel title="Oslo" value="Oslo" />
     </RadioGroup>,
   );
-  expect(getByDisplayValue('Oslo')).toHaveAttribute(
-    'aria-label',
-    'Oslo. Kan ikke endres',
-  );
+  const input = getByDisplayValue('Oslo');
+  // readOnly must not change the accessible name - only add a description
+  expect(input).toHaveAttribute('aria-label', 'Oslo');
+  const describedBy = input.getAttribute('aria-describedby');
+  expect(describedBy).toBeTruthy();
+  expect(getByText('Kan ikke endres')).toHaveAttribute('id', describedBy);
 });
 
-test('CheckboxPanel announces readOnly state via aria-label', () => {
-  const { getByDisplayValue, rerender } = render(
+test('CheckboxPanel announces readOnly state via a hidden description', () => {
+  const { getByDisplayValue, getByText, rerender } = render(
     <Fieldset>
-      <CheckboxPanel title="Oslo" value="Oslo">
-        Oslo
-      </CheckboxPanel>
+      <CheckboxPanel title="Oslo" value="Oslo" />
     </Fieldset>,
   );
   expect(getByDisplayValue('Oslo')).toHaveAttribute('aria-label', 'Oslo');
+  expect(getByDisplayValue('Oslo')).not.toHaveAttribute('aria-describedby');
 
   rerender(
     <Fieldset>
-      <CheckboxPanel title="Oslo" value="Oslo" readOnly>
-        Oslo
-      </CheckboxPanel>
+      <CheckboxPanel title="Oslo" value="Oslo" readOnly />
     </Fieldset>,
   );
-  expect(getByDisplayValue('Oslo')).toHaveAttribute(
-    'aria-label',
-    'Oslo. Kan ikke endres',
-  );
+  const input = getByDisplayValue('Oslo');
+  expect(input).toHaveAttribute('aria-label', 'Oslo');
+  const describedBy = input.getAttribute('aria-describedby');
+  expect(describedBy).toBeTruthy();
+  expect(getByText('Kan ikke endres')).toHaveAttribute('id', describedBy);
 });
 
 test('CheckboxPanel includes secondaryLabel in its accessible name', () => {
@@ -326,4 +323,29 @@ test('CheckboxPanel exposes additional content as a description, not as part of 
     'id',
     describedBy,
   );
+});
+
+test('CheckboxPanel with both readOnly and additional content describes both, space-separated', () => {
+  const { getByDisplayValue } = render(
+    <Fieldset>
+      <CheckboxPanel title="Standard billett" value="a" readOnly>
+        Gjelder i hele Oslo-regionen.
+      </CheckboxPanel>
+    </Fieldset>,
+  );
+  const describedBy = getByDisplayValue('a').getAttribute('aria-describedby');
+  expect(describedBy?.split(' ')).toHaveLength(2);
+});
+
+test('CheckboxPanel with a non-string title does not produce a broken accessible name', () => {
+  const { getByDisplayValue, queryByText } = render(
+    <Fieldset>
+      <CheckboxPanel title={<div>Bergen</div>} value="a">
+        Mye regn
+      </CheckboxPanel>
+    </Fieldset>,
+  );
+  const input = getByDisplayValue('a');
+  expect(input).not.toHaveAttribute('aria-label');
+  expect(queryByText('Bergen')).toBeVisible();
 });
