@@ -69,6 +69,9 @@ export const InputPanelBase = React.forwardRef<
       onChange,
       checked,
       name,
+      'aria-label': ariaLabel,
+      'aria-labelledby': ariaLabelledby,
+      'aria-describedby': ariaDescribedby,
       ...rest
     },
     ref: React.Ref<HTMLInputElement>,
@@ -93,14 +96,11 @@ export const InputPanelBase = React.forwardRef<
       secondaryLabel !== undefined
         ? `${inputPanelId}-secondary-label`
         : undefined;
-    // Name the input from the title/secondaryLabel elements themselves via
-    // aria-labelledby rather than stringifying them into aria-label - title
-    // and secondaryLabel are ReactNode, so this is the only approach that
-    // works correctly for both plain text and arbitrary JSX. It also keeps
-    // the additional content and the readOnly description (below) out of
-    // the accessible name, since only the referenced elements contribute to
-    // it - unlike the native label-text fallback, which would absorb them.
-    const labelledBy = [titleId, secondaryLabelId].filter(Boolean).join(' ');
+    // title/secondaryLabel are ReactNode, so aria-labelledby (reading the
+    // referenced elements directly) is used instead of stringifying them.
+    const generatedLabelledBy = [titleId, secondaryLabelId]
+      .filter(Boolean)
+      .join(' ');
     const additionalContentId = children
       ? `${inputPanelId}-additional-content`
       : undefined;
@@ -108,8 +108,9 @@ export const InputPanelBase = React.forwardRef<
       ? `${inputPanelId}-readonly-description`
       : undefined;
     const describedBy =
-      [additionalContentId, readOnlyDescriptionId].filter(Boolean).join(' ') ||
-      undefined;
+      [ariaDescribedby, additionalContentId, readOnlyDescriptionId]
+        .filter(Boolean)
+        .join(' ') || undefined;
     const forceUpdate = useForceUpdate();
 
     const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -153,7 +154,10 @@ export const InputPanelBase = React.forwardRef<
           id={inputPanelId}
           disabled={disabled}
           readOnly={readOnly}
-          aria-labelledby={labelledBy}
+          aria-label={ariaLabel}
+          aria-labelledby={
+            ariaLabelledby ?? (ariaLabel ? undefined : generatedLabelledBy)
+          }
           aria-describedby={describedBy}
           {...rest}
         />

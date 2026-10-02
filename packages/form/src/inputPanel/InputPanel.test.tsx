@@ -373,3 +373,53 @@ test('CheckboxPanel correctly includes a non-string (JSX) secondaryLabel in its 
     'Standard billett 299 kr',
   );
 });
+
+test('CheckboxPanel honors a consumer-provided aria-label over the generated name', () => {
+  const { getByDisplayValue } = render(
+    <Fieldset>
+      <CheckboxPanel title="Standard billett" value="a" aria-label="Custom">
+        Oslo
+      </CheckboxPanel>
+    </Fieldset>,
+  );
+  const input = getByDisplayValue('a');
+  expect(input).toHaveAttribute('aria-label', 'Custom');
+  expect(input).not.toHaveAttribute('aria-labelledby');
+});
+
+test('CheckboxPanel honors a consumer-provided aria-labelledby over the generated name', () => {
+  const { getByDisplayValue } = render(
+    <Fieldset>
+      <span id="external-label">Ekstern tittel</span>
+      <CheckboxPanel
+        title="Standard billett"
+        value="a"
+        aria-labelledby="external-label"
+      >
+        Oslo
+      </CheckboxPanel>
+    </Fieldset>,
+  );
+  expect(getByDisplayValue('a')).toHaveAttribute(
+    'aria-labelledby',
+    'external-label',
+  );
+});
+
+test('CheckboxPanel appends its generated description IDs to a consumer-provided aria-describedby', () => {
+  const { getByDisplayValue } = render(
+    <Fieldset>
+      <CheckboxPanel
+        title="Standard billett"
+        value="a"
+        readOnly
+        aria-describedby="external-help"
+      >
+        Gjelder i hele Oslo-regionen.
+      </CheckboxPanel>
+    </Fieldset>,
+  );
+  const describedBy = getByDisplayValue('a').getAttribute('aria-describedby');
+  expect(describedBy?.split(' ')).toContain('external-help');
+  expect(describedBy?.split(' ')).toHaveLength(3);
+});
