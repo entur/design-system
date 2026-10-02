@@ -130,6 +130,9 @@ export const InputPanelBase = React.forwardRef<
           id={inputPanelId}
           disabled={disabled}
           readOnly={readOnly}
+          aria-label={
+            readOnly ? `${title?.toString()}. Kan ikke endres` : undefined
+          }
           {...rest}
         />
         <div className={panelClassList} style={style}>

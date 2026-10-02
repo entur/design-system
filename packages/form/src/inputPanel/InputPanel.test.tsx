@@ -238,3 +238,57 @@ test('CheckboxPanel should not have basic accessibility issues', async () => {
   const results = await axe(container);
   expect(results).toHaveNoViolations();
 });
+
+test('RadioPanel announces readOnly state via aria-label', () => {
+  const spy = jest.fn();
+
+  const { getByDisplayValue, rerender } = render(
+    <RadioGroup name="city" label="Velg by" value="Oslo" onChange={spy}>
+      <RadioPanel title="Oslo" value="Oslo">
+        Oslo
+      </RadioPanel>
+    </RadioGroup>,
+  );
+  expect(getByDisplayValue('Oslo')).not.toHaveAttribute('aria-label');
+
+  rerender(
+    <RadioGroup
+      name="city"
+      label="Velg by"
+      value="Oslo"
+      onChange={spy}
+      readOnly
+    >
+      <RadioPanel title="Oslo" value="Oslo">
+        Oslo
+      </RadioPanel>
+    </RadioGroup>,
+  );
+  expect(getByDisplayValue('Oslo')).toHaveAttribute(
+    'aria-label',
+    'Oslo. Kan ikke endres',
+  );
+});
+
+test('CheckboxPanel announces readOnly state via aria-label', () => {
+  const { getByDisplayValue, rerender } = render(
+    <Fieldset>
+      <CheckboxPanel title="Oslo" value="Oslo">
+        Oslo
+      </CheckboxPanel>
+    </Fieldset>,
+  );
+  expect(getByDisplayValue('Oslo')).not.toHaveAttribute('aria-label');
+
+  rerender(
+    <Fieldset>
+      <CheckboxPanel title="Oslo" value="Oslo" readOnly>
+        Oslo
+      </CheckboxPanel>
+    </Fieldset>,
+  );
+  expect(getByDisplayValue('Oslo')).toHaveAttribute(
+    'aria-label',
+    'Oslo. Kan ikke endres',
+  );
+});
