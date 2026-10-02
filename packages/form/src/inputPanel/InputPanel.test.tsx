@@ -249,7 +249,7 @@ test('RadioPanel announces readOnly state via aria-label', () => {
       </RadioPanel>
     </RadioGroup>,
   );
-  expect(getByDisplayValue('Oslo')).not.toHaveAttribute('aria-label');
+  expect(getByDisplayValue('Oslo')).toHaveAttribute('aria-label', 'Oslo');
 
   rerender(
     <RadioGroup
@@ -278,7 +278,7 @@ test('CheckboxPanel announces readOnly state via aria-label', () => {
       </CheckboxPanel>
     </Fieldset>,
   );
-  expect(getByDisplayValue('Oslo')).not.toHaveAttribute('aria-label');
+  expect(getByDisplayValue('Oslo')).toHaveAttribute('aria-label', 'Oslo');
 
   rerender(
     <Fieldset>
@@ -290,5 +290,40 @@ test('CheckboxPanel announces readOnly state via aria-label', () => {
   expect(getByDisplayValue('Oslo')).toHaveAttribute(
     'aria-label',
     'Oslo. Kan ikke endres',
+  );
+});
+
+test('CheckboxPanel includes secondaryLabel in its accessible name', () => {
+  const { getByDisplayValue } = render(
+    <Fieldset>
+      <CheckboxPanel title="Standard billett" value="a" secondaryLabel="299 kr">
+        Oslo
+      </CheckboxPanel>
+    </Fieldset>,
+  );
+  expect(getByDisplayValue('a')).toHaveAttribute(
+    'aria-label',
+    'Standard billett 299 kr',
+  );
+});
+
+test('CheckboxPanel exposes additional content as a description, not as part of its accessible name', () => {
+  const { getByDisplayValue, getByText } = render(
+    <Fieldset>
+      <CheckboxPanel title="Standard billett" value="a">
+        Gjelder i hele Oslo-regionen.
+      </CheckboxPanel>
+    </Fieldset>,
+  );
+  const input = getByDisplayValue('a');
+
+  expect(input).toHaveAttribute('aria-label', 'Standard billett');
+  expect(input.getAttribute('aria-label')).not.toMatch(/Gjelder/);
+
+  const describedBy = input.getAttribute('aria-describedby');
+  expect(describedBy).toBeTruthy();
+  expect(getByText('Gjelder i hele Oslo-regionen.')).toHaveAttribute(
+    'id',
+    describedBy,
   );
 });

@@ -87,7 +87,15 @@ export const InputPanelBase = React.forwardRef<
 
     const defaultId = `eds-inputpanel${useId()}`;
     const inputPanelId = id || defaultId;
+    const additionalContentId = children
+      ? `${inputPanelId}-additional-content`
+      : undefined;
     const forceUpdate = useForceUpdate();
+
+    const accessibleLabel = [title, secondaryLabel]
+      .filter(label => label !== undefined)
+      .map(label => label?.toString())
+      .join(' ');
 
     const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       if (readOnly) {
@@ -131,8 +139,9 @@ export const InputPanelBase = React.forwardRef<
           disabled={disabled}
           readOnly={readOnly}
           aria-label={
-            readOnly ? `${title?.toString()}. Kan ikke endres` : undefined
+            readOnly ? `${accessibleLabel}. Kan ikke endres` : accessibleLabel
           }
+          aria-describedby={additionalContentId}
           {...rest}
         />
         <div className={panelClassList} style={style}>
@@ -169,7 +178,10 @@ export const InputPanelBase = React.forwardRef<
             </div>
           </div>
           {children && (
-            <div className="eds-input-panel__additional-content">
+            <div
+              id={additionalContentId}
+              className="eds-input-panel__additional-content"
+            >
               {children}
             </div>
           )}
