@@ -8,6 +8,15 @@ import { ExpandableText } from '@entur/expand';
 
 expect.extend(toHaveNoViolations);
 
+// Mirrors the accessible-name part of the browser's accname computation for
+// aria-labelledby, since jsdom doesn't compute this itself.
+const getAccessibleName = (element: HTMLElement) =>
+  (element.getAttribute('aria-labelledby') ?? '')
+    .split(' ')
+    .filter(Boolean)
+    .map(id => document.getElementById(id)?.textContent ?? '')
+    .join(' ');
+
 test('RadioPanel sets checked value from RadioGroup correctly', () => {
   const spy = jest.fn();
 
@@ -237,4 +246,180 @@ test('CheckboxPanel should not have basic accessibility issues', async () => {
   );
   const results = await axe(container);
   expect(results).toHaveNoViolations();
+});
+
+test('RadioPanel announces readOnly state via a hidden description', () => {
+  const spy = jest.fn();
+
+  const { getByDisplayValue, getByText, rerender } = render(
+    <RadioGroup name="city" label="Velg by" value="Oslo" onChange={spy}>
+      <RadioPanel title="Oslo" value="Oslo" />
+    </RadioGroup>,
+  );
+  expect(getAccessibleName(getByDisplayValue('Oslo'))).toBe('Oslo');
+  expect(getByDisplayValue('Oslo')).not.toHaveAttribute('aria-describedby');
+
+  rerender(
+    <RadioGroup
+      name="city"
+      label="Velg by"
+      value="Oslo"
+      onChange={spy}
+      readOnly
+    >
+      <RadioPanel title="Oslo" value="Oslo" />
+    </RadioGroup>,
+  );
+  const input = getByDisplayValue('Oslo');
+  // readOnly must not change the accessible name - only add a description
+  expect(getAccessibleName(input)).toBe('Oslo');
+  const describedBy = input.getAttribute('aria-describedby');
+  expect(describedBy).toBeTruthy();
+  expect(getByText('Kan ikke endres')).toHaveAttribute('id', describedBy);
+});
+
+test('CheckboxPanel announces readOnly state via a hidden description', () => {
+  const { getByDisplayValue, getByText, rerender } = render(
+    <Fieldset>
+      <CheckboxPanel title="Oslo" value="Oslo" />
+    </Fieldset>,
+  );
+  expect(getAccessibleName(getByDisplayValue('Oslo'))).toBe('Oslo');
+  expect(getByDisplayValue('Oslo')).not.toHaveAttribute('aria-describedby');
+
+  rerender(
+    <Fieldset>
+      <CheckboxPanel title="Oslo" value="Oslo" readOnly />
+    </Fieldset>,
+  );
+  const input = getByDisplayValue('Oslo');
+  expect(getAccessibleName(input)).toBe('Oslo');
+  const describedBy = input.getAttribute('aria-describedby');
+  expect(describedBy).toBeTruthy();
+  expect(getByText('Kan ikke endres')).toHaveAttribute('id', describedBy);
+});
+
+test('CheckboxPanel includes secondaryLabel in its accessible name', () => {
+  const { getByDisplayValue } = render(
+    <Fieldset>
+      <CheckboxPanel title="Standard billett" value="a" secondaryLabel="299 kr">
+        Oslo
+      </CheckboxPanel>
+    </Fieldset>,
+  );
+  expect(getAccessibleName(getByDisplayValue('a'))).toBe(
+    'Standard billett 299 kr',
+  );
+});
+
+test('CheckboxPanel exposes additional content as a description, not as part of its accessible name', () => {
+  const { getByDisplayValue, getByText } = render(
+    <Fieldset>
+      <CheckboxPanel title="Standard billett" value="a">
+        Gjelder i hele Oslo-regionen.
+      </CheckboxPanel>
+    </Fieldset>,
+  );
+  const input = getByDisplayValue('a');
+
+  expect(getAccessibleName(input)).toBe('Standard billett');
+
+  const describedBy = input.getAttribute('aria-describedby');
+  expect(describedBy).toBeTruthy();
+  expect(getByText('Gjelder i hele Oslo-regionen.')).toHaveAttribute(
+    'id',
+    describedBy,
+  );
+});
+
+test('CheckboxPanel with both readOnly and additional content describes both, space-separated', () => {
+  const { getByDisplayValue } = render(
+    <Fieldset>
+      <CheckboxPanel title="Standard billett" value="a" readOnly>
+        Gjelder i hele Oslo-regionen.
+      </CheckboxPanel>
+    </Fieldset>,
+  );
+  const describedBy = getByDisplayValue('a').getAttribute('aria-describedby');
+  expect(describedBy?.split(' ')).toHaveLength(2);
+});
+
+test('CheckboxPanel correctly names itself from a non-string (JSX) title', () => {
+  const { getByDisplayValue, queryByText } = render(
+    <Fieldset>
+      <CheckboxPanel title={<div>Bergen</div>} value="a">
+        Mye regn
+      </CheckboxPanel>
+    </Fieldset>,
+  );
+  const input = getByDisplayValue('a');
+  expect(getAccessibleName(input)).toBe('Bergen');
+  expect(queryByText('Bergen')).toBeVisible();
+});
+
+test('CheckboxPanel correctly includes a non-string (JSX) secondaryLabel in its accessible name', () => {
+  const { getByDisplayValue } = render(
+    <Fieldset>
+      <CheckboxPanel
+        title="Standard billett"
+        value="a"
+        secondaryLabel={<strong>299 kr</strong>}
+      >
+        Oslo
+      </CheckboxPanel>
+    </Fieldset>,
+  );
+  expect(getAccessibleName(getByDisplayValue('a'))).toBe(
+    'Standard billett 299 kr',
+  );
+});
+
+test('CheckboxPanel honors a consumer-provided aria-label over the generated name', () => {
+  const { getByDisplayValue } = render(
+    <Fieldset>
+      <CheckboxPanel title="Standard billett" value="a" aria-label="Custom">
+        Oslo
+      </CheckboxPanel>
+    </Fieldset>,
+  );
+  const input = getByDisplayValue('a');
+  expect(input).toHaveAttribute('aria-label', 'Custom');
+  expect(input).not.toHaveAttribute('aria-labelledby');
+});
+
+test('CheckboxPanel honors a consumer-provided aria-labelledby over the generated name', () => {
+  const { getByDisplayValue } = render(
+    <Fieldset>
+      <span id="external-label">Ekstern tittel</span>
+      <CheckboxPanel
+        title="Standard billett"
+        value="a"
+        aria-labelledby="external-label"
+      >
+        Oslo
+      </CheckboxPanel>
+    </Fieldset>,
+  );
+  expect(getByDisplayValue('a')).toHaveAttribute(
+    'aria-labelledby',
+    'external-label',
+  );
+});
+
+test('CheckboxPanel appends its generated description IDs to a consumer-provided aria-describedby', () => {
+  const { getByDisplayValue } = render(
+    <Fieldset>
+      <CheckboxPanel
+        title="Standard billett"
+        value="a"
+        readOnly
+        aria-describedby="external-help"
+      >
+        Gjelder i hele Oslo-regionen.
+      </CheckboxPanel>
+    </Fieldset>,
+  );
+  const describedBy = getByDisplayValue('a').getAttribute('aria-describedby');
+  expect(describedBy?.split(' ')).toContain('external-help');
+  expect(describedBy?.split(' ')).toHaveLength(3);
 });
