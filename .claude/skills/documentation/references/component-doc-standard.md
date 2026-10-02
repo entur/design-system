@@ -85,9 +85,11 @@ Kode, where the reader has already decided and wants the markup.
      that marks the current/active state). If a component genuinely requires nothing further
      from the consumer, state that explicitly rather than omitting the heading.
 
-   Close the section with a standard link to the testguide: "Se
-   [testguiden](https://linje.entur.no/universell-utforming/testguide) for en fullstendig
-   sjekkliste for tilgjengelighetstesting." Same link, same wording, on every component.
+   Close the section with a standard caveat + link to the testguide: "Vi tester komponentene
+   isolert, ikke i din spesifikke sammenheng – den totale brukeropplevelsen i produktet ditt må
+   du teste selv. Se [testguiden](https://linje.entur.no/universell-utforming/testguide) for en
+   fullstendig sjekkliste for tilgjengelighetstesting." Same two sentences, same link, same
+   wording, on every component.
 
 2. **"WCAG-kriterier"** — which WCAG success criteria are relevant/satisfied, referenced by
    number and name where possible (e.g. "1.4.3 Kontrast (minimum)").
