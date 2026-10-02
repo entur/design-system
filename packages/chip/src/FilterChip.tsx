@@ -41,6 +41,7 @@ export const FilterChip = React.forwardRef<HTMLInputElement, FilterChipProps>(
           ref={ref}
           value={value}
           disabled={disabled}
+          aria-disabled={disabled}
           {...rest}
         />
         <div
@@ -67,6 +68,7 @@ const CheckboxIcon = () => {
       viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
     >
       <path
         className="eds-filter-chip-icon__path"
