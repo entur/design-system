@@ -84,7 +84,13 @@ export const capitalize = (s: string) => {
   return s && s[0].toUpperCase() + s.slice(1);
 };
 
-export const wrapCodeInFragmentIfNecessary = (codeToWrap: string) => {
+// react-live can't run import statements, and every component is already in
+// scope, so imports are only shown in the editor and stripped before running.
+const IMPORT_STATEMENT =
+  /^\s*import\s+(?:[\s\S]*?\s+from\s+)?['"][^'"]+['"];?[ \t]*$/gm;
+
+export const wrapCodeInFragmentIfNecessary = (code: string) => {
+  const codeToWrap = code.replace(IMPORT_STATEMENT, '').trim();
   if (codeToWrap.startsWith('()') || codeToWrap.startsWith('class'))
     return codeToWrap;
   return `<>${codeToWrap}</>`;
