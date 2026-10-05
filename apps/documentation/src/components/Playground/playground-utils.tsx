@@ -91,7 +91,7 @@ const LEADING_IMPORTS =
   /^(?:\s*import\s+(?:[^;'"]*?\s+from\s+)?['"][^'"]+['"];?)+/;
 
 export const wrapCodeInFragmentIfNecessary = (code: string) => {
-  const codeToWrap = code.replace(LEADING_IMPORTS, '').trim();
+  const codeToWrap = code.replace(LEADING_IMPORTS, '').trimStart();
   if (codeToWrap.startsWith('()') || codeToWrap.startsWith('class'))
     return codeToWrap;
   return `<>${codeToWrap}</>`;
