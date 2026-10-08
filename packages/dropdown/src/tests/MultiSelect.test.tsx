@@ -1,3 +1,4 @@
+import React from 'react';
 import { act, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { axe, toHaveNoViolations } from 'jest-axe';
@@ -775,6 +776,45 @@ describe('MultiSelect', () => {
         'aria-invalid',
         'false',
       );
+    });
+  });
+
+  describe('screen reader support', () => {
+    const ControlledMultiSelect = ({
+      initialSelectedItems,
+    }: {
+      initialSelectedItems: NormalizedDropdownItemType[];
+    }) => {
+      const [selectedItems, setSelectedItems] =
+        React.useState(initialSelectedItems);
+      return (
+        <MultiSelect
+          label="test label"
+          items={testItems}
+          selectedItems={selectedItems}
+          onChange={setSelectedItems}
+        />
+      );
+    };
+
+    test('jump to input is a keyboard reachable button that focuses the input', async () => {
+      const user = userEvent.setup();
+      render(
+        <ControlledMultiSelect
+          initialSelectedItems={normalizedTestItems.slice(0, 3)}
+        />,
+      );
+
+      await user.tab();
+      const jumpButton = screen.getByRole('button', {
+        name: '3 valgte elementer, trykk for å hoppe til tekstfeltet',
+      });
+      expect(jumpButton).toHaveFocus();
+
+      await user.keyboard('{Enter}');
+      expect(
+        screen.getByRole('combobox', { name: 'test label' }),
+      ).toHaveFocus();
     });
   });
 });

@@ -56,6 +56,36 @@
   &--multiselect {
     cursor: text;
 
+    &__jump-to-input {
+      flex-basis: 100%;
+      padding: 0;
+      border: 0;
+      background: none;
+      color: inherit;
+      font: inherit;
+      font-size: t.$font-sizes-small;
+      line-height: t.$line-heights-small;
+      text-align: start;
+      text-decoration: underline;
+      cursor: pointer;
+
+      &:focus-visible {
+        outline: t.$outlines-focus;
+        outline-color: var(--basecolors-stroke-focus-standard);
+        outline-offset: t.$outline-offsets-focus;
+      }
+
+      // Same technique as VisuallyHidden, lifted while the button has keyboard focus
+      &:not(:focus-visible) {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+      }
+    }
+
     &__selected-items-and-input {
       display: flex;
       flex-wrap: wrap;

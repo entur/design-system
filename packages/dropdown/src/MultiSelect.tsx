@@ -23,7 +23,6 @@ import {
   useFloating,
 } from '@floating-ui/react-dom';
 
-import { VisuallyHidden } from '@entur/a11y';
 import { BaseFormControl } from '@entur/form';
 import { space } from '@entur/tokens';
 import { mergeRefs } from '@entur/utils';
@@ -542,10 +541,14 @@ export const MultiSelect = React.forwardRef(
             },
           )}
         >
-          {selectedItems.length > 1 ? (
-            <VisuallyHidden onClick={() => inputRef.current?.focus()}>
+          {selectedItems.length > 1 && !disabled && !readOnly ? (
+            <button
+              type="button"
+              className="eds-dropdown--multiselect__jump-to-input"
+              onClick={() => inputRef.current?.focus()}
+            >
               {ariaLabelJumpToInput}
-            </VisuallyHidden>
+            </button>
           ) : null}
           {selectedItems.length <= maxChips ? (
             selectedItems.map((selectedItem, index) => (
