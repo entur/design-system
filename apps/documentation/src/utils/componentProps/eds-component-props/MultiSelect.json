@@ -628,6 +628,40 @@
         "name": "string | undefined"
       }
     },
+    "ariaLabelItemRemoved": {
+      "defaultValue": {
+        "value": "fjernet"
+      },
+      "description": "Tekst for skjermleser når ett valgt element fjernes, f.eks. «Oslo fjernet»",
+      "name": "ariaLabelItemRemoved",
+      "declarations": [
+        {
+          "fileName": "packages/dropdown/src/MultiSelect.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "ariaLabelItemsRemoved": {
+      "defaultValue": {
+        "value": "valg fjernet"
+      },
+      "description": "Tekst for skjermleser når flere valgte elementer fjernes samtidig,\nf.eks. «5 valg fjernet»",
+      "name": "ariaLabelItemsRemoved",
+      "declarations": [
+        {
+          "fileName": "packages/dropdown/src/MultiSelect.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
     "onBlur": {
       "defaultValue": null,
       "description": "Callback som kalles når brukeren går ut av input-feltet",

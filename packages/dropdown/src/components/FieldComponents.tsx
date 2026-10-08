@@ -60,7 +60,6 @@ export const SelectedItemTag = <ValueType extends NonNullable<any>>({
       onClick={(e: React.MouseEvent) => e.stopPropagation()}
       closeButtonAriaLabel={`${selectedItem.label} ${ariaLabelChosen}, ${ariaLabelRemoveSelected} `}
       key={selectedItem.value}
-      aria-live="polite"
     >
       <span
         aria-hidden="true"
