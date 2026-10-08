@@ -797,6 +797,9 @@ describe('MultiSelect', () => {
       );
     };
 
+    const getStatusMessage = () =>
+      document.getElementById('a11y-status-message')?.textContent;
+
     test('jump to input is a keyboard reachable button that focuses the input', async () => {
       const user = userEvent.setup();
       render(
@@ -815,6 +818,80 @@ describe('MultiSelect', () => {
       expect(
         screen.getByRole('combobox', { name: 'test label' }),
       ).toHaveFocus();
+    });
+
+    test('announces a removed item in the shared status region', async () => {
+      const user = userEvent.setup();
+      render(
+        <ControlledMultiSelect
+          initialSelectedItems={normalizedTestItems.slice(0, 3)}
+        />,
+      );
+
+      await user.click(
+        screen.getByRole('button', { name: /^Bergen valgt, trykk for/ }),
+      );
+
+      await waitFor(() => expect(getStatusMessage()).toBe('Bergen fjernet'));
+    });
+
+    test('announces clearing all items as one message', async () => {
+      const user = userEvent.setup();
+      render(
+        <ControlledMultiSelect
+          initialSelectedItems={normalizedTestItems.slice(0, 3)}
+        />,
+      );
+
+      await user.click(screen.getByRole('button', { name: 'Fjern valgte' }));
+
+      await waitFor(() => expect(getStatusMessage()).toBe('3 valg fjernet'));
+    });
+
+    test('announces a selected item in the shared status region', async () => {
+      const user = userEvent.setup();
+      render(<ControlledMultiSelect initialSelectedItems={[]} />);
+
+      await user.click(screen.getByRole('combobox', { name: 'test label' }));
+      await user.click(screen.getByRole('option', { name: 'Oslo' }));
+
+      await waitFor(() => expect(getStatusMessage()).toBe('Oslo valgt'));
+    });
+
+    test('announces removal of items whose labels are equal but values differ', async () => {
+      const user = userEvent.setup();
+      const items = [
+        { label: 'Stopp', value: { id: 1 } },
+        { label: 'Stopp', value: { id: 2 } },
+      ];
+      const Controlled = () => {
+        const [selectedItems, setSelectedItems] = React.useState(items);
+        return (
+          <MultiSelect
+            label="test label"
+            items={items}
+            selectedItems={selectedItems}
+            onChange={setSelectedItems}
+          />
+        );
+      };
+      render(<Controlled />);
+
+      await user.click(
+        screen.getAllByRole('button', { name: /^Stopp valgt, trykk for/ })[0],
+      );
+
+      await waitFor(() => expect(getStatusMessage()).toBe('Stopp fjernet'));
+    });
+
+    test('selected item tags have no live regions of their own', () => {
+      const { container } = render(
+        <ControlledMultiSelect
+          initialSelectedItems={normalizedTestItems.slice(0, 3)}
+        />,
+      );
+
+      expect(container.querySelector('[aria-live]')).toBeNull();
     });
   });
 });

@@ -39,6 +39,7 @@ import {
   EMPTY_INPUT,
   clamp,
   getA11yStatusMessage,
+  getSelectionStatusMessage,
   isFunctionWithQueryArgument,
   itemToKey,
   itemToString,
@@ -113,6 +114,15 @@ export type MultiSelectProps<ValueType> = Omit<
    * @default `${selectedItems.length} valgte elementer, trykk for å hoppe til tekstfeltet`
    */
   ariaLabelJumpToInput?: string;
+  /** Tekst for skjermleser når ett valgt element fjernes, f.eks. «Oslo fjernet»
+   * @default "fjernet"
+   */
+  ariaLabelItemRemoved?: string;
+  /** Tekst for skjermleser når flere valgte elementer fjernes samtidig,
+   * f.eks. «5 valg fjernet»
+   * @default "valg fjernet"
+   */
+  ariaLabelItemsRemoved?: string;
   /** Callback som kalles når brukeren går ut av input-feltet */
   onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
   /** Callback når komponenten klikkes */
@@ -157,6 +167,8 @@ export const MultiSelect = React.forwardRef(
       variant = 'information',
       ariaLabelChosenSingular,
       ariaLabelChosenPlural = 'valgte',
+      ariaLabelItemRemoved = 'fjernet',
+      ariaLabelItemsRemoved = 'valg fjernet',
       ariaLabelCloseList = 'Lukk liste med valg',
       ariaLabelJumpToInput = `${selectedItems.length} valgte elementer, trykk for å hoppe til tekstfeltet`,
       ariaLabelOpenList = 'Åpne liste med valg',
@@ -261,6 +273,8 @@ export const MultiSelect = React.forwardRef(
       selectedItems,
     });
 
+    const previousSelectedItems = useRef(selectedItems);
+
     const {
       getSelectedItemProps,
       getDropdownProps,
@@ -275,6 +289,22 @@ export const MultiSelect = React.forwardRef(
       ...(environment && { environment }),
       onSelectedItemsChange({ selectedItems: newSelectedItems }) {
         onChange(newSelectedItems);
+      },
+      // Announced through downshift's single status region, shared with
+      // useCombobox, instead of one aria-live region per SelectedItemTag
+      getA11yStatusMessage: ({ selectedItems: currentSelectedItems }) => {
+        const message = getSelectionStatusMessage({
+          previousSelectedItems: previousSelectedItems.current,
+          selectedItems: currentSelectedItems,
+          allItemsSelected: isAllNonAsyncItemsSelected,
+          labelAllItemsSelected,
+          ariaLabelChosenSingular: ariaLabelChosenSingular ?? 'valgt',
+          ariaLabelChosenPlural,
+          ariaLabelItemRemoved,
+          ariaLabelItemsRemoved,
+        });
+        previousSelectedItems.current = currentSelectedItems;
+        return message;
       },
     });
 
