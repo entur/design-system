@@ -1,5 +1,6 @@
 import React, { useId, useRef } from 'react';
 import classNames from 'classnames';
+import { VisuallyHidden } from '@entur/a11y';
 import { mergeRefs, useForceUpdate } from '@entur/utils';
 import { Checkbox } from '../Checkbox';
 import { Radio } from '../Radio';
@@ -68,6 +69,9 @@ export const InputPanelBase = React.forwardRef<
       onChange,
       checked,
       name,
+      'aria-label': ariaLabel,
+      'aria-labelledby': ariaLabelledby,
+      'aria-describedby': ariaDescribedby,
       ...rest
     },
     ref: React.Ref<HTMLInputElement>,
@@ -87,6 +91,26 @@ export const InputPanelBase = React.forwardRef<
 
     const defaultId = `eds-inputpanel${useId()}`;
     const inputPanelId = id || defaultId;
+    const titleId = `${inputPanelId}-title`;
+    const secondaryLabelId =
+      secondaryLabel !== undefined
+        ? `${inputPanelId}-secondary-label`
+        : undefined;
+    // title/secondaryLabel are ReactNode, so aria-labelledby (reading the
+    // referenced elements directly) is used instead of stringifying them.
+    const generatedLabelledBy = [titleId, secondaryLabelId]
+      .filter(Boolean)
+      .join(' ');
+    const additionalContentId = children
+      ? `${inputPanelId}-additional-content`
+      : undefined;
+    const readOnlyDescriptionId = readOnly
+      ? `${inputPanelId}-readonly-description`
+      : undefined;
+    const describedBy =
+      [ariaDescribedby, additionalContentId, readOnlyDescriptionId]
+        .filter(Boolean)
+        .join(' ') || undefined;
     const forceUpdate = useForceUpdate();
 
     const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -130,13 +154,22 @@ export const InputPanelBase = React.forwardRef<
           id={inputPanelId}
           disabled={disabled}
           readOnly={readOnly}
+          aria-label={ariaLabel}
+          aria-labelledby={
+            ariaLabelledby ?? (ariaLabel ? undefined : generatedLabelledBy)
+          }
+          aria-describedby={describedBy}
           {...rest}
         />
         <div className={panelClassList} style={style}>
           <div className="eds-input-panel__title-wrapper">
-            <div className="eds-input-panel__title">{title}</div>
+            <div id={titleId} className="eds-input-panel__title">
+              {title}
+            </div>
             <div className="eds-input-panel__secondary-label-and-icon-wrapper">
-              {secondaryLabel !== undefined && <>{secondaryLabel}</>}
+              {secondaryLabel !== undefined && (
+                <span id={secondaryLabelId}>{secondaryLabel}</span>
+              )}
               <span style={{ pointerEvents: 'none' }}>
                 {!hideSelectionIndicator &&
                   (type === 'radio' ? (
@@ -165,8 +198,16 @@ export const InputPanelBase = React.forwardRef<
               </span>
             </div>
           </div>
+          {readOnly && (
+            <VisuallyHidden id={readOnlyDescriptionId}>
+              Kan ikke endres
+            </VisuallyHidden>
+          )}
           {children && (
-            <div className="eds-input-panel__additional-content">
+            <div
+              id={additionalContentId}
+              className="eds-input-panel__additional-content"
+            >
               {children}
             </div>
           )}
