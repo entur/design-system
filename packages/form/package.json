@@ -26,6 +26,7 @@
     "react-dom": ">=18.0.0"
   },
   "dependencies": {
+    "@entur/a11y": "workspace:^",
     "@entur/button": "workspace:^",
     "@entur/icons": "workspace:^",
     "@entur/tokens": "workspace:^",

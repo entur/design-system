@@ -1,5 +1,6 @@
 import React, { useId, useRef } from 'react';
 import classNames from 'classnames';
+import { VisuallyHidden } from '@entur/a11y';
 import { mergeRefs, useForceUpdate } from '@entur/utils';
 import { Checkbox } from '../Checkbox';
 import { Radio } from '../Radio';
@@ -37,6 +38,10 @@ export type InputPanelProps = {
    * @default false
    */
   readOnly?: boolean;
+  /** Beskrivelse som leses opp av skjermlesere når input-panelet er skrivebeskyttet (readonly)
+   * @default 'Kan ikke endres'
+   */
+  readOnlyLabelDescription?: string;
   /** */
   style?: React.CSSProperties;
 } & Omit<
@@ -46,6 +51,9 @@ export type InputPanelProps = {
   >,
   'title' | 'size'
 >;
+
+const joinIds = (...ids: (string | false | undefined)[]) =>
+  ids.filter(Boolean).join(' ') || undefined;
 
 export const InputPanelBase = React.forwardRef<
   HTMLInputElement,
@@ -64,10 +72,14 @@ export const InputPanelBase = React.forwardRef<
       id,
       disabled = false,
       readOnly = false,
+      readOnlyLabelDescription = 'Kan ikke endres',
       type = 'radio',
       onChange,
       checked,
       name,
+      'aria-label': ariaLabel,
+      'aria-labelledby': ariaLabelledby,
+      'aria-describedby': ariaDescribedby,
       ...rest
     },
     ref: React.Ref<HTMLInputElement>,
@@ -87,6 +99,24 @@ export const InputPanelBase = React.forwardRef<
 
     const defaultId = `eds-inputpanel${useId()}`;
     const inputPanelId = id || defaultId;
+    const titleId = `${inputPanelId}-title`;
+    const secondaryLabelId = `${inputPanelId}-secondary-label`;
+    const additionalContentId = `${inputPanelId}-additional-content`;
+    const readOnlyDescriptionId = `${inputPanelId}-readonly-description`;
+
+    const hasSecondaryLabel = secondaryLabel !== undefined;
+    const hasCustomLabel = ariaLabelledby !== undefined || !!ariaLabel;
+
+    // title/secondaryLabel are ReactNode, so aria-labelledby (reading the
+    // referenced elements directly) is used instead of stringifying them.
+    const labelledBy = hasCustomLabel
+      ? ariaLabelledby
+      : joinIds(titleId, hasSecondaryLabel && secondaryLabelId);
+    const describedBy = joinIds(
+      ariaDescribedby,
+      !!children && additionalContentId,
+      readOnly && readOnlyDescriptionId,
+    );
     const forceUpdate = useForceUpdate();
 
     const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -130,13 +160,20 @@ export const InputPanelBase = React.forwardRef<
           id={inputPanelId}
           disabled={disabled}
           readOnly={readOnly}
+          aria-label={ariaLabel}
+          aria-labelledby={labelledBy}
+          aria-describedby={describedBy}
           {...rest}
         />
         <div className={panelClassList} style={style}>
           <div className="eds-input-panel__title-wrapper">
-            <div className="eds-input-panel__title">{title}</div>
+            <div id={titleId} className="eds-input-panel__title">
+              {title}
+            </div>
             <div className="eds-input-panel__secondary-label-and-icon-wrapper">
-              {secondaryLabel !== undefined && <>{secondaryLabel}</>}
+              {hasSecondaryLabel && (
+                <span id={secondaryLabelId}>{secondaryLabel}</span>
+              )}
               <span style={{ pointerEvents: 'none' }}>
                 {!hideSelectionIndicator &&
                   (type === 'radio' ? (
@@ -165,8 +202,16 @@ export const InputPanelBase = React.forwardRef<
               </span>
             </div>
           </div>
+          {readOnly && (
+            <VisuallyHidden id={readOnlyDescriptionId}>
+              {readOnlyLabelDescription}
+            </VisuallyHidden>
+          )}
           {children && (
-            <div className="eds-input-panel__additional-content">
+            <div
+              id={additionalContentId}
+              className="eds-input-panel__additional-content"
+            >
               {children}
             </div>
           )}

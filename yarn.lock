@@ -6388,6 +6388,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@entur/form@workspace:packages/form"
   dependencies:
+    "@entur/a11y": "workspace:^"
     "@entur/button": "workspace:^"
     "@entur/icons": "workspace:^"
     "@entur/tokens": "workspace:^"
