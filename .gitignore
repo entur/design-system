@@ -54,3 +54,11 @@ content/components/testin.mdx
 tools/design-system-scanner/scan-report.json
 tools/design-system-scanner/functions/node_modules
 tools/design-system-scanner/functions/dist
+
+# design-sync
+.ds-sync/
+ds-bundle/
+.design-sync/.cache/
+.design-sync/learnings/
+.design-sync/node_modules
+.design-sync/overrides/dts.mjs

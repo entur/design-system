@@ -1,0 +1,200 @@
+{
+  "projectId": "83995b0c-facd-413a-9d9d-1fc5a0947b4f",
+  "shape": "package",
+  "pkg": "@entur/linje",
+  "globalName": "EnturLinje",
+  "entry": ".design-sync/.cache/linje/index.mjs",
+  "buildCmd": "corepack yarn build:packages && node .design-sync/patch-dts.mjs && node .design-sync/illustrations.mjs import && node .design-sync/umbrella.mjs",
+  "srcDir": "../../../packages",
+  "cssEntry": "styles.css",
+  "docsDir": "docs",
+  "componentSrcMap": {
+    "CalendarDate": null,
+    "CalendarDateTime": null,
+    "ZonedDateTime": null,
+    "Time": null,
+    "ConditionalWrapper": null,
+    "InputGroupContextProvider": null,
+    "SegmentedControlComponent": null,
+    "Link": "../../../packages/typography/src/Link.tsx",
+    "Blockquote": "../../../packages/typography/src/Blockquote.tsx",
+    "BlockquoteFooter": "../../../packages/typography/src/Blockquote.tsx",
+    "ListItem": "../../../packages/typography/src/ListItem.tsx",
+    "NumberedList": "../../../packages/typography/src/NumberedList.tsx",
+    "UnorderedList": "../../../packages/typography/src/UnorderedList.tsx"
+  },
+  "dtsPropsFor": {
+    "Contrast": "  /** Innholdet som vises på kontrastbakgrunn */\n  children?: React.ReactNode;\n  /** Ekstra klassenavn */\n  className?: string;\n  /** HTML-elementet eller React-komponenten som rendres (default \"div\") */\n  as?: React.ElementType;\n",
+    "BreadcrumbItem": "  /** Teksten som vises */\n  children: React.ReactNode;\n  /** Lenkemål når elementet rendres som <a> (default) */\n  href?: string;\n  /** Komponenten som rendres (default \"a\") */\n  as?: React.ElementType;\n  /** Ekstra klassenavn */\n  className?: string;\n",
+    "TopNavigationItem": "  /** Tekste som vises */\n  children: React.ReactNode;\n  /** Lenkemål når elementet rendres som <a> (default) */\n  href?: string;\n  /** Om komponenten vises som valgt eller ikke */\n  active?: boolean;\n  /** HTML-elementet eller React-komponenten som lager komponenten (default \"a\") */\n  as?: React.ElementType;\n  /** Ekstra klassenavn */\n  className?: string;\n",
+    "SideNavigation": "  /** SideNavigation.Group, SideNavigation.Item og SideNavigation.ExpandableItem */\n  children: React.ReactNode;\n  /** Ekstra klassenavn */\n  className?: string;\n"
+  },
+  "overrides": {
+    "Modal": {
+      "cardMode": "single",
+      "primaryStory": "Medium",
+      "viewport": "900x700"
+    },
+    "ModalOverlay": {
+      "cardMode": "single",
+      "viewport": "900x700"
+    },
+    "Drawer": {
+      "cardMode": "single",
+      "primaryStory": "Default",
+      "viewport": "900x640"
+    },
+    "ToastProvider": {
+      "cardMode": "single",
+      "primaryStory": "WithToast",
+      "viewport": "900x520"
+    },
+    "Template": {
+      "cardMode": "column",
+      "viewport": "1280x800"
+    },
+    "CopyableText": {
+      "cardMode": "column"
+    },
+    "BulletBadge": {
+      "cardMode": "column"
+    },
+    "NotificationBadge": {
+      "cardMode": "column"
+    },
+    "Flex": {
+      "cardMode": "column"
+    },
+    "Grid": {
+      "cardMode": "column"
+    },
+    "IconButton": {
+      "cardMode": "column"
+    },
+    "Calendar": {
+      "cardMode": "column"
+    },
+    "RangeCalendar": {
+      "cardMode": "column"
+    },
+    "FileUpload": {
+      "cardMode": "column"
+    },
+    "FeedbackText": {
+      "cardMode": "column"
+    },
+    "SegmentedControl": {
+      "cardMode": "column"
+    },
+    "TextArea": {
+      "cardMode": "column"
+    },
+    "GridContainer": {
+      "cardMode": "column"
+    },
+    "Contrast": {
+      "cardMode": "column"
+    },
+    "MediaCard": {
+      "cardMode": "column"
+    },
+    "Loader": {
+      "cardMode": "column"
+    },
+    "SkeletonWrapper": {
+      "cardMode": "column"
+    },
+    "Logo": {
+      "cardMode": "column"
+    },
+    "Pagination": {
+      "cardMode": "column"
+    },
+    "Stepper": {
+      "cardMode": "column"
+    },
+    "TopNavigationItem": {
+      "cardMode": "column"
+    },
+    "SegmentedChoice": {
+      "cardMode": "column"
+    },
+    "Tab": {
+      "cardMode": "column"
+    },
+    "TabList": {
+      "cardMode": "column"
+    },
+    "TabPanel": {
+      "cardMode": "column"
+    },
+    "TabPanels": {
+      "cardMode": "column"
+    },
+    "Tabs": {
+      "cardMode": "column"
+    },
+    "DataCell": {
+      "cardMode": "column"
+    },
+    "EditableCell": {
+      "cardMode": "column"
+    },
+    "ExpandableRow": {
+      "cardMode": "column"
+    },
+    "HeaderCell": {
+      "cardMode": "column"
+    },
+    "Table": {
+      "cardMode": "column"
+    },
+    "TableBody": {
+      "cardMode": "column"
+    },
+    "TableHead": {
+      "cardMode": "column"
+    },
+    "TableRow": {
+      "cardMode": "column"
+    },
+    "LegBone": {
+      "cardMode": "column"
+    },
+    "LegLine": {
+      "cardMode": "column"
+    },
+    "TravelLeg": {
+      "cardMode": "column"
+    },
+    "DatePicker": {
+      "cardMode": "single",
+      "primaryStory": "Open",
+      "viewport": "480x520"
+    },
+    "Dropdown": {
+      "cardMode": "single",
+      "primaryStory": "Open",
+      "viewport": "480x520"
+    },
+    "MultiSelect": {
+      "cardMode": "single",
+      "primaryStory": "Open",
+      "viewport": "480x520"
+    },
+    "SearchableDropdown": {
+      "cardMode": "single",
+      "primaryStory": "Open",
+      "viewport": "480x520"
+    },
+    "SkipToContent": {
+      "cardMode": "single",
+      "primaryStory": "Focused",
+      "viewport": "640x240"
+    }
+  },
+  "libOverrides": {
+    "dts.mjs": "keep long literal/object unions (Transport, ResponsiveValue) and map polymorphic as to React.ElementType instead of unknown"
+  },
+  "readmeHeader": ".design-sync/conventions.md"
+}
