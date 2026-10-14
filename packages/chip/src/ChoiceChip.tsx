@@ -59,7 +59,6 @@ export const ChoiceChip = React.forwardRef<HTMLInputElement, ChoiceChipProps>(
           disabled={disabled}
           checked={selectedValue === value}
           onChange={onChange}
-          aria-disabled={disabled}
           {...rest}
         />
         <div className={classList}>{children}</div>
