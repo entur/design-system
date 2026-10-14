@@ -669,6 +669,8 @@
             "ariaLabelChosenPlural",
             "ariaLabelJumpToInput",
             "ariaLabelNavigateToSelected",
+            "ariaLabelRemovedSingular",
+            "ariaLabelRemovedPlural",
             "onBlur",
             "onClick",
             "onKeyDown",

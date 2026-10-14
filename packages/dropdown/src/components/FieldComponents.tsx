@@ -64,7 +64,6 @@ export const SelectedItemTag = <ValueType extends NonNullable<any>>({
       }}
       closeButtonAriaLabel={`${selectedItem.label} ${ariaLabelChosen}, ${ariaLabelRemoveSelected} `}
       closeButtonTabIndex={tabIndex}
-      aria-live="polite"
     >
       <span
         aria-hidden="true"

@@ -164,7 +164,7 @@
     "outputs": ["Dropdown.json"]
   },
   "dropdown/src/MultiSelect.tsx": {
-    "hash": "699ed76746aa2c61f152a59e4b394267",
+    "hash": "f1b207e6143c4a31ee6b976fa521ef83",
     "outputs": ["MultiSelect.json"]
   },
   "dropdown/src/NativeDropdown.tsx": {
@@ -180,7 +180,7 @@
     "outputs": ["DropdownList.json"]
   },
   "dropdown/src/components/FieldComponents.tsx": {
-    "hash": "e49bda1e209a130d5303a6dc5762baf1",
+    "hash": "dda114fd3aa1957edad8d16939046af7",
     "outputs": [
       "SelectedItemTag.json",
       "DropdownFieldAppendix.json",
