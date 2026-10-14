@@ -271,6 +271,7 @@
             "className",
             "onClose",
             "closeButtonAriaLabel",
+            "closeButtonTabIndex",
             "size"
           ]
         }
@@ -667,6 +668,9 @@
             "ariaLabelRemoveSelected",
             "ariaLabelChosenPlural",
             "ariaLabelJumpToInput",
+            "ariaLabelNavigateToSelected",
+            "ariaLabelRemovedSingular",
+            "ariaLabelRemovedPlural",
             "onBlur",
             "onClick",
             "onKeyDown",

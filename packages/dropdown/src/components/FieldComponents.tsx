@@ -40,11 +40,16 @@ export const SelectedItemTag = <ValueType extends NonNullable<any>>({
 }) => {
   if (!selectedItem) return null;
 
-  const { tabIndex: _, ...selectedItemProps } =
-    getSelectedItemProps?.({
-      selectedItem,
-      index,
-    }) ?? {};
+  // An onClick on the chip makes Safari's VoiceOver stop on it as a
+  // clickable element, out of step with keyboard focus on the close button
+  const {
+    tabIndex,
+    onClick: _onClick,
+    ...selectedItemProps
+  } = getSelectedItemProps?.({
+    selectedItem,
+    index,
+  }) ?? {};
   return (
     <TagChip
       size="small"
@@ -57,10 +62,8 @@ export const SelectedItemTag = <ValueType extends NonNullable<any>>({
         e.stopPropagation();
         removeSelectedItem(selectedItem);
       }}
-      onClick={(e: React.MouseEvent) => e.stopPropagation()}
       closeButtonAriaLabel={`${selectedItem.label} ${ariaLabelChosen}, ${ariaLabelRemoveSelected} `}
-      key={selectedItem.value}
-      aria-live="polite"
+      closeButtonTabIndex={tabIndex}
     >
       <span
         aria-hidden="true"

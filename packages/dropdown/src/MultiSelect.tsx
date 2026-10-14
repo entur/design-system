@@ -39,7 +39,8 @@ import { DropdownProps } from './Dropdown';
 import {
   EMPTY_INPUT,
   clamp,
-  getA11yStatusMessage,
+  getResultsStatusMessage,
+  getSelectionStatusMessage,
   isFunctionWithQueryArgument,
   itemToKey,
   itemToString,
@@ -110,10 +111,23 @@ export type MultiSelectProps<ValueType> = Omit<
    * @default "valgte"
    */
   ariaLabelChosenPlural?: string;
-  /** Tekst for skjemleser for å hoppe til input-feltet
-   * @default `${selectedItems.length} valgte elementer, trykk for å hoppe til tekstfeltet`
+  /** @deprecated Brukes ikke lenger. De valgte elementene er ikke med i
+   * tab-rekkefølgen, men nås med piltastene fra tekstfeltet.
    */
   ariaLabelJumpToInput?: string;
+  /** Tekst for skjermleser i tekstfeltet om hvordan man når de valgte elementene
+   * @default `${selectedItems.length} valgte, bruk venstre piltast for å gå til dem`
+   */
+  ariaLabelNavigateToSelected?: string;
+  /** Tekst for skjermleser når ett valgt element fjernes, f.eks. «Oslo fjernet»
+   * @default "fjernet"
+   */
+  ariaLabelRemovedSingular?: string;
+  /** Tekst for skjermleser når flere valgte elementer fjernes samtidig,
+   * f.eks. «5 valg fjernet»
+   * @default "valg fjernet"
+   */
+  ariaLabelRemovedPlural?: string;
   /** Callback som kalles når brukeren går ut av input-feltet */
   onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
   /** Callback når komponenten klikkes */
@@ -156,10 +170,13 @@ export const MultiSelect = React.forwardRef(
       selectOnTab = false,
       style,
       variant = 'information',
-      ariaLabelChosenSingular,
+      ariaLabelChosenSingular = 'valgt',
       ariaLabelChosenPlural = 'valgte',
+      ariaLabelRemovedSingular = 'fjernet',
+      ariaLabelRemovedPlural = 'valg fjernet',
       ariaLabelCloseList = 'Lukk liste med valg',
-      ariaLabelJumpToInput = `${selectedItems.length} valgte elementer, trykk for å hoppe til tekstfeltet`,
+      ariaLabelJumpToInput: _deprecatedAriaLabelJumpToInput,
+      ariaLabelNavigateToSelected = `${selectedItems.length} valgte, bruk venstre piltast for å gå til dem`,
       ariaLabelOpenList = 'Åpne liste med valg',
       ariaLabelRemoveSelected = 'trykk for å fjerne valg',
       ariaLabelSelectedItem,
@@ -193,6 +210,13 @@ export const MultiSelect = React.forwardRef(
     const isAllNonAsyncItemsSelected =
       typeof initialItems !== 'function' &&
       selectedItems.length === normalizedItems.length;
+
+    const navigateToSelectedId = `eds-multiselect-navigate-to-selected${useId()}`;
+    const canNavigateToSelected =
+      selectedItems.length > 0 &&
+      selectedItems.length <= maxChips &&
+      !disabled &&
+      !readOnly;
 
     // special 'item' used as Select All entry in the dropdown list
     const selectAllUniqueId = `select-all${useId()}`;
@@ -262,6 +286,9 @@ export const MultiSelect = React.forwardRef(
       selectedItems,
     });
 
+    const selectionStatusMessage = useRef('');
+    const selectAllClicked = useRef(false);
+
     const {
       getSelectedItemProps,
       getDropdownProps,
@@ -274,9 +301,30 @@ export const MultiSelect = React.forwardRef(
       itemToString,
       itemToKey,
       ...(environment && { environment }),
-      onSelectedItemsChange({ selectedItems: newSelectedItems }) {
+      onSelectedItemsChange({ selectedItems: newSelectedItems = [] }) {
+        selectionStatusMessage.current = getSelectionStatusMessage({
+          previousSelectedItems: selectedItems,
+          selectedItems: newSelectedItems,
+          allItemsSelected:
+            selectAllClicked.current &&
+            typeof initialItems !== 'function' &&
+            newSelectedItems.length === normalizedItems.length,
+          labelAllItemsSelected,
+          ariaLabelChosenSingular,
+          ariaLabelChosenPlural,
+          ariaLabelRemovedSingular,
+          ariaLabelRemovedPlural,
+        });
+        selectAllClicked.current = false;
         onChange(newSelectedItems);
       },
+      getA11yStatusMessage: selectionStatusMessage.current
+        ? () => {
+            const message = selectionStatusMessage.current;
+            selectionStatusMessage.current = '';
+            return message;
+          }
+        : undefined,
     });
 
     const stateReducer = React.useCallback(
@@ -374,6 +422,7 @@ export const MultiSelect = React.forwardRef(
         // clickedItem means item chosen either via mouse or keyboard
         if (!clickedItem) return;
 
+        selectAllClicked.current = clickedItemIsSelectAll(clickedItem);
         handleListItemClicked({
           clickedItem,
           onChange: setSelectedItems,
@@ -384,7 +433,7 @@ export const MultiSelect = React.forwardRef(
       },
       // Accessibility
       getA11yStatusMessage: options =>
-        getA11yStatusMessage({
+        getResultsStatusMessage({
           ...options,
           selectAllItemIncluded: !hideSelectAll,
           resultCount: listItems.length,
@@ -473,6 +522,9 @@ export const MultiSelect = React.forwardRef(
       disabled: readOnly || disabled,
       placeholder: placeholder,
       tabIndex: disabled || readOnly ? -1 : undefined,
+      'aria-describedby': canNavigateToSelected
+        ? navigateToSelectedId
+        : undefined,
     });
     const labelProps = getLabelProps();
     const menuProps = getMenuProps({
@@ -542,9 +594,9 @@ export const MultiSelect = React.forwardRef(
             },
           )}
         >
-          {selectedItems.length > 1 ? (
-            <VisuallyHidden onClick={() => inputRef.current?.focus()}>
-              {ariaLabelJumpToInput}
+          {canNavigateToSelected ? (
+            <VisuallyHidden id={navigateToSelectedId}>
+              {ariaLabelNavigateToSelected}
             </VisuallyHidden>
           ) : null}
           {selectedItems.length <= maxChips ? (
@@ -555,12 +607,7 @@ export const MultiSelect = React.forwardRef(
                 disabled={disabled}
                 getSelectedItemProps={getSelectedItemProps}
                 index={index}
-                key={
-                  selectedItem?.label +
-                  (typeof selectedItem?.value === 'string'
-                    ? selectedItem.value
-                    : '')
-                }
+                key={index}
                 readOnly={readOnly}
                 removeSelectedItem={() => {
                   removeSelectedItem(selectedItem);

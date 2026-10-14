@@ -187,7 +187,7 @@ export const useMultiselectUtils = <ValueType>({
 
 // called when the state changes:
 // selectedItem, highlightedIndex, inputValue or isOpen.
-export function getA11yStatusMessage<ValueType>(
+export function getResultsStatusMessage<ValueType>(
   options: UseComboboxState<NormalizedDropdownItemType<ValueType>> & {
     selectAllItemIncluded?: boolean;
     resultCount: number;
@@ -210,5 +210,52 @@ export function getA11yStatusMessage<ValueType>(
   return `${resultCountWithoutSelectAll} resultat${
     resultCountWithoutSelectAll === 1 ? '' : 'er'
   } tilgjengelig, naviger med pil opp eller ned, velg elementer med Enter.`;
+}
+
+export function getSelectionStatusMessage<ValueType>({
+  previousSelectedItems,
+  selectedItems,
+  allItemsSelected,
+  labelAllItemsSelected,
+  ariaLabelChosenSingular,
+  ariaLabelChosenPlural,
+  ariaLabelRemovedSingular,
+  ariaLabelRemovedPlural,
+}: {
+  previousSelectedItems: NormalizedDropdownItemType<ValueType>[];
+  selectedItems: NormalizedDropdownItemType<ValueType>[];
+  allItemsSelected: boolean;
+  labelAllItemsSelected: string;
+  ariaLabelChosenSingular: string;
+  ariaLabelChosenPlural: string;
+  ariaLabelRemovedSingular: string;
+  ariaLabelRemovedPlural: string;
+}): string {
+  const includesValue = (
+    items: NormalizedDropdownItemType<ValueType>[],
+    item: NormalizedDropdownItemType<ValueType>,
+  ) => items.some(other => other.value === item.value);
+  const added = selectedItems.filter(
+    item => !includesValue(previousSelectedItems, item),
+  );
+  const removed = previousSelectedItems.filter(
+    item => !includesValue(selectedItems, item),
+  );
+
+  const messages: string[] = [];
+
+  if (allItemsSelected && added.length > 0)
+    messages.push(labelAllItemsSelected);
+  else if (added.length === 1)
+    messages.push(`${added[0].label} ${ariaLabelChosenSingular}`);
+  else if (added.length > 1)
+    messages.push(`${added.length} ${ariaLabelChosenPlural}`);
+
+  if (removed.length === 1)
+    messages.push(`${removed[0].label} ${ariaLabelRemovedSingular}`);
+  else if (removed.length > 1)
+    messages.push(`${removed.length} ${ariaLabelRemovedPlural}`);
+
+  return messages.join(', ');
 }
 /* end a11y utils */
