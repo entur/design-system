@@ -612,11 +612,26 @@
       }
     },
     "ariaLabelJumpToInput": {
-      "defaultValue": {
-        "value": "`${selectedItems.length} valgte elementer, trykk for å hoppe til tekstfeltet`"
-      },
-      "description": "Tekst for skjemleser for å hoppe til input-feltet",
+      "defaultValue": null,
+      "description": "@deprecated Brukes ikke lenger. De valgte elementene er ikke med i\ntab-rekkefølgen, men nås med piltastene fra tekstfeltet.",
       "name": "ariaLabelJumpToInput",
+      "declarations": [
+        {
+          "fileName": "packages/dropdown/src/MultiSelect.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "ariaLabelNavigateToSelected": {
+      "defaultValue": {
+        "value": "`${selectedItems.length} valgte, bruk venstre piltast for å gå til dem`"
+      },
+      "description": "Tekst for skjermleser i tekstfeltet om hvordan man når de valgte elementene",
+      "name": "ariaLabelNavigateToSelected",
       "declarations": [
         {
           "fileName": "packages/dropdown/src/MultiSelect.tsx",

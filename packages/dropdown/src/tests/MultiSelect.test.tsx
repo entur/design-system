@@ -1,3 +1,4 @@
+import React from 'react';
 import { act, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { axe, toHaveNoViolations } from 'jest-axe';
@@ -775,6 +776,113 @@ describe('MultiSelect', () => {
         'aria-invalid',
         'false',
       );
+    });
+  });
+
+  describe('screen reader support', () => {
+    const ControlledMultiSelect = ({
+      initialSelectedItems,
+    }: {
+      initialSelectedItems: NormalizedDropdownItemType[];
+    }) => {
+      const [selectedItems, setSelectedItems] =
+        React.useState(initialSelectedItems);
+      return (
+        <MultiSelect
+          label="test label"
+          items={testItems}
+          selectedItems={selectedItems}
+          onChange={setSelectedItems}
+        />
+      );
+    };
+
+    const getRemoveButton = (label: string) =>
+      screen.getByRole('button', {
+        name: `${label} valgt, trykk for å fjerne valg`,
+      });
+
+    test('selected item tags have no click handler, so VoiceOver in Safari stops only on the close buttons', () => {
+      const { container } = render(
+        <ControlledMultiSelect
+          initialSelectedItems={normalizedTestItems.slice(0, 3)}
+        />,
+      );
+
+      container
+        .querySelectorAll<HTMLElement>('.eds-dropdown__selected-item-tag')
+        .forEach(tag => expect(tag.onclick).toBeNull());
+    });
+
+    test('selected items are left out of the tab order and reached with the arrow keys', async () => {
+      const user = userEvent.setup();
+      render(
+        <ControlledMultiSelect
+          initialSelectedItems={normalizedTestItems.slice(0, 3)}
+        />,
+      );
+      const input = screen.getByRole('combobox', { name: 'test label' });
+
+      await user.tab();
+      expect(input).toHaveFocus();
+      expect(input).toHaveAccessibleDescription(
+        '3 valgte, bruk venstre piltast for å gå til dem',
+      );
+
+      await user.keyboard('{ArrowLeft}');
+      expect(getRemoveButton('Stavanger')).toHaveFocus();
+      await user.keyboard('{ArrowLeft}');
+      expect(getRemoveButton('Bergen')).toHaveFocus();
+
+      await user.keyboard('{ArrowRight}{ArrowRight}');
+      expect(input).toHaveFocus();
+    });
+
+    test('removes the focused selected item with Backspace', async () => {
+      const user = userEvent.setup();
+      render(
+        <ControlledMultiSelect
+          initialSelectedItems={normalizedTestItems.slice(0, 3)}
+        />,
+      );
+
+      await user.tab();
+      await user.keyboard('{ArrowLeft}{ArrowLeft}{Backspace}');
+
+      expect(
+        screen.queryByRole('button', { name: /^Bergen valgt/ }),
+      ).not.toBeInTheDocument();
+      expect(getRemoveButton('Stavanger')).toHaveFocus();
+    });
+
+    test.each(['disabled', 'readOnly'])(
+      'does not describe the arrow key navigation when %s',
+      prop => {
+        render(
+          <MultiSelect
+            label="test label"
+            items={testItems}
+            selectedItems={normalizedTestItems.slice(0, 3)}
+            onChange={jest.fn()}
+            {...{ [prop]: true }}
+          />,
+        );
+
+        expect(document.querySelector('input')).not.toHaveAttribute(
+          'aria-describedby',
+        );
+        expect(
+          screen.queryByText('3 valgte, bruk venstre piltast for å gå til dem'),
+        ).not.toBeInTheDocument();
+      },
+    );
+
+    test('does not describe the arrow key navigation when nothing is selected', () => {
+      render(<ControlledMultiSelect initialSelectedItems={[]} />);
+
+      expect(
+        screen.getByRole('combobox', { name: 'test label' }),
+      ).not.toHaveAttribute('aria-describedby');
     });
   });
 });
