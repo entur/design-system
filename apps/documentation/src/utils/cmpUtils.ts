@@ -26,10 +26,12 @@ export type UcLabels = DefaultLabels;
 let cmpRequest: Promise<Usercentrics | null> | null = null;
 
 /** Starts Usercentrics and hands back the SDK. It reaches for `window` as it loads, so it
- *  is imported here rather than at the top of the module, keeping it out of the build.
+ *  is imported lazily here, only ever evaluating in the browser and never during SSR.
  *  Resolves null when Usercentrics cannot be reached — usually an ad blocker. */
 export async function getCMP(): Promise<Usercentrics | null> {
   if (typeof window === 'undefined') return null;
+  // Hold on to the request so only one SDK instance ever starts, but not to a failure: a
+  // connection that drops for a moment should not rule out Usercentrics for the visit.
   if (!cmpRequest) {
     cmpRequest = (async () => {
       try {
@@ -37,25 +39,20 @@ export async function getCMP(): Promise<Usercentrics | null> {
           '@usercentrics/cmp-browser-sdk'
         );
         const cmp = new UsercentricsSdk(UC_SETTINGS_ID);
-        // A blocked request can leave the SDK waiting rather than failing, and the banner
-        // would then never resolve either way. Give up after the timeout instead.
-        const started = await Promise.race([
-          cmp.init().then(() => true),
-          new Promise<false>(resolve =>
-            setTimeout(() => resolve(false), 10_000),
-          ),
-        ]);
-        return started ? cmp : null;
+        await cmp.init();
+        return cmp;
       } catch {
+        cmpRequest = null;
         return null;
       }
     })();
   }
-  const cmp = await cmpRequest;
-  // Hold on to the request so it only runs once, but not to a failure: a connection that
-  // drops for a moment should not rule out Usercentrics for the rest of the visit.
-  if (!cmp) cmpRequest = null;
-  return cmp;
+  // A blocked request can leave the SDK waiting rather than failing, and the banner would
+  // then never resolve either way. Give up on it after the timeout instead.
+  return Promise.race([
+    cmpRequest,
+    new Promise<null>(resolve => setTimeout(() => resolve(null), 10_000)),
+  ]);
 }
 
 export async function getPostHog() {
@@ -67,7 +64,7 @@ export async function getPostHog() {
 
 /** Polls until the condition holds. Resolves false when the timeout is reached, so a
  *  blocked script doesn't leave us polling for the lifetime of the page. */
-export function waitFor(
+function waitFor(
   conditionFunction: () => boolean,
   interval = 100,
   timeout = 10_000,
@@ -100,34 +97,22 @@ export async function fetchUcLabels(): Promise<UcLabels | null> {
   return labels;
 }
 
-/** The categories with their services, texts and current consent, as one tree. */
-export async function fetchUcCategories(): Promise<Category[] | null> {
-  const cmp = await getCMP();
-  if (!cmp) return null;
-  try {
-    return await cmp.getCategoriesFullInfo();
-  } catch {
-    return null;
-  }
-}
-
 /** Writes consent for whole categories. Usercentrics works per service, so each category is
  *  written as a decision for every service in it. It keeps ownership of storing the choice,
  *  unblocking scripts and logging the consent record. */
 export async function saveCategoryConsents(
-  categoryConsents: { id: string; consent: boolean }[],
+  categoryConsents: Record<string, boolean>,
 ) {
   const cmp = await getCMP();
   if (!cmp) return false;
   try {
     const categories = await cmp.getCategoriesFullInfo();
-    const wanted = new Map(categoryConsents.map(c => [c.id, c.consent]));
     const decisions: UserDecision[] = categories
-      .filter(category => wanted.has(category.slug))
+      .filter(category => category.slug in categoryConsents)
       .flatMap(category =>
         category.services.map(service => ({
           serviceId: service.id,
-          status: wanted.get(category.slug) ?? false,
+          status: categoryConsents[category.slug],
         })),
       );
     await cmp.updateServices(decisions);
@@ -153,10 +138,10 @@ export async function saveAllConsents(accepted: boolean) {
   }
 }
 
-export const POSTHOG_SERVICE_NAME = 'PostHog.com';
+const POSTHOG_SERVICE_NAME = 'PostHog.com';
 
 /** Whether the visitor has said yes to the service that carries our analytics. */
-export function hasAnalyticsConsent(cmp: Usercentrics): boolean {
+function hasAnalyticsConsent(cmp: Usercentrics): boolean {
   return (
     cmp
       .getServicesBaseInfo()
@@ -165,17 +150,12 @@ export function hasAnalyticsConsent(cmp: Usercentrics): boolean {
   );
 }
 
-export async function getAnalyticsConsent() {
-  const cmp = await getCMP();
-  if (!cmp) return false;
-  return hasAnalyticsConsent(cmp);
-}
-
 /** Whether analytics was running when the page was loaded. Withdrawing consent has to
  *  reload the page, and only a change from yes to no calls for that. */
 let hadAnalyticsConsent: boolean | null = null;
 
-/** Run after every consent change. Usercentrics unblocks the scripts and logs the consent
+/** Run once the SDK is up, so a consent restored from an earlier visit starts PostHog, and
+ *  after every consent change. Usercentrics unblocks the scripts and logs the consent
  *  itself; this is the part that is ours — starting PostHog when it is allowed, and getting
  *  rid of it when it no longer is.
  *
@@ -203,11 +183,4 @@ export async function afterConsentChange(cmp: Usercentrics) {
     posthog?.identify(cmp.getControllerId());
     posthog?.opt_in_capturing();
   }
-}
-
-/** Called once the SDK is up, so a consent restored from an earlier visit starts PostHog and
- *  is remembered as the state that later changes are compared against. */
-export async function initialiseConsentState(cmp: Usercentrics) {
-  hadAnalyticsConsent = null;
-  await afterConsentChange(cmp);
 }

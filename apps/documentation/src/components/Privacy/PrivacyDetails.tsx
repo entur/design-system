@@ -10,7 +10,6 @@ import {
   Category,
   Service,
   UcLabels,
-  fetchUcCategories,
   fetchUcLabels,
   getCMP,
   saveCategoryConsents,
@@ -139,9 +138,15 @@ export const PrivacyDetails = () => {
 
   const load = React.useCallback(async () => {
     const cmp = await getCMP();
-    const fetchedCategories = await fetchUcCategories();
+    if (!cmp) {
+      setUnavailable(true);
+      return;
+    }
+    const fetchedCategories = await cmp
+      .getCategoriesFullInfo()
+      .catch(() => null);
     const bundle = await fetchUcLabels();
-    if (!cmp || !fetchedCategories || !bundle) {
+    if (!fetchedCategories || !bundle) {
       setUnavailable(true);
       return;
     }
@@ -176,9 +181,7 @@ export const PrivacyDetails = () => {
   }, [categories]);
 
   const persist = async (values: Record<string, boolean>) => {
-    const ok = await saveCategoryConsents(
-      Object.entries(values).map(([id, consent]) => ({ id, consent })),
-    );
+    const ok = await saveCategoryConsents(values);
     if (!ok) {
       setUnavailable(true);
       return;

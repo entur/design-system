@@ -1,26 +1,12 @@
-import React, { useCallback, useEffect, useMemo, useRef } from 'react';
-import { usePersistedState } from './SettingsContext';
+import React, { useCallback, useEffect, useMemo } from 'react';
 import {
   UcLabels,
+  afterConsentChange,
   fetchUcLabels,
   getCMP,
-  initialiseConsentState,
 } from 'src/utils/cmpUtils';
 
-export type ConsentValue = 'undecided' | 'accepted' | 'denied' | undefined;
-
-export type ConsentSet = {
-  [key: string]: ConsentValue;
-};
-
-type ConsentProviderProps = {
-  initialConsents?: ConsentSet | null;
-  children: React.ReactNode;
-};
-
 type ConsentContextType = {
-  consents: ConsentSet | null;
-  updateConsents: (updatedValues: ConsentSet) => void;
   /** Texts for the consent banner, as authored in the Usercentrics admin */
   bannerLabels: UcLabels | null;
   isBannerOpen: boolean;
@@ -38,13 +24,10 @@ type ConsentContextType = {
 const ConsentContext = React.createContext<ConsentContextType | null>(null);
 
 export const ConsentProvider = ({
-  initialConsents = null,
   children,
-}: ConsentProviderProps) => {
-  const [consents, setConsents] = usePersistedState(
-    'consents',
-    initialConsents,
-  );
+}: {
+  children: React.ReactNode;
+}) => {
   const [bannerLabels, setBannerLabels] = React.useState<UcLabels | null>(null);
   const [isBannerOpen, setBannerOpen] = React.useState(false);
   const [isBannerFocusRequested, setBannerFocusRequested] =
@@ -52,21 +35,10 @@ export const ConsentProvider = ({
   // Assume it works until proven otherwise, so the entry points don't flicker away on a
   // slow connection.
   const [canOpenBanner, setCanOpenBanner] = React.useState(true);
-  const labelsRequest = useRef<Promise<UcLabels | null> | null>(null);
-
-  const updateConsents = (updatedValues: ConsentSet) => {
-    setConsents({ ...consents, ...updatedValues });
-  };
 
   const loadBannerLabels = useCallback(async () => {
-    if (!labelsRequest.current) {
-      labelsRequest.current = fetchUcLabels();
-    }
-    const labels = await labelsRequest.current;
-    // Hold on to the request so it only runs once, but not to a failure: a connection that
-    // drops for a moment should not rule out the texts for the rest of the visit.
+    const labels = await fetchUcLabels();
     if (labels) setBannerLabels(labels);
-    else labelsRequest.current = null;
     return labels;
   }, []);
 
@@ -107,7 +79,7 @@ export const ConsentProvider = ({
       }
       // A consent carried over from an earlier visit starts PostHog here, since nothing
       // else will announce it.
-      await initialiseConsentState(cmp);
+      await afterConsentChange(cmp);
       if (cancelled) return;
       if (!cmp.getIsConsentRequired()) return;
       const labels = await loadBannerLabels();
@@ -123,8 +95,6 @@ export const ConsentProvider = ({
 
   const contextValue = useMemo(
     () => ({
-      consents,
-      updateConsents,
       bannerLabels,
       isBannerOpen,
       isBannerFocusRequested,
@@ -133,9 +103,7 @@ export const ConsentProvider = ({
       closeBanner,
       clearBannerFocusRequest,
     }),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     [
-      consents,
       bannerLabels,
       isBannerOpen,
       isBannerFocusRequested,
