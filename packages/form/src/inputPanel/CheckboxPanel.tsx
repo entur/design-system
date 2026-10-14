@@ -30,6 +30,10 @@ export type CheckboxPanelProps = {
    * @default false
    */
   readOnly?: boolean;
+  /** Beskrivelse som leses opp av skjermlesere når CheckboxPanel er skrivebeskyttet (readonly)
+   * @default 'Kan ikke endres'
+   */
+  readOnlyLabelDescription?: string;
   /** */
   style?: React.CSSProperties;
 } & Omit<
