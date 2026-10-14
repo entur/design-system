@@ -187,7 +187,7 @@ export const useMultiselectUtils = <ValueType>({
 
 // called when the state changes:
 // selectedItem, highlightedIndex, inputValue or isOpen.
-export function getA11yStatusMessage<ValueType>(
+export function getResultsStatusMessage<ValueType>(
   options: UseComboboxState<NormalizedDropdownItemType<ValueType>> & {
     selectAllItemIncluded?: boolean;
     resultCount: number;
