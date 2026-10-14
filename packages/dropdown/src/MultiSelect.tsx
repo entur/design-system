@@ -110,10 +110,14 @@ export type MultiSelectProps<ValueType> = Omit<
    * @default "valgte"
    */
   ariaLabelChosenPlural?: string;
-  /** Tekst for skjemleser for å hoppe til input-feltet
-   * @default `${selectedItems.length} valgte elementer, trykk for å hoppe til tekstfeltet`
+  /** @deprecated Brukes ikke lenger. De valgte elementene er ikke med i
+   * tab-rekkefølgen, men nås med piltastene fra tekstfeltet.
    */
   ariaLabelJumpToInput?: string;
+  /** Tekst for skjermleser i tekstfeltet om hvordan man når de valgte elementene
+   * @default `${selectedItems.length} valgte, bruk venstre piltast for å gå til dem`
+   */
+  ariaLabelNavigateToSelected?: string;
   /** Callback som kalles når brukeren går ut av input-feltet */
   onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
   /** Callback når komponenten klikkes */
@@ -159,7 +163,8 @@ export const MultiSelect = React.forwardRef(
       ariaLabelChosenSingular,
       ariaLabelChosenPlural = 'valgte',
       ariaLabelCloseList = 'Lukk liste med valg',
-      ariaLabelJumpToInput = `${selectedItems.length} valgte elementer, trykk for å hoppe til tekstfeltet`,
+      ariaLabelJumpToInput: _deprecatedAriaLabelJumpToInput,
+      ariaLabelNavigateToSelected = `${selectedItems.length} valgte, bruk venstre piltast for å gå til dem`,
       ariaLabelOpenList = 'Åpne liste med valg',
       ariaLabelRemoveSelected = 'trykk for å fjerne valg',
       ariaLabelSelectedItem,
@@ -193,6 +198,13 @@ export const MultiSelect = React.forwardRef(
     const isAllNonAsyncItemsSelected =
       typeof initialItems !== 'function' &&
       selectedItems.length === normalizedItems.length;
+
+    const navigateToSelectedId = `eds-multiselect-navigate-to-selected${useId()}`;
+    const canNavigateToSelected =
+      selectedItems.length > 0 &&
+      selectedItems.length <= maxChips &&
+      !disabled &&
+      !readOnly;
 
     // special 'item' used as Select All entry in the dropdown list
     const selectAllUniqueId = `select-all${useId()}`;
@@ -473,6 +485,9 @@ export const MultiSelect = React.forwardRef(
       disabled: readOnly || disabled,
       placeholder: placeholder,
       tabIndex: disabled || readOnly ? -1 : undefined,
+      'aria-describedby': canNavigateToSelected
+        ? navigateToSelectedId
+        : undefined,
     });
     const labelProps = getLabelProps();
     const menuProps = getMenuProps({
@@ -542,9 +557,9 @@ export const MultiSelect = React.forwardRef(
             },
           )}
         >
-          {selectedItems.length > 1 ? (
-            <VisuallyHidden onClick={() => inputRef.current?.focus()}>
-              {ariaLabelJumpToInput}
+          {canNavigateToSelected ? (
+            <VisuallyHidden id={navigateToSelectedId}>
+              {ariaLabelNavigateToSelected}
             </VisuallyHidden>
           ) : null}
           {selectedItems.length <= maxChips ? (
@@ -555,12 +570,7 @@ export const MultiSelect = React.forwardRef(
                 disabled={disabled}
                 getSelectedItemProps={getSelectedItemProps}
                 index={index}
-                key={
-                  selectedItem?.label +
-                  (typeof selectedItem?.value === 'string'
-                    ? selectedItem.value
-                    : '')
-                }
+                key={index}
                 readOnly={readOnly}
                 removeSelectedItem={() => {
                   removeSelectedItem(selectedItem);
