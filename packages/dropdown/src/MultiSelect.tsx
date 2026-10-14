@@ -39,7 +39,7 @@ import { DropdownProps } from './Dropdown';
 import {
   EMPTY_INPUT,
   clamp,
-  getA11yStatusMessage,
+  getResultsStatusMessage,
   isFunctionWithQueryArgument,
   itemToKey,
   itemToString,
@@ -384,7 +384,7 @@ export const MultiSelect = React.forwardRef(
       },
       // Accessibility
       getA11yStatusMessage: options =>
-        getA11yStatusMessage({
+        getResultsStatusMessage({
           ...options,
           selectAllItemIncluded: !hideSelectAll,
           resultCount: listItems.length,
