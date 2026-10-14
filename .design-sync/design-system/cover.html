@@ -1,0 +1,99 @@
+<!-- @dsCard height=288 -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      html,
+      body {
+        margin: 0;
+      }
+      body {
+        background: var(--basecolors-frame-default);
+      }
+      .cover {
+        position: relative;
+        width: 960px;
+        height: 288px;
+        overflow: hidden;
+        background: var(--basecolors-frame-default);
+      }
+      .cover svg {
+        position: absolute;
+        inset: 0;
+      }
+      .slab {
+        fill: var(--standard-blue);
+      }
+      .lav {
+        fill: var(--contrast-lavender);
+      }
+      .sub {
+        fill: var(--basecolors-frame-subdued);
+      }
+      .peach {
+        fill: var(--colors-brand-peach);
+      }
+      .coral {
+        fill: var(--colors-brand-coral);
+      }
+      .blk {
+        rx: var(--border-radiuses-large);
+      }
+      .leg {
+        rx: calc(var(--space-extra-small) / 2);
+      }
+      .text {
+        position: absolute;
+        left: var(--space-extra-large3);
+        bottom: var(--space-extra-large2);
+        max-width: 440px;
+      }
+      .name {
+        margin: 0;
+        font-family: var(--font-sans);
+        font-weight: var(--font-weights-heading);
+        font-size: 64px;
+        line-height: 0.95;
+        color: var(--basecolors-text-accent);
+      }
+      .tag {
+        margin: var(--space-small) 0 0;
+        font-family: var(--font-sans);
+        font-weight: var(--font-weights-body);
+        font-size: 13px;
+        line-height: 1.4;
+        color: var(--basecolors-text-subdued);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="cover">
+      <svg width="960" height="288" viewBox="0 0 960 288" aria-hidden="true">
+        <!--
+      blocks: standard-blue slab 320×288 (bleeds top, right, bottom); contrast-lavender 96×176; frame-subdued 144×96 (bleeds bottom); brand peach 128×64; brand coral 48×48
+      arrangement: one tall slab on the right with satellites stepping down to the left, all right of x = 480
+      pattern: a literal motif, Linje's travel legs (LegLine, LegBone): three route lines with stop discs, because the system is named for the line a journey follows
+      steps and radii: bars space-extra-small (8px) tall with half that as radius, stop discs space-default (16px) wide, blocks cornered at border-radiuses-large
+    -->
+        <rect class="slab blk" x="640" y="-8" width="328" height="304" />
+        <rect class="lav blk" x="528" y="40" width="96" height="176" />
+        <rect class="sub blk" x="480" y="200" width="144" height="96" />
+        <rect class="peach blk" x="800" y="24" width="128" height="64" />
+        <rect class="coral blk" x="672" y="208" width="48" height="48" />
+        <rect class="coral leg" x="504" y="116" width="432" height="8" />
+        <circle class="coral" cx="512" cy="120" r="8" />
+        <circle class="coral" cx="704" cy="120" r="8" />
+        <circle class="coral" cx="928" cy="120" r="8" />
+        <rect class="peach leg" x="560" y="164" width="336" height="8" />
+        <circle class="peach" cx="568" cy="168" r="8" />
+        <circle class="peach" cx="768" cy="168" r="8" />
+        <circle class="peach" cx="888" cy="168" r="8" />
+      </svg>
+      <div class="text">
+        <p class="name">Entur Linje</p>
+        <p class="tag">Entur's design system.</p>
+      </div>
+    </div>
+  </body>
+</html>
