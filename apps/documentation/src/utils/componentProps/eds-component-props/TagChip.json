@@ -64,6 +64,21 @@
         "name": "string | undefined"
       }
     },
+    "closeButtonTabIndex": {
+      "defaultValue": null,
+      "description": "tabIndex for X-knappen, f.eks. -1 når fokus styres med piltaster",
+      "name": "closeButtonTabIndex",
+      "declarations": [
+        {
+          "fileName": "packages/chip/src/TagChip.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "number | undefined"
+      }
+    },
     "size": {
       "defaultValue": {
         "value": "medium"
