@@ -35,7 +35,7 @@ import { useShadowDomEnvironment } from './useShadowDomEnvironment';
 import {
   EMPTY_INPUT,
   clamp,
-  getA11yStatusMessage,
+  getResultsStatusMessage,
   isFunctionWithQueryArgument,
   itemToString,
   lowerCaseFilterTest,
@@ -244,7 +244,7 @@ export const SearchableDropdown = React.forwardRef(
       },
       // Accessibility
       getA11yStatusMessage: options =>
-        getA11yStatusMessage({ ...options, resultCount: listItems.length }),
+        getResultsStatusMessage({ ...options, resultCount: listItems.length }),
     });
 
     useEffect(() => {
