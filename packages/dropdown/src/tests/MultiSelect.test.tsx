@@ -797,6 +797,13 @@ describe('MultiSelect', () => {
       );
     };
 
+    // The field's feedback text is a status too; downshift's sits on <body>
+    const getStatusMessage = () =>
+      screen
+        .queryAllByRole('status')
+        .find(status => status.parentElement === document.body)?.textContent ??
+      '';
+
     const getRemoveButton = (label: string) =>
       screen.getByRole('button', {
         name: `${label} valgt, trykk for å fjerne valg`,
@@ -838,7 +845,7 @@ describe('MultiSelect', () => {
       expect(input).toHaveFocus();
     });
 
-    test('removes the focused selected item with Backspace', async () => {
+    test('removes the focused selected item with Backspace and announces it', async () => {
       const user = userEvent.setup();
       render(
         <ControlledMultiSelect
@@ -853,6 +860,7 @@ describe('MultiSelect', () => {
         screen.queryByRole('button', { name: /^Bergen valgt/ }),
       ).not.toBeInTheDocument();
       expect(getRemoveButton('Stavanger')).toHaveFocus();
+      await waitFor(() => expect(getStatusMessage()).toBe('Bergen fjernet'));
     });
 
     test.each(['disabled', 'readOnly'])(
@@ -883,6 +891,175 @@ describe('MultiSelect', () => {
       expect(
         screen.getByRole('combobox', { name: 'test label' }),
       ).not.toHaveAttribute('aria-describedby');
+    });
+
+    test('announces a removed item in the shared status region', async () => {
+      const user = userEvent.setup();
+      render(
+        <ControlledMultiSelect
+          initialSelectedItems={normalizedTestItems.slice(0, 3)}
+        />,
+      );
+
+      await user.click(
+        screen.getByRole('button', { name: /^Bergen valgt, trykk for/ }),
+      );
+
+      await waitFor(() => expect(getStatusMessage()).toBe('Bergen fjernet'));
+    });
+
+    test('announces clearing all items as one message', async () => {
+      const user = userEvent.setup();
+      render(
+        <ControlledMultiSelect
+          initialSelectedItems={normalizedTestItems.slice(0, 3)}
+        />,
+      );
+
+      await user.click(screen.getByRole('button', { name: 'Fjern valgte' }));
+
+      await waitFor(() => expect(getStatusMessage()).toBe('3 valg fjernet'));
+    });
+
+    test('announces a selected item in the shared status region', async () => {
+      const user = userEvent.setup();
+      render(<ControlledMultiSelect initialSelectedItems={[]} />);
+
+      await user.click(screen.getByRole('combobox', { name: 'test label' }));
+      await user.click(screen.getByRole('option', { name: 'Oslo' }));
+
+      await waitFor(() => expect(getStatusMessage()).toBe('Oslo valgt'));
+    });
+
+    test('announces selecting every item with «Velg alle» as one message', async () => {
+      const user = userEvent.setup();
+      render(<ControlledMultiSelect initialSelectedItems={[]} />);
+
+      await user.click(screen.getByRole('combobox', { name: 'test label' }));
+      await user.click(screen.getByRole('option', { name: /^Velg alle/ }));
+
+      await waitFor(() => expect(getStatusMessage()).toBe('Alle valgt'));
+    });
+
+    test.each([
+      ['the rest', 3],
+      ['the last item', testItems.length - 1],
+    ])(
+      'announces «Alle valgt» when «Velg alle» selects %s',
+      async (_, alreadySelected) => {
+        const user = userEvent.setup();
+        render(
+          <ControlledMultiSelect
+            initialSelectedItems={normalizedTestItems.slice(0, alreadySelected)}
+          />,
+        );
+
+        await user.click(screen.getByRole('combobox', { name: 'test label' }));
+        await user.click(screen.getByRole('option', { name: /^Velg alle/ }));
+
+        await waitFor(() => expect(getStatusMessage()).toBe('Alle valgt'));
+      },
+    );
+
+    test('announces the item, not «Alle valgt», when the last item is selected by hand', async () => {
+      const user = userEvent.setup();
+      render(
+        <ControlledMultiSelect
+          initialSelectedItems={normalizedTestItems.slice(0, -1)}
+        />,
+      );
+      const lastItem = testItems[testItems.length - 1];
+
+      await user.click(screen.getByRole('combobox', { name: 'test label' }));
+      await user.click(screen.getByRole('option', { name: lastItem }));
+
+      await waitFor(() => expect(getStatusMessage()).toBe(`${lastItem} valgt`));
+    });
+
+    test('does not announce selection changes made by the parent', async () => {
+      const { rerender } = render(
+        <MultiSelect
+          label="test label"
+          items={testItems}
+          selectedItems={normalizedTestItems.slice(0, 3)}
+          onChange={jest.fn()}
+        />,
+      );
+
+      rerender(
+        <MultiSelect
+          label="test label"
+          items={testItems}
+          selectedItems={[]}
+          onChange={jest.fn()}
+        />,
+      );
+
+      await new Promise(resolve => setTimeout(resolve, 300));
+      expect(getStatusMessage()).toBe('');
+    });
+
+    test('keeps the result count message when the parent re-renders with a new array', async () => {
+      const user = userEvent.setup();
+      const selectedItems = normalizedTestItems.slice(0, 1);
+      const { rerender } = render(
+        <MultiSelect
+          label="test label"
+          items={testItems}
+          selectedItems={selectedItems}
+          onChange={jest.fn()}
+        />,
+      );
+
+      await user.click(screen.getByRole('combobox', { name: 'test label' }));
+      rerender(
+        <MultiSelect
+          label="test label"
+          items={testItems}
+          selectedItems={[...selectedItems]}
+          onChange={jest.fn()}
+        />,
+      );
+
+      await waitFor(() =>
+        expect(getStatusMessage()).toMatch(/resultater tilgjengelig/),
+      );
+    });
+
+    test('announces removal of items whose labels are equal but values differ', async () => {
+      const user = userEvent.setup();
+      const items = [
+        { label: 'Stopp', value: { id: 1 } },
+        { label: 'Stopp', value: { id: 2 } },
+      ];
+      const Controlled = () => {
+        const [selectedItems, setSelectedItems] = React.useState(items);
+        return (
+          <MultiSelect
+            label="test label"
+            items={items}
+            selectedItems={selectedItems}
+            onChange={setSelectedItems}
+          />
+        );
+      };
+      render(<Controlled />);
+
+      await user.click(
+        screen.getAllByRole('button', { name: /^Stopp valgt, trykk for/ })[0],
+      );
+
+      await waitFor(() => expect(getStatusMessage()).toBe('Stopp fjernet'));
+    });
+
+    test('selected item tags have no live regions of their own', () => {
+      const { container } = render(
+        <ControlledMultiSelect
+          initialSelectedItems={normalizedTestItems.slice(0, 3)}
+        />,
+      );
+
+      expect(container.querySelector('[aria-live]')).toBeNull();
     });
   });
 });

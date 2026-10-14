@@ -40,6 +40,7 @@ import {
   EMPTY_INPUT,
   clamp,
   getResultsStatusMessage,
+  getSelectionStatusMessage,
   isFunctionWithQueryArgument,
   itemToKey,
   itemToString,
@@ -118,6 +119,15 @@ export type MultiSelectProps<ValueType> = Omit<
    * @default `${selectedItems.length} valgte, bruk venstre piltast for å gå til dem`
    */
   ariaLabelNavigateToSelected?: string;
+  /** Tekst for skjermleser når ett valgt element fjernes, f.eks. «Oslo fjernet»
+   * @default "fjernet"
+   */
+  ariaLabelRemovedSingular?: string;
+  /** Tekst for skjermleser når flere valgte elementer fjernes samtidig,
+   * f.eks. «5 valg fjernet»
+   * @default "valg fjernet"
+   */
+  ariaLabelRemovedPlural?: string;
   /** Callback som kalles når brukeren går ut av input-feltet */
   onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
   /** Callback når komponenten klikkes */
@@ -160,8 +170,10 @@ export const MultiSelect = React.forwardRef(
       selectOnTab = false,
       style,
       variant = 'information',
-      ariaLabelChosenSingular,
+      ariaLabelChosenSingular = 'valgt',
       ariaLabelChosenPlural = 'valgte',
+      ariaLabelRemovedSingular = 'fjernet',
+      ariaLabelRemovedPlural = 'valg fjernet',
       ariaLabelCloseList = 'Lukk liste med valg',
       ariaLabelJumpToInput: _deprecatedAriaLabelJumpToInput,
       ariaLabelNavigateToSelected = `${selectedItems.length} valgte, bruk venstre piltast for å gå til dem`,
@@ -274,6 +286,9 @@ export const MultiSelect = React.forwardRef(
       selectedItems,
     });
 
+    const selectionStatusMessage = useRef('');
+    const selectAllClicked = useRef(false);
+
     const {
       getSelectedItemProps,
       getDropdownProps,
@@ -286,9 +301,30 @@ export const MultiSelect = React.forwardRef(
       itemToString,
       itemToKey,
       ...(environment && { environment }),
-      onSelectedItemsChange({ selectedItems: newSelectedItems }) {
+      onSelectedItemsChange({ selectedItems: newSelectedItems = [] }) {
+        selectionStatusMessage.current = getSelectionStatusMessage({
+          previousSelectedItems: selectedItems,
+          selectedItems: newSelectedItems,
+          allItemsSelected:
+            selectAllClicked.current &&
+            typeof initialItems !== 'function' &&
+            newSelectedItems.length === normalizedItems.length,
+          labelAllItemsSelected,
+          ariaLabelChosenSingular,
+          ariaLabelChosenPlural,
+          ariaLabelRemovedSingular,
+          ariaLabelRemovedPlural,
+        });
+        selectAllClicked.current = false;
         onChange(newSelectedItems);
       },
+      getA11yStatusMessage: selectionStatusMessage.current
+        ? () => {
+            const message = selectionStatusMessage.current;
+            selectionStatusMessage.current = '';
+            return message;
+          }
+        : undefined,
     });
 
     const stateReducer = React.useCallback(
@@ -386,6 +422,7 @@ export const MultiSelect = React.forwardRef(
         // clickedItem means item chosen either via mouse or keyboard
         if (!clickedItem) return;
 
+        selectAllClicked.current = clickedItemIsSelectAll(clickedItem);
         handleListItemClicked({
           clickedItem,
           onChange: setSelectedItems,

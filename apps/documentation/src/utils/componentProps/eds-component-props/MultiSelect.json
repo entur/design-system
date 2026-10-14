@@ -343,7 +343,7 @@
     },
     "ariaLabelChosenSingular": {
       "defaultValue": {
-        "value": "'valgt'"
+        "value": "valgt"
       },
       "description": "Ord for at et element er valgt i entall\neks. 'Element 1, _valgt_'",
       "name": "ariaLabelChosenSingular",
@@ -632,6 +632,40 @@
       },
       "description": "Tekst for skjermleser i tekstfeltet om hvordan man når de valgte elementene",
       "name": "ariaLabelNavigateToSelected",
+      "declarations": [
+        {
+          "fileName": "packages/dropdown/src/MultiSelect.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "ariaLabelRemovedSingular": {
+      "defaultValue": {
+        "value": "fjernet"
+      },
+      "description": "Tekst for skjermleser når ett valgt element fjernes, f.eks. «Oslo fjernet»",
+      "name": "ariaLabelRemovedSingular",
+      "declarations": [
+        {
+          "fileName": "packages/dropdown/src/MultiSelect.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "ariaLabelRemovedPlural": {
+      "defaultValue": {
+        "value": "valg fjernet"
+      },
+      "description": "Tekst for skjermleser når flere valgte elementer fjernes samtidig,\nf.eks. «5 valg fjernet»",
+      "name": "ariaLabelRemovedPlural",
       "declarations": [
         {
           "fileName": "packages/dropdown/src/MultiSelect.tsx",
