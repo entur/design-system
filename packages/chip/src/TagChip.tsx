@@ -13,6 +13,8 @@ export type TagChipProps = {
   onClose: () => void;
   /** Skjermlesertekst for X-knappen */
   closeButtonAriaLabel?: string;
+  /** tabIndex for X-knappen, f.eks. -1 når fokus styres med piltaster */
+  closeButtonTabIndex?: number;
   /** Størrelsen på chip
    * @default 'medium'
    */
@@ -26,6 +28,7 @@ export const TagChip = React.forwardRef<HTMLButtonElement, TagChipProps>(
       className,
       onClose,
       closeButtonAriaLabel,
+      closeButtonTabIndex,
       size = 'medium',
       ...rest
     },
@@ -50,6 +53,7 @@ export const TagChip = React.forwardRef<HTMLButtonElement, TagChipProps>(
           type="button"
           onClick={onClose}
           aria-label={selectedCloseLabel}
+          tabIndex={closeButtonTabIndex}
           ref={ref}
         >
           <CloseSmallIcon aria-hidden />

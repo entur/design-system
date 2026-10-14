@@ -271,6 +271,7 @@
             "className",
             "onClose",
             "closeButtonAriaLabel",
+            "closeButtonTabIndex",
             "size"
           ]
         }
