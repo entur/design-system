@@ -12,16 +12,12 @@ import {
   SettingsProvider,
 } from './src/providers';
 import { SearchProvider } from './src/components/Search/SearchContext';
-import { ConsentBanner } from './src/components/ConsentBanner/ConsentBanner';
-import DocLayout from './src/layouts/DocLayout';
-import { UC_SETTINGS_ID, UC_USE_DRAFT } from './src/utils/cmpUtils';
+import { renderPageElement } from './src/layouts/renderPageElement';
 
 export const wrapRootElement: GatsbySSR['wrapRootElement'] = ({ element }) => {
   return (
     <SettingsProvider>
       <ConsentProvider>
-        {/* Belongs at the very top of the page, ahead of the skip link */}
-        <ConsentBanner />
         <ToastProvider>
           <ColorsProvider>
             <MediaContextProvider>
@@ -37,43 +33,13 @@ export const wrapRootElement: GatsbySSR['wrapRootElement'] = ({ element }) => {
 export const wrapPageElement: GatsbySSR['wrapPageElement'] = ({
   element,
   props,
-}) => {
-  const CUSTOM_LAYOUT_PAGES = [
-    '/',
-    '/stand',
-    '/ressurser/innsikt/brukerundersokelse',
-  ];
-  const normalizedPath = props.location.pathname.replace(/\/$/, '') || '/';
-  if (CUSTOM_LAYOUT_PAGES.includes(normalizedPath)) return <>{element}</>;
-
-  return <DocLayout {...props}>{element}</DocLayout>;
-};
+}) => renderPageElement(element, props);
 
 export const onRenderBody: GatsbySSR['onRenderBody'] = ({
   setHeadComponents,
 }) => {
-  // Keeps Usercentrics from rendering its own banner. The SDK still initialises fully, so
-  // consent storage, script unblocking and consent logging keep working — we only take
-  // over the first layer, see ConsentBanner. Must run before the loader, hence a
-  // synchronous script placed ahead of the async loader tag.
-  const suppressUcUiScript = (
-    <script
-      key="cmp-suppress"
-      dangerouslySetInnerHTML={{
-        __html: 'window.UC_UI_SUPPRESS_CMP_DISPLAY = true;',
-      }}
-    />
-  );
-  const usercentricsScript = (
-    <script
-      key="cmp"
-      id="usercentrics-cmp"
-      src="https://web.cmp.usercentrics.eu/ui/loader.js"
-      data-settings-id={UC_SETTINGS_ID}
-      data-draft={UC_USE_DRAFT ? 'true' : undefined}
-      async
-    ></script>
-  );
+  // The script below stays inert — type="text/plain" keeps the browser from
+  // running it until the Usercentrics SDK unblocks it on consent, matching it on data-usercentrics.
   const posthogScript = (
     <script
       key={`gatsby-posthog-analytics`}
@@ -88,6 +54,6 @@ export const onRenderBody: GatsbySSR['onRenderBody'] = ({
     />
   );
 
-  setHeadComponents([suppressUcUiScript, usercentricsScript, posthogScript]);
+  setHeadComponents([posthogScript]);
   return null;
 };

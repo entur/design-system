@@ -14,7 +14,13 @@ import TableOfContentAside from '@components/Navigations/TableOfContent/TableOfC
 import { TocProvider } from '@components/Navigations/TableOfContent/TocContext';
 import { scrollToHashOnLoad } from '../utils/scrollUtils';
 
-const DocLayout = ({ children, location, pageContext }: PageProps) => {
+/** Gatsby types a page's own props with `children: undefined`, but this is a layout that
+ *  wraps the page, so it takes children. */
+type DocLayoutProps = Omit<PageProps, 'children'> & {
+  children?: React.ReactNode;
+};
+
+const DocLayout = ({ children, location, pageContext }: DocLayoutProps) => {
   useEffect(() => {
     scrollToHashOnLoad();
   }, [location.pathname, location.hash]);
