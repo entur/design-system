@@ -178,9 +178,10 @@ export async function afterConsentChange(cmp: Usercentrics) {
 
   if (consentGiven) {
     // Scripts blocked at page load are unblocked by Usercentrics, so PostHog only appears
-    // after this point.
-    const posthog = await getPostHog();
-    posthog?.identify(cmp.getControllerId());
-    posthog?.opt_in_capturing();
+    // after this point. Not awaited: a blocked PostHog must not hold up the banner.
+    getPostHog().then(posthog => {
+      posthog?.identify(cmp.getControllerId());
+      posthog?.opt_in_capturing();
+    });
   }
 }
