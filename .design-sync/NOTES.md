@@ -82,3 +82,13 @@
 - Previews that open overlays on mount (dropdowns, OverflowMenu, expandable alerts, toasts) use timers/clicks; a component behaviour change can make them render closed - watch those cards on regrade.
 - EXCLUDE/PREFER_BETA in umbrella.mjs switch @entur/button, @entur/layout and @entur/menu to explicit export lists: a NEW export added upstream is still picked up (the list is computed from its .d.ts each run), but check the `not re-exported` lines after upstream changes to those packages. When another component is deprecated, add it to EXCLUDE and delete its preview.
 - Illustrations: Claude Design only sees what is in apps/documentation/src/downloads/illustrations; new illustrations from the design team must be added there. The class-based delivery (url() in the stylesheet) is verified locally; if Claude Design ever stops shipping url() assets from the stylesheet closure, illustrations will render empty while fonts may also break - check both.
+
+## Design System artifact (added 2026-10-14)
+
+- The Claude Design project was migrated to a Design System artifact on claude.ai; `design-system.mjs` reproduces that artifact's files from `ds-bundle/` (checked byte-for-byte against the published artifact on 2026-10-14).
+- Tokens are read from `ds-bundle/tokens/*.css`, not from `_ds_bundle.css`: the bundle's copies resolve aliases to literals and write 8-digit hex as rgba(), which hides the token structure. Values are the same.
+- 635 of 640 tokens go to tokens.json. `outlines-*` (composite values) and `timings-*` (no motion family) stay in bundle.css.
+- Text styles in tokens.json come from the `.eds-h1` … `.eds-sub-label` rules in `_ds_bundle.css`: mobile from the base rule, desktop from `@media screen and (min-width: 50rem)`.
+- tokens.css themes on `data-theme`, not `data-color-mode`; the page sets `data-theme`. Previews set their background to `--basecolors-frame-default` so they work in the dark theme.
+- The `.jsx` re-export stubs go to `components/src/<group>/<Name>/`, and the bundle header's `sourcePath`s are rewritten to match.
+- A system the page edits can drift from the repo (token edits, README edits). Before re-publishing, read the artifact's `tokens.json` and `README.md` and carry page edits back into the sources, or they are overwritten.
