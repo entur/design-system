@@ -108,7 +108,7 @@
     "outputs": ["FilterChip.json"]
   },
   "chip/src/TagChip.tsx": {
-    "hash": "0ce73a33b6280476da2145eced14afd1",
+    "hash": "877a6bf3e70adb21174b8ad44c81eebd",
     "outputs": ["TagChip.json"]
   },
   "datepicker/src/DatePicker/Calendar.tsx": {
