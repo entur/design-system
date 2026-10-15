@@ -7,10 +7,18 @@ import {
   mkdirSync,
   readFileSync,
   readdirSync,
+  realpathSync,
   rmSync,
   writeFileSync,
 } from 'node:fs';
-import { dirname, isAbsolute, join, relative, resolve } from 'node:path';
+import {
+  basename,
+  dirname,
+  isAbsolute,
+  join,
+  relative,
+  resolve,
+} from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
@@ -664,8 +672,10 @@ function main() {
     fail(
       `no illustrations in ${bundle}; run node .design-sync/illustrations.mjs publish ${bundleArg} first`,
     );
-  // out is wiped below, so keep it inside .design-sync/.cache.
-  const fromCache = relative(join(HERE, '.cache'), out);
+  // out is wiped below, so keep it inside .design-sync/.cache, symlinks resolved.
+  const real = p =>
+    existsSync(p) ? realpathSync(p) : join(real(dirname(p)), basename(p));
+  const fromCache = relative(real(join(HERE, '.cache')), real(out));
   if (!fromCache || fromCache.startsWith('..') || isAbsolute(fromCache))
     fail(`out must be a folder inside ${join(HERE, '.cache')}`);
   rmSync(out, { recursive: true, force: true });
