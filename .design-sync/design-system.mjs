@@ -499,7 +499,7 @@ function tokensCss(t) {
   const v = s => s.replace(/\{([^}]+)\}/g, 'var(--$1)');
   const root = [`/* ${TITLE} — generated from tokens.json */`];
   const darkLines = [];
-  root.push(':root, [data-theme="light"] {');
+  root.push(':root, [data-color-mode="light"] {');
   for (const tok of t.color.tokens) {
     const l = typeof tok.value === 'string' ? tok.value : tok.value.light;
     root.push(`  --${tok.name}: ${v(l)};`);
@@ -509,7 +509,7 @@ function tokensCss(t) {
   }
   for (const tok of t.shadow.tokens)
     root.push(`  --${tok.name}: ${tok.value};`);
-  root.push('}', '[data-theme="dark"] {', ...darkLines, '}', ':root {');
+  root.push('}', '[data-color-mode="dark"] {', ...darkLines, '}', ':root {');
   for (const f of ['spacing', 'radius', ...OTHER_FAMILIES])
     for (const tok of t[f].tokens) root.push(`  --${tok.name}: ${tok.value};`);
   for (const [k, s] of Object.entries(t.type.families))
@@ -531,11 +531,11 @@ function tokensCss(t) {
   return root.join('\n') + '\n';
 }
 
-// Declarations that tokens.css now owns are cut, so a token edited on the page wins.
+// Light token declarations are cut so a page edit wins; dark ones stay, as the page regenerates tokens.css without data-color-mode.
 function bundleCss(css, lifted) {
   const cuts = [];
   for (const r of rules(css))
-    if (LIGHT.has(r.sel) || DARK.has(r.sel))
+    if (LIGHT.has(r.sel))
       for (const d of r.decls) if (lifted.has(d.name)) cuts.push(d);
   cuts.sort((a, b) => a.start - b.start);
   let out = '';

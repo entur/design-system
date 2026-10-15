@@ -91,7 +91,7 @@ The sync procedure is in AGENTS.md. Follow it on every run.
 - Tokens are read from `ds-bundle/tokens/*.css`, not from `_ds_bundle.css`: the bundle's copies resolve aliases to literals and write 8-digit hex as rgba(), which hides the token structure. Values are the same.
 - 635 of 640 tokens go to tokens.json. `outlines-*` (composite values) and `timings-*` (no motion family) stay in bundle.css.
 - Text styles in tokens.json come from the `.eds-h1` … `.eds-sub-label` rules in `_ds_bundle.css`: mobile from the base rule, desktop from `@media screen and (min-width: 50rem)`.
-- tokens.css themes on `data-theme`, not `data-color-mode`; the page sets `data-theme`. Previews set their background to `--basecolors-frame-default` so they work in the dark theme.
+- Dark mode switches on `data-color-mode` only. tokens.css uses it, and bundle.css keeps its `[data-color-mode=dark]` token values, since the page regenerates tokens.css on its own selectors after a token edit. Only light values are cut from bundle.css, so a dark token edited on the page does not win. Previews set their background to `--basecolors-frame-default` so they work in the dark theme.
 - The `.jsx` re-export stubs go to `components/src/<group>/<Name>/`, and the bundle header's `sourcePath`s are rewritten to match.
 - A system the page edits can drift from the repo (token edits, README edits). Before re-publishing, read the artifact's `tokens.json` and `README.md` and carry page edits back into the sources, or they are overwritten.
 
