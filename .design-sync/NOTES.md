@@ -1,5 +1,7 @@
 # design-sync notes (Entur Linje)
 
+The sync procedure is in AGENTS.md. Follow it on every run.
+
 ## Setup
 
 - Monorepo with 21 component packages + @entur/icons; the converter bundles ONE package, so `.design-sync/umbrella.mjs` generates a synthetic `@entur/linje` package in `.design-sync/.cache/linje/` (gitignored) after `yarn build:packages`. `cfg.buildCmd` runs both.

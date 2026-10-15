@@ -24,7 +24,7 @@ The Linje design system lives as a Design System artifact on claude.ai, "Entur L
 
 Requires Node 24.14.0, `corepack yarn`, Claude Code logged in to claude.ai, and edit access to the artifact.
 
-1. Type `/design-sync` in Claude Code from the repo root (Claude can't start it for you), and ask for a build only, then a publish to the artifact. `config.json` has no `projectId`, so `/design-sync` has no standalone project to upload to; decline if it offers to create one.
+1. Type `/design-sync` in Claude Code from the repo root (Claude can't start it for you), and ask for a sync to the artifact. Claude follows `.design-sync/AGENTS.md`: it builds, adds or fixes previews for new, changed and removed components, checks the cards and publishes. `config.json` has no `projectId`, so `/design-sync` has no standalone project to upload to; decline if it offers to create one.
 2. Build. Claude stages the converter from the skill's folder and runs, from the repo root:
 
    ```sh
