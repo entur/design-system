@@ -19,7 +19,7 @@ Check each item. Every fix goes into the repo files under `.design-sync/`, never
 - **Removed component**: has a preview but is no longer exported. Delete the preview, and any `config.json` entries for it (`overrides`, `dtsPropsFor`, `componentSrcMap`).
 - **Changed API**: a preview that fails to compile or render, or that uses a prop that is gone or renamed. Rewrite it against the new `.d.ts`. Also compare the hand-written `dtsPropsFor` bodies in `config.json` with the package source.
 - **Build output warnings**:
-  - `not re-exported` from `umbrella.mjs`: a new export in button, layout or menu. Include it unless it is internal.
+  - `not re-exported` from `umbrella.mjs`: the names left out on purpose (`EXCLUDE`, `PREFER_BETA`). Expected; new exports are picked up automatically.
   - A package missing from `apps/code-playground/src/index.scss`: add it there.
   - `[GRID_OVERFLOW]`: add a card override in `config.json`.
   - Any other warning not listed in NOTES.md: fix the cause.
