@@ -78,7 +78,7 @@
 - Beta handling: stable wins name clashes. If typography/beta replaces the stable components upstream, revisit the BETA list in umbrella.mjs.
 - Card-layout overrides (`cfg.overrides`, 48 entries) were derived from `[GRID_OVERFLOW]`; new preview content can make other cards overflow - check validate warns.
 - Tokens coverage must stay at 0 missing for all six @entur/tokens/dist/\*.css files (the user requires exact token parity) - re-run the coverage check after any tokens change.
-- Build assumptions: Node 24.14.0, `corepack yarn` 4.13.0, Playwright chromium-headless-shell v1243 in ~/Library/Caches/ms-playwright.
+- Build assumptions: Node 24.14.0, `corepack yarn` 4.13.0. Playwright must match the cached Chromium: read the `chromium_headless_shell-<rev>` folder in ~/Library/Caches/ms-playwright and install the playwright release whose `browsers.json` pins that revision (1234 = playwright 1.62.1, 1243 = 1.63.0); check with `curl -s https://unpkg.com/playwright-core@<v>/browsers.json`.
 - Previews that open overlays on mount (dropdowns, OverflowMenu, expandable alerts, toasts) use timers/clicks; a component behaviour change can make them render closed - watch those cards on regrade.
 - EXCLUDE/PREFER_BETA in umbrella.mjs switch @entur/button, @entur/layout and @entur/menu to explicit export lists: a NEW export added upstream is still picked up (the list is computed from its .d.ts each run), but check the `not re-exported` lines after upstream changes to those packages. When another component is deprecated, add it to EXCLUDE and delete its preview.
 - Illustrations: Claude Design only sees what is in apps/documentation/src/downloads/illustrations; new illustrations from the design team must be added there. The class-based delivery (url() in the stylesheet) is verified locally; if Claude Design ever stops shipping url() assets from the stylesheet closure, illustrations will render empty while fonts may also break - check both.
@@ -92,3 +92,14 @@
 - tokens.css themes on `data-theme`, not `data-color-mode`; the page sets `data-theme`. Previews set their background to `--basecolors-frame-default` so they work in the dark theme.
 - The `.jsx` re-export stubs go to `components/src/<group>/<Name>/`, and the bundle header's `sourcePath`s are rewritten to match.
 - A system the page edits can drift from the repo (token edits, README edits). Before re-publishing, read the artifact's `tokens.json` and `README.md` and carry page edits back into the sources, or they are overwritten.
+
+## Artifact update run (2026-10-15)
+
+- `projectId` was removed from config.json: the standalone project (closes 2026-12-14) is no longer a sync target, so `/design-sync` only builds. Publishing goes to the artifact (README, Updating the design system).
+- `/design-sync` can only be started by the user (the skill is not model-invocable); Claude then stages `.ds-sync/` from the skill's folder and runs the README's commands.
+- Create `.design-sync/.cache/` before redirecting logs into it; a missing folder made `yarn build:packages` fail silently while the later steps ran on stale `dist/`.
+- `design-system.mjs` skips dot-files: Finder's `.DS_Store` in `ds-bundle/components/` crashed it.
+- The live artifact's index has keys `design-system.mjs` does not write (a `notes` asset group, `lastChange`, `docs.sections`). Never publish the generated `design-system.json` over it.
+- The live artifact holds `assets/notes/COMPONENTS.md` and `MIGRATION-REPORT.md` from the migration; they are not in the repo. Leave them unless the owner asks to remove them.
+- The commit hook runs prettier on `design-system/cover.html`, so the cover differs from the live one in formatting only.
+- The live README's first paragraph was edited on the page ("the 147 components plus all `@entur/icons` icons"). conventions.md keeps the original wording, which has no count to go stale.
