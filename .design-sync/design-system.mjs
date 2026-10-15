@@ -131,6 +131,17 @@ const fail = msg => {
   console.error(`design-system: ${msg}`);
   process.exit(1);
 };
+// Fails on a missing path or a ds-bundle path left behind, so stale paths never ship.
+const rewrite = (p, pairs) => {
+  let s = read(p);
+  for (const [from, to] of pairs) {
+    if (!s.includes(from)) fail(`${p}: not found: ${from}`);
+    s = s.replaceAll(from, to);
+  }
+  const left = /_ds_bundle|\.prompt\.md/.exec(s);
+  if (left) fail(`${p}: ${left[0]} left after rewrite`);
+  return s;
+};
 
 // Comments are blanked, not removed, so offsets into the original text stay valid.
 const blankComments = css =>
@@ -569,10 +580,9 @@ function components(bundle, out) {
     const base = join(dir, group, name, name);
     write(
       join(out, 'components', name, 'README.md'),
-      read(`${base}.prompt.md`).replace(
-        '`_ds_bundle.js`',
-        '`components/bundle.js`',
-      ),
+      rewrite(`${base}.prompt.md`, [
+        ['`_ds_bundle.js`', '`components/bundle.js`'],
+      ]),
     );
     const types = read(`${base}.d.ts`);
     write(join(out, 'components', name, `${name}.d.ts`), types);
@@ -583,7 +593,7 @@ function components(bundle, out) {
     );
     write(
       join(out, 'components/src', group, name, `${name}.jsx`),
-      read(`${base}.jsx`).replace('_ds_bundle.js', 'components/bundle.js'),
+      rewrite(`${base}.jsx`, [['_ds_bundle.js', 'components/bundle.js']]),
     );
     write(
       join(out, 'components', name, 'preview.html'),
@@ -604,12 +614,13 @@ function preview(card, script) {
   const marker = m[2]
     ? `${first.slice(0, -4)} width=${m[3]} height=${m[4]} -->`
     : first;
-  const style = /<style>([\s\S]*?)<\/style>/
-    .exec(card)[1]
-    .replace(
-      'background:#fff}',
-      'background:var(--basecolors-frame-default,#fff)}',
-    );
+  const css = /<style>([\s\S]*?)<\/style>/.exec(card)?.[1];
+  if (!css?.includes('background:#fff}'))
+    fail(`no background:#fff in card style for ${script}`);
+  const style = css.replace(
+    'background:#fff}',
+    'background:var(--basecolors-frame-default,#fff)}',
+  );
   const mount =
     /<script>\n( {4}var h=React\.createElement[\s\S]*?)\n {2}<\/script>/.exec(
       card,
@@ -693,12 +704,10 @@ function main() {
   for (const f of TOKEN_FILES)
     copy(join(bundle, 'tokens', f), join(out, 'tokens', f));
 
-  let readme = read(join(bundle, 'README.md'));
-  for (const [from, to] of README_PATHS) {
-    if (!readme.includes(from)) console.warn(`  README: not found: ${from}`);
-    readme = readme.replace(from, to);
-  }
-  write(join(out, 'README.md'), readme);
+  write(
+    join(out, 'README.md'),
+    rewrite(join(bundle, 'README.md'), README_PATHS),
+  );
 
   write(
     join(out, 'design-system.json'),
