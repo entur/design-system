@@ -105,3 +105,7 @@ The sync procedure is in AGENTS.md. Follow it on every run.
 - The live artifact holds `assets/notes/COMPONENTS.md` and `MIGRATION-REPORT.md` from the migration; they are not in the repo. Leave them unless the owner asks to remove them.
 - The commit hook runs prettier on `design-system/cover.html`, so the cover differs from the live one in formatting only.
 - The live README's first paragraph was edited on the page ("the 147 components plus all `@entur/icons` icons"). conventions.md keeps the original wording, which has no count to go stale.
+- `yarn build:packages` prints ~90 TypeScript errors from vite:dts (`forwardRef`/`PolymorphicRef` in button, layout, tag and others). They are upstream, don't fail the build and don't change the output; ignore them.
+- When only `design-system.mjs` or `design-system/` changed, skip the full build: run `node .design-sync/design-system.mjs ./ds-bundle` on the existing `ds-bundle/`.
+- Republishing `tokens.css` is accepted, although the type's spec calls it page-generated.
+- Card screenshots: write the preview to a file with `tokens.css`, `components/bundle.css`, `components/lib/react.js` and `components/bundle.js` linked in `<head>` and `data-color-mode` on `<html>`, then `page.goto('file://…')`. `page.setContent` renders blank, because it can't load `file://` resources.
