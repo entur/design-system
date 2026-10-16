@@ -7,6 +7,13 @@ test('Grid renders with class', () => {
   expect(getByTestId('grid')).toHaveClass('eds-layout-grid');
 });
 
+test('Grid defaults to a 20px gap', () => {
+  const { getByTestId } = render(<Grid data-testid="grid" />);
+  expect(getByTestId('grid').style.getPropertyValue('--grid-gap-base')).toBe(
+    'var(--spacing-lg)',
+  );
+});
+
 test('Grid sets plain templateColumns at base only', () => {
   const { getByTestId } = render(
     <Grid data-testid="grid" templateColumns="200px 1fr" />,

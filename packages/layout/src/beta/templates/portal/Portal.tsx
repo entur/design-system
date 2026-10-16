@@ -67,7 +67,7 @@ const PortalRoot: PortalRootComponent = React.forwardRef(
         ref={ref}
         as={as}
         gap="none"
-        columnGap="m"
+        columnGap="lg"
         className={classNames('eds-layout-template-portal', className)}
         style={style}
         {...rest}
