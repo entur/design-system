@@ -54,8 +54,10 @@ test('Flex sets responsive gap as spacing vars for explicit breakpoints', () => 
     <Flex data-testid="flex" gap={{ base: 'xs', m: 'm' }} />,
   );
   const el = getByTestId('flex');
-  expect(el.style.getPropertyValue('--flex-gap-base')).toBe('var(--xs)');
-  expect(el.style.getPropertyValue('--flex-gap-m')).toBe('var(--m)');
+  expect(el.style.getPropertyValue('--flex-gap-base')).toBe(
+    'var(--spacing-xs)',
+  );
+  expect(el.style.getPropertyValue('--flex-gap-m')).toBe('var(--spacing-m)');
   expect(el.style.getPropertyValue('--flex-gap-lg')).toBe('');
   expect(el.style.getPropertyValue('--flex-gap-xl')).toBe('');
 });

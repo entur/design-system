@@ -143,5 +143,5 @@ export const getSpacingValue = (
     return undefined;
   }
 
-  return `var(--${spacing})`;
+  return `var(--spacing-${spacing})`;
 };
