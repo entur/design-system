@@ -30,6 +30,11 @@
       line-height: var(--font-line-height-body-m);
     }
 
+    &--lg {
+      font-size: var(--font-size-body-lg);
+      line-height: var(--font-line-height-body-lg);
+    }
+
     &--xl {
       font-size: var(--font-size-body-xl);
       line-height: var(--font-line-height-body-xl);
@@ -88,6 +93,7 @@
     &--leading {
       font-size: var(--font-size-body-xl);
       line-height: var(--font-line-height-body-xl);
+      letter-spacing: -0.0025em;
       margin-bottom: var(--font-line-height-body-xl);
     }
 
@@ -116,8 +122,8 @@
     }
 
     &--label {
-      font-size: var(--font-size-label-lg);
-      line-height: var(--font-line-height-label-lg);
+      font-size: var(--font-size-label-m);
+      line-height: var(--font-line-height-label-m);
       margin-bottom: var(--font-paragraph-spacing-body-xs);
       font-weight: 600;
     }
@@ -173,121 +179,13 @@
       padding: 0 t.$space-extra-small2;
     }
 
-    // Font weights
-    &--weight-400,
-    &--weight-regular {
-      font-weight: 400;
-    }
-
-    &--weight-500,
+    // Font weights; bold is Nationale DemiBold, the heaviest cut
     &--weight-medium {
-      font-weight: 500;
+      font-weight: var(--font-weight-body);
     }
 
-    &--weight-600,
-    &--weight-semibold {
-      font-weight: 600;
-    }
-
-    &--weight-700,
     &--weight-bold {
-      font-weight: 700;
-    }
-
-    // Spacing modifiers
-    &--spacing-none {
-      margin-top: 0;
-      margin-bottom: 0;
-    }
-
-    &--spacing-xs2 {
-      margin-top: t.$space-extra-small2;
-      margin-bottom: t.$space-extra-small2;
-    }
-
-    &--spacing-xs2-top {
-      margin-top: t.$space-extra-small2;
-      margin-bottom: 0;
-    }
-
-    &--spacing-xs2-bottom {
-      margin-top: 0;
-      margin-bottom: t.$space-extra-small2;
-    }
-
-    &--spacing-xs {
-      margin-top: t.$space-extra-small;
-      margin-bottom: t.$space-extra-small;
-    }
-
-    &--spacing-xs-top {
-      margin-top: t.$space-extra-small;
-      margin-bottom: 0;
-    }
-
-    &--spacing-xs-bottom {
-      margin-top: 0;
-      margin-bottom: t.$space-extra-small;
-    }
-
-    &--spacing-sm {
-      margin-top: t.$space-small;
-      margin-bottom: t.$space-small;
-    }
-
-    &--spacing-sm-top {
-      margin-top: t.$space-small;
-      margin-bottom: 0;
-    }
-
-    &--spacing-sm-bottom {
-      margin-top: 0;
-      margin-bottom: t.$space-small;
-    }
-
-    &--spacing-md {
-      margin-top: t.$space-medium;
-      margin-bottom: t.$space-medium;
-    }
-
-    &--spacing-md-top {
-      margin-top: t.$space-medium;
-      margin-bottom: 0;
-    }
-
-    &--spacing-md-bottom {
-      margin-top: 0;
-      margin-bottom: t.$space-medium;
-    }
-
-    &--spacing-lg {
-      margin-top: t.$space-large;
-      margin-bottom: t.$space-large;
-    }
-
-    &--spacing-lg-top {
-      margin-top: t.$space-large;
-      margin-bottom: 0;
-    }
-
-    &--spacing-lg-bottom {
-      margin-top: 0;
-      margin-bottom: t.$space-large;
-    }
-
-    &--spacing-xl {
-      margin-top: t.$space-extra-large;
-      margin-bottom: t.$space-extra-large;
-    }
-
-    &--spacing-xl-top {
-      margin-top: t.$space-extra-large;
-      margin-bottom: 0;
-    }
-
-    &--spacing-xl-bottom {
-      margin-top: 0;
-      margin-bottom: t.$space-extra-large;
+      font-weight: var(--font-weight-heading);
     }
 
     // Komponenter
@@ -470,9 +368,13 @@
       padding-left: t.$space-extra-small;
     }
 
+    // :where keeps the default margin overridable by the spacing prop
+    &--numbered-list > :where(.eds-text--list-item) {
+      margin-bottom: var(--font-paragraph-spacing-body-m);
+    }
+
     &--numbered-list > .eds-text--list-item {
       counter-increment: eds-numbered-list-counter;
-      margin-bottom: var(--font-paragraph-spacing-body-m);
       position: relative;
       color: var(--components-typography-list-standard-text-accent);
 
@@ -481,7 +383,7 @@
       }
 
       &::before {
-        color: var(--primary-text-color);
+        color: var(--components-typography-list-standard-text-accent);
         position: absolute;
         font-weight: var(--font-weight-heading);
         left: -(t.$space-extra-large2);
@@ -504,6 +406,102 @@
       display: block;
       font-weight: var(--font-weight-heading);
       margin-bottom: t.$space-extra-small;
+    }
+
+    // Spacing modifiers, last so they override component margins
+    &--spacing-none {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    &--spacing-xs2 {
+      margin-top: t.$space-extra-small2;
+      margin-bottom: t.$space-extra-small2;
+    }
+
+    &--spacing-xs2-top {
+      margin-top: t.$space-extra-small2;
+      margin-bottom: 0;
+    }
+
+    &--spacing-xs2-bottom {
+      margin-top: 0;
+      margin-bottom: t.$space-extra-small2;
+    }
+
+    &--spacing-xs {
+      margin-top: t.$space-extra-small;
+      margin-bottom: t.$space-extra-small;
+    }
+
+    &--spacing-xs-top {
+      margin-top: t.$space-extra-small;
+      margin-bottom: 0;
+    }
+
+    &--spacing-xs-bottom {
+      margin-top: 0;
+      margin-bottom: t.$space-extra-small;
+    }
+
+    &--spacing-sm {
+      margin-top: t.$space-small;
+      margin-bottom: t.$space-small;
+    }
+
+    &--spacing-sm-top {
+      margin-top: t.$space-small;
+      margin-bottom: 0;
+    }
+
+    &--spacing-sm-bottom {
+      margin-top: 0;
+      margin-bottom: t.$space-small;
+    }
+
+    &--spacing-md {
+      margin-top: t.$space-medium;
+      margin-bottom: t.$space-medium;
+    }
+
+    &--spacing-md-top {
+      margin-top: t.$space-medium;
+      margin-bottom: 0;
+    }
+
+    &--spacing-md-bottom {
+      margin-top: 0;
+      margin-bottom: t.$space-medium;
+    }
+
+    &--spacing-lg {
+      margin-top: t.$space-large;
+      margin-bottom: t.$space-large;
+    }
+
+    &--spacing-lg-top {
+      margin-top: t.$space-large;
+      margin-bottom: 0;
+    }
+
+    &--spacing-lg-bottom {
+      margin-top: 0;
+      margin-bottom: t.$space-large;
+    }
+
+    &--spacing-xl {
+      margin-top: t.$space-extra-large;
+      margin-bottom: t.$space-extra-large;
+    }
+
+    &--spacing-xl-top {
+      margin-top: t.$space-extra-large;
+      margin-bottom: 0;
+    }
+
+    &--spacing-xl-bottom {
+      margin-top: 0;
+      margin-bottom: t.$space-extra-large;
     }
   }
 }

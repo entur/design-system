@@ -40,7 +40,7 @@ export const ListItem = <C extends React.ElementType = 'li'>({
     <ItemElement
       className={classNames(
         'eds-text--list-item',
-        getSpacingClasses(spacing, 'eds-text--list-item'),
+        getSpacingClasses(spacing, 'eds-text'),
         className,
       )}
       {...rest}

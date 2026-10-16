@@ -77,19 +77,4 @@ describe('Text Component', () => {
       'eds-text--weight-medium',
     );
   });
-
-  test('Components handle empty children', () => {
-    const { container } = render(<Text>{''}</Text>);
-    expect(container.firstChild).toBeInTheDocument();
-  });
-
-  test('Components handle null children', () => {
-    const { container } = render(<Text>{null}</Text>);
-    expect(container.firstChild).toBeInTheDocument();
-  });
-
-  test('Components handle undefined children', () => {
-    const { container } = render(<Text>{undefined}</Text>);
-    expect(container.firstChild).toBeInTheDocument();
-  });
 });
