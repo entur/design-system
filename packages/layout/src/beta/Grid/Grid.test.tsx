@@ -45,8 +45,10 @@ test('Grid sets responsive gap as spacing vars for explicit breakpoints', () => 
     <Grid data-testid="grid" gap={{ base: 'xs', m: 'm' }} />,
   );
   const el = getByTestId('grid');
-  expect(el.style.getPropertyValue('--grid-gap-base')).toBe('var(--xs)');
-  expect(el.style.getPropertyValue('--grid-gap-m')).toBe('var(--m)');
+  expect(el.style.getPropertyValue('--grid-gap-base')).toBe(
+    'var(--spacing-xs)',
+  );
+  expect(el.style.getPropertyValue('--grid-gap-m')).toBe('var(--spacing-m)');
   expect(el.style.getPropertyValue('--grid-gap-lg')).toBe('');
 });
 
@@ -89,7 +91,9 @@ test('Grid sets minHeight and maxHeight as CSS vars', () => {
 test('Grid sets rowGap as CSS var', () => {
   const { getByTestId } = render(<Grid data-testid="grid" rowGap="s" />);
   const el = getByTestId('grid');
-  expect(el.style.getPropertyValue('--grid-row-gap-base')).toBe('var(--s)');
+  expect(el.style.getPropertyValue('--grid-row-gap-base')).toBe(
+    'var(--spacing-s)',
+  );
   expect(el.style.rowGap).toBe('');
 });
 

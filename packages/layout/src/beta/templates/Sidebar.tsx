@@ -220,7 +220,7 @@ const SidebarRoot: SidebarRootComponent = React.forwardRef(
               ref={ref}
               as={as || defaultSidebarElement}
               direction="column"
-              gap="m"
+              gap="lg"
               className={sidebarClassNames}
               style={style}
               {...rest}
@@ -244,7 +244,7 @@ const SidebarRoot: SidebarRootComponent = React.forwardRef(
             ref={ref}
             as={as || defaultSidebarElement}
             direction="column"
-            gap="m"
+            gap="lg"
             className={sidebarClassNames}
             style={collapsedStyle}
             {...rest}
