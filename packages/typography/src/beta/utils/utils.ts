@@ -71,6 +71,24 @@ export function getWeightClassSuffix(
   return replacement;
 }
 
+let warnedMargin = false;
+
+/**
+ * Warn once in development when the legacy `margin` prop is passed
+ */
+export function warnAboutLegacyMargin(margin: unknown): void {
+  if (
+    margin === undefined ||
+    warnedMargin ||
+    process.env.NODE_ENV === 'production'
+  )
+    return;
+  warnedMargin = true;
+  console.warn(
+    '[@entur/typography] margin har ingen effekt på ny typografi. Bruk spacing i stedet.',
+  );
+}
+
 /**
  * Get heading variant based on semantic HTML element
  */
@@ -102,7 +120,7 @@ export function getHeadingVariantFromSemanticType(
  */
 export function getSemanticTypeFromTextVariant(
   variant: TypographyTextVariant | undefined,
-): string {
+): keyof JSX.IntrinsicElements {
   if (!variant) return 'p';
 
   switch (variant) {
