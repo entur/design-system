@@ -2,10 +2,8 @@ const VALID_SPACING_VALUES = [
   '2xs',
   'xs',
   's',
-  's-m',
   'm',
-  'm-l',
-  'l',
+  'lg',
   'xl',
   '2xl',
   '3xl',
@@ -17,6 +15,8 @@ const VALID_SPACING_VALUES = [
   '9xl',
   '10xl',
   '11xl',
+  '12xl',
+  '13xl',
   'none',
 ] as const;
 

@@ -27,7 +27,7 @@ test('Template.Portal renders expected regions and forwards props', () => {
   ).toBeFalsy();
   expect(portal.style.getPropertyValue('--grid-gap-base')).toBe('0');
   expect(portal.style.getPropertyValue('--grid-column-gap-base')).toBe(
-    'var(--m)',
+    'var(--lg)',
   );
 
   const sidebar = getByTestId('sidebar');
