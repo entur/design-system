@@ -7,10 +7,10 @@ import { PolymorphicComponentProps } from '@entur/utils';
 import {
   getSemanticTypeFromTextVariant,
   getSpacingClasses,
+  getWeightClassSuffix,
 } from '../utils/utils';
 
 import {
-  TypographySize,
   TypographySpacing,
   TypographyTextVariant,
   TypographyWeight,
@@ -20,8 +20,8 @@ import './text.scss';
 
 type TextBaseProps = {
   /** Visuell tekststørrelse (typografi-token) */
-  size?: TypographySize;
-  /** Fontvekt */
+  size?: 'xs' | 's' | 'm' | 'lg' | 'xl';
+  /** Fontvekt: `medium` (500) eller `bold` (600). Øvrige verdier er utdaterte. */
   weight?: TypographyWeight;
   /** Variant (kan brukes til spesielle typer tekst som for eksempel caption) */
   variant?: TypographyTextVariant;
@@ -49,6 +49,7 @@ const TypographyText = <C extends React.ElementType = 'p'>({
   ...rest
 }: TextProps<C>) => {
   const BodyElement = as || getSemanticTypeFromTextVariant(variant);
+  const weightSuffix = getWeightClassSuffix(weight);
 
   return (
     <BodyElement
@@ -56,7 +57,7 @@ const TypographyText = <C extends React.ElementType = 'p'>({
         'eds-text',
         variant && `eds-text--${variant}`,
         size && `eds-text--${size}`,
-        weight && `eds-text--weight-${weight}`,
+        weightSuffix && `eds-text--weight-${weightSuffix}`,
         getSpacingClasses(spacing, 'eds-text'),
         className,
       )}

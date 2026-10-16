@@ -105,6 +105,18 @@
       }
     }
 
+    &--label {
+      font-size: var(--font-size-label-m);
+      line-height: var(--font-line-height-label-m);
+      margin-bottom: var(--font-paragraph-spacing-body-xs);
+    }
+
+    &--sublabel {
+      font-size: var(--font-size-label-s);
+      line-height: var(--font-line-height-label-s);
+      margin-bottom: var(--font-paragraph-spacing-body-xs);
+    }
+
     // Note: Default top spacing is added when heading is not first child
     // Text components with :has(+ .eds-heading) will add extra bottom margin when applicable
 

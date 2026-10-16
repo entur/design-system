@@ -44,7 +44,7 @@ export const Link = <C extends React.ElementType = 'a'>({
     <LinkElement
       className={classNames(
         'eds-text--link',
-        getSpacingClasses(spacing, 'eds-text--link'),
+        getSpacingClasses(spacing, 'eds-text'),
         className,
       )}
       {...rest}

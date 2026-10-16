@@ -24,15 +24,15 @@ export type TypographyTextVariant =
 
 export type TypographySize = 'xs' | 's' | 'm' | 'lg' | 'xl' | '2xl';
 
+/** `regular`, `semibold`, `400`, `500` og `600` er utdaterte – bruk `medium` eller `bold` */
 export type TypographyWeight =
-  | 'regular'
   | 'medium'
-  | 'semibold'
   | 'bold'
+  | 'regular'
+  | 'semibold'
   | '400'
   | '500'
-  | '600'
-  | '700';
+  | '600';
 
 export type TypographySpacing =
   | 'none'

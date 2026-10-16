@@ -49,9 +49,7 @@ describe('Link Component', () => {
         Link with spacing
       </Link>,
     );
-    expect(getByText('Link with spacing')).toHaveClass(
-      'eds-text--link--spacing-lg',
-    );
+    expect(getByText('Link with spacing')).toHaveClass('eds-text--spacing-lg');
   });
 
   test('passes through additional props', () => {
