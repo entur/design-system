@@ -23,7 +23,7 @@ import { fileURLToPath } from 'node:url';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const SOURCES = join(HERE, 'design-system');
-const TITLE = 'Entur Linje (beta)';
+const TITLE = 'Entur Linje';
 const NAMESPACE = 'EnturLinje';
 const TOKEN_FILES = [
   'base.css',

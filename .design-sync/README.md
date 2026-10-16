@@ -20,7 +20,7 @@ This folder imports Entur Linje into [Claude Design](https://claude.ai/design) a
 
 ## Updating the design system
 
-The Linje design system lives as a Design System artifact on claude.ai, "Entur Linje (beta)" (https://claude.ai/artifact/SQBrPb5Ln58H4NwvXbnCHV). It keeps its content as files (`tokens.json`, `components/<Name>/`, `assets/illustrations/`, ...). The `/design-sync` skill only builds `ds-bundle/`; `design-system.mjs` turns that into the artifact's files, and Claude publishes them.
+The Linje design system lives as a Design System artifact on claude.ai, "Entur Linje" (https://claude.ai/artifact/SQBrPb5Ln58H4NwvXbnCHV). It keeps its content as files (`tokens.json`, `components/<Name>/`, `assets/illustrations/`, ...). The `/design-sync` skill only builds `ds-bundle/`; `design-system.mjs` turns that into the artifact's files, and Claude publishes them.
 
 Requires Node 24.14.0, `corepack yarn`, Claude Code logged in to claude.ai, and edit access to the artifact.
 

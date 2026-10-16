@@ -1,6 +1,6 @@
 # AGENTS.md – syncing Entur Linje to Claude Design
 
-Follow this whenever a `/design-sync` run starts in this repo, or someone asks to update the Design System artifact. The goal: the artifact "Entur Linje (beta)" (https://claude.ai/artifact/SQBrPb5Ln58H4NwvXbnCHV) matches the packages in this repo. The repo is the source of truth.
+Follow this whenever a `/design-sync` run starts in this repo, or someone asks to update the Design System artifact. The goal: the artifact "Entur Linje" (https://claude.ai/artifact/SQBrPb5Ln58H4NwvXbnCHV) matches the packages in this repo. The repo is the source of truth.
 
 Fix what the steps below find yourself, without asking. Ask the user only about product decisions: whether to include a beta component, whether to hide a component, how a component should be used. Record each answer in NOTES.md.
 
