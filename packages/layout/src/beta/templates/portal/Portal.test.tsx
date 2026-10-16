@@ -27,7 +27,7 @@ test('Template.Portal renders expected regions and forwards props', () => {
   ).toBeFalsy();
   expect(portal.style.getPropertyValue('--grid-gap-base')).toBe('0');
   expect(portal.style.getPropertyValue('--grid-column-gap-base')).toBe(
-    'var(--lg)',
+    'var(--spacing-lg)',
   );
 
   const sidebar = getByTestId('sidebar');
@@ -165,7 +165,9 @@ test('Sidebar.Data renders as Flex column with gap', () => {
   const data = getByTestId('data');
   expect(data).toHaveClass('eds-layout-flex');
   expect(data.style.getPropertyValue('--flex-direction-base')).toBe('column');
-  expect(data.style.getPropertyValue('--flex-gap-base')).toBe('var(--s)');
+  expect(data.style.getPropertyValue('--flex-gap-base')).toBe(
+    'var(--spacing-s)',
+  );
 });
 
 test('Collapsed sidebar sets --eds-sidebar-width inline style', () => {
