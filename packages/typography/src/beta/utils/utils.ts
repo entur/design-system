@@ -2,6 +2,7 @@ import {
   TypographyHeadingVariant,
   TypographySpacing,
   TypographyTextVariant,
+  TypographyWeight,
 } from '../types';
 
 /**
@@ -38,15 +39,65 @@ export function getSpacingClasses(
   return spacingMap[spacing] || '';
 }
 
+const deprecatedWeights: Partial<
+  Record<TypographyWeight, 'regular' | 'medium' | 'bold'>
+> = {
+  semibold: 'bold',
+  '600': 'bold',
+  '500': 'medium',
+  '400': 'regular',
+  regular: 'regular',
+};
+const warnedWeights = new Set<string>();
+
+/**
+ * Map a weight to its class suffix; deprecated values warn once in development
+ */
+export function getWeightClassSuffix(
+  weight: TypographyWeight | undefined,
+): string | undefined {
+  if (!weight) return undefined;
+  const replacement = deprecatedWeights[weight];
+  if (!replacement) return weight;
+
+  if (process.env.NODE_ENV !== 'production' && !warnedWeights.has(weight)) {
+    warnedWeights.add(weight);
+    const hint =
+      replacement === 'regular'
+        ? 'Nationale Regular brukes ikke i Linje – bruk "medium" eller "bold".'
+        : `Bruk weight="${replacement}" i stedet.`;
+    console.warn(`[@entur/typography] weight="${weight}" er utdatert. ${hint}`);
+  }
+  return replacement;
+}
+
+let warnedMargin = false;
+
+/**
+ * Warn once in development when the legacy `margin` prop is passed
+ */
+export function warnAboutLegacyMargin(margin: unknown): void {
+  if (
+    margin === undefined ||
+    warnedMargin ||
+    process.env.NODE_ENV === 'production'
+  )
+    return;
+  warnedMargin = true;
+  console.warn(
+    '[@entur/typography] margin har ingen effekt på ny typografi. Bruk spacing i stedet.',
+  );
+}
+
 /**
  * Get heading variant based on semantic HTML element
  */
 export function getHeadingVariantFromSemanticType(
   element: string | React.ElementType,
 ): TypographyHeadingVariant {
-  const elementStr = typeof element === 'string' ? element : element.toString();
+  if (typeof element !== 'string') return 'title-1';
 
-  switch (elementStr.toLowerCase()) {
+  switch (element.toLowerCase()) {
     case 'h1':
       return 'title-1';
     case 'h2':
@@ -69,7 +120,7 @@ export function getHeadingVariantFromSemanticType(
  */
 export function getSemanticTypeFromTextVariant(
   variant: TypographyTextVariant | undefined,
-): string {
+): keyof JSX.IntrinsicElements {
   if (!variant) return 'p';
 
   switch (variant) {

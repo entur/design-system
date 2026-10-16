@@ -9,45 +9,61 @@ import './text.scss';
 /**
  * @beta Experimental component - may have breaking changes in future releases
  */
-type NumberedListBaseProps = {
+export type NumberedListOwnProps = {
   /** Ekstra klassenavn */
   className?: string;
   /** Innholdet */
-  children: React.ReactNode;
-  /** List type (1, A, a, I, i) */
-  type?: '1' | 'A' | 'a' | 'I' | 'i';
+  children?: React.ReactNode;
   /** Spacing around the component (same as Text and Heading components) */
   spacing?: TypographySpacing;
+  /** List type (1, A, a, I, i) */
+  type?: '1' | 'A' | 'a' | 'I' | 'i';
 };
 
-export type NumberedListProps<C extends React.ElementType> =
-  PolymorphicComponentProps<C, NumberedListBaseProps>;
+export type NumberedListProps<
+  C extends React.ElementType = typeof defaultElement,
+> = PolymorphicComponentProps<C, NumberedListOwnProps>;
+
+export type NumberedListComponent = (<
+  C extends React.ElementType = typeof defaultElement,
+>(
+  props: NumberedListProps<C> & { ref?: React.Ref<Element> },
+) => React.ReactElement | null) & { displayName?: string };
+
+const defaultElement = 'ol';
 
 /**
  * @beta Experimental component - may have breaking changes in future releases
  */
-export const NumberedList = <C extends React.ElementType = 'ol'>({
-  className,
-  type = '1',
-  spacing,
-  as,
-  children,
-  ...rest
-}: NumberedListProps<C>): JSX.Element => {
-  const ListElement: React.ElementType = as || 'ol';
+export const NumberedList = React.forwardRef(
+  <C extends React.ElementType = typeof defaultElement>(
+    {
+      type = '1',
+      className,
+      spacing,
+      children,
+      as,
+      ...rest
+    }: NumberedListProps<C>,
+    ref?: React.Ref<Element>,
+  ): JSX.Element => {
+    const ListElement: React.ElementType = as || defaultElement;
 
-  return (
-    <ListElement
-      className={classNames(
-        'eds-text--numbered-list',
-        { [`eds-text--numbered-list--type-${type}`]: type },
-        getSpacingClasses(spacing, 'eds-text--numbered-list'),
-        className,
-      )}
-      type={type}
-      {...rest}
-    >
-      {children}
-    </ListElement>
-  );
-};
+    return (
+      <ListElement
+        ref={ref}
+        className={classNames(
+          'eds-text--numbered-list',
+          `eds-text--numbered-list--type-${type}`,
+          getSpacingClasses(spacing, 'eds-text'),
+          className,
+        )}
+        type={type}
+        {...rest}
+      >
+        {children}
+      </ListElement>
+    );
+  },
+) as NumberedListComponent;
+NumberedList.displayName = 'NumberedList';

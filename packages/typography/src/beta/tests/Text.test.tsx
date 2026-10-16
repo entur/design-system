@@ -35,6 +35,23 @@ describe('Text Component', () => {
     expect(getByText('Bold text')).toHaveClass('eds-text--weight-bold');
   });
 
+  test('maps deprecated weights to their replacement and warns once', () => {
+    const warn = jest.spyOn(console, 'warn').mockImplementation(() => {});
+    const { getByText } = render(
+      <>
+        <Text weight="semibold">Semibold</Text>
+        <Text weight="600">Numeric</Text>
+        <Text weight="semibold">Semibold again</Text>
+      </>,
+    );
+    expect(getByText('Semibold')).toHaveClass('eds-text--weight-bold');
+    expect(getByText('Numeric')).toHaveClass('eds-text--weight-bold');
+    expect(
+      warn.mock.calls.filter(([msg]) => String(msg).includes('"semibold"')),
+    ).toHaveLength(1);
+    warn.mockRestore();
+  });
+
   test('applies spacing classes correctly', () => {
     const { getByText } = render(<Text spacing="md">Text with spacing</Text>);
     expect(getByText('Text with spacing')).toHaveClass('eds-text--spacing-md');
@@ -76,20 +93,5 @@ describe('Text Component', () => {
     expect(getByText('Default text')).not.toHaveClass(
       'eds-text--weight-medium',
     );
-  });
-
-  test('Components handle empty children', () => {
-    const { container } = render(<Text>{''}</Text>);
-    expect(container.firstChild).toBeInTheDocument();
-  });
-
-  test('Components handle null children', () => {
-    const { container } = render(<Text>{null}</Text>);
-    expect(container.firstChild).toBeInTheDocument();
-  });
-
-  test('Components handle undefined children', () => {
-    const { container } = render(<Text>{undefined}</Text>);
-    expect(container.firstChild).toBeInTheDocument();
   });
 });

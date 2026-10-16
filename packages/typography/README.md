@@ -39,8 +39,9 @@ function MyComponent() {
 ### Using Beta Typography (Experimental Features)
 
 ```typescript
-import { Heading, Text, LinkBeta } from '@entur/typography/beta';
+import { Heading, Text, Link } from '@entur/typography/beta';
 import '@entur/typography/styles';
+import '@entur/typography/beta/styles';
 
 function MyComponent() {
   return (
@@ -49,7 +50,7 @@ function MyComponent() {
         My Title
       </Heading>
       <Text variant="paragraph">My content</Text>
-      <LinkBeta href="/more">Learn more</LinkBeta>
+      <Link href="/more">Learn more</Link>
     </div>
   );
 }
@@ -128,7 +129,7 @@ yarn add glob
 
 - **Semantic variants** - Title, subtitle, section, paragraph, etc.
 - **Size variants** - Extra large, large, medium, small, extra small
-- **Weight variants** - Light, regular, medium, semibold, bold
+- **Weight variants** - Medium and bold
 - **Spacing options** - Configurable margins and padding
 - **Accessibility** - Built-in ARIA support and semantic HTML
 
