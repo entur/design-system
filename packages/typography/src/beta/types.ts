@@ -24,15 +24,7 @@ export type TypographyTextVariant =
 
 export type TypographySize = 'xs' | 's' | 'm' | 'lg' | 'xl' | '2xl';
 
-export type TypographyWeight =
-  | 'regular'
-  | 'medium'
-  | 'semibold'
-  | 'bold'
-  | '400'
-  | '500'
-  | '600'
-  | '700';
+export type TypographyWeight = 'medium' | 'bold';
 
 export type TypographySpacing =
   | 'none'

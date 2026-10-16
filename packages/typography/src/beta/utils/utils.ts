@@ -44,9 +44,9 @@ export function getSpacingClasses(
 export function getHeadingVariantFromSemanticType(
   element: string | React.ElementType,
 ): TypographyHeadingVariant {
-  const elementStr = typeof element === 'string' ? element : element.toString();
+  if (typeof element !== 'string') return 'title-1';
 
-  switch (elementStr.toLowerCase()) {
+  switch (element.toLowerCase()) {
     case 'h1':
       return 'title-1';
     case 'h2':

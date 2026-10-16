@@ -10,7 +10,6 @@ import {
 } from '../utils/utils';
 
 import {
-  TypographySize,
   TypographySpacing,
   TypographyTextVariant,
   TypographyWeight,
@@ -20,8 +19,8 @@ import './text.scss';
 
 type TextBaseProps = {
   /** Visuell tekststørrelse (typografi-token) */
-  size?: TypographySize;
-  /** Fontvekt */
+  size?: 'xs' | 's' | 'm' | 'lg' | 'xl';
+  /** Fontvekt: `medium` (500) eller `bold` (600) */
   weight?: TypographyWeight;
   /** Variant (kan brukes til spesielle typer tekst som for eksempel caption) */
   variant?: TypographyTextVariant;
