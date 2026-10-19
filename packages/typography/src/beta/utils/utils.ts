@@ -110,9 +110,9 @@ export function getSemanticTypeFromTextVariant(
       return 'span';
     case 'link':
       return 'a';
-    case 'code-text':
+    case 'code':
       return 'code';
-    case 'preformatted-text':
+    case 'preformatted':
       return 'pre';
     case 'quote':
       return 'blockquote';

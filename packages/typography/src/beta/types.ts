@@ -19,8 +19,8 @@ export type TypographyTextVariant =
   | 'sublabel'
   | 'overline'
   | 'emphasized'
-  | 'code-text'
-  | 'preformatted-text';
+  | 'code'
+  | 'preformatted';
 
 export type TypographySize = 'xs' | 's' | 'm' | 'lg' | 'xl' | '2xl';
 
