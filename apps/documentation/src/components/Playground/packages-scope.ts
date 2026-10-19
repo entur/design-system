@@ -54,8 +54,6 @@ export const packages = {
   ...typographyBeta,
   ...typography,
   LinkBeta: typographyBeta.Link,
-  BlockquoteBeta: typographyBeta.Blockquote,
-  BlockquoteFooterBeta: typographyBeta.BlockquoteFooter,
   UnorderedListBeta: typographyBeta.UnorderedList,
   NumberedListBeta: typographyBeta.NumberedList,
   ListItemBeta: typographyBeta.ListItem,
