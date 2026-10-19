@@ -12,6 +12,7 @@ type VariableMode = {
   mode: { name: string };
   color: Variable[];
   number: Variable[];
+  string?: Variable[];
 };
 export type VariableSet = {
   css: KeyValueSet;
@@ -36,14 +37,13 @@ const SUPPORTED_COLOR_MODES = ['light', 'dark'];
 
 export function createVariableSet(
   fileData: string,
-  valueType: 'color' | 'number' = 'color',
+  valueType: 'color' | 'number' | 'string' = 'color',
 ) {
   const dataUnformatted = JSON.parse(fileData);
   const variablesFormattedAndMappedToModes: VariableSet[] =
     dataUnformatted[0].values.reduce(
       (allComponentVariables: VariableSet[], variableMode: VariableMode) => {
-        const variablesArray =
-          valueType === 'color' ? variableMode.color : variableMode.number;
+        const variablesArray = variableMode[valueType] ?? [];
         const variablesFormattedForMode: VariableSet[] = variablesArray.map(
           (variable: Variable) => {
             const variableNameInKebabCase = toKebabCase(variable.name);

@@ -16083,5 +16083,817 @@
         "string": []
       }
     ]
+  },
+  {
+    "name": "Typography",
+    "values": [
+      {
+        "mode": {
+          "name": "Standard",
+          "id": "6155:1"
+        },
+        "color": [],
+        "number": [
+          {
+            "name": "Font/Line-height/Body/XS",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "Font/Line-height/Body/S",
+            "value": "1.25rem",
+            "var": "size-9",
+            "rootAlias": "size-9"
+          },
+          {
+            "name": "Font/Line-height/Body/M",
+            "value": "1.5rem",
+            "var": "size-10",
+            "rootAlias": "size-10"
+          },
+          {
+            "name": "Font/Line-height/Body/LG",
+            "value": "1.75rem",
+            "var": "size-11",
+            "rootAlias": "size-11"
+          },
+          {
+            "name": "Font/Line-height/Body/XL",
+            "value": "2rem",
+            "var": "size-12",
+            "rootAlias": "size-12"
+          },
+          {
+            "name": "Font/Line-height/Heading/XS",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "Font/Line-height/Heading/S",
+            "value": "1.25rem",
+            "var": "size-9",
+            "rootAlias": "size-9"
+          },
+          {
+            "name": "Font/Line-height/Heading/M",
+            "value": "1.5rem",
+            "var": "size-10",
+            "rootAlias": "size-10"
+          },
+          {
+            "name": "Font/Line-height/Heading/LG",
+            "value": "1.75rem",
+            "var": "size-11",
+            "rootAlias": "size-11"
+          },
+          {
+            "name": "Font/Line-height/Heading/XL",
+            "value": "2.25rem",
+            "var": "size-13",
+            "rootAlias": "size-13"
+          },
+          {
+            "name": "Font/Line-height/Heading/2XL",
+            "value": "2.75rem",
+            "var": "size-15",
+            "rootAlias": "size-15"
+          },
+          {
+            "name": "Font/Line-height/LABEL/S",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "Font/Line-height/LABEL/M",
+            "value": "1.25rem",
+            "var": "size-9",
+            "rootAlias": "size-9"
+          },
+          {
+            "name": "Font/Line-height/LABEL/LG",
+            "value": "1.5rem",
+            "var": "size-10",
+            "rootAlias": "size-10"
+          },
+          {
+            "name": "Font/Paragraph-spacing/Body/XS",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "Font/Paragraph-spacing/Body/S",
+            "value": "0.75rem",
+            "var": "size-6",
+            "rootAlias": "size-6"
+          },
+          {
+            "name": "Font/Paragraph-spacing/Body/M",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "Font/Paragraph-spacing/Body/LG",
+            "value": "1.5rem",
+            "var": "size-10",
+            "rootAlias": "size-10"
+          },
+          {
+            "name": "Font/Paragraph-spacing/Body/XL",
+            "value": "1.5rem",
+            "var": "size-10",
+            "rootAlias": "size-10"
+          },
+          {
+            "name": "Font/Paragraph-spacing/Heading/XS",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "Font/Paragraph-spacing/Heading/M",
+            "value": "0.75rem",
+            "var": "size-6",
+            "rootAlias": "size-6"
+          },
+          {
+            "name": "Font/Paragraph-spacing/Heading/S",
+            "value": "0.75rem",
+            "var": "size-6",
+            "rootAlias": "size-6"
+          },
+          {
+            "name": "Font/Paragraph-spacing/Heading/LG",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "Font/Paragraph-spacing/Heading/XL",
+            "value": "1.25rem",
+            "var": "size-9",
+            "rootAlias": "size-9"
+          },
+          {
+            "name": "Font/Paragraph-spacing/Heading/2XL",
+            "value": "1.5rem",
+            "var": "size-10",
+            "rootAlias": "size-10"
+          },
+          {
+            "name": "Font/Size/Body/XS",
+            "value": "0.75rem",
+            "var": "size-6",
+            "rootAlias": "size-6"
+          },
+          {
+            "name": "Font/Size/Body/S",
+            "value": "0.875rem",
+            "var": "size-7",
+            "rootAlias": "size-7"
+          },
+          {
+            "name": "Font/Size/Body/M",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "Font/Size/Body/LG",
+            "value": "1.25rem",
+            "var": "size-9",
+            "rootAlias": "size-9"
+          },
+          {
+            "name": "Font/Size/Body/XL",
+            "value": "1.5rem",
+            "var": "size-10",
+            "rootAlias": "size-10"
+          },
+          {
+            "name": "Font/Size/Heading/XS",
+            "value": "0.875rem",
+            "var": "size-7",
+            "rootAlias": "size-7"
+          },
+          {
+            "name": "Font/Size/Heading/S",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "Font/Size/Heading/M",
+            "value": "1.25rem",
+            "var": "size-9",
+            "rootAlias": "size-9"
+          },
+          {
+            "name": "Font/Size/Heading/LG",
+            "value": "1.5rem",
+            "var": "size-10",
+            "rootAlias": "size-10"
+          },
+          {
+            "name": "Font/Size/Heading/XL",
+            "value": "2rem",
+            "var": "size-12",
+            "rootAlias": "size-12"
+          },
+          {
+            "name": "Font/Size/Heading/2XL",
+            "value": "2.5rem",
+            "var": "size-14",
+            "rootAlias": "size-14"
+          },
+          {
+            "name": "Font/Size/Label/S",
+            "value": "0.875rem",
+            "var": "size-7",
+            "rootAlias": "size-7"
+          },
+          {
+            "name": "Font/Size/Label/M",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "Font/Size/Label/LG",
+            "value": "1.25rem",
+            "var": "size-9",
+            "rootAlias": "size-9"
+          },
+          {
+            "name": "Font/Weight/Body",
+            "value": "500",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Font/Weight/Heading",
+            "value": "600",
+            "var": "",
+            "rootAlias": ""
+          }
+        ],
+        "string": [
+          {
+            "name": "Font/Family/Nationale",
+            "value": "nationale",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Font/Family/Mono",
+            "value": "ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace",
+            "var": "",
+            "rootAlias": ""
+          }
+        ]
+      },
+      {
+        "mode": {
+          "name": "Compact",
+          "id": "6155:0"
+        },
+        "color": [],
+        "number": [
+          {
+            "name": "Font/Line-height/Body/XS",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "Font/Line-height/Body/S",
+            "value": "1.25rem",
+            "var": "size-9",
+            "rootAlias": "size-9"
+          },
+          {
+            "name": "Font/Line-height/Body/M",
+            "value": "1.5rem",
+            "var": "size-10",
+            "rootAlias": "size-10"
+          },
+          {
+            "name": "Font/Line-height/Body/LG",
+            "value": "1.5rem",
+            "var": "size-10",
+            "rootAlias": "size-10"
+          },
+          {
+            "name": "Font/Line-height/Body/XL",
+            "value": "1.75rem",
+            "var": "size-11",
+            "rootAlias": "size-11"
+          },
+          {
+            "name": "Font/Line-height/Heading/XS",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "Font/Line-height/Heading/S",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "Font/Line-height/Heading/M",
+            "value": "1.25rem",
+            "var": "size-9",
+            "rootAlias": "size-9"
+          },
+          {
+            "name": "Font/Line-height/Heading/LG",
+            "value": "1.5rem",
+            "var": "size-10",
+            "rootAlias": "size-10"
+          },
+          {
+            "name": "Font/Line-height/Heading/XL",
+            "value": "1.75rem",
+            "var": "size-11",
+            "rootAlias": "size-11"
+          },
+          {
+            "name": "Font/Line-height/Heading/2XL",
+            "value": "2rem",
+            "var": "size-12",
+            "rootAlias": "size-12"
+          },
+          {
+            "name": "Font/Line-height/LABEL/S",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "Font/Line-height/LABEL/M",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "Font/Line-height/LABEL/LG",
+            "value": "1.25rem",
+            "var": "size-9",
+            "rootAlias": "size-9"
+          },
+          {
+            "name": "Font/Paragraph-spacing/Body/XS",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "Font/Paragraph-spacing/Body/S",
+            "value": "0.75rem",
+            "var": "size-6",
+            "rootAlias": "size-6"
+          },
+          {
+            "name": "Font/Paragraph-spacing/Body/M",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "Font/Paragraph-spacing/Body/LG",
+            "value": "1.25rem",
+            "var": "size-9",
+            "rootAlias": "size-9"
+          },
+          {
+            "name": "Font/Paragraph-spacing/Body/XL",
+            "value": "1.25rem",
+            "var": "size-9",
+            "rootAlias": "size-9"
+          },
+          {
+            "name": "Font/Paragraph-spacing/Heading/XS",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "Font/Paragraph-spacing/Heading/M",
+            "value": "0.75rem",
+            "var": "size-6",
+            "rootAlias": "size-6"
+          },
+          {
+            "name": "Font/Paragraph-spacing/Heading/S",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "Font/Paragraph-spacing/Heading/LG",
+            "value": "0.75rem",
+            "var": "size-6",
+            "rootAlias": "size-6"
+          },
+          {
+            "name": "Font/Paragraph-spacing/Heading/XL",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "Font/Paragraph-spacing/Heading/2XL",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "Font/Size/Body/XS",
+            "value": "0.75rem",
+            "var": "size-6",
+            "rootAlias": "size-6"
+          },
+          {
+            "name": "Font/Size/Body/S",
+            "value": "0.875rem",
+            "var": "size-7",
+            "rootAlias": "size-7"
+          },
+          {
+            "name": "Font/Size/Body/M",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "Font/Size/Body/LG",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "Font/Size/Body/XL",
+            "value": "1.25rem",
+            "var": "size-9",
+            "rootAlias": "size-9"
+          },
+          {
+            "name": "Font/Size/Heading/XS",
+            "value": "0.75rem",
+            "var": "size-6",
+            "rootAlias": "size-6"
+          },
+          {
+            "name": "Font/Size/Heading/S",
+            "value": "0.875rem",
+            "var": "size-7",
+            "rootAlias": "size-7"
+          },
+          {
+            "name": "Font/Size/Heading/M",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "Font/Size/Heading/LG",
+            "value": "1.25rem",
+            "var": "size-9",
+            "rootAlias": "size-9"
+          },
+          {
+            "name": "Font/Size/Heading/XL",
+            "value": "1.5rem",
+            "var": "size-10",
+            "rootAlias": "size-10"
+          },
+          {
+            "name": "Font/Size/Heading/2XL",
+            "value": "1.75rem",
+            "var": "size-11",
+            "rootAlias": "size-11"
+          },
+          {
+            "name": "Font/Size/Label/S",
+            "value": "0.875rem",
+            "var": "size-7",
+            "rootAlias": "size-7"
+          },
+          {
+            "name": "Font/Size/Label/M",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "Font/Size/Label/LG",
+            "value": "1.25rem",
+            "var": "size-9",
+            "rootAlias": "size-9"
+          },
+          {
+            "name": "Font/Weight/Body",
+            "value": "500",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Font/Weight/Heading",
+            "value": "600",
+            "var": "",
+            "rootAlias": ""
+          }
+        ],
+        "string": [
+          {
+            "name": "Font/Family/Nationale",
+            "value": "nationale",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Font/Family/Mono",
+            "value": "ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace",
+            "var": "",
+            "rootAlias": ""
+          }
+        ]
+      },
+      {
+        "mode": {
+          "name": "Display",
+          "id": "6155:2"
+        },
+        "color": [],
+        "number": [
+          {
+            "name": "Font/Line-height/Body/XS",
+            "value": "1.75rem",
+            "var": "size-11",
+            "rootAlias": "size-11"
+          },
+          {
+            "name": "Font/Line-height/Body/S",
+            "value": "2rem",
+            "var": "size-12",
+            "rootAlias": "size-12"
+          },
+          {
+            "name": "Font/Line-height/Body/M",
+            "value": "2.75rem",
+            "var": "size-15",
+            "rootAlias": "size-15"
+          },
+          {
+            "name": "Font/Line-height/Body/LG",
+            "value": "3.5rem",
+            "var": "size-18",
+            "rootAlias": "size-18"
+          },
+          {
+            "name": "Font/Line-height/Body/XL",
+            "value": "4rem",
+            "var": "size-19",
+            "rootAlias": "size-19"
+          },
+          {
+            "name": "Font/Line-height/Heading/XS",
+            "value": "1.75rem",
+            "var": "size-11",
+            "rootAlias": "size-11"
+          },
+          {
+            "name": "Font/Line-height/Heading/S",
+            "value": "2.25rem",
+            "var": "size-13",
+            "rootAlias": "size-13"
+          },
+          {
+            "name": "Font/Line-height/Heading/M",
+            "value": "2.75rem",
+            "var": "size-15",
+            "rootAlias": "size-15"
+          },
+          {
+            "name": "Font/Line-height/Heading/LG",
+            "value": "3.5rem",
+            "var": "size-18",
+            "rootAlias": "size-18"
+          },
+          {
+            "name": "Font/Line-height/Heading/XL",
+            "value": "4.5rem",
+            "var": "size-20",
+            "rootAlias": "size-20"
+          },
+          {
+            "name": "Font/Line-height/Heading/2XL",
+            "value": "5rem",
+            "var": "size-21",
+            "rootAlias": "size-21"
+          },
+          {
+            "name": "Font/Line-height/LABEL/S",
+            "value": "1.75rem",
+            "var": "size-11",
+            "rootAlias": "size-11"
+          },
+          {
+            "name": "Font/Line-height/LABEL/M",
+            "value": "2.25rem",
+            "var": "size-13",
+            "rootAlias": "size-13"
+          },
+          {
+            "name": "Font/Line-height/LABEL/LG",
+            "value": "2.75rem",
+            "var": "size-15",
+            "rootAlias": "size-15"
+          },
+          {
+            "name": "Font/Paragraph-spacing/Body/XS",
+            "value": "1.25rem",
+            "var": "size-9",
+            "rootAlias": "size-9"
+          },
+          {
+            "name": "Font/Paragraph-spacing/Body/S",
+            "value": "1.5rem",
+            "var": "size-10",
+            "rootAlias": "size-10"
+          },
+          {
+            "name": "Font/Paragraph-spacing/Body/M",
+            "value": "2rem",
+            "var": "size-12",
+            "rootAlias": "size-12"
+          },
+          {
+            "name": "Font/Paragraph-spacing/Body/LG",
+            "value": "2.5rem",
+            "var": "size-14",
+            "rootAlias": "size-14"
+          },
+          {
+            "name": "Font/Paragraph-spacing/Body/XL",
+            "value": "3rem",
+            "var": "size-16",
+            "rootAlias": "size-16"
+          },
+          {
+            "name": "Font/Paragraph-spacing/Heading/XS",
+            "value": "0.75rem",
+            "var": "size-6",
+            "rootAlias": "size-6"
+          },
+          {
+            "name": "Font/Paragraph-spacing/Heading/M",
+            "value": "1.25rem",
+            "var": "size-9",
+            "rootAlias": "size-9"
+          },
+          {
+            "name": "Font/Paragraph-spacing/Heading/S",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "Font/Paragraph-spacing/Heading/LG",
+            "value": "1.5rem",
+            "var": "size-10",
+            "rootAlias": "size-10"
+          },
+          {
+            "name": "Font/Paragraph-spacing/Heading/XL",
+            "value": "2rem",
+            "var": "size-12",
+            "rootAlias": "size-12"
+          },
+          {
+            "name": "Font/Paragraph-spacing/Heading/2XL",
+            "value": "2.25rem",
+            "var": "size-13",
+            "rootAlias": "size-13"
+          },
+          {
+            "name": "Font/Size/Body/XS",
+            "value": "1.25rem",
+            "var": "size-9",
+            "rootAlias": "size-9"
+          },
+          {
+            "name": "Font/Size/Body/S",
+            "value": "1.5rem",
+            "var": "size-10",
+            "rootAlias": "size-10"
+          },
+          {
+            "name": "Font/Size/Body/M",
+            "value": "2rem",
+            "var": "size-12",
+            "rootAlias": "size-12"
+          },
+          {
+            "name": "Font/Size/Body/LG",
+            "value": "2.5rem",
+            "var": "size-14",
+            "rootAlias": "size-14"
+          },
+          {
+            "name": "Font/Size/Body/XL",
+            "value": "3rem",
+            "var": "size-16",
+            "rootAlias": "size-16"
+          },
+          {
+            "name": "Font/Size/Heading/XS",
+            "value": "1.5rem",
+            "var": "size-10",
+            "rootAlias": "size-10"
+          },
+          {
+            "name": "Font/Size/Heading/S",
+            "value": "2rem",
+            "var": "size-12",
+            "rootAlias": "size-12"
+          },
+          {
+            "name": "Font/Size/Heading/M",
+            "value": "2.5rem",
+            "var": "size-14",
+            "rootAlias": "size-14"
+          },
+          {
+            "name": "Font/Size/Heading/LG",
+            "value": "3rem",
+            "var": "size-16",
+            "rootAlias": "size-16"
+          },
+          {
+            "name": "Font/Size/Heading/XL",
+            "value": "4rem",
+            "var": "size-19",
+            "rootAlias": "size-19"
+          },
+          {
+            "name": "Font/Size/Heading/2XL",
+            "value": "4.5rem",
+            "var": "size-20",
+            "rootAlias": "size-20"
+          },
+          {
+            "name": "Font/Size/Label/S",
+            "value": "1.5rem",
+            "var": "size-10",
+            "rootAlias": "size-10"
+          },
+          {
+            "name": "Font/Size/Label/M",
+            "value": "2rem",
+            "var": "size-12",
+            "rootAlias": "size-12"
+          },
+          {
+            "name": "Font/Size/Label/LG",
+            "value": "2.5rem",
+            "var": "size-14",
+            "rootAlias": "size-14"
+          },
+          {
+            "name": "Font/Weight/Body",
+            "value": "500",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Font/Weight/Heading",
+            "value": "600",
+            "var": "",
+            "rootAlias": ""
+          }
+        ],
+        "string": [
+          {
+            "name": "Font/Family/Nationale",
+            "value": "nationale",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Font/Family/Mono",
+            "value": "ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace",
+            "var": "",
+            "rootAlias": ""
+          }
+        ]
+      }
+    ]
   }
 ]
