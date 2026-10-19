@@ -192,7 +192,7 @@ const components = {
   TextField,
   TextArea,
   CopyableText,
-  CodeText: (props: any) => <Text as="code" variant="code-text" {...props} />,
+  CodeText: (props: any) => <Text as="code" variant="code" {...props} />,
   // Custom components
   Playground,
   Props,
@@ -224,14 +224,14 @@ const components = {
         );
       }
     }
-    return <Text as="pre" variant="preformatted-text" {...preProps} />;
+    return <Text as="pre" variant="preformatted" {...preProps} />;
   },
   code: (props: any) => {
     const { className } = props;
     if (className) {
       return <code {...props} />;
     }
-    return <Text as="code" variant="code-text" {...props} />;
+    return <Text as="code" variant="code" {...props} />;
   },
   CodeBlock,
 };
