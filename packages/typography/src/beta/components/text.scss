@@ -79,30 +79,53 @@
     &--code,
     &--preformatted {
       background-color: var(--components-typography-codetext-standard-fill);
-      border: t.$border-widths-small solid var(--components-typography-codetext-standard-border);
-      border-radius: t.$border-radiuses-medium;
-      color: var(--components-typography-codetext-standard-text);
-      font-family: Monaco, monospace;
-      font-size: t.$font-sizes-medium;
+      color: inherit;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
+      font-size: 0.875em;
+      font-weight: inherit;
 
       :where(.eds-contrast) & {
         background-color: var(--components-typography-codetext-contrast-fill);
-        border: t.$border-widths-small solid var(--components-typography-codetext-contrast-border);
-        color: var(--components-typography-codetext-contrast-text);
+      }
+
+      // Forced colors remove the fill, and the outline is drawn in the system text colour
+      @media (forced-colors: active) {
+        outline: 1px solid transparent;
+      }
+    }
+
+    &--code {
+      border-radius: t.$border-radiuses-medium;
+      padding: 0.125em 0.3em;
+      box-decoration-break: clone;
+      overflow-wrap: break-word;
+
+      // The fill covers the underline that eds-text--link draws as a background
+      :where(.eds-text--link) & {
+        background-image: linear-gradient(currentcolor, currentcolor);
+        background-position: 0 100%;
+        background-repeat: no-repeat;
+        background-size: 100% 0.125rem;
+      }
+
+      :where(.eds-text--link:hover) & {
+        animation: eds-link-underline 0.3s ease-in;
       }
     }
 
     &--preformatted {
+      border-radius: t.$border-radiuses-large;
+      line-height: 1.5;
       padding: 1rem;
+      tab-size: 4;
       white-space: pre-wrap;
-      word-break: keep-all;
-    }
+      overflow-wrap: break-word;
 
-    &--code {
-      display: inline-block;
-      word-wrap: break-word;
-      overflow-wrap: anywhere;
-      padding: 0 t.$space-extra-small2;
+      > :where(code) {
+        background: none;
+        font: inherit;
+        padding: 0;
+      }
     }
 
     // Same specificity as the variants, so these must follow them for size to win
