@@ -10,6 +10,7 @@ warnAboutMissingStyles('typography', 'icons');
 export { Heading } from './components/Heading';
 export { Text } from './components/Text';
 export { Link } from './components/Link';
+export { Label } from './components/Label';
 export { UnorderedList } from './components/UnorderedList';
 export { NumberedList } from './components/NumberedList';
 export { ListItem } from './components/ListItem';
@@ -30,6 +31,7 @@ export type {
   TypographyWeight,
 } from './components/Text';
 export type { LinkComponent, LinkOwnProps, LinkProps } from './components/Link';
+export type { LabelOwnProps, LabelProps } from './components/Label';
 export type {
   UnorderedListComponent,
   UnorderedListOwnProps,
