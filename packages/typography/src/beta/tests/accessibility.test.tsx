@@ -3,7 +3,6 @@ import { axe, toHaveNoViolations } from 'jest-axe';
 import { Heading } from '../components/Heading';
 import { Text } from '../components/Text';
 import { Link } from '../components/Link';
-import { Blockquote, BlockquoteFooter } from '../components/Blockquote';
 
 expect.extend(toHaveNoViolations);
 
@@ -52,12 +51,14 @@ describe('Accessibility', () => {
     expect(results).toHaveNoViolations();
   });
 
-  test('Blockquote components should not have basic accessibility issues', async () => {
+  test('A quote with its source should not have basic accessibility issues', async () => {
     const { container } = render(
-      <Blockquote>
-        Quote text
-        <BlockquoteFooter>Author name</BlockquoteFooter>
-      </Blockquote>,
+      <figure>
+        <Text variant="quote">Quote text</Text>
+        <figcaption>
+          <Text variant="caption">Author name</Text>
+        </figcaption>
+      </figure>,
     );
 
     const results = await axe(container);
@@ -87,10 +88,12 @@ describe('Accessibility', () => {
           </Text>
           .
         </Text>
-        <Blockquote>
+        <figure>
           <Text variant="quote">This is an important quote</Text>
-          <BlockquoteFooter>— Famous Author</BlockquoteFooter>
-        </Blockquote>
+          <figcaption>
+            <Text variant="caption">Famous Author</Text>
+          </figcaption>
+        </figure>
       </div>,
     );
 

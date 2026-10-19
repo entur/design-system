@@ -104,8 +104,6 @@ export function getSemanticTypeFromTextVariant(
       return 'label';
     case 'emphasized':
       return 'em';
-    case 'link':
-      return 'a';
     case 'code':
       return 'code';
     case 'preformatted':

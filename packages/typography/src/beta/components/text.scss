@@ -21,8 +21,14 @@
     }
 
     &--quote {
+      border-left: t.$border-widths-large solid var(--components-typography-blockquote-standard-stroke);
+      padding-left: var(--font-paragraph-spacing-body-lg);
       font-size: var(--font-size-body-lg);
       line-height: var(--font-line-height-body-lg);
+
+      :where(.eds-contrast) & {
+        border-left-color: var(--components-typography-blockquote-contrast-stroke);
+      }
     }
 
     &--paragraph {
@@ -196,33 +202,6 @@
 
         p & {
           top: 0;
-        }
-      }
-    }
-
-    &--blockquote {
-      border-left: t.$border-widths-large solid var(--components-typography-blockquote-standard-stroke);
-      font-family: inherit;
-      padding: t.$space-extra-small;
-      padding-left: t.$space-extra-large;
-      font-size: var(--font-size-body-lg);
-      line-height: var(--font-line-height-body-lg);
-      color: var(--components-typography-blockquote-standard-text-accent);
-
-      :where(.eds-contrast) & {
-        color: var(--components-typography-blockquote-contrast-text-accent);
-      }
-
-      &__footer {
-        font-size: var(--font-size-body-s);
-        line-height: t.$line-heights-large;
-        letter-spacing: 1px;
-        margin-top: t.$space-large;
-        text-transform: uppercase;
-        color: var(--components-typography-blockquote-standard-text-accent);
-
-        :where(.eds-contrast) & {
-          color: var(--components-typography-blockquote-contrast-text-accent);
         }
       }
     }
