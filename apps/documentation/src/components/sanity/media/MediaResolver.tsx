@@ -6,7 +6,6 @@ import { Text } from '@entur/typography/beta';
 import { ImageDisplay } from '@components/Media/ImageDisplay';
 import { MediaType } from '../types';
 import { SANITY_PROJECT } from 'src/utils/constants';
-import { space } from '@entur/tokens';
 
 import './Media.scss';
 
@@ -132,8 +131,7 @@ const Caption = ({ children }: { children: string }) => (
     as="p"
     className="media__caption"
     variant="caption"
-    spacing="xs-top"
-    style={{ marginBottom: space.default }}
+    spacing={{ top: 'xs', bottom: 'm' }}
   >
     {children}
   </Text>
