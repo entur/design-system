@@ -102,12 +102,8 @@ export function getSemanticTypeFromTextVariant(
   switch (variant) {
     case 'label':
       return 'label';
-    case 'sublabel':
-      return 'span';
-    case 'caption':
-      return 'span';
-    case 'overline':
-      return 'span';
+    case 'emphasized':
+      return 'em';
     case 'link':
       return 'a';
     case 'code':
@@ -119,7 +115,9 @@ export function getSemanticTypeFromTextVariant(
     case 'leading':
     case 'paragraph':
     case 'subparagraph':
-    case 'emphasized':
+    case 'caption':
+    case 'overline':
+    case 'sublabel':
     default:
       return 'p';
   }
