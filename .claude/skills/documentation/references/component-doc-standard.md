@@ -125,6 +125,33 @@ Kode, where the reader has already decided and wants the markup.
   the Figma link are already sourced live — don't hand-write a second copy of that
   information in a text block nearby.
 
+## Playground props
+
+The intro playground gets prop controls through `playgroundCode.props`. Never use the legacy
+`playgroundProps` field — it only exists for old content.
+
+- **Label is always set, and is the prop name exactly as in the code** (`size`, `disabled`,
+  `aria-label`), so the reader can map a control straight back to the API. The one exception
+  is `children`, labelled `Innhold`. A `string` prop without a label renders a text field with
+  no label.
+- **Type:** text → `string`, on/off → `boolean`, 2–3 options → `segmented`, 4+ options →
+  `dropdown`, icons → `icon`. Don't use the `children` type: it renders no control at all.
+- **Order:** content and text first, then `variant`/`type`, then `size`, then booleans.
+- **Set `componentName`** to the component the controls apply to.
+
+The playground engine (`useAdvancedPlaygroundCode` in `playground-utils.tsx`) has limits that
+decide whether an example can have props at all:
+
+- Props are injected into the **first component tag** in the code, and they **replace every
+  attribute** on that tag. Every attribute the example needs on it — including `aria-label` —
+  must therefore be a prop, or it disappears. A lowercase wrapper (`<div>`) before it is fine.
+- Write the tag empty (`<TextField></TextField>`), not self-closing, and let the default values
+  fill it in.
+- Apart from `boolean` (a bare attribute) and `icon` (a JSX element), values are injected as
+  quoted strings, so number and array props (`progress={20}`, `steps={[…]}`) can't be controls.
+- Stateful examples (`() => { … }`) can't have props: the tag is cut at the first `>`, which
+  breaks arrow functions in attributes. Leave them without controls.
+
 ## Custom section titles: when they're appropriate
 
 Use a custom title when the content genuinely doesn't map to one of the standard sections —
