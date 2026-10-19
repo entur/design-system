@@ -13,32 +13,6 @@
       color: var(--components-typography-basetext-contrast-text-accent);
     }
 
-    // Sizes
-    &--xs {
-      font-size: var(--font-size-body-xs);
-      line-height: var(--font-line-height-body-xs);
-    }
-
-    &--s {
-      font-size: var(--font-size-body-s);
-      line-height: var(--font-line-height-body-s);
-    }
-
-    &--m {
-      font-size: var(--font-size-body-m);
-      line-height: var(--font-line-height-body-m);
-    }
-
-    &--lg {
-      font-size: var(--font-size-body-lg);
-      line-height: var(--font-line-height-body-lg);
-    }
-
-    &--xl {
-      font-size: var(--font-size-body-xl);
-      line-height: var(--font-line-height-body-xl);
-    }
-
     // Variants
     &--leading {
       font-size: var(--font-size-body-xl);
@@ -117,6 +91,32 @@
       word-wrap: break-word;
       overflow-wrap: anywhere;
       padding: 0 t.$space-extra-small2;
+    }
+
+    // Same specificity as the variants, so these must follow them for size to win
+    &--xs {
+      font-size: var(--font-size-body-xs);
+      line-height: var(--font-line-height-body-xs);
+    }
+
+    &--s {
+      font-size: var(--font-size-body-s);
+      line-height: var(--font-line-height-body-s);
+    }
+
+    &--m {
+      font-size: var(--font-size-body-m);
+      line-height: var(--font-line-height-body-m);
+    }
+
+    &--lg {
+      font-size: var(--font-size-body-lg);
+      line-height: var(--font-line-height-body-lg);
+    }
+
+    &--xl {
+      font-size: var(--font-size-body-xl);
+      line-height: var(--font-line-height-body-xl);
     }
 
     // Font weights; bold is Nationale DemiBold, the heaviest cut
