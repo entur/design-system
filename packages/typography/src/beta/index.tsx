@@ -10,7 +10,6 @@ warnAboutMissingStyles('typography', 'icons');
 export { Heading } from './components/Heading';
 export { Text } from './components/Text';
 export { Link } from './components/Link';
-export { Blockquote, BlockquoteFooter } from './components/Blockquote';
 export { UnorderedList } from './components/UnorderedList';
 export { NumberedList } from './components/NumberedList';
 export { ListItem } from './components/ListItem';
@@ -23,7 +22,6 @@ export type {
 } from './components/Heading';
 export type { TextComponent, TextOwnProps, TextProps } from './components/Text';
 export type { LinkComponent, LinkOwnProps, LinkProps } from './components/Link';
-export type { BlockquoteProps } from './components/Blockquote';
 export type {
   UnorderedListComponent,
   UnorderedListOwnProps,

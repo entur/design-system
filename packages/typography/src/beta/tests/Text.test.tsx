@@ -38,6 +38,12 @@ describe('Text Component', () => {
     expect(getByText('Sublabel').tagName).toBe('P');
   });
 
+  test('renders quote as a blockquote', () => {
+    const { getByText } = render(<Text variant="quote">Sitat</Text>);
+    expect(getByText('Sitat').tagName).toBe('BLOCKQUOTE');
+    expect(getByText('Sitat')).toHaveClass('eds-text--quote');
+  });
+
   test('keeps emphasized inline', () => {
     const { getByText } = render(<Text variant="emphasized">Viktig</Text>);
     expect(getByText('Viktig').tagName).toBe('EM');

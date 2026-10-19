@@ -14,7 +14,6 @@ export type TypographyTextVariant =
   | 'paragraph'
   | 'subparagraph'
   | 'caption'
-  | 'link'
   | 'label'
   | 'sublabel'
   | 'overline'
