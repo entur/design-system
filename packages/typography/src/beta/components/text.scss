@@ -236,116 +236,158 @@
     }
 
     // List components
-    &--unordered-list {
-      list-style: none;
+    &--unordered-list,
+    &--numbered-list {
+      --eds-list-indent: 1.5em;
+
       color: var(--components-typography-list-standard-text-accent);
+      font-size: var(--font-size-body-m);
+      font-weight: var(--font-weight-body);
+      line-height: var(--font-line-height-body-m);
+      padding-inline-start: var(--eds-list-indent);
 
       :where(.eds-contrast) & {
         color: var(--components-typography-list-contrast-text-accent);
       }
 
-      .eds-text--list-item {
-        &::before {
-          content: '';
-          background: var(--components-typography-list-standard-border);
-          display: block;
-          height: t.$border-widths-medium;
-          left: -1.75rem;
-          top: 0.75rem;
-          position: relative;
-          width: t.$space-small;
-        }
+      // Nested lists keep the item's text style and sit under it
+      :where(.eds-text--list-item) & {
+        font-size: inherit;
+        line-height: inherit;
+        margin-block-start: var(--eds-text-spacing-top, var(--spacing-2xs));
       }
     }
 
-    &--numbered-list {
-      counter-reset: eds-numbered-list-counter;
+    // Safari drops list semantics without markers, so UnorderedList adds role="list"
+    &--unordered-list {
       list-style: none;
-      color: var(--components-typography-list-standard-text-accent);
-
-      :where(.eds-contrast) & {
-        color: var(--components-typography-list-contrast-text-accent);
-      }
-
-      &--type-a {
-        & > .eds-text--list-item {
-          &::before {
-            content: counter(eds-numbered-list-counter, lower-alpha);
-          }
-        }
-      }
-
-      &--type-A {
-        & > .eds-text--list-item {
-          &::before {
-            content: counter(eds-numbered-list-counter, upper-alpha);
-          }
-        }
-      }
-
-      &--type-1 {
-        & > .eds-text--list-item {
-          &::before {
-            content: counter(eds-numbered-list-counter, decimal);
-          }
-        }
-      }
-
-      &--type-i {
-        & > .eds-text--list-item {
-          &::before {
-            content: counter(eds-numbered-list-counter, lower-roman);
-          }
-        }
-      }
-
-      &--type-I {
-        & > .eds-text--list-item {
-          &::before {
-            content: counter(eds-numbered-list-counter, upper-roman);
-          }
-        }
-      }
+      padding-inline-start: 0;
     }
 
     &--list-item {
-      padding-left: t.$space-extra-small;
-    }
-
-    &--numbered-list > .eds-text--list-item {
-      margin-bottom: var(--eds-text-spacing-bottom, var(--font-paragraph-spacing-body-m));
-      counter-increment: eds-numbered-list-counter;
       position: relative;
-      color: var(--components-typography-list-standard-text-accent);
 
-      :where(.eds-contrast) & {
-        color: var(--components-typography-list-contrast-text-accent);
-      }
-
-      &::before {
-        color: var(--components-typography-list-standard-text-accent);
-        position: absolute;
-        font-weight: var(--font-weight-heading);
-        left: -(t.$space-extra-large2);
-        border: t.$border-widths-medium solid var(--components-typography-list-standard-border);
-        border-radius: 50%;
-        height: 2rem;
-        width: 2rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        top: -0.25rem;
-
-        :where(.eds-contrast) & {
-          border: t.$border-widths-medium solid var(--components-typography-list-contrast-border);
-        }
+      & + :where(.eds-text--list-item) {
+        margin-block-start: var(--eds-text-spacing-top, var(--spacing-2xs));
       }
     }
 
+    // stylelint-disable selector-class-pattern -- existing class names, kept for consumers
     &--list-item__title {
       display: block;
       font-weight: var(--font-weight-heading);
-      margin-bottom: t.$space-extra-small;
+    }
+
+    &--numbered-list--type-a {
+      list-style-type: lower-alpha;
+    }
+
+    &--numbered-list--type-A {
+      list-style-type: upper-alpha;
+    }
+
+    &--numbered-list--type-i {
+      list-style-type: lower-roman;
+    }
+
+    &--numbered-list--type-I {
+      list-style-type: upper-roman;
+    }
+    // stylelint-enable selector-class-pattern
+
+    // The badge is drawn on the item, so the list marker is hidden and NumberedList adds role="list"
+    &--steps {
+      --eds-list-indent: 2.25em;
+      --eds-list-fill: var(--components-typography-list-standard-fill);
+
+      list-style: none;
+      padding-inline-start: 0;
+
+      :where(.eds-contrast) & {
+        --eds-list-fill: var(--components-typography-list-contrast-fill);
+      }
     }
   }
+
+  // Centred on the first line with lh, so the dot follows the font size and line height
+  :where(.eds-text--unordered-list > .eds-text--list-item) {
+    padding-inline-start: var(--eds-list-indent);
+
+    &::before {
+      background: currentcolor;
+      border-radius: 50%;
+      content: '';
+      height: 0.375em;
+      inset-inline-start: calc(var(--eds-list-indent) * 0.35);
+      position: absolute;
+      top: calc((1lh - 0.375em) / 2);
+      width: 0.375em;
+
+      @media (forced-colors: active) {
+        background: CanvasText;
+        forced-color-adjust: none;
+      }
+    }
+  }
+
+  :where(.eds-text--list-item .eds-text--unordered-list > .eds-text--list-item)::before {
+    background: none;
+    border: 0.094em solid currentcolor;
+    box-sizing: border-box;
+  }
+
+  :where(.eds-text--numbered-list > .eds-text--list-item) {
+    padding-inline-start: 0.25em;
+
+    &::marker {
+      font-variant-numeric: tabular-nums;
+      font-weight: var(--font-weight-heading);
+    }
+  }
+
+  // counter(list-item) follows start and reversed like the native marker
+  :where(.eds-text--steps > .eds-text--list-item) {
+    padding-inline-start: var(--eds-list-indent);
+
+    &::before {
+      background: var(--eds-list-fill);
+      border-radius: 1em;
+      box-sizing: border-box;
+      content: counter(list-item);
+      font-size: 0.875em;
+      font-variant-numeric: tabular-nums;
+      font-weight: var(--font-weight-heading);
+      height: calc(1.5em / 0.875);
+      inset-inline-start: 0;
+      line-height: calc(1.5em / 0.875);
+      min-width: calc(1.5em / 0.875);
+      padding-inline: 0.375em;
+      position: absolute;
+      text-align: center;
+      top: calc((1lh - 1.5em / 0.875) / 2);
+
+      // Forced colors remove the fill, and the outline is drawn in the system text colour
+      @media (forced-colors: active) {
+        outline: 1px solid transparent;
+      }
+    }
+  }
+
+  // stylelint-disable selector-class-pattern
+  :where(.eds-text--steps.eds-text--numbered-list--type-a > .eds-text--list-item)::before {
+    content: counter(list-item, lower-alpha);
+  }
+
+  :where(.eds-text--steps.eds-text--numbered-list--type-A > .eds-text--list-item)::before {
+    content: counter(list-item, upper-alpha);
+  }
+
+  :where(.eds-text--steps.eds-text--numbered-list--type-i > .eds-text--list-item)::before {
+    content: counter(list-item, lower-roman);
+  }
+
+  :where(.eds-text--steps.eds-text--numbered-list--type-I > .eds-text--list-item)::before {
+    content: counter(list-item, upper-roman);
+  }
+  // stylelint-enable selector-class-pattern
 }
