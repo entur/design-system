@@ -450,6 +450,28 @@ import { Accordion } from '@entur/expand';
 
 ---
 
+### `@entur/layout/beta` — spacing scale in whole steps
+
+The spacing scale lost its in-between steps (`s-m`, `m-l`) and `l` became `lg`. Every size kept its value but got a new name, so from `m` upwards the **old names now mean a different size** — `gap="m"` still type-checks but renders 16 px instead of 20 px. Rename every value on `Flex` and `Grid` (`gap`, `rowGap`, `columnGap`):
+
+| Old | `2xs` | `xs` | `s` | `s-m` | `m`  | `m-l` | `l`   | `xl`  | `2xl` | …   | `11xl` |
+| --- | ----- | ---- | --- | ----- | ---- | ----- | ----- | ----- | ----- | --- | ------ |
+| New | `2xs` | `xs` | `s` | `m`   | `lg` | `xl`  | `2xl` | `3xl` | `4xl` | …   | `13xl` |
+
+Rename in one pass, highest first, or `m` → `lg` and `l` → `2xl` will be renamed twice. In responsive objects, rename only the values — the breakpoint keys (`base`, `s`, `m`, `lg`, `xl`) are unchanged.
+
+The CSS variables moved to `@entur/tokens` (`@entur/tokens/styles/spacing`) and got a `spacing-` prefix. Apply the same renaming table: `--m` → `--spacing-lg`, `--s-m` → `--spacing-m`, `--l` → `--spacing-2xl`.
+
+```tsx
+// Before
+<Flex gap="m" rowGap={{ base: 's-m', lg: 'l' }}>…</Flex>
+
+// After
+<Flex gap="lg" rowGap={{ base: 'm', lg: '2xl' }}>…</Flex>
+```
+
+---
+
 ### `@entur/menu` — Stepper
 
 `interactive` default flipped — was `true`, now `false`.
@@ -535,4 +557,8 @@ grep -rn '<Badge' src/
 
 # Find the deprecated compact prop on Tag
 grep -rn '<Tag[^>]*compact' src/
+
+# Find layout beta spacing values and CSS variables to rename
+grep -rnE '(gap|rowGap|columnGap)=' src/
+grep -rnE 'var\(--([0-9]*x?[sml]|s-m|m-l)\)' src/
 ```
