@@ -84,7 +84,7 @@ Polymorphic — renders as `<a>` when needed:
 
 Package: `@entur/typography`
 
-Use semantic heading levels (`Heading1`–`Heading6`) for document structure, not for visual sizing. Pair with `Paragraph`, `LeadParagraph`, `SmallText`, and `Label` for body content.
+Use semantic heading levels (`Heading1`–`Heading6`) for document structure, not for visual sizing. Pair with `Paragraph`, `LeadParagraph`, `SmallText`, and `Label` for body content. Don't wrap button, checkbox or other component text in typography components to restyle it — components set their own text styles.
 
 ```tsx
 import { Heading1, Heading2, Paragraph, LeadParagraph, SmallText, Label, SubLabel, Link } from '@entur/typography';
