@@ -24,8 +24,10 @@
   --components-typography-label-contrast-text-accent: #{$text-subduedalt};
   --components-typography-label-standard-text-accent: #{$text-subdued};
   --components-typography-list-contrast-border: #{$stroke-contrast};
+  --components-typography-list-contrast-fill: #{$fill-background-contrast-lightalt-2};
   --components-typography-list-contrast-text-accent: #{$text-light};
   --components-typography-list-standard-border: #{$stroke-contrast};
+  --components-typography-list-standard-fill: #{$fill-selected-default-tint};
   --components-typography-list-standard-text-accent: #{$text-accent};
 }
 
@@ -49,7 +51,9 @@
   --components-typography-label-contrast-text-accent: #{$text-lightalt};
   --components-typography-label-standard-text-accent: #{$text-lightalt};
   --components-typography-list-contrast-border: #{$stroke-contrast};
+  --components-typography-list-contrast-fill: #{$fill-background-contrast-dark};
   --components-typography-list-contrast-text-accent: #{$text-lightalt};
   --components-typography-list-standard-border: #{$stroke-contrast};
+  --components-typography-list-standard-fill: #{$fill-background-contrast-dark};
   --components-typography-list-standard-text-accent: #{$text-lightalt};
 }
