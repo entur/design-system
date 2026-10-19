@@ -25,6 +25,18 @@ describe('Text Component', () => {
     expect(getByText('Leading text')).toHaveClass('eds-text--leading');
   });
 
+  test('renders code and preformatted as their HTML elements', () => {
+    const { getByText } = render(
+      <>
+        <Text variant="code">npm</Text>
+        <Text variant="preformatted">a b</Text>
+      </>,
+    );
+    expect(getByText('npm').tagName).toBe('CODE');
+    expect(getByText('npm')).toHaveClass('eds-text--code');
+    expect(getByText(/a\s+b/).tagName).toBe('PRE');
+  });
+
   test('applies size classes correctly', () => {
     const { getByText } = render(<Text size="lg">Large text</Text>);
     expect(getByText('Large text')).toHaveClass('eds-text--lg');

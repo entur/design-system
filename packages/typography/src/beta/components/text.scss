@@ -90,8 +90,8 @@
       font-weight: 500;
     }
 
-    &--code-text,
-    &--preformatted-text {
+    &--code,
+    &--preformatted {
       background-color: var(--components-typography-codetext-standard-fill);
       border: t.$border-widths-small solid var(--components-typography-codetext-standard-border);
       border-radius: t.$border-radiuses-medium;
@@ -106,13 +106,13 @@
       }
     }
 
-    &--preformatted-text {
+    &--preformatted {
       padding: 1rem;
       white-space: pre-wrap;
       word-break: keep-all;
     }
 
-    &--code-text {
+    &--code {
       display: inline-block;
       word-wrap: break-word;
       overflow-wrap: anywhere;
