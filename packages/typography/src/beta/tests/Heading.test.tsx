@@ -50,8 +50,8 @@ describe('Heading Component', () => {
       </Heading>,
     );
     const heading = getByText('Heading');
-    expect(heading).toHaveClass('eds-heading--lg');
-    expect(heading).not.toHaveClass('eds-heading--title-1');
+    // heading.scss puts the size rules after the variant rules
+    expect(heading).toHaveClass('eds-heading--title-1', 'eds-heading--lg');
   });
 
   test('applies spacing', () => {
