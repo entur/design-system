@@ -8,6 +8,7 @@
   .eds-text {
     color: var(--components-typography-basetext-standard-text-accent);
     font-weight: var(--font-weight-body);
+    text-wrap: pretty;
 
     :where(.eds-contrast) & {
       color: var(--components-typography-basetext-contrast-text-accent);
