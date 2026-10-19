@@ -1,11 +1,13 @@
 @use 'sass:meta';
 @use '@entur/utils/styles/layers';
-// @entur/tokens exports this file only with its extension
-// stylelint-disable-next-line scss/load-partial-extension
+
+// @entur/tokens exports these files only with their extension
+// stylelint-disable scss/load-partial-extension
 @use '@entur/tokens/dist/spacing.scss';
+@use '@entur/tokens/dist/typography.scss';
+// stylelint-enable scss/load-partial-extension
 @use './fonts';
 @use '../componentVariables';
-@use './typographyTokens';
 @use './text-spacing';
 @forward '../componentVariables';
 
