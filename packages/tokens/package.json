@@ -87,12 +87,18 @@
       "style": "./dist/spacing.css",
       "default": "./dist/spacing.css"
     },
+    "./styles/typography": {
+      "sass": "./dist/typography.scss",
+      "style": "./dist/typography.css",
+      "default": "./dist/typography.css"
+    },
     "./styles/base.scss": "./dist/base.scss",
     "./styles/semantic.scss": "./dist/semantic.scss",
     "./styles/primitive.scss": "./dist/primitive.scss",
     "./styles/transport.scss": "./dist/transport.scss",
     "./styles/data.scss": "./dist/data.scss",
     "./styles/spacing.scss": "./dist/spacing.scss",
+    "./styles/typography.scss": "./dist/typography.scss",
     "./styles/styles.scss": "./dist/styles.scss",
     "./dist/styles.css": "./dist/styles.css",
     "./dist/styles.scss": "./dist/styles.scss",
@@ -108,6 +114,8 @@
     "./dist/data.scss": "./dist/data.scss",
     "./dist/spacing.css": "./dist/spacing.css",
     "./dist/spacing.scss": "./dist/spacing.scss",
+    "./dist/typography.css": "./dist/typography.css",
+    "./dist/typography.scss": "./dist/typography.scss",
     "./dist/base": "./dist/base.scss",
     "./dist/styles": "./dist/styles.scss",
     "./package.json": "./package.json"
