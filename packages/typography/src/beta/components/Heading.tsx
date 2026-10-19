@@ -21,6 +21,8 @@ export type HeadingOwnProps = TypographySpacingProps & {
   size?: TypographySize;
   /** Innholdet som skal vises */
   children?: React.ReactNode;
+  /** Fjerner luften over versalhøyden og under grunnlinjen, så teksten flukter med elementer ved siden av. Har ingen effekt i nettlesere uten støtte for `text-box`. */
+  trim?: boolean;
   /** Ekstra klassenavn for tilpasset styling */
   className?: string;
 };
@@ -45,6 +47,7 @@ export const Heading = React.forwardRef(
       variant,
       spacing,
       style,
+      trim,
       className,
       ...rest
     }: HeadingProps<C>,
@@ -62,6 +65,7 @@ export const Heading = React.forwardRef(
           'eds-heading',
           `eds-heading--${usedVariant}`,
           size && `eds-heading--${size}`,
+          trim && 'eds-heading--trim',
           className,
         )}
         style={getSpacingStyle(spacing, style)}

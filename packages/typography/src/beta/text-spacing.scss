@@ -13,4 +13,11 @@
   :where(.eds-heading, .eds-text, .eds-text--link, .eds-text--unordered-list, .eds-text--numbered-list, .eds-text--list-item, .eds-text-container) {
     margin: var(--eds-text-spacing-top, 0) 0 var(--eds-text-spacing-bottom, 0);
   }
+
+  // Removes the space above the cap height and below the baseline
+  @supports (text-box: trim-both cap alphabetic) {
+    :where(.eds-text--trim, .eds-heading--trim) {
+      text-box: trim-both cap alphabetic;
+    }
+  }
 }

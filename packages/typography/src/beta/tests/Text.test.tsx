@@ -44,6 +44,17 @@ describe('Text Component', () => {
     expect(getByText('Sitat')).toHaveClass('eds-text--quote');
   });
 
+  test('trims the text box only when asked', () => {
+    const { getByText } = render(
+      <>
+        <Text trim>Trimmet</Text>
+        <Text>Vanlig</Text>
+      </>,
+    );
+    expect(getByText('Trimmet')).toHaveClass('eds-text--trim');
+    expect(getByText('Vanlig')).not.toHaveClass('eds-text--trim');
+  });
+
   test('keeps emphasized inline', () => {
     const { getByText } = render(<Text variant="emphasized">Viktig</Text>);
     expect(getByText('Viktig').tagName).toBe('EM');

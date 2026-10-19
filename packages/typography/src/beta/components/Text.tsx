@@ -26,6 +26,8 @@ export type TextOwnProps = TypographySpacingProps & {
   variant?: TypographyTextVariant;
   /** Innhold */
   children?: React.ReactNode;
+  /** Fjerner luften over versalhøyden og under grunnlinjen, så teksten flukter med elementer ved siden av. Har ingen effekt i nettlesere uten støtte for `text-box`. */
+  trim?: boolean;
   /** Ekstra klassenavn */
   className?: string;
 };
@@ -47,6 +49,7 @@ export const Text = React.forwardRef(
       weight,
       spacing,
       style,
+      trim,
       className,
       ...rest
     }: TextProps<C>,
@@ -63,6 +66,7 @@ export const Text = React.forwardRef(
           variant && `eds-text--${variant}`,
           size && `eds-text--${size}`,
           weight && `eds-text--weight-${weight}`,
+          trim && 'eds-text--trim',
           className,
         )}
         style={getSpacingStyle(spacing, style)}

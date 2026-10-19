@@ -54,6 +54,11 @@ describe('Heading Component', () => {
     expect(heading).toHaveClass('eds-heading--title-1', 'eds-heading--lg');
   });
 
+  test('trims the text box when asked', () => {
+    const { getByText } = render(<Heading trim>Trimmet</Heading>);
+    expect(getByText('Trimmet')).toHaveClass('eds-heading--trim');
+  });
+
   test('applies spacing', () => {
     const { getByText } = render(
       <Heading as="h1" spacing={{ top: '2xl', bottom: 's' }}>
