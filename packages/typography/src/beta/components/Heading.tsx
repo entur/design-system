@@ -1,11 +1,7 @@
 import React from 'react';
 
 import classNames from 'classnames';
-import {
-  TypographyHeadingVariant,
-  TypographySize,
-  TypographySpacingProps,
-} from '../types';
+import { TypographySpacingProps } from '../types';
 import {
   getHeadingVariantFromSemanticType,
   getSpacingStyle,
@@ -16,9 +12,17 @@ import './heading.scss';
 
 export type HeadingOwnProps = TypographySpacingProps & {
   /** Visuell variant som bestemmer styling (anbefalt over size) */
-  variant?: TypographyHeadingVariant;
+  variant?:
+    | 'title-1'
+    | 'title-2'
+    | 'subtitle-1'
+    | 'subtitle-2'
+    | 'section-1'
+    | 'section-2'
+    | 'label'
+    | 'sublabel';
   /** Visuell tekststørrelse som overstyrer variant-styling */
-  size?: TypographySize;
+  size?: 'xs' | 's' | 'm' | 'lg' | 'xl' | '2xl';
   /** Innholdet som skal vises */
   children?: React.ReactNode;
   /** Fjerner luften over versalhøyden og under grunnlinjen, så teksten flukter med elementer ved siden av. Har ingen effekt i nettlesere uten støtte for `text-box`. */
@@ -26,6 +30,9 @@ export type HeadingOwnProps = TypographySpacingProps & {
   /** Ekstra klassenavn for tilpasset styling */
   className?: string;
 };
+
+export type TypographyHeadingVariant = NonNullable<HeadingOwnProps['variant']>;
+export type TypographySize = NonNullable<HeadingOwnProps['size']>;
 
 export type HeadingProps<C extends React.ElementType = typeof defaultElement> =
   PolymorphicComponentProps<C, HeadingOwnProps>;

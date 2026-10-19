@@ -1,30 +1,3 @@
-export type TypographyHeadingVariant =
-  | 'title-1'
-  | 'title-2'
-  | 'subtitle-1'
-  | 'subtitle-2'
-  | 'section-1'
-  | 'section-2'
-  | 'label'
-  | 'sublabel';
-
-export type TypographyTextVariant =
-  | 'leading'
-  | 'quote'
-  | 'paragraph'
-  | 'subparagraph'
-  | 'caption'
-  | 'label'
-  | 'sublabel'
-  | 'overline'
-  | 'emphasized'
-  | 'code'
-  | 'preformatted';
-
-export type TypographySize = 'xs' | 's' | 'm' | 'lg' | 'xl' | '2xl';
-
-export type TypographyWeight = 'medium' | 'bold';
-
 // The unions stay inline so the props table on the docs site lists the values
 export type TypographySpacingProps = {
   /**
