@@ -127,7 +127,6 @@ const components = {
   p: (props: any) => <Text variant="paragraph" {...props} />,
   a: (props: any) => <Link {...props} />,
   strong: (props: any) => <Text as="strong" weight="bold" {...props} />,
-  inlineCode: (props: any) => <Text as="code" variant="code" {...props} />,
   ul: (props: any) => <UnorderedList {...props} />,
   li: (props: any) => <ListItem {...props} />,
   ol: (props: any) => <NumberedList {...props} />,
