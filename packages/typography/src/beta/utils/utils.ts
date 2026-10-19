@@ -1,8 +1,6 @@
-import {
-  TypographyHeadingVariant,
-  TypographySpacing,
-  TypographyTextVariant,
-} from '../types';
+import type { TypographyHeadingVariant } from '../components/Heading';
+import type { TypographyTextVariant } from '../components/Text';
+import type { TypographySpacing } from '../types';
 
 type SpacingStep = Exclude<TypographySpacing, object>;
 

@@ -19,8 +19,16 @@ export type {
   HeadingComponent,
   HeadingOwnProps,
   HeadingProps,
+  TypographyHeadingVariant,
+  TypographySize,
 } from './components/Heading';
-export type { TextComponent, TextOwnProps, TextProps } from './components/Text';
+export type {
+  TextComponent,
+  TextOwnProps,
+  TextProps,
+  TypographyTextVariant,
+  TypographyWeight,
+} from './components/Text';
 export type { LinkComponent, LinkOwnProps, LinkProps } from './components/Link';
 export type {
   UnorderedListComponent,
@@ -43,11 +51,4 @@ export type {
   TextContainerProps,
 } from './components/TextContainer';
 
-export type {
-  TypographyHeadingVariant,
-  TypographyTextVariant,
-  TypographySize,
-  TypographyWeight,
-  TypographySpacing,
-  TypographySpacingProps,
-} from './types';
+export type { TypographySpacing, TypographySpacingProps } from './types';

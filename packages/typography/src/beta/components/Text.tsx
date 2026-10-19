@@ -9,11 +9,7 @@ import {
   getSpacingStyle,
 } from '../utils/utils';
 
-import {
-  TypographySpacingProps,
-  TypographyTextVariant,
-  TypographyWeight,
-} from '../types';
+import { TypographySpacingProps } from '../types';
 
 import './text.scss';
 
@@ -21,9 +17,20 @@ export type TextOwnProps = TypographySpacingProps & {
   /** Visuell tekststørrelse (typografi-token) */
   size?: 'xs' | 's' | 'm' | 'lg' | 'xl';
   /** Fontvekt: `medium` (500) eller `bold` (600) */
-  weight?: TypographyWeight;
+  weight?: 'medium' | 'bold';
   /** Variant (kan brukes til spesielle typer tekst som for eksempel caption) */
-  variant?: TypographyTextVariant;
+  variant?:
+    | 'leading'
+    | 'quote'
+    | 'paragraph'
+    | 'subparagraph'
+    | 'caption'
+    | 'label'
+    | 'sublabel'
+    | 'overline'
+    | 'emphasized'
+    | 'code'
+    | 'preformatted';
   /** Innhold */
   children?: React.ReactNode;
   /** Fjerner luften over versalhøyden og under grunnlinjen, så teksten flukter med elementer ved siden av. Har ingen effekt i nettlesere uten støtte for `text-box`. */
@@ -31,6 +38,9 @@ export type TextOwnProps = TypographySpacingProps & {
   /** Ekstra klassenavn */
   className?: string;
 };
+
+export type TypographyTextVariant = NonNullable<TextOwnProps['variant']>;
+export type TypographyWeight = NonNullable<TextOwnProps['weight']>;
 
 export type TextProps<C extends React.ElementType = 'p'> =
   PolymorphicComponentProps<C, TextOwnProps>;
