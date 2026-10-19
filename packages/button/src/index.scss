@@ -1,8 +1,9 @@
 @use './componentVariables';
 @use '@entur/tokens/dist/base.scss' as *;
 
-// Manually import typography tokens (to support dynamic text sizes) until these are out of beta
-@use '@entur/typography/src/beta/typographyTokens.scss' as *;
+// The typography tokens give dynamic text sizes
+// stylelint-disable-next-line scss/load-partial-extension
+@use '@entur/tokens/dist/typography.scss';
 
 // Used to register the styles as loaded!
 :root {
