@@ -51,6 +51,11 @@
       font-size: var(--font-size-label-m);
       line-height: var(--font-line-height-label-m);
       font-weight: 600;
+
+      // label is inline by default, so spacing would not apply
+      &:where(label) {
+        display: block;
+      }
     }
 
     &--sublabel {

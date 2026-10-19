@@ -25,15 +25,17 @@ describe('Text Component', () => {
     expect(getByText('Leading text')).toHaveClass('eds-text--leading');
   });
 
-  test('renders caption, overline and sublabel as block paragraphs', () => {
+  test('renders caption, label, overline and sublabel as block paragraphs', () => {
     const { getByText } = render(
       <>
         <Text variant="caption">Caption</Text>
+        <Text variant="label">Label</Text>
         <Text variant="overline">Overline</Text>
         <Text variant="sublabel">Sublabel</Text>
       </>,
     );
     expect(getByText('Caption').tagName).toBe('P');
+    expect(getByText('Label').tagName).toBe('P');
     expect(getByText('Overline').tagName).toBe('P');
     expect(getByText('Sublabel').tagName).toBe('P');
   });
