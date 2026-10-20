@@ -2,6 +2,23 @@
   "hosting": {
     "public": "public",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "redirects": [
+      {
+        "source": "/komponenter/navigasjon/breadcrumbs{,/}",
+        "destination": "/komponenter/navigasjon/breadcrumbnavigation",
+        "type": 301
+      },
+      {
+        "source": "/komponenter/layout-og-flater/badge{,/}",
+        "destination": "/komponenter/feedback/badge",
+        "type": 301
+      },
+      {
+        "source": "/komponenter/layout-og-flater/tag{,/}",
+        "destination": "/komponenter/feedback/tag",
+        "type": 301
+      }
+    ],
     "rewrites": [
       {
         "source": "/sandkasse/**",

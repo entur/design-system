@@ -343,8 +343,13 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   });
 
   createRedirect({
-    fromPath: '/komponenter/feedback/badge',
-    toPath: '/komponenter/layout-og-flater/badge',
+    fromPath: '/komponenter/layout-og-flater/badge',
+    toPath: '/komponenter/feedback/badge',
+  });
+
+  createRedirect({
+    fromPath: '/komponenter/layout-og-flater/tag',
+    toPath: '/komponenter/feedback/tag',
   });
 
   await createDocumentationPagesFromSanity(graphql, actions, reporter);
