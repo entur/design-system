@@ -225,14 +225,6 @@
           outline-color: var(--basecolors-stroke-focus-contrast);
         }
       }
-
-      &--ext-icon {
-        margin-left: t.$space-extra-small2;
-
-        p & {
-          top: 0;
-        }
-      }
     }
 
     // List components
