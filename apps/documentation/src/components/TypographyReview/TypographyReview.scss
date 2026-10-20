@@ -1,0 +1,299 @@
+// Layout only; the parts come from @entur/* components
+.typography-review {
+  display: grid;
+  grid-template-columns: 16rem 1fr;
+  min-height: 100vh;
+  background: var(--basecolors-frame-default);
+
+  @media (width <= 60rem) {
+    grid-template-columns: 1fr;
+  }
+
+  &__nav {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    padding-block: var(--spacing-xl);
+    border-right: 1px solid var(--basecolors-stroke-subdued);
+
+    @media (width <= 60rem) {
+      display: none;
+    }
+  }
+
+  // Lines up with the text in the menu items
+  &__nav-title {
+    padding-inline: var(--spacing-xl);
+  }
+
+  &__main {
+    min-width: 0;
+  }
+
+  &__toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 3;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: var(--spacing-m) var(--spacing-xl);
+    padding: var(--spacing-s) var(--spacing-2xl);
+    border-bottom: 1px solid var(--basecolors-stroke-subdued);
+    background: var(--basecolors-frame-default);
+
+    :where(.eds-segmented-choice) {
+      white-space: nowrap;
+    }
+  }
+
+  &__pager {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2xs);
+    font-variant-numeric: tabular-nums;
+  }
+
+  &__content {
+    max-width: 90rem;
+    padding: var(--spacing-2xl);
+  }
+
+  &__header {
+    margin-bottom: var(--spacing-xl);
+  }
+
+  &__meta,
+  &__chips,
+  &__points {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+  }
+
+  &__meta {
+    margin-top: var(--spacing-s);
+  }
+
+  &__points {
+    margin-bottom: var(--spacing-xl);
+  }
+
+  &__scenarios {
+    max-width: 30rem;
+    margin-bottom: var(--spacing-lg);
+
+    :where(.eds-segmented-choice) {
+      white-space: nowrap;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 18rem), 1fr));
+    gap: var(--spacing-m);
+  }
+
+  // BaseCard is a row by default
+  &__card {
+    flex-direction: column;
+    align-items: stretch;
+    padding: var(--spacing-lg);
+  }
+
+  &__card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  &__card-tag {
+    display: flex;
+    width: fit-content;
+    margin-top: var(--spacing-xs);
+  }
+
+  &__highlight {
+    outline: 3px solid var(--basecolors-stroke-focus-standard);
+  }
+
+  // Examples
+
+  &__compare {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--spacing-xl);
+
+    &--single {
+      grid-template-columns: minmax(0, 1fr);
+      max-width: 52rem;
+    }
+
+    @media (width <= 70rem) {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  &__stage {
+    padding: var(--spacing-2xl);
+    border: 1px solid var(--basecolors-stroke-subdued);
+    border-radius: 0.75rem;
+    background: var(--basecolors-frame-default);
+
+    &--contrast {
+      background: var(--basecolors-frame-contrast);
+    }
+  }
+
+  &__spec {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: baseline;
+    gap: var(--spacing-m);
+    padding-block: var(--spacing-xs);
+
+    :where(&) + & {
+      border-top: 1px solid var(--basecolors-stroke-subdued);
+    }
+  }
+
+  // Measurements stay outside the typography under review
+  &__spec-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    font: 500 0.75rem/1.3 system-ui, sans-serif;
+    color: var(--basecolors-text-subdued);
+    white-space: nowrap;
+
+    :where(.eds-contrast) & {
+      color: var(--basecolors-text-subduedalt);
+    }
+  }
+
+  &__card-sample {
+    max-width: 22rem;
+    padding: var(--spacing-lg);
+    border: 1px solid var(--basecolors-stroke-subdued);
+    border-radius: 0.5rem;
+  }
+
+  &__image {
+    display: grid;
+    place-items: center;
+    height: 5rem;
+    color: var(--basecolors-text-subdued);
+    font-size: 1.5rem;
+    border-radius: 0.5rem;
+    background: var(--basecolors-frame-subdued);
+  }
+
+  &__trim {
+    display: flex;
+    gap: var(--spacing-xl);
+    align-items: flex-start;
+
+    > * {
+      outline: 1px dashed currentcolor;
+    }
+  }
+
+  &__flow-root {
+    display: flow-root;
+  }
+
+  &__gaps-wrap {
+    position: relative;
+  }
+
+  &__gaps {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  &__gap {
+    position: absolute;
+    inset-inline: -0.75rem;
+    background: rgb(255 89 89 / 18%);
+    border-block: 1px solid rgb(211 27 27 / 45%);
+
+    :where(span) {
+      position: absolute;
+      top: 50%;
+      right: 0.25rem;
+      transform: translateY(-50%);
+      padding: 0 0.3rem;
+      border-radius: 0.25rem;
+      background: #d31b1b;
+      color: #fff;
+      font: 600 0.6875rem/1rem system-ui, sans-serif;
+    }
+  }
+
+  // All gaps: one framed sample per pair
+  &__pairs {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 16rem), 1fr));
+    gap: var(--spacing-m);
+  }
+
+  &__pair {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-m);
+    border: 1px solid var(--basecolors-stroke-subdued);
+    border-radius: 0.5rem;
+  }
+
+  &__pair-head,
+  &__pair-note {
+    font: 500 0.75rem/1.3 system-ui, sans-serif;
+    color: var(--basecolors-text-subdued);
+
+    :where(.eds-contrast) & {
+      color: var(--basecolors-text-subduedalt);
+    }
+  }
+
+  &__pair-head {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--spacing-xs);
+  }
+
+  // Shows where each element starts and ends
+  &__example-switch {
+    margin-bottom: var(--spacing-m);
+  }
+
+  &__pair-sample--outlined > * {
+    outline: 1px dashed var(--basecolors-stroke-subdued);
+  }
+
+  &__figma-steps {
+    display: grid;
+    gap: var(--spacing-xl);
+  }
+
+  &__swatch-label {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--spacing-xs);
+  }
+
+  &__swatch {
+    width: 1.25rem;
+    height: 1.25rem;
+    border: 1px solid var(--basecolors-stroke-subdued);
+    border-radius: 0.25rem;
+  }
+
+  &__inline-tag {
+    margin-inline-start: var(--spacing-xs);
+  }
+}
