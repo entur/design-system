@@ -44,7 +44,7 @@ export type HeadingComponent = (<
   props: HeadingProps<C> & { ref?: React.Ref<Element> },
 ) => React.ReactElement | null) & { displayName?: string };
 
-const defaultElement = 'h1';
+const defaultElement = 'h2';
 
 /**
  * @beta Experimental component - may have breaking changes in future releases

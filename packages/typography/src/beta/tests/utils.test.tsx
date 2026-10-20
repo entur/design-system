@@ -22,13 +22,13 @@ describe('Utility Functions', () => {
     });
 
     test('returns default variant for unknown semantic type', () => {
-      expect(getHeadingVariantFromSemanticType('div')).toBe('title-1');
+      expect(getHeadingVariantFromSemanticType('div')).toBe('title-2');
     });
 
     test('returns default variant for non-string input', () => {
       // Test with an actual React component (non-string)
       const MockComponent = () => <div>Mock</div>;
-      expect(getHeadingVariantFromSemanticType(MockComponent)).toBe('title-1');
+      expect(getHeadingVariantFromSemanticType(MockComponent)).toBe('title-2');
     });
   });
 

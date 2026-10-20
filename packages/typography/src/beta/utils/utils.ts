@@ -69,7 +69,8 @@ export function getSpacingStyle(
 export function getHeadingVariantFromSemanticType(
   element: string | React.ElementType,
 ): TypographyHeadingVariant {
-  if (typeof element !== 'string') return 'title-1';
+  // Same as the default element, h2
+  if (typeof element !== 'string') return 'title-2';
 
   switch (element.toLowerCase()) {
     case 'h1':
@@ -85,7 +86,7 @@ export function getHeadingVariantFromSemanticType(
     case 'h6':
       return 'section-2';
     default:
-      return 'title-1';
+      return 'title-2';
   }
 }
 
