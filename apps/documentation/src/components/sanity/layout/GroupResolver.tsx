@@ -4,8 +4,6 @@ import { PortableText } from '../PortableText';
 import { GridContainer, GridItem } from '@entur/grid';
 import { GroupType } from '../types';
 
-import './Group.scss';
-
 type Props = {
   value: GroupType;
 };

@@ -2,7 +2,6 @@
 
 .image-and-text {
   $self: &;
-  margin-bottom: eds.$space-default;
 
   &__image {
     grid-column: 1 / -1;

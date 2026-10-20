@@ -26,17 +26,8 @@ import {
   UnorderedList,
 } from '@entur/typography/beta';
 import { HeadingAnchor } from '@components/sanity/HeadingAnchor';
+import { DocH2, DocH3, DocH4, DocH5 } from '@components/Common/DocHeadings';
 
-const MdxH2 = (props: any) => <Heading as="h2" variant="title-2" {...props} />;
-const MdxH3 = (props: any) => (
-  <Heading as="h3" variant="subtitle-1" {...props} />
-);
-const MdxH4 = (props: any) => (
-  <Heading as="h4" variant="subtitle-2" {...props} />
-);
-const MdxH5 = (props: any) => (
-  <Heading as="h5" variant="section-1" {...props} />
-);
 import {
   DataCell,
   EditableCell,
@@ -106,22 +97,22 @@ const components = {
   // DS components - using new beta components
   h1: (props: any) => <Heading as="h1" variant="title-1" {...props} />,
   h2: ({ id, children }: any) => (
-    <HeadingAnchor headingId={id} HeadingComponent={MdxH2}>
+    <HeadingAnchor headingId={id} HeadingComponent={DocH2}>
       {children}
     </HeadingAnchor>
   ),
   h3: ({ id, children }: any) => (
-    <HeadingAnchor headingId={id} HeadingComponent={MdxH3}>
+    <HeadingAnchor headingId={id} HeadingComponent={DocH3}>
       {children}
     </HeadingAnchor>
   ),
   h4: ({ id, children }: any) => (
-    <HeadingAnchor headingId={id} HeadingComponent={MdxH4}>
+    <HeadingAnchor headingId={id} HeadingComponent={DocH4}>
       {children}
     </HeadingAnchor>
   ),
   h5: ({ id, children }: any) => (
-    <HeadingAnchor headingId={id} HeadingComponent={MdxH5}>
+    <HeadingAnchor headingId={id} HeadingComponent={DocH5}>
       {children}
     </HeadingAnchor>
   ),

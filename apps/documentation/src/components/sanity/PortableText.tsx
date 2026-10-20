@@ -6,19 +6,14 @@ import type {
   PortableTextReactComponents,
 } from '@portabletext/react';
 import {
-  CodeText,
-  EmphasizedText,
-  Heading2,
-  Heading3,
-  Heading4,
-  Heading5,
   Link,
   ListItem,
   NumberedList,
-  Paragraph,
-  StrongText,
+  Text,
+  TextContainer,
   UnorderedList,
-} from '@entur/typography';
+} from '@entur/typography/beta';
+import { DocH2, DocH3, DocH4, DocH5 } from '@components/Common/DocHeadings';
 import * as icons from '@entur/icons';
 
 import { ImageAndTextResolver } from './image/ImageAndTextResolver';
@@ -43,7 +38,7 @@ const createComponents = (context?: {
       <HeadingAnchor
         headingKey={value._key}
         headingText={getBlockText(value)}
-        HeadingComponent={Heading2}
+        HeadingComponent={DocH2}
       >
         {children}
       </HeadingAnchor>
@@ -52,7 +47,7 @@ const createComponents = (context?: {
       <HeadingAnchor
         headingKey={value._key}
         headingText={getBlockText(value)}
-        HeadingComponent={Heading3}
+        HeadingComponent={DocH3}
       >
         {children}
       </HeadingAnchor>
@@ -61,7 +56,7 @@ const createComponents = (context?: {
       <HeadingAnchor
         headingKey={value._key}
         headingText={getBlockText(value)}
-        HeadingComponent={Heading4}
+        HeadingComponent={DocH4}
       >
         {children}
       </HeadingAnchor>
@@ -70,12 +65,12 @@ const createComponents = (context?: {
       <HeadingAnchor
         headingKey={value._key}
         headingText={getBlockText(value)}
-        HeadingComponent={Heading5}
+        HeadingComponent={DocH5}
       >
         {children}
       </HeadingAnchor>
     ),
-    normal: ({ children }) => <Paragraph>{children}</Paragraph>,
+    normal: ({ children }) => <Text>{children}</Text>,
   },
   list: {
     bullet: ({ children }) => <UnorderedList>{children}</UnorderedList>,
@@ -91,8 +86,12 @@ const createComponents = (context?: {
   },
   listItem: ({ children }) => <ListItem>{children}</ListItem>,
   marks: {
-    strong: ({ children }) => <StrongText>{children}</StrongText>,
-    em: ({ children }) => <EmphasizedText>{children}</EmphasizedText>,
+    strong: ({ children }) => (
+      <Text as="strong" weight="bold">
+        {children}
+      </Text>
+    ),
+    em: ({ children }) => <Text variant="emphasized">{children}</Text>,
     link: ({ value, children }) => {
       const { href } = value;
       if (href === undefined) return null;
@@ -122,13 +121,10 @@ const createComponents = (context?: {
       } catch (e) {
         console.error('Invalid URL:', href, e);
       }
-      return (
-        <Link external href={href} target="_blank">
-          {children}
-        </Link>
-      );
+      // Same tab, so the link text alone says where it goes
+      return <Link href={href}>{children}</Link>;
     },
-    code: ({ children }) => <CodeText>{children}</CodeText>,
+    code: ({ children }) => <Text variant="code">{children}</Text>,
   },
   types: {
     imageAndText: ImageAndTextResolver,
@@ -165,12 +161,23 @@ type ExtendedPortableTextProps = PortableTextProps & {
   context?: {
     npmPackage?: string;
   };
+  /** false when the caller already puts the blocks in a TextContainer */
+  container?: boolean;
 };
 
-export const PortableText = ({ value, context }: ExtendedPortableTextProps) => (
-  // Nested PortableText calls inherit the outermost map, so this is a no-op
-  // wrapper for everything below the top-level content.
-  <HeadingIdProvider content={value}>
+export const PortableText = ({
+  value,
+  context,
+  container = true,
+}: ExtendedPortableTextProps) => {
+  const content = (
     <PortableTextReact components={createComponents(context)} value={value} />
-  </HeadingIdProvider>
-);
+  );
+  return (
+    // Nested PortableText calls inherit the outermost map, so this is a no-op
+    // wrapper for everything below the top-level content.
+    <HeadingIdProvider content={value}>
+      {container ? <TextContainer>{content}</TextContainer> : content}
+    </HeadingIdProvider>
+  );
+};

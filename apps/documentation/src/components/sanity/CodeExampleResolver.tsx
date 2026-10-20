@@ -1,10 +1,9 @@
 import React from 'react';
 import { CopyableText } from '@entur/alert';
-import { Heading3 } from '@entur/typography';
+import { DocH3 } from '@components/Common/DocHeadings';
 import { CodeBlock } from '@components/Codeblock/CodeBlock';
 import Playground from '@components/Playground/Playground';
 import { InitialAdvancedProp } from '@components/Playground/playground-utils';
-import './CodeExampleResolver.scss';
 
 // Import all props files dynamically
 import * as buttonProps from '@data/props/button-props';
@@ -152,7 +151,7 @@ export const CodeExampleResolver = ({ value }: CodeExampleProps) => {
   return (
     <div className="code-example">
       {title && codeDisplayType !== 'playground' && (
-        <Heading3>{title}</Heading3>
+        <DocH3 spacing={{ bottom: 's' }}>{title}</DocH3>
       )}
 
       {codeDisplayType === 'playground' ? (
