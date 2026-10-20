@@ -1,22 +1,6 @@
 @use '@entur/tokens/dist/styles.scss' as eds;
 
 .text-blocks {
-  &:where(:not(:first-child)) {
-    margin-top: eds.$space-extra-large5;
-  }
-
-  :where(h2, h3, h4, h5):first-child {
-    margin-top: 0;
-  }
-  :where(h2, h3, h4, h5) + & {
-    margin-top: eds.$space-medium;
-  }
-
-  // Some element apply auto margin-bottom which causes unwanted whitespace in the card. This removes it.
-  .designentur-base-card__children > :last-child {
-    margin-bottom: eds.$space-none;
-  }
-
   &.eds-contrast {
     background-color: unset;
     .designentur-base-card__content {

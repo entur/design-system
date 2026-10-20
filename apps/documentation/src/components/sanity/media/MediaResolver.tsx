@@ -1,13 +1,10 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import { getGatsbyImageData } from 'gatsby-source-sanity';
-import classNames from 'classnames';
 import { Text } from '@entur/typography/beta';
 import { ImageDisplay } from '@components/Media/ImageDisplay';
 import { MediaType } from '../types';
 import { SANITY_PROJECT } from 'src/utils/constants';
-
-import './Media.scss';
 
 type Props = {
   value: MediaType;
@@ -40,11 +37,9 @@ export const MediaResolver = ({ value }: Props) => {
     if (imageData === null) return null;
 
     return (
-      <>
+      <WithCaption caption={caption}>
         <ImageDisplay
-          className={classNames('media', {
-            'media--has-caption': caption !== undefined,
-          })}
+          className="media"
           imgSource={imageData}
           alt={imageDescription}
           preset={
@@ -89,8 +84,7 @@ export const MediaResolver = ({ value }: Props) => {
           }
           aria-hidden={hideFromScreenreaders}
         />
-        {caption && <Caption>{caption}</Caption>}
-      </>
+      </WithCaption>
     );
   }
 
@@ -109,7 +103,7 @@ export const MediaResolver = ({ value }: Props) => {
   if (!src) return null;
 
   return (
-    <>
+    <WithCaption caption={caption}>
       <video
         controls
         style={{ width: '100%', borderRadius: '0.5rem' }}
@@ -121,21 +115,28 @@ export const MediaResolver = ({ value }: Props) => {
       >
         <source src={src} />
       </video>
-      {caption && <Caption>{caption}</Caption>}
-    </>
+    </WithCaption>
   );
 };
 
-const Caption = ({ children }: { children: string }) => (
-  <Text
-    as="p"
-    className="media__caption"
-    variant="caption"
-    spacing={{ top: 'xs', bottom: 'm' }}
-  >
-    {children}
-  </Text>
-);
+// TextContainer puts a figcaption close to the media it describes
+const WithCaption = ({
+  caption,
+  children,
+}: {
+  caption?: string;
+  children: React.ReactNode;
+}) =>
+  caption ? (
+    <figure>
+      {children}
+      <Text as="figcaption" variant="caption">
+        {caption}
+      </Text>
+    </figure>
+  ) : (
+    <>{children}</>
+  );
 
 export const MediaFragment = graphql`
   fragment MediaFragment on SanityMedia {

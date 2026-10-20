@@ -13,6 +13,8 @@ type Props = {
   npmPackage?: string;
 };
 
+const CARD_VARIANTS = new Set(['information', 'contrast', 'alert']);
+
 export const TextBlocksResolver = ({ value, npmPackage }: Props) => {
   const textBlocksCount = value?._rawItems?.length ?? value?.items?.length;
   const textBlocksVariant = value.variant;
@@ -23,6 +25,8 @@ export const TextBlocksResolver = ({ value, npmPackage }: Props) => {
       <PortableText
         value={value._rawItems ?? value.items}
         context={{ npmPackage }}
+        // Without a card around it, the text is already in the TextContainer of the blocks around it
+        container={CARD_VARIANTS.has(textBlocksVariant ?? '')}
       />
     </VariantWrapper>
   );
