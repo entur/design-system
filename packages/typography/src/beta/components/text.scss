@@ -100,16 +100,9 @@
       box-decoration-break: clone;
       overflow-wrap: break-word;
 
-      // The fill covers the link's line, so draw it as an underline in the same place (code is 0.875em)
+      // End the fill above the link's line, so the line and its hover show below the code
       :where(.eds-text--link) & {
-        text-decoration: underline;
-        text-decoration-thickness: calc(0.0625em / 0.875);
-        text-underline-offset: calc(0.275em / 0.875);
-        text-decoration-skip-ink: none;
-      }
-
-      :where(.eds-text--link:hover) & {
-        text-decoration-thickness: calc(0.125em / 0.875);
+        padding-block-end: 0;
       }
     }
 
@@ -199,6 +192,27 @@
       &:where(:hover) {
         background-size: 100% 0.125em, 100% 0.0625em;
         cursor: pointer;
+      }
+
+      // A button doesn't break across lines like text, so it gets an underline in the same place, without the sweep
+      &:where(button) {
+        appearance: none;
+        background: none;
+        border: 0;
+        border-radius: 0;
+        margin: 0;
+        padding: 0;
+        font: inherit;
+        letter-spacing: inherit;
+        text-align: inherit;
+        text-decoration: underline;
+        text-decoration-thickness: 0.0625em;
+        text-underline-offset: 0.275em;
+        text-decoration-skip-ink: none;
+      }
+
+      &:where(button:hover) {
+        text-decoration-thickness: 0.125em;
       }
 
       &:where(:focus-visible) {
