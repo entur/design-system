@@ -17,6 +17,7 @@ import {
 } from '@entur/form';
 import {
   Heading,
+  Label,
   Link,
   ListItem,
   NumberedList,
@@ -100,7 +101,8 @@ const preToCodeBlock = (preProps: any) => {
 // components are used in the MDXProvider in the DocLayout file.
 // oxlint-disable eslint-plugin-jsx-a11y(heading-has-content)
 const components = {
-  wrapper: (props: any) => <TextContainer {...props} />,
+  // MDX passes the page props to the wrapper; only the content goes in
+  wrapper: ({ children }: any) => <TextContainer>{children}</TextContainer>,
   // DS components - using new beta components
   h1: (props: any) => <Heading as="h1" variant="title-1" {...props} />,
   h2: ({ id, children }: any) => (
@@ -124,30 +126,23 @@ const components = {
     </HeadingAnchor>
   ),
   h6: (props: any) => <Heading as="h6" variant="section-2" {...props} />,
-  p: (props: any) => <Text variant="paragraph" {...props} />,
-  a: (props: any) => <Link {...props} />,
+  p: Text,
+  a: Link,
   strong: (props: any) => <Text as="strong" weight="bold" {...props} />,
-  ul: (props: any) => <UnorderedList {...props} />,
-  li: (props: any) => <ListItem {...props} />,
-  ol: (props: any) => <NumberedList {...props} />,
-  // Individual component mappings
-  Paragraph: (props: any) => <Text variant="paragraph" {...props} />,
-  StrongText: (props: any) => <Text as="strong" weight="bold" {...props} />,
-  EmphasizedText: (props: any) => <Text variant="emphasized" {...props} />,
-  UnorderedList: (props: any) => <UnorderedList {...props} />,
-  ListItem: (props: any) => <ListItem {...props} />,
-  NumberedList: (props: any) => <NumberedList {...props} />,
+  ul: UnorderedList,
+  li: ListItem,
+  ol: NumberedList,
+  // Typography for JSX in MDX
+  Heading,
+  Text,
+  Link,
+  Label,
+  TextContainer,
+  UnorderedList,
+  ListItem,
+  NumberedList,
   GridContainer,
   GridItem,
-  Heading1: (props: any) => <Heading as="h1" variant="title-1" {...props} />,
-  Heading2: (props: any) => <Heading as="h2" variant="title-2" {...props} />,
-  Heading3: (props: any) => <Heading as="h3" variant="subtitle-1" {...props} />,
-  Heading4: (props: any) => <Heading as="h4" variant="subtitle-2" {...props} />,
-  Heading5: (props: any) => <Heading as="h5" variant="section-1" {...props} />,
-  Heading6: (props: any) => <Heading as="h6" variant="section-2" {...props} />,
-  LinkText: (props: any) => <Link {...props} />,
-  LeadParagraph: (props: any) => <Text variant="lead" {...props} />,
-  SubParagraph: (props: any) => <Text variant="small" {...props} />,
   BannerAlertBox: (props: any) => (
     <BannerAlertBox style={{ marginBlock: '2rem' }} {...props} />
   ),
@@ -171,7 +166,6 @@ const components = {
   tr: TableRow,
   th: HeaderCell,
   td: DataCell,
-  Label: (props: any) => <Text variant="label" {...props} />,
   ToastAlertBox,
   ToastProvider,
   SmallAlertBox: (props: any) => (
@@ -192,7 +186,6 @@ const components = {
   TextField,
   TextArea,
   CopyableText,
-  CodeText: (props: any) => <Text as="code" variant="code" {...props} />,
   // Custom components
   Playground,
   Props,
@@ -231,7 +224,7 @@ const components = {
     if (className) {
       return <code {...props} />;
     }
-    return <Text as="code" variant="code" {...props} />;
+    return <Text variant="code" {...props} />;
   },
   CodeBlock,
 };

@@ -7,7 +7,7 @@ menu: Verktøykassen
 order: 6
 ---
 
-import { graphql, Link } from "gatsby"
+import { graphql, Link as GatsbyLink } from "gatsby"
 
 import { TypographyDisplay } from '@components/Common/TypographyDisplay';
 import { SEO } from '@components/seo/SEO';
@@ -58,9 +58,9 @@ Les mer om hvordan du tar i bruk skrifttypen i produktutvikling på [siden om ty
 >
   I identiteten brukes typografi også som et bærende grafisk element for å
   understøtte kontrastene og mangfoldigheten.{' '}
-  <LinkText as={Link} to="/identitet/vektoykassen/grafiske-elementer">
+  <Link as={GatsbyLink} to="/identitet/vektoykassen/grafiske-elementer">
     Les mer om dette og se eksempler på infosiden om grafiske elementer.
-  </LinkText>
+  </Link>
 </BannerAlertBox>
 
 ### Fontvarianter
