@@ -78,7 +78,6 @@
     &--code,
     &--preformatted {
       background-color: var(--components-typography-codetext-standard-fill);
-      color: inherit;
       font-family: var(--font-family-mono);
       font-size: 0.875em;
       font-weight: inherit;
@@ -93,7 +92,9 @@
       }
     }
 
+    // Inline code takes the colour of the text around it, a block keeps the text colour
     &--code {
+      color: inherit;
       border-radius: t.$border-radiuses-medium;
       padding: 0.125em 0.3em;
       box-decoration-break: clone;
