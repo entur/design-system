@@ -100,16 +100,16 @@
       box-decoration-break: clone;
       overflow-wrap: break-word;
 
-      // The fill covers the underline that eds-text--link draws as a background
+      // The fill covers the link's line, so draw it as an underline in the same place (code is 0.875em)
       :where(.eds-text--link) & {
-        background-image: linear-gradient(currentcolor, currentcolor);
-        background-position: 0 100%;
-        background-repeat: no-repeat;
-        background-size: 100% 0.125rem;
+        text-decoration: underline;
+        text-decoration-thickness: calc(0.0625em / 0.875);
+        text-underline-offset: calc(0.275em / 0.875);
+        text-decoration-skip-ink: none;
       }
 
       :where(.eds-text--link:hover) & {
-        animation: eds-link-underline 0.3s ease-in;
+        text-decoration-thickness: calc(0.125em / 0.875);
       }
     }
 
@@ -171,43 +171,34 @@
         color: var(--components-typography-basetext-contrast-text-accent);
       }
 
+      // A thin line, and a thicker one that sweeps in over it on hover. Both sit .275em below the baseline;
+      // the padding makes room for them below the letters.
       &,
       &:where(:link),
       &:where(:visited) {
         font-size: inherit;
         text-decoration: none;
         position: relative;
-        background-image: linear-gradient(
-          120deg,
-          var(--components-typography-basetext-standard-text-accent) 0%,
-          var(--components-typography-basetext-standard-text-accent) 100%
-        );
+        padding-block-end: 0.1em;
+        background-image: linear-gradient(currentcolor, currentcolor), linear-gradient(currentcolor, currentcolor);
+        background-position: 0 100%, 0 calc(100% - 0.0625em);
         background-repeat: no-repeat;
-        background-size: 100% 0.125rem;
-        background-position: 0 100%;
+        background-size: 0% 0.125em, 100% 0.0625em;
 
-        :where(.eds-contrast) & {
-          background-image: linear-gradient(
-            120deg,
-            var(--components-typography-basetext-contrast-text-accent) 0%,
-            var(--components-typography-basetext-contrast-text-accent) 100%
-          );
+        @media (prefers-reduced-motion: no-preference) {
+          transition: background-size 0.3s ease-in;
+        }
+
+        // Forced colors remove background images, so fall back to a real underline
+        @media (forced-colors: active) {
+          background-image: none;
+          text-decoration: underline;
         }
       }
 
       &:where(:hover) {
-        animation: eds-link-underline 0.3s ease-in;
+        background-size: 100% 0.125em, 100% 0.0625em;
         cursor: pointer;
-      }
-
-      @keyframes eds-link-underline {
-        from {
-          background-size: 0% 0.125rem;
-        }
-
-        to {
-          background-size: 100% 0.125rem;
-        }
       }
 
       &:where(:focus-visible) {
