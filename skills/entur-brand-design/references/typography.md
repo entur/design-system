@@ -20,6 +20,8 @@ Use only **two weights** in digital interfaces:
 
 Restraint in weight usage creates a cleaner hierarchy. Avoid mixing more than two weights in a single view unless using typography as a graphic element.
 
+Never Regular (400), Light (300) or Bold (700). Browsers default to 400 and use 700 for `<strong>` and `<th>`, so text outside the typography components (table cells, loose text, CMS HTML, your own components) ends up Regular. Set `font-weight: 500` on `body`, and `font-weight: 600` where you use `<strong>`, `<b>` or `<th>` directly.
+
 ---
 
 ## Fallback font: Arial
