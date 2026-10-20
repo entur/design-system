@@ -11,7 +11,6 @@ import { TokenTable } from '@components/TokensTable/TokenTable';
 import { TokenFormatInfo } from '@components/TokensTable/TokenFormatInfo';
 import { TokenImportInstructions } from '@components/TokensTable/TokenImportInstructions';
 import { SEO } from '@components/seo/SEO';
-import { Heading3 } from '@entur/typography';
 
 export const Head = ( props ) => {
   return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
@@ -24,7 +23,7 @@ export const Head = ( props ) => {
 Les mer om [hvordan ta i bruk base-tokens](/tokens/fargetokens/generelt-om-fargetokens#hvilken-tokens-skal-jeg-bruke).
 <TokenFormatInfo tokenKey="base" />
 
-<Heading3 style={{ marginTop: '2rem' }}>Hvordan importere</Heading3>
+<Heading as="h3" variant="subtitle-1">Hvordan importere</Heading>
 <TokenImportInstructions tokenKey="base" />
 
 <TokenTable
@@ -37,7 +36,7 @@ Les mer om [hvordan ta i bruk base-tokens](/tokens/fargetokens/generelt-om-farge
 
 <TokenFormatInfo tokenKey="semantic" />
 
-<Heading3 style={{ marginTop: '2rem' }}>Hvordan importere</Heading3>
+<Heading as="h3" variant="subtitle-1">Hvordan importere</Heading>
 <TokenImportInstructions tokenKey="semantic" />
 
 <TokenTable
@@ -71,7 +70,7 @@ Transport-tokens er Entur sine farger på transportmidler. Transparent-varianten
 
 <TokenFormatInfo tokenKey="primitive" />  
 
-<Heading3 style={{ marginTop: '2rem' }}>Hvordan importere</Heading3>
+<Heading as="h3" variant="subtitle-1">Hvordan importere</Heading>
 <TokenImportInstructions tokenKey="primitive" />
 
 <TokenTable

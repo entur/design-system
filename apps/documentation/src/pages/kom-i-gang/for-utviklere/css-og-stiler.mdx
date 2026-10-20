@@ -38,7 +38,7 @@ I en SCSS-fil bruker du `@use`:
 ```
 
 <SmallAlertBox variant="information">
-  `/styles` er en subpath i pakkens <CodeText>exports</CodeText>, og kobles riktig gjennom bundleren din, f.eks Webpack (via sass-loader) og Vite. Importerer du gjennom <CodeText>sass</CodeText> direkte, må du oppgi full sti – <CodeText>@entur/tokens/dist/base.scss</CodeText> – eller bruke <CodeText>pkg:</CodeText>-prefiks.
+  `/styles` er en subpath i pakkens <Text variant="code">exports</Text>, og kobles riktig gjennom bundleren din, f.eks Webpack (via sass-loader) og Vite. Importerer du gjennom <Text variant="code">sass</Text> direkte, må du oppgi full sti – <Text variant="code">@entur/tokens/dist/base.scss</Text> – eller bruke <Text variant="code">pkg:</Text>-prefiks.
 </SmallAlertBox>
 
 De gamle stiene  – som `@entur/button/dist/styles.css` – virker fortsatt, men `/styles` er den anbefalte formen.
