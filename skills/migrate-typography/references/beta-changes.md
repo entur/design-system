@@ -115,6 +115,15 @@ Only `medium` (500) and `bold` (600) are valid. The other values are removed, so
 - `size` now always overrides `variant` on both `Text` and `Heading`. Before, `Text` with both looked like the variant. Where `Text` has both, check whether the size or the variant was meant, and remove the other.
 - `Text` sizes are `xs | s | m | lg | xl`. `size="2xl"` is removed: use `xl`, or a `Heading` if it is a heading. `size="lg"` now has a style (before, it had none).
 
+## `Text` without `variant`
+
+- **On its own line** (no `as`, or `as="p" | "div" | "li" | "dd" | "dt" | "figcaption"`): it is now a paragraph (body-m). Before, it had no size of its own. Remove CSS that set body text on it.
+- **Inside other text** (`as="span"`, `"strong"`, a heading element or a component): it now inherits colour and weight as well as size. Before, it set the text colour and medium weight. `weight` and `size` still apply.
+
+## `Heading` defaults to `h2`
+
+`Heading` without `as` is now an `h2` with `title-2` (before: `h1` with `title-1`). A non-heading `as` without `variant` also gets `title-2`. Where the page title relied on the default, add `as="h1"`.
+
 ## Lists
 
 No API change.
