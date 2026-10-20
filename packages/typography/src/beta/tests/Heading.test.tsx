@@ -99,6 +99,18 @@ describe('Heading Component', () => {
     expect(getByText2('H2')).toHaveClass('eds-heading--title-2');
   });
 
+  test('renders h2 with title-2 by default', () => {
+    const { getByText } = render(
+      <>
+        <Heading>Default</Heading>
+        <Heading as="div">Div</Heading>
+      </>,
+    );
+    expect(getByText('Default').tagName).toBe('H2');
+    expect(getByText('Default')).toHaveClass('eds-heading--title-2');
+    expect(getByText('Div')).toHaveClass('eds-heading--title-2');
+  });
+
   test('Heading with no variant or size uses default', () => {
     const { getByText } = render(<Heading as="h1">Default heading</Heading>);
     expect(getByText('Default heading')).toHaveClass('eds-heading--title-1');
