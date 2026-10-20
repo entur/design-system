@@ -30,6 +30,23 @@ import { Link } from '@entur/typography/beta';
 <Link href="/vilkar">Vilkår</Link>;
 ```
 
+## `external` is removed from `Link`
+
+The icon was read as both "another site" and "opens in a new tab". Remove `external` and `ariaLabelExternalIcon`, and say it in the link text when it matters:
+
+- **Opens in a new tab** (`target="_blank"`): add "(åpnes i ny fane)" to the link text. Ask the team whether the link needs a new tab at all; keep it only where leaving would lose the user's input or session.
+- **Another site:** the text or the context usually says so already. If not, name the site, for example "Les mer på regjeringen.no".
+
+```tsx
+// Before
+<Link href="https://regjeringen.no" external target="_blank" rel="noreferrer">
+  Les mer
+</Link>
+
+// After
+<Link href="https://regjeringen.no">Les mer på regjeringen.no</Link>
+```
+
 ## `Blockquote` and `BlockquoteFooter` are removed
 
 Use `Text variant="quote"`. Put a source in `figure` + `figcaption`:
@@ -109,7 +126,7 @@ No API change.
 
 ## Exports
 
-- Removed: `Blockquote`, `BlockquoteFooter`.
+- Removed: `Blockquote`, `BlockquoteFooter`, and the `external` and `ariaLabelExternalIcon` props on `Link`.
 - New: `Label`, `TextContainer`, and `*Props`/`*OwnProps` types for each component.
 - `TypographySpacing` now includes the object form `{ top, bottom }`.
 
@@ -120,6 +137,7 @@ No API change.
 | `.eds-text--code-text`                                                          | `.eds-text--code`                                                                                       |
 | `.eds-text--preformatted-text`                                                  | `.eds-text--preformatted`                                                                               |
 | `.eds-text--blockquote`, `.eds-text--blockquote__footer`                        | `.eds-text--quote` (source: your own `figcaption`)                                                      |
+| `.eds-text--link--ext-icon`                                                     | Removed with `external`                                                                                 |
 | `.eds-text--spacing-*`, `.eds-heading--spacing-*`, `.eds-text--link--spacing-*` | No classes. `spacing` sets `--eds-text-spacing-top` and `--eds-text-spacing-bottom` inline              |
 | `.eds-text--list-item::before` (dash and number rings)                          | Bullets: `::before` on `.eds-text--unordered-list > li`. Numbers: `::marker`. Steps: `.eds-text--steps` |
 | `.eds-heading--<variant>` alone                                                 | `Heading` with `size` gets both `.eds-heading--<variant>` and `.eds-heading--<size>`                    |

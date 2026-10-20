@@ -83,8 +83,8 @@ npx tsc --noEmit
 npm run build
 npm test
 grep -rnE "variant=['\"](code-text|preformatted-text|link)['\"]|Blockquote|spacing=['\"](xs2|sm|md|[a-z0-9]+-(top|bottom))['\"]" "${CODE[@]}" $SRC
-# No margin on the new components (the old Heading1–6, Paragraph … still take it)
-grep -rnE "<(Heading|Text|Link)\b[^>]*margin=" "${CODE[@]}" $SRC
+# No margin on the new components (the old Heading1–6, Paragraph … still take it), and no external on Link
+grep -rnE "<(Heading|Text|Link)\b[^>]*margin=|<Link\b[^>]*\bexternal\b" "${CODE[@]}" $SRC
 ```
 
 Then look at the pages with the most text and the most UI text in the browser, in each `data-view-mode` the project uses.
