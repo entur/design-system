@@ -11,6 +11,7 @@ Skills are instruction sets that give AI coding agents specialized knowledge abo
 | `entur-accessibility`   | WCAG 2.1, universell utforming, keyboard testing, screen readers, Norwegian law compliance  |
 | `entur-brand-design`    | Colors, typography, data visualization, visual identity, presentations                      |
 | `migrate-react-18`      | Step-by-step migration for projects upgrading @entur/\* packages to React 18 major versions |
+| `migrate-typography`    | Step-by-step migration to the new typography and the layout beta spacing scale              |
 
 Start with `entur-linje`. It reads the task and loads the relevant sub-skill automatically.
 
@@ -25,7 +26,7 @@ The skills are published through Entur's plugin marketplace in [entur/ai](https:
 /plugin install entur-linje@entur
 ```
 
-This installs all five skills with their reference files on disk, so the agent can open a reference the moment it needs one, and `/plugin update` keeps them current. Prefer this over the URL methods below — those reach reference files only one HTTP request at a time, and always from `main`.
+This installs all six skills with their reference files on disk, so the agent can open a reference the moment it needs one, and `/plugin update` keeps them current. Prefer this over the URL methods below — those reach reference files only one HTTP request at a time, and always from `main`.
 
 ### Any agent: point at the skill URL
 
