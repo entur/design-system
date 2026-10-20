@@ -65,7 +65,7 @@ Before, every text component had margins. Now none have, unless they are in a `T
 
 For each text component, decide which case it is:
 
-1. **Running text.** Several headings, paragraphs and lists in a row: articles, help pages, terms, empty states with a heading and some text. Rich-text renderers (Portable Text, HTML parsers, Markdown) count too, even though each block is its own component. Wrap the group in `<TextContainer>` and remove `spacing` props that only recreated the rhythm. `TextContainer` is a grid that spaces its **direct** children, images and divs included, so wrap the element whose children are the text blocks, not a component that adds its own wrapper. Keep `spacing` where the design differs from the rhythm. `TextContainer` adds more space above headings than between paragraphs.
+1. **Running text.** Several headings, paragraphs and lists in a row: articles, help pages, terms, empty states with a heading and some text. Rich-text renderers (Portable Text, HTML parsers, Markdown) count too, even though each block is its own component. Wrap the group in `<TextContainer>` and remove `spacing` props that only recreated the rhythm. `TextContainer` spaces its **direct** children, so wrap the element whose children are the text blocks, not a component that adds its own wrapper. Raw `h1`–`h6`, `p`, lists, `blockquote` and `pre` from a parser get the same rhythm, and inline elements, floats and loose text behave as normal text. Keep `spacing` where the design differs from the rhythm. `TextContainer` adds more space above headings than between paragraphs.
 
    ```tsx
    <TextContainer>
