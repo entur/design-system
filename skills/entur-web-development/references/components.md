@@ -125,6 +125,7 @@ import {
 - Only direct children are spaced: wrap the element whose children are the text blocks. Raw `h1`–`h6`, `p`, lists, `blockquote` and `pre` (Markdown, CMS HTML) get the same rhythm. Other elements get the paragraph space, and tables and loose text get the body text style. Inline elements, buttons, floats and loose text behave as normal text.
 - Adjust a gap with `spacing` on the child, not with CSS margins: `{ top }` replaces the space before, `{ bottom }` the space after. Project CSS is unlayered and wins over the rhythm. If both sides of a gap set `spacing`, the larger one wins.
 - A heading that links somewhere: put the link inside the heading, `<Heading as="h2"><Link href="/billetter">Billetter</Link></Heading>`. The link takes the heading's size. Never `Heading as="a"`, which removes the heading from the outline that screen readers navigate by (WCAG 1.3.1). A router link goes in `Link as={RouterLink}`.
+- A paragraph right before a list is close to it, since it usually introduces the list. If it doesn't, give the paragraph `spacing={{ bottom: 'xl' }}`.
 - Put an image, table or quote with its caption or source in `figure` + `figcaption`. The caption gets a small gap. A `caption` directly after an image or table gets the same gap without a `figure`.
 - Mark a decorative first child (an absolutely positioned background) `aria-hidden="true"`, so the first text gets no space above.
 
