@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import { PolymorphicComponentProps } from '@entur/utils';
 
 import {
+  getDefaultTextVariant,
   getSemanticTypeFromTextVariant,
   getSpacingStyle,
 } from '../utils/utils';
@@ -21,7 +22,9 @@ export type TextOwnProps = TypographySpacingProps & {
   size?: 'xs' | 's' | 'm' | 'lg' | 'xl';
   /** Fontvekt: `medium` (500) eller `bold` (600) */
   weight?: 'medium' | 'bold';
-  /** Variant (kan brukes til spesielle typer tekst som for eksempel caption) */
+  /** Variant (kan brukes til spesielle typer tekst som for eksempel caption).
+   * Uten variant blir teksten `paragraph` når den står for seg selv (`p`, `div`, `li` …), og arver
+   * størrelse, farge og vekt når den står inne i annen tekst (`span`, `strong`, en komponent …). */
   variant?:
     | 'leading'
     | 'quote'
@@ -74,13 +77,14 @@ export const Text = React.forwardRef(
   ): JSX.Element => {
     const BodyElement: React.ElementType =
       as || getSemanticTypeFromTextVariant(variant);
+    const usedVariant = variant ?? getDefaultTextVariant(BodyElement);
 
     return (
       <BodyElement
         ref={ref}
         className={classNames(
           'eds-text',
-          variant && `eds-text--${variant}`,
+          `eds-text--${usedVariant}`,
           size && `eds-text--${size}`,
           weight && `eds-text--weight-${weight}`,
           trim && 'eds-text--trim',

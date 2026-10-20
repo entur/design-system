@@ -1,3 +1,4 @@
+import React from 'react';
 import { cleanup, render } from '@testing-library/react';
 import { Text } from '../components/Text';
 
@@ -9,7 +10,42 @@ describe('Text Component', () => {
     const text = getByText('Test text');
     expect(text).toBeInTheDocument();
     expect(text.tagName).toBe('P');
-    expect(text).toHaveClass('eds-text');
+    expect(text).toHaveClass('eds-text', 'eds-text--paragraph');
+  });
+
+  test('is a paragraph on its own line and inherits inside other text', () => {
+    const Custom = (props: React.HTMLAttributes<HTMLSpanElement>) => (
+      <span {...props} />
+    );
+    const { getByText } = render(
+      <>
+        <Text as="div">Div</Text>
+        <Text as="li">Item</Text>
+        <Text as="span">Span</Text>
+        <Text as="strong" weight="bold">
+          Strong
+        </Text>
+        <Text as="h3">Heading</Text>
+        <Text as={Custom}>Custom</Text>
+      </>,
+    );
+    expect(getByText('Div')).toHaveClass('eds-text--paragraph');
+    expect(getByText('Item')).toHaveClass('eds-text--paragraph');
+    for (const name of ['Span', 'Strong', 'Heading', 'Custom']) {
+      expect(getByText(name)).toHaveClass('eds-text--inherit');
+      expect(getByText(name)).not.toHaveClass('eds-text--paragraph');
+    }
+    expect(getByText('Strong')).toHaveClass('eds-text--weight-bold');
+  });
+
+  test('a variant replaces the default', () => {
+    const { getByText } = render(
+      <Text as="span" variant="caption">
+        Caption
+      </Text>,
+    );
+    expect(getByText('Caption')).toHaveClass('eds-text--caption');
+    expect(getByText('Caption')).not.toHaveClass('eds-text--inherit');
   });
 
   test('renders with different elements', () => {

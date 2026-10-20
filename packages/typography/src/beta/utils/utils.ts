@@ -89,6 +89,27 @@ export function getHeadingVariantFromSemanticType(
   }
 }
 
+// Elements that hold a paragraph of their own; anything else sits in other text and inherits it
+const BLOCK_TEXT_ELEMENTS = new Set([
+  'p',
+  'div',
+  'li',
+  'dd',
+  'dt',
+  'figcaption',
+]);
+
+/**
+ * The variant Text uses when none is given: paragraph on its own line, inherit inside other text
+ */
+export function getDefaultTextVariant(
+  element: React.ElementType,
+): 'paragraph' | 'inherit' {
+  return typeof element === 'string' && BLOCK_TEXT_ELEMENTS.has(element)
+    ? 'paragraph'
+    : 'inherit';
+}
+
 /**
  * Get semantic HTML element from text variant
  */

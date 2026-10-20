@@ -121,6 +121,17 @@
       }
     }
 
+    // Text inside other text keeps its look; size and weight still apply, since they follow
+    &--inherit {
+      color: inherit;
+      font-weight: inherit;
+
+      // A heading element takes the size around it too, not the browser's
+      &:where(h1, h2, h3, h4, h5, h6) {
+        font-size: inherit;
+      }
+    }
+
     // Same specificity as the variants, so these must follow them for size to win
     &--xs {
       font-size: var(--font-size-body-xs);
