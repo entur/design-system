@@ -44,6 +44,7 @@ These things cannot be automated by components — you must supply them:
 6. **Logical heading hierarchy.** Use `Heading1`–`Heading6` in order — don't skip levels for visual sizing.
 7. **`variant="negative"` and `feedback` together** on invalid form fields — error state must not rely on color alone.
 8. **`feedback` text that stands on its own.** It is announced through a live region while the status icon is `aria-hidden`, so the text is all a screen reader user gets — "Ugyldig" is not enough.
+9. **Link text that says where the link goes.** Keep links in the same tab. Where a new tab is needed (leaving would lose input or the session), write "(åpnes i ny fane)" in the link text; an icon alone is read both as "another site" and "new tab".
 
 ---
 
