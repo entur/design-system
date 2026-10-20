@@ -121,7 +121,7 @@ import {
 </TextContainer>;
 ```
 
-- The gap between two elements is the first one's space after plus the second one's space before (more above headings), the same sum as auto layout in Figma. Each gap is one top margin, so nothing collapses.
+- The gap between two elements is the first one's space after plus the second one's space before (more above a heading, except right after another heading or an `overline`), the same sum as auto layout in Figma. Each gap is one top margin, so nothing collapses.
 - Only direct children are spaced: wrap the element whose children are the text blocks. Raw `h1`–`h6`, `p`, lists, `blockquote` and `pre` (Markdown, CMS HTML) get the same rhythm. Other elements get the paragraph space. Inline elements, buttons, floats and loose text behave as normal text.
 - Adjust a gap with `spacing` on the child, not with CSS margins: `{ top }` replaces the space before, `{ bottom }` the space after. Project CSS is unlayered and wins over the rhythm. If both sides of a gap set `spacing`, the larger one wins.
 - Mark a decorative first child (an absolutely positioned background) `aria-hidden="true"`, so the first text gets no space above.
