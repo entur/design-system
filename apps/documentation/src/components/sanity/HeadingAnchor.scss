@@ -1,11 +1,11 @@
-// The heading text is the link: it looks like the heading, with an icon on hover and focus
+// Link without its line at rest: only the thick line sweeps in on hover and focus.
+// Relies on Link drawing its lines as two background layers (thick, thin).
 .heading-anchor {
-  color: inherit;
-  text-decoration: none;
+  background-size: 0% 0.125em, 0% 0.0625em;
 
   &:hover,
   &:focus-visible {
-    text-decoration: underline;
+    background-size: 100% 0.125em, 0% 0.0625em;
   }
 }
 
