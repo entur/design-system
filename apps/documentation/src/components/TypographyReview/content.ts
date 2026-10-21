@@ -82,9 +82,9 @@ export const questions: Question[] = [
     id: 'S9',
     title: 'Tekstfarge: dempet og uthevet',
     context:
-      'Dempet tekst er den vanligste grunnen til overstyringer. Dempet: 5,6:1 på hvit. Korall: 3,1:1 på hvit og 2,9:1 på tint, så bare stor tekst består.',
+      'Dempet tekst brukes i ~36 repoer, til metadata, hjelpetekst og beskrivelser. Uthevet (korall) bare i store overskrifter på landingssider, ofte ett ord. Dempet: 5,6:1 på hvit. Korall: 3,1:1 på hvit og 2,9:1 på tint.',
     proposal:
-      'Text og Heading får color="subdued". Bare Heading får "highlight", på Title og Subtitle, ikke på tint. Modusen velger alt-fargen.',
+      'Lagt inn: tone="subdued" på Text og Heading, modusen velger alt-fargen. Uthevet venter til et produkt trenger det; landingssider bruker tokenet i et span.',
     owner: 'Design + kode',
     topic: 'tekst',
   },

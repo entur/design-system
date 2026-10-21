@@ -339,6 +339,11 @@ const topics: Topic[] = [
             <Spec name="caption">
               <Text variant="caption">Reis kollektivt i hele Norge</Text>
             </Spec>
+            <Spec name='tone="subdued"'>
+              <Text variant="caption" tone="subdued">
+                Oppdatert 21. oktober
+              </Text>
+            </Spec>
             <Spec name="Label / label">
               <Label>Reis kollektivt i hele Norge</Label>
             </Spec>
