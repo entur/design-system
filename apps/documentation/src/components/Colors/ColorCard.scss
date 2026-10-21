@@ -49,10 +49,6 @@
       border-top: none;
       border-radius: 0px 0px 8px 8px;
     }
-
-    .eds-text--subparagraph {
-      width: 56px;
-    }
   }
   &__title {
     display: flex;
@@ -61,8 +57,10 @@
     align-items: center;
   }
 
+  // A column for the names, so the values line up
   &__value {
-    display: flex;
+    display: grid;
+    grid-template-columns: 56px 1fr;
     gap: 7px;
     margin: 0;
     align-items: center;
