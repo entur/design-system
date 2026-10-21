@@ -63,3 +63,5 @@ Unscoped rules on these classes (`.eds-small-text { font-size }`) restyled every
 - `Heading` with an explicit `as` and a `variant` that matches the design.
 - No `margin` props left.
 - Text that sat inside a `<p>` or a button is still inline (`as="span"`).
+- Small uppercase text made with `toUpperCase()`, or `text-transform` and `letter-spacing`, is `Text variant="overline"`.
+- Renderers that map tags to components (Markdown, Portable Text) and check the component type, for example to group blocks, need named components instead of inline functions.
