@@ -1,21 +1,38 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { SideNavigation, SideNavigationItem } from '.';
 
-test('renders a single-level menu without issues', () => {
-  const { getByText } = render(
+test('provides current-page links navigable with Tab, Enter and the mouse', async () => {
+  const user = userEvent.setup();
+  const onNavigate = jest.fn(event => event.preventDefault());
+  render(
     <SideNavigation>
-      <SideNavigationItem href="#first">First item</SideNavigationItem>
-      <SideNavigationItem href="#second">Second item</SideNavigationItem>
+      <SideNavigationItem href="#first" active onClick={onNavigate}>
+        First item
+      </SideNavigationItem>
+      <SideNavigationItem href="#second" onClick={onNavigate}>
+        Second item
+      </SideNavigationItem>
     </SideNavigation>,
   );
 
-  expect(getByText('First item')).toBeInTheDocument();
-  expect(getByText('Second item')).toBeInTheDocument();
-
-  expect(getByText('First item')).toHaveAttribute('href', '#first');
-  expect(getByText('Second item')).toHaveAttribute('href', '#second');
-
-  expect(getByText('First item').nodeName).toBe('A');
+  expect(screen.getAllByRole('listitem')).toHaveLength(2);
+  const first = screen.getByRole('link', {
+    name: 'First item',
+    current: 'page',
+  });
+  const second = screen.getByRole('link', { name: 'Second item' });
+  expect(first).toHaveAttribute('href', '#first');
+  expect(second).toHaveAttribute('href', '#second');
+  expect(second).not.toHaveAttribute('aria-current');
+  await user.tab();
+  expect(first).toHaveFocus();
+  await user.tab();
+  expect(second).toHaveFocus();
+  await user.keyboard('{Enter}');
+  expect(onNavigate).toHaveBeenCalledTimes(1);
+  await user.click(first);
+  expect(onNavigate).toHaveBeenCalledTimes(2);
 });
 
 test('renders a multi-level menu', () => {
@@ -66,35 +83,35 @@ test('renders the sub-menu if a sub-menu item is set to active', () => {
   expect(getByText('Sub-menu item')).toBeInTheDocument();
 });
 
-test('renders a small menu if the small flag is set', () => {
-  const { container } = render(
+test('applies the small modifier when size is small', () => {
+  render(
     <SideNavigation size="small">
       <SideNavigationItem href="#">Top level</SideNavigationItem>
-      <SideNavigationItem>
-        Sub-menu trigger
-        <SideNavigation>
-          <SideNavigationItem href="#second">Sub-menu item</SideNavigationItem>
-        </SideNavigation>
-      </SideNavigationItem>
     </SideNavigation>,
   );
 
-  expect(container.querySelector('.eds-side-navigation')).toHaveClass(
-    'eds-side-navigation--small',
-  );
+  expect(screen.getByRole('list')).toHaveClass('eds-side-navigation--small');
 });
 
-test('menu items are disabled if specified', () => {
-  const { getByText } = render(
+test('disabled items cannot be activated and are skipped by Tab', async () => {
+  const user = userEvent.setup();
+  const onClick = jest.fn();
+  render(
     <SideNavigation size="small">
-      <SideNavigationItem href="#" disabled={true}>
+      <SideNavigationItem href="#" disabled onClick={onClick}>
         Disabled item
       </SideNavigationItem>
       <SideNavigationItem href="#">Second item</SideNavigationItem>
     </SideNavigation>,
   );
 
-  expect(getByText('Disabled item')).toBeDisabled();
+  const disabled = screen.getByRole('button', { name: 'Disabled item' });
+  expect(disabled).toBeDisabled();
+  expect(disabled).toHaveAttribute('aria-disabled', 'true');
+  await user.click(disabled);
+  expect(onClick).not.toHaveBeenCalled();
+  await user.tab();
+  expect(screen.getByRole('link', { name: 'Second item' })).toHaveFocus();
 });
 
 test('forceExpandSubMenus works as expected without active items', () => {
