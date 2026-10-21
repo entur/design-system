@@ -78,6 +78,16 @@ export const questions: Question[] = [
       'Utfase uten ny import: unike navn får @deprecated, de fem felles navnene blir de nye. Advarsler når egne komponenter er flyttet, fjernes i en senere major.',
     owner: 'Produkt',
   },
+  {
+    id: 'S9',
+    title: 'Tekstfarge: dempet og uthevet',
+    context:
+      'Dempet tekst er den vanligste grunnen til overstyringer. Dempet: 5,6:1 på hvit. Korall: 3,1:1 på hvit og 2,9:1 på tint, så bare stor tekst består.',
+    proposal:
+      'Text og Heading får color="subdued". Bare Heading får "highlight", på Title og Subtitle, ikke på tint. Modusen velger alt-fargen.',
+    owner: 'Design + kode',
+    topic: 'tekst',
+  },
 ];
 
 export type Decision = { id: string; title: string; why: string };
@@ -281,6 +291,11 @@ export const figmaUpdates: FigmaItem[] = [
     waits: 'S6',
   },
   { what: 'Steg-liste', details: 'Ny variant', waits: 'S7' },
+  {
+    what: 'Tekstfarge',
+    details: 'Dempet på Text og Heading, uthevet på store overskrifter',
+    waits: 'S9',
+  },
   { what: 'Lenke', details: 'Tynn strek, sveip, ikke ikon', waits: 'S3, S4' },
   {
     what: 'Label',
