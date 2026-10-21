@@ -1,5 +1,6 @@
 import React from 'react';
 import { LinkIcon } from '@entur/icons';
+import { Link } from '@entur/typography/beta';
 import { useHeadingIds } from './HeadingIdContext';
 import { sanitizeText } from 'src/utils/utils';
 import { handleHashLinkClick } from 'src/utils/scrollUtils';
@@ -32,7 +33,7 @@ export const HeadingAnchor: React.FC<HeadingAnchorProps> = ({
 
   return (
     <HeadingComponent id={id}>
-      <a
+      <Link
         href={`#${id}`}
         className="heading-anchor"
         // One scroll to below the navigation, instead of a jump and a correction
@@ -40,7 +41,7 @@ export const HeadingAnchor: React.FC<HeadingAnchorProps> = ({
       >
         {children}
         <LinkIcon aria-hidden="true" className="heading-anchor__icon" />
-      </a>
+      </Link>
     </HeadingComponent>
   );
 };
