@@ -1,102 +1,130 @@
-import { render } from '@testing-library/react';
+import React from 'react';
+import { render, screen } from '@testing-library/react';
 import { BaseFormControl } from './BaseFormControl';
 
-test('renders a nice looking component', () => {
-  const { getByTestId } = render(
-    <BaseFormControl label="test" labelId="testId">
-      <input data-testid="input" />
+test('forwards className and style to the outer container', () => {
+  const { container } = render(
+    <BaseFormControl
+      label="test"
+      labelId="testId"
+      className="consumer-class"
+      style={{ marginTop: '7px' }}
+    >
+      <input />
     </BaseFormControl>,
   );
-
-  expect(getByTestId('input')).toBeInTheDocument();
+  const outer = container.firstElementChild;
+  expect(outer).toHaveClass(
+    'eds-form-control__field-and-feedback-text',
+    'consumer-class',
+  );
+  expect(outer).toHaveStyle({ marginTop: '7px' });
 });
 
-test('renders variants correctly', () => {
-  const { getByTestId, rerender } = render(
+test('forwards rest props and ref to the control wrapper', () => {
+  const ref = React.createRef<HTMLDivElement>();
+  render(
     <BaseFormControl
       label="test"
       labelId="testId"
-      variant="negative"
+      data-testid="wrapper"
+      ref={ref}
+    >
+      <input />
+    </BaseFormControl>,
+  );
+  const wrapper = screen.getByTestId('wrapper');
+  expect(wrapper).toHaveClass('eds-form-control-wrapper');
+  expect(ref.current).toBe(wrapper);
+});
+
+test.each([
+  ['negative', 'eds-form-control-wrapper--negative'],
+  ['error', 'eds-form-control-wrapper--negative'],
+  ['success', 'eds-form-control-wrapper--success'],
+] as const)('variant %s sets the %s modifier', (variant, modifier) => {
+  render(
+    <BaseFormControl
+      label="test"
+      labelId="testId"
+      variant={variant}
       data-testid="wrapper"
     >
       <input />
     </BaseFormControl>,
   );
-
-  let wrapper = getByTestId('wrapper');
-  expect(wrapper).toHaveClass('eds-form-control-wrapper--negative');
-  expect(wrapper).not.toHaveClass('eds-form-control-wrapper--success');
-
-  rerender(
-    <BaseFormControl
-      label="test"
-      labelId="testId"
-      variant="success"
-      data-testid="wrapper"
-    >
-      <input />
-    </BaseFormControl>,
+  const wrapper = screen.getByTestId('wrapper');
+  expect(wrapper).toHaveClass(modifier);
+  expect(wrapper).not.toHaveClass(
+    modifier === 'eds-form-control-wrapper--negative'
+      ? 'eds-form-control-wrapper--success'
+      : 'eds-form-control-wrapper--negative',
   );
+});
 
-  wrapper = getByTestId('wrapper');
-
-  expect(wrapper).not.toHaveClass('eds-form-control-wrapper--negative');
-  expect(wrapper).toHaveClass('eds-form-control-wrapper--success');
-
-  rerender(
+test('sets size, disabled, readOnly and isFilled modifiers', () => {
+  const { rerender } = render(
     <BaseFormControl label="test" labelId="testId" data-testid="wrapper">
       <input />
     </BaseFormControl>,
   );
-
-  wrapper = getByTestId('wrapper');
-
-  expect(wrapper).not.toHaveClass('eds-form-control-wrapper--negative');
-  expect(wrapper).not.toHaveClass('eds-form-control-wrapper--success');
+  const wrapper = screen.getByTestId('wrapper');
+  expect(wrapper).toHaveClass('eds-form-control-wrapper--size-medium');
+  expect(wrapper).not.toHaveClass(
+    'eds-form-control-wrapper--negative',
+    'eds-form-control-wrapper--success',
+    'eds-form-control-wrapper--disabled',
+    'eds-form-control-wrapper--readonly',
+    'eds-form-control-wrapper--is-filled',
+  );
 
   rerender(
     <BaseFormControl
       label="test"
       labelId="testId"
-      variant="success"
       data-testid="wrapper"
+      size="large"
+      disabled
+      readOnly
+      isFilled
     >
       <input />
     </BaseFormControl>,
   );
+  expect(wrapper).toHaveClass(
+    'eds-form-control-wrapper--size-large',
+    'eds-form-control-wrapper--disabled',
+    'eds-form-control-wrapper--readonly',
+    'eds-form-control-wrapper--is-filled',
+  );
+});
 
-  wrapper = getByTestId('wrapper');
-
-  expect(wrapper).not.toHaveClass('eds-form-control-wrapper--negative');
-  expect(wrapper).toHaveClass('eds-form-control-wrapper--success');
+test('renders prepend and append content only when given', () => {
+  const { rerender } = render(
+    <BaseFormControl label="test" labelId="testId">
+      <input />
+    </BaseFormControl>,
+  );
+  expect(screen.queryByText('Fra')).not.toBeInTheDocument();
+  expect(screen.queryByText('kr')).not.toBeInTheDocument();
 
   rerender(
-    <BaseFormControl
-      label="test"
-      labelId="testId"
-      variant="negative"
-      data-testid="wrapper"
-    >
+    <BaseFormControl label="test" labelId="testId" prepend="Fra" append="kr">
       <input />
     </BaseFormControl>,
   );
-
-  wrapper = getByTestId('wrapper');
-
-  expect(wrapper).toHaveClass('eds-form-control-wrapper--negative');
-  expect(wrapper).not.toHaveClass('eds-form-control-wrapper--success');
+  expect(screen.getByText('Fra')).toHaveClass('eds-form-control__prepend');
+  expect(screen.getByText('kr')).toHaveClass('eds-form-control__append');
 });
 
 test('renders live region in DOM before feedback exists', () => {
-  const { container, rerender } = render(
+  const { rerender } = render(
     <BaseFormControl label="test" labelId="testId">
       <input />
     </BaseFormControl>,
   );
 
-  const region = container.querySelector('.eds-feedback-text');
-  expect(region).toBeInTheDocument();
-  expect(region).toHaveAttribute('role', 'status');
+  const region = screen.getByRole('status');
   expect(region).not.toHaveAttribute('aria-live');
   expect(region).toBeEmptyDOMElement();
 
@@ -111,15 +139,22 @@ test('renders live region in DOM before feedback exists', () => {
     </BaseFormControl>,
   );
 
-  expect(region).toHaveAttribute('role', 'status');
-  expect(region).not.toHaveAttribute('aria-live');
+  expect(screen.getByRole('status')).toBe(region);
   expect(region).toHaveTextContent('Feltet er påkrevd');
+
+  rerender(
+    <BaseFormControl label="test" labelId="testId">
+      <input />
+    </BaseFormControl>,
+  );
+  expect(screen.getByRole('status')).toBe(region);
+  expect(region).toBeEmptyDOMElement();
 });
 
 test.each(['negative', 'warning', 'success', 'information'] as const)(
   'uses status role by default for %s variant',
   (variant: 'negative' | 'warning' | 'success' | 'information') => {
-    const { container } = render(
+    render(
       <BaseFormControl
         label="test"
         labelId="testId"
@@ -130,22 +165,20 @@ test.each(['negative', 'warning', 'success', 'information'] as const)(
       </BaseFormControl>,
     );
 
-    const region = container.querySelector('.eds-feedback-text');
-    expect(region).toHaveAttribute('role', 'status');
+    const region = screen.getByRole('status');
     expect(region).not.toHaveAttribute('aria-live');
     expect(region).toHaveTextContent('Melding');
   },
 );
 
 test('uses alert role when ariaAlertOnFeedback is alert', () => {
-  const { container, rerender } = render(
+  const { rerender } = render(
     <BaseFormControl label="test" labelId="testId" ariaAlertOnFeedback="alert">
       <input />
     </BaseFormControl>,
   );
 
-  const region = container.querySelector('.eds-feedback-text');
-  expect(region).toHaveAttribute('role', 'alert');
+  const region = screen.getByRole('alert');
   expect(region).not.toHaveAttribute('aria-live');
   expect(region).toBeEmptyDOMElement();
 
@@ -161,12 +194,12 @@ test('uses alert role when ariaAlertOnFeedback is alert', () => {
     </BaseFormControl>,
   );
 
-  expect(region).toHaveAttribute('role', 'alert');
+  expect(screen.getByRole('alert')).toBe(region);
   expect(region).toHaveTextContent('Feltet er påkrevd');
 });
 
 test('uses alert role when ariaAlertOnFeedback is true', () => {
-  const { container } = render(
+  render(
     <BaseFormControl
       label="test"
       labelId="testId"
@@ -178,10 +211,7 @@ test('uses alert role when ariaAlertOnFeedback is true', () => {
     </BaseFormControl>,
   );
 
-  expect(container.querySelector('.eds-feedback-text')).toHaveAttribute(
-    'role',
-    'alert',
-  );
+  expect(screen.getByRole('alert')).toHaveTextContent('Feltet er påkrevd');
 });
 
 test('renders no live region when ariaAlertOnFeedback is false', () => {
@@ -212,7 +242,7 @@ test('renders no live region when ariaAlertOnFeedback is false', () => {
 });
 
 test('role from feedbackProps overrides the aria props', () => {
-  const { container } = render(
+  render(
     <BaseFormControl
       label="test"
       labelId="testId"
@@ -225,10 +255,8 @@ test('role from feedbackProps overrides the aria props', () => {
     </BaseFormControl>,
   );
 
-  expect(container.querySelector('.eds-feedback-text')).toHaveAttribute(
-    'role',
-    'status',
-  );
+  expect(screen.queryByRole('alert')).not.toBeInTheDocument();
+  expect(screen.getByRole('status')).toHaveTextContent('Feltet er påkrevd');
 });
 
 test('aria-live from feedbackProps replaces the implicit role', () => {
@@ -249,11 +277,17 @@ test('aria-live from feedbackProps replaces the implicit role', () => {
 });
 
 test('passes other feedbackProps on to the feedback text', () => {
-  const { container } = render(
+  render(
     <BaseFormControl
       label="test"
       labelId="testId"
-      feedbackProps={{ id: 'feedbackId', className: 'custom-feedback' }}
+      feedbackProps={
+        {
+          id: 'feedbackId',
+          className: 'custom-feedback',
+          'data-consumer': 'value',
+        } as React.HTMLAttributes<HTMLElement>
+      }
       variant="negative"
       feedback="Feltet er påkrevd"
     >
@@ -261,36 +295,8 @@ test('passes other feedbackProps on to the feedback text', () => {
     </BaseFormControl>,
   );
 
-  const region = container.querySelector('.eds-feedback-text');
+  const region = screen.getByRole('status');
   expect(region).toHaveAttribute('id', 'feedbackId');
-  expect(region).toHaveClass('custom-feedback');
-});
-
-test('renders prepend- and append-containers', () => {
-  const { container, rerender } = render(
-    <BaseFormControl label="test" labelId="testId">
-      <input />
-    </BaseFormControl>,
-  );
-  expect(
-    container.querySelector('.eds-form-control__prepend'),
-  ).not.toBeInTheDocument();
-
-  expect(
-    container.querySelector('.eds-form-control__append'),
-  ).not.toBeInTheDocument();
-
-  rerender(
-    <BaseFormControl label="test" labelId="testId" prepend="Fra" append="kr">
-      <input />
-    </BaseFormControl>,
-  );
-
-  expect(
-    container.querySelector('.eds-form-control__prepend'),
-  ).toBeInTheDocument();
-
-  expect(
-    container.querySelector('.eds-form-control__append'),
-  ).toBeInTheDocument();
+  expect(region).toHaveAttribute('data-consumer', 'value');
+  expect(region).toHaveClass('eds-feedback-text', 'custom-feedback');
 });
