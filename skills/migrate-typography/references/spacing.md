@@ -95,6 +95,14 @@ For each text component, decide which case it is:
 
 Keep `spacing="none"` inside a `TextContainer`, where it overrides the rhythm.
 
+### Inside `TextContainer`
+
+- **Project margins win.** The rhythm lives in a CSS layer, so a margin your own CSS sets on a child (a card, a code example, a button) replaces it, and can collapse with the next gap. Remove those margins and let the rhythm space the blocks.
+- **Headings must be direct children.** A heading inside a wrapper is spaced like any other block, without the extra space above it. To link to a section, put the link inside the heading (`<Heading id="x"><a href="#x">…</a></Heading>`) instead of wrapping the heading and a link together.
+- **Nested blocks need their own container.** A card, callout or panel with several text blocks needs its own `TextContainer`, since the outer one only reaches its direct children. Don't wrap a single block, though: a card that fills its grid cell with `height: 100%` stops stretching inside an extra wrapper.
+- **Media with a caption** goes in `figure` + `figcaption`, so the caption sits close to the image or video. Outside a `TextContainer`, reset the browser's `figure` margin.
+- **Prefer the rhythm to the old margins.** Recreating every old margin with `spacing` gives many one-off values. Use the table below only where the design needs a specific space.
+
 ### Old default margins
 
 To recreate a space exactly, use these values (standard view mode). Headings only had the top margin when they weren't the first child.
