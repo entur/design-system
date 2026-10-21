@@ -88,6 +88,39 @@ jobs:
 
       - run: NX_REJECT_UNKNOWN_LOCAL_CACHE=0 yarn test
 
+  browser-tests:
+    name: Typecheck and run browser tests
+    needs: build-packages
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+
+      - name: Install and Cache Yarn Dependencies
+        uses: ./.github/actions/install-and-cache-dependencies
+        with:
+          cache-key: yarn-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Download package artifacts
+        uses: actions/download-artifact@v8
+        with:
+          name: package-artifacts
+          path: 'packages'
+
+      - run: yarn typecheck:browser
+
+      - run: yarn playwright install --with-deps chromium firefox webkit
+
+      - run: yarn test:browser
+
+      - name: Upload Playwright report
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: playwright-report
+          path: |
+            playwright-report/
+            test-results/
+
   lint-packages:
     name: Lint packages
     needs: build-packages
