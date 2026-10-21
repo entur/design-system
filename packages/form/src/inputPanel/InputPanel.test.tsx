@@ -1,4 +1,5 @@
-import { fireEvent, render } from '@testing-library/react';
+import React from 'react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { axe, toHaveNoViolations } from 'jest-axe';
 
@@ -8,16 +9,22 @@ import { ExpandableText } from '@entur/expand';
 
 expect.extend(toHaveNoViolations);
 
-test('RadioPanel sets checked value from RadioGroup correctly', () => {
+test('RadioPanel title selects its group value and follows controlled updates', async () => {
+  const user = userEvent.setup();
   const spy = jest.fn();
 
   const { getByDisplayValue, rerender } = render(
-    <RadioGroup name="city" label="Velg by" value="Oslo" onChange={spy}>
+    <RadioGroup
+      name="city"
+      label="Velg by"
+      value="Oslo"
+      onChange={e => spy(e.target.value)}
+    >
       <RadioPanel title="Oslo" value="Oslo">
-        Oslo
+        Capital
       </RadioPanel>
       <RadioPanel title={<div>Bergen</div>} value="Bergen">
-        Bergen
+        Coastal city
       </RadioPanel>
     </RadioGroup>,
   );
@@ -28,9 +35,10 @@ test('RadioPanel sets checked value from RadioGroup correctly', () => {
   expect(firstOption).toHaveProperty('checked', true);
   expect(secondOption).toHaveProperty('checked', false);
 
-  fireEvent.click(secondOption);
+  await user.click(screen.getByText('Bergen'));
 
-  expect(spy).toHaveBeenCalled();
+  expect(spy.mock.calls).toEqual([['Bergen']]);
+  expect(secondOption).not.toBeChecked();
 
   rerender(
     <RadioGroup name="city" label="Velg by" value="Bergen" onChange={spy}>
@@ -47,137 +55,116 @@ test('RadioPanel sets checked value from RadioGroup correctly', () => {
   expect(secondOption).toHaveProperty('checked', true);
 });
 
-test('RadioPanel and Checkboxpanel shows secondaryLabel', () => {
-  const spy = jest.fn();
-
-  const { queryByText: queryRadioPanelByText } = render(
-    <RadioGroup name="city" label="Velg by" value="Oslo" onChange={spy}>
+test('RadioPanel includes the secondary label in its name and content in its description', () => {
+  render(
+    <RadioGroup name="city" label="Velg by" value="Oslo" onChange={jest.fn()}>
       <RadioPanel title="Oslo" value="Oslo" secondaryLabel="99 kroner">
-        Oslo
-      </RadioPanel>
-      <RadioPanel title="Bergen" value="Bergen">
-        Bergen
+        Gjelder i Oslo.
       </RadioPanel>
     </RadioGroup>,
   );
-
-  const { queryByText: queryCheckboxPanelByText } = render(
-    <Fieldset>
-      <CheckboxPanel title="Voss" value="Voss" secondaryLabel="49 kroner">
-        Oslo
-      </CheckboxPanel>
-      <CheckboxPanel title="Nordfjordeid" value="Nordfjordeid">
-        Bergen
-      </CheckboxPanel>
-    </Fieldset>,
-  );
-
-  const secondaryLabelRadio = queryRadioPanelByText('99 kroner');
-  expect(secondaryLabelRadio).toBeVisible();
-  const secondaryLabelCheckbox = queryCheckboxPanelByText('49 kroner');
-  expect(secondaryLabelCheckbox).toBeVisible();
+  expect(
+    screen.getByRole('radio', { name: 'Oslo 99 kroner' }),
+  ).toHaveAccessibleDescription('Gjelder i Oslo.');
 });
 
-test('RadioPanel displays a radiobutton', () => {
-  const spy = jest.fn();
+test.each([true, false])(
+  'CheckboxPanel remains a single keyboard stop with hideCheckbox=%s',
+  async hideCheckbox => {
+    const user = userEvent.setup();
+    const onChange = jest.fn();
+    render(
+      <>
+        <CheckboxPanel
+          title="Oslo"
+          value="Oslo"
+          hideCheckbox={hideCheckbox}
+          onChange={e => onChange(e.target.checked)}
+        />
+        <button>Continue</button>
+      </>,
+    );
+    expect(screen.getAllByRole('checkbox')).toHaveLength(1);
+    const input = screen.getByRole('checkbox', { name: 'Oslo' });
+    await user.tab();
+    expect(input).toHaveFocus();
+    await user.keyboard(' ');
+    expect(input).toBeChecked();
+    await user.click(screen.getByText('Oslo'));
+    expect(input).not.toBeChecked();
+    expect(onChange.mock.calls).toEqual([[true], [false]]);
+    await user.tab();
+    expect(screen.getByRole('button', { name: 'Continue' })).toHaveFocus();
+  },
+);
 
-  const { container } = render(
-    <RadioGroup name="city" label="Velg by" value="Oslo" onChange={spy}>
-      <RadioPanel title="Oslo" value="Oslo">
-        Oslo
-      </RadioPanel>
-    </RadioGroup>,
-  );
+test.each([true, false])(
+  'RadioPanel group navigates with hideRadioButton=%s',
+  async hideRadioButton => {
+    const user = userEvent.setup();
+    function Cities() {
+      const [city, setCity] = React.useState('Oslo');
+      return (
+        <>
+          <RadioGroup
+            name="city"
+            label="Velg by"
+            value={city}
+            onChange={e => setCity(e.target.value)}
+          >
+            <RadioPanel
+              title="Oslo"
+              value="Oslo"
+              hideRadioButton={hideRadioButton}
+            />
+            <RadioPanel
+              title="Bergen"
+              value="Bergen"
+              disabled
+              hideRadioButton={hideRadioButton}
+            />
+            <RadioPanel
+              title="Voss"
+              value="Voss"
+              hideRadioButton={hideRadioButton}
+            />
+          </RadioGroup>
+          <button>Continue</button>
+        </>
+      );
+    }
+    render(<Cities />);
+    expect(screen.getAllByRole('radio')).toHaveLength(3);
+    await user.tab();
+    expect(screen.getByRole('radio', { name: 'Oslo' })).toHaveFocus();
+    await user.keyboard('{ArrowRight}');
+    expect(screen.getByRole('radio', { name: 'Voss' })).toHaveFocus();
+    expect(screen.getByRole('radio', { name: 'Voss' })).toBeChecked();
+    expect(screen.getByRole('radio', { name: 'Oslo' })).not.toBeChecked();
+    await user.tab();
+    expect(screen.getByRole('button', { name: 'Continue' })).toHaveFocus();
+  },
+);
 
-  const radioButton = container.getElementsByClassName(
-    'eds-form-component--radio__container',
-  );
-  expect(radioButton.length).toBe(1);
-  expect(radioButton[0]).toBeVisible();
-});
-
-test('CheckboxPanel displays a checkbox', () => {
-  const { container } = render(
-    <Fieldset>
-      <CheckboxPanel title="Oslo" value="Oslo">
-        Oslo
-      </CheckboxPanel>
-    </Fieldset>,
-  );
-
-  const checkbox = container.getElementsByClassName('eds-checkbox__container');
-  expect(checkbox.length).toBe(1);
-  expect(checkbox[0]).toBeVisible();
-});
-
-test('hideCheckbox correctly hides radiobutton and checkbox', () => {
-  const spy = jest.fn();
-
-  const { container: radioContainer } = render(
-    <RadioGroup name="city" label="Velg Oslo" value="Oslo" onChange={spy}>
-      <RadioPanel hideRadioButton title="Oslo" value="Oslo">
-        Oslo
-      </RadioPanel>
-    </RadioGroup>,
-  );
-
-  const { container: checkboxContainer } = render(
-    <Fieldset name="city" label="Velg Bergen" value="Bergen" onChange={spy}>
-      <CheckboxPanel hideCheckbox title="Bergen" value="Bergen">
-        Bergen
-      </CheckboxPanel>
-    </Fieldset>,
-  );
-
-  const radioButton = radioContainer.getElementsByClassName(
-    'eds-form-component--radio__container',
-  )[0];
-  const checkbox = checkboxContainer.getElementsByClassName(
-    'eds-checkbox__container',
-  )[0];
-  expect(radioButton).toBeUndefined();
-  expect(checkbox).toBeUndefined();
-});
-
-test('RadioPanel and Checkboxpanel shows children content', () => {
-  const spy = jest.fn();
-
-  const { queryByText: queryRadioPanelByText } = render(
-    <RadioGroup name="city" label="Velg by" value="Oslo" onChange={spy}>
-      <RadioPanel title="Oslo" value="Oslo" secondaryLabel="99 kroner">
-        Flott by
-      </RadioPanel>
-      <RadioPanel title="Bergen" value="Bergen">
-        <ExpandableText defaultOpen title="Se mer info">
-          Mye regn
-        </ExpandableText>
-      </RadioPanel>
-    </RadioGroup>,
-  );
-
-  const { queryByText: queryCheckboxPanelByText } = render(
-    <Fieldset>
-      <CheckboxPanel title="Voss" value="Voss" secondaryLabel="49 kroner">
-        Flott tettsted
-      </CheckboxPanel>
-      <CheckboxPanel title="Nordfjordeid" value="Nordfjordeid">
-        <ExpandableText defaultOpen title="Se mer info">
-          Fjord og fjell
-        </ExpandableText>
-      </CheckboxPanel>
-    </Fieldset>,
-  );
-
-  const stringChildContentRadio = queryRadioPanelByText('Flott by');
-  const complexChildContentRadio = queryRadioPanelByText('Mye regn');
-  const stringChildContentCheckbox = queryCheckboxPanelByText('Flott tettsted');
-  const complexChildContentCheckbox =
-    queryCheckboxPanelByText('Fjord og fjell');
-  expect(stringChildContentRadio).toBeVisible();
-  expect(complexChildContentRadio).toBeVisible();
-  expect(stringChildContentCheckbox).toBeVisible();
-  expect(complexChildContentCheckbox).toBeVisible();
-});
+test.each(['radio', 'checkbox'] as const)(
+  '%s panel expandable content is operable without selecting the panel',
+  async role => {
+    const user = userEvent.setup();
+    const onChange = jest.fn();
+    const Panel = role === 'radio' ? RadioPanel : CheckboxPanel;
+    render(
+      <RadioGroup name="city" label="Velg by" value={null} onChange={onChange}>
+        <Panel title="Bergen" value="Bergen" onChange={onChange}>
+          <ExpandableText title="Se mer info">Mye regn</ExpandableText>
+        </Panel>
+      </RadioGroup>,
+    );
+    await user.click(screen.getByRole('button', { name: 'Se mer info' }));
+    expect(screen.getByText('Mye regn')).toBeVisible();
+    expect(screen.getByRole(role, { name: 'Bergen' })).not.toBeChecked();
+    expect(onChange).not.toHaveBeenCalled();
+  },
+);
 
 test('RadioPanel and CheckboxPanel content is interactable', async () => {
   const user = userEvent.setup();
@@ -188,7 +175,7 @@ test('RadioPanel and CheckboxPanel content is interactable', async () => {
 
   const { getByRole } = render(
     <div>
-      <RadioGroup name="test" label="test" value="test1" onChange={spy}>
+      <RadioGroup name="test" label="test" value={null} onChange={spy}>
         <RadioPanel title="test1" value="test1">
           <button aria-label="radio-test" onClick={spyRadio}>
             radioPanel button
@@ -196,7 +183,7 @@ test('RadioPanel and CheckboxPanel content is interactable', async () => {
         </RadioPanel>
       </RadioGroup>
       <Fieldset>
-        <CheckboxPanel title="Oslo" value="Oslo">
+        <CheckboxPanel title="Oslo" value="Oslo" onChange={spy}>
           <button aria-label="checkbox-test" onClick={spyCheckbox}>
             checkboxPanel button
           </button>
@@ -211,9 +198,76 @@ test('RadioPanel and CheckboxPanel content is interactable', async () => {
   await user.click(radioPanelButton);
   await user.click(checkboxPanelButton);
 
-  expect(spyRadio).toBeCalled();
-  expect(spyCheckbox).toBeCalled();
+  expect(spyRadio).toHaveBeenCalledTimes(1);
+  expect(spyCheckbox).toHaveBeenCalledTimes(1);
+  expect(spy).not.toHaveBeenCalled();
+  expect(screen.getByRole('radio', { name: 'test1' })).not.toBeChecked();
+  expect(screen.getByRole('checkbox', { name: 'Oslo' })).not.toBeChecked();
 });
+
+test.each(['radio', 'checkbox'] as const)(
+  'disabled %s panel ignores label clicks and Tab skips it',
+  async role => {
+    const user = userEvent.setup();
+    const onChange = jest.fn();
+    const Panel = role === 'radio' ? RadioPanel : CheckboxPanel;
+    render(
+      <>
+        <RadioGroup
+          name="city"
+          label="Velg by"
+          value={null}
+          onChange={onChange}
+          disabled
+        >
+          <Panel
+            title="Oslo"
+            value="Oslo"
+            disabled={role === 'checkbox' ? true : undefined}
+            onChange={onChange}
+          />
+        </RadioGroup>
+        <button>Continue</button>
+      </>,
+    );
+    await user.click(screen.getByText('Oslo'));
+    await user.tab();
+    expect(screen.getByRole('button', { name: 'Continue' })).toHaveFocus();
+    expect(screen.getByRole(role, { name: 'Oslo' })).not.toBeChecked();
+    expect(onChange).not.toHaveBeenCalled();
+  },
+);
+
+test.each(['radio', 'checkbox'] as const)(
+  'readOnly %s panel rejects mouse and keyboard changes',
+  async role => {
+    const user = userEvent.setup();
+    const onChange = jest.fn();
+    const Panel = role === 'radio' ? RadioPanel : CheckboxPanel;
+    render(
+      <RadioGroup
+        name="city"
+        label="Velg by"
+        value={null}
+        onChange={onChange}
+        readOnly
+      >
+        <Panel
+          title="Oslo"
+          value="Oslo"
+          readOnly={role === 'checkbox' ? true : undefined}
+          onChange={onChange}
+        />
+      </RadioGroup>,
+    );
+    await user.click(screen.getByText('Oslo'));
+    const input = screen.getByRole(role, { name: 'Oslo' });
+    expect(input).toHaveFocus();
+    await user.keyboard(' ');
+    expect(input).not.toBeChecked();
+    expect(onChange).not.toHaveBeenCalled();
+  },
+);
 
 test('RadioPanel should not have basic accessibility issues', async () => {
   const spy = jest.fn();
@@ -423,4 +477,67 @@ test('CheckboxPanel appends its generated descriptions to a consumer-provided ar
   expect(getByDisplayValue('a')).toHaveAccessibleDescription(
     'Ekstern hjelp Gjelder i hele Oslo-regionen. Kan ikke endres',
   );
+});
+
+test.each([
+  ['radio', false, 2],
+  ['radio', true, 1],
+  ['checkbox', false, 2],
+  ['checkbox', true, 1],
+] as const)(
+  '%s panel renders its decorative indicator unless hidden (hide=%s)',
+  (role, hide, count) => {
+    render(
+      <RadioGroup name="city" label="Velg by" value={null} onChange={jest.fn()}>
+        {role === 'radio' ? (
+          <RadioPanel title="Oslo" value="Oslo" hideRadioButton={hide} />
+        ) : (
+          <CheckboxPanel title="Oslo" value="Oslo" hideCheckbox={hide} />
+        )}
+      </RadioGroup>,
+    );
+    expect(screen.getAllByRole(role)).toHaveLength(1);
+    expect(screen.getAllByRole(role, { hidden: true })).toHaveLength(count);
+  },
+);
+
+test.each(['radio', 'checkbox'] as const)(
+  '%s panel forwards className, style and size to the panel and rest props and ref to the input',
+  role => {
+    const ref = React.createRef<HTMLInputElement>();
+    const Panel = role === 'radio' ? RadioPanel : CheckboxPanel;
+    render(
+      <RadioGroup name="city" label="Velg by" value={null} onChange={jest.fn()}>
+        <Panel
+          title="Oslo"
+          value="Oslo"
+          size="large"
+          className="consumer-class"
+          style={{ marginTop: '7px' }}
+          data-consumer="value"
+          ref={ref}
+        />
+      </RadioGroup>,
+    );
+    const panel = screen
+      .getByText('Oslo')
+      .closest('.eds-input-panel__container');
+    expect(panel).toHaveClass('consumer-class', 'eds-input-panel--large');
+    expect(panel).toHaveStyle({ marginTop: '7px' });
+    const input = screen.getByRole(role, { name: 'Oslo' });
+    expect(input).toHaveAttribute('data-consumer', 'value');
+    expect(ref.current).toBe(input);
+  },
+);
+
+test.each([
+  ['disabled', 'eds-input-panel--disabled'],
+  ['readOnly', 'eds-input-panel--readonly'],
+] as const)('%s sets the %s modifier on the panel label', (prop, modifier) => {
+  const { rerender } = render(<CheckboxPanel title="Oslo" value="Oslo" />);
+  const label = screen.getByText('Oslo').closest('label');
+  expect(label).toHaveClass('eds-input-panel');
+  expect(label).not.toHaveClass(modifier);
+  rerender(<CheckboxPanel title="Oslo" value="Oslo" {...{ [prop]: true }} />);
+  expect(label).toHaveClass(modifier);
 });

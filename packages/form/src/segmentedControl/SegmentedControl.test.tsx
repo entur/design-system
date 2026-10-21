@@ -1,384 +1,337 @@
 import React from 'react';
-import { fireEvent, render, screen } from '@testing-library/react';
-import { SegmentedControl } from '.';
-import { SegmentedChoice } from '.';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { SegmentedChoice, SegmentedControl } from '.';
+import { describeComponentContract } from '../../../../tests/jest/componentContract';
 
 describe('SegmentedControl', () => {
-  it('renders with proper structure', () => {
-    const mockOnChange = jest.fn();
-
-    render(
-      <SegmentedControl
-        label="Test control"
-        value="option1"
-        onChange={mockOnChange}
-      >
-        <SegmentedControl.Item value="option1">Option 1</SegmentedControl.Item>
-        <SegmentedControl.Item value="option2">Option 2</SegmentedControl.Item>
-      </SegmentedControl>,
-    );
-
-    expect(screen.getByText('Test control')).toBeInTheDocument();
-    expect(screen.getByText('Option 1')).toBeInTheDocument();
-    expect(screen.getByText('Option 2')).toBeInTheDocument();
-  });
-
-  // Legacy API compatibility tests
-  it('supports legacy selectedValue prop (deprecated)', () => {
-    const mockOnChange = jest.fn();
-
+  it('supports legacy selectedValue prop (deprecated)', async () => {
+    const user = userEvent.setup();
+    const onChange = jest.fn();
     render(
       <SegmentedControl
         label="Legacy control"
         selectedValue="option1"
-        onChange={mockOnChange}
+        onChange={onChange}
       >
         <SegmentedControl.Item value="option1">Option 1</SegmentedControl.Item>
         <SegmentedControl.Item value="option2">Option 2</SegmentedControl.Item>
       </SegmentedControl>,
     );
-
-    const option1 = screen.getByText('Option 1').closest('button');
-    const option2 = screen.getByText('Option 2').closest('button');
-    expect(option1).toHaveAttribute('aria-checked', 'true');
-    expect(option2).toHaveAttribute('aria-checked', 'false');
-
-    fireEvent.click(option2!);
-    expect(mockOnChange).toHaveBeenCalledWith('option2');
+    expect(screen.getByRole('radio', { name: 'Option 1' })).toBeChecked();
+    const option2 = screen.getByRole('radio', { name: 'Option 2' });
+    expect(option2).not.toBeChecked();
+    await user.click(option2);
+    expect(onChange.mock.calls).toEqual([['option2']]);
   });
 
-  it('supports legacy SegmentedChoice child component', () => {
-    const mockOnChange = jest.fn();
-
+  it('supports legacy SegmentedChoice child component', async () => {
+    const user = userEvent.setup();
+    const onChange = jest.fn();
     render(
       <SegmentedControl
         label="Legacy child"
         value="option1"
-        onChange={mockOnChange}
+        onChange={onChange}
       >
         <SegmentedChoice value="option1">Option 1</SegmentedChoice>
         <SegmentedChoice value="option2">Option 2</SegmentedChoice>
       </SegmentedControl>,
     );
-
-    const option2 = screen.getByText('Option 2').closest('button');
-    fireEvent.click(option2!);
-    expect(mockOnChange).toHaveBeenCalledWith('option2');
+    await user.click(screen.getByRole('radio', { name: 'Option 2' }));
+    expect(onChange.mock.calls).toEqual([['option2']]);
   });
 
-  it('handles selection changes', () => {
-    const mockOnChange = jest.fn();
-
-    render(
-      <SegmentedControl
-        label="Test control"
-        value="option1"
-        onChange={mockOnChange}
-      >
-        <SegmentedControl.Item value="option1">Option 1</SegmentedControl.Item>
-        <SegmentedControl.Item value="option2">Option 2</SegmentedControl.Item>
+  it('names the group and reports selection without changing controlled state until rerender', async () => {
+    const user = userEvent.setup();
+    const onChange = jest.fn();
+    const { rerender } = render(
+      <SegmentedControl label="Travel mode" value="train" onChange={onChange}>
+        <SegmentedControl.Item value="train">Train</SegmentedControl.Item>
+        <SegmentedControl.Item value="bus">Bus</SegmentedControl.Item>
       </SegmentedControl>,
     );
-
-    const option2 = screen.getByText('Option 2').closest('button');
-    expect(option2).toBeInTheDocument();
-
-    fireEvent.click(option2!);
-    expect(mockOnChange).toHaveBeenCalledWith('option2');
+    const train = screen.getByRole('radio', { name: 'Train' });
+    const bus = screen.getByRole('radio', { name: 'Bus' });
+    expect(
+      screen.getByRole('radiogroup', { name: 'Travel mode' }),
+    ).toContainElement(train);
+    expect(train).toBeChecked();
+    await user.click(bus);
+    expect(onChange.mock.calls).toEqual([['bus']]);
+    expect(bus).not.toBeChecked();
+    rerender(
+      <SegmentedControl label="Travel mode" value="bus" onChange={onChange}>
+        <SegmentedControl.Item value="train">Train</SegmentedControl.Item>
+        <SegmentedControl.Item value="bus">Bus</SegmentedControl.Item>
+      </SegmentedControl>,
+    );
+    expect(bus).toBeChecked();
+    expect(train).not.toBeChecked();
   });
 
-  it('supports custom elements with as prop', () => {
-    const mockOnChange = jest.fn();
-    const CustomButton = ({ children, ...props }: any) => (
-      <button data-testid="custom-button" {...props}>
-        {children}
-      </button>
-    );
-
+  it('supports selection through a consumer-provided button component', async () => {
+    const user = userEvent.setup();
+    const CustomButton = React.forwardRef<
+      HTMLButtonElement,
+      React.ComponentPropsWithoutRef<'button'>
+    >((props, ref) => <button type="button" {...props} ref={ref} />);
     render(
-      <SegmentedControl
-        label="Test control"
-        value="option1"
-        onChange={mockOnChange}
-      >
-        <SegmentedControl.Item value="option1" as={CustomButton}>
-          Option 1
+      <SegmentedControl label="Travel mode" defaultValue="train">
+        <SegmentedControl.Item value="train" as={CustomButton}>
+          Train
         </SegmentedControl.Item>
-        <SegmentedControl.Item value="option2" as={CustomButton}>
-          Option 2
+        <SegmentedControl.Item value="bus" as={CustomButton}>
+          Bus
         </SegmentedControl.Item>
       </SegmentedControl>,
     );
-
-    const customButtons = screen.getAllByTestId('custom-button');
-    expect(customButtons).toHaveLength(2);
+    await user.click(screen.getByRole('radio', { name: 'Bus' }));
+    expect(screen.getByRole('radio', { name: 'Bus' })).toBeChecked();
+    expect(screen.getByRole('radio', { name: 'Train' })).not.toBeChecked();
   });
 
-  it('supports comprehensive keyboard navigation', () => {
-    const mockOnChange = jest.fn();
-
+  it('moves focus with all arrows, Home and End without selecting; Space selects and Escape leaves selection intact', async () => {
+    const user = userEvent.setup();
+    const onChange = jest.fn();
     render(
       <SegmentedControl
-        label="Test control"
-        value="option1"
-        onChange={mockOnChange}
+        label="Travel mode"
+        defaultValue="train"
+        onChange={onChange}
       >
-        <SegmentedControl.Item value="option1">Option 1</SegmentedControl.Item>
-        <SegmentedControl.Item value="option2">Option 2</SegmentedControl.Item>
-        <SegmentedControl.Item value="option3">Option 3</SegmentedControl.Item>
+        <SegmentedControl.Item value="train">Train</SegmentedControl.Item>
+        <SegmentedControl.Item value="bus">Bus</SegmentedControl.Item>
+        <SegmentedControl.Item value="boat">Boat</SegmentedControl.Item>
       </SegmentedControl>,
     );
-
-    const option1 = screen.getByText('Option 1').closest('button');
-    const option2 = screen.getByText('Option 2').closest('button');
-    const option3 = screen.getByText('Option 3').closest('button');
-
-    expect(option1).toBeInTheDocument();
-    expect(option2).toBeInTheDocument();
-    expect(option3).toBeInTheDocument();
-
-    // Focus first option
-    option1!.focus();
-    expect(option1).toHaveFocus();
-
-    // Test right arrow navigation
-    fireEvent.keyDown(option1!, { key: 'ArrowRight' });
-    expect(option2).toHaveFocus();
-
-    // Test down arrow navigation (same as right)
-    fireEvent.keyDown(option2!, { key: 'ArrowDown' });
-    expect(option3).toHaveFocus();
-
-    // Test left arrow navigation
-    fireEvent.keyDown(option3!, { key: 'ArrowLeft' });
-    expect(option2).toHaveFocus();
-
-    // Test up arrow navigation (same as left)
-    fireEvent.keyDown(option2!, { key: 'ArrowUp' });
-    expect(option1).toHaveFocus();
-
-    // Test Home key
-    fireEvent.keyDown(option3!, { key: 'Home' });
-    expect(option1).toHaveFocus();
-
-    // Test End key
-    fireEvent.keyDown(option1!, { key: 'End' });
-    expect(option3).toHaveFocus();
-
-    // Test Space key selection
-    fireEvent.keyDown(option2!, { key: ' ' });
-    expect(mockOnChange).toHaveBeenCalledWith('option2');
-
-    // Test Enter key selection
-    fireEvent.keyDown(option3!, { key: 'Enter' });
-    expect(mockOnChange).toHaveBeenCalledWith('option3');
-
-    // Test Escape key (should not change selection)
-    fireEvent.keyDown(option1!, { key: 'Escape' });
-    expect(mockOnChange).not.toHaveBeenCalledWith('option1');
+    const train = screen.getByRole('radio', { name: 'Train' });
+    const bus = screen.getByRole('radio', { name: 'Bus' });
+    const boat = screen.getByRole('radio', { name: 'Boat' });
+    await user.tab();
+    expect(train).toHaveFocus();
+    await user.keyboard('{ArrowRight}');
+    expect(bus).toHaveFocus();
+    await user.keyboard('{ArrowDown}');
+    expect(boat).toHaveFocus();
+    await user.keyboard('{ArrowLeft}');
+    expect(bus).toHaveFocus();
+    await user.keyboard('{ArrowUp}');
+    expect(train).toHaveFocus();
+    await user.keyboard('{End}');
+    expect(boat).toHaveFocus();
+    await user.keyboard('{Home}');
+    expect(train).toHaveFocus();
+    expect(onChange).not.toHaveBeenCalled();
+    expect(train).toBeChecked();
+    await user.keyboard('{ArrowRight} ');
+    expect(bus).toBeChecked();
+    expect(train).not.toBeChecked();
+    expect(onChange.mock.calls).toEqual([['bus']]);
+    await user.keyboard('{Escape}');
+    expect(bus).toBeChecked();
+    expect(onChange).toHaveBeenCalledTimes(1);
   });
 
-  it('supports compound component pattern with SegmentedControl.Item', () => {
-    const mockOnChange = jest.fn();
-
-    render(
-      <SegmentedControl
-        label="Test control"
-        value="option1"
-        onChange={mockOnChange}
-      >
-        <SegmentedControl.Item value="option1">Option 1</SegmentedControl.Item>
-        <SegmentedControl.Item value="option2">Option 2</SegmentedControl.Item>
-      </SegmentedControl>,
-    );
-
-    expect(screen.getByText('Test control')).toBeInTheDocument();
-    expect(screen.getByText('Option 1')).toBeInTheDocument();
-    expect(screen.getByText('Option 2')).toBeInTheDocument();
-
-    // Test that clicking works the same way
-    const option2 = screen.getByText('Option 2').closest('button');
-    expect(option2).toBeInTheDocument();
-
-    fireEvent.click(option2!);
-    expect(mockOnChange).toHaveBeenCalledWith('option2');
-  });
-
-  it('supports uncontrolled behavior and submits correct value', () => {
-    type HandleSubmitMock = jest.Mock<
-      void,
-      [React.FormEvent<HTMLFormElement>]
-    > & {
-      data?: Record<string, FormDataEntryValue>;
-    };
-
-    const handleSubmit: HandleSubmitMock = jest.fn(e => {
-      e.preventDefault();
-      const formData = new FormData(e.target as HTMLFormElement);
-      handleSubmit.data = Object.fromEntries(formData.entries());
-    });
-
-    render(
-      <form onSubmit={handleSubmit}>
+  // Bug: Enter calls handleSelection on keydown and again on the native click.
+  it.failing(
+    'Enter selects once, including the native button click',
+    async () => {
+      const user = userEvent.setup();
+      const onChange = jest.fn();
+      const onItemChange = jest.fn();
+      render(
         <SegmentedControl
-          label="Uncontrolled control"
-          name="segmented"
-          defaultValue="option1"
+          label="Travel mode"
+          defaultValue="train"
+          onChange={onChange}
         >
-          <SegmentedControl.Item value="option1">
-            Option 1
+          <SegmentedControl.Item value="train">Train</SegmentedControl.Item>
+          <SegmentedControl.Item value="bus" onChange={onItemChange}>
+            Bus
           </SegmentedControl.Item>
-          <SegmentedControl.Item value="option2">
-            Option 2
-          </SegmentedControl.Item>
-          <SegmentedControl.Item value="option3">
-            Option 3
-          </SegmentedControl.Item>
+        </SegmentedControl>,
+      );
+      await user.tab();
+      await user.keyboard('{ArrowRight}{Enter}');
+      expect(screen.getByRole('radio', { name: 'Bus' })).toBeChecked();
+      expect(onChange.mock.calls).toEqual([['bus']]);
+      expect(onItemChange.mock.calls).toEqual([['bus']]);
+    },
+  );
+
+  // Bug: getNextWithDataValue includes disabled items in keyboard navigation.
+  it.failing('arrow navigation skips disabled items', async () => {
+    const user = userEvent.setup();
+    const onChange = jest.fn();
+    render(
+      <SegmentedControl
+        label="Travel mode"
+        defaultValue="train"
+        onChange={onChange}
+      >
+        <SegmentedControl.Item value="train">Train</SegmentedControl.Item>
+        <SegmentedControl.Item value="bus" disabled>
+          Bus
+        </SegmentedControl.Item>
+        <SegmentedControl.Item value="boat">Boat</SegmentedControl.Item>
+      </SegmentedControl>,
+    );
+    await user.click(screen.getByRole('radio', { name: 'Bus' }));
+    expect(onChange).not.toHaveBeenCalled();
+    await user.tab();
+    await user.keyboard('{ArrowRight}');
+    expect(screen.getByRole('radio', { name: 'Boat' })).toHaveFocus();
+  });
+
+  it('disabled item ignores mouse activation', async () => {
+    const user = userEvent.setup();
+    const onChange = jest.fn();
+    render(
+      <SegmentedControl
+        label="Travel mode"
+        defaultValue="train"
+        onChange={onChange}
+      >
+        <SegmentedControl.Item value="train">Train</SegmentedControl.Item>
+        <SegmentedControl.Item value="bus" disabled>
+          Bus
+        </SegmentedControl.Item>
+      </SegmentedControl>,
+    );
+    await user.click(screen.getByRole('radio', { name: 'Bus' }));
+    expect(screen.getByRole('radio', { name: 'Bus' })).not.toBeChecked();
+    expect(onChange).not.toHaveBeenCalled();
+  });
+
+  it('supports uncontrolled behavior and submits the selected value without submitting on selection', async () => {
+    const user = userEvent.setup();
+    const onSubmit = jest.fn();
+    render(
+      <form
+        onSubmit={e => {
+          e.preventDefault();
+          onSubmit(Object.fromEntries(new FormData(e.currentTarget)));
+        }}
+      >
+        <SegmentedControl label="Travel mode" name="mode" defaultValue="train">
+          <SegmentedControl.Item value="train">Train</SegmentedControl.Item>
+          <SegmentedControl.Item value="bus">Bus</SegmentedControl.Item>
+          <SegmentedControl.Item value="boat">Boat</SegmentedControl.Item>
         </SegmentedControl>
         <button type="submit">Submit</button>
       </form>,
     );
-
-    const option1 = screen.getByText('Option 1').closest('button');
-    const option2 = screen.getByText('Option 2').closest('button');
-    const option3 = screen.getByText('Option 3').closest('button');
-    const submitButton = screen.getByText('Submit');
-
-    expect(option1).toHaveAttribute('aria-checked', 'true');
-    expect(option2).toHaveAttribute('aria-checked', 'false');
-    expect(option3).toHaveAttribute('aria-checked', 'false');
-
-    // Submit with default (option1)
-    fireEvent.click(submitButton);
-    expect(handleSubmit).toHaveBeenCalled();
-    expect(handleSubmit.data).toEqual({ segmented: 'option1' });
-
-    // Click option 2 and submit
-    fireEvent.click(option2!);
-    expect(option1).toHaveAttribute('aria-checked', 'false');
-    expect(option2).toHaveAttribute('aria-checked', 'true');
-    expect(option3).toHaveAttribute('aria-checked', 'false');
-
-    fireEvent.click(submitButton);
-    expect(handleSubmit.data).toEqual({ segmented: 'option2' });
-
-    // Click option 3 and submit
-    fireEvent.click(option3!);
-    expect(option1).toHaveAttribute('aria-checked', 'false');
-    expect(option2).toHaveAttribute('aria-checked', 'false');
-    expect(option3).toHaveAttribute('aria-checked', 'true');
-
-    fireEvent.click(submitButton);
-    expect(handleSubmit.data).toEqual({ segmented: 'option3' });
-  });
-  it('has proper ARIA attributes for accessibility', () => {
-    const mockOnChange = jest.fn();
-
-    render(
-      <SegmentedControl
-        label="Test control"
-        value="option1"
-        onChange={mockOnChange}
-      >
-        <SegmentedControl.Item value="option1">Option 1</SegmentedControl.Item>
-        <SegmentedControl.Item value="option2">Option 2</SegmentedControl.Item>
-      </SegmentedControl>,
-    );
-
-    const container = screen.getByRole('radiogroup');
-    expect(container).toBeInTheDocument();
-    expect(container).toHaveAttribute('aria-labelledby');
-
-    const option1 = screen.getByText('Option 1').closest('button');
-    const option2 = screen.getByText('Option 2').closest('button');
-
-    expect(option1).toHaveAttribute('role', 'radio');
-    expect(option1).toHaveAttribute('aria-checked', 'true');
-    expect(option1).toHaveAttribute('tabIndex', '0');
-
-    expect(option2).toHaveAttribute('role', 'radio');
-    expect(option2).toHaveAttribute('aria-checked', 'false');
-    expect(option2).toHaveAttribute('tabIndex', '-1');
+    await user.click(screen.getByRole('button', { name: 'Submit' }));
+    expect(onSubmit).toHaveBeenLastCalledWith({ mode: 'train' });
+    for (const [name, value] of [
+      ['Bus', 'bus'],
+      ['Boat', 'boat'],
+    ]) {
+      onSubmit.mockClear();
+      await user.click(screen.getByRole('radio', { name }));
+      expect(onSubmit).not.toHaveBeenCalled();
+      expect(screen.getByRole('radio', { name })).toBeChecked();
+      await user.click(screen.getByRole('button', { name: 'Submit' }));
+      expect(onSubmit).toHaveBeenCalledWith({ mode: value });
+    }
   });
 
-  it('supports roving tabindex correctly', () => {
-    const mockOnChange = jest.fn();
+  it.each([null, 'bus'])(
+    'has one Tab stop when initial value is %s and calls focus/blur callbacks',
+    async defaultValue => {
+      const user = userEvent.setup();
+      const onFocus = jest.fn();
+      const onBlur = jest.fn();
+      render(
+        <>
+          <SegmentedControl
+            label="Travel mode"
+            defaultValue={defaultValue}
+            onFocus={onFocus}
+            onBlur={onBlur}
+          >
+            <SegmentedControl.Item value="train">Train</SegmentedControl.Item>
+            <SegmentedControl.Item value="bus">Bus</SegmentedControl.Item>
+          </SegmentedControl>
+          <button>Continue</button>
+        </>,
+      );
+      const entry = screen.getByRole('radio', {
+        name: defaultValue === null ? 'Train' : 'Bus',
+      });
+      await user.tab();
+      expect(entry).toHaveFocus();
+      expect(onFocus).toHaveBeenCalledTimes(1);
+      await user.tab();
+      expect(screen.getByRole('button', { name: 'Continue' })).toHaveFocus();
+      expect(onBlur).toHaveBeenCalledTimes(1);
+      await user.tab({ shift: true });
+      expect(entry).toHaveFocus();
+    },
+  );
 
+  it('supports keyboard selection when items render as anchors', async () => {
+    const user = userEvent.setup();
     render(
-      <SegmentedControl
-        label="Test control"
-        value="option2"
-        onChange={mockOnChange}
-      >
-        <SegmentedControl.Item value="option1">Option 1</SegmentedControl.Item>
-        <SegmentedControl.Item value="option2">Option 2</SegmentedControl.Item>
-        <SegmentedControl.Item value="option3">Option 3</SegmentedControl.Item>
-      </SegmentedControl>,
-    );
-
-    const option1 = screen.getByText('Option 1').closest('button');
-    const option2 = screen.getByText('Option 2').closest('button');
-    const option3 = screen.getByText('Option 3').closest('button');
-
-    // Selected option should be focusable
-    expect(option2).toHaveAttribute('tabIndex', '0');
-    // Non-selected options should not be focusable
-    expect(option1).toHaveAttribute('tabIndex', '-1');
-    expect(option3).toHaveAttribute('tabIndex', '-1');
-  });
-
-  it('supports anchor elements with as prop', () => {
-    const mockOnChange = jest.fn();
-
-    render(
-      <SegmentedControl
-        label="Test control"
-        value="option1"
-        onChange={mockOnChange}
-      >
-        <SegmentedControl.Item value="option1" as="a" href="/option1">
-          Option 1
+      <SegmentedControl label="Travel mode" defaultValue="train">
+        <SegmentedControl.Item value="train" as="a" href="#train">
+          Train
         </SegmentedControl.Item>
-        <SegmentedControl.Item value="option2" as="a" href="/option2">
-          Option 2
+        <SegmentedControl.Item value="bus" as="a" href="#bus">
+          Bus
         </SegmentedControl.Item>
       </SegmentedControl>,
     );
-
-    const option1 = screen.getByText('Option 1').closest('a');
-    const option2 = screen.getByText('Option 2').closest('a');
-
-    expect(option1).toHaveAttribute('href', '/option1');
-    expect(option2).toHaveAttribute('href', '/option2');
-    expect(option1).toHaveAttribute('role', 'radio');
-    expect(option2).toHaveAttribute('role', 'radio');
+    expect(screen.getByRole('radio', { name: 'Bus' })).toHaveAttribute(
+      'href',
+      '#bus',
+    );
+    await user.tab();
+    await user.keyboard('{ArrowRight}{Enter}');
+    expect(screen.getByRole('radio', { name: 'Bus' })).toHaveFocus();
+    expect(screen.getByRole('radio', { name: 'Bus' })).toBeChecked();
+    expect(screen.getByRole('radio', { name: 'Train' })).not.toBeChecked();
   });
 
-  it('calls onFocus and onBlur callbacks when focused and blurred', () => {
-    const mockOnChange = jest.fn();
-    const onFocus = jest.fn();
-    const onBlur = jest.fn();
-
-    render(
-      <SegmentedControl
-        label="Test control"
-        value="option1"
-        onChange={mockOnChange}
-        onFocus={onFocus}
-        onBlur={onBlur}
-      >
-        <SegmentedControl.Item value="option1">Option 1</SegmentedControl.Item>
-        <SegmentedControl.Item value="option2">Option 2</SegmentedControl.Item>
+  it('size="large" sets the large modifier on its items', () => {
+    const { rerender } = render(
+      <SegmentedControl label="Travel mode" defaultValue="train">
+        <SegmentedControl.Item value="train">Train</SegmentedControl.Item>
       </SegmentedControl>,
     );
-
-    const option1 = screen.getByText('Option 1').closest('button');
-    expect(option1).toBeInTheDocument();
-
-    fireEvent.focus(option1!);
-    expect(onFocus).toHaveBeenCalledTimes(1);
-
-    fireEvent.blur(option1!);
-    expect(onBlur).toHaveBeenCalledTimes(1);
+    const train = screen.getByRole('radio', { name: 'Train' });
+    expect(train).not.toHaveClass('eds-segmented-choice--large');
+    rerender(
+      <SegmentedControl label="Travel mode" defaultValue="train" size="large">
+        <SegmentedControl.Item value="train">Train</SegmentedControl.Item>
+      </SegmentedControl>,
+    );
+    expect(train).toHaveClass('eds-segmented-choice--large');
   });
+});
+
+describeComponentContract('SegmentedControl', {
+  render: props => (
+    <SegmentedControl label="Travel mode" defaultValue="train" {...props}>
+      <SegmentedControl.Item value="train">Train</SegmentedControl.Item>
+    </SegmentedControl>
+  ),
+  getElement: () => screen.getByRole('radiogroup', { name: 'Travel mode' }),
+  baseClassName: 'eds-segmented-control',
+  refElement: HTMLDivElement,
+});
+
+describeComponentContract('SegmentedControl.Item', {
+  render: props => (
+    <SegmentedControl label="Travel mode" defaultValue="train">
+      <SegmentedControl.Item value="train" {...props}>
+        Train
+      </SegmentedControl.Item>
+    </SegmentedControl>
+  ),
+  getElement: () => screen.getByRole('radio', { name: 'Train' }),
+  baseClassName: 'eds-segmented-choice',
+  refElement: HTMLButtonElement,
+  as: 'a',
 });
