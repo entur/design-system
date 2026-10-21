@@ -11,7 +11,7 @@ Read and follow: https://github.com/entur/ai/blob/main/AGENTS.md
 - **Monorepo:** Lerna (independent versioning) + Yarn 4.9.3 workspaces + Nx (task caching)
 - **Build:** Vite (packages), Gatsby 5 (docs), Playroom (playground)
 - **Language:** TypeScript 5.9, React 18, SCSS
-- **Test:** Jest 29 + React Testing Library
+- **Test:** Jest 29 + React Testing Library, Playwright (Chromium, Firefox, WebKit) for browser tests
 - **Node:** 24.22.1 required
 
 ## Common Commands
@@ -24,9 +24,20 @@ yarn build:packages           # Build all npm packages
 yarn build:package [name]     # Build single package
 yarn test                     # Run all tests (TZ=UTC)
 yarn test:package [name]      # Test single package
+yarn typecheck:browser        # Typecheck browser tests and fixtures
+yarn test:browser             # Run the browser accessibility suite
 yarn lint                     # Lint all packages
 yarn lint:fix                 # Auto-fix lint issues
 ```
+
+## Testing Conventions
+
+- Query by accessible role, label or text and assert consumer-visible behavior. Use `userEvent` for interactions; when `fireEvent` is needed, comment why.
+- Cover the consumer prop contract (`className` merge, `style`, rest props, `ref`, `as`) with `describeComponentContract` from `tests/jest/componentContract.tsx`. In a CSS-based design system the class is the contract between props and styling, so assert modifier classes for props that only change styling.
+- Keep regression tests for fixed bugs, even when they assert classes.
+- Mark a reproduced component bug with `test.failing` and a comment linking its Jira issue, so CI reports when the bug is fixed. Never classify a jsdom limitation as a component bug.
+
+Browser tests (Playwright, in Chromium, Firefox and WebKit) live in `tests/browser/` with a `.browser.ts` suffix so Jest does not collect them. They cover only what jsdom cannot: native dialog focus trapping and restoration, skip-link focus transfer and `inert`. Do not mock native dialog or `inert` behavior. The fixture consumes built packages, so run `yarn build:packages` first. Install the browsers once with `yarn playwright install chromium firefox webkit`.
 
 ## Architecture
 

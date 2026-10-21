@@ -1,0 +1,19 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "noEmit": true,
+    "declaration": false,
+    "strict": true,
+    "types": ["node"],
+    "paths": {
+      "@entur/*": ["packages/*/dist"]
+    }
+  },
+  "include": [
+    "playwright.config.ts",
+    "tests/browser/**/*.ts",
+    "tests/browser/**/*.tsx"
+  ]
+}
