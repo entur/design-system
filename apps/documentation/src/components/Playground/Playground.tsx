@@ -17,11 +17,12 @@ import { useSettings } from '@providers/SettingsContext';
 import {
   InitialAdvancedProp,
   useAdvancedPlaygroundCode,
+  getImportedScope,
   wrapCodeInFragmentIfNecessary,
 } from './playground-utils';
 import PropsList from './PropsList';
 import theme from './themeForPlayground';
-import { packages } from './packages-scope';
+import { modules, packages } from './packages-scope';
 import { documentationComponents } from './documentation-scope';
 import { utilsScope } from './utils-scope';
 
@@ -94,6 +95,7 @@ const Playground: React.FC<PlaygroundProps> = ({
     ...utilsScope,
     ...packages,
     ...documentationComponents,
+    ...getImportedScope(codeWithUpdatedProps, modules),
     ...scope,
   };
 

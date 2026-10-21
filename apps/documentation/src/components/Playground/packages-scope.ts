@@ -59,3 +59,33 @@ export const packages = {
   ListItemBeta: typographyBeta.ListItem,
   ...utils,
 };
+
+// What a snippet's own imports resolve to, so `import { Link } from
+// '@entur/typography/beta'` runs the beta Link despite the clashes above.
+export const modules: Record<string, Record<string, unknown>> = {
+  '@entur/a11y': a11y,
+  '@entur/alert': alert,
+  '@entur/button': button,
+  '@entur/chip': chip,
+  '@entur/datepicker': datepicker,
+  '@entur/dropdown': dropdown,
+  '@entur/expand': expand,
+  '@entur/fileupload': fileupload,
+  '@entur/form': form,
+  '@entur/grid': grid,
+  '@entur/icons': icons,
+  '@entur/layout': layout,
+  '@entur/layout/beta': layoutBeta,
+  '@entur/loader': loader,
+  '@entur/menu': menu,
+  '@entur/menu/beta': menuBeta,
+  '@entur/modal': modal,
+  '@entur/tab': tab,
+  '@entur/table': table,
+  '@entur/tokens': tokens,
+  '@entur/tooltip': tooltip,
+  '@entur/travel': travel,
+  '@entur/typography': typography,
+  '@entur/typography/beta': typographyBeta,
+  '@entur/utils': utils,
+};
