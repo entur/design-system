@@ -6,21 +6,19 @@
   "displayName": "Link",
   "methods": [],
   "props": {
-    "external": {
-      "defaultValue": {
-        "value": false
-      },
-      "description": "",
-      "name": "external",
+    "spacing": {
+      "defaultValue": null,
+      "description": "Avstand over og under, fra samme skala som `gap` på Flex og Grid.\nÉn verdi gir lik avstand over og under, `{ top, bottom }` setter dem hver for seg.\nUten `spacing` har teksten ingen avstand, med mindre den ligger i en `TextContainer`.",
+      "name": "spacing",
       "declarations": [
         {
-          "fileName": "packages/typography/src/beta/components/Link.tsx",
+          "fileName": "packages/typography/src/beta/types.ts",
           "name": "TypeLiteral"
         }
       ],
       "required": false,
       "type": {
-        "name": "boolean | undefined"
+        "name": "\"s\" | \"none\" | \"2xs\" | \"xs\" | \"m\" | \"lg\" | \"xl\" | \"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"6xl\" | \"7xl\" | \"8xl\" | \"9xl\" | \"10xl\" | \"11xl\" | \"12xl\" | \"13xl\" | { top?: \"s\" | \"none\" | \"2xs\" | \"xs\" | ... 15 more ... | undefined; bottom?: \"s\" | ... 18 more ... | undefined; } | undefined"
       }
     },
     "className": {
@@ -48,41 +46,9 @@
           "name": "TypeLiteral"
         }
       ],
-      "required": true,
+      "required": false,
       "type": {
         "name": "ReactNode"
-      }
-    },
-    "spacing": {
-      "defaultValue": null,
-      "description": "Spacing around the component (same as Text and Heading components)",
-      "name": "spacing",
-      "declarations": [
-        {
-          "fileName": "packages/typography/src/beta/components/Link.tsx",
-          "name": "TypeLiteral"
-        }
-      ],
-      "required": false,
-      "type": {
-        "name": "TypographySpacing | undefined"
-      }
-    },
-    "ariaLabelExternalIcon": {
-      "defaultValue": {
-        "value": "(ekstern lenke)"
-      },
-      "description": "",
-      "name": "ariaLabelExternalIcon",
-      "declarations": [
-        {
-          "fileName": "packages/typography/src/beta/components/Link.tsx",
-          "name": "TypeLiteral"
-        }
-      ],
-      "required": false,
-      "type": {
-        "name": "string | undefined"
       }
     },
     "as": {
@@ -97,7 +63,22 @@
       ],
       "required": false,
       "type": {
-        "name": "ElementType<any> | undefined"
+        "name": "ElementType<any, keyof IntrinsicElements> | undefined"
+      }
+    },
+    "ref": {
+      "defaultValue": null,
+      "description": "",
+      "name": "ref",
+      "declarations": [
+        {
+          "fileName": "packages/typography/src/beta/components/Link.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "Ref<Element> | undefined"
       }
     }
   }

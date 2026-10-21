@@ -1,21 +1,34 @@
 {
-  "tags": {},
+  "tags": {
+    "beta": "Experimental component - may have breaking changes in future releases"
+  },
   "description": "",
   "displayName": "NumberedList",
   "methods": [],
   "props": {
+    "spacing": {
+      "defaultValue": null,
+      "description": "Avstand over og under, fra samme skala som `gap` på Flex og Grid.\nÉn verdi gir lik avstand over og under, `{ top, bottom }` setter dem hver for seg.\nUten `spacing` har teksten ingen avstand, med mindre den ligger i en `TextContainer`.",
+      "name": "spacing",
+      "declarations": [
+        {
+          "fileName": "packages/typography/src/beta/types.ts",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "\"s\" | \"none\" | \"2xs\" | \"xs\" | \"m\" | \"lg\" | \"xl\" | \"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"6xl\" | \"7xl\" | \"8xl\" | \"9xl\" | \"10xl\" | \"11xl\" | \"12xl\" | \"13xl\" | { top?: \"s\" | \"none\" | \"2xs\" | \"xs\" | ... 15 more ... | undefined; bottom?: \"s\" | ... 18 more ... | undefined; } | undefined"
+      }
+    },
     "className": {
       "defaultValue": null,
       "description": "Ekstra klassenavn",
       "name": "className",
       "declarations": [
         {
-          "fileName": "packages/typography/src/NumberedList.tsx",
+          "fileName": "packages/typography/src/beta/components/NumberedList.tsx",
           "name": "TypeLiteral"
-        },
-        {
-          "fileName": "node_modules/@types/react/index.d.ts",
-          "name": "HTMLAttributes"
         }
       ],
       "required": false,
@@ -29,17 +42,75 @@
       "name": "children",
       "declarations": [
         {
-          "fileName": "packages/typography/src/NumberedList.tsx",
+          "fileName": "packages/typography/src/beta/components/NumberedList.tsx",
           "name": "TypeLiteral"
-        },
-        {
-          "fileName": "node_modules/@types/react/index.d.ts",
-          "name": "DOMAttributes"
         }
       ],
       "required": false,
       "type": {
         "name": "ReactNode"
+      }
+    },
+    "type": {
+      "defaultValue": null,
+      "description": "List type (1, A, a, I, i)",
+      "name": "type",
+      "declarations": [
+        {
+          "fileName": "packages/typography/src/beta/components/NumberedList.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "\"a\" | \"i\" | \"1\" | \"A\" | \"I\" | undefined"
+      }
+    },
+    "variant": {
+      "defaultValue": {
+        "value": "'default'"
+      },
+      "description": "`steps` viser numrene i merker, for steg-for-steg-instruksjoner",
+      "name": "variant",
+      "declarations": [
+        {
+          "fileName": "packages/typography/src/beta/components/NumberedList.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "\"default\" | \"steps\" | undefined"
+      }
+    },
+    "as": {
+      "defaultValue": null,
+      "description": "An override of the default HTML tag.\nCan also be another React component.",
+      "name": "as",
+      "declarations": [
+        {
+          "fileName": "node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "ElementType<any, keyof IntrinsicElements> | undefined"
+      }
+    },
+    "ref": {
+      "defaultValue": null,
+      "description": "",
+      "name": "ref",
+      "declarations": [
+        {
+          "fileName": "packages/typography/src/beta/components/NumberedList.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "Ref<Element> | undefined"
       }
     }
   }

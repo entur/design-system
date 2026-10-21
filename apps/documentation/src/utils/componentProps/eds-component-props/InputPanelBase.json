@@ -225,6 +225,23 @@
       "type": {
         "name": "boolean | undefined"
       }
+    },
+    "readOnlyLabelDescription": {
+      "defaultValue": {
+        "value": "Kan ikke endres"
+      },
+      "description": "Beskrivelse som leses opp av skjermlesere når input-panelet er skrivebeskyttet (readonly)",
+      "name": "readOnlyLabelDescription",
+      "declarations": [
+        {
+          "fileName": "packages/form/src/inputPanel/InputPanelBase.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
     }
   }
 }

@@ -1,183 +1,274 @@
 {
   "a11y/src/SkipToContent.tsx": {
     "hash": "03663df7bae1137b282616a8683cf92b",
-    "outputs": ["SkipToContent.json"]
+    "outputs": [
+      "SkipToContent.json"
+    ]
   },
   "a11y/src/VisuallyHidden.tsx": {
     "hash": "1365bb56b2d6887f176665f30b019dd2",
-    "outputs": ["VisuallyHidden.json"]
+    "outputs": [
+      "VisuallyHidden.json"
+    ]
   },
   "alert/src/BannerAlertBox.tsx": {
     "hash": "6e9f7e6b81e5879fd87bfb79f81c8e18",
-    "outputs": ["BannerAlertBox.json"]
+    "outputs": [
+      "BannerAlertBox.json"
+    ]
   },
   "alert/src/BaseAlertBox.tsx": {
     "hash": "8b1b26fb05d55057db395ed3e40e8e2b",
-    "outputs": ["BaseAlertBox.json"]
+    "outputs": [
+      "BaseAlertBox.json"
+    ]
   },
   "alert/src/CopyableText.tsx": {
     "hash": "498dc63d5647beb42f3eb4eb0a9da28d",
-    "outputs": ["CopyableText.json"]
+    "outputs": [
+      "CopyableText.json"
+    ]
   },
   "alert/src/ExpandableAlertBox.tsx": {
     "hash": "2d44bca5236836e050a1df6de42bd784",
-    "outputs": ["SmallExpandableAlertBox.json", "BannerExpandableAlertBox.json"]
+    "outputs": [
+      "SmallExpandableAlertBox.json",
+      "BannerExpandableAlertBox.json"
+    ]
   },
   "alert/src/SmallAlertBox.tsx": {
     "hash": "52a17c9b5623e2bba3bad6c4e44929f0",
-    "outputs": ["SmallAlertBox.json"]
+    "outputs": [
+      "SmallAlertBox.json"
+    ]
   },
   "alert/src/ToastAlertBox.tsx": {
     "hash": "2ba6e9d2c14c74daed37700c560d58e2",
-    "outputs": ["ToastAlertBox.json"]
+    "outputs": [
+      "ToastAlertBox.json"
+    ]
   },
   "alert/src/ToastProvider.tsx": {
     "hash": "89da6c0fbd0323a836383d21f917b4f6",
-    "outputs": ["ToastProvider.json"]
+    "outputs": [
+      "ToastProvider.json"
+    ]
   },
   "button/src/Button.tsx": {
     "hash": "a3d0538b1918dd8155807b7dc35ca769",
-    "outputs": ["Button.json"]
+    "outputs": [
+      "Button.json"
+    ]
   },
   "button/src/ButtonGroup.tsx": {
     "hash": "7f927afe2fc2e5b146988bd8960f2a88",
-    "outputs": ["ButtonGroup.json"]
+    "outputs": [
+      "ButtonGroup.json"
+    ]
   },
   "button/src/FloatingButton.tsx": {
     "hash": "6dc49ede28164c19d7f923efc418dc99",
-    "outputs": ["FloatingButton.json"]
+    "outputs": [
+      "FloatingButton.json"
+    ]
   },
   "button/src/IconButton.tsx": {
     "hash": "1f68886fa5c2e460f7f5047ffcacf128",
-    "outputs": ["IconButton.json"]
+    "outputs": [
+      "IconButton.json"
+    ]
   },
   "button/src/NegativeButton.tsx": {
     "hash": "038989decd768250e17193b17f78e652",
-    "outputs": ["NegativeButton.json"]
+    "outputs": [
+      "NegativeButton.json"
+    ]
   },
   "button/src/PrimaryButton.tsx": {
     "hash": "2f0766c4687b91dffffbee20365b5060",
-    "outputs": ["PrimaryButton.json"]
+    "outputs": [
+      "PrimaryButton.json"
+    ]
   },
   "button/src/SecondaryButton.tsx": {
     "hash": "3ab5b2ddea795af3c547b0af0897ba2b",
-    "outputs": ["SecondaryButton.json"]
+    "outputs": [
+      "SecondaryButton.json"
+    ]
   },
   "button/src/SecondarySquareButton.tsx": {
     "hash": "e5ccbef87d80b21f93823808cbfb8bdd",
-    "outputs": ["SecondarySquareButton.json"]
+    "outputs": [
+      "SecondarySquareButton.json"
+    ]
   },
   "button/src/SquareButton.tsx": {
     "hash": "2ddc8792cb1d6ea4ee8a86d8aca66940",
-    "outputs": ["SquareButton.json"]
+    "outputs": [
+      "SquareButton.json"
+    ]
   },
   "button/src/SuccessButton.tsx": {
     "hash": "9f1d8c8a06a4d1716300cec68a9453c3",
-    "outputs": ["SuccessButton.json"]
+    "outputs": [
+      "SuccessButton.json"
+    ]
   },
   "button/src/SuccessSquareButton.tsx": {
     "hash": "9b22d12b4ff4ce0640cd7536b91a7332",
-    "outputs": ["SuccessSquareButton.json"]
+    "outputs": [
+      "SuccessSquareButton.json"
+    ]
   },
   "button/src/TertiaryButton.tsx": {
     "hash": "fae7ce69572a03ec8c0e3210089b3f91",
-    "outputs": ["TertiaryButton.json"]
+    "outputs": [
+      "TertiaryButton.json"
+    ]
   },
   "button/src/TertiarySquareButton.tsx": {
     "hash": "fd48e0e8f256ba0b9946bbde05e401ab",
-    "outputs": ["TertiarySquareButton.json"]
+    "outputs": [
+      "TertiarySquareButton.json"
+    ]
   },
   "chip/src/ActionChip.tsx": {
-    "hash": "84219e26241153b983fe565094e7416c",
-    "outputs": ["ActionChip.json"]
+    "hash": "70c0f38110c558c150ef912020b698b9",
+    "outputs": [
+      "ActionChip.json"
+    ]
   },
   "chip/src/ChoiceChip.tsx": {
-    "hash": "0e56f0d9e6638d1139de7095c8687f55",
-    "outputs": ["ChoiceChip.json"]
+    "hash": "1863b1b444a52d51d35f49f28ea1ae2f",
+    "outputs": [
+      "ChoiceChip.json"
+    ]
   },
   "chip/src/ChoiceChipGroup.tsx": {
     "hash": "ee478dfcecc8b5d5168e8d0990da4167",
-    "outputs": ["ChoiceChipGroup.json"]
+    "outputs": [
+      "ChoiceChipGroup.json"
+    ]
   },
   "chip/src/ChoiceChipGroupContext.tsx": {
     "hash": "0aa0fe499beea46704fb4a8c500646d4",
-    "outputs": ["ChoiceChipGroupContextProvider.json"]
+    "outputs": [
+      "ChoiceChipGroupContextProvider.json"
+    ]
   },
   "chip/src/FilterChip.tsx": {
-    "hash": "c4621b75003c003145d88dcc6a85a6a1",
-    "outputs": ["FilterChip.json"]
+    "hash": "89638b4f793fa336481a36db80e45f0b",
+    "outputs": [
+      "FilterChip.json"
+    ]
   },
   "chip/src/TagChip.tsx": {
     "hash": "0ce73a33b6280476da2145eced14afd1",
-    "outputs": ["TagChip.json"]
+    "outputs": [
+      "TagChip.json"
+    ]
   },
   "datepicker/src/DatePicker/Calendar.tsx": {
     "hash": "727b22f82c4c4b6271cda0fde4ca399d",
-    "outputs": ["Calendar.json"]
+    "outputs": [
+      "Calendar.json"
+    ]
   },
   "datepicker/src/DatePicker/CalendarCell.tsx": {
     "hash": "5820e4003d70e4633742888533675f15",
-    "outputs": ["CalendarCell.json"]
+    "outputs": [
+      "CalendarCell.json"
+    ]
   },
   "datepicker/src/DatePicker/CalendarGrid.tsx": {
     "hash": "81b92a03cff8755c1ccd2b11340be032",
-    "outputs": ["CalendarGrid.json"]
+    "outputs": [
+      "CalendarGrid.json"
+    ]
   },
   "datepicker/src/DatePicker/DateField.tsx": {
     "hash": "1eb389aa6ee7eda08413fc8cb99dc4f6",
-    "outputs": ["DateField.json"]
+    "outputs": [
+      "DateField.json"
+    ]
   },
   "datepicker/src/DatePicker/DatePicker.tsx": {
     "hash": "2bc872c54a82cb75f1731a6ae3baa0b5",
-    "outputs": ["DatePicker.json"]
+    "outputs": [
+      "DatePicker.json"
+    ]
   },
   "datepicker/src/DatePicker/NativeDatePicker.tsx": {
     "hash": "0c423bd649ad344db659f269b39fd9a4",
-    "outputs": ["NativeDatePicker.json"]
+    "outputs": [
+      "NativeDatePicker.json"
+    ]
   },
   "datepicker/src/TimePicker/NativeTimePicker.tsx": {
     "hash": "f70a79fb42704e64363f1c38e4e06b92",
-    "outputs": ["NativeTimePicker.json"]
+    "outputs": [
+      "NativeTimePicker.json"
+    ]
   },
   "datepicker/src/TimePicker/SimpleTimePicker.tsx": {
     "hash": "2db5741209e095ca9b4bff7e84e4f772",
-    "outputs": ["SimpleTimePicker.json"]
+    "outputs": [
+      "SimpleTimePicker.json"
+    ]
   },
   "datepicker/src/TimePicker/TimePicker.tsx": {
     "hash": "cc15b508ac998af42df723b2e6fba056",
-    "outputs": ["TimePicker.json"]
+    "outputs": [
+      "TimePicker.json"
+    ]
   },
   "datepicker/src/TimePicker/TimePickerArrowButton.tsx": {
     "hash": "99b61285df72fd9191e6a070e7c45506",
-    "outputs": ["TimePickerArrowButton.json"]
+    "outputs": [
+      "TimePickerArrowButton.json"
+    ]
   },
   "datepicker/src/shared/CalendarButton.tsx": {
     "hash": "44d79e9276733e20b73cc5bd7a58e01f",
-    "outputs": ["CalendarButton.json"]
+    "outputs": [
+      "CalendarButton.json"
+    ]
   },
   "datepicker/src/shared/FieldSegment.tsx": {
     "hash": "8232d22a81ad6219583e8e3c41ec3351",
-    "outputs": ["FieldSegment.json"]
+    "outputs": [
+      "FieldSegment.json"
+    ]
   },
   "dropdown/src/Dropdown.tsx": {
     "hash": "955298b7ad0b5a143b9e70897a5cd85a",
-    "outputs": ["Dropdown.json"]
+    "outputs": [
+      "Dropdown.json"
+    ]
   },
   "dropdown/src/MultiSelect.tsx": {
     "hash": "a65f2bdbedf6515fd1142217bd529891",
-    "outputs": ["MultiSelect.json"]
+    "outputs": [
+      "MultiSelect.json"
+    ]
   },
   "dropdown/src/NativeDropdown.tsx": {
     "hash": "5367cc2a4915cfff6d0dac7b5ec444d8",
-    "outputs": ["NativeDropdown.json"]
+    "outputs": [
+      "NativeDropdown.json"
+    ]
   },
   "dropdown/src/SearchableDropdown.tsx": {
     "hash": "0aa4a0fe4e46809e03c4a1aff8afad47",
-    "outputs": ["SearchableDropdown.json"]
+    "outputs": [
+      "SearchableDropdown.json"
+    ]
   },
   "dropdown/src/components/DropdownList.tsx": {
     "hash": "dd365c2f20ab387844116a185704f9d0",
-    "outputs": ["DropdownList.json"]
+    "outputs": [
+      "DropdownList.json"
+    ]
   },
   "dropdown/src/components/FieldComponents.tsx": {
     "hash": "94f66707c95e8562acc907301822dcf7",
@@ -189,227 +280,340 @@
   },
   "expand/src/Accordion.tsx": {
     "hash": "6d17912a34c68dabd4d94a8ac842397c",
-    "outputs": ["Accordion.json", "useAccordion.json"]
+    "outputs": [
+      "Accordion.json",
+      "useAccordion.json"
+    ]
   },
   "expand/src/AccordionItem.tsx": {
     "hash": "d68b727bf5fd174e36ebc9c861dff533",
-    "outputs": ["AccordionItem.json"]
+    "outputs": [
+      "AccordionItem.json"
+    ]
   },
   "expand/src/BaseExpand.tsx": {
     "hash": "7d9f895edec123f4f4e84d2718a2dd71",
-    "outputs": ["BaseExpand.json"]
+    "outputs": [
+      "BaseExpand.json"
+    ]
   },
   "expand/src/BaseExpandablePanel.tsx": {
     "hash": "5e7fb08d5b976755f46f34ceb553c5a1",
-    "outputs": ["BaseExpandablePanel.json"]
+    "outputs": [
+      "BaseExpandablePanel.json"
+    ]
   },
   "expand/src/ExpandArrow.tsx": {
     "hash": "5fb92e6121b3dac0593da2ce2ae42236",
-    "outputs": ["ExpandArrow.json"]
+    "outputs": [
+      "ExpandArrow.json"
+    ]
   },
   "expand/src/ExpandablePanel.tsx": {
     "hash": "d4a41b8ec09d7a3f06e55aca78ce6d9f",
-    "outputs": ["ExpandablePanel.json"]
+    "outputs": [
+      "ExpandablePanel.json"
+    ]
   },
   "expand/src/ExpandableText.tsx": {
     "hash": "7bacaa371cc85c97957dde7c26824b4c",
-    "outputs": ["ExpandableText.json"]
+    "outputs": [
+      "ExpandableText.json"
+    ]
   },
   "expand/src/ExpandableTextButton.tsx": {
     "hash": "7c3e42fdbc5e087f97ecc213b01fbc02",
-    "outputs": ["ExpandableTextButton.json"]
+    "outputs": [
+      "ExpandableTextButton.json"
+    ]
   },
   "fileupload/src/FileUpload.tsx": {
     "hash": "0887f937fc1159f44fa0bc40d3533353",
-    "outputs": ["FileUpload.json"]
+    "outputs": [
+      "FileUpload.json"
+    ]
   },
   "form/src/BaseFormControl.tsx": {
     "hash": "53de9b3c4146482ced3c73028d98c77a",
-    "outputs": ["BaseFormControl.json"]
+    "outputs": [
+      "BaseFormControl.json"
+    ]
   },
   "form/src/Checkbox.tsx": {
     "hash": "132e2efeb6cef7c196eb7287c7063538",
-    "outputs": ["Checkbox.json"]
+    "outputs": [
+      "Checkbox.json"
+    ]
   },
   "form/src/FeedbackText.tsx": {
     "hash": "a57b788b7912f9a4a753ec515eaebd6e",
-    "outputs": ["FeedbackText.json"]
+    "outputs": [
+      "FeedbackText.json"
+    ]
   },
   "form/src/Fieldset.tsx": {
     "hash": "fbfbf7e0f5edafb04a107c4da0e540ad",
-    "outputs": ["Fieldset.json"]
+    "outputs": [
+      "Fieldset.json"
+    ]
   },
   "form/src/InputGroupContext.tsx": {
     "hash": "6d928a556ce594d1eea383b07f5e1333",
-    "outputs": ["InputGroupContextProvider.json"]
+    "outputs": [
+      "InputGroupContextProvider.json"
+    ]
   },
   "form/src/InputGroupLabel.tsx": {
     "hash": "8fb256dbd46419180a8294182cb38ff4",
-    "outputs": ["InputGroupLabel.json"]
+    "outputs": [
+      "InputGroupLabel.json"
+    ]
   },
   "form/src/Radio.tsx": {
     "hash": "c51389fe61d6207532cd244effab8a13",
-    "outputs": ["Radio.json"]
+    "outputs": [
+      "Radio.json"
+    ]
   },
   "form/src/RadioGroup.tsx": {
     "hash": "8cdaeaa1394ea50656ec43e816f2b624",
-    "outputs": ["RadioGroup.json"]
+    "outputs": [
+      "RadioGroup.json"
+    ]
   },
   "form/src/RadioGroupContext.tsx": {
     "hash": "93329379d41aa9905be27dca131c4bd3",
-    "outputs": ["RadioGroupContextProvider.json"]
+    "outputs": [
+      "RadioGroupContextProvider.json"
+    ]
   },
   "form/src/Switch.tsx": {
     "hash": "716d0864ffda4d33121d22ec5cb209f0",
-    "outputs": ["Switch.json"]
+    "outputs": [
+      "Switch.json"
+    ]
   },
   "form/src/TextArea.tsx": {
     "hash": "40d513676525e54841b398e9b5a7d77e",
-    "outputs": ["TextArea.json"]
+    "outputs": [
+      "TextArea.json"
+    ]
   },
   "form/src/TextField.tsx": {
     "hash": "051f8aa2971cf3d7267f149f17286963",
-    "outputs": ["TextField.json"]
+    "outputs": [
+      "TextField.json"
+    ]
   },
   "form/src/VariantProvider.tsx": {
     "hash": "6dc1961a011929cbe0f9fa996192c8ea",
-    "outputs": ["VariantProvider.json"]
+    "outputs": [
+      "VariantProvider.json"
+    ]
   },
   "form/src/inputPanel/CheckboxPanel.tsx": {
-    "hash": "dddaddecae7c0c790cbf3abfa798d2ca",
-    "outputs": ["CheckboxPanel.json"]
+    "hash": "fd0f0f6b4a1142ac95891ebf5ed46001",
+    "outputs": [
+      "CheckboxPanel.json"
+    ]
   },
   "form/src/inputPanel/InputPanelBase.tsx": {
-    "hash": "9383a392e88b11f997f675d4f466889f",
-    "outputs": ["InputPanelBase.json"]
+    "hash": "39d08671381d3cc898932c1206cd2bc7",
+    "outputs": [
+      "InputPanelBase.json"
+    ]
   },
   "form/src/inputPanel/RadioPanel.tsx": {
-    "hash": "3b75107e00686ec084f7af3b3ab101fb",
-    "outputs": ["RadioPanel.json"]
+    "hash": "4cfca082e5f5e1739fe1db69645fe183",
+    "outputs": [
+      "RadioPanel.json"
+    ]
   },
   "form/src/segmentedControl/SegmentedChoice.tsx": {
     "hash": "73020f5c733d65db4d72156884b67eef",
-    "outputs": ["SegmentedChoice.json"]
+    "outputs": [
+      "SegmentedChoice.json"
+    ]
   },
   "form/src/segmentedControl/SegmentedControl.tsx": {
     "hash": "6e93b6a58b5df72724e9fe8e4c015413",
-    "outputs": ["SegmentedControl.json"]
+    "outputs": [
+      "SegmentedControl.json"
+    ]
   },
   "grid/src/BaseGrid.tsx": {
     "hash": "f3956095517b644e2c75d8addee06964",
-    "outputs": ["BaseGrid.json"]
+    "outputs": [
+      "BaseGrid.json"
+    ]
   },
   "grid/src/GridContainer.tsx": {
     "hash": "857dcb020a6b8cb2d03b919a4a6d6f7a",
-    "outputs": ["GridContainer.json"]
+    "outputs": [
+      "GridContainer.json"
+    ]
   },
   "grid/src/GridItem.tsx": {
     "hash": "5435d0d7ae02683c6900185576626cdd",
-    "outputs": ["GridItem.json"]
+    "outputs": [
+      "GridItem.json"
+    ]
   },
   "layout/src/Badge/Badge.tsx": {
     "hash": "5cf0ab9623c17561b2b3ecd0e03d8366",
-    "outputs": ["Badge.json"]
+    "outputs": [
+      "Badge.json"
+    ]
   },
   "layout/src/Badge/BulletBadge.tsx": {
     "hash": "3044f6252ce7f4f087e87c11b8f756bb",
-    "outputs": ["BulletBadge.json"]
+    "outputs": [
+      "BulletBadge.json"
+    ]
   },
   "layout/src/Badge/NotificationBadge.tsx": {
     "hash": "2de0230071bb9fe12740bcf78b6cc6cb",
-    "outputs": ["NotificationBadge.json"]
+    "outputs": [
+      "NotificationBadge.json"
+    ]
   },
   "layout/src/Badge/StatusBadge.tsx": {
     "hash": "99290363adec94d6df8d476ecdf6f677",
-    "outputs": ["StatusBadge.json"]
+    "outputs": [
+      "StatusBadge.json"
+    ]
   },
   "layout/src/BaseCard.tsx": {
     "hash": "546a518ff6285d390a9f681bdb68be4c",
-    "outputs": ["BaseCard.json"]
+    "outputs": [
+      "BaseCard.json"
+    ]
   },
   "layout/src/Contrast.tsx": {
     "hash": "8bed9c5452e0f2337275ba1c042becb2",
-    "outputs": ["Contrast.json"]
+    "outputs": [
+      "Contrast.json"
+    ]
   },
   "layout/src/MediaCard.tsx": {
     "hash": "9d8ef8b8d9a5bba061eae3e873e82184",
-    "outputs": ["MediaCard.json"]
+    "outputs": [
+      "MediaCard.json"
+    ]
   },
   "layout/src/NavigationCard.tsx": {
     "hash": "0e466e41037e7a2a93ed48d40ee97940",
-    "outputs": ["NavigationCard.json"]
+    "outputs": [
+      "NavigationCard.json"
+    ]
   },
   "layout/src/Tag.tsx": {
     "hash": "63d732f6f217381798126e234d6f2dda",
-    "outputs": ["Tag.json"]
+    "outputs": [
+      "Tag.json"
+    ]
   },
   "layout/src/beta/Flex/Flex.tsx": {
     "hash": "db996c0330db513f7ee923ecd7fcfc19",
-    "outputs": ["Flex.json"]
+    "outputs": [
+      "Flex.json"
+    ]
   },
   "layout/src/beta/Flex/FlexSpacer.tsx": {
     "hash": "d91467b79b4833bfe886daf560c472b3",
-    "outputs": ["FlexSpacer.json"]
+    "outputs": [
+      "FlexSpacer.json"
+    ]
   },
   "layout/src/beta/Grid/Grid.tsx": {
     "hash": "6aee34dcc276fcdd9b803aa8a97d0c78",
-    "outputs": ["Grid.json"]
+    "outputs": [
+      "Grid.json"
+    ]
   },
   "layout/src/beta/Grid/GridItem.tsx": {
     "hash": "f8b5944317bef6abe334c87aa91d6ec4",
-    "outputs": ["GridItem.json"]
+    "outputs": [
+      "GridItem.json"
+    ]
   },
   "layout/src/beta/LayoutProvider/LayoutProvider.tsx": {
     "hash": "693792318fe331399c1e6c0ee284e49d",
-    "outputs": ["LayoutProvider.json"]
+    "outputs": [
+      "LayoutProvider.json"
+    ]
   },
   "layout/src/beta/templates/Sidebar.tsx": {
     "hash": "d0b810a2805ef35c3375b19d44bec48e",
-    "outputs": ["Template.Portal.Sidebar.json"]
+    "outputs": [
+      "Template.Portal.Sidebar.json"
+    ]
   },
   "layout/src/beta/templates/portal/Portal.tsx": {
     "hash": "125ef2b72e9369e093b1bd26b855d986",
-    "outputs": ["Template.Portal.json"]
+    "outputs": [
+      "Template.Portal.json"
+    ]
   },
   "loader/src/BaseSkeleton.tsx": {
     "hash": "59e92469603fde4d4c6127a8a994b7e3",
-    "outputs": ["BaseSkeleton.json"]
+    "outputs": [
+      "BaseSkeleton.json"
+    ]
   },
   "loader/src/Loader.tsx": {
     "hash": "1ddc5eda50ccacead300f0564c2f4725",
-    "outputs": ["Loader.json"]
+    "outputs": [
+      "Loader.json"
+    ]
   },
   "loader/src/LoadingDots.tsx": {
     "hash": "97d4ecdda90aee2683b84ad2f6eb1370",
-    "outputs": ["LoadingDots.json"]
+    "outputs": [
+      "LoadingDots.json"
+    ]
   },
   "loader/src/SkeletonCircle.tsx": {
     "hash": "7917235ee4d80500e0d966b2d5f0588d",
-    "outputs": ["SkeletonCircle.json"]
+    "outputs": [
+      "SkeletonCircle.json"
+    ]
   },
   "loader/src/SkeletonRectangle.tsx": {
     "hash": "462e6e73a85d2ccfed9f7d9b9f971047",
-    "outputs": ["SkeletonRectangle.json"]
+    "outputs": [
+      "SkeletonRectangle.json"
+    ]
   },
   "loader/src/SkeletonWrapper.tsx": {
     "hash": "d7aade82f3bb53c14b07f4dfc792aee1",
-    "outputs": ["SkeletonWrapper.json"]
+    "outputs": [
+      "SkeletonWrapper.json"
+    ]
   },
   "loader/src/Spinner.tsx": {
     "hash": "60bbc1630ab5d5e02db5caad15cfeec7",
-    "outputs": ["Spinner.json"]
+    "outputs": [
+      "Spinner.json"
+    ]
   },
   "menu/src/BreadcrumbItem.tsx": {
     "hash": "a0ab55ce274859eb95c42671bc25075a",
-    "outputs": ["BreadcrumbItem.json"]
+    "outputs": [
+      "BreadcrumbItem.json"
+    ]
   },
   "menu/src/BreadcrumbNavigation.tsx": {
     "hash": "f2b58001b4401ff558d488197abf6383",
-    "outputs": ["BreadcrumbNavigation.json"]
+    "outputs": [
+      "BreadcrumbNavigation.json"
+    ]
   },
   "menu/src/CollapsibleSideNavigation.tsx": {
     "hash": "d81f586a3e506fb8e966aee3d6bca3a6",
-    "outputs": ["CollapsibleSideNavigation.json"]
+    "outputs": [
+      "CollapsibleSideNavigation.json"
+    ]
   },
   "menu/src/OverflowMenu.tsx": {
     "hash": "72489aa68523320adcee54227e27b98a",
@@ -421,111 +625,165 @@
   },
   "menu/src/Pagination.tsx": {
     "hash": "2e714c012a442aad099f283de19163f4",
-    "outputs": ["Pagination.json"]
+    "outputs": [
+      "Pagination.json"
+    ]
   },
   "menu/src/PaginationInput.tsx": {
     "hash": "9231088ff7a3af082c119848d0378c2d",
-    "outputs": ["PaginationInput.json"]
+    "outputs": [
+      "PaginationInput.json"
+    ]
   },
   "menu/src/PaginationPage.tsx": {
     "hash": "20b0471767e2c865fa56bad25522681b",
-    "outputs": ["PaginationPage.json"]
+    "outputs": [
+      "PaginationPage.json"
+    ]
   },
   "menu/src/SideNavigation.tsx": {
     "hash": "d1f2fc7b2290e74a4d43038ff72e9221",
-    "outputs": ["SideNavigation.json"]
+    "outputs": [
+      "SideNavigation.json"
+    ]
   },
   "menu/src/SideNavigationGroup.tsx": {
     "hash": "09cbbc0d650517d3139e7971dc1770b3",
-    "outputs": ["SideNavigationGroup.json"]
+    "outputs": [
+      "SideNavigationGroup.json"
+    ]
   },
   "menu/src/SideNavigationItem.tsx": {
     "hash": "280526cfea86790ec7a2b83e32131ac3",
-    "outputs": ["SideNavigationItem.json"]
+    "outputs": [
+      "SideNavigationItem.json"
+    ]
   },
   "menu/src/Stepper.tsx": {
     "hash": "a27e70f7234006e7d519a84721d8eb00",
-    "outputs": ["Stepper.json"]
+    "outputs": [
+      "Stepper.json"
+    ]
   },
   "menu/src/TopNavigationItem.tsx": {
     "hash": "cc015eb43fe5aea084269f1a68e5af50",
-    "outputs": ["TopNavigationItem.json"]
+    "outputs": [
+      "TopNavigationItem.json"
+    ]
   },
   "modal/src/Drawer.tsx": {
     "hash": "452f58123c7627b933c2c96ac8c15ddb",
-    "outputs": ["Drawer.json"]
+    "outputs": [
+      "Drawer.json"
+    ]
   },
   "modal/src/Modal.tsx": {
     "hash": "92f3c041256f7f26be78a45a0a54c663",
-    "outputs": ["Modal.json"]
+    "outputs": [
+      "Modal.json"
+    ]
   },
   "modal/src/ModalContent.tsx": {
     "hash": "99d3fd61ba0e2bf4a0f60283e69f0c1f",
-    "outputs": ["ModalContent.json"]
+    "outputs": [
+      "ModalContent.json"
+    ]
   },
   "modal/src/ModalOverlay.tsx": {
     "hash": "003739c04ed64cad52ab6234a5bf89b5",
-    "outputs": ["ModalOverlay.json"]
+    "outputs": [
+      "ModalOverlay.json"
+    ]
   },
   "tab/src/Tab.tsx": {
     "hash": "8f8ddaeb9140c4d69b2bd0496b9b7ad7",
-    "outputs": ["Tab.json"]
+    "outputs": [
+      "Tab.json"
+    ]
   },
   "tab/src/TabList.tsx": {
     "hash": "11e1585f95720eceaba28b31f0786fed",
-    "outputs": ["TabList.json"]
+    "outputs": [
+      "TabList.json"
+    ]
   },
   "tab/src/TabPanel.tsx": {
     "hash": "a2fa74a20bea62d832da75e34849555a",
-    "outputs": ["TabPanel.json"]
+    "outputs": [
+      "TabPanel.json"
+    ]
   },
   "tab/src/TabPanels.tsx": {
     "hash": "ff820c25aeca3efb5831d242a484933e",
-    "outputs": ["TabPanels.json"]
+    "outputs": [
+      "TabPanels.json"
+    ]
   },
   "tab/src/Tabs.tsx": {
     "hash": "9b42b5b4c5f5d79b9a9e844947e5856a",
-    "outputs": ["Tabs.json"]
+    "outputs": [
+      "Tabs.json"
+    ]
   },
   "table/src/DataCell.tsx": {
     "hash": "b5a8ef53aafea36422b69a39f0e21517",
-    "outputs": ["DataCell.json"]
+    "outputs": [
+      "DataCell.json"
+    ]
   },
   "table/src/EditableCell.tsx": {
     "hash": "c511e142554bbabc5574e508b64b1fba",
-    "outputs": ["EditableCell.json"]
+    "outputs": [
+      "EditableCell.json"
+    ]
   },
   "table/src/ExpandRowButton.tsx": {
     "hash": "86d28271940b88bf7510cb06b9cf8df4",
-    "outputs": ["ExpandRowButton.json"]
+    "outputs": [
+      "ExpandRowButton.json"
+    ]
   },
   "table/src/ExpandableRow.tsx": {
     "hash": "8acaa401db783fc73130a34b30dfa54c",
-    "outputs": ["ExpandableRow.json"]
+    "outputs": [
+      "ExpandableRow.json"
+    ]
   },
   "table/src/HeaderCell.tsx": {
     "hash": "14308830bbd82e8dbf3662b6d4076571",
-    "outputs": ["HeaderCell.json"]
+    "outputs": [
+      "HeaderCell.json"
+    ]
   },
   "table/src/Table.tsx": {
     "hash": "cfe9ec6ee2aee54135495721bae816ba",
-    "outputs": ["Table.json"]
+    "outputs": [
+      "Table.json"
+    ]
   },
   "table/src/TableBody.tsx": {
     "hash": "309156719ff36f596dbb500221bea9f2",
-    "outputs": ["TableBody.json"]
+    "outputs": [
+      "TableBody.json"
+    ]
   },
   "table/src/TableFooter.tsx": {
     "hash": "df7a19fd43c34c158f59246152dc9571",
-    "outputs": ["TableFooter.json"]
+    "outputs": [
+      "TableFooter.json"
+    ]
   },
   "table/src/TableHead.tsx": {
     "hash": "3d3c7f385b292b5c7794cd806a5faaaa",
-    "outputs": ["TableHead.json"]
+    "outputs": [
+      "TableHead.json"
+    ]
   },
   "table/src/TableRow.tsx": {
     "hash": "6c4beb0c5287f16d8406ca9fbe4e5b47",
-    "outputs": ["TableRow.json"]
+    "outputs": [
+      "TableRow.json"
+    ]
   },
   "tooltip/src/Popover.tsx": {
     "hash": "fa5ad3d5a8daef2e412d2e5c194bbbb5",
@@ -538,151 +796,227 @@
   },
   "tooltip/src/Tooltip.tsx": {
     "hash": "3acd9f04a6726e067c39e488f8f3296a",
-    "outputs": ["Tooltip.json"]
+    "outputs": [
+      "Tooltip.json"
+    ]
   },
   "travel/src/LegBone.tsx": {
     "hash": "0cbf3f8ca9d16c7563914cb8bd1358b2",
-    "outputs": ["LegBone.json"]
+    "outputs": [
+      "LegBone.json"
+    ]
   },
   "travel/src/LegLine.tsx": {
     "hash": "f414faefb8ec3a877b68927f32b35a55",
-    "outputs": ["LegLine.json"]
+    "outputs": [
+      "LegLine.json"
+    ]
   },
   "travel/src/TravelHeader.tsx": {
     "hash": "acee5f6c77b8bd71b9ef38a412a011d3",
-    "outputs": ["TravelHeader.json"]
+    "outputs": [
+      "TravelHeader.json"
+    ]
   },
   "travel/src/TravelLeg.tsx": {
     "hash": "597203b2a4668f89e24a219eab20f93c",
-    "outputs": ["TravelLeg.json"]
+    "outputs": [
+      "TravelLeg.json"
+    ]
   },
   "travel/src/TravelSwitch.tsx": {
     "hash": "c4e329bed0fd9fd8239ae57277617666",
-    "outputs": ["TravelSwitch.json"]
+    "outputs": [
+      "TravelSwitch.json"
+    ]
   },
   "travel/src/TravelTag.tsx": {
     "hash": "d8457b505a420e9cac5461c8311b7bc2",
-    "outputs": ["TravelTag.json"]
+    "outputs": [
+      "TravelTag.json"
+    ]
   },
   "typography/src/BaseHeading.tsx": {
     "hash": "d5eeb474d1ecc1b3877f75abf1922779",
-    "outputs": ["BaseHeading.json"]
+    "outputs": [
+      "BaseHeading.json"
+    ]
   },
   "typography/src/Blockquote.tsx": {
     "hash": "b691784d7e82a157dfe256eb4e84e9df",
-    "outputs": ["Blockquote.json", "BlockquoteFooter.json"]
+    "outputs": [
+      "Blockquote.json",
+      "BlockquoteFooter.json"
+    ]
   },
   "typography/src/CodeText.tsx": {
     "hash": "dea2bc525dea839a2f5cdbb21a62b679",
-    "outputs": ["CodeText.json"]
+    "outputs": [
+      "CodeText.json"
+    ]
   },
   "typography/src/EmphasizedText.tsx": {
     "hash": "743bcf9e41faaf02c45928c8d4762d49",
-    "outputs": ["EmphasizedText.json"]
+    "outputs": [
+      "EmphasizedText.json"
+    ]
   },
   "typography/src/Heading1.tsx": {
     "hash": "b857d2871761b5bb1abd42a08f6a0142",
-    "outputs": ["Heading1.json"]
+    "outputs": [
+      "Heading1.json"
+    ]
   },
   "typography/src/Heading2.tsx": {
     "hash": "2850ceaca808b7deb30ceecfc59b318f",
-    "outputs": ["Heading2.json"]
+    "outputs": [
+      "Heading2.json"
+    ]
   },
   "typography/src/Heading3.tsx": {
     "hash": "f4d1dfa91d656eca60a8829407e1645d",
-    "outputs": ["Heading3.json"]
+    "outputs": [
+      "Heading3.json"
+    ]
   },
   "typography/src/Heading4.tsx": {
     "hash": "9396af97432abfbd05735bbb7833aeee",
-    "outputs": ["Heading4.json"]
+    "outputs": [
+      "Heading4.json"
+    ]
   },
   "typography/src/Heading5.tsx": {
     "hash": "6414f8808c4e50195573dbb1c33a9ab7",
-    "outputs": ["Heading5.json"]
+    "outputs": [
+      "Heading5.json"
+    ]
   },
   "typography/src/Heading6.tsx": {
     "hash": "c9edf5033947bfa9edadb0e39deab1be",
-    "outputs": ["Heading6.json"]
+    "outputs": [
+      "Heading6.json"
+    ]
   },
   "typography/src/Label.tsx": {
     "hash": "b215399f6fd37fb68f4840e54ced68b5",
-    "outputs": ["Label.json"]
+    "outputs": [
+      "Label.json"
+    ]
   },
   "typography/src/LeadParagraph.tsx": {
     "hash": "dd5dd5041ef34e170357cac86e8bf3cc",
-    "outputs": ["LeadParagraph.json"]
+    "outputs": [
+      "LeadParagraph.json"
+    ]
   },
   "typography/src/Link.tsx": {
     "hash": "e7f0008fdc14bfe085b5f5cc04f0e5e0",
-    "outputs": ["Link.json"]
+    "outputs": [
+      "Link.json"
+    ]
   },
   "typography/src/ListItem.tsx": {
     "hash": "79d53b0da6d4dd8e7fd3b16ed54959e5",
-    "outputs": ["ListItem.json"]
+    "outputs": [
+      "ListItem.json"
+    ]
   },
   "typography/src/NumberedList.tsx": {
     "hash": "a4d0d2bd4ee3848392416bd544c51a4a",
-    "outputs": ["NumberedList.json"]
+    "outputs": [
+      "NumberedList.json"
+    ]
   },
   "typography/src/Paragraph.tsx": {
     "hash": "838ea02cb33d26394b1342694e6ea869",
-    "outputs": ["Paragraph.json"]
+    "outputs": [
+      "Paragraph.json"
+    ]
   },
   "typography/src/PreformattedText.tsx": {
     "hash": "3c59b3b2dd65a9845ea3ab2f76e2f05e",
-    "outputs": ["PreformattedText.json"]
+    "outputs": [
+      "PreformattedText.json"
+    ]
   },
   "typography/src/SmallText.tsx": {
     "hash": "b66b42f035a564d900811d6add1256a0",
-    "outputs": ["SmallText.json"]
+    "outputs": [
+      "SmallText.json"
+    ]
   },
   "typography/src/StrongText.tsx": {
     "hash": "3980363822ecdd830a21bd235d926e2c",
-    "outputs": ["StrongText.json"]
+    "outputs": [
+      "StrongText.json"
+    ]
   },
   "typography/src/SubLabel.tsx": {
     "hash": "76e8489b534b276fcfd235d5fa4bdcb4",
-    "outputs": ["SubLabel.json"]
+    "outputs": [
+      "SubLabel.json"
+    ]
   },
   "typography/src/SubParagraph.tsx": {
     "hash": "dd73a539c6dc77a8e16b97947be1d107",
-    "outputs": ["SubParagraph.json"]
+    "outputs": [
+      "SubParagraph.json"
+    ]
   },
   "typography/src/UnorderedList.tsx": {
     "hash": "3ac8ae832c948b0875e92828723a0f13",
-    "outputs": ["UnorderedList.json"]
+    "outputs": [
+      "UnorderedList.json"
+    ]
   },
   "typography/src/beta/components/Blockquote.tsx": {
     "hash": "66d2bc869d35ca6da0886b0734a070f7",
-    "outputs": ["Blockquote.json", "BlockquoteFooter.json"]
+    "outputs": [
+      "Blockquote.json",
+      "BlockquoteFooter.json"
+    ]
   },
   "typography/src/beta/components/Heading.tsx": {
-    "hash": "06b826fa8f28422ef2fb09b8ff95321f",
-    "outputs": ["Heading.json"]
+    "hash": "63b1ed4a82bd624a40332a0bde821049",
+    "outputs": [
+      "Heading.json"
+    ]
   },
   "typography/src/beta/components/Link.tsx": {
-    "hash": "1ab60ad3b54b9dd613482373359d2aee",
-    "outputs": ["Link.json"]
+    "hash": "5c571d9eadc661d02232c7a79e7ce392",
+    "outputs": [
+      "Link.json"
+    ]
   },
   "typography/src/beta/components/ListItem.tsx": {
-    "hash": "c6e7879312377a973e0cd5d8866c7008",
-    "outputs": ["ListItem.json"]
+    "hash": "c81fb69f03495e72dd3ebde5bc38f40e",
+    "outputs": [
+      "ListItem.json"
+    ]
   },
   "typography/src/beta/components/NumberedList.tsx": {
-    "hash": "5638999c64e29c19345adcf626f93d1f",
-    "outputs": ["NumberedList.json"]
+    "hash": "9ac611d804832a7be126e40e9afdbec7",
+    "outputs": [
+      "NumberedList.json"
+    ]
   },
   "typography/src/beta/components/Text.tsx": {
-    "hash": "11e1fd38c76eb4a44bb79bf37fe74a13",
-    "outputs": ["Text.json"]
+    "hash": "8cd39703952c87013f81e8ecf59a8eb3",
+    "outputs": [
+      "Text.json"
+    ]
   },
   "typography/src/beta/components/UnorderedList.tsx": {
-    "hash": "4a969c3d22190d08d5c4ce8024024c48",
-    "outputs": ["UnorderedList.json"]
+    "hash": "ba497f4d4aa308ceb6a881a8e5ef9c49",
+    "outputs": [
+      "UnorderedList.json"
+    ]
   },
   "utils/src/ConditionalWrapper.tsx": {
     "hash": "c5a232b1a25f41b7ec21f9ee23daf2ee",
-    "outputs": ["ConditionalWrapper.json"]
+    "outputs": [
+      "ConditionalWrapper.json"
+    ]
   },
   "utils/src/PolymorphicComponent.tsx": {
     "hash": "c98a4c8755ceb1b523f93006e5d8039f",
@@ -690,19 +1024,27 @@
   },
   "menu/src/Logo.tsx": {
     "hash": "172752e48291101e8bea678d53c97aeb",
-    "outputs": ["Logo.json"]
+    "outputs": [
+      "Logo.json"
+    ]
   },
   "datepicker/src/DatePicker/RangeCalendar.tsx": {
     "hash": "37d71e60202548caa477f60ab820e18e",
-    "outputs": ["RangeCalendar.json"]
+    "outputs": [
+      "RangeCalendar.json"
+    ]
   },
   "datepicker/src/DatePicker/RangeCalendarCell.tsx": {
     "hash": "78028597a1b5a58cbdb00672075cfdf3",
-    "outputs": ["RangeCalendarCell.json"]
+    "outputs": [
+      "RangeCalendarCell.json"
+    ]
   },
   "datepicker/src/DatePicker/CalendarBase.tsx": {
     "hash": "b1efaa23aaaec28b5f4512c20ca08896",
-    "outputs": ["CalendarBase.json"]
+    "outputs": [
+      "CalendarBase.json"
+    ]
   },
   "tab/src/TabsContext.tsx": {
     "hash": "07c14a92c97deccf0daff99c9bf5a2e8",
@@ -710,22 +1052,44 @@
   },
   "menu/src/beta/SideNavigation/SideNavigation.tsx": {
     "hash": "93dbaf58ad45b930463460ab2e5a21f7",
-    "outputs": ["SideNavigationBeta.json"]
+    "outputs": [
+      "SideNavigationBeta.json"
+    ]
   },
   "menu/src/beta/SideNavigation/SideNavigationExpandableItem.tsx": {
     "hash": "a54ca5f1939b0642caae9d25bac47e65",
-    "outputs": ["SideNavigationBeta.ExpandableItem.json"]
+    "outputs": [
+      "SideNavigationBeta.ExpandableItem.json"
+    ]
   },
   "menu/src/beta/SideNavigation/SideNavigationGroup.tsx": {
     "hash": "3b1754c5d86674683a7873f67b7f60b5",
-    "outputs": ["SideNavigationBeta.Group.json"]
+    "outputs": [
+      "SideNavigationBeta.Group.json"
+    ]
   },
   "menu/src/beta/SideNavigation/SideNavigationItem.tsx": {
     "hash": "4116c415fb61e4e19db1e3e04e56aad9",
-    "outputs": ["SideNavigationBeta.Item.json"]
+    "outputs": [
+      "SideNavigationBeta.Item.json"
+    ]
   },
   "menu/src/beta/SideNavigation/SideNavigationItemContent.tsx": {
     "hash": "c886416046368aef63aee8ee7b935275",
-    "outputs": ["SideNavigationBeta.ItemContent.json"]
+    "outputs": [
+      "SideNavigationBeta.ItemContent.json"
+    ]
+  },
+  "typography/src/beta/components/Label.tsx": {
+    "hash": "10a5ff61065062f94ed2383fc3228904",
+    "outputs": [
+      "Label.json"
+    ]
+  },
+  "typography/src/beta/components/TextContainer.tsx": {
+    "hash": "1e239e7be1bec1f1d8bfab545354d840",
+    "outputs": [
+      "TextContainer.json"
+    ]
   }
 }
