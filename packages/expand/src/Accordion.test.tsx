@@ -1,74 +1,85 @@
-import { act, fireEvent, render } from '@testing-library/react';
+import { createRef } from 'react';
+import { render, screen } from '@testing-library/react';
 import { Accordion, AccordionItem } from '.';
+import {
+  runAllTimers,
+  setupUserWithFakeTimers,
+  useFakeTimersInSuite,
+} from '../../../tests/jest/fakeTimers';
+import {
+  expectCollapsed,
+  expectExpanded,
+  getControlledElement,
+} from '../../../tests/jest/disclosure';
 
-jest.useFakeTimers();
+useFakeTimersInSuite();
 
-afterEach(() => {
-  jest.clearAllTimers();
-});
-
-afterAll(() => {
-  jest.useRealTimers();
-});
-
-test('renders a single accordion item', () => {
-  const { getByRole, queryByText } = render(
+test('renders a single accordion item', async () => {
+  const user = setupUserWithFakeTimers();
+  const { getByRole, getByText } = render(
     <Accordion>
       <AccordionItem title="Trains">Trains go choo choo</AccordionItem>
     </Accordion>,
   );
 
   // Default unmountOnClose=false: content in DOM but hidden
-  const content = queryByText('Trains go choo choo');
-  expect(content).toBeInTheDocument();
-  expect(content!.closest('.eds-base-expand')).toHaveAttribute(
-    'aria-hidden',
-    'true',
-  );
+  const content = getByText('Trains go choo choo');
+  expectCollapsed(content);
 
-  fireEvent.click(getByRole('button', { name: 'Trains' }));
-  act(() => {
-    jest.runAllTimers();
-  });
+  const trigger = getByRole('button', { name: 'Trains' });
+  const contentId = trigger.getAttribute('aria-controls')!;
+  expect(getControlledElement(trigger)).toContainElement(content);
+  expect(trigger).toHaveAttribute('aria-expanded', 'false');
+  await user.tab();
+  expect(trigger).toHaveFocus();
+  await user.keyboard('{Enter}');
+  runAllTimers();
 
-  expect(content!.closest('.eds-base-expand')).not.toHaveAttribute(
-    'aria-hidden',
-  );
+  expectExpanded(content);
+  expect(trigger).toHaveAttribute('aria-expanded', 'true');
+  expect(trigger).toHaveAttribute('aria-controls', contentId);
 
-  fireEvent.click(getByRole('button', { name: 'Trains' }));
+  await user.keyboard(' ');
 
-  expect(content!.closest('.eds-base-expand')).toHaveAttribute(
-    'aria-hidden',
-    'true',
-  );
+  expect(trigger).toHaveFocus();
+  expect(trigger).toHaveAttribute('aria-expanded', 'false');
+  expectCollapsed(content);
 });
 
-test('makes collapsed content inert', () => {
-  const { getByRole, queryByText } = render(
+test('makes collapsed content inert and preserves input state', async () => {
+  const user = setupUserWithFakeTimers();
+  const { getByRole, getByText } = render(
     <Accordion>
       <AccordionItem title="Trains">
         <button type="button">Buy ticket</button>
+        <input aria-label="Passenger" />
       </AccordionItem>
     </Accordion>,
   );
 
-  const content = queryByText('Buy ticket')!.closest('.eds-base-expand');
-  expect(content).toHaveAttribute('inert');
+  const content = getByText('Buy ticket');
+  expectCollapsed(content);
 
-  fireEvent.click(getByRole('button', { name: 'Trains' }));
-  act(() => {
-    jest.runAllTimers();
-  });
+  await user.click(getByRole('button', { name: 'Trains' }));
+  runAllTimers();
 
-  expect(content).not.toHaveAttribute('inert');
+  expectExpanded(content);
+  const input = getByRole('textbox', { name: 'Passenger' });
+  await user.type(input, 'Ada');
 
-  fireEvent.click(getByRole('button', { name: 'Trains' }));
+  await user.click(getByRole('button', { name: 'Trains' }));
 
-  expect(content).toHaveAttribute('inert');
+  expectCollapsed(content);
+  expect(input).toBeInTheDocument();
+  await user.click(getByRole('button', { name: 'Trains' }));
+  runAllTimers();
+  expect(getByRole('textbox', { name: 'Passenger' })).toBe(input);
+  expect(input).toHaveValue('Ada');
 });
 
-test('renders a group of accordion items that can be opened and closed', () => {
-  const { getByRole, queryByText } = render(
+test('renders a group of accordion items that can be opened and closed', async () => {
+  const user = setupUserWithFakeTimers();
+  const { getByRole, getByText } = render(
     <Accordion>
       <AccordionItem title="Trains">Trains go choo choo</AccordionItem>
       <AccordionItem title="Boats">Boats float</AccordionItem>
@@ -76,118 +87,83 @@ test('renders a group of accordion items that can be opened and closed', () => {
     </Accordion>,
   );
 
-  const trains = queryByText('Trains go choo choo')!;
-  const boats = queryByText('Boats float')!;
-  const buses = queryByText('Buses go vroom vroom')!;
+  const trains = getByText('Trains go choo choo');
+  const boats = getByText('Boats float');
+  const buses = getByText('Buses go vroom vroom');
 
   // All closed initially
-  expect(trains.closest('.eds-base-expand')).toHaveAttribute(
-    'aria-hidden',
-    'true',
-  );
-  expect(boats.closest('.eds-base-expand')).toHaveAttribute(
-    'aria-hidden',
-    'true',
-  );
-  expect(buses.closest('.eds-base-expand')).toHaveAttribute(
-    'aria-hidden',
-    'true',
-  );
+  expectCollapsed(trains);
+  expectCollapsed(boats);
+  expectCollapsed(buses);
 
-  fireEvent.click(getByRole('button', { name: 'Boats' }));
-  act(() => {
-    jest.runAllTimers();
+  const triggers = ['Trains', 'Boats', 'Buses'].map(name =>
+    getByRole('button', { name }),
+  );
+  const ids = triggers.map(trigger => trigger.getAttribute('aria-controls'));
+  expect(new Set(ids).size).toBe(3);
+  [trains, boats, buses].forEach((content, index) => {
+    expect(document.getElementById(ids[index]!)).toContainElement(content);
   });
+  await user.click(getByRole('button', { name: 'Boats' }));
+  runAllTimers();
 
-  expect(trains.closest('.eds-base-expand')).toHaveAttribute(
-    'aria-hidden',
-    'true',
-  );
-  expect(boats.closest('.eds-base-expand')).not.toHaveAttribute('aria-hidden');
-  expect(buses.closest('.eds-base-expand')).toHaveAttribute(
-    'aria-hidden',
-    'true',
-  );
+  expectCollapsed(trains);
+  expectExpanded(boats);
+  expectCollapsed(buses);
 
-  fireEvent.click(getByRole('button', { name: 'Trains' }));
-  act(() => {
-    jest.runAllTimers();
-  });
+  await user.click(getByRole('button', { name: 'Trains' }));
+  runAllTimers();
 
-  expect(trains.closest('.eds-base-expand')).not.toHaveAttribute('aria-hidden');
-  expect(boats.closest('.eds-base-expand')).toHaveAttribute(
-    'aria-hidden',
-    'true',
-  );
-  expect(buses.closest('.eds-base-expand')).toHaveAttribute(
-    'aria-hidden',
-    'true',
-  );
+  expectExpanded(trains);
+  expectCollapsed(boats);
+  expectCollapsed(buses);
 
-  fireEvent.click(getByRole('button', { name: 'Trains' }));
+  await user.click(getByRole('button', { name: 'Trains' }));
 
-  expect(trains.closest('.eds-base-expand')).toHaveAttribute(
-    'aria-hidden',
-    'true',
-  );
-  expect(boats.closest('.eds-base-expand')).toHaveAttribute(
-    'aria-hidden',
-    'true',
-  );
-  expect(buses.closest('.eds-base-expand')).toHaveAttribute(
-    'aria-hidden',
-    'true',
-  );
+  expectCollapsed(trains);
+  expectCollapsed(boats);
+  expectCollapsed(buses);
 });
 
-test('works with the defaultOpen option', () => {
-  const { getByRole, queryByText } = render(
-    <Accordion>
+test('works with the defaultOpen option', async () => {
+  const user = setupUserWithFakeTimers();
+  const onToggle = jest.fn();
+  const { getByRole, getByText } = render(
+    <Accordion onToggle={onToggle}>
       <AccordionItem title="Trains" defaultOpen>
         Trains go choo choo
       </AccordionItem>
-      <AccordionItem title="Boats">Boats float</AccordionItem>
+      <AccordionItem title="Boats" id="boats">
+        Boats float
+      </AccordionItem>
       <AccordionItem title="Buses">Buses go vroom vroom</AccordionItem>
     </Accordion>,
   );
 
-  act(() => {
-    jest.runAllTimers();
-  });
+  runAllTimers();
 
-  const trains = queryByText('Trains go choo choo')!;
-  const boats = queryByText('Boats float')!;
-  const buses = queryByText('Buses go vroom vroom')!;
+  const trains = getByText('Trains go choo choo');
+  const boats = getByText('Boats float');
+  const buses = getByText('Buses go vroom vroom');
 
-  expect(trains.closest('.eds-base-expand')).not.toHaveAttribute('aria-hidden');
-  expect(boats.closest('.eds-base-expand')).toHaveAttribute(
-    'aria-hidden',
-    'true',
-  );
-  expect(buses.closest('.eds-base-expand')).toHaveAttribute(
-    'aria-hidden',
-    'true',
-  );
+  expectExpanded(trains);
+  expectCollapsed(boats);
+  expectCollapsed(buses);
 
-  fireEvent.click(getByRole('button', { name: 'Boats' }));
-  act(() => {
-    jest.runAllTimers();
-  });
+  expect(onToggle).not.toHaveBeenCalled();
+  await user.click(getByRole('button', { name: 'Boats' }));
+  expect(onToggle.mock.calls).toEqual([['boats']]);
+  runAllTimers();
 
-  expect(trains.closest('.eds-base-expand')).toHaveAttribute(
-    'aria-hidden',
-    'true',
-  );
-  expect(boats.closest('.eds-base-expand')).not.toHaveAttribute('aria-hidden');
-  expect(buses.closest('.eds-base-expand')).toHaveAttribute(
-    'aria-hidden',
-    'true',
-  );
+  expectCollapsed(trains);
+  expectExpanded(boats);
+  expectCollapsed(buses);
 });
 
-test('controlled Accordion with openId and onToggle', () => {
+test('controlled Accordion with openId and onToggle', async () => {
+  const user = setupUserWithFakeTimers();
   const spy = jest.fn();
-  const { getByRole, queryByText, rerender } = render(
+  const { getByRole, getByText, rerender } = render(
     <Accordion openId={null} onToggle={spy}>
       <AccordionItem title="Trains" id="trains">
         Trains go choo choo
@@ -198,28 +174,23 @@ test('controlled Accordion with openId and onToggle', () => {
     </Accordion>,
   );
 
-  const trains = queryByText('Trains go choo choo')!;
-  const boats = queryByText('Boats float')!;
+  const trains = getByText('Trains go choo choo');
+  const boats = getByText('Boats float');
 
   // All closed initially
-  expect(trains.closest('.eds-base-expand')).toHaveAttribute(
-    'aria-hidden',
-    'true',
-  );
-  expect(boats.closest('.eds-base-expand')).toHaveAttribute(
-    'aria-hidden',
-    'true',
-  );
+  expectCollapsed(trains);
+  expectCollapsed(boats);
 
   // Click trains — onToggle called with the id
-  fireEvent.click(getByRole('button', { name: 'Trains' }));
-  expect(spy).toHaveBeenCalledWith('trains');
+  await user.click(getByRole('button', { name: 'Trains' }));
+  expect(spy.mock.calls).toEqual([['trains']]);
+  expect(getByRole('button', { name: 'Trains' })).toHaveAttribute(
+    'aria-expanded',
+    'false',
+  );
 
   // In controlled mode, nothing changes until parent re-renders
-  expect(trains.closest('.eds-base-expand')).toHaveAttribute(
-    'aria-hidden',
-    'true',
-  );
+  expectCollapsed(trains);
 
   // Parent updates openId
   rerender(
@@ -232,19 +203,14 @@ test('controlled Accordion with openId and onToggle', () => {
       </AccordionItem>
     </Accordion>,
   );
-  act(() => {
-    jest.runAllTimers();
-  });
+  runAllTimers();
 
-  expect(trains.closest('.eds-base-expand')).not.toHaveAttribute('aria-hidden');
-  expect(boats.closest('.eds-base-expand')).toHaveAttribute(
-    'aria-hidden',
-    'true',
-  );
+  expectExpanded(trains);
+  expectCollapsed(boats);
 
   // Click boats
-  fireEvent.click(getByRole('button', { name: 'Boats' }));
-  expect(spy).toHaveBeenCalledWith('boats');
+  await user.click(getByRole('button', { name: 'Boats' }));
+  expect(spy.mock.calls).toEqual([['trains'], ['boats']]);
 
   rerender(
     <Accordion openId="boats" onToggle={spy}>
@@ -256,23 +222,37 @@ test('controlled Accordion with openId and onToggle', () => {
       </AccordionItem>
     </Accordion>,
   );
-  act(() => {
-    jest.runAllTimers();
-  });
+  runAllTimers();
 
-  expect(trains.closest('.eds-base-expand')).toHaveAttribute(
-    'aria-hidden',
+  expectCollapsed(trains);
+  expectExpanded(boats);
+
+  // Activate boats again to close
+  await user.keyboard(' ');
+  expect(spy.mock.calls).toEqual([['trains'], ['boats'], [null]]);
+  expect(getByRole('button', { name: 'Boats' })).toHaveAttribute(
+    'aria-expanded',
     'true',
   );
-  expect(boats.closest('.eds-base-expand')).not.toHaveAttribute('aria-hidden');
-
-  // Click boats again to close
-  fireEvent.click(getByRole('button', { name: 'Boats' }));
-  expect(spy).toHaveBeenCalledWith(null);
+  rerender(
+    <Accordion openId={null} onToggle={spy}>
+      <AccordionItem title="Trains" id="trains">
+        Trains go choo choo
+      </AccordionItem>
+      <AccordionItem title="Boats" id="boats">
+        Boats float
+      </AccordionItem>
+    </Accordion>,
+  );
+  expect(getByRole('button', { name: 'Boats' })).toHaveAttribute(
+    'aria-expanded',
+    'false',
+  );
+  expectCollapsed(boats);
 });
 
 test('Accordion defaultOpenId sets initial open item', () => {
-  const { queryByText } = render(
+  const { getByText } = render(
     <Accordion defaultOpenId="boats">
       <AccordionItem title="Trains" id="trains">
         Trains go choo choo
@@ -283,16 +263,61 @@ test('Accordion defaultOpenId sets initial open item', () => {
     </Accordion>,
   );
 
-  act(() => {
-    jest.runAllTimers();
-  });
+  runAllTimers();
 
-  const trains = queryByText('Trains go choo choo')!;
-  const boats = queryByText('Boats float')!;
+  const trains = getByText('Trains go choo choo');
+  const boats = getByText('Boats float');
 
-  expect(trains.closest('.eds-base-expand')).toHaveAttribute(
-    'aria-hidden',
-    'true',
+  expectCollapsed(trains);
+  expectExpanded(boats);
+});
+
+test('skips disabled disclosures in the tab order without toggling them', async () => {
+  const user = setupUserWithFakeTimers();
+  const onToggle = jest.fn();
+  const { getByRole } = render(
+    <Accordion onToggle={onToggle}>
+      <AccordionItem title="Trains" id="trains" disabled>
+        Trains go choo choo
+      </AccordionItem>
+      <AccordionItem title="Boats" id="boats">
+        Boats float
+      </AccordionItem>
+    </Accordion>,
   );
-  expect(boats.closest('.eds-base-expand')).not.toHaveAttribute('aria-hidden');
+  const trains = getByRole('button', { name: 'Trains' });
+  const boats = getByRole('button', { name: 'Boats' });
+  expect(trains).toBeDisabled();
+  await user.click(trains);
+  expect(onToggle).not.toHaveBeenCalled();
+  expect(trains).toHaveAttribute('aria-expanded', 'false');
+  await user.tab();
+  expect(boats).toHaveFocus();
+  await user.keyboard('{Enter}');
+  expect(onToggle.mock.calls).toEqual([['boats']]);
+  expect(boats).toHaveAttribute('aria-expanded', 'true');
+  expect(trains).toHaveAttribute('aria-expanded', 'false');
+});
+
+test('AccordionItem splits consumer props between the panel and its trigger', () => {
+  const ref = createRef<HTMLDivElement>();
+  const { container } = render(
+    <Accordion>
+      <AccordionItem
+        ref={ref}
+        title="Trains"
+        className="consumer-class"
+        data-consumer="value"
+        contentStyle={{ marginTop: '7px' }}
+      >
+        Trains go choo choo
+      </AccordionItem>
+    </Accordion>,
+  );
+  const panel = container.firstElementChild;
+  expect(ref.current).toBe(panel);
+  expect(panel).toHaveClass('eds-expandable-panel', 'consumer-class');
+  const trigger = screen.getByRole('button', { name: 'Trains' });
+  expect(trigger).toHaveAttribute('data-consumer', 'value');
+  expect(getControlledElement(trigger)).toHaveStyle({ marginTop: '7px' });
 });
