@@ -2,6 +2,7 @@ import React from 'react';
 import { LinkIcon } from '@entur/icons';
 import { useHeadingIds } from './HeadingIdContext';
 import { sanitizeText } from 'src/utils/utils';
+import { handleHashLinkClick } from 'src/utils/scrollUtils';
 import './HeadingAnchor.scss';
 
 type HeadingAnchorProps = {
@@ -31,7 +32,12 @@ export const HeadingAnchor: React.FC<HeadingAnchorProps> = ({
 
   return (
     <HeadingComponent id={id}>
-      <a href={`#${id}`} className="heading-anchor">
+      <a
+        href={`#${id}`}
+        className="heading-anchor"
+        // One scroll to below the navigation, instead of a jump and a correction
+        onClick={handleHashLinkClick}
+      >
         {children}
         <LinkIcon aria-hidden="true" className="heading-anchor__icon" />
       </a>
