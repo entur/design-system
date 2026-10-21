@@ -69,7 +69,7 @@ export function getHeadingVariantFromSemanticType(
  */
 export function getSemanticTypeFromTextVariant(
   variant: TypographyTextVariant | undefined,
-): string {
+): keyof JSX.IntrinsicElements {
   if (!variant) return 'p';
 
   switch (variant) {
