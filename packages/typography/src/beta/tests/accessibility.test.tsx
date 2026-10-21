@@ -70,13 +70,13 @@ describe('Accessibility', () => {
         <Heading as="h1" variant="title-1">
           Article Title
         </Heading>
-        <Text variant="leading" spacing="md">
+        <Text variant="leading" spacing="m">
           This is a leading paragraph that introduces the article.
         </Text>
         <Heading as="h2" variant="title-2">
           Section Heading
         </Heading>
-        <Text variant="paragraph" spacing="sm">
+        <Text variant="paragraph" spacing="s">
           This is a regular paragraph with some{' '}
           <Link href="/reference" external>
             external reference

@@ -54,15 +54,16 @@ describe('Heading Component', () => {
     expect(heading).not.toHaveClass('eds-heading--title-1');
   });
 
-  test('applies spacing classes correctly', () => {
+  test('applies spacing', () => {
     const { getByText } = render(
-      <Heading as="h1" spacing="lg">
+      <Heading as="h1" spacing={{ top: '2xl', bottom: 's' }}>
         Heading with spacing
       </Heading>,
     );
-    expect(getByText('Heading with spacing')).toHaveClass(
-      'eds-heading--spacing-lg',
-    );
+    expect(getByText('Heading with spacing')).toHaveStyle({
+      '--eds-text-spacing-top': 'var(--spacing-2xl)',
+      '--eds-text-spacing-bottom': 'var(--spacing-s)',
+    });
   });
 
   test('passes through additional props', () => {

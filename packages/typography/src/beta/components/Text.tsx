@@ -6,18 +6,18 @@ import { PolymorphicComponentProps } from '@entur/utils';
 
 import {
   getSemanticTypeFromTextVariant,
-  getSpacingClasses,
+  getSpacingStyle,
 } from '../utils/utils';
 
 import {
-  TypographySpacing,
+  TypographySpacingProps,
   TypographyTextVariant,
   TypographyWeight,
 } from '../types';
 
 import './text.scss';
 
-export type TextOwnProps = {
+export type TextOwnProps = TypographySpacingProps & {
   /** Visuell tekststørrelse (typografi-token) */
   size?: 'xs' | 's' | 'm' | 'lg' | 'xl';
   /** Fontvekt: `medium` (500) eller `bold` (600) */
@@ -26,8 +26,6 @@ export type TextOwnProps = {
   variant?: TypographyTextVariant;
   /** Innhold */
   children?: React.ReactNode;
-  /** Spacing around the component */
-  spacing?: TypographySpacing;
   /** Ekstra klassenavn */
   className?: string;
 };
@@ -48,6 +46,7 @@ export const Text = React.forwardRef(
       variant,
       weight,
       spacing,
+      style,
       className,
       ...rest
     }: TextProps<C>,
@@ -64,9 +63,9 @@ export const Text = React.forwardRef(
           variant && `eds-text--${variant}`,
           size && `eds-text--${size}`,
           weight && `eds-text--weight-${weight}`,
-          getSpacingClasses(spacing, 'eds-text'),
           className,
         )}
+        style={getSpacingStyle(spacing, style)}
         {...rest}
       >
         {children}

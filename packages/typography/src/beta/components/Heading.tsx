@@ -4,17 +4,17 @@ import classNames from 'classnames';
 import {
   TypographyHeadingVariant,
   TypographySize,
-  TypographySpacing,
+  TypographySpacingProps,
 } from '../types';
 import {
   getHeadingVariantFromSemanticType,
-  getSpacingClasses,
+  getSpacingStyle,
 } from '../utils/utils';
 import { PolymorphicComponentProps } from '@entur/utils';
 
 import './heading.scss';
 
-export type HeadingOwnProps = {
+export type HeadingOwnProps = TypographySpacingProps & {
   /** Visuell variant som bestemmer styling (anbefalt over size) */
   variant?: TypographyHeadingVariant;
   /** Visuell tekststørrelse som overstyrer variant-styling */
@@ -23,8 +23,6 @@ export type HeadingOwnProps = {
   children?: React.ReactNode;
   /** Ekstra klassenavn for tilpasset styling */
   className?: string;
-  /** Spacing around the component */
-  spacing?: TypographySpacing;
 };
 
 export type HeadingProps<C extends React.ElementType = typeof defaultElement> =
@@ -46,6 +44,7 @@ export const Heading = React.forwardRef(
       size,
       variant,
       spacing,
+      style,
       className,
       ...rest
     }: HeadingProps<C>,
@@ -69,9 +68,9 @@ export const Heading = React.forwardRef(
           { [`eds-heading--${usedVariant}`]: !shouldUseSize },
           // Size takes precedence when specified
           { [`eds-heading--${size}`]: shouldUseSize && size },
-          getSpacingClasses(spacing, 'eds-heading'),
           className,
         )}
+        style={getSpacingStyle(spacing, style)}
         {...rest}
       >
         {children}

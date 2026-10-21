@@ -35,14 +35,31 @@ describe('Text Component', () => {
     expect(getByText('Bold text')).toHaveClass('eds-text--weight-bold');
   });
 
-  test('applies spacing classes correctly', () => {
-    const { getByText } = render(<Text spacing="md">Text with spacing</Text>);
-    expect(getByText('Text with spacing')).toHaveClass('eds-text--spacing-md');
+  test('applies spacing', () => {
+    const { getByText } = render(<Text spacing="none">Text with spacing</Text>);
+    expect(getByText('Text with spacing')).toHaveStyle({
+      '--eds-text-spacing-top': '0px',
+      '--eds-text-spacing-bottom': '0px',
+    });
+  });
+
+  test('merges spacing with the style prop', () => {
+    const { getByText } = render(
+      <Text spacing={{ top: 'xl' }} style={{ color: 'red' }}>
+        Styled
+      </Text>,
+    );
+    const text = getByText('Styled');
+    expect(text).toHaveStyle({
+      '--eds-text-spacing-top': 'var(--spacing-xl)',
+      color: 'red',
+    });
+    expect(text.style.getPropertyValue('--eds-text-spacing-bottom')).toBe('');
   });
 
   test('combines multiple classes correctly', () => {
     const { getByText } = render(
-      <Text variant="paragraph" size="m" weight="medium" spacing="sm">
+      <Text variant="paragraph" size="m" weight="medium" spacing="s">
         Combined text
       </Text>,
     );
@@ -50,7 +67,7 @@ describe('Text Component', () => {
     expect(text).toHaveClass('eds-text--paragraph');
     expect(text).toHaveClass('eds-text--m');
     expect(text).toHaveClass('eds-text--weight-medium');
-    expect(text).toHaveClass('eds-text--spacing-sm');
+    expect(text).toHaveStyle({ '--eds-text-spacing-top': 'var(--spacing-s)' });
   });
 
   test('passes through additional props', () => {

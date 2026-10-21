@@ -1,0 +1,16 @@
+// inherits: false keeps a parent's spacing prop from applying to nested text components
+@property --eds-text-spacing-top {
+  syntax: '*';
+  inherits: false;
+}
+
+@property --eds-text-spacing-bottom {
+  syntax: '*';
+  inherits: false;
+}
+
+@layer components.primitives {
+  :where(.eds-heading, .eds-text, .eds-text--link, .eds-text--unordered-list, .eds-text--numbered-list, .eds-text--list-item, .eds-text-container) {
+    margin: var(--eds-text-spacing-top, 0) 0 var(--eds-text-spacing-bottom, 0);
+  }
+}
