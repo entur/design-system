@@ -285,6 +285,7 @@ const topics: Topic[] = [
       'Vekt: medium eller bold',
     ],
     decisions: ['B7', 'B9', 'B10', 'B20', 'B22'],
+    questions: ['S9'],
     render: () => (
       <Compare
         today={
