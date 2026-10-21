@@ -32,3 +32,27 @@ test('ChoiceChip and ChoiceChipGroup works together', () => {
   expect(firstOption).toHaveProperty('checked', false);
   expect(secondOption).toHaveProperty('checked', true);
 });
+
+test('ChoiceChip relies on the native disabled attribute without aria-disabled', () => {
+  const { getByLabelText } = render(
+    <ChoiceChipGroup
+      name="city"
+      label="Velg by"
+      value="Oslo"
+      onChange={jest.fn()}
+    >
+      <ChoiceChip value="Oslo">Oslo</ChoiceChip>
+      <ChoiceChip value="Bergen" disabled>
+        Bergen
+      </ChoiceChip>
+    </ChoiceChipGroup>,
+  );
+
+  const enabledOption = getByLabelText('Oslo');
+  expect(enabledOption).toHaveProperty('disabled', false);
+  expect(enabledOption).not.toHaveAttribute('aria-disabled');
+
+  const disabledOption = getByLabelText('Bergen');
+  expect(disabledOption).toHaveProperty('disabled', true);
+  expect(disabledOption).not.toHaveAttribute('aria-disabled');
+});
