@@ -1,10 +1,40 @@
-import { render } from '@testing-library/react';
+import { createRef } from 'react';
+import { render, screen, within } from '@testing-library/react';
+import { describeComponentContract } from '../../../../../tests/jest/componentContract';
 import { Grid } from './Grid';
 import { GridItem } from './GridItem';
 
-test('Grid renders with class', () => {
+describeComponentContract('Grid', {
+  render: props => <Grid data-testid="grid" {...props} />,
+  getElement: () => screen.getByTestId('grid'),
+  baseClassName: 'eds-layout-grid',
+  refElement: HTMLDivElement,
+  as: 'section',
+});
+
+describeComponentContract('GridItem', {
+  render: props => <GridItem data-testid="item" {...props} />,
+  getElement: () => screen.getByTestId('item'),
+  baseClassName: 'eds-layout-grid-item',
+  refElement: HTMLDivElement,
+  as: 'li',
+});
+
+test('Grid defaults gap to m for rows and columns', () => {
   const { getByTestId } = render(<Grid data-testid="grid" />);
-  expect(getByTestId('grid')).toHaveClass('eds-layout-grid');
+  const el = getByTestId('grid');
+  expect(el.style.getPropertyValue('--grid-gap-base')).toBe('var(--m)');
+  expect(el.style.getPropertyValue('--grid-row-gap-base')).toBe('var(--m)');
+  expect(el.style.getPropertyValue('--grid-column-gap-base')).toBe('var(--m)');
+});
+
+test('Grid keeps consumer style alongside its CSS vars', () => {
+  const { getByTestId } = render(
+    <Grid data-testid="grid" gap="s" style={{ marginTop: '7px' }} />,
+  );
+  const el = getByTestId('grid');
+  expect(el).toHaveStyle({ marginTop: '7px' });
+  expect(el.style.getPropertyValue('--grid-gap-base')).toBe('var(--s)');
 });
 
 test('Grid sets plain templateColumns at base only', () => {
@@ -110,11 +140,6 @@ test('Grid sets align, justify, justifyItems, alignContent', () => {
   );
   expect(el.style.getPropertyValue('--grid-align-content-base')).toBe('end');
   expect(el.style.getPropertyValue('--grid-justify-items-base')).toBe('start');
-});
-
-test('GridItem renders with class', () => {
-  const { getByTestId } = render(<GridItem data-testid="item" />);
-  expect(getByTestId('item')).toHaveClass('eds-layout-grid-item');
 });
 
 test('GridItem sets plain colSpan as col-start at base only', () => {
@@ -227,4 +252,32 @@ test('GridItem sets responsive alignSelf', () => {
     'stretch',
   );
   expect(el.style.getPropertyValue('--grid-item-align-self-m')).toBe('center');
+});
+
+test('Grid and GridItem compose a semantic list', () => {
+  const gridRef = createRef<HTMLUListElement>();
+  const itemRef = createRef<HTMLLIElement>();
+  render(
+    <Grid as="ul" aria-label="Destinations" ref={gridRef}>
+      <GridItem as="li" ref={itemRef}>
+        <a href="/oslo">Oslo</a>
+      </GridItem>
+      <GridItem as="li">
+        <a href="/bergen">Bergen</a>
+      </GridItem>
+    </Grid>,
+  );
+
+  const list = screen.getByRole('list', { name: 'Destinations' });
+  const items = within(list).getAllByRole('listitem');
+  expect(gridRef.current).toBe(list);
+  expect(itemRef.current).toBe(items[0]);
+  expect(items).toHaveLength(2);
+  expect(within(items[0]).getByRole('link', { name: 'Oslo' })).toHaveAttribute(
+    'href',
+    '/oslo',
+  );
+  expect(
+    within(items[1]).getByRole('link', { name: 'Bergen' }),
+  ).toHaveAttribute('href', '/bergen');
 });
