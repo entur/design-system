@@ -1,38 +1,27 @@
-import React from 'react';
-import { cleanup, fireEvent, render, within } from '@testing-library/react';
-import { Dropdown, MultiSelect, SearchableDropdown } from '..';
-
-/**
- * Simulates a realistic browser click: mousedown → mouseup → click.
- * In shadow DOM, mouseup/mousedown events that reach window-level listeners
- * have their target retargeted to the shadow host. This triggers downshift's
- * outside-click detection, which can close the dropdown prematurely.
- */
-function realClick(element: Element) {
-  fireEvent.mouseDown(element);
-  fireEvent.mouseUp(element);
-  fireEvent.click(element);
-}
-
-function createShadowDomContainer() {
-  const host = document.createElement('div');
-  document.body.appendChild(host);
-  const shadowRoot = host.attachShadow({ mode: 'open' });
-  const container = document.createElement('div');
-  shadowRoot.appendChild(container);
-  return { host, container };
-}
+import { useState } from 'react';
+import { cleanup, render, within } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import {
+  Dropdown,
+  MultiSelect,
+  NormalizedDropdownItemType,
+  SearchableDropdown,
+} from '..';
 
 let host: HTMLDivElement;
 let container: HTMLDivElement;
 
 beforeEach(() => {
-  ({ host, container } = createShadowDomContainer());
+  host = document.createElement('div');
+  document.body.appendChild(host);
+  const shadowRoot = host.attachShadow({ mode: 'open' });
+  container = document.createElement('div');
+  shadowRoot.appendChild(container);
 });
 
 afterEach(() => {
   cleanup();
-  document.body.removeChild(host);
+  host.remove();
 });
 
 const testItems = [
@@ -41,10 +30,9 @@ const testItems = [
   { value: '3', label: 'Stavanger' },
 ];
 
-describe('SearchableDropdown in shadow DOM', () => {
-  function renderInShadow(
-    props: Partial<React.ComponentProps<typeof SearchableDropdown>> = {},
-  ) {
+describe('shadow DOM pointer interactions', () => {
+  test('SearchableDropdown selects once without treating the option click as an outside click', async () => {
+    const user = userEvent.setup();
     const onChange = jest.fn();
     render(
       <SearchableDropdown
@@ -52,45 +40,20 @@ describe('SearchableDropdown in shadow DOM', () => {
         items={testItems}
         selectedItem={null}
         onChange={onChange}
-        {...props}
       />,
       { container },
     );
-    return { view: within(container), onChange };
-  }
-
-  test('renders a combobox input', () => {
-    const { view } = renderInShadow();
-    expect(view.getByRole('combobox')).toBeTruthy();
-  });
-
-  test('shows options when opened', () => {
-    const { view } = renderInShadow();
-    realClick(view.getByRole('combobox'));
+    const view = within(container);
+    await user.click(view.getByRole('combobox', { name: 'Velg by' }));
     expect(view.getAllByRole('option')).toHaveLength(testItems.length);
-  });
-
-  test('calls onChange when an item is selected', () => {
-    const { view, onChange } = renderInShadow();
-    realClick(view.getByRole('combobox'));
-    realClick(view.getByRole('option', { name: /Bergen/ }));
-    expect(onChange).toHaveBeenCalledWith(
-      expect.objectContaining({ label: 'Bergen' }),
-    );
-  });
-
-  test('calls onChange exactly once per selection', () => {
-    const { view, onChange } = renderInShadow();
-    realClick(view.getByRole('combobox'));
-    realClick(view.getByRole('option', { name: /Stavanger/ }));
+    await user.click(view.getByRole('option', { name: 'Bergen' }));
     expect(onChange).toHaveBeenCalledTimes(1);
+    expect(onChange).toHaveBeenCalledWith(testItems[1]);
+    expect(view.queryByRole('listbox')).not.toBeInTheDocument();
   });
-});
 
-describe('Dropdown in shadow DOM', () => {
-  function renderInShadow(
-    props: Partial<React.ComponentProps<typeof Dropdown>> = {},
-  ) {
+  test('Dropdown selects once without treating the option click as an outside click', async () => {
+    const user = userEvent.setup();
     const onChange = jest.fn();
     render(
       <Dropdown
@@ -98,74 +61,52 @@ describe('Dropdown in shadow DOM', () => {
         items={testItems}
         selectedItem={null}
         onChange={onChange}
-        {...props}
       />,
       { container },
     );
-    return { view: within(container), onChange };
-  }
-
-  test('shows options when opened', () => {
-    const { view } = renderInShadow();
-    const toggleButton = view.getByRole('combobox');
-    realClick(toggleButton);
+    const view = within(container);
+    await user.click(view.getByRole('combobox', { name: 'Velg by' }));
     expect(view.getAllByRole('option')).toHaveLength(testItems.length);
-  });
-
-  test('calls onChange when an item is selected', () => {
-    const { view, onChange } = renderInShadow();
-    realClick(view.getByRole('combobox'));
-    realClick(view.getByRole('option', { name: /Bergen/ }));
-    expect(onChange).toHaveBeenCalledWith(
-      expect.objectContaining({ label: 'Bergen' }),
-    );
-  });
-});
-
-describe('MultiSelect in shadow DOM', () => {
-  function renderInShadow(
-    props: Partial<React.ComponentProps<typeof MultiSelect>> = {},
-  ) {
-    const onChange = jest.fn();
-    render(
-      <MultiSelect
-        label="Velg byer"
-        items={testItems}
-        selectedItems={[]}
-        onChange={onChange}
-        {...props}
-      />,
-      { container },
-    );
-    return { view: within(container), onChange };
-  }
-
-  test('shows options when opened', () => {
-    const { view } = renderInShadow();
-    realClick(view.getByRole('combobox'));
-    // +1 for "Velg alle" item
-    expect(view.getAllByRole('option').length).toBeGreaterThanOrEqual(
-      testItems.length,
-    );
-  });
-
-  test('calls onChange when an item is selected', () => {
-    const { view, onChange } = renderInShadow();
-    realClick(view.getByRole('combobox'));
-    realClick(view.getByRole('option', { name: /Bergen/ }));
-    expect(onChange).toHaveBeenCalledWith(
-      expect.arrayContaining([expect.objectContaining({ label: 'Bergen' })]),
-    );
-  });
-
-  test('allows selecting multiple items in sequence', () => {
-    const { view, onChange } = renderInShadow();
-    realClick(view.getByRole('combobox'));
-    realClick(view.getByRole('option', { name: /Oslo/ }));
-
+    await user.click(view.getByRole('option', { name: 'Bergen' }));
     expect(onChange).toHaveBeenCalledTimes(1);
+    expect(onChange).toHaveBeenCalledWith(testItems[1]);
+    expect(view.queryByRole('listbox')).not.toBeInTheDocument();
+  });
 
-    realClick(view.getByRole('option', { name: /Bergen/ }));
+  test('MultiSelect keeps its list open for successive controlled selections', async () => {
+    const user = userEvent.setup();
+    const onChange = jest.fn();
+    function Cities() {
+      const [selectedItems, setSelectedItems] = useState<
+        NormalizedDropdownItemType<string>[]
+      >([]);
+      return (
+        <MultiSelect
+          label="Velg byer"
+          items={testItems}
+          selectedItems={selectedItems}
+          onChange={items => {
+            onChange(items);
+            setSelectedItems(items);
+          }}
+        />
+      );
+    }
+    render(<Cities />, { container });
+    const view = within(container);
+    await user.click(view.getByRole('combobox', { name: 'Velg byer' }));
+    expect(view.getAllByRole('option')).toHaveLength(testItems.length + 1);
+    await user.click(view.getByRole('option', { name: 'Oslo' }));
+    expect(onChange).toHaveBeenNthCalledWith(1, [testItems[0]]);
+    expect(view.getByRole('listbox', { name: 'Velg byer' })).toBeVisible();
+    await user.click(view.getByRole('option', { name: 'Bergen' }));
     expect(onChange).toHaveBeenCalledTimes(2);
+    expect(onChange).toHaveBeenNthCalledWith(2, [testItems[0], testItems[1]]);
+    expect(
+      view.getByRole('option', { name: /Oslo/, selected: true }),
+    ).toBeVisible();
+    expect(
+      view.getByRole('option', { name: /Bergen/, selected: true }),
+    ).toBeVisible();
   });
 });

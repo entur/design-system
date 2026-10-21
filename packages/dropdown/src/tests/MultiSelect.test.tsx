@@ -1,4 +1,5 @@
-import { act, render, screen, waitFor } from '@testing-library/react';
+import React from 'react';
+import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import { DropdownItemType, MultiSelect, NormalizedDropdownItemType } from '..';
@@ -23,14 +24,6 @@ describe('MultiSelect', () => {
         label: item,
       } as NormalizedDropdownItemType),
   );
-
-  test('is displayed with label', () => {
-    render(
-      <MultiSelect label="test label" items={testItems} selectedItems={[]} />,
-    );
-
-    expect(screen.queryAllByLabelText('test label')[0]).toBeInTheDocument();
-  });
 
   test('can select elements with mouse', async () => {
     const user = userEvent.setup();
@@ -329,10 +322,13 @@ describe('MultiSelect', () => {
     expect(dropdownList).toBeVisible();
     await user.keyboard('{ }');
     expect(dropdownList).toBeVisible();
+    onChange.mockClear();
 
     // close on esc
     await user.keyboard('{Escape}');
     expect(dropdownList).not.toBeVisible();
+    expect(inputField).toHaveFocus();
+    expect(onChange).not.toHaveBeenCalled();
 
     // open on type
     await user.keyboard('{b}');
@@ -344,8 +340,10 @@ describe('MultiSelect', () => {
     expect(dropdownList).toBeVisible();
 
     // close on tab
-    await user.keyboard('{Tab}');
+    await user.tab();
     expect(dropdownList).not.toBeVisible();
+    expect(inputField).not.toHaveFocus();
+    expect(onChange).not.toHaveBeenCalled();
   });
 
   test('handles typeahead filter correctly', async () => {
@@ -376,7 +374,6 @@ describe('MultiSelect', () => {
       screen.queryByRole('option', { name: 'Bergen' }),
     ).not.toBeInTheDocument();
 
-    // since we are updating state with typeahead we need to wrap this section in 'act'
     await user.keyboard('{b}');
 
     await waitFor(() => screen.getByRole('option', { name: 'Bergen' }), {
@@ -466,14 +463,16 @@ describe('MultiSelect', () => {
       />,
     );
 
-    const inputField = screen.getByRole('combobox', { name: 'test label' });
-    inputField.focus();
+    await user.tab();
     await user.keyboard('{ }'); // open dropdown list
 
-    await user.keyboard('{ArrowDown}{Enter}');
-    await user.keyboard('{Tab}');
+    await user.keyboard('{ArrowDown}');
+    expect(onChange).not.toHaveBeenCalled();
+    await user.tab();
 
     expect(onChange).toBeCalledWith([{ label: 'Oslo', value: 'Oslo' }]);
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(screen.queryByRole('listbox')).not.toBeInTheDocument();
   });
 
   test('displays selected items', () => {
@@ -674,7 +673,8 @@ describe('MultiSelect', () => {
     // Single ArrowDown + Enter should select an item without needing a second Enter
     await user.keyboard('{ArrowDown}{Enter}');
 
-    expect(onChange).toHaveBeenCalled();
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(onChange).toHaveBeenCalledWith([{ label: 'Oslo', value: 'Oslo' }]);
   });
 
   test('input is cleared when clearInputOnSelect is true', async () => {
@@ -695,34 +695,32 @@ describe('MultiSelect', () => {
     expect(inputField).toHaveValue('');
   });
 
-  test('applies className to eds-dropdown element', () => {
-    const { container } = render(
+  test('disabled multiselect ignores text input and keeps its selection', async () => {
+    const user = userEvent.setup();
+    const onChange = jest.fn();
+    render(
       <MultiSelect
         label="test label"
         items={testItems}
-        selectedItems={[]}
-        className="custom-class"
+        selectedItems={[normalizedTestItems[0]]}
+        onChange={onChange}
+        disabled
+        clearable
+        labelClearAllItems="Clear cities"
       />,
     );
 
-    const edsDropdownElement =
-      container.getElementsByClassName('eds-dropdown')[0];
-    expect(edsDropdownElement).toHaveClass('custom-class');
-  });
-
-  test('applies listStyle to list element', () => {
-    const { container } = render(
-      <MultiSelect
-        label="test label"
-        items={testItems}
-        selectedItems={[]}
-        listStyle={{ color: 'pink' }}
-      />,
-    );
-
-    const listElement =
-      container.getElementsByClassName('eds-dropdown__list')[0];
-    expect(listElement).toHaveStyle({ color: 'pink' });
+    const input = screen.getByRole('combobox', { name: 'test label' });
+    expect(input).toBeDisabled();
+    await user.type(input, 'Bergen');
+    await user.click(screen.getByText('Oslo'));
+    expect(input).toHaveValue('');
+    expect(screen.queryByRole('listbox')).not.toBeInTheDocument();
+    expect(
+      screen.queryByRole('button', { name: 'Clear cities' }),
+    ).not.toBeInTheDocument();
+    expect(screen.getByText('Oslo')).toBeVisible();
+    expect(onChange).not.toHaveBeenCalled();
   });
 
   test('does not violate basic accessibility', async () => {
@@ -743,7 +741,7 @@ describe('MultiSelect', () => {
     test.each(['negative', 'error'] as const)(
       'is true for %s variant',
       variant => {
-        const { container } = render(
+        render(
           <MultiSelect
             label="test label"
             items={testItems}
@@ -753,15 +751,14 @@ describe('MultiSelect', () => {
           />,
         );
 
-        expect(container.querySelector('input')).toHaveAttribute(
-          'aria-invalid',
-          'true',
-        );
+        expect(
+          screen.getByRole('combobox', { name: 'test label' }),
+        ).toHaveAttribute('aria-invalid', 'true');
       },
     );
 
     test('is false for warning variant', () => {
-      const { container } = render(
+      render(
         <MultiSelect
           label="test label"
           items={testItems}
@@ -771,10 +768,59 @@ describe('MultiSelect', () => {
         />,
       );
 
-      expect(container.querySelector('input')).toHaveAttribute(
-        'aria-invalid',
-        'false',
-      );
+      expect(
+        screen.getByRole('combobox', { name: 'test label' }),
+      ).toHaveAttribute('aria-invalid', 'false');
     });
+  });
+  test('forwards className and style to the container and merges its own classes', () => {
+    const { container } = render(
+      <MultiSelect
+        label="test label"
+        items={testItems}
+        selectedItems={[]}
+        className="custom-class"
+        style={{ marginTop: '7px' }}
+      />,
+    );
+    const outer = container.firstElementChild;
+    expect(outer).toHaveClass(
+      'eds-dropdown',
+      'eds-dropdown--multiselect',
+      'custom-class',
+    );
+    expect(outer).toHaveStyle({ marginTop: '7px' });
+  });
+
+  test('forwards rest props to the field wrapper and ref to the input', () => {
+    const ref = React.createRef<HTMLInputElement>();
+    render(
+      <MultiSelect
+        label="test label"
+        items={testItems}
+        selectedItems={[]}
+        data-testid="field"
+        ref={ref}
+      />,
+    );
+    const combobox = screen.getByRole('combobox', { name: 'test label' });
+    const field = screen.getByTestId('field');
+    expect(field).toHaveClass('eds-form-control-wrapper');
+    expect(field).toContainElement(combobox);
+    expect(ref.current).toBe(combobox);
+  });
+
+  test('applies listStyle to the list', async () => {
+    const user = userEvent.setup();
+    render(
+      <MultiSelect
+        label="test label"
+        items={testItems}
+        selectedItems={[]}
+        listStyle={{ color: 'pink' }}
+      />,
+    );
+    await user.click(screen.getByRole('combobox', { name: 'test label' }));
+    expect(screen.getByRole('listbox')).toHaveStyle({ color: 'pink' });
   });
 });
