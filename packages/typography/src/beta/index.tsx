@@ -14,6 +14,7 @@ export { Blockquote, BlockquoteFooter } from './components/Blockquote';
 export { UnorderedList } from './components/UnorderedList';
 export { NumberedList } from './components/NumberedList';
 export { ListItem } from './components/ListItem';
+export { TextContainer } from './components/TextContainer';
 
 export type {
   HeadingComponent,
@@ -38,6 +39,11 @@ export type {
   ListItemOwnProps,
   ListItemProps,
 } from './components/ListItem';
+export type {
+  TextContainerComponent,
+  TextContainerOwnProps,
+  TextContainerProps,
+} from './components/TextContainer';
 
 export type {
   TypographyHeadingVariant,
@@ -45,4 +51,5 @@ export type {
   TypographySize,
   TypographyWeight,
   TypographySpacing,
+  TypographySpacingProps,
 } from './types';

@@ -1,21 +1,19 @@
 import React from 'react';
 import classNames from 'classnames';
 import { PolymorphicComponentProps } from '@entur/utils';
-import { TypographySpacing } from '../types';
-import { getSpacingClasses } from '../utils/utils';
+import { TypographySpacingProps } from '../types';
+import { getSpacingStyle } from '../utils/utils';
 
 import './text.scss';
 
 /**
  * @beta Experimental component - may have breaking changes in future releases
  */
-export type NumberedListOwnProps = {
+export type NumberedListOwnProps = TypographySpacingProps & {
   /** Ekstra klassenavn */
   className?: string;
   /** Innholdet */
   children?: React.ReactNode;
-  /** Spacing around the component (same as Text and Heading components) */
-  spacing?: TypographySpacing;
   /** List type (1, A, a, I, i) */
   type?: '1' | 'A' | 'a' | 'I' | 'i';
 };
@@ -41,6 +39,7 @@ export const NumberedList = React.forwardRef(
       type = '1',
       className,
       spacing,
+      style,
       children,
       as,
       ...rest
@@ -55,10 +54,10 @@ export const NumberedList = React.forwardRef(
         className={classNames(
           'eds-text--numbered-list',
           `eds-text--numbered-list--type-${type}`,
-          getSpacingClasses(spacing, 'eds-text'),
           className,
         )}
         type={type}
+        style={getSpacingStyle(spacing, style)}
         {...rest}
       >
         {children}

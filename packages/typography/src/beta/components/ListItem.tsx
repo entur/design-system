@@ -1,21 +1,19 @@
 import React from 'react';
 import classNames from 'classnames';
 import { PolymorphicComponentProps } from '@entur/utils';
-import { TypographySpacing } from '../types';
-import { getSpacingClasses } from '../utils/utils';
+import { TypographySpacingProps } from '../types';
+import { getSpacingStyle } from '../utils/utils';
 
 import './text.scss';
 
 /**
  * @beta Experimental component - may have breaking changes in future releases
  */
-export type ListItemOwnProps = {
+export type ListItemOwnProps = TypographySpacingProps & {
   /** Ekstra klassenavn */
   className?: string;
   /** Innholdet */
   children?: React.ReactNode;
-  /** Spacing around the component (same as Text and Heading components) */
-  spacing?: TypographySpacing;
   /** Tittel */
   title?: React.ReactNode;
 };
@@ -36,7 +34,15 @@ const defaultElement = 'li';
  */
 export const ListItem = React.forwardRef(
   <C extends React.ElementType = typeof defaultElement>(
-    { title, className, spacing, children, as, ...rest }: ListItemProps<C>,
+    {
+      title,
+      className,
+      spacing,
+      style,
+      children,
+      as,
+      ...rest
+    }: ListItemProps<C>,
     ref?: React.Ref<Element>,
   ): JSX.Element => {
     const ItemElement: React.ElementType = as || defaultElement;
@@ -44,11 +50,8 @@ export const ListItem = React.forwardRef(
     return (
       <ItemElement
         ref={ref}
-        className={classNames(
-          'eds-text--list-item',
-          getSpacingClasses(spacing, 'eds-text'),
-          className,
-        )}
+        className={classNames('eds-text--list-item', className)}
+        style={getSpacingStyle(spacing, style)}
         {...rest}
       >
         {title && (

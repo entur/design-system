@@ -17,13 +17,15 @@ describe('UnorderedList Component', () => {
     expect(getAllByRole('listitem')).toHaveLength(2);
   });
 
-  test('applies spacing classes that exist in the stylesheet', () => {
+  test('applies spacing', () => {
     const { getByRole } = render(
-      <UnorderedList spacing="md-bottom">
+      <UnorderedList spacing={{ bottom: 'm' }}>
         <ListItem>En</ListItem>
       </UnorderedList>,
     );
-    expect(getByRole('list')).toHaveClass('eds-text--spacing-md-bottom');
+    expect(getByRole('list')).toHaveStyle({
+      '--eds-text-spacing-bottom': 'var(--spacing-m)',
+    });
   });
 
   test('renders as different element with as prop', () => {
@@ -57,10 +59,8 @@ describe('NumberedList Component', () => {
     );
     const list = getByRole('list');
     expect(list).toHaveAttribute('type', 'A');
-    expect(list).toHaveClass(
-      'eds-text--numbered-list--type-A',
-      'eds-text--spacing-lg',
-    );
+    expect(list).toHaveClass('eds-text--numbered-list--type-A');
+    expect(list).toHaveStyle({ '--eds-text-spacing-top': 'var(--spacing-lg)' });
   });
 });
 
@@ -84,10 +84,8 @@ describe('ListItem Component', () => {
         </ListItem>
       </UnorderedList>,
     );
-    expect(getByRole('listitem')).toHaveClass(
-      'eds-text--list-item',
-      'eds-text--spacing-xs',
-      'custom',
-    );
+    const item = getByRole('listitem');
+    expect(item).toHaveClass('eds-text--list-item', 'custom');
+    expect(item).toHaveStyle({ '--eds-text-spacing-top': 'var(--spacing-xs)' });
   });
 });

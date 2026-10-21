@@ -1,21 +1,19 @@
 import React from 'react';
 import classNames from 'classnames';
 import { PolymorphicComponentProps } from '@entur/utils';
-import { TypographySpacing } from '../types';
-import { getSpacingClasses } from '../utils/utils';
+import { TypographySpacingProps } from '../types';
+import { getSpacingStyle } from '../utils/utils';
 
 import './text.scss';
 
 /**
  * @beta Experimental component - may have breaking changes in future releases
  */
-export type UnorderedListOwnProps = {
+export type UnorderedListOwnProps = TypographySpacingProps & {
   /** Ekstra klassenavn */
   className?: string;
   /** Innholdet */
   children?: React.ReactNode;
-  /** Spacing around the component (same as Text and Heading components) */
-  spacing?: TypographySpacing;
 };
 
 export type UnorderedListProps<
@@ -35,7 +33,7 @@ const defaultElement = 'ul';
  */
 export const UnorderedList = React.forwardRef(
   <C extends React.ElementType = typeof defaultElement>(
-    { className, spacing, children, as, ...rest }: UnorderedListProps<C>,
+    { className, spacing, style, children, as, ...rest }: UnorderedListProps<C>,
     ref?: React.Ref<Element>,
   ): JSX.Element => {
     const ListElement: React.ElementType = as || defaultElement;
@@ -43,11 +41,8 @@ export const UnorderedList = React.forwardRef(
     return (
       <ListElement
         ref={ref}
-        className={classNames(
-          'eds-text--unordered-list',
-          getSpacingClasses(spacing, 'eds-text'),
-          className,
-        )}
+        className={classNames('eds-text--unordered-list', className)}
+        style={getSpacingStyle(spacing, style)}
         {...rest}
       >
         {children}

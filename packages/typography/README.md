@@ -130,7 +130,9 @@ yarn add glob
 - **Semantic variants** - Title, subtitle, section, paragraph, etc.
 - **Size variants** - Extra large, large, medium, small, extra small
 - **Weight variants** - Medium and bold
-- **Spacing options** - Configurable margins and padding
+- **No margins by default** - Text sits flush wherever you place it
+- **Spacing** - `spacing="m"` or `spacing={{ top: 's', bottom: 'xl' }}`, on the same scale as `gap` in `@entur/layout/beta`
+- **TextContainer** - Wrap running text to get the rhythm between headings, paragraphs and lists
 - **Accessibility** - Built-in ARIA support and semantic HTML
 
 ### Legacy Typography

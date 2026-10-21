@@ -26,23 +26,75 @@ export type TypographySize = 'xs' | 's' | 'm' | 'lg' | 'xl' | '2xl';
 
 export type TypographyWeight = 'medium' | 'bold';
 
-export type TypographySpacing =
-  | 'none'
-  | 'xs2'
-  | 'xs2-top'
-  | 'xs2-bottom'
-  | 'xs'
-  | 'xs-top'
-  | 'xs-bottom'
-  | 'sm'
-  | 'sm-top'
-  | 'sm-bottom'
-  | 'md'
-  | 'md-top'
-  | 'md-bottom'
-  | 'lg'
-  | 'lg-top'
-  | 'lg-bottom'
-  | 'xl'
-  | 'xl-top'
-  | 'xl-bottom';
+// The unions stay inline so the props table on the docs site lists the values
+export type TypographySpacingProps = {
+  /**
+   * Avstand over og under, fra samme skala som `gap` på Flex og Grid.
+   * Én verdi gir lik avstand over og under, `{ top, bottom }` setter dem hver for seg.
+   * Uten `spacing` har teksten ingen avstand, med mindre den ligger i en `TextContainer`.
+   */
+  spacing?:
+    | 'none'
+    | '2xs'
+    | 'xs'
+    | 's'
+    | 'm'
+    | 'lg'
+    | 'xl'
+    | '2xl'
+    | '3xl'
+    | '4xl'
+    | '5xl'
+    | '6xl'
+    | '7xl'
+    | '8xl'
+    | '9xl'
+    | '10xl'
+    | '11xl'
+    | '12xl'
+    | '13xl'
+    | {
+        top?:
+          | 'none'
+          | '2xs'
+          | 'xs'
+          | 's'
+          | 'm'
+          | 'lg'
+          | 'xl'
+          | '2xl'
+          | '3xl'
+          | '4xl'
+          | '5xl'
+          | '6xl'
+          | '7xl'
+          | '8xl'
+          | '9xl'
+          | '10xl'
+          | '11xl'
+          | '12xl'
+          | '13xl';
+        bottom?:
+          | 'none'
+          | '2xs'
+          | 'xs'
+          | 's'
+          | 'm'
+          | 'lg'
+          | 'xl'
+          | '2xl'
+          | '3xl'
+          | '4xl'
+          | '5xl'
+          | '6xl'
+          | '7xl'
+          | '8xl'
+          | '9xl'
+          | '10xl'
+          | '11xl'
+          | '12xl'
+          | '13xl';
+      };
+};
+
+export type TypographySpacing = NonNullable<TypographySpacingProps['spacing']>;

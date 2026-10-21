@@ -2,23 +2,21 @@ import React from 'react';
 import classNames from 'classnames';
 import { PolymorphicComponentProps } from '@entur/utils';
 import { ExternalIcon } from '@entur/icons';
-import { TypographySpacing } from '../types';
-import { getSpacingClasses } from '../utils/utils';
+import { TypographySpacingProps } from '../types';
+import { getSpacingStyle } from '../utils/utils';
 
 import './text.scss';
 
 /**
  * @beta Experimental component - may have breaking changes in future releases
  */
-export type LinkOwnProps = {
+export type LinkOwnProps = TypographySpacingProps & {
   /** Viser et ikon som markerer at lenken går til en ekstern side */
   external?: boolean;
   /** Ekstra klassenavn */
   className?: string;
   /** Innholdet */
   children?: React.ReactNode;
-  /** Spacing around the component (same as Text and Heading components) */
-  spacing?: TypographySpacing;
   /** Skjermleserteksten til ikonet for eksterne lenker */
   ariaLabelExternalIcon?: string;
 };
@@ -44,6 +42,7 @@ export const Link = React.forwardRef(
       ariaLabelExternalIcon = '(ekstern lenke)',
       className,
       spacing,
+      style,
       children,
       as,
       ...rest
@@ -55,11 +54,8 @@ export const Link = React.forwardRef(
     return (
       <LinkElement
         ref={ref}
-        className={classNames(
-          'eds-text--link',
-          getSpacingClasses(spacing, 'eds-text'),
-          className,
-        )}
+        className={classNames('eds-text--link', className)}
+        style={getSpacingStyle(spacing, style)}
         {...rest}
       >
         {children}
