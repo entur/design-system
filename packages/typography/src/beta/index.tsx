@@ -29,6 +29,7 @@ export type {
   TextProps,
   TypographyTextSize,
   TypographyTextVariant,
+  TypographyTone,
   TypographyWeight,
 } from './components/Text';
 export type { LinkComponent, LinkOwnProps, LinkProps } from './components/Link';

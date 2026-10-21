@@ -24,6 +24,8 @@ export type HeadingOwnProps = TypographySpacingProps & {
     | 'section-2';
   /** Visuell tekststørrelse som overstyrer variant-styling */
   size?: 'xs' | 's' | 'm' | 'lg' | 'xl' | '2xl';
+  /** Dempet tekst for sekundære overskrifter. Velger riktig farge i kontrast- og mørk modus. */
+  tone?: 'subdued';
   /** Innholdet som skal vises */
   children?: React.ReactNode;
   /** Fjerner luften over versalhøyden og under grunnlinjen, så teksten flukter med elementer ved siden av. Har ingen effekt i nettlesere uten støtte for `text-box`. */
@@ -56,6 +58,7 @@ export const Heading = React.forwardRef(
       as,
       size,
       variant,
+      tone,
       spacing,
       style,
       trim,
@@ -76,6 +79,7 @@ export const Heading = React.forwardRef(
           'eds-heading',
           `eds-heading--${usedVariant}`,
           size && `eds-heading--${size}`,
+          tone && `eds-heading--tone-${tone}`,
           trim && 'eds-heading--trim',
           className,
         )}

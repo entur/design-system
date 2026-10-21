@@ -388,4 +388,13 @@
     content: counter(list-item, upper-roman);
   }
   // stylelint-enable selector-class-pattern
+
+  // Last, so the tone wins over the colour of every variant
+  .eds-text--tone-subdued {
+    color: var(--components-typography-basetext-standard-text-subdued);
+
+    :where(.eds-contrast) & {
+      color: var(--components-typography-basetext-contrast-text-subdued);
+    }
+  }
 }

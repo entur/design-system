@@ -6,7 +6,9 @@
 [data-color-mode='light'],
 :root {
   --components-typography-basetext-contrast-text-accent: #{$text-light};
+  --components-typography-basetext-contrast-text-subdued: #{$text-subduedalt};
   --components-typography-basetext-standard-text-accent: #{$text-accent};
+  --components-typography-basetext-standard-text-subdued: #{$text-subdued};
   --components-typography-blockquote-contrast-stroke: #{$stroke-subdued};
   --components-typography-blockquote-contrast-text-accent: #{$text-light};
   --components-typography-blockquote-contrast-text-subdued: #{$text-subduedalt};
@@ -33,7 +35,9 @@
 
 [data-color-mode='dark'] {
   --components-typography-basetext-contrast-text-accent: #{$text-lightalt};
+  --components-typography-basetext-contrast-text-subdued: #{$text-darkalt};
   --components-typography-basetext-standard-text-accent: #{$text-lightalt};
+  --components-typography-basetext-standard-text-subdued: #{$text-darkalt};
   --components-typography-blockquote-contrast-stroke: #{$stroke-darkalt};
   --components-typography-blockquote-contrast-text-accent: #{$text-lightalt};
   --components-typography-blockquote-contrast-text-subdued: #{$text-darkalt};
