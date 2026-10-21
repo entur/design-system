@@ -29,6 +29,10 @@ export type RadioPanelProps = {
    * @default false
    */
   readOnly?: boolean;
+  /** Beskrivelse som leses opp av skjermlesere når radio-panelet er skrivebeskyttet (readonly)
+   * @default 'Kan ikke endres'
+   */
+  readOnlyLabelDescription?: string;
   /** */
   style?: React.CSSProperties;
 } & Omit<
