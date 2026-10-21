@@ -143,7 +143,7 @@ export type MediaType =
       _type: 'media';
       mediaType: 'video';
       sourceType?: 'upload' | 'external';
-      file?: { asset?: { url?: string; mimeType?: string } };
+      file?: { asset?: { _ref?: string; url?: string; mimeType?: string } };
       externalUrl?: string;
       poster?: { asset?: { url?: string } };
       title?: string;

@@ -99,7 +99,10 @@ export const MediaResolver = ({ value }: Props) => {
     caption,
   } = value;
   const posterUrl = poster?.asset?.url;
-  const src = sourceType === 'upload' ? file?.asset?.url : externalUrl;
+  const src =
+    sourceType === 'upload'
+      ? file?.asset?.url ?? fileUrlFromRef(file?.asset)
+      : externalUrl;
   if (!src) return null;
 
   return (
@@ -117,6 +120,15 @@ export const MediaResolver = ({ value }: Props) => {
       </video>
     </WithCaption>
   );
+};
+
+// Doc sections arrive with unresolved references, so build the CDN url from the
+// file id: file-<hash>-<ext> → /files/<project>/<dataset>/<hash>.<ext>
+const fileUrlFromRef = (asset?: { _ref?: string }) => {
+  const match = asset?._ref?.match(/^file-([a-f0-9]+)-(\w+)$/);
+  if (!match) return undefined;
+  const { projectId, dataset } = SANITY_PROJECT;
+  return `https://cdn.sanity.io/files/${projectId}/${dataset}/${match[1]}.${match[2]}`;
 };
 
 // TextContainer puts a figcaption close to the media it describes
