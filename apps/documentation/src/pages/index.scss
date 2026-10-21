@@ -177,6 +177,12 @@
           display: flex;
           flex-direction: column;
           font-size: calc(eds.$font-sizes-extra-large5 * 2);
+          // Title-1 is tighter than the old Heading1; keeps the two lines apart as before
+          line-height: eds.$line-heights-extra-large5;
+
+          @include breakpoint.for-desktop {
+            line-height: eds.$line-heights-extra-large7;
+          }
 
           @media screen and (max-width: map.get(variables.$breakpoints, 'tablet')) {
             gap: eds.$space-default;
