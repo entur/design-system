@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 
 import { CookieIcon, NightIcon, SettingsIcon, SunIcon } from '@entur/icons';
-import { Heading5 } from '@entur/typography';
+import { Heading } from '@entur/typography/beta';
 import { IconButton, PrimaryButton, SecondaryButton } from '@entur/button';
 import { Dropdown } from '@entur/dropdown';
 import { SegmentedChoice, SegmentedControl } from '@entur/form';
@@ -148,7 +148,9 @@ const SettingsPanel = () => {
             explains the situation. */}
         {canOpenBanner && (
           <>
-            <Heading5 as="h3">Informasjonskapsler</Heading5>
+            <Heading as="h3" variant="section-1" spacing={{ top: 'xl' }}>
+              Informasjonskapsler
+            </Heading>
             <SecondaryButton
               size="small"
               style={{ marginTop: '0.5rem' }}

@@ -7,7 +7,7 @@ import {
   GithubIcon,
 } from '@entur/icons';
 import { Link as GatsbyLink } from 'gatsby';
-import { Heading3, Link } from '@entur/typography';
+import { Heading, Link, Text } from '@entur/typography/beta';
 import { Logo } from '@entur/menu';
 
 import { useConsent } from '@providers/ConsentProvider';
@@ -39,7 +39,9 @@ const Footer = ({
           </p>
         </div>
         <nav aria-label="Om nettstedet">
-          <Heading3 margin="bottom">Om nettstedet</Heading3>
+          <Heading as="h3" variant="subtitle-1" spacing={{ bottom: 'xs' }}>
+            Om nettstedet
+          </Heading>
           <Link
             href="https://uustatus.no/nb/erklaringer/publisert/7c5b8f79-7c24-4144-8084-afde897edded"
             className="footer__link"
@@ -64,7 +66,9 @@ const Footer = ({
           )}
         </nav>
         <div>
-          <Heading3 margin="bottom">Kontakt og ressurser</Heading3>
+          <Heading as="h3" variant="subtitle-1" spacing={{ bottom: 'xs' }}>
+            Kontakt og ressurser
+          </Heading>
           <Link
             href="https://entur.slack.com/archives/C899QSPB7"
             className="footer__link"
@@ -92,7 +96,9 @@ const Footer = ({
         </div>
       </div>
       <div className="footer__entur-banner">
-        <span className="eds-label">© {new Date().getFullYear()} Entur AS</span>
+        <Text as="span" variant="label">
+          © {new Date().getFullYear()} Entur AS
+        </Text>
       </div>
     </footer>
   );

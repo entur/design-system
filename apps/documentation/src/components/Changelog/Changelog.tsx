@@ -4,7 +4,7 @@ import { useLocation } from '@reach/router';
 
 import { ForwardIcon } from '@entur/icons';
 import { Tag } from '@entur/layout';
-import { Paragraph, SmallText, StrongText } from '@entur/typography';
+import { Text } from '@entur/typography/beta';
 
 import { ChangelogModal } from '../PageHeader/ChangelogModal';
 import { useGetChangelog } from '../PageHeader/useGetChangelog';
@@ -59,7 +59,7 @@ const Changelog = () => {
   return (
     <div className="changelog-overview">
       {changelogs.length === 0 ? (
-        <Paragraph>Fant ingen changelogger.</Paragraph>
+        <Text>Fant ingen changelogger.</Text>
       ) : (
         <ul className="changelog-overview__list">
           {changelogs.map(changelog => {
@@ -75,7 +75,10 @@ const Changelog = () => {
                   to={urlWithPackage(changelog.name)}
                 >
                   <span className="changelog-card__title">
-                    <StrongText>{`@entur/${changelog.name}`}</StrongText>
+                    <Text
+                      as="strong"
+                      weight="bold"
+                    >{`@entur/${changelog.name}`}</Text>
                     <ForwardIcon
                       className="changelog-card__arrow"
                       aria-hidden="true"
@@ -86,7 +89,9 @@ const Changelog = () => {
                       <Tag size="small">{`v${published.version}`}</Tag>
                     )}
                     {publishedAt && (
-                      <SmallText margin="none">{publishedAt}</SmallText>
+                      <Text as="span" variant="caption">
+                        {publishedAt}
+                      </Text>
                     )}
                   </span>
                 </GatsbyLink>

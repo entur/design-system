@@ -8,7 +8,7 @@ import {
   TableHead,
   TableRow,
 } from '@entur/table';
-import { CodeText } from '@entur/typography';
+import { Text } from '@entur/typography/beta';
 import { formatTokenValue, formatVariable } from '../../utils/formatVariable';
 import { flatten } from '../../utils/flatten';
 import { CopyButton } from './CopyButton';
@@ -52,9 +52,9 @@ export const LegacyTokenTable: React.FC<AllTokensTableProps> = ({
                 </CopyButton>
               </DataCell>
               <DataCell>
-                <CodeText>
+                <Text variant="code">
                   {!isZIndex ? formatTokenValue(value) : value}
-                </CodeText>
+                </Text>
               </DataCell>
               {Example && (
                 <DataCell aria-hidden="true">

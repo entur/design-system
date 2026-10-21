@@ -152,13 +152,13 @@
     &-menu {
       cursor: pointer;
 
-      .eds-code-text {
+      .eds-text--code {
         transition: color 0.15s ease;
       }
 
       &:hover,
       &:focus-visible {
-        .eds-code-text {
+        .eds-text--code {
           background-color: var(--components-button-iconbutton-standard-hover);
         }
       }

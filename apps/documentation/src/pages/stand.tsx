@@ -20,7 +20,7 @@ import { LoadingDots } from '@entur/loader';
 import { SmallAlertBox } from '@entur/alert';
 import { BreadcrumbItem, BreadcrumbNavigation, Logo } from '@entur/menu';
 import { TravelTag } from '@entur/travel';
-import { Heading1, Heading2, Paragraph } from '@entur/typography';
+import { Heading, Text } from '@entur/typography/beta';
 
 import { SEO } from '@components/seo/SEO';
 import {
@@ -905,18 +905,18 @@ const Stand = () => {
         />
         <main ref={contentRef} className="stand__main">
           <header className="stand__hero">
-            <Heading1 className="stand__title">
+            <Heading as="h1" variant="title-1" className="stand__title">
               <span className="stand__title__logo">
                 <Logo />
               </span>
               <span className="stand__title__text">Linje</span>
-            </Heading1>
-            <Paragraph className="stand__subtitle">
-              Entur sitt designsystem!
-            </Paragraph>
+            </Heading>
+            <Text className="stand__subtitle">Entur sitt designsystem!</Text>
           </header>
           <section className="stand__question">
-            <Heading2>Et ord du forbinder med designsystem</Heading2>
+            <Heading as="h2" variant="title-2">
+              Et ord du forbinder med designsystem
+            </Heading>
             <form className="stand__question__form" onSubmit={handleSubmit}>
               <TextField
                 label="Ditt ord"
@@ -932,9 +932,9 @@ const Stand = () => {
             </form>
           </section>
           <section className="stand__cloud">
-            <Paragraph className="stand__cloud__intro">
+            <Text className="stand__cloud__intro">
               Ordene under bygges av alle som bidrar.
-            </Paragraph>
+            </Text>
             <div className="stand__cloud__words">
               {sortedWords.length === 0 && (
                 <span className="stand__cloud__empty">

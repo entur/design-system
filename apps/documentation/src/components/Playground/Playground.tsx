@@ -10,7 +10,7 @@ import { SourceCodeIcon } from '@entur/icons';
 import { Contrast } from '@entur/layout';
 import { Flex } from '@entur/layout/beta';
 import { componentColors } from '@entur/tokens';
-import { Heading3, Heading5, Paragraph } from '@entur/typography';
+import { Heading, Text } from '@entur/typography/beta';
 import { ConditionalWrapper } from '@entur/utils';
 import { useSettings } from '@providers/SettingsContext';
 
@@ -123,8 +123,18 @@ const Playground: React.FC<PlaygroundProps> = ({
     >
       <div className="playground__header">
         <Flex direction="column" justify="center">
-          {title && <Heading3>{title}</Heading3>}
-          {description && <Paragraph>{description}</Paragraph>}
+          {title && (
+            <Heading
+              as="h3"
+              variant="subtitle-1"
+              spacing={{ top: 'xl', bottom: '2xs' }}
+            >
+              {title}
+            </Heading>
+          )}
+          {description && (
+            <Text spacing={{ bottom: '3xl' }}>{description}</Text>
+          )}
           {showViewModeOption && (
             <div className="playground__color-mode-select">
               <SegmentedControl
@@ -210,16 +220,16 @@ const Playground: React.FC<PlaygroundProps> = ({
         </Element>
         {propsState !== undefined && (
           <div className="playground__props-selector">
-            <Heading5
+            <Heading
               as="h2"
-              margin="bottom"
+              variant="section-1"
               style={{
                 height: '2rem',
                 whiteSpace: 'nowrap',
               }}
             >
               {`${componentName}-props`}
-            </Heading5>
+            </Heading>
             <PropsList
               propsState={propsState}
               updatePropState={updatePropState}

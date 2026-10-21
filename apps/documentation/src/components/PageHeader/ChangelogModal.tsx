@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import { Loader } from '@entur/loader';
 import { Modal } from '@entur/modal';
-import { SmallText } from '@entur/typography';
+import { Text } from '@entur/typography/beta';
 
 import { MarkdownParser } from './MarkdownParser';
 
@@ -52,7 +52,9 @@ export const ChangelogModal = ({
       size="large"
       open={open}
     >
-      {failed && <SmallText>Klarte ikke å hente changelogen.</SmallText>}
+      {failed && (
+        <Text variant="caption">Klarte ikke å hente changelogen.</Text>
+      )}
       {!failed &&
         (changelog === null ? (
           <Loader>Henter changelog</Loader>

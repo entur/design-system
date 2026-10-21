@@ -1,6 +1,6 @@
 import React from 'react';
 import './ColorCard.scss';
-import { Heading4, SubParagraph } from '@entur/typography';
+import { Heading, Text } from '@entur/typography/beta';
 import { CopyableText } from '@entur/alert';
 import classNames from 'classnames';
 
@@ -25,27 +25,27 @@ export const ColorCard: React.FC<ColorCardProps> = ({
     <div className={classNames('color-card', className)}>
       <div className="color-card__swatch" style={{ backgroundColor: hex }} />
       <div className="color-card__content">
-        <Heading4 className="color-card__title">
+        <Heading as="h4" variant="subtitle-2" className="color-card__title">
           {colorTitle}
           <CopyableText textToCopy={hex}></CopyableText>
-        </Heading4>
+        </Heading>
 
         <div className="color-card__value">
-          <SubParagraph>HEX</SubParagraph> <span>{hex}</span>
+          <Text variant="subparagraph">HEX</Text> <span>{hex}</span>
         </div>
         {rgb && (
           <div className="color-card__value">
-            <SubParagraph>RGB</SubParagraph> <span>{rgb}</span>
+            <Text variant="subparagraph">RGB</Text> <span>{rgb}</span>
           </div>
         )}
         {cmyk && (
           <div className="color-card__value">
-            <SubParagraph>CMYK</SubParagraph> <span>{cmyk}</span>
+            <Text variant="subparagraph">CMYK</Text> <span>{cmyk}</span>
           </div>
         )}
         {pmsC && (
           <div className="color-card__value">
-            <SubParagraph>PMS-C</SubParagraph> <span>{pmsC}</span>
+            <Text variant="subparagraph">PMS-C</Text> <span>{pmsC}</span>
           </div>
         )}
       </div>

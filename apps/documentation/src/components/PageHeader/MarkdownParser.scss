@@ -17,14 +17,10 @@
     font-size: t.$font-sizes-medium;
 
     // The packages the release moved, a level below the entry that opens
-    // them: subdued, and with a shorter dash than the entry above.
-    .eds-unordered-list .eds-unordered-list {
+    // them: subdued, and closer to it.
+    .eds-text--unordered-list .eds-text--unordered-list {
       color: var(--basecolors-text-subdued);
       margin: t.$space-extra-small t.$space-none t.$space-small;
-
-      .eds-list-item::before {
-        width: t.$space-extra-small;
-      }
     }
   }
 
