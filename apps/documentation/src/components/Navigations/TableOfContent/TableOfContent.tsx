@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useLocation } from '@reach/router';
 import classNames from 'classnames';
-import { Heading4 } from '@entur/typography';
+import { Heading } from '@entur/typography/beta';
 import { ExpandablePanel } from '@entur/expand';
 import {
   getNavbarHeightPx,
@@ -221,9 +221,9 @@ export const TableOfContent: React.FC<{
 
   return (
     <nav className="table-of-content-sidebar" aria-label="Innhold" ref={navRef}>
-      <Heading4 as="h2" style={{ margin: 0, marginBlockEnd: '1rem' }}>
+      <Heading as="h2" variant="subtitle-2" spacing={{ bottom: 'm' }}>
         Innhold
-      </Heading4>
+      </Heading>
       {list}
     </nav>
   );

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Heading4 } from '@entur/typography';
+import { Heading } from '@entur/typography/beta';
 import { GridItem } from '@entur/grid';
 import { SegmentedChoice, SegmentedControl } from '@entur/form';
 import {
@@ -75,7 +75,9 @@ const BaseTokenList: React.FC<TokensTableProps> = ({ tokens }) => {
       <div className="base-token-frame" data-color-mode={colorMode}>
         {Object.entries(categorizedTokens).map(([subCategoryKey, tokens]) => (
           <GridItem small={12} medium={12} large={12} key={subCategoryKey}>
-            <Heading4>{subCategoryKey}</Heading4>
+            <Heading as="h4" variant="subtitle-2" spacing={{ top: 'xl' }}>
+              {subCategoryKey}
+            </Heading>
             <div className="token-table-content">
               <div className="token-table-content--multi-columns">{tokens}</div>
             </div>

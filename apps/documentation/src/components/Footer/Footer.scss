@@ -27,9 +27,10 @@
     margin-bottom: 1rem;
     text-align: start;
 
+    // Resets the button; the link underline is a background image, so only the colour goes
     :where(&) {
       border: none;
-      background: none;
+      background-color: transparent;
       padding-inline: 0;
     }
   }

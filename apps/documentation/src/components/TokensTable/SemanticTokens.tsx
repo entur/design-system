@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heading3, Heading4 } from '@entur/typography';
+import { Heading } from '@entur/typography/beta';
 import { GridItem } from '@entur/grid';
 import {
   formatDotToVariable,
@@ -60,12 +60,20 @@ const SemanticTokenList: React.FC<TokensTableProps> = ({ tokens }) => {
     <>
       {Object.entries(categorizedTokens).map(([categoryKey, subCategories]) => (
         <React.Fragment key={categoryKey}>
-          <Heading3>{categoryKey}</Heading3>
+          <Heading
+            as="h3"
+            variant="subtitle-1"
+            spacing={{ top: 'xl', bottom: '2xs' }}
+          >
+            {categoryKey}
+          </Heading>
 
           {categoryKey === 'fill' &&
             Object.entries(subCategories).map(([subCategoryKey, tokens]) => (
               <GridItem small={12} medium={12} large={12} key={subCategoryKey}>
-                <Heading4>{subCategoryKey}</Heading4>
+                <Heading as="h4" variant="subtitle-2" spacing={{ top: 'xl' }}>
+                  {subCategoryKey}
+                </Heading>
                 <div className="token-table-content">
                   <div className="token-table-content--multi-columns">
                     {tokens}

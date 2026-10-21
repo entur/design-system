@@ -2,7 +2,7 @@
 
 .props__description {
   word-wrap: break-word;
-  > .eds-paragraph {
+  > .eds-text--paragraph {
     margin: 0;
     font-size: tokens.$font-sizes-medium;
     line-height: tokens.$line-heights-medium;
