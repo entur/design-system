@@ -1,79 +1,68 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { Logo } from './Logo';
+import { describeComponentContract } from '../../../tests/jest/componentContract';
 
-test('renders the Entur svg SVG', () => {
+describeComponentContract('Logo', {
+  render: props => <Logo {...props} />,
+  getElement: ({ container }) => container.firstChild as HTMLElement,
+  baseClassName: 'eds-logo',
+  refElement: HTMLDivElement,
+  as: 'nav',
+});
+
+test('identifies the Entur brand without a home link by default', () => {
+  render(<Logo />);
+
+  expect(screen.getByRole('img', { name: 'Entur logo' })).toBeInTheDocument();
+  expect(screen.queryByRole('link')).not.toBeInTheDocument();
+});
+
+test('names the product home link once and activates it by mouse', async () => {
+  const user = userEvent.setup();
+  const onClick = jest.fn(event => event.preventDefault());
+  render(<Logo productName="Tavla" href="/" onClick={onClick} />);
+
+  const home = screen.getByRole('link', { name: 'Entur Tavla logo' });
+  expect(home).toHaveAttribute('href', '/');
+  expect(screen.getByText('Tavla')).toBeVisible();
+  expect(screen.getByText('Tavla')).toHaveAttribute('aria-hidden', 'true');
+  expect(
+    screen.getByRole('img', { name: 'Entur Tavla logo' }),
+  ).toBeInTheDocument();
+
+  await user.click(home);
+  expect(onClick).toHaveBeenCalledTimes(1);
+});
+
+test('focuses and activates the home link by keyboard', async () => {
+  const user = userEvent.setup();
+  const onClick = jest.fn(event => event.preventDefault());
+  render(<Logo href="/" onClick={onClick} />);
+
+  const home = screen.getByRole('link', { name: 'Entur logo' });
+  expect(home).toHaveAttribute('href', '/');
+
+  await user.tab();
+  expect(home).toHaveFocus();
+  await user.keyboard('{Enter}');
+  expect(onClick).toHaveBeenCalledTimes(1);
+});
+
+test('defaults to the medium size modifier', () => {
   const { container } = render(<Logo />);
-  expect(container.querySelector('svg')).toBeInTheDocument();
-  expect(container.querySelector('.eds-logo')).toBeInTheDocument();
+  expect(container.firstChild).toHaveClass('eds-logo--medium');
 });
 
-test('renders with product name', () => {
-  const { getByText } = render(<Logo productName="Tavla" />);
-  expect(getByText('Tavla')).toBeInTheDocument();
-  expect(getByText('Tavla')).toHaveClass('eds-logo__product-name');
+test('applies the small size modifier', () => {
+  const { container } = render(<Logo size="small" />);
+  expect(container.firstChild).toHaveClass('eds-logo--small');
+  expect(container.firstChild).not.toHaveClass('eds-logo--medium');
 });
 
-test('does not render product name span when omitted', () => {
+test('omits the product name when not provided', () => {
   const { container } = render(<Logo />);
   expect(
     container.querySelector('.eds-logo__product-name'),
   ).not.toBeInTheDocument();
-});
-
-test('renders as div by default', () => {
-  const { container } = render(<Logo />);
-  expect(container.firstChild?.nodeName).toBe('DIV');
-});
-
-test('renders as anchor when href is provided', () => {
-  const { container } = render(<Logo href="/" />);
-  expect(container.firstChild?.nodeName).toBe('A');
-  expect(container.firstChild).toHaveAttribute('href', '/');
-});
-
-test('applies size class', () => {
-  const { container, rerender } = render(<Logo size="medium" />);
-  expect(container.querySelector('.eds-logo--medium')).toBeInTheDocument();
-
-  rerender(<Logo size="small" />);
-  expect(container.querySelector('.eds-logo--small')).toBeInTheDocument();
-});
-
-test('defaults to medium size', () => {
-  const { container } = render(<Logo />);
-  expect(container.querySelector('.eds-logo--medium')).toBeInTheDocument();
-});
-
-test('applies additional className', () => {
-  const { container } = render(<Logo className="custom-class" />);
-  expect(container.firstChild).toHaveClass('eds-logo');
-  expect(container.firstChild).toHaveClass('custom-class');
-});
-
-test('supports polymorphic as prop', () => {
-  const { container } = render(<Logo as="nav" />);
-  expect(container.firstChild?.nodeName).toBe('NAV');
-});
-
-test('forwards additional props', () => {
-  const { container } = render(<Logo data-testid="logo" />);
-  expect(container.firstChild).toHaveAttribute('data-testid', 'logo');
-});
-
-test('SVG has combined aria-label with product name', () => {
-  const { container } = render(<Logo productName="Miljødata" />);
-  const svg = container.querySelector('svg');
-  expect(svg).toHaveAttribute('aria-label', 'Entur Miljødata logo');
-});
-
-test('SVG has "Entur logo" aria-label without product name', () => {
-  const { container } = render(<Logo />);
-  const svg = container.querySelector('svg');
-  expect(svg).toHaveAttribute('aria-label', 'Entur logo');
-});
-
-test('product name span is aria-hidden', () => {
-  const { container } = render(<Logo productName="Tavla" />);
-  const span = container.querySelector('.eds-logo__product-name');
-  expect(span).toHaveAttribute('aria-hidden', 'true');
 });

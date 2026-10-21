@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { act } from 'react';
@@ -154,13 +153,37 @@ describe('SideNavigation.ExpandableItem (beta)', () => {
       </SideNavigation>,
     );
 
-    expect(screen.getByRole('button', { name: /Utvidbar/ })).toHaveAttribute(
-      'aria-expanded',
-      'true',
+    const trigger = screen.getByRole('button', { name: /Utvidbar/ });
+    expect(trigger).toHaveAttribute('aria-expanded', 'true');
+    expect(trigger).not.toHaveAttribute('aria-current');
+    expect(screen.getByRole('link', { name: 'Aktiv' })).toHaveAttribute(
+      'aria-current',
+      'page',
     );
   });
 
-  it('marks an expandable item whose submenu holds the active page', async () => {
+  it('keeps an active expandable item current when opened', async () => {
+    const user = userEvent.setup();
+    render(
+      <SideNavigation>
+        <SideNavigation.ExpandableItem title="Utvidbar" active>
+          <SideNavigation.Item href="/a">Underelement</SideNavigation.Item>
+        </SideNavigation.ExpandableItem>
+      </SideNavigation>,
+    );
+
+    const trigger = screen.getByRole('button', { name: /Utvidbar/ });
+    expect(trigger).toHaveAttribute('aria-expanded', 'false');
+    expect(trigger).toHaveAttribute('aria-current', 'page');
+
+    await user.click(trigger);
+
+    expect(trigger).toHaveAttribute('aria-expanded', 'true');
+    expect(trigger).toHaveAttribute('aria-current', 'page');
+  });
+
+  // Regression: an open item highlighted itself as well as its active submenu row
+  it('leaves the highlight to the active submenu row while open', async () => {
     const user = userEvent.setup();
     render(
       <SideNavigation>
@@ -172,15 +195,11 @@ describe('SideNavigation.ExpandableItem (beta)', () => {
       </SideNavigation>,
     );
 
-    // Opened by the active descendant, so the label is bold but --open keeps
-    // the background off
     const trigger = screen.getByRole('button', { name: /Utvidbar/ });
     expect(trigger).toHaveClass(
       'eds-side-navigation-beta__click-target--active',
       'eds-side-navigation-beta__click-target--open',
     );
-    // The submenu is the one row that is the active page
-    expect(trigger).not.toHaveAttribute('aria-current');
 
     await user.click(trigger);
 
@@ -212,13 +231,10 @@ describe('SideNavigation.ExpandableItem (beta)', () => {
 
     await user.click(trigger);
 
-    // Still the current page, so still bold — --open resets the background the
-    // same class would otherwise draw
     expect(trigger).toHaveClass(
       'eds-side-navigation-beta__click-target--active',
       'eds-side-navigation-beta__click-target--open',
     );
-    expect(trigger).toHaveAttribute('aria-current', 'page');
   });
 
   it('shows the alert dot for a submenu that has one, only while collapsed', async () => {
