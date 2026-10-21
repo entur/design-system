@@ -17,7 +17,7 @@ import {
 
 import './text.scss';
 
-type TextBaseProps = {
+export type TextOwnProps = {
   /** Visuell tekststørrelse (typografi-token) */
   size?: 'xs' | 's' | 'm' | 'lg' | 'xl';
   /** Fontvekt: `medium` (500) eller `bold` (600) */
@@ -25,46 +25,53 @@ type TextBaseProps = {
   /** Variant (kan brukes til spesielle typer tekst som for eksempel caption) */
   variant?: TypographyTextVariant;
   /** Innhold */
-  children: React.ReactNode;
+  children?: React.ReactNode;
   /** Spacing around the component */
   spacing?: TypographySpacing;
   /** Ekstra klassenavn */
   className?: string;
 };
 
-export type TextProps<C extends React.ElementType> = PolymorphicComponentProps<
-  C,
-  TextBaseProps
->;
+export type TextProps<C extends React.ElementType = 'p'> =
+  PolymorphicComponentProps<C, TextOwnProps>;
 
-const TypographyText = <C extends React.ElementType = 'p'>({
-  children,
-  as,
-  size,
-  variant,
-  weight,
-  spacing,
-  className,
-  ...rest
-}: TextProps<C>) => {
-  const BodyElement = as || getSemanticTypeFromTextVariant(variant);
+export type TextComponent = (<C extends React.ElementType = 'p'>(
+  props: TextProps<C> & { ref?: React.Ref<Element> },
+) => React.ReactElement | null) & { displayName?: string };
 
-  return (
-    <BodyElement
-      className={classNames(
-        'eds-text',
-        variant && `eds-text--${variant}`,
-        size && `eds-text--${size}`,
-        weight && `eds-text--weight-${weight}`,
-        getSpacingClasses(spacing, 'eds-text'),
-        className,
-      )}
-      {...rest}
-    >
-      {children}
-    </BodyElement>
-  );
-};
+export const Text = React.forwardRef(
+  <C extends React.ElementType = 'p'>(
+    {
+      children,
+      as,
+      size,
+      variant,
+      weight,
+      spacing,
+      className,
+      ...rest
+    }: TextProps<C>,
+    ref?: React.Ref<Element>,
+  ): JSX.Element => {
+    const BodyElement: React.ElementType =
+      as || getSemanticTypeFromTextVariant(variant);
 
-// Export as Text to avoid DOM conflicts
-export const Text = TypographyText;
+    return (
+      <BodyElement
+        ref={ref}
+        className={classNames(
+          'eds-text',
+          variant && `eds-text--${variant}`,
+          size && `eds-text--${size}`,
+          weight && `eds-text--weight-${weight}`,
+          getSpacingClasses(spacing, 'eds-text'),
+          className,
+        )}
+        {...rest}
+      >
+        {children}
+      </BodyElement>
+    );
+  },
+) as TextComponent;
+Text.displayName = 'Text';
