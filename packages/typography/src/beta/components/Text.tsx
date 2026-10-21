@@ -22,6 +22,8 @@ export type TextOwnProps = TypographySpacingProps & {
   size?: 'xs' | 's' | 'm' | 'lg' | 'xl';
   /** Fontvekt: `medium` (500) eller `bold` (600) */
   weight?: 'medium' | 'bold';
+  /** Dempet tekst for sekundær informasjon, som metadata og hjelpetekst. Velger riktig farge i kontrast- og mørk modus. */
+  tone?: 'subdued';
   /** Variant (kan brukes til spesielle typer tekst som for eksempel caption).
    * Uten variant blir teksten `paragraph` når den står for seg selv (`p`, `div`, `li` …), og arver
    * størrelse, farge og vekt når den står inne i annen tekst (`span`, `strong`, en komponent …). */
@@ -48,6 +50,7 @@ export type TextOwnProps = TypographySpacingProps & {
 export type TypographyTextVariant = NonNullable<TextOwnProps['variant']>;
 export type TypographyTextSize = NonNullable<TextOwnProps['size']>;
 export type TypographyWeight = NonNullable<TextOwnProps['weight']>;
+export type TypographyTone = NonNullable<TextOwnProps['tone']>;
 
 export type TextProps<C extends React.ElementType = 'p'> =
   PolymorphicComponentProps<C, TextOwnProps>;
@@ -67,6 +70,7 @@ export const Text = React.forwardRef(
       size,
       variant,
       weight,
+      tone,
       spacing,
       style,
       trim,
@@ -87,6 +91,7 @@ export const Text = React.forwardRef(
           `eds-text--${usedVariant}`,
           size && `eds-text--${size}`,
           weight && `eds-text--weight-${weight}`,
+          tone && `eds-text--tone-${tone}`,
           trim && 'eds-text--trim',
           className,
         )}

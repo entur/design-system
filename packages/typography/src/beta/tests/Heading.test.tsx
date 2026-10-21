@@ -34,6 +34,11 @@ describe('Heading Component', () => {
     expect(getByText('Title 1')).toHaveClass('eds-heading--title-1');
   });
 
+  test('applies the subdued tone', () => {
+    const { getByText } = render(<Heading tone="subdued">Sekundær</Heading>);
+    expect(getByText('Sekundær')).toHaveClass('eds-heading--tone-subdued');
+  });
+
   test('applies size classes correctly', () => {
     const { getByText } = render(
       <Heading as="h1" size="xl">

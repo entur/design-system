@@ -120,6 +120,11 @@ describe('Text Component', () => {
     expect(getByText('Bold text')).toHaveClass('eds-text--weight-bold');
   });
 
+  test('applies the subdued tone', () => {
+    const { getByText } = render(<Text tone="subdued">Metadata</Text>);
+    expect(getByText('Metadata')).toHaveClass('eds-text--tone-subdued');
+  });
+
   test('applies spacing', () => {
     const { getByText } = render(<Text spacing="none">Text with spacing</Text>);
     expect(getByText('Text with spacing')).toHaveStyle({
