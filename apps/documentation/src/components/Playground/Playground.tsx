@@ -220,14 +220,7 @@ const Playground: React.FC<PlaygroundProps> = ({
         </Element>
         {propsState !== undefined && (
           <div className="playground__props-selector">
-            <Heading
-              as="h2"
-              variant="section-1"
-              style={{
-                height: '2rem',
-                whiteSpace: 'nowrap',
-              }}
-            >
+            <Heading as="h2" variant="section-1" spacing={{ bottom: 'xs' }}>
               {`${componentName}-props`}
             </Heading>
             <PropsList

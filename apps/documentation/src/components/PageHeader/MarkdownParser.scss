@@ -20,7 +20,6 @@
     // them: subdued, and closer to it.
     .eds-text--unordered-list .eds-text--unordered-list {
       color: var(--basecolors-text-subdued);
-      margin: t.$space-extra-small t.$space-none t.$space-small;
     }
   }
 
@@ -30,22 +29,8 @@
     text-align: left;
   }
 
-  // The longer description from the commit message, shown under the entry.
-  // Nested to win over the block margins the typography components set.
-  .markdown-parser__description {
-    color: var(--basecolors-text-subdued);
-    // Sets the entry apart from the next one in the list.
-    margin-bottom: t.$space-small;
-
-    > * {
-      font-size: t.$font-sizes-medium;
-      line-height: t.$line-heights-large;
-      margin-top: t.$space-extra-small;
-      margin-bottom: t.$space-extra-small;
-    }
-
-    > :last-child {
-      margin-bottom: t.$space-none;
-    }
+  // The longer description from the commit message, shown under the entry
+  &__description {
+    margin-block: t.$space-extra-small t.$space-small;
   }
 }

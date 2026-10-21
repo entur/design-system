@@ -25,7 +25,7 @@ export const TokenFormatInfo: React.FC<TokenTableFormatInfoProps> = ({
           className="token-table__format-menu"
           button={
             <span className="token-table__format-menu-button">
-              <Text variant="code" style={{ paddingInline: '0.5rem' }}>
+              <Text variant="code">
                 {variableFormat.toUpperCase()}{' '}
                 <DownArrowIcon inline style={{ top: '0.1rem' }} />
               </Text>

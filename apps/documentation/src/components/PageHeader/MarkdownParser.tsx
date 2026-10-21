@@ -158,7 +158,9 @@ const ChangelogEntry = ({
   return (
     <ListItem {...rest}>
       {summary.props.children}
-      <div className="markdown-parser__description">{description}</div>
+      <TextContainer className="markdown-parser__description">
+        {description}
+      </TextContainer>
     </ListItem>
   );
 };

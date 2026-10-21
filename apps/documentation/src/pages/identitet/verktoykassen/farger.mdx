@@ -10,6 +10,7 @@ order: 4
 import { graphql } from 'gatsby'
 import { SEO } from '@components/seo/SEO';
 import { borderWidths, colors, space } from '@entur/tokens';
+import { Flex } from '@entur/layout/beta';
 import ColorCardList from '@components/Colors/ColorCardList';
 import './farger.scss';
 
@@ -84,50 +85,60 @@ Hvordan fargene vektes er en viktig del av å skape det ønskede uttrykket for E
 
 ### Eksempler
 
-<div className="identitet-farger__eksempler">
-
-<ImageDisplay
-  imgSource={
-    props.data.files.images.find(image => image.name === 'plakat')
-      ?.childImageSharp.gatsbyImageData
-  }
-  alt="Viser eksempel på vekting på plakat"
-  preset="full-width-image"
-/>
-<Text>Entur verdi plakat</Text>
-
-
-<ImageDisplay
-  imgSource={
-    props.data.files.images.find(image => image.name === 'web')
-      ?.childImageSharp.gatsbyImageData
-  }
-  alt="Viser eksempel på vekting på web"
-  preset="full-width-image"
-/>
-<Text>Entur app</Text>
-
-<ImageDisplay
-  imgSource={
-    props.data.files.images.find(image => image.name === 'interneapp')
-      ?.childImageSharp.gatsbyImageData
-  }
-  alt="Viser eksempel på vekting på web"
-  preset="full-width-image"
-/>
-<Text>Entur interne applikasjoner</Text>
-
-<ImageDisplay
-  imgSource={
-    props.data.files.images.find(image => image.name === 'mobil')
-      ?.childImageSharp.gatsbyImageData
-  }
-  alt="Viser eksempel på vekting på mobil"
-  preset="full-width-image"
-/>
-
-<Text>Entur web</Text>
-</div>
+<Flex direction="column" gap="9xl" className="identitet-farger__eksempler">
+  <figure>
+    <ImageDisplay
+      imgSource={
+        props.data.files.images.find(image => image.name === 'plakat')
+          ?.childImageSharp.gatsbyImageData
+      }
+      alt="Viser eksempel på vekting på plakat"
+      preset="full-width-image"
+    />
+    <Text as="figcaption" spacing={{ top: 's' }}>
+      Entur verdi plakat
+    </Text>
+  </figure>
+  <figure>
+    <ImageDisplay
+      imgSource={
+        props.data.files.images.find(image => image.name === 'web')
+          ?.childImageSharp.gatsbyImageData
+      }
+      alt="Viser eksempel på vekting på web"
+      preset="full-width-image"
+    />
+    <Text as="figcaption" spacing={{ top: 's' }}>
+      Entur app
+    </Text>
+  </figure>
+  <figure>
+    <ImageDisplay
+      imgSource={
+        props.data.files.images.find(image => image.name === 'interneapp')
+          ?.childImageSharp.gatsbyImageData
+      }
+      alt="Viser eksempel på vekting på web"
+      preset="full-width-image"
+    />
+    <Text as="figcaption" spacing={{ top: 's' }}>
+      Entur interne applikasjoner
+    </Text>
+  </figure>
+  <figure>
+    <ImageDisplay
+      imgSource={
+        props.data.files.images.find(image => image.name === 'mobil')
+          ?.childImageSharp.gatsbyImageData
+      }
+      alt="Viser eksempel på vekting på mobil"
+      preset="full-width-image"
+    />
+    <Text as="figcaption" spacing={{ top: 's' }}>
+      Entur web
+    </Text>
+  </figure>
+</Flex>
 
 ### Unngå..
 

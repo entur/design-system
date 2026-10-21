@@ -10,12 +10,9 @@
       padding: 48px;
     }
 
-    .eds-text--paragraph:not(:last-child) {
-      margin-bottom: 5rem;
-
-      @include breakpoint.for-desktop {
-        margin-bottom: 9rem;
-      }
+    // The browser indents figures
+    figure {
+      margin: 0;
     }
   }
 

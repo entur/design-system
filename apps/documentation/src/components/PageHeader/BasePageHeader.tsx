@@ -32,8 +32,8 @@ export const BasePageHeader: React.FC<BasePageHeaderProps> = ({
     <header className="page-header">
       {subcategory && (
         <div className="page-header__subcategory-wrapper">
-          <Text variant="label" className="page-header__subcategory-label">
-            {subcategory.toUpperCase()}
+          <Text variant="overline" spacing={{ bottom: 'xs' }}>
+            {subcategory}
           </Text>
         </div>
       )}
@@ -53,8 +53,9 @@ export const BasePageHeader: React.FC<BasePageHeaderProps> = ({
           rowStart={1}
           rowEnd={2}
           align="baseline"
+          gap="m"
         >
-          <Heading as="h1" variant="title-1" className="page-header__heading">
+          <Heading as="h1" variant="title-1">
             {title}
           </Heading>
           {tag && <ArticleTag tag={tag} />}
@@ -103,11 +104,7 @@ export const BasePageHeader: React.FC<BasePageHeaderProps> = ({
         </Grid.Item>
       </Grid>
       {description && (
-        <Text
-          variant="leading"
-          spacing={{ top: 'xl', bottom: 'xl' }}
-          className="page-header__description"
-        >
+        <Text variant="leading" spacing={{ top: 'm', bottom: 'xl' }}>
           {description}
         </Text>
       )}
