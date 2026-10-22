@@ -78,6 +78,10 @@ Without a source, `<Text variant="quote">` alone is enough.
 
   `Label` takes `htmlFor`, `spacing`, `className` and the other `<label>` attributes. Keep `Text variant="label"` for label-styled text that doesn't label a field.
 
+## `label` and `sublabel` are removed from `Heading`
+
+Use `Text variant="label"` or `Text variant="sublabel"`, or `Label` when the text labels a form field.
+
 ## `weight`
 
 Only `medium` (500) and `bold` (600) are valid. The other values are removed, so TypeScript reports them.
