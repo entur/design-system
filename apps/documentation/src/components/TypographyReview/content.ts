@@ -88,6 +88,16 @@ export const questions: Question[] = [
     owner: 'Design + kode',
     topic: 'tekst',
   },
+  {
+    id: 'S10',
+    title: 'Stor tekst for landingssider',
+    context:
+      'Største overskrift er 40 px. Forsiden, omtur, entur-clients og ai-portal lager egne, større titler. «display» er allerede navnet på en visningsmodus.',
+    proposal:
+      'Heading size="3xl" (56/60) og "4xl" (72/76), krymper mot 40 px på mobil og har litt tettere bokstavavstand. Designer bestemmer verdiene for alle tre modusene.',
+    owner: 'Design',
+    topic: 'overskrifter',
+  },
 ];
 
 export type Decision = { id: string; title: string; why: string };
