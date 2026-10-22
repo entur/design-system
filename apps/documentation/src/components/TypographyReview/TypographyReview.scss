@@ -136,6 +136,29 @@
     }
   }
 
+  // Figma next to code at the same width, scrolling sideways on narrow screens
+  &__figma-compare {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-xl);
+    overflow-x: auto;
+
+    > * {
+      flex: none;
+    }
+  }
+
+  &__figma-image {
+    display: block;
+    max-width: none;
+  }
+
+  &__figma-frame {
+    box-sizing: border-box;
+    width: 648px;
+    padding: 32px 24px;
+  }
+
   &__stage {
     padding: var(--spacing-2xl);
     border: 1px solid var(--basecolors-stroke-subdued);

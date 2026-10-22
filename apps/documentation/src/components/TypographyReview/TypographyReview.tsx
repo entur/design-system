@@ -78,6 +78,7 @@ import {
   Spec,
   Stage,
 } from './helpers';
+import { FigmaArticle } from './FigmaArticle';
 import { RhythmTable } from './RhythmTable';
 
 import './TypographyReview.scss';
@@ -178,7 +179,7 @@ const topics: Topic[] = [
     ],
     decisions: ['B2', 'B3', 'B4', 'B5', 'B16', 'B23', 'B24'],
     questions: ['S1', 'S2'],
-    scenarios: ['Artikkel', 'Kort', 'Alle mellomrom'],
+    scenarios: ['Artikkel', 'Kort', 'Alle mellomrom', 'Figma-artikkel'],
     render: ({ scenario }) =>
       scenario === 'Kort' ? (
         <WithGaps>
@@ -209,6 +210,10 @@ const topics: Topic[] = [
         </WithGaps>
       ) : scenario === 'Alle mellomrom' ? (
         <RhythmTable />
+      ) : scenario === 'Figma-artikkel' ? (
+        <WithGaps>
+          <FigmaArticle />
+        </WithGaps>
       ) : (
         <WithGaps>
           <Compare today={<OldArticle />} now={<Article />} />
