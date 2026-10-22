@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react';
 import dts from 'vite-plugin-dts';
 import { resolve } from 'path';
 import pkg from './package.json';
+import { stylesWithoutBaseTokensPlugin } from '../../vite.utils';
 
 // Main config for backward-compatible src build
 // This maintains the old structure with individual component files
@@ -17,6 +18,7 @@ export default defineConfig({
       // Stop aliasing @entur to ../../packages
       pathsToAliases: false,
     }),
+    stylesWithoutBaseTokensPlugin(),
   ],
   build: {
     lib: {
