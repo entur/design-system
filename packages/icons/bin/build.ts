@@ -8,6 +8,10 @@ import { loadConfig } from 'svgo';
 import { Config, transform } from '@svgr/core';
 import { colors, transport } from '@entur/tokens';
 import template from './template';
+import {
+  STYLES_WITHOUT_BASE_TOKENS,
+  removeBaseTokens,
+} from '../../../vite.utils';
 
 type Component = {
   name: string;
@@ -185,6 +189,10 @@ async function createStyleFiles() {
       { from: undefined },
     );
     fs.outputFileSync('./dist/styles.css', processed.css);
+    fs.outputFileSync(
+      `./dist/${STYLES_WITHOUT_BASE_TOKENS}`,
+      removeBaseTokens(processed.css),
+    );
   } catch (e) {
     console.error(
       '\u001b[31mERROR: Icon style build failed.\n------------------\u001b[0m\n',
