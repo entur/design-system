@@ -136,7 +136,7 @@ No API change.
 ## Exports
 
 - Removed: `Blockquote`, `BlockquoteFooter`, and the `external` and `ariaLabelExternalIcon` props on `Link`.
-- New: `Label`, `TextContainer`, `tone="subdued"` on `Text` and `Heading` (replaces CSS that sets the subdued text colour), and `*Props`/`*OwnProps` types for each component.
+- New: `Label`, `TextContainer`, `tone="subdued"` on `Text` and `Heading` (replaces CSS that sets the subdued text colour), `maxLines` on `Text` and `Heading` (replaces your own `text-overflow` or `line-clamp`), and `*Props`/`*OwnProps` types for each component.
 - `TypographySpacing` now includes the object form `{ top, bottom }`.
 
 ## CSS class names
