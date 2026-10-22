@@ -8,6 +8,10 @@
   font-family: inherit;
   z-index: t.$z-indexes-popover;
 
+  // A fixed popover is no longer narrowed by its container, so keep it inside
+  // the viewport with the same padding shift() keeps to the edges
+  max-width: calc(100% - 2 * t.$space-extra-small);
+
   .eds-contrast & {
     background: var(--components-tooltip-popover-contrast-fill);
     box-shadow: t.$shadows-box-shadow-contrast;
