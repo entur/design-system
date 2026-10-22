@@ -4,10 +4,21 @@
 @use '@entur/tokens/dist/styles' as t;
 
 @layer components.primitives {
+  // Code in hyphenated text keeps its words whole
+  :where(.eds-text, .eds-text-container) :where(code, kbd, samp, pre) {
+    hyphens: manual;
+  }
+
   .eds-text {
     color: var(--components-typography-basetext-standard-text-accent);
     font-weight: var(--font-weight-body);
+    overflow-wrap: break-word;
     text-wrap: pretty;
+
+    // Long compound words break with a hyphen where the page sets a Norwegian lang
+    &:where(:lang(nb), :lang(nn), :lang(no)) {
+      hyphens: auto;
+    }
 
     :where(.eds-contrast) & {
       color: var(--components-typography-basetext-contrast-text-accent);
@@ -81,6 +92,7 @@
       font-family: var(--font-family-mono);
       font-size: 0.875em;
       font-weight: inherit;
+      hyphens: manual;
 
       :where(.eds-contrast) & {
         background-color: var(--components-typography-codetext-contrast-fill);
@@ -125,6 +137,7 @@
     &--inherit {
       color: inherit;
       font-weight: inherit;
+      hyphens: inherit;
 
       // A heading element takes the size around it too, not the browser's
       &:where(h1, h2, h3, h4, h5, h6) {

@@ -82,6 +82,11 @@ $text-after: (
       margin-block-start: var(--eds-text-container-gap);
     }
 
+    // Text from a CMS breaks long words like Text does
+    > :where(p, li, ul, ol, blockquote):where(:lang(nb), :lang(nn), :lang(no)) {
+      hyphens: auto;
+    }
+
     // Browsers indent figure and blockquote, which a quote with its source sits in
     > :where(figure, blockquote) {
       margin-inline: 0;

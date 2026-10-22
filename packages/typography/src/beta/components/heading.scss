@@ -5,6 +5,7 @@
   .eds-heading {
     color: var(--components-typography-basetext-standard-text-accent);
     font-weight: var(--font-weight-heading);
+    overflow-wrap: break-word;
     text-wrap: balance;
 
     :where(.eds-contrast) & {
