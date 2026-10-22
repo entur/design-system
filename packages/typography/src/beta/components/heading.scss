@@ -42,16 +42,6 @@
       line-height: var(--font-line-height-heading-xs);
     }
 
-    &--label {
-      font-size: var(--font-size-label-m);
-      line-height: var(--font-line-height-label-m);
-    }
-
-    &--sublabel {
-      font-size: var(--font-size-label-s);
-      line-height: var(--font-line-height-label-s);
-    }
-
     // Same specificity as the variants, so these must follow them for size to win
     &--2xl {
       font-size: var(--font-size-heading-2xl);
