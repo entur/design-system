@@ -227,6 +227,7 @@ const topics: Topic[] = [
       'Jevne linjeskift',
     ],
     decisions: ['B6', 'B19', 'B21'],
+    questions: ['S10'],
     render: () => (
       <Compare
         today={
