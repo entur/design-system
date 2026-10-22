@@ -120,6 +120,18 @@ describe('Text Component', () => {
     expect(getByText('Bold text')).toHaveClass('eds-text--weight-bold');
   });
 
+  test('cuts the text after maxLines and keeps the style prop', () => {
+    const { getByText } = render(
+      <Text maxLines={2} style={{ color: 'red' }}>
+        Lang tekst
+      </Text>,
+    );
+    const text = getByText('Lang tekst');
+    expect(text).toHaveClass('eds-text--max-lines');
+    expect(text.style.getPropertyValue('--eds-text-max-lines')).toBe('2');
+    expect(text).toHaveStyle({ color: 'red' });
+  });
+
   test('applies the subdued tone', () => {
     const { getByText } = render(<Text tone="subdued">Metadata</Text>);
     expect(getByText('Metadata')).toHaveClass('eds-text--tone-subdued');

@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import { TypographySpacingProps } from '../types';
 import {
   getHeadingVariantFromSemanticType,
+  getMaxLinesStyle,
   getSpacingStyle,
 } from '../utils/utils';
 import { PolymorphicComponentProps } from '@entur/utils';
@@ -30,6 +31,8 @@ export type HeadingOwnProps = TypographySpacingProps & {
   children?: React.ReactNode;
   /** Fjerner luften over versalhøyden og under grunnlinjen, så teksten flukter med elementer ved siden av. Har ingen effekt i nettlesere uten støtte for `text-box`. */
   trim?: boolean;
+  /** Kutter teksten etter så mange linjer og avslutter med «…». Hele teksten må kunne leses et annet sted, for eksempel på en egen side. */
+  maxLines?: number;
   /** Ekstra klassenavn for tilpasset styling */
   className?: string;
 };
@@ -62,6 +65,7 @@ export const Heading = React.forwardRef(
       spacing,
       style,
       trim,
+      maxLines,
       className,
       ...rest
     }: HeadingProps<C>,
@@ -81,9 +85,10 @@ export const Heading = React.forwardRef(
           size && `eds-heading--${size}`,
           tone && `eds-heading--tone-${tone}`,
           trim && 'eds-heading--trim',
+          maxLines && 'eds-heading--max-lines',
           className,
         )}
-        style={getSpacingStyle(spacing, style)}
+        style={getSpacingStyle(spacing, getMaxLinesStyle(maxLines, style))}
         {...rest}
       >
         {children}

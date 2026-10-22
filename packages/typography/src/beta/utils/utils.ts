@@ -64,6 +64,17 @@ export function getSpacingStyle(
 }
 
 /**
+ * Pass maxLines on to the CSS, which cuts the text after that many lines
+ */
+export function getMaxLinesStyle(
+  maxLines: number | undefined,
+  style?: React.CSSProperties,
+): React.CSSProperties | undefined {
+  if (!maxLines) return style;
+  return { '--eds-text-max-lines': maxLines, ...style } as React.CSSProperties;
+}
+
+/**
  * Get heading variant based on semantic HTML element
  */
 export function getHeadingVariantFromSemanticType(

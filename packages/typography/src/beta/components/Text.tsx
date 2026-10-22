@@ -7,6 +7,7 @@ import { PolymorphicComponentProps } from '@entur/utils';
 import {
   getDefaultTextVariant,
   getSemanticTypeFromTextVariant,
+  getMaxLinesStyle,
   getSpacingStyle,
 } from '../utils/utils';
 
@@ -43,6 +44,8 @@ export type TextOwnProps = TypographySpacingProps & {
   children?: React.ReactNode;
   /** Fjerner luften over versalhøyden og under grunnlinjen, så teksten flukter med elementer ved siden av. Har ingen effekt i nettlesere uten støtte for `text-box`. */
   trim?: boolean;
+  /** Kutter teksten etter så mange linjer og avslutter med «…». Hele teksten må kunne leses et annet sted, for eksempel på en egen side. */
+  maxLines?: number;
   /** Ekstra klassenavn */
   className?: string;
 };
@@ -74,6 +77,7 @@ export const Text = React.forwardRef(
       spacing,
       style,
       trim,
+      maxLines,
       className,
       ...rest
     }: TextProps<C>,
@@ -93,9 +97,10 @@ export const Text = React.forwardRef(
           weight && `eds-text--weight-${weight}`,
           tone && `eds-text--tone-${tone}`,
           trim && 'eds-text--trim',
+          maxLines && 'eds-text--max-lines',
           className,
         )}
-        style={getSpacingStyle(spacing, style)}
+        style={getSpacingStyle(spacing, getMaxLinesStyle(maxLines, style))}
         {...rest}
       >
         {children}
