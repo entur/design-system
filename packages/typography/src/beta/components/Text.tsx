@@ -40,6 +40,7 @@ export type TextOwnProps = TypographySpacingProps & {
 };
 
 export type TypographyTextVariant = NonNullable<TextOwnProps['variant']>;
+export type TypographyTextSize = NonNullable<TextOwnProps['size']>;
 export type TypographyWeight = NonNullable<TextOwnProps['weight']>;
 
 export type TextProps<C extends React.ElementType = 'p'> =

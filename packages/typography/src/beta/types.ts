@@ -1,3 +1,9 @@
+import type { TypographyHeadingSize } from './components/Heading';
+import type { TypographyTextSize } from './components/Text';
+
+/** Every font size in the typography, on headings and text */
+export type TypographySize = TypographyHeadingSize | TypographyTextSize;
+
 // The unions stay inline so the props table on the docs site lists the values
 export type TypographySpacingProps = {
   /**

@@ -30,7 +30,7 @@ export type HeadingOwnProps = TypographySpacingProps & {
 };
 
 export type TypographyHeadingVariant = NonNullable<HeadingOwnProps['variant']>;
-export type TypographySize = NonNullable<HeadingOwnProps['size']>;
+export type TypographyHeadingSize = NonNullable<HeadingOwnProps['size']>;
 
 export type HeadingProps<C extends React.ElementType = typeof defaultElement> =
   PolymorphicComponentProps<C, HeadingOwnProps>;
