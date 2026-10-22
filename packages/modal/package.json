@@ -55,7 +55,9 @@
       "default": "./dist/modal.mjs"
     },
     "./styles": "./dist/styles.css",
+    "./styles/no-base-tokens": "./dist/styles.no-base-tokens.css",
     "./dist/styles.css": "./dist/styles.css",
+    "./dist/styles.no-base-tokens.css": "./dist/styles.no-base-tokens.css",
     "./package.json": "./package.json"
   }
 }
