@@ -1,6 +1,43 @@
 // Beta typography running text - experimental features
 // These styles may have breaking changes in future releases
 
+@use 'sass:list';
+
+// Space after each kind of text in a TextContainer. One row per token, with the elements,
+// variants and sizes that share it. An hgroup takes the space after of the heading in it.
+//   token: (elements, variants, sizes)
+// prettier-ignore
+$heading-after: (
+  'heading-xl': (h1 h2, 'title-1' 'title-2', '2xl' 'xl'),
+  'heading-lg': (h3,    'subtitle-1',        'lg'),
+  'heading-m':  (h4,    'subtitle-2',        'm'),
+  'heading-s':  (h5,    'section-1',         's'),
+  'heading-xs': (h6,    'section-2',         'xs'),
+);
+
+// Text uses its line height as the space after, labels and the overline their paragraph spacing
+// prettier-ignore
+$text-after: (
+  'line-height-body-xl':       ((),                    'leading',                                                'xl'),
+  'line-height-body-lg':       (ul ol blockquote pre, 'quote' 'unordered-list' 'numbered-list' 'preformatted', 'lg'),
+  'line-height-body-m':        ((),                    'paragraph',                                              'm'),
+  'line-height-body-s':        ((),                    'subparagraph',                                           's'),
+  'line-height-body-xs':       ((),                    'caption',                                                'xs'),
+  'paragraph-spacing-body-xs': ((),                    'label' 'sublabel',                                       ()),
+  'paragraph-spacing-body-m':  ((),                    'overline',                                               ()),
+);
+
+// .eds-text--a, .eds-text--b … for a list of names
+@function classes($block, $names) {
+  $selectors: ();
+
+  @each $name in $names {
+    $selectors: list.append($selectors, '.#{$block}--#{$name}', $separator: comma);
+  }
+
+  @return $selectors;
+}
+
 // Set on a child, read by that child only: inheriting would leak into nested containers
 @property --eds-text-container-after {
   syntax: '*';
@@ -68,42 +105,30 @@
       --eds-text-container-before: var(--font-paragraph-spacing-heading-lg);
     }
 
-    // Space after, set on the next element. Elements first, so a class on the same element wins.
-    // An hgroup takes the space after of the heading in it
-    > :where(h1, hgroup:has(> h1)) + * {
-      --eds-text-container-after: var(--font-paragraph-spacing-heading-xl);
+    // Space after, set on the next element. Elements first, then variants, then sizes,
+    // so on the same element a class wins over the element and a size over its variant.
+    @each $token, $row in $heading-after {
+      $elements: list.join((), list.nth($row, 1), $separator: comma);
+
+      > :where(#{$elements}, hgroup:has(> :is(#{$elements}))) + * {
+        --eds-text-container-after: var(--font-paragraph-spacing-#{$token});
+      }
     }
 
-    > :where(h2, hgroup:has(> h2)) + * {
-      --eds-text-container-after: var(--font-paragraph-spacing-heading-xl);
+    @each $token, $row in $text-after {
+      $elements: list.join((), list.nth($row, 1), $separator: comma);
+
+      @if list.length($elements) > 0 {
+        > :where(#{$elements}) + * {
+          --eds-text-container-after: var(--font-#{$token});
+        }
+      }
     }
 
-    > :where(h3, hgroup:has(> h3)) + * {
-      --eds-text-container-after: var(--font-paragraph-spacing-heading-lg);
-    }
-
-    > :where(h4, hgroup:has(> h4)) + * {
-      --eds-text-container-after: var(--font-paragraph-spacing-heading-m);
-    }
-
-    > :where(h5, hgroup:has(> h5)) + * {
-      --eds-text-container-after: var(--font-paragraph-spacing-heading-s);
-    }
-
-    > :where(h6, hgroup:has(> h6)) + * {
-      --eds-text-container-after: var(--font-paragraph-spacing-heading-xs);
-    }
-
-    > :where(ul, ol, blockquote, pre) + * {
-      --eds-text-container-after: var(--font-line-height-body-lg);
-    }
-
-    > :where(.eds-text--leading) + * {
-      --eds-text-container-after: var(--font-line-height-body-xl);
-    }
-
-    > :where(.eds-text--quote, .eds-text--unordered-list, .eds-text--numbered-list, .eds-text--preformatted) + * {
-      --eds-text-container-after: var(--font-line-height-body-lg);
+    @each $token, $row in $text-after {
+      > :where(#{classes('eds-text', list.nth($row, 2))}) + * {
+        --eds-text-container-after: var(--font-#{$token});
+      }
     }
 
     // A source below a quote doesn't change the space after it
@@ -111,72 +136,24 @@
       --eds-text-container-after: var(--font-line-height-body-lg);
     }
 
-    > :where(.eds-text--paragraph) + * {
-      --eds-text-container-after: var(--font-line-height-body-m);
+    @each $column in (2, 3) {
+      @each $token, $row in $heading-after {
+        $classes: classes('eds-heading', list.nth($row, $column));
+
+        > :where(#{$classes}, hgroup:has(> :is(#{$classes}))) + * {
+          --eds-text-container-after: var(--font-paragraph-spacing-#{$token});
+        }
+      }
     }
 
-    > :where(.eds-text--subparagraph) + * {
-      --eds-text-container-after: var(--font-line-height-body-s);
-    }
+    @each $token, $row in $text-after {
+      $sizes: list.nth($row, 3);
 
-    > :where(.eds-text--caption) + * {
-      --eds-text-container-after: var(--font-line-height-body-xs);
-    }
-
-    > :where(.eds-text--label, .eds-text--sublabel) + * {
-      --eds-text-container-after: var(--font-paragraph-spacing-body-xs);
-    }
-
-    > :where(.eds-text--overline) + * {
-      --eds-text-container-after: var(--font-paragraph-spacing-body-m);
-    }
-
-    > :where(
-        .eds-heading--title-1,
-        .eds-heading--2xl,
-        .eds-heading--title-2,
-        .eds-heading--xl,
-        hgroup:has(> :is(.eds-heading--title-1, .eds-heading--2xl, .eds-heading--title-2, .eds-heading--xl))
-      )
-      + * {
-      --eds-text-container-after: var(--font-paragraph-spacing-heading-xl);
-    }
-
-    > :where(.eds-heading--subtitle-1, .eds-heading--lg, hgroup:has(> :is(.eds-heading--subtitle-1, .eds-heading--lg))) + * {
-      --eds-text-container-after: var(--font-paragraph-spacing-heading-lg);
-    }
-
-    > :where(.eds-heading--subtitle-2, .eds-heading--m, hgroup:has(> :is(.eds-heading--subtitle-2, .eds-heading--m))) + * {
-      --eds-text-container-after: var(--font-paragraph-spacing-heading-m);
-    }
-
-    > :where(.eds-heading--section-1, .eds-heading--s, hgroup:has(> :is(.eds-heading--section-1, .eds-heading--s))) + * {
-      --eds-text-container-after: var(--font-paragraph-spacing-heading-s);
-    }
-
-    > :where(.eds-heading--section-2, .eds-heading--xs, hgroup:has(> :is(.eds-heading--section-2, .eds-heading--xs))) + * {
-      --eds-text-container-after: var(--font-paragraph-spacing-heading-xs);
-    }
-
-    // Same specificity as the variant rules, so these must follow them for size to win over variant
-    > :where(.eds-text--xl) + * {
-      --eds-text-container-after: var(--font-line-height-body-xl);
-    }
-
-    > :where(.eds-text--lg) + * {
-      --eds-text-container-after: var(--font-line-height-body-lg);
-    }
-
-    > :where(.eds-text--m) + * {
-      --eds-text-container-after: var(--font-line-height-body-m);
-    }
-
-    > :where(.eds-text--s) + * {
-      --eds-text-container-after: var(--font-line-height-body-s);
-    }
-
-    > :where(.eds-text--xs) + * {
-      --eds-text-container-after: var(--font-line-height-body-xs);
+      @if list.length($sizes) > 0 {
+        > :where(#{classes('eds-text', $sizes)}) + * {
+          --eds-text-container-after: var(--font-#{$token});
+        }
+      }
     }
 
     // A caption directly below an image or table describes it, as in a figure
@@ -195,6 +172,7 @@
       --eds-text-container-after: 0px;
     }
 
+    // The heading's extra space above would merge with that margin and get lost, so it is added to the margin
     > :where([style*='--eds-text-spacing-bottom']:not(.eds-heading, h1, h2, h3, h4, h5, h6, hgroup, .eds-text--overline)):has(
         + :where(:is(.eds-heading, h1, h2, h3, h4, h5, h6, hgroup):not([style*='--eds-text-spacing-top']))
       ) {
