@@ -20,13 +20,14 @@ export type {
   HeadingComponent,
   HeadingOwnProps,
   HeadingProps,
+  TypographyHeadingSize,
   TypographyHeadingVariant,
-  TypographySize,
 } from './components/Heading';
 export type {
   TextComponent,
   TextOwnProps,
   TextProps,
+  TypographyTextSize,
   TypographyTextVariant,
   TypographyWeight,
 } from './components/Text';
@@ -53,4 +54,8 @@ export type {
   TextContainerProps,
 } from './components/TextContainer';
 
-export type { TypographySpacing, TypographySpacingProps } from './types';
+export type {
+  TypographySize,
+  TypographySpacing,
+  TypographySpacingProps,
+} from './types';
