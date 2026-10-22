@@ -54,11 +54,7 @@ export const ListItem = React.forwardRef(
         style={getSpacingStyle(spacing, style)}
         {...rest}
       >
-        {title && (
-          <span className="eds-text--list-item__title eds-text--weight-bold">
-            {title}
-          </span>
-        )}
+        {title && <span className="eds-text--list-item__title">{title}</span>}
         {children}
       </ItemElement>
     );
