@@ -92,6 +92,9 @@ export const OverflowMenu = ({
     ),
     open: isOpen,
     onOpenChange: setIsOpen,
+    // Fixed positions the menu against the viewport, so an overflow ancestor
+    // can't clip it (unless an ancestor sets transform/filter/contain)
+    strategy: 'fixed',
     middleware: [
       offset(space.extraSmall2),
       flip(),
