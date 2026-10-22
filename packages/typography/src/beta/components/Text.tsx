@@ -13,6 +13,9 @@ import { TypographySpacingProps } from '../types';
 
 import './text.scss';
 
+/**
+ * @beta Experimental component - may have breaking changes in future releases
+ */
 export type TextOwnProps = TypographySpacingProps & {
   /** Visuell tekststørrelse (typografi-token) */
   size?: 'xs' | 's' | 'm' | 'lg' | 'xl';
@@ -50,6 +53,9 @@ export type TextComponent = (<C extends React.ElementType = 'p'>(
   props: TextProps<C> & { ref?: React.Ref<Element> },
 ) => React.ReactElement | null) & { displayName?: string };
 
+/**
+ * @beta Experimental component - may have breaking changes in future releases
+ */
 export const Text = React.forwardRef(
   <C extends React.ElementType = 'p'>(
     {
