@@ -18,9 +18,7 @@ export type HeadingOwnProps = TypographySpacingProps & {
     | 'subtitle-1'
     | 'subtitle-2'
     | 'section-1'
-    | 'section-2'
-    | 'label'
-    | 'sublabel';
+    | 'section-2';
   /** Visuell tekststørrelse som overstyrer variant-styling */
   size?: 'xs' | 's' | 'm' | 'lg' | 'xl' | '2xl';
   /** Innholdet som skal vises */

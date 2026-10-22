@@ -123,7 +123,7 @@
       --eds-text-container-after: var(--font-line-height-body-xs);
     }
 
-    > :where(.eds-text--label, .eds-text--sublabel, .eds-heading--label, .eds-heading--sublabel) + * {
+    > :where(.eds-text--label, .eds-text--sublabel) + * {
       --eds-text-container-after: var(--font-paragraph-spacing-body-xs);
     }
 
