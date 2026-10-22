@@ -34,6 +34,15 @@ describe('Heading Component', () => {
     expect(getByText('Title 1')).toHaveClass('eds-heading--title-1');
   });
 
+  test('cuts the heading after maxLines', () => {
+    const { getByText } = render(
+      <Heading maxLines={1}>Lang overskrift</Heading>,
+    );
+    const heading = getByText('Lang overskrift');
+    expect(heading).toHaveClass('eds-heading--max-lines');
+    expect(heading.style.getPropertyValue('--eds-text-max-lines')).toBe('1');
+  });
+
   test('applies the subdued tone', () => {
     const { getByText } = render(<Heading tone="subdued">Sekundær</Heading>);
     expect(getByText('Sekundær')).toHaveClass('eds-heading--tone-subdued');

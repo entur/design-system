@@ -14,6 +14,15 @@
     margin: var(--eds-text-spacing-top, 0) 0 var(--eds-text-spacing-bottom, 0);
   }
 
+  // Cuts the text after a number of lines and ends it with an ellipsis
+  :where(.eds-text--max-lines, .eds-heading--max-lines) {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: var(--eds-text-max-lines);
+    line-clamp: var(--eds-text-max-lines);
+    overflow: hidden;
+  }
+
   // Removes the space above the cap height and below the baseline
   @supports (text-box: trim-both cap alphabetic) {
     :where(.eds-text--trim, .eds-heading--trim) {
