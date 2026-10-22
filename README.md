@@ -79,6 +79,8 @@ Test code can either be written in the built in editor in code-playground or usi
 | ------------------------------------------------------------------------------------ | ----------------------------------------------------------------------- |
 | Built in code editor in code-playground                                              | TestBench file in VSCode editor                                         |
 
+UI changes should be verified in Chromium, Firefox and WebKit (Safari's engine) using [Playwright](https://playwright.dev). Install the browsers once with `npx playwright@1.48.2 install chromium firefox webkit`. See [Browser Testing in AGENTS.md](AGENTS.md#browser-testing) for the workflow.
+
 ### Commiting your changes
 
 Since the commits made are used both as a changelog and to track wether we are releasing a patch, minor, or major version ([see conventional-commits](https://www.conventionalcommits.org/en/v1.0.0/)), we need to make sure commits are written correctly. To do this, we use [Commitizen](https://github.com/commitizen/cz-cli) which lets us build a correctly formated commit message and lint it for errors. As an extra meassure, all new commitmessages are also linted on `git push` to make sure we aren't forgeting proper formating (_NOTICE: can be overridden using HUSKY=0_).

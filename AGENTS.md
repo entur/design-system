@@ -107,6 +107,35 @@ Inflect around the English term instead of Norwegianising it: `props`-ene, `prop
 
 Rule of thumb: if a Norwegian developer would say the English word out loud, keep the English word.
 
+## Browser Testing
+
+Jest runs in jsdom, which does no layout. Positioning, overflow, clipping, scrolling, focus and anything viewport-related can only be verified in a real browser. Verify UI changes in all three engines with [Playwright](https://playwright.dev): **Chromium, Firefox and WebKit** (the engine behind Safari).
+
+**Setup, once per machine:**
+
+```bash
+npx playwright@1.48.2 install chromium firefox webkit
+```
+
+Playwright is not a dependency of this repo. Write test scripts outside the repo (e.g. a scratch directory) and install `playwright` there; they are throwaway and are not committed.
+
+**Workflow:**
+
+1. Build the changed packages with `yarn build:package [name]`. The code-playground imports packages from `dist`, not `src`.
+2. Put the scenarios in `apps/code-playground/src/TestBench.tsx` and start `yarn start:code-playground` (port 9000).
+3. Open `http://localhost:9000/preview/?code=<data>`, where `<data>` is `compressToEncodedURIComponent(JSON.stringify({ code: '<></>' }))` from `lz-string` (in `node_modules`). Use `<></>` as the code: `FrameComponent` already renders `TestBench`, so `<TestBench />` renders it twice.
+4. Run the same script against `chromium`, `firefox` and `webkit` from `playwright`.
+5. For bug fixes, run it against both the old and the fixed build. If the bug does not reproduce on the old build, the scenario does not cover the bug.
+6. Check a mobile width (320px) as well as desktop.
+
+**Gotchas:**
+
+- Wait about 800ms after load before screenshots. The Playroom splash screen fades out over the page and dims it.
+- `yarn build:package` empties `dist` while it builds, so the running playground can fail to compile in between. Touch `TestBench.tsx` to make it recompile, sometimes twice.
+- `overflow` only clips an absolutely positioned descendant when the overflowing element is its containing block. Give clipping containers in scenarios `position: relative`, as real apps usually do, or the scenario passes even with the bug.
+
+In the PR's Testing section, say which engines were tested. WebKit covers Safari's layout engine but is not the Safari app, so say so when real Safari was not used.
+
 ## Commit Conventions
 
 Uses conventional-commits enforced by Commitizen + commitlint (Husky lints on push).
