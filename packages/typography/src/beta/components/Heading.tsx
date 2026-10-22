@@ -10,6 +10,9 @@ import { PolymorphicComponentProps } from '@entur/utils';
 
 import './heading.scss';
 
+/**
+ * @beta Experimental component - may have breaking changes in future releases
+ */
 export type HeadingOwnProps = TypographySpacingProps & {
   /** Visuell variant som bestemmer styling (anbefalt over size) */
   variant?:
@@ -43,6 +46,9 @@ export type HeadingComponent = (<
 
 const defaultElement = 'h1';
 
+/**
+ * @beta Experimental component - may have breaking changes in future releases
+ */
 export const Heading = React.forwardRef(
   <C extends React.ElementType = typeof defaultElement>(
     {
