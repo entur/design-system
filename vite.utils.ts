@@ -1,5 +1,7 @@
 import { resolve } from 'path';
 import fs from 'fs';
+import postcss from 'postcss';
+import type { Plugin } from 'vite';
 
 /**
  * Get the package name from package.json or fallback to directory name
@@ -26,4 +28,61 @@ export function getPackageName(dirname: string): string {
 export function createFileNameFunction(packageName: string) {
   return (format: string) =>
     `${packageName}.${format === 'es' ? 'mjs' : 'cjs'}`;
+}
+
+export const STYLES_WITHOUT_BASE_TOKENS = 'styles.no-base-tokens.css';
+
+// base.css imports semantic.css (which imports primitive.css) and transport.css
+const BASE_TOKEN_FILES = ['base.css', 'primitive.css', 'transport.css'];
+const TOKEN_SELECTOR = /^(:root|\[data-(color|view)-mode(=[^\]]+)?\])$/;
+
+function readBaseTokenNames(): Set<string> {
+  const tokensDist = resolve(__dirname, 'packages/tokens/dist');
+  const names = new Set<string>();
+  for (const file of BASE_TOKEN_FILES) {
+    const css = fs.readFileSync(resolve(tokensDist, file), 'utf-8');
+    postcss.parse(css).walkDecls(/^--/, decl => {
+      names.add(decl.prop);
+    });
+  }
+  return names;
+}
+
+/**
+ * Remove the tokens that @entur/tokens/dist/base.css already ships, so apps
+ * that load base.css once do not get a copy from every package.
+ */
+export function removeBaseTokens(css: string): string {
+  const baseTokens = readBaseTokenNames();
+  const root = postcss.parse(css);
+  root.walkRules(rule => {
+    if (!rule.selectors.every(selector => TOKEN_SELECTOR.test(selector)))
+      return;
+    rule.walkDecls(decl => {
+      if (baseTokens.has(decl.prop)) decl.remove();
+    });
+    if (!rule.some(node => node.type === 'decl')) rule.remove();
+  });
+  root.walkAtRules(atRule => {
+    if (atRule.nodes?.length === 0) atRule.remove();
+  });
+  return root.toString();
+}
+
+/** Emit styles.no-base-tokens.css next to styles.css. */
+export function stylesWithoutBaseTokensPlugin(): Plugin {
+  return {
+    name: 'entur:styles-without-base-tokens',
+    apply: 'build',
+    enforce: 'post',
+    generateBundle(_, bundle) {
+      const styles = bundle['styles.css'];
+      if (styles?.type !== 'asset') return;
+      this.emitFile({
+        type: 'asset',
+        fileName: STYLES_WITHOUT_BASE_TOKENS,
+        source: removeBaseTokens(String(styles.source)),
+      });
+    },
+  };
 }
