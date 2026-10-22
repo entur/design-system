@@ -67,6 +67,19 @@ describe('TextContainer rhythm', () => {
   });
 });
 
+describe('tone', () => {
+  test.each(['text', 'heading'])(
+    'the %s tone comes after every variant and size, so it wins',
+    block => {
+      const scss = read(`${block}.scss`);
+      const tone = scss.indexOf(`.eds-${block}--tone-subdued {`);
+      expect(tone).toBeGreaterThan(-1);
+      expect(tone).toBeGreaterThan(scss.lastIndexOf('    &--'));
+      expect(scss.slice(tone)).toContain('-contrast-text-subdued');
+    },
+  );
+});
+
 describe('spacing scale', () => {
   test('has the same steps as the spacing tokens', () => {
     const tokens = fs.readFileSync(

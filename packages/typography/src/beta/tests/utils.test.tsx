@@ -1,5 +1,6 @@
 import {
   getHeadingVariantFromSemanticType,
+  getMaxLinesStyle,
   getSpacingStyle,
 } from '../utils/utils';
 
@@ -29,6 +30,21 @@ describe('Utility Functions', () => {
       // Test with an actual React component (non-string)
       const MockComponent = () => <div>Mock</div>;
       expect(getHeadingVariantFromSemanticType(MockComponent)).toBe('title-2');
+    });
+  });
+
+  describe('getMaxLinesStyle', () => {
+    test('passes the number on and keeps the style prop, which wins', () => {
+      expect(getMaxLinesStyle(2, { color: 'red' })).toEqual({
+        '--eds-text-max-lines': 2,
+        color: 'red',
+      });
+    });
+
+    test('leaves the style alone without maxLines', () => {
+      const style = { color: 'red' };
+      expect(getMaxLinesStyle(undefined, style)).toBe(style);
+      expect(getMaxLinesStyle(0, style)).toBe(style);
     });
   });
 
