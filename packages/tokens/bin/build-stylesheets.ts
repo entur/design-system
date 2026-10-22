@@ -162,6 +162,7 @@ try {
         keyType: 'css',
         valueType: extension,
         name,
+        // Writes one block per mode, here the view modes standard, compact and display
         withColorMode: true,
         importFileNames: ['primitive'],
       });
