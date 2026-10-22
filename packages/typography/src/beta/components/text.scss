@@ -7,7 +7,13 @@
   .eds-text {
     color: var(--components-typography-basetext-standard-text-accent);
     font-weight: var(--font-weight-body);
+    overflow-wrap: break-word;
     text-wrap: pretty;
+
+    // Long compound words break with a hyphen where the page sets a Norwegian lang
+    &:where(:lang(nb), :lang(nn), :lang(no)) {
+      hyphens: auto;
+    }
 
     :where(.eds-contrast) & {
       color: var(--components-typography-basetext-contrast-text-accent);
@@ -81,6 +87,7 @@
       font-family: var(--font-family-mono);
       font-size: 0.875em;
       font-weight: inherit;
+      hyphens: manual;
 
       :where(.eds-contrast) & {
         background-color: var(--components-typography-codetext-contrast-fill);
@@ -125,6 +132,7 @@
     &--inherit {
       color: inherit;
       font-weight: inherit;
+      hyphens: inherit;
     }
 
     // Same specificity as the variants, so these must follow them for size to win
