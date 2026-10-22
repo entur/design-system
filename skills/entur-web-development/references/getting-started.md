@@ -86,6 +86,21 @@ In SCSS, use `@use` with a namespace alias instead of `@import` (Sass `@import` 
 
 Import only the component styles you actually use — but keep the order.
 
+### Load base tokens only once (optional)
+
+Most component `styles.css` files carry their own copy of the tokens from `@entur/tokens/dist/base.css`. With many packages the same tokens are declared many times, which makes browser devtools slow when inspecting elements. Each package also ships `styles.no-base-tokens.css`, which leaves those tokens out. Use it only when you import `base.css` yourself, before the component styles — it is what supplies the left-out tokens, including what `base.css` imports (`semantic.css`, `primitive.css` and `transport.css`):
+
+```css
+@import '@entur/tokens/dist/base.css';
+@import '@entur/tokens/dist/styles.css';
+
+@import '@entur/typography/styles/no-base-tokens';
+@import '@entur/button/styles/no-base-tokens';
+/* … same order as above */
+```
+
+Use the same variant for every package. Component tokens (`--components-*`) stay in each package's file.
+
 ## Import components
 
 All packages use named exports only — never default exports:
