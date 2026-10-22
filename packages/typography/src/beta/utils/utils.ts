@@ -5,7 +5,7 @@ import type { TypographySpacing } from '../types';
 type SpacingStep = Exclude<TypographySpacing, object>;
 
 // Same scale as the layout beta, read from @entur/tokens/styles/spacing
-const SPACING_STEPS = new Set<string>([
+export const SPACING_STEPS = new Set<string>([
   'none',
   '2xs',
   'xs',
