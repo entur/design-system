@@ -127,6 +127,9 @@ export const Tooltip = ({
   } = useFloating({
     placement: standardisePlacement(placement),
     open: showTooltip,
+    // Fixed positions the tooltip against the viewport, so an overflow ancestor
+    // can't clip it (unless an ancestor sets transform/filter/contain)
+    strategy: 'fixed',
     middleware: [
       offset(space.extraSmall),
       flip(),

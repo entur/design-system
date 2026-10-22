@@ -36,3 +36,15 @@ test('Tooltip renders with content and children, and is displayed on mouse-over'
   jest.runOnlyPendingTimers();
   jest.useRealTimers();
 });
+
+test('Tooltip uses fixed positioning', () => {
+  const { getByRole } = render(
+    <Tooltip content="tooltipcontent" placement="bottom" isOpen>
+      <span>Tooltip children</span>
+    </Tooltip>,
+  );
+
+  expect(getByRole('tooltip', { hidden: true })).toHaveStyle({
+    position: 'fixed',
+  });
+});
