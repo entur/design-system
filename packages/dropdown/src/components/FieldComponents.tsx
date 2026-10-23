@@ -80,7 +80,7 @@ export const SelectedItemTag = <ValueType extends NonNullable<any>>({
       closeButtonTabIndex={-1}
     >
       <span
-        aria-hidden="true"
+        aria-hidden={disabled || readOnly ? undefined : true}
         className="eds-dropdown__selected-item-tag__text"
       >
         {selectedItem.label}

@@ -882,9 +882,6 @@ describe('MultiSelect', () => {
           />,
         );
 
-        expect(document.querySelector('input')).not.toHaveAttribute(
-          'aria-describedby',
-        );
         expect(
           screen.queryByText('3 valgte, bruk venstre piltast for å gå til dem'),
         ).not.toBeInTheDocument();
@@ -1169,6 +1166,51 @@ describe('MultiSelect', () => {
         expect(screen.queryByRole('button', { name: /valgte/ })).toBeNull();
         expect(input).toHaveFocus();
       });
+    });
+
+    test.each(['disabled', 'readOnly'])(
+      'exposes the selected values to screen readers when %s',
+      prop => {
+        render(
+          <MultiSelect
+            label="test label"
+            items={testItems}
+            selectedItems={normalizedTestItems.slice(0, 3)}
+            onChange={jest.fn()}
+            {...{ [prop]: true }}
+          />,
+        );
+
+        ['Oslo', 'Bergen', 'Stavanger'].forEach(label =>
+          expect(
+            screen.getByText(label).closest('[aria-hidden="true"]'),
+          ).toBeNull(),
+        );
+      },
+    );
+
+    test('a readOnly field is focusable and described by the selected values', async () => {
+      const user = userEvent.setup();
+      render(
+        <MultiSelect
+          label="test label"
+          items={testItems}
+          selectedItems={normalizedTestItems.slice(0, 3)}
+          onChange={jest.fn()}
+          readOnly
+        />,
+      );
+      const input = screen.getByRole('combobox', { name: /^test label/ });
+
+      await user.tab();
+      expect(input).toHaveFocus();
+      expect(input).not.toBeDisabled();
+      expect(input).toHaveAccessibleDescription('Oslo, Bergen, Stavanger');
+
+      await user.keyboard('{ArrowDown}{Backspace}');
+      expect(screen.queryByRole('option')).toBeNull();
+      expect(getRemoveButton('Stavanger')).toBeInTheDocument();
+      expect(fireEvent.keyDown(input, { key: 'Backspace' })).toBe(false);
     });
 
     test('selected item tags have no live regions of their own', () => {

@@ -212,6 +212,7 @@ export const MultiSelect = React.forwardRef(
       selectedItems.length === normalizedItems.length;
 
     const navigateToSelectedId = `eds-multiselect-navigate-to-selected${useId()}`;
+    const selectedLabelsId = `eds-multiselect-selected-labels${useId()}`;
     const showSummary = selectedItems.length > maxChips;
     const canNavigateToSelected =
       selectedItems.length > 0 && !disabled && !readOnly;
@@ -337,6 +338,8 @@ export const MultiSelect = React.forwardRef(
           NormalizedDropdownItemType<ValueType | string>
         >,
       ) => {
+        if (readOnly) return { ...changes, isOpen: false };
+
         switch (type) {
           // keep menu open and edit input value on item selection
           case useCombobox.stateChangeTypes.InputKeyDownEnter:
@@ -396,7 +399,7 @@ export const MultiSelect = React.forwardRef(
             return changes;
         }
       },
-      [hideSelectAll, listItems, clearInputOnSelect],
+      [hideSelectAll, listItems, clearInputOnSelect, readOnly],
     );
 
     const {
@@ -491,7 +494,7 @@ export const MultiSelect = React.forwardRef(
     };
 
     const dropdownProps = getDropdownProps({
-      preventKeyAction: isOpen,
+      preventKeyAction: isOpen || readOnly,
       value: inputValue ?? EMPTY_INPUT,
       ref: mergeRefs(inputRef, ref),
     });
@@ -500,6 +503,10 @@ export const MultiSelect = React.forwardRef(
       onFocus,
       ...dropdownProps,
       onKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (readOnly) {
+          if (e.key === 'Backspace' || e.key === 'Delete') e.preventDefault();
+          return;
+        }
         const caretAtStart =
           e.currentTarget.selectionStart === 0 &&
           e.currentTarget.selectionEnd === 0;
@@ -534,11 +541,14 @@ export const MultiSelect = React.forwardRef(
         }
       },
       className: 'eds-dropdown__input eds-form-control',
-      disabled: readOnly || disabled,
+      disabled,
+      readOnly,
       placeholder: placeholder,
-      tabIndex: disabled || readOnly ? -1 : undefined,
+      tabIndex: disabled ? -1 : undefined,
       'aria-describedby': canNavigateToSelected
         ? navigateToSelectedId
+        : readOnly && selectedItems.length > 0
+        ? selectedLabelsId
         : undefined,
     });
     const labelProps = getLabelProps();
@@ -615,6 +625,11 @@ export const MultiSelect = React.forwardRef(
           {canNavigateToSelected ? (
             <VisuallyHidden id={navigateToSelectedId}>
               {ariaLabelNavigateToSelected}
+            </VisuallyHidden>
+          ) : null}
+          {readOnly && selectedItems.length > 0 ? (
+            <VisuallyHidden id={selectedLabelsId}>
+              {selectedItems.map(item => item.label).join(', ')}
             </VisuallyHidden>
           ) : null}
           {!showSummary ? (
