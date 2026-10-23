@@ -6263,6 +6263,7 @@ __metadata:
     classnames: "npm:2.5.1"
     copy-text-to-clipboard: "npm:2.2.0"
     dompurify: "npm:3.4.16"
+    dotenv: "npm:8.6.0"
     fast-fuzzy: "npm:1.12.0"
     firebase-tools: "npm:15.33.0"
     gatsby: "npm:5.16.1"
@@ -21079,17 +21080,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"dotenv@npm:8.6.0, dotenv@npm:^8.6.0":
+  version: 8.6.0
+  resolution: "dotenv@npm:8.6.0"
+  checksum: 10c0/6750431dea8efbd54b9f2d9681b04e1ccc7989486461dcf058bb708d9e3d63b04115fcdf8840e38ad1e24a4a2e1e7c1560626c5e3ac7bc09371b127c49e2d45f
+  languageName: node
+  linkType: hard
+
 "dotenv@npm:^7.0.0":
   version: 7.0.0
   resolution: "dotenv@npm:7.0.0"
   checksum: 10c0/4d834d09d23ebd284e701c4204172659a7dcd51116f11c29c575ae6d918ccd4760a3383bdfd83cfbed42f061266b787f8e56452b952638867ea5476be875eb27
-  languageName: node
-  linkType: hard
-
-"dotenv@npm:^8.6.0":
-  version: 8.6.0
-  resolution: "dotenv@npm:8.6.0"
-  checksum: 10c0/6750431dea8efbd54b9f2d9681b04e1ccc7989486461dcf058bb708d9e3d63b04115fcdf8840e38ad1e24a4a2e1e7c1560626c5e3ac7bc09371b127c49e2d45f
   languageName: node
   linkType: hard
 

@@ -4,7 +4,8 @@ import { CopyableText } from '@entur/alert';
 import { PrimaryButton } from '@entur/button';
 import { ExpandablePanel } from '@entur/expand';
 import { Checkbox, Fieldset } from '@entur/form';
-import { Heading2, Heading3, Paragraph } from '@entur/typography';
+import { Heading, Text, TextContainer } from '@entur/typography/beta';
+import { DocH2 } from '@components/Common/DocHeadings';
 
 import {
   Category,
@@ -104,8 +105,12 @@ const DetailSection = ({ section }: { section: DetailSectionView }) => {
 
   return (
     <div className="privacy-details__section">
-      {title && <Heading3 margin="none">{title}</Heading3>}
-      {text && <Paragraph margin="none">{text}</Paragraph>}
+      {title && (
+        <Heading as="h3" variant="subtitle-1">
+          {title}
+        </Heading>
+      )}
+      {text && <Text>{text}</Text>}
       {tags && tags.length > 0 && (
         <ul className="privacy-details__tags">
           {tags.map(tag => (
@@ -115,9 +120,7 @@ const DetailSection = ({ section }: { section: DetailSectionView }) => {
           ))}
         </ul>
       )}
-      {!text && !tags?.length && description && (
-        <Paragraph margin="none">{description}</Paragraph>
-      )}
+      {!text && !tags?.length && description && <Text>{description}</Text>}
     </div>
   );
 };
@@ -199,39 +202,47 @@ export const PrivacyDetails = () => {
   if (unavailable) {
     return (
       <>
-        <section aria-labelledby="personvern-utilgjengelig">
-          <Heading2
+        <TextContainer
+          as="section"
+          aria-labelledby="personvern-utilgjengelig"
+          spacing={{ top: 'm' }}
+        >
+          <DocH2
             className="privacy-details__section-heading"
             id="personvern-utilgjengelig"
           >
             Vi får ikke kontakt med samtykkeløsningen vår
-          </Heading2>
-          <Paragraph>
+          </DocH2>
+          <Text>
             Derfor kan vi ikke vise deg de valgfrie teknologiene akkurat nå, og
             du får heller ikke gitt eller endret samtykke. Bruker du en
             annonseblokkerer, er den mest sannsynlig årsaken. Prøv å laste siden
             på nytt, eller å slå av blokkeringen for dette nettstedet.
-          </Paragraph>
-          <Paragraph>
+          </Text>
+          <Text>
             Ingenting valgfritt er i bruk så lenge dette vedvarer. Vi samler
             ikke inn noe om hvordan du bruker nettstedet før du har sagt ja til
             det.
-          </Paragraph>
-        </section>
+          </Text>
+        </TextContainer>
 
-        <section aria-labelledby="personvern-nodvendig">
-          <Heading2
+        <TextContainer
+          as="section"
+          aria-labelledby="personvern-nodvendig"
+          spacing={{ top: 'm' }}
+        >
+          <DocH2
             className="privacy-details__section-heading"
             id="personvern-nodvendig"
           >
             Nødvendig informasjon vi lagrer
-          </Heading2>
-          <Paragraph>
+          </DocH2>
+          <Text>
             Dette lagrer nettstedet selv, uavhengig av samtykkeløsningen, og det
             er i bruk nå. Du kan ikke velge det bort, men det følger deg ikke
             videre til andre nettsteder, og vi bruker det ikke til å lage
             statistikk.
-          </Paragraph>
+          </Text>
           <ul className="privacy-details__list">
             <li>
               Valgene dine for fargemodus, kodeformat, pakkeverktøy og hva slags
@@ -243,16 +254,16 @@ export const PrivacyDetails = () => {
               svaret.
             </li>
           </ul>
-          <Paragraph>
+          <Text>
             Alt dette ligger lagret i nettleseren din. Sletter du data for
             nettstedet, er det borte, og da spør vi på nytt.
-          </Paragraph>
-        </section>
+          </Text>
+        </TextContainer>
       </>
     );
   }
 
-  if (!categories || !labels) return <Paragraph>Laster …</Paragraph>;
+  if (!categories || !labels) return <Text>Laster …</Text>;
 
   const optional = categories.filter(c => !c.essential);
   const essential = categories.filter(c => c.essential);
@@ -264,9 +275,7 @@ export const PrivacyDetails = () => {
         title={service.name}
         className="privacy-details__service"
       >
-        {service.description && (
-          <Paragraph margin="none">{service.description}</Paragraph>
-        )}
+        {service.description && <Text>{service.description}</Text>}
         {buildServiceSections(service, labels).map(section => (
           <DetailSection key={section.id} section={section} />
         ))}
@@ -275,17 +284,19 @@ export const PrivacyDetails = () => {
 
   return (
     <>
-      <section aria-labelledby="personvern-valg">
-        <Heading2
+      <TextContainer
+        as="section"
+        aria-labelledby="personvern-valg"
+        spacing={{ top: 'm' }}
+      >
+        <DocH2
           className="privacy-details__section-heading"
           id="personvern-valg"
         >
           Dine valg
-        </Heading2>
+        </DocH2>
         {optional.length === 0 ? (
-          <Paragraph>
-            Vi bruker ingen valgfrie teknologier på dette nettstedet.
-          </Paragraph>
+          <Text>Vi bruker ingen valgfrie teknologier på dette nettstedet.</Text>
         ) : (
           <form
             onSubmit={event => {
@@ -344,39 +355,47 @@ export const PrivacyDetails = () => {
             </p>
           </form>
         )}
-      </section>
+      </TextContainer>
 
       {essential.length > 0 && (
-        <section aria-labelledby="personvern-nodvendig">
-          <Heading2
+        <TextContainer
+          as="section"
+          aria-labelledby="personvern-nodvendig"
+          spacing={{ top: 'm' }}
+        >
+          <DocH2
             className="privacy-details__section-heading"
             id="personvern-nodvendig"
           >
             Nødvendig informasjon vi lagrer
-          </Heading2>
-          <Paragraph>
+          </DocH2>
+          <Text>
             Dette kan du ikke velge bort. Uten det fungerer ikke nettstedet, og
             vi kan ikke huske valget du gjør over.
-          </Paragraph>
+          </Text>
           {essential.map(category => (
             <div key={category.id}>{renderServices(category)}</div>
           ))}
-        </section>
+        </TextContainer>
       )}
 
       {controllerId && (
-        <section aria-labelledby="personvern-id">
-          <Heading2
+        <TextContainer
+          as="section"
+          aria-labelledby="personvern-id"
+          spacing={{ top: 'm' }}
+        >
+          <DocH2
             className="privacy-details__section-heading"
             id="personvern-id"
           >
             Din samtykke-ID
-          </Heading2>
-          <Paragraph>
+          </DocH2>
+          <Text>
             Samtykket ditt er lagret under en tilfeldig ID, ikke under navn
             eller e-post. Skal du be om innsyn i eller sletting av det vi har
             lagret, oppgi denne IDen til oss.
-          </Paragraph>
+          </Text>
           <CopyableText
             className="privacy-details__consent-id"
             textToCopy={controllerId}
@@ -384,7 +403,7 @@ export const PrivacyDetails = () => {
           >
             Kopier samtykke-ID
           </CopyableText>
-        </section>
+        </TextContainer>
       )}
     </>
   );

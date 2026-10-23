@@ -21,24 +21,6 @@
     }
   }
 
-  &__link {
-    display: block;
-    width: fit-content;
-    margin-bottom: 1rem;
-    text-align: start;
-
-    :where(&) {
-      border: none;
-      background: none;
-      padding-inline: 0;
-    }
-  }
-
-  &__description {
-    margin-top: 1rem;
-    margin-bottom: 0;
-  }
-
   &__entur-banner {
     display: flex;
     flex-wrap: wrap;

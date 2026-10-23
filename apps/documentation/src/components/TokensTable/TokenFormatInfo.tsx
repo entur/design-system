@@ -1,5 +1,5 @@
 import React from 'react';
-import { CodeText } from '@entur/typography';
+import { Text } from '@entur/typography/beta';
 import { OverflowMenu, OverflowMenuItem } from '@entur/menu';
 import { SmallAlertBox } from '@entur/alert';
 
@@ -25,10 +25,10 @@ export const TokenFormatInfo: React.FC<TokenTableFormatInfoProps> = ({
           className="token-table__format-menu"
           button={
             <span className="token-table__format-menu-button">
-              <CodeText style={{ paddingInline: '0.5rem' }}>
+              <Text variant="code">
                 {variableFormat.toUpperCase()}{' '}
                 <DownArrowIcon inline style={{ top: '0.1rem' }} />
-              </CodeText>
+              </Text>
             </span>
           }
         >
@@ -53,10 +53,10 @@ export const TokenFormatInfo: React.FC<TokenTableFormatInfoProps> = ({
         tokenKey === 'componentColors') &&
         !['css', 'scss'].includes(variableFormat) && (
           <p>
-            <CodeText>{tokenKey}</CodeText> støtter kun dynamisk farge- og
-            skjermmoduser som CSS-variabler i <CodeText>CSS</CodeText> og{' '}
-            <CodeText>SCSS</CodeText>. I <CodeText>JS</CodeText> vil verdien
-            være statisk.
+            <Text variant="code">{tokenKey}</Text> støtter kun dynamisk farge-
+            og skjermmoduser som CSS-variabler i <Text variant="code">CSS</Text>{' '}
+            og <Text variant="code">SCSS</Text>. I{' '}
+            <Text variant="code">JS</Text> vil verdien være statisk.
           </p>
         )}
     </SmallAlertBox>

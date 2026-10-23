@@ -17,13 +17,12 @@ import { VisuallyHidden } from '@entur/a11y';
 import { Tooltip } from '@entur/tooltip';
 import { GridContainer, GridItem } from '@entur/grid';
 import {
-  Heading2,
-  Heading4,
+  Heading,
   Link,
   ListItem,
-  SubLabel,
+  Text,
   UnorderedList,
-} from '@entur/typography';
+} from '@entur/typography/beta';
 
 import { useURLSearchParams } from './IconList.utils';
 import { useGetIcons } from './useGetIcons';
@@ -247,9 +246,14 @@ const IconList: React.FC<IconListProps> = ({ icons: allIconComponents }) => {
       </GridContainer>
       {noResults ? (
         <div className="icon-list__no-results">
-          <Heading2 as="h3" aria-live="polite">
+          <Heading
+            as="h3"
+            variant="title-2"
+            aria-live="polite"
+            spacing={{ top: '3xl', bottom: 'xs' }}
+          >
             Finner ingen ikoner
-          </Heading2>
+          </Heading>
           <SecondaryButton
             className="icon-list__no-results__reset-filter"
             size="small"
@@ -257,7 +261,13 @@ const IconList: React.FC<IconListProps> = ({ icons: allIconComponents }) => {
           >
             Nullstill søk
           </SecondaryButton>
-          <Heading4>Her er noen forslag til hva du kan gjøre:</Heading4>
+          <Heading
+            as="h4"
+            variant="subtitle-2"
+            spacing={{ top: 'xl', bottom: 'xs' }}
+          >
+            Her er noen forslag til hva du kan gjøre:
+          </Heading>
           <UnorderedList>
             {selectedCategory !== null && (
               <ListItem>
@@ -311,14 +321,15 @@ const IconList: React.FC<IconListProps> = ({ icons: allIconComponents }) => {
                   key={iconName}
                   data-category={category}
                 >
-                  <SubLabel
+                  <Text
                     as="button"
+                    variant="sublabel"
                     className="icon-list__item-name"
                     onClick={handleIconClick(iconName + 'Icon')}
                   >
                     <span>{iconName}</span>
                     <CopyIcon aria-label=", trykk for å kopiere til utklippstavlen" />
-                  </SubLabel>
+                  </Text>
                   <IconComponent
                     style={{
                       width: iconSize?.value,

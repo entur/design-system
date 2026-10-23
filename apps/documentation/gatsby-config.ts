@@ -1,7 +1,11 @@
 import path from 'path';
+import dotenv from 'dotenv';
 import { GatsbyConfig } from 'gatsby';
 import remarkGfm from 'remark-gfm';
 import { getSanitizedPath } from './src/utils/getSanitizedPath';
+
+// Local secrets such as SANITY_READ_TOKEN, kept out of git
+dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 
 const isGitHubPullRequest =
   process.env.GITHUB_EVENT_NAME === 'pull_request' ||
@@ -29,6 +33,8 @@ const config: GatsbyConfig = {
       options: {
         projectId: 'npa0lfls',
         dataset: 'production',
+        // Drafts are private, so overlayDrafts only shows them with a read token
+        token: process.env.SANITY_READ_TOKEN,
         overlayDrafts: process.env.NODE_ENV === 'development',
         watchMode: process.env.NODE_ENV === 'development',
         graphqlTag:

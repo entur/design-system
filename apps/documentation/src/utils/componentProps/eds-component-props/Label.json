@@ -1,28 +1,24 @@
 {
-  "tags": {},
-  "description": "",
+  "tags": {
+    "beta": "Experimental component - may have breaking changes in future releases"
+  },
+  "description": "Ledetekst for et skjemafelt, koblet til feltet med `htmlFor` eller ved å ligge rundt det",
   "displayName": "Label",
   "methods": [],
   "props": {
-    "as": {
-      "defaultValue": {
-        "value": "\"label\""
-      },
-      "description": "HTML-elementet eller React-komponenten som rendres\nAn override of the default HTML tag.\nCan also be another React component.",
-      "name": "as",
+    "spacing": {
+      "defaultValue": null,
+      "description": "Avstand over og under, fra samme skala som `gap` på Flex og Grid.\nÉn verdi gir lik avstand over og under, `{ top, bottom }` setter dem hver for seg.\nUten `spacing` har teksten ingen avstand, med mindre den ligger i en `TextContainer`.",
+      "name": "spacing",
       "declarations": [
         {
-          "fileName": "packages/typography/src/Label.tsx",
-          "name": "TypeLiteral"
-        },
-        {
-          "fileName": "node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
+          "fileName": "packages/typography/src/beta/types.ts",
           "name": "TypeLiteral"
         }
       ],
       "required": false,
       "type": {
-        "name": "(string & ElementType<any>) | (ComponentClass<any, any> & ElementType<any>) | (FunctionComponent<any> & ElementType<...>) | undefined"
+        "name": "\"none\" | \"2xs\" | \"xs\" | \"s\" | \"m\" | \"lg\" | \"xl\" | \"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"6xl\" | \"7xl\" | \"8xl\" | \"9xl\" | \"10xl\" | \"11xl\" | \"12xl\" | \"13xl\" | { top?: \"none\" | \"2xs\" | \"xs\" | \"s\" | ... 15 more ... | undefined; bottom?: \"none\" | ... 18 more ... | undefined; } | undefined"
       }
     },
     "className": {
@@ -31,7 +27,7 @@
       "name": "className",
       "declarations": [
         {
-          "fileName": "packages/typography/src/Label.tsx",
+          "fileName": "packages/typography/src/beta/components/Label.tsx",
           "name": "TypeLiteral"
         }
       ],
@@ -46,30 +42,13 @@
       "name": "children",
       "declarations": [
         {
-          "fileName": "packages/typography/src/Label.tsx",
-          "name": "TypeLiteral"
-        }
-      ],
-      "required": true,
-      "type": {
-        "name": "ReactNode"
-      }
-    },
-    "margin": {
-      "defaultValue": {
-        "value": "both"
-      },
-      "description": "Hvor du vil ha marginer",
-      "name": "margin",
-      "declarations": [
-        {
-          "fileName": "packages/typography/src/Label.tsx",
+          "fileName": "packages/typography/src/beta/components/Label.tsx",
           "name": "TypeLiteral"
         }
       ],
       "required": false,
       "type": {
-        "name": "\"top\" | \"bottom\" | \"both\" | \"none\" | undefined"
+        "name": "ReactNode"
       }
     }
   }

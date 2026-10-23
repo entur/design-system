@@ -4,6 +4,21 @@
   "displayName": "Heading",
   "methods": [],
   "props": {
+    "spacing": {
+      "defaultValue": null,
+      "description": "Avstand over og under, fra samme skala som `gap` på Flex og Grid.\nÉn verdi gir lik avstand over og under, `{ top, bottom }` setter dem hver for seg.\nUten `spacing` har teksten ingen avstand, med mindre den ligger i en `TextContainer`.",
+      "name": "spacing",
+      "declarations": [
+        {
+          "fileName": "packages/typography/src/beta/types.ts",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "\"s\" | \"none\" | \"2xs\" | \"xs\" | \"m\" | \"lg\" | \"xl\" | \"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"6xl\" | \"7xl\" | \"8xl\" | \"9xl\" | \"10xl\" | \"11xl\" | \"12xl\" | \"13xl\" | { top?: \"s\" | \"none\" | \"2xs\" | \"xs\" | ... 15 more ... | undefined; bottom?: \"s\" | ... 18 more ... | undefined; } | undefined"
+      }
+    },
     "variant": {
       "defaultValue": null,
       "description": "Visuell variant som bestemmer styling (anbefalt over size)",
@@ -16,7 +31,7 @@
       ],
       "required": false,
       "type": {
-        "name": "TypographyHeadingVariant | undefined"
+        "name": "\"title-1\" | \"title-2\" | \"subtitle-1\" | \"subtitle-2\" | \"section-1\" | \"section-2\" | undefined"
       }
     },
     "size": {
@@ -31,7 +46,22 @@
       ],
       "required": false,
       "type": {
-        "name": "TypographySize | undefined"
+        "name": "\"s\" | \"xs\" | \"m\" | \"lg\" | \"xl\" | \"2xl\" | undefined"
+      }
+    },
+    "tone": {
+      "defaultValue": null,
+      "description": "Dempet tekst for sekundære overskrifter. Velger riktig farge i kontrast- og mørk modus.",
+      "name": "tone",
+      "declarations": [
+        {
+          "fileName": "packages/typography/src/beta/components/Heading.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "\"subdued\" | undefined"
       }
     },
     "children": {
@@ -44,9 +74,39 @@
           "name": "TypeLiteral"
         }
       ],
-      "required": true,
+      "required": false,
       "type": {
         "name": "ReactNode"
+      }
+    },
+    "trim": {
+      "defaultValue": null,
+      "description": "Fjerner luften over versalhøyden og under grunnlinjen, så teksten flukter med elementer ved siden av. Har ingen effekt i nettlesere uten støtte for `text-box`.",
+      "name": "trim",
+      "declarations": [
+        {
+          "fileName": "packages/typography/src/beta/components/Heading.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "boolean | undefined"
+      }
+    },
+    "maxLines": {
+      "defaultValue": null,
+      "description": "Kutter teksten etter så mange linjer og avslutter med «…». Hele teksten må kunne leses et annet sted, for eksempel på en egen side.",
+      "name": "maxLines",
+      "declarations": [
+        {
+          "fileName": "packages/typography/src/beta/components/Heading.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "number | undefined"
       }
     },
     "className": {
@@ -64,36 +124,6 @@
         "name": "string | undefined"
       }
     },
-    "style": {
-      "defaultValue": null,
-      "description": "Inline CSS-stiler",
-      "name": "style",
-      "declarations": [
-        {
-          "fileName": "packages/typography/src/beta/components/Heading.tsx",
-          "name": "TypeLiteral"
-        }
-      ],
-      "required": false,
-      "type": {
-        "name": "CSSProperties | undefined"
-      }
-    },
-    "spacing": {
-      "defaultValue": null,
-      "description": "Spacing around the component",
-      "name": "spacing",
-      "declarations": [
-        {
-          "fileName": "packages/typography/src/beta/components/Heading.tsx",
-          "name": "TypeLiteral"
-        }
-      ],
-      "required": false,
-      "type": {
-        "name": "TypographySpacing | undefined"
-      }
-    },
     "as": {
       "defaultValue": null,
       "description": "An override of the default HTML tag.\nCan also be another React component.",
@@ -106,7 +136,22 @@
       ],
       "required": false,
       "type": {
-        "name": "ElementType<any> | undefined"
+        "name": "ElementType<any, keyof IntrinsicElements> | undefined"
+      }
+    },
+    "ref": {
+      "defaultValue": null,
+      "description": "",
+      "name": "ref",
+      "declarations": [
+        {
+          "fileName": "packages/typography/src/beta/components/Heading.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "Ref<Element> | undefined"
       }
     }
   }

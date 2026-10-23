@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { PrimaryButton } from '@entur/button';
-import { Heading2 } from '@entur/typography';
+import { Heading } from '@entur/typography/beta';
 
 import { useConsent } from '@providers/ConsentProvider';
 import { saveAllConsents } from 'src/utils/cmpUtils';
@@ -66,9 +66,14 @@ export const ConsentBanner = () => {
       tabIndex={-1}
     >
       <div className="consent-banner__content">
-        <Heading2 id={TITLE_ID} className="consent-banner__title" margin="none">
+        <Heading
+          as="h2"
+          variant="title-2"
+          id={TITLE_ID}
+          className="consent-banner__title"
+        >
           {firstLayer.title}
-        </Heading2>
+        </Heading>
         {firstLayer.description.default && (
           <div
             className="consent-banner__description"

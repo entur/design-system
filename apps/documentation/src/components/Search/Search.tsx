@@ -25,14 +25,7 @@ import {
 } from '@entur/icons';
 import { Tag } from '@entur/layout';
 import { Flex } from '@entur/layout/beta';
-import {
-  Heading2,
-  Heading5,
-  ListItem,
-  Paragraph,
-  SmallText,
-  UnorderedList,
-} from '@entur/typography';
+import { Heading, ListItem, Text, UnorderedList } from '@entur/typography/beta';
 import { useSearch } from './SearchContext';
 import { ArticleTag } from '../Common/ArticleTag';
 
@@ -245,9 +238,14 @@ export const Search = () => {
         closeLabel="Lukk søk"
         className="searchmodal"
       >
-        <Heading2 margin="bottom" id={SEARCH_HEADING_ID}>
+        <Heading
+          as="h2"
+          variant="title-2"
+          spacing={{ bottom: 'xs' }}
+          id={SEARCH_HEADING_ID}
+        >
           Søk i dokumentasjon
-        </Heading2>
+        </Heading>
         <TextField
           // Named by the dialog heading instead of its own label
           label=""
@@ -266,11 +264,11 @@ export const Search = () => {
         />
         <UnorderedList className="searchmodal__list">
           {results.length === 0 && searchQuery !== '' && (
-            <Paragraph>
+            <Text spacing={{ bottom: 'm' }}>
               {
                 'Fant ingen sider som passet med søket ditt 😔 \nHer er noen foreslåtte sider:'
               }
-            </Paragraph>
+            </Text>
           )}
           {(searchQuery === '' ||
             (searchQuery !== '' && results.length === 0)) && (
@@ -338,7 +336,13 @@ const ListSection = (props: {
   if (group.length === 0) return <></>;
   return (
     <>
-      <Heading5 as={Heading2}>{title}</Heading5>
+      <Heading
+        as="h2"
+        variant="section-1"
+        spacing={{ top: 'xl', bottom: 'xs' }}
+      >
+        {title}
+      </Heading>
       {group.map((result, index) => (
         <ListElement
           key={result.id}
@@ -382,7 +386,7 @@ const ListElement = (props: {
             {result.tag && <ArticleTag tag={result.tag} />}
           </Flex>
         </GatsbyLink>
-        <SmallText>{result.description}</SmallText>
+        <Text variant="caption">{result.description}</Text>
       </div>
       {result.npmPackage && (
         <Tag className="searchmodal__list__item__tag">

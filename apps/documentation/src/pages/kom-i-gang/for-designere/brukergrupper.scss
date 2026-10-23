@@ -8,6 +8,7 @@
     justify-content: center;
     flex-direction: column;
     min-height: 10rem;
+    text-align: center;
     background: var(--designentur-basecard-default-fill);
 
     &-wrapper {
@@ -17,12 +18,6 @@
     .eds-icon {
       font-size: tokens.$font-sizes-extra-large5;
       margin-top: tokens.$space-large;
-    }
-
-    .eds-paragraph {
-      text-align: center;
-      margin-top: tokens.$space-large;
-      max-width: 10rem;
     }
   }
 

@@ -12,15 +12,13 @@ import {
   WarningIcon,
 } from '@entur/icons';
 import {
-  CodeText,
-  Heading3,
-  Heading6,
+  Heading,
   Link,
   ListItem,
-  Paragraph,
-  StrongText,
+  Text,
+  TextContainer,
   UnorderedList,
-} from '@entur/typography';
+} from '@entur/typography/beta';
 
 import './MarkdownParser.scss';
 
@@ -60,6 +58,23 @@ const SECTIONS: Record<
     generated: true,
   },
 };
+
+// Named components, so the grouping below can recognise them by type
+const ReleaseHeading = (props: { children?: React.ReactNode }) => (
+  <Heading as="h3" variant="subtitle-1" {...props} />
+);
+const MinorHeading = (props: { children?: React.ReactNode }) => (
+  <Heading as="h6" variant="section-2" {...props} />
+);
+const Paragraph = (props: { children?: React.ReactNode }) => (
+  <Text {...props} />
+);
+const Strong = (props: { children?: React.ReactNode }) => (
+  <Text as="strong" weight="bold" {...props} />
+);
+const Code = (props: { children?: React.ReactNode }) => (
+  <Text variant="code" {...props} />
+);
 
 const textContent = (children: React.ReactNode): string =>
   React.Children.toArray(children)
@@ -143,7 +158,9 @@ const ChangelogEntry = ({
   return (
     <ListItem {...rest}>
       {summary.props.children}
-      <div className="markdown-parser__description">{description}</div>
+      <TextContainer className="markdown-parser__description">
+        {description}
+      </TextContainer>
     </ListItem>
   );
 };
@@ -199,11 +216,11 @@ const DependencySection = ({
             aria-controls={contentId}
           >
             <span className="markdown-parser__dependencies-summary">
-              <StrongText>
+              <Strong>
                 {`${names.length} ${
                   names.length === 1 ? 'package' : 'packages'
                 }`}
-              </StrongText>
+              </Strong>
               {`: ${names.join(', ')}`}
             </span>
           </ExpandableTextButton>
@@ -247,7 +264,8 @@ const splitReleases = (nodes: React.ReactNode[]) => {
   const releases: React.ReactNode[][] = [];
 
   nodes.forEach(node => {
-    if (isType(node, Heading3) || releases.length === 0) releases.push([]);
+    if (isType(node, ReleaseHeading) || releases.length === 0)
+      releases.push([]);
     releases[releases.length - 1].push(node);
   });
 
@@ -257,7 +275,7 @@ const splitReleases = (nodes: React.ReactNode[]) => {
 /**
  * Releases whose whole content is generated dependency sections are collapsed;
  * anything a person wrote is left open. Both kinds of release heading are
- * rendered as Heading3, so they are what a release entry starts at.
+ * rendered as ReleaseHeading, so they are what a release entry starts at.
  */
 const collapseDependencyOnlyReleases = (nodes: React.ReactNode[]) =>
   // No spread: the tslib this build resolves has no __spreadArray.
@@ -270,17 +288,17 @@ const collapseDependencyOnlyReleases = (nodes: React.ReactNode[]) =>
 const OVERRIDES = {
   // Releases are h1 when the version got a minor or major bump and h2
   // when it got a patch, but they are the same thing to a reader.
-  h1: { component: Heading3 },
-  h2: { component: Heading3 },
+  h1: { component: ReleaseHeading },
+  h2: { component: ReleaseHeading },
   h3: { component: ChangelogSection },
-  h4: { component: Heading6 },
-  h5: { component: Heading6 },
+  h4: { component: MinorHeading },
+  h5: { component: MinorHeading },
   a: { component: Link },
   p: { component: Paragraph },
   ul: { component: UnorderedList },
   li: { component: ChangelogEntry },
-  strong: { component: StrongText },
-  code: { component: CodeText },
+  strong: { component: Strong },
+  code: { component: Code },
 };
 
 export const MarkdownParser: React.FC<{ children: any }> = ({ children }) => {
@@ -299,8 +317,8 @@ export const MarkdownParser: React.FC<{ children: any }> = ({ children }) => {
   );
 
   return (
-    <div className="markdown-parser" lang="en">
+    <TextContainer className="markdown-parser" lang="en">
       {collapseDependencyOnlyReleases(nodes)}
-    </div>
+    </TextContainer>
   );
 };

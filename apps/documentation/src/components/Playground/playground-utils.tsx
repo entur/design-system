@@ -90,6 +90,26 @@ export const capitalize = (s: string) => {
 const LEADING_IMPORTS =
   /^(?:\s*import\s+(?:[^;'"]*?\s+from\s+)?['"][^'"]+['"];?)+/;
 
+const NAMED_IMPORT = /import\s*\{([^}]*)\}\s*from\s*['"]([^'"]+)['"]/g;
+
+// The named imports at the top of a snippet, looked up in the given modules
+export const getImportedScope = (
+  code: string,
+  modules: Record<string, Record<string, unknown>>,
+) => {
+  const imports = code.match(LEADING_IMPORTS)?.[0] ?? '';
+  const scope: Record<string, unknown> = {};
+  for (const [, names, source] of Array.from(imports.matchAll(NAMED_IMPORT))) {
+    const module = modules[source];
+    if (!module) continue;
+    for (const name of names.split(',')) {
+      const [imported, local = imported] = name.trim().split(/\s+as\s+/);
+      if (imported && imported in module) scope[local] = module[imported];
+    }
+  }
+  return scope;
+};
+
 export const wrapCodeInFragmentIfNecessary = (code: string) => {
   const codeToWrap = code.replace(LEADING_IMPORTS, '').trimStart();
   if (codeToWrap.startsWith('()') || codeToWrap.startsWith('class'))
