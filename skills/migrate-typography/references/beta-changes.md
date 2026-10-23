@@ -30,6 +30,23 @@ import { Link } from '@entur/typography/beta';
 <Link href="/vilkar">Vilkår</Link>;
 ```
 
+## `external` is removed from `Link`
+
+The icon was read as both "another site" and "opens in a new tab". Remove `external` and `ariaLabelExternalIcon`, and say it in the link text when it matters:
+
+- **Opens in a new tab** (`target="_blank"`): add "(åpnes i ny fane)" to the link text. Ask the team whether the link needs a new tab at all; keep it only where leaving would lose the user's input or session.
+- **Another site:** the text or the context usually says so already. If not, name the site, for example "Les mer på regjeringen.no".
+
+```tsx
+// Before
+<Link href="https://regjeringen.no" external target="_blank" rel="noreferrer">
+  Les mer
+</Link>
+
+// After
+<Link href="https://regjeringen.no">Les mer på regjeringen.no</Link>
+```
+
 ## `Blockquote` and `BlockquoteFooter` are removed
 
 Use `Text variant="quote"`. Put a source in `figure` + `figcaption`:
@@ -98,6 +115,15 @@ Only `medium` (500) and `bold` (600) are valid. The other values are removed, so
 - `size` now always overrides `variant` on both `Text` and `Heading`. Before, `Text` with both looked like the variant. Where `Text` has both, check whether the size or the variant was meant, and remove the other.
 - `Text` sizes are `xs | s | m | lg | xl`. `size="2xl"` is removed: use `xl`, or a `Heading` if it is a heading. `size="lg"` now has a style (before, it had none).
 
+## `Text` without `variant`
+
+- **On its own line** (no `as`, or `as="p" | "div" | "li" | "dd" | "dt" | "figcaption"`): it is now a paragraph (body-m). Before, it had no size of its own. Remove CSS that set body text on it.
+- **Inside other text** (`as="span"`, `"strong"`, a heading element or a component): it now inherits colour and weight as well as size. Before, it set the text colour and medium weight. `weight` and `size` still apply.
+
+## `Heading` defaults to `h2`
+
+`Heading` without `as` is now an `h2` with `title-2` (before: `h1` with `title-1`). A non-heading `as` without `variant` also gets `title-2`. Where the page title relied on the default, add `as="h1"`.
+
 ## Lists
 
 No API change.
@@ -109,8 +135,8 @@ No API change.
 
 ## Exports
 
-- Removed: `Blockquote`, `BlockquoteFooter`.
-- New: `Label`, `TextContainer`, and `*Props`/`*OwnProps` types for each component.
+- Removed: `Blockquote`, `BlockquoteFooter`, and the `external` and `ariaLabelExternalIcon` props on `Link`.
+- New: `Label`, `TextContainer`, `tone="subdued"` on `Text` and `Heading` (replaces CSS that sets the subdued text colour), `maxLines` on `Text` and `Heading` (replaces your own `text-overflow` or `line-clamp`), and `*Props`/`*OwnProps` types for each component.
 - `TypographySpacing` now includes the object form `{ top, bottom }`.
 
 ## CSS class names
@@ -120,6 +146,7 @@ No API change.
 | `.eds-text--code-text`                                                          | `.eds-text--code`                                                                                       |
 | `.eds-text--preformatted-text`                                                  | `.eds-text--preformatted`                                                                               |
 | `.eds-text--blockquote`, `.eds-text--blockquote__footer`                        | `.eds-text--quote` (source: your own `figcaption`)                                                      |
+| `.eds-text--link--ext-icon`                                                     | Removed with `external`                                                                                 |
 | `.eds-text--spacing-*`, `.eds-heading--spacing-*`, `.eds-text--link--spacing-*` | No classes. `spacing` sets `--eds-text-spacing-top` and `--eds-text-spacing-bottom` inline              |
 | `.eds-text--list-item::before` (dash and number rings)                          | Bullets: `::before` on `.eds-text--unordered-list > li`. Numbers: `::marker`. Steps: `.eds-text--steps` |
 | `.eds-heading--<variant>` alone                                                 | `Heading` with `size` gets both `.eds-heading--<variant>` and `.eds-heading--<size>`                    |

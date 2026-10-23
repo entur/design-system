@@ -11,29 +11,6 @@ describe('Link Component', () => {
     expect(link).toHaveAttribute('href', '/test');
   });
 
-  test('renders with external icon when external is true', () => {
-    const { getByText, getByLabelText } = render(
-      <Link href="/external" external>
-        External link
-      </Link>,
-    );
-    expect(getByText('External link')).toBeInTheDocument();
-    expect(getByLabelText('(ekstern lenke)')).toBeInTheDocument();
-  });
-
-  test('allows custom aria-label for external icon', () => {
-    const { getByLabelText } = render(
-      <Link
-        href="/external"
-        external
-        ariaLabelExternalIcon="External link icon"
-      >
-        External link
-      </Link>,
-    );
-    expect(getByLabelText('External link icon')).toBeInTheDocument();
-  });
-
   test('renders as different element with as prop', () => {
     const { getByText } = render(
       <Link as="button" type="button">

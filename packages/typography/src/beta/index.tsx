@@ -4,8 +4,8 @@
 import { warnAboutMissingStyles } from '@entur/utils';
 import './index.scss';
 
-// Beta still relies on the base typography styles, and Link uses an icon
-warnAboutMissingStyles('typography', 'icons');
+// Beta still relies on the base typography styles
+warnAboutMissingStyles('typography');
 
 export { Heading } from './components/Heading';
 export { Text } from './components/Text';
@@ -29,6 +29,7 @@ export type {
   TextProps,
   TypographyTextSize,
   TypographyTextVariant,
+  TypographyTone,
   TypographyWeight,
 } from './components/Text';
 export type { LinkComponent, LinkOwnProps, LinkProps } from './components/Link';

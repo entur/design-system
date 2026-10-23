@@ -34,6 +34,20 @@ describe('Heading Component', () => {
     expect(getByText('Title 1')).toHaveClass('eds-heading--title-1');
   });
 
+  test('cuts the heading after maxLines', () => {
+    const { getByText } = render(
+      <Heading maxLines={1}>Lang overskrift</Heading>,
+    );
+    const heading = getByText('Lang overskrift');
+    expect(heading).toHaveClass('eds-heading--max-lines');
+    expect(heading.style.getPropertyValue('--eds-text-max-lines')).toBe('1');
+  });
+
+  test('applies the subdued tone', () => {
+    const { getByText } = render(<Heading tone="subdued">Sekundær</Heading>);
+    expect(getByText('Sekundær')).toHaveClass('eds-heading--tone-subdued');
+  });
+
   test('applies size classes correctly', () => {
     const { getByText } = render(
       <Heading as="h1" size="xl">
@@ -97,6 +111,18 @@ describe('Heading Component', () => {
 
     const { getByText: getByText2 } = render(<Heading as="h2">H2</Heading>);
     expect(getByText2('H2')).toHaveClass('eds-heading--title-2');
+  });
+
+  test('renders h2 with title-2 by default', () => {
+    const { getByText } = render(
+      <>
+        <Heading>Default</Heading>
+        <Heading as="div">Div</Heading>
+      </>,
+    );
+    expect(getByText('Default').tagName).toBe('H2');
+    expect(getByText('Default')).toHaveClass('eds-heading--title-2');
+    expect(getByText('Div')).toHaveClass('eds-heading--title-2');
   });
 
   test('Heading with no variant or size uses default', () => {

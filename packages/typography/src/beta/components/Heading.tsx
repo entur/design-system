@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import { TypographySpacingProps } from '../types';
 import {
   getHeadingVariantFromSemanticType,
+  getMaxLinesStyle,
   getSpacingStyle,
 } from '../utils/utils';
 import { PolymorphicComponentProps } from '@entur/utils';
@@ -24,10 +25,14 @@ export type HeadingOwnProps = TypographySpacingProps & {
     | 'section-2';
   /** Visuell tekststørrelse som overstyrer variant-styling */
   size?: 'xs' | 's' | 'm' | 'lg' | 'xl' | '2xl';
+  /** Dempet tekst for sekundære overskrifter. Velger riktig farge i kontrast- og mørk modus. */
+  tone?: 'subdued';
   /** Innholdet som skal vises */
   children?: React.ReactNode;
   /** Fjerner luften over versalhøyden og under grunnlinjen, så teksten flukter med elementer ved siden av. Har ingen effekt i nettlesere uten støtte for `text-box`. */
   trim?: boolean;
+  /** Kutter teksten etter så mange linjer og avslutter med «…». Hele teksten må kunne leses et annet sted, for eksempel på en egen side. */
+  maxLines?: number;
   /** Ekstra klassenavn for tilpasset styling */
   className?: string;
 };
@@ -44,7 +49,7 @@ export type HeadingComponent = (<
   props: HeadingProps<C> & { ref?: React.Ref<Element> },
 ) => React.ReactElement | null) & { displayName?: string };
 
-const defaultElement = 'h1';
+const defaultElement = 'h2';
 
 /**
  * @beta Experimental component - may have breaking changes in future releases
@@ -56,9 +61,11 @@ export const Heading = React.forwardRef(
       as,
       size,
       variant,
+      tone,
       spacing,
       style,
       trim,
+      maxLines,
       className,
       ...rest
     }: HeadingProps<C>,
@@ -76,10 +83,12 @@ export const Heading = React.forwardRef(
           'eds-heading',
           `eds-heading--${usedVariant}`,
           size && `eds-heading--${size}`,
+          tone && `eds-heading--tone-${tone}`,
           trim && 'eds-heading--trim',
+          maxLines && 'eds-heading--max-lines',
           className,
         )}
-        style={getSpacingStyle(spacing, style)}
+        style={getSpacingStyle(spacing, getMaxLinesStyle(maxLines, style))}
         {...rest}
       >
         {children}

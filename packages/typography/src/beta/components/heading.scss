@@ -5,6 +5,7 @@
   .eds-heading {
     color: var(--components-typography-basetext-standard-text-accent);
     font-weight: var(--font-weight-heading);
+    overflow-wrap: break-word;
     text-wrap: balance;
 
     :where(.eds-contrast) & {
@@ -71,6 +72,15 @@
     &--xs {
       font-size: var(--font-size-heading-xs);
       line-height: var(--font-line-height-heading-xs);
+    }
+  }
+
+  // Last, so the tone wins over the colour of every variant
+  .eds-heading--tone-subdued {
+    color: var(--components-typography-basetext-standard-text-subdued);
+
+    :where(.eds-contrast) & {
+      color: var(--components-typography-basetext-contrast-text-subdued);
     }
   }
 }

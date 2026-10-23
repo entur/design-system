@@ -5,7 +5,7 @@ import type { TypographySpacing } from '../types';
 type SpacingStep = Exclude<TypographySpacing, object>;
 
 // Same scale as the layout beta, read from @entur/tokens/styles/spacing
-const SPACING_STEPS = new Set<string>([
+export const SPACING_STEPS = new Set<string>([
   'none',
   '2xs',
   'xs',
@@ -64,12 +64,24 @@ export function getSpacingStyle(
 }
 
 /**
+ * Pass maxLines on to the CSS, which cuts the text after that many lines
+ */
+export function getMaxLinesStyle(
+  maxLines: number | undefined,
+  style?: React.CSSProperties,
+): React.CSSProperties | undefined {
+  if (!maxLines) return style;
+  return { '--eds-text-max-lines': maxLines, ...style } as React.CSSProperties;
+}
+
+/**
  * Get heading variant based on semantic HTML element
  */
 export function getHeadingVariantFromSemanticType(
   element: string | React.ElementType,
 ): TypographyHeadingVariant {
-  if (typeof element !== 'string') return 'title-1';
+  // Same as the default element, h2
+  if (typeof element !== 'string') return 'title-2';
 
   switch (element.toLowerCase()) {
     case 'h1':
@@ -85,8 +97,29 @@ export function getHeadingVariantFromSemanticType(
     case 'h6':
       return 'section-2';
     default:
-      return 'title-1';
+      return 'title-2';
   }
+}
+
+// Elements that hold a paragraph of their own; anything else sits in other text and inherits it
+const BLOCK_TEXT_ELEMENTS = new Set([
+  'p',
+  'div',
+  'li',
+  'dd',
+  'dt',
+  'figcaption',
+]);
+
+/**
+ * The variant Text uses when none is given: paragraph on its own line, inherit inside other text
+ */
+export function getDefaultTextVariant(
+  element: React.ElementType,
+): 'paragraph' | 'inherit' {
+  return typeof element === 'string' && BLOCK_TEXT_ELEMENTS.has(element)
+    ? 'paragraph'
+    : 'inherit';
 }
 
 /**

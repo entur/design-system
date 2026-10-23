@@ -2,27 +2,27 @@
 
 Import the new components from `@entur/typography/beta`. The old ones and the new ones can live side by side, so this can be done one page at a time.
 
-| Old                                         | New                                                                                        |
-| ------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| `Heading1`                                  | `<Heading as="h1" variant="title-1">`                                                      |
-| `Heading2`                                  | `<Heading as="h2" variant="title-2">`                                                      |
-| `Heading3`                                  | `<Heading as="h3" variant="subtitle-1">`                                                   |
-| `Heading4`                                  | `<Heading as="h4" variant="subtitle-2">`                                                   |
-| `Heading5`                                  | `<Heading as="h5" variant="section-1">`                                                    |
-| `Heading6`                                  | `<Heading as="h6" variant="section-2">`                                                    |
-| `Paragraph`                                 | `<Text variant="paragraph">`                                                               |
-| `LeadParagraph`                             | `<Text variant="leading">`                                                                 |
-| `SubParagraph`                              | `<Text variant="subparagraph">`                                                            |
-| `SmallText`                                 | `<Text variant="caption" as="span">` (12px; the old one was 10–12px)                       |
-| `SubLabel`                                  | `<Text variant="sublabel" as="span">`                                                      |
-| `Label`                                     | `<Label>` when it labels a field, otherwise `<Text variant="label">`                       |
-| `EmphasizedText`                            | `<Text variant="emphasized">`                                                              |
-| `StrongText`                                | `<Text as="strong" weight="bold">`                                                         |
-| `CodeText`                                  | `<Text variant="code">`                                                                    |
-| `PreformattedText`                          | `<Text variant="preformatted">`                                                            |
-| `Link`                                      | `Link` from `@entur/typography/beta`                                                       |
-| `Blockquote`, `BlockquoteFooter`            | `figure` + `<Text variant="quote">` + `figcaption`, see [beta-changes.md](beta-changes.md) |
-| `UnorderedList`, `NumberedList`, `ListItem` | The same names from `@entur/typography/beta`                                               |
+| Old                                         | New                                                                                               |
+| ------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `Heading1`                                  | `<Heading as="h1" variant="title-1">`                                                             |
+| `Heading2`                                  | `<Heading as="h2" variant="title-2">`                                                             |
+| `Heading3`                                  | `<Heading as="h3" variant="subtitle-1">`                                                          |
+| `Heading4`                                  | `<Heading as="h4" variant="subtitle-2">`                                                          |
+| `Heading5`                                  | `<Heading as="h5" variant="section-1">`                                                           |
+| `Heading6`                                  | `<Heading as="h6" variant="section-2">`                                                           |
+| `Paragraph`                                 | `<Text variant="paragraph">`                                                                      |
+| `LeadParagraph`                             | `<Text variant="leading">`                                                                        |
+| `SubParagraph`                              | `<Text variant="subparagraph">`                                                                   |
+| `SmallText`                                 | `<Text variant="caption" as="span">` (12px; the old one was 10–12px)                              |
+| `SubLabel`                                  | `<Text variant="sublabel" as="span">`                                                             |
+| `Label`                                     | `<Label>` when it labels a field, otherwise `<Text variant="label">`                              |
+| `EmphasizedText`                            | `<Text variant="emphasized">`                                                                     |
+| `StrongText`                                | `<Text as="strong" weight="bold">`                                                                |
+| `CodeText`                                  | `<Text variant="code">`                                                                           |
+| `PreformattedText`                          | `<Text variant="preformatted">`                                                                   |
+| `Link`                                      | `Link` from `@entur/typography/beta`, without `external` (see [beta-changes.md](beta-changes.md)) |
+| `Blockquote`, `BlockquoteFooter`            | `figure` + `<Text variant="quote">` + `figcaption`, see [beta-changes.md](beta-changes.md)        |
+| `UnorderedList`, `NumberedList`, `ListItem` | The same names from `@entur/typography/beta`                                                      |
 
 Keep `as` when the old component had it. Heading level (`as`) and look (`variant`) are separate, so pick the variant from the design, not from the level.
 

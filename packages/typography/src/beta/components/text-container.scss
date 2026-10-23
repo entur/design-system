@@ -27,6 +27,10 @@ $text-after: (
   'paragraph-spacing-body-m':  ((),                    'overline',                                               ()),
 );
 
+// About 70 characters per line, in the range most reading guidance recommends (50–75)
+$measure: 70ch;
+$measured-variants: 'leading' 'paragraph' 'subparagraph' 'quote' 'unordered-list' 'numbered-list';
+
 // .eds-text--a, .eds-text--b … for a list of names
 @function classes($block, $names) {
   $selectors: ();
@@ -80,6 +84,16 @@ $text-after: (
       );
 
       margin-block-start: var(--eds-text-container-gap);
+    }
+
+    // A readable line length for running text. Images, tables and components keep the full width.
+    > :where(p, ul, ol, blockquote, #{classes('eds-text', $measured-variants)}) {
+      max-inline-size: $measure;
+    }
+
+    // Text from a CMS breaks long words like Text does
+    > :where(p, li, ul, ol, blockquote):where(:lang(nb), :lang(nn), :lang(no)) {
+      hyphens: auto;
     }
 
     // Browsers indent figure and blockquote, which a quote with its source sits in
