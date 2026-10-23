@@ -1028,8 +1028,10 @@ export const TypographyReview = () => {
                           kodetekst, i alle tre modusene
                         </ListItem>
                         <ListItem>
-                          <strong>Gjenstår:</strong> Weight. Figma har både
-                          stilnavn (DemiBold) og tall (600), koden bare tallet
+                          Tallet heter <strong>Font/Weight/Heading</strong>{' '}
+                          (600), som i koden. Stilnavnet Figma trenger heter{' '}
+                          <strong>Font/Weight-style/Heading</strong> (DemiBold).
+                          Det samme for Body
                         </ListItem>
                       </UnorderedList>
                     </TextContainer>
