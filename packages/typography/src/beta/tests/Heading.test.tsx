@@ -50,19 +50,25 @@ describe('Heading Component', () => {
       </Heading>,
     );
     const heading = getByText('Heading');
-    expect(heading).toHaveClass('eds-heading--lg');
-    expect(heading).not.toHaveClass('eds-heading--title-1');
+    // heading.scss puts the size rules after the variant rules
+    expect(heading).toHaveClass('eds-heading--title-1', 'eds-heading--lg');
   });
 
-  test('applies spacing classes correctly', () => {
+  test('trims the text box when asked', () => {
+    const { getByText } = render(<Heading trim>Trimmet</Heading>);
+    expect(getByText('Trimmet')).toHaveClass('eds-heading--trim');
+  });
+
+  test('applies spacing', () => {
     const { getByText } = render(
-      <Heading as="h1" spacing="lg">
+      <Heading as="h1" spacing={{ top: '2xl', bottom: 's' }}>
         Heading with spacing
       </Heading>,
     );
-    expect(getByText('Heading with spacing')).toHaveClass(
-      'eds-heading--spacing-lg',
-    );
+    expect(getByText('Heading with spacing')).toHaveStyle({
+      '--eds-text-spacing-top': 'var(--spacing-2xl)',
+      '--eds-text-spacing-bottom': 'var(--spacing-s)',
+    });
   });
 
   test('passes through additional props', () => {

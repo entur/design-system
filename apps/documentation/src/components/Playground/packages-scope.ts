@@ -49,7 +49,13 @@ export const packages = {
   ...tokens,
   ...tooltip,
   ...travel,
-  ...typography,
+  // Beta first so the stable typography wins name clashes; clashing beta
+  // components are reachable through Beta-suffixed aliases.
   ...typographyBeta,
+  ...typography,
+  LinkBeta: typographyBeta.Link,
+  UnorderedListBeta: typographyBeta.UnorderedList,
+  NumberedListBeta: typographyBeta.NumberedList,
+  ListItemBeta: typographyBeta.ListItem,
   ...utils,
 };

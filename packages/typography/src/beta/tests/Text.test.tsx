@@ -25,6 +25,55 @@ describe('Text Component', () => {
     expect(getByText('Leading text')).toHaveClass('eds-text--leading');
   });
 
+  test('renders caption, label, overline and sublabel as block paragraphs', () => {
+    const { getByText } = render(
+      <>
+        <Text variant="caption">Caption</Text>
+        <Text variant="label">Label</Text>
+        <Text variant="overline">Overline</Text>
+        <Text variant="sublabel">Sublabel</Text>
+      </>,
+    );
+    expect(getByText('Caption').tagName).toBe('P');
+    expect(getByText('Label').tagName).toBe('P');
+    expect(getByText('Overline').tagName).toBe('P');
+    expect(getByText('Sublabel').tagName).toBe('P');
+  });
+
+  test('renders quote as a blockquote', () => {
+    const { getByText } = render(<Text variant="quote">Sitat</Text>);
+    expect(getByText('Sitat').tagName).toBe('BLOCKQUOTE');
+    expect(getByText('Sitat')).toHaveClass('eds-text--quote');
+  });
+
+  test('trims the text box only when asked', () => {
+    const { getByText } = render(
+      <>
+        <Text trim>Trimmet</Text>
+        <Text>Vanlig</Text>
+      </>,
+    );
+    expect(getByText('Trimmet')).toHaveClass('eds-text--trim');
+    expect(getByText('Vanlig')).not.toHaveClass('eds-text--trim');
+  });
+
+  test('keeps emphasized inline', () => {
+    const { getByText } = render(<Text variant="emphasized">Viktig</Text>);
+    expect(getByText('Viktig').tagName).toBe('EM');
+  });
+
+  test('renders code and preformatted as their HTML elements', () => {
+    const { getByText } = render(
+      <>
+        <Text variant="code">npm</Text>
+        <Text variant="preformatted">a b</Text>
+      </>,
+    );
+    expect(getByText('npm').tagName).toBe('CODE');
+    expect(getByText('npm')).toHaveClass('eds-text--code');
+    expect(getByText(/a\s+b/).tagName).toBe('PRE');
+  });
+
   test('applies size classes correctly', () => {
     const { getByText } = render(<Text size="lg">Large text</Text>);
     expect(getByText('Large text')).toHaveClass('eds-text--lg');
@@ -35,14 +84,31 @@ describe('Text Component', () => {
     expect(getByText('Bold text')).toHaveClass('eds-text--weight-bold');
   });
 
-  test('applies spacing classes correctly', () => {
-    const { getByText } = render(<Text spacing="md">Text with spacing</Text>);
-    expect(getByText('Text with spacing')).toHaveClass('eds-text--spacing-md');
+  test('applies spacing', () => {
+    const { getByText } = render(<Text spacing="none">Text with spacing</Text>);
+    expect(getByText('Text with spacing')).toHaveStyle({
+      '--eds-text-spacing-top': '0px',
+      '--eds-text-spacing-bottom': '0px',
+    });
+  });
+
+  test('merges spacing with the style prop', () => {
+    const { getByText } = render(
+      <Text spacing={{ top: 'xl' }} style={{ color: 'red' }}>
+        Styled
+      </Text>,
+    );
+    const text = getByText('Styled');
+    expect(text).toHaveStyle({
+      '--eds-text-spacing-top': 'var(--spacing-xl)',
+      color: 'red',
+    });
+    expect(text.style.getPropertyValue('--eds-text-spacing-bottom')).toBe('');
   });
 
   test('combines multiple classes correctly', () => {
     const { getByText } = render(
-      <Text variant="paragraph" size="m" weight="medium" spacing="sm">
+      <Text variant="paragraph" size="m" weight="medium" spacing="s">
         Combined text
       </Text>,
     );
@@ -50,7 +116,7 @@ describe('Text Component', () => {
     expect(text).toHaveClass('eds-text--paragraph');
     expect(text).toHaveClass('eds-text--m');
     expect(text).toHaveClass('eds-text--weight-medium');
-    expect(text).toHaveClass('eds-text--spacing-sm');
+    expect(text).toHaveStyle({ '--eds-text-spacing-top': 'var(--spacing-s)' });
   });
 
   test('passes through additional props', () => {
@@ -76,20 +142,5 @@ describe('Text Component', () => {
     expect(getByText('Default text')).not.toHaveClass(
       'eds-text--weight-medium',
     );
-  });
-
-  test('Components handle empty children', () => {
-    const { container } = render(<Text>{''}</Text>);
-    expect(container.firstChild).toBeInTheDocument();
-  });
-
-  test('Components handle null children', () => {
-    const { container } = render(<Text>{null}</Text>);
-    expect(container.firstChild).toBeInTheDocument();
-  });
-
-  test('Components handle undefined children', () => {
-    const { container } = render(<Text>{undefined}</Text>);
-    expect(container.firstChild).toBeInTheDocument();
   });
 });

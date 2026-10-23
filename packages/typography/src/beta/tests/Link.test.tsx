@@ -43,15 +43,15 @@ describe('Link Component', () => {
     expect(getByText('Button link').tagName).toBe('BUTTON');
   });
 
-  test('applies spacing classes correctly', () => {
+  test('applies spacing', () => {
     const { getByText } = render(
       <Link href="/test" spacing="lg">
         Link with spacing
       </Link>,
     );
-    expect(getByText('Link with spacing')).toHaveClass(
-      'eds-text--link--spacing-lg',
-    );
+    expect(getByText('Link with spacing')).toHaveStyle({
+      '--eds-text-spacing-bottom': 'var(--spacing-lg)',
+    });
   });
 
   test('passes through additional props', () => {

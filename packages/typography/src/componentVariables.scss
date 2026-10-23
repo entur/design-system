@@ -15,11 +15,11 @@
   --components-typography-blockquote-standard-text-subdued: #{$text-subdued};
   --components-typography-codetext-contrast-border: #{$stroke-colorless};
   --components-typography-codetext-contrast-border-interactive: #{$stroke-contrast};
-  --components-typography-codetext-contrast-fill: #{$fill-background-tint-light};
+  --components-typography-codetext-contrast-fill: #{$fill-background-contrast-lightalt-2};
   --components-typography-codetext-contrast-text: #{$text-accent};
   --components-typography-codetext-standard-border: #{$stroke-transparent};
   --components-typography-codetext-standard-border-interactive: #{$stroke-accent};
-  --components-typography-codetext-standard-fill: #{$fill-background-tint-light};
+  --components-typography-codetext-standard-fill: #{$fill-selected-default-tint};
   --components-typography-codetext-standard-text: #{$text-accent};
   --components-typography-label-contrast-text-accent: #{$text-subduedalt};
   --components-typography-label-standard-text-accent: #{$text-subdued};
@@ -40,11 +40,11 @@
   --components-typography-blockquote-standard-text-subdued: #{$text-darkalt};
   --components-typography-codetext-contrast-border: #{$stroke-colorless};
   --components-typography-codetext-contrast-border-interactive: #{$stroke-lightalt};
-  --components-typography-codetext-contrast-fill: #{$fill-background-overlay-solid};
+  --components-typography-codetext-contrast-fill: #{$fill-background-contrast-dark};
   --components-typography-codetext-contrast-text: #{$text-lightalt};
   --components-typography-codetext-standard-border: #{$stroke-colorless};
   --components-typography-codetext-standard-border-interactive: #{$stroke-lightalt};
-  --components-typography-codetext-standard-fill: #{$fill-background-overlay-solid};
+  --components-typography-codetext-standard-fill: #{$fill-background-contrast-dark};
   --components-typography-codetext-standard-text: #{$text-lightalt};
   --components-typography-label-contrast-text-accent: #{$text-lightalt};
   --components-typography-label-standard-text-accent: #{$text-lightalt};

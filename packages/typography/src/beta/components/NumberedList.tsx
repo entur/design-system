@@ -1,53 +1,68 @@
 import React from 'react';
 import classNames from 'classnames';
 import { PolymorphicComponentProps } from '@entur/utils';
-import { TypographySpacing } from '../types';
-import { getSpacingClasses } from '../utils/utils';
+import { TypographySpacingProps } from '../types';
+import { getSpacingStyle } from '../utils/utils';
 
 import './text.scss';
 
 /**
  * @beta Experimental component - may have breaking changes in future releases
  */
-type NumberedListBaseProps = {
+export type NumberedListOwnProps = TypographySpacingProps & {
   /** Ekstra klassenavn */
   className?: string;
   /** Innholdet */
-  children: React.ReactNode;
+  children?: React.ReactNode;
   /** List type (1, A, a, I, i) */
   type?: '1' | 'A' | 'a' | 'I' | 'i';
-  /** Spacing around the component (same as Text and Heading components) */
-  spacing?: TypographySpacing;
 };
 
-export type NumberedListProps<C extends React.ElementType> =
-  PolymorphicComponentProps<C, NumberedListBaseProps>;
+export type NumberedListProps<
+  C extends React.ElementType = typeof defaultElement,
+> = PolymorphicComponentProps<C, NumberedListOwnProps>;
+
+export type NumberedListComponent = (<
+  C extends React.ElementType = typeof defaultElement,
+>(
+  props: NumberedListProps<C> & { ref?: React.Ref<Element> },
+) => React.ReactElement | null) & { displayName?: string };
+
+const defaultElement = 'ol';
 
 /**
  * @beta Experimental component - may have breaking changes in future releases
  */
-export const NumberedList = <C extends React.ElementType = 'ol'>({
-  className,
-  type = '1',
-  spacing,
-  as,
-  children,
-  ...rest
-}: NumberedListProps<C>): JSX.Element => {
-  const ListElement: React.ElementType = as || 'ol';
+export const NumberedList = React.forwardRef(
+  <C extends React.ElementType = typeof defaultElement>(
+    {
+      type = '1',
+      className,
+      spacing,
+      style,
+      children,
+      as,
+      ...rest
+    }: NumberedListProps<C>,
+    ref?: React.Ref<Element>,
+  ): JSX.Element => {
+    const ListElement: React.ElementType = as || defaultElement;
 
-  return (
-    <ListElement
-      className={classNames(
-        'eds-text--numbered-list',
-        { [`eds-text--numbered-list--type-${type}`]: type },
-        getSpacingClasses(spacing, 'eds-text--numbered-list'),
-        className,
-      )}
-      type={type}
-      {...rest}
-    >
-      {children}
-    </ListElement>
-  );
-};
+    return (
+      <ListElement
+        ref={ref}
+        className={classNames(
+          'eds-text--numbered-list',
+          `eds-text--numbered-list--type-${type}`,
+          className,
+        )}
+        type={type}
+        style={getSpacingStyle(spacing, style)}
+        {...rest}
+      >
+        {children}
+      </ListElement>
+    );
+  },
+) as NumberedListComponent;
+NumberedList.displayName = 'NumberedList';

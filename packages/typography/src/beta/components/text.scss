@@ -8,13 +8,127 @@
   .eds-text {
     color: var(--components-typography-basetext-standard-text-accent);
     font-weight: var(--font-weight-body);
-    margin: 0;
+    text-wrap: pretty;
 
     :where(.eds-contrast) & {
       color: var(--components-typography-basetext-contrast-text-accent);
     }
 
-    // Sizes
+    // Variants
+    &--leading {
+      font-size: var(--font-size-body-xl);
+      line-height: var(--font-line-height-body-xl);
+      letter-spacing: -0.0025em;
+    }
+
+    &--quote {
+      border-left: t.$border-widths-large solid var(--components-typography-blockquote-standard-stroke);
+      padding-left: var(--font-paragraph-spacing-body-lg);
+      font-size: var(--font-size-body-lg);
+      line-height: var(--font-line-height-body-lg);
+
+      :where(.eds-contrast) & {
+        border-left-color: var(--components-typography-blockquote-contrast-stroke);
+      }
+    }
+
+    &--paragraph {
+      font-size: var(--font-size-body-m);
+      line-height: var(--font-line-height-body-m);
+    }
+
+    &--subparagraph {
+      font-size: var(--font-size-body-s);
+      line-height: var(--font-line-height-body-s);
+    }
+
+    &--caption {
+      font-size: var(--font-size-body-xs);
+      line-height: var(--font-line-height-body-xs);
+    }
+
+    &--label {
+      font-size: var(--font-size-label-m);
+      line-height: var(--font-line-height-label-m);
+      font-weight: 600;
+
+      // label is inline by default, so spacing would not apply
+      &:where(label) {
+        display: block;
+      }
+    }
+
+    &--sublabel {
+      font-size: var(--font-size-label-s);
+      line-height: var(--font-line-height-label-s);
+      font-weight: 600;
+    }
+
+    &--overline {
+      font-size: var(--font-size-body-xs);
+      line-height: var(--font-line-height-body-xs);
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+
+    &--emphasized {
+      font-style: italic;
+      font-weight: 500;
+    }
+
+    &--code,
+    &--preformatted {
+      background-color: var(--components-typography-codetext-standard-fill);
+      color: inherit;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
+      font-size: 0.875em;
+      font-weight: inherit;
+
+      :where(.eds-contrast) & {
+        background-color: var(--components-typography-codetext-contrast-fill);
+      }
+
+      // Forced colors remove the fill, and the outline is drawn in the system text colour
+      @media (forced-colors: active) {
+        outline: 1px solid transparent;
+      }
+    }
+
+    &--code {
+      border-radius: t.$border-radiuses-medium;
+      padding: 0.125em 0.3em;
+      box-decoration-break: clone;
+      overflow-wrap: break-word;
+
+      // The fill covers the underline that eds-text--link draws as a background
+      :where(.eds-text--link) & {
+        background-image: linear-gradient(currentcolor, currentcolor);
+        background-position: 0 100%;
+        background-repeat: no-repeat;
+        background-size: 100% 0.125rem;
+      }
+
+      :where(.eds-text--link:hover) & {
+        animation: eds-link-underline 0.3s ease-in;
+      }
+    }
+
+    &--preformatted {
+      border-radius: t.$border-radiuses-large;
+      line-height: 1.5;
+      padding: 1rem;
+      tab-size: 4;
+      white-space: pre-wrap;
+      overflow-wrap: break-word;
+
+      > :where(code) {
+        background: none;
+        font: inherit;
+        padding: 0;
+      }
+    }
+
+    // Same specificity as the variants, so these must follow them for size to win
     &--xs {
       font-size: var(--font-size-body-xs);
       line-height: var(--font-line-height-body-xs);
@@ -30,264 +144,23 @@
       line-height: var(--font-line-height-body-m);
     }
 
+    &--lg {
+      font-size: var(--font-size-body-lg);
+      line-height: var(--font-line-height-body-lg);
+    }
+
     &--xl {
       font-size: var(--font-size-body-xl);
       line-height: var(--font-line-height-body-xl);
     }
 
-    // Extra margin-bottom when text is followed by heading (placed before base variants for cascade)
-    &--paragraph:where(:has(+ .eds-heading)) {
-      margin-bottom: calc(var(--font-line-height-body-m) + 1rem);
-    }
-
-    &--subparagraph:where(:has(+ .eds-heading)) {
-      margin-bottom: calc(var(--font-line-height-body-s) + 1rem);
-    }
-
-    &--leading:where(:has(+ .eds-heading)) {
-      margin-bottom: calc(var(--font-line-height-body-xl) + 1rem);
-    }
-
-    &--quote:where(:has(+ .eds-heading)) {
-      margin-bottom: calc(var(--font-line-height-body-lg) + 1rem);
-    }
-
-    &--caption:where(:has(+ .eds-heading)) {
-      margin-bottom: calc(var(--font-line-height-body-xs) + 1rem);
-    }
-
-    &--label:where(:has(+ .eds-heading)) {
-      margin-bottom: calc(var(--font-paragraph-spacing-body-xs) + 1rem);
-    }
-
-    &--sublabel:where(:has(+ .eds-heading)) {
-      margin-bottom: calc(var(--font-paragraph-spacing-body-xs) + 1rem);
-    }
-
-    &--unordered-list:where(:has(+ .eds-heading)) {
-      margin-bottom: calc(var(--font-line-height-body-lg) + 1rem);
-    }
-
-    &--numbered-list:where(:has(+ .eds-heading)) {
-      margin-bottom: calc(var(--font-line-height-body-lg) + 1rem);
-    }
-
-    &--blockquote:where(:has(+ .eds-heading)) {
-      margin-bottom: calc(var(--font-line-height-body-lg) + 1rem);
-    }
-
-    &--preformatted-text:where(:has(+ .eds-heading)) {
-      margin-bottom: calc(var(--font-line-height-body-lg) + 1rem);
-    }
-
-    &--code-text:where(:has(+ .eds-heading)) {
-      margin-bottom: calc(var(--font-line-height-body-lg) + 1rem);
-    }
-
-    // Variants
-    &--leading {
-      font-size: var(--font-size-body-xl);
-      line-height: var(--font-line-height-body-xl);
-      margin-bottom: var(--font-line-height-body-xl);
-    }
-
-    &--quote {
-      font-size: var(--font-size-body-lg);
-      line-height: var(--font-line-height-body-lg);
-      margin-bottom: var(--font-line-height-body-lg);
-    }
-
-    &--paragraph {
-      font-size: var(--font-size-body-m);
-      line-height: var(--font-line-height-body-m);
-      margin-bottom: var(--font-line-height-body-m);
-    }
-
-    &--subparagraph {
-      font-size: var(--font-size-body-s);
-      line-height: var(--font-line-height-body-s);
-      margin-bottom: var(--font-line-height-body-s);
-    }
-
-    &--caption {
-      font-size: var(--font-size-body-xs);
-      line-height: var(--font-line-height-body-xs);
-      margin-bottom: var(--font-line-height-body-xs);
-    }
-
-    &--label {
-      font-size: var(--font-size-label-lg);
-      line-height: var(--font-line-height-label-lg);
-      margin-bottom: var(--font-paragraph-spacing-body-xs);
-      font-weight: 600;
-    }
-
-    &--sublabel {
-      font-size: var(--font-size-label-s);
-      line-height: var(--font-line-height-label-s);
-      margin-bottom: var(--font-paragraph-spacing-body-xs);
-      font-weight: 600;
-    }
-
-    &--overline {
-      font-size: var(--font-size-body-xs);
-      line-height: var(--font-line-height-body-xs);
-      margin-top: var(--font-paragraph-spacing-body-xs);
-      margin-bottom: var(--font-paragraph-spacing-body-m);
-      font-weight: 500;
-      text-transform: uppercase;
-    }
-
-    &--emphasized {
-      font-style: italic;
-      font-weight: 500;
-    }
-
-    &--code-text,
-    &--preformatted-text {
-      background-color: var(--components-typography-codetext-standard-fill);
-      border: t.$border-widths-small solid var(--components-typography-codetext-standard-border);
-      border-radius: t.$border-radiuses-medium;
-      color: var(--components-typography-codetext-standard-text);
-      font-family: Monaco, monospace;
-      font-size: t.$font-sizes-medium;
-
-      :where(.eds-contrast) & {
-        background-color: var(--components-typography-codetext-contrast-fill);
-        border: t.$border-widths-small solid var(--components-typography-codetext-contrast-border);
-        color: var(--components-typography-codetext-contrast-text);
-      }
-    }
-
-    &--preformatted-text {
-      padding: 1rem;
-      white-space: pre-wrap;
-      word-break: keep-all;
-      margin-bottom: calc(var(--font-line-height-body-lg) + 1rem);
-    }
-
-    &--code-text {
-      display: inline-block;
-      word-wrap: break-word;
-      overflow-wrap: anywhere;
-      padding: 0 t.$space-extra-small2;
-    }
-
-    // Font weights
-    &--weight-400,
-    &--weight-regular {
-      font-weight: 400;
-    }
-
-    &--weight-500,
+    // Font weights; bold is Nationale DemiBold, the heaviest cut
     &--weight-medium {
-      font-weight: 500;
+      font-weight: var(--font-weight-body);
     }
 
-    &--weight-600,
-    &--weight-semibold {
-      font-weight: 600;
-    }
-
-    &--weight-700,
     &--weight-bold {
-      font-weight: 700;
-    }
-
-    // Spacing modifiers
-    &--spacing-none {
-      margin-top: 0;
-      margin-bottom: 0;
-    }
-
-    &--spacing-xs2 {
-      margin-top: t.$space-extra-small2;
-      margin-bottom: t.$space-extra-small2;
-    }
-
-    &--spacing-xs2-top {
-      margin-top: t.$space-extra-small2;
-      margin-bottom: 0;
-    }
-
-    &--spacing-xs2-bottom {
-      margin-top: 0;
-      margin-bottom: t.$space-extra-small2;
-    }
-
-    &--spacing-xs {
-      margin-top: t.$space-extra-small;
-      margin-bottom: t.$space-extra-small;
-    }
-
-    &--spacing-xs-top {
-      margin-top: t.$space-extra-small;
-      margin-bottom: 0;
-    }
-
-    &--spacing-xs-bottom {
-      margin-top: 0;
-      margin-bottom: t.$space-extra-small;
-    }
-
-    &--spacing-sm {
-      margin-top: t.$space-small;
-      margin-bottom: t.$space-small;
-    }
-
-    &--spacing-sm-top {
-      margin-top: t.$space-small;
-      margin-bottom: 0;
-    }
-
-    &--spacing-sm-bottom {
-      margin-top: 0;
-      margin-bottom: t.$space-small;
-    }
-
-    &--spacing-md {
-      margin-top: t.$space-medium;
-      margin-bottom: t.$space-medium;
-    }
-
-    &--spacing-md-top {
-      margin-top: t.$space-medium;
-      margin-bottom: 0;
-    }
-
-    &--spacing-md-bottom {
-      margin-top: 0;
-      margin-bottom: t.$space-medium;
-    }
-
-    &--spacing-lg {
-      margin-top: t.$space-large;
-      margin-bottom: t.$space-large;
-    }
-
-    &--spacing-lg-top {
-      margin-top: t.$space-large;
-      margin-bottom: 0;
-    }
-
-    &--spacing-lg-bottom {
-      margin-top: 0;
-      margin-bottom: t.$space-large;
-    }
-
-    &--spacing-xl {
-      margin-top: t.$space-extra-large;
-      margin-bottom: t.$space-extra-large;
-    }
-
-    &--spacing-xl-top {
-      margin-top: t.$space-extra-large;
-      margin-bottom: 0;
-    }
-
-    &--spacing-xl-bottom {
-      margin-top: 0;
-      margin-bottom: t.$space-extra-large;
+      font-weight: var(--font-weight-heading);
     }
 
     // Komponenter
@@ -362,39 +235,9 @@
       }
     }
 
-    &--blockquote {
-      border-left: t.$border-widths-large solid var(--components-typography-blockquote-standard-stroke);
-      font-family: inherit;
-      margin: 0;
-      padding: t.$space-extra-small;
-      padding-left: t.$space-extra-large;
-      font-size: var(--font-size-body-lg);
-      line-height: var(--font-line-height-body-lg);
-      margin-bottom: var(--font-line-height-body-lg);
-      color: var(--components-typography-blockquote-standard-text-accent);
-
-      :where(.eds-contrast) & {
-        color: var(--components-typography-blockquote-contrast-text-accent);
-      }
-
-      &__footer {
-        font-size: var(--font-size-body-s);
-        line-height: t.$line-heights-large;
-        letter-spacing: 1px;
-        margin-top: t.$space-large;
-        text-transform: uppercase;
-        color: var(--components-typography-blockquote-standard-text-accent);
-
-        :where(.eds-contrast) & {
-          color: var(--components-typography-blockquote-contrast-text-accent);
-        }
-      }
-    }
-
     // List components
     &--unordered-list {
       list-style: none;
-      margin-bottom: var(--font-line-height-body-lg);
       color: var(--components-typography-list-standard-text-accent);
 
       :where(.eds-contrast) & {
@@ -418,7 +261,6 @@
     &--numbered-list {
       counter-reset: eds-numbered-list-counter;
       list-style: none;
-      margin-bottom: var(--font-line-height-body-lg);
       color: var(--components-typography-list-standard-text-accent);
 
       :where(.eds-contrast) & {
@@ -471,8 +313,8 @@
     }
 
     &--numbered-list > .eds-text--list-item {
+      margin-bottom: var(--eds-text-spacing-bottom, var(--font-paragraph-spacing-body-m));
       counter-increment: eds-numbered-list-counter;
-      margin-bottom: var(--font-paragraph-spacing-body-m);
       position: relative;
       color: var(--components-typography-list-standard-text-accent);
 
@@ -481,7 +323,7 @@
       }
 
       &::before {
-        color: var(--primary-text-color);
+        color: var(--components-typography-list-standard-text-accent);
         position: absolute;
         font-weight: var(--font-weight-heading);
         left: -(t.$space-extra-large2);

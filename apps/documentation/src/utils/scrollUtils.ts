@@ -18,7 +18,11 @@ export const scrollToElement = (elementId: string, offset?: number) => {
   const top =
     element.getBoundingClientRect().top + window.scrollY - scrollOffset;
 
-  window.scrollTo({ top, behavior: 'smooth' });
+  // Scripted smooth scrolling ignores the reduced motion setting by itself
+  const reduceMotion = window.matchMedia(
+    '(prefers-reduced-motion: reduce)',
+  ).matches;
+  window.scrollTo({ top, behavior: reduceMotion ? 'auto' : 'smooth' });
 };
 
 export const handleHashLinkClick = (

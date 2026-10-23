@@ -1,41 +1,66 @@
-import {
-  TypographyHeadingVariant,
-  TypographySpacing,
-  TypographyTextVariant,
-} from '../types';
+import type { TypographyHeadingVariant } from '../components/Heading';
+import type { TypographyTextVariant } from '../components/Text';
+import type { TypographySpacing } from '../types';
+
+type SpacingStep = Exclude<TypographySpacing, object>;
+
+// Same scale as the layout beta, read from @entur/tokens/styles/spacing
+const SPACING_STEPS = new Set<string>([
+  'none',
+  '2xs',
+  'xs',
+  's',
+  'm',
+  'lg',
+  'xl',
+  '2xl',
+  '3xl',
+  '4xl',
+  '5xl',
+  '6xl',
+  '7xl',
+  '8xl',
+  '9xl',
+  '10xl',
+  '11xl',
+  '12xl',
+  '13xl',
+]);
+const warnedSpacing = new Set<string>();
+
+function toSpacingValue(step: SpacingStep | undefined): string | undefined {
+  if (step === undefined) return undefined;
+  if (SPACING_STEPS.has(step))
+    // A unit keeps it valid inside calc()
+    return step === 'none' ? '0px' : `var(--spacing-${step})`;
+
+  if (process.env.NODE_ENV !== 'production' && !warnedSpacing.has(step)) {
+    warnedSpacing.add(step);
+    console.warn(
+      `[@entur/typography] spacing="${step}" er ikke en gyldig verdi og blir ignorert. Bruk none, 2xs, xs, s, m, lg, xl, 2xl … 13xl, eller { top, bottom }.`,
+    );
+  }
+  return undefined;
+}
 
 /**
- * Get spacing classes for a component
+ * Turn the spacing prop into the custom properties that set the margins
  */
-export function getSpacingClasses(
+export function getSpacingStyle(
   spacing: TypographySpacing | undefined,
-  baseClass: string,
-): string {
-  if (!spacing) return '';
+  style?: React.CSSProperties,
+): React.CSSProperties | undefined {
+  if (spacing === undefined) return style;
 
-  const spacingMap: Record<string, string> = {
-    none: `${baseClass}--spacing-none`,
-    xs2: `${baseClass}--spacing-xs2`,
-    'xs2-top': `${baseClass}--spacing-xs2-top`,
-    'xs2-bottom': `${baseClass}--spacing-xs2-bottom`,
-    xs: `${baseClass}--spacing-xs`,
-    'xs-top': `${baseClass}--spacing-xs-top`,
-    'xs-bottom': `${baseClass}--spacing-xs-bottom`,
-    sm: `${baseClass}--spacing-sm`,
-    'sm-top': `${baseClass}--spacing-sm-top`,
-    'sm-bottom': `${baseClass}--spacing-sm-bottom`,
-    md: `${baseClass}--spacing-md`,
-    'md-top': `${baseClass}--spacing-md-top`,
-    'md-bottom': `${baseClass}--spacing-md-bottom`,
-    lg: `${baseClass}--spacing-lg`,
-    'lg-top': `${baseClass}--spacing-lg-top`,
-    'lg-bottom': `${baseClass}--spacing-lg-bottom`,
-    xl: `${baseClass}--spacing-xl`,
-    'xl-top': `${baseClass}--spacing-xl-top`,
-    'xl-bottom': `${baseClass}--spacing-xl-bottom`,
-  };
+  const { top, bottom } =
+    typeof spacing === 'object' ? spacing : { top: spacing, bottom: spacing };
+  const spacingStyle: Record<string, string> = {};
+  const topValue = toSpacingValue(top);
+  const bottomValue = toSpacingValue(bottom);
+  if (topValue) spacingStyle['--eds-text-spacing-top'] = topValue;
+  if (bottomValue) spacingStyle['--eds-text-spacing-bottom'] = bottomValue;
 
-  return spacingMap[spacing] || '';
+  return { ...spacingStyle, ...style };
 }
 
 /**
@@ -44,9 +69,9 @@ export function getSpacingClasses(
 export function getHeadingVariantFromSemanticType(
   element: string | React.ElementType,
 ): TypographyHeadingVariant {
-  const elementStr = typeof element === 'string' ? element : element.toString();
+  if (typeof element !== 'string') return 'title-1';
 
-  switch (elementStr.toLowerCase()) {
+  switch (element.toLowerCase()) {
     case 'h1':
       return 'title-1';
     case 'h2':
@@ -69,30 +94,25 @@ export function getHeadingVariantFromSemanticType(
  */
 export function getSemanticTypeFromTextVariant(
   variant: TypographyTextVariant | undefined,
-): string {
+): keyof JSX.IntrinsicElements {
   if (!variant) return 'p';
 
   switch (variant) {
-    case 'label':
-      return 'label';
-    case 'sublabel':
-      return 'span';
-    case 'caption':
-      return 'span';
-    case 'overline':
-      return 'span';
-    case 'link':
-      return 'a';
-    case 'code-text':
+    case 'emphasized':
+      return 'em';
+    case 'code':
       return 'code';
-    case 'preformatted-text':
+    case 'preformatted':
       return 'pre';
     case 'quote':
       return 'blockquote';
     case 'leading':
     case 'paragraph':
     case 'subparagraph':
-    case 'emphasized':
+    case 'caption':
+    case 'label':
+    case 'overline':
+    case 'sublabel':
     default:
       return 'p';
   }
