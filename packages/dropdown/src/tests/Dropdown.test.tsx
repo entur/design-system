@@ -1,3 +1,4 @@
+import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { axe, toHaveNoViolations } from 'jest-axe';
@@ -17,18 +18,10 @@ describe('Dropdown', () => {
     'Brønnøysund',
   ];
 
-  test('is displayed with label', () => {
-    render(
-      <Dropdown label="test label" items={testItems} selectedItem={null} />,
-    );
-
-    expect(screen.queryAllByLabelText('test label')[0]).toBeInTheDocument();
-  });
-
-  test('can select element with mouse', async () => {
+  test('reports mouse selection and displays the controlled update', async () => {
     const user = userEvent.setup();
     const onChange = jest.fn();
-    render(
+    const { rerender } = render(
       <Dropdown
         label="test label"
         items={testItems}
@@ -47,6 +40,19 @@ describe('Dropdown', () => {
       value: 'Oslo',
       label: 'Oslo',
     });
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(screen.queryByRole('listbox')).not.toBeInTheDocument();
+
+    rerender(
+      <Dropdown
+        label="test label"
+        items={testItems}
+        selectedItem={{ value: 'Oslo', label: 'Oslo' }}
+        onChange={onChange}
+      />,
+    );
+    expect(toggleButton).toHaveTextContent('Oslo');
+    expect(onChange).toHaveBeenCalledTimes(1);
   });
 
   test('can select element with keyboard', async () => {
@@ -61,8 +67,7 @@ describe('Dropdown', () => {
       />,
     );
 
-    const toggleButton = screen.getByRole('combobox', { name: 'test label' });
-    toggleButton.focus();
+    await user.tab();
     await user.keyboard('{Enter}{ArrowDown}{ArrowDown}{ArrowDown}{Enter}');
 
     expect(onChange).toHaveBeenCalledWith({
@@ -99,15 +104,20 @@ describe('Dropdown', () => {
     const user = userEvent.setup();
     const onChange = jest.fn();
     render(
-      <Dropdown
-        label="test label"
-        items={testItems}
-        selectedItem={null}
-        onChange={onChange}
-      />,
+      <>
+        <Dropdown
+          label="test label"
+          items={testItems}
+          selectedItem={null}
+          onChange={onChange}
+        />
+        <button>Continue</button>
+      </>,
     );
 
-    screen.getByRole('combobox', { name: 'test label' }).focus();
+    await user.tab();
+    const combobox = screen.getByRole('combobox', { name: 'test label' });
+    expect(combobox).toHaveFocus();
 
     await user.keyboard('{Enter}');
     const dropdownList = screen.getByRole('listbox', { name: 'test label' });
@@ -122,18 +132,23 @@ describe('Dropdown', () => {
     expect(dropdownList).toBeVisible();
     await user.keyboard('{ }');
     expect(dropdownList).not.toBeVisible();
+    onChange.mockClear();
 
     // close on esc
     await user.keyboard('{Enter}');
     expect(dropdownList).toBeVisible();
     await user.keyboard('{Escape}');
     expect(dropdownList).not.toBeVisible();
+    expect(combobox).toHaveFocus();
+    expect(onChange).not.toHaveBeenCalled();
 
     // close on tab
     await user.keyboard('{Enter}');
     expect(dropdownList).toBeVisible();
-    await user.keyboard('{Tab}');
+    await user.tab();
     expect(dropdownList).not.toBeVisible();
+    expect(screen.getByRole('button', { name: 'Continue' })).toHaveFocus();
+    expect(onChange).not.toHaveBeenCalled();
   });
 
   test('selects item with tab when selectOnTab is true', async () => {
@@ -156,19 +171,6 @@ describe('Dropdown', () => {
     await user.keyboard('{Tab}');
 
     expect(onChange).toBeCalledWith({ label: 'Oslo', value: 'Oslo' });
-  });
-
-  test('displays selected item', () => {
-    const selectedItem = { label: 'selected', value: 'selected' };
-    render(
-      <Dropdown
-        label="test label"
-        items={testItems}
-        selectedItem={selectedItem}
-      />,
-    );
-
-    expect(screen.queryByText(selectedItem.label)).toBeInTheDocument();
   });
 
   test('marks selected option as selected if set initially', async () => {
@@ -201,6 +203,7 @@ describe('Dropdown', () => {
     expect(item).not.toBeInTheDocument();
 
     const toggleButton = screen.getByRole('combobox', { name: 'test label' });
+    expect(toggleButton).toHaveTextContent('Bergen');
     await user.click(toggleButton);
 
     const selectedOption = screen.getByRole('option', { selected: true });
@@ -332,34 +335,70 @@ describe('Dropdown', () => {
     });
   });
 
-  test('applies className to eds-dropdown element', () => {
-    const { container } = render(
-      <Dropdown
-        label="test label"
-        items={testItems}
-        selectedItem={null}
-        className="custom-class"
-      />,
+  test('disabled dropdown ignores clicks and is skipped by keyboard navigation', async () => {
+    const user = userEvent.setup();
+    const onChange = jest.fn();
+    render(
+      <>
+        <Dropdown
+          label="test label"
+          items={testItems}
+          selectedItem={null}
+          disabled
+          onChange={onChange}
+        />
+        <button>Continue</button>
+      </>,
     );
 
-    const edsDropdownElement =
-      container.getElementsByClassName('eds-dropdown')[0];
-    expect(edsDropdownElement).toHaveClass('custom-class');
+    const combobox = screen.getByRole('combobox');
+    expect(combobox).toHaveAttribute('aria-disabled', 'true');
+    await user.click(combobox);
+    expect(screen.queryByRole('listbox')).not.toBeInTheDocument();
+
+    await user.tab();
+    expect(screen.getByRole('button', { name: 'Continue' })).toHaveFocus();
+    await user.keyboard('{Enter}{ArrowDown}');
+    expect(screen.queryByRole('listbox')).not.toBeInTheDocument();
+    expect(onChange).not.toHaveBeenCalled();
   });
 
-  test('applies listStyle to list element', () => {
-    const { container } = render(
+  test('empty items show feedback and recover when choices become available', async () => {
+    const user = userEvent.setup();
+    const onChange = jest.fn();
+    const { rerender } = render(
+      <Dropdown
+        label="test label"
+        items={[]}
+        selectedItem={null}
+        onChange={onChange}
+        noMatchesText="No cities available"
+      />,
+    );
+
+    await user.click(screen.getByRole('combobox', { name: 'test label' }));
+    expect(screen.getByText('No cities available')).toBeVisible();
+    expect(screen.queryByRole('option')).not.toBeInTheDocument();
+    await user.keyboard('{ArrowDown}{Enter}');
+    expect(onChange).not.toHaveBeenCalled();
+
+    rerender(
       <Dropdown
         label="test label"
         items={testItems}
         selectedItem={null}
-        listStyle={{ color: 'pink' }}
+        onChange={onChange}
+        noMatchesText="No cities available"
       />,
     );
-
-    const listElement =
-      container.getElementsByClassName('eds-dropdown__list')[0];
-    expect(listElement).toHaveStyle({ color: 'pink' });
+    await user.keyboard('{Escape}{Enter}');
+    expect(screen.queryByText('No cities available')).not.toBeInTheDocument();
+    await user.click(screen.getByRole('option', { name: 'Bergen' }));
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(onChange).toHaveBeenCalledWith({
+      label: 'Bergen',
+      value: 'Bergen',
+    });
   });
 
   test('does not violate basic accessibility', async () => {
@@ -380,7 +419,7 @@ describe('Dropdown', () => {
     test.each(['negative', 'error'] as const)(
       'is true for %s variant',
       variant => {
-        const { container } = render(
+        render(
           <Dropdown
             label="test label"
             items={testItems}
@@ -389,15 +428,14 @@ describe('Dropdown', () => {
           />,
         );
 
-        expect(container.querySelector('[role="combobox"]')).toHaveAttribute(
-          'aria-invalid',
-          'true',
-        );
+        expect(
+          screen.getByRole('combobox', { name: 'test label' }),
+        ).toHaveAttribute('aria-invalid', 'true');
       },
     );
 
     test('is false for warning variant', () => {
-      const { container } = render(
+      render(
         <Dropdown
           label="test label"
           items={testItems}
@@ -406,10 +444,55 @@ describe('Dropdown', () => {
         />,
       );
 
-      expect(container.querySelector('[role="combobox"]')).toHaveAttribute(
-        'aria-invalid',
-        'false',
-      );
+      expect(
+        screen.getByRole('combobox', { name: 'test label' }),
+      ).toHaveAttribute('aria-invalid', 'false');
     });
+  });
+  test('forwards className and style to the container and merges its own classes', () => {
+    const { container } = render(
+      <Dropdown
+        label="test label"
+        items={testItems}
+        selectedItem={null}
+        className="custom-class"
+        style={{ marginTop: '7px' }}
+      />,
+    );
+    const outer = container.firstElementChild;
+    expect(outer).toHaveClass('eds-dropdown', 'custom-class');
+    expect(outer).toHaveStyle({ marginTop: '7px' });
+  });
+
+  test('forwards rest props to the field wrapper and ref to the combobox', () => {
+    const ref = React.createRef<HTMLDivElement>();
+    render(
+      <Dropdown
+        label="test label"
+        items={testItems}
+        selectedItem={null}
+        data-testid="field"
+        ref={ref}
+      />,
+    );
+    const combobox = screen.getByRole('combobox', { name: 'test label' });
+    const field = screen.getByTestId('field');
+    expect(field).toHaveClass('eds-form-control-wrapper');
+    expect(field).toBe(combobox);
+    expect(ref.current).toBe(combobox);
+  });
+
+  test('applies listStyle to the list', async () => {
+    const user = userEvent.setup();
+    render(
+      <Dropdown
+        label="test label"
+        items={testItems}
+        selectedItem={null}
+        listStyle={{ color: 'pink' }}
+      />,
+    );
+    await user.click(screen.getByRole('combobox', { name: 'test label' }));
+    expect(screen.getByRole('listbox')).toHaveStyle({ color: 'pink' });
   });
 });

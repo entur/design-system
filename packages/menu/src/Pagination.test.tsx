@@ -1,163 +1,142 @@
-import { fireEvent, render } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { Pagination, PaginationProps } from './Pagination';
+import { describeComponentContract } from '../../../tests/jest/componentContract';
 
-const createWithDefaults =
-  (defaults: PaginationProps, getAllRenderUtils = false) =>
-  (props: Partial<PaginationProps> = {}) => {
-    const renderUtils = render(<Pagination {...defaults} {...props} />);
-    return getAllRenderUtils ? renderUtils : renderUtils.container;
-  };
-
-test('renders the correct items for large pageCounts', () => {
-  const pageChange = jest.fn();
-  const renderWithProps = createWithDefaults({
-    pageCount: 100,
-    currentPage: 1,
-    onPageChange: () => {
-      pageChange();
-    },
-  });
-  expect(renderWithProps({ currentPage: 1 })).toHaveTextContent('12345…100');
-  expect(renderWithProps({ currentPage: 2 })).toHaveTextContent('12345…100');
-  expect(renderWithProps({ currentPage: 3 })).toHaveTextContent('12345…100');
-  expect(renderWithProps({ currentPage: 4 })).toHaveTextContent('12345…100');
-  expect(renderWithProps({ currentPage: 5 })).toHaveTextContent('1…456…100');
-  expect(renderWithProps({ currentPage: 6 })).toHaveTextContent('1…567…100');
-
-  expect(renderWithProps({ currentPage: 96 })).toHaveTextContent(
-    '1…959697…100',
-  );
-  expect(renderWithProps({ currentPage: 97 })).toHaveTextContent(
-    '1…96979899100',
-  );
-  expect(renderWithProps({ currentPage: 98 })).toHaveTextContent(
-    '1…96979899100',
-  );
-  expect(renderWithProps({ currentPage: 99 })).toHaveTextContent(
-    '1…96979899100',
-  );
-  expect(renderWithProps({ currentPage: 100 })).toHaveTextContent(
-    '1…96979899100',
-  );
-});
-
-test('renders the correct items for small pageCounts', () => {
-  const pageChange = jest.fn();
-  const renderWithProps = createWithDefaults({
-    pageCount: 7,
-    currentPage: 1,
-    onPageChange: () => {
-      pageChange();
-    },
-  });
-  expect(renderWithProps()).toHaveTextContent('1234567');
-  expect(renderWithProps({ currentPage: 2 })).toHaveTextContent('1234567');
-  expect(renderWithProps({ currentPage: 4 })).toHaveTextContent('1234567');
-  expect(renderWithProps({ pageCount: 6 })).toHaveTextContent('123456');
-  expect(renderWithProps({ pageCount: 5 })).toHaveTextContent('12345');
-  expect(renderWithProps({ pageCount: 4 })).toHaveTextContent('1234');
-  expect(renderWithProps({ pageCount: 3 })).toHaveTextContent('123');
-  expect(renderWithProps({ pageCount: 2 })).toHaveTextContent('12');
-  expect(renderWithProps({ pageCount: 1 })).toHaveTextContent('1');
-});
-
-test('Previous and next buttons work as expected', () => {
-  const pageChangeSpy = jest.fn();
-  const { queryByLabelText, getByLabelText, rerender } = render(
+describeComponentContract('Pagination', {
+  render: props => (
     <Pagination
       pageCount={3}
       currentPage={1}
-      onPageChange={pageChangeSpy}
-      previousPageLabel="Previous page"
-      nextPageLabel="Next page"
-    />,
-  );
-  expect(queryByLabelText('Previous page')).toBeDisabled();
-  expect(getByLabelText('Next page')).not.toBeDisabled();
-
-  fireEvent.click(getByLabelText('Next page'));
-  expect(pageChangeSpy).toHaveBeenLastCalledWith(2);
-
-  rerender(
-    <Pagination
-      pageCount={3}
-      currentPage={2}
-      onPageChange={pageChangeSpy}
-      previousPageLabel="Previous page"
-      nextPageLabel="Next page"
-    />,
-  );
-
-  expect(getByLabelText('Previous page')).not.toBeDisabled();
-  expect(getByLabelText('Next page')).not.toBeDisabled();
-
-  fireEvent.click(getByLabelText('Next page'));
-  expect(pageChangeSpy).toHaveBeenLastCalledWith(3);
-
-  rerender(
-    <Pagination
-      pageCount={3}
-      currentPage={3}
-      onPageChange={pageChangeSpy}
-      previousPageLabel="Previous page"
-      nextPageLabel="Next page"
-    />,
-  );
-
-  expect(getByLabelText('Previous page')).not.toBeDisabled();
-  expect(queryByLabelText('Next page')).toBeDisabled();
-
-  fireEvent.click(getByLabelText('Previous page'));
-  expect(pageChangeSpy).toHaveBeenLastCalledWith(2);
+      onPageChange={() => {}}
+      {...props}
+    />
+  ),
+  getElement: () => screen.getByRole('navigation', { name: 'Paginering' }),
+  baseClassName: 'eds-pagination',
 });
 
-test('clicking the buttons calls the callback with the correct number', () => {
+const renderedSequence = (props: Partial<PaginationProps>) => {
+  const { unmount } = render(
+    <Pagination
+      pageCount={1}
+      currentPage={1}
+      onPageChange={() => {}}
+      {...props}
+    />,
+  );
+  const screenReaderStatus = screen.getByText(/^Nåværende side:/).textContent;
+  const sequence = screen
+    .getByRole('navigation')
+    .textContent?.replace(screenReaderStatus ?? '', '');
+  unmount();
+  return sequence;
+};
+
+test.each([
+  [1, '12345…100'],
+  [2, '12345…100'],
+  [3, '12345…100'],
+  [4, '12345…100'],
+  [5, '1…456…100'],
+  [6, '1…567…100'],
+  [96, '1…959697…100'],
+  [97, '1…96979899100'],
+  [98, '1…96979899100'],
+  [99, '1…96979899100'],
+  [100, '1…96979899100'],
+])('shows page %i of 100 as %s', (currentPage, sequence) => {
+  expect(renderedSequence({ pageCount: 100, currentPage })).toBe(sequence);
+});
+
+test.each([
+  [7, 1, '1234567'],
+  [7, 2, '1234567'],
+  [7, 4, '1234567'],
+  [6, 1, '123456'],
+  [5, 1, '12345'],
+  [4, 1, '1234'],
+  [3, 1, '123'],
+  [2, 1, '12'],
+  [1, 1, '1'],
+])(
+  'shows every page without ellipsis for %i pages (current %i)',
+  (pageCount, currentPage, sequence) => {
+    expect(renderedSequence({ pageCount, currentPage })).toBe(sequence);
+  },
+);
+
+test('previous and next buttons move one page and disable at the ends', async () => {
+  const user = userEvent.setup();
   const pageChangeSpy = jest.fn();
-  const { getByText } = render(
+  const renderAt = (currentPage: number) => (
+    <Pagination
+      pageCount={3}
+      currentPage={currentPage}
+      onPageChange={pageChangeSpy}
+      previousPageLabel="Previous page"
+      nextPageLabel="Next page"
+    />
+  );
+  const { rerender } = render(renderAt(1));
+  const previous = screen.getByRole('button', { name: 'Previous page' });
+  const next = screen.getByRole('button', { name: 'Next page' });
+  expect(previous).toBeDisabled();
+  expect(next).toBeEnabled();
+  await user.click(next);
+  expect(pageChangeSpy).toHaveBeenLastCalledWith(2);
+
+  rerender(renderAt(2));
+  expect(previous).toBeEnabled();
+  expect(next).toBeEnabled();
+  await user.click(next);
+  expect(pageChangeSpy).toHaveBeenLastCalledWith(3);
+
+  rerender(renderAt(3));
+  expect(previous).toBeEnabled();
+  expect(next).toBeDisabled();
+  await user.click(previous);
+  expect(pageChangeSpy).toHaveBeenLastCalledWith(2);
+  expect(pageChangeSpy).toHaveBeenCalledTimes(3);
+});
+
+test('clicking a page button requests that page', async () => {
+  const user = userEvent.setup();
+  const pageChangeSpy = jest.fn();
+  render(
     <Pagination pageCount={5} currentPage={3} onPageChange={pageChangeSpy} />,
   );
 
-  fireEvent.click(getByText('1'));
+  await user.click(screen.getByRole('button', { name: 'Gå til side 1' }));
   expect(pageChangeSpy).toHaveBeenLastCalledWith(1);
 
-  fireEvent.click(getByText('5'));
+  await user.click(
+    screen.getByRole('button', { name: 'Gå til side 5, siste side' }),
+  );
   expect(pageChangeSpy).toHaveBeenLastCalledWith(5);
 });
-test('the selected element is disabled', () => {
-  const pageChange = jest.fn();
-  const { getByText } = render(
-    <Pagination
-      pageCount={5}
-      currentPage={3}
-      onPageChange={() => {
-        pageChange();
-      }}
-    />,
-  );
 
-  expect(getByText('3')).toBeDisabled();
-});
-test('renders the currentPage as selected', () => {
+test('marks the current page and prevents selecting it again', async () => {
+  const user = userEvent.setup();
   const pageChange = jest.fn();
-  const { getByText } = render(
-    <Pagination
-      pageCount={5}
-      currentPage={3}
-      onPageChange={() => {
-        pageChange();
-      }}
-    />,
+  render(
+    <Pagination pageCount={5} currentPage={3} onPageChange={pageChange} />,
   );
-
-  expect(getByText('3')).toHaveAttribute('aria-current', 'page');
-  expect(getByText('3')).toHaveClass(
+  const current = screen.getByRole('button', { current: 'page' });
+  expect(current).toHaveAccessibleName('Gå til side 3');
+  expect(current).toBeDisabled();
+  expect(current).toHaveClass('eds-pagination__controls__page--selected');
+  expect(screen.getByRole('button', { name: 'Gå til side 2' })).not.toHaveClass(
     'eds-pagination__controls__page--selected',
   );
+  await user.click(current);
+  expect(pageChange).not.toHaveBeenCalled();
 });
 
-test('page input works as expected', () => {
+test('submits edited page input, clamps bounds and follows currentPage updates', async () => {
+  const user = userEvent.setup();
   const pageChangeSpy = jest.fn();
-  const { getByRole, getByLabelText } = render(
+  const { rerender } = render(
     <Pagination
       pageCount={5}
       currentPage={3}
@@ -167,27 +146,101 @@ test('page input works as expected', () => {
     />,
   );
 
-  const input = getByLabelText('testlabel', { selector: 'input' });
-  const form = getByRole('form');
-  fireEvent.change(input, { target: { value: '2' } });
+  const input = screen.getByRole('spinbutton', { name: 'testlabel' });
+  // user-event does not emulate implicit Enter submission for number inputs.
+  const form = screen.getByRole('form');
+  expect(input).toHaveValue(3);
+  await user.clear(input);
+  await user.type(input, '2');
   expect(pageChangeSpy).not.toHaveBeenCalled();
 
   fireEvent.submit(form);
-  expect(pageChangeSpy).toHaveBeenLastCalledWith(2);
+  expect(pageChangeSpy.mock.calls).toEqual([[2]]);
 
-  // if you're submitting the same value as the current value, don't call the
-  // onPageChange callback
-  fireEvent.change(input, { target: { value: '3' } });
+  await user.clear(input);
+  await user.type(input, '3');
   fireEvent.submit(form);
   expect(pageChangeSpy).toHaveBeenCalledTimes(1);
 
-  // When handled values that are too big - assume last page
-  fireEvent.change(input, { target: { value: '100' } });
+  await user.clear(input);
+  await user.type(input, '100');
   fireEvent.submit(form);
-  expect(pageChangeSpy).toHaveBeenLastCalledWith(5); // page count
+  expect(input).toHaveValue(5);
 
-  // When handled values less than 1 - assume first page
-  fireEvent.change(input, { target: { value: '-19' } });
+  await user.clear(input);
+  await user.type(input, '-19');
   fireEvent.submit(form);
-  expect(pageChangeSpy).toHaveBeenLastCalledWith(1);
+  expect(input).toHaveValue(1);
+  expect(pageChangeSpy.mock.calls).toEqual([[2], [5], [1]]);
+
+  rerender(
+    <Pagination
+      pageCount={5}
+      currentPage={4}
+      onPageChange={pageChangeSpy}
+      showInput
+      inputLabel="testlabel"
+    />,
+  );
+  expect(input).toHaveValue(4);
+  expect(screen.getByRole('button', { current: 'page' })).toHaveAccessibleName(
+    'Gå til side 4',
+  );
+  expect(pageChangeSpy).toHaveBeenCalledTimes(3);
+});
+
+test('hides pagination for zero pages and disables every control for one page', async () => {
+  const user = userEvent.setup();
+  const onPageChange = jest.fn();
+  const { rerender } = render(
+    <Pagination pageCount={0} currentPage={1} onPageChange={onPageChange} />,
+  );
+  expect(screen.queryByRole('navigation')).not.toBeInTheDocument();
+  rerender(
+    <Pagination pageCount={1} currentPage={1} onPageChange={onPageChange} />,
+  );
+  expect(
+    screen.getByRole('navigation', { name: 'Paginering' }),
+  ).toBeInTheDocument();
+  const controls = screen.getAllByRole('button');
+  expect(controls).toHaveLength(3);
+  for (const control of controls) {
+    expect(control).toBeDisabled();
+    await user.click(control);
+  }
+  expect(onPageChange).not.toHaveBeenCalled();
+});
+
+test('caps the final result range and requests a new page size without changing pages', async () => {
+  const user = userEvent.setup();
+  const onPageChange = jest.fn();
+  const onResultsPerPageChange = jest.fn();
+  render(
+    <Pagination
+      pageCount={3}
+      currentPage={3}
+      onPageChange={onPageChange}
+      numberOfResults={23}
+      resultsPerPage={10}
+      resultsPerPageOptions={[10, 20]}
+      onResultsPerPageChange={onResultsPerPageChange}
+    />,
+  );
+  expect(screen.getByText('Viser resultat 21–23 av 23')).toBeInTheDocument();
+  const trigger = screen.getByRole('button', {
+    name: 'Viser 10 resultater. Trykk for å endre antall. Åpner en flervalgsmeny.',
+  });
+  await user.click(trigger);
+  expect(screen.getAllByRole('menuitem').map(item => item.textContent)).toEqual(
+    ['10', '20'],
+  );
+  const option = screen.getByRole('menuitem', { name: '20' });
+  await user.hover(option);
+  await waitFor(() => expect(option).toHaveFocus());
+  await user.click(option);
+  expect(onResultsPerPageChange.mock.calls).toEqual([[20]]);
+  expect(onPageChange).not.toHaveBeenCalled();
+  expect(screen.getByText('Viser resultat 21–23 av 23')).toBeInTheDocument();
+  expect(screen.queryByRole('menu')).not.toBeInTheDocument();
+  expect(trigger).toHaveFocus();
 });

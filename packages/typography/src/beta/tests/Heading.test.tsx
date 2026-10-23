@@ -1,100 +1,123 @@
-import { cleanup, render } from '@testing-library/react';
-import { Heading } from '../components/Heading';
+import { render, screen } from '@testing-library/react';
+import { Heading } from '..';
+import { describeComponentContract } from '../../../../../tests/jest/componentContract';
 
-afterEach(cleanup);
+describeComponentContract('Heading', {
+  render: props => <Heading {...props}>Content</Heading>,
+  getElement: () => screen.getByText('Content'),
+  baseClassName: 'eds-heading',
+  as: 'h2',
+});
 
-describe('Heading Component', () => {
-  test('renders with default props', () => {
-    const { getByText } = render(<Heading as="h1">Test Heading</Heading>);
-    const heading = getByText('Test Heading');
-    expect(heading).toBeInTheDocument();
-    expect(heading.tagName).toBe('H1');
-    expect(heading).toHaveClass('eds-heading');
+test('preserves the requested heading level regardless of variant or size', () => {
+  render(
+    <>
+      <Heading>Travel guide</Heading>
+      <Heading as="h2" variant="title-1">
+        Tickets
+      </Heading>
+      <Heading as="h3" variant="subtitle-1" size="lg">
+        Discounts
+      </Heading>
+      <Heading as="h4">Children</Heading>
+      <Heading as="h5">Conditions</Heading>
+      <Heading as="h6">Exceptions</Heading>
+    </>,
+  );
+
+  [
+    'Travel guide',
+    'Tickets',
+    'Discounts',
+    'Children',
+    'Conditions',
+    'Exceptions',
+  ].forEach((name, index) => {
+    expect(
+      screen.getByRole('heading', { name, level: index + 1 }),
+    ).toBeInTheDocument();
   });
+});
 
-  test('renders with different semantic elements', () => {
-    const { getByText, rerender } = render(
-      <Heading as="h2">H2 Heading</Heading>,
-    );
-    expect(getByText('H2 Heading').tagName).toBe('H2');
+test.each([
+  ['h1', 'title-1'],
+  ['h2', 'title-2'],
+  ['h3', 'subtitle-1'],
+  ['h4', 'subtitle-2'],
+  ['h5', 'section-1'],
+  ['h6', 'section-2'],
+  ['div', 'title-1'],
+] as const)('derives the default variant for <%s> as %s', (as, variant) => {
+  render(<Heading as={as}>Content</Heading>);
+  expect(screen.getByText('Content')).toHaveClass(`eds-heading--${variant}`);
+});
 
-    rerender(<Heading as="h3">H3 Heading</Heading>);
-    expect(getByText('H3 Heading').tagName).toBe('H3');
+test('defaults to an h1 with the title-1 variant', () => {
+  render(<Heading>Content</Heading>);
+  const heading = screen.getByRole('heading', { level: 1 });
+  expect(heading).toHaveClass('eds-heading--title-1');
+});
 
-    rerender(<Heading as="h4">H4 Heading</Heading>);
-    expect(getByText('H4 Heading').tagName).toBe('H4');
-  });
+test('applies an explicit variant instead of the derived one', () => {
+  render(
+    <Heading as="h3" variant="title-1">
+      Content
+    </Heading>,
+  );
+  const heading = screen.getByText('Content');
+  expect(heading).toHaveClass('eds-heading--title-1');
+  expect(heading).not.toHaveClass('eds-heading--subtitle-1');
+});
 
-  test('applies variant classes correctly', () => {
-    const { getByText } = render(
-      <Heading as="h1" variant="title-1">
-        Title 1
-      </Heading>,
-    );
-    expect(getByText('Title 1')).toHaveClass('eds-heading--title-1');
-  });
+test('size overrides both an explicit and a derived variant', () => {
+  const { rerender } = render(
+    <Heading as="h1" variant="title-2" size="lg">
+      Content
+    </Heading>,
+  );
+  const heading = screen.getByText('Content');
+  expect(heading).toHaveClass('eds-heading--lg');
+  expect(heading).not.toHaveClass('eds-heading--title-2');
+  expect(heading).not.toHaveClass('eds-heading--title-1');
 
-  test('applies size classes correctly', () => {
-    const { getByText } = render(
-      <Heading as="h1" size="xl">
-        Large Heading
-      </Heading>,
-    );
-    expect(getByText('Large Heading')).toHaveClass('eds-heading--xl');
-  });
+  rerender(
+    <Heading as="h2" size="xl">
+      Content
+    </Heading>,
+  );
+  const derived = screen.getByRole('heading', { level: 2 });
+  expect(derived).toHaveClass('eds-heading--xl');
+  expect(derived).not.toHaveClass('eds-heading--title-2');
+});
 
-  test('size overrides variant when both are provided', () => {
-    const { getByText } = render(
-      <Heading as="h1" variant="title-1" size="lg">
-        Heading
-      </Heading>,
-    );
-    const heading = getByText('Heading');
-    expect(heading).toHaveClass('eds-heading--lg');
-    expect(heading).not.toHaveClass('eds-heading--title-1');
-  });
+test.each([
+  'none',
+  'xs2',
+  'xs2-top',
+  'xs2-bottom',
+  'xs',
+  'xs-top',
+  'xs-bottom',
+  'sm',
+  'sm-top',
+  'sm-bottom',
+  'md',
+  'md-top',
+  'md-bottom',
+  'lg',
+  'lg-top',
+  'lg-bottom',
+  'xl',
+  'xl-top',
+  'xl-bottom',
+] as const)('applies the %s spacing modifier', spacing => {
+  render(<Heading spacing={spacing}>Content</Heading>);
+  expect(screen.getByText('Content')).toHaveClass(
+    `eds-heading--spacing-${spacing}`,
+  );
+});
 
-  test('applies spacing classes correctly', () => {
-    const { getByText } = render(
-      <Heading as="h1" spacing="lg">
-        Heading with spacing
-      </Heading>,
-    );
-    expect(getByText('Heading with spacing')).toHaveClass(
-      'eds-heading--spacing-lg',
-    );
-  });
-
-  test('passes through additional props', () => {
-    const { getByText } = render(
-      <Heading as="h1" data-testid="heading" aria-label="Test heading">
-        Heading with props
-      </Heading>,
-    );
-    const heading = getByText('Heading with props');
-    expect(heading).toHaveAttribute('data-testid', 'heading');
-    expect(heading).toHaveAttribute('aria-label', 'Test heading');
-  });
-
-  test('applies custom className', () => {
-    const { getByText } = render(
-      <Heading as="h1" className="custom-class">
-        Custom Heading
-      </Heading>,
-    );
-    expect(getByText('Custom Heading')).toHaveClass('custom-class');
-  });
-
-  test('uses semantic type to determine default variant', () => {
-    const { getByText } = render(<Heading as="h1">H1</Heading>);
-    expect(getByText('H1')).toHaveClass('eds-heading--title-1');
-
-    const { getByText: getByText2 } = render(<Heading as="h2">H2</Heading>);
-    expect(getByText2('H2')).toHaveClass('eds-heading--title-2');
-  });
-
-  test('Heading with no variant or size uses default', () => {
-    const { getByText } = render(<Heading as="h1">Default heading</Heading>);
-    expect(getByText('Default heading')).toHaveClass('eds-heading--title-1');
-  });
+test('adds no spacing modifier without spacing', () => {
+  render(<Heading>Content</Heading>);
+  expect(screen.getByText('Content').className).not.toMatch(/--spacing-/);
 });

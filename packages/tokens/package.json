@@ -22,6 +22,7 @@
     "build:js": "(tsx bin/build-js-objects.ts) && vite build",
     "build:stylesheets": "tsx bin/build-stylesheets.ts",
     "start": "yarn build",
+    "test": "jest",
     "cleanup-temp-files": "tsx -e \"require('fs-extra').removeSync('src/generated-js-objects')\""
   },
   "devDependencies": {

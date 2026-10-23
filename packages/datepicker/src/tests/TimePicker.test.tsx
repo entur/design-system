@@ -1,6 +1,7 @@
+import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { Time, now, parseAbsolute } from '@internationalized/date';
+import { Time, ZonedDateTime, parseAbsolute } from '@internationalized/date';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import { SimpleTimePicker, TimePicker } from '../TimePicker';
 
@@ -15,6 +16,8 @@ expect.extend(toHaveNoViolations);
    test is run */
 
 describe('TimePicker', () => {
+  afterEach(() => jest.restoreAllMocks());
+
   test('is rendered', () => {
     const spy = jest.fn();
     const currentTime = new Time(19, 1);
@@ -89,7 +92,7 @@ describe('TimePicker', () => {
     const spy = jest.fn();
     const currentTime = new Time(20, 15);
 
-    const { container } = render(
+    render(
       <TimePicker
         label="test"
         selectedTime={currentTime}
@@ -98,9 +101,9 @@ describe('TimePicker', () => {
       />,
     );
 
-    const addTimeButton = container.getElementsByClassName(
-      'eds-timepicker__arrowbutton--right',
-    )[0];
+    const addTimeButton = screen.getByRole('button', {
+      name: 'Legg til 30 minutter',
+    });
     await user.click(addTimeButton);
 
     const clickResult = spy.mock.calls;
@@ -116,7 +119,7 @@ describe('TimePicker', () => {
     const spy = jest.fn();
     const currentTime = new Time(20, 15);
 
-    const { container } = render(
+    render(
       <TimePicker
         label="test"
         selectedTime={currentTime}
@@ -126,9 +129,9 @@ describe('TimePicker', () => {
       />,
     );
 
-    const addTimeButton = container.getElementsByClassName(
-      'eds-timepicker__arrowbutton--right',
-    )[0];
+    const addTimeButton = screen.getByRole('button', {
+      name: 'Legg til 480 minutter',
+    });
     await user.click(addTimeButton);
 
     const clickResult = spy.mock.calls;
@@ -142,11 +145,11 @@ describe('TimePicker', () => {
   test('sets time to current time on add time button click when selected time is null', async () => {
     const user = userEvent.setup();
     const spy = jest.fn();
-    // default returned timezone is Europe/Oslo
-    const currentTime = now('Europe/Oslo');
+    jest.spyOn(Date, 'now').mockReturnValue(Date.parse('2024-02-29T12:34:00Z'));
+    const currentTime = parseAbsolute('2024-02-29T12:34:00Z', 'Europe/Oslo');
     const minuteIncrement = 15;
 
-    const { container } = render(
+    render(
       <TimePicker
         label="test"
         selectedTime={null}
@@ -156,9 +159,9 @@ describe('TimePicker', () => {
       />,
     );
 
-    const addTimeButton = container.getElementsByClassName(
-      'eds-timepicker__arrowbutton--right',
-    )[0];
+    const addTimeButton = screen.getByRole('button', {
+      name: 'Legg til 15 minutter',
+    });
     await user.click(addTimeButton);
 
     const clickResult = spy.mock.calls;
@@ -183,6 +186,66 @@ describe('TimePicker', () => {
     const results = await axe(container);
     expect(results).toHaveNoViolations();
   });
+
+  test('subtracts across midnight and accepts keyboard minute wrapping', async () => {
+    const user = userEvent.setup();
+    const onChange = jest.fn<void, [Time | null]>();
+    function Consumer() {
+      const [time, setTime] = React.useState<Time | null>(new Time(0, 0));
+      return (
+        <TimePicker
+          label="Departure"
+          selectedTime={time}
+          onChange={value => {
+            onChange(value);
+            setTime(value);
+          }}
+          locale="en-GB"
+          forcedReturnType="Time"
+        />
+      );
+    }
+    render(<Consumer />);
+    await user.click(
+      screen.getByRole('button', { name: 'Trekk fra 30 minutter' }),
+    );
+    expect(onChange).toHaveBeenLastCalledWith(new Time(23, 30));
+    const minute = screen.getByRole('spinbutton', {
+      name: 'minute, Departure',
+    });
+    await user.click(minute);
+    await user.keyboard('{End}{ArrowUp}');
+    expect(onChange).toHaveBeenLastCalledWith(new Time(23, 0));
+    expect(minute).toHaveTextContent('00');
+    await user.keyboard('{Backspace}');
+    await user.keyboard('{ArrowLeft}{Backspace}{Backspace}');
+    expect(onChange).toHaveBeenLastCalledWith(null);
+  });
+
+  test.each(['disabled', 'readOnly'] as const)(
+    '%s prevents mouse and keyboard changes',
+    async mode => {
+      const user = userEvent.setup();
+      const onChange = jest.fn<void, [Time | null]>();
+      render(
+        <TimePicker
+          label="Departure"
+          selectedTime={new Time(12, 30)}
+          onChange={onChange}
+          locale="en-GB"
+          {...{ [mode]: true }}
+        />,
+      );
+      for (const button of screen.getAllByRole('button')) {
+        expect(button).toBeDisabled();
+        await user.click(button);
+      }
+      await user.click(screen.getByText('12'));
+      await user.keyboard('{ArrowUp}{Delete}');
+      expect(screen.getByText('12')).toBeInTheDocument();
+      expect(onChange).not.toHaveBeenCalled();
+    },
+  );
 });
 
 describe('SimpleTimePicker', () => {
@@ -255,27 +318,31 @@ describe('SimpleTimePicker', () => {
     expect(onChangeCallValue8).toEqual(new Time(9, 45));
   });
 
-  test('does not fire onChange on invalid input', async () => {
-    const user = userEvent.setup();
-    const spy = jest.fn();
-    const initialTime = new Time(20, 15);
+  test.each(['invalid', '24:00', '12:60', '12:30:60'])(
+    'restores the selected time for invalid input %s',
+    async input => {
+      const user = userEvent.setup();
+      const spy = jest.fn();
+      const initialTime = new Time(20, 15);
 
-    render(
-      <SimpleTimePicker
-        label="test"
-        selectedTime={initialTime}
-        onChange={spy}
-      />,
-    );
+      render(
+        <SimpleTimePicker
+          label="test"
+          selectedTime={initialTime}
+          onChange={spy}
+        />,
+      );
 
-    const inputField = screen.getByDisplayValue('20:15');
-    await user.clear(inputField);
-    await user.type(inputField, 'invalid');
-    await user.keyboard('{Enter}');
-    const numberOfOnChangeCalls = spy.mock.calls.length;
+      const inputField = screen.getByLabelText('test');
+      await user.clear(inputField);
+      await user.type(inputField, input);
+      await user.keyboard('{Enter}');
+      const numberOfOnChangeCalls = spy.mock.calls.length;
 
-    expect(numberOfOnChangeCalls).toBe(0);
-  });
+      expect(numberOfOnChangeCalls).toBe(0);
+      expect(inputField).toHaveValue('20:15');
+    },
+  );
 
   test('does not fire onChange on unchanged value', async () => {
     const user = userEvent.setup();
@@ -298,8 +365,72 @@ describe('SimpleTimePicker', () => {
 
     expect(numberOfOnChangeCalls).toBe(0);
   });
-});
 
-test('Timezones should always be UTC', () => {
-  expect(new Date().getTimezoneOffset()).toBe(0);
+  test('commits seconds on blur while retaining date and timezone after clearing', async () => {
+    const user = userEvent.setup();
+    const initial = parseAbsolute('2024-02-29T12:30:45Z', 'Europe/Oslo');
+    const onChange = jest.fn<void, [ZonedDateTime | null]>();
+    function Consumer() {
+      const [time, setTime] = React.useState<ZonedDateTime | null>(initial);
+      return (
+        <SimpleTimePicker
+          label="Departure"
+          selectedTime={time}
+          showSeconds
+          onChange={value => {
+            onChange(value);
+            setTime(value);
+          }}
+        />
+      );
+    }
+    render(<Consumer />);
+    const input = screen.getByLabelText('Departure');
+    expect(input).toHaveValue('13:30:45');
+    await user.clear(input);
+    await user.tab();
+    expect(onChange).toHaveBeenLastCalledWith(null);
+    await user.click(input);
+    expect(input).toHaveValue('');
+    await user.type(input, '094512');
+    expect(onChange).toHaveBeenCalledTimes(1);
+    await user.tab();
+    expect(onChange).toHaveBeenLastCalledWith(
+      initial.set({ hour: 9, minute: 45, second: 12 }),
+    );
+    expect(input).toHaveValue('09:45:12');
+    expect(onChange).toHaveBeenCalledTimes(2);
+  });
+
+  test.each(['disabled', 'readOnly'] as const)(
+    '%s prevents editing and commits',
+    async mode => {
+      const user = userEvent.setup();
+      const onChange = jest.fn<void, [Time | null]>();
+      render(
+        <SimpleTimePicker
+          label="Departure"
+          selectedTime={new Time(12, 30)}
+          onChange={onChange}
+          {...{ [mode]: true }}
+        />,
+      );
+      const input = screen.getByLabelText('Departure');
+      await user.click(input);
+      await user.keyboard('0945{Enter}');
+      await user.tab();
+      expect(input).toHaveValue('12:30');
+      expect(onChange).not.toHaveBeenCalled();
+    },
+  );
+
+  // Bug: SimpleTimePicker spreads useTimeField's role="group" onto its text input.
+  test.failing('exposes the editable input as a labelled textbox', () => {
+    render(
+      <SimpleTimePicker label="Departure" selectedTime={new Time(12, 30)} />,
+    );
+    expect(
+      screen.getByRole('textbox', { name: 'Departure' }),
+    ).toBeInTheDocument();
+  });
 });

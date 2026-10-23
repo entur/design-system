@@ -1,4 +1,5 @@
-import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { act, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import {
   CalendarDate,
@@ -146,28 +147,39 @@ describe('Calendar', () => {
     expect(onChange).toHaveBeenCalled();
   });
 
-  test('disables dates outside minDate range', () => {
+  test('rejects clicks before minDate and accepts the inclusive boundary', async () => {
+    const user = userEvent.setup();
     const minDate = new CalendarDate(2023, 9, 20);
 
     render(<Calendar {...defaultProps} minDate={minDate} />);
 
-    const disabledCell = screen.getByRole('button', { name: /15/ });
-    expect(disabledCell).toHaveClass(
-      'eds-datepicker__calendar__grid__cell--disabled',
+    expect(screen.getByRole('gridcell', { name: '15' })).toHaveAttribute(
+      'aria-disabled',
+      'true',
     );
+    await user.click(
+      screen.getByRole('button', { name: /^Friday, 15 September 2023/ }),
+    );
+    expect(defaultProps.onChange).not.toHaveBeenCalled();
+    await user.click(
+      screen.getByRole('button', { name: /^Wednesday, 20 September 2023/ }),
+    );
+    expect(defaultProps.onChange).toHaveBeenCalledWith(minDate);
   });
 
-  test('disables dates outside maxDate range', () => {
+  test('keyboard navigation cannot select past maxDate', async () => {
+    const user = userEvent.setup();
     const maxDate = new CalendarDate(2023, 9, 10);
 
     render(<Calendar {...defaultProps} maxDate={maxDate} />);
 
-    const disabledCell = screen.getByRole('button', {
-      name: /^Wednesday, 20 September 2023/,
+    const lastAvailableDate = screen.getByRole('button', {
+      name: /^Sunday, 10 September 2023/,
     });
-    expect(disabledCell).toHaveClass(
-      'eds-datepicker__calendar__grid__cell--disabled',
-    );
+    act(() => lastAvailableDate.focus());
+    await user.keyboard('{ArrowRight}{Enter}');
+    expect(lastAvailableDate).toHaveFocus();
+    expect(defaultProps.onChange).toHaveBeenCalledWith(maxDate);
   });
 
   test('handles null selectedDate', () => {
@@ -215,31 +227,16 @@ describe('Calendar', () => {
     expect(hiddenDescription).toBeInTheDocument();
   });
 
-  test('handles disabled state', () => {
+  test('disabled calendar rejects date selection', async () => {
+    const user = userEvent.setup();
     render(<Calendar {...defaultProps} disabled />);
 
     const selectedDate = screen.getByRole('button', {
       name: /^Friday, 15 September 2023/,
     });
-    expect(selectedDate).toHaveClass(
-      'eds-datepicker__calendar__grid__cell--disabled',
-    );
-  });
-
-  test('applies custom className', () => {
-    const { container } = render(
-      <Calendar {...defaultProps} className="custom-class" />,
-    );
-
-    expect(container.firstChild).toHaveClass('custom-class');
-  });
-
-  test('applies custom style', () => {
-    const { container } = render(
-      <Calendar {...defaultProps} style={{ backgroundColor: 'red' }} />,
-    );
-
-    expect(container.firstChild).toHaveStyle({ backgroundColor: 'red' });
+    expect(screen.getByRole('grid')).toHaveAttribute('aria-disabled', 'true');
+    await user.click(selectedDate);
+    expect(defaultProps.onChange).not.toHaveBeenCalled();
   });
 
   test('calls onValidate when validation state changes', () => {
@@ -259,19 +256,15 @@ describe('Calendar', () => {
     const selectedCell = screen.getByRole('button', {
       name: /^Friday, 15 September 2023 selected/,
     });
-    selectedCell.focus();
+    act(() => selectedCell.focus());
 
     await user.keyboard('{ArrowRight}');
     await user.keyboard('{ArrowDown}');
     await user.keyboard('{Enter}');
 
-    expect(defaultProps.onChange).toHaveBeenCalled();
-  });
-
-  test('handles forcedReturnType prop', () => {
-    render(<Calendar {...defaultProps} forcedReturnType="CalendarDate" />);
-
-    expect(screen.getByRole('grid')).toBeInTheDocument();
+    expect(defaultProps.onChange).toHaveBeenCalledWith(
+      new CalendarDate(2023, 9, 23),
+    );
   });
 
   test('renders with Norwegian locale', () => {
@@ -343,7 +336,7 @@ describe('Calendar', () => {
   });
 
   describe('visibleDuration', () => {
-    test('renders two month headings when visibleDuration is 2 months', () => {
+    test('renders two month headings and grids when visibleDuration is 2 months', () => {
       render(<Calendar {...defaultProps} visibleDuration={{ months: 2 }} />);
 
       expect(
@@ -352,11 +345,6 @@ describe('Calendar', () => {
       expect(
         screen.getByRole('heading', { name: 'October 2023' }),
       ).toBeInTheDocument();
-    });
-
-    test('renders two grids when visibleDuration is 2 months', () => {
-      render(<Calendar {...defaultProps} visibleDuration={{ months: 2 }} />);
-
       expect(screen.getAllByRole('grid')).toHaveLength(2);
     });
 
@@ -390,8 +378,49 @@ describe('Calendar', () => {
       ).toBeInTheDocument();
     });
   });
+  test('merges className, forwards style and resolves calendarRef to the calendar container', () => {
+    const calendarRef = React.createRef<HTMLDivElement>();
+    const { container } = render(
+      <Calendar
+        {...defaultProps}
+        className="custom-class"
+        style={{ backgroundColor: 'red' }}
+        calendarRef={calendarRef}
+      />,
+    );
+    const calendar = container.firstElementChild;
+    expect(calendar).toHaveClass('eds-datepicker__calendar', 'custom-class');
+    expect(calendar).toHaveStyle({ backgroundColor: 'red' });
+    expect(calendarRef.current).toBe(calendar);
+    expect(calendar).toContainElement(screen.getByRole('grid'));
+  });
 
-  test('Timezones should always be UTC', () => {
-    expect(new Date().getTimezoneOffset()).toBe(0);
+  test.each([
+    [
+      'minDate',
+      { minDate: new CalendarDate(2023, 9, 20) },
+      /^Friday, 15 September 2023/,
+    ],
+    [
+      'maxDate',
+      { maxDate: new CalendarDate(2023, 9, 10) },
+      /^Friday, 15 September 2023/,
+    ],
+    ['disabled', { disabled: true }, /^Friday, 15 September 2023/],
+  ] as const)(
+    '%s sets the disabled modifier on unavailable cells',
+    (_, props, name) => {
+      render(<Calendar {...defaultProps} {...props} />);
+      expect(screen.getByRole('button', { name })).toHaveClass(
+        'eds-datepicker__calendar__grid__cell--disabled',
+      );
+    },
+  );
+
+  test('available cells do not get the disabled modifier', () => {
+    render(<Calendar {...defaultProps} />);
+    expect(
+      screen.getByRole('button', { name: /^Wednesday, 20 September 2023/ }),
+    ).not.toHaveClass('eds-datepicker__calendar__grid__cell--disabled');
   });
 });

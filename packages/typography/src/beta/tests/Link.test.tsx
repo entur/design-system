@@ -1,81 +1,101 @@
-import { cleanup, render } from '@testing-library/react';
-import { Link } from '../components/Link';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { Link } from '..';
+import { describeComponentContract } from '../../../../../tests/jest/componentContract';
 
-afterEach(cleanup);
+describeComponentContract('Link', {
+  render: props => (
+    <Link href="/tickets" {...props}>
+      Content
+    </Link>
+  ),
+  getElement: () => screen.getByText('Content'),
+  baseClassName: 'eds-text--link',
+  as: 'button',
+});
 
-describe('Link Component', () => {
-  test('renders as anchor by default', () => {
-    const { getByText } = render(<Link href="/test">Test link</Link>);
-    const link = getByText('Test link');
-    expect(link.tagName).toBe('A');
-    expect(link).toHaveAttribute('href', '/test');
-  });
+test('links can be reached and activated by keyboard', async () => {
+  const user = userEvent.setup();
+  const onClick = jest.fn(event => event.preventDefault());
+  render(
+    <Link href="/tickets" onClick={onClick}>
+      Buy tickets
+    </Link>,
+  );
 
-  test('renders with external icon when external is true', () => {
-    const { getByText, getByLabelText } = render(
-      <Link href="/external" external>
-        External link
-      </Link>,
-    );
-    expect(getByText('External link')).toBeInTheDocument();
-    expect(getByLabelText('(ekstern lenke)')).toBeInTheDocument();
-  });
+  const link = screen.getByRole('link', { name: 'Buy tickets' });
+  expect(link).toHaveAttribute('href', '/tickets');
+  await user.tab();
+  expect(link).toHaveFocus();
+  await user.keyboard('{Enter}');
+  expect(onClick).toHaveBeenCalledTimes(1);
+});
 
-  test('allows custom aria-label for external icon', () => {
-    const { getByLabelText } = render(
-      <Link
-        href="/external"
-        external
-        ariaLabelExternalIcon="External link icon"
-      >
-        External link
-      </Link>,
-    );
-    expect(getByLabelText('External link icon')).toBeInTheDocument();
-  });
+test('includes the default or translated external indicator in the link name', () => {
+  const { rerender } = render(
+    <Link href="https://entur.no" external>
+      Journey planner
+    </Link>,
+  );
+  expect(
+    screen.getByRole('link', { name: 'Journey planner (ekstern lenke)' }),
+  ).toHaveAttribute('href', 'https://entur.no');
 
-  test('renders as different element with as prop', () => {
-    const { getByText } = render(
-      <Link as="button" type="button">
-        Button link
-      </Link>,
-    );
-    expect(getByText('Button link').tagName).toBe('BUTTON');
-  });
+  rerender(
+    <Link
+      href="https://entur.no"
+      external
+      ariaLabelExternalIcon="(external link)"
+    >
+      Journey planner
+    </Link>,
+  );
+  expect(
+    screen.getByRole('link', { name: 'Journey planner (external link)' }),
+  ).toBeInTheDocument();
+});
 
-  test('applies spacing classes correctly', () => {
-    const { getByText } = render(
-      <Link href="/test" spacing="lg">
-        Link with spacing
-      </Link>,
-    );
-    expect(getByText('Link with spacing')).toHaveClass(
-      'eds-text--link--spacing-lg',
-    );
-  });
+test('supports button semantics and keyboard activation through as', async () => {
+  const user = userEvent.setup();
+  const onClick = jest.fn();
+  render(
+    <Link as="button" type="button" onClick={onClick}>
+      Show details
+    </Link>,
+  );
 
-  test('passes through additional props', () => {
-    const { getByText } = render(
-      <Link href="/test" data-testid="link" target="_blank">
-        Link with props
-      </Link>,
-    );
-    const link = getByText('Link with props');
-    expect(link).toHaveAttribute('data-testid', 'link');
-    expect(link).toHaveAttribute('target', '_blank');
-  });
+  const button = screen.getByRole('button', { name: 'Show details' });
+  expect(screen.queryByRole('link')).not.toBeInTheDocument();
+  await user.tab();
+  expect(button).toHaveFocus();
+  await user.keyboard(' ');
+  expect(onClick).toHaveBeenCalledTimes(1);
+});
 
-  test('applies custom className', () => {
-    const { getByText } = render(
-      <Link href="/test" className="custom-class">
-        Custom link
-      </Link>,
-    );
-    expect(getByText('Custom link')).toHaveClass('custom-class');
-  });
+test('does not expose a link or keyboard stop without a destination', async () => {
+  const user = userEvent.setup();
+  render(
+    <>
+      <Link>Unavailable destination</Link>
+      <Link href="/tickets">Buy tickets</Link>
+    </>,
+  );
 
-  test('Link without href still renders', () => {
-    const { getByText } = render(<Link>Link without href</Link>);
-    expect(getByText('Link without href')).toBeInTheDocument();
-  });
+  expect(screen.getByText('Unavailable destination')).toBeInTheDocument();
+  expect(
+    screen.queryByRole('link', { name: 'Unavailable destination' }),
+  ).not.toBeInTheDocument();
+  await user.tab();
+  expect(screen.getByRole('link', { name: 'Buy tickets' })).toHaveFocus();
+});
+
+test('applies the spacing modifier', () => {
+  render(
+    <Link href="/tickets" spacing="lg">
+      Content
+    </Link>,
+  );
+  expect(screen.getByRole('link', { name: 'Content' })).toHaveClass(
+    'eds-text--link--spacing-lg',
+  );
 });

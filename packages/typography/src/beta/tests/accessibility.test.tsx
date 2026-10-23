@@ -1,13 +1,17 @@
-import { cleanup, render } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
-import { Heading } from '../components/Heading';
-import { Text } from '../components/Text';
-import { Link } from '../components/Link';
-import { Blockquote, BlockquoteFooter } from '../components/Blockquote';
+import {
+  Blockquote,
+  BlockquoteFooter,
+  Heading,
+  Link,
+  ListItem,
+  NumberedList,
+  Text,
+  UnorderedList,
+} from '..';
 
 expect.extend(toHaveNoViolations);
-
-afterEach(cleanup);
 
 describe('Accessibility', () => {
   test('Heading components should not have basic accessibility issues', async () => {
@@ -66,7 +70,7 @@ describe('Accessibility', () => {
 
   test('Complex typography composition should not have basic accessibility issues', async () => {
     const { container } = render(
-      <div>
+      <article>
         <Heading as="h1" variant="title-1">
           Article Title
         </Heading>
@@ -82,16 +86,28 @@ describe('Accessibility', () => {
             external reference
           </Link>{' '}
           and{' '}
-          <Text variant="emphasized" as="span">
+          <Text variant="emphasized" as="em">
             emphasized text
           </Text>
           .
         </Text>
+        <Text variant="label">
+          Destination
+          <input />
+        </Text>
+        <NumberedList>
+          <ListItem title="Book">Choose a route</ListItem>
+        </NumberedList>
+        <UnorderedList>
+          <ListItem>Bring your ticket</ListItem>
+        </UnorderedList>
         <Blockquote>
-          <Text variant="quote">This is an important quote</Text>
-          <BlockquoteFooter>— Famous Author</BlockquoteFooter>
+          <Text>This is an important quote</Text>
+          <BlockquoteFooter>
+            <cite>Travel guide</cite>
+          </BlockquoteFooter>
         </Blockquote>
-      </div>,
+      </article>,
     );
 
     const results = await axe(container);

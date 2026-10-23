@@ -9,251 +9,244 @@ expect.extend(toHaveNoViolations);
 describe('TextField', () => {
   test('TextField is accessible', async () => {
     const { container } = render(<TextField label="testing label" />);
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
+    expect(await axe(container)).toHaveNoViolations();
   });
 
   describe('Clearable functionality', () => {
-    test('shows clear button when clearable is true and field has value', async () => {
+    test('shows the clear button after editing and removes it after clearing', async () => {
       const user = userEvent.setup();
-      const { container } = render(<TextField label="Test field" clearable />);
-
-      const input = screen.getByLabelText('Test field') as HTMLInputElement;
-
-      // Initially no clear button visible
+      render(<TextField label="Destination" clearable />);
+      const input = screen.getByRole('textbox', { name: 'Destination' });
       expect(
-        container.querySelector('.eds-textfield__clear-button'),
+        screen.queryByRole('button', { name: 'Tøm felt' }),
       ).not.toBeInTheDocument();
-
-      // Type something
-      await user.type(input, 'test value');
-
-      // Clear button should appear
+      await user.type(input, 'Oslo');
+      expect(input).toHaveValue('Oslo');
+      await user.click(screen.getByRole('button', { name: 'Tøm felt' }));
+      expect(input).toHaveValue('');
+      expect(input).toHaveFocus();
       expect(
-        container.querySelector('.eds-textfield__clear-button'),
-      ).toBeInTheDocument();
+        screen.queryByRole('button', { name: 'Tøm felt' }),
+      ).not.toBeInTheDocument();
     });
 
-    test('clears uncontrolled field when clear button is clicked', async () => {
+    test('clears an uncontrolled default value without an onChange handler', async () => {
       const user = userEvent.setup();
-      const { container } = render(
-        <TextField label="Test field" clearable defaultValue="initial value" />,
-      );
-
-      const input = screen.getByLabelText('Test field') as HTMLInputElement;
-      expect(input.value).toBe('initial value');
-
-      const clearButton = container.querySelector(
-        '.eds-textfield__clear-button',
-      );
-      expect(clearButton).toBeInTheDocument();
-
-      if (!clearButton) {
-        throw new Error('Clear button should be in the document');
-      }
-      await user.click(clearButton);
-
-      expect(input.value).toBe('');
+      render(<TextField label="Destination" clearable defaultValue="Oslo" />);
+      const input = screen.getByRole('textbox', { name: 'Destination' });
+      expect(input).toHaveValue('Oslo');
+      await user.click(screen.getByRole('button', { name: 'Tøm felt' }));
+      expect(input).toHaveValue('');
     });
 
-    test('clears controlled field when clear button is clicked with onClear', async () => {
+    test('clears controlled state through onChange and calls onClear once', async () => {
       const user = userEvent.setup();
-      const TestComponent = () => {
-        const [value, setValue] = React.useState('controlled value');
-
+      const onChange = jest.fn();
+      const onClear = jest.fn();
+      function Destination() {
+        const [value, setValue] = React.useState('Oslo');
         return (
           <TextField
-            label="Test field"
+            label="Destination"
             value={value}
-            onChange={e => setValue(e.target.value)}
+            onChange={e => {
+              onChange(e.target.value);
+              setValue(e.target.value);
+            }}
             clearable
-            onClear={() => setValue('')}
+            onClear={onClear}
           />
         );
-      };
-
-      const { container } = render(<TestComponent />);
-
-      const input = screen.getByLabelText('Test field') as HTMLInputElement;
-      expect(input.value).toBe('controlled value');
-
-      const clearButton = container.querySelector(
-        '.eds-textfield__clear-button',
-      );
-
-      if (!clearButton) {
-        throw new Error('Clear button should be in the document');
       }
-      await user.click(clearButton);
-
-      expect(input.value).toBe('');
+      render(<Destination />);
+      await user.click(screen.getByRole('button', { name: 'Tøm felt' }));
+      expect(screen.getByRole('textbox', { name: 'Destination' })).toHaveValue(
+        '',
+      );
+      expect(onChange.mock.calls).toEqual([['']]);
+      expect(onClear).toHaveBeenCalledTimes(1);
     });
 
-    test('uses custom onClear when provided', async () => {
+    test('does not offer clearing when clearable is false', async () => {
       const user = userEvent.setup();
-      const onClearMock = jest.fn();
-
-      const { container } = render(
-        <TextField
-          label="Test field"
-          clearable
-          onClear={onClearMock}
-          defaultValue="test"
-        />,
+      render(<TextField label="Destination" clearable={false} />);
+      await user.type(
+        screen.getByRole('textbox', { name: 'Destination' }),
+        'Oslo',
       );
-
-      const clearButton = container.querySelector(
-        '.eds-textfield__clear-button',
-      );
-
-      if (!clearButton) {
-        throw new Error('Clear button should be in the document');
-      }
-      await user.click(clearButton);
-
-      expect(onClearMock).toHaveBeenCalledTimes(1);
-    });
-
-    test('custom onClear can handle clearing for controlled component', async () => {
-      const user = userEvent.setup();
-      const TestComponent = () => {
-        const [value, setValue] = React.useState('initial');
-        const [clearCount, setClearCount] = React.useState(0);
-
-        return (
-          <div>
-            <TextField
-              label="Test field"
-              value={value}
-              onChange={e => setValue(e.target.value)}
-              clearable
-              onClear={() => {
-                setValue('');
-                setClearCount(prev => prev + 1);
-              }}
-            />
-            <div data-testid="clear-count">{clearCount}</div>
-          </div>
-        );
-      };
-
-      const { container } = render(<TestComponent />);
-
-      const input = screen.getByLabelText('Test field') as HTMLInputElement;
-      const clearButton = container.querySelector(
-        '.eds-textfield__clear-button',
-      );
-
-      if (!clearButton) {
-        throw new Error('Clear button should be in the document');
-      }
-      await user.click(clearButton);
-
-      expect(input.value).toBe('');
-      expect(screen.getByTestId('clear-count').textContent).toBe('1');
-    });
-
-    test('does not show clear button when clearable is false', async () => {
-      const user = userEvent.setup();
-      const { container } = render(
-        <TextField label="Test field" clearable={false} />,
-      );
-
-      const input = screen.getByLabelText('Test field') as HTMLInputElement;
-      await user.type(input, 'test');
-
       expect(
-        container.querySelector('.eds-textfield__clear-button'),
+        screen.queryByRole('button', { name: 'Tøm felt' }),
       ).not.toBeInTheDocument();
     });
 
-    test('clearable works with uncontrolled components without onChange', async () => {
+    test.each([true, false])(
+      'append action remains usable with clearable=%s',
+      async clearable => {
+        const user = userEvent.setup();
+        const onLookup = jest.fn();
+        render(
+          <TextField
+            label="Destination"
+            clearable={clearable}
+            defaultValue="Oslo"
+            append={
+              <button type="button" onClick={onLookup}>
+                Look up
+              </button>
+            }
+          />,
+        );
+        await user.click(screen.getByRole('button', { name: 'Look up' }));
+        expect(onLookup).toHaveBeenCalledTimes(1);
+        expect(
+          screen.getByRole('textbox', { name: 'Destination' }),
+        ).toHaveValue('Oslo');
+        if (clearable) {
+          await user.click(screen.getByRole('button', { name: 'Tøm felt' }));
+          expect(
+            screen.getByRole('textbox', { name: 'Destination' }),
+          ).toHaveValue('');
+        }
+      },
+    );
+
+    test.each(['{Enter}', ' '])(
+      'custom-named clear button works with %s without submitting',
+      async key => {
+        const user = userEvent.setup();
+        const onSubmit = jest.fn(e => e.preventDefault());
+        render(
+          <form onSubmit={onSubmit}>
+            <TextField
+              label="Destination"
+              clearable
+              clearButtonAriaLabel="Clear destination"
+              defaultValue="Oslo"
+            />
+          </form>,
+        );
+        await user.tab();
+        expect(
+          screen.getByRole('textbox', { name: 'Destination' }),
+        ).toHaveFocus();
+        await user.tab();
+        expect(
+          screen.getByRole('button', { name: 'Clear destination' }),
+        ).toHaveFocus();
+        await user.keyboard(key);
+        expect(
+          screen.getByRole('textbox', { name: 'Destination' }),
+        ).toHaveValue('');
+        expect(
+          screen.getByRole('textbox', { name: 'Destination' }),
+        ).toHaveFocus();
+        expect(onSubmit).not.toHaveBeenCalled();
+      },
+    );
+  });
+
+  test('controlled editing supports selection replacement and deletion', async () => {
+    const user = userEvent.setup();
+    const onChange = jest.fn();
+    function Destination() {
+      const [value, setValue] = React.useState('Oslo');
+      return (
+        <TextField
+          label="Destination"
+          value={value}
+          onChange={e => {
+            onChange(e.target.value);
+            setValue(e.target.value);
+          }}
+        />
+      );
+    }
+    render(<Destination />);
+    const input = screen.getByRole('textbox', { name: 'Destination' });
+    await user.tab();
+    expect(input).toHaveFocus();
+    await user.keyboard('{Control>}a{/Control}Bergen{Backspace}');
+    expect(input).toHaveValue('Berge');
+    expect(onChange).toHaveBeenLastCalledWith('Berge');
+    await user.clear(input);
+    expect(input).toHaveValue('');
+    expect(onChange).toHaveBeenLastCalledWith('');
+  });
+
+  test.each(['disabled', 'readOnly'] as const)(
+    '%s prevents editing and clearing',
+    async mode => {
       const user = userEvent.setup();
-
-      const { container } = render(
-        <TextField label="Test field" clearable defaultValue="test" />,
+      const onChange = jest.fn();
+      const onClear = jest.fn();
+      render(
+        <>
+          <TextField
+            label="Destination"
+            defaultValue="Oslo"
+            clearable
+            disabled={mode === 'disabled'}
+            readOnly={mode === 'readOnly'}
+            onChange={onChange}
+            onClear={onClear}
+          />
+          <button>Continue</button>
+        </>,
       );
-
-      const input = screen.getByLabelText('Test field') as HTMLInputElement;
-      expect(input.value).toBe('test');
-
-      const clearButton = container.querySelector(
-        '.eds-textfield__clear-button',
-      );
-
-      if (!clearButton) {
-        throw new Error('Clear button should be in the document');
-      }
-      await user.click(clearButton);
-
-      expect(input.value).toBe('');
-    });
-
-    test('append prop works alongside clearable', () => {
-      const { container } = render(
-        <TextField
-          label="Test field"
-          clearable
-          append={<span data-testid="append-content">Append</span>}
-          defaultValue="test"
-        />,
-      );
-
-      // Both append content and clear button should be present
-      expect(screen.getByTestId('append-content')).toBeInTheDocument();
+      const input = screen.getByRole('textbox', { name: /Destination/ });
+      await user.tab();
       expect(
-        container.querySelector('.eds-textfield__clear-button'),
-      ).toBeInTheDocument();
-    });
+        mode === 'disabled'
+          ? screen.getByRole('button', { name: 'Continue' })
+          : input,
+      ).toHaveFocus();
+      await user.type(input, 'Bergen');
+      expect(input).toHaveValue('Oslo');
+      expect(
+        screen.queryByRole('button', { name: 'Tøm felt' }),
+      ).not.toBeInTheDocument();
+      expect(onChange).not.toHaveBeenCalled();
+      expect(onClear).not.toHaveBeenCalled();
+    },
+  );
 
-    test('append prop works when clearable is false', () => {
-      render(
+  // Bug: the feedback text is not linked to the input with aria-describedby.
+  test.failing('feedback text describes only its own field', () => {
+    render(
+      <>
         <TextField
-          label="Test field"
-          clearable={false}
-          append={<span data-testid="append-content">Append</span>}
-        />,
-      );
+          label="Destination"
+          variant="negative"
+          feedback="Choose a destination"
+        />
+        <TextField label="Departure" />
+      </>,
+    );
+    expect(
+      screen.getByRole('textbox', { name: 'Destination' }),
+    ).toHaveAccessibleDescription('Choose a destination');
+    expect(
+      screen.getByRole('textbox', { name: 'Departure' }),
+    ).toHaveAccessibleDescription('');
+  });
 
-      expect(screen.getByTestId('append-content')).toBeInTheDocument();
-    });
-
-    test('clear button has default aria-label', () => {
-      render(<TextField label="Test field" clearable defaultValue="test" />);
-
-      const clearButton = screen.getByRole('button', { name: 'Tøm felt' });
-      expect(clearButton).toBeInTheDocument();
-    });
-
-    test('clear button accepts custom aria-label', () => {
-      render(
-        <TextField
-          label="Test field"
-          clearable
-          clearButtonAriaLabel="Clear this field"
-          defaultValue="test"
-        />,
-      );
-
-      const clearButton = screen.getByRole('button', {
-        name: 'Clear this field',
-      });
-      expect(clearButton).toBeInTheDocument();
-    });
-
-    test('clear button is keyboard accessible', () => {
-      const { container } = render(
-        <TextField label="Test field" clearable defaultValue="test" />,
-      );
-
-      const clearButton = container.querySelector(
-        '.eds-textfield__clear-button',
-      ) as HTMLButtonElement;
-
-      expect(clearButton).toBeInTheDocument();
-      // Verify it doesn't have tabIndex={-1} which would make it inaccessible
-      expect(clearButton.tabIndex).not.toBe(-1);
-    });
+  test('forwards className and style to the wrapper and rest props and ref to the input', () => {
+    const ref = React.createRef<HTMLInputElement>();
+    const { container } = render(
+      <TextField
+        label="Destination"
+        className="consumer-class"
+        style={{ marginTop: '7px' }}
+        data-consumer="value"
+        ref={ref}
+      />,
+    );
+    const wrapper = container.firstElementChild;
+    expect(wrapper).toHaveClass('eds-textfield__wrapper', 'consumer-class');
+    expect(wrapper).toHaveStyle({ marginTop: '7px' });
+    const input = screen.getByRole('textbox', { name: 'Destination' });
+    expect(input).toHaveAttribute('data-consumer', 'value');
+    expect(ref.current).toBe(input);
   });
 
   describe('aria-invalid', () => {
@@ -261,11 +254,9 @@ describe('TextField', () => {
       'is true for %s variant',
       variant => {
         render(<TextField label="Test field" variant={variant} />);
-
-        expect(screen.getByLabelText('Test field')).toHaveAttribute(
-          'aria-invalid',
-          'true',
-        );
+        expect(
+          screen.getByRole('textbox', { name: 'Test field' }),
+        ).toHaveAttribute('aria-invalid', 'true');
       },
     );
 
@@ -273,11 +264,9 @@ describe('TextField', () => {
       'is false for %s variant',
       variant => {
         render(<TextField label="Test field" variant={variant} />);
-
-        expect(screen.getByLabelText('Test field')).toHaveAttribute(
-          'aria-invalid',
-          'false',
-        );
+        expect(
+          screen.getByRole('textbox', { name: 'Test field' }),
+        ).toHaveAttribute('aria-invalid', 'false');
       },
     );
   });
