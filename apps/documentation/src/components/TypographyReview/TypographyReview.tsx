@@ -669,6 +669,13 @@ const ColorChange = ({ from, to }: { from?: Swatch; to: Swatch }) => (
   </span>
 );
 
+/** Changed in Figma but not published, so still up for review */
+const DoneTag = ({ className }: { className?: string }) => (
+  <Tag variant="information" size="small" className={className}>
+    Gjort i Figma, ikke publisert
+  </Tag>
+);
+
 const PageHeader = ({
   overline,
   title,
@@ -953,11 +960,12 @@ export const TypographyReview = () => {
               <>
                 <PageHeader
                   overline="Figma"
-                  title="Må oppdateres hvis godkjent"
+                  title="Variablene er lagt inn, men må gjennomgås"
                 />
                 <Text variant="leading" spacing={{ bottom: 'xl' }}>
-                  Koden har fått nye navn og farger. Figma må få de samme, så
-                  neste eksport stemmer.
+                  Variablene har fått de samme navnene og fargene som koden, men
+                  er ikke publisert. Gå gjennom dem med designerne før
+                  publisering. Komponentene gjenstår.
                 </Text>
                 <div className="typography-review__figma-steps">
                   <BaseCard className="typography-review__card">
@@ -968,8 +976,10 @@ export const TypographyReview = () => {
                       <Heading as="h2" variant="subtitle-1">
                         1. Gi avstandene nye navn
                       </Heading>
+                      <DoneTag />
                       <Text>
-                        Legg dem i gruppen Spacing. Verdiene er de samme.
+                        Lagt i gruppen Spacing. Verdiene er de samme, men samme
+                        navn gir nå en mindre avstand (M var 20 px, nå 16 px).
                       </Text>
                     </TextContainer>
                     <Table spacing="small">
@@ -1004,6 +1014,7 @@ export const TypographyReview = () => {
                       <Heading as="h2" variant="subtitle-1">
                         2. Rydd i typografi-variablene
                       </Heading>
+                      <DoneTag />
                       <UnorderedList>
                         <ListItem>
                           Store forbokstaver og bindestrek i stedet for
@@ -1011,12 +1022,14 @@ export const TypographyReview = () => {
                           <strong>Font/lineHeight/heading/s</strong> →{' '}
                           <strong>Font/Line-height/Heading/S</strong>
                         </ListItem>
-                        <ListItem>
-                          Samme for Size, Paragraph-spacing, Weight og Family
-                        </ListItem>
+                        <ListItem>Samme for Size og Paragraph-spacing</ListItem>
                         <ListItem>
                           Ny tekstvariabel <strong>Font/Family/Mono</strong> for
                           kodetekst, i alle tre modusene
+                        </ListItem>
+                        <ListItem>
+                          <strong>Gjenstår:</strong> Weight. Figma har både
+                          stilnavn (DemiBold) og tall (600), koden bare tallet
                         </ListItem>
                       </UnorderedList>
                     </TextContainer>
@@ -1030,6 +1043,7 @@ export const TypographyReview = () => {
                       <Heading as="h2" variant="subtitle-1">
                         3. Bytt og legg til farger
                       </Heading>
+                      <DoneTag />
                     </TextContainer>
                     <Table spacing="small">
                       <TableHead>
@@ -1090,7 +1104,12 @@ export const TypographyReview = () => {
                   <TableBody>
                     {figmaUpdates.map(item => (
                       <TableRow key={item.what}>
-                        <DataCell>{item.what}</DataCell>
+                        <DataCell>
+                          {item.what}
+                          {item.done && (
+                            <DoneTag className="typography-review__inline-tag" />
+                          )}
+                        </DataCell>
                         <DataCell>{item.details}</DataCell>
                         <DataCell>
                           <Chips ids={item.waits?.split(', ')} onOpen={open} />
