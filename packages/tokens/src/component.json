@@ -16090,7 +16090,7 @@
       {
         "mode": {
           "name": "Standard",
-          "id": "6155:1"
+          "id": "5854:0"
         },
         "color": [],
         "number": [
@@ -16161,19 +16161,19 @@
             "rootAlias": "size-15"
           },
           {
-            "name": "Font/Line-height/LABEL/S",
+            "name": "Font/Line-height/Label/S",
             "value": "1rem",
             "var": "size-8",
             "rootAlias": "size-8"
           },
           {
-            "name": "Font/Line-height/LABEL/M",
+            "name": "Font/Line-height/Label/M",
             "value": "1.25rem",
             "var": "size-9",
             "rootAlias": "size-9"
           },
           {
-            "name": "Font/Line-height/LABEL/LG",
+            "name": "Font/Line-height/Label/LG",
             "value": "1.5rem",
             "var": "size-10",
             "rootAlias": "size-10"
@@ -16327,6 +16327,20 @@
             "value": "1.25rem",
             "var": "size-9",
             "rootAlias": "size-9"
+          }
+        ],
+        "string": [
+          {
+            "name": "Font/Family/Mono",
+            "value": "ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Font/Family/Nationale",
+            "value": "Nationale",
+            "var": "",
+            "rootAlias": ""
           },
           {
             "name": "Font/Weight/Body",
@@ -16340,26 +16354,12 @@
             "var": "",
             "rootAlias": ""
           }
-        ],
-        "string": [
-          {
-            "name": "Font/Family/Nationale",
-            "value": "nationale",
-            "var": "",
-            "rootAlias": ""
-          },
-          {
-            "name": "Font/Family/Mono",
-            "value": "ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace",
-            "var": "",
-            "rootAlias": ""
-          }
         ]
       },
       {
         "mode": {
           "name": "Compact",
-          "id": "6155:0"
+          "id": "7947:0"
         },
         "color": [],
         "number": [
@@ -16376,13 +16376,13 @@
             "rootAlias": "size-9"
           },
           {
-            "name": "Font/Line-height/Body/M",
+            "name": "Font/Line-height/Body/LG",
             "value": "1.5rem",
             "var": "size-10",
             "rootAlias": "size-10"
           },
           {
-            "name": "Font/Line-height/Body/LG",
+            "name": "Font/Line-height/Body/M",
             "value": "1.5rem",
             "var": "size-10",
             "rootAlias": "size-10"
@@ -16394,13 +16394,13 @@
             "rootAlias": "size-11"
           },
           {
-            "name": "Font/Line-height/Heading/XS",
+            "name": "Font/Line-height/Heading/S",
             "value": "1rem",
             "var": "size-8",
             "rootAlias": "size-8"
           },
           {
-            "name": "Font/Line-height/Heading/S",
+            "name": "Font/Line-height/Heading/XS",
             "value": "1rem",
             "var": "size-8",
             "rootAlias": "size-8"
@@ -16430,19 +16430,19 @@
             "rootAlias": "size-12"
           },
           {
-            "name": "Font/Line-height/LABEL/S",
+            "name": "Font/Line-height/Label/M",
             "value": "1rem",
             "var": "size-8",
             "rootAlias": "size-8"
           },
           {
-            "name": "Font/Line-height/LABEL/M",
+            "name": "Font/Line-height/Label/S",
             "value": "1rem",
             "var": "size-8",
             "rootAlias": "size-8"
           },
           {
-            "name": "Font/Line-height/LABEL/LG",
+            "name": "Font/Line-height/Label/LG",
             "value": "1.25rem",
             "var": "size-9",
             "rootAlias": "size-9"
@@ -16478,19 +16478,13 @@
             "rootAlias": "size-9"
           },
           {
-            "name": "Font/Paragraph-spacing/Heading/XS",
+            "name": "Font/Paragraph-spacing/Heading/S",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
           },
           {
-            "name": "Font/Paragraph-spacing/Heading/M",
-            "value": "0.75rem",
-            "var": "size-6",
-            "rootAlias": "size-6"
-          },
-          {
-            "name": "Font/Paragraph-spacing/Heading/S",
+            "name": "Font/Paragraph-spacing/Heading/XS",
             "value": "0.5rem",
             "var": "size-5",
             "rootAlias": "size-5"
@@ -16502,13 +16496,19 @@
             "rootAlias": "size-6"
           },
           {
-            "name": "Font/Paragraph-spacing/Heading/XL",
+            "name": "Font/Paragraph-spacing/Heading/M",
+            "value": "0.75rem",
+            "var": "size-6",
+            "rootAlias": "size-6"
+          },
+          {
+            "name": "Font/Paragraph-spacing/Heading/2XL",
             "value": "1rem",
             "var": "size-8",
             "rootAlias": "size-8"
           },
           {
-            "name": "Font/Paragraph-spacing/Heading/2XL",
+            "name": "Font/Paragraph-spacing/Heading/XL",
             "value": "1rem",
             "var": "size-8",
             "rootAlias": "size-8"
@@ -16526,13 +16526,13 @@
             "rootAlias": "size-7"
           },
           {
-            "name": "Font/Size/Body/M",
+            "name": "Font/Size/Body/LG",
             "value": "1rem",
             "var": "size-8",
             "rootAlias": "size-8"
           },
           {
-            "name": "Font/Size/Body/LG",
+            "name": "Font/Size/Body/M",
             "value": "1rem",
             "var": "size-8",
             "rootAlias": "size-8"
@@ -16596,6 +16596,20 @@
             "value": "1.25rem",
             "var": "size-9",
             "rootAlias": "size-9"
+          }
+        ],
+        "string": [
+          {
+            "name": "Font/Family/Mono",
+            "value": "ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Font/Family/Nationale",
+            "value": "Nationale",
+            "var": "",
+            "rootAlias": ""
           },
           {
             "name": "Font/Weight/Body",
@@ -16609,26 +16623,12 @@
             "var": "",
             "rootAlias": ""
           }
-        ],
-        "string": [
-          {
-            "name": "Font/Family/Nationale",
-            "value": "nationale",
-            "var": "",
-            "rootAlias": ""
-          },
-          {
-            "name": "Font/Family/Mono",
-            "value": "ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace",
-            "var": "",
-            "rootAlias": ""
-          }
         ]
       },
       {
         "mode": {
           "name": "Display",
-          "id": "6155:2"
+          "id": "8097:0"
         },
         "color": [],
         "number": [
@@ -16699,19 +16699,19 @@
             "rootAlias": "size-21"
           },
           {
-            "name": "Font/Line-height/LABEL/S",
+            "name": "Font/Line-height/Label/S",
             "value": "1.75rem",
             "var": "size-11",
             "rootAlias": "size-11"
           },
           {
-            "name": "Font/Line-height/LABEL/M",
+            "name": "Font/Line-height/Label/M",
             "value": "2.25rem",
             "var": "size-13",
             "rootAlias": "size-13"
           },
           {
-            "name": "Font/Line-height/LABEL/LG",
+            "name": "Font/Line-height/Label/LG",
             "value": "2.75rem",
             "var": "size-15",
             "rootAlias": "size-15"
@@ -16753,16 +16753,16 @@
             "rootAlias": "size-6"
           },
           {
-            "name": "Font/Paragraph-spacing/Heading/M",
-            "value": "1.25rem",
-            "var": "size-9",
-            "rootAlias": "size-9"
-          },
-          {
             "name": "Font/Paragraph-spacing/Heading/S",
             "value": "1rem",
             "var": "size-8",
             "rootAlias": "size-8"
+          },
+          {
+            "name": "Font/Paragraph-spacing/Heading/M",
+            "value": "1.25rem",
+            "var": "size-9",
+            "rootAlias": "size-9"
           },
           {
             "name": "Font/Paragraph-spacing/Heading/LG",
@@ -16865,6 +16865,20 @@
             "value": "2.5rem",
             "var": "size-14",
             "rootAlias": "size-14"
+          }
+        ],
+        "string": [
+          {
+            "name": "Font/Family/Mono",
+            "value": "ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Font/Family/Nationale",
+            "value": "Nationale",
+            "var": "",
+            "rootAlias": ""
           },
           {
             "name": "Font/Weight/Body",
@@ -16875,20 +16889,6 @@
           {
             "name": "Font/Weight/Heading",
             "value": "600",
-            "var": "",
-            "rootAlias": ""
-          }
-        ],
-        "string": [
-          {
-            "name": "Font/Family/Nationale",
-            "value": "nationale",
-            "var": "",
-            "rootAlias": ""
-          },
-          {
-            "name": "Font/Family/Mono",
-            "value": "ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace",
             "var": "",
             "rootAlias": ""
           }
