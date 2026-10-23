@@ -36,3 +36,15 @@ test('OverflowMenu renders, and items are clickable', () => {
   const firstItem = getByTestId('first');
   expect(firstItem).toBeVisible();
 });
+
+test('OverflowMenu uses fixed positioning', () => {
+  const { getByTestId, getByRole } = render(
+    <OverflowMenu data-testid="button">
+      <OverflowMenuItem>Info</OverflowMenuItem>
+    </OverflowMenu>,
+  );
+
+  simulateMouseClick(getByTestId('button'));
+
+  expect(getByRole('menu')).toHaveStyle({ position: 'fixed' });
+});
