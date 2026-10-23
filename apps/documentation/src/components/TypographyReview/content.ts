@@ -271,12 +271,19 @@ export const removed: Change[] = [
   },
 ];
 
-export type FigmaItem = { what: string; details: string; waits?: string };
+export type FigmaItem = {
+  what: string;
+  details: string;
+  waits?: string;
+  /** Already changed in Figma, but not published */
+  done?: boolean;
+};
 
 export const figmaUpdates: FigmaItem[] = [
   {
     what: 'Spacing-komponenten',
     details: 'Navn på den nye skalaen (M-S → M, M → LG …)',
+    done: true,
   },
   {
     what: 'Avstand i tekstkomponentene',
@@ -341,7 +348,10 @@ export type FigmaColor = {
 
 const blue10 = { name: 'Blue/10', hex: '#f6f6f9' };
 const blue20 = { name: 'Blue/20', hex: '#eaeaf1' };
+const blue30 = { name: 'Blue/30', hex: '#d9dae8' };
+const blue70 = { name: 'Blue/70', hex: '#626493' };
 const blue100 = { name: 'Blue/100', hex: '#292b6a' };
+const ebony30 = { name: 'Ebony/30', hex: '#b3b4bd' };
 const ebony80 = { name: 'Ebony/80', hex: '#393a49' };
 const ebony90 = { name: 'Ebony/90', hex: '#212233' };
 
@@ -372,6 +382,20 @@ export const figmaColors: FigmaColor[] = [
     light: { to: blue100 },
     dark: { to: ebony90 },
     waits: 'S7',
+  },
+  {
+    variable: 'Base text / Standard / Text-Subdued',
+    isNew: true,
+    light: { to: blue70 },
+    dark: { to: ebony30 },
+    waits: 'S9',
+  },
+  {
+    variable: 'Base text / Contrast / Text-Subdued',
+    isNew: true,
+    light: { to: blue30 },
+    dark: { to: ebony30 },
+    waits: 'S9',
   },
 ];
 
