@@ -108,7 +108,7 @@
     "outputs": ["FilterChip.json"]
   },
   "chip/src/TagChip.tsx": {
-    "hash": "0ce73a33b6280476da2145eced14afd1",
+    "hash": "877a6bf3e70adb21174b8ad44c81eebd",
     "outputs": ["TagChip.json"]
   },
   "datepicker/src/DatePicker/Calendar.tsx": {
@@ -164,7 +164,7 @@
     "outputs": ["Dropdown.json"]
   },
   "dropdown/src/MultiSelect.tsx": {
-    "hash": "a65f2bdbedf6515fd1142217bd529891",
+    "hash": "e2c6a3898433cb40e3ac316bc370509b",
     "outputs": ["MultiSelect.json"]
   },
   "dropdown/src/NativeDropdown.tsx": {
@@ -172,7 +172,7 @@
     "outputs": ["NativeDropdown.json"]
   },
   "dropdown/src/SearchableDropdown.tsx": {
-    "hash": "0aa4a0fe4e46809e03c4a1aff8afad47",
+    "hash": "5e35624a3d9861ae0e77668ab16d1e33",
     "outputs": ["SearchableDropdown.json"]
   },
   "dropdown/src/components/DropdownList.tsx": {
@@ -180,7 +180,7 @@
     "outputs": ["DropdownList.json"]
   },
   "dropdown/src/components/FieldComponents.tsx": {
-    "hash": "94f66707c95e8562acc907301822dcf7",
+    "hash": "9625386b5c275570e7ebc98c1b0352c7",
     "outputs": [
       "SelectedItemTag.json",
       "DropdownFieldAppendix.json",

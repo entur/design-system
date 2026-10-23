@@ -18,15 +18,18 @@ import './FieldComponents.scss';
 export const SelectedItemTag = <ValueType extends NonNullable<any>>({
   ariaLabelRemoveSelected,
   ariaLabelChosen = 'valgt',
+  closeButtonRef,
   disabled,
   getSelectedItemProps,
   index,
+  onKeyDown,
   readOnly,
   removeSelectedItem,
   selectedItem,
 }: {
   ariaLabelRemoveSelected: string;
   ariaLabelChosen?: string;
+  closeButtonRef?: React.Ref<HTMLButtonElement>;
   disabled?: boolean;
   getSelectedItemProps?: (
     options: UseMultipleSelectionGetSelectedItemPropsOptions<
@@ -34,17 +37,31 @@ export const SelectedItemTag = <ValueType extends NonNullable<any>>({
     >,
   ) => any;
   index?: number;
+  onKeyDown?: (event: React.KeyboardEvent<HTMLDivElement>) => void;
   readOnly?: boolean;
   removeSelectedItem: (item: NormalizedDropdownItemType<ValueType>) => void;
   selectedItem: NormalizedDropdownItemType<ValueType>;
 }) => {
   if (!selectedItem) return null;
 
-  const { tabIndex: _, ...selectedItemProps } =
-    getSelectedItemProps?.({
-      selectedItem,
-      index,
-    }) ?? {};
+  // An onClick on the chip makes Safari's VoiceOver stop on it as a
+  // clickable element, out of step with keyboard focus on the close button
+  const {
+    tabIndex: _tabIndex,
+    onClick: _onClick,
+    ...selectedItemProps
+  } = getSelectedItemProps?.({
+    selectedItem,
+    index,
+  }) ?? {};
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    // WebKit can treat Backspace as "go back" when the key isn't consumed
+    if (e.key === 'Backspace' || e.key === 'Delete') e.preventDefault();
+    selectedItemProps.onKeyDown?.(e);
+    onKeyDown?.(e);
+  };
+
   return (
     <TagChip
       size="small"
@@ -52,18 +69,18 @@ export const SelectedItemTag = <ValueType extends NonNullable<any>>({
         'eds-dropdown__selected-item-tag--readonly': readOnly,
         'eds-dropdown__selected-item-tag--disabled': disabled,
       })}
+      ref={closeButtonRef}
       {...selectedItemProps}
+      onKeyDown={handleKeyDown}
       onClose={(e: React.MouseEvent<HTMLButtonElement>) => {
         e.stopPropagation();
         removeSelectedItem(selectedItem);
       }}
-      onClick={(e: React.MouseEvent) => e.stopPropagation()}
       closeButtonAriaLabel={`${selectedItem.label} ${ariaLabelChosen}, ${ariaLabelRemoveSelected} `}
-      key={selectedItem.value}
-      aria-live="polite"
+      closeButtonTabIndex={-1}
     >
       <span
-        aria-hidden="true"
+        aria-hidden={disabled || readOnly ? undefined : true}
         className="eds-dropdown__selected-item-tag__text"
       >
         {selectedItem.label}
