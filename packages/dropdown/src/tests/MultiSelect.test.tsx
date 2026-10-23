@@ -1,5 +1,11 @@
 import React from 'react';
-import { act, render, screen, waitFor } from '@testing-library/react';
+import {
+  act,
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import { DropdownItemType, MultiSelect, NormalizedDropdownItemType } from '..';
@@ -1050,6 +1056,101 @@ describe('MultiSelect', () => {
       );
 
       await waitFor(() => expect(getStatusMessage()).toBe('Stopp fjernet'));
+    });
+
+    test('a selected item is not left in the tab order after focus leaves it', async () => {
+      const user = userEvent.setup();
+      render(
+        <ControlledMultiSelect
+          initialSelectedItems={normalizedTestItems.slice(0, 3)}
+        />,
+      );
+
+      await user.tab();
+      await user.keyboard('{ArrowLeft}');
+      expect(getRemoveButton('Stavanger')).toHaveFocus();
+
+      await user.tab();
+      await user.tab({ shift: true });
+      expect(getRemoveButton('Stavanger')).not.toHaveFocus();
+    });
+
+    test('reaches the selected items with the left arrow while the list is open', async () => {
+      const user = userEvent.setup();
+      render(
+        <ControlledMultiSelect
+          initialSelectedItems={normalizedTestItems.slice(0, 3)}
+        />,
+      );
+
+      await user.click(screen.getByRole('combobox', { name: 'test label' }));
+      expect(screen.getByRole('listbox')).toBeVisible();
+      await user.keyboard('{ArrowLeft}');
+
+      expect(getRemoveButton('Stavanger')).toHaveFocus();
+    });
+
+    test('consumes Backspace on a selected item so the browser does not navigate back', () => {
+      render(
+        <ControlledMultiSelect
+          initialSelectedItems={normalizedTestItems.slice(0, 3)}
+        />,
+      );
+
+      const notPrevented = fireEvent.keyDown(getRemoveButton('Bergen'), {
+        key: 'Backspace',
+      });
+
+      expect(notPrevented).toBe(false);
+    });
+
+    describe('when more items are selected than maxChips', () => {
+      const SummaryMultiSelect = () => {
+        const [selectedItems, setSelectedItems] = React.useState(
+          normalizedTestItems.slice(0, 3),
+        );
+        return (
+          <MultiSelect
+            label="test label"
+            items={testItems}
+            maxChips={2}
+            selectedItems={selectedItems}
+            onChange={setSelectedItems}
+          />
+        );
+      };
+      const getSummaryButton = () =>
+        screen.getByRole('button', { name: /^3 valgte/ });
+
+      test('leaves the summary out of the tab order', async () => {
+        const user = userEvent.setup();
+        render(<SummaryMultiSelect />);
+        const input = screen.getByRole('combobox', { name: 'test label' });
+
+        await user.tab();
+        expect(input).toHaveFocus();
+        await user.tab({ shift: true });
+        expect(getSummaryButton()).not.toHaveFocus();
+        expect(input).toHaveAccessibleDescription(
+          '3 valgte, bruk venstre piltast for å gå til dem',
+        );
+      });
+
+      test('reaches the summary with the left arrow and clears with Backspace', async () => {
+        const user = userEvent.setup();
+        render(<SummaryMultiSelect />);
+        const input = screen.getByRole('combobox', { name: 'test label' });
+
+        await user.tab();
+        await user.keyboard('{ArrowLeft}');
+        expect(getSummaryButton()).toHaveFocus();
+        await user.keyboard('{ArrowRight}');
+        expect(input).toHaveFocus();
+
+        await user.keyboard('{ArrowLeft}{Backspace}');
+        expect(screen.queryByRole('button', { name: /valgte/ })).toBeNull();
+        expect(input).toHaveFocus();
+      });
     });
 
     test('selected item tags have no live regions of their own', () => {

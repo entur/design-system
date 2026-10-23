@@ -212,11 +212,10 @@ export const MultiSelect = React.forwardRef(
       selectedItems.length === normalizedItems.length;
 
     const navigateToSelectedId = `eds-multiselect-navigate-to-selected${useId()}`;
+    const showSummary = selectedItems.length > maxChips;
     const canNavigateToSelected =
-      selectedItems.length > 0 &&
-      selectedItems.length <= maxChips &&
-      !disabled &&
-      !readOnly;
+      selectedItems.length > 0 && !disabled && !readOnly;
+    const summaryRef = useRef<HTMLButtonElement>(null);
 
     // special 'item' used as Select All entry in the dropdown list
     const selectAllUniqueId = `select-all${useId()}`;
@@ -294,6 +293,7 @@ export const MultiSelect = React.forwardRef(
       getDropdownProps,
       reset,
       removeSelectedItem,
+      setActiveIndex,
       setSelectedItems,
     } = useMultipleSelection({
       selectedItems,
@@ -496,7 +496,25 @@ export const MultiSelect = React.forwardRef(
       ref: mergeRefs(inputRef, ref),
     });
     const inputProps = getInputProps({
-      onKeyDown: (e: React.KeyboardEvent) => {
+      onBlur,
+      onFocus,
+      ...dropdownProps,
+      onKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => {
+        const caretAtStart =
+          e.currentTarget.selectionStart === 0 &&
+          e.currentTarget.selectionEnd === 0;
+        if (e.key === 'ArrowLeft' && caretAtStart && canNavigateToSelected) {
+          if (showSummary) {
+            summaryRef.current?.focus();
+            return;
+          }
+          if (isOpen) {
+            setActiveIndex(selectedItems.length - 1);
+            return;
+          }
+        }
+        dropdownProps.onKeyDown?.(e);
+
         if (selectOnTab && isOpen && e.key === 'Tab') {
           const highlitedItem = listItems[highlightedIndex];
           if (!highlitedItem) return;
@@ -515,9 +533,6 @@ export const MultiSelect = React.forwardRef(
           });
         }
       },
-      onBlur,
-      onFocus,
-      ...dropdownProps,
       className: 'eds-dropdown__input eds-form-control',
       disabled: readOnly || disabled,
       placeholder: placeholder,
@@ -599,7 +614,7 @@ export const MultiSelect = React.forwardRef(
               {ariaLabelNavigateToSelected}
             </VisuallyHidden>
           ) : null}
-          {selectedItems.length <= maxChips ? (
+          {!showSummary ? (
             selectedItems.map((selectedItem, index) => (
               <SelectedItemTag
                 ariaLabelChosen={ariaLabelChosenSingular}
@@ -620,7 +635,13 @@ export const MultiSelect = React.forwardRef(
             <SelectedItemTag
               ariaLabelRemoveSelected={labelClearAllItems}
               ariaLabelChosen=""
+              closeButtonRef={summaryRef}
               disabled={disabled}
+              onKeyDown={e => {
+                if (e.key === 'ArrowRight') inputRef.current?.focus();
+                if (e.key === 'Backspace' || e.key === 'Delete')
+                  handleOnClear();
+              }}
               readOnly={readOnly}
               removeSelectedItem={handleOnClear}
               selectedItem={summarySelectedItems}
