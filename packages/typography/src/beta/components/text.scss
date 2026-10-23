@@ -80,7 +80,7 @@
     &--preformatted {
       background-color: var(--components-typography-codetext-standard-fill);
       color: inherit;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
+      font-family: var(--font-family-mono);
       font-size: 0.875em;
       font-weight: inherit;
 
