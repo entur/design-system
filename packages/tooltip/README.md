@@ -2,7 +2,7 @@
 
 This package contains the tooltip component.
 
-> 💡 Looking for the [documentation](https://linje.entur.no/komponenter/feedback/tooltip)?
+> 💡 Looking for the [documentation](https://linje.entur.no/komponenter/layout-og-flater/tooltip)?
 
 ## Installation
 
@@ -14,4 +14,4 @@ yarn add @entur/tooltip
 
 ## Usage
 
-Please refer to the [documentation](https://linje.entur.no/komponenter/feedback/tooltip) for usage information.
+Please refer to the [documentation](https://linje.entur.no/komponenter/layout-og-flater/tooltip) for usage information.

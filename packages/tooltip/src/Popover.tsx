@@ -52,6 +52,9 @@ export const Popover = ({
   const { refs, floatingStyles, elements, update } =
     useFloating<HTMLButtonElement>({
       placement: standardisePlacement(placement),
+      // Fixed positions the popover against the viewport, so an overflow
+      // ancestor can't clip it (unless an ancestor sets transform/filter/contain)
+      strategy: 'fixed',
       middleware: [
         offset(space.extraSmall),
         flip(),
