@@ -866,7 +866,9 @@ describe('MultiSelect', () => {
         screen.queryByRole('button', { name: /^Bergen valgt/ }),
       ).not.toBeInTheDocument();
       expect(getRemoveButton('Stavanger')).toHaveFocus();
-      await waitFor(() => expect(getStatusMessage()).toBe('Bergen fjernet'));
+      await waitFor(() =>
+        expect(getStatusMessage()).toBe('Bergen fjernet, Stavanger'),
+      );
     });
 
     test.each(['disabled', 'readOnly'])(
@@ -934,22 +936,13 @@ describe('MultiSelect', () => {
       await waitFor(() => expect(getStatusMessage()).toBe('Oslo valgt'));
     });
 
-    test('announces selecting every item with «Velg alle» as one message', async () => {
-      const user = userEvent.setup();
-      render(<ControlledMultiSelect initialSelectedItems={[]} />);
-
-      await user.click(screen.getByRole('combobox', { name: 'test label' }));
-      await user.click(screen.getByRole('option', { name: /^Velg alle/ }));
-
-      await waitFor(() => expect(getStatusMessage()).toBe('Alle valgt'));
-    });
-
     test.each([
-      ['the rest', 3],
-      ['the last item', testItems.length - 1],
+      ['nothing', 0, '8 lagt til, 8 valgte totalt'],
+      ['some items', 3, '5 lagt til, 8 valgte totalt'],
+      ['all but one item', testItems.length - 1, 'Brønnøysund valgt'],
     ])(
-      'announces «Alle valgt» when «Velg alle» selects %s',
-      async (_, alreadySelected) => {
+      'announces «Velg alle» as one message when %s is selected',
+      async (_, alreadySelected, expected) => {
         const user = userEvent.setup();
         render(
           <ControlledMultiSelect
@@ -960,11 +953,11 @@ describe('MultiSelect', () => {
         await user.click(screen.getByRole('combobox', { name: 'test label' }));
         await user.click(screen.getByRole('option', { name: /^Velg alle/ }));
 
-        await waitFor(() => expect(getStatusMessage()).toBe('Alle valgt'));
+        await waitFor(() => expect(getStatusMessage()).toBe(expected));
       },
     );
 
-    test('announces the item, not «Alle valgt», when the last item is selected by hand', async () => {
+    test('announces the item when the last item is selected by hand', async () => {
       const user = userEvent.setup();
       render(
         <ControlledMultiSelect
@@ -1053,6 +1046,33 @@ describe('MultiSelect', () => {
       );
 
       await waitFor(() => expect(getStatusMessage()).toBe('Stopp fjernet'));
+    });
+
+    test('does not announce a selection the parent rejects', async () => {
+      const user = userEvent.setup();
+      const AcceptsOneItem = () => {
+        const [selectedItems, setSelectedItems] = React.useState(
+          normalizedTestItems.slice(0, 1),
+        );
+        return (
+          <MultiSelect
+            label="test label"
+            items={testItems}
+            selectedItems={selectedItems}
+            onChange={items => {
+              if (items.length <= 1) setSelectedItems(items);
+            }}
+          />
+        );
+      };
+      render(<AcceptsOneItem />);
+
+      await user.click(screen.getByRole('combobox', { name: 'test label' }));
+      await user.click(screen.getByRole('option', { name: 'Bergen' }));
+      await user.keyboard('{Escape}{ArrowLeft}');
+
+      await new Promise(resolve => setTimeout(resolve, 300));
+      expect(getStatusMessage()).not.toMatch('Bergen valgt');
     });
 
     test('a selected item is not left in the tab order after focus leaves it', async () => {

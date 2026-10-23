@@ -215,19 +215,17 @@ export function getResultsStatusMessage<ValueType>(
 export function getSelectionStatusMessage<ValueType>({
   previousSelectedItems,
   selectedItems,
-  allItemsSelected,
-  labelAllItemsSelected,
   ariaLabelChosenSingular,
-  ariaLabelChosenPlural,
+  ariaLabelAddedPlural,
+  ariaLabelChosenTotal,
   ariaLabelRemovedSingular,
   ariaLabelRemovedPlural,
 }: {
   previousSelectedItems: NormalizedDropdownItemType<ValueType>[];
   selectedItems: NormalizedDropdownItemType<ValueType>[];
-  allItemsSelected: boolean;
-  labelAllItemsSelected: string;
   ariaLabelChosenSingular: string;
-  ariaLabelChosenPlural: string;
+  ariaLabelAddedPlural: string;
+  ariaLabelChosenTotal: string;
   ariaLabelRemovedSingular: string;
   ariaLabelRemovedPlural: string;
 }): string {
@@ -244,12 +242,12 @@ export function getSelectionStatusMessage<ValueType>({
 
   const messages: string[] = [];
 
-  if (allItemsSelected && added.length > 0)
-    messages.push(labelAllItemsSelected);
-  else if (added.length === 1)
+  if (added.length === 1)
     messages.push(`${added[0].label} ${ariaLabelChosenSingular}`);
   else if (added.length > 1)
-    messages.push(`${added.length} ${ariaLabelChosenPlural}`);
+    messages.push(
+      `${added.length} ${ariaLabelAddedPlural}, ${selectedItems.length} ${ariaLabelChosenTotal}`,
+    );
 
   if (removed.length === 1)
     messages.push(`${removed[0].label} ${ariaLabelRemovedSingular}`);

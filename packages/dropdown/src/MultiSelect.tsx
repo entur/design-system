@@ -128,6 +128,16 @@ export type MultiSelectProps<ValueType> = Omit<
    * @default "valg fjernet"
    */
   ariaLabelRemovedPlural?: string;
+  /** Tekst for skjermleser når flere elementer velges samtidig,
+   * f.eks. «5 lagt til, 8 valgte totalt»
+   * @default "lagt til"
+   */
+  ariaLabelAddedPlural?: string;
+  /** Tekst for skjermleser om hvor mange som er valgt totalt når flere
+   * elementer velges samtidig, f.eks. «5 lagt til, 8 valgte totalt»
+   * @default "valgte totalt"
+   */
+  ariaLabelChosenTotal?: string;
   /** Callback som kalles når brukeren går ut av input-feltet */
   onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
   /** Callback når komponenten klikkes */
@@ -174,6 +184,8 @@ export const MultiSelect = React.forwardRef(
       ariaLabelChosenPlural = 'valgte',
       ariaLabelRemovedSingular = 'fjernet',
       ariaLabelRemovedPlural = 'valg fjernet',
+      ariaLabelAddedPlural = 'lagt til',
+      ariaLabelChosenTotal = 'valgte totalt',
       ariaLabelCloseList = 'Lukk liste med valg',
       ariaLabelJumpToInput: _deprecatedAriaLabelJumpToInput,
       ariaLabelNavigateToSelected = `${selectedItems.length} valgte, bruk venstre piltast for å gå til dem`,
@@ -286,10 +298,14 @@ export const MultiSelect = React.forwardRef(
       selectedItems,
     });
 
-    const selectionStatusMessage = useRef('');
-    const selectAllClicked = useRef(false);
+    const pendingSelectionChange = useRef<{
+      previousSelectedItems: NormalizedDropdownItemType<ValueType>[];
+      activeIndex: number;
+    } | null>(null);
+    const activeIndexRef = useRef(-1);
 
     const {
+      activeIndex,
       getSelectedItemProps,
       getDropdownProps,
       reset,
@@ -303,30 +319,42 @@ export const MultiSelect = React.forwardRef(
       itemToKey,
       ...(environment && { environment }),
       onSelectedItemsChange({ selectedItems: newSelectedItems = [] }) {
-        selectionStatusMessage.current = getSelectionStatusMessage({
+        pendingSelectionChange.current = {
           previousSelectedItems: selectedItems,
-          selectedItems: newSelectedItems,
-          allItemsSelected:
-            selectAllClicked.current &&
-            typeof initialItems !== 'function' &&
-            newSelectedItems.length === normalizedItems.length,
-          labelAllItemsSelected,
-          ariaLabelChosenSingular,
-          ariaLabelChosenPlural,
-          ariaLabelRemovedSingular,
-          ariaLabelRemovedPlural,
-        });
-        selectAllClicked.current = false;
+          activeIndex: activeIndexRef.current,
+        };
         onChange(newSelectedItems);
       },
-      getA11yStatusMessage: selectionStatusMessage.current
-        ? () => {
-            const message = selectionStatusMessage.current;
-            selectionStatusMessage.current = '';
-            return message;
+      // Only passed after a user action, so changes from the parent aren't
+      // announced and an empty message can't cut off the result count
+      getA11yStatusMessage: pendingSelectionChange.current
+        ? state => {
+            const { previousSelectedItems, activeIndex: previousActiveIndex } =
+              pendingSelectionChange.current ?? {
+                previousSelectedItems: state.selectedItems,
+                activeIndex: -1,
+              };
+            pendingSelectionChange.current = null;
+            const message = getSelectionStatusMessage({
+              previousSelectedItems,
+              selectedItems: state.selectedItems,
+              ariaLabelChosenSingular,
+              ariaLabelAddedPlural,
+              ariaLabelChosenTotal,
+              ariaLabelRemovedSingular,
+              ariaLabelRemovedPlural,
+            });
+            const focusedItem =
+              state.activeIndex === previousActiveIndex
+                ? state.selectedItems[state.activeIndex]
+                : undefined;
+            return message && focusedItem
+              ? `${message}, ${focusedItem.label}`
+              : message;
           }
         : undefined,
     });
+    activeIndexRef.current = activeIndex;
 
     const stateReducer = React.useCallback(
       (
@@ -425,7 +453,6 @@ export const MultiSelect = React.forwardRef(
         // clickedItem means item chosen either via mouse or keyboard
         if (!clickedItem) return;
 
-        selectAllClicked.current = clickedItemIsSelectAll(clickedItem);
         handleListItemClicked({
           clickedItem,
           onChange: setSelectedItems,
@@ -640,6 +667,8 @@ export const MultiSelect = React.forwardRef(
                 disabled={disabled}
                 getSelectedItemProps={getSelectedItemProps}
                 index={index}
+                // Keyed by position, not value: after Backspace the chip that
+                // takes the removed one's place keeps focus on the same button
                 key={index}
                 readOnly={readOnly}
                 removeSelectedItem={() => {

@@ -5,46 +5,38 @@ const bergen = { value: 'Bergen', label: 'Bergen' };
 const trondheim = { value: 'Trondheim', label: 'Trondheim' };
 
 const labels = {
-  labelAllItemsSelected: 'Alle valgt',
   ariaLabelChosenSingular: 'valgt',
-  ariaLabelChosenPlural: 'valgte',
+  ariaLabelAddedPlural: 'lagt til',
+  ariaLabelChosenTotal: 'valgte totalt',
   ariaLabelRemovedSingular: 'fjernet',
   ariaLabelRemovedPlural: 'valg fjernet',
 };
 
 describe('getSelectionStatusMessage', () => {
   test.each([
-    ['one item selected', [], [oslo], false, 'Oslo valgt'],
-    ['several items selected', [], [oslo, bergen], false, '2 valgte'],
-    ['every item selected', [], [oslo, bergen], true, 'Alle valgt'],
+    ['one item selected', [], [oslo], 'Oslo valgt'],
     [
-      'the last item selected with «Velg alle»',
+      'several items selected',
       [oslo],
-      [oslo, bergen],
-      true,
-      'Alle valgt',
+      [oslo, bergen, trondheim],
+      '2 lagt til, 3 valgte totalt',
     ],
-    ['one item removed', [oslo, bergen], [bergen], false, 'Oslo fjernet'],
-    ['several items removed', [oslo, bergen], [], false, '2 valg fjernet'],
+    ['one item removed', [oslo, bergen], [bergen], 'Oslo fjernet'],
+    ['several items removed', [oslo, bergen], [], '2 valg fjernet'],
     [
-      'an item selected and another removed',
+      'items selected and another removed',
       [oslo],
       [bergen, trondheim],
-      false,
-      '2 valgte, Oslo fjernet',
+      '2 lagt til, 2 valgte totalt, Oslo fjernet',
     ],
-    ['nothing changed', [oslo], [oslo], false, ''],
-  ])(
-    '%s',
-    (_, previousSelectedItems, selectedItems, allItemsSelected, expected) => {
-      expect(
-        getSelectionStatusMessage({
-          previousSelectedItems,
-          selectedItems,
-          allItemsSelected,
-          ...labels,
-        }),
-      ).toBe(expected);
-    },
-  );
+    ['nothing changed', [oslo], [oslo], ''],
+  ])('%s', (_, previousSelectedItems, selectedItems, expected) => {
+    expect(
+      getSelectionStatusMessage({
+        previousSelectedItems,
+        selectedItems,
+        ...labels,
+      }),
+    ).toBe(expected);
+  });
 });

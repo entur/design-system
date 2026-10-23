@@ -677,6 +677,40 @@
         "name": "string | undefined"
       }
     },
+    "ariaLabelAddedPlural": {
+      "defaultValue": {
+        "value": "lagt til"
+      },
+      "description": "Tekst for skjermleser når flere elementer velges samtidig,\nf.eks. «5 lagt til, 8 valgte totalt»",
+      "name": "ariaLabelAddedPlural",
+      "declarations": [
+        {
+          "fileName": "packages/dropdown/src/MultiSelect.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "ariaLabelChosenTotal": {
+      "defaultValue": {
+        "value": "valgte totalt"
+      },
+      "description": "Tekst for skjermleser om hvor mange som er valgt totalt når flere\nelementer velges samtidig, f.eks. «5 lagt til, 8 valgte totalt»",
+      "name": "ariaLabelChosenTotal",
+      "declarations": [
+        {
+          "fileName": "packages/dropdown/src/MultiSelect.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
     "onBlur": {
       "defaultValue": null,
       "description": "Callback som kalles når brukeren går ut av input-feltet",
