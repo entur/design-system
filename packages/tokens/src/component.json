@@ -15724,5 +15724,364 @@
         "string": []
       }
     ]
+  },
+  {
+    "name": "Component spacing",
+    "values": [
+      {
+        "mode": {
+          "name": "Standard",
+          "id": "6274:0"
+        },
+        "color": [],
+        "number": [
+          {
+            "name": "Spacing/2XS",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "Spacing/XS",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "Spacing/S",
+            "value": "0.75rem",
+            "var": "size-6",
+            "rootAlias": "size-6"
+          },
+          {
+            "name": "Spacing/M",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "Spacing/LG",
+            "value": "1.25rem",
+            "var": "size-9",
+            "rootAlias": "size-9"
+          },
+          {
+            "name": "Spacing/XL",
+            "value": "1.5rem",
+            "var": "size-10",
+            "rootAlias": "size-10"
+          },
+          {
+            "name": "Spacing/2XL",
+            "value": "1.75rem",
+            "var": "size-11",
+            "rootAlias": "size-11"
+          },
+          {
+            "name": "Spacing/3XL",
+            "value": "2rem",
+            "var": "size-12",
+            "rootAlias": "size-12"
+          },
+          {
+            "name": "Spacing/4XL",
+            "value": "2.25rem",
+            "var": "size-13",
+            "rootAlias": "size-13"
+          },
+          {
+            "name": "Spacing/5XL",
+            "value": "2.5rem",
+            "var": "size-14",
+            "rootAlias": "size-14"
+          },
+          {
+            "name": "Spacing/6XL",
+            "value": "3rem",
+            "var": "size-16",
+            "rootAlias": "size-16"
+          },
+          {
+            "name": "Spacing/7XL",
+            "value": "3.25rem",
+            "var": "size-17",
+            "rootAlias": "size-17"
+          },
+          {
+            "name": "Spacing/8XL",
+            "value": "3.5rem",
+            "var": "size-18",
+            "rootAlias": "size-18"
+          },
+          {
+            "name": "Spacing/9XL",
+            "value": "4rem",
+            "var": "size-19",
+            "rootAlias": "size-19"
+          },
+          {
+            "name": "Spacing/10XL",
+            "value": "4.5rem",
+            "var": "size-20",
+            "rootAlias": "size-20"
+          },
+          {
+            "name": "Spacing/11XL",
+            "value": "5rem",
+            "var": "size-21",
+            "rootAlias": "size-21"
+          },
+          {
+            "name": "Spacing/12XL",
+            "value": "5.5rem",
+            "var": "size-22",
+            "rootAlias": "size-22"
+          },
+          {
+            "name": "Spacing/13XL",
+            "value": "6rem",
+            "var": "size-23",
+            "rootAlias": "size-23"
+          }
+        ],
+        "string": []
+      },
+      {
+        "mode": {
+          "name": "Compact",
+          "id": "6275:0"
+        },
+        "color": [],
+        "number": [
+          {
+            "name": "Spacing/2XS",
+            "value": "0.125rem",
+            "var": "size-2",
+            "rootAlias": "size-2"
+          },
+          {
+            "name": "Spacing/XS",
+            "value": "0.25rem",
+            "var": "size-3",
+            "rootAlias": "size-3"
+          },
+          {
+            "name": "Spacing/S",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "Spacing/M",
+            "value": "0.75rem",
+            "var": "size-6",
+            "rootAlias": "size-6"
+          },
+          {
+            "name": "Spacing/LG",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "Spacing/XL",
+            "value": "1.25rem",
+            "var": "size-9",
+            "rootAlias": "size-9"
+          },
+          {
+            "name": "Spacing/2XL",
+            "value": "1.5rem",
+            "var": "size-10",
+            "rootAlias": "size-10"
+          },
+          {
+            "name": "Spacing/3XL",
+            "value": "1.75rem",
+            "var": "size-11",
+            "rootAlias": "size-11"
+          },
+          {
+            "name": "Spacing/4XL",
+            "value": "2rem",
+            "var": "size-12",
+            "rootAlias": "size-12"
+          },
+          {
+            "name": "Spacing/5XL",
+            "value": "2.25rem",
+            "var": "size-13",
+            "rootAlias": "size-13"
+          },
+          {
+            "name": "Spacing/6XL",
+            "value": "2.5rem",
+            "var": "size-14",
+            "rootAlias": "size-14"
+          },
+          {
+            "name": "Spacing/7XL",
+            "value": "3rem",
+            "var": "size-16",
+            "rootAlias": "size-16"
+          },
+          {
+            "name": "Spacing/8XL",
+            "value": "3.25rem",
+            "var": "size-17",
+            "rootAlias": "size-17"
+          },
+          {
+            "name": "Spacing/9XL",
+            "value": "3.5rem",
+            "var": "size-18",
+            "rootAlias": "size-18"
+          },
+          {
+            "name": "Spacing/10XL",
+            "value": "4rem",
+            "var": "size-19",
+            "rootAlias": "size-19"
+          },
+          {
+            "name": "Spacing/11XL",
+            "value": "4.5rem",
+            "var": "size-20",
+            "rootAlias": "size-20"
+          },
+          {
+            "name": "Spacing/12XL",
+            "value": "5rem",
+            "var": "size-21",
+            "rootAlias": "size-21"
+          },
+          {
+            "name": "Spacing/13XL",
+            "value": "5.5rem",
+            "var": "size-22",
+            "rootAlias": "size-22"
+          }
+        ],
+        "string": []
+      },
+      {
+        "mode": {
+          "name": "Display",
+          "id": "6275:1"
+        },
+        "color": [],
+        "number": [
+          {
+            "name": "Spacing/2XS",
+            "value": "0.5rem",
+            "var": "size-5",
+            "rootAlias": "size-5"
+          },
+          {
+            "name": "Spacing/XS",
+            "value": "1rem",
+            "var": "size-8",
+            "rootAlias": "size-8"
+          },
+          {
+            "name": "Spacing/S",
+            "value": "1.5rem",
+            "var": "size-10",
+            "rootAlias": "size-10"
+          },
+          {
+            "name": "Spacing/M",
+            "value": "1.75rem",
+            "var": "size-11",
+            "rootAlias": "size-11"
+          },
+          {
+            "name": "Spacing/LG",
+            "value": "2.25rem",
+            "var": "size-13",
+            "rootAlias": "size-13"
+          },
+          {
+            "name": "Spacing/XL",
+            "value": "2.75rem",
+            "var": "size-15",
+            "rootAlias": "size-15"
+          },
+          {
+            "name": "Spacing/2XL",
+            "value": "3.5rem",
+            "var": "size-18",
+            "rootAlias": "size-18"
+          },
+          {
+            "name": "Spacing/3XL",
+            "value": "4rem",
+            "var": "size-19",
+            "rootAlias": "size-19"
+          },
+          {
+            "name": "Spacing/4XL",
+            "value": "4.5rem",
+            "var": "size-20",
+            "rootAlias": "size-20"
+          },
+          {
+            "name": "Spacing/5XL",
+            "value": "5rem",
+            "var": "size-21",
+            "rootAlias": "size-21"
+          },
+          {
+            "name": "Spacing/6XL",
+            "value": "6rem",
+            "var": "size-23",
+            "rootAlias": "size-23"
+          },
+          {
+            "name": "Spacing/7XL",
+            "value": "6.5rem",
+            "var": "size-24",
+            "rootAlias": "size-24"
+          },
+          {
+            "name": "Spacing/8XL",
+            "value": "7rem",
+            "var": "size-25",
+            "rootAlias": "size-25"
+          },
+          {
+            "name": "Spacing/9XL",
+            "value": "8rem",
+            "var": "size-27",
+            "rootAlias": "size-27"
+          },
+          {
+            "name": "Spacing/10XL",
+            "value": "8.5rem",
+            "var": "size-28",
+            "rootAlias": "size-28"
+          },
+          {
+            "name": "Spacing/11XL",
+            "value": "9rem",
+            "var": "size-29",
+            "rootAlias": "size-29"
+          },
+          {
+            "name": "Spacing/12XL",
+            "value": "9.5rem",
+            "var": "size-30",
+            "rootAlias": "size-30"
+          },
+          {
+            "name": "Spacing/13XL",
+            "value": "10rem",
+            "var": "size-31",
+            "rootAlias": "size-31"
+          }
+        ],
+        "string": []
+      }
+    ]
   }
 ]

@@ -37,7 +37,7 @@ Breakpoints: `base` (0px+) → `s` (600px+) → `m` (800px+) → `lg` (1200px+) 
 ## Gap values
 
 `gap`, `rowGap`, and `columnGap` accept spacing tokens from `@entur/tokens`:
-`'2xs' | 'xs' | 's' | 's-m' | 'm' | 'm-l' | 'l' | 'xl' | '2xl' ... '11xl' | 'none'`
+`'2xs' | 'xs' | 's' | 'm' | 'lg' | 'xl' | '2xl' ... '13xl' | 'none'`
 
 `gap` sets both row and column gap. `rowGap`/`columnGap` override it per axis. This fallback is resolved in JS — setting `gap` is equivalent to setting both `rowGap` and `columnGap` to the same value.
 

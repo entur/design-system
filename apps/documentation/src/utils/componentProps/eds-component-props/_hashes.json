@@ -352,7 +352,7 @@
     "outputs": ["FlexSpacer.json"]
   },
   "layout/src/beta/Grid/Grid.tsx": {
-    "hash": "c217a78eabf43e3a93dfc8fa5711b46c",
+    "hash": "6aee34dcc276fcdd9b803aa8a97d0c78",
     "outputs": ["Grid.json"]
   },
   "layout/src/beta/Grid/GridItem.tsx": {
@@ -364,11 +364,11 @@
     "outputs": ["LayoutProvider.json"]
   },
   "layout/src/beta/templates/Sidebar.tsx": {
-    "hash": "a340f8290dbd80ea379b2c965be064c7",
+    "hash": "d0b810a2805ef35c3375b19d44bec48e",
     "outputs": ["Template.Portal.Sidebar.json"]
   },
   "layout/src/beta/templates/portal/Portal.tsx": {
-    "hash": "fa06fac46dfa02569b2539ec29d6d36e",
+    "hash": "125ef2b72e9369e093b1bd26b855d986",
     "outputs": ["Template.Portal.json"]
   },
   "loader/src/BaseSkeleton.tsx": {
