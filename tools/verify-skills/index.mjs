@@ -383,6 +383,19 @@ function typecheckFences(fences, registry) {
     return [imports, decls].filter(Boolean).join('\n');
   };
 
+  // lib.dom declares `Text`, `Image` … as globals, so a sliced fence never reports them
+  // missing. Import its JSX tags that are @entur/* exports up front.
+  fences.forEach((f, idx) => {
+    if (f.keepImports) return;
+    for (const tag of jsxTagNames(writeFenceModule(f, idx))) {
+      const hit = registry.get(tag);
+      const local = new RegExp(
+        `\\b(const|let|var|function|class)\\s+${tag}\\b`,
+      );
+      if (hit && !local.test(f.code)) imported[idx].set(tag, hit.specifier);
+    }
+  });
+
   // Resolve unknown identifiers iteratively: real @entur/* exports become imports,
   // everything else becomes `declare const x: any` so genuine type errors surface.
   let remaining = [];
