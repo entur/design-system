@@ -16,6 +16,10 @@ export type NumberedListOwnProps = TypographySpacingProps & {
   children?: React.ReactNode;
   /** List type (1, A, a, I, i) */
   type?: '1' | 'A' | 'a' | 'I' | 'i';
+  /** `steps` viser numrene i merker, for steg-for-steg-instruksjoner
+   * @default 'default'
+   */
+  variant?: 'default' | 'steps';
 };
 
 export type NumberedListProps<
@@ -37,6 +41,7 @@ export const NumberedList = React.forwardRef(
   <C extends React.ElementType = typeof defaultElement>(
     {
       type = '1',
+      variant = 'default',
       className,
       spacing,
       style,
@@ -54,9 +59,12 @@ export const NumberedList = React.forwardRef(
         className={classNames(
           'eds-text--numbered-list',
           `eds-text--numbered-list--type-${type}`,
+          { 'eds-text--steps': variant === 'steps' },
           className,
         )}
         type={type}
+        // Safari drops list semantics when the list has no markers
+        role={variant === 'steps' ? 'list' : undefined}
         style={getSpacingStyle(spacing, style)}
         {...rest}
       >

@@ -43,6 +43,8 @@ export const UnorderedList = React.forwardRef(
         ref={ref}
         className={classNames('eds-text--unordered-list', className)}
         style={getSpacingStyle(spacing, style)}
+        // Safari drops list semantics when the list has no markers
+        role="list"
         {...rest}
       >
         {children}
