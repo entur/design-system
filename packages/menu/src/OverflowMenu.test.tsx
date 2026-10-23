@@ -184,14 +184,15 @@ test('disabled actions and links cannot be selected with the mouse', async () =>
   expect(screen.getByRole('menu')).toBeVisible();
 });
 
-test('OverflowMenu uses fixed positioning', () => {
-  const { getByTestId, getByRole } = render(
+test('OverflowMenu uses fixed positioning', async () => {
+  const user = userEvent.setup();
+  render(
     <OverflowMenu data-testid="button">
       <OverflowMenuItem>Info</OverflowMenuItem>
     </OverflowMenu>,
   );
 
-  simulateMouseClick(getByTestId('button'));
+  await user.click(screen.getByTestId('button'));
 
-  expect(getByRole('menu')).toHaveStyle({ position: 'fixed' });
+  expect(screen.getByRole('menu')).toHaveStyle({ position: 'fixed' });
 });
