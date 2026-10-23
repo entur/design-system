@@ -570,7 +570,10 @@ export const MultiSelect = React.forwardRef(
         labelTooltip={labelTooltip}
         onClick={(e: React.MouseEvent<HTMLElement>) => {
           if (e.target === e.currentTarget) inputProps?.onClick?.(e);
-          onClick?.(e);
+          const clickedSelectedItem = (e.target as HTMLElement).closest(
+            '.eds-dropdown__selected-item-tag',
+          );
+          if (!clickedSelectedItem) onClick?.(e);
         }}
         onKeyDown={onKeyDown}
         readOnly={readOnly}

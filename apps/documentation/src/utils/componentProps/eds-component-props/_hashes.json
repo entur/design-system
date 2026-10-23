@@ -164,7 +164,7 @@
     "outputs": ["Dropdown.json"]
   },
   "dropdown/src/MultiSelect.tsx": {
-    "hash": "0c013ddf6e1fc3a54d44709bc5bcf4b9",
+    "hash": "8872f7f4fcd130cef6d689883c4e20a7",
     "outputs": ["MultiSelect.json"]
   },
   "dropdown/src/NativeDropdown.tsx": {

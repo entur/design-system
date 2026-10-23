@@ -1104,6 +1104,24 @@ describe('MultiSelect', () => {
       expect(notPrevented).toBe(false);
     });
 
+    test('does not call onClick when a selected item is clicked', async () => {
+      const user = userEvent.setup();
+      const onClick = jest.fn();
+      render(
+        <MultiSelect
+          label="test label"
+          items={testItems}
+          selectedItems={normalizedTestItems.slice(0, 3)}
+          onChange={jest.fn()}
+          onClick={onClick}
+        />,
+      );
+
+      await user.click(screen.getByText('Bergen'));
+
+      expect(onClick).not.toHaveBeenCalled();
+    });
+
     describe('when more items are selected than maxChips', () => {
       const SummaryMultiSelect = () => {
         const [selectedItems, setSelectedItems] = React.useState(
