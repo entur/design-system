@@ -15731,7 +15731,7 @@
       {
         "mode": {
           "name": "Standard",
-          "id": "6155:1"
+          "id": "6274:0"
         },
         "color": [],
         "number": [
@@ -15843,12 +15843,13 @@
             "var": "size-23",
             "rootAlias": "size-23"
           }
-        ]
+        ],
+        "string": []
       },
       {
         "mode": {
           "name": "Compact",
-          "id": "6155:0"
+          "id": "6275:0"
         },
         "color": [],
         "number": [
@@ -15960,12 +15961,13 @@
             "var": "size-22",
             "rootAlias": "size-22"
           }
-        ]
+        ],
+        "string": []
       },
       {
         "mode": {
           "name": "Display",
-          "id": "6155:2"
+          "id": "6275:1"
         },
         "color": [],
         "number": [
@@ -16077,7 +16079,8 @@
             "var": "size-31",
             "rootAlias": "size-31"
           }
-        ]
+        ],
+        "string": []
       }
     ]
   }
