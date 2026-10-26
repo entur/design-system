@@ -203,7 +203,7 @@
         background-size: 0% 0.125em, 100% 0.0625em;
 
         @media (prefers-reduced-motion: no-preference) {
-          transition: background-size 0.3s ease-in;
+          transition: background-size 0.3s ease-out;
         }
 
         // Forced colors remove background images, so fall back to a real underline
