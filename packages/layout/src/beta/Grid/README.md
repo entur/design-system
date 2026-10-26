@@ -31,7 +31,7 @@ All props accept `ResponsiveValue<T>`:
 
 ```tsx
 // Flat — same at every breakpoint
-<Grid gap="l" />
+<Grid gap="2xl" />
 
 // Responsive — base is required, all others optional and inherit from previous
 <GridItem colSpan={{ base: 12, m: 6 }} />

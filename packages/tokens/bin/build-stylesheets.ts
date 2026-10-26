@@ -139,6 +139,34 @@ try {
   });
   console.info('🎉 Created stylesheets for', colorFiles.length, 'color sets!');
 
+  // The spacing scale is shared by all packages, so it gets its own stylesheet
+  const componentSpacingCategory = componentData.find(
+    (category: any) => category.name === 'Component spacing',
+  );
+  if (!componentSpacingCategory) {
+    throw new Error('component.json is missing the Component spacing category');
+  }
+  const spacingTokens = createVariableSet(
+    JSON.stringify([componentSpacingCategory]),
+    'number',
+  );
+  (['css', 'scss'] as const).forEach(extension => {
+    const data = createVariablesFileData({
+      variableSet: spacingTokens,
+      keyType: 'css',
+      valueType: extension,
+      name: 'spacing',
+      withColorMode: true,
+      importFileNames: ['primitive'],
+    });
+    outputFileData({
+      fileData: data[0].outputString,
+      outputFileName: data[0].outputFileName,
+      outputPath: path.resolve(__dirname, '../dist'),
+    });
+  });
+  console.info('🎉 Created the spacing stylesheet!');
+
   const allPackages = getAllPackageNames();
 
   // Combine colors and sizes into a single componentVariables.scss file
