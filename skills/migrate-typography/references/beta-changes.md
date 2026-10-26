@@ -153,6 +153,8 @@ No API change.
 
 The styles live in `@layer components.primitives`, so unlayered project CSS wins without extra specificity. Overrides that only reset margins can go.
 
+This also goes for global element rules that never targeted typography: `* { margin: 0 }` removes every gap in `TextContainer`, and `a`, `p`, `h1`–`h6`, list and `code` rules restyle the components. Move resets into `@layer core.reset` and element styles into `@layer core.base`, with the layer order declared first in the app's first stylesheet. The recipe and the symptoms are in [the CSS layers guide](https://raw.githubusercontent.com/entur/design-system/main/skills/entur-web-development/references/css-layers.md), section "The beta typography and your global CSS".
+
 Also watch for:
 
 - **`background` on links.** `Link` draws its underline as a background image, so a reset like `background: none` on a link, or on a button rendered as one, removes it. Reset `background-color` only.

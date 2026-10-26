@@ -19,6 +19,47 @@ Three consequences to design around:
 2. **You can move that CSS into a layer yourself** with `layer()` on the import — those files have no internal `@layer`, so wrapping them is safe and gives you full control. The two typography stylesheets and `@entur/utils/styles/layers` are the exceptions: they carry `@layer` themselves, so never wrap them.
 3. **On the stable typography stylesheet, you cannot beat its rules from a layer.** An override of `.eds-paragraph` or `.eds-preformatted-text` placed in `app` loses to typography's own unlayered rule, no matter how high `app` sits — override those unlayered, with equal-or-higher specificity (see rule 3 below). On `@entur/typography/beta/styles` this does not apply: its rules live in `core.reset`, `core.base` and `components.primitives`, so `app` wins as expected.
 
+## The beta typography and your global CSS
+
+This applies to every app that imports `@entur/typography/beta/styles`, also apps that use no layers themselves. The beta styles sit in layers, so an unlayered element rule in your app beats them, even though a class normally beats an element selector:
+
+| Global rule in your app                            | What you see                                                      |
+| -------------------------------------------------- | ----------------------------------------------------------------- |
+| `* { margin: 0 }` (common in modern resets)        | No space between texts in `TextContainer`, `spacing` does nothing |
+| `p, ul { margin-bottom: 1em }`                     | Gaps in `TextContainer` don't follow the rhythm                   |
+| `a { text-decoration: underline; color: … }`       | `Link` gets a double underline and the wrong colour               |
+| `h2 { font-size: 2rem }`                           | `Heading as="h2"` ignores `variant` and `size`                    |
+| `ul { padding-left: … }`, `li { … }`, `code { … }` | Lists and code text look off                                      |
+
+Inherited styles on `html` and `body` (font, colour, line height) are fine, since the components set their own.
+
+Fix: move these rules into the layers below the components. Start your first stylesheet with the order lines, so the layers sort correctly whichever file loads first:
+
+```css
+/* The first CSS your app loads, e.g. global.css */
+@layer core, third-party, components, utilities, app;
+@layer core.reset, core.tokens, core.base;
+@layer third-party.imports, third-party.overrides;
+@layer components.primitives, components.composites, components.overrides;
+
+@layer core.reset {
+  * {
+    margin: 0;
+  }
+}
+
+@layer core.base {
+  a {
+    color: #181c56;
+  }
+  h2 {
+    font-size: 2rem;
+  }
+}
+```
+
+Your reset then still beats modern-normalize, your element styles still beat the reset, and the typography components beat both. Without the order lines first, a lone `@layer core.base { … }` or `@layer app { … }` that loads before the Entur CSS ends up below the reset or the components, and loses. In Sass, `@use '@entur/utils/styles/layers';` gives the same lines. Global styles from CSS-in-JS libraries, such as styled-components and Emotion, follow the same rule: wrap them in the layer.
+
 ## Recipe: put everything in the layer order
 
 Declare the order first, import Entur's component CSS into `components.primitives`, and keep your own styles in `app`:
@@ -71,16 +112,17 @@ Lowest to highest priority:
 
 Where to put your own CSS:
 
-| You have                                                | Put it in                                                    |
-| ------------------------------------------------------- | ------------------------------------------------------------ |
-| A third-party reset (Tailwind preflight, normalize.css) | `core.reset`                                                 |
-| Vendor CSS you need to tame                             | `third-party.imports`, your fixes in `third-party.overrides` |
-| Your own components built on `@entur/*`                 | `components.composites`                                      |
-| Overrides of an `@entur/*` component                    | `components.overrides`                                       |
-| Utility classes                                         | `utilities`                                                  |
-| Page and app-level styles                               | `app`                                                        |
-| Overrides of a stable `@entur/typography` style         | nothing — keep it unlayered, see rule 3                      |
-| Overrides of an `@entur/typography/beta` style          | `components.overrides` or `app`                              |
+| You have                                                                                 | Put it in                                                    |
+| ---------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
+| A reset, your own (`* { margin: 0 }`) or third-party (Tailwind preflight, normalize.css) | `core.reset`                                                 |
+| Global element styles (`a`, `p`, `h1`–`h6`, lists)                                       | `core.base`                                                  |
+| Vendor CSS you need to tame                                                              | `third-party.imports`, your fixes in `third-party.overrides` |
+| Your own components built on `@entur/*`                                                  | `components.composites`                                      |
+| Overrides of an `@entur/*` component                                                     | `components.overrides`                                       |
+| Utility classes                                                                          | `utilities`                                                  |
+| Page and app-level styles                                                                | `app`                                                        |
+| Overrides of a stable `@entur/typography` style                                          | nothing — keep it unlayered, see rule 3                      |
+| Overrides of an `@entur/typography/beta` style                                           | `components.overrides` or `app`                              |
 
 ## Rules
 
