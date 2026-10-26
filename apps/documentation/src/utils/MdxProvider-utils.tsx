@@ -21,6 +21,7 @@ import {
   ListItem,
   NumberedList,
   Text,
+  TextContainer,
   UnorderedList,
 } from '@entur/typography/beta';
 import { HeadingAnchor } from '@components/sanity/HeadingAnchor';
@@ -99,6 +100,7 @@ const preToCodeBlock = (preProps: any) => {
 // components are used in the MDXProvider in the DocLayout file.
 // oxlint-disable eslint-plugin-jsx-a11y(heading-has-content)
 const components = {
+  wrapper: (props: any) => <TextContainer {...props} />,
   // DS components - using new beta components
   h1: (props: any) => <Heading as="h1" variant="title-1" {...props} />,
   h2: ({ id, children }: any) => (
@@ -124,14 +126,13 @@ const components = {
   h6: (props: any) => <Heading as="h6" variant="section-2" {...props} />,
   p: (props: any) => <Text variant="paragraph" {...props} />,
   a: (props: any) => <Link {...props} />,
-  strong: (props: any) => <Text as="strong" weight="semibold" {...props} />,
-  inlineCode: (props: any) => <Text as="code" variant="code" {...props} />,
+  strong: (props: any) => <Text as="strong" weight="bold" {...props} />,
   ul: (props: any) => <UnorderedList {...props} />,
   li: (props: any) => <ListItem {...props} />,
   ol: (props: any) => <NumberedList {...props} />,
   // Individual component mappings
   Paragraph: (props: any) => <Text variant="paragraph" {...props} />,
-  StrongText: (props: any) => <Text as="strong" weight="semibold" {...props} />,
+  StrongText: (props: any) => <Text as="strong" weight="bold" {...props} />,
   EmphasizedText: (props: any) => <Text variant="emphasized" {...props} />,
   UnorderedList: (props: any) => <UnorderedList {...props} />,
   ListItem: (props: any) => <ListItem {...props} />,
@@ -191,7 +192,7 @@ const components = {
   TextField,
   TextArea,
   CopyableText,
-  CodeText: (props: any) => <Text as="code" variant="code-text" {...props} />,
+  CodeText: (props: any) => <Text as="code" variant="code" {...props} />,
   // Custom components
   Playground,
   Props,
@@ -223,14 +224,14 @@ const components = {
         );
       }
     }
-    return <Text as="pre" variant="preformatted-text" {...preProps} />;
+    return <Text as="pre" variant="preformatted" {...preProps} />;
   },
   code: (props: any) => {
     const { className } = props;
     if (className) {
       return <code {...props} />;
     }
-    return <Text as="code" variant="code-text" {...props} />;
+    return <Text as="code" variant="code" {...props} />;
   },
   CodeBlock,
 };

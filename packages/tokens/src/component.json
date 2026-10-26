@@ -6418,9 +6418,9 @@
           },
           {
             "name": "Components/typography/Code text/Contrast/Fill",
-            "value": "#f6f6f9",
-            "var": "Fill/Background/Tint/Light",
-            "rootAlias": "Blue/10"
+            "value": "#292b6a",
+            "var": "Fill/Background/Contrast/LightAlt-2",
+            "rootAlias": "Blue/100"
           },
           {
             "name": "Components/typography/Code text/Contrast/Text",
@@ -6442,9 +6442,9 @@
           },
           {
             "name": "Components/typography/Code text/Standard/Fill",
-            "value": "#f6f6f9",
-            "var": "Fill/Background/Tint/Light",
-            "rootAlias": "Blue/10"
+            "value": "#eaeaf1",
+            "var": "Fill/Selected/Default/Tint",
+            "rootAlias": "Blue/20"
           },
           {
             "name": "Components/typography/Code text/Standard/Text",
@@ -13118,9 +13118,9 @@
           },
           {
             "name": "Components/typography/Code text/Contrast/Fill",
-            "value": "#393a49",
-            "var": "Fill/Background/Overlay/Solid",
-            "rootAlias": "Ebony/80"
+            "value": "#212233",
+            "var": "Fill/Background/Contrast/Dark",
+            "rootAlias": "Ebony/90"
           },
           {
             "name": "Components/typography/Code text/Contrast/Text",
@@ -13142,9 +13142,9 @@
           },
           {
             "name": "Components/typography/Code text/Standard/Fill",
-            "value": "#393a49",
-            "var": "Fill/Background/Overlay/Solid",
-            "rootAlias": "Ebony/80"
+            "value": "#212233",
+            "var": "Fill/Background/Contrast/Dark",
+            "rootAlias": "Ebony/90"
           },
           {
             "name": "Components/typography/Code text/Standard/Text",

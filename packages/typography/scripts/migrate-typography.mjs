@@ -21,8 +21,8 @@
  *     * <SubParagraph> becomes <Text variant="subparagraph">
  *     * <Label> becomes <Text variant="label"> (or <Text as="label" variant="label"> if htmlFor prop exists)
  *     * <EmphasizedText> becomes <Text variant="emphasized">
- *     * <CodeText> becomes <Text variant="code-text">
- *     * <PreformattedText> becomes <Text variant="preformatted-text">
+ *     * <CodeText> becomes <Text variant="code">
+ *     * <PreformattedText> becomes <Text variant="preformatted">
  *     * <Link> becomes <Link> (from @entur/typography/beta)
  *     * <Blockquote> becomes <Blockquote> (from @entur/typography/beta)
  *     * <BlockquoteFooter> becomes <BlockquoteFooter> (from @entur/typography/beta)
@@ -102,7 +102,6 @@ const PROBLEMATIC_PATTERNS = {
   // Semantic HTML mismatches
   semanticMismatch: /<Heading[^>]*as="([^"]*)"[^>]*variant="([^"]*)"/g,
 };
-
 
 // =============================================================================
 // 🎯 MIGRATION FOLDERS CONFIGURATION
@@ -222,7 +221,6 @@ function analyzeFile(filePath, content) {
   return analysis;
 }
 
-
 let ALLOWED_DIRECTORIES = process.env.TYPOGRAPHY_MIGRATION_DIRS
   ? process.env.TYPOGRAPHY_MIGRATION_DIRS.split(',')
   : MIGRATION_FOLDERS;
@@ -285,8 +283,8 @@ const COMPONENT_MAPPING = {
   SubParagraph: { component: 'Text', variant: 'subparagraph' },
   Label: { component: 'Text', variant: 'label' },
   EmphasizedText: { component: 'Text', variant: 'emphasized' },
-  CodeText: { component: 'Text', variant: 'code-text' },
-  PreformattedText: { component: 'Text', variant: 'preformatted-text' },
+  CodeText: { component: 'Text', variant: 'code' },
+  PreformattedText: { component: 'Text', variant: 'preformatted' },
   Link: { component: 'Link' }, // Convert Link to beta Link
   Blockquote: { component: 'Blockquote' }, // Convert Blockquote to beta Blockquote
   BlockquoteFooter: { component: 'BlockquoteFooter' }, // Convert BlockquoteFooter to beta BlockquoteFooter
@@ -339,7 +337,6 @@ const SPACING_MAPPING = {
   'xs2-top': 'xs2-top',
   'xs2-bottom': 'xs2-bottom',
 };
-
 
 // Parse JSX props more robustly
 function parseJSXProps(propsString) {

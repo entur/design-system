@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Tag } from '@entur/layout';
-import { CodeText, Paragraph } from '@entur/typography';
+import { Paragraph } from '@entur/typography';
+import { Text } from '@entur/typography/beta';
 import {
   DataCell,
   HeaderCell,
@@ -110,7 +111,7 @@ const Props: React.FC<PropsProps> = ({ componentName, npmPackage }) => {
         />
       )}
       {Object.keys(componentProps).length > 0 ? (
-        <Table fixed spacing="middle">
+        <Table fixed spacing="middle" className="props-table">
           <TableHead>
             <TableRow>
               <HeaderCell>Navn</HeaderCell>
@@ -129,9 +130,9 @@ const Props: React.FC<PropsProps> = ({ componentName, npmPackage }) => {
                 return (
                   <TableRow key={propName}>
                     <DataCell>
-                      <CodeText>{`${propName}${
+                      <Text variant="code">{`${propName}${
                         details.required ? '' : '?'
-                      }`}</CodeText>
+                      }`}</Text>
                       {isDeprecated && (
                         <Tag
                           size="small"
@@ -143,18 +144,18 @@ const Props: React.FC<PropsProps> = ({ componentName, npmPackage }) => {
                       )}
                     </DataCell>
                     <DataCell>
-                      <CodeText className="props-table__type">
+                      <Text variant="code">
                         {propName === 'as'
                           ? 'string | React.ElementType'
                           : formatPropType(details.type.name)}
-                      </CodeText>
+                      </Text>
                     </DataCell>
                     {hasAnyDefaultValues && (
                       <DataCell>
                         {details.defaultValue ? (
-                          <CodeText>
+                          <Text variant="code">
                             {String(details.defaultValue.value)}
-                          </CodeText>
+                          </Text>
                         ) : null}
                       </DataCell>
                     )}

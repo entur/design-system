@@ -1,0 +1,182 @@
+// Beta typography running text - experimental features
+// These styles may have breaking changes in future releases
+
+@use 'sass:list';
+
+// Space after each kind of text in a TextContainer. One row per token, with the elements,
+// variants and sizes that share it. An hgroup takes the space after of the heading in it.
+//   token: (elements, variants, sizes)
+// prettier-ignore
+$heading-after: (
+  'heading-xl': (h1 h2, 'title-1' 'title-2', '2xl' 'xl'),
+  'heading-lg': (h3,    'subtitle-1',        'lg'),
+  'heading-m':  (h4,    'subtitle-2',        'm'),
+  'heading-s':  (h5,    'section-1',         's'),
+  'heading-xs': (h6,    'section-2',         'xs'),
+);
+
+// Text uses its line height as the space after, labels and the overline their paragraph spacing
+// prettier-ignore
+$text-after: (
+  'line-height-body-xl':       ((),                    'leading',                                                'xl'),
+  'line-height-body-lg':       (ul ol blockquote pre, 'quote' 'unordered-list' 'numbered-list' 'preformatted', 'lg'),
+  'line-height-body-m':        ((),                    'paragraph',                                              'm'),
+  'line-height-body-s':        ((),                    'subparagraph',                                           's'),
+  'line-height-body-xs':       ((),                    'caption',                                                'xs'),
+  'paragraph-spacing-body-xs': ((),                    'label' 'sublabel',                                       ()),
+  'paragraph-spacing-body-m':  ((),                    'overline',                                               ()),
+);
+
+// .eds-text--a, .eds-text--b … for a list of names
+@function classes($block, $names) {
+  $selectors: ();
+
+  @each $name in $names {
+    $selectors: list.append($selectors, '.#{$block}--#{$name}', $separator: comma);
+  }
+
+  @return $selectors;
+}
+
+// Set on a child, read by that child only: inheriting would leak into nested containers
+@property --eds-text-container-after {
+  syntax: '*';
+  inherits: false;
+}
+
+@property --eds-text-container-before {
+  syntax: '*';
+  inherits: false;
+}
+
+@layer components.primitives {
+  // Block flow, so inline elements, floats and text from a CMS behave as usual.
+  // Each gap is one top margin: the space after the previous element plus the space before this one.
+  // Only one margin meets another, so nothing collapses, and the gaps add up like auto layout.
+  .eds-text-container {
+    display: flow-root;
+
+    // Body text for what isn't a text component: tables, loose text, CMS HTML
+    color: var(--components-typography-basetext-standard-text-accent);
+    font-size: var(--font-size-body-m);
+    font-weight: var(--font-weight-body);
+    line-height: var(--font-line-height-body-m);
+
+    :where(.eds-contrast) & {
+      color: var(--components-typography-basetext-contrast-text-accent);
+    }
+  }
+
+  // An hgroup is spaced as one heading, and its own children follow the same rhythm
+  .eds-text-container,
+  .eds-text-container > :where(hgroup) {
+    > * {
+      margin-block: 0 var(--eds-text-spacing-bottom, 0);
+    }
+
+    > * + * {
+      --eds-text-container-gap: calc(
+        var(--eds-text-container-after, var(--font-line-height-body-m)) + var(--eds-text-spacing-top, var(--eds-text-container-before, 0px))
+      );
+
+      margin-block-start: var(--eds-text-container-gap);
+    }
+
+    // Browsers indent figure and blockquote, which a quote with its source sits in
+    > :where(figure, blockquote) {
+      margin-inline: 0;
+    }
+
+    // A caption sits close to what it describes, above or below
+    > :where(figure) > :where(figcaption:not(:first-child)) {
+      margin-block-start: var(--font-paragraph-spacing-body-xs);
+    }
+
+    > :where(figure) > :where(figcaption:first-child) {
+      margin-block-end: var(--font-paragraph-spacing-body-xs);
+    }
+
+    > :where(:first-child, [hidden]:first-child + *, [aria-hidden='true']:first-child + *) {
+      margin-block-start: var(--eds-text-spacing-top, 0);
+    }
+
+    // Space before a heading, but not right after another heading or the overline above it
+    > :where(:not(.eds-heading, h1, h2, h3, h4, h5, h6, hgroup, .eds-text--overline)) + :where(.eds-heading, h1, h2, h3, h4, h5, h6, hgroup) {
+      --eds-text-container-before: var(--font-paragraph-spacing-heading-lg);
+    }
+
+    // Space after, set on the next element. Elements first, then variants, then sizes,
+    // so on the same element a class wins over the element and a size over its variant.
+    @each $token, $row in $heading-after {
+      $elements: list.join((), list.nth($row, 1), $separator: comma);
+
+      > :where(#{$elements}, hgroup:has(> :is(#{$elements}))) + * {
+        --eds-text-container-after: var(--font-paragraph-spacing-#{$token});
+      }
+    }
+
+    @each $token, $row in $text-after {
+      $elements: list.join((), list.nth($row, 1), $separator: comma);
+
+      @if list.length($elements) > 0 {
+        > :where(#{$elements}) + * {
+          --eds-text-container-after: var(--font-#{$token});
+        }
+      }
+    }
+
+    @each $token, $row in $text-after {
+      > :where(#{classes('eds-text', list.nth($row, 2))}) + * {
+        --eds-text-container-after: var(--font-#{$token});
+      }
+    }
+
+    // A source below a quote doesn't change the space after it
+    > :where(figure:has(> blockquote, > .eds-text--quote)) + * {
+      --eds-text-container-after: var(--font-line-height-body-lg);
+    }
+
+    @each $column in (2, 3) {
+      @each $token, $row in $heading-after {
+        $classes: classes('eds-heading', list.nth($row, $column));
+
+        > :where(#{$classes}, hgroup:has(> :is(#{$classes}))) + * {
+          --eds-text-container-after: var(--font-paragraph-spacing-#{$token});
+        }
+      }
+    }
+
+    @each $token, $row in $text-after {
+      $sizes: list.nth($row, 3);
+
+      @if list.length($sizes) > 0 {
+        > :where(#{classes('eds-text', $sizes)}) + * {
+          --eds-text-container-after: var(--font-#{$token});
+        }
+      }
+    }
+
+    // A caption directly below an image or table describes it, as in a figure
+    > :where(img, picture, video, svg, canvas, iframe, table, [role='img']) + :where(.eds-text--caption) {
+      --eds-text-container-after: var(--font-paragraph-spacing-body-xs);
+    }
+
+    // A paragraph right before a list introduces it
+    > :where(.eds-text--paragraph, .eds-text--subparagraph, p:not(.eds-text)) + :where(ul, ol, .eds-text--unordered-list, .eds-text--numbered-list) {
+      --eds-text-container-after: var(--font-paragraph-spacing-body-xs);
+    }
+
+    // A spacing bottom on the previous element replaces its space after, so this must come last.
+    // With spacing on both sides of a gap, the two margins meet and the larger one wins.
+    > :where([style*='--eds-text-spacing-bottom']) + * {
+      --eds-text-container-after: 0px;
+    }
+
+    // The heading's extra space above would merge with that margin and get lost, so it is added to the margin
+    > :where([style*='--eds-text-spacing-bottom']:not(.eds-heading, h1, h2, h3, h4, h5, h6, hgroup, .eds-text--overline)):has(
+        + :where(:is(.eds-heading, h1, h2, h3, h4, h5, h6, hgroup):not([style*='--eds-text-spacing-top']))
+      ) {
+      margin-block-end: calc(var(--eds-text-spacing-bottom) + var(--font-paragraph-spacing-heading-lg));
+    }
+  }
+}

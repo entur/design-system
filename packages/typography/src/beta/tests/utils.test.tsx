@@ -1,6 +1,6 @@
 import {
   getHeadingVariantFromSemanticType,
-  getSpacingClasses,
+  getSpacingStyle,
 } from '../utils/utils';
 
 describe('Utility Functions', () => {
@@ -32,46 +32,47 @@ describe('Utility Functions', () => {
     });
   });
 
-  describe('getSpacingClasses', () => {
-    test('returns correct spacing classes for different values', () => {
-      const lgResult = getSpacingClasses('lg', 'eds-heading');
-      expect(lgResult).toBe('eds-heading--spacing-lg');
-
-      const mdTopResult = getSpacingClasses('md-top', 'eds-text');
-      expect(mdTopResult).toBe('eds-text--spacing-md-top');
-    });
-
-    test('returns empty string when spacing is not provided', () => {
-      expect(getSpacingClasses(undefined, 'eds-heading')).toBe('');
-    });
-
-    test('handles all spacing variants', () => {
-      const spacingVariants = [
-        'none',
-        'xs2',
-        'xs2-top',
-        'xs2-bottom',
-        'xs',
-        'xs-top',
-        'xs-bottom',
-        'sm',
-        'sm-top',
-        'sm-bottom',
-        'md',
-        'md-top',
-        'md-bottom',
-        'lg',
-        'lg-top',
-        'lg-bottom',
-        'xl',
-        'xl-top',
-        'xl-bottom',
-      ];
-
-      spacingVariants.forEach(spacing => {
-        const result = getSpacingClasses(spacing as any, 'eds-test');
-        expect(result).toBe(`eds-test--spacing-${spacing}`);
+  describe('getSpacingStyle', () => {
+    test('sets top and bottom from a single value', () => {
+      expect(getSpacingStyle('lg')).toEqual({
+        '--eds-text-spacing-top': 'var(--spacing-lg)',
+        '--eds-text-spacing-bottom': 'var(--spacing-lg)',
       });
+    });
+
+    test('sets top and bottom separately', () => {
+      expect(getSpacingStyle({ top: 's', bottom: '2xl' })).toEqual({
+        '--eds-text-spacing-top': 'var(--spacing-s)',
+        '--eds-text-spacing-bottom': 'var(--spacing-2xl)',
+      });
+      expect(getSpacingStyle({ bottom: 'none' })).toEqual({
+        '--eds-text-spacing-bottom': '0px',
+      });
+    });
+
+    test('keeps the style prop, which wins', () => {
+      expect(
+        getSpacingStyle('m', {
+          color: 'red',
+          '--eds-text-spacing-top': '1px',
+        } as React.CSSProperties),
+      ).toEqual({
+        '--eds-text-spacing-top': '1px',
+        '--eds-text-spacing-bottom': 'var(--spacing-m)',
+        color: 'red',
+      });
+      const style = { color: 'red' };
+      expect(getSpacingStyle(undefined, style)).toBe(style);
+    });
+
+    test('ignores values from the old scale and warns once', () => {
+      const warn = jest.spyOn(console, 'warn').mockImplementation(() => {});
+      expect(getSpacingStyle('md-bottom' as any)).toEqual({});
+      getSpacingStyle('md-bottom' as any);
+      expect(
+        warn.mock.calls.filter(([msg]) => String(msg).includes('"md-bottom"')),
+      ).toHaveLength(1);
+      warn.mockRestore();
     });
   });
 });

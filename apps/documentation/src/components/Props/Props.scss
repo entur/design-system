@@ -9,8 +9,18 @@
   }
 }
 
-.props-table__type {
-  word-break: break-all;
+.props-table {
+  :where(th:nth-child(1)) {
+    width: 20%;
+  }
+
+  :where(th:nth-child(2)) {
+    width: 28%;
+  }
+
+  :where(th:nth-child(3)) {
+    width: 16%;
+  }
 }
 
 .props__deprecated {

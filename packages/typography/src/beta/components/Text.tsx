@@ -6,66 +6,92 @@ import { PolymorphicComponentProps } from '@entur/utils';
 
 import {
   getSemanticTypeFromTextVariant,
-  getSpacingClasses,
+  getSpacingStyle,
 } from '../utils/utils';
 
-import {
-  TypographySize,
-  TypographySpacing,
-  TypographyTextVariant,
-  TypographyWeight,
-} from '../types';
+import { TypographySpacingProps } from '../types';
 
 import './text.scss';
 
-type TextBaseProps = {
+/**
+ * @beta Experimental component - may have breaking changes in future releases
+ */
+export type TextOwnProps = TypographySpacingProps & {
   /** Visuell tekststørrelse (typografi-token) */
-  size?: TypographySize;
-  /** Fontvekt */
-  weight?: TypographyWeight;
+  size?: 'xs' | 's' | 'm' | 'lg' | 'xl';
+  /** Fontvekt: `medium` (500) eller `bold` (600) */
+  weight?: 'medium' | 'bold';
   /** Variant (kan brukes til spesielle typer tekst som for eksempel caption) */
-  variant?: TypographyTextVariant;
+  variant?:
+    | 'leading'
+    | 'quote'
+    | 'paragraph'
+    | 'subparagraph'
+    | 'caption'
+    | 'label'
+    | 'sublabel'
+    | 'overline'
+    | 'emphasized'
+    | 'code'
+    | 'preformatted';
   /** Innhold */
-  children: React.ReactNode;
-  /** Spacing around the component */
-  spacing?: TypographySpacing;
+  children?: React.ReactNode;
+  /** Fjerner luften over versalhøyden og under grunnlinjen, så teksten flukter med elementer ved siden av. Har ingen effekt i nettlesere uten støtte for `text-box`. */
+  trim?: boolean;
   /** Ekstra klassenavn */
   className?: string;
 };
 
-export type TextProps<C extends React.ElementType> = PolymorphicComponentProps<
-  C,
-  TextBaseProps
->;
+export type TypographyTextVariant = NonNullable<TextOwnProps['variant']>;
+export type TypographyTextSize = NonNullable<TextOwnProps['size']>;
+export type TypographyWeight = NonNullable<TextOwnProps['weight']>;
 
-const TypographyText = <C extends React.ElementType = 'p'>({
-  children,
-  as,
-  size,
-  variant,
-  weight,
-  spacing,
-  className,
-  ...rest
-}: TextProps<C>) => {
-  const BodyElement = as || getSemanticTypeFromTextVariant(variant);
+export type TextProps<C extends React.ElementType = 'p'> =
+  PolymorphicComponentProps<C, TextOwnProps>;
 
-  return (
-    <BodyElement
-      className={classNames(
-        'eds-text',
-        variant && `eds-text--${variant}`,
-        size && `eds-text--${size}`,
-        weight && `eds-text--weight-${weight}`,
-        getSpacingClasses(spacing, 'eds-text'),
-        className,
-      )}
-      {...rest}
-    >
-      {children}
-    </BodyElement>
-  );
-};
+export type TextComponent = (<C extends React.ElementType = 'p'>(
+  props: TextProps<C> & { ref?: React.Ref<Element> },
+) => React.ReactElement | null) & { displayName?: string };
 
-// Export as Text to avoid DOM conflicts
-export const Text = TypographyText;
+/**
+ * @beta Experimental component - may have breaking changes in future releases
+ */
+export const Text = React.forwardRef(
+  <C extends React.ElementType = 'p'>(
+    {
+      children,
+      as,
+      size,
+      variant,
+      weight,
+      spacing,
+      style,
+      trim,
+      className,
+      ...rest
+    }: TextProps<C>,
+    ref?: React.Ref<Element>,
+  ): JSX.Element => {
+    const BodyElement: React.ElementType =
+      as || getSemanticTypeFromTextVariant(variant);
+
+    return (
+      <BodyElement
+        ref={ref}
+        className={classNames(
+          'eds-text',
+          variant && `eds-text--${variant}`,
+          size && `eds-text--${size}`,
+          weight && `eds-text--weight-${weight}`,
+          trim && 'eds-text--trim',
+          className,
+        )}
+        style={getSpacingStyle(spacing, style)}
+        {...rest}
+      >
+        {children}
+      </BodyElement>
+    );
+  },
+) as TextComponent;
+Text.displayName = 'Text';
