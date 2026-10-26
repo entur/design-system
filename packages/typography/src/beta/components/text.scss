@@ -12,12 +12,21 @@
   .eds-text {
     color: var(--components-typography-basetext-standard-text-accent);
     font-weight: var(--font-weight-body);
-    overflow-wrap: break-word;
     text-wrap: pretty;
 
-    // Long compound words break with a hyphen where the page sets a Norwegian lang
-    &:where(:lang(nb), :lang(nn), :lang(no)) {
-      hyphens: auto;
+    // Running text breaks long words, with a hyphen where the page sets a Norwegian lang.
+    // UI text keeps its words whole, so a name cut off with an ellipsis stays on one line.
+    &--leading,
+    &--paragraph,
+    &--subparagraph,
+    &--quote,
+    &--unordered-list,
+    &--numbered-list {
+      overflow-wrap: break-word;
+
+      &:where(:lang(nb), :lang(nn), :lang(no)) {
+        hyphens: auto;
+      }
     }
 
     :where(.eds-contrast) & {

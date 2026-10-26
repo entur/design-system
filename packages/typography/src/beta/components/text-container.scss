@@ -93,7 +93,7 @@ $measured-variants: 'leading' 'paragraph' 'subparagraph' 'quote' 'unordered-list
     }
 
     // Text from a CMS breaks long words like Text does
-    > :where(p, li, ul, ol, blockquote):where(:lang(nb), :lang(nn), :lang(no)) {
+    > :where(p, li, ul, ol, blockquote):where(:not(.eds-text)):where(:lang(nb), :lang(nn), :lang(no)) {
       hyphens: auto;
     }
 

@@ -67,6 +67,19 @@ describe('TextContainer rhythm', () => {
   });
 });
 
+describe('hyphens', () => {
+  test('TextContainer hyphenates only raw text, so UI text variants keep their words whole', () => {
+    const selectors = Array.from(
+      textContainerCss.matchAll(/([^{}]+)\{\s*hyphens: auto;/g),
+      match => match[1].trim(),
+    );
+    expect(selectors.length).toBeGreaterThan(0);
+    selectors.forEach(selector =>
+      expect(selector).toContain(':not(.eds-text)'),
+    );
+  });
+});
+
 describe('tone', () => {
   test.each(['text', 'heading'])(
     'the %s tone comes after every variant and size, so it wins',
