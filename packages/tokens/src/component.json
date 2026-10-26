@@ -6471,6 +6471,12 @@
             "rootAlias": "Lavender/40"
           },
           {
+            "name": "Components/typography/List/Contrast/Fill",
+            "value": "#292b6a",
+            "var": "Fill/Background/Contrast/LightAlt-2",
+            "rootAlias": "Blue/100"
+          },
+          {
             "name": "Components/typography/List/Contrast/Text-Accent",
             "value": "#ffffff",
             "var": "Text/Light",
@@ -6481,6 +6487,12 @@
             "value": "#aeb7e2",
             "var": "Stroke/Contrast",
             "rootAlias": "Lavender/40"
+          },
+          {
+            "name": "Components/typography/List/Standard/Fill",
+            "value": "#eaeaf1",
+            "var": "Fill/Selected/Default/Tint",
+            "rootAlias": "Blue/20"
           },
           {
             "name": "Components/typography/List/Standard/Text-Accent",
@@ -13171,6 +13183,12 @@
             "rootAlias": "Lavender/40"
           },
           {
+            "name": "Components/typography/List/Contrast/Fill",
+            "value": "#212233",
+            "var": "Fill/Background/Contrast/Dark",
+            "rootAlias": "Ebony/90"
+          },
+          {
             "name": "Components/typography/List/Contrast/Text-Accent",
             "value": "#e5e5e9",
             "var": "Text/LightAlt",
@@ -13181,6 +13199,12 @@
             "value": "#aeb7e2",
             "var": "Stroke/Contrast",
             "rootAlias": "Lavender/40"
+          },
+          {
+            "name": "Components/typography/List/Standard/Fill",
+            "value": "#212233",
+            "var": "Fill/Background/Contrast/Dark",
+            "rootAlias": "Ebony/90"
           },
           {
             "name": "Components/typography/List/Standard/Text-Accent",

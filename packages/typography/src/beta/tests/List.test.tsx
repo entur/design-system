@@ -89,3 +89,37 @@ describe('ListItem Component', () => {
     expect(item).toHaveStyle({ '--eds-text-spacing-top': 'var(--spacing-xs)' });
   });
 });
+
+describe('List markers', () => {
+  test('UnorderedList keeps list semantics without markers', () => {
+    const { getByRole } = render(
+      <UnorderedList>
+        <ListItem>En</ListItem>
+      </UnorderedList>,
+    );
+    expect(getByRole('list')).toHaveAttribute('role', 'list');
+  });
+
+  test('NumberedList uses the native marker by default', () => {
+    const { getByRole } = render(
+      <NumberedList>
+        <ListItem>En</ListItem>
+      </NumberedList>,
+    );
+    const list = getByRole('list');
+    expect(list).not.toHaveAttribute('role');
+    expect(list).not.toHaveClass('eds-text--steps');
+  });
+
+  test('NumberedList variant="steps" shows badges and keeps list semantics', () => {
+    const { getByRole } = render(
+      <NumberedList variant="steps" start={3}>
+        <ListItem title="Logg inn">Med Vipps</ListItem>
+      </NumberedList>,
+    );
+    const list = getByRole('list');
+    expect(list).toHaveClass('eds-text--steps');
+    expect(list).toHaveAttribute('role', 'list');
+    expect(list).toHaveAttribute('start', '3');
+  });
+});
