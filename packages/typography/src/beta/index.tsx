@@ -2,10 +2,12 @@
 // These components may have breaking changes in future releases
 
 import { warnAboutMissingStyles } from '@entur/utils';
+import { warnAboutGlobalStyles } from './utils/warnAboutGlobalStyles';
 import './index.scss';
 
 // Beta still relies on the base typography styles
 warnAboutMissingStyles('typography');
+warnAboutGlobalStyles();
 
 export { Heading } from './components/Heading';
 export { Text } from './components/Text';

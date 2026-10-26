@@ -37,6 +37,12 @@ const hasSpaceAfter = (className: string) =>
   );
 
 describe('TextContainer rhythm', () => {
+  test('is a flow-root, which the global styles warning checks for', () => {
+    expect(textContainerCss).toMatch(
+      /\.eds-text-container \{\s*display: flow-root;/,
+    );
+  });
+
   test('every heading variant and size has a space after', () => {
     const missing = modifiers(read('heading.scss'))
       .filter(name => name !== 'tone-subdued')

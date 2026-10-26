@@ -94,7 +94,7 @@ grep -rnE "variant=['\"](code-text|preformatted-text|link)['\"]|spacing=['\"](xs
 grep -rnE "<(Heading|Text|Link)\b[^>]*margin=|<Link\b[^>]*\bexternal\b" "${CODE[@]}" $SRC
 ```
 
-Then look at the pages with the most text and the most UI text in the browser, in each `data-view-mode` the project uses. No space between texts in a `TextContainer`, a double underline on links or headings that ignore `variant` mean a global rule from step 7 still wins.
+Then look at the pages with the most text and the most UI text in the browser, in each `data-view-mode` the project uses. No space between texts in a `TextContainer`, a double underline on links or headings that ignore `variant` mean a global rule from step 7 still wins. In development the console then shows a warning starting with `@entur/typography: global CSS in your app` that names the rules.
 
 **Done when:** build, type-check and tests pass, the grep finds nothing, and the user has seen the key pages.
 

@@ -31,7 +31,7 @@ This applies to every app that imports `@entur/typography/beta/styles`, also app
 | `h2 { font-size: 2rem }`                           | `Heading as="h2"` ignores `variant` and `size`                    |
 | `ul { padding-left: … }`, `li { … }`, `code { … }` | Lists and code text look off                                      |
 
-Inherited styles on `html` and `body` (font, colour, line height) are fine, since the components set their own.
+Inherited styles on `html` and `body` (font, colour, line height) are fine, since the components set their own. In development, the beta typography logs a console warning that names the rules it finds (`@entur/typography: global CSS in your app overrides the typography components`).
 
 Fix: move these rules into the layers below the components. Start your first stylesheet with the order lines, so the layers sort correctly whichever file loads first:
 
