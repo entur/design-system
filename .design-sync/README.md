@@ -24,11 +24,10 @@ This folder imports Entur Linje into [Claude Design](https://claude.ai/design) a
 
 The Linje design system lives as Design System artifacts on claude.ai, all named "Entur Linje". An artifact belongs to the Claude team (organization) it was created in, so each team has its own copy, built from the same repo:
 
-| Team                    | Artifact                                          |
-| ----------------------- | ------------------------------------------------- |
-| Team 1                  | https://claude.ai/artifact/EhuUKLgq5NT1dQoNVfMQSA |
-| Team 2                  | https://claude.ai/artifact/5EBRs6WiU748Rhrm9uU9hW |
-| Original (team unknown) | https://claude.ai/artifact/SQBrPb5Ln58H4NwvXbnCHV |
+| Team   | Artifact                                          |
+| ------ | ------------------------------------------------- |
+| Team 1 | https://claude.ai/artifact/EhuUKLgq5NT1dQoNVfMQSA |
+| Team 2 | https://claude.ai/artifact/5EBRs6WiU748Rhrm9uU9hW |
 
 Add a row here, and in AGENTS.md, for each new team.
 
@@ -79,7 +78,7 @@ Requires Node 24.14.0, `corepack yarn`, Claude Code logged in to claude.ai, and 
    - `.d.ts` as `text/plain` and `.jsx` as `text/javascript`, which the artifact refuses otherwise
    - at most 250 paths and 14 MiB per call (the limit is 255 paths and 16 MiB)
    - never `project/design-system.json`, whose keys the page also writes; when one of the index's own keys has to change, Claude reads it again, keeps its keys and updates `lastChange`
-   - never the hand-placed files under `assets/notes/` on the original artifact
+   - never files under `assets/notes/`, which are placed on an artifact by hand
 
    An artifact without a fingerprint gets every file, since nothing is known about it. To also remove stale files from it, save a listing of its files (Artifact tool, `action: "list"`, `scope: "files"`), one path per line, and pass it with `--remote <file>`.
 
