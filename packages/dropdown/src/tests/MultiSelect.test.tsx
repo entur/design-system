@@ -1,4 +1,11 @@
-import { act, render, screen, waitFor } from '@testing-library/react';
+import React from 'react';
+import {
+  act,
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import { DropdownItemType, MultiSelect, NormalizedDropdownItemType } from '..';
@@ -775,6 +782,638 @@ describe('MultiSelect', () => {
         'aria-invalid',
         'false',
       );
+    });
+  });
+
+  describe('screen reader support', () => {
+    const ControlledMultiSelect = ({
+      initialSelectedItems,
+    }: {
+      initialSelectedItems: NormalizedDropdownItemType[];
+    }) => {
+      const [selectedItems, setSelectedItems] =
+        React.useState(initialSelectedItems);
+      return (
+        <MultiSelect
+          label="test label"
+          items={testItems}
+          selectedItems={selectedItems}
+          onChange={setSelectedItems}
+        />
+      );
+    };
+
+    // The field's feedback text is a status too; downshift's sits on <body>
+    const getStatusMessage = () =>
+      screen
+        .queryAllByRole('status')
+        .find(status => status.parentElement === document.body)?.textContent ??
+      '';
+
+    const getRemoveButton = (label: string) =>
+      screen.getByRole('button', {
+        name: `${label} valgt, trykk for å fjerne valg`,
+      });
+
+    test('selected item tags have no click handler, so VoiceOver in Safari stops only on the close buttons', () => {
+      const { container } = render(
+        <ControlledMultiSelect
+          initialSelectedItems={normalizedTestItems.slice(0, 3)}
+        />,
+      );
+
+      container
+        .querySelectorAll<HTMLElement>('.eds-dropdown__selected-item-tag')
+        .forEach(tag => expect(tag.onclick).toBeNull());
+    });
+
+    test('selected items are left out of the tab order and reached with the arrow keys', async () => {
+      const user = userEvent.setup();
+      render(
+        <ControlledMultiSelect
+          initialSelectedItems={normalizedTestItems.slice(0, 3)}
+        />,
+      );
+      const input = screen.getByRole('combobox', { name: 'test label' });
+
+      await user.tab();
+      expect(input).toHaveFocus();
+      expect(input).toHaveAccessibleDescription(
+        '3 valgte, bruk venstre piltast for å gå til dem',
+      );
+
+      await user.keyboard('{ArrowLeft}');
+      expect(getRemoveButton('Stavanger')).toHaveFocus();
+      await user.keyboard('{ArrowLeft}');
+      expect(getRemoveButton('Bergen')).toHaveFocus();
+
+      await user.keyboard('{ArrowRight}{ArrowRight}');
+      expect(input).toHaveFocus();
+    });
+
+    test('removes the focused selected item with Backspace and announces it', async () => {
+      const user = userEvent.setup();
+      render(
+        <ControlledMultiSelect
+          initialSelectedItems={normalizedTestItems.slice(0, 3)}
+        />,
+      );
+
+      await user.tab();
+      await user.keyboard('{ArrowLeft}{ArrowLeft}{Backspace}');
+
+      expect(
+        screen.queryByRole('button', { name: /^Bergen valgt/ }),
+      ).not.toBeInTheDocument();
+      expect(getRemoveButton('Stavanger')).toHaveFocus();
+      await waitFor(() =>
+        expect(getStatusMessage()).toBe('Bergen fjernet, Stavanger'),
+      );
+    });
+
+    test.each(['disabled', 'readOnly'])(
+      'does not describe the arrow key navigation when %s',
+      prop => {
+        render(
+          <MultiSelect
+            label="test label"
+            items={testItems}
+            selectedItems={normalizedTestItems.slice(0, 3)}
+            onChange={jest.fn()}
+            {...{ [prop]: true }}
+          />,
+        );
+
+        expect(
+          screen.queryByText('3 valgte, bruk venstre piltast for å gå til dem'),
+        ).not.toBeInTheDocument();
+      },
+    );
+
+    test('does not describe the arrow key navigation when nothing is selected', () => {
+      render(<ControlledMultiSelect initialSelectedItems={[]} />);
+
+      expect(
+        screen.getByRole('combobox', { name: 'test label' }),
+      ).not.toHaveAttribute('aria-describedby');
+    });
+
+    test('announces a removed item in the shared status region', async () => {
+      const user = userEvent.setup();
+      render(
+        <ControlledMultiSelect
+          initialSelectedItems={normalizedTestItems.slice(0, 3)}
+        />,
+      );
+
+      await user.click(
+        screen.getByRole('button', { name: /^Bergen valgt, trykk for/ }),
+      );
+
+      expect(getRemoveButton('Stavanger')).toHaveFocus();
+      await waitFor(() => expect(getStatusMessage()).toBe('Bergen fjernet'));
+    });
+
+    test('keeps focus in the selected items when one is removed with Enter on its close button', async () => {
+      const user = userEvent.setup();
+      render(
+        <ControlledMultiSelect
+          initialSelectedItems={normalizedTestItems.slice(0, 3)}
+        />,
+      );
+
+      await user.tab();
+      await user.keyboard('{ArrowLeft}{ArrowLeft}{Enter}');
+
+      expect(getRemoveButton('Stavanger')).toHaveFocus();
+      await waitFor(() =>
+        expect(getStatusMessage()).toBe('Bergen fjernet, Stavanger'),
+      );
+    });
+
+    test('moves focus to the previous item, without naming it, when the last item is removed with Enter', async () => {
+      const user = userEvent.setup();
+      render(
+        <ControlledMultiSelect
+          initialSelectedItems={normalizedTestItems.slice(0, 3)}
+        />,
+      );
+
+      await user.tab();
+      await user.keyboard('{ArrowLeft}{Enter}');
+
+      expect(getRemoveButton('Bergen')).toHaveFocus();
+      await waitFor(() => expect(getStatusMessage()).toBe('Stavanger fjernet'));
+    });
+
+    test('moves focus to the text field when the only item is removed with its close button', async () => {
+      const user = userEvent.setup();
+      render(
+        <ControlledMultiSelect
+          initialSelectedItems={normalizedTestItems.slice(0, 1)}
+        />,
+      );
+
+      await user.click(getRemoveButton('Oslo'));
+
+      expect(
+        screen.getByRole('combobox', { name: 'test label' }),
+      ).toHaveFocus();
+    });
+
+    test('reaches the selected items again after Tab brings focus back to the text field', async () => {
+      const user = userEvent.setup();
+      render(
+        <ControlledMultiSelect
+          initialSelectedItems={normalizedTestItems.slice(0, 3)}
+        />,
+      );
+
+      await user.tab();
+      await user.keyboard('{ArrowLeft}');
+      await user.tab();
+      expect(
+        screen.getByRole('combobox', { name: 'test label' }),
+      ).toHaveFocus();
+
+      await user.keyboard('{ArrowLeft}');
+      expect(getRemoveButton('Stavanger')).toHaveFocus();
+    });
+
+    test('announces clearing all items as one message', async () => {
+      const user = userEvent.setup();
+      render(
+        <ControlledMultiSelect
+          initialSelectedItems={normalizedTestItems.slice(0, 3)}
+        />,
+      );
+
+      await user.click(screen.getByRole('button', { name: 'Fjern valgte' }));
+
+      await waitFor(() => expect(getStatusMessage()).toBe('3 valg fjernet'));
+    });
+
+    test('announces a selected item in the shared status region', async () => {
+      const user = userEvent.setup();
+      render(<ControlledMultiSelect initialSelectedItems={[]} />);
+
+      await user.click(screen.getByRole('combobox', { name: 'test label' }));
+      await user.click(screen.getByRole('option', { name: 'Oslo' }));
+
+      await waitFor(() => expect(getStatusMessage()).toBe('Oslo valgt'));
+    });
+
+    test.each([
+      ['nothing', 0, '8 lagt til, 8 valgte totalt'],
+      ['some items', 3, '5 lagt til, 8 valgte totalt'],
+      ['all but one item', testItems.length - 1, 'Brønnøysund valgt'],
+    ])(
+      'announces «Velg alle» as one message when %s is selected',
+      async (_, alreadySelected, expected) => {
+        const user = userEvent.setup();
+        render(
+          <ControlledMultiSelect
+            initialSelectedItems={normalizedTestItems.slice(0, alreadySelected)}
+          />,
+        );
+
+        await user.click(screen.getByRole('combobox', { name: 'test label' }));
+        await user.click(screen.getByRole('option', { name: /^Velg alle/ }));
+
+        await waitFor(() => expect(getStatusMessage()).toBe(expected));
+      },
+    );
+
+    test('announces the item when the last item is selected by hand', async () => {
+      const user = userEvent.setup();
+      render(
+        <ControlledMultiSelect
+          initialSelectedItems={normalizedTestItems.slice(0, -1)}
+        />,
+      );
+      const lastItem = testItems[testItems.length - 1];
+
+      await user.click(screen.getByRole('combobox', { name: 'test label' }));
+      await user.click(screen.getByRole('option', { name: lastItem }));
+
+      await waitFor(() => expect(getStatusMessage()).toBe(`${lastItem} valgt`));
+    });
+
+    test('does not announce selection changes made by the parent', async () => {
+      const { rerender } = render(
+        <MultiSelect
+          label="test label"
+          items={testItems}
+          selectedItems={normalizedTestItems.slice(0, 3)}
+          onChange={jest.fn()}
+        />,
+      );
+
+      rerender(
+        <MultiSelect
+          label="test label"
+          items={testItems}
+          selectedItems={[]}
+          onChange={jest.fn()}
+        />,
+      );
+
+      await new Promise(resolve => setTimeout(resolve, 300));
+      expect(getStatusMessage()).toBe('');
+    });
+
+    test('keeps the result count message when the parent re-renders with a new array', async () => {
+      const user = userEvent.setup();
+      const selectedItems = normalizedTestItems.slice(0, 1);
+      const { rerender } = render(
+        <MultiSelect
+          label="test label"
+          items={testItems}
+          selectedItems={selectedItems}
+          onChange={jest.fn()}
+        />,
+      );
+
+      await user.click(screen.getByRole('combobox', { name: 'test label' }));
+      rerender(
+        <MultiSelect
+          label="test label"
+          items={testItems}
+          selectedItems={[...selectedItems]}
+          onChange={jest.fn()}
+        />,
+      );
+
+      await waitFor(() =>
+        expect(getStatusMessage()).toMatch(/resultater tilgjengelig/),
+      );
+    });
+
+    test('announces removal of items whose labels are equal but values differ', async () => {
+      const user = userEvent.setup();
+      const items = [
+        { label: 'Stopp', value: { id: 1 } },
+        { label: 'Stopp', value: { id: 2 } },
+      ];
+      const Controlled = () => {
+        const [selectedItems, setSelectedItems] = React.useState(items);
+        return (
+          <MultiSelect
+            label="test label"
+            items={items}
+            selectedItems={selectedItems}
+            onChange={setSelectedItems}
+          />
+        );
+      };
+      render(<Controlled />);
+
+      await user.click(
+        screen.getAllByRole('button', { name: /^Stopp valgt, trykk for/ })[0],
+      );
+
+      await waitFor(() => expect(getStatusMessage()).toBe('Stopp fjernet'));
+    });
+
+    test('does not announce a selection the parent rejects', async () => {
+      const user = userEvent.setup();
+      const AcceptsOneItem = () => {
+        const [selectedItems, setSelectedItems] = React.useState(
+          normalizedTestItems.slice(0, 1),
+        );
+        return (
+          <MultiSelect
+            label="test label"
+            items={testItems}
+            selectedItems={selectedItems}
+            onChange={items => {
+              if (items.length <= 1) setSelectedItems(items);
+            }}
+          />
+        );
+      };
+      render(<AcceptsOneItem />);
+
+      await user.click(screen.getByRole('combobox', { name: 'test label' }));
+      await user.click(screen.getByRole('option', { name: 'Bergen' }));
+      await user.keyboard('{Escape}{ArrowLeft}');
+
+      await new Promise(resolve => setTimeout(resolve, 300));
+      expect(getStatusMessage()).not.toMatch('Bergen valgt');
+    });
+
+    test('announces a selection the parent accepts in a different order', async () => {
+      const user = userEvent.setup();
+      const SortsItems = () => {
+        const [selectedItems, setSelectedItems] = React.useState(
+          normalizedTestItems.slice(2, 3),
+        );
+        return (
+          <MultiSelect
+            label="test label"
+            items={testItems}
+            selectedItems={selectedItems}
+            onChange={items =>
+              setSelectedItems(
+                [...items].sort((a, b) => a.label.localeCompare(b.label)),
+              )
+            }
+          />
+        );
+      };
+      render(<SortsItems />);
+
+      await user.click(screen.getByRole('combobox', { name: 'test label' }));
+      await user.click(screen.getByRole('option', { name: 'Oslo' }));
+
+      await waitFor(() => expect(getStatusMessage()).toBe('Oslo valgt'));
+    });
+
+    test('does not announce a parent update after a rejected selection', async () => {
+      const user = userEvent.setup();
+      const AcceptsOneItem = () => {
+        const [selectedItems, setSelectedItems] = React.useState(
+          normalizedTestItems.slice(0, 1),
+        );
+        return (
+          <>
+            <MultiSelect
+              label="test label"
+              items={testItems}
+              selectedItems={selectedItems}
+              onChange={items => {
+                if (items.length <= 1) setSelectedItems(items);
+              }}
+            />
+            <button onClick={() => setSelectedItems([])}>Nullstill</button>
+          </>
+        );
+      };
+      render(<AcceptsOneItem />);
+
+      await user.click(screen.getByRole('combobox', { name: 'test label' }));
+      await user.click(screen.getByRole('option', { name: 'Bergen' }));
+      await user.click(screen.getByRole('button', { name: 'Nullstill' }));
+
+      await new Promise(resolve => setTimeout(resolve, 300));
+      expect(getStatusMessage()).not.toMatch('Oslo fjernet');
+    });
+
+    test('does not change the selection when readOnly is set while the list is open', async () => {
+      const user = userEvent.setup();
+      const onChange = jest.fn();
+      const props = {
+        label: 'test label',
+        items: testItems,
+        selectedItems: [],
+        onChange,
+      };
+      const { rerender } = render(<MultiSelect {...props} />);
+
+      await user.click(screen.getByRole('combobox', { name: 'test label' }));
+      await user.keyboard('{ArrowDown}{ArrowDown}');
+      rerender(<MultiSelect {...props} readOnly />);
+      await user.keyboard('{Enter}');
+
+      expect(onChange).not.toHaveBeenCalled();
+    });
+
+    test('leaves modified left arrow presses to the text field', async () => {
+      const user = userEvent.setup();
+      render(
+        <ControlledMultiSelect
+          initialSelectedItems={normalizedTestItems.slice(0, 3)}
+        />,
+      );
+      const input = screen.getByRole('combobox', { name: 'test label' });
+
+      await user.click(input);
+      await user.keyboard('{Shift>}{ArrowLeft}{/Shift}');
+
+      expect(input).toHaveFocus();
+    });
+
+    test('a selected item is not left in the tab order after focus leaves it', async () => {
+      const user = userEvent.setup();
+      render(
+        <ControlledMultiSelect
+          initialSelectedItems={normalizedTestItems.slice(0, 3)}
+        />,
+      );
+
+      await user.tab();
+      await user.keyboard('{ArrowLeft}');
+      expect(getRemoveButton('Stavanger')).toHaveFocus();
+
+      await user.tab();
+      await user.tab({ shift: true });
+      expect(getRemoveButton('Stavanger')).not.toHaveFocus();
+    });
+
+    test('reaches the selected items with the left arrow while the list is open', async () => {
+      const user = userEvent.setup();
+      render(
+        <ControlledMultiSelect
+          initialSelectedItems={normalizedTestItems.slice(0, 3)}
+        />,
+      );
+
+      await user.click(screen.getByRole('combobox', { name: 'test label' }));
+      expect(screen.getByRole('listbox')).toBeVisible();
+      await user.keyboard('{ArrowLeft}');
+
+      expect(getRemoveButton('Stavanger')).toHaveFocus();
+    });
+
+    test('consumes Backspace on a selected item so the browser does not navigate back', () => {
+      render(
+        <ControlledMultiSelect
+          initialSelectedItems={normalizedTestItems.slice(0, 3)}
+        />,
+      );
+
+      const notPrevented = fireEvent.keyDown(getRemoveButton('Bergen'), {
+        key: 'Backspace',
+      });
+
+      expect(notPrevented).toBe(false);
+    });
+
+    test('does not call onClick when a selected item is clicked', async () => {
+      const user = userEvent.setup();
+      const onClick = jest.fn();
+      render(
+        <MultiSelect
+          label="test label"
+          items={testItems}
+          selectedItems={normalizedTestItems.slice(0, 3)}
+          onChange={jest.fn()}
+          onClick={onClick}
+        />,
+      );
+
+      await user.click(screen.getByText('Bergen'));
+
+      expect(onClick).not.toHaveBeenCalled();
+    });
+
+    describe('when more items are selected than maxChips', () => {
+      const SummaryMultiSelect = () => {
+        const [selectedItems, setSelectedItems] = React.useState(
+          normalizedTestItems.slice(0, 3),
+        );
+        return (
+          <MultiSelect
+            label="test label"
+            items={testItems}
+            maxChips={2}
+            selectedItems={selectedItems}
+            onChange={setSelectedItems}
+          />
+        );
+      };
+      const getSummaryButton = () =>
+        screen.getByRole('button', { name: /^3 valgte/ });
+
+      test('leaves the summary out of the tab order', async () => {
+        const user = userEvent.setup();
+        render(<SummaryMultiSelect />);
+        const input = screen.getByRole('combobox', { name: 'test label' });
+
+        await user.tab();
+        expect(input).toHaveFocus();
+        await user.tab({ shift: true });
+        expect(getSummaryButton()).not.toHaveFocus();
+        expect(input).toHaveAccessibleDescription(
+          '3 valgte, bruk venstre piltast for å gå til dem',
+        );
+      });
+
+      test('reaches the summary with the left arrow and clears with Backspace', async () => {
+        const user = userEvent.setup();
+        render(<SummaryMultiSelect />);
+        const input = screen.getByRole('combobox', { name: 'test label' });
+
+        await user.tab();
+        await user.keyboard('{ArrowLeft}');
+        expect(getSummaryButton()).toHaveFocus();
+        await user.keyboard('{ArrowRight}');
+        expect(input).toHaveFocus();
+
+        await user.keyboard('{ArrowLeft}{Backspace}');
+        expect(screen.queryByRole('button', { name: /valgte/ })).toBeNull();
+        expect(input).toHaveFocus();
+      });
+    });
+
+    test.each(['disabled', 'readOnly'])(
+      'exposes the selected values to screen readers when %s',
+      prop => {
+        render(
+          <MultiSelect
+            label="test label"
+            items={testItems}
+            selectedItems={normalizedTestItems.slice(0, 3)}
+            onChange={jest.fn()}
+            {...{ [prop]: true }}
+          />,
+        );
+
+        ['Oslo', 'Bergen', 'Stavanger'].forEach(label =>
+          expect(
+            screen.getByText(label).closest('[aria-hidden="true"]'),
+          ).toBeNull(),
+        );
+      },
+    );
+
+    test('exposes the selected values to screen readers when disabled with a summary', () => {
+      render(
+        <MultiSelect
+          label="test label"
+          items={testItems}
+          maxChips={2}
+          selectedItems={normalizedTestItems.slice(0, 3)}
+          onChange={jest.fn()}
+          disabled
+        />,
+      );
+
+      expect(screen.getByText('Oslo, Bergen, Stavanger')).toBeInTheDocument();
+    });
+
+    test('a readOnly field is focusable and described by the selected values', async () => {
+      const user = userEvent.setup();
+      render(
+        <MultiSelect
+          label="test label"
+          items={testItems}
+          selectedItems={normalizedTestItems.slice(0, 3)}
+          onChange={jest.fn()}
+          readOnly
+        />,
+      );
+      const input = screen.getByRole('combobox', { name: /^test label/ });
+
+      await user.tab();
+      expect(input).toHaveFocus();
+      expect(input).not.toBeDisabled();
+      expect(input).toHaveAccessibleDescription('Oslo, Bergen, Stavanger');
+
+      await user.keyboard('{ArrowDown}{Backspace}');
+      expect(screen.queryByRole('option')).toBeNull();
+      expect(getRemoveButton('Stavanger')).toBeInTheDocument();
+      expect(fireEvent.keyDown(input, { key: 'Backspace' })).toBe(false);
+    });
+
+    test('selected item tags have no live regions of their own', () => {
+      const { container } = render(
+        <ControlledMultiSelect
+          initialSelectedItems={normalizedTestItems.slice(0, 3)}
+        />,
+      );
+
+      expect(container.querySelector('[aria-live]')).toBeNull();
     });
   });
 });
