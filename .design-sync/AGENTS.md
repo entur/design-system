@@ -2,11 +2,10 @@
 
 Follow this whenever a `/design-sync` run starts in this repo, or someone asks to update the Design System artifacts. The goal: every "Entur Linje" artifact matches the packages in this repo. The repo is the source of truth. There is one artifact per Claude team:
 
-| Team                    | Artifact                                          |
-| ----------------------- | ------------------------------------------------- |
-| Team 1                  | https://claude.ai/artifact/EhuUKLgq5NT1dQoNVfMQSA |
-| Team 2                  | https://claude.ai/artifact/5EBRs6WiU748Rhrm9uU9hW |
-| Original (team unknown) | https://claude.ai/artifact/SQBrPb5Ln58H4NwvXbnCHV |
+| Team   | Artifact                                          |
+| ------ | ------------------------------------------------- |
+| Team 1 | https://claude.ai/artifact/EhuUKLgq5NT1dQoNVfMQSA |
+| Team 2 | https://claude.ai/artifact/5EBRs6WiU748Rhrm9uU9hW |
 
 Keep this table and the one in README.md (Updating the design system) the same. Update every team unless the user names some.
 
