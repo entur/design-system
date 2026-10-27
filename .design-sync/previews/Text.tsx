@@ -1,8 +1,8 @@
 import React from 'react';
-import { Text, Heading } from '@entur/linje';
+import { Flex, Text, Heading } from '@entur/linje';
 
 export const Variants = () => (
-  <div style={{ maxWidth: 460 }}>
+  <Flex direction="column" gap="s" maxWidth="460px">
     <Text variant="leading">
       Entur samler reiseinformasjon for all kollektivtrafikk i Norge.
     </Text>
@@ -14,51 +14,51 @@ export const Variants = () => (
     </Text>
     <Text variant="caption">Sist oppdatert 14:32</Text>
     <Text variant="quote">«Enklere å velge en bærekraftig reise.»</Text>
-  </div>
+  </Flex>
 );
 
 export const LabelsAndInline = () => (
-  <div
-    style={{
-      display: 'flex',
-      flexDirection: 'column',
-      gap: 'var(--space-extra-small)',
-    }}
-  >
+  <Flex direction="column" gap="xs">
     <Text variant="overline">Reiseinformasjon</Text>
     <Text variant="label">Avreisested</Text>
     <Text variant="sublabel">Oslo S, spor 4</Text>
     <Text variant="emphasized">Toget er forsinket med 5 minutter</Text>
-    <Text variant="code-text">npm install @entur/typography</Text>
-  </div>
+    <Text>
+      Installer med <Text variant="code">npm install @entur/typography</Text>
+    </Text>
+  </Flex>
 );
 
-export const Weights = () => (
-  <div>
+export const Preformatted = () => (
+  <Text variant="preformatted" style={{ maxWidth: 420 }}>
+    {`import { Text } from '@entur/typography/beta';
+
+<Text variant="paragraph">Avgang 07:58</Text>`}
+  </Text>
+);
+
+export const SizesAndWeights = () => (
+  <Flex direction="column" gap="xs">
     <Text size="xl" weight="bold">
       Bergen – Oslo
     </Text>
-    <Text size="lg" weight="semibold">
+    <Text size="lg" weight="bold">
       Avgang 07:58
     </Text>
     <Text size="m" weight="medium">
       Ankomst 14:43
     </Text>
-    <Text size="s" weight="regular">
-      6 t 45 min · 1 bytte
-    </Text>
-    <Text size="xs" weight="regular">
-      Regiontog F4 · Vy
-    </Text>
-  </div>
+    <Text size="s">6 t 45 min · 1 bytte</Text>
+    <Text size="xs">Regiontog F4 · Vy</Text>
+  </Flex>
 );
 
-export const InContext = () => (
+export const WithSpacing = () => (
   <div style={{ maxWidth: 420 }}>
-    <Heading as="h3" variant="subtitle-1" spacing="xs-bottom">
+    <Heading as="h3" variant="subtitle-1" spacing={{ bottom: 'xs' }}>
       Ta med sykkel på toget
     </Heading>
-    <Text variant="paragraph" spacing="sm-bottom">
+    <Text variant="paragraph" spacing={{ bottom: 's' }}>
       På de fleste regiontog kan du ta med sykkel mot et tillegg. Husk å
       reservere plass.
     </Text>

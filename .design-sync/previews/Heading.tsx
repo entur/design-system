@@ -1,8 +1,8 @@
 import React from 'react';
-import { Heading, Text } from '@entur/linje';
+import { Flex, Heading, Text, TextContainer } from '@entur/linje';
 
 export const Variants = () => (
-  <div>
+  <Flex direction="column" gap="s">
     <Heading as="h1" variant="title-1">
       Reis kollektivt i hele Norge
     </Heading>
@@ -21,22 +21,11 @@ export const Variants = () => (
     <Heading as="h6" variant="section-2">
       Enkeltbilletter
     </Heading>
-  </div>
-);
-
-export const Labels = () => (
-  <div>
-    <Heading as="h3" variant="label">
-      Neste avgang
-    </Heading>
-    <Heading as="h4" variant="sublabel">
-      Spor 4 · Bergensbanen
-    </Heading>
-  </div>
+  </Flex>
 );
 
 export const Sizes = () => (
-  <div>
+  <Flex direction="column" gap="s">
     <Heading as="h2" size="2xl">
       Stoppesteder
     </Heading>
@@ -55,17 +44,29 @@ export const Sizes = () => (
     <Heading as="h2" size="xs">
       Stoppesteder
     </Heading>
-  </div>
+  </Flex>
 );
 
 export const WithText = () => (
-  <div style={{ maxWidth: 440 }}>
-    <Heading as="h2" variant="title-2" spacing="sm-bottom">
+  <TextContainer style={{ maxWidth: 440 }}>
+    <Heading as="h2" variant="title-2">
       Én billett til hele reisen
     </Heading>
     <Text variant="paragraph">
       Uansett om reisen består av flere delstrekninger, kan du kjøpe billett til
       hele reisen med ett tastetrykk – også når du bytter mellom tog og buss.
+    </Text>
+  </TextContainer>
+);
+
+export const WithSpacing = () => (
+  <div style={{ maxWidth: 440 }}>
+    <Heading as="h3" variant="subtitle-1" spacing={{ bottom: 'xs' }}>
+      Ta med sykkel på toget
+    </Heading>
+    <Text variant="paragraph">
+      Utenfor en TextContainer har overskriften ingen avstand før du gir den
+      spacing.
     </Text>
   </div>
 );
