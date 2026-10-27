@@ -16,6 +16,7 @@
     "InputGroupContextProvider": null,
     "SegmentedControlComponent": null,
     "Link": "../../../packages/typography/src/Link.tsx",
+    "Label": "../../../packages/typography/src/Label.tsx",
     "Blockquote": "../../../packages/typography/src/Blockquote.tsx",
     "BlockquoteFooter": "../../../packages/typography/src/Blockquote.tsx",
     "ListItem": "../../../packages/typography/src/ListItem.tsx",
@@ -29,6 +30,46 @@
     "SideNavigation": "  /** SideNavigation.Group, SideNavigation.Item og SideNavigation.ExpandableItem */\n  children: React.ReactNode;\n  /** Ekstra klassenavn */\n  className?: string;\n"
   },
   "overrides": {
+    "OverflowMenu": {
+      "cardMode": "single",
+      "primaryStory": "Open",
+      "viewport": "480x360"
+    },
+    "OverflowMenuItem": {
+      "cardMode": "single",
+      "primaryStory": "Default",
+      "viewport": "480x360"
+    },
+    "OverflowMenuLink": {
+      "cardMode": "single",
+      "primaryStory": "Default",
+      "viewport": "480x360"
+    },
+    "Popover": {
+      "cardMode": "single",
+      "primaryStory": "Open",
+      "viewport": "480x360"
+    },
+    "PopoverCloseButton": {
+      "cardMode": "single",
+      "primaryStory": "ButtonClose",
+      "viewport": "480x360"
+    },
+    "PopoverContent": {
+      "cardMode": "single",
+      "primaryStory": "Open",
+      "viewport": "480x360"
+    },
+    "PopoverTrigger": {
+      "cardMode": "single",
+      "primaryStory": "Open",
+      "viewport": "480x360"
+    },
+    "Tooltip": {
+      "cardMode": "single",
+      "primaryStory": "Top",
+      "viewport": "480x360"
+    },
     "Modal": {
       "cardMode": "single",
       "primaryStory": "Medium",
