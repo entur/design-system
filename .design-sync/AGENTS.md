@@ -7,6 +7,7 @@ Follow this whenever a `/design-sync` run starts in this repo, or someone asks t
 | Team 1 | https://claude.ai/artifact/EhuUKLgq5NT1dQoNVfMQSA |
 | Team 2 | https://claude.ai/artifact/5EBRs6WiU748Rhrm9uU9hW |
 | Team 3 | https://claude.ai/artifact/JhNaq5GuypdJvwh22jypQa |
+| Team 4 | https://claude.ai/artifact/RAYg2HgDTG2Jcj6YrEdXRc |
 
 Keep this table and the one in README.md (Updating the design system) the same. Update every team unless the user names some.
 
