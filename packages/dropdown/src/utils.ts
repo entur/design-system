@@ -211,4 +211,49 @@ export function getResultsStatusMessage<ValueType>(
     resultCountWithoutSelectAll === 1 ? '' : 'er'
   } tilgjengelig, naviger med pil opp eller ned, velg elementer med Enter.`;
 }
+
+export function getSelectionStatusMessage<ValueType>({
+  previousSelectedItems,
+  selectedItems,
+  ariaLabelChosenSingular,
+  ariaLabelAddedPlural,
+  ariaLabelChosenTotal,
+  ariaLabelRemovedSingular,
+  ariaLabelRemovedPlural,
+}: {
+  previousSelectedItems: NormalizedDropdownItemType<ValueType>[];
+  selectedItems: NormalizedDropdownItemType<ValueType>[];
+  ariaLabelChosenSingular: string;
+  ariaLabelAddedPlural: string;
+  ariaLabelChosenTotal: string;
+  ariaLabelRemovedSingular: string;
+  ariaLabelRemovedPlural: string;
+}): string {
+  const includesValue = (
+    items: NormalizedDropdownItemType<ValueType>[],
+    item: NormalizedDropdownItemType<ValueType>,
+  ) => items.some(other => other.value === item.value);
+  const added = selectedItems.filter(
+    item => !includesValue(previousSelectedItems, item),
+  );
+  const removed = previousSelectedItems.filter(
+    item => !includesValue(selectedItems, item),
+  );
+
+  const messages: string[] = [];
+
+  if (added.length === 1)
+    messages.push(`${added[0].label} ${ariaLabelChosenSingular}`);
+  else if (added.length > 1)
+    messages.push(
+      `${added.length} ${ariaLabelAddedPlural}, ${selectedItems.length} ${ariaLabelChosenTotal}`,
+    );
+
+  if (removed.length === 1)
+    messages.push(`${removed[0].label} ${ariaLabelRemovedSingular}`);
+  else if (removed.length > 1)
+    messages.push(`${removed.length} ${ariaLabelRemovedPlural}`);
+
+  return messages.join(', ');
+}
 /* end a11y utils */
