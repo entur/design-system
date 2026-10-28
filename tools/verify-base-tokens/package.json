@@ -1,0 +1,20 @@
+{
+  "name": "verify-base-tokens",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Checks that every package's styles.no-base-tokens.css behaves like styles.css once @entur/tokens/dist/base.css is loaded",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "postcss": "8.5.6"
+  },
+  "nx": {
+    "targets": {
+      "test": {
+        "cache": false
+      }
+    }
+  }
+}

@@ -20,7 +20,9 @@
     },
     "./beta/styles": "./dist/beta/styles/index.css",
     "./styles": "./dist/styles.css",
+    "./styles/no-base-tokens": "./dist/styles.no-base-tokens.css",
     "./dist/styles.css": "./dist/styles.css",
+    "./dist/styles.no-base-tokens.css": "./dist/styles.no-base-tokens.css",
     "./dist/beta": null,
     "./dist/beta/*": null,
     "./package.json": "./package.json"
