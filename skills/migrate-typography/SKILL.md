@@ -96,14 +96,23 @@ grep -rnE "<(Heading|Text|Link)\b[^>]*margin=|<Link\b[^>]*\bexternal\b" "${CODE[
 
 Then look at the pages with the most text and the most UI text in the browser, in each `data-view-mode` the project uses. No space between texts in a `TextContainer`, a double underline on links or headings that ignore `variant` mean a global rule from step 7 still wins. In development the console then shows a warning starting with `@entur/typography: global CSS in your app` that names the rules.
 
-**Done when:** build, type-check and tests pass, the grep finds nothing, and the user has seen the key pages.
+Check the page language too. Long words in text and headings only break with a hyphen when the page has a Norwegian `lang`. Find where the app sets it (`index.html`, the root layout or the framework's HTML attributes):
+
+```bash
+grep -rnE "<html[^>]*lang=|htmlAttributes|setHtmlAttributes|documentElement\.lang" "${CODE[@]}" --include='*.html' .
+```
+
+- **`nb`, `nn` or `no`:** nothing to do.
+- **Missing, or wrong on a Norwegian site:** tell the user, and add `lang` only if they want it. Ask which language the site is in, never assume Norwegian, and leave a site in another language alone. Mention that WCAG 2.1 success criterion 3.1.1 Language of Page (level A) requires the page language in the code, so screen readers pronounce the text correctly.
+
+**Done when:** build, type-check and tests pass, the grep finds nothing, the user has seen the key pages and has decided on the page language.
 
 ### 9. Report
 
 Tell the user:
 
 - what was changed, step by step, and what was left for them (step 5's uncertain cases, overrides kept);
-- the visual changes that need no code: new list markers, new code text, headings with balanced line breaks, `size` now always overriding `variant`;
+- the visual changes that need no code: new list markers, new code text, headings with balanced line breaks, long words breaking with a hyphen on Norwegian pages, `size` now always overriding `variant`;
 - new options worth knowing: `TextContainer`, `Label`, `trim`, `NumberedList variant="steps"`.
 
 **Done when:** the user has the list.
