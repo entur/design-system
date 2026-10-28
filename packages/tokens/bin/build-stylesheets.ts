@@ -23,6 +23,37 @@ const outputExtensions: Array<'css' | 'scss' | 'less'> = [
   'less',
 ];
 
+// On narrow screens, headings and leading text in the standard view mode take
+// their compact values. Compact and display keep theirs. Below the s breakpoint
+// of Flex and Grid in @entur/layout/beta.
+const NARROW_SCREEN = '(width < 600px)';
+const NARROW_TOKEN =
+  /^--font-(size|line-height|paragraph-spacing)-(heading-(xs|s|m|lg|xl|2xl)|body-xl)$/;
+
+function narrowScreenBlock(tokens: VariableSet[], extension: 'css' | 'scss') {
+  const declarations = tokens
+    .filter(
+      token => token.mode === 'compact' && NARROW_TOKEN.test(token.css.key),
+    )
+    .map(
+      token =>
+        `${token.css.key}: ${
+          extension === 'css' ? token.css.value : token.scss.sanitizedValue
+        };`,
+    );
+  if (declarations.length === 0) return '';
+  // :root only without a view mode, so a view mode set on <html> keeps its sizes.
+  // :where() keeps it as specific as :root, so an app can override it there
+  return `
+@media ${NARROW_SCREEN} {
+  :root:where(:not([data-view-mode])),
+  [data-view-mode='standard'] {
+    ${declarations.join('\n    ')}
+  }
+}
+`;
+}
+
 try {
   // Merge primitive colors and sizes
   const primitiveColors = createVariableSet(primitiveFileData, 'color');
@@ -167,7 +198,7 @@ try {
         importFileNames: ['primitive'],
       });
       outputFileData({
-        fileData: data[0].outputString,
+        fileData: data[0].outputString + narrowScreenBlock(tokens, extension),
         outputFileName: data[0].outputFileName,
         outputPath: path.resolve(__dirname, '../dist'),
       });
