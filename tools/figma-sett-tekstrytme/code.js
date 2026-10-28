@@ -227,32 +227,25 @@ const COLLECTIONS = {
 const VIEW_MODES = ['Standard', 'Compact', 'Display'];
 const CONTEXTS = [
   {
+    id: 'desktop',
+    name: 'Desktop',
+    typography: 'Standard',
+    size: 'Standard',
+    spacing: 'Standard',
+  },
+  {
+    id: 'mobile',
+    name: 'Mobile',
+    typography: 'Compact',
+    size: 'Standard',
+    spacing: 'Standard',
+  },
+  {
     id: 'b2b',
     name: 'B2B',
     typography: 'Compact',
     size: 'Compact',
     spacing: 'Compact',
-  },
-  {
-    id: 'app',
-    name: 'App',
-    typography: 'Compact',
-    size: 'Standard',
-    spacing: 'Standard',
-  },
-  {
-    id: 'web',
-    name: 'entur.no',
-    typography: 'Compact',
-    size: 'Standard',
-    spacing: 'Standard',
-  },
-  {
-    id: 'article',
-    name: 'Artikkel',
-    typography: 'Standard',
-    size: 'Standard',
-    spacing: 'Standard',
   },
   {
     id: 'kiosk',
@@ -411,7 +404,7 @@ function contextOf(node) {
     modes[key] = mode.name;
     set = set || mode.set;
   }
-  // App and entur.no share modes, so the choice made in the plugin tells them apart
+  // Should two contexts share modes, the choice made in the plugin tells them apart
   let chosen;
   for (let n = node; n && !chosen; n = n.parent)
     chosen = n.getPluginData && n.getPluginData(CONTEXT_KEY);
@@ -605,7 +598,7 @@ function divergingLayers(frame, modeIds, apply) {
   return found;
 }
 
-// The whole screen takes the context, so a compact button in an App screen becomes a standard one
+// The whole screen takes the context, so a compact button in a Mobile screen becomes a standard one
 function setContext(selection, id) {
   const context = CONTEXTS.find(c => c.id === id);
   const targets = selection.filter(isContextTarget);
