@@ -36,22 +36,24 @@ Mens panelet er åpent, kan ingen andre plugins kjøre i filen, heller ikke Desk
 
 Øverst i panelet velger du kontekst for den markerte rammen. Pluginen setter da modus for samlingene Typography, Component size og Component spacing på rammen, og alt inni arver dem. Det tilsvarer `data-type-scale` og `data-density` i forslaget til koden.
 
-| Kontekst | Typography | Component size | Component spacing | Brukes til                                    |
-| -------- | ---------- | -------------- | ----------------- | --------------------------------------------- |
-| Desktop  | Standard   | Standard       | Standard          | entur.no på desktop, artikler og lengre tekst |
-| Mobile   | Compact    | Standard       | Standard          | Appen og entur.no i mobilformat               |
-| B2B      | Compact    | Compact        | Compact           | Bransje- og interne verktøy                   |
-| Kiosk    | Display    | Display        | Display           | Avgangsskjermer og automater                  |
+Konteksten heter det samme som modusen komponentene får, slik `data-density` i koden. På Standard velger en bryter teksten, slik `data-type-scale`: Desktop gir Standard-tekst og Mobile gir Compact-tekst, så overskriftene blir mindre på små skjermer mens komponentene beholder klikkflaten.
 
-Mobile her er en kontekst og har ikke noe med modusen Mobile i Grid-samlingen å gjøre. Grid styrer kolonner og marger og settes for seg.
+| Kontekst | Tekst   | Typography | Component size og spacing | Brukes til                                    |
+| -------- | ------- | ---------- | ------------------------- | --------------------------------------------- |
+| Standard | Desktop | Standard   | Standard                  | entur.no på desktop, artikler og lengre tekst |
+| Standard | Mobile  | Compact    | Standard                  | Appen og entur.no i mobilformat               |
+| Compact  | –       | Compact    | Compact                   | B2B, bransje- og interne verktøy              |
+| Display  | –       | Display    | Display                   | Avgangsskjermer, automater og kiosk           |
+
+Mobile på bryteren har ikke noe med modusen Mobile i Grid-samlingen å gjøre. Grid styrer kolonner og marger og settes for seg.
 
 - Panelet viser hvilken kontekst rammen har, også når den er arvet fra en ramme utenfor.
 - Står Component size og Component spacing i ulike moduser, får du en advarsel.
-- I B2B og Kiosk får du en advarsel om komponenter som ikke er bundet til Component size. De beholder standard størrelse.
+- I Compact og Display får du en advarsel om komponenter som ikke er bundet til Component size. De beholder standard størrelse.
 - Kontekst settes på skjermrammen, altså rammer og seksjoner utenfor komponenter.
 - **Markerer du en komponent** på skjermen, for eksempel en knapp, heter valget **Komponent**: Følger skjermen, Standard, Compact eller Display. Hele komponenten får den størrelsen, både Component size og Typography. «Følger skjermen» fjerner valget igjen. Er komponenten ikke bundet til Component size, sier panelet at bare teksten endres.
 - Markerer du noe inni en komponent, for eksempel teksten i en knapp, viser panelet bare konteksten den arver. Marker komponenten eller skjermrammen for å endre.
-- Hele skjermen får konteksten. Lag inni med egen modus følger skjermen når du velger kontekst, enten modusen er satt for hånd eller følger med komponenten. En Compact-knapp i en Mobile-skjerm blir altså en Standard-knapp, med både størrelse og tekst. Det du har valgt i pluginen beholdes: en ramme med egen kontekst, for eksempel en artikkel satt til Desktop inni en Mobile-skjerm, og en komponent med egen størrelse.
+- Hele skjermen får konteksten. Lag inni med egen modus følger skjermen når du velger kontekst, enten modusen er satt for hånd eller følger med komponenten. En Compact-knapp i en Standard-skjerm blir altså en Standard-knapp, med både størrelse og tekst. Det du har valgt i pluginen beholdes: en ramme med egen kontekst, for eksempel en artikkel satt til Standard · Desktop inni en Standard · Mobile-skjerm, og en komponent med egen størrelse.
 - Har lag inni egen modus som ikke følger skjermen, får du en advarsel. Velg konteksten på nytt for å rette dem.
 - Samlingene finnes der filen allerede bruker dem. Mangler noen, hentes de fra biblioteket. Det kan ta litt tid, og krever tillatelsen `teamlibrary`.
 

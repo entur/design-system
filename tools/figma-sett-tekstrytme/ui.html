@@ -78,6 +78,42 @@
     opacity: 0.4;
   }
 
+  .segmented {
+    display: flex;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    overflow: hidden;
+  }
+
+  .segmented button {
+    padding: 4px 8px;
+    border: 0;
+    background: transparent;
+    color: var(--text);
+    font: inherit;
+    font-weight: 400;
+    cursor: pointer;
+  }
+
+  .segmented button + button {
+    border-left: 1px solid var(--border);
+  }
+
+  .segmented button[aria-pressed='true'] {
+    background: var(--brand);
+    color: var(--figma-color-text-onbrand, #fff);
+  }
+
+  .segmented button:disabled {
+    cursor: default;
+    opacity: 0.4;
+  }
+
+  .segmented button:focus-visible {
+    outline: 2px solid var(--brand);
+    outline-offset: -2px;
+  }
+
   select:focus-visible {
     outline: 2px solid var(--brand);
     outline-offset: 1px;
@@ -194,11 +230,22 @@
       <option value="" disabled>Ikke satt</option>
       <option value="custom" disabled>Egendefinert</option>
       <option value="mixed" disabled>Ulike kontekster</option>
-      <option value="desktop">Desktop</option>
-      <option value="mobile">Mobile</option>
-      <option value="b2b">B2B</option>
-      <option value="kiosk">Kiosk</option>
+      <option value="standard">Standard</option>
+      <option value="compact">Compact</option>
+      <option value="display">Display</option>
     </select>
+  </div>
+  <!-- On Standard the components keep their size and the text follows the screen -->
+  <div class="row" id="screen-row" hidden>
+    <span id="screen-label">Tekst</span>
+    <div class="segmented" role="group" aria-labelledby="screen-label">
+      <button type="button" data-screen="desktop" aria-pressed="true">
+        Desktop
+      </button>
+      <button type="button" data-screen="mobile" aria-pressed="false">
+        Mobile
+      </button>
+    </div>
   </div>
   <div class="row" id="component-row" hidden>
     <label for="component">Komponent</label>
@@ -247,6 +294,32 @@
   const contextRow = document.getElementById('context-row');
   const componentRow = document.getElementById('component-row');
   const componentSelect = document.getElementById('component');
+  const screenRow = document.getElementById('screen-row');
+  const screenButtons = [...screenRow.querySelectorAll('button')];
+
+  const CONTEXT_NAMES = {
+    'standard-desktop': 'Standard · Desktop',
+    'standard-mobile': 'Standard · Mobile',
+    compact: 'Compact',
+    display: 'Display',
+  };
+
+  // standard-mobile is shown as Standard in the list and Mobile on the switch
+  let textSize = 'desktop';
+  const baseOf = id => (id && id.startsWith('standard-') ? 'standard' : id);
+
+  function renderScreen(id, enabled) {
+    screenRow.hidden = baseOf(id) !== 'standard';
+    if (screenRow.hidden) return;
+    textSize = id.split('-')[1];
+    for (const button of screenButtons) {
+      button.setAttribute(
+        'aria-pressed',
+        String(button.dataset.screen === textSize),
+      );
+      button.disabled = !enabled;
+    }
+  }
 
   const STATES = {
     on: 'Følger reglene',
@@ -332,6 +405,8 @@
     const component = Boolean(context && context.component);
     contextRow.hidden = component;
     componentRow.hidden = !component;
+    screenRow.hidden = true;
+    textSize = 'desktop';
 
     // A component on the screen can take its own size, text and size alike
     if (component) {
@@ -372,7 +447,8 @@
 
     // A layer inside the screen only shows what it inherits; the context is set on the screen frame
     if (context.readOnly) {
-      contextSelect.value = context.set ? context.id || 'custom' : '';
+      contextSelect.value = context.set ? baseOf(context.id) || 'custom' : '';
+      if (context.set) renderScreen(context.id, false);
       modes.textContent = `${describeModes(context.modes)}${
         context.own
           ? ' · egen modus på dette laget'
@@ -401,7 +477,8 @@
         : 'Fant ikke variabelsamlingene i filen';
     } else {
       const m = context.modes;
-      contextSelect.value = context.set ? context.id || 'custom' : '';
+      contextSelect.value = context.set ? baseOf(context.id) || 'custom' : '';
+      if (context.set) renderScreen(context.id, true);
       modes.textContent = `${describeModes(m)}${
         context.set ? '' : ' (standard)'
       }`;
@@ -413,7 +490,7 @@
         contextWarnings.append(
           item(
             `${context.diverging} lag har egen modus og følger ikke ${
-              contextSelect.options[contextSelect.selectedIndex].text
+              CONTEXT_NAMES[context.id] || 'konteksten'
             }. Velg konteksten på nytt for å rette dem.`,
             true,
           ),
@@ -452,13 +529,23 @@
     return li;
   }
 
-  contextSelect.addEventListener('change', () => {
+  function sendContext(id) {
     contextSelect.disabled = true;
-    parent.postMessage(
-      { pluginMessage: { type: 'context', id: contextSelect.value } },
-      '*',
-    );
+    screenButtons.forEach(button => (button.disabled = true));
+    parent.postMessage({ pluginMessage: { type: 'context', id } }, '*');
+  }
+
+  // Standard starts on Desktop, unless the frame is already Standard with Mobile
+  contextSelect.addEventListener('change', () => {
+    const value = contextSelect.value;
+    sendContext(value === 'standard' ? `standard-${textSize}` : value);
   });
+
+  for (const button of screenButtons)
+    button.addEventListener('click', () => {
+      if (button.getAttribute('aria-pressed') === 'true') return;
+      sendContext(`standard-${button.dataset.screen}`);
+    });
 
   componentSelect.addEventListener('change', () => {
     componentSelect.disabled = true;

@@ -218,7 +218,9 @@ async function status(selection) {
 }
 
 // --- context ---
-// Each context sets the three collections, as data-type-scale and data-density would in code
+// Each context sets the three collections, as data-type-scale and data-density would in code.
+// The context names the component size, data-density; on Standard, Desktop or Mobile picks the
+// text size, data-type-scale, since mobile screens have room for smaller headings only.
 const COLLECTIONS = {
   typography: 'Typography',
   size: 'Component size',
@@ -227,29 +229,29 @@ const COLLECTIONS = {
 const VIEW_MODES = ['Standard', 'Compact', 'Display'];
 const CONTEXTS = [
   {
-    id: 'desktop',
-    name: 'Desktop',
+    id: 'standard-desktop',
+    name: 'Standard · Desktop',
     typography: 'Standard',
     size: 'Standard',
     spacing: 'Standard',
   },
   {
-    id: 'mobile',
-    name: 'Mobile',
+    id: 'standard-mobile',
+    name: 'Standard · Mobile',
     typography: 'Compact',
     size: 'Standard',
     spacing: 'Standard',
   },
   {
-    id: 'b2b',
-    name: 'B2B',
+    id: 'compact',
+    name: 'Compact',
     typography: 'Compact',
     size: 'Compact',
     spacing: 'Compact',
   },
   {
-    id: 'kiosk',
-    name: 'Kiosk',
+    id: 'display',
+    name: 'Display',
     typography: 'Display',
     size: 'Display',
     spacing: 'Display',
@@ -598,7 +600,7 @@ function divergingLayers(frame, modeIds, apply) {
   return found;
 }
 
-// The whole screen takes the context, so a compact button in a Mobile screen becomes a standard one
+// The whole screen takes the context, so a compact button in a Standard screen becomes a standard one
 function setContext(selection, id) {
   const context = CONTEXTS.find(c => c.id === id);
   const targets = selection.filter(isContextTarget);
@@ -638,7 +640,7 @@ function setComponent(selection, value) {
 }
 
 function panel() {
-  figma.showUI(__html__, { width: 280, height: 360, themeColors: true });
+  figma.showUI(__html__, { width: 280, height: 390, themeColors: true });
 
   // Selection and node changes come in bursts, so wait for them to settle and drop stale answers
   let latest = 0;
