@@ -8,6 +8,12 @@
     overflow-wrap: break-word;
     text-wrap: balance;
 
+    // Only long words, such as compound words, break with a hyphen where the page sets a Norwegian lang
+    &:where(:lang(nb), :lang(nn), :lang(no)) {
+      hyphenate-limit-chars: 12 5 5;
+      hyphens: auto;
+    }
+
     :where(.eds-contrast) & {
       color: var(--components-typography-basetext-contrast-text-accent);
     }
