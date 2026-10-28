@@ -263,6 +263,8 @@ const CONTEXTS = [
   },
 ];
 const CONTEXT_KEY = 'kontekst';
+const COMPONENT_KEY = 'komponent';
+const COMPONENT_VALUES = ['inherit', ...VIEW_MODES];
 
 const collections = {};
 const seenCollectionIds = new Set();
@@ -352,6 +354,27 @@ function isContextTarget(node) {
   for (let n = node.parent; n; n = n.parent)
     if (n.type === 'INSTANCE') return false;
   return true;
+}
+
+// A component on the screen, not one inside another component, can take its own size: text and size alike
+function isComponentTarget(node) {
+  if (node.type !== 'INSTANCE') return false;
+  for (let n = node.parent; n; n = n.parent)
+    if (n.type === 'INSTANCE') return false;
+  return true;
+}
+
+// Follows the screen, one view mode for all three collections, or custom when they differ
+function componentValueOf(node) {
+  const own = node.explicitVariableModes || {};
+  const names = Object.keys(collections).map(key => {
+    const modeId = own[collections[key].id];
+    const mode =
+      modeId && collections[key].modes.find(m => m.modeId === modeId);
+    return mode ? mode.name : null;
+  });
+  if (names.every(name => !name)) return 'inherit';
+  return names.every(name => name === names[0]) ? names[0] : 'custom';
 }
 
 // The nearest layer that sets one of the collections, where an inherited context comes from
@@ -461,6 +484,26 @@ async function contextStatus(selection, onImported) {
   if (selection.length === 0) return { available: false };
   const targets = selection.filter(isContextTarget);
 
+  // Components get a size of their own instead of a context
+  const components = selection.filter(isComponentTarget);
+  if (targets.length === 0 && components.length === selection.length) {
+    await findCollections(components, onImported);
+    if (!collections.typography && !collections.size)
+      return { available: false };
+    const values = components.map(componentValueOf);
+    const owner = contextOwner(components[0].parent);
+    const result = {
+      available: true,
+      component: true,
+      value: values.every(value => value === values[0]) ? values[0] : 'mixed',
+      modes: contextOf(components[0]).modes,
+      from: owner && owner.name,
+    };
+    if (collections.size)
+      result.unbound = await unboundComponents(components, collections.size);
+    return result;
+  }
+
   // Any other layer shows the context it inherits, and where from, but can't set one
   if (targets.length === 0) {
     await findCollections(selection, onImported);
@@ -519,13 +562,20 @@ async function contextStatus(selection, onImported) {
 const modeIdOf = (collection, name) =>
   collection.modes.find(mode => mode.name === name).modeId;
 
+// Chosen in the plugin, for a frame like an article or for one component, and kept when the screen changes
+const chosenInPlugin = node =>
+  Boolean(
+    node.getPluginData &&
+      (node.getPluginData(CONTEXT_KEY) || node.getPluginData(COMPONENT_KEY)),
+  );
+
 // Layers inside the frame that don't follow its modes: a mode set by hand further in, or a component
-// that brings its own. A frame given a context with the plugin, like an article, keeps it.
+// that brings its own. What was chosen in the plugin stays.
 function divergingLayers(frame, modeIds, apply) {
   const found = [];
   const walk = node => {
     for (const child of node.children || []) {
-      if (child.getPluginData && child.getPluginData(CONTEXT_KEY)) continue;
+      if (chosenInPlugin(child)) continue;
       const own = child.explicitVariableModes || {};
       const resolved =
         child.type === 'INSTANCE' ? child.resolvedVariableModes || {} : {};
@@ -571,6 +621,27 @@ function setContext(selection, id) {
     aligned += divergingLayers(node, modeIds, true).length;
   }
   return { context, count: targets.length, aligned };
+}
+
+// One component in another size than the screen, text and size alike, or back to following the screen
+function setComponent(selection, value) {
+  if (!COMPONENT_VALUES.includes(value)) return 0;
+  const targets = selection.filter(isComponentTarget);
+  for (const node of targets) {
+    const own = node.explicitVariableModes || {};
+    for (const key in collections) {
+      const collection = collections[key];
+      if (value !== 'inherit')
+        node.setExplicitVariableModeForCollection(
+          collection,
+          modeIdOf(collection, value),
+        );
+      else if (own[collection.id])
+        node.clearExplicitVariableModeForCollection(collection);
+    }
+    node.setPluginData(COMPONENT_KEY, value === 'inherit' ? '' : value);
+  }
+  return targets.length;
 }
 
 function panel() {
@@ -629,6 +700,18 @@ function panel() {
                 aligned > 0
                   ? ` · ${aligned} lag med egen modus følger nå konteksten`
                   : ''
+              }`,
+        );
+      }
+      if (message.type === 'component') {
+        const count = setComponent(selection, message.value);
+        const what =
+          message.value === 'inherit' ? 'Følger skjermen' : message.value;
+        figma.notify(
+          count === 0
+            ? 'Marker en komponent på skjermen'
+            : `${what} satt på ${count} ${
+                count === 1 ? 'komponent' : 'komponenter'
               }`,
         );
       }

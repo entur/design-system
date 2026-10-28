@@ -59,7 +59,8 @@
     border-bottom: 0;
   }
 
-  .block > .row:first-child {
+  .block > .row:first-child,
+  .block > [hidden] + .row {
     margin-top: 0;
   }
 
@@ -187,7 +188,7 @@
 </div>
 
 <div class="block">
-  <div class="row">
+  <div class="row" id="context-row">
     <label for="context">Kontekst</label>
     <select id="context" disabled>
       <option value="" disabled>Ikke satt</option>
@@ -198,6 +199,17 @@
       <option value="web">entur.no</option>
       <option value="article">Artikkel</option>
       <option value="kiosk">Kiosk</option>
+    </select>
+  </div>
+  <div class="row" id="component-row" hidden>
+    <label for="component">Komponent</label>
+    <select id="component">
+      <option value="inherit">Følger skjermen</option>
+      <option value="custom" disabled>Egendefinert</option>
+      <option value="mixed" disabled>Ulike</option>
+      <option value="Standard">Standard</option>
+      <option value="Compact">Compact</option>
+      <option value="Display">Display</option>
     </select>
   </div>
   <div class="modes" id="modes">Marker en ramme for å velge kontekst</div>
@@ -233,6 +245,9 @@
   const contextSelect = document.getElementById('context');
   const modes = document.getElementById('modes');
   const contextWarnings = document.getElementById('context-warnings');
+  const contextRow = document.getElementById('context-row');
+  const componentRow = document.getElementById('component-row');
+  const componentSelect = document.getElementById('component');
 
   const STATES = {
     on: 'Følger reglene',
@@ -315,6 +330,34 @@
 
   function renderContext(context) {
     contextWarnings.replaceChildren();
+    const component = Boolean(context && context.component);
+    contextRow.hidden = component;
+    componentRow.hidden = !component;
+
+    // A component on the screen can take its own size, text and size alike
+    if (component) {
+      componentSelect.disabled = false;
+      componentSelect.value = context.value;
+      modes.textContent =
+        context.value === 'inherit'
+          ? `${describeModes(context.modes)}${
+              context.from ? ` · fra «${context.from}»` : ' (standard)'
+            }`
+          : describeModes(context.modes);
+      if (context.unbound && context.unbound.length > 0)
+        contextWarnings.append(
+          item(
+            `${context.unbound
+              .map(([name]) => name)
+              .join(
+                ', ',
+              )} er ikke bundet til Component size, så bare teksten endres`,
+            true,
+          ),
+        );
+      return;
+    }
+
     const ready =
       context &&
       context.available &&
@@ -342,7 +385,7 @@
         item(
           context.own
             ? 'Velg kontekst på skjermrammen, så følger dette laget den'
-            : 'Marker skjermrammen for å endre kontekst',
+            : 'Marker komponenten eller skjermrammen for å endre',
           context.own,
         ),
       );
@@ -414,6 +457,14 @@
     contextSelect.disabled = true;
     parent.postMessage(
       { pluginMessage: { type: 'context', id: contextSelect.value } },
+      '*',
+    );
+  });
+
+  componentSelect.addEventListener('change', () => {
+    componentSelect.disabled = true;
+    parent.postMessage(
+      { pluginMessage: { type: 'component', value: componentSelect.value } },
       '*',
     );
   });

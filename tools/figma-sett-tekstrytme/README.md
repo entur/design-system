@@ -47,8 +47,10 @@ Mens panelet er åpent, kan ingen andre plugins kjøre i filen, heller ikke Desk
 - Panelet viser hvilken kontekst rammen har, også når den er arvet fra en ramme utenfor. App og entur.no har like moduser. Pluginen husker hvilken av dem du valgte.
 - Står Component size og Component spacing i ulike moduser, får du en advarsel.
 - I B2B og Kiosk får du en advarsel om komponenter som ikke er bundet til Component size. De beholder standard størrelse.
-- Kontekst settes på skjermrammen, altså rammer og seksjoner utenfor komponenter. Markerer du noe inni, for eksempel en knapp eller teksten i den, viser panelet bare konteksten den arver og hvor den kommer fra.
-- Hele skjermen får konteksten. Lag inni med egen modus følger skjermen når du velger kontekst, enten modusen er satt for hånd eller følger med komponenten. En Compact-knapp i en App-skjerm blir altså en Standard-knapp, med både størrelse og tekst. Rammer som har fått egen kontekst i pluginen, som en artikkel, beholder den.
+- Kontekst settes på skjermrammen, altså rammer og seksjoner utenfor komponenter.
+- **Markerer du en komponent** på skjermen, for eksempel en knapp, heter valget **Komponent**: Følger skjermen, Standard, Compact eller Display. Hele komponenten får den størrelsen, både Component size og Typography. «Følger skjermen» fjerner valget igjen. Er komponenten ikke bundet til Component size, sier panelet at bare teksten endres.
+- Markerer du noe inni en komponent, for eksempel teksten i en knapp, viser panelet bare konteksten den arver. Marker komponenten eller skjermrammen for å endre.
+- Hele skjermen får konteksten. Lag inni med egen modus følger skjermen når du velger kontekst, enten modusen er satt for hånd eller følger med komponenten. En Compact-knapp i en App-skjerm blir altså en Standard-knapp, med både størrelse og tekst. Det du har valgt i pluginen beholdes: en ramme med egen kontekst, som en artikkel, og en komponent med egen størrelse.
 - Har lag inni egen modus som ikke følger skjermen, får du en advarsel. Velg konteksten på nytt for å rette dem.
 - Samlingene finnes der filen allerede bruker dem. Mangler noen, hentes de fra biblioteket. Det kan ta litt tid, og krever tillatelsen `teamlibrary`.
 
