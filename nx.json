@@ -11,7 +11,9 @@
       "{workspaceRoot}/package.json",
       "{workspaceRoot}/.oxlintrc.json",
       "{workspaceRoot}/jest.config.js",
-      "{workspaceRoot}/postcss.config.mjs"
+      "{workspaceRoot}/postcss.config.mjs",
+      "{workspaceRoot}/vite.config.base.ts",
+      "{workspaceRoot}/vite.utils.ts"
     ],
     "production": ["default"]
   },
