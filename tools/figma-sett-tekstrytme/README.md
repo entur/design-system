@@ -47,7 +47,9 @@ Mens panelet er åpent, kan ingen andre plugins kjøre i filen, heller ikke Desk
 - Panelet viser hvilken kontekst rammen har, også når den er arvet fra en ramme utenfor. App og entur.no har like moduser. Pluginen husker hvilken av dem du valgte.
 - Står Component size og Component spacing i ulike moduser, får du en advarsel.
 - I B2B og Kiosk får du en advarsel om komponenter som ikke er bundet til Component size. De beholder standard størrelse.
-- Kontekst settes på rammer og seksjoner, ikke på instanser.
+- Kontekst settes på skjermrammen, altså rammer og seksjoner utenfor komponenter. Markerer du noe inni, for eksempel en knapp eller teksten i den, viser panelet bare konteksten den arver og hvor den kommer fra.
+- Hele skjermen får konteksten. Lag inni med egen modus følger skjermen når du velger kontekst, enten modusen er satt for hånd eller følger med komponenten. En Compact-knapp i en App-skjerm blir altså en Standard-knapp, med både størrelse og tekst. Rammer som har fått egen kontekst i pluginen, som en artikkel, beholder den.
+- Har lag inni egen modus som ikke følger skjermen, får du en advarsel. Velg konteksten på nytt for å rette dem.
 - Samlingene finnes der filen allerede bruker dem. Mangler noen, hentes de fra biblioteket. Det kan ta litt tid, og krever tillatelsen `teamlibrary`.
 
 ## Kommandoer

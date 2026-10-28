@@ -315,12 +315,36 @@
   function renderContext(context) {
     contextWarnings.replaceChildren();
     const ready =
-      context && context.available && (context.modes || context.mixed);
+      context &&
+      context.available &&
+      !context.readOnly &&
+      (context.modes || context.mixed);
     contextSelect.disabled = !ready;
 
     if (!context || !context.available) {
       contextSelect.value = '';
       modes.textContent = 'Marker en ramme for å velge kontekst';
+      return;
+    }
+
+    // A layer inside the screen only shows what it inherits; the context is set on the screen frame
+    if (context.readOnly) {
+      contextSelect.value = context.set ? context.id || 'custom' : '';
+      modes.textContent = `${describeModes(context.modes)}${
+        context.own
+          ? ' · egen modus på dette laget'
+          : context.set && context.from
+          ? ` · arvet fra «${context.from}»`
+          : ' (standard)'
+      }`;
+      contextWarnings.append(
+        item(
+          context.own
+            ? 'Velg kontekst på skjermrammen, så følger dette laget den'
+            : 'Marker skjermrammen for å endre kontekst',
+          context.own,
+        ),
+      );
       return;
     }
 
@@ -341,6 +365,15 @@
       if (m.size && m.spacing && m.size !== m.spacing)
         contextWarnings.append(
           item('Component size og Component spacing har ulike moduser', true),
+        );
+      if (context.diverging > 0)
+        contextWarnings.append(
+          item(
+            `${context.diverging} lag har egen modus og følger ikke ${
+              contextSelect.options[contextSelect.selectedIndex].text
+            }. Velg konteksten på nytt for å rette dem.`,
+            true,
+          ),
         );
       if (context.unbound && context.unbound.length > 0) {
         const names = context.unbound

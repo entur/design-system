@@ -268,6 +268,7 @@ const collections = {};
 const seenCollectionIds = new Set();
 const scannedPages = new Set();
 let importing = false;
+let imported = false;
 
 const complete = () => Object.keys(COLLECTIONS).every(key => collections[key]);
 
@@ -315,8 +316,9 @@ async function findCollections(nodes, onImported) {
   if (!complete()) importCollections(onImported);
 }
 
+// Asked once per run: a collection the library doesn't have won't turn up on the next selection either
 async function importCollections(onImported) {
-  if (importing) return;
+  if (importing || imported) return;
   importing = true;
   try {
     for (const library of await figma.teamLibrary.getAvailableLibraryVariableCollectionsAsync()) {
@@ -338,12 +340,29 @@ async function importCollections(onImported) {
     // Without library access the collections already in use are all there is
   } finally {
     importing = false;
+    imported = true;
     if (onImported) onImported();
   }
 }
 
-const isContextTarget = node =>
-  node.type !== 'INSTANCE' && 'setExplicitVariableModeForCollection' in node;
+// The context belongs on the screen around the components, never on a layer inside a component,
+// where it would change only that layer: a frame inside an instance belongs to the component
+function isContextTarget(node) {
+  if (node.type !== 'FRAME' && node.type !== 'SECTION') return false;
+  for (let n = node.parent; n; n = n.parent)
+    if (n.type === 'INSTANCE') return false;
+  return true;
+}
+
+// The nearest layer that sets one of the collections, where an inherited context comes from
+function contextOwner(node) {
+  for (let n = node; n; n = n.parent) {
+    const set = n.explicitVariableModes || {};
+    if (Object.keys(collections).some(key => set[collections[key].id]))
+      return n;
+  }
+  return null;
+}
 
 // A mode is inherited from the nearest layer that sets it, otherwise it is the collection's default
 function modeOf(node, collection) {
@@ -439,8 +458,26 @@ async function unboundComponents(nodes, collection) {
 }
 
 async function contextStatus(selection, onImported) {
+  if (selection.length === 0) return { available: false };
   const targets = selection.filter(isContextTarget);
-  if (targets.length === 0) return { available: false };
+
+  // Any other layer shows the context it inherits, and where from, but can't set one
+  if (targets.length === 0) {
+    await findCollections(selection, onImported);
+    if (!collections.typography && !collections.size)
+      return { available: false };
+    const { modes, set, id } = contextOf(selection[0]);
+    const owner = contextOwner(selection[0]);
+    return {
+      available: true,
+      readOnly: true,
+      set,
+      id,
+      modes,
+      from: owner && owner !== selection[0] ? owner.name : null,
+      own: owner === selection[0],
+    };
+  }
 
   await findCollections(targets, onImported);
   const missing = Object.keys(COLLECTIONS)
@@ -465,22 +502,75 @@ async function contextStatus(selection, onImported) {
     missing,
     loading: importing,
   };
+  if (set) {
+    const modeIds = {};
+    for (const key in collections)
+      modeIds[key] = modeIdOf(collections[key], modes[key]);
+    result.diverging = targets.reduce(
+      (count, node) => count + divergingLayers(node, modeIds, false).length,
+      0,
+    );
+  }
   if (collections.size && modes.size !== 'Standard')
     result.unbound = await unboundComponents(targets, collections.size);
   return result;
 }
 
+const modeIdOf = (collection, name) =>
+  collection.modes.find(mode => mode.name === name).modeId;
+
+// Layers inside the frame that don't follow its modes: a mode set by hand further in, or a component
+// that brings its own. A frame given a context with the plugin, like an article, keeps it.
+function divergingLayers(frame, modeIds, apply) {
+  const found = [];
+  const walk = node => {
+    for (const child of node.children || []) {
+      if (child.getPluginData && child.getPluginData(CONTEXT_KEY)) continue;
+      const own = child.explicitVariableModes || {};
+      const resolved =
+        child.type === 'INSTANCE' ? child.resolvedVariableModes || {} : {};
+      let diverges = false;
+      for (const key in collections) {
+        const collection = collections[key];
+        const mode = own[collection.id] || resolved[collection.id];
+        if (!mode || mode === modeIds[key]) continue;
+        diverges = true;
+        if (!apply) continue;
+        // A cleared mode follows the frame again; a component's own mode needs the frame's set over it
+        if (own[collection.id])
+          child.clearExplicitVariableModeForCollection(collection);
+        const after = child.type === 'INSTANCE' && child.resolvedVariableModes;
+        if (
+          after &&
+          after[collection.id] &&
+          after[collection.id] !== modeIds[key]
+        )
+          child.setExplicitVariableModeForCollection(collection, modeIds[key]);
+      }
+      if (diverges) found.push(child);
+      if (child.type !== 'INSTANCE') walk(child);
+    }
+  };
+  walk(frame);
+  return found;
+}
+
+// The whole screen takes the context, so a compact button in an App screen becomes a standard one
 function setContext(selection, id) {
   const context = CONTEXTS.find(c => c.id === id);
   const targets = selection.filter(isContextTarget);
+  const modeIds = {};
+  for (const key in collections)
+    modeIds[key] = modeIdOf(collections[key], context[key]);
+
+  let aligned = 0;
   for (const node of targets) {
-    for (const key in collections) {
-      const mode = collections[key].modes.find(m => m.name === context[key]);
-      node.setExplicitVariableModeForCollection(collections[key], mode.modeId);
-    }
+    for (const key in collections)
+      node.setExplicitVariableModeForCollection(collections[key], modeIds[key]);
     node.setPluginData(CONTEXT_KEY, id);
+    aligned += divergingLayers(node, modeIds, true).length;
   }
-  return { context, count: targets.length };
+  return { context, count: targets.length, aligned };
 }
 
 function panel() {
@@ -493,7 +583,10 @@ function panel() {
     const id = ++latest;
     const selection = figma.currentPage.selection;
     const result = await status(selection);
-    const context = await contextStatus(selection, schedule);
+    // The text rhythm still works when the variables can't be read
+    const context = await contextStatus(selection, schedule).catch(() => ({
+      available: false,
+    }));
     if (id === latest)
       figma.ui.postMessage({ type: 'status', ...result, context });
   };
@@ -526,11 +619,17 @@ function panel() {
         figma.notify(summary(report, false));
       }
       if (message.type === 'context') {
-        const { context, count } = setContext(selection, message.id);
+        const { context, count, aligned } = setContext(selection, message.id);
         figma.notify(
-          `${context.name} satt på ${count} ${
-            count === 1 ? 'ramme' : 'rammer'
-          }`,
+          count === 0
+            ? 'Marker skjermrammen for å sette kontekst'
+            : `${context.name} satt på ${count} ${
+                count === 1 ? 'ramme' : 'rammer'
+              }${
+                aligned > 0
+                  ? ` · ${aligned} lag med egen modus følger nå konteksten`
+                  : ''
+              }`,
         );
       }
     } catch (error) {
