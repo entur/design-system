@@ -12,4 +12,4 @@ if (typeof global.TextEncoder === 'undefined') {
 }
 
 // We don't want warnings about missing styles in our jest tests
-// This will be handled by individual package Jest configs if needed
+process.env.TEST = 'true';
