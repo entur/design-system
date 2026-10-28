@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heading1, Label, LeadParagraph } from '@entur/typography';
+import { Heading, Text } from '@entur/typography/beta';
 import { PackageChangelog } from './PackageChangelog';
 import { ComponentIcon, GithubIcon, SourceCodeIcon } from '@entur/icons';
 import { ActionChip } from '@entur/chip';
@@ -32,9 +32,9 @@ export const BasePageHeader: React.FC<BasePageHeaderProps> = ({
     <header className="page-header">
       {subcategory && (
         <div className="page-header__subcategory-wrapper">
-          <Label as="div" className="page-header__subcategory-label">
-            {subcategory.toUpperCase()}
-          </Label>
+          <Text variant="overline" spacing={{ bottom: 'xs' }}>
+            {subcategory}
+          </Text>
         </div>
       )}
       <Grid
@@ -53,10 +53,11 @@ export const BasePageHeader: React.FC<BasePageHeaderProps> = ({
           rowStart={1}
           rowEnd={2}
           align="baseline"
+          gap="m"
         >
-          <Heading1 margin="none" className="page-header__heading">
+          <Heading as="h1" variant="title-1">
             {title}
-          </Heading1>
+          </Heading>
           {tag && <ArticleTag tag={tag} />}
         </Grid.Item>
         <Grid.Item colStart={1} colEnd={2} rowStart={2} rowEnd={-1}>
@@ -103,9 +104,9 @@ export const BasePageHeader: React.FC<BasePageHeaderProps> = ({
         </Grid.Item>
       </Grid>
       {description && (
-        <LeadParagraph className="page-header__description">
+        <Text variant="leading" spacing={{ top: 'm', bottom: 'xl' }}>
           {description}
-        </LeadParagraph>
+        </Text>
       )}
     </header>
   );

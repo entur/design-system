@@ -4,6 +4,21 @@
   "displayName": "Text",
   "methods": [],
   "props": {
+    "spacing": {
+      "defaultValue": null,
+      "description": "Avstand over og under, fra samme skala som `gap` på Flex og Grid.\nÉn verdi gir lik avstand over og under, `{ top, bottom }` setter dem hver for seg.\nUten `spacing` har teksten ingen avstand, med mindre den ligger i en `TextContainer`.",
+      "name": "spacing",
+      "declarations": [
+        {
+          "fileName": "packages/typography/src/beta/types.ts",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "\"s\" | \"none\" | \"2xs\" | \"xs\" | \"m\" | \"lg\" | \"xl\" | \"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"6xl\" | \"7xl\" | \"8xl\" | \"9xl\" | \"10xl\" | \"11xl\" | \"12xl\" | \"13xl\" | { top?: \"s\" | \"none\" | \"2xs\" | \"xs\" | ... 15 more ... | undefined; bottom?: \"s\" | ... 18 more ... | undefined; } | undefined"
+      }
+    },
     "size": {
       "defaultValue": null,
       "description": "Visuell tekststørrelse (typografi-token)",
@@ -16,12 +31,12 @@
       ],
       "required": false,
       "type": {
-        "name": "TypographySize | undefined"
+        "name": "\"s\" | \"xs\" | \"m\" | \"lg\" | \"xl\" | undefined"
       }
     },
     "weight": {
       "defaultValue": null,
-      "description": "Fontvekt",
+      "description": "Fontvekt: `medium` (500) eller `bold` (600)",
       "name": "weight",
       "declarations": [
         {
@@ -31,12 +46,27 @@
       ],
       "required": false,
       "type": {
-        "name": "TypographyWeight | undefined"
+        "name": "\"medium\" | \"bold\" | undefined"
+      }
+    },
+    "tone": {
+      "defaultValue": null,
+      "description": "Dempet tekst for sekundær informasjon, som metadata og hjelpetekst. Velger riktig farge i kontrast- og mørk modus.",
+      "name": "tone",
+      "declarations": [
+        {
+          "fileName": "packages/typography/src/beta/components/Text.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "\"subdued\" | undefined"
       }
     },
     "variant": {
       "defaultValue": null,
-      "description": "Variant (kan brukes til spesielle typer tekst som for eksempel caption)",
+      "description": "Variant (kan brukes til spesielle typer tekst som for eksempel caption).\nUten variant blir teksten `paragraph` når den står for seg selv (`p`, `div`, `li` …), og arver\nstørrelse, farge og vekt når den står inne i annen tekst (`span`, `strong`, en komponent …).",
       "name": "variant",
       "declarations": [
         {
@@ -46,7 +76,7 @@
       ],
       "required": false,
       "type": {
-        "name": "TypographyTextVariant | undefined"
+        "name": "\"caption\" | \"code\" | \"label\" | \"leading\" | \"quote\" | \"paragraph\" | \"subparagraph\" | \"sublabel\" | \"overline\" | \"emphasized\" | \"preformatted\" | undefined"
       }
     },
     "children": {
@@ -59,15 +89,15 @@
           "name": "TypeLiteral"
         }
       ],
-      "required": true,
+      "required": false,
       "type": {
         "name": "ReactNode"
       }
     },
-    "spacing": {
+    "trim": {
       "defaultValue": null,
-      "description": "Spacing around the component",
-      "name": "spacing",
+      "description": "Fjerner luften over versalhøyden og under grunnlinjen, så teksten flukter med elementer ved siden av. Har ingen effekt i nettlesere uten støtte for `text-box`.",
+      "name": "trim",
       "declarations": [
         {
           "fileName": "packages/typography/src/beta/components/Text.tsx",
@@ -76,7 +106,22 @@
       ],
       "required": false,
       "type": {
-        "name": "TypographySpacing | undefined"
+        "name": "boolean | undefined"
+      }
+    },
+    "maxLines": {
+      "defaultValue": null,
+      "description": "Kutter teksten etter så mange linjer og avslutter med «…». Hele teksten må kunne leses et annet sted, for eksempel på en egen side.",
+      "name": "maxLines",
+      "declarations": [
+        {
+          "fileName": "packages/typography/src/beta/components/Text.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "number | undefined"
       }
     },
     "className": {
@@ -106,7 +151,22 @@
       ],
       "required": false,
       "type": {
-        "name": "ElementType<any> | undefined"
+        "name": "ElementType<any, keyof IntrinsicElements> | undefined"
+      }
+    },
+    "ref": {
+      "defaultValue": null,
+      "description": "",
+      "name": "ref",
+      "declarations": [
+        {
+          "fileName": "packages/typography/src/beta/components/Text.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "Ref<Element> | undefined"
       }
     }
   }

@@ -10,6 +10,7 @@ order: 4
 import { graphql } from 'gatsby'
 import { SEO } from '@components/seo/SEO';
 import { borderWidths, colors, space } from '@entur/tokens';
+import { Flex } from '@entur/layout/beta';
 import ColorCardList from '@components/Colors/ColorCardList';
 import './farger.scss';
 
@@ -84,50 +85,60 @@ Hvordan fargene vektes er en viktig del av å skape det ønskede uttrykket for E
 
 ### Eksempler
 
-<div className="identitet-farger__eksempler">
-
-<ImageDisplay
-  imgSource={
-    props.data.files.images.find(image => image.name === 'plakat')
-      ?.childImageSharp.gatsbyImageData
-  }
-  alt="Viser eksempel på vekting på plakat"
-  preset="full-width-image"
-/>
-<Paragraph>Entur verdi plakat</Paragraph>
-
-
-<ImageDisplay
-  imgSource={
-    props.data.files.images.find(image => image.name === 'web')
-      ?.childImageSharp.gatsbyImageData
-  }
-  alt="Viser eksempel på vekting på web"
-  preset="full-width-image"
-/>
-<Paragraph>Entur app</Paragraph>
-
-<ImageDisplay
-  imgSource={
-    props.data.files.images.find(image => image.name === 'interneapp')
-      ?.childImageSharp.gatsbyImageData
-  }
-  alt="Viser eksempel på vekting på web"
-  preset="full-width-image"
-/>
-<Paragraph>Entur interne applikasjoner</Paragraph>
-
-<ImageDisplay
-  imgSource={
-    props.data.files.images.find(image => image.name === 'mobil')
-      ?.childImageSharp.gatsbyImageData
-  }
-  alt="Viser eksempel på vekting på mobil"
-  preset="full-width-image"
-/>
-
-<Paragraph>Entur web</Paragraph>
-</div>
+<Flex direction="column" gap="9xl" className="identitet-farger__eksempler">
+  <figure>
+    <ImageDisplay
+      imgSource={
+        props.data.files.images.find(image => image.name === 'plakat')
+          ?.childImageSharp.gatsbyImageData
+      }
+      alt="Viser eksempel på vekting på plakat"
+      preset="full-width-image"
+    />
+    <Text as="figcaption" spacing={{ top: 's' }}>
+      Entur verdi plakat
+    </Text>
+  </figure>
+  <figure>
+    <ImageDisplay
+      imgSource={
+        props.data.files.images.find(image => image.name === 'web')
+          ?.childImageSharp.gatsbyImageData
+      }
+      alt="Viser eksempel på vekting på web"
+      preset="full-width-image"
+    />
+    <Text as="figcaption" spacing={{ top: 's' }}>
+      Entur app
+    </Text>
+  </figure>
+  <figure>
+    <ImageDisplay
+      imgSource={
+        props.data.files.images.find(image => image.name === 'interneapp')
+          ?.childImageSharp.gatsbyImageData
+      }
+      alt="Viser eksempel på vekting på web"
+      preset="full-width-image"
+    />
+    <Text as="figcaption" spacing={{ top: 's' }}>
+      Entur interne applikasjoner
+    </Text>
+  </figure>
+  <figure>
+    <ImageDisplay
+      imgSource={
+        props.data.files.images.find(image => image.name === 'mobil')
+          ?.childImageSharp.gatsbyImageData
+      }
+      alt="Viser eksempel på vekting på mobil"
+      preset="full-width-image"
+    />
+    <Text as="figcaption" spacing={{ top: 's' }}>
+      Entur web
+    </Text>
+  </figure>
+</Flex>
 
 ### Unngå..
 
@@ -143,7 +154,7 @@ Hvordan fargene vektes er en viktig del av å skape det ønskede uttrykket for E
         alt=""
         noPadding
       >
-        <Paragraph>Mørk tekst på blå bakgrunn</Paragraph>
+        <Text>Mørk tekst på blå bakgrunn</Text>
       </DoDontCard>
     </GridItem>
     <GridItem small={12} medium={6} large={6}>
@@ -157,7 +168,7 @@ Hvordan fargene vektes er en viktig del av å skape det ønskede uttrykket for E
         alt=""
         noPadding
       >
-        <Paragraph>Korall som bakgrunn</Paragraph>
+        <Text>Korall som bakgrunn</Text>
       </DoDontCard>
     </GridItem>
     <GridItem small={12} medium={6} large={6}>
@@ -171,9 +182,9 @@ Hvordan fargene vektes er en viktig del av å skape det ønskede uttrykket for E
         alt=""
         noPadding
       >
-        <Paragraph>
+        <Text>
           Kombinasjoner som ikke er identitetsbærende
-        </Paragraph>
+        </Text>
       </DoDontCard>
     </GridItem>
     <GridItem small={12} medium={6} large={6}>
@@ -187,7 +198,7 @@ Hvordan fargene vektes er en viktig del av å skape det ønskede uttrykket for E
         alt=""
         noPadding
       >
-        <Paragraph>Peach farge på lys bakgrunn</Paragraph>
+        <Text>Peach farge på lys bakgrunn</Text>
       </DoDontCard>
     </GridItem>
 </GridContainer>

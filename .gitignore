@@ -45,6 +45,7 @@ coverage
 .github/skills/impeccable
 
 ## Local test environment
+.env.*
 TestBench.tsx
 content/components/testin.mdx
 

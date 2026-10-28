@@ -2,11 +2,6 @@
 
 .props__description {
   word-wrap: break-word;
-  > .eds-paragraph {
-    margin: 0;
-    font-size: tokens.$font-sizes-medium;
-    line-height: tokens.$line-heights-medium;
-  }
 }
 
 .props-table {

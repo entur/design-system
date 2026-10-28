@@ -7,11 +7,14 @@ import { extractHeadings } from 'src/utils/headingIds';
 import { useSetTocHeadings } from '@components/Navigations/TableOfContent/TocContext';
 import { BasePageHeader } from '@components/PageHeader/BasePageHeader';
 import { Tab, TabList, TabPanel, TabPanels, Tabs } from '@entur/tab';
-import { Heading2 } from '@entur/typography';
+import { TextContainer } from '@entur/typography/beta';
+import { DocH2 } from '@components/Common/DocHeadings';
 import { PortableText } from '@components/sanity/PortableText';
 import { HeadingAnchor } from '@components/sanity/HeadingAnchor';
 import { HeadingIdProvider } from '@components/sanity/HeadingIdContext';
 import { scrollToElement } from '../utils/scrollUtils';
+
+import './ComponentDocTemplate.scss';
 
 type ComponentDoc = {
   title: string;
@@ -192,12 +195,16 @@ const DocSectionContent = ({
         <HeadingAnchor
           headingKey={section._key}
           headingText={section.title}
-          HeadingComponent={Heading2}
+          HeadingComponent={DocH2}
         >
           {section.title}
         </HeadingAnchor>
       )}
-      <PortableText value={section.items} context={{ npmPackage }} />
+      <PortableText
+        value={section.items}
+        context={{ npmPackage }}
+        container={false}
+      />
     </>
   );
 };
@@ -208,13 +215,15 @@ const renderContent = ({ value, context }: { value: any; context?: any }) => {
     return (
       // One id map per tab, the same one the table of contents reads.
       <HeadingIdProvider content={value}>
-        {value.map((section: any) => (
-          <DocSectionContent
-            key={section._key}
-            section={section}
-            npmPackage={context?.npmPackage}
-          />
-        ))}
+        <TextContainer className="component-doc__content">
+          {value.map((section: any) => (
+            <DocSectionContent
+              key={section._key}
+              section={section}
+              npmPackage={context?.npmPackage}
+            />
+          ))}
+        </TextContainer>
       </HeadingIdProvider>
     );
   }

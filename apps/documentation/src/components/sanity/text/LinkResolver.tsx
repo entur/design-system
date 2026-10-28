@@ -2,7 +2,7 @@ import React from 'react';
 import { Link as GatsbyLink, graphql } from 'gatsby';
 import { getGatsbyImageData } from 'gatsby-source-sanity';
 import { MediaCard, NavigationCard } from '@entur/layout';
-import { Link } from '@entur/typography';
+import { Link } from '@entur/typography/beta';
 import { PrimaryButton, SecondaryButton } from '@entur/button';
 import { getIconByName } from 'src/utils/utils';
 import { ImageDisplay } from '@components/Media/ImageDisplay';
@@ -90,34 +90,21 @@ export const LinkResolver = ({ value }: Props) => {
     }
     case 'button':
       return (
-        <PrimaryButton
-          as="a"
-          {...linkProps}
-          style={{ marginBlockEnd: '2rem ' }}
-        >
+        <PrimaryButton as="a" {...linkProps}>
           {linkText}
           {Icon ? <Icon /> : undefined}
         </PrimaryButton>
       );
     case 'button-secondary':
       return (
-        <SecondaryButton
-          as="a"
-          {...linkProps}
-          style={{ marginBlockEnd: '2rem ' }}
-        >
+        <SecondaryButton as="a" {...linkProps}>
           {linkText}
           {Icon ? <Icon /> : undefined}
         </SecondaryButton>
       );
     case 'button-secondary-small':
       return (
-        <SecondaryButton
-          as="a"
-          size="small"
-          {...linkProps}
-          style={{ marginBlockEnd: '2rem ' }}
-        >
+        <SecondaryButton as="a" size="small" {...linkProps}>
           {linkText}
           {Icon ? <Icon /> : undefined}
         </SecondaryButton>

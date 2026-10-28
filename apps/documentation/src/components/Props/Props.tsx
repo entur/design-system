@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Tag } from '@entur/layout';
-import { Paragraph } from '@entur/typography';
 import { Text } from '@entur/typography/beta';
 import {
   DataCell,
@@ -95,7 +94,7 @@ const Props: React.FC<PropsProps> = ({ componentName, npmPackage }) => {
   }, [componentName]);
 
   if (!componentProps) {
-    return <Paragraph>Denne komponenten har ingen props</Paragraph>;
+    return <Text>Denne komponenten har ingen props</Text>;
   }
 
   const hasAnyDefaultValues = Object.values(componentProps).some(
@@ -169,7 +168,7 @@ const Props: React.FC<PropsProps> = ({ componentName, npmPackage }) => {
           </TableBody>
         </Table>
       ) : (
-        <Paragraph>Denne komponenten har ingen props</Paragraph>
+        <Text>Denne komponenten har ingen props</Text>
       )}
     </>
   );

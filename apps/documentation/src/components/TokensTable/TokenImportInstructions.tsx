@@ -1,5 +1,5 @@
 import React from 'react';
-import { CodeText } from '@entur/typography';
+import { Text } from '@entur/typography/beta';
 import { CopyableText, SmallAlertBox } from '@entur/alert';
 import { space } from '@entur/tokens';
 
@@ -33,7 +33,7 @@ export const TokenImportInstructions: React.FC<
 
   return (
     <div style={{ marginTop: space.large }}>
-      For å bruke <CodeText>{tokenKeyMapping[tokenKey]}</CodeText> tokens
+      For å bruke <Text variant="code">{tokenKeyMapping[tokenKey]}</Text> tokens
       importer du dem slik:{' '}
       <CopyableText style={{ width: 'fit-content', marginTop: space.small }}>
         {getImportText()}

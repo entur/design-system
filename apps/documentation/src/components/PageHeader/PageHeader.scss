@@ -10,11 +10,6 @@
     }
   }
 
-  &__subcategory-label {
-    letter-spacing: 1px;
-    margin-bottom: 0.5rem;
-  }
-
   &__title-row {
     display: flex;
     flex-direction: column;
@@ -22,10 +17,6 @@
     @include for-desktop {
       flex-direction: row;
     }
-  }
-
-  &__heading {
-    margin-right: t.$space-medium;
   }
 
   &__actions {
@@ -44,13 +35,6 @@
       @include for-desktop {
         float: right;
       }
-    }
-  }
-
-  &__description {
-    margin-top: t.$space-small;
-    @include for-desktop {
-      margin-top: t.$space-default;
     }
   }
 

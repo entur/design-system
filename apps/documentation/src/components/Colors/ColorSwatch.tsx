@@ -3,7 +3,7 @@ import { colors, space } from '@entur/tokens';
 import hexrgb from 'hex-rgb';
 import { BaseCard } from '@entur/layout';
 import { GridItem } from '@entur/grid';
-import { Heading4 } from '@entur/typography';
+import { Heading, Text } from '@entur/typography/beta';
 import { formatVariable } from '../../utils/formatVariable';
 import { useSettings } from '@providers/SettingsContext';
 import { useColorContext } from '@providers/ColorProvider';
@@ -45,7 +45,7 @@ const ColorSwatch: React.FC<Props> = ({
   const { setChosenColor } = useColorContext();
   return (
     <GridItem small={6} medium={4}>
-      {topLabel && <div className="eds-label">{topLabel}</div>}
+      {topLabel && <Text variant="label">{topLabel}</Text>}
       <BaseCard
         className="color-swatch"
         as="button"
@@ -67,13 +67,9 @@ const ColorSwatch: React.FC<Props> = ({
           style={{ backgroundColor: backgroundColor, ...style }}
         />
         <div className="color-description">
-          <Heading4
-            as="h3"
-            margin="none"
-            style={{ textTransform: 'capitalize' }}
-          >
-            {title}
-          </Heading4>
+          <Heading as="h3" variant="subtitle-2">
+            {title.charAt(0).toUpperCase() + title.slice(1)}
+          </Heading>
           <div style={{ textTransform: 'uppercase' }}>{backgroundColor}</div>
         </div>
       </BaseCard>

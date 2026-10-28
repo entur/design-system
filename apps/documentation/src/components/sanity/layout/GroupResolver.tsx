@@ -4,8 +4,6 @@ import { PortableText } from '../PortableText';
 import { GridContainer, GridItem } from '@entur/grid';
 import { GroupType } from '../types';
 
-import './Group.scss';
-
 type Props = {
   value: GroupType;
 };
@@ -31,7 +29,11 @@ export const GroupResolver = ({ value }: Props) => {
           small={12}
           medium={mediumSize}
         >
-          <PortableText value={block} />
+          {/* One block per cell, so the card can fill the cell. Text blocks still need the rhythm inside them */}
+          <PortableText
+            value={block}
+            container={(block as any)._type === 'textBlocks'}
+          />
         </GridItem>
       ))}
     </GridContainer>
