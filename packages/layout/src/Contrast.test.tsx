@@ -1,26 +1,42 @@
-import { render } from '@testing-library/react';
-import { Contrast } from './Contrast';
+import { render, screen, within } from '@testing-library/react';
+import { describeComponentContract } from '../../../tests/jest/componentContract';
+import { Contrast, useContrast } from './Contrast';
 
-test('Contrast component adds the eds-contrast class', () => {
-  const { container } = render(
-    <Contrast className="extra-class">Hello world</Contrast>,
-  );
-  expect(container.querySelector('.eds-contrast')).toBeTruthy();
-  expect(container.querySelector('.eds-contrast')).toHaveClass('extra-class');
-  expect(container.querySelector('.eds-contrast')).toHaveTextContent(
-    'Hello world',
-  );
+describeComponentContract('Contrast', {
+  render: props => <Contrast data-testid="contrast" {...props} />,
+  getElement: () => screen.getByTestId('contrast'),
+  baseClassName: 'eds-contrast',
+  refElement: HTMLDivElement,
+  as: 'nav',
 });
 
-test('Contrast component as-prop in use', () => {
-  const hrefLink = '#testerLink';
-  const { getByTestId } = render(
-    <Contrast as="a" href={hrefLink} data-testid="contrastId">
-      cool
-    </Contrast>,
-  );
-  const contrastComponent = getByTestId('contrastId');
+function ContrastConsumer() {
+  return <p>{useContrast() ? 'Contrast' : 'Standard'}</p>;
+}
 
-  expect(contrastComponent.nodeName).toBe('A');
-  expect(contrastComponent).toHaveAttribute('href', hrefLink);
+test('Contrast scopes context to descendants without leaking to siblings', () => {
+  render(
+    <>
+      <Contrast as="section" aria-label="Contrast region">
+        <ContrastConsumer />
+        <Contrast as="section" aria-label="Nested region">
+          <ContrastConsumer />
+        </Contrast>
+      </Contrast>
+      <section aria-label="Standard region">
+        <ContrastConsumer />
+      </section>
+    </>,
+  );
+
+  expect(
+    within(
+      screen.getByRole('region', { name: 'Contrast region' }),
+    ).getAllByText('Contrast'),
+  ).toHaveLength(2);
+  expect(
+    within(screen.getByRole('region', { name: 'Standard region' })).getByText(
+      'Standard',
+    ),
+  ).toBeInTheDocument();
 });

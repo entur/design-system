@@ -1,4 +1,5 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import React from 'react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Granularity } from '@react-types/datepicker';
 import {
@@ -128,12 +129,12 @@ describe('DatePicker', () => {
     ).toBeInTheDocument();
   });
 
-  test('sets focus to selected date on calendar button click', async () => {
-    const user = userEvent.setup();
+  test('focuses the selected date and locks focus in the open calendar', async () => {
     const spy = jest.fn();
+    const user = userEvent.setup();
     const currentDate = new CalendarDate(1997, 7, 10);
 
-    const { container } = render(
+    render(
       <DatePicker
         label="test"
         selectedDate={currentDate}
@@ -142,51 +143,27 @@ describe('DatePicker', () => {
       />,
     );
 
-    const openCalendarButton = container.getElementsByClassName(
-      'eds-datepicker__open-calendar-button',
-    )[0];
+    const openCalendarButton = screen.getByRole('button', {
+      name: /calendar/i,
+    });
 
     await user.click(openCalendarButton);
 
-    const selectedDateInCalendar = container.getElementsByClassName(
-      'eds-datepicker__calendar__grid__cell--selected',
-    )[0];
+    const selectedDateInCalendar = screen.getByRole('button', {
+      name: /^Thursday, 10 July 1997/,
+    });
     expect(selectedDateInCalendar).toHaveFocus();
-  });
-
-  test('applies focus lock when popover calendar is active', async () => {
-    const spy = jest.fn();
-    const user = userEvent.setup();
-    const currentDate = new CalendarDate(1997, 7, 10);
-
-    const { container } = render(
-      <DatePicker
-        label="test"
-        selectedDate={currentDate}
-        onChange={spy}
-        locale="en-GB"
-      />,
-    );
-
-    const openCalendarButton = container.getElementsByClassName(
-      'eds-datepicker__open-calendar-button',
-    )[0];
-
-    await user.click(openCalendarButton);
-
     await user.keyboard('{Tab}{Tab}{Tab}');
 
-    const selectedDateInCalendar = container.getElementsByClassName(
-      'eds-datepicker__calendar__grid__cell--selected',
-    )[0];
     expect(selectedDateInCalendar).toHaveFocus();
   }, 10000);
 
-  test('closes calendar popover on escape key', () => {
+  test('opens calendar with the keyboard and closes it on Escape', async () => {
+    const user = userEvent.setup();
     const spy = jest.fn();
     const currentDate = new CalendarDate(1997, 7, 10);
 
-    const { container } = render(
+    render(
       <DatePicker
         label="test"
         selectedDate={currentDate}
@@ -195,26 +172,11 @@ describe('DatePicker', () => {
       />,
     );
 
-    const openCalendarButton = container.getElementsByClassName(
-      'eds-datepicker__open-calendar-button',
-    )[0];
-
-    fireEvent(
-      openCalendarButton,
-      new MouseEvent('click', {
-        bubbles: true,
-      }),
-    );
-
-    const selectedDateInCalendar = container.getElementsByClassName(
-      'eds-datepicker__calendar__grid__cell--selected',
-    )[0];
-
-    fireEvent.keyDown(selectedDateInCalendar, {
-      key: 'Escape',
-      code: 'Escape',
-    });
-    expect(selectedDateInCalendar).not.toBeInTheDocument();
+    await user.tab();
+    await user.keyboard('{Alt>}{ArrowDown}{/Alt}');
+    expect(screen.getByRole('grid')).toBeInTheDocument();
+    await user.keyboard('{Escape}');
+    expect(screen.queryByRole('grid')).not.toBeInTheDocument();
   });
 
   test("doesn't violate basic accessibility requirements", async () => {
@@ -761,6 +723,61 @@ describe('ARIA roles on feedback text', () => {
   });
 });
 
-test('Timezones should always be UTC', () => {
-  expect(new Date().getTimezoneOffset()).toBe(0);
+test('DateField clamps a leap day on blur after changing year and clears through the keyboard', async () => {
+  const user = userEvent.setup();
+  const onChange = jest.fn<void, [CalendarDate | null]>();
+  function Consumer() {
+    const [date, setDate] = React.useState<CalendarDate | null>(
+      new CalendarDate(2024, 2, 29),
+    );
+    return (
+      <DateField
+        label="Departure"
+        selectedDate={date}
+        locale="en-GB"
+        onChange={value => {
+          onChange(value);
+          setDate(value);
+        }}
+      />
+    );
+  }
+  render(<Consumer />);
+  await user.click(screen.getByRole('spinbutton', { name: 'year, Departure' }));
+  await user.keyboard('{ArrowUp}');
+  await user.tab();
+  expect(onChange).toHaveBeenLastCalledWith(new CalendarDate(2025, 2, 28));
+  expect(
+    screen.getByRole('spinbutton', { name: 'day, Departure' }),
+  ).toHaveTextContent('28');
+  await user.click(screen.getByRole('spinbutton', { name: 'year, Departure' }));
+  await user.keyboard(
+    '{Backspace>4/}{ArrowLeft}{Backspace>2/}{ArrowLeft}{Backspace>2/}',
+  );
+  expect(onChange).toHaveBeenLastCalledWith(null);
 });
+
+// Bug: useDatePickerGroup opens on Alt+ArrowDown without checking disabled/readOnly.
+test.failing.each(['disabled', 'readOnly'] as const)(
+  'DatePicker %s prevents editing and opening the calendar',
+  async mode => {
+    const user = userEvent.setup();
+    const onChange = jest.fn<void, [CalendarDate | null]>();
+    render(
+      <DatePicker
+        label="Departure"
+        selectedDate={new CalendarDate(2024, 2, 29)}
+        onChange={onChange}
+        locale="en-GB"
+        {...{ [mode]: true }}
+      />,
+    );
+    expect(
+      screen.queryByRole('button', { name: /calendar/i }),
+    ).not.toBeInTheDocument();
+    await user.click(screen.getByText('29'));
+    await user.keyboard('{ArrowUp}{Delete}{Alt>}{ArrowDown}{/Alt}');
+    expect(screen.queryByRole('grid')).not.toBeInTheDocument();
+    expect(onChange).not.toHaveBeenCalled();
+  },
+);

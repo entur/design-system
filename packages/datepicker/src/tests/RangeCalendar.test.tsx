@@ -1,3 +1,4 @@
+import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { CalendarDate } from '@internationalized/date';
@@ -80,7 +81,10 @@ describe('RangeCalendar', () => {
     });
     await user.click(endCell);
 
-    expect(onChange).toHaveBeenCalled();
+    expect(onChange).toHaveBeenCalledWith({
+      start: new CalendarDate(2023, 9, 6),
+      end: new CalendarDate(2023, 9, 8),
+    });
   });
 
   test('navigates to previous month when left arrow is clicked', async () => {
@@ -109,18 +113,13 @@ describe('RangeCalendar', () => {
     ).toBeInTheDocument();
   });
 
-  test('renders two month headers when visibleDuration is 2 months', () => {
+  test('renders two month headers and grids when visibleDuration is 2 months', () => {
     render(<RangeCalendar {...defaultProps} visibleDuration={{ months: 2 }} />);
 
     const headings = screen.getAllByRole('heading');
     expect(headings.length).toBe(2);
     expect(headings[0]).toHaveTextContent('September 2023');
     expect(headings[1]).toHaveTextContent('October 2023');
-  });
-
-  test('renders two grids when visibleDuration is 2 months', () => {
-    render(<RangeCalendar {...defaultProps} visibleDuration={{ months: 2 }} />);
-
     const grids = screen.getAllByRole('grid');
     expect(grids.length).toBe(2);
   });
@@ -194,22 +193,6 @@ describe('RangeCalendar', () => {
     render(<RangeCalendar {...defaultProps} onValidate={onValidate} />);
 
     expect(onValidate).toHaveBeenCalled();
-  });
-
-  test('applies custom className', () => {
-    const { container } = render(
-      <RangeCalendar {...defaultProps} className="custom-class" />,
-    );
-
-    expect(container.firstChild).toHaveClass('custom-class');
-  });
-
-  test('applies custom style', () => {
-    const { container } = render(
-      <RangeCalendar {...defaultProps} style={{ backgroundColor: 'red' }} />,
-    );
-
-    expect(container.firstChild).toHaveStyle({ backgroundColor: 'red' });
   });
 
   test('renders with Norwegian locale', () => {
@@ -296,5 +279,21 @@ describe('RangeCalendar', () => {
     const { container } = render(<RangeCalendar {...defaultProps} />);
     const results = await axe(container);
     expect(results).toHaveNoViolations();
+  });
+  test('merges className, forwards style and resolves calendarRef to the calendar container', () => {
+    const calendarRef = React.createRef<HTMLDivElement>();
+    const { container } = render(
+      <RangeCalendar
+        {...defaultProps}
+        className="custom-class"
+        style={{ backgroundColor: 'red' }}
+        calendarRef={calendarRef}
+      />,
+    );
+    const calendar = container.firstElementChild;
+    expect(calendar).toHaveClass('eds-datepicker__calendar', 'custom-class');
+    expect(calendar).toHaveStyle({ backgroundColor: 'red' });
+    expect(calendarRef.current).toBe(calendar);
+    expect(calendar).toContainElement(screen.getByRole('grid'));
   });
 });

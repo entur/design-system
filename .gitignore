@@ -23,6 +23,8 @@ node_modules
 # Testing/coverage
 coverage
 *.snap
+/test-results/
+/playwright-report/
 
 # OS
 .DS_Store

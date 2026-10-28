@@ -1,4 +1,5 @@
-import { act, render, screen, waitFor } from '@testing-library/react';
+import React from 'react';
+import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import { DropdownItemType, SearchableDropdown } from '..';
@@ -16,18 +17,6 @@ describe('SearchableDropdown', () => {
     'Leknes',
     'Brønnøysund',
   ];
-
-  test('is displayed with label', () => {
-    render(
-      <SearchableDropdown
-        label="test label"
-        items={testItems}
-        selectedItem={null}
-      />,
-    );
-
-    expect(screen.queryAllByLabelText('test label')[0]).toBeInTheDocument();
-  });
 
   test('can select element with mouse', async () => {
     const user = userEvent.setup();
@@ -53,7 +42,8 @@ describe('SearchableDropdown', () => {
     });
   });
 
-  test('selectedItem placeholder is correctly displayed on initial launch', async () => {
+  test('displays the initial selection and offers it as a placeholder when editing', async () => {
+    const user = userEvent.setup();
     const onChange = jest.fn();
     const selectedItem = { label: testItems[0], value: testItems[0] };
     render(
@@ -66,12 +56,12 @@ describe('SearchableDropdown', () => {
     );
 
     const inputField = screen.getByRole('combobox', { name: 'test label' });
-    const selectedItemPlaceholder = document.getElementsByClassName(
-      'eds-dropdown--searchable__selected-item',
-    )?.[0];
-
+    expect(screen.getByText(selectedItem.label)).toBeVisible();
     expect(inputField).toHaveValue('');
-    expect(selectedItemPlaceholder).toHaveTextContent(selectedItem.label);
+    await user.click(screen.getByText(selectedItem.label));
+    expect(inputField).toHaveFocus();
+    expect(inputField).toHaveAttribute('placeholder', selectedItem.label);
+    expect(onChange).not.toHaveBeenCalled();
   });
 
   test('can select element with keyboard', async () => {
@@ -86,8 +76,7 @@ describe('SearchableDropdown', () => {
       />,
     );
 
-    const inputField = screen.getByRole('combobox', { name: 'test label' });
-    inputField.focus();
+    await user.tab();
     await user.keyboard('{ }'); // open dropdown list
 
     await user.keyboard('{ArrowDown}{ArrowDown}{ArrowDown}{Enter}');
@@ -162,10 +151,13 @@ describe('SearchableDropdown', () => {
     expect(dropdownList).toBeVisible();
     await user.keyboard('{ }');
     expect(dropdownList).toBeVisible();
+    onChange.mockClear();
 
     // close on esc
     await user.keyboard('{Escape}');
     expect(dropdownList).not.toBeVisible();
+    expect(inputField).toHaveFocus();
+    expect(onChange).not.toHaveBeenCalled();
 
     // open on type
     await user.keyboard('{b}');
@@ -177,8 +169,10 @@ describe('SearchableDropdown', () => {
     expect(dropdownList).toBeVisible();
 
     // close on tab
-    await user.keyboard('{Tab}');
+    await user.tab();
     expect(dropdownList).not.toBeVisible();
+    expect(inputField).not.toHaveFocus();
+    expect(onChange).not.toHaveBeenCalled();
   });
 
   test('handles typeahead filter correctly', async () => {
@@ -209,7 +203,6 @@ describe('SearchableDropdown', () => {
       screen.queryByRole('option', { name: 'Bergen' }),
     ).not.toBeInTheDocument();
 
-    // since we are updating state with typeahead we need to wrap this section in 'act'
     await user.keyboard('{b}');
 
     await waitFor(() => screen.getByRole('option', { name: 'Bergen' }), {
@@ -229,32 +222,36 @@ describe('SearchableDropdown', () => {
     ).not.toBeInTheDocument();
   });
 
-  test('works with default itemFilter', async () => {
+  test('recovers from an unmatched search and selects a restored result', async () => {
     const user = userEvent.setup();
+    const onChange = jest.fn();
     render(
       <SearchableDropdown
         label="test label"
         items={testItems}
         selectedItem={null}
+        onChange={onChange}
+        noMatchesText="No matching cities"
       />,
     );
 
     const inputField = screen.getByRole('combobox', { name: 'test label' });
-    inputField.focus();
-    await user.keyboard('{ }'); // open dropdown list
+    await user.type(inputField, 'unknown city');
+    expect(screen.getByText('No matching cities')).toBeVisible();
+    expect(screen.queryByRole('option')).not.toBeInTheDocument();
+    expect(onChange).not.toHaveBeenCalled();
 
-    expect(
-      screen.queryByRole('option', { name: 'Kristiansund' }),
-    ).toBeInTheDocument();
+    await user.clear(inputField);
+    expect(screen.queryByText('No matching cities')).not.toBeInTheDocument();
+    expect(screen.getAllByRole('option')).toHaveLength(testItems.length);
 
-    await user.keyboard('{b}');
-
-    expect(
-      screen.queryByRole('option', { name: 'Bergen' }),
-    ).toBeInTheDocument();
-    expect(
-      screen.queryByRole('option', { name: 'Kristiansund' }),
-    ).not.toBeInTheDocument();
+    await user.type(inputField, 'BER');
+    expect(screen.getAllByRole('option')).toHaveLength(1);
+    expect(screen.getByRole('option', { name: 'Bergen' })).toBeVisible();
+    await user.keyboard('{Enter}');
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(onChange).toHaveBeenCalledWith({ label: 'Bergen', value: 'Bergen' });
+    expect(screen.queryByRole('listbox')).not.toBeInTheDocument();
   });
 
   test('works with custom itemFilter', async () => {
@@ -310,19 +307,6 @@ describe('SearchableDropdown', () => {
     await user.keyboard('{Tab}');
 
     expect(onChange).toBeCalledWith({ label: 'Oslo', value: 'Oslo' });
-  });
-
-  test('displays selected item', () => {
-    const selectedItem = { label: 'selected', value: 'selected' };
-    render(
-      <SearchableDropdown
-        label="test label"
-        items={testItems}
-        selectedItem={selectedItem}
-      />,
-    );
-
-    expect(screen.queryByText(selectedItem.label)).toBeInTheDocument();
   });
 
   test('clearable button clears selected item', async () => {
@@ -426,36 +410,6 @@ describe('SearchableDropdown', () => {
     expect(listItems).toHaveLength(testItems.length);
   }, 1500);
 
-  test('applies className to eds-dropdown element', () => {
-    const { container } = render(
-      <SearchableDropdown
-        label="test label"
-        items={testItems}
-        selectedItem={null}
-        className="custom-class"
-      />,
-    );
-
-    const edsDropdownElement =
-      container.getElementsByClassName('eds-dropdown')[0];
-    expect(edsDropdownElement).toHaveClass('custom-class');
-  });
-
-  test('applies listStyle to list element', () => {
-    const { container } = render(
-      <SearchableDropdown
-        label="test label"
-        items={testItems}
-        selectedItem={null}
-        listStyle={{ color: 'pink' }}
-      />,
-    );
-
-    const listElement =
-      container.getElementsByClassName('eds-dropdown__list')[0];
-    expect(listElement).toHaveStyle({ color: 'pink' });
-  });
-
   test('does not violate basic accessibility', async () => {
     const selectedItem = { label: 'choice1', value: 'choice1' };
     const { container } = render(
@@ -474,7 +428,7 @@ describe('SearchableDropdown', () => {
     test.each(['negative', 'error'] as const)(
       'is true for %s variant',
       variant => {
-        const { container } = render(
+        render(
           <SearchableDropdown
             label="test label"
             items={testItems}
@@ -484,15 +438,14 @@ describe('SearchableDropdown', () => {
           />,
         );
 
-        expect(container.querySelector('input')).toHaveAttribute(
-          'aria-invalid',
-          'true',
-        );
+        expect(
+          screen.getByRole('combobox', { name: 'test label' }),
+        ).toHaveAttribute('aria-invalid', 'true');
       },
     );
 
     test('is false for warning variant', () => {
-      const { container } = render(
+      render(
         <SearchableDropdown
           label="test label"
           items={testItems}
@@ -502,10 +455,59 @@ describe('SearchableDropdown', () => {
         />,
       );
 
-      expect(container.querySelector('input')).toHaveAttribute(
-        'aria-invalid',
-        'false',
-      );
+      expect(
+        screen.getByRole('combobox', { name: 'test label' }),
+      ).toHaveAttribute('aria-invalid', 'false');
     });
+  });
+  test('forwards className and style to the container and merges its own classes', () => {
+    const { container } = render(
+      <SearchableDropdown
+        label="test label"
+        items={testItems}
+        selectedItem={null}
+        className="custom-class"
+        style={{ marginTop: '7px' }}
+      />,
+    );
+    const outer = container.firstElementChild;
+    expect(outer).toHaveClass(
+      'eds-dropdown',
+      'eds-dropdown--searchable',
+      'custom-class',
+    );
+    expect(outer).toHaveStyle({ marginTop: '7px' });
+  });
+
+  test('forwards rest props to the field wrapper and ref to the input', () => {
+    const ref = React.createRef<HTMLInputElement>();
+    render(
+      <SearchableDropdown
+        label="test label"
+        items={testItems}
+        selectedItem={null}
+        data-testid="field"
+        ref={ref}
+      />,
+    );
+    const combobox = screen.getByRole('combobox', { name: 'test label' });
+    const field = screen.getByTestId('field');
+    expect(field).toHaveClass('eds-form-control-wrapper');
+    expect(field).toContainElement(combobox);
+    expect(ref.current).toBe(combobox);
+  });
+
+  test('applies listStyle to the list', async () => {
+    const user = userEvent.setup();
+    render(
+      <SearchableDropdown
+        label="test label"
+        items={testItems}
+        selectedItem={null}
+        listStyle={{ color: 'pink' }}
+      />,
+    );
+    await user.click(screen.getByRole('combobox', { name: 'test label' }));
+    expect(screen.getByRole('listbox')).toHaveStyle({ color: 'pink' });
   });
 });

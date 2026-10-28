@@ -1,10 +1,42 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import { describeComponentContract } from '../../../../../tests/jest/componentContract';
 import { Flex } from './Flex';
 import { FlexSpacer } from './FlexSpacer';
 
-test('Flex renders with class', () => {
+describeComponentContract('Flex', {
+  render: props => <Flex data-testid="flex" {...props} />,
+  getElement: () => screen.getByTestId('flex'),
+  baseClassName: 'eds-layout-flex',
+  refElement: HTMLDivElement,
+  as: 'nav',
+});
+
+describeComponentContract('FlexSpacer', {
+  render: props => <FlexSpacer data-testid="spacer" {...props} />,
+  getElement: () => screen.getByTestId('spacer'),
+  baseClassName: 'eds-layout-flex-spacer',
+  as: 'span',
+});
+
+test('Flex sets no gap vars by default', () => {
   const { getByTestId } = render(<Flex data-testid="flex" />);
-  expect(getByTestId('flex')).toHaveClass('eds-layout-flex');
+  const el = getByTestId('flex');
+  expect(el.style.getPropertyValue('--flex-gap-base')).toBe('');
+  expect(el.style.getPropertyValue('--flex-row-gap-base')).toBe('');
+  expect(el.style.getPropertyValue('--flex-column-gap-base')).toBe('');
+});
+
+test('Flex lets rowGap and columnGap override gap', () => {
+  const { getByTestId } = render(
+    <Flex data-testid="flex" gap="m" rowGap="xs" columnGap="lg" />,
+  );
+  const el = getByTestId('flex');
+  expect(el.style.getPropertyValue('--flex-row-gap-base')).toBe(
+    'var(--spacing-xs)',
+  );
+  expect(el.style.getPropertyValue('--flex-column-gap-base')).toBe(
+    'var(--spacing-lg)',
+  );
 });
 
 test('Flex sets display', () => {
@@ -89,6 +121,15 @@ test('FlexSpacer renders with presentation semantics', () => {
   const { getByTestId } = render(<FlexSpacer data-testid="spacer" />);
   const spacer = getByTestId('spacer');
   expect(spacer).toHaveClass('eds-layout-flex-spacer');
+  expect(spacer).toHaveAttribute('role', 'presentation');
+  expect(spacer).toHaveAttribute('aria-hidden', 'true');
+});
+
+test('FlexSpacer keeps presentation semantics over consumer ARIA', () => {
+  const { getByTestId } = render(
+    <FlexSpacer data-testid="spacer" role="separator" aria-hidden={false} />,
+  );
+  const spacer = getByTestId('spacer');
   expect(spacer).toHaveAttribute('role', 'presentation');
   expect(spacer).toHaveAttribute('aria-hidden', 'true');
 });
