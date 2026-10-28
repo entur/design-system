@@ -20,6 +20,15 @@ export type BasePageHeaderProps = {
   tag?: string;
 };
 
+// Component names like BreadcrumbNavigation may wrap between their words
+const withWordBreaks = (title: string) =>
+  title.split(/(?<=[a-z])(?=[A-Z])/).map((part, index) => (
+    <React.Fragment key={index}>
+      {index > 0 && <wbr />}
+      {part}
+    </React.Fragment>
+  ));
+
 export const BasePageHeader: React.FC<BasePageHeaderProps> = ({
   title,
   subcategory,
@@ -37,8 +46,9 @@ export const BasePageHeader: React.FC<BasePageHeaderProps> = ({
           </Text>
         </div>
       )}
+      {/* Below s the links go under the title, so a long title gets the full width */}
       <Grid
-        templateColumns="auto auto"
+        templateColumns={{ base: 'minmax(0, 1fr)', s: 'minmax(0, 1fr) auto' }}
         templateRows="auto auto"
         gap="none"
         rowGap="s"
@@ -55,18 +65,28 @@ export const BasePageHeader: React.FC<BasePageHeaderProps> = ({
           align="baseline"
           gap="m"
         >
-          <Heading as="h1" variant="title-1">
-            {title}
+          <Heading as="h1" variant="title-1" className="page-header__title">
+            {withWordBreaks(title)}
           </Heading>
           {tag && <ArticleTag tag={tag} />}
         </Grid.Item>
         <Grid.Item colStart={1} colEnd={2} rowStart={2} rowEnd={-1}>
           {npmPackage && <NpmTag packageName={npmPackage} tag={tag} />}
         </Grid.Item>
-        <Grid.Item colStart={2} colEnd={-1} rowStart={1} rowEnd={-1}>
-          <Flex direction="column" align="end" gap="xs">
+        <Grid.Item
+          colStart={{ base: 1, s: 2 }}
+          colEnd={{ base: 2, s: 3 }}
+          rowStart={{ base: 3, s: 1 }}
+          rowEnd={{ base: 4, s: 3 }}
+        >
+          <Flex direction="column" align={{ base: 'start', s: 'end' }} gap="xs">
             {npmPackage && <PackageChangelog packageName={npmPackage} />}
-            <Flex direction="row" gap="2xs" wrap="wrap" justify="end">
+            <Flex
+              direction="row"
+              gap="2xs"
+              wrap="wrap"
+              justify={{ base: 'start', s: 'end' }}
+            >
               {npmPackage && (
                 <a
                   className="ds-npm-tag"
