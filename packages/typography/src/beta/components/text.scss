@@ -2,13 +2,32 @@
 // These styles may have breaking changes in future releases
 
 @use '@entur/tokens/dist/styles' as t;
-@use '@entur/utils/dist/breakpoints' as breakpoints;
 
 @layer components.primitives {
+  // Code in hyphenated text keeps its words whole
+  :where(.eds-text, .eds-text-container) :where(code, kbd, samp, pre) {
+    hyphens: manual;
+  }
+
   .eds-text {
     color: var(--components-typography-basetext-standard-text-accent);
     font-weight: var(--font-weight-body);
     text-wrap: pretty;
+
+    // Running text breaks long words, with a hyphen where the page sets a Norwegian lang.
+    // UI text keeps its words whole, so a name cut off with an ellipsis stays on one line.
+    &--leading,
+    &--paragraph,
+    &--subparagraph,
+    &--quote,
+    &--unordered-list,
+    &--numbered-list {
+      overflow-wrap: break-word;
+
+      &:where(:lang(nb), :lang(nn), :lang(no)) {
+        hyphens: auto;
+      }
+    }
 
     :where(.eds-contrast) & {
       color: var(--components-typography-basetext-contrast-text-accent);
@@ -79,10 +98,10 @@
     &--code,
     &--preformatted {
       background-color: var(--components-typography-codetext-standard-fill);
-      color: inherit;
       font-family: var(--font-family-mono);
       font-size: 0.875em;
       font-weight: inherit;
+      hyphens: manual;
 
       :where(.eds-contrast) & {
         background-color: var(--components-typography-codetext-contrast-fill);
@@ -94,22 +113,17 @@
       }
     }
 
+    // Inline code takes the colour of the text around it, a block keeps the text colour
     &--code {
+      color: inherit;
       border-radius: t.$border-radiuses-medium;
       padding: 0.125em 0.3em;
       box-decoration-break: clone;
       overflow-wrap: break-word;
 
-      // The fill covers the underline that eds-text--link draws as a background
+      // End the fill above the link's line, so the line and its hover show below the code
       :where(.eds-text--link) & {
-        background-image: linear-gradient(currentcolor, currentcolor);
-        background-position: 0 100%;
-        background-repeat: no-repeat;
-        background-size: 100% 0.125rem;
-      }
-
-      :where(.eds-text--link:hover) & {
-        animation: eds-link-underline 0.3s ease-in;
+        padding-block-end: 0;
       }
     }
 
@@ -125,6 +139,18 @@
         background: none;
         font: inherit;
         padding: 0;
+      }
+    }
+
+    // Text inside other text keeps its look; size and weight still apply, since they follow
+    &--inherit {
+      color: inherit;
+      font-weight: inherit;
+      hyphens: inherit;
+
+      // A heading element takes the size around it too, not the browser's
+      &:where(h1, h2, h3, h4, h5, h6) {
+        font-size: inherit;
       }
     }
 
@@ -171,43 +197,54 @@
         color: var(--components-typography-basetext-contrast-text-accent);
       }
 
+      // A thin line, and a thicker one that sweeps in over it on hover. Both sit .275em below the baseline;
+      // the padding makes room for them below the letters.
       &,
       &:where(:link),
       &:where(:visited) {
         font-size: inherit;
         text-decoration: none;
         position: relative;
-        background-image: linear-gradient(
-          120deg,
-          var(--components-typography-basetext-standard-text-accent) 0%,
-          var(--components-typography-basetext-standard-text-accent) 100%
-        );
+        padding-block-end: 0.1em;
+        background-image: linear-gradient(currentcolor, currentcolor), linear-gradient(currentcolor, currentcolor);
+        background-position: 0 100%, 0 calc(100% - 0.0625em);
         background-repeat: no-repeat;
-        background-size: 100% 0.125rem;
-        background-position: 0 100%;
+        background-size: 0% 0.125em, 100% 0.0625em;
 
-        :where(.eds-contrast) & {
-          background-image: linear-gradient(
-            120deg,
-            var(--components-typography-basetext-contrast-text-accent) 0%,
-            var(--components-typography-basetext-contrast-text-accent) 100%
-          );
+        @media (prefers-reduced-motion: no-preference) {
+          transition: background-size 0.3s ease-out;
+        }
+
+        // Forced colors remove background images, so fall back to a real underline
+        @media (forced-colors: active) {
+          background-image: none;
+          text-decoration: underline;
         }
       }
 
       &:where(:hover) {
-        animation: eds-link-underline 0.3s ease-in;
+        background-size: 100% 0.125em, 100% 0.0625em;
         cursor: pointer;
       }
 
-      @keyframes eds-link-underline {
-        from {
-          background-size: 0% 0.125rem;
-        }
+      // A button doesn't break across lines like text, so it gets an underline in the same place, without the sweep
+      &:where(button) {
+        appearance: none;
+        background: none;
+        border: 0;
+        border-radius: 0;
+        padding: 0;
+        font: inherit;
+        letter-spacing: inherit;
+        text-align: inherit;
+        text-decoration: underline;
+        text-decoration-thickness: 0.0625em;
+        text-underline-offset: 0.275em;
+        text-decoration-skip-ink: none;
+      }
 
-        to {
-          background-size: 100% 0.125rem;
-        }
+      &:where(button:hover) {
+        text-decoration-thickness: 0.125em;
       }
 
       &:where(:focus-visible) {
@@ -218,19 +255,6 @@
 
         :where(.eds-contrast) & {
           outline-color: var(--basecolors-stroke-focus-contrast);
-        }
-      }
-
-      @include breakpoints.for-desktop {
-        font-size: t.$font-sizes-large;
-        line-height: t.$line-heights-extra-large;
-      }
-
-      &--ext-icon {
-        margin-left: t.$space-extra-small2;
-
-        p & {
-          top: 0;
         }
       }
     }
@@ -390,4 +414,13 @@
     content: counter(list-item, upper-roman);
   }
   // stylelint-enable selector-class-pattern
+
+  // Last, so the tone wins over the colour of every variant
+  .eds-text--tone-subdued {
+    color: var(--components-typography-basetext-standard-text-subdued);
+
+    :where(.eds-contrast) & {
+      color: var(--components-typography-basetext-contrast-text-subdued);
+    }
+  }
 }

@@ -73,8 +73,15 @@ For each override from step 1, check it against "CSS class names" in [references
 - **Margins that add space** (`margin-top: 3rem` on a heading): move to `spacing` on the component, or to `gap` on its layout.
 - **Inline `style`** with `margin`: move to `spacing`. With `fontWeight`: move to `weight` on `Text`. Headings are already bold, so remove `fontWeight: 600` on `Heading` and ask the user about `500`, which is not a heading style. Remove it on `Link` and `Label`, which follow their own style.
 - **Colours and the rest:** rename the selector.
+- **Global element rules and resets**, also ones that never targeted typography: they now win over the new components (see "CSS class names" in beta-changes.md). Find them, including CSS-in-JS globals (`createGlobalStyle`, `Global`):
 
-**Done when:** every override has been kept, renamed or removed, with a reason.
+  ```bash
+  grep -rnE "^(\*|a|p|h[1-6]|ul|ol|li|blockquote|code|pre|label|figcaption)(\s*[,{]|:[a-z]|\s*$)" --include='*.css' --include='*.scss' --include='*.less' "${CODE[@]}" $SRC
+  ```
+
+  It only finds rules at the start of a line. Rules nested in a class in SCSS (`.header { a { … } }`) are scoped and fine. Remove what the components now cover. Move the rest: resets into `@layer core.reset`, element styles into `@layer core.base`, with the layer order lines first in the app's first stylesheet. The recipe is in [the CSS layers guide](https://raw.githubusercontent.com/entur/design-system/main/skills/entur-web-development/references/css-layers.md), section "The beta typography and your global CSS".
+
+**Done when:** every override has been kept, renamed or removed, with a reason, and no unlayered global rule hits `*`, `a`, `p`, headings, lists or `code`.
 
 ### 8. Verify
 
@@ -83,11 +90,11 @@ npx tsc --noEmit
 npm run build
 npm test
 grep -rnE "variant=['\"](code-text|preformatted-text|link)['\"]|spacing=['\"](xs2|sm|md|[a-z0-9]+-(top|bottom))['\"]" "${CODE[@]}" $SRC
-# No margin on the new components. Skip matches on old components from @entur/typography, which still take it
-grep -rnE "<(Heading|Text|Link)\b[^>]*margin=" "${CODE[@]}" $SRC
+# No margin or external on the new components. Skip matches on old components from @entur/typography, which still take them
+grep -rnE "<(Heading|Text|Link)\b[^>]*margin=|<Link\b[^>]*\bexternal\b" "${CODE[@]}" $SRC
 ```
 
-Then look at the pages with the most text and the most UI text in the browser, in each `data-view-mode` the project uses.
+Then look at the pages with the most text and the most UI text in the browser, in each `data-view-mode` the project uses. No space between texts in a `TextContainer`, a double underline on links or headings that ignore `variant` mean a global rule from step 7 still wins. In development the console then shows a warning starting with `@entur/typography: global CSS in your app` that names the rules.
 
 **Done when:** build, type-check and tests pass, the grep finds nothing, and the user has seen the key pages.
 

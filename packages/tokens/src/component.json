@@ -6363,10 +6363,22 @@
             "rootAlias": "White/Alpha-100"
           },
           {
+            "name": "Components/typography/Base text/Contrast/Text-Subdued",
+            "value": "#d9dae8",
+            "var": "Text/SubduedAlt",
+            "rootAlias": "Blue/30"
+          },
+          {
             "name": "Components/typography/Base text/Standard/Text-Accent",
             "value": "#181c56",
             "var": "Text/Accent",
             "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/typography/Base text/Standard/Text-Subdued",
+            "value": "#626493",
+            "var": "Text/Subdued",
+            "rootAlias": "Blue/70"
           },
           {
             "name": "Components/typography/Blockquote/Contrast/Stroke",
@@ -13075,10 +13087,22 @@
             "rootAlias": "Ebony/10"
           },
           {
+            "name": "Components/typography/Base text/Contrast/Text-Subdued",
+            "value": "#b3b4bd",
+            "var": "Text/DarkAlt",
+            "rootAlias": "Ebony/30"
+          },
+          {
             "name": "Components/typography/Base text/Standard/Text-Accent",
             "value": "#e5e5e9",
             "var": "Text/LightAlt",
             "rootAlias": "Ebony/10"
+          },
+          {
+            "name": "Components/typography/Base text/Standard/Text-Subdued",
+            "value": "#b3b4bd",
+            "var": "Text/DarkAlt",
+            "rootAlias": "Ebony/30"
           },
           {
             "name": "Components/typography/Blockquote/Contrast/Stroke",

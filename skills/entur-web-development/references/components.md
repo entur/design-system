@@ -97,6 +97,40 @@ import { Heading1, Heading2, Paragraph, LeadParagraph, SmallText, Label, SubLabe
 <Link href="/hjelp">Trenger du hjelp?</Link>
 ```
 
+### Running text with `@entur/typography/beta`
+
+Text components in the new typography have no margins. Put running text (articles, help pages, terms, rich text from a CMS) in a `TextContainer`, which spaces its children like the Figma text styles. Outside it, use `Flex gap` or `spacing`.
+
+```tsx
+import {
+  TextContainer,
+  Heading,
+  Text,
+  UnorderedList,
+  ListItem,
+} from '@entur/typography/beta';
+
+<TextContainer>
+  <Heading as="h2" variant="title-2">
+    Før du reiser
+  </Heading>
+  <Text variant="paragraph">Sjekk dette før avgang:</Text>
+  <UnorderedList>
+    <ListItem>Gyldig billett</ListItem>
+  </UnorderedList>
+</TextContainer>;
+```
+
+- The gap between two elements is the first one's space after plus the second one's space before (more above a heading, except right after another heading or an `overline`), the same sum as auto layout in Figma. Each gap is one top margin, so nothing collapses.
+- Only direct children are spaced: wrap the element whose children are the text blocks. Raw `h1`–`h6`, `p`, lists, `blockquote` and `pre` (Markdown, CMS HTML) get the same rhythm. Other elements get the paragraph space, and tables and loose text get the body text style. Inline elements, buttons, floats and loose text behave as normal text.
+- Adjust a gap with `spacing` on the child, not with CSS margins: `{ top }` replaces the space before, `{ bottom }` the space after. Project CSS is unlayered and wins over the rhythm. If both sides of a gap set `spacing`, the larger one wins.
+- Global element rules in the app (`* { margin: 0 }`, `a { … }`, `p { margin }`, `h2 { font-size }`) also win over the typography components: the gaps disappear, links get a double underline, headings ignore `variant`. Move them into `core.reset` or `core.base`, see [css-layers.md](css-layers.md#the-beta-typography-and-your-global-css).
+- Group a heading with an overline or subtitle in `hgroup`: it is spaced as one heading, and its children get the same rhythm inside.
+- A heading that links somewhere: put the link inside the heading, `<Heading as="h2"><Link href="/billetter">Billetter</Link></Heading>`. The link takes the heading's size. Never `Heading as="a"`, which removes the heading from the outline that screen readers navigate by (WCAG 1.3.1). A router link goes in `Link as={RouterLink}`.
+- A paragraph right before a list is close to it, since it usually introduces the list. If it doesn't, give the paragraph `spacing={{ bottom: 'xl' }}`.
+- Put an image, table or quote with its caption or source in `figure` + `figcaption`. The caption gets a small gap. A `caption` directly after an image or table gets the same gap without a `figure`.
+- Mark a decorative first child (an absolutely positioned background) `aria-hidden="true"`, so the first text gets no space above.
+
 Entur font: **Nationale** (licensed). In production apps, use the token-based font stack from `@entur/tokens`.
 
 ---

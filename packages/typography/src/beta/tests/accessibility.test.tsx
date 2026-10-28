@@ -41,9 +41,7 @@ describe('Accessibility', () => {
     const { container } = render(
       <>
         <Link href="/internal">Internal link</Link>
-        <Link href="/external" external>
-          External link
-        </Link>
+        <Link href="https://example.com">Example.com</Link>
       </>,
     );
 
@@ -79,10 +77,7 @@ describe('Accessibility', () => {
         </Heading>
         <Text variant="paragraph" spacing="s">
           This is a regular paragraph with some{' '}
-          <Link href="/reference" external>
-            external reference
-          </Link>{' '}
-          and{' '}
+          <Link href="/reference">reference</Link> and{' '}
           <Text variant="emphasized" as="span">
             emphasized text
           </Text>
