@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/entur/design-system/compare/@entur/fileupload@0.6.7...@entur/fileupload@0.7.0) (2026-10-28)
+
+### Features
+
+- **fileupload:** add a stylesheet without base tokens ([3ff8f03](https://github.com/entur/design-system/commit/3ff8f03e799c885a776670cdb6549f098a51346c))
+
+  Import @entur/fileupload/styles/no-base-tokens instead of @entur/fileupload/styles when your app already loads @entur/tokens/dist/base.css. The base tokens are then declared only once, which keeps browser devtools fast.
+
 ## [0.6.7](https://github.com/entur/design-system/compare/@entur/fileupload@0.6.6...@entur/fileupload@0.6.7) (2026-09-18)
 
 ### Entur Dependency Updates

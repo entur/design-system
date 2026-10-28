@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.3.0](https://github.com/entur/design-system/compare/@entur/dropdown@9.2.1...@entur/dropdown@9.3.0) (2026-10-28)
+
+### Features
+
+- **dropdown:** add a stylesheet without base tokens ([db8bc72](https://github.com/entur/design-system/commit/db8bc72bbb78b6149f6e9183e070d2ff6b9f25dc))
+
+  Import @entur/dropdown/styles/no-base-tokens instead of @entur/dropdown/styles when your app already loads @entur/tokens/dist/base.css. The base tokens are then declared only once, which keeps browser devtools fast.
+
 ## [9.2.1](https://github.com/entur/design-system/compare/@entur/dropdown@9.2.0...@entur/dropdown@9.2.1) (2026-09-18)
 
 ### Entur Dependency Updates

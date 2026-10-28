@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.1.0](https://github.com/entur/design-system/compare/@entur/travel@8.0.7...@entur/travel@8.1.0) (2026-10-28)
+
+### Features
+
+- **travel:** add a stylesheet without base tokens ([d89e6f0](https://github.com/entur/design-system/commit/d89e6f063d403fa04f33ba4d39cc730b09dcb12b))
+
+  Import @entur/travel/styles/no-base-tokens instead of @entur/travel/styles when your app already loads @entur/tokens/dist/base.css. The base tokens are then declared only once, which keeps browser devtools fast.
+
 ## [8.0.7](https://github.com/entur/design-system/compare/@entur/travel@8.0.6...@entur/travel@8.0.7) (2026-09-18)
 
 ### Entur Dependency Updates

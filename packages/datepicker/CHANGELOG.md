@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.3.0](https://github.com/entur/design-system/compare/@entur/datepicker@12.2.1...@entur/datepicker@12.3.0) (2026-10-28)
+
+### Features
+
+- **datepicker:** add a stylesheet without base tokens ([ab47b56](https://github.com/entur/design-system/commit/ab47b561e23a29d74941d8a0c267fb7bf5e5bb96))
+
+  Import @entur/datepicker/styles/no-base-tokens instead of @entur/datepicker/styles when your app already loads @entur/tokens/dist/base.css. The base tokens are then declared only once, which keeps browser devtools fast.
+
 ## [12.2.1](https://github.com/entur/design-system/compare/@entur/datepicker@12.2.0...@entur/datepicker@12.2.1) (2026-09-18)
 
 ### Entur Dependency Updates

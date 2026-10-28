@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.2.0](https://github.com/entur/design-system/compare/@entur/button@5.1.1...@entur/button@5.2.0) (2026-10-28)
+
+### Features
+
+- **button:** add a stylesheet without base tokens ([8e6f6ca](https://github.com/entur/design-system/commit/8e6f6ca402a58901eb03487d650369dc0e8b0692))
+
+  Import @entur/button/styles/no-base-tokens instead of @entur/button/styles when your app already loads @entur/tokens/dist/base.css. The base tokens are then declared only once, which keeps browser devtools fast.
+
 ## [5.1.1](https://github.com/entur/design-system/compare/@entur/button@5.1.0...@entur/button@5.1.1) (2026-09-18)
 
 ### Entur Dependency Updates

@@ -1,6 +1,6 @@
 {
   "name": "@entur/fileupload",
-  "version": "0.6.7",
+  "version": "0.7.0",
   "license": "EUPL-1.2",
   "main": "dist/fileupload.cjs",
   "module": "dist/fileupload.mjs",

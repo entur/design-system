@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.3.0](https://github.com/entur/design-system/compare/@entur/form@10.2.1...@entur/form@10.3.0) (2026-10-28)
+
+### Bug Fixes
+
+- **form/checkbox panel, form/radio panel:** announce readOnly state in CheckboxPanel and RadioPanel ([c2d8247](https://github.com/entur/design-system/commit/c2d824725d8cd52abc519430f6e54d7b90430d72))
+
+  A readOnly panel now gets a visually hidden description, "Kan ikke endres"
+  by default and configurable through readOnlyLabelDescription like Radio,
+  linked to the input with aria-describedby.
+
+  The input is named with aria-labelledby pointing at the title and
+  secondaryLabel elements, so ReactNode values work and the additional
+  content and readOnly description stay out of the name and only describe
+  it. A consumer's own aria-label or aria-labelledby takes precedence, and
+  their aria-describedby is merged with the generated description IDs.
+
+### Features
+
+- **form:** add a stylesheet without base tokens ([eae1f92](https://github.com/entur/design-system/commit/eae1f92d46719feced95db0446704dab98c4798c))
+
+  Import @entur/form/styles/no-base-tokens instead of @entur/form/styles when your app already loads @entur/tokens/dist/base.css. The base tokens are then declared only once, which keeps browser devtools fast.
+
 ## [10.2.1](https://github.com/entur/design-system/compare/@entur/form@10.2.0...@entur/form@10.2.1) (2026-09-18)
 
 ### Entur Dependency Updates

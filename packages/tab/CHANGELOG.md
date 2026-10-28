@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0](https://github.com/entur/design-system/compare/@entur/tab@0.9.3...@entur/tab@0.10.0) (2026-10-28)
+
+### Features
+
+- **tab:** add a stylesheet without base tokens ([5042a94](https://github.com/entur/design-system/commit/5042a9400c8a65ee4a5c0f2b6a83361d3e6aaa60))
+
+  Import @entur/tab/styles/no-base-tokens instead of @entur/tab/styles when your app already loads @entur/tokens/dist/base.css. The base tokens are then declared only once, which keeps browser devtools fast.
+
 ## [0.9.3](https://github.com/entur/design-system/compare/@entur/tab@0.9.2...@entur/tab@0.9.3) (2026-09-16)
 
 ### Entur Dependency Updates

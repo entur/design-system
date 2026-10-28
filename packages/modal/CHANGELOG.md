@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://github.com/entur/design-system/compare/@entur/modal@2.0.7...@entur/modal@2.1.0) (2026-10-28)
+
+### Features
+
+- **modal:** add a stylesheet without base tokens ([a0992a9](https://github.com/entur/design-system/commit/a0992a90ce0e7856f7e846be6e9da22627ecd76b))
+
+  Import @entur/modal/styles/no-base-tokens instead of @entur/modal/styles when your app already loads @entur/tokens/dist/base.css. The base tokens are then declared only once, which keeps browser devtools fast.
+
 ## [2.0.7](https://github.com/entur/design-system/compare/@entur/modal@2.0.6...@entur/modal@2.0.7) (2026-09-18)
 
 ### Entur Dependency Updates

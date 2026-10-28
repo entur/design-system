@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/entur/design-system/compare/@entur/grid@0.4.5...@entur/grid@0.5.0) (2026-10-28)
+
+### Features
+
+- **grid:** add a stylesheet without base tokens ([ad8bed8](https://github.com/entur/design-system/commit/ad8bed852daa6bd014f7b7562b779fbe37d6fc2b))
+
+  Import @entur/grid/styles/no-base-tokens instead of @entur/grid/styles when your app already loads @entur/tokens/dist/base.css. The base tokens are then declared only once, which keeps browser devtools fast.
+
 ## [0.4.5](https://github.com/entur/design-system/compare/@entur/grid@0.4.4...@entur/grid@0.4.5) (2026-09-16)
 
 ### Entur Dependency Updates
