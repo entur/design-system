@@ -21,7 +21,6 @@
     "./styles": "./dist/styles.css",
     "./beta/styles": "./dist/beta/styles/index.css",
     "./fonts/*": "./fonts/*",
-    "./scripts/*": "./scripts/*",
     "./dist/styles.css": "./dist/styles.css",
     "./dist/beta": null,
     "./dist/beta/*": null,
@@ -32,7 +31,6 @@
   ],
   "files": [
     "dist",
-    "scripts",
     "fonts"
   ],
   "repository": {
@@ -50,8 +48,7 @@
     "test": "jest",
     "lint:styles": "stylelint 'src/beta**/*.{css,scss}'  --ignore-path ../../.gitignore",
     "start": "vite build --watch",
-    "start:beta": "vite build --config vite.config.beta.ts --watch",
-    "migrate": "./scripts/migrate-typography.mjs"
+    "start:beta": "vite build --config vite.config.beta.ts --watch"
   },
   "peerDependencies": {
     "react": ">=18.0.0",
@@ -63,9 +60,6 @@
     "@entur/utils": "workspace:^",
     "classnames": "^2.5.1",
     "modern-normalize": "^3.0.1"
-  },
-  "optionalDependencies": {
-    "glob": "^13.0.4"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.17.0",

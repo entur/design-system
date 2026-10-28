@@ -77,41 +77,9 @@ import { Heading1, Paragraph } from '@entur/typography';
 import '@entur/typography/styles';
 ```
 
-**Migrating from legacy typography?** We've created a comprehensive migration package to help you transition smoothly. Follow our migration guide in our website.
+### Migrating to the new typography
 
-- 🔧 **Migration Helpers** - Drop-in replacements for legacy components
-- 🤖 **Migration Script** - Automated migration tool
-
-### Quick Migration
-
-```bash
-# Option 1: Using npx (recommended)
-npx @entur/typography@latest migrate
-
-# Option 2: With specific options
-npx @entur/typography@latest migrate --dry-run
-
-
-# Option 3: From installed package
-npm install @entur/typography@latest
-npx @entur/typography@latest migrate
-
-# Option 4: Add to your package.json scripts
-# "scripts": { "migrate-typography": "npx @entur/typography@latest migrate" }
-# Then run: npm run migrate-typography -- --dry-run
-```
-
-**Note**: The migration script requires `glob` to be available. If you encounter an error, install it:
-
-```bash
-npm install glob
-# or
-yarn add glob
-```
-
-### Migration Mode
-
-- **🚀 Complete Migration**: Updates imports + component usage
+Use the [`migrate-typography`](https://github.com/entur/design-system/tree/main/skills/migrate-typography) skill with your AI coding agent. It covers the old components (`Heading1`–`6`, `Paragraph` …), the beta changes and the layout beta spacing scale.
 
 ### Update Styles
 
