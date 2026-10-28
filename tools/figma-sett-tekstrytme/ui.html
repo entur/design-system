@@ -1,0 +1,253 @@
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<style>
+  :root {
+    --bg: var(--figma-color-bg, #fff);
+    --text: var(--figma-color-text, #1e1e1e);
+    --text-secondary: var(--figma-color-text-secondary, #757575);
+    --border: var(--figma-color-border, #e6e6e6);
+    --brand: var(--figma-color-bg-brand, #0d99ff);
+    --off: var(--figma-color-bg-tertiary, #d9d9d9);
+    --warning: var(--figma-color-text-warning, #b86200);
+    --success: var(--figma-color-text-success, #14ae5c);
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    padding: 16px;
+    background: var(--bg);
+    color: var(--text);
+    font: 11px/16px Inter, system-ui, -apple-system, sans-serif;
+  }
+
+  .selection {
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .name {
+    overflow: hidden;
+    font-weight: 600;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .meta,
+  .warnings {
+    color: var(--text-secondary);
+  }
+
+  .row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 12px;
+    font-weight: 600;
+  }
+
+  .switch {
+    position: relative;
+    width: 28px;
+    height: 16px;
+    padding: 0;
+    border: 0;
+    border-radius: 8px;
+    background: var(--off);
+    cursor: pointer;
+  }
+
+  .switch::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #fff;
+    transition: transform 120ms ease-out;
+  }
+
+  .switch[aria-checked='true'] {
+    background: var(--brand);
+  }
+
+  .switch[aria-checked='true']::after {
+    transform: translateX(12px);
+  }
+
+  /* A deviating selection is neither on nor off */
+  .switch[aria-checked='mixed']::after {
+    transform: translateX(6px);
+  }
+
+  .switch:disabled {
+    cursor: default;
+    opacity: 0.4;
+  }
+
+  .switch:focus-visible {
+    outline: 2px solid var(--brand);
+    outline-offset: 2px;
+  }
+
+  .state {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 6px;
+  }
+
+  .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--off);
+  }
+
+  [data-state='on'] .dot {
+    background: var(--success);
+  }
+
+  [data-state='deviates'] .dot {
+    background: var(--warning);
+  }
+
+  .warnings {
+    margin: 6px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .check {
+    margin-top: 12px;
+    padding: 4px 8px;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    background: transparent;
+    color: var(--text);
+    font: inherit;
+    cursor: pointer;
+  }
+
+  [hidden] {
+    display: none;
+  }
+</style>
+
+<div class="selection">
+  <div class="name" id="name">Ingenting markert</div>
+  <div class="meta" id="meta">Marker rammen med teksten</div>
+</div>
+
+<div id="panel" data-state="empty">
+  <div class="row">
+    <label for="switch">Tekstrytme</label>
+    <button
+      class="switch"
+      id="switch"
+      role="switch"
+      aria-checked="false"
+      disabled
+    ></button>
+  </div>
+  <div class="state"><span class="dot"></span><span id="state"></span></div>
+  <ul class="warnings" id="warnings"></ul>
+  <button class="check" id="check" hidden>Marker avvik</button>
+</div>
+
+<script>
+  const panel = document.getElementById('panel');
+  const name = document.getElementById('name');
+  const meta = document.getElementById('meta');
+  const toggle = document.getElementById('switch');
+  const state = document.getElementById('state');
+  const warnings = document.getElementById('warnings');
+  const check = document.getElementById('check');
+
+  const STATES = {
+    on: 'Følger reglene',
+    off: 'Avstand av',
+    none: 'Ingen tekstkomponenter i utvalget',
+    empty: '',
+  };
+
+  let current = 'empty';
+
+  function plural(count, one, many) {
+    return `${count} ${count === 1 ? one : many}`;
+  }
+
+  function render(status) {
+    current = status.state;
+    panel.dataset.state = current;
+    name.textContent = status.label || 'Ingenting markert';
+    meta.textContent =
+      current === 'empty'
+        ? 'Marker rammen med teksten'
+        : status.count
+        ? plural(status.count, 'tekstelement', 'tekstelementer')
+        : '';
+
+    toggle.disabled = current === 'empty' || current === 'none';
+    toggle.setAttribute(
+      'aria-checked',
+      current === 'on' ? 'true' : current === 'deviates' ? 'mixed' : 'false',
+    );
+    state.textContent =
+      current === 'deviates'
+        ? `${plural(status.deviations, 'element', 'elementer')} avviker`
+        : STATES[current];
+
+    warnings.replaceChildren();
+    if (status.gaps)
+      warnings.append(
+        item(
+          `${plural(
+            status.gaps,
+            'ramme',
+            'rammer',
+          )} med gap, som kommer i tillegg`,
+        ),
+      );
+    if (status.others)
+      warnings.append(
+        item(
+          `${plural(
+            status.others,
+            'annet element',
+            'andre elementer',
+          )} uten luft etter (koden gir 24)`,
+        ),
+      );
+    check.hidden = current !== 'deviates';
+  }
+
+  function item(text) {
+    const li = document.createElement('li');
+    li.textContent = text;
+    return li;
+  }
+
+  // On turns the rhythm on, from off or from a deviating selection; only a following one turns off
+  toggle.addEventListener('click', () => {
+    toggle.disabled = true;
+    parent.postMessage(
+      { pluginMessage: { type: 'toggle', on: current !== 'on' } },
+      '*',
+    );
+  });
+
+  check.addEventListener('click', () => {
+    parent.postMessage({ pluginMessage: { type: 'check' } }, '*');
+  });
+
+  onmessage = event => {
+    const message = event.data.pluginMessage;
+    if (message && message.type === 'status') render(message);
+  };
+</script>
