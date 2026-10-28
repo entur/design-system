@@ -52,7 +52,7 @@
     "tools/*"
   ],
   "engines": {
-    "node": "24.14.0"
+    "node": "24.22.1"
   },
   "browserslist": [
     "cover 90% in NO",

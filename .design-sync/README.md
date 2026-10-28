@@ -22,7 +22,7 @@ This folder imports Entur Linje into [Claude Design](https://claude.ai/design) a
 
 The Linje design system lives as a Design System artifact on claude.ai, "Entur Linje" (https://claude.ai/artifact/SQBrPb5Ln58H4NwvXbnCHV). It keeps its content as files (`tokens.json`, `components/<Name>/`, `assets/illustrations/`, ...). The `/design-sync` skill only builds `ds-bundle/`; `design-system.mjs` turns that into the artifact's files, and Claude publishes them.
 
-Requires Node 24.14.0, `corepack yarn`, Claude Code logged in to claude.ai, and edit access to the artifact.
+Requires Node 24.22.1, `corepack yarn`, Claude Code logged in to claude.ai, and edit access to the artifact.
 
 1. Type `/design-sync` in Claude Code from the repo root (Claude can't start it for you), and ask for a sync to the artifact. Claude follows `.design-sync/AGENTS.md`: it builds, adds or fixes previews for new, changed and removed components, checks the cards and publishes. `config.json` has no `projectId`, so `/design-sync` has no standalone project to upload to; decline if it offers to create one.
 2. Build. Claude stages the converter from the skill's folder and runs, from the repo root:

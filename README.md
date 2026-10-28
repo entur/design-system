@@ -25,12 +25,14 @@ The monorepo is divided into `packages` and `apps`. `packages` contains all pack
 
 The monorepo needs the following tools to run properly:
 
-- NodeJS 24.14.0
+- NodeJS 24.22.1
 - yarn 4.13.0
 - npm (for publishing)
 - React 18 or higher (all packages require React >=18.0.0)
 
 Node.js is available on [Node's website](https://nodejs.org/en/download). If you want to easily switch between different versions of Node.js (different repos might use different versions) then [nvm](https://github.com/nvm-sh/nvm) is a good alternative.
+
+Node 24.22.1 includes the [October 2026 security fixes](https://nodejs.org/en/blog/vulnerability/october-2026-security-releases) for Node2Shell and the eMudhra CA trust update. Run `nvm install` and `nvm use` from the repository root to use the pinned version.
 
 Yarn can easily be installed with e.g. [npm](https://yarnpkg.com/getting-started/install).
 
@@ -245,6 +247,8 @@ Entur Designsystem documentation is hosted on Firebase hosting as a static site.
 Entur Designsystem uses GitHub Actions and workflow to automatically deploy the documentation to firebase.
 When a PR is made the `build-test-and-deploy-preview.yml` starts that builds, tests and lints the packages, then builds the documentation and creates a preview channel in Firebase Hosting. A GitHub-bot adds preview-link as a comment in the PR.
 When push and merge to main the `build-and-deploy-prod.yml` starts and builds, tests, and lints the packages, then builds the documentation and deploy the website to production in Firebase Hosting.
+
+Build jobs read the Node version from `.nvmrc`. Firebase deployment jobs use [entur/gha-firebase](https://github.com/entur/gha-firebase), which manages its own Node version; updating `.nvmrc` does not update those jobs. Its production and preview workflows must also use a patched runtime before rerunning deployments. Runner-managed Node runtimes for JavaScript Actions and the scanner's external scheduled workflow must be updated by their owners separately.
 
 ### PostHog
 
