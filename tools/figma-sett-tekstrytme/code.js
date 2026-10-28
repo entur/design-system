@@ -217,16 +217,285 @@ async function status(selection) {
   };
 }
 
+// --- context ---
+// Each context sets the three collections, as data-type-scale and data-density would in code
+const COLLECTIONS = {
+  typography: 'Typography',
+  size: 'Component size',
+  spacing: 'Component spacing',
+};
+const VIEW_MODES = ['Standard', 'Compact', 'Display'];
+const CONTEXTS = [
+  {
+    id: 'b2b',
+    name: 'B2B',
+    typography: 'Compact',
+    size: 'Compact',
+    spacing: 'Compact',
+  },
+  {
+    id: 'app',
+    name: 'App',
+    typography: 'Compact',
+    size: 'Standard',
+    spacing: 'Standard',
+  },
+  {
+    id: 'web',
+    name: 'entur.no',
+    typography: 'Compact',
+    size: 'Standard',
+    spacing: 'Standard',
+  },
+  {
+    id: 'article',
+    name: 'Artikkel',
+    typography: 'Standard',
+    size: 'Standard',
+    spacing: 'Standard',
+  },
+  {
+    id: 'kiosk',
+    name: 'Kiosk',
+    typography: 'Display',
+    size: 'Display',
+    spacing: 'Display',
+  },
+];
+const CONTEXT_KEY = 'kontekst';
+
+const collections = {};
+const seenCollectionIds = new Set();
+const scannedPages = new Set();
+let importing = false;
+
+const complete = () => Object.keys(COLLECTIONS).every(key => collections[key]);
+
+// Older library versions of the same collections have other modes, so only the view modes count
+async function acceptCollections(ids) {
+  for (const id of ids) {
+    if (seenCollectionIds.has(id)) continue;
+    seenCollectionIds.add(id);
+    const collection = await figma.variables.getVariableCollectionByIdAsync(id);
+    if (!collection) continue;
+    const key = Object.keys(COLLECTIONS).find(
+      k => COLLECTIONS[k] === collection.name,
+    );
+    const modes = collection.modes.map(mode => mode.name);
+    if (
+      key &&
+      !collections[key] &&
+      VIEW_MODES.every(name => modes.includes(name))
+    )
+      collections[key] = collection;
+  }
+}
+
+// Found where the file already uses them; importing from the library can be slow, so it runs last and in the background
+async function findCollections(nodes, onImported) {
+  for (const node of nodes) {
+    for (let n = node; n && !complete(); n = n.parent) {
+      if (n.explicitVariableModes)
+        await acceptCollections(Object.keys(n.explicitVariableModes));
+      if (n.resolvedVariableModes)
+        await acceptCollections(Object.keys(n.resolvedVariableModes));
+    }
+  }
+  if (!complete() && !scannedPages.has(figma.currentPage.id)) {
+    scannedPages.add(figma.currentPage.id);
+    for (const instance of figma.currentPage.findAllWithCriteria({
+      types: ['INSTANCE'],
+    })) {
+      await acceptCollections(
+        Object.keys(instance.resolvedVariableModes || {}),
+      );
+      if (complete()) break;
+    }
+  }
+  if (!complete()) importCollections(onImported);
+}
+
+async function importCollections(onImported) {
+  if (importing) return;
+  importing = true;
+  try {
+    for (const library of await figma.teamLibrary.getAvailableLibraryVariableCollectionsAsync()) {
+      const key = Object.keys(COLLECTIONS).find(
+        k => COLLECTIONS[k] === library.name,
+      );
+      if (!key || collections[key]) continue;
+      const variables =
+        await figma.teamLibrary.getVariablesInLibraryCollectionAsync(
+          library.key,
+        );
+      if (variables.length === 0) continue;
+      const variable = await figma.variables.importVariableByKeyAsync(
+        variables[0].key,
+      );
+      await acceptCollections([variable.variableCollectionId]);
+    }
+  } catch (error) {
+    // Without library access the collections already in use are all there is
+  } finally {
+    importing = false;
+    if (onImported) onImported();
+  }
+}
+
+const isContextTarget = node =>
+  node.type !== 'INSTANCE' && 'setExplicitVariableModeForCollection' in node;
+
+// A mode is inherited from the nearest layer that sets it, otherwise it is the collection's default
+function modeOf(node, collection) {
+  for (let n = node; n; n = n.parent) {
+    const modeId =
+      n.explicitVariableModes && n.explicitVariableModes[collection.id];
+    const mode = modeId && collection.modes.find(m => m.modeId === modeId);
+    if (mode) return { name: mode.name, set: true };
+  }
+  return {
+    name: collection.modes.find(
+      mode => mode.modeId === collection.defaultModeId,
+    ).name,
+    set: false,
+  };
+}
+
+function contextOf(node) {
+  const modes = {};
+  let set = false;
+  for (const key in collections) {
+    const mode = modeOf(node, collections[key]);
+    modes[key] = mode.name;
+    set = set || mode.set;
+  }
+  // App and entur.no share modes, so the choice made in the plugin tells them apart
+  let chosen;
+  for (let n = node; n && !chosen; n = n.parent)
+    chosen = n.getPluginData && n.getPluginData(CONTEXT_KEY);
+  const matches = CONTEXTS.filter(context =>
+    Object.keys(modes).every(key => context[key] === modes[key]),
+  );
+  const match = matches.find(context => context.id === chosen) || matches[0];
+  return { modes, set, id: set && match ? match.id : '' };
+}
+
+function componentName(main) {
+  return main.parent && main.parent.type === 'COMPONENT_SET'
+    ? main.parent.name
+    : main.name;
+}
+
+// Instances whose size doesn't come from Component size keep their Standard size in every context
+async function unboundComponents(nodes, collection) {
+  const follows = new Map();
+  const variableCollections = new Map();
+  const counts = {};
+
+  const usesCollection = async node => {
+    const bound = [
+      node,
+      ...node.findAll(
+        n => n.boundVariables && Object.keys(n.boundVariables).length > 0,
+      ),
+    ];
+    for (const n of bound) {
+      for (const value of Object.values(n.boundVariables || {})) {
+        for (const alias of [].concat(value)) {
+          if (!alias || !alias.id) continue;
+          if (!variableCollections.has(alias.id)) {
+            const variable = await figma.variables.getVariableByIdAsync(
+              alias.id,
+            );
+            variableCollections.set(
+              alias.id,
+              variable ? variable.variableCollectionId : null,
+            );
+          }
+          if (variableCollections.get(alias.id) === collection.id) return true;
+        }
+      }
+    }
+    return false;
+  };
+
+  for (const node of findInstances(nodes)) {
+    if ((await describe(node)).kind !== 'other') continue;
+    // Icons and other small pictures have no size to follow
+    if (
+      node.width <= 32 &&
+      node.height <= 32 &&
+      !node.findOne(n => n.type === 'TEXT')
+    )
+      continue;
+    const main = await node.getMainComponentAsync();
+    if (!main) continue;
+    if (!follows.has(main.id)) follows.set(main.id, await usesCollection(node));
+    if (follows.get(main.id)) continue;
+    const name = componentName(main);
+    counts[name] = (counts[name] || 0) + 1;
+  }
+  return Object.entries(counts).sort((a, b) => b[1] - a[1]);
+}
+
+async function contextStatus(selection, onImported) {
+  const targets = selection.filter(isContextTarget);
+  if (targets.length === 0) return { available: false };
+
+  await findCollections(targets, onImported);
+  const missing = Object.keys(COLLECTIONS)
+    .filter(key => !collections[key])
+    .map(key => COLLECTIONS[key]);
+  if (!collections.typography && !collections.size)
+    return { available: true, missing, loading: importing };
+
+  const contexts = targets.map(contextOf);
+  const same = contexts.every(
+    context => JSON.stringify(context) === JSON.stringify(contexts[0]),
+  );
+  if (!same)
+    return { available: true, mixed: true, missing, loading: importing };
+
+  const { modes, set, id } = contexts[0];
+  const result = {
+    available: true,
+    set,
+    id,
+    modes,
+    missing,
+    loading: importing,
+  };
+  if (collections.size && modes.size !== 'Standard')
+    result.unbound = await unboundComponents(targets, collections.size);
+  return result;
+}
+
+function setContext(selection, id) {
+  const context = CONTEXTS.find(c => c.id === id);
+  const targets = selection.filter(isContextTarget);
+  for (const node of targets) {
+    for (const key in collections) {
+      const mode = collections[key].modes.find(m => m.name === context[key]);
+      node.setExplicitVariableModeForCollection(collections[key], mode.modeId);
+    }
+    node.setPluginData(CONTEXT_KEY, id);
+  }
+  return { context, count: targets.length };
+}
+
 function panel() {
-  figma.showUI(__html__, { width: 280, height: 220, themeColors: true });
+  figma.showUI(__html__, { width: 280, height: 360, themeColors: true });
 
   // Selection and node changes come in bursts, so wait for them to settle and drop stale answers
   let latest = 0;
   let timer;
   const update = async () => {
     const id = ++latest;
-    const result = await status(figma.currentPage.selection);
-    if (id === latest) figma.ui.postMessage({ type: 'status', ...result });
+    const selection = figma.currentPage.selection;
+    const result = await status(selection);
+    const context = await contextStatus(selection, schedule);
+    if (id === latest)
+      figma.ui.postMessage({ type: 'status', ...result, context });
   };
   const schedule = () => {
     clearTimeout(timer);
@@ -255,6 +524,14 @@ function panel() {
         if (report.changed.length > 0)
           figma.currentPage.selection = report.changed;
         figma.notify(summary(report, false));
+      }
+      if (message.type === 'context') {
+        const { context, count } = setContext(selection, message.id);
+        figma.notify(
+          `${context.name} satt på ${count} ${
+            count === 1 ? 'ramme' : 'rammer'
+          }`,
+        );
       }
     } catch (error) {
       figma.notify(`Feil: ${error.message}`, { error: true });

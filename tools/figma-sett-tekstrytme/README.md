@@ -32,6 +32,24 @@ Skjulte og absolutt plasserte lag hoppes over. Pluginen ser ikke inn i instanser
 
 Mens panelet er åpent, kan ingen andre plugins kjøre i filen, heller ikke Desktop Bridge.
 
+### Kontekst
+
+Øverst i panelet velger du kontekst for den markerte rammen. Pluginen setter da modus for samlingene Typography, Component size og Component spacing på rammen, og alt inni arver dem. Det tilsvarer `data-type-scale` og `data-density` i forslaget til koden.
+
+| Kontekst | Typography | Component size | Component spacing |
+| -------- | ---------- | -------------- | ----------------- |
+| B2B      | Compact    | Compact        | Compact           |
+| App      | Compact    | Standard       | Standard          |
+| entur.no | Compact    | Standard       | Standard          |
+| Artikkel | Standard   | Standard       | Standard          |
+| Kiosk    | Display    | Display        | Display           |
+
+- Panelet viser hvilken kontekst rammen har, også når den er arvet fra en ramme utenfor. App og entur.no har like moduser. Pluginen husker hvilken av dem du valgte.
+- Står Component size og Component spacing i ulike moduser, får du en advarsel.
+- I B2B og Kiosk får du en advarsel om komponenter som ikke er bundet til Component size. De beholder standard størrelse.
+- Kontekst settes på rammer og seksjoner, ikke på instanser.
+- Samlingene finnes der filen allerede bruker dem. Mangler noen, hentes de fra biblioteket. Det kan ta litt tid, og krever tillatelsen `teamlibrary`.
+
 ## Kommandoer
 
 - **Sett tekstrytme**: endrer bryterne og sier hvor mange elementer som ble endret.

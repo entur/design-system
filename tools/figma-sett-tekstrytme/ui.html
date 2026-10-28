@@ -49,6 +49,47 @@
     font-weight: 600;
   }
 
+  .block {
+    padding-block: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .block:last-of-type {
+    border-bottom: 0;
+  }
+
+  .block > .row:first-child {
+    margin-top: 0;
+  }
+
+  select {
+    max-width: 140px;
+    padding: 4px 6px;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    background: var(--bg);
+    color: var(--text);
+    font: inherit;
+  }
+
+  select:disabled {
+    opacity: 0.4;
+  }
+
+  select:focus-visible {
+    outline: 2px solid var(--brand);
+    outline-offset: 1px;
+  }
+
+  .modes {
+    margin-top: 6px;
+    color: var(--text-secondary);
+  }
+
+  .warnings .warn {
+    color: var(--warning);
+  }
+
   .switch {
     position: relative;
     width: 28px;
@@ -144,7 +185,25 @@
   <div class="meta" id="meta">Marker rammen med teksten</div>
 </div>
 
-<div id="panel" data-state="empty">
+<div class="block">
+  <div class="row">
+    <label for="context">Kontekst</label>
+    <select id="context" disabled>
+      <option value="" disabled>Ikke satt</option>
+      <option value="custom" disabled>Egendefinert</option>
+      <option value="mixed" disabled>Ulike kontekster</option>
+      <option value="b2b">B2B</option>
+      <option value="app">App</option>
+      <option value="web">entur.no</option>
+      <option value="article">Artikkel</option>
+      <option value="kiosk">Kiosk</option>
+    </select>
+  </div>
+  <div class="modes" id="modes">Marker en ramme for å velge kontekst</div>
+  <ul class="warnings" id="context-warnings"></ul>
+</div>
+
+<div class="block" id="panel" data-state="empty">
   <div class="row">
     <label for="switch">Tekstrytme</label>
     <!-- A checkbox, since a switch has no mixed state for a deviating selection -->
@@ -170,6 +229,9 @@
   const state = document.getElementById('state');
   const warnings = document.getElementById('warnings');
   const check = document.getElementById('check');
+  const contextSelect = document.getElementById('context');
+  const modes = document.getElementById('modes');
+  const contextWarnings = document.getElementById('context-warnings');
 
   const STATES = {
     on: 'Følger reglene',
@@ -236,13 +298,91 @@
         ),
       );
     check.hidden = current !== 'deviates';
+    renderContext(status.context);
   }
 
-  function item(text) {
+  function describeModes(m) {
+    const parts = [];
+    if (m.typography) parts.push(`Tekst ${m.typography}`);
+    if (m.size && m.size === m.spacing) parts.push(`Komponenter ${m.size}`);
+    else {
+      if (m.size) parts.push(`Størrelse ${m.size}`);
+      if (m.spacing) parts.push(`Avstand ${m.spacing}`);
+    }
+    return parts.join(' · ');
+  }
+
+  function renderContext(context) {
+    contextWarnings.replaceChildren();
+    const ready =
+      context && context.available && (context.modes || context.mixed);
+    contextSelect.disabled = !ready;
+
+    if (!context || !context.available) {
+      contextSelect.value = '';
+      modes.textContent = 'Marker en ramme for å velge kontekst';
+      return;
+    }
+
+    if (context.mixed) {
+      contextSelect.value = 'mixed';
+      modes.textContent = 'De markerte rammene har ulike kontekster';
+    } else if (!context.modes) {
+      contextSelect.value = '';
+      modes.textContent = context.loading
+        ? 'Henter variabelsamlingene …'
+        : 'Fant ikke variabelsamlingene i filen';
+    } else {
+      const m = context.modes;
+      contextSelect.value = context.set ? context.id || 'custom' : '';
+      modes.textContent = `${describeModes(m)}${
+        context.set ? '' : ' (standard)'
+      }`;
+      if (m.size && m.spacing && m.size !== m.spacing)
+        contextWarnings.append(
+          item('Component size og Component spacing har ulike moduser', true),
+        );
+      if (context.unbound && context.unbound.length > 0) {
+        const names = context.unbound
+          .slice(0, 3)
+          .map(([component, count]) => `${component} (${count})`)
+          .join(', ');
+        const rest = context.unbound.length - 3;
+        contextWarnings.append(
+          item(
+            `Følger ikke ${m.size}: ${names}${
+              rest > 0 ? ` og ${rest} til` : ''
+            }`,
+            true,
+          ),
+        );
+      }
+    }
+
+    if (context.missing && context.missing.length > 0)
+      contextWarnings.append(
+        item(
+          `${context.missing.join(' og ')} ${
+            context.loading ? 'hentes fra biblioteket' : 'finnes ikke i filen'
+          }`,
+        ),
+      );
+  }
+
+  function item(text, warn) {
     const li = document.createElement('li');
     li.textContent = text;
+    if (warn) li.className = 'warn';
     return li;
   }
+
+  contextSelect.addEventListener('change', () => {
+    contextSelect.disabled = true;
+    parent.postMessage(
+      { pluginMessage: { type: 'context', id: contextSelect.value } },
+      '*',
+    );
+  });
 
   // On turns the rhythm on, from off or from a deviating selection; only a following one turns off
   toggle.addEventListener('click', () => {
