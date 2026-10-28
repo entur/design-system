@@ -2,6 +2,11 @@
 @use '~@entur/utils/dist/breakpoints.scss' as *;
 
 .page-header {
+  // Lets a long title wrap instead of widening the header
+  &__title {
+    min-width: 0;
+  }
+
   &__subcategory-wrapper {
     display: flex;
     justify-content: flex-start;
