@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/entur/design-system/compare/@entur/a11y@0.3.5...@entur/a11y@0.4.0) (2026-10-28)
+
+### Features
+
+- **a11y:** add a stylesheet without base tokens ([56ceb26](https://github.com/entur/design-system/commit/56ceb26eb50e4cfaf6a7a7d96e3397bb01f6d3a2))
+
+  Import @entur/a11y/styles/no-base-tokens instead of @entur/a11y/styles when your app already loads @entur/tokens/dist/base.css. The base tokens are then declared only once, which keeps browser devtools fast.
+
 ## [0.3.5](https://github.com/entur/design-system/compare/@entur/a11y@0.3.4...@entur/a11y@0.3.5) (2026-09-16)
 
 ### Entur Dependency Updates

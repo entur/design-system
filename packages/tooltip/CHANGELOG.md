@@ -3,6 +3,52 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.1.0](https://github.com/entur/design-system/compare/@entur/tooltip@6.0.7...@entur/tooltip@6.1.0) (2026-10-28)
+
+### Bug Fixes
+
+- **tooltip/popover:** stop scroll containers and modals from cutting off the popover ([4bec0fe](https://github.com/entur/design-system/commit/4bec0fe731666a3d9729c917e1071aa7911532c6))
+
+  Popover content is positioned with floating-ui's fixed strategy, as Dropdown,
+  MultiSelect and DatePicker already are. A popover inside a scroll container,
+  an ancestor with overflow: hidden or a modal now shows in full instead of
+  being cut off at the container's edge, so buttons in it can be reached again.
+
+  The popover now paints over content it used to be clipped by, such as a
+  neighbouring column or the edge of a modal.
+
+  Since the popover is no longer narrowed by its container, long content in a
+  narrow container can now grow wider, up to the width of the viewport. Set
+  max-width on PopoverContent to keep a narrower popover.
+
+  An ancestor with a transform, filter, will-change or contain still clips the
+  popover, since it becomes the containing block for fixed positioning.
+
+- **tooltip/tooltip:** stop scroll containers and modals from cutting off the tooltip ([3ab75ce](https://github.com/entur/design-system/commit/3ab75ce578a2aac0a6893d9dfa4af94df846dad7))
+
+  Tooltip is positioned with floating-ui's fixed strategy, as Dropdown,
+  MultiSelect and DatePicker already are. A tooltip inside a scroll container,
+  an ancestor with overflow: hidden or a modal now shows in full instead of
+  being cut off at the container's edge. This also applies to the tooltips the
+  design system uses itself, such as the labelTooltip on form fields and the
+  feedback tooltip in EditableCell.
+
+  The tooltip now paints over content it used to be clipped by, such as a
+  neighbouring column or the edge of a modal.
+
+  A long tooltip is no longer narrowed by its container, so in a narrow container
+  it can now grow up to its maximum width of 32rem and wrap less. It never grows
+  wider than the viewport.
+
+  An ancestor with a transform, filter, will-change or contain still clips the
+  tooltip, since it becomes the containing block for fixed positioning.
+
+### Features
+
+- **tooltip:** add a stylesheet without base tokens ([9fa3a68](https://github.com/entur/design-system/commit/9fa3a68a565faedcce6eb76b8405b954a44e5e35))
+
+  Import @entur/tooltip/styles/no-base-tokens instead of @entur/tooltip/styles when your app already loads @entur/tokens/dist/base.css. The base tokens are then declared only once, which keeps browser devtools fast.
+
 ## [6.0.7](https://github.com/entur/design-system/compare/@entur/tooltip@6.0.6...@entur/tooltip@6.0.7) (2026-09-18)
 
 ### Entur Dependency Updates

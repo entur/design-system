@@ -3,6 +3,229 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.0.0](https://github.com/entur/design-system/compare/@entur/typography@3.0.7...@entur/typography@4.0.0) (2026-10-28)
+
+### Features
+
+- **typography:** add a stylesheet without base tokens ([e8531ec](https://github.com/entur/design-system/commit/e8531ecb3dfc2acfffe68ae7c1c24bbfbedd6ed9))
+
+  Import @entur/typography/styles/no-base-tokens instead of @entur/typography/styles when your app already loads @entur/tokens/dist/base.css. The base tokens are then declared only once, which keeps browser devtools fast.
+
+- **typography:** replace the migration script with the migrate-typography skill ([7ec132d](https://github.com/entur/design-system/commit/7ec132da9009554b71e66dfe1745c6df07973484))
+
+  Use the `migrate-typography` skill with your AI coding agent to move to the
+  new typography. It replaces the `migrate` script, which no longer ships
+  with the package.
+
+### Bug Fixes (beta)
+
+- **typography/beta:** break long words in headings with a hyphen ([68d3c38](https://github.com/entur/design-system/commit/68d3c388c63c64d799abaa0ab9d61ad9324a563c))
+
+  Headings on a page with a Norwegian lang now break long words, such as
+  compound words, with a hyphen instead of running out of a narrow column.
+  Shorter words still wrap whole.
+
+- **typography/beta:** ease the link underline out on hover ([a66be01](https://github.com/entur/design-system/commit/a66be0145d7505e9d6d716c2bfe4bed175015516))
+
+  The thicker line now starts fast and slows down as it reaches the end.
+
+- **typography/beta:** forward refs and export props types ([9b2d5f6](https://github.com/entur/design-system/commit/9b2d5f6e14984eb5cee5171eed34fe81d937250f))
+
+  `Heading`, `Text`, `Link` and the list components now pass `ref` on to the
+  rendered element. Their props types (`HeadingProps`, `TextProps`, …) are
+  exported from `@entur/typography/beta`. A missing base typography stylesheet
+  now gives a development warning.
+
+- **typography/beta:** give preformatted text the text colour in contrast and dark mode ([98babd1](https://github.com/entur/design-system/commit/98babd197b45930fd97b744091cf23a51d7763af))
+
+  Preformatted text was black when it was not inside another text component.
+
+- **typography/beta:** hyphenate only running text and keep UI text whole ([65dfa75](https://github.com/entur/design-system/commit/65dfa750649501a8427c18678ac5a7aef74ea359))
+
+  Paragraphs, the leading text, quotes and lists break long words and hyphenate
+  them. Labels, captions, the overline and other UI text keep their words
+  whole again, so text cut off with an ellipsis stays on one line.
+
+- **typography/beta:** keep the label styles on Text and Label ([a5d8e49](https://github.com/entur/design-system/commit/a5d8e49f19c01eac738664bb93b300644b3714a6))
+
+  Label text is set with `Text variant="label"`, `Text variant="sublabel"` or
+  `Label`, not with a heading.
+
+- **typography/beta:** let a heading's size decide the space after it in TextContainer ([326bd2f](https://github.com/entur/design-system/commit/326bd2f4e09f45da848c8bb76d254102a7a8615f))
+
+  A heading with both `variant` and `size` now gets the space after that
+  belongs to its size, as it already did for its font size.
+
+- **typography/beta:** let Link take the size of the text around it on desktop ([867777a](https://github.com/entur/design-system/commit/867777a63e513045dec002e1950c13687efe89ee))
+
+  On wide screens `Link` was always 16px, also inside headings, captions and
+  leading text. It now inherits the size and line height, so
+  `<Heading as="h2"><Link href="…">…</Link></Heading>` looks like the heading.
+
+- **typography/beta:** let size win over variant on Text and Heading ([4d958b0](https://github.com/entur/design-system/commit/4d958b0cb848509b2a3cbb6203bd742d16527da2))
+
+  `size` now always sets the font size and line height, also when a variant
+  is given. On Heading the variant keeps its other styles alongside `size`.
+
+- **typography/beta:** make h2 the default element for Heading ([50acb52](https://github.com/entur/design-system/commit/50acb521157f08d8342c46cdc8184fb32a82cb9b))
+
+  Heading without `as` is now an h2 with title-2, so a page doesn't get an
+  extra h1 by accident. Set `as="h1"` on the page title.
+
+- **typography/beta:** make spacing work on links and lists, and fix label and leading styles ([ba2889c](https://github.com/entur/design-system/commit/ba2889c254c8da4b34a35d4dd733df5bd9b608da))
+
+  The `spacing` prop now works on `Link`, `UnorderedList`, `NumberedList` and
+  `ListItem`. `Text size="lg"` now has a style. `weight` is `medium` or
+  `bold` (600, Nationale DemiBold). Leading text gets a slightly tighter
+  letter spacing.
+
+- **typography/beta:** make Text without a variant a paragraph, or inherit inside other text ([4a4850e](https://github.com/entur/design-system/commit/4a4850ee7213d1a8b0875a0b01e7d57fdcee11de))
+
+  Text on its own line (p, div, li …) now gets the paragraph style, so it has
+  a size outside TextContainer and the tighter space before a list inside it.
+  Text inside other text (span, strong, a component) inherits colour and
+  weight as well as size, so it no longer turns medium inside a bold heading.
+
+- **typography/beta:** redesign the link underline ([b6a460e](https://github.com/entur/design-system/commit/b6a460e827d3ad35c9efd27836085d6084be9342))
+
+  Links now have a thin underline that sits clear of the text and wraps cleanly over several lines. On hover a thicker line sweeps in over it, which is turned off for users who prefer reduced motion. In forced colors mode the link keeps a regular underline.
+
+- **typography/beta:** remove the external prop from Link ([95922e8](https://github.com/entur/design-system/commit/95922e897cd2012fc82a250bc9cb3df292a848e1))
+
+  The external icon was read both as "another site" and as "opens in a new tab".
+  Say it in the link text instead, for example "(åpnes i ny fane)".
+
+- **typography/beta:** style code inside links and links rendered as buttons ([11f29ee](https://github.com/entur/design-system/commit/11f29ee34685befa4a4929fa7a2b1749acdd5e32))
+
+  Code inside a link now shows the link's line and its hover, instead of a second underline. A Link with as="button" now looks like a link, with the text's font and an underline that thickens on hover, instead of the browser's button style.
+
+### Features (beta)
+
+- **typography/beta:** balance heading lines and avoid lone words in text ([250908d](https://github.com/entur/design-system/commit/250908d325c575899312a08559a7b00c9f70eddb))
+
+  Headings use `text-wrap: balance` and body text `text-wrap: pretty` in
+  browsers that support them.
+
+- **typography/beta:** break long Norwegian words with a hyphen ([677d1e2](https://github.com/entur/design-system/commit/677d1e22c7a7e159b8fa0fd1c4fc27ae618c5af2))
+
+  Text, and text from a CMS inside `TextContainer`, now hyphenates long words
+  when the page sets `lang="nb"`, `"nn"` or `"no"`. Headings and text wrap a
+  word that is longer than the line instead of overflowing. Code is never
+  hyphenated.
+
+- **typography/beta:** export the size types for headings and text ([17bb0e2](https://github.com/entur/design-system/commit/17bb0e2952e7acd4b4f685de1386694f9e753979))
+
+  `TypographyHeadingSize` and `TypographyTextSize` list the sizes each component
+  takes, and `TypographySize` now covers every typography size.
+
+- **typography/beta:** give the quote variant the blockquote look ([4320d91](https://github.com/entur/design-system/commit/4320d91873a2f6a0e7c7b58c9a24f21153a0f622))
+
+  `Text variant="quote"` renders `<blockquote>` with the left border. For a
+  source, wrap it in `<figure>` with a `<figcaption>`.
+
+- **typography/beta:** keep running text in TextContainer at a readable line length ([c6ce4df](https://github.com/entur/design-system/commit/c6ce4df3be161dbe3709e70fd042987a43dcda71))
+
+  Paragraphs, lists and quotes in a `TextContainer` are at most about 70
+  characters wide. Images, tables and components keep the full width. Set
+  `max-inline-size` on an element to change it.
+
+- **typography/beta:** name the code variants code and preformatted ([9245ba8](https://github.com/entur/design-system/commit/9245ba85318d2b03d4f1f0e5a615141e1986b73c))
+- **typography/beta:** redesign code and preformatted text ([3961947](https://github.com/entur/design-system/commit/396194743428e5af137d55c5b4eaa66137d94a8d))
+
+  Code follows the size, colour and weight of the text around it, wraps
+  like text and has no border. Links keep their underline over code, and
+  a high contrast outline marks it when forced colors remove the fill.
+  Preformatted text gets its own padding, line height and tab size.
+
+- **typography/beta:** redesign lists and add numbered steps ([ebefe28](https://github.com/entur/design-system/commit/ebefe2813c18828597247ea7461e726ad094860c))
+
+  Lists now use the body text style and the text colour for markers.
+  Bullets are small dots, with rings on the second level, and they stay on
+  the first line at any font size. Numbers are bold and follow `start`,
+  `reversed` and `type`. Items have a small gap between them.
+
+  `NumberedList variant="steps"` shows the numbers in badges, for
+  step-by-step instructions.
+
+- **typography/beta:** render caption, overline and sublabel as paragraphs ([3171e29](https://github.com/entur/design-system/commit/3171e29b84a5145c374de22de632a8a7bd08d297))
+
+  They are block elements now, so `spacing` works on them, and `emphasized`
+  renders `<em>`. Pass `as="span"` where they sit inside a line of text.
+
+- **typography/beta:** warn in development when global CSS overrides the typography ([56f506b](https://github.com/entur/design-system/commit/56f506be5e01c2a9b3b352a8152e1e514db28b11))
+
+  The beta typography sits in cascade layers, so resets and element rules
+  in an app such as `* { margin: 0 }` or `a { … }` win over it. In
+  development, the console now names the rules it finds and links to the
+  fix. Nothing runs in production.
+
+- **typography/beta:** add Label for form field labels ([ab98c7c](https://github.com/entur/design-system/commit/ab98c7ce45cecb42a18db21af058ff226953d29d))
+
+  `Label` renders a `<label>` with the label text style. Connect it to the
+  field with `htmlFor`, or wrap the field in it.
+
+- **typography/beta:** add maxLines to Text and Heading ([828c5e0](https://github.com/entur/design-system/commit/828c5e0f229ebd293fdb2444a4d2e23cb69345a6))
+
+  `maxLines` cuts the text after that many lines and ends it with an ellipsis,
+  for stop names, card titles and other text that must fit. Make sure the full
+  text can be read somewhere else.
+
+- **typography/beta:** add TextContainer and spacing per side on the shared scale ([2603325](https://github.com/entur/design-system/commit/2603325fc913829a4a946b8c362e386eeae716d7))
+
+  Text components no longer have margins of their own. Wrap running text in
+  `TextContainer` to get the spacing between headings, paragraphs and lists.
+  Raw HTML from Markdown or a CMS gets the same rhythm, and an `hgroup` is
+  spaced as one heading. `spacing` uses the same scale as `gap` in
+  `@entur/layout/beta` and takes one value or `{ top, bottom }`; if both sides
+  of a gap set it, the larger value wins.
+
+- **typography/beta:** add tone="subdued" to Text and Heading ([b7d3bbf](https://github.com/entur/design-system/commit/b7d3bbf82e30928340119c282928f1cc0c51a3b7))
+
+  Use `tone="subdued"` for secondary information such as metadata, helper text
+  and descriptions. It picks the right colour in contrast and dark mode, so CSS
+  that sets the subdued text colour can go.
+
+- **typography/beta:** add trim to Text and Heading ([c2a8f7e](https://github.com/entur/design-system/commit/c2a8f7e37892c24a1401c310e600417213ab34b0))
+
+  `trim` removes the space above the cap height and below the baseline, so
+  text lines up with icons and boxes next to it. Browsers without
+  `text-box` support ignore it.
+
+### BREAKING CHANGES
+
+- **typography:** `@entur/typography/scripts/migrate-typography.mjs` is removed.
+  Use the `migrate-typography` skill instead.
+
+### BREAKING CHANGES (beta)
+
+- **typography/beta:** Heading without `as` renders h2 with title-2 instead of h1 with title-1, and a non-heading `as` without `variant` gets title-2.
+- **typography/beta:** Text without `variant` is now body-m on its own line, and inherits colour and weight when inline.
+- **typography/beta:** Link no longer takes `external` or `ariaLabelExternalIcon`, and `.eds-text--link--ext-icon` is gone.
+- **typography/beta:** `Heading` no longer takes `variant="label"` or
+  `variant="sublabel"`. Use `Text variant="label"`, `Text variant="sublabel"`,
+  or `Label` for a form field label.
+- **typography/beta:** `Text variant="label"` renders a `<p>`. Use `Label` when
+  the text labels a form field.
+- **typography/beta:** `Blockquote` and `BlockquoteFooter` are removed from
+  `@entur/typography/beta`. Use `<Text variant="quote">` instead, inside a
+  `<figure>` with a `<figcaption>` for the source. `Text variant="link"` is
+  removed too; use `Link`.
+- **typography/beta:** `Text` with `variant="caption"`, `"overline"` or
+  `"sublabel"` renders `<p>` instead of `<span>`. Inside a `<p>` or other
+  inline content, pass `as="span"` to keep valid HTML.
+- **typography/beta:** `variant="code-text"` is now `variant="code"`, and
+  `variant="preformatted-text"` is now `variant="preformatted"`.
+- **typography/beta:** Heading, Text, Link and the lists have no margins by default.
+  Wrap running text in `TextContainer`, or set `spacing` where you need space.
+  The old spacing values are gone: `xs2` → `2xs`, `sm` → `s`, `md` → `m`,
+  `lg` → `xl`, `xl` → `3xl`, and `md-top` → `{ top: 'm' }`. `lg` and `xl` still
+  exist but are smaller now, so check every use of them.
+- **typography/beta:** `Text` no longer accepts `size="2xl"`, which never had a
+  style. `weight` only accepts `medium` and `bold`: replace `regular`, `400`
+  and `500` with `medium`, and `semibold`, `600` and `700` with `bold`. The
+  `label` variant is now 16/20px instead of 20/24px, so check layouts that
+  line labels up with other text.
+
 ## [3.0.7](https://github.com/entur/design-system/compare/@entur/typography@3.0.6...@entur/typography@3.0.7) (2026-09-18)
 
 ### Entur Dependency Updates

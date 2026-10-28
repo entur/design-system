@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.1.0](https://github.com/entur/design-system/compare/@entur/icons@10.0.6...@entur/icons@10.1.0) (2026-10-28)
+
+### Features
+
+- **icons:** add a stylesheet without base tokens ([da0c6c4](https://github.com/entur/design-system/commit/da0c6c47d6ae6a084769e467aab4f51f688e0986))
+
+  Import @entur/icons/styles/no-base-tokens instead of @entur/icons/styles when your app already loads @entur/tokens/dist/base.css. The base tokens are then declared only once, which keeps browser devtools fast.
+
 ## [10.0.6](https://github.com/entur/design-system/compare/@entur/icons@10.0.5...@entur/icons@10.0.6) (2026-09-18)
 
 **Note:** Version bump only for package @entur/icons

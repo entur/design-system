@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.4.0](https://github.com/entur/design-system/compare/@entur/menu@7.3.1...@entur/menu@7.4.0) (2026-10-28)
+
+### Bug Fixes
+
+- **menu/overflow menu:** stop scroll containers from cutting off the menu ([062ba91](https://github.com/entur/design-system/commit/062ba91779c9d77a8a54893cbdf3ef1a4c8897c3))
+
+  The menu of OverflowMenu is positioned with floating-ui's fixed strategy, as
+  Dropdown, MultiSelect and DatePicker already are. An OverflowMenu inside a
+  scroll container, such as a table with its own scrollbar, or inside an
+  ancestor with overflow: hidden, now shows every menu item instead of being
+  cut off at the container's edge, and opening it no longer adds a scrollbar to
+  that container. The menu still follows its button when the page or the
+  container scrolls.
+
+  The menu now paints over content it used to be clipped by, such as a
+  neighbouring column or the edge of a modal.
+
+  Since the menu is no longer narrowed by its container, long menu items in a
+  narrow container can now grow wider.
+
+  An ancestor with a transform, filter, will-change or contain still clips the
+  menu, since it becomes the containing block for fixed positioning.
+
+### Features
+
+- **menu:** add a stylesheet without base tokens ([09dccdc](https://github.com/entur/design-system/commit/09dccdc1d0983e74a74712141b155f594a12fc2d))
+
+  Import @entur/menu/styles/no-base-tokens instead of @entur/menu/styles when your app already loads @entur/tokens/dist/base.css. The base tokens are then declared only once, which keeps browser devtools fast.
+
 ## [7.3.1](https://github.com/entur/design-system/compare/@entur/menu@7.3.0...@entur/menu@7.3.1) (2026-09-18)
 
 ### Entur Dependency Updates

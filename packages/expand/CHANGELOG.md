@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.1.0](https://github.com/entur/design-system/compare/@entur/expand@4.0.7...@entur/expand@4.1.0) (2026-10-28)
+
+### Features
+
+- **expand:** add a stylesheet without base tokens ([95ec0c7](https://github.com/entur/design-system/commit/95ec0c71eec0d4a6372c08cc1041f94cb9d33e8e))
+
+  Import @entur/expand/styles/no-base-tokens instead of @entur/expand/styles when your app already loads @entur/tokens/dist/base.css. The base tokens are then declared only once, which keeps browser devtools fast.
+
 ## [4.0.7](https://github.com/entur/design-system/compare/@entur/expand@4.0.6...@entur/expand@4.0.7) (2026-09-18)
 
 ### Entur Dependency Updates

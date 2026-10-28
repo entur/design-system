@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.22.0](https://github.com/entur/design-system/compare/@entur/alert@0.21.3...@entur/alert@0.22.0) (2026-10-28)
+
+### Features
+
+- **alert:** add a stylesheet without base tokens ([10ba184](https://github.com/entur/design-system/commit/10ba184c75e721ef0be05d88ba6853cf39165151))
+
+  Import @entur/alert/styles/no-base-tokens instead of @entur/alert/styles when your app already loads @entur/tokens/dist/base.css. The base tokens are then declared only once, which keeps browser devtools fast.
+
 ## [0.21.3](https://github.com/entur/design-system/compare/@entur/alert@0.21.2...@entur/alert@0.21.3) (2026-09-18)
 
 ### Entur Dependency Updates

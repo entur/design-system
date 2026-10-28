@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.13.0](https://github.com/entur/design-system/compare/@entur/chip@0.12.0...@entur/chip@0.13.0) (2026-10-28)
+
+### Bug Fixes
+
+- **chip/choice chip:** drop redundant aria-disabled from ChoiceChip ([d39435d](https://github.com/entur/design-system/commit/d39435d3656029284a43eea2b084ab919f589ad2))
+
+  ChoiceChip always renders an <input>, so the native disabled attribute already conveys the state to mouse, keyboard and screen reader users.
+
+- **chip/filter chip:** hide FilterChip's decorative checkmark icon from screen readers ([fea8feb](https://github.com/entur/design-system/commit/fea8feb8d74340a46deb2f57ede9c60cd4e4be85))
+
+  Matches ActionChip, ChoiceChip and TagChip, which already hide their decorative icons.
+
+### Features
+
+- **chip:** add a stylesheet without base tokens ([9821892](https://github.com/entur/design-system/commit/9821892b13cd4bf5ddf08f29a3c1de17095f4235))
+
+  Import @entur/chip/styles/no-base-tokens instead of @entur/chip/styles when your app already loads @entur/tokens/dist/base.css. The base tokens are then declared only once, which keeps browser devtools fast.
+
 # [0.12.0](https://github.com/entur/design-system/compare/@entur/chip@0.11.6...@entur/chip@0.12.0) (2026-09-18)
 
 ### Features

@@ -3,6 +3,51 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.3.0](https://github.com/entur/design-system/compare/@entur/tokens@4.2.0...@entur/tokens@4.3.0) (2026-10-28)
+
+### Features
+
+- **tokens:** add fill tokens for numbered list steps ([62045a0](https://github.com/entur/design-system/commit/62045a08e2a2b7bec38fdd04e5ee2c14e81e8877))
+
+  `--components-typography-list-standard-fill` and
+  `--components-typography-list-contrast-fill` give the background for the
+  step badges in `NumberedList variant="steps"`. They match the code text fill.
+
+- **tokens:** add subdued text tokens for typography ([2932934](https://github.com/entur/design-system/commit/29329347f56295e955d448dff584552045d1066b))
+
+  `--components-typography-basetext-standard-text-subdued` (Blue/70) and
+  `--components-typography-basetext-contrast-text-subdued` (Blue/30) give the
+  colour for secondary text. In dark mode both are Ebony/30.
+
+- **tokens:** add the shared spacing scale ([8c9f0a2](https://github.com/entur/design-system/commit/8c9f0a26b31579f53d327c2cacd835e0acc9fdd1))
+
+  `@entur/tokens/styles/spacing` (CSS and SCSS) defines `--spacing-2xs`,
+  `--spacing-xs`, `--spacing-s`, `--spacing-m`, `--spacing-lg` …
+  `--spacing-13xl`. The values follow `data-view-mode` (standard, compact,
+  display), like the component size tokens. This is the scale used by
+  `gap` in `@entur/layout/beta`, and later by `spacing` in the new typography.
+
+- **tokens:** add typography tokens that follow the view mode ([7fc0e80](https://github.com/entur/design-system/commit/7fc0e80b8f2ad2b9d8fdcc0b0db83a90ab98d671))
+
+  `@entur/tokens/styles/typography` (CSS and SCSS) defines the font sizes,
+  line heights, paragraph spacing, weights and font families used by
+  `@entur/typography/beta`, such as `--font-size-body-m`,
+  `--font-line-height-heading-xl` and `--font-family-mono`. The values change
+  with `data-view-mode` (standard, compact, display).
+
+  The typography beta, button and menu styles already include them. Import
+  the sheet yourself only when you use the variables in your own CSS.
+
+- **tokens:** give code text a stronger fill and a dark fill on contrast ([89d0526](https://github.com/entur/design-system/commit/89d05269d5e88b73032c53dd70fae30176144699)), closes [#eaeaf1](https://github.com/entur/design-system/issues/eaeaf1) [#292b6](https://github.com/entur/design-system/issues/292b6) [#212233](https://github.com/entur/design-system/issues/212233)
+- **tokens:** make headings and leading text smaller on narrow screens ([1c57028](https://github.com/entur/design-system/commit/1c57028d00bdc96c231002aec8335d6d9c84a149))
+
+  Below 600px, the s breakpoint of Flex and Grid in layout beta, headings and
+  leading text in the standard view mode use the sizes of the compact view mode:
+  title-1 28px, title-2 24px, subtitle-1 20px, subtitle-2 16px, section-1 14px,
+  section-2 12px and leading 20px. Line heights and the spacing around them in
+  TextContainer shrink with them. Heading sizes 2xl to xs and Text size xl
+  follow the same way. The compact and display view modes keep their sizes.
+
 # [4.2.0](https://github.com/entur/design-system/compare/@entur/tokens@4.1.1...@entur/tokens@4.2.0) (2026-09-16)
 
 ### Features

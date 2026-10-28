@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0](https://github.com/entur/design-system/compare/@entur/layout@5.0.1...@entur/layout@6.0.0) (2026-10-28)
+
+### Features
+
+- **layout:** add a stylesheet without base tokens ([8846e62](https://github.com/entur/design-system/commit/8846e6255bb166ccc11878a4a062e92722248aee))
+
+  Import @entur/layout/styles/no-base-tokens instead of @entur/layout/styles when your app already loads @entur/tokens/dist/base.css. The base tokens are then declared only once, which keeps browser devtools fast.
+
+### Features (beta)
+
+- **layout/beta:** name the spacing scale in whole steps ([c12b4f1](https://github.com/entur/design-system/commit/c12b4f19895bd650c5cd54b5cda161f1c5d0d00d))
+
+  `gap`, `rowGap` and `columnGap` now use one name per step:
+  `2xs`, `xs`, `s`, `m`, `lg`, `xl`, `2xl` … `13xl`. The in-between names are
+  gone, and every value keeps its size under a new name.
+
+- **layout/beta:** read the spacing scale from @entur/tokens ([c5f58b0](https://github.com/entur/design-system/commit/c5f58b0e6ba501aba6493117e07f3aa3a23ecefa))
+
+  `gap`, `rowGap` and `columnGap` now use the shared spacing tokens. The
+  layout beta styles no longer define their own spacing variables.
+
+### BREAKING CHANGES (beta)
+
+- **layout/beta:** If you use the spacing CSS variables directly, rename
+  them with a `spacing-` prefix: `var(--m)` → `var(--spacing-m)`,
+  `var(--lg)` → `var(--spacing-lg)` and so on.
+- **layout/beta:** From `m` and up, the names now point to different sizes,
+  and TypeScript will not catch it. Rename to keep your layout:
+  `s-m` → `m`, `m` → `lg`, `m-l` → `xl`, `l` → `2xl`, `xl` → `3xl`,
+  `2xl` → `4xl`, and so on up to `11xl` → `13xl`. `2xs`, `xs` and `s` are
+  unchanged. The same applies if you use the CSS variables (`var(--m)` …)
+  directly.
+
 ## [5.0.1](https://github.com/entur/design-system/compare/@entur/layout@5.0.0...@entur/layout@5.0.1) (2026-09-18)
 
 ### Entur Dependency Updates

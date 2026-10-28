@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/entur/design-system/compare/@entur/loader@0.8.7...@entur/loader@0.9.0) (2026-10-28)
+
+### Features
+
+- **loader:** add a stylesheet without base tokens ([ab02043](https://github.com/entur/design-system/commit/ab02043e31aec99c12649d74fb9a40d94234f30d))
+
+  Import @entur/loader/styles/no-base-tokens instead of @entur/loader/styles when your app already loads @entur/tokens/dist/base.css. The base tokens are then declared only once, which keeps browser devtools fast.
+
 ## [0.8.7](https://github.com/entur/design-system/compare/@entur/loader@0.8.6...@entur/loader@0.8.7) (2026-09-18)
 
 ### Bug Fixes
