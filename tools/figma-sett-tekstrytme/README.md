@@ -28,6 +28,7 @@ Skjulte og absolutt plasserte lag hoppes over. Pluginen ser ikke inn i instanser
 - Slår du bryteren **på**, settes tekstrytmen for hele rammen, også når du bare har markert ett element, fordi reglene ser på naboene.
 - Slår du den **av**, slås avstanden av bare på det som er markert.
 - **Marker avvik** markerer elementene som avviker.
+- Står teksten utenfor en vertikal auto layout, kan tekstrytmen ikke settes. Panelet viser da bare om avstanden er på eller av, og bryteren kan bare slå den av.
 
 Mens panelet er åpent, kan ingen andre plugins kjøre i filen, heller ikke Desktop Bridge.
 

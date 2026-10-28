@@ -147,11 +147,13 @@
 <div id="panel" data-state="empty">
   <div class="row">
     <label for="switch">Tekstrytme</label>
+    <!-- A checkbox, since a switch has no mixed state for a deviating selection -->
     <button
       class="switch"
       id="switch"
-      role="switch"
+      role="checkbox"
       aria-checked="false"
+      aria-describedby="state"
       disabled
     ></button>
   </div>
@@ -193,7 +195,10 @@
         ? plural(status.count, 'tekstelement', 'tekstelementer')
         : '';
 
-    toggle.disabled = current === 'empty' || current === 'none';
+    // Outside a vertical auto layout the rhythm can't be set, only turned off
+    const loose = status.flow === false;
+    toggle.disabled =
+      current === 'empty' || current === 'none' || (loose && current === 'off');
     toggle.setAttribute(
       'aria-checked',
       current === 'on' ? 'true' : current === 'deviates' ? 'mixed' : 'false',
@@ -201,9 +206,15 @@
     state.textContent =
       current === 'deviates'
         ? `${plural(status.deviations, 'element', 'elementer')} avviker`
+        : loose && current === 'on'
+        ? 'Avstand på'
         : STATES[current];
 
     warnings.replaceChildren();
+    if (loose)
+      warnings.append(
+        item('Ikke i en vertikal auto layout, så tekstrytmen kan ikke settes'),
+      );
     if (status.gaps)
       warnings.append(
         item(

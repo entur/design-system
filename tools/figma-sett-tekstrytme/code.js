@@ -51,10 +51,11 @@ function isFlow(node) {
   );
 }
 
-// Vertical auto layouts in the selection, without looking inside instances
+// Vertical auto layouts in the selection, without looking inside instances or hidden layers
 function findFlows(nodes) {
   const flows = new Set();
   const walk = node => {
+    if (!node.visible) return;
     if (node.type === 'INSTANCE') {
       if (node.parent && isFlow(node.parent)) flows.add(node.parent);
       return;
@@ -114,10 +115,11 @@ async function settTekstrytme(nodes, apply) {
   return report;
 }
 
-// Selected instances as they are, and the instances inside selected frames, without looking inside instances
+// Selected instances as they are, and the instances inside selected frames, without looking inside instances or hidden layers
 function findInstances(nodes) {
   const instances = [];
   const walk = node => {
+    if (!node.visible) return;
     if (node.type === 'INSTANCE') {
       instances.push(node);
       return;
@@ -192,10 +194,21 @@ async function status(selection) {
       key => key && node.componentProperties[key].value,
     ),
   );
+
+  // Text outside a vertical auto layout has no rhythm to follow, only spacing on or off
+  if (report.flows === 0)
+    return {
+      state: anyOn ? 'on' : 'off',
+      flow: false,
+      label,
+      count: texts.length,
+    };
+
   const state = report.changed.length === 0 ? 'on' : anyOn ? 'deviates' : 'off';
 
   return {
     state,
+    flow: true,
     label,
     count: texts.length,
     deviations: report.changed.length,
