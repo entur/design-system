@@ -12,7 +12,7 @@ Read and follow: https://github.com/entur/ai/blob/main/AGENTS.md
 - **Build:** Vite (packages), Gatsby 5 (docs), Playroom (playground)
 - **Language:** TypeScript 5.9, React 18, SCSS
 - **Test:** Jest 29 + React Testing Library
-- **Node:** 24.14.0 required
+- **Node:** 24.22.1 required
 
 ## Common Commands
 
