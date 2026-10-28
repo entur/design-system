@@ -42325,6 +42325,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"verify-base-tokens@workspace:tools/verify-base-tokens":
+  version: 0.0.0-use.local
+  resolution: "verify-base-tokens@workspace:tools/verify-base-tokens"
+  dependencies:
+    jest: "npm:^29.7.0"
+    postcss: "npm:8.5.6"
+  languageName: unknown
+  linkType: soft
+
 "verkit@npm:^0.4.0":
   version: 0.4.0
   resolution: "verkit@npm:0.4.0"
