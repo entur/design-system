@@ -1,6 +1,6 @@
 # From the old components to the new typography
 
-Import the new components from `@entur/typography/beta`. The old ones and the new ones can live side by side, so this can be done one page at a time.
+Import the new components from `@entur/typography/beta`, and `@entur/typography/beta/styles` next to `@entur/typography/styles`. The old ones and the new ones can live side by side, so this can be done one page at a time.
 
 | Old                                         | New                                                                                        |
 | ------------------------------------------- | ------------------------------------------------------------------------------------------ |
@@ -29,7 +29,7 @@ Keep `as` when the old component had it. Heading level (`as`) and look (`variant
 - **Aliased imports** (`Link as LinkText`, `ListItem as LI`): find them in step 1 and replace them by alias.
 - **Name clashes:** the new `Link` clashes with the old `Link` and with router links (`Link as GatsbyLink`, Next.js `Link`). Rename on import, for example `import { Link as TextLink } from '@entur/typography/beta'`.
 - **Headings used as something else:** `<Heading5 as="label" htmlFor>` is a field label, so use `Label`. `<Heading3 as="a">` is a link styled as a heading, so put `<Link>` or the router link inside a `Heading` instead, or keep `as="a"` if it isn't a heading in the outline.
-- **Inline styles:** move `style={{ marginTop }}` to `spacing`, and `fontWeight: 500/600` to `weight="medium"`/`"bold"`.
+- **Inline styles:** move `style={{ marginTop }}` to `spacing`, and `fontWeight: 500/600` to `weight="medium"`/`"bold"` on `Text`. `Heading`, `Link` and `Label` have no `weight`: see step 7 in SKILL.md.
 
 ## `margin`
 

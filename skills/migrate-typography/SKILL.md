@@ -31,13 +31,13 @@ Report: files using the beta typography, files using the old components, files u
 
 ### 2. Upgrade packages
 
-Upgrade `@entur/typography`, `@entur/layout` and `@entur/tokens` to the latest versions in one command, together with any other `@entur/*` package that depends on them.
+Upgrade `@entur/typography`, `@entur/layout` and `@entur/tokens` to the latest versions in one command, together with any other `@entur/*` package that depends on them. Import `@entur/typography/beta/styles` next to `@entur/typography/styles`, where the app imports its other styles.
 
-**Done when:** the packages are on the latest version and the project installs.
+**Done when:** the packages are on the latest version, the project installs and the beta styles are imported.
 
 ### 3. Rename spacing values
 
-Load **[references/spacing.md](references/spacing.md)**, sections "Rename". Rename `spacing` on typography components, `gap`/`rowGap`/`columnGap` on `Flex` and `Grid` imported from `@entur/layout/beta`, and the spacing CSS variables. Leave `gap` on other libraries' components alone.
+Load **[references/spacing.md](references/spacing.md)**, sections "Rename". Rename `spacing` on typography components, `gap`/`rowGap`/`columnGap` on `Flex` and `Grid` imported from `@entur/layout/beta`, and the spacing CSS variables. Leave `gap` on other libraries' components alone. If the project already has new values (`3xl` and up, `--spacing-*`, `spacing={{ top }}`), it is partly migrated: rename only the code that still has old values, and ask the user where you can't tell.
 
 Some names exist both before and after but mean a different size, so rename in one pass, highest value first. Never search-and-replace one value at a time.
 
@@ -71,7 +71,7 @@ For each override from step 1, check it against "CSS class names" in [references
 
 - **Margin resets** (`margin: 0`), line-height fixes on `ListItem`, custom code text: remove.
 - **Margins that add space** (`margin-top: 3rem` on a heading): move to `spacing` on the component, or to `gap` on its layout.
-- **Inline `style`** with `margin` or `fontWeight`: move to `spacing` or `weight`.
+- **Inline `style`** with `margin`: move to `spacing`. With `fontWeight`: move to `weight` on `Text`. Headings are already bold, so remove `fontWeight: 600` on `Heading` and ask the user about `500`, which is not a heading style. Remove it on `Link` and `Label`, which follow their own style.
 - **Colours and the rest:** rename the selector.
 
 **Done when:** every override has been kept, renamed or removed, with a reason.
@@ -82,8 +82,8 @@ For each override from step 1, check it against "CSS class names" in [references
 npx tsc --noEmit
 npm run build
 npm test
-grep -rnE "variant=['\"](code-text|preformatted-text|link)['\"]|Blockquote|spacing=['\"](xs2|sm|md|[a-z0-9]+-(top|bottom))['\"]" "${CODE[@]}" $SRC
-# No margin on the new components (the old Heading1–6, Paragraph … still take it)
+grep -rnE "variant=['\"](code-text|preformatted-text|link)['\"]|spacing=['\"](xs2|sm|md|[a-z0-9]+-(top|bottom))['\"]" "${CODE[@]}" $SRC
+# No margin on the new components. Skip matches on old components from @entur/typography, which still take it
 grep -rnE "<(Heading|Text|Link)\b[^>]*margin=" "${CODE[@]}" $SRC
 ```
 
