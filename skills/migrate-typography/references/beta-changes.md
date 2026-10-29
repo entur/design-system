@@ -159,7 +159,7 @@ This also goes for global element rules that never targeted typography: `* { mar
 
 Also watch for:
 
-- **`background` on links.** `Link` draws its underline as a background image, so a reset like `background: none` on a link, or on a button rendered as one, removes it. Reset `background-color` only.
+- **`background` on links.** `Link` draws its underline as two background images in `currentColor`, so `background: none` or your own `background-image` on a link, or on a button rendered as one, removes it. Set `color` to change the underline, and reset `background-color` only.
 - **A font size of your own.** Line heights are fixed per variant, so a custom `font-size` on a heading or text can put the lines too close. Use `size`, or set `line-height` with it.
 - **Colour on a wrapper** doesn't reach the text components, which set their own colour. Set it on the component.
 - **Rules that already did nothing.** Code that was partly migrated before can have CSS for class names that no longer render. Remove it instead of renaming it.

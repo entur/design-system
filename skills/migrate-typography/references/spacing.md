@@ -80,7 +80,7 @@ For each text component, decide which case it is:
 
 2. **Text alone in UI.** In a card, modal, button, table cell or form. Remove `spacing="none"`, since it's the default now. Nothing else to do.
 
-3. **Pairs and small stacks in UI.** A title and a description, a label and a value. If the space came from the old margins, put them in a `Flex` and set the gap there. Use `spacing` on one of them only if a layout component doesn't fit.
+3. **Pairs and small stacks in UI.** A title and a description, a label and a value. If the space came from the old margins, put them in a `Flex` and set the gap there. Use `spacing` on one of them only if a layout component doesn't fit. Menus and link lists count too: a link whose text was a heading got the space between links from the heading's margins. Give the list a gap, and use `Text` for link text that isn't a heading.
 
    ```tsx
    <Flex direction="column" gap="xs">
@@ -98,8 +98,9 @@ Keep `spacing="none"` inside a `TextContainer`, where it overrides the rhythm.
 ### Inside `TextContainer`
 
 - **Project margins win.** The rhythm lives in a CSS layer, so a margin your own CSS sets on a child (a card, a code example, a button) replaces it, and can collapse with the next gap. Remove those margins and let the rhythm space the blocks.
+- **Empty blocks from a CMS.** An empty line in a rich-text editor gives an empty paragraph, which used to collapse into the margins but now adds a full gap. Skip blocks without text in the renderer.
 - **Headings must be direct children.** A heading inside a wrapper is spaced like any other block, without the extra space above it. To link to a section, put the link inside the heading (`<Heading id="x"><a href="#x">…</a></Heading>`) instead of wrapping the heading and a link together. To group a heading with an overline or subtitle, use `hgroup`, which is spaced as one heading.
-- **Nested blocks need their own container.** A card, callout or panel with several text blocks needs its own `TextContainer`, since the outer one only reaches its direct children. Don't wrap a single block, though: a card that fills its grid cell with `height: 100%` stops stretching inside an extra wrapper.
+- **Nested blocks need their own container.** A card, callout or panel with several text blocks needs its own `TextContainer`, since the outer one only reaches its direct children. The same goes for wrappers a parser keeps (`div`, `section`) and for a rich-text renderer reused somewhere else: put the `TextContainer` in the renderer, so every caller gets it. Where a layout keeps blocks apart, such as a page grid with one item per block, its gap replaces the rhythm between them. Set it to the space the rhythm puts above the headings that start the blocks, and check in the browser that the page reads as one flow. Don't wrap a single block, though: a card that fills its grid cell with `height: 100%` stops stretching inside an extra wrapper.
 - **Media with a caption** goes in `figure` + `figcaption`, so the caption sits close to the image or video. Outside a `TextContainer`, reset the browser's `figure` margin.
 - **Prefer the rhythm to the old margins.** Recreating every old margin with `spacing` gives many one-off values. Use the table below only where the design needs a specific space.
 
