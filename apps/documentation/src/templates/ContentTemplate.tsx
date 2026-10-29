@@ -2,6 +2,7 @@ import React, { useMemo } from 'react';
 import { HeadProps, Link, graphql } from 'gatsby';
 import { NavigationCard } from '@entur/layout';
 import { Grid } from '@entur/layout/beta';
+import { TextContainer } from '@entur/typography/beta';
 import { PortableText } from '@components/sanity';
 import { BasePageHeader } from '@components/PageHeader/BasePageHeader';
 import { TableOfContent } from '@components/Navigations/TableOfContent/TableOfContent';
@@ -51,24 +52,28 @@ export default function ContentTemplate({
         tag={tag}
       />
       <TableOfContent headings={headings} variant="inline" />
-      <PortableText value={content} />
-      {subpages.nodes.length > 0 && (
-        <Grid templateColumns="repeat(auto-fill, minmax(16rem, 1fr))" gap="m">
-          {subpages.nodes.map(subpage => (
-            <NavigationCard
-              key={subpage.id}
-              as={Link}
-              to={
-                getSanitizedPath({ title: subpage.title, parentPage: page }) ??
-                ''
-              }
-              title={subpage.title}
-            >
-              {subpage.description}
-            </NavigationCard>
-          ))}
-        </Grid>
-      )}
+      <TextContainer>
+        <PortableText value={content} container={false} />
+        {subpages.nodes.length > 0 && (
+          <Grid templateColumns="repeat(auto-fill, minmax(16rem, 1fr))" gap="m">
+            {subpages.nodes.map(subpage => (
+              <NavigationCard
+                key={subpage.id}
+                as={Link}
+                to={
+                  getSanitizedPath({
+                    title: subpage.title,
+                    parentPage: page,
+                  }) ?? ''
+                }
+                title={subpage.title}
+              >
+                {subpage.description}
+              </NavigationCard>
+            ))}
+          </Grid>
+        )}
+      </TextContainer>
     </>
   );
 }
