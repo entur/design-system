@@ -95,6 +95,8 @@ Without a source, `<Text variant="quote">` alone is enough.
 
   `Label` takes `htmlFor`, `spacing`, `className` and the other `<label>` attributes. Keep `Text variant="label"` for label-styled text that doesn't label a field.
 
+  `Label` is a block, so `spacing` works. Something that sat next to an inline label, such as a tooltip trigger, now wraps below it. Put both in `<Flex align="center" gap="xs">`.
+
 ## `label` and `sublabel` are removed from `Heading`
 
 Use `Text variant="label"` or `Text variant="sublabel"`, or `Label` when the text labels a form field.
@@ -157,7 +159,7 @@ This also goes for global element rules that never targeted typography: `* { mar
 
 Also watch for:
 
-- **`background` on links.** `Link` draws its underline as a background image, so a reset like `background: none` on a link, or on a button rendered as one, removes it. Reset `background-color` only.
+- **`background` on links.** `Link` draws its underline as two background images in `currentColor`, so `background: none` or your own `background-image` on a link, or on a button rendered as one, removes it. Set `color` to change the underline, and reset `background-color` only.
 - **A font size of your own.** Line heights are fixed per variant, so a custom `font-size` on a heading or text can put the lines too close. Use `size`, or set `line-height` with it.
 - **Colour on a wrapper** doesn't reach the text components, which set their own colour. Set it on the component.
 - **Rules that already did nothing.** Code that was partly migrated before can have CSS for class names that no longer render. Remove it instead of renaming it.
