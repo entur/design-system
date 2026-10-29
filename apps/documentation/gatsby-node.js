@@ -331,10 +331,16 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     toPath: '/universell-utforming/verktoy-og-ressurser',
   });
 
+  // The migration page now covers every migration guide, not only React 18.
+  createRedirect({
+    fromPath: '/komponenter/ressurser/migrering-react-18',
+    toPath: '/komponenter/ressurser/migrering',
+  });
+
   // These two moved when punctuation stopped leaking into slugs.
   createRedirect({
     fromPath: '/komponenter/ressurser/migrering-(react-18+)',
-    toPath: '/komponenter/ressurser/migrering-react-18',
+    toPath: '/komponenter/ressurser/migrering',
   });
 
   createRedirect({
