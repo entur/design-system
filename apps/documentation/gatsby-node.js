@@ -171,6 +171,12 @@ async function createDocumentationPagesFromSanity(graphql, actions, reporter) {
           subcategory
           isCategoryLandingPage
           tag
+          parentPage {
+            title
+            category
+            subcategory
+            tag
+          }
         }
       }
       allSanityComponentDoc {
@@ -219,6 +225,7 @@ async function createDocumentationPagesFromSanity(graphql, actions, reporter) {
       subcategory: page.subcategory,
       isCategoryLandingPage: page.isCategoryLandingPage,
       tag: page.tag ?? undefined,
+      parentPage: page.parentPage,
     });
 
     createPage({
@@ -230,8 +237,8 @@ async function createDocumentationPagesFromSanity(graphql, actions, reporter) {
     llmsPages.push({
       title: page.title,
       description: page.description || '',
-      category: page.category || '',
-      subcategory: page.subcategory || '',
+      category: page.parentPage?.category || page.category || '',
+      subcategory: page.parentPage?.subcategory || page.subcategory || '',
       path: pagePath,
       npmPackage: null,
     });

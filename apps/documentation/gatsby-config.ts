@@ -272,6 +272,7 @@ const config: GatsbyConfig = {
               subcategory: node.subcategory,
               isCategoryLandingPage: node.isCategoryLandingPage,
               tag: node.tag ?? undefined,
+              parentPage: node.parentPage,
             });
 
             return {
@@ -285,8 +286,8 @@ const config: GatsbyConfig = {
               body: node.content?._rawItems
                 ? JSON.stringify(node.content._rawItems)
                 : '',
-              category: node.category,
-              subcategory: node.subcategory,
+              category: node.parentPage?.category ?? node.category,
+              subcategory: node.parentPage?.subcategory ?? node.subcategory,
             };
           });
 
@@ -405,6 +406,12 @@ const config: GatsbyConfig = {
                 subcategory
                 isCategoryLandingPage
                 tag
+                parentPage {
+                  title
+                  category
+                  subcategory
+                  tag
+                }
                 content {
                   _rawItems
                 }

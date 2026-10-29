@@ -66,9 +66,14 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
   const processedMenuItems = React.useMemo(() => {
     const grouped: Record<string, MenuItem[]> = {};
     const ungrouped: MenuItem[] = [];
+    const subpages: Record<string, MenuItem[]> = {};
     menuItems
       .filter(item => normalizeString(item.category) === currentCategory)
       .forEach(item => {
+        if (item.parentId) {
+          (subpages[item.parentId] ??= []).push(item);
+          return;
+        }
         const subcategory = groupSubcategoryFor(item);
         const subcategoryLowercase = subcategory?.toLowerCase();
         if (subcategoryLowercase) {
@@ -82,6 +87,7 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
 
     Object.values(grouped).forEach(group => group.sort(menuItemComparator));
     ungrouped.sort(menuItemComparator);
+    Object.values(subpages).forEach(group => group.sort(menuItemComparator));
 
     const sortedGrouped = Object.entries(grouped).sort(
       (subcategoryA, subcategoryB) => {
@@ -93,27 +99,55 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
       },
     );
 
-    return { sortedGrouped, ungrouped };
+    return { sortedGrouped, ungrouped, subpages };
   }, [menuItems, currentCategory]);
 
-  const MenuItem = (props: { item: MenuItem }) => {
-    const { item } = props;
-    const path = item.path || getSanitizedPath(item) || '';
+  const { sortedGrouped, ungrouped, subpages } = processedMenuItems;
+
+  const pathFor = (item: MenuItem) => item.path || getSanitizedPath(item) || '';
+
+  // ExpandableItem reads `active` on its children to open itself
+  const MenuLink = ({
+    item,
+    title,
+  }: {
+    item: MenuItem;
+    title?: string;
+    active: boolean;
+  }) => {
+    const path = pathFor(item);
     return (
       <EnturSideNavigation.Item
-        key={item.id}
         as={Link}
         to={path}
         active={isActive(path, currentLocation)}
         onClick={onClickMenuItem}
-        badge={item.tag ? <ArticleTag tag={item.tag} /> : undefined}
+        badge={!title && item.tag ? <ArticleTag tag={item.tag} /> : undefined}
       >
-        {item.title}
+        {title ?? item.title}
       </EnturSideNavigation.Item>
     );
   };
 
-  const { sortedGrouped, ungrouped } = processedMenuItems;
+  const MenuItem = ({ item }: { item: MenuItem }) => {
+    const children = subpages[item.id];
+    const active = (child: MenuItem) =>
+      isActive(pathFor(child), currentLocation);
+    if (!children) return <MenuLink item={item} active={active(item)} />;
+
+    // ExpandableItem is a button, so the parent page gets a link of its own
+    return (
+      <EnturSideNavigation.ExpandableItem
+        title={item.title}
+        badge={item.tag ? <ArticleTag tag={item.tag} /> : undefined}
+      >
+        <MenuLink item={item} title="Oversikt" active={active(item)} />
+        {children.map(child => (
+          <MenuLink key={child.id} item={child} active={active(child)} />
+        ))}
+      </EnturSideNavigation.ExpandableItem>
+    );
+  };
 
   return (
     <div

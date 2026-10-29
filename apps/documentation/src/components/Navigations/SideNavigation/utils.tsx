@@ -1,13 +1,8 @@
+import type { GetSanitizedPathInput } from '../../../utils/getSanitizedPath';
+
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const { getSanitizedPath } = require('../../../utils/getSanitizedPath') as {
-  getSanitizedPath: (input: {
-    category?: string;
-    subcategory?: string;
-    title?: string;
-    categoryIndex?: number;
-    isCategoryLandingPage?: boolean;
-    tag?: string;
-  }) => string | undefined;
+  getSanitizedPath: (input: GetSanitizedPathInput) => string | undefined;
 };
 
 export interface MenuItem {
@@ -20,6 +15,8 @@ export interface MenuItem {
   tag?: string;
   path?: string;
   order?: number;
+  /** The id of the page this is a subpage of */
+  parentId?: string;
 }
 
 export const isActive = (route: string, location: Location) => {
