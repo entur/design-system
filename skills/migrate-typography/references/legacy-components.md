@@ -14,8 +14,8 @@ Import the new components from `@entur/typography/beta`, and `@entur/typography/
 | `LeadParagraph`                             | `<Text variant="leading">`                                                                        |
 | `SubParagraph`                              | `<Text variant="subparagraph">`                                                                   |
 | `SmallText`                                 | `<Text variant="caption" as="span">` (12px; the old one was 10–12px)                              |
-| `SubLabel`                                  | `<Text variant="sublabel" as="span">`                                                             |
-| `Label`                                     | `<Label>` when it labels a field, otherwise `<Text variant="label">`                              |
+| `SubLabel`                                  | See "Old `Label` and `SubLabel`" below                                                            |
+| `Label`                                     | `<Label>` when it labels a field, otherwise see below                                             |
 | `EmphasizedText`                            | `<Text variant="emphasized">`                                                                     |
 | `StrongText`                                | `<Text as="strong" weight="bold">`                                                                |
 | `CodeText`                                  | `<Text variant="code">`                                                                           |
@@ -28,6 +28,7 @@ Keep `as` when the old component had it. Heading level (`as`) and look (`variant
 
 - **Aliased imports** (`Link as LinkText`, `ListItem as LI`): find them in step 1 and replace them by alias.
 - **Name clashes:** the new `Link` clashes with the old `Link` and with router links (`Link as GatsbyLink`, Next.js `Link`). Rename on import, for example `import { Link as TextLink } from '@entur/typography/beta'`.
+- **Old `Label` and `SubLabel`:** both had the subdued colour and no bold weight, while the new `label` and `sublabel` variants are bold in the base colour. Text that isn't a field label, such as a description or a role, becomes `<Text variant="subparagraph" tone="subdued">` (with `as="span"` inline). A photo credit becomes `caption`, which doesn't hyphenate. A description of a field or fieldset goes right after its label, and the field or fieldset points to it with `aria-describedby`.
 - **Headings used as something else:** `<Heading5 as="label" htmlFor>` is a field label, so use `Label`. `<Heading3 as="a">` is a link styled as a heading, so put `<Link>` or the router link inside a `Heading` instead, or keep `as="a"` if it isn't a heading in the outline.
 - **Inline styles:** move `style={{ marginTop }}` to `spacing`, and `fontWeight: 500/600` to `weight="medium"`/`"bold"` on `Text`. `Heading`, `Link` and `Label` have no `weight`: see step 7 in SKILL.md.
 

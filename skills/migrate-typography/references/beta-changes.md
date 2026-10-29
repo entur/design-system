@@ -95,6 +95,8 @@ Without a source, `<Text variant="quote">` alone is enough.
 
   `Label` takes `htmlFor`, `spacing`, `className` and the other `<label>` attributes. Keep `Text variant="label"` for label-styled text that doesn't label a field.
 
+  `Label` is a block, so `spacing` works. Something that sat next to an inline label, such as a tooltip trigger, now wraps below it. Put both in `<Flex align="center" gap="xs">`.
+
 ## `label` and `sublabel` are removed from `Heading`
 
 Use `Text variant="label"` or `Text variant="sublabel"`, or `Label` when the text labels a form field.
