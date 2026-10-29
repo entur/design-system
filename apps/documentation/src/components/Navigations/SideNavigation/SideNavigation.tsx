@@ -22,6 +22,65 @@ import './SideNavigation.scss';
 const useIsomorphicLayoutEffect =
   typeof window === 'undefined' ? React.useEffect : React.useLayoutEffect;
 
+const pathFor = (item: MenuItem) => item.path || getSanitizedPath(item) || '';
+
+type MenuEntryProps = {
+  item: MenuItem;
+  subpages: Record<string, MenuItem[]>;
+  currentLocation: Location;
+  onClickMenuItem?: () => void;
+};
+
+type MenuLinkProps = Omit<MenuEntryProps, 'subpages'> & {
+  title?: string;
+  // ExpandableItem reads `active` on its children to open itself
+  active: boolean;
+};
+
+const MenuLink = ({ item, title, active, onClickMenuItem }: MenuLinkProps) => (
+  <EnturSideNavigation.Item
+    as={Link}
+    to={pathFor(item)}
+    active={active}
+    onClick={onClickMenuItem}
+    badge={!title && item.tag ? <ArticleTag tag={item.tag} /> : undefined}
+  >
+    {title ?? item.title}
+  </EnturSideNavigation.Item>
+);
+
+// Defined outside SideNavigation so ExpandableItem keeps its state between renders
+const MenuEntry = ({ item, subpages, ...rest }: MenuEntryProps) => {
+  const children = subpages[item.id];
+  const isCurrent = (page: MenuItem) =>
+    isActive(pathFor(page), rest.currentLocation);
+  if (!children)
+    return <MenuLink item={item} active={isCurrent(item)} {...rest} />;
+
+  // ExpandableItem is a button, so the parent page gets a link of its own
+  return (
+    <EnturSideNavigation.ExpandableItem
+      title={item.title}
+      badge={item.tag ? <ArticleTag tag={item.tag} /> : undefined}
+    >
+      <MenuLink
+        item={item}
+        title="Oversikt"
+        active={isCurrent(item)}
+        {...rest}
+      />
+      {children.map(child => (
+        <MenuLink
+          key={child.id}
+          item={child}
+          active={isCurrent(child)}
+          {...rest}
+        />
+      ))}
+    </EnturSideNavigation.ExpandableItem>
+  );
+};
+
 type SideNavigationProps = {
   menuItems: MenuItem[];
   className?: string;
@@ -66,9 +125,14 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
   const processedMenuItems = React.useMemo(() => {
     const grouped: Record<string, MenuItem[]> = {};
     const ungrouped: MenuItem[] = [];
+    const subpages: Record<string, MenuItem[]> = {};
     menuItems
       .filter(item => normalizeString(item.category) === currentCategory)
       .forEach(item => {
+        if (item.parentId) {
+          (subpages[item.parentId] ??= []).push(item);
+          return;
+        }
         const subcategory = groupSubcategoryFor(item);
         const subcategoryLowercase = subcategory?.toLowerCase();
         if (subcategoryLowercase) {
@@ -82,6 +146,7 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
 
     Object.values(grouped).forEach(group => group.sort(menuItemComparator));
     ungrouped.sort(menuItemComparator);
+    Object.values(subpages).forEach(group => group.sort(menuItemComparator));
 
     const sortedGrouped = Object.entries(grouped).sort(
       (subcategoryA, subcategoryB) => {
@@ -93,27 +158,11 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
       },
     );
 
-    return { sortedGrouped, ungrouped };
+    return { sortedGrouped, ungrouped, subpages };
   }, [menuItems, currentCategory]);
 
-  const MenuItem = (props: { item: MenuItem }) => {
-    const { item } = props;
-    const path = item.path || getSanitizedPath(item) || '';
-    return (
-      <EnturSideNavigation.Item
-        key={item.id}
-        as={Link}
-        to={path}
-        active={isActive(path, currentLocation)}
-        onClick={onClickMenuItem}
-        badge={item.tag ? <ArticleTag tag={item.tag} /> : undefined}
-      >
-        {item.title}
-      </EnturSideNavigation.Item>
-    );
-  };
-
-  const { sortedGrouped, ungrouped } = processedMenuItems;
+  const { sortedGrouped, ungrouped, subpages } = processedMenuItems;
+  const itemProps = { subpages, currentLocation, onClickMenuItem };
 
   return (
     <div
@@ -124,12 +173,12 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
         {sortedGrouped.map(([subcategory, subcategoryMenuItems]) => (
           <EnturSideNavigation.Group key={subcategory} title={subcategory}>
             {subcategoryMenuItems.map(item => (
-              <MenuItem key={item.id} item={item} />
+              <MenuEntry key={item.id} item={item} {...itemProps} />
             ))}
           </EnturSideNavigation.Group>
         ))}
         {ungrouped.map(item => (
-          <MenuItem key={item.id} item={item} />
+          <MenuEntry key={item.id} item={item} {...itemProps} />
         ))}
       </EnturSideNavigation>
     </div>

@@ -1,7 +1,10 @@
 import React from 'react';
 import MobileSideNavigation from '@components/Navigations/SideNavigation/MobileSideNavigation';
 import SideNavigation from '@components/Navigations/SideNavigation/SideNavigation';
-import { MenuItem } from '@components/Navigations/SideNavigation/utils';
+import {
+  MenuItem,
+  getSanitizedPath,
+} from '@components/Navigations/SideNavigation/utils';
 import { PageProps, graphql, useStaticQuery } from 'gatsby';
 
 const SideNavigationLayout = ({
@@ -38,6 +41,13 @@ const SideNavigationLayout = ({
           title
           isCategoryLandingPage
           tag
+          parentPage {
+            id
+            title
+            category
+            subcategory
+            tag
+          }
         }
       }
       allSanityComponentDoc {
@@ -94,15 +104,20 @@ function mergeMdxAndSanityPageData(mdxPageData: any[], sanityPageData: any[]) {
       } as MenuItem;
     });
   const sanityPages = sanityPageData.map(page => {
+    const { parentPage } = page;
     return {
       id: page.id,
       title: page.title,
-      category: page.category,
-      subcategory: page.subcategory,
+      category: parentPage?.category ?? page.category,
+      subcategory: parentPage?.subcategory ?? page.subcategory,
       order: page.order ?? null,
       categoryIndex: page.categoryIndex ?? null,
       isCategoryLandingPage: page.isCategoryLandingPage ?? false,
       tag: page.tag ?? undefined,
+      parentId: parentPage?.id,
+      path: parentPage
+        ? getSanitizedPath({ title: page.title, parentPage })
+        : undefined,
     } as MenuItem;
   });
   const customMenuItems: MenuItem[] = [

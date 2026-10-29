@@ -5,6 +5,7 @@ export type GetSanitizedPathInput = {
   categoryIndex?: number;
   isCategoryLandingPage?: boolean;
   tag?: string;
+  parentPage?: GetSanitizedPathInput | null;
 };
 
 // Re-export JS implementation for Node/Gatsby compatibility.

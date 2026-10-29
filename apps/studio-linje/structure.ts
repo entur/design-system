@@ -20,6 +20,10 @@ const byCategoryThenSubcategory = [
 
 // ——— Helpers ———
 
+// A subpage takes the categories of its parent page
+const CATEGORY = 'coalesce(parentPage->category, category)';
+const SUBCATEGORY = 'coalesce(parentPage->subcategory, subcategory)';
+
 /**
  * A subcategory entry. Either a plain name like `"Knapper"` or an object
  * with a custom GROQ filter for edge cases (e.g. Mønster/Monster).
@@ -76,7 +80,7 @@ function createCategorySection(
   subcategories: SubcategoryEntry[],
   categoryFilter?: string,
 ) {
-  const filter = categoryFilter ?? `category == "${category}"`;
+  const filter = categoryFilter ?? `${CATEGORY} == "${category}"`;
   const types = Array.isArray(documentType) ? documentType : [documentType];
   const typeGroq = types.map(t => `"${t}"`).join(', ');
 
@@ -96,7 +100,7 @@ function createCategorySection(
     const title = typeof entry === 'string' ? entry : entry.title;
     const subFilter =
       typeof entry === 'string'
-        ? `category == "${category}" && subcategory == "${entry}"`
+        ? `${CATEGORY} == "${category}" && ${SUBCATEGORY} == "${entry}"`
         : entry.filter;
 
     return S.listItem()
@@ -224,7 +228,7 @@ export const structure = (S: any, { documentStore }: any) =>
                     S,
                     ['page', 'componentDoc'],
                     'Universell utforming-sider',
-                    'category == "Universell utforming"',
+                    `${CATEGORY} == "Universell utforming"`,
                   ),
                 ),
             ]),

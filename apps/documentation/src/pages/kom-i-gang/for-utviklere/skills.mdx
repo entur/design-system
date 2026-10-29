@@ -47,18 +47,12 @@ Skillene er en del av [designsystem-repoet](https://github.com/entur/design-syst
       <DataCell><Text variant="code">entur-brand-design</Text></DataCell>
       <DataCell>Farger, typografi, datavisualisering, visuell identitet, presentasjoner</DataCell>
     </TableRow>
-    <TableRow>
-      <DataCell><Text variant="code">migrate-react-18</Text></DataCell>
-      <DataCell>Oppgradering av <Text variant="code">@entur/*</Text> til React 18-majorversjonene, steg for steg</DataCell>
-    </TableRow>
-    <TableRow>
-      <DataCell><Text variant="code">migrate-typography</Text></DataCell>
-      <DataCell>Overgang til ny typografi og den nye avstandsskalaen i layout beta, steg for steg</DataCell>
-    </TableRow>
   </TableBody>
 </Table>
 
 Du trenger bare å forholde deg til `entur-linje`. Den ser hva oppgaven handler om og laster resten selv.
+
+I tillegg finnes det skills for migrering, som du starter selv. Se [Migrer med en skill](#migrer-med-en-skill).
 
 ## Claude Code via Enturs marketplace (anbefalt)
 
@@ -87,6 +81,39 @@ Når du jobber med Entur-komponenter, profil eller universell utforming, les og 
 https://raw.githubusercontent.com/entur/design-system/main/skills/entur-linje/SKILL.md`}
 </CodeBlock>
 
+## Migrer med en skill
+
+Migreringsskillene tar agenten gjennom en oppgradering steg for steg: finne berørt kode, endre den og sjekke resultatet.
+
+<Table spacing="middle">
+  <TableHead>
+    <TableRow>
+      <HeaderCell>Skill</HeaderCell>
+      <HeaderCell>Bruk når du</HeaderCell>
+    </TableRow>
+  </TableHead>
+  <TableBody>
+    <TableRow>
+      <DataCell><Text variant="code">migrate-typography</Text></DataCell>
+      <DataCell>går over til ny typografi fra <Text variant="code">@entur/typography/beta</Text>, eller til den nye avstandsskalaen i layout beta</DataCell>
+    </TableRow>
+    <TableRow>
+      <DataCell><Text variant="code">migrate-react-18</Text></DataCell>
+      <DataCell>oppgraderer <Text variant="code">@entur/*</Text> til majorversjonene som krever React 18</DataCell>
+    </TableRow>
+  </TableBody>
+</Table>
+
+Agenten starter dem ikke av seg selv, siden de endrer mye kode. Har du installert pluginen, kjør skillen i Claude Code:
+
+```bash
+/entur-linje:migrate-typography
+```
+
+Bruker du en annen agent, be den lese og følge skillen fra GitHub, for eksempel `https://raw.githubusercontent.com/entur/design-system/main/skills/migrate-typography/SKILL.md`.
+
+[Migrering](/komponenter/ressurser/migrering) beskriver hva som endres i hver migrering, hvis du heller vil gjøre jobben selv.
+
 ## Maskinlesbar dokumentasjon
 
 Dokumentasjonssiden publiserer to filer for agenter:
@@ -112,9 +139,9 @@ Dokumentasjonssiden publiserer to filer for agenter:
 
 `llms-full.txt` er den mest komplette enkeltreferansen: en agent som leser den får alle skills og alle referansefiler inline. Bruk den som alternativ eller supplement til skill-URL-en.
 
-## Fordeler
+## Hva skillene hjelper med
 
-Denne skillen vil hjelpe deg med å:
+Skillene hjelper agenten med å:
 
 - installere bare de `@entur/*`-pakkene som trengs, og få CSS-rekkefølgen riktig
 - bruke tokens framfor hardkodede farger og spacing, og ikke overstyre `.eds-*`-klasser

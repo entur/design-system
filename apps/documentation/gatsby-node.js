@@ -171,6 +171,12 @@ async function createDocumentationPagesFromSanity(graphql, actions, reporter) {
           subcategory
           isCategoryLandingPage
           tag
+          parentPage {
+            title
+            category
+            subcategory
+            tag
+          }
         }
       }
       allSanityComponentDoc {
@@ -219,6 +225,7 @@ async function createDocumentationPagesFromSanity(graphql, actions, reporter) {
       subcategory: page.subcategory,
       isCategoryLandingPage: page.isCategoryLandingPage,
       tag: page.tag ?? undefined,
+      parentPage: page.parentPage,
     });
 
     createPage({
@@ -230,8 +237,8 @@ async function createDocumentationPagesFromSanity(graphql, actions, reporter) {
     llmsPages.push({
       title: page.title,
       description: page.description || '',
-      category: page.category || '',
-      subcategory: page.subcategory || '',
+      category: page.parentPage?.category || page.category || '',
+      subcategory: page.parentPage?.subcategory || page.subcategory || '',
       path: pagePath,
       npmPackage: null,
     });
@@ -331,10 +338,16 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     toPath: '/universell-utforming/verktoy-og-ressurser',
   });
 
+  // The migration page now covers every migration guide, not only React 18.
+  createRedirect({
+    fromPath: '/komponenter/ressurser/migrering-react-18',
+    toPath: '/komponenter/ressurser/migrering',
+  });
+
   // These two moved when punctuation stopped leaking into slugs.
   createRedirect({
     fromPath: '/komponenter/ressurser/migrering-(react-18+)',
-    toPath: '/komponenter/ressurser/migrering-react-18',
+    toPath: '/komponenter/ressurser/migrering',
   });
 
   createRedirect({

@@ -1,5 +1,8 @@
 import React, { useMemo } from 'react';
-import { HeadProps, graphql } from 'gatsby';
+import { HeadProps, Link, graphql } from 'gatsby';
+import { NavigationCard } from '@entur/layout';
+import { Grid } from '@entur/layout/beta';
+import { TextContainer } from '@entur/typography/beta';
 import { PortableText } from '@components/sanity';
 import { BasePageHeader } from '@components/PageHeader/BasePageHeader';
 import { TableOfContent } from '@components/Navigations/TableOfContent/TableOfContent';
@@ -9,22 +12,30 @@ import { PageType } from '@components/sanity/types';
 import { SEO } from '@components/seo/SEO';
 import { getSanitizedPath } from '@components/Navigations/SideNavigation/utils';
 
+type SubpageType = {
+  id: string;
+  title: string;
+  description?: string;
+  tag?: string | null;
+};
+
 export default function ContentTemplate({
   data,
 }: {
-  data: { page: PageType };
+  data: { page: PageType; subpages: { nodes: SubpageType[] } };
 }) {
-  const { page } = data;
+  const { page, subpages } = data;
   const {
     title,
-    category,
-    subcategory,
     content,
     description,
     npmPackage,
     isCategoryLandingPage,
     tag,
+    parentPage,
   } = page;
+  const category = parentPage?.category ?? page.category;
+  const subcategory = parentPage?.subcategory ?? page.subcategory;
 
   const headings = useMemo(() => extractHeadings(content), [content]);
   useSetTocHeadings(headings);
@@ -41,7 +52,28 @@ export default function ContentTemplate({
         tag={tag}
       />
       <TableOfContent headings={headings} variant="inline" />
-      <PortableText value={content} />
+      <TextContainer>
+        <PortableText value={content} container={false} />
+        {subpages.nodes.length > 0 && (
+          <Grid templateColumns="repeat(auto-fill, minmax(16rem, 1fr))" gap="m">
+            {subpages.nodes.map(subpage => (
+              <NavigationCard
+                key={subpage.id}
+                as={Link}
+                to={
+                  getSanitizedPath({
+                    title: subpage.title,
+                    parentPage: page,
+                  }) ?? ''
+                }
+                title={subpage.title}
+              >
+                {subpage.description}
+              </NavigationCard>
+            ))}
+          </Grid>
+        )}
+      </TextContainer>
     </>
   );
 }
@@ -56,33 +88,17 @@ export const Head = (
         subcategory: string;
         isCategoryLandingPage: boolean;
         tag?: string | null;
+        parentPage?: PageType['parentPage'];
       };
     };
   },
 ) => {
-  const {
-    data: {
-      page: {
-        title,
-        description,
-        category,
-        subcategory,
-        isCategoryLandingPage,
-        tag,
-      },
-    },
-  } = props;
+  const { page } = props.data;
   return (
     <SEO
-      title={title}
-      description={description}
-      pathname={getSanitizedPath({
-        title,
-        category,
-        subcategory,
-        isCategoryLandingPage,
-        tag,
-      })}
+      title={page.title}
+      description={page.description}
+      pathname={getSanitizedPath({ ...page, tag: page.tag ?? undefined })}
     />
   );
 };
@@ -96,8 +112,25 @@ export const query = graphql`
       description
       isCategoryLandingPage
       tag
+      parentPage {
+        title
+        category
+        subcategory
+        tag
+      }
       content {
         ...TextBlockFragment
+      }
+    }
+    subpages: allSanityPage(
+      filter: { parentPage: { id: { eq: $id } } }
+      sort: { title: ASC }
+    ) {
+      nodes {
+        id
+        title
+        description
+        tag
       }
     }
   }

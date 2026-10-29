@@ -20,7 +20,12 @@ function getSanitizedPath({
   categoryIndex,
   isCategoryLandingPage,
   tag,
+  parentPage,
 }) {
+  if (parentPage) {
+    return `${getSanitizedPath(parentPage)}/${sanitizeText(title)}`;
+  }
+
   const sanitizedCategory = sanitizeText(category);
 
   // If this is a category landing page, return just the category path

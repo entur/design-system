@@ -47,14 +47,37 @@ export const page = defineType({
       type: 'string',
     }),
     defineField({
+      name: 'parentPage',
+      title: 'Overordnet side',
+      description:
+        'Gjør denne til en underside. Den får kategoriene og adressen til den overordnede siden, og vises under den i menyen.',
+      type: 'reference',
+      to: [{ type: 'page' }],
+      options: {
+        // Only one level of nesting
+        filter: ({ document }) => ({
+          filter: '!defined(parentPage) && _id != $id && _id != $draftId',
+          params: {
+            id: document._id.replace(/^drafts\./, ''),
+            draftId: `drafts.${document._id.replace(/^drafts\./, '')}`,
+          },
+        }),
+      },
+    }),
+    defineField({
       name: 'category',
       title: 'Hovedkategori',
       type: 'string',
       components: {
         input: DynamicCategoryInput,
       },
+      hidden: ({ document }) => Boolean(document?.parentPage),
       validation: Rule =>
-        Rule.required().error('Hovedkategori er et påkrevd felt'),
+        Rule.custom((category, context) =>
+          category || context.document?.parentPage
+            ? true
+            : 'Hovedkategori er et påkrevd felt',
+        ),
     }),
     defineField({
       name: 'subcategory',
@@ -63,6 +86,7 @@ export const page = defineType({
       components: {
         input: DynamicSubcategoryInput,
       },
+      hidden: ({ document }) => Boolean(document?.parentPage),
     }),
     defineField({
       name: 'tag',
@@ -78,6 +102,7 @@ export const page = defineType({
         'Hvis aktivert vil denne siden vises når man går til denne kategorien fra hovedmenyen.',
       type: 'boolean',
       initialValue: false,
+      hidden: ({ document }) => Boolean(document?.parentPage),
       validation: Rule =>
         Rule.custom(async (isCategoryLandingPage, context) => {
           if (!isCategoryLandingPage) return true;
@@ -121,9 +146,19 @@ export const page = defineType({
       subcategory: 'subcategory',
       isCategoryLandingPage: 'isCategoryLandingPage',
       tag: 'tag',
+      parentTitle: 'parentPage.title',
     },
-    prepare({ title, category, subcategory, isCategoryLandingPage, tag }) {
-      const subtitle = isCategoryLandingPage
+    prepare({
+      title,
+      category,
+      subcategory,
+      isCategoryLandingPage,
+      tag,
+      parentTitle,
+    }) {
+      const subtitle = parentTitle
+        ? `Underside av ${parentTitle}`
+        : isCategoryLandingPage
         ? `${category} (Landingsside)`
         : subcategory
         ? `${category} > ${subcategory}`
