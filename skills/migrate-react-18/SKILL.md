@@ -1,6 +1,6 @@
 ---
 name: migrate-react-18
-description: Upgrade a consumer project to the latest major @entur/* design system packages. Covers breaking changes (ESM exports, modal, tabs, expand, layout, utils) and verifies the project meets the React 18 minimum. Use when upgrading @entur packages, fixing breakage after updating @entur dependencies, or migrating to the newest design system versions.
+description: Upgrade a consumer project from @entur/* versions that still accept React 16 or 17 to the majors that require React 18. Covers breaking changes (ESM exports, modal, tabs, expand, layout, utils) and verifies the project meets the React 18 minimum. Use when a project on the pre-React 18 @entur/* versions upgrades. For later breaking changes, use the migration guide in entur-web-development.
 disable-model-invocation: true
 ---
 
