@@ -12,6 +12,8 @@ import './text.scss';
 export type NumberedListOwnProps = TypographySpacingProps & {
   /** Ekstra klassenavn */
   className?: string;
+  /** Dempet liste for sekundær informasjon, som hjelpetekst. Velger riktig farge i kontrast- og mørk modus. */
+  tone?: 'subdued';
   /** Innholdet */
   children?: React.ReactNode;
   /** List type (1, A, a, I, i) */
@@ -43,6 +45,7 @@ export const NumberedList = React.forwardRef(
       type = '1',
       variant = 'default',
       className,
+      tone,
       spacing,
       style,
       children,
@@ -60,6 +63,7 @@ export const NumberedList = React.forwardRef(
           'eds-text--numbered-list',
           `eds-text--numbered-list--type-${type}`,
           { 'eds-text--steps': variant === 'steps' },
+          tone && `eds-text--tone-${tone}`,
           className,
         )}
         type={type}

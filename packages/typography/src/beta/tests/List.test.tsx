@@ -123,3 +123,22 @@ describe('List markers', () => {
     expect(list).toHaveAttribute('start', '3');
   });
 });
+
+describe('tone', () => {
+  test('applies the subdued tone to lists and list items', () => {
+    const { getAllByRole } = render(
+      <>
+        <UnorderedList tone="subdued">
+          <ListItem tone="subdued">En</ListItem>
+        </UnorderedList>
+        <NumberedList tone="subdued">
+          <ListItem>To</ListItem>
+        </NumberedList>
+      </>,
+    );
+    const [unordered, numbered] = getAllByRole('list');
+    expect(unordered).toHaveClass('eds-text--tone-subdued');
+    expect(numbered).toHaveClass('eds-text--tone-subdued');
+    expect(getAllByRole('listitem')[0]).toHaveClass('eds-text--tone-subdued');
+  });
+});
