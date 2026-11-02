@@ -92,11 +92,11 @@ const isType = (
 ): node is React.ReactElement =>
   React.isValidElement(node) && node.type === type;
 
-/** Navnet på seksjonen, uten suffikset preset-en gir beta-seksjoner. */
-const stripBeta = (heading: string): string =>
-  heading.endsWith(BETA_SUFFIX)
-    ? heading.slice(0, -BETA_SUFFIX.length)
-    : heading;
+/** Navnet på seksjonen, uten beta-merkingen preset-en gir, også eldre `[BETA]`-prefiks. */
+const stripBeta = (heading: string): string => {
+  const name = heading.replace(/^\[BETA\] /, '');
+  return name.endsWith(BETA_SUFFIX) ? name.slice(0, -BETA_SUFFIX.length) : name;
+};
 
 /** Navnet på seksjonen en node innleder, om den innleder en. */
 const sectionTitle = (node: React.ReactNode): string =>
