@@ -7,11 +7,11 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **typography:** add a stylesheet without base tokens ([e8531ec](https://github.com/entur/design-system/commit/e8531ecb3dfc2acfffe68ae7c1c24bbfbedd6ed9))
+- **typography:** add a stylesheet without base tokens ([e8531ec](https://github.com/entur/design-system/commit/e8531ecb3dfc2acfffe68ae7c1c24bbfbedd6ed9)) ([#517](https://github.com/entur/design-system/pull/517))
 
   Import @entur/typography/styles/no-base-tokens instead of @entur/typography/styles when your app already loads @entur/tokens/dist/base.css. The base tokens are then declared only once, which keeps browser devtools fast.
 
-- **typography:** replace the migration script with the migrate-typography skill ([7ec132d](https://github.com/entur/design-system/commit/7ec132da9009554b71e66dfe1745c6df07973484))
+- **typography:** replace the migration script with the migrate-typography skill ([7ec132d](https://github.com/entur/design-system/commit/7ec132da9009554b71e66dfe1745c6df07973484)) ([#508](https://github.com/entur/design-system/pull/508))
 
   Use the `migrate-typography` skill with your AI coding agent to move to the
   new typography. It replaces the `migrate` script, which no longer ships
@@ -19,125 +19,125 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes (beta)
 
-- **typography/beta:** break long words in headings with a hyphen ([68d3c38](https://github.com/entur/design-system/commit/68d3c388c63c64d799abaa0ab9d61ad9324a563c))
+- **typography/beta:** break long words in headings with a hyphen ([68d3c38](https://github.com/entur/design-system/commit/68d3c388c63c64d799abaa0ab9d61ad9324a563c)) ([#523](https://github.com/entur/design-system/pull/523))
 
   Headings on a page with a Norwegian lang now break long words, such as
   compound words, with a hyphen instead of running out of a narrow column.
   Shorter words still wrap whole.
 
-- **typography/beta:** ease the link underline out on hover ([a66be01](https://github.com/entur/design-system/commit/a66be0145d7505e9d6d716c2bfe4bed175015516))
+- **typography/beta:** ease the link underline out on hover ([a66be01](https://github.com/entur/design-system/commit/a66be0145d7505e9d6d716c2bfe4bed175015516)) ([#509](https://github.com/entur/design-system/pull/509))
 
   The thicker line now starts fast and slows down as it reaches the end.
 
-- **typography/beta:** forward refs and export props types ([9b2d5f6](https://github.com/entur/design-system/commit/9b2d5f6e14984eb5cee5171eed34fe81d937250f))
+- **typography/beta:** forward refs and export props types ([9b2d5f6](https://github.com/entur/design-system/commit/9b2d5f6e14984eb5cee5171eed34fe81d937250f)) ([#505](https://github.com/entur/design-system/pull/505))
 
   `Heading`, `Text`, `Link` and the list components now pass `ref` on to the
   rendered element. Their props types (`HeadingProps`, `TextProps`, …) are
   exported from `@entur/typography/beta`. A missing base typography stylesheet
   now gives a development warning.
 
-- **typography/beta:** give preformatted text the text colour in contrast and dark mode ([98babd1](https://github.com/entur/design-system/commit/98babd197b45930fd97b744091cf23a51d7763af))
+- **typography/beta:** give preformatted text the text colour in contrast and dark mode ([98babd1](https://github.com/entur/design-system/commit/98babd197b45930fd97b744091cf23a51d7763af)) ([#509](https://github.com/entur/design-system/pull/509))
 
   Preformatted text was black when it was not inside another text component.
 
-- **typography/beta:** hyphenate only running text and keep UI text whole ([65dfa75](https://github.com/entur/design-system/commit/65dfa750649501a8427c18678ac5a7aef74ea359))
+- **typography/beta:** hyphenate only running text and keep UI text whole ([65dfa75](https://github.com/entur/design-system/commit/65dfa750649501a8427c18678ac5a7aef74ea359)) ([#509](https://github.com/entur/design-system/pull/509))
 
   Paragraphs, the leading text, quotes and lists break long words and hyphenate
   them. Labels, captions, the overline and other UI text keep their words
   whole again, so text cut off with an ellipsis stays on one line.
 
-- **typography/beta:** keep the label styles on Text and Label ([a5d8e49](https://github.com/entur/design-system/commit/a5d8e49f19c01eac738664bb93b300644b3714a6))
+- **typography/beta:** keep the label styles on Text and Label ([a5d8e49](https://github.com/entur/design-system/commit/a5d8e49f19c01eac738664bb93b300644b3714a6)) ([#505](https://github.com/entur/design-system/pull/505))
 
   Label text is set with `Text variant="label"`, `Text variant="sublabel"` or
   `Label`, not with a heading.
 
-- **typography/beta:** let a heading's size decide the space after it in TextContainer ([326bd2f](https://github.com/entur/design-system/commit/326bd2f4e09f45da848c8bb76d254102a7a8615f))
+- **typography/beta:** let a heading's size decide the space after it in TextContainer ([326bd2f](https://github.com/entur/design-system/commit/326bd2f4e09f45da848c8bb76d254102a7a8615f)) ([#505](https://github.com/entur/design-system/pull/505))
 
   A heading with both `variant` and `size` now gets the space after that
   belongs to its size, as it already did for its font size.
 
-- **typography/beta:** let Link take the size of the text around it on desktop ([867777a](https://github.com/entur/design-system/commit/867777a63e513045dec002e1950c13687efe89ee))
+- **typography/beta:** let Link take the size of the text around it on desktop ([867777a](https://github.com/entur/design-system/commit/867777a63e513045dec002e1950c13687efe89ee)) ([#509](https://github.com/entur/design-system/pull/509))
 
   On wide screens `Link` was always 16px, also inside headings, captions and
   leading text. It now inherits the size and line height, so
   `<Heading as="h2"><Link href="…">…</Link></Heading>` looks like the heading.
 
-- **typography/beta:** let size win over variant on Text and Heading ([4d958b0](https://github.com/entur/design-system/commit/4d958b0cb848509b2a3cbb6203bd742d16527da2))
+- **typography/beta:** let size win over variant on Text and Heading ([4d958b0](https://github.com/entur/design-system/commit/4d958b0cb848509b2a3cbb6203bd742d16527da2)) ([#505](https://github.com/entur/design-system/pull/505))
 
   `size` now always sets the font size and line height, also when a variant
   is given. On Heading the variant keeps its other styles alongside `size`.
 
-- **typography/beta:** make h2 the default element for Heading ([50acb52](https://github.com/entur/design-system/commit/50acb521157f08d8342c46cdc8184fb32a82cb9b))
+- **typography/beta:** make h2 the default element for Heading ([50acb52](https://github.com/entur/design-system/commit/50acb521157f08d8342c46cdc8184fb32a82cb9b)) ([#509](https://github.com/entur/design-system/pull/509))
 
   Heading without `as` is now an h2 with title-2, so a page doesn't get an
   extra h1 by accident. Set `as="h1"` on the page title.
 
-- **typography/beta:** make spacing work on links and lists, and fix label and leading styles ([ba2889c](https://github.com/entur/design-system/commit/ba2889c254c8da4b34a35d4dd733df5bd9b608da))
+- **typography/beta:** make spacing work on links and lists, and fix label and leading styles ([ba2889c](https://github.com/entur/design-system/commit/ba2889c254c8da4b34a35d4dd733df5bd9b608da)) ([#505](https://github.com/entur/design-system/pull/505))
 
   The `spacing` prop now works on `Link`, `UnorderedList`, `NumberedList` and
   `ListItem`. `Text size="lg"` now has a style. `weight` is `medium` or
   `bold` (600, Nationale DemiBold). Leading text gets a slightly tighter
   letter spacing.
 
-- **typography/beta:** make Text without a variant a paragraph, or inherit inside other text ([4a4850e](https://github.com/entur/design-system/commit/4a4850ee7213d1a8b0875a0b01e7d57fdcee11de))
+- **typography/beta:** make Text without a variant a paragraph, or inherit inside other text ([4a4850e](https://github.com/entur/design-system/commit/4a4850ee7213d1a8b0875a0b01e7d57fdcee11de)) ([#509](https://github.com/entur/design-system/pull/509))
 
   Text on its own line (p, div, li …) now gets the paragraph style, so it has
   a size outside TextContainer and the tighter space before a list inside it.
   Text inside other text (span, strong, a component) inherits colour and
   weight as well as size, so it no longer turns medium inside a bold heading.
 
-- **typography/beta:** redesign the link underline ([b6a460e](https://github.com/entur/design-system/commit/b6a460e827d3ad35c9efd27836085d6084be9342))
+- **typography/beta:** redesign the link underline ([b6a460e](https://github.com/entur/design-system/commit/b6a460e827d3ad35c9efd27836085d6084be9342)) ([#509](https://github.com/entur/design-system/pull/509))
 
   Links now have a thin underline that sits clear of the text and wraps cleanly over several lines. On hover a thicker line sweeps in over it, which is turned off for users who prefer reduced motion. In forced colors mode the link keeps a regular underline.
 
-- **typography/beta:** remove the external prop from Link ([95922e8](https://github.com/entur/design-system/commit/95922e897cd2012fc82a250bc9cb3df292a848e1))
+- **typography/beta:** remove the external prop from Link ([95922e8](https://github.com/entur/design-system/commit/95922e897cd2012fc82a250bc9cb3df292a848e1)) ([#509](https://github.com/entur/design-system/pull/509))
 
   The external icon was read both as "another site" and as "opens in a new tab".
   Say it in the link text instead, for example "(åpnes i ny fane)".
 
-- **typography/beta:** style code inside links and links rendered as buttons ([11f29ee](https://github.com/entur/design-system/commit/11f29ee34685befa4a4929fa7a2b1749acdd5e32))
+- **typography/beta:** style code inside links and links rendered as buttons ([11f29ee](https://github.com/entur/design-system/commit/11f29ee34685befa4a4929fa7a2b1749acdd5e32)) ([#509](https://github.com/entur/design-system/pull/509))
 
   Code inside a link now shows the link's line and its hover, instead of a second underline. A Link with as="button" now looks like a link, with the text's font and an underline that thickens on hover, instead of the browser's button style.
 
 ### Features (beta)
 
-- **typography/beta:** balance heading lines and avoid lone words in text ([250908d](https://github.com/entur/design-system/commit/250908d325c575899312a08559a7b00c9f70eddb))
+- **typography/beta:** balance heading lines and avoid lone words in text ([250908d](https://github.com/entur/design-system/commit/250908d325c575899312a08559a7b00c9f70eddb)) ([#505](https://github.com/entur/design-system/pull/505))
 
   Headings use `text-wrap: balance` and body text `text-wrap: pretty` in
   browsers that support them.
 
-- **typography/beta:** break long Norwegian words with a hyphen ([677d1e2](https://github.com/entur/design-system/commit/677d1e22c7a7e159b8fa0fd1c4fc27ae618c5af2))
+- **typography/beta:** break long Norwegian words with a hyphen ([677d1e2](https://github.com/entur/design-system/commit/677d1e22c7a7e159b8fa0fd1c4fc27ae618c5af2)) ([#509](https://github.com/entur/design-system/pull/509))
 
   Text, and text from a CMS inside `TextContainer`, now hyphenates long words
   when the page sets `lang="nb"`, `"nn"` or `"no"`. Headings and text wrap a
   word that is longer than the line instead of overflowing. Code is never
   hyphenated.
 
-- **typography/beta:** export the size types for headings and text ([17bb0e2](https://github.com/entur/design-system/commit/17bb0e2952e7acd4b4f685de1386694f9e753979))
+- **typography/beta:** export the size types for headings and text ([17bb0e2](https://github.com/entur/design-system/commit/17bb0e2952e7acd4b4f685de1386694f9e753979)) ([#505](https://github.com/entur/design-system/pull/505))
 
   `TypographyHeadingSize` and `TypographyTextSize` list the sizes each component
   takes, and `TypographySize` now covers every typography size.
 
-- **typography/beta:** give the quote variant the blockquote look ([4320d91](https://github.com/entur/design-system/commit/4320d91873a2f6a0e7c7b58c9a24f21153a0f622))
+- **typography/beta:** give the quote variant the blockquote look ([4320d91](https://github.com/entur/design-system/commit/4320d91873a2f6a0e7c7b58c9a24f21153a0f622)) ([#505](https://github.com/entur/design-system/pull/505))
 
   `Text variant="quote"` renders `<blockquote>` with the left border. For a
   source, wrap it in `<figure>` with a `<figcaption>`.
 
-- **typography/beta:** keep running text in TextContainer at a readable line length ([c6ce4df](https://github.com/entur/design-system/commit/c6ce4df3be161dbe3709e70fd042987a43dcda71))
+- **typography/beta:** keep running text in TextContainer at a readable line length ([c6ce4df](https://github.com/entur/design-system/commit/c6ce4df3be161dbe3709e70fd042987a43dcda71)) ([#509](https://github.com/entur/design-system/pull/509))
 
   Paragraphs, lists and quotes in a `TextContainer` are at most about 70
   characters wide. Images, tables and components keep the full width. Set
   `max-inline-size` on an element to change it.
 
-- **typography/beta:** name the code variants code and preformatted ([9245ba8](https://github.com/entur/design-system/commit/9245ba85318d2b03d4f1f0e5a615141e1986b73c))
-- **typography/beta:** redesign code and preformatted text ([3961947](https://github.com/entur/design-system/commit/396194743428e5af137d55c5b4eaa66137d94a8d))
+- **typography/beta:** name the code variants code and preformatted ([9245ba8](https://github.com/entur/design-system/commit/9245ba85318d2b03d4f1f0e5a615141e1986b73c)) ([#505](https://github.com/entur/design-system/pull/505))
+- **typography/beta:** redesign code and preformatted text ([3961947](https://github.com/entur/design-system/commit/396194743428e5af137d55c5b4eaa66137d94a8d)) ([#505](https://github.com/entur/design-system/pull/505))
 
   Code follows the size, colour and weight of the text around it, wraps
   like text and has no border. Links keep their underline over code, and
   a high contrast outline marks it when forced colors remove the fill.
   Preformatted text gets its own padding, line height and tab size.
 
-- **typography/beta:** redesign lists and add numbered steps ([ebefe28](https://github.com/entur/design-system/commit/ebefe2813c18828597247ea7461e726ad094860c))
+- **typography/beta:** redesign lists and add numbered steps ([ebefe28](https://github.com/entur/design-system/commit/ebefe2813c18828597247ea7461e726ad094860c)) ([#507](https://github.com/entur/design-system/pull/507))
 
   Lists now use the body text style and the text colour for markers.
   Bullets are small dots, with rings on the second level, and they stay on
@@ -147,30 +147,30 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   `NumberedList variant="steps"` shows the numbers in badges, for
   step-by-step instructions.
 
-- **typography/beta:** render caption, overline and sublabel as paragraphs ([3171e29](https://github.com/entur/design-system/commit/3171e29b84a5145c374de22de632a8a7bd08d297))
+- **typography/beta:** render caption, overline and sublabel as paragraphs ([3171e29](https://github.com/entur/design-system/commit/3171e29b84a5145c374de22de632a8a7bd08d297)) ([#505](https://github.com/entur/design-system/pull/505))
 
   They are block elements now, so `spacing` works on them, and `emphasized`
   renders `<em>`. Pass `as="span"` where they sit inside a line of text.
 
-- **typography/beta:** warn in development when global CSS overrides the typography ([56f506b](https://github.com/entur/design-system/commit/56f506be5e01c2a9b3b352a8152e1e514db28b11))
+- **typography/beta:** warn in development when global CSS overrides the typography ([56f506b](https://github.com/entur/design-system/commit/56f506be5e01c2a9b3b352a8152e1e514db28b11)) ([#509](https://github.com/entur/design-system/pull/509))
 
   The beta typography sits in cascade layers, so resets and element rules
   in an app such as `* { margin: 0 }` or `a { … }` win over it. In
   development, the console now names the rules it finds and links to the
   fix. Nothing runs in production.
 
-- **typography/beta:** add Label for form field labels ([ab98c7c](https://github.com/entur/design-system/commit/ab98c7ce45cecb42a18db21af058ff226953d29d))
+- **typography/beta:** add Label for form field labels ([ab98c7c](https://github.com/entur/design-system/commit/ab98c7ce45cecb42a18db21af058ff226953d29d)) ([#505](https://github.com/entur/design-system/pull/505))
 
   `Label` renders a `<label>` with the label text style. Connect it to the
   field with `htmlFor`, or wrap the field in it.
 
-- **typography/beta:** add maxLines to Text and Heading ([828c5e0](https://github.com/entur/design-system/commit/828c5e0f229ebd293fdb2444a4d2e23cb69345a6))
+- **typography/beta:** add maxLines to Text and Heading ([828c5e0](https://github.com/entur/design-system/commit/828c5e0f229ebd293fdb2444a4d2e23cb69345a6)) ([#509](https://github.com/entur/design-system/pull/509))
 
   `maxLines` cuts the text after that many lines and ends it with an ellipsis,
   for stop names, card titles and other text that must fit. Make sure the full
   text can be read somewhere else.
 
-- **typography/beta:** add TextContainer and spacing per side on the shared scale ([2603325](https://github.com/entur/design-system/commit/2603325fc913829a4a946b8c362e386eeae716d7))
+- **typography/beta:** add TextContainer and spacing per side on the shared scale ([2603325](https://github.com/entur/design-system/commit/2603325fc913829a4a946b8c362e386eeae716d7)) ([#505](https://github.com/entur/design-system/pull/505))
 
   Text components no longer have margins of their own. Wrap running text in
   `TextContainer` to get the spacing between headings, paragraphs and lists.
@@ -179,13 +179,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   `@entur/layout/beta` and takes one value or `{ top, bottom }`; if both sides
   of a gap set it, the larger value wins.
 
-- **typography/beta:** add tone="subdued" to Text and Heading ([b7d3bbf](https://github.com/entur/design-system/commit/b7d3bbf82e30928340119c282928f1cc0c51a3b7))
+- **typography/beta:** add tone="subdued" to Text and Heading ([b7d3bbf](https://github.com/entur/design-system/commit/b7d3bbf82e30928340119c282928f1cc0c51a3b7)) ([#509](https://github.com/entur/design-system/pull/509))
 
   Use `tone="subdued"` for secondary information such as metadata, helper text
   and descriptions. It picks the right colour in contrast and dark mode, so CSS
   that sets the subdued text colour can go.
 
-- **typography/beta:** add trim to Text and Heading ([c2a8f7e](https://github.com/entur/design-system/commit/c2a8f7e37892c24a1401c310e600417213ab34b0))
+- **typography/beta:** add trim to Text and Heading ([c2a8f7e](https://github.com/entur/design-system/commit/c2a8f7e37892c24a1401c310e600417213ab34b0)) ([#505](https://github.com/entur/design-system/pull/505))
 
   `trim` removes the space above the cap height and below the baseline, so
   text lines up with icons and boxes next to it. Browsers without
@@ -252,7 +252,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **typography:** round the focus ring on links ([abbcaa4](https://github.com/entur/design-system/commit/abbcaa4f91344bf21369e6717a0a0f354c735e63))
+- **typography:** round the focus ring on links ([abbcaa4](https://github.com/entur/design-system/commit/abbcaa4f91344bf21369e6717a0a0f354c735e63)) ([#466](https://github.com/entur/design-system/pull/466))
 
   CSS outline follows an element's own border-radius, so links —
   which never had one — got a square keyboard-focus ring while
@@ -294,15 +294,15 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **typography:** remove React.FC in favor of typed function parameters ([aaa3979](https://github.com/entur/design-system/commit/aaa39795bed3c20e735302d0a9446622d40d46c0))
+- **typography:** remove React.FC in favor of typed function parameters ([aaa3979](https://github.com/entur/design-system/commit/aaa39795bed3c20e735302d0a9446622d40d46c0)) ([#276](https://github.com/entur/design-system/pull/276))
 
   React.FC no longer provides implicit children typing in React 18.
   Move type annotations directly to function parameters.
 
 ### Features
 
-- **typography:** require React 18 as minimum peer dependency ([26662ac](https://github.com/entur/design-system/commit/26662ac433a4b85e843dec2d5d29e14d4016cfe0))
-- **typography:** tighten exports field and remove dist/\* wildcard ([51cbed1](https://github.com/entur/design-system/commit/51cbed12c4f3f83be8fb1a5f83dc49d7b2fb5ac4))
+- **typography:** require React 18 as minimum peer dependency ([26662ac](https://github.com/entur/design-system/commit/26662ac433a4b85e843dec2d5d29e14d4016cfe0)) ([#276](https://github.com/entur/design-system/pull/276))
+- **typography:** tighten exports field and remove dist/\* wildcard ([51cbed1](https://github.com/entur/design-system/commit/51cbed12c4f3f83be8fb1a5f83dc49d7b2fb5ac4)) ([#276](https://github.com/entur/design-system/pull/276))
 
   Replaces ./dist/\* wildcard with explicit ./dist/styles.css entry.
   Consumers no longer need bundler aliases for ESM resolution.
@@ -366,7 +366,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **typography:** upgrade glob to v13 to resolve critical @isaacs/brace-expansion vulnerability ([08abdbc](https://github.com/entur/design-system/commit/08abdbc43255a1630688d0559b173d7d17da2486))
+- **typography:** upgrade glob to v13 to resolve critical @isaacs/brace-expansion vulnerability ([08abdbc](https://github.com/entur/design-system/commit/08abdbc43255a1630688d0559b173d7d17da2486)) ([#255](https://github.com/entur/design-system/pull/255))
 
   glob@11 pulled in minimatch@10.1.1 → @isaacs/brace-expansion@5.0.0 which
   has a critical vulnerability. glob@13 uses minimatch@10.2.1 → brace-expansion@5.0.2
@@ -391,7 +391,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- add new component size css variables to all relevant packages ([aceafa8](https://github.com/entur/design-system/commit/aceafa85c8da121ad0654fb08caad22257c16bc9))
+- add new component size css variables to all relevant packages ([aceafa8](https://github.com/entur/design-system/commit/aceafa85c8da121ad0654fb08caad22257c16bc9)) ([#195](https://github.com/entur/design-system/pull/195))
 
 ### \[BETA\] BREAKING CHANGES (beta)
 
@@ -405,23 +405,23 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### \[BETA\] Bug Fixes (beta)
 
-- **typography/beta:** change attribute view-mode to data-view-mode ([31a3531](https://github.com/entur/design-system/commit/31a35314456f90647cedefa0c6d02745b546c38e))
+- **typography/beta:** change attribute view-mode to data-view-mode ([31a3531](https://github.com/entur/design-system/commit/31a35314456f90647cedefa0c6d02745b546c38e)) ([#188](https://github.com/entur/design-system/pull/188))
 
   This is done to comply with html standardsfor custom sttributes.
 
-- **typography/beta:** change to correct variables for label, subparagraph, title-1 ([973f35f](https://github.com/entur/design-system/commit/973f35fda0890ab8f3beae3a80cfcdd8146fbf6a))
+- **typography/beta:** change to correct variables for label, subparagraph, title-1 ([973f35f](https://github.com/entur/design-system/commit/973f35fda0890ab8f3beae3a80cfcdd8146fbf6a)) ([#188](https://github.com/entur/design-system/pull/188))
 
 ### \[BETA\] Features (beta)
 
-- **typography/beta:** change from dynamic css import to main entry styles file ([4fe9374](https://github.com/entur/design-system/commit/4fe9374367d533cb6a76f368984083c163aac327))
+- **typography/beta:** change from dynamic css import to main entry styles file ([4fe9374](https://github.com/entur/design-system/commit/4fe9374367d533cb6a76f368984083c163aac327)) ([#188](https://github.com/entur/design-system/pull/188))
 
   This is based on dynamic imports not providing enough value to outweigh its downsides
 
-- **typography/beta:** update typography beta tokens ([65c82b7](https://github.com/entur/design-system/commit/65c82b7f6e4fb07283dfd871f959b174ffe2d6b1))
+- **typography/beta:** update typography beta tokens ([65c82b7](https://github.com/entur/design-system/commit/65c82b7f6e4fb07283dfd871f959b174ffe2d6b1)) ([#188](https://github.com/entur/design-system/pull/188))
 
-- **typography/beta:** update typography variables ([bf90ebf](https://github.com/entur/design-system/commit/bf90ebf80656ee9e9725e2dd2bbb1675941813b3))
+- **typography/beta:** update typography variables ([bf90ebf](https://github.com/entur/design-system/commit/bf90ebf80656ee9e9725e2dd2bbb1675941813b3)) ([#188](https://github.com/entur/design-system/pull/188))
 
-- **typography/beta:** use css layers and :where to reduce specificity ([c66e58f](https://github.com/entur/design-system/commit/c66e58f39c8944ab530ec307a40d65411f28aebd))
+- **typography/beta:** use css layers and :where to reduce specificity ([c66e58f](https://github.com/entur/design-system/commit/c66e58f39c8944ab530ec307a40d65411f28aebd)) ([#188](https://github.com/entur/design-system/pull/188))
 
   This change makes styling behaviour for typography more predictable
 
@@ -429,13 +429,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- remove unneccesary vendor prefixes from source scss files ([14fe64e](https://github.com/entur/design-system/commit/14fe64eac51ae7756ea096cdc2c3b1e8bc1cb921))
+- remove unneccesary vendor prefixes from source scss files ([14fe64e](https://github.com/entur/design-system/commit/14fe64eac51ae7756ea096cdc2c3b1e8bc1cb921)) ([#146](https://github.com/entur/design-system/pull/146))
 
   Vendor prefixas are now added via PostCSS instead
 
 ### Bug Fixes (beta)
 
-- **typography/beta:** remove "bin" from package.json ([c385cf1](https://github.com/entur/design-system/commit/c385cf1dcb9e550aa2f95e59d1126d8f6491bea7))
+- **typography/beta:** remove "bin" from package.json ([c385cf1](https://github.com/entur/design-system/commit/c385cf1dcb9e550aa2f95e59d1126d8f6491bea7)) ([#178](https://github.com/entur/design-system/pull/178))
 
   This binary is not needed. Use script "migrate" instead.
 
@@ -449,19 +449,19 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **typography beta:** fix contrast colorvariables ([ce0340a](https://github.com/entur/design-system/commit/ce0340a519c32a5fab4f1c2ac3357105af812287))
+- **typography beta:** fix contrast colorvariables ([ce0340a](https://github.com/entur/design-system/commit/ce0340a519c32a5fab4f1c2ac3357105af812287)) ([#161](https://github.com/entur/design-system/pull/161))
 - **typography beta:** fix incorrect file ending for migration script via bin ([ef2f340](https://github.com/entur/design-system/commit/ef2f3408fdb1769a9292ef21224391668c916a30))
-- **typography beta:** fix typography beta variablebugs ([8848847](https://github.com/entur/design-system/commit/884884773f24b95ed09095e207cf2d25e913892f))
+- **typography beta:** fix typography beta variablebugs ([8848847](https://github.com/entur/design-system/commit/884884773f24b95ed09095e207cf2d25e913892f)) ([#161](https://github.com/entur/design-system/pull/161))
 - **typography beta:** migration script incorrectly migrates self closing tags without props ([cfc4199](https://github.com/entur/design-system/commit/cfc41998d9c7e48928574e4ae2be02de5c525c14))
-- **typography-beta:** add default top spacing on heading if its not first ([9565e7f](https://github.com/entur/design-system/commit/9565e7ffce62de1403b7a158b28b3aa3fb93a73d))
+- **typography-beta:** add default top spacing on heading if its not first ([9565e7f](https://github.com/entur/design-system/commit/9565e7ffce62de1403b7a158b28b3aa3fb93a73d)) ([#161](https://github.com/entur/design-system/pull/161))
 
 ## [2.0.1](https://github.com/entur/design-system/compare/@entur/typography@2.0.0...@entur/typography@2.0.1) (2025-09-30)
 
 ### Bug Fixes
 
-- **typography beta:** change migration script to explicitly be esm with .mjs file ending ([dd24f38](https://github.com/entur/design-system/commit/dd24f38ba7410e5574c9cb2a52c21db7a78b64ea))
-- **typography beta:** remove medium weight as default in text component ([e37adb1](https://github.com/entur/design-system/commit/e37adb173664232fa422edbb2241955af469158a))
-- **typography:** remove type module from package.json ([44e27d3](https://github.com/entur/design-system/commit/44e27d3a23dfbba7f4189b5e7f4041cc8eb8904c))
+- **typography beta:** change migration script to explicitly be esm with .mjs file ending ([dd24f38](https://github.com/entur/design-system/commit/dd24f38ba7410e5574c9cb2a52c21db7a78b64ea)) ([#157](https://github.com/entur/design-system/pull/157))
+- **typography beta:** remove medium weight as default in text component ([e37adb1](https://github.com/entur/design-system/commit/e37adb173664232fa422edbb2241955af469158a)) ([#154](https://github.com/entur/design-system/pull/154))
+- **typography:** remove type module from package.json ([44e27d3](https://github.com/entur/design-system/commit/44e27d3a23dfbba7f4189b5e7f4041cc8eb8904c)) ([#157](https://github.com/entur/design-system/pull/157))
 
   This is done to fix incorrect module resolution for cjs.js files where it is read as esm.
 
@@ -469,40 +469,40 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **typography beta:** replace display-mode names ([e5f0deb](https://github.com/entur/design-system/commit/e5f0deb77c72bb9bd453c6aebf0c1113fc1e31b7))
-- **typography-beta:** add new styles in new betastructure ([640d462](https://github.com/entur/design-system/commit/640d4623aa0ce4337489836b2868654a84becbdf))
+- **typography beta:** replace display-mode names ([e5f0deb](https://github.com/entur/design-system/commit/e5f0deb77c72bb9bd453c6aebf0c1113fc1e31b7)) ([#149](https://github.com/entur/design-system/pull/149))
+- **typography-beta:** add new styles in new betastructure ([640d462](https://github.com/entur/design-system/commit/640d4623aa0ce4337489836b2868654a84becbdf)) ([#120](https://github.com/entur/design-system/pull/120))
 
 ### Code Refactoring
 
-- **typography:** use modern exports and restructure beta build output ([46b365c](https://github.com/entur/design-system/commit/46b365cfffed531bea7d36e7be138dc5445f050c))
+- **typography:** use modern exports and restructure beta build output ([46b365c](https://github.com/entur/design-system/commit/46b365cfffed531bea7d36e7be138dc5445f050c)) ([#120](https://github.com/entur/design-system/pull/120))
 
   New beta components are available under @entur/typography/beta.
 
 ### Features
 
-- **typography beta:** add migration script ([114601d](https://github.com/entur/design-system/commit/114601d592491cacb2fdb88745a07f054f54223f))
+- **typography beta:** add migration script ([114601d](https://github.com/entur/design-system/commit/114601d592491cacb2fdb88745a07f054f54223f)) ([#120](https://github.com/entur/design-system/pull/120))
 
   See linje.entur.no/komponenter/ressurser/typography-migration
 
-- **typography beta:** add new Heading component ([11890a9](https://github.com/entur/design-system/commit/11890a9344271bc391343af105f7c79659a6fef9))
+- **typography beta:** add new Heading component ([11890a9](https://github.com/entur/design-system/commit/11890a9344271bc391343af105f7c79659a6fef9)) ([#120](https://github.com/entur/design-system/pull/120))
 
   Beta version with new API and improvements. See
   linje.entur.no/komponenter/ressurser/typography-beta
 
-- **typography beta:** add new special typography components ([8579d0b](https://github.com/entur/design-system/commit/8579d0be41026763cbfc4c19f3afa5b5f780b708))
+- **typography beta:** add new special typography components ([8579d0b](https://github.com/entur/design-system/commit/8579d0be41026763cbfc4c19f3afa5b5f780b708)) ([#120](https://github.com/entur/design-system/pull/120))
 
   Adds blockquote, link, list item, numbered list and unordered list. See
   linje.entur.no/komponenter/ressurser/typography-beta
 
-- **typography beta:** add new Text component ([dc859c0](https://github.com/entur/design-system/commit/dc859c090036bcb6df64b1874aa1954b6e6c8dd7))
+- **typography beta:** add new Text component ([dc859c0](https://github.com/entur/design-system/commit/dc859c090036bcb6df64b1874aa1954b6e6c8dd7)) ([#120](https://github.com/entur/design-system/pull/120))
 
   Beta version with new API and improvements. See linje.entur.no/komponenter/ressurser/typography-beta
 
-- **typography beta:** automatically load needed css in js files ([7f2cc06](https://github.com/entur/design-system/commit/7f2cc06a0fd88fafcfd6ccb2ddfac69eb204e493))
+- **typography beta:** automatically load needed css in js files ([7f2cc06](https://github.com/entur/design-system/commit/7f2cc06a0fd88fafcfd6ccb2ddfac69eb204e493)) ([#120](https://github.com/entur/design-system/pull/120))
 
   Experimental feature since it assumes our consumers can load css via JS
 
-- **typography:** replace normalize.scss with modern-normalize.css ([c84d804](https://github.com/entur/design-system/commit/c84d804d836035be96dd31d9dcd3b2fbeff188ef))
+- **typography:** replace normalize.scss with modern-normalize.css ([c84d804](https://github.com/entur/design-system/commit/c84d804d836035be96dd31d9dcd3b2fbeff188ef)) ([#120](https://github.com/entur/design-system/pull/120))
 
 ### BREAKING CHANGES
 
@@ -513,12 +513,12 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **deps:** bump minor for dependencies ([bdde8f2](https://github.com/entur/design-system/commit/bdde8f2d5ab46cfa307a424429063b9700edfc1e))
+- **deps:** bump minor for dependencies ([bdde8f2](https://github.com/entur/design-system/commit/bdde8f2d5ab46cfa307a424429063b9700edfc1e)) ([#121](https://github.com/entur/design-system/pull/121))
 
   classnames, react-focus-lock, @react-aria, @react-stately, @internationalized/date, react-dropzone
 
-- exclude dependencies from bundle ([5252a14](https://github.com/entur/design-system/commit/5252a14c4c615452f3cc7effc73287a5ee42399e))
-- fix package.json field order ([7de85f2](https://github.com/entur/design-system/commit/7de85f2baf08a1fc3a0223e3f149c8cf9636546b))
+- exclude dependencies from bundle ([5252a14](https://github.com/entur/design-system/commit/5252a14c4c615452f3cc7effc73287a5ee42399e)) ([#121](https://github.com/entur/design-system/pull/121))
+- fix package.json field order ([7de85f2](https://github.com/entur/design-system/commit/7de85f2baf08a1fc3a0223e3f149c8cf9636546b)) ([#121](https://github.com/entur/design-system/pull/121))
 
   incorrect order made types unavailable
 
@@ -609,7 +609,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **typography:** replace focus with focus-visible ([eee2547](https://github.com/entur/design-system/commit/eee2547fb155a4e4e9b12a869df607cd33ff91fa))
+- **typography:** replace focus with focus-visible ([eee2547](https://github.com/entur/design-system/commit/eee2547fb155a4e4e9b12a869df607cd33ff91fa)) ([#41](https://github.com/entur/design-system/pull/41))
 
 ## [1.8.51](https://github.com/entur/design-system/compare/@entur/typography@1.8.50...@entur/typography@1.8.51) (2025-01-15)
 

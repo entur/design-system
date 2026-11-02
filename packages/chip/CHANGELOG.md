@@ -7,17 +7,17 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **chip/choice chip:** drop redundant aria-disabled from ChoiceChip ([d39435d](https://github.com/entur/design-system/commit/d39435d3656029284a43eea2b084ab919f589ad2))
+- **chip/choice chip:** drop redundant aria-disabled from ChoiceChip ([d39435d](https://github.com/entur/design-system/commit/d39435d3656029284a43eea2b084ab919f589ad2)) ([#489](https://github.com/entur/design-system/pull/489))
 
   ChoiceChip always renders an <input>, so the native disabled attribute already conveys the state to mouse, keyboard and screen reader users.
 
-- **chip/filter chip:** hide FilterChip's decorative checkmark icon from screen readers ([fea8feb](https://github.com/entur/design-system/commit/fea8feb8d74340a46deb2f57ede9c60cd4e4be85))
+- **chip/filter chip:** hide FilterChip's decorative checkmark icon from screen readers ([fea8feb](https://github.com/entur/design-system/commit/fea8feb8d74340a46deb2f57ede9c60cd4e4be85)) ([#489](https://github.com/entur/design-system/pull/489))
 
   Matches ActionChip, ChoiceChip and TagChip, which already hide their decorative icons.
 
 ### Features
 
-- **chip:** add a stylesheet without base tokens ([9821892](https://github.com/entur/design-system/commit/9821892b13cd4bf5ddf08f29a3c1de17095f4235))
+- **chip:** add a stylesheet without base tokens ([9821892](https://github.com/entur/design-system/commit/9821892b13cd4bf5ddf08f29a3c1de17095f4235)) ([#517](https://github.com/entur/design-system/pull/517))
 
   Import @entur/chip/styles/no-base-tokens instead of @entur/chip/styles when your app already loads @entur/tokens/dist/base.css. The base tokens are then declared only once, which keeps browser devtools fast.
 
@@ -25,7 +25,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **chip:** add a large size and scale chips with data-view-mode ([010f59c](https://github.com/entur/design-system/commit/010f59cf515afae27b2e3a4a45adb11a35e7aa8a))
+- **chip:** add a large size and scale chips with data-view-mode ([010f59c](https://github.com/entur/design-system/commit/010f59cf515afae27b2e3a4a45adb11a35e7aa8a)) ([#485](https://github.com/entur/design-system/pull/485))
 
   All four chips take size="large" in addition to small and medium, and
   every size now reads its height, padding, gap, icon size, border and
@@ -96,21 +96,21 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **chip:** remove React.FC in favor of typed function parameters ([bd269e3](https://github.com/entur/design-system/commit/bd269e3b5497bbcb814390d35effe84b273a16e7))
+- **chip:** remove React.FC in favor of typed function parameters ([bd269e3](https://github.com/entur/design-system/commit/bd269e3b5497bbcb814390d35effe84b273a16e7)) ([#276](https://github.com/entur/design-system/pull/276))
 
   React.FC no longer provides implicit children typing in React 18.
   Move type annotations directly to function parameters.
 
 ### Features
 
-- **chip:** add exports field for ESM-compatible module resolution ([9234e1c](https://github.com/entur/design-system/commit/9234e1c9acbd447f6d825abeec560211a05730a8))
+- **chip:** add exports field for ESM-compatible module resolution ([9234e1c](https://github.com/entur/design-system/commit/9234e1c9acbd447f6d825abeec560211a05730a8)) ([#276](https://github.com/entur/design-system/pull/276))
 
   Consumers no longer need bundler aliases to resolve ESM entry points.
   Declares explicit exports map with entries for main entrypoint,
   ./styles (CSS), ./dist/styles.css (compat), and ./package.json.
   Deep dist/ imports not listed will stop resolving.
 
-- **chip:** require React 18 as minimum peer dependency ([71a1996](https://github.com/entur/design-system/commit/71a1996dbf868c77857f2c935fca30fbc71a4e4d))
+- **chip:** require React 18 as minimum peer dependency ([71a1996](https://github.com/entur/design-system/commit/71a1996dbf868c77857f2c935fca30fbc71a4e4d)) ([#276](https://github.com/entur/design-system/pull/276))
 
 ### BREAKING CHANGES
 
@@ -235,13 +235,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- add new component size css variables to all relevant packages ([aceafa8](https://github.com/entur/design-system/commit/aceafa85c8da121ad0654fb08caad22257c16bc9))
+- add new component size css variables to all relevant packages ([aceafa8](https://github.com/entur/design-system/commit/aceafa85c8da121ad0654fb08caad22257c16bc9)) ([#195](https://github.com/entur/design-system/pull/195))
 
 ## [0.9.9](https://github.com/entur/design-system/compare/@entur/chip@0.9.8...@entur/chip@0.9.9) (2025-11-24)
 
 ### Bug Fixes
 
-- remove unneccesary vendor prefixes from source scss files ([14fe64e](https://github.com/entur/design-system/commit/14fe64eac51ae7756ea096cdc2c3b1e8bc1cb921))
+- remove unneccesary vendor prefixes from source scss files ([14fe64e](https://github.com/entur/design-system/commit/14fe64eac51ae7756ea096cdc2c3b1e8bc1cb921)) ([#146](https://github.com/entur/design-system/pull/146))
 
   Vendor prefixas are now added via PostCSS instead
 
@@ -295,12 +295,12 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **deps:** bump minor for dependencies ([bdde8f2](https://github.com/entur/design-system/commit/bdde8f2d5ab46cfa307a424429063b9700edfc1e))
+- **deps:** bump minor for dependencies ([bdde8f2](https://github.com/entur/design-system/commit/bdde8f2d5ab46cfa307a424429063b9700edfc1e)) ([#121](https://github.com/entur/design-system/pull/121))
 
   classnames, react-focus-lock, @react-aria, @react-stately, @internationalized/date, react-dropzone
 
-- exclude dependencies from bundle ([5252a14](https://github.com/entur/design-system/commit/5252a14c4c615452f3cc7effc73287a5ee42399e))
-- fix package.json field order ([7de85f2](https://github.com/entur/design-system/commit/7de85f2baf08a1fc3a0223e3f149c8cf9636546b))
+- exclude dependencies from bundle ([5252a14](https://github.com/entur/design-system/commit/5252a14c4c615452f3cc7effc73287a5ee42399e)) ([#121](https://github.com/entur/design-system/pull/121))
+- fix package.json field order ([7de85f2](https://github.com/entur/design-system/commit/7de85f2baf08a1fc3a0223e3f149c8cf9636546b)) ([#121](https://github.com/entur/design-system/pull/121))
 
   incorrect order made types unavailable
 
@@ -308,7 +308,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **chip:** add spacing for leading and trailing icons in text ([905b917](https://github.com/entur/design-system/commit/905b9179040edec0ea9217a0dc14acdf77c89de7))
+- **chip:** add spacing for leading and trailing icons in text ([905b917](https://github.com/entur/design-system/commit/905b9179040edec0ea9217a0dc14acdf77c89de7)) ([#100](https://github.com/entur/design-system/pull/100))
 
 ## [0.8.12](https://github.com/entur/design-system/compare/@entur/chip@0.8.11...@entur/chip@0.8.12) (2025-06-27)
 
@@ -423,7 +423,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **chip:** replace focus with focus-visible ([ad0c6f0](https://github.com/entur/design-system/commit/ad0c6f0bf2ebd8117f618d50f801fc87a31bad47))
+- **chip:** replace focus with focus-visible ([ad0c6f0](https://github.com/entur/design-system/commit/ad0c6f0bf2ebd8117f618d50f801fc87a31bad47)) ([#41](https://github.com/entur/design-system/pull/41))
 
 ## [0.7.28](https://github.com/entur/design-system/compare/@entur/chip@0.7.27...@entur/chip@0.7.28) (2025-01-15)
 

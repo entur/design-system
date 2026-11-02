@@ -7,7 +7,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **alert:** add a stylesheet without base tokens ([10ba184](https://github.com/entur/design-system/commit/10ba184c75e721ef0be05d88ba6853cf39165151))
+- **alert:** add a stylesheet without base tokens ([10ba184](https://github.com/entur/design-system/commit/10ba184c75e721ef0be05d88ba6853cf39165151)) ([#517](https://github.com/entur/design-system/pull/517))
 
   Import @entur/alert/styles/no-base-tokens instead of @entur/alert/styles when your app already loads @entur/tokens/dist/base.css. The base tokens are then declared only once, which keeps browser devtools fast.
 
@@ -49,12 +49,12 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **alert/copyable text:** drop the wrapper's empty aria-label and tabindex ([0dae9f8](https://github.com/entur/design-system/commit/0dae9f8493d01f9c9398a71567ab78b05150fa58))
+- **alert/copyable text:** drop the wrapper's empty aria-label and tabindex ([0dae9f8](https://github.com/entur/design-system/commit/0dae9f8493d01f9c9398a71567ab78b05150fa58)) ([#386](https://github.com/entur/design-system/pull/386))
 
   The wrapper div carried aria-label="", tabIndex={-1} and a type attribute that
   does nothing on a div. Screen readers now announce the copy button itself.
 
-- **alert:** add missing line-height to small alert variant ([2309a0d](https://github.com/entur/design-system/commit/2309a0d3753ec7b1ab405b3f0e82b27295c0eac7))
+- **alert:** add missing line-height to small alert variant ([2309a0d](https://github.com/entur/design-system/commit/2309a0d3753ec7b1ab405b3f0e82b27295c0eac7)) ([#464](https://github.com/entur/design-system/pull/464))
 
   The small alert variant set a smaller font-size for its text but no
   matching line-height, so text fell back to the browser default,
@@ -63,7 +63,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   line-height pairing used elsewhere in the type scale fixes the
   vertical alignment.
 
-- **alert:** align icon with first line in alerts without a title ([bf8e421](https://github.com/entur/design-system/commit/bf8e421060613594cc3d0fe984a7b1efba71b1fe))
+- **alert:** align icon with first line in alerts without a title ([bf8e421](https://github.com/entur/design-system/commit/bf8e421060613594cc3d0fe984a7b1efba71b1fe)) ([#464](https://github.com/entur/design-system/pull/464))
 
   Alerts without a title vertically centered the icon against the
   whole content block, so the icon drifted away from the text on
@@ -72,7 +72,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   titled alerts, so the icon lines up with the first line regardless
   of how much text follows.
 
-- **alert:** make icon top-alignment explicit ([aa4008b](https://github.com/entur/design-system/commit/aa4008b07fb241a4b52983823d696df793e3d3bc))
+- **alert:** make icon top-alignment explicit ([aa4008b](https://github.com/entur/design-system/commit/aa4008b07fb241a4b52983823d696df793e3d3bc)) ([#464](https://github.com/entur/design-system/pull/464))
 
   The icon appeared top-aligned because align-items defaults to
   stretch, which behaves as flex-start when a flex item (the icon)
@@ -82,7 +82,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **alert/copyable text:** add a size prop with small and medium ([2b6492d](https://github.com/entur/design-system/commit/2b6492d204133cd1793c1651880049a3b634d0c9))
+- **alert/copyable text:** add a size prop with small and medium ([2b6492d](https://github.com/entur/design-system/commit/2b6492d204133cd1793c1651880049a3b634d0c9)) ([#386](https://github.com/entur/design-system/pull/386))
 
   The small size gives a 2rem tall box for tighter layouts, e.g. inline with
   running text or in table cells. Medium stays the default.
@@ -95,7 +95,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   colours, so the copy icon reads the copyabletext icon token explicitly and keeps
   the contrast values the box expects.
 
-- **alert/copyable text:** take the corner radius from Button ([cde257e](https://github.com/entur/design-system/commit/cde257ea4725462d33bd946cb3ca91b0632f9261))
+- **alert/copyable text:** take the corner radius from Button ([cde257e](https://github.com/entur/design-system/commit/cde257ea4725462d33bd946cb3ca91b0632f9261)) ([#386](https://github.com/entur/design-system/pull/386))
 
   The box used a flat 4px radius from PreformattedText. It now takes its radius
   per size from Button's radius tokens — 8px on medium and 6px on small — so it
@@ -137,21 +137,21 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **alert:** remove React.FC in favor of typed function parameters ([21fcbac](https://github.com/entur/design-system/commit/21fcbac900e4723edcd81e2edb1227938eb033cf))
+- **alert:** remove React.FC in favor of typed function parameters ([21fcbac](https://github.com/entur/design-system/commit/21fcbac900e4723edcd81e2edb1227938eb033cf)) ([#276](https://github.com/entur/design-system/pull/276))
 
   React.FC no longer provides implicit children typing in React 18.
   Move type annotations directly to function parameters.
 
 ### Features
 
-- **alert:** add exports field for ESM-compatible module resolution ([1b11810](https://github.com/entur/design-system/commit/1b11810c863f08926a2cbb4ca7978e12ecac9da1))
+- **alert:** add exports field for ESM-compatible module resolution ([1b11810](https://github.com/entur/design-system/commit/1b11810c863f08926a2cbb4ca7978e12ecac9da1)) ([#276](https://github.com/entur/design-system/pull/276))
 
   Consumers no longer need bundler aliases to resolve ESM entry points.
   Declares explicit exports map with entries for main entrypoint,
   ./styles (CSS), ./dist/styles.css (compat), and ./package.json.
   Deep dist/ imports not listed will stop resolving.
 
-- **alert:** require React 18 as minimum peer dependency ([0bf5f25](https://github.com/entur/design-system/commit/0bf5f25280dadcf59053fc78d13b0266bd57abdd))
+- **alert:** require React 18 as minimum peer dependency ([0bf5f25](https://github.com/entur/design-system/commit/0bf5f25280dadcf59053fc78d13b0266bd57abdd)) ([#276](https://github.com/entur/design-system/pull/276))
 
 ### BREAKING CHANGES
 
@@ -204,16 +204,16 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **alert/copyable text:** respect onClick prop passed by consumer ([f385fdf](https://github.com/entur/design-system/commit/f385fdfb1af8200a5aa0e6e19f05ab2dbdd44c6c))
+- **alert/copyable text:** respect onClick prop passed by consumer ([f385fdf](https://github.com/entur/design-system/commit/f385fdfb1af8200a5aa0e6e19f05ab2dbdd44c6c)) ([#363](https://github.com/entur/design-system/pull/363))
 
 ### Features
 
-- **alert:** use unified color tokens and remove separate toast styling ([214441b](https://github.com/entur/design-system/commit/214441baf0dd53c3cdc64425a48fe1a6cf56a857))
+- **alert:** use unified color tokens and remove separate toast styling ([214441b](https://github.com/entur/design-system/commit/214441baf0dd53c3cdc64425a48fe1a6cf56a857)) ([#349](https://github.com/entur/design-system/pull/349))
 
   Toast alerts now share the same appearance as standard alerts.
   Dark mode no longer applies separate fills and icon colors for toast.
 
-- **tokens:** update primitive, semantic, base and component color tokens ([3ef6220](https://github.com/entur/design-system/commit/3ef622059143f24dcf7c94b19d4b7337fbac3508))
+- **tokens:** update primitive, semantic, base and component color tokens ([3ef6220](https://github.com/entur/design-system/commit/3ef622059143f24dcf7c94b19d4b7337fbac3508)) ([#349](https://github.com/entur/design-system/pull/349))
 
   Updates primitive, semantic, base and component-level color tokens.
   Visual changes affect alert, datepicker, loader, menu, tab, and travel
@@ -223,7 +223,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **alert/copyable text:** respect onClick prop passed by consumer ([f385fdf](https://github.com/entur/design-system/commit/f385fdfb1af8200a5aa0e6e19f05ab2dbdd44c6c))
+- **alert/copyable text:** respect onClick prop passed by consumer ([f385fdf](https://github.com/entur/design-system/commit/f385fdfb1af8200a5aa0e6e19f05ab2dbdd44c6c)) ([#363](https://github.com/entur/design-system/pull/363))
 
 ## [0.18.10](https://github.com/entur/design-system/compare/@entur/alert@0.18.9...@entur/alert@0.18.10) (2026-04-16)
 
@@ -300,7 +300,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- add new component size css variables to all relevant packages ([aceafa8](https://github.com/entur/design-system/commit/aceafa85c8da121ad0654fb08caad22257c16bc9))
+- add new component size css variables to all relevant packages ([aceafa8](https://github.com/entur/design-system/commit/aceafa85c8da121ad0654fb08caad22257c16bc9)) ([#195](https://github.com/entur/design-system/pull/195))
 
 ## [0.17.19](https://github.com/entur/design-system/compare/@entur/alert@0.17.18...@entur/alert@0.17.19) (2025-11-24)
 
@@ -358,12 +358,12 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **deps:** bump minor for dependencies ([bdde8f2](https://github.com/entur/design-system/commit/bdde8f2d5ab46cfa307a424429063b9700edfc1e))
+- **deps:** bump minor for dependencies ([bdde8f2](https://github.com/entur/design-system/commit/bdde8f2d5ab46cfa307a424429063b9700edfc1e)) ([#121](https://github.com/entur/design-system/pull/121))
 
   classnames, react-focus-lock, @react-aria, @react-stately, @internationalized/date, react-dropzone
 
-- exclude dependencies from bundle ([5252a14](https://github.com/entur/design-system/commit/5252a14c4c615452f3cc7effc73287a5ee42399e))
-- fix package.json field order ([7de85f2](https://github.com/entur/design-system/commit/7de85f2baf08a1fc3a0223e3f149c8cf9636546b))
+- exclude dependencies from bundle ([5252a14](https://github.com/entur/design-system/commit/5252a14c4c615452f3cc7effc73287a5ee42399e)) ([#121](https://github.com/entur/design-system/pull/121))
+- fix package.json field order ([7de85f2](https://github.com/entur/design-system/commit/7de85f2baf08a1fc3a0223e3f149c8cf9636546b)) ([#121](https://github.com/entur/design-system/pull/121))
 
   incorrect order made types unavailable
 
@@ -462,7 +462,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **alert:** remove data-color-mode attribute on IconButton ([09bd856](https://github.com/entur/design-system/commit/09bd85680e98d09bef3537f1e193bb0337b6796a))
+- **alert:** remove data-color-mode attribute on IconButton ([09bd856](https://github.com/entur/design-system/commit/09bd85680e98d09bef3537f1e193bb0337b6796a)) ([#68](https://github.com/entur/design-system/pull/68))
 
 ## [0.17.3](https://github.com/entur/design-system/compare/@entur/alert@0.17.2...@entur/alert@0.17.3) (2025-03-05)
 
@@ -489,21 +489,21 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **alert:** etu-55268 add border again ([c1aec93](https://github.com/entur/design-system/commit/c1aec93a7fc3612a27f140cd464e2a33dce05710))
-- **toast:** etu-ETU-55268 replace transparent background on toasts to filled ([f9629f4](https://github.com/entur/design-system/commit/f9629f4f96f73b5571277350ea6aaf6b414b39a1))
+- **alert:** etu-55268 add border again ([c1aec93](https://github.com/entur/design-system/commit/c1aec93a7fc3612a27f140cd464e2a33dce05710)) ([#50](https://github.com/entur/design-system/pull/50))
+- **toast:** etu-ETU-55268 replace transparent background on toasts to filled ([f9629f4](https://github.com/entur/design-system/commit/f9629f4f96f73b5571277350ea6aaf6b414b39a1)) ([#50](https://github.com/entur/design-system/pull/50))
 
 # [0.17.0](https://github.com/entur/design-system/compare/@entur/alert@0.16.24...@entur/alert@0.17.0) (2025-01-24)
 
 ### Bug Fixes
 
-- **alert:** break long words ([ee4b557](https://github.com/entur/design-system/commit/ee4b5571e00c471d474f1f8aecf8e267518d0802))
-- **alert:** etu-45159 fix center align on alerts without title ([b66a456](https://github.com/entur/design-system/commit/b66a456c6b88cc4281f9de5ea23c0bab7b8da6b8))
-- **alert:** etu-55188 fix focus-contrast on expandbutton ([80b423e](https://github.com/entur/design-system/commit/80b423efe9da0f83006c817f7c4bfce7facb26dd))
-- **toast:** fix breaking text in toast on hover ([92c25ea](https://github.com/entur/design-system/commit/92c25ea769e8034b21f72057bc8916f7b804aade))
+- **alert:** break long words ([ee4b557](https://github.com/entur/design-system/commit/ee4b5571e00c471d474f1f8aecf8e267518d0802)) ([#43](https://github.com/entur/design-system/pull/43))
+- **alert:** etu-45159 fix center align on alerts without title ([b66a456](https://github.com/entur/design-system/commit/b66a456c6b88cc4281f9de5ea23c0bab7b8da6b8)) ([#41](https://github.com/entur/design-system/pull/41))
+- **alert:** etu-55188 fix focus-contrast on expandbutton ([80b423e](https://github.com/entur/design-system/commit/80b423efe9da0f83006c817f7c4bfce7facb26dd)) ([#41](https://github.com/entur/design-system/pull/41))
+- **toast:** fix breaking text in toast on hover ([92c25ea](https://github.com/entur/design-system/commit/92c25ea769e8034b21f72057bc8916f7b804aade)) ([#47](https://github.com/entur/design-system/pull/47))
 
 ### Features
 
-- **alert:** replace focus-within with focus-visible ([b5e60f1](https://github.com/entur/design-system/commit/b5e60f1677a1dac3746bf6cf53e0aa683a1956ab))
+- **alert:** replace focus-within with focus-visible ([b5e60f1](https://github.com/entur/design-system/commit/b5e60f1677a1dac3746bf6cf53e0aa683a1956ab)) ([#41](https://github.com/entur/design-system/pull/41))
 
 ## [0.16.24](https://github.com/entur/design-system/compare/@entur/alert@0.16.23...@entur/alert@0.16.24) (2025-01-15)
 

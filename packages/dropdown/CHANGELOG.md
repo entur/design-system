@@ -7,7 +7,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **dropdown:** add a stylesheet without base tokens ([db8bc72](https://github.com/entur/design-system/commit/db8bc72bbb78b6149f6e9183e070d2ff6b9f25dc))
+- **dropdown:** add a stylesheet without base tokens ([db8bc72](https://github.com/entur/design-system/commit/db8bc72bbb78b6149f6e9183e070d2ff6b9f25dc)) ([#517](https://github.com/entur/design-system/pull/517))
 
   Import @entur/dropdown/styles/no-base-tokens instead of @entur/dropdown/styles when your app already loads @entur/tokens/dist/base.css. The base tokens are then declared only once, which keeps browser devtools fast.
 
@@ -26,7 +26,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **tokens:** update the colour export and regularise component token names ([a14a5fd](https://github.com/entur/design-system/commit/a14a5fd400a5fe9bb5d68db3201ea87ffce080ed))
+- **tokens:** update the colour export and regularise component token names ([a14a5fd](https://github.com/entur/design-system/commit/a14a5fd400a5fe9bb5d68db3201ea87ffce080ed)) ([#479](https://github.com/entur/design-system/pull/479))
 
   Twelve colours changed. Ten tokens moved from `Fill/Negative/Transparent` to
   `Fill/Negative/Accent` — Button `negative` hover, TableRow `error` and two
@@ -52,7 +52,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **dropdown:** keep the loading dots readable in contrast ([5eaebc8](https://github.com/entur/design-system/commit/5eaebc80600dc570ee4e813164721db3fb80907f))
+- **dropdown:** keep the loading dots readable in contrast ([5eaebc8](https://github.com/entur/design-system/commit/5eaebc80600dc570ee4e813164721db3fb80907f)) ([#474](https://github.com/entur/design-system/pull/474))
 
   The loading indicator in the field was styled through a modifier class that
   was never applied, and switched to the contrast colour under `.eds-contrast`
@@ -60,12 +60,12 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   MultiSelect and NativeDropdown now render in the standard colour in both
   modes.
 
-- **dropdown:** make the menu opaque behind the scrollbar ([ec3da86](https://github.com/entur/design-system/commit/ec3da86b388401dcf571a3fc90a8b1adc21d1314))
+- **dropdown:** make the menu opaque behind the scrollbar ([ec3da86](https://github.com/entur/design-system/commit/ec3da86b388401dcf571a3fc90a8b1adc21d1314)) ([#476](https://github.com/entur/design-system/pull/476))
 
   The menu now paints its own background, so nothing shows through the
   scrollbar gutter in Safari.
 
-- **dropdown:** stop the menu adding horizontal scroll to its container ([4fa446b](https://github.com/entur/design-system/commit/4fa446b425d3fa194e1046919b68921c436c445f))
+- **dropdown:** stop the menu adding horizontal scroll to its container ([4fa446b](https://github.com/entur/design-system/commit/4fa446b425d3fa194e1046919b68921c436c445f)) ([#474](https://github.com/entur/design-system/pull/474))
 
   The menu of Dropdown, SearchableDropdown and MultiSelect is positioned with
   floating-ui's fixed strategy. A field inside a scroll container no longer
@@ -96,12 +96,12 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **dropdown:** set aria-invalid for the negative variant ([c21ebbf](https://github.com/entur/design-system/commit/c21ebbf3f5868abf46250088f4f89ec9df080f3c))
+- **dropdown:** set aria-invalid for the negative variant ([c21ebbf](https://github.com/entur/design-system/commit/c21ebbf3f5868abf46250088f4f89ec9df080f3c)) ([#438](https://github.com/entur/design-system/pull/438))
 
   Dropdown, SearchableDropdown and MultiSelect never marked their field
   invalid for screen readers. NativeDropdown already did.
 
-- **dropdown:** stop the render loop that crashed selection in automated tests ([1494ede](https://github.com/entur/design-system/commit/1494ede78b44cbce3ff9a91ae334b9f6218c6442))
+- **dropdown:** stop the render loop that crashed selection in automated tests ([1494ede](https://github.com/entur/design-system/commit/1494ede78b44cbce3ff9a91ae334b9f6218c6442)) ([#449](https://github.com/entur/design-system/pull/449))
 
   Clicking an option could throw "Maximum update depth exceeded" and kill the
   React tree, most often in Playwright or Cypress tests where the pointer
@@ -110,7 +110,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **dropdown:** control how feedback text is announced with ariaAlertOnFeedback and feedbackProps ([405b303](https://github.com/entur/design-system/commit/405b3037a7eceac97925609d56a37ca4d667c1f5))
+- **dropdown:** control how feedback text is announced with ariaAlertOnFeedback and feedbackProps ([405b303](https://github.com/entur/design-system/commit/405b3037a7eceac97925609d56a37ca4d667c1f5)) ([#438](https://github.com/entur/design-system/pull/438))
 
   feedbackProps lets you set your own role or aria-live on the feedback text.
   ariaAlertOnFeedback is now typed on these components as well.
@@ -121,7 +121,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **dropdown:** stop console errors when rendered inside shadow DOM ([cb8c7c7](https://github.com/entur/design-system/commit/cb8c7c79986d0082ceb428c7c273595edcf21050))
+- **dropdown:** stop console errors when rendered inside shadow DOM ([cb8c7c7](https://github.com/entur/design-system/commit/cb8c7c79986d0082ceb428c7c273595edcf21050)) ([#446](https://github.com/entur/design-system/pull/446))
 
   Reading document properties through the shadow DOM environment proxy
   threw "Illegal invocation" on nearly every interaction, and
@@ -145,20 +145,20 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **dropdown:** fix typeahead tests for React 18 automatic batching ([5119d0f](https://github.com/entur/design-system/commit/5119d0fc3aa5e24f7a006798289d7c172a2458f3))
+- **dropdown:** fix typeahead tests for React 18 automatic batching ([5119d0f](https://github.com/entur/design-system/commit/5119d0fc3aa5e24f7a006798289d7c172a2458f3)) ([#276](https://github.com/entur/design-system/pull/276))
 
   Remove intermediate loading state assertion that is no longer reliable with React 18's automatic batching. Use waitFor with increased timeout for async assertions.
 
 ### Features
 
-- **dropdown:** add exports field for ESM-compatible module resolution ([acb447d](https://github.com/entur/design-system/commit/acb447deac5b2e9fa8b64fc423622c84731c9d63))
+- **dropdown:** add exports field for ESM-compatible module resolution ([acb447d](https://github.com/entur/design-system/commit/acb447deac5b2e9fa8b64fc423622c84731c9d63)) ([#276](https://github.com/entur/design-system/pull/276))
 
   Consumers no longer need bundler aliases to resolve ESM entry points.
   Declares explicit exports map with entries for main entrypoint,
   ./styles (CSS), ./dist/styles.css (compat), and ./package.json.
   Deep dist/ imports not listed will stop resolving.
 
-- **dropdown:** require React 18 as minimum peer dependency ([41ed9ee](https://github.com/entur/design-system/commit/41ed9ee43295404c0bd46c0734b6e45bd8f2776a))
+- **dropdown:** require React 18 as minimum peer dependency ([41ed9ee](https://github.com/entur/design-system/commit/41ed9ee43295404c0bd46c0734b6e45bd8f2776a)) ([#276](https://github.com/entur/design-system/pull/276))
 
 ### BREAKING CHANGES
 
@@ -259,7 +259,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **dropdown:** make dropdown components work inside shadow DOM ([4f5f832](https://github.com/entur/design-system/commit/4f5f832138e909c3fb32b7e175d0fb69ee53cf0c))
+- **dropdown:** make dropdown components work inside shadow DOM ([4f5f832](https://github.com/entur/design-system/commit/4f5f832138e909c3fb32b7e175d0fb69ee53cf0c)) ([#298](https://github.com/entur/design-system/pull/298))
 
   Add shadow DOM support for all dropdown components (Dropdown,
   SearchableDropdown, MultiSelect) by providing a custom downshift
@@ -271,12 +271,12 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **dropdown/multi select:** clear search text when pressing Escape ([c085358](https://github.com/entur/design-system/commit/c0853589f34aa3728868660cd7eeff83fadfb271))
+- **dropdown/multi select:** clear search text when pressing Escape ([c085358](https://github.com/entur/design-system/commit/c0853589f34aa3728868660cd7eeff83fadfb271)) ([#266](https://github.com/entur/design-system/pull/266))
 
   The search input now clears when closing the dropdown with Escape,
   instead of persisting until blur.
 
-- **dropdown/multi select:** fix double Enter required after re-entering MultiSelect ([5c58cba](https://github.com/entur/design-system/commit/5c58cbadf1be3e52be760fe18f94745d6c76a203))
+- **dropdown/multi select:** fix double Enter required after re-entering MultiSelect ([5c58cba](https://github.com/entur/design-system/commit/5c58cbadf1be3e52be760fe18f94745d6c76a203)) ([#265](https://github.com/entur/design-system/pull/265))
 
   Preserve the selectedItem key in the state returned from the InputBlur
   handler. Omitting it broke downshift's onSelectedItemChange callback,
@@ -287,7 +287,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **dropdown/dropdown:** fix `Cannot access 'refs' before initialization` issue ([b14ba98](https://github.com/entur/design-system/commit/b14ba98b2035395e13836d21d219fd04efe58f61))
+- **dropdown/dropdown:** fix `Cannot access 'refs' before initialization` issue ([b14ba98](https://github.com/entur/design-system/commit/b14ba98b2035395e13836d21d219fd04efe58f61)) ([#248](https://github.com/entur/design-system/pull/248))
 
 ## [8.0.6](https://github.com/entur/design-system/compare/@entur/dropdown@8.0.5...@entur/dropdown@8.0.6) (2026-01-28)
 
@@ -354,20 +354,20 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **dropdown/dropdown:** dont clear selection on escape when clearable is set to false ([1d76295](https://github.com/entur/design-system/commit/1d76295a473a008a3934b4b126853d1ec1fbe9ab))
-- **dropdown/dropdown:** improve internal dropdown state management ([21f0fce](https://github.com/entur/design-system/commit/21f0fce199b3a492b6c065a20d71cdd09cc2279b))
-- **dropdown/multiselect:** improve internal multiselect state managment ([9bd3f07](https://github.com/entur/design-system/commit/9bd3f07c226f54b72d5b6a094b7bd77b37cbcbea))
-- **dropdown/searchable dropdown:** dont clear selection on escape when clearable is set to false ([01b2708](https://github.com/entur/design-system/commit/01b27088c1fe6538b93811e43589eb28f67f815a))
-- **dropdown/searchable dropdown:** improve internal serachable dropdown state management ([a009122](https://github.com/entur/design-system/commit/a0091220fb6759829c9ab7c35c770304b6b50189))
-- **dropdown/searchabledropdown:** fix selectOnTab bug ([15e6052](https://github.com/entur/design-system/commit/15e6052966ba92fe929c1c4c4c0e9fd331257c7a))
+- **dropdown/dropdown:** dont clear selection on escape when clearable is set to false ([1d76295](https://github.com/entur/design-system/commit/1d76295a473a008a3934b4b126853d1ec1fbe9ab)) ([#163](https://github.com/entur/design-system/pull/163))
+- **dropdown/dropdown:** improve internal dropdown state management ([21f0fce](https://github.com/entur/design-system/commit/21f0fce199b3a492b6c065a20d71cdd09cc2279b)) ([#163](https://github.com/entur/design-system/pull/163))
+- **dropdown/multiselect:** improve internal multiselect state managment ([9bd3f07](https://github.com/entur/design-system/commit/9bd3f07c226f54b72d5b6a094b7bd77b37cbcbea)) ([#163](https://github.com/entur/design-system/pull/163))
+- **dropdown/searchable dropdown:** dont clear selection on escape when clearable is set to false ([01b2708](https://github.com/entur/design-system/commit/01b27088c1fe6538b93811e43589eb28f67f815a)) ([#163](https://github.com/entur/design-system/pull/163))
+- **dropdown/searchable dropdown:** improve internal serachable dropdown state management ([a009122](https://github.com/entur/design-system/commit/a0091220fb6759829c9ab7c35c770304b6b50189)) ([#163](https://github.com/entur/design-system/pull/163))
+- **dropdown/searchabledropdown:** fix selectOnTab bug ([15e6052](https://github.com/entur/design-system/commit/15e6052966ba92fe929c1c4c4c0e9fd331257c7a)) ([#163](https://github.com/entur/design-system/pull/163))
 
   Fix tab selection without SelectOnTab and incorrect state management for tab selection
 
-- **dropdown:** fix list not updating when `items` prop is updated ([052ddf3](https://github.com/entur/design-system/commit/052ddf32c8590423ae3b07bf0e498e64f20e6b5e))
+- **dropdown:** fix list not updating when `items` prop is updated ([052ddf3](https://github.com/entur/design-system/commit/052ddf32c8590423ae3b07bf0e498e64f20e6b5e)) ([#177](https://github.com/entur/design-system/pull/177))
 
   Internal state is no longer used for static items, only when `items` is a function.
 
-- **dropdown:** fix maximum update depth bug in MultiSelect ([86c8dbf](https://github.com/entur/design-system/commit/86c8dbf8192c955cd6ff616e6c2ace6177bd5412))
+- **dropdown:** fix maximum update depth bug in MultiSelect ([86c8dbf](https://github.com/entur/design-system/commit/86c8dbf8192c955cd6ff616e6c2ace6177bd5412)) ([#150](https://github.com/entur/design-system/pull/150))
 
   Also, listStyle now works for overriding width.
 
@@ -409,7 +409,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **dropdownlist:** allow predefined items without matching labels ([eb84efa](https://github.com/entur/design-system/commit/eb84efa571352104ac15bec98266acf1d5e820da))
+- **dropdownlist:** allow predefined items without matching labels ([eb84efa](https://github.com/entur/design-system/commit/eb84efa571352104ac15bec98266acf1d5e820da)) ([#143](https://github.com/entur/design-system/pull/143))
 
 ## [7.3.7](https://github.com/entur/design-system/compare/@entur/dropdown@7.3.6...@entur/dropdown@7.3.7) (2025-09-24)
 
@@ -424,13 +424,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **dropdown:** fix publish ([1386ccc](https://github.com/entur/design-system/commit/1386ccc5775837672e8218e0c47491a414fb9f3f))
+- **dropdown:** fix publish ([1386ccc](https://github.com/entur/design-system/commit/1386ccc5775837672e8218e0c47491a414fb9f3f)) ([#141](https://github.com/entur/design-system/pull/141))
 
 ## [7.3.5-beta.0](https://github.com/entur/design-system/compare/@entur/dropdown@7.3.4...@entur/dropdown@7.3.5-beta.0) (2025-09-08)
 
 ### Bug Fixes
 
-- **dropdown:** fix publish ([f3ad978](https://github.com/entur/design-system/commit/f3ad9781b862aef3476555755aef2a5f901ee9c8))
+- **dropdown:** fix publish ([f3ad978](https://github.com/entur/design-system/commit/f3ad9781b862aef3476555755aef2a5f901ee9c8)) ([#140](https://github.com/entur/design-system/pull/140))
 
 ## [7.3.4](https://github.com/entur/design-system/compare/@entur/dropdown@7.3.3...@entur/dropdown@7.3.4) (2025-09-05)
 
@@ -443,12 +443,12 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **deps:** bump minor for dependencies ([bdde8f2](https://github.com/entur/design-system/commit/bdde8f2d5ab46cfa307a424429063b9700edfc1e))
+- **deps:** bump minor for dependencies ([bdde8f2](https://github.com/entur/design-system/commit/bdde8f2d5ab46cfa307a424429063b9700edfc1e)) ([#121](https://github.com/entur/design-system/pull/121))
 
   classnames, react-focus-lock, @react-aria, @react-stately, @internationalized/date, react-dropzone
 
-- exclude dependencies from bundle ([5252a14](https://github.com/entur/design-system/commit/5252a14c4c615452f3cc7effc73287a5ee42399e))
-- fix package.json field order ([7de85f2](https://github.com/entur/design-system/commit/7de85f2baf08a1fc3a0223e3f149c8cf9636546b))
+- exclude dependencies from bundle ([5252a14](https://github.com/entur/design-system/commit/5252a14c4c615452f3cc7effc73287a5ee42399e)) ([#121](https://github.com/entur/design-system/pull/121))
+- fix package.json field order ([7de85f2](https://github.com/entur/design-system/commit/7de85f2baf08a1fc3a0223e3f149c8cf9636546b)) ([#121](https://github.com/entur/design-system/pull/121))
 
   incorrect order made types unavailable
 
@@ -456,24 +456,24 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **dropdown:** fix rare crash when bluring or focusing searchable dropdown ([6865d5a](https://github.com/entur/design-system/commit/6865d5a5dd0d3d392e0b21d3716c8febedf51214))
+- **dropdown:** fix rare crash when bluring or focusing searchable dropdown ([6865d5a](https://github.com/entur/design-system/commit/6865d5a5dd0d3d392e0b21d3716c8febedf51214)) ([#103](https://github.com/entur/design-system/pull/103))
 
 # [7.3.0](https://github.com/entur/design-system/compare/@entur/dropdown@7.2.2...@entur/dropdown@7.3.0) (2025-07-29)
 
 ### Bug Fixes
 
-- **multiselect:** fix incorrect styling for checkboxes in multiselect list ([98a03ef](https://github.com/entur/design-system/commit/98a03eff87784f738d5c599b8bb72cf3e4e638bb))
+- **multiselect:** fix incorrect styling for checkboxes in multiselect list ([98a03ef](https://github.com/entur/design-system/commit/98a03eff87784f738d5c599b8bb72cf3e4e638bb)) ([#102](https://github.com/entur/design-system/pull/102))
 
   An empty onChange is added to avoid console error about checked prop without onChange from React.
 
-- **multiselect:** fix tab deselecting item when selectOnTab is true ([c2aeeff](https://github.com/entur/design-system/commit/c2aeeff2aebc9b69785754edeb7fb088fb8d7b80))
+- **multiselect:** fix tab deselecting item when selectOnTab is true ([c2aeeff](https://github.com/entur/design-system/commit/c2aeeff2aebc9b69785754edeb7fb088fb8d7b80)) ([#101](https://github.com/entur/design-system/pull/101))
 
   This was never intended behaviour since it is likely to remove an option from the list without the
   user noticing. Tab on selectAll is also been disabled.
 
 ### Features
 
-- **dropdown:** change tab to move focus to next element when list is open instead of closing list ([217e11d](https://github.com/entur/design-system/commit/217e11dde0601496912b2c573eb20841bf8612f7))
+- **dropdown:** change tab to move focus to next element when list is open instead of closing list ([217e11d](https://github.com/entur/design-system/commit/217e11dde0601496912b2c573eb20841bf8612f7)) ([#101](https://github.com/entur/design-system/pull/101))
 
   Also refactore to use more downshift provided functionality
 
@@ -568,21 +568,21 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **dropdown:** add forwardRef support to dropdown components ([fe12e9f](https://github.com/entur/design-system/commit/fe12e9f5a09024c62503d9191682a98e5dc5059b))
+- **dropdown:** add forwardRef support to dropdown components ([fe12e9f](https://github.com/entur/design-system/commit/fe12e9f5a09024c62503d9191682a98e5dc5059b)) ([#70](https://github.com/entur/design-system/pull/70))
 
   Also fix styling issues caused by using the ref prop
 
-- **dropdown:** imporve dropdown list positioning ([6118349](https://github.com/entur/design-system/commit/6118349d13aaa870cb41762d2b82d9485e8d3a35))
+- **dropdown:** imporve dropdown list positioning ([6118349](https://github.com/entur/design-system/commit/6118349d13aaa870cb41762d2b82d9485e8d3a35)) ([#70](https://github.com/entur/design-system/pull/70))
 
   Also some code refactoring.
 
-- **dropdown:** improve focus handling ([6f91e09](https://github.com/entur/design-system/commit/6f91e099a5fcab78b83fdd66f276a2e0c96068a3))
+- **dropdown:** improve focus handling ([6f91e09](https://github.com/entur/design-system/commit/6f91e099a5fcab78b83fdd66f276a2e0c96068a3)) ([#70](https://github.com/entur/design-system/pull/70))
 
 # [7.1.0](https://github.com/entur/design-system/compare/@entur/dropdown@7.0.3...@entur/dropdown@7.1.0) (2025-03-24)
 
 ### Features
 
-- **dropdown:** add loading prop ([a4de4c9](https://github.com/entur/design-system/commit/a4de4c94706893ac92734b8eb65bb5c9aa5fafa6))
+- **dropdown:** add loading prop ([a4de4c9](https://github.com/entur/design-system/commit/a4de4c94706893ac92734b8eb65bb5c9aa5fafa6)) ([#69](https://github.com/entur/design-system/pull/69))
 
   includes type cleanup
 
@@ -590,7 +590,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **dropdown:** not focusable and interactive when disabled ([7aee4ae](https://github.com/entur/design-system/commit/7aee4ae1c54e98d4092c64243474f42319624af6))
+- **dropdown:** not focusable and interactive when disabled ([7aee4ae](https://github.com/entur/design-system/commit/7aee4ae1c54e98d4092c64243474f42319624af6)) ([#58](https://github.com/entur/design-system/pull/58))
 
 ## [7.0.2](https://github.com/entur/design-system/compare/@entur/dropdown@7.0.1...@entur/dropdown@7.0.2) (2025-02-25)
 
@@ -607,8 +607,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **baseformcontrol:** add correct text-color on readonly ([7fac4d7](https://github.com/entur/design-system/commit/7fac4d7f41d9618f1baaf021d4c13e1d075643ca))
-- **dropdown:** add absolute position on dropdownlist ([30b7916](https://github.com/entur/design-system/commit/30b79163cb3bcd38fa66ee837b92abd011099446))
+- **baseformcontrol:** add correct text-color on readonly ([7fac4d7](https://github.com/entur/design-system/commit/7fac4d7f41d9618f1baaf021d4c13e1d075643ca)) ([#53](https://github.com/entur/design-system/pull/53))
+- **dropdown:** add absolute position on dropdownlist ([30b7916](https://github.com/entur/design-system/commit/30b79163cb3bcd38fa66ee837b92abd011099446)) ([#52](https://github.com/entur/design-system/pull/52))
 
   The dropdown now opens without affecting the page height.
 
@@ -627,7 +627,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **dropdown:** replace focus with focus-visible ([6112834](https://github.com/entur/design-system/commit/61128349be08d7fc60a605ad80579d8d582a4966))
+- **dropdown:** replace focus with focus-visible ([6112834](https://github.com/entur/design-system/commit/61128349be08d7fc60a605ad80579d8d582a4966)) ([#41](https://github.com/entur/design-system/pull/41))
 
 ## [6.0.14](https://github.com/entur/design-system/compare/@entur/dropdown@6.0.13...@entur/dropdown@6.0.14) (2025-01-15)
 
@@ -646,7 +646,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **dropdown:** fix non-unique key in list ([2c6da92](https://github.com/entur/design-system/commit/2c6da929dd09d10f454a261765df32b30ae2c59e))
+- **dropdown:** fix non-unique key in list ([2c6da92](https://github.com/entur/design-system/commit/2c6da929dd09d10f454a261765df32b30ae2c59e)) ([#37](https://github.com/entur/design-system/pull/37))
 
   This fixes when two or more items have same label and value but different icon(s)
 
@@ -659,13 +659,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Performance Improvements
 
-- **dropdowns:** fix performance bug causing unnecessary rerenders ([f495f3a](https://github.com/entur/design-system/commit/f495f3ad869f4db3b68ad7b069bca414960a756d))
+- **dropdowns:** fix performance bug causing unnecessary rerenders ([f495f3a](https://github.com/entur/design-system/commit/f495f3ad869f4db3b68ad7b069bca414960a756d)) ([#19](https://github.com/entur/design-system/pull/19))
 
 ## [6.0.11](https://github.com/entur/design-system/compare/@entur/dropdown@6.0.10...@entur/dropdown@6.0.11) (2024-11-29)
 
 ### Bug Fixes
 
-- **dropdown:** add missing prop noMatchesText for when an empty list is provided to items ([65d025a](https://github.com/entur/design-system/commit/65d025ad038d8315a472eb6abb6d9cf2532f942a))
+- **dropdown:** add missing prop noMatchesText for when an empty list is provided to items ([65d025a](https://github.com/entur/design-system/commit/65d025ad038d8315a472eb6abb6d9cf2532f942a)) ([#15](https://github.com/entur/design-system/pull/15))
 
 ## [6.0.10](https://github.com/entur/design-system/compare/@entur/dropdown@6.0.9...@entur/dropdown@6.0.10) (2024-11-20)
 
@@ -675,7 +675,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **dropdowns:** fix elements in dropdown list not selectable with touch action ([dd7a4a8](https://github.com/entur/design-system/commit/dd7a4a8e4818c4c60e42ee68d36b507655d92aaa))
+- **dropdowns:** fix elements in dropdown list not selectable with touch action ([dd7a4a8](https://github.com/entur/design-system/commit/dd7a4a8e4818c4c60e42ee68d36b507655d92aaa)) ([#6](https://github.com/entur/design-system/pull/6))
 - **multiselect:** add missing prop disableLabelAnimation to MultiSelect ([01f9ef5](https://github.com/entur/design-system/commit/01f9ef5b08107f982edd669cf91a7373ee2739fc))
 
 ## [6.0.8](https://github.com/entur/design-system/compare/@entur/dropdown@6.0.7...@entur/dropdown@6.0.8) (2024-10-23)

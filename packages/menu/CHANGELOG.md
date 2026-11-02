@@ -7,7 +7,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **menu/overflow menu:** stop scroll containers from cutting off the menu ([062ba91](https://github.com/entur/design-system/commit/062ba91779c9d77a8a54893cbdf3ef1a4c8897c3))
+- **menu/overflow menu:** stop scroll containers from cutting off the menu ([062ba91](https://github.com/entur/design-system/commit/062ba91779c9d77a8a54893cbdf3ef1a4c8897c3)) ([#515](https://github.com/entur/design-system/pull/515))
 
   The menu of OverflowMenu is positioned with floating-ui's fixed strategy, as
   Dropdown, MultiSelect and DatePicker already are. An OverflowMenu inside a
@@ -28,7 +28,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **menu:** add a stylesheet without base tokens ([09dccdc](https://github.com/entur/design-system/commit/09dccdc1d0983e74a74712141b155f594a12fc2d))
+- **menu:** add a stylesheet without base tokens ([09dccdc](https://github.com/entur/design-system/commit/09dccdc1d0983e74a74712141b155f594a12fc2d)) ([#517](https://github.com/entur/design-system/pull/517))
 
   Import @entur/menu/styles/no-base-tokens instead of @entur/menu/styles when your app already loads @entur/tokens/dist/base.css. The base tokens are then declared only once, which keeps browser devtools fast.
 
@@ -46,7 +46,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **menu:** hide the native number-input spinner in Firefox for Pagination ([2fd2983](https://github.com/entur/design-system/commit/2fd29831195366e133dd960ae59c2d9e55e5c559))
+- **menu:** hide the native number-input spinner in Firefox for Pagination ([2fd2983](https://github.com/entur/design-system/commit/2fd29831195366e133dd960ae59c2d9e55e5c559)) ([#469](https://github.com/entur/design-system/pull/469))
 
   The existing ::-webkit-inner-spin-button/::-webkit-outer-spin-button
   rule only covers Chrome/Safari. Firefox needs -moz-appearance: textfield
@@ -54,7 +54,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **tokens:** update the colour export and regularise component token names ([a14a5fd](https://github.com/entur/design-system/commit/a14a5fd400a5fe9bb5d68db3201ea87ffce080ed))
+- **tokens:** update the colour export and regularise component token names ([a14a5fd](https://github.com/entur/design-system/commit/a14a5fd400a5fe9bb5d68db3201ea87ffce080ed)) ([#479](https://github.com/entur/design-system/pull/479))
 
   Twelve colours changed. Ten tokens moved from `Fill/Negative/Transparent` to
   `Fill/Negative/Accent` — Button `negative` hover, TableRow `error` and two
@@ -93,25 +93,25 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes (beta)
 
-- **menu/beta/side navigation:** correct spacing and bar width to match Figma ([6faafc0](https://github.com/entur/design-system/commit/6faafc096f71d689e52e92d44a530e07cdb648b9))
+- **menu/beta/side navigation:** correct spacing and bar width to match Figma ([6faafc0](https://github.com/entur/design-system/commit/6faafc096f71d689e52e92d44a530e07cdb648b9)) ([#463](https://github.com/entur/design-system/pull/463))
 
   The accent bar on the current row is 2px, the gap between an icon and its
   label 0.5rem, and a group heading sits 1.5rem below what precedes it.
 
-- **menu/beta/side navigation:** highlight only the row for the current page ([a80af1d](https://github.com/entur/design-system/commit/a80af1da2bfc9dfea1cbc630fd7244626fbc263c))
+- **menu/beta/side navigation:** highlight only the row for the current page ([a80af1d](https://github.com/entur/design-system/commit/a80af1da2bfc9dfea1cbc630fd7244626fbc263c)) ([#463](https://github.com/entur/design-system/pull/463))
 
   An open ExpandableItem no longer draws the highlight — the tinted background
   and the accent bar — when the current page is one of its submenu rows; that row
   draws it instead, and the ExpandableItem keeps its bold label. A collapsed
   ExpandableItem still draws it, since the submenu row is out of sight.
 
-- **menu/beta/side navigation:** keep a submenu open when the active page leaves ([30d0a04](https://github.com/entur/design-system/commit/30d0a045db9dad721f7caf4bf913e350d416ac71))
+- **menu/beta/side navigation:** keep a submenu open when the active page leaves ([30d0a04](https://github.com/entur/design-system/commit/30d0a045db9dad721f7caf4bf913e350d416ac71)) ([#463](https://github.com/entur/design-system/pull/463))
 
   Navigating into a submenu still opens its group, but navigating out of one no
   longer collapses it: the panel stays as the user left it. Closing it stays
   their call.
 
-- **menu/beta/side navigation:** update the colours of the row for the current page ([6bfca42](https://github.com/entur/design-system/commit/6bfca428d8c9d58d8edd1b617a51063551b73622))
+- **menu/beta/side navigation:** update the colours of the row for the current page ([6bfca42](https://github.com/entur/design-system/commit/6bfca428d8c9d58d8edd1b617a51063551b73622)) ([#463](https://github.com/entur/design-system/pull/463))
 
   The tint behind the current row is lighter in light mode and darker in dark
   mode, its bar reads clearly on a dark background, and the submenu indicator is
@@ -119,7 +119,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features (beta)
 
-- **menu/beta/side navigation:** cap the width at 20rem ([f49ebf0](https://github.com/entur/design-system/commit/f49ebf0bad8568aa32304c872aa96f01903da826))
+- **menu/beta/side navigation:** cap the width at 20rem ([f49ebf0](https://github.com/entur/design-system/commit/f49ebf0bad8568aa32304c872aa96f01903da826)) ([#463](https://github.com/entur/design-system/pull/463))
 
   The nav takes its width from its container, but no longer spans the whole page
   when there is no sidebar around it. Override the cap with the custom property
@@ -128,25 +128,25 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   A cap rather than a fixed width, so the nav still fills a narrower sidebar edge
   to edge and the full-bleed rows keep reaching both edges.
 
-- **menu/beta/side navigation:** fade the accent bar and the alert dot ([4d022c5](https://github.com/entur/design-system/commit/4d022c50be53c23ae1a83209ea6993631ac1f8b6))
+- **menu/beta/side navigation:** fade the accent bar and the alert dot ([4d022c5](https://github.com/entur/design-system/commit/4d022c50be53c23ae1a83209ea6993631ac1f8b6)) ([#463](https://github.com/entur/design-system/pull/463))
 
   The bar and the dot cross-fade over 0.2s as the current page changes or a
   submenu opens, and stand still under `prefers-reduced-motion: reduce`. The
   alert dot keeps its place in the row while faded out, so nothing shifts.
 
-- **menu/beta/side navigation:** let an ExpandableItem show alerts from its submenu ([c130b06](https://github.com/entur/design-system/commit/c130b068e44925a7981050104c64be3fededeb6d))
+- **menu/beta/side navigation:** let an ExpandableItem show alerts from its submenu ([c130b06](https://github.com/entur/design-system/commit/c130b068e44925a7981050104c64be3fededeb6d)) ([#463](https://github.com/entur/design-system/pull/463))
 
   A collapsed ExpandableItem shows the alert dot when any item in its submenu has
   `alert`, so an alert hidden inside it still surfaces. Opening the submenu hands
   the dot back to the items themselves.
 
-- **menu/beta/side navigation:** show the submenu hierarchy with an indicator ([8e5859f](https://github.com/entur/design-system/commit/8e5859f0d8029368d3ba81d0cbfee0aa4b76b5bd))
+- **menu/beta/side navigation:** show the submenu hierarchy with an indicator ([8e5859f](https://github.com/entur/design-system/commit/8e5859f0d8029368d3ba81d0cbfee0aa4b76b5bd)) ([#463](https://github.com/entur/design-system/pull/463))
 
   Submenu rows share a vertical indicator along their start edge and sit inset
   from both panel edges, so a submenu reads as one level below the item holding
   it. The row for the current page colours its own part of the indicator.
 
-- **menu/beta/side navigation:** warn when icons are mixed on one level ([209a64b](https://github.com/entur/design-system/commit/209a64bb295bfcdfd8160decbe7ae28c701118d8))
+- **menu/beta/side navigation:** warn when icons are mixed on one level ([209a64b](https://github.com/entur/design-system/commit/209a64bb295bfcdfd8160decbe7ae28c701118d8)) ([#463](https://github.com/entur/design-system/pull/463))
 
   Icons belong to a whole level: a row without one among rows that have one
   loses the icon column and its label stops lining up. The component now
@@ -157,7 +157,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **menu/side navigation, menu/overflow menu:** restore contrast text color on the collapse button ([1d1040d](https://github.com/entur/design-system/commit/1d1040d79708bd4b277ff9ab509f98ca1ecdec02))
+- **menu/side navigation, menu/overflow menu:** restore contrast text color on the collapse button ([1d1040d](https://github.com/entur/design-system/commit/1d1040d79708bd4b277ff9ab509f98ca1ecdec02)) ([#456](https://github.com/entur/design-system/pull/456))
 
   The collapse button in contrast mode referenced a misspelled custom
   property, so it fell back to the standard text color. The overflow menu
@@ -168,7 +168,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features (beta)
 
-- **menu/beta/side navigation:** add SideNavigation as a beta component ([48dd419](https://github.com/entur/design-system/commit/48dd4191bcf49a7ab61892dbd1d81da018d38bf3))
+- **menu/beta/side navigation:** add SideNavigation as a beta component ([48dd419](https://github.com/entur/design-system/commit/48dd4191bcf49a7ab61892dbd1d81da018d38bf3)) ([#451](https://github.com/entur/design-system/pull/451))
 
   New compound API under @entur/menu/beta that supersedes the stable
   SideNavigation:
@@ -193,7 +193,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   @entur/layout/beta. Requires @entur/expand/styles alongside
   @entur/menu/beta/styles.
 
-- **menu/beta/side navigation:** let consumers align the labels with a layout grid ([928d16b](https://github.com/entur/design-system/commit/928d16bc4257d8d0c57547c9081d53ec2d061d81))
+- **menu/beta/side navigation:** let consumers align the labels with a layout grid ([928d16b](https://github.com/entur/design-system/commit/928d16bc4257d8d0c57547c9081d53ec2d061d81)) ([#451](https://github.com/entur/design-system/pull/451))
 
   Set --eds-side-navigation-padding-inline-start to move the label, icon and group
   heading further in. Hover and active backgrounds still run to the edge of the
@@ -202,7 +202,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
   The variable is not beta-namespaced, so it survives the move out of beta.
 
-- **menu/beta/side navigation:** let labels run over two lines ([5b66b3a](https://github.com/entur/design-system/commit/5b66b3a6fe41d64abf53a6970a01961b48762d8c))
+- **menu/beta/side navigation:** let labels run over two lines ([5b66b3a](https://github.com/entur/design-system/commit/5b66b3a6fe41d64abf53a6970a01961b48762d8c)) ([#451](https://github.com/entur/design-system/pull/451))
 
   Labels that do not fit on one line wrap to a second and are truncated
   with an ellipsis after that. The row grows with the second line.
@@ -224,21 +224,21 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **menu:** remove React.FC in favor of typed function parameters ([00f2fcb](https://github.com/entur/design-system/commit/00f2fcb8a447da28edf76968f392c872023abf62))
+- **menu:** remove React.FC in favor of typed function parameters ([00f2fcb](https://github.com/entur/design-system/commit/00f2fcb8a447da28edf76968f392c872023abf62)) ([#276](https://github.com/entur/design-system/pull/276))
 
   React.FC no longer provides implicit children typing in React 18.
   Move type annotations directly to function parameters.
 
 ### Features
 
-- **menu:** add exports field for ESM-compatible module resolution ([e2fe17f](https://github.com/entur/design-system/commit/e2fe17fb0fa7fc11c1d7952bb65a19cab39e0a0d))
+- **menu:** add exports field for ESM-compatible module resolution ([e2fe17f](https://github.com/entur/design-system/commit/e2fe17fb0fa7fc11c1d7952bb65a19cab39e0a0d)) ([#276](https://github.com/entur/design-system/pull/276))
 
   Consumers no longer need bundler aliases to resolve ESM entry points.
   Declares explicit exports map with entries for main entrypoint,
   ./styles (CSS), ./dist/styles.css (compat), and ./package.json.
   Deep dist/ imports not listed will stop resolving.
 
-- **menu:** require React 18 as minimum peer dependency ([56f72d8](https://github.com/entur/design-system/commit/56f72d89c2582aee45d84bbe17646a63cecf2917))
+- **menu:** require React 18 as minimum peer dependency ([56f72d8](https://github.com/entur/design-system/commit/56f72d89c2582aee45d84bbe17646a63cecf2917)) ([#276](https://github.com/entur/design-system/pull/276))
 
 ### BREAKING CHANGES
 
@@ -249,7 +249,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **menu/logo:** announce logo as single cohesive image for screen readers ([37c93c9](https://github.com/entur/design-system/commit/37c93c9af67133113304d4f8cf426cadc627510b))
+- **menu/logo:** announce logo as single cohesive image for screen readers ([37c93c9](https://github.com/entur/design-system/commit/37c93c9af67133113304d4f8cf426cadc627510b)) ([#436](https://github.com/entur/design-system/pull/436))
 
   SVG aria-label now includes product name and "logo" suffix (e.g. "Entur Miljødata logo").
   Product name span is aria-hidden to prevent double announcement.
@@ -258,7 +258,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **menu/logo:** add Logo component for standardized Entur product logos ([75dd9dc](https://github.com/entur/design-system/commit/75dd9dc5c6789d4c1ec680ace52a8c3697b3c53b))
+- **menu/logo:** add Logo component for standardized Entur product logos ([75dd9dc](https://github.com/entur/design-system/commit/75dd9dc5c6789d4c1ec680ace52a8c3697b3c53b)) ([#392](https://github.com/entur/design-system/pull/392))
 
   New `<Logo>` component renders the Entur wordmark with an optional product name.
   Use `productName` to display your product name next to the logo, `size` to choose
@@ -290,14 +290,14 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **menu/stepper:** use accent color for current step label ([28cae92](https://github.com/entur/design-system/commit/28cae927a6f45654afa5f31c9710474574514d52))
+- **menu/stepper:** use accent color for current step label ([28cae92](https://github.com/entur/design-system/commit/28cae927a6f45654afa5f31c9710474574514d52)) ([#349](https://github.com/entur/design-system/pull/349))
 
   Current step label was incorrectly using the uncompleted text token.
   It now uses the completed text token, matching the Figma design.
 
 ### Features
 
-- **tokens:** update primitive, semantic, base and component color tokens ([3ef6220](https://github.com/entur/design-system/commit/3ef622059143f24dcf7c94b19d4b7337fbac3508))
+- **tokens:** update primitive, semantic, base and component color tokens ([3ef6220](https://github.com/entur/design-system/commit/3ef622059143f24dcf7c94b19d4b7337fbac3508)) ([#349](https://github.com/entur/design-system/pull/349))
 
   Updates primitive, semantic, base and component-level color tokens.
   Visual changes affect alert, datepicker, loader, menu, tab, and travel
@@ -346,7 +346,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **menu/pagination:** replace fragment with span to fix aria-hidden console error ([3ce2a72](https://github.com/entur/design-system/commit/3ce2a727539d8a8bc74fe0a18d427cc09ceda307))
+- **menu/pagination:** replace fragment with span to fix aria-hidden console error ([3ce2a72](https://github.com/entur/design-system/commit/3ce2a727539d8a8bc74fe0a18d427cc09ceda307)) ([#257](https://github.com/entur/design-system/pull/257))
 
   IconButton clones aria-hidden onto buttonIcon, but fragments only
   accept key and children props, causing React console errors.
@@ -355,7 +355,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features (beta)
 
-- **layout/beta/template:** add template beta component for B2B portal applications ([ea4fe34](https://github.com/entur/design-system/commit/ea4fe34b9b0d46eae0dc9eb99240f5117424eb0d))
+- **layout/beta/template:** add template beta component for B2B portal applications ([ea4fe34](https://github.com/entur/design-system/commit/ea4fe34b9b0d46eae0dc9eb99240f5117424eb0d)) ([#247](https://github.com/entur/design-system/pull/247))
 
   Template to be used for B2B portals for easier setup and consistency
   accross Entur applications.
@@ -364,8 +364,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **menu/breadcrumb navigation:** fix incorrect color for current item in contrast ([bad96e9](https://github.com/entur/design-system/commit/bad96e920c3c478fae366140509d8cecb9b6ab10))
-- **menu/breadcrumb navigation:** fix type declaration ([ceb2e01](https://github.com/entur/design-system/commit/ceb2e01309c53787bc51e554c4252bb755487527))
+- **menu/breadcrumb navigation:** fix incorrect color for current item in contrast ([bad96e9](https://github.com/entur/design-system/commit/bad96e920c3c478fae366140509d8cecb9b6ab10)) ([#228](https://github.com/entur/design-system/pull/228))
+- **menu/breadcrumb navigation:** fix type declaration ([ceb2e01](https://github.com/entur/design-system/commit/ceb2e01309c53787bc51e554c4252bb755487527)) ([#228](https://github.com/entur/design-system/pull/228))
 
 ## [6.0.1](https://github.com/entur/design-system/compare/@entur/menu@6.0.0...@entur/menu@6.0.1) (2026-01-23)
 
@@ -378,11 +378,11 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **menu/breadcrumb navigation:** change to consistent class names with eds-breadcrumbs prefix ([42d2896](https://github.com/entur/design-system/commit/42d28965666c4a18eb2676d39a8bab866c3f75a0))
+- **menu/breadcrumb navigation:** change to consistent class names with eds-breadcrumbs prefix ([42d2896](https://github.com/entur/design-system/commit/42d28965666c4a18eb2676d39a8bab866c3f75a0)) ([#183](https://github.com/entur/design-system/pull/183))
 
   Was a mixture of eds-breadcrumb and eds-breadcrumbs
 
-- **menu/breadcrumb navigation:** improve breadcrumb navigation and item structure ([bbe9546](https://github.com/entur/design-system/commit/bbe9546f9f0159f473717347380e1bc2476f5f69))
+- **menu/breadcrumb navigation:** improve breadcrumb navigation and item structure ([bbe9546](https://github.com/entur/design-system/commit/bbe9546f9f0159f473717347380e1bc2476f5f69)) ([#183](https://github.com/entur/design-system/pull/183))
 
   Add consistent naming and improve dom structure. Also make last element unclickable.
 
@@ -390,7 +390,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **menu/breadcrumb navigation:** change CSS specificity for all breadcrumb classes to 0,1,0 ([4c74e72](https://github.com/entur/design-system/commit/4c74e72cf82af00338dd034e5a9fcdefec57a038))
+- **menu/breadcrumb navigation:** change CSS specificity for all breadcrumb classes to 0,1,0 ([4c74e72](https://github.com/entur/design-system/commit/4c74e72cf82af00338dd034e5a9fcdefec57a038)) ([#183](https://github.com/entur/design-system/pull/183))
 
 ### BREAKING CHANGES
 
@@ -402,7 +402,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- add new component size css variables to all relevant packages ([aceafa8](https://github.com/entur/design-system/commit/aceafa85c8da121ad0654fb08caad22257c16bc9))
+- add new component size css variables to all relevant packages ([aceafa8](https://github.com/entur/design-system/commit/aceafa85c8da121ad0654fb08caad22257c16bc9)) ([#195](https://github.com/entur/design-system/pull/195))
 
 ## [5.2.7](https://github.com/entur/design-system/compare/@entur/menu@5.2.6...@entur/menu@5.2.7) (2025-11-24)
 
@@ -467,12 +467,12 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **deps:** bump minor for dependencies ([bdde8f2](https://github.com/entur/design-system/commit/bdde8f2d5ab46cfa307a424429063b9700edfc1e))
+- **deps:** bump minor for dependencies ([bdde8f2](https://github.com/entur/design-system/commit/bdde8f2d5ab46cfa307a424429063b9700edfc1e)) ([#121](https://github.com/entur/design-system/pull/121))
 
   classnames, react-focus-lock, @react-aria, @react-stately, @internationalized/date, react-dropzone
 
-- exclude dependencies from bundle ([5252a14](https://github.com/entur/design-system/commit/5252a14c4c615452f3cc7effc73287a5ee42399e))
-- fix package.json field order ([7de85f2](https://github.com/entur/design-system/commit/7de85f2baf08a1fc3a0223e3f149c8cf9636546b))
+- exclude dependencies from bundle ([5252a14](https://github.com/entur/design-system/commit/5252a14c4c615452f3cc7effc73287a5ee42399e)) ([#121](https://github.com/entur/design-system/pull/121))
+- fix package.json field order ([7de85f2](https://github.com/entur/design-system/commit/7de85f2baf08a1fc3a0223e3f149c8cf9636546b)) ([#121](https://github.com/entur/design-system/pull/121))
 
   incorrect order made types unavailable
 
@@ -480,7 +480,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **overflow menu:** re-add support for 'as' in OverflowMenuItem ([190c01b](https://github.com/entur/design-system/commit/190c01b9874c631a3ca84f88501378bdea2cc589))
+- **overflow menu:** re-add support for 'as' in OverflowMenuItem ([190c01b](https://github.com/entur/design-system/commit/190c01b9874c631a3ca84f88501378bdea2cc589)) ([#99](https://github.com/entur/design-system/pull/99))
 
 ## [5.1.12](https://github.com/entur/design-system/compare/@entur/menu@5.1.11...@entur/menu@5.1.12) (2025-06-27)
 
@@ -638,7 +638,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **menu:** replace focus with focus-visible ([b8e086e](https://github.com/entur/design-system/commit/b8e086efc80e631e4a8fcb55401e1d4df97dbd6f))
+- **menu:** replace focus with focus-visible ([b8e086e](https://github.com/entur/design-system/commit/b8e086efc80e631e4a8fcb55401e1d4df97dbd6f)) ([#41](https://github.com/entur/design-system/pull/41))
 
 ## [5.0.8](https://github.com/entur/design-system/compare/@entur/menu@5.0.7...@entur/menu@5.0.8) (2025-01-15)
 
@@ -685,7 +685,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Performance Improvements
 
-- **overflow menu:** fix performance bug causing unnecessary rerenders ([20ab2d2](https://github.com/entur/design-system/commit/20ab2d24adaa93e71c5f9b31c6194d99e0db9675))
+- **overflow menu:** fix performance bug causing unnecessary rerenders ([20ab2d2](https://github.com/entur/design-system/commit/20ab2d24adaa93e71c5f9b31c6194d99e0db9675)) ([#19](https://github.com/entur/design-system/pull/19))
 
 ## [5.0.5](https://github.com/entur/design-system/compare/@entur/menu@5.0.4...@entur/menu@5.0.5) (2024-11-20)
 

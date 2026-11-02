@@ -7,7 +7,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **table:** add a stylesheet without base tokens ([9fb8c1f](https://github.com/entur/design-system/commit/9fb8c1f2dee87003606084e423e62ba1d50e74f4))
+- **table:** add a stylesheet without base tokens ([9fb8c1f](https://github.com/entur/design-system/commit/9fb8c1f2dee87003606084e423e62ba1d50e74f4)) ([#517](https://github.com/entur/design-system/pull/517))
 
   Import @entur/table/styles/no-base-tokens instead of @entur/table/styles when your app already loads @entur/tokens/dist/base.css. The base tokens are then declared only once, which keeps browser devtools fast.
 
@@ -26,7 +26,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **tokens:** update the colour export and regularise component token names ([a14a5fd](https://github.com/entur/design-system/commit/a14a5fd400a5fe9bb5d68db3201ea87ffce080ed))
+- **tokens:** update the colour export and regularise component token names ([a14a5fd](https://github.com/entur/design-system/commit/a14a5fd400a5fe9bb5d68db3201ea87ffce080ed)) ([#479](https://github.com/entur/design-system/pull/479))
 
   Twelve colours changed. Ten tokens moved from `Fill/Negative/Transparent` to
   `Fill/Negative/Accent` — Button `negative` hover, TableRow `error` and two
@@ -116,7 +116,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **table:** remove React.FC in favor of typed function parameters ([24e2193](https://github.com/entur/design-system/commit/24e219357e4a8e87274a59324ffdc76354d5a8a9))
+- **table:** remove React.FC in favor of typed function parameters ([24e2193](https://github.com/entur/design-system/commit/24e219357e4a8e87274a59324ffdc76354d5a8a9)) ([#276](https://github.com/entur/design-system/pull/276))
 
   React.FC no longer provides implicit children typing in React 18.
   Move type annotations directly to function parameters.
@@ -124,14 +124,14 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **table:** add exports field for ESM-compatible module resolution ([57ca3d4](https://github.com/entur/design-system/commit/57ca3d4979848dbd735d4b5a137d558914c207f9))
+- **table:** add exports field for ESM-compatible module resolution ([57ca3d4](https://github.com/entur/design-system/commit/57ca3d4979848dbd735d4b5a137d558914c207f9)) ([#276](https://github.com/entur/design-system/pull/276))
 
   Consumers no longer need bundler aliases to resolve ESM entry points.
   Declares explicit exports map with entries for main entrypoint,
   ./styles (CSS), ./dist/styles.css (compat), and ./package.json.
   Deep dist/ imports not listed will stop resolving.
 
-- **table:** require React 18 as minimum peer dependency ([aed2ecd](https://github.com/entur/design-system/commit/aed2ecd42af5254c12a67074714eae6d8f638a68))
+- **table:** require React 18 as minimum peer dependency ([aed2ecd](https://github.com/entur/design-system/commit/aed2ecd42af5254c12a67074714eae6d8f638a68)) ([#276](https://github.com/entur/design-system/pull/276))
 
 ### BREAKING CHANGES
 
@@ -302,7 +302,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- add new component size css variables to all relevant packages ([aceafa8](https://github.com/entur/design-system/commit/aceafa85c8da121ad0654fb08caad22257c16bc9))
+- add new component size css variables to all relevant packages ([aceafa8](https://github.com/entur/design-system/commit/aceafa85c8da121ad0654fb08caad22257c16bc9)) ([#195](https://github.com/entur/design-system/pull/195))
 
 ## [4.9.21](https://github.com/entur/design-system/compare/@entur/table@4.9.20...@entur/table@4.9.21) (2025-11-24)
 
@@ -366,12 +366,12 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **deps:** bump minor for dependencies ([bdde8f2](https://github.com/entur/design-system/commit/bdde8f2d5ab46cfa307a424429063b9700edfc1e))
+- **deps:** bump minor for dependencies ([bdde8f2](https://github.com/entur/design-system/commit/bdde8f2d5ab46cfa307a424429063b9700edfc1e)) ([#121](https://github.com/entur/design-system/pull/121))
 
   classnames, react-focus-lock, @react-aria, @react-stately, @internationalized/date, react-dropzone
 
-- exclude dependencies from bundle ([5252a14](https://github.com/entur/design-system/commit/5252a14c4c615452f3cc7effc73287a5ee42399e))
-- fix package.json field order ([7de85f2](https://github.com/entur/design-system/commit/7de85f2baf08a1fc3a0223e3f149c8cf9636546b))
+- exclude dependencies from bundle ([5252a14](https://github.com/entur/design-system/commit/5252a14c4c615452f3cc7effc73287a5ee42399e)) ([#121](https://github.com/entur/design-system/pull/121))
+- fix package.json field order ([7de85f2](https://github.com/entur/design-system/commit/7de85f2baf08a1fc3a0223e3f149c8cf9636546b)) ([#121](https://github.com/entur/design-system/pull/121))
 
   incorrect order made types unavailable
 
@@ -537,7 +537,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **table:** replace focus with focus-visible ([f3908e3](https://github.com/entur/design-system/commit/f3908e37c88c35f61c8a883cb3db0777b1011ba5))
+- **table:** replace focus with focus-visible ([f3908e3](https://github.com/entur/design-system/commit/f3908e37c88c35f61c8a883cb3db0777b1011ba5)) ([#41](https://github.com/entur/design-system/pull/41))
 
 ## [4.8.27](https://github.com/entur/design-system/compare/@entur/table@4.8.26...@entur/table@4.8.27) (2025-01-15)
 

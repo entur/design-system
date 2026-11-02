@@ -7,7 +7,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **tab:** add a stylesheet without base tokens ([5042a94](https://github.com/entur/design-system/commit/5042a9400c8a65ee4a5c0f2b6a83361d3e6aaa60))
+- **tab:** add a stylesheet without base tokens ([5042a94](https://github.com/entur/design-system/commit/5042a9400c8a65ee4a5c0f2b6a83361d3e6aaa60)) ([#517](https://github.com/entur/design-system/pull/517))
 
   Import @entur/tab/styles/no-base-tokens instead of @entur/tab/styles when your app already loads @entur/tokens/dist/base.css. The base tokens are then declared only once, which keeps browser devtools fast.
 
@@ -29,7 +29,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **tab:** warn about mismatched indices when panels load lazily ([b8f354c](https://github.com/entur/design-system/commit/b8f354c79e45bd9a6bcb665a0e08e506fa4768a3))
+- **tab:** warn about mismatched indices when panels load lazily ([b8f354c](https://github.com/entur/design-system/commit/b8f354c79e45bd9a6bcb665a0e08e506fa4768a3)) ([#465](https://github.com/entur/design-system/pull/465))
 
   Tabs and panels that mount behind a Suspense boundary now trigger the
   index warnings right away. Before, the warning only showed up after
@@ -40,7 +40,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **tab:** let Tab and TabPanel take an explicit index ([72a1661](https://github.com/entur/design-system/commit/72a1661e902d75e0187e86c90a1e1ff916eabb42))
+- **tab:** let Tab and TabPanel take an explicit index ([72a1661](https://github.com/entur/design-system/commit/72a1661e902d75e0187e86c90a1e1ff916eabb42)) ([#450](https://github.com/entur/design-system/pull/450))
 
   Tabs and panels nested in fragments, wrapper elements or Suspense now get the
   index their position implies, instead of all belonging to the first tab. A
@@ -54,7 +54,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **tab/tab list:** keep arrow key navigation working inside shadow DOM ([db1bf7e](https://github.com/entur/design-system/commit/db1bf7ee93517f8ee02cc25e0f5381d45e76e021))
+- **tab/tab list:** keep arrow key navigation working inside shadow DOM ([db1bf7e](https://github.com/entur/design-system/commit/db1bf7ee93517f8ee02cc25e0f5381d45e76e021)) ([#446](https://github.com/entur/design-system/pull/446))
 
   Arrow keys, Home and End now move between tabs when the tab list is rendered inside a shadow root.
 
@@ -69,7 +69,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **tab, expand, modal, utils:** fix React 18 type errors and clean up [@reach](https://github.com/reach) leftovers ([d29bedc](https://github.com/entur/design-system/commit/d29bedcdc2701a192e0cf39587a2928cae55191e))
+- **tab, expand, modal, utils:** fix React 18 type errors and clean up [@reach](https://github.com/reach) leftovers ([d29bedc](https://github.com/entur/design-system/commit/d29bedcdc2701a192e0cf39587a2928cae55191e)) ([#276](https://github.com/entur/design-system/pull/276))
 
   - Fix cloneElement TS errors in TabList and TabPanels by casting to `ReactElement<any>`
   - Suppress react-collapse type incompatibility with React 18 in BaseExpand
@@ -77,13 +77,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   - Update @types/react@18 and @types/react-dom@18 resolutions to match devDependencies
   - Remove unused React import in ConditionalWrapper (react-jsx handles it)
 
-- **tab:** add Tab as prop test and fix type attribute for as='button' edge case ([2d79281](https://github.com/entur/design-system/commit/2d79281f6b224a425c57607e9579324bda9f867a))
-- **tab:** remove React.FC in favor of typed function parameters ([6460121](https://github.com/entur/design-system/commit/6460121c7c9092c48d272e09bbf83fbc109d5f08))
+- **tab:** add Tab as prop test and fix type attribute for as='button' edge case ([2d79281](https://github.com/entur/design-system/commit/2d79281f6b224a425c57607e9579324bda9f867a)) ([#276](https://github.com/entur/design-system/pull/276))
+- **tab:** remove React.FC in favor of typed function parameters ([6460121](https://github.com/entur/design-system/commit/6460121c7c9092c48d272e09bbf83fbc109d5f08)) ([#276](https://github.com/entur/design-system/pull/276))
 
   React.FC no longer provides implicit children typing in React 18.
   Move type annotations directly to function parameters.
 
-- **tab:** restore functional as prop in all tab components ([3590760](https://github.com/entur/design-system/commit/3590760b5104a09afd1a04498a450ce3a7d3b1a8))
+- **tab:** restore functional as prop in all tab components ([3590760](https://github.com/entur/design-system/commit/3590760b5104a09afd1a04498a450ce3a7d3b1a8)) ([#276](https://github.com/entur/design-system/pull/276))
 
   The as prop was previously accepted but silently ignored (\_as variable
   was never used). Now all 5 tab components (Tabs, TabList, Tab, TabPanel,
@@ -95,14 +95,14 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **tab:** add exports field for ESM-compatible module resolution ([2138b30](https://github.com/entur/design-system/commit/2138b30c46a0272542a55bda52939f56bcc7fb76))
+- **tab:** add exports field for ESM-compatible module resolution ([2138b30](https://github.com/entur/design-system/commit/2138b30c46a0272542a55bda52939f56bcc7fb76)) ([#276](https://github.com/entur/design-system/pull/276))
 
   Consumers no longer need bundler aliases to resolve ESM entry points.
   Declares explicit exports map with entries for main entrypoint,
   ./styles (CSS), ./dist/styles.css (compat), and ./package.json.
   Deep dist/ imports not listed will stop resolving.
 
-- **tab:** replace @reach/tabs with native ARIA implementation ([9c28573](https://github.com/entur/design-system/commit/9c2857395510ffcb22cbd2b825c96c61f26d9f92))
+- **tab:** replace @reach/tabs with native ARIA implementation ([9c28573](https://github.com/entur/design-system/commit/9c2857395510ffcb22cbd2b825c96c61f26d9f92)) ([#276](https://github.com/entur/design-system/pull/276))
 
   Replace @reach/tabs with zero-dependency implementation using React
   Context and WAI-ARIA tabs pattern. SSR-compatible via React useId().
@@ -110,7 +110,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   New features: keepMounted prop on TabPanels, aria-label/aria-labelledby
   on TabList, disabled tab support for polymorphic as prop.
 
-- **tab:** require React 18, replace @reach/tabs with custom ARIA implementation ([987efe0](https://github.com/entur/design-system/commit/987efe0a3a50dda8a1d20d40767e1e45bd24becd))
+- **tab:** require React 18, replace @reach/tabs with custom ARIA implementation ([987efe0](https://github.com/entur/design-system/commit/987efe0a3a50dda8a1d20d40767e1e45bd24becd)) ([#276](https://github.com/entur/design-system/pull/276))
 
   Removes @reach/tabs and replaces it with a custom accessible tab implementation
   using ARIA roles. All existing props and keyboard navigation are preserved.
@@ -149,7 +149,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **tokens:** update primitive, semantic, base and component color tokens ([3ef6220](https://github.com/entur/design-system/commit/3ef622059143f24dcf7c94b19d4b7337fbac3508))
+- **tokens:** update primitive, semantic, base and component color tokens ([3ef6220](https://github.com/entur/design-system/commit/3ef622059143f24dcf7c94b19d4b7337fbac3508)) ([#349](https://github.com/entur/design-system/pull/349))
 
   Updates primitive, semantic, base and component-level color tokens.
   Visual changes affect alert, datepicker, loader, menu, tab, and travel
@@ -192,7 +192,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- add new component size css variables to all relevant packages ([aceafa8](https://github.com/entur/design-system/commit/aceafa85c8da121ad0654fb08caad22257c16bc9))
+- add new component size css variables to all relevant packages ([aceafa8](https://github.com/entur/design-system/commit/aceafa85c8da121ad0654fb08caad22257c16bc9)) ([#195](https://github.com/entur/design-system/pull/195))
 
 ## [0.5.7](https://github.com/entur/design-system/compare/@entur/tab@0.5.6...@entur/tab@0.5.7) (2025-09-30)
 
@@ -205,12 +205,12 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **deps:** bump minor for dependencies ([bdde8f2](https://github.com/entur/design-system/commit/bdde8f2d5ab46cfa307a424429063b9700edfc1e))
+- **deps:** bump minor for dependencies ([bdde8f2](https://github.com/entur/design-system/commit/bdde8f2d5ab46cfa307a424429063b9700edfc1e)) ([#121](https://github.com/entur/design-system/pull/121))
 
   classnames, react-focus-lock, @react-aria, @react-stately, @internationalized/date, react-dropzone
 
-- exclude dependencies from bundle ([5252a14](https://github.com/entur/design-system/commit/5252a14c4c615452f3cc7effc73287a5ee42399e))
-- fix package.json field order ([7de85f2](https://github.com/entur/design-system/commit/7de85f2baf08a1fc3a0223e3f149c8cf9636546b))
+- exclude dependencies from bundle ([5252a14](https://github.com/entur/design-system/commit/5252a14c4c615452f3cc7effc73287a5ee42399e)) ([#121](https://github.com/entur/design-system/pull/121))
+- fix package.json field order ([7de85f2](https://github.com/entur/design-system/commit/7de85f2baf08a1fc3a0223e3f149c8cf9636546b)) ([#121](https://github.com/entur/design-system/pull/121))
 
   incorrect order made types unavailable
 
@@ -243,7 +243,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **tab:** replace focus with focus-visible ([d746177](https://github.com/entur/design-system/commit/d746177dbcbcf442da61709bb27c54fcddf0adda))
+- **tab:** replace focus with focus-visible ([d746177](https://github.com/entur/design-system/commit/d746177dbcbcf442da61709bb27c54fcddf0adda)) ([#41](https://github.com/entur/design-system/pull/41))
 
 ## [0.4.78](https://github.com/entur/design-system/compare/@entur/tab@0.4.77...@entur/tab@0.4.78) (2025-01-15)
 

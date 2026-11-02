@@ -7,7 +7,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **form/checkbox panel, form/radio panel:** announce readOnly state in CheckboxPanel and RadioPanel ([c2d8247](https://github.com/entur/design-system/commit/c2d824725d8cd52abc519430f6e54d7b90430d72))
+- **form/checkbox panel, form/radio panel:** announce readOnly state in CheckboxPanel and RadioPanel ([c2d8247](https://github.com/entur/design-system/commit/c2d824725d8cd52abc519430f6e54d7b90430d72)) ([#490](https://github.com/entur/design-system/pull/490))
 
   A readOnly panel now gets a visually hidden description, "Kan ikke endres"
   by default and configurable through readOnlyLabelDescription like Radio,
@@ -21,7 +21,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **form:** add a stylesheet without base tokens ([eae1f92](https://github.com/entur/design-system/commit/eae1f92d46719feced95db0446704dab98c4798c))
+- **form:** add a stylesheet without base tokens ([eae1f92](https://github.com/entur/design-system/commit/eae1f92d46719feced95db0446704dab98c4798c)) ([#517](https://github.com/entur/design-system/pull/517))
 
   Import @entur/form/styles/no-base-tokens instead of @entur/form/styles when your app already loads @entur/tokens/dist/base.css. The base tokens are then declared only once, which keeps browser devtools fast.
 
@@ -38,7 +38,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **form:** hide the native search cancel button on input[type=search] ([c6987a5](https://github.com/entur/design-system/commit/c6987a543d01e9ff62987e62f5d9bc7e0fcc41f4))
+- **form:** hide the native search cancel button on input[type=search] ([c6987a5](https://github.com/entur/design-system/commit/c6987a543d01e9ff62987e62f5d9bc7e0fcc41f4)) ([#469](https://github.com/entur/design-system/pull/469))
 
   Chrome and Safari add their own clear ("x") button for
   input[type="search"], which duplicates the clear button consumers get
@@ -48,7 +48,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **tokens:** update the colour export and regularise component token names ([a14a5fd](https://github.com/entur/design-system/commit/a14a5fd400a5fe9bb5d68db3201ea87ffce080ed))
+- **tokens:** update the colour export and regularise component token names ([a14a5fd](https://github.com/entur/design-system/commit/a14a5fd400a5fe9bb5d68db3201ea87ffce080ed)) ([#479](https://github.com/entur/design-system/pull/479))
 
   Twelve colours changed. Ten tokens moved from `Fill/Negative/Transparent` to
   `Fill/Negative/Accent` — Button `negative` hover, TableRow `error` and two
@@ -95,7 +95,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **form, datepicker:** announce feedback text to screen readers by default ([10783dd](https://github.com/entur/design-system/commit/10783ddfdb043bb8d0ebaf71743471ebf0290fcb))
+- **form, datepicker:** announce feedback text to screen readers by default ([10783dd](https://github.com/entur/design-system/commit/10783ddfdb043bb8d0ebaf71743471ebf0290fcb)) ([#438](https://github.com/entur/design-system/pull/438))
 
   The live region is now rendered empty on mount and filled when a message
   appears, so screen readers pick up validation messages reliably.
@@ -109,25 +109,25 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   Note: datepicker feedback with variant negative or warning previously got
   role="alert" and now defaults to role="status".
 
-- **form/feedback text:** restore the symbol inside the error icon ([4abb000](https://github.com/entur/design-system/commit/4abb0000824565545c50617aab7f06752b774354))
+- **form/feedback text:** restore the symbol inside the error icon ([4abb000](https://github.com/entur/design-system/commit/4abb0000824565545c50617aab7f06752b774354)) ([#456](https://github.com/entur/design-system/pull/456))
 
   The inner circle of the error and negative icon referenced a custom
   property that does not exist, so the symbol lost its fill and blended
   into the icon background.
 
-- **form/text field, form/text area:** set aria-invalid for the negative variant ([a932ec3](https://github.com/entur/design-system/commit/a932ec38328d720bb7573ebababf7938448ae9bb))
+- **form/text field, form/text area:** set aria-invalid for the negative variant ([a932ec3](https://github.com/entur/design-system/commit/a932ec38328d720bb7573ebababf7938448ae9bb)) ([#438](https://github.com/entur/design-system/pull/438))
 
   aria-invalid only checked the deprecated variant="error", so fields using
   variant="negative" were never marked invalid for screen readers.
 
 ### Features
 
-- **form/text area:** forward ariaAlertOnFeedback so feedback is announced ([440f401](https://github.com/entur/design-system/commit/440f401e46bec2b746bf3817025c026e880fad41))
+- **form/text area:** forward ariaAlertOnFeedback so feedback is announced ([440f401](https://github.com/entur/design-system/commit/440f401e46bec2b746bf3817025c026e880fad41)) ([#438](https://github.com/entur/design-system/pull/438))
 
   TextArea never passed the prop on to BaseFormControl, so its feedback text
   was never announced to screen readers.
 
-- **form:** control how feedback text is announced with ariaAlertOnFeedback and feedbackProps ([f555018](https://github.com/entur/design-system/commit/f5550189f3189485113d45bd7803b5b241c4a241))
+- **form:** control how feedback text is announced with ariaAlertOnFeedback and feedbackProps ([f555018](https://github.com/entur/design-system/commit/f5550189f3189485113d45bd7803b5b241c4a241)) ([#438](https://github.com/entur/design-system/pull/438))
 
   ariaAlertOnFeedback now defaults to 'status', so the feedback text is
   announced politely without setting any props. Pass true or 'alert' for
@@ -150,7 +150,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **form/text area:** keep the label legible on any background ([5309457](https://github.com/entur/design-system/commit/5309457cd04558dc2add88db202f043a1a1558ec))
+- **form/text area:** keep the label legible on any background ([5309457](https://github.com/entur/design-system/commit/5309457cd04558dc2add88db202f043a1a1558ec)) ([#382](https://github.com/entur/design-system/pull/382))
 
   The label no longer paints its own background patch. Text scrolling under it
   fades out instead, so the label reads correctly in light mode, dark mode,
@@ -160,7 +160,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **form:** remove React.FC in favor of typed function parameters ([8cca9de](https://github.com/entur/design-system/commit/8cca9de7a89e31b0df07ffe9b1a1bcd1794fb73f))
+- **form:** remove React.FC in favor of typed function parameters ([8cca9de](https://github.com/entur/design-system/commit/8cca9de7a89e31b0df07ffe9b1a1bcd1794fb73f)) ([#276](https://github.com/entur/design-system/pull/276))
 
   React.FC no longer provides implicit children typing in React 18.
   Move type annotations directly to function parameters.
@@ -168,14 +168,14 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **form:** add exports field for ESM-compatible module resolution ([eea2a52](https://github.com/entur/design-system/commit/eea2a52a2239e55413476dfd5248ec9fe73a11ae))
+- **form:** add exports field for ESM-compatible module resolution ([eea2a52](https://github.com/entur/design-system/commit/eea2a52a2239e55413476dfd5248ec9fe73a11ae)) ([#276](https://github.com/entur/design-system/pull/276))
 
   Consumers no longer need bundler aliases to resolve ESM entry points.
   Declares explicit exports map with entries for main entrypoint,
   ./styles (CSS), ./dist/styles.css (compat), and ./package.json.
   Deep dist/ imports not listed will stop resolving.
 
-- **form:** require React 18 as minimum peer dependency ([372e013](https://github.com/entur/design-system/commit/372e0135acdd70dad40cda12ebb63d2661fd8a84))
+- **form:** require React 18 as minimum peer dependency ([372e013](https://github.com/entur/design-system/commit/372e0135acdd70dad40cda12ebb63d2661fd8a84)) ([#276](https://github.com/entur/design-system/pull/276))
 
 ### BREAKING CHANGES
 
@@ -257,14 +257,14 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **form/segmented control:** correct onChange type to not include FormEventHandler ([4f07bc5](https://github.com/entur/design-system/commit/4f07bc55cd88b3e2ea59ed6e7b87174a31803615))
+- **form/segmented control:** correct onChange type to not include FormEventHandler ([4f07bc5](https://github.com/entur/design-system/commit/4f07bc55cd88b3e2ea59ed6e7b87174a31803615)) ([#288](https://github.com/entur/design-system/pull/288))
 
   onChange is now correctly typed as (value: string | null) => void instead
   of an intersection with `React.FormEventHandler<HTMLDivElement>`.
 
 ### Features
 
-- **form/text area:** add resize prop to TextArea ([c382a05](https://github.com/entur/design-system/commit/c382a05fcb7fcfd454ab977594a427580bda98c2))
+- **form/text area:** add resize prop to TextArea ([c382a05](https://github.com/entur/design-system/commit/c382a05fcb7fcfd454ab977594a427580bda98c2)) ([#301](https://github.com/entur/design-system/pull/301))
 
   Adds a `resize` prop that controls the CSS resize behavior of the textarea element. Accepts resize values "none" or "vertical". Defaults to "vertical" (unchanged from current behavior).
 
@@ -280,7 +280,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **tooltip:** fix typo. `disableClickListner` --> `disableClickListener` ([a996613](https://github.com/entur/design-system/commit/a996613f6fb2324037228c65dc90b298451b048f))
+- **tooltip:** fix typo. `disableClickListner` --> `disableClickListener` ([a996613](https://github.com/entur/design-system/commit/a996613f6fb2324037228c65dc90b298451b048f)) ([#249](https://github.com/entur/design-system/pull/249))
 
 ## [9.2.4](https://github.com/entur/design-system/compare/@entur/form@9.2.3...@entur/form@9.2.4) (2026-01-28)
 
@@ -314,15 +314,15 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- add new component size css variables to all relevant packages ([aceafa8](https://github.com/entur/design-system/commit/aceafa85c8da121ad0654fb08caad22257c16bc9))
+- add new component size css variables to all relevant packages ([aceafa8](https://github.com/entur/design-system/commit/aceafa85c8da121ad0654fb08caad22257c16bc9)) ([#195](https://github.com/entur/design-system/pull/195))
 
 # [9.1.0](https://github.com/entur/design-system/compare/@entur/form@9.0.1...@entur/form@9.1.0) (2025-11-24)
 
 ### Bug Fixes
 
-- **datepicker:** use aria-alert only on negative and warning variants ([352c6f6](https://github.com/entur/design-system/commit/352c6f6469661c681b89faf6fa8d993ecdd9db63))
+- **datepicker:** use aria-alert only on negative and warning variants ([352c6f6](https://github.com/entur/design-system/commit/352c6f6469661c681b89faf6fa8d993ecdd9db63)) ([#168](https://github.com/entur/design-system/pull/168))
 - **form/text field:** only add extra wrapper around append elements when clearable is true ([22ef49d](https://github.com/entur/design-system/commit/22ef49d0fd594854c7f5466413cc36091abbeacc))
-- **form/textfield:** clearable prop not working for uncontrolled input ([b1eba6d](https://github.com/entur/design-system/commit/b1eba6d2056a6b63f11edc5540b2d489c9b36375))
+- **form/textfield:** clearable prop not working for uncontrolled input ([b1eba6d](https://github.com/entur/design-system/commit/b1eba6d2056a6b63f11edc5540b2d489c9b36375)) ([#156](https://github.com/entur/design-system/pull/156))
 
   Clear button is now keyboard accessible and onClear is not needed for
   the clear button to work.
@@ -330,14 +330,14 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   Before: The clear button only appeared if both clearable AND onClear were provided. After: The clear
   button appears whenever clearable={true}, and uses onClear if provided
 
-- **form/textfield:** use icon button component for clear button ([0a402a6](https://github.com/entur/design-system/commit/0a402a65ed23e77c721e41445acef801c29af4af))
+- **form/textfield:** use icon button component for clear button ([0a402a6](https://github.com/entur/design-system/commit/0a402a65ed23e77c721e41445acef801c29af4af)) ([#156](https://github.com/entur/design-system/pull/156))
 
   Append now works together with clearable.
 
 ### Features
 
-- **form/checkboxpanel,form/radiopanel:** add support for readOnly prop ([688db72](https://github.com/entur/design-system/commit/688db7243999ff768a283a88c09afef0bd39dbe9))
-- **form/radio group:** add disabled prop to radio group ([b8fe500](https://github.com/entur/design-system/commit/b8fe50050e0a3d04fbffe541fd14ee6a8db0f74e))
+- **form/checkboxpanel,form/radiopanel:** add support for readOnly prop ([688db72](https://github.com/entur/design-system/commit/688db7243999ff768a283a88c09afef0bd39dbe9)) ([#181](https://github.com/entur/design-system/pull/181))
+- **form/radio group:** add disabled prop to radio group ([b8fe500](https://github.com/entur/design-system/commit/b8fe50050e0a3d04fbffe541fd14ee6a8db0f74e)) ([#181](https://github.com/entur/design-system/pull/181))
 
 ## [9.0.1](https://github.com/entur/design-system/compare/@entur/form@9.0.0...@entur/form@9.0.1) (2025-10-27)
 
@@ -347,16 +347,16 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **form/checkbox:** fix invalid css selectors ([99ae2c8](https://github.com/entur/design-system/commit/99ae2c828581f4acde7a3f7becb3026fb4b8a024))
+- **form/checkbox:** fix invalid css selectors ([99ae2c8](https://github.com/entur/design-system/commit/99ae2c828581f4acde7a3f7becb3026fb4b8a024)) ([#174](https://github.com/entur/design-system/pull/174))
 
 ### Features
 
-- **form/segmented control:** add polymorphic `as` prop to SegmentedChoice ([1c77768](https://github.com/entur/design-system/commit/1c77768bcb78abb401e23a5c19af6d20e94140c9))
-- **form/segmented control:** add support for uncontrolled behavior ([00671b0](https://github.com/entur/design-system/commit/00671b09c797ea511c16dc7e212484300d0cece5))
+- **form/segmented control:** add polymorphic `as` prop to SegmentedChoice ([1c77768](https://github.com/entur/design-system/commit/1c77768bcb78abb401e23a5c19af6d20e94140c9)) ([#162](https://github.com/entur/design-system/pull/162))
+- **form/segmented control:** add support for uncontrolled behavior ([00671b0](https://github.com/entur/design-system/commit/00671b09c797ea511c16dc7e212484300d0cece5)) ([#162](https://github.com/entur/design-system/pull/162))
 
   Deprecate `selectedValue` and add `value` and `defaultValue` to follow HTML standards.
 
-- **segmented control:** add support for new subcomponent API with SegmentedControl.Item ([caae72a](https://github.com/entur/design-system/commit/caae72a570d052e8f5848ea7ea6f79d91194860f))
+- **segmented control:** add support for new subcomponent API with SegmentedControl.Item ([caae72a](https://github.com/entur/design-system/commit/caae72a570d052e8f5848ea7ea6f79d91194860f)) ([#162](https://github.com/entur/design-system/pull/162))
 
 ### BREAKING CHANGES
 
@@ -383,7 +383,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **add travel:** add detail section to TravelTag ([0185c7a](https://github.com/entur/design-system/commit/0185c7aa2c1e5961435d9d92c7a7020c24a27c4b))
+- **add travel:** add detail section to TravelTag ([0185c7a](https://github.com/entur/design-system/commit/0185c7aa2c1e5961435d9d92c7a7020c24a27c4b)) ([#151](https://github.com/entur/design-system/pull/151))
 
   This field is useful for e.g. adding a departure number to the tag.
 
@@ -402,12 +402,12 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **deps:** bump minor for dependencies ([bdde8f2](https://github.com/entur/design-system/commit/bdde8f2d5ab46cfa307a424429063b9700edfc1e))
+- **deps:** bump minor for dependencies ([bdde8f2](https://github.com/entur/design-system/commit/bdde8f2d5ab46cfa307a424429063b9700edfc1e)) ([#121](https://github.com/entur/design-system/pull/121))
 
   classnames, react-focus-lock, @react-aria, @react-stately, @internationalized/date, react-dropzone
 
-- exclude dependencies from bundle ([5252a14](https://github.com/entur/design-system/commit/5252a14c4c615452f3cc7effc73287a5ee42399e))
-- fix package.json field order ([7de85f2](https://github.com/entur/design-system/commit/7de85f2baf08a1fc3a0223e3f149c8cf9636546b))
+- exclude dependencies from bundle ([5252a14](https://github.com/entur/design-system/commit/5252a14c4c615452f3cc7effc73287a5ee42399e)) ([#121](https://github.com/entur/design-system/pull/121))
+- fix package.json field order ([7de85f2](https://github.com/entur/design-system/commit/7de85f2baf08a1fc3a0223e3f149c8cf9636546b)) ([#121](https://github.com/entur/design-system/pull/121))
 
   incorrect order made types unavailable
 
@@ -415,7 +415,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **textfield:** fix double tab to exit input field ([4c87e16](https://github.com/entur/design-system/commit/4c87e166d91725f62f4c568b09233c68384572c1))
+- **textfield:** fix double tab to exit input field ([4c87e16](https://github.com/entur/design-system/commit/4c87e166d91725f62f4c568b09233c68384572c1)) ([#101](https://github.com/entur/design-system/pull/101))
 
 # [8.3.0](https://github.com/entur/design-system/compare/@entur/form@8.2.11...@entur/form@8.3.0) (2025-06-27)
 
@@ -493,7 +493,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **baseformcontrol:** add more descriptive labelTooltipButtonAriaLabel ([99799bd](https://github.com/entur/design-system/commit/99799bdcce48983f13ea9f6a0842756dbe17ff5a))
+- **baseformcontrol:** add more descriptive labelTooltipButtonAriaLabel ([99799bd](https://github.com/entur/design-system/commit/99799bdcce48983f13ea9f6a0842756dbe17ff5a)) ([#71](https://github.com/entur/design-system/pull/71))
 
 ## [8.2.4](https://github.com/entur/design-system/compare/@entur/form@8.2.3...@entur/form@8.2.4) (2025-03-24)
 
@@ -510,7 +510,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **dropdown:** not focusable and interactive when disabled ([7aee4ae](https://github.com/entur/design-system/commit/7aee4ae1c54e98d4092c64243474f42319624af6))
+- **dropdown:** not focusable and interactive when disabled ([7aee4ae](https://github.com/entur/design-system/commit/7aee4ae1c54e98d4092c64243474f42319624af6)) ([#58](https://github.com/entur/design-system/pull/58))
 
 ## [8.2.2](https://github.com/entur/design-system/compare/@entur/form@8.2.1...@entur/form@8.2.2) (2025-02-25)
 
@@ -525,17 +525,17 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **baseformcontrol:** add correct text-color on readonly ([7fac4d7](https://github.com/entur/design-system/commit/7fac4d7f41d9618f1baaf021d4c13e1d075643ca))
+- **baseformcontrol:** add correct text-color on readonly ([7fac4d7](https://github.com/entur/design-system/commit/7fac4d7f41d9618f1baaf021d4c13e1d075643ca)) ([#53](https://github.com/entur/design-system/pull/53))
 
 # [8.2.0](https://github.com/entur/design-system/compare/@entur/form@8.1.10...@entur/form@8.2.0) (2025-01-24)
 
 ### Bug Fixes
 
-- **form:** add outline offset on baseformcontrol ([67eee06](https://github.com/entur/design-system/commit/67eee066daf536a7612c1f4de82b946435271227))
+- **form:** add outline offset on baseformcontrol ([67eee06](https://github.com/entur/design-system/commit/67eee066daf536a7612c1f4de82b946435271227)) ([#41](https://github.com/entur/design-system/pull/41))
 
 ### Features
 
-- **form:** replace focus-within to focus-visible ([af46088](https://github.com/entur/design-system/commit/af46088512b9b6e7f5e1141321950b8c9c7e94f4))
+- **form:** replace focus-within to focus-visible ([af46088](https://github.com/entur/design-system/commit/af46088512b9b6e7f5e1141321950b8c9c7e94f4)) ([#41](https://github.com/entur/design-system/pull/41))
 
 ## [8.1.10](https://github.com/entur/design-system/compare/@entur/form@8.1.9...@entur/form@8.1.10) (2025-01-15)
 

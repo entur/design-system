@@ -7,7 +7,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **modal:** add a stylesheet without base tokens ([a0992a9](https://github.com/entur/design-system/commit/a0992a90ce0e7856f7e846be6e9da22627ecd76b))
+- **modal:** add a stylesheet without base tokens ([a0992a9](https://github.com/entur/design-system/commit/a0992a90ce0e7856f7e846be6e9da22627ecd76b)) ([#517](https://github.com/entur/design-system/pull/517))
 
   Import @entur/modal/styles/no-base-tokens instead of @entur/modal/styles when your app already loads @entur/tokens/dist/base.css. The base tokens are then declared only once, which keeps browser devtools fast.
 
@@ -59,7 +59,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **modal:** keep the modal centered when a CSS reset zeroes out margins ([9003c10](https://github.com/entur/design-system/commit/9003c1018d718892f949e008de8e01bd6b4f5fc0))
+- **modal:** keep the modal centered when a CSS reset zeroes out margins ([9003c10](https://github.com/entur/design-system/commit/9003c1018d718892f949e008de8e01bd6b4f5fc0)) ([#459](https://github.com/entur/design-system/pull/459))
 
   The native dialog was relying on the browser's own margin rule for
   centering, which resets like Tailwind Preflight override. Centering is now
@@ -69,7 +69,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **modal/drawer:** return focus to the element that opened the drawer inside shadow DOM ([62fa004](https://github.com/entur/design-system/commit/62fa004e23e3c0ede6dea80b35ea0908b26fa4ae))
+- **modal/drawer:** return focus to the element that opened the drawer inside shadow DOM ([62fa004](https://github.com/entur/design-system/commit/62fa004e23e3c0ede6dea80b35ea0908b26fa4ae)) ([#446](https://github.com/entur/design-system/pull/446))
 
   Focus previously returned to the shadow host instead of the element that had focus before the drawer opened.
 
@@ -89,18 +89,18 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **modal:** give Drawer dialog an accessible name ([da7460a](https://github.com/entur/design-system/commit/da7460a0e7ac962ad463a707df3e1dd254fa1763))
+- **modal:** give Drawer dialog an accessible name ([da7460a](https://github.com/entur/design-system/commit/da7460a0e7ac962ad463a707df3e1dd254fa1763)) ([#276](https://github.com/entur/design-system/pull/276))
 
   The Drawer title is now exposed as the dialog's accessible name via
   aria-labelledby, so screen readers announce the drawer correctly when
   it opens.
 
-- **modal:** remove React.FC in favor of typed function parameters ([abc098b](https://github.com/entur/design-system/commit/abc098b24b4cd883c0f47ed0f1270f4af5a03a6e))
+- **modal:** remove React.FC in favor of typed function parameters ([abc098b](https://github.com/entur/design-system/commit/abc098b24b4cd883c0f47ed0f1270f4af5a03a6e)) ([#276](https://github.com/entur/design-system/pull/276))
 
   React.FC no longer provides implicit children typing in React 18.
   Move type annotations directly to function parameters.
 
-- **tab, expand, modal, utils:** fix React 18 type errors and clean up [@reach](https://github.com/reach) leftovers ([d29bedc](https://github.com/entur/design-system/commit/d29bedcdc2701a192e0cf39587a2928cae55191e))
+- **tab, expand, modal, utils:** fix React 18 type errors and clean up [@reach](https://github.com/reach) leftovers ([d29bedc](https://github.com/entur/design-system/commit/d29bedcdc2701a192e0cf39587a2928cae55191e)) ([#276](https://github.com/entur/design-system/pull/276))
 
   - Fix cloneElement TS errors in TabList and TabPanels by casting to `ReactElement<any>`
   - Suppress react-collapse type incompatibility with React 18 in BaseExpand
@@ -110,14 +110,14 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **modal:** add exports field for ESM-compatible module resolution ([01c75e1](https://github.com/entur/design-system/commit/01c75e1b583100f5ea920fb541e31edbc23e51c4))
+- **modal:** add exports field for ESM-compatible module resolution ([01c75e1](https://github.com/entur/design-system/commit/01c75e1b583100f5ea920fb541e31edbc23e51c4)) ([#276](https://github.com/entur/design-system/pull/276))
 
   Consumers no longer need bundler aliases to resolve ESM entry points.
   Declares explicit exports map with entries for main entrypoint,
   ./styles (CSS), ./dist/styles.css (compat), and ./package.json.
   Deep dist/ imports not listed will stop resolving.
 
-- **modal:** replace @reach/dialog with native `<dialog>` element ([0de754e](https://github.com/entur/design-system/commit/0de754e5a63f6b4d4ea7223f293d439fae8ac49d))
+- **modal:** replace @reach/dialog with native `<dialog>` element ([0de754e](https://github.com/entur/design-system/commit/0de754e5a63f6b4d4ea7223f293d439fae8ac49d)) ([#276](https://github.com/entur/design-system/pull/276))
 
   The Modal and Drawer components now use the native HTML `<dialog>`
   element under the hood. Behaviour is broadly the same, but a few
@@ -131,7 +131,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
     sibling inert behaviour. Tab can leave the modal to browser chrome
     (address bar) by design.
 
-- **modal:** require onDismiss and add showCloseButton prop ([3b3f85e](https://github.com/entur/design-system/commit/3b3f85e1ea331bdc9bc5b2ca7eca3a3fccfe17d9))
+- **modal:** require onDismiss and add showCloseButton prop ([3b3f85e](https://github.com/entur/design-system/commit/3b3f85e1ea331bdc9bc5b2ca7eca3a3fccfe17d9)) ([#276](https://github.com/entur/design-system/pull/276))
 
   - onDismiss is now required. Esc and clicking outside the modal always
     close it — the dismiss callback wires React state to that.
@@ -143,8 +143,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
     returning to the trigger on close.
   - Smaller bundle: react-focus-lock is no longer used.
 
-- **modal:** require React 18 as minimum peer dependency ([bdcfb0f](https://github.com/entur/design-system/commit/bdcfb0f117cb77be801f0586ee515dc084cf185a))
-- **modal:** respect prefers-reduced-motion ([c0427df](https://github.com/entur/design-system/commit/c0427df257fe4ae68b7d1abf255e2cda2615f69b))
+- **modal:** require React 18 as minimum peer dependency ([bdcfb0f](https://github.com/entur/design-system/commit/bdcfb0f117cb77be801f0586ee515dc084cf185a)) ([#276](https://github.com/entur/design-system/pull/276))
+- **modal:** respect prefers-reduced-motion ([c0427df](https://github.com/entur/design-system/commit/c0427df257fe4ae68b7d1abf255e2cda2615f69b)) ([#276](https://github.com/entur/design-system/pull/276))
 
   The slide and fade animations on open are disabled for users who have
   requested reduced motion in their operating system.
@@ -294,7 +294,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- add new component size css variables to all relevant packages ([aceafa8](https://github.com/entur/design-system/commit/aceafa85c8da121ad0654fb08caad22257c16bc9))
+- add new component size css variables to all relevant packages ([aceafa8](https://github.com/entur/design-system/commit/aceafa85c8da121ad0654fb08caad22257c16bc9)) ([#195](https://github.com/entur/design-system/pull/195))
 
 ## [1.7.79](https://github.com/entur/design-system/compare/@entur/modal@1.7.78...@entur/modal@1.7.79) (2025-11-24)
 
@@ -349,12 +349,12 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **deps:** bump minor for dependencies ([bdde8f2](https://github.com/entur/design-system/commit/bdde8f2d5ab46cfa307a424429063b9700edfc1e))
+- **deps:** bump minor for dependencies ([bdde8f2](https://github.com/entur/design-system/commit/bdde8f2d5ab46cfa307a424429063b9700edfc1e)) ([#121](https://github.com/entur/design-system/pull/121))
 
   classnames, react-focus-lock, @react-aria, @react-stately, @internationalized/date, react-dropzone
 
-- exclude dependencies from bundle ([5252a14](https://github.com/entur/design-system/commit/5252a14c4c615452f3cc7effc73287a5ee42399e))
-- fix package.json field order ([7de85f2](https://github.com/entur/design-system/commit/7de85f2baf08a1fc3a0223e3f149c8cf9636546b))
+- exclude dependencies from bundle ([5252a14](https://github.com/entur/design-system/commit/5252a14c4c615452f3cc7effc73287a5ee42399e)) ([#121](https://github.com/entur/design-system/pull/121))
+- fix package.json field order ([7de85f2](https://github.com/entur/design-system/commit/7de85f2baf08a1fc3a0223e3f149c8cf9636546b)) ([#121](https://github.com/entur/design-system/pull/121))
 
   incorrect order made types unavailable
 
@@ -488,7 +488,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **modal:** etu-44429 change focus-order on close-button in drawer ([ac9a754](https://github.com/entur/design-system/commit/ac9a7549dfaf25416124e4e796cdd8e3e2331b44))
+- **modal:** etu-44429 change focus-order on close-button in drawer ([ac9a754](https://github.com/entur/design-system/commit/ac9a7549dfaf25416124e4e796cdd8e3e2331b44)) ([#41](https://github.com/entur/design-system/pull/41))
 
 ## [1.7.59](https://github.com/entur/design-system/compare/@entur/modal@1.7.58...@entur/modal@1.7.59) (2025-01-15)
 

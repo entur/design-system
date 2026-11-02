@@ -7,7 +7,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **expand:** add a stylesheet without base tokens ([95ec0c7](https://github.com/entur/design-system/commit/95ec0c71eec0d4a6372c08cc1041f94cb9d33e8e))
+- **expand:** add a stylesheet without base tokens ([95ec0c7](https://github.com/entur/design-system/commit/95ec0c71eec0d4a6372c08cc1041f94cb9d33e8e)) ([#517](https://github.com/entur/design-system/pull/517))
 
   Import @entur/expand/styles/no-base-tokens instead of @entur/expand/styles when your app already loads @entur/tokens/dist/base.css. The base tokens are then declared only once, which keeps browser devtools fast.
 
@@ -62,13 +62,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **expand/expandable text:** add spacing between title and chevron ([1c29e8c](https://github.com/entur/design-system/commit/1c29e8c12c3d173e04c870c61909598ac34ce357))
+- **expand/expandable text:** add spacing between title and chevron ([1c29e8c](https://github.com/entur/design-system/commit/1c29e8c12c3d173e04c870c61909598ac34ce357)) ([#441](https://github.com/entur/design-system/pull/441))
 
   The trigger in ExpandableText now uses the $space-extra-small2 spacing
   token between the title and the chevron, so the icon no longer sits
   flush against the text and the component matches Figma.
 
-- **expand:** keep collapsed content unreachable on React 19 ([3d490e8](https://github.com/entur/design-system/commit/3d490e8d21ea47236de4a971f613fd6b072601c4))
+- **expand:** keep collapsed content unreachable on React 19 ([3d490e8](https://github.com/entur/design-system/commit/3d490e8d21ea47236de4a971f613fd6b072601c4)) ([#440](https://github.com/entur/design-system/pull/440))
 
   On React 19 the collapsed content of Accordion, ExpandablePanel and
   ExpandableText could be reached with keyboard and mouse, because React 19
@@ -84,18 +84,18 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **expand:** fix prefers-reduced-motion selector and type name typo ([91e95f8](https://github.com/entur/design-system/commit/91e95f8350f17f734e3cdb2c47e741045b96bcab))
+- **expand:** fix prefers-reduced-motion selector and type name typo ([91e95f8](https://github.com/entur/design-system/commit/91e95f8350f17f734e3cdb2c47e741045b96bcab)) ([#276](https://github.com/entur/design-system/pull/276))
 
   Replace legacy .ReactCollapse--collapse CSS selector with .eds-base-expand
   in prefers-reduced-motion media query. Fix exported type name typo
   ExandableTextButtonProps → ExpandableTextButtonProps.
 
-- **expand:** remove React.FC in favor of typed function parameters ([1510aa0](https://github.com/entur/design-system/commit/1510aa05f85f0061b7edabe2262fc8b654614d1d))
+- **expand:** remove React.FC in favor of typed function parameters ([1510aa0](https://github.com/entur/design-system/commit/1510aa05f85f0061b7edabe2262fc8b654614d1d)) ([#276](https://github.com/entur/design-system/pull/276))
 
   React.FC no longer provides implicit children typing in React 18.
   Move type annotations directly to function parameters.
 
-- **tab, expand, modal, utils:** fix React 18 type errors and clean up [@reach](https://github.com/reach) leftovers ([d29bedc](https://github.com/entur/design-system/commit/d29bedcdc2701a192e0cf39587a2928cae55191e))
+- **tab, expand, modal, utils:** fix React 18 type errors and clean up [@reach](https://github.com/reach) leftovers ([d29bedc](https://github.com/entur/design-system/commit/d29bedcdc2701a192e0cf39587a2928cae55191e)) ([#276](https://github.com/entur/design-system/pull/276))
 
   - Fix cloneElement TS errors in TabList and TabPanels by casting to `ReactElement<any>`
   - Suppress react-collapse type incompatibility with React 18 in BaseExpand
@@ -105,20 +105,20 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **expand:** add exports field for ESM-compatible module resolution ([654f3f2](https://github.com/entur/design-system/commit/654f3f2f93be9ee597130820cbcf1886e630af40))
+- **expand:** add exports field for ESM-compatible module resolution ([654f3f2](https://github.com/entur/design-system/commit/654f3f2f93be9ee597130820cbcf1886e630af40)) ([#276](https://github.com/entur/design-system/pull/276))
 
   Consumers no longer need bundler aliases to resolve ESM entry points.
   Declares explicit exports map with entries for main entrypoint,
   ./styles (CSS), ./dist/styles.css (compat), and ./package.json.
   Deep dist/ imports not listed will stop resolving.
 
-- **expand:** add forwardRef support to all expand components ([7286125](https://github.com/entur/design-system/commit/72861258423e7c40bde3284f7b8824756cc133b4))
+- **expand:** add forwardRef support to all expand components ([7286125](https://github.com/entur/design-system/commit/72861258423e7c40bde3284f7b8824756cc133b4)) ([#276](https://github.com/entur/design-system/pull/276))
 
   All expand components now forward refs to their root DOM element:
   BaseExpand, BaseExpandablePanel, ExpandablePanel, ExpandableText,
   ExpandableTextButton, and AccordionItem.
 
-- **expand:** add unmountOnClose prop and proper controlled mode ([bb22fdb](https://github.com/entur/design-system/commit/bb22fdb6116bf67670b73c4c8c6235e740a104f6))
+- **expand:** add unmountOnClose prop and proper controlled mode ([bb22fdb](https://github.com/entur/design-system/commit/bb22fdb6116bf67670b73c4c8c6235e740a104f6)) ([#276](https://github.com/entur/design-system/pull/276))
 
   Add unmountOnClose prop to all expand components. Content now stays
   mounted in the DOM when collapsed (hidden with aria-hidden and inert),
@@ -138,8 +138,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   Fix aria-controls to always reference the content element when
   unmountOnClose is false (content is always in the DOM).
 
-- **expand:** reduce css specificity for all expand classes to 0,1,0 ([441ab12](https://github.com/entur/design-system/commit/441ab12a18747bafbc6e112fbf127acdd7646eac))
-- **expand:** replace react-collapse with CSS grid animation ([f428df0](https://github.com/entur/design-system/commit/f428df08834c6ba48e6c06d172978aa39806d2f7))
+- **expand:** reduce css specificity for all expand classes to 0,1,0 ([441ab12](https://github.com/entur/design-system/commit/441ab12a18747bafbc6e112fbf127acdd7646eac)) ([#276](https://github.com/entur/design-system/pull/276))
+- **expand:** replace react-collapse with CSS grid animation ([f428df0](https://github.com/entur/design-system/commit/f428df08834c6ba48e6c06d172978aa39806d2f7)) ([#276](https://github.com/entur/design-system/pull/276))
 
   Replace the unmaintained react-collapse library (last release 2021) with
   a zero-dependency CSS grid-template-rows animation. The new implementation
@@ -152,7 +152,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   - Update SCSS to target new .eds-base-expand class
   - Remove react-collapse jest mock from Accordion tests
 
-- **expand:** require React 18 as minimum peer dependency ([8e3257d](https://github.com/entur/design-system/commit/8e3257d9237d57fda580ac4d4450af2aa62d20b2))
+- **expand:** require React 18 as minimum peer dependency ([8e3257d](https://github.com/entur/design-system/commit/8e3257d9237d57fda580ac4d4450af2aa62d20b2)) ([#276](https://github.com/entur/design-system/pull/276))
 
 ### BREAKING CHANGES
 
@@ -251,7 +251,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- add new component size css variables to all relevant packages ([aceafa8](https://github.com/entur/design-system/commit/aceafa85c8da121ad0654fb08caad22257c16bc9))
+- add new component size css variables to all relevant packages ([aceafa8](https://github.com/entur/design-system/commit/aceafa85c8da121ad0654fb08caad22257c16bc9)) ([#195](https://github.com/entur/design-system/pull/195))
 
 ## [3.6.19](https://github.com/entur/design-system/compare/@entur/expand@3.6.18...@entur/expand@3.6.19) (2025-11-24)
 
@@ -294,12 +294,12 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **deps:** bump minor for dependencies ([bdde8f2](https://github.com/entur/design-system/commit/bdde8f2d5ab46cfa307a424429063b9700edfc1e))
+- **deps:** bump minor for dependencies ([bdde8f2](https://github.com/entur/design-system/commit/bdde8f2d5ab46cfa307a424429063b9700edfc1e)) ([#121](https://github.com/entur/design-system/pull/121))
 
   classnames, react-focus-lock, @react-aria, @react-stately, @internationalized/date, react-dropzone
 
-- exclude dependencies from bundle ([5252a14](https://github.com/entur/design-system/commit/5252a14c4c615452f3cc7effc73287a5ee42399e))
-- fix package.json field order ([7de85f2](https://github.com/entur/design-system/commit/7de85f2baf08a1fc3a0223e3f149c8cf9636546b))
+- exclude dependencies from bundle ([5252a14](https://github.com/entur/design-system/commit/5252a14c4c615452f3cc7effc73287a5ee42399e)) ([#121](https://github.com/entur/design-system/pull/121))
+- fix package.json field order ([7de85f2](https://github.com/entur/design-system/commit/7de85f2baf08a1fc3a0223e3f149c8cf9636546b)) ([#121](https://github.com/entur/design-system/pull/121))
 
   incorrect order made types unavailable
 
@@ -403,11 +403,11 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **expand:** update react collapse to fix type-error ([8e3cebd](https://github.com/entur/design-system/commit/8e3cebda5b1fe74e21a911bc9405a39b459ed1c7))
+- **expand:** update react collapse to fix type-error ([8e3cebd](https://github.com/entur/design-system/commit/8e3cebda5b1fe74e21a911bc9405a39b459ed1c7)) ([#49](https://github.com/entur/design-system/pull/49))
 
 ### Features
 
-- **expand:** replace focus with focus-visible ([43dcaf6](https://github.com/entur/design-system/commit/43dcaf6df576b536d4c73c7767f8fe6549bcb6bb))
+- **expand:** replace focus with focus-visible ([43dcaf6](https://github.com/entur/design-system/commit/43dcaf6df576b536d4c73c7767f8fe6549bcb6bb)) ([#41](https://github.com/entur/design-system/pull/41))
 
 ## [3.5.27](https://github.com/entur/design-system/compare/@entur/expand@3.5.26...@entur/expand@3.5.27) (2025-01-15)
 

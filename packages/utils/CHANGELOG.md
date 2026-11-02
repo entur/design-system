@@ -19,7 +19,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **utils:** add getActiveElement for finding focus inside shadow DOM ([f67e2a3](https://github.com/entur/design-system/commit/f67e2a30ec772833911c0fd1b0cb29cc3aebd670))
+- **utils:** add getActiveElement for finding focus inside shadow DOM ([f67e2a3](https://github.com/entur/design-system/commit/f67e2a30ec772833911c0fd1b0cb29cc3aebd670)) ([#446](https://github.com/entur/design-system/pull/446))
 
   Comparing against document.activeElement fails inside shadow DOM, where
   it stops at the shadow host. This helper follows the chain into nested
@@ -34,7 +34,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **tab, expand, modal, utils:** fix React 18 type errors and clean up [@reach](https://github.com/reach) leftovers ([d29bedc](https://github.com/entur/design-system/commit/d29bedcdc2701a192e0cf39587a2928cae55191e))
+- **tab, expand, modal, utils:** fix React 18 type errors and clean up [@reach](https://github.com/reach) leftovers ([d29bedc](https://github.com/entur/design-system/commit/d29bedcdc2701a192e0cf39587a2928cae55191e)) ([#276](https://github.com/entur/design-system/pull/276))
 
   - Fix cloneElement TS errors in TabList and TabPanels by casting to `ReactElement<any>`
   - Suppress react-collapse type incompatibility with React 18 in BaseExpand
@@ -42,8 +42,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   - Update @types/react@18 and @types/react-dom@18 resolutions to match devDependencies
   - Remove unused React import in ConditionalWrapper (react-jsx handles it)
 
-- **utils:** deprecate useRandomId in favor of React useId ([15dbaa4](https://github.com/entur/design-system/commit/15dbaa4e3636e33b8a3e698326593e25d8d266c9))
-- **utils:** use React 18 useId() and useSyncExternalStore ([410887a](https://github.com/entur/design-system/commit/410887ae87a97269e936db42f4b2500ad25393e5))
+- **utils:** deprecate useRandomId in favor of React useId ([15dbaa4](https://github.com/entur/design-system/commit/15dbaa4e3636e33b8a3e698326593e25d8d266c9)) ([#276](https://github.com/entur/design-system/pull/276))
+- **utils:** use React 18 useId() and useSyncExternalStore ([410887a](https://github.com/entur/design-system/commit/410887ae87a97269e936db42f4b2500ad25393e5)) ([#276](https://github.com/entur/design-system/pull/276))
 
   useRandomId now wraps useId() instead of Math.random(), which
   eliminates SSR hydration mismatches for all components generating
@@ -54,8 +54,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **utils:** require React 18 as minimum peer dependency ([0e96e91](https://github.com/entur/design-system/commit/0e96e9149904a394e8f02004c2065679872d3f98))
-- **utils:** tighten exports field and remove dist/\* wildcard ([90dde47](https://github.com/entur/design-system/commit/90dde470681d6332982272c3e742a03d6614c8f4))
+- **utils:** require React 18 as minimum peer dependency ([0e96e91](https://github.com/entur/design-system/commit/0e96e9149904a394e8f02004c2065679872d3f98)) ([#276](https://github.com/entur/design-system/pull/276))
+- **utils:** tighten exports field and remove dist/\* wildcard ([90dde47](https://github.com/entur/design-system/commit/90dde470681d6332982272c3e742a03d6614c8f4)) ([#276](https://github.com/entur/design-system/pull/276))
 
   Replaces ./dist/\* wildcard with explicit SCSS subpath entries.
   Adds ./styles/breakpoints and ./styles/color-utils as clean imports.
@@ -87,14 +87,14 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **utils:** add style util for css layers ([a3a04fc](https://github.com/entur/design-system/commit/a3a04fc636eaab2cc1727328b347ffecd49d8bb7))
+- **utils:** add style util for css layers ([a3a04fc](https://github.com/entur/design-system/commit/a3a04fc636eaab2cc1727328b347ffecd49d8bb7)) ([#188](https://github.com/entur/design-system/pull/188))
 
 ## [0.12.4](https://github.com/entur/design-system/compare/@entur/utils@0.12.3...@entur/utils@0.12.4) (2025-08-29)
 
 ### Bug Fixes
 
-- exclude dependencies from bundle ([5252a14](https://github.com/entur/design-system/commit/5252a14c4c615452f3cc7effc73287a5ee42399e))
-- fix package.json field order ([7de85f2](https://github.com/entur/design-system/commit/7de85f2baf08a1fc3a0223e3f149c8cf9636546b))
+- exclude dependencies from bundle ([5252a14](https://github.com/entur/design-system/commit/5252a14c4c615452f3cc7effc73287a5ee42399e)) ([#121](https://github.com/entur/design-system/pull/121))
+- fix package.json field order ([7de85f2](https://github.com/entur/design-system/commit/7de85f2baf08a1fc3a0223e3f149c8cf9636546b)) ([#121](https://github.com/entur/design-system/pull/121))
 
   incorrect order made types unavailable
 
