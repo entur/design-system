@@ -132,7 +132,8 @@ const ChangelogSection = ({
   const title = stripBeta(heading);
 
   return (
-    <div className="markdown-parser__section">
+    // An hgroup, so TextContainer spaces it as the heading it is
+    <hgroup className="markdown-parser__section">
       {/* markdown-to-jsx passes a className of its own, so it goes first. */}
       <h4 {...rest} className="markdown-parser__section-heading">
         <SectionTag title={title} />
@@ -146,7 +147,7 @@ const ChangelogSection = ({
           </Link>
         </Text>
       )}
-    </div>
+    </hgroup>
   );
 };
 
@@ -224,14 +225,17 @@ const DependencySection = ({
   const contentId = React.useId();
 
   return (
-    <div className="markdown-parser__dependencies">
-      <div className="markdown-parser__dependencies-title">
-        <SectionTag title={title} />
-      </div>
+    // Direkte i TextContainer, så den får samme avstand som de andre seksjonene
+    <>
+      <hgroup className="markdown-parser__section">
+        <h4 className="markdown-parser__section-heading">
+          <SectionTag title={title} />
+        </h4>
+      </hgroup>
       {/* Listet opp som seksjonene et menneske har skrevet: linjen som åpner
           tar plassen til en oppføring, og pakkene den nevner blir listen
           under den. */}
-      <UnorderedList>
+      <UnorderedList className="markdown-parser__dependencies">
         <ListItem>
           <ExpandableTextButton
             as="span"
@@ -253,7 +257,7 @@ const DependencySection = ({
           </BaseExpand>
         </ListItem>
       </UnorderedList>
-    </div>
+    </>
   );
 };
 

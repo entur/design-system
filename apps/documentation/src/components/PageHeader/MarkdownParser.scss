@@ -1,13 +1,17 @@
 @use '@entur/tokens/dist/styles.scss' as t;
 
 .markdown-parser {
-  &__section,
-  &__dependencies-title {
+  // The space around the section comes from TextContainer, which spaces an hgroup as a heading
+  &__section {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     gap: t.$space-extra-small t.$space-small;
-    margin: t.$space-large t.$space-none t.$space-none;
+  }
+
+  // Side by side, so the rhythm between the heading and the link doesn't apply
+  &__section > * {
+    margin: 0;
   }
 
   &__section-heading {
@@ -24,9 +28,15 @@
     // rather than as a section title.
     font-size: t.$font-sizes-medium;
 
+    // One line of list text, so the bullet lines up with it
+    .eds-expandable-text__trigger {
+      padding-block: 0;
+      line-height: inherit;
+    }
+
     // The packages the release moved, a level below the entry that opens
     // them: subdued, and closer to it.
-    .eds-text--unordered-list .eds-text--unordered-list {
+    .eds-text--unordered-list {
       color: var(--basecolors-text-subdued);
     }
   }
