@@ -139,14 +139,15 @@ function plan(args) {
     writeFileSync(join(ROOT, INDEX), JSON.stringify(index, null, 2));
   }
 
+  // Removals first, so the artifact never goes over its file limit between calls.
   // Biggest files first would pack tighter, but path order keeps a failed run easy to resume.
   const entries = [
+    ...removed.map(p => ({ path: p, size: 0, value: null })),
     ...changed.map(p => ({
       path: p,
       size: statSync(join(ROOT, p)).size,
       value: contentType(p) ? { from: p, contentType: contentType(p) } : p,
     })),
-    ...removed.map(p => ({ path: p, size: 0, value: null })),
   ];
   const calls = [];
   let call = [];

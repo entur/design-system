@@ -76,7 +76,7 @@ Requires Node 24.22.1, `corepack yarn`, Claude Code logged in to claude.ai, and 
 
    It compares the folder with the artifact's fingerprint in `published/` and writes the publish calls to `.design-sync/.cache/publish/<id>/call-<n>.json`, in order. Each file holds the Artifact tool's `url`, `root`, `file_path` and `files`, ready to send as they are:
 
-   - only the changed files, and `null` for files that are gone
+   - only the changed files, and `null` for files that are gone, removals first so the artifact stays under its file limit between calls
    - `.d.ts` as `text/plain` and `.jsx` as `text/javascript`, which the artifact refuses otherwise
    - at most 250 paths and 14 MiB per call (the limit is 255 paths and 16 MiB)
    - never `project/design-system.json`, whose keys the page also writes; when one of the index's own keys has to change, Claude reads it again, keeps its keys and updates `lastChange`
