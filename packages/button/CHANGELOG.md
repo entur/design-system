@@ -7,7 +7,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **button:** add a stylesheet without base tokens ([8e6f6ca](https://github.com/entur/design-system/commit/8e6f6ca402a58901eb03487d650369dc0e8b0692))
+- **button:** add a stylesheet without base tokens ([8e6f6ca](https://github.com/entur/design-system/commit/8e6f6ca402a58901eb03487d650369dc0e8b0692)) ([#517](https://github.com/entur/design-system/pull/517))
 
   Import @entur/button/styles/no-base-tokens instead of @entur/button/styles when your app already loads @entur/tokens/dist/base.css. The base tokens are then declared only once, which keeps browser devtools fast.
 
@@ -21,7 +21,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **tokens:** update the colour export and regularise component token names ([a14a5fd](https://github.com/entur/design-system/commit/a14a5fd400a5fe9bb5d68db3201ea87ffce080ed))
+- **tokens:** update the colour export and regularise component token names ([a14a5fd](https://github.com/entur/design-system/commit/a14a5fd400a5fe9bb5d68db3201ea87ffce080ed)) ([#479](https://github.com/entur/design-system/pull/479))
 
   Twelve colours changed. Ten tokens moved from `Fill/Negative/Transparent` to
   `Fill/Negative/Accent` — Button `negative` hover, TableRow `error` and two
@@ -83,21 +83,21 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **button:** remove React.FC in favor of typed function parameters ([2d324cb](https://github.com/entur/design-system/commit/2d324cb78a38a718727d1c2a34c349d8a1a95ec4))
+- **button:** remove React.FC in favor of typed function parameters ([2d324cb](https://github.com/entur/design-system/commit/2d324cb78a38a718727d1c2a34c349d8a1a95ec4)) ([#276](https://github.com/entur/design-system/pull/276))
 
   React.FC no longer provides implicit children typing in React 18.
   Move type annotations directly to function parameters.
 
 ### Features
 
-- **button:** add exports field for ESM-compatible module resolution ([adef8ac](https://github.com/entur/design-system/commit/adef8accfa3c1786b37fb9ebe86a602461a1fa85))
+- **button:** add exports field for ESM-compatible module resolution ([adef8ac](https://github.com/entur/design-system/commit/adef8accfa3c1786b37fb9ebe86a602461a1fa85)) ([#276](https://github.com/entur/design-system/pull/276))
 
   Consumers no longer need bundler aliases to resolve ESM entry points.
   Declares explicit exports map with entries for main entrypoint,
   ./styles (CSS), ./dist/styles.css (compat), and ./package.json.
   Deep dist/ imports not listed will stop resolving.
 
-- **button:** require React 18 as minimum peer dependency ([95efab1](https://github.com/entur/design-system/commit/95efab17430d567d678f776d856740daccfc2523))
+- **button:** require React 18 as minimum peer dependency ([95efab1](https://github.com/entur/design-system/commit/95efab17430d567d678f776d856740daccfc2523)) ([#276](https://github.com/entur/design-system/pull/276))
 
 ### BREAKING CHANGES
 
@@ -178,40 +178,40 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **button/button:** button overflow now results in elipsis instead of visual overflow ([26b7f80](https://github.com/entur/design-system/commit/26b7f805a6a390f819d5861a714c5546af2dd3cc))
+- **button/button:** button overflow now results in elipsis instead of visual overflow ([26b7f80](https://github.com/entur/design-system/commit/26b7f805a6a390f819d5861a714c5546af2dd3cc)) ([#216](https://github.com/entur/design-system/pull/216))
 
 ### Code Refactoring
 
-- **button/square button:** reduce specificity for all square button classes to 0,1,0 ([659a2d6](https://github.com/entur/design-system/commit/659a2d6b8de293028fe0e28020b38355c8230863))
+- **button/square button:** reduce specificity for all square button classes to 0,1,0 ([659a2d6](https://github.com/entur/design-system/commit/659a2d6b8de293028fe0e28020b38355c8230863)) ([#216](https://github.com/entur/design-system/pull/216))
 
   This makes loading and overriding the component more predictable.
 
 ### Features
 
-- **button/button:** add support for dynamic typography size ([5c276ba](https://github.com/entur/design-system/commit/5c276ba1c13e399981a4ee771e3c1e016861b611))
+- **button/button:** add support for dynamic typography size ([5c276ba](https://github.com/entur/design-system/commit/5c276ba1c13e399981a4ee771e3c1e016861b611)) ([#216](https://github.com/entur/design-system/pull/216))
 
   Use typographyTokens from @entur/typography if available.
 
-- **button/button:** add support for view mode in button ([f4977bb](https://github.com/entur/design-system/commit/f4977bb18f5c542b8a8164d166e185029a5fc991))
+- **button/button:** add support for view mode in button ([f4977bb](https://github.com/entur/design-system/commit/f4977bb18f5c542b8a8164d166e185029a5fc991)) ([#216](https://github.com/entur/design-system/pull/216))
 
   Button component will adapt based on data-view-mode being set to standard, compact or display.
 
-- **button/button:** change minimum width for button to the same as button height ([147db46](https://github.com/entur/design-system/commit/147db46b5e4af4686dc3bcc6909b6e671c343ab4))
+- **button/button:** change minimum width for button to the same as button height ([147db46](https://github.com/entur/design-system/commit/147db46b5e4af4686dc3bcc6909b6e671c343ab4)) ([#216](https://github.com/entur/design-system/pull/216))
 
   This change makes button more customisable, allowing more compact usage.
 
-- **button/button:** reduce css specificity for all button classes to 0,1,0 ([fd30648](https://github.com/entur/design-system/commit/fd3064829de8f48379961f1b460c4b9b7e873cba))
-- **button/square button:** add size prop to square button components ([2eecf46](https://github.com/entur/design-system/commit/2eecf46cb7c70dff2eecc8915e93722e33ec3b11))
+- **button/button:** reduce css specificity for all button classes to 0,1,0 ([fd30648](https://github.com/entur/design-system/commit/fd3064829de8f48379961f1b460c4b9b7e873cba)) ([#216](https://github.com/entur/design-system/pull/216))
+- **button/square button:** add size prop to square button components ([2eecf46](https://github.com/entur/design-system/commit/2eecf46cb7c70dff2eecc8915e93722e33ec3b11)) ([#216](https://github.com/entur/design-system/pull/216))
 
   Sizes available are "small", "medium" and "large". "medium" is default.
 
-- **button/square button:** add support for view-mode in square button ([f3874c7](https://github.com/entur/design-system/commit/f3874c7676fbb9d27189b2afe35d6699ca40efd7))
+- **button/square button:** add support for view-mode in square button ([f3874c7](https://github.com/entur/design-system/commit/f3874c7676fbb9d27189b2afe35d6699ca40efd7)) ([#216](https://github.com/entur/design-system/pull/216))
 
   Square button components sizes will adapt based on data-view-mode
   being set to standard, compact or display.
   Border radius is updated to give a more round and playful design.
 
-- **button/tertiary square button:** deprecate TertiarySquareButton ([96fd529](https://github.com/entur/design-system/commit/96fd529b599d78498319fd381c51425cfa3a133c))
+- **button/tertiary square button:** deprecate TertiarySquareButton ([96fd529](https://github.com/entur/design-system/commit/96fd529b599d78498319fd381c51425cfa3a133c)) ([#216](https://github.com/entur/design-system/pull/216))
 
   Use SecondarySquareButton with size="small" instead.
 
@@ -228,7 +228,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- add new component size css variables to all relevant packages ([aceafa8](https://github.com/entur/design-system/commit/aceafa85c8da121ad0654fb08caad22257c16bc9))
+- add new component size css variables to all relevant packages ([aceafa8](https://github.com/entur/design-system/commit/aceafa85c8da121ad0654fb08caad22257c16bc9)) ([#195](https://github.com/entur/design-system/pull/195))
 
 ## [3.3.19](https://github.com/entur/design-system/compare/@entur/button@3.3.18...@entur/button@3.3.19) (2025-11-24)
 
@@ -267,12 +267,12 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **deps:** bump minor for dependencies ([bdde8f2](https://github.com/entur/design-system/commit/bdde8f2d5ab46cfa307a424429063b9700edfc1e))
+- **deps:** bump minor for dependencies ([bdde8f2](https://github.com/entur/design-system/commit/bdde8f2d5ab46cfa307a424429063b9700edfc1e)) ([#121](https://github.com/entur/design-system/pull/121))
 
   classnames, react-focus-lock, @react-aria, @react-stately, @internationalized/date, react-dropzone
 
-- exclude dependencies from bundle ([5252a14](https://github.com/entur/design-system/commit/5252a14c4c615452f3cc7effc73287a5ee42399e))
-- fix package.json field order ([7de85f2](https://github.com/entur/design-system/commit/7de85f2baf08a1fc3a0223e3f149c8cf9636546b))
+- exclude dependencies from bundle ([5252a14](https://github.com/entur/design-system/commit/5252a14c4c615452f3cc7effc73287a5ee42399e)) ([#121](https://github.com/entur/design-system/pull/121))
+- fix package.json field order ([7de85f2](https://github.com/entur/design-system/commit/7de85f2baf08a1fc3a0223e3f149c8cf9636546b)) ([#121](https://github.com/entur/design-system/pull/121))
 
   incorrect order made types unavailable
 
@@ -350,7 +350,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **button:** fix text not centered when button element is a link (anchor) ([66c2769](https://github.com/entur/design-system/commit/66c2769e7b85d6da1a8a1978ca7932e3f080d3ee))
+- **button:** fix text not centered when button element is a link (anchor) ([66c2769](https://github.com/entur/design-system/commit/66c2769e7b85d6da1a8a1978ca7932e3f080d3ee)) ([#60](https://github.com/entur/design-system/pull/60))
 
 ## [3.3.1](https://github.com/entur/design-system/compare/@entur/button@3.3.0...@entur/button@3.3.1) (2025-02-20)
 
@@ -363,7 +363,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **form:** replace focus-within to focus-visible ([af46088](https://github.com/entur/design-system/commit/af46088512b9b6e7f5e1141321950b8c9c7e94f4))
+- **form:** replace focus-within to focus-visible ([af46088](https://github.com/entur/design-system/commit/af46088512b9b6e7f5e1141321950b8c9c7e94f4)) ([#41](https://github.com/entur/design-system/pull/41))
 
 ## [3.2.38](https://github.com/entur/design-system/compare/@entur/button@3.2.37...@entur/button@3.2.38) (2025-01-15)
 

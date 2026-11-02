@@ -7,7 +7,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **fileupload:** add a stylesheet without base tokens ([3ff8f03](https://github.com/entur/design-system/commit/3ff8f03e799c885a776670cdb6549f098a51346c))
+- **fileupload:** add a stylesheet without base tokens ([3ff8f03](https://github.com/entur/design-system/commit/3ff8f03e799c885a776670cdb6549f098a51346c)) ([#517](https://github.com/entur/design-system/pull/517))
 
   Import @entur/fileupload/styles/no-base-tokens instead of @entur/fileupload/styles when your app already loads @entur/tokens/dist/base.css. The base tokens are then declared only once, which keeps browser devtools fast.
 
@@ -83,21 +83,21 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **fileupload:** remove React.FC in favor of typed function parameters ([77540db](https://github.com/entur/design-system/commit/77540db34f6f5453134b5697141b28021afd37d2))
+- **fileupload:** remove React.FC in favor of typed function parameters ([77540db](https://github.com/entur/design-system/commit/77540db34f6f5453134b5697141b28021afd37d2)) ([#276](https://github.com/entur/design-system/pull/276))
 
   React.FC no longer provides implicit children typing in React 18.
   Move type annotations directly to function parameters.
 
 ### Features
 
-- **fileupload:** add exports field for ESM-compatible module resolution ([2b2ad4b](https://github.com/entur/design-system/commit/2b2ad4b7937540a180ce6a285daeaba955254301))
+- **fileupload:** add exports field for ESM-compatible module resolution ([2b2ad4b](https://github.com/entur/design-system/commit/2b2ad4b7937540a180ce6a285daeaba955254301)) ([#276](https://github.com/entur/design-system/pull/276))
 
   Consumers no longer need bundler aliases to resolve ESM entry points.
   Declares explicit exports map with entries for main entrypoint,
   ./styles (CSS), ./dist/styles.css (compat), and ./package.json.
   Deep dist/ imports not listed will stop resolving.
 
-- **fileupload:** require React 18 as minimum peer dependency ([8438a95](https://github.com/entur/design-system/commit/8438a95518dc8be6a1ae39a11beb723e4e75699b))
+- **fileupload:** require React 18 as minimum peer dependency ([8438a95](https://github.com/entur/design-system/commit/8438a95518dc8be6a1ae39a11beb723e4e75699b)) ([#276](https://github.com/entur/design-system/pull/276))
 
 ### BREAKING CHANGES
 
@@ -214,7 +214,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- add new component size css variables to all relevant packages ([aceafa8](https://github.com/entur/design-system/commit/aceafa85c8da121ad0654fb08caad22257c16bc9))
+- add new component size css variables to all relevant packages ([aceafa8](https://github.com/entur/design-system/commit/aceafa85c8da121ad0654fb08caad22257c16bc9)) ([#195](https://github.com/entur/design-system/pull/195))
 
 ## [0.4.19](https://github.com/entur/design-system/compare/@entur/fileupload@0.4.18...@entur/fileupload@0.4.19) (2025-11-24)
 
@@ -264,12 +264,12 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **deps:** bump minor for dependencies ([bdde8f2](https://github.com/entur/design-system/commit/bdde8f2d5ab46cfa307a424429063b9700edfc1e))
+- **deps:** bump minor for dependencies ([bdde8f2](https://github.com/entur/design-system/commit/bdde8f2d5ab46cfa307a424429063b9700edfc1e)) ([#121](https://github.com/entur/design-system/pull/121))
 
   classnames, react-focus-lock, @react-aria, @react-stately, @internationalized/date, react-dropzone
 
-- exclude dependencies from bundle ([5252a14](https://github.com/entur/design-system/commit/5252a14c4c615452f3cc7effc73287a5ee42399e))
-- fix package.json field order ([7de85f2](https://github.com/entur/design-system/commit/7de85f2baf08a1fc3a0223e3f149c8cf9636546b))
+- exclude dependencies from bundle ([5252a14](https://github.com/entur/design-system/commit/5252a14c4c615452f3cc7effc73287a5ee42399e)) ([#121](https://github.com/entur/design-system/pull/121))
+- fix package.json field order ([7de85f2](https://github.com/entur/design-system/commit/7de85f2baf08a1fc3a0223e3f149c8cf9636546b)) ([#121](https://github.com/entur/design-system/pull/121))
 
   incorrect order made types unavailable
 
@@ -390,7 +390,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **fileupload:** replace focus with focus-visible ([f998930](https://github.com/entur/design-system/commit/f998930d51352651908616411bdd0a4e107ef12d))
+- **fileupload:** replace focus with focus-visible ([f998930](https://github.com/entur/design-system/commit/f998930d51352651908616411bdd0a4e107ef12d)) ([#41](https://github.com/entur/design-system/pull/41))
 
 ## [0.3.132](https://github.com/entur/design-system/compare/@entur/fileupload@0.3.131...@entur/fileupload@0.3.132) (2025-01-15)
 

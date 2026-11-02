@@ -7,7 +7,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **tooltip/popover:** stop scroll containers and modals from cutting off the popover ([4bec0fe](https://github.com/entur/design-system/commit/4bec0fe731666a3d9729c917e1071aa7911532c6))
+- **tooltip/popover:** stop scroll containers and modals from cutting off the popover ([4bec0fe](https://github.com/entur/design-system/commit/4bec0fe731666a3d9729c917e1071aa7911532c6)) ([#516](https://github.com/entur/design-system/pull/516))
 
   Popover content is positioned with floating-ui's fixed strategy, as Dropdown,
   MultiSelect and DatePicker already are. A popover inside a scroll container,
@@ -24,7 +24,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   An ancestor with a transform, filter, will-change or contain still clips the
   popover, since it becomes the containing block for fixed positioning.
 
-- **tooltip/tooltip:** stop scroll containers and modals from cutting off the tooltip ([3ab75ce](https://github.com/entur/design-system/commit/3ab75ce578a2aac0a6893d9dfa4af94df846dad7))
+- **tooltip/tooltip:** stop scroll containers and modals from cutting off the tooltip ([3ab75ce](https://github.com/entur/design-system/commit/3ab75ce578a2aac0a6893d9dfa4af94df846dad7)) ([#516](https://github.com/entur/design-system/pull/516))
 
   Tooltip is positioned with floating-ui's fixed strategy, as Dropdown,
   MultiSelect and DatePicker already are. A tooltip inside a scroll container,
@@ -45,7 +45,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **tooltip:** add a stylesheet without base tokens ([9fa3a68](https://github.com/entur/design-system/commit/9fa3a68a565faedcce6eb76b8405b954a44e5e35))
+- **tooltip:** add a stylesheet without base tokens ([9fa3a68](https://github.com/entur/design-system/commit/9fa3a68a565faedcce6eb76b8405b954a44e5e35)) ([#517](https://github.com/entur/design-system/pull/517))
 
   Import @entur/tooltip/styles/no-base-tokens instead of @entur/tooltip/styles when your app already loads @entur/tokens/dist/base.css. The base tokens are then declared only once, which keeps browser devtools fast.
 
@@ -116,21 +116,21 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **tooltip:** remove React.FC in favor of typed function parameters ([9ed9f08](https://github.com/entur/design-system/commit/9ed9f08391793674fb5cda9e1f738a05d90d973c))
+- **tooltip:** remove React.FC in favor of typed function parameters ([9ed9f08](https://github.com/entur/design-system/commit/9ed9f08391793674fb5cda9e1f738a05d90d973c)) ([#276](https://github.com/entur/design-system/pull/276))
 
   React.FC no longer provides implicit children typing in React 18.
   Move type annotations directly to function parameters.
 
 ### Features
 
-- **tooltip:** add exports field for ESM-compatible module resolution ([13a0d92](https://github.com/entur/design-system/commit/13a0d92ed4a74da0406cd57bd193553030dd9c55))
+- **tooltip:** add exports field for ESM-compatible module resolution ([13a0d92](https://github.com/entur/design-system/commit/13a0d92ed4a74da0406cd57bd193553030dd9c55)) ([#276](https://github.com/entur/design-system/pull/276))
 
   Consumers no longer need bundler aliases to resolve ESM entry points.
   Declares explicit exports map with entries for main entrypoint,
   ./styles (CSS), ./dist/styles.css (compat), and ./package.json.
   Deep dist/ imports not listed will stop resolving.
 
-- **tooltip:** require React 18 as minimum peer dependency ([decd04a](https://github.com/entur/design-system/commit/decd04a3967ddea9cd613c4954b9322b03b2a1f1))
+- **tooltip:** require React 18 as minimum peer dependency ([decd04a](https://github.com/entur/design-system/commit/decd04a3967ddea9cd613c4954b9322b03b2a1f1)) ([#276](https://github.com/entur/design-system/pull/276))
 
 ### BREAKING CHANGES
 
@@ -224,7 +224,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **tooltip:** fix typo. `disableClickListner` --> `disableClickListener` ([a996613](https://github.com/entur/design-system/commit/a996613f6fb2324037228c65dc90b298451b048f))
+- **tooltip:** fix typo. `disableClickListner` --> `disableClickListener` ([a996613](https://github.com/entur/design-system/commit/a996613f6fb2324037228c65dc90b298451b048f)) ([#249](https://github.com/entur/design-system/pull/249))
 
 ## [5.3.4](https://github.com/entur/design-system/compare/@entur/tooltip@5.3.3...@entur/tooltip@5.3.4) (2026-01-28)
 
@@ -255,13 +255,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- add new component size css variables to all relevant packages ([aceafa8](https://github.com/entur/design-system/commit/aceafa85c8da121ad0654fb08caad22257c16bc9))
+- add new component size css variables to all relevant packages ([aceafa8](https://github.com/entur/design-system/commit/aceafa85c8da121ad0654fb08caad22257c16bc9)) ([#195](https://github.com/entur/design-system/pull/195))
 
 ## [5.2.18](https://github.com/entur/design-system/compare/@entur/tooltip@5.2.17...@entur/tooltip@5.2.18) (2025-11-24)
 
 ### Bug Fixes
 
-- **tooltip/tooltip:** remove unneccesary import of button styles ([3fb7c13](https://github.com/entur/design-system/commit/3fb7c13c4117c9620ccf04741a2bbf9dd8372b87))
+- **tooltip/tooltip:** remove unneccesary import of button styles ([3fb7c13](https://github.com/entur/design-system/commit/3fb7c13c4117c9620ccf04741a2bbf9dd8372b87)) ([#180](https://github.com/entur/design-system/pull/180))
 
 ## [5.2.17](https://github.com/entur/design-system/compare/@entur/tooltip@5.2.16...@entur/tooltip@5.2.17) (2025-10-20)
 
@@ -292,12 +292,12 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **deps:** bump minor for dependencies ([bdde8f2](https://github.com/entur/design-system/commit/bdde8f2d5ab46cfa307a424429063b9700edfc1e))
+- **deps:** bump minor for dependencies ([bdde8f2](https://github.com/entur/design-system/commit/bdde8f2d5ab46cfa307a424429063b9700edfc1e)) ([#121](https://github.com/entur/design-system/pull/121))
 
   classnames, react-focus-lock, @react-aria, @react-stately, @internationalized/date, react-dropzone
 
-- exclude dependencies from bundle ([5252a14](https://github.com/entur/design-system/commit/5252a14c4c615452f3cc7effc73287a5ee42399e))
-- fix package.json field order ([7de85f2](https://github.com/entur/design-system/commit/7de85f2baf08a1fc3a0223e3f149c8cf9636546b))
+- exclude dependencies from bundle ([5252a14](https://github.com/entur/design-system/commit/5252a14c4c615452f3cc7effc73287a5ee42399e)) ([#121](https://github.com/entur/design-system/pull/121))
+- fix package.json field order ([7de85f2](https://github.com/entur/design-system/commit/7de85f2baf08a1fc3a0223e3f149c8cf9636546b)) ([#121](https://github.com/entur/design-system/pull/121))
 
   incorrect order made types unavailable
 
@@ -414,7 +414,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **tooltip:** replace focus with focus-visible ([aaf2574](https://github.com/entur/design-system/commit/aaf25747573a22bc732e4e45c36aa0d1c631a9c2))
+- **tooltip:** replace focus with focus-visible ([aaf2574](https://github.com/entur/design-system/commit/aaf25747573a22bc732e4e45c36aa0d1c631a9c2)) ([#41](https://github.com/entur/design-system/pull/41))
 
 ## [5.1.6](https://github.com/entur/design-system/compare/@entur/tooltip@5.1.5...@entur/tooltip@5.1.6) (2025-01-15)
 
@@ -449,8 +449,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Performance Improvements
 
-- **popover:** fix performance bug causing unnecessary rerenders ([d5c5117](https://github.com/entur/design-system/commit/d5c5117619778010503c91cdd6f18d8a4cdca9d2))
-- **tooltip:** fix performance bug causing unnecessary rerenders ([07ffb01](https://github.com/entur/design-system/commit/07ffb017d04199dc58f59c65ae0fb21233bc8f3c))
+- **popover:** fix performance bug causing unnecessary rerenders ([d5c5117](https://github.com/entur/design-system/commit/d5c5117619778010503c91cdd6f18d8a4cdca9d2)) ([#19](https://github.com/entur/design-system/pull/19))
+- **tooltip:** fix performance bug causing unnecessary rerenders ([07ffb01](https://github.com/entur/design-system/commit/07ffb017d04199dc58f59c65ae0fb21233bc8f3c)) ([#19](https://github.com/entur/design-system/pull/19))
 
 ## [5.1.3](https://github.com/entur/design-system/compare/@entur/tooltip@5.1.2...@entur/tooltip@5.1.3) (2024-11-20)
 

@@ -7,7 +7,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **icons:** add a stylesheet without base tokens ([da0c6c4](https://github.com/entur/design-system/commit/da0c6c47d6ae6a084769e467aab4f51f688e0986))
+- **icons:** add a stylesheet without base tokens ([da0c6c4](https://github.com/entur/design-system/commit/da0c6c47d6ae6a084769e467aab4f51f688e0986)) ([#517](https://github.com/entur/design-system/pull/517))
 
   Import @entur/icons/styles/no-base-tokens instead of @entur/icons/styles when your app already loads @entur/tokens/dist/base.css. The base tokens are then declared only once, which keeps browser devtools fast.
 
@@ -37,7 +37,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **icons:** keep inline icon alignment independent of the app's CSS reset ([2bffb5d](https://github.com/entur/design-system/commit/2bffb5d5c4b5e441b8b9686466b59c84073a81e5))
+- **icons:** keep inline icon alignment independent of the app's CSS reset ([2bffb5d](https://github.com/entur/design-system/commit/2bffb5d5c4b5e441b8b9686466b59c84073a81e5)) ([#458](https://github.com/entur/design-system/pull/458))
 
   Inline icons now state baseline alignment themselves. In apps whose reset
   centers svg elements — Tailwind Preflight, several normalize variants —
@@ -54,14 +54,14 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **icons:** add exports field for ESM-compatible module resolution ([3b50337](https://github.com/entur/design-system/commit/3b50337fc8edf7d95b6fcb868fbb8a74ee2cd83b))
+- **icons:** add exports field for ESM-compatible module resolution ([3b50337](https://github.com/entur/design-system/commit/3b50337fc8edf7d95b6fcb868fbb8a74ee2cd83b)) ([#276](https://github.com/entur/design-system/pull/276))
 
   Consumers no longer need bundler aliases to resolve ESM entry points.
   Declares explicit exports map with entries for main entrypoint,
   ./styles (CSS), ./dist/styles.css (compat), and ./package.json.
   Deep dist/ imports not listed will stop resolving.
 
-- **icons:** require React 18 as minimum peer dependency ([13d4e88](https://github.com/entur/design-system/commit/13d4e88ed1b01d51779c64e11269aa3729920caa))
+- **icons:** require React 18 as minimum peer dependency ([13d4e88](https://github.com/entur/design-system/commit/13d4e88ed1b01d51779c64e11269aa3729920caa)) ([#276](https://github.com/entur/design-system/pull/276))
 
 ### BREAKING CHANGES
 
@@ -76,7 +76,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **icons:** reduce CSS specificity of icon contrast selectors ([2a3053b](https://github.com/entur/design-system/commit/2a3053b1cd54e77a0328fe55446048e2e3a0d181))
+- **icons:** reduce CSS specificity of icon contrast selectors ([2a3053b](https://github.com/entur/design-system/commit/2a3053b1cd54e77a0328fe55446048e2e3a0d181)) ([#418](https://github.com/entur/design-system/pull/418))
 
   Wrap .eds-contrast selectors in :where() to lower specificity from
   (0,2,0) to (0,1,0), preventing icon contrast styles from overriding
@@ -90,7 +90,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **icons:** rename NorWay partner icon to avoid collision with Norway flag ([a5e1c3a](https://github.com/entur/design-system/commit/a5e1c3ae5a273938ab67bb7e1c1020100d0f858c))
+- **icons:** rename NorWay partner icon to avoid collision with Norway flag ([a5e1c3a](https://github.com/entur/design-system/commit/a5e1c3ae5a273938ab67bb7e1c1020100d0f858c)) ([#411](https://github.com/entur/design-system/pull/411))
 
   NorWay.svg and Norway.svg both resolved to NorwayIcon, causing consumers
   to get the bus company logo instead of the Norwegian flag.
@@ -99,13 +99,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **icons:** correct viewBox padding for oversized icons ([722c7fd](https://github.com/entur/design-system/commit/722c7fdd233c736d885c09c3c0693d3f083e18f2))
+- **icons:** correct viewBox padding for oversized icons ([722c7fd](https://github.com/entur/design-system/commit/722c7fdd233c736d885c09c3c0693d3f083e18f2)) ([#409](https://github.com/entur/design-system/pull/409))
 
   Icons had smaller viewBox than 16×16 canvas, causing them to render
   larger than other icons. Fixed by setting viewBox to 16×16 and shifting
   path coordinates to center the content with proper padding.
 
-- **icons:** preserve original colors for flag and logo icons ([df099c9](https://github.com/entur/design-system/commit/df099c9bd3d873e13430954bf99a8e45010ce283))
+- **icons:** preserve original colors for flag and logo icons ([df099c9](https://github.com/entur/design-system/commit/df099c9bd3d873e13430954bf99a8e45010ce283)) ([#409](https://github.com/entur/design-system/pull/409))
 
   Flag and Entur logo icons were incorrectly rendered in solid blue
   instead of their original multicolor designs.
@@ -114,46 +114,46 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **icons/airport:** add new airport icon ([7257cb6](https://github.com/entur/design-system/commit/7257cb60e5ec0331756ae9ee326a84604bf6dbd1))
+- **icons/airport:** add new airport icon ([7257cb6](https://github.com/entur/design-system/commit/7257cb60e5ec0331756ae9ee326a84604bf6dbd1)) ([#403](https://github.com/entur/design-system/pull/403))
 
   New AirportIcon shows a plane inside a circle, matching BaneNor and Oslo Lufthavn airport icon for better cross-platform recognition.
 
-- **icons/plane:** update plane icon to new visual to comply with standards ([7f6da6a](https://github.com/entur/design-system/commit/7f6da6a58c9bd0a3eee5be63800700f96202feb1))
+- **icons/plane:** update plane icon to new visual to comply with standards ([7f6da6a](https://github.com/entur/design-system/commit/7f6da6a58c9bd0a3eee5be63800700f96202feb1)) ([#403](https://github.com/entur/design-system/pull/403))
 
   The plane icon is now a top-down view at a 45 degree angle, replacing the
   previous side-view taking-off design. Updated to match BaneNor and Oslo
   Lufthavn icon standards.
 
-- **icons/platform:** add Platform icon ([de507bf](https://github.com/entur/design-system/commit/de507bf8602fdec988f1be6e1115bc1628b50400))
-- **icons:** add Alert and Silent icons ([e6c45a7](https://github.com/entur/design-system/commit/e6c45a759efc7cf2b3273aca448b4224033757b0))
+- **icons/platform:** add Platform icon ([de507bf](https://github.com/entur/design-system/commit/de507bf8602fdec988f1be6e1115bc1628b50400)) ([#404](https://github.com/entur/design-system/pull/404))
+- **icons:** add Alert and Silent icons ([e6c45a7](https://github.com/entur/design-system/commit/e6c45a759efc7cf2b3273aca448b4224033757b0)) ([#393](https://github.com/entur/design-system/pull/393))
 
   Alert replaces Bell (BellIcon is kept as a deprecated alias).
   Silent is the muted/notifications-off counterpart to Alert.
 
-- **icons:** add AlertMobile icon ([1335391](https://github.com/entur/design-system/commit/1335391648f984f6c14078e25689274a987a0d10))
+- **icons:** add AlertMobile icon ([1335391](https://github.com/entur/design-system/commit/1335391648f984f6c14078e25689274a987a0d10)) ([#393](https://github.com/entur/design-system/pull/393))
 
   Mobile phone notification alert icon, with filled variant.
 
-- **icons:** add AppLauncher icon ([d3c7280](https://github.com/entur/design-system/commit/d3c728074ef4b91fc842f8c1d882dd869c94d25e))
+- **icons:** add AppLauncher icon ([d3c7280](https://github.com/entur/design-system/commit/d3c728074ef4b91fc842f8c1d882dd869c94d25e)) ([#393](https://github.com/entur/design-system/pull/393))
 
   3×3 grid icon for opening an application launcher or app selection view.
 
-- **icons:** add Apple and Google Play app store icons ([02e52d5](https://github.com/entur/design-system/commit/02e52d5e3b54f4bb4aa33e95e14c813cd3f29b05))
+- **icons:** add Apple and Google Play app store icons ([02e52d5](https://github.com/entur/design-system/commit/02e52d5e3b54f4bb4aa33e95e14c813cd3f29b05)) ([#393](https://github.com/entur/design-system/pull/393))
 
   Apple App Store and Google Play Store brand icons, placed in the
   NonPartnerLogo category. Distinct from ApplePay/GooglePay payment icons.
 
-- **icons:** add Dialog and DialogFilled icons ([9325579](https://github.com/entur/design-system/commit/93255791382865e235df07bbe765e1f74ed4d99a))
-- **icons:** add Dislike icon ([d83cefc](https://github.com/entur/design-system/commit/d83cefcbf9184da707dd0c4ffcd1da9c5415b784))
+- **icons:** add Dialog and DialogFilled icons ([9325579](https://github.com/entur/design-system/commit/93255791382865e235df07bbe765e1f74ed4d99a)) ([#404](https://github.com/entur/design-system/pull/404))
+- **icons:** add Dislike icon ([d83cefc](https://github.com/entur/design-system/commit/d83cefcbf9184da707dd0c4ffcd1da9c5415b784)) ([#394](https://github.com/entur/design-system/pull/394))
 
   Thumbs-down counterpart to LikeIcon, matching the Figma icon library.
 
-- **icons:** add NOR-WAY Bussekspress partner icon ([34c443b](https://github.com/entur/design-system/commit/34c443bd36a05f492a3116eceba8f0bc48fa9eb3))
+- **icons:** add NOR-WAY Bussekspress partner icon ([34c443b](https://github.com/entur/design-system/commit/34c443bd36a05f492a3116eceba8f0bc48fa9eb3)) ([#405](https://github.com/entur/design-system/pull/405))
 
   Adds NorWayIcon to the Partners category for use by Sørvis and Entur Web/App.
 
-- **icons:** add Required, RequiredFilled, RequiredSmall and RequiredSmallFilled icons ([8d14d6f](https://github.com/entur/design-system/commit/8d14d6f0adc8649d6c2de763c53107bdeac3d6ba))
-- **icons:** add Sort, LogIn, Profile, and ProfileFilled icons; move Share to UI ([aaed1e9](https://github.com/entur/design-system/commit/aaed1e90b4e0587a585e52dcb1164ed08ed179ba))
+- **icons:** add Required, RequiredFilled, RequiredSmall and RequiredSmallFilled icons ([8d14d6f](https://github.com/entur/design-system/commit/8d14d6f0adc8649d6c2de763c53107bdeac3d6ba)) ([#404](https://github.com/entur/design-system/pull/404))
+- **icons:** add Sort, LogIn, Profile, and ProfileFilled icons; move Share to UI ([aaed1e9](https://github.com/entur/design-system/commit/aaed1e90b4e0587a585e52dcb1164ed08ed179ba)) ([#383](https://github.com/entur/design-system/pull/383))
 
   New icons available: SortIcon (sort/filter results), LogInIcon (sign in),
   ProfileIcon and ProfileFilledIcon (user profile). ShareIcon moved from
@@ -206,7 +206,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- apply postcss-preset-env to all package styles.css bundles ([853183b](https://github.com/entur/design-system/commit/853183b8e5d8bc3ecc39a75c16feddd994b73f32))
+- apply postcss-preset-env to all package styles.css bundles ([853183b](https://github.com/entur/design-system/commit/853183b8e5d8bc3ecc39a75c16feddd994b73f32)) ([#146](https://github.com/entur/design-system/pull/146))
 
   Vendor prefixing could in edge cases lead to changes since it
   could activate previously non-available functionality.
@@ -215,13 +215,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **icons:** add googlepay icon ([4cda7d5](https://github.com/entur/design-system/commit/4cda7d50ad1fa04805f5b9af0a89525cb4e4a97a))
+- **icons:** add googlepay icon ([4cda7d5](https://github.com/entur/design-system/commit/4cda7d50ad1fa04805f5b9af0a89525cb4e4a97a)) ([#166](https://github.com/entur/design-system/pull/166))
 
 # [8.1.0](https://github.com/entur/design-system/compare/@entur/icons@8.0.2...@entur/icons@8.1.0) (2025-09-30)
 
 ### Features
 
-- **icons:** add new mobility icons ([62dcac9](https://github.com/entur/design-system/commit/62dcac9e089fecaf865fa55a717abddf73c0704a))
+- **icons:** add new mobility icons ([62dcac9](https://github.com/entur/design-system/commit/62dcac9e089fecaf865fa55a717abddf73c0704a)) ([#153](https://github.com/entur/design-system/pull/153))
 
   Includes: FarteBysykkel, Hafjell, Hertz, KolombusBySykkel, OttoMobility and Surf
 
@@ -229,7 +229,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **deps:** bump minor for dependencies ([bdde8f2](https://github.com/entur/design-system/commit/bdde8f2d5ab46cfa307a424429063b9700edfc1e))
+- **deps:** bump minor for dependencies ([bdde8f2](https://github.com/entur/design-system/commit/bdde8f2d5ab46cfa307a424429063b9700edfc1e)) ([#121](https://github.com/entur/design-system/pull/121))
 
   classnames, react-focus-lock, @react-aria, @react-stately, @internationalized/date, react-dropzone
 
@@ -264,8 +264,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **icons:** add figma and mural icons ([2390f50](https://github.com/entur/design-system/commit/2390f506a6fb88e01eb834f16ed59c53be60683f))
-- **icons:** add sjnord icon ([a94830e](https://github.com/entur/design-system/commit/a94830ee6f8d0d03a15dd2676b77441fd43d52a7))
+- **icons:** add figma and mural icons ([2390f50](https://github.com/entur/design-system/commit/2390f506a6fb88e01eb834f16ed59c53be60683f)) ([#91](https://github.com/entur/design-system/pull/91))
+- **icons:** add sjnord icon ([a94830e](https://github.com/entur/design-system/commit/a94830ee6f8d0d03a15dd2676b77441fd43d52a7)) ([#91](https://github.com/entur/design-system/pull/91))
 
 # [7.13.0](https://github.com/entur/design-system/compare/@entur/icons@7.13.0-beta.0...@entur/icons@7.13.0) (2025-06-06)
 
@@ -312,13 +312,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **icons:** fix 'Received `true` for a non-boolean attribute `inline`.' warning ([920a634](https://github.com/entur/design-system/commit/920a634a14309dabc6290557fb037a7ee0a51725))
+- **icons:** fix 'Received `true` for a non-boolean attribute `inline`.' warning ([920a634](https://github.com/entur/design-system/commit/920a634a14309dabc6290557fb037a7ee0a51725)) ([#63](https://github.com/entur/design-system/pull/63))
 
   `inline` is no longer incorrectly forwarded to svg-element.
 
 ### Features
 
-- **icons:** add new birth date icon ([2d19be3](https://github.com/entur/design-system/commit/2d19be30cd1cdce8948eaacbe81eeca000b6c481))
+- **icons:** add new birth date icon ([2d19be3](https://github.com/entur/design-system/commit/2d19be30cd1cdce8948eaacbe81eeca000b6c481)) ([#65](https://github.com/entur/design-system/pull/65))
 
 ## [7.7.1](https://github.com/entur/design-system/compare/@entur/icons@7.7.0...@entur/icons@7.7.1) (2025-03-05)
 
@@ -330,16 +330,16 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **icons:** add new board icon ([e369652](https://github.com/entur/design-system/commit/e369652215cdee3fc21d38daf57d94b1d4652708))
-- **icons:** add new component icon ([d89b7dd](https://github.com/entur/design-system/commit/d89b7dd3ada26c908e085e5119f0ecf4a8b26661))
-- **icons:** add new folder icon ([996756b](https://github.com/entur/design-system/commit/996756b5fa1ace3c99cc0adcc3fa8fb43eb71688))
-- **icons:** add new history icon ([832da96](https://github.com/entur/design-system/commit/832da96e2e2fe44e0521c59226cd10ffbad92726))
-- **icons:** add new icon icon ([da0e50a](https://github.com/entur/design-system/commit/da0e50a407b0f6a40a3640d0d7e2ab5c5cff3d70))
-- **icons:** add new puzzle icon ([ded2c22](https://github.com/entur/design-system/commit/ded2c22e64632f4c097007e25519f3ba2bd34a93))
-- **icons:** add new smile icon ([711218a](https://github.com/entur/design-system/commit/711218ae4f83cfdcf2f37a921f56688cc806dbac))
-- **icons:** add new tag icon ([ae1e970](https://github.com/entur/design-system/commit/ae1e9700419a28186c5efdaebe0df8eac69bfdc9))
-- **icons:** add new token icon ([01bc2fe](https://github.com/entur/design-system/commit/01bc2fe357627eff0c6477123a1d265d28d28ebf))
-- **icons:** add posibility to change color of partner icons in React Native ([11a164e](https://github.com/entur/design-system/commit/11a164ec3bad9b66cd291856413be15904f30d51))
+- **icons:** add new board icon ([e369652](https://github.com/entur/design-system/commit/e369652215cdee3fc21d38daf57d94b1d4652708)) ([#61](https://github.com/entur/design-system/pull/61))
+- **icons:** add new component icon ([d89b7dd](https://github.com/entur/design-system/commit/d89b7dd3ada26c908e085e5119f0ecf4a8b26661)) ([#61](https://github.com/entur/design-system/pull/61))
+- **icons:** add new folder icon ([996756b](https://github.com/entur/design-system/commit/996756b5fa1ace3c99cc0adcc3fa8fb43eb71688)) ([#61](https://github.com/entur/design-system/pull/61))
+- **icons:** add new history icon ([832da96](https://github.com/entur/design-system/commit/832da96e2e2fe44e0521c59226cd10ffbad92726)) ([#61](https://github.com/entur/design-system/pull/61))
+- **icons:** add new icon icon ([da0e50a](https://github.com/entur/design-system/commit/da0e50a407b0f6a40a3640d0d7e2ab5c5cff3d70)) ([#61](https://github.com/entur/design-system/pull/61))
+- **icons:** add new puzzle icon ([ded2c22](https://github.com/entur/design-system/commit/ded2c22e64632f4c097007e25519f3ba2bd34a93)) ([#61](https://github.com/entur/design-system/pull/61))
+- **icons:** add new smile icon ([711218a](https://github.com/entur/design-system/commit/711218ae4f83cfdcf2f37a921f56688cc806dbac)) ([#61](https://github.com/entur/design-system/pull/61))
+- **icons:** add new tag icon ([ae1e970](https://github.com/entur/design-system/commit/ae1e9700419a28186c5efdaebe0df8eac69bfdc9)) ([#61](https://github.com/entur/design-system/pull/61))
+- **icons:** add new token icon ([01bc2fe](https://github.com/entur/design-system/commit/01bc2fe357627eff0c6477123a1d265d28d28ebf)) ([#61](https://github.com/entur/design-system/pull/61))
+- **icons:** add posibility to change color of partner icons in React Native ([11a164e](https://github.com/entur/design-system/commit/11a164ec3bad9b66cd291856413be15904f30d51)) ([#56](https://github.com/entur/design-system/pull/56))
 
   All partner icons now use currentColor instead of hardcoded white. (internal): Build script is
   converted to typescript
@@ -354,7 +354,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **icons:** update vesfoldkollektivtrafikk icon ([fb5bee8](https://github.com/entur/design-system/commit/fb5bee85c2c8be692ad72636a29b4c104a412f0e))
+- **icons:** update vesfoldkollektivtrafikk icon ([fb5bee8](https://github.com/entur/design-system/commit/fb5bee85c2c8be692ad72636a29b4c104a412f0e)) ([#40](https://github.com/entur/design-system/pull/40))
 
 ## [7.5.1](https://github.com/entur/design-system/compare/@entur/icons@7.5.1-RC.0...@entur/icons@7.5.1) (2025-01-14)
 
@@ -372,7 +372,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **icons:** add new partner icon ØresundstågIcon ([16a7cf1](https://github.com/entur/design-system/commit/16a7cf1ed041fa3d5648895f9c1d63ae1848be87))
+- **icons:** add new partner icon ØresundstågIcon ([16a7cf1](https://github.com/entur/design-system/commit/16a7cf1ed041fa3d5648895f9c1d63ae1848be87)) ([#10](https://github.com/entur/design-system/pull/10))
 
 ## [7.4.3](https://github.com/entur/design-system/compare/@entur/icons@7.4.2...@entur/icons@7.4.3) (2024-11-12)
 

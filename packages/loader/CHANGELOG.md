@@ -7,7 +7,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **loader:** add a stylesheet without base tokens ([ab02043](https://github.com/entur/design-system/commit/ab02043e31aec99c12649d74fb9a40d94234f30d))
+- **loader:** add a stylesheet without base tokens ([ab02043](https://github.com/entur/design-system/commit/ab02043e31aec99c12649d74fb9a40d94234f30d)) ([#517](https://github.com/entur/design-system/pull/517))
 
   Import @entur/loader/styles/no-base-tokens instead of @entur/loader/styles when your app already loads @entur/tokens/dist/base.css. The base tokens are then declared only once, which keeps browser devtools fast.
 
@@ -15,7 +15,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **loader/loading dots:** keep the dots round at small font sizes ([fe76fd8](https://github.com/entur/design-system/commit/fe76fd8ee1e5eb11e6449c5d52f6b9234eea9d7c))
+- **loader/loading dots:** keep the dots round at small font sizes ([fe76fd8](https://github.com/entur/design-system/commit/fe76fd8ee1e5eb11e6449c5d52f6b9234eea9d7c)) ([#485](https://github.com/entur/design-system/pull/485))
 
   The dots box is 1em wide, and the three dots need about 15px, so any
   container with a font-size below that squeezed them into ellipses. They
@@ -70,21 +70,21 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **loader:** remove React.FC in favor of typed function parameters ([3ccbd6e](https://github.com/entur/design-system/commit/3ccbd6eb65c4babb6d9d7f60c57469d8a29d43e6))
+- **loader:** remove React.FC in favor of typed function parameters ([3ccbd6e](https://github.com/entur/design-system/commit/3ccbd6eb65c4babb6d9d7f60c57469d8a29d43e6)) ([#276](https://github.com/entur/design-system/pull/276))
 
   React.FC no longer provides implicit children typing in React 18.
   Move type annotations directly to function parameters.
 
 ### Features
 
-- **loader:** add exports field for ESM-compatible module resolution ([f22bced](https://github.com/entur/design-system/commit/f22bced69505fe493ee032c858ae5413b37fb6e8))
+- **loader:** add exports field for ESM-compatible module resolution ([f22bced](https://github.com/entur/design-system/commit/f22bced69505fe493ee032c858ae5413b37fb6e8)) ([#276](https://github.com/entur/design-system/pull/276))
 
   Consumers no longer need bundler aliases to resolve ESM entry points.
   Declares explicit exports map with entries for main entrypoint,
   ./styles (CSS), ./dist/styles.css (compat), and ./package.json.
   Deep dist/ imports not listed will stop resolving.
 
-- **loader:** require React 18 as minimum peer dependency ([80ad49b](https://github.com/entur/design-system/commit/80ad49bdfaab3ed2497462810c6d9378055133fe))
+- **loader:** require React 18 as minimum peer dependency ([80ad49b](https://github.com/entur/design-system/commit/80ad49bdfaab3ed2497462810c6d9378055133fe)) ([#276](https://github.com/entur/design-system/pull/276))
 
 ### BREAKING CHANGES
 
@@ -121,7 +121,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **tokens:** update primitive, semantic, base and component color tokens ([3ef6220](https://github.com/entur/design-system/commit/3ef622059143f24dcf7c94b19d4b7337fbac3508))
+- **tokens:** update primitive, semantic, base and component color tokens ([3ef6220](https://github.com/entur/design-system/commit/3ef622059143f24dcf7c94b19d4b7337fbac3508)) ([#349](https://github.com/entur/design-system/pull/349))
 
   Updates primitive, semantic, base and component-level color tokens.
   Visual changes affect alert, datepicker, loader, menu, tab, and travel
@@ -169,13 +169,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- add new component size css variables to all relevant packages ([aceafa8](https://github.com/entur/design-system/commit/aceafa85c8da121ad0654fb08caad22257c16bc9))
+- add new component size css variables to all relevant packages ([aceafa8](https://github.com/entur/design-system/commit/aceafa85c8da121ad0654fb08caad22257c16bc9)) ([#195](https://github.com/entur/design-system/pull/195))
 
 ## [0.5.36](https://github.com/entur/design-system/compare/@entur/loader@0.5.35...@entur/loader@0.5.36) (2025-11-24)
 
 ### Bug Fixes
 
-- remove unneccesary vendor prefixes from source scss files ([14fe64e](https://github.com/entur/design-system/commit/14fe64eac51ae7756ea096cdc2c3b1e8bc1cb921))
+- remove unneccesary vendor prefixes from source scss files ([14fe64e](https://github.com/entur/design-system/commit/14fe64eac51ae7756ea096cdc2c3b1e8bc1cb921)) ([#146](https://github.com/entur/design-system/pull/146))
 
   Vendor prefixas are now added via PostCSS instead
 
@@ -210,12 +210,12 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **deps:** bump minor for dependencies ([bdde8f2](https://github.com/entur/design-system/commit/bdde8f2d5ab46cfa307a424429063b9700edfc1e))
+- **deps:** bump minor for dependencies ([bdde8f2](https://github.com/entur/design-system/commit/bdde8f2d5ab46cfa307a424429063b9700edfc1e)) ([#121](https://github.com/entur/design-system/pull/121))
 
   classnames, react-focus-lock, @react-aria, @react-stately, @internationalized/date, react-dropzone
 
-- exclude dependencies from bundle ([5252a14](https://github.com/entur/design-system/commit/5252a14c4c615452f3cc7effc73287a5ee42399e))
-- fix package.json field order ([7de85f2](https://github.com/entur/design-system/commit/7de85f2baf08a1fc3a0223e3f149c8cf9636546b))
+- exclude dependencies from bundle ([5252a14](https://github.com/entur/design-system/commit/5252a14c4c615452f3cc7effc73287a5ee42399e)) ([#121](https://github.com/entur/design-system/pull/121))
+- fix package.json field order ([7de85f2](https://github.com/entur/design-system/commit/7de85f2baf08a1fc3a0223e3f149c8cf9636546b)) ([#121](https://github.com/entur/design-system/pull/121))
 
   incorrect order made types unavailable
 

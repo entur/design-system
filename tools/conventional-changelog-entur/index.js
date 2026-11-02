@@ -1,5 +1,6 @@
 'use strict';
 
+const { execFileSync } = require('child_process');
 const createAngularPreset = require('conventional-changelog-angular');
 
 // Metadata trailers add no value for consumers reading the changelog.
@@ -75,6 +76,34 @@ function formatNote(text) {
   return indentLines(stripTrailers(text), true);
 }
 
+const git = (...args) => execFileSync('git', args, { encoding: 'utf8' });
+
+// The merges on main itself, not the ones inside a branch
+let mainMerges;
+
+// The pull request a commit came in with: the first merge on main after it.
+// Commits pushed straight to main have none.
+function pullRequestFor(hash) {
+  try {
+    mainMerges ??= new Set(
+      git('rev-list', '--first-parent', '--merges', 'HEAD').split('\n'),
+    );
+    const merge = git(
+      'log',
+      '--merges',
+      '--ancestry-path',
+      '--reverse',
+      '--format=%H %s',
+      `${hash}..HEAD`,
+    )
+      .split('\n')
+      .find(line => mainMerges.has(line.split(' ')[0]));
+    return merge?.match(/ Merge pull request #(\d+)/)?.[1];
+  } catch {
+    return undefined;
+  }
+}
+
 async function createPreset() {
   const preset = await createAngularPreset();
 
@@ -87,10 +116,11 @@ async function createPreset() {
   // Angular only writes the commit subject, so the long description written in
   // the Commitizen prompt never reached the changelog. `body` is always a
   // string after the transform below, so the partial needs no conditional.
+  // The pull request goes next to the commit, for the discussion behind it.
   preset.writerOpts.commitPartial = `${preset.writerOpts.commitPartial.replace(
     /\s+$/,
     '',
-  )}{{{body}}}\n`;
+  )}{{#if pullRequest}} ([#{{pullRequest}}]({{@root.host}}/{{@root.owner}}/{{@root.repository}}/pull/{{pullRequest}})){{/if}}{{{body}}}\n`;
 
   const originalTransform = preset.writerOpts.transform;
 
@@ -106,6 +136,7 @@ async function createPreset() {
       if (isBeta) note.title = betaTitle(note.title);
     });
     transformed.body = formatBody(transformed.body);
+    transformed.pullRequest = commit.hash && pullRequestFor(commit.hash);
 
     // Beta components can change in ways stable ones cannot, so they get their
     // own sections rather than sitting among the stable entries.

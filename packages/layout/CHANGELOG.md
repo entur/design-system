@@ -7,19 +7,19 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **layout:** add a stylesheet without base tokens ([8846e62](https://github.com/entur/design-system/commit/8846e6255bb166ccc11878a4a062e92722248aee))
+- **layout:** add a stylesheet without base tokens ([8846e62](https://github.com/entur/design-system/commit/8846e6255bb166ccc11878a4a062e92722248aee)) ([#517](https://github.com/entur/design-system/pull/517))
 
   Import @entur/layout/styles/no-base-tokens instead of @entur/layout/styles when your app already loads @entur/tokens/dist/base.css. The base tokens are then declared only once, which keeps browser devtools fast.
 
 ### Features (beta)
 
-- **layout/beta:** name the spacing scale in whole steps ([c12b4f1](https://github.com/entur/design-system/commit/c12b4f19895bd650c5cd54b5cda161f1c5d0d00d))
+- **layout/beta:** name the spacing scale in whole steps ([c12b4f1](https://github.com/entur/design-system/commit/c12b4f19895bd650c5cd54b5cda161f1c5d0d00d)) ([#504](https://github.com/entur/design-system/pull/504))
 
   `gap`, `rowGap` and `columnGap` now use one name per step:
   `2xs`, `xs`, `s`, `m`, `lg`, `xl`, `2xl` … `13xl`. The in-between names are
   gone, and every value keeps its size under a new name.
 
-- **layout/beta:** read the spacing scale from @entur/tokens ([c5f58b0](https://github.com/entur/design-system/commit/c5f58b0e6ba501aba6493117e07f3aa3a23ecefa))
+- **layout/beta:** read the spacing scale from @entur/tokens ([c5f58b0](https://github.com/entur/design-system/commit/c5f58b0e6ba501aba6493117e07f3aa3a23ecefa)) ([#504](https://github.com/entur/design-system/pull/504))
 
   `gap`, `rowGap` and `columnGap` now use the shared spacing tokens. The
   layout beta styles no longer define their own spacing variables.
@@ -47,7 +47,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **layout/badge:** deprecate StatusBadge and Badge type="status" for Tag ([437e1ea](https://github.com/entur/design-system/commit/437e1ea55d2f1aaf07f7a3d718e1bbdd720b68f1))
+- **layout/badge:** deprecate StatusBadge and Badge type="status" for Tag ([437e1ea](https://github.com/entur/design-system/commit/437e1ea55d2f1aaf07f7a3d718e1bbdd720b68f1)) ([#479](https://github.com/entur/design-system/pull/479))
 
   Use `Tag` instead. `variant="primary"` has no direct equivalent — `neutral`
   is the closest match. `type` defaults to `"status"`, so a plain `<Badge>`
@@ -56,7 +56,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   `BulletBadge` and `NotificationBadge` are unaffected, and nothing is
   removed: both components and the status styles keep working.
 
-- **layout/tag:** redesign Tag with colour variants and sizes ([c1c9ef0](https://github.com/entur/design-system/commit/c1c9ef0d4780cfefa5c39fcfa653a0287270eb35))
+- **layout/tag:** redesign Tag with colour variants and sizes ([c1c9ef0](https://github.com/entur/design-system/commit/c1c9ef0d4780cfefa5c39fcfa653a0287270eb35)) ([#479](https://github.com/entur/design-system/pull/479))
 
   Tag has a new design, and gains a `variant` prop with nine category hues,
   `neutral`, and the four status variants `success`, `warning`, `negative` and
@@ -74,7 +74,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   `compact` is deprecated in favour of `size="small"`. It still works, and an
   explicit `size` takes precedence over it.
 
-- **tokens:** update the colour export and regularise component token names ([a14a5fd](https://github.com/entur/design-system/commit/a14a5fd400a5fe9bb5d68db3201ea87ffce080ed))
+- **tokens:** update the colour export and regularise component token names ([a14a5fd](https://github.com/entur/design-system/commit/a14a5fd400a5fe9bb5d68db3201ea87ffce080ed)) ([#479](https://github.com/entur/design-system/pull/479))
 
   Twelve colours changed. Ten tokens moved from `Fill/Negative/Transparent` to
   `Fill/Negative/Accent` — Button `negative` hover, TableRow `error` and two
@@ -149,23 +149,23 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **layout:** remove React.FC in favor of typed function parameters ([a57ff97](https://github.com/entur/design-system/commit/a57ff97ec925127b0147f02a13f2ac6efe9709a4))
+- **layout:** remove React.FC in favor of typed function parameters ([a57ff97](https://github.com/entur/design-system/commit/a57ff97ec925127b0147f02a13f2ac6efe9709a4)) ([#276](https://github.com/entur/design-system/pull/276))
 
   React.FC no longer provides implicit children typing in React 18.
   Move type annotations directly to function parameters.
 
 ### Features
 
-- **layout:** require React 18 as minimum peer dependency ([467cf46](https://github.com/entur/design-system/commit/467cf46e4867fec2646cb13011436adc860f0ec4))
+- **layout:** require React 18 as minimum peer dependency ([467cf46](https://github.com/entur/design-system/commit/467cf46e4867fec2646cb13011436adc860f0ec4)) ([#276](https://github.com/entur/design-system/pull/276))
 
-- **layout:** tighten exports field and remove dist/\* wildcard ([76f1930](https://github.com/entur/design-system/commit/76f193093e6030eba848f7e2f7b97632ad50f842))
+- **layout:** tighten exports field and remove dist/\* wildcard ([76f1930](https://github.com/entur/design-system/commit/76f193093e6030eba848f7e2f7b97632ad50f842)) ([#276](https://github.com/entur/design-system/pull/276))
 
   Replaces ./dist/\* wildcard with explicit ./styles and ./dist/styles.css
   entries. Consumers no longer need bundler aliases for ESM resolution.
 
 ### Bug Fixes (beta)
 
-- **layout/beta/flex, layout/beta/grid:** replace JS breakpoint hook with CSS custom property cascade ([fedec15](https://github.com/entur/design-system/commit/fedec153f0386aa4dac324c38a1a493b7f4ed9b8))
+- **layout/beta/flex, layout/beta/grid:** replace JS breakpoint hook with CSS custom property cascade ([fedec15](https://github.com/entur/design-system/commit/fedec153f0386aa4dac324c38a1a493b7f4ed9b8)) ([#276](https://github.com/entur/design-system/pull/276))
 
   useResponsiveValue used window.innerWidth via useSyncExternalStore, causing
   SSR failures and hydration mismatches. Responsive props now emit per-breakpoint
@@ -177,7 +177,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   simplify row-gap/column-gap cascade by resolving gap fallback in JS
   (rowGap ?? gap), and add minWidth/maxWidth props to Grid.
 
-- **layout/beta/grid:** resolve grid-column shorthand override bug and restore default gap ([f9a8eb1](https://github.com/entur/design-system/commit/f9a8eb1b663542125092047cb1e6366150878b7e))
+- **layout/beta/grid:** resolve grid-column shorthand override bug and restore default gap ([f9a8eb1](https://github.com/entur/design-system/commit/f9a8eb1b663542125092047cb1e6366150878b7e)) ([#276](https://github.com/entur/design-system/pull/276))
 
   CSS longhands (grid-column-start/end) declared after the grid-column
   shorthand always override it — even when their vars are unset (initial
@@ -192,13 +192,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   Restore gap="m" default that was unintentionally dropped in 81f70eccf
   when replacing the JS breakpoint hook with CSS custom property cascade.
 
-- **layout/beta/grid:** warn on invalid responsive breakpoint keys instead of rendering them ([1167efe](https://github.com/entur/design-system/commit/1167efe628bde62a5fb580fdf562c5589238702b))
+- **layout/beta/grid:** warn on invalid responsive breakpoint keys instead of rendering them ([1167efe](https://github.com/entur/design-system/commit/1167efe628bde62a5fb580fdf562c5589238702b)) ([#276](https://github.com/entur/design-system/pull/276))
 
   Adds dev-mode warnings when consumers pass unknown breakpoint keys
   (e.g. "sm", "md") or omit the required "base" key. Invalid keys are
   ignored instead of being passed through as CSS vars.
 
-- **layout/beta/layout provider:** use useSyncExternalStore for responsive breakpoints ([e32586e](https://github.com/entur/design-system/commit/e32586e3c1995f060bf705440184109d2ffe48bb))
+- **layout/beta/layout provider:** use useSyncExternalStore for responsive breakpoints ([e32586e](https://github.com/entur/design-system/commit/e32586e3c1995f060bf705440184109d2ffe48bb)) ([#276](https://github.com/entur/design-system/pull/276))
 
   Replaces useState + useEffect + matchMedia subscription with
   useSyncExternalStore, making breakpoint detection concurrent-rendering
@@ -206,7 +206,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features (beta)
 
-- **layout/beta/flex, layout/beta/grid:** add s breakpoint, placement props, and size constraints ([14353fe](https://github.com/entur/design-system/commit/14353fed95858537ce09ceb329b5b9dbf80e0cc5))
+- **layout/beta/flex, layout/beta/grid:** add s breakpoint, placement props, and size constraints ([14353fe](https://github.com/entur/design-system/commit/14353fed95858537ce09ceb329b5b9dbf80e0cc5)) ([#276](https://github.com/entur/design-system/pull/276))
 
 ### BREAKING CHANGES
 
@@ -257,13 +257,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes (beta)
 
-- **layout/beta/flex:** fix props leaking into nested Flex components ([b604332](https://github.com/entur/design-system/commit/b60433256cadf371da392c740a18e532de6d6ab0))
+- **layout/beta/flex:** fix props leaking into nested Flex components ([b604332](https://github.com/entur/design-system/commit/b60433256cadf371da392c740a18e532de6d6ab0)) ([#362](https://github.com/entur/design-system/pull/362))
 
   Props are now isolated per Flex instance. Previously, setting props
   like gap="l" on a parent Flex caused nested Flex components without
   that prop to also receive it.
 
-- **layout/beta:** document children in prop tables and fix [@ts-expect-error](https://github.com/ts-expect-error) syntax ([fa39228](https://github.com/entur/design-system/commit/fa3922878c6ca5b6b5525449c7da27f19e86dcb6))
+- **layout/beta:** document children in prop tables and fix [@ts-expect-error](https://github.com/ts-expect-error) syntax ([fa39228](https://github.com/entur/design-system/commit/fa3922878c6ca5b6b5525449c7da27f19e86dcb6)) ([#356](https://github.com/entur/design-system/pull/356))
 
   Add JSDoc to children in SidebarOwnProps and Portal own-props so
   react-docgen-typescript picks up the package-local declaration
@@ -273,7 +273,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   proper // @ts-expect-error inside expression containers — same
   suppression effect, conventional form.
 
-- **layout/beta:** export FlexComponent and GridComponent callable types ([d9f61a6](https://github.com/entur/design-system/commit/d9f61a63ad4a09ebfbd9ecbae37a63409d9b936f))
+- **layout/beta:** export FlexComponent and GridComponent callable types ([d9f61a6](https://github.com/entur/design-system/commit/d9f61a63ad4a09ebfbd9ecbae37a63409d9b936f)) ([#356](https://github.com/entur/design-system/pull/356))
 
   Adds FlexComponent and GridComponent as exported type aliases so
   consumers can reference the polymorphic component types directly.
@@ -282,7 +282,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features (beta)
 
-- **layout/beta/layout-provider:** rename LayoutWrapper to LayoutProvider and update breakpoints ([8a57ba7](https://github.com/entur/design-system/commit/8a57ba77a6c1e88f9c96cdf9a77209831139190d))
+- **layout/beta/layout-provider:** rename LayoutWrapper to LayoutProvider and update breakpoints ([8a57ba7](https://github.com/entur/design-system/commit/8a57ba77a6c1e88f9c96cdf9a77209831139190d)) ([#374](https://github.com/entur/design-system/pull/374))
 
 ### BREAKING CHANGES (beta)
 
@@ -297,7 +297,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes (beta)
 
-- **layout/beta/portal, layout/beta/sidebar:** fix overflow scrolling and styling issues in Portal and Sidebar ([1de520b](https://github.com/entur/design-system/commit/1de520b80bbf70372c8c573f6fd8c9b173c94b08))
+- **layout/beta/portal, layout/beta/sidebar:** fix overflow scrolling and styling issues in Portal and Sidebar ([1de520b](https://github.com/entur/design-system/commit/1de520b80bbf70372c8c573f6fd8c9b173c94b08)) ([#327](https://github.com/entur/design-system/pull/327))
 
   - Portal.main: add overflow: auto and max-height so main content scrolls within the fixed-height layout
   - Sidebar: remove redundant position: sticky (no-op inside fixed-height grid)
@@ -308,7 +308,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features (beta)
 
-- **layout/beta/sidebar:** add collapsible support to Template.Portal.Sidebar ([d2085b1](https://github.com/entur/design-system/commit/d2085b136933d0ba5855d12cb399e45965a57ab8))
+- **layout/beta/sidebar:** add collapsible support to Template.Portal.Sidebar ([d2085b1](https://github.com/entur/design-system/commit/d2085b136933d0ba5855d12cb399e45965a57ab8)) ([#300](https://github.com/entur/design-system/pull/300))
 
   New optional props: `collapsible`, `collapsed`, `onCollapseToggle`,
   `openSidebarAriaLabel`, and `closeSidebarAriaLabel`. Supports both
@@ -331,23 +331,23 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features (beta)
 
-- **layout/beta/flex:** add Flex beta component ([c265cb9](https://github.com/entur/design-system/commit/c265cb976894e71470bc744347eb99453ffa7fac))
+- **layout/beta/flex:** add Flex beta component ([c265cb9](https://github.com/entur/design-system/commit/c265cb976894e71470bc744347eb99453ffa7fac)) ([#247](https://github.com/entur/design-system/pull/247))
 
   A wrapper substitute for css flexbox with defaults.
   Documentation coming later.
 
 - **layout/beta/grid:** add justify and align props to Grid ([9eda387](https://github.com/entur/design-system/commit/9eda387bfcd099571d1f848cab1b75310cffa4f1))
 
-- **layout/beta/grid:** add new Grid and Grid.Item beta components ([3f950a1](https://github.com/entur/design-system/commit/3f950a18b003742b4ab15661320cac17b8ca8214))
+- **layout/beta/grid:** add new Grid and Grid.Item beta components ([3f950a1](https://github.com/entur/design-system/commit/3f950a18b003742b4ab15661320cac17b8ca8214)) ([#247](https://github.com/entur/design-system/pull/247))
 
   This version is more flexible and allows for creating complex layouts.
   Based on CSS grid. Documentation coming later.
 
-- **layout/beta/layout wrapper:** add optional LayoutWrapper component ([68e0c02](https://github.com/entur/design-system/commit/68e0c0223eba6a36b433bae4e8961bf0c07b67f1))
+- **layout/beta/layout wrapper:** add optional LayoutWrapper component ([68e0c02](https://github.com/entur/design-system/commit/68e0c0223eba6a36b433bae4e8961bf0c07b67f1)) ([#247](https://github.com/entur/design-system/pull/247))
 
   Use this component to override default values like breakpoints etc.
 
-- **layout/beta/template:** add template beta component for B2B portal applications ([ea4fe34](https://github.com/entur/design-system/commit/ea4fe34b9b0d46eae0dc9eb99240f5117424eb0d))
+- **layout/beta/template:** add template beta component for B2B portal applications ([ea4fe34](https://github.com/entur/design-system/commit/ea4fe34b9b0d46eae0dc9eb99240f5117424eb0d)) ([#247](https://github.com/entur/design-system/pull/247))
 
   Template to be used for B2B portals for easier setup and consistency
   accross Entur applications.
@@ -373,7 +373,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- add new component size css variables to all relevant packages ([aceafa8](https://github.com/entur/design-system/commit/aceafa85c8da121ad0654fb08caad22257c16bc9))
+- add new component size css variables to all relevant packages ([aceafa8](https://github.com/entur/design-system/commit/aceafa85c8da121ad0654fb08caad22257c16bc9)) ([#195](https://github.com/entur/design-system/pull/195))
 
 ## [3.2.3](https://github.com/entur/design-system/compare/@entur/layout@3.2.2...@entur/layout@3.2.3) (2025-11-24)
 
@@ -399,7 +399,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **add travel:** add detail section to TravelTag ([0185c7a](https://github.com/entur/design-system/commit/0185c7aa2c1e5961435d9d92c7a7020c24a27c4b))
+- **add travel:** add detail section to TravelTag ([0185c7a](https://github.com/entur/design-system/commit/0185c7aa2c1e5961435d9d92c7a7020c24a27c4b)) ([#151](https://github.com/entur/design-system/pull/151))
 
   This field is useful for e.g. adding a departure number to the tag.
 
@@ -416,12 +416,12 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **deps:** bump minor for dependencies ([bdde8f2](https://github.com/entur/design-system/commit/bdde8f2d5ab46cfa307a424429063b9700edfc1e))
+- **deps:** bump minor for dependencies ([bdde8f2](https://github.com/entur/design-system/commit/bdde8f2d5ab46cfa307a424429063b9700edfc1e)) ([#121](https://github.com/entur/design-system/pull/121))
 
   classnames, react-focus-lock, @react-aria, @react-stately, @internationalized/date, react-dropzone
 
-- exclude dependencies from bundle ([5252a14](https://github.com/entur/design-system/commit/5252a14c4c615452f3cc7effc73287a5ee42399e))
-- fix package.json field order ([7de85f2](https://github.com/entur/design-system/commit/7de85f2baf08a1fc3a0223e3f149c8cf9636546b))
+- exclude dependencies from bundle ([5252a14](https://github.com/entur/design-system/commit/5252a14c4c615452f3cc7effc73287a5ee42399e)) ([#121](https://github.com/entur/design-system/pull/121))
+- fix package.json field order ([7de85f2](https://github.com/entur/design-system/commit/7de85f2baf08a1fc3a0223e3f149c8cf9636546b)) ([#121](https://github.com/entur/design-system/pull/121))
 
   incorrect order made types unavailable
 
@@ -493,27 +493,27 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **basecard:** fix typo in box-shadow ([580a201](https://github.com/entur/design-system/commit/580a2010a73ad065a99555b1ce0bb280018f832b))
-- **MediaCard:** transition on hover and docs tweeks ([e0be14c](https://github.com/entur/design-system/commit/e0be14ccbfdd78d975bf16536c4ebd427534047e))
-- **navigationcard:** remove highlight-line under title on compact variant ([e6d369e](https://github.com/entur/design-system/commit/e6d369e9601f4f77014327c09e05e3f322db2d7f))
+- **basecard:** fix typo in box-shadow ([580a201](https://github.com/entur/design-system/commit/580a2010a73ad065a99555b1ce0bb280018f832b)) ([#66](https://github.com/entur/design-system/pull/66))
+- **MediaCard:** transition on hover and docs tweeks ([e0be14c](https://github.com/entur/design-system/commit/e0be14ccbfdd78d975bf16536c4ebd427534047e)) ([#66](https://github.com/entur/design-system/pull/66))
+- **navigationcard:** remove highlight-line under title on compact variant ([e6d369e](https://github.com/entur/design-system/commit/e6d369e9601f4f77014327c09e05e3f322db2d7f)) ([#66](https://github.com/entur/design-system/pull/66))
 
 ### Features
 
-- **mediacard:** new prop orientation: horizontal ([f8caa0e](https://github.com/entur/design-system/commit/f8caa0eb6899d3c69b8dc85bd4a148791df7c587))
+- **mediacard:** new prop orientation: horizontal ([f8caa0e](https://github.com/entur/design-system/commit/f8caa0eb6899d3c69b8dc85bd4a148791df7c587)) ([#66](https://github.com/entur/design-system/pull/66))
 
 # [3.0.0](https://github.com/entur/design-system/compare/@entur/layout@2.4.2...@entur/layout@3.0.0) (2025-03-05)
 
 ### Bug Fixes
 
-- **docs:** fix colorSwatch cards ([76870e2](https://github.com/entur/design-system/commit/76870e2f54fcfda34239ead6a125befcf3df81c6))
-- **mediacard:** add correct background color token ([f2a3f5c](https://github.com/entur/design-system/commit/f2a3f5c5c8ca4f0f93d89a406929e7a68a09a458))
-- **navigationcard:** etu-55052 add new colortokens ([85cb58d](https://github.com/entur/design-system/commit/85cb58d9d9bcdfac9b359e824298b8ad28ab4674))
-- **navigationcard:** remove animation if perfers-reduced-motion ([d1ad51d](https://github.com/entur/design-system/commit/d1ad51d3384b3b9c021be3b27986bf9f8eeb1d1d))
+- **docs:** fix colorSwatch cards ([76870e2](https://github.com/entur/design-system/commit/76870e2f54fcfda34239ead6a125befcf3df81c6)) ([#54](https://github.com/entur/design-system/pull/54))
+- **mediacard:** add correct background color token ([f2a3f5c](https://github.com/entur/design-system/commit/f2a3f5c5c8ca4f0f93d89a406929e7a68a09a458)) ([#54](https://github.com/entur/design-system/pull/54))
+- **navigationcard:** etu-55052 add new colortokens ([85cb58d](https://github.com/entur/design-system/commit/85cb58d9d9bcdfac9b359e824298b8ad28ab4674)) ([#54](https://github.com/entur/design-system/pull/54))
+- **navigationcard:** remove animation if perfers-reduced-motion ([d1ad51d](https://github.com/entur/design-system/commit/d1ad51d3384b3b9c021be3b27986bf9f8eeb1d1d)) ([#54](https://github.com/entur/design-system/pull/54))
 
 ### Features
 
-- **card:** new design on navigation-card ([3d9b4b3](https://github.com/entur/design-system/commit/3d9b4b3e9ea235bb85456adea806251ad5a3f679))
-- **navigationcard:** remove external prop ([1a35991](https://github.com/entur/design-system/commit/1a35991f745756c52b98d283e98eb0d5e52a462f))
+- **card:** new design on navigation-card ([3d9b4b3](https://github.com/entur/design-system/commit/3d9b4b3e9ea235bb85456adea806251ad5a3f679)) ([#54](https://github.com/entur/design-system/pull/54))
+- **navigationcard:** remove external prop ([1a35991](https://github.com/entur/design-system/commit/1a35991f745756c52b98d283e98eb0d5e52a462f)) ([#54](https://github.com/entur/design-system/pull/54))
 
 ### BREAKING CHANGES
 
@@ -538,12 +538,12 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **badge:** replace transform with visibility ([9052754](https://github.com/entur/design-system/commit/905275481db2f1e5c7789a7e38e66181cbfd54a7))
+- **badge:** replace transform with visibility ([9052754](https://github.com/entur/design-system/commit/905275481db2f1e5c7789a7e38e66181cbfd54a7)) ([#42](https://github.com/entur/design-system/pull/42))
 
 ### Features
 
-- **badge:** add hide prop in all badges ([1f49a7a](https://github.com/entur/design-system/commit/1f49a7ac17f5d32dfccc84852b63e351b3e4605b))
-- **layout:** replace focus with focus-visible ([51836ac](https://github.com/entur/design-system/commit/51836ac828f5dba97e5d1d1e6758d4a94a184a45))
+- **badge:** add hide prop in all badges ([1f49a7a](https://github.com/entur/design-system/commit/1f49a7ac17f5d32dfccc84852b63e351b3e4605b)) ([#42](https://github.com/entur/design-system/pull/42))
+- **layout:** replace focus with focus-visible ([51836ac](https://github.com/entur/design-system/commit/51836ac828f5dba97e5d1d1e6758d4a94a184a45)) ([#41](https://github.com/entur/design-system/pull/41))
 
 ## [2.3.22](https://github.com/entur/design-system/compare/@entur/layout@2.3.21...@entur/layout@2.3.22) (2025-01-15)
 
@@ -575,7 +575,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **navigation card:** remove unneccesary :before element ([e93bd59](https://github.com/entur/design-system/commit/e93bd59ea7d1b004ca6a3bb0340e23dd33d56776))
+- **navigation card:** remove unneccesary :before element ([e93bd59](https://github.com/entur/design-system/commit/e93bd59ea7d1b004ca6a3bb0340e23dd33d56776)) ([#11](https://github.com/entur/design-system/pull/11))
 
 ## [2.3.19](https://github.com/entur/design-system/compare/@entur/layout@2.3.18...@entur/layout@2.3.19) (2024-11-12)
 

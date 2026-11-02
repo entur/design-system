@@ -7,19 +7,19 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **tokens:** add fill tokens for numbered list steps ([62045a0](https://github.com/entur/design-system/commit/62045a08e2a2b7bec38fdd04e5ee2c14e81e8877))
+- **tokens:** add fill tokens for numbered list steps ([62045a0](https://github.com/entur/design-system/commit/62045a08e2a2b7bec38fdd04e5ee2c14e81e8877)) ([#507](https://github.com/entur/design-system/pull/507))
 
   `--components-typography-list-standard-fill` and
   `--components-typography-list-contrast-fill` give the background for the
   step badges in `NumberedList variant="steps"`. They match the code text fill.
 
-- **tokens:** add subdued text tokens for typography ([2932934](https://github.com/entur/design-system/commit/29329347f56295e955d448dff584552045d1066b))
+- **tokens:** add subdued text tokens for typography ([2932934](https://github.com/entur/design-system/commit/29329347f56295e955d448dff584552045d1066b)) ([#509](https://github.com/entur/design-system/pull/509))
 
   `--components-typography-basetext-standard-text-subdued` (Blue/70) and
   `--components-typography-basetext-contrast-text-subdued` (Blue/30) give the
   colour for secondary text. In dark mode both are Ebony/30.
 
-- **tokens:** add the shared spacing scale ([8c9f0a2](https://github.com/entur/design-system/commit/8c9f0a26b31579f53d327c2cacd835e0acc9fdd1))
+- **tokens:** add the shared spacing scale ([8c9f0a2](https://github.com/entur/design-system/commit/8c9f0a26b31579f53d327c2cacd835e0acc9fdd1)) ([#504](https://github.com/entur/design-system/pull/504))
 
   `@entur/tokens/styles/spacing` (CSS and SCSS) defines `--spacing-2xs`,
   `--spacing-xs`, `--spacing-s`, `--spacing-m`, `--spacing-lg` …
@@ -27,7 +27,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   display), like the component size tokens. This is the scale used by
   `gap` in `@entur/layout/beta`, and later by `spacing` in the new typography.
 
-- **tokens:** add typography tokens that follow the view mode ([7fc0e80](https://github.com/entur/design-system/commit/7fc0e80b8f2ad2b9d8fdcc0b0db83a90ab98d671))
+- **tokens:** add typography tokens that follow the view mode ([7fc0e80](https://github.com/entur/design-system/commit/7fc0e80b8f2ad2b9d8fdcc0b0db83a90ab98d671)) ([#506](https://github.com/entur/design-system/pull/506))
 
   `@entur/tokens/styles/typography` (CSS and SCSS) defines the font sizes,
   line heights, paragraph spacing, weights and font families used by
@@ -38,8 +38,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   The typography beta, button and menu styles already include them. Import
   the sheet yourself only when you use the variables in your own CSS.
 
-- **tokens:** give code text a stronger fill and a dark fill on contrast ([89d0526](https://github.com/entur/design-system/commit/89d05269d5e88b73032c53dd70fae30176144699)), closes [#eaeaf1](https://github.com/entur/design-system/issues/eaeaf1) [#292b6](https://github.com/entur/design-system/issues/292b6) [#212233](https://github.com/entur/design-system/issues/212233)
-- **tokens:** make headings and leading text smaller on narrow screens ([1c57028](https://github.com/entur/design-system/commit/1c57028d00bdc96c231002aec8335d6d9c84a149))
+- **tokens:** give code text a stronger fill and a dark fill on contrast ([89d0526](https://github.com/entur/design-system/commit/89d05269d5e88b73032c53dd70fae30176144699)) ([#505](https://github.com/entur/design-system/pull/505)), closes [#eaeaf1](https://github.com/entur/design-system/issues/eaeaf1) [#292b6](https://github.com/entur/design-system/issues/292b6) [#212233](https://github.com/entur/design-system/issues/212233)
+- **tokens:** make headings and leading text smaller on narrow screens ([1c57028](https://github.com/entur/design-system/commit/1c57028d00bdc96c231002aec8335d6d9c84a149)) ([#524](https://github.com/entur/design-system/pull/524))
 
   Below 600px, the s breakpoint of Flex and Grid in layout beta, headings and
   leading text in the standard view mode use the sizes of the compact view mode:
@@ -52,7 +52,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **tokens:** update the colour export and regularise component token names ([a14a5fd](https://github.com/entur/design-system/commit/a14a5fd400a5fe9bb5d68db3201ea87ffce080ed))
+- **tokens:** update the colour export and regularise component token names ([a14a5fd](https://github.com/entur/design-system/commit/a14a5fd400a5fe9bb5d68db3201ea87ffce080ed)) ([#479](https://github.com/entur/design-system/pull/479))
 
   Twelve colours changed. Ten tokens moved from `Fill/Negative/Transparent` to
   `Fill/Negative/Accent` — Button `negative` hover, TableRow `error` and two
@@ -82,7 +82,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **tokens:** add the semantic token Stroke/SubduedAlt ([b81039b](https://github.com/entur/design-system/commit/b81039bdd5ad69a344dc27f654bf6643f63b0ac1))
+- **tokens:** add the semantic token Stroke/SubduedAlt ([b81039b](https://github.com/entur/design-system/commit/b81039bdd5ad69a344dc27f654bf6643f63b0ac1)) ([#463](https://github.com/entur/design-system/pull/463))
 
   Also removes Stroke/ContrastAlt-2, which no component used, so
   $stroke-contrastalt-2 and --stroke-contrastalt-2 are no longer generated.
@@ -95,14 +95,14 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **tokens:** add exports field for ESM-compatible module resolution ([4ba8cc2](https://github.com/entur/design-system/commit/4ba8cc21baf1e7cb4b91545190e0ad7f1a3d473e))
+- **tokens:** add exports field for ESM-compatible module resolution ([4ba8cc2](https://github.com/entur/design-system/commit/4ba8cc21baf1e7cb4b91545190e0ad7f1a3d473e)) ([#276](https://github.com/entur/design-system/pull/276))
 
   Consumers no longer need bundler aliases to resolve ESM entry points.
   Declares explicit exports map with style subpaths for all token
   categories (base, semantic, primitive, transport, data) in both
   CSS and SCSS. Old dist/ paths preserved for backwards compatibility.
 
-- **tokens:** add sass conditional exports for pkg: importer support ([9ae5507](https://github.com/entur/design-system/commit/9ae550786f73da2f73935826b14597fa3f477448))
+- **tokens:** add sass conditional exports for pkg: importer support ([9ae5507](https://github.com/entur/design-system/commit/9ae550786f73da2f73935826b14597fa3f477448)) ([#276](https://github.com/entur/design-system/pull/276))
 
   Style entry points (./styles, ./styles/base, etc.) now use conditional
   exports with sass/style/default conditions. Consumers using the Sass
@@ -117,7 +117,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **tokens:** rename TintDark to DarkTint and Calendar endpoint tokens to Selected ([1250370](https://github.com/entur/design-system/commit/1250370d3e4f8f6ad2a096d4855800498f474dfc))
+- **tokens:** rename TintDark to DarkTint and Calendar endpoint tokens to Selected ([1250370](https://github.com/entur/design-system/commit/1250370d3e4f8f6ad2a096d4855800498f474dfc)) ([#423](https://github.com/entur/design-system/pull/423))
 
   Rename color token variables to align with Figma:
 
@@ -129,7 +129,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **menu/logo:** add Logo component for standardized Entur product logos ([75dd9dc](https://github.com/entur/design-system/commit/75dd9dc5c6789d4c1ec680ace52a8c3697b3c53b))
+- **menu/logo:** add Logo component for standardized Entur product logos ([75dd9dc](https://github.com/entur/design-system/commit/75dd9dc5c6789d4c1ec680ace52a8c3697b3c53b)) ([#392](https://github.com/entur/design-system/pull/392))
 
   New `<Logo>` component renders the Entur wordmark with an optional product name.
   Use `productName` to display your product name next to the logo, `size` to choose
@@ -137,7 +137,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
   Usage: `<Logo productName="Partner" size="medium" href="/" />`
 
-- **tokens:** add range selection color tokens for Calendar ([ac2365e](https://github.com/entur/design-system/commit/ac2365e4c2b5c6832586ec21e1e95813522d2a8c))
+- **tokens:** add range selection color tokens for Calendar ([ac2365e](https://github.com/entur/design-system/commit/ac2365e4c2b5c6832586ec21e1e95813522d2a8c)) ([#408](https://github.com/entur/design-system/pull/408))
 
   Add semantic tokens Fill/Selected/Default/Tint, TintDark and
   Fill/Selected/Hover/Tint, TintDark for range fill backgrounds.
@@ -150,7 +150,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **tokens:** update primitive, semantic, base and component color tokens ([3ef6220](https://github.com/entur/design-system/commit/3ef622059143f24dcf7c94b19d4b7337fbac3508))
+- **tokens:** update primitive, semantic, base and component color tokens ([3ef6220](https://github.com/entur/design-system/commit/3ef622059143f24dcf7c94b19d4b7337fbac3508)) ([#349](https://github.com/entur/design-system/pull/349))
 
   Updates primitive, semantic, base and component-level color tokens.
   Visual changes affect alert, datepicker, loader, menu, tab, and travel
@@ -168,7 +168,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **travel:** add missing snowcoach transport tokens and CSS variable fallback ([6bb1406](https://github.com/entur/design-system/commit/6bb14065418cede6ebd2c0b3435a7e866829b753))
+- **travel:** add missing snowcoach transport tokens and CSS variable fallback ([6bb1406](https://github.com/entur/design-system/commit/6bb14065418cede6ebd2c0b3435a7e866829b753)) ([#263](https://github.com/entur/design-system/pull/263))
 
   SnowCoach transport mode existed but did not display correctly due to
   missing CSS variables and design tokens. Add variables for fill, icon,
@@ -178,13 +178,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **tokens:** update walk-contrast and metro color to improve contrast ratio ([a361318](https://github.com/entur/design-system/commit/a36131842580a4e8014eaa90b53e3f523f359970))
+- **tokens:** update walk-contrast and metro color to improve contrast ratio ([a361318](https://github.com/entur/design-system/commit/a36131842580a4e8014eaa90b53e3f523f359970)) ([#227](https://github.com/entur/design-system/pull/227))
 
 # [3.22.0](https://github.com/entur/design-system/compare/@entur/tokens@3.21.1...@entur/tokens@3.22.0) (2026-01-23)
 
 ### Features
 
-- **tokens/base:** add highlight-alt color to base ([6e48e5e](https://github.com/entur/design-system/commit/6e48e5eeaabe3faaff098089410421b785afcc56))
+- **tokens/base:** add highlight-alt color to base ([6e48e5e](https://github.com/entur/design-system/commit/6e48e5eeaabe3faaff098089410421b785afcc56)) ([#217](https://github.com/entur/design-system/pull/217))
 
   Also update mobility and bicycle color to meet WCAG standards.
 
@@ -192,8 +192,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- add new component size css variables to all relevant packages ([aceafa8](https://github.com/entur/design-system/commit/aceafa85c8da121ad0654fb08caad22257c16bc9))
-- **tokens:** add primitiveSize and update existing variables ([01088cf](https://github.com/entur/design-system/commit/01088cf4d7388c746742e12339cf7833822c2c8f))
+- add new component size css variables to all relevant packages ([aceafa8](https://github.com/entur/design-system/commit/aceafa85c8da121ad0654fb08caad22257c16bc9)) ([#195](https://github.com/entur/design-system/pull/195))
+- **tokens:** add primitiveSize and update existing variables ([01088cf](https://github.com/entur/design-system/commit/01088cf4d7388c746742e12339cf7833822c2c8f)) ([#195](https://github.com/entur/design-system/pull/195))
 
   ComponentColors is renamed to componentVariables since it now also contains sizing.
   ComponentColors still exists for backwards compatebility.
@@ -202,7 +202,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **add travel:** add detail section to TravelTag ([0185c7a](https://github.com/entur/design-system/commit/0185c7aa2c1e5961435d9d92c7a7020c24a27c4b))
+- **add travel:** add detail section to TravelTag ([0185c7a](https://github.com/entur/design-system/commit/0185c7aa2c1e5961435d9d92c7a7020c24a27c4b)) ([#151](https://github.com/entur/design-system/pull/151))
 
   This field is useful for e.g. adding a departure number to the tag.
 
@@ -210,12 +210,12 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- **deps:** bump minor for dependencies ([bdde8f2](https://github.com/entur/design-system/commit/bdde8f2d5ab46cfa307a424429063b9700edfc1e))
+- **deps:** bump minor for dependencies ([bdde8f2](https://github.com/entur/design-system/commit/bdde8f2d5ab46cfa307a424429063b9700edfc1e)) ([#121](https://github.com/entur/design-system/pull/121))
 
   classnames, react-focus-lock, @react-aria, @react-stately, @internationalized/date, react-dropzone
 
-- exclude dependencies from bundle ([5252a14](https://github.com/entur/design-system/commit/5252a14c4c615452f3cc7effc73287a5ee42399e))
-- fix package.json field order ([7de85f2](https://github.com/entur/design-system/commit/7de85f2baf08a1fc3a0223e3f149c8cf9636546b))
+- exclude dependencies from bundle ([5252a14](https://github.com/entur/design-system/commit/5252a14c4c615452f3cc7effc73287a5ee42399e)) ([#121](https://github.com/entur/design-system/pull/121))
+- fix package.json field order ([7de85f2](https://github.com/entur/design-system/commit/7de85f2baf08a1fc3a0223e3f149c8cf9636546b)) ([#121](https://github.com/entur/design-system/pull/121))
 
   incorrect order made types unavailable
 
@@ -229,24 +229,24 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **tokens:** add new color variable basecolors frame contrast alt 2 ([9c9241d](https://github.com/entur/design-system/commit/9c9241d75a6201a323f0216a8d3168fb21a5e684))
+- **tokens:** add new color variable basecolors frame contrast alt 2 ([9c9241d](https://github.com/entur/design-system/commit/9c9241d75a6201a323f0216a8d3168fb21a5e684)) ([#57](https://github.com/entur/design-system/pull/57))
 
 # [3.18.0](https://github.com/entur/design-system/compare/@entur/tokens@3.17.6...@entur/tokens@3.18.0) (2025-03-05)
 
 ### Bug Fixes
 
-- **navigationcard:** etu-55052 add new colortokens ([85cb58d](https://github.com/entur/design-system/commit/85cb58d9d9bcdfac9b359e824298b8ad28ab4674))
+- **navigationcard:** etu-55052 add new colortokens ([85cb58d](https://github.com/entur/design-system/commit/85cb58d9d9bcdfac9b359e824298b8ad28ab4674)) ([#54](https://github.com/entur/design-system/pull/54))
 
 ### Features
 
-- **card:** new design on navigation-card ([3d9b4b3](https://github.com/entur/design-system/commit/3d9b4b3e9ea235bb85456adea806251ad5a3f679))
+- **card:** new design on navigation-card ([3d9b4b3](https://github.com/entur/design-system/commit/3d9b4b3e9ea235bb85456adea806251ad5a3f679)) ([#54](https://github.com/entur/design-system/pull/54))
 
 ## [3.17.6](https://github.com/entur/design-system/compare/@entur/tokens@3.17.5...@entur/tokens@3.17.6) (2025-02-20)
 
 ### Bug Fixes
 
-- **alert:** etu-55268 add border again ([c1aec93](https://github.com/entur/design-system/commit/c1aec93a7fc3612a27f140cd464e2a33dce05710))
-- **toast:** etu-ETU-55268 replace transparent background on toasts to filled ([f9629f4](https://github.com/entur/design-system/commit/f9629f4f96f73b5571277350ea6aaf6b414b39a1))
+- **alert:** etu-55268 add border again ([c1aec93](https://github.com/entur/design-system/commit/c1aec93a7fc3612a27f140cd464e2a33dce05710)) ([#50](https://github.com/entur/design-system/pull/50))
+- **toast:** etu-ETU-55268 replace transparent background on toasts to filled ([f9629f4](https://github.com/entur/design-system/commit/f9629f4f96f73b5571277350ea6aaf6b414b39a1)) ([#50](https://github.com/entur/design-system/pull/50))
 
 ## [3.17.5](https://github.com/entur/design-system/compare/@entur/tokens@3.17.4...@entur/tokens@3.17.5) (2025-01-15)
 
