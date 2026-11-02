@@ -12,6 +12,8 @@ import './text.scss';
 export type ListItemOwnProps = TypographySpacingProps & {
   /** Ekstra klassenavn */
   className?: string;
+  /** Dempet punkt, for eksempel et steg som er fullført. Velger riktig farge i kontrast- og mørk modus. */
+  tone?: 'subdued';
   /** Innholdet */
   children?: React.ReactNode;
   /** Tittel */
@@ -37,6 +39,7 @@ export const ListItem = React.forwardRef(
     {
       title,
       className,
+      tone,
       spacing,
       style,
       children,
@@ -50,7 +53,11 @@ export const ListItem = React.forwardRef(
     return (
       <ItemElement
         ref={ref}
-        className={classNames('eds-text--list-item', className)}
+        className={classNames(
+          'eds-text--list-item',
+          tone && `eds-text--tone-${tone}`,
+          className,
+        )}
         style={getSpacingStyle(spacing, style)}
         {...rest}
       >
