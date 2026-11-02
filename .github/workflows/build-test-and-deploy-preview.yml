@@ -166,6 +166,24 @@ jobs:
 
       - run: yarn verify:skills
 
+  lint-commits:
+    name: Lint commit messages
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          fetch-depth: 0
+
+      # Own cache key: this job installs only the root workspace, which must not
+      # become the cache the other jobs restore.
+      - name: Install and Cache Yarn Dependencies
+        uses: ./.github/actions/install-and-cache-dependencies
+        with:
+          cache-key: yarn-root-${{ hashFiles('**/yarn.lock') }}
+          only-for-workspace: design-system
+
+      - run: yarn commitlint --from ${{ github.event.pull_request.base.sha }} --to ${{ github.event.pull_request.head.sha }} --verbose
+
   deploy-documentation-to-preview-channel:
     needs: build-documentation
     permissions:
