@@ -6,7 +6,7 @@
 //   node .design-sync/publish.mjs record <artifact-url> --team <name>
 //
 // `plan` writes the Artifact publish calls to .cache/publish/<id>/call-<n>.json, in order.
-// `record` saves the fingerprint to published/<id>.json once every call has gone through;
+// `record` saves the planned fingerprint to published/<id>.json once every call has gone through;
 // commit it, so the next sync from any machine starts from it.
 
 import { createHash } from 'node:crypto';
@@ -27,6 +27,7 @@ const ROOT = join(HERE, '.cache', 'design-system');
 const PROJECT = join(ROOT, 'project');
 const PUBLISHED = join(HERE, 'published');
 const CALLS = join(HERE, '.cache', 'publish');
+const PLANNED = 'planned.json';
 const INDEX = 'project/design-system.json';
 // One publish call takes at most 255 paths and 16 MiB; stay under both.
 const MAX_PATHS = 250;
@@ -169,6 +170,9 @@ function plan(args) {
   const dir = join(CALLS, id);
   rmSync(dir, { recursive: true, force: true });
   mkdirSync(dir, { recursive: true });
+  // What these calls publish, for `record`; a rebuild after planning must not change it.
+  if (isNew) current[INDEX] = sha256(join(ROOT, INDEX));
+  writeFileSync(join(dir, PLANNED), JSON.stringify(current, null, 1));
   calls.forEach((c, i) => {
     const lead = c.find(e => e.index) ??
       c.find(e => typeof e.value === 'string') ?? {
@@ -214,8 +218,16 @@ function record(args) {
   const id = artifactId(url);
   const team = option(args, '--team') ?? readManifest(id)?.team;
   if (!team) fail('--team <name> is needed the first time');
+  const planned = join(CALLS, id, PLANNED);
+  if (!existsSync(planned))
+    fail(`no plan for ${id}; run plan and send its calls before record`);
+  const files = JSON.parse(readFileSync(planned, 'utf8'));
+  const { changed, removed } = diff(fingerprint(), files);
+  if (changed.length + removed.length)
+    console.log(
+      `  ! the build changed since plan (${changed.length} changed, ${removed.length} removed); recording what was planned`,
+    );
   mkdirSync(PUBLISHED, { recursive: true });
-  const files = fingerprint();
   writeFileSync(
     manifestPath(id),
     JSON.stringify(

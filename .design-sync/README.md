@@ -92,7 +92,7 @@ Requires Node 24.22.1, `corepack yarn`, Claude Code logged in to claude.ai, and 
    node .design-sync/publish.mjs record <artifact-url> --team "<team>"
    ```
 
-   Only record after every call went through. `--team` is needed the first time. Commit the updated `published/<id>.json` with the sync, so the next sync from any machine starts from it.
+   Only record after every call went through. `record` saves the fingerprint `plan` wrote next to the calls, not the current build, so a rebuild in between can't hide unsent files. `--team` is needed the first time. Commit the updated `published/<id>.json` with the sync, so the next sync from any machine starts from it.
 
 An artifact holds at most 1,008 files, and the folder is at that limit (NOTES.md, 2026-10-27); `plan` warns when the folder goes over it.
 
