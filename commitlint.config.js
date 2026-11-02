@@ -1,6 +1,7 @@
 // Co-authored-by is for humans; AI tools use an `AI-assistant:` trailer (AGENTS.md).
+// Matched on the tools' own addresses, so a person's name never trips it.
 const AI_CO_AUTHOR =
-  /^co-authored-by:.*(claude|anthropic|copilot|openai|chatgpt|codex|gemini|cursor)/im;
+  /^co-authored-by:.*<(noreply@anthropic\.com|\d+\+copilot@users\.noreply\.github\.com|[^>]*\[bot\]@users\.noreply\.github\.com|cursoragent@cursor\.com)>/im;
 
 module.exports = {
   extends: ['@commitlint/config-conventional'],
