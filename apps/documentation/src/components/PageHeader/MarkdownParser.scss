@@ -40,11 +40,5 @@
   // The longer description from the commit message, shown under the entry
   &__description {
     margin-block: t.$space-extra-small t.$space-small;
-
-    // Paragraphs get tone="subdued"; lists have no tone, so they are set here
-    .eds-text--unordered-list,
-    .eds-text--numbered-list {
-      color: var(--components-typography-basetext-standard-text-subdued);
-    }
   }
 }

@@ -150,6 +150,18 @@ const ChangelogSection = ({
   );
 };
 
+/** The block with tone="subdued" on every paragraph and list in it. Nested lists set
+ * their own colour, so each one needs the tone. */
+const subdued = (node: React.ReactNode): React.ReactNode => {
+  if (!React.isValidElement(node)) return node;
+  const children = React.Children.map(node.props.children, subdued);
+  const tone =
+    isType(node, Paragraph) || isType(node, UnorderedList)
+      ? { tone: 'subdued' }
+      : {};
+  return React.cloneElement(node, tone, children);
+};
+
 /** Et changelog-innslag er én commit: overskriften, og eventuelt den lengre
  * beskrivelsen fra commit-meldingen. */
 const ChangelogEntry = ({
@@ -171,11 +183,7 @@ const ChangelogEntry = ({
     <ListItem {...rest}>
       {summary.props.children}
       <TextContainer className="markdown-parser__description">
-        {description.map(block =>
-          isType(block, Paragraph)
-            ? React.cloneElement(block, { tone: 'subdued' })
-            : block,
-        )}
+        {description.map(subdued)}
       </TextContainer>
     </ListItem>
   );
@@ -292,19 +300,22 @@ const scopeOf = (entry: React.ReactNode): string | null => {
 };
 
 /** The entry without its scope, for a list under that scope. */
+// No spread: the tslib this build resolves has no __spreadArray.
 const withoutScope = (entry: React.ReactElement) => {
-  const strip = (children: React.ReactNode[]) => {
-    const [, next, ...rest] = children;
-    return [typeof next === 'string' ? next.trimStart() : next, ...rest];
-  };
-  const [first, ...blocks] = React.Children.toArray(entry.props.children);
+  const summary = summaryOf(entry).slice(1);
+  if (typeof summary[0] === 'string') summary[0] = summary[0].trimStart();
+  const blocks = React.Children.toArray(entry.props.children);
+  const [first] = blocks;
 
   return isType(first, Paragraph)
-    ? React.cloneElement(entry, {}, [
-        React.cloneElement(first, {}, ...strip(summaryOf(entry))),
-        ...blocks,
-      ])
-    : React.cloneElement(entry, {}, ...strip(summaryOf(entry)));
+    ? React.cloneElement(
+        entry,
+        {},
+        ([React.cloneElement(first, {}, summary)] as React.ReactNode[]).concat(
+          blocks.slice(1),
+        ),
+      )
+    : React.cloneElement(entry, {}, summary);
 };
 
 /**
