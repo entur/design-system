@@ -62,8 +62,10 @@ consumers. Path-specific rules for SCSS, tests and docs live in
 - User-facing and screen-reader text in `packages/` is a prop with a Norwegian
   default, never hardcoded.
 - Commit type matches consumer impact: `fix`/`feat` only for `packages/` and
-  `skills/`, and their message says accurately what consumers get. Flag lines a
-  later commit in the same PR removes or rewrites; squash them.
+  `skills/`, and their message says accurately what consumers get.
+- In commits that land in the changelog (`fix`, `feat`, breaking changes),
+  flag lines a later commit in the same PR removes or rewrites; squash them.
+  Build, config, tooling and docs-site commits are exempt.
 
 ## Consistency with the library
 
