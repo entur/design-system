@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.2.0](https://github.com/entur/design-system/compare/@entur/typography@3.1.0...@entur/typography@3.2.0) (2026-11-02)
+
+### Features (beta)
+
+- **typography/beta:** add tone="subdued" to lists and list items ([00a72f3](https://github.com/entur/design-system/commit/00a72f35231deaa63f359fd8865e3fb1764187fd)) ([#530](https://github.com/entur/design-system/pull/530))
+
+  UnorderedList, NumberedList and ListItem take tone="subdued", like Text
+  and Heading, for secondary content such as help text or a completed
+  step. The bullets and numbers are dimmed too. A list item follows the
+  tone of its list, while a nested list sets its own colour like Text
+  does, so give it tone="subdued" as well when it should be dimmed.
+
 # [3.1.0](https://github.com/entur/design-system/compare/@entur/typography@3.0.7...@entur/typography@3.1.0) (2026-10-28)
 
 ### Features

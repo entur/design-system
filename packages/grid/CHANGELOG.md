@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.1](https://github.com/entur/design-system/compare/@entur/grid@0.5.0...@entur/grid@0.5.1) (2026-11-02)
+
+### Entur Dependency Updates
+
+- **@entur/tokens:** `^4.3.0` → `^4.3.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#431-2026-11-02))
+- **@entur/utils:** `^0.15.3` → `^0.15.4` ([changelog](https://github.com/entur/design-system/blob/main/packages/utils/CHANGELOG.md#0154-2026-11-02))
+
 # [0.5.0](https://github.com/entur/design-system/compare/@entur/grid@0.4.5...@entur/grid@0.5.0) (2026-10-28)
 
 ### Features

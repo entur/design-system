@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.3.1](https://github.com/entur/design-system/compare/@entur/tokens@4.3.0...@entur/tokens@4.3.1) (2026-11-02)
+
+**Note:** Version bump only for package @entur/tokens
+
 # [4.3.0](https://github.com/entur/design-system/compare/@entur/tokens@4.2.0...@entur/tokens@4.3.0) (2026-10-28)
 
 ### Features
