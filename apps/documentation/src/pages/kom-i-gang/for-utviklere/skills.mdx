@@ -83,7 +83,9 @@ https://raw.githubusercontent.com/entur/design-system/main/skills/entur-linje/SK
 
 ## Migrer med en skill
 
-Migreringsskillene tar agenten gjennom en oppgradering steg for steg: finne berørt kode, endre den og sjekke resultatet.
+Ber du agenten oppgradere `@entur/*`-pakkene, bruker den migreringsguiden i `entur-web-development`. Den har breaking changes og utfasede props for hver pakke, og lastes av seg selv.
+
+De største migreringene har egne skills, som tar agenten gjennom jobben steg for steg: finne berørt kode, endre den og sjekke resultatet.
 
 <Table spacing="middle">
   <TableHead>
@@ -99,7 +101,7 @@ Migreringsskillene tar agenten gjennom en oppgradering steg for steg: finne ber�
     </TableRow>
     <TableRow>
       <DataCell><Text variant="code">migrate-react-18</Text></DataCell>
-      <DataCell>oppgraderer <Text variant="code">@entur/*</Text> til majorversjonene som krever React 18</DataCell>
+      <DataCell>oppgraderer fra <Text variant="code">@entur/*</Text>-versjoner som fortsatt støtter React 16 eller 17</DataCell>
     </TableRow>
   </TableBody>
 </Table>
