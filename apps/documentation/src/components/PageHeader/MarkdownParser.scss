@@ -4,9 +4,17 @@
   &__section,
   &__dependencies-title {
     display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: t.$space-extra-small t.$space-small;
+    margin: t.$space-large t.$space-none t.$space-none;
+  }
+
+  &__section-heading {
+    display: flex;
     align-items: center;
     gap: t.$space-extra-small;
-    margin: t.$space-large t.$space-none t.$space-none;
+    margin: 0;
   }
 
   // A release that is nothing but dependency updates: the tag names the
@@ -32,5 +40,11 @@
   // The longer description from the commit message, shown under the entry
   &__description {
     margin-block: t.$space-extra-small t.$space-small;
+
+    // Paragraphs get tone="subdued"; lists have no tone, so they are set here
+    .eds-text--unordered-list,
+    .eds-text--numbered-list {
+      color: var(--components-typography-basetext-standard-text-subdued);
+    }
   }
 }

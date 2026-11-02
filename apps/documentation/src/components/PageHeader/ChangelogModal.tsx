@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Link as GatsbyLink } from 'gatsby';
 
 import { Loader } from '@entur/loader';
 import { Modal } from '@entur/modal';
-import { Link, Text } from '@entur/typography/beta';
+import { Text } from '@entur/typography/beta';
 
 import { MarkdownParser } from './MarkdownParser';
 
@@ -60,18 +59,7 @@ export const ChangelogModal = ({
         (changelog === null ? (
           <Loader>Henter changelog</Loader>
         ) : (
-          <>
-            {changelog.includes('BREAKING CHANGES') && (
-              <Text variant="caption" tone="subdued">
-                Har oppgraderingen breaking changes? Se{' '}
-                <Link as={GatsbyLink} to="/komponenter/ressurser/migrering">
-                  migreringsguidene
-                </Link>
-                .
-              </Text>
-            )}
-            <MarkdownParser>{changelog}</MarkdownParser>
-          </>
+          <MarkdownParser>{changelog}</MarkdownParser>
         ))}
     </Modal>
   );

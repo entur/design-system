@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link as GatsbyLink } from 'gatsby';
 import { compiler } from 'markdown-to-jsx';
 
 import { BaseExpand, ExpandableTextButton } from '@entur/expand';
@@ -66,7 +67,7 @@ const ReleaseHeading = (props: { children?: React.ReactNode }) => (
 const MinorHeading = (props: { children?: React.ReactNode }) => (
   <Heading as="h6" variant="section-2" {...props} />
 );
-const Paragraph = (props: { children?: React.ReactNode }) => (
+const Paragraph = (props: { children?: React.ReactNode; tone?: 'subdued' }) => (
   <Text {...props} />
 );
 const Strong = (props: { children?: React.ReactNode }) => (
@@ -128,13 +129,24 @@ const ChangelogSection = ({
 
   // Rendered as a heading: the sections structure the changelog, and sit one
   // level below the version they belong to.
+  const title = stripBeta(heading);
+
   return (
-    // markdown-to-jsx passes a className of its own, so it goes first.
-    <h4 {...rest} className="markdown-parser__section">
-      <SectionTag title={stripBeta(heading)} />
-      {/* Samme kategorifarge som beta-merket ellers på siden. */}
-      {isBeta && <Tag variant="mystic">Beta</Tag>}
-    </h4>
+    <div className="markdown-parser__section">
+      {/* markdown-to-jsx passes a className of its own, so it goes first. */}
+      <h4 {...rest} className="markdown-parser__section-heading">
+        <SectionTag title={title} />
+        {/* Samme kategorifarge som beta-merket ellers på siden. */}
+        {isBeta && <Tag variant="mystic">Beta</Tag>}
+      </h4>
+      {title === 'BREAKING CHANGES' && (
+        <Text variant="caption" lang="nb">
+          <Link as={GatsbyLink} to="/komponenter/ressurser/migrering">
+            Se migreringsguidene
+          </Link>
+        </Text>
+      )}
+    </div>
   );
 };
 
@@ -159,7 +171,11 @@ const ChangelogEntry = ({
     <ListItem {...rest}>
       {summary.props.children}
       <TextContainer className="markdown-parser__description">
-        {description}
+        {description.map(block =>
+          isType(block, Paragraph)
+            ? React.cloneElement(block, { tone: 'subdued' })
+            : block,
+        )}
       </TextContainer>
     </ListItem>
   );
@@ -259,6 +275,86 @@ const collapseDependencySections = (body: React.ReactNode[]) => {
   return collapsed.length ? collapsed : null;
 };
 
+/** The children of an entry, or of its summary when it has a description. */
+const summaryOf = (entry: React.ReactElement): React.ReactNode[] => {
+  const [first] = React.Children.toArray(entry.props.children);
+  return React.Children.toArray(
+    isType(first, Paragraph) ? first.props.children : entry.props.children,
+  );
+};
+
+/** The scope an entry starts with, such as `typography/beta` in `**typography/beta:** …`. */
+const scopeOf = (entry: React.ReactNode): string | null => {
+  if (!isType(entry, ChangelogEntry)) return null;
+  const [first] = summaryOf(entry);
+  const text = isType(first, Strong) ? textContent(first.props.children) : '';
+  return text.endsWith(':') ? text.slice(0, -1) : null;
+};
+
+/** The entry without its scope, for a list under that scope. */
+const withoutScope = (entry: React.ReactElement) => {
+  const strip = (children: React.ReactNode[]) => {
+    const [, next, ...rest] = children;
+    return [typeof next === 'string' ? next.trimStart() : next, ...rest];
+  };
+  const [first, ...blocks] = React.Children.toArray(entry.props.children);
+
+  return isType(first, Paragraph)
+    ? React.cloneElement(entry, {}, [
+        React.cloneElement(first, {}, ...strip(summaryOf(entry))),
+        ...blocks,
+      ])
+    : React.cloneElement(entry, {}, ...strip(summaryOf(entry)));
+};
+
+/**
+ * Entries with the same scope listed under it once, so a section with many
+ * `typography/beta` fixes reads as one group. A scope with one entry is left as it is.
+ */
+const groupByScope = (list: React.ReactElement) => {
+  const entries = React.Children.toArray(list.props.children);
+  const groups = new Map<string | null, React.ReactNode[]>();
+  const order: React.ReactNode[] = [];
+
+  entries.forEach(entry => {
+    const scope = scopeOf(entry);
+    if (scope === null) return order.push(entry);
+    if (!groups.has(scope)) {
+      groups.set(scope, []);
+      order.push(scope);
+    }
+    groups.get(scope)?.push(entry);
+  });
+
+  return React.cloneElement(
+    list,
+    {},
+    order.flatMap(item => {
+      if (typeof item !== 'string') return [item];
+      const group = groups.get(item) ?? [];
+      if (group.length === 1) return group;
+
+      return (
+        <ChangelogEntry key={item}>
+          <Strong>{item}</Strong>
+          <UnorderedList>
+            {group.map(entry => withoutScope(entry as React.ReactElement))}
+          </UnorderedList>
+        </ChangelogEntry>
+      );
+    }),
+  );
+};
+
+/** Every list a person wrote, grouped by scope. Generated sections are left alone. */
+const groupSectionsByScope = (nodes: React.ReactNode[]) =>
+  nodes.map((node, index) => {
+    const title = sectionTitle(nodes[index - 1]);
+    return title && !SECTIONS[title]?.generated && isType(node, UnorderedList)
+      ? groupByScope(node)
+      : node;
+  });
+
 /** Nodene delt i én bolk per release: overskriften, og alt som følger den. */
 const splitReleases = (nodes: React.ReactNode[]) => {
   const releases: React.ReactNode[][] = [];
@@ -318,7 +414,7 @@ export const MarkdownParser: React.FC<{ children: any }> = ({ children }) => {
 
   return (
     <TextContainer className="markdown-parser" lang="en">
-      {collapseDependencyOnlyReleases(nodes)}
+      {collapseDependencyOnlyReleases(groupSectionsByScope(nodes))}
     </TextContainer>
   );
 };
