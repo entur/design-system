@@ -1,0 +1,11 @@
+@use '@entur/tokens/dist/styles.scss' as eds;
+
+// position stacks the footer above the front page's decorative background layers
+.footer {
+  position: relative;
+  border-top: eds.$border-widths-default solid var(--designentur-header-default-divider);
+
+  &.eds-contrast {
+    border-top-color: var(--designentur-header-contrast-divider);
+  }
+}
