@@ -41,6 +41,10 @@ jobs:
       group: 'grp-ubuntu-22.04-4core-x64'
     steps:
       - uses: actions/checkout@v7.0.1
+        # The skills changelog is built from git history
+        with:
+          fetch-depth: 0
+          filter: blob:none
 
       - name: Install and Cache Yarn Dependencies
         uses: ./.github/actions/install-and-cache-dependencies
