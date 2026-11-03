@@ -1,0 +1,100 @@
+{
+  "tags": {},
+  "description": "",
+  "displayName": "FooterBrand",
+  "methods": [],
+  "props": {
+    "description": {
+      "defaultValue": {
+        "value": "Entur gjør det enklere å reise kollektivt i hele Norge."
+      },
+      "description": "Produktbeskrivelse på én til to setninger",
+      "name": "description",
+      "declarations": [
+        {
+          "fileName": "packages/layout/src/beta/Footer/Footer.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "children": {
+      "defaultValue": null,
+      "description": "Logoen, for eksempel `<Logo productName=\"Navn\" />` fra `@entur/menu`",
+      "name": "children",
+      "declarations": [
+        {
+          "fileName": "packages/layout/src/beta/Footer/Footer.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "className": {
+      "defaultValue": null,
+      "description": "",
+      "name": "className",
+      "declarations": [
+        {
+          "fileName": "packages/layout/src/beta/Footer/Footer.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "style": {
+      "defaultValue": null,
+      "description": "",
+      "name": "style",
+      "declarations": [
+        {
+          "fileName": "packages/layout/src/beta/Footer/Footer.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "CSSProperties | undefined"
+      }
+    },
+    "as": {
+      "defaultValue": null,
+      "description": "An override of the default HTML tag.\nCan also be another React component.",
+      "name": "as",
+      "declarations": [
+        {
+          "fileName": "node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "ElementType<any, keyof IntrinsicElements> | undefined"
+      }
+    },
+    "ref": {
+      "defaultValue": null,
+      "description": "",
+      "name": "ref",
+      "declarations": [
+        {
+          "fileName": "packages/layout/src/beta/Footer/Footer.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "Ref<Element> | undefined"
+      }
+    }
+  }
+}

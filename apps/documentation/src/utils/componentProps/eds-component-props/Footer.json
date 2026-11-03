@@ -1,0 +1,134 @@
+{
+  "tags": {},
+  "description": "Footer for Entur-produkter. Subfooteren med copyright, lenke til entur.no og\nEnturs sosiale medier er lik i alle produkter og kan ikke endres.",
+  "displayName": "Footer",
+  "methods": [],
+  "props": {
+    "contrast": {
+      "defaultValue": {
+        "value": false
+      },
+      "description": "Bruker kontrastvarianten. Velg variant etter produktets visuelle uttrykk.\nInne i en `Contrast`-wrapper er footeren alltid kontrast.",
+      "name": "contrast",
+      "declarations": [
+        {
+          "fileName": "packages/layout/src/beta/Footer/Footer.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "boolean | undefined"
+      }
+    },
+    "hideSocialMedia": {
+      "defaultValue": {
+        "value": false
+      },
+      "description": "Skjuler Entur-ikonene for sosiale medier i subfooteren",
+      "name": "hideSocialMedia",
+      "declarations": [
+        {
+          "fileName": "packages/layout/src/beta/Footer/Footer.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "boolean | undefined"
+      }
+    },
+    "socialMediaLabel": {
+      "defaultValue": {
+        "value": "Entur i sosiale medier"
+      },
+      "description": "Tilgjengelig navn på listen med sosiale medier",
+      "name": "socialMediaLabel",
+      "declarations": [
+        {
+          "fileName": "packages/layout/src/beta/Footer/Footer.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "children": {
+      "defaultValue": null,
+      "description": "`Footer.Brand`, `Footer.LinkGroup` og `Footer.Column`",
+      "name": "children",
+      "declarations": [
+        {
+          "fileName": "packages/layout/src/beta/Footer/Footer.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "className": {
+      "defaultValue": null,
+      "description": "",
+      "name": "className",
+      "declarations": [
+        {
+          "fileName": "packages/layout/src/beta/Footer/Footer.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "style": {
+      "defaultValue": null,
+      "description": "",
+      "name": "style",
+      "declarations": [
+        {
+          "fileName": "packages/layout/src/beta/Footer/Footer.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "CSSProperties | undefined"
+      }
+    },
+    "as": {
+      "defaultValue": null,
+      "description": "An override of the default HTML tag.\nCan also be another React component.",
+      "name": "as",
+      "declarations": [
+        {
+          "fileName": "node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "ElementType<any, keyof IntrinsicElements> | undefined"
+      }
+    },
+    "ref": {
+      "defaultValue": null,
+      "description": "",
+      "name": "ref",
+      "declarations": [
+        {
+          "fileName": "packages/layout/src/beta/Footer/Footer.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "Ref<Element> | undefined"
+      }
+    }
+  }
+}

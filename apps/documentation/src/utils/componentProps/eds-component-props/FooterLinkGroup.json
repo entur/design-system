@@ -1,0 +1,115 @@
+{
+  "tags": {},
+  "description": "",
+  "displayName": "FooterLinkGroup",
+  "methods": [],
+  "props": {
+    "heading": {
+      "defaultValue": null,
+      "description": "Overskrift for lenkegruppen. Brukes også som navn på navigasjonen.",
+      "name": "heading",
+      "declarations": [
+        {
+          "fileName": "packages/layout/src/beta/Footer/Footer.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": true,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "headingLevel": {
+      "defaultValue": {
+        "value": "h2"
+      },
+      "description": "Overskriftsnivå. Velg det som passer dokumentstrukturen på siden.",
+      "name": "headingLevel",
+      "declarations": [
+        {
+          "fileName": "packages/layout/src/beta/Footer/Footer.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "\"h2\" | \"h3\" | \"h4\" | undefined"
+      }
+    },
+    "children": {
+      "defaultValue": null,
+      "description": "Lenkene i gruppen. Hvert element blir et punkt i en liste.",
+      "name": "children",
+      "declarations": [
+        {
+          "fileName": "packages/layout/src/beta/Footer/Footer.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "className": {
+      "defaultValue": null,
+      "description": "",
+      "name": "className",
+      "declarations": [
+        {
+          "fileName": "packages/layout/src/beta/Footer/Footer.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "style": {
+      "defaultValue": null,
+      "description": "",
+      "name": "style",
+      "declarations": [
+        {
+          "fileName": "packages/layout/src/beta/Footer/Footer.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "CSSProperties | undefined"
+      }
+    },
+    "as": {
+      "defaultValue": null,
+      "description": "An override of the default HTML tag.\nCan also be another React component.",
+      "name": "as",
+      "declarations": [
+        {
+          "fileName": "node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "ElementType<any, keyof IntrinsicElements> | undefined"
+      }
+    },
+    "ref": {
+      "defaultValue": null,
+      "description": "",
+      "name": "ref",
+      "declarations": [
+        {
+          "fileName": "packages/layout/src/beta/Footer/Footer.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "Ref<Element> | undefined"
+      }
+    }
+  }
+}

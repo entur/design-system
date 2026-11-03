@@ -525,6 +525,15 @@
       "FlexSpacer.json"
     ]
   },
+  "layout/src/beta/Footer/Footer.tsx": {
+    "hash": "42b510e5e01aba8a1a4dd22d2ad8f103",
+    "outputs": [
+      "FooterBrand.json",
+      "FooterColumn.json",
+      "FooterLinkGroup.json",
+      "Footer.json"
+    ]
+  },
   "layout/src/beta/Grid/Grid.tsx": {
     "hash": "6aee34dcc276fcdd9b803aa8a97d0c78",
     "outputs": [

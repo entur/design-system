@@ -1,0 +1,83 @@
+{
+  "tags": {},
+  "description": "",
+  "displayName": "FooterColumn",
+  "methods": [],
+  "props": {
+    "children": {
+      "defaultValue": null,
+      "description": "En eller flere `Footer.LinkGroup` som skal stables i samme kolonne",
+      "name": "children",
+      "declarations": [
+        {
+          "fileName": "packages/layout/src/beta/Footer/Footer.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "className": {
+      "defaultValue": null,
+      "description": "",
+      "name": "className",
+      "declarations": [
+        {
+          "fileName": "packages/layout/src/beta/Footer/Footer.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "style": {
+      "defaultValue": null,
+      "description": "",
+      "name": "style",
+      "declarations": [
+        {
+          "fileName": "packages/layout/src/beta/Footer/Footer.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "CSSProperties | undefined"
+      }
+    },
+    "as": {
+      "defaultValue": null,
+      "description": "An override of the default HTML tag.\nCan also be another React component.",
+      "name": "as",
+      "declarations": [
+        {
+          "fileName": "node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "ElementType<any, keyof IntrinsicElements> | undefined"
+      }
+    },
+    "ref": {
+      "defaultValue": null,
+      "description": "",
+      "name": "ref",
+      "declarations": [
+        {
+          "fileName": "packages/layout/src/beta/Footer/Footer.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "Ref<Element> | undefined"
+      }
+    }
+  }
+}
