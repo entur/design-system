@@ -6476,6 +6476,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@entur/layout@workspace:packages/layout"
   dependencies:
+    "@entur/button": "workspace:^"
     "@entur/icons": "workspace:^"
     "@entur/tokens": "workspace:^"
     "@entur/typography": "workspace:^"

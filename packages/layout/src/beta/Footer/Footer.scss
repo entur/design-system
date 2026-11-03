@@ -1,0 +1,127 @@
+@use '../templates/variables' as v;
+
+.eds-footer {
+  --eds-footer-text: var(--basecolors-text-accent);
+  --eds-footer-text-subdued: var(--basecolors-text-subdued);
+  --eds-footer-divider: var(--basecolors-stroke-subduedalt);
+
+  box-sizing: border-box;
+  width: 100%;
+  padding: var(--eds-footer-padding-block-start, #{v.$default-footer-padding-block-start-mobile})
+    var(--eds-footer-padding-inline, #{v.$default-footer-padding-inline-mobile}) var(--spacing-m);
+  background-color: var(--basecolors-frame-tint);
+  color: var(--eds-footer-text);
+
+  // Inside a contrast wrapper nested components are contrast anyway, so the footer follows
+  &--contrast,
+  :where(.eds-contrast) & {
+    --eds-footer-text: var(--basecolors-text-light);
+    --eds-footer-text-subdued: var(--basecolors-text-subduedalt);
+    --eds-footer-divider: var(--basecolors-stroke-subdued);
+
+    background-color: var(--basecolors-frame-contrast);
+  }
+
+  @media (width >= 1200px) {
+    padding-block-start: var(--eds-footer-padding-block-start, #{v.$default-footer-padding-block-start});
+    padding-inline: var(--eds-footer-padding-inline, #{v.$default-footer-padding-inline});
+  }
+
+  // Wraps on the footer's own width, not the viewport, so columns never squeeze below their minimum
+  &__content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xl);
+    overflow-wrap: break-word;
+
+    > * {
+      flex: 1 1 12rem;
+      min-width: 0;
+    }
+  }
+
+  &__brand {
+    flex: 1.25 1 18rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-xl);
+  }
+
+  &__description {
+    margin: 0;
+    max-width: 24rem;
+    font-size: var(--font-size-body-s);
+    line-height: var(--font-line-height-body-s);
+    font-weight: var(--font-weight-body);
+  }
+
+  &__column {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+  }
+
+  &__link-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+
+  &__heading {
+    margin: 0;
+    font-size: var(--font-size-heading-m);
+    line-height: var(--font-line-height-heading-m);
+    font-weight: var(--font-weight-heading);
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-xs);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__subfooter {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-m);
+    margin-block-start: var(--spacing-3xl);
+    padding-block-start: var(--spacing-m);
+    border-block-start: 1px solid var(--eds-footer-divider);
+    color: var(--eds-footer-text-subdued);
+    font-size: var(--font-size-body-s);
+    line-height: var(--font-line-height-body-s);
+  }
+
+  &__legal {
+    display: flex;
+    align-items: center;
+    margin: 0;
+
+    // Separator sits on the preceding item, since a link's underline spans its own padding
+    > :where(:not(:last-child)) {
+      margin-inline-end: var(--spacing-xs);
+      padding-inline-end: var(--spacing-xs);
+      border-inline-end: 1px solid var(--eds-footer-divider);
+    }
+  }
+
+  // Pulls the 24px buttons out so the 16px icons line up with the subfooter edge
+  &__social {
+    display: flex;
+    gap: var(--spacing-m);
+    margin: 0 calc(-1 * var(--spacing-2xs));
+    padding: 0;
+    list-style: none;
+  }
+
+  &__subfooter-link {
+    color: inherit;
+  }
+}
