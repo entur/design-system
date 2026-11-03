@@ -9,7 +9,6 @@ type TimePickerArrowButtonProps = {
   readonly?: boolean;
   'aria-label': string;
   onClick?: () => void;
-  onFocus?: () => void;
 };
 
 export const TimePickerArrowButton = ({
@@ -29,6 +28,9 @@ export const TimePickerArrowButton = ({
       )}
       type="button"
       tabIndex={-1}
+      // Keeps focus where it is on a mouse click. Moving focus away when the
+      // button got it stopped screen readers from pressing it
+      onMouseDown={e => e.preventDefault()}
       onClick={onClick}
       aria-label={ariaLabel}
       disabled={disabled}

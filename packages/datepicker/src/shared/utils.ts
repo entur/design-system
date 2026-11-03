@@ -202,25 +202,6 @@ export const convertValueToType = ({
 
 export const modulo = (a: number, b: number) => ((a % b) + b) % b;
 
-export const focusSegment = (
-  ref: React.RefObject<HTMLDivElement>,
-  segment: 'first' | 'last',
-) => {
-  if (ref.current) {
-    const segments = ref.current.querySelectorAll(
-      '.eds-date-and-time-field__segment',
-    );
-    const firstSegment = segments[0] as HTMLElement;
-    const lastSegment = segments[segments.length - 1] as HTMLElement;
-    switch (segment) {
-      case 'first':
-        return firstSegment.focus();
-      case 'last':
-        return lastSegment.focus();
-    }
-  }
-};
-
 /** Based on code from https://stackoverflow.com/questions/6117814/get-week-of-year-in-javascript-like-in-php */
 export function getWeekNumberForDate(date: DateValue | null) {
   if (date == null) return -1;

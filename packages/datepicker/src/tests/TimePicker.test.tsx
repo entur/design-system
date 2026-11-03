@@ -222,6 +222,83 @@ describe('TimePicker', () => {
     expect(onChange).toHaveBeenLastCalledWith(null);
   });
 
+  describe('arrow buttons', () => {
+    function Consumer() {
+      const [time, setTime] = React.useState<Time | null>(new Time(10, 0));
+      return (
+        <TimePicker
+          label="Departure"
+          selectedTime={time}
+          onChange={setTime}
+          locale="en-GB"
+          forcedReturnType="Time"
+        />
+      );
+    }
+    // react-aria adds live regions of its own
+    const getLiveRegion = () =>
+      document.querySelector(
+        '.eds-visually-hidden[aria-live="polite"]',
+      ) as HTMLElement;
+
+    test('are left out of the tab order', async () => {
+      const user = userEvent.setup();
+      render(<Consumer />);
+
+      await user.tab();
+      await user.tab();
+      await user.tab();
+
+      for (const button of screen.getAllByRole('button')) {
+        expect(button).toHaveAttribute('tabindex', '-1');
+        expect(button).not.toHaveFocus();
+      }
+    });
+
+    test('keep focus when a screen reader moves to them, so they can be pressed', async () => {
+      const user = userEvent.setup();
+      render(<Consumer />);
+      const addButton = screen.getByRole('button', {
+        name: 'Legg til 30 minutter',
+      });
+
+      addButton.focus();
+      expect(addButton).toHaveFocus();
+      await user.keyboard('{Enter}');
+
+      expect(addButton).toHaveFocus();
+      expect(getLiveRegion()).toHaveTextContent('valgt tid: 10:30');
+    });
+
+    test('leave focus in the time field on a mouse click', async () => {
+      const user = userEvent.setup();
+      render(<Consumer />);
+      const minute = screen.getByRole('spinbutton', {
+        name: 'minute, Departure',
+      });
+
+      await user.click(minute);
+      await user.click(
+        screen.getByRole('button', { name: 'Trekk fra 30 minutter' }),
+      );
+
+      expect(minute).toHaveFocus();
+      expect(getLiveRegion()).toHaveTextContent('valgt tid: 09:30');
+    });
+
+    test('changes made with the keyboard are not announced again', async () => {
+      const user = userEvent.setup();
+      render(<Consumer />);
+
+      await user.click(
+        screen.getByRole('spinbutton', { name: 'minute, Departure' }),
+      );
+      await user.keyboard('{ArrowUp}');
+
+      expect(getLiveRegion()).toBeEmptyDOMElement();
+    });
+  });
+
   test.each(['disabled', 'readOnly'] as const)(
     '%s prevents mouse and keyboard changes',
     async mode => {
