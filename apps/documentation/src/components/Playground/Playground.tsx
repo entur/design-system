@@ -216,7 +216,8 @@ const Playground: React.FC<PlaygroundProps> = ({
         >
           <LivePreview
             className="playground__live-preview"
-            style={scaledPreviewStyle ?? style}
+            // CSS from Sanity can override the scaled preview's alignment
+            style={{ ...scaledPreviewStyle, ...style }}
           />
           <LiveError className="playground__live-preview" />
         </Element>
