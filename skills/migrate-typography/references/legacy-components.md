@@ -43,7 +43,7 @@ The old components had margins by default (`margin="both"` on most, `"bottom"` o
 - `margin="none"`: remove it, nothing to replace.
 - `margin="top"`, `"bottom"` or `"both"`, or no `margin`: decide whether it is running text (`TextContainer`) or UI (`Flex gap` or `spacing`).
 
-The old margins applied to the first and last child too. A section, card or banner whose own padding is zero or small at that edge often relied on them, for example `padding-top: 0` above a `Heading2`, which had 32px above it. When the old component was the first or last child, check the container's padding and move the space there. Keep only one of `padding` and `spacing`, or the space is doubled.
+The old margins applied to the first and last child too. A section, card or banner whose own padding is zero or small at that edge often relied on them, for example `padding-top: 0` above a `Heading2`, which had 32px above it. When the old component was the first or last child, check the container's padding and move the space there. Keep only one of `padding` and `spacing`, or the space is doubled. The margin can also have hidden a background that starts below the container's edge, such as an absolutely positioned background without `top: 0`, which began at the padding instead. Check where the background starts, not only the padding.
 
 | Old                   | Old margin (above / below) |
 | --------------------- | -------------------------- |
