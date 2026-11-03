@@ -55,6 +55,7 @@ Text components no longer have margins. Load **[references/spacing.md](reference
 
 - **Running text** (articles, help pages, terms, several headings and paragraphs in a row, rich-text renderers such as Portable Text or HTML parsers): wrap it in `<TextContainer>`. The rhythm only reaches direct children, so wrap the element whose children are the text blocks.
 - **Text in UI** (cards, modals, forms, tables): remove `spacing="none"`, which is now the default. Where two texts relied on the old margin (a title and a description), use `Flex` with `gap`, or `spacing` on one of them.
+- **First or last child of a container** (a section, card or banner): the old margin may have stood in for the container's padding. If the container's padding at that edge is zero or small (`padding-top: 0`, a `none` token), the text now touches the edge. Move the space to the container's padding. Check the visible edge too: a background or border that doesn't start at the container's edge (an absolutely positioned background without `top: 0`) was hidden by the old margin and now cuts through the text. Step 1 doesn't find this CSS, since it doesn't target typography.
 - **Can't tell:** leave it and list it in the report.
 
 **Done when:** every text component without `spacing` has been classified, and the uncertain ones are listed.
@@ -76,12 +77,12 @@ For each override from step 1, check it against "CSS class names" in [references
 - **Global element rules and resets**, also ones that never targeted typography: they now win over the new components (see "CSS class names" in beta-changes.md). Find them, including CSS-in-JS globals (`createGlobalStyle`, `Global`):
 
   ```bash
-  grep -rnE "^(\*|a|p|h[1-6]|ul|ol|li|blockquote|code|pre|label|figcaption)(\s*[,{]|:[a-z]|\s*$)" --include='*.css' --include='*.scss' --include='*.less' "${CODE[@]}" $SRC
+  grep -rnE "^(\*|a|p|h[1-6]|ul|ol|li|blockquote|code|pre|label|figure|figcaption)(\s*[,{]|:[a-z]|\s*$)" --include='*.css' --include='*.scss' --include='*.less' "${CODE[@]}" $SRC
   ```
 
   It only finds rules at the start of a line. Rules nested in a class in SCSS (`.header { a { … } }`) are scoped and fine. Remove what the components now cover. Move the rest: resets into `@layer core.reset`, element styles into `@layer core.base`, with the layer order lines first in the app's first stylesheet. The recipe is in [the CSS layers guide](https://raw.githubusercontent.com/entur/design-system/main/skills/entur-web-development/references/css-layers.md), section "The beta typography and your global CSS".
 
-**Done when:** every override has been kept, renamed or removed, with a reason, and no unlayered global rule hits `*`, `a`, `p`, headings, lists or `code`.
+**Done when:** every override has been kept, renamed or removed, with a reason, and no unlayered global rule hits `*`, `a`, `p`, headings, lists, `figure` or `code`.
 
 ### 8. Verify
 
