@@ -1,0 +1,68 @@
+{
+  "tags": {},
+  "description": "",
+  "displayName": "FooterBrand",
+  "methods": [],
+  "props": {
+    "productName": {
+      "defaultValue": null,
+      "description": "Produktnavnet som vises etter Entur-logoen (f.eks. \"Tavla\", \"Partner\")",
+      "name": "productName",
+      "declarations": [
+        {
+          "fileName": "packages/menu/src/beta/Footer/Footer.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "children": {
+      "defaultValue": null,
+      "description": "Tekst under logoen, for eksempel en kort beskrivelse, adresse eller organisasjonsnummer.\nRen tekst og elementer får riktig typografi. Hvert element blir en egen linje.",
+      "name": "children",
+      "declarations": [
+        {
+          "fileName": "packages/menu/src/beta/Footer/Footer.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "className": {
+      "defaultValue": null,
+      "description": "",
+      "name": "className",
+      "declarations": [
+        {
+          "fileName": "packages/menu/src/beta/Footer/Footer.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "style": {
+      "defaultValue": null,
+      "description": "",
+      "name": "style",
+      "declarations": [
+        {
+          "fileName": "packages/menu/src/beta/Footer/Footer.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "CSSProperties | undefined"
+      }
+    }
+  }
+}

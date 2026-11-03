@@ -1,0 +1,68 @@
+{
+  "tags": {},
+  "description": "",
+  "displayName": "FooterLinkGroup",
+  "methods": [],
+  "props": {
+    "title": {
+      "defaultValue": null,
+      "description": "Overskrift for lenkegruppen. Brukes også som navn på navigasjonen.",
+      "name": "title",
+      "declarations": [
+        {
+          "fileName": "packages/menu/src/beta/Footer/Footer.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": true,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "children": {
+      "defaultValue": null,
+      "description": "Lenkene i gruppen. Hvert element blir et punkt i en liste.",
+      "name": "children",
+      "declarations": [
+        {
+          "fileName": "packages/menu/src/beta/Footer/Footer.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "className": {
+      "defaultValue": null,
+      "description": "",
+      "name": "className",
+      "declarations": [
+        {
+          "fileName": "packages/menu/src/beta/Footer/Footer.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "style": {
+      "defaultValue": null,
+      "description": "",
+      "name": "style",
+      "declarations": [
+        {
+          "fileName": "packages/menu/src/beta/Footer/Footer.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "CSSProperties | undefined"
+      }
+    }
+  }
+}
