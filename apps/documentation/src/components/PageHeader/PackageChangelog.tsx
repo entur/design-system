@@ -8,12 +8,11 @@ import { ListViewIcon } from '@entur/icons';
 import { ChangelogModal } from './ChangelogModal';
 import { useGetChangelog } from './useGetChangelog';
 
-/** Åpner changelogen for pakken siden handler om, f.eks.
+/** Åpner changelogen siden handler om, f.eks.
  * /komponenter/knapper/button?changelog */
 const CHANGELOG_PARAM = 'changelog';
 
 export const PackageChangelog = ({ packageName }: { packageName: string }) => {
-  const location = useLocation();
   const query = useGetChangelog();
   const normalizedPackageName = packageName.replace(/\/beta$/, '');
   const packageKey = normalizedPackageName.split('@entur/')?.[1];
@@ -22,6 +21,24 @@ export const PackageChangelog = ({ packageName }: { packageName: string }) => {
   );
 
   if (!changelog) return null;
+
+  return (
+    <ChangelogButton
+      title={`@entur/${changelog.name}`}
+      url={changelog.publicURL}
+    />
+  );
+};
+
+/** Knappen som åpner en changelog, og modalen den åpner. */
+export const ChangelogButton = ({
+  title,
+  url,
+}: {
+  title: string;
+  url: string;
+}) => {
+  const location = useLocation();
 
   // The URL decides whether the changelog is open, so it can be linked to.
   const open = new URLSearchParams(location.search).has(CHANGELOG_PARAM);
@@ -48,8 +65,8 @@ export const PackageChangelog = ({ packageName }: { packageName: string }) => {
       </ActionChip>
 
       <ChangelogModal
-        packageName={changelog.name}
-        url={changelog.publicURL}
+        title={title}
+        url={url}
         open={open}
         onDismiss={() => navigate(urlWithChangelog(false), { replace: true })}
       />

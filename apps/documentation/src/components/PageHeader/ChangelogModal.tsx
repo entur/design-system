@@ -7,8 +7,8 @@ import { Text } from '@entur/typography/beta';
 import { MarkdownParser } from './MarkdownParser';
 
 type ChangelogModalProps = {
-  /** Navnet på pakken, uten @entur/-prefiks */
-  packageName: string;
+  /** Tittelen på modalen, f.eks. @entur/button */
+  title: string;
   /** URL til den rå CHANGELOG-filen */
   url: string;
   open: boolean;
@@ -16,7 +16,7 @@ type ChangelogModalProps = {
 };
 
 export const ChangelogModal = ({
-  packageName,
+  title,
   url,
   open,
   onDismiss,
@@ -46,12 +46,7 @@ export const ChangelogModal = ({
   }, [open, url]);
 
   return (
-    <Modal
-      onDismiss={onDismiss}
-      title={`@entur/${packageName}`}
-      size="large"
-      open={open}
-    >
+    <Modal onDismiss={onDismiss} title={title} size="large" open={open}>
       {failed && (
         <Text variant="caption">Klarte ikke å hente changelogen.</Text>
       )}

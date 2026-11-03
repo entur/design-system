@@ -1,6 +1,7 @@
 import React from 'react';
 import { Heading, Text } from '@entur/typography/beta';
 import { PackageChangelog } from './PackageChangelog';
+import { SkillsChangelog } from './SkillsChangelog';
 import { ComponentIcon, GithubIcon, SourceCodeIcon } from '@entur/icons';
 import { ActionChip } from '@entur/chip';
 import { Flex, Grid } from '@entur/layout/beta';
@@ -18,6 +19,8 @@ export type BasePageHeaderProps = {
   isCategoryLandingPage?: boolean;
   figmaLink?: string;
   tag?: string;
+  /** Viser changelogen for skills, som ikke er en npm-pakke */
+  skillsChangelog?: boolean;
 };
 
 // Component names like BreadcrumbNavigation may wrap between their words
@@ -36,6 +39,7 @@ export const BasePageHeader: React.FC<BasePageHeaderProps> = ({
   npmPackage,
   figmaLink,
   tag,
+  skillsChangelog,
 }) => {
   return (
     <header className="page-header">
@@ -81,6 +85,7 @@ export const BasePageHeader: React.FC<BasePageHeaderProps> = ({
         >
           <Flex direction="column" align={{ base: 'start', s: 'end' }} gap="xs">
             {npmPackage && <PackageChangelog packageName={npmPackage} />}
+            {skillsChangelog && <SkillsChangelog />}
             <Flex
               direction="row"
               gap="2xs"
