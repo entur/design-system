@@ -1,0 +1,151 @@
+.eds-footer {
+  --eds-footer-text: var(--basecolors-text-accent);
+  --eds-footer-text-subdued: var(--basecolors-text-subdued);
+  --eds-footer-divider: var(--basecolors-stroke-subduedalt);
+
+  // The footer is the container, so the layout follows its own width, also in scaled previews
+  container: eds-footer / inline-size;
+  box-sizing: border-box;
+  width: 100%;
+  background-color: var(--basecolors-frame-tint);
+  color: var(--eds-footer-text);
+
+  // Inside a contrast wrapper nested components are contrast anyway, so the footer follows
+  &--contrast,
+  :where(.eds-contrast) & {
+    --eds-footer-text: var(--basecolors-text-light);
+    --eds-footer-text-subdued: var(--basecolors-text-subduedalt);
+    --eds-footer-divider: var(--basecolors-stroke-subdued);
+
+    background-color: var(--basecolors-frame-contrast);
+  }
+
+  // Breakpoints match layout/beta: m (800px) and lg (1200px)
+  // Set --eds-footer-max-width to the top bar's width to center the content.
+  // Content-box keeps the padding as a gutter outside the max width.
+  &__inner {
+    box-sizing: content-box;
+    max-inline-size: var(--eds-footer-max-width, none);
+    margin-inline: auto;
+    padding: var(--spacing-6xl) var(--eds-footer-padding-inline, var(--spacing-xl)) var(--spacing-m);
+
+    @container eds-footer (width >= 800px) {
+      padding-block-start: var(--spacing-9xl);
+      padding-inline: var(--eds-footer-padding-inline, var(--spacing-11xl));
+    }
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--spacing-3xl) var(--spacing-xl);
+    overflow-wrap: break-word;
+
+    @container eds-footer (width >= 800px) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    // Room for brand and three groups, so fewer groups keep their width. More groups shrink all
+    // columns, but the brand column (plain 1fr) never gets narrower than the logo.
+    @container eds-footer (width >= 1200px) {
+      grid-template-columns: 1fr repeat(3, minmax(0, 1fr));
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(0, 1fr);
+    }
+  }
+
+  // Text children inherit body-m, so plain text, <address> or spans need no extra markup
+  &__brand {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-m);
+    max-width: 24rem;
+    font-size: var(--font-size-body-m);
+    line-height: var(--font-line-height-body-m);
+    font-weight: var(--font-weight-body);
+
+    @container eds-footer (800px <= width < 1200px) {
+      grid-column: 1 / -1;
+    }
+
+    // Adds to the xl column gap, so the brand column is followed by 10xl
+    @container eds-footer (width >= 1200px) {
+      margin-inline-end: calc(var(--spacing-10xl) - var(--spacing-xl));
+    }
+  }
+
+  // Zero specificity, so typography components keep their own styles
+  :where(&__brand) > :where(*) {
+    margin: 0;
+    font-style: normal;
+  }
+
+  &__link-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+
+  &__heading {
+    margin: 0;
+    font-size: var(--font-size-heading-m);
+    line-height: var(--font-line-height-heading-m);
+    font-weight: var(--font-weight-heading);
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-xs);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__subfooter {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-m);
+    margin-block-start: var(--spacing-3xl);
+    padding-block-start: var(--spacing-m);
+
+    border-block-start: 1px solid var(--eds-footer-divider);
+    color: var(--eds-footer-text-subdued);
+    font-size: var(--font-size-body-s);
+    line-height: var(--font-line-height-body-s);
+
+    @container eds-footer (width >= 800px) {
+      margin-block-start: var(--spacing-5xl);
+    }
+  }
+
+  &__legal {
+    display: flex;
+    align-items: center;
+    margin: 0;
+
+    // Separator sits on the preceding item, since a link's underline spans its own padding
+    > :where(:not(:last-child)) {
+      margin-inline-end: var(--spacing-xs);
+      padding-inline-end: var(--spacing-xs);
+      border-inline-end: 1px solid var(--eds-footer-divider);
+    }
+  }
+
+  // Pulls the 24px buttons out so the 16px icons line up with the subfooter edge
+  &__social {
+    display: flex;
+    gap: var(--spacing-m);
+    margin: 0 calc(-1 * var(--spacing-2xs));
+    padding: 0;
+    list-style: none;
+  }
+
+  &__subfooter-link {
+    color: inherit;
+  }
+}
