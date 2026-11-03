@@ -43,6 +43,17 @@ The old components had margins by default (`margin="both"` on most, `"bottom"` o
 - `margin="none"`: remove it, nothing to replace.
 - `margin="top"`, `"bottom"` or `"both"`, or no `margin`: decide whether it is running text (`TextContainer`) or UI (`Flex gap` or `spacing`).
 
+The old margins applied to the first and last child too. A section, card or banner whose own padding is zero or small at that edge often relied on them, for example `padding-top: 0` above a `Heading2`, which had 32px above it. When the old component was the first or last child, check the container's padding and move the space there. Keep only one of `padding` and `spacing`, or the space is doubled.
+
+| Old                   | Old margin (above / below) |
+| --------------------- | -------------------------- |
+| `Heading1`            | 0 / 16                     |
+| `Heading2`            | 32 / 12                    |
+| `Heading3`            | 24 / 8                     |
+| `Heading4`–`Heading6` | 24 / 0                     |
+| `LeadParagraph`       | 24 / 24                    |
+| `Paragraph`           | 0 / 32                     |
+
 ## Old CSS class names
 
 CSS that targets the old classes stops matching after the swap.

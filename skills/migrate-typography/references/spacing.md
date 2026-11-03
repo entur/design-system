@@ -106,7 +106,7 @@ Keep `spacing="none"` inside a `TextContainer`, where it overrides the rhythm.
 
 ### Old default margins
 
-To recreate a space exactly, use these values (standard view mode). Headings only had the top margin when they weren't the first child.
+To recreate a space exactly, use these values (standard view mode). Beta headings only had the top margin when they weren't the first child. The old `Heading1`–`Heading6` had it as the first child too: see "`margin`" in [legacy-components.md](legacy-components.md).
 
 | Variant                   | Old margin         | `spacing` today              |
 | ------------------------- | ------------------ | ---------------------------- |

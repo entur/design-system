@@ -55,6 +55,7 @@ Text components no longer have margins. Load **[references/spacing.md](reference
 
 - **Running text** (articles, help pages, terms, several headings and paragraphs in a row, rich-text renderers such as Portable Text or HTML parsers): wrap it in `<TextContainer>`. The rhythm only reaches direct children, so wrap the element whose children are the text blocks.
 - **Text in UI** (cards, modals, forms, tables): remove `spacing="none"`, which is now the default. Where two texts relied on the old margin (a title and a description), use `Flex` with `gap`, or `spacing` on one of them.
+- **First or last child of a container** (a section, card or banner): the old margin may have stood in for the container's padding. If the container's padding at that edge is zero or small (`padding-top: 0`, a `none` token), the text now touches the edge. Move the space to the container's padding. Step 1 doesn't find this CSS, since it doesn't target typography.
 - **Can't tell:** leave it and list it in the report.
 
 **Done when:** every text component without `spacing` has been classified, and the uncertain ones are listed.
