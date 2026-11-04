@@ -72,8 +72,9 @@ const toEntry = (commit, pullRequest) => {
   const scopeMatch = scope.match(SKILLS_SCOPE_PATTERN);
   if (!SECTIONS[type] || !scopeMatch) return null;
 
-  const [body, breaking] = commit.body.split(BREAKING_PATTERN);
-  const note = breaking ?? (bang ? subject : null);
+  // A commit can hold several breaking footers, one per affected skill
+  const [body, ...breaking] = commit.body.split(BREAKING_PATTERN);
+  const notes = breaking.length > 0 ? breaking : bang ? [subject] : [];
 
   const links = [
     `([${commit.hash.slice(0, 7)}](${REPO_URL}/commit/${commit.hash}))`,
@@ -88,7 +89,7 @@ const toEntry = (commit, pullRequest) => {
   return {
     section: SECTIONS[type],
     text: `- ${prefix}${subject} ${links}${formatBody(body)}`,
-    note: note && `- ${prefix}${formatNote(note)}`,
+    notes: notes.map(note => `- ${prefix}${formatNote(note)}`),
   };
 };
 
@@ -111,7 +112,8 @@ const generateSkillsChangelog = () => {
       const entry = toEntry(commit, pullRequest);
       if (!entry) return;
       (sections[entry.section] ??= []).push(entry.text);
-      if (entry.note) (sections['BREAKING CHANGES'] ??= []).push(entry.note);
+      if (entry.notes.length > 0)
+        (sections['BREAKING CHANGES'] ??= []).push(...entry.notes);
     });
     days.set(mainCommit.date, sections);
   });
