@@ -85,6 +85,10 @@
         padding: 0;
       }
 
+      &--fit-content {
+        aspect-ratio: auto;
+      }
+
       &:has(+ .playground__props-selector) {
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useLayoutEffect, useRef, useState } from 'react';
 import { Language } from 'prism-react-renderer';
 import { LiveEditor, LiveError, LivePreview, LiveProvider } from 'react-live';
 import classNames from 'classnames';
@@ -46,6 +46,8 @@ type PlaygroundProps = {
   scope?: Record<string, any>;
   /** Render the preview scaled down inside a 16:9 frame. E.g. 0.5 = half size. */
   previewScale?: number;
+  /** With `previewScale`, size the frame to the scaled content instead of 16:9. */
+  previewFitContent?: boolean;
   /** Additional CSS properties applied to the live-preview container element. */
   containerStyle?: React.CSSProperties;
 };
@@ -65,6 +67,7 @@ const Playground: React.FC<PlaygroundProps> = ({
   showViewModeOption = false,
   hideCode = false,
   previewScale,
+  previewFitContent = false,
   containerStyle,
 }) => {
   const { resolvedColorMode } = useSettings();
@@ -99,13 +102,39 @@ const Playground: React.FC<PlaygroundProps> = ({
     ...scope,
   };
 
+  const fitsContent = Boolean(previewScale && previewFitContent);
+  const previewContainerRef = useRef<HTMLDivElement>(null);
+  const [fittedHeight, setFittedHeight] = useState<number>();
+
+  // The scaled preview is absolutely positioned, so the frame is sized from its measured height.
+  // react-live replaces the preview element after mount, so the observer re-attaches on child changes.
+  useLayoutEffect(() => {
+    const container = previewContainerRef.current;
+    if (!fitsContent || !previewScale || !container) return;
+    const resizeObserver = new ResizeObserver(([entry]) =>
+      setFittedHeight(entry.borderBoxSize[0].blockSize * previewScale),
+    );
+    const observePreview = () => {
+      resizeObserver.disconnect();
+      const preview = container.querySelector('.playground__live-preview');
+      if (preview) resizeObserver.observe(preview);
+    };
+    const mutationObserver = new MutationObserver(observePreview);
+    mutationObserver.observe(container, { childList: true });
+    observePreview();
+    return () => {
+      mutationObserver.disconnect();
+      resizeObserver.disconnect();
+    };
+  }, [fitsContent, previewScale, colorMode]);
+
   const scaledPreviewStyle: React.CSSProperties | undefined = previewScale
     ? {
         position: 'absolute',
         top: 0,
         left: 0,
         width: `${100 / previewScale}%`,
-        height: `${100 / previewScale}%`,
+        height: fitsContent ? 'auto' : `${100 / previewScale}%`,
         transform: `scale(${previewScale})`,
         transformOrigin: 'top left',
         padding: 0,
@@ -188,9 +217,11 @@ const Playground: React.FC<PlaygroundProps> = ({
         )}
       >
         <Element
+          ref={previewContainerRef}
           className={classNames('playground__live-preview-container', {
             'playground__live-preview-container--code-closed': !isShowingEditor,
             'playground__live-preview-container--scaled': previewScale,
+            'playground__live-preview-container--fit-content': fitsContent,
           })}
           style={{
             ...(hideColorModeOption
@@ -203,6 +234,7 @@ const Playground: React.FC<PlaygroundProps> = ({
                       ? componentColors.light.designentur.playground.background
                       : 'revert-layer',
                 }),
+            ...(fitsContent && { height: fittedHeight }),
             ...containerStyle,
           }}
           data-color-mode={
