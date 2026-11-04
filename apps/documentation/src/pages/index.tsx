@@ -38,6 +38,32 @@ const Index = () => {
 
   const _width = Math.floor(width ?? 0 / 100);
 
+  // While the page itself can scroll, e.g. past the consent banner, it scrolls first.
+  // The parallax area only takes over once the page is at its end.
+  const frontpageRef = useRef<HTMLDivElement>(null);
+  const [pageScrollsFirst, setPageScrollsFirst] = useState(false);
+  useEffect(() => {
+    const update = () => {
+      const root = document.documentElement;
+      const scrollsFirst =
+        window.scrollY + window.innerHeight < root.scrollHeight - 1;
+      // E.g. the banner reopened from the footer: start the parallax area from the top
+      if (scrollsFirst && frontpageRef.current)
+        frontpageRef.current.scrollTop = 0;
+      setPageScrollsFirst(scrollsFirst);
+    };
+    update();
+    const observer = new ResizeObserver(update);
+    observer.observe(document.body);
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('scroll', update);
+      window.removeEventListener('resize', update);
+    };
+  }, []);
+
   useEffect(() => {
     const contentHeight = mainRef.current?.clientHeight ?? 0;
     setBackgroundHeight(contentHeight);
@@ -92,8 +118,10 @@ const Index = () => {
       <Contrast data-color-mode="contrast">
         <TopNavigationLayout data-color-mode="contrast" />
         <div
+          ref={frontpageRef}
           className={classNames('frontpage', {
             'frontpage__background--loaded': backgroundHeight > 0,
+            'frontpage--page-scrolls-first': pageScrollsFirst,
           })}
           // @ts-expect-error css-variable inline is supported
           // We use the height of the content to set a correct height for the background
