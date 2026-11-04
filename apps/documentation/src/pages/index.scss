@@ -9,7 +9,7 @@
   --background-height: 200rem;
   $background-width: 400rem;
   $parallax-translate-x: -40rem;
-  --parallax-translate-y: -59rem;
+  --parallax-translate-y: -63.2rem;
   $top-parallax-transform: translateZ(-4px) translateX($parallax-translate-x) translateY(var(--parallax-translate-y)) scale(1.8);
   $bottom-parallax-transform: translateZ(-5px) translateX($parallax-translate-x) translateY(var(--parallax-translate-y)) scale(2);
   $disabled-parallax-transform: translateX(-110rem) translateY(-55rem) scale(1) !important;
@@ -30,6 +30,17 @@
   @media (prefers-reduced-motion) {
     perspective: none;
     transform-style: none;
+  }
+  // The navigation is sticky on wide screens and takes up room above the page
+  @media screen and (min-width: map.get(variables.$breakpoints, 'tablet')) {
+    height: calc(100dvh - #{variables.$navbar-height});
+  }
+  // Keeps the room for the scrollbar while it is hidden, so the content does not shift
+  scrollbar-gutter: stable;
+
+  // Hidden still scrolls by script, but hands wheel and touch on to the page
+  &--page-scrolls-first {
+    overflow-y: hidden;
   }
   @media screen and (max-width: map.get(variables.$breakpoints, 'tablet')) {
     --parallax-translate-y: -50rem;
