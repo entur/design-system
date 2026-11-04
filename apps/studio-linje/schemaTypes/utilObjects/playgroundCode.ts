@@ -79,6 +79,16 @@ export const playgroundCode = defineType({
       fieldset: 'options',
     }),
     defineField({
+      name: 'scaledPreviewFitContent',
+      title: 'Tilpass høyden til innholdet',
+      type: 'boolean',
+      description:
+        'Gjør sidemalen like høy som innholdet i stedet for 16:9. Nyttig for deler av en side, som en footer.',
+      initialValue: false,
+      fieldset: 'options',
+      hidden: ({ parent }) => !parent?.scaledPreview,
+    }),
+    defineField({
       name: 'containerStyle',
       title: 'CSS for forhåndsvisning',
       type: 'array',
