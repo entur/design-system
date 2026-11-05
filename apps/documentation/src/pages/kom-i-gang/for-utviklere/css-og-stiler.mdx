@@ -86,9 +86,29 @@ Du trenger bare stilene for pakkene du faktisk bruker – men behold rekkefølge
 
 De øvrige token-filene (`semantic`, `data`, `transport`) importeres ved behov i filene som bruker dem – ikke globalt.
 
+## Last basetokens bare én gang
+
+De fleste `/styles`-filene har med sin egen kopi av basetokens. Bruker du mange pakker, blir de samme tokenene deklarert mange ganger, og det gjør utviklerverktøyet i nettleseren tregt når du inspiserer elementer.
+
+Derfor har hver pakke også `/styles/no-base-tokens`, som er de samme stilene uten basetokens. Komponenttokens (`--components-*`) er fortsatt med. Importer basetokens selv først, så hentes de bare én gang:
+
+```css
+/* 1. Basetokens – én gang, først */
+@import '@entur/tokens/styles/base';
+@import '@entur/tokens/styles';
+
+/* 2. Komponentstiler uten basetokens – samme rekkefølge som over */
+@import '@entur/typography/styles/no-base-tokens';
+@import '@entur/typography/beta/styles';
+@import '@entur/button/styles/no-base-tokens';
+@import '@entur/form/styles/no-base-tokens';
+```
+
+Velger du `no-base-tokens`, bør du bruke det for alle pakkene. Uten `@entur/tokens/styles/base` først mangler fargene. Stilfilene for betakomponentene har ingen basetokens, så de importerer du som før.
+
 ## Betapakker har egne stilfiler
 
-`@entur/typography/beta`, `@entur/layout/beta` og `@entur/menu/beta` har stiler som ligger utenfor hovedstilene til pakken. Bruker du betakomponentene, må du importere `/beta/styles` i tillegg til `/styles`, slik listen over viser.
+`@entur/typography/beta`, `@entur/layout/beta` og `@entur/menu/beta` har stiler som ligger utenfor hovedstilene til pakken. Bruker du betakomponentene, må du importere `/beta/styles` i tillegg til `/styles` eller `/styles/no-base-tokens`, slik listene over viser.
 
 ## Mørk modus
 
