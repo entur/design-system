@@ -1,0 +1,9 @@
+{
+  "name": "prop-values-app",
+  "version": "1.0.0",
+  "dependencies": {
+    "@entur/button": "^5.0.0",
+    "@entur/typography": "^3.0.4",
+    "react": "^18.2.0"
+  }
+}

@@ -4,6 +4,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { scanRepository } from './scanner';
 import { symbolKey } from './analyzers/packageAnalyzer';
+import { loadCatalog } from './catalog';
 import { flattenColorTokenSummary, flattenTypographySummary } from './rollups';
 import type { PostHogLike } from './export/posthogClient';
 import type {
@@ -117,6 +118,9 @@ async function scanLocal(args: ParsedArgs): Promise<void> {
       includeFileFindings: args.includeFileFindings,
       packagesRoot: args.packagesRoot,
       ownerTeams: parseCommaList(args.ownerTeams),
+      catalog: args.catalog
+        ? loadCatalog(path.resolve(args.catalog))
+        : undefined,
     },
   );
 
@@ -213,11 +217,12 @@ async function aggregateResults(args: ParsedArgs): Promise<void> {
 /**
  * Export a scan report as NDJSON files suitable for BigQuery loading.
  *
- * Produces up to 6 files:
+ * Produces these files:
  *   - scan_runs.ndjson: one row per scan execution
  *   - repos.ndjson: one row per repo per scan
  *   - repo_package_usage.ndjson: one row per (repo, package)
  *   - repo_symbol_usage.ndjson: one row per (repo, symbol) — merged from react-scanner + import analyzer
+ *   - repo_prop_values.ndjson: one row per (repo, component, enum-like prop, literal value)
  *   - repo_workspaces.ndjson: one row per (repo, workspace)
  *   - repo_css_overrides.ndjson: one row per internal class name usage
  *   - repo_color_tokens.ndjson: one row per (repo, colour token)
@@ -272,6 +277,7 @@ function exportForBigQuery(args: ParsedArgs): void {
   const repoRows: string[] = [];
   const packageRows: string[] = [];
   const symbolRows: string[] = [];
+  const propValueRows: string[] = [];
   const workspaceRows: string[] = [];
   const fileFindingRows: string[] = [];
   const cssOverrideRows: string[] = [];
@@ -356,6 +362,15 @@ function exportForBigQuery(args: ParsedArgs): void {
       repo.name,
       repo.componentUsage,
       repo.importUsage || [],
+    );
+
+    // repo_prop_values table
+    emitPropValueRows(
+      propValueRows,
+      scanId,
+      scanTimestamp,
+      repo.name,
+      repo.componentUsage,
     );
 
     // repo_workspaces table
@@ -445,6 +460,10 @@ function exportForBigQuery(args: ParsedArgs): void {
     ['repo_symbol_usage.ndjson', symbolRows],
     ['repo_workspaces.ndjson', workspaceRows],
   ];
+
+  if (propValueRows.length > 0) {
+    files.push(['repo_prop_values.ndjson', propValueRows]);
+  }
 
   if (cssOverrideRows.length > 0) {
     files.push(['repo_css_overrides.ndjson', cssOverrideRows]);
@@ -553,6 +572,37 @@ function emitSymbolRows(
         finding_source: 'import-analyzer',
       }),
     );
+  }
+}
+
+/**
+ * Emit repo_prop_values rows — one row per (repo, component, prop, value).
+ */
+function emitPropValueRows(
+  rows: string[],
+  scanId: string,
+  scanTimestamp: string,
+  repoName: string,
+  componentUsage: ComponentUsage[],
+): void {
+  for (const comp of componentUsage) {
+    for (const [propName, values] of Object.entries(comp.propValues ?? {})) {
+      for (const [propValue, count] of Object.entries(values)) {
+        rows.push(
+          JSON.stringify({
+            scan_id: scanId,
+            scan_timestamp: scanTimestamp,
+            repo_name: repoName,
+            package_name: comp.packageName,
+            deep_import_path: comp.deepImportPath || null,
+            symbol_name: comp.componentName,
+            prop_name: propName,
+            prop_value: propValue,
+            instance_count: count,
+          }),
+        );
+      }
+    }
   }
 }
 
@@ -1041,7 +1091,7 @@ Options:
   --total-repos <n>          Total repos discovered (for report metadata)
   --min-repos <n>            Expected minimum discovered; below it the scan is partial
   --bigquery-export <path>   Path to scan-report.json to export as NDJSON
-  --catalog <path>           Path to catalog.json for unused symbol detection
+  --catalog <path>           Path to catalog.json for unused symbols and enum prop values
   --packages-root <path>     Path to the design system packages/ dir (default: auto-detected)
   --owner-teams <a,b>        Comma-separated owning teams (default: CODEOWNERS)
   --posthog-export <path>    Path to scan-report.json to send to PostHog

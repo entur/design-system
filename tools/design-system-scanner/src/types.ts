@@ -144,6 +144,11 @@ export interface ComponentUsage {
   instanceCount: number;
   /** Prop name → usage count across all instances */
   props: Record<string, number>;
+  /**
+   * Enum-like prop → literal value → instance count, e.g. { variant: { primary: 12 } }.
+   * Only props the catalog lists in enumProps; expressions are not counted.
+   */
+  propValues?: Record<string, Record<string, number>>;
   /** Number of instances using spread props ({...props}) */
   propsSpreadCount: number;
   /** Filenames (not full paths) where this component is used */
@@ -363,6 +368,12 @@ export interface CatalogSymbol {
   symbolType: SymbolType;
   /** Self-declared prop names (excludes inherited HTML/React props). */
   knownProps: string[];
+  /**
+   * Self-declared props typed as a union of string/number literals or boolean,
+   * whose literal values the scanner records. Absent in catalogs generated
+   * before the field existed.
+   */
+  enumProps?: string[];
 }
 
 /** A package entry point in the design system catalog. */

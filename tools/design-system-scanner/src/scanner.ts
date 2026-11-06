@@ -13,6 +13,7 @@ import { analyzeCssOverrides } from './analyzers/cssOverrideAnalyzer';
 import { analyzeColorTokens } from './analyzers/colorTokenAnalyzer';
 import { analyzeCodeOwners } from './analyzers/codeOwnersAnalyzer';
 import { loadStyleCatalog } from './analyzers/styleCatalog';
+import { buildEnumPropIndex, loadCatalog } from './catalog';
 import type { StyleCatalogIndex } from './analyzers/styleCatalog';
 import { buildColorTokenSummary, buildTypographySummary } from './rollups';
 import type {
@@ -21,6 +22,7 @@ import type {
   PackageUsage,
   ComponentUsage,
   ImportUsage,
+  DesignSystemCatalog,
 } from './types';
 
 export interface ScanOptions {
@@ -39,6 +41,11 @@ export interface ScanOptions {
   ownerTeams?: string[];
   /** Pre-built style catalogue, to avoid rebuilding it per repo */
   styleCatalog?: StyleCatalogIndex | null;
+  /**
+   * Symbol catalog; its enumProps decide which prop values are recorded.
+   * Defaults to the catalog.json shipped with the scanner.
+   */
+  catalog?: DesignSystemCatalog | null;
 }
 
 /**
@@ -184,8 +191,14 @@ export async function scanRepository(
   }
 
   // 4. Analyze JSX component usage via react-scanner (AST-based)
+  const catalog =
+    options.catalog !== undefined ? options.catalog : loadCatalog();
   const { components: componentUsage, fileFindings: reactScannerFindings } =
-    await analyzeComponents(repoDir, options.includeFileFindings);
+    await analyzeComponents(
+      repoDir,
+      options.includeFileFindings,
+      buildEnumPropIndex(catalog),
+    );
 
   // 5. Analyze non-JSX imports via TypeScript AST
   const { imports: importUsage, fileFindings: importFindings } =

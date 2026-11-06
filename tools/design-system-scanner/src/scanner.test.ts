@@ -99,6 +99,21 @@ describe('scanner', () => {
       expect(typography!.symbolCountUsed).toBe(2);
     });
 
+    it('records enum prop values from the bundled catalog', async () => {
+      const result = await scanRepository(
+        path.join(FIXTURES_DIR, 'typography-beta-app'),
+        'test/typography-beta-app',
+        'https://github.com/test/typography-beta-app',
+        'main',
+        '2024-01-01T00:00:00Z',
+      );
+
+      const text = result.componentUsage.find(
+        c => c.componentName === 'Text' && c.deepImportPath === '/beta',
+      );
+      expect(text!.propValues).toEqual({ variant: { paragraph: 2 } });
+    });
+
     it('resolves versions from yarn.lock', async () => {
       const repoDir = path.join(FIXTURES_DIR, 'simple-app');
       const result = await scanRepository(

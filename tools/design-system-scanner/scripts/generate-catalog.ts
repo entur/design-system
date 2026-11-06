@@ -64,6 +64,7 @@ interface CatalogSymbol {
   symbolName: string;
   symbolType: SymbolType;
   knownProps: string[];
+  enumProps: string[];
 }
 
 interface CatalogPackage {
@@ -111,6 +112,24 @@ function getSelfDefinedProps(
     }
   }
   return props;
+}
+
+const ENUM_MEMBER_FLAGS =
+  ts.TypeFlags.StringLiteral |
+  ts.TypeFlags.NumberLiteral |
+  ts.TypeFlags.BooleanLiteral;
+const NULLISH_FLAGS = ts.TypeFlags.Undefined | ts.TypeFlags.Null;
+
+/** Whether a prop's type is a union of string/number literals or boolean. */
+function isEnumLikeProp(symbol: ts.Symbol, checker: ts.TypeChecker): boolean {
+  const type = checker.getTypeOfSymbol(symbol);
+  const members = (type.isUnion() ? type.types : [type]).filter(
+    member => !(member.flags & NULLISH_FLAGS),
+  );
+  return (
+    members.length > 0 &&
+    members.every(member => (member.flags & ENUM_MEMBER_FLAGS) !== 0)
+  );
 }
 
 /** Subpath entry points (e.g. "/beta") with a src/<subpath>/index.ts(x). */
@@ -215,6 +234,7 @@ function processPackage(
 
     // Extract self-defined props for component exports
     let knownProps: string[] = [];
+    let enumProps: string[] = [];
     if (symbolType === 'component') {
       // Prefer the self-defined XBaseProps or XOwnProps over XProps
       const preferredNames = [`${name}BaseProps`, `${name}OwnProps`];
@@ -248,10 +268,13 @@ function processPackage(
       if (propsType !== null) {
         const props = getSelfDefinedProps(propsType, checker, packagesRootNorm);
         knownProps = props.map(prop => prop.getName());
+        enumProps = props
+          .filter(prop => isEnumLikeProp(prop, checker))
+          .map(prop => prop.getName());
       }
     }
 
-    symbols.push({ symbolName: name, symbolType, knownProps });
+    symbols.push({ symbolName: name, symbolType, knownProps, enumProps });
   }
 
   // Sort symbols alphabetically for stable output

@@ -43,6 +43,15 @@ const baseRepo = {
   otherUILibraries: [],
   componentUsage: [
     link,
+    {
+      ...link,
+      componentName: 'Heading',
+      instanceCount: 3,
+      props: { variant: 3 },
+      propValues: { variant: { 'title-1': 2, 'title-2': 1 } },
+      files: ['New.tsx'],
+      deepImportPath: '/beta',
+    },
     { ...link, instanceCount: 3, files: ['New.tsx'], deepImportPath: '/beta' },
   ],
   importUsage: [
@@ -161,11 +170,21 @@ describe('BigQuery export', () => {
     const zero = readRows(outDir, 'repo_symbol_usage.ndjson').filter(
       r => r.finding_source === 'catalog-zero',
     );
-    expect(zero).toEqual([
+    expect(zero).toEqual([]);
+  });
+
+  it('emits one prop value row per (component, prop, value)', () => {
+    expect(readRows(outDir, 'repo_prop_values.ndjson')).toEqual([
       expect.objectContaining({
-        symbol_name: 'Heading',
+        repo_name: 'entur/my-app',
+        package_name: '@entur/typography',
         deep_import_path: '/beta',
+        symbol_name: 'Heading',
+        prop_name: 'variant',
+        prop_value: 'title-1',
+        instance_count: 2,
       }),
+      expect.objectContaining({ prop_value: 'title-2', instance_count: 1 }),
     ]);
   });
 

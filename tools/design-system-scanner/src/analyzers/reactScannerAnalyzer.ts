@@ -6,6 +6,7 @@ import {
   symbolKey,
 } from './packageAnalyzer';
 import { EXCLUDE_DIRS } from './constants';
+import type { EnumPropIndex } from '../catalog';
 
 interface ScannerInstance {
   importInfo?: {
@@ -128,6 +129,51 @@ function resolveInstanceImport(
   };
 }
 
+/** Stands in for a prop value that is not a literal, e.g. `variant={v}`. */
+const EXPRESSION_VALUE = Object.freeze({ expression: true });
+
+interface PropValueNode {
+  type: string;
+  value?: unknown;
+  expression?: PropValueNode;
+  expressions?: unknown[];
+  quasis?: { value: { cooked?: string } }[];
+}
+
+/**
+ * react-scanner getPropValue hook. Literals keep their value; everything else
+ * becomes EXPRESSION_VALUE, since the default `(Identifier)` placeholder
+ * cannot be told apart from a string literal.
+ */
+function getPropValue({ node }: { node: PropValueNode | null }): unknown {
+  // `<Button disabled />`
+  if (node === null) return true;
+  const value = node.type === 'JSXExpressionContainer' ? node.expression : node;
+  if (value?.type === 'Literal') return value.value;
+  if (value?.type === 'TemplateLiteral' && value.expressions?.length === 0) {
+    return value.quasis?.[0]?.value.cooked ?? EXPRESSION_VALUE;
+  }
+  return EXPRESSION_VALUE;
+}
+
+/** Never record values for these, whatever the catalog says. */
+function isFreeTextProp(propName: string): boolean {
+  return (
+    /^(aria|data)-/.test(propName) ||
+    ['children', 'className', 'style', 'id', 'href', 'title', 'label'].includes(
+      propName,
+    )
+  );
+}
+
+function isLiteralValue(value: unknown): value is string | number | boolean {
+  return (
+    typeof value === 'string' ||
+    typeof value === 'number' ||
+    typeof value === 'boolean'
+  );
+}
+
 interface UsageGroup {
   first: ResolvedImport;
   instances: ScannerInstance[];
@@ -142,8 +188,13 @@ interface UsageGroup {
  *
  * @param repoDir - Absolute path to the repository root (for relative path computation)
  * @param includeFileFindings - Whether to collect per-file findings
+ * @param enumProps - Enum-like props per component, whose literal values are counted
  */
-function createEnturProcessor(repoDir: string, includeFileFindings: boolean) {
+function createEnturProcessor(
+  repoDir: string,
+  includeFileFindings: boolean,
+  enumProps: EnumPropIndex,
+) {
   return function enturProcessor({
     forEachComponent,
   }: ProcessorHelpers): AnalyzeComponentsResult {
@@ -180,15 +231,26 @@ function createEnturProcessor(repoDir: string, includeFileFindings: boolean) {
 
     const components: ComponentUsage[] = [];
 
-    for (const { first, instances } of groups.values()) {
+    for (const [key, { first, instances }] of groups) {
       const propCounts: Record<string, number> = {};
+      const propValues: Record<string, Record<string, number>> = {};
+      const valueProps = enumProps.get(key);
       let spreadCount = 0;
       const files = new Set<string>();
 
       for (const instance of instances) {
         if (instance.propsSpread) spreadCount++;
-        for (const propName of Object.keys(instance.props || {})) {
+        for (const [propName, value] of Object.entries(instance.props || {})) {
           propCounts[propName] = (propCounts[propName] || 0) + 1;
+          if (
+            !valueProps?.has(propName) ||
+            isFreeTextProp(propName) ||
+            !isLiteralValue(value)
+          ) {
+            continue;
+          }
+          const counts = (propValues[propName] ??= {});
+          counts[String(value)] = (counts[String(value)] || 0) + 1;
         }
         const absFile = instance.location?.file;
         if (absFile) files.add(path.basename(absFile));
@@ -199,6 +261,7 @@ function createEnturProcessor(repoDir: string, includeFileFindings: boolean) {
         packageName: first.packageName,
         instanceCount: instances.length,
         props: propCounts,
+        ...(Object.keys(propValues).length > 0 && { propValues }),
         propsSpreadCount: spreadCount,
         files: [...files],
         importStyle: first.importStyle,
@@ -230,7 +293,8 @@ function buildDesignSystemImportPattern(): RegExp {
  *
  * Uses Babel AST parsing (via react-scanner) for accurate detection of:
  * - Component JSX instances (actual renders, not just imports)
- * - Prop usage per component
+ * - Prop usage per component, and literal values of the enum-like props in
+ *   `enumProps`
  * - Spread prop detection
  * - Import style, alias, and deep import information
  *
@@ -242,6 +306,7 @@ function buildDesignSystemImportPattern(): RegExp {
 export async function analyzeComponents(
   repoDir: string,
   includeFileFindings = false,
+  enumProps: EnumPropIndex = new Map(),
 ): Promise<AnalyzeComponentsResult> {
   try {
     // Dynamic import — react-scanner is ESM-only in some versions
@@ -262,7 +327,10 @@ export async function analyzeComponents(
       exclude: (dirname: string) =>
         EXCLUDE_DIRS.has(dirname) || dirname.startsWith('.'),
       globs: ['**/!(*.test|*.spec|*.stories|*.story|*.d).@(js|ts)?(x)'],
-      processors: [createEnturProcessor(repoDir, includeFileFindings)],
+      getPropValue,
+      processors: [
+        createEnturProcessor(repoDir, includeFileFindings, enumProps),
+      ],
     };
 
     const result = await run(config);
