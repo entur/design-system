@@ -226,7 +226,11 @@ export const Search = () => {
           ⌘+K
         </Tag>
       </SecondaryButton>
-      <IconButton className="searchmodal__button--small" onClick={openSearch}>
+      <IconButton
+        className="searchmodal__button--small"
+        aria-label="Søk"
+        onClick={openSearch}
+      >
         <SearchIcon aria-hidden="true" />
       </IconButton>
       <Modal
