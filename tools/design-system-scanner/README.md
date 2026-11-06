@@ -10,6 +10,7 @@ Scans Entur GitHub repositories for `@entur/*` design system usage and loads res
    - **Package analysis** — `@entur/*` dependencies, other UI libraries (MUI, styled-components, etc.), framework detection, monorepo workspace detection
    - **Version resolution** — resolves actual installed versions from `yarn.lock`
    - **JSX component usage** — uses [react-scanner](https://github.com/moroshko/react-scanner) (AST/Babel) for component instance counts, prop usage statistics, and spread prop detection
+   - **Prop values** — counts the literal values passed to enum-like props (see [Prop values](#prop-values))
    - **Non-JSX import usage** — TypeScript AST analysis for hooks, utilities, tokens and other non-JSX imports
    - **Internal class name usage** — finds `.eds-*` class names in stylesheets, CSS-in-JS template literals, and `className` attributes, classified by owning package and style generation (legacy vs beta)
    - **Colour token usage** — resolves `var(--x)`, `$x`, `@x`, inline styles, and member access on `@entur/tokens` objects to individual tokens, and flags hardcoded colours — including which ones already exist as a token
@@ -75,7 +76,7 @@ POSTHOG_API_KEY=phc_xxx yarn start --posthog-export scan-report.json
 | `--default-branch <branch>` | Default branch name                                    |
 | `--last-commit <iso-date>`  | Last commit timestamp                                  |
 | `--total-repos <n>`         | Total repos discovered (for report metadata)           |
-| `--catalog <path>`          | Path to `catalog.json` for unused symbol detection     |
+| `--catalog <path>`          | `catalog.json` for unused symbols and enum prop values |
 | `--output <path>`           | Write results to file or directory                     |
 | `--visibility <vis>`        | Repository visibility (`public`/`private`/`internal`)  |
 | `--archived <bool>`         | Whether repo is archived                               |
@@ -130,6 +131,11 @@ POSTHOG_API_KEY=phc_xxx yarn start --posthog-export scan-report.json --posthog-h
 `deep_import_path: "/beta"`. Filter on `deep_import_path` to isolate a generation — filtering on
 the package name cannot distinguish them.
 
+A component or symbol exported from both the root and a subpath (`Link` from `@entur/typography`
+and `@entur/typography/beta`) is reported as two separate rows and events. The `ds_component` and
+`ds_symbol` group keys and distinct ids include the subpath, so the root one stays
+`@entur/typography::Link` and the beta one is `@entur/typography/beta::Link`.
+
 `ds_repo_scanned` also carries repo-level rollups, so a key result is one metric with one filter
 rather than something recomputed from component rows each time:
 
@@ -158,21 +164,40 @@ Group keys and the event timestamp are sent as **top-level** capture fields, not
 
 **`repo_package_usage.ndjson`** — One row per `(repo, package)` pair. Covers both `@entur/*` packages and other detected UI libraries (MUI, styled-components, etc.). Includes version from `package.json`, resolved version from the lockfile, whether it's a dev dependency, and how many files and symbols from that package are actually used.
 
-**`repo_symbol_usage.ndjson`** — One row per `(repo, symbol)`. Merges data from react-scanner (JSX renders) and the import analyzer (hooks, utils, tokens). Fields include symbol type, instance count, reference count, import style, whether it's aliased, number of files it appears in, and per-prop usage counts. The `finding_source` field indicates which analyzer(s) detected the symbol (`react-scanner`, `import-analyzer`, `both`, or `catalog-zero` for installed-but-unused symbols).
+**`repo_symbol_usage.ndjson`** — One row per `(repo, symbol, deep_import_path)`. Merges data from react-scanner (JSX renders) and the import analyzer (hooks, utils, tokens). Fields include symbol type, instance count, reference count, import style, whether it's aliased, number of files it appears in, and per-prop usage counts. The `finding_source` field indicates which analyzer(s) detected the symbol (`react-scanner`, `import-analyzer`, `both`, or `catalog-zero` for installed-but-unused symbols).
 
 **`repo_workspaces.ndjson`** — One row per `(repo, workspace)` in monorepos. Contains workspace name, relative path, type (`app` / `package`), detected framework, and count of DS packages used in that workspace.
 
 **`file_findings.ndjson`** — One row per file-level finding (requires `--include-file-findings`). Enables drilldown into exactly which files import or render which symbols, with the file path, extension, finding type (`import` / `jsx_usage`), line number, and flags for test/Storybook/generated files.
 
+**`repo_prop_values.ndjson`** — One row per `(repo, component, prop, literal value)`: `package_name`, `deep_import_path`, `symbol_name`, `prop_name`, `prop_value` (always a string, so `true` and `12` arrive as `"true"` and `"12"`) and `instance_count`. Only enum-like props are covered; see [Prop values](#prop-values). Only produced when values were found.
+
 Optional catalog export (requires `--catalog`):
 
-**`ds_catalog.ndjson`** — One row per exported symbol in the design system. Contains package name, latest published version, symbol name, type, and known prop names. Useful for identifying which DS symbols exist but are never used across scanned repos.
+**`ds_catalog.ndjson`** — One row per exported symbol per entry point in the design system. Contains package name, `deep_import_path` (e.g. `/beta`, null for the package root), latest published version, symbol name, type, and known prop names. Useful for identifying which DS symbols exist but are never used across scanned repos.
 
 **`repo_css_overrides.ndjson`** — One row per use of an internal `.eds-*` class name. Contains repo name, selector, file path, line number, file extension, and the classification: owning `package_name`, `base_class`, `class_generation` (`legacy` / `beta` / `unknown`), and `source` (`stylesheet` / `css-in-js` / `jsx-classname`). Only produced when findings exist.
 
 **`repo_color_tokens.ndjson`** — One row per `(repo, colour token)`. Contains the token name, its layer (`primitive` / `semantic` / `base` / `data` / `transport` / `component` / `legacy`), generation (`legacy` / `new`), total occurrences, file count, and which sources it was found in.
 
 **`repo_hardcoded_colors.ndjson`** — One row per `(repo, normalised colour value)`. Colours are normalised to lowercase hex, so the same colour written as hex, `rgb()`, or a named colour collapses into one row. `matches_token_name` and `matches_token_layer` are set when the design system already publishes that colour as a token, which is the main signal for where a token migration will bite.
+
+## Prop values
+
+For enum-like props the scanner records which values consumers pass, e.g.
+`variant: { primary: 12, secondary: 3 }`, as `propValues` on each component in the scan
+result and as rows in `repo_prop_values.ndjson`.
+
+A prop is enum-like when the catalog lists it in the component's `enumProps`: a
+self-defined prop whose type is a union of string or number literals, or boolean,
+ignoring `undefined` and `null`. Only literal values are counted (`variant="primary"`,
+`size={'small'}`, a bare `disabled` as `true`); expressions like `variant={v}` are
+skipped. Free text is never recorded: `children`, `className`, `style`, `id`, `href`,
+`title`, `label`, `aria-*` and `data-*` are excluded even if the catalog lists them.
+
+`--local` reads the `catalog.json` shipped with the scanner, or the one given by
+`--catalog`. Values are not sent to PostHog: prop names are not sent either, and prop
+usage is analysed in BigQuery.
 
 ## Infrastructure setup
 
@@ -185,7 +210,7 @@ Before the full pipeline can run, the following must be in place:
 
 ## Catalog
 
-`catalog.json` is a generated snapshot of all exported symbols from `@entur/*` packages in this repo. It is used to identify which DS symbols are unused across scanned repos.
+`catalog.json` is a generated snapshot of all exported symbols from `@entur/*` packages in this repo, with one entry per entry point: the package root, plus each subpath export (such as `@entur/typography/beta`) that has a `src/<subpath>/index.ts(x)`. It is used to identify which DS symbols are unused across scanned repos, and its `enumProps` decide which prop values are recorded. Type-only exports are left out, and a component's props are read from its `XBaseProps` or `XOwnProps` type when it has one, else from `XProps`.
 
 ```bash
 # Regenerate from source packages

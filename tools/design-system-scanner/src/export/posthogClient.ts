@@ -26,6 +26,7 @@ import type {
   HardcodedColorFinding,
   PackageUsage,
 } from '../types';
+import { symbolKey } from '../analyzers/packageAnalyzer';
 import { flattenColorTokenSummary, flattenTypographySummary } from '../rollups';
 
 /** Minimal PostHog client interface — satisfied by posthog-node and the dry-run double. */
@@ -146,7 +147,7 @@ export function buildGroupIdentifies(
 
     // Component groups (deduplicated across repos)
     for (const comp of repo.componentUsage) {
-      const key = `${comp.packageName}::${comp.componentName}`;
+      const key = componentGroupKey(comp);
       if (!seenComponents.has(key)) {
         seenComponents.add(key);
         identifies.push({
@@ -155,6 +156,7 @@ export function buildGroupIdentifies(
           properties: {
             package_name: comp.packageName,
             component_name: comp.componentName,
+            deep_import_path: comp.deepImportPath ?? null,
           },
         });
       }
@@ -162,7 +164,7 @@ export function buildGroupIdentifies(
 
     // Symbol groups (deduplicated)
     for (const imp of repo.importUsage) {
-      const key = `${imp.packageName}::${imp.symbolName}`;
+      const key = symbolGroupKey(imp);
       if (!seenSymbols.has(key)) {
         seenSymbols.add(key);
         identifies.push({
@@ -172,6 +174,7 @@ export function buildGroupIdentifies(
             package_name: imp.packageName,
             symbol_name: imp.symbolName,
             symbol_type: imp.symbolType,
+            deep_import_path: imp.deepImportPath ?? null,
           },
         });
       }
@@ -258,6 +261,15 @@ export function createDryRunClient(
 export { DEFAULT_POSTHOG_HOST };
 
 // ── Internal builders ───────────────────────────────────────────────────────
+
+/** A root import keeps its old key; a subpath import gets its own (`@entur/menu/beta::SideNavigation`). */
+function componentGroupKey(comp: ComponentUsage): string {
+  return symbolKey(comp.packageName, comp.deepImportPath, comp.componentName);
+}
+
+function symbolGroupKey(imp: ImportUsage): string {
+  return symbolKey(imp.packageName, imp.deepImportPath, imp.symbolName);
+}
 
 function buildRepoEvents(repo: RepositoryUsage, ts: string): CapturePayload[] {
   const events: CapturePayload[] = [];
@@ -372,7 +384,7 @@ function buildComponentEvent(
   comp: ComponentUsage,
   ts: string,
 ): CapturePayload {
-  const groupKey = `${comp.packageName}::${comp.componentName}`;
+  const groupKey = componentGroupKey(comp);
   return {
     distinctId: `repo:${repoName}:component:${groupKey}`,
     event: 'ds_component_used',
@@ -401,7 +413,7 @@ function buildSymbolEvent(
   imp: ImportUsage,
   ts: string,
 ): CapturePayload {
-  const groupKey = `${imp.packageName}::${imp.symbolName}`;
+  const groupKey = symbolGroupKey(imp);
   return {
     distinctId: `repo:${repoName}:symbol:${groupKey}`,
     event: 'ds_symbol_used',

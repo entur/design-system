@@ -4,7 +4,8 @@
  *
  * Reads each @entur/* package's TypeScript source and extracts all exported
  * symbol names along with their self-defined props (props whose declarations
- * live inside the package source, not in node_modules).
+ * live inside the package source, not in node_modules). Subpath entry points
+ * such as `@entur/typography/beta` get their own entry.
  *
  * Usage:
  *   tsx scripts/generate-catalog.ts --packages-root ../../packages --output catalog.json
@@ -63,10 +64,12 @@ interface CatalogSymbol {
   symbolName: string;
   symbolType: SymbolType;
   knownProps: string[];
+  enumProps: string[];
 }
 
 interface CatalogPackage {
   packageName: string;
+  deepImportPath?: string;
   latestVersion: string | null;
   symbols: CatalogSymbol[];
 }
@@ -95,8 +98,8 @@ function getSelfDefinedProps(
   type: ts.Type,
   checker: ts.TypeChecker,
   packagesRootNorm: string,
-): string[] {
-  const props: string[] = [];
+): ts.Symbol[] {
+  const props: ts.Symbol[] = [];
   for (const symbol of checker.getPropertiesOfType(type)) {
     const decl = symbol.declarations?.[0];
     if (!decl) continue;
@@ -105,24 +108,65 @@ function getSelfDefinedProps(
       fileName.startsWith(packagesRootNorm) ||
       fileName.includes('/node_modules/@entur/')
     ) {
-      props.push(symbol.getName());
+      props.push(symbol);
     }
   }
   return props;
 }
 
+const ENUM_MEMBER_FLAGS =
+  ts.TypeFlags.StringLiteral |
+  ts.TypeFlags.NumberLiteral |
+  ts.TypeFlags.BooleanLiteral;
+const NULLISH_FLAGS = ts.TypeFlags.Undefined | ts.TypeFlags.Null;
+
+/** Whether a prop's type is a union of string/number literals or boolean. */
+function isEnumLikeProp(symbol: ts.Symbol, checker: ts.TypeChecker): boolean {
+  const type = checker.getTypeOfSymbol(symbol);
+  const members = (type.isUnion() ? type.types : [type]).filter(
+    member => !(member.flags & NULLISH_FLAGS),
+  );
+  return (
+    members.length > 0 &&
+    members.every(member => (member.flags & ENUM_MEMBER_FLAGS) !== 0)
+  );
+}
+
+/** Subpath entry points (e.g. "/beta") with a src/<subpath>/index.ts(x). */
+function findSubpathEntryPoints(packageDir: string): string[] {
+  const manifestPath = path.join(packageDir, 'package.json');
+  if (!fs.existsSync(manifestPath)) return [];
+  const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf-8')) as {
+    exports?: Record<string, unknown>;
+  };
+  return Object.keys(manifest.exports ?? {})
+    .filter(key => /^\.\/[\w-]+$/.test(key))
+    .map(key => key.slice(1))
+    .filter(subpath => findIndex(path.join(packageDir, 'src', subpath)));
+}
+
+function findIndex(srcDir: string): string | null {
+  for (const file of ['index.tsx', 'index.ts']) {
+    const candidate = path.join(srcDir, file);
+    if (fs.existsSync(candidate)) return candidate;
+  }
+  return null;
+}
+
 // ── Main ──────────────────────────────────────────────────────────────────────
 
-function processPackage(packageName: string): CatalogPackage | null {
+function processPackage(
+  packageName: string,
+  deepImportPath?: string,
+): CatalogPackage | null {
   const shortName = packageName.replace('@entur/', '');
-  const srcDir = path.join(resolvedPackagesRoot, shortName, 'src');
-
-  // Try .tsx then .ts for the index entry point
-  const indexPath = fs.existsSync(path.join(srcDir, 'index.tsx'))
-    ? path.join(srcDir, 'index.tsx')
-    : fs.existsSync(path.join(srcDir, 'index.ts'))
-    ? path.join(srcDir, 'index.ts')
-    : null;
+  const srcDir = path.join(
+    resolvedPackagesRoot,
+    shortName,
+    'src',
+    deepImportPath ?? '',
+  );
+  const indexPath = findIndex(srcDir);
 
   if (!indexPath) {
     console.warn(
@@ -172,7 +216,12 @@ function processPackage(packageName: string): CatalogPackage | null {
 
     // Skip type-only names that end with 'Props', 'Type', 'Options', etc.
     // We want value exports (components, hooks, utils, tokens)
-    const decl = exportSymbol.declarations?.[0];
+    // `export { X } from './X'` is an alias; check what it points to
+    const target =
+      exportSymbol.flags & ts.SymbolFlags.Alias
+        ? checker.getAliasedSymbol(exportSymbol)
+        : exportSymbol;
+    const decl = target.declarations?.[0];
     if (!decl) continue;
 
     // Skip pure type alias / interface declarations (not runtime values)
@@ -185,60 +234,58 @@ function processPackage(packageName: string): CatalogPackage | null {
 
     // Extract self-defined props for component exports
     let knownProps: string[] = [];
+    let enumProps: string[] = [];
     if (symbolType === 'component') {
-      // Try to find a XProps or XBaseProps type for this component
+      // Prefer the self-defined XBaseProps or XOwnProps over XProps
+      const preferredNames = [`${name}BaseProps`, `${name}OwnProps`];
       const propsTypeName = `${name}Props`;
-      const basePropsTypeName = `${name}BaseProps`;
-
-      // Look up the props type in all source files of this package
       let propsType: ts.Type | null = null;
+      let preferred = false;
 
       for (const sf of program.getSourceFiles()) {
+        if (preferred) break;
         if (sf.isDeclarationFile) continue;
         const sfName = sf.fileName.replace(/\\/g, '/');
         if (!sfName.startsWith(packagesRootNorm)) continue;
 
-        // Look for BaseProps first (self-defined subset), then Props
         for (const stmt of sf.statements) {
           if (
-            ts.isTypeAliasDeclaration(stmt) &&
-            (stmt.name.text === basePropsTypeName ||
-              stmt.name.text === propsTypeName)
+            !ts.isTypeAliasDeclaration(stmt) &&
+            !ts.isInterfaceDeclaration(stmt)
           ) {
-            const isBase = stmt.name.text === basePropsTypeName;
-            const candidate = checker.getTypeAtLocation(stmt);
-            if (isBase || propsType === null) {
-              propsType = candidate;
-              if (isBase) break; // Prefer BaseProps, stop searching
-            }
-          } else if (
-            ts.isInterfaceDeclaration(stmt) &&
-            (stmt.name.text === basePropsTypeName ||
-              stmt.name.text === propsTypeName)
-          ) {
-            const isBase = stmt.name.text === basePropsTypeName;
-            const candidate = checker.getTypeAtLocation(stmt);
-            if (isBase || propsType === null) {
-              propsType = candidate;
-              if (isBase) break;
-            }
+            continue;
+          }
+          const isPreferred = preferredNames.includes(stmt.name.text);
+          if (!isPreferred && stmt.name.text !== propsTypeName) continue;
+          if (isPreferred || propsType === null) {
+            propsType = checker.getTypeAtLocation(stmt);
+            preferred = isPreferred;
+            if (isPreferred) break;
           }
         }
-        if (propsType !== null && propsTypeName.includes('Base')) break;
       }
 
       if (propsType !== null) {
-        knownProps = getSelfDefinedProps(propsType, checker, packagesRootNorm);
+        const props = getSelfDefinedProps(propsType, checker, packagesRootNorm);
+        knownProps = props.map(prop => prop.getName());
+        enumProps = props
+          .filter(prop => isEnumLikeProp(prop, checker))
+          .map(prop => prop.getName());
       }
     }
 
-    symbols.push({ symbolName: name, symbolType, knownProps });
+    symbols.push({ symbolName: name, symbolType, knownProps, enumProps });
   }
 
   // Sort symbols alphabetically for stable output
   symbols.sort((a, b) => a.symbolName.localeCompare(b.symbolName));
 
-  return { packageName, latestVersion: null, symbols };
+  return {
+    packageName,
+    ...(deepImportPath && { deepImportPath }),
+    latestVersion: null,
+    symbols,
+  };
 }
 
 /**
@@ -275,17 +322,26 @@ async function main(): Promise<void> {
   const catalog: DesignSystemCatalog = { packages: [] };
 
   for (const packageName of DESIGN_SYSTEM_PACKAGES) {
-    process.stdout.write(`  ${packageName}...`);
-    const result = processPackage(packageName);
-    if (result) {
-      result.latestVersion = latestVersions.get(packageName) ?? null;
-      catalog.packages.push(result);
-      const versionStr = result.latestVersion
-        ? ` (latest: ${result.latestVersion})`
-        : '';
-      console.log(` ${result.symbols.length} symbols${versionStr}`);
-    } else {
-      console.log(' skipped');
+    const packageDir = path.join(
+      resolvedPackagesRoot,
+      packageName.replace('@entur/', ''),
+    );
+    for (const deepImportPath of [
+      undefined,
+      ...findSubpathEntryPoints(packageDir),
+    ]) {
+      process.stdout.write(`  ${packageName}${deepImportPath ?? ''}...`);
+      const result = processPackage(packageName, deepImportPath);
+      if (result) {
+        result.latestVersion = latestVersions.get(packageName) ?? null;
+        catalog.packages.push(result);
+        const versionStr = result.latestVersion
+          ? ` (latest: ${result.latestVersion})`
+          : '';
+        console.log(` ${result.symbols.length} symbols${versionStr}`);
+      } else {
+        console.log(' skipped');
+      }
     }
   }
 
