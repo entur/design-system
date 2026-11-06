@@ -171,7 +171,7 @@ Group keys and the event timestamp are sent as **top-level** capture fields, not
 
 Optional catalog export (requires `--catalog`):
 
-**`ds_catalog.ndjson`** — One row per exported symbol in the design system. Contains package name, latest published version, symbol name, type, and known prop names. Useful for identifying which DS symbols exist but are never used across scanned repos.
+**`ds_catalog.ndjson`** — One row per exported symbol per entry point in the design system. Contains package name, `deep_import_path` (e.g. `/beta`, null for the package root), latest published version, symbol name, type, and known prop names. Useful for identifying which DS symbols exist but are never used across scanned repos.
 
 **`repo_css_overrides.ndjson`** — One row per use of an internal `.eds-*` class name. Contains repo name, selector, file path, line number, file extension, and the classification: owning `package_name`, `base_class`, `class_generation` (`legacy` / `beta` / `unknown`), and `source` (`stylesheet` / `css-in-js` / `jsx-classname`). Only produced when findings exist.
 
@@ -190,7 +190,7 @@ Before the full pipeline can run, the following must be in place:
 
 ## Catalog
 
-`catalog.json` is a generated snapshot of all exported symbols from `@entur/*` packages in this repo. It is used to identify which DS symbols are unused across scanned repos.
+`catalog.json` is a generated snapshot of all exported symbols from `@entur/*` packages in this repo, with one entry per entry point: the package root, plus each subpath export (such as `@entur/typography/beta`) that has a `src/<subpath>/index.ts(x)`. It is used to identify which DS symbols are unused across scanned repos. Type-only exports are left out, and a component's props are read from its `XBaseProps` or `XOwnProps` type when it has one, else from `XProps`.
 
 ```bash
 # Regenerate from source packages

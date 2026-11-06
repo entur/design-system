@@ -365,9 +365,11 @@ export interface CatalogSymbol {
   knownProps: string[];
 }
 
-/** A package entry in the design system catalog. */
+/** A package entry point in the design system catalog. */
 export interface CatalogPackage {
   packageName: string;
+  /** Subpath entry point (e.g. "/beta"); absent for the package root */
+  deepImportPath?: string;
   /** Latest published version on npm, or null if unavailable. */
   latestVersion: string | null;
   symbols: CatalogSymbol[];

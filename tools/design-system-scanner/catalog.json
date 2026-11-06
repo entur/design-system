@@ -2,7 +2,7 @@
   "packages": [
     {
       "packageName": "@entur/a11y",
-      "latestVersion": "0.3.2",
+      "latestVersion": "0.4.1",
       "symbols": [
         {
           "symbolName": "SkipToContent",
@@ -18,7 +18,7 @@
     },
     {
       "packageName": "@entur/alert",
-      "latestVersion": "0.20.2",
+      "latestVersion": "0.22.1",
       "symbols": [
         {
           "symbolName": "BannerAlertBox",
@@ -56,7 +56,8 @@
             "children",
             "textToCopy",
             "successHeading",
-            "successMessage"
+            "successMessage",
+            "size"
           ]
         },
         {
@@ -116,7 +117,7 @@
     },
     {
       "packageName": "@entur/button",
-      "latestVersion": "5.0.2",
+      "latestVersion": "5.2.1",
       "symbols": [
         {
           "symbolName": "Button",
@@ -241,7 +242,7 @@
     },
     {
       "packageName": "@entur/chip",
-      "latestVersion": "0.11.2",
+      "latestVersion": "0.13.1",
       "symbols": [
         {
           "symbolName": "ActionChip",
@@ -279,7 +280,7 @@
     },
     {
       "packageName": "@entur/datepicker",
-      "latestVersion": "12.0.2",
+      "latestVersion": "12.3.1",
       "symbols": [
         {
           "symbolName": "ariaLabelIfNorwegian",
@@ -351,19 +352,7 @@
             "disabled",
             "readOnly",
             "className",
-            "style",
-            "ariaAlertOnFeedback",
-            "feedbackProps",
-            "prepend",
-            "append",
-            "labelTooltipButtonAriaLabel",
-            "labelTooltipPlacement",
-            "required",
-            "labelId",
-            "disableLabelAnimation",
-            "after",
-            "before",
-            "ariaLabelOnReadOnly"
+            "style"
           ]
         },
         {
@@ -398,25 +387,8 @@
             "labelTooltip",
             "navigationDescription",
             "classNameForDate",
-            "ariaLabelForDate",
-            "ariaAlertOnFeedback",
-            "feedbackProps",
-            "prepend",
-            "append",
-            "labelTooltipButtonAriaLabel",
-            "labelTooltipPlacement",
-            "required",
-            "labelId",
-            "disableLabelAnimation",
-            "after",
-            "before",
-            "ariaLabelOnReadOnly"
+            "ariaLabelForDate"
           ]
-        },
-        {
-          "symbolName": "DateValue",
-          "symbolType": "component",
-          "knownProps": []
         },
         {
           "symbolName": "focusSegment",
@@ -510,18 +482,7 @@
             "readOnly",
             "inputRef",
             "className",
-            "style",
-            "labelProps",
-            "ariaAlertOnFeedback",
-            "feedbackProps",
-            "labelTooltipButtonAriaLabel",
-            "labelTooltipPlacement",
-            "required",
-            "labelId",
-            "disableLabelAnimation",
-            "after",
-            "before",
-            "ariaLabelOnReadOnly"
+            "style"
           ]
         },
         {
@@ -556,26 +517,8 @@
             "forcedReturnType",
             "forcedTimeZone",
             "className",
-            "style",
-            "labelProps",
-            "ariaAlertOnFeedback",
-            "feedbackProps",
-            "prepend",
-            "append",
-            "labelTooltipButtonAriaLabel",
-            "labelTooltipPlacement",
-            "required",
-            "labelId",
-            "disableLabelAnimation",
-            "after",
-            "before",
-            "ariaLabelOnReadOnly"
+            "style"
           ]
-        },
-        {
-          "symbolName": "TimeValue",
-          "symbolType": "component",
-          "knownProps": []
         },
         {
           "symbolName": "ZonedDateTime",
@@ -586,43 +529,10 @@
     },
     {
       "packageName": "@entur/dropdown",
-      "latestVersion": "9.0.2",
+      "latestVersion": "9.3.1",
       "symbols": [
         {
           "symbolName": "Dropdown",
-          "symbolType": "component",
-          "knownProps": [
-            "items",
-            "selectedItem",
-            "onChange",
-            "label",
-            "placeholder",
-            "clearable",
-            "selectOnTab",
-            "disabled",
-            "readOnly",
-            "variant",
-            "feedback",
-            "prepend",
-            "loading",
-            "loadingText",
-            "noMatchesText",
-            "labelClearSelectedItem",
-            "labelTooltip",
-            "disableLabelAnimation",
-            "className",
-            "listStyle",
-            "style",
-            "ariaLabelCloseList",
-            "ariaLabelOpenList",
-            "ariaLabelChosenSingular",
-            "ariaLabelSelectedItem",
-            "ariaAlertOnFeedback",
-            "feedbackProps"
-          ]
-        },
-        {
-          "symbolName": "DropdownItemType",
           "symbolType": "component",
           "knownProps": []
         },
@@ -630,31 +540,6 @@
           "symbolName": "MultiSelect",
           "symbolType": "component",
           "knownProps": [
-            "items",
-            "label",
-            "placeholder",
-            "clearable",
-            "selectOnTab",
-            "disabled",
-            "readOnly",
-            "variant",
-            "feedback",
-            "prepend",
-            "loading",
-            "loadingText",
-            "noMatchesText",
-            "labelClearSelectedItem",
-            "labelTooltip",
-            "disableLabelAnimation",
-            "className",
-            "listStyle",
-            "style",
-            "ariaLabelCloseList",
-            "ariaLabelOpenList",
-            "ariaLabelChosenSingular",
-            "ariaLabelSelectedItem",
-            "ariaAlertOnFeedback",
-            "feedbackProps",
             "selectedItems",
             "onChange",
             "itemFilter",
@@ -682,72 +567,18 @@
         {
           "symbolName": "NativeDropdown",
           "symbolType": "component",
-          "knownProps": [
-            "className",
-            "disabled",
-            "feedback",
-            "items",
-            "label",
-            "onChange",
-            "prepend",
-            "readOnly",
-            "selectedItem",
-            "value",
-            "variant",
-            "disableLabelAnimation",
-            "ariaAlertOnFeedback",
-            "feedbackProps"
-          ]
-        },
-        {
-          "symbolName": "NormalizedDropdownItemType",
-          "symbolType": "component",
           "knownProps": []
         },
         {
           "symbolName": "SearchableDropdown",
           "symbolType": "component",
-          "knownProps": [
-            "items",
-            "selectedItem",
-            "onChange",
-            "label",
-            "placeholder",
-            "clearable",
-            "selectOnTab",
-            "disabled",
-            "readOnly",
-            "variant",
-            "feedback",
-            "prepend",
-            "loading",
-            "loadingText",
-            "noMatchesText",
-            "labelClearSelectedItem",
-            "labelTooltip",
-            "disableLabelAnimation",
-            "className",
-            "listStyle",
-            "style",
-            "ariaLabelCloseList",
-            "ariaLabelOpenList",
-            "ariaLabelChosenSingular",
-            "ariaLabelSelectedItem",
-            "ariaAlertOnFeedback",
-            "feedbackProps",
-            "itemFilter",
-            "debounceTimeout",
-            "onBlur",
-            "onClick",
-            "onKeyDown",
-            "onFocus"
-          ]
+          "knownProps": []
         }
       ]
     },
     {
       "packageName": "@entur/expand",
-      "latestVersion": "4.0.2",
+      "latestVersion": "4.1.1",
       "symbols": [
         {
           "symbolName": "Accordion",
@@ -816,7 +647,7 @@
     },
     {
       "packageName": "@entur/fileupload",
-      "latestVersion": "0.6.2",
+      "latestVersion": "0.7.1",
       "symbols": [
         {
           "symbolName": "FileUpload",
@@ -836,7 +667,7 @@
     },
     {
       "packageName": "@entur/form",
-      "latestVersion": "10.0.2",
+      "latestVersion": "10.3.1",
       "symbols": [
         {
           "symbolName": "BaseFormControl",
@@ -894,6 +725,7 @@
             "className",
             "disabled",
             "readOnly",
+            "readOnlyLabelDescription",
             "style"
           ]
         },
@@ -971,48 +803,22 @@
             "className",
             "disabled",
             "readOnly",
+            "readOnlyLabelDescription",
             "style"
           ]
         },
         {
           "symbolName": "SegmentedChoice",
           "symbolType": "component",
-          "knownProps": [
-            "value",
-            "children",
-            "className",
-            "onChange",
-            "as",
-            "ref"
-          ]
-        },
-        {
-          "symbolName": "SegmentedChoiceProps",
-          "symbolType": "component",
-          "knownProps": []
+          "knownProps": ["value", "children", "className", "onChange"]
         },
         {
           "symbolName": "SegmentedControl",
           "symbolType": "component",
-          "knownProps": [
-            "name",
-            "label",
-            "children",
-            "value",
-            "defaultValue",
-            "onChange",
-            "size",
-            "className",
-            "selectedValue"
-          ]
-        },
-        {
-          "symbolName": "SegmentedControlComponent",
-          "symbolType": "component",
           "knownProps": []
         },
         {
-          "symbolName": "SegmentedControlProps",
+          "symbolName": "SegmentedControlComponent",
           "symbolType": "component",
           "knownProps": []
         },
@@ -1061,7 +867,7 @@
     },
     {
       "packageName": "@entur/grid",
-      "latestVersion": "0.4.2",
+      "latestVersion": "0.5.1",
       "symbols": [
         {
           "symbolName": "GridContainer",
@@ -1084,7 +890,7 @@
     },
     {
       "packageName": "@entur/layout",
-      "latestVersion": "4.0.2",
+      "latestVersion": "5.1.1",
       "symbols": [
         {
           "symbolName": "Badge",
@@ -1098,8 +904,7 @@
             "max",
             "type",
             "invisible",
-            "hide",
-            "ref"
+            "hide"
           ]
         },
         {
@@ -1174,7 +979,14 @@
         {
           "symbolName": "Tag",
           "symbolType": "component",
-          "knownProps": ["as", "className", "compact", "children"]
+          "knownProps": [
+            "as",
+            "className",
+            "children",
+            "variant",
+            "size",
+            "compact"
+          ]
         },
         {
           "symbolName": "useContrast",
@@ -1184,8 +996,93 @@
       ]
     },
     {
+      "packageName": "@entur/layout",
+      "deepImportPath": "/beta",
+      "latestVersion": "5.1.1",
+      "symbols": [
+        {
+          "symbolName": "Flex",
+          "symbolType": "component",
+          "knownProps": [
+            "display",
+            "direction",
+            "wrap",
+            "align",
+            "justify",
+            "alignContent",
+            "gap",
+            "rowGap",
+            "columnGap",
+            "flex",
+            "grow",
+            "shrink",
+            "basis",
+            "width",
+            "height",
+            "minWidth",
+            "minHeight",
+            "maxWidth",
+            "maxHeight",
+            "className",
+            "children"
+          ]
+        },
+        {
+          "symbolName": "FlexSpacer",
+          "symbolType": "component",
+          "knownProps": ["as", "className", "children"]
+        },
+        {
+          "symbolName": "Grid",
+          "symbolType": "component",
+          "knownProps": [
+            "templateColumns",
+            "templateRows",
+            "autoFlow",
+            "autoRows",
+            "autoColumns",
+            "gap",
+            "rowGap",
+            "columnGap",
+            "align",
+            "justify",
+            "justifyItems",
+            "alignContent",
+            "height",
+            "minHeight",
+            "maxHeight",
+            "minWidth",
+            "maxWidth",
+            "className",
+            "children"
+          ]
+        },
+        {
+          "symbolName": "GridItem",
+          "symbolType": "component",
+          "knownProps": [
+            "colSpan",
+            "rowSpan",
+            "colStart",
+            "colEnd",
+            "rowStart",
+            "rowEnd",
+            "alignSelf",
+            "justifySelf",
+            "className",
+            "children"
+          ]
+        },
+        {
+          "symbolName": "Template",
+          "symbolType": "component",
+          "knownProps": []
+        }
+      ]
+    },
+    {
       "packageName": "@entur/loader",
-      "latestVersion": "0.8.2",
+      "latestVersion": "0.9.1",
       "symbols": [
         {
           "symbolName": "Loader",
@@ -1221,7 +1118,7 @@
     },
     {
       "packageName": "@entur/menu",
-      "latestVersion": "7.1.0",
+      "latestVersion": "7.4.1",
       "symbols": [
         {
           "symbolName": "BreadcrumbItem",
@@ -1255,8 +1152,7 @@
             "href",
             "as",
             "className",
-            "children",
-            "ref"
+            "children"
           ]
         },
         {
@@ -1372,8 +1268,20 @@
       ]
     },
     {
+      "packageName": "@entur/menu",
+      "deepImportPath": "/beta",
+      "latestVersion": "7.4.1",
+      "symbols": [
+        {
+          "symbolName": "SideNavigation",
+          "symbolType": "component",
+          "knownProps": []
+        }
+      ]
+    },
+    {
       "packageName": "@entur/modal",
-      "latestVersion": "2.0.2",
+      "latestVersion": "2.1.1",
       "symbols": [
         {
           "symbolName": "Drawer",
@@ -1433,7 +1341,7 @@
     },
     {
       "packageName": "@entur/tab",
-      "latestVersion": "0.8.2",
+      "latestVersion": "0.10.1",
       "symbols": [
         {
           "symbolName": "Tab",
@@ -1485,7 +1393,7 @@
     },
     {
       "packageName": "@entur/table",
-      "latestVersion": "5.0.2",
+      "latestVersion": "5.2.1",
       "symbols": [
         {
           "symbolName": "DataCell",
@@ -1586,7 +1494,7 @@
     },
     {
       "packageName": "@entur/tokens",
-      "latestVersion": "4.0.1",
+      "latestVersion": "4.3.1",
       "symbols": [
         {
           "symbolName": "borderRadiuses",
@@ -1605,11 +1513,6 @@
         },
         {
           "symbolName": "colors",
-          "symbolType": "util",
-          "knownProps": []
-        },
-        {
-          "symbolName": "componentColors",
           "symbolType": "util",
           "knownProps": []
         },
@@ -1687,7 +1590,7 @@
     },
     {
       "packageName": "@entur/tooltip",
-      "latestVersion": "6.0.2",
+      "latestVersion": "6.1.1",
       "symbols": [
         {
           "symbolName": "Popover",
@@ -1743,7 +1646,7 @@
     },
     {
       "packageName": "@entur/travel",
-      "latestVersion": "8.0.2",
+      "latestVersion": "8.1.1",
       "symbols": [
         {
           "symbolName": "LegBone",
@@ -1807,7 +1710,7 @@
     },
     {
       "packageName": "@entur/typography",
-      "latestVersion": "3.0.2",
+      "latestVersion": "3.2.0",
       "symbols": [
         {
           "symbolName": "Blockquote",
@@ -1929,8 +1832,81 @@
       ]
     },
     {
+      "packageName": "@entur/typography",
+      "deepImportPath": "/beta",
+      "latestVersion": "3.2.0",
+      "symbols": [
+        {
+          "symbolName": "Heading",
+          "symbolType": "component",
+          "knownProps": [
+            "spacing",
+            "variant",
+            "size",
+            "tone",
+            "children",
+            "trim",
+            "maxLines",
+            "className"
+          ]
+        },
+        {
+          "symbolName": "Label",
+          "symbolType": "component",
+          "knownProps": ["spacing", "className", "children"]
+        },
+        {
+          "symbolName": "Link",
+          "symbolType": "component",
+          "knownProps": ["spacing", "className", "children"]
+        },
+        {
+          "symbolName": "ListItem",
+          "symbolType": "component",
+          "knownProps": ["spacing", "className", "tone", "children", "title"]
+        },
+        {
+          "symbolName": "NumberedList",
+          "symbolType": "component",
+          "knownProps": [
+            "spacing",
+            "className",
+            "tone",
+            "children",
+            "type",
+            "variant"
+          ]
+        },
+        {
+          "symbolName": "Text",
+          "symbolType": "component",
+          "knownProps": [
+            "spacing",
+            "size",
+            "weight",
+            "tone",
+            "variant",
+            "children",
+            "trim",
+            "maxLines",
+            "className"
+          ]
+        },
+        {
+          "symbolName": "TextContainer",
+          "symbolType": "component",
+          "knownProps": ["spacing", "className", "children"]
+        },
+        {
+          "symbolName": "UnorderedList",
+          "symbolType": "component",
+          "knownProps": ["spacing", "className", "tone", "children"]
+        }
+      ]
+    },
+    {
       "packageName": "@entur/utils",
-      "latestVersion": "0.15.0",
+      "latestVersion": "0.15.4",
       "symbols": [
         {
           "symbolName": "ConditionalWrapper",

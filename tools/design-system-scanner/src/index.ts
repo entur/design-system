@@ -676,6 +676,7 @@ function emitCatalogRows(
           scan_id: scanId,
           scan_timestamp: scanTimestamp,
           package_name: pkg.packageName,
+          deep_import_path: pkg.deepImportPath ?? null,
           package_latest_version: pkg.latestVersion ?? null,
           symbol_name: symbol.symbolName,
           symbol_type: symbol.symbolType,
@@ -717,7 +718,11 @@ function emitCatalogZeroRows(
     if (!installedPackages.has(catalogPkg.packageName)) continue;
 
     for (const symbol of catalogPkg.symbols) {
-      const key = symbolKey(catalogPkg.packageName, null, symbol.symbolName);
+      const key = symbolKey(
+        catalogPkg.packageName,
+        catalogPkg.deepImportPath,
+        symbol.symbolName,
+      );
       if (observed.has(key)) continue;
 
       rows.push(
@@ -733,7 +738,7 @@ function emitCatalogZeroRows(
           import_style: null,
           is_aliased: false,
           alias_name: null,
-          deep_import_path: null,
+          deep_import_path: catalogPkg.deepImportPath ?? null,
           props_spread_count: 0,
           file_count: 0,
           files_used_in: 0,

@@ -91,6 +91,15 @@ const catalog: DesignSystemCatalog = {
         { symbolName: 'Link', symbolType: 'component', knownProps: [] },
       ],
     },
+    {
+      packageName: '@entur/typography',
+      deepImportPath: '/beta',
+      latestVersion: null,
+      symbols: [
+        { symbolName: 'Heading', symbolType: 'component', knownProps: [] },
+        { symbolName: 'Link', symbolType: 'component', knownProps: [] },
+      ],
+    },
   ],
 };
 
@@ -148,10 +157,24 @@ describe('BigQuery export', () => {
     );
   });
 
-  it('does not emit a catalog zero row for a symbol used from the root', () => {
+  it('emits catalog zero rows per entry point', () => {
     const zero = readRows(outDir, 'repo_symbol_usage.ndjson').filter(
       r => r.finding_source === 'catalog-zero',
     );
-    expect(zero).toHaveLength(0);
+    expect(zero).toEqual([
+      expect.objectContaining({
+        symbol_name: 'Heading',
+        deep_import_path: '/beta',
+      }),
+    ]);
+  });
+
+  it('carries the entry point on catalog rows', () => {
+    const rows = readRows(outDir, 'ds_catalog.ndjson');
+    expect(rows.map(r => [r.symbol_name, r.deep_import_path])).toEqual([
+      ['Link', null],
+      ['Heading', '/beta'],
+      ['Link', '/beta'],
+    ]);
   });
 });
