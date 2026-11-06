@@ -1091,5 +1091,13 @@
     "outputs": [
       "TextContainer.json"
     ]
+  },
+  "menu/src/beta/Footer/Footer.tsx": {
+    "hash": "450417ae0bb01bb9665e9114a24daa15",
+    "outputs": [
+      "FooterBrand.json",
+      "FooterLinkGroup.json",
+      "Footer.json"
+    ]
   }
 }

@@ -1,0 +1,104 @@
+{
+  "tags": {},
+  "description": "Footer for Entur-produkter. Subfooteren med copyright og lenke til entur.no er lik\ni alle produkter og kan ikke endres.",
+  "displayName": "Footer",
+  "methods": [],
+  "props": {
+    "contrast": {
+      "defaultValue": {
+        "value": false
+      },
+      "description": "Bruker kontrastvarianten. Velg variant etter produktets visuelle uttrykk.\nInne i en `Contrast`-wrapper er footeren alltid kontrast.",
+      "name": "contrast",
+      "declarations": [
+        {
+          "fileName": "packages/menu/src/beta/Footer/Footer.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "boolean | undefined"
+      }
+    },
+    "showSocialMedia": {
+      "defaultValue": {
+        "value": false
+      },
+      "description": "Viser Enturs sosiale medier i subfooteren. Bruk det bare i tjenester for reisende og andre privatpersoner (B2C).",
+      "name": "showSocialMedia",
+      "declarations": [
+        {
+          "fileName": "packages/menu/src/beta/Footer/Footer.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "boolean | undefined"
+      }
+    },
+    "socialMediaLabel": {
+      "defaultValue": {
+        "value": "Entur i sosiale medier"
+      },
+      "description": "Tilgjengelig navn på listen med sosiale medier",
+      "name": "socialMediaLabel",
+      "declarations": [
+        {
+          "fileName": "packages/menu/src/beta/Footer/Footer.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "children": {
+      "defaultValue": null,
+      "description": "`Footer.Brand` og en eller flere `Footer.LinkGroup`",
+      "name": "children",
+      "declarations": [
+        {
+          "fileName": "packages/menu/src/beta/Footer/Footer.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "className": {
+      "defaultValue": null,
+      "description": "",
+      "name": "className",
+      "declarations": [
+        {
+          "fileName": "packages/menu/src/beta/Footer/Footer.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "style": {
+      "defaultValue": null,
+      "description": "",
+      "name": "style",
+      "declarations": [
+        {
+          "fileName": "packages/menu/src/beta/Footer/Footer.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "CSSProperties | undefined"
+      }
+    }
+  }
+}

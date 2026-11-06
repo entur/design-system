@@ -49,6 +49,7 @@ type CodeExampleType = {
     playgroundProps?: string;
     hideCode?: boolean;
     scaledPreview?: boolean;
+    scaledPreviewFitContent?: boolean;
     containerStyle?: ContainerStyleEntry[];
   };
   playgroundProps?: string;
@@ -160,6 +161,7 @@ export const CodeExampleResolver = ({ value }: CodeExampleProps) => {
           code={resolvedPlaygroundCode}
           hideCode={playgroundCode?.hideCode}
           previewScale={playgroundCode?.scaledPreview ? 0.5 : undefined}
+          previewFitContent={playgroundCode?.scaledPreviewFitContent}
           style={playgroundCode?.containerStyle?.reduce(
             (acc, { property, value }) => ({ ...acc, [property]: value }),
             {} as React.CSSProperties,

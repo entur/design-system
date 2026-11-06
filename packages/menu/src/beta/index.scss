@@ -1,1 +1,3 @@
 @use './componentVariables';
+// The spacing scale (--spacing-*) used by Footer comes from @entur/tokens
+@use '@entur/tokens/dist/spacing.scss';

@@ -14,7 +14,7 @@ Full API docs: https://linje.entur.no/komponenter
 | `@entur/layout`          | `Contrast`, `NavigationCard`, `MediaCard`, `Badge`, `BulletBadge`, `NotificationBadge`, `StatusBadge`, `Tag`                                                                                                                             |
 | `@entur/layout/beta`     | `Grid`, `GridItem`, `Flex`, `FlexSpacer`, `Template` (`Template.Portal` app shell) — **beta, API may change**                                                                                                                            |
 | `@entur/typography/beta` | `Heading`, `Text`, `TextContainer`, `Link`, `Label`, `UnorderedList`, `NumberedList`, `ListItem` — **beta, API may change**                                                                                                              |
-| `@entur/menu/beta`       | `SideNavigation` (`SideNavigation.Group`, `.Item`, `.ExpandableItem`) — supersedes the stable `SideNavigation`. **beta, API may change**                                                                                                 |
+| `@entur/menu/beta`       | `SideNavigation` (`SideNavigation.Group`, `.Item`, `.ExpandableItem`) — supersedes the stable `SideNavigation`; `Footer` (`Footer.Brand`, `.LinkGroup`). **beta, API may change**                                                        |
 | `@entur/grid`            | `GridContainer`, `GridItem`                                                                                                                                                                                                              |
 | `@entur/modal`           | `Modal`, `Drawer`                                                                                                                                                                                                                        |
 | `@entur/tooltip`         | `Tooltip`, `Popover`                                                                                                                                                                                                                     |
@@ -256,6 +256,39 @@ import { SideNavigation, SideNavigationItem, SideNavigationGroup, BreadcrumbNavi
 ```
 
 `SideNavigationItem` renders an `<a>`, and an anchor without `href` is neither focusable nor announced as a link. Give it an `href`, or `as="button" onClick`.
+
+### Footer (`@entur/menu/beta`)
+
+Footer for Entur products: sites for travellers, documentation and simpler tools. Don't add one to heavy work tools used for most of the working day — put links like the accessibility statement and privacy in the help menu or side menu there instead.
+
+```tsx
+import { Footer } from '@entur/menu/beta';
+import { Link } from '@entur/typography/beta';
+
+<Footer>
+  <Footer.Brand productName="Navn">
+    Entur gjør det enklere å reise kollektivt i hele Norge.
+  </Footer.Brand>
+  <Footer.LinkGroup title="Tjenester">
+    <Link href="/reiseplanlegger">Reiseplanlegger</Link>
+  </Footer.LinkGroup>
+  <Footer.LinkGroup title="Om nettstedet">
+    <Link href="/tilgjengelighet">Tilgjengelighetserklæring</Link>
+    <Link href="/personvern">Personvern</Link>
+    <Link as="button" type="button" onClick={openConsent}>
+      Informasjonskapsler
+    </Link>
+  </Footer.LinkGroup>
+</Footer>;
+```
+
+- Load both `@entur/menu/styles` (the logo lives there) and `@entur/menu/beta/styles`, plus the styles of `@entur/button` and `@entur/typography/beta`.
+- `Footer.Brand` renders the Entur logo with `productName`; the text under it goes in `children` (no default, write it yourself). Put an address or org number in an `<address>` there if needed.
+- At most three `Footer.LinkGroup`s, with «Om nettstedet» on the far right. More groups fit but every column gets narrower.
+- The subfooter (copyright, entur.no) is built in and can't be changed. Add Entur's social media with `showSocialMedia` only in services for travellers and other private individuals (B2C), not in B2B. Translate their list name with `socialMediaLabel`.
+- Place `<Footer>` after `<main>`, full width — on pages with a side menu, below both the side menu and the content. Never inside `<main>`, or it is no longer the `contentinfo` landmark.
+- The layout follows the footer's own width (container queries): one column, two from 800px, one row from 1200px. Its content should line up with the top bar: match a centered top bar with `--eds-footer-max-width`, and a different side padding with `--eds-footer-padding-inline`.
+- Use `contrast` for the dark variant. Inside a `Contrast` wrapper the footer is always contrast.
 
 ---
 

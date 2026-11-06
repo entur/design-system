@@ -13,7 +13,8 @@ export default {
   title: 'Linje lekerom',
   snippets: './src/snippets/index.ts',
   frameComponent: './src/FrameComponent.tsx',
-  widths: [320, 768, 1024],
+  // Small phone, then the layout/beta breakpoints s, m, lg and xl
+  widths: [375, 600, 800, 1200, 1400],
   port: 9000,
   openBrowser: true,
   paramType: 'search',

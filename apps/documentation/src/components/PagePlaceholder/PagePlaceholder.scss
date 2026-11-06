@@ -1,0 +1,71 @@
+.page-placeholder {
+  --page-placeholder-fill: var(--basecolors-frame-subdued);
+
+  display: flex;
+  flex-shrink: 0;
+  width: 100%;
+
+  span {
+    display: block;
+    border-radius: 0.25rem;
+    background: var(--page-placeholder-fill);
+  }
+
+  &__sidebar {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    gap: var(--spacing-lg);
+    width: 16rem;
+    box-sizing: border-box;
+    padding: var(--spacing-4xl) var(--spacing-xl);
+    border-inline-end: 1px solid var(--basecolors-stroke-subduedalt);
+  }
+
+  &__nav-item {
+    height: 1rem;
+  }
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: var(--spacing-xl);
+    max-width: 44rem;
+    padding: var(--spacing-4xl) var(--spacing-6xl) var(--spacing-9xl);
+  }
+
+  &__heading {
+    width: 45%;
+    height: 1.75rem;
+  }
+
+  &__subheading {
+    width: 30%;
+    height: 1.25rem;
+  }
+
+  &__paragraph {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+
+  &__line {
+    height: 0.625rem;
+  }
+
+  &__actions {
+    display: flex;
+    gap: var(--spacing-m);
+  }
+
+  &__button {
+    width: 8rem;
+    height: 2.5rem;
+
+    &--secondary {
+      width: 6rem;
+    }
+  }
+}
