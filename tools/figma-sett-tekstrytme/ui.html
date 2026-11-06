@@ -1,0 +1,575 @@
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<style>
+  :root {
+    --bg: var(--figma-color-bg, #fff);
+    --text: var(--figma-color-text, #1e1e1e);
+    --text-secondary: var(--figma-color-text-secondary, #757575);
+    --border: var(--figma-color-border, #e6e6e6);
+    --brand: var(--figma-color-bg-brand, #0d99ff);
+    --off: var(--figma-color-bg-tertiary, #d9d9d9);
+    --warning: var(--figma-color-text-warning, #b86200);
+    --success: var(--figma-color-text-success, #14ae5c);
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    padding: 16px;
+    background: var(--bg);
+    color: var(--text);
+    font: 11px/16px Inter, system-ui, -apple-system, sans-serif;
+  }
+
+  .selection {
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .name {
+    overflow: hidden;
+    font-weight: 600;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .meta,
+  .warnings {
+    color: var(--text-secondary);
+  }
+
+  .row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 12px;
+    font-weight: 600;
+  }
+
+  .block {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .block:last-of-type {
+    border-bottom: 0;
+  }
+
+  .block > .row:first-child,
+  .block > [hidden] + .row {
+    margin-top: 0;
+  }
+
+  select {
+    max-width: 140px;
+    padding: 4px 8px;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    background: var(--bg);
+    color: var(--text);
+    font: inherit;
+  }
+
+  select:disabled {
+    opacity: 0.4;
+  }
+
+  .segmented {
+    display: flex;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    overflow: hidden;
+  }
+
+  .segmented button {
+    padding: 4px 8px;
+    border: 0;
+    background: transparent;
+    color: var(--text);
+    font: inherit;
+    font-weight: 400;
+    cursor: pointer;
+  }
+
+  .segmented button + button {
+    border-left: 1px solid var(--border);
+  }
+
+  .segmented button[aria-pressed='true'] {
+    background: var(--brand);
+    color: var(--figma-color-text-onbrand, #fff);
+  }
+
+  .segmented button:disabled {
+    cursor: default;
+    opacity: 0.4;
+  }
+
+  .segmented button:focus-visible {
+    outline: 2px solid var(--brand);
+    outline-offset: -2px;
+  }
+
+  select:focus-visible {
+    outline: 2px solid var(--brand);
+    outline-offset: 1px;
+  }
+
+  .modes {
+    margin-top: 6px;
+    color: var(--text-secondary);
+  }
+
+  .warnings .warn {
+    color: var(--warning);
+  }
+
+  .switch {
+    position: relative;
+    width: 28px;
+    height: 16px;
+    padding: 0;
+    border: 0;
+    border-radius: 8px;
+    background: var(--off);
+    cursor: pointer;
+  }
+
+  .switch::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #fff;
+    transition: transform 120ms ease-out;
+  }
+
+  .switch[aria-checked='true'] {
+    background: var(--brand);
+  }
+
+  .switch[aria-checked='true']::after {
+    transform: translateX(12px);
+  }
+
+  /* A deviating selection is neither on nor off */
+  .switch[aria-checked='mixed']::after {
+    transform: translateX(6px);
+  }
+
+  .switch:disabled {
+    cursor: default;
+    opacity: 0.4;
+  }
+
+  .switch:focus-visible {
+    outline: 2px solid var(--brand);
+    outline-offset: 2px;
+  }
+
+  .state {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 6px;
+  }
+
+  .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--off);
+  }
+
+  [data-state='on'] .dot {
+    background: var(--success);
+  }
+
+  [data-state='deviates'] .dot {
+    background: var(--warning);
+  }
+
+  .warnings {
+    margin: 6px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .check {
+    margin-top: 12px;
+    padding: 4px 8px;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    background: transparent;
+    color: var(--text);
+    font: inherit;
+    cursor: pointer;
+  }
+
+  [hidden] {
+    display: none;
+  }
+</style>
+
+<div class="selection">
+  <div class="name" id="name">Ingenting markert</div>
+  <div class="meta" id="meta">Marker rammen med teksten</div>
+</div>
+
+<div class="block">
+  <div class="row" id="context-row">
+    <label for="context">Kontekst</label>
+    <select id="context" disabled>
+      <option value="" disabled>Ikke satt</option>
+      <option value="custom" disabled>Egendefinert</option>
+      <option value="mixed" disabled>Ulike kontekster</option>
+      <option value="standard">Standard</option>
+      <option value="compact">Compact</option>
+      <option value="display">Display</option>
+    </select>
+  </div>
+  <!-- On Standard the components keep their size and the text follows the screen -->
+  <div class="row" id="screen-row" hidden>
+    <span id="screen-label">Tekst</span>
+    <div class="segmented" role="group" aria-labelledby="screen-label">
+      <button type="button" data-screen="desktop" aria-pressed="true">
+        Desktop
+      </button>
+      <button type="button" data-screen="mobile" aria-pressed="false">
+        Mobile
+      </button>
+    </div>
+  </div>
+  <div class="row" id="component-row" hidden>
+    <label for="component">Komponent</label>
+    <select id="component">
+      <option value="inherit">Følger skjermen</option>
+      <option value="custom" disabled>Egendefinert</option>
+      <option value="mixed" disabled>Ulike</option>
+      <option value="Standard">Standard</option>
+      <option value="Compact">Compact</option>
+      <option value="Display">Display</option>
+    </select>
+  </div>
+  <div class="modes" id="modes">Marker en ramme for å velge kontekst</div>
+  <ul class="warnings" id="context-warnings"></ul>
+</div>
+
+<div class="block" id="panel" data-state="empty">
+  <div class="row">
+    <label for="switch">Tekstrytme</label>
+    <!-- A checkbox, since a switch has no mixed state for a deviating selection -->
+    <button
+      class="switch"
+      id="switch"
+      role="checkbox"
+      aria-checked="false"
+      aria-describedby="state"
+      disabled
+    ></button>
+  </div>
+  <div class="state"><span class="dot"></span><span id="state"></span></div>
+  <ul class="warnings" id="warnings"></ul>
+  <button class="check" id="check" hidden>Marker avvik</button>
+</div>
+
+<script>
+  const panel = document.getElementById('panel');
+  const name = document.getElementById('name');
+  const meta = document.getElementById('meta');
+  const toggle = document.getElementById('switch');
+  const state = document.getElementById('state');
+  const warnings = document.getElementById('warnings');
+  const check = document.getElementById('check');
+  const contextSelect = document.getElementById('context');
+  const modes = document.getElementById('modes');
+  const contextWarnings = document.getElementById('context-warnings');
+  const contextRow = document.getElementById('context-row');
+  const componentRow = document.getElementById('component-row');
+  const componentSelect = document.getElementById('component');
+  const screenRow = document.getElementById('screen-row');
+  const screenButtons = [...screenRow.querySelectorAll('button')];
+
+  const CONTEXT_NAMES = {
+    'standard-desktop': 'Standard · Desktop',
+    'standard-mobile': 'Standard · Mobile',
+    compact: 'Compact',
+    display: 'Display',
+  };
+
+  // standard-mobile is shown as Standard in the list and Mobile on the switch
+  let textSize = 'desktop';
+  const baseOf = id => (id && id.startsWith('standard-') ? 'standard' : id);
+
+  function renderScreen(id, enabled) {
+    screenRow.hidden = baseOf(id) !== 'standard';
+    if (screenRow.hidden) return;
+    textSize = id.split('-')[1];
+    for (const button of screenButtons) {
+      button.setAttribute(
+        'aria-pressed',
+        String(button.dataset.screen === textSize),
+      );
+      button.disabled = !enabled;
+    }
+  }
+
+  const STATES = {
+    on: 'Følger reglene',
+    off: 'Avstand av',
+    none: 'Ingen tekstkomponenter i utvalget',
+    empty: '',
+  };
+
+  let current = 'empty';
+
+  function plural(count, one, many) {
+    return `${count} ${count === 1 ? one : many}`;
+  }
+
+  function render(status) {
+    current = status.state;
+    panel.dataset.state = current;
+    name.textContent = status.label || 'Ingenting markert';
+    meta.textContent =
+      current === 'empty'
+        ? 'Marker rammen med teksten'
+        : status.count
+        ? plural(status.count, 'tekstelement', 'tekstelementer')
+        : '';
+
+    // Outside a vertical auto layout the rhythm can't be set, only turned off
+    const loose = status.flow === false;
+    toggle.disabled =
+      current === 'empty' || current === 'none' || (loose && current === 'off');
+    toggle.setAttribute(
+      'aria-checked',
+      current === 'on' ? 'true' : current === 'deviates' ? 'mixed' : 'false',
+    );
+    state.textContent =
+      current === 'deviates'
+        ? `${plural(status.deviations, 'element', 'elementer')} avviker`
+        : loose && current === 'on'
+        ? 'Avstand på'
+        : STATES[current];
+
+    warnings.replaceChildren();
+    if (loose)
+      warnings.append(
+        item('Ikke i en vertikal auto layout, så tekstrytmen kan ikke settes'),
+      );
+    if (status.gaps)
+      warnings.append(
+        item(
+          `${plural(
+            status.gaps,
+            'ramme',
+            'rammer',
+          )} med gap, som kommer i tillegg`,
+        ),
+      );
+    if (status.others)
+      warnings.append(
+        item(
+          `${plural(
+            status.others,
+            'annet element',
+            'andre elementer',
+          )} uten luft etter (koden gir 24)`,
+        ),
+      );
+    check.hidden = current !== 'deviates';
+    renderContext(status.context);
+  }
+
+  function describeModes(m) {
+    const parts = [];
+    if (m.typography) parts.push(`Tekst ${m.typography}`);
+    if (m.size && m.size === m.spacing) parts.push(`Komponenter ${m.size}`);
+    else {
+      if (m.size) parts.push(`Størrelse ${m.size}`);
+      if (m.spacing) parts.push(`Avstand ${m.spacing}`);
+    }
+    return parts.join(' · ');
+  }
+
+  function renderContext(context) {
+    contextWarnings.replaceChildren();
+    const component = Boolean(context && context.component);
+    contextRow.hidden = component;
+    componentRow.hidden = !component;
+    screenRow.hidden = true;
+    textSize = 'desktop';
+
+    // A component on the screen can take its own size, text and size alike
+    if (component) {
+      componentSelect.disabled = false;
+      componentSelect.value = context.value;
+      modes.textContent =
+        context.value === 'inherit'
+          ? `${describeModes(context.modes)}${
+              context.from ? ` · fra «${context.from}»` : ' (standard)'
+            }`
+          : describeModes(context.modes);
+      if (context.unbound && context.unbound.length > 0)
+        contextWarnings.append(
+          item(
+            `${context.unbound
+              .map(([name]) => name)
+              .join(
+                ', ',
+              )} er ikke bundet til Component size, så bare teksten endres`,
+            true,
+          ),
+        );
+      return;
+    }
+
+    const ready =
+      context &&
+      context.available &&
+      !context.readOnly &&
+      (context.modes || context.mixed);
+    contextSelect.disabled = !ready;
+
+    if (!context || !context.available) {
+      contextSelect.value = '';
+      modes.textContent = 'Marker en ramme for å velge kontekst';
+      return;
+    }
+
+    // A layer inside the screen only shows what it inherits; the context is set on the screen frame
+    if (context.readOnly) {
+      contextSelect.value = context.set ? baseOf(context.id) || 'custom' : '';
+      if (context.set) renderScreen(context.id, false);
+      modes.textContent = `${describeModes(context.modes)}${
+        context.own
+          ? ' · egen modus på dette laget'
+          : context.set && context.from
+          ? ` · arvet fra «${context.from}»`
+          : ' (standard)'
+      }`;
+      contextWarnings.append(
+        item(
+          context.own
+            ? 'Velg kontekst på skjermrammen, så følger dette laget den'
+            : 'Marker komponenten eller skjermrammen for å endre',
+          context.own,
+        ),
+      );
+      return;
+    }
+
+    if (context.mixed) {
+      contextSelect.value = 'mixed';
+      modes.textContent = 'De markerte rammene har ulike kontekster';
+    } else if (!context.modes) {
+      contextSelect.value = '';
+      modes.textContent = context.loading
+        ? 'Henter variabelsamlingene …'
+        : 'Fant ikke variabelsamlingene i filen';
+    } else {
+      const m = context.modes;
+      contextSelect.value = context.set ? baseOf(context.id) || 'custom' : '';
+      if (context.set) renderScreen(context.id, true);
+      modes.textContent = `${describeModes(m)}${
+        context.set ? '' : ' (standard)'
+      }`;
+      if (m.size && m.spacing && m.size !== m.spacing)
+        contextWarnings.append(
+          item('Component size og Component spacing har ulike moduser', true),
+        );
+      if (context.diverging > 0)
+        contextWarnings.append(
+          item(
+            `${context.diverging} lag har egen modus og følger ikke ${
+              CONTEXT_NAMES[context.id] || 'konteksten'
+            }. Velg konteksten på nytt for å rette dem.`,
+            true,
+          ),
+        );
+      if (context.unbound && context.unbound.length > 0) {
+        const names = context.unbound
+          .slice(0, 3)
+          .map(([component, count]) => `${component} (${count})`)
+          .join(', ');
+        const rest = context.unbound.length - 3;
+        contextWarnings.append(
+          item(
+            `Følger ikke ${m.size}: ${names}${
+              rest > 0 ? ` og ${rest} til` : ''
+            }`,
+            true,
+          ),
+        );
+      }
+    }
+
+    if (context.missing && context.missing.length > 0)
+      contextWarnings.append(
+        item(
+          `${context.missing.join(' og ')} ${
+            context.loading ? 'hentes fra biblioteket' : 'finnes ikke i filen'
+          }`,
+        ),
+      );
+  }
+
+  function item(text, warn) {
+    const li = document.createElement('li');
+    li.textContent = text;
+    if (warn) li.className = 'warn';
+    return li;
+  }
+
+  function sendContext(id) {
+    contextSelect.disabled = true;
+    screenButtons.forEach(button => (button.disabled = true));
+    parent.postMessage({ pluginMessage: { type: 'context', id } }, '*');
+  }
+
+  // Standard starts on Desktop, unless the frame is already Standard with Mobile
+  contextSelect.addEventListener('change', () => {
+    const value = contextSelect.value;
+    sendContext(value === 'standard' ? `standard-${textSize}` : value);
+  });
+
+  for (const button of screenButtons)
+    button.addEventListener('click', () => {
+      if (button.getAttribute('aria-pressed') === 'true') return;
+      sendContext(`standard-${button.dataset.screen}`);
+    });
+
+  componentSelect.addEventListener('change', () => {
+    componentSelect.disabled = true;
+    parent.postMessage(
+      { pluginMessage: { type: 'component', value: componentSelect.value } },
+      '*',
+    );
+  });
+
+  // On turns the rhythm on, from off or from a deviating selection; only a following one turns off
+  toggle.addEventListener('click', () => {
+    toggle.disabled = true;
+    parent.postMessage(
+      { pluginMessage: { type: 'toggle', on: current !== 'on' } },
+      '*',
+    );
+  });
+
+  check.addEventListener('click', () => {
+    parent.postMessage({ pluginMessage: { type: 'check' } }, '*');
+  });
+
+  onmessage = event => {
+    const message = event.data.pluginMessage;
+    if (message && message.type === 'status') render(message);
+  };
+</script>
