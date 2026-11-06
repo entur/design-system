@@ -127,7 +127,7 @@ const Index = () => {
           // We use the height of the content to set a correct height for the background
           style={{ '--background-height': `${backgroundHeight}px` }}
         >
-          <div className="frontpage__background__animation">
+          <div className="frontpage__background__animation" aria-hidden="true">
             <div
               ref={animatedCircleRef}
               className="frontpage__background__animation__traveller first"
@@ -140,7 +140,12 @@ const Index = () => {
             svgRef={svgRef}
             className="frontpage__background__lines"
           />
-          <main ref={mainRef} className="frontpage__main">
+          <main
+            ref={mainRef}
+            id="frontpage-content"
+            tabIndex={-1}
+            className="frontpage__main"
+          >
             <div className="frontpage__main__hero">
               <div className="frontpage__main__hero__content">
                 <Heading

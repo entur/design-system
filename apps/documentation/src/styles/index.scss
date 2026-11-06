@@ -148,3 +148,8 @@ body {
     justify-self: start;
   }
 }
+
+// The skip link moves focus to <main>; it is not interactive, so it gets no focus ring
+main[tabindex='-1']:focus {
+  outline: none;
+}

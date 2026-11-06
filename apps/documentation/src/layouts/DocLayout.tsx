@@ -46,7 +46,7 @@ const DocLayout = ({ children, location, pageContext }: DocLayoutProps) => {
             className="side-nav-column"
           />
         )}
-        <main id="main" className="page">
+        <main id="main" tabIndex={-1} className="page">
           {showHeader && <PageHeader frontmatter={frontmatter} />}
           <MdxTableOfContent />
           <MDXProvider components={components as MDXComponents}>
