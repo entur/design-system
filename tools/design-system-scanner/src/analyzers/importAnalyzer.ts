@@ -7,7 +7,7 @@ import type {
   SymbolType,
   FileFinding,
 } from '../types';
-import { resolveDesignSystemSpecifier } from './packageAnalyzer';
+import { resolveDesignSystemSpecifier, symbolKey } from './packageAnalyzer';
 import {
   SOURCE_EXTENSIONS,
   findFilesByExtension,
@@ -214,9 +214,11 @@ function aggregateImports(entries: FileImportEntry[]): ImportUsage[] {
   for (const entry of entries) {
     // The subpath is part of the key: Link from @entur/typography and Link from
     // @entur/typography/beta are different symbols despite the shared root.
-    const key = `${entry.packageName}${entry.deepImportPath ?? ''}::${
-      entry.symbolName
-    }`;
+    const key = symbolKey(
+      entry.packageName,
+      entry.deepImportPath,
+      entry.symbolName,
+    );
     const existing = map.get(key);
 
     if (existing) {

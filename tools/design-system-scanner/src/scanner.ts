@@ -5,6 +5,7 @@ import {
   detectReactVersion,
   detectWorkspaces,
 } from './analyzers/packageAnalyzer';
+import { symbolKey } from './analyzers/packageAnalyzer';
 import { analyzeComponents } from './analyzers/reactScannerAnalyzer';
 import { analyzeImports } from './analyzers/importAnalyzer';
 import { resolveVersions } from './analyzers/lockfileResolver';
@@ -252,13 +253,13 @@ function enrichPackageUsage(
     const allFiles = new Set<string>();
 
     for (const c of components) {
-      allSymbols.add(c.componentName);
+      allSymbols.add(symbolKey(pkg.name, c.deepImportPath, c.componentName));
       for (const f of c.files) {
         allFiles.add(f);
       }
     }
     for (const i of imports) {
-      allSymbols.add(i.symbolName);
+      allSymbols.add(symbolKey(pkg.name, i.deepImportPath, i.symbolName));
       // Import analyzer tracks filesUsedIn as a count, not individual files
     }
 

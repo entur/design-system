@@ -4,6 +4,7 @@ import { analyzeComponents } from './reactScannerAnalyzer';
 const FIXTURES_DIR = path.join(__dirname, '..', '__fixtures__');
 const DEEP_IMPORT_APP = path.join(FIXTURES_DIR, 'deep-import-app');
 const IMPORT_STYLE_APP = path.join(FIXTURES_DIR, 'import-style-app');
+const STABLE_BETA_APP = path.join(FIXTURES_DIR, 'stable-beta-app');
 
 describe('reactScannerAnalyzer', () => {
   describe('deep import paths', () => {
@@ -34,6 +35,60 @@ describe('reactScannerAnalyzer', () => {
       }
     });
   });
+  describe('stable and beta entry points', () => {
+    it('reports one row per entry point for a shared component name', async () => {
+      const { components } = await analyzeComponents(STABLE_BETA_APP);
+
+      const navs = components.filter(c => c.componentName === 'SideNavigation');
+      expect(navs).toHaveLength(2);
+      const stable = navs.find(c => c.deepImportPath === undefined);
+      const beta = navs.find(c => c.deepImportPath === '/beta');
+      expect(stable).toMatchObject({
+        packageName: '@entur/menu',
+        instanceCount: 1,
+        files: ['LegacyNav.tsx'],
+      });
+      expect(beta).toMatchObject({
+        packageName: '@entur/menu',
+        instanceCount: 2,
+        files: ['BetaNav.tsx'],
+      });
+    });
+
+    it('splits an aliased beta import from the stable one in the same file', async () => {
+      const { components } = await analyzeComponents(STABLE_BETA_APP);
+
+      const links = components.filter(c => c.componentName === 'Link');
+      expect(links).toHaveLength(2);
+      const stable = links.find(c => c.deepImportPath === undefined);
+      const beta = links.find(c => c.deepImportPath === '/beta');
+      expect(stable).toMatchObject({ instanceCount: 1, isAliased: false });
+      expect(beta).toMatchObject({
+        instanceCount: 3,
+        isAliased: true,
+        aliasName: 'BetaLink',
+      });
+    });
+
+    it('attributes each file finding to its own import', async () => {
+      const { fileFindings } = await analyzeComponents(STABLE_BETA_APP, true);
+
+      const navFindings = fileFindings.filter(
+        f => f.symbolName === 'SideNavigation',
+      );
+      expect(
+        navFindings
+          .filter(f => f.filePath.endsWith('LegacyNav.tsx'))
+          .map(f => f.findingType),
+      ).toEqual(['jsx_usage']);
+      expect(
+        navFindings
+          .filter(f => f.filePath.endsWith('BetaNav.tsx'))
+          .map(f => f.findingType),
+      ).toEqual(['deep_import', 'deep_import']);
+    });
+  });
+
   describe('component names', () => {
     it('keeps the sub-component of an aliased import', async () => {
       // react-scanner already resolves `Expandable as Exp` back to the export,

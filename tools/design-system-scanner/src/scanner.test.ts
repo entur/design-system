@@ -83,6 +83,22 @@ describe('scanner', () => {
       expect(button!.symbolCountUsed).toBeGreaterThan(0);
     });
 
+    it('counts a stable and a beta symbol with the same name separately', async () => {
+      const result = await scanRepository(
+        path.join(FIXTURES_DIR, 'stable-beta-app'),
+        'test/stable-beta-app',
+        'https://github.com/test/stable-beta-app',
+        'main',
+        '2024-01-01T00:00:00Z',
+      );
+
+      const typography = result.designSystemPackages.find(
+        p => p.name === '@entur/typography',
+      );
+      // Link and Link from /beta
+      expect(typography!.symbolCountUsed).toBe(2);
+    });
+
     it('resolves versions from yarn.lock', async () => {
       const repoDir = path.join(FIXTURES_DIR, 'simple-app');
       const result = await scanRepository(

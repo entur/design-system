@@ -130,6 +130,11 @@ POSTHOG_API_KEY=phc_xxx yarn start --posthog-export scan-report.json --posthog-h
 `deep_import_path: "/beta"`. Filter on `deep_import_path` to isolate a generation — filtering on
 the package name cannot distinguish them.
 
+A component or symbol exported from both the root and a subpath (`Link` from `@entur/typography`
+and `@entur/typography/beta`) is reported as two separate rows and events. The `ds_component` and
+`ds_symbol` group keys and distinct ids include the subpath, so the root one stays
+`@entur/typography::Link` and the beta one is `@entur/typography/beta::Link`.
+
 `ds_repo_scanned` also carries repo-level rollups, so a key result is one metric with one filter
 rather than something recomputed from component rows each time:
 
@@ -158,7 +163,7 @@ Group keys and the event timestamp are sent as **top-level** capture fields, not
 
 **`repo_package_usage.ndjson`** — One row per `(repo, package)` pair. Covers both `@entur/*` packages and other detected UI libraries (MUI, styled-components, etc.). Includes version from `package.json`, resolved version from the lockfile, whether it's a dev dependency, and how many files and symbols from that package are actually used.
 
-**`repo_symbol_usage.ndjson`** — One row per `(repo, symbol)`. Merges data from react-scanner (JSX renders) and the import analyzer (hooks, utils, tokens). Fields include symbol type, instance count, reference count, import style, whether it's aliased, number of files it appears in, and per-prop usage counts. The `finding_source` field indicates which analyzer(s) detected the symbol (`react-scanner`, `import-analyzer`, `both`, or `catalog-zero` for installed-but-unused symbols).
+**`repo_symbol_usage.ndjson`** — One row per `(repo, symbol, deep_import_path)`. Merges data from react-scanner (JSX renders) and the import analyzer (hooks, utils, tokens). Fields include symbol type, instance count, reference count, import style, whether it's aliased, number of files it appears in, and per-prop usage counts. The `finding_source` field indicates which analyzer(s) detected the symbol (`react-scanner`, `import-analyzer`, `both`, or `catalog-zero` for installed-but-unused symbols).
 
 **`repo_workspaces.ndjson`** — One row per `(repo, workspace)` in monorepos. Contains workspace name, relative path, type (`app` / `package`), detected framework, and count of DS packages used in that workspace.
 

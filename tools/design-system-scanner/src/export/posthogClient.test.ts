@@ -254,6 +254,34 @@ const FIXTURE_REPORT: ScanReport = {
   ],
 };
 
+function withStableAndBetaLink(report: ScanReport): ScanReport {
+  const link = {
+    packageName: '@entur/typography',
+    componentName: 'Link',
+    instanceCount: 1,
+    props: {},
+    propsSpreadCount: 0,
+    files: ['src/App.tsx'],
+    importStyle: 'named' as const,
+    isAliased: false,
+  };
+  const [repo, ...rest] = report.repositories;
+  return {
+    ...report,
+    repositories: [
+      {
+        ...repo,
+        componentUsage: [
+          ...repo.componentUsage,
+          link,
+          { ...link, deepImportPath: '/beta' },
+        ],
+      },
+      ...rest,
+    ],
+  };
+}
+
 describe('buildScanEvents', () => {
   it('emits exactly one ds_scan_run event', () => {
     const events = buildScanEvents(FIXTURE_REPORT, { scannerVersion: '0.2.0' });
@@ -589,6 +617,24 @@ describe('buildGroupIdentifies', () => {
     const compGroups = identifies.filter(i => i.groupType === 'ds_component');
     expect(compGroups).toHaveLength(3);
     expect(compGroups[0].groupKey).toBe('@entur/button::PrimaryButton');
+  });
+
+  it('keeps stable and beta components with the same name apart', () => {
+    const report = withStableAndBetaLink(FIXTURE_REPORT);
+    const keys = buildGroupIdentifies(report)
+      .filter(i => i.groupType === 'ds_component')
+      .map(i => i.groupKey);
+    expect(keys).toEqual(
+      expect.arrayContaining([
+        '@entur/typography::Link',
+        '@entur/typography/beta::Link',
+      ]),
+    );
+
+    const ids = buildScanEvents(report)
+      .filter(e => e.event === 'ds_component_used')
+      .map(e => e.distinctId);
+    expect(new Set(ids).size).toBe(ids.length);
   });
 
   it('creates ds_symbol groups', () => {

@@ -3,6 +3,7 @@ import type { ComponentUsage, FileFinding, ImportStyle } from '../types';
 import {
   DESIGN_SYSTEM_PACKAGES,
   resolveDesignSystemSpecifier,
+  symbolKey,
 } from './packageAnalyzer';
 import { EXCLUDE_DIRS } from './constants';
 
@@ -96,8 +97,48 @@ function classifyFile(relativePath: string): {
   };
 }
 
+/** Import details of one instance, resolved from its own import. */
+interface ResolvedImport {
+  packageName: string;
+  deepImportPath?: string;
+  importStyle: ImportStyle;
+  local?: string;
+  isAliased: boolean;
+  exportedName: string;
+}
+
+function resolveInstanceImport(
+  componentName: string,
+  instance: ScannerInstance,
+): ResolvedImport {
+  const importInfo = instance.importInfo;
+  const moduleName = importInfo?.moduleName;
+  // packageName is the root package; the subpath lives in deepImportPath only
+  const resolved = moduleName ? resolveDesignSystemSpecifier(moduleName) : null;
+  const importStyle = mapImportStyle(importInfo?.importType);
+  const imported = importInfo?.imported;
+  const local = importInfo?.local;
+  return {
+    packageName: resolved?.packageName ?? moduleName ?? 'unknown',
+    deepImportPath: resolved?.deepImportPath,
+    importStyle,
+    local,
+    isAliased: !!(imported && local && imported !== local),
+    exportedName: exportedComponentName(componentName, importStyle, local),
+  };
+}
+
+interface UsageGroup {
+  first: ResolvedImport;
+  instances: ScannerInstance[];
+}
+
 /**
  * Create a react-scanner processor that shapes output into our types.
+ *
+ * react-scanner groups instances by component name only, so they are regrouped
+ * by (package, subpath, export name): Link from @entur/typography and from
+ * @entur/typography/beta are different components.
  *
  * @param repoDir - Absolute path to the repository root (for relative path computation)
  * @param includeFileFindings - Whether to collect per-file findings
@@ -106,86 +147,66 @@ function createEnturProcessor(repoDir: string, includeFileFindings: boolean) {
   return function enturProcessor({
     forEachComponent,
   }: ProcessorHelpers): AnalyzeComponentsResult {
-    const components: ComponentUsage[] = [];
+    const groups = new Map<string, UsageGroup>();
     const fileFindings: FileFinding[] = [];
 
     forEachComponent(({ componentName, component }) => {
-      const instances = component.instances || [];
-      if (instances.length === 0) return;
+      for (const instance of component.instances || []) {
+        const resolved = resolveInstanceImport(componentName, instance);
+        const key = symbolKey(
+          resolved.packageName,
+          resolved.deepImportPath,
+          resolved.exportedName,
+        );
+        const group = groups.get(key);
+        if (group) group.instances.push(instance);
+        else groups.set(key, { first: resolved, instances: [instance] });
 
-      // Count prop usage across all instances
+        const absFile = instance.location?.file;
+        if (includeFileFindings && absFile) {
+          const relativePath = path.relative(repoDir, absFile);
+          fileFindings.push({
+            filePath: relativePath,
+            fileExtension: path.extname(absFile),
+            packageName: resolved.packageName,
+            symbolName: resolved.exportedName,
+            findingType: resolved.deepImportPath ? 'deep_import' : 'jsx_usage',
+            lineNumber: instance.location?.start?.line,
+            ...classifyFile(relativePath),
+          });
+        }
+      }
+    });
+
+    const components: ComponentUsage[] = [];
+
+    for (const { first, instances } of groups.values()) {
       const propCounts: Record<string, number> = {};
       let spreadCount = 0;
+      const files = new Set<string>();
 
       for (const instance of instances) {
         if (instance.propsSpread) spreadCount++;
         for (const propName of Object.keys(instance.props || {})) {
           propCounts[propName] = (propCounts[propName] || 0) + 1;
         }
-      }
-
-      // Derive fields from the first instance's importInfo
-      const firstInstance = instances[0];
-      const importInfo = firstInstance?.importInfo;
-      const moduleName = importInfo?.moduleName;
-      // packageName is the root package; the subpath lives in deepImportPath only
-      const resolved = moduleName
-        ? resolveDesignSystemSpecifier(moduleName)
-        : null;
-      const packageName = resolved?.packageName ?? moduleName ?? 'unknown';
-      const deepImportPath = resolved?.deepImportPath;
-      const importStyle = mapImportStyle(importInfo?.importType);
-      const imported = importInfo?.imported;
-      const local = importInfo?.local;
-      const isAliased = !!(imported && local && imported !== local);
-      const exportedName = exportedComponentName(
-        componentName,
-        importStyle,
-        local,
-      );
-
-      // Collect file paths (basenames for ComponentUsage, relative for findings)
-      const fileSet = new Set<string>();
-      const files: string[] = [];
-
-      for (const instance of instances) {
         const absFile = instance.location?.file;
-        if (!absFile) continue;
-
-        const basename = path.basename(absFile);
-        if (!fileSet.has(basename)) {
-          fileSet.add(basename);
-          files.push(basename);
-        }
-
-        if (includeFileFindings) {
-          const relativePath = path.relative(repoDir, absFile);
-          const classification = classifyFile(relativePath);
-          fileFindings.push({
-            filePath: relativePath,
-            fileExtension: path.extname(absFile),
-            packageName,
-            symbolName: exportedName,
-            findingType: deepImportPath ? 'deep_import' : 'jsx_usage',
-            lineNumber: instance.location?.start?.line,
-            ...classification,
-          });
-        }
+        if (absFile) files.add(path.basename(absFile));
       }
 
       components.push({
-        componentName: exportedName,
-        packageName,
+        componentName: first.exportedName,
+        packageName: first.packageName,
         instanceCount: instances.length,
         props: propCounts,
         propsSpreadCount: spreadCount,
-        files,
-        importStyle,
-        isAliased,
-        aliasName: isAliased ? local : undefined,
-        deepImportPath,
+        files: [...files],
+        importStyle: first.importStyle,
+        isAliased: first.isAliased,
+        aliasName: first.isAliased ? first.local : undefined,
+        deepImportPath: first.deepImportPath,
       });
-    });
+    }
 
     // Sort by instance count descending
     components.sort((a, b) => b.instanceCount - a.instanceCount);

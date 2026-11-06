@@ -3,6 +3,7 @@ import * as crypto from 'crypto';
 import * as fs from 'fs';
 import * as path from 'path';
 import { scanRepository } from './scanner';
+import { symbolKey } from './analyzers/packageAnalyzer';
 import { flattenColorTokenSummary, flattenTypographySummary } from './rollups';
 import type { PostHogLike } from './export/posthogClient';
 import type {
@@ -486,11 +487,10 @@ function emitSymbolRows(
   componentUsage: ComponentUsage[],
   importUsage: ImportUsage[],
 ): void {
-  // Build a map of import analyzer results by (packageRoot, symbolName)
+  // Import analyzer results by (packageRoot, subpath, symbolName)
   const importMap = new Map<string, ImportUsage>();
   for (const imp of importUsage) {
-    const pkgRoot = imp.packageName.split('/').slice(0, 2).join('/');
-    importMap.set(`${pkgRoot}::${imp.symbolName}`, imp);
+    importMap.set(importUsageKey(imp), imp);
   }
 
   // Track which import entries have been merged with react-scanner data
@@ -498,8 +498,7 @@ function emitSymbolRows(
 
   // Emit react-scanner component rows (with optional import data merge)
   for (const comp of componentUsage) {
-    const pkgRoot = comp.packageName.split('/').slice(0, 2).join('/');
-    const key = `${pkgRoot}::${comp.componentName}`;
+    const key = componentUsageKey(comp);
     const imp = importMap.get(key);
 
     if (imp) mergedKeys.add(key);
@@ -531,9 +530,7 @@ function emitSymbolRows(
 
   // Emit import-only rows (not already merged)
   for (const imp of importUsage) {
-    const pkgRoot = imp.packageName.split('/').slice(0, 2).join('/');
-    const key = `${pkgRoot}::${imp.symbolName}`;
-    if (mergedKeys.has(key)) continue;
+    if (mergedKeys.has(importUsageKey(imp))) continue;
 
     rows.push(
       JSON.stringify({
@@ -548,7 +545,7 @@ function emitSymbolRows(
         import_style: imp.importStyle,
         is_aliased: imp.isAliased,
         alias_name: imp.aliasName || null,
-        deep_import_path: null,
+        deep_import_path: imp.deepImportPath || null,
         props_spread_count: 0,
         file_count: imp.filesUsedIn,
         files_used_in: imp.filesUsedIn,
@@ -557,6 +554,26 @@ function emitSymbolRows(
       }),
     );
   }
+}
+
+function packageRoot(packageName: string): string {
+  return packageName.split('/').slice(0, 2).join('/');
+}
+
+function componentUsageKey(comp: ComponentUsage): string {
+  return symbolKey(
+    packageRoot(comp.packageName),
+    comp.deepImportPath,
+    comp.componentName,
+  );
+}
+
+function importUsageKey(imp: ImportUsage): string {
+  return symbolKey(
+    packageRoot(imp.packageName),
+    imp.deepImportPath,
+    imp.symbolName,
+  );
 }
 
 /**
@@ -687,12 +704,10 @@ function emitCatalogZeroRows(
   // Build a set of already-emitted (packageName, symbolName) pairs for this repo
   const observed = new Set<string>();
   for (const comp of repo.componentUsage) {
-    const pkgRoot = comp.packageName.split('/').slice(0, 2).join('/');
-    observed.add(`${pkgRoot}::${comp.componentName}`);
+    observed.add(componentUsageKey(comp));
   }
   for (const imp of repo.importUsage || []) {
-    const pkgRoot = imp.packageName.split('/').slice(0, 2).join('/');
-    observed.add(`${pkgRoot}::${imp.symbolName}`);
+    observed.add(importUsageKey(imp));
   }
 
   // Installed @entur/* package names
@@ -702,7 +717,7 @@ function emitCatalogZeroRows(
     if (!installedPackages.has(catalogPkg.packageName)) continue;
 
     for (const symbol of catalogPkg.symbols) {
-      const key = `${catalogPkg.packageName}::${symbol.symbolName}`;
+      const key = symbolKey(catalogPkg.packageName, null, symbol.symbolName);
       if (observed.has(key)) continue;
 
       rows.push(
