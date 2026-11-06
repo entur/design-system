@@ -18,66 +18,68 @@ For at komponentene skal se riktige ut, må du inkludere CSS-filene fra pakkene 
 
 ## Hvordan importere
 
-Hver pakke eksponerer stilene sine på under `/styles`. Importer dem gjerne direkte i JavaScript eller TypeScript (anbefalt for moderne prosjekter):
+Hver pakke eksponerer stilene sine under `/styles/no-base-tokens`. Basetokens (farger og fargemodus) importerer du selv, én gang, fra `@entur/tokens`. Importer dem gjerne direkte i JavaScript eller TypeScript (anbefalt for moderne prosjekter):
 
 ```js
-import '@entur/button/styles';
+import '@entur/tokens/styles/base';
+import '@entur/button/styles/no-base-tokens';
 ```
 
 Eller i en CSS-fil:
 
 ```css
-@import '@entur/button/styles';
+@import '@entur/tokens/styles/base';
+@import '@entur/button/styles/no-base-tokens';
 ```
 
 I en SCSS-fil bruker du `@use`:
 
 ```scss
 @use '@entur/tokens/styles/base' as *;
-@use '@entur/button/styles';
+@use '@entur/button/styles/no-base-tokens';
 ```
 
 <SmallAlertBox variant="information">
-  `/styles` er en subpath i pakkens <Text variant="code">exports</Text>, og kobles riktig gjennom bundleren din, f.eks Webpack (via sass-loader) og Vite. Importerer du gjennom <Text variant="code">sass</Text> direkte, må du oppgi full sti – <Text variant="code">@entur/tokens/dist/base.scss</Text> – eller bruke <Text variant="code">pkg:</Text>-prefiks.
+  `/styles/no-base-tokens` er en subpath i pakkens <Text variant="code">exports</Text>, og kobles riktig gjennom bundleren din, f.eks Webpack (via sass-loader) og Vite. Importerer du gjennom <Text variant="code">sass</Text> direkte, må du oppgi full sti – <Text variant="code">@entur/tokens/dist/base.scss</Text> – eller bruke <Text variant="code">pkg:</Text>-prefiks.
 </SmallAlertBox>
 
-De gamle stiene  – som `@entur/button/dist/styles.css` – virker fortsatt, men `/styles` er den anbefalte formen.
+De gamle stiene – som `@entur/button/dist/styles.css` – virker fortsatt, men subpathene er den anbefalte formen.
 
 ## Riktig rekkefølge
 
 For å unngå uventede stilkonflikter er det viktig å importere stilene i riktig rekkefølge. Tokens først, deretter komponentstilene:
 
 ```css
-/* 1. Basetokens – alltid først (farger og fargemodus) */
+/* 1. Basetokens – alltid først (farger og fargemodus). Uten dem mangler fargene. */
 @import '@entur/tokens/styles/base';
 
 /* 2. Øvrige tokens (spacing, border-radius, fontstørrelser, breakpoints) */
 @import '@entur/tokens/styles';
 
 /* 3. Komponentstiler – i denne rekkefølgen */
-@import '@entur/a11y/styles';
-@import '@entur/grid/styles';
-@import '@entur/icons/styles';
-@import '@entur/tab/styles';
-@import '@entur/typography/styles';
+@import '@entur/a11y/styles/no-base-tokens';
+@import '@entur/grid/styles/no-base-tokens';
+@import '@entur/icons/styles/no-base-tokens';
+@import '@entur/tab/styles/no-base-tokens';
+@import '@entur/typography/styles/no-base-tokens';
 @import '@entur/typography/beta/styles';
-@import '@entur/layout/styles';
+@import '@entur/layout/styles/no-base-tokens';
 @import '@entur/layout/beta/styles';
-@import '@entur/loader/styles';
-@import '@entur/expand/styles';
-@import '@entur/button/styles';
-@import '@entur/alert/styles';
-@import '@entur/menu/styles';
+@import '@entur/loader/styles/no-base-tokens';
+@import '@entur/expand/styles/no-base-tokens';
+@import '@entur/button/styles/no-base-tokens';
+@import '@entur/alert/styles/no-base-tokens';
+@import '@entur/menu/styles/no-base-tokens';
 @import '@entur/menu/beta/styles';
-@import '@entur/fileupload/styles';
-@import '@entur/modal/styles';
-@import '@entur/tooltip/styles';
-@import '@entur/form/styles';
-@import '@entur/chip/styles';
-@import '@entur/datepicker/styles';
-@import '@entur/travel/styles';
-@import '@entur/table/styles';
-@import '@entur/dropdown/styles';
+@import '@entur/fileupload/styles/no-base-tokens';
+@import '@entur/modal/styles/no-base-tokens';
+@import '@entur/tooltip/styles/no-base-tokens';
+@import '@entur/form/styles/no-base-tokens';
+@import '@entur/chip/styles/no-base-tokens';
+@import '@entur/datepicker/styles/no-base-tokens';
+@import '@entur/travel/styles/no-base-tokens';
+@import '@entur/table/styles/no-base-tokens';
+@import '@entur/dropdown/styles/no-base-tokens';
 ```
 
 Importerer du fra JavaScript eller SCSS, er det samme rekkefølge – bytt `@import` med `import` eller `@use`.
@@ -86,29 +88,15 @@ Du trenger bare stilene for pakkene du faktisk bruker – men behold rekkefølge
 
 De øvrige token-filene (`semantic`, `data`, `transport`) importeres ved behov i filene som bruker dem – ikke globalt.
 
-## Last basetokens bare én gang
+## Hvorfor `no-base-tokens`?
 
-De fleste `/styles`-filene har med sin egen kopi av basetokens. Bruker du mange pakker, blir de samme tokenene deklarert mange ganger, og det gjør utviklerverktøyet i nettleseren tregt når du inspiserer elementer.
+De fleste `/styles`-filene har med sin egen kopi av basetokens. Bruker du mange pakker, blir de samme tokenene deklarert mange ganger. Det gir mer CSS og gjør utviklerverktøyet i nettleseren tregt når du inspiserer elementer. `/styles/no-base-tokens` er de samme stilene uten basetokens. Komponenttokens (`--components-*`) er fortsatt med.
 
-Derfor har hver pakke også `/styles/no-base-tokens`, som er de samme stilene uten basetokens. Komponenttokens (`--components-*`) er fortsatt med. Importer basetokens selv først, så hentes de bare én gang:
-
-```css
-/* 1. Basetokens – én gang, først */
-@import '@entur/tokens/styles/base';
-@import '@entur/tokens/styles';
-
-/* 2. Komponentstiler uten basetokens – samme rekkefølge som over */
-@import '@entur/typography/styles/no-base-tokens';
-@import '@entur/typography/beta/styles';
-@import '@entur/button/styles/no-base-tokens';
-@import '@entur/form/styles/no-base-tokens';
-```
-
-Velger du `no-base-tokens`, bør du bruke det for alle pakkene. Uten `@entur/tokens/styles/base` først mangler fargene. Stilfilene for betakomponentene har ingen basetokens, så de importerer du som før.
+Bruker du bare én pakke og ikke vil importere basetokens selv, kan du bruke `/styles` i stedet, for eksempel `@entur/button/styles`. Den har basetokens med. De to variantene kan blandes, men da får du igjen dupliserte basetokens.
 
 ## Betapakker har egne stilfiler
 
-`@entur/typography/beta`, `@entur/layout/beta` og `@entur/menu/beta` har stiler som ligger utenfor hovedstilene til pakken. Bruker du betakomponentene, må du importere `/beta/styles` i tillegg til `/styles` eller `/styles/no-base-tokens`, slik listene over viser.
+`@entur/typography/beta`, `@entur/layout/beta` og `@entur/menu/beta` har stiler som ligger utenfor hovedstilene til pakken. Bruker du betakomponentene, må du importere `/beta/styles` i tillegg til `/styles/no-base-tokens`, slik listen over viser. Betastilene har ingen basetokens, så de har ingen egen `no-base-tokens`-variant.
 
 ## Mørk modus
 
