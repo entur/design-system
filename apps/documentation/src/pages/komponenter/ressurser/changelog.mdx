@@ -7,7 +7,7 @@ menu: Ressurser
 tags: endringslogg, versjonslogg
 ---
 
-import Changelog from '@components/Changelog/Changelog';
+import Changelog, { SkillsChangelogCard } from '@components/Changelog/Changelog';
 import { SEO } from '@components/seo/SEO';
 
 export const Head = ( props ) => {
@@ -15,6 +15,14 @@ export const Head = ( props ) => {
 }
 
 
+## Pakker
+
 <Changelog />
 
 Vi legger ut en oppsummering av hver release i Slack-kanalen [#talk-designsystem](https://entur.slack.com/archives/C899QSPB7). Har en oppgradering breaking changes, finner du veiledning og skills for KI-agenter under [Migrering](/komponenter/ressurser/migrering).
+
+## Skills
+
+Skillene har ingen versjoner. Agenten bruker alltid siste versjon fra main, og endringene er listet opp etter datoen de kom inn. Les mer om hvordan du installerer og bruker dem på [Skills](/kom-i-gang/for-utviklere/skills).
+
+<SkillsChangelogCard />

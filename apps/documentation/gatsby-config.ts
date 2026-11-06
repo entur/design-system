@@ -134,6 +134,14 @@ const config: GatsbyConfig = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
+        name: 'skills-changelog',
+        path: './dist/skills-changelog/',
+      },
+      __key: 'skills-changelog',
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
         name: 'icons',
         path: './dist/icons/',
       },

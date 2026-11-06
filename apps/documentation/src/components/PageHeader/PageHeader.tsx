@@ -9,6 +9,7 @@ type Frontmatter = {
   npmPackage?: string;
   tag?: string;
   figmaLink?: string;
+  skillsChangelog?: boolean;
 };
 
 type Props = {
@@ -27,6 +28,7 @@ const PageHeader: React.FC<Props> = ({ frontmatter }) => {
       npmPackage={frontmatter.npmPackage}
       tag={frontmatter.tag}
       figmaLink={frontmatter.figmaLink}
+      skillsChangelog={frontmatter.skillsChangelog}
     />
   );
 };

@@ -15,6 +15,11 @@ const {
   generateLlmsTxt,
   generateLlmsFullTxt,
 } = require('./src/utils/generate-llms-txt');
+// eslint-disable-next-line @typescript-eslint/no-var-requires -- disabled when we turned on linting for all files in the project
+const {
+  generateSkillsChangelog,
+  isShallowClone,
+} = require('./src/utils/generate-skills-changelog');
 
 let propGenerationPromise = null;
 let playgroundBuildPromise = null;
@@ -133,7 +138,7 @@ exports.onPreBuild = async () => {
   if (propGenerationPromise) await propGenerationPromise;
 };
 
-exports.onPreBootstrap = () => {
+exports.onPreBootstrap = ({ reporter }) => {
   // Emptied, not just ensured: .md changelogs from an earlier build would still
   // be picked up by gatsby-plugin-mdx and show up twice in the changelog list.
   fs.emptyDirSync(`${__dirname}/dist/changelogs/`);
@@ -153,6 +158,18 @@ exports.onPreBootstrap = () => {
       changelog,
     );
   }
+
+  if (isShallowClone()) {
+    reporter.warn(
+      'Shallow clone: the skills changelog only covers the commits fetched. Check out with fetch-depth: 0.',
+    );
+  }
+  // Its own folder, so it stays out of the package list on the changelog page
+  fs.emptyDirSync(`${__dirname}/dist/skills-changelog/`);
+  fs.writeFileSync(
+    `${__dirname}/dist/skills-changelog/skills.markdown`,
+    generateSkillsChangelog(),
+  );
 
   // Copy icons to dist/icons directory for Gatsby source filesystem
   fs.copySync('../../packages/icons/src/svgs', `${__dirname}/dist/icons/`);

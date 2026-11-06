@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link as GatsbyLink, navigate } from 'gatsby';
+import { Link as GatsbyLink, graphql, navigate, useStaticQuery } from 'gatsby';
 import { useLocation } from '@reach/router';
 
 import { ForwardIcon } from '@entur/icons';
@@ -11,8 +11,11 @@ import { useGetChangelog } from '../PageHeader/useGetChangelog';
 
 import './Changelog.scss';
 
-/** Pakken som vises, f.eks. /komponenter/ressurser/changelog?package=alert */
+/** Changelogen som vises, f.eks. /komponenter/ressurser/changelog?package=alert */
 const PACKAGE_PARAM = 'package';
+
+/** Verdien skills-changelogen åpnes med. Ingen @entur-pakke heter det. */
+const SKILLS = 'skills';
 
 const dateFormat = new Intl.DateTimeFormat('nb-NO', {
   day: 'numeric',
@@ -28,9 +31,51 @@ const formatPublishedAt = (publishedAt: string | null) => {
   return Number.isNaN(date.getTime()) ? null : dateFormat.format(date);
 };
 
-const Changelog = () => {
+/** Changelogen URL-en ber om, og lenken som åpner eller lukker en. */
+const useSelectedChangelog = () => {
   const location = useLocation();
+  const selected = new URLSearchParams(location.search).get(PACKAGE_PARAM);
+
+  // Any other params on the page are left alone.
+  const urlWith = (name: string | null) => {
+    const params = new URLSearchParams(location.search);
+
+    if (name === null) params.delete(PACKAGE_PARAM);
+    else params.set(PACKAGE_PARAM, name);
+
+    const search = params.toString();
+
+    return `${location.pathname}${search ? `?${search}` : ''}`;
+  };
+
+  const close = () => navigate(urlWith(null), { replace: true });
+
+  return { selected, urlWith, close };
+};
+
+const ChangelogCard = ({
+  title,
+  to,
+  children,
+}: {
+  title: string;
+  to: string;
+  children?: React.ReactNode;
+}) => (
+  <GatsbyLink className="changelog-card" to={to}>
+    <span className="changelog-card__title">
+      <Text as="strong" weight="bold">
+        {title}
+      </Text>
+      <ForwardIcon className="changelog-card__arrow" aria-hidden="true" />
+    </span>
+    {children && <span className="changelog-card__meta">{children}</span>}
+  </GatsbyLink>
+);
+
+const Changelog = () => {
   const query = useGetChangelog();
+  const { selected: selectedName, urlWith, close } = useSelectedChangelog();
 
   const changelogs = (query?.allFile?.nodes || [])
     .slice()
@@ -41,20 +86,7 @@ const Changelog = () => {
   );
 
   // The URL decides which changelog is open, so the modal can be linked to.
-  const selectedName = new URLSearchParams(location.search).get(PACKAGE_PARAM);
   const selected = changelogs.find(node => node.name === selectedName);
-
-  // Any other params on the page are left alone.
-  const urlWithPackage = (name: string | null) => {
-    const params = new URLSearchParams(location.search);
-
-    if (name === null) params.delete(PACKAGE_PARAM);
-    else params.set(PACKAGE_PARAM, name);
-
-    const search = params.toString();
-
-    return `${location.pathname}${search ? `?${search}` : ''}`;
-  };
 
   return (
     <div className="changelog-overview">
@@ -70,31 +102,19 @@ const Changelog = () => {
 
             return (
               <li className="changelog-overview__item" key={changelog.name}>
-                <GatsbyLink
-                  className="changelog-card"
-                  to={urlWithPackage(changelog.name)}
+                <ChangelogCard
+                  title={`@entur/${changelog.name}`}
+                  to={urlWith(changelog.name)}
                 >
-                  <span className="changelog-card__title">
-                    <Text
-                      as="strong"
-                      weight="bold"
-                    >{`@entur/${changelog.name}`}</Text>
-                    <ForwardIcon
-                      className="changelog-card__arrow"
-                      aria-hidden="true"
-                    />
-                  </span>
-                  <span className="changelog-card__meta">
-                    {published && (
-                      <Tag size="small">{`v${published.version}`}</Tag>
-                    )}
-                    {publishedAt && (
-                      <Text as="span" variant="caption">
-                        {publishedAt}
-                      </Text>
-                    )}
-                  </span>
-                </GatsbyLink>
+                  {published && (
+                    <Tag size="small">{`v${published.version}`}</Tag>
+                  )}
+                  {publishedAt && (
+                    <Text as="span" variant="caption">
+                      {publishedAt}
+                    </Text>
+                  )}
+                </ChangelogCard>
               </li>
             );
           })}
@@ -103,10 +123,43 @@ const Changelog = () => {
 
       {selected && (
         <ChangelogModal
-          packageName={selected.name}
+          title={`@entur/${selected.name}`}
           url={selected.publicURL}
           open
-          onDismiss={() => navigate(urlWithPackage(null), { replace: true })}
+          onDismiss={close}
+        />
+      )}
+    </div>
+  );
+};
+
+/** Inngangen til skills-changelogen, som ikke er en npm-pakke. */
+export const SkillsChangelogCard = () => {
+  const { file } = useStaticQuery(graphql`
+    query SkillsChangelogCard {
+      file(sourceInstanceName: { eq: "skills-changelog" }) {
+        publicURL
+      }
+    }
+  `);
+  const { selected, urlWith, close } = useSelectedChangelog();
+
+  if (!file) return null;
+
+  return (
+    <div className="changelog-overview">
+      <ul className="changelog-overview__list">
+        <li className="changelog-overview__item">
+          <ChangelogCard title="Skills" to={urlWith(SKILLS)} />
+        </li>
+      </ul>
+
+      {selected === SKILLS && (
+        <ChangelogModal
+          title="Skills"
+          url={file.publicURL}
+          open
+          onDismiss={close}
         />
       )}
     </div>
