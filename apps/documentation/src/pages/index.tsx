@@ -140,7 +140,12 @@ const Index = () => {
             svgRef={svgRef}
             className="frontpage__background__lines"
           />
-          <main ref={mainRef} className="frontpage__main">
+          <main
+            ref={mainRef}
+            id="frontpage-content"
+            tabIndex={-1}
+            className="frontpage__main"
+          >
             <div className="frontpage__main__hero">
               <div className="frontpage__main__hero__content">
                 <Heading
