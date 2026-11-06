@@ -35,6 +35,8 @@ export const LinjeTopographicBottom = ({
 
   return (
     <svg
+      aria-hidden="true"
+      focusable="false"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
@@ -58,6 +60,8 @@ export const LinjeTopographicTop = ({ className }: { className?: string }) => {
 
   return (
     <svg
+      aria-hidden="true"
+      focusable="false"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
@@ -100,6 +104,8 @@ export const LinjeLines = ({
   svgRef?: React.LegacyRef<SVGSVGElement> | undefined;
 }) => (
   <svg
+    aria-hidden="true"
+    focusable="false"
     ref={svgRef}
     fill="none"
     xmlns="http://www.w3.org/2000/svg"

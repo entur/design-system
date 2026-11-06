@@ -127,7 +127,7 @@ const Index = () => {
           // We use the height of the content to set a correct height for the background
           style={{ '--background-height': `${backgroundHeight}px` }}
         >
-          <div className="frontpage__background__animation">
+          <div className="frontpage__background__animation" aria-hidden="true">
             <div
               ref={animatedCircleRef}
               className="frontpage__background__animation__traveller first"
