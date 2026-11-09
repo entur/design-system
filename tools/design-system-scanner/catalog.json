@@ -34,7 +34,7 @@
             "title",
             "variant"
           ],
-          "enumProps": ["closable"]
+          "enumProps": ["closable", "variant"]
         },
         {
           "symbolName": "BannerExpandableAlertBox",
@@ -50,7 +50,7 @@
             "onClose",
             "closable"
           ],
-          "enumProps": ["closable"]
+          "enumProps": ["variant", "closable"]
         },
         {
           "symbolName": "CopyableText",
@@ -78,7 +78,7 @@
             "width",
             "variant"
           ],
-          "enumProps": ["closable", "width"]
+          "enumProps": ["closable", "width", "variant"]
         },
         {
           "symbolName": "SmallExpandableAlertBox",
@@ -95,7 +95,7 @@
             "onClose",
             "width"
           ],
-          "enumProps": ["closable", "width"]
+          "enumProps": ["variant", "closable", "width"]
         },
         {
           "symbolName": "ToastAlertBox",
@@ -397,15 +397,33 @@
             "disabled",
             "readOnly",
             "className",
-            "style"
+            "style",
+            "ariaAlertOnFeedback",
+            "feedbackProps",
+            "prepend",
+            "append",
+            "labelTooltipButtonAriaLabel",
+            "labelTooltipPlacement",
+            "required",
+            "labelId",
+            "disableLabelAnimation",
+            "after",
+            "before",
+            "ariaLabelOnReadOnly"
           ],
           "enumProps": [
             "showTimeZone",
             "granularity",
             "showTime",
             "forcedReturnType",
+            "variant",
+            "validationVariant",
             "disabled",
-            "readOnly"
+            "readOnly",
+            "ariaAlertOnFeedback",
+            "labelTooltipPlacement",
+            "required",
+            "disableLabelAnimation"
           ]
         },
         {
@@ -440,18 +458,36 @@
             "labelTooltip",
             "navigationDescription",
             "classNameForDate",
-            "ariaLabelForDate"
+            "ariaLabelForDate",
+            "ariaAlertOnFeedback",
+            "feedbackProps",
+            "prepend",
+            "append",
+            "labelTooltipButtonAriaLabel",
+            "labelTooltipPlacement",
+            "required",
+            "labelId",
+            "disableLabelAnimation",
+            "after",
+            "before",
+            "ariaLabelOnReadOnly"
           ],
           "enumProps": [
             "showTimeZone",
             "granularity",
             "showTime",
             "forcedReturnType",
+            "variant",
+            "validationVariant",
             "disabled",
             "readOnly",
             "showWeekNumbers",
             "showOutsideMonth",
-            "disableModal"
+            "disableModal",
+            "ariaAlertOnFeedback",
+            "labelTooltipPlacement",
+            "required",
+            "disableLabelAnimation"
           ]
         },
         {
@@ -494,7 +530,7 @@
           "symbolName": "NativeDatePicker",
           "symbolType": "component",
           "knownProps": ["onChange", "variant"],
-          "enumProps": []
+          "enumProps": ["variant"]
         },
         {
           "symbolName": "nativeDateToDateValue",
@@ -512,7 +548,7 @@
           "symbolName": "NativeTimePicker",
           "symbolType": "component",
           "knownProps": ["variant"],
-          "enumProps": []
+          "enumProps": ["variant"]
         },
         {
           "symbolName": "RangeCalendar",
@@ -557,14 +593,30 @@
             "readOnly",
             "inputRef",
             "className",
-            "style"
+            "style",
+            "labelProps",
+            "ariaAlertOnFeedback",
+            "feedbackProps",
+            "labelTooltipButtonAriaLabel",
+            "labelTooltipPlacement",
+            "required",
+            "labelId",
+            "disableLabelAnimation",
+            "after",
+            "before",
+            "ariaLabelOnReadOnly"
           ],
           "enumProps": [
             "showSeconds",
             "showClockIcon",
             "padding",
+            "variant",
             "disabled",
-            "readOnly"
+            "readOnly",
+            "ariaAlertOnFeedback",
+            "labelTooltipPlacement",
+            "required",
+            "disableLabelAnimation"
           ]
         },
         {
@@ -601,14 +653,32 @@
             "forcedReturnType",
             "forcedTimeZone",
             "className",
-            "style"
+            "style",
+            "labelProps",
+            "ariaAlertOnFeedback",
+            "feedbackProps",
+            "prepend",
+            "append",
+            "labelTooltipButtonAriaLabel",
+            "labelTooltipPlacement",
+            "required",
+            "labelId",
+            "disableLabelAnimation",
+            "after",
+            "before",
+            "ariaLabelOnReadOnly"
           ],
           "enumProps": [
             "showTimeZone",
             "showSeconds",
+            "variant",
             "disabled",
             "readOnly",
-            "forcedReturnType"
+            "forcedReturnType",
+            "ariaAlertOnFeedback",
+            "labelTooltipPlacement",
+            "required",
+            "disableLabelAnimation"
           ]
         },
         {
@@ -626,13 +696,75 @@
         {
           "symbolName": "Dropdown",
           "symbolType": "component",
-          "knownProps": [],
-          "enumProps": []
+          "knownProps": [
+            "items",
+            "selectedItem",
+            "onChange",
+            "label",
+            "placeholder",
+            "clearable",
+            "selectOnTab",
+            "disabled",
+            "readOnly",
+            "variant",
+            "feedback",
+            "prepend",
+            "loading",
+            "loadingText",
+            "noMatchesText",
+            "labelClearSelectedItem",
+            "labelTooltip",
+            "disableLabelAnimation",
+            "className",
+            "listStyle",
+            "style",
+            "ariaLabelCloseList",
+            "ariaLabelOpenList",
+            "ariaLabelChosenSingular",
+            "ariaLabelSelectedItem",
+            "ariaAlertOnFeedback",
+            "feedbackProps"
+          ],
+          "enumProps": [
+            "clearable",
+            "selectOnTab",
+            "disabled",
+            "readOnly",
+            "variant",
+            "loading",
+            "disableLabelAnimation",
+            "ariaAlertOnFeedback"
+          ]
         },
         {
           "symbolName": "MultiSelect",
           "symbolType": "component",
           "knownProps": [
+            "items",
+            "label",
+            "placeholder",
+            "clearable",
+            "selectOnTab",
+            "disabled",
+            "readOnly",
+            "variant",
+            "feedback",
+            "prepend",
+            "loading",
+            "loadingText",
+            "noMatchesText",
+            "labelClearSelectedItem",
+            "labelTooltip",
+            "disableLabelAnimation",
+            "className",
+            "listStyle",
+            "style",
+            "ariaLabelCloseList",
+            "ariaLabelOpenList",
+            "ariaLabelChosenSingular",
+            "ariaLabelSelectedItem",
+            "ariaAlertOnFeedback",
+            "feedbackProps",
             "selectedItems",
             "onChange",
             "itemFilter",
@@ -656,19 +788,94 @@
             "onKeyDown",
             "onFocus"
           ],
-          "enumProps": ["hideSelectAll", "clearInputOnSelect"]
+          "enumProps": [
+            "clearable",
+            "selectOnTab",
+            "disabled",
+            "readOnly",
+            "variant",
+            "loading",
+            "disableLabelAnimation",
+            "ariaAlertOnFeedback",
+            "hideSelectAll",
+            "clearInputOnSelect"
+          ]
         },
         {
           "symbolName": "NativeDropdown",
           "symbolType": "component",
-          "knownProps": [],
-          "enumProps": []
+          "knownProps": [
+            "className",
+            "disabled",
+            "feedback",
+            "items",
+            "label",
+            "onChange",
+            "prepend",
+            "readOnly",
+            "selectedItem",
+            "value",
+            "variant",
+            "disableLabelAnimation",
+            "ariaAlertOnFeedback",
+            "feedbackProps"
+          ],
+          "enumProps": [
+            "disabled",
+            "readOnly",
+            "variant",
+            "disableLabelAnimation",
+            "ariaAlertOnFeedback"
+          ]
         },
         {
           "symbolName": "SearchableDropdown",
           "symbolType": "component",
-          "knownProps": [],
-          "enumProps": []
+          "knownProps": [
+            "items",
+            "selectedItem",
+            "onChange",
+            "label",
+            "placeholder",
+            "clearable",
+            "selectOnTab",
+            "disabled",
+            "readOnly",
+            "variant",
+            "feedback",
+            "prepend",
+            "loading",
+            "loadingText",
+            "noMatchesText",
+            "labelClearSelectedItem",
+            "labelTooltip",
+            "disableLabelAnimation",
+            "className",
+            "listStyle",
+            "style",
+            "ariaLabelCloseList",
+            "ariaLabelOpenList",
+            "ariaLabelChosenSingular",
+            "ariaLabelSelectedItem",
+            "ariaAlertOnFeedback",
+            "feedbackProps",
+            "itemFilter",
+            "debounceTimeout",
+            "onBlur",
+            "onClick",
+            "onKeyDown",
+            "onFocus"
+          ],
+          "enumProps": [
+            "clearable",
+            "selectOnTab",
+            "disabled",
+            "readOnly",
+            "variant",
+            "loading",
+            "disableLabelAnimation",
+            "ariaAlertOnFeedback"
+          ]
         }
       ]
     },
@@ -815,7 +1022,9 @@
             "ariaAlertOnFeedback",
             "disabled",
             "readOnly",
+            "variant",
             "size",
+            "labelTooltipPlacement",
             "required",
             "isFilled",
             "disableLabelAnimation"
@@ -872,7 +1081,7 @@
           "symbolName": "FeedbackText",
           "symbolType": "component",
           "knownProps": ["children", "hideIcon", "variant", "className"],
-          "enumProps": ["hideIcon"]
+          "enumProps": ["hideIcon", "variant"]
         },
         {
           "symbolName": "Fieldset",
@@ -964,8 +1173,18 @@
         {
           "symbolName": "SegmentedControl",
           "symbolType": "component",
-          "knownProps": [],
-          "enumProps": []
+          "knownProps": [
+            "name",
+            "label",
+            "children",
+            "value",
+            "defaultValue",
+            "onChange",
+            "size",
+            "className",
+            "selectedValue"
+          ],
+          "enumProps": ["size"]
         },
         {
           "symbolName": "SegmentedControlComponent",
@@ -994,13 +1213,13 @@
           "symbolName": "TextArea",
           "symbolType": "component",
           "knownProps": ["readOnly", "disabled", "variant", "resize"],
-          "enumProps": ["readOnly", "disabled", "resize"]
+          "enumProps": ["readOnly", "disabled", "variant", "resize"]
         },
         {
           "symbolName": "TextField",
           "symbolType": "component",
           "knownProps": ["disabled", "readOnly", "variant"],
-          "enumProps": ["disabled", "readOnly"]
+          "enumProps": ["disabled", "readOnly", "variant"]
         },
         {
           "symbolName": "useInputGroupContext",
@@ -1018,7 +1237,7 @@
           "symbolName": "VariantProvider",
           "symbolType": "component",
           "knownProps": ["children", "variant"],
-          "enumProps": []
+          "enumProps": ["variant"]
         }
       ]
     },
@@ -1071,7 +1290,7 @@
             "invisible",
             "hide"
           ],
-          "enumProps": ["showZero", "type", "invisible", "hide"]
+          "enumProps": ["variant", "showZero", "type", "invisible", "hide"]
         },
         {
           "symbolName": "BaseCard",
@@ -1083,7 +1302,7 @@
           "symbolName": "BulletBadge",
           "symbolType": "component",
           "knownProps": ["as", "className", "children", "variant", "hide"],
-          "enumProps": ["hide"]
+          "enumProps": ["variant", "hide"]
         },
         {
           "symbolName": "Contrast",
@@ -1147,13 +1366,13 @@
             "max",
             "hide"
           ],
-          "enumProps": ["showZero", "hide"]
+          "enumProps": ["variant", "showZero", "hide"]
         },
         {
           "symbolName": "StatusBadge",
           "symbolType": "component",
           "knownProps": ["as", "className", "children", "variant", "hide"],
-          "enumProps": ["hide"]
+          "enumProps": ["variant", "hide"]
         },
         {
           "symbolName": "Tag",
@@ -1166,7 +1385,7 @@
             "size",
             "compact"
           ],
-          "enumProps": ["size", "compact"]
+          "enumProps": ["variant", "size", "compact"]
         },
         {
           "symbolName": "useContrast",
@@ -1363,7 +1582,7 @@
             "position",
             "aria-label"
           ],
-          "enumProps": ["position"]
+          "enumProps": ["placement", "position"]
         },
         {
           "symbolName": "OverflowMenuItem",
@@ -1628,7 +1847,7 @@
             "status",
             "variant"
           ],
-          "enumProps": ["padding", "status"]
+          "enumProps": ["padding", "status", "variant"]
         },
         {
           "symbolName": "EditableCell",
@@ -1640,7 +1859,7 @@
             "feedback",
             "outlined"
           ],
-          "enumProps": ["outlined"]
+          "enumProps": ["variant", "outlined"]
         },
         {
           "symbolName": "ExpandableRow",
@@ -1751,6 +1970,12 @@
         },
         {
           "symbolName": "colors",
+          "symbolType": "util",
+          "knownProps": [],
+          "enumProps": []
+        },
+        {
+          "symbolName": "componentColors",
           "symbolType": "util",
           "knownProps": [],
           "enumProps": []

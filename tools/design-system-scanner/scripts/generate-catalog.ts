@@ -153,6 +153,27 @@ function findIndex(srcDir: string): string | null {
   return null;
 }
 
+/**
+ * Resolve @entur/* imports to source, not dist, so cross-package types such
+ * as `FeedbackAnnouncementProps` from @entur/form resolve without a build.
+ */
+function buildPathMappings(): Record<string, string[]> {
+  const paths: Record<string, string[]> = {};
+  for (const packageName of DESIGN_SYSTEM_PACKAGES) {
+    const packageDir = path.join(
+      resolvedPackagesRoot,
+      packageName.replace('@entur/', ''),
+    );
+    for (const subpath of ['', ...findSubpathEntryPoints(packageDir)]) {
+      const index = findIndex(path.join(packageDir, 'src', subpath));
+      if (index) paths[packageName + subpath] = [index];
+    }
+  }
+  return paths;
+}
+
+let pathMappings: Record<string, string[]> | undefined;
+
 // ── Main ──────────────────────────────────────────────────────────────────────
 
 function processPackage(
@@ -183,6 +204,7 @@ function processPackage(
     allowSyntheticDefaultImports: true,
     skipLibCheck: true,
     noEmit: true,
+    paths: (pathMappings ??= buildPathMappings()),
   };
 
   const program = ts.createProgram([indexPath], compilerOptions);
@@ -221,8 +243,15 @@ function processPackage(
       exportSymbol.flags & ts.SymbolFlags.Alias
         ? checker.getAliasedSymbol(exportSymbol)
         : exportSymbol;
-    const decl = target.declarations?.[0];
+    // Unresolved targets (e.g. gitignored generated tokens) keep the specifier
+    const decl = target.declarations?.[0] ?? exportSymbol.declarations?.[0];
     if (!decl) continue;
+    if (
+      ts.isExportSpecifier(decl) &&
+      (decl.isTypeOnly || decl.parent.parent.isTypeOnly)
+    ) {
+      continue;
+    }
 
     // Skip pure type alias / interface declarations (not runtime values)
     if (ts.isTypeAliasDeclaration(decl) || ts.isInterfaceDeclaration(decl)) {
