@@ -132,8 +132,12 @@ function resolveInstanceImport(
 /** Stands in for a prop value that is not a literal, e.g. `variant={v}`. */
 const EXPRESSION_VALUE = Object.freeze({ expression: true });
 
+/** Recorded value for non-literal props, so value shares have a denominator. */
+export const EXPRESSION_BUCKET = '(expression)';
+
 interface PropValueNode {
   type: string;
+  name?: string;
   value?: unknown;
   expression?: PropValueNode;
   expressions?: unknown[];
@@ -150,6 +154,10 @@ function getPropValue({ node }: { node: PropValueNode | null }): unknown {
   if (node === null) return true;
   const value = node.type === 'JSXExpressionContainer' ? node.expression : node;
   if (value?.type === 'Literal') return value.value;
+  // `width={undefined}` passes nothing
+  if (value?.type === 'Identifier' && value.name === 'undefined') {
+    return undefined;
+  }
   if (value?.type === 'TemplateLiteral' && value.expressions?.length === 0) {
     return value.quasis?.[0]?.value.cooked ?? EXPRESSION_VALUE;
   }
@@ -243,15 +251,16 @@ function createEnturProcessor(
         if (instance.propsSpread) spreadCount++;
         for (const [propName, value] of Object.entries(instance.props || {})) {
           propCounts[propName] = (propCounts[propName] || 0) + 1;
-          if (
-            !valueProps?.has(propName) ||
-            isFreeTextProp(propName) ||
-            !isLiteralValue(value)
-          ) {
-            continue;
-          }
+          if (!valueProps?.has(propName) || isFreeTextProp(propName)) continue;
+          const bucket =
+            value === EXPRESSION_VALUE
+              ? EXPRESSION_BUCKET
+              : isLiteralValue(value)
+              ? String(value)
+              : null;
+          if (bucket === null) continue;
           const counts = (propValues[propName] ??= {});
-          counts[String(value)] = (counts[String(value)] || 0) + 1;
+          counts[bucket] = (counts[bucket] || 0) + 1;
         }
         const absFile = instance.location?.file;
         if (absFile) files.add(path.basename(absFile));

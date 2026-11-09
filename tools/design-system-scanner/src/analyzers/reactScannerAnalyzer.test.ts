@@ -149,7 +149,8 @@ describe('reactScannerAnalyzer', () => {
       );
 
       expect(button!.propValues).toEqual({
-        variant: { primary: 2, secondary: 1 },
+        // `variant={variant}` lands in the expression bucket, `width={undefined}` nowhere
+        variant: { primary: 2, secondary: 1, '(expression)': 1 },
         size: { medium: 1, small: 1 },
         disabled: { true: 1 },
         loading: { false: 1 },

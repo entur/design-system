@@ -191,8 +191,9 @@ result and as rows in `repo_prop_values.ndjson`.
 A prop is enum-like when the catalog lists it in the component's `enumProps`: a
 self-defined prop whose type is a union of string or number literals, or boolean,
 ignoring `undefined` and `null`. Only literal values are counted (`variant="primary"`,
-`size={'small'}`, a bare `disabled` as `true`); expressions like `variant={v}` are
-skipped. Free text is never recorded: `children`, `className`, `style`, `id`, `href`,
+`size={'small'}`, a bare `disabled` as `true`). Expressions like `variant={v}` are
+counted as the value `(expression)`, so the share of literal values is known;
+`width={undefined}` is skipped. Free text is never recorded: `children`, `className`, `style`, `id`, `href`,
 `title`, `label`, `aria-*` and `data-*` are excluded even if the catalog lists them.
 
 `--local` reads the `catalog.json` shipped with the scanner, or the one given by
