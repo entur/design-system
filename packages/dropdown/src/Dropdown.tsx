@@ -169,6 +169,7 @@ export const Dropdown = React.forwardRef(
       reset,
     } = useSelect({
       items: normalizedItems,
+      isItemDisabled: () => disabled,
       defaultHighlightedIndex: selectedItem ? undefined : 0,
       selectedItem,
       ...(environment && { environment }),

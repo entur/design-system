@@ -55,6 +55,27 @@ describe('Dropdown', () => {
     expect(onChange).toHaveBeenCalledTimes(1);
   });
 
+  test('ignores selection when an open dropdown becomes disabled', async () => {
+    const user = userEvent.setup();
+    const onChange = jest.fn();
+    const props = {
+      label: 'test label',
+      items: testItems,
+      selectedItem: { value: 'Oslo', label: 'Oslo' },
+      onChange,
+    };
+    const { rerender } = render(<Dropdown {...props} />);
+    await user.click(screen.getByRole('combobox', { name: 'test label' }));
+
+    rerender(<Dropdown {...props} disabled />);
+    const toggleButton = screen.getByRole('combobox');
+    expect(toggleButton).toHaveAttribute('aria-disabled', 'true');
+    await user.click(screen.getByRole('option', { name: 'Bergen' }));
+
+    expect(onChange).not.toHaveBeenCalled();
+    expect(toggleButton).toHaveTextContent('Oslo');
+  });
+
   test('can select element with keyboard', async () => {
     const user = userEvent.setup();
     const onChange = jest.fn();
