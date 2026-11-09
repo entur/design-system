@@ -346,10 +346,12 @@ export interface FileFinding {
   fileExtension: string;
   /** Package this finding relates to */
   packageName: string;
+  /** Subpath of the import, e.g. "/beta" (absent for the root entry point) */
+  deepImportPath?: string;
   /** Symbol name (nullable for package-level findings) */
   symbolName?: string;
   /** What kind of finding */
-  findingType: 'import' | 'jsx_usage' | 'deep_import';
+  findingType: 'import' | 'jsx_usage';
   /** Line number in the file */
   lineNumber?: number;
   /** Whether this file is a test file */

@@ -120,13 +120,16 @@ describe('reactScannerAnalyzer', () => {
       expect(
         navFindings
           .filter(f => f.filePath.endsWith('LegacyNav.tsx'))
-          .map(f => f.findingType),
-      ).toEqual(['jsx_usage']);
+          .map(f => [f.findingType, f.deepImportPath]),
+      ).toEqual([['jsx_usage', undefined]]);
       expect(
         navFindings
           .filter(f => f.filePath.endsWith('BetaNav.tsx'))
-          .map(f => f.findingType),
-      ).toEqual(['deep_import', 'deep_import']);
+          .map(f => [f.findingType, f.deepImportPath]),
+      ).toEqual([
+        ['jsx_usage', '/beta'],
+        ['jsx_usage', '/beta'],
+      ]);
     });
   });
 

@@ -257,6 +257,7 @@ function entriesToFileFindings(entries: FileImportEntry[]): FileFinding[] {
       filePath: entry.filePath,
       fileExtension: path.extname(entry.filePath),
       packageName: entry.packageName,
+      deepImportPath: entry.deepImportPath,
       symbolName: entry.symbolName,
       findingType: 'import' as const,
       lineNumber: entry.lineNumber,

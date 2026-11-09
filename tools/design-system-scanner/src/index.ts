@@ -399,6 +399,7 @@ function exportForBigQuery(args: ParsedArgs): void {
           file_path: finding.filePath,
           file_extension: finding.fileExtension,
           package_name: finding.packageName,
+          deep_import_path: finding.deepImportPath ?? null,
           symbol_name: finding.symbolName || null,
           finding_type: finding.findingType,
           line_number: finding.lineNumber || null,

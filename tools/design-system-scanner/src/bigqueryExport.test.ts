@@ -66,6 +66,29 @@ const baseRepo = {
       deepImportPath: '/beta',
     },
   ],
+  fileFindings: [
+    {
+      filePath: 'src/Old.tsx',
+      fileExtension: '.tsx',
+      packageName: '@entur/typography',
+      symbolName: 'Link',
+      findingType: 'jsx_usage',
+      isTestFile: false,
+      isStorybookFile: false,
+      isGeneratedFile: false,
+    },
+    {
+      filePath: 'src/New.tsx',
+      fileExtension: '.tsx',
+      packageName: '@entur/typography',
+      deepImportPath: '/beta',
+      symbolName: 'Link',
+      findingType: 'jsx_usage',
+      isTestFile: false,
+      isStorybookFile: false,
+      isGeneratedFile: false,
+    },
+  ],
   cssOverrides: [],
   colorTokenUsage: [],
   hardcodedColors: [],
@@ -185,6 +208,14 @@ describe('BigQuery export', () => {
         instance_count: 2,
       }),
       expect.objectContaining({ prop_value: 'title-2', instance_count: 1 }),
+    ]);
+  });
+
+  it('carries the entry point on file findings', () => {
+    const rows = readRows(outDir, 'file_findings.ndjson');
+    expect(rows.map(r => [r.file_path, r.deep_import_path])).toEqual([
+      ['src/Old.tsx', null],
+      ['src/New.tsx', '/beta'],
     ]);
   });
 

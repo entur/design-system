@@ -220,8 +220,9 @@ function createEnturProcessor(
             filePath: relativePath,
             fileExtension: path.extname(absFile),
             packageName: resolved.packageName,
+            deepImportPath: resolved.deepImportPath,
             symbolName: resolved.exportedName,
-            findingType: resolved.deepImportPath ? 'deep_import' : 'jsx_usage',
+            findingType: 'jsx_usage',
             lineNumber: instance.location?.start?.line,
             ...classifyFile(relativePath),
           });

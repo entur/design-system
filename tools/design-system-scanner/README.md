@@ -168,7 +168,7 @@ Group keys and the event timestamp are sent as **top-level** capture fields, not
 
 **`repo_workspaces.ndjson`** — One row per `(repo, workspace)` in monorepos. Contains workspace name, relative path, type (`app` / `package`), detected framework, and count of DS packages used in that workspace.
 
-**`file_findings.ndjson`** — One row per file-level finding (requires `--include-file-findings`). Enables drilldown into exactly which files import or render which symbols, with the file path, extension, finding type (`import` / `jsx_usage`), line number, and flags for test/Storybook/generated files.
+**`file_findings.ndjson`** — One row per file-level finding (requires `--include-file-findings`). Enables drilldown into exactly which files import or render which symbols, with the file path, extension, subpath (`deep_import_path`), finding type (`import` / `jsx_usage`), line number, and flags for test/Storybook/generated files.
 
 **`repo_prop_values.ndjson`** — One row per `(repo, component, prop, literal value)`: `package_name`, `deep_import_path`, `symbol_name`, `prop_name`, `prop_value` (always a string, so `true` and `12` arrive as `"true"` and `"12"`) and `instance_count`. Only enum-like props are covered; see [Prop values](#prop-values). Only produced when values were found.
 
