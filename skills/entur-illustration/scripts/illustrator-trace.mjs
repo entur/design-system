@@ -6,6 +6,7 @@
 //     [--app "/Applications/Adobe Illustrator 2026/Adobe Illustrator.app"]
 //     [--size 360] [--threshold 110] [--max-stroke 20] [--contour 1.5] [--detail 1.0]
 //     [--contour-share 0.25] [--min-ink-width 4] [--roughen] [--fill-rough] [--ink-shift]
+//     [--construction animals] [--carriers profiles.ai] [--backdrop] [--underlay]
 //
 // Two traces of the same PNG on a `--size` pt artboard (360 puts a figure at
 // library scale):
@@ -18,6 +19,14 @@
 //          enclosed white kept as paper, the white background removed;
 //          colour (not ink) shifted 0.6 pt right and 0.3 pt down; fill
 //          edges stay smooth, as in the reference drawings.
+// With `--construction animals` (animals and objects) the artboard is 320 pt
+// and the weights 2.1 / 1.7; `--carriers` gives every line a live width
+// profile copied from the strokes named swell and point in that .ai (short
+// lines get point), and `--backdrop` replaces the traced disc with the
+// library's: a 4-anchor circle with Roughen 0.65 % on a Circle layer.
+// `--underlay` adds one paper shape under the whole subject, like the
+// library animals' underlays: without it, white areas the colour trace
+// cannot tell from the background (a tail past the disc) stay unfilled.
 // The draft already carries the hand tremor, so Roughen is only added with
 // `--roughen`. Saved as <Name>.ai and <Name>.svg, plus -darkmode and
 // -contrast SVGs by palette mapping (every white becomes paper).
@@ -29,6 +38,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
+import zlib from 'node:zlib';
 
 const args = process.argv.slice(2);
 const opt = (name, fallback) => {
@@ -45,10 +55,14 @@ const app = opt(
   '/Applications/Adobe Illustrator 2026/Adobe Illustrator.app',
 );
 const outDir = path.resolve(opt('out', '.'));
+const animals = opt('construction', 'people') === 'animals';
 const threshold = Number(opt('threshold', 110));
 const maxStroke = Number(opt('max-stroke', 14));
-const contour = Number(opt('contour', 1.5));
-const detail = Number(opt('detail', 1.0));
+const contour = Number(opt('contour', animals ? 2.1 : 1.5));
+const detail = Number(opt('detail', animals ? 1.7 : 1.0));
+const carriers = opt('carriers', '');
+const backdrop = flag('backdrop');
+const underlay = flag('underlay');
 // A traced draft already carries the hand tremor; Roughen on top makes it bumpy.
 const roughen = flag('roughen');
 flag('no-roughen');
@@ -84,7 +98,11 @@ const params = {
   detail,
   roughen,
   minInkWidth: Number(opt('min-ink-width', 4)),
-  size: Number(opt('size', 360)),
+  size: Number(opt('size', animals ? 320 : 360)),
+  carriers: carriers ? path.resolve(carriers) : '',
+  pointLength: 12,
+  backdrop,
+  mask: underlay ? writeMask(png) : '',
   contourShare: Number(opt('contour-share', 0.25)),
   shift: [0.6, -0.3],
   fillRough: flag('fill-rough'),
@@ -202,6 +220,86 @@ for (var j = 0; j < lp.length; j++) {
 }
 log.push('line strokes ' + strokes + ' (contours by ' + (byWidth ? 'width' : 'length') + ', cut ' + Math.round(contourCut * 100) / 100 + '), ink fills ' + fills);
 
+// Width profiles (animals): copy a carrier stroke onto each traced line's
+// anchors. Illustrator's scripting cannot create a width profile, but a
+// copied stroke keeps its own. Short lines (fur, whiskers) get point.
+var profiled = 0;
+if (P.carriers) {
+  var carDoc = app.open(new File(P.carriers)), car = {};
+  for (var c0 = 0; c0 < carDoc.pathItems.length; c0++) car[carDoc.pathItems[c0].name] = carDoc.pathItems[c0];
+  app.activeDocument = doc;
+  var lines = paths(lg, []);
+  for (var c1 = 0; c1 < lines.length; c1++) {
+    var ln = lines[c1];
+    if (!ln.stroked) continue;
+    var src = car[Number(ln.length) < P.pointLength ? 'point' : 'swell'] || car.swell;
+    if (!src) continue;
+    var dup = src.duplicate(lineLayer, ElementPlacement.PLACEATBEGINNING), anchors = [];
+    dup.move(ln, ElementPlacement.PLACEBEFORE);
+    for (var c2 = 0; c2 < ln.pathPoints.length; c2++) anchors.push(ln.pathPoints[c2].anchor);
+    dup.setEntirePath(anchors);
+    for (var c3 = 0; c3 < ln.pathPoints.length; c3++) { var pa = ln.pathPoints[c3], pb = dup.pathPoints[c3]; pb.leftDirection = pa.leftDirection; pb.rightDirection = pa.rightDirection; pb.pointType = pa.pointType; }
+    dup.closed = ln.closed; dup.filled = false; dup.stroked = true; dup.strokeColor = ln.strokeColor; dup.strokeWidth = ln.strokeWidth;
+    dup.strokeCap = StrokeCap.ROUNDENDCAP; dup.strokeJoin = StrokeJoin.ROUNDENDJOIN;
+    ln.remove(); profiled++;
+  }
+  carDoc.close(SaveOptions.DONOTSAVECHANGES);
+  app.activeDocument = doc;
+}
+log.push('width profiles ' + profiled);
+
+// Backdrop (animals): the library disc is a plain 4-anchor circle whose ragged
+// edge comes from Roughen 0.65 %; a traced disc is a lumpy many-anchor shape.
+if (P.backdrop) {
+  var disc = null, discArea = 0, art = (ab[2] - ab[0]) * (ab[1] - ab[3]);
+  var cf = paths(cg, []);
+  for (var b0 = 0; b0 < cf.length; b0++) { var bi = cf[b0]; if (bi.filled && nearest(bi.fillColor) === 'tint' && Math.abs(bi.area) > discArea) { disc = bi; discArea = Math.abs(bi.area); } }
+  if (disc && discArea > 0.12 * art) {
+    // Radius from the bounds: the subject cuts into the traced disc's area.
+    var db = disc.geometricBounds, r0 = ((db[2] - db[0]) + (db[1] - db[3])) / 4;
+    var circleLayer = doc.layers.add(); circleLayer.name = 'Circle'; circleLayer.move(doc, ElementPlacement.PLACEATEND);
+    var ring = circleLayer.pathItems.ellipse((db[1] + db[3]) / 2 + r0, (db[0] + db[2]) / 2 - r0, 2 * r0, 2 * r0);
+    ring.stroked = false; ring.filled = true; ring.fillColor = rgb(P.palette.tint);
+    try { ring.applyEffect('<LiveEffect name="Adobe Roughen"><Dict data="R size 0.65 R asiz 0.65 R absoluteness 0 R dtal 61 R roundness 1 "/></LiveEffect>'); } catch (e) {}
+    (disc.parent.typename === 'CompoundPathItem' ? disc.parent : disc).remove();
+    // A pale disc often traces as a white interior inside a grey ragged rim:
+    // drop the white area that spans the disc and the rim fragments.
+    var dcx = (db[0] + db[2]) / 2, dcy = (db[1] + db[3]) / 2, cleared = 0;
+    var rest = paths(cg, []);
+    for (var b1 = rest.length - 1; b1 >= 0; b1--) {
+      var ri = rest[b1];
+      try { if (!ri.filled) continue; } catch (e3) { continue; }
+      var rk = nearest(ri.fillColor), rb = ri.geometricBounds;
+      var spans = rb[2] - rb[0] >= 1.6 * r0 && rb[1] - rb[3] >= 1.6 * r0;
+      var rd = Math.sqrt(Math.pow((rb[0] + rb[2]) / 2 - dcx, 2) + Math.pow((rb[1] + rb[3]) / 2 - dcy, 2));
+      var rim = rk === 'tint' && rd > 0.88 * r0 && rd < 1.12 * r0 && Math.abs(ri.area) < 0.02 * Math.PI * r0 * r0;
+      if ((rk === 'paper' && spans) || rim) { (ri.parent.typename === 'CompoundPathItem' ? ri.parent : ri).remove(); cleared++; }
+    }
+    log.push('backdrop replaced, radius ' + Math.round(r0) + ', traced disc parts cleared ' + cleared);
+  }
+}
+
+// Paper underlay under the whole subject, traced from the silhouette mask.
+if (P.mask) {
+  var mp = fillLayerOf(doc).placedItems.add();
+  mp.file = new File(P.mask);
+  mp.width = ab[2] - ab[0]; mp.height = ab[1] - ab[3]; mp.position = [ab[0], ab[1]];
+  var mt = mp.trace(), mo = mt.tracing.tracingOptions;
+  mo.tracingMode = TracingModeType.TRACINGMODEBLACKANDWHITE; mo.threshold = 128;
+  mo.fills = true; mo.strokes = false; mo.ignoreWhite = true;
+  mo.pathFidelity = 20; mo.cornerFidelity = 30; mo.noiseFidelity = 80;
+  app.redraw();
+  var mg = mt.tracing.expandTracing(), mps = paths(mg, []), biggest = null, bigArea = 0;
+  for (var u = 0; u < mps.length; u++) if (Math.abs(mps[u].area) > bigArea) { bigArea = Math.abs(mps[u].area); biggest = mps[u]; }
+  if (biggest) {
+    var under = biggest.duplicate(fillLayerOf(doc), ElementPlacement.PLACEATEND);
+    under.filled = true; under.stroked = false; under.fillColor = rgb(P.palette.paper);
+  }
+  mg.remove();
+  log.push('underlay ' + (biggest ? Math.round(bigArea) + ' pt2' : 'not found'));
+}
+function fillLayerOf(d) { for (var fl = 0; fl < d.layers.length; fl++) if (d.layers[fl].name === 'Fill') return d.layers[fl]; return d.layers[0]; }
+
 // Fill finish. Reference drawings keep fill edges smooth and most fills
 // exactly under their line; the hand-made look comes from a few fills sitting
 // 0.5–0.7 pt off it, which the colour shift above gives. --fill-rough (a faint
@@ -279,6 +377,177 @@ for (const [mode, idx] of [
   const file = path.join(outDir, `${name}-${mode}.svg`);
   fs.writeFileSync(file, out);
   console.log(file);
+}
+
+// Silhouette of the subject in the draft, black on white, for --underlay. The
+// line gaps are closed by growing the dark line pixels; the outside is then
+// flooded from the image edge. Inside the backdrop disc only disc-coloured
+// pixels let the flood through, so white areas behind a gap in a contour
+// stay inside. Pure JS: decodes 8-bit RGB(A) PNGs.
+function writeMask(file, grow = 5) {
+  const buf = fs.readFileSync(file);
+  let pos = 8;
+  let w = 0;
+  let h = 0;
+  let type = 2;
+  const idat = [];
+  while (pos < buf.length) {
+    const n = buf.readUInt32BE(pos);
+    const kind = buf.toString('latin1', pos + 4, pos + 8);
+    const body = buf.subarray(pos + 8, pos + 8 + n);
+    if (kind === 'IHDR') {
+      w = body.readUInt32BE(0);
+      h = body.readUInt32BE(4);
+      type = body[9];
+    } else if (kind === 'IDAT') idat.push(body);
+    pos += 12 + n;
+  }
+  const bpp = type === 6 ? 4 : 3;
+  const raw = zlib.inflateSync(Buffer.concat(idat));
+  const stride = w * bpp;
+  const lum = new Uint8Array(w * h);
+  const blueish = new Uint8Array(w * h);
+  let prev = new Uint8Array(stride);
+  for (let y = 0, i = 0; y < h; y++) {
+    const f = raw[i++];
+    const line = new Uint8Array(raw.subarray(i, i + stride));
+    i += stride;
+    for (let x = 0; x < stride; x++) {
+      const a = x >= bpp ? line[x - bpp] : 0;
+      const b = prev[x];
+      const c = x >= bpp ? prev[x - bpp] : 0;
+      if (f === 1) line[x] = (line[x] + a) & 255;
+      else if (f === 2) line[x] = (line[x] + b) & 255;
+      else if (f === 3) line[x] = (line[x] + ((a + b) >> 1)) & 255;
+      else if (f === 4) {
+        const pa = Math.abs(b - c);
+        const pb = Math.abs(a - c);
+        const pc = Math.abs(a + b - 2 * c);
+        line[x] =
+          (line[x] + (pa <= pb && pa <= pc ? a : pb <= pc ? b : c)) & 255;
+      }
+    }
+    for (let x = 0; x < w; x++) {
+      const [r, g, bl] = [line[x * bpp], line[x * bpp + 1], line[x * bpp + 2]];
+      lum[y * w + x] = (r * 3 + g * 6 + bl) / 10;
+      blueish[y * w + x] = bl >= r && bl >= g ? 1 : 0;
+    }
+    prev = line;
+  }
+  // The disc: the bounds of the pale grey-lavender pixels.
+  const xs = [];
+  const ys = [];
+  for (let k = 0; k < w * h; k += 3) {
+    if (lum[k] >= 212 && lum[k] <= 238 && blueish[k]) {
+      xs.push(k % w);
+      ys.push(Math.floor(k / w));
+    }
+  }
+  const pct = (arr, q) =>
+    arr.length ? arr.sort((p, q2) => p - q2)[Math.floor(arr.length * q)] : 0;
+  const disc =
+    xs.length > w * h * 0.03
+      ? {
+          cx: (pct(xs, 0.01) + pct(xs, 0.99)) / 2,
+          cy: (pct(ys, 0.01) + pct(ys, 0.99)) / 2,
+          r:
+            (pct(xs, 0.99) - pct(xs, 0.01) + pct(ys, 0.99) - pct(ys, 0.01)) / 4,
+        }
+      : null;
+  // Grow a mask by r pixels (square kernel, two passes).
+  const growBy = (m, r) => {
+    const t = new Uint8Array(w * h);
+    const out = new Uint8Array(w * h);
+    for (let y = 0; y < h; y++)
+      for (let x = 0, run = -1; x < w; x++) {
+        for (let k = Math.max(0, x - r); k <= Math.min(w - 1, x + r); k++)
+          if (m[y * w + k]) {
+            run = 1;
+            break;
+          } else run = 0;
+        t[y * w + x] = run;
+      }
+    for (let x = 0; x < w; x++)
+      for (let y = 0; y < h; y++) {
+        let v = 0;
+        for (let k = Math.max(0, y - r); k <= Math.min(h - 1, y + r); k++)
+          if (t[k * w + x]) {
+            v = 1;
+            break;
+          }
+        out[y * w + x] = v;
+      }
+    return out;
+  };
+  const ink = new Uint8Array(w * h);
+  for (let k = 0; k < w * h; k++) ink[k] = lum[k] < 120 ? 1 : 0;
+  const wall = growBy(ink, grow);
+  const outside = new Uint8Array(w * h);
+  const stack = [];
+  for (let x = 0; x < w; x++) stack.push(x, (h - 1) * w + x);
+  for (let y = 0; y < h; y++) stack.push(y * w, y * w + w - 1);
+  while (stack.length) {
+    const k = stack.pop();
+    if (outside[k] || wall[k]) continue;
+    const x = k % w;
+    const y = (k - x) / w;
+    if (
+      disc &&
+      (x - disc.cx) ** 2 + (y - disc.cy) ** 2 < (disc.r - 6) ** 2 &&
+      lum[k] > 238
+    )
+      continue;
+    outside[k] = 1;
+    if (x > 0) stack.push(k - 1);
+    if (x < w - 1) stack.push(k + 1);
+    if (y > 0) stack.push(k - w);
+    if (y < h - 1) stack.push(k + w);
+  }
+  // Shrink back so the underlay sits just inside the lines.
+  const outer = growBy(outside, Math.max(1, grow - 1));
+  const rows = Buffer.alloc((w * 3 + 1) * h);
+  for (let y = 0; y < h; y++) {
+    rows[y * (w * 3 + 1)] = 0;
+    for (let x = 0; x < w; x++) {
+      const v = outer[y * w + x] ? 255 : 0;
+      rows.fill(v, y * (w * 3 + 1) + 1 + x * 3, y * (w * 3 + 1) + 4 + x * 3);
+    }
+  }
+  const chunk = (kind, body) => {
+    const len = Buffer.alloc(4);
+    len.writeUInt32BE(body.length);
+    const crc = Buffer.alloc(4);
+    crc.writeUInt32BE(crc32(Buffer.concat([Buffer.from(kind), body])));
+    return Buffer.concat([len, Buffer.from(kind), body, crc]);
+  };
+  const ihdr = Buffer.alloc(13);
+  ihdr.writeUInt32BE(w, 0);
+  ihdr.writeUInt32BE(h, 4);
+  ihdr[8] = 8;
+  ihdr[9] = 2;
+  const out = path.join(
+    fs.mkdtempSync(path.join(os.tmpdir(), 'illustrator-trace-mask-')),
+    'mask.png',
+  );
+  fs.writeFileSync(
+    out,
+    Buffer.concat([
+      Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]),
+      chunk('IHDR', ihdr),
+      chunk('IDAT', zlib.deflateSync(rows)),
+      chunk('IEND', Buffer.alloc(0)),
+    ]),
+  );
+  return out;
+}
+
+function crc32(bytes) {
+  let c = 0xffffffff;
+  for (const byte of bytes) {
+    c ^= byte;
+    for (let k = 0; k < 8; k++) c = c & 1 ? 0xedb88320 ^ (c >>> 1) : c >>> 1;
+  }
+  return (c ^ 0xffffffff) >>> 0;
 }
 
 function hexToRgb(hex) {

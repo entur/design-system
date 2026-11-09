@@ -144,7 +144,7 @@ const TOOLS = [
   {
     name: 'illustrator_trace_draft',
     description:
-      'Turn a PNG illustration draft into Entur Linje vector art in Illustrator: live round-capped strokes with a contour/detail weight hierarchy, smoothed palette-snapped fills, optional Roughen. Writes <name>.ai, <name>.svg, <name>-darkmode.svg and <name>-contrast.svg.',
+      'Turn a PNG illustration draft into Entur Linje vector art in Illustrator: live round-capped strokes with a contour/detail weight hierarchy, smoothed palette-snapped fills, optional Roughen. For animals and objects add construction: animals, carriers (width profiles), backdrop and underlay. Writes <name>.ai, <name>.svg, <name>-darkmode.svg and <name>-contrast.svg.',
     inputSchema: {
       type: 'object',
       properties: {
@@ -172,10 +172,43 @@ const TOOLS = [
           description:
             'Add Roughen to strokes, default false: the draft already has the tremor.',
         },
+        construction: {
+          type: 'string',
+          enum: ['people', 'animals'],
+          description:
+            'animals: 320 pt artboard and weights 2.1 / 1.7, for animals and objects. Default people.',
+        },
+        carriers: {
+          type: 'string',
+          description:
+            'Absolute path to an .ai with strokes named swell and point: every traced line gets that width profile (short lines get point). For animals.',
+        },
+        backdrop: {
+          type: 'boolean',
+          description:
+            "Replace the traced disc with the library's 4-anchor circle and Roughen 0.65 %.",
+        },
+        underlay: {
+          type: 'boolean',
+          description:
+            'Put one paper shape under the whole subject, traced from its silhouette in the draft.',
+        },
       },
       required: ['png', 'outDir', 'name'],
     },
-    run: ({ png, outDir, name, threshold, maxStroke, size, roughen }) => {
+    run: ({
+      png,
+      outDir,
+      name,
+      threshold,
+      maxStroke,
+      size,
+      roughen,
+      construction,
+      carriers,
+      backdrop,
+      underlay,
+    }) => {
       const a = [
         path.join(HERE, 'illustrator-trace.mjs'),
         png,
@@ -188,6 +221,10 @@ const TOOLS = [
       if (threshold != null) a.push('--threshold', String(threshold));
       if (size != null) a.push('--size', String(size));
       if (roughen === true) a.push('--roughen');
+      if (construction) a.push('--construction', construction);
+      if (carriers) a.push('--carriers', carriers);
+      if (backdrop) a.push('--backdrop');
+      if (underlay) a.push('--underlay');
       return runNode(a);
     },
   },

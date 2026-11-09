@@ -1,8 +1,8 @@
 # Route B: raster first, then strokes
 
-Natural, figurative people are hard to build anchor by anchor: placed by hand from coordinates, a figure comes out stiff and simplified — a gingerbread figure, not an Entur figure. For people and scenes with people, generate a PNG first with an image model that takes the library's own illustrations as style references, review it, then turn it into strokes.
+Natural, figurative people and animals are hard to build anchor by anchor: placed by hand from coordinates, a figure comes out stiff and simplified — a gingerbread figure, not an Entur figure — and an animal comes out geometric, without the observed detail of the library animals. For people, animals and scenes with them, generate a PNG first with an image model that takes the library's own illustrations as style references, review it, then turn it into strokes.
 
-Use route A (the script) for objects, animals, vehicles, signs and landscapes; it is exact and needs no credits.
+Use route A (the script) for objects, vehicles, signs and landscapes; it is exact and needs no credits.
 
 ## 1. Gather references
 
@@ -14,7 +14,7 @@ Use route A (the script) for objects, animals, vehicles, signs and landscapes; i
 Tools, in order of preference:
 
 1. **An image model that accepts reference images**, such as Gemini image ("nano banana") through Figma Weave: `weave_find_model` for the id and contract, `weave_upload_asset` for each local PNG, `weave_run_model` to run. Needs a Weave account linked to the user's Figma account (app.weavy.ai, profile settings).
-2. **Figma `generate_image`**, which takes a prompt only and places the image in a Figma file. Without references the style drifts further; spell out every rule.
+2. **Figma `generate_image`**, which takes a prompt only and places the image in a Figma file (`gemini-3.1-flash-image` comes back at 1024 px, enough to trace a square motif). Without references the style drifts further; spell out every rule, including the line ("dark navy ink like a dip pen, swelling slightly in the middle and thinning at both ends") and the colours with their hex values. Weave allows only a few free model runs; when they are used up, this is the fallback.
 
 Both spend the user's AI credits. Quote the cost and get an explicit approval before every run, reruns included.
 
@@ -37,6 +37,7 @@ Style rules:
 - Faces are white and have NO EYES and NO MOUTH: only a nose line. Glasses are allowed.
 - [Entur staff: dark navy uniform with coral shoulder and sleeve panels and a small white name badge.]
 - Furniture is simplified: a table has four legs or none, and no leg crosses a person.
+- [Animals: drawn naturally, like an observed sketch of the real animal — correct anatomy, fur only as a few short tapered strokes. The animal keeps a small dot eye and a small dark nose; no smile, no big cartoon eyes, no clothes. The line swells slightly in the middle and thins at both ends, like a dip pen.]
 - Plain white background. A broken horizontal navy ground line under the subject. [Optional for objects and animals: a soft pale grey-lavender disc (#EAEAF1) behind the upper body.]
 - No text, no logos, no frame. Square, 1:1.
 
@@ -78,6 +79,8 @@ Final assets are live strokes in three colour modes.
 node scripts/illustrator-trace.mjs <draft.png> --out <dir> --name <Name>
 ```
 
+For an animal or object add `--construction animals --carriers <profiles.ai> --backdrop --underlay` (details below).
+
 It drives Illustrator through AppleScript `do javascript` and writes `<Name>.ai` with live strokes, `<Name>.svg`, `<Name>-darkmode.svg` and `<Name>-contrast.svg`. Options: `--app` for another Illustrator install (default Illustrator 2026), `--size` (artboard in pt, default 360, which puts a figure at library scale), `--threshold` (line darkness, default 110), `--max-stroke` (widest line traced as a stroke, default 20 for a 2048 px draft), `--contour-share` (share of lines that get the contour weight, default 0.25), `--roughen` (add Roughen to the strokes; off by default), `--fill-rough` and `--ink-shift` (rough fill edges and offset ink clothing; off, and not in the reference drawings). A 2048 px draft can take several minutes, more with other large documents open. The same work, and the finishing steps below, are available to agents as MCP tools (`illustrator_status`, `illustrator_run_jsx`, `illustrator_trace_draft`, `illustrator_scale_head`, `illustrator_smooth_region`, `illustrator_add_details`):
 
 ```bash
@@ -91,7 +94,14 @@ What the script does, and why — the same steps apply when you trace by hand:
 - **Strokes:** ink colour, round caps and joins. The thickest quarter of the lines gets 1.5 pt, the rest 1.0 pt — by traced width, or by length (long outer contours) when the draft's lines are all equally thick. Library people land at about that mix; an all-1.5 figure looks heavy and coarse next to them.
 - **Fills smooth, lightly shifted.** A low path fidelity keeps colour areas to a few anchors instead of a jagged edge, and no Roughen goes on fills. Colour areas (not ink) are shifted 0.6 pt right and 0.3 pt down, the size of the offsets in hand-made reference people.
 - **No Roughen by default.** The draft already carries the hand tremor; Roughen on top makes lines bumpy, and on large fills a relative Roughen makes edges hairy. Use `--roughen` only when the traced lines look too clean.
-- **Modes by palette mapping.** Every white becomes `paper`; recolour white clothing to `cloth` (and vehicle bodies to `vehicle`) by hand in the dark file if the motif has them.
+- **Modes by palette mapping.** Every white becomes `paper`; recolour white clothing to `cloth` (and vehicle bodies to `vehicle`) by hand in the dark file if the motif has them. The backdrop circle shares its standard colour with `tint`; in the dark and contrast files give the Circle layer the `backdrop` values from `palette.md`.
+
+With `--construction animals`, for animals and objects:
+
+- **Artboard and weights:** 320 pt, contour 2.1 and detail 1.7 at the widest point.
+- **Width profiles** (`--carriers`): every traced line gets a live width profile, copied from the strokes named `swell` and `point` in the carriers file (`handoff.md`); lines shorter than 12 pt, such as fur marks, get `point`.
+- **Backdrop** (`--backdrop`): the traced disc is lumpy and often traces as a white interior inside a grey rim. It is replaced by the library's 4-anchor circle with Roughen 0.65 % on a Circle layer, and the traced white interior and rim fragments are removed.
+- **Underlay** (`--underlay`): one paper shape under the whole animal, traced from its silhouette in the draft. Without it, white areas the colour trace cannot tell from the background — a tail that reaches past the disc — stay unfilled, and the ground line shows through.
 
 **In Illustrator, by hand:**
 
@@ -108,6 +118,8 @@ What the script does, and why — the same steps apply when you trace by hand:
 3. **Smooth the hair:** `illustrator_smooth_region` over the hair (default: every fourth anchor kept, three passes) gives one smooth edge. It also flattens small bumps inside the region, such as a microphone tip; redraw those afterwards.
 4. **Fold and sheen marks:** add 2–5 tapered marks with the MCP tool `illustrator_add_details` (points in Illustrator points, y up; read them off a grid render of the traced file), or by hand with a width profile or a small filled shape. Paper-white on ink or colour, ink on light fills.
 5. **Simplify props:** remove a lone table leg, or any leg that crosses a person; four legs or none.
+6. **Animals — small dark features:** a nose or eye that is a small dark blob is too thin for the fill trace and too round for the line trace, and can drop out. Check the face and add it back as a small ink ellipse.
+7. **Animals — ground:** drafts often draw the ground as short dashes. Replace them with two to four long segments on a layer under the fills, so the animal's underlay covers the ground behind it, plus a shorter Blue 50 line below.
 
 **In code** (no Illustrator): `node scripts/grid.mjs <draft.png> --format square`, render the grid, and redraw the centre lines with the script (route A), 12–25 anchors per contour of a person. Slower, and it loses some of the PNG's life, but it stays in the repository and gives all three modes at once.
 
