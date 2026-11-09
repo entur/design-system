@@ -5,7 +5,7 @@ description: Query the design system usage scanner data (which Entur repos use w
 
 # Scanner data
 
-The [design system scanner](../../../tools/design-system-scanner/README.md) scans Entur repos every Monday. It loads the results into BigQuery, and PostHog syncs them into its data warehouse. Query them with HogQL in the PostHog project **Entur Linje (5424)**.
+The [design system scanner](../../../tools/design-system-scanner/README.md) scans Entur repos every Monday. It loads the results into BigQuery, and PostHog syncs them into its data warehouse. Query them with HogQL in the PostHog project **Entur Linje**.
 
 ## Access
 
@@ -57,6 +57,7 @@ WHERE table_name LIKE 'bigquery.%' GROUP BY table_name
 - **`props` is a JSON string**: `ARRAY JOIN JSONExtractArrayRaw(assumeNotNull(props)) AS p`, then `JSONExtractString(p, 'name')` and `toInt(JSONExtractString(p, 'count'))`.
 - **`prop_value` is always a string**, so `true` and `12` arrive as `'true'` and `'12'`. `'(expression)'` counts non-literal values such as `variant={v}`. Include it in the denominator when you report shares, and say how big it is.
 - **Only enum-like props have values**: literal unions and booleans listed in the catalog's `enum_props`. Free-text props (`children`, `className`, `href`, `title`, `label`, `aria-*`, `data-*`) are never recorded.
+- **Prop counts and value counts can differ.** `props` counts every prop written in JSX, including `width={undefined}`, which gets no value. Compare value shares with each other, not with the count in `props`.
 - **`sumIf` returns NULL** when nothing matches. Wrap it in `coalesce(…, 0)`.
 - **New BigQuery columns are not visible in PostHog until the schema is refreshed** for that table under Data warehouse → BigQuery source. Keep the sync on `full_refresh`, because incremental sync fails.
 - **Only whitelisted repos are scanned.** State the scope ("of N scanned repos") with every number. Get N from `scan_runs.total_repos_scanned`.
@@ -126,13 +127,15 @@ GROUP BY package_name, symbol_name, entry ORDER BY symbol_name, entry
 
 ```sql
 WITH used AS (
-  SELECT DISTINCT package_name, symbol_name FROM bigquery.repo_symbol_usage
+  SELECT DISTINCT package_name, coalesce(deep_import_path, '') AS entry, symbol_name
+  FROM bigquery.repo_symbol_usage
   WHERE scan_timestamp = (SELECT max(scan_timestamp) FROM bigquery.repo_symbol_usage)
     AND finding_source != 'catalog-zero'
 )
-SELECT c.package_name, c.symbol_name
+SELECT c.package_name, coalesce(c.deep_import_path, '') AS entry, c.symbol_name
 FROM bigquery.ds_catalog AS c
-LEFT JOIN used AS u ON u.package_name = c.package_name AND u.symbol_name = c.symbol_name
+LEFT JOIN used AS u ON u.package_name = c.package_name
+  AND u.entry = coalesce(c.deep_import_path, '') AND u.symbol_name = c.symbol_name
 WHERE c.scan_timestamp = (SELECT max(scan_timestamp) FROM bigquery.ds_catalog)
   AND c.symbol_type = 'component' AND u.symbol_name = ''
 ```
@@ -160,6 +163,7 @@ SELECT arrayJoin(JSONExtract(assumeNotNull(r.owner_teams), 'Array(String)')) AS 
 FROM bigquery.repo_symbol_usage AS u
 JOIN bigquery.repos AS r ON r.repo_name = u.repo_name AND r.scan_id = u.scan_id
 WHERE u.scan_timestamp = (SELECT max(scan_timestamp) FROM bigquery.repo_symbol_usage)
+  AND u.package_name = '@entur/dropdown' AND u.deep_import_path IS NULL
   AND u.symbol_name = 'Dropdown' AND u.finding_source != 'catalog-zero'
 GROUP BY team ORDER BY repos DESC
 ```

@@ -193,7 +193,7 @@ self-defined prop whose type is a union of string or number literals, or boolean
 ignoring `undefined` and `null`. Only literal values are counted (`variant="primary"`,
 `size={'small'}`, a bare `disabled` as `true`). Expressions like `variant={v}` are
 counted as the value `(expression)`, so the share of literal values is known;
-`width={undefined}` is skipped. Free text is never recorded: `children`, `className`, `style`, `id`, `href`,
+`width={undefined}` gets no value, but still counts as a passed prop in `props`. Free text is never recorded: `children`, `className`, `style`, `id`, `href`,
 `title`, `label`, `aria-*` and `data-*` are excluded even if the catalog lists them.
 
 `--local` reads the `catalog.json` shipped with the scanner, or the one given by
