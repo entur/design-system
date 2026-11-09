@@ -17,6 +17,11 @@
         "source": "/komponenter/layout-og-flater/tag{,/}",
         "destination": "/komponenter/feedback/tag",
         "type": 301
+      },
+      {
+        "source": "/monster/monster/footer{,/}",
+        "destination": "/komponenter/navigasjon/footer/beta",
+        "type": 301
       }
     ],
     "rewrites": [

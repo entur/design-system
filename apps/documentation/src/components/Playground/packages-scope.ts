@@ -43,6 +43,7 @@ export const packages = {
   // Aliased: @entur/menu/beta exports a SideNavigation that would otherwise
   // shadow the stable one used by the existing examples.
   SideNavigationBeta: menuBeta.SideNavigation,
+  Footer: menuBeta.Footer,
   ...modal,
   ...tab,
   ...table,
