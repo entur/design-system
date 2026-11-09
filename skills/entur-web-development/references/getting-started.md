@@ -94,12 +94,16 @@ Most component `styles.css` files carry their own copy of the tokens from `@entu
 @import '@entur/tokens/dist/base.css';
 @import '@entur/tokens/dist/styles.css';
 
-@import '@entur/typography/styles/no-base-tokens';
-@import '@entur/button/styles/no-base-tokens';
+@import '@entur/typography/dist/styles.no-base-tokens.css';
+@import '@entur/button/dist/styles.no-base-tokens.css';
 /* … same order as above */
 ```
 
-Use the same variant for every package. Component tokens (`--components-*`) stay in each package's file.
+In SCSS, still load `base.css` as CSS: `base.scss` only declares the `--basecolors-*` tokens, while the variant also leaves out primitive and transport tokens such as `--blue-90`.
+
+Use the same variant for every package. Component tokens (`--components-*`) stay in each package's file. Beta styles carry no base tokens and are imported as before. Keep `@entur/tokens` up to date with the other `@entur/*` packages — the variant leaves out the base tokens that existed when the package was built, so an older `@entur/tokens` can lack tokens newer components need.
+
+This variant is a temporary workaround. `styles.css` is planned to stop carrying base tokens, so recommend `styles.css` by default and suggest the variant only when duplicate tokens are an actual problem.
 
 ## Import components
 
@@ -247,6 +251,10 @@ npm dedupe
 ```
 
 Then rebuild and verify styles load in the correct order.
+
+### Components have no colors
+
+With `styles.no-base-tokens.css`, the base tokens come only from `@entur/tokens/dist/base.css`. Check that it is imported, as CSS rather than `base.scss`. If colors are missing on some components only, the app's `@entur/tokens` is likely older than the one the component packages were built with — upgrade it together with the other `@entur/*` packages.
 
 ### Tailwind or third-party CSS overrides Entur styles
 
