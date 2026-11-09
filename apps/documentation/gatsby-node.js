@@ -382,6 +382,11 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     toPath: '/komponenter/feedback/tag',
   });
 
+  createRedirect({
+    fromPath: '/monster/monster/footer',
+    toPath: '/komponenter/navigasjon/footer/beta',
+  });
+
   await createDocumentationPagesFromSanity(graphql, actions, reporter);
 };
 
