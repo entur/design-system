@@ -1,15 +1,25 @@
 // linje-ink — draws Entur Linje design system illustrations the way the
-// source Illustrator files are built (measured from the raw .ai files):
+// source Illustrator files are built (measured from the raw .ai files).
+// The library has two constructions:
 //
-//   lines  plain live strokes: one uniform width, round caps, round joins,
-//          often left open. Roughen effect on top (Size 0.2 % relative,
-//          Detail ~47/in, Smooth points). No brushes, no width profiles —
-//          those belong to the marketing/print style, not the design system.
-//   fills  flat colour on the same outline as the line, so it sits exactly
-//          under it; one to three colour fills per figure shifted ~0.6 off
-//          the line (misregister: true) for the hand-printed look.
+//   people   people, Entur staff, vehicles, scenes and landscapes. Plain live
+//            strokes: one uniform width, round caps, round joins, often left
+//            open. Roughen on top (Size 0.2 % relative, Detail ~47/in,
+//            Smooth points). Fills on the same outline as the line; one to
+//            three colour fills per figure shifted ~0.6 off it
+//            (misregister: true) for the hand-printed look.
+//   animals  animals and objects, the square status motifs. Each stroke
+//            carries a width profile: it swells in the middle and ends at
+//            about half its width. Heavier weights, and each contour is
+//            several short overlapping strokes.
 //
-// Here Roughen is baked into the path geometry; every line stays a stroke.
+// Brush strokes belong to the marketing/print style and are not used.
+//
+// Here Roughen is baked into the path geometry. Uniform lines stay strokes.
+// A line with a width profile cannot be an SVG stroke, so it is written as
+// a filled outline, as in the library's own SVG exports; with
+// { profiles: 'stroke' } it stays a centre-line stroke named after its
+// profile, for illustrator_import_drawing to give it a real width profile.
 // Pass { roughen: false } for clean anchors, then apply Effect > Distort &
 // Transform > Roughen in Illustrator instead.
 //
@@ -60,6 +70,37 @@ export const FORMATS = {
 // Illustration Library use 1.5 for contours, 1.0 for detail and 0.5–0.86 for
 // fine lines. Raw .ai figures at ~410 pt tall use 1.88 / 1.22 / 1.0.
 export const WEIGHTS = { contour: 1.5, detail: 1.0, fine: 0.85 };
+
+// Animals and objects, at the widest point of each line. Measured in the
+// source file of the square motifs (750 pt artboards: 5 / 4 / 3 pt).
+export const ANIMAL_WEIGHTS = { contour: 2.1, detail: 1.7, fine: 1.3 };
+
+// Width profiles as [position along the line 0–1, share of the full width]
+// pairs: the three most used in the animals source file. `swell` is the
+// default for animals; `point` is for spines, whiskers and short marks.
+export const PROFILES = {
+  swell: [
+    [0, 0.47],
+    [0.44, 1],
+    [0.83, 0.75],
+    [1, 0.47],
+  ],
+  thin: [
+    [0, 0.27],
+    [0.47, 1],
+    [1, 0.27],
+  ],
+  point: [
+    [0, 0],
+    [0.5, 1],
+    [1, 0],
+  ],
+};
+
+const CONSTRUCTIONS = {
+  people: { weights: WEIGHTS, profile: null, pieces: 1 },
+  animals: { weights: ANIMAL_WEIGHTS, profile: 'swell', pieces: 3 },
+};
 
 // Illustrator Roughen, baked into the path: size in % of the object's
 // diagonal, detail in points per inch of this canvas. The .ai sources use
@@ -252,8 +293,75 @@ function outlineD(outline, closed, shift = [0, 0]) {
   return runsD(outline.pts.map(move), closed, outline.hard);
 }
 
-const polyD = (poly, closed = true) =>
-  `M${poly.map(pt).join('L')}${closed ? 'Z' : ''}`;
+/** Dense points along an open outline from the Drawing's roughen step. */
+function densePoints(outline) {
+  if (outline.pts) return outline.pts;
+  const segs = outline.segments;
+  return [...sample(segs, 0.8), segs[segs.length - 1][3]];
+}
+
+/** Share of the full width at position t (0–1) along a width profile. */
+function profileAt(profile, t) {
+  for (let i = 1; i < profile.length; i++) {
+    const [t1, w1] = profile[i];
+    const [t0, w0] = profile[i - 1];
+    if (t <= t1) return w0 + ((w1 - w0) * (t - t0)) / (t1 - t0 || 1);
+  }
+  return profile[profile.length - 1][1];
+}
+
+/**
+ * Outline of a stroke whose width follows a profile, with round caps: what
+ * Illustrator's Expand Appearance makes of a width-profiled stroke.
+ */
+function swellD(poly, width, profile) {
+  const n = poly.length;
+  if (n < 2) return '';
+  const len = [0];
+  for (let i = 1; i < n; i++)
+    len.push(
+      len[i - 1] +
+        Math.hypot(poly[i][0] - poly[i - 1][0], poly[i][1] - poly[i - 1][1]),
+    );
+  const total = len[n - 1] || 1;
+  // Normals over a wider window, so the Roughen tremor does not kink them.
+  const nrm = poly.map((_, i) => {
+    const a = poly[Math.max(0, i - 2)];
+    const b = poly[Math.min(n - 1, i + 2)];
+    const dx = b[0] - a[0];
+    const dy = b[1] - a[1];
+    const l = Math.hypot(dx, dy) || 1;
+    return [-dy / l, dx / l];
+  });
+  const half = len.map(l => (width / 2) * profileAt(profile, l / total));
+  const side = s =>
+    poly.map((p, i) => [
+      p[0] + s * nrm[i][0] * half[i],
+      p[1] + s * nrm[i][1] * half[i],
+    ]);
+  // Half a circle round an end, from one side to the other.
+  const cap = (i, back) => {
+    const r = half[i];
+    if (r < 0.05) return [];
+    const [nx, ny] = nrm[i];
+    const [tx, ty] = [ny, -nx];
+    const s = back ? -1 : 1;
+    return [1, 2, 3, 4, 5].map(k => {
+      const a = (k / 6) * Math.PI;
+      return [
+        poly[i][0] + s * r * (nx * Math.cos(a) + tx * Math.sin(a)),
+        poly[i][1] + s * r * (ny * Math.cos(a) + ty * Math.sin(a)),
+      ];
+    });
+  };
+  const ring = [
+    ...side(1),
+    ...cap(n - 1, false),
+    ...side(-1).reverse(),
+    ...cap(0, true),
+  ];
+  return bezierD(controls(ring, true), true);
+}
 
 /* ---------------------------------------------------------------- drawing */
 
@@ -269,6 +377,11 @@ export class Drawing {
    * @param {{size: number, detail: number, max?: number} | false} [opts.roughen] Illustrator
    *   Roughen settings to bake in (size in % of the object, detail per inch, max push in
    *   canvas units); false for clean paths
+   * @param {'people'|'animals'} [opts.construction] people, staff, vehicles and scenes
+   *   have uniform lines; animals and objects have swelling lines (width profiles)
+   * @param {'outline'|'stroke'} [opts.profiles] how a line with a width profile is
+   *   written: a filled outline (web, Figma), or a centre-line stroke named
+   *   `profile-<name>-<n>` for illustrator_import_drawing
    */
   constructor({
     format = 'square',
@@ -278,16 +391,25 @@ export class Drawing {
     title = '',
     misregister = [0.6, 0.3],
     roughen = ROUGHEN,
+    construction = 'people',
+    profiles = 'outline',
   } = {}) {
     const f = FORMATS[format] ?? FORMATS.square;
+    const c = CONSTRUCTIONS[construction];
+    if (!c) throw new Error(`Unknown construction "${construction}"`);
     this.width = width ?? f.width;
     this.height = height ?? f.height;
     this.title = title;
     this.misregister = misregister;
     this.roughenSettings = roughen;
+    this.construction = c;
+    /** Line weights for this construction: contour, detail, fine. */
+    this.weights = c.weights;
+    this.profiles = profiles;
     this.rand = mulberry32(seed);
     this.root = { name: 'illustration', children: [] };
     this.stack = [this.root];
+    this.profileCount = 0;
   }
 
   #push(el) {
@@ -326,8 +448,12 @@ export class Drawing {
    * barely move, as in Illustrator. With `corners`, the segment ends stay
    * put and the path breaks there, so corners stay sharp.
    */
-  #roughen(segments, closed, corners) {
-    const settings = this.roughenSettings;
+  #roughen(segments, closed, corners, size) {
+    // A per-line size (fur, wool, spines) replaces the default and its cap.
+    const settings =
+      this.roughenSettings && size != null
+        ? { ...this.roughenSettings, size, max: Infinity }
+        : this.roughenSettings;
     if (!settings) return { segments };
     const starts = [];
     const poly = sample(segments, 72 / settings.detail, starts);
@@ -385,6 +511,93 @@ export class Drawing {
   }
 
   /**
+   * Cuts an outline into open strokes, the way animal contours are drawn: a
+   * few short strokes that overlap a little. With `corners` it cuts at every
+   * corner instead, one stroke per side.
+   */
+  #pieces(outline, closed, count, corners) {
+    if (outline.segments) {
+      const segs = outline.segments;
+      const m = segs.length;
+      if (corners) return segs.map(s => ({ segments: [s] }));
+      const k = Math.max(1, Math.min(count, m));
+      const start = closed ? Math.floor(this.rand() * m) : 0;
+      return Array.from({ length: k }, (_, j) => {
+        const a = Math.round((j * m) / k);
+        const b = Math.round(((j + 1) * m) / k);
+        return {
+          segments: Array.from(
+            { length: b - a },
+            (_, i) => segs[(start + a + i) % m],
+          ),
+        };
+      });
+    }
+    const { pts } = outline;
+    const n = pts.length;
+    const at = i => pts[closed ? ((i % n) + n) % n : i];
+    let cuts;
+    let overlap = 0;
+    if (corners && outline.hard.size) {
+      cuts = [...outline.hard].sort((x, y) => x - y);
+      if (closed) cuts.push(cuts[0] + n);
+      else cuts = [...new Set([0, ...cuts, n - 1])];
+    } else {
+      const k = Math.max(1, Math.min(count, Math.floor(n / 6)));
+      const start = closed ? Math.floor(this.rand() * n) : 0;
+      const span = closed ? n : n - 1;
+      cuts = Array.from(
+        { length: k + 1 },
+        (_, j) => start + Math.round((j * span) / k),
+      );
+      overlap = k > 1 ? 2 : 0;
+    }
+    const runs = [];
+    for (let j = 0; j < cuts.length - 1; j++) {
+      let a = cuts[j] - overlap;
+      let b = cuts[j + 1] + overlap;
+      if (!closed) {
+        a = Math.max(0, a);
+        b = Math.min(n - 1, b);
+      }
+      const run = [];
+      for (let i = a; i <= b; i++) run.push(at(i));
+      if (run.length > 1) runs.push({ pts: run, hard: new Set() });
+    }
+    return runs;
+  }
+
+  /** Writes one open line: a plain stroke, or a stroke with a width profile. */
+  #stroke(outline, { role, width, dash, profile, roughen }) {
+    const shape = typeof profile === 'string' ? PROFILES[profile] : profile;
+    if (profile && !shape) throw new Error(`Unknown profile "${profile}"`);
+    if (!shape || dash)
+      return this.#push({
+        d: outlineD(outline, false),
+        fill: null,
+        stroke: role,
+        width,
+        dash,
+      });
+    if (this.profiles === 'stroke' && typeof profile === 'string') {
+      this.profileCount += 1;
+      const rough = roughen != null ? `-r${roughen}` : '';
+      return this.#push({
+        name: `profile-${profile}-${this.profileCount}${rough}`,
+        d: outlineD(outline, false),
+        fill: null,
+        stroke: role,
+        width,
+      });
+    }
+    return this.#push({
+      d: swellD(densePoints(outline), width, shape),
+      fill: role,
+      stroke: null,
+    });
+  }
+
+  /**
    * One object: a flat fill under a live ink stroke.
    *
    * fill / stroke   colour role, or null for none
@@ -392,16 +605,23 @@ export class Drawing {
    * gap             number of anchor spans left out of the stroke: the open contour
    * misregister     true to shift this colour fill ~0.6 off its line; use it on
    *                 one to three areas per figure, the rest sit exactly under
+   * profile         width profile of the line (animals default: 'swell'); null
+   *                 for a uniform stroke
+   * pieces          how many overlapping strokes draw the contour (animals: 3)
+   * roughen         Roughen size in % for this shape (fur, wool), default 0.2
    */
   shape(points, opts = {}) {
     const {
       fill = 'paper',
       stroke = 'ink',
-      width = WEIGHTS.contour,
+      width = this.weights.contour,
       corners = false,
       wobble = 0.6,
       gap = 0,
       misregister = false,
+      profile = this.construction.profile,
+      pieces = this.construction.pieces,
+      roughen,
     } = opts;
     // One roughened outline serves both the fill and the stroke, so their
     // edges match; misregistration only translates the fill's copy.
@@ -410,6 +630,7 @@ export class Drawing {
       this.#segments(pts, true, corners, wobble),
       true,
       corners,
+      roughen,
     );
     if (fill) {
       const shift =
@@ -418,7 +639,12 @@ export class Drawing {
           : [0, 0];
       this.#push({ d: outlineD(outline, true, shift), fill, stroke: null });
     }
-    if (stroke) {
+    if (stroke && profile) {
+      const open = gap > 0 && pts.length > gap + 2;
+      const run = open ? this.#open(outline, gap, pts.length) : outline;
+      for (const piece of this.#pieces(run, !open, pieces, corners))
+        this.#stroke(piece, { role: stroke, width, profile, roughen });
+    } else if (stroke) {
       const open = gap > 0 && pts.length > gap + 2;
       this.#push({
         d: open
@@ -437,14 +663,20 @@ export class Drawing {
     return this.shape(points, { fill: role, stroke: null, corners, wobble });
   }
 
-  /** Open live stroke — the main way to draw. Uniform width, round caps. */
+  /**
+   * Open live stroke — the main way to draw. Round caps; uniform width for
+   * people, a width profile for animals (`profile: 'point'` for spines and
+   * whiskers, null for uniform). `roughen` sets the Roughen size in %.
+   */
   line(points, opts = {}) {
     const {
       role = 'ink',
-      width = WEIGHTS.contour,
+      width = this.weights.contour,
       corners = false,
       wobble = 0.5,
       dash,
+      profile = this.construction.profile,
+      roughen,
     } = opts;
     const segs = this.#segments(
       this.#jitter(points, wobble),
@@ -452,12 +684,12 @@ export class Drawing {
       corners,
       wobble,
     );
-    return this.#push({
-      d: outlineD(this.#roughen(segs, false, corners), false),
-      fill: null,
-      stroke: role,
+    return this.#stroke(this.#roughen(segs, false, corners, roughen), {
+      role,
       width,
       dash,
+      profile,
+      roughen,
     });
   }
 
@@ -471,49 +703,35 @@ export class Drawing {
   }
 
   /**
-   * The soft, grainy shape behind the subject: a ragged fill with fine specks
-   * at the edge, like dry brush on paper.
+   * The disc behind a square motif. In the source file it is a plain circle,
+   * 62 % of the canvas wide and centred on it, whose ragged edge comes only
+   * from a coarser Roughen: 0.65 % relative, an anchor every ~1.2 units.
+   * With { roughen: false } on the Drawing it stays a clean 4-anchor circle
+   * for Illustrator to roughen.
    */
-  backdrop({ cx, cy, r, rx = r, ry = r, role = 'backdrop', grain = 1 } = {}) {
-    const n = Math.round(Math.max(rx, ry) * 3);
-    const phase = this.rand() * TAU;
-    const pts = [];
-    for (let i = 0; i < n; i++) {
+  backdrop({
+    cx = this.width / 2,
+    cy = this.height / 2,
+    r = this.width * 0.31,
+    role = 'backdrop',
+    roughen = 0.65,
+  } = {}) {
+    const n = Math.round((TAU * r) / 1.2);
+    const amp = (2 * r * Math.SQRT2 * roughen) / 100;
+    const pts = Array.from({ length: n }, (_, i) => {
       const a = (i / n) * TAU;
-      const lump =
-        1 +
-        Math.sin(a * 3 + phase) * 0.012 +
-        Math.sin(a * 7 + phase * 2) * 0.006;
-      const jag = (this.rand() - 0.5) * 2 * grain;
-      pts.push([
-        cx + Math.cos(a) * (rx * lump + jag),
-        cy + Math.sin(a) * (ry * lump + jag),
-      ]);
-    }
-    this.#push({ name: 'backdrop', d: polyD(pts), fill: role, stroke: null });
-    if (grain > 0) {
-      const specks = [];
-      const count = Math.round((rx + ry) * 2 * grain);
-      for (let i = 0; i < count; i++) {
-        const a = this.rand() * TAU;
-        const out = Math.pow(this.rand(), 2.2) * 6 * grain;
-        const sr = 0.25 + this.rand() * 0.5;
-        const x = cx + Math.cos(a) * (rx + out) - sr;
-        const y = cy + Math.sin(a) * (ry + out);
-        specks.push(
-          `M${r2(x)} ${r2(y)}a${r2(sr)} ${r2(sr)} 0 1 0 ${r2(sr * 2)} 0a${r2(
-            sr,
-          )} ${r2(sr)} 0 1 0 ${r2(-sr * 2)} 0Z`,
-        );
-      }
-      this.#push({
-        name: 'backdrop-grain',
-        d: specks.join(''),
-        fill: role,
-        stroke: null,
-      });
-    }
-    return this;
+      const rr = r + (this.rand() * 2 - 1) * amp;
+      return [cx + Math.cos(a) * rr, cy + Math.sin(a) * rr];
+    });
+    return this.#push({
+      name: 'backdrop',
+      d:
+        roughen > 0 && this.roughenSettings
+          ? bezierD(controls(pts, true), true)
+          : bezierD(controls(circle(cx, cy, r, 4), true), true),
+      fill: role,
+      stroke: null,
+    });
   }
 
   /** Broken horizontal ground lines the subject stands on. */
@@ -524,7 +742,7 @@ export class Drawing {
     rows = 2,
     spacing = 7,
     role = 'ink',
-    width = WEIGHTS.contour,
+    width = this.weights.contour,
   } = {}) {
     for (let row = 0; row < rows; row++) {
       const inset = row * (x2 - x1) * 0.06;
@@ -540,7 +758,7 @@ export class Drawing {
           ],
           {
             role: row === 0 ? role : 'line2',
-            width: row === 0 ? width : WEIGHTS.detail,
+            width: row === 0 ? width : this.weights.detail,
             corners: true,
             wobble: 0.3,
           },
@@ -560,7 +778,7 @@ export class Drawing {
     angle = 60,
     spacing = 4,
     role = 'ink',
-    width = WEIGHTS.fine,
+    width = this.weights.fine,
   } = {}) {
     const a = (angle * Math.PI) / 180;
     const count = Math.max(1, Math.floor(w / spacing));
@@ -594,7 +812,7 @@ export class Drawing {
     inner = 8,
     outer = 17,
     role = 'ink',
-    width = WEIGHTS.contour,
+    width = this.weights.contour,
   } = {}) {
     for (let i = 0; i < count; i++) {
       const t = count === 1 ? 0.5 : i / (count - 1);
@@ -612,7 +830,7 @@ export class Drawing {
   }
 
   /** Scalloped cloud outline in the secondary line colour. */
-  cloud({ x, y, w = 60, role = 'line2', width = WEIGHTS.detail } = {}) {
+  cloud({ x, y, w = 60, role = 'line2', width = this.weights.detail } = {}) {
     const h = w * 0.32;
     return this.line(
       [
@@ -637,7 +855,7 @@ export class Drawing {
   }
 
   /** Escape hatch for custom path data, still coloured by role. */
-  raw(d, { fill = null, stroke = null, width = WEIGHTS.contour } = {}) {
+  raw(d, { fill = null, stroke = null, width = this.weights.contour } = {}) {
     return this.#push({ d, fill, stroke, width });
   }
 

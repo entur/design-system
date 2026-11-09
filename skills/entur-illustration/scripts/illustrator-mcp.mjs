@@ -10,6 +10,7 @@
 //   illustrator_add_details   fold and sheen lines into a Details layer, then re-export the SVG modes
 //   illustrator_scale_head    scale a head around the neck, hair inside a silhouette included
 //   illustrator_smooth_region smooth and thin traced fill edges in a region (hair)
+//   illustrator_import_drawing linje-ink SVG → .ai with live width profiles and Roughen
 //
 // Register:  claude mcp add -s local illustrator-bridge -- node <this file>
 // Set ILLUSTRATOR_APP to target another install (default: Illustrator 2026).
@@ -395,6 +396,90 @@ const TOOLS = [
       ].join('\n');
       const result = await runJsx(jsx);
       return [result, ...writeModes(ai.replace(/\.ai$/, '.svg'))].join('\n');
+    },
+  },
+  {
+    name: 'illustrator_import_drawing',
+    description:
+      "Turn SVGs from linje-ink (drawn with roughen: false; for animals also profiles: 'stroke') into Illustrator files with the library's live construction. Strokes named profile-<swell|thin|point>-<n> get a real width profile, copied from the stroke of that name in a carriers .ai; Roughen goes on as a live effect: 0.2 % relative on strokes (and on fills when the drawing has width profiles, as in the animal source file), 0.65 % on the backdrop disc, and the size in a -r<size> name suffix where a line asked for more. Also converts the -darkmode and -contrast siblings when they exist. Writes <name>.ai and an Illustrator-exported <name>.svg per mode into outDir.",
+    inputSchema: {
+      type: 'object',
+      properties: {
+        svg: {
+          type: 'string',
+          description: 'Absolute path to the standard-mode SVG from linje-ink.',
+        },
+        outDir: { type: 'string', description: 'Absolute output folder.' },
+        name: {
+          type: 'string',
+          description: 'File base name. Default: the SVG file name.',
+        },
+        carriers: {
+          type: 'string',
+          description:
+            'Absolute path to an .ai holding plain strokes named swell, thin and point, each with its width profile and no effects. Needed for profiled lines.',
+        },
+        roughen: {
+          type: 'boolean',
+          description: 'Apply Roughen as a live effect. Default true.',
+        },
+      },
+      required: ['svg', 'outDir'],
+    },
+    run: async ({ svg, outDir, name, carriers, roughen }) => {
+      const base = name ?? path.basename(svg).replace(/\.svg$/, '');
+      const jobs = ['', '-darkmode', '-contrast']
+        .map(suffix => ({
+          src: svg.replace(/\.svg$/, `${suffix}.svg`),
+          ai: path.join(outDir, `${base}${suffix}.ai`),
+        }))
+        .filter(job => fs.existsSync(job.src));
+      fs.mkdirSync(outDir, { recursive: true });
+      const jsx = [
+        `var JOBS = ${JSON.stringify(jobs)}, CARRIERS = ${JSON.stringify(
+          carriers ?? '',
+        )}, ROUGH = ${roughen !== false};`,
+        "function fx(size, detail) { return '<LiveEffect name=\"Adobe Roughen\"><Dict data=\"R size ' + size + ' R asiz ' + size + ' R absoluteness 0 R dtal ' + detail + ' R roundness 1 \"/></LiveEffect>'; }",
+        'var car = {}, carDoc = null, log = [];',
+        'if (CARRIERS) { carDoc = app.open(new File(CARRIERS)); for (var c = 0; c < carDoc.pathItems.length; c++) car[carDoc.pathItems[c].name] = carDoc.pathItems[c]; }',
+        'for (var j = 0; j < JOBS.length; j++) {',
+        '  var doc = app.open(new File(JOBS[j].src)), items = [], profiled = 0, missing = 0, rough = 0;',
+        '  for (var i = 0; i < doc.pathItems.length; i++) items.push(doc.pathItems[i]);',
+        '  var animal = false;',
+        '  for (var i2 = 0; i2 < items.length; i2++) if (/^profile-/.test(items[i2].name)) animal = true;',
+        '  for (var k = 0; k < items.length; k++) {',
+        '    var p = items[k], m = /^profile-([a-z]+)-\\d+/.exec(p.name);',
+        '    if (!m) continue;',
+        '    var src = car[m[1]]; if (!src) { missing++; continue; }',
+        '    var d = src.duplicate(doc.layers[0], ElementPlacement.PLACEATBEGINNING), anchors = [];',
+        '    d.move(p, ElementPlacement.PLACEBEFORE);',
+        '    for (var q = 0; q < p.pathPoints.length; q++) anchors.push(p.pathPoints[q].anchor);',
+        '    d.setEntirePath(anchors);',
+        '    for (var q2 = 0; q2 < p.pathPoints.length; q2++) { var a = p.pathPoints[q2], b = d.pathPoints[q2]; b.leftDirection = a.leftDirection; b.rightDirection = a.rightDirection; b.pointType = a.pointType; }',
+        '    d.closed = p.closed; d.filled = false; d.stroked = true; d.strokeColor = p.strokeColor; d.strokeWidth = p.strokeWidth;',
+        '    d.strokeCap = StrokeCap.ROUNDENDCAP; d.strokeJoin = StrokeJoin.ROUNDENDJOIN; d.name = p.name;',
+        '    items[k] = d; p.remove(); profiled++;',
+        '  }',
+        '  if (ROUGH) for (var r = 0; r < items.length; r++) {',
+        '    var it = items[r], size = /-r([\\d.]+)$/.exec(it.name);',
+        '    try {',
+        "      if (it.name === 'backdrop') it.applyEffect(fx(0.65, 61));",
+        '      else if (it.stroked || (animal && it.filled)) it.applyEffect(fx(size ? size[1] : 0.2, 63));',
+        '      else continue;',
+        '      rough++;',
+        '    } catch (e) {}',
+        '  }',
+        '  doc.saveAs(new File(JOBS[j].ai));',
+        '  var eo = new ExportOptionsSVG(); eo.embedRasterImages = false; eo.coordinatePrecision = 2;',
+        '  try { eo.cssProperties = SVGCSSPropertyLocation.PRESENTATIONATTRIBUTES; } catch (e2) {}',
+        "  doc.exportFile(new File(JOBS[j].ai.replace(/\\.ai$/, '.svg')), ExportType.SVG, eo);",
+        '  doc.close(SaveOptions.DONOTSAVECHANGES);',
+        "  log.push(JOBS[j].ai + ': width profiles ' + profiled + (missing ? ', no carrier for ' + missing : '') + ', roughened ' + rough);",
+        '}',
+        'if (carDoc) carDoc.close(SaveOptions.DONOTSAVECHANGES);',
+        "log.join('\\n');",
+      ].join('\n');
+      return runJsx(jsx);
     },
   },
 ];

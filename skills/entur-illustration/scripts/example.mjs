@@ -3,19 +3,23 @@
 // Copy this file as the starting point for a new illustration.
 //
 // Like the library animals, the fox is paper with ink lines; the bus stop sign
-// is the motif's one Peach element.
+// is the motif's one Peach element. It uses the animal construction: every
+// line swells in the middle, the weights are heavier than on people, and
+// each contour is drawn as a few overlapping strokes.
 
-import { Drawing, WEIGHTS, rect } from './linje-ink.mjs';
+import { Drawing, rect } from './linje-ink.mjs';
 
 const out = process.argv[2] ?? 'out';
 const ink = new Drawing({
   format: 'square',
   seed: 11,
   title: 'Fjellrev som venter ved holdeplassen',
+  construction: 'animals',
 });
+const W = ink.weights; // contour 2.1, detail 1.7, fine 1.3 at the widest point
 
-// 1. Backdrop first, centred a little above the subject; the subject breaks out of it.
-ink.backdrop({ cx: 166, cy: 150, r: 104 });
+// 1. Backdrop first: 62 % of the canvas, centred; the subject breaks out of it.
+ink.backdrop();
 
 // 2. Background details: thin secondary-colour lines only.
 ink.group('background', d => {
@@ -26,7 +30,7 @@ ink.group('background', d => {
       [52, 251],
       [55, 262],
     ],
-    { role: 'line2', width: WEIGHTS.detail },
+    { role: 'line2', width: W.detail },
   );
   d.line(
     [
@@ -34,7 +38,7 @@ ink.group('background', d => {
       [271, 250],
       [275, 262],
     ],
-    { role: 'line2', width: WEIGHTS.detail },
+    { role: 'line2', width: W.detail },
   );
 });
 
@@ -50,7 +54,7 @@ ink.group('bus-stop', d => {
       [236, 266],
       [235, 112],
     ],
-    { width: WEIGHTS.detail },
+    { width: W.detail },
   );
   d.shape(rect(204, 64, 58, 46), {
     fill: 'peach',
@@ -60,7 +64,7 @@ ink.group('bus-stop', d => {
   d.group('bus-pictogram', p => {
     p.shape(rect(217, 73, 32, 20), {
       corners: true,
-      width: WEIGHTS.detail,
+      width: W.detail,
       wobble: 0.3,
     });
     p.line(
@@ -68,7 +72,7 @@ ink.group('bus-stop', d => {
         [217, 83],
         [249, 83],
       ],
-      { width: WEIGHTS.fine, corners: true, wobble: 0.2 },
+      { width: W.fine, corners: true, wobble: 0.2 },
     );
     p.dot(224, 96, 2.6);
     p.dot(242, 96, 2.6);
@@ -96,7 +100,7 @@ ink.group('fox', d => {
       [160, 224],
       [158, 260],
     ],
-    { width: WEIGHTS.detail },
+    { width: W.detail },
   );
   d.line(
     [
@@ -104,9 +108,19 @@ ink.group('fox', d => {
       [129, 228],
       [132, 246],
     ],
-    { width: WEIGHTS.detail },
+    { width: W.detail },
   );
   d.hatch({ x: 160, y: 190, w: 10, h: 14, angle: 70, spacing: 3.5 });
+  // Fur at the chest: pointed marks with a coarser Roughen, as on the
+  // hedgehog's spines and the sheep's wool.
+  d.line(
+    [
+      [139, 176],
+      [134, 184],
+      [133, 192],
+    ],
+    { width: W.fine, profile: 'point', roughen: 1 },
+  );
 
   d.group('head', h => {
     h.shape(
@@ -150,14 +164,14 @@ ink.group('fox', d => {
         [172, 139.5],
         [176, 141.5],
       ],
-      { width: WEIGHTS.contour, wobble: 0.1 },
+      { width: W.contour, wobble: 0.1 },
     );
     h.line(
       [
         [170, 156],
         [180, 155],
       ],
-      { width: WEIGHTS.detail, wobble: 0.1 },
+      { width: W.detail, wobble: 0.1 },
     );
   });
 
@@ -179,7 +193,7 @@ ink.group('fox', d => {
       [78, 246],
       [92, 249],
     ],
-    { width: WEIGHTS.detail },
+    { width: W.detail },
   );
 });
 

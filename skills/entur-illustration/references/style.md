@@ -3,7 +3,7 @@
 Measurements come from two sources:
 
 - **Library exports** — the 410 SVGs on linje.entur.no (140 standard, 135 dark, 135 contrast). Flattened, but colours, canvas sizes and proportions are exact.
-- **Raw Illustrator files** — the `.ai` sources in the Design Guild illustration library, where the line construction is still live (stroke weights, caps, joins, effects).
+- **Raw Illustrator files** — the `.ai` sources in the Design Guild illustration library, where the line construction is still live (stroke weights, caps, joins, effects). For animals and objects that is the file of square motifs, "Entur Square illustrations_animals", measured object by object in November 2026 (see "Animals and objects" below).
 - **Figma Illustration Library** — the components, read node by node through figma-console in November 2026 (see "In the Figma library" below).
 
 Numbers are in SVG units on the library canvases (320 × 320 square) unless noted.
@@ -14,39 +14,56 @@ Numbers are in SVG units on the library canvases (320 × 320 square) unless note
 
 ### Construction
 
-| Property   | Value                                                                                                                                  |
-| ---------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| Type       | Live stroke on a Bézier path, 6–12 anchors per contour as a designer would place them                                                  |
-| Width      | Uniform along the line. No brush, no width profile                                                                                     |
-| Cap / join | Round / round                                                                                                                          |
-| Effect     | Roughen — Size 0.2 % (range 0.1–0.4), Relative, Detail 42–47 per inch at source size (≈ 63 per inch on the 320 canvas), Points: Smooth |
-| Colour     | Ink (Lavender 90) for everything in the foreground                                                                                     |
+| Property   | Value                                                                                                                                    |
+| ---------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| Type       | Live stroke on a Bézier path, 6–12 anchors per contour as a designer would place them                                                    |
+| Width      | People, staff, vehicles, scenes: uniform along the line. Animals and objects: a width profile (see "Animals and objects"). Never a brush |
+| Cap / join | Round / round                                                                                                                            |
+| Effect     | Roughen — Size 0.2 % (range 0.1–0.4), Relative, Detail 42–47 per inch at source size (≈ 63 per inch on the 320 canvas), Points: Smooth   |
+| Colour     | Ink (Lavender 90) for everything in the foreground                                                                                       |
 
 Roughen is relative, so the wobble scales with the object: a long body contour wobbles visibly, a 10-unit eyebrow barely moves. It reads as a steady hand with a fine-liner on slightly toothy paper — not as a sketch. On very large objects (a counter, a train, a building across the canvas) 0.2 % would push the line half a unit and saw its long edges; keep the push under about 0.35 units there. The generator caps it with ROUGHEN.max.
 
 ### In the Figma library
 
-| What                 | People and transport (28 motifs)                                                                       | Animals and objects (29 motifs)                                                                    |
-| -------------------- | ------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------- |
-| Lines                | Live strokes, about 1,000 in all, stroke align centre                                                  | Outlined: filled ink shapes, only a handful of live strokes                                        |
-| Weights              | 1.5 (458 strokes), 1.0 (339), fine 0.5–0.86, accent 2–3                                                | Outlined widths ≈ 1.3–2.3, even along the line                                                     |
-| Caps                 | Round on 94 % of open strokes                                                                          | —                                                                                                  |
-| Joins                | Paths are smooth, so joins rarely show; at the few real corners round and miter are used about equally | —                                                                                                  |
-| Roughen              | Baked into the path: an anchor every 0.85–1.8 units (median 1.15), tremor ≈ 0.1–0.3 % of the object    | Baked in the same way before outlining                                                             |
-| Brush, width profile | None. Every vector is a Basic stroke                                                                   | A few short details taper to a point (beaver whiskers, the clock's strap lines); contours never do |
-| Effects              | Only the dark-mode reflector glow (§7)                                                                 | None                                                                                               |
-| Layers               | One group holding lines and fills                                                                      | Three groups named Circle (the backdrop), Fill and Outline                                         |
+| What                 | People and transport (28 motifs)                                                                       | Animals and objects (29 motifs)                                  |
+| -------------------- | ------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------- |
+| Lines                | Live strokes, about 1,000 in all, stroke align centre                                                  | Outlined: filled ink shapes, only a handful of live strokes      |
+| Weights              | 1.5 (458 strokes), 1.0 (339), fine 0.5–0.86, accent 2–3                                                | Outlined widths ≈ 1.3–2.3 at the widest, swelling along the line |
+| Caps                 | Round on 94 % of open strokes                                                                          | —                                                                |
+| Joins                | Paths are smooth, so joins rarely show; at the few real corners round and miter are used about equally | —                                                                |
+| Roughen              | Baked into the path: an anchor every 0.85–1.8 units (median 1.15), tremor ≈ 0.1–0.3 % of the object    | Baked in the same way before outlining                           |
+| Brush, width profile | None. Every vector is a Basic stroke                                                                   | Width profiles, outlined on export (see below)                   |
+| Effects              | Only the dark-mode reflector glow (§7)                                                                 | None                                                             |
+| Layers               | One group holding lines and fills                                                                      | Groups named Circle (the backdrop), Fill and Outline             |
 
-The people and transport construction is the one to copy. The outlined animals and objects came in from older `.ai` files.
+Copy the people and transport strokes as they are. The animal and object components are outlined because a width profile cannot be a Figma stroke; their live construction is in the source file, below.
+
+### Animals and objects
+
+Measured in the source file of the square motifs: the status animals (sheep, muskox, beaver, squirrel, hedgehog, goat, ducks, doves, leaves) and objects (clock, ticket, calendar, notification, send, thumbs up, train) on 750 × 750 pt artboards, about 2,800 line objects in all. Values are scaled to the 320 canvas.
+
+| Property | Value                                                                                                                                                                                                                                   |
+| -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Lines    | Live strokes of 2–4 anchors each. A contour is two to four short strokes that overlap or stop just short of each other                                                                                                                  |
+| Width    | A width profile on 83 % of the lines: widest near the middle, the ends at 35–60 % of the full width. Most used: 0.47 – 1 – 0.75 – 0.47 and 0.27 – 1 – 0.27. About one line in twenty tapers to a point (spines, whiskers)               |
+| Weights  | At the widest point: contour 2.1, detail 1.7, fine 1.3 (5, 4 and 3 pt on the 750 pt artboards). A thin end at half width makes the average close to the people's 1.5                                                                    |
+| Caps     | Round on most lines; butt on a few straight details                                                                                                                                                                                     |
+| Roughen  | A live effect on each object, relative, smooth. 0.2 % at 42–48 /in on most lines; 0.5–0.7 % on wool and fur (sheep, squirrel, goat); 1–2 % on spines and rough fur (hedgehog, beaver); none on the clock                                |
+| Fills    | Separate shapes on their own layers below the lines: paper underlays, one per body part; Blue 20 shading shapes, usually one to three per animal; small ink fills for eyes, noses and hooves. Underlays and shading carry Roughen 0.2 % |
+| Layers   | Circle (the backdrop), Fill (underlays), Blue fill (shading), Outline (lines)                                                                                                                                                           |
+| Eyes     | Kept: a dot, or a short arc for a closed eye                                                                                                                                                                                            |
+
+The swell is what makes the animals look drawn with a dip pen rather than a fine-liner. Drawn with uniform people strokes, an animal looks thin and mechanical next to the library sheep.
 
 ### Weight hierarchy
 
-| Role    | Figma live strokes (320) | Library SVG (320, outlined) | Raw `.ai` (figure ~410 pt tall) | Used for                                                          |
-| ------- | ------------------------ | --------------------------- | ------------------------------- | ----------------------------------------------------------------- |
-| Contour | 1.5                      | 1.5                         | 1.88 – 2.0                      | Outer silhouette of subject and props, ground line                |
-| Detail  | 1.0                      | 1.1 – 1.26                  | 1.22 – 1.5                      | Folds, creases, seams, the inner leg, facial lines                |
-| Fine    | 0.5 – 0.86               | 0.85 – 0.93                 | 1.0                             | Hatching, small background details                                |
-| Accent  | 2 – 3                    | 2.4 – 4                     | 2.4 – 3.9                       | Rare: a coloured stroke used as an object (a dog collar, a strap) |
+| Role    | Figma live strokes (320) | Library SVG (320, outlined) | Raw `.ai` (figure ~410 pt tall) | Animals and objects (320, widest point) | Used for                                                          |
+| ------- | ------------------------ | --------------------------- | ------------------------------- | --------------------------------------- | ----------------------------------------------------------------- |
+| Contour | 1.5                      | 1.5                         | 1.88 – 2.0                      | 2.1                                     | Outer silhouette of subject and props, ground line                |
+| Detail  | 1.0                      | 1.1 – 1.26                  | 1.22 – 1.5                      | 1.7                                     | Folds, creases, seams, the inner leg, facial lines, fur           |
+| Fine    | 0.5 – 0.86               | 0.85 – 0.93                 | 1.0                             | 1.3                                     | Hatching, small background details, whiskers                      |
+| Accent  | 2 – 3                    | 2.4 – 4                     | 2.4 – 3.9                       | 3 – 8                                   | Rare: a coloured stroke used as an object (a dog collar, a strap) |
 
 The heavier contour against lighter interior lines is what gives the drawings their clarity at small sizes. Keep the same absolute weights on all three canvases; figures in scenes and landscapes are smaller, so their lines read bolder, as in the library.
 
@@ -68,11 +85,12 @@ Everything behind the subject's plane — buildings, trees, hills, clouds, dista
 
 - **Flat**, one colour per area. No gradients, no shading ramps, no shadows under objects.
 - **Under the lines**, as a separate object from the stroke.
-- **Smooth edge** — measured in hand-made reference people: most clothing shapes are one path carrying both fill and stroke, so the fill follows the line exactly, and fill paths have few anchors (median 6–13). Never Roughen a fill: a relative Roughen turns large areas hairy and an absolute one makes them gritty.
+- **Smooth edge on people** — measured in hand-made reference people: most clothing shapes are one path carrying both fill and stroke, so the fill follows the line exactly, and fill paths have few anchors (median 6–13). Never Roughen a fill on a person: a relative Roughen turns large areas hairy and an absolute one makes them gritty.
+- **Separate fills on animals and objects** — paper underlays on their own layer below the lines, one per body part, plus one to three Blue 20 shading shapes (the far sheep's body, a duck's wing, a pencil's side) and small ink fills for eyes, noses and hooves. Underlays and shading carry the same 0.2 % Roughen as the lines.
 - **Misregistered, sparingly** — one to three colour fills per figure are shifted 0.5–0.7 off their outline, all in the same direction (right and slightly down). A sliver of paper shows on one side, the colour slips past the line on the other. Two or three paper-white strokes running just inside an edge (a sleeve, a hem) give the same effect. Everything else sits exactly under its line; paper fills never shift.
 - **Shadow shapes** — where depth needs it (inside a hood, between legs, under a hem), use a small ink-filled shape with no outline. Never a grey or a darker tint.
 - **Hair** — one smooth ink-filled shape of about 16–24 anchors, no outline, no Roughen; a few paper or detail strokes for strands if needed.
-- **Fold and sheen marks** — 2–5 per figure, never a pattern. They taper thin–thick–thin like a brush mark (up to about 1.5 pt wide), start and end inside the shape, and sit where fabric bends: the inside of an elbow, across the lap, toward a knee, a diagonal from the armpit, a bag flap. Paper-white on ink or colour fills, ink on light fills. This is the only place a mark tapers; contours stay uniform strokes.
+- **Fold and sheen marks** — 2–5 per figure, never a pattern. They taper thin–thick–thin like a brush mark (up to about 1.5 pt wide), start and end inside the shape, and sit where fabric bends: the inside of an elbow, across the lap, toward a knee, a diagonal from the armpit, a bag flap. Paper-white on ink or colour fills, ink on light fills. On people this is the only place a mark tapers; their contours stay uniform strokes.
 - **Same fill over same fill** — an ink line on an ink fill disappears. Where two shapes with the same fill overlap (an ink sleeve over an ink uniform), give the front shape a `paper` stroke at detail weight instead of ink, so the two separate.
 
 ### Coverage
@@ -98,9 +116,8 @@ Read it as: the drawing is ink on paper, with a little lavender and one touch of
 
 The square motifs come in two variants, with and without a backdrop (`-background` in the file name). Animals, objects, concepts and hands have both; people, transport, devices and lost property have none.
 
-- Blue 20, roughly circular, diameter about 60–65 % of the canvas (≈ 200 on 320).
-- Centre slightly above the canvas middle, under the subject's head or upper body — not under its feet.
-- Edge: ragged, with fine specks breaking off outward, like dry brush on paper. This is the only texture in the system.
+- Blue 20, a plain circle 62 % of the canvas wide (≈ 198 on 320), centred on the canvas. In a few library exports it is nudged up behind the subject's head; it never sits under the feet.
+- Edge: ragged and fine, like dry brush on paper. In the source it is a 4-anchor circle with Roughen 0.65 % relative, detail 26 /in on the 750 pt artboard (an anchor every ~1.2 units on 320), Smooth. There are no loose specks. This is the only texture in the system.
 - The subject **breaks out** of the disc: ears, signs, tails and the ground line run past its edge.
 - "In circle" object variants put a small object fully inside a disc instead (Clock, Leaves, Send, Notification).
 
@@ -171,9 +188,11 @@ Check by putting the new figure next to a library person (Woman holding package,
 
 ### Drawing animals
 
-- Paper body, ink contour, small ink features (nose, eye dot, inner ear).
-- Fur shown with a few detail strokes or short hatching on the belly — never all over.
+- The animal construction (§1 "Animals and objects"): swelling lines at 2.1 / 1.7 / 1.3, each contour two to four short overlapping strokes.
+- Paper body as an underlay under the lines, ink contour, small ink features (nose, eye dot, inner ear). One or two Blue 20 shading shapes where a second tone helps: the animal behind, a wing, the shaded side.
+- Fur shown with a few detail strokes or short hatching on the belly — never all over. Spines, whiskers and tufts are short pointed strokes; wool is a scalloped contour. Give these a coarser Roughen (0.5–2 %) than the rest.
 - Posture tells the message: waiting, startled (attention marks), busy.
+- Objects (clock, ticket, calendar, phone) use the same construction: swelling strokes, and a box is several short strokes rather than one closed path.
 
 ### Drawing vehicles
 
@@ -209,7 +228,8 @@ Never redraw for a mode — swap colour roles (see `palette.md`).
 
 ## 8. Avoid
 
-- Outlined or expanded strokes, brush strokes, width profiles (marketing/print style)
+- Outlined or expanded strokes in the working file; brush strokes (marketing/print style)
+- Width profiles on people, staff and vehicles; uniform people strokes on animals and objects
 - Gradients, drop shadows, blur, opacity fades, noise overlays (except the backdrop grain and the dark-mode reflector glow)
 - The flat "corporate" figure: big head, eye dots, mitten hands, rectangle torso, tube limbs
 - Eyes or a mouth on people of any kind, skin tones, rosy cheeks, smiling mascots
@@ -218,4 +238,4 @@ Never redraw for a mode — swap colour roles (see `palette.md`).
 - Text inside illustrations beyond a short sign
 - Busy compositions: more than one subject plus one prop on a square
 - More than five fold marks on a figure, or fold lines drawn as uniform strokes
-- Roughened fill edges, jagged hair, accessories drawn twice
+- Roughened fill edges on people, jagged hair, accessories drawn twice
