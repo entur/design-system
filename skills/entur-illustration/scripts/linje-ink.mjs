@@ -64,7 +64,9 @@ export const WEIGHTS = { contour: 1.5, detail: 1.0, fine: 0.85 };
 // diagonal, detail in points per inch of this canvas. The .ai sources use
 // 47/in at their larger size; scaled onto the 320 canvas, the Figma strokes
 // have an anchor every ~1.15 units (0.85–1.8), which is ~63/in here.
-export const ROUGHEN = { size: 0.2, detail: 63 };
+// `max` caps the push in canvas units: 0.2 % of a 260-wide counter or train
+// (~0.5) saws a long straight edge, so large objects stop at 0.35.
+export const ROUGHEN = { size: 0.2, detail: 63, max: 0.35 };
 
 const MODE_SUFFIX = { standard: '', dark: '-darkmode', contrast: '-contrast' };
 
@@ -263,8 +265,9 @@ export class Drawing {
    * @param {number} [opts.seed] same seed, same drawing
    * @param {string} [opts.title] becomes the SVG <title>
    * @param {[number, number]} [opts.misregister] how far colour fills sit off their lines
-   * @param {{size: number, detail: number} | false} [opts.roughen] Illustrator Roughen
-   *   settings to bake in (size in % of the object, detail per inch); false for clean paths
+   * @param {{size: number, detail: number, max?: number} | false} [opts.roughen] Illustrator
+   *   Roughen settings to bake in (size in % of the object, detail per inch, max push in
+   *   canvas units); false for clean paths
    */
   constructor({
     format = 'square',
@@ -337,7 +340,10 @@ export class Drawing {
       Math.max(...xs) - Math.min(...xs),
       Math.max(...ys) - Math.min(...ys),
     );
-    const amp = (diag * settings.size) / 100;
+    const amp = Math.min(
+      (diag * settings.size) / 100,
+      settings.max ?? Infinity,
+    );
     if (amp < 0.05 || poly.length < 4) return { segments };
     const nrm = normals(poly, closed);
     const pts = poly.map((p, i) => {

@@ -22,7 +22,7 @@ Numbers are in SVG units on the library canvases (320 × 320 square) unless note
 | Effect     | Roughen — Size 0.2 % (range 0.1–0.4), Relative, Detail 42–47 per inch at source size (≈ 63 per inch on the 320 canvas), Points: Smooth |
 | Colour     | Ink (Lavender 90) for everything in the foreground                                                                                     |
 
-Roughen is relative, so the wobble scales with the object: a long body contour wobbles visibly, a 10-unit eyebrow barely moves. It reads as a steady hand with a fine-liner on slightly toothy paper — not as a sketch.
+Roughen is relative, so the wobble scales with the object: a long body contour wobbles visibly, a 10-unit eyebrow barely moves. It reads as a steady hand with a fine-liner on slightly toothy paper — not as a sketch. On very large objects (a counter, a train, a building across the canvas) 0.2 % would push the line half a unit and saw its long edges; keep the push under about 0.35 units there. The generator caps it with ROUGHEN.max.
 
 ### In the Figma library
 
@@ -56,7 +56,7 @@ The heavier contour against lighter interior lines is what gives the drawings th
 - **Floating interior lines.** A fold line starts inside the shape and ends inside it. The line separating two legs stops short of the crotch.
 - **Overlaps resolve by fill.** A front object's paper fill covers the lines of whatever is behind it; never erase lines by hand.
 - **Straight things are not ruled.** Poles, sign edges and rails have a slight bow and the Roughen tremor.
-- **Faces are economical.** Profile: one nose-and-lip line. Front: a dot or short arc per eye, a small nose stroke. No mouths unless the expression needs one.
+- **Faces have no eyes.** Profile: one nose-and-lip line, perhaps an eyebrow and an ear. Front or three-quarter: a small nose stroke, at most a short mouth line, glasses if the person wears them. Never eye dots, arcs or pupils on people. Animals keep their eyes.
 
 ### Background lines
 
@@ -72,6 +72,7 @@ Everything behind the subject's plane — buildings, trees, hills, clouds, dista
 - **Misregistered** — coloured fills are shifted about 1–1.5 units off their outline, the same direction across the whole drawing (the generator default is right and slightly down). A sliver of paper shows on one side, the colour slips past the line on the other. Paper fills are not shifted. Not every motif does it: in the Figma library about one colour fill in five on people is an exact copy of its line path, sitting exactly under it.
 - **Shadow shapes** — where depth needs it (inside a hood, between legs, under a hem), use a small ink-filled shape with no outline. Never a grey or a darker tint.
 - **Hair** — an ink-filled mass with a rough edge, no outline; a few paper or detail strokes for strands if needed.
+- **Same fill over same fill** — an ink line on an ink fill disappears. Where two shapes with the same fill overlap (an ink sleeve over an ink uniform), give the front shape a `paper` stroke at detail weight instead of ink, so the two separate.
 
 ### Coverage
 
@@ -151,11 +152,19 @@ The illustrations are about **meetings in everyday traffic**, set in **Norwegian
 
 ### Drawing people
 
-- About 7–7.5 heads tall; relaxed, natural poses, often mid-step.
-- Faces paper with minimal features (see §1); skin always paper.
-- Hair as an ink mass with a rough edge.
-- Clothes: white as the base, drawn with the `cloth` role (not `paper`), Lavender 40 for one garment, Peach 40 for at most one. Bags, helmets and the frame of a bike or scooter the person rides are `cloth` too.
-- Hands simplified to a mitten with one or two finger lines.
+The people are **natural and figurative**: drawn as if from life, with the economy of a line drawing. That is what separates them from the flat "corporate" illustration style, and the difference is mostly proportion and form, not detail.
+
+- **Proportions:** about 7–7.5 heads tall. The head is small; legs are long; shoulders are narrower than a cartoon's. A seated person's back curves and the shoulders slope.
+- **Pose:** relaxed and observed — mid-step, weight on one leg, a slight turn of the torso, a head tilted toward what the person looks at. Never stiff, symmetric or frontal-and-flat.
+- **Form:** organic, asymmetric contours. A torso narrows at the waist and breaks at the hips; a sleeve is wider at the elbow than the wrist. Never rectangles, ovals or blobs standing in for body parts.
+- **Clothes:** loose and draping, with a few detail-weight fold lines where fabric bends (elbow, hip, knee, under the arm), cuffs, collars and hems as separate shapes, ribbing as short hatching. White as the base, drawn with the `cloth` role (not `paper`), Lavender 40 for one garment, Peach 40 for at most one. Bags, helmets and the frame of a bike or scooter the person rides are `cloth` too.
+- **Hands:** small, with fingers — a thumb and two or three finger lines, wrapping round what they hold. Never a mitten.
+- **Feet:** shoes with a separate sole shape; trousers break over them.
+- **Face:** paper, no eyes (see §1); skin always paper.
+- **Hair:** an ink mass with a rough edge and real volume — a bun, a bob, a ponytail that falls — plus a few paper or detail strokes for strands.
+
+Check by putting the new figure next to a library person (Woman holding package, Man and woman hugging, Man checking the time) at the same height. If the head is bigger, the body blockier or the hands simpler, it is the wrong form.
+
 - Entur staff wear an ink-filled uniform with Coral 40 shoulder and sleeve panels and a small paper name badge — the one place Coral covers more than a detail.
 
 ### Drawing animals
@@ -199,7 +208,8 @@ Never redraw for a mode — swap colour roles (see `palette.md`).
 
 - Outlined or expanded strokes, brush strokes, width profiles (marketing/print style)
 - Gradients, drop shadows, blur, opacity fades, noise overlays (except the backdrop grain and the dark-mode reflector glow)
-- Skin tones, rosy cheeks, big eyes, smiling mascots
+- The flat "corporate" figure: big head, eye dots, mitten hands, rectangle torso, tube limbs
+- Eyes on people of any kind, skin tones, rosy cheeks, smiling mascots
 - Coral areas (except Entur staff uniforms), more than one Peach element, colours outside the palette
 - Perspective views of vehicles and buildings; isometric scenes
 - Text inside illustrations beyond a short sign

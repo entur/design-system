@@ -83,11 +83,16 @@ Rules of use: at most **three** square illustrations per page view; more than on
 10. Square motifs: the grainy Blue 20 backdrop disc sits behind the subject's upper body, about 60–65 % of the canvas wide; the subject breaks out of it.
 11. Generous empty space. The illustration supports a message — it never competes with it.
 
+**People**
+
+12. People are drawn naturally and figuratively, like observed drawing — not the flat, childlike "corporate" style. Real proportions (about 7–7.5 heads tall, a small head), a relaxed pose with weight on one leg or a slight turn, loose clothes that drape with a few fold lines, hands with fingers, shoes with a sole. Contours are organic and asymmetric; a torso is never a rectangle and a hand never a mitten.
+13. **No eyes.** Faces carry a nose-and-mouth profile line, maybe an eyebrow, an ear or glasses — never eye dots, eye arcs or pupils. Animals keep their eyes.
+
 The full anatomy, with measurements and per-format layout, is in `references/style.md`. The colour roles and how they map per mode are in `references/palette.md`.
 
 ## Step 4 — draw with the script
 
-`scripts/linje-ink.mjs` (Node 18+, no dependencies) turns anchor points into this construction: Bézier strokes with baked Roughen, offset rough-edged fills, the grainy backdrop, ground lines, and all three colour modes from one drawing. Start from `scripts/example.mjs`.
+`scripts/linje-ink.mjs` (Node 18+, no dependencies) turns anchor points into this construction: Bézier strokes with baked Roughen, offset rough-edged fills, the grainy backdrop, ground lines, and all three colour modes from one drawing. Start from `scripts/example.mjs`. Drawing from a photo or a picture the user sent? Read **Working from a reference image** below first.
 
 ```js
 import { Drawing, WEIGHTS, circle, rect } from './linje-ink.mjs';
@@ -144,6 +149,7 @@ Check before delivering:
 - [ ] Fills are flat, sit under the lines and are offset in one direction
 - [ ] At least one contour is left open; interior lines float
 - [ ] Subject reads at 120 px wide (squint test)
+- [ ] People: natural proportions and pose, hands with fingers, no eyes; side by side with a library person, the head is not bigger and the body not blockier
 - [ ] Dark and contrast files checked on Ebony 100 and Lavender 90 surfaces
 - [ ] Layers named; file names follow `<Name>.svg`, `<Name>-darkmode.svg`, `<Name>-contrast.svg`
 
@@ -152,6 +158,16 @@ Check before delivering:
 - **Web:** inline the SVG or use it as an image. Most illustrations next to explanatory text are decorative: `alt=""`. Give alt text in Norwegian only when the image carries meaning the text does not. Swap to the `-darkmode` file in dark mode and the `-contrast` file inside a Lavender 90 contrast section.
 - **Figma:** `figma.createNodeFromSvg(svgString)` via the Figma MCP `use_figma` tool (load the `figma-use` skill first) or figma-console's execute tool. Strokes arrive as editable vector strokes.
 - **Illustrator:** draw with `roughen: false`, open the SVG, select all strokes and apply the Roughen graphic style. Exact settings in `references/handoff.md`.
+
+## Working from a reference image
+
+The reference supplies the idea — subject, pose, situation. The skill supplies everything else. Never carry over the reference's colours, line or composition.
+
+1. **Check what the image is.** Use the user's own photos or freely licensed ones. A stock illustration or another illustrator's work (a watermark is the giveaway) is an idea only: take the subject ("a customer service agent with a headset"), not the pose, layout or details. Do not make a real person recognisable. Tell the user in one line when you treat an image this way. For people, a **photo** is the better reference: a flat vector illustration pulls the drawing toward big heads, mitten hands and blocky bodies, which is exactly what rule 12 rules out. With only an illustration as reference, take the pose from a library person instead (`People/` and `Entur staff/` in the library folder).
+2. **Still check the library first** (Step 1).
+3. **Reduce, then show the plan.** Before drawing, write down and show the user: the one subject and at most one prop, the view (profile or a simple three-quarter, facing right), what hides what (a counter can hide legs), the format and whether it gets a backdrop, and the colour roles — `paper` for skin, `cloth` for clothes, one Peach element, Entur staff in the ink uniform with Coral panels. Corrections are cheap here.
+4. **Put a grid over the reference.** `node scripts/grid.mjs <image> ref-grid.svg --format square` writes the image fitted to the canvas under a 20-unit grid with labels every 40, in canvas units. Render it and read anchors off the grid: 6–12 per contour for objects and animals, 12–25 for the contours of a person, whose silhouette turns more often. Then correct the proportions to the library's (§5 in `references/style.md`), not the reference's.
+5. **Draw, render, compare.** Draw with the script (Step 4), then look at the result next to the reference and a library motif at the same size (Step 5). Expect two or three rounds; fix the silhouette before details.
 
 ## Reference files
 
