@@ -1,34 +1,35 @@
 @use 'sass:map';
-@use '@entur/tokens/dist/base.scss';
 @use './variables' as variables;
 @use '../utils/componentColors/designEnturComponentColors.scss' as *;
 
 @use '@entur/tokens/dist/styles.scss' as eds;
 @use '@entur/utils/dist/breakpoints.scss' as *;
 
-@import '@entur/a11y/dist/styles.css';
-@import '@entur/grid/dist/styles.css';
-@import '@entur/icons/dist/styles.css';
-@import '@entur/tab/dist/styles.css';
-@import '@entur/typography/dist/styles.css';
+// CSS, not base.scss: no-base-tokens also strips the primitive and transport variables
+@import '@entur/tokens/dist/base.css';
+@import '@entur/a11y/dist/styles.no-base-tokens.css';
+@import '@entur/grid/dist/styles.no-base-tokens.css';
+@import '@entur/icons/dist/styles.no-base-tokens.css';
+@import '@entur/tab/dist/styles.no-base-tokens.css';
+@import '@entur/typography/dist/styles.no-base-tokens.css';
 @import '@entur/typography/beta/styles';
-@import '@entur/layout/dist/styles.css';
+@import '@entur/layout/dist/styles.no-base-tokens.css';
 @import '@entur/layout/beta/styles';
-@import '@entur/loader/dist/styles.css';
-@import '@entur/expand/dist/styles.css';
-@import '@entur/button/dist/styles.css';
-@import '@entur/alert/dist/styles.css';
-@import '@entur/menu/dist/styles.css';
+@import '@entur/loader/dist/styles.no-base-tokens.css';
+@import '@entur/expand/dist/styles.no-base-tokens.css';
+@import '@entur/button/dist/styles.no-base-tokens.css';
+@import '@entur/alert/dist/styles.no-base-tokens.css';
+@import '@entur/menu/dist/styles.no-base-tokens.css';
 @import '@entur/menu/beta/styles';
-@import '@entur/fileupload/dist/styles.css';
-@import '@entur/modal/dist/styles.css';
-@import '@entur/tooltip/dist/styles.css';
-@import '@entur/form/dist/styles.css';
-@import '@entur/chip/dist/styles.css';
-@import '@entur/datepicker/dist/styles.css';
-@import '@entur/travel/dist/styles.css';
-@import '@entur/table/dist/styles.css';
-@import '@entur/dropdown/dist/styles.css';
+@import '@entur/fileupload/dist/styles.no-base-tokens.css';
+@import '@entur/modal/dist/styles.no-base-tokens.css';
+@import '@entur/tooltip/dist/styles.no-base-tokens.css';
+@import '@entur/form/dist/styles.no-base-tokens.css';
+@import '@entur/chip/dist/styles.no-base-tokens.css';
+@import '@entur/datepicker/dist/styles.no-base-tokens.css';
+@import '@entur/travel/dist/styles.no-base-tokens.css';
+@import '@entur/table/dist/styles.no-base-tokens.css';
+@import '@entur/dropdown/dist/styles.no-base-tokens.css';
 
 :root {
   color-scheme: light dark;
