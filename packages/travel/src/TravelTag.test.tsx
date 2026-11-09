@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { Contrast } from '@entur/layout';
 
 import { TravelTag } from '.';
 import { describeComponentContract } from '../../../tests/jest/componentContract';
@@ -58,6 +59,66 @@ test('removing a selected route leaves the other route intact without submitting
   ).not.toBeInTheDocument();
   expect(screen.getByRole('img', { name: 'Trikk 12' })).toBeVisible();
   expect(onSubmit).not.toHaveBeenCalled();
+});
+
+test.each([
+  ['railReplacementBus', 'F1'],
+  ['railreplacementbus', 'F2'],
+] as const)(
+  'rail replacement bus (%s) is announced as buss for tog with dark text and icon on its yellow fill',
+  (transport, line) => {
+    render(
+      <>
+        <TravelTag transport={transport}>{line}</TravelTag>
+        <TravelTag transport={transport} alert="error">
+          {line}
+        </TravelTag>
+      </>,
+    );
+
+    expect(
+      screen.getByRole('img', { name: `Buss for tog ${line}` }),
+    ).toHaveStyle({
+      '--background-color':
+        'var(--components-travel-traveltag-standard-fill-railreplacementbus, var(--basecolors-shape-disabled))',
+      '--text-color':
+        'var(--components-travel-traveltag-standard-text-defaultalt)',
+      '--icon-color':
+        'var(--components-travel-traveltag-standard-icon-defaultalt)',
+    });
+    const cancelled = screen.getByRole('img', {
+      name: `Buss for tog ${line} error`,
+    });
+    expect(cancelled).toHaveStyle({
+      '--text-color':
+        'var(--components-travel-traveltag-standard-text-line-railreplacementbus-cancelled, var(--basecolors-shape-disabled))',
+    });
+    expect(cancelled.style.getPropertyValue('--icon-color')).toBe('');
+  },
+);
+
+test('rail replacement bus keeps the contrast default text and icon in contrast', () => {
+  render(
+    <Contrast>
+      <TravelTag transport="railReplacementBus">F1</TravelTag>
+    </Contrast>,
+  );
+  const tag = screen.getByRole('img', { name: 'Buss for tog F1' });
+
+  expect(tag).toHaveStyle({
+    '--background-color':
+      'var(--components-travel-traveltag-contrast-fill-railreplacementbus, var(--basecolors-shape-disabled))',
+  });
+  expect(tag.style.getPropertyValue('--text-color')).toBe('');
+  expect(tag.style.getPropertyValue('--icon-color')).toBe('');
+});
+
+test('other transports keep the default text and icon colour', () => {
+  render(<TravelTag transport="bus">31</TravelTag>);
+  const bus = screen.getByRole('img', { name: 'Buss 31' });
+
+  expect(bus.style.getPropertyValue('--text-color')).toBe('');
+  expect(bus.style.getPropertyValue('--icon-color')).toBe('');
 });
 
 test('type, alert and onClose select their modifier classes', () => {
