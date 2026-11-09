@@ -1,6 +1,6 @@
 ---
 name: entur-illustration
-description: Draw new illustrations in the Entur Linje illustration style — plain hand-drawn strokes with round caps and a Roughen tremor, flat Linje colours, a grainy backdrop disc — as editable SVG strokes for web, Figma or Illustrator. Use when the user wants a new Entur illustration, an empty-state, error, onboarding or info-message illustration, a spot illustration of a person, animal, object, vehicle or scene "in Entur's style", or wants to extend or pick from the Linje illustration library. Trigger even if the user only says "tegn en illustrasjon" or "lag en illustrasjon til tom-tilstand" in an Entur context.
+description: Draw new illustrations in the Entur Linje illustration style — plain hand-drawn strokes with round caps and a Roughen tremor, flat Linje colours, a grainy backdrop disc — as editable SVG strokes for web, Figma or Illustrator, with people going through a PNG draft from an image model first. Use when the user wants a new Entur illustration, an empty-state, error, onboarding or info-message illustration, a spot illustration of a person, animal, object, vehicle or scene "in Entur's style", or wants to extend or pick from the Linje illustration library. Trigger even if the user only says "tegn en illustrasjon" or "lag en illustrasjon til tom-tilstand" in an Entur context.
 ---
 
 > **Audience:** AI coding agents. Entur employees should visit [linje.entur.no/identitet/verktoykassen/illustrasjoner](https://linje.entur.no/identitet/verktoykassen/illustrasjoner).
@@ -90,7 +90,16 @@ Rules of use: at most **three** square illustrations per page view; more than on
 
 The full anatomy, with measurements and per-format layout, is in `references/style.md`. The colour roles and how they map per mode are in `references/palette.md`.
 
-## Step 4 — draw with the script
+## Step 4 — pick a route
+
+| Route                  | Use for                                                            | How                                                                                                     |
+| ---------------------- | ------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------- |
+| **A. Vector directly** | Objects, animals, vehicles, signs, landscapes, simple props        | Draw strokes with the script (Step 4a). Exact, no credits                                               |
+| **B. Raster first**    | People and scenes with people; any time a natural figure is needed | Generate a PNG with an image model, the library as style reference, then turn it into strokes (Step 4b) |
+
+Natural, figurative people do not survive being placed anchor by anchor from coordinates: they come out stiff and simplified, like gingerbread figures. That is why people go through route B.
+
+## Step 4a — route A: draw with the script
 
 `scripts/linje-ink.mjs` (Node 18+, no dependencies) turns anchor points into this construction: Bézier strokes with baked Roughen, offset rough-edged fills, the grainy backdrop, ground lines, and all three colour modes from one drawing. Start from `scripts/example.mjs`. Drawing from a photo or a picture the user sent? Read **Working from a reference image** below first.
 
@@ -126,7 +135,7 @@ ink.save('out', 'Fox-bus-stop'); // standard, -darkmode, -contrast + preview.htm
 | `ink.shape(points, { fill, stroke, width, gap, corners })`            | Fill under a stroke. `gap` opens the contour; `corners` keeps sharp corners |
 | `ink.line(points, { role, width, corners, dash })`                    | Open stroke — the main tool                                                 |
 | `ink.fill(points, { role })`                                          | Fill without line: hair, shadow shapes, colour blocks                       |
-| `ink.dot(x, y, r)`                                                    | Eye, nostril, button, wheel hub                                             |
+| `ink.dot(x, y, r)`                                                    | Animal eye, nostril, button, wheel hub (people have no eyes)                |
 | `ink.backdrop({ cx, cy, r })`                                         | Grainy backdrop disc                                                        |
 | `ink.ground({ y, x1, x2, rows })`                                     | Broken ground lines (ink, then a Blue 50 row)                               |
 | `ink.marks(...)`, `ink.hatch(...)`, `ink.cloud(...)`, `ink.text(...)` | Attention marks, short shading strokes, scalloped cloud, sign lettering     |
@@ -136,6 +145,13 @@ ink.save('out', 'Fox-bus-stop'); // standard, -darkmode, -contrast + preview.htm
 Points are anchor points, not samples: 6–12 per contour, as a designer would click them. `circle`, `ellipse`, `arc` and `rect` return anchor lists. Colours are **roles** (`ink`, `paper`, `cloth`, `vehicle`, `line2`, `backdrop`, `tint`, `lavender`, `mid`, `peach`, `coral`, `glow`), never hex — that is what makes the dark and contrast modes come out right.
 
 Draw back to front: backdrop → background (Blue 50 lines) → props behind → subject → things in front of the subject → ground.
+
+## Step 4b — route B: raster first
+
+1. **References:** two to four library PNGs of the same kind as style references (for people: Woman holding package, Man checking the time, the Entur staff figures). The user's own photo may go in for pose; a stock illustration never goes in as an image, only as a description.
+2. **Generate** a square PNG with an image model that takes reference images (for example Gemini image through Figma Weave), or Figma `generate_image` from the prompt alone. Use the prompt template in `references/raster-first.md`; it spells out every rule, including **no eyes** and natural proportions. Runs cost the user's credits: quote the cost and get approval each time.
+3. **Review** against the Step 5 checklist and the references. Fix by changing the prompt and generating again, not by editing pixels.
+4. **Turn it into strokes:** Image Trace in Illustrator with Strokes, set to round caps and the weight hierarchy, then the Roughen graphic style; or redraw the centre lines in code over `scripts/grid.mjs`. The PNG alone is a draft, never the final asset.
 
 ## Step 5 — look at it
 
@@ -163,14 +179,15 @@ Check before delivering:
 
 The reference supplies the idea — subject, pose, situation. The skill supplies everything else. Never carry over the reference's colours, line or composition.
 
-1. **Check what the image is.** Use the user's own photos or freely licensed ones. A stock illustration or another illustrator's work (a watermark is the giveaway) is an idea only: take the subject ("a customer service agent with a headset"), not the pose, layout or details. Do not make a real person recognisable. Tell the user in one line when you treat an image this way. For people, a **photo** is the better reference: a flat vector illustration pulls the drawing toward big heads, mitten hands and blocky bodies, which is exactly what rule 12 rules out. With only an illustration as reference, take the pose from a library person instead (`People/` and `Entur staff/` in the library folder).
+1. **Check what the image is.** Use the user's own photos or freely licensed ones. A stock illustration or another illustrator's work (a watermark is the giveaway) gives the scene, not the drawing: keep who is there, what they do and the props ("a customer service agent with a headset at a desk with a laptop, speech bubbles"), and draw the pose and layout anew. Do not make a real person recognisable. Tell the user in one line when you treat an image this way. For people, a **photo** is the better reference: a flat vector illustration pulls the drawing toward big heads, mitten hands and blocky bodies, which is exactly what rule 12 rules out. With only an illustration as reference, take the pose from a library person instead (`People/` and `Entur staff/` in the library folder).
 2. **Still check the library first** (Step 1).
 3. **Reduce, then show the plan.** Before drawing, write down and show the user: the one subject and at most one prop, the view (profile or a simple three-quarter, facing right), what hides what (a counter can hide legs), the format and whether it gets a backdrop, and the colour roles — `paper` for skin, `cloth` for clothes, one Peach element, Entur staff in the ink uniform with Coral panels. Corrections are cheap here.
 4. **Put a grid over the reference.** `node scripts/grid.mjs <image> ref-grid.svg --format square` writes the image fitted to the canvas under a 20-unit grid with labels every 40, in canvas units. Render it and read anchors off the grid: 6–12 per contour for objects and animals, 12–25 for the contours of a person, whose silhouette turns more often. Then correct the proportions to the library's (§5 in `references/style.md`), not the reference's.
-5. **Draw, render, compare.** Draw with the script (Step 4), then look at the result next to the reference and a library motif at the same size (Step 5). Expect two or three rounds; fix the silhouette before details.
+5. **Draw, render, compare.** For people, go through route B (Step 4b) and use the grid on the approved PNG; for everything else draw with the script (Step 4a). Then look at the result next to the reference and a library motif at the same size (Step 5). Expect two or three rounds; fix the silhouette before details.
 
 ## Reference files
 
 - **`references/style.md`** — full anatomy: line and fill construction with measured values, the backdrop, ground, per-format composition (square, scene, landscape), motif vocabulary, drawing people, animals and vehicles, what to avoid
 - **`references/palette.md`** — colour roles with hex values and primitive token names, the standard → dark → contrast mapping, colour proportions
 - **`references/handoff.md`** — Illustrator graphic style and export, Figma import, web use and accessibility, file naming
+- **`references/raster-first.md`** — route B: style references, image tools and credits, the prompt template, reviewing the PNG, and turning it into strokes in Illustrator or in code
