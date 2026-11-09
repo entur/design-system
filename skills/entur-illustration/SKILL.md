@@ -86,7 +86,7 @@ Rules of use: at most **three** square illustrations per page view; more than on
 **People**
 
 12. People are drawn naturally and figuratively, like observed drawing — not the flat, childlike "corporate" style. Real proportions (about 7–7.5 heads tall, a small head), a relaxed pose with weight on one leg or a slight turn, loose clothes that drape with a few fold lines, hands with fingers, shoes with a sole. Contours are organic and asymmetric; a torso is never a rectangle and a hand never a mitten.
-13. **No eyes.** Faces carry a nose-and-mouth profile line, maybe an eyebrow, an ear or glasses — never eye dots, eye arcs or pupils. Animals keep their eyes.
+13. **No eyes, no mouth.** A face carries only a nose — a nose line in profile, a small nose stroke from the front — and glasses if the person wears them. Never eye dots, eye arcs, pupils or a mouth line. Animals keep their eyes.
 
 The full anatomy, with measurements and per-format layout, is in `references/style.md`. The colour roles and how they map per mode are in `references/palette.md`.
 
@@ -135,7 +135,7 @@ ink.save('out', 'Fox-bus-stop'); // standard, -darkmode, -contrast + preview.htm
 | `ink.shape(points, { fill, stroke, width, gap, corners })`            | Fill under a stroke. `gap` opens the contour; `corners` keeps sharp corners |
 | `ink.line(points, { role, width, corners, dash })`                    | Open stroke — the main tool                                                 |
 | `ink.fill(points, { role })`                                          | Fill without line: hair, shadow shapes, colour blocks                       |
-| `ink.dot(x, y, r)`                                                    | Animal eye, nostril, button, wheel hub (people have no eyes)                |
+| `ink.dot(x, y, r)`                                                    | Animal eye, nostril, button, wheel hub (people have no eyes or mouth)       |
 | `ink.backdrop({ cx, cy, r })`                                         | Grainy backdrop disc                                                        |
 | `ink.ground({ y, x1, x2, rows })`                                     | Broken ground lines (ink, then a Blue 50 row)                               |
 | `ink.marks(...)`, `ink.hatch(...)`, `ink.cloud(...)`, `ink.text(...)` | Attention marks, short shading strokes, scalloped cloud, sign lettering     |
@@ -149,7 +149,7 @@ Draw back to front: backdrop → background (Blue 50 lines) → props behind →
 ## Step 4b — route B: raster first
 
 1. **References:** two to four library PNGs of the same kind as style references (for people: Woman holding package, Man checking the time, the Entur staff figures). The user's own photo may go in for pose; a stock illustration never goes in as an image, only as a description.
-2. **Generate** a square PNG with an image model that takes reference images (for example Gemini image through Figma Weave), or Figma `generate_image` from the prompt alone. Use the prompt template in `references/raster-first.md`; it spells out every rule, including **no eyes** and natural proportions. Runs cost the user's credits: quote the cost and get approval each time.
+2. **Generate** a square PNG with an image model that takes reference images (for example Gemini image through Figma Weave), or Figma `generate_image` from the prompt alone. Use the prompt template in `references/raster-first.md`; it spells out every rule, including **no eyes, no mouth** and natural proportions. Runs cost the user's credits: quote the cost and get approval each time.
 3. **Review** against the Step 5 checklist and the references. Fix with an edit round: send the draft back as the first image and ask for only the changes, so what already works stays. Never edit pixels.
 4. **Turn it into strokes:** on macOS with Illustrator open, `node scripts/illustrator-trace.mjs <draft.png> --out <dir> --name <Name>` traces it into live round-capped strokes (a quarter at contour weight, the rest detail weight) and smoothed palette fills, and writes the `.ai` and the three SVG modes (also available as MCP tools through `scripts/illustrator-mcp.mjs`). Without Illustrator, redraw the centre lines in code over `scripts/grid.mjs`. The PNG alone is a draft, never the final asset.
 
@@ -165,7 +165,7 @@ Check before delivering:
 - [ ] Fills are flat, sit under the lines and are offset in one direction
 - [ ] At least one contour is left open; interior lines float
 - [ ] Subject reads at 120 px wide (squint test)
-- [ ] People: natural proportions and pose, hands with fingers, no eyes; side by side with a library person, the head is not bigger and the body not blockier
+- [ ] People: natural proportions and pose, hands with fingers, only a nose on the face (no eyes, no mouth); side by side with a library person, the head is not bigger and the body not blockier
 - [ ] Line weight hierarchy on people: about a quarter of the lines (the long outer contours) at 1.5, the rest at 1.0; an all-1.5 figure looks coarse next to library people
 - [ ] Dark and contrast files checked on Ebony 100 and Lavender 90 surfaces
 - [ ] Layers named; file names follow `<Name>.svg`, `<Name>-darkmode.svg`, `<Name>-contrast.svg`

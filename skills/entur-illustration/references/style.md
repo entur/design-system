@@ -56,7 +56,7 @@ The heavier contour against lighter interior lines is what gives the drawings th
 - **Floating interior lines.** A fold line starts inside the shape and ends inside it. The line separating two legs stops short of the crotch.
 - **Overlaps resolve by fill.** A front object's paper fill covers the lines of whatever is behind it; never erase lines by hand.
 - **Straight things are not ruled.** Poles, sign edges and rails have a slight bow and the Roughen tremor.
-- **Faces have no eyes.** Profile: one nose-and-lip line, perhaps an eyebrow and an ear. Front or three-quarter: a small nose stroke, at most a short mouth line, glasses if the person wears them. Never eye dots, arcs or pupils on people. Animals keep their eyes.
+- **Faces have only a nose.** Profile: one nose line. Front or three-quarter: a small nose stroke. Glasses if the person wears them; an ear may show beside the hair. Never eyes (dots, arcs, pupils) and never a mouth on people. Animals keep their eyes.
 
 ### Background lines
 
@@ -160,7 +160,7 @@ The people are **natural and figurative**: drawn as if from life, with the econo
 - **Clothes:** loose and draping, with a few detail-weight fold lines where fabric bends (elbow, hip, knee, under the arm), cuffs, collars and hems as separate shapes, ribbing as short hatching. White as the base, drawn with the `cloth` role (not `paper`), Lavender 40 for one garment, Peach 40 for at most one. Bags, helmets and the frame of a bike or scooter the person rides are `cloth` too.
 - **Hands:** small, with fingers — a thumb and two or three finger lines, wrapping round what they hold. Never a mitten.
 - **Feet:** shoes with a separate sole shape; trousers break over them.
-- **Face:** paper, no eyes (see §1); skin always paper.
+- **Face:** paper, only a nose, glasses optional — no eyes, no mouth (see §1); skin always paper.
 - **Hair:** an ink mass with a rough edge and real volume — a bun, a bob, a ponytail that falls — plus a few paper or detail strokes for strands.
 
 Check by putting the new figure next to a library person (Woman holding package, Man and woman hugging, Man checking the time) at the same height. If the head is bigger, the body blockier or the hands simpler, it is the wrong form.
@@ -209,7 +209,7 @@ Never redraw for a mode — swap colour roles (see `palette.md`).
 - Outlined or expanded strokes, brush strokes, width profiles (marketing/print style)
 - Gradients, drop shadows, blur, opacity fades, noise overlays (except the backdrop grain and the dark-mode reflector glow)
 - The flat "corporate" figure: big head, eye dots, mitten hands, rectangle torso, tube limbs
-- Eyes on people of any kind, skin tones, rosy cheeks, smiling mascots
+- Eyes or a mouth on people of any kind, skin tones, rosy cheeks, smiling mascots
 - Coral areas (except Entur staff uniforms), more than one Peach element, colours outside the palette
 - Perspective views of vehicles and buildings; isometric scenes
 - Text inside illustrations beyond a short sign

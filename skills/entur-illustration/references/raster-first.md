@@ -34,7 +34,7 @@ Style rules:
 - White (#FFFFFF) is the main fill. Lavender (#AEB7E2) for one garment. Peach (#FFBF9E) for exactly one element: [which]. Coral (#FF5959) only for [a small detail | the Entur staff shoulder and sleeve panels].
 - Colour fills sit slightly offset from their line, so a thin sliver of white shows along one side.
 - People are drawn naturally, like an observed drawing: realistic adult proportions about 7.5 heads tall, a small head, a relaxed pose with weight on one leg or a slight turn, loose clothes with a few fold lines, hands with fingers, shoes with soles.
-- Faces are white and have NO EYES: only a nose line and at most a short mouth line. Glasses are allowed.
+- Faces are white and have NO EYES and NO MOUTH: only a nose line. Glasses are allowed.
 - [Entur staff: dark navy uniform with coral shoulder and sleeve panels and a small white name badge.]
 - Plain white background. A broken horizontal navy ground line under the subject. [Optional for objects and animals: a soft pale grey-lavender disc (#EAEAF1) behind the upper body.]
 - No text, no logos, no frame. Square, 1:1.
@@ -46,7 +46,7 @@ Use the references only for line, proportion and colour. Do not copy any figure 
 
 Look at it next to the style references at the same size and run the Step 5 checklist in `SKILL.md`. Models tend to slip on the same things:
 
-- eyes drawn anyway, or a cartoon face
+- eyes or a mouth drawn anyway, or a cartoon face
 - big heads, blocky bodies, mitten hands — the corporate-illustration habit
 - gradients, soft shadows, extra colours, a coloured background
 - lines too thick or too even, like a vector icon
@@ -59,7 +59,7 @@ Edit the first image. Keep everything else exactly as it is: [pose, hands, face,
 Make only these changes:
 1. [UNIFORM: coral ONLY as a shoulder yoke and one narrow sleeve stripe, like the second image.]
 2. [...]
-The face keeps NO EYES. No text. Square 1:1.
+The face keeps NO EYES and NO MOUTH, only the nose. No text. Square 1:1.
 ```
 
 An edit round keeps what already works; a new generation throws it away. One or two edit rounds are normal, and each costs the same as a generation. Near-white noise in the background (values around 249–255) is invisible and does not survive tracing; it needs no cleaning.
