@@ -503,8 +503,12 @@ function writeMask(file, grow = 5) {
     if (y > 0) stack.push(k - w);
     if (y < h - 1) stack.push(k + w);
   }
-  // Shrink back so the underlay sits just inside the lines.
-  const outer = growBy(outside, Math.max(1, grow - 1));
+  // Shrink back so the underlay sits just inside the lines, then drop thin
+  // spurs (a ground dash touching a paw) by shrinking and regrowing the
+  // inside: they would show as pale slivers in dark mode.
+  const shrunk = growBy(outside, Math.max(1, grow - 1));
+  const core = growBy(shrunk, grow + 3).map(v => 1 - v);
+  const outer = growBy(core, grow + 3).map(v => 1 - v);
   const rows = Buffer.alloc((w * 3 + 1) * h);
   for (let y = 0; y < h; y++) {
     rows[y * (w * 3 + 1)] = 0;
