@@ -11,12 +11,21 @@ Use route A (the script) for objects, vehicles, signs and landscapes; it is exac
 
 ## 2. Generate
 
-Tools, in order of preference:
+### Default: Nano Banana 2.1 in Weave
 
-1. **An image model that accepts reference images**, such as Gemini image ("nano banana") through Figma Weave: `weave_find_model` for the id and contract, `weave_upload_asset` for each local PNG, `weave_run_model` to run. Needs a Weave account linked to the user's Figma account (app.weavy.ai, profile settings).
-2. **Figma `generate_image`**, which takes a prompt only and places the image in a Figma file (`gemini-3.1-flash-image` comes back at 1024 px, enough to trace a square motif). Without references the style drifts further; spell out every rule, including the line ("dark navy ink like a dip pen, swelling slightly in the middle and thinning at both ends") and the colours with their hex values. Weave allows only a few free model runs; when they are used up, this is the fallback.
+[Weave](https://app.weavy.ai/) is Figma's platform for image models, and its tools come with the Figma MCP server. It runs Nano Banana 2.1 (Google's Gemini image model) with the library PNGs as reference images, which keeps the line, the proportions and the colours closest to the library. Use it for every draft unless it is unavailable.
 
-Both spend the user's AI credits. Quote the cost and get an explicit approval before every run, reruns included.
+- **Account:** the user signs in at app.weavy.ai and links Weave to their Figma account (profile settings). The free plan allows two model runs; after that a run returns a message asking to upgrade and spends nothing. Tell the user, and fall back to Figma `generate_image` below until they upgrade.
+- **Model:** `weave_find_model` with "nano banana 2" returns two candidates. Use **Nano Banana 2.1** (`fal-ai/nano-banana-2/edit`). Nano Banana 2 Lite costs less but only makes 1K images.
+- **Reference images:** upload each local PNG with `weave_upload_asset`. It returns a submit URL and a token: post the file with `curl -F "file=@<png>" -H "X-Weave-Upload-Token: <token>" <submitUrl>`, and pass the whole asset object it returns. The `images` input takes up to 14: the two to four style references, and in an edit round the draft first.
+- **Settings:** `model: "Nano Banana 2.1"`, `resolution: "2K"`, `aspect_ratio: "1:1"`, `output_format: "png"`. About 10 Weave credits per run at 2K.
+- **Running:** `weave_run_model` without `acknowledgedCost` only returns the price. Show it to the user as an Approve/Cancel choice, and run again with `acknowledgedCost` once they approve. Wait for the result with `weave_get_model_run_output` and download it with the curl command it gives.
+
+### Fallback: Figma `generate_image`
+
+**Figma `generate_image`**, which takes a prompt only and places the image in a Figma file (`gemini-3.1-flash-image` comes back at 1024 px, enough to trace a square motif). Without references the style drifts further; spell out every rule, including the line ("dark navy ink like a dip pen, swelling slightly in the middle and thinning at both ends") and the colours with their hex values. Weave allows only a few free model runs; when they are used up, this is the fallback.
+
+Both spend the user's credits, and each run needs its own approval, reruns included: the Weave tool requires it. So that this is one decision and not many, tell the user the whole plan before the first run — one generation plus up to two edit rounds, about 10 Weave credits each — and then ask for each run as it comes.
 
 Ask for a square PNG, 2048 × 2048 where the model allows it. Use JPG only if the user asks for it: compression smears thin lines and makes tracing worse.
 
@@ -44,9 +53,9 @@ Style rules:
 Use the references only for line, proportion and colour. Do not copy any figure or composition from them.
 ```
 
-## 3. Review the PNG
+## 3. Review the PNG — before the user sees it
 
-Look at it next to the style references at the same size and run the Step 5 checklist in `SKILL.md`. Models tend to slip on the same things:
+Review every draft yourself; never show a first draft as a result or wait for the user to point out what this review catches. Look at it next to the style references at the same size and run the Step 5 checklist in `SKILL.md`. Write down every deviation, fix them in an edit round, and review again. Up to two edit rounds; then trace. Models tend to slip on the same things:
 
 - eyes or a mouth drawn anyway, or a cartoon face
 - accessories drawn twice (two earcups, a split headband)
@@ -54,6 +63,8 @@ Look at it next to the style references at the same size and run the Step 5 chec
 - gradients, soft shadows, extra colours, a coloured background
 - lines too thick or too even, like a vector icon
 - text or logos
+- animals: geometric or blobby shapes, a cartoon face, big eyes or a smile, soft grey gradients in the fur, the subject small in the frame (library animals fill about 60–75 % of the height)
+- a sign, prop or tail closer than 16 units to the canvas edge
 
 Do not repair pixels, and do not start over. Send the draft back to the model as the **first image**, with the library reference that shows the fix as the second, and ask for only the changes:
 

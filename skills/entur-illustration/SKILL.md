@@ -30,6 +30,20 @@ On people, only the small fold and sheen marks inside clothing taper (rule 12); 
 
 The library SVGs on the web are flattened exports: every stroke has been expanded into a filled outline. In the Figma Illustration Library the people and transport components still have live strokes; the animal and object components are outlined, because a width profile cannot be a Figma or SVG stroke. Their construction was measured in the raw Illustrator source of the square motifs instead.
 
+## The process — run all of it, every time
+
+Every new illustration goes through the same steps, and you run all of them without being asked. The user should get a finished, checked illustration, not a first draft to find faults in.
+
+1. **Reuse** a library motif if one fits (Step 1).
+2. **Pick** the format (Step 2) and the route by subject (Step 4): people and animals go raster first; objects, vehicles, signs and landscapes go through the script.
+3. **Draft** (raster first): two to four library PNGs of the same kind as references, the prompt template, Nano Banana 2.1 in [Weave](https://app.weavy.ai/) at 2K, square (`references/raster-first.md`).
+4. **Review the draft yourself** against the references and the checklist in `references/raster-first.md` §3. List every deviation and fix it with an edit round, up to two, before going on.
+5. **Trace** in Illustrator with the mode for the subject, then the finishing steps (Step 4b).
+6. **Check the result** next to two library motifs of the same kind at the same size, in all three colour modes, against the Step 5 checklist. Fix what fails and check again.
+7. **Show** the result with that comparison, and say what is left or unverified.
+
+The only stops are the approval each image-model run needs (Weave asks per run: tell the user the whole plan once — one generation plus up to two edit rounds, about 10 Weave credits each — then ask for each run) and the plan before drawing from a reference image.
+
 ## Step 1 — reuse before you draw
 
 A library motif is always more on-brand than a new one. Check first:
@@ -163,13 +177,13 @@ Draw back to front: backdrop → background (Blue 50 lines) → props behind →
 ## Step 4b — route B: raster first
 
 1. **References:** two to four library PNGs of the same kind as style references (for people: Woman holding package, Man checking the time, the Entur staff figures; for animals: Dog, Rabbit, Squirrel, Sheep). The user's own photo may go in for pose; a stock illustration never goes in as an image, only as a description.
-2. **Generate** a square PNG with an image model that takes reference images (for example Gemini image through Figma Weave), or Figma `generate_image` from the prompt alone. Use the prompt template in `references/raster-first.md`; it spells out every rule, including **no eyes, no mouth** and natural proportions. Runs cost the user's credits: quote the cost and get approval each time.
-3. **Review** against the Step 5 checklist and the references. Fix with an edit round: send the draft back as the first image and ask for only the changes, so what already works stays. Never edit pixels.
+2. **Generate** a square PNG with **Nano Banana 2.1 in [Weave](https://app.weavy.ai/)**, the library PNGs as reference images, at 2K. Fall back to Figma `generate_image` (prompt only) when Weave is unavailable or its free runs are used up. Use the prompt template in `references/raster-first.md`; it spells out every rule, including **no eyes, no mouth** on people and natural anatomy on animals. Runs cost the user's credits: quote the cost and get approval each time.
+3. **Review it yourself before the user sees it**, against the Step 5 checklist and the references. Fix every deviation with an edit round: send the draft back as the first image and ask for only the changes, so what already works stays. Never edit pixels.
 4. **Turn it into strokes:** on macOS with Illustrator open, `node scripts/illustrator-trace.mjs <draft.png> --out <dir> --name <Name>` traces it into live round-capped strokes (a quarter at contour weight, the rest detail weight) and smooth palette fills, and writes the `.ai` and the three SVG modes (also available as MCP tools through `scripts/illustrator-mcp.mjs`). For an animal or object add `--construction animals --carriers <profiles.ai> --backdrop --underlay`: swelling lines at 2.1 / 1.7, the library's backdrop circle and one paper underlay under the whole animal (`references/raster-first.md`). Then finish it: simplify doubled accessories, scale the head with `illustrator_scale_head`, smooth the hair with `illustrator_smooth_region`, and add 2–5 fold marks with `illustrator_add_details` (`references/raster-first.md`). Without Illustrator, redraw the centre lines in code over `scripts/grid.mjs`. The PNG alone is a draft, never the final asset.
 
 ## Step 5 — look at it
 
-Render to PNG and compare it side by side, at the same size, with one or two library motifs of the same category. On macOS: `qlmanage -t -s 900 -o <dir> <file>.svg`. Or open the generated `<name>-preview.html`, which shows each mode on its intended surface.
+Do this yourself before showing anything. Render to PNG and compare it side by side, at the same size, with one or two library motifs of the same category, and show the user that comparison with the result. On macOS: `qlmanage -t -s 900 -o <dir> <file>.svg`. Or open the generated `<name>-preview.html`, which shows each mode on its intended surface.
 
 Check before delivering:
 
@@ -180,6 +194,7 @@ Check before delivering:
 - [ ] Fills are flat with smooth edges; most sit exactly under their line, one to three colour fills are offset 0.5–0.7
 - [ ] At least one contour is left open; interior lines float
 - [ ] Subject reads at 120 px wide (squint test)
+- [ ] Subject as large in the frame as the library motifs next to it (square animals fill about 60–75 % of the height); props at least 16 units from the edge
 - [ ] People: natural proportions and pose, hands with fingers, only a nose on the face (no eyes, no mouth); side by side with a library person, the head is not bigger and the body not blockier
 - [ ] Clothes carry 2–5 tapered fold marks, not more
 - [ ] Hair is one smooth shape; headset, glasses and straps are single shapes, nothing doubled
