@@ -150,8 +150,8 @@ Draw back to front: backdrop → background (Blue 50 lines) → props behind →
 
 1. **References:** two to four library PNGs of the same kind as style references (for people: Woman holding package, Man checking the time, the Entur staff figures). The user's own photo may go in for pose; a stock illustration never goes in as an image, only as a description.
 2. **Generate** a square PNG with an image model that takes reference images (for example Gemini image through Figma Weave), or Figma `generate_image` from the prompt alone. Use the prompt template in `references/raster-first.md`; it spells out every rule, including **no eyes** and natural proportions. Runs cost the user's credits: quote the cost and get approval each time.
-3. **Review** against the Step 5 checklist and the references. Fix by changing the prompt and generating again, not by editing pixels.
-4. **Turn it into strokes:** Image Trace in Illustrator with Strokes, set to round caps and the weight hierarchy, then the Roughen graphic style; or redraw the centre lines in code over `scripts/grid.mjs`. The PNG alone is a draft, never the final asset.
+3. **Review** against the Step 5 checklist and the references. Fix with an edit round: send the draft back as the first image and ask for only the changes, so what already works stays. Never edit pixels.
+4. **Turn it into strokes:** on macOS with Illustrator open, `node scripts/illustrator-trace.mjs <draft.png> --out <dir> --name <Name>` traces it into live round-capped strokes and palette fills, adds Roughen and writes the `.ai` and the three SVG modes (also available as MCP tools through `scripts/illustrator-mcp.mjs`). Without Illustrator, redraw the centre lines in code over `scripts/grid.mjs`. The PNG alone is a draft, never the final asset.
 
 ## Step 5 — look at it
 
