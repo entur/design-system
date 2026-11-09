@@ -156,7 +156,7 @@ Group keys and the event timestamp are sent as **top-level** capture fields, not
 
 ## BigQuery output format
 
-`--bigquery-export` produces up to 9 NDJSON files, one row per entity:
+`--bigquery-export` produces up to 11 NDJSON files, one row per entity. To query them through PostHog, follow the [scanner-data skill](../../.claude/skills/scanner-data/SKILL.md): it has the access setup, the rules for reading the tables and tested queries.
 
 **`scan_runs.ndjson`** — One row per scan execution. Contains scan metadata: scan ID, timestamp, scanner version, total repos discovered/scanned/failed, and overall scan status (`success` / `partial` / `failure`).
 
