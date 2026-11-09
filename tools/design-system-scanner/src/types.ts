@@ -144,6 +144,11 @@ export interface ComponentUsage {
   instanceCount: number;
   /** Prop name → usage count across all instances */
   props: Record<string, number>;
+  /**
+   * Enum-like prop → literal value → instance count, e.g. { variant: { primary: 12 } }.
+   * Only props the catalog lists in enumProps; expressions are not counted.
+   */
+  propValues?: Record<string, Record<string, number>>;
   /** Number of instances using spread props ({...props}) */
   propsSpreadCount: number;
   /** Filenames (not full paths) where this component is used */
@@ -341,10 +346,12 @@ export interface FileFinding {
   fileExtension: string;
   /** Package this finding relates to */
   packageName: string;
+  /** Subpath of the import, e.g. "/beta" (absent for the root entry point) */
+  deepImportPath?: string;
   /** Symbol name (nullable for package-level findings) */
   symbolName?: string;
   /** What kind of finding */
-  findingType: 'import' | 'jsx_usage' | 'deep_import';
+  findingType: 'import' | 'jsx_usage';
   /** Line number in the file */
   lineNumber?: number;
   /** Whether this file is a test file */
@@ -363,11 +370,23 @@ export interface CatalogSymbol {
   symbolType: SymbolType;
   /** Self-declared prop names (excludes inherited HTML/React props). */
   knownProps: string[];
+  /**
+   * Self-declared props typed as a union of string/number literals or boolean,
+   * whose literal values the scanner records. Absent in catalogs generated
+   * before the field existed.
+   */
+  enumProps?: string[];
+  /** Marked `@deprecated` (absent in older catalogs) */
+  deprecated?: boolean;
+  /** Self-declared props marked `@deprecated` (absent in older catalogs) */
+  deprecatedProps?: string[];
 }
 
-/** A package entry in the design system catalog. */
+/** A package entry point in the design system catalog. */
 export interface CatalogPackage {
   packageName: string;
+  /** Subpath entry point (e.g. "/beta"); absent for the package root */
+  deepImportPath?: string;
   /** Latest published version on npm, or null if unavailable. */
   latestVersion: string | null;
   symbols: CatalogSymbol[];

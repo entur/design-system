@@ -2,23 +2,29 @@
   "packages": [
     {
       "packageName": "@entur/a11y",
-      "latestVersion": "0.3.2",
+      "latestVersion": "0.4.1",
       "symbols": [
         {
           "symbolName": "SkipToContent",
           "symbolType": "component",
-          "knownProps": ["children", "mainId"]
+          "knownProps": ["children", "mainId"],
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "VisuallyHidden",
           "symbolType": "component",
-          "knownProps": ["as", "children"]
+          "knownProps": ["as", "children"],
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         }
       ]
     },
     {
       "packageName": "@entur/alert",
-      "latestVersion": "0.20.2",
+      "latestVersion": "0.22.1",
       "symbols": [
         {
           "symbolName": "BannerAlertBox",
@@ -31,7 +37,10 @@
             "closable",
             "title",
             "variant"
-          ]
+          ],
+          "enumProps": ["closable", "variant"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "BannerExpandableAlertBox",
@@ -46,7 +55,10 @@
             "closeButtonLabel",
             "onClose",
             "closable"
-          ]
+          ],
+          "enumProps": ["variant", "closable"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "CopyableText",
@@ -56,8 +68,12 @@
             "children",
             "textToCopy",
             "successHeading",
-            "successMessage"
-          ]
+            "successMessage",
+            "size"
+          ],
+          "enumProps": ["size"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "SmallAlertBox",
@@ -71,7 +87,10 @@
             "title",
             "width",
             "variant"
-          ]
+          ],
+          "enumProps": ["closable", "width", "variant"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "SmallExpandableAlertBox",
@@ -87,7 +106,10 @@
             "closable",
             "onClose",
             "width"
-          ]
+          ],
+          "enumProps": ["variant", "closable", "width"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "ToastAlertBox",
@@ -100,23 +122,32 @@
             "closable",
             "title",
             "variant"
-          ]
+          ],
+          "enumProps": ["closable", "variant"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "ToastProvider",
           "symbolType": "component",
-          "knownProps": ["delay", "position", "className", "style", "children"]
+          "knownProps": ["delay", "position", "className", "style", "children"],
+          "enumProps": ["position"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "useToast",
           "symbolType": "hook",
-          "knownProps": []
+          "knownProps": [],
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         }
       ]
     },
     {
       "packageName": "@entur/button",
-      "latestVersion": "5.0.2",
+      "latestVersion": "5.2.1",
       "symbols": [
         {
           "symbolName": "Button",
@@ -131,12 +162,18 @@
             "children",
             "as",
             "aria-label"
-          ]
+          ],
+          "enumProps": ["variant", "size", "loading", "disabled", "width"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "ButtonGroup",
           "symbolType": "component",
-          "knownProps": ["children", "className", "as"]
+          "knownProps": ["children", "className", "as"],
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "FloatingButton",
@@ -147,7 +184,10 @@
             "className",
             "onClick",
             "size"
-          ]
+          ],
+          "enumProps": ["size"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "IconButton",
@@ -160,7 +200,10 @@
             "as",
             "size",
             "loading"
-          ]
+          ],
+          "enumProps": ["disabled", "size", "loading"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "NegativeButton",
@@ -172,7 +215,10 @@
             "disabled",
             "width",
             "children"
-          ]
+          ],
+          "enumProps": ["size", "loading", "disabled", "width"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "PrimaryButton",
@@ -184,7 +230,10 @@
             "disabled",
             "width",
             "children"
-          ]
+          ],
+          "enumProps": ["size", "loading", "disabled", "width"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "SecondaryButton",
@@ -196,12 +245,24 @@
             "disabled",
             "width",
             "children"
-          ]
+          ],
+          "enumProps": ["size", "loading", "disabled", "width"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "SecondarySquareButton",
           "symbolType": "component",
-          "knownProps": ["children", "className", "size", "disabled", "loading"]
+          "knownProps": [
+            "children",
+            "className",
+            "size",
+            "disabled",
+            "loading"
+          ],
+          "enumProps": ["size", "disabled", "loading"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "SuccessButton",
@@ -213,12 +274,24 @@
             "disabled",
             "width",
             "children"
-          ]
+          ],
+          "enumProps": ["size", "loading", "disabled", "width"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "SuccessSquareButton",
           "symbolType": "component",
-          "knownProps": ["children", "className", "size", "disabled", "loading"]
+          "knownProps": [
+            "children",
+            "className",
+            "size",
+            "disabled",
+            "loading"
+          ],
+          "enumProps": ["size", "disabled", "loading"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "TertiaryButton",
@@ -230,38 +303,56 @@
             "disabled",
             "width",
             "children"
-          ]
+          ],
+          "enumProps": ["size", "loading", "disabled", "width"],
+          "deprecatedProps": [],
+          "deprecated": true
         },
         {
           "symbolName": "TertiarySquareButton",
           "symbolType": "component",
-          "knownProps": ["children", "className", "disabled", "loading", "as"]
+          "knownProps": ["children", "className", "disabled", "loading", "as"],
+          "enumProps": ["disabled", "loading"],
+          "deprecatedProps": [],
+          "deprecated": true
         }
       ]
     },
     {
       "packageName": "@entur/chip",
-      "latestVersion": "0.11.2",
+      "latestVersion": "0.13.1",
       "symbols": [
         {
           "symbolName": "ActionChip",
           "symbolType": "component",
-          "knownProps": ["children", "className", "loading", "size"]
+          "knownProps": ["children", "className", "loading", "size"],
+          "enumProps": ["loading", "size"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "ChoiceChip",
           "symbolType": "component",
-          "knownProps": ["className", "disabled", "children", "value", "size"]
+          "knownProps": ["className", "disabled", "children", "value", "size"],
+          "enumProps": ["disabled", "size"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "ChoiceChipGroup",
           "symbolType": "component",
-          "knownProps": ["name", "value", "children", "onChange", "label"]
+          "knownProps": ["name", "value", "children", "onChange", "label"],
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "FilterChip",
           "symbolType": "component",
-          "knownProps": ["className", "children", "value", "size"]
+          "knownProps": ["className", "children", "value", "size"],
+          "enumProps": ["size"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "TagChip",
@@ -273,18 +364,24 @@
             "closeButtonAriaLabel",
             "closeButtonTabIndex",
             "size"
-          ]
+          ],
+          "enumProps": ["size"],
+          "deprecatedProps": [],
+          "deprecated": false
         }
       ]
     },
     {
       "packageName": "@entur/datepicker",
-      "latestVersion": "12.0.2",
+      "latestVersion": "12.3.1",
       "symbols": [
         {
           "symbolName": "ariaLabelIfNorwegian",
           "symbolType": "util",
-          "knownProps": []
+          "knownProps": [],
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "Calendar",
@@ -302,27 +399,42 @@
             "showWeekNumbers",
             "weekNumberHeader",
             "renderCell"
-          ]
+          ],
+          "enumProps": ["showWeekNumbers"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "CalendarDate",
           "symbolType": "component",
-          "knownProps": []
+          "knownProps": [],
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "CalendarDateTime",
           "symbolType": "component",
-          "knownProps": []
+          "knownProps": [],
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "convertValueToType",
           "symbolType": "util",
-          "knownProps": []
+          "knownProps": [],
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "createCalendar",
           "symbolType": "util",
-          "knownProps": []
+          "knownProps": [],
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "DateField",
@@ -364,7 +476,23 @@
             "after",
             "before",
             "ariaLabelOnReadOnly"
-          ]
+          ],
+          "enumProps": [
+            "showTimeZone",
+            "granularity",
+            "showTime",
+            "forcedReturnType",
+            "variant",
+            "validationVariant",
+            "disabled",
+            "readOnly",
+            "ariaAlertOnFeedback",
+            "labelTooltipPlacement",
+            "required",
+            "disableLabelAnimation"
+          ],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "DatePicker",
@@ -411,62 +539,106 @@
             "after",
             "before",
             "ariaLabelOnReadOnly"
-          ]
-        },
-        {
-          "symbolName": "DateValue",
-          "symbolType": "component",
-          "knownProps": []
+          ],
+          "enumProps": [
+            "showTimeZone",
+            "granularity",
+            "showTime",
+            "forcedReturnType",
+            "variant",
+            "validationVariant",
+            "disabled",
+            "readOnly",
+            "showWeekNumbers",
+            "showOutsideMonth",
+            "disableModal",
+            "ariaAlertOnFeedback",
+            "labelTooltipPlacement",
+            "required",
+            "disableLabelAnimation"
+          ],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "focusSegment",
           "symbolType": "util",
-          "knownProps": []
+          "knownProps": [],
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "getAdjustedMaxDate",
           "symbolType": "util",
-          "knownProps": []
+          "knownProps": [],
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "getWeekNumberForDate",
           "symbolType": "util",
-          "knownProps": []
+          "knownProps": [],
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "handleOnChange",
           "symbolType": "util",
-          "knownProps": []
+          "knownProps": [],
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "lastMillisecondOfDay",
           "symbolType": "util",
-          "knownProps": []
+          "knownProps": [],
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "modulo",
           "symbolType": "util",
-          "knownProps": []
+          "knownProps": [],
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "NativeDatePicker",
           "symbolType": "component",
-          "knownProps": ["onChange", "variant"]
+          "knownProps": ["onChange", "variant"],
+          "enumProps": ["variant"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "nativeDateToDateValue",
           "symbolType": "util",
-          "knownProps": []
+          "knownProps": [],
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "nativeDateToTimeValue",
           "symbolType": "util",
-          "knownProps": []
+          "knownProps": [],
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "NativeTimePicker",
           "symbolType": "component",
-          "knownProps": ["variant"]
+          "knownProps": ["variant"],
+          "enumProps": ["variant"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "RangeCalendar",
@@ -489,7 +661,10 @@
             "locale",
             "calendarRef",
             "visibleDuration"
-          ]
+          ],
+          "enumProps": ["showWeekNumbers", "showOutsideMonth", "disabled"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "SimpleTimePicker",
@@ -522,17 +697,37 @@
             "after",
             "before",
             "ariaLabelOnReadOnly"
-          ]
+          ],
+          "enumProps": [
+            "showSeconds",
+            "showClockIcon",
+            "padding",
+            "variant",
+            "disabled",
+            "readOnly",
+            "ariaAlertOnFeedback",
+            "labelTooltipPlacement",
+            "required",
+            "disableLabelAnimation"
+          ],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "Time",
           "symbolType": "component",
-          "knownProps": []
+          "knownProps": [],
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "timeOrDateValueToNativeDate",
           "symbolType": "util",
-          "knownProps": []
+          "knownProps": [],
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "TimePicker",
@@ -570,23 +765,35 @@
             "after",
             "before",
             "ariaLabelOnReadOnly"
-          ]
-        },
-        {
-          "symbolName": "TimeValue",
-          "symbolType": "component",
-          "knownProps": []
+          ],
+          "enumProps": [
+            "showTimeZone",
+            "showSeconds",
+            "variant",
+            "disabled",
+            "readOnly",
+            "forcedReturnType",
+            "ariaAlertOnFeedback",
+            "labelTooltipPlacement",
+            "required",
+            "disableLabelAnimation"
+          ],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "ZonedDateTime",
           "symbolType": "component",
-          "knownProps": []
+          "knownProps": [],
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         }
       ]
     },
     {
       "packageName": "@entur/dropdown",
-      "latestVersion": "9.0.2",
+      "latestVersion": "9.3.1",
       "symbols": [
         {
           "symbolName": "Dropdown",
@@ -619,40 +826,47 @@
             "ariaLabelSelectedItem",
             "ariaAlertOnFeedback",
             "feedbackProps"
-          ]
-        },
-        {
-          "symbolName": "DropdownItemType",
-          "symbolType": "component",
-          "knownProps": []
-        },
-        {
-          "symbolName": "MultiSelect",
-          "symbolType": "component",
-          "knownProps": [
-            "items",
-            "label",
-            "placeholder",
+          ],
+          "enumProps": [
             "clearable",
             "selectOnTab",
             "disabled",
             "readOnly",
             "variant",
+            "loading",
+            "disableLabelAnimation",
+            "ariaAlertOnFeedback"
+          ],
+          "deprecatedProps": [],
+          "deprecated": false
+        },
+        {
+          "symbolName": "MultiSelect",
+          "symbolType": "component",
+          "knownProps": [
+            "ariaLabelChosenSingular",
+            "ariaLabelCloseList",
+            "ariaLabelOpenList",
+            "ariaLabelSelectedItem",
+            "className",
+            "clearable",
+            "disabled",
+            "disableLabelAnimation",
             "feedback",
-            "prepend",
+            "items",
+            "label",
+            "labelClearSelectedItem",
+            "labelTooltip",
+            "listStyle",
             "loading",
             "loadingText",
             "noMatchesText",
-            "labelClearSelectedItem",
-            "labelTooltip",
-            "disableLabelAnimation",
-            "className",
-            "listStyle",
+            "placeholder",
+            "prepend",
+            "readOnly",
+            "selectOnTab",
             "style",
-            "ariaLabelCloseList",
-            "ariaLabelOpenList",
-            "ariaLabelChosenSingular",
-            "ariaLabelSelectedItem",
+            "variant",
             "ariaAlertOnFeedback",
             "feedbackProps",
             "selectedItems",
@@ -677,7 +891,21 @@
             "onClick",
             "onKeyDown",
             "onFocus"
-          ]
+          ],
+          "enumProps": [
+            "clearable",
+            "disabled",
+            "disableLabelAnimation",
+            "loading",
+            "readOnly",
+            "selectOnTab",
+            "variant",
+            "ariaAlertOnFeedback",
+            "hideSelectAll",
+            "clearInputOnSelect"
+          ],
+          "deprecatedProps": ["ariaLabelJumpToInput"],
+          "deprecated": false
         },
         {
           "symbolName": "NativeDropdown",
@@ -697,12 +925,16 @@
             "disableLabelAnimation",
             "ariaAlertOnFeedback",
             "feedbackProps"
-          ]
-        },
-        {
-          "symbolName": "NormalizedDropdownItemType",
-          "symbolType": "component",
-          "knownProps": []
+          ],
+          "enumProps": [
+            "disabled",
+            "readOnly",
+            "variant",
+            "disableLabelAnimation",
+            "ariaAlertOnFeedback"
+          ],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "SearchableDropdown",
@@ -741,18 +973,33 @@
             "onClick",
             "onKeyDown",
             "onFocus"
-          ]
+          ],
+          "enumProps": [
+            "clearable",
+            "selectOnTab",
+            "disabled",
+            "readOnly",
+            "variant",
+            "loading",
+            "disableLabelAnimation",
+            "ariaAlertOnFeedback"
+          ],
+          "deprecatedProps": [],
+          "deprecated": false
         }
       ]
     },
     {
       "packageName": "@entur/expand",
-      "latestVersion": "4.0.2",
+      "latestVersion": "4.1.1",
       "symbols": [
         {
           "symbolName": "Accordion",
           "symbolType": "component",
-          "knownProps": ["children", "openId", "onToggle", "defaultOpenId"]
+          "knownProps": ["children", "openId", "onToggle", "defaultOpenId"],
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "AccordionItem",
@@ -763,12 +1010,18 @@
             "contentStyle",
             "disableAnimation",
             "unmountOnClose"
-          ]
+          ],
+          "enumProps": ["defaultOpen", "disableAnimation", "unmountOnClose"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "BaseExpand",
           "symbolType": "component",
-          "knownProps": ["children", "open", "unmountOnClose"]
+          "knownProps": ["children", "open", "unmountOnClose"],
+          "enumProps": ["open", "unmountOnClose"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "ExpandablePanel",
@@ -781,7 +1034,15 @@
             "contentStyle",
             "disableAnimation",
             "unmountOnClose"
-          ]
+          ],
+          "enumProps": [
+            "defaultOpen",
+            "open",
+            "disableAnimation",
+            "unmountOnClose"
+          ],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "ExpandableText",
@@ -795,28 +1056,46 @@
             "titleElement",
             "disableAnimation",
             "unmountOnClose"
-          ]
+          ],
+          "enumProps": [
+            "defaultOpen",
+            "open",
+            "titleElement",
+            "disableAnimation",
+            "unmountOnClose"
+          ],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "ExpandableTextButton",
           "symbolType": "component",
-          "knownProps": ["children", "open", "onToggle", "as"]
+          "knownProps": ["children", "open", "onToggle", "as"],
+          "enumProps": ["open"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "ExpandArrow",
           "symbolType": "component",
-          "knownProps": ["open", "className"]
+          "knownProps": ["open", "className"],
+          "enumProps": ["open"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "useAccordion",
           "symbolType": "hook",
-          "knownProps": []
+          "knownProps": [],
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         }
       ]
     },
     {
       "packageName": "@entur/fileupload",
-      "latestVersion": "0.6.2",
+      "latestVersion": "0.7.1",
       "symbols": [
         {
           "symbolName": "FileUpload",
@@ -830,13 +1109,16 @@
             "files",
             "label",
             "removeFileButtonDescription"
-          ]
+          ],
+          "enumProps": ["errorUpload"],
+          "deprecatedProps": [],
+          "deprecated": false
         }
       ]
     },
     {
       "packageName": "@entur/form",
-      "latestVersion": "10.0.2",
+      "latestVersion": "10.3.1",
       "symbols": [
         {
           "symbolName": "BaseFormControl",
@@ -863,7 +1145,20 @@
             "after",
             "before",
             "ariaLabelOnReadOnly"
-          ]
+          ],
+          "enumProps": [
+            "ariaAlertOnFeedback",
+            "disabled",
+            "readOnly",
+            "variant",
+            "size",
+            "labelTooltipPlacement",
+            "required",
+            "isFilled",
+            "disableLabelAnimation"
+          ],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "Checkbox",
@@ -878,7 +1173,16 @@
             "style",
             "reduceClickArea",
             "disableAnimation"
-          ]
+          ],
+          "enumProps": [
+            "checked",
+            "disabled",
+            "readOnly",
+            "reduceClickArea",
+            "disableAnimation"
+          ],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "CheckboxPanel",
@@ -894,28 +1198,50 @@
             "className",
             "disabled",
             "readOnly",
+            "readOnlyLabelDescription",
             "style"
-          ]
+          ],
+          "enumProps": [
+            "checked",
+            "size",
+            "hideCheckbox",
+            "disabled",
+            "readOnly"
+          ],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "FeedbackText",
           "symbolType": "component",
-          "knownProps": ["children", "hideIcon", "variant", "className"]
+          "knownProps": ["children", "hideIcon", "variant", "className"],
+          "enumProps": ["hideIcon", "variant"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "Fieldset",
           "symbolType": "component",
-          "knownProps": ["children", "className", "label"]
+          "knownProps": ["children", "className", "label"],
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "hasValue",
           "symbolType": "util",
-          "knownProps": []
+          "knownProps": [],
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "InputGroupContextProvider",
           "symbolType": "component",
-          "knownProps": []
+          "knownProps": ["children"],
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "InputGroupLabel",
@@ -927,12 +1253,18 @@
             "labelId",
             "isFilled",
             "staticAnimation"
-          ]
+          ],
+          "enumProps": ["required", "isFilled", "staticAnimation"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "isFilled",
           "symbolType": "util",
-          "knownProps": []
+          "knownProps": [],
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "Radio",
@@ -943,7 +1275,10 @@
             "value",
             "disabled",
             "readOnlyLabelDescription"
-          ]
+          ],
+          "enumProps": ["disabled"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "RadioGroup",
@@ -956,7 +1291,10 @@
             "onChange",
             "readOnly",
             "disabled"
-          ]
+          ],
+          "enumProps": ["readOnly", "disabled"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "RadioPanel",
@@ -971,25 +1309,20 @@
             "className",
             "disabled",
             "readOnly",
+            "readOnlyLabelDescription",
             "style"
-          ]
+          ],
+          "enumProps": ["size", "hideRadioButton", "disabled", "readOnly"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "SegmentedChoice",
           "symbolType": "component",
-          "knownProps": [
-            "value",
-            "children",
-            "className",
-            "onChange",
-            "as",
-            "ref"
-          ]
-        },
-        {
-          "symbolName": "SegmentedChoiceProps",
-          "symbolType": "component",
-          "knownProps": []
+          "knownProps": ["value", "children", "className", "onChange"],
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "SegmentedControl",
@@ -1004,17 +1337,58 @@
             "size",
             "className",
             "selectedValue"
-          ]
+          ],
+          "enumProps": ["size"],
+          "deprecatedProps": ["selectedValue"],
+          "deprecated": false
+        },
+        {
+          "symbolName": "SegmentedControl.Item",
+          "symbolType": "component",
+          "knownProps": [
+            "value",
+            "children",
+            "className",
+            "onChange",
+            "as",
+            "ref"
+          ],
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "SegmentedControlComponent",
           "symbolType": "component",
-          "knownProps": []
+          "knownProps": [
+            "name",
+            "label",
+            "children",
+            "value",
+            "defaultValue",
+            "onChange",
+            "size",
+            "className",
+            "selectedValue"
+          ],
+          "enumProps": ["size"],
+          "deprecatedProps": ["selectedValue"],
+          "deprecated": false
         },
         {
-          "symbolName": "SegmentedControlProps",
+          "symbolName": "SegmentedControlComponent.Item",
           "symbolType": "component",
-          "knownProps": []
+          "knownProps": [
+            "value",
+            "children",
+            "className",
+            "onChange",
+            "as",
+            "ref"
+          ],
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "Switch",
@@ -1030,43 +1404,70 @@
             "contrastColor",
             "size",
             "onChange"
-          ]
+          ],
+          "enumProps": ["labelPlacement", "checked", "hideIcon", "size"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "TextArea",
           "symbolType": "component",
-          "knownProps": ["readOnly", "disabled", "variant", "resize"]
+          "knownProps": ["readOnly", "disabled", "variant", "resize"],
+          "enumProps": ["readOnly", "disabled", "variant", "resize"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "TextField",
           "symbolType": "component",
-          "knownProps": ["disabled", "readOnly", "variant"]
+          "knownProps": ["disabled", "readOnly", "variant"],
+          "enumProps": ["disabled", "readOnly", "variant"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "useInputGroupContext",
           "symbolType": "hook",
-          "knownProps": []
+          "knownProps": [],
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "useVariant",
           "symbolType": "hook",
-          "knownProps": []
+          "knownProps": [],
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "VariantProvider",
           "symbolType": "component",
-          "knownProps": ["children", "variant"]
+          "knownProps": ["children", "variant"],
+          "enumProps": ["variant"],
+          "deprecatedProps": [],
+          "deprecated": false
         }
       ]
     },
     {
       "packageName": "@entur/grid",
-      "latestVersion": "0.4.2",
+      "latestVersion": "0.5.1",
       "symbols": [
         {
           "symbolName": "GridContainer",
           "symbolType": "component",
-          "knownProps": ["spacing", "rowSpacing", "as", "children", "className"]
+          "knownProps": [
+            "spacing",
+            "rowSpacing",
+            "as",
+            "children",
+            "className"
+          ],
+          "enumProps": ["spacing", "rowSpacing"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "GridItem",
@@ -1078,13 +1479,16 @@
             "as",
             "children",
             "className"
-          ]
+          ],
+          "enumProps": ["small", "medium", "large"],
+          "deprecatedProps": [],
+          "deprecated": false
         }
       ]
     },
     {
       "packageName": "@entur/layout",
-      "latestVersion": "4.0.2",
+      "latestVersion": "5.1.1",
       "symbols": [
         {
           "symbolName": "Badge",
@@ -1098,29 +1502,43 @@
             "max",
             "type",
             "invisible",
-            "hide",
-            "ref"
-          ]
+            "hide"
+          ],
+          "enumProps": ["variant", "showZero", "type", "invisible", "hide"],
+          "deprecatedProps": ["invisible"],
+          "deprecated": false
         },
         {
           "symbolName": "BaseCard",
           "symbolType": "component",
-          "knownProps": ["as", "className", "children"]
+          "knownProps": ["as", "className", "children"],
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "BulletBadge",
           "symbolType": "component",
-          "knownProps": ["as", "className", "children", "variant", "hide"]
+          "knownProps": ["as", "className", "children", "variant", "hide"],
+          "enumProps": ["variant", "hide"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "Contrast",
           "symbolType": "component",
-          "knownProps": ["className"]
+          "knownProps": ["className"],
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "ContrastContext",
           "symbolType": "component",
-          "knownProps": []
+          "knownProps": [],
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "MediaCard",
@@ -1138,7 +1556,15 @@
             "orientation",
             "wrapperProps",
             "wholeCardAsElement"
-          ]
+          ],
+          "enumProps": [
+            "headingLevel",
+            "hideArrow",
+            "orientation",
+            "wholeCardAsElement"
+          ],
+          "deprecatedProps": ["wholeCardAsElement"],
+          "deprecated": false
         },
         {
           "symbolName": "NavigationCard",
@@ -1151,7 +1577,10 @@
             "compact",
             "children",
             "externalLink"
-          ]
+          ],
+          "enumProps": ["compact", "externalLink"],
+          "deprecatedProps": ["externalLink"],
+          "deprecated": false
         },
         {
           "symbolName": "NotificationBadge",
@@ -1164,74 +1593,254 @@
             "showZero",
             "max",
             "hide"
-          ]
+          ],
+          "enumProps": ["variant", "showZero", "hide"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "StatusBadge",
           "symbolType": "component",
-          "knownProps": ["as", "className", "children", "variant", "hide"]
+          "knownProps": ["as", "className", "children", "variant", "hide"],
+          "enumProps": ["variant", "hide"],
+          "deprecatedProps": [],
+          "deprecated": true
         },
         {
           "symbolName": "Tag",
           "symbolType": "component",
-          "knownProps": ["as", "className", "compact", "children"]
+          "knownProps": [
+            "as",
+            "className",
+            "children",
+            "variant",
+            "size",
+            "compact"
+          ],
+          "enumProps": ["variant", "size", "compact"],
+          "deprecatedProps": ["compact"],
+          "deprecated": false
         },
         {
           "symbolName": "useContrast",
           "symbolType": "hook",
-          "knownProps": []
+          "knownProps": [],
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
+        }
+      ]
+    },
+    {
+      "packageName": "@entur/layout",
+      "deepImportPath": "/beta",
+      "latestVersion": "5.1.1",
+      "symbols": [
+        {
+          "symbolName": "Flex",
+          "symbolType": "component",
+          "knownProps": [
+            "display",
+            "direction",
+            "wrap",
+            "align",
+            "justify",
+            "alignContent",
+            "gap",
+            "rowGap",
+            "columnGap",
+            "flex",
+            "grow",
+            "shrink",
+            "basis",
+            "width",
+            "height",
+            "minWidth",
+            "minHeight",
+            "maxWidth",
+            "maxHeight",
+            "className",
+            "children"
+          ],
+          "enumProps": ["display"],
+          "deprecatedProps": [],
+          "deprecated": false
+        },
+        {
+          "symbolName": "Flex.Spacer",
+          "symbolType": "component",
+          "knownProps": ["as", "className", "children"],
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
+        },
+        {
+          "symbolName": "FlexSpacer",
+          "symbolType": "component",
+          "knownProps": ["as", "className", "children"],
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
+        },
+        {
+          "symbolName": "Grid",
+          "symbolType": "component",
+          "knownProps": [
+            "templateColumns",
+            "templateRows",
+            "autoFlow",
+            "autoRows",
+            "autoColumns",
+            "gap",
+            "rowGap",
+            "columnGap",
+            "align",
+            "justify",
+            "justifyItems",
+            "alignContent",
+            "height",
+            "minHeight",
+            "maxHeight",
+            "minWidth",
+            "maxWidth",
+            "className",
+            "children"
+          ],
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
+        },
+        {
+          "symbolName": "Grid.Item",
+          "symbolType": "component",
+          "knownProps": [
+            "colSpan",
+            "rowSpan",
+            "colStart",
+            "colEnd",
+            "rowStart",
+            "rowEnd",
+            "alignSelf",
+            "justifySelf",
+            "className",
+            "children",
+            "as",
+            "ref"
+          ],
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
+        },
+        {
+          "symbolName": "GridItem",
+          "symbolType": "component",
+          "knownProps": [
+            "colSpan",
+            "rowSpan",
+            "colStart",
+            "colEnd",
+            "rowStart",
+            "rowEnd",
+            "alignSelf",
+            "justifySelf",
+            "className",
+            "children"
+          ],
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
+        },
+        {
+          "symbolName": "Template",
+          "symbolType": "component",
+          "knownProps": [],
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
+        },
+        {
+          "symbolName": "Template.Portal",
+          "symbolType": "component",
+          "knownProps": ["className", "style", "children", "as", "ref"],
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         }
       ]
     },
     {
       "packageName": "@entur/loader",
-      "latestVersion": "0.8.2",
+      "latestVersion": "0.9.1",
       "symbols": [
         {
           "symbolName": "Loader",
           "symbolType": "component",
-          "knownProps": ["children", "className", "progress"]
+          "knownProps": ["children", "className", "progress"],
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "LoadingDots",
           "symbolType": "component",
-          "knownProps": ["color", "className"]
+          "knownProps": ["color", "className"],
+          "enumProps": ["color"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "SkeletonCircle",
           "symbolType": "component",
-          "knownProps": ["className", "size"]
+          "knownProps": ["className", "size"],
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "SkeletonRectangle",
           "symbolType": "component",
-          "knownProps": ["className", "width", "height"]
+          "knownProps": ["className", "width", "height"],
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "SkeletonWrapper",
           "symbolType": "component",
-          "knownProps": ["loadingAriaLabel", "className", "children"]
+          "knownProps": ["loadingAriaLabel", "className", "children"],
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "Spinner",
           "symbolType": "component",
-          "knownProps": ["className"]
+          "knownProps": ["className"],
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         }
       ]
     },
     {
       "packageName": "@entur/menu",
-      "latestVersion": "7.1.0",
+      "latestVersion": "7.4.1",
       "symbols": [
         {
           "symbolName": "BreadcrumbItem",
           "symbolType": "component",
-          "knownProps": ["as", "children", "className", "isCurrent"]
+          "knownProps": ["as", "children", "className", "isCurrent"],
+          "enumProps": ["isCurrent"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "BreadcrumbNavigation",
           "symbolType": "component",
-          "knownProps": ["aria-label", "children"]
+          "knownProps": ["aria-label", "children"],
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "CollapsibleSideNavigation",
@@ -1244,7 +1853,10 @@
             "collapsibleButtonPosition",
             "openSideMenuAriaLabel",
             "closeSideMenuAriaLabel"
-          ]
+          ],
+          "enumProps": ["size", "collapsed"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "Logo",
@@ -1255,9 +1867,11 @@
             "href",
             "as",
             "className",
-            "children",
-            "ref"
-          ]
+            "children"
+          ],
+          "enumProps": ["size"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "OverflowMenu",
@@ -1270,7 +1884,10 @@
             "placement",
             "position",
             "aria-label"
-          ]
+          ],
+          "enumProps": ["placement", "position"],
+          "deprecatedProps": ["position"],
+          "deprecated": false
         },
         {
           "symbolName": "OverflowMenuItem",
@@ -1281,12 +1898,25 @@
             "onSelect",
             "href",
             "disabled"
-          ]
+          ],
+          "enumProps": ["disabled"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "OverflowMenuLink",
           "symbolType": "component",
-          "knownProps": []
+          "knownProps": [
+            "children",
+            "className",
+            "onSelect",
+            "href",
+            "disabled",
+            "as"
+          ],
+          "enumProps": ["disabled"],
+          "deprecatedProps": ["onSelect"],
+          "deprecated": false
         },
         {
           "symbolName": "Pagination",
@@ -1310,12 +1940,18 @@
             "hidePrevButton",
             "showingResultsLabel",
             "showNumberOfResultsLabel"
-          ]
+          ],
+          "enumProps": ["showInput", "hideNextButton", "hidePrevButton"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "SideNavigation",
           "symbolType": "component",
-          "knownProps": ["className", "size"]
+          "knownProps": ["className", "size"],
+          "enumProps": ["size"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "SideNavigationGroup",
@@ -1328,7 +1964,10 @@
             "children",
             "title",
             "icon"
-          ]
+          ],
+          "enumProps": ["defaultOpen", "open"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "SideNavigationItem",
@@ -1341,7 +1980,10 @@
             "onClick",
             "forceExpandSubMenus",
             "icon"
-          ]
+          ],
+          "enumProps": ["active", "disabled", "forceExpandSubMenus"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "Stepper",
@@ -1357,23 +1999,93 @@
             "ariaLabelOf",
             "ariaLabelCompleted",
             "ariaLabelSummary"
-          ]
+          ],
+          "enumProps": ["interactive", "showStepperIndex"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "TopNavigationItem",
           "symbolType": "component",
-          "knownProps": ["active", "children", "as", "className"]
+          "knownProps": ["active", "children", "as", "className"],
+          "enumProps": ["active"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "useSideNavigationContext",
           "symbolType": "hook",
-          "knownProps": []
+          "knownProps": [],
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
+        }
+      ]
+    },
+    {
+      "packageName": "@entur/menu",
+      "deepImportPath": "/beta",
+      "latestVersion": "7.4.1",
+      "symbols": [
+        {
+          "symbolName": "SideNavigation",
+          "symbolType": "component",
+          "knownProps": [],
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
+        },
+        {
+          "symbolName": "SideNavigation.ExpandableItem",
+          "symbolType": "component",
+          "knownProps": [
+            "icon",
+            "badge",
+            "alertLabel",
+            "title",
+            "active",
+            "alert",
+            "disabled",
+            "open",
+            "defaultOpen",
+            "onOpenChange"
+          ],
+          "enumProps": ["active", "alert", "disabled", "open", "defaultOpen"],
+          "deprecatedProps": [],
+          "deprecated": false
+        },
+        {
+          "symbolName": "SideNavigation.Group",
+          "symbolType": "component",
+          "knownProps": ["title"],
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
+        },
+        {
+          "symbolName": "SideNavigation.Item",
+          "symbolType": "component",
+          "knownProps": [
+            "children",
+            "alert",
+            "icon",
+            "badge",
+            "alertLabel",
+            "active",
+            "disabled",
+            "className",
+            "as",
+            "ref"
+          ],
+          "enumProps": ["alert", "active", "disabled"],
+          "deprecatedProps": [],
+          "deprecated": false
         }
       ]
     },
     {
       "packageName": "@entur/modal",
-      "latestVersion": "2.0.2",
+      "latestVersion": "2.1.1",
       "symbols": [
         {
           "symbolName": "Drawer",
@@ -1388,12 +2100,18 @@
             "title",
             "style",
             "overlay"
-          ]
+          ],
+          "enumProps": ["contrast", "open", "overlay"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "headingsMap",
           "symbolType": "util",
-          "knownProps": []
+          "knownProps": [],
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "Modal",
@@ -1410,12 +2128,24 @@
             "title",
             "aria-label",
             "closeOnClickOutside"
-          ]
+          ],
+          "enumProps": [
+            "open",
+            "showCloseButton",
+            "size",
+            "align",
+            "closeOnClickOutside"
+          ],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "ModalContent",
           "symbolType": "component",
-          "knownProps": ["children", "className", "size", "title", "align"]
+          "knownProps": ["children", "className", "size", "title", "align"],
+          "enumProps": ["size", "align"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "ModalOverlay",
@@ -1427,13 +2157,16 @@
             "className",
             "initialFocusRef",
             "closeOnClickOutside"
-          ]
+          ],
+          "enumProps": ["open", "closeOnClickOutside"],
+          "deprecatedProps": [],
+          "deprecated": false
         }
       ]
     },
     {
       "packageName": "@entur/tab",
-      "latestVersion": "0.8.2",
+      "latestVersion": "0.10.1",
       "symbols": [
         {
           "symbolName": "Tab",
@@ -1445,7 +2178,10 @@
             "as",
             "removeActiveLine",
             "className"
-          ]
+          ],
+          "enumProps": ["disabled", "removeActiveLine"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "TabList",
@@ -1457,17 +2193,26 @@
             "className",
             "aria-label",
             "aria-labelledby"
-          ]
+          ],
+          "enumProps": ["width"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "TabPanel",
           "symbolType": "component",
-          "knownProps": ["children", "as", "index", "className"]
+          "knownProps": ["children", "as", "index", "className"],
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "TabPanels",
           "symbolType": "component",
-          "knownProps": ["children", "as", "keepMounted", "className"]
+          "knownProps": ["children", "as", "keepMounted", "className"],
+          "enumProps": ["keepMounted"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "Tabs",
@@ -1479,13 +2224,16 @@
             "index",
             "as",
             "className"
-          ]
+          ],
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         }
       ]
     },
     {
       "packageName": "@entur/table",
-      "latestVersion": "5.0.2",
+      "latestVersion": "5.2.1",
       "symbols": [
         {
           "symbolName": "DataCell",
@@ -1496,7 +2244,10 @@
             "padding",
             "status",
             "variant"
-          ]
+          ],
+          "enumProps": ["padding", "status", "variant"],
+          "deprecatedProps": ["status"],
+          "deprecated": false
         },
         {
           "symbolName": "EditableCell",
@@ -1507,17 +2258,26 @@
             "variant",
             "feedback",
             "outlined"
-          ]
+          ],
+          "enumProps": ["variant", "outlined"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "ExpandableRow",
           "symbolType": "component",
-          "knownProps": ["colSpan", "children", "open"]
+          "knownProps": ["colSpan", "children", "open"],
+          "enumProps": ["open"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "ExpandRowButton",
           "symbolType": "component",
-          "knownProps": ["open", "onClick"]
+          "knownProps": ["open", "onClick"],
+          "enumProps": ["open"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "HeaderCell",
@@ -1532,7 +2292,10 @@
             "name",
             "sortedAscendingAriaLabel",
             "sortedDescendingAriaLabel"
-          ]
+          ],
+          "enumProps": ["padding", "sortable"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "Table",
@@ -1543,22 +2306,34 @@
             "fixed",
             "stickyHeader",
             "children"
-          ]
+          ],
+          "enumProps": ["spacing", "fixed", "stickyHeader"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "TableBody",
           "symbolType": "component",
-          "knownProps": ["children", "className", "ref"]
+          "knownProps": ["children", "className", "ref"],
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "TableFooter",
           "symbolType": "component",
-          "knownProps": ["children"]
+          "knownProps": ["children"],
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "TableHead",
           "symbolType": "component",
-          "knownProps": ["children", "className"]
+          "knownProps": ["children", "className"],
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "TableRow",
@@ -1570,124 +2345,190 @@
             "active",
             "error",
             "ref"
-          ]
+          ],
+          "enumProps": ["hover", "active", "error"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "useSortableData",
           "symbolType": "hook",
-          "knownProps": []
+          "knownProps": [],
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "useTableKeyboardNavigation",
           "symbolType": "hook",
-          "knownProps": []
+          "knownProps": [],
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         }
       ]
     },
     {
       "packageName": "@entur/tokens",
-      "latestVersion": "4.0.1",
+      "latestVersion": "4.3.1",
       "symbols": [
         {
           "symbolName": "borderRadiuses",
           "symbolType": "util",
-          "knownProps": []
+          "knownProps": [],
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "borderWidths",
           "symbolType": "util",
-          "knownProps": []
+          "knownProps": [],
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "breakpoints",
           "symbolType": "util",
-          "knownProps": []
+          "knownProps": [],
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "colors",
           "symbolType": "util",
-          "knownProps": []
+          "knownProps": [],
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "componentColors",
           "symbolType": "util",
-          "knownProps": []
+          "knownProps": [],
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "createColorSet",
           "symbolType": "util",
-          "knownProps": []
+          "knownProps": [],
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "createColorsFileData",
           "symbolType": "util",
-          "knownProps": []
+          "knownProps": [],
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "createJSColorFileData",
           "symbolType": "util",
-          "knownProps": []
+          "knownProps": [],
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "createVariableSet",
           "symbolType": "util",
-          "knownProps": []
+          "knownProps": [],
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "createVariablesFileData",
           "symbolType": "util",
-          "knownProps": []
+          "knownProps": [],
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "fontSizes",
           "symbolType": "util",
-          "knownProps": []
+          "knownProps": [],
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "fontWeights",
           "symbolType": "util",
-          "knownProps": []
+          "knownProps": [],
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "lineHeights",
           "symbolType": "util",
-          "knownProps": []
+          "knownProps": [],
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "outlineOffsets",
           "symbolType": "util",
-          "knownProps": []
+          "knownProps": [],
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "outlines",
           "symbolType": "util",
-          "knownProps": []
+          "knownProps": [],
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "shadows",
           "symbolType": "util",
-          "knownProps": []
+          "knownProps": [],
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "space",
           "symbolType": "util",
-          "knownProps": []
+          "knownProps": [],
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "timings",
           "symbolType": "util",
-          "knownProps": []
+          "knownProps": [],
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "zIndexes",
           "symbolType": "util",
-          "knownProps": []
+          "knownProps": [],
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         }
       ]
     },
     {
       "packageName": "@entur/tooltip",
-      "latestVersion": "6.0.2",
+      "latestVersion": "6.1.1",
       "symbols": [
         {
           "symbolName": "Popover",
@@ -1697,27 +2538,42 @@
             "placement",
             "showPopover",
             "setShowPopover"
-          ]
+          ],
+          "enumProps": ["placement", "showPopover"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "PopoverCloseButton",
           "symbolType": "component",
-          "knownProps": ["children"]
+          "knownProps": ["children"],
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "PopoverContent",
           "symbolType": "component",
-          "knownProps": ["children", "className", "style"]
+          "knownProps": ["children", "className", "style"],
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "PopoverTrigger",
           "symbolType": "component",
-          "knownProps": ["children"]
+          "knownProps": ["children"],
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "standardisePlacement",
           "symbolType": "util",
-          "knownProps": []
+          "knownProps": [],
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "Tooltip",
@@ -1737,13 +2593,25 @@
             "variant",
             "hoverDelay",
             "popperModifiers"
-          ]
+          ],
+          "enumProps": [
+            "placement",
+            "isOpen",
+            "disableHoverListener",
+            "disableFocusListener",
+            "disableKeyboardListener",
+            "disableClickListener",
+            "showCloseButton",
+            "variant"
+          ],
+          "deprecatedProps": ["popperModifiers"],
+          "deprecated": false
         }
       ]
     },
     {
       "packageName": "@entur/travel",
-      "latestVersion": "8.0.2",
+      "latestVersion": "8.1.1",
       "symbols": [
         {
           "symbolName": "LegBone",
@@ -1758,22 +2626,40 @@
             "showLine",
             "showStop",
             "className"
-          ]
+          ],
+          "enumProps": [
+            "direction",
+            "pattern",
+            "showStart",
+            "showLine",
+            "showStop"
+          ],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "LegLine",
           "symbolType": "component",
-          "knownProps": ["color", "direction", "pattern", "className"]
+          "knownProps": ["color", "direction", "pattern", "className"],
+          "enumProps": ["direction", "pattern"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "TravelHeader",
           "symbolType": "component",
-          "knownProps": ["as", "from", "to", "size", "noWrap", "className"]
+          "knownProps": ["as", "from", "to", "size", "noWrap", "className"],
+          "enumProps": ["size", "noWrap"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "TravelLeg",
           "symbolType": "component",
-          "knownProps": ["className", "transport", "direction"]
+          "knownProps": ["className", "transport", "direction"],
+          "enumProps": ["transport", "direction"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "TravelSwitch",
@@ -1786,7 +2672,10 @@
             "transport",
             "onChange",
             "size"
-          ]
+          ],
+          "enumProps": ["checked", "labelPlacement", "transport", "size"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "TravelTag",
@@ -1801,73 +2690,112 @@
             "label",
             "labelPlacement",
             "details"
-          ]
+          ],
+          "enumProps": ["alert", "type", "transport", "labelPlacement"],
+          "deprecatedProps": [],
+          "deprecated": false
         }
       ]
     },
     {
       "packageName": "@entur/typography",
-      "latestVersion": "3.0.2",
+      "latestVersion": "3.2.0",
       "symbols": [
         {
           "symbolName": "Blockquote",
           "symbolType": "component",
-          "knownProps": ["className"]
+          "knownProps": ["className"],
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "BlockquoteFooter",
           "symbolType": "component",
-          "knownProps": ["className"]
+          "knownProps": ["className"],
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "CodeText",
           "symbolType": "component",
-          "knownProps": ["as", "className", "children"]
+          "knownProps": ["as", "className", "children"],
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "EmphasizedText",
           "symbolType": "component",
-          "knownProps": ["as", "className", "children", "margin"]
+          "knownProps": ["as", "className", "children", "margin"],
+          "enumProps": ["margin"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "Heading1",
           "symbolType": "component",
-          "knownProps": ["as", "className", "children", "margin"]
+          "knownProps": ["as", "className", "children", "margin"],
+          "enumProps": ["margin"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "Heading2",
           "symbolType": "component",
-          "knownProps": ["as", "className", "children", "margin"]
+          "knownProps": ["as", "className", "children", "margin"],
+          "enumProps": ["margin"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "Heading3",
           "symbolType": "component",
-          "knownProps": ["as", "className", "children", "margin"]
+          "knownProps": ["as", "className", "children", "margin"],
+          "enumProps": ["margin"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "Heading4",
           "symbolType": "component",
-          "knownProps": ["as", "className", "children", "margin"]
+          "knownProps": ["as", "className", "children", "margin"],
+          "enumProps": ["margin"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "Heading5",
           "symbolType": "component",
-          "knownProps": ["as", "className", "children", "margin"]
+          "knownProps": ["as", "className", "children", "margin"],
+          "enumProps": ["margin"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "Heading6",
           "symbolType": "component",
-          "knownProps": ["as", "className", "children", "margin"]
+          "knownProps": ["as", "className", "children", "margin"],
+          "enumProps": ["margin"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "Label",
           "symbolType": "component",
-          "knownProps": ["as", "className", "children", "margin"]
+          "knownProps": ["as", "className", "children", "margin"],
+          "enumProps": ["margin"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "LeadParagraph",
           "symbolType": "component",
-          "knownProps": ["as", "className", "children", "margin"]
+          "knownProps": ["as", "className", "children", "margin"],
+          "enumProps": ["margin"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "Link",
@@ -1879,123 +2807,289 @@
             "children",
             "margin",
             "ariaLabelExternalIcon"
-          ]
+          ],
+          "enumProps": ["external", "margin"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "ListItem",
           "symbolType": "component",
-          "knownProps": ["className", "children", "title"]
+          "knownProps": ["className", "children", "title"],
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "NumberedList",
           "symbolType": "component",
-          "knownProps": ["className", "children"]
+          "knownProps": ["className", "children"],
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "Paragraph",
           "symbolType": "component",
-          "knownProps": ["as", "className", "children", "margin"]
+          "knownProps": ["as", "className", "children", "margin"],
+          "enumProps": ["margin"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "PreformattedText",
           "symbolType": "component",
-          "knownProps": ["as", "className", "children"]
+          "knownProps": ["as", "className", "children"],
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "SmallText",
           "symbolType": "component",
-          "knownProps": ["as", "className", "children", "margin"]
+          "knownProps": ["as", "className", "children", "margin"],
+          "enumProps": ["margin"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "StrongText",
           "symbolType": "component",
-          "knownProps": ["as", "className", "children", "margin"]
+          "knownProps": ["as", "className", "children", "margin"],
+          "enumProps": ["margin"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "SubLabel",
           "symbolType": "component",
-          "knownProps": ["as", "className", "children", "margin"]
+          "knownProps": ["as", "className", "children", "margin"],
+          "enumProps": ["margin"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "SubParagraph",
           "symbolType": "component",
-          "knownProps": ["as", "className", "children", "margin"]
+          "knownProps": ["as", "className", "children", "margin"],
+          "enumProps": ["margin"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "UnorderedList",
           "symbolType": "component",
-          "knownProps": ["className", "children"]
+          "knownProps": ["className", "children"],
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
+        }
+      ]
+    },
+    {
+      "packageName": "@entur/typography",
+      "deepImportPath": "/beta",
+      "latestVersion": "3.2.0",
+      "symbols": [
+        {
+          "symbolName": "Heading",
+          "symbolType": "component",
+          "knownProps": [
+            "spacing",
+            "variant",
+            "size",
+            "tone",
+            "children",
+            "trim",
+            "maxLines",
+            "className"
+          ],
+          "enumProps": ["variant", "size", "tone", "trim"],
+          "deprecatedProps": [],
+          "deprecated": false
+        },
+        {
+          "symbolName": "Label",
+          "symbolType": "component",
+          "knownProps": ["spacing", "className", "children"],
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
+        },
+        {
+          "symbolName": "Link",
+          "symbolType": "component",
+          "knownProps": ["spacing", "className", "children"],
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
+        },
+        {
+          "symbolName": "ListItem",
+          "symbolType": "component",
+          "knownProps": ["spacing", "className", "tone", "children", "title"],
+          "enumProps": ["tone"],
+          "deprecatedProps": [],
+          "deprecated": false
+        },
+        {
+          "symbolName": "NumberedList",
+          "symbolType": "component",
+          "knownProps": [
+            "spacing",
+            "className",
+            "tone",
+            "children",
+            "type",
+            "variant"
+          ],
+          "enumProps": ["tone", "type", "variant"],
+          "deprecatedProps": [],
+          "deprecated": false
+        },
+        {
+          "symbolName": "Text",
+          "symbolType": "component",
+          "knownProps": [
+            "spacing",
+            "size",
+            "weight",
+            "tone",
+            "variant",
+            "children",
+            "trim",
+            "maxLines",
+            "className"
+          ],
+          "enumProps": ["size", "weight", "tone", "variant", "trim"],
+          "deprecatedProps": [],
+          "deprecated": false
+        },
+        {
+          "symbolName": "TextContainer",
+          "symbolType": "component",
+          "knownProps": ["spacing", "className", "children"],
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
+        },
+        {
+          "symbolName": "UnorderedList",
+          "symbolType": "component",
+          "knownProps": ["spacing", "className", "tone", "children"],
+          "enumProps": ["tone"],
+          "deprecatedProps": [],
+          "deprecated": false
         }
       ]
     },
     {
       "packageName": "@entur/utils",
-      "latestVersion": "0.15.0",
+      "latestVersion": "0.15.4",
       "symbols": [
         {
           "symbolName": "ConditionalWrapper",
           "symbolType": "component",
-          "knownProps": []
+          "knownProps": ["condition", "wrapper", "children"],
+          "enumProps": ["condition"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "getActiveElement",
           "symbolType": "util",
-          "knownProps": []
+          "knownProps": [],
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "getNodeText",
           "symbolType": "util",
-          "knownProps": []
+          "knownProps": [],
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "mergeRefs",
           "symbolType": "util",
-          "knownProps": []
+          "knownProps": [],
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "useControllableProp",
           "symbolType": "hook",
-          "knownProps": []
+          "knownProps": [],
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "useDebounce",
           "symbolType": "hook",
-          "knownProps": []
+          "knownProps": [],
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "useForceUpdate",
           "symbolType": "hook",
-          "knownProps": []
+          "knownProps": [],
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "useOnClickOutside",
           "symbolType": "hook",
-          "knownProps": []
+          "knownProps": [],
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "useOnEscape",
           "symbolType": "hook",
-          "knownProps": []
+          "knownProps": [],
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "useOnMount",
           "symbolType": "hook",
-          "knownProps": []
+          "knownProps": [],
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "useRandomId",
           "symbolType": "hook",
-          "knownProps": []
+          "knownProps": [],
+          "enumProps": [],
+          "deprecated": true,
+          "deprecatedProps": []
         },
         {
           "symbolName": "useWindowDimensions",
           "symbolType": "hook",
-          "knownProps": []
+          "knownProps": [],
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "warnAboutMissingStyles",
           "symbolType": "util",
-          "knownProps": []
+          "knownProps": [],
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         }
       ]
     }

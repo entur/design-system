@@ -3,6 +3,8 @@ import * as crypto from 'crypto';
 import * as fs from 'fs';
 import * as path from 'path';
 import { scanRepository } from './scanner';
+import { symbolKey } from './analyzers/packageAnalyzer';
+import { loadCatalog } from './catalog';
 import { flattenColorTokenSummary, flattenTypographySummary } from './rollups';
 import type { PostHogLike } from './export/posthogClient';
 import type {
@@ -116,6 +118,9 @@ async function scanLocal(args: ParsedArgs): Promise<void> {
       includeFileFindings: args.includeFileFindings,
       packagesRoot: args.packagesRoot,
       ownerTeams: parseCommaList(args.ownerTeams),
+      catalog: args.catalog
+        ? loadCatalog(path.resolve(args.catalog))
+        : undefined,
     },
   );
 
@@ -212,11 +217,12 @@ async function aggregateResults(args: ParsedArgs): Promise<void> {
 /**
  * Export a scan report as NDJSON files suitable for BigQuery loading.
  *
- * Produces up to 6 files:
+ * Produces these files:
  *   - scan_runs.ndjson: one row per scan execution
  *   - repos.ndjson: one row per repo per scan
  *   - repo_package_usage.ndjson: one row per (repo, package)
  *   - repo_symbol_usage.ndjson: one row per (repo, symbol) — merged from react-scanner + import analyzer
+ *   - repo_prop_values.ndjson: one row per (repo, component, enum-like prop, literal value)
  *   - repo_workspaces.ndjson: one row per (repo, workspace)
  *   - repo_css_overrides.ndjson: one row per internal class name usage
  *   - repo_color_tokens.ndjson: one row per (repo, colour token)
@@ -271,6 +277,7 @@ function exportForBigQuery(args: ParsedArgs): void {
   const repoRows: string[] = [];
   const packageRows: string[] = [];
   const symbolRows: string[] = [];
+  const propValueRows: string[] = [];
   const workspaceRows: string[] = [];
   const fileFindingRows: string[] = [];
   const cssOverrideRows: string[] = [];
@@ -357,6 +364,15 @@ function exportForBigQuery(args: ParsedArgs): void {
       repo.importUsage || [],
     );
 
+    // repo_prop_values table
+    emitPropValueRows(
+      propValueRows,
+      scanId,
+      scanTimestamp,
+      repo.name,
+      repo.componentUsage,
+    );
+
     // repo_workspaces table
     for (const ws of repo.workspaces || []) {
       workspaceRows.push(
@@ -383,6 +399,7 @@ function exportForBigQuery(args: ParsedArgs): void {
           file_path: finding.filePath,
           file_extension: finding.fileExtension,
           package_name: finding.packageName,
+          deep_import_path: finding.deepImportPath ?? null,
           symbol_name: finding.symbolName || null,
           finding_type: finding.findingType,
           line_number: finding.lineNumber || null,
@@ -445,6 +462,10 @@ function exportForBigQuery(args: ParsedArgs): void {
     ['repo_workspaces.ndjson', workspaceRows],
   ];
 
+  if (propValueRows.length > 0) {
+    files.push(['repo_prop_values.ndjson', propValueRows]);
+  }
+
   if (cssOverrideRows.length > 0) {
     files.push(['repo_css_overrides.ndjson', cssOverrideRows]);
   }
@@ -486,11 +507,10 @@ function emitSymbolRows(
   componentUsage: ComponentUsage[],
   importUsage: ImportUsage[],
 ): void {
-  // Build a map of import analyzer results by (packageRoot, symbolName)
+  // Import analyzer results by (packageRoot, subpath, symbolName)
   const importMap = new Map<string, ImportUsage>();
   for (const imp of importUsage) {
-    const pkgRoot = imp.packageName.split('/').slice(0, 2).join('/');
-    importMap.set(`${pkgRoot}::${imp.symbolName}`, imp);
+    importMap.set(importUsageKey(imp), imp);
   }
 
   // Track which import entries have been merged with react-scanner data
@@ -498,8 +518,7 @@ function emitSymbolRows(
 
   // Emit react-scanner component rows (with optional import data merge)
   for (const comp of componentUsage) {
-    const pkgRoot = comp.packageName.split('/').slice(0, 2).join('/');
-    const key = `${pkgRoot}::${comp.componentName}`;
+    const key = componentUsageKey(comp);
     const imp = importMap.get(key);
 
     if (imp) mergedKeys.add(key);
@@ -531,9 +550,7 @@ function emitSymbolRows(
 
   // Emit import-only rows (not already merged)
   for (const imp of importUsage) {
-    const pkgRoot = imp.packageName.split('/').slice(0, 2).join('/');
-    const key = `${pkgRoot}::${imp.symbolName}`;
-    if (mergedKeys.has(key)) continue;
+    if (mergedKeys.has(importUsageKey(imp))) continue;
 
     rows.push(
       JSON.stringify({
@@ -548,7 +565,7 @@ function emitSymbolRows(
         import_style: imp.importStyle,
         is_aliased: imp.isAliased,
         alias_name: imp.aliasName || null,
-        deep_import_path: null,
+        deep_import_path: imp.deepImportPath || null,
         props_spread_count: 0,
         file_count: imp.filesUsedIn,
         files_used_in: imp.filesUsedIn,
@@ -557,6 +574,57 @@ function emitSymbolRows(
       }),
     );
   }
+}
+
+/**
+ * Emit repo_prop_values rows — one row per (repo, component, prop, value).
+ */
+function emitPropValueRows(
+  rows: string[],
+  scanId: string,
+  scanTimestamp: string,
+  repoName: string,
+  componentUsage: ComponentUsage[],
+): void {
+  for (const comp of componentUsage) {
+    for (const [propName, values] of Object.entries(comp.propValues ?? {})) {
+      for (const [propValue, count] of Object.entries(values)) {
+        rows.push(
+          JSON.stringify({
+            scan_id: scanId,
+            scan_timestamp: scanTimestamp,
+            repo_name: repoName,
+            package_name: comp.packageName,
+            deep_import_path: comp.deepImportPath || null,
+            symbol_name: comp.componentName,
+            prop_name: propName,
+            prop_value: propValue,
+            instance_count: count,
+          }),
+        );
+      }
+    }
+  }
+}
+
+function packageRoot(packageName: string): string {
+  return packageName.split('/').slice(0, 2).join('/');
+}
+
+function componentUsageKey(comp: ComponentUsage): string {
+  return symbolKey(
+    packageRoot(comp.packageName),
+    comp.deepImportPath,
+    comp.componentName,
+  );
+}
+
+function importUsageKey(imp: ImportUsage): string {
+  return symbolKey(
+    packageRoot(imp.packageName),
+    imp.deepImportPath,
+    imp.symbolName,
+  );
 }
 
 /**
@@ -659,10 +727,14 @@ function emitCatalogRows(
           scan_id: scanId,
           scan_timestamp: scanTimestamp,
           package_name: pkg.packageName,
+          deep_import_path: pkg.deepImportPath ?? null,
           package_latest_version: pkg.latestVersion ?? null,
           symbol_name: symbol.symbolName,
           symbol_type: symbol.symbolType,
           known_props: symbol.knownProps,
+          enum_props: symbol.enumProps ?? [],
+          is_deprecated: symbol.deprecated ?? false,
+          deprecated_props: symbol.deprecatedProps ?? [],
         }),
       );
     }
@@ -687,12 +759,10 @@ function emitCatalogZeroRows(
   // Build a set of already-emitted (packageName, symbolName) pairs for this repo
   const observed = new Set<string>();
   for (const comp of repo.componentUsage) {
-    const pkgRoot = comp.packageName.split('/').slice(0, 2).join('/');
-    observed.add(`${pkgRoot}::${comp.componentName}`);
+    observed.add(componentUsageKey(comp));
   }
   for (const imp of repo.importUsage || []) {
-    const pkgRoot = imp.packageName.split('/').slice(0, 2).join('/');
-    observed.add(`${pkgRoot}::${imp.symbolName}`);
+    observed.add(importUsageKey(imp));
   }
 
   // Installed @entur/* package names
@@ -702,7 +772,11 @@ function emitCatalogZeroRows(
     if (!installedPackages.has(catalogPkg.packageName)) continue;
 
     for (const symbol of catalogPkg.symbols) {
-      const key = `${catalogPkg.packageName}::${symbol.symbolName}`;
+      const key = symbolKey(
+        catalogPkg.packageName,
+        catalogPkg.deepImportPath,
+        symbol.symbolName,
+      );
       if (observed.has(key)) continue;
 
       rows.push(
@@ -718,7 +792,7 @@ function emitCatalogZeroRows(
           import_style: null,
           is_aliased: false,
           alias_name: null,
-          deep_import_path: null,
+          deep_import_path: catalogPkg.deepImportPath ?? null,
           props_spread_count: 0,
           file_count: 0,
           files_used_in: 0,
@@ -1021,7 +1095,7 @@ Options:
   --total-repos <n>          Total repos discovered (for report metadata)
   --min-repos <n>            Expected minimum discovered; below it the scan is partial
   --bigquery-export <path>   Path to scan-report.json to export as NDJSON
-  --catalog <path>           Path to catalog.json for unused symbol detection
+  --catalog <path>           Path to catalog.json for unused symbols and enum prop values
   --packages-root <path>     Path to the design system packages/ dir (default: auto-detected)
   --owner-teams <a,b>        Comma-separated owning teams (default: CODEOWNERS)
   --posthog-export <path>    Path to scan-report.json to send to PostHog
