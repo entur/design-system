@@ -1,6 +1,6 @@
 ---
 title: CSS og stiler
-description: Komponentene våre kommer med separate CSS-filer som må importeres for at alt skal fungere. Her lærer du hvordan du importerer dem, hvilken rekkefølge de må ha og hva du gjør når stilene ikke fungere.
+description: Komponentene våre kommer med separate CSS-filer som må importeres for at alt skal fungere. Her lærer du hvordan du importerer dem, hvilken rekkefølge de må ha og hva du gjør når stilene ikke fungerer.
 route: /kom-i-gang/for-utviklere/css-og-stiler
 parent: Kom i gang
 menu: For utviklere
@@ -18,15 +18,17 @@ For at komponentene skal se riktige ut, må du inkludere CSS-filene fra pakkene 
 
 ## Hvordan importere
 
-Hver pakke eksponerer stilene sine på under `/styles`. Importer dem gjerne direkte i JavaScript eller TypeScript (anbefalt for moderne prosjekter):
+Hver pakke eksponerer stilene sine under `/styles`. Basetokens (farger og fargemodus) importerer du først, fra `@entur/tokens`. Pakken må derfor være installert i prosjektet ditt – se [komponentbibliotek](/kom-i-gang/for-utviklere/komponentbibliotek). Importer stilene gjerne direkte i JavaScript eller TypeScript (anbefalt for moderne prosjekter):
 
 ```js
+import '@entur/tokens/styles/base';
 import '@entur/button/styles';
 ```
 
 Eller i en CSS-fil:
 
 ```css
+@import '@entur/tokens/styles/base';
 @import '@entur/button/styles';
 ```
 
@@ -41,7 +43,7 @@ I en SCSS-fil bruker du `@use`:
   `/styles` er en subpath i pakkens <Text variant="code">exports</Text>, og kobles riktig gjennom bundleren din, f.eks Webpack (via sass-loader) og Vite. Importerer du gjennom <Text variant="code">sass</Text> direkte, må du oppgi full sti – <Text variant="code">@entur/tokens/dist/base.scss</Text> – eller bruke <Text variant="code">pkg:</Text>-prefiks.
 </SmallAlertBox>
 
-De gamle stiene  – som `@entur/button/dist/styles.css` – virker fortsatt, men `/styles` er den anbefalte formen.
+De gamle stiene – som `@entur/button/dist/styles.css` – virker fortsatt, men `/styles` er den anbefalte formen.
 
 ## Riktig rekkefølge
 
@@ -90,6 +92,31 @@ De øvrige token-filene (`semantic`, `data`, `transport`) importeres ved behov i
 
 `@entur/typography/beta`, `@entur/layout/beta` og `@entur/menu/beta` har stiler som ligger utenfor hovedstilene til pakken. Bruker du betakomponentene, må du importere `/beta/styles` i tillegg til `/styles`, slik listen over viser.
 
+## Last basetokens bare én gang (valgfritt)
+
+De fleste `/styles`-filene har med sin egen kopi av basetokens. Bruker du mange pakker, blir de samme tokenene deklarert mange ganger. Det gir mer CSS og gjør utviklerverktøyet i nettleseren tregt når du inspiserer elementer.
+
+Merker du dette, kan du bytte til `/styles/no-base-tokens`. Det er de samme stilene uten basetokens, mens komponenttokens (`--components-*`) fortsatt er med. Basetokens får du da bare fra `@entur/tokens/styles/base`, som du allerede importerer først. Den må lastes som CSS, ikke som SCSS:
+
+```css
+@import '@entur/tokens/styles/base';
+@import '@entur/tokens/styles';
+
+@import '@entur/typography/styles/no-base-tokens';
+@import '@entur/button/styles/no-base-tokens';
+/* … samme rekkefølge som over */
+```
+
+- Bruk samme variant for alle pakkene. Blander du, får du igjen dupliserte basetokens.
+- I SCSS gir `@use '@entur/tokens/styles/base'` deg `base.scss`. Den har bare fargetokens (`--basecolors-*`), mens `no-base-tokens` også fjerner primitive tokens og transporttokens, for eksempel `--blue-90`. Bruk `@import '@entur/tokens/dist/base.css'` i stedet.
+- Importerer du gjennom `sass` direkte, er den fulle stien `@entur/<pakke>/dist/styles.no-base-tokens.css`.
+- Betastilene har ingen basetokens, så de importeres som før.
+- Hold `@entur/tokens` oppdatert sammen med de andre `@entur/*`-pakkene. `no-base-tokens` utelater basetokens som fantes da pakken ble bygget, så en eldre `@entur/tokens` kan mangle tokens som nyere komponenter trenger.
+
+<SmallAlertBox variant="information">
+  `no-base-tokens` er en midlertidig løsning. Planen er at `/styles` slutter å ha med basetokens, og da holder det med `/styles`. Bruker du `/styles` som beskrevet over, trenger du ikke endre noe.
+</SmallAlertBox>
+
 ## Mørk modus
 
 Komponentene følger fargemodusen til nærmeste forelder med `data-color-mode="dark"` eller `data-color-mode="light"`. Token-variablene bytter verdi automatisk, så du trenger ikke gjøre noe per komponent:
@@ -128,7 +155,9 @@ Er det likevel best å overskrive er dette noen råd:
 
 **Stilene ser feil ut etter en oppgradering.** Sjekk om du har duplikate `@entur/*`-pakker i avhengighetstreet – to versjoner av samme pakke gir inkompatibel CSS og JS. `yarn dedupe --pattern "@entur"` eller `npm dedupe` rydder opp.
 
-**Komponentene er helt ustylet.** CSS-importen må ligge globalt, ikke inne i en komponentfil. Mangler stilene for én pakke, kan det også slå ut på pakker lenger ned i rekkefølgen. Hvis pakken avhenger av en annen pakken må du også ha dens stiler, eksempelvis avhenger `datepicker` av `button`.
+**Komponentene er helt ustylet.** CSS-importen må ligge globalt, ikke inne i en komponentfil. Mangler stilene for én pakke, kan det også slå ut på pakker lenger ned i rekkefølgen. Hvis pakken avhenger av en annen pakke, må du også ha dens stiler, eksempelvis avhenger `datepicker` av `button`.
+
+**Komponentene mangler farger.** Bruker du `/styles/no-base-tokens`, må `@entur/tokens/styles/base` være importert som CSS – det er den som gir fargene og fargemodusen. Mangler fargene bare på enkelte komponenter, er `@entur/tokens` trolig eldre enn komponentpakkene. Oppgrader den sammen med de andre `@entur/*`-pakkene.
 
 **Tailwind eller annet rammeverk overstyrer stilene våre.** Mesteparten av CSS-en vår ligger utenfor cascade layers, og ulagd CSS taper alltid mot ulagd CSS som kommer senere. Legg rammeverkets globale reset i et `@layer`, eller flytt importrekkefølgen slik at Entur-stilene kommer sist.
 
