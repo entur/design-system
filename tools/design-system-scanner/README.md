@@ -174,7 +174,7 @@ Group keys and the event timestamp are sent as **top-level** capture fields, not
 
 Optional catalog export (requires `--catalog`):
 
-**`ds_catalog.ndjson`** — One row per exported symbol per entry point in the design system. Contains package name, `deep_import_path` (e.g. `/beta`, null for the package root), latest published version, symbol name, type, and known prop names. Useful for identifying which DS symbols exist but are never used across scanned repos.
+**`ds_catalog.ndjson`** — One row per exported symbol per entry point in the design system. Contains package name, `deep_import_path` (e.g. `/beta`, null for the package root), latest published version, symbol name, type, known prop names, enum-like prop names (`enum_props`), whether the symbol is `@deprecated` (`is_deprecated`) and which of its props are (`deprecated_props`). Sub-components such as `SideNavigation.Item` get their own row. Useful for identifying which DS symbols exist but are never used across scanned repos.
 
 **`repo_css_overrides.ndjson`** — One row per use of an internal `.eds-*` class name. Contains repo name, selector, file path, line number, file extension, and the classification: owning `package_name`, `base_class`, `class_generation` (`legacy` / `beta` / `unknown`), and `source` (`stylesheet` / `css-in-js` / `jsx-classname`). Only produced when findings exist.
 

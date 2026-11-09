@@ -8,13 +8,17 @@
           "symbolName": "SkipToContent",
           "symbolType": "component",
           "knownProps": ["children", "mainId"],
-          "enumProps": []
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "VisuallyHidden",
           "symbolType": "component",
           "knownProps": ["as", "children"],
-          "enumProps": []
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         }
       ]
     },
@@ -34,7 +38,9 @@
             "title",
             "variant"
           ],
-          "enumProps": ["closable", "variant"]
+          "enumProps": ["closable", "variant"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "BannerExpandableAlertBox",
@@ -50,7 +56,9 @@
             "onClose",
             "closable"
           ],
-          "enumProps": ["variant", "closable"]
+          "enumProps": ["variant", "closable"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "CopyableText",
@@ -63,7 +71,9 @@
             "successMessage",
             "size"
           ],
-          "enumProps": ["size"]
+          "enumProps": ["size"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "SmallAlertBox",
@@ -78,7 +88,9 @@
             "width",
             "variant"
           ],
-          "enumProps": ["closable", "width", "variant"]
+          "enumProps": ["closable", "width", "variant"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "SmallExpandableAlertBox",
@@ -95,7 +107,9 @@
             "onClose",
             "width"
           ],
-          "enumProps": ["variant", "closable", "width"]
+          "enumProps": ["variant", "closable", "width"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "ToastAlertBox",
@@ -109,19 +123,25 @@
             "title",
             "variant"
           ],
-          "enumProps": ["closable", "variant"]
+          "enumProps": ["closable", "variant"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "ToastProvider",
           "symbolType": "component",
           "knownProps": ["delay", "position", "className", "style", "children"],
-          "enumProps": ["position"]
+          "enumProps": ["position"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "useToast",
           "symbolType": "hook",
           "knownProps": [],
-          "enumProps": []
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         }
       ]
     },
@@ -143,13 +163,17 @@
             "as",
             "aria-label"
           ],
-          "enumProps": ["variant", "size", "loading", "disabled", "width"]
+          "enumProps": ["variant", "size", "loading", "disabled", "width"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "ButtonGroup",
           "symbolType": "component",
           "knownProps": ["children", "className", "as"],
-          "enumProps": []
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "FloatingButton",
@@ -161,7 +185,9 @@
             "onClick",
             "size"
           ],
-          "enumProps": ["size"]
+          "enumProps": ["size"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "IconButton",
@@ -175,7 +201,9 @@
             "size",
             "loading"
           ],
-          "enumProps": ["disabled", "size", "loading"]
+          "enumProps": ["disabled", "size", "loading"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "NegativeButton",
@@ -188,7 +216,9 @@
             "width",
             "children"
           ],
-          "enumProps": ["size", "loading", "disabled", "width"]
+          "enumProps": ["size", "loading", "disabled", "width"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "PrimaryButton",
@@ -201,7 +231,9 @@
             "width",
             "children"
           ],
-          "enumProps": ["size", "loading", "disabled", "width"]
+          "enumProps": ["size", "loading", "disabled", "width"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "SecondaryButton",
@@ -214,7 +246,9 @@
             "width",
             "children"
           ],
-          "enumProps": ["size", "loading", "disabled", "width"]
+          "enumProps": ["size", "loading", "disabled", "width"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "SecondarySquareButton",
@@ -226,7 +260,9 @@
             "disabled",
             "loading"
           ],
-          "enumProps": ["size", "disabled", "loading"]
+          "enumProps": ["size", "disabled", "loading"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "SuccessButton",
@@ -239,7 +275,9 @@
             "width",
             "children"
           ],
-          "enumProps": ["size", "loading", "disabled", "width"]
+          "enumProps": ["size", "loading", "disabled", "width"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "SuccessSquareButton",
@@ -251,7 +289,9 @@
             "disabled",
             "loading"
           ],
-          "enumProps": ["size", "disabled", "loading"]
+          "enumProps": ["size", "disabled", "loading"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "TertiaryButton",
@@ -264,13 +304,17 @@
             "width",
             "children"
           ],
-          "enumProps": ["size", "loading", "disabled", "width"]
+          "enumProps": ["size", "loading", "disabled", "width"],
+          "deprecatedProps": [],
+          "deprecated": true
         },
         {
           "symbolName": "TertiarySquareButton",
           "symbolType": "component",
           "knownProps": ["children", "className", "disabled", "loading", "as"],
-          "enumProps": ["disabled", "loading"]
+          "enumProps": ["disabled", "loading"],
+          "deprecatedProps": [],
+          "deprecated": true
         }
       ]
     },
@@ -282,25 +326,33 @@
           "symbolName": "ActionChip",
           "symbolType": "component",
           "knownProps": ["children", "className", "loading", "size"],
-          "enumProps": ["loading", "size"]
+          "enumProps": ["loading", "size"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "ChoiceChip",
           "symbolType": "component",
           "knownProps": ["className", "disabled", "children", "value", "size"],
-          "enumProps": ["disabled", "size"]
+          "enumProps": ["disabled", "size"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "ChoiceChipGroup",
           "symbolType": "component",
           "knownProps": ["name", "value", "children", "onChange", "label"],
-          "enumProps": []
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "FilterChip",
           "symbolType": "component",
           "knownProps": ["className", "children", "value", "size"],
-          "enumProps": ["size"]
+          "enumProps": ["size"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "TagChip",
@@ -313,7 +365,9 @@
             "closeButtonTabIndex",
             "size"
           ],
-          "enumProps": ["size"]
+          "enumProps": ["size"],
+          "deprecatedProps": [],
+          "deprecated": false
         }
       ]
     },
@@ -325,7 +379,9 @@
           "symbolName": "ariaLabelIfNorwegian",
           "symbolType": "util",
           "knownProps": [],
-          "enumProps": []
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "Calendar",
@@ -344,31 +400,41 @@
             "weekNumberHeader",
             "renderCell"
           ],
-          "enumProps": ["showWeekNumbers"]
+          "enumProps": ["showWeekNumbers"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "CalendarDate",
           "symbolType": "component",
           "knownProps": [],
-          "enumProps": []
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "CalendarDateTime",
           "symbolType": "component",
           "knownProps": [],
-          "enumProps": []
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "convertValueToType",
           "symbolType": "util",
           "knownProps": [],
-          "enumProps": []
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "createCalendar",
           "symbolType": "util",
           "knownProps": [],
-          "enumProps": []
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "DateField",
@@ -424,7 +490,9 @@
             "labelTooltipPlacement",
             "required",
             "disableLabelAnimation"
-          ]
+          ],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "DatePicker",
@@ -488,67 +556,89 @@
             "labelTooltipPlacement",
             "required",
             "disableLabelAnimation"
-          ]
+          ],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "focusSegment",
           "symbolType": "util",
           "knownProps": [],
-          "enumProps": []
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "getAdjustedMaxDate",
           "symbolType": "util",
           "knownProps": [],
-          "enumProps": []
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "getWeekNumberForDate",
           "symbolType": "util",
           "knownProps": [],
-          "enumProps": []
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "handleOnChange",
           "symbolType": "util",
           "knownProps": [],
-          "enumProps": []
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "lastMillisecondOfDay",
           "symbolType": "util",
           "knownProps": [],
-          "enumProps": []
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "modulo",
           "symbolType": "util",
           "knownProps": [],
-          "enumProps": []
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "NativeDatePicker",
           "symbolType": "component",
           "knownProps": ["onChange", "variant"],
-          "enumProps": ["variant"]
+          "enumProps": ["variant"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "nativeDateToDateValue",
           "symbolType": "util",
           "knownProps": [],
-          "enumProps": []
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "nativeDateToTimeValue",
           "symbolType": "util",
           "knownProps": [],
-          "enumProps": []
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "NativeTimePicker",
           "symbolType": "component",
           "knownProps": ["variant"],
-          "enumProps": ["variant"]
+          "enumProps": ["variant"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "RangeCalendar",
@@ -572,7 +662,9 @@
             "calendarRef",
             "visibleDuration"
           ],
-          "enumProps": ["showWeekNumbers", "showOutsideMonth", "disabled"]
+          "enumProps": ["showWeekNumbers", "showOutsideMonth", "disabled"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "SimpleTimePicker",
@@ -617,19 +709,25 @@
             "labelTooltipPlacement",
             "required",
             "disableLabelAnimation"
-          ]
+          ],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "Time",
           "symbolType": "component",
           "knownProps": [],
-          "enumProps": []
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "timeOrDateValueToNativeDate",
           "symbolType": "util",
           "knownProps": [],
-          "enumProps": []
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "TimePicker",
@@ -679,13 +777,17 @@
             "labelTooltipPlacement",
             "required",
             "disableLabelAnimation"
-          ]
+          ],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "ZonedDateTime",
           "symbolType": "component",
           "knownProps": [],
-          "enumProps": []
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         }
       ]
     },
@@ -734,35 +836,37 @@
             "loading",
             "disableLabelAnimation",
             "ariaAlertOnFeedback"
-          ]
+          ],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "MultiSelect",
           "symbolType": "component",
           "knownProps": [
+            "ariaLabelChosenSingular",
+            "ariaLabelCloseList",
+            "ariaLabelOpenList",
+            "ariaLabelSelectedItem",
+            "className",
+            "clearable",
+            "disabled",
+            "disableLabelAnimation",
+            "feedback",
             "items",
             "label",
-            "placeholder",
-            "clearable",
-            "selectOnTab",
-            "disabled",
-            "readOnly",
-            "variant",
-            "feedback",
-            "prepend",
+            "labelClearSelectedItem",
+            "labelTooltip",
+            "listStyle",
             "loading",
             "loadingText",
             "noMatchesText",
-            "labelClearSelectedItem",
-            "labelTooltip",
-            "disableLabelAnimation",
-            "className",
-            "listStyle",
+            "placeholder",
+            "prepend",
+            "readOnly",
+            "selectOnTab",
             "style",
-            "ariaLabelCloseList",
-            "ariaLabelOpenList",
-            "ariaLabelChosenSingular",
-            "ariaLabelSelectedItem",
+            "variant",
             "ariaAlertOnFeedback",
             "feedbackProps",
             "selectedItems",
@@ -790,16 +894,18 @@
           ],
           "enumProps": [
             "clearable",
-            "selectOnTab",
             "disabled",
-            "readOnly",
-            "variant",
-            "loading",
             "disableLabelAnimation",
+            "loading",
+            "readOnly",
+            "selectOnTab",
+            "variant",
             "ariaAlertOnFeedback",
             "hideSelectAll",
             "clearInputOnSelect"
-          ]
+          ],
+          "deprecatedProps": ["ariaLabelJumpToInput"],
+          "deprecated": false
         },
         {
           "symbolName": "NativeDropdown",
@@ -826,7 +932,9 @@
             "variant",
             "disableLabelAnimation",
             "ariaAlertOnFeedback"
-          ]
+          ],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "SearchableDropdown",
@@ -875,7 +983,9 @@
             "loading",
             "disableLabelAnimation",
             "ariaAlertOnFeedback"
-          ]
+          ],
+          "deprecatedProps": [],
+          "deprecated": false
         }
       ]
     },
@@ -887,7 +997,9 @@
           "symbolName": "Accordion",
           "symbolType": "component",
           "knownProps": ["children", "openId", "onToggle", "defaultOpenId"],
-          "enumProps": []
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "AccordionItem",
@@ -899,13 +1011,17 @@
             "disableAnimation",
             "unmountOnClose"
           ],
-          "enumProps": ["defaultOpen", "disableAnimation", "unmountOnClose"]
+          "enumProps": ["defaultOpen", "disableAnimation", "unmountOnClose"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "BaseExpand",
           "symbolType": "component",
           "knownProps": ["children", "open", "unmountOnClose"],
-          "enumProps": ["open", "unmountOnClose"]
+          "enumProps": ["open", "unmountOnClose"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "ExpandablePanel",
@@ -924,7 +1040,9 @@
             "open",
             "disableAnimation",
             "unmountOnClose"
-          ]
+          ],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "ExpandableText",
@@ -945,25 +1063,33 @@
             "titleElement",
             "disableAnimation",
             "unmountOnClose"
-          ]
+          ],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "ExpandableTextButton",
           "symbolType": "component",
           "knownProps": ["children", "open", "onToggle", "as"],
-          "enumProps": ["open"]
+          "enumProps": ["open"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "ExpandArrow",
           "symbolType": "component",
           "knownProps": ["open", "className"],
-          "enumProps": ["open"]
+          "enumProps": ["open"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "useAccordion",
           "symbolType": "hook",
           "knownProps": [],
-          "enumProps": []
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         }
       ]
     },
@@ -984,7 +1110,9 @@
             "label",
             "removeFileButtonDescription"
           ],
-          "enumProps": ["errorUpload"]
+          "enumProps": ["errorUpload"],
+          "deprecatedProps": [],
+          "deprecated": false
         }
       ]
     },
@@ -1028,7 +1156,9 @@
             "required",
             "isFilled",
             "disableLabelAnimation"
-          ]
+          ],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "Checkbox",
@@ -1050,7 +1180,9 @@
             "readOnly",
             "reduceClickArea",
             "disableAnimation"
-          ]
+          ],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "CheckboxPanel",
@@ -1075,31 +1207,41 @@
             "hideCheckbox",
             "disabled",
             "readOnly"
-          ]
+          ],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "FeedbackText",
           "symbolType": "component",
           "knownProps": ["children", "hideIcon", "variant", "className"],
-          "enumProps": ["hideIcon", "variant"]
+          "enumProps": ["hideIcon", "variant"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "Fieldset",
           "symbolType": "component",
           "knownProps": ["children", "className", "label"],
-          "enumProps": []
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "hasValue",
           "symbolType": "util",
           "knownProps": [],
-          "enumProps": []
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "InputGroupContextProvider",
           "symbolType": "component",
-          "knownProps": [],
-          "enumProps": []
+          "knownProps": ["children"],
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "InputGroupLabel",
@@ -1112,13 +1254,17 @@
             "isFilled",
             "staticAnimation"
           ],
-          "enumProps": ["required", "isFilled", "staticAnimation"]
+          "enumProps": ["required", "isFilled", "staticAnimation"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "isFilled",
           "symbolType": "util",
           "knownProps": [],
-          "enumProps": []
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "Radio",
@@ -1130,7 +1276,9 @@
             "disabled",
             "readOnlyLabelDescription"
           ],
-          "enumProps": ["disabled"]
+          "enumProps": ["disabled"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "RadioGroup",
@@ -1144,7 +1292,9 @@
             "readOnly",
             "disabled"
           ],
-          "enumProps": ["readOnly", "disabled"]
+          "enumProps": ["readOnly", "disabled"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "RadioPanel",
@@ -1162,13 +1312,17 @@
             "readOnlyLabelDescription",
             "style"
           ],
-          "enumProps": ["size", "hideRadioButton", "disabled", "readOnly"]
+          "enumProps": ["size", "hideRadioButton", "disabled", "readOnly"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "SegmentedChoice",
           "symbolType": "component",
           "knownProps": ["value", "children", "className", "onChange"],
-          "enumProps": []
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "SegmentedControl",
@@ -1184,13 +1338,57 @@
             "className",
             "selectedValue"
           ],
-          "enumProps": ["size"]
+          "enumProps": ["size"],
+          "deprecatedProps": ["selectedValue"],
+          "deprecated": false
+        },
+        {
+          "symbolName": "SegmentedControl.Item",
+          "symbolType": "component",
+          "knownProps": [
+            "value",
+            "children",
+            "className",
+            "onChange",
+            "as",
+            "ref"
+          ],
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "SegmentedControlComponent",
           "symbolType": "component",
-          "knownProps": [],
-          "enumProps": []
+          "knownProps": [
+            "name",
+            "label",
+            "children",
+            "value",
+            "defaultValue",
+            "onChange",
+            "size",
+            "className",
+            "selectedValue"
+          ],
+          "enumProps": ["size"],
+          "deprecatedProps": ["selectedValue"],
+          "deprecated": false
+        },
+        {
+          "symbolName": "SegmentedControlComponent.Item",
+          "symbolType": "component",
+          "knownProps": [
+            "value",
+            "children",
+            "className",
+            "onChange",
+            "as",
+            "ref"
+          ],
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "Switch",
@@ -1207,37 +1405,49 @@
             "size",
             "onChange"
           ],
-          "enumProps": ["labelPlacement", "checked", "hideIcon", "size"]
+          "enumProps": ["labelPlacement", "checked", "hideIcon", "size"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "TextArea",
           "symbolType": "component",
           "knownProps": ["readOnly", "disabled", "variant", "resize"],
-          "enumProps": ["readOnly", "disabled", "variant", "resize"]
+          "enumProps": ["readOnly", "disabled", "variant", "resize"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "TextField",
           "symbolType": "component",
           "knownProps": ["disabled", "readOnly", "variant"],
-          "enumProps": ["disabled", "readOnly", "variant"]
+          "enumProps": ["disabled", "readOnly", "variant"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "useInputGroupContext",
           "symbolType": "hook",
           "knownProps": [],
-          "enumProps": []
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "useVariant",
           "symbolType": "hook",
           "knownProps": [],
-          "enumProps": []
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "VariantProvider",
           "symbolType": "component",
           "knownProps": ["children", "variant"],
-          "enumProps": ["variant"]
+          "enumProps": ["variant"],
+          "deprecatedProps": [],
+          "deprecated": false
         }
       ]
     },
@@ -1255,7 +1465,9 @@
             "children",
             "className"
           ],
-          "enumProps": ["spacing", "rowSpacing"]
+          "enumProps": ["spacing", "rowSpacing"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "GridItem",
@@ -1268,7 +1480,9 @@
             "children",
             "className"
           ],
-          "enumProps": ["small", "medium", "large"]
+          "enumProps": ["small", "medium", "large"],
+          "deprecatedProps": [],
+          "deprecated": false
         }
       ]
     },
@@ -1290,31 +1504,41 @@
             "invisible",
             "hide"
           ],
-          "enumProps": ["variant", "showZero", "type", "invisible", "hide"]
+          "enumProps": ["variant", "showZero", "type", "invisible", "hide"],
+          "deprecatedProps": ["invisible"],
+          "deprecated": false
         },
         {
           "symbolName": "BaseCard",
           "symbolType": "component",
           "knownProps": ["as", "className", "children"],
-          "enumProps": []
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "BulletBadge",
           "symbolType": "component",
           "knownProps": ["as", "className", "children", "variant", "hide"],
-          "enumProps": ["variant", "hide"]
+          "enumProps": ["variant", "hide"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "Contrast",
           "symbolType": "component",
           "knownProps": ["className"],
-          "enumProps": []
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "ContrastContext",
           "symbolType": "component",
           "knownProps": [],
-          "enumProps": []
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "MediaCard",
@@ -1338,7 +1562,9 @@
             "hideArrow",
             "orientation",
             "wholeCardAsElement"
-          ]
+          ],
+          "deprecatedProps": ["wholeCardAsElement"],
+          "deprecated": false
         },
         {
           "symbolName": "NavigationCard",
@@ -1352,7 +1578,9 @@
             "children",
             "externalLink"
           ],
-          "enumProps": ["compact", "externalLink"]
+          "enumProps": ["compact", "externalLink"],
+          "deprecatedProps": ["externalLink"],
+          "deprecated": false
         },
         {
           "symbolName": "NotificationBadge",
@@ -1366,13 +1594,17 @@
             "max",
             "hide"
           ],
-          "enumProps": ["variant", "showZero", "hide"]
+          "enumProps": ["variant", "showZero", "hide"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "StatusBadge",
           "symbolType": "component",
           "knownProps": ["as", "className", "children", "variant", "hide"],
-          "enumProps": ["variant", "hide"]
+          "enumProps": ["variant", "hide"],
+          "deprecatedProps": [],
+          "deprecated": true
         },
         {
           "symbolName": "Tag",
@@ -1385,13 +1617,17 @@
             "size",
             "compact"
           ],
-          "enumProps": ["variant", "size", "compact"]
+          "enumProps": ["variant", "size", "compact"],
+          "deprecatedProps": ["compact"],
+          "deprecated": false
         },
         {
           "symbolName": "useContrast",
           "symbolType": "hook",
           "knownProps": [],
-          "enumProps": []
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         }
       ]
     },
@@ -1426,13 +1662,25 @@
             "className",
             "children"
           ],
-          "enumProps": ["display"]
+          "enumProps": ["display"],
+          "deprecatedProps": [],
+          "deprecated": false
+        },
+        {
+          "symbolName": "Flex.Spacer",
+          "symbolType": "component",
+          "knownProps": ["as", "className", "children"],
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "FlexSpacer",
           "symbolType": "component",
           "knownProps": ["as", "className", "children"],
-          "enumProps": []
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "Grid",
@@ -1458,7 +1706,30 @@
             "className",
             "children"
           ],
-          "enumProps": []
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
+        },
+        {
+          "symbolName": "Grid.Item",
+          "symbolType": "component",
+          "knownProps": [
+            "colSpan",
+            "rowSpan",
+            "colStart",
+            "colEnd",
+            "rowStart",
+            "rowEnd",
+            "alignSelf",
+            "justifySelf",
+            "className",
+            "children",
+            "as",
+            "ref"
+          ],
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "GridItem",
@@ -1475,13 +1746,25 @@
             "className",
             "children"
           ],
-          "enumProps": []
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "Template",
           "symbolType": "component",
           "knownProps": [],
-          "enumProps": []
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
+        },
+        {
+          "symbolName": "Template.Portal",
+          "symbolType": "component",
+          "knownProps": ["className", "style", "children", "as", "ref"],
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         }
       ]
     },
@@ -1493,37 +1776,49 @@
           "symbolName": "Loader",
           "symbolType": "component",
           "knownProps": ["children", "className", "progress"],
-          "enumProps": []
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "LoadingDots",
           "symbolType": "component",
           "knownProps": ["color", "className"],
-          "enumProps": ["color"]
+          "enumProps": ["color"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "SkeletonCircle",
           "symbolType": "component",
           "knownProps": ["className", "size"],
-          "enumProps": []
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "SkeletonRectangle",
           "symbolType": "component",
           "knownProps": ["className", "width", "height"],
-          "enumProps": []
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "SkeletonWrapper",
           "symbolType": "component",
           "knownProps": ["loadingAriaLabel", "className", "children"],
-          "enumProps": []
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "Spinner",
           "symbolType": "component",
           "knownProps": ["className"],
-          "enumProps": []
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         }
       ]
     },
@@ -1535,13 +1830,17 @@
           "symbolName": "BreadcrumbItem",
           "symbolType": "component",
           "knownProps": ["as", "children", "className", "isCurrent"],
-          "enumProps": ["isCurrent"]
+          "enumProps": ["isCurrent"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "BreadcrumbNavigation",
           "symbolType": "component",
           "knownProps": ["aria-label", "children"],
-          "enumProps": []
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "CollapsibleSideNavigation",
@@ -1555,7 +1854,9 @@
             "openSideMenuAriaLabel",
             "closeSideMenuAriaLabel"
           ],
-          "enumProps": ["size", "collapsed"]
+          "enumProps": ["size", "collapsed"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "Logo",
@@ -1568,7 +1869,9 @@
             "className",
             "children"
           ],
-          "enumProps": ["size"]
+          "enumProps": ["size"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "OverflowMenu",
@@ -1582,7 +1885,9 @@
             "position",
             "aria-label"
           ],
-          "enumProps": ["placement", "position"]
+          "enumProps": ["placement", "position"],
+          "deprecatedProps": ["position"],
+          "deprecated": false
         },
         {
           "symbolName": "OverflowMenuItem",
@@ -1594,13 +1899,24 @@
             "href",
             "disabled"
           ],
-          "enumProps": ["disabled"]
+          "enumProps": ["disabled"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "OverflowMenuLink",
           "symbolType": "component",
-          "knownProps": [],
-          "enumProps": []
+          "knownProps": [
+            "children",
+            "className",
+            "onSelect",
+            "href",
+            "disabled",
+            "as"
+          ],
+          "enumProps": ["disabled"],
+          "deprecatedProps": ["onSelect"],
+          "deprecated": false
         },
         {
           "symbolName": "Pagination",
@@ -1625,13 +1941,17 @@
             "showingResultsLabel",
             "showNumberOfResultsLabel"
           ],
-          "enumProps": ["showInput", "hideNextButton", "hidePrevButton"]
+          "enumProps": ["showInput", "hideNextButton", "hidePrevButton"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "SideNavigation",
           "symbolType": "component",
           "knownProps": ["className", "size"],
-          "enumProps": ["size"]
+          "enumProps": ["size"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "SideNavigationGroup",
@@ -1645,7 +1965,9 @@
             "title",
             "icon"
           ],
-          "enumProps": ["defaultOpen", "open"]
+          "enumProps": ["defaultOpen", "open"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "SideNavigationItem",
@@ -1659,7 +1981,9 @@
             "forceExpandSubMenus",
             "icon"
           ],
-          "enumProps": ["active", "disabled", "forceExpandSubMenus"]
+          "enumProps": ["active", "disabled", "forceExpandSubMenus"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "Stepper",
@@ -1676,19 +2000,25 @@
             "ariaLabelCompleted",
             "ariaLabelSummary"
           ],
-          "enumProps": ["interactive", "showStepperIndex"]
+          "enumProps": ["interactive", "showStepperIndex"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "TopNavigationItem",
           "symbolType": "component",
           "knownProps": ["active", "children", "as", "className"],
-          "enumProps": ["active"]
+          "enumProps": ["active"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "useSideNavigationContext",
           "symbolType": "hook",
           "knownProps": [],
-          "enumProps": []
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         }
       ]
     },
@@ -1701,7 +2031,55 @@
           "symbolName": "SideNavigation",
           "symbolType": "component",
           "knownProps": [],
-          "enumProps": []
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
+        },
+        {
+          "symbolName": "SideNavigation.ExpandableItem",
+          "symbolType": "component",
+          "knownProps": [
+            "icon",
+            "badge",
+            "alertLabel",
+            "title",
+            "active",
+            "alert",
+            "disabled",
+            "open",
+            "defaultOpen",
+            "onOpenChange"
+          ],
+          "enumProps": ["active", "alert", "disabled", "open", "defaultOpen"],
+          "deprecatedProps": [],
+          "deprecated": false
+        },
+        {
+          "symbolName": "SideNavigation.Group",
+          "symbolType": "component",
+          "knownProps": ["title"],
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
+        },
+        {
+          "symbolName": "SideNavigation.Item",
+          "symbolType": "component",
+          "knownProps": [
+            "children",
+            "alert",
+            "icon",
+            "badge",
+            "alertLabel",
+            "active",
+            "disabled",
+            "className",
+            "as",
+            "ref"
+          ],
+          "enumProps": ["alert", "active", "disabled"],
+          "deprecatedProps": [],
+          "deprecated": false
         }
       ]
     },
@@ -1723,13 +2101,17 @@
             "style",
             "overlay"
           ],
-          "enumProps": ["contrast", "open", "overlay"]
+          "enumProps": ["contrast", "open", "overlay"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "headingsMap",
           "symbolType": "util",
           "knownProps": [],
-          "enumProps": []
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "Modal",
@@ -1753,13 +2135,17 @@
             "size",
             "align",
             "closeOnClickOutside"
-          ]
+          ],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "ModalContent",
           "symbolType": "component",
           "knownProps": ["children", "className", "size", "title", "align"],
-          "enumProps": ["size", "align"]
+          "enumProps": ["size", "align"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "ModalOverlay",
@@ -1772,7 +2158,9 @@
             "initialFocusRef",
             "closeOnClickOutside"
           ],
-          "enumProps": ["open", "closeOnClickOutside"]
+          "enumProps": ["open", "closeOnClickOutside"],
+          "deprecatedProps": [],
+          "deprecated": false
         }
       ]
     },
@@ -1791,7 +2179,9 @@
             "removeActiveLine",
             "className"
           ],
-          "enumProps": ["disabled", "removeActiveLine"]
+          "enumProps": ["disabled", "removeActiveLine"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "TabList",
@@ -1804,19 +2194,25 @@
             "aria-label",
             "aria-labelledby"
           ],
-          "enumProps": ["width"]
+          "enumProps": ["width"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "TabPanel",
           "symbolType": "component",
           "knownProps": ["children", "as", "index", "className"],
-          "enumProps": []
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "TabPanels",
           "symbolType": "component",
           "knownProps": ["children", "as", "keepMounted", "className"],
-          "enumProps": ["keepMounted"]
+          "enumProps": ["keepMounted"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "Tabs",
@@ -1829,7 +2225,9 @@
             "as",
             "className"
           ],
-          "enumProps": []
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         }
       ]
     },
@@ -1847,7 +2245,9 @@
             "status",
             "variant"
           ],
-          "enumProps": ["padding", "status", "variant"]
+          "enumProps": ["padding", "status", "variant"],
+          "deprecatedProps": ["status"],
+          "deprecated": false
         },
         {
           "symbolName": "EditableCell",
@@ -1859,19 +2259,25 @@
             "feedback",
             "outlined"
           ],
-          "enumProps": ["variant", "outlined"]
+          "enumProps": ["variant", "outlined"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "ExpandableRow",
           "symbolType": "component",
           "knownProps": ["colSpan", "children", "open"],
-          "enumProps": ["open"]
+          "enumProps": ["open"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "ExpandRowButton",
           "symbolType": "component",
           "knownProps": ["open", "onClick"],
-          "enumProps": ["open"]
+          "enumProps": ["open"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "HeaderCell",
@@ -1887,7 +2293,9 @@
             "sortedAscendingAriaLabel",
             "sortedDescendingAriaLabel"
           ],
-          "enumProps": ["padding", "sortable"]
+          "enumProps": ["padding", "sortable"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "Table",
@@ -1899,25 +2307,33 @@
             "stickyHeader",
             "children"
           ],
-          "enumProps": ["spacing", "fixed", "stickyHeader"]
+          "enumProps": ["spacing", "fixed", "stickyHeader"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "TableBody",
           "symbolType": "component",
           "knownProps": ["children", "className", "ref"],
-          "enumProps": []
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "TableFooter",
           "symbolType": "component",
           "knownProps": ["children"],
-          "enumProps": []
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "TableHead",
           "symbolType": "component",
           "knownProps": ["children", "className"],
-          "enumProps": []
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "TableRow",
@@ -1930,19 +2346,25 @@
             "error",
             "ref"
           ],
-          "enumProps": ["hover", "active", "error"]
+          "enumProps": ["hover", "active", "error"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "useSortableData",
           "symbolType": "hook",
           "knownProps": [],
-          "enumProps": []
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "useTableKeyboardNavigation",
           "symbolType": "hook",
           "knownProps": [],
-          "enumProps": []
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         }
       ]
     },
@@ -1954,115 +2376,153 @@
           "symbolName": "borderRadiuses",
           "symbolType": "util",
           "knownProps": [],
-          "enumProps": []
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "borderWidths",
           "symbolType": "util",
           "knownProps": [],
-          "enumProps": []
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "breakpoints",
           "symbolType": "util",
           "knownProps": [],
-          "enumProps": []
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "colors",
           "symbolType": "util",
           "knownProps": [],
-          "enumProps": []
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "componentColors",
           "symbolType": "util",
           "knownProps": [],
-          "enumProps": []
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "createColorSet",
           "symbolType": "util",
           "knownProps": [],
-          "enumProps": []
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "createColorsFileData",
           "symbolType": "util",
           "knownProps": [],
-          "enumProps": []
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "createJSColorFileData",
           "symbolType": "util",
           "knownProps": [],
-          "enumProps": []
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "createVariableSet",
           "symbolType": "util",
           "knownProps": [],
-          "enumProps": []
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "createVariablesFileData",
           "symbolType": "util",
           "knownProps": [],
-          "enumProps": []
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "fontSizes",
           "symbolType": "util",
           "knownProps": [],
-          "enumProps": []
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "fontWeights",
           "symbolType": "util",
           "knownProps": [],
-          "enumProps": []
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "lineHeights",
           "symbolType": "util",
           "knownProps": [],
-          "enumProps": []
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "outlineOffsets",
           "symbolType": "util",
           "knownProps": [],
-          "enumProps": []
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "outlines",
           "symbolType": "util",
           "knownProps": [],
-          "enumProps": []
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "shadows",
           "symbolType": "util",
           "knownProps": [],
-          "enumProps": []
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "space",
           "symbolType": "util",
           "knownProps": [],
-          "enumProps": []
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "timings",
           "symbolType": "util",
           "knownProps": [],
-          "enumProps": []
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "zIndexes",
           "symbolType": "util",
           "knownProps": [],
-          "enumProps": []
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         }
       ]
     },
@@ -2079,31 +2539,41 @@
             "showPopover",
             "setShowPopover"
           ],
-          "enumProps": ["placement", "showPopover"]
+          "enumProps": ["placement", "showPopover"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "PopoverCloseButton",
           "symbolType": "component",
           "knownProps": ["children"],
-          "enumProps": []
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "PopoverContent",
           "symbolType": "component",
           "knownProps": ["children", "className", "style"],
-          "enumProps": []
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "PopoverTrigger",
           "symbolType": "component",
           "knownProps": ["children"],
-          "enumProps": []
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "standardisePlacement",
           "symbolType": "util",
           "knownProps": [],
-          "enumProps": []
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "Tooltip",
@@ -2133,7 +2603,9 @@
             "disableClickListener",
             "showCloseButton",
             "variant"
-          ]
+          ],
+          "deprecatedProps": ["popperModifiers"],
+          "deprecated": false
         }
       ]
     },
@@ -2161,25 +2633,33 @@
             "showStart",
             "showLine",
             "showStop"
-          ]
+          ],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "LegLine",
           "symbolType": "component",
           "knownProps": ["color", "direction", "pattern", "className"],
-          "enumProps": ["direction", "pattern"]
+          "enumProps": ["direction", "pattern"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "TravelHeader",
           "symbolType": "component",
           "knownProps": ["as", "from", "to", "size", "noWrap", "className"],
-          "enumProps": ["size", "noWrap"]
+          "enumProps": ["size", "noWrap"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "TravelLeg",
           "symbolType": "component",
           "knownProps": ["className", "transport", "direction"],
-          "enumProps": ["transport", "direction"]
+          "enumProps": ["transport", "direction"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "TravelSwitch",
@@ -2193,7 +2673,9 @@
             "onChange",
             "size"
           ],
-          "enumProps": ["checked", "labelPlacement", "transport", "size"]
+          "enumProps": ["checked", "labelPlacement", "transport", "size"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "TravelTag",
@@ -2209,7 +2691,9 @@
             "labelPlacement",
             "details"
           ],
-          "enumProps": ["alert", "type", "transport", "labelPlacement"]
+          "enumProps": ["alert", "type", "transport", "labelPlacement"],
+          "deprecatedProps": [],
+          "deprecated": false
         }
       ]
     },
@@ -2221,73 +2705,97 @@
           "symbolName": "Blockquote",
           "symbolType": "component",
           "knownProps": ["className"],
-          "enumProps": []
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "BlockquoteFooter",
           "symbolType": "component",
           "knownProps": ["className"],
-          "enumProps": []
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "CodeText",
           "symbolType": "component",
           "knownProps": ["as", "className", "children"],
-          "enumProps": []
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "EmphasizedText",
           "symbolType": "component",
           "knownProps": ["as", "className", "children", "margin"],
-          "enumProps": ["margin"]
+          "enumProps": ["margin"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "Heading1",
           "symbolType": "component",
           "knownProps": ["as", "className", "children", "margin"],
-          "enumProps": ["margin"]
+          "enumProps": ["margin"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "Heading2",
           "symbolType": "component",
           "knownProps": ["as", "className", "children", "margin"],
-          "enumProps": ["margin"]
+          "enumProps": ["margin"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "Heading3",
           "symbolType": "component",
           "knownProps": ["as", "className", "children", "margin"],
-          "enumProps": ["margin"]
+          "enumProps": ["margin"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "Heading4",
           "symbolType": "component",
           "knownProps": ["as", "className", "children", "margin"],
-          "enumProps": ["margin"]
+          "enumProps": ["margin"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "Heading5",
           "symbolType": "component",
           "knownProps": ["as", "className", "children", "margin"],
-          "enumProps": ["margin"]
+          "enumProps": ["margin"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "Heading6",
           "symbolType": "component",
           "knownProps": ["as", "className", "children", "margin"],
-          "enumProps": ["margin"]
+          "enumProps": ["margin"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "Label",
           "symbolType": "component",
           "knownProps": ["as", "className", "children", "margin"],
-          "enumProps": ["margin"]
+          "enumProps": ["margin"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "LeadParagraph",
           "symbolType": "component",
           "knownProps": ["as", "className", "children", "margin"],
-          "enumProps": ["margin"]
+          "enumProps": ["margin"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "Link",
@@ -2300,61 +2808,81 @@
             "margin",
             "ariaLabelExternalIcon"
           ],
-          "enumProps": ["external", "margin"]
+          "enumProps": ["external", "margin"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "ListItem",
           "symbolType": "component",
           "knownProps": ["className", "children", "title"],
-          "enumProps": []
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "NumberedList",
           "symbolType": "component",
           "knownProps": ["className", "children"],
-          "enumProps": []
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "Paragraph",
           "symbolType": "component",
           "knownProps": ["as", "className", "children", "margin"],
-          "enumProps": ["margin"]
+          "enumProps": ["margin"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "PreformattedText",
           "symbolType": "component",
           "knownProps": ["as", "className", "children"],
-          "enumProps": []
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "SmallText",
           "symbolType": "component",
           "knownProps": ["as", "className", "children", "margin"],
-          "enumProps": ["margin"]
+          "enumProps": ["margin"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "StrongText",
           "symbolType": "component",
           "knownProps": ["as", "className", "children", "margin"],
-          "enumProps": ["margin"]
+          "enumProps": ["margin"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "SubLabel",
           "symbolType": "component",
           "knownProps": ["as", "className", "children", "margin"],
-          "enumProps": ["margin"]
+          "enumProps": ["margin"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "SubParagraph",
           "symbolType": "component",
           "knownProps": ["as", "className", "children", "margin"],
-          "enumProps": ["margin"]
+          "enumProps": ["margin"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "UnorderedList",
           "symbolType": "component",
           "knownProps": ["className", "children"],
-          "enumProps": []
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         }
       ]
     },
@@ -2376,25 +2904,33 @@
             "maxLines",
             "className"
           ],
-          "enumProps": ["variant", "size", "tone", "trim"]
+          "enumProps": ["variant", "size", "tone", "trim"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "Label",
           "symbolType": "component",
           "knownProps": ["spacing", "className", "children"],
-          "enumProps": []
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "Link",
           "symbolType": "component",
           "knownProps": ["spacing", "className", "children"],
-          "enumProps": []
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "ListItem",
           "symbolType": "component",
           "knownProps": ["spacing", "className", "tone", "children", "title"],
-          "enumProps": ["tone"]
+          "enumProps": ["tone"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "NumberedList",
@@ -2407,7 +2943,9 @@
             "type",
             "variant"
           ],
-          "enumProps": ["tone", "type", "variant"]
+          "enumProps": ["tone", "type", "variant"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "Text",
@@ -2423,19 +2961,25 @@
             "maxLines",
             "className"
           ],
-          "enumProps": ["size", "weight", "tone", "variant", "trim"]
+          "enumProps": ["size", "weight", "tone", "variant", "trim"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "TextContainer",
           "symbolType": "component",
           "knownProps": ["spacing", "className", "children"],
-          "enumProps": []
+          "enumProps": [],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "UnorderedList",
           "symbolType": "component",
           "knownProps": ["spacing", "className", "tone", "children"],
-          "enumProps": ["tone"]
+          "enumProps": ["tone"],
+          "deprecatedProps": [],
+          "deprecated": false
         }
       ]
     },
@@ -2446,80 +2990,106 @@
         {
           "symbolName": "ConditionalWrapper",
           "symbolType": "component",
-          "knownProps": [],
-          "enumProps": []
+          "knownProps": ["condition", "wrapper", "children"],
+          "enumProps": ["condition"],
+          "deprecatedProps": [],
+          "deprecated": false
         },
         {
           "symbolName": "getActiveElement",
           "symbolType": "util",
           "knownProps": [],
-          "enumProps": []
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "getNodeText",
           "symbolType": "util",
           "knownProps": [],
-          "enumProps": []
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "mergeRefs",
           "symbolType": "util",
           "knownProps": [],
-          "enumProps": []
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "useControllableProp",
           "symbolType": "hook",
           "knownProps": [],
-          "enumProps": []
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "useDebounce",
           "symbolType": "hook",
           "knownProps": [],
-          "enumProps": []
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "useForceUpdate",
           "symbolType": "hook",
           "knownProps": [],
-          "enumProps": []
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "useOnClickOutside",
           "symbolType": "hook",
           "knownProps": [],
-          "enumProps": []
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "useOnEscape",
           "symbolType": "hook",
           "knownProps": [],
-          "enumProps": []
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "useOnMount",
           "symbolType": "hook",
           "knownProps": [],
-          "enumProps": []
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "useRandomId",
           "symbolType": "hook",
           "knownProps": [],
-          "enumProps": []
+          "enumProps": [],
+          "deprecated": true,
+          "deprecatedProps": []
         },
         {
           "symbolName": "useWindowDimensions",
           "symbolType": "hook",
           "knownProps": [],
-          "enumProps": []
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         },
         {
           "symbolName": "warnAboutMissingStyles",
           "symbolType": "util",
           "knownProps": [],
-          "enumProps": []
+          "enumProps": [],
+          "deprecated": false,
+          "deprecatedProps": []
         }
       ]
     }

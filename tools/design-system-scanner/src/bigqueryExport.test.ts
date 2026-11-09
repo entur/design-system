@@ -120,7 +120,14 @@ const catalog: DesignSystemCatalog = {
       packageName: '@entur/typography',
       latestVersion: null,
       symbols: [
-        { symbolName: 'Link', symbolType: 'component', knownProps: [] },
+        {
+          symbolName: 'Link',
+          symbolType: 'component',
+          knownProps: ['href', 'disabled'],
+          enumProps: ['disabled'],
+          deprecated: true,
+          deprecatedProps: ['disabled'],
+        },
       ],
     },
     {
@@ -217,6 +224,22 @@ describe('BigQuery export', () => {
       ['src/Old.tsx', null],
       ['src/New.tsx', '/beta'],
     ]);
+  });
+
+  it('carries enum and deprecation info on catalog rows', () => {
+    const rows = readRows(outDir, 'ds_catalog.ndjson');
+    expect(rows[0]).toMatchObject({
+      symbol_name: 'Link',
+      enum_props: ['disabled'],
+      is_deprecated: true,
+      deprecated_props: ['disabled'],
+    });
+    // Older catalogs without the fields
+    expect(rows[1]).toMatchObject({
+      enum_props: [],
+      is_deprecated: false,
+      deprecated_props: [],
+    });
   });
 
   it('carries the entry point on catalog rows', () => {

@@ -376,6 +376,10 @@ export interface CatalogSymbol {
    * before the field existed.
    */
   enumProps?: string[];
+  /** Marked `@deprecated` (absent in older catalogs) */
+  deprecated?: boolean;
+  /** Self-declared props marked `@deprecated` (absent in older catalogs) */
+  deprecatedProps?: string[];
 }
 
 /** A package entry point in the design system catalog. */

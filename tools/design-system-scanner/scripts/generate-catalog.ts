@@ -65,6 +65,8 @@ interface CatalogSymbol {
   symbolType: SymbolType;
   knownProps: string[];
   enumProps: string[];
+  deprecated: boolean;
+  deprecatedProps: string[];
 }
 
 interface CatalogPackage {
@@ -130,6 +132,34 @@ function isEnumLikeProp(symbol: ts.Symbol, checker: ts.TypeChecker): boolean {
     members.length > 0 &&
     members.every(member => (member.flags & ENUM_MEMBER_FLAGS) !== 0)
   );
+}
+
+function isDeprecated(symbol: ts.Symbol, checker: ts.TypeChecker): boolean {
+  return symbol.getJsDocTags(checker).some(tag => tag.name === 'deprecated');
+}
+
+/** Props from a component's first parameter, for props types without an XProps name. */
+function propsTypeFromSignature(
+  componentType: ts.Type,
+  checker: ts.TypeChecker,
+): ts.Type | null {
+  const param = componentType.getCallSignatures()[0]?.getParameters()[0];
+  return param ? checker.getTypeOfSymbol(param) : null;
+}
+
+/** Static component members, e.g. `Item` in `Object.assign(Root, { Item })`. */
+function findSubcomponents(
+  componentType: ts.Type,
+  checker: ts.TypeChecker,
+): ts.Symbol[] {
+  return checker
+    .getPropertiesOfType(componentType)
+    .filter(
+      member =>
+        /^[A-Z]/.test(member.getName()) &&
+        !['Provider', 'Consumer'].includes(member.getName()) &&
+        checker.getTypeOfSymbol(member).getCallSignatures().length > 0,
+    );
 }
 
 /** Subpath entry points (e.g. "/beta") with a src/<subpath>/index.ts(x). */
@@ -226,6 +256,48 @@ function processPackage(
     return null;
   }
 
+  /** XBaseProps or XOwnProps (self-defined) before XProps, by name. */
+  function findNamedPropsType(name: string): ts.Type | null {
+    const preferredNames = [`${name}BaseProps`, `${name}OwnProps`];
+    let propsType: ts.Type | null = null;
+    for (const sf of program.getSourceFiles()) {
+      if (sf.isDeclarationFile) continue;
+      if (!sf.fileName.replace(/\\/g, '/').startsWith(packagesRootNorm)) {
+        continue;
+      }
+      for (const stmt of sf.statements) {
+        if (
+          !ts.isTypeAliasDeclaration(stmt) &&
+          !ts.isInterfaceDeclaration(stmt)
+        ) {
+          continue;
+        }
+        if (preferredNames.includes(stmt.name.text)) {
+          return checker.getTypeAtLocation(stmt);
+        }
+        if (propsType === null && stmt.name.text === `${name}Props`) {
+          propsType = checker.getTypeAtLocation(stmt);
+        }
+      }
+    }
+    return propsType;
+  }
+
+  function describeProps(propsType: ts.Type | null) {
+    const props = propsType
+      ? getSelfDefinedProps(propsType, checker, packagesRootNorm)
+      : [];
+    return {
+      knownProps: props.map(prop => prop.getName()),
+      enumProps: props
+        .filter(prop => isEnumLikeProp(prop, checker))
+        .map(prop => prop.getName()),
+      deprecatedProps: props
+        .filter(prop => isDeprecated(prop, checker))
+        .map(prop => prop.getName()),
+    };
+  }
+
   const exportedSymbols = checker.getExportsOfModule(moduleSymbol);
   const symbols: CatalogSymbol[] = [];
   const seenNames = new Set<string>();
@@ -260,50 +332,42 @@ function processPackage(
 
     seenNames.add(name);
     const symbolType = classifySymbol(name);
+    const deprecated = isDeprecated(target, checker);
 
-    // Extract self-defined props for component exports
-    let knownProps: string[] = [];
-    let enumProps: string[] = [];
-    if (symbolType === 'component') {
-      // Prefer the self-defined XBaseProps or XOwnProps over XProps
-      const preferredNames = [`${name}BaseProps`, `${name}OwnProps`];
-      const propsTypeName = `${name}Props`;
-      let propsType: ts.Type | null = null;
-      let preferred = false;
-
-      for (const sf of program.getSourceFiles()) {
-        if (preferred) break;
-        if (sf.isDeclarationFile) continue;
-        const sfName = sf.fileName.replace(/\\/g, '/');
-        if (!sfName.startsWith(packagesRootNorm)) continue;
-
-        for (const stmt of sf.statements) {
-          if (
-            !ts.isTypeAliasDeclaration(stmt) &&
-            !ts.isInterfaceDeclaration(stmt)
-          ) {
-            continue;
-          }
-          const isPreferred = preferredNames.includes(stmt.name.text);
-          if (!isPreferred && stmt.name.text !== propsTypeName) continue;
-          if (isPreferred || propsType === null) {
-            propsType = checker.getTypeAtLocation(stmt);
-            preferred = isPreferred;
-            if (isPreferred) break;
-          }
-        }
-      }
-
-      if (propsType !== null) {
-        const props = getSelfDefinedProps(propsType, checker, packagesRootNorm);
-        knownProps = props.map(prop => prop.getName());
-        enumProps = props
-          .filter(prop => isEnumLikeProp(prop, checker))
-          .map(prop => prop.getName());
-      }
+    if (symbolType !== 'component') {
+      symbols.push({
+        symbolName: name,
+        symbolType,
+        knownProps: [],
+        enumProps: [],
+        deprecated,
+        deprecatedProps: [],
+      });
+      continue;
     }
 
-    symbols.push({ symbolName: name, symbolType, knownProps, enumProps });
+    const componentType = checker.getTypeOfSymbol(target);
+    const propsType =
+      findNamedPropsType(name) ??
+      propsTypeFromSignature(componentType, checker);
+    symbols.push({
+      symbolName: name,
+      symbolType,
+      ...describeProps(propsType),
+      deprecated,
+    });
+
+    // `Object.assign(Root, { Item })` renders as <Root.Item>
+    for (const sub of findSubcomponents(componentType, checker)) {
+      symbols.push({
+        symbolName: `${name}.${sub.getName()}`,
+        symbolType: 'component',
+        ...describeProps(
+          propsTypeFromSignature(checker.getTypeOfSymbol(sub), checker),
+        ),
+        deprecated: deprecated || isDeprecated(sub, checker),
+      });
+    }
   }
 
   // Sort symbols alphabetically for stable output

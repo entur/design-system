@@ -732,6 +732,9 @@ function emitCatalogRows(
           symbol_name: symbol.symbolName,
           symbol_type: symbol.symbolType,
           known_props: symbol.knownProps,
+          enum_props: symbol.enumProps ?? [],
+          is_deprecated: symbol.deprecated ?? false,
+          deprecated_props: symbol.deprecatedProps ?? [],
         }),
       );
     }
