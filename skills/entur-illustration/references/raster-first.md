@@ -76,7 +76,7 @@ Final assets are live strokes in three colour modes.
 node scripts/illustrator-trace.mjs <draft.png> --out <dir> --name <Name>
 ```
 
-It drives Illustrator through AppleScript `do javascript` and writes `<Name>.ai` with live strokes and the Roughen effect, `<Name>.svg`, `<Name>-darkmode.svg` and `<Name>-contrast.svg`. Options: `--app` for another Illustrator install (default Illustrator 2026), `--threshold` (line darkness, default 110), `--max-stroke` (widest line traced as a stroke; use 20 for a 2048 px draft), `--no-roughen`. The same work is available to agents as MCP tools (`illustrator_status`, `illustrator_run_jsx`, `illustrator_trace_draft`):
+It drives Illustrator through AppleScript `do javascript` and writes `<Name>.ai` with live strokes, `<Name>.svg`, `<Name>-darkmode.svg` and `<Name>-contrast.svg`. Options: `--app` for another Illustrator install (default Illustrator 2026), `--size` (artboard in pt, default 360, which puts a figure at library scale), `--threshold` (line darkness, default 110), `--max-stroke` (widest line traced as a stroke, default 20 for a 2048 px draft), `--contour-share` (share of lines that get the contour weight, default 0.25), `--roughen` (add Roughen to the strokes; off by default). A 2048 px draft can take several minutes, more with other large documents open. The same work is available to agents as MCP tools (`illustrator_status`, `illustrator_run_jsx`, `illustrator_trace_draft`):
 
 ```bash
 claude mcp add -s local illustrator-bridge -- node <skill folder>/scripts/illustrator-mcp.mjs
@@ -86,17 +86,18 @@ What the script does, and why — the same steps apply when you trace by hand:
 
 - **Line layer:** Black and White trace, **Strokes only**, method **Abutting**. With Fills on, the lines merge with the ink areas they touch (uniform, hair) into one filled region. With Overlapping, white areas are shapes stacked on a solid silhouette, and Ignore White deletes them, leaving a filled silhouette.
 - **Fill layer:** Limited colours, Abutting, Fills. Every area snaps to the nearest palette colour. Enclosed white is kept as `paper`, because it turns light grey in dark mode; only the white background that touches the artboard edge is removed. Ink areas stay only when they are wide (mean width over ~4 pt: a uniform, hair, shoes); thin line-like ink is dropped, since the line layer draws it.
-- **Strokes:** ink colour, round caps and joins, 1.5 pt or 1.0 pt by traced width. Check faces and small details by hand; they often want 1.0.
-- **Roughen on strokes only.** On large traced fills a relative Roughen makes the edges hairy, and the draft already carries the hand tremor.
+- **Strokes:** ink colour, round caps and joins. The thickest quarter of the lines gets 1.5 pt, the rest 1.0 pt — by traced width, or by length (long outer contours) when the draft's lines are all equally thick. Library people land at about that mix; an all-1.5 figure looks heavy and coarse next to them.
+- **Fills smoothed and shifted.** A low path fidelity keeps colour areas to a few anchors instead of a jagged edge. Colour areas (not ink) are shifted 1 pt right and 0.5 pt down, the library's misregistration.
+- **No Roughen by default.** The draft already carries the hand tremor; Roughen on top makes lines bumpy, and on large fills a relative Roughen makes edges hairy. Use `--roughen` only when the traced lines look too clean.
 - **Modes by palette mapping.** Every white becomes `paper`; recolour white clothing to `cloth` (and vehicle bodies to `vehicle`) by hand in the dark file if the motif has them.
 
 **In Illustrator, by hand:**
 
-1. Place the PNG on a 320 pt artboard and lock it on a layer at 50 % opacity.
+1. Place the PNG on a 360 pt artboard and lock it on a layer at 50 % opacity.
 2. Line layer: Object > Image Trace, Mode Black and White, threshold so only the navy line survives, method Abutting. Under Advanced, create **Strokes** only, with a stroke width limit around 20 px for a 2048 px draft. Expand.
-3. Select all lines. Stroke panel: 1.5 pt for contours (1.0 for interior lines), Cap Round, Corner Round, Profile Uniform. Join broken pieces, delete specks; aim for few anchors.
-4. Fill layer: trace the PNG again with Mode Limited colours, method Abutting and the palette as the swatch set, create Fills, delete the background white, and put the layer under the lines.
-5. Apply the Roughen graphic style from `handoff.md` to the strokes, then build the dark and contrast versions with Recolor Artwork and the mapping in `palette.md`.
+3. Select all lines. Stroke panel: 1.0 pt, Cap Round, Corner Round, Profile Uniform; then select the long outer contours and set them to 1.5 pt (about a quarter of the lines). Join broken pieces, delete specks; aim for few anchors.
+4. Fill layer: trace the PNG again with Mode Limited colours, method Abutting, a low path fidelity and the palette as the swatch set, create Fills, delete the background white, nudge the colour areas 1 pt right and 0.5 pt down, and put the layer under the lines.
+5. Build the dark and contrast versions with Recolor Artwork and the mapping in `palette.md`. Add the Roughen graphic style from `handoff.md` only if the lines look too clean.
 
 **In code** (no Illustrator): `node scripts/grid.mjs <draft.png> --format square`, render the grid, and redraw the centre lines with the script (route A), 12–25 anchors per contour of a person. Slower, and it loses some of the PNG's life, but it stays in the repository and gives all three modes at once.
 

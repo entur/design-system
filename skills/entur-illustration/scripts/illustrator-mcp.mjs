@@ -86,7 +86,7 @@ const TOOLS = [
   {
     name: 'illustrator_trace_draft',
     description:
-      'Turn a PNG illustration draft into Entur Linje vector art in Illustrator: live round-capped strokes, palette-snapped fills, Roughen on strokes. Writes <name>.ai, <name>.svg, <name>-darkmode.svg and <name>-contrast.svg.',
+      'Turn a PNG illustration draft into Entur Linje vector art in Illustrator: live round-capped strokes with a contour/detail weight hierarchy, smoothed palette-snapped fills, optional Roughen. Writes <name>.ai, <name>.svg, <name>-darkmode.svg and <name>-contrast.svg.',
     inputSchema: {
       type: 'object',
       properties: {
@@ -104,14 +104,20 @@ const TOOLS = [
           type: 'number',
           description: 'Widest line traced as a stroke, default 20.',
         },
+        size: {
+          type: 'number',
+          description:
+            'Artboard size in pt, default 360 (library scale for a figure).',
+        },
         roughen: {
           type: 'boolean',
-          description: 'Apply Roughen to strokes, default true.',
+          description:
+            'Add Roughen to strokes, default false: the draft already has the tremor.',
         },
       },
       required: ['png', 'outDir', 'name'],
     },
-    run: ({ png, outDir, name, threshold, maxStroke, roughen }) => {
+    run: ({ png, outDir, name, threshold, maxStroke, size, roughen }) => {
       const a = [
         path.join(HERE, 'illustrator-trace.mjs'),
         png,
@@ -122,7 +128,8 @@ const TOOLS = [
       ];
       a.push('--max-stroke', String(maxStroke ?? 20));
       if (threshold != null) a.push('--threshold', String(threshold));
-      if (roughen === false) a.push('--no-roughen');
+      if (size != null) a.push('--size', String(size));
+      if (roughen === true) a.push('--roughen');
       return runNode(a);
     },
   },

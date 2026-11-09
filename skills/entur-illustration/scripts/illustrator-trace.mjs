@@ -1,19 +1,28 @@
-// illustrator-trace — turns a PNG draft into Entur Linje vector strokes in Adobe
-// Illustrator, driven from the command line through AppleScript `do javascript`.
-// No plugin needed. macOS only.
+// illustrator-trace — turns a PNG draft into Entur Linje vector strokes in
+// Adobe Illustrator, driven from the command line through AppleScript
+// `do javascript`. No plugin needed. macOS only.
 //
-//   node illustrator-trace.mjs <draft.png> [--out dir] [--name Name] [--app "/Applications/Adobe Illustrator 2026/Adobe Illustrator.app"]
-//                    [--threshold 110] [--max-stroke 14] [--contour 1.5] [--detail 1.0] [--no-roughen]
+//   node illustrator-trace.mjs <draft.png> [--out dir] [--name Name]
+//     [--app "/Applications/Adobe Illustrator 2026/Adobe Illustrator.app"]
+//     [--size 360] [--threshold 110] [--max-stroke 20] [--contour 1.5] [--detail 1.0]
+//     [--contour-share 0.25] [--min-ink-width 4] [--roughen]
 //
-// Two traces of the same PNG on a 320 pt artboard:
-//   lines  black-and-white trace, strokes and fills: thin lines become live
-//          strokes (round caps and joins, contour/detail weight, ink colour),
-//          wide dark areas (uniform, hair, shoes) become ink fills.
-//   colour colour trace, every area snapped to the exact palette colour,
-//          white and ink dropped (the line trace has them), put underneath.
-// Then Effect > Roughen (size 0.2 %, detail 63/in, smooth) on everything,
-// saved as <Name>.ai and exported as <Name>.svg, plus -darkmode and
-// -contrast SVGs by palette mapping.
+// Two traces of the same PNG on a `--size` pt artboard (360 puts a figure at
+// library scale):
+//   lines  black-and-white trace, strokes only, abutting: every line a live
+//          stroke with round caps and joins, in ink. The thickest share
+//          (`--contour-share`) gets the contour weight, the rest the detail
+//          weight; by traced width, or by length when widths are all alike.
+//   colour colour trace, abutting, smoothed: every area snapped to the exact
+//          palette colour; wide ink areas kept, thin line-like ink dropped,
+//          enclosed white kept as paper, the white background removed;
+//          colour (not ink) shifted 1 pt right and 0.5 pt down.
+// The draft already carries the hand tremor, so Roughen is only added with
+// `--roughen`. Saved as <Name>.ai and <Name>.svg, plus -darkmode and
+// -contrast SVGs by palette mapping (every white becomes paper).
+//
+// ExtendScript is ES3 (no Array.map), and `name` and `cut` are read-only
+// globals in Illustrator: assigning to them fails silently.
 
 import fs from 'node:fs';
 import os from 'node:os';
@@ -39,7 +48,9 @@ const threshold = Number(opt('threshold', 110));
 const maxStroke = Number(opt('max-stroke', 14));
 const contour = Number(opt('contour', 1.5));
 const detail = Number(opt('detail', 1.0));
-const roughen = !flag('no-roughen');
+// A traced draft already carries the hand tremor; Roughen on top makes it bumpy.
+const roughen = flag('roughen');
+flag('no-roughen');
 const [pngArg] = args;
 if (!pngArg || !fs.existsSync(pngArg)) {
   console.error(
@@ -72,6 +83,9 @@ const params = {
   detail,
   roughen,
   minInkWidth: Number(opt('min-ink-width', 4)),
+  size: Number(opt('size', 360)),
+  contourShare: Number(opt('contour-share', 0.25)),
+  shift: [1, -0.5],
   palette: Object.fromEntries(
     Object.entries(PALETTE).map(([k, [hex]]) => [k, hexToRgb(hex)]),
   ),
@@ -106,7 +120,7 @@ function placeAndTrace(doc, layer) {
   return placed.trace();
 }
 var log = [];
-var doc = app.documents.add(DocumentColorSpace.RGB, 320, 320);
+var doc = app.documents.add(DocumentColorSpace.RGB, P.size, P.size);
 var colourLayer = doc.layers[0]; colourLayer.name = 'Fill';
 var lineLayer = doc.layers.add(); lineLayer.name = 'Outline';
 
@@ -121,7 +135,7 @@ try { co.colorFidelity = 20; } catch (e) {}
 // dark mode); only the white background touching the artboard edge is removed.
 co.fills = true; co.strokes = false; co.ignoreWhite = false;
 try { co.tracingMethod = TracingMethodType.TRACINGMETHODABUTTING; } catch (e) {}
-co.pathFidelity = 60; co.cornerFidelity = 70; co.noiseFidelity = 40;
+co.pathFidelity = 30; co.cornerFidelity = 50; co.noiseFidelity = 70;
 app.redraw();
 var cg = ct.tracing.expandTracing();
 var cp = paths(cg, []), kept = 0, dropped = 0, inkAreas = 0;
@@ -141,6 +155,8 @@ for (var i = cp.length - 1; i >= 0; i--) {
   if (k === 'paper' || (k === 'ink' && !wide)) { it.remove(); dropped++; continue; }
   if (k === 'ink') inkAreas++;
   it.fillColor = rgb(P.palette[k]); it.stroked = false; kept++;
+  // Print misregistration: colour shifts off its line; ink areas stay put.
+  if (k !== 'ink') it.translate(P.shift[0], P.shift[1]);
 }
 log.push('colour areas kept ' + kept + ' (ink ' + inkAreas + '), dropped ' + dropped);
 
@@ -154,17 +170,25 @@ lo.threshold = P.threshold;
 lo.fills = false; lo.strokes = true; lo.maxStrokeWeight = P.maxStroke;
 lo.ignoreWhite = true;
 try { lo.tracingMethod = TracingMethodType.TRACINGMETHODABUTTING; } catch (e) {}
-lo.pathFidelity = 70; lo.cornerFidelity = 70; lo.noiseFidelity = 20;
+lo.pathFidelity = 55; lo.cornerFidelity = 60; lo.noiseFidelity = 30;
 app.redraw();
 var lg = lt.tracing.expandTracing();
 var lp = paths(lg, []), strokes = 0, fills = 0;
+// Contour or detail: by relative traced width when the draft has a weight
+// hierarchy, otherwise by length (long outer contours). Note: \`cut\` and \`name\`
+// are read-only globals in Illustrator's ExtendScript, so neither is used here.
+var widths = [], lengths = [];
+for (var w0 = 0; w0 < lp.length; w0++) if (lp[w0].stroked) { widths.push(Number(lp[w0].strokeWidth)); lengths.push(Number(lp[w0].length)); }
+function quantile(arr, q) { var a = arr.slice(0); a.sort(function (x, y) { return x - y; }); return a.length ? a[Math.min(a.length - 1, Math.floor(a.length * q))] : 0; }
+var byWidth = quantile(widths, 0.9) >= 1.3 * quantile(widths, 0.1);
+var contourCut = byWidth ? quantile(widths, 1 - P.contourShare) : quantile(lengths, 1 - P.contourShare);
 var ink = rgb(P.palette.ink);
 for (var j = 0; j < lp.length; j++) {
   var p = lp[j];
   if (p.stroked) {
     var w = p.strokeWidth;
     p.strokeColor = ink;
-    p.strokeWidth = w > (P.contour + P.detail) / 2 ? P.contour : P.detail;
+    p.strokeWidth = (byWidth ? w : Number(p.length)) >= contourCut ? P.contour : P.detail;
     p.strokeCap = StrokeCap.ROUNDENDCAP;
     p.strokeJoin = StrokeJoin.ROUNDENDJOIN;
     p.filled = false;
@@ -173,7 +197,7 @@ for (var j = 0; j < lp.length; j++) {
     p.fillColor = ink; fills++;
   }
 }
-log.push('line strokes ' + strokes + ', ink fills ' + fills);
+log.push('line strokes ' + strokes + ' (contours by ' + (byWidth ? 'width' : 'length') + ', cut ' + Math.round(contourCut * 100) / 100 + '), ink fills ' + fills);
 
 // Roughen, as in the library's .ai sources.
 var roughened = 0;
