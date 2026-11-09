@@ -177,9 +177,10 @@ function bezierD(segments, closed) {
 }
 
 /** Samples cubic segments into a polyline, about one point per `step`. */
-function sample(segments, step) {
+function sample(segments, step, starts) {
   const out = [];
   for (const [p0, c1, c2, p3] of segments) {
+    if (starts) starts.push(out.length);
     const len =
       Math.hypot(c1[0] - p0[0], c1[1] - p0[1]) +
       Math.hypot(c2[0] - c1[0], c2[1] - c1[1]) +
@@ -212,6 +213,40 @@ function normals(poly, closed) {
     const len = Math.hypot(dx, dy) || 1;
     return [-dy / len, dx / len];
   });
+}
+
+/** Smooth path through the points, with a sharp break at every index in `hard`. */
+function runsD(pts, closed, hard) {
+  if (!hard.size) return bezierD(controls(pts, closed), closed);
+  let order = pts.map((_, i) => i);
+  if (closed) {
+    const first = order.find(i => hard.has(i));
+    order = [...order.slice(first), ...order.slice(0, first), first];
+  }
+  const segs = [];
+  let run = [pts[order[0]]];
+  for (let k = 1; k < order.length; k++) {
+    run.push(pts[order[k]]);
+    if (hard.has(order[k]) || k === order.length - 1) {
+      segs.push(...controls(run, false));
+      run = [pts[order[k]]];
+    }
+  }
+  return bezierD(segs, closed);
+}
+
+/**
+ * Path data for an outline from the Drawing's roughen step: either clean
+ * Bézier segments, or roughened points with their hard corners.
+ */
+function outlineD(outline, closed, shift = [0, 0]) {
+  const move = p => [p[0] + shift[0], p[1] + shift[1]];
+  if (outline.segments)
+    return bezierD(
+      outline.segments.map(seg => seg.map(move)),
+      closed,
+    );
+  return runsD(outline.pts.map(move), closed, outline.hard);
 }
 
 const polyD = (poly, closed = true) =>
@@ -281,18 +316,21 @@ export class Drawing {
   }
 
   /**
-   * Bakes Illustrator's Roughen (relative size, smooth points) into a path:
-   * one new point every 72/detail units, pushed a random distance to either
-   * side, up to size % of the object's diagonal, joined smoothly. Small
-   * objects barely move, as in Illustrator.
+   * Bakes Illustrator's Roughen (relative size, smooth points) into an
+   * outline: one new point every 72/detail units, pushed a random distance
+   * to either side, up to size % of the object's diagonal. Small objects
+   * barely move, as in Illustrator. With `corners`, the segment ends stay
+   * put and the path breaks there, so corners stay sharp.
    */
-  #roughen(segments, closed, shift = [0, 0]) {
-    const moved = s =>
-      s.map(seg => seg.map(p => [p[0] + shift[0], p[1] + shift[1]]));
+  #roughen(segments, closed, corners) {
     const settings = this.roughenSettings;
-    if (!settings) return bezierD(moved(segments), closed);
-    const poly = sample(segments, 72 / settings.detail);
+    if (!settings) return { segments };
+    const starts = [];
+    const poly = sample(segments, 72 / settings.detail, starts);
     if (!closed) poly.push(segments[segments.length - 1][3]);
+    const hard = new Set(
+      corners ? [...starts, ...(closed ? [] : [poly.length - 1])] : [],
+    );
     const xs = poly.map(p => p[0]);
     const ys = poly.map(p => p[1]);
     const diag = Math.hypot(
@@ -300,13 +338,43 @@ export class Drawing {
       Math.max(...ys) - Math.min(...ys),
     );
     const amp = (diag * settings.size) / 100;
-    if (amp < 0.05 || poly.length < 4) return bezierD(moved(segments), closed);
+    if (amp < 0.05 || poly.length < 4) return { segments };
     const nrm = normals(poly, closed);
     const pts = poly.map((p, i) => {
+      if (hard.has(i)) return p;
       const o = (this.rand() * 2 - 1) * amp;
-      return [p[0] + nrm[i][0] * o + shift[0], p[1] + nrm[i][1] * o + shift[1]];
+      return [p[0] + nrm[i][0] * o, p[1] + nrm[i][1] * o];
     });
-    return bezierD(controls(pts, closed), closed);
+    return { pts, hard };
+  }
+
+  /** Leaves `spans` of the closed outline's anchors out: the open contour. */
+  #open(outline, spans, anchors) {
+    if (outline.segments) {
+      const n = outline.segments.length;
+      const start = Math.floor(this.rand() * n);
+      return {
+        segments: Array.from(
+          { length: n - spans },
+          (_, k) => outline.segments[(start + spans + k) % n],
+        ),
+      };
+    }
+    const n = outline.pts.length;
+    const cut = Math.max(1, Math.round((spans / anchors) * n));
+    const start = Math.floor(this.rand() * n);
+    const order = Array.from(
+      { length: n - cut + 1 },
+      (_, k) => (start + cut + k) % n,
+    );
+    return {
+      pts: order.map(i => outline.pts[i]),
+      hard: new Set(
+        order.flatMap((i, k) =>
+          outline.hard.has(i) && k > 0 && k < order.length - 1 ? [k] : [],
+        ),
+      ),
+    };
   }
 
   /**
@@ -327,31 +395,27 @@ export class Drawing {
       gap = 0,
       misregister = true,
     } = opts;
+    // One roughened outline serves both the fill and the stroke, so their
+    // edges match; misregistration only translates the fill's copy.
     const pts = this.#jitter(points, wobble);
+    const outline = this.#roughen(
+      this.#segments(pts, true, corners, wobble),
+      true,
+      corners,
+    );
     if (fill) {
       const shift =
         misregister && stroke && !WHITE_ROLES.has(fill)
           ? this.misregister
           : [0, 0];
-      this.#push({
-        d: this.#roughen(
-          this.#segments(pts, true, corners, wobble),
-          true,
-          shift,
-        ),
-        fill,
-        stroke: null,
-      });
+      this.#push({ d: outlineD(outline, true, shift), fill, stroke: null });
     }
     if (stroke) {
       const open = gap > 0 && pts.length > gap + 2;
-      let line = pts;
-      if (open) {
-        const start = Math.floor(this.rand() * pts.length);
-        line = [...pts.slice(start + gap), ...pts.slice(0, start + 1)];
-      }
       this.#push({
-        d: this.#roughen(this.#segments(line, !open, corners, wobble), !open),
+        d: open
+          ? outlineD(this.#open(outline, gap, pts.length), false)
+          : outlineD(outline, true),
         fill: null,
         stroke,
         width,
@@ -381,7 +445,7 @@ export class Drawing {
       wobble,
     );
     return this.#push({
-      d: dash ? bezierD(segs, false) : this.#roughen(segs, false),
+      d: outlineD(this.#roughen(segs, false, corners), false),
       fill: null,
       stroke: role,
       width,

@@ -74,7 +74,7 @@ Rules of use: at most **three** square illustrations per page view; more than on
 
 5. Flat colour only. No gradients, no drop shadows, no textures except the backdrop's grain. The one effect in the library is the dark-mode glow on reflectors (`references/style.md` §7).
 6. Fills sit under the strokes, with the same Roughen edge, shifted about 1 unit off the line in one consistent direction for the whole drawing, so a sliver of paper shows on one side.
-7. White is the main fill, but pick its role by what the area is: `paper` for skin, faces, animals and objects; `cloth` for what people wear and carry (coats, bags, a bike frame); `vehicle` for bus, train and boat bodies. All three are white in standard mode; in dark and contrast mode `cloth` and `vehicle` turn grey or pale blue so a face still separates from a coat. Skin is never tinted. Hair and deep shadow shapes are ink fills with no outline.
+7. White is the main fill, but pick its role by what the area is: `paper` for skin, faces, animals and objects; `cloth` for what people wear and carry (coats, bags, a bike frame); `vehicle` for bus, train and boat bodies. All three are white in standard mode. In dark mode `cloth` and `vehicle` turn grey; in contrast mode only `cloth` changes (to pale blue) and vehicle bodies stay white. That way a face still separates from a coat. Skin is never tinted. Hair and deep shadow shapes are ink fills with no outline.
 8. Colour is rationed: one warm Peach 40 element per motif (a sign, a pin, trousers, a scarf); Lavender 40 for secondary clothing; Coral 40 only as a small detail (a rail line, a dotted path). The one exception is Entur staff, whose ink uniform has Coral shoulder and sleeve panels.
 
 **Composition**
