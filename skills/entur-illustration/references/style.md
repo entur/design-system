@@ -68,10 +68,11 @@ Everything behind the subject's plane — buildings, trees, hills, clouds, dista
 
 - **Flat**, one colour per area. No gradients, no shading ramps, no shadows under objects.
 - **Under the lines**, as a separate object from the stroke.
-- **Rough edge** — the same Roughen settings as the lines.
+- **Rough edge** — a slightly irregular edge that does not hit the line exactly. On fills use an absolute Roughen (about 0.4 pt, low detail); a relative Roughen turns large areas hairy.
 - **Misregistered** — coloured fills are shifted about 1–1.5 units off their outline, the same direction across the whole drawing (the generator default is right and slightly down). A sliver of paper shows on one side, the colour slips past the line on the other. Paper fills are not shifted. Not every motif does it: in the Figma library about one colour fill in five on people is an exact copy of its line path, sitting exactly under it.
 - **Shadow shapes** — where depth needs it (inside a hood, between legs, under a hem), use a small ink-filled shape with no outline. Never a grey or a darker tint.
 - **Hair** — an ink-filled mass with a rough edge, no outline; a few paper or detail strokes for strands if needed.
+- **Fold and sheen marks** — 2–5 per figure, never a pattern. They taper thin–thick–thin like a brush mark (up to about 1.5 pt wide), start and end inside the shape, and sit where fabric bends: the inside of an elbow, across the lap, toward a knee, a diagonal from the armpit, a bag flap. Paper-white on ink or colour fills, ink on light fills. This is the only place a mark tapers; contours stay uniform strokes.
 - **Same fill over same fill** — an ink line on an ink fill disappears. Where two shapes with the same fill overlap (an ink sleeve over an ink uniform), give the front shape a `paper` stroke at detail weight instead of ink, so the two separate.
 
 ### Coverage
@@ -157,13 +158,13 @@ The people are **natural and figurative**: drawn as if from life, with the econo
 - **Proportions:** about 7–7.5 heads tall. The head is small; legs are long; shoulders are narrower than a cartoon's. A seated person's back curves and the shoulders slope.
 - **Pose:** relaxed and observed — mid-step, weight on one leg, a slight turn of the torso, a head tilted toward what the person looks at. Never stiff, symmetric or frontal-and-flat.
 - **Form:** organic, asymmetric contours. A torso narrows at the waist and breaks at the hips; a sleeve is wider at the elbow than the wrist. Never rectangles, ovals or blobs standing in for body parts.
-- **Clothes:** loose and draping, with a few detail-weight fold lines where fabric bends (elbow, hip, knee, under the arm), cuffs, collars and hems as separate shapes, ribbing as short hatching. White as the base, drawn with the `cloth` role (not `paper`), Lavender 40 for one garment, Peach 40 for at most one. Bags, helmets and the frame of a bike or scooter the person rides are `cloth` too.
+- **Clothes:** loose and draping, with 2–5 tapered fold marks where fabric bends (elbow, lap, knee, under the arm), cuffs, collars and hems as separate shapes, ribbing as short hatching. White as the base, drawn with the `cloth` role (not `paper`), Lavender 40 for one garment, Peach 40 for at most one. Bags, helmets and the frame of a bike or scooter the person rides are `cloth` too.
 - **Hands:** small, with fingers — a thumb and two or three finger lines, wrapping round what they hold. Never a mitten.
 - **Feet:** shoes with a separate sole shape; trousers break over them.
 - **Face:** paper, only a nose, glasses optional — no eyes, no mouth (see §1); skin always paper.
 - **Hair:** an ink mass with a rough edge and real volume — a bun, a bob, a ponytail that falls — plus a few paper or detail strokes for strands.
 
-Check by putting the new figure next to a library person (Woman holding package, Man and woman hugging, Man checking the time) at the same height. If the head is bigger, the body blockier or the hands simpler, it is the wrong form.
+Check by putting the new figure next to a library person (Woman holding package, Man and woman hugging, Man checking the time) at the same height. If the head is bigger, the body blockier or the hands simpler, it is the wrong form. Image models in particular draw heads about 10 % too big; scale the head parts down around the neck when they do.
 
 - Entur staff wear an ink-filled uniform with Coral 40 shoulder and sleeve panels and a small paper name badge — the one place Coral covers more than a detail.
 
@@ -181,16 +182,17 @@ Check by putting the new figure next to a library person (Woman holding package,
 
 ### Small vocabulary
 
-| Element     | How                                                              |
-| ----------- | ---------------------------------------------------------------- |
-| Attention   | Three short ink strokes radiating above the head                 |
-| Motion      | A loose Blue 50 loop or puff behind wheels or feet               |
-| Route       | Dashed ink line, winding                                         |
-| Destination | Peach map pin                                                    |
-| Cloud       | Scalloped open Blue 50 line                                      |
-| Sun         | Peach outline circle                                             |
-| Tree (far)  | Blue 50 outline crown on a trunk; Lavender 40 fill in landscapes |
-| Sign text   | Nationale Demibold, ink, Norwegian first ("Billetter Tickets")   |
+| Element     | How                                                                                                       |
+| ----------- | --------------------------------------------------------------------------------------------------------- |
+| Attention   | Three short ink strokes radiating above the head                                                          |
+| Motion      | A loose Blue 50 loop or puff behind wheels or feet                                                        |
+| Route       | Dashed ink line, winding                                                                                  |
+| Destination | Peach map pin                                                                                             |
+| Cloud       | Scalloped open Blue 50 line                                                                               |
+| Sun         | Peach outline circle                                                                                      |
+| Tree (far)  | Blue 50 outline crown on a trunk; Lavender 40 fill in landscapes                                          |
+| Sign text   | Nationale Demibold, ink, Norwegian first ("Billetter Tickets")                                            |
+| Furniture   | Simplified: a table or desk has four legs or none — never one or three, and never a leg crossing a person |
 
 ---
 
@@ -214,3 +216,4 @@ Never redraw for a mode — swap colour roles (see `palette.md`).
 - Perspective views of vehicles and buildings; isometric scenes
 - Text inside illustrations beyond a short sign
 - Busy compositions: more than one subject plus one prop on a square
+- More than five fold marks on a figure, or fold lines drawn as uniform strokes

@@ -33,9 +33,10 @@ Style rules:
 - Flat fills only. No gradients, no shadows, no texture, no outlines thicker than the line.
 - White (#FFFFFF) is the main fill. Lavender (#AEB7E2) for one garment. Peach (#FFBF9E) for exactly one element: [which]. Coral (#FF5959) only for [a small detail | the Entur staff shoulder and sleeve panels].
 - Colour fills sit slightly offset from their line, so a thin sliver of white shows along one side.
-- People are drawn naturally, like an observed drawing: realistic adult proportions about 7.5 heads tall, a small head, a relaxed pose with weight on one leg or a slight turn, loose clothes with a few fold lines, hands with fingers, shoes with soles.
+- People are drawn naturally, like an observed drawing: realistic adult proportions about 7.5 heads tall, a small head, a relaxed pose with weight on one leg or a slight turn, loose clothes with only 2–5 tapered fold marks, hands with fingers, shoes with soles.
 - Faces are white and have NO EYES and NO MOUTH: only a nose line. Glasses are allowed.
 - [Entur staff: dark navy uniform with coral shoulder and sleeve panels and a small white name badge.]
+- Furniture is simplified: a table has four legs or none, and no leg crosses a person.
 - Plain white background. A broken horizontal navy ground line under the subject. [Optional for objects and animals: a soft pale grey-lavender disc (#EAEAF1) behind the upper body.]
 - No text, no logos, no frame. Square, 1:1.
 
@@ -98,6 +99,12 @@ What the script does, and why — the same steps apply when you trace by hand:
 3. Select all lines. Stroke panel: 1.0 pt, Cap Round, Corner Round, Profile Uniform; then select the long outer contours and set them to 1.5 pt (about a quarter of the lines). Join broken pieces, delete specks; aim for few anchors.
 4. Fill layer: trace the PNG again with Mode Limited colours, method Abutting, a low path fidelity and the palette as the swatch set, create Fills, delete the background white, nudge the colour areas 1 pt right and 0.5 pt down, and put the layer under the lines.
 5. Build the dark and contrast versions with Recolor Artwork and the mapping in `palette.md`. Add the Roughen graphic style from `handoff.md` only if the lines look too clean.
+
+**Finish** — the trace gives the construction; these three steps give it life and the library's proportions:
+
+1. **Fold and sheen marks:** add 2–5 tapered marks with the MCP tool `illustrator_add_details` (points in Illustrator points, y up; read them off a grid render of the traced file), or by hand with a width profile or a small filled shape. Paper-white on ink or colour, ink on light fills.
+2. **Head size:** compare with a library person at the same height. If the head is bigger, scale every head part (hair, face, headset, nose) to about 90 % around the neck — with `illustrator_run_jsx` or by hand — keeping the stroke weights.
+3. **Simplify props:** remove a lone table leg, or any leg that crosses a person; four legs or none.
 
 **In code** (no Illustrator): `node scripts/grid.mjs <draft.png> --format square`, render the grid, and redraw the centre lines with the script (route A), 12–25 anchors per contour of a person. Slower, and it loses some of the PNG's life, but it stays in the repository and gives all three modes at once.
 

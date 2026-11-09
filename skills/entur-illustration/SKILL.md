@@ -24,6 +24,8 @@ The source files contain two line styles. Use only the first:
 | Effect > Roughen: size 0.2 % relative, smooth, an anchor every ~1 unit | Roughen on top of brush strokes                         |
 | Lines stay live strokes — never outlined or expanded                   | Outlined/expanded art, as in the flattened library SVGs |
 
+One exception to plain strokes: the small fold and sheen marks inside clothing taper thin–thick–thin like a brush mark. Contours never taper.
+
 The library SVGs on the web are flattened exports: every stroke has been expanded into a filled outline. So are the animal and object components in the Figma Illustration Library. Its people and transport components still have live strokes, and they are the construction to copy. Draw strokes.
 
 ## Step 1 — reuse before you draw
@@ -85,7 +87,7 @@ Rules of use: at most **three** square illustrations per page view; more than on
 
 **People**
 
-12. People are drawn naturally and figuratively, like observed drawing — not the flat, childlike "corporate" style. Real proportions (about 7–7.5 heads tall, a small head), a relaxed pose with weight on one leg or a slight turn, loose clothes that drape with a few fold lines, hands with fingers, shoes with a sole. Contours are organic and asymmetric; a torso is never a rectangle and a hand never a mitten.
+12. People are drawn naturally and figuratively, like observed drawing — not the flat, childlike "corporate" style. Real proportions (about 7–7.5 heads tall, a small head), a relaxed pose with weight on one leg or a slight turn, loose clothes that drape, with **2–5 fold marks** per figure, hands with fingers, shoes with a sole. Check the head against a library person: generated drafts tend to make it about 10 % too big. Contours are organic and asymmetric; a torso is never a rectangle and a hand never a mitten.
 13. **No eyes, no mouth.** A face carries only a nose — a nose line in profile, a small nose stroke from the front — and glasses if the person wears them. Never eye dots, eye arcs, pupils or a mouth line. Animals keep their eyes.
 
 The full anatomy, with measurements and per-format layout, is in `references/style.md`. The colour roles and how they map per mode are in `references/palette.md`.
@@ -166,6 +168,8 @@ Check before delivering:
 - [ ] At least one contour is left open; interior lines float
 - [ ] Subject reads at 120 px wide (squint test)
 - [ ] People: natural proportions and pose, hands with fingers, only a nose on the face (no eyes, no mouth); side by side with a library person, the head is not bigger and the body not blockier
+- [ ] Clothes carry 2–5 tapered fold marks, not more; fills sit a little off the line with a slightly rough edge
+- [ ] Props are simplified: a table has four legs or none, and nothing crosses a person's legs
 - [ ] Line weight hierarchy on people: about a quarter of the lines (the long outer contours) at 1.5, the rest at 1.0; an all-1.5 figure looks coarse next to library people
 - [ ] Dark and contrast files checked on Ebony 100 and Lavender 90 surfaces
 - [ ] Layers named; file names follow `<Name>.svg`, `<Name>-darkmode.svg`, `<Name>-contrast.svg`
