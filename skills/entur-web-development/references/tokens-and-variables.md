@@ -318,6 +318,7 @@ Tokens follow the pattern: `--{variant}-{mode}` where variant is `standard`, `co
 --standard-walk: #8d8e9c
 --standard-airportlinkbus: #800664
 --standard-airportlinkrail: #800664
+--standard-railreplacementbus: #ffcf26 /* dark text/icon on top */
 
 /* Contrast (use on dark/colored backgrounds) */
 --contrast-train: #42a5f5
@@ -330,6 +331,7 @@ Tokens follow the pattern: `--{variant}-{mode}` where variant is `standard`, `co
 --contrast-bicycle: #00dbb6
 --contrast-walk: #9ea0bd
 --contrast-taxi: #ffe082
+--contrast-railreplacementbus: #ffe082
 ```
 
 Transparent variants available for overlays, e.g. `--standard-bus-transparent: #c5044e26`.
