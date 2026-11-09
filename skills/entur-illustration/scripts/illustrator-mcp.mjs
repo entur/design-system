@@ -8,6 +8,8 @@
 //   illustrator_run_jsx       run an ExtendScript snippet, return its last value
 //   illustrator_trace_draft   PNG draft → Entur Linje strokes (.ai + 3 SVG modes), via illustrator-trace.mjs
 //   illustrator_add_details   fold and sheen lines into a Details layer, then re-export the SVG modes
+//   illustrator_scale_head    scale a head around the neck, hair inside a silhouette included
+//   illustrator_smooth_region smooth and thin traced fill edges in a region (hair)
 //
 // Register:  claude mcp add -s local illustrator-bridge -- node <this file>
 // Set ILLUSTRATOR_APP to target another install (default: Illustrator 2026).
@@ -89,6 +91,28 @@ function writeModes(svgFile) {
 function hexToRgb(hex) {
   const n = parseInt(hex.slice(1), 16);
   return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
+}
+
+// Shared ExtendScript fragments for the document tools.
+function openDocJsx(ai) {
+  return [
+    `var target = new File(${JSON.stringify(ai)}), doc = null;`,
+    'for (var d = 0; d < app.documents.length; d++) if (app.documents[d].fullName.fsName === target.fsName) doc = app.documents[d];',
+    'var opened = !doc;',
+    'if (!doc) doc = app.open(target);',
+  ].join('\n');
+}
+
+function saveExportJsx(ai) {
+  return [
+    'doc.save();',
+    'var eo = new ExportOptionsSVG(); eo.embedRasterImages = false; eo.coordinatePrecision = 2;',
+    'try { eo.cssProperties = SVGCSSPropertyLocation.PRESENTATIONATTRIBUTES; } catch (e) {}',
+    `doc.exportFile(new File(${JSON.stringify(
+      ai.replace(/\.ai$/, '.svg'),
+    )}), ExportType.SVG, eo);`,
+    'if (opened) doc.close(SaveOptions.DONOTSAVECHANGES);',
+  ].join('\n');
 }
 
 const TOOLS = [
@@ -266,6 +290,111 @@ const TOOLS = [
       const result = await runJsx(jsx);
       const modes = writeModes(svgFile);
       return [result, svgFile, ...modes].join('\n');
+    },
+  },
+  {
+    name: 'illustrator_scale_head',
+    description:
+      "Scale a figure's head in a traced Entur illustration (.ai) around the neck, hair included. Items whose centre sits above the neck inside the head column are scaled as wholes; large shapes that run from the head into the body (a hair-and-uniform silhouette) have their head anchors moved with a soft blend so nothing kinks at the shoulders. Stroke weights stay. Points are Illustrator points, y up. Saves the .ai and re-exports the SVG modes.",
+    inputSchema: {
+      type: 'object',
+      properties: {
+        ai: { type: 'string', description: 'Absolute path to the .ai file.' },
+        neck: {
+          type: 'array',
+          items: { type: 'number' },
+          description: '[x, y] of the neck base.',
+        },
+        scale: { type: 'number', description: 'e.g. 0.8 for 80 %.' },
+        column: {
+          type: 'array',
+          items: { type: 'number' },
+          description:
+            '[x0, x1]: the head column; keeps props such as a speech bubble out.',
+        },
+      },
+      required: ['ai', 'neck', 'scale', 'column'],
+    },
+    run: async ({ ai, neck, scale, column }) => {
+      const jsx = [
+        openDocJsx(ai),
+        `var A = ${JSON.stringify(neck)}, S = ${Number(scale)}, X0 = ${Number(
+          column[0],
+        )}, X1 = ${Number(column[1])};`,
+        'var leaves = []; function leaf(it) { if (it.typename === "GroupItem") { for (var j = 0; j < it.pageItems.length; j++) leaf(it.pageItems[j]); } else if (it.typename === "PathItem" || it.typename === "CompoundPathItem") leaves.push(it); }',
+        'for (var l = 0; l < doc.layers.length; l++) for (var k = 0; k < doc.layers[l].pageItems.length; k++) leaf(doc.layers[l].pageItems[k]);',
+        'function blend(p) { var t = Math.max(0, Math.min(1, (p[1] - (A[1] - 22)) / 40)), s = 1 - t * (1 - S); return [A[0] + (p[0] - A[0]) * s, A[1] + (p[1] - A[1]) * s]; }',
+        'var rigid = 0, blended = 0;',
+        'for (var i = 0; i < leaves.length; i++) {',
+        '  var it = leaves[i], b = it.geometricBounds, cx = (b[0] + b[2]) / 2, cy = (b[1] + b[3]) / 2;',
+        '  if (cy > A[1] + 3 && cx > X0 && cx < X1 && b[3] > A[1] - 30) {',
+        '    it.resize(S * 100, S * 100, true, true, true, true, 100, Transformation.CENTER);',
+        '    it.translate((A[0] + (cx - A[0]) * S) - cx, (A[1] + (cy - A[1]) * S) - cy); rigid++;',
+        '  } else if (b[1] > A[1] + 3 && b[3] < A[1] - 30 && b[0] < X1 && b[2] > X0) {',
+        '    var subs = it.typename === "CompoundPathItem" ? it.pathItems : [it];',
+        '    for (var s2 = 0; s2 < subs.length; s2++) for (var q = 0; q < subs[s2].pathPoints.length; q++) {',
+        '      var pp = subs[s2].pathPoints[q], a = pp.anchor;',
+        '      if (a[1] < A[1] - 22 || a[0] < X0 - 10 || a[0] > X1 + 10) continue;',
+        '      pp.anchor = blend(a); pp.leftDirection = blend(pp.leftDirection); pp.rightDirection = blend(pp.rightDirection); blended++;',
+        '    }',
+        '  }',
+        '}',
+        saveExportJsx(ai),
+        '"head items scaled " + rigid + ", anchors blended " + blended;',
+      ].join('\n');
+      const result = await runJsx(jsx);
+      return [result, ...writeModes(ai.replace(/\.ai$/, '.svg'))].join('\n');
+    },
+  },
+  {
+    name: 'illustrator_smooth_region',
+    description:
+      'Smooth and thin the anchors of filled shapes inside a region of a traced Entur illustration (.ai) — for traced hair, whose edge comes out jagged, while reference hair is one smooth shape of 16–24 anchors. Anchors outside the region keep their position and handles. Region in Illustrator points, y up. Saves the .ai and re-exports the SVG modes.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        ai: { type: 'string', description: 'Absolute path to the .ai file.' },
+        region: {
+          type: 'array',
+          items: { type: 'number' },
+          description: '[x0, yBottom, x1, yTop].',
+        },
+        keepEvery: {
+          type: 'number',
+          description: 'Keep every nth anchor in the region. Default 4.',
+        },
+        passes: { type: 'number', description: 'Smoothing passes. Default 3.' },
+      },
+      required: ['ai', 'region'],
+    },
+    run: async ({ ai, region, keepEvery, passes }) => {
+      const jsx = [
+        openDocJsx(ai),
+        `var R = ${JSON.stringify(region)}, EVERY = ${Number(
+          keepEvery ?? 4,
+        )}, PASSES = ${Number(passes ?? 3)};`,
+        'function inside(a) { return a[0] >= R[0] && a[0] <= R[2] && a[1] >= R[1] && a[1] <= R[3]; }',
+        'var paths = []; function leaf(it) { if (it.typename === "GroupItem") { for (var j = 0; j < it.pageItems.length; j++) leaf(it.pageItems[j]); } else if (it.typename === "CompoundPathItem") { for (var c = 0; c < it.pathItems.length; c++) paths.push(it.pathItems[c]); } else if (it.typename === "PathItem" && it.filled) paths.push(it); }',
+        'for (var l = 0; l < doc.layers.length; l++) for (var k = 0; k < doc.layers[l].pageItems.length; k++) leaf(doc.layers[l].pageItems[k]);',
+        'var touched = 0, before = 0, after = 0;',
+        'for (var i = 0; i < paths.length; i++) {',
+        '  var P = paths[i], n = P.pathPoints.length; if (n < 8) continue;',
+        '  var pts = [], any = false;',
+        '  for (var q = 0; q < n; q++) { var pp = P.pathPoints[q]; var ins = inside(pp.anchor); any = any || ins; pts.push({ a: pp.anchor, l: pp.leftDirection, r: pp.rightDirection, r_: ins }); }',
+        '  if (!any) continue;',
+        '  for (var pass = 0; pass < PASSES; pass++) { var na = []; for (var h = 0; h < n; h++) { var pr = pts[(h - 1 + n) % n], nx = pts[(h + 1) % n], c0 = pts[h]; na.push(c0.r_ && pr.r_ && nx.r_ ? [(pr.a[0] + 2 * c0.a[0] + nx.a[0]) / 4, (pr.a[1] + 2 * c0.a[1] + nx.a[1]) / 4] : c0.a); } for (var h2 = 0; h2 < n; h2++) pts[h2].a = na[h2]; }',
+        '  var out = [], run = 0;',
+        '  for (var h3 = 0; h3 < n; h3++) { var c1 = pts[h3]; if (!c1.r_) { out.push(c1); run = 0; continue; } var edge = !pts[(h3 - 1 + n) % n].r_ || !pts[(h3 + 1) % n].r_; if (edge || run % EVERY === 0) out.push(c1); run++; }',
+        '  var coords = []; for (var o = 0; o < out.length; o++) coords.push(out[o].a);',
+        '  P.setEntirePath(coords); var m = out.length;',
+        '  for (var t = 0; t < m; t++) { var tp = P.pathPoints[t]; if (out[t].r_) { var pa = out[(t - 1 + m) % m].a, pc = out[(t + 1) % m].a, dx = (pc[0] - pa[0]) / 6, dy = (pc[1] - pa[1]) / 6; tp.leftDirection = [out[t].a[0] - dx, out[t].a[1] - dy]; tp.rightDirection = [out[t].a[0] + dx, out[t].a[1] + dy]; tp.pointType = PointType.SMOOTH; } else { tp.leftDirection = out[t].l; tp.rightDirection = out[t].r; } }',
+        '  touched++; before += n; after += m;',
+        '}',
+        saveExportJsx(ai),
+        '"shapes smoothed " + touched + ", anchors " + before + " -> " + after;',
+      ].join('\n');
+      const result = await runJsx(jsx);
+      return [result, ...writeModes(ai.replace(/\.ai$/, '.svg'))].join('\n');
     },
   },
 ];

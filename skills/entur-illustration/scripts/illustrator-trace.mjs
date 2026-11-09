@@ -5,7 +5,7 @@
 //   node illustrator-trace.mjs <draft.png> [--out dir] [--name Name]
 //     [--app "/Applications/Adobe Illustrator 2026/Adobe Illustrator.app"]
 //     [--size 360] [--threshold 110] [--max-stroke 20] [--contour 1.5] [--detail 1.0]
-//     [--contour-share 0.25] [--min-ink-width 4] [--roughen] [--no-fill-rough]
+//     [--contour-share 0.25] [--min-ink-width 4] [--roughen] [--fill-rough] [--ink-shift]
 //
 // Two traces of the same PNG on a `--size` pt artboard (360 puts a figure at
 // library scale):
@@ -16,9 +16,8 @@
 //   colour colour trace, abutting, smoothed: every area snapped to the exact
 //          palette colour; wide ink areas kept, thin line-like ink dropped,
 //          enclosed white kept as paper, the white background removed;
-//          colour (not ink) shifted 1 pt right and 0.5 pt down.
-//          Coloured and ink fills get a slightly rough edge (absolute
-//          Roughen 0.4 pt); ink areas below the head shift too, 0.8 pt.
+//          colour (not ink) shifted 0.6 pt right and 0.3 pt down; fill
+//          edges stay smooth, as in the reference drawings.
 // The draft already carries the hand tremor, so Roughen is only added with
 // `--roughen`. Saved as <Name>.ai and <Name>.svg, plus -darkmode and
 // -contrast SVGs by palette mapping (every white becomes paper).
@@ -87,8 +86,9 @@ const params = {
   minInkWidth: Number(opt('min-ink-width', 4)),
   size: Number(opt('size', 360)),
   contourShare: Number(opt('contour-share', 0.25)),
-  shift: [1, -0.5],
-  fillRough: !flag('no-fill-rough'),
+  shift: [0.6, -0.3],
+  fillRough: flag('fill-rough'),
+  inkShift: flag('ink-shift'),
   palette: Object.fromEntries(
     Object.entries(PALETTE).map(([k, [hex]]) => [k, hexToRgb(hex)]),
   ),
@@ -202,9 +202,11 @@ for (var j = 0; j < lp.length; j++) {
 }
 log.push('line strokes ' + strokes + ' (contours by ' + (byWidth ? 'width' : 'length') + ', cut ' + Math.round(contourCut * 100) / 100 + '), ink fills ' + fills);
 
-// Fill finish, as on library clothing: a slightly rough edge (absolute
-// Roughen, so large areas do not turn hairy) and ink areas below the head
-// shifted off their line, so a sliver of paper shows. Hair stays put.
+// Fill finish. Reference drawings keep fill edges smooth and most fills
+// exactly under their line; the hand-made look comes from a few fills sitting
+// 0.5–0.7 pt off it, which the colour shift above gives. --fill-rough (a faint
+// absolute Roughen on fills) and --ink-shift (offset the ink clothing too)
+// are opt-in; neither is in the reference drawings.
 var fillFx = '<LiveEffect name="Adobe Roughen"><Dict data="R size 0.4 R asiz 0.4 R absoluteness 1 R dtal 20 R roundness 1 "/></LiveEffect>';
 var gb = lg.geometricBounds, headLine = gb[1] - 0.2 * (gb[1] - gb[3]);
 var fp = paths(cg, []), finished = 0, inkShifted = 0;
@@ -213,7 +215,7 @@ for (var f = 0; f < fp.length; f++) {
   if (!fi.filled) continue;
   var fk = nearest(fi.fillColor);
   if (fk === 'paper') continue;
-  if (fk === 'ink' && fi.geometricBounds[1] < headLine) { fi.translate(P.shift[0] * 0.8, P.shift[1] * 0.8); inkShifted++; }
+  if (P.inkShift && fk === 'ink' && fi.geometricBounds[1] < headLine) { fi.translate(P.shift[0], P.shift[1]); inkShifted++; }
   if (P.fillRough) { try { fi.applyEffect(fillFx); finished++; } catch (e) {} }
 }
 log.push('fills roughened ' + finished + ', ink clothing shifted ' + inkShifted);

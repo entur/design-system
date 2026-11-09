@@ -68,10 +68,10 @@ Everything behind the subject's plane — buildings, trees, hills, clouds, dista
 
 - **Flat**, one colour per area. No gradients, no shading ramps, no shadows under objects.
 - **Under the lines**, as a separate object from the stroke.
-- **Rough edge** — a slightly irregular edge that does not hit the line exactly. On fills use an absolute Roughen (about 0.4 pt, low detail); a relative Roughen turns large areas hairy.
-- **Misregistered** — coloured fills are shifted about 1–1.5 units off their outline, the same direction across the whole drawing (the generator default is right and slightly down). A sliver of paper shows on one side, the colour slips past the line on the other. Paper fills are not shifted. Not every motif does it: in the Figma library about one colour fill in five on people is an exact copy of its line path, sitting exactly under it.
+- **Smooth edge** — measured in hand-made reference people: most clothing shapes are one path carrying both fill and stroke, so the fill follows the line exactly, and fill paths have few anchors (median 6–13). Never Roughen a fill: a relative Roughen turns large areas hairy and an absolute one makes them gritty.
+- **Misregistered, sparingly** — one to three colour fills per figure are shifted 0.5–0.7 off their outline, all in the same direction (right and slightly down). A sliver of paper shows on one side, the colour slips past the line on the other. Two or three paper-white strokes running just inside an edge (a sleeve, a hem) give the same effect. Everything else sits exactly under its line; paper fills never shift.
 - **Shadow shapes** — where depth needs it (inside a hood, between legs, under a hem), use a small ink-filled shape with no outline. Never a grey or a darker tint.
-- **Hair** — an ink-filled mass with a rough edge, no outline; a few paper or detail strokes for strands if needed.
+- **Hair** — one smooth ink-filled shape of about 16–24 anchors, no outline, no Roughen; a few paper or detail strokes for strands if needed.
 - **Fold and sheen marks** — 2–5 per figure, never a pattern. They taper thin–thick–thin like a brush mark (up to about 1.5 pt wide), start and end inside the shape, and sit where fabric bends: the inside of an elbow, across the lap, toward a knee, a diagonal from the armpit, a bag flap. Paper-white on ink or colour fills, ink on light fills. This is the only place a mark tapers; contours stay uniform strokes.
 - **Same fill over same fill** — an ink line on an ink fill disappears. Where two shapes with the same fill overlap (an ink sleeve over an ink uniform), give the front shape a `paper` stroke at detail weight instead of ink, so the two separate.
 
@@ -162,7 +162,8 @@ The people are **natural and figurative**: drawn as if from life, with the econo
 - **Hands:** small, with fingers — a thumb and two or three finger lines, wrapping round what they hold. Never a mitten.
 - **Feet:** shoes with a separate sole shape; trousers break over them.
 - **Face:** paper, only a nose, glasses optional — no eyes, no mouth (see §1); skin always paper.
-- **Hair:** an ink mass with a rough edge and real volume — a bun, a bob, a ponytail that falls — plus a few paper or detail strokes for strands.
+- **Hair:** one smooth ink shape with real volume — a bun, a bob, a ponytail that falls — plus a few paper or detail strokes for strands. A traced or generated hair edge comes out jagged; smooth it.
+- **Accessories:** a headset is one band and one earcup, glasses one frame, a strap one band. Traced accessories tend to double up (a cushion plus a ring, a band split in two by a line); redraw them as single shapes.
 
 Check by putting the new figure next to a library person (Woman holding package, Man and woman hugging, Man checking the time) at the same height. If the head is bigger, the body blockier or the hands simpler, it is the wrong form. Image models in particular draw heads about 10 % too big; scale the head parts down around the neck when they do.
 
@@ -217,3 +218,4 @@ Never redraw for a mode — swap colour roles (see `palette.md`).
 - Text inside illustrations beyond a short sign
 - Busy compositions: more than one subject plus one prop on a square
 - More than five fold marks on a figure, or fold lines drawn as uniform strokes
+- Roughened fill edges, jagged hair, accessories drawn twice

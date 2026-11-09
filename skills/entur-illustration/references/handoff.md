@@ -30,7 +30,7 @@ Brush strokes and width profiles (Width Profile 1 and the like) are the marketin
 
 **From the script to Illustrator:** draw with `new Drawing({ roughen: false })` so paths keep only the anchors you placed, open the SVG in Illustrator, select all and apply the Roughen graphic style. The roles come through as plain hex swatches; recolour per mode with Edit > Edit Colors > Recolor Artwork if needed, or save all three modes from the script.
 
-**Driving Illustrator from an agent:** on macOS, Illustrator can be scripted without a plugin through AppleScript `do javascript`, which runs ExtendScript in the open app. `scripts/illustrator-trace.mjs` uses it to turn a PNG draft into this construction (see `raster-first.md`), and `scripts/illustrator-mcp.mjs` exposes it as MCP tools — status, running an ExtendScript snippet, and tracing a draft. Register it once per project with `claude mcp add -s local illustrator-bridge -- node <skill folder>/scripts/illustrator-mcp.mjs`; set `ILLUSTRATOR_APP` to target another Illustrator install than 2026.
+**Driving Illustrator from an agent:** on macOS, Illustrator can be scripted without a plugin through AppleScript `do javascript`, which runs ExtendScript in the open app. `scripts/illustrator-trace.mjs` uses it to turn a PNG draft into this construction (see `raster-first.md`), and `scripts/illustrator-mcp.mjs` exposes it as MCP tools — status, running an ExtendScript snippet, tracing a draft, and the finishing steps: scaling a head, smoothing a region, adding fold marks. Register it once per project with `claude mcp add -s local illustrator-bridge -- node <skill folder>/scripts/illustrator-mcp.mjs`; set `ILLUSTRATOR_APP` to target another Illustrator install than 2026.
 
 ## Figma
 

@@ -52,7 +52,11 @@ ink.group('bus-stop', d => {
     ],
     { width: WEIGHTS.detail },
   );
-  d.shape(rect(204, 64, 58, 46), { fill: 'peach', corners: true });
+  d.shape(rect(204, 64, 58, 46), {
+    fill: 'peach',
+    corners: true,
+    misregister: true,
+  });
   d.group('bus-pictogram', p => {
     p.shape(rect(217, 73, 32, 20), {
       corners: true,

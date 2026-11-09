@@ -75,7 +75,7 @@ Rules of use: at most **three** square illustrations per page view; more than on
 **Fill**
 
 5. Flat colour only. No gradients, no drop shadows, no textures except the backdrop's grain. The one effect in the library is the dark-mode glow on reflectors (`references/style.md` §7).
-6. Fills sit under the strokes, with the same Roughen edge, shifted about 1 unit off the line in one consistent direction for the whole drawing, so a sliver of paper shows on one side.
+6. Most fills sit exactly under their line — in Illustrator one path carries both fill and stroke — with a smooth edge. One to three colour fills per figure are shifted 0.5–0.7 off their line, all in one direction, and two or three paper-white strokes just inside an edge give the same hand-printed look. Fill edges are never roughened.
 7. White is the main fill, but pick its role by what the area is: `paper` for skin, faces, animals and objects; `cloth` for what people wear and carry (coats, bags, a bike frame); `vehicle` for bus, train and boat bodies. All three are white in standard mode. In dark mode `cloth` and `vehicle` turn grey; in contrast mode only `cloth` changes (to pale blue) and vehicle bodies stay white. That way a face still separates from a coat. Skin is never tinted. Hair and deep shadow shapes are ink fills with no outline.
 8. Colour is rationed: one warm Peach 40 element per motif (a sign, a pin, trousers, a scarf); Lavender 40 for secondary clothing; Coral 40 only as a small detail (a rail line, a dotted path). The one exception is Entur staff, whose ink uniform has Coral shoulder and sleeve panels.
 
@@ -89,6 +89,7 @@ Rules of use: at most **three** square illustrations per page view; more than on
 
 12. People are drawn naturally and figuratively, like observed drawing — not the flat, childlike "corporate" style. Real proportions (about 7–7.5 heads tall, a small head), a relaxed pose with weight on one leg or a slight turn, loose clothes that drape, with **2–5 fold marks** per figure, hands with fingers, shoes with a sole. Check the head against a library person: generated drafts tend to make it about 10 % too big. Contours are organic and asymmetric; a torso is never a rectangle and a hand never a mitten.
 13. **No eyes, no mouth.** A face carries only a nose — a nose line in profile, a small nose stroke from the front — and glasses if the person wears them. Never eye dots, eye arcs, pupils or a mouth line. Animals keep their eyes.
+14. **Hair and accessories are simple shapes.** Hair is one smooth ink-filled shape of about 16–24 anchors, no outline. A headset is one band and one earcup, glasses one frame, a strap one band — never a part drawn twice.
 
 The full anatomy, with measurements and per-format layout, is in `references/style.md`. The colour roles and how they map per mode are in `references/palette.md`.
 
@@ -131,18 +132,18 @@ ink.ground({ y: 266, x1: 30, x2: 296 });
 ink.save('out', 'Fox-bus-stop'); // standard, -darkmode, -contrast + preview.html
 ```
 
-| Call                                                                  | Draws                                                                       |
-| --------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| `new Drawing({ format, seed, title, misregister, roughen })`          | Canvas. `roughen: false` gives clean anchors for finishing in Illustrator   |
-| `ink.shape(points, { fill, stroke, width, gap, corners })`            | Fill under a stroke. `gap` opens the contour; `corners` keeps sharp corners |
-| `ink.line(points, { role, width, corners, dash })`                    | Open stroke — the main tool                                                 |
-| `ink.fill(points, { role })`                                          | Fill without line: hair, shadow shapes, colour blocks                       |
-| `ink.dot(x, y, r)`                                                    | Animal eye, nostril, button, wheel hub (people have no eyes or mouth)       |
-| `ink.backdrop({ cx, cy, r })`                                         | Grainy backdrop disc                                                        |
-| `ink.ground({ y, x1, x2, rows })`                                     | Broken ground lines (ink, then a Blue 50 row)                               |
-| `ink.marks(...)`, `ink.hatch(...)`, `ink.cloud(...)`, `ink.text(...)` | Attention marks, short shading strokes, scalloped cloud, sign lettering     |
-| `ink.group(name, fn)`                                                 | Named layer — becomes the layer name in Illustrator and Figma               |
-| `ink.save(dir, name)`                                                 | Writes the three mode files with library naming, plus a preview page        |
+| Call                                                                    | Draws                                                                                                                                                            |
+| ----------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `new Drawing({ format, seed, title, misregister, roughen })`            | Canvas. `roughen: false` gives clean anchors for finishing in Illustrator                                                                                        |
+| `ink.shape(points, { fill, stroke, width, gap, corners, misregister })` | Fill under a stroke. `gap` opens the contour; `corners` keeps sharp corners; `misregister` shifts this colour fill off its line (one to three shapes per figure) |
+| `ink.line(points, { role, width, corners, dash })`                      | Open stroke — the main tool                                                                                                                                      |
+| `ink.fill(points, { role })`                                            | Fill without line: hair, shadow shapes, colour blocks                                                                                                            |
+| `ink.dot(x, y, r)`                                                      | Animal eye, nostril, button, wheel hub (people have no eyes or mouth)                                                                                            |
+| `ink.backdrop({ cx, cy, r })`                                           | Grainy backdrop disc                                                                                                                                             |
+| `ink.ground({ y, x1, x2, rows })`                                       | Broken ground lines (ink, then a Blue 50 row)                                                                                                                    |
+| `ink.marks(...)`, `ink.hatch(...)`, `ink.cloud(...)`, `ink.text(...)`   | Attention marks, short shading strokes, scalloped cloud, sign lettering                                                                                          |
+| `ink.group(name, fn)`                                                   | Named layer — becomes the layer name in Illustrator and Figma                                                                                                    |
+| `ink.save(dir, name)`                                                   | Writes the three mode files with library naming, plus a preview page                                                                                             |
 
 Points are anchor points, not samples: 6–12 per contour, as a designer would click them. `circle`, `ellipse`, `arc` and `rect` return anchor lists. Colours are **roles** (`ink`, `paper`, `cloth`, `vehicle`, `line2`, `backdrop`, `tint`, `lavender`, `mid`, `peach`, `coral`, `glow`), never hex — that is what makes the dark and contrast modes come out right.
 
@@ -153,7 +154,7 @@ Draw back to front: backdrop → background (Blue 50 lines) → props behind →
 1. **References:** two to four library PNGs of the same kind as style references (for people: Woman holding package, Man checking the time, the Entur staff figures). The user's own photo may go in for pose; a stock illustration never goes in as an image, only as a description.
 2. **Generate** a square PNG with an image model that takes reference images (for example Gemini image through Figma Weave), or Figma `generate_image` from the prompt alone. Use the prompt template in `references/raster-first.md`; it spells out every rule, including **no eyes, no mouth** and natural proportions. Runs cost the user's credits: quote the cost and get approval each time.
 3. **Review** against the Step 5 checklist and the references. Fix with an edit round: send the draft back as the first image and ask for only the changes, so what already works stays. Never edit pixels.
-4. **Turn it into strokes:** on macOS with Illustrator open, `node scripts/illustrator-trace.mjs <draft.png> --out <dir> --name <Name>` traces it into live round-capped strokes (a quarter at contour weight, the rest detail weight) and smoothed palette fills, and writes the `.ai` and the three SVG modes (also available as MCP tools through `scripts/illustrator-mcp.mjs`). Without Illustrator, redraw the centre lines in code over `scripts/grid.mjs`. The PNG alone is a draft, never the final asset.
+4. **Turn it into strokes:** on macOS with Illustrator open, `node scripts/illustrator-trace.mjs <draft.png> --out <dir> --name <Name>` traces it into live round-capped strokes (a quarter at contour weight, the rest detail weight) and smooth palette fills, and writes the `.ai` and the three SVG modes (also available as MCP tools through `scripts/illustrator-mcp.mjs`). Then finish it: simplify doubled accessories, scale the head with `illustrator_scale_head`, smooth the hair with `illustrator_smooth_region`, and add 2–5 fold marks with `illustrator_add_details` (`references/raster-first.md`). Without Illustrator, redraw the centre lines in code over `scripts/grid.mjs`. The PNG alone is a draft, never the final asset.
 
 ## Step 5 — look at it
 
@@ -164,11 +165,12 @@ Check before delivering:
 - [ ] Every line is a stroke with round caps; nothing outlined, no brush or width profile
 - [ ] Line weights follow the hierarchy (contour > detail > fine); background lines are Blue 50
 - [ ] Paper dominates; one Peach accent; Coral absent or tiny
-- [ ] Fills are flat, sit under the lines and are offset in one direction
+- [ ] Fills are flat with smooth edges; most sit exactly under their line, one to three colour fills are offset 0.5–0.7
 - [ ] At least one contour is left open; interior lines float
 - [ ] Subject reads at 120 px wide (squint test)
 - [ ] People: natural proportions and pose, hands with fingers, only a nose on the face (no eyes, no mouth); side by side with a library person, the head is not bigger and the body not blockier
-- [ ] Clothes carry 2–5 tapered fold marks, not more; fills sit a little off the line with a slightly rough edge
+- [ ] Clothes carry 2–5 tapered fold marks, not more
+- [ ] Hair is one smooth shape; headset, glasses and straps are single shapes, nothing doubled
 - [ ] Props are simplified: a table has four legs or none, and nothing crosses a person's legs
 - [ ] Line weight hierarchy on people: about a quarter of the lines (the long outer contours) at 1.5, the rest at 1.0; an all-1.5 figure looks coarse next to library people
 - [ ] Dark and contrast files checked on Ebony 100 and Lavender 90 surfaces

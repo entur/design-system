@@ -5,8 +5,9 @@
 //          often left open. Roughen effect on top (Size 0.2 % relative,
 //          Detail ~47/in, Smooth points). No brushes, no width profiles —
 //          those belong to the marketing/print style, not the design system.
-//   fills  flat colour under the lines with the same Roughen edge, and
-//          shifted a little off the line so a sliver of paper shows.
+//   fills  flat colour on the same outline as the line, so it sits exactly
+//          under it; one to three colour fills per figure shifted ~0.6 off
+//          the line (misregister: true) for the hand-printed look.
 //
 // Here Roughen is baked into the path geometry; every line stays a stroke.
 // Pass { roughen: false } for clean anchors, then apply Effect > Distort &
@@ -70,7 +71,7 @@ export const ROUGHEN = { size: 0.2, detail: 63, max: 0.35 };
 
 const MODE_SUFFIX = { standard: '', dark: '-darkmode', contrast: '-contrast' };
 
-// White fills sit exactly under their line; only coloured fills are misregistered.
+// White fills never shift; a colour fill shifts only when its shape asks for it.
 const WHITE_ROLES = new Set(['paper', 'cloth', 'vehicle']);
 
 /* --------------------------------------------------------------- geometry */
@@ -264,7 +265,7 @@ export class Drawing {
    * @param {number} [opts.height]
    * @param {number} [opts.seed] same seed, same drawing
    * @param {string} [opts.title] becomes the SVG <title>
-   * @param {[number, number]} [opts.misregister] how far colour fills sit off their lines
+   * @param {[number, number]} [opts.misregister] how far a misregistered colour fill sits off its line
    * @param {{size: number, detail: number, max?: number} | false} [opts.roughen] Illustrator
    *   Roughen settings to bake in (size in % of the object, detail per inch, max push in
    *   canvas units); false for clean paths
@@ -275,7 +276,7 @@ export class Drawing {
     height,
     seed = 1,
     title = '',
-    misregister = [1.2, 0.5],
+    misregister = [0.6, 0.3],
     roughen = ROUGHEN,
   } = {}) {
     const f = FORMATS[format] ?? FORMATS.square;
@@ -389,7 +390,8 @@ export class Drawing {
    * fill / stroke   colour role, or null for none
    * corners         straight edges with round joins instead of a smooth curve
    * gap             number of anchor spans left out of the stroke: the open contour
-   * misregister     false to sit a colour fill exactly under the line
+   * misregister     true to shift this colour fill ~0.6 off its line; use it on
+   *                 one to three areas per figure, the rest sit exactly under
    */
   shape(points, opts = {}) {
     const {
@@ -399,7 +401,7 @@ export class Drawing {
       corners = false,
       wobble = 0.6,
       gap = 0,
-      misregister = true,
+      misregister = false,
     } = opts;
     // One roughened outline serves both the fill and the stroke, so their
     // edges match; misregistration only translates the fill's copy.
