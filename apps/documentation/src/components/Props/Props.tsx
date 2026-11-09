@@ -14,23 +14,21 @@ import { ImportStatement } from '@components/Common/ImportStatement';
 import './Props.scss';
 
 // Utility functions for formatting prop types
-// oxlint-disable-next-line no-warning-comments -- Pre-existing follow-up comment discovered during oxlint migration; function needs refinement for component-specific handling
-// TODO removeDeprecatedVariantType only removes deprecated variant types that have VariantType. And it does not check if it removes from the correct component. It should be more specific.
-function removeDeprecatedVariantType(type: string) {
-  const deprecatedVariantTypes = ['error', 'danger', 'info'];
-  const types = type.split(' | ');
+// Deprecated aliases are only hidden when their replacement is in the same union,
+// so props where these are real values (TravelTag's alert) keep them.
+const DEPRECATED_ALIASES: Record<string, string> = {
+  error: 'negative',
+  danger: 'negative',
+  info: 'information',
+};
 
-  if (
-    types.some(t => deprecatedVariantTypes.includes(t.trim().replace(/"/g, '')))
-  ) {
-    return types
-      .map(t => t.trim().replace(/"/g, ''))
-      .filter(t => !deprecatedVariantTypes.includes(t))
-      .map(t => `"${t}"`)
-      .join(' | ');
-  } else {
-    return type;
-  }
+function removeDeprecatedVariantType(type: string) {
+  const types = type.split(' | ').map(t => t.trim().replace(/"/g, ''));
+  const kept = types.filter(
+    t => !(t in DEPRECATED_ALIASES && types.includes(DEPRECATED_ALIASES[t])),
+  );
+  if (kept.length === types.length) return type;
+  return kept.map(t => `"${t}"`).join(' | ');
 }
 
 function skipUndefinedType(type: string) {
