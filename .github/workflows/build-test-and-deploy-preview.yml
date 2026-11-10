@@ -69,6 +69,30 @@ jobs:
             apps/documentation/public/**
             !apps/documentation/public/__node-manifests/**
 
+  build-sanity-studio:
+    name: Build Sanity Studio
+    needs: build-packages
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+
+      # The preview app in Studio renders with the documentation site's components
+      - name: Install and Cache Yarn Dependencies
+        uses: ./.github/actions/install-and-cache-dependencies
+        with:
+          cache-key: yarn-sanity-docs-${{ hashFiles('**/yarn.lock') }}
+          only-for-workspace: 'studio-linje @entur/documentation'
+
+      - name: Download package artifacts
+        uses: actions/download-artifact@v8
+        with:
+          name: package-artifacts
+          path: 'packages'
+
+      - name: Build Sanity Studio
+        working-directory: apps/studio-linje
+        run: CI=true yarn build
+
   test-packages:
     name: Test packages
     needs: build-packages

@@ -141,21 +141,22 @@ jobs:
 
   deploy-sanity-studio:
     name: Deploy Sanity Studio
-    needs: [build-icons]
+    needs: [build-packages]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7.0.1
 
+      # The preview app in Studio renders with the documentation site's components
       - name: Install and Cache Yarn Dependencies
         uses: ./.github/actions/install-and-cache-dependencies
         with:
-          cache-key: yarn-sanity-${{ hashFiles('**/yarn.lock') }}
-          only-for-workspace: 'studio-linje'
+          cache-key: yarn-sanity-docs-${{ hashFiles('**/yarn.lock') }}
+          only-for-workspace: 'studio-linje @entur/documentation'
 
-      - name: Download icons artifacts
+      - name: Download package artifacts
         uses: actions/download-artifact@v8
         with:
-          name: icons-artifacts
+          name: package-artifacts
           path: 'packages'
 
       - name: Deploy Sanity Studio
