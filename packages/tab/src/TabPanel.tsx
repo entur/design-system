@@ -8,7 +8,7 @@ export type TabPanelProps = {
   /** Innholdet i tab-panelet */
   children?: React.ReactNode;
   /** HTML-elementet eller React-komponenten som lager komponenten */
-  as?: keyof JSX.IntrinsicElements | React.ElementType;
+  as?: keyof React.JSX.IntrinsicElements | React.ElementType;
   /** Indeksen til panelet. Settes vanligvis ut fra rekkefølgen i `TabPanels`,
    * men må angis manuelt dersom panelet ligger inne i en egen komponent */
   index?: number;

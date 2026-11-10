@@ -9,7 +9,7 @@ export type TabListProps = {
   /** Tab-komponenter */
   children: React.ReactNode;
   /** HTML-elementet eller React-komponenten som lager komponenten */
-  as?: keyof JSX.IntrinsicElements | React.ElementType;
+  as?: keyof React.JSX.IntrinsicElements | React.ElementType;
   width?: 'fluid';
   className?: string;
   /** Tilgjengelig navn på tab-listen (dersom det ikke finnes en synlig overskrift) */
