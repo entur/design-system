@@ -1,4 +1,5 @@
 import {
+  Accept,
   DropEvent,
   DropzoneOptions,
   ErrorCode,
@@ -46,8 +47,10 @@ type FileUploadProps = Omit<DropzoneOptions, 'accept'> & {
   ): void;
   /** Callback for når en fil slettes fra lista */
   onDelete?: (file: File) => void;
-  /** Hvilken filtyper som skal aksepteres */
-  accept?: string | string[];
+  /** Hvilke filtyper som skal aksepteres, som MIME-typer og/eller filendelser.
+   * F.eks. `".csv"`, `['.json', 'application/json']` eller `{ 'application/json': ['.json'] }`
+   */
+  accept?: string | string[] | Accept;
   /** Filene som er aktive i komponenten */
   files: File[];
   /** Beskrivende tekst som forklarer feltet */
@@ -155,7 +158,12 @@ export const FileUpload = ({
 
 function toAcceptList(accept: FileUploadProps['accept']): string[] {
   if (!accept) return [];
-  return typeof accept === 'string' ? accept.split(',') : accept;
+  if (typeof accept === 'string') return accept.split(',');
+  if (Array.isArray(accept)) return accept;
+  return Object.entries(accept).flatMap(([mimeType, exts]) => [
+    mimeType,
+    ...exts,
+  ]);
 }
 
 // Same code and message as react-dropzone 11

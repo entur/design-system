@@ -449,6 +449,11 @@ describe('FileUpload', () => {
       '.json,application/json',
       'File type must be one of .json, application/json',
     ],
+    [
+      { 'application/json': ['.json'] },
+      'application/json,.json',
+      'File type must be one of application/json, .json',
+    ],
   ])(
     'accept %j filters the picker and rejects other types without warnings',
     async (accept, inputAccept, message) => {
