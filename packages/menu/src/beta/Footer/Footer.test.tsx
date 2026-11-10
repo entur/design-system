@@ -54,7 +54,7 @@ describe('Footer', () => {
     expect(
       screen.getByText(`© ${new Date().getFullYear()} Entur AS`),
     ).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: 'Entur.no' })).toHaveAttribute(
+    expect(screen.getByRole('link', { name: 'entur.no' })).toHaveAttribute(
       'href',
       'https://entur.no',
     );
@@ -74,7 +74,7 @@ describe('Footer', () => {
     expect(
       screen.queryByRole('list', { name: 'Entur i sosiale medier' }),
     ).not.toBeInTheDocument();
-    expect(screen.getByRole('link', { name: 'Entur.no' })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'entur.no' })).toBeInTheDocument();
   });
 
   it('accepts a custom label for the social media list', () => {
