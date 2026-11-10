@@ -27,7 +27,7 @@ export default defineConfig({
   dataset: 'production',
 
   plugins: [
-    structureTool({ structure, defaultDocumentNode }),
+    structureTool({ title: 'Sider', structure, defaultDocumentNode }),
     presentationTool({
       title: 'Forhåndsvisning',
       previewUrl: { initial: PREVIEW_PATH },
@@ -38,4 +38,9 @@ export default defineConfig({
   schema: {
     types: schemaTypes,
   },
+
+  // Not used by the team. Turning off releases makes Studio show
+  // Scheduled Drafts instead, so both are off.
+  releases: { enabled: false },
+  scheduledDrafts: { enabled: false },
 });
