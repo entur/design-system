@@ -7,6 +7,7 @@
 //     [--size 360] [--threshold 110] [--max-stroke 20] [--contour 1.5] [--detail 1.0]
 //     [--contour-share 0.25] [--min-ink-width 4] [--roughen] [--fill-rough] [--ink-shift]
 //     [--construction animals] [--carriers profiles.ai] [--backdrop] [--underlay]
+//     [--no-features] [--no-simplify]
 //
 // Two traces of the same PNG on a `--size` pt artboard (360 puts a figure at
 // library scale):
@@ -29,7 +30,10 @@
 // cannot tell from the background (a tail past the disc) stay unfilled.
 // With animals, a small dark eye or nose, too thin for the colour trace and
 // too round for the line trace, is put back as an ink ellipse on a Features
-// layer (`--no-features` turns it off).
+// layer (`--no-features` turns it off). Animals are also simplified before
+// the weights go on: specks dropped, a contour broken into pieces joined end
+// to end, and short fur marks thinned where they lie along a contour or
+// crowd each other (`--no-simplify` turns it off).
 // The draft already carries the hand tremor, so Roughen is only added with
 // `--roughen`. Saved as <Name>.ai and <Name>.svg, plus -darkmode and
 // -contrast SVGs by palette mapping (every white becomes paper).
@@ -67,6 +71,7 @@ const carriers = opt('carriers', '');
 const backdrop = flag('backdrop');
 const underlay = flag('underlay');
 const features = animals && !flag('no-features');
+const simplify = animals && !flag('no-simplify');
 // A traced draft already carries the hand tremor; Roughen on top makes it bumpy.
 const roughen = flag('roughen');
 flag('no-roughen');
@@ -106,6 +111,7 @@ const params = {
   carriers: carriers ? path.resolve(carriers) : '',
   pointLength: 12,
   backdrop,
+  simplify,
   mask: underlay ? writeMask(png) : '',
   contourShare: Number(opt('contour-share', 0.25)),
   shift: [0.6, -0.3],
@@ -201,6 +207,108 @@ lo.pathFidelity = 55; lo.cornerFidelity = 60; lo.noiseFidelity = 30;
 app.redraw();
 var lg = lt.tracing.expandTracing();
 var lp = paths(lg, []), strokes = 0, fills = 0;
+
+// Simplify (animals): library animals are minimal, and drafts come back with
+// more line than they have. Drop specks, join a contour broken into pieces
+// end to end, and thin short fur marks: a mark lying along a contour, or one
+// crowding another, goes. Marks near an eye or a nose stay (a mouth, an ear).
+// Toes, grass and ground (the band just above the lowest line) stay too;
+// ground dashes join into a few long segments, as the library draws ground.
+// Helpers for the simplify step (global: ExtendScript and function
+// declarations inside blocks do not mix well).
+function dist(a, b) { return Math.sqrt(Math.pow(a[0] - b[0], 2) + Math.pow(a[1] - b[1], 2)); }
+function readPts(pi) { var a = []; for (var i = 0; i < pi.pathPoints.length; i++) { var pp = pi.pathPoints[i]; a.push({ a: pp.anchor, l: pp.leftDirection, r: pp.rightDirection, t: pp.pointType }); } return a; }
+function reversed(a) { var b = []; for (var i = a.length - 1; i >= 0; i--) b.push({ a: a[i].a, l: a[i].r, r: a[i].l, t: a[i].t }); return b; }
+function writePts(pi, a) { var an = []; for (var i = 0; i < a.length; i++) an.push(a[i].a); pi.setEntirePath(an); for (var j = 0; j < a.length; j++) { var pp = pi.pathPoints[j]; pp.leftDirection = a[j].l; pp.rightDirection = a[j].r; pp.pointType = a[j].t; } }
+// Unit direction leaving a path at its first (end 0) or last (end 1) anchor.
+function outDir(a, end) {
+  var n = a.length - 1, p = end ? a[n].a : a[0].a, h = end ? a[n].l : a[0].r;
+  if (dist(p, h) < 0.3) h = end ? a[n - 1].a : a[1].a;
+  var L = dist(p, h) || 1; return [(p[0] - h[0]) / L, (p[1] - h[1]) / L];
+}
+function bez(p0, p1, p2, p3, t) { var u = 1 - t; return [u * u * u * p0[0] + 3 * u * u * t * p1[0] + 3 * u * t * t * p2[0] + t * t * t * p3[0], u * u * u * p0[1] + 3 * u * u * t * p1[1] + 3 * u * t * t * p2[1] + t * t * t * p3[1]]; }
+function samples(a) { var s = [a[0].a]; for (var i = 0; i < a.length - 1; i++) for (var k = 1; k <= 6; k++) s.push(bez(a[i].a, a[i].r, a[i + 1].l, a[i + 1].a, k / 6)); return s; }
+function toLine(q, s) {
+  var best = 1e9;
+  for (var i = 0; i < s.length - 1; i++) {
+    var dx = s[i + 1][0] - s[i][0], dy = s[i + 1][1] - s[i][1], L2 = dx * dx + dy * dy;
+    var t = L2 ? Math.max(0, Math.min(1, ((q[0] - s[i][0]) * dx + (q[1] - s[i][1]) * dy) / L2)) : 0;
+    best = Math.min(best, dist(q, [s[i][0] + t * dx, s[i][1] + t * dy]));
+  }
+  return best;
+}
+if (P.simplify) {
+  var sc = P.size / 320, specks = 0, joined = 0, ground = 0, thinned = 0;
+  var items = [];
+  for (var s0 = 0; s0 < lp.length; s0++) {
+    var sp = lp[s0];
+    if (!sp.stroked) continue;
+    if (Number(sp.length) < 3 * sc) { sp.remove(); specks++; continue; }
+    items.push({ it: sp, pts: readPts(sp) });
+  }
+  // Ground dashes (flat lines in the band at the lowest line) join only each
+  // other, into segments up to 30 % of the width: long, but still broken.
+  var floor = 1e9;
+  for (var g0 = 0; g0 < items.length; g0++) floor = Math.min(floor, items[g0].it.geometricBounds[3]);
+  for (var g1 = 0; g1 < items.length; g1++) items[g1].ground = items[g1].it.geometricBounds[1] < floor + 6 * sc;
+  // Join: an end within 4 pt of another end, the line running on within 45°.
+  var cosMax = Math.cos(Math.PI / 4), gapMax = 4 * sc;
+  for (var guard = 0; guard < 300; guard++) {
+    var best = null;
+    for (var i1 = 0; i1 < items.length; i1++) {
+      if (items[i1].it.closed) continue;
+      for (var i2 = i1 + 1; i2 < items.length; i2++) {
+        if (items[i2].it.closed || items[i1].ground !== items[i2].ground) continue;
+        if (items[i1].ground) {
+          var gb1 = items[i1].it.geometricBounds, gb2 = items[i2].it.geometricBounds;
+          if (Math.max(gb1[2], gb2[2]) - Math.min(gb1[0], gb2[0]) > 0.3 * P.size) continue;
+        }
+        for (var e1 = 0; e1 < 2; e1++) for (var e2 = 0; e2 < 2; e2++) {
+          var A = items[i1].pts, B = items[i2].pts;
+          var pa = e1 ? A[A.length - 1].a : A[0].a, pb = e2 ? B[B.length - 1].a : B[0].a, gap = dist(pa, pb);
+          if (gap > gapMax || (best && gap >= best.gap)) continue;
+          var da = outDir(A, e1), db = outDir(B, e2);
+          if (-(da[0] * db[0] + da[1] * db[1]) < cosMax) continue;
+          if (gap > 1 && ((pb[0] - pa[0]) * da[0] + (pb[1] - pa[1]) * da[1]) / gap < 0.3) continue;
+          best = { gap: gap, i1: i1, i2: i2, e1: e1, e2: e2 };
+        }
+      }
+    }
+    if (!best) break;
+    var ia = items[best.i1], ib = items[best.i2];
+    var head = best.e1 ? ia.pts : reversed(ia.pts), tail = best.e2 ? reversed(ib.pts) : ib.pts;
+    if (best.gap < 0.5) { head[head.length - 1].r = tail[0].r; tail = tail.slice(1); }
+    var merged = head.concat(tail);
+    writePts(ia.it, merged); ia.pts = merged;
+    ib.it.remove(); items.splice(best.i2, 1); joined++;
+    if (ia.ground) ground++;
+  }
+  // Thin fur marks.
+  var lens = [], groundY = 1e9;
+  for (var t0 = 0; t0 < items.length; t0++) { lens.push(Number(items[t0].it.length)); groundY = Math.min(groundY, items[t0].it.geometricBounds[3]); }
+  var longCut = quantile(lens, 0.75), contours = [], eyes = [];
+  for (var t1 = 0; t1 < items.length; t1++) if (lens[t1] >= longCut) contours.push({ it: items[t1].it, s: samples(items[t1].pts) });
+  for (var t2 = 0; t2 < P.features.length; t2++) eyes.push([ab[0] + P.features[t2].cx, ab[1] - P.features[t2].cy]);
+  items.sort(function (x, y) { return Number(y.it.length) - Number(x.it.length); });
+  var marks = [];
+  for (var t3 = 0; t3 < items.length; t3++) {
+    var ti = items[t3].it, tb = ti.geometricBounds, tl = Number(ti.length);
+    if (tl >= 20 * sc || tb[3] < groundY + 16 * sc) continue;
+    var mid = [(tb[0] + tb[2]) / 2, (tb[1] + tb[3]) / 2], guarded = false;
+    for (var t4 = 0; t4 < eyes.length; t4++) if (dist(mid, eyes[t4]) < 20 * sc) guarded = true;
+    if (guarded) continue;
+    var tp = items[t3].pts, f0 = 1e9, f1 = 1e9;
+    for (var t5 = 0; t5 < contours.length; t5++) {
+      if (contours[t5].it === ti) continue;
+      f0 = Math.min(f0, toLine(tp[0].a, contours[t5].s)); f1 = Math.min(f1, toLine(tp[tp.length - 1].a, contours[t5].s));
+    }
+    var crowded = false;
+    for (var t6 = 0; t6 < marks.length; t6++) if (dist(mid, marks[t6]) < 20 * sc) crowded = true;
+    if ((f0 < 4 * sc && f1 < 4 * sc) || crowded) { ti.remove(); thinned++; } else marks.push(mid);
+  }
+  lp = paths(lg, []);
+  log.push('simplified: specks ' + specks + ', joined ' + (joined - ground) + ' (ground ' + ground + '), fur marks thinned ' + thinned);
+}
 // Contour or detail: by relative traced width when the draft has a weight
 // hierarchy, otherwise by length (long outer contours). Note: \`cut\` and \`name\`
 // are read-only globals in Illustrator's ExtendScript, so neither is used here.

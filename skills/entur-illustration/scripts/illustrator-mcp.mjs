@@ -144,7 +144,7 @@ const TOOLS = [
   {
     name: 'illustrator_trace_draft',
     description:
-      'Turn a PNG illustration draft into Entur Linje vector art in Illustrator: live round-capped strokes with a contour/detail weight hierarchy, smoothed palette-snapped fills, optional Roughen. For animals and objects add construction: animals, carriers (width profiles), backdrop and underlay. Writes <name>.ai, <name>.svg, <name>-darkmode.svg and <name>-contrast.svg.',
+      'Turn a PNG illustration draft into Entur Linje vector art in Illustrator: live round-capped strokes with a contour/detail weight hierarchy, smoothed palette-snapped fills, optional Roughen. For animals and objects add construction: animals, carriers (width profiles), backdrop and underlay; animals are simplified (fewer fur marks, joined contours) unless simplify is false. Writes <name>.ai, <name>.svg, <name>-darkmode.svg and <name>-contrast.svg.',
     inputSchema: {
       type: 'object',
       properties: {
@@ -193,6 +193,11 @@ const TOOLS = [
           description:
             'Put one paper shape under the whole subject, traced from its silhouette in the draft.',
         },
+        simplify: {
+          type: 'boolean',
+          description:
+            'Animals, default true: drop specks, join a contour broken into pieces, and thin short fur marks that lie along a contour or crowd each other. Marks near an eye or nose, toes, grass and ground stay.',
+        },
       },
       required: ['png', 'outDir', 'name'],
     },
@@ -208,6 +213,7 @@ const TOOLS = [
       carriers,
       backdrop,
       underlay,
+      simplify,
     }) => {
       const a = [
         path.join(HERE, 'illustrator-trace.mjs'),
@@ -225,6 +231,7 @@ const TOOLS = [
       if (carriers) a.push('--carriers', carriers);
       if (backdrop) a.push('--backdrop');
       if (underlay) a.push('--underlay');
+      if (simplify === false) a.push('--no-simplify');
       return runNode(a);
     },
   },

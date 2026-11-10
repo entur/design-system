@@ -93,7 +93,7 @@ Rules of use: at most **three** square illustrations per page view; more than on
 5. Flat colour only. No gradients, no drop shadows, no textures except the backdrop's grain. The one effect in the library is the dark-mode glow on reflectors (`references/style.md` §7).
 6. On people, most fills sit exactly under their line — in Illustrator one path carries both fill and stroke — with a smooth edge. One to three colour fills per figure are shifted 0.5–0.7 off their line, all in one direction, and two or three paper-white strokes just inside an edge give the same hand-printed look. People's fill edges are never roughened. Animals and objects build fills differently (rule 16).
 7. White is the main fill, but pick its role by what the area is: `paper` for skin, faces, animals and objects; `cloth` for what people wear and carry (coats, bags, a bike frame); `vehicle` for bus, train and boat bodies. All three are white in standard mode. In dark mode `cloth` and `vehicle` turn grey; in contrast mode only `cloth` changes (to pale blue) and vehicle bodies stay white. That way a face still separates from a coat. Skin is never tinted. Hair and deep shadow shapes are ink fills with no outline.
-8. Colour is rationed: one warm Peach 40 element per motif (a sign, a pin, trousers, a scarf); Lavender 40 for secondary clothing; Coral 40 only as a small detail (a rail line, a dotted path). The one exception is Entur staff, whose ink uniform has Coral shoulder and sleeve panels.
+8. Colour is rationed: one warm Peach 40 element per motif (a sign, a pin, trousers, a scarf); Lavender 40 for secondary clothing; Coral 40 only as a small detail (a rail line, a dotted path). The one exception is Entur staff, whose ink uniform has Coral shoulder and sleeve panels. **Every animal has its Peach too** (rule 19).
 
 **Composition**
 
@@ -109,9 +109,11 @@ Rules of use: at most **three** square illustrations per page view; more than on
 
 **Animals and objects**
 
-15. **Lines swell.** Each stroke has a width profile: widest near the middle and about half as wide at the ends (the most used profile runs 0.47 – 1 – 0.75 – 0.47). Spines, whiskers and short marks taper to a point. Weights at the widest point: contour 2.1, detail 1.7, fine 1.3. A contour is drawn as two to four short strokes that overlap, not one long path.
-16. **Fills sit apart, and fur is rougher.** Paper underlay shapes go under the lines, one per body part, with one or two Blue 20 (`tint`) shading shapes (a far body, a wing, the shadow side) and small ink fills for eyes, noses and hooves. Fills carry the same 0.2 % Roughen as the lines. Fur, wool and spines get a coarser Roughen, 0.5–2 %.
+15. **Lines swell.** Each stroke has a width profile: widest near the middle and about half as wide at the ends (the most used profile runs 0.47 – 1 – 0.75 – 0.47). Spines, whiskers and short marks taper to a point. Weights at the widest point: contour 2.1, detail 1.7, fine 1.3. A contour is two to four long strokes with a gap or a short overlap between them: not one closed path, and not a row of short fragments.
+16. **Fills sit apart, and fur is rougher.** Paper underlay shapes go under the lines, one per body part, with one or two Blue 20 (`tint`) shading shapes (a far body, a wing, the shadow side) and small ink fills for eyes, noses and hooves. Fills carry the same 0.2 % Roughen as the lines. Fur, wool and spines get a coarser Roughen, 0.5–2 %, and so does a Peach marking on the body (1.5 %).
 17. **Animals keep their eyes** — a dot or a short arc — and stay calm and a little dry, never cartoonish.
+18. **Minimal line.** Library animals have less line than a sketch: long smooth contours with a few gaps, and detail only where it says what the animal is (the hedgehog's spines, the goat's beard, wool as a scalloped edge). No fur ticks along a contour and no clusters of short fur marks; one line for a fold (the neck, a shoulder) says it instead. An ear gets at most one inner line. A sitting bear cub on the 320 canvas has about 50 strokes, toes, grass and ground included; its raw trace had 80.
+19. **One Peach accent.** Every library animal has one small Peach 40 area, about 1 % of the canvas (0.2–4 %): on a prop it holds, wears or has beside it (a collar, a ball, a nut, a key, a ticket, a bowl, a leaf) or on one marking of its own (horns, a chest patch). Never the body fill, never spread over several places; a tiny echo, like crumbs beside a bowl, is the most. A prop keeps its ink outline with the Peach shifted off it; a marking has no outline and a rough edge.
 
 The full anatomy, with measurements and per-format layout, is in `references/style.md`. The colour roles and how they map per mode are in `references/palette.md`.
 
@@ -179,7 +181,7 @@ Draw back to front: backdrop → background (Blue 50 lines) → props behind →
 1. **References:** two to four library PNGs of the same kind as style references (for people: Woman holding package, Man checking the time, the Entur staff figures; for animals: Dog, Rabbit, Squirrel, Sheep). The user's own photo may go in for pose; a stock illustration never goes in as an image, only as a description.
 2. **Generate** a square PNG with **Nano Banana 2.1 in [Weave](https://app.weavy.ai/)**, the library PNGs as reference images, at 2K. Fall back to Figma `generate_image` (prompt only) when Weave is unavailable or its free runs are used up. Use the prompt template in `references/raster-first.md`; it spells out every rule, including **no eyes, no mouth** on people and natural anatomy on animals. Runs cost the user's credits: quote the cost and get approval each time.
 3. **Review it yourself before the user sees it**, against the Step 5 checklist and the references. Fix every deviation with an edit round: send the draft back as the first image and ask for only the changes, so what already works stays. Never edit pixels.
-4. **Turn it into strokes:** on macOS with Illustrator open, `node scripts/illustrator-trace.mjs <draft.png> --out <dir> --name <Name>` traces it into live round-capped strokes (a quarter at contour weight, the rest detail weight) and smooth palette fills, and writes the `.ai` and the three SVG modes (also available as MCP tools through `scripts/illustrator-mcp.mjs`). For an animal or object add `--construction animals --carriers <profiles.ai> --backdrop --underlay`: swelling lines at 2.1 / 1.7, the library's backdrop circle and one paper underlay under the whole animal (`references/raster-first.md`). Then finish it: simplify doubled accessories, scale the head with `illustrator_scale_head`, smooth the hair with `illustrator_smooth_region`, and add 2–5 fold marks with `illustrator_add_details` (`references/raster-first.md`). Without Illustrator, redraw the centre lines in code over `scripts/grid.mjs`. The PNG alone is a draft, never the final asset.
+4. **Turn it into strokes:** on macOS with Illustrator open, `node scripts/illustrator-trace.mjs <draft.png> --out <dir> --name <Name>` traces it into live round-capped strokes (a quarter at contour weight, the rest detail weight) and smooth palette fills, and writes the `.ai` and the three SVG modes (also available as MCP tools through `scripts/illustrator-mcp.mjs`). For an animal or object add `--construction animals --carriers <profiles.ai> --backdrop --underlay`: swelling lines at 2.1 / 1.7, fewer fur marks (rule 18), the library's backdrop circle and one paper underlay under the whole animal (`references/raster-first.md`). Then finish it: simplify doubled accessories, scale the head with `illustrator_scale_head`, smooth the hair with `illustrator_smooth_region`, and add 2–5 fold marks with `illustrator_add_details` (`references/raster-first.md`). Without Illustrator, redraw the centre lines in code over `scripts/grid.mjs`. The PNG alone is a draft, never the final asset.
 
 ## Step 5 — look at it
 
@@ -190,7 +192,7 @@ Check before delivering:
 - [ ] Every line is a stroke with round caps and no brush; nothing outlined in the working file
 - [ ] The construction fits the subject: uniform lines on people, staff and vehicles; swelling lines (width profile) on animals and objects
 - [ ] Line weights follow the hierarchy (contour > detail > fine); background lines are Blue 50
-- [ ] Paper dominates; one Peach accent; Coral absent or tiny
+- [ ] Paper dominates; one Peach accent, on animals too (a prop or one marking, about 1 % of the canvas); Coral absent or tiny
 - [ ] Fills are flat with smooth edges; most sit exactly under their line, one to three colour fills are offset 0.5–0.7
 - [ ] At least one contour is left open; interior lines float
 - [ ] Subject reads at 120 px wide (squint test)
@@ -200,7 +202,8 @@ Check before delivering:
 - [ ] Hair is one smooth shape; headset, glasses and straps are single shapes, nothing doubled
 - [ ] Props are simplified: a table has four legs or none, and nothing crosses a person's legs
 - [ ] Line weight hierarchy on people: about a quarter of the lines (the long outer contours) at 1.5, the rest at 1.0; an all-1.5 figure looks coarse next to library people
-- [ ] Animals and objects: contours as a few overlapping swelling strokes at 2.1, details at 1.7–1.3, paper underlays and at most two Blue 20 shading shapes, eyes kept; side by side with the library sheep or hedgehog, the lines are as heavy
+- [ ] Animals and objects: contours as a few long swelling strokes at 2.1, details at 1.7–1.3, paper underlays and at most two Blue 20 shading shapes, eyes kept; side by side with the library sheep or hedgehog, the lines are as heavy
+- [ ] Animals: no more line than the library animal next to it — no fur ticks along the contours, no cluster of fur marks on the chest or neck, at most one inner line per ear
 - [ ] Dark and contrast files checked on Ebony 100 and Lavender 90 surfaces
 - [ ] Layers named; file names follow `<Name>.svg`, `<Name>-darkmode.svg`, `<Name>-contrast.svg`
 

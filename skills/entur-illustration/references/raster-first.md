@@ -31,7 +31,7 @@ Ask for a square PNG, 2048 × 2048 where the model allows it. Use JPG only if th
 
 ### Prompt template
 
-Fill in the brackets; keep every rule, even the ones that seem obvious.
+Fill in the brackets; keep every rule, even the ones that seem obvious. For an animal, the Peach element is never left out: name the prop or the marking (rule 19).
 
 ```text
 Line illustration in exactly the style of the attached reference images (the Entur Linje illustration library).
@@ -46,7 +46,7 @@ Style rules:
 - Faces are white and have NO EYES and NO MOUTH: only a nose line. Glasses are allowed.
 - [Entur staff: dark navy uniform with coral shoulder and sleeve panels and a small white name badge.]
 - Furniture is simplified: a table has four legs or none, and no leg crosses a person.
-- [Animals: drawn naturally, like an observed sketch of the real animal — correct anatomy, fur only as a few short tapered strokes. The animal keeps a small dot eye and a small dark nose; no smile, no big cartoon eyes, no clothes. The line swells slightly in the middle and thins at both ends, like a dip pen.]
+- [Animals: drawn naturally, like an observed sketch of the real animal — correct anatomy, but minimal: long smooth contours with a few gaps, no fur ticks along the outline, no cluster of fur strokes on the chest or neck, at most three or four short fur marks in all and only where they show the species, one inner line per ear. The animal keeps a small dot eye and a small dark nose; no smile, no big cartoon eyes, no clothes. It has exactly one small peach (#FFBF9E) area, about 1 % of the image: a prop it holds, wears or has beside it (a collar, a ball, a ticket, a leaf), or one marking of its own (a chest patch, horns) as a flat shape with a rough edge and no outline. The line swells slightly in the middle and thins at both ends, like a dip pen.]
 - Plain white background. A broken horizontal navy ground line under the subject. [Optional for objects and animals: a soft pale grey-lavender disc (#EAEAF1) behind the upper body.]
 - No text, no logos, no frame. Square, 1:1.
 
@@ -64,6 +64,8 @@ Review every draft yourself; never show a first draft as a result or wait for th
 - lines too thick or too even, like a vector icon
 - text or logos
 - animals: geometric or blobby shapes, a cartoon face, big eyes or a smile, soft grey gradients in the fur, the subject small in the frame (library animals fill about 60–75 % of the height)
+- animals: more line than the library animal next to it — fur ticks along the back, a cluster of fur strokes on the chest or neck, several lines inside an ear (rule 18)
+- animals: no Peach at all, or Peach spread over the body instead of one prop or marking (rule 19)
 - a sign, prop or tail closer than 16 units to the canvas edge
 
 Do not repair pixels, and do not start over. Send the draft back to the model as the **first image**, with the library reference that shows the fix as the second, and ask for only the changes:
@@ -92,7 +94,7 @@ node scripts/illustrator-trace.mjs <draft.png> --out <dir> --name <Name>
 
 For an animal or object add `--construction animals --carriers <profiles.ai> --backdrop --underlay` (details below).
 
-It drives Illustrator through AppleScript `do javascript` and writes `<Name>.ai` with live strokes, `<Name>.svg`, `<Name>-darkmode.svg` and `<Name>-contrast.svg`. Options: `--app` for another Illustrator install (default Illustrator 2026), `--size` (artboard in pt, default 360, which puts a figure at library scale), `--threshold` (line darkness, default 110), `--max-stroke` (widest line traced as a stroke, default 20; at 14 the thicker pieces of a contour drop out), `--contour-share` (share of lines that get the contour weight, default 0.25), `--roughen` (add Roughen to the strokes; off by default), `--fill-rough` and `--ink-shift` (rough fill edges and offset ink clothing; off, and not in the reference drawings), `--no-features` (leave out the eyes and noses put back on animals, below). A 2048 px draft can take several minutes, more with other large documents open. The same work, and the finishing steps below, are available to agents as MCP tools (`illustrator_status`, `illustrator_run_jsx`, `illustrator_trace_draft`, `illustrator_scale_head`, `illustrator_smooth_region`, `illustrator_add_details`):
+It drives Illustrator through AppleScript `do javascript` and writes `<Name>.ai` with live strokes, `<Name>.svg`, `<Name>-darkmode.svg` and `<Name>-contrast.svg`. Options: `--app` for another Illustrator install (default Illustrator 2026), `--size` (artboard in pt, default 360, which puts a figure at library scale), `--threshold` (line darkness, default 110), `--max-stroke` (widest line traced as a stroke, default 20; at 14 the thicker pieces of a contour drop out), `--contour-share` (share of lines that get the contour weight, default 0.25), `--roughen` (add Roughen to the strokes; off by default), `--fill-rough` and `--ink-shift` (rough fill edges and offset ink clothing; off, and not in the reference drawings), `--no-features` (leave out the eyes and noses put back on animals, below), `--no-simplify` (keep every traced line on an animal, below). A 2048 px draft can take several minutes, more with other large documents open. The same work, and the finishing steps below, are available to agents as MCP tools (`illustrator_status`, `illustrator_run_jsx`, `illustrator_trace_draft`, `illustrator_scale_head`, `illustrator_smooth_region`, `illustrator_add_details`):
 
 ```bash
 claude mcp add -s local illustrator-bridge -- node <skill folder>/scripts/illustrator-mcp.mjs
@@ -114,6 +116,7 @@ With `--construction animals`, for animals and objects:
 - **Backdrop** (`--backdrop`): the traced disc is lumpy and often traces as a white interior inside a grey rim. It is replaced by the library's 4-anchor circle with Roughen 0.65 % on a Circle layer, and the traced white interior and rim fragments are removed.
 - **Underlay** (`--underlay`): one paper shape under the whole animal, traced from its silhouette in the draft. Without it, white areas the colour trace cannot tell from the background — a tail that reaches past the disc — stay unfilled, and the ground line shows through.
 - **Eyes and noses** (on by default): a small dark eye or nose is too thin for the colour trace and too round for the line trace, so it drops out of both. The script finds them in the draft — dots that stand free, and thick spots left once the lines are eroded away, such as a nose at the end of the snout line — and puts each back as an ink ellipse on a Features layer on top. People never get them: an Entur person has no eyes (rule 13), and glasses are lines the line trace keeps.
+- **Simplify** (on by default; `--no-simplify` turns it off): the draft usually has more line than a library animal (rule 18). Before the weights go on, the script drops specks under 3 pt, joins a contour broken into pieces end to end (within 4 pt, running on within 45°), joins ground dashes into a few long segments of at most 30 % of the width, and thins short fur marks (under 20 pt): a mark lying along a contour goes, and of marks within 20 pt of each other only the longest stays. Marks within 20 pt of an eye or nose (a mouth, an inner ear line), toes and grass stay. On the bear cub it took the trace from 80 to about 50 strokes.
 
 **In Illustrator, by hand:**
 
@@ -131,7 +134,9 @@ With `--construction animals`, for animals and objects:
 4. **Fold and sheen marks:** add 2–5 tapered marks with the MCP tool `illustrator_add_details` (points in Illustrator points, y up; read them off a grid render of the traced file), or by hand with a width profile or a small filled shape. Paper-white on ink or colour, ink on light fills.
 5. **Simplify props:** remove a lone table leg, or any leg that crosses a person; four legs or none.
 6. **Animals — eyes and noses:** the trace puts them back on the Features layer. Check that each is there and the right size; draw one it missed as a small ink ellipse, and delete one that is not a feature (a dark button or hoof the colour trace already kept).
-7. **Animals — ground:** drafts often draw the ground as short dashes. Replace them with two to four long segments on a layer under the fills, so the animal's underlay covers the ground behind it, plus a shorter Blue 50 line below.
+7. **Animals — ground:** the trace joins short dashes into a few long segments. Check that there are two to four, on a layer under the fills, so the animal's underlay covers the ground behind it; a shorter Blue 50 line below is optional.
+8. **Animals — less line:** look at the result next to a library animal at the same size. Delete what the simplify step left that the library would not draw: a fur tick on the back, a second mark on the chest, a staircase of short pieces along a contour (join those into one stroke). One fold line at the neck or shoulder can replace a run of fur.
+9. **Animals — Peach:** the trace keeps a Peach area from the draft and shifts it off its line. If the draft brought none, add one now on the Fill layer, about 1 % of the canvas: a prop gets its own ink outline with the Peach shifted 0.6 pt off it; a marking on the body (a chest patch) has no outline and Roughen 1.5 %, relative, detail 51.
 
 **In code** (no Illustrator): `node scripts/grid.mjs <draft.png> --format square`, render the grid, and redraw the centre lines with the script (route A), 12–25 anchors per contour of a person. Slower, and it loses some of the PNG's life, but it stays in the repository and gives all three modes at once.
 
