@@ -31,7 +31,7 @@ export const BreadcrumbItem = <
   isCurrent,
   as,
   ...rest
-}: BreadcrumbItemProps<E>): JSX.Element => {
+}: BreadcrumbItemProps<E>): React.JSX.Element => {
   const Element: React.ElementType =
     as || (isCurrent ? 'span' : defaultElement);
   return (

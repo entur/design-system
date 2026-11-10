@@ -8,7 +8,7 @@ export type TabPanelsProps = {
   /** Tab-panelene */
   children: React.ReactNode;
   /** HTML-elementet eller React-komponenten som lager komponenten */
-  as?: keyof JSX.IntrinsicElements | React.ElementType;
+  as?: keyof React.JSX.IntrinsicElements | React.ElementType;
   /** Behold alle panel-noder i DOM (skjult med hidden-attributt) i stedet for å avmontere */
   keepMounted?: boolean;
   className?: string;

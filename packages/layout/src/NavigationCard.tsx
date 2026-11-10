@@ -43,7 +43,7 @@ export const NavigationCard = <
   className,
   as,
   ...rest
-}: NavigationCardProps<E>): JSX.Element => {
+}: NavigationCardProps<E>): React.JSX.Element => {
   const Element: React.ElementType = as || defaultElement;
   const classList = classNames('eds-navigation-card', className, {
     'eds-base-card--red-line': compact,

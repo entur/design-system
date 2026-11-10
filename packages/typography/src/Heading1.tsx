@@ -27,7 +27,7 @@ export const Heading1 = <E extends React.ElementType = typeof defaultElement>({
   children,
   as,
   ...rest
-}: Heading1Props<E>): JSX.Element => {
+}: Heading1Props<E>): React.JSX.Element => {
   const Element: React.ElementType = as || defaultElement;
   return (
     <BaseHeading as={Element} margin={margin} {...rest} level={1}>

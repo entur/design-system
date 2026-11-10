@@ -49,7 +49,7 @@ export const GridContainer = <
   rowSpacing,
   as,
   ...rest
-}: GridContainerProps<E>): JSX.Element => {
+}: GridContainerProps<E>): React.JSX.Element => {
   const Element: React.ElementType = as || defaultElement;
   return (
     <BaseGrid

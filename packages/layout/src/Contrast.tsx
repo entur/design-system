@@ -23,7 +23,7 @@ export const Contrast: ContrastComponent = React.forwardRef(function Contrast<
 >(
   { className, as, ...rest }: ContrastProps<T>,
   ref: PolymorphicRef<T>,
-): JSX.Element {
+): React.JSX.Element {
   const Element: React.ElementType = as || defaultElement;
   return (
     <ContrastContext.Provider value={true}>

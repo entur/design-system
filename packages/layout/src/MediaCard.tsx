@@ -64,7 +64,7 @@ export const MediaCard = <E extends React.ElementType = typeof defaultElement>({
   wrapperProps,
   orientation,
   ...rest
-}: MediaCardProps<E>): JSX.Element => {
+}: MediaCardProps<E>): React.JSX.Element => {
   const Element: React.ElementType = as || defaultElement;
   const Heading = Heading3;
 

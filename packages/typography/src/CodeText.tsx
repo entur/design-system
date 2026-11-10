@@ -22,7 +22,7 @@ export const CodeText = <E extends React.ElementType = typeof defaultElement>({
   className,
   as,
   ...rest
-}: CodeTextProps<E>): JSX.Element => {
+}: CodeTextProps<E>): React.JSX.Element => {
   const Element: React.ElementType = as || defaultElement;
   return (
     <Element className={classNames('eds-code-text', className)} {...rest} />

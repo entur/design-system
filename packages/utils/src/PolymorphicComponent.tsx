@@ -7,8 +7,10 @@ import React from 'react';
 // Source: https://github.com/emotion-js/emotion/blob/master/packages/styled-base/types/helper.d.ts
 // A more precise version of just React.ComponentPropsWithoutRef on its own
 export type PropsOf<
-  C extends keyof JSX.IntrinsicElements | React.JSXElementConstructor<any>,
-> = JSX.LibraryManagedAttributes<C, React.ComponentPropsWithoutRef<C>>;
+  C extends
+    | keyof React.JSX.IntrinsicElements
+    | React.JSXElementConstructor<any>,
+> = React.JSX.LibraryManagedAttributes<C, React.ComponentPropsWithoutRef<C>>;
 
 type AsProp<C extends React.ElementType> = {
   /**

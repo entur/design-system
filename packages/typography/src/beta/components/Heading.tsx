@@ -70,7 +70,7 @@ export const Heading = React.forwardRef(
       ...rest
     }: HeadingProps<C>,
     ref?: React.Ref<Element>,
-  ): JSX.Element => {
+  ): React.JSX.Element => {
     const HeadingElement: React.ElementType = as || defaultElement;
 
     const usedVariant =

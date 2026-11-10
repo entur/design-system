@@ -34,7 +34,7 @@ export const Link = React.forwardRef(
   <C extends React.ElementType = typeof defaultElement>(
     { className, spacing, style, children, as, ...rest }: LinkProps<C>,
     ref?: React.Ref<Element>,
-  ): JSX.Element => {
+  ): React.JSX.Element => {
     const LinkElement: React.ElementType = as || defaultElement;
 
     return (

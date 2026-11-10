@@ -39,7 +39,7 @@ const BaseCardDesignEntur = <
   headingLevel = 'h2',
   arrow = false,
   ...rest
-}: BaseCardProps<E>): JSX.Element => {
+}: BaseCardProps<E>): React.JSX.Element => {
   const Element: React.ElementType = as || defaultElement;
   const classList = classNames('designentur-base-card', className);
   return (

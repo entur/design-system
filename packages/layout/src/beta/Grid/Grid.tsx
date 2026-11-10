@@ -100,7 +100,7 @@ export const Grid: GridComponent = React.forwardRef(
       ...rest
     }: GridProps<E>,
     ref?: React.Ref<Element>,
-  ): JSX.Element => {
+  ): React.JSX.Element => {
     const Element: React.ElementType = as || defaultElement;
 
     const gridStyle: React.CSSProperties = {

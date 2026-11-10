@@ -30,7 +30,7 @@ export const FlexSpacer: FlexSpacerComponent = <
   className,
   style,
   ...rest
-}: FlexSpacerProps<E>): JSX.Element => {
+}: FlexSpacerProps<E>): React.JSX.Element => {
   const Element: React.ElementType = as || defaultElement;
 
   return (

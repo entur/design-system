@@ -88,7 +88,7 @@ export const TravelTag = ({
     }),
   };
 
-  const TravelTagWithoutLabel: JSX.Element = (
+  const TravelTagWithoutLabel: React.JSX.Element = (
     <div
       className={classNames(className, 'eds-travel-tag', {
         'eds-travel-tag--closable': isClosable,
@@ -143,7 +143,7 @@ export const TravelTag = ({
     </div>
   );
 
-  const Label: JSX.Element = (
+  const Label: React.JSX.Element = (
     <div
       className={classNames('eds-travel-tag__label', {
         [`eds-travel-tag__label--${labelPlacement}`]: label,
