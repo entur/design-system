@@ -33,6 +33,18 @@
       padding-block-start: var(--spacing-9xl);
       padding-inline: var(--eds-footer-padding-inline, var(--spacing-11xl));
     }
+
+    // Without content there is nothing to divide, so the subfooter gets even padding
+    &--subfooter-only {
+      // Placed after the container query, so it wins at every width
+      padding-block-start: var(--spacing-m);
+
+      > .eds-footer__subfooter {
+        margin-block-start: 0;
+        padding-block-start: 0;
+        border-block-start: none;
+      }
+    }
   }
 
   &__content {

@@ -34,6 +34,26 @@ describe('Footer', () => {
     expect(screen.getByRole('contentinfo')).toBeInTheDocument();
   });
 
+  it('renders only the subfooter without children', () => {
+    const { container } = render(<Footer />);
+    expect(container.querySelector('.eds-footer__content')).toBeNull();
+    expect(container.querySelector('.eds-footer__inner')).toHaveClass(
+      'eds-footer__inner--subfooter-only',
+    );
+  });
+
+  it('renders the content area with children', () => {
+    const { container } = render(
+      <Footer>
+        <Footer.Brand />
+      </Footer>,
+    );
+    expect(container.querySelector('.eds-footer__content')).not.toBeNull();
+    expect(container.querySelector('.eds-footer__inner')).not.toHaveClass(
+      'eds-footer__inner--subfooter-only',
+    );
+  });
+
   it('is not contrast by default', () => {
     render(<Footer />);
     const footer = screen.getByRole('contentinfo');
