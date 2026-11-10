@@ -27,6 +27,9 @@
 // `--underlay` adds one paper shape under the whole subject, like the
 // library animals' underlays: without it, white areas the colour trace
 // cannot tell from the background (a tail past the disc) stay unfilled.
+// With animals, a small dark eye or nose, too thin for the colour trace and
+// too round for the line trace, is put back as an ink ellipse on a Features
+// layer (`--no-features` turns it off).
 // The draft already carries the hand tremor, so Roughen is only added with
 // `--roughen`. Saved as <Name>.ai and <Name>.svg, plus -darkmode and
 // -contrast SVGs by palette mapping (every white becomes paper).
@@ -57,12 +60,13 @@ const app = opt(
 const outDir = path.resolve(opt('out', '.'));
 const animals = opt('construction', 'people') === 'animals';
 const threshold = Number(opt('threshold', 110));
-const maxStroke = Number(opt('max-stroke', 14));
+const maxStroke = Number(opt('max-stroke', 20));
 const contour = Number(opt('contour', animals ? 2.1 : 1.5));
 const detail = Number(opt('detail', animals ? 1.7 : 1.0));
 const carriers = opt('carriers', '');
 const backdrop = flag('backdrop');
 const underlay = flag('underlay');
+const features = animals && !flag('no-features');
 // A traced draft already carries the hand tremor; Roughen on top makes it bumpy.
 const roughen = flag('roughen');
 flag('no-roughen');
@@ -111,6 +115,8 @@ const params = {
     Object.entries(PALETTE).map(([k, [hex]]) => [k, hexToRgb(hex)]),
   ),
 };
+
+params.features = features ? darkFeatures(png, params.size) : [];
 
 const jsx = `
 var P = ${JSON.stringify(params)};
@@ -318,6 +324,17 @@ for (var f = 0; f < fp.length; f++) {
 }
 log.push('fills roughened ' + finished + ', ink clothing shifted ' + inkShifted);
 
+// Eyes and noses (animals), found in the draft by darkFeatures: on top, in ink.
+if (P.features.length) {
+  var featureLayer = doc.layers.add(); featureLayer.name = 'Features';
+  for (var fe = 0; fe < P.features.length; fe++) {
+    var ft = P.features[fe];
+    var dot = featureLayer.pathItems.ellipse(ab[1] - (ft.cy - ft.ry), ab[0] + (ft.cx - ft.rx), 2 * ft.rx, 2 * ft.ry);
+    dot.stroked = false; dot.filled = true; dot.fillColor = rgb(P.palette.ink);
+  }
+}
+log.push('features ' + P.features.length);
+
 // Roughen, as in the library's .ai sources.
 var roughened = 0;
 if (P.roughen) {
@@ -379,12 +396,8 @@ for (const [mode, idx] of [
   console.log(file);
 }
 
-// Silhouette of the subject in the draft, black on white, for --underlay. The
-// line gaps are closed by growing the dark line pixels; the outside is then
-// flooded from the image edge. Inside the backdrop disc only disc-coloured
-// pixels let the flood through, so white areas behind a gap in a contour
-// stay inside. Pure JS: decodes 8-bit RGB(A) PNGs.
-function writeMask(file, grow = 5) {
+// Luminance and a blue-ish flag per pixel. Pure JS: decodes 8-bit RGB(A) PNGs.
+function readPng(file) {
   const buf = fs.readFileSync(file);
   let pos = 8;
   let w = 0;
@@ -434,6 +447,106 @@ function writeMask(file, grow = 5) {
     }
     prev = line;
   }
+  return { w, h, lum, blueish };
+}
+
+// Eyes and noses in the draft, as ellipses in artboard points (y down): dots
+// that stand free, and thick spots that remain once the lines are eroded away
+// (a nose drawn at the end of a line). Lines, fur marks and ground dashes are
+// too thin or too long to pass.
+function darkFeatures(file, size) {
+  const { w, h, lum } = readPng(file);
+  const dark = new Uint8Array(w * h);
+  for (let k = 0; k < w * h; k++) dark[k] = lum[k] < 100 ? 1 : 0;
+  const box = c => [c.x1 - c.x0 + 1, c.y1 - c.y0 + 1];
+  const small = c => Math.max(...box(c)) <= 0.045 * w;
+  const round = c => Math.max(...box(c)) / Math.min(...box(c)) <= 2.2;
+  const dots = components(dark, w, h).filter(
+    c =>
+      c.n >= (0.006 * w) ** 2 &&
+      small(c) &&
+      round(c) &&
+      c.n / (box(c)[0] * box(c)[1]) >= 0.45,
+  );
+  const r = Math.max(2, Math.round(0.0045 * w));
+  const spots = components(erode(dark, w, h, r), w, h)
+    .filter(c => c.n >= 9)
+    .map(c => ({ x0: c.x0 - r, x1: c.x1 + r, y0: c.y0 - r, y1: c.y1 + r }))
+    .filter(
+      c =>
+        small(c) &&
+        round(c) &&
+        !dots.some(
+          d => d.x0 <= c.x1 && c.x0 <= d.x1 && d.y0 <= c.y1 && c.y0 <= d.y1,
+        ),
+    );
+  const [sx, sy] = [size / w, size / h];
+  return [...dots, ...spots].map(c => ({
+    cx: ((c.x0 + c.x1 + 1) / 2) * sx,
+    cy: ((c.y0 + c.y1 + 1) / 2) * sy,
+    rx: ((c.x1 - c.x0 + 1) / 2) * sx,
+    ry: ((c.y1 - c.y0 + 1) / 2) * sy,
+  }));
+}
+
+function components(mask, w, h) {
+  const seen = new Uint8Array(w * h);
+  const out = [];
+  for (let k = 0; k < w * h; k++) {
+    if (!mask[k] || seen[k]) continue;
+    const c = { n: 0, x0: w, x1: 0, y0: h, y1: 0 };
+    const stack = [k];
+    seen[k] = 1;
+    while (stack.length) {
+      const p = stack.pop();
+      const x = p % w;
+      const y = (p - x) / w;
+      c.n++;
+      c.x0 = Math.min(c.x0, x);
+      c.x1 = Math.max(c.x1, x);
+      c.y0 = Math.min(c.y0, y);
+      c.y1 = Math.max(c.y1, y);
+      for (const q of [
+        x > 0 ? p - 1 : -1,
+        x < w - 1 ? p + 1 : -1,
+        p - w,
+        p + w,
+      ])
+        if (q >= 0 && q < w * h && mask[q] && !seen[q]) {
+          seen[q] = 1;
+          stack.push(q);
+        }
+    }
+    out.push(c);
+  }
+  return out;
+}
+
+// Keeps a pixel when the whole square of radius r around it is dark.
+function erode(mask, w, h, r) {
+  const span = 2 * r + 1;
+  const across = new Uint8Array(w * h);
+  for (let y = 0; y < h; y++)
+    for (let x = 0, run = 0; x < w; x++) {
+      run = mask[y * w + x] ? run + 1 : 0;
+      if (run >= span) across[y * w + x - r] = 1;
+    }
+  const out = new Uint8Array(w * h);
+  for (let x = 0; x < w; x++)
+    for (let y = 0, run = 0; y < h; y++) {
+      run = across[y * w + x] ? run + 1 : 0;
+      if (run >= span) out[(y - r) * w + x] = 1;
+    }
+  return out;
+}
+
+// Silhouette of the subject in the draft, black on white, for --underlay. The
+// line gaps are closed by growing the dark line pixels; the outside is then
+// flooded from the image edge. Inside the backdrop disc only disc-coloured
+// pixels let the flood through, so white areas behind a gap in a contour
+// stay inside.
+function writeMask(file, grow = 5) {
+  const { w, h, lum, blueish } = readPng(file);
   // The disc: the bounds of the pale grey-lavender pixels.
   const xs = [];
   const ys = [];
