@@ -100,7 +100,7 @@ export const Flex: FlexComponent = React.forwardRef(
       ...rest
     }: FlexProps<E>,
     ref?: React.Ref<Element>,
-  ): JSX.Element => {
+  ): React.JSX.Element => {
     const Element: React.ElementType = as || defaultElement;
 
     const flexStyle: React.CSSProperties = {

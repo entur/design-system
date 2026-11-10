@@ -102,7 +102,7 @@ export const GridItem: GridItemComponent = React.forwardRef(
       ...rest
     }: GridItemProps<E>,
     ref?: React.Ref<Element>,
-  ): JSX.Element => {
+  ): React.JSX.Element => {
     const Element: React.ElementType = as || defaultElement;
 
     const itemStyle: React.CSSProperties = {
