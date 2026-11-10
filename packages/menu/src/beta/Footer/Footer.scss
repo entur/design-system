@@ -38,12 +38,6 @@
     &--subfooter-only {
       // Placed after the container query, so it wins at every width
       padding-block-start: var(--spacing-m);
-
-      > .eds-footer__subfooter {
-        margin-block-start: 0;
-        padding-block-start: 0;
-        border-block-start: none;
-      }
     }
   }
 
@@ -132,6 +126,13 @@
 
     @container eds-footer (width >= 800px) {
       margin-block-start: var(--spacing-5xl);
+    }
+
+    // One class of specificity, placed after the rules it overrides
+    :where(.eds-footer__inner--subfooter-only) > & {
+      margin-block-start: 0;
+      padding-block-start: 0;
+      border-block-start: none;
     }
   }
 
