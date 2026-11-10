@@ -120,7 +120,7 @@ const FooterRoot = React.forwardRef<HTMLElement, FooterProps>(
                 className="eds-footer__subfooter-link"
                 href="https://entur.no"
               >
-                Entur.no
+                entur.no
               </Link>
             </p>
             {showSocialMedia && (
