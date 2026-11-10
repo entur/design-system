@@ -1,9 +1,12 @@
 import {
   DropEvent,
   DropzoneOptions,
+  ErrorCode,
+  FileError,
   FileRejection,
   useDropzone,
 } from 'react-dropzone';
+import _attrAccept from 'attr-accept';
 import classNames from 'classnames';
 
 import { DeleteIcon, FileIcon } from '@entur/icons';
@@ -12,7 +15,13 @@ import { Label } from '@entur/typography';
 
 import './FileUpload.scss';
 
-type FileUploadProps = DropzoneOptions & {
+// CJS/ESM interop, same as react-dropzone does internally
+const attrAccept: (file: File, accept: string | string[]) => boolean =
+  typeof _attrAccept === 'function'
+    ? _attrAccept
+    : (_attrAccept as { default: typeof _attrAccept }).default;
+
+type FileUploadProps = Omit<DropzoneOptions, 'accept'> & {
   /** Tekst som vises ved fullført opplasting
    * @default "Opplasting fullført"
    */
@@ -68,12 +77,28 @@ export const FileUpload = ({
   label,
   removeFileButtonDescription = 'Fjern fil',
   style,
+  validator,
   ...rest
 }: FileUploadProps) => {
+  // Validate file type ourselves: react-dropzone's own `accept` warns on extension-only values
+  const acceptList = toAcceptList(accept);
+  const validateFile = (file: File): FileError | FileError[] | null => {
+    const errors: FileError[] = [];
+    if (
+      file.type !== 'application/x-moz-file' &&
+      !attrAccept(file, acceptList)
+    ) {
+      errors.push(getInvalidTypeError(accept, acceptList));
+    }
+    const custom = validator?.(file);
+    if (custom) errors.push(...(Array.isArray(custom) ? custom : [custom]));
+    return errors.length > 0 ? errors : null;
+  };
+
   const { getRootProps, getInputProps, isDragActive, isDragReject } =
     useDropzone({
       onDrop,
-      accept: accept,
+      validator: validateFile,
       ...rest,
     });
 
@@ -81,9 +106,12 @@ export const FileUpload = ({
 
   return (
     <div className="eds-file-upload__wrapper" {...style}>
-      <div className="eds-file-upload__input" {...getRootProps()}>
+      <div
+        className="eds-file-upload__input"
+        {...getRootProps({ role: 'button' })}
+      >
         {label && <Label style={{ display: 'flex' }}>{label}</Label>}
-        <input {...getInputProps()} />
+        <input {...getInputProps({ accept: acceptList.join(',') })} />
         <span
           className={classNames(
             'eds-file-upload__dropzone',
@@ -91,7 +119,10 @@ export const FileUpload = ({
               'eds-file-upload__dropzone--success': success,
             },
             { 'eds-file-upload__dropzone--active': isDragActive },
-            { 'eds-file-upload__dropzone--reject': isDragReject },
+            // react-dropzone 14 keeps isDragReject after drop; only show it while dragging
+            {
+              'eds-file-upload__dropzone--reject': isDragActive && isDragReject,
+            },
             { 'eds-file-upload__dropzone--error': errorUpload },
           )}
         >
@@ -121,6 +152,25 @@ export const FileUpload = ({
     </div>
   );
 };
+
+function toAcceptList(accept: FileUploadProps['accept']): string[] {
+  if (!accept) return [];
+  return typeof accept === 'string' ? accept.split(',') : accept;
+}
+
+// Same code and message as react-dropzone 11
+function getInvalidTypeError(
+  accept: FileUploadProps['accept'],
+  acceptList: string[],
+): FileError {
+  let suffix = `one of ${acceptList.join(', ')}`;
+  if (typeof accept === 'string') suffix = accept;
+  else if (acceptList.length === 1) suffix = acceptList[0];
+  return {
+    code: ErrorCode.FileInvalidType,
+    message: `File type must be ${suffix}`,
+  };
+}
 
 function convertSizeToHuman(size: number) {
   if (size < 1000) {
