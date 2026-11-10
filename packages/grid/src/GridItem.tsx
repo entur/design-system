@@ -33,7 +33,7 @@ export const GridItem = <E extends React.ElementType = typeof defaultElement>({
   large,
   as,
   ...rest
-}: GridItemProps<E>): JSX.Element => {
+}: GridItemProps<E>): React.JSX.Element => {
   const Element: React.ElementType = as || defaultElement;
   return (
     <BaseGrid
