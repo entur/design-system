@@ -42,6 +42,14 @@ describe('Footer', () => {
     );
   });
 
+  it.each([
+    ['null', null],
+    ['false', false],
+  ])('treats %s children as no content', (_, child) => {
+    const { container } = render(<Footer>{child}</Footer>);
+    expect(container.querySelector('.eds-footer__content')).toBeNull();
+  });
+
   it('renders the content area with children', () => {
     const { container } = render(
       <Footer>
