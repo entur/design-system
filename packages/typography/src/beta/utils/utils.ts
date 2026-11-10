@@ -1,3 +1,4 @@
+import type React from 'react';
 import type { TypographyHeadingVariant } from '../components/Heading';
 import type { TypographyTextVariant } from '../components/Text';
 import type { TypographySpacing } from '../types';
@@ -127,7 +128,7 @@ export function getDefaultTextVariant(
  */
 export function getSemanticTypeFromTextVariant(
   variant: TypographyTextVariant | undefined,
-): keyof JSX.IntrinsicElements {
+): keyof React.JSX.IntrinsicElements {
   if (!variant) return 'p';
 
   switch (variant) {

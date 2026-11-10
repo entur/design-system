@@ -33,7 +33,7 @@ export const Link = <E extends React.ElementType = typeof defaultElement>({
   children,
   as,
   ...rest
-}: LinkProps<E>): JSX.Element => {
+}: LinkProps<E>): React.JSX.Element => {
   const Element: React.ElementType = as || defaultElement;
   return (
     <Element

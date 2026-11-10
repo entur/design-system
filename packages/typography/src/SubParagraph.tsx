@@ -30,7 +30,7 @@ export const SubParagraph = <
   margin,
   as,
   ...rest
-}: SubParagraphProps<E>): JSX.Element => {
+}: SubParagraphProps<E>): React.JSX.Element => {
   const Element: React.ElementType = as || defaultElement;
   return (
     <Element

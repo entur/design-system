@@ -53,7 +53,7 @@ export const NumberedList = React.forwardRef(
       ...rest
     }: NumberedListProps<C>,
     ref?: React.Ref<Element>,
-  ): JSX.Element => {
+  ): React.JSX.Element => {
     const ListElement: React.ElementType = as || defaultElement;
 
     return (

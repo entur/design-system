@@ -82,7 +82,7 @@ export const Text = React.forwardRef(
       ...rest
     }: TextProps<C>,
     ref?: React.Ref<Element>,
-  ): JSX.Element => {
+  ): React.JSX.Element => {
     const BodyElement: React.ElementType =
       as || getSemanticTypeFromTextVariant(variant);
     const usedVariant = variant ?? getDefaultTextVariant(BodyElement);

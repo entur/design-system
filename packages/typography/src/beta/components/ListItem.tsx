@@ -47,7 +47,7 @@ export const ListItem = React.forwardRef(
       ...rest
     }: ListItemProps<C>,
     ref?: React.Ref<Element>,
-  ): JSX.Element => {
+  ): React.JSX.Element => {
     const ItemElement: React.ElementType = as || defaultElement;
 
     return (

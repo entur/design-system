@@ -30,7 +30,7 @@ export const StrongText = <
   margin = 'both',
   as,
   ...rest
-}: StrongTextProps<E>): JSX.Element => {
+}: StrongTextProps<E>): React.JSX.Element => {
   const Element: React.ElementType = as || defaultElement;
   return (
     <Element

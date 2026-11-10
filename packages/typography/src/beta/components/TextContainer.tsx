@@ -36,7 +36,7 @@ export const TextContainer = React.forwardRef(
   <C extends React.ElementType = typeof defaultElement>(
     { className, spacing, style, children, as, ...rest }: TextContainerProps<C>,
     ref?: React.Ref<Element>,
-  ): JSX.Element => {
+  ): React.JSX.Element => {
     const ContainerElement: React.ElementType = as || defaultElement;
 
     return (

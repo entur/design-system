@@ -27,7 +27,7 @@ export const Label = <E extends React.ElementType = typeof defaultElement>({
   margin = 'both',
   as,
   ...rest
-}: LabelProps<E>): JSX.Element => {
+}: LabelProps<E>): React.JSX.Element => {
   const Element: React.ElementType = as || defaultElement;
   return (
     <Element
