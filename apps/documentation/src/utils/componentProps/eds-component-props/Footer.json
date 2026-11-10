@@ -57,7 +57,7 @@
     },
     "children": {
       "defaultValue": null,
-      "description": "`Footer.Brand` og en eller flere `Footer.LinkGroup`",
+      "description": "`Footer.Brand` og en eller flere `Footer.LinkGroup`. Uten innhold vises bare subfooteren.",
       "name": "children",
       "declarations": [
         {
