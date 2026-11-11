@@ -12,7 +12,7 @@ const toListItems = (
   children: React.ReactNode,
   prefix = '',
 ): React.ReactNode[] =>
-  React.Children.toArray(children).flatMap((child, index) => {
+  React.Children.toArray(children).flatMap<React.ReactNode>((child, index) => {
     const key = `${prefix}${React.isValidElement(child) ? child.key : index}`;
     return React.isValidElement(child) && child.type === React.Fragment
       ? toListItems(
