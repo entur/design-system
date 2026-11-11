@@ -137,7 +137,7 @@ async function bind(frame, group, set, mode, roleOf) {
 }
 ```
 
-Variable keys (`KEYS` above), for `importVariableByKeyAsync`:
+Variable keys (the KEYS object in the snippet), for `importVariableByKeyAsync`:
 
 | Variable                           | Key                                        |
 | ---------------------------------- | ------------------------------------------ |
@@ -164,7 +164,7 @@ Variable keys (`KEYS` above), for `importVariableByKeyAsync`:
 | `People/Contrast/Fill/Highlight 2` | `9d2142dc548e4b3041701bc87af60ecca1190f2b` |
 | `People/Contrast/Fill/Highlight 3` | `a604c2de4bf3ae53750f44f84ad785ee4940d136` |
 
-`Fill/Cloth`, `Fill/Shoe` and the rest of the People set (`Line/Subdued`, `Light`, `Mask`, `Reflex`, `Brakelight`) are in the same collection; look a key up with `search_design_system` or on a library component when a motif needs one. Check the result: switch the standard frame to Dark and every colour should change, and the list of colours left over should be empty. The Figma illustration plugin (`tools/figma-illustrasjon/code.js`, `bindColours`, on its own branch `figma-illustrasjon-plugin`) does the same when it places a traced motif.
+`Fill/Cloth`, `Fill/Shoe` and the rest of the People set (`Line/Subdued` and the Light, Mask, Reflex and Brakelight variables) are in the same collection; look a key up with `search_design_system` or on a library component when a motif needs one. Check the result: switch the standard frame to Dark and every colour should change, and the list of colours left over should be empty. The Figma illustration plugin (`tools/figma-illustrasjon/code.js`, `bindColours`, on its own branch `figma-illustrasjon-plugin`) does the same when it places a traced motif.
 
 ## Web
 
