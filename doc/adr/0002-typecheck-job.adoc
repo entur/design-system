@@ -22,6 +22,10 @@ includes the tests, and the declaration build leaves them out with
 importing the shared helpers in `tests/jest/` type-check without moving the
 published `.d.ts` files. The declaration build keeps logging without failing.
 
+Tests are included because they are the only code in CI that uses the
+published types the way consumers do, such as `<Button as="a" href="…">`.
+`src` only defines them, so a broken public type can still compile there.
+
 == Consequences
 
 === Positive
