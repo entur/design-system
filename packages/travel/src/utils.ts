@@ -36,7 +36,11 @@ export type Transport =
   | 'carferry'
   | 'mobility'
   | 'airportLinkBus'
+  | 'airportlinkbus'
   | 'airportLinkRail'
+  | 'airportlinkrail'
+  | 'railReplacementBus'
+  | 'railreplacementbus'
   | 'snowcoach'
   | 'rail'
   | 'water'
@@ -55,6 +59,8 @@ type transportStyleResult = {
   errorContrastBackgroundColor?: string;
   pattern: 'line' | 'wave' | 'dashed' | 'dotted';
   ariaLabel: string;
+  /** Light fill that needs dark text and icons */
+  hasDarkForeground?: boolean;
 };
 
 export const getTransportStyle = (mode: string): transportStyleResult => {
@@ -167,6 +173,14 @@ export const getTransportStyle = (mode: string): transportStyleResult => {
         Icon: TrainIcon,
         pattern: 'line',
         ariaLabel: 'Flytog',
+      };
+    case 'railReplacementBus':
+    case 'railreplacementbus':
+      return {
+        Icon: BusIcon,
+        pattern: 'dashed',
+        ariaLabel: 'Buss for tog',
+        hasDarkForeground: true,
       };
     case 'none':
       return {

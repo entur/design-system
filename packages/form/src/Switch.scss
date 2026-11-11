@@ -86,7 +86,7 @@
 
         svg g,
         path {
-          fill: var(--eds-switch-color);
+          fill: var(--eds-switch-icon-color, var(--eds-switch-color));
         }
       }
 

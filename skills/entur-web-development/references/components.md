@@ -443,7 +443,7 @@ import { TravelHeader, TravelTag, LegLine, TravelLeg, TravelSwitch } from '@entu
 <TravelLeg transport="rail" direction="vertical" />
 ```
 
-Transport modes: `"rail"` | `"bus"` | `"metro"` | `"tram"` | `"ferry"` | `"plane"` | `"bicycle"` | `"walk"` | `"mobility"` | `"cableway"` | `"funicular"` | `"helicopter"` | `"taxi"`
+Transport modes: `"rail"` | `"bus"` | `"metro"` | `"tram"` | `"ferry"` | `"plane"` | `"bicycle"` | `"walk"` | `"mobility"` | `"cableway"` | `"funicular"` | `"helicopter"` | `"taxi"` | `"railReplacementBus"` (buss for tog)
 
 ---
 
