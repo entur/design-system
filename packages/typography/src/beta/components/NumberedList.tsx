@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { PolymorphicComponentProps } from '@entur/utils';
+import { PolymorphicComponentProps, forwardRefPolymorphic } from '@entur/utils';
 import { TypographySpacingProps } from '../types';
 import { getSpacingStyle } from '../utils/utils';
 
@@ -39,7 +39,7 @@ const defaultElement = 'ol';
 /**
  * @beta Experimental component - may have breaking changes in future releases
  */
-export const NumberedList = React.forwardRef(
+export const NumberedList = forwardRefPolymorphic<NumberedListComponent>(
   <C extends React.ElementType = typeof defaultElement>(
     {
       type = '1',
@@ -76,5 +76,5 @@ export const NumberedList = React.forwardRef(
       </ListElement>
     );
   },
-) as NumberedListComponent;
+);
 NumberedList.displayName = 'NumberedList';

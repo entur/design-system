@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { PolymorphicComponentProps } from '@entur/utils';
+import { PolymorphicComponentProps, forwardRefPolymorphic } from '@entur/utils';
 import { TypographySpacingProps } from '../types';
 import { getSpacingStyle } from '../utils/utils';
 
@@ -33,7 +33,7 @@ const defaultElement = 'ul';
 /**
  * @beta Experimental component - may have breaking changes in future releases
  */
-export const UnorderedList = React.forwardRef(
+export const UnorderedList = forwardRefPolymorphic<UnorderedListComponent>(
   <C extends React.ElementType = typeof defaultElement>(
     {
       className,
@@ -65,5 +65,5 @@ export const UnorderedList = React.forwardRef(
       </ListElement>
     );
   },
-) as UnorderedListComponent;
+);
 UnorderedList.displayName = 'UnorderedList';
