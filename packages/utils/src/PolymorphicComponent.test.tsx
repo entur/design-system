@@ -46,3 +46,20 @@ test('renders the default element when as is not given', () => {
   render(<Box ref={ref}>Innhold</Box>);
   expect(ref.current?.tagName).toBe('DIV');
 });
+
+test('types props and ref from the as prop', () => {
+  // Checked by tsc, not Jest; the render only keeps the JSX in use
+  render(
+    <>
+      <Box as="a" href="/reise" ref={React.createRef<HTMLAnchorElement>()}>
+        Reise
+      </Box>
+      {/* @ts-expect-error href is not a div prop */}
+      <Box href="/reise">Reise</Box>
+      {/* @ts-expect-error a div ref doesn't fit an anchor */}
+      <Box as="a" ref={React.createRef<HTMLDivElement>()}>
+        Reise
+      </Box>
+    </>,
+  );
+});
