@@ -49,7 +49,7 @@ export type Transport =
 
 export type CSSVars = { [key: `--${string}`]: string | number };
 
-const NoIcon: React.FC<IconProps> = () => null;
+const NoIcon = () => null;
 
 type transportStyleResult = {
   Icon: React.FC<IconProps>;
