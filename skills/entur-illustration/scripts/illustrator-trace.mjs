@@ -16,7 +16,8 @@
 //          (`--contour-share`) gets the contour weight, the rest the detail
 //          weight; by traced width, or by length when widths are all alike.
 //   colour colour trace, abutting, smoothed: every area snapped to the exact
-//          palette colour; wide ink areas kept, thin line-like ink dropped,
+//          palette colour; wide ink areas kept (on animals the ink comes
+//          from an opened-ink mask instead), thin line-like ink dropped,
 //          enclosed white kept as paper, the white background removed;
 //          colour (not ink) shifted 0.6 pt right and 0.3 pt down; fill
 //          edges stay smooth, as in the reference drawings.
@@ -146,6 +147,12 @@ params.ground = groundBand
     }
   : null;
 params.features = features ? darkFeatures(img, params.size, groundBand) : [];
+// Animals take their ink masses from the opened-ink mask, not from the
+// colour trace's mean-width rule (inkMasses).
+const masses = animals ? inkMasses(img, groundBand) : null;
+params.inkFromMask = animals;
+params.inkMask = masses ? masses.file : '';
+params.inkMasses = masses ? masses.count : 0;
 
 const jsx = `
 var P = ${JSON.stringify(params)};
@@ -208,7 +215,7 @@ for (var i = cp.length - 1; i >= 0; i--) {
   // Ink areas: keep the wide ones (uniform, hair, shoes) as fills; drop the
   // thin, line-like ones, which the stroke trace draws. Mean width ≈ 2·area/perimeter.
   var wide = k === 'ink' && it.length > 0 && (2 * Math.abs(it.area)) / it.length > P.minInkWidth;
-  if (k === 'paper' || (k === 'ink' && !wide)) { it.remove(); dropped++; continue; }
+  if (k === 'paper' || (k === 'ink' && (!wide || P.inkFromMask))) { it.remove(); dropped++; continue; }
   if (k === 'ink') inkAreas++;
   it.fillColor = rgb(P.palette[k]); it.stroked = false; kept++;
   // Print misregistration: colour shifts off its line; ink areas stay put.
@@ -486,6 +493,24 @@ if (P.mask) {
   }
   mg.remove();
   log.push('underlay ' + underlays + ' shape' + (underlays === 1 ? '' : 's') + ', ' + Math.round(underArea) + ' pt2');
+}
+// Ink masses (animals): wing and tail tips, a nose, a dark patch, traced from
+// the opened-ink mask with their feather gaps, on top of the other fills.
+if (P.inkMask) {
+  var ip = fillLayerOf(doc).placedItems.add();
+  ip.file = new File(P.inkMask);
+  ip.width = ab[2] - ab[0]; ip.height = ab[1] - ab[3]; ip.position = [ab[0], ab[1]];
+  var itr = ip.trace(), io = itr.tracing.tracingOptions;
+  io.tracingMode = TracingModeType.TRACINGMODEBLACKANDWHITE; io.threshold = 128;
+  io.fills = true; io.strokes = false; io.ignoreWhite = true;
+  io.pathFidelity = 40; io.cornerFidelity = 50; io.noiseFidelity = 20;
+  app.redraw();
+  var ig = itr.tracing.expandTracing();
+  ig.move(fillLayerOf(doc), ElementPlacement.PLACEATBEGINNING);
+  ig.name = 'Ink';
+  var ips = paths(ig, []);
+  for (var ik = 0; ik < ips.length; ik++) { ips[ik].filled = true; ips[ik].stroked = false; ips[ik].fillColor = rgb(P.palette.ink); }
+  log.push('ink masses ' + P.inkMasses);
 }
 function fillLayerOf(d) { for (var fl = 0; fl < d.layers.length; fl++) if (d.layers[fl].name === 'Fill') return d.layers[fl]; return d.layers[0]; }
 
@@ -861,11 +886,17 @@ function writeMask(img, disc, ground, grow = 5) {
     for (let y = bandTop; y < ground.top; y++)
       for (let x = 0; x < w; x++) if (!near[y * w + x]) outer[y * w + x] = 1;
   }
+  return savePng(w, h, k => !outer[k], 'mask.png');
+}
+
+// Writes a black-on-white 8-bit RGB PNG to a temporary folder: black where
+// black(k) holds. Illustrator's black-and-white trace turns it into fills.
+function savePng(w, h, black, name) {
   const rows = Buffer.alloc((w * 3 + 1) * h);
   for (let y = 0; y < h; y++) {
     rows[y * (w * 3 + 1)] = 0;
     for (let x = 0; x < w; x++) {
-      const v = outer[y * w + x] ? 255 : 0;
+      const v = black(y * w + x) ? 0 : 255;
       rows.fill(v, y * (w * 3 + 1) + 1 + x * 3, y * (w * 3 + 1) + 4 + x * 3);
     }
   }
@@ -883,7 +914,7 @@ function writeMask(img, disc, ground, grow = 5) {
   ihdr[9] = 2;
   const out = path.join(
     fs.mkdtempSync(path.join(os.tmpdir(), 'illustrator-trace-mask-')),
-    'mask.png',
+    name,
   );
   fs.writeFileSync(
     out,
@@ -895,6 +926,68 @@ function writeMask(img, disc, ground, grow = 5) {
     ]),
   );
   return out;
+}
+
+// Solid ink masses (animals): wing and tail tips, hooves, a dark patch. The
+// colour trace keeps an ink area only when its mean width is large, and
+// white streaks between feathers pull that under, so a feathered tip goes.
+// Here the ink is opened instead — what survives an erosion of about 4 px
+// at 1024, grown back and cut with the ink again so the gaps stay white —
+// and pieces of at least 400 px at 1024 are kept. Lines are too thin to
+// survive, and so do pieces lying wholly in the band of the ground line (a
+// thick dash), which the ground step replaces. Returns the mask's file and
+// how many masses it holds, or null.
+function inkMasses({ w, h, lum }, ground) {
+  const ink = new Uint8Array(w * h);
+  for (let k = 0; k < w * h; k++) ink[k] = lum[k] < 110 ? 1 : 0;
+  const r = Math.max(2, Math.round(0.004 * w));
+  const core = erode(ink, w, h, r);
+  const near = erode(
+    core.map(v => 1 - v),
+    w,
+    h,
+    r + 2,
+  ).map(v => 1 - v);
+  const mass = new Uint8Array(w * h);
+  for (let k = 0; k < w * h; k++) mass[k] = near[k] && ink[k] ? 1 : 0;
+  const keep = new Uint8Array(w * h);
+  const seen = new Uint8Array(w * h);
+  const min = (400 / (1024 * 1024)) * w * h;
+  let count = 0;
+  for (let k = 0; k < w * h; k++) {
+    if (!mass[k] || seen[k]) continue;
+    const part = [k];
+    seen[k] = 1;
+    for (let i = 0; i < part.length; i++) {
+      const p = part[i];
+      const x = p % w;
+      for (const q of [
+        x > 0 ? p - 1 : -1,
+        x < w - 1 ? p + 1 : -1,
+        p - w,
+        p + w,
+      ])
+        if (q >= 0 && q < w * h && mass[q] && !seen[q]) {
+          seen[q] = 1;
+          part.push(q);
+        }
+    }
+    if (part.length < min) continue;
+    if (ground) {
+      let y0 = h;
+      let y1 = 0;
+      for (const p of part) {
+        const y = Math.floor(p / w);
+        if (y < y0) y0 = y;
+        if (y > y1) y1 = y;
+      }
+      const pad = 0.012 * h;
+      if (y0 >= ground.top - pad && y1 <= ground.bottom + pad) continue;
+    }
+    count++;
+    for (const p of part) keep[p] = 1;
+  }
+  return count ? { file: savePng(w, h, k => keep[k], 'ink.png'), count } : null;
 }
 
 // The backdrop disc: the largest connected area of its pale grey-lavender.
