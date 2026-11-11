@@ -116,6 +116,29 @@ jobs:
 
       - run: NX_REJECT_UNKNOWN_LOCAL_CACHE=0 yarn test
 
+  typecheck-packages:
+    name: Typecheck packages
+    needs: build-packages
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+
+      - name: Install and Cache Yarn Dependencies
+        uses: ./.github/actions/install-and-cache-dependencies
+        with:
+          cache-key: yarn-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Use Nx cache
+        uses: ./.github/actions/use-nx-cache
+
+      - name: Download package artifacts
+        uses: actions/download-artifact@v8
+        with:
+          name: package-artifacts
+          path: 'packages'
+
+      - run: NX_REJECT_UNKNOWN_LOCAL_CACHE=0 yarn typecheck:packages
+
   browser-tests:
     name: Typecheck and run browser tests
     needs: build-packages
