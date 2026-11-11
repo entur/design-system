@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.1.2](https://github.com/entur/design-system/compare/@entur/layout@5.1.1...@entur/layout@5.1.2) (2026-11-11)
+
+### Bug Fixes
+
+- **layout:** keep component types working with React 19 types ([5a573db](https://github.com/entur/design-system/commit/5a573db5bd0858260081c3b61cf0223dc6254c6e)) ([#550](https://github.com/entur/design-system/pull/550))
+
+  Return and prop types no longer rely on the global `JSX` namespace, which `@types/react` 19 removed. No runtime changes.
+
 ## [5.1.1](https://github.com/entur/design-system/compare/@entur/layout@5.1.0...@entur/layout@5.1.1) (2026-11-02)
 
 ### Entur Dependency Updates

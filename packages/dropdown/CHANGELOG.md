@@ -3,6 +3,43 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.4.0](https://github.com/entur/design-system/compare/@entur/dropdown@9.3.1...@entur/dropdown@9.4.0) (2026-11-11)
+
+### Features
+
+- **dropdown/multi select:** reach selected items with arrow keys, announce in one live region ([c76e48d](https://github.com/entur/design-system/commit/c76e48d8a14b9d6116de3e0907b3298ab4917a62)) ([#493](https://github.com/entur/design-system/pull/493))
+
+  The selected items, including the summary shown when more items are
+  selected than maxChips, are no longer in the tab order, so keyboard users
+  no longer have to tab past every chip to get to the text field. With the
+  caret at the start of the text field, the left arrow moves to the last
+  selected item, also while the list is open. The arrow keys move between
+  items, the right arrow from the last one goes back to the text field, and
+  Backspace or Delete removes the focused item. On the summary, Backspace or
+  Delete clears the selection. Removing an item, with Backspace or its close
+  button, keeps focus in the selected items. The text field tells screen
+  reader users how many items are selected and how to reach them,
+  configurable with ariaLabelNavigateToSelected.
+
+  Selecting or removing items is now announced through the same status
+  region as the result list, as one message per action: «Oslo valgt»,
+  «5 lagt til, 8 valgte totalt», «Oslo fjernet» or «3 valg fjernet». Before,
+  each selected item had its own live region, so removing several at once
+  could give overlapping announcements. Only changes the user makes and you
+  accept are announced: not changes to selectedItems made by your code, and
+  not a selection your onChange rejects. The texts are configurable with
+  ariaLabelRemovedSingular, ariaLabelRemovedPlural, ariaLabelAddedPlural and
+  ariaLabelChosenTotal.
+
+  The selected values are now readable by screen readers when the
+  MultiSelect is disabled or readOnly. A readOnly MultiSelect can be
+  focused, and the text field is described by the selected values. It still
+  can't be changed: the list doesn't open and Backspace removes nothing.
+
+  The "jump to text field" shortcut is removed, and ariaLabelJumpToInput is
+  deprecated and no longer used. If you have tests that tab through the
+  selected items, they now need to use the arrow keys instead.
+
 ## [9.3.1](https://github.com/entur/design-system/compare/@entur/dropdown@9.3.0...@entur/dropdown@9.3.1) (2026-11-02)
 
 ### Entur Dependency Updates

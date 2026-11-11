@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.16.0](https://github.com/entur/design-system/compare/@entur/utils@0.15.4...@entur/utils@0.16.0) (2026-11-11)
+
+### Bug Fixes
+
+- **utils:** keep polymorphic prop types working with React 19 types ([4768ce6](https://github.com/entur/design-system/commit/4768ce63100dc9b78bb7d247a60b1014f63e3078)) ([#550](https://github.com/entur/design-system/pull/550))
+
+  `PropsOf` and the polymorphic prop types built on it no longer rely on the global `JSX` namespace, which `@types/react` 19 removed. On React 19 these types used to fail to compile or quietly turn into `any`, so invalid props on components with an `as` prop went unnoticed. They now type-check on both React 18 and 19.
+
+  Requires `@types/react` 18.2.7 or newer. No runtime changes.
+
+### Features
+
+- **utils:** add forwardRefPolymorphic for components with an as prop ([79c9ee9](https://github.com/entur/design-system/commit/79c9ee9ab5dcf26941e4dc18f2b6da872a8e05be)) ([#555](https://github.com/entur/design-system/pull/555))
+
+  `forwardRefPolymorphic` works like `React.forwardRef`, but lets you type the
+  result with the component's own polymorphic call signature, so the `as` element
+  type and its props are kept. Runtime behaviour is the same as `React.forwardRef`.
+  The Entur packages now use it internally; their published types are unchanged.
+
 ## [0.15.4](https://github.com/entur/design-system/compare/@entur/utils@0.15.3...@entur/utils@0.15.4) (2026-11-02)
 
 **Note:** Version bump only for package @entur/utils

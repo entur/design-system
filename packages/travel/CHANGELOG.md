@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.2.0](https://github.com/entur/design-system/compare/@entur/travel@8.1.1...@entur/travel@8.2.0) (2026-11-11)
+
+### Bug Fixes
+
+- **travel:** keep component types working with React 19 types ([1142eae](https://github.com/entur/design-system/commit/1142eae62ee36255b1ccd93556d91c82afd99e00)) ([#550](https://github.com/entur/design-system/pull/550))
+
+  Return and prop types no longer rely on the global `JSX` namespace, which `@types/react` 19 removed. No runtime changes.
+
+### Features
+
+- **travel:** add rail replacement bus (buss for tog) as a transport ([b12b4ba](https://github.com/entur/design-system/commit/b12b4ba33bb1e24f470e691a2e20d331713794e3)) ([#547](https://github.com/entur/design-system/pull/547))
+
+  Set `transport="railReplacementBus"` on TravelTag, TravelLeg or
+  TravelSwitch. It shows the bus icon and the dashed bus line in yellow,
+  with dark text and icon, and screen readers read it as "Buss for tog".
+  The `Transport` type also accepts the lowercase `railreplacementbus`,
+  `airportlinkbus` and `airportlinkrail`.
+
 ## [8.1.1](https://github.com/entur/design-system/compare/@entur/travel@8.1.0...@entur/travel@8.1.1) (2026-11-02)
 
 ### Entur Dependency Updates

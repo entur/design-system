@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.2](https://github.com/entur/design-system/compare/@entur/tab@0.10.1...@entur/tab@0.10.2) (2026-11-11)
+
+### Bug Fixes
+
+- **tab:** keep component types working with React 19 types ([fe7e411](https://github.com/entur/design-system/commit/fe7e411f50133cdadb7c38b36a489b64266c5bd0)) ([#550](https://github.com/entur/design-system/pull/550))
+
+  Return and prop types no longer rely on the global `JSX` namespace, which `@types/react` 19 removed. No runtime changes.
+
 ## [0.10.1](https://github.com/entur/design-system/compare/@entur/tab@0.10.0...@entur/tab@0.10.1) (2026-11-02)
 
 ### Entur Dependency Updates

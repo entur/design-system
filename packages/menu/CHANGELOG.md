@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.5.0](https://github.com/entur/design-system/compare/@entur/menu@7.4.1...@entur/menu@7.5.0) (2026-11-11)
+
+### Bug Fixes
+
+- **menu:** keep component types working with React 19 types ([a629313](https://github.com/entur/design-system/commit/a6293131647ff156c81866ded03bc92ed6d581f9)) ([#550](https://github.com/entur/design-system/pull/550))
+
+  Return and prop types no longer rely on the global `JSX` namespace, which `@types/react` 19 removed. No runtime changes.
+
+### Bug Fixes (beta)
+
+- **menu/beta/footer:** write entur.no in lowercase in the subfooter ([ac4958e](https://github.com/entur/design-system/commit/ac4958e611e58f1796021ca114bb0cd52726a75b)) ([#553](https://github.com/entur/design-system/pull/553))
+
+### Features (beta)
+
+- **menu/beta/footer:** add Footer for Entur products ([3caa89f](https://github.com/entur/design-system/commit/3caa89ffd6316dcaa4b2765f29921bc362199c3c)) ([#538](https://github.com/entur/design-system/pull/538))
+
+  `Footer` implements the footer pattern. Compose it from `Footer.Brand` and
+  one or more `Footer.LinkGroup`s with a `title`. `Footer.Brand` shows the
+  Entur logo with your `productName`, and the text you pass as children.
+  The layout follows the footer's own width: one column on mobile, two on
+  tablet and one row with room for three link groups on desktop.
+  The subfooter with copyright and entur.no is built in. Show Entur's
+  social media with `showSocialMedia`, and center the content with
+  `--eds-footer-max-width`. Use `contrast` for the dark variant.
+  Requires the styles from `@entur/menu`, `@entur/menu/beta`,
+  `@entur/button` and `@entur/typography/beta`.
+
+- **menu/beta/footer:** show only the subfooter when Footer has no children ([edbebdf](https://github.com/entur/design-system/commit/edbebdf02a491b0bd09b214c3cc00742b765c1c4)) ([#552](https://github.com/entur/design-system/pull/552))
+
+  Render `<Footer />` without children to get just the copyright and
+  entur.no link, with compact padding and no divider above them.
+
 ## [7.4.1](https://github.com/entur/design-system/compare/@entur/menu@7.4.0...@entur/menu@7.4.1) (2026-11-02)
 
 ### Entur Dependency Updates

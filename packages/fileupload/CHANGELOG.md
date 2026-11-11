@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/entur/design-system/compare/@entur/fileupload@0.7.1...@entur/fileupload@0.8.0) (2026-11-11)
+
+### Bug Fixes
+
+- **fileupload:** support React 19 types by upgrading react-dropzone to 14 ([9f1c007](https://github.com/entur/design-system/commit/9f1c00789822e94b16efe2ae372c0129afa1d88c)) ([#551](https://github.com/entur/design-system/pull/551))
+
+  FileUpload now builds on react-dropzone 14, whose types work with `@types/react` 19. No changes are needed in your code: `accept` still takes extensions and MIME types as a string or an array, and accepted files, rejections, error messages, texts and screen reader behaviour stay the same. Using extension-only values such as `".csv"` gives no new console warnings.
+
+### Features
+
+- **fileupload:** accept file types in react-dropzone's object format ([cf54877](https://github.com/entur/design-system/commit/cf54877bac4248132f9032d5e8db7df17875e2b9)) ([#551](https://github.com/entur/design-system/pull/551))
+
+  `accept` now also takes an object that maps MIME types to file extensions, the same format react-dropzone uses, e.g. `accept={{ 'application/json': ['.json'] }}`. Strings and arrays work as before.
+
 ## [0.7.1](https://github.com/entur/design-system/compare/@entur/fileupload@0.7.0...@entur/fileupload@0.7.1) (2026-11-02)
 
 ### Entur Dependency Updates

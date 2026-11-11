@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.14.0](https://github.com/entur/design-system/compare/@entur/chip@0.13.1...@entur/chip@0.14.0) (2026-11-11)
+
+### Features
+
+- **chip/tag chip:** add closeButtonTabIndex ([2fcd7be](https://github.com/entur/design-system/commit/2fcd7be1b494bef2b384e0a77253d134b70bcb22)) ([#493](https://github.com/entur/design-system/pull/493))
+
+  Sets the tabIndex of the close button, for example -1 when focus is moved
+  between chips with the arrow keys instead of Tab.
+
 ## [0.13.1](https://github.com/entur/design-system/compare/@entur/chip@0.13.0...@entur/chip@0.13.1) (2026-11-02)
 
 ### Entur Dependency Updates

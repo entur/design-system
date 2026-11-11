@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.2](https://github.com/entur/design-system/compare/@entur/loader@0.9.1...@entur/loader@0.9.2) (2026-11-11)
+
+### Entur Dependency Updates
+
+- **@entur/tokens:** `^4.3.1` → `^4.4.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#440-2026-11-11))
+- **@entur/typography:** `^3.2.0` → `^3.2.1` ([changelog](https://github.com/entur/design-system/blob/main/packages/typography/CHANGELOG.md#321-2026-11-11))
+- **@entur/utils:** `^0.15.4` → `^0.16.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/utils/CHANGELOG.md#0160-2026-11-11))
+
 ## [0.9.1](https://github.com/entur/design-system/compare/@entur/loader@0.9.0...@entur/loader@0.9.1) (2026-11-02)
 
 ### Entur Dependency Updates
