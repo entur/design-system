@@ -31,7 +31,7 @@ Ask for a square PNG, 2048 × 2048 where the model allows it. Use JPG only if th
 
 ### Prompt template
 
-Fill in the brackets; keep every rule, even the ones that seem obvious. For an animal, the Peach element is never left out: name the prop or the marking (rule 19).
+Fill in the brackets; keep every rule, even the ones that seem obvious. For an animal, the Peach element is never left out: name the prop or the marking (rule 19). For coral take the first option — no coral or red — for animals, people, objects and scenes; the second only for a vehicle on its line, the third only for Entur staff (rule 8).
 
 ```text
 Line illustration in exactly the style of the attached reference images (the Entur Linje illustration library).
@@ -40,7 +40,7 @@ Scene: [one sentence: who, doing what, with which one prop].
 Style rules:
 - Plain dark navy line (#181C56), even width, round line ends, a very slight hand-drawn tremor; some contours are left open.
 - Flat fills only. No gradients, no shadows, no texture, no outlines thicker than the line.
-- White (#FFFFFF) is the main fill. Lavender (#AEB7E2) for one garment. Peach (#FFBF9E) for exactly one element: [which]. Coral (#FF5959) only for [a small detail | the Entur staff shoulder and sleeve panels].
+- White (#FFFFFF) is the main fill. Lavender (#AEB7E2) for one garment. Peach (#FFBF9E) for exactly one element: [which]; it is the only highlight colour. [No coral or red anywhere, not on a comb, a wattle, a tongue, cheeks or clothes | Coral (#FF5959) only for the line under the vehicle | Coral (#FF5959) only for the Entur staff shoulder and sleeve panels].
 - Colour fills sit slightly offset from their line, so a thin sliver of white shows along one side.
 - People are drawn naturally, like an observed drawing: realistic adult proportions about 7.5 heads tall, a small head, a relaxed pose with weight on one leg or a slight turn, loose clothes with only 2–5 tapered fold marks, hands with fingers, shoes with soles.
 - Faces are white and have NO EYES and NO MOUTH: only a nose line. Glasses are allowed.
@@ -67,6 +67,7 @@ Review every draft yourself; never show a first draft as a result or wait for th
 - animals: geometric or blobby shapes, a cartoon face, big eyes or a smile, soft grey gradients in the fur, the subject small in the frame (library animals fill about 60–75 % of the height)
 - animals: more line than the library animal next to it — fur ticks along the back, a cluster of fur strokes on the chest or neck, several lines inside an ear (rule 18)
 - animals: no Peach at all, or Peach spread over the body instead of one prop or marking (rule 19)
+- coral or red on an animal, a person or an object — a hen's comb and wattle, a tongue, cheeks, a garment: make it Peach or paper in an edit round (rule 8)
 - a sign, prop or tail closer than 16 units to the canvas edge
 
 Do not repair pixels, and do not start over. Send the draft back to the model as the **first image**, with the library reference that shows the fix as the second, and ask for only the changes:

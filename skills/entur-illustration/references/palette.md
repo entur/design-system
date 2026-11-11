@@ -18,7 +18,7 @@ The values below were measured from the library SVGs; the standard → dark → 
 | `lavender` | Secondary clothing, helmets, shrubs                        | `#AEB7E2` | Lavender 40 | `#81828F` | Ebony 50  | `#AEB7E2` | Lavender 40 |
 | `mid`      | Mid-dark details (seat, strap, tyre)                       | `#54568C` | Blue 80     | `#81828F` | Ebony 50  | `#BCBDD2` | Blue 40     |
 | `peach`    | The one warm accent per motif                              | `#FFBF9E` | Peach 40    | `#FFBF9E` | Peach 40  | `#FFBF9E` | Peach 40    |
-| `coral`    | Tiny details: rail line, dotted path, staff uniform panels | `#FF5959` | Coral 40    | `#FF9494` | Coral 30  | `#FF5959` | Coral 40    |
+| `coral`    | Only the line under a vehicle and staff uniform panels     | `#FF5959` | Coral 40    | `#FF9494` | Coral 30  | `#FF5959` | Coral 40    |
 | `glow`     | Light sources: lit windows, lamps, sun in a scene          | `#9EA0BD` | Blue 50     | `#FFEEB3` | Canary 30 | `#9EA0BD` | Blue 50     |
 
 A bike or scooter lamp beam in dark mode uses Canary 20 (`#FFF4CD`) at 30 % opacity; it does not exist in the other two modes, so add it by hand to the dark file only.

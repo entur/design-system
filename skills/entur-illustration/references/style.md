@@ -97,16 +97,16 @@ Everything behind the subject's plane — buildings, trees, hills, clouds, dista
 
 Counted across all standard-mode library files (number of filled areas):
 
-| Fill              | Share                        | Typical use                                                        |
-| ----------------- | ---------------------------- | ------------------------------------------------------------------ |
-| Ink (Lavender 90) | ≈ 50 % (mostly line artwork) | Line art, hair, dark windows, shadow shapes                        |
-| Paper (white)     | ≈ 25 %                       | Bodies, faces, coats, animals, most objects                        |
-| Blue 50           | ≈ 12 %                       | Background line art, distant buildings                             |
-| Peach 40          | ≈ 8 %                        | The warm accent: trousers, signs, pins, harnesses, sun             |
-| Lavender 40       | ≈ 3.5 %                      | Secondary clothing (trousers, helmets), shrubs in landscapes       |
-| Blue 20           | ≈ 3 %                        | Backdrop disc, ground planes, far silhouettes                      |
-| Blue 80           | < 1 %                        | Mid-dark details                                                   |
-| Coral 40          | < 0.3 %                      | A rail line under a train, dotted path lines, staff uniform panels |
+| Fill              | Share                        | Typical use                                                   |
+| ----------------- | ---------------------------- | ------------------------------------------------------------- |
+| Ink (Lavender 90) | ≈ 50 % (mostly line artwork) | Line art, hair, dark windows, shadow shapes                   |
+| Paper (white)     | ≈ 25 %                       | Bodies, faces, coats, animals, most objects                   |
+| Blue 50           | ≈ 12 %                       | Background line art, distant buildings                        |
+| Peach 40          | ≈ 8 %                        | The warm accent: trousers, signs, pins, harnesses, sun        |
+| Lavender 40       | ≈ 3.5 %                      | Secondary clothing (trousers, helmets), shrubs in landscapes  |
+| Blue 20           | ≈ 3 %                        | Backdrop disc, ground planes, far silhouettes                 |
+| Blue 80           | < 1 %                        | Mid-dark details                                              |
+| Coral 40          | < 0.3 %                      | The line under a vehicle, staff uniform panels — nothing else |
 
 Read it as: the drawing is ink on paper, with a little lavender and one touch of peach.
 
@@ -131,7 +131,7 @@ Measured on the library PNGs in November 2026: 18 people, 15 animals and the two
 - **Thin:** detail weight or lighter (about 1.0 under people, 1.3–1.7 under animals), never heavier than the contours. The ground is where the subject stands, not part of the drawing.
 - **No second line.** Neither people nor animals have a Blue 50 line under the ground line, a row of short dashes or texture along it.
 - **Nature is sparse and has a reason:** the rabbit has one tuft of three blades at the foot of the bus-stop pole and two small flowers, the moose a few long stems by its pole, the goat two long blades in front of it, the newspaper reader one small tuft at each bench leg, the hedgehog two leaves. Never grass along the line or a tuft on each side by habit; with no reason for nature in the scene, the line stays bare.
-- In scenes, the ground is a Blue 20 plane or a single long line; in landscapes, water and roads are Blue 20 bands with coral dotted or wavy lines.
+- In scenes, the ground is a Blue 20 plane or a single long line; in landscapes, water and roads are Blue 20 bands with dotted or wavy lines.
 
 ---
 
@@ -157,7 +157,7 @@ Measured on the library PNGs in November 2026: 18 people, 15 animals and the two
 - Large ink-filled foliage masses (trees, bushes) framing one or both ends, with paper detail lines inside — the only place big ink areas appear.
 - Lavender 40 shrub masses in the middle distance; Blue 20 flat building silhouettes far back.
 - Small figures and vehicles (boat, train, scooter, bench, ducks) spread along the horizontal band like a frieze, each a small story.
-- Coral as thin dotted or wavy lines marking paths and water only.
+- Thin dotted or wavy lines marking paths and water: Blue 50 for water, a dashed ink line for a route (Small vocabulary below). No coral (SKILL.md rule 8).
 
 ---
 
@@ -237,7 +237,7 @@ Never redraw for a mode — swap colour roles (see `palette.md`).
 - Gradients, drop shadows, blur, opacity fades, noise overlays (except the backdrop grain and the dark-mode reflector glow)
 - The flat "corporate" figure: big head, eye dots, mitten hands, rectangle torso, tube limbs
 - Eyes or a mouth on people of any kind, skin tones, rosy cheeks, smiling mascots
-- Coral areas (except Entur staff uniforms), more than one Peach element, colours outside the palette
+- Coral or red anywhere but the Entur staff panels and the line under a vehicle — a comb, a wattle, a tongue, cheeks, clothes; more than one Peach element; colours outside the palette
 - Perspective views of vehicles and buildings; isometric scenes
 - Text inside illustrations beyond a short sign
 - Busy compositions: more than one subject plus one prop on a square
