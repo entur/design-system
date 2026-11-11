@@ -1,6 +1,10 @@
 import React from 'react';
 import classNames from 'classnames';
-import { PolymorphicComponentPropsWithRef, PolymorphicRef } from '@entur/utils';
+import {
+  PolymorphicComponentPropsWithRef,
+  PolymorphicRef,
+  forwardRefPolymorphic,
+} from '@entur/utils';
 import './Logo.scss';
 
 export type LogoOwnProps = {
@@ -32,7 +36,7 @@ export type LogoComponent = <
 
 const defaultElement = 'div';
 
-export const Logo: LogoComponent = React.forwardRef(
+export const Logo = forwardRefPolymorphic<LogoComponent>(
   <E extends React.ElementType = typeof defaultElement>(
     {
       productName,
