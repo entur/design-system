@@ -62,3 +62,15 @@ export type PolymorphicComponentPropsWithRef<
   C extends React.ElementType,
   Props = Record<string, unknown>,
 > = PolymorphicComponentProps<C, Props> & { ref?: PolymorphicRef<C> };
+
+/**
+ * `React.forwardRef` for components with an `as` prop. Type the result with
+ * the component's own polymorphic call signature, since `forwardRef` drops
+ * the generic element type. Props and ref are untyped here, so keep the render
+ * function in line with `Component`.
+ */
+export const forwardRefPolymorphic = <
+  Component extends (props: any) => React.ReactElement | null,
+>(
+  render: (props: any, ref: any) => React.ReactNode,
+): Component => React.forwardRef(render) as unknown as Component;
