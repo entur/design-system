@@ -458,6 +458,31 @@ for (const colour of ['peach', 'coral', 'lavender', 'tint']) {
 // past the line's middle. White farther out is a rim along the outside of a
 // line, or a double line along an open one (a cloud), or a shape beside the
 // figures.
+// The ground line in the draft: the lowest row where one dark run spans a
+// quarter of the width. The space between legs closes against it and stays
+// open on purpose; only paper missing below the line (an egg) counts there.
+const groundTop = (() => {
+  // Longest dark run in a row, gaps up to 2 % of the width bridged.
+  const longest = y => {
+    let best = 0;
+    let start = -1;
+    let last = -w;
+    for (let x = 0; x < w; x++) {
+      if (!D.ink[y * w + x]) continue;
+      if (x - last > 0.02 * w) start = x;
+      last = x;
+      best = Math.max(best, x - start + 1);
+    }
+    return best;
+  };
+  for (let y = h - 1; y >= 0; y--) {
+    if (longest(y) <= 0.25 * w) continue;
+    let top = y;
+    while (top > 0 && longest(top - 1) > 0.25 * w) top--;
+    return top;
+  }
+  return -1;
+})();
 const silR = Math.round(0.008 * w);
 const sil = silhouette(D.ink, w, h, silR, draftImg);
 const edge = Math.max(2, Math.round(0.003 * w));
@@ -469,7 +494,24 @@ const tracedWide = silhouette(T.ink, w, h, Math.round(0.016 * w));
 const interior = sil.map((v, i) =>
   (v || (tracedWide[i] && D.cls.paper[i])) && !nearInk[i] ? 1 : 0,
 );
-const allowed = near(interior, w, h, edge + Math.round(0.004 * w) + 1);
+const allowedNear = near(interior, w, h, edge + Math.round(0.004 * w) + 1);
+// The ground line runs behind the body: paper covering it where a body
+// stands on it (the band of the line, under a column the figure reaches)
+// is meant to be there.
+const allowed = allowedNear.slice();
+if (groundTop >= 0) {
+  const foot = Math.min(h - 1, groundTop + Math.round(0.012 * h));
+  for (let x = 0; x < w; x++) {
+    let stands = false;
+    for (
+      let y = Math.max(0, groundTop - Math.round(0.01 * h));
+      y < groundTop;
+      y++
+    )
+      if (allowedNear[y * w + x]) stands = true;
+    if (stands) for (let y = groundTop; y <= foot; y++) allowed[y * w + x] = 1;
+  }
+}
 const figures = near(
   sil.map((v, i) => (v || (tracedWide[i] && D.cls.paper[i]) ? 1 : 0)),
   w,
@@ -498,31 +540,7 @@ const traceInterior = (() => {
   const nearT = near(T.ink, w, h, edge);
   return t.map((v, i) => (v && !nearT[i] ? 1 : 0));
 })();
-// The ground line in the draft: the lowest row where one dark run spans a
-// quarter of the width. The space between legs closes against it and stays
-// open on purpose; only paper missing below the line (an egg) counts there.
-const groundTop = (() => {
-  // Longest dark run in a row, gaps up to 2 % of the width bridged.
-  const longest = y => {
-    let best = 0;
-    let start = -1;
-    let last = -w;
-    for (let x = 0; x < w; x++) {
-      if (!D.ink[y * w + x]) continue;
-      if (x - last > 0.02 * w) start = x;
-      last = x;
-      best = Math.max(best, x - start + 1);
-    }
-    return best;
-  };
-  for (let y = h - 1; y >= 0; y--) {
-    if (longest(y) <= 0.25 * w) continue;
-    let top = y;
-    while (top > 0 && longest(top - 1) > 0.25 * w) top--;
-    return top;
-  }
-  return -1;
-})();
+
 add(
   'missing',
   'paper inside a figure',

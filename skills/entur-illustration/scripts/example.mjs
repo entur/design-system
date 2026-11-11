@@ -27,7 +27,11 @@ ink.group('background', d => {
   d.cloud({ x: 62, y: 92, w: 46 });
 });
 
-// 3. Props behind the subject. The sign carries the motif's only Peach.
+// 3. Ground behind everything that stands on it, extending past the backdrop:
+// the fox's paper hides it where it sits.
+ink.ground({ y: 266, x1: 30, x2: 296 });
+
+// 4. Props behind the subject. The sign carries the motif's only Peach.
 ink.group('bus-stop', d => {
   d.line([
     [232, 266],
@@ -64,7 +68,7 @@ ink.group('bus-stop', d => {
   });
 });
 
-// 4. Subject: paper fill under live strokes, back to front. Contours left
+// 5. Subject: paper fill under live strokes, back to front. Contours left
 //    open (gap), interior lines thinner and floating inside the shape.
 ink.group('fox', d => {
   const body = [
@@ -181,9 +185,6 @@ ink.group('fox', d => {
     { width: W.detail },
   );
 });
-
-// 5. Ground on top, extending past the backdrop.
-ink.ground({ y: 266, x1: 30, x2: 296 });
 
 ink.marks({
   x: 182,

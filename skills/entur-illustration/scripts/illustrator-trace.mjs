@@ -137,7 +137,7 @@ if (img.alpha) params.png = flattened(img);
 const disc = findDisc(img);
 const groundBand = animals ? findGround(img) : null;
 // The ground line, unless the long line is a perch (findGround).
-const ground = groundBand && !groundBand.perch ? groundBand : null;
+const ground = animals && groundBand && !groundBand.perch ? groundBand : null;
 // With an underlay the paper comes in pass two, after the lines exist.
 params.linesPng = underlay
   ? path.join(
@@ -159,6 +159,9 @@ params.ground = ground
       x1: toX(ground.x1 + 1),
     }
   : null;
+// People: the ground line goes behind the figure too, on a layer under the
+// fills (pass one). Animals get the plain line instead (simplify).
+
 params.features = features ? darkFeatures(img, params.size, groundBand) : [];
 // Animals take their ink masses from the opened-ink mask, not from the
 // colour trace's mean-width rule (inkMasses).
@@ -1259,6 +1262,28 @@ function underlaySubject(img, disc, ground, lines) {
     subject.cuts = seedsOf.slice(1);
   }
   subject.continued = continued;
+  // The ground line runs behind the body (animals and people stand in front
+  // of it): where the body stands on the line, its paper covers the line's
+  // thickness, down to just past its bottom edge — not below, which would
+  // show as a pale strip under the feet. The plain ground line is on a layer
+  // under the fills, so it disappears behind the body there.
+  if (ground) {
+    // The drawn ground line is detail weight with a little tremor, thicker
+    // than a thin line in the draft: cover about 0.6 % of the width either
+    // side of its centre. A body counts as standing on it when its paper
+    // comes that close above it.
+    const centre = (ground.top + ground.bottom + 1) / 2;
+    const reach = Math.max(3, Math.round(0.006 * w));
+    const from = Math.max(0, Math.floor(centre - reach));
+    const foot = Math.min(h - 1, Math.ceil(centre + reach));
+    for (let x = 0; x < w; x++) {
+      let stands = false;
+      for (let y = Math.max(0, from - reach); y < from; y++)
+        if (subject[y * w + x]) stands = true;
+      if (!stands) continue;
+      for (let y = from; y <= foot; y++) subject[y * w + x] = 1;
+    }
+  }
   // Smooth the edge: the square grow and shrink steps leave stairs on a
   // diagonal or ragged edge (a fluffy chest against the disc), which show in
   // both modes. A box blur of about 4 px at 1024, thresholded at half,
