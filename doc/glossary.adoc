@@ -24,3 +24,8 @@ The step in each package's Vite build (`vite-plugin-dts`) that emits the
 ADR::
 Architecture decision record: a short file in `doc/adr/` that records a
 decision, why we made it and what follows. Written with `/grill-with-adr`.
+
+Typecheck job::
+The `Typecheck packages` job in the pull request workflow. It runs
+`yarn typecheck:packages` against the built packages, tests included, and is a
+required check for merging (see xref:adr/0002-typecheck-job.adoc[ADR 2]).

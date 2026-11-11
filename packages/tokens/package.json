@@ -23,7 +23,8 @@
     "build:stylesheets": "tsx bin/build-stylesheets.ts",
     "start": "yarn build",
     "test": "jest",
-    "cleanup-temp-files": "tsx -e \"require('fs-extra').removeSync('src/generated-js-objects')\""
+    "cleanup-temp-files": "tsx -e \"require('fs-extra').removeSync('src/generated-js-objects')\"",
+    "typecheck": "tsc -p tsconfig.json --noEmit --rootDir ../.."
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.17.0",

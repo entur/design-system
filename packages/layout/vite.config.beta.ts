@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react';
 import dts from 'vite-plugin-dts';
 import { resolve } from 'path';
 import pkg from './package.json';
+import { DECLARATION_EXCLUDE } from '../../vite.utils';
 
 export default defineConfig({
   plugins: [
@@ -11,6 +12,7 @@ export default defineConfig({
     }),
     dts({
       insertTypesEntry: true,
+      exclude: DECLARATION_EXCLUDE,
       outDir: 'dist/beta/types',
       entryRoot: 'src/beta',
       // Stop aliasing @entur to ../../../packages

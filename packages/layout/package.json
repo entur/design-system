@@ -47,7 +47,8 @@
     "build": "yarn build:main && yarn build:beta",
     "build:main": "vite build",
     "build:beta": "vite build --config vite.config.beta.ts",
-    "test": "jest"
+    "test": "jest",
+    "typecheck": "tsc -p tsconfig.json --noEmit --rootDir ../.."
   },
   "peerDependencies": {
     "react": ">=18.0.0",

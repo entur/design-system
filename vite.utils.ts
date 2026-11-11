@@ -30,6 +30,16 @@ export function createFileNameFunction(packageName: string) {
     `${packageName}.${format === 'es' ? 'mjs' : 'cjs'}`;
 }
 
+// Tests stay out of the published .d.ts files
+export const DECLARATION_EXCLUDE = [
+  'src/**/*.test.ts',
+  'src/**/*.test.tsx',
+  'node_modules/**',
+];
+
+// Beta entries build their own declarations
+export const MAIN_DECLARATION_EXCLUDE = [...DECLARATION_EXCLUDE, 'src/beta/**'];
+
 export const STYLES_WITHOUT_BASE_TOKENS = 'styles.no-base-tokens.css';
 
 // base.css imports semantic.css (which imports primitive.css) and transport.css

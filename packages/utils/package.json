@@ -38,7 +38,8 @@
   "scripts": {
     "start": "vite build --watch",
     "build": "vite build && cp src/**/*.scss dist",
-    "test": "jest"
+    "test": "jest",
+    "typecheck": "tsc -p tsconfig.json --noEmit --rootDir ../.."
   },
   "peerDependencies": {
     "react": ">=18.0.0",

@@ -49,6 +49,8 @@ export type Transport =
 
 export type CSSVars = { [key: `--${string}`]: string | number };
 
+const NoIcon = () => null;
+
 type transportStyleResult = {
   Icon: React.FC<IconProps>;
   backgroundColor?: string;
@@ -184,7 +186,7 @@ export const getTransportStyle = (mode: string): transportStyleResult => {
       };
     case 'none':
       return {
-        Icon: React.Fragment,
+        Icon: NoIcon,
         pattern: 'line',
         ariaLabel: '',
       };

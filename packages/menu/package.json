@@ -25,7 +25,8 @@
     "build:beta": "vite build --config vite.config.beta.ts",
     "start": "vite build --watch",
     "start:beta": "vite build --config vite.config.beta.ts --watch",
-    "test": "jest"
+    "test": "jest",
+    "typecheck": "tsc -p tsconfig.json --noEmit --rootDir ../.."
   },
   "peerDependencies": {
     "react": ">=18.0.0",
