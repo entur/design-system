@@ -642,9 +642,27 @@ if (P.figures) {
   for (var w0 = 0; w0 < whites.length; w0++) {
     var wp = whites[w0];
     try { if (!wp.filled || wp.fillColor.typename !== 'RGBColor' || wp.fillColor.red < 250 || wp.fillColor.green < 250 || wp.fillColor.blue < 250) continue; } catch (e6) { continue; }
-    var out = 0, n0 = wp.pathPoints.length;
-    for (var w1 = 0; w1 < n0; w1++) if (!inFigure(wp.pathPoints[w1].anchor)) out++;
-    if (n0 && out >= 0.7 * n0) outsideWhite.push(wp);
+    // Sample the shape's area, not its corners: a white triangle between a
+    // disc's edge, a sign and its post has corners on the figures but lies
+    // outside them. Points on a grid over its bounds, kept when inside its
+    // anchor polygon, tested against the figure map.
+    var poly = [], n0 = wp.pathPoints.length;
+    for (var w1 = 0; w1 < n0; w1++) poly.push(wp.pathPoints[w1].anchor);
+    var gb = wp.geometricBounds, inside = 0, out = 0;
+    for (var sy = 0; sy < 8; sy++)
+      for (var sx = 0; sx < 8; sx++) {
+        var pt = [gb[0] + ((sx + 0.5) / 8) * (gb[2] - gb[0]), gb[1] - ((sy + 0.5) / 8) * (gb[1] - gb[3])];
+        var hit = false;
+        for (var e = 0, f = poly.length - 1; e < poly.length; f = e++)
+          if ((poly[e][1] > pt[1]) !== (poly[f][1] > pt[1]) && pt[0] < ((poly[f][0] - poly[e][0]) * (pt[1] - poly[e][1])) / (poly[f][1] - poly[e][1]) + poly[e][0]) hit = !hit;
+        if (!hit) continue;
+        inside++;
+        if (!inFigure(pt)) out++;
+      }
+    // A thin strip catches few grid points: judge it by its anchors.
+    var anchorsOut = 0;
+    for (var w3 = 0; w3 < n0; w3++) if (!inFigure(poly[w3])) anchorsOut++;
+    if (inside >= 4 ? out >= 0.6 * inside : n0 && anchorsOut >= 0.7 * n0) outsideWhite.push(wp);
   }
   var whiteGone = 0;
   for (var w2 = 0; w2 < outsideWhite.length; w2++) { try { outsideWhite[w2].remove(); whiteGone++; } catch (e7) {} }
@@ -985,28 +1003,36 @@ function draftSubject(img, disc, ground, grow = 5) {
   };
   const ink = new Uint8Array(w * h);
   for (let k = 0; k < w * h; k++) ink[k] = lum[k] < 120 ? 1 : 0;
+  // Everything reachable from the image edge without crossing a wall.
+  const flood = walls => {
+    const reached = new Uint8Array(w * h);
+    const stack = [];
+    for (let x = 0; x < w; x++) stack.push(x, (h - 1) * w + x);
+    for (let y = 0; y < h; y++) stack.push(y * w, y * w + w - 1);
+    while (stack.length) {
+      const k = stack.pop();
+      if (reached[k] || walls[k]) continue;
+      const x = k % w;
+      const y = (k - x) / w;
+      if (
+        disc &&
+        (x - disc.cx) ** 2 + (y - disc.cy) ** 2 < (disc.r - 6) ** 2 &&
+        lum[k] > 238
+      )
+        continue;
+      reached[k] = 1;
+      if (x > 0) stack.push(k - 1);
+      if (x < w - 1) stack.push(k + 1);
+      if (y > 0) stack.push(k - w);
+      if (y < h - 1) stack.push(k + w);
+    }
+    return reached;
+  };
+  // Walls close gaps up to about 10 px at 1024. Closing wider (16 px) would
+  // give a seagull's far wing its paper, but bridges paper between figures
+  // standing close (a hen and a chick, two doves), which is worse.
   const wall = growBy(ink, grow);
-  const outside = new Uint8Array(w * h);
-  const stack = [];
-  for (let x = 0; x < w; x++) stack.push(x, (h - 1) * w + x);
-  for (let y = 0; y < h; y++) stack.push(y * w, y * w + w - 1);
-  while (stack.length) {
-    const k = stack.pop();
-    if (outside[k] || wall[k]) continue;
-    const x = k % w;
-    const y = (k - x) / w;
-    if (
-      disc &&
-      (x - disc.cx) ** 2 + (y - disc.cy) ** 2 < (disc.r - 6) ** 2 &&
-      lum[k] > 238
-    )
-      continue;
-    outside[k] = 1;
-    if (x > 0) stack.push(k - 1);
-    if (x < w - 1) stack.push(k + 1);
-    if (y > 0) stack.push(k - w);
-    if (y < h - 1) stack.push(k + w);
-  }
+  const outside = flood(wall);
   // Shrink back so the underlay sits just inside the lines, then drop thin
   // spurs (a ground dash touching a paw) by shrinking and regrowing the
   // inside: they would show as pale slivers in dark mode.
@@ -1029,8 +1055,31 @@ function draftSubject(img, disc, ground, grow = 5) {
   for (let k = 0; k < w * h; k++) outer[k] = inner[k] ? 0 : 1;
   if (ground) {
     // Paper stops at the top of the ground line: below it, it would show as a
-    // pale strip under the feet in dark mode.
-    for (let k = ground.top * w; k < w * h; k++) outer[k] = 1;
+    // pale strip under the feet in dark mode. Except inside a closed figure
+    // that crosses the line (an egg sitting in the grass): what stays
+    // enclosed once the ground line itself is taken out of the walls. A
+    // contour crossing the line keeps its pixels in the band — there is ink
+    // just above and below it — so only the line goes.
+    const lineless = ink.slice();
+    const reach = 3;
+    const inkNear = (y, x) => {
+      if (y < 0 || y >= h) return false;
+      for (let dx = -2; dx <= 2; dx++) {
+        const xx = x + dx;
+        if (xx >= 0 && xx < w && ink[y * w + xx]) return true;
+      }
+      return false;
+    };
+    for (let y = ground.top; y <= ground.bottom; y++)
+      for (let x = 0; x < w; x++)
+        if (
+          ink[y * w + x] &&
+          !(inkNear(ground.top - reach, x) && inkNear(ground.bottom + reach, x))
+        )
+          lineless[y * w + x] = 0;
+    const open = flood(growBy(lineless, grow));
+    for (let k = ground.top * w; k < w * h; k++)
+      if (outer[k] || open[k]) outer[k] = 1;
     // In the band just above the line keep only what hangs down from the
     // subject; pockets closed off between grass blades and the line are not
     // part of it. Widened a little, so feet and paw edges keep their paper.

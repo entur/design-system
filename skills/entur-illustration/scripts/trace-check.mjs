@@ -314,7 +314,7 @@ const D = classify(draftImg);
 const T = classify(traceImg);
 const P2 = classify(traceOnColour, { background: [255, 0, 255] });
 // Back to the draft's size: a pixel is paper when any of its four is.
-const P = { cls: { paper: new Uint8Array(w * h) } };
+const P = { cls: { paper: new Uint8Array(w * h) }, bg: new Uint8Array(w * h) };
 for (let y = 0; y < h; y++)
   for (let x = 0; x < w; x++) {
     const W2 = traceOnColour.w;
@@ -326,6 +326,9 @@ for (let y = 0; y < h; y++)
       P2.cls.paper[k + W2 + 1]
         ? 1
         : 0;
+    // No fill at all: all four show the magenta background.
+    P.bg[y * w + x] =
+      P2.bg[k] && P2.bg[k + 1] && P2.bg[k + W2] && P2.bg[k + W2 + 1] ? 1 : 0;
   }
 
 const tol = Math.max(3, Math.round(0.004 * w)); // ~1.3 pt at 320: line offsets and widths
@@ -382,9 +385,10 @@ function own(c, source) {
 }
 
 const findings = [];
-function add(kind, what, mask, minArea, source) {
+function add(kind, what, mask, minArea, source, skip) {
   for (const c of components(mask, w, h, minArea)) {
     if (!own(c, source)) continue;
+    if (skip && skip(c)) continue;
     const [x0, y0, x1, y1] = c.box;
     const bw = x1 - x0 + 1;
     const bh = y1 - y0 + 1;
@@ -472,6 +476,52 @@ add(
   'paper along the outside of a line',
   P.cls.paper.map((v, i) => v && figures[i] && !allowed[i]),
   Math.round((0.008 * w) ** 2),
+);
+
+// Paper missing inside a figure: white in the draft, inside closed lines in
+// both the draft and the trace (an open cloud is no figure), and no fill in
+// the trace — the bottom of an egg below the ground line, a body the
+// underlay missed. It shows as the dark surface inside an outline.
+const traceInterior = (() => {
+  const t = silhouette(T.ink, w, h, silR);
+  const nearT = near(T.ink, w, h, edge);
+  return t.map((v, i) => (v && !nearT[i] ? 1 : 0));
+})();
+// The ground line in the draft: the lowest row where one dark run spans a
+// quarter of the width. The space between legs closes against it and stays
+// open on purpose; only paper missing below the line (an egg) counts there.
+const groundTop = (() => {
+  // Longest dark run in a row, gaps up to 2 % of the width bridged.
+  const longest = y => {
+    let best = 0;
+    let start = -1;
+    let last = -w;
+    for (let x = 0; x < w; x++) {
+      if (!D.ink[y * w + x]) continue;
+      if (x - last > 0.02 * w) start = x;
+      last = x;
+      best = Math.max(best, x - start + 1);
+    }
+    return best;
+  };
+  for (let y = h - 1; y >= 0; y--) {
+    if (longest(y) <= 0.25 * w) continue;
+    let top = y;
+    while (top > 0 && longest(top - 1) > 0.25 * w) top--;
+    return top;
+  }
+  return -1;
+})();
+add(
+  'missing',
+  'paper inside a figure',
+  D.cls.paper.map((v, i) => v && interior[i] && traceInterior[i] && P.bg[i]),
+  Math.round((0.01 * w) ** 2),
+  null,
+  c =>
+    groundTop >= 0 &&
+    c.box[3] <= groundTop + 2 &&
+    c.box[3] >= groundTop - 0.02 * h,
 );
 
 findings.forEach((f, i) => (f.n = i + 1));
