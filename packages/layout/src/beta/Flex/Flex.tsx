@@ -1,5 +1,5 @@
 import React from 'react';
-import { PolymorphicComponentProps } from '@entur/utils';
+import { PolymorphicComponentProps, forwardRefPolymorphic } from '@entur/utils';
 import classNames from 'classnames';
 import { getSpacingValue, toResponsiveCssVars } from '../utils';
 import type { SpacingValue, ResponsiveValue } from '../utils';
@@ -71,7 +71,7 @@ export type FlexComponent = (<
 
 const defaultElement = 'div';
 
-export const Flex: FlexComponent = React.forwardRef(
+export const Flex = forwardRefPolymorphic<FlexComponent>(
   <E extends React.ElementType = typeof defaultElement>(
     {
       display,

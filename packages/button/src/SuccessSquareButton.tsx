@@ -1,6 +1,10 @@
 import React from 'react';
 import { SquareButton } from './SquareButton';
-import { PolymorphicComponentPropsWithRef, PolymorphicRef } from '@entur/utils';
+import {
+  PolymorphicComponentPropsWithRef,
+  PolymorphicRef,
+  forwardRefPolymorphic,
+} from '@entur/utils';
 
 type SuccessSquareButtonBaseProps = {
   /** Tekst og ikon, ikon og tekst, eller bare ikon */
@@ -32,8 +36,8 @@ export type SuccessSquareButtonComponent = <
 
 const defaultElement = 'button';
 
-export const SuccessSquareButton: SuccessSquareButtonComponent =
-  React.forwardRef(
+export const SuccessSquareButton =
+  forwardRefPolymorphic<SuccessSquareButtonComponent>(
     <T extends React.ElementType = typeof defaultElement>(
       props: SuccessSquareButtonProps<T>,
       ref: PolymorphicRef<T>,

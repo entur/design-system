@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { PolymorphicComponentProps } from '@entur/utils';
+import { PolymorphicComponentProps, forwardRefPolymorphic } from '@entur/utils';
 import { TypographySpacingProps } from '../types';
 import { getSpacingStyle } from '../utils/utils';
 
@@ -30,7 +30,7 @@ const defaultElement = 'a';
 /**
  * @beta Experimental component - may have breaking changes in future releases
  */
-export const Link = React.forwardRef(
+export const Link = forwardRefPolymorphic<LinkComponent>(
   <C extends React.ElementType = typeof defaultElement>(
     { className, spacing, style, children, as, ...rest }: LinkProps<C>,
     ref?: React.Ref<Element>,
@@ -48,5 +48,5 @@ export const Link = React.forwardRef(
       </LinkElement>
     );
   },
-) as LinkComponent;
+);
 Link.displayName = 'Link';

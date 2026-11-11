@@ -1,5 +1,5 @@
 import React from 'react';
-import { PolymorphicComponentProps } from '@entur/utils';
+import { PolymorphicComponentProps, forwardRefPolymorphic } from '@entur/utils';
 import classNames from 'classnames';
 import { isResponsiveObject, toResponsiveCssVars } from '../utils';
 import type { ResponsiveValue } from '../utils';
@@ -84,7 +84,7 @@ export type GridItemComponent = (<
 
 const defaultElement = 'div';
 
-export const GridItem: GridItemComponent = React.forwardRef(
+export const GridItem = forwardRefPolymorphic<GridItemComponent>(
   <E extends React.ElementType = typeof defaultElement>(
     {
       colSpan,

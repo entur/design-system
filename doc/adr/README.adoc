@@ -1,0 +1,72 @@
+= Architecture decision records
+
+ADRs record a decision, why we made it and what follows from it. One AsciiDoc
+file per decision, numbered in order, in the format from Entur's engineering
+conventions (`entur/ai`, `CONVENTIONS.md`). Two extra lines after the date help
+keep them current: *Applies to* and *Revisit when*.
+
+Write one when a decision is hard to reverse, would surprise someone without the
+context, or picks between real alternatives. Run `/grill-with-adr` to work
+through the decision and write the ADR as you go.
+
+== This repo is public
+
+ADRs are visible to anyone. Keep out:
+
+* names of consumer teams, apps or repos: use counts and patterns, and keep
+  specifics in Jira
+* names of people
+* links to Confluence, Jira, Slack or other internal systems
+* security details, such as weaknesses, internal hosts, credentials or IAM setup
+* anything classified above "Åpen"
+
+If a decision depends on internal context, record that context in Jira or
+Confluence and say only that it exists.
+
+== Keeping them true
+
+* Before changing code an ADR applies to, read the ADR. If the change goes
+  against it, write a new ADR in the same PR, and set the old one's status to
+  `Deprecated`, with a line saying which ADR replaces it.
+* Never rewrite the decision in an accepted ADR. Small clarifications are fine.
+* Statuses: `Proposed`, `Accepted`, `Deprecated`.
+
+== Template
+
+[source,asciidoc]
+----
+== N. Title of Decision
+
+Date: YYYY-MM-DD
+
+Applies to: paths or areas of the code
+
+Revisit when: optional, what would make us reconsider
+
+== Status
+Accepted | Proposed | Deprecated
+
+== Context
+What is the problem or situation that requires a decision?
+
+== Decision
+What is the decision and how will it be implemented?
+
+== Consequences
+=== Positive
+=== Negative
+
+== Alternatives
+What other options were considered and why were they rejected?
+----
+
+== Index
+
+[cols="1,8,2"]
+|===
+|# |Decision |Status
+
+|1
+|xref:0001-polymorphic-forwardref.adoc[Polymorphic components use `forwardRefPolymorphic`]
+|Accepted
+|===

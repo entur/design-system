@@ -84,7 +84,7 @@ package.json
 ## Architecture & Patterns
 
 - **Polymorphic components:** Many components accept an `as` prop for element composition (e.g. Button can render as `<a>`)
-- **Forward refs:** All components use `React.forwardRef`
+- **Forward refs:** Components that forward refs and have an `as` prop use `forwardRefPolymorphic` ([ADR 1](doc/adr/0001-polymorphic-forwardref.adoc))
 - **CSS:** BEM naming with `eds-` prefix, SCSS modules, cascade layers via `@entur/utils/styles/layers`
 - **Dual output:** Each package builds to ESM + CJS with separate CSS bundle and `.d.ts` files
 - **Design tokens:** `@entur/tokens` provides shared tokens as CSS custom properties, SCSS variables, and JS exports
@@ -146,6 +146,20 @@ Playwright is not a dependency of this repo. Write test scripts outside the repo
 - `overflow` only clips an absolutely positioned descendant when the overflowing element is its containing block. Give clipping containers in scenarios `position: relative`, as real apps usually do, or the scenario passes even with the bug.
 
 In the PR's Testing section, say which engines were tested. WebKit covers Safari's layout engine but is not the Safari app, so say so when real Safari was not used.
+
+## Pull Requests
+
+- Follow the template in [.github/pull_request_template.md](.github/pull_request_template.md).
+- Read Copilot's review comments. Fix the valid ones and reply to each thread with the fix or why not, before asking for review.
+- Copilot reviews a PR once by itself. After pushing fixes, request a new review with `gh pr edit <number> --add-reviewer @copilot` and repeat.
+
+## Decisions
+
+Decisions are recorded as ADRs in [doc/adr/](doc/adr/), and repo terms in [doc/glossary.adoc](doc/glossary.adoc).
+
+- Before changing code an ADR applies to (see its **Applies to**), read the ADR. If the change goes against it, replace it with a new ADR in the same PR.
+- Before a decision that spans packages, sets or changes a code pattern, changes the public API or is hard to reverse, suggest running `/grill-with-adr`.
+- The repo is public: ADRs must not name consumers or people, link to internal systems or describe security details.
 
 ## Commit Conventions
 

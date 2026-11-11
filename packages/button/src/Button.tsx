@@ -1,6 +1,10 @@
 import * as React from 'react';
 import cx from 'classnames';
-import { PolymorphicComponentPropsWithRef, PolymorphicRef } from '@entur/utils';
+import {
+  PolymorphicComponentPropsWithRef,
+  PolymorphicRef,
+  forwardRefPolymorphic,
+} from '@entur/utils';
 import { LoadingDots } from '@entur/loader';
 import './Button.scss';
 
@@ -51,7 +55,7 @@ export type ButtonComponent = <
   props: ButtonProps<T>,
 ) => React.ReactElement | null;
 
-export const Button: ButtonComponent = React.forwardRef(
+export const Button = forwardRefPolymorphic<ButtonComponent>(
   <T extends React.ElementType = typeof defaultElement>(
     {
       as,
