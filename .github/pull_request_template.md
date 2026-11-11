@@ -41,6 +41,7 @@
 - [ ] Dokumentasjonen er oppdatert (hvis aktuelt)
 - [ ] ADR-er er lagt til eller oppdatert (hvis endringen tar eller endrer en beslutning, se `doc/adr/`)
 - [ ] Ingen ubrukte imports / varsler / console.logs
+- [ ] Kommentarer fra Copilot etter siste push er fulgt opp
 
 ## 🧪 Testing
 

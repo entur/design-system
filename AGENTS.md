@@ -147,6 +147,11 @@ Playwright is not a dependency of this repo. Write test scripts outside the repo
 
 In the PR's Testing section, say which engines were tested. WebKit covers Safari's layout engine but is not the Safari app, so say so when real Safari was not used.
 
+## Pull Requests
+
+- Follow the template in [.github/pull_request_template.md](.github/pull_request_template.md).
+- After every push, read Copilot's review comments. Fix the valid ones and reply to the rest with why, before asking for review.
+
 ## Decisions
 
 Decisions are recorded as ADRs in [doc/adr/](doc/adr/), and repo terms in [doc/glossary.adoc](doc/glossary.adoc).
