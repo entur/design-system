@@ -1,13 +1,17 @@
 import { defineConfig, UserConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 import { resolve } from 'path';
-import { stylesWithoutBaseTokensPlugin } from './vite.utils';
+import {
+  MAIN_DECLARATION_EXCLUDE,
+  stylesWithoutBaseTokensPlugin,
+} from './vite.utils';
 
 export const createBaseConfig = (): UserConfig =>
   defineConfig({
     plugins: [
       dts({
         insertTypesEntry: true,
+        exclude: MAIN_DECLARATION_EXCLUDE,
       }),
       stylesWithoutBaseTokensPlugin(),
     ],
