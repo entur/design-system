@@ -442,6 +442,109 @@ describe('FileUpload', () => {
     );
   });
 
+  test.each([
+    ['.csv', '.csv', 'File type must be .csv'],
+    [
+      ['.json', 'application/json'],
+      '.json,application/json',
+      'File type must be one of .json, application/json',
+    ],
+    [
+      { 'application/json': ['.json'] },
+      'application/json,.json',
+      'File type must be one of application/json, .json',
+    ],
+  ])(
+    'accept %j filters the picker and rejects other types without warnings',
+    async (accept, inputAccept, message) => {
+      const warn = jest.spyOn(console, 'warn').mockImplementation(() => {});
+      const onDrop = jest.fn();
+      const valid = new File(['a'], 'data.csv');
+      const jsonFile = new File(['{}'], 'c.json', { type: 'application/json' });
+      const invalid = new File(['a'], 'notes.txt', { type: 'text/plain' });
+      render(<FileUpload files={[]} accept={accept} onDrop={onDrop} />);
+
+      expect(getFileInput()).toHaveAttribute('accept', inputAccept);
+      fireEvent.drop(
+        screen.getByRole('button', { name: new RegExp(standbyText) }),
+        transferFiles([accept === '.csv' ? valid : jsonFile, invalid]),
+      );
+
+      await waitFor(() => expect(onDrop).toHaveBeenCalledTimes(1));
+      const [accepted, rejected] = onDrop.mock.calls[0];
+      expect(accepted.map((file: File) => file.name)).toEqual([
+        accept === '.csv' ? 'data.csv' : 'c.json',
+      ]);
+      expect(
+        rejected.map((r: { file: File; errors: unknown[] }) => [
+          r.file.name,
+          r.errors,
+        ]),
+      ).toEqual([['notes.txt', [{ code: 'file-invalid-type', message }]]]);
+      expect(warn.mock.calls.map(call => String(call[0]))).toEqual([]);
+      warn.mockRestore();
+    },
+  );
+
+  test('runs a custom validator alongside the accept check', async () => {
+    const onDrop = jest.fn();
+    const validator = (file: File) =>
+      file.name.startsWith('draft')
+        ? { code: 'draft-file', message: 'Drafts are not allowed' }
+        : null;
+    render(
+      <FileUpload
+        files={[]}
+        accept=".csv"
+        validator={validator}
+        onDrop={onDrop}
+      />,
+    );
+
+    fireEvent.drop(
+      screen.getByRole('button', { name: new RegExp(standbyText) }),
+      transferFiles([
+        new File(['a'], 'data.csv'),
+        new File(['a'], 'draft.csv'),
+        new File(['a'], 'draft.txt', { type: 'text/plain' }),
+      ]),
+    );
+
+    await waitFor(() => expect(onDrop).toHaveBeenCalledTimes(1));
+    const [accepted, rejected] = onDrop.mock.calls[0];
+    expect(accepted.map((file: File) => file.name)).toEqual(['data.csv']);
+    expect(
+      rejected.map((r: { file: File; errors: { code: string }[] }) => [
+        r.file.name,
+        r.errors.map(e => e.code),
+      ]),
+    ).toEqual([
+      ['draft.csv', ['draft-file']],
+      ['draft.txt', ['file-invalid-type', 'draft-file']],
+    ]);
+  });
+
+  test('keeps the rejected style only while dragging', async () => {
+    const onDrop = jest.fn();
+    render(<FileUpload files={[]} accept=".csv" onDrop={onDrop} />);
+    const trigger = screen.getByRole('button', {
+      name: new RegExp(standbyText),
+    });
+    const status = screen.getByText(standbyText);
+    const payload = transferFiles([
+      new File(['a'], 'notes.txt', { type: 'text/plain' }),
+    ]);
+
+    fireEvent.dragEnter(trigger, payload);
+    await waitFor(() =>
+      expect(status).toHaveClass('eds-file-upload__dropzone--reject'),
+    );
+
+    fireEvent.drop(trigger, payload);
+    await waitFor(() => expect(onDrop).toHaveBeenCalled());
+    expect(status).not.toHaveClass('eds-file-upload__dropzone--reject');
+  });
+
   // Bug: FileUpload spreads style as attributes on its wrapper instead of passing it as style.
   test.failing('forwards style to its wrapper', () => {
     render(<FileUpload files={[]} style={{ marginTop: '7px' }} />);
