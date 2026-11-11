@@ -150,7 +150,8 @@ In the PR's Testing section, say which engines were tested. WebKit covers Safari
 ## Pull Requests
 
 - Follow the template in [.github/pull_request_template.md](.github/pull_request_template.md).
-- After every push, read Copilot's review comments. Fix the valid ones and reply to the rest with why, before asking for review.
+- Read Copilot's review comments. Fix the valid ones and reply to each thread with the fix or why not, before asking for review.
+- Copilot reviews a PR once by itself. After pushing fixes, request a new review with `gh pr edit <number> --add-reviewer @copilot` and repeat.
 
 ## Decisions
 
