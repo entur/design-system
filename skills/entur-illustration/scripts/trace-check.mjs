@@ -304,13 +304,29 @@ const draftImg = decode(draftFile);
 const { w, h } = draftImg;
 const size = Math.max(w, h);
 const traceImg = renderSvg(svgFile, size, '#FFFFFF');
-const traceOnColour = renderSvg(svgFile, size, '#FF00FF');
+// On magenta at twice the size: a white rim one or two pixels wide blends
+// into pink at the draft's size and would go unseen.
+const traceOnColour = renderSvg(svgFile, 2 * size, '#FF00FF');
 if (traceImg.w !== w || traceImg.h !== h)
   throw new Error(`Render is ${traceImg.w}×${traceImg.h}, draft ${w}×${h}`);
 
 const D = classify(draftImg);
 const T = classify(traceImg);
-const P = classify(traceOnColour, { background: [255, 0, 255] });
+const P2 = classify(traceOnColour, { background: [255, 0, 255] });
+// Back to the draft's size: a pixel is paper when any of its four is.
+const P = { cls: { paper: new Uint8Array(w * h) } };
+for (let y = 0; y < h; y++)
+  for (let x = 0; x < w; x++) {
+    const W2 = traceOnColour.w;
+    const k = 2 * y * W2 + 2 * x;
+    P.cls.paper[y * w + x] =
+      P2.cls.paper[k] ||
+      P2.cls.paper[k + 1] ||
+      P2.cls.paper[k + W2] ||
+      P2.cls.paper[k + W2 + 1]
+        ? 1
+        : 0;
+  }
 
 const tol = Math.max(3, Math.round(0.004 * w)); // ~1.3 pt at 320: line offsets and widths
 const minInk = Math.round((0.0045 * w) ** 2); // a small eye
@@ -432,18 +448,30 @@ for (const colour of ['peach', 'coral', 'lavender', 'tint']) {
 }
 
 // White fill where the draft has background: invisible on white, a white
-// shape on the dark surface.
-const figures = near(
-  silhouette(D.ink, w, h, Math.round(0.008 * w), draftImg),
-  w,
-  h,
-  2 * tol,
-);
+// shape on the dark surface. Paper may fill a figure up to about the middle
+// of its lines — inside the silhouette, at least a few pixels from any ink
+// (so a narrow leg between two lines still counts), and from there just
+// past the line's middle. White farther out is a rim along the outside of a
+// line, or a double line along an open one (a cloud), or a shape beside the
+// figures.
+const silR = Math.round(0.008 * w);
+const sil = silhouette(D.ink, w, h, silR, draftImg);
+const edge = Math.max(2, Math.round(0.003 * w));
+const nearInk = near(D.ink, w, h, edge);
+const interior = sil.map((v, i) => (v && !nearInk[i] ? 1 : 0));
+const allowed = near(interior, w, h, edge + Math.round(0.004 * w) + 1);
+const figures = near(sil, w, h, 2 * tol);
 add(
   'extra',
   'paper outside the figures',
   P.cls.paper.map((v, i) => v && !figures[i]),
   minPaper,
+);
+add(
+  'extra',
+  'paper along the outside of a line',
+  P.cls.paper.map((v, i) => v && figures[i] && !allowed[i]),
+  Math.round((0.008 * w) ** 2),
 );
 
 findings.forEach((f, i) => (f.n = i + 1));

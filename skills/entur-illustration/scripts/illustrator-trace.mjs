@@ -29,6 +29,8 @@
 // measured in the draft's pixels. `--underlay` adds paper under each figure,
 // like the library animals' underlays: without it, white areas the colour
 // trace cannot tell from the background (a tail past the disc) stay unfilled.
+// It comes in a second pass, cut back to the finished lines so its edge sits
+// under them.
 // With animals, a small dark eye or nose, too thin for the colour trace and
 // too round for the line trace, is put back as an ink ellipse on a Features
 // layer (`--no-features` turns it off); none is taken from the ground band.
@@ -134,10 +136,16 @@ const disc = findDisc(img);
 const groundBand = animals ? findGround(img) : null;
 // The ground line, unless the long line is a perch (findGround).
 const ground = groundBand && !groundBand.perch ? groundBand : null;
-const mask = underlay ? writeMask(img, disc, ground) : null;
+// With an underlay the paper comes in pass two, after the lines exist.
+params.linesPng = underlay
+  ? path.join(
+      fs.mkdtempSync(path.join(os.tmpdir(), 'illustrator-trace-lines-')),
+      'lines.png',
+    )
+  : '';
+params.linesScale = (100 * img.w) / params.size;
 const toX = v => (v * params.size) / img.w;
 const toY = v => (v * params.size) / img.h;
-params.mask = mask || '';
 params.disc = disc
   ? { cx: toX(disc.cx), cy: toY(disc.cy), r: toX(disc.r) }
   : null;
@@ -176,6 +184,14 @@ function paths(item, out) {
   else if (item.typename === 'GroupItem') { for (var j = 0; j < item.pageItems.length; j++) paths(item.pageItems[j], out); }
   return out;
 }
+// Illustrator now and then rejects tracing options set right after a
+// placement or after opening a file (Error 1200, MRAP), for longer with big
+// documents open: try again after a redraw and a pause, up to 20 s.
+function retry(fn) {
+  for (var t = 0; t < 20; t++) {
+    try { return fn(); } catch (e) { if (t === 19) throw e; app.redraw(); $.sleep(1000); }
+  }
+}
 function placeAndTrace(doc, layer) {
   var r = doc.artboards[0].artboardRect;
   var placed = layer.placedItems.add();
@@ -192,8 +208,7 @@ var lineLayer = doc.layers.add(); lineLayer.name = 'Outline';
 
 // Colour trace, underneath.
 var ct = placeAndTrace(doc, colourLayer);
-var co = ct.tracing.tracingOptions;
-co.tracingMode = TracingModeType.TRACINGMODECOLOR;
+var co = retry(function () { var o = ct.tracing.tracingOptions; o.tracingMode = TracingModeType.TRACINGMODECOLOR; return o; });
 try { co.tracingColorTypeValue = TracingColorType.TRACINGLIMITEDCOLOR; } catch (e) {}
 try { co.maxColors = 8; } catch (e) {}
 try { co.colorFidelity = 20; } catch (e) {}
@@ -210,6 +225,31 @@ function touchesEdge(item) {
   var b = item.geometricBounds;
   return b[0] <= ab[0] + 1 || b[1] >= ab[1] - 1 || b[2] >= ab[2] - 1 || b[3] <= ab[3] + 1;
 }
+// Slivers (animals with an underlay): the draft leaves a thin white gap
+// between a line and its fill or the background, and the colour trace keeps
+// it as paper — a white double line or rim in dark mode. The underlay covers
+// the figure, so line-thin paper goes, and so do tiny line-thin tint pieces.
+// Thin is a mean width (2·area/perimeter, a compound path measured whole,
+// holes included) under 1.5 pt; decided for every path before any goes.
+var s320 = P.size / 320, slivers = 0, sliver = [];
+function meanWidth(p) {
+  var whole = p.parent.typename === 'CompoundPathItem' ? p.parent.pathItems : [p], a = 0, l = 0;
+  for (var q = 0; q < whole.length; q++) { a += whole[q].area; l += whole[q].length; }
+  return { width: l > 0 ? (2 * Math.abs(a)) / l : 0, area: Math.abs(a) };
+}
+for (var i0 = 0; i0 < cp.length; i0++) {
+  var c0 = cp[i0];
+  if (!(P.inkFromMask && P.linesPng && c0.filled)) continue;
+  var k0 = nearest(c0.fillColor), m0 = meanWidth(c0);
+  if (!(m0.width < 1.5 * s320 && (k0 === 'paper' || (k0 === 'tint' && m0.area < 20 * s320 * s320)))) continue;
+  // A compound path goes whole and once: removing its subpaths one by one
+  // leaves an empty, invalid compound behind.
+  var w0 = c0.parent.typename === 'CompoundPathItem' ? c0.parent : c0, seen0 = false;
+  for (var i1 = 0; i1 < sliver.length; i1++) if (sliver[i1] === w0) seen0 = true;
+  if (!seen0) sliver.push(w0);
+}
+for (var i2 = 0; i2 < sliver.length; i2++) { try { sliver[i2].remove(); dropped++; slivers++; } catch (e5) {} }
+if (slivers) cp = paths(cg, []);
 for (var i = cp.length - 1; i >= 0; i--) {
   var it = cp[i];
   if (!it.filled) { continue; }
@@ -224,14 +264,13 @@ for (var i = cp.length - 1; i >= 0; i--) {
   // Print misregistration: colour shifts off its line; ink areas stay put.
   if (k !== 'ink') it.translate(P.shift[0], P.shift[1]);
 }
-log.push('colour areas kept ' + kept + ' (ink ' + inkAreas + '), dropped ' + dropped);
+log.push('colour areas kept ' + kept + ' (ink ' + inkAreas + '), dropped ' + dropped + (slivers ? ' (slivers ' + slivers + ')' : ''));
 
 // Line trace, on top: strokes only. Lines touch the wide ink areas, so a
 // fills trace would merge them into one filled region; the wide areas come
 // from the colour trace instead.
 var lt = placeAndTrace(doc, lineLayer);
-var lo = lt.tracing.tracingOptions;
-lo.tracingMode = TracingModeType.TRACINGMODEBLACKANDWHITE;
+var lo = retry(function () { var o = lt.tracing.tracingOptions; o.tracingMode = TracingModeType.TRACINGMODEBLACKANDWHITE; return o; });
 lo.threshold = P.threshold;
 lo.fills = false; lo.strokes = true; lo.maxStrokeWeight = P.maxStroke;
 lo.ignoreWhite = true;
@@ -461,7 +500,13 @@ if (P.backdrop) {
       var spans = rb[2] - rb[0] >= 1.6 * r0 && rb[1] - rb[3] >= 1.6 * r0;
       var rd = Math.sqrt(Math.pow((rb[0] + rb[2]) / 2 - dcx, 2) + Math.pow((rb[1] + rb[3]) / 2 - dcy, 2));
       var rim = rk === 'tint' && rd > 0.88 * r0 && rd < 1.12 * r0 && Math.abs(ri.area) < 0.02 * Math.PI * r0 * r0;
-      if (!((rk === 'paper' && spans) || rim)) continue;
+      // A large piece of the traced disc cut off by a line (below the doves'
+      // wire): inside the disc's box, reaching its rim. It is the disc's own
+      // colour in standard mode, but a lighter patch in dark mode.
+      var reach = Math.max(Math.abs(rb[0] - dcx), Math.abs(rb[2] - dcx), Math.abs(rb[1] - dcy), Math.abs(rb[3] - dcy));
+      var inBox = rb[0] >= dcx - 1.05 * r0 && rb[2] <= dcx + 1.05 * r0 && rb[3] >= dcy - 1.05 * r0 && rb[1] <= dcy + 1.05 * r0;
+      var piece = rk === 'tint' && inBox && reach >= 0.9 * r0 && Math.abs(ri.area) >= 0.08 * Math.PI * r0 * r0;
+      if (!((rk === 'paper' && spans) || rim || piece)) continue;
       var whole = ri.parent.typename === 'CompoundPathItem' ? ri.parent : ri, seen = false;
       for (var b2 = 0; b2 < doomed.length; b2++) if (doomed[b2] === whole) seen = true;
       if (!seen) doomed.push(whole);
@@ -471,40 +516,14 @@ if (P.backdrop) {
   } else log.push('backdrop: no disc in the draft, none drawn');
 }
 
-// Paper underlay under the subject, traced from the silhouette mask: one
-// shape per figure (a hen and a chick standing apart each get theirs), with
-// the holes the mask has (between legs) kept open.
-if (P.mask) {
-  var mp = fillLayerOf(doc).placedItems.add();
-  mp.file = new File(P.mask);
-  mp.width = ab[2] - ab[0]; mp.height = ab[1] - ab[3]; mp.position = [ab[0], ab[1]];
-  var mt = mp.trace(), mo = mt.tracing.tracingOptions;
-  mo.tracingMode = TracingModeType.TRACINGMODEBLACKANDWHITE; mo.threshold = 128;
-  mo.fills = true; mo.strokes = false; mo.ignoreWhite = true;
-  mo.pathFidelity = 20; mo.cornerFidelity = 30; mo.noiseFidelity = 80;
-  app.redraw();
-  var mg = mt.tracing.expandTracing(), underlays = 0, underArea = 0, artArea = (ab[2] - ab[0]) * (ab[1] - ab[3]);
-  var tops = mg.typename === 'GroupItem' ? mg.pageItems : [mg], shapes = [];
-  for (var u = 0; u < tops.length; u++) shapes.push(tops[u]);
-  for (var u1 = 0; u1 < shapes.length; u1++) {
-    var mparts = paths(shapes[u1], []), ma = 0;
-    for (var u2 = 0; u2 < mparts.length; u2++) ma = Math.max(ma, Math.abs(mparts[u2].area));
-    if (ma < 0.004 * artArea) continue;
-    var under = shapes[u1].duplicate(fillLayerOf(doc), ElementPlacement.PLACEATEND), ups = paths(under, []);
-    for (var u3 = 0; u3 < ups.length; u3++) { ups[u3].filled = true; ups[u3].stroked = false; ups[u3].fillColor = rgb(P.palette.paper); }
-    underlays++; underArea += ma;
-  }
-  mg.remove();
-  log.push('underlay ' + underlays + ' shape' + (underlays === 1 ? '' : 's') + ', ' + Math.round(underArea) + ' pt2');
-}
 // Ink masses (animals): wing and tail tips, a nose, a dark patch, traced from
 // the opened-ink mask with their feather gaps, on top of the other fills.
 if (P.inkMask) {
   var ip = fillLayerOf(doc).placedItems.add();
   ip.file = new File(P.inkMask);
   ip.width = ab[2] - ab[0]; ip.height = ab[1] - ab[3]; ip.position = [ab[0], ab[1]];
-  var itr = ip.trace(), io = itr.tracing.tracingOptions;
-  io.tracingMode = TracingModeType.TRACINGMODEBLACKANDWHITE; io.threshold = 128;
+  var itr = ip.trace(), io = retry(function () { var o = itr.tracing.tracingOptions; o.tracingMode = TracingModeType.TRACINGMODEBLACKANDWHITE; return o; });
+  io.threshold = 128;
   io.fills = true; io.strokes = false; io.ignoreWhite = true;
   io.pathFidelity = 40; io.cornerFidelity = 50; io.noiseFidelity = 20;
   app.redraw();
@@ -561,6 +580,104 @@ log.push('roughened ' + roughened);
 
 var saveOpts = new IllustratorSaveOptions();
 doc.saveAs(new File(P.ai), saveOpts);
+if (P.linesPng) {
+  // The finished lines alone (Outline, Ground, Features and the Ink group),
+  // for the underlay in pass two: everything else is hidden, and the file is
+  // closed without saving afterwards.
+  for (var hl = 0; hl < doc.layers.length; hl++) {
+    var ly = doc.layers[hl];
+    if (ly.name === 'Circle') ly.visible = false;
+    if (ly.name === 'Fill') for (var hi = 0; hi < ly.pageItems.length; hi++) if (ly.pageItems[hi].name !== 'Ink') ly.pageItems[hi].hidden = true;
+  }
+  var po = new ExportOptionsPNG24();
+  po.horizontalScale = po.verticalScale = P.linesScale;
+  po.artBoardClipping = true; po.antiAliasing = true; po.transparency = false;
+  doc.exportFile(new File(P.linesPng), ExportType.PNG24, po);
+  log.push('saved ' + P.ai + ', lines rendered for the underlay');
+} else {
+  var svgOpts = new ExportOptionsSVG();
+  svgOpts.embedRasterImages = false;
+  svgOpts.coordinatePrecision = 2;
+  try { svgOpts.cssProperties = SVGCSSPropertyLocation.PRESENTATIONATTRIBUTES; } catch (e) {}
+  try { svgOpts.fontType = SVGFontType.OUTLINEFONT; } catch (e) {}
+  doc.exportFile(new File(P.svg), ExportType.SVG, svgOpts);
+  log.push('saved ' + P.ai + ' and ' + P.svg);
+}
+doc.close(SaveOptions.DONOTSAVECHANGES);
+log.join(' | ');
+`;
+
+// Pass two (animals with an underlay): paper under each figure, from the
+// draft's silhouette cut back to the finished lines (underlaySubject), so it
+// ends under the middle of every line — also where simplify removed a fur
+// mark the draft's outline still has.
+const jsx2 = P => `
+var P = ${JSON.stringify(P)};
+function rgb(c) { var r = new RGBColor(); r.red = c[0]; r.green = c[1]; r.blue = c[2]; return r; }
+function paths(item, out) {
+  if (item.typename === 'PathItem') out.push(item);
+  else if (item.typename === 'CompoundPathItem') { for (var i = 0; i < item.pathItems.length; i++) out.push(item.pathItems[i]); }
+  else if (item.typename === 'GroupItem') { for (var j = 0; j < item.pageItems.length; j++) paths(item.pageItems[j], out); }
+  return out;
+}
+function fillLayerOf(d) { for (var fl = 0; fl < d.layers.length; fl++) if (d.layers[fl].name === 'Fill') return d.layers[fl]; return d.layers[0]; }
+function retry(fn) {
+  for (var t = 0; t < 20; t++) {
+    try { return fn(); } catch (e) { if (t === 19) throw e; app.redraw(); $.sleep(1000); }
+  }
+}
+var log = [], doc = app.open(new File(P.ai)), ab = doc.artboards[0].artboardRect;
+app.redraw();
+// White pieces from the colour trace that lie outside every figure: most of
+// their anchors fall outside the figure map (figureCells). Inside a figure
+// white stays (the underlay covers it anyway, and holes stay holes).
+if (P.figures) {
+  var F = P.figures, whites = [], outsideWhite = [], fillItems = fillLayerOf(doc).pageItems;
+  // paths() walks groups and compounds, not a layer: start from its items.
+  for (var w9 = 0; w9 < fillItems.length; w9++) paths(fillItems[w9], whites);
+  var inFigure = function (a) {
+    var gx = Math.floor(((a[0] - ab[0]) / (ab[2] - ab[0])) * F.n), gy = Math.floor(((ab[1] - a[1]) / (ab[1] - ab[3])) * F.n);
+    return gx >= 0 && gy >= 0 && gx < F.n && gy < F.n && F.cells.charAt(gy * F.n + gx) === '1';
+  };
+  for (var w0 = 0; w0 < whites.length; w0++) {
+    var wp = whites[w0];
+    try { if (!wp.filled || wp.fillColor.typename !== 'RGBColor' || wp.fillColor.red < 250 || wp.fillColor.green < 250 || wp.fillColor.blue < 250) continue; } catch (e6) { continue; }
+    var out = 0, n0 = wp.pathPoints.length;
+    for (var w1 = 0; w1 < n0; w1++) if (!inFigure(wp.pathPoints[w1].anchor)) out++;
+    if (n0 && out >= 0.7 * n0) outsideWhite.push(wp);
+  }
+  var whiteGone = 0;
+  for (var w2 = 0; w2 < outsideWhite.length; w2++) { try { outsideWhite[w2].remove(); whiteGone++; } catch (e7) {} }
+  log.push('white outside the figures removed ' + whiteGone);
+}
+// Paper underlay under the subject, traced from the mask: one shape per
+// figure (a hen and a chick standing apart each get theirs), with the holes
+// the mask has (between legs) kept open.
+if (P.mask) {
+  var mp = fillLayerOf(doc).placedItems.add();
+  mp.file = new File(P.mask);
+  mp.width = ab[2] - ab[0]; mp.height = ab[1] - ab[3]; mp.position = [ab[0], ab[1]];
+  var mt = mp.trace(), mo = retry(function () { var o = mt.tracing.tracingOptions; o.tracingMode = TracingModeType.TRACINGMODEBLACKANDWHITE; return o; });
+  mo.threshold = 128;
+  mo.fills = true; mo.strokes = false; mo.ignoreWhite = true;
+  mo.pathFidelity = 20; mo.cornerFidelity = 30; mo.noiseFidelity = 80;
+  app.redraw();
+  var mg = mt.tracing.expandTracing(), underlays = 0, underArea = 0, artArea = (ab[2] - ab[0]) * (ab[1] - ab[3]);
+  var tops = mg.typename === 'GroupItem' ? mg.pageItems : [mg], shapes = [];
+  for (var u = 0; u < tops.length; u++) shapes.push(tops[u]);
+  for (var u1 = 0; u1 < shapes.length; u1++) {
+    var mparts = paths(shapes[u1], []), ma = 0;
+    for (var u2 = 0; u2 < mparts.length; u2++) ma = Math.max(ma, Math.abs(mparts[u2].area));
+    if (ma < 0.004 * artArea) continue;
+    var under = shapes[u1].duplicate(fillLayerOf(doc), ElementPlacement.PLACEATEND), ups = paths(under, []);
+    under.name = 'Underlay';
+    for (var u3 = 0; u3 < ups.length; u3++) { ups[u3].filled = true; ups[u3].stroked = false; ups[u3].fillColor = rgb(P.palette.paper); }
+    underlays++; underArea += ma;
+  }
+  mg.remove();
+  log.push('underlay ' + underlays + ' shape' + (underlays === 1 ? '' : 's') + ', ' + Math.round(underArea) + ' pt2');
+}
+doc.save();
 var svgOpts = new ExportOptionsSVG();
 svgOpts.embedRasterImages = false;
 svgOpts.coordinatePrecision = 2;
@@ -572,22 +689,29 @@ doc.close(SaveOptions.DONOTSAVECHANGES);
 log.join(' | ');
 `;
 
-const jsxFile = path.join(
-  fs.mkdtempSync(path.join(os.tmpdir(), 'illustrator-trace-')),
-  'trace.jsx',
-);
-fs.writeFileSync(jsxFile, jsx);
-const script = `with timeout of 1800 seconds
+function runJsx(code) {
+  const file = path.join(
+    fs.mkdtempSync(path.join(os.tmpdir(), 'illustrator-trace-')),
+    'trace.jsx',
+  );
+  fs.writeFileSync(file, code);
+  const script = `with timeout of 1800 seconds
   tell application ${JSON.stringify(
     app,
-  )} to do javascript (read POSIX file ${JSON.stringify(
-  jsxFile,
-)} as «class utf8»)
+  )} to do javascript (read POSIX file ${JSON.stringify(file)} as «class utf8»)
 end timeout`;
-const result = execFileSync('osascript', ['-e', script], {
-  encoding: 'utf8',
-  timeout: 1860000,
-}).trim();
+  return execFileSync('osascript', ['-e', script], {
+    encoding: 'utf8',
+    timeout: 1860000,
+  }).trim();
+}
+let result = runJsx(jsx);
+if (params.linesPng) {
+  const subject = underlaySubject(img, disc, ground, readPng(params.linesPng));
+  params.mask = savePng(img.w, img.h, k => subject[k], 'underlay.png');
+  params.figures = figureCells(img, subject.interior);
+  result += ' | ' + runJsx(jsx2(params));
+}
 console.log(result);
 
 // Dark and contrast versions by exact palette mapping. The Circle layer is
@@ -832,7 +956,7 @@ function erode(mask, w, h, r) {
 // flooded from the image edge. Inside the backdrop disc only disc-coloured
 // pixels let the flood through, so white areas behind a gap in a contour
 // stay inside.
-function writeMask(img, disc, ground, grow = 5) {
+function draftSubject(img, disc, ground, grow = 5) {
   const { w, h, lum } = img;
   // Grow a mask by r pixels (square kernel, two passes).
   const growBy = (m, r) => {
@@ -886,9 +1010,23 @@ function writeMask(img, disc, ground, grow = 5) {
   // Shrink back so the underlay sits just inside the lines, then drop thin
   // spurs (a ground dash touching a paw) by shrinking and regrowing the
   // inside: they would show as pale slivers in dark mode.
+  // The inside of the figures without their line walls, for removing white
+  // pieces that lie outside every figure (pass two).
+  const interior = outside.map((v, k) => (!v && !wall[k] ? 1 : 0));
   const shrunk = growBy(outside, Math.max(1, grow - 1));
   const core = growBy(shrunk, grow + 3).map(v => 1 - v);
   const outer = growBy(core, grow + 3).map(v => 1 - v); // 1 = background
+  // Pull the edge in under the middle of the line. The trace gives lines a
+  // width profile that thins toward the ends; paper reaching the line's outer
+  // edge would show past those ends as a white rim in dark mode.
+  const pull = Math.max(1, Math.round(0.003 * w));
+  const inner = erode(
+    outer.map(v => 1 - v),
+    w,
+    h,
+    pull,
+  );
+  for (let k = 0; k < w * h; k++) outer[k] = inner[k] ? 0 : 1;
   if (ground) {
     // Paper stops at the top of the ground line: below it, it would show as a
     // pale strip under the feet in dark mode.
@@ -905,7 +1043,107 @@ function writeMask(img, disc, ground, grow = 5) {
     for (let y = bandTop; y < ground.top; y++)
       for (let x = 0; x < w; x++) if (!near[y * w + x]) outer[y * w + x] = 1;
   }
-  return savePng(w, h, k => !outer[k], 'mask.png');
+  const subject = outer.map(v => 1 - v);
+  subject.interior = interior;
+  return subject;
+}
+
+// Grows a mask by r pixels (square), correct at the image edges.
+function dilate(mask, w, h, r) {
+  const t = new Uint8Array(w * h);
+  const out = new Uint8Array(w * h);
+  for (let y = 0; y < h; y++) {
+    for (let x = 0, last = -Infinity; x < w; x++) {
+      if (mask[y * w + x]) last = x;
+      t[y * w + x] = x - last <= r ? 1 : 0;
+    }
+    for (let x = w - 1, last = Infinity; x >= 0; x--) {
+      if (mask[y * w + x]) last = x;
+      if (last - x <= r) t[y * w + x] = 1;
+    }
+  }
+  for (let x = 0; x < w; x++) {
+    for (let y = 0, last = -Infinity; y < h; y++) {
+      if (t[y * w + x]) last = y;
+      out[y * w + x] = y - last <= r ? 1 : 0;
+    }
+    for (let y = h - 1, last = Infinity; y >= 0; y--) {
+      if (t[y * w + x]) last = y;
+      if (last - y <= r) out[y * w + x] = 1;
+    }
+  }
+  return out;
+}
+
+// The underlay: the draft's silhouette (draftSubject) cut back to the
+// finished lines, rendered in pass one. Inside the lines means: not reached
+// from the edge once gaps up to 2 % of the width are closed, and the edge
+// then pulled in to about the middle of the line. The draft decides what is
+// figure (open contours, the space between two birds); the lines decide
+// where its edge is, so paper no longer shows past a fur mark simplify
+// removed, or past a line end that thins.
+function underlaySubject(img, disc, ground, lines) {
+  const { w, h } = img;
+  const draft = draftSubject(img, disc, ground);
+  const ink = new Uint8Array(w * h);
+  for (let y = 0; y < h; y++)
+    for (let x = 0; x < w; x++) {
+      const lx = Math.min(lines.w - 1, Math.floor((x * lines.w) / w));
+      const ly = Math.min(lines.h - 1, Math.floor((y * lines.h) / h));
+      ink[y * w + x] = lines.lum[ly * lines.w + lx] < 128 ? 1 : 0;
+    }
+  const gap = Math.max(2, Math.round(0.02 * w));
+  const wall = dilate(ink, w, h, gap);
+  const outside = new Uint8Array(w * h);
+  const stack = [];
+  for (let x = 0; x < w; x++) stack.push(x, (h - 1) * w + x);
+  for (let y = 0; y < h; y++) stack.push(y * w, y * w + w - 1);
+  while (stack.length) {
+    const k = stack.pop();
+    if (outside[k] || wall[k]) continue;
+    outside[k] = 1;
+    const x = k % w;
+    if (x > 0) stack.push(k - 1);
+    if (x < w - 1) stack.push(k + 1);
+    if (k >= w) stack.push(k - w);
+    if (k < w * h - w) stack.push(k + w);
+  }
+  const pull = Math.max(1, Math.round(0.003 * w));
+  const beyond = dilate(outside, w, h, gap + pull);
+  const subject = draft.map((v, k) => (v && !beyond[k] ? 1 : 0));
+  // Inside a figure in both the draft and the finished lines: a cloud that
+  // closes against a wing in the draft but stays open in the lines is not.
+  subject.interior = draft.interior.map((v, k) => (v && !outside[k] ? 1 : 0));
+  return subject;
+}
+
+// A coarse map of where figures are: their insides without the line walls,
+// grown back over the lines. White outside it is never wanted — a sliver
+// along an open line (a cloud), a crescent beside a figure.
+function figureCells(img, interior, n = 256) {
+  const { w, h } = img;
+  const near = dilate(interior, w, h, Math.max(2, Math.round(0.008 * w)));
+  let cells = '';
+  for (let gy = 0; gy < n; gy++)
+    for (let gx = 0; gx < n; gx++) {
+      let on = 0;
+      for (
+        let y = Math.floor((gy * h) / n);
+        y < Math.floor(((gy + 1) * h) / n) && !on;
+        y++
+      )
+        for (
+          let x = Math.floor((gx * w) / n);
+          x < Math.floor(((gx + 1) * w) / n);
+          x++
+        )
+          if (near[y * w + x]) {
+            on = 1;
+            break;
+          }
+      cells += on ? '1' : '0';
+    }
+  return { n, cells };
 }
 
 // Writes a black-on-white 8-bit RGB PNG to a temporary folder: black where
