@@ -1,6 +1,10 @@
 import React from 'react';
 import { Button } from './Button';
-import { PolymorphicComponentPropsWithRef, PolymorphicRef } from '@entur/utils';
+import {
+  PolymorphicComponentPropsWithRef,
+  PolymorphicRef,
+  forwardRefPolymorphic,
+} from '@entur/utils';
 
 export type TertiaryButtonBaseProps = {
   /** Størrelsen på knappen
@@ -37,7 +41,7 @@ export type TertiaryButtonComponent = <
 const defaultElement = 'button';
 
 /** @deprecated use SecondaryButton size="small" instead */
-export const TertiaryButton: TertiaryButtonComponent = React.forwardRef(
+export const TertiaryButton = forwardRefPolymorphic<TertiaryButtonComponent>(
   <T extends React.ElementType = typeof defaultElement>(
     props: TertiaryButtonProps<T>,
     ref: PolymorphicRef<T>,
