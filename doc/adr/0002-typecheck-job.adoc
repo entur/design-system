@@ -2,7 +2,7 @@
 
 Date: 2026-11-11
 
-Applies to: `.github/workflows/build-test-and-deploy-preview.yml`, every package's `tsconfig.typecheck.json`
+Applies to: `.github/workflows/build-test-and-deploy-preview.yml`, every package's `tsconfig.json` and `typecheck` script
 
 == Status
 Accepted
@@ -15,10 +15,12 @@ xref:0001-polymorphic-forwardref.adoc[ADR 1]). CI's only type check,
 
 == Decision
 A separate CI job runs `lerna run typecheck` after the package build, using the
-built package artifacts. Each package has a `tsconfig.typecheck.json` that
-extends its `tsconfig.json`, includes the test files and doesn't set `rootDir`,
-so tests importing the shared helpers in `tests/jest/` type-check too. The
-declaration build keeps logging without failing.
+built package artifacts. Each package's `typecheck` script runs
+`tsc -p tsconfig.json --noEmit --rootDir ../..`. The package `tsconfig.json`
+includes the tests, and the declaration build leaves them out with
+`DECLARATION_EXCLUDE`. `rootDir` is widened only on the command line, so tests
+importing the shared helpers in `tests/jest/` type-check without moving the
+published `.d.ts` files. The declaration build keeps logging without failing.
 
 == Consequences
 
