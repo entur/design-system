@@ -97,7 +97,7 @@ Rules of use: at most **three** square illustrations per page view; more than on
 
 **Composition**
 
-9. One clear subject, large, centred on the optical axis. People and animals stand on **one simple ground line**, the same for both: ink at detail weight, in one piece or two or three long pieces, running a little past the subject on both sides, and always **behind** the figure: where an animal or a person stands on it or overlaps it, their fills hide it. No row of dashes, no second line under it, never heavier than the contours. Nature only when the scene needs it, and sparse: one tuft of two or three blades at the foot of something (a pole, a bench leg), a couple of long stems or a single leaf — never grass along the line.
+9. One clear subject, large, centred on the optical axis. People and animals stand on **one simple ground line**, the same for both: ink at detail weight, in one piece or two or three long pieces, running a little past the subject on both sides, and always **behind** the figure: the line lies under the feet, paws and any body part that touches it — never over them — so where an animal or a person stands on it or overlaps it, their fills hide it. No row of dashes, no second line under it, never heavier than the contours. Nature only when the scene needs it, and sparse: one tuft of two or three blades at the foot of something (a pole, a bench leg), a couple of long stems or a single leaf — never grass along the line.
 10. Square motifs: the Blue 20 backdrop disc is 62 % of the canvas wide and centred on it, a plain circle whose ragged edge comes from a coarser Roughen (0.65 %). The subject sits over it and breaks out of it.
 11. Generous empty space. The illustration supports a message — it never competes with it.
 
@@ -114,7 +114,7 @@ Rules of use: at most **three** square illustrations per page view; more than on
 17. **Animals keep their eyes** — a dot or a short arc — and stay calm and a little dry, never cartoonish.
 18. **Minimal line.** Library animals have less line than a sketch: long smooth contours with a few gaps, and detail only where it says what the animal is (the hedgehog's spines, the goat's beard, wool as a scalloped edge). No fur ticks along a contour and no clusters of short fur marks; one line for a fold (the neck, a shoulder) says it instead. An ear gets at most one inner line. A sitting bear cub on the 320 canvas has about 50 strokes, toes, grass and ground included; its raw trace had 80.
 19. **One Peach accent.** Every library animal has one small Peach 40 area, about 1 % of the canvas (0.2–4 %): on a prop it holds, wears or has beside it (a collar, a ball, a nut, a key, a ticket, a bowl, a leaf) or on one marking of its own (horns, a chest patch). Never the body fill, never spread over several places; a tiny echo, like crumbs beside a bowl, is the most. A prop it holds or has beside it (a ball, a key) keeps its ink outline with the Peach shifted off it; a marking or something worn on the body (a chest patch, a collar) has no outline (rule 20).
-20. **Peach on the body has no outline.** A beak or bill, a comb, a wattle, feet, a chest patch, a collar: each is one flat Peach 40 shape with no ink line around it, as the library doves' feet, the dog's collar and the squirrel's nut are. A contour that meets one stops with a small gap (about 2 pt), and the shape covers where an outline would have run, a beak's tip a little past it. A peach part that sits on the head or body (a comb) keeps the head's own contour where it runs along its base: only the strokes that outline the part itself, such as the comb's scalloped top, go. A beak is different: the head line stops with a gap at its base. Horns (the muskox) and props (a ball, a sign, a key) may keep their lines. On a bird the beak and feet are its Peach accent (rule 19).
+    \121. **The paper follows the strokes.** On an animal the white paper ends under the middle of each contour stroke, and never past a stroke's outer side: no paper in a hollow outside the strokes, such as between the ears or where the tail meets the back. Across a gap between two contour strokes, its edge runs straight from one stroke's end to the next stroke's start, so a fur tuft has paper behind it and no dent shows between the strokes. In dark mode the paper then reads as the animal's own shape, fur included.
 
 The full anatomy, with measurements and per-format layout, is in `references/style.md`. The colour roles and how they map per mode are in `references/palette.md`.
 
@@ -194,7 +194,7 @@ Check before delivering:
 - [ ] Every line is a stroke with round caps and no brush; nothing outlined in the working file
 - [ ] The construction fits the subject: uniform lines on people, staff and vehicles; swelling lines (width profile) on animals and objects
 - [ ] Line weights follow the hierarchy (contour > detail > fine); background lines are Blue 50
-- [ ] Ground is one simple line at detail weight, in one to three pieces, behind the figure (hidden where the body stands on it), for people and animals alike; grass, if the scene needs any, is one small tuft of two or three blades
+- [ ] Ground is one simple line at detail weight, in one to three pieces, under the feet and body parts, never over them (hidden where the body stands on it), for people and animals alike; grass, if the scene needs any, is one small tuft of two or three blades
 - [ ] Paper dominates; one Peach accent, on animals too (a prop or one marking, about 1 % of the canvas); no coral or red, except the Entur staff panels and the line under a vehicle
 - [ ] Fills are flat with smooth edges; most sit exactly under their line, one to three colour fills are offset 0.5–0.7
 - [ ] At least one contour is left open; interior lines float
@@ -207,6 +207,7 @@ Check before delivering:
 - [ ] Line weight hierarchy on people: about a quarter of the lines (the long outer contours) at 1.5, the rest at 1.0; an all-1.5 figure looks coarse next to library people
 - [ ] Animals and objects: contours as a few long swelling strokes at 2.1, details at 1.7–1.3, paper underlays and at most two Blue 20 shading shapes, eyes kept; side by side with the library sheep or hedgehog, the lines are as heavy
 - [ ] Animals: no more line than the library animal next to it — no fur ticks along the contours, no cluster of fur marks on the chest or neck, at most one inner line per ear
+- [ ] Animals: in dark mode the paper follows the strokes — nothing past a stroke's outer side, no dent between two strokes (rule 21)
 - [ ] Peach on an animal's body — beak, comb, wattle, feet, a chest patch, a collar — a flat shape with no ink outline; contours stop with a small gap where they meet it, and the head's own line under a comb stays
 - [ ] Dark and contrast files checked on Ebony 100 and Lavender 90 surfaces
 - [ ] Layers named; file names follow `<Name>.svg`, `<Name>-darkmode.svg`, `<Name>-contrast.svg`

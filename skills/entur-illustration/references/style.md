@@ -128,7 +128,7 @@ The square motifs come in two variants, with and without a backdrop (`-backgroun
 Measured on the library PNGs in November 2026: 18 people, 15 animals and the two Entur staff figures.
 
 - **People and animals stand on one simple line,** in the same style: ink, one piece (most people) or two or three long pieces with a small gap (most animals). It runs a little past the subject on both sides — about 25–85 % of the width under people, 10–90 % under animals.
-- **Behind the figure:** the line runs behind the animals and people that stand on it. Where a paw, a foot, a tail or a hem overlaps it, their fill hides it; it never crosses a body.
+- **Behind the figure:** the line runs behind the animals and people that stand on it, under their feet, paws and any body part that touches it — never over them. Where a paw, a foot, a tail or a hem overlaps it, their fill hides it; it never crosses a body.
 - **Thin:** detail weight or lighter (about 1.0 under people, 1.3–1.7 under animals), never heavier than the contours. The ground is where the subject stands, not part of the drawing.
 - **No second line.** Neither people nor animals have a Blue 50 line under the ground line, a row of short dashes or texture along it.
 - **Nature is sparse and has a reason:** the rabbit has one tuft of three blades at the foot of the bus-stop pole and two small flowers, the moose a few long stems by its pole, the goat two long blades in front of it, the newspaper reader one small tuft at each bench leg, the hedgehog two leaves. Never grass along the line or a tuft on each side by habit; with no reason for nature in the scene, the line stays bare.
