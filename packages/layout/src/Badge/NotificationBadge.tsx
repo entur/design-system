@@ -1,6 +1,10 @@
 import React from 'react';
 import { Badge } from './Badge';
-import { PolymorphicComponentPropsWithRef, PolymorphicRef } from '@entur/utils';
+import {
+  PolymorphicComponentPropsWithRef,
+  PolymorphicRef,
+  forwardRefPolymorphic,
+} from '@entur/utils';
 import { VariantType } from '@entur/utils';
 
 /** @deprecated use variant="information" instead */
@@ -42,13 +46,14 @@ export type NotificationBadgeComponent = <
 
 const defaultElement = 'span';
 
-export const NotificationBadge: NotificationBadgeComponent = React.forwardRef(
-  <T extends React.ElementType = typeof defaultElement>(
-    props: NotificationBadgeProps<T>,
-    ref: PolymorphicRef<T>,
-  ) => {
-    const Element = props.as || defaultElement;
-    // @ts-expect-error type error due to props not being BadgeOwnProps
-    return <Badge as={Element} {...props} ref={ref} type="notification" />;
-  },
-);
+export const NotificationBadge =
+  forwardRefPolymorphic<NotificationBadgeComponent>(
+    <T extends React.ElementType = typeof defaultElement>(
+      props: NotificationBadgeProps<T>,
+      ref: PolymorphicRef<T>,
+    ) => {
+      const Element = props.as || defaultElement;
+      // @ts-expect-error type error due to props not being BadgeOwnProps
+      return <Badge as={Element} {...props} ref={ref} type="notification" />;
+    },
+  );
