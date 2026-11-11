@@ -422,18 +422,14 @@ log.push('width profiles ' + profiled);
 // Backdrop (animals): the library disc is a plain 4-anchor circle whose ragged
 // edge comes from Roughen 0.65 %; a traced disc is a lumpy many-anchor shape.
 // The circle comes from the draft's pixels (findDisc); the traced disc's area
-// says little, since the subject can cover a third of it or more.
+// says little, since the subject can cover a third of it or more. A draft
+// without a disc gets none: the library has animals both ways.
 if (P.backdrop) {
   var art = (ab[2] - ab[0]) * (ab[1] - ab[3]);
   var disc = null, discArea = 0, cf = paths(cg, []);
   for (var b0 = 0; b0 < cf.length; b0++) { var bi = cf[b0]; if (bi.filled && nearest(bi.fillColor) === 'tint' && Math.abs(bi.area) > discArea) { disc = bi; discArea = Math.abs(bi.area); } }
   var r0 = 0, dcx = 0, dcy = 0;
   if (P.disc) { r0 = P.disc.r; dcx = ab[0] + P.disc.cx; dcy = ab[1] - P.disc.cy; }
-  else if (disc) {
-    // From the traced bounds; a subject covering the bottom shortens them there.
-    var db = disc.geometricBounds, bw = db[2] - db[0], bh = db[1] - db[3];
-    if (Math.max(bw, bh) >= 0.3 * P.size) { r0 = Math.max(bw, bh) / 2; dcx = (db[0] + db[2]) / 2; dcy = bh < 0.95 * bw ? db[1] - r0 : (db[1] + db[3]) / 2; }
-  }
   if (r0) {
     var circleLayer = doc.layers.add(); circleLayer.name = 'Circle'; circleLayer.move(doc, ElementPlacement.PLACEATEND);
     var ring = circleLayer.pathItems.ellipse(dcy + r0, dcx - r0, 2 * r0, 2 * r0);
@@ -444,19 +440,25 @@ if (P.backdrop) {
       if (dist([(tdb[0] + tdb[2]) / 2, (tdb[1] + tdb[3]) / 2], [dcx, dcy]) < r0) (disc.parent.typename === 'CompoundPathItem' ? disc.parent : disc).remove();
     }
     // A pale disc often traces as a white interior inside a grey ragged rim:
-    // drop the white area that spans the disc and the rim fragments.
-    var cleared = 0, rest = paths(cg, []);
-    for (var b1 = rest.length - 1; b1 >= 0; b1--) {
+    // drop the white area that spans the disc and the rim fragments. Collect
+    // first and remove each once: a compound path goes whole, and its other
+    // subpaths are dead references after that.
+    var cleared = 0, rest = paths(cg, []), doomed = [];
+    for (var b1 = 0; b1 < rest.length; b1++) {
       var ri = rest[b1];
       try { if (!ri.filled) continue; } catch (e3) { continue; }
       var rk = nearest(ri.fillColor), rb = ri.geometricBounds;
       var spans = rb[2] - rb[0] >= 1.6 * r0 && rb[1] - rb[3] >= 1.6 * r0;
       var rd = Math.sqrt(Math.pow((rb[0] + rb[2]) / 2 - dcx, 2) + Math.pow((rb[1] + rb[3]) / 2 - dcy, 2));
       var rim = rk === 'tint' && rd > 0.88 * r0 && rd < 1.12 * r0 && Math.abs(ri.area) < 0.02 * Math.PI * r0 * r0;
-      if ((rk === 'paper' && spans) || rim) { (ri.parent.typename === 'CompoundPathItem' ? ri.parent : ri).remove(); cleared++; }
+      if (!((rk === 'paper' && spans) || rim)) continue;
+      var whole = ri.parent.typename === 'CompoundPathItem' ? ri.parent : ri, seen = false;
+      for (var b2 = 0; b2 < doomed.length; b2++) if (doomed[b2] === whole) seen = true;
+      if (!seen) doomed.push(whole);
     }
+    for (var b3 = 0; b3 < doomed.length; b3++) { try { doomed[b3].remove(); cleared++; } catch (e4) {} }
     log.push('backdrop replaced, radius ' + Math.round(r0) + ', traced disc parts cleared ' + cleared);
-  } else log.push('backdrop: no disc found');
+  } else log.push('backdrop: no disc in the draft, none drawn');
 }
 
 // Paper underlay under the subject, traced from the silhouette mask: one
@@ -890,8 +892,18 @@ function findDisc({ w, h, lum, blueish }) {
   const bw = best.x1 - best.x0 + 1;
   const bh = best.y1 - best.y0 + 1;
   const r = Math.max(bw, bh) / 2;
+  const cx = best.x0 + bw / 2;
+  // Only a plausible disc counts: wide enough, round enough, filled enough
+  // (a subject may cover half of it) and near the middle. Pale wings or a
+  // grey coat are none of these, and the library has animals without a disc.
+  const disc =
+    2 * r >= 0.3 * w &&
+    Math.min(bw, bh) >= 0.6 * Math.max(bw, bh) &&
+    best.n >= 0.35 * Math.PI * r * r &&
+    Math.abs(cx - w / 2) <= 0.2 * w;
+  if (!disc) return null;
   return {
-    cx: best.x0 + bw / 2,
+    cx,
     cy: bh < 0.95 * bw ? best.y0 + r : best.y0 + bh / 2,
     r,
   };
