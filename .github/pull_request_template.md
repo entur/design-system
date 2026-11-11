@@ -39,6 +39,7 @@
 - [ ] Navnestandarder følges
 - [ ] Kode og Figma reflekterer hverandre
 - [ ] Dokumentasjonen er oppdatert (hvis aktuelt)
+- [ ] ADR-er er lagt til eller oppdatert (hvis endringen tar eller endrer en beslutning, se `doc/adr/`)
 - [ ] Ingen ubrukte imports / varsler / console.logs
 
 ## 🧪 Testing
