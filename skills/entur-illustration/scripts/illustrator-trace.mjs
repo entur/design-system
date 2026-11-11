@@ -677,12 +677,32 @@ function darkFeatures(img, size, ground) {
   const box = c => [c.x1 - c.x0 + 1, c.y1 - c.y0 + 1];
   const small = c => Math.max(...box(c)) <= 0.045 * w;
   const round = c => Math.max(...box(c)) / Math.min(...box(c)) <= 2.2;
+  // A smaller animal in a group has a proportionally smaller eye: a dot down
+  // to (0.0045·w)² still counts when it is round, solid and stands free, with
+  // no other ink within a few pixels — specks on lines and in hatching do not.
+  const free = c => {
+    const pad = Math.max(2, Math.round(0.003 * w));
+    for (let y = Math.max(0, c.y0 - pad); y <= Math.min(h - 1, c.y1 + pad); y++)
+      for (
+        let x = Math.max(0, c.x0 - pad);
+        x <= Math.min(w - 1, c.x1 + pad);
+        x++
+      ) {
+        const inside = x >= c.x0 && x <= c.x1 && y >= c.y0 && y <= c.y1;
+        if (!inside && dark[y * w + x]) return false;
+      }
+    return true;
+  };
+  const fill = c => c.n / (box(c)[0] * box(c)[1]);
   const dots = components(dark, w, h).filter(
     c =>
-      c.n >= (0.006 * w) ** 2 &&
       small(c) &&
       round(c) &&
-      c.n / (box(c)[0] * box(c)[1]) >= 0.45,
+      ((c.n >= (0.006 * w) ** 2 && fill(c) >= 0.45) ||
+        (c.n >= (0.0045 * w) ** 2 &&
+          Math.max(...box(c)) / Math.min(...box(c)) <= 1.5 &&
+          fill(c) >= 0.6 &&
+          free(c))),
   );
   const r = Math.max(2, Math.round(0.0045 * w));
   const spots = components(erode(dark, w, h, r), w, h)
