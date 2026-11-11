@@ -84,7 +84,7 @@ package.json
 ## Architecture & Patterns
 
 - **Polymorphic components:** Many components accept an `as` prop for element composition (e.g. Button can render as `<a>`)
-- **Forward refs:** All components forward refs; ones with an `as` prop use `forwardRefPolymorphic` ([ADR 1](doc/adr/0001-polymorphic-forwardref.adoc))
+- **Forward refs:** Components that forward refs and have an `as` prop use `forwardRefPolymorphic` ([ADR 1](doc/adr/0001-polymorphic-forwardref.adoc))
 - **CSS:** BEM naming with `eds-` prefix, SCSS modules, cascade layers via `@entur/utils/styles/layers`
 - **Dual output:** Each package builds to ESM + CJS with separate CSS bundle and `.d.ts` files
 - **Design tokens:** `@entur/tokens` provides shared tokens as CSS custom properties, SCSS variables, and JS exports

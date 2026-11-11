@@ -2,7 +2,7 @@
 
 Date: 2026-11-11
 
-Applies to: `packages/utils/src/PolymorphicComponent.tsx`, every component with an `as` prop
+Applies to: `packages/utils/src/PolymorphicComponent.tsx`, every component that forwards refs and has an `as` prop
 
 Revisit when: the peer dependency becomes `react >=19`. Then deprecate the helper and move components to `ref` as a prop.
 
@@ -10,7 +10,7 @@ Revisit when: the peer dependency becomes `react >=19`. Then deprecate the helpe
 Accepted
 
 == Context
-Components with an `as` prop are typed with a generic call signature
+Components that forward refs and have an `as` prop are typed with a generic call signature
 (`<T extends React.ElementType>(props: XProps<T>) => React.ReactElement | null`)
 and built with `React.forwardRef`. `forwardRef` can't keep the generic, so
 TypeScript resolves `T` to `React.ElementType`, the props collapse to `any`,
@@ -22,7 +22,7 @@ The peer dependency is `react >=18`, so `forwardRef` stays until React 18
 support is dropped. React 19 deprecates it in favour of `ref` as a prop.
 
 == Decision
-Components with an `as` prop are created with `forwardRefPolymorphic` from
+Components that forward refs and have an `as` prop are created with `forwardRefPolymorphic` from
 `@entur/utils`, typed with the component's own call signature:
 
 [source,ts]
@@ -38,10 +38,14 @@ own polymorphic components on our types can use it too. Component types keep
 returning `React.ReactElement | null`, so JSX keeps working for consumers on
 TypeScript below 5.1.
 
+Components with an `as` prop that don't forward refs, such as `Paragraph`,
+are plain generic functions and keep their generic without the helper.
+
 == Consequences
 
 === Positive
-* Published types are unchanged; the casts only affect our source.
+* Component declaration types are unchanged; the casts only affect our source.
+  `@entur/utils` gains one export, `forwardRefPolymorphic`.
 * One place to change when React 18 support is dropped.
 * The old pattern fails type checking, so the typecheck job in CI catches
   components that bypass the helper.

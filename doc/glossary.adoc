@@ -9,7 +9,7 @@ Prop that sets which element or component a component renders, e.g.
 
 Polymorphic component::
 A component with an `as` prop, typed with a generic call signature over the
-element type. Built with `forwardRefPolymorphic` (see
+element type. Ones that forward refs are built with `forwardRefPolymorphic` (see
 xref:adr/0001-polymorphic-forwardref.adoc[ADR 1]).
 
 `forwardRefPolymorphic`::
