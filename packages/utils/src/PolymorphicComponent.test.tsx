@@ -57,7 +57,7 @@ test('types props and ref from the as prop', () => {
       {/* @ts-expect-error href is not a div prop */}
       <Box href="/reise">Reise</Box>
       {/* @ts-expect-error a div ref doesn't fit an anchor */}
-      <Box as="a" ref={React.createRef<HTMLDivElement>()}>
+      <Box as="a" href="/reise" ref={React.createRef<HTMLDivElement>()}>
         Reise
       </Box>
     </>,
