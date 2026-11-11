@@ -11,21 +11,21 @@ Use route A (the script) for objects, vehicles, signs and landscapes; it is exac
 
 ## 2. Generate
 
-### Default: Nano Banana 2.1 in Weave
+Use only tools Entur has approved: **Figma, Claude and Illustrator**. Figma's own image generation makes the draft and spends AI credits on the Figma plan; nothing else needs an account.
 
-[Weave](https://app.weavy.ai/) is Figma's platform for image models, and its tools come with the Figma MCP server. It runs Nano Banana 2.1 (Google's Gemini image model) with the library PNGs as reference images, which keeps the line, the proportions and the colours closest to the library. Use it for every draft unless it is unavailable.
+### Default: Figma image generation
 
-- **Account:** the user signs in at app.weavy.ai and links Weave to their Figma account (profile settings). The free plan allows two model runs; after that a run returns a message asking to upgrade and spends nothing. Tell the user, and fall back to Figma `generate_image` below until they upgrade.
-- **Model:** `weave_find_model` with "nano banana 2" returns two candidates. Use **Nano Banana 2.1** (`fal-ai/nano-banana-2/edit`). Nano Banana 2 Lite costs less but only makes 1K images.
-- **Reference images:** upload each local PNG with `weave_upload_asset`. It returns a submit URL and a token: post the file with `curl -F "file=@<png>" -H "X-Weave-Upload-Token: <token>" <submitUrl>`, and pass the whole asset object it returns. The `images` input takes up to 14: the two to four style references, and in an edit round the draft first.
-- **Settings:** `model: "Nano Banana 2.1"`, `resolution: "2K"`, `aspect_ratio: "1:1"`, `output_format: "png"`. About 10 Weave credits per run at 2K.
-- **Running:** `weave_run_model` without `acknowledgedCost` only returns the price. Show it to the user as an Approve/Cancel choice, and run again with `acknowledgedCost` once they approve. Wait for the result with `weave_get_model_run_output` and download it with the curl command it gives.
+- **In the Figma app** (a designer making the draft): Actions › Make an image, with two or three library PNGs attached through **+** as references and the prompt template below. References keep the line, the proportions and the colours closest to the library. Corrections go through Edit image on the draft (§3), which keeps what already works.
+- **From Claude** (an agent making the draft): the Figma MCP tool `generate_image`, `model: "gemini-3.1-flash-image"`, `width` and `height` 2048, into a Figma file the user names or a new one (`create_new_file`). It takes a prompt only — no reference images, no draft to edit — so write the prompt as below under Fallback, and download the result from the `image.url` it returns. The gpt-image models it also offers are untested for this style.
+- **Credits:** every run spends Figma AI credits on the file's plan, and each needs the user's approval, reruns included. So that this is one decision and not many, tell the user the whole plan before the first run — one generation plus up to two correction rounds — and then ask for each run as it comes.
 
-### Fallback: Figma `generate_image`
+### Fallback: prompt only
 
-**Figma `generate_image`**, which takes a prompt only and places the image in a Figma file (`gemini-3.1-flash-image` comes back at 1024 px, enough to trace a square motif). Without references the style drifts further; spell out every rule, including the line ("dark navy ink like a dip pen, swelling slightly in the middle and thinning at both ends") and the colours with their hex values. Weave allows only a few free model runs; when they are used up, this is the fallback.
+Without reference images (`generate_image`, or Make an image with nothing attached) the style drifts further; spell out every rule, including the line ("dark navy ink like a dip pen, swelling slightly in the middle and thinning at both ends") and the colours with their hex values. Drop the template's lines about attached references.
 
-Both spend the user's credits, and each run needs its own approval, reruns included: the Weave tool requires it. So that this is one decision and not many, tell the user the whole plan before the first run — one generation plus up to two edit rounds, about 10 Weave credits each — and then ask for each run as it comes.
+### Only where approved: Weave
+
+Weave (app.weavy.ai, owned by Figma) runs Nano Banana 2.1 with reference images through the Figma MCP's `weave_*` tools, but it is a separate service with its own account, plan and credits, not part of the Figma licence. It is not approved at Entur: do not use it or offer it. Where an organisation has approved it, its runs ask for a cost approval each, like Figma's.
 
 Ask for a square PNG, 2048 × 2048 where the model allows it. Use JPG only if the user asks for it: compression smears thin lines and makes tracing worse.
 
@@ -70,7 +70,7 @@ Review every draft yourself; never show a first draft as a result or wait for th
 - coral or red on an animal, a person or an object — a hen's comb and wattle, a tongue, cheeks, a garment: make it Peach or paper in an edit round (rule 8)
 - a sign, prop or tail closer than 16 units to the canvas edge
 
-Do not repair pixels, and do not start over. Send the draft back to the model as the **first image**, with the library reference that shows the fix as the second, and ask for only the changes:
+Do not repair pixels, and do not start over. **In the Figma app**, select the draft, choose Edit image, attach the library reference that shows the fix, and ask for only the changes with the prompt below. **Through `generate_image`**, which has no image input, run the full prompt again with the same numbered changes appended as "Corrections from the last attempt", the pose and what worked described in words, and keep whichever draft is closer:
 
 ```text
 Edit the first image. Keep everything else exactly as it is: [pose, hands, face, props, line, colours].
@@ -80,7 +80,7 @@ Make only these changes:
 The face keeps NO EYES and NO MOUTH, only the nose. No text. Square 1:1.
 ```
 
-An edit round keeps what already works; a new generation throws it away. One or two edit rounds are normal, and each costs the same as a generation. Near-white noise in the background (values around 249–255) is invisible and does not survive tracing; it needs no cleaning.
+An edit keeps what already works; a new generation throws it away, which is why Edit image in the app is the better correction when a designer is at hand. One or two correction rounds are normal, and each costs the same as a generation. Near-white noise in the background (values around 249–255) is invisible and does not survive tracing; it needs no cleaning.
 
 The approved PNG is a **draft**: fine for a sketch, a concept or a review, never as the final library asset.
 

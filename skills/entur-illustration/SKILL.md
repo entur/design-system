@@ -36,13 +36,13 @@ Every new illustration goes through the same steps, and you run all of them with
 
 1. **Reuse** a library motif if one fits (Step 1).
 2. **Pick** the format (Step 2) and the route by subject (Step 4): people and animals go raster first; objects, vehicles, signs and landscapes go through the script.
-3. **Draft** (raster first): two to four library PNGs of the same kind as references, the prompt template, Nano Banana 2.1 in [Weave](https://app.weavy.ai/) at 2K, square (`references/raster-first.md`).
+3. **Draft** (raster first) with Figma's image generation — `generate_image` from Claude, or Make an image in the Figma app with two or three library PNGs attached — and the prompt template, square, 2048 px (`references/raster-first.md`). Use only tools Entur has approved: Figma, Claude and Illustrator.
 4. **Review the draft yourself** against the references and the checklist in `references/raster-first.md` §3. List every deviation and fix it with an edit round, up to two, before going on.
 5. **Trace** in Illustrator with the mode for the subject, then the finishing steps (Step 4b).
 6. **Check the result** next to two library motifs of the same kind at the same size, in all three colour modes, against the Step 5 checklist. Fix what fails and check again.
 7. **Show** the result with that comparison, and say what is left or unverified.
 
-The only stops are the approval each image-model run needs (Weave asks per run: tell the user the whole plan once — one generation plus up to two edit rounds, about 10 Weave credits each — then ask for each run) and the plan before drawing from a reference image.
+The only stops are the approval each image run needs (it spends Figma AI credits: tell the user the whole plan once — one generation plus up to two correction rounds — then ask for each run) and the plan before drawing from a reference image.
 
 ## Step 1 — reuse before you draw
 
@@ -179,8 +179,8 @@ Draw back to front: backdrop → background (Blue 50 lines) → props behind →
 ## Step 4b — route B: raster first
 
 1. **References:** two to four library PNGs of the same kind as style references (for people: Woman holding package, Man checking the time, the Entur staff figures; for animals: Dog, Rabbit, Squirrel, Sheep). The user's own photo may go in for pose; a stock illustration never goes in as an image, only as a description.
-2. **Generate** a square PNG with **Nano Banana 2.1 in [Weave](https://app.weavy.ai/)**, the library PNGs as reference images, at 2K. Fall back to Figma `generate_image` (prompt only) when Weave is unavailable or its free runs are used up. Use the prompt template in `references/raster-first.md`; it spells out every rule, including **no eyes, no mouth** on people and natural anatomy on animals. Runs cost the user's credits: quote the cost and get approval each time.
-3. **Review it yourself before the user sees it**, against the Step 5 checklist and the references. Fix every deviation with an edit round: send the draft back as the first image and ask for only the changes, so what already works stays. Never edit pixels.
+2. **Generate** a square PNG with **Figma's image generation**: the Figma MCP's `generate_image` (prompt only, 2048 px) when you make it, or Make an image in the Figma app with the library PNGs attached when a designer does. Use the prompt template in `references/raster-first.md`; it spells out every rule, including **no eyes, no mouth** on people and natural anatomy on animals. Runs spend Figma AI credits: get approval each time. Weave, fal.ai and other image services are not approved at Entur; do not use or offer them.
+3. **Review it yourself before the user sees it**, against the Step 5 checklist and the references. Fix every deviation with a correction round: Edit image on the draft in the Figma app, which keeps what works, or through `generate_image` the full prompt again with the deviations listed as corrections. Never edit pixels.
 4. **Turn it into strokes:** on macOS with Illustrator open, `node scripts/illustrator-trace.mjs <draft.png> --out <dir> --name <Name>` traces it into live round-capped strokes (a quarter at contour weight, the rest detail weight) and smooth palette fills, and writes the `.ai` and the three SVG modes (also available as MCP tools through `scripts/illustrator-mcp.mjs`). For an animal or object add `--construction animals --carriers <profiles.ai> --backdrop --underlay`: swelling lines at 2.1 / 1.7, fewer fur marks (rule 18), the library's backdrop circle and one paper underlay under the whole animal (`references/raster-first.md`). Then finish it: simplify doubled accessories, scale the head with `illustrator_scale_head`, smooth the hair with `illustrator_smooth_region`, and add 2–5 fold marks with `illustrator_add_details` (`references/raster-first.md`). Without Illustrator, redraw the centre lines in code over `scripts/grid.mjs`. The PNG alone is a draft, never the final asset.
 
 ## Step 5 — look at it
