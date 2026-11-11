@@ -31,6 +31,10 @@
     },
     "test": {
       "cache": true
+    },
+    "typecheck": {
+      "inputs": ["default", "^default", "configs"],
+      "cache": true
     }
   },
   "$schema": "./node_modules/nx/schemas/nx-schema.json",

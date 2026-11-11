@@ -24,6 +24,7 @@ yarn build:packages           # Build all npm packages
 yarn build:package [name]     # Build single package
 yarn test                     # Run all tests (TZ=UTC)
 yarn test:package [name]      # Test single package
+yarn typecheck:packages       # Typecheck all packages, tests included (after build:packages)
 yarn typecheck:browser        # Typecheck browser tests and fixtures
 yarn test:browser             # Run the browser accessibility suite
 yarn lint                     # Lint all packages
