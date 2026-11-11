@@ -53,6 +53,10 @@ export const ROLES = {
   glow: { standard: '#9EA0BD', dark: '#FFEEB3', contrast: '#9EA0BD' },
 };
 
+// The library's dark-mode disc is Ebony 20 at 30 % opacity, so it sits back
+// on the dark surface (Dog, Ducks, Doves and Sheep, -background-darkmode).
+const FILL_OPACITY = { backdrop: { dark: 0.3 } };
+
 // Surfaces each mode is designed to sit on (docs site preview backgrounds).
 export const SURFACES = {
   standard: '#FFFFFF',
@@ -734,15 +738,19 @@ export class Drawing {
     });
   }
 
-  /** Broken horizontal ground lines the subject stands on. */
+  /**
+   * The ground line the subject stands on: one ink line at detail weight in
+   * one to three long pieces, as under the library's people and animals.
+   * `rows: 2` adds a shorter Blue 50 line below, for scenes.
+   */
   ground({
     y,
     x1,
     x2,
-    rows = 2,
+    rows = 1,
     spacing = 7,
     role = 'ink',
-    width = this.weights.contour,
+    width = this.weights.detail,
   } = {}) {
     for (let row = 0; row < rows; row++) {
       const inset = row * (x2 - x1) * 0.06;
@@ -750,7 +758,9 @@ export class Drawing {
       const end = x2 - inset - this.rand() * 6;
       const yy = y + row * spacing;
       while (x < end - 6) {
-        const len = Math.min(end - x, 40 + this.rand() * 110);
+        // No short stub at the end: a piece that would leave one runs on.
+        let len = 90 + this.rand() * 130;
+        if (end - x - len < 40) len = end - x;
         this.line(
           [
             [x, yy],
@@ -889,6 +899,8 @@ export class Drawing {
       const attrs = [];
       if (node.name) attrs.push(`id="${esc(node.name)}"`);
       attrs.push(`d="${node.d}"`, `fill="${color(node.fill)}"`);
+      const opacity = FILL_OPACITY[node.fill]?.[mode];
+      if (opacity) attrs.push(`fill-opacity="${opacity}"`);
       if (node.stroke) {
         attrs.push(
           `stroke="${color(node.stroke)}"`,

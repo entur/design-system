@@ -21,25 +21,10 @@ const W = ink.weights; // contour 2.1, detail 1.7, fine 1.3 at the widest point
 // 1. Backdrop first: 62 % of the canvas, centred; the subject breaks out of it.
 ink.backdrop();
 
-// 2. Background details: thin secondary-colour lines only.
+// 2. Background details: thin secondary-colour lines only. No grass tufts
+// by habit: the ground stays a bare line unless the scene needs nature.
 ink.group('background', d => {
   d.cloud({ x: 62, y: 92, w: 46 });
-  d.line(
-    [
-      [48, 262],
-      [52, 251],
-      [55, 262],
-    ],
-    { role: 'line2', width: W.detail },
-  );
-  d.line(
-    [
-      [268, 262],
-      [271, 250],
-      [275, 262],
-    ],
-    { role: 'line2', width: W.detail },
-  );
 });
 
 // 3. Props behind the subject. The sign carries the motif's only Peach.

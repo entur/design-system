@@ -60,8 +60,8 @@ The swell is what makes the animals look drawn with a dip pen rather than a fine
 
 | Role    | Figma live strokes (320) | Library SVG (320, outlined) | Raw `.ai` (figure ~410 pt tall) | Animals and objects (320, widest point) | Used for                                                          |
 | ------- | ------------------------ | --------------------------- | ------------------------------- | --------------------------------------- | ----------------------------------------------------------------- |
-| Contour | 1.5                      | 1.5                         | 1.88 – 2.0                      | 2.1                                     | Outer silhouette of subject and props, ground line                |
-| Detail  | 1.0                      | 1.1 – 1.26                  | 1.22 – 1.5                      | 1.7                                     | Folds, creases, seams, the inner leg, facial lines, fur           |
+| Contour | 1.5                      | 1.5                         | 1.88 – 2.0                      | 2.1                                     | Outer silhouette of subject and props                             |
+| Detail  | 1.0                      | 1.1 – 1.26                  | 1.22 – 1.5                      | 1.7                                     | Folds, creases, seams, the inner leg, facial lines, fur, ground   |
 | Fine    | 0.5 – 0.86               | 0.85 – 0.93                 | 1.0                             | 1.3                                     | Hatching, small background details, whiskers                      |
 | Accent  | 2 – 3                    | 2.4 – 4                     | 2.4 – 3.9                       | 3 – 8                                   | Rare: a coloured stroke used as an object (a dog collar, a strap) |
 
@@ -125,9 +125,12 @@ The square motifs come in two variants, with and without a backdrop (`-backgroun
 
 ## 4. Ground
 
-- One to three horizontal lines under the subject, broken into segments with small gaps, running well past the subject on both sides.
-- The top line is ink at contour weight; lines below are shorter, inset and in Blue 50.
-- Optional small tufts or pebbles in Blue 50 at the ends.
+Measured on the library PNGs in November 2026: 18 people, 15 animals and the two Entur staff figures.
+
+- **People and animals stand on one simple line,** in the same style: ink, one piece (most people) or two or three long pieces with a small gap (most animals). It runs a little past the subject on both sides — about 25–85 % of the width under people, 10–90 % under animals.
+- **Thin:** detail weight or lighter (about 1.0 under people, 1.3–1.7 under animals), never heavier than the contours. The ground is where the subject stands, not part of the drawing.
+- **No second line.** Neither people nor animals have a Blue 50 line under the ground line, a row of short dashes or texture along it.
+- **Nature is sparse and has a reason:** the rabbit has one tuft of three blades at the foot of the bus-stop pole and two small flowers, the moose a few long stems by its pole, the goat two long blades in front of it, the newspaper reader one small tuft at each bench leg, the hedgehog two leaves. Never grass along the line or a tuft on each side by habit; with no reason for nature in the scene, the line stays bare.
 - In scenes, the ground is a Blue 20 plane or a single long line; in landscapes, water and roads are Blue 20 bands with coral dotted or wavy lines.
 
 ---

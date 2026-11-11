@@ -24,19 +24,22 @@
 // and the weights 2.1 / 1.7; `--carriers` gives every line a live width
 // profile copied from the strokes named swell and point in that .ai (short
 // lines get point), and `--backdrop` replaces the traced disc with the
-// library's: a 4-anchor circle with Roughen 0.65 % on a Circle layer.
-// `--underlay` adds one paper shape under the whole subject, like the
-// library animals' underlays: without it, white areas the colour trace
-// cannot tell from the background (a tail past the disc) stay unfilled.
+// library's: a 4-anchor circle with Roughen 0.65 % on a Circle layer,
+// measured in the draft's pixels. `--underlay` adds paper under each figure,
+// like the library animals' underlays: without it, white areas the colour
+// trace cannot tell from the background (a tail past the disc) stay unfilled.
 // With animals, a small dark eye or nose, too thin for the colour trace and
 // too round for the line trace, is put back as an ink ellipse on a Features
-// layer (`--no-features` turns it off). Animals are also simplified before
-// the weights go on: specks dropped, a contour broken into pieces joined end
-// to end, and short fur marks thinned where they lie along a contour or
-// crowd each other (`--no-simplify` turns it off).
+// layer (`--no-features` turns it off); none is taken from the ground band.
+// Animals are also simplified before the weights go on: specks dropped, a
+// contour broken into pieces joined end to end, the ground replaced by one
+// plain line on a Ground layer under the fills, and short fur marks thinned
+// where they lie along a contour or crowd each other (`--no-simplify` turns
+// it off).
 // The draft already carries the hand tremor, so Roughen is only added with
 // `--roughen`. Saved as <Name>.ai and <Name>.svg, plus -darkmode and
-// -contrast SVGs by palette mapping (every white becomes paper).
+// -contrast SVGs by palette mapping (every white becomes paper; the Circle
+// layer gets the backdrop colours).
 //
 // ExtendScript is ES3 (no Array.map), and `name` and `cut` are read-only
 // globals in Illustrator: assigning to them fails silently.
@@ -112,7 +115,7 @@ const params = {
   pointLength: 12,
   backdrop,
   simplify,
-  mask: underlay ? writeMask(png) : '',
+  mask: '',
   contourShare: Number(opt('contour-share', 0.25)),
   shift: [0.6, -0.3],
   fillRough: flag('fill-rough'),
@@ -122,7 +125,27 @@ const params = {
   ),
 };
 
-params.features = features ? darkFeatures(png, params.size) : [];
+// Read the draft once: the disc, the ground line and the silhouette come from
+// its pixels, which see them more reliably than the traced shapes do.
+const img = readPng(png);
+const disc = findDisc(img);
+const groundBand = animals ? findGround(img) : null;
+const mask = underlay ? writeMask(img, disc, groundBand) : null;
+const toX = v => (v * params.size) / img.w;
+const toY = v => (v * params.size) / img.h;
+params.mask = mask || '';
+params.disc = disc
+  ? { cx: toX(disc.cx), cy: toY(disc.cy), r: toX(disc.r) }
+  : null;
+params.ground = groundBand
+  ? {
+      top: toY(groundBand.top),
+      y: toY((groundBand.top + groundBand.bottom + 1) / 2),
+      x0: toX(groundBand.x0),
+      x1: toX(groundBand.x1 + 1),
+    }
+  : null;
+params.features = features ? darkFeatures(img, params.size, groundBand) : [];
 
 const jsx = `
 var P = ${JSON.stringify(params)};
@@ -213,7 +236,9 @@ var lp = paths(lg, []), strokes = 0, fills = 0;
 // end to end, and thin short fur marks: a mark lying along a contour, or one
 // crowding another, goes. Marks near an eye or a nose stay (a mouth, an ear).
 // Toes, grass and ground (the band just above the lowest line) stay too;
-// ground dashes join into a few long segments, as the library draws ground.
+// ground dashes join into one to three long pieces at detail weight, as the
+// library draws ground. Grass is left to the review: to the trace a blade
+// and a toe look alike.
 // Helpers for the simplify step (global: ExtendScript and function
 // declarations inside blocks do not mix well).
 function dist(a, b) { return Math.sqrt(Math.pow(a[0] - b[0], 2) + Math.pow(a[1] - b[1], 2)); }
@@ -246,11 +271,14 @@ if (P.simplify) {
     if (Number(sp.length) < 3 * sc) { sp.remove(); specks++; continue; }
     items.push({ it: sp, pts: readPts(sp) });
   }
-  // Ground dashes (flat lines in the band at the lowest line) join only each
-  // other, into segments up to 30 % of the width: long, but still broken.
+  // Ground marks: flat lines in the band at the ground line (found in the
+  // draft's pixels, else the lowest line) — dashes and short grass. They join
+  // only each other, into pieces up to half the width.
   var floor = 1e9;
   for (var g0 = 0; g0 < items.length; g0++) floor = Math.min(floor, items[g0].it.geometricBounds[3]);
-  for (var g1 = 0; g1 < items.length; g1++) items[g1].ground = items[g1].it.geometricBounds[1] < floor + 6 * sc;
+  var above = 6;
+  if (P.ground) { floor = ab[1] - P.ground.top - 2 * sc; above = 8; }
+  for (var g1 = 0; g1 < items.length; g1++) { var gb0 = items[g1].it.geometricBounds; items[g1].ground = gb0[1] < floor + above * sc && gb0[3] > floor - 10 * sc; }
   // Join: an end within 4 pt of another end, the line running on within 45°.
   var cosMax = Math.cos(Math.PI / 4), gapMax = 4 * sc;
   for (var guard = 0; guard < 300; guard++) {
@@ -261,7 +289,7 @@ if (P.simplify) {
         if (items[i2].it.closed || items[i1].ground !== items[i2].ground) continue;
         if (items[i1].ground) {
           var gb1 = items[i1].it.geometricBounds, gb2 = items[i2].it.geometricBounds;
-          if (Math.max(gb1[2], gb2[2]) - Math.min(gb1[0], gb2[0]) > 0.3 * P.size) continue;
+          if (Math.max(gb1[2], gb2[2]) - Math.min(gb1[0], gb2[0]) > 0.5 * P.size) continue;
         }
         for (var e1 = 0; e1 < 2; e1++) for (var e2 = 0; e2 < 2; e2++) {
           var A = items[i1].pts, B = items[i2].pts;
@@ -304,10 +332,38 @@ if (P.simplify) {
     }
     var crowded = false;
     for (var t6 = 0; t6 < marks.length; t6++) if (dist(mid, marks[t6]) < 20 * sc) crowded = true;
-    if ((f0 < 4 * sc && f1 < 4 * sc) || crowded) { ti.remove(); thinned++; } else marks.push(mid);
+    if ((f0 < 4 * sc && f1 < 4 * sc) || crowded) { ti.remove(); items[t3].gone = true; thinned++; } else marks.push(mid);
   }
+  // One plain ground line, as under the library animals: the traced dashes
+  // and short grass marks go, and one line at detail weight with the line
+  // Roughen takes their place, on a Ground layer under the fills, so the
+  // figures hide it where they stand. A short mark touching a line above it
+  // (a leg) is a foot and stays. Taller grass is left to the review.
+  var plain = 0;
+  if (P.ground) {
+    var others = [];
+    for (var p0 = 0; p0 < items.length; p0++) if (!items[p0].ground && !items[p0].gone) others.push(samples(items[p0].pts));
+    for (var p1 = 0; p1 < items.length; p1++) {
+      var pg = items[p1];
+      if (!pg.ground || pg.gone) continue;
+      var foot = false, pe = [pg.pts[0].a, pg.pts[pg.pts.length - 1].a];
+      if (Number(pg.it.length) < 12 * sc) for (var p2 = 0; p2 < others.length && !foot; p2++) for (var p3 = 0; p3 < 2; p3++) if (toLine(pe[p3], others[p2]) < 2.5 * sc) foot = true;
+      if (!foot) { pg.it.remove(); pg.gone = true; plain++; }
+    }
+    var groundLayer = doc.layers.add(); groundLayer.name = 'Ground';
+    groundLayer.move(fillLayerOf(doc), ElementPlacement.PLACEAFTER);
+    var gl = groundLayer.pathItems.add(), gy = ab[1] - P.ground.y;
+    gl.setEntirePath([[ab[0] + P.ground.x0, gy], [ab[0] + P.ground.x1, gy]]);
+    gl.filled = false; gl.stroked = true; gl.strokeColor = rgb(P.palette.ink); gl.strokeWidth = P.detail;
+    gl.strokeCap = StrokeCap.ROUNDENDCAP; gl.strokeJoin = StrokeJoin.ROUNDENDJOIN;
+    try { gl.applyEffect('<LiveEffect name="Adobe Roughen"><Dict data="R size 0.2 R asiz 0.2 R absoluteness 0 R dtal 63 R roundness 1 "/></LiveEffect>'); } catch (e) {}
+  }
+  // Ground marks left (feet, or all of them without a found ground line) at
+  // detail weight: the ground is never the heaviest line in the drawing.
+  var groundLines = [];
+  for (var g8 = 0; g8 < items.length; g8++) if (items[g8].ground && !items[g8].gone) groundLines.push(items[g8].it);
   lp = paths(lg, []);
-  log.push('simplified: specks ' + specks + ', joined ' + (joined - ground) + ' (ground ' + ground + '), fur marks thinned ' + thinned);
+  log.push('simplified: specks ' + specks + ', joined ' + (joined - ground) + ' (ground ' + ground + '), fur marks thinned ' + thinned + (P.ground ? ', ground marks replaced by one line ' + plain : ''));
 }
 // Contour or detail: by relative traced width when the draft has a weight
 // hierarchy, otherwise by length (long outer contours). Note: \`cut\` and \`name\`
@@ -332,6 +388,7 @@ for (var j = 0; j < lp.length; j++) {
     p.fillColor = ink; fills++;
   }
 }
+if (P.simplify) for (var g9 = 0; g9 < groundLines.length; g9++) { try { groundLines[g9].strokeWidth = P.detail; } catch (eg2) {} }
 log.push('line strokes ' + strokes + ' (contours by ' + (byWidth ? 'width' : 'length') + ', cut ' + Math.round(contourCut * 100) / 100 + '), ink fills ' + fills);
 
 // Width profiles (animals): copy a carrier stroke onto each traced line's
@@ -364,22 +421,31 @@ log.push('width profiles ' + profiled);
 
 // Backdrop (animals): the library disc is a plain 4-anchor circle whose ragged
 // edge comes from Roughen 0.65 %; a traced disc is a lumpy many-anchor shape.
+// The circle comes from the draft's pixels (findDisc); the traced disc's area
+// says little, since the subject can cover a third of it or more.
 if (P.backdrop) {
-  var disc = null, discArea = 0, art = (ab[2] - ab[0]) * (ab[1] - ab[3]);
-  var cf = paths(cg, []);
+  var art = (ab[2] - ab[0]) * (ab[1] - ab[3]);
+  var disc = null, discArea = 0, cf = paths(cg, []);
   for (var b0 = 0; b0 < cf.length; b0++) { var bi = cf[b0]; if (bi.filled && nearest(bi.fillColor) === 'tint' && Math.abs(bi.area) > discArea) { disc = bi; discArea = Math.abs(bi.area); } }
-  if (disc && discArea > 0.12 * art) {
-    // Radius from the bounds: the subject cuts into the traced disc's area.
-    var db = disc.geometricBounds, r0 = ((db[2] - db[0]) + (db[1] - db[3])) / 4;
+  var r0 = 0, dcx = 0, dcy = 0;
+  if (P.disc) { r0 = P.disc.r; dcx = ab[0] + P.disc.cx; dcy = ab[1] - P.disc.cy; }
+  else if (disc) {
+    // From the traced bounds; a subject covering the bottom shortens them there.
+    var db = disc.geometricBounds, bw = db[2] - db[0], bh = db[1] - db[3];
+    if (Math.max(bw, bh) >= 0.3 * P.size) { r0 = Math.max(bw, bh) / 2; dcx = (db[0] + db[2]) / 2; dcy = bh < 0.95 * bw ? db[1] - r0 : (db[1] + db[3]) / 2; }
+  }
+  if (r0) {
     var circleLayer = doc.layers.add(); circleLayer.name = 'Circle'; circleLayer.move(doc, ElementPlacement.PLACEATEND);
-    var ring = circleLayer.pathItems.ellipse((db[1] + db[3]) / 2 + r0, (db[0] + db[2]) / 2 - r0, 2 * r0, 2 * r0);
+    var ring = circleLayer.pathItems.ellipse(dcy + r0, dcx - r0, 2 * r0, 2 * r0);
     ring.stroked = false; ring.filled = true; ring.fillColor = rgb(P.palette.tint);
     try { ring.applyEffect('<LiveEffect name="Adobe Roughen"><Dict data="R size 0.65 R asiz 0.65 R absoluteness 0 R dtal 61 R roundness 1 "/></LiveEffect>'); } catch (e) {}
-    (disc.parent.typename === 'CompoundPathItem' ? disc.parent : disc).remove();
+    if (disc && discArea > 0.25 * Math.PI * r0 * r0) {
+      var tdb = disc.geometricBounds;
+      if (dist([(tdb[0] + tdb[2]) / 2, (tdb[1] + tdb[3]) / 2], [dcx, dcy]) < r0) (disc.parent.typename === 'CompoundPathItem' ? disc.parent : disc).remove();
+    }
     // A pale disc often traces as a white interior inside a grey ragged rim:
     // drop the white area that spans the disc and the rim fragments.
-    var dcx = (db[0] + db[2]) / 2, dcy = (db[1] + db[3]) / 2, cleared = 0;
-    var rest = paths(cg, []);
+    var cleared = 0, rest = paths(cg, []);
     for (var b1 = rest.length - 1; b1 >= 0; b1--) {
       var ri = rest[b1];
       try { if (!ri.filled) continue; } catch (e3) { continue; }
@@ -390,10 +456,12 @@ if (P.backdrop) {
       if ((rk === 'paper' && spans) || rim) { (ri.parent.typename === 'CompoundPathItem' ? ri.parent : ri).remove(); cleared++; }
     }
     log.push('backdrop replaced, radius ' + Math.round(r0) + ', traced disc parts cleared ' + cleared);
-  }
+  } else log.push('backdrop: no disc found');
 }
 
-// Paper underlay under the whole subject, traced from the silhouette mask.
+// Paper underlay under the subject, traced from the silhouette mask: one
+// shape per figure (a hen and a chick standing apart each get theirs), with
+// the holes the mask has (between legs) kept open.
 if (P.mask) {
   var mp = fillLayerOf(doc).placedItems.add();
   mp.file = new File(P.mask);
@@ -403,14 +471,19 @@ if (P.mask) {
   mo.fills = true; mo.strokes = false; mo.ignoreWhite = true;
   mo.pathFidelity = 20; mo.cornerFidelity = 30; mo.noiseFidelity = 80;
   app.redraw();
-  var mg = mt.tracing.expandTracing(), mps = paths(mg, []), biggest = null, bigArea = 0;
-  for (var u = 0; u < mps.length; u++) if (Math.abs(mps[u].area) > bigArea) { bigArea = Math.abs(mps[u].area); biggest = mps[u]; }
-  if (biggest) {
-    var under = biggest.duplicate(fillLayerOf(doc), ElementPlacement.PLACEATEND);
-    under.filled = true; under.stroked = false; under.fillColor = rgb(P.palette.paper);
+  var mg = mt.tracing.expandTracing(), underlays = 0, underArea = 0, artArea = (ab[2] - ab[0]) * (ab[1] - ab[3]);
+  var tops = mg.typename === 'GroupItem' ? mg.pageItems : [mg], shapes = [];
+  for (var u = 0; u < tops.length; u++) shapes.push(tops[u]);
+  for (var u1 = 0; u1 < shapes.length; u1++) {
+    var mparts = paths(shapes[u1], []), ma = 0;
+    for (var u2 = 0; u2 < mparts.length; u2++) ma = Math.max(ma, Math.abs(mparts[u2].area));
+    if (ma < 0.004 * artArea) continue;
+    var under = shapes[u1].duplicate(fillLayerOf(doc), ElementPlacement.PLACEATEND), ups = paths(under, []);
+    for (var u3 = 0; u3 < ups.length; u3++) { ups[u3].filled = true; ups[u3].stroked = false; ups[u3].fillColor = rgb(P.palette.paper); }
+    underlays++; underArea += ma;
   }
   mg.remove();
-  log.push('underlay ' + (biggest ? Math.round(bigArea) + ' pt2' : 'not found'));
+  log.push('underlay ' + underlays + ' shape' + (underlays === 1 ? '' : 's') + ', ' + Math.round(underArea) + ' pt2');
 }
 function fillLayerOf(d) { for (var fl = 0; fl < d.layers.length; fl++) if (d.layers[fl].name === 'Fill') return d.layers[fl]; return d.layers[0]; }
 
@@ -474,7 +547,7 @@ const jsxFile = path.join(
   'trace.jsx',
 );
 fs.writeFileSync(jsxFile, jsx);
-const script = `with timeout of 900 seconds
+const script = `with timeout of 1800 seconds
   tell application ${JSON.stringify(
     app,
   )} to do javascript (read POSIX file ${JSON.stringify(
@@ -483,25 +556,58 @@ const script = `with timeout of 900 seconds
 end timeout`;
 const result = execFileSync('osascript', ['-e', script], {
   encoding: 'utf8',
-  timeout: 960000,
+  timeout: 1860000,
 }).trim();
 console.log(result);
 
-// Dark and contrast versions by exact palette mapping.
+// Dark and contrast versions by exact palette mapping. The Circle layer is
+// the backdrop: it shares tint's colour in standard mode, but in the library
+// the disc is Ebony 20 at 30 % opacity in dark mode and Blue 90 in contrast
+// mode, while small tint fills turn Ebony 30 and Blue 40.
 const svg = fs.readFileSync(params.svg, 'utf8');
 for (const [mode, idx] of [
   ['darkmode', 1],
   ['contrast', 2],
 ]) {
-  let out = svg;
+  let out = markBackdrop(svg);
   for (const [, values] of Object.entries(PALETTE)) {
     const from = values[0];
     out = out.replace(new RegExp(from, 'gi'), `__${values[idx].slice(1)}__`);
   }
-  out = out.replace(/__([0-9A-F]{6})__/g, '#$1');
+  out = out
+    .replace(/__([0-9A-F]{6})__/g, '#$1')
+    .replace(/__BACKDROP__/g, backdropFill(mode));
   const file = path.join(outDir, `${name}-${mode}.svg`);
   fs.writeFileSync(file, out);
   console.log(file);
+}
+
+// The fill of the backdrop disc per mode (palette.md, role backdrop).
+function backdropFill(mode) {
+  return mode === 'darkmode'
+    ? 'fill="#CCCDD4" fill-opacity="0.3"'
+    : 'fill="#393D79"';
+}
+
+// Marks the tint fills inside the exported Circle layer, so the mode mapping
+// gives them the backdrop colour instead of tint's.
+function markBackdrop(svg) {
+  const start = svg.indexOf('<g id="Circle"');
+  if (start < 0) return svg;
+  const tags = /<g[\s>]|<\/g>/g;
+  tags.lastIndex = start;
+  let depth = 0;
+  for (let m; (m = tags.exec(svg)); ) {
+    depth += m[0] === '</g>' ? -1 : 1;
+    if (depth) continue;
+    const end = m.index + 4;
+    return (
+      svg.slice(0, start) +
+      svg.slice(start, end).replace(/fill="#EAEAF1"/gi, '__BACKDROP__') +
+      svg.slice(end)
+    );
+  }
+  return svg;
 }
 
 // Luminance and a blue-ish flag per pixel. Pure JS: decodes 8-bit RGB(A) PNGs.
@@ -562,8 +668,8 @@ function readPng(file) {
 // that stand free, and thick spots that remain once the lines are eroded away
 // (a nose drawn at the end of a line). Lines, fur marks and ground dashes are
 // too thin or too long to pass.
-function darkFeatures(file, size) {
-  const { w, h, lum } = readPng(file);
+function darkFeatures(img, size, ground) {
+  const { w, h, lum } = img;
   const dark = new Uint8Array(w * h);
   for (let k = 0; k < w * h; k++) dark[k] = lum[k] < 100 ? 1 : 0;
   const box = c => [c.x1 - c.x0 + 1, c.y1 - c.y0 + 1];
@@ -588,8 +694,15 @@ function darkFeatures(file, size) {
           d => d.x0 <= c.x1 && c.x0 <= d.x1 && d.y0 <= c.y1 && c.y0 <= d.y1,
         ),
     );
+  // Grass clumps on the ground line look like eyes too, also where they sit
+  // under the subject's own silhouette, so no spot in the band just above the
+  // line counts: an eye or a nose is never that close to the ground.
+  const kept = [...dots, ...spots].filter(c => {
+    const cy = (c.y0 + c.y1) / 2;
+    return !ground || cy < ground.top - 0.03 * h || cy > ground.bottom + 2;
+  });
   const [sx, sy] = [size / w, size / h];
-  return [...dots, ...spots].map(c => ({
+  return kept.map(c => ({
     cx: ((c.x0 + c.x1 + 1) / 2) * sx,
     cy: ((c.y0 + c.y1 + 1) / 2) * sy,
     rx: ((c.x1 - c.x0 + 1) / 2) * sx,
@@ -653,28 +766,8 @@ function erode(mask, w, h, r) {
 // flooded from the image edge. Inside the backdrop disc only disc-coloured
 // pixels let the flood through, so white areas behind a gap in a contour
 // stay inside.
-function writeMask(file, grow = 5) {
-  const { w, h, lum, blueish } = readPng(file);
-  // The disc: the bounds of the pale grey-lavender pixels.
-  const xs = [];
-  const ys = [];
-  for (let k = 0; k < w * h; k += 3) {
-    if (lum[k] >= 212 && lum[k] <= 238 && blueish[k]) {
-      xs.push(k % w);
-      ys.push(Math.floor(k / w));
-    }
-  }
-  const pct = (arr, q) =>
-    arr.length ? arr.sort((p, q2) => p - q2)[Math.floor(arr.length * q)] : 0;
-  const disc =
-    xs.length > w * h * 0.03
-      ? {
-          cx: (pct(xs, 0.01) + pct(xs, 0.99)) / 2,
-          cy: (pct(ys, 0.01) + pct(ys, 0.99)) / 2,
-          r:
-            (pct(xs, 0.99) - pct(xs, 0.01) + pct(ys, 0.99) - pct(ys, 0.01)) / 4,
-        }
-      : null;
+function writeMask(img, disc, ground, grow = 5) {
+  const { w, h, lum } = img;
   // Grow a mask by r pixels (square kernel, two passes).
   const growBy = (m, r) => {
     const t = new Uint8Array(w * h);
@@ -729,7 +822,23 @@ function writeMask(file, grow = 5) {
   // inside: they would show as pale slivers in dark mode.
   const shrunk = growBy(outside, Math.max(1, grow - 1));
   const core = growBy(shrunk, grow + 3).map(v => 1 - v);
-  const outer = growBy(core, grow + 3).map(v => 1 - v);
+  const outer = growBy(core, grow + 3).map(v => 1 - v); // 1 = background
+  if (ground) {
+    // Paper stops at the top of the ground line: below it, it would show as a
+    // pale strip under the feet in dark mode.
+    for (let k = ground.top * w; k < w * h; k++) outer[k] = 1;
+    // In the band just above the line keep only what hangs down from the
+    // subject; pockets closed off between grass blades and the line are not
+    // part of it. Widened a little, so feet and paw edges keep their paper.
+    const bandTop = Math.max(0, ground.top - Math.round(0.04 * h));
+    const hang = new Uint8Array(w * h);
+    for (let x = 0; x < w; x++)
+      for (let y = bandTop; y < ground.top && !outer[y * w + x]; y++)
+        hang[y * w + x] = 1;
+    const near = growBy(hang, grow);
+    for (let y = bandTop; y < ground.top; y++)
+      for (let x = 0; x < w; x++) if (!near[y * w + x]) outer[y * w + x] = 1;
+  }
   const rows = Buffer.alloc((w * 3 + 1) * h);
   for (let y = 0; y < h; y++) {
     rows[y * (w * 3 + 1)] = 0;
@@ -764,6 +873,84 @@ function writeMask(file, grow = 5) {
     ]),
   );
   return out;
+}
+
+// The backdrop disc: the largest connected area of its pale grey-lavender.
+// Pale fills elsewhere (a grey wing, an egg's shadow) are separate areas and
+// no longer stretch it. A subject covering the bottom of the disc shortens
+// its bounds there, so the radius comes from the longer side, measured from
+// the top.
+function findDisc({ w, h, lum, blueish }) {
+  const pale = new Uint8Array(w * h);
+  for (let k = 0; k < w * h; k++)
+    pale[k] = lum[k] >= 212 && lum[k] <= 238 && blueish[k] ? 1 : 0;
+  let best = null;
+  for (const c of components(pale, w, h)) if (!best || c.n > best.n) best = c;
+  if (!best || best.n < w * h * 0.03) return null;
+  const bw = best.x1 - best.x0 + 1;
+  const bh = best.y1 - best.y0 + 1;
+  const r = Math.max(bw, bh) / 2;
+  return {
+    cx: best.x0 + bw / 2,
+    cy: bh < 0.95 * bw ? best.y0 + r : best.y0 + bh / 2,
+    r,
+  };
+}
+
+// The ground line: the lowest rows where one dark run (gaps up to 2 % of the
+// width) spans a quarter of the width. Returns its top and bottom row and
+// the extent of its dark pieces.
+function findGround({ w, h, lum }) {
+  const run = y => {
+    let best = null;
+    let start = -1;
+    let last = -w;
+    for (let x = 0; x < w; x++) {
+      if (lum[y * w + x] >= 120) continue;
+      if (x - last > 0.02 * w) start = x;
+      last = x;
+      if (!best || x - start > best.x1 - best.x0) best = { x0: start, x1: x };
+    }
+    return best && best.x1 - best.x0 > 0.25 * w ? best : null;
+  };
+  for (let y = h - 1; y >= 0; y--) {
+    const first = run(y);
+    if (!first) continue;
+    let top = y;
+    let x0 = first.x0;
+    let x1 = first.x1;
+    for (let yy = y - 1; yy >= 0; yy--) {
+      const r = run(yy);
+      if (!r) break;
+      top = yy;
+      x0 = Math.min(x0, r.x0);
+      x1 = Math.max(x1, r.x1);
+    }
+    // The line may come in pieces: take every dark run in the band that is
+    // at least 3 % of the width, not just the longest.
+    for (let yy = top; yy <= y; yy++) {
+      let start = -1;
+      let last = -w;
+      for (let x = 0; x <= w; x++) {
+        const dark = x < w && lum[yy * w + x] < 120;
+        if (dark && x - last > 0.02 * w) start = x;
+        if (!dark && start >= 0 && x - last > 0.02 * w) {
+          if (last - start >= 0.03 * w) {
+            x0 = Math.min(x0, start);
+            x1 = Math.max(x1, last);
+          }
+          start = -1;
+        }
+        if (dark) last = x;
+      }
+      if (start >= 0 && last - start >= 0.03 * w) {
+        x0 = Math.min(x0, start);
+        x1 = Math.max(x1, last);
+      }
+    }
+    return { top, bottom: y, x0, x1 };
+  }
+  return null;
 }
 
 function crc32(bytes) {

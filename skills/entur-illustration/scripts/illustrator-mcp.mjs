@@ -73,6 +73,28 @@ const PALETTE = {
   coral: ['#FF5959', '#FF9494', '#FF5959'],
 };
 
+// The backdrop disc (the Circle layer) shares tint's colour in standard mode,
+// but in the library it is Ebony 20 at 30 % opacity in dark mode and Blue 90
+// in contrast mode (palette.md, role backdrop).
+function markBackdrop(svg) {
+  const start = svg.indexOf('<g id="Circle"');
+  if (start < 0) return svg;
+  const tags = /<g[\s>]|<\/g>/g;
+  tags.lastIndex = start;
+  let depth = 0;
+  for (let m; (m = tags.exec(svg)); ) {
+    depth += m[0] === '</g>' ? -1 : 1;
+    if (depth) continue;
+    const end = m.index + 4;
+    return (
+      svg.slice(0, start) +
+      svg.slice(start, end).replace(/fill="#EAEAF1"/gi, '__BACKDROP__') +
+      svg.slice(end)
+    );
+  }
+  return svg;
+}
+
 function writeModes(svgFile) {
   const svg = fs.readFileSync(svgFile, 'latin1');
   const base = svgFile.replace(/\.svg$/, '');
@@ -80,10 +102,17 @@ function writeModes(svgFile) {
     ['darkmode', 1],
     ['contrast', 2],
   ].map(([mode, idx]) => {
-    let out = svg;
+    let out = markBackdrop(svg);
     for (const v of Object.values(PALETTE))
       out = out.replace(new RegExp(v[0], 'gi'), `__${v[idx].slice(1)}__`);
-    out = out.replace(/__([0-9A-F]{6})__/g, '#$1');
+    out = out
+      .replace(/__([0-9A-F]{6})__/g, '#$1')
+      .replace(
+        /__BACKDROP__/g,
+        mode === 'darkmode'
+          ? 'fill="#CCCDD4" fill-opacity="0.3"'
+          : 'fill="#393D79"',
+      );
     fs.writeFileSync(`${base}-${mode}.svg`, out);
     return `${base}-${mode}.svg`;
   });
@@ -196,7 +225,7 @@ const TOOLS = [
         simplify: {
           type: 'boolean',
           description:
-            'Animals, default true: drop specks, join a contour broken into pieces, and thin short fur marks that lie along a contour or crowd each other. Marks near an eye or nose, toes, grass and ground stay.',
+            'Animals, default true: drop specks, join a contour broken into pieces, join ground dashes into one to three pieces at detail weight, and thin short fur marks that lie along a contour or crowd each other. Marks near an eye or nose, toes and grass stay.',
         },
       },
       required: ['png', 'outDir', 'name'],
@@ -232,7 +261,7 @@ const TOOLS = [
       if (backdrop) a.push('--backdrop');
       if (underlay) a.push('--underlay');
       if (simplify === false) a.push('--no-simplify');
-      return runNode(a);
+      return runNode(a, 1900); // heavy drafts, or other large documents open, take long
     },
   },
   {

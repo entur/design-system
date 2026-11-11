@@ -23,7 +23,7 @@ The values below were measured from the library SVGs; the standard → dark → 
 
 A bike or scooter lamp beam in dark mode uses Canary 20 (`#FFF4CD`) at 30 % opacity; it does not exist in the other two modes, so add it by hand to the dark file only.
 
-`tint` and `backdrop` share a value in standard mode but split in the other two: the disc must read against a dark or Lavender 90 surface, small pale fills must not.
+`tint` and `backdrop` share a value in standard mode but split in the other two: the disc must read against a dark or Lavender 90 surface, small pale fills must not. In dark mode the library disc is Ebony 20 at **30 % opacity** (`fill-opacity="0.3"` in Dog, Ducks, Doves and Sheep), so it sits back on the dark surface; at full opacity it comes out far too light. The trace and `linje-ink.mjs` write it that way.
 
 `paper`, `cloth` and `vehicle` are all white in standard mode, so pick by **what the area is**, not by its colour. The library keeps skin, animals and objects light in every mode, but greys what people wear and ride. Across the People files, about half the white fills turn Ebony 30 in dark mode (137 of 269) and Blue 40 in contrast mode (138): the hoodie, the coat, the bag and the bike frame do, the face and hands do not. Vehicle bodies turn Ebony 40 in dark mode and stay white in contrast mode. Without this split, a person in dark mode becomes one flat light shape and the face no longer separates from the clothes.
 

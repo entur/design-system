@@ -97,7 +97,7 @@ Rules of use: at most **three** square illustrations per page view; more than on
 
 **Composition**
 
-9. One clear subject, large, centred on the optical axis, standing on broken horizontal ground lines that run past it.
+9. One clear subject, large, centred on the optical axis. People and animals stand on **one simple ground line**, the same for both: ink at detail weight, in one piece or two or three long pieces, running a little past the subject on both sides. No row of dashes, no second line under it, never heavier than the contours. Nature only when the scene needs it, and sparse: one tuft of two or three blades at the foot of something (a pole, a bench leg), a couple of long stems or a single leaf — never grass along the line.
 10. Square motifs: the Blue 20 backdrop disc is 62 % of the canvas wide and centred on it, a plain circle whose ragged edge comes from a coarser Roughen (0.65 %). The subject sits over it and breaks out of it.
 11. Generous empty space. The illustration supports a message — it never competes with it.
 
@@ -167,7 +167,7 @@ ink.save('out', 'Fox-bus-stop'); // standard, -darkmode, -contrast + preview.htm
 | `ink.fill(points, { role })`                                                                      | Fill without line: hair, shadow shapes, colour blocks                                                                                                                                                                                                         |
 | `ink.dot(x, y, r)`                                                                                | Animal eye, nostril, button, wheel hub (people have no eyes or mouth)                                                                                                                                                                                         |
 | `ink.backdrop({ cx, cy, r })`                                                                     | Backdrop disc; defaults to the library's: centred, 62 % of the canvas                                                                                                                                                                                         |
-| `ink.ground({ y, x1, x2, rows })`                                                                 | Broken ground lines (ink, then a Blue 50 row)                                                                                                                                                                                                                 |
+| `ink.ground({ y, x1, x2, rows })`                                                                 | One ground line in one to three long pieces at detail weight; `rows: 2` adds a shorter Blue 50 line (scenes)                                                                                                                                                  |
 | `ink.marks(...)`, `ink.hatch(...)`, `ink.cloud(...)`, `ink.text(...)`                             | Attention marks, short shading strokes, scalloped cloud, sign lettering                                                                                                                                                                                       |
 | `ink.group(name, fn)`                                                                             | Named layer — becomes the layer name in Illustrator and Figma                                                                                                                                                                                                 |
 | `ink.save(dir, name)`                                                                             | Writes the three mode files with library naming, plus a preview page                                                                                                                                                                                          |
@@ -192,6 +192,7 @@ Check before delivering:
 - [ ] Every line is a stroke with round caps and no brush; nothing outlined in the working file
 - [ ] The construction fits the subject: uniform lines on people, staff and vehicles; swelling lines (width profile) on animals and objects
 - [ ] Line weights follow the hierarchy (contour > detail > fine); background lines are Blue 50
+- [ ] Ground is one simple line at detail weight, in one to three pieces, for people and animals alike; grass, if the scene needs any, is one small tuft of two or three blades
 - [ ] Paper dominates; one Peach accent, on animals too (a prop or one marking, about 1 % of the canvas); Coral absent or tiny
 - [ ] Fills are flat with smooth edges; most sit exactly under their line, one to three colour fills are offset 0.5–0.7
 - [ ] At least one contour is left open; interior lines float
