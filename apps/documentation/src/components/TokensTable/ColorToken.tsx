@@ -113,8 +113,8 @@ const getTransportMode = (showValue: string) => {
     .replace(/^(contrast|standard|dark|light)-/, '')
     .replace(/-transparent$/, '');
 
-  if (cleaned.includes('airport-link-bus')) return 'airportlinkbus';
-  if (cleaned.includes('airport-link-rail')) return 'airportlinkrail';
+  if (cleaned.includes('airportlinkbus')) return 'airportlinkbus';
+  if (cleaned.includes('airportlinkrail')) return 'airportlinkrail';
   if (cleaned.includes('railreplacementbus')) return 'railreplacementbus';
   if (cleaned.includes('citybike')) return 'citybike';
   if (cleaned.includes('snowcoach')) return 'snowcoach';
