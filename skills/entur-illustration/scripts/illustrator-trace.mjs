@@ -1162,9 +1162,133 @@ function underlaySubject(img, disc, ground, lines) {
   const pull = Math.max(1, Math.round(0.003 * w));
   const beyond = dilate(outside, w, h, gap + pull);
   const subject = draft.map((v, k) => (v && !beyond[k] ? 1 : 0));
+  // Inside the disc white counts as figure (draftSubject), but outside it a
+  // fluffy outline's gaps let the background in, so the draft's paper can
+  // stop exactly at the disc's edge (a white Samoyed: paper on the upper
+  // body, none below the circle). Continue it there: from paper on the disc's
+  // rim into what the finished lines enclose and is not paper yet. Only a
+  // piece that touches such a cut grows, so a pocket between two figures
+  // the lines happen to close stays open; below the ground line nothing grows.
+  let continued = 0;
+  if (disc) {
+    const rim = disc.r - 6;
+    // Inside the lines closed a little tighter than above: wide closing also
+    // fills hollows just outside a contour (beside a dove's tail).
+    const tight = Math.max(2, Math.round(0.016 * w));
+    const tightWall = dilate(ink, w, h, tight);
+    const tightOut = new Uint8Array(w * h);
+    const fill = [];
+    for (let x = 0; x < w; x++) fill.push(x, (h - 1) * w + x);
+    for (let y = 0; y < h; y++) fill.push(y * w, y * w + w - 1);
+    while (fill.length) {
+      const k = fill.pop();
+      if (tightOut[k] || tightWall[k]) continue;
+      tightOut[k] = 1;
+      const x = k % w;
+      if (x > 0) fill.push(k - 1);
+      if (x < w - 1) fill.push(k + 1);
+      if (k >= w) fill.push(k - w);
+      if (k < w * h - w) fill.push(k + w);
+    }
+    const tightBeyond = dilate(tightOut, w, h, tight + pull);
+    // Never across a finished line: growth spreads only through the gaps a
+    // fluffy outline leaves, so it stops at a dove's drawn contour.
+    const open = k => !tightBeyond[k] && !subject[k] && !ink[k];
+    const grown = new Uint8Array(w * h);
+    const queue = [];
+    const y0 = Math.max(1, Math.floor(disc.cy - rim - 3));
+    const y1 = Math.min(h - 2, Math.ceil(disc.cy + rim + 3));
+    for (let y = y0; y <= y1; y++)
+      for (let x = 1; x < w - 1; x++) {
+        const k = y * w + x;
+        if (!subject[k]) continue;
+        // The paper's edge sits a little inside the rim: the draft's mask is
+        // shrunk and pulled under the lines after the flood.
+        const d = Math.hypot(x - disc.cx, y - disc.cy);
+        if (d < rim - 0.015 * w || d > rim + 3) continue;
+        for (const q of [k - 1, k + 1, k - w, k + w]) {
+          const qx = q % w;
+          const qy = (q - qx) / w;
+          if (Math.hypot(qx - disc.cx, qy - disc.cy) < d) continue;
+          if (open(q) && !grown[q]) {
+            grown[q] = 1;
+            queue.push(q);
+          }
+        }
+      }
+    // Grow each piece from its own seeds, and keep it only when the cut it
+    // continues is long — a body cut by the circle (the Samoyed's) runs for a
+    // good stretch of the rim; a white pocket that happens to reach inside
+    // the disc touches it for a few pixels.
+    const stop = ground ? ground.top * w : w * h;
+    const piece = new Int32Array(w * h);
+    const seedsOf = [0];
+    let id = 0;
+    for (const seed of queue) {
+      if (piece[seed]) {
+        seedsOf[piece[seed]]++;
+        continue;
+      }
+      id++;
+      seedsOf.push(1);
+      piece[seed] = id;
+      const stack = [seed];
+      while (stack.length) {
+        const k = stack.pop();
+        const x = k % w;
+        for (const q of [
+          x > 0 ? k - 1 : -1,
+          x < w - 1 ? k + 1 : -1,
+          k - w,
+          k + w,
+        ])
+          if (q >= 0 && q < stop && !piece[q] && open(q)) {
+            piece[q] = id;
+            stack.push(q);
+          }
+      }
+    }
+    const longCut = 0.05 * w;
+    for (let k = 0; k < w * h; k++)
+      if (piece[k] && seedsOf[piece[k]] >= longCut) {
+        grown[k] = 1;
+        subject[k] = 1;
+        continued++;
+      } else grown[k] = 0;
+    subject.grown = grown;
+    subject.cuts = seedsOf.slice(1);
+  }
+  subject.continued = continued;
+  // Smooth the edge: the square grow and shrink steps leave stairs on a
+  // diagonal or ragged edge (a fluffy chest against the disc), which show in
+  // both modes. A box blur of about 4 px at 1024, thresholded at half,
+  // rounds them off without moving the edge.
+  const r = Math.max(2, Math.round(0.004 * w));
+  const across = new Float32Array(w * h);
+  for (let y = 0; y < h; y++) {
+    let sum = 0;
+    for (let x = -r; x < w; x++) {
+      if (x + r < w) sum += subject[y * w + x + r];
+      if (x - r - 1 >= 0) sum -= subject[y * w + x - r - 1];
+      if (x >= 0) across[y * w + x] = sum;
+    }
+  }
+  const side = (2 * r + 1) ** 2;
+  const keepGrown = subject.grown;
+  for (let x = 0; x < w; x++) {
+    let sum = 0;
+    for (let y = -r; y < h; y++) {
+      if (y + r < h) sum += across[(y + r) * w + x];
+      if (y - r - 1 >= 0) sum -= across[(y - r - 1) * w + x];
+      if (y >= 0) subject[y * w + x] = sum * 2 >= side ? 1 : 0;
+    }
+  }
+  if (keepGrown) subject.grown = keepGrown;
   // Inside a figure in both the draft and the finished lines: a cloud that
   // closes against a wing in the draft but stays open in the lines is not.
-  subject.interior = draft.interior.map((v, k) => (v && !outside[k] ? 1 : 0));
+  subject.interior = draft.interior.map((v, k) =>
+    (v && !outside[k]) || (subject[k] && !draft[k] && !beyond[k]) ? 1 : 0,
+  );
   return subject;
 }
 

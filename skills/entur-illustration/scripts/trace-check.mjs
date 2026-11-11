@@ -462,9 +462,20 @@ const silR = Math.round(0.008 * w);
 const sil = silhouette(D.ink, w, h, silR, draftImg);
 const edge = Math.max(2, Math.round(0.003 * w));
 const nearInk = near(D.ink, w, h, edge);
-const interior = sil.map((v, i) => (v && !nearInk[i] ? 1 : 0));
+// A body the trace continued past the disc's edge (a fluffy outline the
+// draft's silhouette leaks through) is figure too: white in the draft and
+// inside the finished lines, closed by 1.6 % of the width as the trace does.
+const tracedWide = silhouette(T.ink, w, h, Math.round(0.016 * w));
+const interior = sil.map((v, i) =>
+  (v || (tracedWide[i] && D.cls.paper[i])) && !nearInk[i] ? 1 : 0,
+);
 const allowed = near(interior, w, h, edge + Math.round(0.004 * w) + 1);
-const figures = near(sil, w, h, 2 * tol);
+const figures = near(
+  sil.map((v, i) => (v || (tracedWide[i] && D.cls.paper[i]) ? 1 : 0)),
+  w,
+  h,
+  2 * tol,
+);
 add(
   'extra',
   'paper outside the figures',
@@ -523,6 +534,64 @@ add(
     c.box[3] <= groundTop + 2 &&
     c.box[3] >= groundTop - 0.02 * h,
 );
+
+// Paper that stops at the disc's edge: inside the circle the trace has paper,
+// just outside it has none, and the draft is white on both sides — a white
+// body the circle cut (a Samoyed with no paper below the disc). Reported when
+// such a cut runs for 5 % of the width or more.
+const circle = discOf(draftImg);
+if (circle) {
+  const at = (r, a) => {
+    const x = Math.round(circle.cx + r * Math.cos(a));
+    const y = Math.round(circle.cy + r * Math.sin(a));
+    return x >= 0 && y >= 0 && x < w && y < h ? y * w + x : -1;
+  };
+  const steps = Math.round(2 * Math.PI * circle.r);
+  const cut = [];
+  for (let s = 0; s < steps; s++) {
+    const a = (2 * Math.PI * s) / steps;
+    const inner = at(circle.r - 0.02 * w, a);
+    const outer = at(circle.r + 0.004 * w, a);
+    cut.push(
+      inner >= 0 &&
+        outer >= 0 &&
+        P.cls.paper[inner] &&
+        P.bg[outer] &&
+        D.cls.paper[inner] &&
+        D.cls.paper[outer],
+    );
+  }
+  for (let s = 0; s < steps; s++) {
+    if (!cut[s] || cut[(s - 1 + steps) % steps]) continue;
+    let e = s;
+    while (cut[(e + 1) % steps] && e - s < steps) e++;
+    if (e - s + 1 < 0.05 * w) continue;
+    const xs = [];
+    const ys = [];
+    for (let k = s; k <= e; k++) {
+      const a = (2 * Math.PI * (k % steps)) / steps;
+      xs.push(circle.cx + circle.r * Math.cos(a));
+      ys.push(circle.cy + circle.r * Math.sin(a));
+    }
+    const box = [
+      Math.min(...xs),
+      Math.min(...ys),
+      Math.max(...xs),
+      Math.max(...ys),
+    ].map(Math.round);
+    findings.push({
+      kind: 'missing',
+      what: 'paper beyond the edge of the circle',
+      shape: '',
+      area_px: e - s + 1,
+      at: [(box[0] + box[2]) / 2, (box[1] + box[3]) / 2].map(
+        v => +(v * scale).toFixed(1),
+      ),
+      box: box.map(v => +(v * scale).toFixed(1)),
+      box_px: box,
+    });
+  }
+}
 
 findings.forEach((f, i) => (f.n = i + 1));
 
