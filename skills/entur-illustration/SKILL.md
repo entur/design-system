@@ -207,11 +207,12 @@ Check before delivering:
 - [ ] Animals: no more line than the library animal next to it — no fur ticks along the contours, no cluster of fur marks on the chest or neck, at most one inner line per ear
 - [ ] Dark and contrast files checked on Ebony 100 and Lavender 90 surfaces
 - [ ] Layers named; file names follow `<Name>.svg`, `<Name>-darkmode.svg`, `<Name>-contrast.svg`
+- [ ] In Figma: every fill and stroke bound to an Illustration colors variable, the darkmode frame in the Dark mode, no colour left as hex
 
 ## Step 6 — deliver
 
 - **Web:** inline the SVG or use it as an image. Most illustrations next to explanatory text are decorative: `alt=""`. Give alt text in Norwegian only when the image carries meaning the text does not. Swap to the `-darkmode` file in dark mode and the `-contrast` file inside a Lavender 90 contrast section.
-- **Figma:** `figma.createNodeFromSvg(svgString)` via the Figma MCP `use_figma` tool (load the `figma-use` skill first) or figma-console's execute tool. Strokes arrive as editable vector strokes.
+- **Figma:** `figma.createNodeFromSvg(svgString)` via the Figma MCP `use_figma` tool (load the `figma-use` skill first) or figma-console's execute tool. Strokes arrive as editable vector strokes. Then bind every colour to the library's **Illustration colors** variables, as the library components are, and set the darkmode frame to the Dark mode (`references/handoff.md`, Bind the colours): a motif is not done in Figma while any colour is a raw hex.
 - **Illustrator:** draw with `roughen: false` (and `profiles: 'stroke'` for animals), then run the MCP tool `illustrator_import_drawing`: it gives the swelling lines real width profiles and puts Roughen on as a live effect. Or open the SVG and apply the Roughen graphic style by hand. Settings and the profile carriers are in `references/handoff.md`.
 
 ## Working from a reference image
@@ -228,5 +229,5 @@ The reference supplies the idea — subject, pose, situation. The skill supplies
 
 - **`references/style.md`** — full anatomy: line and fill construction with measured values for both constructions, the backdrop, ground, per-format composition (square, scene, landscape), motif vocabulary, drawing people, animals and vehicles, what to avoid
 - **`references/palette.md`** — colour roles with hex values and primitive token names, the standard → dark → contrast mapping, colour proportions
-- **`references/handoff.md`** — Illustrator graphic style and export, Figma import, web use and accessibility, file naming
+- **`references/handoff.md`** — Illustrator graphic style and export, Figma import and binding to the Illustration colors variables, web use and accessibility, file naming
 - **`references/raster-first.md`** — route B: style references, image tools and credits, the prompt template, reviewing the PNG, and turning it into strokes in Illustrator or in code

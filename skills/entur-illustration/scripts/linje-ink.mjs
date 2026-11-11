@@ -46,7 +46,9 @@ export const ROLES = {
   line2: { standard: '#9EA0BD', dark: '#999AA7', contrast: '#9EA0BD' },
   backdrop: { standard: '#EAEAF1', dark: '#CCCDD4', contrast: '#393D79' },
   tint: { standard: '#EAEAF1', dark: '#B3B4BD', contrast: '#BCBDD2' },
-  lavender: { standard: '#AEB7E2', dark: '#81828F', contrast: '#AEB7E2' },
+  // Lavender keeps its value in dark mode on people and in scenes (15 of 15
+  // and 26 of 26 dark files); only the device illustrations darken it.
+  lavender: { standard: '#AEB7E2', dark: '#AEB7E2', contrast: '#AEB7E2' },
   mid: { standard: '#54568C', dark: '#81828F', contrast: '#BCBDD2' },
   peach: { standard: '#FFBF9E', dark: '#FFBF9E', contrast: '#FFBF9E' },
   coral: { standard: '#FF5959', dark: '#FF9494', contrast: '#FF5959' },

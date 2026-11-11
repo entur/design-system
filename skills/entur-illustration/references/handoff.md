@@ -55,6 +55,117 @@ figma.currentPage.selection = [node];
 
 Figma has no Roughen effect, so the baked tremor in the path is what carries the hand-drawn look there. The people and transport components in the Figma Illustration Library are built exactly this way. Do not convert uniform strokes to outlines in Figma; only the swelling animal lines are outlines, because Figma cannot hold them as strokes.
 
+### Bind the colours to Illustration colors
+
+The library components carry no hex: every fill and stroke is bound to a variable in the collection **Illustration colors**, from the library _Tokens-Illustration colors_ (collection key `39f9aa47d16a56792a17d75d8b1a3d49bee723c2`). Measured on Dog, Ducks, Doves and Sheep in the Illustration Library, November 2026. The collection has two modes, Light and Dark; there is no dark variant of a component, only the Dark mode on its frame or instance. A new motif in Figma is not done until it works the same way, so a frame switches colours like a library component.
+
+Insert the three mode SVGs as frames, then bind each frame:
+
+- **Which set:** the standard and the darkmode frame bind to the `…/Standard/…` variables, the contrast frame to `…/Contrast/…`.
+- **Which mode:** set the darkmode frame to Dark and the other two to Light, with `frame.setExplicitVariableModeForCollection(collection, modeId)`.
+- **Which variable:** match each solid paint by its hex in that frame's mode (`palette.md`):
+
+| Colour in the SVG            | Animals and objects (`Animal/<set>/…`) | People (`People/<set>/…`)                    |
+| ---------------------------- | -------------------------------------- | -------------------------------------------- |
+| `ink`, stroke                | `Line/Body`                            | `Line/Default`                               |
+| `ink`, fill                  | `Line/Body` (the lines are outlined)   | `Fill/Default` (hair, a uniform)             |
+| `paper`                      | `Fill/Body`                            | `Fill/Skin`; clothes by hand to `Fill/Cloth` |
+| `tint`                       | `Fill/BodyShadow`                      | —                                            |
+| anything in the Circle group | `Fill/Circle`                          | —                                            |
+| `peach`                      | `Fill/Highlight`                       | `Fill/Highlight 1`                           |
+| `lavender`                   | —                                      | `Fill/Highlight 2`                           |
+| `coral` (staff panels only)  | —                                      | `Fill/Highlight 3`                           |
+
+The variables resolve to the palette's own values: `Animal/Standard/Fill/Circle` is `#EAEAF1` in Light and `#CCCDD4` at 30 % in Dark, and the alpha lives in the variable, so the bound paint itself gets opacity 1. In Dark, people's `Fill/Cloth` and `Fill/Shoe` turn Ebony 30 while `Fill/Skin` turns Ebony 5: the cloth and skin split of `palette.md`. A trace cannot tell skin from clothes, so all paper on a person starts as `Fill/Skin`; rebind the clothes by hand. Report a colour with no role (lavender on an animal, tint on a person) instead of guessing.
+
+With the Figma MCP server, after loading `figma-use`, inside `use_figma`:
+
+```js
+// frame: one mode frame; group: 'Animal' or 'People'; set: 'Standard' or
+// 'Contrast'; mode: 'Light' or 'Dark'; roleOf(hex, node, prop): the variable
+// name from the table (by the hex in this frame's mode), or null.
+const hex = c =>
+  '#' +
+  [c.r, c.g, c.b]
+    .map(x =>
+      Math.round(x * 255)
+        .toString(16)
+        .padStart(2, '0'),
+    )
+    .join('')
+    .toUpperCase();
+async function bind(frame, group, set, mode, roleOf) {
+  const cache = {};
+  const v = name =>
+    cache[name] ||
+    (cache[name] = figma.variables.importVariableByKeyAsync(KEYS[name]));
+  const left = new Set();
+  for (const node of frame.findAll(n => 'fills' in n))
+    for (const prop of ['fills', 'strokes']) {
+      if (!Array.isArray(node[prop])) continue;
+      const next = [];
+      for (const paint of node[prop]) {
+        const role =
+          paint.type === 'SOLID' && roleOf(hex(paint.color), node, prop);
+        if (!role) {
+          if (paint.type === 'SOLID') left.add(hex(paint.color));
+          next.push(paint);
+          continue;
+        }
+        const variable = await v(`${group}/${set}/${role}`);
+        next.push(
+          figma.variables.setBoundVariableForPaint(
+            { ...paint, opacity: 1 },
+            'color',
+            variable,
+          ),
+        );
+      }
+      node[prop] = next;
+    }
+  const any = await v(
+    `${group}/${set}/${group === 'Animal' ? 'Fill/Body' : 'Fill/Skin'}`,
+  );
+  const collection = await figma.variables.getVariableCollectionByIdAsync(
+    any.variableCollectionId,
+  );
+  frame.setExplicitVariableModeForCollection(
+    collection,
+    collection.modes.find(m => m.name === mode).modeId,
+  );
+  return [...left];
+}
+```
+
+Variable keys (`KEYS` above), for `importVariableByKeyAsync`:
+
+| Variable                           | Key                                        |
+| ---------------------------------- | ------------------------------------------ |
+| `Animal/Standard/Line/Body`        | `c4a3807746623384338234bebb55158d26254a9d` |
+| `Animal/Standard/Fill/Body`        | `86ea167577c9d57b36ddf8864a05713d13853766` |
+| `Animal/Standard/Fill/BodyShadow`  | `fdcb539b577d320c90b770d52a47e880a99a0207` |
+| `Animal/Standard/Fill/Circle`      | `cb61bb02ccb4114070b6fc9bae018ea0baa9aca4` |
+| `Animal/Standard/Fill/Highlight`   | `c33b7e2226821c5f9e051ecfced183fb0cd6d9a4` |
+| `Animal/Contrast/Line/Body`        | `19256c8d16feaa57cdd7275bfb31041b82b8d281` |
+| `Animal/Contrast/Fill/Body`        | `2b4ac057bb2a0926839cf3a83f2e78566a2f8fef` |
+| `Animal/Contrast/Fill/BodyShadow`  | `5979d4ddce9a996d395bd5bb3bba3e12025dc8d5` |
+| `Animal/Contrast/Fill/Circle`      | `6466b65d71ed0e209f51bebcf04ac3b21b68740a` |
+| `Animal/Contrast/Fill/Highlight`   | `3ca2026fcd0f6d69c337608f97ff3c164d204de3` |
+| `People/Standard/Line/Default`     | `191e2d6aa67d3210f825d79a58e3a9ad0b98df54` |
+| `People/Standard/Fill/Default`     | `3d6e2615479d714ec058eae3ba2e4ab87835f68f` |
+| `People/Standard/Fill/Skin`        | `98b0fc4b0699fad3bf56cacc5366fc2f2031d361` |
+| `People/Standard/Fill/Highlight 1` | `fa2fef38c1fc97bb04dde3a9dd8cbe37d7f83f18` |
+| `People/Standard/Fill/Highlight 2` | `855806aab5ac92ca907feb6ee60e673b6de4ef06` |
+| `People/Standard/Fill/Highlight 3` | `e6d4ef9ade0472110b9d84a259e5ee08e016ea66` |
+| `People/Contrast/Line/Default`     | `d76a431b54f0acf20903a67ccbf4d01f1f18d04a` |
+| `People/Contrast/Fill/Default`     | `623a7dedbb47ce44b7f26940f359ad583cde6c03` |
+| `People/Contrast/Fill/Skin`        | `786a109a0f749d6d2b9363f1b2e0a805305c332b` |
+| `People/Contrast/Fill/Highlight 1` | `de64f4e7666bdcb18c130786f6eb0b4c3f3cd971` |
+| `People/Contrast/Fill/Highlight 2` | `9d2142dc548e4b3041701bc87af60ecca1190f2b` |
+| `People/Contrast/Fill/Highlight 3` | `a604c2de4bf3ae53750f44f84ad785ee4940d136` |
+
+`Fill/Cloth`, `Fill/Shoe` and the rest of the People set (`Line/Subdued`, `Light`, `Mask`, `Reflex`, `Brakelight`) are in the same collection; look a key up with `search_design_system` or on a library component when a motif needs one. Check the result: switch the standard frame to Dark and every colour should change, and the list of colours left over should be empty. The Figma illustration plugin (`tools/figma-illustrasjon/code.js`, `bindColours`, on its own branch `figma-illustrasjon-plugin`) does the same when it places a traced motif.
+
 ## Web
 
 - **Decorative by default.** Next to a heading and text that say the same thing (an empty state, an error page), the illustration is decoration: `alt=""`, or `aria-hidden="true"` on an inline SVG.

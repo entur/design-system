@@ -95,7 +95,7 @@ const PALETTE = {
   paper: ['#FFFFFF', '#F2F2F5', '#FFFFFF'],
   line2: ['#9EA0BD', '#999AA7', '#9EA0BD'],
   tint: ['#EAEAF1', '#B3B4BD', '#BCBDD2'],
-  lavender: ['#AEB7E2', '#81828F', '#AEB7E2'],
+  lavender: ['#AEB7E2', '#AEB7E2', '#AEB7E2'],
   peach: ['#FFBF9E', '#FFBF9E', '#FFBF9E'],
   coral: ['#FF5959', '#FF9494', '#FF5959'],
 };
