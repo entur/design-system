@@ -1,0 +1,41 @@
+== 2. Type errors are caught by a typecheck job, not the build
+
+Date: 2026-11-11
+
+Applies to: `.github/workflows/build-test-and-deploy-preview.yml`, every package's `tsconfig.typecheck.json`
+
+== Status
+Accepted
+
+== Context
+Each package's declaration build (`vite-plugin-dts`) reports type errors but
+doesn't fail, so 59 errors built up unnoticed (see
+xref:0001-polymorphic-forwardref.adoc[ADR 1]). CI's only type check,
+`typecheck:browser`, covers the Playwright tests, not the packages.
+
+== Decision
+A separate CI job runs `lerna run typecheck` after the package build, using the
+built package artifacts. Each package has a `tsconfig.typecheck.json` that
+extends its `tsconfig.json`, includes the test files and doesn't set `rootDir`,
+so tests importing the shared helpers in `tests/jest/` type-check too. The
+declaration build keeps logging without failing.
+
+== Consequences
+
+=== Positive
+* `Typecheck packages` is a required status check in the `main` ruleset, so a
+  type error blocks the merge, but not the package build, the docs site,
+  Studio, the other test jobs or `yarn start`.
+* Tests that use components wrongly, such as invalid `as` props, are caught.
+
+=== Negative
+* The job depends on the package artifacts, because packages resolve each
+  other's types from `dist`.
+* A Dependabot bump of `@types/react` or TypeScript that breaks types fails the
+  job, and someone has to fix it before it can merge.
+
+== Alternatives
+* *Fail the declaration build in CI*: one type error would block every job that
+  needs the packages, and some errors depend on build order.
+* *Type-check only source, as the build sees it*: leaves the tests unchecked for
+  no saving, since they are clean today.
