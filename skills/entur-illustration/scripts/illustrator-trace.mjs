@@ -45,7 +45,9 @@
 // layer gets the backdrop colours).
 //
 // ExtendScript is ES3 (no Array.map), and `name` and `cut` are read-only
-// globals in Illustrator: assigning to them fails silently.
+// globals in Illustrator: assigning to them fails silently. Never name a
+// function cut, copy or paste either: the call reaches Illustrator's own
+// Edit commands and acts on the selection.
 
 import fs from 'node:fs';
 import os from 'node:os';

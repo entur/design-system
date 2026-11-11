@@ -114,6 +114,7 @@ Rules of use: at most **three** square illustrations per page view; more than on
 17. **Animals keep their eyes** — a dot or a short arc — and stay calm and a little dry, never cartoonish.
 18. **Minimal line.** Library animals have less line than a sketch: long smooth contours with a few gaps, and detail only where it says what the animal is (the hedgehog's spines, the goat's beard, wool as a scalloped edge). No fur ticks along a contour and no clusters of short fur marks; one line for a fold (the neck, a shoulder) says it instead. An ear gets at most one inner line. A sitting bear cub on the 320 canvas has about 50 strokes, toes, grass and ground included; its raw trace had 80.
 19. **One Peach accent.** Every library animal has one small Peach 40 area, about 1 % of the canvas (0.2–4 %): on a prop it holds, wears or has beside it (a collar, a ball, a nut, a key, a ticket, a bowl, a leaf) or on one marking of its own (horns, a chest patch). Never the body fill, never spread over several places; a tiny echo, like crumbs beside a bowl, is the most. A prop keeps its ink outline with the Peach shifted off it; a marking has no outline and a rough edge.
+20. **A bird's beak is Peach, with no outline.** The beak or bill is one flat Peach 40 shape with no ink line around it, as on the library doves and ducks; the head contour stops at its base with a small gap, and the shape covers where an outline would have run, its tip a little past it. On a bird the beak (and its feet, as on the doves) is its Peach accent (rule 19).
 
 The full anatomy, with measurements and per-format layout, is in `references/style.md`. The colour roles and how they map per mode are in `references/palette.md`.
 
@@ -206,6 +207,7 @@ Check before delivering:
 - [ ] Line weight hierarchy on people: about a quarter of the lines (the long outer contours) at 1.5, the rest at 1.0; an all-1.5 figure looks coarse next to library people
 - [ ] Animals and objects: contours as a few long swelling strokes at 2.1, details at 1.7–1.3, paper underlays and at most two Blue 20 shading shapes, eyes kept; side by side with the library sheep or hedgehog, the lines are as heavy
 - [ ] Animals: no more line than the library animal next to it — no fur ticks along the contours, no cluster of fur marks on the chest or neck, at most one inner line per ear
+- [ ] Birds: every beak or bill a flat Peach shape with no ink outline; the head line stops at its base
 - [ ] Dark and contrast files checked on Ebony 100 and Lavender 90 surfaces
 - [ ] Layers named; file names follow `<Name>.svg`, `<Name>-darkmode.svg`, `<Name>-contrast.svg`
 - [ ] In Figma: every fill and stroke bound to an Illustration colors variable, the darkmode frame in the Dark mode, no colour left as hex
