@@ -1,0 +1,26 @@
+= Glossary
+
+Terms used in code, commits and decisions in this repo. Decisions live in
+xref:adr/README.adoc[doc/adr/].
+
+`as` prop::
+Prop that sets which element or component a component renders, e.g.
+`<Button as="a" href="…">`. The props available follow the chosen element.
+
+Polymorphic component::
+A component with an `as` prop, typed with a generic call signature over the
+element type. Built with `forwardRefPolymorphic` (see
+xref:adr/0001-polymorphic-forwardref.adoc[ADR 1]).
+
+`forwardRefPolymorphic`::
+Helper in `@entur/utils` that creates a polymorphic component with
+`React.forwardRef` and types the result with the component's own call
+signature.
+
+Declaration build::
+The step in each package's Vite build (`vite-plugin-dts`) that emits the
+`.d.ts` files consumers get. It logs type errors but does not fail the build.
+
+ADR::
+Architecture decision record: a short file in `doc/adr/` that records a
+decision, why we made it and what follows. Written with `/grill-with-adr`.

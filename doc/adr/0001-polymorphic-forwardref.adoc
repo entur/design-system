@@ -1,0 +1,61 @@
+== 1. Polymorphic components use `forwardRefPolymorphic`
+
+Date: 2026-11-11
+
+Applies to: `packages/utils/src/PolymorphicComponent.tsx`, every component with an `as` prop
+
+Revisit when: the peer dependency becomes `react >=19`. Then deprecate the helper and move components to `ref` as a prop.
+
+== Status
+Accepted
+
+== Context
+Components with an `as` prop are typed with a generic call signature
+(`<T extends React.ElementType>(props: XProps<T>) => React.ReactElement | null`)
+and built with `React.forwardRef`. `forwardRef` can't keep the generic, so
+TypeScript resolves `T` to `React.ElementType`, the props collapse to `any`,
+and the result isn't assignable to the declared component type. About 30
+components had these errors. They went unnoticed because the declaration build
+logs type errors without failing.
+
+The peer dependency is `react >=18`, so `forwardRef` stays until React 18
+support is dropped. React 19 deprecates it in favour of `ref` as a prop.
+
+== Decision
+Components with an `as` prop are created with `forwardRefPolymorphic` from
+`@entur/utils`, typed with the component's own call signature:
+
+[source,ts]
+----
+export const Button = forwardRefPolymorphic<ButtonComponent>(
+  <T extends React.ElementType = 'button'>(props: ButtonProps<T>, ref: PolymorphicRef<T>) => …,
+);
+----
+
+The helper is the only place that casts, and calls `React.forwardRef` and
+nothing else. It is public API of `@entur/utils`, so consumers who build their
+own polymorphic components on our types can use it too. Component types keep
+returning `React.ReactElement | null`, so JSX keeps working for consumers on
+TypeScript below 5.1.
+
+== Consequences
+
+=== Positive
+* Published types are unchanged; the casts only affect our source.
+* One place to change when React 18 support is dropped.
+* The old pattern fails type checking, so the typecheck job in CI catches
+  components that bypass the helper.
+
+=== Negative
+* The helper takes `any` for props and ref, so it doesn't check that the render
+  function matches the component type. Our packages' own type checking covers
+  that; outside users must keep them in sync themselves.
+* Changing its signature is a breaking change for `@entur/utils`.
+
+== Alternatives
+* *Two casts at every site* (`forwardRef(render as …) as XComponent`): the same
+  behaviour, repeated about 30 times.
+* *Component types return `React.ReactNode`*: doesn't fix the props error, and
+  breaks JSX for consumers on TypeScript below 5.1.
+* *Helper marked `@internal`*: hides it from consumers with the same problem,
+  and relies on `stripInternal`.
