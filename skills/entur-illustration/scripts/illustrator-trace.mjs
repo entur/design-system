@@ -129,27 +129,30 @@ const params = {
 // Read the draft once: the disc, the ground line and the silhouette come from
 // its pixels, which see them more reliably than the traced shapes do.
 const img = readPng(png);
+if (img.alpha) params.png = flattened(img);
 const disc = findDisc(img);
 const groundBand = animals ? findGround(img) : null;
-const mask = underlay ? writeMask(img, disc, groundBand) : null;
+// The ground line, unless the long line is a perch (findGround).
+const ground = groundBand && !groundBand.perch ? groundBand : null;
+const mask = underlay ? writeMask(img, disc, ground) : null;
 const toX = v => (v * params.size) / img.w;
 const toY = v => (v * params.size) / img.h;
 params.mask = mask || '';
 params.disc = disc
   ? { cx: toX(disc.cx), cy: toY(disc.cy), r: toX(disc.r) }
   : null;
-params.ground = groundBand
+params.ground = ground
   ? {
-      top: toY(groundBand.top),
-      y: toY((groundBand.top + groundBand.bottom + 1) / 2),
-      x0: toX(groundBand.x0),
-      x1: toX(groundBand.x1 + 1),
+      top: toY(ground.top),
+      y: toY((ground.top + ground.bottom + 1) / 2),
+      x0: toX(ground.x0),
+      x1: toX(ground.x1 + 1),
     }
   : null;
 params.features = features ? darkFeatures(img, params.size, groundBand) : [];
 // Animals take their ink masses from the opened-ink mask, not from the
 // colour trace's mean-width rule (inkMasses).
-const masses = animals ? inkMasses(img, groundBand) : null;
+const masses = animals ? inkMasses(img, ground) : null;
 params.inkFromMask = animals;
 params.inkMask = masses ? masses.file : '';
 params.inkMasses = masses ? masses.count : 0;
@@ -661,6 +664,7 @@ function readPng(file) {
   const stride = w * bpp;
   const lum = new Uint8Array(w * h);
   const blueish = new Uint8Array(w * h);
+  const rgb = new Uint8Array(w * h * 3);
   let prev = new Uint8Array(stride);
   for (let y = 0, i = 0; y < h; y++) {
     const f = raw[i++];
@@ -682,13 +686,28 @@ function readPng(file) {
       }
     }
     for (let x = 0; x < w; x++) {
-      const [r, g, bl] = [line[x * bpp], line[x * bpp + 1], line[x * bpp + 2]];
+      // Transparent pixels count as white: flattened onto paper (see below).
+      const a = bpp === 4 ? line[x * bpp + 3] / 255 : 1;
+      const [r, g, bl] = [0, 1, 2].map(c =>
+        Math.round(line[x * bpp + c] * a + 255 * (1 - a)),
+      );
       lum[y * w + x] = (r * 3 + g * 6 + bl) / 10;
       blueish[y * w + x] = bl >= r && bl >= g ? 1 : 0;
+      rgb.set([r, g, bl], (y * w + x) * 3);
     }
     prev = line;
   }
-  return { w, h, lum, blueish };
+  return { w, h, lum, blueish, rgb, alpha: type === 6 };
+}
+
+// A draft with an alpha channel, written again as plain RGB on white:
+// Illustrator's Image Trace reads clear pixels as black, so a transparent
+// library PNG traced as one dark square.
+function flattened({ w, h, rgb }) {
+  const rows = Buffer.alloc((w * 3 + 1) * h);
+  for (let y = 0; y < h; y++)
+    Buffer.from(rgb.buffer, y * w * 3, w * 3).copy(rows, y * (w * 3 + 1) + 1);
+  return writePng(w, h, rows, 'draft.png');
 }
 
 // Eyes and noses in the draft, as ellipses in artboard points (y down): dots
@@ -900,6 +919,11 @@ function savePng(w, h, black, name) {
       rows.fill(v, y * (w * 3 + 1) + 1 + x * 3, y * (w * 3 + 1) + 4 + x * 3);
     }
   }
+  return writePng(w, h, rows, name);
+}
+
+// An 8-bit RGB PNG from filtered rows (filter byte 0), in a temporary folder.
+function writePng(w, h, rows, name) {
   const chunk = (kind, body) => {
     const len = Buffer.alloc(4);
     len.writeUInt32BE(body.length);
@@ -1007,12 +1031,12 @@ function findDisc({ w, h, lum, blueish }) {
   const r = Math.max(bw, bh) / 2;
   const cx = best.x0 + bw / 2;
   // Only a plausible disc counts: wide enough, round enough, filled enough
-  // (a subject may cover half of it) and near the middle. Pale wings or a
+  // (two doves cover two thirds of theirs) and near the middle. Pale wings or a
   // grey coat are none of these, and the library has animals without a disc.
   const disc =
     2 * r >= 0.3 * w &&
     Math.min(bw, bh) >= 0.6 * Math.max(bw, bh) &&
-    best.n >= 0.35 * Math.PI * r * r &&
+    best.n >= 0.25 * Math.PI * r * r &&
     Math.abs(cx - w / 2) <= 0.2 * w;
   if (!disc) return null;
   return {
@@ -1023,7 +1047,7 @@ function findDisc({ w, h, lum, blueish }) {
 }
 
 // The ground line: the lowest rows where one dark run (gaps up to 2 % of the
-// width) spans a quarter of the width. Returns its top and bottom row and
+// width) spans a quarter of the width, with little ink below it. Returns its top and bottom row and
 // the extent of its dark pieces.
 function findGround({ w, h, lum }) {
   const run = y => {
@@ -1073,7 +1097,12 @@ function findGround({ w, h, lum }) {
         x1 = Math.max(x1, last);
       }
     }
-    return { top, bottom: y, x0, x1 };
+    // A perch is not ground: birds on a wire hang tails and feet below it
+    // (1.1 % of the Doves image), while under a ground line there is at most
+    // a dipping contour (0.2 % under the fox). A perch stays as drawn.
+    let below = 0;
+    for (let k = (y + 3) * w; k < w * h; k++) if (lum[k] < 120) below++;
+    return { top, bottom: y, x0, x1, perch: below > 0.005 * w * h };
   }
   return null;
 }

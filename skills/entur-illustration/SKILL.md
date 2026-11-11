@@ -38,7 +38,7 @@ Every new illustration goes through the same steps, and you run all of them with
 2. **Pick** the format (Step 2) and the route by subject (Step 4): people and animals go raster first; objects, vehicles, signs and landscapes go through the script.
 3. **Draft** (raster first) with Figma's image generation — `generate_image` from Claude, or Make an image in the Figma app with two or three library PNGs attached — and the prompt template, square, 2048 px (`references/raster-first.md`). Use only tools Entur has approved: Figma, Claude and Illustrator.
 4. **Review the draft yourself** against the references and the checklist in `references/raster-first.md` §3. List every deviation and fix it with an edit round, up to two, before going on.
-5. **Trace** in Illustrator with the mode for the subject, then the finishing steps (Step 4b).
+5. **Trace** in Illustrator with the mode for the subject, then run `node scripts/trace-check.mjs <draft.png> <Name>.svg`: the trace reproduces the draft, nothing lost and nothing added, except what the skill changes on purpose (thinned fur, the plain ground line, the library circle, the palette). Fix every other finding, then the finishing steps (Step 4b).
 6. **Check the result** next to two library motifs of the same kind at the same size, in all three colour modes, against the Step 5 checklist. Fix what fails and check again.
 7. **Show** the result with that comparison, and say what is left or unverified.
 
@@ -189,6 +189,7 @@ Do this yourself before showing anything. Render to PNG and compare it side by s
 
 Check before delivering:
 
+- [ ] `trace-check` run on the trace: nothing in the draft lost, nothing added, or each finding named as intended (simplify, ground line, circle)
 - [ ] Every line is a stroke with round caps and no brush; nothing outlined in the working file
 - [ ] The construction fits the subject: uniform lines on people, staff and vehicles; swelling lines (width profile) on animals and objects
 - [ ] Line weights follow the hierarchy (contour > detail > fine); background lines are Blue 50
