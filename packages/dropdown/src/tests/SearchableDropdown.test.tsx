@@ -391,7 +391,7 @@ describe('SearchableDropdown', () => {
     const user = userEvent.setup();
     const asyncItems = () => {
       return new Promise<DropdownItemType[]>(resolve => {
-        setTimeout(() => resolve(testItems), 750);
+        setTimeout(() => resolve(testItems), 50);
       });
     };
     render(
@@ -408,7 +408,7 @@ describe('SearchableDropdown', () => {
     const listItems = await screen.findAllByRole('option');
 
     expect(listItems).toHaveLength(testItems.length);
-  }, 1500);
+  });
 
   test('does not violate basic accessibility', async () => {
     const selectedItem = { label: 'choice1', value: 'choice1' };
