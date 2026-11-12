@@ -1315,6 +1315,21 @@ function closeSides(wall, ink, w, h) {
   if (x1 < 0) return;
   for (let y = y0; y <= y1; y++)
     for (const x of [x0, x0 + 1, x1 - 1, x1]) wall[y * w + x] = 1;
+  // A side view's long lines break around the wheels and doors (a bus's
+  // skirt stops short of each wheel), wider than the closing: along a row,
+  // a gap of up to 6 % of the width between two pieces of ink is wall too.
+  // The space under the body and between roof units runs across rows or is
+  // wider, so it stays open.
+  const gap = Math.round(0.06 * w);
+  for (let y = y0; y <= y1; y++) {
+    let last = -1;
+    for (let x = x0; x <= x1; x++) {
+      if (!ink[y * w + x]) continue;
+      if (last >= 0 && x - last > 1 && x - last <= gap)
+        for (let g = last + 1; g < x; g++) wall[y * w + g] = 1;
+      last = x;
+    }
+  }
 }
 
 // The underlay: the draft's silhouette (draftSubject) cut back to the
