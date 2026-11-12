@@ -227,6 +227,11 @@ const TOOLS = [
           description:
             'Animals, default true: drop specks, join a contour broken into pieces, join ground dashes into one to three pieces at detail weight, and thin short fur marks that lie along a contour or crowd each other. Marks near an eye or nose, toes and grass stay.',
         },
+        object: {
+          type: 'boolean',
+          description:
+            "The subject is an object (with construction animals): no eyes or noses, and inside the circle the disc's pale colour stays only on a face of the object, not in a strip between a line and its paper or inside an empty ring.",
+        },
       },
       required: ['png', 'outDir', 'name'],
     },
@@ -243,6 +248,7 @@ const TOOLS = [
       backdrop,
       underlay,
       simplify,
+      object,
     }) => {
       const a = [
         path.join(HERE, 'illustrator-trace.mjs'),
@@ -261,6 +267,7 @@ const TOOLS = [
       if (backdrop) a.push('--backdrop');
       if (underlay) a.push('--underlay');
       if (simplify === false) a.push('--no-simplify');
+      if (object) a.push('--object');
       return runNode(a, 1900); // heavy drafts, or other large documents open, take long
     },
   },

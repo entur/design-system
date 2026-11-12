@@ -3,7 +3,7 @@
 // from, so nothing in the draft is lost and nothing is added on the way.
 // macOS, zero dependencies (qlmanage renders the SVG, sips decodes PNGs).
 //
-//   node trace-check.mjs <draft.png> <traced.svg> [--out <dir>] [--json]
+//   node trace-check.mjs <draft.png> <traced.svg> [--out <dir>] [--json] [--object]
 //
 // The SVG is the standard-mode export of the trace; its artboard covers the
 // whole draft, as illustrator-trace.mjs places it. Reports, in artboard
@@ -37,7 +37,7 @@ const [draftFile, svgFile] = args.filter(
 );
 if (!draftFile || !svgFile) {
   console.error(
-    'Usage: node trace-check.mjs <draft.png> <traced.svg> [--out <dir>] [--json]',
+    'Usage: node trace-check.mjs <draft.png> <traced.svg> [--out <dir>] [--json] [--object]',
   );
   process.exit(2);
 }
@@ -433,15 +433,35 @@ add(
   labels(T.ink),
 );
 
+// An object traced with --object keeps the disc's pale colour only on its
+// faces: where the draft's paper sat a little off its line, the disc showing
+// through between them becomes paper on purpose (illustrator-trace.mjs,
+// discParts). Pale lost mostly to paper is not reported then.
+const object = flag('object');
 for (const colour of ['peach', 'coral', 'lavender', 'tint']) {
   const min = colour === 'tint' ? minPaper : minColour;
   const nearT = near(T.cls[colour], w, h, tol);
   const nearD = near(D.cls[colour], w, h, tol);
+  const lost = D.cls[colour].map((v, i) => v && !nearT[i]);
+  const toPaper = c => {
+    const [x0, y0, x1, y1] = c.box;
+    let all = 0;
+    let paper = 0;
+    for (let y = y0; y <= y1; y++)
+      for (let x = x0; x <= x1; x++)
+        if (lost[y * w + x]) {
+          all++;
+          if (T.cls.paper[y * w + x]) paper++;
+        }
+    return paper >= 0.6 * all;
+  };
   add(
     'missing',
     colour,
-    D.cls[colour].map((v, i) => v && !nearT[i]),
+    lost,
     min,
+    null,
+    object && colour === 'tint' ? toPaper : null,
   );
   add(
     'extra',

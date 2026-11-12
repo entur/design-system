@@ -7,7 +7,7 @@
 //     [--size 360] [--threshold 110] [--max-stroke 20] [--contour 1.5] [--detail 1.0]
 //     [--contour-share 0.25] [--min-ink-width 4] [--roughen] [--fill-rough] [--ink-shift]
 //     [--construction animals] [--carriers profiles.ai] [--backdrop] [--underlay]
-//     [--no-features] [--no-simplify]
+//     [--no-features] [--no-simplify] [--object]
 //
 // Two traces of the same PNG on a `--size` pt artboard (360 puts a figure at
 // library scale):
@@ -34,6 +34,10 @@
 // With animals, a small dark eye or nose, too thin for the colour trace and
 // too round for the line trace, is put back as an ink ellipse on a Features
 // layer (`--no-features` turns it off); none is taken from the ground band.
+// `--object` (an object in the animal construction) turns that off too, and
+// keeps the disc's pale colour on the object only where it is a face of it
+// (discParts): a strip between a line and its paper, or the inside of an
+// empty ring on the disc, is the disc showing through.
 // Animals are also simplified before the weights go on: specks dropped, a
 // contour broken into pieces joined end to end, the ground replaced by one
 // plain line on a Ground layer under the fills, and short fur marks thinned
@@ -78,7 +82,8 @@ const detail = Number(opt('detail', animals ? 1.7 : 1.0));
 const carriers = opt('carriers', '');
 const backdrop = flag('backdrop');
 const underlay = flag('underlay');
-const features = animals && !flag('no-features');
+const object = flag('object');
+const features = animals && !object && !flag('no-features');
 const simplify = animals && !flag('no-simplify');
 // A traced draft already carries the hand tremor; Roughen on top makes it bumpy.
 const roughen = flag('roughen');
@@ -155,6 +160,9 @@ const toY = v => (v * params.size) / img.h;
 params.disc = disc
   ? { cx: toX(disc.cx), cy: toY(disc.cy), r: toX(disc.r) }
   : null;
+// On an object, which of the disc's pale areas are faces of it (discParts).
+const parts = object && disc ? discParts(img, disc) : null;
+params.faces = parts ? parts.faces : null;
 params.ground = ground
   ? {
       top: toY(ground.top),
@@ -522,6 +530,42 @@ if (P.backdrop) {
     }
     for (var b3 = 0; b3 < doomed.length; b3++) { try { doomed[b3].remove(); cleared++; } catch (e4) {} }
     log.push('backdrop replaced, radius ' + Math.round(r0) + ', traced disc parts cleared ' + cleared);
+    // An object (P.faces, discParts): a tint fill inside the circle stays
+    // only on a face of the object; elsewhere it is the disc showing through
+    // (a strip between a line and its paper, the inside of an empty ring),
+    // an opaque grey in dark mode. Judged by points over its area, as the
+    // white pieces in pass two; a thin strip by its anchors.
+    if (P.faces) {
+      var FC = P.faces, tintPaths = paths(cg, []), offFace = [];
+      var onFace = function (a) {
+        var gx = Math.floor(((a[0] - ab[0]) / (ab[2] - ab[0])) * FC.n), gy = Math.floor(((ab[1] - a[1]) / (ab[1] - ab[3])) * FC.n);
+        return gx >= 0 && gy >= 0 && gx < FC.n && gy < FC.n && FC.cells.charAt(gy * FC.n + gx) === '1';
+      };
+      for (var t0 = 0; t0 < tintPaths.length; t0++) {
+        var tp = tintPaths[t0];
+        try { if (!tp.filled || nearest(tp.fillColor) !== 'tint') continue; } catch (e8) { continue; }
+        var tb = tp.geometricBounds;
+        if (dist([(tb[0] + tb[2]) / 2, (tb[1] + tb[3]) / 2], [dcx, dcy]) > r0) continue;
+        var tpoly = [], tn = tp.pathPoints.length, tin = 0, ton = 0, tanch = 0;
+        for (var t1 = 0; t1 < tn; t1++) { tpoly.push(tp.pathPoints[t1].anchor); if (onFace(tpoly[t1])) tanch++; }
+        for (var ty = 0; ty < 8; ty++)
+          for (var tx = 0; tx < 8; tx++) {
+            var tpt = [tb[0] + ((tx + 0.5) / 8) * (tb[2] - tb[0]), tb[1] - ((ty + 0.5) / 8) * (tb[1] - tb[3])], thit = false;
+            for (var te = 0, tf = tpoly.length - 1; te < tpoly.length; tf = te++)
+              if ((tpoly[te][1] > tpt[1]) !== (tpoly[tf][1] > tpt[1]) && tpt[0] < ((tpoly[tf][0] - tpoly[te][0]) * (tpt[1] - tpoly[te][1])) / (tpoly[tf][1] - tpoly[te][1]) + tpoly[te][0]) thit = !thit;
+            if (!thit) continue;
+            tin++;
+            if (onFace(tpt)) ton++;
+          }
+        if (tin >= 4 ? ton >= 0.5 * tin : tn && tanch >= 0.5 * tn) continue;
+        var twhole = tp.parent.typename === 'CompoundPathItem' ? tp.parent : tp, tseen = false;
+        for (var t2 = 0; t2 < offFace.length; t2++) if (offFace[t2] === twhole) tseen = true;
+        if (!tseen) offFace.push(twhole);
+      }
+      var throughGone = 0;
+      for (var t3 = 0; t3 < offFace.length; t3++) { try { offFace[t3].remove(); throughGone++; } catch (e9) {} }
+      log.push('object: faces ' + FC.count + ', disc showing through cleared ' + throughGone);
+    }
   } else log.push('backdrop: no disc in the draft, none drawn');
 }
 
@@ -772,6 +816,7 @@ if (params.linesPng) {
     ground,
     readPng(params.linesPng),
     strokes,
+    parts ? parts.holes : null,
   );
   params.mask = savePng(img.w, img.h, k => subject[k], 'underlay.png');
   if (subject.edge)
@@ -1180,7 +1225,7 @@ function dilate(mask, w, h, r) {
 // figure (open contours, the space between two birds); the lines decide
 // where its edge is, so paper no longer shows past a fur mark simplify
 // removed, or past a line end that thins.
-function underlaySubject(img, disc, ground, lines, strokes) {
+function underlaySubject(img, disc, ground, lines, strokes, holes) {
   const { w, h } = img;
   const draft = draftSubject(img, disc, ground);
   const ink = new Uint8Array(w * h);
@@ -1330,6 +1375,12 @@ function underlaySubject(img, disc, ground, lines, strokes) {
       if (!stands) continue;
       for (let y = from; y <= foot; y++) subject[y * w + x] = 1;
     }
+  }
+  // An object's holes (discParts): no paper inside an empty ring on the disc,
+  // nor under its line, so the disc shows there in every mode.
+  if (holes) {
+    const cut = dilate(holes, w, h, Math.max(2, Math.round(0.012 * w)));
+    for (let k = 0; k < w * h; k++) if (cut[k]) subject[k] = 0;
   }
   // Smooth the edge: the square grow and shrink steps leave stairs on a
   // diagonal or ragged edge (a fluffy chest against the disc), which show in
@@ -1829,6 +1880,119 @@ function inkMasses({ w, h, lum }, ground) {
     for (const p of part) keep[p] = 1;
   }
   return count ? { file: savePng(w, h, k => keep[k], 'ink.png'), count } : null;
+}
+
+// On an object (`--object`), the disc's pale grey-lavender inside the disc
+// is the disc showing through, except where it is a face of the object: a
+// pale area closed in by lines (most of its edge is ink) that lies on the
+// object (paper takes up 40 % or more of the ring just beyond its line), such
+// as a card's chip. The others are not faces: a strip between a line and its
+// paper, where the draft's paper sits a little off the line (it touches the
+// paper directly), and the inside of an empty ring or another pocket closed
+// off on the disc. The trace kept them as tint, an opaque grey in dark mode
+// and a light rim in contrast mode. Returns the faces as a cell map for pass
+// one, which keeps only tint fills lying on them, and the holes (pockets
+// that neither touch the paper nor lie on the object), which get no paper.
+function discParts(img, disc, n = 256) {
+  const { w, h, lum, blueish } = img;
+  const pale = new Uint8Array(w * h);
+  const ink = new Uint8Array(w * h);
+  for (let k = 0; k < w * h; k++) {
+    pale[k] = lum[k] >= 212 && lum[k] <= 238 && blueish[k] ? 1 : 0;
+    ink[k] = lum[k] < 120 ? 1 : 0;
+  }
+  const seen = new Uint8Array(w * h);
+  const parts = [];
+  for (let k0 = 0; k0 < w * h; k0++) {
+    if (!pale[k0] || seen[k0]) continue;
+    const part = [k0];
+    seen[k0] = 1;
+    for (let i = 0; i < part.length; i++) {
+      const p = part[i];
+      const x = p % w;
+      for (const q of [
+        x > 0 ? p - 1 : -1,
+        x < w - 1 ? p + 1 : -1,
+        p - w,
+        p + w,
+      ])
+        if (q >= 0 && q < w * h && pale[q] && !seen[q]) {
+          seen[q] = 1;
+          part.push(q);
+        }
+    }
+    parts.push(part);
+  }
+  // The largest is the disc itself (findDisc).
+  parts.sort((a, b) => b.length - a.length);
+  const faces = new Uint8Array(w * h);
+  const holes = new Uint8Array(w * h);
+  const edge = Math.max(2, Math.round(0.003 * w));
+  const beyond = Math.round(0.016 * w);
+  let faceCount = 0;
+  let holeCount = 0;
+  for (const part of parts.slice(1)) {
+    if (part.length < 30) continue;
+    let x0 = w;
+    let x1 = 0;
+    let y0 = h;
+    let y1 = 0;
+    let inDisc = 0;
+    for (const k of part) {
+      const x = k % w;
+      const y = (k - x) / w;
+      x0 = Math.min(x0, x);
+      x1 = Math.max(x1, x);
+      y0 = Math.min(y0, y);
+      y1 = Math.max(y1, y);
+      if ((x - disc.cx) ** 2 + (y - disc.cy) ** 2 < disc.r ** 2) inDisc++;
+    }
+    if (inDisc < 0.5 * part.length) continue;
+    // The ring around it: its edge (ink or paper it touches) and, beyond the
+    // line, what it sits on. Measured in its own box.
+    const bx0 = Math.max(0, x0 - beyond - 1);
+    const by0 = Math.max(0, y0 - beyond - 1);
+    const bw = Math.min(w - 1, x1 + beyond + 1) - bx0 + 1;
+    const bh = Math.min(h - 1, y1 + beyond + 1) - by0 + 1;
+    const local = new Uint8Array(bw * bh);
+    for (const k of part)
+      local[(Math.floor(k / w) - by0) * bw + (k % w) - bx0] = 1;
+    const near = dilate(local, bw, bh, edge);
+    const far = dilate(local, bw, bh, beyond);
+    let edgeAll = 0;
+    let edgeInk = 0;
+    let edgePaper = 0;
+    let farAll = 0;
+    let farPaper = 0;
+    for (let y = 0; y < bh; y++)
+      for (let x = 0; x < bw; x++) {
+        const j = y * bw + x;
+        if (local[j] || !far[j]) continue;
+        const k = (y + by0) * w + x + bx0;
+        if (near[j]) {
+          edgeAll++;
+          if (ink[k]) edgeInk++;
+          else if (lum[k] > 238) edgePaper++;
+        } else if (!ink[k]) {
+          farAll++;
+          if (lum[k] > 238) farPaper++;
+        }
+      }
+    const touchesPaper = edgePaper > 0.15 * edgeAll;
+    const face =
+      !touchesPaper && edgeInk >= 0.6 * edgeAll && farPaper >= 0.4 * farAll;
+    if (face) {
+      faceCount++;
+      for (const k of part) faces[k] = 1;
+    } else if (!touchesPaper) {
+      holeCount++;
+      for (const k of part) holes[k] = 1;
+    }
+  }
+  const map = figureCells(img, faces, n);
+  map.count = faceCount;
+  holes.count = holeCount;
+  return { faces: map, holes };
 }
 
 // The backdrop disc: the largest connected area of its pale grey-lavender.
