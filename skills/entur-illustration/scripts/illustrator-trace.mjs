@@ -145,6 +145,10 @@ params.linesPng = underlay
       'lines.png',
     )
   : '';
+// The finished strokes' geometry, for strokeEdge in the underlay.
+params.strokesJson = underlay
+  ? path.join(path.dirname(params.linesPng), 'strokes.json')
+  : '';
 params.linesScale = (100 * img.w) / params.size;
 const toX = v => (v * params.size) / img.w;
 const toY = v => (v * params.size) / img.h;
@@ -585,6 +589,35 @@ log.push('roughened ' + roughened);
 
 var saveOpts = new IllustratorSaveOptions();
 doc.saveAs(new File(P.ai), saveOpts);
+if (P.strokesJson) {
+  // The strokes' centre lines (Outline, Ground) and the closed shapes
+  // (Features, the Ink group), for the paper's edge in Node (strokeEdge).
+  var sj = [];
+  var r2 = function (v) { return Math.round(v * 100) / 100; };
+  var addPath = function (p, kind) {
+    if (p.hidden || p.pathPoints.length < 2) return;
+    var a = [];
+    for (var k = 0; k < p.pathPoints.length; k++) { var pq = p.pathPoints[k]; a.push('[' + [r2(pq.anchor[0]), r2(pq.anchor[1]), r2(pq.leftDirection[0]), r2(pq.leftDirection[1]), r2(pq.rightDirection[0]), r2(pq.rightDirection[1])].join(',') + ']'); }
+    sj.push('{"kind":"' + kind + '","closed":' + (p.closed ? 'true' : 'false') + ',"sw":' + (p.stroked ? r2(p.strokeWidth) : 0) + ',"pts":[' + a.join(',') + ']}');
+  };
+  var walkPaths = function (it, kind) {
+    if (it.hidden) return;
+    if (it.typename === 'GroupItem') { for (var j = 0; j < it.pageItems.length; j++) walkPaths(it.pageItems[j], kind); }
+    else if (it.typename === 'CompoundPathItem') { for (var j2 = 0; j2 < it.pathItems.length; j2++) addPath(it.pathItems[j2], kind); }
+    else if (it.typename === 'PathItem') addPath(it, kind);
+  };
+  for (var sl = 0; sl < doc.layers.length; sl++) {
+    var sly = doc.layers[sl];
+    var kindOf = sly.name === 'Outline' ? 'line' : sly.name === 'Ground' ? 'ground' : sly.name === 'Features' ? 'feature' : '';
+    for (var sm = 0; sm < sly.pageItems.length; sm++) {
+      var sit = sly.pageItems[sm];
+      if (kindOf) walkPaths(sit, kindOf);
+      else if (sly.name === 'Fill' && sit.name === 'Ink') walkPaths(sit, 'feature');
+    }
+  }
+  var sf = new File(P.strokesJson); sf.encoding = 'UTF-8'; sf.open('w');
+  sf.write('{"ab":[' + doc.artboards[0].artboardRect.join(',') + '],"items":[' + sj.join(',') + ']}'); sf.close();
+}
 if (P.linesPng) {
   // The finished lines alone (Outline, Ground, Features and the Ink group),
   // for the underlay in pass two: everything else is hidden, and the file is
@@ -730,8 +763,19 @@ end timeout`;
 }
 let result = runJsx(jsx);
 if (params.linesPng) {
-  const subject = underlaySubject(img, disc, ground, readPng(params.linesPng));
+  const strokes = fs.existsSync(params.strokesJson)
+    ? JSON.parse(fs.readFileSync(params.strokesJson, 'utf8'))
+    : null;
+  const subject = underlaySubject(
+    img,
+    disc,
+    ground,
+    readPng(params.linesPng),
+    strokes,
+  );
   params.mask = savePng(img.w, img.h, k => subject[k], 'underlay.png');
+  if (subject.edge)
+    result += ` | paper edge: ${subject.edge.chords} chords, ${subject.edge.removed} px off, ${subject.edge.added} px on`;
   params.figures = figureCells(img, subject.interior);
   result += ' | ' + runJsx(jsx2(params));
 }
@@ -1136,7 +1180,7 @@ function dilate(mask, w, h, r) {
 // figure (open contours, the space between two birds); the lines decide
 // where its edge is, so paper no longer shows past a fur mark simplify
 // removed, or past a line end that thins.
-function underlaySubject(img, disc, ground, lines) {
+function underlaySubject(img, disc, ground, lines, strokes) {
   const { w, h } = img;
   const draft = draftSubject(img, disc, ground);
   const ink = new Uint8Array(w * h);
@@ -1262,6 +1306,9 @@ function underlaySubject(img, disc, ground, lines) {
     subject.cuts = seedsOf.slice(1);
   }
   subject.continued = continued;
+  // The paper's edge along the strokes (rule 21), before the footprint and
+  // the smoothing.
+  if (strokes) subject.edge = strokeEdge(subject, ink, strokes, ground, w, h);
   // The ground line runs behind the body (animals and people stand in front
   // of it): where the body stands on the line, its paper covers the line's
   // thickness, down to just past its bottom edge — not below, which would
@@ -1315,6 +1362,338 @@ function underlaySubject(img, disc, ground, lines) {
     (v && !outside[k]) || (subject[k] && !draft[k] && !beyond[k]) ? 1 : 0,
   );
   return subject;
+}
+
+// The paper's edge follows the strokes (rule 21), the way a designer cuts it
+// by hand: along each contour stroke, and across a gap between two strokes
+// in a straight line. Walking round the paper's outline, each contour stroke
+// hands over to the next one: from its free end the edge goes on in the
+// stroke's own direction until it meets the next stroke (a back line carries
+// on behind the tail, so the notch between them stays background), else
+// from end to end, else between the nearest points. Paper past these chords
+// goes and a dent short of them fills, but only near the edge: nothing
+// changes deeper than 1.5 % of the width, no chord runs to the ground line,
+// and the ground band keeps its footprint. Against a designer's own cut of
+// a Samoyed this takes the visible difference down by about 40 %.
+function strokeEdge(subject, ink, strokes, ground, w, h) {
+  const [ax0, ay0, ax1, ay1] = strokes.ab;
+  const sx = w / (ax1 - ax0);
+  const sy = h / (ay0 - ay1);
+  const at = (x, y) => {
+    const xx = Math.round(x);
+    const yy = Math.round(y);
+    return xx >= 0 && yy >= 0 && xx < w && yy < h ? yy * w + xx : -1;
+  };
+  const bez = (p0, p1, p2, p3, t) => {
+    const u = 1 - t;
+    const f = i =>
+      u * u * u * p0[i] +
+      3 * u * u * t * p1[i] +
+      3 * u * t * t * p2[i] +
+      t * t * t * p3[i];
+    return [f(0), f(1)];
+  };
+  // Centre-line points per path, and which path each stroke pixel is.
+  const lines = [];
+  const sid = new Int32Array(w * h).fill(-1);
+  for (const s of strokes.items) {
+    const a = s.pts;
+    const segs = s.closed ? a.length : a.length - 1;
+    const pts = [];
+    for (let i = 0; i < segs; i++) {
+      const p = a[i];
+      const q = a[(i + 1) % a.length];
+      const n = Math.max(
+        8,
+        Math.ceil((Math.hypot(q[0] - p[0], q[1] - p[1]) * sx) / 2),
+      );
+      for (let k = i ? 1 : 0; k <= n; k++) {
+        const [x, y] = bez(
+          [p[0], p[1]],
+          [p[4], p[5]],
+          [q[2], q[3]],
+          [q[0], q[1]],
+          k / n,
+        );
+        pts.push([(x - ax0) * sx, (ay0 - y) * sy]);
+      }
+    }
+    if (!pts.length) continue;
+    const id =
+      lines.push({
+        pts,
+        free: !s.closed && s.kind === 'line',
+        ground: s.kind === 'ground',
+      }) - 1;
+    const rad = Math.max(1, Math.round(((s.sw || 1) * sx) / 2));
+    for (const [x, y] of pts)
+      for (let dy = -rad; dy <= rad; dy++)
+        for (let dx = -rad; dx <= rad; dx++) {
+          if (dx * dx + dy * dy > rad * rad) continue;
+          const k = at(x + dx, y + dy);
+          if (k >= 0) sid[k] = id;
+        }
+  }
+  if (!lines.length) return { chords: 0, removed: 0, added: 0 };
+  // The nearest path to each pixel near the strokes.
+  const R = Math.max(2, Math.round(0.012 * w));
+  const nid = sid.slice();
+  const dist = new Int32Array(w * h).fill(R + 1);
+  let front = [];
+  for (let k = 0; k < w * h; k++)
+    if (sid[k] >= 0) {
+      dist[k] = 0;
+      front.push(k);
+    }
+  for (let d = 1; d <= R && front.length; d++) {
+    const next = [];
+    for (const k of front) {
+      const x = k % w;
+      for (const n of [
+        x > 0 ? k - 1 : -1,
+        x < w - 1 ? k + 1 : -1,
+        k - w,
+        k + w,
+      ])
+        if (n >= 0 && n < w * h && dist[n] > d) {
+          dist[n] = d;
+          nid[n] = nid[k];
+          next.push(n);
+        }
+    }
+    front = next;
+  }
+  // The outer outline of each piece of paper, in order (Moore tracing).
+  const D = [
+    [1, 0],
+    [1, 1],
+    [0, 1],
+    [-1, 1],
+    [-1, 0],
+    [-1, -1],
+    [0, -1],
+    [1, -1],
+  ];
+  const outline = start => {
+    const loop = [start];
+    let c = start;
+    let b = start - 1;
+    let first = -1;
+    for (let step = 0; step < 4 * w * h; step++) {
+      const cx = c % w;
+      const cy = (c - cx) / w;
+      const db = D.findIndex(
+        ([dx, dy]) => dx === (b % w) - cx && dy === Math.floor(b / w) - cy,
+      );
+      let next = -1;
+      let nb = b;
+      for (let i = 1; i <= 8; i++) {
+        const d = (db + i) % 8;
+        const x = cx + D[d][0];
+        const y = cy + D[d][1];
+        if (x >= 0 && y >= 0 && x < w && y < h && subject[y * w + x]) {
+          next = y * w + x;
+          const pd = (db + i - 1) % 8;
+          nb = (cy + D[pd][1]) * w + cx + D[pd][0];
+          break;
+        }
+      }
+      if (next < 0 || (c === start && next === first)) break;
+      if (first < 0) first = next;
+      b = nb;
+      c = next;
+      loop.push(c);
+    }
+    loop.pop();
+    return loop;
+  };
+  // Pieces of a mask as pixel lists; the first is the top-left pixel.
+  const pieces = mask => {
+    const seen = new Uint8Array(w * h);
+    const all = [];
+    for (let k0 = 0; k0 < w * h; k0++) {
+      if (!mask[k0] || seen[k0]) continue;
+      const part = [k0];
+      seen[k0] = 1;
+      for (let i = 0; i < part.length; i++) {
+        const p = part[i];
+        const x = p % w;
+        for (const q of [
+          x > 0 ? p - 1 : -1,
+          x < w - 1 ? p + 1 : -1,
+          p - w,
+          p + w,
+        ])
+          if (q >= 0 && q < w * h && mask[q] && !seen[q]) {
+            seen[q] = 1;
+            part.push(q);
+          }
+      }
+      all.push(part);
+    }
+    return all;
+  };
+  const loops = pieces(subject)
+    .filter(part => part.length > 0.002 * w * h)
+    .map(part => outline(part[0]));
+  // Chords between consecutive contour strokes.
+  const E = 0.035 * w;
+  const reach = 0.06 * w;
+  const cone = Math.cos((35 * Math.PI) / 180);
+  const freeEnd = (id, p) => {
+    const L = lines[id];
+    if (!L.free) return null;
+    const n = L.pts.length;
+    const d0 = Math.hypot(L.pts[0][0] - p[0], L.pts[0][1] - p[1]);
+    const d1 = Math.hypot(L.pts[n - 1][0] - p[0], L.pts[n - 1][1] - p[1]);
+    if (Math.min(d0, d1) > E) return null;
+    const last = d1 < d0;
+    const e = last ? L.pts[n - 1] : L.pts[0];
+    // Its direction over the last 1.2 % of the width.
+    const step = last ? -1 : 1;
+    let j = last ? n - 1 : 0;
+    for (
+      let acc = 0;
+      j + step >= 0 && j + step < n && acc < 0.012 * w;
+      j += step
+    )
+      acc += Math.hypot(
+        L.pts[j + step][0] - L.pts[j][0],
+        L.pts[j + step][1] - L.pts[j][1],
+      );
+    const t = [e[0] - L.pts[j][0], e[1] - L.pts[j][1]];
+    const tl = Math.hypot(t[0], t[1]) || 1;
+    return { e, t: [t[0] / tl, t[1] / tl] };
+  };
+  const ahead = (f, id) => {
+    let best = null;
+    let bd = reach;
+    for (const q of lines[id].pts) {
+      const v = [q[0] - f.e[0], q[1] - f.e[1]];
+      const d = Math.hypot(v[0], v[1]);
+      if (d < 1 || d > bd || (v[0] * f.t[0] + v[1] * f.t[1]) / d < cone)
+        continue;
+      bd = d;
+      best = q;
+    }
+    return best;
+  };
+  const nearestOn = (id, p) => {
+    let best = lines[id].pts[0];
+    let bd = Infinity;
+    for (const q of lines[id].pts) {
+      const d = Math.hypot(q[0] - p[0], q[1] - p[1]);
+      if (d < bd) {
+        bd = d;
+        best = q;
+      }
+    }
+    return best;
+  };
+  const xy = k => [k % w, Math.floor(k / w)];
+  const walls = ink.slice();
+  let chords = 0;
+  for (const loop of loops) {
+    const n = loop.length;
+    const runs = [];
+    for (let i = 0; i < n; i++) {
+      const id = dist[loop[i]] <= R ? nid[loop[i]] : -1;
+      const r = runs[runs.length - 1];
+      if (r && r.id === id) r.end = i;
+      else runs.push({ id, start: i, end: i });
+    }
+    const wrap = list => {
+      if (list.length > 1 && list[0].id === list[list.length - 1].id)
+        list[0].start = list.pop().start - n;
+      return list;
+    };
+    const kept = [];
+    for (const r of wrap(runs)) {
+      if (r.id < 0 || r.end - r.start + 1 < 0.006 * w) continue;
+      const m = kept[kept.length - 1];
+      if (m && m.id === r.id) m.end = r.end;
+      else kept.push({ ...r });
+    }
+    wrap(kept);
+    for (let i = 0; i < kept.length; i++) {
+      const A = kept[i];
+      const B = kept[(i + 1) % kept.length];
+      // No chord to or from the ground line: the gap between two feet
+      // stays background, and the footprint decides the line itself.
+      if (A.id === B.id || lines[A.id].ground || lines[B.id].ground) continue;
+      const exit = xy(loop[((A.end % n) + n) % n]);
+      const entry = xy(loop[((B.start % n) + n) % n]);
+      const fa = freeEnd(A.id, exit);
+      const fb = freeEnd(B.id, entry);
+      let pa;
+      let pb;
+      let c;
+      if (fa && (c = ahead(fa, B.id))) [pa, pb] = [fa.e, c];
+      else if (fb && (c = ahead(fb, A.id))) [pa, pb] = [c, fb.e];
+      else if (fa && fb) [pa, pb] = [fa.e, fb.e];
+      else {
+        pa = fa ? fa.e : nearestOn(A.id, exit);
+        pb = fb ? fb.e : nearestOn(B.id, pa);
+      }
+      const len = Math.ceil(Math.hypot(pb[0] - pa[0], pb[1] - pa[1]));
+      if (len <= 2) continue;
+      chords++;
+      for (let t = 0; t <= len; t++) {
+        const k = at(
+          pa[0] + ((pb[0] - pa[0]) * t) / len,
+          pa[1] + ((pb[1] - pa[1]) * t) / len,
+        );
+        if (k < 0) continue;
+        for (const q of [k, k - 1, k + 1, k - w, k + w])
+          if (q >= 0 && q < w * h) walls[q] = 1;
+      }
+    }
+  }
+  // Outside the strokes and chords, the edge pulled to the middle of a line.
+  const wall = dilate(walls, w, h, 1);
+  const out = new Uint8Array(w * h);
+  const stack = [];
+  for (let x = 0; x < w; x++) stack.push(x, (h - 1) * w + x);
+  for (let y = 0; y < h; y++) stack.push(y * w, y * w + w - 1);
+  while (stack.length) {
+    const k = stack.pop();
+    if (out[k] || wall[k]) continue;
+    out[k] = 1;
+    const x = k % w;
+    if (x > 0) stack.push(k - 1);
+    if (x < w - 1) stack.push(k + 1);
+    if (k >= w) stack.push(k - w);
+    if (k < w * h - w) stack.push(k + w);
+  }
+  const outside = dilate(out, w, h, 1 + Math.max(1, Math.round(0.003 * w)));
+  const depth = Math.max(2, Math.round(0.015 * w));
+  const deep = erode(subject, w, h, depth);
+  const near = dilate(subject, w, h, depth);
+  const centre = ground ? (ground.top + ground.bottom + 1) / 2 : -Infinity;
+  const band = Math.round(0.012 * w);
+  const free = k => Math.abs(Math.floor(k / w) - centre) > band;
+  const before = subject.slice();
+  let removed = 0;
+  let added = 0;
+  for (const part of pieces(before.map((v, k) => (v && outside[k] ? 1 : 0)))) {
+    if (part.some(k => deep[k])) continue;
+    for (const k of part)
+      if (free(k)) {
+        subject[k] = 0;
+        removed++;
+      }
+  }
+  for (const part of pieces(
+    before.map((v, k) => (!v && !outside[k] ? 1 : 0)),
+  )) {
+    if (!part.every(k => near[k])) continue;
+    for (const k of part)
+      if (free(k)) {
+        subject[k] = 1;
+        added++;
+      }
+  }
+  return { chords, removed, added };
 }
 
 // A coarse map of where figures are: their insides without the line walls,
