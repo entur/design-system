@@ -20,6 +20,9 @@ The values below were measured from the library SVGs; the standard → dark → 
 | `peach`    | The one warm accent per motif                              | `#FFBF9E` | Peach 40    | `#FFBF9E` | Peach 40    | `#FFBF9E` | Peach 40    |
 | `coral`    | Only the line under a vehicle and staff uniform panels     | `#FF5959` | Coral 40    | `#FF9494` | Coral 30    | `#FF5959` | Coral 40    |
 | `glow`     | Light sources: lit windows, lamps, sun in a scene          | `#9EA0BD` | Blue 50     | `#FFEEB3` | Canary 30   | `#9EA0BD` | Blue 50     |
+| `window`   | Window glass of buses, trains, trams and boats             | `#181C56` | Lavender 90 | `#FFEEB3` | Canary 30   | `#626493` | Blue 70     |
+
+A vehicle's windows are navy like ink by day and light up in dark mode: in all five library vehicles the window fills, and only they, turn Canary 30 in the dark file and Blue 70 in contrast, while the other ink fills (a tyre, a light) turn Ebony 65 like ink. In Figma they bind to the Window variable of the Transports group.
 
 A bike or scooter lamp beam in dark mode uses Canary 20 (`#FFF4CD`) at 30 % opacity; it does not exist in the other two modes, so add it by hand to the dark file only.
 

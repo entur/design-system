@@ -232,6 +232,11 @@ const TOOLS = [
           description:
             "The subject is an object (with construction animals): no eyes or noses, and inside the circle the disc's pale colour stays only on a face of the object, not in a strip between a line and its paper or inside an empty ring.",
         },
+        vehicle: {
+          type: 'boolean',
+          description:
+            'The subject is a vehicle in side view (people construction): in the dark and contrast files white areas take the vehicle role and the window fills the window role (lit in dark mode), and a paper underlay fills the body.',
+        },
       },
       required: ['png', 'outDir', 'name'],
     },
@@ -249,6 +254,7 @@ const TOOLS = [
       underlay,
       simplify,
       object,
+      vehicle,
     }) => {
       const a = [
         path.join(HERE, 'illustrator-trace.mjs'),
@@ -268,6 +274,7 @@ const TOOLS = [
       if (underlay) a.push('--underlay');
       if (simplify === false) a.push('--no-simplify');
       if (object) a.push('--object');
+      if (vehicle) a.push('--vehicle');
       return runNode(a, 1900); // heavy drafts, or other large documents open, take long
     },
   },

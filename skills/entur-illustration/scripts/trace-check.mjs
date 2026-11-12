@@ -3,7 +3,7 @@
 // from, so nothing in the draft is lost and nothing is added on the way.
 // macOS, zero dependencies (qlmanage renders the SVG, sips decodes PNGs).
 //
-//   node trace-check.mjs <draft.png> <traced.svg> [--out <dir>] [--json] [--object]
+//   node trace-check.mjs <draft.png> <traced.svg> [--out <dir>] [--json] [--object] [--vehicle]
 //
 // The SVG is the standard-mode export of the trace; its artboard covers the
 // whole draft, as illustrator-trace.mjs places it. Reports, in artboard
@@ -37,7 +37,7 @@ const [draftFile, svgFile] = args.filter(
 );
 if (!draftFile || !svgFile) {
   console.error(
-    'Usage: node trace-check.mjs <draft.png> <traced.svg> [--out <dir>] [--json] [--object]',
+    'Usage: node trace-check.mjs <draft.png> <traced.svg> [--out <dir>] [--json] [--object] [--vehicle]',
   );
   process.exit(2);
 }
@@ -265,8 +265,29 @@ function discOf(img) {
 // gaps up to 2·R closed, the white or pale disc around them left out. Inside
 // the disc, white is figure (the background there is the disc's grey), so a
 // figure drawn with open contours, like the library doves, stays whole.
+// A vehicle traced with --vehicle (illustrator-trace.mjs, closeSides): its
+// open ends are walled off at the left and right edge of the ink, so a
+// train's last car, which runs off with its lines, is part of the figure.
+const vehicle = flag('vehicle');
 function silhouette(ink, w, h, R, img) {
   const wall = near(ink, w, h, R);
+  if (vehicle) {
+    let x0 = w;
+    let x1 = -1;
+    let y0 = h;
+    let y1 = -1;
+    for (let i = 0; i < w * h; i++)
+      if (ink[i]) {
+        const x = i % w;
+        const y = (i - x) / w;
+        x0 = Math.min(x0, x);
+        x1 = Math.max(x1, x);
+        y0 = Math.min(y0, y);
+        y1 = Math.max(y1, y);
+      }
+    for (let y = y0; y <= y1 && x1 >= 0; y++)
+      for (const x of [x0, x0 + 1, x1 - 1, x1]) wall[y * w + x] = 1;
+  }
   const disc = img && discOf(img);
   const white = i =>
     img.rgb[i * 3] > 238 &&

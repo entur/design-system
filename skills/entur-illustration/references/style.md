@@ -203,8 +203,8 @@ Check by putting the new figure next to a library person (Woman holding package,
 ### Drawing vehicles
 
 - Strict side view, long and low; contour slightly bowed.
-- Windows as ink fills with one or two short paper glint strokes.
-- Rail, road or water as a single line under it — a coral line under trains.
+- Windows as ink fills with one or two short paper glint strokes; in dark mode they light up Canary 30 (the `window` role) and the body turns Ebony 40 (`vehicle`).
+- One coral line under it: solid for rails (train, tram), dashed for a road (bus, scooter), a gentle wave for water (boat). No disc, no Peach and no navy ground line; tint only on roof units and side panels.
 
 ### Small vocabulary
 

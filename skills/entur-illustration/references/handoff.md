@@ -76,6 +76,8 @@ Insert the three mode SVGs as frames, then bind each frame:
 | `lavender`                   | —                                      | `Fill/Highlight 2`                           |
 | `coral` (staff panels only)  | —                                      | `Fill/Highlight 3`                           |
 
+Vehicles bind to their own group, `Transports/<set>/…`: Stroke for the lines, Background for the white body (`vehicle`), Window for the window fills (`window`), Fill for small ink fills such as a tyre, Legline for the coral line, Background Subdued for tint, and Reflex for the glints, which are clear in Light and white in Dark.
+
 The variables resolve to the palette's own values: `Animal/Standard/Fill/Circle` is `#EAEAF1` in Light and `#CCCDD4` at 30 % in Dark, and the alpha lives in the variable, so the bound paint itself gets opacity 1. In Dark, people's `Fill/Cloth` and `Fill/Shoe` turn Ebony 30 while `Fill/Skin` turns Ebony 5: the cloth and skin split of `palette.md`. A trace cannot tell skin from clothes, so all paper on a person starts as `Fill/Skin`; rebind the clothes by hand. Report a colour with no role (lavender on an animal, tint on a person) instead of guessing.
 
 With the Figma MCP server, after loading `figma-use`, inside `use_figma`:

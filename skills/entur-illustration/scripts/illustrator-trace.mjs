@@ -7,7 +7,7 @@
 //     [--size 360] [--threshold 110] [--max-stroke 20] [--contour 1.5] [--detail 1.0]
 //     [--contour-share 0.25] [--min-ink-width 4] [--roughen] [--fill-rough] [--ink-shift]
 //     [--construction animals] [--carriers profiles.ai] [--backdrop] [--underlay]
-//     [--no-features] [--no-simplify] [--object]
+//     [--no-features] [--no-simplify] [--object] [--vehicle]
 //
 // Two traces of the same PNG on a `--size` pt artboard (360 puts a figure at
 // library scale):
@@ -38,6 +38,13 @@
 // keeps the disc's pale colour on the object only where it is a face of it
 // (discParts): a strip between a line and its paper, or the inside of an
 // empty ring on the disc, is the disc showing through.
+// `--vehicle` (a bus, train, tram, boat or scooter, people construction)
+// gives the dark and contrast files the library's vehicle roles: white areas
+// become the `vehicle` body (Ebony 40 in dark mode), and the ink fills of the
+// windows (vehicleWindows) the `window` role (Canary 30 in dark mode), with
+// the paper glints inside them kept as paper. It turns on `--underlay`: the
+// body's white joins the background through the open contour, so the colour
+// trace drops it, and the underlay is the body.
 // Animals are also simplified before the weights go on: specks dropped, a
 // contour broken into pieces joined end to end, the ground replaced by one
 // plain line on a Ground layer under the fills, and short fur marks thinned
@@ -81,8 +88,11 @@ const contour = Number(opt('contour', animals ? 2.1 : 1.5));
 const detail = Number(opt('detail', animals ? 1.7 : 1.0));
 const carriers = opt('carriers', '');
 const backdrop = flag('backdrop');
-const underlay = flag('underlay');
 const object = flag('object');
+const vehicle = flag('vehicle');
+// A vehicle's white body joins the background through its open contour, so
+// the colour trace drops it: the underlay is its body.
+const underlay = flag('underlay') || vehicle;
 const features = animals && !object && !flag('no-features');
 const simplify = animals && !flag('no-simplify');
 // A traced draft already carries the hand tremor; Roughen on top makes it bumpy.
@@ -163,6 +173,8 @@ params.disc = disc
 // On an object, which of the disc's pale areas are faces of it (discParts).
 const parts = object && disc ? discParts(img, disc) : null;
 params.faces = parts ? parts.faces : null;
+// On a vehicle, where its windows are (vehicleWindows).
+params.windows = vehicle ? vehicleWindows(img) : null;
 params.ground = ground
   ? {
       top: toY(ground.top),
@@ -267,21 +279,49 @@ for (var i0 = 0; i0 < cp.length; i0++) {
 }
 for (var i2 = 0; i2 < sliver.length; i2++) { try { sliver[i2].remove(); dropped++; slivers++; } catch (e5) {} }
 if (slivers) cp = paths(cg, []);
+// Vehicles (P.windows): the share of an area's points that fall on a window
+// in the draft. A window's ink fill is named Window and a paper glint inside
+// one Glint, so the mode mapping gives them their roles.
+function onWindows(item) {
+  var M = P.windows, b = item.geometricBounds, poly = [], n = item.pathPoints.length, inside = 0, hits = 0, anchors = 0;
+  var cell = function (a) {
+    var gx = Math.floor(((a[0] - ab[0]) / (ab[2] - ab[0])) * M.n), gy = Math.floor(((ab[1] - a[1]) / (ab[1] - ab[3])) * M.n);
+    return gx >= 0 && gy >= 0 && gx < M.n && gy < M.n && M.cells.charAt(gy * M.n + gx) === '1';
+  };
+  for (var a0 = 0; a0 < n; a0++) { poly.push(item.pathPoints[a0].anchor); if (cell(poly[a0])) anchors++; }
+  for (var sy = 0; sy < 8; sy++)
+    for (var sx = 0; sx < 8; sx++) {
+      var pt = [b[0] + ((sx + 0.5) / 8) * (b[2] - b[0]), b[1] - ((sy + 0.5) / 8) * (b[1] - b[3])], hit = false;
+      for (var e = 0, f = poly.length - 1; e < poly.length; f = e++)
+        if ((poly[e][1] > pt[1]) !== (poly[f][1] > pt[1]) && pt[0] < ((poly[f][0] - poly[e][0]) * (pt[1] - poly[e][1])) / (poly[f][1] - poly[e][1]) + poly[e][0]) hit = !hit;
+      if (!hit) continue;
+      inside++;
+      if (cell(pt)) hits++;
+    }
+  return inside >= 4 ? hits / inside : n ? anchors / n : 0;
+}
+function nameWhole(item, label) { (item.parent.typename === 'CompoundPathItem' ? item.parent : item).name = label; }
+var windowFills = 0, glints = 0;
 for (var i = cp.length - 1; i >= 0; i--) {
   var it = cp[i];
   if (!it.filled) { continue; }
   var k = nearest(it.fillColor);
-  if (k === 'paper' && !touchesEdge(it)) { it.fillColor = rgb(P.palette.paper); it.stroked = false; kept++; continue; }
+  if (k === 'paper' && !touchesEdge(it)) {
+    it.fillColor = rgb(P.palette.paper); it.stroked = false; kept++;
+    if (P.windows && onWindows(it) >= 0.5) { nameWhole(it, 'Glint'); glints++; }
+    continue;
+  }
   // Ink areas: keep the wide ones (uniform, hair, shoes) as fills; drop the
   // thin, line-like ones, which the stroke trace draws. Mean width ≈ 2·area/perimeter.
   var wide = k === 'ink' && it.length > 0 && (2 * Math.abs(it.area)) / it.length > P.minInkWidth;
   if (k === 'paper' || (k === 'ink' && (!wide || P.inkFromMask))) { it.remove(); dropped++; continue; }
   if (k === 'ink') inkAreas++;
   it.fillColor = rgb(P.palette[k]); it.stroked = false; kept++;
+  if (P.windows && k === 'ink' && onWindows(it) >= 0.5) { nameWhole(it, 'Window'); windowFills++; }
   // Print misregistration: colour shifts off its line; ink areas stay put.
   if (k !== 'ink') it.translate(P.shift[0], P.shift[1]);
 }
-log.push('colour areas kept ' + kept + ' (ink ' + inkAreas + '), dropped ' + dropped + (slivers ? ' (slivers ' + slivers + ')' : ''));
+log.push('colour areas kept ' + kept + ' (ink ' + inkAreas + '), dropped ' + dropped + (slivers ? ' (slivers ' + slivers + ')' : '') + (P.windows ? ', windows ' + windowFills + ', glints ' + glints : ''));
 
 // Line trace, on top: strokes only. Lines touch the wide ink areas, so a
 // fills trace would merge them into one filled region; the wide areas come
@@ -669,7 +709,22 @@ if (P.linesPng) {
   for (var hl = 0; hl < doc.layers.length; hl++) {
     var ly = doc.layers[hl];
     if (ly.name === 'Circle') ly.visible = false;
-    if (ly.name === 'Fill') for (var hi = 0; hi < ly.pageItems.length; hi++) if (ly.pageItems[hi].name !== 'Ink') ly.pageItems[hi].hidden = true;
+    if (ly.name === 'Fill')
+      for (var hi = 0; hi < ly.pageItems.length; hi++) {
+        var hit = ly.pageItems[hi];
+        if (hit.name === 'Ink') continue;
+        // A vehicle's windows close its outline in the drawing, so its ink
+        // fills stay in the lines too; only the colour areas go.
+        if (P.windows && hit === cg) {
+          var cps = paths(cg, []);
+          for (var hj = 0; hj < cps.length; hj++) {
+            try { if (cps[hj].filled && nearest(cps[hj].fillColor) === 'ink') continue; } catch (eh) {}
+            (cps[hj].parent.typename === 'CompoundPathItem' ? cps[hj].parent : cps[hj]).hidden = true;
+          }
+          continue;
+        }
+        hit.hidden = true;
+      }
   }
   var po = new ExportOptionsPNG24();
   po.horizontalScale = po.verticalScale = P.linesScale;
@@ -817,6 +872,7 @@ if (params.linesPng) {
     readPng(params.linesPng),
     strokes,
     parts ? parts.holes : null,
+    vehicle,
   );
   params.mask = savePng(img.w, img.h, k => subject[k], 'underlay.png');
   if (subject.edge)
@@ -836,13 +892,16 @@ for (const [mode, idx] of [
   ['contrast', 2],
 ]) {
   let out = markBackdrop(svg);
+  if (vehicle) out = markVehicle(out);
   for (const [, values] of Object.entries(PALETTE)) {
     const from = values[0];
     out = out.replace(new RegExp(from, 'gi'), `__${values[idx].slice(1)}__`);
   }
   out = out
     .replace(/__([0-9A-F]{6})__/g, '#$1')
-    .replace(/__BACKDROP__/g, backdropFill(mode));
+    .replace(/__BACKDROP__/g, backdropFill(mode))
+    .replace(/__VEHICLE__/g, mode === 'darkmode' ? '#999AA7' : '#FFFFFF')
+    .replace(/__WINDOW__/g, mode === 'darkmode' ? '#FFEEB3' : '#626493');
   const file = path.join(outDir, `${name}-${mode}.svg`);
   fs.writeFileSync(file, out);
   console.log(file);
@@ -853,6 +912,20 @@ function backdropFill(mode) {
   return mode === 'darkmode'
     ? 'fill="#CCCDD4" fill-opacity="0.3"'
     : 'fill="#393D79"';
+}
+
+// On a vehicle (--vehicle), marks the white fills, the underlay among them,
+// as the vehicle body and the ink fills named Window as windows, so the mode
+// mapping gives them the library's vehicle roles (palette.md: vehicle,
+// window). The glints stay paper.
+function markVehicle(svg) {
+  return svg.replace(/<(?:path|rect|polygon|circle|ellipse)\b[^>]*>/g, tag => {
+    const id = (tag.match(/\bid="([^"]*)"/) || [])[1] || '';
+    if (/^Window/.test(id))
+      return tag.replace(/fill="#181C56"/i, 'fill="__WINDOW__"');
+    if (/^Glint/.test(id)) return tag;
+    return tag.replace(/fill="#FFFFFF"/i, 'fill="__VEHICLE__"');
+  });
 }
 
 // Marks the tint fills inside the exported Circle layer, so the mode mapping
@@ -1068,7 +1141,7 @@ function erode(mask, w, h, r) {
 // flooded from the image edge. Inside the backdrop disc only disc-coloured
 // pixels let the flood through, so white areas behind a gap in a contour
 // stay inside.
-function draftSubject(img, disc, ground, grow = 5) {
+function draftSubject(img, disc, ground, grow = 5, sides = false) {
   const { w, h, lum } = img;
   // Grow a mask by r pixels (square kernel, two passes).
   const growBy = (m, r) => {
@@ -1126,6 +1199,7 @@ function draftSubject(img, disc, ground, grow = 5) {
   // give a seagull's far wing its paper, but bridges paper between figures
   // standing close (a hen and a chick, two doves), which is worse.
   const wall = growBy(ink, grow);
+  if (sides) closeSides(wall, ink, w, h);
   const outside = flood(wall);
   // Shrink back so the underlay sits just inside the lines, then drop thin
   // spurs (a ground dash touching a paw) by shrinking and regrowing the
@@ -1218,6 +1292,31 @@ function dilate(mask, w, h, r) {
   return out;
 }
 
+// A vehicle drawn in side view is often left open at one end: the last car
+// of a train runs off with its lines and no end line, as in the library's
+// train, whose body is grey right up to where its lines start. Walls at the
+// left and right edge of the ink, from its top to its bottom, close those
+// ends; the sky above the roof and the space below the body stay open at the
+// top and bottom.
+function closeSides(wall, ink, w, h) {
+  let x0 = w;
+  let x1 = -1;
+  let y0 = h;
+  let y1 = -1;
+  for (let k = 0; k < w * h; k++)
+    if (ink[k]) {
+      const x = k % w;
+      const y = (k - x) / w;
+      x0 = Math.min(x0, x);
+      x1 = Math.max(x1, x);
+      y0 = Math.min(y0, y);
+      y1 = Math.max(y1, y);
+    }
+  if (x1 < 0) return;
+  for (let y = y0; y <= y1; y++)
+    for (const x of [x0, x0 + 1, x1 - 1, x1]) wall[y * w + x] = 1;
+}
+
 // The underlay: the draft's silhouette (draftSubject) cut back to the
 // finished lines, rendered in pass one. Inside the lines means: not reached
 // from the edge once gaps up to 2 % of the width are closed, and the edge
@@ -1225,9 +1324,22 @@ function dilate(mask, w, h, r) {
 // figure (open contours, the space between two birds); the lines decide
 // where its edge is, so paper no longer shows past a fur mark simplify
 // removed, or past a line end that thins.
-function underlaySubject(img, disc, ground, lines, strokes, holes) {
+function underlaySubject(
+  img,
+  disc,
+  ground,
+  lines,
+  strokes,
+  holes,
+  vehicle = false,
+) {
   const { w, h } = img;
-  const draft = draftSubject(img, disc, ground);
+  // A vehicle's contour is open in wider gaps than an animal's (a bus's
+  // front and back), and a train's last car runs off its open end: close
+  // gaps up to 2 % of the width and wall off the vehicle's sides (closeSides).
+  const draft = vehicle
+    ? draftSubject(img, disc, ground, Math.round(0.01 * w), true)
+    : draftSubject(img, disc, ground);
   const ink = new Uint8Array(w * h);
   for (let y = 0; y < h; y++)
     for (let x = 0; x < w; x++) {
@@ -1237,6 +1349,7 @@ function underlaySubject(img, disc, ground, lines, strokes, holes) {
     }
   const gap = Math.max(2, Math.round(0.02 * w));
   const wall = dilate(ink, w, h, gap);
+  if (vehicle) closeSides(wall, ink, w, h);
   const outside = new Uint8Array(w * h);
   const stack = [];
   for (let x = 0; x < w; x++) stack.push(x, (h - 1) * w + x);
@@ -1880,6 +1993,73 @@ function inkMasses({ w, h, lum }, ground) {
     for (const p of part) keep[p] = 1;
   }
   return count ? { file: savePng(w, h, k => keep[k], 'ink.png'), count } : null;
+}
+
+// A vehicle's windows in the draft: solid dark areas left once the ink is
+// opened (lines are too thin to survive), at least 1.5 % of the width
+// across, filling most of their box, and centred in the upper three quarters
+// of the vehicle. Wheels, tyres and small dark details sit lower or are
+// smaller. On the library's bus, train, tram, boat and scooter this finds
+// exactly the fills that turn Canary 30 in their dark files. Returned as a
+// cell map for pass one.
+function vehicleWindows(img, n = 256) {
+  const { w, h, lum } = img;
+  const ink = new Uint8Array(w * h);
+  let vy0 = h;
+  let vy1 = 0;
+  for (let k = 0; k < w * h; k++)
+    if (lum[k] < 120) {
+      ink[k] = 1;
+      const y = Math.floor(k / w);
+      vy0 = Math.min(vy0, y);
+      vy1 = Math.max(vy1, y);
+    }
+  const r = Math.max(2, Math.round(0.0045 * w));
+  const opened = dilate(erode(ink, w, h, r), w, h, r);
+  const masses = opened.map((v, k) => (v && ink[k] ? 1 : 0));
+  const windows = new Uint8Array(w * h);
+  const seen = new Uint8Array(w * h);
+  let count = 0;
+  for (let k0 = 0; k0 < w * h; k0++) {
+    if (!masses[k0] || seen[k0]) continue;
+    const part = [k0];
+    seen[k0] = 1;
+    let x0 = w;
+    let x1 = 0;
+    let y0 = h;
+    let y1 = 0;
+    for (let i = 0; i < part.length; i++) {
+      const p = part[i];
+      const x = p % w;
+      const y = (p - x) / w;
+      x0 = Math.min(x0, x);
+      x1 = Math.max(x1, x);
+      y0 = Math.min(y0, y);
+      y1 = Math.max(y1, y);
+      for (const q of [
+        x > 0 ? p - 1 : -1,
+        x < w - 1 ? p + 1 : -1,
+        p - w,
+        p + w,
+      ])
+        if (q >= 0 && q < w * h && masses[q] && !seen[q]) {
+          seen[q] = 1;
+          part.push(q);
+        }
+    }
+    const box = (x1 - x0 + 1) * (y1 - y0 + 1);
+    if (
+      part.length >= (0.015 * w) ** 2 &&
+      part.length >= 0.55 * box &&
+      (y0 + y1) / 2 < vy0 + 0.75 * (vy1 - vy0)
+    ) {
+      count++;
+      for (const k of part) windows[k] = 1;
+    }
+  }
+  const map = figureCells(img, windows, n);
+  map.count = count;
+  return map;
 }
 
 // On an object (`--object`), the disc's pale grey-lavender inside the disc

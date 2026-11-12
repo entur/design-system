@@ -53,6 +53,8 @@ export const ROLES = {
   peach: { standard: '#FFBF9E', dark: '#FFBF9E', contrast: '#FFBF9E' },
   coral: { standard: '#FF5959', dark: '#FF9494', contrast: '#FF5959' },
   glow: { standard: '#9EA0BD', dark: '#FFEEB3', contrast: '#9EA0BD' },
+  // Vehicle windows: navy like ink by day, lit in dark mode (palette.md).
+  window: { standard: '#181C56', dark: '#FFEEB3', contrast: '#626493' },
 };
 
 // The library's dark-mode disc is Ebony 20 at 30 % opacity, so it sits back
