@@ -31,7 +31,7 @@ Ask for a square PNG, 2048 × 2048 where the model allows it. Use JPG only if th
 
 ### Prompt template
 
-Fill in the brackets; keep every rule, even the ones that seem obvious. For an animal, the Peach element is never left out: name the prop or the marking (rule 19). For coral take the first option — no coral or red — for animals, people, objects and scenes; the second only for a vehicle on its line, the third only for Entur staff (rule 8).
+Fill in the brackets; keep every rule, even the ones that seem obvious. A slot labelled [For …:] or [Optional for …:] belongs to the kinds it names (people, animals, objects): for those, keep its text without the label; for the others, leave it out, and drop a bullet that is left empty. For an animal, the Peach element is never left out: name the prop or the marking (rule 19); for an object it is one small detail of it, never the whole object (rule 8). For coral take the first option — no coral or red — for animals, people, objects and scenes; the second only for a vehicle on its line, the third only for Entur staff (rule 8).
 
 ```text
 Line illustration in exactly the style of the attached reference images (the Entur Linje illustration library).
@@ -42,12 +42,13 @@ Style rules:
 - Flat fills only. No gradients, no shadows, no texture, no outlines thicker than the line.
 - White (#FFFFFF) is the main fill. Lavender (#AEB7E2) for one garment. Peach (#FFBF9E) for exactly one element: [which]; it is the only highlight colour. [No coral or red anywhere, not on a comb, a wattle, a tongue, cheeks or clothes | Coral (#FF5959) only for the line under the vehicle | Coral (#FF5959) only for the Entur staff shoulder and sleeve panels].
 - Colour fills sit slightly offset from their line, so a thin sliver of white shows along one side.
-- People are drawn naturally, like an observed drawing: realistic adult proportions about 7.5 heads tall, a small head, a relaxed pose with weight on one leg or a slight turn, loose clothes with only 2–5 tapered fold marks, hands with fingers, shoes with soles.
-- Faces are white and have NO EYES and NO MOUTH: only a nose line. Glasses are allowed.
+- [For people: people are drawn naturally, like an observed drawing: realistic adult proportions about 7.5 heads tall, a small head, a relaxed pose with weight on one leg or a slight turn, loose clothes with only 2–5 tapered fold marks, hands with fingers, shoes with soles.]
+- [For people: faces are white and have NO EYES and NO MOUTH: only a nose line. Glasses are allowed.]
 - [Entur staff: dark navy uniform with coral shoulder and sleeve panels and a small white name badge.]
-- Furniture is simplified: a table has four legs or none, and no leg crosses a person.
+- [For people: furniture is simplified: a table has four legs or none, and no leg crosses a person.]
 - [Animals: drawn naturally, like an observed sketch of the real animal — correct anatomy, but minimal: long smooth contours with a few gaps, no fur ticks along the outline, no cluster of fur strokes on the chest or neck, at most three or four short fur marks in all and only where they show the species, one inner line per ear. The animal keeps a small dot eye and a small dark nose; no smile, no big cartoon eyes, no clothes. It has exactly one small peach (#FFBF9E) area, about 1 % of the image: a prop it holds, wears or has beside it (a collar, a ball, a ticket, a leaf), or one marking of its own (a chest patch, horns) as a flat shape with a rough edge and no outline. Peach on the body — a bird's beak or bill, comb, wattle and feet — is flat peach (#FFBF9E) with no dark outline around it; the head line stops where the beak begins but runs on under a comb; on a bird the beak and feet are its peach. The line swells slightly in the middle and thins at both ends, like a dip pen.]
-- Plain white background. One simple thin navy ground line under the subject, in one or two long pieces, running a little past it: no row of dashes, no second line, no grass unless the scene asks for it — and then only one small tuft of two or three blades at the foot of something. [Optional for objects and animals: a soft pale grey-lavender disc (#EAEAF1) behind the upper body.]
+- [For objects: one everyday thing on its own, slightly turned, no people or animals, no face; the line swells slightly like a dip pen; #EAEAF1 only on a side or back face.]
+- Plain white background. [For animals and people: one simple thin navy ground line under the subject, in one or two long pieces, running a little past it: no row of dashes, no second line, no grass unless the scene asks for it — and then only one small tuft of two or three blades at the foot of something.] [For objects: no ground line: the object floats, alone or on the disc.] [Optional for animals: a soft pale grey-lavender disc (#EAEAF1) behind the upper body.] [Optional for objects: a soft pale grey-lavender disc (#EAEAF1) behind the object.]
 - No text, no logos, no frame. Square, 1:1.
 
 Use the references only for line, proportion and colour. Do not copy any figure or composition from them.
@@ -95,7 +96,7 @@ Final assets are live strokes in three colour modes.
 node scripts/illustrator-trace.mjs <draft.png> --out <dir> --name <Name>
 ```
 
-For an animal or object add `--construction animals --carriers <profiles.ai> --backdrop --underlay` (details below).
+For an animal or object add `--construction animals --carriers <profiles.ai> --backdrop --underlay` (details below), and for an object `--no-features` as well: an object has no eyes or nose.
 
 It drives Illustrator through AppleScript `do javascript` and writes `<Name>.ai` with live strokes, `<Name>.svg`, `<Name>-darkmode.svg` and `<Name>-contrast.svg`. Options: `--app` for another Illustrator install (default Illustrator 2026), `--size` (artboard in pt, default 360, which puts a figure at library scale), `--threshold` (line darkness, default 110), `--max-stroke` (widest line traced as a stroke, default 20; at 14 the thicker pieces of a contour drop out), `--contour-share` (share of lines that get the contour weight, default 0.25), `--roughen` (add Roughen to the strokes; off by default), `--fill-rough` and `--ink-shift` (rough fill edges and offset ink clothing; off, and not in the reference drawings), `--no-features` (leave out the eyes and noses put back on animals, below), `--no-simplify` (keep every traced line on an animal, below). A 2048 px draft can take several minutes, more with other large documents open. The same work, and the finishing steps below, are available to agents as MCP tools (`illustrator_status`, `illustrator_run_jsx`, `illustrator_trace_draft`, `illustrator_scale_head`, `illustrator_smooth_region`, `illustrator_add_details`):
 
