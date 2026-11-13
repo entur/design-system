@@ -8,6 +8,7 @@ import { VariantType, mergeRefs } from '@entur/utils';
 
 import { BaseFormControl, FeedbackAnnouncementProps } from './BaseFormControl';
 import { useInputGroupContext } from './InputGroupContext';
+import { useFeedbackDescription } from './useFeedbackDescription';
 import { isFilled } from './utils';
 import { useVariant } from './VariantProvider';
 import './TextField.scss';
@@ -99,9 +100,13 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
   ) => {
     const randomId = `eds-textfield${useId()}`;
     const textFieldId = labelProps && labelProps.id ? labelProps.id : randomId;
-    const feedbackId = feedbackProps?.id ?? `${textFieldId}-feedback`;
-    const contextVariant = useVariant();
-    const showFeedback = Boolean(feedback && (variant || contextVariant));
+    const { feedbackId, 'aria-describedby': describedBy } =
+      useFeedbackDescription({
+        feedback,
+        variant,
+        feedbackProps,
+        'aria-describedby': ariaDescribedBy,
+      });
     const textFieldRef = React.useRef<HTMLInputElement>(null);
     const { setFilled } = useInputGroupContext();
 
@@ -168,9 +173,7 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
           readOnly={readOnly}
           ref={mergeRefs(ref, textFieldRef)}
           aria-labelledby={textFieldId}
-          aria-describedby={
-            classNames(ariaDescribedBy, showFeedback && feedbackId) || undefined
-          }
+          aria-describedby={describedBy}
           onChange={onChange}
           value={value}
           variant={variant}
