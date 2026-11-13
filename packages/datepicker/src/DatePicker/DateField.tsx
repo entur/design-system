@@ -15,7 +15,11 @@ import type {
   MappedDateValue,
 } from '@react-types/datepicker';
 
-import { BaseFormControl, BaseFormControlProps } from '@entur/form';
+import {
+  BaseFormControl,
+  BaseFormControlProps,
+  useFeedbackDescription,
+} from '@entur/form';
 import { ConditionalWrapper, VariantType, mergeRefs } from '@entur/utils';
 
 import { FieldSegment } from '../shared/FieldSegment';
@@ -192,8 +196,25 @@ export const DateField = <DateType extends DateValue>({
 
   const state = useDateFieldState(_props);
 
+  const currentFeedback =
+    feedback ??
+    (state.validationState === 'invalid' ? validationFeedback : undefined);
+  const currentVariant =
+    variant ?? (state.isInvalid ? validationVariant : undefined);
+  const { feedbackId, 'aria-describedby': describedBy } =
+    useFeedbackDescription({
+      feedback: currentFeedback,
+      variant: currentVariant,
+      feedbackProps,
+      'aria-describedby': rest['aria-describedby'],
+    });
+
   const dateFieldRef = useRef(null);
-  const { labelProps, fieldProps } = useDateField(_props, state, dateFieldRef);
+  const { labelProps, fieldProps } = useDateField(
+    { ..._props, 'aria-describedby': describedBy },
+    state,
+    dateFieldRef,
+  );
 
   useEffect(() => onValidate?.(!state.isInvalid), [state.isInvalid]);
 
@@ -216,10 +237,8 @@ export const DateField = <DateType extends DateValue>({
         disabled={isDisabled || disabled}
         readOnly={readOnly}
         disableLabelAnimation
-        feedback={
-          feedback ??
-          (state.validationState === 'invalid' ? validationFeedback : undefined)
-        }
+        feedback={currentFeedback}
+        feedbackId={feedbackId}
         label={label}
         labelId={id}
         labelProps={parentLabelProps ?? labelProps}
@@ -227,7 +246,7 @@ export const DateField = <DateType extends DateValue>({
         prepend={prepend}
         ref={mergeRefs(ref, dateFieldRef)}
         style={style}
-        variant={variant ?? (state.isInvalid ? validationVariant : undefined)}
+        variant={currentVariant}
         {...fieldProps}
       >
         {state.segments.map((segment, i) => (
