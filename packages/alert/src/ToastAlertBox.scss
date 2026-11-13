@@ -14,6 +14,14 @@
     right: t.$space-small;
   }
 
+  // The close button stays in the tab order and is revealed on keyboard focus
+  @media (hover: hover) {
+    // :where keeps the specificity of the close button class alone
+    :where(.eds-alert-box:not(:hover, :focus-within)) .eds-alert-box__close-button {
+      opacity: 0;
+    }
+  }
+
   &--bottom-right {
     bottom: t.$space-large;
     right: t.$space-large;
