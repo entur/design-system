@@ -135,6 +135,7 @@ const params = {
   pointLength: 12,
   backdrop,
   simplify,
+  object,
   mask: '',
   contourShare: Number(opt('contour-share', 0.25)),
   shift: [0.6, -0.3],
@@ -233,8 +234,13 @@ function placeAndTrace(doc, layer) {
   placed.position = [r[0], r[1]];
   return placed.trace();
 }
-var log = [];
+// The pass runs in a function: if Illustrator fails it (MRAP), its document
+// is closed unsaved instead of left open as an Untitled document, and the
+// script can run the pass again (runJsx).
+var log = [], __doc = null;
+function __pass() {
 var doc = app.documents.add(DocumentColorSpace.RGB, P.size, P.size);
+__doc = doc;
 var colourLayer = doc.layers[0]; colourLayer.name = 'Fill';
 var lineLayer = doc.layers.add(); lineLayer.name = 'Outline';
 
@@ -420,7 +426,8 @@ if (P.simplify) {
     ib.it.remove(); items.splice(best.i2, 1); joined++;
     if (ia.ground) ground++;
   }
-  // Thin fur marks.
+  // Thin fur marks. An object has no fur: its short marks (a scarf's fringe)
+  // are drawing, and stay.
   var lens = [], groundY = 1e9;
   for (var t0 = 0; t0 < items.length; t0++) { lens.push(Number(items[t0].it.length)); groundY = Math.min(groundY, items[t0].it.geometricBounds[3]); }
   var longCut = quantile(lens, 0.75), contours = [], eyes = [];
@@ -428,7 +435,7 @@ if (P.simplify) {
   for (var t2 = 0; t2 < P.features.length; t2++) eyes.push([ab[0] + P.features[t2].cx, ab[1] - P.features[t2].cy]);
   items.sort(function (x, y) { return Number(y.it.length) - Number(x.it.length); });
   var marks = [];
-  for (var t3 = 0; t3 < items.length; t3++) {
+  for (var t3 = 0; t3 < items.length && !P.object; t3++) {
     var ti = items[t3].it, tb = ti.geometricBounds, tl = Number(ti.length);
     if (tl >= 20 * sc || tb[3] < groundY + 16 * sc) continue;
     var mid = [(tb[0] + tb[2]) / 2, (tb[1] + tb[3]) / 2], guarded = false;
@@ -744,7 +751,12 @@ if (P.linesPng) {
   log.push('saved ' + P.ai + ' and ' + P.svg);
 }
 doc.close(SaveOptions.DONOTSAVECHANGES);
-log.join(' | ');
+__doc = null;
+return log.join(' | ');
+}
+var __result;
+try { __result = __pass(); } catch (e) { try { if (__doc) __doc.close(SaveOptions.DONOTSAVECHANGES); } catch (e2) {} throw e; }
+__result;
 `;
 
 // Pass two (animals with an underlay): paper under each figure, from the
@@ -766,7 +778,10 @@ function retry(fn) {
     try { return fn(); } catch (e) { if (t === 19) throw e; app.redraw(); $.sleep(1000); }
   }
 }
-var log = [], doc = app.open(new File(P.ai)), ab = doc.artboards[0].artboardRect;
+var log = [], __doc = null;
+function __pass() {
+var doc = app.open(new File(P.ai)), ab = doc.artboards[0].artboardRect;
+__doc = doc;
 app.redraw();
 // White pieces from the colour trace that lie outside every figure: most of
 // their anchors fall outside the figure map (figureCells). Inside a figure
@@ -868,7 +883,12 @@ try { svgOpts.fontType = SVGFontType.OUTLINEFONT; } catch (e) {}
 doc.exportFile(new File(P.svg), ExportType.SVG, svgOpts);
 log.push('saved ' + P.ai + ' and ' + P.svg);
 doc.close(SaveOptions.DONOTSAVECHANGES);
-log.join(' | ');
+__doc = null;
+return log.join(' | ');
+}
+var __result;
+try { __result = __pass(); } catch (e) { try { if (__doc) __doc.close(SaveOptions.DONOTSAVECHANGES); } catch (e2) {} throw e; }
+__result;
 `;
 
 function runJsx(code) {
@@ -882,10 +902,22 @@ function runJsx(code) {
     app,
   )} to do javascript (read POSIX file ${JSON.stringify(file)} as «class utf8»)
 end timeout`;
-  return execFileSync('osascript', ['-e', script], {
-    encoding: 'utf8',
-    timeout: 1860000,
-  }).trim();
+  // Illustrator now and then fails a trace step with MRAP for no reason in
+  // the drawing; the pass has closed its document, so run it again, up to
+  // three times in all.
+  for (let attempt = 1; ; attempt++) {
+    try {
+      return execFileSync('osascript', ['-e', script], {
+        encoding: 'utf8',
+        timeout: 1860000,
+      }).trim();
+    } catch (e) {
+      if (attempt >= 3 || !/MRAP/.test(String(e.stderr || e.message))) throw e;
+      console.error(
+        `Illustrator failed (MRAP), attempt ${attempt} of 3: again`,
+      );
+    }
+  }
 }
 let result = runJsx(jsx);
 if (params.linesPng) {
@@ -901,6 +933,7 @@ if (params.linesPng) {
     parts ? parts.holes : null,
     vehicle,
     shades,
+    object,
   );
   params.mask = savePng(img.w, img.h, k => subject[k], 'underlay.png');
   params.shadeMask = shades
@@ -1173,7 +1206,15 @@ function erode(mask, w, h, r) {
 // flooded from the image edge. Inside the backdrop disc only disc-coloured
 // pixels let the flood through, so white areas behind a gap in a contour
 // stay inside.
-function draftSubject(img, disc, ground, grow = 5, sides = false) {
+function draftSubject(
+  img,
+  disc,
+  ground,
+  grow = 5,
+  sides = false,
+  object = false,
+  shades = null,
+) {
   const { w, h, lum } = img;
   // Grow a mask by r pixels (square kernel, two passes).
   const growBy = (m, r) => {
@@ -1210,13 +1251,19 @@ function draftSubject(img, disc, ground, grow = 5, sides = false) {
     for (let y = 0; y < h; y++) stack.push(y * w, y * w + w - 1);
     while (stack.length) {
       const k = stack.pop();
-      if (reached[k] || walls[k]) continue;
+      // An object's shading (objectShades) closes its figure where the
+      // outline is open: a snowman's ball whose bottom lies past the disc,
+      // where white would let the flood in.
+      if (reached[k] || walls[k] || (shades && shades[k])) continue;
       const x = k % w;
       const y = (k - x) / w;
+      // On an object only the disc's own pale lets it through there: a
+      // scarf, a hat band or a peach detail lying on the disc is figure,
+      // with paper under it.
       if (
         disc &&
         (x - disc.cx) ** 2 + (y - disc.cy) ** 2 < (disc.r - 6) ** 2 &&
-        lum[k] > 238
+        (lum[k] > 238 || (object && !(lum[k] >= 212 && img.blueish[k])))
       )
         continue;
       reached[k] = 1;
@@ -1380,6 +1427,7 @@ function underlaySubject(
   holes,
   vehicle = false,
   shades = null,
+  object = false,
 ) {
   const { w, h } = img;
   // A vehicle's contour is open in wider gaps than an animal's (a bus's
@@ -1387,7 +1435,7 @@ function underlaySubject(
   // gaps up to 2 % of the width and wall off the vehicle's sides (closeSides).
   const draft = vehicle
     ? draftSubject(img, disc, ground, Math.round(0.01 * w), true)
-    : draftSubject(img, disc, ground);
+    : draftSubject(img, disc, ground, 5, false, object, shades);
   const ink = new Uint8Array(w * h);
   for (let y = 0; y < h; y++)
     for (let x = 0; x < w; x++) {
@@ -1398,13 +1446,25 @@ function underlaySubject(
   const gap = Math.max(2, Math.round(0.02 * w));
   const wall = dilate(ink, w, h, gap);
   if (vehicle) closeSides(wall, ink, w, h);
+  if (shades) for (let k = 0; k < w * h; k++) if (shades[k]) wall[k] = 1;
+  // On an object, inside the disc only the disc's own pale is background,
+  // as in draftSubject: white and colour are figure. An outline left open
+  // wider than the closing (a snowman's head below the hat brim, a nose)
+  // does not let the flood take the head.
+  const figureWhite = k => {
+    if (!object || !disc) return false;
+    if (img.lum[k] >= 212 && img.lum[k] <= 238 && img.blueish[k]) return false;
+    const x = k % w;
+    const y = (k - x) / w;
+    return (x - disc.cx) ** 2 + (y - disc.cy) ** 2 < (disc.r - 6) ** 2;
+  };
   const outside = new Uint8Array(w * h);
   const stack = [];
   for (let x = 0; x < w; x++) stack.push(x, (h - 1) * w + x);
   for (let y = 0; y < h; y++) stack.push(y * w, y * w + w - 1);
   while (stack.length) {
     const k = stack.pop();
-    if (outside[k] || wall[k]) continue;
+    if (outside[k] || wall[k] || figureWhite(k)) continue;
     outside[k] = 1;
     const x = k % w;
     if (x > 0) stack.push(k - 1);
@@ -1413,7 +1473,16 @@ function underlaySubject(
     if (k < w * h - w) stack.push(k + w);
   }
   const pull = Math.max(1, Math.round(0.003 * w));
-  const beyond = dilate(outside, w, h, gap + pull);
+  // Back to the line's edge, then on into the line only: through a thin
+  // stretch of a line it would cut the paper on its other side, a dark
+  // sliver along the inside of a contour.
+  // The way back stays inside the closing walls, so where the flood
+  // stopped at figure white it takes nothing off the figure.
+  const atLine = dilate(outside, w, h, gap);
+  const intoLine = dilate(outside, w, h, gap + pull);
+  const beyond = atLine.map((v, k) =>
+    outside[k] || (v && wall[k]) || (intoLine[k] && ink[k]) ? 1 : 0,
+  );
   const subject = draft.map((v, k) => (v && !beyond[k] ? 1 : 0));
   // Inside the disc white counts as figure (draftSubject), but outside it a
   // fluffy outline's gaps let the background in, so the draft's paper can
@@ -1543,6 +1612,47 @@ function underlaySubject(
     const under = dilate(shades, w, h, Math.max(2, Math.round(0.004 * w)));
     for (let k = 0; k < w * h; k++)
       if (shades[k] || (under[k] && ink[k])) subject[k] = 1;
+  }
+  // An object's white fills the whole figure: a small pocket closed in by
+  // its paper and lines (a thin white wedge under a hat brim, which the
+  // spur removal took) gets paper too. Its holes are cut after this.
+  if (object) {
+    const solid = subject.map((v, k) => (v || ink[k] ? 1 : 0));
+    const open = new Uint8Array(w * h);
+    const fill = [];
+    for (let x = 0; x < w; x++) fill.push(x, (h - 1) * w + x);
+    for (let y = 0; y < h; y++) fill.push(y * w, y * w + w - 1);
+    while (fill.length) {
+      const k = fill.pop();
+      if (open[k] || solid[k]) continue;
+      open[k] = 1;
+      const x = k % w;
+      if (x > 0) fill.push(k - 1);
+      if (x < w - 1) fill.push(k + 1);
+      if (k >= w) fill.push(k - w);
+      if (k < w * h - w) fill.push(k + w);
+    }
+    const seen = new Uint8Array(w * h);
+    for (let k0 = 0; k0 < w * h; k0++) {
+      if (solid[k0] || open[k0] || seen[k0]) continue;
+      const part = [k0];
+      seen[k0] = 1;
+      for (let i = 0; i < part.length; i++) {
+        const p = part[i];
+        const x = p % w;
+        for (const q of [
+          x > 0 ? p - 1 : -1,
+          x < w - 1 ? p + 1 : -1,
+          p - w,
+          p + w,
+        ])
+          if (q >= 0 && q < w * h && !solid[q] && !open[q] && !seen[q]) {
+            seen[q] = 1;
+            part.push(q);
+          }
+      }
+      if (part.length <= (0.04 * w) ** 2) for (const k of part) subject[k] = 1;
+    }
   }
   // An object's holes (discParts): no paper inside an empty ring on the disc,
   // nor under its line, so the disc shows there in every mode.
@@ -1884,7 +1994,9 @@ function strokeEdge(subject, ink, strokes, ground, w, h) {
     if (k >= w) stack.push(k - w);
     if (k < w * h - w) stack.push(k + w);
   }
-  const outside = dilate(out, w, h, 1 + Math.max(1, Math.round(0.003 * w)));
+  // Into the line only, to its middle: not through a thin stretch of it.
+  const grown = dilate(out, w, h, 1 + Math.max(1, Math.round(0.003 * w)));
+  const outside = grown.map((v, k) => (out[k] || (v && wall[k]) ? 1 : 0));
   const depth = Math.max(2, Math.round(0.015 * w));
   const deep = erode(subject, w, h, depth);
   const near = dilate(subject, w, h, depth);
@@ -2388,10 +2500,32 @@ function discParts(img, disc, n = 256) {
     const touchesPaper = edgePaper > 0.15 * edgeAll;
     const face =
       !touchesPaper && edgeInk >= 0.6 * edgeAll && farPaper >= 0.4 * farAll;
+    // A hole is a solid pocket (an empty ring's inside), at least 0.8 % of
+    // the width thick on average: a thin pale band is the soft edge where a
+    // colour meets a white highlight (a scarf), not the disc.
+    let rim = 0;
+    for (const k of part) {
+      const x = k % w;
+      for (const q of [
+        x > 0 ? k - 1 : -1,
+        x < w - 1 ? k + 1 : -1,
+        k - w,
+        k + w,
+      ])
+        if (
+          q < 0 ||
+          q >= w * h ||
+          !local[(Math.floor(q / w) - by0) * bw + (q % w) - bx0]
+        ) {
+          rim++;
+          break;
+        }
+    }
+    const solid = (2 * part.length) / Math.max(1, rim) >= 0.008 * w;
     if (face) {
       faceCount++;
       for (const k of part) faces[k] = 1;
-    } else if (!touchesPaper) {
+    } else if (!touchesPaper && solid) {
       holeCount++;
       for (const k of part) holes[k] = 1;
     }

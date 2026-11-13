@@ -594,6 +594,108 @@ add(
     c.box[3] >= groundTop - 0.02 * h,
 );
 
+// Background through a gap inside a figure: a thin pocket where neither
+// paper, shading, a colour nor a line covers the figure, so the disc or the
+// page shows through — a sliver between the paper and a line, a strip under
+// a scarf whose colour sits a little off its line. In dark and contrast mode
+// it is a dark crack in the white. Rendered at twice the size on magenta
+// with the Circle layer magenta too; a pocket of magenta that does not reach
+// the edge, lies mostly inside a figure and is thin (on average under 0.6 %
+// of the width across) is reported. An empty ring's inside is wider, and the
+// space between two legs ends at the ground line: neither is reported.
+{
+  const src = fs.readFileSync(svgFile, 'utf8');
+  const start = src.indexOf('<g id="Circle"');
+  let marked = src;
+  if (start >= 0) {
+    const tags = /<g[\s>]|<\/g>/g;
+    tags.lastIndex = start;
+    let depth = 0;
+    for (let m; (m = tags.exec(src)); ) {
+      depth += m[0] === '</g>' ? -1 : 1;
+      if (depth) continue;
+      const end = m.index + 4;
+      marked =
+        src.slice(0, start) +
+        src
+          .slice(start, end)
+          .replace(/fill="#[0-9A-Fa-f]{6}"/g, 'fill="#FF00FF"') +
+        src.slice(end);
+      break;
+    }
+  }
+  const file = path.join(tmp, 'gaps.svg');
+  fs.writeFileSync(file, marked);
+  const G = classify(renderSvg(file, 2 * size, '#FF00FF'), {
+    background: [255, 0, 255],
+  });
+  const W2 = 2 * w;
+  const H2 = 2 * h;
+  const open = new Uint8Array(W2 * H2);
+  const stack = [];
+  for (let x = 0; x < W2; x++) stack.push(x, (H2 - 1) * W2 + x);
+  for (let y = 0; y < H2; y++) stack.push(y * W2, y * W2 + W2 - 1);
+  while (stack.length) {
+    const k = stack.pop();
+    if (open[k] || !G.bg[k]) continue;
+    open[k] = 1;
+    const x = k % W2;
+    if (x > 0) stack.push(k - 1);
+    if (x < W2 - 1) stack.push(k + 1);
+    if (k >= W2) stack.push(k - W2);
+    if (k < W2 * H2 - W2) stack.push(k + W2);
+  }
+  const seen = new Uint8Array(W2 * H2);
+  const gaps = new Uint8Array(w * h);
+  for (let k0 = 0; k0 < W2 * H2; k0++) {
+    if (!G.bg[k0] || open[k0] || seen[k0]) continue;
+    const part = [k0];
+    seen[k0] = 1;
+    let rim = 0;
+    for (let i = 0; i < part.length; i++) {
+      const p = part[i];
+      const x = p % W2;
+      let edgePx = false;
+      for (const q of [
+        x > 0 ? p - 1 : -1,
+        x < W2 - 1 ? p + 1 : -1,
+        p - W2,
+        p + W2,
+      ]) {
+        if (q < 0 || q >= W2 * H2 || !G.bg[q]) {
+          edgePx = true;
+          continue;
+        }
+        if (!seen[q]) {
+          seen[q] = 1;
+          part.push(q);
+        }
+      }
+      if (edgePx) rim++;
+    }
+    if ((2 * part.length) / Math.max(1, rim) > 0.006 * W2) continue;
+    let inside = 0;
+    let bottom = 0;
+    for (const p of part) {
+      const x = p % W2 >> 1;
+      const y = Math.floor(p / W2) >> 1;
+      if (figures[y * w + x]) inside++;
+      bottom = Math.max(bottom, y);
+    }
+    if (inside < 0.5 * part.length) continue;
+    // Between two legs on the ground line the background is meant to show.
+    if (groundTop >= 0 && Math.abs(bottom - groundTop) <= 0.03 * h) continue;
+    for (const p of part)
+      gaps[(Math.floor(p / W2) >> 1) * w + (p % W2 >> 1)] = 1;
+  }
+  add(
+    'missing',
+    'paper in a gap inside a figure',
+    gaps,
+    Math.max(4, Math.round((0.003 * w) ** 2)),
+  );
+}
+
 // Paper that stops at the disc's edge: inside the circle the trace has paper,
 // just outside it has none, and the draft is white on both sides — a white
 // body the circle cut (a Samoyed with no paper below the disc). Reported when
