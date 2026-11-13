@@ -8,6 +8,7 @@ import DocLayout from './DocLayout';
 const CUSTOM_LAYOUT_PAGES = [
   '/',
   '/stand',
+  '/typografi-gjennomgang',
   '/ressurser/innsikt/brukerundersokelse',
 ];
 
