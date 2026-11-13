@@ -396,6 +396,7 @@ const SKILL_ORDER = [
   'entur-web-development',
   'entur-accessibility',
   'entur-brand-design',
+  'entur-illustration',
 ];
 
 /**
