@@ -71,6 +71,12 @@ test('MediaCard puts className and style on the card and rest props on the title
 
   const card = screen.getByRole('region', { name: 'Oslo guide' });
   expect(card).toHaveClass('eds-base-card', 'eds-media-card', 'consumer-class');
+  // toHaveClass also splits on commas, so it would accept "eds-base-card,"
+  expect(card.className).not.toContain(',');
+  // BaseCard adds eds-base-card, so MediaCard must not add it again
+  expect(
+    card.className.split(' ').filter(name => name === 'eds-base-card'),
+  ).toHaveLength(1);
   expect(card).toHaveStyle({ marginTop: '7px' });
   expect(card).not.toHaveAttribute('data-consumer');
   expect(screen.getByRole('link', { name: 'Explore Oslo' })).toHaveAttribute(

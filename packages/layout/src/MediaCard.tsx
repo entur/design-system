@@ -71,7 +71,7 @@ export const MediaCard = <E extends React.ElementType = typeof defaultElement>({
   const _wrapperProps = whole
     ? { ...wrapperProps, ...rest }
     : { ...wrapperProps };
-  const classList = classNames('eds-base-card, eds-media-card', className, {
+  const classList = classNames('eds-media-card', className, {
     'eds-media-card--horizontal': orientation === 'horizontal',
   });
 
