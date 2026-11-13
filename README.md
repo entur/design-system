@@ -197,6 +197,14 @@ If you need to change something on the documentation page itself, or create some
 - `utils` contains utilities that are used across the page
 - `components` contains a number of reusable internal documentation page components. These are used both in the actual page structure and as helper components in documentation, e.g. Playground.
 
+### Illustrations
+
+The illustration page lists every file in `apps/documentation/src/downloads/illustrations/`. That folder is a copy of the Google Drive folder _Design Guild / Illustration Library / 🖼️ • Illustrations_, which is exported from the Figma file [Illustration Library](https://www.figma.com/design/nVh4oNfwTFniTChyospijw/Illustration-Library). Rename or add files in Figma and Drive first, then copy Drive into the repo with `rsync -a --delete --exclude='.*' "<Drive folder>/" apps/documentation/src/downloads/illustrations/`.
+
+- File names follow the [naming convention in Figma](https://www.figma.com/design/nVh4oNfwTFniTChyospijw/Illustration-Library?node-id=3662-5110). The page reads colour mode and background from the name, so a wrong name means a missing version. `yarn check:illustration-names` checks them, and runs in the lint job on every pull request.
+- Search words are the `Søkeord:` line in each Figma component's description, copied into `components/Media/illustrationKeywords.json`. Update both.
+- A new category needs an entry in `components/Media/illustrationCategories.ts`. The positions of the Utviklingsprinsipper parts (`PARTS` in `PrinciplesDetails.tsx`) come from the Figma frame _Principles Composition_.
+
 ## Useful scripts
 
 ### Build

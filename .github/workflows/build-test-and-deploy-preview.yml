@@ -195,6 +195,11 @@ jobs:
 
       - run: NX_REJECT_UNKNOWN_LOCAL_CACHE=0 yarn lint
 
+      # The illustration page reads the colour mode, background and format of each file from its
+      # name, so a file that breaks the naming convention shows up wrong or not at all.
+      - name: Check the illustration names
+        run: yarn check:illustration-names
+
   verify-skills:
     name: Verify skills against package APIs
     needs: build-packages

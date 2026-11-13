@@ -7,8 +7,10 @@ menu: Verktøykassen
 order: 13
 ---
 
-import { ExternalIcon } from '@entur/icons';
-import IllustrationList from '@components/Media/IllustrationList';
+{/* How the illustrations and their search words are maintained: «Illustrations» in the root README.md */}
+
+import IllustrationLibrary from '@components/Media/IllustrationLibrary';
+import { DocTab, MdxDocTabs } from '@components/DocTabs/DocTabs';
 import { SEO } from '@components/seo/SEO';
 import { graphql } from 'gatsby';
 import './illustrasjoner.scss';
@@ -40,80 +42,67 @@ Motivene i illustrasjonene viser ulike situasjoner og møter i trafikkbildet som
 tar utgangspunkt i norsk natur og landskap, og tar opp elementer fra Entur sin visuelle profil for å skape gjenkjennelse og en rød tråd i identiteten. 
 Illustrasjonenes fremste oppgave er å myke opp og menneskeliggjøre uttrykket i våre digitale flater.
 
-<Tabs style={{ marginTop: "4rem" }}>
-<TabList>
-  <Tab>Illustrasjoner</Tab>
-  <Tab>Retningslinjer</Tab>
-</TabList>
-<TabPanels>
-<TabPanel>
+<MdxDocTabs>
+<DocTab title="Illustrasjoner">
+<TextContainer>
 
-## Filformater
-Våre kvadratiske illustrasjoner er tilgjengelig i pdf-, png- og svg-format. Illustrasjoner i landskap er tilgjengelige i png-format. Ved behov for andre formater eller utsnitt av materiale som ligger i illustrasjonsbiblioteket, kontakt oss på Slack i [#talk-designsystem](https://entur.slack.com/archives/C899QSPB7).
+Søk på motiv, situasjon eller bruksområde, på norsk eller engelsk. De fleste illustrasjonene finnes i standard, mørk modus og kontrast, og mange også med bakgrunn. Trenger du et annet format eller utsnitt, spør oss på Slack i [#talk-designsystem](https://entur.slack.com/archives/C899QSPB7).
 
-Vi jobber også med å utvikle animasjoner av noen av motivene, etter smidige prinsipper, litt etter litt. Foreløpig ligger disse tilgjengelig for ansatte i Entur på [Google Drive](https://drive.google.com/drive/folders/151XETkW3uniEIEEb0fbn2U2XipRKDNxb?usp=sharing).
+</TextContainer>
+
+<IllustrationLibrary />
+
+</DocTab>
+<DocTab title="Retningslinjer">
+
+<TextContainer>
+
+## Generelt
+
+Trenger du et annet format eller utsnitt enn det som finnes i biblioteket, spør oss på Slack i [#talk-designsystem](https://entur.slack.com/archives/C899QSPB7).
+
+## Velg riktig versjon
+
+De fleste illustrasjonene finnes i tre fargemoduser. Bruk den som passer flaten illustrasjonen står på:
+
+- **Standard** på lyse flater.
+- **Mørk modus** når løsningen vises i mørk modus.
+- **Kontrast** på flater med kontrastfarge.
+
+Mange finnes også med bakgrunn, en sirkel eller ramme bak motivet.
+
+## Velg riktig filformat
+
+- **SVG** til nettsider og apper. Skalerer uten tap av kvalitet.
+- **PNG** til presentasjoner, dokumenter og sosiale medier.
+- **PDF** til trykk.
+
+Landskapene finnes bare som PNG.
 
 ## Hovedillustrasjon
-Hovedillustrasjonen skal anvendes slik at den oppleves som brukerens første møte med Entur, for å introdusere hvem vi er og hva vi gjør. Brukes f.eks på 
-introsider eller som onboarding-illustrasjon.
 
-<IllustrationList categoryFilter="landscape" squareIllustrations={false} includeListFile={["city"]} disableColorModeSelector backgroundSwitchLabel="Med ramme" showIllustrationName={false} />
+Hovedillustrasjonen, «Landscape city», skal oppleves som brukerens første møte med Entur og introdusere hvem vi er og hva vi gjør. Bruk den for eksempel på introsider eller i onboarding.
 
 ## Landskapsmotiv
-Disse illustrasjonene er spesielt tiltenkt landningssider på web. Illustrasjonene bidrar med å fremheve, visualisere og myke opp innholdet på en ellers 
-teksttung side. Bildene skal helst dekke hele nettsidens fulle bredde. Ved andre formater (f.eks. i to-kolonners grid) skal det benyttes mindre utsnitt 
-av landskapet.
 
-<IllustrationList categoryFilter="landscape" squareIllustrations={false} excludeListFile={["city"]} disableColorModeSelector backgroundSwitchLabel="Med ramme" showIllustrationName={false} />
-
+Landskapene er tiltenkt landingssider på web. De fremhever, visualiserer og myker opp innholdet på sider med mye tekst. Bildene bør dekke hele sidens bredde. I andre formater, for eksempel i et grid med to kolonner, bruker du et mindre utsnitt av landskapet.
 
 ## Kvadratiske motiver
-De små illustrasjonene brukes primært på informasjonssider, modaler, infomeldinger, feilmeldinger og sider hvor det mangler innhold («empty states»).
 
-Disse motivene er designet for å hyggeliggjøre meldinger som kan være kjedelig eller irriterende for brukeren å få. 
-Det skal ikke brukes mer enn tre slike illustrasjoner på én sidevisning, og i tilfeller hvor det brukes mer enn én illustrason på en side 
-bør de settes i et fler-kolonners grid.
+De kvadratiske motivene brukes på informasjonssider, i modaler, infomeldinger og feilmeldinger, og på sider uten innhold («empty states»). De skal gjøre meldinger som kan være kjedelige eller irriterende å få, litt hyggeligere.
 
-### Mennesker
-<IllustrationList categoryFilter="people" disableBackgroundSwitch />
-<IllustrationList categoryFilter="entur staff" disableBackgroundSwitch />
+- Bruk maks tre slike illustrasjoner per sidevisning.
+- Bruker du mer enn én på samme side, sett dem i et grid med flere kolonner.
 
-### Dyremotiv
-<IllustrationList categoryFilter="animals" />
+## Tilgjengelighet
 
-### Gjenstander
-<IllustrationList categoryFilter="objects" />
+- Er illustrasjonen pynt, gi den tom alternativtekst (`alt=""`), slik at skjermlesere hopper over den.
+- Formidler illustrasjonen noe brukeren trenger, beskriv det i alternativteksten eller i teksten ved siden av.
+- Legg aldri viktig informasjon bare i illustrasjonen.
 
-### Konsepter
-<IllustrationList categoryFilter="concepts" />
+## Animasjoner
 
-### Hånd
-<IllustrationList categoryFilter="hands" />
-
-### Digitale enheter
-<IllustrationList categoryFilter="devices" disableBackgroundSwitch />
-
-### Transportmidler
-<IllustrationList categoryFilter="transport" disableBackgroundSwitch />
-
-### Hittegods
-<IllustrationList categoryFilter="travel" disableBackgroundSwitch />
-
-### Scenarioer
-<IllustrationList categoryFilter="scenario" disableBackgroundSwitch />
-
-</TabPanel>
-<TabPanel>
-
-## Generelle retningslinjer
-
-Ved behov for andre formater eller utsnitt av materiale som ligger i illustrasjonsbiblioteket, kontakt oss på Slack i [#talk-designsystem](https://entur.slack.com/archives/C899QSPB7). 
-Vi jobber også med å utvikle animasjoner av noen av motivene, etter smidige prinsipper, litt etter litt. Det er foreløpig ikke avklart om de animerte 
-illustrasjonene skal legges ut her eller et annet sted.
-
-De kvadratiske motivene er designet for å hyggeliggjøre meldinger som kan være kjedelig eller irriterende for brukeren å få. 
-Det skal ikke brukes mer enn tre slike illustrasjoner på én sidevisning, og i tilfeller hvor det brukes mer enn én illustrasjon på en side 
-bør de settes i et fler-kolonners grid.
+Noen motiver finnes også som animasjoner. Foreløpig ligger de tilgjengelig for ansatte i Entur på [Google Drive](https://drive.google.com/drive/folders/151XETkW3uniEIEEb0fbn2U2XipRKDNxb?usp=sharing).
 
 ## Statusbeskjeder
 
@@ -134,7 +123,7 @@ Her presenteres illustrasjonene som brukes for ulike statusbeskjeder. Illustrasj
   </GridItem>
   <GridItem small={12} medium={4} className="statusbeskjed-grid">
     <ImageDisplay
-      imgSource={props.data.files.images.find(image => image.name === "Musk")?.publicURL}
+      imgSource={props.data.files.images.find(image => image.name === "Musk ox")?.publicURL}
       alt="moskus"
       preset="full-width-image"
     />
@@ -222,6 +211,6 @@ Her presenteres illustrasjonene som brukes for ulike statusbeskjeder. Illustrasj
   </GridItem>
 </GridContainer>
 
-</TabPanel>
-</TabPanels>
-</Tabs>
+</TextContainer>
+</DocTab>
+</MdxDocTabs>
