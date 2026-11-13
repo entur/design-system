@@ -61,22 +61,18 @@ test('disabled checkbox ignores label clicks and is skipped by Tab', async () =>
   expect(onChange).not.toHaveBeenCalled();
 });
 
-// Bug: readOnly blocks keys but does not prevent the native checkbox click.
-test.failing(
-  'readOnly checkbox cannot be changed by clicking its label',
-  async () => {
-    const user = userEvent.setup();
-    const onChange = jest.fn();
-    render(
-      <Checkbox readOnly onChange={onChange}>
-        Accept terms
-      </Checkbox>,
-    );
-    await user.click(screen.getByText('Accept terms'));
-    expect(screen.getByRole('checkbox')).not.toBeChecked();
-    expect(onChange).not.toHaveBeenCalled();
-  },
-);
+test('readOnly checkbox cannot be changed by clicking its label', async () => {
+  const user = userEvent.setup();
+  const onChange = jest.fn();
+  render(
+    <Checkbox readOnly onChange={onChange}>
+      Accept terms
+    </Checkbox>,
+  );
+  await user.click(screen.getByText('Accept terms'));
+  expect(screen.getByRole('checkbox')).not.toBeChecked();
+  expect(onChange).not.toHaveBeenCalled();
+});
 
 test('checkboxes can be indeterminate', () => {
   const { getByLabelText, rerender } = render(
