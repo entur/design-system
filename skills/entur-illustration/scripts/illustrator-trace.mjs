@@ -173,6 +173,9 @@ params.disc = disc
 // On an object, which of the disc's pale areas are faces of it (discParts).
 const parts = object && disc ? discParts(img, disc) : null;
 params.faces = parts ? parts.faces : null;
+// On an object, the draft's shading inside its figures (objectShades): paper
+// under it and a tint shape of its own in pass two.
+const shades = object && underlay ? objectShades(img, disc) : null;
 // On a vehicle, where its windows are (vehicleWindows).
 params.windows = vehicle ? vehicleWindows(img) : null;
 params.ground = ground
@@ -805,6 +808,30 @@ if (P.figures) {
   for (var w2 = 0; w2 < outsideWhite.length; w2++) { try { outsideWhite[w2].remove(); whiteGone++; } catch (e7) {} }
   log.push('white outside the figures removed ' + whiteGone);
 }
+// An object's shading (P.shadeMask, objectShades): tint shapes traced from the
+// draft's shading, under the colour fills and over the underlay, named Shade.
+// The colour trace merged it with the disc, and the backdrop step took it out.
+if (P.shadeMask) {
+  var sp = fillLayerOf(doc).placedItems.add();
+  sp.file = new File(P.shadeMask);
+  sp.width = ab[2] - ab[0]; sp.height = ab[1] - ab[3]; sp.position = [ab[0], ab[1]];
+  var st0 = sp.trace(), so = retry(function () { var o = st0.tracing.tracingOptions; o.tracingMode = TracingModeType.TRACINGMODEBLACKANDWHITE; return o; });
+  so.threshold = 128;
+  so.fills = true; so.strokes = false; so.ignoreWhite = true;
+  so.pathFidelity = 20; so.cornerFidelity = 30; so.noiseFidelity = 80;
+  app.redraw();
+  var sg = st0.tracing.expandTracing(), shadeCount = 0;
+  var stops = sg.typename === 'GroupItem' ? sg.pageItems : [sg], sshapes = [];
+  for (var s0 = 0; s0 < stops.length; s0++) sshapes.push(stops[s0]);
+  for (var s1 = 0; s1 < sshapes.length; s1++) {
+    var shade = sshapes[s1].duplicate(fillLayerOf(doc), ElementPlacement.PLACEATEND), sps = paths(shade, []);
+    shade.name = 'Shade';
+    for (var s2 = 0; s2 < sps.length; s2++) { sps[s2].filled = true; sps[s2].stroked = false; sps[s2].fillColor = rgb(P.palette.tint); }
+    shadeCount++;
+  }
+  sg.remove();
+  log.push('shading ' + shadeCount);
+}
 // Paper underlay under the subject, traced from the mask: one shape per
 // figure (a hen and a chick standing apart each get theirs), with the holes
 // the mask has (between legs) kept open.
@@ -873,8 +900,13 @@ if (params.linesPng) {
     strokes,
     parts ? parts.holes : null,
     vehicle,
+    shades,
   );
   params.mask = savePng(img.w, img.h, k => subject[k], 'underlay.png');
+  params.shadeMask = shades
+    ? savePng(img.w, img.h, k => shades[k], 'shades.png')
+    : '';
+  if (shades) result += ` | object shading areas ${shades.count}`;
   if (subject.edge)
     result += ` | paper edge: ${subject.edge.chords} chords, ${subject.edge.removed} px off, ${subject.edge.added} px on`;
   params.figures = figureCells(img, subject.interior);
@@ -1347,6 +1379,7 @@ function underlaySubject(
   strokes,
   holes,
   vehicle = false,
+  shades = null,
 ) {
   const { w, h } = img;
   // A vehicle's contour is open in wider gaps than an animal's (a bus's
@@ -1503,6 +1536,13 @@ function underlaySubject(
       if (!stands) continue;
       for (let y = from; y <= foot; y++) subject[y * w + x] = 1;
     }
+  }
+  // An object's shading (objectShades) has the whole figure's paper under it,
+  // and under the line beside it, but never past the line.
+  if (shades) {
+    const under = dilate(shades, w, h, Math.max(2, Math.round(0.004 * w)));
+    for (let k = 0; k < w * h; k++)
+      if (shades[k] || (under[k] && ink[k])) subject[k] = 1;
   }
   // An object's holes (discParts): no paper inside an empty ring on the disc,
   // nor under its line, so the disc shows there in every mode.
@@ -2075,6 +2115,178 @@ function vehicleWindows(img, n = 256) {
   const map = figureCells(img, windows, n);
   map.count = count;
   return map;
+}
+
+// Shading on an object (`--object`): a pale band inside a figure, between
+// its outline and its white, like the crescent on the shadow side of a
+// snowman's balls. It has the disc's own colour, and where the outline is
+// open the band runs into the disc, so the colour trace merges it with the
+// disc and the paper stops short of it: the ball is cut off in dark mode. A
+// pale pixel belongs to a band when, along one of eight directions, it
+// reaches a large white area through pale only and the opposite way a line,
+// within 5 % of the width in all. A band counts as shading when it is large
+// and mostly at least 1.2 % of the width across, wider than the strip where
+// a draft's paper sits a little off its line (discParts). Returned as a mask,
+// closed and kept to the pale pixels, with its count.
+function objectShades(img, disc) {
+  const { w, h, lum, blueish } = img;
+  const ink = new Uint8Array(w * h);
+  const pale = new Uint8Array(w * h);
+  for (let k = 0; k < w * h; k++) {
+    ink[k] = lum[k] < 120 ? 1 : 0;
+    pale[k] = lum[k] >= 212 && lum[k] <= 238 && blueish[k] ? 1 : 0;
+  }
+  // White inside a figure: not reached from the border past the lines, and
+  // inside the disc white never lets the flood through.
+  const inDisc = k => {
+    if (!disc) return false;
+    const x = k % w;
+    const y = (k - x) / w;
+    return (x - disc.cx) ** 2 + (y - disc.cy) ** 2 < (disc.r - 6) ** 2;
+  };
+  const wall = dilate(ink, w, h, 5);
+  const reached = new Uint8Array(w * h);
+  const stack = [];
+  for (let x = 0; x < w; x++) stack.push(x, (h - 1) * w + x);
+  for (let y = 0; y < h; y++) stack.push(y * w, y * w + w - 1);
+  while (stack.length) {
+    const k = stack.pop();
+    if (reached[k] || wall[k] || (inDisc(k) && lum[k] > 238)) continue;
+    reached[k] = 1;
+    const x = k % w;
+    if (x > 0) stack.push(k - 1);
+    if (x < w - 1) stack.push(k + 1);
+    if (k >= w) stack.push(k - w);
+    if (k < w * h - w) stack.push(k + w);
+  }
+  const white = new Uint8Array(w * h);
+  for (let k = 0; k < w * h; k++)
+    white[k] = lum[k] > 238 && !reached[k] ? 1 : 0;
+  // Pieces of a mask as pixel lists.
+  const pieces = mask => {
+    const seen = new Uint8Array(w * h);
+    const all = [];
+    for (let k0 = 0; k0 < w * h; k0++) {
+      if (!mask[k0] || seen[k0]) continue;
+      const part = [k0];
+      seen[k0] = 1;
+      for (let i = 0; i < part.length; i++) {
+        const p = part[i];
+        const x = p % w;
+        for (const q of [
+          x > 0 ? p - 1 : -1,
+          x < w - 1 ? p + 1 : -1,
+          p - w,
+          p + w,
+        ])
+          if (q >= 0 && q < w * h && mask[q] && !seen[q]) {
+            seen[q] = 1;
+            part.push(q);
+          }
+      }
+      all.push(part);
+    }
+    return all;
+  };
+  // Only a figure's own white counts, not a small patch beside a line.
+  const large = new Uint8Array(w * h);
+  for (const part of pieces(white))
+    if (part.length >= (0.03 * w) ** 2) for (const k of part) large[k] = 1;
+  const reach = Math.round(0.05 * w);
+  const wide = Math.round(0.012 * w);
+  // A band's far side is a line; or, where the band carries on past the end
+  // of the line (a snowman's shadow wrapping round the bottom of the ball,
+  // at the disc's edge), the page's white outside the figures. That looser
+  // band only extends shading found against a line, never starts it (the
+  // disc between a calendar's corner and the disc's edge is no shading).
+  const band = new Float32Array(w * h);
+  const loose = new Uint8Array(w * h);
+  for (let k = 0; k < w * h; k++) {
+    if (!pale[k]) continue;
+    const x0 = k % w;
+    const y0 = (k - x0) / w;
+    let best = 0;
+    for (const [dx, dy] of [
+      [1, 0],
+      [1, 1],
+      [0, 1],
+      [-1, 1],
+    ])
+      for (const s of [1, -1]) {
+        let a = 0;
+        let x = x0;
+        let y = y0;
+        let toWhite = false;
+        while (a <= reach) {
+          x += s * dx;
+          y += s * dy;
+          a++;
+          if (x < 0 || y < 0 || x >= w || y >= h) break;
+          if (large[y * w + x]) {
+            toWhite = true;
+            break;
+          }
+          if (!pale[y * w + x]) break;
+        }
+        if (!toWhite) continue;
+        let b = 0;
+        let toLine = false;
+        x = x0;
+        y = y0;
+        while (a + b <= reach) {
+          x -= s * dx;
+          y -= s * dy;
+          b++;
+          if (x < 0 || y < 0 || x >= w || y >= h) break;
+          const q = y * w + x;
+          if (ink[q]) {
+            toLine = true;
+            break;
+          }
+          if (lum[q] > 238 && reached[q]) {
+            loose[k] = 1;
+            break;
+          }
+          if (!pale[q]) break;
+        }
+        if (!toLine) continue;
+        const across = (a + b) * (dx && dy ? Math.SQRT2 : 1);
+        if (!best || across < best) best = across;
+      }
+    band[k] = best;
+  }
+  const raw = new Uint8Array(w * h);
+  let count = 0;
+  for (const part of pieces(band.map(v => (v ? 1 : 0)))) {
+    let wideCount = 0;
+    for (const k of part) if (band[k] >= wide) wideCount++;
+    if (part.length < (0.025 * w) ** 2 || wideCount < 0.5 * part.length)
+      continue;
+    count++;
+    for (const k of part) raw[k] = 1;
+  }
+  if (!count) return null;
+  // Carry the shading on through the looser band it touches.
+  const grow = [];
+  for (let k = 0; k < w * h; k++) if (raw[k]) grow.push(k);
+  while (grow.length) {
+    const p = grow.pop();
+    const x = p % w;
+    for (const q of [x > 0 ? p - 1 : -1, x < w - 1 ? p + 1 : -1, p - w, p + w])
+      if (q >= 0 && q < w * h && !raw[q] && (loose[q] || band[q])) {
+        raw[q] = 1;
+        grow.push(q);
+      }
+  }
+  // The rays leave a hatched mask: close it, and keep it to the pale.
+  const r = Math.max(2, Math.round(0.005 * w));
+  const closed = erode(dilate(raw, w, h, r), w, h, r);
+  const shades = closed.map((v, k) => (v && pale[k] ? 1 : 0));
+  // Under the line beside it too, so no white shows between them.
+  const under = dilate(shades, w, h, Math.max(2, Math.round(0.006 * w)));
+  for (let k = 0; k < w * h; k++) if (under[k] && ink[k]) shades[k] = 1;
+  shades.count = count;
+  return shades;
 }
 
 // On an object (`--object`), the disc's pale grey-lavender inside the disc
