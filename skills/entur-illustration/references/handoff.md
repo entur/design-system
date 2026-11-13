@@ -73,12 +73,12 @@ Insert the three mode SVGs as frames, then bind each frame:
 | `tint`                       | `Fill/BodyShadow`                      | —                                            |
 | anything in the Circle group | `Fill/Circle`                          | —                                            |
 | `peach`                      | `Fill/Highlight`                       | `Fill/Highlight 1`                           |
-| `lavender`                   | `People/<set>/Fill/Highlight 2`        | `Fill/Highlight 2`                           |
+| `lavender`                   | — (clothing on a figure: see below)    | `Fill/Highlight 2`                           |
 | `coral` (staff panels only)  | —                                      | `Fill/Highlight 3`                           |
 
 Vehicles bind to their own group, `Transports/<set>/…`: Stroke for the lines, Background for the white body (`vehicle`), Window for the window fills (`window`), Fill for small ink fills such as a tyre, Legline for the coral line, Background Subdued for tint, and Reflex for the glints, which are clear in Light and white in Dark.
 
-The Animal group has no lavender role, so lavender on an animal or object (a scarf, a hat band) binds to the People group's `Fill/Highlight 2`, in the matching set. Lavender keeps its value in every mode (palette.md), so that variable gives the same colour and still follows the collection.
+The Animal group has no lavender role. Lavender that is clothing worn by a figure, such as a snowman's scarf and hat band, is a person's garment. It binds to the People group's `Fill/Highlight 2` in the matching set; lavender keeps its value in every mode (palette.md), so the colour stays the same. That holds for clothing only, not for every object. Other lavender on an animal or object has no variable: leave its hex value and say so in the handoff.
 
 The variables resolve to the palette's own values: `Animal/Standard/Fill/Circle` is `#EAEAF1` in Light and `#CCCDD4` at 30 % in Dark, and the alpha lives in the variable, so the bound paint itself gets opacity 1. In Dark, people's `Fill/Cloth` and `Fill/Shoe` turn Ebony 30 while `Fill/Skin` turns Ebony 5: the cloth and skin split of `palette.md`. A trace cannot tell skin from clothes, so all paper on a person starts as `Fill/Skin`; rebind the clothes by hand. Report a colour with no role (lavender on an animal, tint on a person) instead of guessing.
 
