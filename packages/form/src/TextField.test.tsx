@@ -210,8 +210,24 @@ describe('TextField', () => {
     },
   );
 
-  // Bug: the feedback text is not linked to the input with aria-describedby.
-  test.failing('feedback text describes only its own field', () => {
+  test('keeps a consumer aria-describedby next to the feedback text', () => {
+    render(
+      <>
+        <p id="hint">Station or address</p>
+        <TextField
+          label="Destination"
+          aria-describedby="hint"
+          variant="negative"
+          feedback="Choose a destination"
+        />
+      </>,
+    );
+    expect(
+      screen.getByRole('textbox', { name: 'Destination' }),
+    ).toHaveAccessibleDescription('Station or address Choose a destination');
+  });
+
+  test('feedback text describes only its own field', () => {
     render(
       <>
         <TextField

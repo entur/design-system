@@ -64,11 +64,15 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
       resize,
       ariaAlertOnFeedback,
       feedbackProps,
+      'aria-describedby': ariaDescribedBy,
       ...rest
     },
     ref: React.Ref<HTMLTextAreaElement>,
   ) => {
     const textAreaId = `eds-textarea${useId()}`;
+    const feedbackId = feedbackProps?.id ?? `${textAreaId}-feedback`;
+    const contextVariant = useVariant();
+    const showFeedback = Boolean(feedback && (variant || contextVariant));
     const textareaRef = React.useRef<HTMLTextAreaElement>(null);
     return (
       <BaseFormControl
@@ -80,6 +84,7 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
         label={label}
         labelId={textAreaId}
         feedback={feedback}
+        feedbackId={feedbackId}
         labelTooltip={labelTooltip}
         labelTooltipButtonAriaLabel={labelTooltipButtonAriaLabel}
         labelTooltipPlacement={labelTooltipPlacement}
@@ -96,6 +101,9 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
           disabled={disabled}
           ref={mergeRefs(ref, textareaRef)}
           aria-labelledby={textAreaId}
+          aria-describedby={
+            classNames(ariaDescribedBy, showFeedback && feedbackId) || undefined
+          }
           onChange={onChange}
           variant={variant}
           resize={resize}
