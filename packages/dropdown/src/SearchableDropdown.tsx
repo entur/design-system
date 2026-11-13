@@ -21,7 +21,7 @@ import {
   useFloating,
 } from '@floating-ui/react-dom';
 
-import { BaseFormControl } from '@entur/form';
+import { BaseFormControl, useFeedbackDescription } from '@entur/form';
 import { space } from '@entur/tokens';
 import { getActiveElement, mergeRefs } from '@entur/utils';
 
@@ -109,6 +109,7 @@ export const SearchableDropdown = React.forwardRef(
       onClick,
       onKeyDown,
       onFocus,
+      'aria-describedby': ariaDescribedBy,
       ...rest
     }: SearchableDropdownProps<ValueType>,
     ref: React.ForwardedRef<HTMLInputElement>,
@@ -314,6 +315,13 @@ export const SearchableDropdown = React.forwardRef(
       ref: setFloatingMenu,
       style: listStyle,
     });
+    const { feedbackId, 'aria-describedby': describedBy } =
+      useFeedbackDescription({
+        feedback,
+        variant,
+        feedbackProps: rest.feedbackProps,
+        'aria-describedby': ariaDescribedBy,
+      });
     const inputProps = getInputProps({
       onKeyDown(e: React.KeyboardEvent) {
         if (isOpen && e.key === 'Tab') {
@@ -350,6 +358,7 @@ export const SearchableDropdown = React.forwardRef(
         disabled={disabled}
         disableLabelAnimation={disableLabelAnimation}
         feedback={feedback}
+        feedbackId={feedbackId}
         isFilled={selectedItem !== null || inputValue !== EMPTY_INPUT}
         label={label}
         labelId={labelProps.id}
@@ -401,6 +410,7 @@ export const SearchableDropdown = React.forwardRef(
             }
           }}
           tabIndex={readOnly ? 0 : -1}
+          aria-describedby={readOnly ? describedBy : undefined}
         >
           {showSelectedItem ? selectedItem?.label : ''}
         </span>
@@ -409,6 +419,7 @@ export const SearchableDropdown = React.forwardRef(
             'eds-dropdown__input--hidden': showSelectedItem,
           })}
           {...inputProps}
+          aria-describedby={describedBy}
           aria-invalid={variant === 'negative' || variant === 'error'}
         />
         <DropdownFieldAppendix
