@@ -92,12 +92,16 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
       value,
       ariaAlertOnFeedback,
       feedbackProps,
+      'aria-describedby': ariaDescribedBy,
       ...rest
     },
     ref: React.Ref<HTMLInputElement>,
   ) => {
     const randomId = `eds-textfield${useId()}`;
     const textFieldId = labelProps && labelProps.id ? labelProps.id : randomId;
+    const feedbackId = feedbackProps?.id ?? `${textFieldId}-feedback`;
+    const contextVariant = useVariant();
+    const showFeedback = Boolean(feedback && (variant || contextVariant));
     const textFieldRef = React.useRef<HTMLInputElement>(null);
     const { setFilled } = useInputGroupContext();
 
@@ -150,6 +154,7 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
         labelTooltipPlacement={labelTooltipPlacement}
         labelId={textFieldId}
         feedback={feedback}
+        feedbackId={feedbackId}
         disableLabelAnimation={disableLabelAnimation}
         labelProps={labelProps}
         ariaAlertOnFeedback={ariaAlertOnFeedback}
@@ -163,6 +168,9 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
           readOnly={readOnly}
           ref={mergeRefs(ref, textFieldRef)}
           aria-labelledby={textFieldId}
+          aria-describedby={
+            classNames(ariaDescribedBy, showFeedback && feedbackId) || undefined
+          }
           onChange={onChange}
           value={value}
           variant={variant}

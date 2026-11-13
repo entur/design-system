@@ -70,6 +70,9 @@ export type BaseFormControlProps = React.HTMLAttributes<HTMLDivElement> &
     labelId: string;
     /** Varselmelding, som vil komme under form-komponenten */
     feedback?: string;
+    /** ID som settes på feedback-teksten, slik at skjemafeltet kan peke på
+     * den med aria-describedby */
+    feedbackId?: string;
     /** Om inputfeltet er fylt med data. Brukes for plassering av label */
     isFilled?: boolean;
     /**Ekstra props som sendes til label */
@@ -110,6 +113,7 @@ export const BaseFormControl = React.forwardRef<
       labelTooltipButtonAriaLabel = `Klikk for tilleggsinfo om ${label}-feltet`,
       labelTooltipPlacement = 'top',
       feedback,
+      feedbackId,
       labelId,
       labelProps,
       style,
@@ -226,6 +230,7 @@ export const BaseFormControl = React.forwardRef<
               role={feedbackRole}
               aria-live={feedbackAriaLive}
               {...restFeedbackProps}
+              id={feedbackId ?? restFeedbackProps.id}
             >
               {showFeedback ? feedback : undefined}
             </FeedbackText>

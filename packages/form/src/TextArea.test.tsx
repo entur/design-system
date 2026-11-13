@@ -77,23 +77,15 @@ test.each(['disabled', 'readOnly'] as const)(
   },
 );
 
-// Bug: the feedback text is not linked to the textarea with aria-describedby.
-test.failing(
-  'feedback text describes the textarea and updates with validation',
-  () => {
-    const { rerender } = render(
-      <TextArea
-        label="Message"
-        variant="negative"
-        feedback="Write a message"
-      />,
-    );
-    const input = screen.getByRole('textbox', { name: 'Message' });
-    expect(input).toHaveAccessibleDescription('Write a message');
-    rerender(<TextArea label="Message" />);
-    expect(input).toHaveAccessibleDescription('');
-  },
-);
+test('feedback text describes the textarea and updates with validation', () => {
+  const { rerender } = render(
+    <TextArea label="Message" variant="negative" feedback="Write a message" />,
+  );
+  const input = screen.getByRole('textbox', { name: 'Message' });
+  expect(input).toHaveAccessibleDescription('Write a message');
+  rerender(<TextArea label="Message" />);
+  expect(input).toHaveAccessibleDescription('');
+});
 
 test.each(['vertical', 'none'] as const)(
   'resize=%s sets inline resize on the textarea',
