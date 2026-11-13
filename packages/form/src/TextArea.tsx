@@ -6,6 +6,7 @@ import { VariantType, mergeRefs, useOnMount } from '@entur/utils';
 import { useVariant } from './VariantProvider';
 import { BaseFormControl, FeedbackAnnouncementProps } from './BaseFormControl';
 import { useInputGroupContext } from './InputGroupContext';
+import { useFeedbackDescription } from './useFeedbackDescription';
 import { isFilled } from './utils';
 
 import './TextArea.scss';
@@ -70,9 +71,13 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
     ref: React.Ref<HTMLTextAreaElement>,
   ) => {
     const textAreaId = `eds-textarea${useId()}`;
-    const feedbackId = feedbackProps?.id ?? `${textAreaId}-feedback`;
-    const contextVariant = useVariant();
-    const showFeedback = Boolean(feedback && (variant || contextVariant));
+    const { feedbackId, 'aria-describedby': describedBy } =
+      useFeedbackDescription({
+        feedback,
+        variant,
+        feedbackProps,
+        'aria-describedby': ariaDescribedBy,
+      });
     const textareaRef = React.useRef<HTMLTextAreaElement>(null);
     return (
       <BaseFormControl
@@ -101,9 +106,7 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
           disabled={disabled}
           ref={mergeRefs(ref, textareaRef)}
           aria-labelledby={textAreaId}
-          aria-describedby={
-            classNames(ariaDescribedBy, showFeedback && feedbackId) || undefined
-          }
+          aria-describedby={describedBy}
           onChange={onChange}
           variant={variant}
           resize={resize}

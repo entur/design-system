@@ -9,6 +9,7 @@ import { IconButton } from '@entur/button';
 import { FeedbackText } from './FeedbackText';
 import { InputGroupContextProvider } from './InputGroupContext';
 import { InputGroupLabel } from './InputGroupLabel';
+import { isFeedbackShown } from './useFeedbackDescription';
 import { useVariant } from './VariantProvider';
 
 import './BaseFormControl.scss';
@@ -147,7 +148,7 @@ export const BaseFormControl = React.forwardRef<
       (feedbackAriaLive !== undefined ? undefined : defaultFeedbackRole);
     const isLiveRegion =
       feedbackRole !== undefined || feedbackAriaLive !== undefined;
-    const showFeedback = Boolean(feedback && currentVariant);
+    const showFeedback = isFeedbackShown(feedback, currentVariant);
 
     return (
       <InputGroupContextProvider>
