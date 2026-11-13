@@ -3,6 +3,7 @@ import {
   BaseFormControl,
   FeedbackAnnouncementProps,
   isFilled,
+  useFeedbackDescription,
   useInputGroupContext,
   useVariant,
 } from '@entur/form';
@@ -50,10 +51,18 @@ export const NativeDatePicker = React.forwardRef<
       prepend = <DateIcon inline />,
       ariaAlertOnFeedback,
       feedbackProps,
+      'aria-describedby': ariaDescribedBy,
       ...rest
     },
     ref: React.Ref<HTMLInputElement>,
   ) => {
+    const { feedbackId, 'aria-describedby': describedBy } =
+      useFeedbackDescription({
+        feedback,
+        variant,
+        feedbackProps,
+        'aria-describedby': ariaDescribedBy,
+      });
     const nativedatepickerId = `eds-nativetimepicker${useId()}`;
     return (
       <BaseFormControl
@@ -67,11 +76,13 @@ export const NativeDatePicker = React.forwardRef<
         disableLabelAnimation={disableLabelAnimation}
         ariaAlertOnFeedback={ariaAlertOnFeedback}
         feedbackProps={feedbackProps}
+        feedbackId={feedbackId}
         isFilled
       >
         <NativeDatePickerBase
           onChange={onChange}
           aria-labelledby={nativedatepickerId}
+          aria-describedby={describedBy}
           ref={ref}
           variant={variant}
           {...rest}
