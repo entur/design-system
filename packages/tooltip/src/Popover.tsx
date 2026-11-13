@@ -4,6 +4,7 @@ import React, {
   createContext,
   useContext,
   useEffect,
+  useId,
 } from 'react';
 
 import classNames from 'classnames';
@@ -79,7 +80,10 @@ export const Popover = ({
     setShowPopover(false),
   );
 
+  const triggerId = `eds-popover-trigger${useId()}`;
+
   const popoverTriggerProps = {
+    id: triggerId,
     'aria-haspopup': 'dialog',
     'aria-expanded': showPopover,
     ref: refs.setReference,
@@ -91,6 +95,7 @@ export const Popover = ({
 
   const popoverContentProps = {
     role: 'dialog',
+    'aria-labelledby': elements.reference?.id || undefined,
     'aria-modal': false,
     'aria-hidden': !showPopover,
     ref: refs.setFloating,
@@ -148,7 +153,10 @@ export type PopoverTriggerProps = {
 export const PopoverTrigger = ({ children }: PopoverTriggerProps) => {
   const { popoverTriggerProps } = usePopoverContext();
   const child = React.Children.only(children) as React.ReactElement<any>;
-  return cloneElement(child, popoverTriggerProps);
+  return cloneElement(child, {
+    ...popoverTriggerProps,
+    id: child.props.id ?? popoverTriggerProps.id,
+  });
 };
 
 export type PopoverCloseButtonProps = {
@@ -169,17 +177,28 @@ export type PopoverContentProps = {
   children: React.ReactNode;
   className?: string;
   style?: React.CSSProperties;
-};
+} & Omit<
+  React.HTMLAttributes<HTMLDivElement>,
+  'role' | 'aria-modal' | 'aria-hidden' | 'onKeyDown' | 'onBlur'
+>;
 
 export const PopoverContent = React.forwardRef<
   HTMLDivElement,
   PopoverContentProps
->(({ children, className, style }, ref: React.Ref<HTMLDivElement>) => {
+>(({ children, className, style, ...rest }, ref: React.Ref<HTMLDivElement>) => {
   const { floatingStyles, popoverContentProps } = usePopoverContext();
   return (
     <Contrast
+      {...rest}
       className={classNames(className, 'eds-popover')}
       {...popoverContentProps}
+      // The trigger names the dialog unless the consumer names it
+      aria-labelledby={
+        rest['aria-labelledby'] ??
+        (rest['aria-label']
+          ? undefined
+          : popoverContentProps['aria-labelledby'])
+      }
       style={{ ...floatingStyles, ...popoverContentProps.style, ...style }}
       // @ts-expect-error correct type for floating cannot be set via useFloating
       ref={mergeRefs(popoverContentProps.ref, ref)}
@@ -195,6 +214,7 @@ type PopoverContextProps = {
   closeButtonProps: Record<string, unknown>;
   popoverContentProps: {
     role: string;
+    'aria-labelledby': string | undefined;
     'aria-modal': boolean;
     'aria-hidden': boolean;
     ref: MutableRefObject<HTMLElement> | ((node: HTMLElement | null) => void);
