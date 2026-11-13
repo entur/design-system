@@ -62,8 +62,10 @@ describe('FileUpload', () => {
     expect(screen.getByText(standbyText)).toBeVisible();
 
     rerender(<FileUpload files={[file]} onDrop={onDrop} />);
-    expect(screen.getByText(/journey\.txt/)).toBeVisible();
-    expect(screen.getByText('Opplasting fullført')).toBeVisible();
+    expect(screen.getByText(/journey\.txt - /)).toBeVisible();
+    expect(
+      screen.getByRole('button', { name: 'Opplasting fullført' }),
+    ).toBeVisible();
     expect(
       screen.getByRole('button', { name: 'Fjern fil, journey.txt' }),
     ).toBeVisible();
@@ -432,14 +434,18 @@ describe('FileUpload', () => {
     );
 
     rerender(<FileUpload files={[]} errorUpload />);
-    expect(screen.getByText('Feil ved opplasting av fil')).toHaveClass(
-      'eds-file-upload__dropzone--error',
-    );
+    expect(
+      screen.getByText('Feil ved opplasting av fil', {
+        selector: '.eds-file-upload__dropzone',
+      }),
+    ).toHaveClass('eds-file-upload__dropzone--error');
 
     rerender(<FileUpload files={[new File(['route'], 'route.txt')]} />);
-    expect(screen.getByText('Opplasting fullført')).toHaveClass(
-      'eds-file-upload__dropzone--success',
-    );
+    expect(
+      screen.getByText('Opplasting fullført', {
+        selector: '.eds-file-upload__dropzone',
+      }),
+    ).toHaveClass('eds-file-upload__dropzone--success');
   });
 
   test.each([
@@ -545,8 +551,7 @@ describe('FileUpload', () => {
     expect(status).not.toHaveClass('eds-file-upload__dropzone--reject');
   });
 
-  // Bug: FileUpload spreads style as attributes on its wrapper instead of passing it as style.
-  test.failing('forwards style to its wrapper', () => {
+  test('forwards style to its wrapper', () => {
     render(<FileUpload files={[]} style={{ marginTop: '7px' }} />);
 
     expect(
@@ -554,23 +559,18 @@ describe('FileUpload', () => {
     ).toHaveStyle({ marginTop: '7px' });
   });
 
-  // Bug: successText changes in a plain span without a live region.
-  test.failing(
-    'announces successful selection through a live status',
-    async () => {
-      const user = userEvent.setup();
-      render(<ControlledUpload />);
+  test('announces successful selection through a live status', async () => {
+    const user = userEvent.setup();
+    render(<ControlledUpload />);
 
-      await user.upload(getFileInput(), new File(['route'], 'route.txt'));
+    await user.upload(getFileInput(), new File(['route'], 'route.txt'));
 
-      expect(await screen.findByRole('status')).toHaveTextContent(
-        'Opplasting fullført',
-      );
-    },
-  );
+    expect(await screen.findByRole('status')).toHaveTextContent(
+      'Opplasting fullført',
+    );
+  });
 
-  // Bug: errorUpload updates a plain span, so errors are not announced.
-  test.failing('announces upload errors to assistive technology', () => {
+  test('announces upload errors to assistive technology', () => {
     const { rerender } = render(<FileUpload files={[]} />);
 
     rerender(<FileUpload files={[]} errorUpload />);
@@ -580,22 +580,105 @@ describe('FileUpload', () => {
     );
   });
 
-  // Bug: unmounting the focused remove button leaves focus on document.body.
-  test.failing(
-    'restores focus to the upload trigger after removing the last file',
-    async () => {
-      const user = userEvent.setup();
-      render(<ControlledUpload />);
-      await user.upload(getFileInput(), new File(['route'], 'route.txt'));
-      await screen.findByRole('button', { name: 'Fjern fil, route.txt' });
-      await user.tab();
-      expect(
-        screen.getByRole('button', { name: 'Fjern fil, route.txt' }),
-      ).toHaveFocus();
+  test('restores focus to the upload trigger after removing the last file', async () => {
+    const user = userEvent.setup();
+    render(<ControlledUpload />);
+    await user.upload(getFileInput(), new File(['route'], 'route.txt'));
+    await screen.findByRole('button', { name: 'Fjern fil, route.txt' });
+    await user.tab();
+    expect(
+      screen.getByRole('button', { name: 'Fjern fil, route.txt' }),
+    ).toHaveFocus();
 
-      await user.keyboard('{Enter}');
+    await user.keyboard('{Enter}');
 
-      expect(screen.getByRole('button', { name: standbyText })).toHaveFocus();
-    },
-  );
+    expect(screen.getByRole('button', { name: standbyText })).toHaveFocus();
+  });
+
+  test('announces every new file through the live status', async () => {
+    const user = userEvent.setup();
+    const { container } = render(<ControlledUpload />);
+    const input =
+      container.querySelector<HTMLInputElement>('input[type="file"]')!;
+
+    await user.upload(input, new File(['route'], 'route.txt'));
+    expect(await screen.findByRole('status')).toHaveTextContent(
+      'Opplasting fullført: route.txt',
+    );
+    await user.upload(input, new File(['stop'], 'stop.txt'));
+    expect(await screen.findByRole('status')).toHaveTextContent(
+      'Opplasting fullført: stop.txt',
+    );
+  });
+
+  test('announces every file in a multi-file selection', async () => {
+    const user = userEvent.setup();
+    render(<ControlledUpload />);
+
+    await user.upload(getFileInput(), [
+      new File(['route'], 'route.txt'),
+      new File(['stop'], 'stop.txt'),
+    ]);
+
+    expect(await screen.findByRole('status')).toHaveTextContent(
+      'Opplasting fullført: route.txt, stop.txt',
+    );
+  });
+
+  test('keeps focus in the file list after removing the last of several files', async () => {
+    const user = userEvent.setup();
+    render(<ControlledUpload />);
+    await user.upload(getFileInput(), [
+      new File(['route'], 'route.txt'),
+      new File(['stop'], 'stop.txt'),
+    ]);
+    await screen.findByRole('button', { name: 'Fjern fil, stop.txt' });
+    await user.tab();
+    await user.tab();
+    expect(
+      screen.getByRole('button', { name: 'Fjern fil, stop.txt' }),
+    ).toHaveFocus();
+
+    await user.keyboard('{Enter}');
+
+    expect(
+      screen.getByRole('button', { name: 'Fjern fil, route.txt' }),
+    ).toHaveFocus();
+  });
+
+  test('hides the file icon from screen readers', () => {
+    const { container } = render(
+      <FileUpload files={[new File(['a'], 'a.txt')]} />,
+    );
+
+    expect(
+      container.querySelector('.eds-file-upload__file-name-icon'),
+    ).toHaveAttribute('aria-hidden', 'true');
+  });
+
+  test('announces the same state that is shown when files and an error are both present', () => {
+    render(<FileUpload files={[new File(['a'], 'a.txt')]} errorUpload />);
+
+    expect(screen.getByRole('alert')).toHaveTextContent('');
+  });
+
+  test('leaves focus alone when it moved elsewhere before the file list updated', async () => {
+    const user = userEvent.setup();
+    const { rerender } = render(
+      <>
+        <FileUpload files={[new File(['a'], 'a.txt')]} onDelete={jest.fn()} />
+        <input aria-label="Other field" />
+      </>,
+    );
+    await user.click(screen.getByRole('button', { name: 'Fjern fil, a.txt' }));
+    await user.click(screen.getByRole('textbox', { name: 'Other field' }));
+    rerender(
+      <>
+        <FileUpload files={[]} onDelete={jest.fn()} />
+        <input aria-label="Other field" />
+      </>,
+    );
+
+    expect(screen.getByRole('textbox', { name: 'Other field' })).toHaveFocus();
+  });
 });
