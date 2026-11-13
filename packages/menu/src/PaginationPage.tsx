@@ -32,9 +32,9 @@ export const PaginationPage = ({
       { 'eds-pagination__controls__page--disabled': disabled },
       className,
     )}
-    disabled={selected || disabled}
+    disabled={disabled}
     type="button"
-    onClick={onClick}
+    onClick={selected ? undefined : onClick}
     aria-label={ariaLabel}
     aria-describedby={ariaDescribedby}
     aria-current={selected ? 'page' : false}

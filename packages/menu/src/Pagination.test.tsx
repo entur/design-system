@@ -116,7 +116,7 @@ test('clicking a page button requests that page', async () => {
   expect(pageChangeSpy).toHaveBeenLastCalledWith(5);
 });
 
-test('marks the current page and prevents selecting it again', async () => {
+test('marks the current page, keeps it focusable and prevents selecting it again', async () => {
   const user = userEvent.setup();
   const pageChange = jest.fn();
   render(
@@ -124,12 +124,15 @@ test('marks the current page and prevents selecting it again', async () => {
   );
   const current = screen.getByRole('button', { current: 'page' });
   expect(current).toHaveAccessibleName('Gå til side 3');
-  expect(current).toBeDisabled();
+  expect(current).toBeEnabled();
   expect(current).toHaveClass('eds-pagination__controls__page--selected');
   expect(screen.getByRole('button', { name: 'Gå til side 2' })).not.toHaveClass(
     'eds-pagination__controls__page--selected',
   );
   await user.click(current);
+  current.focus();
+  await user.keyboard('{Enter}');
+  expect(current).toHaveFocus();
   expect(pageChange).not.toHaveBeenCalled();
 });
 
@@ -189,7 +192,7 @@ test('submits edited page input, clamps bounds and follows currentPage updates',
   expect(pageChangeSpy).toHaveBeenCalledTimes(3);
 });
 
-test('hides pagination for zero pages and disables every control for one page', async () => {
+test('hides pagination for zero pages and disables the arrows for one page', async () => {
   const user = userEvent.setup();
   const onPageChange = jest.fn();
   const { rerender } = render(
@@ -204,8 +207,11 @@ test('hides pagination for zero pages and disables every control for one page', 
   ).toBeInTheDocument();
   const controls = screen.getAllByRole('button');
   expect(controls).toHaveLength(3);
+  expect(screen.getByRole('button', { current: 'page' })).toBeEnabled();
   for (const control of controls) {
-    expect(control).toBeDisabled();
+    if (control.getAttribute('aria-current') !== 'page') {
+      expect(control).toBeDisabled();
+    }
     await user.click(control);
   }
   expect(onPageChange).not.toHaveBeenCalled();
