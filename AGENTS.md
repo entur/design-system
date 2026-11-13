@@ -89,6 +89,7 @@ package.json
 - **CSS:** BEM naming with `eds-` prefix, SCSS modules, cascade layers via `@entur/utils/styles/layers`
 - **Dual output:** Each package builds to ESM + CJS with separate CSS bundle and `.d.ts` files
 - **Design tokens:** `@entur/tokens` provides shared tokens as CSS custom properties, SCSS variables, and JS exports
+- **Internal exports:** A building block only other `@entur/*` packages use starts its JSDoc with `Internal: only for @entur/* packages, no semver guarantee.` Don't use `@internal` for it: `stripInternal` hides it from our other packages too ([ADR 3](doc/adr/0003-internal-exports.adoc))
 - **Prop unions stay inline:** Write literal unions directly in the props type. `react-docgen-typescript` does not expand named aliases, so the props table on the docs site would show the alias name instead of the values. Derive the alias from the props type afterwards: `type TagVariant = NonNullable<TagOwnProps['variant']>`
 
 ## Formatting
