@@ -79,6 +79,11 @@
 
   @media screen and (max-width: 40rem) {
     grid-template-columns: minmax(0, 1fr);
+    row-gap: tokens.$space-small;
+
+    .color-picker__switch-button {
+      justify-self: center;
+    }
   }
 }
 
@@ -86,6 +91,13 @@
   display: flex;
   flex-direction: column;
   min-width: 0;
+
+  // Stacked, each colour gets a frame, so its values stay with its dropdown
+  @media screen and (max-width: 40rem) {
+    padding: tokens.$space-default;
+    border: 1px solid var(--basecolors-stroke-subdued);
+    border-radius: tokens.$border-radiuses-large;
+  }
 }
 
 // One row per sample: preview and results share a frame
@@ -184,10 +196,16 @@
   // Narrow screens put the name above its value, so the value gets the full width
   @media screen and (max-width: 40rem) {
     grid-template-columns: minmax(0, 1fr);
+    row-gap: 0;
+    margin-top: tokens.$space-default;
 
     dt {
       border-right: none;
-      margin-top: tokens.$space-extra-small;
+      padding-block: tokens.$space-small tokens.$space-extra-small2;
+    }
+
+    .color-values__row:first-child dt {
+      padding-top: 0;
     }
   }
   align-items: center;
