@@ -6,6 +6,15 @@ const pastDelay = 2500;
 
 // The toast container comes before the page content in the DOM
 async function tabBackToClose(page: Page, close: Locator) {
+  // Wait for the slide-in animation, which a slow runner can still be in
+  await close.evaluate(element =>
+    Promise.all(
+      element
+        .closest('[role="status"]')!
+        .getAnimations({ subtree: true })
+        .map(animation => animation.finished),
+    ),
+  );
   await page.getByRole('button', { name: 'Show toast' }).focus();
   await pressTab(page, 'Shift+Tab');
   await expect(close).toBeFocused();
