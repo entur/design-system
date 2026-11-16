@@ -43,12 +43,18 @@ const ColorSwatch: React.FC<Props> = ({
   const rgb = hexrgb(backgroundColor, { format: 'array' });
 
   const { setChosenColor } = useColorContext();
+  const topLabelId = React.useId();
   return (
     <GridItem small={6} medium={4}>
-      {topLabel && <Text variant="label">{topLabel}</Text>}
+      {topLabel && (
+        <Text variant="label" id={topLabelId}>
+          {topLabel}
+        </Text>
+      )}
       <BaseCard
         className="color-swatch"
         as="button"
+        aria-describedby={topLabel ? topLabelId : undefined}
         style={{ marginTop: space.small }}
         onClick={() =>
           setChosenColor &&
