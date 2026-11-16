@@ -53,6 +53,13 @@
       font-size: tokens.$font-sizes-extra-large;
     }
 
+    &-verdict {
+      display: flex;
+      align-items: center;
+      gap: tokens.$space-small;
+      margin-top: tokens.$space-extra-small;
+    }
+
     &-ratio {
       font-weight: tokens.$font-weights-heading;
       font-size: tokens.$font-sizes-extra-large4;

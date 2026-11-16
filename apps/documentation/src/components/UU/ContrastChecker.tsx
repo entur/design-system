@@ -30,6 +30,9 @@ import {
   CloseIcon,
   SwitchIcon,
   ValidTicketIcon,
+  ValidationErrorFilledIcon,
+  ValidationExclamationFilledIcon,
+  ValidationSuccessFilledIcon,
 } from '@entur/icons';
 import { Heading } from '@entur/typography/beta';
 import './ContrastChecker.scss';
@@ -128,6 +131,25 @@ function ContrastChecker(): React.ReactNode {
         return Number(score) >= 3;
     }
   }
+  // Three levels, each with its own icon shape
+  const verdict = WCAGTest('aasmall')
+    ? {
+        Icon: ValidationSuccessFilledIcon,
+        color: colors.validation.mint,
+        text: 'Godkjent for all tekst (AA)',
+      }
+    : WCAGTest('aalarge')
+    ? {
+        Icon: ValidationExclamationFilledIcon,
+        color: colors.validation.canary,
+        text: 'Bare godkjent for stor tekst og grafiske objekter (AA)',
+      }
+    : {
+        Icon: ValidationErrorFilledIcon,
+        color: colors.validation.lava,
+        text: 'Ikke godkjent (AA)',
+      };
+
   function Innafor() {
     return (
       <>
@@ -197,18 +219,26 @@ function ContrastChecker(): React.ReactNode {
             <ColorValues color={findColor(backgroundColor)} />
           </div>
         </div>
+        {/* The verdict is told with icon and text too, not only the border colour */}
         <div
           className="contrast-checker__ratio"
-          style={{
-            borderColor: WCAGTest('aasmall')
-              ? colors.validation.mint
-              : colors.validation.lava,
-          }}
+          style={{ borderColor: verdict.color }}
+          aria-live="polite"
+          aria-atomic="true"
         >
-          <div className="contrast-checker__ratio-header">Kontrastforhold</div>
-          <div className="contrast-checker__ratio-ratio" aria-live="polite">
-            {score}:1
+          <div>
+            <div className="contrast-checker__ratio-header">
+              Kontrastforhold
+            </div>
+            <div className="contrast-checker__ratio-verdict">
+              <verdict.Icon
+                aria-hidden="true"
+                style={{ color: verdict.color }}
+              />
+              {verdict.text}
+            </div>
           </div>
+          <div className="contrast-checker__ratio-ratio">{score}:1</div>
         </div>
       </div>
       {/* Scrolls on narrow screens instead of running out of the page */}
