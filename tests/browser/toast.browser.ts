@@ -1,8 +1,15 @@
-import { expect, test } from '@playwright/test';
-import { tabUntil } from './keyboard';
+import { type Locator, type Page, expect, test } from '@playwright/test';
+import { pressTab } from './keyboard';
 
 // The fixture uses delay={1500}
 const pastDelay = 2500;
+
+// The toast container comes before the page content in the DOM
+async function tabBackToClose(page: Page, close: Locator) {
+  await page.getByRole('button', { name: 'Show toast' }).focus();
+  await pressTab(page, 'Shift+Tab');
+  await expect(close).toBeFocused();
+}
 
 test('keyboard focus shows the close button and pauses the toast', async ({
   page,
@@ -12,7 +19,7 @@ test('keyboard focus shows the close button and pauses the toast', async ({
   const toast = page.getByRole('status').filter({ hasText: 'Toast 1' });
   const close = toast.getByRole('button');
 
-  await tabUntil(page, close);
+  await tabBackToClose(page, close);
   await expect(close).toHaveCSS('opacity', '1');
   await page.waitForTimeout(pastDelay);
   await expect(toast).toBeVisible();
@@ -32,7 +39,7 @@ test('close button is hidden without hover or focus, and the toast resumes after
   await page.mouse.move(0, 0);
   await expect(close).toHaveCSS('opacity', '0');
 
-  await tabUntil(page, close);
+  await tabBackToClose(page, close);
   await trigger.focus();
   await expect(toast).toBeHidden({ timeout: pastDelay * 2 });
 });
