@@ -60,9 +60,8 @@ export const ImageDisplay: React.FC<ImageDisplayProps> = ({
 
       {downloadSources !== undefined && (
         <OverflowMenu
-          buttonIcon={
-            <DownloadIcon aria-label={`Last ned illustrasjon ${name}`} />
-          }
+          buttonIcon={<DownloadIcon aria-hidden="true" />}
+          aria-label={`Last ned ${name || alt}`.trim()}
           placement="bottom-end"
           className={classNames('image-display__download', {
             'image-display__download--show': alwaysShowDownload,
