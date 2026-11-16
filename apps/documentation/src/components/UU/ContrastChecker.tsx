@@ -138,46 +138,57 @@ function ContrastChecker(): React.ReactNode {
               : colors.validation.lava,
           }}
         >
-          <div className="contrast-checker__ratio-header">Contrast Ratio:</div>
-          <div className="contrast-checker__ratio-ratio">{score}:1</div>
+          <div className="contrast-checker__ratio-header">Kontrastforhold</div>
+          <div className="contrast-checker__ratio-ratio" aria-live="polite">
+            {score}:1
+          </div>
         </div>
       </div>
-      <Table spacing="middle">
-        <TableHead>
-          <TableRow>
-            <HeaderCell>Navn</HeaderCell>
-            <HeaderCell>Normal tekst</HeaderCell>
-            <HeaderCell>Stor tekst (18pt +)</HeaderCell>
-            <HeaderCell>Grafisk objekt</HeaderCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          <TableRow>
-            <DataCell>WCAG AA</DataCell>
-            <DataCell>
-              {WCAGTest('aasmall') ? <Innafor /> : <Uttafor />}
-            </DataCell>
-            <DataCell>
-              {WCAGTest('aalarge') ? <Innafor /> : <Uttafor />}
-            </DataCell>
-            <DataCell>
-              {WCAGTest('graphic') ? <Innafor /> : <Uttafor />}
-            </DataCell>
-          </TableRow>
-          <TableRow>
-            <DataCell>WCAG AAA</DataCell>
-            <DataCell>
-              {WCAGTest('aaasmall') ? <Innafor /> : <Uttafor />}
-            </DataCell>
-            <DataCell>
-              {WCAGTest('aaalarge') ? <Innafor /> : <Uttafor />}
-            </DataCell>
-            <DataCell>
-              {WCAGTest('graphic') ? <Innafor /> : <Uttafor />}
-            </DataCell>
-          </TableRow>
-        </TableBody>
-      </Table>
+      {/* Scrolls on narrow screens instead of running out of the page */}
+      <div
+        className="contrast-checker__results"
+        role="region"
+        aria-label="Resultat"
+        // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex -- Safari only scrolls the table by keyboard when it can be focused
+        tabIndex={0}
+      >
+        <Table spacing="middle">
+          <TableHead>
+            <TableRow>
+              <HeaderCell>Navn</HeaderCell>
+              <HeaderCell>Normal tekst</HeaderCell>
+              <HeaderCell>Stor tekst (18pt +)</HeaderCell>
+              <HeaderCell>Grafisk objekt</HeaderCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            <TableRow>
+              <DataCell>WCAG AA</DataCell>
+              <DataCell>
+                {WCAGTest('aasmall') ? <Innafor /> : <Uttafor />}
+              </DataCell>
+              <DataCell>
+                {WCAGTest('aalarge') ? <Innafor /> : <Uttafor />}
+              </DataCell>
+              <DataCell>
+                {WCAGTest('graphic') ? <Innafor /> : <Uttafor />}
+              </DataCell>
+            </TableRow>
+            <TableRow>
+              <DataCell>WCAG AAA</DataCell>
+              <DataCell>
+                {WCAGTest('aaasmall') ? <Innafor /> : <Uttafor />}
+              </DataCell>
+              <DataCell>
+                {WCAGTest('aaalarge') ? <Innafor /> : <Uttafor />}
+              </DataCell>
+              <DataCell>
+                {WCAGTest('graphic') ? <Innafor /> : <Uttafor />}
+              </DataCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </div>
       <div aria-hidden="true" className="contrast-preview__container">
         <div>
           <Heading as="h3" variant="subtitle-2" spacing={{ top: 'xl' }}>
@@ -228,24 +239,39 @@ const ColorValues: React.FC<{ color: string; hex: string }> = ({
   color,
   hex,
 }) => {
+  // Narrow buttons break the token name after a dot, not in the middle of a word
+  const tokenName = color.split('.').map((part, index) => (
+    <React.Fragment key={index}>
+      {index > 0 && (
+        <>
+          .<wbr />
+        </>
+      )}
+      {part}
+    </React.Fragment>
+  ));
+  // Each name is followed by its value, so screen readers read them in pairs
   return (
-    <div className="color-values__wrapper">
-      <div className="color-values__names">
-        <div>HEX</div>
-        <div>LESS</div>
-        <div>SCSS</div>
+    <dl className="color-values">
+      <div className="color-values__row">
+        <dt>HEX</dt>
+        <dd>
+          <Text variant="code">{hex}</Text>
+        </dd>
       </div>
-
-      <div className="color-values__values">
-        <Text variant="code">{hex}</Text>
-        <div>
-          <CopyButton textToCopy={`@colors.${color}`}>{color}</CopyButton>
-        </div>
-        <div>
-          <CopyButton textToCopy={`$colors.${color}`}>{color}</CopyButton>
-        </div>
+      <div className="color-values__row">
+        <dt>LESS</dt>
+        <dd>
+          <CopyButton textToCopy={`@colors.${color}`}>{tokenName}</CopyButton>
+        </dd>
       </div>
-    </div>
+      <div className="color-values__row">
+        <dt>SCSS</dt>
+        <dd>
+          <CopyButton textToCopy={`$colors.${color}`}>{tokenName}</CopyButton>
+        </dd>
+      </div>
+    </dl>
   );
 };
 

@@ -17,6 +17,10 @@
     }
   }
 
+  &__results {
+    overflow-x: auto;
+  }
+
   &__ratio {
     border-width: tokens.$border-widths-medium;
     border-style: solid;
@@ -38,17 +42,29 @@
 
 .color-picker__switch-button {
   align-self: start;
+  // Lines up with the dropdown fields, below their labels
+  margin-top: tokens.$space-large;
 }
 
 .color-pickers-container {
   display: grid;
   grid-gap: tokens.$space-medium;
-  grid-template-columns: auto 2.75rem auto;
+  grid-template-columns: auto auto auto;
+  justify-content: start;
+
+  @media screen and (max-width: 40rem) {
+    grid-template-columns: minmax(0, 1fr);
+
+    .color-picker__switch-button {
+      margin-top: 0;
+    }
+  }
 }
 
 .color-picker-wrapper {
   display: flex;
   flex-direction: column;
+  min-width: 0;
 }
 
 .contrast-preview {
@@ -57,6 +73,10 @@
     grid-gap: tokens.$space-medium;
     grid-template-columns: 3fr 1fr;
     margin-top: tokens.$space-large;
+
+    @media screen and (max-width: 40rem) {
+      grid-template-columns: 1fr;
+    }
   }
 
   &__small-text {
@@ -79,28 +99,30 @@
 }
 
 .color-values {
-  &__wrapper {
-    display: flex;
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: start;
+  gap: tokens.$space-extra-small tokens.$space-medium;
+  align-items: center;
+  margin: tokens.$space-large 0 0;
+
+  &__row {
+    display: contents;
   }
 
-  &__names {
-    display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
-    grid-gap: tokens.$space-extra-small;
+  dt {
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+    padding-right: tokens.$space-medium;
     border-right: var(--basecolor-stroke-disabled) 1px solid; // TODO switch with neutral when available
     font-size: tokens.$font-sizes-medium;
-    margin-top: tokens.$space-large;
     line-height: tokens.$line-heights-medium;
-    padding-right: tokens.$space-medium;
-    margin-right: tokens.$space-medium;
     color: tokens.$colors-blues-blue40;
-    align-items: center;
   }
 
-  &__values {
-    display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
-    grid-gap: tokens.$space-extra-small;
-    margin-top: tokens.$space-large;
+  dd {
+    margin: 0;
+    min-width: 0;
   }
 }

@@ -2,5 +2,9 @@
   min-height: 2rem;
   height: fit-content;
   width: fit-content;
-  overflow: hidden;
+  max-width: 100%;
+  // Long token names wrap instead of running out of the button
+  white-space: normal;
+  overflow-wrap: break-word;
+  text-align: start;
 }
