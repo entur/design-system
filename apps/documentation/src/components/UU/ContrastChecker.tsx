@@ -11,20 +11,12 @@ import { SecondarySquareButton } from '@entur/button';
 import { FilterChip } from '@entur/chip';
 import { Fieldset } from '@entur/form';
 import {
-  ContrastColor,
   ColorGroup,
+  ContrastColor,
   colorGroups,
   contrastColors,
   resolveCssName,
 } from './contrastCheckerColors';
-import {
-  DataCell,
-  HeaderCell,
-  Table,
-  TableBody,
-  TableHead,
-  TableRow,
-} from '@entur/table';
 import {
   SwitchIcon,
   ValidTicketIcon,
@@ -115,62 +107,58 @@ function ContrastChecker(): React.ReactNode {
     setBackgroundColor(tempText);
   }
 
-  function WCAGTest(wcagType: string) {
-    switch (wcagType) {
-      case 'aasmall':
-        return Number(score) >= 4.5;
-      case 'aalarge':
-        return Number(score) >= 3;
-      case 'aaalarge':
-        return Number(score) >= 4.5;
-      case 'aaasmall':
-        return Number(score) >= 7;
-      case 'graphic':
-        return Number(score) >= 3;
-    }
-  }
   // Three levels, each with its own icon shape
-  const verdict = WCAGTest('aasmall')
-    ? {
-        Icon: ValidationSuccessFilledIcon,
-        color: colors.validation.mint,
-        text: 'Godkjent for all tekst (AA)',
-      }
-    : WCAGTest('aalarge')
-    ? {
-        Icon: ValidationExclamationFilledIcon,
-        color: colors.validation.canary,
-        text: 'Bare godkjent for stor tekst og grafiske objekter (AA)',
-      }
-    : {
-        Icon: ValidationErrorFilledIcon,
-        color: colors.validation.lava,
-        text: 'Ikke godkjent (AA)',
-      };
+  const verdict =
+    Number(score) >= 4.5
+      ? {
+          Icon: ValidationSuccessFilledIcon,
+          color: colors.validation.mint,
+          text: 'Godkjent for all tekst (AA)',
+        }
+      : Number(score) >= 3
+      ? {
+          Icon: ValidationExclamationFilledIcon,
+          color: colors.validation.canary,
+          text: 'Bare godkjent for stor tekst og grafiske objekter (AA)',
+        }
+      : {
+          Icon: ValidationErrorFilledIcon,
+          color: colors.validation.lava,
+          text: 'Ikke godkjent (AA)',
+        };
 
-  function Approved() {
-    return (
-      <span className="contrast-checker__result">
-        <ValidationSuccessFilledIcon
-          aria-hidden="true"
-          style={{ color: colors.validation.mint }}
-        />
-        Godkjent
-      </span>
-    );
-  }
-
-  function NotApproved() {
-    return (
-      <span className="contrast-checker__result">
-        <ValidationErrorFilledIcon
-          aria-hidden="true"
-          style={{ color: colors.validation.lava }}
-        />
-        Ikke godkjent
-      </span>
-    );
-  }
+  const ratio = Number(score);
+  const preview = {
+    color: findColor(textColor).hex,
+    background: findColor(backgroundColor).hex,
+  };
+  // WCAG has no AAA level for graphical objects
+  const samples = [
+    {
+      title: 'Normal tekst',
+      className: 'contrast-preview__small-text',
+      content: 'Vi samler kollektiv-Norge',
+      levels: [
+        ['AA', 4.5],
+        ['AAA', 7],
+      ],
+    },
+    {
+      title: 'Stor tekst (18 pt, eller 14 pt fet)',
+      className: 'contrast-preview__large-text',
+      content: 'Vi samler kollektiv-Norge',
+      levels: [
+        ['AA', 3],
+        ['AAA', 4.5],
+      ],
+    },
+    {
+      title: 'Grafisk objekt',
+      className: 'contrast-preview__graphics-object',
+      content: <ValidTicketIcon />,
+      levels: [['AA', 3]],
+    },
+  ] as const;
 
   return (
     <div className="contrast-checker__container">
@@ -237,92 +225,56 @@ function ContrastChecker(): React.ReactNode {
           <div className="contrast-checker__ratio-ratio">{score}:1</div>
         </div>
       </div>
-      {/* Scrolls on narrow screens instead of running out of the page */}
-      <div
-        className="contrast-checker__results"
-        role="region"
-        aria-label="Resultat"
-        // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex -- Safari only scrolls the table by keyboard when it can be focused
-        tabIndex={0}
-      >
-        <Table spacing="middle">
-          <TableHead>
-            <TableRow>
-              <HeaderCell>Navn</HeaderCell>
-              <HeaderCell>Normal tekst</HeaderCell>
-              <HeaderCell>Stor tekst (18pt +)</HeaderCell>
-              <HeaderCell>Grafisk objekt</HeaderCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            <TableRow>
-              <DataCell>WCAG AA</DataCell>
-              <DataCell>
-                {WCAGTest('aasmall') ? <Approved /> : <NotApproved />}
-              </DataCell>
-              <DataCell>
-                {WCAGTest('aalarge') ? <Approved /> : <NotApproved />}
-              </DataCell>
-              <DataCell>
-                {WCAGTest('graphic') ? <Approved /> : <NotApproved />}
-              </DataCell>
-            </TableRow>
-            <TableRow>
-              <DataCell>WCAG AAA</DataCell>
-              <DataCell>
-                {WCAGTest('aaasmall') ? <Approved /> : <NotApproved />}
-              </DataCell>
-              <DataCell>
-                {WCAGTest('aaalarge') ? <Approved /> : <NotApproved />}
-              </DataCell>
-              <DataCell>
-                {WCAGTest('graphic') ? <Approved /> : <NotApproved />}
-              </DataCell>
-            </TableRow>
-          </TableBody>
-        </Table>
-      </div>
-      <div aria-hidden="true" className="contrast-preview__container">
-        <div>
-          <Heading as="h3" variant="subtitle-2" spacing={{ top: 'xl' }}>
-            Normal tekst
-          </Heading>
-          <div
-            className="contrast-preview__small-text"
-            style={{
-              color: findColor(textColor).hex,
-              background: findColor(backgroundColor).hex,
-            }}
-          >
-            Vi samler kollektiv-Norge
-          </div>
-          <Heading as="h3" variant="subtitle-2" spacing={{ top: 'xl' }}>
-            Stor tekst
-          </Heading>
-          <div
-            className="contrast-preview__large-text"
-            style={{
-              color: findColor(textColor).hex,
-              background: findColor(backgroundColor).hex,
-            }}
-          >
-            Vi samler kollektiv-Norge
-          </div>
-        </div>
-        <div>
-          <Heading as="h3" variant="subtitle-2" spacing={{ top: 'xl' }}>
-            Grafisk objekt
-          </Heading>
-          <div
-            className="contrast-preview__graphics-object"
-            style={{
-              color: findColor(textColor).hex,
-              background: findColor(backgroundColor).hex,
-            }}
-          >
-            <ValidTicketIcon />
-          </div>
-        </div>
+      {/* Each sample shows how it looks and whether it passes, side by side */}
+      <div className="contrast-results">
+        {samples.map(sample => (
+          <section className="contrast-results__card" key={sample.title}>
+            <Heading as="h3" variant="subtitle-2">
+              {sample.title}
+            </Heading>
+            <div className="contrast-results__body">
+              <div
+                aria-hidden="true"
+                className={classNames(
+                  'contrast-results__preview',
+                  sample.className,
+                )}
+                style={preview}
+              >
+                {sample.content}
+              </div>
+              <ul className="contrast-results__levels">
+                {sample.levels.map(([level, required]) => {
+                  const passes = ratio >= required;
+                  const Icon = passes
+                    ? ValidationSuccessFilledIcon
+                    : ValidationErrorFilledIcon;
+                  return (
+                    <li key={level} className="contrast-results__level">
+                      <Icon
+                        aria-hidden="true"
+                        style={{
+                          color: passes
+                            ? colors.validation.mint
+                            : colors.validation.lava,
+                        }}
+                      />
+                      <span>
+                        {level}{' '}
+                        <span className="contrast-results__required">
+                          ({required}:1)
+                        </span>
+                      </span>
+                      <span className="contrast-results__status">
+                        {passes ? 'Godkjent' : 'Ikke godkjent'}
+                      </span>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          </section>
+        ))}
       </div>
     </div>
   );

@@ -24,12 +24,6 @@
     }
   }
 
-  &__result {
-    display: inline-flex;
-    align-items: center;
-    gap: tokens.$space-small;
-  }
-
   &__swatch {
     display: inline-block;
     width: 1rem;
@@ -39,10 +33,6 @@
     border-radius: 50%;
     // Keeps white and pale colours visible against the list
     box-shadow: inset 0 0 0 1px var(--basecolors-stroke-subdued);
-  }
-
-  &__results {
-    overflow-x: auto;
   }
 
   &__ratio {
@@ -62,6 +52,11 @@
     &-verdict {
       display: flex;
       align-items: center;
+
+      svg {
+        flex-shrink: 0;
+      }
+
       gap: tokens.$space-small;
       margin-top: tokens.$space-extra-small;
     }
@@ -93,41 +88,91 @@
   min-width: 0;
 }
 
-.contrast-preview {
-  &__container {
-    display: grid;
-    grid-gap: tokens.$space-medium;
-    grid-template-columns: 3fr 1fr;
-    margin-top: tokens.$space-large;
+// One row per sample: preview and results share a frame
+.contrast-results {
+  display: grid;
+  // Shared columns, so all previews get the same width
+  grid-template-columns: minmax(0, 1fr) auto;
+  row-gap: tokens.$space-extra-large;
 
-    @media screen and (max-width: 40rem) {
-      grid-template-columns: 1fr;
+  @media screen and (max-width: 40rem) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  &__card {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: subgrid;
+    row-gap: tokens.$space-small;
+
+    > h3 {
+      grid-column: 1 / -1;
     }
   }
 
-  // Keeps the box visible when its background matches the page
-  &__small-text,
-  &__large-text,
-  &__graphics-object {
-    box-shadow: inset 0 0 0 1px var(--basecolors-stroke-subdued);
+  &__body {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: subgrid;
+    border: 1px solid var(--basecolors-stroke-subdued);
+    border-radius: tokens.$border-radiuses-large;
+    overflow: hidden;
   }
 
-  &__small-text {
+  &__preview {
+    display: flex;
+    align-items: center;
+    min-height: 6rem;
     padding: tokens.$space-large;
   }
 
+  &__levels {
+    align-self: center;
+    list-style: none;
+    margin: 0;
+    padding: tokens.$space-small tokens.$space-large;
+
+    @media screen and (max-width: 40rem) {
+      padding-inline: tokens.$space-default;
+    }
+  }
+
+  &__level {
+    display: grid;
+    grid-template-columns: auto auto 1fr;
+    align-items: center;
+    gap: tokens.$space-small;
+    padding-block: tokens.$space-small;
+    white-space: nowrap;
+
+    @media screen and (max-width: 40rem) {
+      white-space: normal;
+    }
+
+    & + & {
+      border-top: 1px solid var(--basecolors-stroke-subdued);
+    }
+  }
+
+  &__required {
+    color: var(--basecolors-text-subdued);
+  }
+
+  &__status {
+    font-weight: tokens.$font-weights-heading;
+    text-align: end;
+    padding-inline-start: tokens.$space-small;
+  }
+}
+
+.contrast-preview {
   &__large-text {
     font-size: tokens.$font-sizes-extra-large2;
     font-weight: tokens.$font-weights-heading;
-    padding: tokens.$space-large;
   }
 
   &__graphics-object {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 4.125rem;
-    font-size: 3.75rem;
+    font-size: 3rem;
   }
 }
 
