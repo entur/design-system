@@ -299,15 +299,25 @@ describe('TimePicker', () => {
       expect(getLiveRegion()).toBeEmptyDOMElement();
     });
 
-    test('announce the time with selectedTimeAriaLabel', async () => {
+    test('announce and describe the time with selectedTimeAriaLabel', async () => {
       const user = userEvent.setup();
       render(<Consumer selectedTimeAriaLabel="selected time" />);
+      const hour = screen.getByRole('spinbutton', {
+        name: 'hour, Departure',
+      });
+
+      expect(hour).toHaveAccessibleDescription(
+        expect.stringContaining('selected time: 10:00'),
+      );
 
       await user.click(
         screen.getByRole('button', { name: 'Legg til 30 minutter' }),
       );
 
       expect(getLiveRegion()).toHaveTextContent('selected time: 10:30');
+      expect(hour).toHaveAccessibleDescription(
+        expect.stringContaining('selected time: 10:30'),
+      );
     });
   });
 
