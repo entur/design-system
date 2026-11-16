@@ -4,6 +4,11 @@ import { pressTab } from './keyboard';
 // The fixture uses delay={1500}
 const pastDelay = 2500;
 
+test.skip(
+  ({ browserName }) => browserName === 'webkit' && process.platform === 'linux',
+  'Linux WebKit leaves the hidden close button out of the tab order; macOS WebKit and Safari do not',
+);
+
 // The toast container comes before the page content in the DOM
 async function tabBackToClose(page: Page, close: Locator) {
   // Wait for the slide-in animation, which a slow runner can still be in
