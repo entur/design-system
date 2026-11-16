@@ -47,20 +47,21 @@ export const useTableKeyboardNavigation: useTableKeyboardNavigationProps = (
   numberOfRows = 0,
   allowWrap = true,
 ) => {
-  const [currentRow, setCurrentRow] = useState(numberOfRows);
+  const [storedRow, setCurrentRow] = useState(0);
   const [maxRow, setMaxRow] = useState(0);
+  // Keeps one row tabbable when filtering or paging removes the stored row
+  const currentRow = Math.min(storedRow, Math.max(numberOfRows - 1, 0));
 
   const tableBodyRef = useRef<HTMLTableSectionElement>(null);
-  const tableHasFocus = tableBodyRef?.current?.contains(document.activeElement);
+  // Only arrow keys move focus, so a click on a control in a row keeps it there
+  const focusOnRowChange = useRef(false);
 
   useEffect(() => {
-    tableBodyRef &&
-      tableBodyRef.current &&
-      tableHasFocus &&
-      tableBodyRef.current.childNodes[
-        currentRow
-      ].childNodes[0].parentElement?.focus();
-  }, [currentRow, tableHasFocus]);
+    if (!focusOnRowChange.current) return;
+    focusOnRowChange.current = false;
+    const row = tableBodyRef.current?.children[currentRow];
+    if (row instanceof HTMLElement) row.focus();
+  }, [currentRow]);
 
   function getTableBodyNavigationProps(...rest: any): Partial<TableBodyProps> {
     return {
@@ -77,13 +78,15 @@ export const useTableKeyboardNavigation: useTableKeyboardNavigationProps = (
     if (row >= maxRow) {
       setMaxRow(row + 1);
     }
-    const tabIndex = currentRow ? 0 : -1;
     return {
-      tabIndex,
+      tabIndex: row === currentRow ? 0 : -1,
       ref: tableRowRef,
       onClick: () => setCurrentRow(row),
+      // Also for a control inside the row; only arrow keys move focus to the row
+      onFocus: () => setCurrentRow(row),
       onKeyDown: (e: KeyboardEvent) => {
         const newCell = onTableKeypress(e, currentRow, numberOfRows, allowWrap);
+        focusOnRowChange.current = newCell !== currentRow;
         setCurrentRow(newCell);
       },
       ...rest,

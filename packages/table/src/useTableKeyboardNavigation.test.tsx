@@ -11,9 +11,11 @@ import {
 function NavigableTable({
   allowWrap,
   rows = ['Oslo', 'Bergen', 'Alta'],
+  withButtons = false,
 }: {
   allowWrap: boolean;
   rows?: string[];
+  withButtons?: boolean;
 }) {
   const { getTableBodyNavigationProps, getTableRowNavigationProps } =
     useTableKeyboardNavigation(rows.length, allowWrap);
@@ -23,6 +25,11 @@ function NavigableTable({
         {rows.map((name, index) => (
           <TableRow key={name} {...getTableRowNavigationProps(index)}>
             <DataCell>{name}</DataCell>
+            {withButtons && (
+              <DataCell>
+                <button type="button">Edit {name}</button>
+              </DataCell>
+            )}
           </TableRow>
         ))}
       </TableBody>
@@ -70,16 +77,65 @@ test('keeps focus on the only row when wrapping a one-row table', async () => {
   expect(row).toHaveFocus();
 });
 
-// Bug: currentRow starts at rows.length and Tab focus never updates it.
-test.failing(
-  'navigates from the row reached by Tab without requiring a mouse click',
-  async () => {
-    const user = userEvent.setup();
-    render(<NavigableTable allowWrap={false} />);
-    const [first, second] = screen.getAllByRole('row');
-    await user.tab();
-    expect(first).toHaveFocus();
-    await user.keyboard('{ArrowDown}');
-    expect(second).toHaveFocus();
-  },
-);
+test('navigates from the row reached by Tab without requiring a mouse click', async () => {
+  const user = userEvent.setup();
+  render(<NavigableTable allowWrap={false} />);
+  const [first, second] = screen.getAllByRole('row');
+  await user.tab();
+  expect(first).toHaveFocus();
+  await user.keyboard('{ArrowDown}');
+  expect(second).toHaveFocus();
+});
+
+test('keeps only the current row in the tab order', async () => {
+  const user = userEvent.setup();
+  render(<NavigableTable allowWrap={false} />);
+  const [first, second, third] = screen.getAllByRole('row');
+  expect(first).toHaveAttribute('tabindex', '0');
+  expect(second).toHaveAttribute('tabindex', '-1');
+  expect(third).toHaveAttribute('tabindex', '-1');
+  await user.click(third);
+  expect(first).toHaveAttribute('tabindex', '-1');
+  expect(third).toHaveAttribute('tabindex', '0');
+});
+
+test('leaves focus on a control inside a row reached by Tab', async () => {
+  const user = userEvent.setup();
+  render(<NavigableTable allowWrap={false} withButtons />);
+  await user.tab();
+  await user.tab();
+  expect(screen.getByRole('button', { name: 'Edit Oslo' })).toHaveFocus();
+  await user.tab();
+  expect(screen.getByRole('button', { name: 'Edit Bergen' })).toHaveFocus();
+});
+
+test('moves from the row of a control reached by Tab', async () => {
+  const user = userEvent.setup();
+  render(<NavigableTable allowWrap={false} withButtons />);
+  await user.tab();
+  await user.tab();
+  await user.tab();
+  expect(screen.getByRole('button', { name: 'Edit Bergen' })).toHaveFocus();
+  await user.keyboard('{ArrowDown}');
+  expect(screen.getAllByRole('row')[2]).toHaveFocus();
+});
+
+test('leaves focus on a control inside a row that is clicked', async () => {
+  const user = userEvent.setup();
+  render(<NavigableTable allowWrap={false} withButtons />);
+  const edit = screen.getByRole('button', { name: 'Edit Bergen' });
+  await user.click(edit);
+  expect(edit).toHaveFocus();
+  expect(screen.getAllByRole('row')[1]).toHaveAttribute('tabindex', '0');
+});
+
+test('keeps a row tabbable after the current row is removed', async () => {
+  const user = userEvent.setup();
+  const { rerender } = render(<NavigableTable allowWrap={false} />);
+  await user.click(screen.getByRole('row', { name: 'Alta' }));
+  rerender(<NavigableTable allowWrap={false} rows={['Oslo']} />);
+  expect(screen.getByRole('row', { name: 'Oslo' })).toHaveAttribute(
+    'tabindex',
+    '0',
+  );
+});
