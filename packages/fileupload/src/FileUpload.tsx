@@ -154,6 +154,7 @@ export const FileUpload = ({
         {/* Users reach the upload through role="button"; the input is only clicked from code */}
         <input
           {...getInputProps({ accept: acceptList.join(',') })}
+          tabIndex={-1}
           aria-hidden="true"
         />
         <span
