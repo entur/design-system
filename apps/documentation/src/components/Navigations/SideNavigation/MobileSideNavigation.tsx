@@ -48,7 +48,8 @@ const MobileSideNavigation: React.FC<MobileMenuProps> = ({
         onClick={() => setOpenSidebar(!openSidebar)}
         type="button"
         aria-expanded={openSidebar}
-        aria-label={openSidebar ? 'Lukk meny' : 'Åpne meny'}
+        // aria-expanded tells the state, so the name stays the same
+        aria-label="Meny"
       >
         {openSidebar ? (
           <CloseIcon aria-hidden="true" />
