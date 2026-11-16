@@ -9,6 +9,7 @@ import {
   nativeDateToTimeValue,
   timeOrDateValueToNativeDate,
 } from '../shared';
+import { ariaLabelIfNorwegian } from '../shared/utils';
 
 // Locale is added on all tests to ensure a static testing basis
 // Time zone is set globally for Jest as UTC in ~/jest.global.setup.js
@@ -111,3 +112,21 @@ test('util function converts from Date to TimeValue and back again correctly', (
     )?.toLocaleTimeString('no-NO'),
   ).toEqual(dateObject.toLocaleTimeString('no-NO'));
 });
+
+test.each(['no-NO', 'nb-NO', 'nn-NO', 'nb', 'NB-no'])(
+  'ariaLabelIfNorwegian gives the Norwegian label for %s',
+  locale => {
+    expect(
+      ariaLabelIfNorwegian('Neste måned', locale, { 'aria-label': 'Neste' }),
+    ).toBe('Neste måned');
+  },
+);
+
+test.each(['en-GB', 'sv-SE', 'nl-NL'])(
+  'ariaLabelIfNorwegian keeps the react-aria label for %s',
+  locale => {
+    expect(
+      ariaLabelIfNorwegian('Neste måned', locale, { 'aria-label': 'Next' }),
+    ).toBe('Next');
+  },
+);
