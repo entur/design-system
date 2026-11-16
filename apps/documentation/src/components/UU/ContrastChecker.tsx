@@ -1,12 +1,18 @@
 import React from 'react';
+import classNames from 'classnames';
 import { hex } from 'wcag-contrast';
 import { colors } from '@entur/tokens';
+import { CopyableText } from '@entur/alert';
 import {
   NormalizedDropdownItemType,
   SearchableDropdown,
 } from '@entur/dropdown';
 import { SecondarySquareButton } from '@entur/button';
-import { flatten } from '../../utils/flatten';
+import {
+  ContrastColor,
+  contrastColors,
+  resolveCssName,
+} from './contrastCheckerColors';
 import {
   DataCell,
   HeaderCell,
@@ -21,25 +27,68 @@ import {
   SwitchIcon,
   ValidTicketIcon,
 } from '@entur/icons';
-import { Heading, Text } from '@entur/typography/beta';
-import { CopyButton } from './CopyButton';
+import { Heading } from '@entur/typography/beta';
 import './ContrastChecker.scss';
 
+// Shows the colour next to its name in the dropdown list
+const colorSwatch = (color: string) => {
+  const ColorSwatch = ({ className }: { className?: string }) => (
+    <span
+      aria-hidden="true"
+      className={classNames('contrast-checker__swatch', className)}
+      style={{ backgroundColor: color }}
+    />
+  );
+  ColorSwatch.displayName = `ColorSwatch(${color})`;
+  return ColorSwatch;
+};
+
+// Built once, so each swatch stays the same component between renders
+const swatches = new Map(
+  contrastColors.map(color => [color.label, colorSwatch(color.hex)]),
+);
+
+// Many tokens share a hex value, so the label is the value
+const toItems = (
+  resolveName: (name: string) => string,
+): NormalizedDropdownItemType[] =>
+  contrastColors.map(color => ({
+    label: color.cssName
+      ? color.label.replace(color.cssName, resolveName(color.cssName))
+      : color.label,
+    value: color.label,
+    icons: [swatches.get(color.label)!],
+  }));
+const colorList = toItems(name => name);
+const colorByLabel = new Map(contrastColors.map(color => [color.label, color]));
+const findColor = (item: NormalizedDropdownItemType) =>
+  colorByLabel.get(item.value) as ContrastColor;
+
+const useIsClient = () => {
+  const [isClient, setIsClient] = React.useState(false);
+  React.useEffect(() => setIsClient(true), []);
+  return isClient;
+};
+
+const defaultColor = (label: string) =>
+  colorList.find(item => item.value === label) ?? colorList[0];
+
 function ContrastChecker(): React.ReactNode {
-  const flattenedColorMap = flatten(colors);
-  const colorList: NormalizedDropdownItemType[] = [];
-  for (const [key, value] of Object.entries(flattenedColorMap)) {
-    if (value in colorList === false) {
-      colorList.push({
-        label: key,
-        value: value,
-      } as NormalizedDropdownItemType);
-    }
-  }
-  const [textColor, setTextColor] = React.useState(colorList[0]);
-  const [backgroundColor, setBackgroundColor] =
-    React.useState<NormalizedDropdownItemType>(colorList[1]);
-  const score = Number(hex(textColor.value, backgroundColor.value))
+  // The real CSS names are only known in the browser
+  const isClient = useIsClient();
+  const items = React.useMemo(
+    () => (isClient ? toItems(resolveCssName) : colorList),
+    [isClient],
+  );
+  const [textColor, setTextColor] = React.useState(
+    defaultColor('basecolors-text-accent'),
+  );
+  const [backgroundColor, setBackgroundColor] = React.useState(
+    defaultColor('basecolors-frame-default'),
+  );
+  const score = Number(
+    hex(findColor(textColor).hex, findColor(backgroundColor).hex),
+  )
     .toFixed(1)
     .toString();
 
@@ -96,17 +145,12 @@ function ContrastChecker(): React.ReactNode {
           <div className="color-picker-wrapper">
             <SearchableDropdown
               label="Forgrunn"
-              items={colorList}
+              items={items}
               selectedItem={textColor}
-              onChange={item =>
-                item && setTextColor({ value: item.value, label: item.label })
-              }
+              onChange={item => item && setTextColor(item)}
               clearable={false}
             />
-            <ColorValues
-              color={textColor.label}
-              hex={textColor.value}
-            ></ColorValues>
+            <ColorValues color={findColor(textColor)} />
           </div>
           <SecondarySquareButton
             onClick={SwitchColors}
@@ -116,18 +160,13 @@ function ContrastChecker(): React.ReactNode {
           </SecondarySquareButton>
           <div className="color-picker-wrapper">
             <SearchableDropdown
-              items={colorList}
+              items={items}
               label="Bakgrunn"
               selectedItem={backgroundColor}
-              onChange={item =>
-                item === null ? undefined : setBackgroundColor(item)
-              }
+              onChange={item => item && setBackgroundColor(item)}
               clearable={false}
             />
-            <ColorValues
-              color={backgroundColor.label}
-              hex={backgroundColor.value}
-            />
+            <ColorValues color={findColor(backgroundColor)} />
           </div>
         </div>
         <div
@@ -197,8 +236,8 @@ function ContrastChecker(): React.ReactNode {
           <div
             className="contrast-preview__small-text"
             style={{
-              color: textColor.value,
-              background: backgroundColor.value,
+              color: findColor(textColor).hex,
+              background: findColor(backgroundColor).hex,
             }}
           >
             Vi samler kollektiv-Norge
@@ -209,8 +248,8 @@ function ContrastChecker(): React.ReactNode {
           <div
             className="contrast-preview__large-text"
             style={{
-              color: textColor.value,
-              background: backgroundColor.value,
+              color: findColor(textColor).hex,
+              background: findColor(backgroundColor).hex,
             }}
           >
             Vi samler kollektiv-Norge
@@ -223,8 +262,8 @@ function ContrastChecker(): React.ReactNode {
           <div
             className="contrast-preview__graphics-object"
             style={{
-              color: textColor.value,
-              background: backgroundColor.value,
+              color: findColor(textColor).hex,
+              background: findColor(backgroundColor).hex,
             }}
           >
             <ValidTicketIcon />
@@ -235,42 +274,20 @@ function ContrastChecker(): React.ReactNode {
   );
 }
 
-const ColorValues: React.FC<{ color: string; hex: string }> = ({
-  color,
-  hex,
-}) => {
-  // Narrow buttons break the token name after a dot, not in the middle of a word
-  const tokenName = color.split('.').map((part, index) => (
-    <React.Fragment key={index}>
-      {index > 0 && (
-        <>
-          .<wbr />
-        </>
-      )}
-      {part}
-    </React.Fragment>
-  ));
-  // Each name is followed by its value, so screen readers read them in pairs
+const ColorValues: React.FC<{ color: ContrastColor }> = ({ color }) => {
+  const isClient = useIsClient();
+  const formats = color.formats(isClient ? resolveCssName : name => name);
+  // Variables first, since we would rather not have hex values in code. Each name is followed by its value, so screen readers read them in pairs
   return (
     <dl className="color-values">
-      <div className="color-values__row">
-        <dt>HEX</dt>
-        <dd>
-          <Text variant="code">{hex}</Text>
-        </dd>
-      </div>
-      <div className="color-values__row">
-        <dt>LESS</dt>
-        <dd>
-          <CopyButton textToCopy={`@colors.${color}`}>{tokenName}</CopyButton>
-        </dd>
-      </div>
-      <div className="color-values__row">
-        <dt>SCSS</dt>
-        <dd>
-          <CopyButton textToCopy={`$colors.${color}`}>{tokenName}</CopyButton>
-        </dd>
-      </div>
+      {[...formats, ['HEX', color.hex]].map(([format, value]) => (
+        <div className="color-values__row" key={format}>
+          <dt>{format}</dt>
+          <dd>
+            <CopyableText size="small">{value}</CopyableText>
+          </dd>
+        </div>
+      ))}
     </dl>
   );
 };
