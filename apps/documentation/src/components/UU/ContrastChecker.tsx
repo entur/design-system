@@ -26,8 +26,6 @@ import {
   TableRow,
 } from '@entur/table';
 import {
-  CheckIcon,
-  CloseIcon,
   SwitchIcon,
   ValidTicketIcon,
   ValidationErrorFilledIcon,
@@ -150,29 +148,27 @@ function ContrastChecker(): React.ReactNode {
         text: 'Ikke godkjent (AA)',
       };
 
-  function Innafor() {
+  function Approved() {
     return (
-      <>
-        <CheckIcon
-          inline
-          style={{ color: colors.validation.mint, marginRight: '0.5rem' }}
+      <span className="contrast-checker__result">
+        <ValidationSuccessFilledIcon
           aria-hidden="true"
+          style={{ color: colors.validation.mint }}
         />
-        Innafor
-      </>
+        Godkjent
+      </span>
     );
   }
 
-  function Uttafor() {
+  function NotApproved() {
     return (
-      <>
-        <CloseIcon
-          inline
-          style={{ color: colors.validation.lava, marginRight: '0.5rem' }}
+      <span className="contrast-checker__result">
+        <ValidationErrorFilledIcon
           aria-hidden="true"
+          style={{ color: colors.validation.lava }}
         />
-        Uttafor
-      </>
+        Ikke godkjent
+      </span>
     );
   }
 
@@ -262,25 +258,25 @@ function ContrastChecker(): React.ReactNode {
             <TableRow>
               <DataCell>WCAG AA</DataCell>
               <DataCell>
-                {WCAGTest('aasmall') ? <Innafor /> : <Uttafor />}
+                {WCAGTest('aasmall') ? <Approved /> : <NotApproved />}
               </DataCell>
               <DataCell>
-                {WCAGTest('aalarge') ? <Innafor /> : <Uttafor />}
+                {WCAGTest('aalarge') ? <Approved /> : <NotApproved />}
               </DataCell>
               <DataCell>
-                {WCAGTest('graphic') ? <Innafor /> : <Uttafor />}
+                {WCAGTest('graphic') ? <Approved /> : <NotApproved />}
               </DataCell>
             </TableRow>
             <TableRow>
               <DataCell>WCAG AAA</DataCell>
               <DataCell>
-                {WCAGTest('aaasmall') ? <Innafor /> : <Uttafor />}
+                {WCAGTest('aaasmall') ? <Approved /> : <NotApproved />}
               </DataCell>
               <DataCell>
-                {WCAGTest('aaalarge') ? <Innafor /> : <Uttafor />}
+                {WCAGTest('aaalarge') ? <Approved /> : <NotApproved />}
               </DataCell>
               <DataCell>
-                {WCAGTest('graphic') ? <Innafor /> : <Uttafor />}
+                {WCAGTest('graphic') ? <Approved /> : <NotApproved />}
               </DataCell>
             </TableRow>
           </TableBody>

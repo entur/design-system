@@ -24,6 +24,12 @@
     }
   }
 
+  &__result {
+    display: inline-flex;
+    align-items: center;
+    gap: tokens.$space-small;
+  }
+
   &__swatch {
     display: inline-block;
     width: 1rem;
