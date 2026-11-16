@@ -46,6 +46,16 @@ function ControlledUpload() {
 }
 
 describe('FileUpload', () => {
+  test('keeps the hidden file input out of the accessibility tree', () => {
+    render(
+      <FileUpload label="Attachment" files={[]} onDrop={() => undefined} />,
+    );
+    expect(getFileInput()).toHaveAttribute('aria-hidden', 'true');
+    expect(screen.getByRole('button')).toHaveAccessibleName(
+      `Attachment ${standbyText}`,
+    );
+  });
+
   test('selects real files and lets the consumer control the displayed list', async () => {
     const user = userEvent.setup();
     const file = new File(['journey'], 'journey.txt', { type: 'text/plain' });

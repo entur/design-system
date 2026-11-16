@@ -151,7 +151,11 @@ export const FileUpload = ({
         {...getRootProps({ role: 'button' })}
       >
         {label && <Label style={{ display: 'flex' }}>{label}</Label>}
-        <input {...getInputProps({ accept: acceptList.join(',') })} />
+        {/* Users reach the upload through role="button"; the input is only clicked from code */}
+        <input
+          {...getInputProps({ accept: acceptList.join(',') })}
+          aria-hidden="true"
+        />
         <span
           className={classNames(
             'eds-file-upload__dropzone',
