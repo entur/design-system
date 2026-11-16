@@ -61,6 +61,12 @@ const colorByLabel = new Map(contrastColors.map(color => [color.label, color]));
 const findColor = (item: NormalizedDropdownItemType) =>
   colorByLabel.get(item.value) as ContrastColor;
 
+// The selected colour, shown in the field next to its name
+const SelectedSwatch = ({ item }: { item: NormalizedDropdownItemType }) => {
+  const Swatch = swatches.get(item.value);
+  return Swatch ? <Swatch /> : null;
+};
+
 const useIsClient = () => {
   const [isClient, setIsClient] = React.useState(false);
   React.useEffect(() => setIsClient(true), []);
@@ -181,6 +187,7 @@ function ContrastChecker(): React.ReactNode {
               label="Forgrunn"
               items={items}
               selectedItem={textColor}
+              prepend={<SelectedSwatch item={textColor} />}
               onChange={item => item && setTextColor(item)}
               clearable={false}
             />
@@ -197,6 +204,7 @@ function ContrastChecker(): React.ReactNode {
               items={items}
               label="Bakgrunn"
               selectedItem={backgroundColor}
+              prepend={<SelectedSwatch item={backgroundColor} />}
               onChange={item => item && setBackgroundColor(item)}
               clearable={false}
             />
