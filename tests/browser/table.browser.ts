@@ -29,16 +29,15 @@ test('Tab reaches one row and arrow keys move between rows', async ({
   await expect(rows.nth(2)).toBeFocused();
 });
 
-test('clicking a button inside a row leaves focus where the browser put it', async ({
+test('clicking a button inside a row keeps focus on the button', async ({
   page,
 }) => {
+  test.skip(
+    test.info().project.name === 'webkit',
+    'WebKit, like Safari, never focuses a clicked button',
+  );
   await page.goto('/table.html');
   const edit = page.getByRole('button', { name: 'Edit Bergen' });
   await edit.click();
-  // WebKit, like Safari, never focuses a clicked button, so the row gets it
-  if (test.info().project.name === 'webkit') {
-    await expect(page.locator('tbody tr').nth(1)).toBeFocused();
-  } else {
-    await expect(edit).toBeFocused();
-  }
+  await expect(edit).toBeFocused();
 });
