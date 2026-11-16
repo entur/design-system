@@ -156,7 +156,7 @@ const Index = () => {
                 >
                   <span className="frontpage__main__hero__content__main-heading__start">
                     Linje
-                  </span>
+                  </span>{' '}
                   <ShiftingHeader />
                 </Heading>
                 <PrimaryButton as={Link} to="/kom-i-gang">
@@ -301,11 +301,20 @@ function ShiftingHeader() {
 
   return (
     <span
-      key={SHIFTING_HEADER_WORDS[currentIndex]}
       className="frontpage__main__hero__content__main-heading__end shifting-header"
       style={{ fontWeight: 600, color: colors.brand.coral }}
     >
-      {`\n${SHIFTING_HEADER_WORDS[currentIndex]}`}
+      {SHIFTING_HEADER_WORDS.map(words => (
+        <span key={words} className="shifting-header__sizer">
+          {words}
+        </span>
+      ))}
+      <span
+        key={SHIFTING_HEADER_WORDS[currentIndex]}
+        className="shifting-header__text"
+      >
+        {SHIFTING_HEADER_WORDS[currentIndex]}
+      </span>
     </span>
   );
 }
