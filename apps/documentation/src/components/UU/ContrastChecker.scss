@@ -13,6 +13,17 @@
     margin-bottom: tokens.$space-extra-large2;
   }
 
+  &__groups {
+    display: flex;
+    flex-wrap: wrap;
+    gap: tokens.$space-small;
+    margin: 0;
+
+    legend {
+      margin-bottom: tokens.$space-small;
+    }
+  }
+
   &__swatch {
     display: inline-block;
     width: 1rem;

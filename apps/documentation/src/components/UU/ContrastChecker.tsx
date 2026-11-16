@@ -8,8 +8,12 @@ import {
   SearchableDropdown,
 } from '@entur/dropdown';
 import { SecondarySquareButton } from '@entur/button';
+import { FilterChip } from '@entur/chip';
+import { Fieldset } from '@entur/form';
 import {
   ContrastColor,
+  ColorGroup,
+  colorGroups,
   contrastColors,
   resolveCssName,
 } from './contrastCheckerColors';
@@ -76,9 +80,21 @@ const defaultColor = (label: string) =>
 function ContrastChecker(): React.ReactNode {
   // The real CSS names are only known in the browser
   const isClient = useIsClient();
+  const [shownGroups, setShownGroups] = React.useState<ColorGroup[]>([
+    'base',
+    'semantic',
+    'data',
+  ]);
+  const toggleGroup = (group: ColorGroup, shown: boolean) =>
+    setShownGroups(groups =>
+      shown ? [...groups, group] : groups.filter(g => g !== group),
+    );
   const items = React.useMemo(
-    () => (isClient ? toItems(resolveCssName) : colorList),
-    [isClient],
+    () =>
+      (isClient ? toItems(resolveCssName) : colorList).filter(item =>
+        shownGroups.includes(findColor(item).group),
+      ),
+    [isClient, shownGroups],
   );
   const [textColor, setTextColor] = React.useState(
     defaultColor('basecolors-text-accent'),
@@ -141,6 +157,18 @@ function ContrastChecker(): React.ReactNode {
   return (
     <div className="contrast-checker__container">
       <div className="contrast-checker__calculator">
+        <Fieldset label="Vis farger fra" className="contrast-checker__groups">
+          {colorGroups.map(group => (
+            <FilterChip
+              key={group.value}
+              value={group.value}
+              checked={shownGroups.includes(group.value)}
+              onChange={e => toggleGroup(group.value, e.target.checked)}
+            >
+              {group.label}
+            </FilterChip>
+          ))}
+        </Fieldset>
         <div className="color-pickers-container">
           <div className="color-picker-wrapper">
             <SearchableDropdown

@@ -1,7 +1,17 @@
 import { base, colors, data, semantic } from '@entur/tokens';
 import { flatten } from '../../utils/flatten';
 
+export const colorGroups = [
+  { value: 'base', label: 'Base' },
+  { value: 'semantic', label: 'Semantiske' },
+  { value: 'data', label: 'Data' },
+  { value: 'legacy', label: 'Legacy' },
+] as const;
+
+export type ColorGroup = (typeof colorGroups)[number]['value'];
+
 export type ContrastColor = {
+  group: ColorGroup;
   label: string;
   /** The CSS variable name in the label, if any */
   cssName?: string;
@@ -53,6 +63,7 @@ const baseColors = modes.flatMap(([mode, modeName]) =>
   Object.entries(flatten(base[mode].baseColors)).map(([path, hex]) => {
     const name = `basecolors-${toKebab(path)}`;
     return {
+      group: 'base',
       label: withSuffix(name, modeName),
       cssName: name,
       hex,
@@ -64,6 +75,7 @@ const baseColors = modes.flatMap(([mode, modeName]) =>
 const semanticColors = Object.entries(flatten(semantic)).map(([path, hex]) => {
   const name = toKebab(path);
   return {
+    group: 'semantic',
     label: name,
     cssName: name,
     hex,
@@ -79,6 +91,7 @@ const dataColors = modes.flatMap(([mode, modeName]) =>
   Object.entries(flatten(data[mode])).map(([path, hex]) => {
     const name = toKebab(path);
     return {
+      group: 'data',
       label: withSuffix(name, 'data', modeName),
       cssName: name,
       hex,
@@ -90,6 +103,7 @@ const dataColors = modes.flatMap(([mode, modeName]) =>
 const legacyColors = Object.entries(flatten(colors)).map(
   ([path, hex]) =>
     ({
+      group: 'legacy',
       label: withSuffix(path, 'legacy'),
       hex,
       formats: () => [
