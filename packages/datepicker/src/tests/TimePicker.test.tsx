@@ -223,7 +223,7 @@ describe('TimePicker', () => {
   });
 
   describe('arrow buttons', () => {
-    function Consumer() {
+    function Consumer(props: { selectedTimeAriaLabel?: string }) {
       const [time, setTime] = React.useState<Time | null>(new Time(10, 0));
       return (
         <TimePicker
@@ -232,6 +232,7 @@ describe('TimePicker', () => {
           onChange={setTime}
           locale="en-GB"
           forcedReturnType="Time"
+          {...props}
         />
       );
     }
@@ -296,6 +297,17 @@ describe('TimePicker', () => {
       await user.keyboard('{ArrowUp}');
 
       expect(getLiveRegion()).toBeEmptyDOMElement();
+    });
+
+    test('announce the time with selectedTimeAriaLabel', async () => {
+      const user = userEvent.setup();
+      render(<Consumer selectedTimeAriaLabel="selected time" />);
+
+      await user.click(
+        screen.getByRole('button', { name: 'Legg til 30 minutter' }),
+      );
+
+      expect(getLiveRegion()).toHaveTextContent('selected time: 10:30');
     });
   });
 

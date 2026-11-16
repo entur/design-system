@@ -80,6 +80,10 @@ type BaseTimePickerProps<TimeType extends TimeValue> = {
    * @default `Legg til ${minuteIncrementForArrowButtons} minutter`
    */
   rightArrowButtonAriaLabel?: string;
+  /** Tekst foran valgt tid, som skjermlesere leser opp
+   * @default 'valgt tid'
+   */
+  selectedTimeAriaLabel?: string;
   /** Varselmelding, som vil komme under TimePicker */
   feedback?: string;
   /** Valideringsvariant*/
@@ -104,8 +108,13 @@ type BaseTimePickerProps<TimeType extends TimeValue> = {
   style?: React.CSSProperties;
 };
 
-const formatSelectedTime = (time: TimeValue, showSeconds: boolean) =>
-  'valgt tid: ' +
+const formatSelectedTime = (
+  time: TimeValue,
+  showSeconds: boolean,
+  ariaLabel: string,
+) =>
+  ariaLabel +
+  ': ' +
   time.hour.toString().padStart(2, '0') +
   ':' +
   time.minute.toString().padStart(2, '0') +
@@ -133,6 +142,7 @@ export const TimePicker = <TimeType extends TimeValue>({
   minuteIncrementForArrowButtons = 30,
   leftArrowButtonAriaLabel = `Trekk fra ${minuteIncrementForArrowButtons} minutter`,
   rightArrowButtonAriaLabel = `Legg til ${minuteIncrementForArrowButtons} minutter`,
+  selectedTimeAriaLabel = 'valgt tid',
   inputRef,
   forcedReturnType,
   forcedTimeZone,
@@ -199,8 +209,10 @@ export const TimePicker = <TimeType extends TimeValue>({
   const [arrowButtonAnnouncement, setArrowButtonAnnouncement] = useState('');
   useEffect(() => {
     if (arrowButtonClicked.current && selectedTime !== null)
-      setArrowButtonAnnouncement(formatSelectedTime(selectedTime, showSeconds));
-  }, [selectedTime, showSeconds]);
+      setArrowButtonAnnouncement(
+        formatSelectedTime(selectedTime, showSeconds, selectedTimeAriaLabel),
+      );
+  }, [selectedTime, showSeconds, selectedTimeAriaLabel]);
   useEffect(() => {
     arrowButtonClicked.current = false;
   });
@@ -292,7 +304,11 @@ export const TimePicker = <TimeType extends TimeValue>({
         </span>
         <VisuallyHidden id={timePickerId + 'description'}>
           {selectedTime !== null
-            ? formatSelectedTime(selectedTime, showSeconds)
+            ? formatSelectedTime(
+                selectedTime,
+                showSeconds,
+                selectedTimeAriaLabel,
+              )
             : ''}
         </VisuallyHidden>
         <VisuallyHidden aria-live="polite">
