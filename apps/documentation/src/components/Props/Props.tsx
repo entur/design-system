@@ -108,63 +108,72 @@ const Props: React.FC<PropsProps> = ({ componentName, npmPackage }) => {
         />
       )}
       {Object.keys(componentProps).length > 0 ? (
-        <Table fixed spacing="middle" className="props-table">
-          <TableHead>
-            <TableRow>
-              <HeaderCell>Navn</HeaderCell>
-              <HeaderCell>Type</HeaderCell>
-              {hasAnyDefaultValues && <HeaderCell>Default-verdi</HeaderCell>}
-              <HeaderCell>Beskrivelse</HeaderCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {Object.entries(componentProps).map(
-              ([propName, details]: [string, any]) => {
-                const { isDeprecated, description } = splitDeprecation(
-                  details.description || '',
-                );
+        // On narrow screens and at high zoom the table scrolls instead of squeezing its columns
+        <div
+          className="props-table__scroll"
+          role="region"
+          aria-label={`Props for ${componentName}`}
+          // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex -- Safari only scrolls the table by keyboard when it can be focused
+          tabIndex={0}
+        >
+          <Table fixed spacing="middle" className="props-table">
+            <TableHead>
+              <TableRow>
+                <HeaderCell>Navn</HeaderCell>
+                <HeaderCell>Type</HeaderCell>
+                {hasAnyDefaultValues && <HeaderCell>Default-verdi</HeaderCell>}
+                <HeaderCell>Beskrivelse</HeaderCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {Object.entries(componentProps).map(
+                ([propName, details]: [string, any]) => {
+                  const { isDeprecated, description } = splitDeprecation(
+                    details.description || '',
+                  );
 
-                return (
-                  <TableRow key={propName}>
-                    <DataCell>
-                      <Text variant="code">{`${propName}${
-                        details.required ? '' : '?'
-                      }`}</Text>
-                      {isDeprecated && (
-                        <Tag
-                          size="small"
-                          variant="warning"
-                          className="props__deprecated"
-                        >
-                          Deprecated
-                        </Tag>
-                      )}
-                    </DataCell>
-                    <DataCell>
-                      <Text variant="code">
-                        {propName === 'as'
-                          ? 'string | React.ElementType'
-                          : formatPropType(details.type.name)}
-                      </Text>
-                    </DataCell>
-                    {hasAnyDefaultValues && (
+                  return (
+                    <TableRow key={propName}>
                       <DataCell>
-                        {details.defaultValue ? (
-                          <Text variant="code">
-                            {String(details.defaultValue.value)}
-                          </Text>
-                        ) : null}
+                        <Text variant="code">{`${propName}${
+                          details.required ? '' : '?'
+                        }`}</Text>
+                        {isDeprecated && (
+                          <Tag
+                            size="small"
+                            variant="warning"
+                            className="props__deprecated"
+                          >
+                            Deprecated
+                          </Tag>
+                        )}
                       </DataCell>
-                    )}
-                    <DataCell className="props__description">
-                      {description}
-                    </DataCell>
-                  </TableRow>
-                );
-              },
-            )}
-          </TableBody>
-        </Table>
+                      <DataCell>
+                        <Text variant="code">
+                          {propName === 'as'
+                            ? 'string | React.ElementType'
+                            : formatPropType(details.type.name)}
+                        </Text>
+                      </DataCell>
+                      {hasAnyDefaultValues && (
+                        <DataCell>
+                          {details.defaultValue ? (
+                            <Text variant="code">
+                              {String(details.defaultValue.value)}
+                            </Text>
+                          ) : null}
+                        </DataCell>
+                      )}
+                      <DataCell className="props__description">
+                        {description}
+                      </DataCell>
+                    </TableRow>
+                  );
+                },
+              )}
+            </TableBody>
+          </Table>
+        </div>
       ) : (
         <Text>Denne komponenten har ingen props</Text>
       )}
