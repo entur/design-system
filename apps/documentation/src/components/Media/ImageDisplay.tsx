@@ -43,6 +43,8 @@ export const ImageDisplay: React.FC<ImageDisplayProps> = ({
         { 'image-display--no-border-radius': noBorderRadius },
         className,
       )}
+      // Logos are drawn for a light background
+      data-color-mode={preset === 'contain-logo-display' ? 'light' : undefined}
       {...rest}
       style={style}
     >
