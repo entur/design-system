@@ -44,8 +44,6 @@ type DoDontCardProps = {
   variant?: VariantType | 'none';
   noPadding?: boolean;
   textInBox?: boolean;
-  /** For images drawn for a light background, e.g. dark text on transparency */
-  lightBackground?: boolean;
   'aria-hidden'?: boolean;
 };
 
@@ -59,7 +57,6 @@ export const DoDontCard = ({
   variant = 'success',
   noPadding = false,
   textInBox = false,
-  lightBackground = false,
   'aria-hidden': ariaHidden,
 }: DoDontCardProps) => {
   const Icon = variantMap[variant].icon;
@@ -94,7 +91,8 @@ export const DoDontCard = ({
         className={classNames('do-dont-card__box', {
           'do-dont-card__box--no-padding': noPadding,
         })}
-        data-color-mode={lightBackground ? 'light' : undefined}
+        // The images are drawn for light mode
+        data-color-mode="light"
       >
         {src !== undefined && (
           <img src={src} alt={alt} className="do-dont-card__box__image" />
