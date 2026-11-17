@@ -42,7 +42,6 @@ Med standardiserte fargetokens blir det enkelt og tydelig å endre tilknyttede r
 <ImageDisplay
   imgSource={props.data.imagefiles.images.find(image => image.name === "dont-tokens").childImageSharp.gatsbyImageData}
   alt="utvikler A bruker navnet Lavender90 og utvikler B bruker navnet ColorBlue men begge er den samme fargen."
-  preset="full-width-image"
   className="designentur-base-card__image--small"
   preset="centered-image"
 />
@@ -52,7 +51,6 @@ Med standardiserte fargetokens blir det enkelt og tydelig å endre tilknyttede r
 <ImageDisplay
   imgSource={props.data.imagefiles.images.find(image => image.name === "do-tokens").childImageSharp.gatsbyImageData}
   alt="Lavender 90-fargen ved navn Fill.Primary.Default er den man skal bruke i komponenter."
-  preset="full-width-image"
   className="designentur-base-card__image--small"
   preset="centered-image"
 />
@@ -93,6 +91,7 @@ Det grunnleggende laget består av «primitive tokens», som representerer farge
         }
         alt="eksempel på en komponent-token er button-primary-fill for bakgrunnen til designsystemets knapp"
         className="designentur-base-card__image"
+        preset="centered-image"
       />
     </BaseCardDesignEntur>
   </GridItem>
@@ -108,6 +107,7 @@ Det grunnleggende laget består av «primitive tokens», som representerer farge
         }
         alt="eksempel på base-tokens er base-frame-subsueded som er en dempet farge for en bakgrunn til en firkant"
         className="designentur-base-card__image"
+        preset="centered-image"
       />
     </BaseCardDesignEntur>
   </GridItem>
@@ -127,6 +127,7 @@ Som allerede nevnt er komponentene i designsystemet integrert med fargetokens, s
   imgSource={props.data.imagefiles.images.find(image => image.name === "brukFlateBase").childImageSharp.gatsbyImageData}
   alt="background skal brukes for bakgrunn, shape skal brukes på en sirkel, text skal brukes på tekst, og stroke kan brukes på en skillelinje" 
   className="designentur-base-card__image--medium"
+  preset="centered-image"
   />
 </BaseCardDesignEntur>
 
@@ -141,6 +142,7 @@ Som allerede nevnt er komponentene i designsystemet integrert med fargetokens, s
     }
     alt="For eksempel for bakgrunn kan du bruke frame-default, for border kan du bruke stroke-subduedalt, for ikon kan du bruke shape-default, for titteltekst kan du bruke text-default og for subtekst kan du bruke text-subdued"
     className="designentur-base-card__image--medium"
+    preset="centered-image"
   />
 </BaseCardDesignEntur>
 
