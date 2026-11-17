@@ -20,6 +20,9 @@ export type ImageDisplayProps = {
   noBorderRadius?: boolean;
 };
 
+// Boxed presets stay in light mode, since the images are drawn for it
+const boxedPresets = ['contain-logo-display', 'centered-image'];
+
 export const ImageDisplay: React.FC<ImageDisplayProps> = ({
   imgSource,
   name,
@@ -43,8 +46,9 @@ export const ImageDisplay: React.FC<ImageDisplayProps> = ({
         { 'image-display--no-border-radius': noBorderRadius },
         className,
       )}
-      // Logos are drawn for a light background
-      data-color-mode={preset === 'contain-logo-display' ? 'light' : undefined}
+      data-color-mode={
+        boxedPresets.includes(preset ?? '') ? 'light' : undefined
+      }
       {...rest}
       style={style}
     >
