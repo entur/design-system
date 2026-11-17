@@ -76,6 +76,8 @@ export const ImageAndTextResolver = ({ value }: Props) => {
         className={classNames('image-and-text__image', {
           'eds-contrast': variant === 'contrast',
         })}
+        // The images are drawn for light mode
+        data-color-mode="light"
         alwaysShowDownload={showDownload || extraDownloadFiles.length > 0}
         downloadSources={
           showDownload || extraDownloadFiles.length > 0
