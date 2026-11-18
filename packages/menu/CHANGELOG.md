@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.5.1](https://github.com/entur/design-system/compare/@entur/menu@7.5.0...@entur/menu@7.5.1) (2026-11-18)
+
+### Bug Fixes (beta)
+
+- **menu/beta/footer:** give link groups more room and use the medium logo on larger screens ([ea3c991](https://github.com/entur/design-system/commit/ea3c99154fe16500f1e29aa76f44dcfec6bc7546)) ([#572](https://github.com/entur/design-system/pull/572))
+
+  From 800 px, the product logo in Footer.Brand is shown in the medium size.
+  From 1200 px, each link group gets extra space on its left. On smaller widths,
+  the space between stacked rows grows from spacing-3xl to spacing-4xl.
+
 # [7.5.0](https://github.com/entur/design-system/compare/@entur/menu@7.4.1...@entur/menu@7.5.0) (2026-11-11)
 
 ### Bug Fixes
