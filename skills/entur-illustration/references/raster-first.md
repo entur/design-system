@@ -41,7 +41,7 @@ Scene: [one sentence: who, doing what, with which one prop].
 Style rules:
 - Plain dark navy line (#181C56), even width, round line ends, a very slight hand-drawn tremor; some contours are left open.
 - Flat fills only. No gradients, no shadows, no texture, no outlines thicker than the line.
-- White (#FFFFFF) is the main fill. Lavender (#AEB7E2) for one garment. Peach (#FFBF9E) for exactly one element: [which]; it is the only highlight colour. [No coral or red anywhere, not on a comb, a wattle, a tongue, cheeks or clothes | Coral (#FF5959) only for the line under the vehicle | Coral (#FF5959) only for the Entur staff shoulder and sleeve panels].
+- White (#FFFFFF) is the main fill. [For people: lavender (#AEB7E2) for one garment.] [For objects: a garment on a figure, such as a snowman's scarf or hat band, is pale grey-lavender (#EAEAF1), not lavender.] Peach (#FFBF9E) for exactly one element: [which]; it is the only highlight colour. [No coral or red anywhere, not on a comb, a wattle, a tongue, cheeks or clothes | Coral (#FF5959) only for the line under the vehicle | Coral (#FF5959) only for the Entur staff shoulder and sleeve panels].
 - Colour fills sit slightly offset from their line, so a thin sliver of white shows along one side.
 - [For people: people are drawn naturally, like an observed drawing: realistic adult proportions about 7.5 heads tall, a small head, a relaxed pose with weight on one leg or a slight turn, loose clothes with only 2–5 tapered fold marks, hands with fingers, shoes with soles.]
 - [For people: faces are white and have NO EYES and NO MOUTH: only a nose line. Glasses are allowed.]
@@ -180,6 +180,7 @@ When `illustrator-trace.mjs` changes, run the trace and the check on a regressio
     - **The ground line** (rule 9): one straight ink line under snowman and tree (2.5 pt, from the snowman's left to past the tree). The tree's trunk lines run down to it, and the trunk between them is an ink fill with one thin 1.1 pt line inside. The disc moves up 23 pt, so the line runs just below its edge (rule 10).
     - **A Peach accent with sparkles** (rule 24): three short 2 pt Peach strokes around the star.
     - **A glint** (rule 24): one short tapering white stroke of about 1.1 pt on the carrot nose, which stays Peach with no outline.
+    - **Pale clothing** (rule 8): the scarf and hat band are pale grey-lavender (`#EAEAF1`), not lavender, so in Figma they bind to the Animal group's `Fill/BodyShadow`.
 
     Two things to do differently from that file. The ground line should be ink (`#181C56`), not a near-navy (`#212768`): only palette colours change in the dark and contrast files, so that line stays dark and vanishes on the dark surface. The ground line, the sparkles and the trunk also belong on the Outline and Fill layers, not the Circle layer, because the Figma binding gives anything in the Circle layer the disc's variable (`handoff.md`).
 

@@ -26,6 +26,8 @@ A vehicle's windows are navy like ink by day and light up in dark mode: in all f
 
 A bike or scooter lamp beam in dark mode uses Canary 20 (`#FFF4CD`) at 30 % opacity; it does not exist in the other two modes, so add it by hand to the dark file only.
 
+In the animal construction (animals, objects, a figure such as a snowman) there is no lavender: a garment is `tint`, as the designer chose for the snowman's scarf and hat band. Lavender is for people.
+
 Lavender keeps its value in dark mode: it does in all 15 dark people files with lavender, 26 of 26 scenarios and both concepts, and the Figma variable People/…/Fill/Highlight 2 is `#AEB7E2` in both modes. Only the nine device illustrations darken it to Ebony 50 (`#81828F`), which is otherwise the dark value of `mid`.
 
 In Figma these values are variables in the library's Illustration colors collection; a new motif binds to them (`handoff.md`, In Figma).
