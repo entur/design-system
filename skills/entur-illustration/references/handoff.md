@@ -28,7 +28,7 @@ The design system construction in Illustrator, for people, staff, vehicles and s
 
 For animals and objects, as in the square source file:
 
-1. **Layers:** Circle (the backdrop), Fill (paper underlays), Blue fill (Blue 20 shading), Outline (the lines), bottom to top.
+1. **Layers:** Circle (the backdrop), Fill (paper underlays), Blue fill (Blue 20 shading), Outline (the lines), bottom to top. The Circle layer holds the disc and nothing else: the dark and contrast files and the Figma binding treat everything in it as the backdrop. Where a motif has more than one figure (a snowman and a tree), give each figure a group of its own that holds its lines, ink fills, colours, shading and its one paper shape (paper at the bottom), so it moves and scales as one.
 2. **Stroke panel:** 2.1 pt contours, 1.7 pt detail, 1.3 pt fine on a 320 pt artboard (5, 4 and 3 pt on 750 pt), Cap: Round, and a width profile. The three in use, as width at position along the line: `swell` 0.47 at 0 – 1 at 0.44 – 0.75 at 0.83 – 0.47 at 1 (the default); `thin` 0.27 – 1 at 0.47 – 0.27; `point` 0 – 1 at 0.5 – 0. Draw them once with the Width tool and save each with Add to Profiles in the Stroke panel, or copy a stroke from the source file.
 3. **Roughen:** 0.2 % Relative, Smooth on the lines and on the underlay and shading fills; 0.5–2 % on fur, wool and spines. The backdrop is a 4-anchor circle with Roughen 0.65 %, about 61 /in on a 320 pt artboard (26 /in on 750 pt).
 

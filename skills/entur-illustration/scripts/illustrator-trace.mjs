@@ -136,6 +136,10 @@ const params = {
   backdrop,
   simplify,
   object,
+  // Paper pieces smaller than this share of the canvas are dropped as
+  // specks; on an object a small round figure is real (a ticket's dots, whose
+  // white slivers pass one has already taken for the underlay to cover).
+  minUnderlay: object ? 0.0002 : 0.004,
   mask: '',
   contourShare: Number(opt('contour-share', 0.25)),
   shift: [0.6, -0.3],
@@ -383,7 +387,9 @@ if (P.simplify) {
   for (var s0 = 0; s0 < lp.length; s0++) {
     var sp = lp[s0];
     if (!sp.stroked) continue;
-    if (Number(sp.length) < 3 * sc) { sp.remove(); specks++; continue; }
+    // An object's specks up to 4 pt go too: a designer removed three of
+    // 3.1–3.7 pt from a traced snowman.
+    if (Number(sp.length) < (P.object ? 4 : 3) * sc) { sp.remove(); specks++; continue; }
     items.push({ it: sp, pts: readPts(sp) });
   }
   // Ground marks: flat lines in the band at the ground line (found in the
@@ -787,7 +793,7 @@ app.redraw();
 // their anchors fall outside the figure map (figureCells). Inside a figure
 // white stays (the underlay covers it anyway, and holes stay holes).
 if (P.figures) {
-  var F = P.figures, whites = [], outsideWhite = [], fillItems = fillLayerOf(doc).pageItems;
+  var F = P.figures, whites = [], outsideWhite = [], onPaperWhite = [], fillItems = fillLayerOf(doc).pageItems;
   // paths() walks groups and compounds, not a layer: start from its items.
   for (var w9 = 0; w9 < fillItems.length; w9++) paths(fillItems[w9], whites);
   var inFigure = function (a) {
@@ -817,11 +823,41 @@ if (P.figures) {
     // A thin strip catches few grid points: judge it by its anchors.
     var anchorsOut = 0;
     for (var w3 = 0; w3 < n0; w3++) if (!inFigure(poly[w3])) anchorsOut++;
-    if (inside >= 4 ? out >= 0.6 * inside : n0 && anchorsOut >= 0.7 * n0) outsideWhite.push(wp);
+    if (inside >= 4 ? out >= 0.6 * inside : n0 && anchorsOut >= 0.7 * n0) { outsideWhite.push(wp); continue; }
+    // An object keeps one white surface per figure, its paper: a white
+    // piece of the colour trace lying on the paper is a second white on top
+    // (with holes where the buttons are), so it goes, as a designer removed
+    // them from a traced snowman. A glint in a window stays.
+    if (!P.object || !P.paperCells) continue;
+    var wname = String(wp.name) + ' ' + (wp.parent.typename === 'CompoundPathItem' ? String(wp.parent.name) : '');
+    if (/Glint/.test(wname)) continue;
+    var onPaper = 0, PC = P.paperCells;
+    var paperAt = function (a) {
+      var gx = Math.floor(((a[0] - ab[0]) / (ab[2] - ab[0])) * PC.n), gy = Math.floor(((ab[1] - a[1]) / (ab[1] - ab[3])) * PC.n);
+      return gx >= 0 && gy >= 0 && gx < PC.n && gy < PC.n && PC.cells.charAt(gy * PC.n + gx) === '1';
+    };
+    for (var sy2 = 0; sy2 < 8; sy2++)
+      for (var sx2 = 0; sx2 < 8; sx2++) {
+        var pt2 = [gb[0] + ((sx2 + 0.5) / 8) * (gb[2] - gb[0]), gb[1] - ((sy2 + 0.5) / 8) * (gb[1] - gb[3])];
+        var hit2 = false;
+        for (var e2 = 0, f2 = poly.length - 1; e2 < poly.length; f2 = e2++)
+          if ((poly[e2][1] > pt2[1]) !== (poly[f2][1] > pt2[1]) && pt2[0] < ((poly[f2][0] - poly[e2][0]) * (pt2[1] - poly[e2][1])) / (poly[f2][1] - poly[e2][1]) + poly[e2][0]) hit2 = !hit2;
+        if (hit2 && paperAt(pt2)) onPaper++;
+      }
+    var anchorsOn = 0;
+    for (var w4 = 0; w4 < n0; w4++) if (paperAt(poly[w4])) anchorsOn++;
+    if (inside >= 4 ? onPaper >= 0.8 * inside : n0 && anchorsOn >= 0.8 * n0) {
+      var wwhole = wp.parent.typename === 'CompoundPathItem' ? wp.parent : wp, wseen = false;
+      for (var w5 = 0; w5 < onPaperWhite.length; w5++) if (onPaperWhite[w5] === wwhole) wseen = true;
+      if (!wseen) onPaperWhite.push(wwhole);
+    }
   }
   var whiteGone = 0;
   for (var w2 = 0; w2 < outsideWhite.length; w2++) { try { outsideWhite[w2].remove(); whiteGone++; } catch (e7) {} }
   log.push('white outside the figures removed ' + whiteGone);
+  var whiteOnPaper = 0;
+  for (var w6 = 0; w6 < onPaperWhite.length; w6++) { try { onPaperWhite[w6].remove(); whiteOnPaper++; } catch (e9) {} }
+  if (P.object) log.push('object: second white on the paper removed ' + whiteOnPaper);
 }
 // An object's shading (P.shadeMask, objectShades): tint shapes traced from the
 // draft's shading, under the colour fills and over the underlay, named Shade.
@@ -865,7 +901,7 @@ if (P.mask) {
   for (var u1 = 0; u1 < shapes.length; u1++) {
     var mparts = paths(shapes[u1], []), ma = 0;
     for (var u2 = 0; u2 < mparts.length; u2++) ma = Math.max(ma, Math.abs(mparts[u2].area));
-    if (ma < 0.004 * artArea) continue;
+    if (ma < P.minUnderlay * artArea) continue;
     var under = shapes[u1].duplicate(fillLayerOf(doc), ElementPlacement.PLACEATEND), ups = paths(under, []);
     under.name = 'Underlay';
     for (var u3 = 0; u3 < ups.length; u3++) { ups[u3].filled = true; ups[u3].stroked = false; ups[u3].fillColor = rgb(P.palette.paper); }
@@ -943,6 +979,7 @@ if (params.linesPng) {
   if (subject.edge)
     result += ` | paper edge: ${subject.edge.chords} chords, ${subject.edge.removed} px off, ${subject.edge.added} px on`;
   params.figures = figureCells(img, subject.interior);
+  params.paperCells = object ? paperCells(img, subject) : null;
   result += ' | ' + runJsx(jsx2(params));
 }
 console.log(result);
@@ -2052,6 +2089,59 @@ function figureCells(img, interior, n = 256) {
             break;
           }
       cells += on ? '1' : '0';
+    }
+  return { n, cells };
+}
+
+// The paper as a cell map: a cell is on when at least half its pixels are
+// paper. Pass two takes an object's colour-trace white off where the paper
+// lies under it.
+function paperCells(img, subject, n = 256) {
+  const { w, h } = img;
+  // Only the pieces pass two keeps as underlay (minUnderlay), and white over
+  // a dropped one must stay.
+  const kept = new Uint8Array(w * h);
+  const seen = new Uint8Array(w * h);
+  for (let k0 = 0; k0 < w * h; k0++) {
+    if (!subject[k0] || seen[k0]) continue;
+    const part = [k0];
+    seen[k0] = 1;
+    for (let i = 0; i < part.length; i++) {
+      const p = part[i];
+      const x = p % w;
+      for (const q of [
+        x > 0 ? p - 1 : -1,
+        x < w - 1 ? p + 1 : -1,
+        p - w,
+        p + w,
+      ])
+        if (q >= 0 && q < w * h && subject[q] && !seen[q]) {
+          seen[q] = 1;
+          part.push(q);
+        }
+    }
+    if (part.length >= params.minUnderlay * w * h)
+      for (const k of part) kept[k] = 1;
+  }
+  let cells = '';
+  for (let gy = 0; gy < n; gy++)
+    for (let gx = 0; gx < n; gx++) {
+      let on = 0;
+      let all = 0;
+      for (
+        let y = Math.floor((gy * h) / n);
+        y < Math.floor(((gy + 1) * h) / n);
+        y++
+      )
+        for (
+          let x = Math.floor((gx * w) / n);
+          x < Math.floor(((gx + 1) * w) / n);
+          x++
+        ) {
+          all++;
+          if (kept[y * w + x]) on++;
+        }
+      cells += all && on * 2 >= all ? '1' : '0';
     }
   return { n, cells };
 }

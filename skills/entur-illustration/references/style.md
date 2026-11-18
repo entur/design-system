@@ -199,6 +199,7 @@ Check by putting the new figure next to a library person (Woman holding package,
 - One Peach accent (rule 19), about 1 % of the canvas (0.2–4 % across the 15 library animals): the dog's collar and ball, the squirrel's nut, the hamster's key, the goat's ticket, the cat's bowl, the hedgehog's leaf, the muskox's horns. A prop has its own ink outline with the Peach shifted off it; a marking on the body, such as a bear's chest patch, has no outline and Roughen 1.5 %.
 - Posture tells the message: waiting, startled (attention marks), busy.
 - Objects (clock, ticket, calendar, phone) use the same construction: swelling strokes, and a box is several short strokes rather than one closed path.
+- A figure that stands (a snowman) stands on the ground line like an animal. A second figure behind it (a tree) is drawn in ink but lighter, at 2.0 pt on the contour and 1.5 pt on detail against the front figure's 2.5 pt. Its trunk reaches the ground line as an ink fill. The disc rises so the line runs just below its edge.
 
 ### Drawing vehicles
 
