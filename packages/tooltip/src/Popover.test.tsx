@@ -222,3 +222,57 @@ test('Popover uses fixed positioning', async () => {
 
   expect(screen.getByRole('dialog')).toHaveStyle({ position: 'fixed' });
 });
+
+test('the dialog is named by its trigger', async () => {
+  const user = userEvent.setup();
+  render(<Popover>{popoverContents}</Popover>);
+  await user.click(screen.getByRole('button', { name: 'Options' }));
+  expect(screen.getByRole('dialog')).toHaveAccessibleName('Options');
+});
+
+test('aria-label on PopoverContent replaces the name from the trigger', async () => {
+  const user = userEvent.setup();
+  render(
+    <Popover>
+      <PopoverTrigger>
+        <button>Options</button>
+      </PopoverTrigger>
+      <PopoverContent aria-label="Route options">Content</PopoverContent>
+    </Popover>,
+  );
+  await user.click(screen.getByRole('button', { name: 'Options' }));
+  expect(screen.getByRole('dialog')).toHaveAccessibleName('Route options');
+});
+
+test('aria-labelledby on PopoverContent replaces the name from the trigger', async () => {
+  const user = userEvent.setup();
+  render(
+    <>
+      <h2 id="route-heading">Route options</h2>
+      <Popover>
+        <PopoverTrigger>
+          <button>Options</button>
+        </PopoverTrigger>
+        <PopoverContent aria-labelledby="route-heading">Content</PopoverContent>
+      </Popover>
+    </>,
+  );
+  await user.click(screen.getByRole('button', { name: 'Options' }));
+  expect(screen.getByRole('dialog')).toHaveAccessibleName('Route options');
+});
+
+test('keeps a consumer id on the trigger and still names the dialog', async () => {
+  const user = userEvent.setup();
+  render(
+    <Popover>
+      <PopoverTrigger>
+        <button id="consumer-trigger">Options</button>
+      </PopoverTrigger>
+      <PopoverContent>Content</PopoverContent>
+    </Popover>,
+  );
+  const trigger = screen.getByRole('button', { name: 'Options' });
+  expect(trigger).toHaveAttribute('id', 'consumer-trigger');
+  await user.click(trigger);
+  expect(screen.getByRole('dialog')).toHaveAccessibleName('Options');
+});
