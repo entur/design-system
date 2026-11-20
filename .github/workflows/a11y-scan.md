@@ -22,12 +22,15 @@ steps:
     uses: ./.github/actions/install-and-cache-dependencies
     with:
       cache-key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
+  # The agent sandbox can't run native binaries, so lint runs here
+  - name: Run oxlint
+    run: |
+      mkdir -p /tmp/gh-aw
+      node_modules/.bin/oxlint packages/ apps/documentation/ > /tmp/gh-aw/oxlint.txt 2>&1 || true
 tools:
   github:
     toolsets: [repos, pull_requests]
   bash:
-    - 'node_modules/.bin/oxlint packages/ apps/documentation/'
-    - 'node_modules/.bin/oxlint*'
     - 'git log*'
     - 'git diff*'
     - 'git show*'
@@ -140,7 +143,7 @@ Key checks:
 
 - `packages/<name>/src/`: components, BEM `eds-` SCSS, tests next to them; beta components in `src/beta/`. Packages: a11y, alert, button, chip, datepicker, dropdown, expand, fileupload, form, grid, icons, layout, loader, menu, modal, tab, table, tokens, tooltip, travel, typography, utils.
 - `apps/documentation`: the docs site linje.entur.no. Skip `apps/studio-linje` and `apps/code-playground`.
-- Lint: `node_modules/.bin/oxlint` (config in `.oxlintrc.json`) runs oxlint with jsx-a11y. Several a11y rules are only "warn"; treat their warnings in scope as findings.
+- Lint: oxlint with jsx-a11y (config in `.oxlintrc.json`) has already run; its output is in `/tmp/gh-aw/oxlint.txt`. Several a11y rules are only "warn"; treat their warnings in scope as findings.
 
 ## Scope for this run
 
@@ -149,10 +152,12 @@ Keep the run focused and cheap.
 1. Read memory from `/tmp/gh-aw/repo-memory-default/` (files `scan-state.json` and `suggestions.json`; they may not exist on the first run).
 2. Always include files under `packages/` and `apps/documentation/` changed on the default branch in the last 7 days (`git log --since="7 days ago" --name-only`).
 3. Add the next 4 packages from the rotation (alphabetical, wrapping around), read from `scan-state.json` → `nextPackages`. On the first run, start with `a11y`.
-4. Run `node_modules/.bin/oxlint packages/ apps/documentation/` once and keep only results for files in scope. Use grep for quick signals (outline, px, hardcoded hex/rgb, transitions, `tabindex`, `aria-`). Then read the components and reason about keyboard, focus, ARIA, names and states.
-5. Only report what you can point to with `file:line` and a WCAG criterion number. If unsure, mark it "Må verifiseres manuelt" and say what to test (keyboard, skjermleser VoiceOver/NVDA, 200 % zoom, 320px, forced colors).
+4. Read `/tmp/gh-aw/oxlint.txt` and keep only results for files in scope. Use grep for quick signals (outline, px, hardcoded hex/rgb, transitions, `tabindex`, `aria-`). Then read the components and reason about keyboard, focus, ARIA, names and states.
+5. Only report what you can point to with `file:line` and a WCAG criterion number. Before reporting, re-open the exact file and line with `sed -n` and confirm the code is there; never report a path you have not opened. If unsure, mark it "Må verifiseres manuelt" and say what to test (keyboard, skjermleser VoiceOver/NVDA, 200 % zoom, 320px, forced colors).
 
 ## Avoiding duplicates
+
+- **Known issues.** A `test.failing`, `it.failing`, `TODO` or `FIXME` that describes the problem means the team already knows. Don't suggest a new task; list it once under "Kjente feil" with the test name, so a human can check that Jira covers it.
 
 - **Memory.** `suggestions.json` is a list of `{id, fingerprint, package, component, wcag, title, priority, firstSuggested, lastSeen, status}` where status is `suggested`, `backlog` or `resolved`, and fingerprint is `package|component|wcag|rule-slug`. If a finding's fingerprint already exists with status `suggested`, don't suggest it again; count it under "Fortsatt åpne". If the code is fixed, mark it `resolved` and list it under "Løst siden sist".
 - **Open pull requests.** If an open PR touches the same file and appears to fix the problem, skip it and write "Under arbeid i PR NNN".
@@ -176,7 +181,7 @@ Skannet: {pakker} + {antall} endrede filer siste 7 dager.
 
 *Forslag til nye Jira-oppgaver*
 1. *[{Høy|Middels|Lav}] {Tittel i imperativ, f.eks. «Gi lukkeknappen i Modal et tilgjengelig navn»}*
-   • {Bug|Task} · @entur/{pakke} · Forelder: {epic}
+   • {Bug|Task} · @entur/{pakke} (plain text, no backticks) · Forelder: {epic}
    • WCAG {x.y.z} {navn} ({Lovkrav|WCAG 2.2|Anbefaling})
    • Hvor: `{path}:{line}`
    • Problem: {1–2 setninger om konsekvensen for brukeren}
@@ -184,6 +189,7 @@ Skannet: {pakker} + {antall} endrede filer siste 7 dager.
    • Akseptkriterier: {kort liste, inkludert test}
 
 *Løst siden sist:* {liste eller «ingen»}
+*Kjente feil (sjekk at Jira dekker dem):* {liste eller «ingen»}
 *Fortsatt åpne forslag:* {antall} (eldste: {tittel}, {dato})
 
 _Jira er ikke sjekket – søk etter duplikater før du oppretter oppgaver._
