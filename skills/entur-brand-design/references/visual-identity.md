@@ -84,6 +84,8 @@ Entur has a custom illustration library developed with SDG. Illustrations can be
 
 Illustration library access: requires Google Drive access (internal Entur use).
 
+To draw a new illustration in the library style, or to pick the right library motif for a status message, use the `entur-illustration` skill: https://raw.githubusercontent.com/entur/design-system/main/skills/entur-illustration/SKILL.md
+
 ---
 
 ## Presentations and documents
