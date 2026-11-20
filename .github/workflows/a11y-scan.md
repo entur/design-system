@@ -19,13 +19,15 @@ network:
     - node
 steps:
   - name: Install dependencies
-    run: yarn install --immutable
+    uses: ./.github/actions/install-and-cache-dependencies
+    with:
+      cache-key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
 tools:
   github:
     toolsets: [repos, pull_requests]
   bash:
-    - 'yarn lint'
-    - 'npx oxlint*'
+    - 'node_modules/.bin/oxlint packages/ apps/documentation/'
+    - 'node_modules/.bin/oxlint*'
     - 'git log*'
     - 'git diff*'
     - 'git show*'
@@ -138,7 +140,7 @@ Key checks:
 
 - `packages/<name>/src/`: components, BEM `eds-` SCSS, tests next to them; beta components in `src/beta/`. Packages: a11y, alert, button, chip, datepicker, dropdown, expand, fileupload, form, grid, icons, layout, loader, menu, modal, tab, table, tokens, tooltip, travel, typography, utils.
 - `apps/documentation`: the docs site linje.entur.no. Skip `apps/studio-linje` and `apps/code-playground`.
-- Lint: `yarn lint` runs oxlint with jsx-a11y. Several a11y rules are only "warn"; treat their warnings in scope as findings.
+- Lint: `node_modules/.bin/oxlint` (config in `.oxlintrc.json`) runs oxlint with jsx-a11y. Several a11y rules are only "warn"; treat their warnings in scope as findings.
 
 ## Scope for this run
 
@@ -147,7 +149,7 @@ Keep the run focused and cheap.
 1. Read memory from `/tmp/gh-aw/repo-memory-default/` (files `scan-state.json` and `suggestions.json`; they may not exist on the first run).
 2. Always include files under `packages/` and `apps/documentation/` changed on the default branch in the last 7 days (`git log --since="7 days ago" --name-only`).
 3. Add the next 4 packages from the rotation (alphabetical, wrapping around), read from `scan-state.json` → `nextPackages`. On the first run, start with `a11y`.
-4. Run `yarn lint` once and keep only results for files in scope. Use grep for quick signals (outline, px, hardcoded hex/rgb, transitions, `tabindex`, `aria-`). Then read the components and reason about keyboard, focus, ARIA, names and states.
+4. Run `node_modules/.bin/oxlint packages/ apps/documentation/` once and keep only results for files in scope. Use grep for quick signals (outline, px, hardcoded hex/rgb, transitions, `tabindex`, `aria-`). Then read the components and reason about keyboard, focus, ARIA, names and states.
 5. Only report what you can point to with `file:line` and a WCAG criterion number. If unsure, mark it "Må verifiseres manuelt" and say what to test (keyboard, skjermleser VoiceOver/NVDA, 200 % zoom, 320px, forced colors).
 
 ## Avoiding duplicates
