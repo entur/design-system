@@ -60,6 +60,8 @@ export const ModalOverlay = ({
       const dialog = dialogRef.current;
       if (!dialog) return;
       const handleCancel = (e: Event) => {
+        // Ignore bubbled cancels, e.g. from a dismissed file picker
+        if (e.target !== dialog) return;
         e.preventDefault();
         onDismiss?.();
       };

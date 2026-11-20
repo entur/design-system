@@ -128,6 +128,25 @@ test.each([true, false])(
   },
 );
 
+test('stays open when a file picker inside it is cancelled', () => {
+  const onDismiss = jest.fn();
+  render(
+    <Modal onDismiss={onDismiss} open title="Journey" size="medium">
+      <label>
+        Attachment
+        <input type="file" />
+      </label>
+    </Modal>,
+  );
+  const fileInput = screen.getByLabelText('Attachment');
+  // Browsers fire a bubbling cancel on the input when the picker is dismissed.
+  const cancel = new Event('cancel', { bubbles: true, cancelable: true });
+  fireEvent(fileInput, cancel);
+  expect(onDismiss).not.toHaveBeenCalled();
+  expect(cancel.defaultPrevented).toBe(false);
+  expect(screen.getByRole('dialog', { name: 'Journey' })).toBeInTheDocument();
+});
+
 test('focuses the requested field instead of the title and accepts keyboard input', async () => {
   const user = userEvent.setup();
   const initialFocusRef = createRef<HTMLInputElement>();
