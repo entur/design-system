@@ -51,11 +51,10 @@ test('removing a selected route leaves the other route intact without submitting
   }
   render(<SelectedRoutes />);
 
-  const bus = screen.getByRole('img', { name: 'Buss 31' });
-  await user.click(within(bus).getByRole('button'));
+  await user.click(screen.getByRole('button', { name: 'Fjern Buss 31' }));
 
   expect(
-    screen.queryByRole('img', { name: 'Buss 31' }),
+    screen.queryByRole('group', { name: 'Buss 31' }),
   ).not.toBeInTheDocument();
   expect(screen.getByRole('img', { name: 'Trikk 12' })).toBeVisible();
   expect(onSubmit).not.toHaveBeenCalled();
@@ -141,7 +140,7 @@ test('type, alert and onClose select their modifier classes', () => {
       31
     </TravelTag>,
   );
-  expect(screen.getByRole('img', { name: 'Buss 31 error' })).toHaveClass(
+  expect(screen.getByRole('group', { name: 'Buss 31 error' })).toHaveClass(
     'eds-travel-tag--type-duration',
     'eds-travel-tag--closable',
     'eds-travel-tag--alert',
@@ -173,16 +172,43 @@ describeComponentContract('TravelTag', {
   baseClassName: 'eds-travel-tag',
 });
 
-// Bug: TravelTag's close button has neither text nor an accessible label.
-test.failing(
-  'a removable route exposes an accessible name for its close button',
-  () => {
-    render(
-      <TravelTag transport="bus" onClose={jest.fn()}>
-        31
-      </TravelTag>,
-    );
+test('a removable route exposes an accessible name for its close button', () => {
+  render(
+    <TravelTag transport="bus" onClose={jest.fn()}>
+      31
+    </TravelTag>,
+  );
 
-    expect(screen.getByRole('button')).toHaveAccessibleName();
-  },
-);
+  const group = screen.getByRole('group', { name: 'Buss 31' });
+  expect(
+    within(group).getByRole('button', { name: 'Fjern Buss 31' }),
+  ).toBeInTheDocument();
+});
+
+test('closeButtonAriaLabel replaces the close button name', () => {
+  render(
+    <TravelTag
+      transport="bus"
+      onClose={jest.fn()}
+      closeButtonAriaLabel="Remove line 31"
+    >
+      31
+    </TravelTag>,
+  );
+
+  expect(
+    screen.getByRole('button', { name: 'Remove line 31' }),
+  ).toBeInTheDocument();
+});
+
+test('builds the close button name from the text of element children', () => {
+  render(
+    <TravelTag transport="bus" onClose={jest.fn()}>
+      <span>31</span>
+    </TravelTag>,
+  );
+
+  expect(
+    screen.getByRole('button', { name: 'Fjern Buss 31' }),
+  ).toBeInTheDocument();
+});
