@@ -94,8 +94,9 @@ export const ToastProvider = ({
   style,
 }: ToastProviderProps) => {
   const [toasts, dispatch] = React.useReducer(toastReducer, []);
-  const [hoveringId, setHovering] = React.useState<string>();
   const timeoutIdRefs = React.useRef<{ [key: string]: number }>({});
+  const isHovering = React.useRef(false);
+  const containerRef = React.useRef<HTMLDivElement>(null);
 
   const removeToast = React.useCallback((id: ToastId) => {
     window.clearTimeout(timeoutIdRefs.current[id]);
@@ -133,25 +134,53 @@ export const ToastProvider = ({
     [delay, removeToastWithAnimationAfterDelay],
   );
 
-  const handleMouseEnter = (toast: ToastType) => () => {
+  // A toast that is already sliding out keeps its timer, so it is removed on time
+  const clearTimers = () => {
+    toasts
+      .filter(toast => !toast.isBeingRemoved)
+      .forEach(toast => {
+        for (const key of [toast.id, toast.id + 'animation']) {
+          window.clearTimeout(timeoutIdRefs.current[key]);
+          delete timeoutIdRefs.current[key];
+        }
+      });
+  };
+
+  const pauseToasts = (toast: ToastType) => {
     if (toast.isBeingRemoved) return;
-    setHovering(toast.id);
-    Object.values(timeoutIdRefs.current).forEach(timeoutId => {
-      window.clearTimeout(timeoutId);
-    });
-    timeoutIdRefs.current = {};
+    clearTimers();
+  };
+
+  const resumeToasts = () => {
+    clearTimers();
+    toasts
+      .filter(toast => !toast.isBeingRemoved)
+      .forEach(toast => {
+        removeToastWithAnimationAfterDelay(toast.id, delay);
+      });
+  };
+
+  const handleBlur = (event: React.FocusEvent<HTMLDivElement>) => {
+    if (containerRef.current?.contains(event.relatedTarget)) return;
+    if (isHovering.current) return;
+    resumeToasts();
+  };
+
+  const handleMouseEnter = (toast: ToastType) => {
+    isHovering.current = true;
+    pauseToasts(toast);
   };
 
   const handleMouseLeave = () => {
-    setHovering(undefined);
-    toasts.forEach(toast => {
-      removeToastWithAnimationAfterDelay(toast.id, delay);
-    });
+    isHovering.current = false;
+    if (containerRef.current?.contains(document.activeElement)) return;
+    resumeToasts();
   };
 
   const handleClose = (toastId: ToastId) => () => {
     removeToast(toastId);
-    handleMouseLeave();
+    isHovering.current = false;
+    resumeToasts();
   };
 
   const contextValue = React.useMemo(
@@ -169,15 +198,18 @@ export const ToastProvider = ({
             className,
           )}
           style={style}
+          ref={containerRef}
         >
           {toasts.slice(0, 3).map(toastToShow => (
             <ToastAlertBox
               variant={toastToShow.variant}
               title={toastToShow.title}
               onClose={handleClose(toastToShow.id)}
-              onMouseEnter={handleMouseEnter(toastToShow)}
+              onMouseEnter={() => handleMouseEnter(toastToShow)}
               onMouseLeave={handleMouseLeave}
-              closable={hoveringId === toastToShow.id}
+              onFocus={() => pauseToasts(toastToShow)}
+              onBlur={handleBlur}
+              closable
               toastIsBeingRemoved={toastToShow.isBeingRemoved}
               key={toastToShow.id}
             >
