@@ -1,6 +1,6 @@
 ---
 title: Kontrastsjekker
-description: For å sikre god lesbarhet i våre applikasjoner er det viktig å opprettholde kontrastkrav for farger på nett.
+description: Sjekk at tekst og grafiske objekter har nok kontrast mot bakgrunnen, med fargene i designsystemet.
 route: /universell-utforming/kontrastsjekker
 parent: Universell utforming
 tags: farger, kontrast
@@ -18,16 +18,15 @@ export const Head = ( props ) => {
 }
 
 
-All tekst må ha tilstrekkelig kontrast mot bakgrunnen for å sikre god lesbarhet – viktig for alle brukere, særlig i vanskelige lysforhold. Nivå AA er minimumskravet, uansett hvilken [WCAG-versjon som er lovpålagt](https://www.uutilsynet.no/fremtidig-regelverk/status-nyere-versjoner-av-wcag/1868) akkurat nå: selve kontrastkravet (kriterium 1.4.3) er uendret på tvers av versjonene.
+All tekst må ha god nok kontrast mot bakgrunnen til å være lesbar – for alle brukere, og særlig i sterkt sollys eller på dårlige skjermer. Nivå AA er minimumskravet, uansett hvilken [WCAG-versjon som er lovpålagt](https://www.uutilsynet.no/fremtidig-regelverk/status-nyere-versjoner-av-wcag/1868) akkurat nå: kontrastkravene er de samme i alle versjonene.
 
-Kravet til kontrast er avhengig av størrelsen på teksten/objektene:
+Hvor høy kontrast som kreves, avhenger av hva som vises:
 
-- Stor tekst: kontrastkrav 3.0:1
-- Liten tekst: kontrastkrav 4.5:1
-- Ved normal teksttykkelse er stor tekst 18 punkt og større.
-- Ved fet tekststil er stor tekst 14 punkt og større.
+- **Normal tekst:** minst 4.5:1 (kriterium 1.4.3).
+- **Stor tekst:** minst 3:1. Stor tekst er 18 punkt (24 px) eller større, eller 14 punkt (omtrent 19 px) eller større når teksten er fet.
+- **Grafiske objekter:** minst 3:1 mot fargene rundt, når de trengs for å forstå innholdet eller bruke løsningen. Det gjelder for eksempel ikoner uten tekst og kanten rundt skjemafelt (kriterium 1.4.11).
 
-Stor tekst er det som er dobbelt så stor som brødtekst, det vil si at mesteparten av tekstinnholdet på våre nettsider krever **kontrastkrav 4.5:1**. Grafiske objekter som er viktig for å forstå innholdet, har en kontrast på minst **3:1** mot bakgrunnsfargen.
+Det meste av teksten i løsningene våre er normal tekst, så 4.5:1 er kravet du oftest må oppfylle.
 
 ## Eksempler på kontrastnivå
 
@@ -40,11 +39,11 @@ Stor tekst er det som er dobbelt så stor som brødtekst, det vil si at mestepar
     <div>
       <span className="eds-contrast__header">
         <ValidationErrorFilledIcon color={colors.validation.lava} />
-        <span className="eds-contrast__header-text">Unngå</span>
+        <span className="eds-contrast__header-text">Ikke godkjent</span>
       </span>
       <div>
-        Slik ser det ut med kontrast 1.7:1. Dette er ikke innafor
-        kontrast-kravet og ikke godkjent."
+        Slik ser det ut med kontrast 1.9:1. Dette oppfyller ikke
+        kontrastkravet.
       </div>
     </div>
   </GridItem>
@@ -56,32 +55,32 @@ Stor tekst er det som er dobbelt så stor som brødtekst, det vil si at mestepar
     <div>
       <span className="eds-contrast__header">
         <ValidationSuccessFilledIcon color={colors.validation.mint} />{' '}
-        <span className="eds-contrast__header-text">Innafor</span>
+        <span className="eds-contrast__header-text">Godkjent</span>
       </span>
       <div>
-        Slik ser det ut med kontrast 5.5:1. Dette er innafor kontrastkravet.
+        Slik ser det ut med kontrast 5.5:1. Dette oppfyller kontrastkravet.
       </div>
     </div>
   </GridItem>
   <GridItem small={4}>
     <div className="eds-contrast__practice eds-contrast__practice--do">
       <Heading as="h3" variant="subtitle-1" spacing={{ bottom: 'xs' }}>Om Entur</Heading>
-      <Text>Entur leverer tjenester som gjør det enkelt å reise på tvers av alle kollektiv-selskaper i Norge.</Text>
+      <Text>Entur leverer tjenester som gjør det enkelt å reise på tvers av alle kollektivselskaper i Norge.</Text>
     </div>
     <div>
       <span className="eds-contrast__header">
         <ValidationSuccessFilledIcon color={colors.validation.mint} />{' '}
-        <span className="eds-contrast__header-text">Innafor</span>
+        <span className="eds-contrast__header-text">Godkjent</span>
       </span>
       <div>
-        Slik ser det ut med maks kontrast 15.6:1. Dette er veldig innafor!
+        Slik ser det ut med kontrast 15.7:1. Dette oppfyller kontrastkravet med god margin.
       </div>
     </div>
   </GridItem>
 </GridContainer>
 
-## Color Contrast Checker
+## Sjekk to farger
 
-Bruk vår Color Contrast Checker for å bestemme lesbarheten til tekst og kontrasten til grafiske objekter.
+Velg en forgrunnsfarge og en bakgrunnsfarge fra designsystemet. Kontrastsjekkeren viser kontrastforholdet, om fargene oppfyller kravene for tekst og grafiske objekter, og variabelen du bruker i koden.
 
 <ContrastChecker />

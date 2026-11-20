@@ -91,6 +91,8 @@ export const DoDontCard = ({
         className={classNames('do-dont-card__box', {
           'do-dont-card__box--no-padding': noPadding,
         })}
+        // The images are drawn for light mode
+        data-color-mode="light"
       >
         {src !== undefined && (
           <img src={src} alt={alt} className="do-dont-card__box__image" />

@@ -7,6 +7,13 @@
     grid-column: 1 / -1;
     align-self: center;
     background-color: var(--basecolors-frame-tint);
+    border-radius: eds.$border-radiuses-large;
+
+    // Keep the image off the edges of the box
+    &.preset--contain-full-width {
+      box-sizing: border-box;
+      padding: eds.$space-large;
+    }
 
     + * {
       margin-top: eds.$space-default;
