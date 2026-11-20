@@ -153,6 +153,23 @@
         "name": "string | undefined"
       }
     },
+    "selectedTimeAriaLabel": {
+      "defaultValue": {
+        "value": "valgt tid"
+      },
+      "description": "Tekst foran valgt tid, som skjermlesere leser opp",
+      "name": "selectedTimeAriaLabel",
+      "declarations": [
+        {
+          "fileName": "packages/datepicker/src/TimePicker/TimePicker.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
     "feedback": {
       "defaultValue": null,
       "description": "Varselmelding, som vil komme under TimePicker",
