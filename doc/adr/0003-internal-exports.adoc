@@ -1,0 +1,58 @@
+== 3. Building blocks shared between packages are marked internal in their description
+
+Date: 2026-11-16
+
+Applies to: exports used by other `@entur/*` packages but not meant for consumers, starting with `useFeedbackDescription` in `@entur/form`
+
+Revisit when: the form field rework makes `BaseFormControl` internal (a breaking change, since it is public today); then move the internal building blocks of `@entur/form` to an `@entur/form/internal` entry. Also revisit if consumers are found importing an internal export.
+
+== Status
+Accepted
+
+== Context
+Packages share building blocks through each other's main entry, so everything
+another package needs is exported to consumers too. `@entur/form` exports
+`BaseFormControl`, and now `useFeedbackDescription`, which links a field to its
+feedback text. Both exist so `@entur/dropdown` and `@entur/datepicker` can build
+fields. Once public, every change to them falls under semver.
+
+The JSDoc tag `@internal` does not solve this. `tsconfig.base.json` sets
+`stripInternal`, which leaves the declaration out of the published `.d.ts`
+files. Other `@entur/*` packages type-check against those files (see
+xref:0002-typecheck-job.adoc[ADR 2]), so they lose it too.
+
+What matters most is that internal building blocks don't appear on the
+documentation site. The props generator only reads `.tsx` files, and a page
+only shows the props of components an editor picks, so a shared hook never
+shows up there.
+
+== Decision
+A building block meant only for other `@entur/*` packages starts its JSDoc
+with `Internal: only for @entur/* packages, no semver guarantee.` It stays in
+the main entry with its types published, so our packages compile against it.
+Consumers see the warning when they hover it in their editor.
+
+`@internal` is kept for things used only inside one package, such as
+`isCurrent` on `BreadcrumbItem`, where `stripInternal` hiding it is the point.
+
+== Consequences
+=== Positive
+* Shared building blocks can change in a minor or patch.
+* No extra entry point or build configuration.
+
+=== Negative
+* Internal exports show up in consumers' autocomplete. Only the description
+  says they are internal.
+* The rule depends on people reading the description, and the scanner can't
+  tell an internal import apart from a public one.
+
+== Alternatives
+* *`@internal` with `stripInternal`*: hides the types from our own packages
+  too, so they no longer compile.
+* *A separate `/internal` entry point*, like `/beta`: a clear import path the
+  scanner can measure, and out of main-entry autocomplete. One more build entry
+  for a single hook today. The chosen next step once `BaseFormControl` becomes
+  internal.
+* *Keep shared building blocks public*: every change becomes a semver decision
+  for code consumers shouldn't depend on.
+* *Copy the logic into each package*: no shared API, but the copies drift.

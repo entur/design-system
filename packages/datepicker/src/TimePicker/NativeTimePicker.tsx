@@ -4,6 +4,7 @@ import {
   BaseFormControl,
   FeedbackAnnouncementProps,
   isFilled,
+  useFeedbackDescription,
   useInputGroupContext,
   useVariant,
 } from '@entur/form';
@@ -45,10 +46,18 @@ export const NativeTimePicker = React.forwardRef<
       prepend,
       ariaAlertOnFeedback,
       feedbackProps,
+      'aria-describedby': ariaDescribedBy,
       ...rest
     },
     ref: React.Ref<HTMLInputElement>,
   ) => {
+    const { feedbackId, 'aria-describedby': describedBy } =
+      useFeedbackDescription({
+        feedback,
+        variant,
+        feedbackProps,
+        'aria-describedby': ariaDescribedBy,
+      });
     const nativetimepickerId = `eds-native-timepicker${useId()}`;
     return (
       <BaseFormControl
@@ -62,10 +71,12 @@ export const NativeTimePicker = React.forwardRef<
         disableLabelAnimation
         ariaAlertOnFeedback={ariaAlertOnFeedback}
         feedbackProps={feedbackProps}
+        feedbackId={feedbackId}
       >
         <NativeTimePickerBase
           onChange={onChange}
           aria-labelledby={nativetimepickerId}
+          aria-describedby={describedBy}
           ref={ref}
           {...rest}
         />

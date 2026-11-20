@@ -24,7 +24,7 @@ import {
 } from '@floating-ui/react-dom';
 
 import { VisuallyHidden } from '@entur/a11y';
-import { BaseFormControl } from '@entur/form';
+import { BaseFormControl, useFeedbackDescription } from '@entur/form';
 import { space } from '@entur/tokens';
 import { mergeRefs } from '@entur/utils';
 
@@ -196,6 +196,7 @@ export const MultiSelect = React.forwardRef(
       onClick,
       onKeyDown,
       onFocus,
+      'aria-describedby': ariaDescribedBy,
       ...rest
     }: MultiSelectProps<ValueType>,
     ref: React.ForwardedRef<HTMLInputElement>,
@@ -571,6 +572,20 @@ export const MultiSelect = React.forwardRef(
       value: inputValue ?? EMPTY_INPUT,
       ref: mergeRefs(inputRef, ref),
     });
+    const { feedbackId, 'aria-describedby': describedBy } =
+      useFeedbackDescription({
+        feedback,
+        variant,
+        feedbackProps: rest.feedbackProps,
+        'aria-describedby': classNames(
+          ariaDescribedBy,
+          canNavigateToSelected && navigateToSelectedId,
+          !canNavigateToSelected &&
+            readOnly &&
+            selectedItems.length > 0 &&
+            selectedLabelsId,
+        ),
+      });
     const inputProps = getInputProps({
       onBlur,
       onFocus: (e: React.FocusEvent<HTMLInputElement>) => {
@@ -627,11 +642,7 @@ export const MultiSelect = React.forwardRef(
       readOnly,
       placeholder: placeholder,
       tabIndex: disabled ? -1 : undefined,
-      'aria-describedby': canNavigateToSelected
-        ? navigateToSelectedId
-        : readOnly && selectedItems.length > 0
-        ? selectedLabelsId
-        : undefined,
+      'aria-describedby': describedBy,
     });
     const labelProps = getLabelProps();
     const menuProps = getMenuProps({
@@ -655,6 +666,7 @@ export const MultiSelect = React.forwardRef(
         disabled={disabled}
         disableLabelAnimation={disableLabelAnimation}
         feedback={feedback}
+        feedbackId={feedbackId}
         isFilled={hasSelectedItems || inputValue !== EMPTY_INPUT}
         label={label}
         labelId={labelProps.id}

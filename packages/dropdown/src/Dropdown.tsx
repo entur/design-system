@@ -15,7 +15,11 @@ import {
   useFloating,
 } from '@floating-ui/react-dom';
 
-import { BaseFormControl, FeedbackAnnouncementProps } from '@entur/form';
+import {
+  BaseFormControl,
+  FeedbackAnnouncementProps,
+  useFeedbackDescription,
+} from '@entur/form';
 import { space } from '@entur/tokens';
 import { VariantType, getActiveElement, mergeRefs } from '@entur/utils';
 
@@ -112,6 +116,8 @@ export type DropdownProps<ValueType> = {
    * @default ', valgt element, trykk for å fjerne'
    */
   ariaLabelSelectedItem?: string;
+  /** ID-er til elementer som beskriver feltet. Feedback-teksten legges til etter dem */
+  'aria-describedby'?: string;
 } & FeedbackAnnouncementProps;
 
 export const Dropdown = React.forwardRef(
@@ -142,6 +148,7 @@ export const Dropdown = React.forwardRef(
       selectOnTab = false,
       style,
       variant = 'information',
+      'aria-describedby': ariaDescribedBy,
       ...rest
     }: DropdownProps<ValueType>,
     ref: React.ForwardedRef<HTMLDivElement>,
@@ -248,6 +255,13 @@ export const Dropdown = React.forwardRef(
     const labelProps = getLabelProps({
       isFilled,
     });
+    const { feedbackId, 'aria-describedby': describedBy } =
+      useFeedbackDescription({
+        feedback,
+        variant,
+        feedbackProps: rest.feedbackProps,
+        'aria-describedby': ariaDescribedBy,
+      });
     const toggleButtonProps = getToggleButtonProps({
       ref: mergeRefs(ref, setFloatingReference, toggleButtonRef),
       'aria-disabled': disabled,
@@ -282,12 +296,14 @@ export const Dropdown = React.forwardRef(
         })}
         disableLabelAnimation={disableLabelAnimation}
         feedback={feedback}
+        feedbackId={feedbackId}
         labelProps={labelProps}
         labelTooltip={labelTooltip}
         prepend={prepend}
         style={style}
         variant={variant}
         {...toggleButtonProps}
+        aria-describedby={describedBy}
         aria-invalid={variant === 'negative' || variant === error}
         after={
           <DropdownList

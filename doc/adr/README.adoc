@@ -73,4 +73,8 @@ What other options were considered and why were they rejected?
 |2
 |xref:0002-typecheck-job.adoc[Type errors are caught by a typecheck job, not the build]
 |Accepted
+
+|3
+|xref:0003-internal-exports.adoc[Building blocks shared between packages are marked internal in their description]
+|Accepted
 |===
