@@ -82,3 +82,24 @@ test('collapses the side navigation and reopens it through the group trigger', a
     ).toBeInTheDocument();
   });
 });
+
+test('keeps the collapse button in a list item and hides its icon', async () => {
+  const user = userEvent.setup({ advanceTimers: jest.advanceTimersByTime });
+  render(
+    <CollapsibleSideNavigation>
+      <SideNavigationItem href="#first">First item</SideNavigationItem>
+    </CollapsibleSideNavigation>,
+  );
+  const list = screen.getByRole('list');
+  for (const child of Array.from(list.children)) {
+    expect(child.tagName).toBe('LI');
+  }
+  const toggle = screen.getByRole('button', { name: 'Lukk sidemeny' });
+  expect(toggle).toHaveAttribute('type', 'button');
+  expect(toggle.querySelector('svg')).toHaveAttribute('aria-hidden', 'true');
+
+  await user.click(toggle);
+  expect(
+    screen.getByRole('button', { name: 'Åpne sidemeny' }),
+  ).toBeInTheDocument();
+});

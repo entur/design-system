@@ -58,17 +58,23 @@ export const CollapsibleSideNavigation = ({
         {...rest}
       >
         {children}
-        <button
-          className="eds-side-navigation__collapse-button"
-          onClick={() => setCollapsedMenu(!collapsedMenu)}
-          style={{ top: `${collapsibleButtonPosition}` }}
-        >
-          {collapsedMenu ? (
-            <MenuIcon aria-label={openSideMenuAriaLabel} />
-          ) : (
-            <LeftArrowIcon aria-label={closeSideMenuAriaLabel} />
-          )}
-        </button>
+        <li className="eds-side-navigation__collapse-item">
+          <button
+            className="eds-side-navigation__collapse-button"
+            onClick={() => setCollapsedMenu(!collapsedMenu)}
+            style={{ top: `${collapsibleButtonPosition}` }}
+            type="button"
+            aria-label={
+              collapsedMenu ? openSideMenuAriaLabel : closeSideMenuAriaLabel
+            }
+          >
+            {collapsedMenu ? (
+              <MenuIcon aria-hidden="true" />
+            ) : (
+              <LeftArrowIcon aria-hidden="true" />
+            )}
+          </button>
+        </li>
       </ul>
     </SideNavigationContext.Provider>
   );
