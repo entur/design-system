@@ -64,21 +64,28 @@ export const CalendarCell = ({
 
   const shouldHideDate = !showOutsideMonth && isOutsideVisibleRange;
 
+  // With showOutsideMonth these dates can be clicked, so they must not be announced as disabled
+  const isSelectableOutsideDate =
+    showOutsideMonth &&
+    isOutsideVisibleRange &&
+    !state.isInvalid(date) &&
+    !isUnavailable;
+
   const extendedButtonProps = {
     ...buttonProps,
-    ...(showOutsideMonth &&
-      isOutsideVisibleRange && {
-        onClick: () => {
+    ...(isSelectableOutsideDate && {
+      'aria-disabled': undefined,
+      onClick: () => {
+        state.selectDate(date);
+        onCellClick();
+      },
+      onKeyUp: (e: React.KeyboardEvent) => {
+        if (e.key === 'Enter' || e.key === ' ') {
           state.selectDate(date);
           onCellClick();
-        },
-        onKeyUp: (e: React.KeyboardEvent) => {
-          if (e.key === 'Enter') {
-            state.selectDate(date);
-            onCellClick();
-          }
-        },
-      }),
+        }
+      },
+    }),
     ...(isBetweenVisibleMonths && {
       tabIndex: -1,
       role: 'presentation' as const,
