@@ -98,6 +98,18 @@ const simplify = animals && !flag('no-simplify');
 // A traced draft already carries the hand tremor; Roughen on top makes it bumpy.
 const roughen = flag('roughen');
 flag('no-roughen');
+// People: points on the artboard, in the SVG's units ("x,y x,y"), that say
+// what a part is, which the pixels cannot: --clothes joins the parts under
+// its points into one fill named Clothes, for the clothing colour; --open
+// leaves the closed pocket under each point unfilled, air between an arm and
+// the body (personParts).
+const points = s =>
+  s
+    .split(/[\s;]+/)
+    .filter(Boolean)
+    .map(p => p.split(',').map(Number));
+const clothesAt = points(opt('clothes', ''));
+const openAt = points(opt('open', ''));
 const [pngArg] = args;
 if (!pngArg || !fs.existsSync(pngArg)) {
   console.error(
@@ -211,14 +223,21 @@ params.inkMasses = masses ? masses.count : 0;
 // People: a shape per closed part, white or tint, in place of the colour
 // trace's paper (personParts), and colour only where the draft has a colour
 // area (colourAreas).
+const toPx = ([x, y]) => [(x * img.w) / params.size, (y * img.h) / params.size];
 const figureParts = person
-  ? personParts(img, findGround(img), masses && masses.keep, colour)
+  ? personParts(img, findGround(img), masses && masses.keep, colour, {
+      clothes: clothesAt.map(toPx),
+      open: openAt.map(toPx),
+    })
   : null;
 params.parts = figureParts ? figureParts.shapes : [];
 params.partsPx = [img.w, img.h];
 params.partsLog = figureParts
   ? `parts ${figureParts.whites} white, ${figureParts.tints} tint` +
+    (figureParts.split ? `, ${figureParts.split} split at a gap` : '') +
+    (figureParts.opened ? `, ${figureParts.opened} left open` : '') +
     (figureParts.merged ? `, ${figureParts.merged} pockets joined` : '') +
+    (figureParts.clothes ? `, clothes from ${figureParts.clothes} parts` : '') +
     (figureParts.hidden ? `, ${figureParts.hidden} under ink dropped` : '') +
     (figureParts.strands ? `, ${figureParts.strands} strands` : '') +
     (figureParts.under ? `, ${figureParts.under} under a desk left open` : '')
@@ -724,9 +743,10 @@ if (P.parts.length) {
   partsGroup.name = 'Parts';
   for (var pi0 = 0; pi0 < P.parts.length; pi0++) {
     var part = P.parts[pi0], colour = rgb(part.tint ? P.palette.tint : P.palette.paper), made = [];
-    if (part.loops.length === 1) { var one = partsGroup.pathItems.add(); setLoop(one, part.loops[0]); made.push(one); }
+    if (part.loops.length === 1) { var one = partsGroup.pathItems.add(); setLoop(one, part.loops[0]); made.push(one); if (part.name) one.name = part.name; }
     else {
       var cpi = partsGroup.compoundPathItems.add();
+      if (part.name) cpi.name = part.name;
       for (var lp0 = 0; lp0 < part.loops.length; lp0++) { var sub = cpi.pathItems.add(); setLoop(sub, part.loops[lp0]); made.push(sub); }
     }
     for (var mk = 0; mk < made.length; mk++) { made[mk].filled = true; made[mk].stroked = false; made[mk].fillColor = colour; }
@@ -2520,7 +2540,13 @@ function solidMasses(keep, w, h, lum, colour = null) {
 // part beside it stays a part of its own unless it is a speck. Returns the
 // parts' masks with whether each is tint, the label of every pixel (0 none,
 // -1 outside, else a part) and the counts.
-function personParts(img, groundBand, masses = null, colour = null) {
+function personParts(
+  img,
+  groundBand,
+  masses = null,
+  colour = null,
+  marks = { clothes: [], open: [] },
+) {
   const { w, h, lum, rgb } = img;
   const N = w * h;
   const pale = new Uint8Array(N);
@@ -2586,6 +2612,125 @@ function personParts(img, groundBand, masses = null, colour = null) {
     }
     parts.push(c);
   }
+  // Two big areas that meet through a narrow channel, where a line stops
+  // a few pixels short of the next (the line under a sleeve, short of the
+  // book on the desk), are two parts: the desk top must not run on under the
+  // clothes. Cores 2 px clear of the lines find the areas, so only a channel
+  // of 3 px or less splits (3 px clear also cut a face from its neck where a
+  // headset boom stops short of the jaw); the channel and the thin bits go
+  // to the nearer core. Not the background, which a split would turn into
+  // closed parts.
+  const core = erode(area, w, h, 2);
+  const coreId = new Int32Array(N);
+  const coreSize = [];
+  for (let k = 0; k < N; k++) {
+    if (!core[k] || coreId[k]) continue;
+    const stack = [k];
+    coreId[k] = coreSize.length + 1;
+    let n = 0;
+    while (stack.length) {
+      const p = stack.pop();
+      const x = p % w;
+      n++;
+      for (const q of [
+        x > 0 ? p - 1 : -1,
+        x < w - 1 ? p + 1 : -1,
+        p - w,
+        p + w,
+      ])
+        if (q >= 0 && q < N && core[q] && !coreId[q]) {
+          coreId[q] = coreId[k];
+          stack.push(q);
+        }
+    }
+    coreSize.push(n);
+  }
+  const bigCore = Math.pow(0.03 * w, 2);
+  const cores = parts.map(() => new Set());
+  for (let k = 0; k < N; k++)
+    if (id[k] && coreId[k] && coreSize[coreId[k] - 1] >= bigCore)
+      cores[id[k] - 1].add(coreId[k]);
+  let split = 0;
+  const count = parts.length;
+  for (let i = 0; i < count; i++) {
+    if (parts[i].edge || cores[i].size < 2) continue;
+    const labelOf = new Map(
+      [...cores[i]].map((c, j) => [c, j ? parts.length + j : i + 1]),
+    );
+    for (let j = 1; j < cores[i].size; j++)
+      parts.push({
+        n: 0,
+        x0: w,
+        x1: 0,
+        y0: h,
+        y1: 0,
+        edge: false,
+        white: 0,
+        pale: 0,
+      });
+    split += cores[i].size - 1;
+    // Out from the cores through the part's seeds, a ring at a time.
+    const mine = i + 1;
+    let front = [];
+    for (let k = 0; k < N; k++)
+      if (id[k] === mine) {
+        if (labelOf.has(coreId[k])) {
+          id[k] = labelOf.get(coreId[k]);
+          front.push(k);
+        } else id[k] = -2;
+      }
+    while (front.length) {
+      const next = [];
+      for (const p of front) {
+        const x = p % w;
+        for (const q of [
+          x > 0 ? p - 1 : -1,
+          x < w - 1 ? p + 1 : -1,
+          p - w,
+          p + w,
+        ])
+          if (q >= 0 && q < N && id[q] === -2) {
+            id[q] = id[p];
+            next.push(q);
+          }
+      }
+      front = next;
+    }
+  }
+  if (split) {
+    for (const c of parts)
+      Object.assign(c, { n: 0, x0: w, x1: 0, y0: h, y1: 0, white: 0, pale: 0 });
+    for (let k = 0; k < N; k++) {
+      if (id[k] <= 0) continue;
+      const c = parts[id[k] - 1];
+      const x = k % w;
+      const y = (k - x) / w;
+      c.n++;
+      if (pale[k]) c.pale++;
+      if (lum[k] >= 246) c.white++;
+      if (x < c.x0) c.x0 = x;
+      if (x > c.x1) c.x1 = x;
+      if (y < c.y0) c.y0 = y;
+      if (y > c.y1) c.y1 = y;
+    }
+  }
+  // The part under a point: the nearest seed within 1 % of the width, as a
+  // point may fall on a line.
+  const partAt = ([px, py], ids) => {
+    const r = Math.max(3, Math.round(0.01 * w));
+    let best = 0;
+    let bestD = Infinity;
+    for (let y = Math.round(py) - r; y <= Math.round(py) + r; y++)
+      for (let x = Math.round(px) - r; x <= Math.round(px) + r; x++) {
+        if (x < 0 || y < 0 || x >= w || y >= h || ids[y * w + x] <= 0) continue;
+        const d = (x - px) ** 2 + (y - py) ** 2;
+        if (d < bestD) {
+          bestD = d;
+          best = ids[y * w + x];
+        }
+      }
+    return best;
+  };
   const ground = groundBand && !groundBand.perch ? groundBand : null;
   let under = 0;
   for (const c of parts) {
@@ -2600,6 +2745,16 @@ function personParts(img, groundBand, masses = null, colour = null) {
     ) {
       c.out = true;
       under++;
+    }
+  }
+  // A pocket the designer marks as air (--open) is background: it grows
+  // like the outside and joins no part.
+  let opened = 0;
+  for (const point of marks.open || []) {
+    const label = partAt(point, id);
+    if (label && !parts[label - 1].out) {
+      parts[label - 1].out = true;
+      opened++;
     }
   }
   for (let k = 0; k < N; k++) if (id[k] && parts[id[k] - 1].out) id[k] = -1;
@@ -2751,6 +2906,27 @@ function personParts(img, groundBand, masses = null, colour = null) {
     for (const p of run) id[p] = parts.length;
     strands++;
   }
+  // The parts under the --clothes points become one part, Clothes, its
+  // outline round all of them, so the clothing is one fill under its fold
+  // and seam lines and takes the clothing colour in Figma.
+  const dressed = new Set();
+  for (const point of marks.clothes || []) {
+    const label = partAt(point, id);
+    if (label) dressed.add(label);
+  }
+  if (dressed.size) {
+    const [first, ...rest] = [...dressed];
+    const c = parts[first - 1];
+    c.name = 'Clothes';
+    for (const label of rest) {
+      const o = parts[label - 1];
+      c.n += o.n;
+      c.white += o.white;
+      c.pale += o.pale;
+      o.gone = true;
+    }
+    for (let k = 0; k < N; k++) if (dressed.has(id[k])) id[k] = first;
+  }
   // Tint when most of its pale pixels are #EAEAF1-ish rather than white.
   for (const c of parts) c.tint = c.white < 0.5 * c.pale;
   // Each part becomes a path of its own, drawn from its outline here
@@ -2774,7 +2950,8 @@ function personParts(img, groundBand, masses = null, colour = null) {
   const shapes = [];
   for (const i of order) {
     const loops = partOutline(id, w, i + 1, box[i]);
-    if (loops.length) shapes.push({ tint: parts[i].tint, loops });
+    if (loops.length)
+      shapes.push({ tint: parts[i].tint, loops, name: parts[i].name || '' });
   }
   const whites = order.filter(i => !parts[i].tint).length;
   return {
@@ -2783,6 +2960,9 @@ function personParts(img, groundBand, masses = null, colour = null) {
     whites,
     tints: order.length - whites,
     under,
+    split,
+    opened,
+    clothes: dressed.size,
     merged,
     specks,
     hidden,
