@@ -195,12 +195,37 @@ params.ground = ground
 // fills (pass one). Animals get the plain line instead (simplify).
 
 params.features = features ? darkFeatures(img, params.size, groundBand) : [];
-// Animals take their ink masses from the opened-ink mask, not from the
-// colour trace's mean-width rule (inkMasses).
-const masses = animals ? inkMasses(img, ground) : null;
-params.inkFromMask = animals;
+// Animals and people take their ink masses from the opened-ink mask, not
+// from the colour trace's mean-width rule (inkMasses): the colour trace
+// keeps the lines that touch a mass as part of it, a band under every
+// stroke. A vehicle keeps the colour trace's ink, which names its windows.
+const person = !animals && !vehicle && !underlay;
+// People: the draft's colour areas (colourMasks), for the parts and the
+// colour pieces below, and so a mass does not take in a lavender sleeve.
+const colour = person ? colourMasks(img, params.palette) : null;
+const masses =
+  animals || person ? inkMasses(img, ground, person, colour) : null;
+params.inkFromMask = animals || person;
 params.inkMask = masses ? masses.file : '';
 params.inkMasses = masses ? masses.count : 0;
+// People: a shape per closed part, white or tint, in place of the colour
+// trace's paper (personParts), and colour only where the draft has a colour
+// area (colourAreas).
+const figureParts = person
+  ? personParts(img, findGround(img), masses && masses.keep, colour)
+  : null;
+params.parts = figureParts ? figureParts.shapes : [];
+params.partsPx = [img.w, img.h];
+params.partsLog = figureParts
+  ? `parts ${figureParts.whites} white, ${figureParts.tints} tint` +
+    (figureParts.merged ? `, ${figureParts.merged} pockets joined` : '') +
+    (figureParts.hidden ? `, ${figureParts.hidden} under ink dropped` : '') +
+    (figureParts.strands ? `, ${figureParts.strands} strands` : '') +
+    (figureParts.under ? `, ${figureParts.under} under a desk left open` : '')
+  : '';
+params.colourAreas = person
+  ? colourAreas(img, params.palette, colour, figureParts && figureParts.id)
+  : null;
 
 const jsx = `
 var P = ${JSON.stringify(params)};
@@ -295,23 +320,56 @@ if (slivers) cp = paths(cg, []);
 // Vehicles (P.windows): the share of an area's points that fall on a window
 // in the draft. A window's ink fill is named Window and a paper glint inside
 // one Glint, so the mode mapping gives them their roles.
-function onWindows(item) {
-  var M = P.windows, b = item.geometricBounds, poly = [], n = item.pathPoints.length, inside = 0, hits = 0, anchors = 0;
+function onWindows(item) { return onCells(item, P.windows, '1'); }
+// The share of an item's area on the cells of a cell map that hold a given
+// mark, judged by 8 × 8 points over each of its paths' boxes; an item too
+// thin for 4 points inside is judged by its anchors.
+function onCells(item, M, mark) {
+  var subs = item.typename === 'CompoundPathItem' ? item.pathItems : [item], inside = 0, hits = 0, anchors = 0, n = 0;
   var cell = function (a) {
     var gx = Math.floor(((a[0] - ab[0]) / (ab[2] - ab[0])) * M.n), gy = Math.floor(((ab[1] - a[1]) / (ab[1] - ab[3])) * M.n);
-    return gx >= 0 && gy >= 0 && gx < M.n && gy < M.n && M.cells.charAt(gy * M.n + gx) === '1';
+    return gx >= 0 && gy >= 0 && gx < M.n && gy < M.n && M.cells.charAt(gy * M.n + gx) === mark;
   };
-  for (var a0 = 0; a0 < n; a0++) { poly.push(item.pathPoints[a0].anchor); if (cell(poly[a0])) anchors++; }
-  for (var sy = 0; sy < 8; sy++)
-    for (var sx = 0; sx < 8; sx++) {
-      var pt = [b[0] + ((sx + 0.5) / 8) * (b[2] - b[0]), b[1] - ((sy + 0.5) / 8) * (b[1] - b[3])], hit = false;
-      for (var e = 0, f = poly.length - 1; e < poly.length; f = e++)
-        if ((poly[e][1] > pt[1]) !== (poly[f][1] > pt[1]) && pt[0] < ((poly[f][0] - poly[e][0]) * (pt[1] - poly[e][1])) / (poly[f][1] - poly[e][1]) + poly[e][0]) hit = !hit;
-      if (!hit) continue;
-      inside++;
-      if (cell(pt)) hits++;
-    }
+  for (var s1 = 0; s1 < subs.length; s1++) {
+    var one = subs[s1], b = one.geometricBounds, poly = [], m = one.pathPoints.length;
+    n += m;
+    for (var a0 = 0; a0 < m; a0++) { poly.push(one.pathPoints[a0].anchor); if (cell(poly[a0])) anchors++; }
+    for (var sy = 0; sy < 8; sy++)
+      for (var sx = 0; sx < 8; sx++) {
+        var pt = [b[0] + ((sx + 0.5) / 8) * (b[2] - b[0]), b[1] - ((sy + 0.5) / 8) * (b[1] - b[3])], hit = false;
+        for (var e = 0, f = poly.length - 1; e < poly.length; f = e++)
+          if ((poly[e][1] > pt[1]) !== (poly[f][1] > pt[1]) && pt[0] < ((poly[f][0] - poly[e][0]) * (pt[1] - poly[e][1])) / (poly[f][1] - poly[e][1]) + poly[e][0]) hit = !hit;
+        if (!hit) continue;
+        inside++;
+        if (cell(pt)) hits++;
+      }
+  }
   return inside >= 4 ? hits / inside : n ? anchors / n : 0;
+}
+// People (P.colourAreas): the parts are drawn in place of the colour
+// trace's paper and the ink masses in place of its ink, so both go, and a
+// colour piece stays only when most of it lies on a colour area of its own
+// role in the draft; the rest is the mid tone of a line's rim (the blue
+// along hands and cuffs). A compound goes whole and once: taking its
+// subpaths one by one leaves an empty, invalid compound behind.
+var offColour = 0;
+if (P.colourAreas) {
+  var gone = [], judged = [];
+  for (var i5 = 0; i5 < cp.length; i5++) {
+    var c5 = cp[i5];
+    if (!c5.filled) continue;
+    var k5 = nearest(c5.fillColor);
+    var w5 = c5.parent.typename === 'CompoundPathItem' ? c5.parent : c5, seen5 = false;
+    for (var i6 = 0; i6 < judged.length; i6++) if (judged[i6] === w5) seen5 = true;
+    if (seen5) continue;
+    judged.push(w5);
+    var mark5 = '';
+    for (var r5 = 0; r5 < P.colourAreas.roles.length; r5++) if (P.colourAreas.roles[r5] === k5) mark5 = String(r5);
+    if (k5 === 'paper' || k5 === 'ink') gone.push(w5);
+    else if (onCells(w5, P.colourAreas, mark5) < 0.5) { gone.push(w5); offColour++; }
+  }
+  for (var i7 = 0; i7 < gone.length; i7++) { try { gone[i7].remove(); dropped++; } catch (e7) {} }
+  if (gone.length) cp = paths(cg, []);
 }
 function nameWhole(item, label) { (item.parent.typename === 'CompoundPathItem' ? item.parent : item).name = label; }
 var windowFills = 0, glints = 0;
@@ -334,7 +392,7 @@ for (var i = cp.length - 1; i >= 0; i--) {
   // Print misregistration: colour shifts off its line; ink areas stay put.
   if (k !== 'ink') it.translate(P.shift[0], P.shift[1]);
 }
-log.push('colour areas kept ' + kept + ' (ink ' + inkAreas + '), dropped ' + dropped + (slivers ? ' (slivers ' + slivers + ')' : '') + (P.windows ? ', windows ' + windowFills + ', glints ' + glints : ''));
+log.push('colour areas kept ' + kept + ' (ink ' + inkAreas + '), dropped ' + dropped + (slivers ? ' (slivers ' + slivers + ')' : '') + (offColour ? ' (off colour ' + offColour + ')' : '') + (P.windows ? ', windows ' + windowFills + ', glints ' + glints : ''));
 
 // Line trace, on top: strokes only. Lines touch the wide ink areas, so a
 // fills trace would merge them into one filled region; the wide areas come
@@ -625,8 +683,9 @@ if (P.backdrop) {
   } else log.push('backdrop: no disc in the draft, none drawn');
 }
 
-// Ink masses (animals): wing and tail tips, a nose, a dark patch, traced from
-// the opened-ink mask with their feather gaps, on top of the other fills.
+// Ink masses (animals and people): wing and tail tips, a nose, a dark patch,
+// a person's hair or a dark chair, traced from the opened-ink mask, on top
+// of the other fills.
 if (P.inkMask) {
   var ip = fillLayerOf(doc).placedItems.add();
   ip.file = new File(P.inkMask);
@@ -642,6 +701,37 @@ if (P.inkMask) {
   var ips = paths(ig, []);
   for (var ik = 0; ik < ips.length; ik++) { ips[ik].filled = true; ips[ik].stroked = false; ips[ik].fillColor = rgb(P.palette.ink); }
   log.push('ink masses ' + P.inkMasses);
+}
+// People: the parts (personParts), white and tint, a shape each in one
+// group under the other fills, drawn from their outlines (partOutline) with
+// smooth points: each point's handles run parallel to its neighbours, a
+// sixth of the way to them (Catmull-Rom).
+function setLoop(item, flat) {
+  var sx = (ab[2] - ab[0]) / P.partsPx[0], sy = (ab[1] - ab[3]) / P.partsPx[1], a = [], n = flat.length / 2;
+  for (var i = 0; i < n; i++) a.push([ab[0] + flat[2 * i] * sx, ab[1] - flat[2 * i + 1] * sy]);
+  item.setEntirePath(a);
+  item.closed = true;
+  for (var j = 0; j < n; j++) {
+    var prev = a[(j - 1 + n) % n], next = a[(j + 1) % n], tx = (next[0] - prev[0]) / 6, ty = (next[1] - prev[1]) / 6, pp = item.pathPoints[j];
+    pp.rightDirection = [a[j][0] + tx, a[j][1] + ty];
+    pp.leftDirection = [a[j][0] - tx, a[j][1] - ty];
+    pp.pointType = PointType.SMOOTH;
+  }
+}
+if (P.parts.length) {
+  var partsGroup = fillLayerOf(doc).groupItems.add();
+  partsGroup.move(fillLayerOf(doc), ElementPlacement.PLACEATEND);
+  partsGroup.name = 'Parts';
+  for (var pi0 = 0; pi0 < P.parts.length; pi0++) {
+    var part = P.parts[pi0], colour = rgb(part.tint ? P.palette.tint : P.palette.paper), made = [];
+    if (part.loops.length === 1) { var one = partsGroup.pathItems.add(); setLoop(one, part.loops[0]); made.push(one); }
+    else {
+      var cpi = partsGroup.compoundPathItems.add();
+      for (var lp0 = 0; lp0 < part.loops.length; lp0++) { var sub = cpi.pathItems.add(); setLoop(sub, part.loops[lp0]); made.push(sub); }
+    }
+    for (var mk = 0; mk < made.length; mk++) { made[mk].filled = true; made[mk].stroked = false; made[mk].fillColor = colour; }
+  }
+  log.push(P.partsLog + ' (' + partsGroup.pageItems.length + ' shapes)');
 }
 function fillLayerOf(d) { for (var fl = 0; fl < d.layers.length; fl++) if (d.layers[fl].name === 'Fill') return d.layers[fl]; return d.layers[0]; }
 
@@ -761,7 +851,7 @@ __doc = null;
 return log.join(' | ');
 }
 var __result;
-try { __result = __pass(); } catch (e) { try { if (__doc) __doc.close(SaveOptions.DONOTSAVECHANGES); } catch (e2) {} throw e; }
+try { __result = __pass(); } catch (e) { try { if (__doc) __doc.close(SaveOptions.DONOTSAVECHANGES); } catch (e2) {} throw new Error(e.message + " (line " + e.line + ")"); }
 __result;
 `;
 
@@ -923,7 +1013,7 @@ __doc = null;
 return log.join(' | ');
 }
 var __result;
-try { __result = __pass(); } catch (e) { try { if (__doc) __doc.close(SaveOptions.DONOTSAVECHANGES); } catch (e2) {} throw e; }
+try { __result = __pass(); } catch (e) { try { if (__doc) __doc.close(SaveOptions.DONOTSAVECHANGES); } catch (e2) {} throw new Error(e.message + " (line " + e.line + ")"); }
 __result;
 `;
 
@@ -938,9 +1028,10 @@ function runJsx(code) {
     app,
   )} to do javascript (read POSIX file ${JSON.stringify(file)} as «class utf8»)
 end timeout`;
-  // Illustrator now and then fails a trace step with MRAP for no reason in
-  // the drawing; the pass has closed its document, so run it again, up to
-  // three times in all.
+  // Illustrator now and then fails a trace step with MRAP, or reports an
+  // object it just made as invalid, for no reason in the drawing (the same
+  // script runs through the next time); the pass has closed its document,
+  // so run it again, up to three times in all.
   for (let attempt = 1; ; attempt++) {
     try {
       return execFileSync('osascript', ['-e', script], {
@@ -948,10 +1039,16 @@ end timeout`;
         timeout: 1860000,
       }).trim();
     } catch (e) {
-      if (attempt >= 3 || !/MRAP/.test(String(e.stderr || e.message))) throw e;
+      const why = String(e.stderr || e.message);
+      if (attempt >= 3 || !/MRAP|Object is invalid/.test(why)) throw e;
       console.error(
-        `Illustrator failed (MRAP), attempt ${attempt} of 3: again`,
+        `Illustrator failed (${
+          /MRAP/.test(why) ? 'MRAP' : 'invalid object'
+        }), attempt ${attempt} of 3: again`,
       );
+      // A pause first: right after a failure Illustrator often fails the
+      // next attempt's first trace too.
+      execFileSync('sleep', [String(5 * attempt)]);
     }
   }
 }
@@ -2190,16 +2287,17 @@ function writePng(w, h, rows, name) {
   return out;
 }
 
-// Solid ink masses (animals): wing and tail tips, hooves, a dark patch. The
-// colour trace keeps an ink area only when its mean width is large, and
-// white streaks between feathers pull that under, so a feathered tip goes.
-// Here the ink is opened instead — what survives an erosion of about 4 px
+// Solid ink masses (animals and people): wing and tail tips, hooves, a dark
+// patch, hair. The colour trace keeps an ink area only when its mean width
+// is large, and white streaks between feathers pull that under, so a
+// feathered tip goes; on a person it keeps the lines that touch the hair as
+// part of it, a band under every stroke. Here the ink is opened instead — what survives an erosion of about 4 px
 // at 1024, grown back and cut with the ink again so the gaps stay white —
 // and pieces of at least 400 px at 1024 are kept. Lines are too thin to
 // survive, and so do pieces lying wholly in the band of the ground line (a
 // thick dash), which the ground step replaces. Returns the mask's file and
 // how many masses it holds, or null.
-function inkMasses({ w, h, lum }, ground) {
+function inkMasses({ w, h, lum }, ground, person = false, colour = null) {
   const ink = new Uint8Array(w * h);
   for (let k = 0; k < w * h; k++) ink[k] = lum[k] < 110 ? 1 : 0;
   const r = Math.max(2, Math.round(0.004 * w));
@@ -2214,7 +2312,9 @@ function inkMasses({ w, h, lum }, ground) {
   for (let k = 0; k < w * h; k++) mass[k] = near[k] && ink[k] ? 1 : 0;
   const keep = new Uint8Array(w * h);
   const seen = new Uint8Array(w * h);
-  const min = (400 / (1024 * 1024)) * w * h;
+  // People keep smaller masses: a suitcase wheel's solid core is about
+  // 300 px at 1024 once its rim is opened away.
+  const min = ((person ? 150 : 400) / (1024 * 1024)) * w * h;
   let count = 0;
   for (let k = 0; k < w * h; k++) {
     if (!mass[k] || seen[k]) continue;
@@ -2235,6 +2335,15 @@ function inkMasses({ w, h, lum }, ground) {
         }
     }
     if (part.length < min) continue;
+    // A person's line drawn just thick enough to survive the opening (a desk
+    // leg 9 px wide at 1024) leaves a core one pixel across and came back as
+    // a dark block at the leg's top; pens and a suitcase's wheels keep a
+    // core of (0.006 w)² or more.
+    if (person) {
+      let solid = 0;
+      for (const p of part) if (core[p]) solid++;
+      if (solid < Math.pow(0.006 * w, 2)) continue;
+    }
     if (ground) {
       let y0 = h;
       let y1 = 0;
@@ -2249,7 +2358,616 @@ function inkMasses({ w, h, lum }, ground) {
     count++;
     for (const p of part) keep[p] = 1;
   }
-  return count ? { file: savePng(w, h, k => keep[k], 'ink.png'), count } : null;
+  if (count && person) solidMasses(keep, w, h, lum, colour);
+  return count
+    ? { file: savePng(w, h, k => keep[k], 'ink.png'), count, keep }
+    : null;
+}
+
+// People: hair and a dark chair or coat are one solid shape in the library.
+// The draft nicks their edges and leaves light strands in them, which trace
+// as notches and odd bits (a designer asked for smoother hair with nothing
+// stray over the shoulder). A closing of 0.002 w fills the nicks, and a
+// light hole inside a mass that is thin (mean width under 0.008 w) or small
+// (under (0.012 w)²) is filled; a wider hole, a pocket or a button, stays,
+// and so does anything near-white (luminance 235 or more): the gap between
+// a headset band and the hair, the white middle of an earpiece.
+// A highlight strip in a mass (luminance 110–200, as down a chair's edge)
+// is taken in too, up to 0.008 w from the mass: the line beside it is darker
+// and stops it, a part's paper is lighter, and a colour area (a lavender
+// sleeve against the hair) is left to its colour.
+function solidMasses(keep, w, h, lum, colour = null) {
+  const r = Math.max(1, Math.round(0.002 * w));
+  const closed = erode(dilate(keep, w, h, r), w, h, r);
+  // Near-white stays: it is a gap the draft draws on purpose (between a
+  // headset band and the hair), not a nick.
+  for (let k = 0; k < w * h; k++)
+    keep[k] = keep[k] || (closed[k] && lum[k] < 235) ? 1 : 0;
+  const coloured = new Uint8Array(w * h);
+  if (colour)
+    for (const m of Object.values(colour))
+      for (let k = 0; k < w * h; k++) if (m[k]) coloured[k] = 1;
+  let front = [];
+  for (let k = 0; k < w * h; k++) if (keep[k]) front.push(k);
+  for (let d = 0; d < Math.round(0.008 * w) && front.length; d++) {
+    const grown = [];
+    for (const p of front) {
+      const x = p % w;
+      for (const q of [
+        x > 0 ? p - 1 : -1,
+        x < w - 1 ? p + 1 : -1,
+        p - w,
+        p + w,
+      ])
+        if (
+          q >= 0 &&
+          q < w * h &&
+          !keep[q] &&
+          !coloured[q] &&
+          lum[q] >= 110 &&
+          lum[q] < 200
+        ) {
+          keep[q] = 1;
+          grown.push(q);
+        }
+    }
+    front = grown;
+  }
+  // Then 2 px into anything darker than paper, so a mass meets the outline
+  // beside it under that outline's stroke: too short to bring back a band
+  // along a line that meets the mass.
+  for (let d = 0; d < 2; d++) {
+    const grow = [];
+    for (let k = 0; k < w * h; k++) {
+      if (keep[k] || coloured[k] || lum[k] >= 200) continue;
+      const x = k % w;
+      if (
+        (x > 0 && keep[k - 1]) ||
+        (x < w - 1 && keep[k + 1]) ||
+        (k >= w && keep[k - w]) ||
+        (k < w * h - w && keep[k + w])
+      )
+        grow.push(k);
+    }
+    for (const k of grow) keep[k] = 1;
+  }
+  // A white gap left between two masses (a headset band and the hair), at
+  // most 4 px across, is widened by 1 px on each side, so Image Trace does
+  // not close it. A mass's edge against open white (the hair against the
+  // background) stays where it is.
+  const carve = [];
+  for (let k = 0; k < w * h; k++) {
+    if (!keep[k]) continue;
+    const x = k % w;
+    const y = (k - x) / w;
+    for (const [dx, dy] of [
+      [-1, 0],
+      [1, 0],
+      [0, -1],
+      [0, 1],
+    ]) {
+      const qx = x + dx;
+      const qy = y + dy;
+      if (qx < 0 || qy < 0 || qx >= w || qy >= h) continue;
+      const q = qy * w + qx;
+      if (keep[q] || lum[q] < 235) continue;
+      let across = false;
+      for (let t = 2; t <= 5 && !across; t++) {
+        const tx = x + t * dx;
+        const ty = y + t * dy;
+        if (tx < 0 || ty < 0 || tx >= w || ty >= h) break;
+        if (keep[ty * w + tx]) across = true;
+      }
+      if (across) {
+        carve.push(k);
+        break;
+      }
+    }
+  }
+  for (const k of carve) keep[k] = 0;
+  const seen = new Uint8Array(w * h);
+  for (let k = 0; k < w * h; k++) {
+    if (keep[k] || seen[k]) continue;
+    const part = [k];
+    seen[k] = 1;
+    let edge = false;
+    let rim = 0;
+    let white = 0;
+    for (let i = 0; i < part.length; i++) {
+      const p = part[i];
+      const x = p % w;
+      const y = (p - x) / w;
+      if (x === 0 || y === 0 || x === w - 1 || y === h - 1) edge = true;
+      if (lum[p] >= 235) white++;
+      let onRim = false;
+      for (const q of [
+        x > 0 ? p - 1 : -1,
+        x < w - 1 ? p + 1 : -1,
+        y > 0 ? p - w : -1,
+        y < h - 1 ? p + w : -1,
+      ]) {
+        if (q < 0) continue;
+        if (keep[q]) onRim = true;
+        else if (!seen[q]) {
+          seen[q] = 1;
+          part.push(q);
+        }
+      }
+      if (onRim) rim++;
+    }
+    // A white hole is drawn (the white middle of an earpiece); a light
+    // strand of shading is not.
+    if (edge || white >= 0.5 * part.length) continue;
+    const thin = (2 * part.length) / Math.max(1, rim) < 0.008 * w;
+    if (thin || part.length < Math.pow(0.012 * w, 2))
+      for (const p of part) keep[p] = 1;
+  }
+}
+
+// People: one shape per closed part of the figure, as the library draws a
+// person: face and neck, each hand, the shirt, the cup, the book, the desk
+// top, not one white under everything (a designer asked for this). A part
+// is a pale area of the draft (luminance at least 200, nearly grey, so the
+// light blue-grey shading on a hand counts as the hand), with any colour
+// area in it, closed by its lines. It is filled white, or Tint when most of it is #EAEAF1-ish (a book,
+// a pale cover). The outside and the space under a desk or bench (a wide,
+// flat area on the ground line, closed only by legs and the ground) stay
+// unfilled: the library leaves the space under a bench open. Every part,
+// and the outside, grows into the lines around it at once, so neighbours
+// meet in the middle of a line, under its stroke. A pocket under
+// (0.024 w)² (between two fingers, inside a lock of hair) then joins the
+// part it shares most line with, so a hand is one shape; a pocket with no
+// part beside it stays a part of its own unless it is a speck. Returns the
+// parts' masks with whether each is tint, the label of every pixel (0 none,
+// -1 outside, else a part) and the counts.
+function personParts(img, groundBand, masses = null, colour = null) {
+  const { w, h, lum, rgb } = img;
+  const N = w * h;
+  const pale = new Uint8Array(N);
+  const area = new Uint8Array(N);
+  for (let k = 0; k < N; k++) {
+    const r = rgb[3 * k];
+    const g = rgb[3 * k + 1];
+    const b = rgb[3 * k + 2];
+    pale[k] =
+      lum[k] >= 200 && Math.max(r, g, b) - Math.min(r, g, b) <= 32 ? 1 : 0;
+    area[k] = pale[k];
+  }
+  // A colour area (the peach screen) is part of its object: the paper goes
+  // under its colour, as in the library, so the colour's hand-made offset
+  // from its line shows paper, not the background.
+  if (colour)
+    for (const m of Object.values(colour))
+      for (let k = 0; k < N; k++) if (m[k]) area[k] = 1;
+  // Seeds 1 px clear of the lines, so a hairline gap does not join parts.
+  // (2 px loses the seeds of thin pockets, between fingers, and leaves the
+  // middle of a thick line out of reach.)
+  const seed = erode(area, w, h, 1);
+  const id = new Int32Array(N);
+  const parts = [];
+  for (let k = 0; k < N; k++) {
+    if (!seed[k] || id[k]) continue;
+    const c = {
+      n: 0,
+      x0: w,
+      x1: 0,
+      y0: h,
+      y1: 0,
+      edge: false,
+      white: 0,
+      pale: 0,
+    };
+    const stack = [k];
+    const label = parts.length + 1;
+    id[k] = label;
+    while (stack.length) {
+      const p = stack.pop();
+      const x = p % w;
+      const y = (p - x) / w;
+      c.n++;
+      if (pale[p]) c.pale++;
+      if (lum[p] >= 246) c.white++;
+      if (x < c.x0) c.x0 = x;
+      if (x > c.x1) c.x1 = x;
+      if (y < c.y0) c.y0 = y;
+      if (y > c.y1) c.y1 = y;
+      // The seeds stop 1 px short of the image edge (erode).
+      if (x <= 2 || y <= 2 || x >= w - 3 || y >= h - 3) c.edge = true;
+      for (const q of [
+        x > 0 ? p - 1 : -1,
+        x < w - 1 ? p + 1 : -1,
+        y > 0 ? p - w : -1,
+        y < h - 1 ? p + w : -1,
+      ])
+        if (q >= 0 && seed[q] && !id[q]) {
+          id[q] = label;
+          stack.push(q);
+        }
+    }
+    parts.push(c);
+  }
+  const ground = groundBand && !groundBand.perch ? groundBand : null;
+  let under = 0;
+  for (const c of parts) {
+    const wide = c.x1 - c.x0;
+    c.out = c.edge;
+    if (
+      !c.out &&
+      ground &&
+      c.y1 >= ground.top - 0.012 * h &&
+      wide >= 0.2 * w &&
+      wide >= 2 * (c.y1 - c.y0)
+    ) {
+      c.out = true;
+      under++;
+    }
+  }
+  for (let k = 0; k < N; k++) if (id[k] && parts[id[k] - 1].out) id[k] = -1;
+  const reach = Math.max(4, Math.round(0.008 * w));
+  let front = [];
+  for (let k = 0; k < N; k++) if (id[k]) front.push(k);
+  for (let d = 0; d < reach && front.length; d++) {
+    const grown = [];
+    for (const p of front) {
+      const x = p % w;
+      for (const q of [
+        x > 0 ? p - 1 : -1,
+        x < w - 1 ? p + 1 : -1,
+        p - w,
+        p + w,
+      ])
+        if (q >= 0 && q < N && !id[q]) {
+          id[q] = id[p];
+          grown.push(q);
+        }
+    }
+    front = grown;
+  }
+  // Pixel pairs across part boundaries, per pair of parts (i, j).
+  const pairsOf = near => {
+    const pairs = new Map();
+    for (let y = 0; y < h; y++)
+      for (let x = 0; x < w; x++) {
+        const a = id[y * w + x];
+        if (a <= 0) continue;
+        for (let dy = 0; dy <= near; dy++)
+          for (let dx = -near; dx <= near; dx++) {
+            if (dy === 0 && dx <= 0) continue;
+            const xx = x + dx;
+            const yy = y + dy;
+            if (xx < 0 || xx >= w || yy >= h) continue;
+            const b = id[yy * w + xx];
+            if (b <= 0 || b === a) continue;
+            const key = a < b ? `${a - 1},${b - 1}` : `${b - 1},${a - 1}`;
+            pairs.set(key, (pairs.get(key) || 0) + 1);
+          }
+      }
+    return [...pairs].map(([key, n]) => [...key.split(',').map(Number), n]);
+  };
+  // Pockets join a neighbour, smallest first, so a chain of finger gaps
+  // ends in the hand.
+  const pocket = Math.pow(0.024 * w, 2);
+  const into = parts.map((c, i) => i);
+  const root = i => (into[i] === i ? i : (into[i] = root(into[i])));
+  const shared = pairsOf(1);
+  const small = parts
+    .map((c, i) => i)
+    .filter(i => !parts[i].out && parts[i].n < pocket)
+    .sort((i, j) => parts[i].n - parts[j].n);
+  let merged = 0;
+  let specks = 0;
+  // A pocket's own tone (white or tint, from its pale pixels) picks among
+  // its neighbours first, so a pale-grey corner of a suitcase joins the
+  // case, not the white beside it.
+  const toneOf = c => (c.pale ? c.white >= 0.5 * c.pale : null);
+  for (const i of small) {
+    const best = new Map();
+    for (const [a, b, n] of shared) {
+      const other = a === i ? b : b === i ? a : -1;
+      if (other < 0 || parts[other].out) continue;
+      const r = root(other);
+      if (r !== i) best.set(r, (best.get(r) || 0) + n);
+    }
+    const mine = toneOf(parts[i]);
+    const target = [...best].sort((u, v) => {
+      const su = mine !== null && toneOf(parts[u[0]]) === mine ? 1 : 0;
+      const sv = mine !== null && toneOf(parts[v[0]]) === mine ? 1 : 0;
+      return sv - su || v[1] - u[1];
+    })[0];
+    if (target) {
+      into[i] = target[0];
+      const t = parts[target[0]];
+      t.n += parts[i].n;
+      t.white += parts[i].white;
+      t.pale += parts[i].pale;
+      parts[i].gone = true;
+      merged++;
+    } else if (parts[i].n < 0.00004 * N) {
+      parts[i].out = true;
+      specks++;
+    }
+  }
+  for (let k = 0; k < N; k++) {
+    if (id[k] <= 0) continue;
+    const r = root(id[k] - 1);
+    id[k] = parts[r].out ? 0 : r + 1;
+  }
+  // A part the ink masses cover (a light strand the mass took in) would be
+  // a shape nobody sees: it goes. Judged on its own pale pixels, not on
+  // what it grew into, so a white headset band between two masses stays.
+  let hidden = 0;
+  if (masses) {
+    const covered = new Float64Array(parts.length);
+    const all = new Float64Array(parts.length);
+    for (let k = 0; k < N; k++) {
+      if (id[k] <= 0 || !seed[k]) continue;
+      all[id[k] - 1]++;
+      if (masses[k]) covered[id[k] - 1]++;
+    }
+    parts.forEach((c, i) => {
+      if (all[i] && covered[i] >= 0.8 * all[i]) {
+        c.out = true;
+        hidden++;
+      }
+    });
+    for (let k = 0; k < N; k++)
+      if (id[k] > 0 && parts[id[k] - 1].out) id[k] = 0;
+  }
+  // Pale pixels no part reached: a white strand drawn in the hair, too thin
+  // to seed a part, left as a gap in the ink masses. Each enclosed run
+  // (touching neither the outside nor the edge) becomes a part of its own,
+  // so the strand stays white in dark mode instead of showing the
+  // background.
+  let strands = 0;
+  const seen = new Uint8Array(N);
+  for (let k = 0; k < N; k++) {
+    if (!pale[k] || id[k] || seen[k]) continue;
+    const run = [k];
+    seen[k] = 1;
+    let open = false;
+    let white = 0;
+    for (let i = 0; i < run.length; i++) {
+      const p = run[i];
+      const x = p % w;
+      const y = (p - x) / w;
+      if (x === 0 || y === 0 || x === w - 1 || y === h - 1) open = true;
+      if (lum[p] >= 246) white++;
+      for (const q of [
+        x > 0 ? p - 1 : -1,
+        x < w - 1 ? p + 1 : -1,
+        y > 0 ? p - w : -1,
+        y < h - 1 ? p + w : -1,
+      ]) {
+        if (q < 0) continue;
+        if (id[q] < 0) open = true;
+        else if (pale[q] && !id[q] && !seen[q]) {
+          seen[q] = 1;
+          run.push(q);
+        }
+      }
+    }
+    if (open || run.length < 6) continue;
+    parts.push({ n: run.length, pale: run.length, white, strand: true });
+    for (const p of run) id[p] = parts.length;
+    strands++;
+  }
+  // Tint when most of its pale pixels are #EAEAF1-ish rather than white.
+  for (const c of parts) c.tint = c.white < 0.5 * c.pale;
+  // Each part becomes a path of its own, drawn from its outline here
+  // (partOutline): Image Trace would join parts that meet under a line, and
+  // tracing a mask per part fails now and then in Illustrator (MRAP).
+  const order = parts
+    .map((c, i) => i)
+    .filter(i => !parts[i].out && !parts[i].gone)
+    .sort((i, j) => parts[j].n - parts[i].n);
+  const box = parts.map(() => [w, h, -1, -1]);
+  for (let k = 0; k < N; k++) {
+    if (id[k] <= 0) continue;
+    const bx = box[id[k] - 1];
+    const x = k % w;
+    const y = (k - x) / w;
+    if (x < bx[0]) bx[0] = x;
+    if (y < bx[1]) bx[1] = y;
+    if (x > bx[2]) bx[2] = x;
+    if (y > bx[3]) bx[3] = y;
+  }
+  const shapes = [];
+  for (const i of order) {
+    const loops = partOutline(id, w, i + 1, box[i]);
+    if (loops.length) shapes.push({ tint: parts[i].tint, loops });
+  }
+  const whites = order.filter(i => !parts[i].tint).length;
+  return {
+    id,
+    shapes,
+    whites,
+    tints: order.length - whites,
+    under,
+    merged,
+    specks,
+    hidden,
+    strands,
+  };
+}
+
+// A part's outline: its boundary followed along pixel edges (the part on
+// the right, so outer loops run clockwise on screen and holes the other
+// way, which makes the holes in a compound path), turning right where two
+// corners touch, then thinned to the corners that stay more than 1 px from
+// a straight run (Douglas–Peucker). Returns the loops as flat [x, y, …]
+// lists in pixels; pass one rounds them into smooth curves.
+function partOutline(id, w, label, [x0, y0, x1, y1]) {
+  const inside = (x, y) =>
+    x >= x0 && x <= x1 && y >= y0 && y <= y1 && id[y * w + x] === label;
+  const W = x1 - x0 + 2;
+  const key = (x, y) => (y - y0) * W + (x - x0);
+  const out = new Map();
+  const edges = [];
+  const add = (sx, sy, ex, ey) => {
+    const k = key(sx, sy);
+    if (!out.has(k)) out.set(k, []);
+    out.get(k).push(edges.length);
+    edges.push([sx, sy, ex, ey]);
+  };
+  for (let y = y0; y <= y1; y++)
+    for (let x = x0; x <= x1; x++) {
+      if (!inside(x, y)) continue;
+      if (!inside(x, y - 1)) add(x, y, x + 1, y);
+      if (!inside(x + 1, y)) add(x + 1, y, x + 1, y + 1);
+      if (!inside(x, y + 1)) add(x + 1, y + 1, x, y + 1);
+      if (!inside(x - 1, y)) add(x, y + 1, x, y);
+    }
+  const used = new Uint8Array(edges.length);
+  const loops = [];
+  for (let e0 = 0; e0 < edges.length; e0++) {
+    if (used[e0]) continue;
+    const pts = [];
+    let e = e0;
+    while (!used[e]) {
+      used[e] = 1;
+      const [sx, sy, ex, ey] = edges[e];
+      pts.push([sx, sy]);
+      const next = (out.get(key(ex, ey)) || []).filter(n => !used[n]);
+      if (!next.length) break;
+      if (next.length > 1) {
+        const dx = ex - sx;
+        const dy = ey - sy;
+        next.sort((a, b) => {
+          const turn = n =>
+            dx * (edges[n][3] - edges[n][1]) - dy * (edges[n][2] - edges[n][0]);
+          return turn(b) - turn(a);
+        });
+      }
+      e = next[0];
+    }
+    if (pts.length < 8) continue;
+    // Corners only: drop points in the middle of a straight run.
+    const corners = pts.filter((p, i) => {
+      const a = pts[(i - 1 + pts.length) % pts.length];
+      const b = pts[(i + 1) % pts.length];
+      return (p[0] - a[0]) * (b[1] - p[1]) !== (p[1] - a[1]) * (b[0] - p[0]);
+    });
+    const kept = simplifyLoop(corners, 1);
+    if (kept.length >= 3) loops.push(kept.flat());
+  }
+  return loops;
+}
+
+// Douglas–Peucker on a closed loop, split at its two most distant points.
+function simplifyLoop(pts, tol) {
+  if (pts.length < 4) return pts;
+  let far = 0;
+  let best = -1;
+  for (let i = 1; i < pts.length; i++) {
+    const d = (pts[i][0] - pts[0][0]) ** 2 + (pts[i][1] - pts[0][1]) ** 2;
+    if (d > best) {
+      best = d;
+      far = i;
+    }
+  }
+  const run = (from, to) => {
+    const seq = [];
+    for (let i = from; ; i = (i + 1) % pts.length) {
+      seq.push(pts[i]);
+      if (i === to) break;
+    }
+    const keep = new Uint8Array(seq.length);
+    keep[0] = keep[seq.length - 1] = 1;
+    const stack = [[0, seq.length - 1]];
+    while (stack.length) {
+      const [a, b] = stack.pop();
+      const [ax, ay] = seq[a];
+      const [bx, by] = seq[b];
+      const len = Math.hypot(bx - ax, by - ay) || 1;
+      let worst = -1;
+      let at = -1;
+      for (let i = a + 1; i < b; i++) {
+        const d =
+          Math.abs(
+            (bx - ax) * (ay - seq[i][1]) - (ax - seq[i][0]) * (by - ay),
+          ) / len;
+        if (d > worst) {
+          worst = d;
+          at = i;
+        }
+      }
+      if (worst > tol) {
+        keep[at] = 1;
+        stack.push([a, at], [at, b]);
+      }
+    }
+    return seq.filter((p, i) => keep[i]);
+  };
+  const first = run(0, far);
+  const second = run(far, 0);
+  return first.concat(second.slice(1, -1));
+}
+
+// People: where the draft has a colour area of its own, as against the
+// anti-aliased rim of a line, whose mid tones the colour trace reads as
+// lavender or #9EA0BD and keeps as thin blue pieces along hands and cuffs
+// (a designer asked for white hands, without blue shading). A pixel counts
+// for the role whose palette colour is nearest; the masks of the rim's own
+// tones (lavender, #9EA0BD, tint) are opened by 0.004 w, so line-thin rims
+// go. Navy and white never mix to peach or coral, so those keep thin areas
+// too (a headset band). Returns a mask per colour role.
+function colourMasks({ w, h, rgb }, palette) {
+  const roles = Object.entries(palette);
+  const N = w * h;
+  const role = new Uint8Array(N);
+  for (let k = 0; k < N; k++) {
+    let best = 0;
+    let bd = Infinity;
+    for (let i = 0; i < roles.length; i++) {
+      const c = roles[i][1];
+      const d =
+        (rgb[3 * k] - c[0]) ** 2 +
+        (rgb[3 * k + 1] - c[1]) ** 2 +
+        (rgb[3 * k + 2] - c[2]) ** 2;
+      if (d < bd) {
+        bd = d;
+        best = i;
+      }
+    }
+    role[k] = best;
+  }
+  const r = Math.max(2, Math.round(0.004 * w));
+  const masks = {};
+  roles.forEach(([name], i) => {
+    if (name === 'ink' || name === 'paper') return;
+    const mask = new Uint8Array(N);
+    for (let k = 0; k < N; k++) mask[k] = role[k] === i ? 1 : 0;
+    const rimTone = name === 'lavender' || name === 'line2' || name === 'tint';
+    const opened = rimTone ? dilate(erode(mask, w, h, r), w, h, r) : mask;
+    for (let k = 0; k < N; k++) mask[k] = mask[k] && opened[k] ? 1 : 0;
+    masks[name] = mask;
+  });
+  return masks;
+}
+
+// The colour masks as a cell map for pass one: a colour piece of the colour
+// trace stays when most of it lies on cells of its own role (a cell holds
+// the role's index in the palette, 0 for none: ink is index 0 and never
+// marked). Pale tint inside a part is the part's, not a piece's.
+function colourAreas({ w, h }, palette, masks, partId, n = 128) {
+  const roles = Object.keys(palette);
+  const cells = new Array(n * n).fill('0');
+  const found = {};
+  roles.forEach((name, i) => {
+    const mask = masks[name];
+    if (!mask) return;
+    for (let k = 0; k < w * h; k++) {
+      if (!mask[k] || (name === 'tint' && partId && partId[k] > 0)) continue;
+      const x = k % w;
+      const y = (k - x) / w;
+      const cell = Math.floor((y * n) / h) * n + Math.floor((x * n) / w);
+      if (cells[cell] === '0') {
+        cells[cell] = String(i);
+        found[name] = (found[name] || 0) + 1;
+      }
+    }
+  });
+  return { n, cells: cells.join(''), roles, found };
 }
 
 // A vehicle's windows in the draft: solid dark areas left once the ink is
