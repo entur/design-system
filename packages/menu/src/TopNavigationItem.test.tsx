@@ -33,25 +33,21 @@ test('provides a link that can be activated with Enter and the mouse', async () 
   expect(onClick).toHaveBeenCalledTimes(2);
 });
 
-// Bug: active sets only a CSS class, leaving the current page unannounced.
-test.failing(
-  'marks the active link as the current page and clears it on rerender',
-  () => {
-    const { rerender } = render(
-      <TopNavigationItem href="/journeys" active>
-        Journeys
-      </TopNavigationItem>,
-    );
-    const link = screen.getByRole('link', { name: 'Journeys' });
-    expect(link).toHaveAttribute('aria-current', 'page');
-    rerender(
-      <TopNavigationItem href="/journeys" active={false}>
-        Journeys
-      </TopNavigationItem>,
-    );
-    expect(link).not.toHaveAttribute('aria-current');
-  },
-);
+test('marks the active link as the current page and clears it on rerender', () => {
+  const { rerender } = render(
+    <TopNavigationItem href="/journeys" active>
+      Journeys
+    </TopNavigationItem>,
+  );
+  const link = screen.getByRole('link', { name: 'Journeys' });
+  expect(link).toHaveAttribute('aria-current', 'page');
+  rerender(
+    <TopNavigationItem href="/journeys" active={false}>
+      Journeys
+    </TopNavigationItem>,
+  );
+  expect(link).not.toHaveAttribute('aria-current');
+});
 
 test('applies the active modifier only while active', () => {
   const { rerender } = render(

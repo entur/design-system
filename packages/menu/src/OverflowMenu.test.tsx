@@ -77,6 +77,21 @@ test('navigates with arrows, Home and End, skipping disabled actions', async () 
   expect(screen.getByRole('button', { name: 'åpne valgmeny' })).toHaveFocus();
 });
 
+test('does not mark the highlighted menuitem as selected', async () => {
+  const user = userEvent.setup();
+  render(
+    <OverflowMenu>
+      <OverflowMenuItem>Archive</OverflowMenuItem>
+    </OverflowMenu>,
+  );
+
+  await user.tab();
+  await user.keyboard('{Enter}');
+  const item = screen.getByRole('menuitem', { name: 'Archive' });
+  await waitFor(() => expect(item).toHaveFocus());
+  expect(item).not.toHaveAttribute('aria-selected');
+});
+
 test('uses typeahead and Enter to select an action', async () => {
   const user = userEvent.setup();
   const onSelect = jest.fn();

@@ -4,7 +4,7 @@ import './TopNavigationItem.scss';
 import { PolymorphicComponentProps } from '@entur/utils';
 
 export type TopNavigationItemOwnProps = {
-  /** Om komponenten vises som valgt eller ikke
+  /** Om komponenten vises som valgt eller ikke. Setter aria-current="page"
    * @default false
    */
   active?: boolean;
@@ -40,6 +40,7 @@ export const TopNavigationItem = <
         className,
         { 'eds-top-navigation-item--active': active },
       ])}
+      aria-current={active ? 'page' : undefined}
       {...rest}
     />
   );

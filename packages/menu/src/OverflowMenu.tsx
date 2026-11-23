@@ -247,7 +247,6 @@ export const OverflowMenuItem = <C extends React.ElementType = 'button'>({
       role="menuitem"
       type={Element === 'button' ? 'button' : undefined}
       aria-disabled={disabled}
-      aria-selected={isHighlighted}
       {...getItemProps({
         onClick:
           isLink || disabled
