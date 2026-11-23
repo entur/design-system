@@ -45,6 +45,8 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
       readOnly = false,
       reduceClickArea,
       disableAnimation = false,
+      onClick,
+      onChange,
       ...rest
     },
     ref: React.Ref<HTMLInputElement>,
@@ -74,6 +76,16 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
           ref={mergeRefs(ref, inputRef)}
           checked={isControlled ? checked === true : undefined}
           disabled={disabled}
+          onClick={e => {
+            if (readOnly) {
+              e.preventDefault();
+              return;
+            }
+            onClick?.(e);
+          }}
+          onChange={e => {
+            if (!readOnly) onChange?.(e);
+          }}
           onKeyDown={e => {
             if (readOnly && (e.key === ' ' || e.key === 'Enter')) {
               e.preventDefault();

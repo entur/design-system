@@ -29,3 +29,10 @@ Typecheck job::
 The `Typecheck packages` job in the pull request workflow. It runs
 `yarn typecheck:packages` against the built packages, tests included, and is a
 required check for merging (see xref:adr/0002-typecheck-job.adoc[ADR 2]).
+
+Internal export::
+An export only other `@entur/*` packages should use. Its JSDoc starts with
+`Internal: only for @entur/* packages, no semver guarantee.` Its types are
+published, but it can change in any release (see
+xref:adr/0003-internal-exports.adoc[ADR 3]). Not the same as the `@internal`
+tag, which `stripInternal` removes from the published types.

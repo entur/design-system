@@ -1,5 +1,9 @@
 import React, { forwardRef, useId } from 'react';
-import { BaseFormControl, FeedbackAnnouncementProps } from '@entur/form';
+import {
+  BaseFormControl,
+  FeedbackAnnouncementProps,
+  useFeedbackDescription,
+} from '@entur/form';
 import { DownArrowIcon } from '@entur/icons';
 import { LoadingDots } from '@entur/loader';
 import { VariantType } from '@entur/utils';
@@ -87,6 +91,7 @@ export const NativeDropdown = forwardRef(
       variant,
       ariaAlertOnFeedback,
       feedbackProps,
+      'aria-describedby': ariaDescribedBy,
       ...rest
     }: NativeDropdownProps<ValueType>,
     ref: React.ForwardedRef<HTMLSelectElement>,
@@ -94,6 +99,13 @@ export const NativeDropdown = forwardRef(
     const { items: normalizedItems, loading } =
       useResolvedItems<ValueType>(items);
     const nativeDropdownId = `eds-dropdown-native${useId()}`;
+    const { feedbackId, 'aria-describedby': describedBy } =
+      useFeedbackDescription({
+        feedback,
+        variant,
+        feedbackProps,
+        'aria-describedby': ariaDescribedBy,
+      });
 
     return (
       <BaseFormControl
@@ -102,6 +114,7 @@ export const NativeDropdown = forwardRef(
         prepend={prepend}
         ariaAlertOnFeedback={ariaAlertOnFeedback}
         feedbackProps={feedbackProps}
+        feedbackId={feedbackId}
         append={
           <FieldAppend
             hidden={disabled || readOnly}
@@ -121,6 +134,7 @@ export const NativeDropdown = forwardRef(
         <select
           aria-invalid={variant === 'negative' || variant === error}
           aria-labelledby={nativeDropdownId}
+          aria-describedby={describedBy}
           aria-busy={loading}
           className="eds-form-control eds-dropdown--native"
           disabled={disabled || readOnly}

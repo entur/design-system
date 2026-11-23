@@ -236,6 +236,8 @@ export const DatePicker = <DateType extends DateValue>({
         {...fieldProps}
         // We don't use handleOnChange here since it's handled internally by DateField
         {...rest}
+        // react-aria already merges a consumer aria-describedby into fieldProps
+        aria-describedby={fieldProps['aria-describedby']}
         append={
           !disabled &&
           !readOnly && (

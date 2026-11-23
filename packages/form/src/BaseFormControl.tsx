@@ -9,6 +9,7 @@ import { IconButton } from '@entur/button';
 import { FeedbackText } from './FeedbackText';
 import { InputGroupContextProvider } from './InputGroupContext';
 import { InputGroupLabel } from './InputGroupLabel';
+import { isFeedbackShown } from './useFeedbackDescription';
 import { useVariant } from './VariantProvider';
 
 import './BaseFormControl.scss';
@@ -70,6 +71,9 @@ export type BaseFormControlProps = React.HTMLAttributes<HTMLDivElement> &
     labelId: string;
     /** Varselmelding, som vil komme under form-komponenten */
     feedback?: string;
+    /** ID som settes på feedback-teksten, slik at skjemafeltet kan peke på
+     * den med aria-describedby */
+    feedbackId?: string;
     /** Om inputfeltet er fylt med data. Brukes for plassering av label */
     isFilled?: boolean;
     /**Ekstra props som sendes til label */
@@ -110,6 +114,7 @@ export const BaseFormControl = React.forwardRef<
       labelTooltipButtonAriaLabel = `Klikk for tilleggsinfo om ${label}-feltet`,
       labelTooltipPlacement = 'top',
       feedback,
+      feedbackId,
       labelId,
       labelProps,
       style,
@@ -143,7 +148,7 @@ export const BaseFormControl = React.forwardRef<
       (feedbackAriaLive !== undefined ? undefined : defaultFeedbackRole);
     const isLiveRegion =
       feedbackRole !== undefined || feedbackAriaLive !== undefined;
-    const showFeedback = Boolean(feedback && currentVariant);
+    const showFeedback = isFeedbackShown(feedback, currentVariant);
 
     return (
       <InputGroupContextProvider>
@@ -226,6 +231,7 @@ export const BaseFormControl = React.forwardRef<
               role={feedbackRole}
               aria-live={feedbackAriaLive}
               {...restFeedbackProps}
+              id={feedbackId ?? restFeedbackProps.id}
             >
               {showFeedback ? feedback : undefined}
             </FeedbackText>
