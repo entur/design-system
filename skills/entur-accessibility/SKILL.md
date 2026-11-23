@@ -28,6 +28,15 @@ All `@entur/*` interactive components provide out of the box:
 
 Use the components instead of building custom alternatives — doing so correctly requires replicating all of the above.
 
+### Known errors in the components
+
+Some components still have accessibility errors. They are listed by package on [Kjente UU-feil i publiserte pakker](https://entur.atlassian.net/wiki/spaces/DES/pages/3714908233/Kjente+UU-feil+i+publiserte+pakker) (Entur login required). An app that uses an affected component has the same error, so:
+
+- When a component behaves inaccessibly, check the list before working around it, and report new errors to the design system team.
+- When writing an app's accessibility statement (tilgjengelighetserklæring), include the errors the app inherits from the components it uses.
+
+If you can't open the page, give the developer the link.
+
 ---
 
 ## What you must provide
