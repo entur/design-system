@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { CalendarDate } from '@internationalized/date';
 import { axe, toHaveNoViolations } from 'jest-axe';
@@ -272,6 +272,24 @@ describe('RangeCalendar', () => {
     });
     await user.click(endCell);
 
+    expect(onChange).toHaveBeenCalled();
+  });
+
+  test('does not announce selectable outside month dates as disabled, and Space selects them', async () => {
+    const user = userEvent.setup();
+    const onChange = jest.fn();
+    const { container } = render(
+      <RangeCalendar {...defaultProps} showOutsideMonth onChange={onChange} />,
+    );
+    const outsideMonthCell = container.querySelector(
+      '.eds-datepicker__calendar__grid__cell--outside-month--visible',
+    );
+    expect(outsideMonthCell).not.toHaveAttribute('aria-disabled', 'true');
+
+    fireEvent.keyUp(outsideMonthCell!, { key: ' ' });
+    await user.click(
+      screen.getByRole('button', { name: /^Friday, 8 September 2023/ }),
+    );
     expect(onChange).toHaveBeenCalled();
   });
 

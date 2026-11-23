@@ -1,5 +1,5 @@
 import React from 'react';
-import { act, render, screen } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import {
   CalendarDate,
@@ -333,6 +333,47 @@ describe('Calendar', () => {
 
     await user.click(outsideMonthCell!);
     expect(onChange).toHaveBeenCalled();
+  });
+
+  test('does not announce selectable outside month dates as disabled', () => {
+    const { container } = render(
+      <Calendar {...defaultProps} showOutsideMonth />,
+    );
+    const outsideMonthCell = container.querySelector(
+      '.eds-datepicker__calendar__grid__cell--outside-month--visible',
+    );
+    expect(outsideMonthCell).not.toHaveAttribute('aria-disabled', 'true');
+  });
+
+  test('selects outside month dates with Space', () => {
+    const onChange = jest.fn();
+    const { container } = render(
+      <Calendar {...defaultProps} showOutsideMonth onChange={onChange} />,
+    );
+    const outsideMonthCell = container.querySelector(
+      '.eds-datepicker__calendar__grid__cell--outside-month--visible',
+    );
+    fireEvent.keyUp(outsideMonthCell!, { key: ' ' });
+    expect(onChange).toHaveBeenCalled();
+  });
+
+  test('keeps outside month dates beyond maxDate disabled', async () => {
+    const user = userEvent.setup();
+    const onChange = jest.fn();
+    render(
+      <Calendar
+        {...defaultProps}
+        showOutsideMonth
+        maxDate={new CalendarDate(2023, 9, 30)}
+        onChange={onChange}
+      />,
+    );
+    const october1 = screen.getByRole('button', {
+      name: /^Sunday, 1 October 2023/,
+    });
+    expect(october1).toHaveAttribute('aria-disabled', 'true');
+    await user.click(october1);
+    expect(onChange).not.toHaveBeenCalled();
   });
 
   describe('visibleDuration', () => {
