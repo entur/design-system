@@ -157,7 +157,10 @@ export const ariaLabelIfNorwegian = (
   locale: string,
   propsCollection: any,
 ) => {
-  if (locale.toLowerCase() !== 'no-no') return propsCollection['aria-label'];
+  // Checks the language only, so no, nb and nn with any region all match
+  const language = locale.toLowerCase().split('-')[0];
+  if (!['no', 'nb', 'nn'].includes(language))
+    return propsCollection['aria-label'];
   return norwegianAriaLabel;
 };
 
@@ -202,6 +205,7 @@ export const convertValueToType = ({
 
 export const modulo = (a: number, b: number) => ((a % b) + b) % b;
 
+/** @deprecated Brukes ikke lenger av TimePicker, og fjernes i en fremtidig major-versjon */
 export const focusSegment = (
   ref: React.RefObject<HTMLDivElement>,
   segment: 'first' | 'last',

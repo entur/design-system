@@ -1,4 +1,4 @@
-import React, { useId, useRef } from 'react';
+import React, { useEffect, useId, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { useTimeField } from '@react-aria/datepicker';
 import { I18nProvider, useLocale } from '@react-aria/i18n';
@@ -17,7 +17,7 @@ import { VariantType } from '@entur/utils';
 
 import { FieldSegment } from '../shared/FieldSegment';
 import { TimePickerArrowButton } from './TimePickerArrowButton';
-import { convertValueToType, focusSegment, modulo } from '../shared/utils';
+import { convertValueToType, modulo } from '../shared/utils';
 
 import './TimePicker.scss';
 
@@ -80,6 +80,10 @@ type BaseTimePickerProps<TimeType extends TimeValue> = {
    * @default `Legg til ${minuteIncrementForArrowButtons} minutter`
    */
   rightArrowButtonAriaLabel?: string;
+  /** Tekst foran valgt tid, som skjermlesere leser opp
+   * @default 'valgt tid'
+   */
+  selectedTimeAriaLabel?: string;
   /** Varselmelding, som vil komme under TimePicker */
   feedback?: string;
   /** Valideringsvariant*/
@@ -104,6 +108,18 @@ type BaseTimePickerProps<TimeType extends TimeValue> = {
   style?: React.CSSProperties;
 };
 
+const formatSelectedTime = (
+  time: TimeValue,
+  showSeconds: boolean,
+  ariaLabel: string,
+) =>
+  ariaLabel +
+  ': ' +
+  time.hour.toString().padStart(2, '0') +
+  ':' +
+  time.minute.toString().padStart(2, '0') +
+  (showSeconds ? ':' + time.second.toString().padStart(2, '0') : '');
+
 export type TimePickerProps<TimeType extends TimeValue> =
   BaseTimePickerProps<TimeType> & ExtendedTimePickerProps<TimeType>;
 
@@ -126,6 +142,7 @@ export const TimePicker = <TimeType extends TimeValue>({
   minuteIncrementForArrowButtons = 30,
   leftArrowButtonAriaLabel = `Trekk fra ${minuteIncrementForArrowButtons} minutter`,
   rightArrowButtonAriaLabel = `Legg til ${minuteIncrementForArrowButtons} minutter`,
+  selectedTimeAriaLabel = 'valgt tid',
   inputRef,
   forcedReturnType,
   forcedTimeZone,
@@ -186,7 +203,22 @@ export const TimePicker = <TimeType extends TimeValue>({
     return getCurrentTimeWithCorrectType;
   };
 
+  // The segments are spinbuttons that announce their own changes, so only
+  // changes from the arrow buttons are announced here
+  const arrowButtonClicked = useRef(false);
+  const [arrowButtonAnnouncement, setArrowButtonAnnouncement] = useState('');
+  useEffect(() => {
+    if (arrowButtonClicked.current && selectedTime !== null)
+      setArrowButtonAnnouncement(
+        formatSelectedTime(selectedTime, showSeconds, selectedTimeAriaLabel),
+      );
+  }, [selectedTime, showSeconds, selectedTimeAriaLabel]);
+  useEffect(() => {
+    arrowButtonClicked.current = false;
+  });
+
   const handleOnClickArrowButton = (operation: 'add' | 'subtract') => {
+    arrowButtonClicked.current = true;
     if (selectedTime === null) return handleOnChange(getCurrentTime());
     switch (operation) {
       case 'add':
@@ -219,7 +251,6 @@ export const TimePicker = <TimeType extends TimeValue>({
               disabled={disabled || readOnly}
               aria-label={rightArrowButtonAriaLabel}
               onClick={() => handleOnClickArrowButton('add')}
-              onFocus={() => focusSegment(timeFieldRef, 'last')}
             />
           </div>
         }
@@ -249,7 +280,6 @@ export const TimePicker = <TimeType extends TimeValue>({
               disabled={disabled || readOnly}
               aria-label={leftArrowButtonAriaLabel}
               onClick={() => handleOnClickArrowButton('subtract')}
-              onFocus={() => focusSegment(timeFieldRef, 'first')}
             />
             {prepend}
           </div>
@@ -274,14 +304,15 @@ export const TimePicker = <TimeType extends TimeValue>({
         </span>
         <VisuallyHidden id={timePickerId + 'description'}>
           {selectedTime !== null
-            ? 'valgt tid: ' +
-              selectedTime.hour.toString().padStart(2, '0') +
-              ':' +
-              selectedTime.minute.toString().padStart(2, '0') +
-              (showSeconds
-                ? ':' + selectedTime.second.toString().padStart(2, '0')
-                : '')
+            ? formatSelectedTime(
+                selectedTime,
+                showSeconds,
+                selectedTimeAriaLabel,
+              )
             : ''}
+        </VisuallyHidden>
+        <VisuallyHidden aria-live="polite">
+          {arrowButtonAnnouncement}
         </VisuallyHidden>
       </BaseFormControl>
     </I18nProvider>
