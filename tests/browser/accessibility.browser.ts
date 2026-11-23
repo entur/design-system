@@ -1,12 +1,5 @@
-import { type Locator, type Page, expect, test } from '@playwright/test';
-
-type TabKey = 'Tab' | 'Shift+Tab';
-
-// WebKit, like Safari, skips links on Tab unless Alt is held.
-async function pressTab(page: Page, key: TabKey = 'Tab') {
-  const webkit = test.info().project.name === 'webkit';
-  await page.keyboard.press(webkit ? key.replace('Tab', 'Alt+Tab') : key);
-}
+import { type Locator, expect, test } from '@playwright/test';
+import { pressTab } from './keyboard';
 
 // Native modal dialogs may hand focus to browser UI at their edges instead of
 // wrapping, so only page content behind the dialog is ruled out.

@@ -7,6 +7,7 @@ import {
   ValidationInfoFilledIcon,
 } from '@entur/icons';
 import { useContrast } from '@entur/layout';
+import { getNodeText } from '@entur/utils';
 
 import { getTransportStyle } from './utils';
 
@@ -19,6 +20,10 @@ export type TravelTagProps = {
    * @default undefined
    */
   onClose?: () => void;
+  /** Skjermleser-label for lukkeknappen
+   * @default "Fjern" etterfulgt av TravelTag-ens label
+   */
+  closeButtonAriaLabel?: string;
   /** Innholdet inne i TravelTag-en */
   children?: React.ReactNode;
   /**Ekstra klassenavn */
@@ -55,6 +60,7 @@ export const TravelTag = ({
   label,
   labelPlacement = 'right',
   onClose = undefined,
+  closeButtonAriaLabel,
   details,
   style,
   ...rest
@@ -78,6 +84,14 @@ export const TravelTag = ({
   const shouldModifyTextColor = alert === 'error' || transport === 'walk';
   const usesDarkForeground =
     hasDarkForeground && !isContrast && alert !== 'error';
+
+  const tagAriaLabel = [
+    ariaLabelForTranportIcon,
+    getNodeText(children),
+    alertIsSet ? alert : '',
+  ]
+    .filter(Boolean)
+    .join(' ');
 
   const defaultBackground = `var(--basecolors-shape-disabled)`;
   const defaultTextColor = `var(--basecolors-shape-disabled)`;
@@ -111,10 +125,9 @@ export const TravelTag = ({
           numberOfChildren > 1 || (transportIsSet && numberOfChildren > 0),
       })}
       style={{ ...dynamicCssVars, ...style }}
-      aria-label={[ariaLabelForTranportIcon, children, alertIsSet ? alert : '']
-        .filter(Boolean)
-        .join(' ')}
-      role="img"
+      aria-label={tagAriaLabel}
+      // role="img" makes its children presentational, which would hide the close button
+      role={isClosable ? 'group' : 'img'}
       {...rest}
     >
       {IconWithAriaHidden}
@@ -124,8 +137,9 @@ export const TravelTag = ({
           onClick={onClose}
           type="button"
           className="eds-travel-tag__close-button"
+          aria-label={closeButtonAriaLabel ?? `Fjern ${tagAriaLabel}`}
         >
-          <CloseSmallIcon inline />
+          <CloseSmallIcon inline aria-hidden="true" />
         </button>
       )}
       {hasDetails && <div className="eds-travel-tag__details">{details}</div>}
