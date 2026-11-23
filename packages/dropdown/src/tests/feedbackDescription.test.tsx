@@ -83,7 +83,7 @@ test.each(dropdowns)(
   },
 );
 
-test('read-only SearchableDropdown describes its focusable selected item', async () => {
+test('read-only SearchableDropdown keeps focus on a named, invalid combobox with the value and the feedback', async () => {
   const user = userEvent.setup();
   render(
     <SearchableDropdown
@@ -97,5 +97,31 @@ test('read-only SearchableDropdown describes its focusable selected item', async
     />,
   );
   await user.tab();
-  expect(document.activeElement).toHaveAccessibleDescription('Choose a city');
+  const combobox = screen.getByRole('combobox', { name: /^City/ });
+  expect(combobox).toHaveFocus();
+  expect(combobox).toHaveValue('Oslo');
+  expect(combobox).toHaveAttribute('readonly');
+  expect(combobox).toBeInvalid();
+  expect(combobox).toHaveAccessibleDescription('Choose a city');
+});
+
+test('read-only SearchableDropdown cannot be opened, changed or cleared from the keyboard', async () => {
+  const user = userEvent.setup();
+  const onChange = jest.fn();
+  render(
+    <SearchableDropdown
+      label="City"
+      items={items}
+      selectedItem={items[0]}
+      onChange={onChange}
+      readOnly
+    />,
+  );
+  await user.tab();
+  await user.keyboard('{ArrowDown}{Enter}{Escape}{Backspace}b');
+  const combobox = screen.getByRole('combobox', { name: /^City/ });
+  expect(combobox).toHaveAttribute('aria-expanded', 'false');
+  expect(combobox).toHaveValue('Oslo');
+  expect(screen.queryByRole('option')).not.toBeInTheDocument();
+  expect(onChange).not.toHaveBeenCalled();
 });

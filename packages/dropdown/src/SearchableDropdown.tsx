@@ -155,6 +155,14 @@ export const SearchableDropdown = React.forwardRef(
           changes,
         }: UseComboboxStateChangeOptions<NormalizedDropdownItemType<ValueType>>,
       ) => {
+        // The input can get focus when read-only, so block every change
+        // (open list, select, clear with Escape) except updates to the controlled value
+        if (
+          readOnly &&
+          type !==
+            useCombobox.stateChangeTypes.ControlledPropUpdatedSelectedItem
+        )
+          return state;
         switch (type) {
           // empty input to show selected item and reset dropdown list on item selection
           case useCombobox.stateChangeTypes.ItemClick:
@@ -211,7 +219,7 @@ export const SearchableDropdown = React.forwardRef(
             return changes;
         }
       },
-      [listItems, EMPTY_INPUT, clearable],
+      [listItems, EMPTY_INPUT, clearable, readOnly],
     );
 
     const {
@@ -343,7 +351,9 @@ export const SearchableDropdown = React.forwardRef(
       disabled: disabled,
       readOnly: readOnly,
       placeholder: selectedItem?.label ?? placeholder,
-      tabIndex: disabled || readOnly ? -1 : undefined,
+      // Read-only keeps focus on the input, like MultiSelect, so screen
+      // readers get the label, role, value, read-only, invalid and description
+      tabIndex: disabled ? -1 : undefined,
       ref: mergeRefs(inputRef, ref),
     });
 
@@ -404,13 +414,14 @@ export const SearchableDropdown = React.forwardRef(
               !showSelectedItem,
           })}
           onClick={event => {
-            if (!disabled && !readOnly) {
-              inputRef.current?.focus();
-              inputProps?.onClick?.(event);
-            }
+            if (disabled) return;
+            inputRef.current?.focus();
+            if (!readOnly) inputProps?.onClick?.(event);
           }}
-          tabIndex={readOnly ? 0 : -1}
-          aria-describedby={readOnly ? describedBy : undefined}
+          tabIndex={-1}
+          // The input carries the value when read-only, so hide the visual
+          // copy so it isn't read twice
+          aria-hidden={readOnly || undefined}
         >
           {showSelectedItem ? selectedItem?.label : ''}
         </span>
@@ -419,6 +430,9 @@ export const SearchableDropdown = React.forwardRef(
             'eds-dropdown__input--hidden': showSelectedItem,
           })}
           {...inputProps}
+          value={
+            readOnly ? selectedItem?.label ?? EMPTY_INPUT : inputProps.value
+          }
           aria-describedby={describedBy}
           aria-invalid={variant === 'negative' || variant === 'error'}
         />
