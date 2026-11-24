@@ -9,7 +9,9 @@ import { fileURLToPath } from 'node:url';
 const REPO = path.resolve(fileURLToPath(import.meta.url), '../../..');
 const SKILLS_DIR = path.join(REPO, 'skills');
 
-const BRANCH_PATH = /^\/[^/]+\/[^/]+\/(blob|tree)\/(main|master)(\/|$)/;
+// Files on GitHub at a ref: only a full commit sha is pinned.
+const CONTENT_PATH = /^\/[^/]+\/[^/]+\/(?:blob|tree)\/([^/]+)/;
+const COMMIT_SHA = /^[0-9a-f]{40}$/;
 
 /** Why a URL leaves the pinned plugin, or null. */
 function bannedUrl(href) {
@@ -20,8 +22,10 @@ function bannedUrl(href) {
     return null;
   }
   if (url.hostname === 'raw.githubusercontent.com') return 'raw GitHub URL';
-  if (url.hostname === 'github.com' && BRANCH_PATH.test(url.pathname)) {
-    return 'link to a branch on GitHub';
+  const ref =
+    url.hostname === 'github.com' && CONTENT_PATH.exec(url.pathname)?.[1];
+  if (ref && !COMMIT_SHA.test(ref)) {
+    return 'link to a branch on GitHub, not a commit';
   }
   return null;
 }
