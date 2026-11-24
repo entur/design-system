@@ -9,14 +9,22 @@ import { fileURLToPath } from 'node:url';
 const REPO = path.resolve(fileURLToPath(import.meta.url), '../../..');
 const SKILLS_DIR = path.join(REPO, 'skills');
 
-const BANNED = [
-  [/raw\.githubusercontent\.com/, 'raw GitHub URL'],
-  [
-    /github\.com\/[^/\s]+\/[^/\s]+\/(blob|tree)\/(main|master)\b/,
-    'link to a branch on GitHub',
-  ],
-  [/llms-full/, 'llms-full.txt is not part of the pinned plugin'],
-];
+const BRANCH_PATH = /^\/[^/]+\/[^/]+\/(blob|tree)\/(main|master)(\/|$)/;
+
+/** Why a URL leaves the pinned plugin, or null. */
+function bannedUrl(href) {
+  let url;
+  try {
+    url = new URL(href);
+  } catch {
+    return null;
+  }
+  if (url.hostname === 'raw.githubusercontent.com') return 'raw GitHub URL';
+  if (url.hostname === 'github.com' && BRANCH_PATH.test(url.pathname)) {
+    return 'link to a branch on GitHub';
+  }
+  return null;
+}
 
 const walk = dir =>
   fs.readdirSync(dir, { withFileTypes: true }).flatMap(entry => {
@@ -34,8 +42,12 @@ for (const file of walk(SKILLS_DIR)) {
   lines.forEach((line, i) => {
     const where = `${path.relative(REPO, file)}:${i + 1}`;
 
-    for (const [pattern, reason] of BANNED) {
-      if (pattern.test(line)) problems.push(`${where}  ${reason}`);
+    for (const [href] of line.matchAll(/https?:\/\/[^\s)<>\]"'`]+/g)) {
+      const reason = bannedUrl(href);
+      if (reason) problems.push(`${where}  ${reason}`);
+    }
+    if (line.includes('llms-full')) {
+      problems.push(`${where}  llms-full.txt is not part of the pinned plugin`);
     }
 
     if (/^\s*(```|~~~)/.test(line)) inFence = !inFence;
