@@ -112,7 +112,8 @@ const points = s =>
     .map(p => p.split(',').map(Number));
 const clothesOpt = opt('clothes', null);
 const clothesAt = clothesOpt === null ? null : points(clothesOpt);
-const openAt = points(opt('open', ''));
+const openOpt = opt('open', null);
+const openAt = openOpt === null ? null : points(openOpt);
 const [pngArg] = args;
 if (!pngArg || !fs.existsSync(pngArg)) {
   console.error(
@@ -227,10 +228,20 @@ params.inkMasses = masses ? masses.count : 0;
 // trace's paper (personParts), and colour only where the draft has a colour
 // area (colourAreas).
 const toPx = ([x, y]) => [(x * img.w) / params.size, (y * img.h) / params.size];
+const personGround = person ? findGround(img) : null;
+params.personGround =
+  personGround && !personGround.perch
+    ? {
+        top: toY(personGround.top),
+        y: toY((personGround.top + personGround.bottom + 1) / 2),
+        x0: toX(personGround.x0),
+        x1: toX(personGround.x1 + 1),
+      }
+    : null;
 const figureParts = person
-  ? personParts(img, findGround(img), masses && masses.keep, colour, {
+  ? personParts(img, personGround, masses && masses.keep, colour, {
       clothes: clothesAt && clothesAt.map(toPx),
-      open: openAt.map(toPx),
+      open: openAt && openAt.map(toPx),
     })
   : null;
 // <Name>-parts.json: the parts before the clothes join, in the SVG's units,
@@ -277,12 +288,62 @@ params.partsLog = figureParts
     (figureParts.clothes
       ? `, clothes ${figureParts.guessed ? 'guessed ' : ''}from ${
           figureParts.clothes
-        } parts`
+        } parts in ${figureParts.garments}`
+      : '') +
+    (figureParts.legs ? `, ${figureParts.legs} desk legs joined` : '') +
+    (figureParts.airGuessed
+      ? `, ${figureParts.airGuessed} air under the desk guessed`
       : '') +
     (figureParts.hidden ? `, ${figureParts.hidden} under ink dropped` : '') +
     (figureParts.strands ? `, ${figureParts.strands} strands` : '') +
     (figureParts.under ? `, ${figureParts.under} under a desk left open` : '')
   : '';
+// People: a lavender or blue-grey area inside a part is the part's (the
+// part is Tint), and one on an ink mass (a sheen on a chair) goes: a
+// designer leaves the chair solid ink. A colour piece left over turns Tint
+// (coolToTint), as a person carries no lavender.
+if (person && colour && masses) {
+  const near = dilate(
+    masses.keep,
+    img.w,
+    img.h,
+    Math.max(2, Math.round(0.006 * img.w)),
+  );
+  for (const name of ['lavender', 'mid'])
+    if (colour[name])
+      for (let k = 0; k < img.w * img.h; k++)
+        if (near[k] || (figureParts && figureParts.id[k] > 0))
+          colour[name][k] = 0;
+}
+params.coolToTint = person;
+// People: where the ink masses lie, a little wider, as a cell map for the
+// strokes on them.
+params.massCells =
+  person && masses
+    ? (() => {
+        const n = 256;
+        const wide = dilate(
+          masses.keep,
+          img.w,
+          img.h,
+          Math.max(2, Math.round(0.006 * img.w)),
+        );
+        const hits = new Uint32Array(n * n);
+        const all = new Uint32Array(n * n);
+        for (let k = 0; k < img.w * img.h; k++) {
+          const x = k % img.w;
+          const y = (k - x) / img.w;
+          const c =
+            Math.floor((y * n) / img.h) * n + Math.floor((x * n) / img.w);
+          all[c]++;
+          if (wide[k]) hits[c]++;
+        }
+        let cells = '';
+        for (let c = 0; c < n * n; c++)
+          cells += all[c] && hits[c] >= 0.5 * all[c] ? '1' : '0';
+        return { n, cells };
+      })()
+    : null;
 params.colourAreas = person
   ? colourAreas(img, params.palette, colour, figureParts && figureParts.id)
   : null;
@@ -447,6 +508,7 @@ for (var i = cp.length - 1; i >= 0; i--) {
   var wide = k === 'ink' && it.length > 0 && (2 * Math.abs(it.area)) / it.length > P.minInkWidth;
   if (k === 'paper' || (k === 'ink' && (!wide || P.inkFromMask))) { it.remove(); dropped++; continue; }
   if (k === 'ink') inkAreas++;
+  if (P.coolToTint && (k === 'lavender' || k === 'mid')) k = 'tint';
   it.fillColor = rgb(P.palette[k]); it.stroked = false; kept++;
   if (P.windows && k === 'ink' && onWindows(it) >= 0.5) { nameWhole(it, 'Window'); windowFills++; }
   // Print misregistration: colour shifts off its line; ink areas stay put.
@@ -604,6 +666,45 @@ if (P.simplify) {
   for (var g8 = 0; g8 < items.length; g8++) if (items[g8].ground && !items[g8].gone) groundLines.push(items[g8].it);
   lp = paths(lg, []);
   log.push('simplified: specks ' + specks + ', joined ' + (joined - ground) + ' (ground ' + ground + '), fur marks thinned ' + thinned + (P.ground ? ', ground marks replaced by one line ' + plain : ''));
+}
+// People: a stroke lying on an ink mass goes (the edge of a chair, a line
+// through the hair): a designer draws the chair, the hair, a keyboard and a
+// mouse as solid ink with no outline. And one ground line, whole, behind
+// everything: the traced one breaks where a wheel or a shoe stands on it.
+if (P.massCells) {
+  var onMass = 0;
+  for (var m0 = lp.length - 1; m0 >= 0; m0--) {
+    var mp = lp[m0];
+    if (!mp.stroked || mp.filled) continue;
+    var ms = samples(readPts(mp)), mh = 0;
+    if (mp.closed) ms = ms.concat(samples(readPts(mp).slice(-1).concat(readPts(mp).slice(0, 1))));
+    for (var m1 = 0; m1 < ms.length; m1++) {
+      var mx = Math.floor(((ms[m1][0] - ab[0]) / (ab[2] - ab[0])) * P.massCells.n), my = Math.floor(((ab[1] - ms[m1][1]) / (ab[1] - ab[3])) * P.massCells.n);
+      if (mx >= 0 && my >= 0 && mx < P.massCells.n && my < P.massCells.n && P.massCells.cells.charAt(my * P.massCells.n + mx) === '1') mh++;
+    }
+    if (ms.length && mh >= 0.8 * ms.length) { mp.remove(); onMass++; }
+  }
+  lp = paths(lg, []);
+  var plainGround = false;
+  if (P.personGround) {
+    var gsc = P.size / 320, gfloor = ab[1] - P.personGround.top - 2 * gsc, gone0 = 0;
+    for (var g10 = lp.length - 1; g10 >= 0; g10--) {
+      var gp = lp[g10];
+      if (!gp.stroked) continue;
+      var gb = gp.geometricBounds;
+      if (gb[1] < gfloor + 8 * gsc && gb[3] > gfloor - 10 * gsc && gb[1] - gb[3] < 4 * gsc) { gp.remove(); gone0++; }
+    }
+    var pgLayer = doc.layers.add(); pgLayer.name = 'Ground';
+    pgLayer.move(fillLayerOf(doc), ElementPlacement.PLACEAFTER);
+    var pgl = pgLayer.pathItems.add(), pgy = ab[1] - P.personGround.y;
+    pgl.setEntirePath([[ab[0] + P.personGround.x0, pgy], [ab[0] + P.personGround.x1, pgy]]);
+    pgl.filled = false; pgl.stroked = true; pgl.strokeColor = rgb(P.palette.ink); pgl.strokeWidth = P.detail;
+    pgl.strokeCap = StrokeCap.ROUNDENDCAP; pgl.strokeJoin = StrokeJoin.ROUNDENDJOIN;
+    try { pgl.applyEffect('<LiveEffect name="Adobe Roughen"><Dict data="R size 0.2 R asiz 0.2 R absoluteness 0 R dtal 63 R roundness 1 "/></LiveEffect>'); } catch (e) {}
+    plainGround = gone0;
+  }
+  lp = paths(lg, []);
+  log.push('strokes on ink masses dropped ' + onMass + (P.personGround ? ', ground pieces replaced by one line ' + plainGround : ''));
 }
 // Contour or detail: by relative traced width when the draft has a weight
 // hierarchy, otherwise by length (long outer contours). Note: \`cut\` and \`name\`
@@ -772,9 +873,21 @@ function setLoop(item, flat) {
   item.setEntirePath(a);
   item.closed = true;
   for (var j = 0; j < n; j++) {
-    var prev = a[(j - 1 + n) % n], next = a[(j + 1) % n], tx = (next[0] - prev[0]) / 6, ty = (next[1] - prev[1]) / 6, pp = item.pathPoints[j];
-    pp.rightDirection = [a[j][0] + tx, a[j][1] + ty];
-    pp.leftDirection = [a[j][0] - tx, a[j][1] - ty];
+    var prev = a[(j - 1 + n) % n], next = a[(j + 1) % n], pp = item.pathPoints[j];
+    var ix = a[j][0] - prev[0], iy = a[j][1] - prev[1], ox = next[0] - a[j][0], oy = next[1] - a[j][1];
+    var li = Math.sqrt(ix * ix + iy * iy), lo = Math.sqrt(ox * ox + oy * oy);
+    // A turn of more than 60° (the foot of a desk leg, a desk top's corner)
+    // is a corner point: smooth handles there overshoot into a spike.
+    if (!li || !lo || (ix * ox + iy * oy) / (li * lo) < 0.5) {
+      pp.rightDirection = a[j]; pp.leftDirection = a[j]; pp.pointType = PointType.CORNER;
+      continue;
+    }
+    // Handles along the neighbours' chord, each at most a third of its own
+    // segment, so a short segment beside a long one does not loop.
+    var tx = (next[0] - prev[0]) / 6, ty = (next[1] - prev[1]) / 6, tl = Math.sqrt(tx * tx + ty * ty) || 1;
+    var rr = Math.min(1, lo / 3 / tl), rl = Math.min(1, li / 3 / tl);
+    pp.rightDirection = [a[j][0] + tx * rr, a[j][1] + ty * rr];
+    pp.leftDirection = [a[j][0] - tx * rl, a[j][1] - ty * rl];
     pp.pointType = PointType.SMOOTH;
   }
 }
@@ -2590,6 +2703,12 @@ function personParts(
 ) {
   const { w, h, lum, rgb } = img;
   const N = w * h;
+  // A designer draws a part with few points (a desk with its legs in 15, a
+  // pair of trousers in 16, a face in 26): the outline keeps the corners
+  // more than 0.25 % of the width off a straight run, about half the points
+  // of 1 px. The smooth points round it, and the error stays inside half a
+  // line's width.
+  const smooth = Math.max(1, 0.0025 * w);
   const pale = new Uint8Array(N);
   const area = new Uint8Array(N);
   for (let k = 0; k < N; k++) {
@@ -2957,12 +3076,88 @@ function personParts(
     for (const p of run) id[p] = parts.length;
     strands++;
   }
+  // Per part: its pixels as grown, its box, and how much of it the draft
+  // paints lavender or blue-grey. A part mostly that colour (trousers, a
+  // screen) is Tint: a designer draws no lavender on a person, and one
+  // garment is one fill, not white under a colour piece.
+  const cool = colour ? [colour.lavender, colour.mid].filter(Boolean) : [];
+  const measure = () => {
+    for (const c of parts)
+      Object.assign(c, { idn: 0, cool: 0, bx: [w, h, -1, -1] });
+    for (let k = 0; k < N; k++) {
+      if (id[k] <= 0) continue;
+      const c = parts[id[k] - 1];
+      const x = k % w;
+      const y = (k - x) / w;
+      c.idn++;
+      if (cool.some(m => m[k])) c.cool++;
+      if (x < c.bx[0]) c.bx[0] = x;
+      if (y < c.bx[1]) c.bx[1] = y;
+      if (x > c.bx[2]) c.bx[2] = x;
+      if (y > c.bx[3]) c.bx[3] = y;
+    }
+  };
+  const tintOf = c => c.white < 0.5 * c.pale || c.cool >= 0.5 * c.idn;
+  measure();
+  // The desk: the widest flat part, at least half the image wide and at
+  // most a tenth as tall. Its legs, tall narrow parts under it that reach
+  // the ground, join it, so the desk is one fill, as a designer draws it.
+  const flat = parts
+    .map((c, i) => i)
+    .filter(i => {
+      const c = parts[i];
+      return (
+        !c.out &&
+        !c.gone &&
+        c.bx[2] - c.bx[0] >= 0.5 * w &&
+        c.bx[3] - c.bx[1] <= 0.1 * h
+      );
+    })
+    .sort(
+      (i, j) =>
+        parts[j].bx[2] - parts[j].bx[0] - (parts[i].bx[2] - parts[i].bx[0]),
+    );
+  const desk = flat.length ? flat[0] : undefined;
+  let legs = 0;
+  // The desk top's own box, before the legs join it.
+  const deskBox = desk !== undefined ? [...parts[desk].bx] : null;
+  if (desk !== undefined) {
+    const top = parts[desk];
+    for (const [a, b] of pairsOf(1)) {
+      if (a !== desk && b !== desk) continue;
+      const i = a === desk ? b : a;
+      const c = parts[i];
+      if (c.out || c.gone) continue;
+      const [x0, y0, x1, y1] = c.bx;
+      if (
+        y0 >= top.bx[3] - 0.02 * h &&
+        y1 - y0 >= 3 * (x1 - x0) &&
+        (!ground || y1 >= ground.top - 0.03 * h)
+      ) {
+        top.n += c.n;
+        top.white += c.white;
+        top.pale += c.pale;
+        c.gone = true;
+        for (let k = 0; k < N; k++) if (id[k] === i + 1) id[k] = desk + 1;
+        legs++;
+      }
+    }
+    if (legs) measure();
+  }
   // What each part is, guessed from where it sits, as the pixels cannot
-  // tell a sleeve from a hand (roleGuess).
+  // tell a sleeve from a hand, or air under a desk from a white object
+  // (roleGuess). The air is guessed only without --open.
   const live = parts
     .map((c, i) => i)
     .filter(i => !parts[i].out && !parts[i].gone);
-  const role = roleGuess(img, id, parts, live, pairsOf(1), masses, colour);
+  for (const c of parts) c.tint = tintOf(c);
+  const guessAir = !marks.open;
+  const role = roleGuess(img, id, parts, live, pairsOf(1), masses, colour, {
+    desk,
+    deskBox,
+    ground,
+    air: guessAir,
+  });
   // The parts under the --clothes points become one part, Clothes, its
   // outline round all of them, so the clothing is one fill under its fold
   // and seam lines and takes the clothing colour in Figma. Without points,
@@ -2984,8 +3179,7 @@ function personParts(
   // is skin (white paper that is not clothes binds to Fill/Skin).
   const roleOf = i => {
     if (dressed.has(i + 1)) return 'clothes';
-    if (role[i] === 'clothes')
-      return parts[i].white < 0.5 * parts[i].pale ? 'tint' : 'skin';
+    if (role[i] === 'clothes') return parts[i].tint ? 'tint' : 'skin';
     return role[i];
   };
   const listed = [...live]
@@ -3020,25 +3214,53 @@ function personParts(
     .map(({ i, map, role: r, guessed: g }) => ({
       role: r,
       guessed: g,
-      loops: partOutline(map, w, i + 1, listedBoxes.get(map)[i]),
+      loops: partOutline(map, w, i + 1, listedBoxes.get(map)[i], smooth),
       point: deep.get(map).get(i + 1),
     }))
     .filter(p => p.loops.length && p.point);
-  if (dressed.size) {
-    const [first, ...rest] = [...dressed];
-    const c = parts[first - 1];
-    c.name = 'Clothes';
-    for (const label of rest) {
-      const o = parts[label - 1];
-      c.n += o.n;
-      c.white += o.white;
-      c.pale += o.pale;
-      o.gone = true;
+  // The guessed air goes: background, like the outside.
+  let airGuessed = 0;
+  for (const i of live)
+    if (role[i] === 'open' && !dressed.has(i + 1)) {
+      parts[i].out = true;
+      airGuessed++;
     }
-    for (let k = 0; k < N; k++) if (dressed.has(id[k])) id[k] = first;
+  if (airGuessed)
+    for (let k = 0; k < N; k++)
+      if (id[k] > 0 && parts[id[k] - 1].out) id[k] = -1;
+  // One fill per garment: the dressed parts of one tone that share a line
+  // (the shirt halves, collar and sleeves; the two trouser legs) join into
+  // one part named Clothes. White shoes stay apart from Tint trousers.
+  const garmentOf = new Map([...dressed].map(l => [l, l]));
+  const garment = l =>
+    garmentOf.get(l) === l
+      ? l
+      : garmentOf.set(l, garment(garmentOf.get(l))).get(l);
+  for (const [a, b, n] of pairsOf(1))
+    if (
+      n >= Math.max(4, 0.01 * w) &&
+      garmentOf.has(a + 1) &&
+      garmentOf.has(b + 1) &&
+      parts[a].tint === parts[b].tint
+    )
+      garmentOf.set(garment(a + 1), garment(b + 1));
+  let garments = 0;
+  for (const l of dressed) {
+    const g = garment(l);
+    const c = parts[g - 1];
+    if (!c.name) {
+      c.name = 'Clothes';
+      garments++;
+    }
+    if (g === l) continue;
+    const o = parts[l - 1];
+    for (const key of ['n', 'white', 'pale', 'idn', 'cool']) c[key] += o[key];
+    o.gone = true;
   }
-  // Tint when most of its pale pixels are #EAEAF1-ish rather than white.
-  for (const c of parts) c.tint = c.white < 0.5 * c.pale;
+  if (dressed.size)
+    for (let k = 0; k < N; k++)
+      if (garmentOf.has(id[k])) id[k] = garment(id[k]);
+  for (const c of parts) c.tint = tintOf(c);
   // Each part becomes a path of its own, drawn from its outline here
   // (partOutline): Image Trace would join parts that meet under a line, and
   // tracing a mask per part fails now and then in Illustrator (MRAP).
@@ -3059,7 +3281,7 @@ function personParts(
   }
   const shapes = [];
   for (const i of order) {
-    const loops = partOutline(id, w, i + 1, box[i]);
+    const loops = partOutline(id, w, i + 1, box[i], smooth);
     if (loops.length)
       shapes.push({ tint: parts[i].tint, loops, name: parts[i].name || '' });
   }
@@ -3073,7 +3295,10 @@ function personParts(
     split,
     opened,
     clothes: dressed.size,
+    garments,
     guessed: guessed && dressed.size > 0,
+    legs,
+    airGuessed,
     partsFile,
     merged,
     specks,
@@ -3094,7 +3319,16 @@ function personParts(
 // the figure is clothes, the rest of the parts objects. A hand at the chin
 // looks like a collar piece to this, so the designer corrects the guess
 // (--clothes).
-function roleGuess({ w, h }, id, parts, live, pairs, masses, colour) {
+function roleGuess(
+  { w, h },
+  id,
+  parts,
+  live,
+  pairs,
+  masses,
+  colour,
+  { desk: deskTop, deskBox = null, ground = null, air = false } = {},
+) {
   const N = w * h;
   const st = new Map(
     live.map(i => [
@@ -3124,7 +3358,7 @@ function roleGuess({ w, h }, id, parts, live, pairs, masses, colour) {
     )
       s.outside++;
   }
-  const tint = i => parts[i].white < 0.5 * parts[i].pale;
+  const tint = i => parts[i].tint;
   const touch = Math.max(8, Math.round(0.02 * w));
   const near = new Map(live.map(i => [i, new Map()]));
   for (const [a, b, n] of pairs)
@@ -3132,8 +3366,11 @@ function roleGuess({ w, h }, id, parts, live, pairs, masses, colour) {
       near.get(a).set(b, n);
       near.get(b).set(a, n);
     }
-  // The desk top: the part over the space under the desk.
-  const desk = new Set();
+  // The desk top: the widest flat part, and the part over the space under
+  // the desk.
+  const desk = new Set(
+    deskTop !== undefined && st.has(deskTop) ? [deskTop] : [],
+  );
   for (const c of parts) {
     if (!c.below) continue;
     for (const i of live) {
@@ -3146,7 +3383,31 @@ function roleGuess({ w, h }, id, parts, live, pairs, masses, colour) {
   // A big tint or blue part is a garment (a grey jacket, a lavender
   // sweater); a small one is a book or a pale cover.
   const big = Math.pow(0.08 * w, 2);
-  const barrier = i => {
+  // Air under the desk: a white part below the desk top, within its width,
+  // that reaches the ground, or a big straight-edged one that does not (the
+  // gap between a chair's column and a leg): between the desk legs, the
+  // chair and the trousers. A white trouser leg is neither. A big one stops the way out from the face; any of them is
+  // air unless the figure reaches it, as it reaches a shoe.
+  const under =
+    deskBox && st.has(deskTop)
+      ? { x0: deskBox[0], y0: deskBox[1], x1: deskBox[2], y1: deskBox[3] }
+      : null;
+  const airy = i => {
+    const s = st.get(i);
+    return (
+      air &&
+      under &&
+      ground &&
+      !tint(i) &&
+      s.warm < 0.5 * s.n &&
+      s.y0 >= under.y1 - 0.01 * h &&
+      s.x0 + s.x1 >= 2 * under.x0 &&
+      s.x0 + s.x1 <= 2 * under.x1 &&
+      (s.y1 >= ground.top - 0.03 * h || (s.n >= big && boxy(i)))
+    );
+  };
+  const barrier = i => solid(i) || (airy(i) && st.get(i).n >= big);
+  const solid = i => {
     const s = st.get(i);
     return (
       desk.has(i) ||
@@ -3154,7 +3415,7 @@ function roleGuess({ w, h }, id, parts, live, pairs, masses, colour) {
       (tint(i) && s.n < big) ||
       parts[i].strand ||
       s.warm >= 0.5 * s.n ||
-      fills.get(i) >= 0.93
+      boxy(i)
     );
   };
   // How much of its convex hull a part fills: a laptop, a folder or a
@@ -3174,6 +3435,31 @@ function roleGuess({ w, h }, id, parts, live, pairs, masses, colour) {
   const fills = new Map();
   for (const [i, pts] of hull)
     fills.set(i, st.get(i).n / Math.max(1, hullArea(pts)));
+  // An object is also straight-edged: most of its outline lies in runs
+  // longer than 4 % of the width. The back of a shirt fills its hull as
+  // well as a monitor does, but it is round.
+  const straight = new Map();
+  const boxy = i => {
+    if (fills.get(i) < 0.93) return false;
+    if (!straight.has(i)) {
+      const s = st.get(i);
+      const loops = partOutline(id, w, i + 1, [s.x0, s.y0, s.x1, s.y1], 2);
+      let all = 0;
+      let long = 0;
+      for (const f of loops)
+        for (let j = 0, n = f.length / 2; j < n; j++) {
+          const k = (j + 1) % n;
+          const d = Math.hypot(
+            f[2 * k] - f[2 * j],
+            f[2 * k + 1] - f[2 * j + 1],
+          );
+          all += d;
+          if (d >= 0.04 * w) long += d;
+        }
+      straight.set(i, all ? long / all : 0);
+    }
+    return straight.get(i) >= 0.6;
+  };
   const role = [];
   const top = list =>
     list.sort((a, b) => st.get(a).y0 - st.get(b).y0 || a - b)[0];
@@ -3190,12 +3476,13 @@ function roleGuess({ w, h }, id, parts, live, pairs, masses, colour) {
     ) ?? top(candidates.filter(i => !tint(i) && st.get(i).n >= faceSize));
   // Out from the face. A small part away from the face (a hand) ends the
   // way, so what it holds (a suitcase, a mouse) stays an object.
+  // Under the desk a sock leads on to its shoe.
   const small = i =>
-    st.get(i).n < 0.4 * st.get(face).n && !near.get(i).has(face);
+    st.get(i).n < 0.4 * st.get(face).n &&
+    !near.get(i).has(face) &&
+    !(under && st.get(i).y0 >= under.y1);
   const figure = new Set();
-  if (face !== undefined) {
-    figure.add(face);
-    const queue = [face];
+  const spread = queue => {
     while (queue.length) {
       const i = queue.shift();
       if (i !== face && small(i)) continue;
@@ -3205,9 +3492,56 @@ function roleGuess({ w, h }, id, parts, live, pairs, masses, colour) {
           queue.push(j);
         }
     }
+  };
+  if (face !== undefined) {
+    figure.add(face);
+    spread([face]);
+  }
+  // Across the desk top: the legs under a desk meet the body only through
+  // it. A part under the desk joins the figure when, over most of the
+  // columns where it meets the desk's underside, the figure sits on top
+  // (the trousers under the torso, not the air beside them).
+  if (face !== undefined && under) {
+    const label = [...desk][0] + 1;
+    const meets = new Map();
+    const reach = Math.max(3, Math.round(0.006 * w));
+    for (let x = under.x0; x <= under.x1; x++) {
+      let y0 = -1;
+      let y1 = -1;
+      for (let y = under.y0; y <= under.y1; y++)
+        if (id[y * w + x] === label) {
+          if (y0 < 0) y0 = y;
+          y1 = y;
+        }
+      if (y0 < 0) continue;
+      let above = 0;
+      for (let y = y0 - 1; y >= Math.max(0, y0 - reach) && !above; y--)
+        above = id[y * w + x];
+      let below = 0;
+      for (let y = y1 + 1; y < Math.min(h, y1 + 1 + reach) && !below; y++)
+        below = id[y * w + x];
+      if (below <= 0 || !st.has(below - 1)) continue;
+      const m = meets.get(below - 1) || [0, 0];
+      m[0]++;
+      if (above > 0 && figure.has(above - 1)) m[1]++;
+      meets.set(below - 1, m);
+    }
+    const joined = [];
+    for (const [j, [all, onFigure]] of meets)
+      if (
+        all >= touch &&
+        onFigure >= 0.5 * all &&
+        !figure.has(j) &&
+        !solid(j)
+      ) {
+        figure.add(j);
+        joined.push(j);
+      }
+    spread(joined);
   }
   for (const i of live) {
     if (parts[i].strand) role[i] = tint(i) ? 'tint' : 'skin';
+    else if (!figure.has(i) && airy(i)) role[i] = 'open';
     else if (!figure.has(i)) role[i] = tint(i) ? 'tint' : 'object';
     else if (i === face) role[i] = 'skin';
     // Above the face's middle and touching it: the forehead over a pair of
@@ -3219,9 +3553,11 @@ function roleGuess({ w, h }, id, parts, live, pairs, masses, colour) {
       role[i] = 'skin';
     else {
       const s = st.get(i);
+      // Under the desk top it is a shoe or a sock, not a hand.
       const hand =
         !tint(i) &&
         small(i) &&
+        !(under && s.y0 >= under.y1) &&
         (s.outside >= touch ||
           s.ink >= 0.05 * s.n ||
           [...near.get(i)].some(([j, n]) => n >= touch && !figure.has(j)));
@@ -3322,7 +3658,7 @@ function deepest(map, w, h) {
 // corners touch, then thinned to the corners that stay more than 1 px from
 // a straight run (Douglas–Peucker). Returns the loops as flat [x, y, …]
 // lists in pixels; pass one rounds them into smooth curves.
-function partOutline(id, w, label, [x0, y0, x1, y1]) {
+function partOutline(id, w, label, [x0, y0, x1, y1], tol = 1) {
   const inside = (x, y) =>
     x >= x0 && x <= x1 && y >= y0 && y <= y1 && id[y * w + x] === label;
   const W = x1 - x0 + 2;
@@ -3373,7 +3709,7 @@ function partOutline(id, w, label, [x0, y0, x1, y1]) {
       const b = pts[(i + 1) % pts.length];
       return (p[0] - a[0]) * (b[1] - p[1]) !== (p[1] - a[1]) * (b[0] - p[0]);
     });
-    const kept = simplifyLoop(corners, 1);
+    const kept = simplifyLoop(corners, tol);
     if (kept.length >= 3) loops.push(kept.flat());
   }
   return loops;
