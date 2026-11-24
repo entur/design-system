@@ -74,8 +74,11 @@ yarn add @entur/button @entur/tokens
 /* App.tsx or global stylesheet — tokens first */
 @import '@entur/tokens/dist/base.css';
 @import '@entur/tokens/dist/styles.css';
+@import '@entur/loader/dist/styles.css'; /* @entur/button depends on it */
 @import '@entur/button/dist/styles.css';
 ```
+
+Also import the CSS of every `@entur/*` package your components depend on, in the order from `references/getting-started.md`.
 
 ```tsx
 import { PrimaryButton } from '@entur/button';

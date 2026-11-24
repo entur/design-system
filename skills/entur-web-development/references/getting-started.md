@@ -31,6 +31,7 @@ Components need their CSS to render correctly. Import globally in `App.tsx`, `in
 @import '@entur/icons/dist/styles.css';
 @import '@entur/tab/dist/styles.css';
 @import '@entur/typography/dist/styles.css';
+@import '@entur/typography/beta/styles'; /* only with @entur/typography/beta */
 @import '@entur/layout/dist/styles.css';
 @import '@entur/loader/dist/styles.css';
 @import '@entur/expand/dist/styles.css';
@@ -84,7 +85,9 @@ In SCSS, use `@use` with a namespace alias instead of `@import` (Sass `@import` 
 @use '@entur/dropdown/dist/styles.css' as dropdown;
 ```
 
-Import only the component styles you actually use — but keep the order.
+Import only the component styles you actually use — but keep the order. That includes the `@entur/*` packages your components depend on: `@entur/button` needs `@entur/loader`, and `@entur/form` needs `@entur/a11y`, `@entur/icons`, `@entur/tooltip` and `@entur/typography`. `npm ls @entur/` lists them.
+
+With `@entur/typography/beta`, add `@entur/typography/beta/styles` right after the stable typography stylesheet and keep the stable one: other `@entur/*` packages still use it.
 
 ### Load base tokens only once (optional)
 
