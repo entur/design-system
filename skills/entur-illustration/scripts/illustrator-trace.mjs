@@ -102,13 +102,16 @@ flag('no-roughen');
 // what a part is, which the pixels cannot: --clothes joins the parts under
 // its points into one fill named Clothes, for the clothing colour; --open
 // leaves the closed pocket under each point unfilled, air between an arm and
-// the body (personParts).
+// the body (personParts). Without --clothes the trace guesses the clothes
+// (roleGuess); --clothes "" means none. <Name>-parts.json lists the parts
+// with their roles and a point in each, to correct the guess with.
 const points = s =>
   s
     .split(/[\s;]+/)
     .filter(Boolean)
     .map(p => p.split(',').map(Number));
-const clothesAt = points(opt('clothes', ''));
+const clothesOpt = opt('clothes', null);
+const clothesAt = clothesOpt === null ? null : points(clothesOpt);
 const openAt = points(opt('open', ''));
 const [pngArg] = args;
 if (!pngArg || !fs.existsSync(pngArg)) {
@@ -226,10 +229,44 @@ params.inkMasses = masses ? masses.count : 0;
 const toPx = ([x, y]) => [(x * img.w) / params.size, (y * img.h) / params.size];
 const figureParts = person
   ? personParts(img, findGround(img), masses && masses.keep, colour, {
-      clothes: clothesAt.map(toPx),
+      clothes: clothesAt && clothesAt.map(toPx),
       open: openAt.map(toPx),
     })
   : null;
+// <Name>-parts.json: the parts before the clothes join, in the SVG's units,
+// for a tool that shows the guess and lets the designer correct it (each
+// part's point goes back as --clothes or --open).
+if (figureParts) {
+  const sx = params.size / img.w;
+  const sy = params.size / img.h;
+  const r2 = v => Math.round(v * 100) / 100;
+  const d = loops =>
+    loops
+      .map(f => {
+        const pts = [];
+        for (let i = 0; i < f.length; i += 2)
+          pts.push(`${r2(f[i] * sx)} ${r2(f[i + 1] * sy)}`);
+        return `M${pts.join('L')}Z`;
+      })
+      .join('');
+  fs.writeFileSync(
+    path.join(outDir, `${name}-parts.json`),
+    JSON.stringify(
+      {
+        viewBox: [0, 0, params.size, params.size],
+        parts: figureParts.partsFile.map((p, i) => ({
+          id: i,
+          d: d(p.loops),
+          point: [r2((p.point[0] + 0.5) * sx), r2((p.point[1] + 0.5) * sy)],
+          role: p.role,
+          guessed: p.guessed,
+        })),
+      },
+      null,
+      1,
+    ) + '\n',
+  );
+}
 params.parts = figureParts ? figureParts.shapes : [];
 params.partsPx = [img.w, img.h];
 params.partsLog = figureParts
@@ -237,7 +274,11 @@ params.partsLog = figureParts
     (figureParts.split ? `, ${figureParts.split} split at a gap` : '') +
     (figureParts.opened ? `, ${figureParts.opened} left open` : '') +
     (figureParts.merged ? `, ${figureParts.merged} pockets joined` : '') +
-    (figureParts.clothes ? `, clothes from ${figureParts.clothes} parts` : '') +
+    (figureParts.clothes
+      ? `, clothes ${figureParts.guessed ? 'guessed ' : ''}from ${
+          figureParts.clothes
+        } parts`
+      : '') +
     (figureParts.hidden ? `, ${figureParts.hidden} under ink dropped` : '') +
     (figureParts.strands ? `, ${figureParts.strands} strands` : '') +
     (figureParts.under ? `, ${figureParts.under} under a desk left open` : '')
@@ -2745,19 +2786,23 @@ function personParts(
     ) {
       c.out = true;
       under++;
+      c.below = true;
     }
   }
   // A pocket the designer marks as air (--open) is background: it grows
-  // like the outside and joins no part.
+  // like the outside and joins no part. It keeps its label while it grows,
+  // which grows it just as the outside would, so the parts file can draw it.
   let opened = 0;
   for (const point of marks.open || []) {
     const label = partAt(point, id);
     if (label && !parts[label - 1].out) {
       parts[label - 1].out = true;
+      parts[label - 1].open = true;
       opened++;
     }
   }
-  for (let k = 0; k < N; k++) if (id[k] && parts[id[k] - 1].out) id[k] = -1;
+  for (let k = 0; k < N; k++)
+    if (id[k] && parts[id[k] - 1].out && !parts[id[k] - 1].open) id[k] = -1;
   const reach = Math.max(4, Math.round(0.008 * w));
   let front = [];
   for (let k = 0; k < N; k++) if (id[k]) front.push(k);
@@ -2778,6 +2823,11 @@ function personParts(
     }
     front = grown;
   }
+  // The labels as grown, before the pockets join: the parts file draws the
+  // pockets and the open parts from them.
+  const asGrown = id.slice();
+  for (let k = 0; k < N; k++)
+    if (id[k] > 0 && parts[id[k] - 1].open) id[k] = -1;
   // Pixel pairs across part boundaries, per pair of parts (i, j).
   const pairsOf = near => {
     const pairs = new Map();
@@ -2836,6 +2886,7 @@ function personParts(
       t.white += parts[i].white;
       t.pale += parts[i].pale;
       parts[i].gone = true;
+      parts[i].pocket = true;
       merged++;
     } else if (parts[i].n < 0.00004 * N) {
       parts[i].out = true;
@@ -2906,14 +2957,73 @@ function personParts(
     for (const p of run) id[p] = parts.length;
     strands++;
   }
+  // What each part is, guessed from where it sits, as the pixels cannot
+  // tell a sleeve from a hand (roleGuess).
+  const live = parts
+    .map((c, i) => i)
+    .filter(i => !parts[i].out && !parts[i].gone);
+  const role = roleGuess(img, id, parts, live, pairsOf(1), masses, colour);
   // The parts under the --clothes points become one part, Clothes, its
   // outline round all of them, so the clothing is one fill under its fold
-  // and seam lines and takes the clothing colour in Figma.
+  // and seam lines and takes the clothing colour in Figma. Without points,
+  // the guessed clothes do; --clothes "" means none.
   const dressed = new Set();
-  for (const point of marks.clothes || []) {
-    const label = partAt(point, id);
-    if (label) dressed.add(label);
-  }
+  const guessed = !marks.clothes;
+  if (guessed) {
+    for (const i of live) if (role[i] === 'clothes') dressed.add(i + 1);
+  } else
+    for (const point of marks.clothes) {
+      const label = partAt(point, id);
+      if (label) dressed.add(label);
+    }
+  // The parts file, before the clothes join: every part with its role, the
+  // pockets that joined a part (a gap between two fingers, the air between
+  // an arm and the body) and the parts left open, each with a point well
+  // inside it, which a click sends back as --clothes or --open. A part the
+  // designer did not dress keeps its guess unless that was clothes, then it
+  // is skin (white paper that is not clothes binds to Fill/Skin).
+  const roleOf = i => {
+    if (dressed.has(i + 1)) return 'clothes';
+    if (role[i] === 'clothes')
+      return parts[i].white < 0.5 * parts[i].pale ? 'tint' : 'skin';
+    return role[i];
+  };
+  const listed = [...live]
+    .sort((a, b) => parts[b].n - parts[a].n)
+    .map(i => ({ i, map: id, role: roleOf(i), guessed }));
+  const ownCount = new Map();
+  for (let k = 0; k < N; k++)
+    if (asGrown[k] > 0)
+      ownCount.set(asGrown[k], (ownCount.get(asGrown[k]) || 0) + 1);
+  const extra = [];
+  parts.forEach((c, i) => {
+    if (c.open) extra.push({ i, map: asGrown, role: 'open', guessed: false });
+    else if (
+      c.pocket &&
+      !parts[root(i)].out &&
+      (ownCount.get(i + 1) || 0) >= Math.pow(0.012 * w, 2)
+    )
+      extra.push({ i, map: asGrown, role: roleOf(root(i)), guessed });
+  });
+  extra.sort(
+    (a, b) => (ownCount.get(b.i + 1) || 0) - (ownCount.get(a.i + 1) || 0),
+  );
+  listed.push(...extra);
+  const listedBoxes = new Map();
+  for (const map of [id, asGrown])
+    listedBoxes.set(map, boxesOf(map, w, h, parts.length));
+  const deep = new Map([
+    [id, deepest(id, w, h)],
+    [asGrown, deepest(asGrown, w, h)],
+  ]);
+  const partsFile = listed
+    .map(({ i, map, role: r, guessed: g }) => ({
+      role: r,
+      guessed: g,
+      loops: partOutline(map, w, i + 1, listedBoxes.get(map)[i]),
+      point: deep.get(map).get(i + 1),
+    }))
+    .filter(p => p.loops.length && p.point);
   if (dressed.size) {
     const [first, ...rest] = [...dressed];
     const c = parts[first - 1];
@@ -2963,11 +3073,247 @@ function personParts(
     split,
     opened,
     clothes: dressed.size,
+    guessed: guessed && dressed.size > 0,
+    partsFile,
     merged,
     specks,
     hidden,
     strands,
   };
+}
+
+// What each part of a person is, guessed from where it sits: 'skin',
+// 'clothes', 'object' or 'tint'. The face is the topmost white part that
+// the hair (an ink mass) runs into, or failing that the topmost white part.
+// The figure is every part reached from the face across a shared line,
+// never through the desk top (the part over the space under a desk, or one
+// wider than 60 % of the image), a pale tint part (a book) or a part that
+// is mostly peach or coral (a screen). A hand is a figure part under 40 %
+// of the face that does not touch the face and does touch the background
+// or something outside the figure (the desk, the mouse in it). The rest of
+// the figure is clothes, the rest of the parts objects. A hand at the chin
+// looks like a collar piece to this, so the designer corrects the guess
+// (--clothes).
+function roleGuess({ w, h }, id, parts, live, pairs, masses, colour) {
+  const N = w * h;
+  const st = new Map(
+    live.map(i => [
+      i,
+      { n: 0, x0: w, y0: h, x1: -1, y1: -1, ink: 0, warm: 0, outside: 0 },
+    ]),
+  );
+  const warm = colour ? [colour.peach, colour.coral].filter(Boolean) : [];
+  for (let k = 0; k < N; k++) {
+    if (id[k] <= 0) continue;
+    const s = st.get(id[k] - 1);
+    if (!s) continue;
+    const x = k % w;
+    const y = (k - x) / w;
+    s.n++;
+    if (x < s.x0) s.x0 = x;
+    if (y < s.y0) s.y0 = y;
+    if (x > s.x1) s.x1 = x;
+    if (y > s.y1) s.y1 = y;
+    if (masses && masses[k]) s.ink++;
+    if (warm.some(m => m[k])) s.warm++;
+    if (
+      (x > 0 && id[k - 1] === -1) ||
+      (x < w - 1 && id[k + 1] === -1) ||
+      (y > 0 && id[k - w] === -1) ||
+      (y < h - 1 && id[k + w] === -1)
+    )
+      s.outside++;
+  }
+  const tint = i => parts[i].white < 0.5 * parts[i].pale;
+  const touch = Math.max(8, Math.round(0.02 * w));
+  const near = new Map(live.map(i => [i, new Map()]));
+  for (const [a, b, n] of pairs)
+    if (near.has(a) && near.has(b)) {
+      near.get(a).set(b, n);
+      near.get(b).set(a, n);
+    }
+  // The desk top: the part over the space under the desk.
+  const desk = new Set();
+  for (const c of parts) {
+    if (!c.below) continue;
+    for (const i of live) {
+      const s = st.get(i);
+      const over = Math.min(s.x1, c.x1) - Math.max(s.x0, c.x0);
+      if (over >= 0.5 * (c.x1 - c.x0) && Math.abs(s.y1 - c.y0) <= 0.03 * h)
+        desk.add(i);
+    }
+  }
+  // A big tint or blue part is a garment (a grey jacket, a lavender
+  // sweater); a small one is a book or a pale cover.
+  const big = Math.pow(0.08 * w, 2);
+  const barrier = i => {
+    const s = st.get(i);
+    return (
+      desk.has(i) ||
+      s.x1 - s.x0 >= 0.6 * w ||
+      (tint(i) && s.n < big) ||
+      parts[i].strand ||
+      s.warm >= 0.5 * s.n ||
+      fills.get(i) >= 0.93
+    );
+  };
+  // How much of its convex hull a part fills: a laptop, a folder or a
+  // suitcase nearly all of it, a garment with its arms and folds less.
+  const hull = new Map(live.map(i => [i, []]));
+  for (let y = 0; y < h; y++) {
+    let x = 0;
+    while (x < w) {
+      const a = id[y * w + x];
+      let e = x;
+      while (e + 1 < w && id[y * w + e + 1] === a) e++;
+      if (a > 0 && hull.has(a - 1))
+        hull.get(a - 1).push([x, y], [e + 1, y], [x, y + 1], [e + 1, y + 1]);
+      x = e + 1;
+    }
+  }
+  const fills = new Map();
+  for (const [i, pts] of hull)
+    fills.set(i, st.get(i).n / Math.max(1, hullArea(pts)));
+  const role = [];
+  const top = list =>
+    list.sort((a, b) => st.get(a).y0 - st.get(b).y0 || a - b)[0];
+  const candidates = live.filter(i => !barrier(i));
+  const faceSize = Math.pow(0.04 * w, 2);
+  const face =
+    top(
+      candidates.filter(
+        i =>
+          !tint(i) &&
+          st.get(i).n >= faceSize &&
+          st.get(i).ink >= 0.05 * st.get(i).n,
+      ),
+    ) ?? top(candidates.filter(i => !tint(i) && st.get(i).n >= faceSize));
+  // Out from the face. A small part away from the face (a hand) ends the
+  // way, so what it holds (a suitcase, a mouse) stays an object.
+  const small = i =>
+    st.get(i).n < 0.4 * st.get(face).n && !near.get(i).has(face);
+  const figure = new Set();
+  if (face !== undefined) {
+    figure.add(face);
+    const queue = [face];
+    while (queue.length) {
+      const i = queue.shift();
+      if (i !== face && small(i)) continue;
+      for (const [j, n] of near.get(i))
+        if (n >= touch && !figure.has(j) && !barrier(j)) {
+          figure.add(j);
+          queue.push(j);
+        }
+    }
+  }
+  for (const i of live) {
+    if (parts[i].strand) role[i] = tint(i) ? 'tint' : 'skin';
+    else if (!figure.has(i)) role[i] = tint(i) ? 'tint' : 'object';
+    else if (i === face) role[i] = 'skin';
+    // Above the face's middle and touching it: the forehead over a pair of
+    // glasses, a headset band.
+    else if (
+      near.get(i).has(face) &&
+      st.get(i).y0 + st.get(i).y1 < st.get(face).y0 + st.get(face).y1
+    )
+      role[i] = 'skin';
+    else {
+      const s = st.get(i);
+      const hand =
+        !tint(i) &&
+        small(i) &&
+        (s.outside >= touch ||
+          s.ink >= 0.05 * s.n ||
+          [...near.get(i)].some(([j, n]) => n >= touch && !figure.has(j)));
+      role[i] = hand ? 'skin' : 'clothes';
+    }
+  }
+  return role;
+}
+
+// The area of the convex hull of a list of points (monotone chain).
+function hullArea(pts) {
+  const p = [...new Map(pts.map(q => [q[0] + ',' + q[1], q])).values()].sort(
+    (a, b) => a[0] - b[0] || a[1] - b[1],
+  );
+  if (p.length < 3) return 0;
+  const cross = (o, a, b) =>
+    (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0]);
+  const half = list => {
+    const out = [];
+    for (const q of list) {
+      while (
+        out.length >= 2 &&
+        cross(out[out.length - 2], out[out.length - 1], q) <= 0
+      )
+        out.pop();
+      out.push(q);
+    }
+    return out.slice(0, -1);
+  };
+  const ring = half(p).concat(half([...p].reverse()));
+  let area = 0;
+  for (let i = 0; i < ring.length; i++) {
+    const [x0, y0] = ring[i];
+    const [x1, y1] = ring[(i + 1) % ring.length];
+    area += x0 * y1 - x1 * y0;
+  }
+  return Math.abs(area) / 2;
+}
+
+// The bounding box of every label in a label map, [x0, y0, x1, y1] by
+// label - 1.
+function boxesOf(map, w, h, count) {
+  const box = Array.from({ length: count }, () => [w, h, -1, -1]);
+  for (let k = 0; k < w * h; k++) {
+    if (map[k] <= 0 || map[k] > count) continue;
+    const b = box[map[k] - 1];
+    const x = k % w;
+    const y = (k - x) / w;
+    if (x < b[0]) b[0] = x;
+    if (y < b[1]) b[1] = y;
+    if (x > b[2]) b[2] = x;
+    if (y > b[3]) b[3] = y;
+  }
+  return box;
+}
+
+// The point of each label that lies furthest from its edge (city-block
+// distance, the first such pixel in reading order), so a click there lands
+// in the part again on the next trace. Returns label → [x, y] in pixels.
+function deepest(map, w, h) {
+  const N = w * h;
+  const d = new Uint16Array(N);
+  for (let k = 0; k < N; k++) {
+    const a = map[k];
+    if (a <= 0) continue;
+    const x = k % w;
+    const y = (k - x) / w;
+    d[k] =
+      x === 0 ||
+      y === 0 ||
+      x === w - 1 ||
+      y === h - 1 ||
+      map[k - 1] !== a ||
+      map[k + 1] !== a ||
+      map[k - w] !== a ||
+      map[k + w] !== a
+        ? 1
+        : 65535;
+  }
+  for (let k = 0; k < N; k++)
+    if (d[k] > 1) d[k] = Math.min(d[k], d[k - 1] + 1, d[k - w] + 1);
+  for (let k = N - 1; k >= 0; k--)
+    if (d[k] > 1) d[k] = Math.min(d[k], d[k + 1] + 1, d[k + w] + 1);
+  const best = new Map();
+  for (let k = 0; k < N; k++) {
+    if (map[k] <= 0) continue;
+    const b = best.get(map[k]);
+    if (!b || d[k] > b[1]) best.set(map[k], [k, d[k]]);
+  }
+  const out = new Map();
+  for (const [label, [k]] of best) out.set(label, [k % w, Math.floor(k / w)]);
+  return out;
 }
 
 // A part's outline: its boundary followed along pixel edges (the part on
