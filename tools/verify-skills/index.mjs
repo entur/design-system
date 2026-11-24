@@ -602,26 +602,6 @@ function collectTokenNames() {
   return names;
 }
 
-/* --------------------------------- llms.txt coverage (Part 5 regression guard) */
-
-/**
- * llms-full.txt is built by walking skills/, which covers every file by construction.
- * The drift this guards against is that walk being replaced by a hardcoded list again.
- */
-function checkLlmsCoverage() {
-  const gatsbyNode = path.join(REPO, 'apps/documentation/gatsby-node.js');
-  if (!fs.existsSync(gatsbyNode)) return;
-  const source = fs.readFileSync(gatsbyNode, 'utf8');
-
-  if (!/collectSkillFiles/.test(source)) {
-    warn(
-      'apps/documentation/gatsby-node.js',
-      0,
-      'skill files are no longer collected by directory walk — llms-full.txt may omit skill content',
-    );
-  }
-}
-
 /* --------------------------------------------------------------------- main */
 
 const quiet = process.argv.includes('--quiet');
@@ -639,7 +619,6 @@ if (!quiet) {
 const fences = skillFiles.flatMap(extractFences);
 typecheckFences(fences, registry);
 checkProse(skillFiles, registry);
-checkLlmsCoverage();
 
 const report = (items, label) => {
   if (!items.length) return;

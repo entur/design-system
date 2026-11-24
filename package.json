@@ -23,6 +23,7 @@
     "check:consent-texts": "node tools/check-consent-texts/index.mjs",
     "check:illustration-names": "node tools/check-illustration-names/index.mjs",
     "verify:skills": "node tools/verify-skills/index.mjs",
+    "verify:skill-links": "node tools/verify-skills/links.mjs",
     "prepublishOnly": "yarn build:packages && yarn lint && yarn test:single-run",
     "prerelease-packages": "HUSKY=0 lerna publish --conventional-commits --conventional-prerelease --pre-dist-tag next --preid beta",
     "prerelease-packages-after-failed-attempt": "HUSKY=0 lerna publish from-package --conventional-commits --conventional-prerelease --pre-dist-tag next --preid beta",
