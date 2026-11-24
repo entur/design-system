@@ -8,8 +8,6 @@ disable-model-invocation: true
 
 The latest major versions of all `@entur/*` packages require React 18 as a minimum. Most consumer projects are already on React 18+ — the main work is handling package-specific breaking changes.
 
-> **Resolving `references/` paths:** if you are reading this over HTTP rather than from an installed skill folder, resolve every `references/<file>` path in this file against `https://raw.githubusercontent.com/entur/design-system/main/skills/migrate-react-18/` — not against the folder of whichever skill linked you here.
-
 ## Steps
 
 ### 1. Inventory

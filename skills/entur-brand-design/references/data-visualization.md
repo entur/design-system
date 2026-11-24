@@ -120,7 +120,7 @@ When visualizing transport-specific data (e.g. ridership by mode), use **transpo
 } /* #bf5826 */
 ```
 
-Full transport token list: see `tokens-and-variables.md` in `entur-web-development` references.
+Full transport token list: see [tokens-and-variables.md](../../entur-web-development/references/tokens-and-variables.md).
 
 ---
 
