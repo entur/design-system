@@ -93,12 +93,7 @@ These are changes that require no code fix but alter how the application behaves
 
 ### 6. Verify
 
-Run the project's build and test suite:
-
-```bash
-npm run build
-npm test
-```
+Run the project's own type check, build and tests: the scripts in `package.json`, with the project's package manager (look for `yarn.lock`, `pnpm-lock.yaml` or `package-lock.json`).
 
 Fix any remaining type errors or test failures. Common issues:
 
