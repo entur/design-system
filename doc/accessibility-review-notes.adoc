@@ -1,0 +1,22 @@
+= Accessibility review notes
+
+What accessibility reviews of this repo, by people or AI, got wrong: findings
+that were not errors, errors filed under the wrong WCAG criterion, and errors
+that were missed. Read it before auditing or reviewing accessibility, so the
+same mistake is not made twice. When a finding is rejected or corrected, add a
+line.
+
+One line per note: the component, what was wrong, and why. A choice someone
+could later undo by "fixing" it belongs in an ADR in xref:adr/README.adoc[doc/adr/]
+instead, and a short rule in `AGENTS.md`.
+
+The repo is public: follow "This repo is public" in
+xref:adr/README.adoc[doc/adr/README.adoc].
+
+== Not errors
+
+// e.g. *Modal:* no JS focus trap is correct; `showModal()` makes the rest of the page inert.
+
+== Wrong criterion
+
+== Missed

@@ -158,7 +158,7 @@ In the PR's Testing section, say which engines were tested. WebKit covers Safari
 
 ## Decisions
 
-Decisions are recorded as ADRs in [doc/adr/](doc/adr/), and repo terms in [doc/glossary.adoc](doc/glossary.adoc).
+Decisions are recorded as ADRs in [doc/adr/](doc/adr/), and repo terms in [doc/glossary.adoc](doc/glossary.adoc). What accessibility reviews got wrong is in [doc/accessibility-review-notes.adoc](doc/accessibility-review-notes.adoc): read it before reviewing accessibility, and add a line when a finding is rejected or corrected.
 
 - Before changing code an ADR applies to (see its **Applies to**), read the ADR. If the change goes against it, replace it with a new ADR in the same PR.
 - Before a decision that spans packages, sets or changes a code pattern, changes the public API or is hard to reverse, suggest running `/grill-with-adr`.

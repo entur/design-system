@@ -123,6 +123,9 @@ components before judging a change on its own.
 
 ## Accessibility
 
+Read [doc/accessibility-review-notes.adoc](../../../doc/accessibility-review-notes.adoc)
+first; don't repeat a finding it lists as not an error.
+
 - No ARIA is better than wrong ARIA: flag ARIA that duplicates native
   semantics (`aria-disabled` next to `disabled`), empty `aria-label`, stray
   `tabindex`. Invalid states set `aria-invalid`; decorative icons are hidden.
