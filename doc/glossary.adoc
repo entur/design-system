@@ -36,3 +36,12 @@ An export only other `@entur/*` packages should use. Its JSDoc starts with
 published, but it can change in any release (see
 xref:adr/0003-internal-exports.adoc[ADR 3]). Not the same as the `@internal`
 tag, which `stripInternal` removes from the published types.
+
+Pin::
+The commit in the Entur marketplace (`entur/ai`) that the `entur-linje` plugin
+installs. A change to `skills/` reaches users only when the pin moves (see
+xref:adr/0004-skills-pinned-plugin.adoc[ADR 4]).
+
+Router::
+The `entur-linje` skill. It matches the user's task to a sub-skill and sends
+the agent there; it holds no rules of its own.

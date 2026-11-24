@@ -77,4 +77,8 @@ What other options were considered and why were they rejected?
 |3
 |xref:0003-internal-exports.adoc[Building blocks shared between packages are marked internal in their description]
 |Accepted
+
+|4
+|xref:0004-skills-pinned-plugin.adoc[Skills ship only as a pinned Claude Code plugin and read only their own files]
+|Accepted
 |===
