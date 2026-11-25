@@ -200,6 +200,15 @@ jobs:
       - name: Check the illustration names
         run: yarn check:illustration-names
 
+  verify-skill-links:
+    name: Verify skill links
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+
+      # The plugin is pinned to a commit, so skills may only link to their own files.
+      - run: node tools/verify-skills/links.mjs
+
   verify-skills:
     name: Verify skills against package APIs
     needs: build-packages

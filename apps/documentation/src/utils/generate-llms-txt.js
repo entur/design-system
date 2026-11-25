@@ -103,40 +103,4 @@ function generateLlmsTxt(pages) {
   return lines.join('\n');
 }
 
-function generateLlmsFullTxt(pages, skillsFiles) {
-  const lines = [];
-
-  lines.push('# Entur Linje Design System — Full Reference');
-  lines.push('');
-  lines.push(
-    '> Complete documentation for AI agents. Covers installation, components, tokens, accessibility, and brand identity.',
-  );
-  lines.push('');
-  lines.push(
-    '> Full docs site: https://linje.entur.no | GitHub: https://github.com/entur/design-system',
-  );
-  lines.push('');
-  lines.push('---');
-  lines.push('');
-
-  for (const { label: fileLabel, content } of skillsFiles) {
-    lines.push(`## ${fileLabel}`);
-    lines.push('');
-    lines.push(content.trim());
-    lines.push('');
-    lines.push('---');
-    lines.push('');
-  }
-
-  lines.push('## Page Index');
-  lines.push('');
-  lines.push(
-    'All pages on linje.entur.no, grouped by category. Use these URLs to link to specific documentation.',
-  );
-  lines.push('');
-  lines.push(generatePageIndex(pages));
-
-  return lines.join('\n');
-}
-
-module.exports = { generateLlmsTxt, generateLlmsFullTxt };
+module.exports = { generateLlmsTxt };

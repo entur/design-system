@@ -1,5 +1,5 @@
-// Skills are not versioned: consumers always run the latest from main. The
-// changelog is built from git history instead, one entry per day on main.
+// Skills are not versioned, so the changelog is built from git history, one
+// entry per day on main.
 const { execFileSync } = require('child_process');
 const path = require('path');
 const {

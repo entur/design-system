@@ -13,66 +13,20 @@ Skills are instruction sets that give AI coding agents specialized knowledge abo
 | `migrate-react-18`      | Step-by-step migration for projects upgrading @entur/\* packages to React 18 major versions |
 | `migrate-typography`    | Step-by-step migration to the new typography and the layout beta spacing scale              |
 
-Start with `entur-linje`. It reads the task and loads the relevant sub-skill automatically.
+Start with `entur-linje`. It reads the task and loads the relevant sub-skill automatically. The migration skills change a lot of code, so you start them yourself, for example `/entur-linje:migrate-typography`.
 
 ## How to use
 
-### Recommended: install the plugin (Claude Code)
-
-The skills are published through Entur's plugin marketplace in [entur/ai](https://github.com/entur/ai):
+The skills are supported in [Claude Code](https://docs.anthropic.com/en/docs/claude-code), installed as a plugin from Entur's marketplace in [entur/ai](https://github.com/entur/ai):
 
 ```
 /plugin marketplace add entur/ai
 /plugin install entur-linje@entur
 ```
 
-This installs all six skills with their reference files on disk, so the agent can open a reference the moment it needs one, and `/plugin update` keeps them current. Prefer this over the URL methods below — those reach reference files only one HTTP request at a time, and always from `main`.
+This installs all six skills with their reference files on disk. The marketplace pins the plugin to a reviewed commit in this repo, so a new version reaches you when entur/ai moves that pin. Run `/plugin update` to get it.
 
-### Any agent: point at the skill URL
-
-Most AI coding agents read a project-level instructions file to understand your codebase. The file name varies by tool:
-
-| Agent                                                                                                                             | Instructions file                                |
-| --------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------ |
-| [Claude Code](https://docs.anthropic.com/en/docs/claude-code)                                                                     | `CLAUDE.md`                                      |
-| [GitHub Copilot](https://docs.github.com/en/copilot/customizing-copilot/adding-repository-custom-instructions-for-github-copilot) | `AGENTS.md` or `.github/copilot-instructions.md` |
-| [Cursor](https://cursor.com)                                                                                                      | `.cursor/rules/*.mdc`                            |
-| [Windsurf](https://windsurf.com)                                                                                                  | `.windsurfrules`                                 |
-
-`AGENTS.md` is supported by a [large ecosystem of AI coding agents](https://agents.md).
-
-To give your agent design system knowledge, add this to your project's instructions file:
-
-```markdown
-## Design system
-
-When working with Entur components, branding, or accessibility, read and follow:
-https://raw.githubusercontent.com/entur/design-system/main/skills/entur-linje/SKILL.md
-```
-
-The agent will fetch the skill when it encounters a relevant task — like building UI with `@entur/*` packages, choosing colors, or making something accessible.
-
-Each skill lists reference files as relative paths like `references/components.md`. Read over HTTP there is no folder to resolve them against, so every skill states its base URL — the agent joins the two to fetch a reference. Installing the plugin avoids the round trip entirely.
-
-### Alternative: use llms.txt
-
-The documentation site publishes two machine-readable files for agents:
-
-| URL                                  | Contents                                             |
-| ------------------------------------ | ---------------------------------------------------- |
-| https://linje.entur.no/llms.txt      | Structured index of all documentation pages          |
-| https://linje.entur.no/llms-full.txt | Full skill content + complete page index in one file |
-
-`llms-full.txt` is the most complete single reference — an agent reading it gets every skill and every reference file inlined, plus links to every page on linje.entur.no. Use it as an alternative or complement to the GitHub skill URL:
-
-```markdown
-## Design system
-
-For full Entur design system reference, read:
-https://linje.entur.no/llms-full.txt
-```
-
-If your agent cannot fetch URLs, copy the contents of the relevant `SKILL.md` files directly into your instructions file instead.
+The skills only read their own files from the installed plugin. Pointing an agent at a skill on GitHub or linje.entur.no is not supported.
 
 ## What the agent gains
 
@@ -93,6 +47,7 @@ To improve a skill:
 1. Edit the relevant `SKILL.md` or reference file
 2. Run `yarn verify:skills` — it typechecks every code example against the real `@entur/*` types and checks that referenced exports and tokens exist
 3. Test by asking your agent the question you want it to answer correctly
-4. Submit a PR — changes go live immediately for anyone pointing to `main`, and for plugin users on their next `/plugin update`
+4. Submit a PR
+5. After it is merged, open a PR in [entur/ai](https://github.com/entur/ai) that moves the `sha` for `entur-linje` in `.claude-plugin/marketplace.json` to the merge commit. Until then, users don't get the change. A bot comment on your PR reminds you.
 
 Questions? Find us in `#talk-designsystem` on Slack or open an issue.

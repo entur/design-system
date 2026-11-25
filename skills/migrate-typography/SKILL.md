@@ -8,8 +8,6 @@ disable-model-invocation: true
 
 The new typography is `Heading`, `Text`, `Link`, `Label`, `TextContainer` and the lists from `@entur/typography/beta`. It shares the spacing scale `2xs | xs | s | m | lg | xl | 2xl …` with `Flex` and `Grid` in `@entur/layout/beta`.
 
-> **Resolving `references/` paths:** if you are reading this over HTTP rather than from an installed skill folder, resolve every `references/<file>` path in this file against `https://raw.githubusercontent.com/entur/design-system/main/skills/migrate-typography/` — not against the folder of whichever skill linked you here.
-
 ## Steps
 
 ### 1. Inventory
@@ -80,16 +78,17 @@ For each override from step 1, check it against "CSS class names" in [references
   grep -rnE "^(\*|a|p|h[1-6]|ul|ol|li|blockquote|code|pre|label|figure|figcaption)(\s*[,{]|:[a-z]|\s*$)" --include='*.css' --include='*.scss' --include='*.less' "${CODE[@]}" $SRC
   ```
 
-  It only finds rules at the start of a line. Rules nested in a class in SCSS (`.header { a { … } }`) are scoped and fine. Remove what the components now cover. Move the rest: resets into `@layer core.reset`, element styles into `@layer core.base`, with the layer order lines first in the app's first stylesheet. The recipe is in [the CSS layers guide](https://raw.githubusercontent.com/entur/design-system/main/skills/entur-web-development/references/css-layers.md), section "The beta typography and your global CSS".
+  It only finds rules at the start of a line. Rules nested in a class in SCSS (`.header { a { … } }`) are scoped and fine. Remove what the components now cover. Move the rest: resets into `@layer core.reset`, element styles into `@layer core.base`, with the layer order lines first in the app's first stylesheet. The recipe is in [the CSS layers guide](../entur-web-development/references/css-layers.md), section "The beta typography and your global CSS".
 
 **Done when:** every override has been kept, renamed or removed, with a reason, and no unlayered global rule hits `*`, `a`, `p`, headings, lists, `figure` or `code`.
 
 ### 8. Verify
 
+Run the project's own type check, build and tests: the scripts in `package.json`, with the project's package manager (look for `yarn.lock`, `pnpm-lock.yaml` or `package-lock.json`). If there is no type-check script but `typescript` is installed, run `npx --no tsc --noEmit`. `--no` stops npx from downloading anything when the compiler is missing.
+
+Then search for leftovers:
+
 ```bash
-npx tsc --noEmit
-npm run build
-npm test
 grep -rnE "variant=['\"](code-text|preformatted-text|link)['\"]|spacing=['\"](xs2|sm|md|[a-z0-9]+-(top|bottom))['\"]" "${CODE[@]}" $SRC
 # No margin or external on the new components. Skip matches on old components from @entur/typography, which still take them
 grep -rnE "<(Heading|Text|Link)\b[^>]*margin=|<Link\b[^>]*\bexternal\b" "${CODE[@]}" $SRC

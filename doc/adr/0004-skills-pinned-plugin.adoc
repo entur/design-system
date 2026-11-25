@@ -1,0 +1,64 @@
+== 4. Skills ship only as a pinned Claude Code plugin and read only their own files
+
+Date: 2026-11-24
+
+Applies to: `skills/`, `tools/verify-skills/links.mjs`, the llms.txt generation in `apps/documentation/gatsby-node.js`, and the skills page on the documentation site
+
+Revisit when: we add support for Codex or another agent, or the Entur marketplace in `entur/ai` stops pinning the plugin to a commit.
+
+== Status
+Accepted
+
+== Context
+The skills reach users as the `entur-linje` plugin in the Entur marketplace
+(`entur/ai`). The marketplace pins each linked plugin to a commit, so a change
+here reaches users only after a reviewed PR there moves the pin.
+
+The skills themselves sent the agent to `main` on GitHub: the router linked to
+the sub-skills with raw GitHub URLs, every sub-skill gave a base URL on `main`,
+and the router pointed at `llms-full.txt`, which the documentation site builds
+from `main` with every skill inlined. An agent with the plugin installed could
+follow those links and act on text nobody had approved for users, which skips
+the pin.
+
+The links existed so agents could read the skills over HTTP, from a raw GitHub
+URL in a project's `AGENTS.md`.
+
+== Decision
+* The skills are supported as a Claude Code plugin only. Reading them from a
+  GitHub URL or from linje.entur.no is not supported or documented.
+* Skill files link to each other with relative paths only. No links to a branch
+  on GitHub, and no links to content built from one. Links to linje.entur.no and
+  GitHub are for people; the agent takes its rules only from the skill files.
+* `llms-full.txt` no longer inlines the skills. Without them it matched
+  `llms.txt`, so it redirects there.
+* `tools/verify-skills/links.mjs` fails CI on raw GitHub URLs, links to a
+  branch, `llms-full` and relative links that don't resolve.
+* A workflow comments on PRs that change `skills/`, reminding the author to move
+  the pin in `entur/ai` after merge.
+
+== Consequences
+=== Positive
+* An agent follows exactly the reviewed version the user installed.
+* The skills meet the marketplace rule that a plugin reads only its own files.
+* Relative links work for any agent that installs the skill folders side by
+  side, which keeps the door open for Codex.
+
+=== Negative
+* Agents that read the skills from a raw GitHub URL lose support. Relative links
+  still resolve against such a URL, so they likely keep working, but untested.
+* A merged fix reaches users only after someone moves the pin in `entur/ai`.
+* The skills changelog on the documentation site lists changes on `main`, which
+  can be ahead of what plugin users have.
+* The agent can no longer open a migration skill on its own. The router and
+  `entur-web-development` ask the user to run `/entur-linje:migrate-*` instead,
+  in line with `disable-model-invocation` on those skills.
+
+== Alternatives
+* *Keep HTTP support with conditional links* ("next to this file in an installed
+  skill, otherwise `main`"): every fallback is a link to `main` inside the
+  pinned plugin, which the agent can still follow.
+* *Pin the HTTP links to a commit*: each release would need edits to every link,
+  and readers over HTTP would still choose their own version.
+* *Keep `llms-full.txt` with the skills*: it is a second, unpinned copy of the
+  skills that the plugin could point to.

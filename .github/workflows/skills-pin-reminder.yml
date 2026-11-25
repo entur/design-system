@@ -1,0 +1,36 @@
+name: Skills pin reminder
+
+# The entur-linje plugin in entur/ai is pinned to a commit in this repo, so a change to
+# skills/ reaches users only when someone moves that pin. This leaves one comment on the
+# PR as a reminder. pull_request_target so forks get it too: it never checks out PR code.
+on:
+  pull_request_target:
+    types: [opened, reopened, synchronize, ready_for_review]
+    paths:
+      - 'skills/**'
+
+permissions:
+  pull-requests: write
+
+jobs:
+  remind:
+    name: Remind to move the pin in entur/ai
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Comment once
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          PR: ${{ github.event.pull_request.number }}
+        run: |
+          marker='<!-- skills-pin-reminder -->'
+          if gh pr view "$PR" --json comments --jq '.comments[].body' | grep -qF "$marker"; then
+            exit 0
+          fi
+          gh pr comment "$PR" --body-file - <<EOF
+          $marker
+          **Denne PR-en endrer skills.** Pluginen \`entur-linje\` i [entur/ai](https://github.com/entur/ai) er låst til en commit i dette repoet, så endringen når ikke brukerne før låsen flyttes.
+
+          Når PR-en er merget: åpne en PR i entur/ai som setter \`sha\` for \`entur-linje\` i \`.claude-plugin/marketplace.json\` til merge-commiten.
+          EOF

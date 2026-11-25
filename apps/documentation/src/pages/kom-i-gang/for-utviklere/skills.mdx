@@ -9,7 +9,6 @@ skillsChangelog: true
 ---
 
 import { SEO } from '@components/seo/SEO';
-import { CodeBlock } from '@components/Codeblock/CodeBlock';
 
 export const Head = ( props ) => {
   return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
@@ -55,16 +54,16 @@ Du trenger bare å forholde deg til `entur-linje`. Den ser hva oppgaven handler 
 
 I tillegg finnes det skills for migrering, som du starter selv. Se [Migrer med en skill](#migrer-med-en-skill).
 
-## Claude Code via Enturs marketplace (anbefalt)
+## Installer i Claude Code
 
-Skillene er publisert som plugin i Enturs plugin-marketplace i [entur/ai](https://github.com/entur/ai), sammen med de andre KI-verktøyene på plattformen. Kjør dette i Claude Code:
+Skillene støttes i Claude Code. De er publisert som plugin i Enturs plugin-marketplace i [entur/ai](https://github.com/entur/ai), sammen med de andre KI-verktøyene på plattformen. Kjør dette i Claude Code:
 
 ```bash
 /plugin marketplace add entur/ai
 /plugin install entur-linje@entur
 ```
 
-Marketplacet peker rett på `main` i design-system-repoet. Du kan kjøre følgende kommando for å hente siste versjon av skillen:
+Marketplacet låser pluginen til en gjennomgått commit i design-system-repoet. En ny versjon kommer når låsen flyttes i entur/ai. Kjør denne kommandoen for å hente den:
 
 ```bash
 claude plugin marketplace update entur
@@ -72,15 +71,7 @@ claude plugin marketplace update entur
 
 Agenten skal i prinsippet bruke skills automatisk når de er relevante, men du kan også tvinge den til å bruke den med `/entur-linje`-kommandoen inne i Claude.
 
-## Gjennom AGENTS.md
-
-De fleste KI-kodeagenter leser en instruksjonsfil i prosjektet ditt – `CLAUDE.md`, `AGENTS.md`, `.cursor/rules/*.mdc` eller `.windsurfrules`, avhengig av verktøy. Legg dette inn der:
-
-<CodeBlock language="markdown" hideLineNumbers copyable>
-  {`## Designsystem\n
-Når du jobber med Entur-komponenter, profil eller universell utforming, les og følg:
-https://raw.githubusercontent.com/entur/design-system/main/skills/entur-linje/SKILL.md`}
-</CodeBlock>
+Skillene leser bare sine egne filer fra den installerte pluginen. Å peke en agent mot en skill på GitHub støttes ikke.
 
 ## Migrer med en skill
 
@@ -113,13 +104,11 @@ Agenten starter dem ikke av seg selv, siden de endrer mye kode. Har du installer
 /entur-linje:migrate-typography
 ```
 
-Bruker du en annen agent, be den lese og følge skillen fra GitHub, for eksempel `https://raw.githubusercontent.com/entur/design-system/main/skills/migrate-typography/SKILL.md`.
-
 [Migrering](/komponenter/ressurser/migrering) beskriver hva som endres i hver migrering, hvis du heller vil gjøre jobben selv.
 
 ## Maskinlesbar dokumentasjon
 
-Dokumentasjonssiden publiserer to filer for agenter:
+Dokumentasjonssiden publiserer en fil for agenter:
 
 <Table spacing="middle">
   <TableHead>
@@ -133,14 +122,8 @@ Dokumentasjonssiden publiserer to filer for agenter:
       <DataCell><Link href="https://linje.entur.no/llms.txt">llms.txt</Link></DataCell>
       <DataCell>Strukturert indeks over alle dokumentasjonssider</DataCell>
     </TableRow>
-    <TableRow>
-      <DataCell><Link href="https://linje.entur.no/llms-full.txt">llms-full.txt</Link></DataCell>
-      <DataCell>Alt skill-innhold og hele sideindeksen i én fil</DataCell>
-    </TableRow>
   </TableBody>
 </Table>
-
-`llms-full.txt` er den mest komplette enkeltreferansen: en agent som leser den får alle skills og alle referansefiler inline. Bruk den som alternativ eller supplement til skill-URL-en.
 
 ## Hva skillene hjelper med
 
