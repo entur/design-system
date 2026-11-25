@@ -12,6 +12,18 @@ const BETA_SUFFIX = ' (beta)';
 const betaTitle = title => `${title}${BETA_SUFFIX}`;
 const isBetaTitle = title => title.endsWith(BETA_SUFFIX);
 
+// Footer keywords and the changelog section each one is listed under
+const NOTE_SECTIONS = {
+  'BREAKING CHANGE': 'BREAKING CHANGES',
+  'BREAKING-CHANGE': 'BREAKING CHANGES',
+  DEPRECATED: 'Deprecations',
+};
+// What consumers must act on comes first, the soonest deadline at the top
+const NOTE_ORDER = ['BREAKING CHANGES', 'Deprecations'];
+const noteRank = title =>
+  NOTE_ORDER.indexOf(title.replace(BETA_SUFFIX, '')) * 2 +
+  (isBetaTitle(title) ? 1 : 0);
+
 const git = (...args) => execFileSync('git', args, { encoding: 'utf8' });
 
 // The merges on main itself, not the ones inside a branch
@@ -48,6 +60,13 @@ async function createPreset() {
   preset.parserOpts.headerPattern = /^(\w*)(?:\((.*)\))?!?: (.*)$/;
   // Only applied when the commit has no BREAKING CHANGE footer of its own.
   preset.parserOpts.breakingHeaderPattern = /^(\w*)(?:\((.*)\))?!: (.*)$/;
+  preset.parserOpts.noteKeywords = Object.keys(NOTE_SECTIONS);
+
+  // Notes need action from consumers, so they go before the commit groups
+  preset.writerOpts.mainTemplate =
+    '{{> header}}\n{{> footer}}\n{{#each commitGroups}}\n\n{{#if title}}\n### {{title}}\n\n{{/if}}\n{{#each commits}}\n{{> commit root=@root}}\n{{/each}}\n\n{{/each}}\n';
+  preset.writerOpts.noteGroupsSort = (a, b) =>
+    noteRank(a.title) - noteRank(b.title);
 
   // Angular only writes the commit subject, so the long description written in
   // the Commitizen prompt never reached the changelog. `body` is always a
@@ -61,13 +80,16 @@ async function createPreset() {
   const originalTransform = preset.writerOpts.transform;
 
   preset.writerOpts.transform = function transform(commit, context) {
+    // Angular titles every note BREAKING CHANGES, so keep the keyword first
+    const keywords = commit.notes.map(note => note.title);
     const transformed = originalTransform(commit, context);
 
     if (!transformed) return transformed;
 
     const isBeta = BETA_SCOPE_PATTERN.test(transformed.scope || '');
 
-    transformed.notes.forEach(note => {
+    transformed.notes.forEach((note, index) => {
+      note.title = NOTE_SECTIONS[keywords[index]] ?? note.title;
       note.text = formatNote(note.text);
       if (isBeta) note.title = betaTitle(note.title);
     });
