@@ -17,6 +17,16 @@ export type DocTabItem = {
 
 const HEADING_SELECTOR = 'h2[id], h3[id], h4[id]';
 
+// Ids keep æøå, but the browser gives the hash percent-encoded
+const currentHash = () => {
+  const hash = window.location.hash.substring(1);
+  try {
+    return decodeURIComponent(hash);
+  } catch {
+    return hash;
+  }
+};
+
 // Shifts the levels so the highest heading in a tab sits at the top of the table of contents
 const readHeadings = (panel: HTMLElement): TocHeading[] => {
   const found = Array.from(
@@ -88,7 +98,7 @@ export const DocTabs = ({ tabs }: { tabs: DocTabItem[] }) => {
   const pendingHash = useRef<{ hash: string; tabIndex: number } | null>(null);
   useEffect(() => {
     if (deepLinkApplied.current) return;
-    const hash = window.location.hash.substring(1);
+    const hash = currentHash();
     if (!hash) {
       deepLinkApplied.current = true;
       return;
@@ -112,7 +122,7 @@ export const DocTabs = ({ tabs }: { tabs: DocTabItem[] }) => {
 
   useEffect(() => {
     const onHashChange = () => {
-      const hash = window.location.hash.substring(1);
+      const hash = currentHash();
       if (!hash) return;
       const tabIndex = headingToTab.get(hash);
       if (tabIndex !== undefined && tabIndex !== activeIndex) {
