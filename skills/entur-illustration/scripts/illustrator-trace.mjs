@@ -202,16 +202,38 @@ params.faces = parts ? parts.faces : null;
 const shades = object && underlay ? objectShades(img, disc) : null;
 // On a vehicle, where its windows are (vehicleWindows).
 params.windows = vehicle ? vehicleWindows(img) : null;
+// The draft's figures (draftSubject), for what stands below the ground line,
+// the toes and the weights.
+const drafted =
+  animals && !object && !vehicle ? draftSubject(img, disc, ground, 5) : null;
 params.ground = ground
   ? {
       top: toY(ground.top),
       y: toY((ground.top + ground.bottom + 1) / 2),
       x0: toX(ground.x0),
       x1: toX(ground.x1 + 1),
+      segs: groundSegments(ground, img.w).map(([a, b]) => [toX(a), toX(b + 1)]),
+      below: belowGround(img, ground, drafted).map(([a, b, c, d]) => [
+        toX(a),
+        toY(b),
+        toX(c + 1),
+        toY(d + 1),
+      ]),
     }
   : null;
 // People: the ground line goes behind the figure too, on a layer under the
 // fills (pass one). Animals get the plain line instead (simplify).
+// The toes standing on it, from the draft's pixels (findToes).
+params.toes =
+  ground && simplify && drafted
+    ? findToes(img, ground, drafted).map(t =>
+        t.map(([x, y]) => [toX(x), toY(y)]),
+      )
+    : [];
+params.fine = 1.1;
+// Background cells around the figures, for telling an outer contour from a
+// line inside the silhouette (pass one's weights).
+params.outside = drafted ? outsideCells(img, drafted, ground) : null;
 
 params.features = features ? darkFeatures(img, params.size, groundBand) : [];
 // Animals and people take their ink masses from the opened-ink mask, not
@@ -694,7 +716,7 @@ if (P.simplify) {
   // Roughen takes their place, on a Ground layer under the fills, so the
   // figures hide it where they stand. A short mark touching a line above it
   // (a leg) is a foot and stays. Taller grass is left to the review.
-  var plain = 0;
+  var plain = 0, belowN = 0;
   if (P.ground) {
     var others = [], gx0 = ab[0] + P.ground.x0 - 4 * sc, gx1 = ab[0] + P.ground.x1 + 4 * sc, gyl = ab[1] - P.ground.y;
     for (var p0 = 0; p0 < items.length; p0++) if (!items[p0].ground && !items[p0].gone) others.push(samples(items[p0].pts));
@@ -712,20 +734,73 @@ if (P.simplify) {
       if (Number(pg.it.length) < 12 * sc && !flatOn) for (var p2 = 0; p2 < others.length && !foot; p2++) for (var p3 = 0; p3 < 2; p3++) if (toLine(pe[p3], others[p2]) < 2.5 * sc) foot = true;
       if (!foot) { toes += cutToes(pg.it, pg.pts, gyl, sc); pg.it.remove(); pg.gone = true; plain++; }
     }
+    // Above the fills, as the designer placed it on the polar bear, so it
+    // shows across the paws; it is drawn only where the draft draws it
+    // (groundSegments), so a tail lying across it still breaks it.
     var groundLayer = doc.layers.add(); groundLayer.name = 'Ground';
-    groundLayer.move(fillLayerOf(doc), ElementPlacement.PLACEAFTER);
-    var gl = groundLayer.pathItems.add(), gy = ab[1] - P.ground.y;
-    gl.setEntirePath([[ab[0] + P.ground.x0, gy], [ab[0] + P.ground.x1, gy]]);
-    gl.filled = false; gl.stroked = true; gl.strokeColor = rgb(P.palette.ink); gl.strokeWidth = P.detail;
-    gl.strokeCap = StrokeCap.ROUNDENDCAP; gl.strokeJoin = StrokeJoin.ROUNDENDJOIN;
-    try { gl.applyEffect('<LiveEffect name="Adobe Roughen"><Dict data="R size 0.2 R asiz 0.2 R absoluteness 0 R dtal 63 R roundness 1 "/></LiveEffect>'); } catch (e) {}
+    groundLayer.move(fillLayerOf(doc), ElementPlacement.PLACEBEFORE);
+    var gy = ab[1] - P.ground.y, gsegs = P.ground.segs.length ? P.ground.segs : [[P.ground.x0, P.ground.x1]];
+    for (var gs0 = 0; gs0 < gsegs.length; gs0++) {
+      var gl = groundLayer.pathItems.add();
+      gl.setEntirePath([[ab[0] + gsegs[gs0][0], gy], [ab[0] + gsegs[gs0][1], gy]]);
+      gl.filled = false; gl.stroked = true; gl.strokeColor = rgb(P.palette.ink); gl.strokeWidth = P.detail;
+      gl.strokeCap = StrokeCap.ROUNDENDCAP; gl.strokeJoin = StrokeJoin.ROUNDENDJOIN;
+      try { gl.applyEffect('<LiveEffect name="Adobe Roughen"><Dict data="R size 0.2 R asiz 0.2 R absoluteness 0 R dtal 63 R roundness 1 "/></LiveEffect>'); } catch (e) {}
+    }
+    // Nothing below the ground line: snow mounds, stones and dashes drawn
+    // under it go, lines and colour alike (the designer took three mounds
+    // and a dash out from under the polar bear). Only what stands free
+    // there in the draft (belowGround): a tail lying across the line stays.
+    var belowN = 0, gUnder = gyl - 0.5 * sc, bl = paths(lg, []).concat(paths(cg, []));
+    for (var bw0 = 0; bw0 < bl.length; bw0++) {
+      try {
+        var bi = bl[bw0];
+        if (!(bi.stroked || bi.filled) || bi.geometricBounds[1] >= gUnder) continue;
+        var bgb = bi.geometricBounds, bcx = (bgb[0] + bgb[2]) / 2 - ab[0], bcy = ab[1] - (bgb[1] + bgb[3]) / 2, free = false;
+        for (var bb = 0; bb < P.ground.below.length && !free; bb++) { var BX = P.ground.below[bb]; if (bcx > BX[0] - 2 * sc && bcx < BX[2] + 2 * sc && bcy > BX[1] - 2 * sc && bcy < BX[3] + 2 * sc) free = true; }
+        if (!free) continue;
+        (bi.parent.typename === 'CompoundPathItem' ? bi.parent : bi).remove(); belowN++;
+      } catch (eb) {}
+    }
+    for (var bw1 = 0; bw1 < items.length; bw1++) { try { items[bw1].it.typename; } catch (eb2) { items[bw1].gone = true; } }
+    // The toes from the draft's pixels (findToes) replace the traced ones:
+    // thin ticks of three points, as the designer drew them.
+    if (P.toes.length) {
+      // New art goes to the active document: another one brought to the
+      // front during a long trace fails it with "Target layer cannot be
+      // modified".
+      app.activeDocument = doc;
+      var tl0 = paths(lg, []);
+      for (var tq = 0; tq < tl0.length; tq++) {
+        var tqi = tl0[tq];
+        try { if (!tqi.stroked || Number(tqi.length) > 10 * sc) continue; } catch (et) { continue; }
+        var tqb = tqi.geometricBounds, hitToe = tqi.name === 'Toe';
+        for (var tr = 0; tr < P.toes.length && !hitToe; tr++) {
+          var tt = P.toes[tr], tcx = ab[0] + tt[0][0], tty = ab[1] - tt[2][1], tby = ab[1] - tt[0][1];
+          if (tqb[0] < tcx + 2 * sc && tqb[2] > tcx - 2 * sc && tqb[3] < tty + 1.5 * sc && tqb[1] > tby - 1.5 * sc) hitToe = true;
+        }
+        if (hitToe) tqi.remove();
+      }
+      for (var tw = 0; tw < items.length; tw++) { try { items[tw].it.typename; } catch (et2) { items[tw].gone = true; } }
+      for (var tn = 0; tn < P.toes.length; tn++) {
+        var ta = [], tk = P.toes[tn];
+        for (var tm = 0; tm < 3; tm++) ta.push([ab[0] + tk[tm][0], ab[1] - tk[tm][1]]);
+        var toe = lg.pathItems.add(); toe.setEntirePath(ta); toe.name = 'Toe';
+        var hx = (ta[2][0] - ta[0][0]) / 6, hy = (ta[2][1] - ta[0][1]) / 6;
+        toe.pathPoints[1].leftDirection = [ta[1][0] - hx, ta[1][1] - hy];
+        toe.pathPoints[1].rightDirection = [ta[1][0] + hx, ta[1][1] + hy];
+        toe.pathPoints[1].pointType = PointType.SMOOTH;
+        toe.filled = false; toe.stroked = true;
+      }
+      toes = P.toes.length;
+    }
   }
   // Ground marks left (feet, or all of them without a found ground line) at
   // detail weight: the ground is never the heaviest line in the drawing.
   var groundLines = [];
   for (var g8 = 0; g8 < items.length; g8++) if (items[g8].ground && !items[g8].gone) groundLines.push(items[g8].it);
   lp = paths(lg, []);
-  log.push('simplified: specks ' + specks + ', joined ' + (joined - ground) + ' (ground ' + ground + '), fur marks thinned ' + thinned + (P.ground ? ', ground marks replaced by one line ' + plain + (toes ? ', toes kept ' + toes : '') : ''));
+  log.push('simplified: specks ' + specks + ', joined ' + (joined - ground) + ' (ground ' + ground + '), fur marks thinned ' + thinned + (P.ground ? ', ground marks replaced by one line ' + plain + (toes ? ', toes kept ' + toes : '') + (belowN ? ', below the ground removed ' + belowN : '') : ''));
 }
 // People: a stroke lying on an ink mass goes (the edge of a chair, a line
 // through the hair): a designer draws the chair, the hair, a keyboard and a
@@ -770,17 +845,33 @@ if (P.massCells) {
 // hierarchy, otherwise by length (long outer contours). Note: \`cut\` and \`name\`
 // are read-only globals in Illustrator's ExtendScript, so neither is used here.
 var widths = [], lengths = [];
-for (var w0 = 0; w0 < lp.length; w0++) if (lp[w0].stroked) { widths.push(Number(lp[w0].strokeWidth)); lengths.push(Number(lp[w0].length)); }
+for (var w0 = 0; w0 < lp.length; w0++) if (lp[w0].stroked && lp[w0].name !== 'Toe') { widths.push(Number(lp[w0].strokeWidth)); lengths.push(Number(lp[w0].length)); }
 function quantile(arr, q) { var a = arr.slice(0); a.sort(function (x, y) { return x - y; }); return a.length ? a[Math.min(a.length - 1, Math.floor(a.length * q))] : 0; }
 var byWidth = quantile(widths, 0.9) >= 1.3 * quantile(widths, 0.1);
 var contourCut = byWidth ? quantile(widths, 1 - P.contourShare) : quantile(lengths, 1 - P.contourShare);
 var ink = rgb(P.palette.ink);
+// A line inside the silhouette (figure on both sides of it, P.outside) is
+// detail weight however long it is: the designer thinned the polar bear's
+// inner hind-leg line from contour to detail.
+function nearOutside(a) {
+  var O = P.outside, gx = Math.floor(((a[0] - ab[0]) / (ab[2] - ab[0])) * O.n), gy = Math.floor(((ab[1] - a[1]) / (ab[1] - ab[3])) * O.n), r = 3;
+  for (var oy = gy - r; oy <= gy + r; oy++) for (var ox = gx - r; ox <= gx + r; ox++) if (ox >= 0 && oy >= 0 && ox < O.n && oy < O.n && O.cells.charAt(oy * O.n + ox) === '1') return true;
+  return false;
+}
+var innerThinned = 0;
 for (var j = 0; j < lp.length; j++) {
   var p = lp[j];
-  if (p.stroked) {
-    var w = p.strokeWidth;
+  if (p.stroked && p.name === 'Toe') {
+    p.strokeColor = ink; p.strokeWidth = P.fine; p.strokeCap = StrokeCap.ROUNDENDCAP; p.strokeJoin = StrokeJoin.ROUNDENDJOIN; p.filled = false; strokes++;
+  } else if (p.stroked) {
+    var w = p.strokeWidth, wt = (byWidth ? w : Number(p.length)) >= contourCut ? P.contour : P.detail;
+    if (wt === P.contour && P.outside) {
+      var os = samples(readPts(p)), oon = 0;
+      for (var o0 = 0; o0 < os.length; o0++) if (nearOutside(os[o0])) oon++;
+      if (oon < 0.5 * os.length) { wt = P.detail; innerThinned++; }
+    }
     p.strokeColor = ink;
-    p.strokeWidth = (byWidth ? w : Number(p.length)) >= contourCut ? P.contour : P.detail;
+    p.strokeWidth = wt;
     p.strokeCap = StrokeCap.ROUNDENDCAP;
     p.strokeJoin = StrokeJoin.ROUNDENDJOIN;
     p.filled = false;
@@ -790,7 +881,7 @@ for (var j = 0; j < lp.length; j++) {
   }
 }
 if (P.simplify) for (var g9 = 0; g9 < groundLines.length; g9++) { try { groundLines[g9].strokeWidth = P.detail; } catch (eg2) {} }
-log.push('line strokes ' + strokes + ' (contours by ' + (byWidth ? 'width' : 'length') + ', cut ' + Math.round(contourCut * 100) / 100 + '), ink fills ' + fills);
+log.push('line strokes ' + strokes + ' (contours by ' + (byWidth ? 'width' : 'length') + ', cut ' + Math.round(contourCut * 100) / 100 + (innerThinned ? ', ' + innerThinned + ' inside the silhouette at detail' : '') + '), ink fills ' + fills);
 
 // Width profiles (animals): copy a carrier stroke onto each traced line's
 // anchors. Illustrator's scripting cannot create a width profile, but a
@@ -838,6 +929,7 @@ if (P.backdrop) {
     try { ring.applyEffect('<LiveEffect name="Adobe Roughen"><Dict data="R size 0.65 R asiz 0.65 R absoluteness 0 R dtal 61 R roundness 1 "/></LiveEffect>'); } catch (e) {}
     // White marks the draft drew on the disc (discMarks), as paper above it.
     if (P.discMarks.length) {
+      app.activeDocument = doc;
       var marksGroup = circleLayer.groupItems.add(); marksGroup.name = 'Disc marks';
       for (var dm0 = 0; dm0 < P.discMarks.length; dm0++) {
         var dmk = P.discMarks[dm0], dmade = [];
@@ -1159,11 +1251,12 @@ if (P.figures) {
     var anchorsOut = 0;
     for (var w3 = 0; w3 < n0; w3++) if (!inFigure(poly[w3])) anchorsOut++;
     if (inside >= 4 ? out >= 0.6 * inside : n0 && anchorsOut >= 0.7 * n0) { outsideWhite.push(wp); continue; }
-    // An object keeps one white surface per figure, its paper: a white
-    // piece of the colour trace lying on the paper is a second white on top
-    // (with holes where the buttons are), so it goes, as a designer removed
-    // them from a traced snowman. A glint in a window stays.
-    if (!P.object || !P.paperCells) continue;
+    // An object or an animal keeps one white surface per figure, its paper:
+    // a white piece of the colour trace lying on the paper is a second white
+    // on top (with holes where the buttons are), so it goes, as a designer
+    // removed them from a traced snowman and the polar bear's silhouette
+    // copy. A glint in a window stays.
+    if (!P.paperCells) continue;
     var wname = String(wp.name) + ' ' + (wp.parent.typename === 'CompoundPathItem' ? String(wp.parent.name) : '');
     if (/Glint/.test(wname)) continue;
     var onPaper = 0, PC = P.paperCells;
@@ -1192,7 +1285,7 @@ if (P.figures) {
   log.push('white outside the figures removed ' + whiteGone);
   var whiteOnPaper = 0;
   for (var w6 = 0; w6 < onPaperWhite.length; w6++) { try { onPaperWhite[w6].remove(); whiteOnPaper++; } catch (e9) {} }
-  if (P.object) log.push('object: second white on the paper removed ' + whiteOnPaper);
+  if (P.paperCells) log.push('second white on the paper removed ' + whiteOnPaper);
 }
 // An object's shading (P.shadeMask, objectShades): tint shapes traced from the
 // draft's shading, under the colour fills and over the underlay, named Shade.
@@ -1228,7 +1321,9 @@ if (P.mask) {
   var mt = mp.trace(), mo = retry(function () { var o = mt.tracing.tracingOptions; o.tracingMode = TracingModeType.TRACINGMODEBLACKANDWHITE; return o; });
   mo.threshold = 128;
   mo.fills = true; mo.strokes = false; mo.ignoreWhite = true;
-  mo.pathFidelity = 20; mo.cornerFidelity = 30; mo.noiseFidelity = 80;
+  // An animal's paper is one smooth shape: the designer cut the polar bear's
+  // from 44 points to 33. An object keeps the closer fit its corners need.
+  mo.pathFidelity = P.object ? 20 : 12; mo.cornerFidelity = 30; mo.noiseFidelity = 80;
   app.redraw();
   var mg = mt.tracing.expandTracing(), underlays = 0, underArea = 0, artArea = (ab[2] - ab[0]) * (ab[1] - ab[3]);
   var tops = mg.typename === 'GroupItem' ? mg.pageItems : [mg], shapes = [];
@@ -1273,8 +1368,9 @@ function runJsx(code) {
     app,
   )} to do javascript (read POSIX file ${JSON.stringify(file)} as «class utf8»)
 end timeout`;
-  // Illustrator now and then fails a trace step with MRAP, or reports an
-  // object it just made as invalid, for no reason in the drawing (the same
+  // Illustrator now and then fails a trace step with MRAP or TNAC, reports
+  // an object it just made as invalid, or a layer as locked that is not
+  // ("Target layer cannot be modified"), for no reason in the drawing (the same
   // script runs through the next time); the pass has closed its document,
   // so run it again, up to three times in all.
   for (let attempt = 1; ; attempt++) {
@@ -1285,7 +1381,11 @@ end timeout`;
       }).trim();
     } catch (e) {
       const why = String(e.stderr || e.message);
-      if (attempt >= 3 || !/MRAP|Object is invalid/.test(why)) throw e;
+      if (
+        attempt >= 3 ||
+        !/MRAP|Object is invalid|TNAC|Target layer cannot be modified/.test(why)
+      )
+        throw e;
       console.error(
         `Illustrator failed (${
           /MRAP/.test(why) ? 'MRAP' : 'invalid object'
@@ -1321,7 +1421,10 @@ if (params.linesPng) {
   if (subject.edge)
     result += ` | paper edge: ${subject.edge.chords} chords, ${subject.edge.removed} px off, ${subject.edge.added} px on`;
   params.figures = figureCells(img, subject.interior);
-  params.paperCells = object ? paperCells(img, subject) : null;
+  // An animal's too: the colour trace's white silhouette on top of the
+  // underlay is a second white the designer took off the polar bear.
+  params.paperCells =
+    object || (animals && !vehicle) ? paperCells(img, subject) : null;
   result += ' | ' + runJsx(jsx2(params));
 }
 console.log(result);
@@ -4510,6 +4613,216 @@ function findGround({ w, h, lum }) {
     return { top, bottom: y, x0, x1, at, perch: below > 0.005 * w * h };
   }
   return null;
+}
+
+// The ground line's visible stretches, where the draft draws it (findGround's
+// `at`): gaps up to 3 % of the width are the line's own breaks and are
+// bridged; a wider one is a figure lying across it (a tail), where the line
+// stops. Pieces shorter than 2 % go. In pixels, [x0, x1] each.
+function groundSegments(ground, w) {
+  const segs = [];
+  let start = -1;
+  let last = -w;
+  for (let x = ground.x0; x <= ground.x1 + 1; x++) {
+    const on = x <= ground.x1 && ground.at && ground.at[x] >= 0;
+    if (!on) continue;
+    if (start < 0) start = x;
+    else if (x - last > 0.03 * w) {
+      if (last - start >= 0.02 * w) segs.push([start, last]);
+      start = x;
+    }
+    last = x;
+  }
+  if (start >= 0 && last - start >= 0.02 * w) segs.push([start, last]);
+  return segs.length || !ground.at ? segs : [[ground.x0, ground.x1]];
+}
+
+// Drawing that stands free below the ground line (snow mounds, stones, a
+// dash under it): ink pieces lying wholly under the line once the line's own
+// pixels are taken out, touching it nowhere, with no figure paper in them,
+// so a tail lying across the line is not one. Boxes in pixels, [x0, y0, x1, y1].
+function belowGround(img, ground, subject) {
+  const { w, h, lum } = img;
+  const centre = (ground.top + ground.bottom) / 2;
+  const lineAt = x =>
+    x < ground.x0 || x > ground.x1
+      ? -1
+      : ground.at && ground.at[x] >= 0
+      ? ground.at[x]
+      : centre;
+  const ink = new Uint8Array(w * h);
+  for (let y = 0; y < h; y++)
+    for (let x = 0; x < w; x++) {
+      if (lum[y * w + x] >= 120) continue;
+      const l = lineAt(x);
+      if (l >= 0 && Math.abs(y - l) <= 3) continue;
+      ink[y * w + x] = 1;
+    }
+  const boxes = [];
+  const seen = new Uint8Array(w * h);
+  for (let k0 = 0; k0 < w * h; k0++) {
+    if (!ink[k0] || seen[k0]) continue;
+    const part = [k0];
+    seen[k0] = 1;
+    let x0 = w;
+    let x1 = 0;
+    let y0 = h;
+    let y1 = 0;
+    // Touching the line: a tail crossing it, or the line's own edge.
+    let touches = false;
+    for (let i = 0; i < part.length; i++) {
+      const p = part[i];
+      const x = p % w;
+      const y = (p - x) / w;
+      x0 = Math.min(x0, x);
+      x1 = Math.max(x1, x);
+      y0 = Math.min(y0, y);
+      y1 = Math.max(y1, y);
+      const l = lineAt(x);
+      if (l >= 0 && y <= l + 5) touches = true;
+      for (const q of [
+        x > 0 ? p - 1 : -1,
+        x < w - 1 ? p + 1 : -1,
+        p - w,
+        p + w,
+      ])
+        if (q >= 0 && q < w * h && ink[q] && !seen[q]) {
+          seen[q] = 1;
+          part.push(q);
+        }
+    }
+    if (part.length < 20 || touches || y0 < centre - 1) continue;
+    // Under the line a contour may dip a little (the Samoyed's haunch, 2 pt
+    // below it); drawing that stands free sits well below (the polar bear's
+    // mounds, 8 pt and more). Past the line's ends there is no line to dip
+    // under.
+    const under = x0 <= ground.x1 && x1 >= ground.x0;
+    if (under && y0 < centre + 0.012 * h) continue;
+    // Part of a figure that crosses the line (a fox's tail lying on the
+    // ground, closed below it) has the figure's paper in its box; a mound
+    // drawn under the line has none.
+    let figure = 0;
+    for (let y = y0; y <= y1; y++)
+      for (let x = x0; x <= x1; x++)
+        if (subject && subject[y * w + x]) figure++;
+    if (figure > 0.1 * (x1 - x0 + 1) * (y1 - y0 + 1)) continue;
+    boxes.push([x0, y0, x1, y1]);
+  }
+  return boxes;
+}
+
+// Toes standing on the ground line: short dark ticks rising off it, narrow,
+// upright and free at the top, that are no part of a taller line (a paw's
+// contour runs on up), with the figure beside them (inside a paw, where
+// grass stands in the open). The line trace often joins them to the line or drops them as
+// specks, so they come from the pixels: under the polar bear six ticks of
+// about 10 px at 1024. Each comes back as three points, foot to tip, in
+// pixels.
+function findToes(img, ground, subject) {
+  const { w, h, lum } = img;
+  if (!ground.at) return [];
+  const band = Math.round(0.02 * h);
+  const maxWide = Math.max(3, Math.round(0.008 * w));
+  const minTall = Math.max(3, Math.round(0.004 * w));
+  // Clear of the line's top edge, which joins a toe to the paw beside it.
+  const lineTop = x => Math.round(ground.at[x]) - 5;
+  const mask = new Uint8Array(w * h);
+  for (let x = ground.x0; x <= ground.x1; x++) {
+    if (ground.at[x] < 0) continue;
+    for (let y = Math.max(0, lineTop(x) - band); y <= lineTop(x); y++)
+      if (lum[y * w + x] < 120) mask[y * w + x] = 1;
+  }
+  const toes = [];
+  const seen = new Uint8Array(w * h);
+  for (let k0 = 0; k0 < w * h; k0++) {
+    if (!mask[k0] || seen[k0]) continue;
+    const part = [k0];
+    seen[k0] = 1;
+    let x0 = w;
+    let x1 = 0;
+    let y0 = h;
+    let foot = false;
+    let free = true;
+    for (let i = 0; i < part.length; i++) {
+      const p = part[i];
+      const x = p % w;
+      const y = (p - x) / w;
+      x0 = Math.min(x0, x);
+      x1 = Math.max(x1, x);
+      y0 = Math.min(y0, y);
+      if (y >= lineTop(x) - 2) foot = true;
+      // Reaching the band's top: a contour that runs on up.
+      if (y <= lineTop(x) - band + 1) free = false;
+      for (const q of [
+        x > 0 ? p - 1 : -1,
+        x < w - 1 ? p + 1 : -1,
+        p - w,
+        p + w,
+      ])
+        if (q >= 0 && q < w * h && mask[q] && !seen[q]) {
+          seen[q] = 1;
+          part.push(q);
+        }
+    }
+    const bottom = Math.round(ground.at[Math.round((x0 + x1) / 2)]) - 2;
+    if (!foot || !free || x1 - x0 + 1 > maxWide || bottom - y0 < minTall)
+      continue;
+    // Upright, and no taller than a toe (a grass blade between two legs is).
+    if (bottom - y0 + 1 < 1.5 * (x1 - x0 + 1) || bottom - y0 > 0.013 * w)
+      continue;
+    const row = Math.round((y0 + bottom) / 2) * w;
+    const side = Math.max(3, Math.round(0.004 * w));
+    if (
+      !subject[row + Math.max(0, x0 - side)] &&
+      !subject[row + Math.min(w - 1, x1 + side)]
+    )
+      continue;
+    // The tick's centre per row, at its tip, middle and foot.
+    const centre = y => {
+      let n = 0;
+      let sum = 0;
+      for (const p of part)
+        if (Math.abs((p - (p % w)) / w - y) <= 1) {
+          n++;
+          sum += p % w;
+        }
+      return n ? sum / n + 0.5 : (x0 + x1 + 1) / 2;
+    };
+    const tip = y0 + 1;
+    const mid = (tip + bottom) / 2;
+    toes.push([
+      [centre(bottom - 2), bottom],
+      [centre(Math.round(mid)), mid],
+      [centre(tip), tip],
+    ]);
+  }
+  return toes.sort((a, b) => a[0][0] - b[0][0]);
+}
+
+// Background cells as a map for pass one: a cell is on when any of its
+// pixels lies outside the figures and above the ground line. A stroke with
+// background beside it for most of its length is an outer contour; one with
+// figure on both sides is a line inside the silhouette.
+function outsideCells(img, subject, ground, n = 256) {
+  const { w, h } = img;
+  const stop = ground ? ground.top : h;
+  let cells = '';
+  for (let gy = 0; gy < n; gy++)
+    for (let gx = 0; gx < n; gx++) {
+      let on = false;
+      const ya = Math.floor((gy * h) / n);
+      const yb = Math.min(stop, Math.floor(((gy + 1) * h) / n));
+      const xa = Math.floor((gx * w) / n);
+      const xb = Math.floor(((gx + 1) * w) / n);
+      for (let y = ya; y < yb && !on; y++)
+        for (let x = xa; x < xb; x++)
+          if (!subject[y * w + x]) {
+            on = true;
+            break;
+          }
+      cells += on ? '1' : '0';
+    }
+  return { n, cells };
 }
 
 function crc32(bytes) {

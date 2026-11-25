@@ -406,11 +406,26 @@ function own(c, source) {
 }
 
 const findings = [];
+let groundMemo;
+let freeMemo;
 function add(kind, what, mask, minArea, source, skip) {
   for (const c of components(mask, w, h, minArea)) {
     if (!own(c, source)) continue;
     if (skip && skip(c)) continue;
     const [x0, y0, x1, y1] = c.box;
+    // The trace draws nothing that stands free below the ground line
+    // (snow mounds, stones, a dash under it): left out on purpose.
+    if (
+      kind === 'missing' &&
+      freeBelow().some(
+        b =>
+          c.centre[0] >= b[0] - 4 &&
+          c.centre[0] <= b[2] + 4 &&
+          c.centre[1] >= b[1] - 4 &&
+          c.centre[1] <= b[3] + 4,
+      )
+    )
+      continue;
     const bw = x1 - x0 + 1;
     const bh = y1 - y0 + 1;
     let shape = '';
@@ -502,28 +517,124 @@ for (const colour of ['peach', 'coral', 'lavender', 'tint']) {
 // The ground line in the draft: the lowest row where one dark run spans a
 // quarter of the width. The space between legs closes against it and stays
 // open on purpose; only paper missing below the line (an egg) counts there.
-const groundTop = (() => {
-  // Longest dark run in a row, gaps up to 2 % of the width bridged.
-  const longest = y => {
-    let best = 0;
+// Memoised (groundMemo, above), so add() can use it before the paper
+// checks below.
+function groundRow() {
+  if (groundMemo === undefined)
+    groundMemo = (() => {
+      // Longest dark run in a row, gaps up to 2 % of the width bridged.
+      const longest = y => {
+        let best = 0;
+        let start = -1;
+        let last = -w;
+        for (let x = 0; x < w; x++) {
+          if (!D.ink[y * w + x]) continue;
+          if (x - last > 0.02 * w) start = x;
+          last = x;
+          best = Math.max(best, x - start + 1);
+        }
+        return best;
+      };
+      for (let y = h - 1; y >= 0; y--) {
+        if (longest(y) <= 0.25 * w) continue;
+        let top = y;
+        while (top > 0 && longest(top - 1) > 0.25 * w) top--;
+        return top;
+      }
+      return -1;
+    })();
+  return groundMemo;
+}
+const groundTop = groundRow();
+
+// Ink standing free below the ground line, as the trace finds it
+// (illustrator-trace.mjs, belowGround): pieces under the line once its own
+// pixels are out, touching it nowhere, with no figure in their box, and well
+// below it (1.2 % of the height) where the line runs above them. Boxes in
+// pixels.
+function freeBelow() {
+  if (freeMemo) return freeMemo;
+  freeMemo = [];
+  const top = groundRow();
+  if (top < 0) return freeMemo;
+  // The line's extent: dark runs of 3 % of the width or more in its rows,
+  // gaps up to 2 % bridged (a dash past its end is no part of it).
+  let lx0 = w;
+  let lx1 = -1;
+  for (let y = top; y <= Math.min(h - 1, top + 3); y++) {
     let start = -1;
     let last = -w;
-    for (let x = 0; x < w; x++) {
-      if (!D.ink[y * w + x]) continue;
-      if (x - last > 0.02 * w) start = x;
-      last = x;
-      best = Math.max(best, x - start + 1);
+    for (let x = 0; x <= w; x++) {
+      const dark = x < w && D.ink[y * w + x];
+      if (dark && x - last > 0.02 * w) start = x;
+      if (dark) last = x;
+      if ((!dark || x === w) && start >= 0 && x - last > 0.02 * w) {
+        if (last - start >= 0.03 * w) {
+          lx0 = Math.min(lx0, start);
+          lx1 = Math.max(lx1, last);
+        }
+        start = -1;
+      }
     }
-    return best;
-  };
-  for (let y = h - 1; y >= 0; y--) {
-    if (longest(y) <= 0.25 * w) continue;
-    let top = y;
-    while (top > 0 && longest(top - 1) > 0.25 * w) top--;
-    return top;
+    if (start >= 0 && last - start >= 0.03 * w) {
+      lx0 = Math.min(lx0, start);
+      lx1 = Math.max(lx1, last);
+    }
   }
-  return -1;
-})();
+  const centre = top + 1.5;
+  const onLine = (x, y) => x >= lx0 && x <= lx1 && Math.abs(y - centre) <= 5;
+  const ink = D.ink.map((v, k) =>
+    v && !onLine(k % w, (k - (k % w)) / w) ? 1 : 0,
+  );
+  const seen = new Uint8Array(w * h);
+  const silhouetteNow = silhouette(
+    D.ink,
+    w,
+    h,
+    Math.round(0.008 * w),
+    draftImg,
+  );
+  for (let k0 = 0; k0 < w * h; k0++) {
+    if (!ink[k0] || seen[k0]) continue;
+    const part = [k0];
+    seen[k0] = 1;
+    let x0 = w;
+    let x1 = 0;
+    let y0 = h;
+    let y1 = 0;
+    let touches = false;
+    for (let i = 0; i < part.length; i++) {
+      const p = part[i];
+      const x = p % w;
+      const y = (p - x) / w;
+      x0 = Math.min(x0, x);
+      x1 = Math.max(x1, x);
+      y0 = Math.min(y0, y);
+      y1 = Math.max(y1, y);
+      if (x >= lx0 && x <= lx1 && y <= centre + 7) touches = true;
+      for (const q of [
+        x > 0 ? p - 1 : -1,
+        x < w - 1 ? p + 1 : -1,
+        p - w,
+        p + w,
+      ])
+        if (q >= 0 && q < w * h && ink[q] && !seen[q]) {
+          seen[q] = 1;
+          part.push(q);
+        }
+    }
+    if (part.length < 20 || touches || y0 < centre - 2) continue;
+    if (x0 <= lx1 && x1 >= lx0 && y0 < centre + 0.012 * h) continue;
+    let figure = 0;
+    for (let y = y0; y <= y1; y++)
+      for (let x = x0; x <= x1; x++) if (silhouetteNow[y * w + x]) figure++;
+    // This silhouette closes more than the trace's (a mound's hollow counts
+    // up to half): a piece of a figure is nearly all figure.
+    if (figure > 0.6 * (x1 - x0 + 1) * (y1 - y0 + 1)) continue;
+    freeMemo.push([x0, y0, x1, y1]);
+  }
+  return freeMemo;
+}
 const silR = Math.round(0.008 * w);
 const sil = silhouette(D.ink, w, h, silR, draftImg);
 const edge = Math.max(2, Math.round(0.003 * w));
