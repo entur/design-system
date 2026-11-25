@@ -227,7 +227,15 @@ async function createSvgrConfig({
   native?: boolean;
 }) {
   const { name: componentName, categories } = component;
-  const svgoConfig = (await loadConfig()) ?? undefined;
+  const baseSvgoConfig = (await loadConfig()) ?? undefined;
+  // cleanupIds shortens ids to "a", "b"…, so icons on the same page would share clip paths
+  const svgoConfig = baseSvgoConfig && {
+    ...baseSvgoConfig,
+    plugins: [
+      ...(baseSvgoConfig.plugins ?? []),
+      { name: 'prefixIds', params: { prefix: componentName, delim: '__' } },
+    ],
+  };
 
   const config: Config = {
     icon: true,
