@@ -16,8 +16,11 @@ const isBetaTitle = title => title.endsWith(BETA_SUFFIX);
 const NOTE_SECTIONS = {
   'BREAKING CHANGE': 'BREAKING CHANGES',
   'BREAKING-CHANGE': 'BREAKING CHANGES',
+  'BREAKING CHANGES': 'BREAKING CHANGES',
   DEPRECATED: 'Deprecations',
 };
+const isBreakingNote = note => NOTE_SECTIONS[note.title] === 'BREAKING CHANGES';
+const BANG_HEADER = /^[^:]+!:/;
 // What consumers must act on comes first, the soonest deadline at the top
 const NOTE_ORDER = ['BREAKING CHANGES', 'Deprecations'];
 const noteRank = title =>
@@ -61,6 +64,11 @@ async function createPreset() {
   // Only applied when the commit has no BREAKING CHANGE footer of its own.
   preset.parserOpts.breakingHeaderPattern = /^(\w*)(?:\((.*)\))?!: (.*)$/;
   preset.parserOpts.noteKeywords = Object.keys(NOTE_SECTIONS);
+  // Only the keyword in capitals with a colon starts a note. The default is
+  // case-insensitive and takes a space, so "Deprecated prop still works." in
+  // a body became a note.
+  preset.parserOpts.notesPattern = keywords =>
+    new RegExp(`^[\\s|*]*(${keywords}):\\s*(.*)`);
 
   // Notes need action from consumers, so they go before the commit groups
   preset.writerOpts.mainTemplate =
@@ -81,6 +89,14 @@ async function createPreset() {
 
   preset.writerOpts.transform = function transform(commit, context) {
     // Angular titles every note BREAKING CHANGES, so keep the keyword first
+    // The parser only reads `!` as breaking when there is no other footer, so
+    // `feat(x)!:` with a DEPRECATED footer would lose its breaking change.
+    if (
+      BANG_HEADER.test(commit.header ?? '') &&
+      !commit.notes.some(isBreakingNote)
+    ) {
+      commit.notes.push({ title: 'BREAKING CHANGE', text: commit.subject });
+    }
     const keywords = commit.notes.map(note => note.title);
     const transformed = originalTransform(commit, context);
 
@@ -120,7 +136,13 @@ async function createPreset() {
   const originalWhatBump = preset.recommendedBumpOpts.whatBump;
 
   preset.recommendedBumpOpts.whatBump = function whatBump(commits) {
-    const result = originalWhatBump(commits);
+    // Angular bumps major for any note, and a deprecation is not breaking
+    const result = originalWhatBump(
+      commits.map(commit => ({
+        ...commit,
+        notes: commit.notes.filter(isBreakingNote),
+      })),
+    );
 
     const hasBangBreaking = commits.some(commit =>
       /^.+!$/.test(commit.header?.split(':')[0]),

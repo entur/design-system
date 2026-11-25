@@ -19574,6 +19574,9 @@ __metadata:
   resolution: "conventional-changelog-entur@workspace:tools/conventional-changelog-entur"
   dependencies:
     conventional-changelog-angular: "npm:^7.0.0"
+    conventional-changelog-writer: "npm:^6.0.0"
+    conventional-commits-parser: "npm:^4.0.0"
+    jest: "npm:^29.7.0"
   languageName: unknown
   linkType: soft
 

@@ -3,7 +3,15 @@
   "version": "1.0.3",
   "private": true,
   "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
   "dependencies": {
     "conventional-changelog-angular": "^7.0.0"
+  },
+  "devDependencies": {
+    "conventional-changelog-writer": "^6.0.0",
+    "conventional-commits-parser": "^4.0.0",
+    "jest": "^29.7.0"
   }
 }
