@@ -20,20 +20,20 @@ export const ILLUSTRATION_CATEGORIES: IllustrationCategory[] = [
     wide: true,
   },
   {
-    folder: 'People',
-    label: 'Mennesker',
+    folder: 'Travellers',
+    label: 'Reisende',
     description: 'Personer på reise, til informasjonssider og meldinger.',
   },
   {
     folder: 'Scenario',
     label: 'Scenarier',
     description:
-      'En person fra «Mennesker» satt inn i en by, på en togstasjon eller på toget.',
+      'En person fra «Reisende» satt inn i en by, på en togstasjon eller på toget.',
   },
   {
-    folder: 'Entur staff',
-    label: 'Entur-ansatte',
-    description: 'Ansatte i Entur.',
+    folder: 'Staff',
+    label: 'Personell',
+    description: 'Ansatte på stasjonen, om bord og i kundeservice.',
   },
   {
     folder: 'Animals',
