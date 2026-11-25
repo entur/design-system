@@ -15,11 +15,18 @@ const FIELD = '\x1f';
 const RECORD = '\x1e';
 
 const HEADER_PATTERN = /^(\w+)(?:\(([^)]*)\))?(!)?: (.*)$/;
-const BREAKING_PATTERN = /^BREAKING[ -]CHANGES?:\s*/m;
+// Captures the keyword, so split() returns it before each note's text
+const NOTE_PATTERN = /^(BREAKING[ -]CHANGES?|DEPRECATED):\s*/m;
 const SKILLS_SCOPE_PATTERN = /^skills(?:\/(.+))?$/;
 
 const SECTIONS = { feat: 'Features', fix: 'Bug Fixes' };
-const SECTION_ORDER = ['Bug Fixes', 'Features', 'BREAKING CHANGES'];
+// What consumers must act on comes first, as in the package changelogs
+const SECTION_ORDER = [
+  'BREAKING CHANGES',
+  'Deprecations',
+  'Bug Fixes',
+  'Features',
+];
 
 const git = (...args) =>
   execFileSync('git', args, { cwd: REPO_ROOT, encoding: 'utf8' });
@@ -72,9 +79,18 @@ const toEntry = (commit, pullRequest) => {
   const scopeMatch = scope.match(SKILLS_SCOPE_PATTERN);
   if (!SECTIONS[type] || !scopeMatch) return null;
 
-  // A commit can hold several breaking footers, one per affected skill
-  const [body, ...breaking] = commit.body.split(BREAKING_PATTERN);
-  const notes = breaking.length > 0 ? breaking : bang ? [subject] : [];
+  // A commit can hold several footers, one per affected skill
+  const [body, ...parts] = commit.body.split(NOTE_PATTERN);
+  const notes = [];
+  for (let i = 0; i < parts.length; i += 2) {
+    notes.push({
+      section: parts[i] === 'DEPRECATED' ? 'Deprecations' : 'BREAKING CHANGES',
+      text: parts[i + 1],
+    });
+  }
+  if (bang && !notes.some(note => note.section === 'BREAKING CHANGES')) {
+    notes.push({ section: 'BREAKING CHANGES', text: subject });
+  }
 
   const links = [
     `([${commit.hash.slice(0, 7)}](${REPO_URL}/commit/${commit.hash}))`,
@@ -89,7 +105,10 @@ const toEntry = (commit, pullRequest) => {
   return {
     section: SECTIONS[type],
     text: `- ${prefix}${subject} ${links}${formatBody(body)}`,
-    notes: notes.map(note => `- ${prefix}${formatNote(note)}`),
+    notes: notes.map(note => ({
+      section: note.section,
+      text: `- ${prefix}${formatNote(note.text)}`,
+    })),
   };
 };
 
@@ -112,8 +131,9 @@ const generateSkillsChangelog = () => {
       const entry = toEntry(commit, pullRequest);
       if (!entry) return;
       (sections[entry.section] ??= []).push(entry.text);
-      if (entry.notes.length > 0)
-        (sections['BREAKING CHANGES'] ??= []).push(...entry.notes);
+      entry.notes.forEach(note =>
+        (sections[note.section] ??= []).push(note.text),
+      );
     });
     days.set(mainCommit.date, sections);
   });

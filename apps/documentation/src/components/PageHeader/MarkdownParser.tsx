@@ -10,6 +10,7 @@ import {
   LinkIcon,
   NewIcon,
   PackageIcon,
+  TimeglassIcon,
   WarningIcon,
 } from '@entur/icons';
 import {
@@ -32,8 +33,8 @@ const BETA_SUFFIX = ' (beta)';
  * conventional-changelog-preset skriver.
  *
  * Seksjonene er kategorier, ikke tilstander, så de bruker kategorifarger valgt
- * for å skille seg fra hverandre. `BREAKING CHANGES` er unntaket: den krever
- * noe av den som leser, og er den eneste som bruker en statusfarge.
+ * for å skille seg fra hverandre. `BREAKING CHANGES` og `Deprecations` er
+ * unntakene: de krever noe av den som leser, og bruker statusfarger.
  *
  * `generated` er seksjonene tools/changelog-dependency-updates skriver i stedet
  * for en commit. De er navngitt etter scopet: bare pakker som slippes herfra er
@@ -47,6 +48,7 @@ const SECTIONS: Record<
   'Bug Fixes': { icon: BugIcon, variant: 'blue' },
   Features: { icon: NewIcon, variant: 'spring' },
   'BREAKING CHANGES': { icon: WarningIcon, variant: 'warning' },
+  Deprecations: { icon: TimeglassIcon, variant: 'information' },
   Reverts: { icon: BackArrowIcon, variant: 'neutral' },
   'Entur Dependency Updates': {
     icon: PackageIcon,
@@ -140,7 +142,7 @@ const ChangelogSection = ({
         {/* Samme kategorifarge som beta-merket ellers på siden. */}
         {isBeta && <Tag variant="mystic">Beta</Tag>}
       </h4>
-      {title === 'BREAKING CHANGES' && (
+      {(title === 'BREAKING CHANGES' || title === 'Deprecations') && (
         <Text variant="caption" lang="nb">
           <Link as={GatsbyLink} to="/komponenter/ressurser/migrering">
             Se migreringsguidene
