@@ -1,5 +1,6 @@
 import React from 'react';
 import { Switch } from '@entur/form';
+import { useContrast } from '@entur/layout';
 import { getTransportStyle } from './utils';
 
 import type { Transport } from './utils';
@@ -31,9 +32,11 @@ export const TravelSwitch = ({
   labelPlacement = 'right',
   transport,
   size,
+  style,
   ...rest
 }: TravelSwitchProps) => {
-  const { Icon } = getTransportStyle(transport);
+  const isContrast = useContrast();
+  const { Icon, hasDarkForeground } = getTransportStyle(transport);
   const deCapitalizeTransport = transport.toLowerCase();
 
   const backgroundColor =
@@ -44,6 +47,12 @@ export const TravelSwitch = ({
     'var(--components-travel-travelswitch-contrast-backgroundtrue-' +
     deCapitalizeTransport +
     ')';
+  // A light fill needs a dark icon on the white toggle
+  const iconColor = hasDarkForeground
+    ? `var(--components-travel-travelswitch-${
+        isContrast ? 'contrast' : 'standard'
+      }-icontrue-${deCapitalizeTransport})`
+    : undefined;
 
   return (
     <Switch
@@ -53,6 +62,14 @@ export const TravelSwitch = ({
       contrastColor={contrastBackgroundColor}
       icon={<Icon />}
       size={size}
+      style={
+        iconColor
+          ? ({
+              '--eds-switch-icon-color': iconColor,
+              ...style,
+            } as React.CSSProperties)
+          : style
+      }
       {...rest}
     >
       {children}

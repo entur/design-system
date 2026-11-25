@@ -1,5 +1,9 @@
 import React from 'react';
-import { PolymorphicComponentPropsWithRef, PolymorphicRef } from '@entur/utils';
+import {
+  PolymorphicComponentPropsWithRef,
+  PolymorphicRef,
+  forwardRefPolymorphic,
+} from '@entur/utils';
 import { SquareButton } from './SquareButton';
 
 type TertiarySquareButtonBaseProps = {
@@ -31,8 +35,8 @@ export type TertiarySquareButtonComponent = <
 const defaultElement = 'button';
 
 /** @deprecated use SecondarySquareButton with size="small" instead */
-export const TertiarySquareButton: TertiarySquareButtonComponent =
-  React.forwardRef(
+export const TertiarySquareButton =
+  forwardRefPolymorphic<TertiarySquareButtonComponent>(
     <T extends React.ElementType = typeof defaultElement>(
       props: TertiarySquareButtonProps<T>,
       ref: PolymorphicRef<T>,

@@ -12,7 +12,7 @@ const toListItems = (
   children: React.ReactNode,
   prefix = '',
 ): React.ReactNode[] =>
-  React.Children.toArray(children).flatMap((child, index) => {
+  React.Children.toArray(children).flatMap<React.ReactNode>((child, index) => {
     const key = `${prefix}${React.isValidElement(child) ? child.key : index}`;
     return React.isValidElement(child) && child.type === React.Fragment
       ? toListItems(
@@ -54,7 +54,7 @@ export type FooterOwnProps = {
    * @default "Entur i sosiale medier"
    */
   socialMediaLabel?: string;
-  /** `Footer.Brand` og en eller flere `Footer.LinkGroup` */
+  /** `Footer.Brand` og en eller flere `Footer.LinkGroup`. Uten innhold vises bare subfooteren. */
   children?: React.ReactNode;
   className?: string;
   style?: React.CSSProperties;
@@ -101,6 +101,7 @@ const FooterRoot = React.forwardRef<HTMLElement, FooterProps>(
     },
     ref,
   ) => {
+    const hasContent = React.Children.toArray(children).length > 0;
     return (
       <footer
         ref={ref}
@@ -111,8 +112,12 @@ const FooterRoot = React.forwardRef<HTMLElement, FooterProps>(
         )}
         {...rest}
       >
-        <div className="eds-footer__inner">
-          <div className="eds-footer__content">{children}</div>
+        <div
+          className={classNames('eds-footer__inner', {
+            'eds-footer__inner--subfooter-only': !hasContent,
+          })}
+        >
+          {hasContent && <div className="eds-footer__content">{children}</div>}
           <div className="eds-footer__subfooter">
             <p className="eds-footer__legal">
               <span>© {new Date().getFullYear()} Entur AS</span>
@@ -120,7 +125,7 @@ const FooterRoot = React.forwardRef<HTMLElement, FooterProps>(
                 className="eds-footer__subfooter-link"
                 href="https://entur.no"
               >
-                Entur.no
+                entur.no
               </Link>
             </p>
             {showSocialMedia && (

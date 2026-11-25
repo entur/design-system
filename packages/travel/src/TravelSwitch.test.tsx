@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { Contrast } from '@entur/layout';
 
 import { TravelSwitch, TravelTag } from '.';
 
@@ -91,4 +92,56 @@ test('disabled transport is skipped by keyboard and excluded from labelled form 
 
   await user.click(screen.getByRole('button', { name: 'Søk reiser' }));
   expect(onSubmit.mock.calls).toEqual([[['train']]]);
+});
+
+test.each([['railReplacementBus'], ['railreplacementbus']] as const)(
+  'rail replacement bus (%s) gets a dark checked icon while other transports keep the default',
+  transport => {
+    render(
+      <>
+        <TravelSwitch
+          transport={transport}
+          checked
+          onChange={jest.fn()}
+          style={{ marginTop: '1rem' }}
+        >
+          Buss for tog
+        </TravelSwitch>
+        <TravelSwitch transport="bus" checked onChange={jest.fn()}>
+          Buss
+        </TravelSwitch>
+      </>,
+    );
+    const railReplacementBus = screen
+      .getByRole('checkbox', { name: 'Buss for tog' })
+      .closest('label');
+    const bus = screen.getByRole('checkbox', { name: 'Buss' }).closest('label');
+
+    expect(
+      railReplacementBus?.style.getPropertyValue('--eds-switch-icon-color'),
+    ).toBe(
+      'var(--components-travel-travelswitch-standard-icontrue-railreplacementbus)',
+    );
+    expect(railReplacementBus).toHaveStyle({ marginTop: '1rem' });
+    expect(bus?.style.getPropertyValue('--eds-switch-icon-color')).toBe('');
+  },
+);
+
+test('rail replacement bus uses the contrast icon colour in contrast', () => {
+  render(
+    <Contrast>
+      <TravelSwitch transport="railReplacementBus" checked onChange={jest.fn()}>
+        Buss for tog
+      </TravelSwitch>
+    </Contrast>,
+  );
+
+  expect(
+    screen
+      .getByRole('checkbox', { name: 'Buss for tog' })
+      .closest('label')
+      ?.style.getPropertyValue('--eds-switch-icon-color'),
+  ).toBe(
+    'var(--components-travel-travelswitch-contrast-icontrue-railreplacementbus)',
+  );
 });

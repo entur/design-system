@@ -23,7 +23,7 @@ export const BaseCard = <E extends React.ElementType = typeof defaultElement>({
   className,
   as,
   ...rest
-}: BaseCardProps<E>): JSX.Element => {
+}: BaseCardProps<E>): React.JSX.Element => {
   const Element: React.ElementType = as || defaultElement;
   const classList = classNames('eds-base-card', className);
   return (

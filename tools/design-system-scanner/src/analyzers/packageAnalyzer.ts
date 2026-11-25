@@ -77,6 +77,18 @@ export function resolveDesignSystemSpecifier(
 }
 
 /**
+ * Identity of a symbol across the scanner: root package, subpath and name.
+ * Link from @entur/typography and @entur/typography/beta must not share a key.
+ */
+export function symbolKey(
+  packageName: string,
+  deepImportPath: string | undefined | null,
+  symbolName: string,
+): string {
+  return `${packageName}${deepImportPath ?? ''}::${symbolName}`;
+}
+
+/**
  * Known UI libraries to detect in addition to @entur/* packages.
  * Maps package name patterns to their category.
  */

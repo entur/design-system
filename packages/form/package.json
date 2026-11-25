@@ -1,6 +1,6 @@
 {
   "name": "@entur/form",
-  "version": "10.3.1",
+  "version": "10.3.2",
   "license": "EUPL-1.2",
   "main": "dist/form.cjs",
   "module": "dist/form.mjs",
@@ -19,7 +19,8 @@
   "scripts": {
     "start": "vite build --watch",
     "build": "vite build",
-    "test": "jest"
+    "test": "jest",
+    "typecheck": "tsc -p tsconfig.json --noEmit --rootDir ../.."
   },
   "peerDependencies": {
     "react": ">=18.0.0",

@@ -31,7 +31,7 @@ export const TopNavigationItem = <
   className,
   as,
   ...rest
-}: TopNavigationItemProps<E>): JSX.Element => {
+}: TopNavigationItemProps<E>): React.JSX.Element => {
   const Element: React.ElementType = as || defaultElement;
   return (
     <Element

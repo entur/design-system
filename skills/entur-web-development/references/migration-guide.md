@@ -2,6 +2,11 @@
 
 Use this when upgrading `@entur/*` packages or fixing deprecation warnings. Each entry has the old API, the replacement, and a before/after code pair.
 
+Two migrations have their own skill, which the user starts because it changes a lot of code. If the user asks for one, tell them to run the command and don't do the migration without it:
+
+- Moving to the new typography (`@entur/typography/beta`) or the layout beta spacing scale → `/entur-linje:migrate-typography`
+- Upgrading from `@entur/*` versions that still accept React 16 or 17 → `/entur-linje:migrate-react-18`
+
 ---
 
 ## Deprecated props and components

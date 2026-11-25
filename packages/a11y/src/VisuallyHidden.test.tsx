@@ -46,8 +46,7 @@ describeComponentContract('VisuallyHidden', {
   as: 'p',
 });
 
-// Bug: a consumer className replaces eds-visually-hidden, so the text becomes visible.
-test.failing('keeps its hiding class when given a consumer className', () => {
+test('keeps its hiding class when given a consumer className', () => {
   render(
     <VisuallyHidden className="consumer-class">Skjult tekst</VisuallyHidden>,
   );

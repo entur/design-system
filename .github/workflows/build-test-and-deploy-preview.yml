@@ -69,6 +69,30 @@ jobs:
             apps/documentation/public/**
             !apps/documentation/public/__node-manifests/**
 
+  build-sanity-studio:
+    name: Build Sanity Studio
+    needs: build-packages
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+
+      # The preview app in Studio renders with the documentation site's components
+      - name: Install and Cache Yarn Dependencies
+        uses: ./.github/actions/install-and-cache-dependencies
+        with:
+          cache-key: yarn-sanity-docs-${{ hashFiles('**/yarn.lock') }}
+          only-for-workspace: 'studio-linje @entur/documentation'
+
+      - name: Download package artifacts
+        uses: actions/download-artifact@v8
+        with:
+          name: package-artifacts
+          path: 'packages'
+
+      - name: Build Sanity Studio
+        working-directory: apps/studio-linje
+        run: CI=true yarn build
+
   test-packages:
     name: Test packages
     needs: build-packages
@@ -91,6 +115,29 @@ jobs:
           path: 'packages'
 
       - run: NX_REJECT_UNKNOWN_LOCAL_CACHE=0 yarn test
+
+  typecheck-packages:
+    name: Typecheck packages
+    needs: build-packages
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+
+      - name: Install and Cache Yarn Dependencies
+        uses: ./.github/actions/install-and-cache-dependencies
+        with:
+          cache-key: yarn-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Use Nx cache
+        uses: ./.github/actions/use-nx-cache
+
+      - name: Download package artifacts
+        uses: actions/download-artifact@v8
+        with:
+          name: package-artifacts
+          path: 'packages'
+
+      - run: NX_REJECT_UNKNOWN_LOCAL_CACHE=0 yarn typecheck:packages
 
   browser-tests:
     name: Typecheck and run browser tests
@@ -147,6 +194,20 @@ jobs:
           path: 'packages'
 
       - run: NX_REJECT_UNKNOWN_LOCAL_CACHE=0 yarn lint
+
+      # The illustration page reads the colour mode, background and format of each file from its
+      # name, so a file that breaks the naming convention shows up wrong or not at all.
+      - name: Check the illustration names
+        run: yarn check:illustration-names
+
+  verify-skill-links:
+    name: Verify skill links
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+
+      # The plugin is pinned to a commit, so skills may only link to their own files.
+      - run: node tools/verify-skills/links.mjs
 
   verify-skills:
     name: Verify skills against package APIs

@@ -20,6 +20,9 @@ export type ImageDisplayProps = {
   noBorderRadius?: boolean;
 };
 
+// Boxed presets stay in light mode, since the images are drawn for it
+const boxedPresets = ['contain-logo-display', 'centered-image'];
+
 export const ImageDisplay: React.FC<ImageDisplayProps> = ({
   imgSource,
   name,
@@ -43,6 +46,9 @@ export const ImageDisplay: React.FC<ImageDisplayProps> = ({
         { 'image-display--no-border-radius': noBorderRadius },
         className,
       )}
+      data-color-mode={
+        boxedPresets.includes(preset ?? '') ? 'light' : undefined
+      }
       {...rest}
       style={style}
     >
@@ -60,9 +66,8 @@ export const ImageDisplay: React.FC<ImageDisplayProps> = ({
 
       {downloadSources !== undefined && (
         <OverflowMenu
-          buttonIcon={
-            <DownloadIcon aria-label={`Last ned illustrasjon ${name}`} />
-          }
+          buttonIcon={<DownloadIcon aria-hidden="true" />}
+          aria-label={`Last ned ${name || alt}`.trim()}
           placement="bottom-end"
           className={classNames('image-display__download', {
             'image-display__download--show': alwaysShowDownload,

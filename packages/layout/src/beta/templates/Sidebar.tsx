@@ -1,5 +1,8 @@
 import React from 'react';
-import type { PolymorphicComponentProps } from '@entur/utils';
+import {
+  type PolymorphicComponentProps,
+  forwardRefPolymorphic,
+} from '@entur/utils';
 import classNames from 'classnames';
 import { LeftArrowIcon, RightArrowIcon } from '@entur/icons';
 import { Flex } from '../Flex';
@@ -59,7 +62,7 @@ type SidebarSectionComponent<
   props: SidebarSectionProps<E> & { ref?: React.Ref<Element> },
 ) => React.ReactElement | null) & { displayName?: string };
 
-const SidebarLogo: SidebarSectionComponent = React.forwardRef(
+const SidebarLogo = forwardRefPolymorphic<SidebarSectionComponent>(
   <E extends React.ElementType = typeof defaultSectionElement>(
     { children, as, ...rest }: SidebarSectionProps<E>,
     ref?: React.Ref<Element>,
@@ -73,7 +76,7 @@ const SidebarLogo: SidebarSectionComponent = React.forwardRef(
   },
 );
 
-const SidebarUser: SidebarSectionComponent = React.forwardRef(
+const SidebarUser = forwardRefPolymorphic<SidebarSectionComponent>(
   <E extends React.ElementType = typeof defaultSectionElement>(
     { children, as, ...rest }: SidebarSectionProps<E>,
     ref?: React.Ref<Element>,
@@ -87,7 +90,7 @@ const SidebarUser: SidebarSectionComponent = React.forwardRef(
   },
 );
 
-const SidebarData: SidebarSectionComponent = React.forwardRef(
+const SidebarData = forwardRefPolymorphic<SidebarSectionComponent>(
   <E extends React.ElementType = typeof defaultSectionElement>(
     { children, as, ...rest }: SidebarSectionProps<E>,
     ref?: React.Ref<Element>,
@@ -107,9 +110,9 @@ const SidebarData: SidebarSectionComponent = React.forwardRef(
   },
 );
 
-const SidebarNavigation: SidebarSectionComponent<
-  typeof defaultNavigationElement
-> = React.forwardRef(
+const SidebarNavigation = forwardRefPolymorphic<
+  SidebarSectionComponent<typeof defaultNavigationElement>
+>(
   <E extends React.ElementType = typeof defaultNavigationElement>(
     { children, className, as, ...rest }: SidebarSectionProps<E>,
     ref?: React.Ref<Element>,
@@ -130,27 +133,25 @@ const SidebarNavigation: SidebarSectionComponent<
   },
 );
 
-const SidebarFooter: SidebarSectionComponent<typeof defaultFooterElement> =
-  React.forwardRef(
-    <E extends React.ElementType = typeof defaultFooterElement>(
-      { children, className, as, ...rest }: SidebarSectionProps<E>,
-      ref?: React.Ref<Element>,
-    ) => {
-      const Element: React.ElementType = as || defaultFooterElement;
-      return (
-        <Element
-          ref={ref}
-          className={classNames(
-            'eds-layout-template-sidebar__footer',
-            className,
-          )}
-          {...rest}
-        >
-          {children}
-        </Element>
-      );
-    },
-  );
+const SidebarFooter = forwardRefPolymorphic<
+  SidebarSectionComponent<typeof defaultFooterElement>
+>(
+  <E extends React.ElementType = typeof defaultFooterElement>(
+    { children, className, as, ...rest }: SidebarSectionProps<E>,
+    ref?: React.Ref<Element>,
+  ) => {
+    const Element: React.ElementType = as || defaultFooterElement;
+    return (
+      <Element
+        ref={ref}
+        className={classNames('eds-layout-template-sidebar__footer', className)}
+        {...rest}
+      >
+        {children}
+      </Element>
+    );
+  },
+);
 
 const CollapseToggle = ({
   isCollapsed,
@@ -174,7 +175,7 @@ const CollapseToggle = ({
   </button>
 );
 
-const SidebarRoot: SidebarRootComponent = React.forwardRef(
+const SidebarRoot = forwardRefPolymorphic<SidebarRootComponent>(
   <E extends React.ElementType = typeof defaultSidebarElement>(
     {
       children,

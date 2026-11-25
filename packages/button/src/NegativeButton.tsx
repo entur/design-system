@@ -1,6 +1,10 @@
 import React from 'react';
 import { Button } from './Button';
-import { PolymorphicComponentPropsWithRef, PolymorphicRef } from '@entur/utils';
+import {
+  PolymorphicComponentPropsWithRef,
+  PolymorphicRef,
+  forwardRefPolymorphic,
+} from '@entur/utils';
 
 export type NegativeButtonBaseProps = {
   /** Størrelsen på knappen
@@ -36,7 +40,7 @@ export type NegativeButtonComponent = <
 
 const defaultElement = 'button';
 
-export const NegativeButton: NegativeButtonComponent = React.forwardRef(
+export const NegativeButton = forwardRefPolymorphic<NegativeButtonComponent>(
   <T extends React.ElementType = typeof defaultElement>(
     props: NegativeButtonProps<T>,
     ref: PolymorphicRef<T>,

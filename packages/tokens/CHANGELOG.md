@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.4.0](https://github.com/entur/design-system/compare/@entur/tokens@4.3.1...@entur/tokens@4.4.0) (2026-11-11)
+
+### Features
+
+- **tokens:** add transport colours for rail replacement bus ([c91b0b6](https://github.com/entur/design-system/commit/c91b0b6853815ad2cfd08de8a6b4f85571adb7aa)) ([#547](https://github.com/entur/design-system/pull/547))
+
+  New transport tokens for buss for tog: `standard-railreplacementbus`
+  (yellow), `contrast-railreplacementbus` and `dark-railreplacementbus`,
+  each with a `-transparent` variant. `standard-railreplacementbusalt` and
+  `contrast-railreplacementbusalt` give dark text and icons on the yellow.
+  Existing tokens are unchanged.
+
 ## [4.3.1](https://github.com/entur/design-system/compare/@entur/tokens@4.3.0...@entur/tokens@4.3.1) (2026-11-02)
 
 **Note:** Version bump only for package @entur/tokens

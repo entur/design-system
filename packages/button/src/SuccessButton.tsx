@@ -1,6 +1,10 @@
 import React from 'react';
 import { Button } from './Button';
-import { PolymorphicComponentPropsWithRef, PolymorphicRef } from '@entur/utils';
+import {
+  PolymorphicComponentPropsWithRef,
+  PolymorphicRef,
+  forwardRefPolymorphic,
+} from '@entur/utils';
 
 export type SuccessButtonBaseProps = {
   /** Størrelsen på knappen
@@ -36,7 +40,7 @@ export type SuccessButtonComponent = <
 
 const defaultElement = 'button';
 
-export const SuccessButton: SuccessButtonComponent = React.forwardRef(
+export const SuccessButton = forwardRefPolymorphic<SuccessButtonComponent>(
   <T extends React.ElementType = typeof defaultElement>(
     props: SuccessButtonProps<T>,
     ref: PolymorphicRef<T>,

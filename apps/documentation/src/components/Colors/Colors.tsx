@@ -3,7 +3,10 @@ import { Link } from 'gatsby';
 import { hex } from 'wcag-contrast';
 
 import { CopyableText } from '@entur/alert';
-import { CheckIcon, CloseIcon } from '@entur/icons';
+import {
+  ValidationErrorFilledIcon,
+  ValidationSuccessFilledIcon,
+} from '@entur/icons';
 import {
   DataCell,
   HeaderCell,
@@ -129,10 +132,11 @@ const ContrastRow = ({ color, testColor }) => {
       </DataCell>
       <DataCell>{contrastScore}:1</DataCell>
       <DataCell>
-        {WCAGTest(contrastScore, 'aasmall') ? <Innafor /> : <Uttafor />}
+        {WCAGTest(contrastScore, 'aasmall') ? <Approved /> : <NotApproved />}
       </DataCell>
       <DataCell>
-        {WCAGTest(contrastScore, 'aaalarge') ? <Innafor /> : <Uttafor />}
+        {/* Normal text, like the AA column */}
+        {WCAGTest(contrastScore, 'aaasmall') ? <Approved /> : <NotApproved />}
       </DataCell>
     </TableRow>
   );
@@ -152,21 +156,21 @@ function WCAGTest(score: any, wcagType: string) {
       return Number(score) >= 3;
   }
 }
-function Innafor() {
+function Approved() {
   return (
-    <CheckIcon
+    <ValidationSuccessFilledIcon
       inline
-      aria-label="Innfrir kontrastkravet"
+      aria-label="Godkjent"
       className="eds-colors-group__validation-icon--valid"
     />
   );
 }
 
-function Uttafor() {
+function NotApproved() {
   return (
-    <CloseIcon
+    <ValidationErrorFilledIcon
       inline
-      aria-label="Bryter kontrastkravet"
+      aria-label="Ikke godkjent"
       className="eds-colors-group__validation-icon--invalid"
     />
   );

@@ -30,7 +30,7 @@ export const EmphasizedText = <
   margin = 'both',
   as,
   ...rest
-}: EmphasizedTextProps<E>): JSX.Element => {
+}: EmphasizedTextProps<E>): React.JSX.Element => {
   const Element: React.ElementType = as || defaultElement;
   return (
     <Element

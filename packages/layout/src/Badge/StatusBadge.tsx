@@ -1,6 +1,10 @@
 import React from 'react';
 import { Badge } from './Badge';
-import { PolymorphicComponentPropsWithRef, PolymorphicRef } from '@entur/utils';
+import {
+  PolymorphicComponentPropsWithRef,
+  PolymorphicRef,
+  forwardRefPolymorphic,
+} from '@entur/utils';
 import { VariantType } from '@entur/utils';
 
 /** @deprecated use variant="information" instead */
@@ -38,7 +42,7 @@ const defaultElement = 'span';
 
 /** @deprecated Bruk `Tag` i stedet. `variant="primary"` tilsvarer
  * `variant="neutral"` på `Tag` */
-export const StatusBadge: StatusBadgeComponent = React.forwardRef(
+export const StatusBadge = forwardRefPolymorphic<StatusBadgeComponent>(
   <T extends React.ElementType = typeof defaultElement>(
     props: StatusBadgeProps<T>,
     ref: PolymorphicRef<T>,

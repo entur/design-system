@@ -35,7 +35,7 @@ const contractCases: Array<
     name: string,
     Component: React.ElementType,
     baseClassName: string,
-    as?: keyof JSX.IntrinsicElements,
+    as?: keyof React.JSX.IntrinsicElements,
   ]
 > = [
   ['Blockquote', Blockquote, 'eds-blockquote'],

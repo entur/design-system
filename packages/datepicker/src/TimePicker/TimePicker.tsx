@@ -12,7 +12,11 @@ import type {
 } from '@react-types/datepicker';
 
 import { VisuallyHidden } from '@entur/a11y';
-import { BaseFormControl, BaseFormControlProps } from '@entur/form';
+import {
+  BaseFormControl,
+  BaseFormControlProps,
+  useFeedbackDescription,
+} from '@entur/form';
 import { VariantType } from '@entur/utils';
 
 import { FieldSegment } from '../shared/FieldSegment';
@@ -138,6 +142,16 @@ export const TimePicker = <TimeType extends TimeValue>({
   let { locale } = useLocale();
   if (customLocale) locale = customLocale;
   const timePickerId = `eds-timepicker${useId()}`;
+  const { feedbackId, 'aria-describedby': describedBy } =
+    useFeedbackDescription({
+      feedback,
+      variant,
+      feedbackProps,
+      'aria-describedby': classNames(
+        rest['aria-describedby'],
+        timePickerId + 'description',
+      ),
+    });
 
   const timeZone =
     forcedTimeZone ??
@@ -225,6 +239,7 @@ export const TimePicker = <TimeType extends TimeValue>({
         }
         ariaAlertOnFeedback={ariaAlertOnFeedback}
         feedbackProps={feedbackProps}
+        feedbackId={feedbackId}
         aria-describedby={timePickerId + 'description'}
         className={classNames('eds-timepicker', className, {
           'eds-timepicker--disabled': disabled,
@@ -268,7 +283,7 @@ export const TimePicker = <TimeType extends TimeValue>({
               segment={segment}
               state={state}
               key={i}
-              aria-describedby={timePickerId + 'description'}
+              aria-describedby={describedBy}
             />
           ))}
         </span>

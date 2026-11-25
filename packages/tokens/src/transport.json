@@ -141,6 +141,24 @@
             "rootAlias": ""
           },
           {
+            "name": "Contrast/RailReplacementBus",
+            "value": "#ffe082",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Contrast/RailReplacementBus Alt",
+            "value": "#302403",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Contrast/RailReplacementBus-transparent",
+            "value": "#ffe08226",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
             "name": "Contrast/Taxi",
             "value": "#ffe082",
             "var": "",
@@ -335,6 +353,18 @@
           {
             "name": "Dark/Plane-transparent",
             "value": "#f2b8e526",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Dark/RailReplacementBus",
+            "value": "#ffe082",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Dark/RailReplacementBus-transparent",
+            "value": "#ffe08226",
             "var": "",
             "rootAlias": ""
           },
@@ -539,6 +569,24 @@
           {
             "name": "Standard/Plane-transparent",
             "value": "#80066426",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Standard/RailReplacementBus",
+            "value": "#ffcf26",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Standard/RailReplacementBus Alt",
+            "value": "#302403",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Standard/RailReplacementBus-transparent",
+            "value": "#ffcf2640",
             "var": "",
             "rootAlias": ""
           },

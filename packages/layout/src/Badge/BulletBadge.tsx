@@ -1,6 +1,10 @@
 import React from 'react';
 import { Badge } from './Badge';
-import { PolymorphicComponentPropsWithRef, PolymorphicRef } from '@entur/utils';
+import {
+  PolymorphicComponentPropsWithRef,
+  PolymorphicRef,
+  forwardRefPolymorphic,
+} from '@entur/utils';
 import { VariantType } from '@entur/utils';
 
 /** @deprecated use variant="information" instead */
@@ -34,7 +38,7 @@ export type BulletBadgeComponent = <
 
 const defaultElement = 'span';
 
-export const BulletBadge: BulletBadgeComponent = React.forwardRef(
+export const BulletBadge = forwardRefPolymorphic<BulletBadgeComponent>(
   <T extends React.ElementType = typeof defaultElement>(
     props: BulletBadgeProps<T>,
     ref: PolymorphicRef<T>,

@@ -1,6 +1,6 @@
 {
   "name": "@entur/typography",
-  "version": "3.2.0",
+  "version": "3.2.1",
   "license": "SEE LICENSE IN README.md",
   "main": "./dist/typography.cjs",
   "module": "./dist/typography.mjs",
@@ -50,7 +50,8 @@
     "test": "jest",
     "lint:styles": "stylelint 'src/beta**/*.{css,scss}'  --ignore-path ../../.gitignore",
     "start": "vite build --watch",
-    "start:beta": "vite build --config vite.config.beta.ts --watch"
+    "start:beta": "vite build --config vite.config.beta.ts --watch",
+    "typecheck": "tsc -p tsconfig.json --noEmit --rootDir ../.."
   },
   "peerDependencies": {
     "react": ">=18.0.0",

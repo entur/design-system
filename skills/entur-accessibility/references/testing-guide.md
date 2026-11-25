@@ -54,7 +54,7 @@ Low contrast affects users with low vision, dyslexia, and anyone in poor lightin
 - CCA (Windows): Image → Screen → select colorblindness type
 - [Funkify](https://www.funkify.org/) browser extension
 
-Particularly important for data visualizations — test with deuteranopia (red-green). Use the ordered data color palette from `data-visualization.md`.
+Particularly important for data visualizations — test with deuteranopia (red-green). Use the ordered data color palette in [data-visualization.md](../../entur-brand-design/references/data-visualization.md).
 
 Reference: https://linje.entur.no/universell-utforming/kontrastsjekker
 

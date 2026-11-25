@@ -4617,6 +4617,12 @@
             "rootAlias": "Contrast/Train"
           },
           {
+            "name": "Components/travel/Travel Leg/Contrast/RailReplacementBus",
+            "value": "#ffe082",
+            "var": "Contrast/RailReplacementBus",
+            "rootAlias": "Contrast/RailReplacementBus"
+          },
+          {
             "name": "Components/travel/Travel Leg/Contrast/SnowCoach",
             "value": "#ffe082",
             "var": "Contrast/Taxi",
@@ -4755,6 +4761,12 @@
             "rootAlias": "Standard/Train"
           },
           {
+            "name": "Components/travel/Travel Leg/Standard/RailReplacementBus",
+            "value": "#e9b10c",
+            "var": "Canary/70",
+            "rootAlias": "Canary/70"
+          },
+          {
             "name": "Components/travel/Travel Leg/Standard/SnowCoach",
             "value": "#3d3e40",
             "var": "Standard/Taxi",
@@ -4873,6 +4885,12 @@
             "value": "#42a5f5",
             "var": "Contrast/Train",
             "rootAlias": "Contrast/Train"
+          },
+          {
+            "name": "Components/travel/Travel Switch/Contrast/BackgroundTrue-RailReplacementBus",
+            "value": "#ffe082",
+            "var": "Contrast/RailReplacementBus",
+            "rootAlias": "Contrast/RailReplacementBus"
           },
           {
             "name": "Components/travel/Travel Switch/Contrast/BackgroundTrue-Regional-Bus",
@@ -5005,6 +5023,12 @@
             "value": "#800664",
             "var": "Standard/Plane",
             "rootAlias": "Standard/Plane"
+          },
+          {
+            "name": "Components/travel/Travel Switch/Contrast/IconTrue-RailReplacementBus",
+            "value": "#302403",
+            "var": "Contrast/RailReplacementBus Alt",
+            "rootAlias": "Contrast/RailReplacementBus Alt"
           },
           {
             "name": "Components/travel/Travel Switch/Contrast/IconTrue-SnowCoach",
@@ -5157,6 +5181,12 @@
             "rootAlias": "Standard/Train"
           },
           {
+            "name": "Components/travel/Travel Switch/Standard/BackgroundTrue-RailReplacementBus",
+            "value": "#ffcf26",
+            "var": "Standard/RailReplacementBus",
+            "rootAlias": "Standard/RailReplacementBus"
+          },
+          {
             "name": "Components/travel/Travel Switch/Standard/BackgroundTrue-SnowCoach",
             "value": "#3d3e40",
             "var": "Standard/Taxi",
@@ -5281,6 +5311,12 @@
             "value": "#00367f",
             "var": "Standard/Train",
             "rootAlias": "Standard/Train"
+          },
+          {
+            "name": "Components/travel/Travel Switch/Standard/IconTrue-RailReplacementBus",
+            "value": "#302403",
+            "var": "Standard/RailReplacementBus Alt",
+            "rootAlias": "Standard/RailReplacementBus Alt"
           },
           {
             "name": "Components/travel/Travel Switch/Standard/IconTrue-Regional-Bus",
@@ -5517,6 +5553,18 @@
             "rootAlias": "Contrast/Train-transparent"
           },
           {
+            "name": "Components/travel/Travel Tag/Contrast/Fill/RailReplacementBus",
+            "value": "#ffe082",
+            "var": "Contrast/RailReplacementBus",
+            "rootAlias": "Contrast/RailReplacementBus"
+          },
+          {
+            "name": "Components/travel/Travel Tag/Contrast/Fill/RailReplacementBus-Cancelled",
+            "value": "#ffe08226",
+            "var": "Contrast/RailReplacementBus-transparent",
+            "rootAlias": "Contrast/RailReplacementBus-transparent"
+          },
+          {
             "name": "Components/travel/Travel Tag/Contrast/Fill/SnowCoach",
             "value": "#ffe082",
             "var": "Contrast/Taxi",
@@ -5685,6 +5733,12 @@
             "rootAlias": "Contrast/Plane"
           },
           {
+            "name": "Components/travel/Travel Tag/Contrast/Icon/RailReplacementBus-Cancelled",
+            "value": "#ffe082",
+            "var": "Contrast/RailReplacementBus",
+            "rootAlias": "Contrast/RailReplacementBus"
+          },
+          {
             "name": "Components/travel/Travel Tag/Contrast/Icon/SnowCoach-Cancelled",
             "value": "#ffe082",
             "var": "Contrast/Taxi",
@@ -5809,6 +5863,12 @@
             "value": "#fbafea",
             "var": "Contrast/Plane",
             "rootAlias": "Contrast/Plane"
+          },
+          {
+            "name": "Components/travel/Travel Tag/Contrast/Text/Line-RailReplacementBus-Cancelled",
+            "value": "#ffe082",
+            "var": "Contrast/RailReplacementBus",
+            "rootAlias": "Contrast/RailReplacementBus"
           },
           {
             "name": "Components/travel/Travel Tag/Contrast/Text/Line-SnowCoach-Cancelled",
@@ -6045,6 +6105,18 @@
             "rootAlias": "Standard/Train-transparent"
           },
           {
+            "name": "Components/travel/Travel Tag/Standard/Fill/RailReplacementBus",
+            "value": "#ffcf26",
+            "var": "Standard/RailReplacementBus",
+            "rootAlias": "Standard/RailReplacementBus"
+          },
+          {
+            "name": "Components/travel/Travel Tag/Standard/Fill/RailReplacementBus-Cancelled",
+            "value": "#ffcf2640",
+            "var": "Standard/RailReplacementBus-transparent",
+            "rootAlias": "Standard/RailReplacementBus-transparent"
+          },
+          {
             "name": "Components/travel/Travel Tag/Standard/Fill/SnowCoach",
             "value": "#3d3e40",
             "var": "Standard/Taxi",
@@ -6153,6 +6225,12 @@
             "rootAlias": "White/Alpha-100"
           },
           {
+            "name": "Components/travel/Travel Tag/Standard/Icon/Default Alt",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
             "name": "Components/travel/Travel Tag/Standard/Icon/Ferry-Cancelled",
             "value": "#0c6693",
             "var": "Standard/Ferry",
@@ -6181,6 +6259,12 @@
             "value": "#800664",
             "var": "Standard/Plane",
             "rootAlias": "Standard/Plane"
+          },
+          {
+            "name": "Components/travel/Travel Tag/Standard/Icon/RailReplacementBus-Cancelled",
+            "value": "#302403",
+            "var": "Standard/RailReplacementBus Alt",
+            "rootAlias": "Standard/RailReplacementBus Alt"
           },
           {
             "name": "Components/travel/Travel Tag/Standard/Icon/SnowCoach-Cancelled",
@@ -6243,6 +6327,12 @@
             "rootAlias": "White/Alpha-100"
           },
           {
+            "name": "Components/travel/Travel Tag/Standard/Text/Default Alt",
+            "value": "#181c56",
+            "var": "Text/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
             "name": "Components/travel/Travel Tag/Standard/Text/Details",
             "value": "#181c56",
             "var": "Text/Accent",
@@ -6301,6 +6391,12 @@
             "value": "#800664",
             "var": "Standard/Plane",
             "rootAlias": "Standard/Plane"
+          },
+          {
+            "name": "Components/travel/Travel Tag/Standard/Text/Line-RailReplacementBus-Cancelled",
+            "value": "#302403",
+            "var": "Standard/RailReplacementBus Alt",
+            "rootAlias": "Standard/RailReplacementBus Alt"
           },
           {
             "name": "Components/travel/Travel Tag/Standard/Text/Line-SnowCoach-Cancelled",
@@ -11341,6 +11437,12 @@
             "rootAlias": "Dark/Train"
           },
           {
+            "name": "Components/travel/Travel Leg/Contrast/RailReplacementBus",
+            "value": "#ffe082",
+            "var": "Dark/RailReplacementBus",
+            "rootAlias": "Dark/RailReplacementBus"
+          },
+          {
             "name": "Components/travel/Travel Leg/Contrast/SnowCoach",
             "value": "#ffe082",
             "var": "Dark/Taxi",
@@ -11479,6 +11581,12 @@
             "rootAlias": "Dark/Train"
           },
           {
+            "name": "Components/travel/Travel Leg/Standard/RailReplacementBus",
+            "value": "#e9b10c",
+            "var": "Canary/70",
+            "rootAlias": "Canary/70"
+          },
+          {
             "name": "Components/travel/Travel Leg/Standard/SnowCoach",
             "value": "#ffe082",
             "var": "Dark/Taxi",
@@ -11597,6 +11705,12 @@
             "value": "#60a2d7",
             "var": "Dark/Train",
             "rootAlias": "Dark/Train"
+          },
+          {
+            "name": "Components/travel/Travel Switch/Contrast/BackgroundTrue-RailReplacementBus",
+            "value": "#ffe082",
+            "var": "Dark/RailReplacementBus",
+            "rootAlias": "Dark/RailReplacementBus"
           },
           {
             "name": "Components/travel/Travel Switch/Contrast/BackgroundTrue-Regional-Bus",
@@ -11729,6 +11843,12 @@
             "value": "#f2b8e5",
             "var": "Dark/Plane",
             "rootAlias": "Dark/Plane"
+          },
+          {
+            "name": "Components/travel/Travel Switch/Contrast/IconTrue-RailReplacementBus",
+            "value": "#ffe082",
+            "var": "Dark/RailReplacementBus",
+            "rootAlias": "Dark/RailReplacementBus"
           },
           {
             "name": "Components/travel/Travel Switch/Contrast/IconTrue-SnowCoach",
@@ -11881,6 +12001,12 @@
             "rootAlias": "Dark/Train"
           },
           {
+            "name": "Components/travel/Travel Switch/Standard/BackgroundTrue-RailReplacementBus",
+            "value": "#ffe082",
+            "var": "Dark/RailReplacementBus",
+            "rootAlias": "Dark/RailReplacementBus"
+          },
+          {
             "name": "Components/travel/Travel Switch/Standard/BackgroundTrue-SnowCoach",
             "value": "#ffe082",
             "var": "Dark/Taxi",
@@ -12005,6 +12131,12 @@
             "value": "#60a2d7",
             "var": "Dark/Train",
             "rootAlias": "Dark/Train"
+          },
+          {
+            "name": "Components/travel/Travel Switch/Standard/IconTrue-RailReplacementBus",
+            "value": "#ffe082",
+            "var": "Dark/RailReplacementBus",
+            "rootAlias": "Dark/RailReplacementBus"
           },
           {
             "name": "Components/travel/Travel Switch/Standard/IconTrue-Regional-Bus",
@@ -12241,6 +12373,18 @@
             "rootAlias": "Dark/Train-transparent"
           },
           {
+            "name": "Components/travel/Travel Tag/Contrast/Fill/RailReplacementBus",
+            "value": "#ffe082",
+            "var": "Dark/RailReplacementBus",
+            "rootAlias": "Dark/RailReplacementBus"
+          },
+          {
+            "name": "Components/travel/Travel Tag/Contrast/Fill/RailReplacementBus-Cancelled",
+            "value": "#ffe08226",
+            "var": "Dark/RailReplacementBus-transparent",
+            "rootAlias": "Dark/RailReplacementBus-transparent"
+          },
+          {
             "name": "Components/travel/Travel Tag/Contrast/Fill/SnowCoach",
             "value": "#ffe082",
             "var": "Dark/Taxi",
@@ -12409,6 +12553,12 @@
             "rootAlias": "Dark/Plane"
           },
           {
+            "name": "Components/travel/Travel Tag/Contrast/Icon/RailReplacementBus-Cancelled",
+            "value": "#ffe082",
+            "var": "Dark/RailReplacementBus",
+            "rootAlias": "Dark/RailReplacementBus"
+          },
+          {
             "name": "Components/travel/Travel Tag/Contrast/Icon/SnowCoach-Cancelled",
             "value": "#ffe082",
             "var": "Dark/Taxi",
@@ -12533,6 +12683,12 @@
             "value": "#f2b8e5",
             "var": "Dark/Plane",
             "rootAlias": "Dark/Plane"
+          },
+          {
+            "name": "Components/travel/Travel Tag/Contrast/Text/Line-RailReplacementBus-Cancelled",
+            "value": "#ffe082",
+            "var": "Dark/RailReplacementBus",
+            "rootAlias": "Dark/RailReplacementBus"
           },
           {
             "name": "Components/travel/Travel Tag/Contrast/Text/Line-SnowCoach-Cancelled",
@@ -12769,6 +12925,18 @@
             "rootAlias": "Dark/Train-transparent"
           },
           {
+            "name": "Components/travel/Travel Tag/Standard/Fill/RailReplacementBus",
+            "value": "#ffe082",
+            "var": "Dark/RailReplacementBus",
+            "rootAlias": "Dark/RailReplacementBus"
+          },
+          {
+            "name": "Components/travel/Travel Tag/Standard/Fill/RailReplacementBus-Cancelled",
+            "value": "#ffe08226",
+            "var": "Dark/RailReplacementBus-transparent",
+            "rootAlias": "Dark/RailReplacementBus-transparent"
+          },
+          {
             "name": "Components/travel/Travel Tag/Standard/Fill/SnowCoach",
             "value": "#ffe082",
             "var": "Dark/Taxi",
@@ -12877,6 +13045,12 @@
             "rootAlias": "Ebony/100"
           },
           {
+            "name": "Components/travel/Travel Tag/Standard/Icon/Default Alt",
+            "value": "#08091c",
+            "var": "Shape/Dark",
+            "rootAlias": "Ebony/100"
+          },
+          {
             "name": "Components/travel/Travel Tag/Standard/Icon/Ferry-Cancelled",
             "value": "#8ccfe2",
             "var": "Dark/Ferry",
@@ -12905,6 +13079,12 @@
             "value": "#f2b8e5",
             "var": "Dark/Plane",
             "rootAlias": "Dark/Plane"
+          },
+          {
+            "name": "Components/travel/Travel Tag/Standard/Icon/RailReplacementBus-Cancelled",
+            "value": "#ffe082",
+            "var": "Dark/RailReplacementBus",
+            "rootAlias": "Dark/RailReplacementBus"
           },
           {
             "name": "Components/travel/Travel Tag/Standard/Icon/SnowCoach-Cancelled",
@@ -12962,6 +13142,12 @@
           },
           {
             "name": "Components/travel/Travel Tag/Standard/Text/Default",
+            "value": "#08091c",
+            "var": "Text/Dark",
+            "rootAlias": "Ebony/100"
+          },
+          {
+            "name": "Components/travel/Travel Tag/Standard/Text/Default Alt",
             "value": "#08091c",
             "var": "Text/Dark",
             "rootAlias": "Ebony/100"
@@ -13025,6 +13211,12 @@
             "value": "#f2b8e5",
             "var": "Dark/Plane",
             "rootAlias": "Dark/Plane"
+          },
+          {
+            "name": "Components/travel/Travel Tag/Standard/Text/Line-RailReplacementBus-Cancelled",
+            "value": "#ffe082",
+            "var": "Dark/RailReplacementBus",
+            "rootAlias": "Dark/RailReplacementBus"
           },
           {
             "name": "Components/travel/Travel Tag/Standard/Text/Line-SnowCoach-Cancelled",

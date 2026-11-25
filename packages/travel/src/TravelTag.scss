@@ -3,6 +3,7 @@
 .eds-travel-tag {
   --background-color: var(--components-travel-traveltag-standard-fill-walk); // Default
   --text-color: var(--components-travel-traveltag-standard-text-default);
+  --icon-color: var(--text-color);
 
   display: inline-flex;
   position: relative;
@@ -47,7 +48,7 @@
 
   > :where(.eds-icon) {
     font-size: t.$font-sizes-extra-large2;
-    color: var(--text-color);
+    color: var(--icon-color);
   }
 
   &__alert {

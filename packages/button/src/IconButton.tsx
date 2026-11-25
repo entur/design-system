@@ -1,6 +1,10 @@
 import React from 'react';
 import classNames from 'classnames';
-import { PolymorphicComponentPropsWithRef, PolymorphicRef } from '@entur/utils';
+import {
+  PolymorphicComponentPropsWithRef,
+  PolymorphicRef,
+  forwardRefPolymorphic,
+} from '@entur/utils';
 import { LoadingDots } from '@entur/loader';
 import './IconButton.scss';
 
@@ -40,7 +44,7 @@ export type IconButtonComponent = <
   props: IconButtonProps<T>,
 ) => React.ReactElement | null;
 
-export const IconButton: IconButtonComponent = React.forwardRef(
+export const IconButton = forwardRefPolymorphic<IconButtonComponent>(
   <T extends React.ElementType = typeof defaultElement>(
     {
       children,

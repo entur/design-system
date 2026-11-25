@@ -405,6 +405,21 @@
         "name": "string | undefined"
       }
     },
+    "aria-describedby": {
+      "defaultValue": null,
+      "description": "ID-er til elementer som beskriver feltet. Feedback-teksten legges til etter dem",
+      "name": "aria-describedby",
+      "declarations": [
+        {
+          "fileName": "packages/dropdown/src/Dropdown.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
     "ariaAlertOnFeedback": {
       "defaultValue": {
         "value": "'status'"

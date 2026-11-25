@@ -130,7 +130,8 @@ const _RangeCalendar = <DateType extends DateValue>({
 
   const _props: RangeCalendarStateOptions<DateType> = {
     ...rest,
-    value,
+    // Same type for every concrete date type; TS can't prove it for the generic
+    value: value as RangeValue<DateType> | null,
     onChange,
     locale,
     createCalendar,

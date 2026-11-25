@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  act,
-  fireEvent,
-  render,
-  screen,
-  waitFor,
-} from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import { DropdownItemType, MultiSelect, NormalizedDropdownItemType } from '..';
@@ -619,7 +613,7 @@ describe('MultiSelect', () => {
     const user = userEvent.setup();
     const asyncItems = () => {
       return new Promise<DropdownItemType[]>(resolve => {
-        setTimeout(() => resolve(testItems), 750);
+        setTimeout(() => resolve(testItems), 50);
       });
     };
     render(
@@ -632,7 +626,7 @@ describe('MultiSelect', () => {
     const listItems = await screen.findAllByRole('option');
 
     expect(listItems).toHaveLength(testItems.length + 1); // '+ 1' to account for 'select all' option
-  }, 1500);
+  });
 
   test('input is cleared when Escape is pressed', async () => {
     const user = userEvent.setup();

@@ -35,6 +35,21 @@
       "type": {
         "name": "ReactNode"
       }
+    },
+    "className": {
+      "defaultValue": null,
+      "description": "Ekstra klassenavn",
+      "name": "className",
+      "declarations": [
+        {
+          "fileName": "packages/a11y/src/VisuallyHidden.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
     }
   }
 }

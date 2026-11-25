@@ -15,6 +15,7 @@ export * from './RadioGroup';
 export * from './Switch';
 export * from './TextArea';
 export * from './TextField';
+export { useFeedbackDescription } from './useFeedbackDescription';
 export * from './VariantProvider';
 export * from './variants';
 export * from './utils';

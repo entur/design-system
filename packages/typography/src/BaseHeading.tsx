@@ -28,7 +28,7 @@ export const BaseHeading = <
   margin,
   as,
   ...rest
-}: BaseHeadingProps<E>): JSX.Element => {
+}: BaseHeadingProps<E>): React.JSX.Element => {
   const Element: React.ElementType = as || defaultElement;
   const baseClass = `eds-h${level}`;
   return (

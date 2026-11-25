@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.2](https://github.com/entur/design-system/compare/@entur/grid@0.5.1...@entur/grid@0.5.2) (2026-11-11)
+
+### Bug Fixes
+
+- **grid:** keep component types working with React 19 types ([0e3275e](https://github.com/entur/design-system/commit/0e3275e3bd1f0113930229abdffd4f2dc9ce6dee)) ([#550](https://github.com/entur/design-system/pull/550))
+
+  Return and prop types no longer rely on the global `JSX` namespace, which `@types/react` 19 removed. No runtime changes.
+
 ## [0.5.1](https://github.com/entur/design-system/compare/@entur/grid@0.5.0...@entur/grid@0.5.1) (2026-11-02)
 
 ### Entur Dependency Updates

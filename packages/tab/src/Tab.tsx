@@ -13,7 +13,7 @@ export type TabProps = {
    * angis manuelt dersom taben ligger inne i en egen komponent */
   index?: number;
   /** HTML-elementet eller React-komponenten som lager komponenten */
-  as?: keyof JSX.IntrinsicElements | React.ElementType;
+  as?: keyof React.JSX.IntrinsicElements | React.ElementType;
   removeActiveLine?: boolean;
   className?: string;
 } & Omit<React.ComponentPropsWithoutRef<'button'>, 'children' | 'disabled'>;

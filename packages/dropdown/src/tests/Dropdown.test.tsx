@@ -295,7 +295,7 @@ describe('Dropdown', () => {
     const user = userEvent.setup();
     const asyncItems = () => {
       return new Promise<DropdownItemType[]>(resolve => {
-        setTimeout(() => resolve(testItems), 750);
+        setTimeout(() => resolve(testItems), 50);
       });
     };
     render(
@@ -308,7 +308,7 @@ describe('Dropdown', () => {
     const listItems = await screen.findAllByRole('option');
 
     expect(listItems).toHaveLength(testItems.length);
-  }, 1500);
+  });
 
   test('highlights matched item on letter keydown', async () => {
     const user = userEvent.setup();

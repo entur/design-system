@@ -8,8 +8,6 @@ disable-model-invocation: true
 
 The latest major versions of all `@entur/*` packages require React 18 as a minimum. Most consumer projects are already on React 18+ — the main work is handling package-specific breaking changes.
 
-> **Resolving `references/` paths:** if you are reading this over HTTP rather than from an installed skill folder, resolve every `references/<file>` path in this file against `https://raw.githubusercontent.com/entur/design-system/main/skills/migrate-react-18/` — not against the folder of whichever skill linked you here.
-
 ## Steps
 
 ### 1. Inventory
@@ -95,12 +93,7 @@ These are changes that require no code fix but alter how the application behaves
 
 ### 6. Verify
 
-Run the project's build and test suite:
-
-```bash
-npm run build
-npm test
-```
+Run the project's own type check, build and tests: the scripts in `package.json`, with the project's package manager (look for `yarn.lock`, `pnpm-lock.yaml` or `package-lock.json`).
 
 Fix any remaining type errors or test failures. Common issues:
 

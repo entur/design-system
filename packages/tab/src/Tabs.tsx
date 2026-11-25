@@ -14,7 +14,7 @@ export type TabsProps = {
   /** Den åpne indexen (kontrollert) */
   index?: number;
   /** HTML-elementet eller React-komponenten som lager komponenten */
-  as?: keyof JSX.IntrinsicElements | React.ElementType;
+  as?: keyof React.JSX.IntrinsicElements | React.ElementType;
   className?: string;
 } & Omit<React.ComponentPropsWithoutRef<'div'>, 'children' | 'onChange'>;
 

@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.2](https://github.com/entur/design-system/compare/@entur/a11y@0.4.1...@entur/a11y@0.4.2) (2026-11-11)
+
+### Entur Dependency Updates
+
+- **@entur/tokens:** `^4.3.1` → `^4.4.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/tokens/CHANGELOG.md#440-2026-11-11))
+- **@entur/utils:** `^0.15.4` → `^0.16.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/utils/CHANGELOG.md#0160-2026-11-11))
+
 ## [0.4.1](https://github.com/entur/design-system/compare/@entur/a11y@0.4.0...@entur/a11y@0.4.1) (2026-11-02)
 
 ### Entur Dependency Updates

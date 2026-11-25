@@ -42,7 +42,7 @@ export const CopyableText = ({
   } til utklippstavlen`,
   size = 'medium',
   ...rest
-}: CopyableTextProps): JSX.Element => {
+}: CopyableTextProps): React.JSX.Element => {
   const { addToast } = useToast();
   const buttonRef = React.useRef<HTMLButtonElement>(null);
   const _textToCopy = textToCopy ?? children;

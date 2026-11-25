@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.2.1](https://github.com/entur/design-system/compare/@entur/typography@3.2.0...@entur/typography@3.2.1) (2026-11-11)
+
+### Bug Fixes
+
+- **typography:** keep component types working with React 19 types ([fbbc970](https://github.com/entur/design-system/commit/fbbc9706a3c0a197fef095987a97e1784d4ba401)) ([#550](https://github.com/entur/design-system/pull/550))
+
+  Return and prop types no longer rely on the global `JSX` namespace, which `@types/react` 19 removed. No runtime changes.
+
 # [3.2.0](https://github.com/entur/design-system/compare/@entur/typography@3.1.0...@entur/typography@3.2.0) (2026-11-02)
 
 ### Features (beta)

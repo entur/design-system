@@ -1,6 +1,6 @@
 {
   "name": "@entur/table",
-  "version": "5.2.1",
+  "version": "5.2.2",
   "license": "EUPL-1.2",
   "main": "dist/table.cjs",
   "module": "dist/table.mjs",
@@ -19,7 +19,8 @@
   "scripts": {
     "start": "vite build --watch",
     "build": "vite build",
-    "test": "jest"
+    "test": "jest",
+    "typecheck": "tsc -p tsconfig.json --noEmit --rootDir ../.."
   },
   "peerDependencies": {
     "react": ">=18.0.0",

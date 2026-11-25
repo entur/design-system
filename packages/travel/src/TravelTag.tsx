@@ -65,14 +65,19 @@ export const TravelTag = ({
   const alertIsSet = alert !== 'none';
   const hasDetails = details !== undefined;
   const numberOfChildren = React.Children.count(children);
-  const { Icon, ariaLabel: ariaLabelForTranportIcon } =
-    getTransportStyle(transport);
+  const {
+    Icon,
+    ariaLabel: ariaLabelForTranportIcon,
+    hasDarkForeground,
+  } = getTransportStyle(transport);
   const transportLower = transport.toLowerCase();
   const IconWithAriaHidden = cloneElement(<Icon />, { 'aria-hidden': 'true' });
 
   const colorTheme = isContrast ? 'contrast' : 'standard';
   const colorModifier = alert === 'error' ? 'cancelled' : undefined;
   const shouldModifyTextColor = alert === 'error' || transport === 'walk';
+  const usesDarkForeground =
+    hasDarkForeground && !isContrast && alert !== 'error';
 
   const defaultBackground = `var(--basecolors-shape-disabled)`;
   const defaultTextColor = `var(--basecolors-shape-disabled)`;
@@ -86,9 +91,15 @@ export const TravelTag = ({
         colorModifier ? `-${colorModifier}` : ''
       }, ${defaultTextColor})`,
     }),
+    ...(usesDarkForeground && {
+      '--text-color':
+        'var(--components-travel-traveltag-standard-text-defaultalt)',
+      '--icon-color':
+        'var(--components-travel-traveltag-standard-icon-defaultalt)',
+    }),
   };
 
-  const TravelTagWithoutLabel: JSX.Element = (
+  const TravelTagWithoutLabel: React.JSX.Element = (
     <div
       className={classNames(className, 'eds-travel-tag', {
         'eds-travel-tag--closable': isClosable,
@@ -143,7 +154,7 @@ export const TravelTag = ({
     </div>
   );
 
-  const Label: JSX.Element = (
+  const Label: React.JSX.Element = (
     <div
       className={classNames('eds-travel-tag__label', {
         [`eds-travel-tag__label--${labelPlacement}`]: label,

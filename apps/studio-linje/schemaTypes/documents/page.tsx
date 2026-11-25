@@ -2,6 +2,7 @@ import React from 'react';
 import { defineField, defineType } from 'sanity';
 import { AutocompletePageFieldInput } from '../../components/AutocompletePageFieldInput';
 import { AutocompleteTagInput } from '../../components/AutocompleteTagInput';
+import { BackToPagesInput } from '../../components/BackToPagesInput';
 
 import { StringInputProps } from 'sanity';
 
@@ -17,6 +18,7 @@ export const page = defineType({
   name: 'page',
   title: 'Artikkel',
   type: 'document',
+  components: { input: BackToPagesInput },
   orderings: [
     {
       title: 'Category, Subcategory, Title',

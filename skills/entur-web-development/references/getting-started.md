@@ -31,6 +31,7 @@ Components need their CSS to render correctly. Import globally in `App.tsx`, `in
 @import '@entur/icons/dist/styles.css';
 @import '@entur/tab/dist/styles.css';
 @import '@entur/typography/dist/styles.css';
+@import '@entur/typography/beta/styles'; /* only with @entur/typography/beta */
 @import '@entur/layout/dist/styles.css';
 @import '@entur/loader/dist/styles.css';
 @import '@entur/expand/dist/styles.css';
@@ -84,7 +85,9 @@ In SCSS, use `@use` with a namespace alias instead of `@import` (Sass `@import` 
 @use '@entur/dropdown/dist/styles.css' as dropdown;
 ```
 
-Import only the component styles you actually use — but keep the order.
+Import only the component styles you actually use — but keep the order. That includes the `@entur/*` packages your components depend on: `@entur/button` needs `@entur/loader`, and `@entur/form` needs `@entur/a11y`, `@entur/icons`, `@entur/tooltip` and `@entur/typography`. `npm ls @entur/` lists them.
+
+With `@entur/typography/beta`, add `@entur/typography/beta/styles` right after the stable typography stylesheet and keep the stable one: other `@entur/*` packages still use it.
 
 ### Load base tokens only once (optional)
 
@@ -94,12 +97,16 @@ Most component `styles.css` files carry their own copy of the tokens from `@entu
 @import '@entur/tokens/dist/base.css';
 @import '@entur/tokens/dist/styles.css';
 
-@import '@entur/typography/styles/no-base-tokens';
-@import '@entur/button/styles/no-base-tokens';
+@import '@entur/typography/dist/styles.no-base-tokens.css';
+@import '@entur/button/dist/styles.no-base-tokens.css';
 /* … same order as above */
 ```
 
-Use the same variant for every package. Component tokens (`--components-*`) stay in each package's file.
+In SCSS, still load `base.css` as CSS: `base.scss` only declares the `--basecolors-*` tokens, while the variant also leaves out primitive and transport tokens such as `--blue-90`.
+
+Use the same variant for every package. Component tokens (`--components-*`) stay in each package's file. Beta styles carry no base tokens and are imported as before. Keep `@entur/tokens` up to date with the other `@entur/*` packages — the variant leaves out the base tokens that existed when the package was built, so an older `@entur/tokens` can lack tokens newer components need.
+
+This variant is a temporary workaround. `styles.css` is planned to stop carrying base tokens, so recommend `styles.css` by default and suggest the variant only when duplicate tokens are an actual problem.
 
 ## Import components
 
@@ -248,9 +255,13 @@ npm dedupe
 
 Then rebuild and verify styles load in the correct order.
 
+### Components have no colors
+
+With `styles.no-base-tokens.css`, the base tokens come only from `@entur/tokens/dist/base.css`. Check that it is imported, as CSS rather than `base.scss`. If colors are missing on some components only, the app's `@entur/tokens` is likely older than the one the component packages were built with — upgrade it together with the other `@entur/*` packages.
+
 ### Tailwind or third-party CSS overrides Entur styles
 
-Most `@entur/*` CSS is unlayered, and unlayered CSS outranks every cascade layer. So a framework's unlayered rules (Tailwind's preflight, normalize.css) can flatten Entur component styling, while the same rules placed in a layer cannot. With `@entur/typography` installed you do not need a third-party reset at all — it ships modern-normalize and `box-sizing: border-box`, and preflight's `svg { vertical-align: middle }` misaligns inline icons no matter which layer it lands in. See `css-layers.md` — next to this file in an installed skill, otherwise https://raw.githubusercontent.com/entur/design-system/main/skills/entur-web-development/references/css-layers.md — for which Entur CSS is layered, how to declare layer order, and how to integrate Tailwind v4.
+Most `@entur/*` CSS is unlayered, and unlayered CSS outranks every cascade layer. So a framework's unlayered rules (Tailwind's preflight, normalize.css) can flatten Entur component styling, while the same rules placed in a layer cannot. With `@entur/typography` installed you do not need a third-party reset at all — it ships modern-normalize and `box-sizing: border-box`, and preflight's `svg { vertical-align: middle }` misaligns inline icons no matter which layer it lands in. See [css-layers.md](css-layers.md) for which Entur CSS is layered, how to declare layer order, and how to integrate Tailwind v4.
 
 ### Missing styles / unstyled components
 

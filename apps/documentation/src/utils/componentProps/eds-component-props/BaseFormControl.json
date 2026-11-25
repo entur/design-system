@@ -241,6 +241,21 @@
         "name": "string | undefined"
       }
     },
+    "feedbackId": {
+      "defaultValue": null,
+      "description": "ID som settes på feedback-teksten, slik at skjemafeltet kan peke på\nden med aria-describedby",
+      "name": "feedbackId",
+      "declarations": [
+        {
+          "fileName": "packages/form/src/BaseFormControl.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
     "isFilled": {
       "defaultValue": null,
       "description": "Om inputfeltet er fylt med data. Brukes for plassering av label",

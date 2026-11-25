@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { PolymorphicComponentProps } from '@entur/utils';
+import { PolymorphicComponentProps, forwardRefPolymorphic } from '@entur/utils';
 import { TypographySpacingProps } from '../types';
 import { getSpacingStyle } from '../utils/utils';
 
@@ -32,11 +32,11 @@ const defaultElement = 'div';
  * Gir løpende tekst riktig avstand mellom overskrifter, avsnitt og lister
  * @beta Experimental component - may have breaking changes in future releases
  */
-export const TextContainer = React.forwardRef(
+export const TextContainer = forwardRefPolymorphic<TextContainerComponent>(
   <C extends React.ElementType = typeof defaultElement>(
     { className, spacing, style, children, as, ...rest }: TextContainerProps<C>,
     ref?: React.Ref<Element>,
-  ): JSX.Element => {
+  ): React.JSX.Element => {
     const ContainerElement: React.ElementType = as || defaultElement;
 
     return (
@@ -50,5 +50,5 @@ export const TextContainer = React.forwardRef(
       </ContainerElement>
     );
   },
-) as TextContainerComponent;
+);
 TextContainer.displayName = 'TextContainer';

@@ -29,6 +29,7 @@
   --components-travel-travelleg-contrast-mobility: #{$contrast-mobility};
   --components-travel-travelleg-contrast-plane: #{$contrast-plane};
   --components-travel-travelleg-contrast-rail: #{$contrast-train};
+  --components-travel-travelleg-contrast-railreplacementbus: #{$contrast-railreplacementbus};
   --components-travel-travelleg-contrast-snowcoach: #{$contrast-taxi};
   --components-travel-travelleg-contrast-taxi: #{$contrast-taxi};
   --components-travel-travelleg-contrast-train: #{$contrast-train};
@@ -52,6 +53,7 @@
   --components-travel-travelleg-standard-mobility: #{$standard-mobility};
   --components-travel-travelleg-standard-plane: #{$standard-plane};
   --components-travel-travelleg-standard-rail: #{$standard-train};
+  --components-travel-travelleg-standard-railreplacementbus: #{$canary-70};
   --components-travel-travelleg-standard-snowcoach: #{$standard-taxi};
   --components-travel-travelleg-standard-taxi: #{$standard-taxi};
   --components-travel-travelleg-standard-train: #{$standard-train};
@@ -72,6 +74,7 @@
   --components-travel-travelswitch-contrast-backgroundtrue-mobility: #{$contrast-mobility};
   --components-travel-travelswitch-contrast-backgroundtrue-plane: #{$contrast-plane};
   --components-travel-travelswitch-contrast-backgroundtrue-rail: #{$contrast-train};
+  --components-travel-travelswitch-contrast-backgroundtrue-railreplacementbus: #{$contrast-railreplacementbus};
   --components-travel-travelswitch-contrast-backgroundtrue-regional-bus: #{$contrast-bus-regional};
   --components-travel-travelswitch-contrast-backgroundtrue-snowcoach: #{$contrast-taxi};
   --components-travel-travelswitch-contrast-backgroundtrue-taxi: #{$contrast-taxi};
@@ -94,6 +97,7 @@
   --components-travel-travelswitch-contrast-icontrue-metro: #{$standard-metro};
   --components-travel-travelswitch-contrast-icontrue-mobility: #{$standard-mobility};
   --components-travel-travelswitch-contrast-icontrue-plane: #{$standard-plane};
+  --components-travel-travelswitch-contrast-icontrue-railreplacementbus: #{$contrast-railreplacementbusalt};
   --components-travel-travelswitch-contrast-icontrue-snowcoach: #{$standard-taxi};
   --components-travel-travelswitch-contrast-icontrue-taxi: #{$standard-taxi};
   --components-travel-travelswitch-contrast-icontrue-train: #{$standard-train};
@@ -119,6 +123,7 @@
   --components-travel-travelswitch-standard-backgroundtrue-mobility: #{$standard-mobility};
   --components-travel-travelswitch-standard-backgroundtrue-plane: #{$standard-plane};
   --components-travel-travelswitch-standard-backgroundtrue-rail: #{$standard-train};
+  --components-travel-travelswitch-standard-backgroundtrue-railreplacementbus: #{$standard-railreplacementbus};
   --components-travel-travelswitch-standard-backgroundtrue-snowcoach: #{$standard-taxi};
   --components-travel-travelswitch-standard-backgroundtrue-taxi: #{$standard-taxi};
   --components-travel-travelswitch-standard-backgroundtrue-train: #{$standard-train};
@@ -140,6 +145,7 @@
   --components-travel-travelswitch-standard-icontrue-mobility: #{$standard-mobility};
   --components-travel-travelswitch-standard-icontrue-plane: #{$standard-plane};
   --components-travel-travelswitch-standard-icontrue-rail: #{$standard-train};
+  --components-travel-travelswitch-standard-icontrue-railreplacementbus: #{$standard-railreplacementbusalt};
   --components-travel-travelswitch-standard-icontrue-regional-bus: #{$standard-bus-regional};
   --components-travel-travelswitch-standard-icontrue-snowcoach: #{$standard-taxi};
   --components-travel-travelswitch-standard-icontrue-taxi: #{$standard-taxi};
@@ -179,6 +185,8 @@
   --components-travel-traveltag-contrast-fill-plane-cancelled: #{$contrast-plane-transparent};
   --components-travel-traveltag-contrast-fill-rail: #{$contrast-train};
   --components-travel-traveltag-contrast-fill-rail-cancelled: #{$contrast-train-transparent};
+  --components-travel-traveltag-contrast-fill-railreplacementbus: #{$contrast-railreplacementbus};
+  --components-travel-traveltag-contrast-fill-railreplacementbus-cancelled: #{$contrast-railreplacementbus-transparent};
   --components-travel-traveltag-contrast-fill-snowcoach: #{$contrast-taxi};
   --components-travel-traveltag-contrast-fill-snowcoach-cancelled: #{$contrast-taxi-transparent};
   --components-travel-traveltag-contrast-fill-tag-funicular-cancelled: #{$contrast-funicular-transparent};
@@ -207,6 +215,7 @@
   --components-travel-traveltag-contrast-icon-helicopter-cancelled: #{$contrast-helicopter};
   --components-travel-traveltag-contrast-icon-metro-cancelled: #{$contrast-metro};
   --components-travel-traveltag-contrast-icon-plane-cancelled: #{$contrast-plane};
+  --components-travel-traveltag-contrast-icon-railreplacementbus-cancelled: #{$contrast-railreplacementbus};
   --components-travel-traveltag-contrast-icon-snowcoach-cancelled: #{$contrast-taxi};
   --components-travel-traveltag-contrast-icon-taxi-cancelled: #{$contrast-taxi};
   --components-travel-traveltag-contrast-icon-train-cancelled: #{$contrast-train};
@@ -228,6 +237,7 @@
   --components-travel-traveltag-contrast-text-line-helicopter-cancelled: #{$contrast-helicopter};
   --components-travel-traveltag-contrast-text-line-metro-cancelled: #{$contrast-metro};
   --components-travel-traveltag-contrast-text-line-plane-cancelled: #{$contrast-plane};
+  --components-travel-traveltag-contrast-text-line-railreplacementbus-cancelled: #{$contrast-railreplacementbus};
   --components-travel-traveltag-contrast-text-line-snowcoach-cancelled: #{$contrast-taxi};
   --components-travel-traveltag-contrast-text-line-taxi-cancelled: #{$contrast-taxi};
   --components-travel-traveltag-contrast-text-line-train-cancelled: #{$contrast-train};
@@ -267,6 +277,8 @@
   --components-travel-traveltag-standard-fill-plane-cancelled: #{$standard-plane-transparent};
   --components-travel-traveltag-standard-fill-rail: #{$standard-train};
   --components-travel-traveltag-standard-fill-rail-cancelled: #{$standard-train-transparent};
+  --components-travel-traveltag-standard-fill-railreplacementbus: #{$standard-railreplacementbus};
+  --components-travel-traveltag-standard-fill-railreplacementbus-cancelled: #{$standard-railreplacementbus-transparent};
   --components-travel-traveltag-standard-fill-snowcoach: #{$standard-taxi};
   --components-travel-traveltag-standard-fill-snowcoach-cancelled: #{$standard-taxi-transparent};
   --components-travel-traveltag-standard-fill-taxi: #{$standard-taxi};
@@ -285,11 +297,13 @@
   --components-travel-traveltag-standard-icon-cableway-cancelled: #{$standard-cableway};
   --components-travel-traveltag-standard-icon-carferry-cancelled: #{$standard-carferry};
   --components-travel-traveltag-standard-icon-default: #{$shape-light};
+  --components-travel-traveltag-standard-icon-defaultalt: #{$shape-accent};
   --components-travel-traveltag-standard-icon-ferry-cancelled: #{$standard-ferry};
   --components-travel-traveltag-standard-icon-funicular-cancelled: #{$standard-funicular};
   --components-travel-traveltag-standard-icon-helicopter-cancelled: #{$standard-helicopter};
   --components-travel-traveltag-standard-icon-metro-cancelled: #{$standard-metro};
   --components-travel-traveltag-standard-icon-plane-cancelled: #{$standard-plane};
+  --components-travel-traveltag-standard-icon-railreplacementbus-cancelled: #{$standard-railreplacementbusalt};
   --components-travel-traveltag-standard-icon-snowcoach-cancelled: #{$standard-taxi};
   --components-travel-traveltag-standard-icon-taxi-cancelled: #{$standard-taxi};
   --components-travel-traveltag-standard-icon-train-cancelled: #{$standard-train};
@@ -300,6 +314,7 @@
   --components-travel-traveltag-standard-stroke-icon-validation: #{$shape-light};
   --components-travel-traveltag-standard-text-cancelled: #{$text-neutral};
   --components-travel-traveltag-standard-text-default: #{$text-light};
+  --components-travel-traveltag-standard-text-defaultalt: #{$text-accent};
   --components-travel-traveltag-standard-text-details: #{$text-accent};
   --components-travel-traveltag-standard-text-label: #{$text-accent};
   --components-travel-traveltag-standard-text-line-bus-cancelled: #{$standard-bus};
@@ -310,6 +325,7 @@
   --components-travel-traveltag-standard-text-line-helicopter-cancelled: #{$standard-helicopter};
   --components-travel-traveltag-standard-text-line-metro-cancelled: #{$standard-metroalt};
   --components-travel-traveltag-standard-text-line-plane-cancelled: #{$standard-plane};
+  --components-travel-traveltag-standard-text-line-railreplacementbus-cancelled: #{$standard-railreplacementbusalt};
   --components-travel-traveltag-standard-text-line-snowcoach-cancelled: #{$standard-taxi};
   --components-travel-traveltag-standard-text-line-taxi-cancelled: #{$standard-taxi};
   --components-travel-traveltag-standard-text-line-train-cancelled: #{$standard-train};
@@ -344,6 +360,7 @@
   --components-travel-travelleg-contrast-mobility: #{$dark-mobility};
   --components-travel-travelleg-contrast-plane: #{$dark-plane};
   --components-travel-travelleg-contrast-rail: #{$dark-train};
+  --components-travel-travelleg-contrast-railreplacementbus: #{$dark-railreplacementbus};
   --components-travel-travelleg-contrast-snowcoach: #{$dark-taxi};
   --components-travel-travelleg-contrast-taxi: #{$dark-taxi};
   --components-travel-travelleg-contrast-train: #{$dark-train};
@@ -367,6 +384,7 @@
   --components-travel-travelleg-standard-mobility: #{$dark-mobility};
   --components-travel-travelleg-standard-plane: #{$dark-plane};
   --components-travel-travelleg-standard-rail: #{$dark-train};
+  --components-travel-travelleg-standard-railreplacementbus: #{$canary-70};
   --components-travel-travelleg-standard-snowcoach: #{$dark-taxi};
   --components-travel-travelleg-standard-taxi: #{$dark-taxi};
   --components-travel-travelleg-standard-train: #{$dark-train};
@@ -387,6 +405,7 @@
   --components-travel-travelswitch-contrast-backgroundtrue-mobility: #{$dark-mobility};
   --components-travel-travelswitch-contrast-backgroundtrue-plane: #{$dark-plane};
   --components-travel-travelswitch-contrast-backgroundtrue-rail: #{$dark-train};
+  --components-travel-travelswitch-contrast-backgroundtrue-railreplacementbus: #{$dark-railreplacementbus};
   --components-travel-travelswitch-contrast-backgroundtrue-regional-bus: #{$dark-bus-regional};
   --components-travel-travelswitch-contrast-backgroundtrue-snowcoach: #{$dark-taxi};
   --components-travel-travelswitch-contrast-backgroundtrue-taxi: #{$dark-taxi};
@@ -409,6 +428,7 @@
   --components-travel-travelswitch-contrast-icontrue-metro: #{$dark-metro};
   --components-travel-travelswitch-contrast-icontrue-mobility: #{$dark-mobility};
   --components-travel-travelswitch-contrast-icontrue-plane: #{$dark-plane};
+  --components-travel-travelswitch-contrast-icontrue-railreplacementbus: #{$dark-railreplacementbus};
   --components-travel-travelswitch-contrast-icontrue-snowcoach: #{$dark-taxi};
   --components-travel-travelswitch-contrast-icontrue-taxi: #{$dark-taxi};
   --components-travel-travelswitch-contrast-icontrue-train: #{$dark-train};
@@ -434,6 +454,7 @@
   --components-travel-travelswitch-standard-backgroundtrue-mobility: #{$dark-mobility};
   --components-travel-travelswitch-standard-backgroundtrue-plane: #{$dark-plane};
   --components-travel-travelswitch-standard-backgroundtrue-rail: #{$dark-train};
+  --components-travel-travelswitch-standard-backgroundtrue-railreplacementbus: #{$dark-railreplacementbus};
   --components-travel-travelswitch-standard-backgroundtrue-snowcoach: #{$dark-taxi};
   --components-travel-travelswitch-standard-backgroundtrue-taxi: #{$dark-taxi};
   --components-travel-travelswitch-standard-backgroundtrue-train: #{$dark-train};
@@ -455,6 +476,7 @@
   --components-travel-travelswitch-standard-icontrue-mobility: #{$contrast-mobility};
   --components-travel-travelswitch-standard-icontrue-plane: #{$dark-plane};
   --components-travel-travelswitch-standard-icontrue-rail: #{$dark-train};
+  --components-travel-travelswitch-standard-icontrue-railreplacementbus: #{$dark-railreplacementbus};
   --components-travel-travelswitch-standard-icontrue-regional-bus: #{$dark-bus-regional};
   --components-travel-travelswitch-standard-icontrue-snowcoach: #{$dark-taxi};
   --components-travel-travelswitch-standard-icontrue-taxi: #{$dark-taxi};
@@ -494,6 +516,8 @@
   --components-travel-traveltag-contrast-fill-plane-cancelled: #{$dark-plane-transparent};
   --components-travel-traveltag-contrast-fill-rail: #{$dark-train};
   --components-travel-traveltag-contrast-fill-rail-cancelled: #{$dark-train-transparent};
+  --components-travel-traveltag-contrast-fill-railreplacementbus: #{$dark-railreplacementbus};
+  --components-travel-traveltag-contrast-fill-railreplacementbus-cancelled: #{$dark-railreplacementbus-transparent};
   --components-travel-traveltag-contrast-fill-snowcoach: #{$dark-taxi};
   --components-travel-traveltag-contrast-fill-snowcoach-cancelled: #ffe08226;
   --components-travel-traveltag-contrast-fill-tag-funicular-cancelled: #{$dark-funicular-transparent};
@@ -522,6 +546,7 @@
   --components-travel-traveltag-contrast-icon-helicopter-cancelled: #{$dark-helicopter};
   --components-travel-traveltag-contrast-icon-metro-cancelled: #{$dark-metro};
   --components-travel-traveltag-contrast-icon-plane-cancelled: #{$dark-plane};
+  --components-travel-traveltag-contrast-icon-railreplacementbus-cancelled: #{$dark-railreplacementbus};
   --components-travel-traveltag-contrast-icon-snowcoach-cancelled: #{$dark-taxi};
   --components-travel-traveltag-contrast-icon-taxi-cancelled: #{$dark-taxi};
   --components-travel-traveltag-contrast-icon-train-cancelled: #{$dark-train};
@@ -543,6 +568,7 @@
   --components-travel-traveltag-contrast-text-line-helicopter-cancelled: #{$dark-helicopter};
   --components-travel-traveltag-contrast-text-line-metro-cancelled: #{$dark-metro};
   --components-travel-traveltag-contrast-text-line-plane-cancelled: #{$dark-plane};
+  --components-travel-traveltag-contrast-text-line-railreplacementbus-cancelled: #{$dark-railreplacementbus};
   --components-travel-traveltag-contrast-text-line-snowcoach-cancelled: #{$dark-taxi};
   --components-travel-traveltag-contrast-text-line-taxi-cancelled: #{$dark-taxi};
   --components-travel-traveltag-contrast-text-line-train-cancelled: #{$dark-train};
@@ -582,6 +608,8 @@
   --components-travel-traveltag-standard-fill-plane-cancelled: #{$dark-plane-transparent};
   --components-travel-traveltag-standard-fill-rail: #{$dark-train};
   --components-travel-traveltag-standard-fill-rail-cancelled: #{$dark-train-transparent};
+  --components-travel-traveltag-standard-fill-railreplacementbus: #{$dark-railreplacementbus};
+  --components-travel-traveltag-standard-fill-railreplacementbus-cancelled: #{$dark-railreplacementbus-transparent};
   --components-travel-traveltag-standard-fill-snowcoach: #{$dark-taxi};
   --components-travel-traveltag-standard-fill-snowcoach-cancelled: #{$dark-taxi-transparent};
   --components-travel-traveltag-standard-fill-taxi: #{$dark-taxi};
@@ -600,11 +628,13 @@
   --components-travel-traveltag-standard-icon-cableway-cancelled: #{$dark-cableway};
   --components-travel-traveltag-standard-icon-carferry-cancelled: #{$dark-carferry};
   --components-travel-traveltag-standard-icon-default: #{$shape-dark};
+  --components-travel-traveltag-standard-icon-defaultalt: #{$shape-dark};
   --components-travel-traveltag-standard-icon-ferry-cancelled: #{$dark-ferry};
   --components-travel-traveltag-standard-icon-funicular-cancelled: #{$dark-funicular};
   --components-travel-traveltag-standard-icon-helicopter-cancelled: #{$dark-helicopter};
   --components-travel-traveltag-standard-icon-metro-cancelled: #{$dark-metro};
   --components-travel-traveltag-standard-icon-plane-cancelled: #{$dark-plane};
+  --components-travel-traveltag-standard-icon-railreplacementbus-cancelled: #{$dark-railreplacementbus};
   --components-travel-traveltag-standard-icon-snowcoach-cancelled: #{$dark-taxi};
   --components-travel-traveltag-standard-icon-taxi-cancelled: #{$dark-taxi};
   --components-travel-traveltag-standard-icon-train-cancelled: #{$dark-train};
@@ -615,6 +645,7 @@
   --components-travel-traveltag-standard-stroke-icon-validation: #{$shape-dark};
   --components-travel-traveltag-standard-text-cancelled: #{$text-neutralalt};
   --components-travel-traveltag-standard-text-default: #{$text-dark};
+  --components-travel-traveltag-standard-text-defaultalt: #{$text-dark};
   --components-travel-traveltag-standard-text-details: #{$text-light};
   --components-travel-traveltag-standard-text-label: #{$text-lightalt};
   --components-travel-traveltag-standard-text-line-bus-cancelled: #{$dark-bus};
@@ -625,6 +656,7 @@
   --components-travel-traveltag-standard-text-line-helicopter-cancelled: #{$dark-helicopter};
   --components-travel-traveltag-standard-text-line-metro-cancelled: #{$dark-metro};
   --components-travel-traveltag-standard-text-line-plane-cancelled: #{$dark-plane};
+  --components-travel-traveltag-standard-text-line-railreplacementbus-cancelled: #{$dark-railreplacementbus};
   --components-travel-traveltag-standard-text-line-snowcoach-cancelled: #{$dark-taxi};
   --components-travel-traveltag-standard-text-line-taxi-cancelled: #{$dark-taxi};
   --components-travel-traveltag-standard-text-line-train-cancelled: #{$dark-train};

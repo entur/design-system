@@ -64,14 +64,14 @@ export const MediaCard = <E extends React.ElementType = typeof defaultElement>({
   wrapperProps,
   orientation,
   ...rest
-}: MediaCardProps<E>): JSX.Element => {
+}: MediaCardProps<E>): React.JSX.Element => {
   const Element: React.ElementType = as || defaultElement;
   const Heading = Heading3;
 
   const _wrapperProps = whole
     ? { ...wrapperProps, ...rest }
     : { ...wrapperProps };
-  const classList = classNames('eds-base-card, eds-media-card', className, {
+  const classList = classNames('eds-media-card', className, {
     'eds-media-card--horizontal': orientation === 'horizontal',
   });
 

@@ -2,12 +2,12 @@ import React from 'react';
 
 import classNames from 'classnames';
 
-import { PolymorphicComponentProps } from '@entur/utils';
+import { PolymorphicComponentProps, forwardRefPolymorphic } from '@entur/utils';
 
 import {
   getDefaultTextVariant,
-  getSemanticTypeFromTextVariant,
   getMaxLinesStyle,
+  getSemanticTypeFromTextVariant,
   getSpacingStyle,
 } from '../utils/utils';
 
@@ -65,7 +65,7 @@ export type TextComponent = (<C extends React.ElementType = 'p'>(
 /**
  * @beta Experimental component - may have breaking changes in future releases
  */
-export const Text = React.forwardRef(
+export const Text = forwardRefPolymorphic<TextComponent>(
   <C extends React.ElementType = 'p'>(
     {
       children,
@@ -82,7 +82,7 @@ export const Text = React.forwardRef(
       ...rest
     }: TextProps<C>,
     ref?: React.Ref<Element>,
-  ): JSX.Element => {
+  ): React.JSX.Element => {
     const BodyElement: React.ElementType =
       as || getSemanticTypeFromTextVariant(variant);
     const usedVariant = variant ?? getDefaultTextVariant(BodyElement);
@@ -107,5 +107,5 @@ export const Text = React.forwardRef(
       </BodyElement>
     );
   },
-) as TextComponent;
+);
 Text.displayName = 'Text';

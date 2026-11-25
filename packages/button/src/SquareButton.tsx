@@ -1,6 +1,10 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import { PolymorphicComponentPropsWithRef, PolymorphicRef } from '@entur/utils';
+import {
+  PolymorphicComponentPropsWithRef,
+  PolymorphicRef,
+  forwardRefPolymorphic,
+} from '@entur/utils';
 import { LoadingDots } from '@entur/loader';
 import './SquareButton.scss';
 
@@ -41,7 +45,7 @@ export type SquareButtonComponent = <
 
 const defaultElement = 'button';
 
-export const SquareButton: SquareButtonComponent = React.forwardRef(
+export const SquareButton = forwardRefPolymorphic<SquareButtonComponent>(
   <T extends React.ElementType = typeof defaultElement>(
     {
       as,

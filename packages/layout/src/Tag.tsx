@@ -4,6 +4,7 @@ import {
   PolymorphicComponentPropsWithRef,
   PolymorphicRef,
   VariantType,
+  forwardRefPolymorphic,
 } from '@entur/utils';
 
 import './Tag.scss';
@@ -60,7 +61,7 @@ export type TagComponent = <
 
 const defaultElement = 'span';
 
-export const Tag: TagComponent = React.forwardRef(
+export const Tag = forwardRefPolymorphic<TagComponent>(
   <T extends React.ElementType = typeof defaultElement>(
     {
       as,

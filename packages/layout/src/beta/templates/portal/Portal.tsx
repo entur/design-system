@@ -1,5 +1,8 @@
 import React from 'react';
-import type { PolymorphicComponentProps } from '@entur/utils';
+import {
+  type PolymorphicComponentProps,
+  forwardRefPolymorphic,
+} from '@entur/utils';
 import classNames from 'classnames';
 import { Grid } from '../../Grid';
 import { Sidebar, SidebarComponent } from '../Sidebar';
@@ -56,7 +59,7 @@ type PortalMainComponent = (<
   props: PortalMainProps<E> & { ref?: React.Ref<Element> },
 ) => React.ReactElement | null) & { displayName?: string };
 
-const PortalRoot: PortalRootComponent = React.forwardRef(
+const PortalRoot = forwardRefPolymorphic<PortalRootComponent>(
   <E extends React.ElementType = typeof Grid>(
     { children, className, style, as, ...rest }: PortalProps<E>,
     ref?: React.Ref<Element>,
@@ -78,7 +81,7 @@ const PortalRoot: PortalRootComponent = React.forwardRef(
   },
 );
 
-const PortalStatusBar: PortalStatusBarComponent = React.forwardRef(
+const PortalStatusBar = forwardRefPolymorphic<PortalStatusBarComponent>(
   <E extends React.ElementType = typeof defaultStatusBarElement>(
     { children, className, as, ...rest }: PortalStatusBarProps<E>,
     ref?: React.Ref<Element>,
@@ -103,7 +106,7 @@ const PortalStatusBar: PortalStatusBarComponent = React.forwardRef(
   },
 );
 
-const PortalMain: PortalMainComponent = React.forwardRef(
+const PortalMain = forwardRefPolymorphic<PortalMainComponent>(
   <E extends React.ElementType = typeof defaultPortalMainElement>(
     { children, className, style, as, ...rest }: PortalMainProps<E>,
     ref?: React.Ref<Element>,

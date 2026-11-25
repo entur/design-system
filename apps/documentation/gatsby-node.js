@@ -11,10 +11,7 @@ const { spawn } = require('child_process');
 // eslint-disable-next-line @typescript-eslint/no-var-requires -- disabled when we turned on linting for all files in the project
 const { getSanitizedPath } = require('./src/utils/getSanitizedPath');
 // eslint-disable-next-line @typescript-eslint/no-var-requires -- disabled when we turned on linting for all files in the project
-const {
-  generateLlmsTxt,
-  generateLlmsFullTxt,
-} = require('./src/utils/generate-llms-txt');
+const { generateLlmsTxt } = require('./src/utils/generate-llms-txt');
 // eslint-disable-next-line @typescript-eslint/no-var-requires -- disabled when we turned on linting for all files in the project
 const {
   generateSkillsChangelog,
@@ -390,69 +387,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   await createDocumentationPagesFromSanity(graphql, actions, reporter);
 };
 
-// Router first, then each sub-skill with its own references, so llms-full.txt reads top-down.
-const SKILL_ORDER = [
-  'entur-linje',
-  'entur-web-development',
-  'entur-accessibility',
-  'entur-brand-design',
-  'entur-illustration',
-];
-
-/**
- * Collects every SKILL.md and references/*.md under skills/, in reading order.
- * Walking the directory rather than keeping a list means a new reference file is
- * published without a matching edit here.
- */
-const collectSkillFiles = (skillsDir, reporter) => {
-  if (!fs.existsSync(skillsDir)) {
-    reporter.warn(`[llms.txt] No skills directory at ${skillsDir}`);
-    return [];
-  }
-
-  const present = fs
-    .readdirSync(skillsDir, { withFileTypes: true })
-    .filter(entry => entry.isDirectory())
-    .map(entry => entry.name);
-
-  const ordered = [
-    ...SKILL_ORDER.filter(name => present.includes(name)),
-    ...present.filter(name => !SKILL_ORDER.includes(name)).sort(),
-  ];
-
-  const collected = [];
-
-  for (const skill of ordered) {
-    const files = [path.join(skillsDir, skill, 'SKILL.md')];
-    const referencesDir = path.join(skillsDir, skill, 'references');
-    if (fs.existsSync(referencesDir)) {
-      files.push(
-        ...fs
-          .readdirSync(referencesDir)
-          .filter(name => name.endsWith('.md'))
-          .sort()
-          .map(name => path.join(referencesDir, name)),
-      );
-    }
-
-    for (const filePath of files) {
-      if (!fs.existsSync(filePath)) {
-        reporter.warn(`[llms.txt] Skill file missing: ${filePath}`);
-        continue;
-      }
-      const content = fs.readFileSync(filePath, 'utf8');
-      // The first heading is the file's own title; fall back to the filename.
-      const heading = /^#\s+(.+)$/m.exec(content);
-      const label = heading
-        ? heading[1].trim()
-        : path.basename(filePath, '.md');
-      collected.push({ label, content });
-    }
-  }
-
-  return collected;
-};
-
 exports.onPostBuild = async ({ reporter }) => {
   const pageDataPath = path.join(__dirname, 'dist', 'llms-page-data.json');
   if (!fs.existsSync(pageDataPath)) {
@@ -463,19 +397,9 @@ exports.onPostBuild = async ({ reporter }) => {
   }
 
   const pages = fs.readJsonSync(pageDataPath);
-  const skillsDir = path.resolve(__dirname, '../../skills');
-
-  const skillsFiles = collectSkillFiles(skillsDir, reporter);
-  reporter.info(`[llms.txt] Including ${skillsFiles.length} skill files`);
-
-  const llmsTxt = generateLlmsTxt(pages);
-  const llmsFullTxt = generateLlmsFullTxt(pages, skillsFiles);
-
   const publicDir = path.join(__dirname, 'public');
-  fs.writeFileSync(path.join(publicDir, 'llms.txt'), llmsTxt);
-  fs.writeFileSync(path.join(publicDir, 'llms-full.txt'), llmsFullTxt);
-
-  reporter.info('[llms.txt] Generated /llms.txt and /llms-full.txt');
+  fs.writeFileSync(path.join(publicDir, 'llms.txt'), generateLlmsTxt(pages));
+  reporter.info('[llms.txt] Generated /llms.txt');
 
   if (playgroundBuildPromise) {
     await playgroundBuildPromise;

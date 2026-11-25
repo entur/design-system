@@ -16,10 +16,10 @@ export type VariantProviderProps = {
 };
 export const VariantProvider = ({
   children,
-  variant = null,
+  variant,
 }: VariantProviderProps) => {
   return (
-    <VariantContext.Provider value={variant}>
+    <VariantContext.Provider value={variant ?? null}>
       {children}
     </VariantContext.Provider>
   );

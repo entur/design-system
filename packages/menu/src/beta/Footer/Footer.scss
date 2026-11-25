@@ -1,3 +1,6 @@
+@use '@entur/tokens/dist/styles.scss' as t;
+@use '@entur/tokens/dist/primitive.scss' as p;
+
 .eds-footer {
   --eds-footer-text: var(--basecolors-text-accent);
   --eds-footer-text-subdued: var(--basecolors-text-subdued);
@@ -33,12 +36,18 @@
       padding-block-start: var(--spacing-9xl);
       padding-inline: var(--eds-footer-padding-inline, var(--spacing-11xl));
     }
+
+    // Without content there is nothing to divide, so the subfooter gets even padding
+    &--subfooter-only {
+      // Placed after the container query, so it wins at every width
+      padding-block-start: var(--spacing-m);
+    }
   }
 
   &__content {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
-    gap: var(--spacing-3xl) var(--spacing-xl);
+    gap: var(--spacing-4xl) var(--spacing-xl);
     overflow-wrap: break-word;
 
     @container eds-footer (width >= 800px) {
@@ -75,6 +84,18 @@
     }
   }
 
+  // Medium logo from tablet. Values match the medium size in Logo.scss
+  // Should be handled in Logo if it gets a responsive size
+  @container eds-footer (width >= 800px) {
+    /* stylelint-disable-next-line selector-max-specificity --
+       .eds-logo--small is in the stable stylesheet, which may load after this one. */
+    &__brand .eds-logo {
+      --eds-logo-svg-height: #{p.$size-12};
+      --eds-logo-text-size: #{t.$font-sizes-extra-large4};
+      --eds-logo-text-padding-top: #{p.$size-4};
+    }
+  }
+
   // Zero specificity, so typography components keep their own styles
   :where(&__brand) > :where(*) {
     margin: 0;
@@ -85,6 +106,10 @@
     display: flex;
     flex-direction: column;
     gap: var(--spacing-xs);
+
+    @container eds-footer (width >= 1200px) {
+      margin-inline-start: var(--spacing-3xl);
+    }
   }
 
   &__heading {
@@ -120,6 +145,13 @@
 
     @container eds-footer (width >= 800px) {
       margin-block-start: var(--spacing-5xl);
+    }
+
+    // One class of specificity, placed after the rules it overrides
+    :where(.eds-footer__inner--subfooter-only) > & {
+      margin-block-start: 0;
+      padding-block-start: 0;
+      border-block-start: none;
     }
   }
 

@@ -68,7 +68,7 @@ export const BaseGrid = <E extends React.ElementType = typeof defaultElement>({
   large,
   as,
   ...rest
-}: BaseGridProps<E>): JSX.Element => {
+}: BaseGridProps<E>): React.JSX.Element => {
   const Element: React.ElementType = as || defaultElement;
   const classList = classnames([
     'eds-grid',

@@ -1,6 +1,6 @@
 {
   "name": "@entur/fileupload",
-  "version": "0.7.1",
+  "version": "0.8.0",
   "license": "EUPL-1.2",
   "main": "dist/fileupload.cjs",
   "module": "dist/fileupload.mjs",
@@ -19,7 +19,8 @@
   "scripts": {
     "start": "vite build --watch",
     "build": "vite build",
-    "test": "jest"
+    "test": "jest",
+    "typecheck": "tsc -p tsconfig.json --noEmit --rootDir ../.."
   },
   "peerDependencies": {
     "react": ">=18.0.0",
@@ -32,8 +33,9 @@
     "@entur/tokens": "workspace:^",
     "@entur/typography": "workspace:^",
     "@entur/utils": "workspace:^",
+    "attr-accept": "^2.2.5",
     "classnames": "^2.5.1",
-    "react-dropzone": "^11.7.1"
+    "react-dropzone": "^14.4.1"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.17.0",

@@ -1,0 +1,343 @@
+@use '@entur/tokens/dist/styles.scss' as t;
+
+.illustration-library {
+  margin-block: t.$space-large t.$space-extra-large7;
+
+  &__filters {
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+    gap: t.$space-default;
+
+    @media (max-width: 40rem) {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  &__display {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: t.$space-default t.$space-large;
+    margin-block-start: t.$space-default;
+  }
+
+  &__summary {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: t.$space-small t.$space-default;
+    min-height: 2.5rem;
+    margin-block: t.$space-large 0;
+    padding-block-start: t.$space-default;
+    border-block-start: t.$border-widths-small solid var(--basecolors-stroke-subduedalt);
+
+    > p {
+      margin: 0;
+    }
+  }
+
+  &__group {
+    margin-block-start: t.$space-extra-large;
+
+    > p {
+      margin-block: t.$space-extra-small t.$space-default;
+      max-width: 40rem;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+    gap: t.$space-default;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    > li {
+      display: flex;
+    }
+
+    &--feature {
+      grid-template-columns: minmax(0, 26rem);
+    }
+
+    &--wide {
+      grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+
+      .illustration-card__preview {
+        aspect-ratio: 16 / 5;
+
+        > img,
+        > .gatsby-image-wrapper {
+          inset: t.$space-extra-small;
+        }
+      }
+    }
+  }
+
+  &__empty {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: t.$space-default;
+    padding-block: t.$space-extra-large;
+    max-width: 36rem;
+  }
+}
+
+.illustration-preview {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--basecolors-frame-default);
+
+  &.eds-contrast {
+    background-color: var(--basecolors-frame-contrast);
+  }
+
+  // Fills the box set by aspect-ratio, so the image's own size never changes the card height
+  > img,
+  > .gatsby-image-wrapper {
+    position: absolute !important;
+    inset: t.$space-default;
+    width: auto !important;
+    height: auto !important;
+    max-width: none !important;
+    object-fit: contain;
+  }
+
+  > .gatsby-image-wrapper > div[aria-hidden] {
+    display: none;
+  }
+}
+
+.illustration-card {
+  all: unset;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border: t.$border-widths-small solid var(--basecolors-stroke-subduedalt);
+  border-radius: t.$border-radiuses-large;
+  overflow: hidden;
+  background-color: var(--basecolors-frame-default);
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+
+  &:hover {
+    border-color: var(--basecolors-stroke-default);
+  }
+
+  &:focus-visible {
+    outline: t.$outlines-focus;
+    outline-color: var(--basecolors-stroke-focus-standard);
+    outline-offset: t.$outline-offsets-focus;
+  }
+
+  &__preview {
+    aspect-ratio: 1;
+  }
+
+  &__caption {
+    display: flex;
+    flex-direction: column;
+    gap: t.$space-extra-small2;
+    padding: t.$space-small t.$space-default t.$space-default;
+    border-block-start: t.$border-widths-small solid var(--basecolors-stroke-subduedalt);
+  }
+}
+
+.illustration-dialog__lead {
+  margin-block: calc(-1 * t.$space-small) t.$space-default;
+}
+
+.illustration-details {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: t.$space-large;
+  align-items: start;
+
+  @media (max-width: 48rem) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  &__preview {
+    aspect-ratio: 1;
+    border-radius: t.$border-radiuses-large;
+    border: t.$border-widths-small solid var(--basecolors-stroke-subduedalt);
+  }
+
+  &__options {
+    display: flex;
+    flex-direction: column;
+    gap: t.$space-large;
+  }
+
+  &__version {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: t.$space-default;
+  }
+
+  &__inline-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: t.$space-extra-small t.$space-default;
+  }
+
+  &__formats {
+    display: flex;
+    flex-direction: column;
+    margin: t.$space-small 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__format {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: t.$space-default;
+    padding-block: t.$space-small;
+    border-block-end: t.$border-widths-small solid var(--basecolors-stroke-subduedalt);
+
+    p {
+      margin: 0;
+    }
+  }
+
+  &__format-text {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  &__download {
+    flex-shrink: 0;
+  }
+}
+
+.principles {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(16rem, 2fr);
+  gap: t.$space-large;
+  align-items: start;
+
+  @media (max-width: 56rem) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  &__map {
+    position: relative;
+  }
+
+  &__composition {
+    border: t.$border-widths-small solid var(--basecolors-stroke-subduedalt);
+    border-radius: t.$border-radiuses-large;
+
+    > img,
+    > .gatsby-image-wrapper {
+      inset: 0;
+    }
+  }
+
+  &__hotspot {
+    all: unset;
+    position: absolute;
+    cursor: pointer;
+    border-radius: t.$border-radiuses-large;
+
+    &--hovered {
+      background-color: color-mix(in srgb, var(--basecolors-stroke-default) 6%, transparent);
+      outline: t.$border-widths-small dashed var(--basecolors-stroke-default);
+    }
+
+    &--selected {
+      outline: t.$outlines-focus;
+      outline-color: var(--basecolors-stroke-focus-standard);
+    }
+  }
+
+  // Same badge as NumberedList variant="steps"; the border gives the 3:1 non-text contrast the fill lacks on the illustration
+  &__marker {
+    position: absolute;
+    translate: -50% -50%;
+    box-sizing: border-box;
+    min-width: calc(1.5em / 0.875);
+    height: calc(1.5em / 0.875);
+    padding-inline: 0.375em;
+    border-radius: 1em;
+    border: t.$border-widths-small solid var(--basecolors-stroke-default);
+    background: var(--basecolors-frame-tint);
+    color: var(--basecolors-stroke-default);
+    font-size: t.$font-sizes-medium;
+    font-variant-numeric: tabular-nums;
+    font-weight: t.$font-weights-heading;
+    line-height: calc(1.5em / 0.875 - 2 * #{t.$border-widths-small});
+    text-align: center;
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition: scale 0.15s ease;
+    }
+
+    .principles__hotspot--hovered &,
+    .principles__hotspot--selected & {
+      scale: 1.15;
+    }
+
+    .principles__hotspot--selected & {
+      background: var(--basecolors-stroke-default);
+      color: var(--basecolors-frame-default);
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      animation: principles-marker-pulse 1.2s ease-out 0.3s 2;
+    }
+
+    @media (forced-colors: active) {
+      border-color: CanvasText;
+    }
+  }
+
+  // Same badge as NumberedList variant="steps"
+  &__list-number {
+    display: inline-block;
+    box-sizing: border-box;
+    min-width: calc(1.5em / 0.875);
+    height: calc(1.5em / 0.875);
+    margin-inline-end: t.$space-extra-small;
+    padding-inline: 0.375em;
+    border-radius: 1em;
+    background: var(--basecolors-frame-tint);
+    font-size: 0.875em;
+    font-variant-numeric: tabular-nums;
+    font-weight: t.$font-weights-heading;
+    line-height: calc(1.5em / 0.875);
+    text-align: center;
+
+    @media (forced-colors: active) {
+      outline: 1px solid transparent;
+    }
+  }
+
+  &__panel {
+    display: flex;
+    flex-direction: column;
+    gap: t.$space-large;
+  }
+
+  &__part-preview {
+    aspect-ratio: 1;
+    max-width: 12rem;
+    border: t.$border-widths-small solid var(--basecolors-stroke-subduedalt);
+    border-radius: t.$border-radiuses-large;
+  }
+}
+
+@keyframes principles-marker-pulse {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--basecolors-stroke-default) 45%, transparent);
+  }
+  100% {
+    box-shadow: 0 0 0 0.75rem transparent;
+  }
+}

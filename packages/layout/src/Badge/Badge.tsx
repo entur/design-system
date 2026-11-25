@@ -1,7 +1,11 @@
 import React from 'react';
 import classNames from 'classnames';
 import warning from 'tiny-warning';
-import { PolymorphicComponentPropsWithRef, PolymorphicRef } from '@entur/utils';
+import {
+  PolymorphicComponentPropsWithRef,
+  PolymorphicRef,
+  forwardRefPolymorphic,
+} from '@entur/utils';
 import { VariantType } from '@entur/utils';
 
 import './Badge.scss';
@@ -68,7 +72,7 @@ export type BadgeComponent = <
 
 const defaultElement = 'span';
 
-export const Badge: BadgeComponent = React.forwardRef(
+export const Badge = forwardRefPolymorphic<BadgeComponent>(
   <T extends React.ElementType = typeof defaultElement>(
     {
       children,

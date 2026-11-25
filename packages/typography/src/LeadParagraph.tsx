@@ -30,7 +30,7 @@ export const LeadParagraph = <
   margin = 'both',
   as,
   ...rest
-}: LeadParagraphProps<E>): JSX.Element => {
+}: LeadParagraphProps<E>): React.JSX.Element => {
   const Element: React.ElementType = as || defaultElement;
   return (
     <Element

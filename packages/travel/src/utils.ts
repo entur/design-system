@@ -36,7 +36,11 @@ export type Transport =
   | 'carferry'
   | 'mobility'
   | 'airportLinkBus'
+  | 'airportlinkbus'
   | 'airportLinkRail'
+  | 'airportlinkrail'
+  | 'railReplacementBus'
+  | 'railreplacementbus'
   | 'snowcoach'
   | 'rail'
   | 'water'
@@ -44,6 +48,8 @@ export type Transport =
   | 'none';
 
 export type CSSVars = { [key: `--${string}`]: string | number };
+
+const NoIcon = () => null;
 
 type transportStyleResult = {
   Icon: React.FC<IconProps>;
@@ -55,6 +61,8 @@ type transportStyleResult = {
   errorContrastBackgroundColor?: string;
   pattern: 'line' | 'wave' | 'dashed' | 'dotted';
   ariaLabel: string;
+  /** Light fill that needs dark text and icons */
+  hasDarkForeground?: boolean;
 };
 
 export const getTransportStyle = (mode: string): transportStyleResult => {
@@ -168,9 +176,17 @@ export const getTransportStyle = (mode: string): transportStyleResult => {
         pattern: 'line',
         ariaLabel: 'Flytog',
       };
+    case 'railReplacementBus':
+    case 'railreplacementbus':
+      return {
+        Icon: BusIcon,
+        pattern: 'dashed',
+        ariaLabel: 'Buss for tog',
+        hasDarkForeground: true,
+      };
     case 'none':
       return {
-        Icon: React.Fragment,
+        Icon: NoIcon,
         pattern: 'line',
         ariaLabel: '',
       };

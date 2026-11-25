@@ -1,6 +1,6 @@
 {
   "name": "@entur/layout",
-  "version": "5.1.1",
+  "version": "5.1.2",
   "license": "EUPL-1.2",
   "main": "dist/layout.cjs",
   "module": "dist/layout.mjs",
@@ -47,7 +47,8 @@
     "build": "yarn build:main && yarn build:beta",
     "build:main": "vite build",
     "build:beta": "vite build --config vite.config.beta.ts",
-    "test": "jest"
+    "test": "jest",
+    "typecheck": "tsc -p tsconfig.json --noEmit --rootDir ../.."
   },
   "peerDependencies": {
     "react": ">=18.0.0",

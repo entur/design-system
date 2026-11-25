@@ -1,6 +1,6 @@
 {
   "name": "@entur/tab",
-  "version": "0.10.1",
+  "version": "0.10.2",
   "license": "EUPL-1.2",
   "main": "dist/tab.cjs",
   "module": "dist/tab.mjs",
@@ -19,7 +19,8 @@
   "scripts": {
     "start": "vite build --watch",
     "build": "vite build",
-    "test": "jest"
+    "test": "jest",
+    "typecheck": "tsc -p tsconfig.json --noEmit --rootDir ../.."
   },
   "peerDependencies": {
     "react": ">=18.0.0",

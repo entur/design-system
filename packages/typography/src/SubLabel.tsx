@@ -27,7 +27,7 @@ export const SubLabel = <E extends React.ElementType = typeof defaultElement>({
   margin = 'both',
   as,
   ...rest
-}: SubLabelProps<E>): JSX.Element => {
+}: SubLabelProps<E>): React.JSX.Element => {
   const Element: React.ElementType = as || defaultElement;
   return (
     <Element

@@ -4,27 +4,6 @@
   "displayName": "FileUpload",
   "methods": [],
   "props": {
-    "accept": {
-      "defaultValue": {
-        "value": ""
-      },
-      "description": "Hvilken filtyper som skal aksepteres",
-      "name": "accept",
-      "declarations": [
-        {
-          "fileName": "node_modules/react-dropzone/typings/react-dropzone.d.ts",
-          "name": "TypeLiteral"
-        },
-        {
-          "fileName": "packages/fileupload/src/FileUpload.tsx",
-          "name": "TypeLiteral"
-        }
-      ],
-      "required": false,
-      "type": {
-        "name": "string | string[] | undefined"
-      }
-    },
     "minSize": {
       "defaultValue": null,
       "description": "Minste filstørrelse",
@@ -262,6 +241,21 @@
         "name": "(() => void) | undefined"
       }
     },
+    "onError": {
+      "defaultValue": null,
+      "description": "",
+      "name": "onError",
+      "declarations": [
+        {
+          "fileName": "node_modules/react-dropzone/typings/react-dropzone.d.ts",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "((err: Error) => void) | undefined"
+      }
+    },
     "validator": {
       "defaultValue": null,
       "description": "",
@@ -274,7 +268,37 @@
       ],
       "required": false,
       "type": {
-        "name": "(<T extends File>(file: T) => FileError | FileError[] | null) | undefined"
+        "name": "(<T extends File>(file: T) => FileError | readonly FileError[] | null) | undefined"
+      }
+    },
+    "useFsAccessApi": {
+      "defaultValue": null,
+      "description": "",
+      "name": "useFsAccessApi",
+      "declarations": [
+        {
+          "fileName": "node_modules/react-dropzone/typings/react-dropzone.d.ts",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "boolean | undefined"
+      }
+    },
+    "autoFocus": {
+      "defaultValue": null,
+      "description": "",
+      "name": "autoFocus",
+      "declarations": [
+        {
+          "fileName": "node_modules/react-dropzone/typings/react-dropzone.d.ts",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "boolean | undefined"
       }
     },
     "successText": {
@@ -360,6 +384,23 @@
       "required": false,
       "type": {
         "name": "((file: File) => void) | undefined"
+      }
+    },
+    "accept": {
+      "defaultValue": {
+        "value": ""
+      },
+      "description": "Hvilke filtyper som skal aksepteres, som MIME-typer og/eller filendelser.\nF.eks. `\".csv\"`, `['.json', 'application/json']` eller `{ 'application/json': ['.json'] }`",
+      "name": "accept",
+      "declarations": [
+        {
+          "fileName": "packages/fileupload/src/FileUpload.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | string[] | Accept | undefined"
       }
     },
     "files": {

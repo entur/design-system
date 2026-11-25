@@ -7,7 +7,7 @@ import {
   getMaxLinesStyle,
   getSpacingStyle,
 } from '../utils/utils';
-import { PolymorphicComponentProps } from '@entur/utils';
+import { PolymorphicComponentProps, forwardRefPolymorphic } from '@entur/utils';
 
 import './heading.scss';
 
@@ -54,7 +54,7 @@ const defaultElement = 'h2';
 /**
  * @beta Experimental component - may have breaking changes in future releases
  */
-export const Heading = React.forwardRef(
+export const Heading = forwardRefPolymorphic<HeadingComponent>(
   <C extends React.ElementType = typeof defaultElement>(
     {
       children,
@@ -70,7 +70,7 @@ export const Heading = React.forwardRef(
       ...rest
     }: HeadingProps<C>,
     ref?: React.Ref<Element>,
-  ): JSX.Element => {
+  ): React.JSX.Element => {
     const HeadingElement: React.ElementType = as || defaultElement;
 
     const usedVariant =
@@ -95,5 +95,5 @@ export const Heading = React.forwardRef(
       </HeadingElement>
     );
   },
-) as HeadingComponent;
+);
 Heading.displayName = 'Heading';

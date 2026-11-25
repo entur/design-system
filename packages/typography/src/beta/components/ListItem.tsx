@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { PolymorphicComponentProps } from '@entur/utils';
+import { PolymorphicComponentProps, forwardRefPolymorphic } from '@entur/utils';
 import { TypographySpacingProps } from '../types';
 import { getSpacingStyle } from '../utils/utils';
 
@@ -34,7 +34,7 @@ const defaultElement = 'li';
 /**
  * @beta Experimental component - may have breaking changes in future releases
  */
-export const ListItem = React.forwardRef(
+export const ListItem = forwardRefPolymorphic<ListItemComponent>(
   <C extends React.ElementType = typeof defaultElement>(
     {
       title,
@@ -47,7 +47,7 @@ export const ListItem = React.forwardRef(
       ...rest
     }: ListItemProps<C>,
     ref?: React.Ref<Element>,
-  ): JSX.Element => {
+  ): React.JSX.Element => {
     const ItemElement: React.ElementType = as || defaultElement;
 
     return (
@@ -66,5 +66,5 @@ export const ListItem = React.forwardRef(
       </ItemElement>
     );
   },
-) as ListItemComponent;
+);
 ListItem.displayName = 'ListItem';

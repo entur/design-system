@@ -1,0 +1,47 @@
+= Glossary
+
+Terms used in code, commits and decisions in this repo. Decisions live in
+xref:adr/README.adoc[doc/adr/].
+
+`as` prop::
+Prop that sets which element or component a component renders, e.g.
+`<Button as="a" href="…">`. The props available follow the chosen element.
+
+Polymorphic component::
+A component with an `as` prop, typed with a generic call signature over the
+element type. Ones that forward refs are built with `forwardRefPolymorphic` (see
+xref:adr/0001-polymorphic-forwardref.adoc[ADR 1]).
+
+`forwardRefPolymorphic`::
+Helper in `@entur/utils` that creates a polymorphic component with
+`React.forwardRef` and types the result with the component's own call
+signature.
+
+Declaration build::
+The step in each package's Vite build (`vite-plugin-dts`) that emits the
+`.d.ts` files consumers get. It logs type errors but does not fail the build.
+
+ADR::
+Architecture decision record: a short file in `doc/adr/` that records a
+decision, why we made it and what follows. Written with `/grill-with-adr`.
+
+Typecheck job::
+The `Typecheck packages` job in the pull request workflow. It runs
+`yarn typecheck:packages` against the built packages, tests included, and is a
+required check for merging (see xref:adr/0002-typecheck-job.adoc[ADR 2]).
+
+Internal export::
+An export only other `@entur/*` packages should use. Its JSDoc starts with
+`Internal: only for @entur/* packages, no semver guarantee.` Its types are
+published, but it can change in any release (see
+xref:adr/0003-internal-exports.adoc[ADR 3]). Not the same as the `@internal`
+tag, which `stripInternal` removes from the published types.
+
+Pin::
+The commit in the Entur marketplace (`entur/ai`) that the `entur-linje` plugin
+installs. A change to `skills/` reaches users only when the pin moves (see
+xref:adr/0004-skills-pinned-plugin.adoc[ADR 4]).
+
+Router::
+The `entur-linje` skill. It matches the user's task to a sub-skill and sends
+the agent there; it holds no rules of its own.

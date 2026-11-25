@@ -27,7 +27,7 @@ export const SmallText = <E extends React.ElementType = typeof defaultElement>({
   margin = 'both',
   as,
   ...rest
-}: SmallTextProps<E>): JSX.Element => {
+}: SmallTextProps<E>): React.JSX.Element => {
   const Element: React.ElementType = as || defaultElement;
   return (
     <Element

@@ -2,6 +2,7 @@ import React from 'react';
 import { defineArrayMember, defineField, defineType } from 'sanity';
 import { AutocompletePageFieldInput } from '../../components/AutocompletePageFieldInput';
 import { AutocompleteTagInput } from '../../components/AutocompleteTagInput';
+import { BackToPagesInput } from '../../components/BackToPagesInput';
 import { NPM_PACKAGES } from '../../npmPackages';
 
 import { StringInputProps } from 'sanity';
@@ -18,6 +19,7 @@ export const componentDoc = defineType({
   name: 'componentDoc',
   title: 'Komponent',
   type: 'document',
+  components: { input: BackToPagesInput },
   fieldsets: [
     {
       name: 'legacyTabs',

@@ -27,3 +27,6 @@
 
 # Dotenv and similar local-only files
 *.local
+
+# Built by preview:build
+static/preview

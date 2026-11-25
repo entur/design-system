@@ -1,6 +1,6 @@
 {
   "name": "@entur/loader",
-  "version": "0.9.1",
+  "version": "0.9.2",
   "license": "EUPL-1.2",
   "main": "dist/loader.cjs",
   "module": "dist/loader.mjs",
@@ -19,7 +19,8 @@
   "scripts": {
     "start": "vite build --watch",
     "build": "vite build",
-    "test": "jest"
+    "test": "jest",
+    "typecheck": "tsc -p tsconfig.json --noEmit --rootDir ../.."
   },
   "peerDependencies": {
     "react": ">=18.0.0",
