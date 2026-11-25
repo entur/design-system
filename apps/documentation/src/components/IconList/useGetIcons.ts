@@ -8,7 +8,7 @@ export const useGetIcons = () => {
           node {
             publicURL
             name
-            absolutePath
+            relativeDirectory
           }
         }
       }
@@ -21,6 +21,7 @@ export type iconsQueryType = {
   node: {
     publicURL: string;
     name: string;
-    absolutePath: string;
+    /** Category folder, e.g. UI/Validation */
+    relativeDirectory: string;
   };
 };

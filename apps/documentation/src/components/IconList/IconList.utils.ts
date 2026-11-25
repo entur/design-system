@@ -3,6 +3,7 @@ import React from 'react';
 export interface URLParams {
   search: string;
   category: { label: string; value: string } | null;
+  style: string | null;
 }
 
 /**
@@ -11,7 +12,7 @@ export interface URLParams {
  */
 export const getInitialURLParams = (): URLParams => {
   if (typeof window === 'undefined') {
-    return { search: '', category: null };
+    return { search: '', category: null, style: null };
   }
 
   const urlParams = new URLSearchParams(window.location.search);
@@ -21,7 +22,13 @@ export const getInitialURLParams = (): URLParams => {
   return {
     search,
     category: category ? { label: category, value: category } : null,
+    style: urlParams.get('style'),
   };
+};
+
+const setOrDelete = (url: URL, key: string, value: string | null) => {
+  if (value) url.searchParams.set(key, value);
+  else url.searchParams.delete(key);
 };
 
 /**
@@ -31,28 +38,18 @@ export const getInitialURLParams = (): URLParams => {
 export const updateURLParams = (
   search: string,
   category: string | null,
+  style: string | null = null,
 ): void => {
   if (typeof window === 'undefined') return;
 
   const url = new URL(window.location.href);
+  const before = url.toString();
 
-  // Only update if values actually changed
-  const currentSearch = url.searchParams.get('search') || '';
-  const currentCategory = url.searchParams.get('category');
+  setOrDelete(url, 'search', search);
+  setOrDelete(url, 'category', category);
+  setOrDelete(url, 'style', style);
 
-  if (currentSearch !== search || currentCategory !== category) {
-    if (search) {
-      url.searchParams.set('search', search);
-    } else {
-      url.searchParams.delete('search');
-    }
-
-    if (category) {
-      url.searchParams.set('category', category);
-    } else {
-      url.searchParams.delete('category');
-    }
-
+  if (url.toString() !== before) {
     window.history.replaceState({}, '', url.toString());
   }
 };
@@ -63,14 +60,14 @@ export const updateURLParams = (
  * @param delay - Debounce delay in milliseconds (default: 300ms)
  */
 export const createDebouncedURLUpdater = (
-  updateFn: (search: string, category: string | null) => void,
+  updateFn: typeof updateURLParams,
   delay: number = 300,
 ) => {
   let timeoutId: NodeJS.Timeout;
 
-  return (search: string, category: string | null) => {
+  return (search: string, category: string | null, style?: string | null) => {
     clearTimeout(timeoutId);
-    timeoutId = setTimeout(() => updateFn(search, category), delay);
+    timeoutId = setTimeout(() => updateFn(search, category, style), delay);
   };
 };
 
@@ -83,6 +80,7 @@ export const clearURLParams = (): void => {
   const url = new URL(window.location.href);
   url.searchParams.delete('search');
   url.searchParams.delete('category');
+  url.searchParams.delete('style');
   window.history.replaceState({}, '', url.toString());
 };
 
