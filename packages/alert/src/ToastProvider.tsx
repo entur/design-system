@@ -1,7 +1,6 @@
 import React from 'react';
-import { BaseAlertBox } from './BaseAlertBox';
+import { ToastAlertBox } from './ToastAlertBox';
 import classNames from 'classnames';
-import './ToastAlertBox.scss';
 
 type ToastId = string;
 
@@ -232,9 +231,11 @@ export const ToastProvider = ({
           ref={containerRef}
         >
           {toasts.slice(0, 3).map(toastToShow => (
-            <BaseAlertBox
-              size="toast"
+            <ToastAlertBox
               data-toast-id={toastToShow.id}
+              // Keeps role="status", but the announcer below reads the toast,
+              // so it is not read twice or with its close button
+              aria-live="off"
               variant={toastToShow.variant}
               title={toastToShow.title}
               onClose={handleClose(toastToShow.id)}
@@ -247,12 +248,13 @@ export const ToastProvider = ({
               key={toastToShow.id}
             >
               {toastToShow.content}
-            </BaseAlertBox>
+            </ToastAlertBox>
           ))}
         </div>
       )}
       {children}
-      <div role="status" className="eds-toast-announcer">
+      {/* No role, so getByRole('status') still finds only the toasts */}
+      <div aria-live="polite" className="eds-toast-announcer">
         {announcements.map(announcement => (
           <div key={announcement.id}>{announcement.text}</div>
         ))}
