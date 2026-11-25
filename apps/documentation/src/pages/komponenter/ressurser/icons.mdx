@@ -15,6 +15,7 @@ import { fontSizes, base } from "@entur/tokens";
 import { graphql } from 'gatsby';
 import { SEO } from '@components/seo/SEO';
 import IconList from '@components/IconList/IconList';
+import { DocTab, MdxDocTabs } from '@components/DocTabs/DocTabs';
 
 export const Head = ( props ) => {
   return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
@@ -35,10 +36,60 @@ query fordesignere {
 }
 `;
 
+<MdxDocTabs>
+<DocTab title="Ikoner">
 
-## Søk etter et ikon
+<TextContainer>
+
+Søk på navn eller på hva ikonet gjør, på norsk eller engelsk. Velg et ikon for å se det i stort format, kopiere koden eller laste det ned som SVG.
+
+</TextContainer>
 
 <IconList icons={icons} />
+
+</DocTab>
+<DocTab title="Retningslinjer">
+
+<TextContainer>
+
+## Når skal ikoner brukes?
+
+Ikoner skal brukes for å skape bedre navigasjon og brukeropplevelse. De skal oppleves som relevant for de formålene de brukes til, og for å hjelpe brukeren å forstå innholdet raskere enn med kun tekst. Ikoner benyttes oftest sammen med forklarende tekst, og helst ikke frittstående.
+
+Ikoner er _ikke_ ment som dekorasjon, og skal derfor _kun_ brukes der de gir verdi. Ikoner skal ikke være for detaljerte eller blandes i farger, det vil gjøre de mer til en illustrasjon istedenfor et ikon. Ikoner som ikke er en del av ikonbiblioteket skal ikke brukes. Utvikling av nye ikoner skal skje gjennom designansvarlig i Entur.
+
+<DoDontGroup>
+  <DoDontCard variant="success" imgSource={props.data.imagefiles.images.find(image => image.name === "color-do").childImageSharp.gatsbyImageData} alt="">
+    Bruk samme farge på ikon og tekst når de skal stå sammen
+  </DoDontCard>
+  <DoDontCard variant="negative" imgSource={props.data.imagefiles.images.find(image => image.name === "color-dont").childImageSharp.gatsbyImageData} alt="">
+    Ikke bruk forskjellige farger på ikon og tekst
+  </DoDontCard>
+</DoDontGroup>
+<DoDontGroup>
+  <DoDontCard variant="success" imgSource={props.data.imagefiles.images.find(image => image.name === "align-do").childImageSharp.gatsbyImageData} alt="">
+    Når man bruker ikon ved siden av tekst, skal ikonet midtstilles
+  </DoDontCard>
+  <DoDontCard variant="negative" imgSource={props.data.imagefiles.images.find(image => image.name === "align-dont").childImageSharp.gatsbyImageData} alt="">
+    Ikke baseline-juster ikonet til teksten
+  </DoDontCard>
+</DoDontGroup>
+<DoDontGroup>
+  <DoDontCard variant="success" imgSource={props.data.imagefiles.images.find(image => image.name === "size-do").childImageSharp.gatsbyImageData} alt="">
+    Størrelsen på både ikon og tekst skal alltid være lik og innenfor
+    størrelse-skalaen
+  </DoDontCard>
+  <DoDontCard variant="negative" imgSource={props.data.imagefiles.images.find(image => image.name === "size-dont").childImageSharp.gatsbyImageData} alt="">
+    Ikke bruk forskjellig størrelser på ikon og tekst
+  </DoDontCard>
+</DoDontGroup>
+
+</TextContainer>
+
+</DocTab>
+<DocTab title="Utvikling">
+
+<TextContainer>
 
 ## Kom i gang
 
@@ -112,40 +163,6 @@ import { SeatIcon, RuterIcon } from '@entur/icons'
 </View>
 ```
 
-## Retningslinjer
-
-### Når skal ikoner brukes?
-
-Ikoner skal brukes for å skape bedre navigasjon og brukeropplevelse. De skal oppleves som relevant for de formålene de brukes til, og for å hjelpe brukeren å forstå innholdet raskere enn med kun tekst. Ikoner benyttes oftest sammen med forklarende tekst, og helst ikke frittstående.
-
-Ikoner er _ikke_ ment som dekorasjon, og skal derfor _kun_ brukes der de gir verdi. Ikoner skal ikke være for detaljerte eller blandes i farger, det vil gjøre de mer til en illustrasjon istedenfor et ikon. Ikoner som ikke er en del av ikonbiblioteket skal ikke brukes. Utvikling av nye ikoner skal skje gjennom designansvarlig i Entur.
-
-<DoDontGroup>
-  <DoDontCard variant="success" imgSource={props.data.imagefiles.images.find(image => image.name === "color-do").childImageSharp.gatsbyImageData} alt="">
-    Bruk samme farge på ikon og tekst når de skal stå sammen
-  </DoDontCard>
-  <DoDontCard variant="negative" imgSource={props.data.imagefiles.images.find(image => image.name === "color-dont").childImageSharp.gatsbyImageData} alt="">
-    Ikke bruk forskjellige farger på ikon og tekst
-  </DoDontCard>
-</DoDontGroup>
-<DoDontGroup>
-  <DoDontCard variant="success" imgSource={props.data.imagefiles.images.find(image => image.name === "align-do").childImageSharp.gatsbyImageData} alt="">
-    Når man bruker ikon ved siden av tekst, skal ikonet midtstilles
-  </DoDontCard>
-  <DoDontCard variant="negative" imgSource={props.data.imagefiles.images.find(image => image.name === "align-dont").childImageSharp.gatsbyImageData} alt="">
-    Ikke baseline-juster ikonet til teksten
-  </DoDontCard>
-</DoDontGroup>
-<DoDontGroup>
-  <DoDontCard variant="success" imgSource={props.data.imagefiles.images.find(image => image.name === "size-do").childImageSharp.gatsbyImageData} alt="">
-    Størrelsen på både ikon og tekst skal alltid være lik og innenfor
-    størrelse-skalaen
-  </DoDontCard>
-  <DoDontCard variant="negative" imgSource={props.data.imagefiles.images.find(image => image.name === "size-dont").childImageSharp.gatsbyImageData} alt="">
-    Ikke bruk forskjellig størrelser på ikon og tekst
-  </DoDontCard>
-</DoDontGroup>
-
 ## Props
 
   <Table>
@@ -218,3 +235,8 @@ Ikoner er _ikke_ ment som dekorasjon, og skal derfor _kun_ brukes der de gir ver
       </TableRow>
     </TableBody>
   </Table>
+
+</TextContainer>
+
+</DocTab>
+</MdxDocTabs>
