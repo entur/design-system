@@ -94,7 +94,7 @@ Write the release message in Norwegian (Bokmål), from the changelogs of the pac
 
 :hourglass: Deprecations
 @entur/package@version
-• what is deprecated, the replacement, and the version it is removed in
+• what is deprecated, the replacement, and the version it will be removed in
 
 :rocket: Minor change / feature
 @entur/package@version

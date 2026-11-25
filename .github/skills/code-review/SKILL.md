@@ -66,7 +66,7 @@ What is public and what is breaking is decided in
 - Deprecate before removing. A stable export or prop is removed only after a
   release that marked it `@deprecated` with its replacement named. Flag a PR
   that deprecates and removes in one go. A new `@deprecated` needs a
-  `DEPRECATED:` footer naming the version it is removed in.
+  `DEPRECATED:` footer saying which version it will be removed in.
 - A new `exports` subpath, `files` entry, dist file or public attribute is
   permanent API. Removing or renaming one is breaking. New `exports` entries
   list `types`, `import` and `require` like the existing ones.
