@@ -5,7 +5,7 @@ description: Draw new illustrations in the Entur Linje illustration style — ha
 
 > **Audience:** AI coding agents. Entur employees should visit [linje.entur.no/identitet/verktoykassen/illustrasjoner](https://linje.entur.no/identitet/verktoykassen/illustrasjoner).
 
-> **Resolving `references/` and `scripts/` paths:** if you are reading this over HTTP rather than from an installed skill folder, resolve them against `https://raw.githubusercontent.com/entur/design-system/main/skills/entur-illustration/`.
+> **Resolving `references/` and `scripts/` paths:** they resolve against this skill's own folder in the installed plugin.
 
 # Entur Illustration
 
