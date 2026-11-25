@@ -22,6 +22,9 @@ Analyze the changes and craft a message following AGENTS.md conventions exactly.
 - **Type selection:** `fix` and `feat` are ONLY for consumer-facing changes inside `packages/` or `skills/`. Everything else uses `chore`, `refactor`, `test`, `docs`, etc. When in doubt, use `chore`.
 - **Scope:** `package/component` in lowercase. Check AGENTS.md for the full scope rules (beta components, repo-wide, docs site, GHA workflows, skills, etc.).
 - **Description:** imperative form ("add X", not "added X"). For `feat`/`fix`, write consumer-focused descriptions — what it means for users of the design system, not internal implementation details.
+- **Consumer-relevant changes:** a change to CSS classes, tokens, DOM structure, visuals, accessibility behaviour or peer dependencies counts, not only props. See the "Changelogs" section of AGENTS.md.
+- **Breaking changes:** if consumers must change anything to keep working, add a `BREAKING CHANGE:` footer that names the exact element, the action and the replacement, and links the migration skill or guide when there is one. Never "might break" or "some wrappers".
+- **Deprecations:** if the diff marks something deprecated (`@deprecated`, a console warning), add a `DEPRECATED:` footer with the version it is removed in. If you don't know the version, ask.
 - **AI attribution:** Follow the rules in AGENTS.md for when and how to add AI attribution trailers. The format and rules for when to include them live there — do not hardcode assumptions.
 
 ## Step 4: Stage and commit

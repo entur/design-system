@@ -39,7 +39,8 @@ coverage
 !/.claude/commands/
 /.claude/commands/*
 !/.claude/commands/commit.md
-!/.claude/commands/update-pr.md
+!/.claude/commands/pull-request.md
+!/.claude/commands/publish.md
 .playwright-mcp
 
 # GitHub
