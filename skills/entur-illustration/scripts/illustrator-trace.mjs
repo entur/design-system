@@ -95,9 +95,12 @@ const vehicle = flag('vehicle');
 const underlay = flag('underlay') || vehicle;
 const features = animals && !object && !flag('no-features');
 const simplify = animals && !flag('no-simplify');
-// A traced draft already carries the hand tremor; Roughen on top makes it bumpy.
-const roughen = flag('roughen');
-flag('no-roughen');
+// Roughen 0.2 % on the strokes: on by default for an animal, whose
+// designer roughened the traced polar bear's outline like its ground line;
+// off for people and objects, whose traced draft already carries enough
+// tremor. `--roughen` turns it on, `--no-roughen` off.
+const roughen =
+  flag('roughen') || (animals && !object && !vehicle && !flag('no-roughen'));
 // People: points on the artboard, in the SVG's units ("x,y x,y"), that say
 // what a part is, which the pixels cannot: --clothes joins the parts under
 // its points into one fill named Clothes, for the clothing colour; --open
@@ -711,6 +714,18 @@ if (P.simplify) {
     for (var t6 = 0; t6 < marks.length; t6++) if (dist(mid, marks[t6]) < 20 * sc) crowded = true;
     if ((f0 < 4 * sc && f1 < 4 * sc) || crowded) { ti.remove(); items[t3].gone = true; thinned++; } else marks.push(mid);
   }
+  // No mouth: a short mark just under the nose (the largest feature) goes,
+  // as the designer took the polar bear's out. The eye and nose say enough.
+  var mouths = 0, nose = null;
+  for (var n0 = 0; n0 < P.features.length; n0++) if (!nose || P.features[n0].rx * P.features[n0].ry > nose.rx * nose.ry) nose = P.features[n0];
+  if (nose && !P.object) {
+    var nx = ab[0] + nose.cx, ny = ab[1] - nose.cy;
+    for (var n1 = 0; n1 < items.length; n1++) {
+      if (items[n1].gone) continue;
+      var nb = items[n1].it.geometricBounds, nm = [(nb[0] + nb[2]) / 2, (nb[1] + nb[3]) / 2];
+      if (Number(items[n1].it.length) < 10 * sc && Math.abs(nm[0] - nx) <= 8 * sc && ny - nm[1] >= 4 * sc && ny - nm[1] <= 14 * sc) { items[n1].it.remove(); items[n1].gone = true; mouths++; }
+    }
+  }
   // One plain ground line, as under the library animals: the traced dashes
   // and short grass marks go, and one line at detail weight with the line
   // Roughen takes their place, on a Ground layer under the fills, so the
@@ -800,7 +815,7 @@ if (P.simplify) {
   var groundLines = [];
   for (var g8 = 0; g8 < items.length; g8++) if (items[g8].ground && !items[g8].gone) groundLines.push(items[g8].it);
   lp = paths(lg, []);
-  log.push('simplified: specks ' + specks + ', joined ' + (joined - ground) + ' (ground ' + ground + '), fur marks thinned ' + thinned + (P.ground ? ', ground marks replaced by one line ' + plain + (toes ? ', toes kept ' + toes : '') + (belowN ? ', below the ground removed ' + belowN : '') : ''));
+  log.push('simplified: specks ' + specks + ', joined ' + (joined - ground) + ' (ground ' + ground + '), fur marks thinned ' + thinned + (mouths ? ', mouth removed' : '') + (P.ground ? ', ground marks replaced by one line ' + plain + (toes ? ', toes kept ' + toes : '') + (belowN ? ', below the ground removed ' + belowN : '') : ''));
 }
 // People: a stroke lying on an ink mass goes (the edge of a chair, a line
 // through the hair): a designer draws the chair, the hair, a keyboard and a
@@ -927,15 +942,20 @@ if (P.backdrop) {
     var ring = circleLayer.pathItems.ellipse(dcy + r0, dcx - r0, 2 * r0, 2 * r0);
     ring.stroked = false; ring.filled = true; ring.fillColor = rgb(P.palette.tint);
     try { ring.applyEffect('<LiveEffect name="Adobe Roughen"><Dict data="R size 0.65 R asiz 0.65 R absoluteness 0 R dtal 61 R roundness 1 "/></LiveEffect>'); } catch (e) {}
-    // White marks the draft drew on the disc (discMarks), as paper above it.
+    // Marks the draft drew on the disc (discMarks: snowflakes, dots), on a
+    // layer of their own above the circle, so the plain version without the
+    // circle keeps them. Peach: on the designer's polar bear the snow is the
+    // one highlight colour.
     if (P.discMarks.length) {
       app.activeDocument = doc;
-      var marksGroup = circleLayer.groupItems.add(); marksGroup.name = 'Disc marks';
+      var marksLayer = doc.layers.add(); marksLayer.name = 'Marks';
+      marksLayer.move(circleLayer, ElementPlacement.PLACEBEFORE);
+      var marksGroup = marksLayer.groupItems.add(); marksGroup.name = 'Disc marks';
       for (var dm0 = 0; dm0 < P.discMarks.length; dm0++) {
         var dmk = P.discMarks[dm0], dmade = [];
         if (dmk.loops.length === 1) { var done = marksGroup.pathItems.add(); setLoop(done, dmk.loops[0]); dmade.push(done); }
         else { var dcp = marksGroup.compoundPathItems.add(); for (var dm1 = 0; dm1 < dmk.loops.length; dm1++) { var dsub = dcp.pathItems.add(); setLoop(dsub, dmk.loops[dm1]); dmade.push(dsub); } }
-        for (var dm2 = 0; dm2 < dmade.length; dm2++) { dmade[dm2].filled = true; dmade[dm2].stroked = false; dmade[dm2].fillColor = rgb(P.palette.paper); }
+        for (var dm2 = 0; dm2 < dmade.length; dm2++) { dmade[dm2].filled = true; dmade[dm2].stroked = false; dmade[dm2].fillColor = rgb(P.palette.peach); }
       }
       log.push('disc marks ' + P.discMarks.length);
     }
@@ -1434,24 +1454,71 @@ console.log(result);
 // the disc is Ebony 20 at 30 % opacity in dark mode and Blue 90 in contrast
 // mode, while small tint fills turn Ebony 30 and Blue 40.
 const svg = fs.readFileSync(params.svg, 'utf8');
-for (const [mode, idx] of [
+const MODES = [
   ['darkmode', 1],
   ['contrast', 2],
-]) {
-  let out = markBackdrop(svg);
+];
+function modeSvg(base, mode, idx) {
+  let out = markBackdrop(base);
   if (vehicle) out = markVehicle(out);
   for (const [, values] of Object.entries(PALETTE)) {
     const from = values[0];
     out = out.replace(new RegExp(from, 'gi'), `__${values[idx].slice(1)}__`);
   }
-  out = out
+  return out
     .replace(/__([0-9A-F]{6})__/g, '#$1')
     .replace(/__BACKDROP__/g, backdropFill(mode))
     .replace(/__VEHICLE__/g, mode === 'darkmode' ? '#999AA7' : '#FFFFFF')
     .replace(/__WINDOW__/g, mode === 'darkmode' ? '#FFEEB3' : '#626493');
+}
+for (const [mode, idx] of MODES) {
   const file = path.join(outDir, `${name}-${mode}.svg`);
-  fs.writeFileSync(file, out);
+  fs.writeFileSync(file, modeSvg(svg, mode, idx));
   console.log(file);
+}
+// An animal on a disc also comes as the library's two versions (Musk.svg and
+// Musk-background.svg), as the designer split the polar bear: -background
+// has the circle and no tint shading on the body (the inner ear's goes too),
+// -plain has no circle and keeps the shading. The marks drawn on the disc
+// (a snowflake, dots) are in both. <Name>.svg keeps everything, for the check
+// against the draft.
+const circleAt = groupRange(svg, 'Circle');
+if (animals && !object && circleAt) {
+  const [c0, c1] = circleAt;
+  const noTint = part =>
+    part.replace(
+      /<(?:path|polygon|polyline|rect|circle|ellipse)\b[^>]*fill="#EAEAF1"[^>]*\/>/gi,
+      '',
+    );
+  const versions = {
+    background:
+      noTint(svg.slice(0, c0)) + svg.slice(c0, c1) + noTint(svg.slice(c1)),
+    plain: svg.slice(0, c0) + svg.slice(c1),
+  };
+  for (const [kind, base] of Object.entries(versions)) {
+    const file = path.join(outDir, `${name}-${kind}.svg`);
+    fs.writeFileSync(file, base);
+    console.log(file);
+    for (const [mode, idx] of MODES) {
+      const modeFile = path.join(outDir, `${name}-${kind}-${mode}.svg`);
+      fs.writeFileSync(modeFile, modeSvg(base, mode, idx));
+      console.log(modeFile);
+    }
+  }
+}
+
+// Where a top-level group with this id starts and ends in an exported SVG.
+function groupRange(text, id) {
+  const start = text.indexOf(`<g id="${id}"`);
+  if (start < 0) return null;
+  const tags = /<g[\s>]|<\/g>/g;
+  tags.lastIndex = start;
+  let depth = 0;
+  for (let m; (m = tags.exec(text)); ) {
+    depth += m[0] === '</g>' ? -1 : 1;
+    if (!depth) return [start, m.index + 4];
+  }
+  return null;
 }
 
 // The fill of the backdrop disc per mode (palette.md, role backdrop).
