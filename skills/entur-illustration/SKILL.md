@@ -131,6 +131,8 @@ Rules of use: at most **three** square illustrations per page view; more than on
 
     The trace does most of this for people (the default construction). The pixels cannot say for certain which parts are clothes or air, so without `--clothes` and `--open` it guesses. The face is the topmost white part the hair runs into; the figure is what joins it, across the desk top to the legs under it; a small part at the end of a sleeve is a hand. White parts under the desk that the figure does not reach are air. A hand at the chin, a book against the body, a folder held to the chest, or a gap between two chair wheels can come out wrong. The trace writes `<Name>-parts.json` beside the SVGs with each part's role (`clothes`, `skin`, `object`, `tint` or `open`) and a point inside it. To correct the guess, give points on the artboard in the SVG's units: `--clothes "x,y x,y"`, one in each piece of clothing, and `--open "x,y"` in each pocket of air (`""` for none of either). The parts file's points can be sent back as they are. The trace does not yet stop an object's line behind the body or close a line that the draft breaks where the chair crosses the desk: finish those by hand.
 
+26. **Every animal is the same size.** In the library every animal fills about the same share of the 320 frame, whatever its real size: its body (not the ground line or what lies around it) spans 160–256 on its longer side, from the hamster (163) and the mouse (213) to the goat (229), the rabbit (251) and the winter moose (256). A squirrel, a hen or a seagull is as big in the frame as a goat or a bear; a small animal is never drawn small, and a large one is never cropped or crammed edge to edge. Put it next to a library animal at the same size before delivering. The designer scaled the traced polar bear up from 146 to 184 for this. `trace-check` reports an animal outside the range as too small or too large.
+
 The full anatomy, with measurements and per-format layout, is in `references/style.md`. The colour roles and how they map per mode are in `references/palette.md`.
 
 ## Step 4 — pick a route
@@ -209,12 +211,12 @@ Check before delivering:
 - [ ] Every line is a stroke with round caps and no brush; nothing outlined in the working file
 - [ ] The construction fits the subject: uniform lines on people, staff and vehicles; swelling lines (width profile) on animals and objects
 - [ ] Line weights follow the hierarchy (contour > detail > fine); background lines are Blue 50
-- [ ] Ground is one simple line at detail weight, in one to three pieces, under the feet and body parts, never over them (hidden where the body stands on it), for people and animals alike; grass, if the scene needs any, is one small tuft of two or three blades
+- [ ] Ground is one simple line at detail weight, in one to three pieces, behind whatever lies across it (a tail) and showing under feet and paws, for people and animals alike, with nothing drawn below it; grass, if the scene needs any, is one small tuft of two or three blades
 - [ ] Paper dominates; one Peach accent, on animals too (a prop or one marking, about 1 % of the canvas); no coral or red, except the Entur staff panels and the line under a vehicle
 - [ ] Fills are flat with smooth edges; most sit exactly under their line, one to three colour fills are offset 0.5–0.7
 - [ ] At least one contour is left open; interior lines float
 - [ ] Subject reads at 120 px wide (squint test)
-- [ ] Subject as large in the frame as the library motifs next to it (square animals fill about 60–75 % of the height); props at least 16 units from the edge
+- [ ] Subject as large in the frame as the library motifs next to it; every animal about the same size, whatever its real size: its body 160–256 of 320 on its longer side (rule 26), checked side by side with a library animal, neither too small nor too large; props at least 16 units from the edge
 - [ ] People: natural proportions and pose, hands with fingers, only a nose on the face (no eyes, no mouth); side by side with a library person, the head is not bigger and the body not blockier
 - [ ] Clothes carry 2–5 tapered fold marks, not more
 - [ ] Hair is one smooth shape; headset, glasses and straps are single shapes, nothing doubled

@@ -924,6 +924,51 @@ if (circle) {
   }
 }
 
+// An animal's size (SKILL.md rule 26): every animal fills about the same
+// share of the frame, whatever its real size. Its paper (the underlay) spans
+// 160–256 of 320 on its longer side in the library, from the hamster to the
+// moose; the designer scaled the traced polar bear from 146 to 184.
+if (
+  !object &&
+  !vehicle &&
+  /id="Underlay/.test(fs.readFileSync(svgFile, 'utf8'))
+) {
+  let bx0 = w;
+  let by0 = h;
+  let bx1 = -1;
+  let by1 = -1;
+  for (const c of components(P.cls.paper, w, h, Math.round((0.05 * w) ** 2))) {
+    bx0 = Math.min(bx0, c.box[0]);
+    by0 = Math.min(by0, c.box[1]);
+    bx1 = Math.max(bx1, c.box[2]);
+    by1 = Math.max(by1, c.box[3]);
+  }
+  if (bx1 >= 0) {
+    const side = (Math.max(bx1 - bx0, by1 - by0) + 1) * scale;
+    const unit = viewBox[2] / 320;
+    const low = 160 * unit;
+    const high = 256 * unit;
+    if (side < low || side > high)
+      findings.push({
+        kind: 'size',
+        what: `animal ${side < low ? 'too small' : 'too large'}: ${Math.round(
+          (bx1 - bx0 + 1) * scale,
+        )} × ${Math.round(
+          (by1 - by0 + 1) * scale,
+        )}, the library's animals span ${Math.round(low)}–${Math.round(
+          high,
+        )} on their longer side`,
+        shape: '',
+        area_px: (bx1 - bx0 + 1) * (by1 - by0 + 1),
+        at: [(bx0 + bx1) / 2, (by0 + by1) / 2].map(
+          v => +(v * scale + viewBox[0]).toFixed(1),
+        ),
+        box: [bx0, by0, bx1, by1].map(v => +(v * scale).toFixed(1)),
+        box_px: [bx0, by0, bx1, by1],
+      });
+  }
+}
+
 findings.forEach((f, i) => (f.n = i + 1));
 
 // ---- picture ----------------------------------------------------------------
@@ -932,6 +977,7 @@ const COLOUR = {
   missing: [220, 30, 30],
   extra: [20, 90, 230],
   paper: [210, 0, 210],
+  size: [230, 140, 0],
 };
 const pic = new Uint8Array(w * h * 3);
 for (let i = 0; i < w * h; i++)
