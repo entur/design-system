@@ -535,7 +535,53 @@ const tracedWide = silhouette(T.ink, w, h, Math.round(0.016 * w));
 const interior = sil.map((v, i) =>
   (v || (tracedWide[i] && D.cls.paper[i])) && !nearInk[i] ? 1 : 0,
 );
-const allowedNear = near(interior, w, h, edge + Math.round(0.004 * w) + 1);
+// White marks drawn on the disc (snowflakes, dots) are paper on purpose:
+// the trace draws them on the circle (discMarks). They are too thin for the
+// silhouette, so the draft's white pieces well inside the disc that touch no
+// line count as figure, as the trace finds them.
+const draftDisc = discOf(draftImg);
+const onDisc = new Uint8Array(w * h);
+if (draftDisc) {
+  const inkClose = near(D.ink, w, h, 3);
+  const seen = new Uint8Array(w * h);
+  const inside = i => {
+    const x = i % w;
+    const y = (i - x) / w;
+    return (
+      (x - draftDisc.cx) ** 2 + (y - draftDisc.cy) ** 2 <
+      (0.9 * draftDisc.r) ** 2
+    );
+  };
+  for (let i0 = 0; i0 < w * h; i0++) {
+    if (!D.cls.paper[i0] || seen[i0] || !inside(i0)) continue;
+    const part = [i0];
+    seen[i0] = 1;
+    let free = true;
+    for (let k = 0; k < part.length; k++) {
+      const i = part[k];
+      if (inkClose[i] || !inside(i)) free = false;
+      const x = i % w;
+      for (const q of [
+        x > 0 ? i - 1 : -1,
+        x < w - 1 ? i + 1 : -1,
+        i - w,
+        i + w,
+      ])
+        if (q >= 0 && q < w * h && D.cls.paper[q] && !seen[q]) {
+          seen[q] = 1;
+          part.push(q);
+        }
+    }
+    if (free && part.length <= (0.06 * w) ** 2)
+      for (const i of part) onDisc[i] = 1;
+  }
+}
+const allowedNear = near(
+  interior.map((v, i) => v || onDisc[i]),
+  w,
+  h,
+  edge + Math.round(0.004 * w) + 1,
+);
 // The ground line runs behind the body: paper covering it where a body
 // stands on it (the band of the line, under a column the figure reaches)
 // is meant to be there.
@@ -554,7 +600,9 @@ if (groundTop >= 0) {
   }
 }
 const figures = near(
-  sil.map((v, i) => (v || (tracedWide[i] && D.cls.paper[i]) ? 1 : 0)),
+  sil.map((v, i) =>
+    v || onDisc[i] || (tracedWide[i] && D.cls.paper[i]) ? 1 : 0,
+  ),
   w,
   h,
   2 * tol,

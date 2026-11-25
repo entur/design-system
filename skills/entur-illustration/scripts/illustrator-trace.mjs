@@ -191,6 +191,9 @@ const toY = v => (v * params.size) / img.h;
 params.disc = disc
   ? { cx: toX(disc.cx), cy: toY(disc.cy), r: toX(disc.r) }
   : null;
+// White marks on the disc (snowflakes, dots), drawn as paper on the circle.
+// An object's white on the disc is figure already (draftSubject).
+params.discMarks = backdrop && disc && !object ? discMarks(img, disc) : [];
 // On an object, which of the disc's pale areas are faces of it (discParts).
 const parts = object && disc ? discParts(img, disc) : null;
 params.faces = parts ? parts.faces : null;
@@ -561,15 +564,62 @@ function toLine(q, s) {
   }
   return best;
 }
+function lerp2(p, q, t) { return [p[0] + (q[0] - p[0]) * t, p[1] + (q[1] - p[1]) * t]; }
+function splitAt(p0, p1, p2, p3, t) { var a = lerp2(p0, p1, t), b = lerp2(p1, p2, t), c = lerp2(p2, p3, t), d = lerp2(a, b, t), e = lerp2(b, c, t), f = lerp2(d, e, t); return { left: [p0, a, d, f], right: [f, e, c, p3] }; }
+// Toes standing on the ground line trace as part of a ground piece: a tick
+// that turns into the line (six on the polar bear's paws). Before the piece
+// goes, each tick rising off the line is cut out at the point it leaves the
+// line and kept as a stroke of its own.
+function cutToes(item, pts, lineY, sc) {
+  var rise = 1.5 * sc, near = 0.2 * sc, n = pts.length, i = 0, made = 0;
+  while (i < n) {
+    if (pts[i].a[1] <= lineY + rise) { i++; continue; }
+    var i0 = i;
+    while (i < n && pts[i].a[1] > lineY + rise) i++;
+    var i1 = i - 1, mid = [], out = [];
+    for (var m = i0; m <= i1; m++) mid.push({ a: pts[m].a, l: pts[m].l, r: pts[m].r, t: pts[m].t });
+    if (i0 > 0) {
+      var A = pts[i0 - 1], B = pts[i0], t0 = 0;
+      for (var k0 = 24; k0 >= 0; k0--) if (bez(A.a, A.r, B.l, B.a, k0 / 24)[1] <= lineY + near) { t0 = k0 / 24; break; }
+      var rs = splitAt(A.a, A.r, B.l, B.a, t0).right;
+      out.push({ a: rs[0], l: rs[0], r: rs[1], t: PointType.CORNER });
+      mid[0].l = rs[2];
+    }
+    out = out.concat(mid);
+    if (i1 < n - 1) {
+      var C = pts[i1], D = pts[i1 + 1], t1 = 1;
+      for (var k1 = 0; k1 <= 24; k1++) if (bez(C.a, C.r, D.l, D.a, k1 / 24)[1] <= lineY + near) { t1 = k1 / 24; break; }
+      var ls = splitAt(C.a, C.r, D.l, D.a, t1).left;
+      out[out.length - 1].r = ls[1];
+      out.push({ a: ls[3], l: ls[2], r: ls[3], t: PointType.CORNER });
+    }
+    // A tick, not a mound or a stone: narrow, and about toe height.
+    var lx = 1e9, hx = -1e9, top = -1e9;
+    for (var o = 0; o < out.length; o++) { lx = Math.min(lx, out[o].a[0]); hx = Math.max(hx, out[o].a[0]); top = Math.max(top, out[o].a[1]); }
+    if (out.length < 2 || hx - lx > 8 * sc || top - lineY > 12 * sc) continue;
+    var dup = item.duplicate(); writePts(dup, out); dup.name = 'Toe'; made++;
+  }
+  return made;
+}
+// A toe: a short upright mark standing on the ground line (the polar bear's
+// are 2–4 pt), kept whole and drawn without a width profile, which would
+// shrink it to a floating dot.
+function isToe(it, lineY, sc) {
+  if (lineY === null) return false;
+  var b = it.geometricBounds;
+  return Number(it.length) < 8 * sc && Math.abs(b[3] - lineY) <= 1.5 * sc && b[1] - b[3] >= 1.2 * sc && b[1] - b[3] <= 6 * sc && b[2] - b[0] <= 4 * sc;
+}
 if (P.simplify) {
-  var sc = P.size / 320, specks = 0, joined = 0, ground = 0, thinned = 0;
+  var sc = P.size / 320, specks = 0, joined = 0, ground = 0, thinned = 0, toes = 0;
+  var gLine = P.ground ? ab[1] - P.ground.y : null;
   var items = [];
   for (var s0 = 0; s0 < lp.length; s0++) {
     var sp = lp[s0];
     if (!sp.stroked) continue;
+    if (isToe(sp, gLine, sc)) { sp.name = 'Toe'; toes++; }
     // An object's specks up to 4 pt go too: a designer removed three of
     // 3.1–3.7 pt from a traced snowman.
-    if (Number(sp.length) < (P.object ? 4 : 3) * sc) { sp.remove(); specks++; continue; }
+    else if (Number(sp.length) < (P.object ? 4 : 3) * sc) { sp.remove(); specks++; continue; }
     items.push({ it: sp, pts: readPts(sp) });
   }
   // Ground marks: flat lines in the band at the ground line (found in the
@@ -616,6 +666,9 @@ if (P.simplify) {
   // are drawing, and stay.
   var lens = [], groundY = 1e9;
   for (var t0 = 0; t0 < items.length; t0++) { lens.push(Number(items[t0].it.length)); groundY = Math.min(groundY, items[t0].it.geometricBounds[3]); }
+  // Toes sit on the ground line, which need not be the lowest line: snow
+  // mounds drawn below it took the polar bear's toes for fur.
+  if (P.ground) groundY = ab[1] - P.ground.y;
   var longCut = quantile(lens, 0.75), contours = [], eyes = [];
   for (var t1 = 0; t1 < items.length; t1++) if (lens[t1] >= longCut) contours.push({ it: items[t1].it, s: samples(items[t1].pts) });
   for (var t2 = 0; t2 < P.features.length; t2++) eyes.push([ab[0] + P.features[t2].cx, ab[1] - P.features[t2].cy]);
@@ -643,14 +696,21 @@ if (P.simplify) {
   // (a leg) is a foot and stays. Taller grass is left to the review.
   var plain = 0;
   if (P.ground) {
-    var others = [];
+    var others = [], gx0 = ab[0] + P.ground.x0 - 4 * sc, gx1 = ab[0] + P.ground.x1 + 4 * sc, gyl = ab[1] - P.ground.y;
     for (var p0 = 0; p0 < items.length; p0++) if (!items[p0].ground && !items[p0].gone) others.push(samples(items[p0].pts));
     for (var p1 = 0; p1 < items.length; p1++) {
       var pg = items[p1];
-      if (!pg.ground || pg.gone) continue;
-      var foot = false, pe = [pg.pts[0].a, pg.pts[pg.pts.length - 1].a];
-      if (Number(pg.it.length) < 12 * sc) for (var p2 = 0; p2 < others.length && !foot; p2++) for (var p3 = 0; p3 < 2; p3++) if (toLine(pe[p3], others[p2]) < 2.5 * sc) foot = true;
-      if (!foot) { pg.it.remove(); pg.gone = true; plain++; }
+      if (!pg.ground || pg.gone || pg.it.name === 'Toe') continue;
+      // Only marks along the line go: a dash past its end (under a snow
+      // mound) is drawing.
+      var pgb = pg.it.geometricBounds, gIn = Math.min(pgb[2], gx1) - Math.max(pgb[0], gx0);
+      if (gIn < 0.5 * (pgb[2] - pgb[0])) continue;
+      // A foot lying flat on the line is the line itself, which now shows
+      // under the paws; a raised one stays.
+      var foot = false, pe = [pg.pts[0].a, pg.pts[pg.pts.length - 1].a], flatOn = true, ps = samples(pg.pts);
+      for (var p4 = 0; p4 < ps.length; p4++) if (Math.abs(ps[p4][1] - gyl) > 2.5 * sc) flatOn = false;
+      if (Number(pg.it.length) < 12 * sc && !flatOn) for (var p2 = 0; p2 < others.length && !foot; p2++) for (var p3 = 0; p3 < 2; p3++) if (toLine(pe[p3], others[p2]) < 2.5 * sc) foot = true;
+      if (!foot) { toes += cutToes(pg.it, pg.pts, gyl, sc); pg.it.remove(); pg.gone = true; plain++; }
     }
     var groundLayer = doc.layers.add(); groundLayer.name = 'Ground';
     groundLayer.move(fillLayerOf(doc), ElementPlacement.PLACEAFTER);
@@ -665,7 +725,7 @@ if (P.simplify) {
   var groundLines = [];
   for (var g8 = 0; g8 < items.length; g8++) if (items[g8].ground && !items[g8].gone) groundLines.push(items[g8].it);
   lp = paths(lg, []);
-  log.push('simplified: specks ' + specks + ', joined ' + (joined - ground) + ' (ground ' + ground + '), fur marks thinned ' + thinned + (P.ground ? ', ground marks replaced by one line ' + plain : ''));
+  log.push('simplified: specks ' + specks + ', joined ' + (joined - ground) + ' (ground ' + ground + '), fur marks thinned ' + thinned + (P.ground ? ', ground marks replaced by one line ' + plain + (toes ? ', toes kept ' + toes : '') : ''));
 }
 // People: a stroke lying on an ink mass goes (the edge of a chair, a line
 // through the hair): a designer draws the chair, the hair, a keyboard and a
@@ -743,7 +803,7 @@ if (P.carriers) {
   var lines = paths(lg, []);
   for (var c1 = 0; c1 < lines.length; c1++) {
     var ln = lines[c1];
-    if (!ln.stroked) continue;
+    if (!ln.stroked || ln.name === 'Toe') continue;
     var src = car[Number(ln.length) < P.pointLength ? 'point' : 'swell'] || car.swell;
     if (!src) continue;
     var dup = src.duplicate(lineLayer, ElementPlacement.PLACEATBEGINNING), anchors = [];
@@ -776,6 +836,17 @@ if (P.backdrop) {
     var ring = circleLayer.pathItems.ellipse(dcy + r0, dcx - r0, 2 * r0, 2 * r0);
     ring.stroked = false; ring.filled = true; ring.fillColor = rgb(P.palette.tint);
     try { ring.applyEffect('<LiveEffect name="Adobe Roughen"><Dict data="R size 0.65 R asiz 0.65 R absoluteness 0 R dtal 61 R roundness 1 "/></LiveEffect>'); } catch (e) {}
+    // White marks the draft drew on the disc (discMarks), as paper above it.
+    if (P.discMarks.length) {
+      var marksGroup = circleLayer.groupItems.add(); marksGroup.name = 'Disc marks';
+      for (var dm0 = 0; dm0 < P.discMarks.length; dm0++) {
+        var dmk = P.discMarks[dm0], dmade = [];
+        if (dmk.loops.length === 1) { var done = marksGroup.pathItems.add(); setLoop(done, dmk.loops[0]); dmade.push(done); }
+        else { var dcp = marksGroup.compoundPathItems.add(); for (var dm1 = 0; dm1 < dmk.loops.length; dm1++) { var dsub = dcp.pathItems.add(); setLoop(dsub, dmk.loops[dm1]); dmade.push(dsub); } }
+        for (var dm2 = 0; dm2 < dmade.length; dm2++) { dmade[dm2].filled = true; dmade[dm2].stroked = false; dmade[dm2].fillColor = rgb(P.palette.paper); }
+      }
+      log.push('disc marks ' + P.discMarks.length);
+    }
     if (disc && discArea > 0.25 * Math.PI * r0 * r0) {
       var tdb = disc.geometricBounds;
       if (dist([(tdb[0] + tdb[2]) / 2, (tdb[1] + tdb[3]) / 2], [dcx, dcy]) < r0) (disc.parent.typename === 'CompoundPathItem' ? disc.parent : disc).remove();
@@ -1907,6 +1978,14 @@ function underlaySubject(
     const from = Math.max(0, Math.floor(centre - reach));
     const foot = Math.min(h - 1, Math.ceil(centre + reach));
     for (let x = 0; x < w; x++) {
+      // Where the draft shows the line (under a paw, between the legs) the
+      // paper stops at it, so the line under the fills shows; it hides only
+      // where the draft hides it (a tail lying across it).
+      if (ground.at && ground.at[x] >= 0) {
+        const lineTop = Math.max(0, Math.round(ground.at[x]) - 1);
+        for (let y = lineTop; y <= foot; y++) subject[y * w + x] = 0;
+        continue;
+      }
       let stands = false;
       for (let y = Math.max(0, from - reach); y < from; y++)
         if (subject[y * w + x]) stands = true;
@@ -4071,6 +4150,87 @@ function objectShades(img, disc) {
   return shades;
 }
 
+// White marks drawn on the backdrop disc (snowflakes, stars, dots): white
+// pieces inside the disc that touch no line and stay clear of its rim. The
+// colour trace drops them as specks, or they go with the traced disc, so the
+// circle came back bare under the polar bear. They return as paper on the
+// circle, which keeps them light in every mode. Their edge is midway between
+// the disc's grey-lavender (lum about 229) and white. Returns the outlines in
+// pixels, as personParts' shapes.
+function discMarks(img, disc) {
+  const { w, h, lum } = img;
+  const rim = disc.r - 6;
+  const ink = new Uint8Array(w * h);
+  for (let k = 0; k < w * h; k++) ink[k] = lum[k] < 120 ? 1 : 0;
+  const nearInk = dilate(ink, w, h, 3);
+  const white = new Uint8Array(w * h);
+  const by0 = Math.max(0, Math.floor(disc.cy - rim));
+  const by1 = Math.min(h - 1, Math.ceil(disc.cy + rim));
+  const bx0 = Math.max(0, Math.floor(disc.cx - rim));
+  const bx1 = Math.min(w - 1, Math.ceil(disc.cx + rim));
+  for (let y = by0; y <= by1; y++)
+    for (let x = bx0; x <= bx1; x++)
+      if (
+        (x - disc.cx) ** 2 + (y - disc.cy) ** 2 < rim ** 2 &&
+        lum[y * w + x] > 242
+      )
+        white[y * w + x] = 1;
+  const id = new Int32Array(w * h);
+  const shapes = [];
+  let label = 0;
+  for (let k0 = 0; k0 < w * h; k0++) {
+    if (!white[k0] || id[k0]) continue;
+    label++;
+    const part = [k0];
+    id[k0] = label;
+    let touches = false;
+    let x0 = w;
+    let x1 = 0;
+    let y0 = h;
+    let y1 = 0;
+    for (let i = 0; i < part.length; i++) {
+      const p = part[i];
+      const x = p % w;
+      const y = (p - x) / w;
+      // A brushed rim leaves white streaks along its inner edge (the fox's
+      // disc); marks sit well inside it.
+      if (
+        nearInk[p] ||
+        (x - disc.cx) ** 2 + (y - disc.cy) ** 2 > (0.9 * disc.r) ** 2
+      )
+        touches = true;
+      x0 = Math.min(x0, x);
+      x1 = Math.max(x1, x);
+      y0 = Math.min(y0, y);
+      y1 = Math.max(y1, y);
+      for (const q of [
+        x > 0 ? p - 1 : -1,
+        x < w - 1 ? p + 1 : -1,
+        p - w,
+        p + w,
+      ])
+        if (q >= 0 && q < w * h && white[q] && !id[q]) {
+          id[q] = label;
+          part.push(q);
+        }
+    }
+    // A mark is small: the subject's own white inside the disc touches its
+    // lines, and anything bigger than 6 % of the width is not a mark.
+    if (touches || part.length < 12 || part.length > (0.06 * w) ** 2) continue;
+    // A small one is a dot, about round; a thin streak is brush texture.
+    const bw = x1 - x0 + 1;
+    const bh = y1 - y0 + 1;
+    if (
+      part.length < (0.012 * w) ** 2 &&
+      (Math.max(bw, bh) > 2 * Math.min(bw, bh) || part.length < 0.5 * bw * bh)
+    )
+      continue;
+    const loops = partOutline(id, w, label, [x0, y0, x1, y1], 0.75);
+    if (loops.length) shapes.push({ loops, tint: false });
+  }
+  return shapes;
+}
+
 // On an object (`--object`), the disc's pale grey-lavender inside the disc
 // is the disc showing through, except where it is a face of the object: a
 // pale area closed in by lines (most of its edge is ink) that lies on the
@@ -4289,12 +4449,65 @@ function findGround({ w, h, lum }) {
         x1 = Math.max(x1, last);
       }
     }
+    // A drawn ground line tilts a little (3 px over 560 under the polar
+    // bear), so the band's rows hold only part of it. Follow it out from
+    // each end, column by column, while it stays flat; `at` keeps its centre
+    // per column where the draft has it, -1 where it is hidden (behind a
+    // tail) or gone.
+    const at = new Float32Array(w).fill(-1);
+    const centreAt = (x, yc) => {
+      let n = 0;
+      let sum = 0;
+      for (let yy = Math.round(yc) - 3; yy <= Math.round(yc) + 3; yy++)
+        if (yy >= 0 && yy < h && lum[yy * w + x] < 120) {
+          n++;
+          sum += yy;
+        }
+      // A full window is a contour meeting the line (a leg): keep the line's
+      // own height there.
+      return n ? (n >= 7 ? yc : sum / n) : -1;
+    };
+    const mid = (top + y) / 2;
+    for (let x = x0; x <= x1; x++) at[x] = centreAt(x, mid);
+    const flat = Math.max(4, Math.round(0.004 * w));
+    const span = Math.max(8, Math.round(0.012 * w));
+    const follow = (from, step) => {
+      let yc = mid;
+      let gap = 0;
+      let end = from;
+      const seen = [];
+      for (let x = from + step; x >= 0 && x < w; x += step) {
+        const c = centreAt(x, yc);
+        if (c < 0) {
+          if (++gap > 0.02 * w) break;
+          continue;
+        }
+        gap = 0;
+        yc += Math.max(-1, Math.min(1, c - yc));
+        seen.push([x, yc]);
+        // Rising or falling away (a snow mound's slope starting at the
+        // line's end): stop, and take back the stretch that turned.
+        const back = seen.length > span ? seen[seen.length - 1 - span] : null;
+        if (back && Math.abs(yc - back[1]) > flat) {
+          seen.length -= span;
+          break;
+        }
+        if (Math.abs(yc - mid) > 2 * flat) break;
+      }
+      for (const [sx, sy] of seen) {
+        at[sx] = sy;
+        end = sx;
+      }
+      return end;
+    };
+    x0 = Math.min(x0, follow(x0, -1));
+    x1 = Math.max(x1, follow(x1, 1));
     // A perch is not ground: birds on a wire hang tails and feet below it
     // (1.1 % of the Doves image), while under a ground line there is at most
     // a dipping contour (0.2 % under the fox). A perch stays as drawn.
     let below = 0;
     for (let k = (y + 3) * w; k < w * h; k++) if (lum[k] < 120) below++;
-    return { top, bottom: y, x0, x1, perch: below > 0.005 * w * h };
+    return { top, bottom: y, x0, x1, at, perch: below > 0.005 * w * h };
   }
   return null;
 }

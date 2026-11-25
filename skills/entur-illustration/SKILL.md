@@ -190,7 +190,7 @@ ink.save('out', 'Fox-bus-stop'); // standard, -darkmode, -contrast + preview.htm
 
 Points are anchor points, not samples: 6–12 per contour, as a designer would click them. A line with a width profile cannot be an SVG stroke, so the web SVG gets it as a filled outline, as in the library's own exports. `circle`, `ellipse`, `arc` and `rect` return anchor lists. Colours are **roles** (`ink`, `paper`, `cloth`, `vehicle`, `line2`, `backdrop`, `tint`, `lavender`, `mid`, `peach`, `coral`, `glow`), never hex — that is what makes the dark and contrast modes come out right.
 
-Draw back to front: backdrop → background (Blue 50 lines) → ground → props behind → subject → things in front of the subject. The ground line always runs behind the animals and people that stand on it: their fills hide it where they overlap.
+Draw back to front: backdrop → background (Blue 50 lines) → ground → props behind → subject → things in front of the subject. The ground line always runs behind the animals and people that stand on it: their fills hide it where they overlap something in front of it (a tail across it), and it shows under paws and between legs, where the draft shows it.
 
 ## Step 4b — route B: raster first
 
