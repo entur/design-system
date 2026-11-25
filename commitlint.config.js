@@ -3,12 +3,13 @@
 const AI_CO_AUTHOR =
   /^co-authored-by:.*<(noreply@anthropic\.com|\d+\+copilot@users\.noreply\.github\.com|[^>]*\[bot\]@users\.noreply\.github\.com|cursoragent@cursor\.com)>/im;
 
-// A footer runs until the next footer keyword or a blank line.
+// A footer runs until a blank line, the next footer or the end of the message
+// (`$(?![\s\S])`, since `$` alone matches every line end with the m flag).
 const footers = (raw, keyword) =>
   [
     ...(raw ?? '').matchAll(
       new RegExp(
-        `^${keyword}:[ \\t]*([\\s\\S]*?)(?=\\n\\s*\\n|\\n[A-Za-z-]+(?: CHANGE)?:|$(?![\\s\\S]))`,
+        `^${keyword}:[ \\t]*([\\s\\S]*?)(?=\\n\\s*\\n|\\n[A-Za-z-]+(?: CHANGES?)?:|$(?![\\s\\S]))`,
         'gm',
       ),
     ),
@@ -18,8 +19,9 @@ const footers = (raw, keyword) =>
 const VAGUE =
   /\b(might|may|could|possibly|probably|some|several|etc|et cetera)\b/i;
 
-// The release a deprecated API is removed in, e.g. 10.0.0.
-const VERSION = /\b\d+\.\d+\.\d+\b/;
+// The release a deprecated API goes away in, e.g. "will be removed in 10.0.0".
+// A bare version could be when it was deprecated instead.
+const REMOVAL_VERSION = /\b(removed|removal) in \d+\.\d+\.\d+\b/i;
 
 module.exports = {
   extends: ['@commitlint/config-conventional'],
@@ -31,7 +33,7 @@ module.exports = {
           'use an `AI-assistant: <tool> (<model>)` trailer for AI tools, not Co-authored-by',
         ],
         'breaking-change-specific': ({ raw }) => {
-          const vague = footers(raw, 'BREAKING[ -]CHANGE')
+          const vague = footers(raw, 'BREAKING[ -]CHANGES?')
             .map(text => text.match(VAGUE)?.[0])
             .filter(Boolean);
           return [
@@ -41,11 +43,11 @@ module.exports = {
         },
         'deprecation-removal-version': ({ raw }) => {
           const missing = footers(raw, 'DEPRECATED').some(
-            text => !VERSION.test(text),
+            text => !REMOVAL_VERSION.test(text),
           );
           return [
             !missing,
-            'name the version the API is removed in, e.g. "is removed in 10.0.0", in DEPRECATED (AGENTS.md)',
+            'say which version the API goes away in, e.g. "will be removed in 10.0.0", in DEPRECATED (AGENTS.md)',
           ];
         },
       },
