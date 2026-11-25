@@ -15,7 +15,7 @@ async function tabBackToClose(page: Page, close: Locator) {
   await close.evaluate(element =>
     Promise.all(
       element
-        .closest('[role="status"]')!
+        .closest('.eds-alert-box')!
         .getAnimations({ subtree: true })
         .map(animation => animation.finished),
     ),
@@ -30,7 +30,9 @@ test('keyboard focus shows the close button and pauses the toast', async ({
 }) => {
   await page.goto('/toast.html');
   await page.getByRole('button', { name: 'Show toast' }).click();
-  const toast = page.getByRole('status').filter({ hasText: 'Toast 1' });
+  const toast = page.locator('.eds-toast-container .eds-alert-box', {
+    hasText: 'Toast 1',
+  });
   const close = toast.getByRole('button');
 
   await tabBackToClose(page, close);
@@ -48,7 +50,9 @@ test('close button is hidden without hover or focus, and the toast resumes after
   await page.goto('/toast.html');
   const trigger = page.getByRole('button', { name: 'Show toast' });
   await trigger.click();
-  const toast = page.getByRole('status').filter({ hasText: 'Toast 1' });
+  const toast = page.locator('.eds-toast-container .eds-alert-box', {
+    hasText: 'Toast 1',
+  });
   const close = toast.getByRole('button');
   await page.mouse.move(0, 0);
   await expect(close).toHaveCSS('opacity', '0');

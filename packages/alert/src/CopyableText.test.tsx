@@ -83,7 +83,9 @@ test('copies text and shows toast when the copy button is clicked', async () => 
   expect(mockCopy).toHaveBeenCalledWith('#181c56', {
     target: expect.any(HTMLButtonElement),
   });
-  expect(screen.getByRole('status')).toBeInTheDocument();
+  expect(screen.getByRole('status')).toHaveTextContent(
+    '#181c56 ble kopiert til utklippstavlen.',
+  );
 });
 
 test('copies from the small copy button with the keyboard without moving focus', async () => {
@@ -148,7 +150,7 @@ test('does not show toast when copy fails', async () => {
   await user.click(screen.getByText('#181c56'));
 
   expect(mockCopy).toHaveBeenCalled();
-  expect(screen.queryByRole('status')).not.toBeInTheDocument();
+  expect(screen.getByRole('status')).toBeEmptyDOMElement();
 });
 
 test('throws when used outside ToastProvider', () => {

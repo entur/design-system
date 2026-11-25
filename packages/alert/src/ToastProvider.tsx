@@ -1,6 +1,7 @@
 import React from 'react';
-import { ToastAlertBox } from './ToastAlertBox';
+import { BaseAlertBox } from './BaseAlertBox';
 import classNames from 'classnames';
+import './ToastAlertBox.scss';
 
 type ToastId = string;
 
@@ -58,6 +59,15 @@ const toastReducer = (
 
 const createUniqueId = () => Math.random().toString().substring(2);
 
+const toastText = (container: HTMLElement | null, id: ToastId) => {
+  const content = container?.querySelector(
+    `[data-toast-id="${id}"] .eds-alert-box__content`,
+  );
+  const title = content?.querySelector('.eds-alert-box__title')?.textContent;
+  const body = content?.textContent?.slice(title?.length ?? 0);
+  return [title, body].filter(Boolean).join(' ');
+};
+
 const createToast = (
   toast: AddToastPayload | string,
   id: ToastId,
@@ -97,6 +107,27 @@ export const ToastProvider = ({
   const timeoutIdRefs = React.useRef<{ [key: string]: number }>({});
   const isHovering = React.useRef(false);
   const containerRef = React.useRef<HTMLDivElement>(null);
+  const [announcements, setAnnouncements] = React.useState<
+    { id: ToastId; text: string }[]
+  >([]);
+
+  // Screen readers only read changes in a live region that already exists, so
+  // a new toast is read through this always-mounted region, not the toast.
+  // It gets the toast as plain text, without the close button or any links.
+  React.useEffect(() => {
+    setAnnouncements(previous =>
+      toasts
+        .slice(0, 3)
+        .filter(toast => !toast.isBeingRemoved)
+        .map(
+          toast =>
+            previous.find(announcement => announcement.id === toast.id) ?? {
+              id: toast.id,
+              text: toastText(containerRef.current, toast.id),
+            },
+        ),
+    );
+  }, [toasts]);
 
   const removeToast = React.useCallback((id: ToastId) => {
     window.clearTimeout(timeoutIdRefs.current[id]);
@@ -201,7 +232,9 @@ export const ToastProvider = ({
           ref={containerRef}
         >
           {toasts.slice(0, 3).map(toastToShow => (
-            <ToastAlertBox
+            <BaseAlertBox
+              size="toast"
+              data-toast-id={toastToShow.id}
               variant={toastToShow.variant}
               title={toastToShow.title}
               onClose={handleClose(toastToShow.id)}
@@ -214,11 +247,16 @@ export const ToastProvider = ({
               key={toastToShow.id}
             >
               {toastToShow.content}
-            </ToastAlertBox>
+            </BaseAlertBox>
           ))}
         </div>
       )}
       {children}
+      <div role="status" className="eds-toast-announcer">
+        {announcements.map(announcement => (
+          <div key={announcement.id}>{announcement.text}</div>
+        ))}
+      </div>
     </ToastContext.Provider>
   );
 };

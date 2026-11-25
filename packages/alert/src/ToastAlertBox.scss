@@ -43,6 +43,20 @@
   }
 }
 
+// Same rules as .eds-visually-hidden, kept here so the region stays hidden
+// without the @entur/a11y styles
+.eds-toast-announcer {
+  display: block;
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  position: absolute;
+}
+
 @keyframes bounceInRight {
   0%,
   60%,
