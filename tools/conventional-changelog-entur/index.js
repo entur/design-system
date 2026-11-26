@@ -133,33 +133,32 @@ async function createPreset() {
     return aTitle.localeCompare(bTitle);
   };
 
-  const originalWhatBump = preset.recommendedBumpOpts.whatBump;
-
+  // Beta components can break in a minor (ADR 5), so only a stable breaking
+  // change bumps a major. A deprecation is not breaking at all.
   preset.recommendedBumpOpts.whatBump = function whatBump(commits) {
-    // Angular bumps major for any note, and a deprecation is not breaking
-    const result = originalWhatBump(
-      commits.map(commit => ({
-        ...commit,
-        notes: commit.notes.filter(isBreakingNote),
-      })),
-    );
+    let level = 2;
+    let breaking = 0;
+    let features = 0;
 
-    const hasBangBreaking = commits.some(commit =>
-      /^.+!$/.test(commit.header?.split(':')[0]),
-    );
+    commits.forEach(commit => {
+      const isBreaking =
+        commit.notes.some(isBreakingNote) ||
+        BANG_HEADER.test(commit.header ?? '');
+      const isBeta = BETA_SCOPE_PATTERN.test(commit.scope ?? '');
 
-    if (hasBangBreaking && result.level !== 0) {
-      const bangCount = commits.filter(commit =>
-        /^.+!$/.test(commit.header?.split(':')[0]),
-      ).length;
+      if (isBreaking && !isBeta) {
+        breaking += 1;
+        level = 0;
+      } else if (commit.type === 'feat' || isBreaking) {
+        features += 1;
+        level = Math.min(level, 1);
+      }
+    });
 
-      return {
-        level: 0,
-        reason: `There are ${bangCount} BREAKING CHANGES (! suffix) and ${result.reason}`,
-      };
-    }
-
-    return result;
+    return {
+      level,
+      reason: `There are ${breaking} breaking changes and ${features} features, beta breaking changes included`,
+    };
   };
 
   return preset;

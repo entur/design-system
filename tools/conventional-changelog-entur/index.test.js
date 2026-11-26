@@ -13,8 +13,8 @@ beforeAll(async () => {
 const commit = message => parse(message, preset.parserOpts);
 
 const BUMP = ['major', 'minor', 'patch'];
-const bump = message =>
-  BUMP[preset.recommendedBumpOpts.whatBump([commit(message)]).level];
+const bump = (...messages) =>
+  BUMP[preset.recommendedBumpOpts.whatBump(messages.map(commit)).level];
 
 const changelog = messages =>
   new Promise((resolve, reject) => {
@@ -39,9 +39,16 @@ describe('version bump', () => {
     ['feat(x): add b\n\nDEPRECATED: a will be removed in 2.0.0.', 'minor'],
     ['feat(x)!: drop c\n\nDEPRECATED: a will be removed in 2.0.0.', 'major'],
     ['fix(x): fix a\n\nDeprecated props still work.', 'patch'],
+    ['feat(x/beta/y)!: drop a', 'minor'],
+    ['fix(x/beta/y)!: drop a', 'minor'],
+    ['fix(x/beta/y): drop a\n\nBREAKING CHANGE: a is gone. Use b.', 'minor'],
   ])('%j bumps %s', (message, level) => {
     expect(bump(message)).toBe(level);
   });
+});
+
+it('bumps a major when a stable breaking change ships with a beta one', () => {
+  expect(bump('feat(x/beta/y)!: drop a', 'fix(x)!: drop b')).toBe('major');
 });
 
 describe('changelog', () => {
