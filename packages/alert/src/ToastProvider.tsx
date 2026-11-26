@@ -58,6 +58,15 @@ const toastReducer = (
 
 const createUniqueId = () => Math.random().toString().substring(2);
 
+const toastText = (container: HTMLElement | null, id: ToastId) => {
+  const content = container?.querySelector(
+    `[data-toast-id="${id}"] .eds-alert-box__content`,
+  );
+  const title = content?.querySelector('.eds-alert-box__title')?.textContent;
+  const body = content?.textContent?.slice(title?.length ?? 0);
+  return [title, body].filter(Boolean).join(' ');
+};
+
 const createToast = (
   toast: AddToastPayload | string,
   id: ToastId,
@@ -94,8 +103,30 @@ export const ToastProvider = ({
   style,
 }: ToastProviderProps) => {
   const [toasts, dispatch] = React.useReducer(toastReducer, []);
-  const [hoveringId, setHovering] = React.useState<string>();
   const timeoutIdRefs = React.useRef<{ [key: string]: number }>({});
+  const isHovering = React.useRef(false);
+  const containerRef = React.useRef<HTMLDivElement>(null);
+  const [announcements, setAnnouncements] = React.useState<
+    { id: ToastId; text: string }[]
+  >([]);
+
+  // Screen readers only read changes in a live region that already exists, so
+  // a new toast is read through this always-mounted region, not the toast.
+  // It gets the toast as plain text, without the close button or any links.
+  React.useEffect(() => {
+    setAnnouncements(previous =>
+      toasts
+        .slice(0, 3)
+        .filter(toast => !toast.isBeingRemoved)
+        .map(
+          toast =>
+            previous.find(announcement => announcement.id === toast.id) ?? {
+              id: toast.id,
+              text: toastText(containerRef.current, toast.id),
+            },
+        ),
+    );
+  }, [toasts]);
 
   const removeToast = React.useCallback((id: ToastId) => {
     window.clearTimeout(timeoutIdRefs.current[id]);
@@ -133,25 +164,53 @@ export const ToastProvider = ({
     [delay, removeToastWithAnimationAfterDelay],
   );
 
-  const handleMouseEnter = (toast: ToastType) => () => {
+  // A toast that is already sliding out keeps its timer, so it is removed on time
+  const clearTimers = () => {
+    toasts
+      .filter(toast => !toast.isBeingRemoved)
+      .forEach(toast => {
+        for (const key of [toast.id, toast.id + 'animation']) {
+          window.clearTimeout(timeoutIdRefs.current[key]);
+          delete timeoutIdRefs.current[key];
+        }
+      });
+  };
+
+  const pauseToasts = (toast: ToastType) => {
     if (toast.isBeingRemoved) return;
-    setHovering(toast.id);
-    Object.values(timeoutIdRefs.current).forEach(timeoutId => {
-      window.clearTimeout(timeoutId);
-    });
-    timeoutIdRefs.current = {};
+    clearTimers();
+  };
+
+  const resumeToasts = () => {
+    clearTimers();
+    toasts
+      .filter(toast => !toast.isBeingRemoved)
+      .forEach(toast => {
+        removeToastWithAnimationAfterDelay(toast.id, delay);
+      });
+  };
+
+  const handleBlur = (event: React.FocusEvent<HTMLDivElement>) => {
+    if (containerRef.current?.contains(event.relatedTarget)) return;
+    if (isHovering.current) return;
+    resumeToasts();
+  };
+
+  const handleMouseEnter = (toast: ToastType) => {
+    isHovering.current = true;
+    pauseToasts(toast);
   };
 
   const handleMouseLeave = () => {
-    setHovering(undefined);
-    toasts.forEach(toast => {
-      removeToastWithAnimationAfterDelay(toast.id, delay);
-    });
+    isHovering.current = false;
+    if (containerRef.current?.contains(document.activeElement)) return;
+    resumeToasts();
   };
 
   const handleClose = (toastId: ToastId) => () => {
     removeToast(toastId);
-    handleMouseLeave();
+    isHovering.current = false;
+    resumeToasts();
   };
 
   const contextValue = React.useMemo(
@@ -169,15 +228,22 @@ export const ToastProvider = ({
             className,
           )}
           style={style}
+          ref={containerRef}
         >
           {toasts.slice(0, 3).map(toastToShow => (
             <ToastAlertBox
+              data-toast-id={toastToShow.id}
+              // Keeps role="status", but the announcer below reads the toast,
+              // so it is not read twice or with its close button
+              aria-live="off"
               variant={toastToShow.variant}
               title={toastToShow.title}
               onClose={handleClose(toastToShow.id)}
-              onMouseEnter={handleMouseEnter(toastToShow)}
+              onMouseEnter={() => handleMouseEnter(toastToShow)}
               onMouseLeave={handleMouseLeave}
-              closable={hoveringId === toastToShow.id}
+              onFocus={() => pauseToasts(toastToShow)}
+              onBlur={handleBlur}
+              closable
               toastIsBeingRemoved={toastToShow.isBeingRemoved}
               key={toastToShow.id}
             >
@@ -187,6 +253,12 @@ export const ToastProvider = ({
         </div>
       )}
       {children}
+      {/* No role, so getByRole('status') still finds only the toasts */}
+      <div aria-live="polite" className="eds-toast-announcer">
+        {announcements.map(announcement => (
+          <div key={announcement.id}>{announcement.text}</div>
+        ))}
+      </div>
     </ToastContext.Provider>
   );
 };
