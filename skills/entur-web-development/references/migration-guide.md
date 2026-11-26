@@ -271,7 +271,7 @@ Other changes:
 - **`size` is gone.** All rows are 48px.
 - **Dividers between items are gone.**
 - **`badge` and `alert` slots added.** Content that used to be crammed into the item's children now has a home: `badge` takes a node (typically a `StatusBadge`), `alert` renders a dot at the far right, and `alertLabel` sets its screen-reader text (default `"Varsel"`).
-- **Contrast is inherited**, from an `.eds-contrast` ancestor, exactly as before. There is no `contrast` prop.
+- **Contrast is inherited**: wrap the navigation in `<Contrast>` from `@entur/layout`, exactly as before. There is no `contrast` prop.
 
 **Before** — badge stuffed into the label:
 
