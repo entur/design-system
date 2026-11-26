@@ -36,6 +36,10 @@
     }
   }
 
+  &__subheading {
+    margin-block: t.$space-large t.$space-small;
+  }
+
   &__group {
     margin-block-start: t.$space-extra-large;
 
