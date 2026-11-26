@@ -22,23 +22,24 @@ If working tree is dirty or not on main, stop and tell the user.
 
 ## Step 2: Detect beta-capped packages
 
-Run:
+Beta components can break in a minor (ADR 5), but Lerna bumps a major for any breaking change. List every package with a beta-scoped breaking change since its latest tag:
 
 ```bash
-git tag --sort=-version:refname | grep "^@entur/" | awk -F@ '{print "@entur/"$2"@"$3}' | sort -t@ -k1,2 -u | head -50
+for dir in packages/*/; do
+  name=$(basename "$dir")
+  tag=$(git tag --list "@entur/$name@*" --sort=-version:refname | head -1)
+  [ -z "$tag" ] && continue
+  for commit in $(git log "$tag"..HEAD --format=%H -- "$dir"); do
+    message=$(git log -1 --format=%B "$commit")
+    subject=$(printf '%s\n' "$message" | head -1)
+    printf '%s\n' "$subject" | grep -qE '^[a-z]+\([^)]*beta[^)]*\)' || continue
+    printf '%s\n' "$message" | grep -qE '^[a-z]+\([^)]*\)!:|^BREAKING[ -]CHANGES?:' &&
+      echo "$name ($tag): $subject"
+  done
+done
 ```
 
-For each package, find the latest tag. Then check if any commits since that tag on `packages/layout/` have **both** a beta scope (`layout/beta`) **and** a `BREAKING CHANGE` footer:
-
-```bash
-# Find last layout tag
-git tag --list "@entur/layout@*" | sort -V | tail -1
-
-# Check commits since that tag for beta BREAKING CHANGEs
-git log "<last-layout-tag>"..HEAD --format="%B" | grep -B 20 "BREAKING CHANGE" | grep -E "^\((layout/beta|layout/beta/)"
-```
-
-If beta-scoped BREAKING CHANGEs exist for layout (or any other package following the same convention): note which packages need capping and what their capped version should be (major → minor).
+For each package listed, check whether it also has a breaking change outside beta since that tag. If it has none, it needs capping: note the version Lerna will pick (the next major) and the capped version (the next minor instead).
 
 ## Step 3: Run lerna version
 
