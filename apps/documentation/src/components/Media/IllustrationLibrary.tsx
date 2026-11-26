@@ -294,11 +294,19 @@ const IllustrationLibrary = () => {
                     colorMode,
                     withBackground,
                   );
+                  const isBuilder = illustration.id === SCENARIO_BUILDER_ID;
                   return (
-                    <li key={illustration.id}>
+                    <li
+                      key={illustration.id}
+                      className={classNames({
+                        'illustration-library__full-row': isBuilder,
+                      })}
+                    >
                       <button
                         type="button"
-                        className="illustration-card"
+                        className={classNames('illustration-card', {
+                          'illustration-card--feature': isBuilder,
+                        })}
                         onClick={e => {
                           openerRef.current = e.currentTarget;
                           setOpenId(illustration.id);
@@ -313,6 +321,12 @@ const IllustrationLibrary = () => {
                           <Text as="span" variant="label">
                             {illustration.name}
                           </Text>
+                          {isBuilder && (
+                            <Text as="span" variant="caption">
+                              Sett en person fra «Reisende» inn i en by eller på
+                              en togstasjon, og last ned som SVG eller PNG.
+                            </Text>
+                          )}
                           {variant.colorMode !== colorMode && (
                             <Text as="span" variant="caption">
                               Finnes ikke i{' '}

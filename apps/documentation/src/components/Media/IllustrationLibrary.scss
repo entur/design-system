@@ -61,6 +61,10 @@
       grid-template-columns: minmax(0, 26rem);
     }
 
+    > .illustration-library__full-row {
+      grid-column: 1 / -1;
+    }
+
     &--wide {
       grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
 
@@ -143,6 +147,27 @@
     gap: t.$space-extra-small2;
     padding: t.$space-small t.$space-default t.$space-default;
     border-block-start: t.$border-widths-small solid var(--basecolors-stroke-subduedalt);
+  }
+
+  // A tool rather than an illustration, so it spans the row with the text beside the preview
+  &--feature {
+    @media (min-width: 40rem) {
+      flex-direction: row;
+
+      .illustration-card__preview {
+        flex: 0 0 18rem;
+        aspect-ratio: 355 / 288;
+      }
+
+      .illustration-card__caption {
+        flex: 1 1 auto;
+        justify-content: center;
+        max-width: 32rem;
+        padding: t.$space-large;
+        border-block-start: none;
+        border-inline-start: t.$border-widths-small solid var(--basecolors-stroke-subduedalt);
+      }
+    }
   }
 }
 
