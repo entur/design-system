@@ -41,6 +41,8 @@ export const MOTIFS: Record<string, string> = {
   'Mobile in hand left trip': 'Venstre, reise',
   'Mobile in hand right discount': 'Høyre, rabatt',
   'Mobile in hand right trip': 'Høyre, reise',
+  'City-Woman sitting inside the train': 'By',
+  'Mountain-Woman sitting inside the train': 'Fjell',
 };
 
 export const PRINCIPLES_CATEGORY = 'Utviklingsprinsipper';
@@ -176,7 +178,16 @@ const describeIllustration = (folder: string, base: string) => {
   }
   return {
     name: base.replace(/^Scene-/, ''),
-    keywords: keywordsByName[folder] ?? keywordsByName[base] ?? [],
+    keywords:
+      keywordsByName[folder] ??
+      keywordsByName[base] ??
+      (person !== folder
+        ? [
+            ...(keywordsByName[person] ?? []),
+            ...Object.values(SCENARIO_PLACES),
+            'scenario',
+          ]
+        : []),
   };
 };
 
