@@ -23,6 +23,14 @@ const VAGUE =
 // A bare version could be when it was deprecated instead.
 const REMOVAL_VERSION = /\b(removed|removal) in \d+\.\d+\.\d+\b/i;
 
+// A footer keyword the changelog would not recognise: wrong case or no colon.
+// "Breaking change: x" would otherwise ship a breaking change as a minor.
+const KEYWORD_LINE = /^(breaking[ -]changes?|deprecated)\b.*$/gim;
+const FOOTER = /^(BREAKING[ -]CHANGES?|DEPRECATED):/;
+const looksLikeFooter = line =>
+  /^(breaking[ -]changes?|deprecated)\s*:/i.test(line) ||
+  /^(BREAKING[ -]CHANGES?|DEPRECATED)\s/.test(line);
+
 module.exports = {
   extends: ['@commitlint/config-conventional'],
   plugins: [
@@ -39,6 +47,19 @@ module.exports = {
           return [
             vague.length === 0,
             `say exactly what breaks and what to do instead of "${vague[0]}" in BREAKING CHANGE (AGENTS.md)`,
+          ];
+        },
+        'footer-keyword-format': ({ raw }) => {
+          const body = (raw ?? '').split('\n').slice(1).join('\n');
+          const wrong = (body.match(KEYWORD_LINE) ?? []).find(
+            line => looksLikeFooter(line) && !FOOTER.test(line),
+          );
+          return [
+            !wrong,
+            `write "BREAKING CHANGE:" or "DEPRECATED:" in capitals with a colon, not "${wrong?.slice(
+              0,
+              30,
+            )}", or the changelog misses it`,
           ];
         },
         'deprecation-removal-version': ({ raw }) => {
@@ -61,5 +82,6 @@ module.exports = {
     // A warning: the words also have plain uses, such as "you may now pass".
     'breaking-change-specific': [1, 'always'],
     'deprecation-removal-version': [2, 'always'],
+    'footer-keyword-format': [2, 'always'],
   },
 };
