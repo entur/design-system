@@ -24,6 +24,24 @@ export const STYLES: { value: string; label: string }[] = [
   { value: 'bw-bubble', label: 'Monokrom med boble' },
 ];
 
+/** Motifs of one illustration, shown as one card with a choice in the dialog. Order sets the default */
+export const MOTIFS: Record<string, string> = {
+  'Dog left': 'Venstre',
+  'Dog right': 'Høyre',
+  'Moose spring': 'Vår',
+  'Moose winter': 'Vinter',
+  'Front page illustration summer': 'Sommer',
+  'Front page illustration winter': 'Vinter',
+  'Business traveller running side': 'Fra siden',
+  'Business traveller running front': 'Forfra',
+  'Mobile discount': 'Rabatt',
+  'Mobile trip': 'Reise',
+  'Mobile in hand left discount': 'Venstre, rabatt',
+  'Mobile in hand left trip': 'Venstre, reise',
+  'Mobile in hand right discount': 'Høyre, rabatt',
+  'Mobile in hand right trip': 'Høyre, reise',
+};
+
 export const PRINCIPLES_CATEGORY = 'Utviklingsprinsipper';
 export const PRINCIPLES_COMPOSITION = 'Principles Composition';
 
@@ -37,6 +55,8 @@ export type IllustrationVariant = {
   hasBackground: boolean;
   /** Utviklingsprinsipper versions: '' (colour), 'bw', 'bw-bubble' or 'color-bubble' */
   style: string;
+  /** Key in MOTIFS, or '' when the illustration has one motif */
+  motif: string;
   image?: IGatsbyImageData | string;
   files: IllustrationFile[];
 };
@@ -170,7 +190,9 @@ const groupIllustrations = (nodes: FileNode[]): Illustration[] => {
     const category = segments[0];
     const folder = segments[segments.length - 1];
     const { base, colorMode, hasBackground, style } = parseFileName(node.name);
-    const id = `${segments.join('/')}/${base}`;
+    const motif = base in MOTIFS ? base : '';
+    // Motifs share their folder's card
+    const id = motif ? segments.join('/') : `${segments.join('/')}/${base}`;
 
     let illustration = illustrations.get(id);
     if (!illustration) {
@@ -178,7 +200,7 @@ const groupIllustrations = (nodes: FileNode[]): Illustration[] => {
         id,
         category,
         variants: [],
-        ...describeIllustration(folder, base),
+        ...describeIllustration(folder, motif ? folder : base),
       };
       illustrations.set(id, illustration);
     }
@@ -187,10 +209,11 @@ const groupIllustrations = (nodes: FileNode[]): Illustration[] => {
       v =>
         v.colorMode === colorMode &&
         v.hasBackground === hasBackground &&
-        v.style === style,
+        v.style === style &&
+        v.motif === motif,
     );
     if (!variant) {
-      variant = { colorMode, hasBackground, style, files: [] };
+      variant = { colorMode, hasBackground, style, motif, files: [] };
       illustration.variants.push(variant);
     }
     const extension = node.extension.toLowerCase();
@@ -207,18 +230,26 @@ const groupIllustrations = (nodes: FileNode[]): Illustration[] => {
   );
 };
 
+/** The illustration's motifs in MOTIFS order, empty when it has only one */
+export const motifsOf = (illustration: Illustration) =>
+  Object.keys(MOTIFS).filter(motif =>
+    illustration.variants.some(v => v.motif === motif),
+  );
+
 /** Returns the variant closest to the requested colour mode and background */
 export const pickVariant = (
   illustration: Illustration,
   colorMode: ColorMode,
   hasBackground: boolean,
+  motif = motifsOf(illustration)[0] ?? '',
 ) => {
   const find = (mode: ColorMode, background: boolean) =>
     illustration.variants.find(
       v =>
         v.colorMode === mode &&
         v.hasBackground === background &&
-        v.style === '',
+        v.style === '' &&
+        v.motif === motif,
     );
   return (
     find(colorMode, hasBackground) ??
