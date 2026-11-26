@@ -130,15 +130,30 @@ export const OverflowMenu = ({
     [listNav, typeahead, role],
   );
 
-  const closeMenuAndReturnFocus = () => {
+  const closeMenuAndReturnFocus = React.useCallback(() => {
     setIsOpen(false);
     // @ts-expect-error the reference element is actually focusable
     refs.reference.current?.focus?.();
-  };
+  }, [refs.reference]);
 
   useOnClickOutside([refs.floating, refs.reference], () => setIsOpen(false));
-  useOnEscape(refs.floating, closeMenuAndReturnFocus);
-  useOnEscape(refs.reference, closeMenuAndReturnFocus);
+
+  // Runs before a surrounding Drawer handles the same Escape
+  useOnEscape(refs.floating, closeMenuAndReturnFocus, { enabled: isOpen });
+  useOnEscape(refs.reference, closeMenuAndReturnFocus, { enabled: isOpen });
+
+  // Fallback on the document, since Safari leaves focus outside a clicked trigger
+  useEffect(() => {
+    if (!isOpen) return;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key !== 'Escape' || event.defaultPrevented) return;
+      // Stops a surrounding modal from closing on the same keypress
+      event.preventDefault();
+      closeMenuAndReturnFocus();
+    };
+    document.addEventListener('keydown', closeOnEscape);
+    return () => document.removeEventListener('keydown', closeOnEscape);
+  }, [isOpen, closeMenuAndReturnFocus]);
 
   const selectContext = React.useMemo(
     () => ({
