@@ -222,7 +222,23 @@ export const ScenarioBuilder = ({
                   <SecondaryButton
                     size="small"
                     disabled={!svg}
-                    onClick={() => svg && format.save(svg, fileName)}
+                    onClick={() => {
+                      if (!svg || !person) return;
+                      format.save(svg, fileName);
+                      // Built in the browser, so autocapture sees no download link; only sent with consent
+                      window.posthog?.capture('illustration_downloaded', {
+                        illustration: sceneFileName(
+                          person.value,
+                          place,
+                          'standard',
+                        ),
+                        format: format.label.toLowerCase(),
+                        color_mode: colorMode,
+                        person: person.value,
+                        place: place.value,
+                        source: 'scenario-builder',
+                      });
+                    }}
                     aria-label={`Last ned ${fileName}.${format.label.toLowerCase()}`}
                     className="illustration-details__download"
                   >
