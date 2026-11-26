@@ -175,7 +175,7 @@ type(scope): short description in imperative form
 
 optional longer description
 
-optional breaking changes
+optional BREAKING CHANGE: and DEPRECATED: footers
 ```
 
 - **type**: `fix`, `feat`, `chore`, `docs`, `refactor`, etc. Drives version bumps: `fix` → patch, `feat` → minor, `BREAKING CHANGE` → major. `fix` and `feat` are ONLY for code that affects consumers (i.e. within `packages/` or `skills/`). Use `test`, `refactor`, `chore`, etc. for non-consumer-facing changes.
@@ -193,6 +193,17 @@ Branch naming: start with Jira issue ID, e.g. `ETU-38373-branch-name`.
 
 - **Backtick every tag name.** `<dialog>`, `<details>`, `<Logo />` and type parameters such as `ReactElement<any>` are read as markdown wherever the changelog is: bare, `<details>` becomes an empty disclosure widget and everything after a `<dialog>` disappears into it.
 - **Explain a shared change in that package's own commit.** A dependent package's entry links to the change and claims nothing about it, so which token moved, what it looks like now, and what a consumer should check belong in the `feat(tokens)`/`fix(tokens)` body that fifteen packages will point at. The same holds for `@entur/utils`, `@entur/icons` and anything else half the repo depends on. That includes saying so when a change is visually neutral — the generator never writes "No visual changes" itself.
+
+The changelogs follow [Entur's changelog guidelines](https://entur.github.io/api-guidelines/changelogs.html) for installed interfaces. What that means here:
+
+- **What is breaking is decided in [ADR 5](doc/adr/0005-public-interface.adoc).** Changing the public interface (exports, props, tokens, stylesheet entries, consumer `data-*` attributes, specificity and layers, prerequisites) is breaking. Changing `eds-*` classes or DOM structure is not, but the body names what moved. A visual change that can lower contrast, shift layout or change meaning gets a verdict in the PR.
+- **Consumer-relevant is wider than breaking.** Class names, DOM structure, how a component looks (colour, size, spacing, radius) and accessibility behaviour (focus, keyboard, ARIA, what a screen reader announces) all go in the changelog. Tests, refactors, stories and the docs site do not; they use `test`, `refactor` or `chore`.
+- **Be specific.** Name the component and the exact prop, class, token or value. Write the old behaviour in past tense and the new in present tense: "The field was cleared on blur. It now keeps its value." No "some", "might", "improved" or "updated styling".
+- **A `BREAKING CHANGE` footer says what breaks, what to do, and what replaces it**, so a consumer can act without asking. "Structural changes might be breaking" tells them nothing. One footer per change. Link the migration skill or migration guide when there is one, and when the change was deprecated earlier, say in which version. commitlint warns about vague words such as "might" and "some".
+- **Deprecate with a `DEPRECATED` footer that names the removal version**, for example `DEPRECATED: The small prop on TextField will be removed in 10.0.0. Use size="small" instead.` (backtick the names in the real footer). Removal happens in a major release ([ADR 5](doc/adr/0005-public-interface.adoc)). commitlint rejects a footer without "removed in" and a version, so a version that only says when the API was deprecated is not enough. The footer gets its own "Deprecations" section, so the deprecation is not hidden in a feature description. Commitizen has no prompt for it, so add it to the long description on its own line, or write the commit by hand.
+- **The changelog lists what needs action first**: "BREAKING CHANGES", then "Deprecations", then fixes and features. That order comes from the preset; no need to put them first in the commit.
+- **Fixing a bug, say when it was introduced** if you know: "since 9.1.0".
+- **A published entry is never corrected by hand.** If it can mislead consumers, such as a wrong removal version or a missing breaking change, correct it in a new commit whose description links the version it corrects.
 
 ### AI Attribution
 

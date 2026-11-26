@@ -13,6 +13,7 @@
 - [ ] 🐞 Feilretting
 - [ ] 🚀 Ny funksjonalitet
 - [ ] 💥 Breaking change (krever kodeendringer hos brukere)
+- [ ] 🎨 Visuell endring som kan påvirke kontrast, layout eller hva komponenten kommuniserer
 - [ ] 📝 Dokumentasjonsoppdatering
 - [ ] 🧹 Refaktorering (ingen funksjonelle endringer)
 - [ ] ⚡️ Ytelsesforbedring
@@ -29,6 +30,7 @@
 ## 💣 Breaking changes (om aktuelt)
 
 <!-- Beskriv hva som brytes og hvordan man migrerer -->
+<!-- Ved visuell endring: skriv om den er breaking eller ikke, og hvorfor. Se doc/adr/0005-public-interface.adoc -->
 
 <!-- Fjern seksjonen om ikke relevant -->
 

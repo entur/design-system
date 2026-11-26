@@ -45,3 +45,15 @@ xref:adr/0004-skills-pinned-plugin.adoc[ADR 4]).
 Router::
 The `entur-linje` skill. It matches the user's task to a sub-skill and sends
 the agent there; it holds no rules of its own.
+
+Public interface::
+What consumers can rely on across minor and patch releases: exports and props,
+tokens, stylesheet entry points, consumer `data-*` attributes, how consumer CSS
+wins, and prerequisites. Changing it so consumer code stops working is a
+breaking change. `eds-*` class names and DOM structure are not part of it (see
+xref:adr/0005-public-interface.adoc[ADR 5]).
+
+Possibly breaking visual change::
+A visual change that can lower contrast, shift layout or change what a
+component communicates. The pull request gives a verdict on whether it is
+breaking (see xref:adr/0005-public-interface.adoc[ADR 5]).

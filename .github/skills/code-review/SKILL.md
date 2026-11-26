@@ -36,12 +36,28 @@ consumers. Path-specific rules for SCSS, tests and docs live in
 
 ## Public API and versioning
 
-- Breaking for stable components: removing or renaming an export, prop or
-  union value; shifting a size scale; changing a default value or default
-  size; changing DOM structure or a `data-*` attribute; tightening a type;
-  lowering a selector's specificity; moving CSS into or out of a cascade layer.
-  Each needs a `BREAKING CHANGE` footer with a migration note. Ask: if a
-  consumer only upgrades, does anything break?
+What is public and what is breaking is decided in
+`doc/adr/0005-public-interface.adoc`. Read it before judging a change.
+
+- Breaking for stable components: removing or renaming an export, prop,
+  union value, token, stylesheet entry or `exports` subpath; shifting a size
+  scale; changing a default value or default size; changing or removing a
+  consumer `data-*` attribute; tightening a type; lowering a selector's
+  specificity; moving CSS into or out of a cascade layer; raising a peer
+  dependency minimum. Each needs a `BREAKING CHANGE` footer that names the
+  element, what consumers must do and the replacement, and links the
+  migration skill or guide if there is one. Ask: if a consumer only upgrades,
+  does anything break?
+- Changing `eds-*` class names or DOM structure is not breaking, but the
+  commit body must name the class or element and say what overrides should
+  check. Flag it if it does not.
+- Possibly breaking: a visual change that can lower contrast (text, icons,
+  borders, focus), shift layout around the component (size, spacing, line
+  height) or change what a colour, icon or variant means. Check that the PR
+  ticks "Visuell endring" and gives a verdict with a reason under "Breaking
+  changes". Flag it if the verdict is missing, or if the reason does not hold.
+- Vague footers: flag a `BREAKING CHANGE` that says "might", "some" or
+  "structural changes" instead of naming the element and the action.
 - Beta components (`*/beta/*`, scope `package/beta/component`) may break in a
   minor. The break still needs a `BREAKING CHANGE` note so it lands under
   "BREAKING CHANGES (beta)". Do not demand a major for a beta-only break.
@@ -49,7 +65,8 @@ consumers. Path-specific rules for SCSS, tests and docs live in
   a `./beta` export changes the stable API.
 - Deprecate before removing. A stable export or prop is removed only after a
   release that marked it `@deprecated` with its replacement named. Flag a PR
-  that deprecates and removes in one go.
+  that deprecates and removes in one go. A new `@deprecated` needs a
+  `DEPRECATED:` footer saying which version it will be removed in.
 - A new `exports` subpath, `files` entry, dist file or public attribute is
   permanent API. Removing or renaming one is breaking. New `exports` entries
   list `types`, `import` and `require` like the existing ones.

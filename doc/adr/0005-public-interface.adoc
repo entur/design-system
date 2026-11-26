@@ -1,0 +1,91 @@
+== 5. What counts as a breaking change
+
+Date: 2026-11-25
+
+Applies to: every `feat` and `fix` in `packages/`, and the `BREAKING CHANGE` footers that decide a major version
+
+Revisit when: the scanner shows consumers overriding `eds-*` classes so widely that changing them breaks most apps, or consumers ask for a documented set of stable classes.
+
+== Status
+Accepted
+
+== Context
+It was never written down which changes need a major version. Past majors
+were bumped for removed wrappers and class names, with notes like "some
+wrappers are removed", while visual changes went out as minors. Consumers
+could not tell from the version number what an upgrade would cost them.
+
+Consumers style on top of us. Promising that every class name and DOM node
+stays would make almost every component improvement a major. Changing them
+freely, without saying so, breaks overrides silently.
+
+Entur's changelog guidelines (https://entur.github.io/api-guidelines/changelogs.html)
+require every consumer-relevant change to be described, and every change that
+needs action to say what to do, but leave it to each interface to define what
+is breaking.
+
+== Decision
+*The public interface* is:
+
+* exports and their props and types, except internal exports
+  (xref:0003-internal-exports.adoc[ADR 3]) and anything under a `beta` entry
+* tokens: base tokens and `--components-*`
+* stylesheet entry points, such as `@entur/button/styles`, and `exports` subpaths
+* `data-*` attributes meant for consumers, such as `data-color-mode`
+* how consumer CSS wins: selector specificity and cascade layers
+* prerequisites: peer dependency ranges and supported browsers
+
+Removing or changing any of these so consumer code stops working is a breaking
+change and needs a major version. So is changing a default value or a size
+scale, or tightening a type.
+
+*Not public, but consumer-relevant*: `eds-*` class names and DOM structure.
+Changing them is a minor or patch, but the changelog entry names the class or
+element and says what overrides should check.
+
+*Visual changes are assessed as possibly breaking* when they can:
+
+* lower contrast, for text, icons, borders or focus indicators
+* shift layout, such as a changed size, spacing or line height that moves
+  content around the component
+* change what a component communicates, such as the meaning of a colour,
+  icon or variant
+
+The pull request template has a checkbox for these. The author gives a
+verdict, breaking or not, with the reason, in the "Breaking changes" section,
+and the reviewer approves it as part of the review. A change judged not
+breaking still says in its changelog entry what changed and what consumers
+should check. The automated review (`.github/skills/code-review`) flags
+changes that look breaking or possibly breaking when a PR is ready for
+review.
+
+*Deprecated APIs are removed in a major release* as a guiding rule, so the
+removal version in a `DEPRECATED:` footer is a major. There is no minimum
+notice period in months.
+
+Beta components can break in a minor. Their breaking changes still get a
+`BREAKING CHANGE` footer, so they land under "BREAKING CHANGES (beta)".
+
+== Consequences
+=== Positive
+* The version number tells consumers whether their code needs changes.
+* Components can be restructured without a major, as long as the changelog
+  says what moved.
+* Changes that can hurt accessibility or meaning are never shipped
+  unnoticed as a plain feature.
+
+=== Negative
+* Overrides on `eds-*` classes can break in a minor. Consumers have to read
+  the changelog to find out.
+* "Possibly breaking" visual changes depend on judgement, so two similar
+  changes can land on different sides of the line.
+
+== Alternatives
+* *Class names and DOM structure are public too*: nearly every improvement
+  becomes a major, and frequent majors cost consumers more than a changelog
+  line.
+* *A documented subset of stable `eds-*` classes*: a real promise for the
+  common overrides, but one more list to maintain. Worth it if the revisit
+  trigger above is met.
+* *Every visual change is breaking*: colour and spacing fixes would need
+  majors, so they would be held back.

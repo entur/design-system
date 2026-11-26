@@ -81,4 +81,8 @@ What other options were considered and why were they rejected?
 |4
 |xref:0004-skills-pinned-plugin.adoc[Skills ship only as a pinned Claude Code plugin and read only their own files]
 |Accepted
+
+|5
+|xref:0005-public-interface.adoc[What counts as a breaking change]
+|Accepted
 |===
