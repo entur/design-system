@@ -2,6 +2,7 @@ import React, {
   MutableRefObject,
   cloneElement,
   createContext,
+  useCallback,
   useContext,
   useEffect,
 } from 'react';
@@ -17,7 +18,7 @@ import {
 } from '@floating-ui/react-dom';
 
 import { Contrast } from '@entur/layout';
-import { mergeRefs, useOnClickOutside } from '@entur/utils';
+import { mergeRefs, useOnClickOutside, useOnEscape } from '@entur/utils';
 import { space } from '@entur/tokens';
 
 import { Placement, standardisePlacement } from './utils';
@@ -79,6 +80,26 @@ export const Popover = ({
     setShowPopover(false),
   );
 
+  // Runs before a surrounding Drawer handles the same Escape
+  const closePopover = useCallback(
+    () => setShowPopover(false),
+    [setShowPopover],
+  );
+  useOnEscape(refs.reference, closePopover, { enabled: showPopover });
+
+  // Fallback on the document, since Safari leaves focus outside a clicked trigger
+  useEffect(() => {
+    if (!showPopover) return;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key !== 'Escape' || event.defaultPrevented) return;
+      // Stops a surrounding modal from closing on the same keypress
+      event.preventDefault();
+      setShowPopover(false);
+    };
+    document.addEventListener('keydown', closeOnEscape);
+    return () => document.removeEventListener('keydown', closeOnEscape);
+  }, [showPopover, setShowPopover]);
+
   const popoverTriggerProps = {
     'aria-haspopup': 'dialog',
     'aria-expanded': showPopover,
@@ -95,8 +116,13 @@ export const Popover = ({
     'aria-hidden': !showPopover,
     ref: refs.setFloating,
     style: { ...(!showPopover && { display: 'none' }) },
+    // A React handler, so a component inside that handles Escape runs first
     onKeyDown: (event: React.KeyboardEvent) => {
-      if (event.key === 'Escape') setShowPopover(false);
+      if (event.key !== 'Escape' || event.defaultPrevented || !showPopover)
+        return;
+      // Stops a surrounding modal from closing on the same keypress
+      event.preventDefault();
+      closePopover();
     },
     onBlur: (event: React.FocusEvent) => {
       const elementReceivingFocus = event.relatedTarget as HTMLElement;

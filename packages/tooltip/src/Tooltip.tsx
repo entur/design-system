@@ -192,7 +192,11 @@ export const Tooltip = ({
     ...(!disableKeyboardListener &&
       !isControlled && {
         onKeyDown: e => {
-          if (e.key === 'Escape') setShowTooltip(false);
+          if (e.key === 'Escape' && showTooltip) {
+            // Stops a surrounding modal from closing on the same keypress
+            e.preventDefault();
+            setShowTooltip(false);
+          }
           if (e.key === ' ' || e.key === 'Enter') {
             e.preventDefault();
             setShowTooltip(!showTooltip);
