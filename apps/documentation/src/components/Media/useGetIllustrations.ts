@@ -3,6 +3,7 @@ import { graphql, useStaticQuery } from 'gatsby';
 import { IGatsbyImageData } from 'gatsby-plugin-image';
 
 import illustrationKeywords from './illustrationKeywords.json';
+import { SCENARIO_BUILDER_ID, SCENE_PEOPLE } from './scenarioScene';
 
 export type ColorMode = 'standard' | 'darkmode' | 'contrast';
 
@@ -225,9 +226,37 @@ const groupIllustrations = (nodes: FileNode[]): Illustration[] => {
     }
   }
 
-  return Array.from(illustrations.values()).sort((a, b) =>
+  return withScenarioBuilder(Array.from(illustrations.values())).sort((a, b) =>
     a.name.localeCompare(b.name, 'no'),
   );
+};
+
+const BUILDER_PREVIEW =
+  'Scenario/Scene-Woman standing by luggage/City-Woman standing by luggage';
+
+// The scenario builder replaces the exported scenes of the people it can place
+const withScenarioBuilder = (list: Illustration[]): Illustration[] => {
+  const isBuilt = (i: Illustration) =>
+    i.category === 'Scenario' &&
+    SCENE_PEOPLE.some(person => i.id.startsWith(`Scenario/Scene-${person}/`));
+  const preview = list.find(i => i.id === BUILDER_PREVIEW);
+  if (!preview) return list;
+  const builder: Illustration = {
+    id: SCENARIO_BUILDER_ID,
+    name: 'Scenariobygger',
+    category: 'Scenario',
+    keywords: [
+      'scenario',
+      'by',
+      'togstasjon',
+      'city',
+      'train station',
+      ...SCENE_PEOPLE,
+      ...SCENE_PEOPLE.flatMap(person => keywordsByName[person] ?? []),
+    ],
+    variants: preview.variants,
+  };
+  return [builder, ...list.filter(i => !isBuilt(i))];
 };
 
 /** The illustration's motifs in MOTIFS order, empty when it has only one */

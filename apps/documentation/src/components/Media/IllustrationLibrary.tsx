@@ -40,6 +40,9 @@ import {
   useGetIllustrations,
 } from './useGetIllustrations';
 
+import { ScenarioBuilder } from './ScenarioBuilder';
+import { SCENARIO_BUILDER_ID, SCENE_PEOPLE } from './scenarioScene';
+
 import './IllustrationLibrary.scss';
 
 const PRINCIPLES_CARD = 'principles';
@@ -121,7 +124,14 @@ const IllustrationLibrary = () => {
 
   const groups = ILLUSTRATION_CATEGORIES.map(c => ({
     ...c,
-    items: visible.filter(i => i.category === c.folder),
+    // The scenario builder leads its category
+    items: visible
+      .filter(i => i.category === c.folder)
+      .sort(
+        (a, b) =>
+          Number(b.id === SCENARIO_BUILDER_ID) -
+          Number(a.id === SCENARIO_BUILDER_ID),
+      ),
   })).filter(group => group.items.length > 0);
 
   const isFiltered = search.trim() !== '' || categories.length > 0;
@@ -333,7 +343,19 @@ const IllustrationLibrary = () => {
           onDismiss={closeDetails}
         />
       )}
-      {opened && (
+      {opened?.id === SCENARIO_BUILDER_ID && (
+        <ScenarioBuilder
+          travellers={illustrations.filter(i => i.category === 'Travellers')}
+          initialColorMode={colorMode}
+          initialPerson={SCENE_PEOPLE.find(person =>
+            search.trim() === ''
+              ? false
+              : person.toLowerCase().includes(search.trim().toLowerCase()),
+          )}
+          onDismiss={closeDetails}
+        />
+      )}
+      {opened && opened.id !== SCENARIO_BUILDER_ID && (
         <IllustrationDetails
           key={opened.id}
           illustration={opened}
