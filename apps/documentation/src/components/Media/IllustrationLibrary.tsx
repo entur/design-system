@@ -323,8 +323,8 @@ const IllustrationLibrary = () => {
                           </Text>
                           {isBuilder && (
                             <Text as="span" variant="caption">
-                              Sett en person fra «Reisende» inn i en by eller på
-                              en togstasjon, og last ned som SVG eller PNG.
+                              Sett sammen ditt eget scenario ved å velge en type
+                              reisende og en bakgrunn.
                             </Text>
                           )}
                           {variant.colorMode !== colorMode && (
