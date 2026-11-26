@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { SegmentedChoice, SegmentedControl } from '.';
 import { describeComponentContract } from '../../../../tests/jest/componentContract';
@@ -334,4 +334,17 @@ describeComponentContract('SegmentedControl.Item', {
   baseClassName: 'eds-segmented-choice',
   refElement: HTMLButtonElement,
   as: 'a',
+});
+
+test('does not claim Escape, so a surrounding modal or drawer can close', () => {
+  render(
+    <SegmentedControl label="Travel mode" defaultValue="train">
+      <SegmentedControl.Item value="train">Train</SegmentedControl.Item>
+      <SegmentedControl.Item value="bus">Bus</SegmentedControl.Item>
+    </SegmentedControl>,
+  );
+  const train = screen.getByRole('radio', { name: 'Train' });
+  // fireEvent returns false when the event was default-prevented
+  expect(fireEvent.keyDown(train, { key: 'Escape' })).toBe(true);
+  expect(train).toBeChecked();
 });
