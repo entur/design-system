@@ -49,3 +49,45 @@ test('replaces the callback and removes the listener from the unmounted panel', 
   fireEvent.keyDown(input, { key: 'Escape' });
   expect(nextOnClose).toHaveBeenCalledTimes(1);
 });
+
+function Toggle({
+  enabled,
+  onClose,
+}: {
+  enabled: boolean;
+  onClose: () => void;
+}) {
+  const ref = React.useRef<HTMLDivElement>(null);
+  useOnEscape(ref, onClose, { enabled });
+  return (
+    <div ref={ref}>
+      <input aria-label="Filter" />
+    </div>
+  );
+}
+
+test('claims Escape only while enabled, so a surrounding modal stays open', () => {
+  const onClose = jest.fn();
+  const { rerender } = render(<Toggle enabled onClose={onClose} />);
+  const input = screen.getByRole('textbox');
+  // fireEvent returns false when the event was default-prevented
+  expect(fireEvent.keyDown(input, { key: 'Escape' })).toBe(false);
+  expect(onClose).toHaveBeenCalledTimes(1);
+
+  rerender(<Toggle enabled={false} onClose={onClose} />);
+  expect(fireEvent.keyDown(input, { key: 'Escape' })).toBe(true);
+  expect(onClose).toHaveBeenCalledTimes(1);
+});
+
+test('ignores an Escape that an element inside already handled', () => {
+  const onClose = jest.fn();
+  render(<Panel onClose={onClose} />);
+  const escape = new KeyboardEvent('keydown', {
+    key: 'Escape',
+    bubbles: true,
+    cancelable: true,
+  });
+  escape.preventDefault();
+  screen.getByRole('textbox').dispatchEvent(escape);
+  expect(onClose).not.toHaveBeenCalled();
+});
