@@ -185,3 +185,45 @@ test('merges a consumer className and style on the drawer', () => {
   expect(drawer).toHaveClass('eds-drawer', 'consumer-class');
   expect(drawer).toHaveStyle({ marginTop: '7px' });
 });
+
+test('claims Escape, so a surrounding modal stays open', () => {
+  render(
+    <Drawer
+      title="Journey details"
+      open
+      onDismiss={jest.fn()}
+      closeLabel="Close"
+    >
+      <input aria-label="Note" />
+    </Drawer>,
+  );
+  // fireEvent returns false when the event was default-prevented
+  expect(
+    fireEvent.keyDown(screen.getByRole('textbox', { name: 'Note' }), {
+      key: 'Escape',
+    }),
+  ).toBe(false);
+});
+
+test('stays open when a component inside it already handled Escape', () => {
+  const onDismiss = jest.fn();
+  render(
+    <Drawer
+      title="Journey details"
+      open
+      onDismiss={onDismiss}
+      closeLabel="Close"
+    >
+      <input
+        aria-label="Note"
+        onKeyDown={event => {
+          if (event.key === 'Escape') event.preventDefault();
+        }}
+      />
+    </Drawer>,
+  );
+  fireEvent.keyDown(screen.getByRole('textbox', { name: 'Note' }), {
+    key: 'Escape',
+  });
+  expect(onDismiss).not.toHaveBeenCalled();
+});
