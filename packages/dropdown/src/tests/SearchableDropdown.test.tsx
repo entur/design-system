@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import { DropdownItemType, SearchableDropdown } from '..';
@@ -509,5 +509,39 @@ describe('SearchableDropdown', () => {
     );
     await user.click(screen.getByRole('combobox', { name: 'test label' }));
     expect(screen.getByRole('listbox')).toHaveStyle({ color: 'pink' });
+  });
+});
+
+describe('Escape inside a modal or drawer', () => {
+  const oslo = { label: 'Oslo', value: 'Oslo' };
+  function City({ clearable }: { clearable?: boolean }) {
+    const [selected, setSelected] = React.useState<DropdownItemType | null>(
+      oslo,
+    );
+    return (
+      <SearchableDropdown
+        label="City"
+        items={['Oslo', 'Bergen']}
+        selectedItem={selected as any}
+        onChange={setSelected as any}
+        clearable={clearable}
+      />
+    );
+  }
+
+  test('is not claimed when the list is closed and there is nothing to clear', () => {
+    render(<City clearable={false} />);
+    // fireEvent returns false when the event was default-prevented
+    expect(
+      fireEvent.keyDown(screen.getByRole('combobox'), { key: 'Escape' }),
+    ).toBe(true);
+  });
+
+  test('is claimed when clearing a value, then passes through', () => {
+    render(<City />);
+    const input = screen.getByRole('combobox');
+    expect(fireEvent.keyDown(input, { key: 'Escape' })).toBe(false);
+    expect(input).not.toHaveAttribute('placeholder', 'Oslo');
+    expect(fireEvent.keyDown(input, { key: 'Escape' })).toBe(true);
   });
 });

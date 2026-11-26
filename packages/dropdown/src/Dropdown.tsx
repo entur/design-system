@@ -272,13 +272,21 @@ export const Dropdown = React.forwardRef(
       labelId: labelProps?.id,
       tabIndex: disabled || readOnly ? -1 : 0,
       onKeyDown(e) {
+        // Stops a surrounding modal from closing on the same keypress
+        if (isOpen && e.key === 'Escape') e.preventDefault();
         if (isOpen && e.key === 'Tab') {
           const highlitedItem = normalizedItems[highlightedIndex];
           // we don't want to clear selection with tab
           if (selectOnTab && highlitedItem && highlitedItem !== selectedItem) {
             selectItem(highlitedItem);
           }
-        } else if (!isOpen && e.key === 'Escape' && clearable) {
+        } else if (
+          !isOpen &&
+          e.key === 'Escape' &&
+          clearable &&
+          selectedItem != null
+        ) {
+          e.preventDefault();
           reset();
         }
       },

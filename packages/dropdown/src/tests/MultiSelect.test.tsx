@@ -1456,3 +1456,18 @@ describe('MultiSelect', () => {
     });
   });
 });
+
+test('does not claim Escape when the list is closed and the input is empty', () => {
+  render(
+    <MultiSelect
+      label="Cities"
+      items={['Oslo', 'Bergen']}
+      selectedItems={[{ label: 'Oslo', value: 'Oslo' }]}
+      onChange={jest.fn()}
+    />,
+  );
+  // fireEvent returns false when the event was default-prevented
+  expect(
+    fireEvent.keyDown(screen.getByRole('combobox'), { key: 'Escape' }),
+  ).toBe(true);
+});
