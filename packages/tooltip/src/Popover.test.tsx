@@ -222,3 +222,38 @@ test('Popover uses fixed positioning', async () => {
 
   expect(screen.getByRole('dialog')).toHaveStyle({ position: 'fixed' });
 });
+
+test('claims Escape only while open, so a surrounding modal stays open', async () => {
+  const user = userEvent.setup();
+  render(<Popover>{popoverContents}</Popover>);
+  const trigger = screen.getByRole('button', { name: 'Options' });
+  await user.click(trigger);
+  const input = screen.getByRole('textbox', { name: 'Name' });
+
+  // fireEvent returns false when the event was default-prevented
+  expect(fireEvent.keyDown(input, { key: 'Escape' })).toBe(false);
+  expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+  expect(fireEvent.keyDown(input, { key: 'Escape' })).toBe(true);
+});
+
+test('stays open when a component inside it already handled Escape', async () => {
+  const user = userEvent.setup();
+  render(
+    <Popover>
+      <PopoverTrigger>
+        <button>Options</button>
+      </PopoverTrigger>
+      <PopoverContent>
+        <input
+          aria-label="Inner"
+          onKeyDown={event => event.key === 'Escape' && event.preventDefault()}
+        />
+      </PopoverContent>
+    </Popover>,
+  );
+  await user.click(screen.getByRole('button', { name: 'Options' }));
+  fireEvent.keyDown(screen.getByRole('textbox', { name: 'Inner' }), {
+    key: 'Escape',
+  });
+  expect(screen.getByRole('dialog')).toBeVisible();
+});

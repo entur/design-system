@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import {
   OverflowMenu,
@@ -195,4 +195,23 @@ test('OverflowMenu uses fixed positioning', async () => {
   await user.click(screen.getByTestId('button'));
 
   expect(screen.getByRole('menu')).toHaveStyle({ position: 'fixed' });
+});
+
+test('claims Escape only while open, so a surrounding modal stays open', async () => {
+  const user = userEvent.setup();
+  render(
+    <OverflowMenu button={<button>Actions</button>} aria-label="Actions">
+      <OverflowMenuItem onSelect={jest.fn()}>First</OverflowMenuItem>
+    </OverflowMenu>,
+  );
+  await user.tab();
+  await user.keyboard('{ArrowDown}');
+  const item = await screen.findByRole('menuitem', { name: 'First' });
+  await waitFor(() => expect(item).toHaveFocus());
+
+  // fireEvent returns false when the event was default-prevented
+  expect(fireEvent.keyDown(item, { key: 'Escape' })).toBe(false);
+  expect(screen.queryByRole('menu')).not.toBeInTheDocument();
+  const trigger = screen.getByRole('button', { name: 'Actions' });
+  expect(fireEvent.keyDown(trigger, { key: 'Escape' })).toBe(true);
 });

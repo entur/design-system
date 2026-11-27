@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import { Dropdown, DropdownItemType, NormalizedDropdownItemType } from '..';
@@ -495,4 +495,54 @@ describe('Dropdown', () => {
     await user.click(screen.getByRole('combobox', { name: 'test label' }));
     expect(screen.getByRole('listbox')).toHaveStyle({ color: 'pink' });
   });
+});
+
+test('claims Escape only while open, so a surrounding modal stays open', async () => {
+  const user = userEvent.setup();
+  render(
+    <Dropdown
+      label="City"
+      items={['Oslo', 'Bergen']}
+      selectedItem={null}
+      onChange={jest.fn()}
+    />,
+  );
+  const combobox = screen.getByRole('combobox', { name: 'City' });
+  await user.click(combobox);
+  expect(combobox).toHaveAttribute('aria-expanded', 'true');
+
+  // fireEvent returns false when the event was default-prevented
+  expect(fireEvent.keyDown(combobox, { key: 'Escape' })).toBe(false);
+  expect(combobox).toHaveAttribute('aria-expanded', 'false');
+  expect(fireEvent.keyDown(combobox, { key: 'Escape' })).toBe(true);
+});
+
+test('claims Escape only when clearing a value, so a surrounding modal stays open', async () => {
+  const user = userEvent.setup();
+  function Clearable() {
+    const [selected, setSelected] =
+      React.useState<NormalizedDropdownItemType | null>({
+        label: 'Oslo',
+        value: 'Oslo',
+      });
+    return (
+      <Dropdown
+        label="City"
+        items={['Oslo', 'Bergen']}
+        selectedItem={selected}
+        onChange={setSelected}
+        clearable
+      />
+    );
+  }
+  render(<Clearable />);
+  const combobox = screen.getByRole('combobox', { name: 'City' });
+  await user.click(combobox);
+  await user.click(combobox);
+  expect(combobox).toHaveAttribute('aria-expanded', 'false');
+
+  // fireEvent returns false when the event was default-prevented
+  expect(fireEvent.keyDown(combobox, { key: 'Escape' })).toBe(false);
+  expect(combobox).not.toHaveTextContent('Oslo');
+  expect(fireEvent.keyDown(combobox, { key: 'Escape' })).toBe(true);
 });

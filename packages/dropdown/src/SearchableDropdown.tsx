@@ -332,6 +332,17 @@ export const SearchableDropdown = React.forwardRef(
       });
     const inputProps = getInputProps({
       onKeyDown(e: React.KeyboardEvent) {
+        // The input can still hold the selected label, which is not typed text
+        const noTypedText =
+          inputValue === '' || inputValue === itemToString(selectedItem);
+        const nothingToClear =
+          readOnly || (noTypedText && !(clearable && selectedItem));
+        if (e.key === 'Escape' && !isOpen && nothingToClear) {
+          // Skips downshift, so Escape reaches a surrounding modal or drawer
+          (
+            e.nativeEvent as { preventDownshiftDefault?: boolean }
+          ).preventDownshiftDefault = true;
+        }
         if (isOpen && e.key === 'Tab') {
           const highlitedItem = listItems[highlightedIndex];
           if (selectOnTab && highlitedItem) {

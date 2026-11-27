@@ -72,7 +72,10 @@ export const Drawer = ({
   if (shouldRemoveFromDOM) return null;
 
   function handleKeyDown(e: React.KeyboardEvent) {
-    if (e.key === 'Escape') {
+    // Skips an Escape that a component inside already handled
+    if (e.key === 'Escape' && !e.defaultPrevented) {
+      // Stops a surrounding modal from closing on the same keypress
+      e.preventDefault();
       e.stopPropagation();
       onDismiss();
     }

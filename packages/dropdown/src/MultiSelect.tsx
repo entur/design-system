@@ -594,6 +594,12 @@ export const MultiSelect = React.forwardRef(
       },
       ...dropdownProps,
       onKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === 'Escape' && !isOpen && (readOnly || inputValue === '')) {
+          // Skips downshift, so Escape reaches a surrounding modal or drawer
+          (
+            e.nativeEvent as { preventDownshiftDefault?: boolean }
+          ).preventDownshiftDefault = true;
+        }
         if (readOnly) {
           if (e.key === 'Backspace' || e.key === 'Delete') e.preventDefault();
           return;

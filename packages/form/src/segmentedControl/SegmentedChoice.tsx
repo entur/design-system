@@ -126,7 +126,7 @@ export const SegmentedChoice = forwardRefPolymorphic<SegmentedChoiceComponent>(
           handleSelection();
           break;
         case 'Escape':
-          e.preventDefault();
+          // Not prevented, so Escape reaches a surrounding modal or drawer
           setFocusedValue(null);
           break;
       }

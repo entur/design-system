@@ -171,7 +171,9 @@ export const DatePicker = <DateType extends DateValue>({
 
   useOnClickOutside([calendarRef], () => state.setOpen(false));
 
-  useOnEscape(calendarRef, () => state.setOpen(false));
+  useOnEscape(calendarRef, () => state.setOpen(false), {
+    enabled: state.isOpen,
+  });
 
   const calendarSharedProps: CalendarProps<DateType> = {
     ...dialogProps,

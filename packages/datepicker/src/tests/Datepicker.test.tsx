@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Granularity } from '@react-types/datepicker';
 import {
@@ -781,3 +781,27 @@ test.failing.each(['disabled', 'readOnly'] as const)(
     expect(onChange).not.toHaveBeenCalled();
   },
 );
+
+test('claims Escape only while the calendar is open, so a surrounding modal stays open', async () => {
+  const user = userEvent.setup();
+  render(
+    <DatePicker
+      label="test"
+      selectedDate={new CalendarDate(1997, 7, 10)}
+      onChange={jest.fn()}
+      locale="en-GB"
+    />,
+  );
+  await user.tab();
+  await user.keyboard('{Alt>}{ArrowDown}{/Alt}');
+  expect(screen.getByRole('grid')).toBeInTheDocument();
+
+  // fireEvent returns false when the event was default-prevented
+  expect(fireEvent.keyDown(document.activeElement!, { key: 'Escape' })).toBe(
+    false,
+  );
+  expect(screen.queryByRole('grid')).not.toBeInTheDocument();
+  expect(fireEvent.keyDown(document.activeElement!, { key: 'Escape' })).toBe(
+    true,
+  );
+});

@@ -1,4 +1,10 @@
-import { act, cleanup, render, screen } from '@testing-library/react';
+import {
+  act,
+  cleanup,
+  fireEvent,
+  render,
+  screen,
+} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { Tooltip } from '.';
@@ -316,4 +322,25 @@ test('Tooltip uses fixed positioning', () => {
   expect(screen.getByRole('tooltip', { hidden: true })).toHaveStyle({
     position: 'fixed',
   });
+});
+
+test('claims Escape only while shown, so a surrounding modal stays open', async () => {
+  const user = userEvent.setup({ advanceTimers: advanceTime });
+  render(
+    <Tooltip
+      content="Save your changes"
+      placement="bottom"
+      disableKeyboardListener={false}
+    >
+      <button>Save</button>
+    </Tooltip>,
+  );
+  await user.tab();
+  const trigger = screen.getByRole('button', { name: 'Save' });
+  expect(screen.getByRole('tooltip')).toBeVisible();
+
+  // fireEvent returns false when the event was default-prevented
+  expect(fireEvent.keyDown(trigger, { key: 'Escape' })).toBe(false);
+  expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
+  expect(fireEvent.keyDown(trigger, { key: 'Escape' })).toBe(true);
 });
