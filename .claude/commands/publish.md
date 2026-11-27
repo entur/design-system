@@ -39,51 +39,85 @@ List all packages that will be published (non-private). Format as a table:
 
 Private packages (code-playground, documentation, studio-linje, design-system-scanner) are skipped — mention them briefly so the user knows.
 
-## Step 4: Generate Slack release message
+## Step 4: Generate the Slack release message
 
-Write the release message in Norwegian (Bokmål), from the changelogs of the packages with real changes. Skip packages whose entry is only "Entur Dependency Updates" or "Version bump only".
+Write the release message in Norwegian (Bokmål), from the changelogs of the packages with real changes. Skip packages whose entry is only "Entur Dependency Updates" or "Version bump only", and changes consumers cannot notice (such as removing a class with no visible effect).
+
+The message has two parts: a short main post that answers "do I need to do anything, and what is new for me?", and a thread reply with the details per package.
+
+### Main post
 
 ```
-:sparkles: Ny release
+**:sparkles: Ny release av Linje**
+:white_check_mark: Ingen breaking changes. <what to do, e.g. update packages together>
 
-:warning: Breaking changes
-@entur/package@version
-• what breaks and what to do
+**Det viktigste**
+• **:frame_with_picture: <theme in plain words>**
+    ◦ what the user notices, with component names as code
+    ◦ Pakke: icons 10.2.0
+• **:keyboard: <theme>**
+    ◦ what changed and what it was like before
+    ◦ behaviour changes users will notice
+    ◦ Pakker: datepicker 12.3.3, modal 2.1.3
+• **:wrench: Mindre rettinger**
+    ◦ short list of the rest
 
-:hourglass: Deprecations
-@entur/package@version
-• what is deprecated, the replacement, and the version it will be removed in
-
-:rocket: Minor change / feature
-@entur/package@version
-• change description
-
-:bug: Bugfix
-@entur/package@version
-• change description
-
-:computer: Her finner du alle våre changelogs: https://linje.entur.no/komponenter/ressurser/changelog
+:thread: Detaljer per pakke i tråden. Alle changelogs
 ```
 
-- Sections in this order, as in the changelogs: what needs action first. Leave out empty sections.
-- Use `:rocket: Feature (kun beta-endringer)` when every feature in the release is beta-scoped, and mark beta-only breaking changes "gjelder kun beta-komponenter".
-- Bullets are short and consumer-focused: what changed and how it affects use. Breaking changes and deprecations keep the action and the version from the changelog.
-- Group packages that share one change (one feature in all packages) into one sentence instead of a line each.
-- Every package heading links to its changelog on the documentation site: `https://linje.entur.no/komponenter/ressurser/changelog?package=<name>`, where `<name>` is the npm name without `@entur/`. There is no anchor for a single version, so do not append one.
+- The first line after the title says whether consumers must act. With breaking changes or deprecations, start with `:warning:` and say what breaks or is deprecated, what to do, and the removal version. Mark beta-only breaking changes "gjelder kun beta-komponenter".
+- Group the changes into 2–4 themes by what the user notices, not by package or fix type, and give each a fitting emoji. Put the remaining small changes under `:wrench: Mindre rettinger`.
+- Each theme is a list item with a bold heading, and its details as a nested list. Bold text next to plain text on one line is hard to tell apart, so keep headings on their own line.
+- The last sub-item of each theme lists its packages with versions (`Pakke:` or `Pakker:`), each linked to its changelog.
 
-Slack shows markdown and `<url|label>` literally when pasted. Put the message on the clipboard as HTML instead, with plain text as fallback, so links and lists survive. Write a Swift script in the scratchpad and run it with `swift copy.swift`:
+### Thread reply
+
+The detailed list, without a title or closing link, since the main post has both:
+
+```
+**:warning: Breaking changes**
+• @entur/package@version
+    ◦ what breaks and what to do
+
+**:hourglass: Deprecations**
+• @entur/package@version
+    ◦ what is deprecated, the replacement, and the version it will be removed in
+
+**:rocket: Minor change / feature**
+• @entur/package@version
+    ◦ change description
+
+**:bug: Bugfix**
+• @entur/package@version, @entur/other@version
+    ◦ change shared by both packages
+```
+
+- Sections in this order, as in the changelogs: what needs action first. Leave out empty sections. Use `:rocket: Feature (kun beta-endringer)` when every feature is beta-scoped.
+- Each package is a list item, with its changes as a nested list. Group packages that share one change into one item that names every package.
+- Bullets are short and consumer-focused. Breaking changes and deprecations keep the action and the version from the changelog.
+
+### Both parts
+
+- Every package links to its changelog on the documentation site: `https://linje.entur.no/komponenter/ressurser/changelog?package=<name>`, where `<name>` is the npm name without `@entur/`. There is no anchor for a single version, so do not append one.
+- Tag every linje.entur.no link with `utm_source=slack&utm_campaign=release-<YYYY-MM-DD>` (the release date). Slack strips the referrer, so the tag is the only way analytics can count visits from each release post. Example: `https://linje.entur.no/komponenter/ressurser/changelog?package=travel&utm_source=slack&utm_campaign=release-2026-11-27`.
+- Wrap component names and other API names (hooks, icons, props, CSS classes) in `<code>`, for example `<code>Modal</code>`. Keep headings, package lists and plain descriptions such as "nedtrekksliste" as text.
+
+Slack shows markdown and `<url|label>` literally when pasted. Put each part on the clipboard as HTML instead, with plain text as fallback, so links and lists survive. Write `main.html`/`main.txt` and `thread.html`/`thread.txt` in the scratchpad, and this Swift script, `copy.swift`:
 
 ```swift
 import AppKit
-let html = try! String(contentsOfFile: "message.html")
-let text = try! String(contentsOfFile: "message.txt")
+let base = CommandLine.arguments[1]
+let html = try! String(contentsOfFile: base + ".html", encoding: .utf8)
+let text = try! String(contentsOfFile: base + ".txt", encoding: .utf8)
 let board = NSPasteboard.general
 board.clearContents()
 board.setString(html, forType: .html)
 board.setString(text, forType: .string)
 ```
 
-Use `<a href>` for links and `<ul>` for lists, no backticks or asterisks, and link text rather than bare URLs, which unfurl. Tell the user the message is on their clipboard.
+Use `<b>` for headings, `<a href>` for links, a `<ul>` with a nested `<ul>` per item, and a `<br>` before each section. No backticks or asterisks in the HTML, and link text rather than bare URLs, which unfurl. In the `.txt` files, use `•` and an indented `◦`, with no backticks or other markdown: Slack pastes the plain text instead of the HTML when it finds markdown there.
+
+Copy the main post with `swift copy.swift main` and tell the user. When they ask for the thread, run `swift copy.swift thread` yourself.
 
 ## Step 5: Tell the user to publish
 

@@ -23,8 +23,13 @@ const CHANGELOG_HEADER = [
 
 const created = [];
 
+// Signing from the user's git config makes `git tag` open an editor and hang.
+const NO_SIGNING = ['-c', 'commit.gpgsign=false', '-c', 'tag.gpgsign=false'];
+
 const git = (cwd, args) =>
-  execFileSync('git', ['-C', cwd, ...args], { encoding: 'utf8' });
+  execFileSync('git', ['-C', cwd, ...NO_SIGNING, ...args], {
+    encoding: 'utf8',
+  });
 
 const commit = (root, message) =>
   git(root, [
@@ -169,6 +174,7 @@ function cleanup() {
 }
 
 module.exports = {
+  NO_SIGNING,
   REPOSITORY,
   cleanup,
   createRepository,
