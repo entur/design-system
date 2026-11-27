@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.5.2](https://github.com/entur/design-system/compare/@entur/menu@7.5.1...@entur/menu@7.5.2) (2026-11-27)
+
+### Bug Fixes
+
+- **menu/overflow menu:** close only the menu on Escape inside a modal or drawer ([99a3d9f](https://github.com/entur/design-system/commit/99a3d9f1eb6432130c233263059575c8f40fcd66)) ([#580](https://github.com/entur/design-system/pull/580))
+
+  Escape in an open `OverflowMenu` inside a `Modal` closed both the menu and the modal. Inside a `Drawer`, it closed the drawer. It now closes only the menu, and the next Escape closes the modal or drawer.
+  While open, the menu reacts to Escape wherever focus is, which also covers Safari, where clicking the trigger leaves it unfocused.
+
 ## [7.5.1](https://github.com/entur/design-system/compare/@entur/menu@7.5.0...@entur/menu@7.5.1) (2026-11-18)
 
 ### Bug Fixes (beta)

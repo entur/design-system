@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.4.1](https://github.com/entur/design-system/compare/@entur/dropdown@9.4.0...@entur/dropdown@9.4.1) (2026-11-27)
+
+### Bug Fixes
+
+- **dropdown/searchable dropdown:** keep focus on the input when read-only ([8a3a6d8](https://github.com/entur/design-system/commit/8a3a6d8e62fc3278f8f00d8dab8f491ea07bd696)) ([#560](https://github.com/entur/design-system/pull/560))
+
+  A read-only SearchableDropdown moved focus to a `<span tabindex="0">`
+  that only showed the selected value. It had no role, no label and no
+  aria-invalid, and VoiceOver skips aria-describedby on such an element.
+  Tab only gave «Oslo, group»: no label, no «invalid», and no feedback text.
+
+  The input now keeps focus when read-only, like in MultiSelect. It shows
+  the selected value, has the readonly attribute, and is read as a combobox
+  with label, value, read-only, invalid and the feedback text. The span is
+  taken out of the tab order and hidden from screen readers.
+
+  The stateReducer blocks every change when read-only (open the list,
+  select, clear with Escape), except updates to the controlled selectedItem.
+
+- **dropdown:** close only the list on Escape inside a modal or drawer ([7790bc8](https://github.com/entur/design-system/commit/7790bc8c217f23c54a8375079a0fd92200c7582d)) ([#580](https://github.com/entur/design-system/pull/580))
+
+  Escape in an open `Dropdown` inside a `Modal` closed both the list and the modal. It now closes only the list, and the next Escape closes the modal.
+  A closed `clearable` `Dropdown` with a value cleared it and closed the modal on the same Escape. It now only clears the value.
+  `SearchableDropdown` and `MultiSelect` with a closed list blocked Escape whenever they had a value, so a surrounding `Modal` or `Drawer` did not close. They now let Escape through when there is nothing to close or clear. A `clearable` `SearchableDropdown` with a value still clears it on the first Escape.
+
+- **dropdown:** link the feedback text to the field ([26b8e04](https://github.com/entur/design-system/commit/26b8e04f8ccfd3e9dfbbfdb5c22fcb0746b05814)) ([#560](https://github.com/entur/design-system/pull/560))
+
+  Screen readers now read the feedback text, such as an error message, when Dropdown, NativeDropdown, SearchableDropdown or MultiSelect gets focus, also when SearchableDropdown is read-only. The field points to the feedback text with `aria-describedby` while the feedback is shown. An `aria-describedby` you pass yourself is kept, and SearchableDropdown and MultiSelect now put it on the input instead of the wrapper.
+
 # [9.4.0](https://github.com/entur/design-system/compare/@entur/dropdown@9.3.1...@entur/dropdown@9.4.0) (2026-11-11)
 
 ### Features

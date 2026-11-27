@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.3.3](https://github.com/entur/design-system/compare/@entur/datepicker@12.3.2...@entur/datepicker@12.3.3) (2026-11-27)
+
+### Bug Fixes
+
+- **datepicker/datepicker:** close only the calendar on Escape inside a modal ([f97b67f](https://github.com/entur/design-system/commit/f97b67f248c7ee42944925e1b8a392a37ee21de6)) ([#580](https://github.com/entur/design-system/pull/580))
+
+  Escape in an open `DatePicker` calendar inside a `Modal` closed both the calendar and the modal. It now closes only the calendar, and the next Escape closes the modal.
+
+- **datepicker:** link the feedback text to the field ([faf391a](https://github.com/entur/design-system/commit/faf391a2d2d3d243d5b5e7dc0b8295d46d802a12)) ([#560](https://github.com/entur/design-system/pull/560))
+
+  Screen readers now read the feedback text, such as an error message or "Ugyldig dato", when DatePicker, DateField, TimePicker, NativeDatePicker or NativeTimePicker gets focus. The field points to the feedback text with `aria-describedby` while the feedback is shown. An `aria-describedby` you pass yourself is kept on TimePicker's segments, and on DatePicker it no longer replaces the spoken selected date. SimpleTimePicker gets the link through TextField.
+
 ## [12.3.2](https://github.com/entur/design-system/compare/@entur/datepicker@12.3.1...@entur/datepicker@12.3.2) (2026-11-11)
 
 ### Entur Dependency Updates

@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.2.1](https://github.com/entur/design-system/compare/@entur/travel@8.2.0...@entur/travel@8.2.1) (2026-11-27)
+
+### Entur Dependency Updates
+
+- **@entur/form:** `^10.3.2` → `^10.3.3` ([changelog](https://github.com/entur/design-system/blob/main/packages/form/CHANGELOG.md#1033-2026-11-27))
+- **@entur/icons:** `^10.1.2` → `^10.2.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#1020-2026-11-27))
+- **@entur/layout:** `^5.1.2` → `^5.1.3` ([changelog](https://github.com/entur/design-system/blob/main/packages/layout/CHANGELOG.md#513-2026-11-27))
+- **@entur/utils:** `^0.16.0` → `^0.17.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/utils/CHANGELOG.md#0170-2026-11-27))
+
 # [8.2.0](https://github.com/entur/design-system/compare/@entur/travel@8.1.1...@entur/travel@8.2.0) (2026-11-11)
 
 ### Bug Fixes

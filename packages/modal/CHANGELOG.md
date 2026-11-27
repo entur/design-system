@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.3](https://github.com/entur/design-system/compare/@entur/modal@2.1.2...@entur/modal@2.1.3) (2026-11-27)
+
+### Bug Fixes
+
+- **modal/drawer:** close only the drawer, or the component inside it, on Escape ([9380421](https://github.com/entur/design-system/commit/9380421c66f6bf263946044716eed7bb02941dc4)) ([#580](https://github.com/entur/design-system/pull/580))
+
+  Escape in an open `Drawer` without overlay inside a `Modal` closed both the drawer and the modal. It now closes only the drawer, and the next Escape closes the modal.
+  Escape that closed an open `Dropdown`, `DatePicker`, `Tooltip`, `Popover` or `OverflowMenu` inside a `Drawer` without overlay also closed the drawer. The drawer now stays open, and the next Escape closes it. This needs the versions of those packages released together with this one.
+
+- **modal:** keep the modal open when a file picker inside it is cancelled ([bd85a4b](https://github.com/entur/design-system/commit/bd85a4b1b25f5f35165f902f6660c9cc05521769)) ([#573](https://github.com/entur/design-system/pull/573))
+
+  Pressing Cancel or Esc in the browser's file picker no longer closes the
+  surrounding modal. Esc, the close button and clicking outside still close it.
+
 ## [2.1.2](https://github.com/entur/design-system/compare/@entur/modal@2.1.1...@entur/modal@2.1.2) (2026-11-11)
 
 ### Entur Dependency Updates

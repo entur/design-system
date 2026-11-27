@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.1](https://github.com/entur/design-system/compare/@entur/fileupload@0.8.0...@entur/fileupload@0.8.1) (2026-11-27)
+
+### Entur Dependency Updates
+
+- **@entur/a11y:** `^0.4.2` → `^0.4.3` ([changelog](https://github.com/entur/design-system/blob/main/packages/a11y/CHANGELOG.md#043-2026-11-27))
+- **@entur/button:** `^5.2.2` → `^5.2.3` ([changelog](https://github.com/entur/design-system/blob/main/packages/button/CHANGELOG.md#523-2026-11-27))
+- **@entur/icons:** `^10.1.2` → `^10.2.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/icons/CHANGELOG.md#1020-2026-11-27))
+- **@entur/typography:** `^3.2.1` → `^3.2.2` ([changelog](https://github.com/entur/design-system/blob/main/packages/typography/CHANGELOG.md#322-2026-11-27))
+- **@entur/utils:** `^0.16.0` → `^0.17.0` ([changelog](https://github.com/entur/design-system/blob/main/packages/utils/CHANGELOG.md#0170-2026-11-27))
+
 # [0.8.0](https://github.com/entur/design-system/compare/@entur/fileupload@0.7.1...@entur/fileupload@0.8.0) (2026-11-11)
 
 ### Bug Fixes

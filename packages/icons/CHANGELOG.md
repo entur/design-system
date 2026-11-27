@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.2.0](https://github.com/entur/design-system/compare/@entur/icons@10.1.2...@entur/icons@10.2.0) (2026-11-27)
+
+### Bug Fixes
+
+- **icons:** stop logos from clipping each other when several are on one page ([ef858f2](https://github.com/entur/design-system/commit/ef858f2e538b18afa43431318276e2904960c8e5)) ([#577](https://github.com/entur/design-system/pull/577))
+
+  Icons with clip paths or masks no longer share ids, so logos like TromsFylkestrafikkIcon keep their full shape next to other logos. No change to how the icons look or are used.
+
+### Features
+
+- **icons:** add five new partner logos ([449f47a](https://github.com/entur/design-system/commit/449f47ad52941a4a59aeb7f4601a79909f17add5)) ([#577](https://github.com/entur/design-system/pull/577))
+
+  New partner icons: TetDigitalIcon, FinnmarkFylkeskommuneIcon, FlixBusIcon,
+  JernbanedirektoratetIcon and SamferdselsdepartementetIcon. Like the other
+  wide partner logos they are white and wider than they are tall, so set
+  width or height to fit your layout.
+
+- **icons:** add the full Entur logo ([d7f29f1](https://github.com/entur/design-system/commit/d7f29f1d589fd17e52a49984e28fd64116289e15)) ([#577](https://github.com/entur/design-system/pull/577))
+
+  LogoFullPositiveIcon (blue) and LogoFullNegativeIcon (white) show the full
+  Entur wordmark. LogoPositiveIcon and LogoNegativeIcon still show the short
+  EN logo. The new icons are wider than they are tall, so set width or height
+  to fit your layout.
+
 ## [10.1.2](https://github.com/entur/design-system/compare/@entur/icons@10.1.1...@entur/icons@10.1.2) (2026-11-11)
 
 ### Entur Dependency Updates

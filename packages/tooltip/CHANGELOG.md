@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.1.3](https://github.com/entur/design-system/compare/@entur/tooltip@6.1.2...@entur/tooltip@6.1.3) (2026-11-27)
+
+### Bug Fixes
+
+- **tooltip/popover, tooltip/tooltip:** close only the popup on Escape inside a modal or drawer ([f6ff806](https://github.com/entur/design-system/commit/f6ff8060fb51ac41863ae1f48a0112befdeb58b9)) ([#580](https://github.com/entur/design-system/pull/580))
+
+  Escape in an open `Popover` or a shown `Tooltip` inside a `Modal` closed both the popup and the modal. Inside a `Drawer`, Escape in an open `Popover` closed the drawer. It now closes only the popup, and the next Escape closes the modal or drawer.
+  Escape in an open `Dropdown` inside an open `Popover` closed both. It now closes only the `Dropdown`, and the next Escape closes the `Popover`.
+  While open, `Popover` reacts to Escape wherever focus is, including on its trigger and in Safari, where clicking the trigger leaves it unfocused.
+  `Tooltip` shows on focus, so a focused trigger with a tooltip inside a `Modal` now needs two Escape presses to close the modal.
+
 ## [6.1.2](https://github.com/entur/design-system/compare/@entur/tooltip@6.1.1...@entur/tooltip@6.1.2) (2026-11-11)
 
 ### Entur Dependency Updates

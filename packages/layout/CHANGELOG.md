@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.1.3](https://github.com/entur/design-system/compare/@entur/layout@5.1.2...@entur/layout@5.1.3) (2026-11-27)
+
+### Bug Fixes
+
+- **layout/media card:** remove the invalid `eds-base-card,` class ([7e7ded3](https://github.com/entur/design-system/commit/7e7ded347ee11172af85a54ed860dbabe1703610)) ([#567](https://github.com/entur/design-system/pull/567))
+
+  MediaCard added the class `eds-base-card,` with a trailing comma. It had no visible effect, since BaseCard already sets `eds-base-card`.
+
 ## [5.1.2](https://github.com/entur/design-system/compare/@entur/layout@5.1.1...@entur/layout@5.1.2) (2026-11-11)
 
 ### Bug Fixes

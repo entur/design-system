@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.3](https://github.com/entur/design-system/compare/@entur/a11y@0.4.2...@entur/a11y@0.4.3) (2026-11-27)
+
+### Bug Fixes
+
+- **a11y/visually hidden:** keep the content hidden when you pass className ([e27afba](https://github.com/entur/design-system/commit/e27afba1246051bad49c5fc2a0f1b2b2ecfeee10)) ([#567](https://github.com/entur/design-system/pull/567))
+
+  A `className` used to replace `eds-visually-hidden`, which made the content visible. It is now added next to it.
+
 ## [0.4.2](https://github.com/entur/design-system/compare/@entur/a11y@0.4.1...@entur/a11y@0.4.2) (2026-11-11)
 
 ### Entur Dependency Updates

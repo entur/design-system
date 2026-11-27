@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.3.3](https://github.com/entur/design-system/compare/@entur/form@10.3.2...@entur/form@10.3.3) (2026-11-27)
+
+### Bug Fixes
+
+- **form/checkbox:** stop mouse clicks from changing a read-only checkbox ([0644ae4](https://github.com/entur/design-system/commit/0644ae48c3f269b9d3205768ddaa759a0e883bc6)) ([#560](https://github.com/entur/design-system/pull/560))
+
+  A `readOnly` Checkbox already ignored Space and Enter, but a click still toggled it and called `onChange`. Clicks are now blocked too, the same way as for Radio, CheckboxPanel and RadioPanel.
+
+- **form/segmented control:** let Escape close a surrounding modal or drawer ([92f59fd](https://github.com/entur/design-system/commit/92f59fd7a3d1497b6a0cb9bd16add595a04e2848)) ([#580](https://github.com/entur/design-system/pull/580))
+
+  `SegmentedControl` blocked every Escape, so a surrounding `Modal` or `Drawer` did not close while focus was in it. Escape now passes through. The selection is unchanged.
+
+- **form/text field, form/text area:** link the feedback text to the field ([867d399](https://github.com/entur/design-system/commit/867d399aeef495db5c7836a8c5822ccd241c6bff)) ([#560](https://github.com/entur/design-system/pull/560))
+
+  Screen readers now read the feedback text, such as an error message, when the field gets focus, instead of only saying that the field is invalid. The field points to the feedback text with `aria-describedby` while the feedback is shown. An `aria-describedby` you pass yourself is kept, with the feedback text added after it.
+
 ## [10.3.2](https://github.com/entur/design-system/compare/@entur/form@10.3.1...@entur/form@10.3.2) (2026-11-11)
 
 ### Entur Dependency Updates

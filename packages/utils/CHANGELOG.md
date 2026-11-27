@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.17.0](https://github.com/entur/design-system/compare/@entur/utils@0.16.0...@entur/utils@0.17.0) (2026-11-27)
+
+### Features
+
+- **utils:** add an enabled option to useOnEscape and keep surrounding modals open ([b8a6faa](https://github.com/entur/design-system/commit/b8a6faa849b8075d9ce971bd1263801d274863e8)) ([#580](https://github.com/entur/design-system/pull/580))
+
+  `useOnEscape` now takes `{ enabled }` (default `true`). While disabled, it ignores Escape, so the key reaches a surrounding `Modal` or `<dialog>`.
+  When it handles Escape, it now calls `preventDefault()`, so a surrounding `<dialog>` no longer closes on the same keypress. It ignores an Escape that an element inside has already default-prevented. No visual changes.
+
 # [0.16.0](https://github.com/entur/design-system/compare/@entur/utils@0.15.4...@entur/utils@0.16.0) (2026-11-11)
 
 ### Bug Fixes
