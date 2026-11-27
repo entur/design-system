@@ -5,10 +5,16 @@ const path = require('path');
 const { execFileSync } = require('child_process');
 
 const { assertRepository, manifestAt } = require('./repo.js');
-const { cleanup, createRepository } = require('./testRepository.js');
+const {
+  NO_SIGNING,
+  cleanup,
+  createRepository,
+} = require('./testRepository.js');
 
 const git = (root, args) =>
-  execFileSync('git', ['-C', root, ...args], { encoding: 'utf8' });
+  execFileSync('git', ['-C', root, ...NO_SIGNING, ...args], {
+    encoding: 'utf8',
+  });
 
 const commit = (root, message) =>
   git(root, [
