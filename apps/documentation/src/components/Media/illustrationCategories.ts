@@ -28,7 +28,7 @@ export const ILLUSTRATION_CATEGORIES: IllustrationCategory[] = [
     folder: 'Scenario',
     label: 'Scenarier',
     description:
-      'En person fra «Reisende» satt inn i en by, på en togstasjon eller på toget.',
+      'Sett sammen ditt eget scenario, eller last ned en ferdig scene.',
   },
   {
     folder: 'Staff',

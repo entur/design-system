@@ -40,6 +40,9 @@ import {
   useGetIllustrations,
 } from './useGetIllustrations';
 
+import { ScenarioBuilder } from './ScenarioBuilder';
+import { SCENARIO_BUILDER_ID, SCENE_PEOPLE } from './scenarioScene';
+
 import './IllustrationLibrary.scss';
 
 const PRINCIPLES_CARD = 'principles';
@@ -121,7 +124,14 @@ const IllustrationLibrary = () => {
 
   const groups = ILLUSTRATION_CATEGORIES.map(c => ({
     ...c,
-    items: visible.filter(i => i.category === c.folder),
+    // The scenario builder leads its category
+    items: visible
+      .filter(i => i.category === c.folder)
+      .sort(
+        (a, b) =>
+          Number(b.id === SCENARIO_BUILDER_ID) -
+          Number(a.id === SCENARIO_BUILDER_ID),
+      ),
   })).filter(group => group.items.length > 0);
 
   const isFiltered = search.trim() !== '' || categories.length > 0;
@@ -140,6 +150,62 @@ const IllustrationLibrary = () => {
       : visible.find(i => isPrinciple(i) && isPrinciplesPart(i))?.name;
   const visibleCount = countCards(visible);
   const totalCount = countCards(illustrations);
+
+  const renderGrid = (items: Illustration[], wide?: boolean) => (
+    <ul
+      className={classNames('illustration-library__grid', {
+        'illustration-library__grid--wide': wide,
+      })}
+    >
+      {items.map(illustration => {
+        const variant = pickVariant(illustration, colorMode, withBackground);
+        const isBuilder = illustration.id === SCENARIO_BUILDER_ID;
+        return (
+          <li
+            key={illustration.id}
+            className={classNames({
+              'illustration-library__full-row': isBuilder,
+            })}
+          >
+            <button
+              type="button"
+              className={classNames('illustration-card', {
+                'illustration-card--feature': isBuilder,
+              })}
+              onClick={e => {
+                openerRef.current = e.currentTarget;
+                setOpenId(illustration.id);
+              }}
+              aria-haspopup="dialog"
+            >
+              <IllustrationPreview
+                variant={variant}
+                className="illustration-card__preview"
+              />
+              <span className="illustration-card__caption">
+                <Text as="span" variant="label">
+                  {illustration.name}
+                </Text>
+                {isBuilder && (
+                  <Text as="span" variant="caption">
+                    Sett sammen ditt eget scenario ved å velge en type reisende
+                    og en bakgrunn.
+                  </Text>
+                )}
+                {variant.colorMode !== colorMode && (
+                  <Text as="span" variant="caption">
+                    Finnes ikke i{' '}
+                    {COLOR_MODES.find(m => m.value === colorMode)?.lowercase}
+                  </Text>
+                )}
+              </span>
+              <VisuallyHidden>, vis detaljer og last ned</VisuallyHidden>
+            </button>
+          </li>
+        );
+      })}
+    </ul>
+  );
 
   return (
     <section className="illustration-library" aria-label="Illustrasjoner">
@@ -272,55 +338,27 @@ const IllustrationLibrary = () => {
                   </button>
                 </li>
               </ul>
+            ) : group.folder === 'Scenario' &&
+              group.items.some(i => i.id === SCENARIO_BUILDER_ID) &&
+              group.items.length > 1 ? (
+              <>
+                {renderGrid(
+                  group.items.filter(i => i.id === SCENARIO_BUILDER_ID),
+                )}
+                <Heading
+                  as="h3"
+                  variant="subtitle-2"
+                  className="illustration-library__subheading"
+                >
+                  Andre scener
+                </Heading>
+                {renderGrid(
+                  group.items.filter(i => i.id !== SCENARIO_BUILDER_ID),
+                  group.wide,
+                )}
+              </>
             ) : (
-              <ul
-                className={classNames('illustration-library__grid', {
-                  'illustration-library__grid--wide': group.wide,
-                })}
-              >
-                {group.items.map(illustration => {
-                  const variant = pickVariant(
-                    illustration,
-                    colorMode,
-                    withBackground,
-                  );
-                  return (
-                    <li key={illustration.id}>
-                      <button
-                        type="button"
-                        className="illustration-card"
-                        onClick={e => {
-                          openerRef.current = e.currentTarget;
-                          setOpenId(illustration.id);
-                        }}
-                        aria-haspopup="dialog"
-                      >
-                        <IllustrationPreview
-                          variant={variant}
-                          className="illustration-card__preview"
-                        />
-                        <span className="illustration-card__caption">
-                          <Text as="span" variant="label">
-                            {illustration.name}
-                          </Text>
-                          {variant.colorMode !== colorMode && (
-                            <Text as="span" variant="caption">
-                              Finnes ikke i{' '}
-                              {
-                                COLOR_MODES.find(m => m.value === colorMode)
-                                  ?.lowercase
-                              }
-                            </Text>
-                          )}
-                        </span>
-                        <VisuallyHidden>
-                          , vis detaljer og last ned
-                        </VisuallyHidden>
-                      </button>
-                    </li>
-                  );
-                })}
-              </ul>
+              renderGrid(group.items, group.wide)
             )}
           </section>
         ))
@@ -333,7 +371,19 @@ const IllustrationLibrary = () => {
           onDismiss={closeDetails}
         />
       )}
-      {opened && (
+      {opened?.id === SCENARIO_BUILDER_ID && (
+        <ScenarioBuilder
+          travellers={illustrations.filter(i => i.category === 'Travellers')}
+          initialColorMode={colorMode}
+          initialPerson={SCENE_PEOPLE.find(person =>
+            search.trim() === ''
+              ? false
+              : person.toLowerCase().includes(search.trim().toLowerCase()),
+          )}
+          onDismiss={closeDetails}
+        />
+      )}
+      {opened && opened.id !== SCENARIO_BUILDER_ID && (
         <IllustrationDetails
           key={opened.id}
           illustration={opened}

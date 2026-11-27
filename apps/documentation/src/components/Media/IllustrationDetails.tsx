@@ -14,6 +14,8 @@ import {
   ColorMode,
   Illustration,
   IllustrationVariant,
+  MOTIFS,
+  motifsOf,
   pickVariant,
 } from './useGetIllustrations';
 
@@ -123,16 +125,21 @@ export const IllustrationDetails = ({
   const [withBackground, setWithBackground] = React.useState(
     initialVariant.hasBackground,
   );
+  const [motif, setMotif] = React.useState(initialVariant.motif);
+  const motifs = motifsOf(illustration);
 
   const modes = COLOR_MODES.filter(m =>
     variants.some(v => v.colorMode === m.value),
   );
   const existsInMode = (background: boolean) =>
     variants.some(
-      v => v.colorMode === colorMode && v.hasBackground === background,
+      v =>
+        v.colorMode === colorMode &&
+        v.hasBackground === background &&
+        v.motif === motif,
     );
   const canToggleBackground = existsInMode(true) && existsInMode(false);
-  const selected = pickVariant(illustration, colorMode, withBackground);
+  const selected = pickVariant(illustration, colorMode, withBackground, motif);
 
   return (
     <Modal
@@ -151,8 +158,24 @@ export const IllustrationDetails = ({
           className="illustration-details__preview"
         />
         <div className="illustration-details__options">
-          {(modes.length > 1 || canToggleBackground) && (
+          {(motifs.length > 1 || modes.length > 1 || canToggleBackground) && (
             <div className="illustration-details__version">
+              {motifs.length > 1 && (
+                <RadioGroup
+                  name="illustration-motif"
+                  label="Motiv"
+                  value={motif}
+                  onChange={e => setMotif(e.target.value)}
+                >
+                  <div className="illustration-details__inline-options">
+                    {motifs.map(m => (
+                      <Radio key={m} value={m}>
+                        {MOTIFS[m]}
+                      </Radio>
+                    ))}
+                  </div>
+                </RadioGroup>
+              )}
               {modes.length > 1 && (
                 <RadioGroup
                   name="illustration-color-mode"
