@@ -1,6 +1,6 @@
 ---
 name: entur-linje
-description: Entur Linje design system — use when building anything with @entur/* React components, Entur branding, Entur tokens, Entur colors, Entur typography, Entur data visualization, Entur accessibility, or universell utforming (UU). Trigger for any question or task involving the Entur design system, Entur's visual identity, Entur transport UI, or compliance with Norwegian accessibility law (WCAG). Use this skill whenever the user mentions Entur in a design, development, or content context — even if they don't specifically say "design system."
+description: Entur Linje design system — use when building anything with @entur/* React components, Entur branding, Entur tokens, Entur colors, Entur typography, Entur data visualization, Entur illustrations, Entur accessibility, or universell utforming (UU). Trigger for any question or task involving the Entur design system, Entur's visual identity, Entur transport UI, or compliance with Norwegian accessibility law (WCAG). Use this skill whenever the user mentions Entur in a design, development, or content context — even if they don't specifically say "design system."
 ---
 
 > **Audience:** AI coding agents. Entur employees looking for design system docs should visit [linje.entur.no](https://linje.entur.no).
@@ -39,6 +39,7 @@ The migration skills change a lot of code, so the user starts them. Do not read 
 | Moving to the new typography (`@entur/typography/beta`) or the new layout beta `gap` values    | Ask the user to run `/entur-linje:migrate-typography` — a step-by-step migration procedure                          |
 | Making a presentation, creating slides                                                         | [entur-brand-design](../entur-brand-design/SKILL.md)                                                                |
 | Creating charts, graphs, data visualizations                                                   | [entur-brand-design](../entur-brand-design/SKILL.md)                                                                |
+| Drawing or choosing an illustration, empty-state or error art, a motif "in Entur's style"      | [entur-illustration](../entur-illustration/SKILL.md)                                                                |
 | Auditing accessibility, WCAG compliance, "is this accessible"                                  | [entur-accessibility](../entur-accessibility/SKILL.md)                                                              |
 | Colors, branding, visual identity questions                                                    | [entur-brand-design](../entur-brand-design/SKILL.md)                                                                |
 | Tokens, CSS variables, dark mode                                                               | [entur-web-development](../entur-web-development/SKILL.md)                                                          |

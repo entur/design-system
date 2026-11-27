@@ -10,6 +10,7 @@ Skills are instruction sets that give AI coding agents specialized knowledge abo
 | `entur-web-development` | Installing and using `@entur/*` React packages, CSS import order, tokens, component catalog |
 | `entur-accessibility`   | WCAG 2.1, universell utforming, keyboard testing, screen readers, Norwegian law compliance  |
 | `entur-brand-design`    | Colors, typography, data visualization, visual identity, presentations                      |
+| `entur-illustration`    | Drawing new illustrations in the Linje style as editable strokes, choosing library motifs   |
 | `migrate-react-18`      | Step-by-step migration for projects upgrading @entur/\* packages to React 18 major versions |
 | `migrate-typography`    | Step-by-step migration to the new typography and the layout beta spacing scale              |
 
@@ -24,7 +25,7 @@ The skills are supported in [Claude Code](https://docs.anthropic.com/en/docs/cla
 /plugin install entur-linje@entur
 ```
 
-This installs all six skills with their reference files on disk. The marketplace pins the plugin to a reviewed commit in this repo, so a new version reaches you when entur/ai moves that pin. Run `/plugin update` to get it.
+This installs all seven skills with their reference files on disk. The marketplace pins the plugin to a reviewed commit in this repo, so a new version reaches you when entur/ai moves that pin. Run `/plugin update` to get it.
 
 The skills only read their own files from the installed plugin. Pointing an agent at a skill on GitHub or linje.entur.no is not supported.
 
